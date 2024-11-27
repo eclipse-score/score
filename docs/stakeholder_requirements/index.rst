@@ -18,6 +18,20 @@ Stakeholder Requirements
 ========================
 
 
+Integration
+-----------
+
+.. stkh_req:: Multirepo integration
+   :id: STKH_REQ__INT_multi_repo_integration
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: QM
+   :rationale: Allow independent development of software modules
+   :status: valid
+
+   Integration of multiple repositories shall be supported in a unified workflow.
+
+
 Quality
 -------
 
