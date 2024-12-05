@@ -67,7 +67,7 @@ Technical committees
     of safety, security and quality software development process.
 
   The planning of the activities is done by every *Community* independent of other
-  teams. Each *Community* has a *Community Lead*, who is nominated by the *Technical lead circle*.The prioritization of some topics can be requested by the *Technical lead circle*
+  teams. Each *Community* has a *Community Lead*, who is nominated by the *Technical lead circle*. The prioritization of some topics can be requested by the *Technical lead circle*
   in order to achieve milestones on time. All important architectural decisions
   should be reported to the project as *Contribution Request*
   to get the final approvement from the *Technical lead circle*.
@@ -141,10 +141,10 @@ as defined by the *Eclipse Foundation Project Handbook*. Software module committ
 and software module project leads are responsible for managing the software module as if it were
 a normal *Eclipse child project*. The election of the project leads and committers for software module projects should be done using the main integration *SCORE* project mailing list, *score-dev@eclipse.org*. This means, that the decision who will be the project lead and committer of the new software module will be taken by the project leads and committers of the main *SCORE* project respectively. The elected project leads or committers of the software modules are not automatically project leads and committers of the main integration *SCORE* project. Typically, before becoming a project lead or a committer of the main integration *SCORE* project, you need to build up a good reputation by contributing to the main integration *SCORE* project and being project lead or committer for one of the software modules.
 
-That should be a normal procedure, that before introducing a new *Eclipse child project* for a software module, it should first reside as a repository in the main *SCORE* project. If the software module later would be moved to a real standalone *Eclipse child project*, e.g., as there is a wish to use this software module independent of the *SCORE* project, then the elected project leads and committers of the software module will be simply taken over as project leads and committers of the new *Eclipse child project* and their tasks will stay the same. Further in this document differentation between a software module and  *Eclipse child project* will be done only if necessary. For the software module that resides in the separate repository of the main *SCORE* project, the configuration and the control
+That should be a normal procedure, that before introducing a new *Eclipse child project* for a software module, it should first reside as a repository in the main *SCORE* project. If the software module later would be moved to a real standalone *Eclipse child project*, e.g., as there is a wish to use this software module independent of the *SCORE* project, then the elected project leads and committers of the software module will be simply taken over as project leads and committers of the new *Eclipse child project* and their tasks will stay the same. Further in this document differentiation between a software module and  *Eclipse child project* will be done only if necessary. For the software module that resides in the separate repository of the main *SCORE* project, the configuration and the control
 of who is committer and project lead is done using
 `CODEOWNER files <https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners>`_
-located in the subfolders of the corresponding repository of the software module.
+located in the subfolder of the corresponding repository of the software module.
 
 Main task of software module committers and project leads is planning and prioritization of activities, maintaining of the backlog and ensuring, that the software development is done according
 to process described in the main *SCORE* project. The planning inside of the software
@@ -154,7 +154,7 @@ A more detailed description of their activities is given in *Eclipse Foundation 
 The main project *SCORE* has certainly also project leaders and committers, but
 their roles are slightly different compared to the software module committers and
 project leads. The role of the *SCORE* project as the central project is, as already
-described, to ensure proper integration of multiple softwarre modules, provide common
+described, to ensure proper integration of multiple software modules, provide common
 integration guidelines and mechanisms, e.g. build toolchain. Additionally *SCORE* project
 takes care of all overarching topics, as e.g. roadmap and milestone planning or
 definition of cross-functional topics. Therefore there exist number of additional
