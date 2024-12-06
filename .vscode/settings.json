@@ -1,0 +1,46 @@
+{
+    // General Settings
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "editor.insertSpaces": true,
+    "editor.tabCompletion": "on",
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wrappingIndent": "same",
+    "editor.wordWrapColumn": 100,
+    "editor.rulers": [
+        100
+    ],
+
+    // RST Settings
+    "[restructuredtext]": {
+       "editor.tabSize": 3,
+    },
+
+    // Sphinx Needs Extension
+    "sphinx-needs.folders": [
+        {
+            "needsJson": "${workspaceFolder}/bazel-bin/docs/docs/_build/html/needs.json",
+            "srcDir": "${workspaceFolder}/docs",
+        },
+        {
+            "needsJson": "${workspaceFolder}/bazel-bin/docs/docs/_build/html/needs.json",
+            "srcDir": "${workspaceFolder}/process/process_model",
+        },
+    ],
+
+    // Esbonio 0.x (Current)
+    // see https://github.com/swyddfa/esbonio/blob/0.x/docs/lsp/getting-started.rst
+    // and https://github.com/swyddfa/esbonio/blob/0.x/docs/lsp/editors/vscode/_configuration.rst
+    "esbonio.server.pythonPath": "${workspaceFolder}/.venv_docs/bin/python",
+    "esbonio.sphinx.confDir": "${workspaceFolder}",
+    "esbonio.sphinx.buildDir": "${workspaceFolder}/_build",
+    "esbonio.server.logLevel": "info",
+    // Do not auto-install. We'll use the one in the venv.
+    "esbonio.server.installBehavior": "nothing",
+
+    // Esbonio 1.x (Preview)
+    "esbonio.sphinx.pythonCommand": [".venv_docs/bin/python"],
+    "esbonio.sphinx.buildCommand": ["-b", "html", ".", "_build", "--jobs", "auto"],
+    // default is "error", which doesn't show anything.
+    "esbonio.logging.level": "warning"
+}

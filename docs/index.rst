@@ -23,3 +23,4 @@ Documentation
    tool_requirements/index.rst
    process_description/index.rst
    features/index.rst
+   platform_management_plan/index.rst

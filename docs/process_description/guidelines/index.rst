@@ -24,3 +24,4 @@ Configuration/Tool Guidelines
 
    git/index.rst
    branch/index.rst
+   general/index.rst
