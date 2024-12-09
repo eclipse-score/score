@@ -37,6 +37,17 @@ html[data-theme="dark"] {
     --pst-color-table-row-hover-bg: var(--pst-color-secondary); /*#30353e;*/
 }
 
+/* Content area size */
+/* Docs: https://pydata-sphinx-theme.readthedocs.io/en/stable/user_guide/layout.html#horizontal-spacing */
+.bd-main .bd-content .bd-article-container {
+    max-width: 100%;  /* default is 60em */
+  }
+/* Whole page size */
+.bd-page-width {
+    max-width: 100rem;  /* default is 88rem */
+}
+
+
 .search-button-field {
     color: var(--pst-color-primary);
 }
@@ -101,6 +112,11 @@ ul.bd-breadcrumbs li.breadcrumb-item a {
 ul.bd-breadcrumbs li.breadcrumb-item:not(.breadcrumb-home)::before {
     color: var(--pst-color-text-base);
 }
+/* Next/previous area under content */
+.prev-next-area p,
+.prev-next-area a {
+    color: var(--pst-color-text-base);
+}
 
 blockquote {
     color: var(--pst-color-text-base);
@@ -108,6 +124,31 @@ blockquote {
 
 .admonition, div.admonition {
     background-color: rgba(0,0,0,0.1);
+}
+
+/* Left sidebar fix, to hide scrollbar if not needed */
+.bd-sidebar-primary .sidebar-primary-items__end {
+    margin-bottom: 1em;
+    margin-top: 0;
+}
+
+/* Reduce width of left sidebar and set maximum for wide screens */
+/* .navbar-header-items__start is the left navbar logo, which needs to */
+/* be shorten as well to jkepp the navbar-entries aligned with the content */
+.bd-sidebar-primary,
+.navbar-header-items__start {
+    width: 20%; /* default: 25% */
+    max-width: 350px; /* default: not set */
+}
+
+/* Less Sidebar border/distance */
+.bd-sidebar-primary,
+.bd-sidebar-secondary {
+    padding: 0.5rem 0.2rem 0.2rem;
+}
+
+.bd-sidebar-primary li.has-children > details > summary .toctree-toggle {
+    right: 1em
 }
 
 /* SCORE Background video
