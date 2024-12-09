@@ -12,7 +12,7 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _Stakeholder_Requirements_Template:
+.. _stakeholder_requirements_template:
 
 Stakeholder Requirements Template
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

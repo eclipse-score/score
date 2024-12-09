@@ -12,7 +12,7 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _Tool_Requirements:
+.. _tool_requirements:
 
 Tool Requirements
 =================
