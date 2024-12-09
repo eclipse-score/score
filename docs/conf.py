@@ -24,7 +24,6 @@ from _extensions import metamodel, layouts
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = "Score"
-copyright = "2024, Score"
 author = "Score"
 release = "0.1"
 
@@ -83,7 +82,6 @@ html_context = {
     "github_version": "main",
     "doc_path": "docs",
 }
-
 
 # -- sphinx-needs configuration --------------------------------------------
 

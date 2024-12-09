@@ -27,11 +27,11 @@ Documentation
 
    <div id="videowrapper">
       <div id="fullScreenDiv">
-         <div id="score-title"> 
+         <div id="score-title">
                Eclipse SCORE
                <span id="score-subtitle">Eclipse Safe Open Vehicle Core</span>
                <span id="score-phrase">Software Documentation</span>
-         </div>   
+         </div>
       </div>
    </div>
 
@@ -39,6 +39,7 @@ Documentation
    :maxdepth: 2
    :glob:
 
-   requirements/index   
+   requirements/index
    features/index
    process/index
+   platform_management_plan/index.rst
