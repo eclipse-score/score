@@ -181,4 +181,231 @@ meetings, where such topics are discussed and decided, see `Steering committees`
 
 Planning
 ========
-coming soon
+
+Planning infrastructure
+------------------------
+`GitHub issues <https://github.com/features/issues>`_ are used to plan and to track
+work. To be able to find issues faster and to filter for them more efficiently,
+we use labels.
+
+Labels
+^^^^^^
+To facilitate the organization and tracking of tickets related to the same feature
+or topic, labels are utilized for issues and pull requests. Labels are a powerful
+feature that allows you to search and filter tickets based on specific labels, and
+you can save these filters in a GitHub Project view. However, it is important
+to exercise caution when creating labels to avoid confusion and ensure easy tracking.
+
+It's worth noting that labels are associated with a repository, not a GitHub project.
+To create new labels in the repository requires special rights and typically only
+*project leads leads* and *committers* should have this capability.
+
+For the main *SCORE* repository, there exist already some predefined labels:
+
+* *contribution_request* label is used to identify PRs and Issues that are part
+  of a *Contribution request process*
+* *project_lead_circle*  label is used to identify PRs and Issues that are relevant
+  for *Project lead circle*
+* *tech_lead_circle*  label is used to identify PRs and Issues that are relevant
+  for *Technical lead circle*
+* *infrastructure*  label is used to identify PRs and Issues that are relevant
+  for *Tooling/Infrastructure Community*
+* *testing*  label is used to identify PRs and Issues that are relevant for
+  *Testing Community*
+* *software_architecture*  label is used to identify PRs and Issues that are relevant
+  for *Software Architecture community*
+* *software_development_process*  label is used to identify PRs and Issues that are
+  relevant for *Software Development Process Community*
+
+  .. image:: _assets/contribution_request_label.png
+     :width: 800
+     :alt: Infrastructure overview
+     :align: center
+
+Additionally, in the main *SCORE* repository there should exist a label for every
+software module.
+
+Every software module project, located in another repository, is free to define
+additionally its own labels. It is recommended to create labels at least
+for specific areas that may encompass multiple features.
+
+Types of tasks and structure
+------------------------------
+For better structuring of the tickets following GitHub issue types are introduced
+in the main *SCORE* repository. It is recommended for all *child projects* to
+introduce the same types.
+
+.. image:: _assets/issue_types.png
+    :width: 600
+    :alt: Issue types overview
+    :align: center
+
+* *Saga* GitHub issue of type *Saga* is the highest level hierarchy and can not
+  be a sub-issue of another ticket. If you want to group *Sagas* together, you will
+  need to use labels. *Saga* can have multiple *Epics* as sub-issues. In really
+  exceptional cases, also a *Story* can be a direct sub-issue of a *Saga* as well.
+* *Epic* GitHub issue of type *Epic* groups multiple *Stories* together and is sub-issue
+  of exactly one *Saga*. *Epics* can be also standalone *GitHub Issues* without being
+  a child of any *Saga*. *Saga* should be the only way for grouping *Epics* together.
+  Grouping standalone *Epics* with labels is not something, what we encourage you to do.
+* *Story* GitHub issue of type *Story* is the lowest planning granularity and represents
+  concrete task, that should be done, e.g. by a developer. Normally *Stories* are
+  grouped together in an Epic. In some cases a *Story* can exist as a standalone *GitHub issue*.
+  Grouping standalone *Stories* with labels is not something, what we encourage you to do.
+* *Bug* GitHub issue of type *Bug* is used to report any kind of problems. It can be
+  a standalone *GitHub Issue* or can be a sub-issue of an *Epic* or a *Saga*.
+  It is also ok to use labels to group multiple *Bugs* that are related to the same topic.
+
+Main *SCORE* project defines templates for every type of GitHub Issues
+to ensure, that every ticket has all necessary information.
+
+For a better structuring of the GitHub issues, we use a beta
+`sub-issue feature <https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/adding-sub-issues>`_,
+that should be officially released in the beginning of 2025.
+Sub-issue feature allows to create a "parent-child" relationship between GitHub issues.
+That allows better structuring of the project and helps to keep GitHub Issues, that
+are related to the same topic, together.
+
+.. image:: _assets/sub_issues.png
+    :width: 600
+    :alt: Sub issues overview
+    :align: center
+
+
+Traceability
+^^^^^^^^^^^^
+To achieve a better traceability it is a must to link all PRs to the corresponding
+GitHub issues. If done properly, you will be able to see for every GitHub Issue
+all relevant source code changes. Normally PRs reference *GitHub issues* of type *Story*
+or of type *Bug*. How to link PRs to GitHub issues is described in more details in this
+`guide <https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue>`_.
+
+.. image:: _assets/traceability.png
+    :width: 300
+    :alt: Traceability overview
+    :align: center
+
+GitHub projects
+^^^^^^^^^^^^^^^
+*GitHub projects* is a very powerful tool that allows creation of various views on
+the status of the project, helps to plan the work and to monitor the current progress.
+In particular, *GitHub project* allows to extend "GitHub Issues" with following information:
+
+* objective
+* dependencies on other activities or information
+* responsible person
+* resources
+* mapping to work product
+* start, end, duration, effort
+
+Note: The information on start, end, duration, and effort may sometimes be complicated
+to estimate in the execution in an open source environment. Nevertheless, tasks
+should be planned as part of releases, which sets already an implicit
+duration and end date.
+
+We strongly encourage every software module project lead to use *GitHub
+project* for their planning. The overview of *GitHub* project features can be found
+`here <https://docs.github.com/en/issues/planning-and-tracking-with-projects>`_.
+
+Multiple *GitHub projects* are defined in the main *SCORE* project:
+
+* a separate project for every community
+* a project for technical lead circle
+* a (GitHub) roadmap project.
+  As *GitHub projects* are not restricted to one repository but
+  can include information from multiple repositories of the same organization,
+  roadmap project give an overview of all *Sagas*, that are relevant for the roadmap,
+  including those ones in the child projects. Prerequisite for this is that project
+  leads of all child projects always assign their sagas to the roadmap project.
+  All sagas in the roadmap project are extended with additional information
+  as e.g. start date and due date, to keep the status of the project always transparent.
+  Additionally, the main *SCORE* repository defines project wide milestones,
+  that are visible in the roadmap as well.
+
+.. image:: _assets/roadmap_example.png
+    :width: 600
+    :alt: Roadmap example
+    :align: center
+
+
+Releases and milestones
+^^^^^^^^^^^^^^^^^^^^^^^^
+GitHub allows to define various milestones for every repository. In the main *SCORE*
+project we use milestones to mark important stages of the project and map Sagas or
+in some cases also other GitHub issues to them.
+
+Planning process
+----------------
+Generally, every team is responsible for planning and managing of its backlog.
+For small improvements or clarifications, you can create GitHub issue with a exhaustive
+description and map it to the topic using labels. For small improvements/bugs
+in the software modules you should create GitHub issues directly in the repository
+of the submodule. The project leads and committers of the corresponding software module,
+circle or community will check the issue and in case they will accept it, they will
+assign it to one of their GitHub projects. The issue without labels will be also handled
+but with less priority. In case, the topic, that you raise in the issue has a big
+impact on the platform, you can be asked by the committers to raise a *Contribution Request*.
+
+.. image:: _assets/planning_workflow.svg
+    :width: 600
+    :alt: Planning workflow
+    :align: center
+
+*Contribution Request* is the central concept to introduce any important changes
+to the project. It is described in more details in *Contribution Request*.
+In general, everyone who wants to provide something new to the project, e.g. a new feature
+or a tool, should provide an exhaustive description, requirements and in some cases
+also initial draft of the architecture as part of the *Contribution Request*.
+The *Contribution Requests* are regularly reviewed in the *Technical lead circle*
+and then get either accepted or declined.
+
+After the *Contribution Request* was accepted, then the *Pull Request* with the
+*Contribution Request* gets merged. The corresponding GitHub Issue gets a reference to the
+newly defined saga and gets closed.
+The saga is at the beginning in the state *"Draft"*. Please be aware, that "status"
+of the tickets is modelled in *GitHub Project* as *GitHub Issues* do not provide the
+possibility to define additional states.
+
+The *Technical lead circle* is responsible for maintenance of the backlog with sagas,
+their prioritization and creation of the roadmap. Together with software module
+project leads and community leads they go through the backlog, decide when and which saga
+should be implemented in which order and update it the roadmap accordingly.
+
+As soon as the saga was planned for implementation, its state is changed to *"Open"*.
+As next step, an GitHub issue of type *epic* is created as sub-issue of the saga
+and gets assigned to one of the *Communities* for *Feature Architecture Definition*.
+The state of the saga changes from "Open" to "In Specification".
+
+.. image:: _assets/saga_status_workflow.svg
+    :width: 900
+    :alt: Planning workflow
+    :align: center
+
+The members of the *responsible Community* define feature architecture, feature requirements
+and also component requirements for every involved component of software modules. Finally,
+*responsible Community* does the break down of the corresponding *saga*
+to the tickets that can be assigned to the individual software modules or *Communities*.
+As most of the software modules will have their own separate repository,
+then the detailed tracking of their work will also happen inside of that repository.
+However, the corresponding saga will still have a sub-issue of type epic,
+that will describe the work, that should be done inside of the software module for better planning.
+In the epic description there should be a link to the software module repository ticket,
+where the detailed information and break down to the stories can be found.
+For those communities or modules, that are part of the main *SCORE* repository,
+the break down to the stories should be done directly inside of the epic.
+
+As soon as the work on saga starts, its status is changed to "In Progress"
+and its sub-tickets get assigned to the project leads of the software modules
+or leads of the *communities* (hier link). During the development of the saga,
+we use "trunk based approach", it means, that we do not create any separate branches,
+but develop the software directly in the trunk/main using feature flag, that is marked as "experimental" at the beginning.
+
+
+
+The *Technical lead circle* regularly monitors the status of the sagas with the status
+"In Progress", resolves conflicts and updates the roadmap if necessary.
+
+As soon as the saga is implemented and fulfills to 100% our software development process,
+the decision is taken in the *Technical lead circle* whether the feature should be
+officially available and in case of the positive decision, the feature flag status
+is changed from "experimental" to "official".
