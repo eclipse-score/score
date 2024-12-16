@@ -31,9 +31,11 @@ Introduction
 
 Process Model
 -------------
+The SCORE process model is described by workflows, executed by roles and is creating work products.
+Workflow activities are supported by guidances.
 
-Role definition
-~~~~~~~~~~~~~~~
+Process Role definition
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. toctree::
    :maxdepth: 1
@@ -41,8 +43,26 @@ Role definition
 
    roles/index.rst
 
-Guidance
---------
+Workproducts
+~~~~~~~~~~~~
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   workproducts/index.rst
+
+Workflows
+~~~~~~~~~
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   workflows/index.rst
+
+Process Guidances
+-----------------
 
 The guidance for the SCORE project (e.g. templates, guidelines, checklists) can be found here:
 
