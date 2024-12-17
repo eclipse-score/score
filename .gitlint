@@ -32,11 +32,6 @@ regex=^[a-z_-]+: .+$
 # First line of the commit message body must be empty. (second line of the commit message)
 [body-first-line-empty]
 
-# Body must contain a reference to an issue
-# 'see' will act as a form of reference from commits to issues without closing them.
-[body-match-regex]
-regex=Issue-ref: (see|close|closes|closed|fix|fixes|fixed|resolve|resolves|resolved) #(\d+)
-
 #Ignores the title if it starts with Revert or Merge
 [ignore-by-title]
 regex=(^Revert |^Merge )
