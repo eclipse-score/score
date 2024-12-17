@@ -10,9 +10,39 @@
     "editor.rulers": [
         100
     ],
-
+    //
+    //
     // RST Settings
     "[restructuredtext]": {
-       "editor.tabSize": 3,
+        "editor.tabSize": 3,
     },
+    //
+    //
+    // Esbonio 0.x (Current)
+    // see https://github.com/swyddfa/esbonio/blob/0.x/docs/lsp/getting-started.rst
+    // and https://github.com/swyddfa/esbonio/blob/0.x/docs/lsp/editors/vscode/_configuration.rst
+    "esbonio.server.pythonPath": "${workspaceFolder}/.venv_docs/bin/python",
+    "esbonio.sphinx.srcDir": "${workspaceFolder}/docs",
+    "esbonio.sphinx.confDir": "${workspaceFolder}/docs",
+    "esbonio.sphinx.buildDir": "${workspaceFolder}/_build",
+    "esbonio.server.logLevel": "info",
+    // Do not auto-install. We'll use the one in the venv.
+    "esbonio.server.installBehavior": "nothing",
+    // Enable port forwarding for preview if working on remote workstation
+    "remote.autoForwardPorts": true,
+    "remote.autoForwardPortsSource": "process",
+    //
+    //
+    // Esbonio 1.x (Preview)
+    "esbonio.sphinx.pythonCommand": [
+        ".venv_docs/bin/python"
+    ],
+    "esbonio.sphinx.buildCommand": [
+        "docs",
+        "_build",
+        "--jobs",
+        "auto"
+    ],
+    // default is "error", which doesn't show anything.
+    "esbonio.logging.level": "warning"
 }

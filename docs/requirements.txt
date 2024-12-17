@@ -1,5 +1,10 @@
 --extra-index-url https://pypi.org/simple/
 
-Sphinx==8.1.3
-sphinx-needs==4.1.0
-pydata-sphinx-theme==0.16.0
+Sphinx
+sphinx-needs
+pydata-sphinx-theme
+
+# esbonio >= 1 comes bundled with the esbonio extension >= 1.
+# esbonio<1 is required for the esbonio extension <1
+# So what we need to install here is esbonio<1
+esbonio<1

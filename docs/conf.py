@@ -36,8 +36,6 @@ extensions = [
 
 templates_path = ["_templates"]
 
-suppress_warnings = ["config.cache"]
-
 # Enable numref
 numfig = True
 
