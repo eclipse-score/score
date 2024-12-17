@@ -25,7 +25,7 @@ on:
 jobs:
   docs-build:
     name: Build documentation
-    description: Build the documentation and upload it as an artifact
+    # Build the documentation and upload it as an artifact
 
     # TBD: maybe it's easier to separate `closed` into a separate workflow?
     if: ${{ (github.event_name != 'pull_request' || github.event.action != 'closed') }}
@@ -56,11 +56,10 @@ jobs:
 
   docs-deploy:
     name: Deploy documentation to GitHub Pages
-    description: |
-      Deploy the previously built documentation to GitHub Pages, possibly with a versioned URL.
-      The job will:
-      * update the versions file in the gh-pages branch.
-      * deploy the documentation to the gh-pages branch to an appropriate folder.
+    # Deploy the previously built documentation to GitHub Pages, possibly with a versioned URL.
+    # The job will:
+    # * update the versions file in the gh-pages branch.
+    # * deploy the documentation to the gh-pages branch to an appropriate folder.
 
     if: ${{ (github.event_name != 'pull_request' || github.event.action != 'closed') }}
 
@@ -135,9 +134,8 @@ jobs:
 
   cleanup:
     name: Cleanup
-    description: |
-      Remove the corresponding documentation from the gh-pages branch,
-      after a PR is closed or a branch is deleted.
+    # Remove the corresponding documentation from the gh-pages branch,
+    # after a PR is closed or a branch is deleted.
 
     if: ${{ (github.event_name == 'pull_request' && github.event.action == 'closed') ||
              github.event_name == 'delete' }}
@@ -167,11 +165,11 @@ jobs:
           rm -rf "${VERSION}"
           sed -i "/^$VERSION$/d" versions
 
-        - name: Push changes to gh-pages branch
-          uses: EndBug/add-and-commit@v9
-          with:
-            message: "Cleanup ${{ env.VERSION }}"
-            add: "."
-            branch: "gh-pages"
+      - name: Push changes to gh-pages branch
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: "Cleanup ${{ env.VERSION }}"
+          add: "."
+          branch: "gh-pages"
 
   # TBD: add weekly cleanup job? Based on `gh pr list`
