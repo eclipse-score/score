@@ -47,10 +47,7 @@ For a *PR* to be merged, in any case an approval of a committer is needed. If th
 
 *GitHub Issue* are categorized using various types. For categorizing of PRs using of labels, e.g. bug or improvement, is mandatory, see `Platform Management Plan <https://eclipse-score.github.io/score/platform_management_plan/project_management.html>`_.
 
-For all possibilites the project contains simple templates (provided by committers (:need:`Committer <RL_committer>`)).
-
-(ToDo link here to the templates overview).
-Feature request: TODO-ref`feature_request_template`
+For all possibilites the project contains simple templates (provided by committers (:need:`Committer <RL_committer>`)), in particular please use :ref:`Feature Request Template <feature_request_template>` to request a new feature or changes to the existing one.
 
 *****************************
  What is a Pull Request (PR)?

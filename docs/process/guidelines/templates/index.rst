@@ -12,18 +12,14 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _configuration_tool_guidelines:
+.. _templates:
 
 ###########
- Guidelines
+ Templates
 ###########
 
 .. toctree::
    :maxdepth: 1
    :glob:
 
-   git/index.rst
-   branch/index.rst
-   general/index.rst
-   contribution_request/index.rst
-   templates/index.rst
+   feature_request_template.rst
