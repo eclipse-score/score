@@ -11,53 +11,58 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 
-name: Documentation build
+name: Documentation
 on:
   pull_request:
-    types: [opened, reopened, synchronize]
+    types: [opened, reopened, synchronize, closed]
   push:
     branches:
       - main
+  delete:
   merge_group:
     types: [checks_requested]
+
 jobs:
   docs-build:
+    name: Build documentation
+    # Build the documentation and upload it as an artifact
+
+    # TBD: maybe it's easier to separate `closed` into a separate workflow?
+    if: ${{ (github.event_name != 'pull_request' || github.event.action != 'closed') }}
+
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4.2.2
+
       - name: Setup Bazel
         uses: bazel-contrib/setup-bazel@0.9.1
+
       - name: Build documentation
         run: |
           bazel build //docs:github-pages && cp bazel-bin/docs/github-pages.tar .
-      - name: Upload artifact for deployment
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        uses: actions/upload-artifact@v4.4.0
-        with:
-          name: github-pages
-          path: ${{ github.workspace }}/github-pages.tar
-          retention-days: 1
-          if-no-files-found: error
-      - name: Upload artifact for pull request link
+
+      - name: Upload artifact for job analysis
         if: github.event_name == 'pull_request'
-        id: upload-artifact-pr
         uses: actions/upload-artifact@v4.4.0
         with:
           name: github-pages-${{ github.sha }}
-          path: ${{ github.workspace }}/github-pages.tar
+          path: github-pages.tar
           retention-days: 1
           if-no-files-found: error
-      - name: Comment artifact URL
-        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork == false
-        run: |
-          gh pr comment ${{ github.event.pull_request.number }} \
-            --body "Documentation artifact: ${{ steps.upload-artifact-pr.outputs.artifact-url }}"
-        env:
-          GH_TOKEN: ${{ github.token }}
+
   docs-deploy:
+    name: Deploy documentation to GitHub Pages
+    # Deploy the previously built documentation to GitHub Pages, possibly with a versioned URL.
+    # The job will:
+    # * update the versions file in the gh-pages branch.
+    # * deploy the documentation to the gh-pages branch to an appropriate folder.
+
+    if: ${{ (github.event_name != 'pull_request' || github.event.action != 'closed') }}
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -65,9 +70,106 @@ jobs:
       pages: write
       id-token: write
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: docs-build
+
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4.0.5
+      - name: Determine target folder for github pages
+        # TBD: following typical conventions the main branch should be deployed
+        #      to `/latest` instead of `/`?!
+        run: |
+          if [[ ${{github.event_name}} == 'pull_request' ]]; then
+            echo "target_folder=pr-${{github.event.pull_request.number}}" >> $GITHUB_ENV
+          elif [[ ${{github.ref_name}} != 'main' ]]; then
+            echo "target_folder=${{github.ref_name}}" >> $GITHUB_ENV
+          else
+            echo "target_folder=/" >> $GITHUB_ENV
+          fi
+
+      # TBD: Maybe we should not split the build and deploy jobs, but rather have a single job?
+      - name: Download documentation artifact
+        uses: actions/download-artifact@v4.4.0
+        with:
+          name: github-pages-${{ github.sha }}
+
+      - name: Untar documentation artifact
+        run: tar -xf github-pages.tar
+
+      - name: Checkout versions file
+        if: env.target_folder != '/'
+        continue-on-error: true
+        run: |
+          git fetch origin gh-pages --depth 1
+          git checkout origin/gh-pages -- versions
+
+      - name: Add branch name to versions file
+        if: env.target_folder != '/'
+        run: |
+          # Add the target folder to the versions file, if it's not already there
+          # (-qx: quiet, exact line match)
+          if ! grep -qx "${{env.target_folder}}" versions; then
+            echo "${{env.target_folder}}" >> versions
+          fi
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: .
+          clean: false
+
+      - name: Comment artifact URL
+        run: |
+          gh pr comment ${{ github.event.pull_request.number }} \
+            --body "Documentation artifact: ${{ steps.upload-artifact-pr.outputs.artifact-url }}"
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Comment on PR with docs URL
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork == false
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{github.event.pull_request.number}}
+          body: |
+            The created documentation from the pull request is available at: [docu-html](https://eclipse-score.github.io/score/${{env.target_folder}})
+          reactions: rocket
+
+  cleanup:
+    name: Cleanup
+    # Remove the corresponding documentation from the gh-pages branch,
+    # after a PR is closed or a branch is deleted.
+
+    if: ${{ (github.event_name == 'pull_request' && github.event.action == 'closed') ||
+             github.event_name == 'delete' }}
+
+    runs-on: ubuntu-latest
+    concurrency:
+      group: cleanup-gh-pages
+      cancel-in-progress: false
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+
+      - name: Remove version
+        continue-on-error: true
+        run: |
+          if [[ ${{ github.event_name }} == "pull_request" ]]; then
+            VERSION="pr-${{ github.event.pull_request.number }}"
+          else
+            VERSION="${{ github.ref_name }}"
+          fi
+
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+          # Delete the folder and remove the version from the versions file
+          rm -rf "${VERSION}"
+          sed -i "/^$VERSION$/d" versions
+
+      - name: Push changes to gh-pages branch
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: "Cleanup ${{ env.VERSION }}"
+          add: "."
+          branch: "gh-pages"
+
+  # TBD: add weekly cleanup job? Based on `gh pr list`
