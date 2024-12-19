@@ -4,12 +4,19 @@
     "files.trimTrailingWhitespace": true,
     "editor.insertSpaces": true,
     "editor.tabCompletion": "on",
-    "editor.wordWrap": "wordWrapColumn",
-    "editor.wrappingIndent": "same",
-    "editor.wordWrapColumn": 100,
+
+    // Default for any filetype
     "editor.rulers": [
         100
     ],
+
+    // Python Settings
+    "[python]": {
+        // In python using 80 characters per line is the standard.
+        "editor.rulers": [
+            79
+        ],
+    },
 
     // RST Settings
     "[restructuredtext]": {
