@@ -46,6 +46,9 @@ There are two categories of flags, build flags and runtime feature toggles:
 
 This guidance will focus on the former.
 
+Also, do not confuse feature flags with platforms. Feature flags are independent from
+the platform. A platform is for example QNX on an ARM architecture.
+
 Example for a feature flag
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -88,92 +91,22 @@ values for a set of feature flags.
 .. code-block:: bash
     :caption: .bazelrc
 
-    build:feature_flag_values_non_default --//some_module:some_feature=False --//yet_another_module:some_other_feature=False
+    build:no_rear_doors --//rear_doors:left_door=False --//rear_doors:right_door=False
 
 .. code-block:: bash
 
     bazel build \
     --platforms=//platform:some_platform \ # TODO: To be defined with overall integration
-    --config=feature_flag_values_non_default \
+    --config=no_rear_doors \
     --extra_toolchains=//toolchains:some_compiler //some_module:some_target
 
 Note that these are mere user conveniences and combinatorial scenarios will not
 be allowed in CI testing.
 
-Bazel configuration items
-^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Bazel has two fundamental building blocks for specifying configuration:
 
-- **Build settings**: A build setting is a single piece of configuration
-  information. Configuration information can be modeled as key/value map, where
-  one build setting could assume multiple values. Build settings generally
-  affect the target application build graph (via select()). Build settings must
-  have default values and can be overwritten using **build flags**.
-- **Platforms**: A platform is a concrete definition within dimensions that can
-  vary across target environments. Platforms in Bazel are defined by
-  specifying the concrete values (constraint_value) within a varying dimension
-  (constraint_setting), similar to the key/value map. For example, the
-  fundamental dimensions for processor systems are typically defined by the CPU
-  architecture (ISA on a high-level, but could be specialized to a
-  micro architecture) and the Operating System. Platforms in Bazel are designed
-  for configuration of host/build tools, e.g. select the appropriate compiler
-  when building for x86 vs. ARM.
-
-Since this guidance is meant to address feature configuration, we will only
-focus on **Build settings**
-
-For further details on the implementation of build settings, check out the
-`Bazel documentation <https://bazel.build/extending/config#user-defined-build-settings>`_.
-
-When a user is building/testing, the configuration is set via a combination of
-information passed from the user, via command line, and the default values
-configured in the build settings. Bazel also provides convenient indirections
-that abstract a collection of flags, namely
-`--config <https://bazel.build/docs/user-manual#config>`_.
-
-Bazel transitions
-^^^^^^^^^^^^^^^^^
-
-As aforementioned, configuration of a build/test is typically set by the user
-via command-line. **Transitions** break this pattern in order to support
-multi-configuration builds/tests in one go. This is accomplished by creating an
-entry point for the build that automatically configures its graph, ignoring the
-configuration set by the user.
-
-Transitions have drawbacks though:
-
-Let's imagine a scenario where we have a test depending on an application that
-depends on a library, represented by `Test -> Application -> Library`. Let's
-also assume that our flag/configuration affects the `Application` but not the
-`Library`. If one runs both versions of the test, with the feature
-enabled/disabled, one would assume the `Library` is reused and only the
-`Application` and `Test` would have to be re-built.
-
-Unfortunately, this is not the case, with transitions the entire build tree
-would be duplicated. This happens because Bazel has a core assumption for
-correctness: Isolation between different actions/configurations, i.e. no shared
-actions. A more detailed explanation can be found
-`here <https://github.com/bazelbuild/bazel/issues/14236#issuecomment-1332896717>`_.
-
-The Bazel maintainers and community have mitigated this issue, by accomplishing
-this de-duplication via the cache (but not on the build system itself!).
-Several efforts have been done over the years which finally converging in
-`Path Mapping <https://github.com/bazelbuild/bazel/discussions/22658>`_.
-It was confirmed using a Java example, which is the language with most advanced
-support, this is behaving as desired.
-
-Path mapping for C++ is `supported <https://github.com/bazelbuild/bazel/pull/22876>`_
-since Bazel version 7.3.0. Any internal custom rules in SCORE must also support this.
-
-Besides the functional issues, transitions also have a slight user experience
-issue. Since they are applied via entry point which recursively configures it's
-tree, users must be aware that building any dependency referenced by the
-transition will lose the configuration set by the transition itself (instead,
-the configuration will be taken from the user's command).
-
-Design
-------
+Design Guidance of feature flags in SCORE
+-----------------------------------------
 
 Goals
 ^^^^^
@@ -241,16 +174,15 @@ Below, we list the four categories of feature flags and provide additional infor
 Enabling a feature
 ^^^^^^^^^^^^^^^^^^
 
-This feature flag is unique per feature in the feature tree and mentioned in the feature description at the top of the
-document.
+For each feature there is exactly one flag that enables it.
+It is mentioned in the feature description at the top of the feature documentation found in :ref:`features`.
 
 The name of the flag is defined as `<feature_name>`, where `<feature_name>` corresponds to the name of
 the feature in `snake_case`.
 
 The feature flag must be of type `bool_flag`.
 
-Feature flags of this category reside in
-`eclipse-score/score:flags`_.
+Feature flags of this category reside in `eclipse-score/score:flags`_.
 
 Selection of the implementation for an enabled feature
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -261,10 +193,11 @@ a feature flag.
 The name of the flag is defined as `<feature_name>_implementation`, where `<feature_name>` corresponds to the name of
 the feature in `snake_case`.
 
-The feature flag must be of type `string_list_flag` and shall only allow single values.
+The feature flag is a string.
+In Starlark it is represented by a `string_list_flag` which is configured to only allow a single value.
+Each value must be encoded in `snake_case`.
 
-Feature flags of this category reside in
-`eclipse-score/score:flags`_.
+Feature flags of this category reside in `eclipse-score/score:flags`_.
 
 Configuration of a feature
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -277,8 +210,7 @@ The name of the flag is defined as `<feature_name>_<configuration>` where:
 - `<feature_name>` corresponds to the name of the feature in `snake_case`
 - `<configuration>` corresponds to the name of the configuration in `snake_case`
 
-Feature flags of this category reside in
-`eclipse-score/score:flags`_.
+Feature flags of this category reside in `eclipse-score/score:flags`_.
 
 Implementation specific configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -336,30 +268,15 @@ It will not work, since `select()` cannot be combined with `visibility`.
 C++
 ^^^
 
-The selection which tests shall be executed depending on a feature values shall
-be done via preprocessor macros in the test.cpp
+.. note::
+    The preferred way is to be discussed in the score-cpp-community.
 
-The activation/deactivation of features is propagated via `local_defines`.
+Possible options are:
 
-.. code-block:: cpp
-    :caption: some_module/test.cpp
+- select for tag local_defines in Bazel rule & preprocessor
+- templated config file with constexpr flags
+- select() for tag srcs in Bazel rule to choose specific source files
 
-    #if defined(SOME_FEATURE)
-        EXPECT_CALL(...)
-    #else
-        EXPECT_CALL(...)
-
-.. code-block:: bazel
-    :caption: some_module/BUILD
-
-    cc_library(
-        name = "lib",
-        local_defines = select({
-            ":config_some_feature": ["SOME_FEATURE"],
-            "//conditions:default": [],
-        }),
-        # ...
-    )
 
 Python
 ^^^^^^
@@ -374,7 +291,7 @@ We recommend to propagate features via command line arguments. e.g.
       srcs = ["test.cpp"],
       deps = [":lib"],
       args = select({
-        ":config_some_feature": ["SOME_FEATURE"],
+        ":config_some_feature": ["--some_feature"],
         "//conditions:default": [],
       }),
     )
@@ -436,8 +353,11 @@ Unit tests
 
 A unit test shall never test more than one single feature.
 
-The selection which tests shall be executed depending on a feature values shall
-be done via preprocessor macros in the test.cpp
+.. note::
+    The preferred way is to be discussed in the score-cpp-community.
+
+The selection which tests shall be executed depending on a feature flag shall
+be done via preprocessor macros in the test.cpp.
 
 The activation/deactivation of features is propagated via `local_defines`.
 
@@ -495,13 +415,54 @@ Available feature flags can be found with bazel cqueries.
           kind('.*_flag', deps('//TODO Main target to be defined with overall integration'))
       )" --output label_kind | sort
 
-Example output
+Example output:
 
 .. code-block:: bash
 
     //some_module:some_feature
+    //some_other_module:some_feature
+
+Information for Bazel Power Users
+---------------------------------
+
+In the following sections we provide some additional background.
+This is quite technical and not required by standard users.
+
+Custom rules must be compatible with Path Mapping
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+As aforementioned, configuration of a build/test is typically set by the user
+via command-line. **Transitions** break this pattern in order to support
+multi-configuration builds/tests in one go. This is accomplished by creating an
+entry point for the build that automatically configures its graph, ignoring the
+configuration set by the user.
+
+Let's imagine a scenario where we have a test depending on an application that
+depends on a library, represented by `Test -> Application -> Library`. Let's
+also assume that our flag/configuration affects the `Application` but not the
+`Library`. If one runs both versions of the test, with the feature
+enabled/disabled, one would assume the `Library` is reused and only the
+`Application` and `Test` would have to be re-built.
+
+This deduplication is accomplished via the cache (but not on the build system itself!).
+Several efforts have been done over the years which finally converge in
+`Path Mapping <https://github.com/bazelbuild/bazel/discussions/22658>`_.
+It was confirmed using a Java example, which is the language with most advanced
+support, this is behaving as desired.
+
+Path mapping for C++ is `supported <https://github.com/bazelbuild/bazel/pull/22876>`_
+since Bazel version 7.3.0. Any internal custom rules in SCORE must also support this.
+A starting point for requirements based on the rules can be found
+`here <https://github.com/bazelbuild/bazel/discussions/22658>`_.
+Please be advised, that this may be incomplete. Please refer to Bazel documentation.
+
+Transitions have a slight user experience issue.
+Since they are applied via entry point which recursively configures it's
+tree, users must be aware that building any dependency referenced by the
+transition will lose the configuration set by the transition itself (instead,
+the configuration will be taken from the user's command).
 
 ..
   _Links used in the document:
 
-.. _eclipse-score/score:flags: <https://github.com/eclipse-score/reference_integration/tree/main/flags>
+.. _eclipse-score/score:flags: <https://github.com/eclipse-score/score/tree/main/flags>
