@@ -133,3 +133,12 @@ py_venv(
     # Until release of esbonio 1.x, we need to install it ourselves so the VS Code extension can find it.
     deps = sphinx_requirements + [requirement("esbonio")],
 )
+
+# Needed for Dash tool to check python dependency licenses.
+filegroup(
+    name = "requirements_lock",
+    srcs = [
+        "_tooling/requirements_lock.txt",
+    ],
+    visibility = ["//visibility:public"],
+)
