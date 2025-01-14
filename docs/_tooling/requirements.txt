@@ -9,8 +9,11 @@ sphinx-needs>=4.2.0
 sphinxcontrib-plantuml
 pydata-sphinx-theme
 sphinx-design
+sphinxcontrib-plantuml
 
-# esbonio >= 1 comes bundled with the esbonio extension >= 1.
-# esbonio<1 is required for the esbonio extension <1
+# Until release of esbonio 1.x, we need to install it ourselves so the VS Code esbonio-extension
+# can find it.
+# esbonio >= 1 comes bundled with the esbonio-extension >= 1.
+# esbonio<1 is required for the esbonio-extension <1
 # So what we need to install here is esbonio<1
 esbonio<1
