@@ -65,7 +65,7 @@ Software artifacts
       Features
       ^^^
       :ref:`Features <features>` are the heart of the SCORE software.
-      Understand the internal details of :ref:`Infrastructure <infrastructure_feratures>`
+      Understand the internal details of :ref:`Infrastructure <infrastructure_feature>`
       or :ref:`Integration <integration_features>` Features.
 
    .. grid-item-card::
@@ -105,6 +105,7 @@ Project structure and processes
 
       requirements/index
       features/index
+      guidance/index
       Releases <score_releases/index.rst>
       process/index
       PMP <platform_management_plan/index.rst>

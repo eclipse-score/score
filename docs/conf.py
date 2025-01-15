@@ -16,6 +16,7 @@
 # For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
+import os
 import sys
 
 # sys.path extension for local files is needed, because the conf.py file is not
@@ -34,9 +35,12 @@ release = "0.1"
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
+sys.path.insert(0, os.path.abspath("_tooling/extensions"))
 extensions = [
     "sphinx_design",
     "sphinx_needs",
+    "sphinxcontrib.plantuml",
+    "score_plantuml",
 ]
 
 exclude_patterns = [
@@ -60,6 +64,7 @@ templates_path = ["_templates"]
 
 # Enable numref
 numfig = True
+
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output

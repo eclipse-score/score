@@ -45,9 +45,11 @@ load("@rules_python//python:defs.bzl", "py_library")
 load("@rules_python//python:pip.bzl", "compile_pip_requirements")
 load("@rules_python//sphinxdocs:sphinx.bzl", "sphinx_build_binary", "sphinx_docs")
 
-# all_requirements include esbonio which we don't need most of the time.
-# Hint: the names are e.g. "@@rules_python~~pip~pip_sphinx//esbonio:pkg"
-sphinx_requirements = [name for name in all_requirements if not "esbonio" in name]
+sphinx_requirements = all_requirements + [
+    "@rules_python//python/runfiles",
+    ":plantuml_for_python",
+    "//docs/_tooling/sphinx_extensions",
+]
 
 sphinx_docs(
     name = "docs",
@@ -57,6 +59,10 @@ sphinx_docs(
         "**/*.rst",
         "**/*.html",
         "**/*.css",
+        "**/*.puml",
+        # Include the docs tooling itself
+        # Note: we don't use py_library here to make it as close as possible to docs:incremental.
+        "**/*.py",
     ]),
     config = ":conf.py",
     extra_opts = [
@@ -69,24 +75,14 @@ sphinx_docs(
     tags = [
         "manual",
     ],
+    tools = [
+        ":plantuml",
+    ],
 )
 
 sphinx_build_binary(
     name = "sphinx_build",
-    deps = sphinx_requirements + [
-        ":extensions",
-        "//docs/_tooling/sphinx_extensions",
-    ],
-)
-
-py_library(
-    name = "extensions",
-    srcs =
-        glob([
-            "_tooling/conf_extras/*.py",
-            "_tooling/extensions/*.py",
-        ]),
-    imports = ["."],
+    deps = sphinx_requirements,
 )
 
 # In order to update the requirements, change the `requirements.txt` file and run:
@@ -124,10 +120,7 @@ pkg_tar(
 py_binary(
     name = "incremental",
     srcs = ["_tooling/incremental.py"],
-    deps = sphinx_requirements + [
-        ":extensions",
-        "//docs/_tooling/sphinx_extensions",
-    ],
+    deps = sphinx_requirements,
 )
 
 # Virtual python environment for working on the documentation (esbonio).
@@ -135,6 +128,28 @@ py_binary(
 py_venv(
     name = "ide_support",
     venv_name = ".venv_docs",
-    # Until release of esbonio 1.x, we need to install it ourselves so the VS Code extension can find it.
-    deps = sphinx_requirements + [requirement("esbonio")],
+    deps = sphinx_requirements,
+)
+
+java_binary(
+    name = "plantuml",
+    jvm_flags = ["-Djava.awt.headless=true"],
+    main_class = "net.sourceforge.plantuml.Run",
+    runtime_deps = [
+        "@plantuml//jar",
+    ],
+)
+
+# This makes it possible for py_venv to depend on plantuml.
+# Note: py_venv can only depend on py_library.
+# TODO: Investigate if this can be simplified with a custom bzl rule
+#       which replaces / wraps py_venv.
+#       see https://github.com/aspect-build/rules_py/blob/main/py/private/py_venv.bzl
+#       see https://github.com/bazelbuild/rules_python/blob/main/sphinxdocs/private/sphinx.bzl
+py_library(
+    name = "plantuml_for_python",
+    srcs = ["_tooling/dummy.py"],
+    data = [
+        ":plantuml",
+    ],
 )

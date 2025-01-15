@@ -12,7 +12,7 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _infrastructure_feratures:
+.. _infrastructure_feature:
 
 ################
  Infrastructure
@@ -36,5 +36,5 @@ that are used for development.
    :titlesonly:
    :maxdepth: 1
 
-   bazel_registry.rst
-   config_as_code.rst
+   bazel_registry
+   config_as_code
