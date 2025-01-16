@@ -1,3 +1,15 @@
+# *******************************************************************************
+# Copyright (c) 2025 Contributors to the Eclipse Foundation
+#
+# See the NOTICE file(s) distributed with this work for additional
+# information regarding copyright ownership.
+#
+# This program and the accompanying materials are made available under the
+# terms of the Apache License Version 2.0 which is available at
+# https://www.apache.org/licenses/LICENSE-2.0
+#
+# SPDX-License-Identifier: Apache-2.0
+# *******************************************************************************
 module(
     name = "score_pytest",
     version = "0.1",
@@ -32,23 +44,3 @@ pip.parse(
     requirements_lock = "//:requirements_lock.txt",
 )
 use_repo(pip, "pytest_pip")
-
-###############################################################################
-#
-# Buildifier dependency
-# Provides formatting and linting of Bazel files.
-#
-###############################################################################
-bazel_dep(name = "buildifier_prebuilt", version = "6.4.0")
-
-###############################################################################
-#
-# Generic linting and formatting rules
-#
-###############################################################################
-bazel_dep(name = "aspect_rules_lint", version = "1.0.0-rc9")
-git_override(
-    module_name = "aspect_rules_lint",
-    commit = "b5dfbc12754d6698c36d0aaad46183e730dac85c",
-    remote = "https://github.com/ltekieli/rules_lint.git",
-)

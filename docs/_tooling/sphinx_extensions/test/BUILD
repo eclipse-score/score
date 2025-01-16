@@ -18,7 +18,6 @@ py_pytest(
     srcs = [
         "check_options_test.py",
     ],
-    tags = ["python"],
     visibility = ["//visibility:public"],
     deps = [
         "//docs/_tooling/sphinx_extensions",

@@ -64,6 +64,22 @@ point your IDE to the .venv_docs virtual environment.
 
 Re-run //docs:ide_support if you update Sphinx extensions or other dependencies.
 
+### Testing
+
+With the following command it is possible to run all available tests:
+
+```
+$ bazel test //...
+``` 
+
+However it's also doable to just run specific tests. For example all python tests:
+
+```
+$ bazel query 'kind(py.*, tests(//...))' | xargs bazel tests
+```
+More examples in the of bazel documentation [here](https://bazel.build/query/guide#miscellaneous-uses)
+
+
 ### Notes
 #### Output Locations
 * Bazel builds output to bazel-bin/docs/docs/_build/html.

@@ -18,7 +18,6 @@ py_pytest(
     srcs = [
         "test_traceability.py",
     ],
-    tags = ["python"],
     visibility = ["//visibility:public"],
     deps = [
         "//docs/_tooling/sphinx_extensions",
