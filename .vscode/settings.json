@@ -54,5 +54,15 @@
         "docs"
     ],
     // default is "error", which doesn't show anything.
-    "esbonio.logging.level": "warning"
+    "esbonio.logging.level": "warning",
+    "python.testing.pytestArgs": [
+        ".",
+        "--ignore-glob=bazel-*/*",
+        "--ignore-glob=.venv_docs/*",
+        "--ignore-glob=_build/*",
+
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.envFile": "${workspaceFolder}/.vscode/python_score_global_settings",
+    "python.testing.pytestEnabled": true,
 }

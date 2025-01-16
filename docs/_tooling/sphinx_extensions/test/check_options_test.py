@@ -15,7 +15,9 @@ from unittest.mock import ANY, MagicMock
 
 import pytest
 from sphinx.util.logging import SphinxLoggerAdapter
-from sphinx_extensions.check_options import check_options
+from docs._tooling.sphinx_extensions.sphinx_extensions.check_options import (
+    check_options,
+)
 from sphinx_needs.data import NeedsInfoType
 
 

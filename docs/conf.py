@@ -22,7 +22,7 @@ import sys
 # executed, but imported by Sphinx
 sys.path.insert(0, ".")
 from _tooling.conf_extras import layouts, metamodel
-from sphinx_extensions import checks
+from docs._tooling.sphinx_extensions.sphinx_extensions import checks
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information

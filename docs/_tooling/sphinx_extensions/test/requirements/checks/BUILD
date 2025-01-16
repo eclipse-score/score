@@ -10,7 +10,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
-load("@dependix_pytest//:defs.bzl", "py_pytest")
+load("@score_pytest//:defs.bzl", "py_pytest")
 
 py_pytest(
     name = "test_checks",
@@ -18,7 +18,9 @@ py_pytest(
     srcs = [
         "test_traceability.py",
     ],
+    tags = ["python"],
+    visibility = ["//visibility:public"],
     deps = [
-        "//tools/sphinx_extensions",
+        "//docs/_tooling/sphinx_extensions",
     ],
 )

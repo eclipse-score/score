@@ -12,10 +12,10 @@
 # *******************************************************************************
 from sphinx_needs.api.configuration import add_warning
 from sphinx.application import Sphinx
-from sphinx_extensions.requirements.checks.id import (
+from docs._tooling.sphinx_extensions.sphinx_extensions.requirements.checks.id import (
     check_id_title_part,
 )
-from sphinx_extensions.requirements.checks.traceability import (
+from docs._tooling.sphinx_extensions.sphinx_extensions.requirements.checks.traceability import (
     check_g_reqid_traceability,
     check_linkage_parent,
     check_linkage_safety,
@@ -23,7 +23,9 @@ from sphinx_extensions.requirements.checks.traceability import (
     get_all_needs,
 )
 
-from sphinx_extensions.check_options import check_options
+from docs._tooling.sphinx_extensions.sphinx_extensions.check_options import (
+    check_options,
+)
 
 
 def add_warnings(app: Sphinx):

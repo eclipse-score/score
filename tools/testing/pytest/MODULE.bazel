@@ -1,0 +1,54 @@
+module(
+    name = "score_pytest",
+    version = "0.1",
+    compatibility_level = 0,
+)
+
+###############################################################################
+#
+# Python version
+#
+###############################################################################
+bazel_dep(name = "rules_python", version = "1.0.0")
+
+PYTHON_VERSION = "3.12"
+
+python = use_extension("@rules_python//python/extensions:python.bzl", "python")
+python.toolchain(
+    is_default = True,
+    python_version = PYTHON_VERSION,
+)
+use_repo(python)
+
+###############################################################################
+#
+# PIP dependencies
+#
+###############################################################################
+pip = use_extension("@rules_python//python/extensions:pip.bzl", "pip")
+pip.parse(
+    hub_name = "pytest_pip",
+    python_version = PYTHON_VERSION,
+    requirements_lock = "//:requirements_lock.txt",
+)
+use_repo(pip, "pytest_pip")
+
+###############################################################################
+#
+# Buildifier dependency
+# Provides formatting and linting of Bazel files.
+#
+###############################################################################
+bazel_dep(name = "buildifier_prebuilt", version = "6.4.0")
+
+###############################################################################
+#
+# Generic linting and formatting rules
+#
+###############################################################################
+bazel_dep(name = "aspect_rules_lint", version = "1.0.0-rc9")
+git_override(
+    module_name = "aspect_rules_lint",
+    commit = "b5dfbc12754d6698c36d0aaad46183e730dac85c",
+    remote = "https://github.com/ltekieli/rules_lint.git",
+)

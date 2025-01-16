@@ -13,8 +13,12 @@
 import re
 
 from sphinx.util.logging import SphinxLoggerAdapter
-from sphinx_extensions.model import need_type_info as production_need_type_info
-from sphinx_extensions.utils.util import log_custom_warning
+from docs._tooling.sphinx_extensions.sphinx_extensions.model import (
+    need_type_info as production_need_type_info,
+)
+from docs._tooling.sphinx_extensions.sphinx_extensions.utils.util import (
+    log_custom_warning,
+)
 from sphinx_needs.data import NeedsInfoType
 
 

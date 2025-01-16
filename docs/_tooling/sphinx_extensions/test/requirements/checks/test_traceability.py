@@ -14,7 +14,7 @@ from unittest.mock import ANY, MagicMock, patch
 
 import pytest
 from sphinx.util.logging import SphinxLoggerAdapter
-from sphinx_extensions.requirements.checks.traceability import (
+from docs._tooling.sphinx_extensions.sphinx_extensions.requirements.checks.traceability import (
     check_g_reqid_traceability,
     check_linkage_parent,
     check_linkage_safety,
@@ -161,7 +161,7 @@ class TestTraceability:
         local_all_needs[need_2["id"]] = need_2
 
         with patch(
-            "sphinx_extensions.requirements.checks.traceability.all_needs",
+            "docs._tooling.sphinx_extensions.sphinx_extensions.requirements.checks.traceability.all_needs",
             local_all_needs,
         ):
             # Test get_all_needs and check_linkage_status_check with patched all_needs
@@ -208,7 +208,7 @@ class TestTraceability:
         local_all_needs[need_2["id"]] = need_2
 
         with patch(
-            "sphinx_extensions.requirements.checks.traceability.all_needs",
+            "docs._tooling.sphinx_extensions.sphinx_extensions.requirements.checks.traceability.all_needs",
             local_all_needs,
         ):
             # Test get_all_needs and check_linkage_status_check with patched all_needs
@@ -260,7 +260,7 @@ class TestTraceability:
         local_all_needs[need_2["id"]] = need_2
 
         with patch(
-            "sphinx_extensions.requirements.checks.traceability.all_needs",
+            "docs._tooling.sphinx_extensions.sphinx_extensions.requirements.checks.traceability.all_needs",
             local_all_needs,
         ):
             # Test get_all_needs and check_linkage_status_check with patched all_needs
@@ -307,7 +307,7 @@ class TestTraceability:
         local_all_needs[need_2["id"]] = need_2
 
         with patch(
-            "sphinx_extensions.requirements.checks.traceability.all_needs",
+            "docs._tooling.sphinx_extensions.sphinx_extensions.requirements.checks.traceability.all_needs",
             local_all_needs,
         ):
             # Test get_all_needs and check_linkage_status_check with patched all_needs
@@ -360,7 +360,7 @@ class TestTraceability:
         local_all_needs[need_2["id"]] = need_2
 
         with patch(
-            "sphinx_extensions.requirements.checks.traceability.all_needs",
+            "docs._tooling.sphinx_extensions.sphinx_extensions.requirements.checks.traceability.all_needs",
             local_all_needs,
         ):
             # Test get_all_needs and check_linkage_status_check with patched all_needs
@@ -413,7 +413,7 @@ class TestTraceability:
         local_all_needs[need_2["id"]] = need_2
 
         with patch(
-            "sphinx_extensions.requirements.checks.traceability.all_needs",
+            "docs._tooling.sphinx_extensions.sphinx_extensions.requirements.checks.traceability.all_needs",
             local_all_needs,
         ):
             # Test get_all_needs and check_linkage_status_check with patched all_needs
@@ -473,7 +473,7 @@ class TestTraceability:
         local_all_needs[need_3["id"]] = need_3
 
         with patch(
-            "sphinx_extensions.requirements.checks.traceability.all_needs",
+            "docs._tooling.sphinx_extensions.sphinx_extensions.requirements.checks.traceability.all_needs",
             local_all_needs,
         ):
             # Test get_all_needs and check_linkage_status_check with patched all_needs
