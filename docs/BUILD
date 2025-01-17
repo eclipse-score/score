@@ -37,11 +37,10 @@
 #
 # For user-facing documentation, refer to `/README.md`.
 
-load("@aspect_rules_py//py:defs.bzl", "py_venv")
+load("@aspect_rules_py//py:defs.bzl", "py_binary", "py_library", "py_venv")
 load("@pip_sphinx//:requirements.bzl", "all_requirements", "requirement")
 load("@rules_pkg//pkg:mappings.bzl", "pkg_files")
 load("@rules_pkg//pkg:tar.bzl", "pkg_tar")
-load("@aspect_rules_py//py:defs.bzl", "py_library", "py_binary")
 load("@rules_python//python:pip.bzl", "compile_pip_requirements")
 load("@rules_python//sphinxdocs:sphinx.bzl", "sphinx_build_binary", "sphinx_docs")
 
