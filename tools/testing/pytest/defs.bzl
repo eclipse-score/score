@@ -12,6 +12,6 @@
 # *******************************************************************************
 """Score public Bazel interface"""
 
-load("@score_pytest//bazel:py_pytest.bzl", local_py_pytest = "py_pytest")
+load("//tools/testing/pytest/bazel:py_pytest.bzl", "py_pytest")
 
-py_pytest = local_py_pytest
+score_py_pytest = py_pytest

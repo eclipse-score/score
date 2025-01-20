@@ -66,18 +66,25 @@ Re-run //docs:ide_support if you update Sphinx extensions or other dependencies.
 
 ### Testing
 
-With the following command it is possible to run all available tests:
+Use the following command to run all available tests:
 
 ```
 $ bazel test //...
 ``` 
 
-However it's also doable to just run specific tests. For example all python tests:
+However it's also  possible to run specific tests or set of tests. 
 
+To run all tests of a certain language use the command below, here an example for python.
 ```
 $ bazel query 'kind(py.*, tests(//...))' | xargs bazel tests
 ```
-More examples in the of bazel documentation [here](https://bazel.build/query/guide#miscellaneous-uses)
+
+Grouping of tests via tags is also supported: 
+```
+$ bazel test --test_tag_filters=docs-build
+```
+You can add as many tags as you like, as long as a test has at least one of the tags it will be executed.
+*Note: In order for a test to be picked up by this it has to be marked with the tag. Read more [here](/tools/testing/pytest/README.md)
 
 
 ### Notes

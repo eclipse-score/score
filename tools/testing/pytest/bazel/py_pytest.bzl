@@ -12,14 +12,14 @@
 # *******************************************************************************
 """Bazel interface for running pytest"""
 
-load("@pytest_pip//:requirements.bzl", "requirement")
+load("@pip_sphinx//:requirements.bzl", "all_requirements")
 load("@rules_python//python:defs.bzl", "py_test")
 
 def py_pytest(name, srcs, args = [], data = [], deps = [], plugins = [], pytest_ini = None, **kwargs):
-    pytest_bootstrap = Label("@score_pytest//:main.py")
+    pytest_bootstrap = Label("//tools/testing/pytest:main.py")
 
     if not pytest_ini:
-        pytest_ini = Label("@score_pytest//:pytest.ini")
+        pytest_ini = Label("//tools/testing/pytest:pytest.ini")
 
     plugins = ["-p %s" % plugin for plugin in plugins]
 
@@ -37,9 +37,7 @@ def py_pytest(name, srcs, args = [], data = [], deps = [], plugins = [], pytest_
                ] +
                plugins +
                ["$(location %s)" % x for x in srcs],
-        deps = [
-            requirement("pytest"),
-        ] + deps,
+        deps = all_requirements + deps,
         data = [
             pytest_ini,
         ] + data,

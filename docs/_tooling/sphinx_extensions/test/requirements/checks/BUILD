@@ -10,9 +10,9 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
-load("@score_pytest//:defs.bzl", "py_pytest")
+load("//tools/testing/pytest:defs.bzl", "score_py_pytest")
 
-py_pytest(
+score_py_pytest(
     name = "test_checks",
     size = "small",
     srcs = [

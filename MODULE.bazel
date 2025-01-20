@@ -71,8 +71,3 @@ bazel_dep(name = "buildifier_prebuilt", version = "7.3.1")
 #
 ###############################################################################
 bazel_dep(name = "aspect_rules_lint", version = "1.0.3")
-bazel_dep(name = "score_pytest", version = "0.1")
-local_path_override(
-    module_name = "score_pytest",
-    path = "tools/testing/pytest",
-)
