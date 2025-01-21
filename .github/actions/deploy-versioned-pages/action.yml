@@ -17,6 +17,7 @@ description: Will push the documentation to the gh-pages branch, possibly with a
 # problems with overwriting existing files, not deleting deleted files, etc.
 # We'll address these when we transform this action into a truly reusable independent action.
 # But for now, let's get it working!
+
 inputs:
   source_folder:
     description: "Path to the html files to deploy in current working directory"
@@ -27,10 +28,12 @@ inputs:
   create_comment:
     description: "Create a comment on the PR with the URL to the documentation" # in case of PR
     default: "true"
+
 outputs:
   target_folder:
     description: "The target folder for the documentation"
     value: ${{ steps.calc.outputs.target_folder }}
+
 runs:
   using: "composite"
   steps:

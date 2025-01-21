@@ -10,19 +10,8 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
+"""Score public Bazel interface"""
 
-filegroup(
-    name = "templates",
-    srcs = [
-        "templates.ini",
-    ],
-    visibility = ["//visibility:public"],
-)
+load("//tools/testing/pytest/bazel:py_pytest.bzl", "py_pytest")
 
-filegroup(
-    name = "config",
-    srcs = [
-        "config.json",
-    ],
-    visibility = ["//visibility:public"],
-)
+score_py_pytest = py_pytest

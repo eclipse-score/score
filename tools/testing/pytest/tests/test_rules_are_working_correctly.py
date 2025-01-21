@@ -10,19 +10,5 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
-
-filegroup(
-    name = "templates",
-    srcs = [
-        "templates.ini",
-    ],
-    visibility = ["//visibility:public"],
-)
-
-filegroup(
-    name = "config",
-    srcs = [
-        "config.json",
-    ],
-    visibility = ["//visibility:public"],
-)
+def test_local_fixture_has_correct_value(fixture42):
+    assert 42 == fixture42

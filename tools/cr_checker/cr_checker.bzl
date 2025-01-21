@@ -18,6 +18,7 @@ def copyright_checker(
         srcs,
         visibility,
         template = "//tools/cr_checker/resources:templates",
+        config = "//tools/cr_checker/resources:config",
         extensions = [],
         offset = 0,
         debug = False,
@@ -34,6 +35,8 @@ def copyright_checker(
                            targets can use this rule.
         template (str, optional): Path to the template resource used for validation.
                                   Defaults to "//tools/cr_checker/resources:templates".
+        config (str, optional): Path to the config resource used for project variables.
+                                Defaults to "//tools/cr_checker/resources:config".
         extensions (list, optional): A list of file extensions to filter the source files.
                                      Defaults to an empty list, meaning all files are checked.
         offset (int, optional): The line offset for applying checks or modifications.
@@ -53,7 +56,10 @@ def copyright_checker(
         "{}.fix".format(name),
     ]
 
-    args = ["-t $(location {})".format(template)]
+    args = [
+        "-t $(location {})".format(template),
+        "-c $(location {})".format(config),
+    ]
     data = []
     if len(extensions):
         args.append("-e {exts}".format(
@@ -85,6 +91,7 @@ def copyright_checker(
             args = args,
             data = srcs + [
                 template,
+                config,
             ],
             visibility = visibility,
         )

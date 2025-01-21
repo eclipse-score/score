@@ -11,7 +11,10 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 from sphinx.util.logging import SphinxLoggerAdapter
-from sphinx_extensions.utils.util import check_option, log_custom_warning
+from docs._tooling.sphinx_extensions.sphinx_extensions.utils.util import (
+    check_option,
+    log_custom_warning,
+)
 from sphinx_needs.data import NeedsInfoType
 
 all_needs = {}

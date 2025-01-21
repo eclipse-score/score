@@ -10,15 +10,16 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
-load("@dependix_pytest//:defs.bzl", "py_pytest")
+load("//tools/testing/pytest:defs.bzl", "score_py_pytest")
 
-py_pytest(
+score_py_pytest(
     name = "test",
     size = "small",
     srcs = [
         "check_options_test.py",
     ],
+    visibility = ["//visibility:public"],
     deps = [
-        "//tools/sphinx_extensions",
+        "//docs/_tooling/sphinx_extensions",
     ],
 )

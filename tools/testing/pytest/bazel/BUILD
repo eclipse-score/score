@@ -10,19 +10,6 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
+package(default_visibility = ["//visibility:public"])
 
-filegroup(
-    name = "templates",
-    srcs = [
-        "templates.ini",
-    ],
-    visibility = ["//visibility:public"],
-)
-
-filegroup(
-    name = "config",
-    srcs = [
-        "config.json",
-    ],
-    visibility = ["//visibility:public"],
-)
+exports_files(["py_pytest.bzl"])

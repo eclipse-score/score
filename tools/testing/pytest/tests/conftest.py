@@ -10,19 +10,9 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
+import pytest
 
-filegroup(
-    name = "templates",
-    srcs = [
-        "templates.ini",
-    ],
-    visibility = ["//visibility:public"],
-)
 
-filegroup(
-    name = "config",
-    srcs = [
-        "config.json",
-    ],
-    visibility = ["//visibility:public"],
-)
+@pytest.fixture()
+def fixture42():
+    yield 42
