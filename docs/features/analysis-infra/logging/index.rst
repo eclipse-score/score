@@ -12,9 +12,11 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Logging
-#######
+.. Logging
+.. #######
 
 .. toctree::
-   console-output/index.rst
-   mw-log-api/index.rst
+   :titlesonly:
+   :maxdepth: 1
+
+   ./mw-fr_logging.rst
