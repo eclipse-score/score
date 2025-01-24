@@ -46,7 +46,6 @@ load("@rules_python//sphinxdocs:sphinx.bzl", "sphinx_build_binary", "sphinx_docs
 load("//tools/testing/pytest:defs.bzl", "score_py_pytest")
 load("//tools/feature_flags:feature_flags.bzl", "define_feature_flags")
 
-
 define_feature_flags(name = "filter_tags")
 
 sphinx_requirements = all_requirements + [
@@ -71,18 +70,18 @@ sphinx_docs(
     config = ":conf.py",
     extra_opts = [
         "--keep-going",
-        "-Dfilter_tags_file_path=$(location :filter_tags)" 
+        "-Dfilter_tags_file_path=$(location :filter_tags)",
     ],
     formats = [
         "html",
     ],
     sphinx = ":sphinx_build",
-    tools = [":filter_tags"],
     tags = [
         "manual",
     ],
     tools = [
         ":plantuml",
+        ":filter_tags"
     ],
 )
 
@@ -90,7 +89,7 @@ sphinx_build_binary(
     name = "sphinx_build",
     deps = sphinx_requirements + [
         "//docs/_tooling/sphinx_extensions",
-        "//docs/_tooling/sphinx_extensions/sphinx_extensions/build:modularity"
+        "//docs/_tooling/sphinx_extensions/sphinx_extensions/build:modularity",
     ],
 )
 
@@ -132,7 +131,7 @@ py_binary(
     data = [":flags_file"],
     deps = sphinx_requirements + [
         "//docs/_tooling/sphinx_extensions",
-        "//docs/_tooling/sphinx_extensions/sphinx_extensions/build:modularity"
+        "//docs/_tooling/sphinx_extensions/sphinx_extensions/build:modularity",
     ],
 )
 

@@ -1,5 +1,5 @@
 # tools/feature_flags/feature_flags.bzl
-load("@bazel_skylib//rules:common_settings.bzl", "bool_flag", "BuildSettingInfo")
+load("@bazel_skylib//rules:common_settings.bzl", "BuildSettingInfo", "bool_flag")
 
 OutputPathInfo = provider(fields = ["path"])
 
@@ -18,10 +18,10 @@ def _feature_flag_translator_impl(ctx):
                 tags.extend(FEATURE_TAG_MAPPING[flag_name])
             else:
                 tags.append(flag_name)
-    
+
     content = ",".join(tags)
     ctx.actions.write(output = output, content = content)
-    
+
     return [DefaultInfo(files = depset([output]))]
 
 feature_flag_translator = rule(
@@ -43,7 +43,7 @@ def define_feature_flags(name):
         name = "second-feature",
         build_setting_default = False,
     )
-    
+
     feature_flag_translator(
         name = name,
         flags = {":feature1": "True", ":second-feature": "True"},
