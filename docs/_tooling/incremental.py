@@ -21,7 +21,7 @@ workspace = os.getenv("BUILD_WORKSPACE_DIRECTORY")
 if workspace:
     os.chdir(workspace)
 
-
+flags_file = "docs/feature_flags.txt"
 sphinx_main(
     [
         "docs",  # src dir
@@ -30,6 +30,7 @@ sphinx_main(
         "--jobs",
         "auto",
         "--conf-dir",
-        "docs",
+        "docs", 
+        "-D", f"filter_tags_file_path={flags_file}"
     ]
 )
