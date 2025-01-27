@@ -10,14 +10,9 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
-import os
-import sys
 
-from score_metamodel import CheckLogger, NeedsInfoType
 from score_metamodel.checks.id_contains_feature import id_contains_feature
 from score_metamodel.tests import fake_check_logger, need, verify_log_string
-
-sys.path.insert(0, os.path.abspath("../.."))
 
 
 def test_feature_ok():

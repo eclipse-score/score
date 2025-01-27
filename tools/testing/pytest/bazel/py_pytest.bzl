@@ -21,6 +21,9 @@ def py_pytest(name, srcs, args = [], data = [], deps = [], plugins = [], pytest_
     if not pytest_ini:
         pytest_ini = Label("//tools/testing/pytest:pytest.ini")
 
+    if not srcs:
+        fail("No source files provided for %s! (Is your glob empty?)" % name)
+
     plugins = ["-p %s" % plugin for plugin in plugins]
 
     py_test(
