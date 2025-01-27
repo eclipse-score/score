@@ -33,7 +33,7 @@ def discover_checks():
     They will self-register with the decorators below.
     """
 
-    package_name = ".checks"
+    package_name = ".checks" # load ./checks/*.py
     package = importlib.import_module(package_name, __package__)
     for _, module_name, _ in pkgutil.iter_modules(package.__path__):
         logger.debug(f"Importing check module: {module_name}")
@@ -94,7 +94,6 @@ def setup(app: Sphinx):
     app.connect("build-finished", _run_checks)
 
     return {
-        # TODO: what is the version used for?
         "version": "0.1",
         "parallel_read_safe": True,
         "parallel_write_safe": True,

@@ -14,6 +14,15 @@ See [../README](../README.md) for more information on why we use extensions.
 * Graph-Based checks: These warnings require a graph of all other needs to be
   checked.
 
+## Creating new checks
+
+In order to create a new check, you need to create a file in the `checks`
+directory. It will be picked up automatically.
+Then you need to write a local or graph based check function.
+You need to use @local_check or @graph_check decorators to mark your function
+accordingly.
+Have a look at a simple example like `id_contains_feature`.
+
 ## Usage
 
 Add score_metamodel to your extensions in `conf.py`:

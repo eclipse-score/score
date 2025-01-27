@@ -154,7 +154,9 @@ py_library(
     ],
 )
 
-# Dedicated metamodel target only for pytest
+# Dedicated metamodel target only for pytest.
+# It's required to define the imports for bazel pytest, so that python/pytest can
+# import "from score_metamodel" without issues.
 py_library(
     name = "score_metamodel",
     srcs = glob(["_tooling/extensions/score_metamodel/**/*.py"]),

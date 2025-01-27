@@ -27,7 +27,7 @@ class CheckLogger:
         if get("docname") and get("doctype") and get("lineno"):
             # Note: passing the location as a string allows us to use readable relative paths,
             # passing as a tuple results in absolute paths to ~/.cache/.../bazel-out/..
-            return f"{need['docname']}.{need['doctype']}:{need['lineno']}"
+            return f"{need['docname']}{need['doctype']}:{need['lineno']}"
         return None
 
     def warning_for_option(self, need: NeedsInfoType, option: str, msg: str):
