@@ -19,6 +19,8 @@
 import os
 import sys
 
+from _tooling.conf_extras import layouts
+
 # sys.path extension for local files is needed, because the conf.py file is not
 # executed, but imported by Sphinx
 sys.path.insert(0, ".")
@@ -61,7 +63,6 @@ exclude_patterns = [
     "modules/cb2needs",
     "modules/index_bazel.rst",
     "platform_integration_tests",
-    "_tooling/sphinx_extensions/test",
 ]
 
 templates_path = ["_templates"]
@@ -114,7 +115,3 @@ html_context = {
 needs_layouts = layouts.needs_layouts
 needs_global_options = {"collapse": True}
 needs_global_options = needs_global_options | layouts.needs_global_options
-
-
-def setup(app: Sphinx):
-    checks.add_warnings(app)
