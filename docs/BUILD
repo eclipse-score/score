@@ -159,6 +159,7 @@ py_library(
     name = "score_metamodel",
     srcs = glob(["_tooling/extensions/score_metamodel/**/*.py"]),
     imports = ["_tooling/extensions"],
+    visibility = ["//visibility:public"],
 )
 
 score_py_pytest(

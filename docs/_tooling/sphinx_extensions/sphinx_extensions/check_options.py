@@ -13,20 +13,29 @@
 import re
 
 from sphinx.util.logging import SphinxLoggerAdapter
-from docs._tooling.sphinx_extensions.sphinx_extensions.model import (
-    need_type_info as production_need_type_info,
+from sphinx_needs.data import NeedsInfoType
+
+from docs._tooling.extensions.score_metamodel.metamodel import (
+    needs_types as production_needs_types,
 )
 from docs._tooling.sphinx_extensions.sphinx_extensions.utils.util import (
     log_custom_warning,
 )
-from sphinx_needs.data import NeedsInfoType
+
+
+def get_need_type(needs_types: list[dict], directive: str):
+    for need_type in needs_types:
+        assert isinstance(need_type, dict), need_type
+        if need_type["directive"] == directive:
+            return need_type
+    raise ValueError(f"Need type {directive} not found in needs_types")
 
 
 # req-traceability: TOOL_REQ__toolchain_sphinx_needs_build__options
 def check_options(
     need: NeedsInfoType,
     log: SphinxLoggerAdapter,
-    need_type_info=production_need_type_info,
+    needs_types=production_needs_types,
 ) -> bool:
     """
     Checking if all described and wanted attributes are present and their values follow the described pattern.
@@ -34,7 +43,7 @@ def check_options(
     Returns 'True' if an option is not present or a value violates its pattern
     """
 
-    required_options = need_type_info.get(need["type"], dict()).get("req_opt", None)
+    required_options = get_need_type(needs_types, need["type"]).get("req_opt", None)
 
     if required_options is None:
         msg = f'Need: {need["id"]} with type {need["type"]}: no type info defined for semantic check.'

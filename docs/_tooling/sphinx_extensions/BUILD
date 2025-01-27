@@ -18,7 +18,10 @@ load("@rules_python//sphinxdocs:sphinx.bzl", "sphinx_build_binary", "sphinx_docs
 py_library(
     name = "sphinx_extensions",
     srcs = glob(["sphinx_extensions/**/*.py"]),
-    imports = ["."],
+    imports = [
+        ".",
+        "../../..",  # enable imports from 'docs.<...>'
+    ],
     visibility = [
         "//visibility:public",
     ],
@@ -26,6 +29,7 @@ py_library(
         requirement("sphinx"),
         requirement("sphinx-needs"),
         requirement("sphinxcontrib-plantuml"),
+        "//docs:score_metamodel",
     ],
 )
 

@@ -24,6 +24,7 @@ import sys
 sys.path.insert(0, ".")
 
 from _tooling.conf_extras import layouts
+from sphinx.application import Sphinx
 
 from docs._tooling.sphinx_extensions.sphinx_extensions import checks
 
