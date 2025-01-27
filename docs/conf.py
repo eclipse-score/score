@@ -22,7 +22,9 @@ import sys
 # sys.path extension for local files is needed, because the conf.py file is not
 # executed, but imported by Sphinx
 sys.path.insert(0, ".")
-from _tooling.conf_extras import layouts, metamodel
+
+from _tooling.conf_extras import layouts
+
 from docs._tooling.sphinx_extensions.sphinx_extensions import checks
 
 # -- Project information -----------------------------------------------------
@@ -41,6 +43,7 @@ extensions = [
     "sphinx_needs",
     "sphinxcontrib.plantuml",
     "score_plantuml",
+    "score_metamodel",
 ]
 
 exclude_patterns = [
@@ -69,7 +72,7 @@ numfig = True
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = "pydata_sphinx_theme"  #  "alabaster"
+html_theme = "pydata_sphinx_theme"  # "alabaster"
 html_static_path = ["_tooling/assets"]
 html_css_files = [
     "css/score.css",
@@ -88,7 +91,8 @@ html_theme_options = {
             "type": "fontawesome",
         }
     ],
-    "use_edit_page_button": True,  # https://pydata-sphinx-theme.readthedocs.io/en/stable/user_guide/source-buttons.html#add-an-edit-button
+    # https://pydata-sphinx-theme.readthedocs.io/en/stable/user_guide/source-buttons.html#add-an-edit-button
+    "use_edit_page_button": True,
     "collapse_navigation": True,
     "logo": {
         "text": "Eclipse SCORE Docs",
@@ -105,19 +109,10 @@ html_context = {
 
 # -- sphinx-needs configuration --------------------------------------------
 
-needs_types = metamodel.needs_types
-needs_extra_options = metamodel.needs_extra_options
-needs_extra_links = metamodel.needs_extra_links
-
 # Setting the needs layouts
 needs_layouts = layouts.needs_layouts
 needs_global_options = {"collapse": True}
 needs_global_options = needs_global_options | layouts.needs_global_options
-
-
-# sphinx_needs configuration
-needs_id_required = True
-needs_id_regex = "^[A-Za-z0-9_-]{6,}"
 
 
 def setup(app: Sphinx):
