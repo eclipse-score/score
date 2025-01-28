@@ -30,7 +30,8 @@ sphinx_main(
         "--jobs",
         "auto",
         "--conf-dir",
-        "docs", 
-        "-D", f"filter_tags_file_path={flags_file}"
+        "docs",
+        "-D",
+        f"filter_tags_file_path={flags_file}",
     ]
 )

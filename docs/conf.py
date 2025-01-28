@@ -45,7 +45,7 @@ extensions = [
     "sphinxcontrib.plantuml",
     "score_plantuml",
     "score_metamodel",
-    "modularity"
+    "modularity",
 ]
 
 exclude_patterns = [

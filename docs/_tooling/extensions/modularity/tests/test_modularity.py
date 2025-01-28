@@ -1,8 +1,57 @@
+# *******************************************************************************
+# Copyright (c) 2025 Contributors to the Eclipse Foundation
+#
+# See the NOTICE file(s) distributed with this work for additional
+# information regarding copyright ownership.
+#
+# This program and the accompanying materials are made available under the
+# terms of the Apache License Version 2.0 which is available at
+# https://www.apache.org/licenses/LICENSE-2.0
+#
+# SPDX-License-Identifier: Apache-2.0
+# *******************************************************************************
 import pytest
 import json
+from types import SimpleNamespace
 from pathlib import Path
 from sphinx_needs.data import SphinxNeedsData
 from sphinx.testing.util import SphinxTestApp
+from docs._tooling.extensions.modularity import read_filter_tags
+
+
+#                    ╭──────────────────────────────────────────────────────────────────────────────╮
+#                    │                                  Unit Tests                                  │
+#                    ╰──────────────────────────────────────────────────────────────────────────────╯
+def test_read_filter_tags(sphinx_base_dir, caplog):
+    feature_flags_dir = sphinx_base_dir / "feature_flags"
+    feature_flags_dir.mkdir(exist_ok=True)
+    tag_str = "some-ip, feature1, feature2"
+    (feature_flags_dir / "filter_tags.txt").write_text(tag_str)
+
+    # filter_tags_file_path happy path
+    fake_app_ok = SimpleNamespace()
+    fake_app_ok.config = SimpleNamespace()
+    fake_app_ok.config.filter_tags_file_path = str(
+        feature_flags_dir / "filter_tags.txt"
+    )
+
+    # When filter_tags_file_path is not set
+    fake_app_path_missing = SimpleNamespace()
+    fake_app_path_missing.config = SimpleNamespace()
+
+    # When filter_tags_file_path is empty
+    fake_app_path_empty = SimpleNamespace()
+    fake_app_path_empty.config = SimpleNamespace()
+    fake_app_path_empty.config.filter_tags_file_path = ""
+
+    assert ["some-ip", "feature1", "feature2"] == read_filter_tags(fake_app_ok)
+    with pytest.raises(AssertionError):
+        read_filter_tags(fake_app_path_missing)
+
+    with pytest.raises(FileNotFoundError) as exc_info:
+        read_filter_tags(fake_app_path_empty)
+        assert "could not read file: " in caplog.text
+        assert "Error: " in caplog.text
 
 
 #                    ╭──────────────────────────────────────────────────────────────────────────────╮
@@ -99,6 +148,9 @@ def basic_rst_file():
    :tags: feature1
 
    More content, this one is different
+
+.. needtable:: Testtable
+  :tags: test-feat, feature1
 """
 
 

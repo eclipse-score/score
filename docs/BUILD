@@ -43,8 +43,8 @@ load("@rules_pkg//pkg:mappings.bzl", "pkg_files")
 load("@rules_pkg//pkg:tar.bzl", "pkg_tar")
 load("@rules_python//python:pip.bzl", "compile_pip_requirements")
 load("@rules_python//sphinxdocs:sphinx.bzl", "sphinx_build_binary", "sphinx_docs")
-load("//tools/testing/pytest:defs.bzl", "score_py_pytest")
 load("//tools/feature_flags:feature_flags.bzl", "define_feature_flags")
+load("//tools/testing/pytest:defs.bzl", "score_py_pytest")
 
 define_feature_flags(name = "filter_tags")
 
@@ -80,17 +80,14 @@ sphinx_docs(
         "manual",
     ],
     tools = [
+        ":filter_tags",
         ":plantuml",
-        ":filter_tags"
     ],
 )
 
 sphinx_build_binary(
     name = "sphinx_build",
-    deps = sphinx_requirements + [
-        "//docs/_tooling/sphinx_extensions",
-        "//docs/_tooling/sphinx_extensions/sphinx_extensions/build:modularity",
-    ],
+    deps = sphinx_requirements,
 )
 
 # In order to update the requirements, change the `requirements.txt` file and run:
@@ -129,10 +126,7 @@ py_binary(
     name = "incremental",
     srcs = ["_tooling/incremental.py"],
     data = [":flags_file"],
-    deps = sphinx_requirements + [
-        "//docs/_tooling/sphinx_extensions",
-        "//docs/_tooling/sphinx_extensions/sphinx_extensions/build:modularity",
-    ],
+    deps = sphinx_requirements,
 )
 
 # Virtual python environment for working on the documentation (esbonio).
@@ -182,6 +176,25 @@ score_py_pytest(
     srcs = glob(["_tooling/extensions/score_metamodel/tests/**/*.py"]),
     visibility = ["//visibility:public"],
     deps = [":score_metamodel"],
+)
+
+py_library(
+    name = "modularity",
+    srcs = glob(["_tooling/extensions/modularity/**/*.py"]),
+    imports = ["_tooling/extensions"],
+    visibility = ["//visibility:public"],
+)
+
+score_py_pytest(
+    name = "modularity_test",
+    size = "small",
+    srcs = glob(["_tooling/extensions/modularity/tests/**/*.py"]),
+    args = [
+        "-s",
+        "-v",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [":modularity"],
 )
 
 filegroup(
