@@ -24,7 +24,6 @@ def fake_check_logger():
     LOGGER.warning = MagicMock()
     return CheckLogger(LOGGER)
 
-
 def need(**kwargs):
     """Convinience function to create a NeedsInfoType object with some defaults."""
 

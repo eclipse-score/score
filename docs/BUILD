@@ -48,7 +48,6 @@ load("//tools/testing/pytest:defs.bzl", "score_py_pytest")
 sphinx_requirements = all_requirements + [
     "@rules_python//python/runfiles",
     ":plantuml_for_python",
-    "//docs/_tooling/sphinx_extensions",
 ]
 
 sphinx_docs(
@@ -125,6 +124,8 @@ py_binary(
 
 # Virtual python environment for working on the documentation (esbonio).
 # incl. python support when working on conf.py and sphinx extensions.
+# Note: all py files are included directly and not via a py_library.
+#       This enables changing scripts without rebuilding the venv.
 py_venv(
     name = "ide_support",
     venv_name = ".venv_docs",
@@ -152,22 +153,4 @@ py_library(
     data = [
         ":plantuml",
     ],
-)
-
-# Dedicated metamodel target only for pytest.
-# It's required to define the imports for bazel pytest, so that python/pytest can
-# import "from score_metamodel" without issues.
-py_library(
-    name = "score_metamodel",
-    srcs = glob(["_tooling/extensions/score_metamodel/**/*.py"]),
-    imports = ["_tooling/extensions"],
-    visibility = ["//visibility:public"],
-)
-
-score_py_pytest(
-    name = "score_metamodel_test",
-    size = "small",
-    srcs = glob(["_tooling/extensions/score_metamodel/tests/**/*.py"]),
-    visibility = ["//visibility:public"],
-    deps = [":score_metamodel"],
 )
