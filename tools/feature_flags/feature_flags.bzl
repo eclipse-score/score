@@ -50,7 +50,13 @@ def _feature_flag_translator_impl(ctx):
     print("Feature flags content: %s" % content)
     ctx.actions.write(output = output, content = content)
 
-    return [DefaultInfo(files = depset([output]))]
+    # Return both DefaultInfo and RunfilesInfo
+    return [
+        DefaultInfo(
+            files = depset([output]),
+            runfiles = ctx.runfiles(files = [output]),
+        ),
+    ]
 
 feature_flag_translator = rule(
     implementation = _feature_flag_translator_impl,

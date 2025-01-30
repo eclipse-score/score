@@ -179,26 +179,27 @@ score_py_pytest(
 )
 
 py_library(
-    name = "modularity",
-    srcs = glob(["_tooling/extensions/modularity/**/*.py"]),
+    name = "score_feature_flag_handling",
+    srcs = glob(["_tooling/extensions/score_feature_flag_handling/**/*.py"]),
     imports = ["_tooling/extensions"],
     visibility = ["//visibility:public"],
 )
 
 score_py_pytest(
-    name = "modularity_test",
+    name = "score_feature_flag_handling_test",
     size = "small",
-    srcs = glob(["_tooling/extensions/modularity/tests/**/*.py"]),
+    srcs = glob(["_tooling/extensions/score_feature_flag_handling/tests/**/*.py"]),
     args = [
         "-s",
         "-v",
     ],
     visibility = ["//visibility:public"],
-    deps = [":modularity"],
+    deps = [":score_feature_flag_handling"],
 )
 
 filegroup(
     name = "flags_file",
     srcs = [":filter_tags"],
     output_group = "flags_file",
+    visibility = ["//visibility:public"],
 )

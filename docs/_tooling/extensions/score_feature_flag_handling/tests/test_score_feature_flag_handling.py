@@ -16,7 +16,7 @@ from types import SimpleNamespace
 from pathlib import Path
 from sphinx_needs.data import SphinxNeedsData
 from sphinx.testing.util import SphinxTestApp
-from docs._tooling.extensions.modularity import read_filter_tags
+from docs._tooling.extensions.score_feature_flag_handling import read_filter_tags
 
 
 #                    ╭──────────────────────────────────────────────────────────────────────────────╮
@@ -45,6 +45,7 @@ def test_read_filter_tags(sphinx_base_dir, caplog):
     fake_app_path_empty.config.filter_tags_file_path = ""
 
     assert ["some-ip", "feature1", "feature2"] == read_filter_tags(fake_app_ok)
+
     with pytest.raises(AssertionError):
         read_filter_tags(fake_app_path_missing)
 
@@ -109,7 +110,7 @@ def basic_conf():
     return """ 
 extensions = [
     "sphinx_needs",
-    "modularity",
+    "score_feature_flag_handling",
 ]
 needs_types = [
     dict(directive="test_req", title="Testing Requirement", prefix="TREQ_", color="#BFD8D2", style="node"),
@@ -175,6 +176,7 @@ def test_modularity_hide_ok(
         assert "TOOL_REQ_1" in html
         assert "TEST_REQ_20" in html
         # making sure we do not see this in the final HTML
+        # (neither as an element, nor as a link)
         assert "TEST_REQ_1" not in html
     finally:
         app.cleanup()
@@ -215,7 +217,7 @@ def test_modularity_hide_no_filters(
         needs_data = {x["id"]: x for x in Needs_Data.get_needs_view().values()}
         html = (app.outdir / "index.html").read_text()
 
-        # The outcome should be the same as when we found no matches, just making sure it doesn't error and nothing happens
+        # The outcome should be the same as when we found no matches, just ensuring it doesn't error and nothing was changed
         assert "TOOL_REQ_1" in needs_data
         assert "TEST_REQ_1" in needs_data
         assert "TEST_REQ_20" in needs_data

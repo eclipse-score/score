@@ -8,7 +8,7 @@ A Sphinx extension that enables conditional documentation rendering based on fea
 The extension consists of two main components:
 
 1. `feature_flags.bzl`: A Bazel translation layer that converts commands into tags
-2. `modularity`: A Sphinx extension that filters documentation based on feature flags
+2. `score_feature_flag_handling`: A Sphinx extension that filters documentation based on feature flags
 
 The list of tags to filter is built in 'reverse' from the features enabled. In an empty configuration all tags will be added to the 'disable' list. By adding a feature you remove the corresponding tags from the list, therefore enabling requirements with those tags.
 
@@ -36,6 +36,7 @@ The `feature_flags.bzl` file takes care of the following things:
 - Default values for flags
 - Temporary file generation for flag storage
 
+
 Example configuration:
 
 Mapping of features to tags is defined as follows:
@@ -47,7 +48,6 @@ FEATURE_TAG_MAPPING = {
 }
 ```
 
-The default values are defined like such: 
 ```bzl
 def define_feature_flags(name):
     bool_flag(
@@ -65,12 +65,12 @@ def define_feature_flags(name):
     )
 ```
 As can be seen here, each flag needs to be registered as well as have a default value defined. 
-After adding new flags it's possible to call them via the `--//docs:<flag-name>=<value>` command
+After adding new flags they can be added to the build command like so: `--//docs:<flag-name>=<value>` 
 
-If a feature is provided it's corresponding tags are removed from the 'disable' list. Therefore requirements with these tags are now **enabled**.  
-E.g. `bazel build //docs:docs --//docs:feature1=true` -> all requirements with the tags `some-ip` and `tag2` are now enabled and will be rendered in the final HTML output.
+If a feature flag is enabled requirements with corresponding tags are now **enabled**.
 
-### Sphinx Extension (modularity)
+
+### Sphinx Extension (score_feature_flag_handling)
 
 The extension processes the temporary flag file and disables documentation sections tagged with disabled features.
 
@@ -121,7 +121,7 @@ This means that one can still see all the requirements there and also if searchi
 The extension uses a sphinx-needs built-in option called `hide`. If a need has the `hide=True` it will not be shown in the final HTML.  
 It also gathers a list of all 'hidden' requirements as it then in a second iteration removes these from any of the possible links.
 
-### Special cases
+#### Special cases
 
 Needpie, Needtable etc. are special cases as these are not requirements. There are two wrappers inside `filter_overwrite.py` that add the general functionality of hiding all requirements that have `hide==True`. Therefore enabling normal use, without special restrictions needed to be adhered to.
 

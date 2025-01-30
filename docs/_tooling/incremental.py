@@ -1,5 +1,5 @@
 # *******************************************************************************
-# Copyright (c) 2024 Contributors to the Eclipse Foundation
+# Copyright (c) 2025 Contributors to the Eclipse Foundation
 #
 # See the NOTICE file(s) distributed with this work for additional
 # information regarding copyright ownership.
@@ -10,18 +10,21 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
-
 import os
-
 from sphinx.cmd.build import main as sphinx_main
+from python.runfiles import runfiles
 
-# sphinx will print relative paths to the current directory.
-# Change to the workspace root so that the paths are readable and clickable.
+r = runfiles.Create()
 workspace = os.getenv("BUILD_WORKSPACE_DIRECTORY")
 if workspace:
     os.chdir(workspace)
 
-flags_file = "docs/feature_flags.txt"
+# Look for the file in runfiles
+flags_file = r.Rlocation("_main/docs/feature_flags.txt")
+
+if not os.path.exists(flags_file):
+    raise RuntimeError("Could not find feature_flags.txt")
+
 sphinx_main(
     [
         "docs",  # src dir

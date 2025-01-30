@@ -33,11 +33,10 @@ def read_filter_tags(app: Sphinx) -> list:
 
     Returns:
        - List of tags e.g. ['some-ip','another-tag']
-       OR
-       - Empty list if there is an exception when reading the file.
 
     Errors:
-        If 'filter_tags_file_path' can't be found in the config
+        - If 'filter_tags_file_path' can't be found in the config
+        - If something goes wrong when reading the file
     """
     # asserting our worldview
     assert hasattr(
@@ -67,30 +66,44 @@ def hide_needs(app: Sphinx, env: BuildEnvironment) -> None:
         env: The current running BuildEnvironment, this will be supplied automatically
     """
     filter_tags = read_filter_tags(app)
+
+    # Early return if no work needs to be done
+    if not filter_tags:
+        logger.debug("filter_tags was empty, no work to be done.")
+        return
     need_data = SphinxNeedsData(env)
     needs = need_data.get_needs_mutable()
     extra_links = [x["option"] for x in NeedsSphinxConfig(env.config).extra_links]
     rm_needs = []
     for need_id, need in needs.items():
-        if need["tags"] and all(tag in filter_tags for tag in need["tags"]):
+        if need["hide"]:
+            rm_needs.append(need_id)
+        if (
+            need["tags"]
+            and all(tag in filter_tags for tag in need["tags"])
+            and not need["hide"]
+        ):
             rm_needs.append(need_id)
             need["hide"] = True
 
-    logger.debug(f"found {len(rm_needs)} requirements to be disabled.")
-    logger.debug(f"requirements found: {rm_needs}")
+    needs_to_disable = set(rm_needs)
+
+    logger.debug(f"found {len(needs_to_disable)} requirements to be disabled.")
+    logger.debug(f"requirements found: {needs_to_disable}")
 
     # Remove references
     for need_id in needs:
         for opt in extra_links:
-            needs[need_id][opt] = [x for x in needs[need_id][opt] if x not in rm_needs]
+            needs[need_id][opt] = [
+                x for x in needs[need_id][opt] if x not in needs_to_disable
+            ]
             needs[need_id][opt + "_back"] = [
-                x for x in needs[need_id][opt + "_back"] if x not in rm_needs
+                x for x in needs[need_id][opt + "_back"] if x not in needs_to_disable
             ]
 
 
 def setup(app):
-    logger.debug("modularity extension loaded")
-    app.add_config_value("filter_tags", [], "env")
+    logger.debug("score_feature_flag_handling extension loaded")
     app.add_config_value("filter_tags_file_path", None, "env")
     app.connect("env-updated", hide_needs)
 
