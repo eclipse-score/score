@@ -10,8 +10,13 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
-from sphinx_needs.api.configuration import add_warning
 from sphinx.application import Sphinx
+from sphinx_needs.api.configuration import add_warning
+
+from docs._tooling.sphinx_extensions.sphinx_extensions.check_options import (
+    check_extra_options,
+    check_options,
+)
 from docs._tooling.sphinx_extensions.sphinx_extensions.requirements.checks.id import (
     check_id_title_part,
 )
@@ -21,10 +26,6 @@ from docs._tooling.sphinx_extensions.sphinx_extensions.requirements.checks.trace
     check_linkage_safety,
     check_linkage_status,
     get_all_needs,
-)
-
-from docs._tooling.sphinx_extensions.sphinx_extensions.check_options import (
-    check_options,
 )
 
 
@@ -40,5 +41,6 @@ def add_warnings(app: Sphinx):
         app, "G_Req_Traceability_Check_Linkage_Status_Check", check_linkage_status
     )
     add_warning(app, "G_Options", check_options)
+    add_warning(app, "G_Extra_Options", check_extra_options)
     add_warning(app, "G_Req_Traceability", check_g_reqid_traceability)
     add_warning(app, "G_Req_Id_Title", check_id_title_part)
