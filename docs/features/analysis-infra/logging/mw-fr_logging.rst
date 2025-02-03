@@ -68,6 +68,8 @@ Logging has to support the following features:
   - Filtering by log levels for components and application level
   - Out of scope "time" (tooling topic)
 - message loss detection
+  - optional functionality for logging. Important for tracing.
+  - would become mandatory in case verification is done via logging feature (not recommended)
 - Component specific log level activation ???
 
 Log Sources
