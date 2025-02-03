@@ -60,7 +60,7 @@ Functionality
 
 Logging has to support the following features:
 - Timestamping
-- Log/serverity levels
+- Log severity levels
 - Log priorisation in case of ressource conflicts
 - logging of early startup envents
 - log filtering
