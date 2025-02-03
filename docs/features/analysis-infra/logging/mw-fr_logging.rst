@@ -145,7 +145,7 @@ Safety Impact
 License Impact
 ==============
 
-- not kwown
+- not known
 
 How to Teach This
 =================
