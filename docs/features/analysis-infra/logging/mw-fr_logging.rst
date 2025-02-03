@@ -114,7 +114,7 @@ Context
 - Supported operating system: QNX, Linux (encapsulation via OSAL)
 - Supported programming languages: C++, Rust, Python (e.g. for tests)
 
-Ressource consumtion
+Resource consumption
 --------------------
 
 - Storage
