@@ -27,7 +27,7 @@ Feature flag
 
 To activate this feature, use the following feature flag:
 
-``experimental_Logging``
+``experimental_logging``
 
 Abstract
 ========
@@ -60,12 +60,17 @@ Functionality
 
 Logging has to support the following features:
 - Timestamping
-- Log/serverity levels
+- Log severity levels
 - Log priorisation in case of ressource conflicts
-- logging of early startup envents
+- logging of early startup events
 - log filtering
+  - Support application and context identifier like in DLT
+  - Filtering by log levels for components and application level
+  - Out of scope "time" (tooling topic)
 - message loss detection
-- Component specific log level activation ???
+  - optional functionality for logging. Important for tracing.
+  - would become mandatory in case verification is done via logging feature (not recommended)
+- Context specific log level activation at runtime
 
 Log Sources
 -----------
@@ -109,7 +114,7 @@ Context
 - Supported operating system: QNX, Linux (encapsulation via OSAL)
 - Supported programming languages: C++, Rust, Python (e.g. for tests)
 
-Ressource consumtion
+Resource consumption
 --------------------
 
 - Storage
@@ -140,7 +145,7 @@ Safety Impact
 License Impact
 ==============
 
-- not kwown
+- not known
 
 How to Teach This
 =================
