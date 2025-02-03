@@ -70,7 +70,7 @@ Logging has to support the following features:
 - message loss detection
   - optional functionality for logging. Important for tracing.
   - would become mandatory in case verification is done via logging feature (not recommended)
-- Component specific log level activation ???
+- Context specific log level activation at runtime
 
 Log Sources
 -----------
