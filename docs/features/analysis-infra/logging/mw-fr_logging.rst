@@ -64,6 +64,9 @@ Logging has to support the following features:
 - Log priorisation in case of ressource conflicts
 - logging of early startup envents
 - log filtering
+  - Support application and context identifier like in DLT
+  - Filtering by log levels for components and application level
+  - Out of scope "time" (tooling topic)
 - message loss detection
 - Component specific log level activation ???
 
