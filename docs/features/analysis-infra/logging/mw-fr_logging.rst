@@ -62,7 +62,7 @@ Logging has to support the following features:
 - Timestamping
 - Log severity levels
 - Log priorisation in case of ressource conflicts
-- logging of early startup envents
+- logging of early startup events
 - log filtering
   - Support application and context identifier like in DLT
   - Filtering by log levels for components and application level
