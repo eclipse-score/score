@@ -27,7 +27,7 @@ Feature flag
 
 To activate this feature, use the following feature flag:
 
-``experimental_Logging``
+``experimental_logging``
 
 Abstract
 ========
