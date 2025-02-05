@@ -14,19 +14,19 @@ In addition, the process is going to move to a separate repository. But we'll ig
 
 ## Use Cases / Requirements
 1) Build only score
-   * process requirements, feature requirements, guidance, etc
-   * no links to other repositories
+   1) process requirements, feature requirements, guidance, etc
+   2) no links to other repositories
 2) Build module + score
-   * Used by each module individually
-   * Unidirectional links from module to score are sufficient
-   * With metrics for feature-requirements coverage
-   * score website itself shall remain unchanged (no links to modules)
+   1) Used by each module individually
+   2) Unidirectional links from module to score are sufficient
+   3) With metrics for feature-requirements coverage
+   4) score website itself shall remain unchanged (no links to modules)
 3) Reference integration
-   * "Full system build"
-   * with multiple modules and score repository
-   * All links bidirectional
-   * Metrics for feature-requirements coverage
-   * score and module websites shall remain unchanged (no links to other repositories)
+   1) "Full system build"
+   2) with multiple modules and score repository
+   3) All links bidirectional
+   4) Metrics for feature-requirements coverage
+   5) score and module websites shall remain unchanged (e.g. no links to reference integration)
 
 ### Further requirements:
 * links must remain correct and working over time, at least for all released versions.
@@ -49,8 +49,8 @@ In addition, the process is going to move to a separate repository. But we'll ig
 ## Alternatives
 
 These are the identified alternatives. We'll dive into each one in detail.
-1) weblinks
-2) needservice
+1) needservice
+2) weblinks
 3) needimport
 4) Needs-external-needs
 5) Copying
@@ -92,9 +92,10 @@ As is already evident in the requirements, we need multiple versions of the scor
 Pro:
 * Bidirectional links are possible
 * Good performance (no need to build all repositories at once)
+
 Con:
 * needs.json and the entire website needs to be hosted in multiple versions.
-* bidirectional links affect the "core score" repository, which is not desired.
+* bidirectional links affect the score-website, which is not desired (Req 2.4 + 3.5).
 
 Within the bounds of the requirements, this is a **no-go**.
 
