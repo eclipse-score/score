@@ -26,8 +26,8 @@ todo: need to add guidance and standard links
    :status: draft
    :tags: safety_management
    :responsible: RL_safety_manager
-   :approver: RL_technical_lead
-   :supporter: RL_quality_manager
+   :approved_by: RL_technical_lead
+   :supported_by: RL_quality_manager
    :input: WP_PLATFORM_MGMT, WP_ISSUE_TRACK_SYSTEM
    :output: WP_MODULE_SAFETY_PLAN, WP_PLATFORM_SAFETY_PLAN
 
@@ -40,8 +40,8 @@ todo: need to add guidance and standard links
    :status: draft
    :tags: safety_management
    :responsible: RL_safety_manager
-   :approver: RL_technical_lead
-   :supporter: RL_quality_manager
+   :approved_by: RL_technical_lead
+   :supported_by: RL_quality_manager
    :input: WP_MODULE_SAFETY_PLAN, WP_PLATFORM_SAFETY_PLAN, WP_ISSUE_TRACK_SYSTEM
    :output: WP_MODULE_SAFETY_CASE, WP_PLATFORM_SAFETY_CASE
 
@@ -55,8 +55,8 @@ todo: need to add guidance and standard links
    :status: draft
    :tags: safety_management
    :responsible: RL_external_assessor
-   :approver: RL_safety_manager
-   :supporter: RL_technical_lead
+   :approved_by: RL_safety_manager
+   :supported_by: RL_technical_lead
    :input: WP_MODULE_SAFETY_PLAN, WP_PLATFORM_SAFETY_PLAN, WP_MODULE_SAFETY_CASE, WP_PLATFORM_SAFETY_CASE
    :output: WP_ASSESSMENT_REPORT
 
@@ -69,8 +69,8 @@ todo: need to add guidance and standard links
    :status: draft
    :tags: safety_management
    :responsible: RL_external_assessor
-   :approver: RL_safety_manager
-   :supporter: RL_technical_lead
+   :approved_by: RL_safety_manager
+   :supported_by: RL_technical_lead
    :input: WP_MODULE_SAFETY_PLAN, WP_PLATFORM_SAFETY_PLAN, WP_MODULE_SAFETY_CASE, WP_PLATFORM_SAFETY_CASE, WP_ASSESSMENT_REPORT
    :output: WP_CMR_REPORTS
 
@@ -85,8 +85,8 @@ todo: need to add guidance and standard links
    :status: draft
    :tags: safety_management
    :responsible: RL_safety_manager
-   :approver: RL_technical_lead
-   :supporter: RL_quality_manager
+   :approved_by: RL_technical_lead
+   :supported_by: RL_quality_manager
    :input: WP_MODULE_SAFETY_PLAN, WP_PLATFORM_SAFETY_PLAN, WP_MODULE_SAFETY_CASE, WP_PLATFORM_SAFETY_CASE, WP_ASSESSMENT_REPORT, WP_CMR_REPORTS
    :output: WP_ISSUE_TRACK_SYSTEM, WP_MODULE_SW_RELEASE_NOTE, WP_PLATFORM_SW_RELEASE_NOTE
 

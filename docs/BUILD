@@ -123,6 +123,13 @@ py_binary(
     deps = sphinx_requirements,
 )
 
+#sphinx-autobuild, used for no IDE live preview
+py_binary(
+    name = "live_preview",
+    srcs = ["_tooling/live_preview.py"],
+    deps = sphinx_requirements,
+)
+
 # Virtual python environment for working on the documentation (esbonio).
 # incl. python support when working on conf.py and sphinx extensions.
 py_venv(

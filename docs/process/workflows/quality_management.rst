@@ -26,8 +26,8 @@ todo: need to add guidance and standard links
    :status: draft
    :tags: quality_management
    :responsible: RL_committer
-   :approver: RL_quality_manager
-   :supporter: RL_technical_lead
+   :approved_by: RL_quality_manager
+   :supported_by: RL_technical_lead
    :input: WP_POLICIES, WP_ISSUE_TRACK_SYSTEM
    :output: WP_QMS
 
@@ -38,8 +38,8 @@ todo: need to add guidance and standard links
    :status: draft
    :tags: quality_management
    :responsible: RL_committer
-   :approver: RL_quality_manager
-   :supporter: RL_technical_lead
+   :approved_by: RL_quality_manager
+   :supported_by: RL_technical_lead
    :input: WP_QMS
    :output: WP_PLATFORM_SW_RELEASE_NOTE
 
@@ -50,8 +50,8 @@ todo: need to add guidance and standard links
    :status: draft
    :tags: quality_management
    :responsible: RL_quality_manager
-   :approver: RL_technical_lead
-   :supporter: RL_safety_manager, RL_security_manager
+   :approved_by: RL_technical_lead
+   :supported_by: RL_safety_manager, RL_security_manager
    :input: WP_QMS, WP_PROCESS_DEFINITION
    :output: WP_PROCESS_IMPR_REPORT
 
@@ -62,8 +62,8 @@ todo: need to add guidance and standard links
    :status: draft
    :tags: quality_management
    :responsible: RL_committer
-   :approver: RL_quality_manager
-   :supporter: RL_technical_lead
+   :approved_by: RL_quality_manager
+   :supported_by: RL_technical_lead
    :input: WP_QMS, WP_FEAT_REQUEST, WP_PROCESS_DEFINITION
    :output: WP_QMS_REPORT
 
@@ -74,8 +74,8 @@ todo: need to add guidance and standard links
    :status: draft
    :tags: quality_management
    :responsible: RL_committer
-   :approver: RL_quality_manager
-   :supporter: RL_technical_lead
+   :approved_by: RL_quality_manager
+   :supported_by: RL_technical_lead
    :input: WP_QMS, WP_PROCESS_DEFINITION
    :output: WP_PLATFORM_SW_VERIFICATION_REPORT
 
@@ -86,8 +86,8 @@ todo: need to add guidance and standard links
    :status: draft
    :tags: quality_management
    :responsible: RL_committer
-   :approver: RL_quality_manager
-   :supporter: RL_technical_lead
+   :approved_by: RL_quality_manager
+   :supported_by: RL_technical_lead
    :input: WP_QMS, WP_POLICIES, WP_PROCESS_DEFINITION
    :output: WP_TRAINING_PATH
 
@@ -98,8 +98,8 @@ todo: need to add guidance and standard links
    :status: draft
    :tags: quality_management
    :responsible: RL_committer
-   :approver: RL_quality_manager
-   :supporter: RL_technical_lead
+   :approved_by: RL_quality_manager
+   :supported_by: RL_technical_lead
    :input: WP_QMS, WP_PLATFORM_SW_RELEASE_NOTE, WP_MODULE_SW_RELEASE_NOTE, WP_PROCESS_IMPR_REPORT, WP_QMS_REPORT, WP_PLATFORM_SW_VERIFICATION_REPORT, WP_MODULE_SW_VERIFICATION_REPORT, WP_TRAINING_PATH
    :output: WP_ISSUE_TRACK_SYSTEM
 

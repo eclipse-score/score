@@ -27,7 +27,21 @@ This guidline shall help the contributor (:need:`Contributor <RL_contributor>`) 
 
 For simple contributions, like fixing bugs or improvements, just creating a *PR* is sufficient.
 
-For more complex contributions, like adding a new feature, where it's unfitting to just open a PR, open an *GitHub Issue* to discuss with the community before starting work on it, would be the preferred way.
+For more complex contributions, like adding a new feature:
+
+* open a *GitHub Issue* (:need:`GD_GUIDL__Issue_Guideline`)
+* create a PR
+* add the PR to that *GitHub Issue*
+
+For a feature request, use the template provided below and add it to the appropriate section under docs/features.
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   templates/feature_request_template.rst
+
+If possible, the reviewer should use the suggestion functionality to suggest a change that the author of the pull request can click to commit if they agree with your suggestion.
 
 You can also join our `Slack <https://sdvworkinggroup.slack.com/archives/C083Z4VL90B>`_ for real-time discussions.
 

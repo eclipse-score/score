@@ -26,8 +26,8 @@ todo: need to add guidance and standard links
    :status: draft
    :tags: process
    :responsible: RL_process_community
-   :approver: RL_project_lead
-   :supporter: RL_external_assessor
+   :approved_by: RL_project_lead
+   :supported_by: RL_external_assessor
    :input: WP_POLICIES, WP_ISSUE_TRACK_SYSTEM
    :output: WP_PROCESS_PLAN
 
@@ -39,8 +39,8 @@ todo: need to add guidance and standard links
    :status: draft
    :tags: process
    :responsible: RL_process_community
-   :approver: RL_technical_lead
-   :supporter: RL_external_assessor
+   :approved_by: RL_technical_lead
+   :supported_by: RL_external_assessor
    :input: WP_PROCESS_PLAN, WP_ISSUE_TRACK_SYSTEM
    :output: WP_PROCESS_DEFINITION
 
@@ -51,8 +51,8 @@ todo: need to add guidance and standard links
    :status: draft
    :tags: process
    :responsible: RL_process_community
-   :approver: RL_technical_lead
-   :supporter: RL_external_assessor
+   :approved_by: RL_technical_lead
+   :supported_by: RL_external_assessor
    :input: WP_PROCESS_DEFINITION
    :output: WP_PROCESS_IMPR_REPORT
 

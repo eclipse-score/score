@@ -26,8 +26,8 @@ todo: need to add guidance and standard links
    :status: valid
    :tags: architecture_design
    :responsible: RL_contributor
-   :approver: RL_committer
-   :supporter: RL_safety_manager, RL_security_manager
+   :approved_by: RL_committer
+   :supported_by: RL_safety_manager, RL_security_manager
    :input: WP_FEATURE_REQ, WP_ISSUE_TRACK_SYSTEM
    :output: WP_FEATURE_ARCHITECTURE
 
@@ -38,8 +38,8 @@ todo: need to add guidance and standard links
    :status: invalid
    :tags: architecture_design
    :responsible: RL_contributor
-   :approver: RL_committer
-   :supporter: RL_safety_manager, RL_security_manager
+   :approved_by: RL_committer
+   :supported_by: RL_safety_manager, RL_security_manager
    :input: WP_FEATURE_ARCHITECTURE, WP_SW_COMPONENT_REQ, WP_ISSUE_TRACK_SYSTEM
    :output: WP_SW_COMPONENT_ARCHITECTURE
 
@@ -50,8 +50,8 @@ todo: need to add guidance and standard links
    :status: valid
    :tags: architecture_design
    :responsible: RL_contributor
-   :approver: RL_committer
-   :supporter: RL_safety_manager, RL_security_manager
+   :approved_by: RL_committer
+   :supported_by: RL_safety_manager, RL_security_manager
    :input: WP_FEATURE_ARCHITECTURE, WP_SW_COMPONENT_ARCHITECTURE
    :output: WP_ISSUE_TRACK_SYSTEM, WP_SW_ARCH_VERIFICATION
 

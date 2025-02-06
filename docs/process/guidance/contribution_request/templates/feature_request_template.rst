@@ -28,11 +28,13 @@ Feature Request Template
 [Your Feature Name]
 ===================
 
-.. document:: [Your Feature Name]
-   :id: DOC__Your_Feature_Name
-   :status: draft
-   :safety: ASIL_D
-   :tags: contribution_request, feature_request
+.. code-block:: rst
+
+   .. document:: [Your Feature Name]
+      :id: DOC__Your_Feature_Name
+      :status: Your_Status
+      :safety: Your_ASIL
+      :tags: contribution_request, feature_request
 
 .. attention::
     The above directive must be updated according to your Feature.

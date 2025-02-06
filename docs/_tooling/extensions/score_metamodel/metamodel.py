@@ -12,255 +12,241 @@
 # *******************************************************************************
 
 needs_types = [
+    ##############################################################
+    #  Process Metamodel
+    ##############################################################
     {
-        "directive": "workproduct",  # = work_product
-        "title": "Workproduct",  # = Work Product
+        "directive": "workproduct",
+        "title": "Workproduct",
         "prefix": "WP__",
-        "color": "#DDDD00",
-        "style": "artifact",
         "req_opt": [
-            ("id", "^WP_.*$"),
-            ("status", "^(draft|valid|invalid|volatile)$"),
-            ("tags", "^.*$"),
-            ("relevant", "^.*$"),
-            ("compliance-wp", "^.*$"),
+            ("id", "^WP__[0-9a-z_]*$"),
+            ("status", "^(valid|draft)$"),
+            ("complies", "^(ISO26262_WP|ISO21434_WP|ASPICE-40_IIC)[0-9a-z_]*$"),
         ],
     },
     {
         "directive": "workflow",
         "title": "Workflow",
         "prefix": "WF__",
-        "color": "#FFFF00",
-        "style": "process",
         "req_opt": [
-            ("id", "^WF_.*$"),
-            ("approver", "^.*$"),
-            ("supporter", "^.*$"),
-            ("input", "^.*$"),
-            ("output", "^.*$"),
-            ("guidance", "^.*$"),
-            ("executes", "^.*$"),
-            ("compliance-wf", "^.*$"),
+            ("id", "^WF__[0-9a-z_]*$"),
+            ("status", "^(valid|draft)$"),
+            ("input", "^WP__[0-9a-z_]*$"),
+            ("output", "^WP__[0-9a-z_]*$"),
+            ("contains", "^GD_(REQ|TEMP|CHKLST|GUIDL|METH)__[0-9a-z_]*$"),
+            ("has", "^DOC_(GETSTRT|CONCEPT)__.*$"),
+            ("approved_by", "^RL__.*$"),
+            ("responsible", "^RL__.*$"),
         ],
-    },
-    {
-        "directive": "guidance",
-        "title": "Guidance",
-        "prefix": "GD__",
-        "color": "#DCB239",
-        "style": "file",
-        "req_opt": [
-            ("id", "^GD_.*$"),
+        "opt_opt": [
+            ("supported_by", "^RL__.*$"),
         ],
     },
     {
         "directive": "gd_req",
-        "title": "Process Requirement",
+        "title": "Process Requirements",
         "prefix": "GD_REQ__",
-        "color": "#DCB239",
-        "style": "file",
         "req_opt": [
             ("id", "^GD_REQ__[0-9a-z_]*$"),
+            ("status", "^(valid|draft)$"),
+            ("complies", "^(ISO26262_REQ|ISO21434_REQ|ASPICE-40_(G|B)P)[0-9a-z_]*$"),
         ],
     },
     {
         "directive": "gd_temp",
         "title": "Process Template",
         "prefix": "GD_TEMP__",
-        "color": "#DCB239",
-        "style": "file",
         "req_opt": [
             ("id", "^GD_TEMP__[0-9a-z_]*$"),
+            ("status", "^(valid|draft)$"),
+            ("complies", "^(ISO26262_REQ|ISO21434_REQ|ASPICE-40_(G|B)P)[0-9a-z_]*$"),
         ],
     },
     {
         "directive": "gd_chklst",
         "title": "Process Checklist",
         "prefix": "GD_CHKLST__",
-        "color": "#DCB239",
-        "style": "file",
         "req_opt": [
             ("id", "^GD_CHKLST__[0-9a-z_]*$"),
+            ("status", "^(valid|draft)$"),
+            ("complies", "^(ISO26262_REQ|ISO21434_REQ|ASPICE-40_(G|B)P)[0-9a-z_]*$"),
         ],
     },
     {
         "directive": "gd_guidl",
         "title": "Process Guideline",
         "prefix": "GD_GUIDL__",
-        "color": "#DCB239",
-        "style": "file",
         "req_opt": [
             ("id", "^GD_GUIDL__[0-9a-z_]*$"),
+            ("status", "^(valid|draft)$"),
+            ("complies", "^(ISO26262_REQ|ISO21434_REQ|ASPICE-40_(G|B)P)[0-9a-z_]*$"),
         ],
     },
     {
-        "directive": "gd_concept",
+        "directive": "gd_method",
+        "title": "Process Method",
+        "prefix": "GD_METH__",
+        "req_opt": [
+            ("id", "^GD_METH__[0-9a-z_]*$"),
+            ("status", "^(valid|draft)$"),
+            ("complies", "^(ISO26262_REQ|ISO21434_REQ|ASPICE-40_(G|B)P)[0-9a-z_]*$"),
+        ],
+    },
+    {
+        "directive": "doc_concept",
         "title": "Process Concept Definition",
-        "prefix": "GD_CONCEPT__",
-        "color": "#DCB239",
-        "style": "file",
+        "prefix": "DOC_CONCEPT__",
         "req_opt": [
-            ("id", "^GD_CONCEPT__[0-9a-z_]*$"),
+            ("id", "^DOC_CONCEPT__[0-9a-z_]*$"),
+            ("status", "^(valid|draft)$"),
         ],
     },
     {
-        "directive": "gd_howto",
-        "title": "Process Howto Description",
-        "prefix": "GD_HOWTO__",
-        "color": "#DCB239",
-        "style": "file",
+        "directive": "doc_getstrt",
+        "title": "Process Getting Startet",
+        "prefix": "DOC_GETSTRT__",
         "req_opt": [
-            ("id", "^GD_HOWTO__[0-9a-z_]*$"),
+            ("id", "^DOC_GETSTRT__[0-9a-z_]*$"),
+            ("status", "^(valid|draft)$"),
         ],
     },
     {
-        "directive": "role",  # = Einzelne Leute der Codeowner Gruppe
+        "directive": "role",
         "title": "Role",
-        "prefix": "RL_",
-        "color": "#DCB239",
-        "style": "actor",
+        "prefix": "RL__",
         "req_opt": [
-            ("id", "^RL_.*$"),
+            ("id", "^RL__[0-9a-z_]*$"),
+        ],
+        "opt_opt": [
+            ("contains", "^RL__.*$"),
         ],
     },
     {
-        "directive": "team",  # = Codeowners
-        "title": "Team",
-        "prefix": "TE_",
-        "color": "#DCB239",
-        "style": "node",
+        "directive": "std_req",
+        "title": "Standard Requirement",
+        "prefix": "STD_REQ__",
         "req_opt": [
-            ("id", "^TE_.*$"),
+            ("id", "^STD_REQ__[0-9a-z_]*$"),
+            ("status", "^(valid)$"),
         ],
     },
-    {
-        "directive": "phase",
-        "title": "Phase",
-        "prefix": "PH__",
-        "color": "#DCB239",
-        "style": "queue",
-        "req_opt": [
-            ("id", "^PH_.*$"),
-        ],
-    },
-    {
-        "directive": "milestone",
-        "title": "Milestone",
-        "prefix": "MS__",
-        "color": "#DCB239",
-        "style": "circle",
-        "req_opt": [
-            ("id", "^MS_.*$"),
-        ],
-    },
-    {
-        "directive": "process",
-        "title": "Process",
-        "prefix": "PR__",
-        "color": "#DCB239",
-        "style": "frame",
-        "req_opt": [
-            ("id", "^PR_.*$"),
-        ],
-    },
+    ##############################################################
+    #  Score Metamodel
+    ##############################################################
+    # General
     {
         "directive": "document",
-        "title": "Document",
+        "title": "Generic Document",
         "prefix": "DOC__",
-        "color": "#DCB239",
-        "style": "file",
         "req_opt": [
-            ("id", "^DOC__.*$"),
-            ("status", "^(draft|valid|invalid|volatile)$"),
-            ("safety", "^.*$"),
-            ("compliance-gd", "^GD_.*$"),
+            ("id", "^DOC__[0-9a-z_]*$"),
+            ("safety", "^(QM|ASIL_B|ASIL_D)$"),
+            ("status", "^(valid|invalid)$"),
+            ("rationale", "^.+$"),
         ],
     },
-    {
-        "directive": "req",  # = std_req
-        "title": "Requirement",
-        "prefix": "R_",
-        "color": "#BFD8D2",
-        "style": "node",
-        "req_opt": [
-            ("id", "^R_.*$"),
-            ("status", "^(draft|valid|invalid)$"),  # TODO Why draft as well?
-        ],
-    },
+    # Requirements
     {
         "directive": "stkh_req",
-        "title": "Stakeholder requirements",
+        "title": "Stakeholder Requirement",
         "prefix": "STKH_REQ__",
-        "color": "#BFD8D2",
-        "style": "node",
         "req_opt": [
-            ("id", "^STKH_REQ__.*$"),
+            ("id", "^STKH_REQ__[0-9a-z_]*$"),
             ("reqtype", "^(Functional|Interface|Process|Legal|Non-Functional)$"),
             ("security", "^(YES|NO)$"),
             ("safety", "^(QM|ASIL_B|ASIL_D)$"),
             ("status", "^(valid|invalid)$"),
-            ("rationale", "^.*$"),
+            ("rationale", "^.+$"),
+        ],
+        "opt_opt": [
+            ("codelink", "^.*$"),
+            ("testlink", "^.*$"),
+            ("reqcovered", "^(YES|NO)$"),
+            ("testcovered", "^(YES|NO)$"),
+            ("hash", "^.*$"),
         ],
     },
     {
         "directive": "feat_req",
-        "title": "Feature Requirements",
-        "prefix": "FEAT_REQ__",
-        "color": "#BFD8D2",
+        "title": "Feature Requirement",
         "style": "node",
         "req_opt": [
-            ("id", "^FEAT_REQ__.*$"),
+            ("id", "^FEAT_REQ__[0-9a-z_]*$"),
             ("reqtype", "^(Functional|Interface|Process|Legal|Non-Functional)$"),
             ("security", "^(YES|NO)$"),
             ("safety", "^(QM|ASIL_B|ASIL_D)$"),
             ("status", "^(valid|invalid)$"),
             ("satisfies", "^STKH_REQ__.*$"),
         ],
+        "opt_opt": [
+            ("codelink", "^.*$"),
+            ("testlink", "^.*$"),
+            ("reqcovered", "^(YES|NO)$"),
+            ("testcovered", "^(YES|NO)$"),
+            ("hash", "^.*$"),
+        ],
     },
     {
         "directive": "comp_req",
-        "title": "Component Requirements",
+        "title": "Component Requirement",
         "prefix": "COMP_REQ__",
-        "color": "#BFD8D2",
-        "style": "node",
         "req_opt": [
-            ("id", "^COMP_REQ__.*$"),
+            ("id", "^COMP_REQ__[0-9a-z_]*$"),
             ("reqtype", "^(Functional|Interface|Process|Legal|Non-Functional)$"),
             ("security", "^(YES|NO)$"),
             ("safety", "^(QM|ASIL_B|ASIL_D)$"),
             ("status", "^(valid|invalid)$"),
             ("satisfies", "^FEAT_REQ__.*$"),
         ],
+        "opt_opt": [
+            ("codelink", "^.*$"),
+            ("testlink", "^.*$"),
+            ("reqcovered", "^(YES|NO)$"),
+            ("testcovered", "^(YES|NO)$"),
+            ("hash", "^.*$"),
+        ],
     },
     {
         "directive": "tool_req",
-        "title": "Tool Requirements",
+        "title": "Tool Requirement",
         "prefix": "TOOL_REQ__",
-        "color": "#BFD8D2",
-        "style": "node",
         "req_opt": [
-            ("id", "^TOOL_REQ__.*$"),
+            ("id", "^TOOL_REQ__[0-9a-z_]*$"),
             ("reqtype", "^(Functional|Interface|Process|Legal|Non-Functional)$"),
             ("security", "^(YES|NO)$"),
             ("safety", "^(QM|ASIL_B|ASIL_D)$"),
             ("status", "^(valid|invalid)$"),
             ("satisfies", "^GD_.*$"),
         ],
+        "opt_opt": [
+            ("codelink", "^.*$"),
+            ("testlink", "^.*$"),
+            ("reqcovered", "^(YES|NO)$"),
+            ("testcovered", "^(YES|NO)$"),
+            ("hash", "^.*$"),
+        ],
     },
     {
-        "directive": "aou",
+        "directive": "aou_req",
         "title": "Assumption of Use",
-        "prefix": "AOU__",
-        "color": "#BFD8D2",
-        "style": "node",
+        "prefix": "AOU_REQ__",
         "req_opt": [
-            ("id", "^AOU__.*$"),
+            ("id", "^AOU_REQ__[0-9a-z_]*$"),
             ("reqtype", "^(Functional|Interface|Process|Legal|Non-Functional)$"),
             ("security", "^(YES|NO)$"),
             ("safety", "^(QM|ASIL_B|ASIL_D)$"),
             ("status", "^(valid|invalid)$"),
         ],
+        "opt_opt": [
+            ("codelink", "^.*$"),
+            ("testlink", "^.*$"),
+            ("reqcovered", "^(YES|NO)$"),
+            ("testcovered", "^(YES|NO)$"),
+            ("hash", "^.*$"),
+        ],
     },
+    # Architecture
     {
         "directive": "feat_arc_sta",
         "title": "Feature Architecture Static View",
@@ -268,7 +254,7 @@ needs_types = [
         "color": "#FEDCD2",
         "style": "card",
         "req_opt": [
-            ("id", "^FEAT_ARC_STA__.*$"),
+            ("id", "^FEAT_ARC_STA__[0-9a-z_]*$"),
             ("security", "^(YES|NO)$"),
             ("safety", "^(QM|ASIL_B|ASIL_D)$"),
             ("status", "^(valid|invalid)$"),
@@ -282,7 +268,7 @@ needs_types = [
         "color": "#FEDCD2",
         "style": "card",
         "req_opt": [
-            ("id", "^FEAT_ARC_DYN__.*$"),
+            ("id", "^FEAT_ARC_DYN__[0-9a-z_]*$"),
             ("security", "^(YES|NO)$"),
             ("safety", "^(QM|ASIL_B|ASIL_D)$"),
             ("status", "^(valid|invalid)$"),
@@ -296,7 +282,7 @@ needs_types = [
         "color": "#FEDCD2",
         "style": "card",
         "req_opt": [
-            ("id", "^FEAT_ARC_INT__.*$"),
+            ("id", "^FEAT_ARC_INT__[0-9a-z_]*$"),
             ("security", "^(YES|NO)$"),
             ("safety", "^(QM|ASIL_B|ASIL_D)$"),
             ("status", "^(valid|invalid)$"),
@@ -312,7 +298,7 @@ needs_types = [
         "color": "#FEDCD2",
         "style": "card",
         "req_opt": [
-            ("id", "^FEAT_ARC_INT_OP__.*$"),
+            ("id", "^FEAT_ARC_INT_OP__[0-9a-z_]*$"),
             ("security", "^(YES|NO)$"),
             ("safety", "^(QM|ASIL_B|ASIL_D)$"),
             ("status", "^(valid|invalid)$"),
@@ -325,7 +311,7 @@ needs_types = [
         "color": "#FEDCD2",
         "style": "card",
         "req_opt": [
-            ("id", "^MOD_ARC_STA__.*$"),
+            ("id", "^MOD_ARC_STA__[0-9a-z_]*$"),
             ("security", "^(YES|NO)$"),
             ("safety", "^(QM|ASIL_B|ASIL_D)$"),
             ("status", "^(valid|invalid)$"),
@@ -339,7 +325,7 @@ needs_types = [
         "color": "#FEDCD2",
         "style": "card",
         "req_opt": [
-            ("id", "^COMP_ARC_STA__.*$"),
+            ("id", "^COMP_ARC_STA__[0-9a-z_]*$"),
             ("security", "^(YES|NO)$"),
             ("safety", "^(QM|ASIL_B|ASIL_D)$"),
             ("status", "^(valid|invalid)$"),
@@ -357,7 +343,7 @@ needs_types = [
         "color": "#FEDCD2",
         "style": "card",
         "req_opt": [
-            ("id", "^COMP_ARC_DYN__.*$"),
+            ("id", "^COMP_ARC_DYN__[0-9a-z_]*$"),
             ("security", "^(YES|NO)$"),
             ("safety", "^(QM|ASIL_B|ASIL_D)$"),
             ("status", "^(valid|invalid)$"),
@@ -371,7 +357,7 @@ needs_types = [
         "color": "#FEDCD2",
         "style": "card",
         "req_opt": [
-            ("id", "^COMP_ARC_INT__.*$"),
+            ("id", "^COMP_ARC_INT__[0-9a-z_]*$"),
             ("security", "^(YES|NO)$"),
             ("safety", "^(QM|ASIL_B|ASIL_D)$"),
             ("status", "^(valid|invalid)$"),
@@ -386,18 +372,12 @@ needs_types = [
         "color": "#FEDCD2",
         "style": "card",
         "req_opt": [
-            ("id", "^COMP_ARC_INT__.*$"),
+            ("id", "^COMP_ARC_INT__[0-9a-z_]*$"),
             ("security", "^(YES|NO)$"),
             ("safety", "^(QM|ASIL_B|ASIL_D)$"),
             ("status", "^(valid|invalid)$"),
             ("satisfies", "^COMP_REQ__.*$"),
             # ("implements","^FEAT_ARC_INT_OP_.*$"),
-        ],
-    },
-    {
-        "directive": "review_header",
-        "req_opt": [
-            ("id", ".*"),
         ],
     },
 ]
@@ -409,107 +389,81 @@ needs_types = [
 # much easier, as we can sure the target need of a link has always a specific type.
 # Docs: https://sphinx-needs.readthedocs.io/en/latest/configuration.html#needs-extra-links
 needs_extra_links = [
-    {  # team -> role
+    ##############################################################
+    #  Process Metamodel
+    ##############################################################
+    # Workflow
+    {
         "option": "contains",
-        "incoming": "is part of",
-        "outgoing": "consists of",
+        "incoming": "contains",
+        "outgoing": "is contained by",
     },
-    {  # workflow -> role
+    {
+        "option": "has",
+        "incoming": "has",
+        "outgoing": "relates to",
+    },
+    {
+        "option": "input",
+        "incoming": "needs input",
+        "outgoing": "is input to",
+    },
+    {
+        "option": "output",
+        "incoming": "outputs",
+        "outgoing": "is output from",
+    },
+    # Roles
+    {
         "option": "responsible",
-        "incoming": "is reponsible for",
+        "incoming": "is responsible for",
         "outgoing": "responsible",
     },
-    {  # workflow -> role
-        "option": "approver",
-        "incoming": "is approver for",
-        "outgoing": "approving",
+    {
+        "option": "approved_by",
+        "incoming": "approved by",
+        "outgoing": "approves",
     },
-    {  # workflow -> role
-        "option": "supporter",
-        "incoming": "is supporter for",
-        "outgoing": "supporting",
+    {
+        "option": "supported_by",
+        "incoming": "supported by",
+        "outgoing": "supports",
     },
-    {  # process -> role
-        "option": "owner",
-        "incoming": "is process owner for",
-        "outgoing": "process owner",
+    # Workproduct
+    {
+        "option": "complies",
+        "incoming": "complies",
+        "outgoing": "complies to",
     },
-    {  # process -> workflow
-        "option": "includes",
-        "incoming": "is included in",
-        "outgoing": "includes workflow",
-    },
-    {  # workflow -> workproduct
-        "option": "output",
-        "incoming": "is output from",
-        "outgoing": "has output",
-    },
-    {  # workflow -> workproduct
-        "option": "input",
-        "incoming": "is input from",
-        "outgoing": "has input",
-    },
-    {  # workflow -> guidance
-        "option": "guidance",
-        "incoming": "is guiding",
-        "outgoing": "has guidance",
-    },
-    {  # workflow -> phase
-        "option": "executes",
-        "incoming": "relevant workflows",
-        "outgoing": "is relevant for phase",
-    },
-    {  # milestone -> phase
-        "option": "phase-relevant",
-        "incoming": "is relevant for milestone",
-        "outgoing": "relevant phases",
-    },
-    {  # workproduct  -> milestone
-        "option": "relevant",
-        "incoming": "relevant workproducts",
-        "outgoing": "is relevant for milestone",
-    },
-    {  # workproduct -> req
-        "option": "compliance-wp",
-        "incoming": "complies to",
-        "outgoing": "is complying with",
-    },
-    {  # workflow -> req
-        "option": "compliance-wf",
-        "incoming": "complies to",
-        "outgoing": "is complying with",
-    },
-    # in future we want to migrate to
-    {  # guidance -> req compliance
-        "option": "compliance-gd",
-        "incoming": "complies to",
-        "outgoing": "is complying with",
-    },
+    ##############################################################
+    #  Score Metamodel
+    ##############################################################
+    # Requirements
     {
         "option": "satisfies",
         "incoming": "is satisfied by",
         "outgoing": "satisfies",
-        "style_start": "-up",
-        "style_end": "->",
     },
-    {"option": "implements", "incoming": "implements by", "outgoing": "implements"},
+    # Architecture
+    {
+        "option": "implements",
+        "incoming": "implements by",
+        "outgoing": "implements",
+    },
 ]
 
 # Define extra options for needs object
 needs_extra_options = [
     "security",
     "safety",
-    "level",
     "rationale",
-    "mitigated_by",
     "reqtype",
-    "source_code_link",
     "codelink",
     "testlink",
     "reqcovered",
     "testcovered",
+    "hash",
     "author",
     "reviewers",
-    "hash",
     "approvers",
 ]
