@@ -131,6 +131,15 @@ needs_types = [
             ("status", "^(valid)$"),
         ],
     },
+        {
+        "directive": "std_wp",
+        "title": "Standard Work Product",
+        "prefix": "STD_WP__",
+        "req_opt": [
+            ("id", "^STD_WP__[0-9a-z_]*$"),
+            ("status", "^(valid)$"),
+        ],
+    },
     ##############################################################
     #  Score Metamodel
     ##############################################################
