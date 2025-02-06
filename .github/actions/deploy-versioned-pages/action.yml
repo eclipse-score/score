@@ -1,5 +1,5 @@
 # *******************************************************************************
-# Copyright (c) 2024 Contributors to the Eclipse Foundation
+# Copyright (c) 2025 Contributors to the Eclipse Foundation
 #
 # See the NOTICE file(s) distributed with this work for additional
 # information regarding copyright ownership.
@@ -13,10 +13,11 @@
 
 name: Deploy Versioned Pages
 description: Will push the documentation to the gh-pages branch, possibly with a versioned URL. When the PR is closed, the documentation will be deleted.
-# Note: this has some shortcomings, like race conditions when multiple PRs are opened at the same time,
-# problems with overwriting existing files, not deleting deleted files, etc.
-# We'll address these when we transform this action into a truly reusable independent action.
-# But for now, let's get it working!
+# Note: the only problem is with the / folder that is not beinng cleaned
+# Also, if one names his branch with one of the working folders of the documentation
+# it will compromise the whole documentation
+# So, the main documentation shouldn't be served from the "/" location, instead we
+# should have a custom directory and modify the config of the http server
 
 inputs:
   source_folder:
@@ -52,9 +53,10 @@ runs:
       shell: bash
       run: |
         # Prepare the deploy folder
-        mkdir -p deploy_root/${{ steps.calc.outputs.target_folder }}
+        mkdir -p deploy_root
+        mkdir -p version_root
         # Move the files to the deploy folder
-        mv ${{ inputs.source_folder }}/* deploy_root/${{ steps.calc.outputs.target_folder }}
+        mv ${{ inputs.source_folder }}/* deploy_root/
         # Ensure that the folder is not treated as a Jekyll site
         touch deploy_root/.nojekyll
 
@@ -64,14 +66,38 @@ runs:
         if ! grep -qx "${{ steps.calc.outputs.target_folder }}" "${{ inputs.versions_file }}"; then
           echo "${{ steps.calc.outputs.target_folder }}" >> "${{ inputs.versions_file }}"
         fi
-        mv "${{ inputs.versions_file }}" deploy_root/
+        mv "${{ inputs.versions_file }}" version_root/
         ls -al .
         ls -al deploy_root
-    - name: Deploy 🚀
+        ls -al version_root
+
+    # Deploy documentation when target-folder is NOT root
+    - name: Deploy Documentation (Non-Root) 🚀
+      if: ${{ steps.calc.outputs.target_folder != '/' }}
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         folder: deploy_root
+        clean: true # Clean enabled for non-root folders
+        target-folder: ${{ steps.calc.outputs.target_folder }}
+        clean-exclude: |
+          .nojekyll
+
+    # Deploy documentation when target-folder IS root
+    - name: Deploy Documentation (Root) 🚀
+      if: ${{ steps.calc.outputs.target_folder == '/' }}
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: deploy_root
+        clean: false # Clean disabled for root folder
+        target-folder: /
+
+    - name: Deploy  version🚀
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: version_root
         clean: false
+
+
     - name: Comment on PR with docs URL
       if: ${{ github.event_name == 'pull_request' && inputs.create_comment == 'true' }}
       uses: peter-evans/create-or-update-comment@v4
