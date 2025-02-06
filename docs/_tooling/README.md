@@ -1,178 +1,163 @@
-# Score Project Tooling Guide
+# Score Project Tooling Development Guide
 
-This document will offer an overview and help to get started with setting up and navigating the development environment for the tooling of the Score project.
+**This document is meant for *developers* of the `_tooling`  repository**
+It's purpose is to change
+## Quick Start
 
-## Table of Contents
-- [Development Environment Overview](#development-environment-overview)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Setting Up Your Environment](#setting-up-your-environment)
-- [Build System](#build-system)
-  - [Bazel Commands](#bazel-commands)
-  - [Documentation Generation](#documentation-generation)
-- [Development Tools](#development-tools)
-  - [Python Development](#python-development)
-  - [Testing Framework](#testing-framework)
-- [Project Structure](#project-structure)
-- [Additional Resources](#additional-resources)
-
-## Development Environment Overview
-
-
-- **Bazel (7.4.0)**: Primary build system
-  - Managed through Bazelisk for version control
-  - Handles documentation building
-  - Manages dependencies and versioning
-  - Enables multi-repository setup
-  - Coordinates test execution
-
-- **Python (3.12)**: Used for documentation and testing
-  - Integrated with Bazel
-  - Powers Sphinx documentation
-  - Supports pytest-based testing
-
-- **Esbonio (0.16.5)**: Sphinx/RST documentation support
-  - Provides real-time documentation warnings
-  - Enables IDE integration
-
-## Getting Started
-
-
->**Score currently supports Linux environments**
-
-### Setting Up Your Environment
-
-1. Install Bazelisk following the [official instructions](https://github.com/bazelbuild/bazelisk)
-2. Clone the Score repository
-3. Set up IDE support (detailed below)
-
-## Build System
-
-### Bazel Commands
-
-Here are the most commonly used Bazel commands:
-
-```bash
-# Build documentation in sandbox mode
-bazel build //docs:docs
-
-# Run incremental documentation build
-bazel run //docs:incremental
-
-# Generate the python virtual environment
-bazel run //docs:ide_support
-
-# Run all tests
-bazel test //...
-
-# Check formatting
-bazel test //:format.check
-
-# Fix formatting issues
-bazel test //:format.fix
-
-# Check copyright headers
-bazel run //:copyright.check
-
-# Fix copyright headers
-bazel run //:copyright.fix
-```
-
-### Documentation Generation
-
-Score offers three approaches to documentation generation:
-
-1. **Sandboxed Builds** (Clean, isolated environment)
-   ```bash
-   bazel build //docs:docs
-   ```
-   Output location: `bazel-bin/docs/docs/_build/html`
-
-2. **Incremental Builds** (Fast development iterations)
-   ```bash
-   bazel run //docs:incremental
-   ```
-   Output location: `_build` directory
-
-3. **IDE Integration** (Live preview and warnings)
-   - Requires Esbonio setup => [IDE Setup/Integration]()
-   - Provides real-time feedback
-
-
-## Development Tools
-
-### Python Development
-
-To set up a Python development environment that matches the Bazel sandbox:
-
-1. Generate the virtual environment:
+1. Install Bazelisk (version manager for Bazel)
+2. Clone the repository
+3. Create the Python virtual environment:
    ```bash
    bazel run //docs:ide_support
    ```
+4. Select `.venv_docs/bin/python` as the python interpreter inside your IDE  
+*Note: This virtual environment does **not** have pip, therefore `pip install` is not available.*
 
-2. Select `.venv_docs/bin/python` as your IDE's Python interpreter
+> For further integration and more troubleshooting regarding setup please see  [IDE integration](/docs/_tooling/IDE_integration_setup.md)
+## Development Environment Requirements
 
-This setup provides:
-- Consistent import paths with Bazel
-- IDE features (code navigation, completion)
-- Standard Python development experience
+- **Operating System**: Linux (required)
+- **Core Tools**:
+  - Bazel 7.4.0 (via Bazelisk)
+  - Python 3.12
+  - Git
 
-### Testing Framework
 
-Score uses pytest for Python testing, integrated with Bazel. You can:
+### Key external tools used inside `_tooling`
 
-- Run all tests:
-  ```bash
-  bazel test //...
-  ```
+1. **Bazel Build System**
+   - Version: 7.4.0
+   - Primary build orchestrator
+   - Handles dependency management
+   - Coordinates testing and documentation
+   - Manages multi-repository setup
 
-- Run language-specific tests:
-  ```bash
-  bazel query 'kind(py.*, tests(//...))' | xargs bazel test
-  ```
+2. **Documentation Tools**
+   - Sphinx with custom extensions
+   - Esbonio 0.16.5 for IDE integration
+   - Real-time documentation validation
 
-- Run tests by tag:
-  ```bash
-  bazel test --test_tag_filters=docs-build
-  ```
+3. **Development Tools**
+   - Gitlint for commit message standards
+   - Pytest for testing infrastructure
+   - Custom formatters and linters
 
-## Project Structure
 
-The project's tooling is organized in two main directories:
 
-### 1. docs/_tooling/
+## Tooling Directory Architecture
+
 ```
 docs/_tooling/
-├── assets/           # CSS files for documentation
-├── conf_extras/      # Extra sphinx configurations
-├── decision_records/ # Architecture decisions
-├── extensions/       # Custom sphinx extensions
+├── assets/           # Documentation styling (CSS)
+├── conf_extras/      # Sphinx configuration extensions
+├── decision_records/ # Architecture Decision Records (ADRs)
+├── extensions/       # Custom Sphinx extensions
 │   └── score_metamodel/
-│       ├── checks/  # Custom sphinx-needs checks
-│       └── tests/   # Test suite
+│       ├── checks/  # Sphinx-needs validation
+│       └── tests/   # Extension test suite
 └── templates/        # Documentation templates
 ```
 
-### 2. tools/
-Contains general development tools (formatters, testing frameworks, etc.). 
+## Development Workflow
+
+
+#### Documentation Development
+```bash
+# Incremental documentation build (recommended during development)
+bazel run //docs:incremental
+
+# Full documentation build
+bazel build //docs:docs
 ```
-tools
-├── cr_checker # copyright checker integration
-│   ├── resources # configurations used by cr_checker
-│   └── tool # cr_checker implementation
-├── format # implementation of formatters
-└── testing
-    └── pytest # pytest integration
+
+#### Testing
+```bash
+# Run all tests
+bazel test //...
+
+# Run specific test suite
+bazel test //docs:<test_suite_name>
 ```
-See the [tools README](tools/README.md) for details.
+
+#### Code Quality
+```bash
+# Format checking
+bazel test //:format.check
+
+# Auto-format code
+bazel run //:format.fix
+
+# Copyright headers check
+bazel run //:copyright.check
+bazel run //:copyright.fix
+```
+
+### Adding New Test Suites
+
+To add a new test suite to the build system:
+
+1. Create a new entry in `docs/BUILD`:
+```python
+py_library(
+    name = "your_tool",
+    srcs = glob(["_tooling/your_tool/**/*.py"]),
+    imports = ["required_imports"],
+    visibility = ["//visibility:public"],
+)
+
+score_py_pytest(
+    name = "your_tool_test",
+    size = "small",  # small/medium/large
+    srcs = glob(["_tooling/your_tool/tests/**/*.py"]),
+    deps = [":your_tool"],
+)
+```
+
+2. Run your tests:
+```bash
+bazel test //docs:your_tool_test
+```
+
+## Developing new tools
+
+1. Place code in appropriate directory or create new ones. E.g. sphinx-extensions inside `extensions`
+2. Create a dedicated test directory
+3. Include an appropriate README in markdown
+
+## Best Practices
+
+1. **Documentation**
+   - Keep READMEs up-to-date
+   - Document architectural decisions in `decision_records/`
+   - Include examples in extension documentation
+
+2. **Testing**
+   - Write tests for all new functionality
+   - Use appropriate test sizes (small/medium/large)
+   - Include both positive and negative test cases
+
+3. **Code Organization**
+   - Follow existing directory structure
+   - Keep extensions modular and focused
+   - Use consistent naming conventions
+
+## Troubleshooting
+
+Common issues and solutions:
+
+1. **Bazel Build Failures**
+   - Check Bazel version compatibility
+   - Verify Python environment
+   - Review recent changes to BUILD files
+
+2. **Documentation Build Issues**
+   - Validate Sphinx configuration
+   - Check for RST syntax errors
+   - Verify extension dependencies
 
 ## Additional Resources
 
 - [Score Metamodel Documentation](/docs/_tooling/extensions/score_metamodel/README.md)
 - [Tools Documentation](/tools/README.md)
-- [IDE Setup Guide]() (Coming soon)
 - [Pytest Integration Guide](/tools/testing/pytest/README.md)
 
----
-
-For specific tool documentation, refer to the README files in their respective directories as outlined in the project structure above.
