@@ -24,7 +24,7 @@ inputs:
     required: true
   versions_file:
     description: "Path to the versions file on gh-pages branch"
-    default: "versions"
+    default: "versions.json"
   create_comment:
     description: "Create a comment on the PR with the URL to the documentation" # in case of PR
     default: "true"
@@ -61,8 +61,28 @@ runs:
         # Add the target folder to the versions file
         git fetch origin gh-pages --depth 1
         git checkout origin/gh-pages -- "${{ inputs.versions_file }}"
-        if ! grep -qx "${{ steps.calc.outputs.target_folder }}" "${{ inputs.versions_file }}"; then
-          echo "${{ steps.calc.outputs.target_folder }}" >> "${{ inputs.versions_file }}"
+
+        target="${{ steps.calc.outputs.target_folder }}"
+        if [ "$target" = "/" ]; then
+          new_version="stable"
+        else
+          new_version="$target"
+        fi
+
+        if jq -e --arg version "$new_version" 'map(select(.version == $version)) | length > 0' "${{ inputs.versions_file }}" > /dev/null; then
+          echo "Version '$new_version' already exists in ${{ inputs.versions_file }}"
+        else
+          REPO_NAME=$(basename ${{ github.repository }})
+          USER_NAME=$(echo ${{ github.repository }} | cut -d'/' -f1)
+          GITHUB_PAGES_URL="https://${USER_NAME}.github.io/${REPO_NAME}"
+          if [ "$target" = "/" ]; then
+            new_url="${GITHUB_PAGES_URL}/"
+          else
+            new_url="${GITHUB_PAGES_URL}/$target/"
+          fi
+
+          jq --arg version "$new_version" --arg url "$new_url" '. + [{"version": $version, "url": $url}]' "${{ inputs.versions_file }}" > tmp_versions.json
+          mv tmp_versions.json "${{ inputs.versions_file }}"
         fi
         mv "${{ inputs.versions_file }}" deploy_root/
         ls -al .

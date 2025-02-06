@@ -81,6 +81,14 @@ html_css_files = [
     "css/score_design.css",
 ]
 
+html_context = {
+    # "github_url": "https://github.com", # or your GitHub Enterprise site
+    "github_user": "eclipse-score",
+    "github_repo": "score",
+    "github_version": "main",
+    "doc_path": "docs",
+}
+
 html_theme_options = {
     "navbar_align": "content",
     "header_links_before_dropdown": 5,
@@ -98,14 +106,12 @@ html_theme_options = {
     "logo": {
         "text": "Eclipse SCORE Docs",
     },
-}
-
-html_context = {
-    # "github_url": "https://github.com", # or your GitHub Enterprise site
-    "github_user": "eclipse-score",
-    "github_repo": "score",
-    "github_version": "main",
-    "doc_path": "docs",
+    # Enable version switcher
+    "switcher": {
+        "json_url": f"https://{html_context['github_user']}.github.io/{html_context['github_repo']}/versions.json",  # URL to JSON file, hardcoded for now
+        "version_match": release,
+    },
+    "navbar_end": ["version-switcher", "navbar-icon-links"],
 }
 
 # -- sphinx-needs configuration --------------------------------------------

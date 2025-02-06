@@ -239,3 +239,13 @@ html[data-theme="dark"] #score-title {
     100% { opacity: 1; }
   }
 
+/* Ensure the version switcher dropdown is scrollable if it exceeds the max height */
+.version-switcher__menu {
+    position: absolute;
+    width: 100%;
+    max-height: 300px; /* Adjust this value as needed */
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+

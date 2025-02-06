@@ -41,7 +41,11 @@ jobs:
 
           # Delete the folder and remove the version from the versions file
           rm -rf "${VERSION}"
-          sed -i "/^$VERSION$/d" versions
+
+          # Remove from versions.json
+          if [[ -f versions.json ]]; then
+            jq --arg ver "$VERSION" 'map(select(.version != $ver))' versions.json > tmp.json && mv tmp.json versions.json
+          fi
       - name: Push changes to gh-pages branch
         uses: EndBug/add-and-commit@v9
         with:
