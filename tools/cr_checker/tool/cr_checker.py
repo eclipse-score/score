@@ -19,6 +19,7 @@ import sys
 import tempfile
 import mmap
 import json
+import shutil
 from datetime import datetime
 from pathlib import Path
 
@@ -354,6 +355,24 @@ def create_temp_file(path, encoding):
                 temp.write(chunk)
     return temp.name
 
+def remove_old_header(file_path, encoding, num_of_chars):
+    """
+    Removes the first `num_of_chars` characters from a file and updates it in-place.
+
+    Args:
+        file_path (str): Path to the file to be modified.
+        encoding (str): Encoding used to read and write the file.
+        num_of_chars (int): Number of characters to remove from the beginning of the file.
+
+    Raises:
+        IOError: If there is an issue reading or writing the file.
+        ValueError: If `num_of_chars` is negative.
+    """
+    with open(file_path, 'r', encoding=encoding) as file:
+        file.seek(num_of_chars)
+        with tempfile.NamedTemporaryFile('w', delete=False, encoding=encoding) as temp_file:
+            shutil.copyfileobj(file, temp_file)
+    shutil.move(temp_file.name, file_path)
 
 def fix_copyright(path, copyright_text, encoding, offset):
     """
@@ -393,8 +412,8 @@ def fix_copyright(path, copyright_text, encoding, offset):
 
 
 def process_files(
-    files, templates, fix, config, use_mmap=False, encoding="utf-8", offset=0
-):  # pylint: disable=too-many-arguments
+    files, templates, fix, config, use_mmap=False, encoding="utf-8", offset=0,
+    remove_offset=0):  # pylint: disable=too-many-arguments
     """
     Processes a list of files to check for the presence of copyright text.
 
@@ -411,6 +430,8 @@ def process_files(
         offset (int): Additional number of characters to read beyond the length
                       of `copyright_text`, used to account for extra content
                       (such as a shebang) before the copyright text.
+        remove_offset(int): Flag for removing old header from source files
+                             (before applying the new one) in number of chars.
 
     Returns:
         int: The number of files that do not contain the required copyright text.
@@ -426,6 +447,8 @@ def process_files(
             continue
         if not has_copyright(item, templates[key], use_mmap, encoding, offset, config):
             if fix:
+                if remove_offset:
+                    remove_old_header(item, encoding, remove_offset)
                 fix_copyright(item, templates[key], encoding, offset)
                 results["no_copyright"] += 1
                 results["fixed"] += 1
@@ -516,6 +539,15 @@ def parse_arguments(argv):
     )
 
     parser.add_argument(
+        "--remove-offset",
+        dest="remove_offset",
+        type=int,
+        default=0,
+        help="Offset to remove old header from begining of the file \
+             (supported only with --fix mode)",
+    )
+
+    parser.add_argument(
         "inputs",
         nargs="+",
         action=ParamFileAction,
@@ -558,6 +590,14 @@ def main(argv=None):
 
     LOGGER.debug("Running check on files: %s", files)
 
+    if args.fix and args.remove_offset:
+        LOGGER.info("%s!------DANGER ZONE------!%s",
+                    COLORS["RED"], COLORS["ENDC"])
+        LOGGER.info("Remove offset set! This can REMOVE parts of source files!")
+        LOGGER.info("Use ONLY if invalid copyright header is present that needs to be removed!")
+        LOGGER.info("%s!-----------------------!%s",
+                    COLORS["RED"], COLORS["ENDC"])
+
     results = process_files(
         files,
         templates,
@@ -566,6 +606,7 @@ def main(argv=None):
         args.use_memory_map,
         args.encoding,
         args.offset,
+        args.remove_offset,
     )
     total_no = results["no_copyright"]
     total_fixes = results["fixed"]
