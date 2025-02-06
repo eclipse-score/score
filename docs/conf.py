@@ -74,12 +74,14 @@ numfig = True
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = "pydata_sphinx_theme"  # "alabaster"
-html_static_path = ["_tooling/assets"]
+html_static_path = ["_tooling/assets", "_assets"]
 html_css_files = [
     "css/score.css",
     "css/score_needs.css",
     "css/score_design.css",
 ]
+
+html_logo = "_assets/S-CORE_Logo_white.svg"
 
 html_theme_options = {
     "navbar_align": "content",
@@ -95,9 +97,6 @@ html_theme_options = {
     # https://pydata-sphinx-theme.readthedocs.io/en/stable/user_guide/source-buttons.html#add-an-edit-button
     "use_edit_page_button": True,
     "collapse_navigation": True,
-    "logo": {
-        "text": "Eclipse SCORE Docs",
-    },
 }
 
 html_context = {
