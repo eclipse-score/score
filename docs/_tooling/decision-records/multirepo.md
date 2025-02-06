@@ -1,10 +1,12 @@
-# DR: multirepo setup in SCORE
+# Decision Record: multirepo setup in SCORE
 
 ## Problem Statement
 
-Stakeholder requirements and features requirements are in `/score` repository, while their implementations will be in `/module-<xyz>` repositories. Those modules need to link requirements they are implementing across repositories. Currently linking is only possible within a single repository.
-
-In addition, the process is going to move to a separate repository. But we'll ignore that for the moment. Hopefully the same approach will fit that problem as well.
+Stakeholder requirements and features requirements of SCORE are in `/score`
+repository (called *platform* hereafter), while their implementations and
+implementation-specific-requirements will be in `/module-<xyz>` repositories.
+Those modules need to link requirements they are implementing. Currently
+linking is only possible within a single repository.
 
 ## Decision
 
@@ -12,30 +14,72 @@ In addition, the process is going to move to a separate repository. But we'll ig
 
 **Chosen solution**: Copying (embed rst source via bazel)
 
-## Use Cases / Requirements
-1) Build only score
-   1) process requirements, feature requirements, guidance, etc
-   2) no links to other repositories
-2) Build module + score
-   1) Used by each module individually
-   2) Unidirectional links from module to score are sufficient
-   3) With metrics for feature-requirements coverage
-   4) score website itself shall remain unchanged (no links to modules)
-3) Reference integration
-   1) "Full system build"
-   2) with multiple modules and score repository
-   3) All links bidirectional
-   4) Metrics for feature-requirements coverage
-   5) score and module websites shall remain unchanged (e.g. no links to reference integration)
+## Context: Current/planned repository dependencies in detail
 
-### Further requirements:
+The project is set up as a multi-repository project.
+
+![repo-setup](_assets/multirepo_setup.drawio.svg)
+
+#### score (*platform*)
+The `score` repository contains process-requirements and process-tooling
+(docs-as-code) as well as feature-requirements. We'll call it the *platform*.
+
+The *platform* is not aware of individual modules, as they are implemented in
+separate repositories and potentially outside of SCORE.
+
+#### module-\<xyz\>
+Each `module-<xyz>` repository contains module-level-requirements, derived from
+feature requirements. It also contains the module implementation.
+
+As each module implements a subset of the feature requirements, it needs to
+link to the feature requirements in the *platform* repository.
+
+#### reference_integration
+The `reference_integration` brings everything together. It contains a reference
+to a specific version of the platform and to all required modules.
+
+Other integrations are possible, which will contain different versions of the
+platform and different modules.
+
+## Requirements
 * links must remain correct and working over time, at least for all released versions.
+* in general dependencies between repositories should be possible on any
+  version, not only on released versions. That's the only way to ensure quick
+  iterations and feedback loops.
+
+
+## Use Cases
+1) Build docs for *platform*
+   - Content: process requirements, feature requirements, guidance, etc
+   - Traceability: no links to other repositories
+2) Build docs for one module individually (quick)
+   - Content: module requirements, module implementation
+   - Traceability: no links to other repositories
+3) Build docs for one module individually (full)
+   - Content: module requirements, module implementation, feature-requirements
+     coverage
+   - Traceability: bidirectional links to *platform*. This implies that the
+     *platform* is re-built as well, this time with links to the module.
+4) Build docs for Reference integration
+   - Content: platform, all modules, metrics
+   - Traceability: bidirectional links between *platform* and all modules. This
+     implies that all docs are re-built, this time with links to each other.
+
+These lead to the following **independent** websites:
+
+![Multiple websites](_assets/multirepo_pages.drawio.svg)
+
+
+Some derivations of these types are possible as well, e.g. building one module
+with unidirectional links to the *platform*.
 
 ## Constraints
 
 * For the sake of this decision we'll assume all repositories follow the same process (version) with the same tooling (version). That means e.g. different set of mandatory attributes is not possible.
+* usage of sphinx templates is not accounted for.
 * no need to take data protection into account (everything is open source under the same license)
 * no need to take performance into account (we'll assume that the performance of the chosen solution is acceptable)
+* integration-specific requirements are not considered here
 
 ## Previous Decisions:
 
@@ -110,7 +154,7 @@ Pro:
 
 Con:
 * Relies heavily on bazel -> potential problems with esbonio etc
-* Performance / runtime
+* **Performance / runtime** (especially with e.g. doxygen)
 
 Approach in detail (initial idea):
 * Use bazel to depend on the other repositories.
