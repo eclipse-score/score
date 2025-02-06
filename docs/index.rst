@@ -108,6 +108,7 @@ Project structure and processes
       guidance/index
       Releases <score_releases/index.rst>
       process/index
+      _tooling/index
       PMP <platform_management_plan/index.rst>
       SCORE <https://eclipse-score.github.io>
       Eclipse <https://projects.eclipse.org/projects/automotive.score>
