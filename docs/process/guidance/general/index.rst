@@ -97,9 +97,9 @@ can be in a different order.
     features/                                       -> All features of the platform.
         <feature_name>/                             -> Folder containing all sub-folders corresponding to one feature and the contribution request [wp__CONT_REQUEST]
             docs/                                   -> Documentation of the feature consisting of ...
-                architecture/                       -> ... Feature architecture [wp__FEATURE_ARCHITECTURE].
-                requirements/                       -> ... Feature requirements [wp__FEATURE_REQ].
-                safety_analysis/                    -> ... Safety analysis on feature level [wp__FEATURE_SAFETY_ANALYSES]
+                architecture/                       -> ... Feature architecture [WP_FEATURE_ARCHITECTURE].
+                requirements/                       -> ... Feature requirements [wp__requirements__feat].
+                safety_analysis/                    -> ... Safety analysis on feature level [WP_FEATURE_SAFETY_ANALYSES]
                 safety_planning/                    -> ... the feature specific safety workproducts planning
                 verification/                       -> ... Feature verification report (reporting all feature verifications) [wp__PLATFORM_SW_VERIFICATION_REPORT]
             tests/                                  -> Feature tests, consisting of ...

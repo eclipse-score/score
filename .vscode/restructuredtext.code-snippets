@@ -1,0 +1,57 @@
+{
+    "stkh_req_directive": {
+        "prefix": "stkh_req_t",
+        "body": [
+            ".. stkh_req:: $1",
+            "   :id: stkh_req__$2",
+            "   :reqtype: ${3|Functional, Interface, Process, Legal, Non-Functional|}",
+            "   :safety: ${4|QM, ASIL_B, ASIL_D|}",
+            "   :rationale: $5",
+            "   :status: ${6|valid,invalid|}\n",
+            "   $7"
+        ],
+        "description": "Generate an stakeholder directive need with all needed option types",
+    },
+    "feat_req_directive": {
+        "prefix": "feat_req_t",
+        "body": [
+            ".. feat_req:: $1",
+            "   :id: feat_req__$2",
+            "   :reqtype: ${3|Functional, Interface, Process, Legal, Non-Functional|}",
+            "   :security: ${4|YES,NO|}",
+            "   :safety: ${5|QM, ASIL_B, ASIL_D|}",
+            "   :satisfies: stkh_req__$6",
+            "   :status: ${7|valid,invalid|}\n",
+            "   $8"
+        ],
+        "description": "Generate an feature directive need with all needed option types",
+    },
+    "comp_req_directive": {
+        "prefix": "comp_req_t",
+        "body": [
+            ".. comp_req:: $1",
+            "   :id: comp_req__$2",
+            "   :reqtype: ${3|Functional, Interface, Process, Legal, Non-Functional|}",
+            "   :security: ${4|YES,NO|}",
+            "   :safety: ${5|QM, ASIL_B, ASIL_D|}",
+            "   :satisfies: feat_req__$6",
+            "   :status: ${7|valid,invalid|}\n",
+            "   $8"
+        ],
+        "description": "Generate an component requirement directive need with all needed option types",
+    },
+    "aou_directive": {
+        "prefix": "aou_req_t",
+        "body": [
+            ".. aou_req:: $1",
+            "   :id: aou_req__$2",
+            "   :reqtype: ${3|Functional, Interface, Process, Legal, Non-Functional|}",
+            "   :security: ${4|YES,NO|}",
+            "   :safety: ${5|ASIL_B, ASIL_D|}",
+            "   :satisfies: $6",
+            "   :status: ${7|valid,invalid|}\n",
+            "   $8"
+        ],
+        "description": "Generate an AoU directive need with all needed option types",
+    },
+}

@@ -24,6 +24,5 @@ Workflows
    safety_management
    change_management
    quality_management
-   requirements_management
    architecture_design
    safety_analysis
