@@ -170,6 +170,7 @@ needs_types = [
     {
         "directive": "feat_req",
         "title": "Feature Requirement",
+        "prefix": "FEAT_REQ__",
         "style": "node",
         "req_opt": [
             ("id", "^FEAT_REQ__[0-9a-z_]*$"),
