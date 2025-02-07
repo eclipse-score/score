@@ -54,22 +54,11 @@ platform and different modules.
 
 1. Build docs for _platform_
    - Content: process requirements, feature requirements, guidance, etc
-   - Traceability: no links to other repositories
-2. Build docs for one module individually (quick)
-   - Content: module requirements, module implementation
-   - Traceability: no links to other repositories
-3. Build docs for one module individually (full)
-   - Content: module requirements, module implementation, feature-requirements
-     coverage
-   - Traceability: bidirectional links to _platform_. This implies that the
-     _platform_ is re-built as well, this time with links to the module.
-4. Build docs for Reference integration
-   - Content: platform, all modules, metrics
-   - Traceability: bidirectional links between _platform_ and all modules. This
-     implies that all docs are re-built, this time with links to each other.
-
-Some derivations of these types are possible as well, e.g. building one module
-with unidirectional links to the _platform_.
+2. Build docs for one module individually
+   - Content: module requirements, implementation and test results, metrics for
+     platform coverage
+3. Build docs for an integration
+   - Content: platform, all modules, metrics, integration test results
 
 
 ## Constraints
@@ -118,10 +107,10 @@ modules. Or by having uni-directional links. Both cases would result in this sim
 ![Websites with unidirectional links](_assets/multirepo_unidirectional.drawio.svg)
 
 
-## Alternatives - STOP READING HERE :D
+## Alternatives
 
-We'll start by eclusing some solutions, then we look into some more promising
-ones, and in the end we list some more extreme ideas.
+We'll start by exlusing some solutions quickly and then go into more detail
+with the remaining ones.
 
 ### 1) needservice
 
@@ -133,7 +122,7 @@ solution works, that would be preferrable. Let's mark this one as a **no-go**.
 We can simply link pages / needs in the other repositories by their full url.
 While we can ensure that those links work, everything beyond that will become
 problematic. Versioning might be solvable, but checking correct hashes
-(versioning) is challenging.
+(versioning) is challenging. Other approaches are better suited for that.
 
 Bidirectional links are not possible. As we'd like the same approach
 everywhere, this is a **no-go**.
@@ -148,26 +137,32 @@ Needs from the other repositories are imported, as if they were local. However
 all structure is lost! All surrounding text, images etc are lost. Only the
 needs themselfes are imported. This is a **no-go**.
 
-### 4) Copying rst
+### 4) Monorepo
 
-We use bazel to "import" the other repositories. When building a module or even
-an integration, everything is build in one go, into one website. The top level
-index.rst is generated on the fly, so it contains all links to the other
+This violates the basic assumption of the project, which is to enable anyone to
+implement a module without having to touch SCORE. **no-go**.
+
+### 5) Copying rst and building a single website
+
+*Variant: "Bidirectional linking without side effects"*
+
+We use bazel to "import" the other repositories. When building module-docs or
+even integration-docs, everything is build in one go into one website. The top
+level index.rst is generated on the fly, so it contains all links to the other
 repositories.
 
 Pro:
 
-- Everything in one website.
 - Versioning is fully handled by bazel without any overhead, since it happens
   anyway for the source code.
+- Full support for untagged versions (any commit id).
 
 Con:
 
 - Relies heavily on bazel -> potential problems with esbonio etc
-- Performance / runtime, especially with e.g. doxygen as this naive approach
-  would build everything every time.
-
-# !!! TODO: explain doxygen, test results, etc. !!!
+- Very low performance, especially with e.g. doxygen and test results as this
+  naive approach would build everything every time.
+- No customizations via conf.py possible, e.g. module specific templates.
 
 Approach in detail (initial idea):
 
@@ -176,22 +171,13 @@ Approach in detail (initial idea):
   bazel- directories, so they appear to sphinx as if they were local files in
   the same repository.
 
-Possible optimization:
+### 6) Needs-external-needs (+ intersphinx)
 
-- In detail this approach might enable more efficient building, if we can keep
-  all intermediate files of building a repository.
+*Variant: "Non-Bidirectional linking or side effects"*
 
-### 5) Copying json: Needs-external-needs (+ intersphinx)
-
-# !!! Der Unterschied ist nicht rst oder json, sondern eine website oder mehrere !!!
-
-# !!! Verschiedene Styles möglich / gewünscht
-
-As in 4) We use bazel to "import" the other repositories, especially their
+As in 4) We use bazel to "import" the other repositories, but only their
 needs.json. Each repository is build individually, with all needs.json files.
-So we generate one website per repository, and link to the other websites. The
-output looks as described in bidirectional linking. A landing page could be
-generated in addition, to link to the generated websites.
+
 
 Pro:
 
@@ -202,35 +188,20 @@ Pro:
 
 Con:
 
-- Same as 4)
+- Versioning is not handled by bazel, but on website level.
+- Versioning is only possible for tagged versions of the platform.
+
 
 Possible optimization:
 
-- In detail this approach might enable very efficient building, if we can keep
-  all intermediate files of building a repository. As only additional
-  needs.json files are added and the rest is re-used.
-
-### 6) Monorepo
-
-This violates the basic assumption of the project, which is to enable anyone to
-implement a module without having to touch SCORE. **no-go**.
-
-### 7) Link top-down
-
-TODO: write up. How does it help? It's basically again, just a removal of a
-constraint.
-
-### 8) Unidirectional links
-
-Having only unidirectional links enables a much simpler setup.
-
-![unidirectonal pages](_assets/multirepo_unidirectional.drawio.svg)
-
-### 9) platform is aware of modules
-
-normaler 3 wege build
+- Changes to the platform could trigger module builds which will validate
+  whether the link hashes are still correct. This could be done by a CI job.
 
 
-### golden solution
+### Further thoughts
 
-we generate the individual website without a menu...
+If the platform were able to generate back links on the fly via JavaScript, we
+could have a single platform website with a parameter to the respective module.
+e.g. platform.html?module=module-xyz
+
+This seems simple enough and avoid the usability pitfalls of the many websites.
