@@ -1,170 +1,179 @@
-# Decision Record: multirepo docs setup in SCORE
+# Decision Record: Multi-Repository Documentation Setup in SCORE
 
 ## Problem Statement
 
-Stakeholder requirements and features requirements of SCORE are in `/score`
-repository (called _platform_ hereafter), while their implementations and
-implementation-specific-requirements will be in `/module-<xyz>` repositories.
-Those modules need to link requirements they are implementing. Currently
-linking is only possible within a single repository.
+The SCORE project manages stakeholder and feature requirements in the `/score`
+repository (referred to as _platform_ hereafter). However, implementations and
+implementation-specific requirements reside in separate repositories
+(`/module-<xyz>`). These modules must link to the feature requirements they
+implement. However, currently linking is only possible within a single
+repository.
 
 ## Decision
 
-**Status**: Open, **Chosen solution**: -
+**Status**: Open **Chosen solution**: TBD
 
-## Context: Current/planned repository dependencies in detail
+## Context: Repository Dependencies and Setup
 
-The project is set up as a multi-repository project.
+SCORE is structured as a multi-repository project.
 
-![repo-setup](_assets/multirepo_setup.drawio.svg)
+![Repo Setup](_assets/multirepo_setup.drawio.svg)
 
-#### score (_platform_)
+### **score (_platform_)**
 
-The `score` repository contains process-requirements and process-tooling
-(docs-as-code) as well as feature-requirements. We'll call it the _platform_.
+- The `score` repository hosts process requirements, process tooling
+  (docs-as-code), and feature requirements.
+- It is unaware of individual modules, as they are implemented in separate
+  repositories, potentially outside of SCORE.
 
-The _platform_ is not aware of individual modules, as they are implemented in
-separate repositories and potentially outside of SCORE.
+### **module-\<xyz\>**
 
-#### module-\<xyz\>
+- Each `module-<xyz>` repository contains module-level requirements derived
+  from feature requirements, along with the module implementation.
+- Modules must link to feature requirements in the _platform_ repository.
 
-Each `module-<xyz>` repository contains module-level-requirements, derived from
-feature requirements. It also contains the module implementation.
+### **reference_integration**
 
-As each module implements a subset of the feature requirements, it needs to
-link to the feature requirements in the _platform_ repository.
-
-#### reference_integration
-
-The `reference_integration` brings everything together. It contains a reference
-to a specific version of the platform and to all required modules.
-
-Other integrations are possible, which will contain different versions of the
-platform and different modules.
+- The `reference_integration` repository integrates a specific version of the
+  platform and all required modules.
+- Other integrations may exist, using different versions of the platform and
+  modules.
 
 ## Requirements
 
-- links must remain correct and working over time, at least for all released
+- Links must remain correct and functional over time, at least for all released
   versions.
-- in general dependencies between repositories should be possible on any
-  version, not only on released versions. That's the only way to ensure quick
-  iterations and feedback loops.
+- Dependencies between repositories should work with any version, not just
+  released versions, ensuring quick iterations and feedback loops.
 
 ## Use Cases
 
-1. Build docs for _platform_
-   - Content: process requirements, feature requirements, guidance, etc
-2. Build docs for one module individually
-   - Content: module requirements, implementation and test results, metrics for
-     platform coverage
-3. Build docs for an integration
-   - Content: platform, all modules, metrics, integration test results
+1. **Building platform documentation**
+   - Includes process requirements, feature requirements, and guidance.
+2. **Building documentation for a single module**
+   - Includes module requirements, implementation, test results, and platform
+     coverage metrics.
+3. **Building documentation for an integration**
+   - Includes platform requirements, all module documents, integration test
+     results, and coverage metrics.
 
 ## Constraints
 
-- For the sake of this decision we'll assume all repositories follow the same
-  process (version) with the same tooling (version).
-- Usage of custom sphinx templates is not accounted for. Only if they are
-  provided centrally.
-- Data protection is not necessary, since everything is open source under the
-  same license.
-- Requirements originating from the integration are not considered here.
+- All repositories follow the same process (version) and tooling (version).
+- Custom Sphinx templates are only considered if provided centrally.
+- Data protection is not a concern as all content is open source under the same
+  license.
+- Requirements originating from integrations are out of scope.
 
-## Previous Decisions:
+## Previous Decisions
 
 _Unfortunately those are not documented, therefore we cannot provide links to
 any decision records._
 
-- In SCORE different repositories are handled by bazel.
-- In SCORE requirements and links are implemented via `sphinx-needs`.
-- In SCORE versioning of requirement-links is handled via hashes.
+- SCORE handles multiple repositories via Bazel.
+- Requirements and links are implemented using `sphinx-needs`.
+- Requirement-link versioning is managed through hashes.
 - We have two different mechanisms for versioning. Current assumption is that
   we'll use bazel to pull other repositories in a specific version, while we
   never pull different versions of the same repository. So basically, we have
   the "classic multi repo setup" situation, as it's well known from e.g. git
   submodules.
 
-## Bidirectional linking without side effects
+## Bidirectional Linking Without Side Effects
 
-"Bidirectional linking without side effects" means that the _platform_ is not
-affected by the modules, but it does provide links to the modules. This implies
-that we need multiple versions of the platform.
+"Bidirectional linking without side effects" means that the _platform_-website
+remains unaffected by the modules while still linking to them. This
+necessitates multiple versions of the platform-website.
 
-Aka the following **independent** websites:
+This can be avoided by having a single platform-website that is either aware of
+all module-websites with bi-directional links or by no modules at all
+(uni-directional links from module-websites to platform-website).
 
-![Multiple websites](_assets/multirepo_bidirectional.drawio.svg)
+### **Problems with multiple platform-websites**
 
-Which is great in theory, and does absolutely have its use cases. However, it
-comes with a cost. And I'm talking about a cost to the end user. They need to
-be super cautious which version of the platform they are looking at, since they
-will look absolutely identical. The only difference is the links to the
-modules.
+- Maintaining multiple platform-websites results in different websites with
+  identical content but different module links.
+- Users must be cautious about which variant of the platform-website they view.
 
-This can be avoided by having a single website, which is aware of all the
-modules. Or by having uni-directional links. Both cases would result in this
-simplified setup:
+### **Benefits of multiple platform-websites**
 
-![Websites with unidirectional
-links](_assets/multirepo_unidirectional.drawio.svg)
+- We don't need to have a platform-website hosted in hundreds of different
+  versions, or artificially restrict ourselves to fewer versions when linking
+  (e.g. only tagged versions). Each module can host any version of the
+  platform-website.
 
-### Solution for "Bidirectional linking without side effects"
+#### **multiple platform-websites Model**
 
-We use bazel to "import" the other repositories. When building module-docs or
-even integration-docs, everything is build in one go into one website. The top
-level index.rst is generated on the fly, so it contains all links to the other
-repositories.
+![Multiple Websites](_assets/multirepo_bidirectional.drawio.svg)
 
-Pro:
+#### **single platform-website Model**
 
-- Versioning is fully handled by bazel without any overhead, since it happens
+![Websites with Unidirectional
+Links](_assets/multirepo_unidirectional.drawio.svg)
+
+## Solutions
+
+### **1. Bidirectional Linking Without Side Effects = Multiple platform websites**
+
+Bazel imports other repositories. When building module or integration
+documentation, everything is built in a single pass.
+
+#### **Pros:**
+
+- Versioning is fully managed by Bazel with minimal overhead, since it happens
   anyway for the source code.
-- Full support for untagged versions (any commit id).
+- Supports untagged versions (any commit ID).
 
-Con:
+#### **Cons:**
 
-- Relies heavily on bazel -> potential problems with esbonio etc
-- Very low performance, especially with e.g. doxygen and test results as this
-  naive approach would build everything every time.
+- Heavy reliance on Bazel, potentially problematic for Esbonio and related
+  tools.
+- Performance issues, especially with Doxygen and test results, as everything
+  is rebuilt each time.
 
-Approach 1 (single website):
+#### **Approach 1: Single Website**
 
-- Use bazel to depend on the other repositories.
-- Use links (ln) to create temporary links the other repositories inside the
-  bazel- directories, so they appear to sphinx as if they were local files in
-  the same repository.
-- Con: No customizations via conf.py possible, e.g. module specific templates.
+- Uses Bazel to import dependencies.
+- By producing a unified website is achieved by generating the root `index`
+  file dynamically.
+- **Pro:** Shared navigation menu and search functionality.
+- **Con:** No customization via `conf.py`, limiting module-specific templates.
 
-Apprach 2 (separate websites):
+#### **Approach 2: Separate Websites**
 
-- Use bazel to depend on the other repositories.
-- Generate individual websites for each repository with the usual
-  sphinx-external-needs 3-step approach (build, exchange json, rebuild).
-- Generate a landing page with links to the individual websites.
-- Con: no common menu, no common search.
+- Uses Bazel to import dependencies.
+- Generates individual websites for each repository using the
+  `sphinx-external-needs` three-step process (build, exchange JSON, rebuild).
+- Generates a landing page linking to each website.
+- **Con:** No shared navigation menu or search functionality.
 
-### Solution for "Non-Bidirectional linking or side effects"
+### **2. Uni-directional Linking + Single platform website**
 
-As before We use bazel to "import" the other repositories, but only their
-needs.json. Alternatively we grab the needs.json from the websites.
+If we were to drop the bi-directional linking requirement, we could simplify
+the setup significantly. The platform-website would not link to the modules,
+but modules would link to the platform-website.
 
-Pro:
+Bazel imports only `needs.json` from other repositories, or alternatively
+fetches `needs.json` from published websites.
 
-- Full support for whatever the repositories are customizing.
-- Very efficient / fast building of docs.
+#### **Pros:**
 
-Con:
+- Fast and efficient documentation builds.
 
-- Versioning is not handled by bazel, but on website level.
-- Linking is limited to versioned tags of the other repository (e.g. tagged
-  platform build).
-- We need to keep a lot of versions of the websites around.
+#### **Cons:**
 
-Possible optimization:
+- Versioning is managed at the website level, not by Bazel.
+- Linking is limited to versioned tags of repositories.
+- Requires keeping multiple website versions.
+
+#### **Optimization:**
 
 - Changes to the platform could trigger module builds which will validate
   whether the link hashes are still correct. This could be done by a CI job.
 
-### Solution 2 for "Non-Bidirectional linking"
+
+
+### **3. Uni-directional linking + Multiple platform websites**
 
 Again we import the needs.json from the other repositories. But this time we
 don't link to the original repository, but copy the pre-rendered website from
@@ -177,15 +186,12 @@ In the far far future we could extend this solution with back-links. See
 
 ## Considered Alternatives
 
-We'll start by exlusing some solutions quickly and then go into more detail
-with the remaining ones.
-
-### 1) needservice
+### **1. Needservice (Manual Approach)**
 
 This is basically a manual approach to the problem. As long as any other
-solution works, that would be preferrable. Let's mark this one as a **no-go**.
+solution works, that would be preferrable.
 
-### 2) weblinks
+### **2. Weblinks (Full URLs)**
 
 We can simply link pages / needs in the other repositories by their full url.
 While we can ensure that those links work, everything beyond that will become
@@ -195,7 +201,8 @@ problematic. Versioning might be solvable, but checking correct hashes
 Bidirectional links are not possible. As we'd like the same approach
 everywhere, this is a **no-go**.
 
-### 3) needimport
+
+### **3. Needimport (Sphinx-Needs Extension)**
 
 This is a sphinx-needs extension that allows to link to needs in other
 repositories. The other repositories do NOT need to be available at build time.
@@ -205,18 +212,19 @@ Needs from the other repositories are imported, as if they were local. However
 all structure is lost! All surrounding text, images etc are lost. Only the
 needs themselfes are imported. This is a **no-go**.
 
-### 4) Monorepo
 
-This violates the basic assumption of the project, which is to enable anyone to
-implement a module without having to touch SCORE. **no-go**.
+### **4. Monorepo - No-Go**
 
-## Further thoughts
+- Violates SCORE’s fundamental design, which allows independent module
+  development without modifying SCORE.
 
-If the platform were able to generate back links on the fly via JavaScript, we
-could have a single platform website with a parameter to the respective module.
-e.g. platform.html?module=module-xyz
+## Further Thoughts
 
-This seems simple enough and avoid the usability pitfalls of the many websites.
+If the platform dynamically generated back-links via JavaScript, a single
+website could serve all modules using query parameters (e.g.,
+`platform.html?module=module-xyz`). This approach could resolve usability
+issues caused by having a single platform website and is a potential future
+enhancement.
 
-This could be a viable improvement for the future, if we start with uni-
-directional links.
+In case of multiple platform websites, we could use a different language like
+Python to achieve the same result, without re-triggering Sphinx.
