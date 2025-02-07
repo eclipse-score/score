@@ -18,7 +18,7 @@ Logging
 .. document:: Logging
    :id: DOC_Logging
    :status: draft
-   :safety: ASIL_D
+   :safety: ASIL_B
    :tags: feature_request
 
 
@@ -38,12 +38,13 @@ This feature request proposes the development of a safe, efficient and robust lo
 Motivation
 ==========
 
-- currently no solution availible in the score platform
+- currently no solution available in the score platform
 
 Rationale
 =========
 
-Logging provides the possibility to understand the running system by capturing detailed information about system events.
+Logging provides the possibility to understand the running system by capturing detailed information about system
+events and application-level activities.
 
 Specification
 =============
@@ -59,34 +60,48 @@ Functionality
 -------------
 
 Logging has to support the following features:
+
 - Timestamping
+
+  - local timestamp for each log entry
+  - original timestamp for routed log entries
+  - timestamp synchronization for log entries coming from different logging nodes-
+
 - Log severity levels
-- Log priorisation in case of ressource conflicts
+- Log prioritization in case of resource conflicts
 - logging of early startup events
-- log filtering
+- Log filtering
+
   - Support application and context identifier like in DLT
   - Filtering by log levels for components and application level
   - Out of scope "time" (tooling topic)
+  - logs filtering by logging entity ID (e.g., ECU ID, Application ID, Context ID such as in DLT)
+  - logs filtering by log level (e.g., FATAL, ERROR, WARN, INFO, DEBUG, VERBOSE such as in DLT)
+  - Filtering options: it should have filter on app id and more fine-tuned filters on context ids.
+
 - message loss detection
+
   - optional functionality for logging. Important for tracing.
   - would become mandatory in case verification is done via logging feature (not recommended)
+
 - Context specific log level activation at runtime
 
 Log Sources
 -----------
 
-- raw sensor data e.g. video streams
 - user application
 - component features & platform
 
 Log Sinks
 ---------
-
+- log sinks shall be transparent to the application (e.g. by a facade )
 - console
 - File system
-  -- local
-  -- external mounted PCIe Drive
-  -- Cloud native drive via network
+
+  - local
+  - external mounted PCIe Drive
+  - Cloud native drive via network
+
 - Network (incl. second dedicated Ethernet Channel)
 - Logs shall appear on stdout when running unit tests
 
@@ -95,11 +110,19 @@ Configuration
 
 - Log level
 - Log Sinks
+
+  - Log storage device
+  - Log storage strategy (e.g., on system shutdown, on each message, on demand, on file size, on cache size, with circular or linear buffer)
+
 - Buffer size
-- Storage size
+- Storage size (e.g. storage size of log files)
 - Permission settings
 - log filter
--
+- Logging entity ID (e.g., ECU ID, Application ID, Context ID such as in DLT)
+- On-demand functionality (e.g., enable / disable the log storage)
+- Provide fallback configs. E.g.: App, System-wide
+
+- Possibility to provide an extension for custom types
 
 Error handling
 --------------
@@ -119,7 +142,7 @@ Resource consumption
 
 - Storage
 - Communication Channel
-- Runtime ressources
+- Runtime resources
 - Low impact on overall performance ---> QoS for handling overflows/dropping log messages
 
 Norms/Standards
@@ -140,7 +163,7 @@ Safety Impact
 
 - The interface should support the ASIL level of the user function.
 - Dependent on the Safety concept of the over all system, the logging should be classified accordingly.
-  That could be the case if the logging informations are part of the verification strategy..
+  That could be the case if the logging information are part of the verification strategy..
 
 License Impact
 ==============
@@ -170,7 +193,7 @@ When logging from a library, it shall be possible to easily associate the logs t
 Tracing
 -------
 
-Example - User need to correlate kernel traces to user traces for debugging , analysing etc
+Example - User need to correlate kernel traces to user traces for debugging , analyzing etc
 Follow the control flow (on function call basis)of the application.
 
 Recompute
