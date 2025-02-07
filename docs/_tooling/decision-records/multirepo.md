@@ -60,7 +60,6 @@ platform and different modules.
 3. Build docs for an integration
    - Content: platform, all modules, metrics, integration test results
 
-
 ## Constraints
 
 - For the sake of this decision we'll assume all repositories follow the same
@@ -102,12 +101,70 @@ will look absolutely identical. The only difference is the links to the
 modules.
 
 This can be avoided by having a single website, which is aware of all the
-modules. Or by having uni-directional links. Both cases would result in this simplified setup:
+modules. Or by having uni-directional links. Both cases would result in this
+simplified setup:
 
-![Websites with unidirectional links](_assets/multirepo_unidirectional.drawio.svg)
+![Websites with unidirectional
+links](_assets/multirepo_unidirectional.drawio.svg)
 
+### Solution for "Bidirectional linking without side effects"
 
-## Alternatives
+We use bazel to "import" the other repositories. When building module-docs or
+even integration-docs, everything is build in one go into one website. The top
+level index.rst is generated on the fly, so it contains all links to the other
+repositories.
+
+Pro:
+
+- Versioning is fully handled by bazel without any overhead, since it happens
+  anyway for the source code.
+- Full support for untagged versions (any commit id).
+
+Con:
+
+- Relies heavily on bazel -> potential problems with esbonio etc
+- Very low performance, especially with e.g. doxygen and test results as this
+  naive approach would build everything every time.
+
+Approach 1 (single website):
+
+- Use bazel to depend on the other repositories.
+- Use links (ln) to create temporary links the other repositories inside the
+  bazel- directories, so they appear to sphinx as if they were local files in
+  the same repository.
+- Con: No customizations via conf.py possible, e.g. module specific templates.
+
+Apprach 2 (separate websites):
+
+- Use bazel to depend on the other repositories.
+- Generate individual websites for each repository with the usual
+  sphinx-external-needs 3-step approach (build, exchange json, rebuild).
+- Generate a landing page with links to the individual websites.
+- Con: no common menu, no common search.
+
+### Solution for "Non-Bidirectional linking or side effects"
+
+As before We use bazel to "import" the other repositories, but only their
+needs.json. Alternatively we grab the needs.json from the websites.
+
+Pro:
+
+- Full support for whatever the repositories are customizing.
+- Very efficient / fast building of docs.
+
+Con:
+
+- Versioning is not handled by bazel, but on website level.
+- Linking is limited to versioned tags of the other repository (e.g. tagged
+  platform build).
+- We need to keep a lot of versions of the websites around.
+
+Possible optimization:
+
+- Changes to the platform could trigger module builds which will validate
+  whether the link hashes are still correct. This could be done by a CI job.
+
+## Considered Alternatives
 
 We'll start by exlusing some solutions quickly and then go into more detail
 with the remaining ones.
@@ -142,66 +199,13 @@ needs themselfes are imported. This is a **no-go**.
 This violates the basic assumption of the project, which is to enable anyone to
 implement a module without having to touch SCORE. **no-go**.
 
-### 5) Copying rst and building a single website
-
-*Variant: "Bidirectional linking without side effects"*
-
-We use bazel to "import" the other repositories. When building module-docs or
-even integration-docs, everything is build in one go into one website. The top
-level index.rst is generated on the fly, so it contains all links to the other
-repositories.
-
-Pro:
-
-- Versioning is fully handled by bazel without any overhead, since it happens
-  anyway for the source code.
-- Full support for untagged versions (any commit id).
-
-Con:
-
-- Relies heavily on bazel -> potential problems with esbonio etc
-- Very low performance, especially with e.g. doxygen and test results as this
-  naive approach would build everything every time.
-- No customizations via conf.py possible, e.g. module specific templates.
-
-Approach in detail (initial idea):
-
-- Use bazel to depend on the other repositories.
-- Use links (ln) to create temporary links the other repositories inside the
-  bazel- directories, so they appear to sphinx as if they were local files in
-  the same repository.
-
-### 6) Needs-external-needs (+ intersphinx)
-
-*Variant: "Non-Bidirectional linking or side effects"*
-
-As in 4) We use bazel to "import" the other repositories, but only their
-needs.json. Each repository is build individually, with all needs.json files.
-
-
-Pro:
-
-- Full support for whatever the repositories are customizing.
-- In detail this approach might enable more efficient building, if we can keep
-  all intermediate files of building a repository. As only additional
-  needs.json files are added and the rest is re-used.
-
-Con:
-
-- Versioning is not handled by bazel, but on website level.
-- Versioning is only possible for tagged versions of the platform.
-
-
-Possible optimization:
-
-- Changes to the platform could trigger module builds which will validate
-  whether the link hashes are still correct. This could be done by a CI job.
-
-
-### Further thoughts
+## Further thoughts
 
 If the platform were able to generate back links on the fly via JavaScript, we
 could have a single platform website with a parameter to the respective module.
 e.g. platform.html?module=module-xyz
 
 This seems simple enough and avoid the usability pitfalls of the many websites.
+
+This could be a viable improvement for the future, if we start with uni-
+directional links.
