@@ -11,7 +11,8 @@ repository.
 
 ## Decision
 
-**Status**: Open **Chosen solution**: TBD
+**Status**: Open
+**Solution**: 3. Uni-directional linking + Multiple platform websites
 
 ## Context: Repository Dependencies and Setup
 
