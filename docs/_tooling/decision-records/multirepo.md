@@ -164,6 +164,17 @@ Possible optimization:
 - Changes to the platform could trigger module builds which will validate
   whether the link hashes are still correct. This could be done by a CI job.
 
+### Solution 2 for "Non-Bidirectional linking"
+
+Again we import the needs.json from the other repositories. But this time we
+don't link to the original repository, but copy the pre-rendered website from
+the gh-pages branch of that other repository. This way we can link to the
+original website, but we don't have to build it ourselves. Versioning is now
+fully handled by bazel, and not by providing multiple versions of the website.
+
+In the far far future we could extend this solution with back-links. See
+'further thoughts' at the end.
+
 ## Considered Alternatives
 
 We'll start by exlusing some solutions quickly and then go into more detail
