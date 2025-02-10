@@ -12,6 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+.. _ipc_feature:
+
 Inter-process Communication
 ===========================
 
@@ -25,6 +27,8 @@ Inter-process Communication
 .. toctree::
    :hidden:
 
+   architecture.rst
+   roadmap.rst
    requirements/index.rst
 
 
