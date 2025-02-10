@@ -123,15 +123,15 @@ IPC Binding
 
 The basic idea of the ipc binding concept is to use two main operating system facilities:
 
-1. Shared Memory[4]: Shall be used for the heavy lifting of data exchange [6]
-2. Message Passing[5]: Shall be used as notification mechanism [7]
+1. Shared Memory: Shall be used for the heavy lifting of data exchange
+2. Message Passing: Shall be used as notification mechanism
 
 We decided for this side channel since implementing a notification system via shared memory would include the usage of
 condition variables.
 These condition variables would require a mutex.
 This could lead to the situation that a malicious process could lock the mutex forever and thus destroy any event
 notification.
-In general we can say that any kind of notification shall be exchanged via message passing facilities [7].
+In general we can say that any kind of notification shall be exchanged via message passing facilities.
 The section :ref:`message_passing_facilities` below will go into more detail.
 
 The usage of shared memory has some implications.
@@ -141,9 +141,9 @@ This implies that it is easy for a misbehaving process to destroy or manipulate 
 In order to cope with the latter, we split up the shared memory into three segments.
 
 - First, a segment where only the to-be-exchanged data is provided.
-  This segment shall be read-only to consumers and writeable by the producer [8].
+  This segment shall be read-only to consumers and writeable by the producer.
   This will ensure that nobody besides the producer process can manipulate the provided data.
-- The second and third segment shall contain necessary control information for the data segment[9].
+- The second and third segment shall contain necessary control information for the data segment.
   Necessary control information can include atomics that are used to synchronize the access to the data segments.
   Since this kind of access requires write access, we split the shared memory segments for control data by ASIL Level.
   This way it can be ensured that no low-level ASIL process interferes with higher level ones.
@@ -153,7 +153,7 @@ In order to cope with the latter, we split up the shared memory into three segme
    :alt: Mixed criticality setup for zero-copy IPC
 
 One of the main ideas in this concept is the split of control data from sample (user) data.
-In order to ensure a mapping, the shared memory segments are divided into slots [10] [11].
+In order to ensure a mapping, the shared memory segments are divided into slots.
 By convention, we then define that the slot indexes correlate.
 Meaning, slot 0 in the control data is used to synchronize slot 0 in the sample data.
 More information on these slot and the underlying algorithm can be found in :ref:`synchronization_algorithm`.
@@ -171,7 +171,7 @@ This is done over the control segments.
 We utilize message passing for notifications only.
 These notifications include:
 
-- event notification[25]
+- event notification
 - partial restart
 
 This is done, since there is no need to implement an additional notification handling via shared memory, which would
@@ -184,11 +184,11 @@ Instead, we use an OS feature for notification:
 - Unix Domain Sockets (under Linux)
 
 As illustrated in the graphic below a process should provide one message passing port to receive data for each supported
-ASIL-Level[26].
+ASIL-Level.
 In order to ensure that messages received from QM processes will not influence ASIL messages, each message passing port
-shall use a custom thread to wait for new messages[27].
-Further, it must be possible to register callbacks for mentioned messages[28].
-These callbacks shall then be invoked in the context of the socket specific thread[29].
+shall use a custom thread to wait for new messages.
+Further, it must be possible to register callbacks for mentioned messages.
+These callbacks shall then be invoked in the context of the socket specific thread.
 This way we can ensure that messages are received in a serialized manner.
 
 .. image:: _assets/architecture/lola_message_passing.drawio.svg
@@ -205,29 +205,29 @@ POSIX based operating systems generally support two kinds of shared memory:
 - anonymous
 
 Former is represented by a file within the file-system, while the latter is not visible directly to other processes.
-We decide for former, in order to utilize the filesystem for a simpler service discovery[13],[14].
+We decide for former, in order to utilize the filesystem for a simpler service discovery.
 In order to avoid fault propagation over restarts of the system, any shared memory communication shall not be
-persistent[15].
+persistent.
 Processes will identify shared memory segments over their name.
 The name will be commonly known by producers and consumers and deduced by additional parameters like for example service
-id and instance id[16].
+id and instance id.
 When it comes to the granularity of the data stored in the shared memory segments, multiple options can be considered.
 We could have one triplet of shared memory segments per process or one triplet of shared memory segments per event
 within a service instance.
 Former would make the ASIL-Split of segments quite hard, while the latter would explode the number of necessary segments
 within the system.
-As trade-of we decided to have one triplet of shared memory segments per service instance[17].
+As trade-of we decided to have one triplet of shared memory segments per service instance.
 
 It is possible to map shared memory segments to a fixed virtual address.
-This is highly discouraged by POSIX and leads to undefined behaviour[18].
+This is highly discouraged by POSIX and leads to undefined behaviour.
 Thus, shared memory segments will be mapped to different virtual addresses.
 In consequence no raw pointer can be stored within shared memory, since it will be invalid within another process.
-Only offset pointer (fancy pointer, relative pointer) shall be stored within shared memory segments[19].
+Only offset pointer (fancy pointer, relative pointer) shall be stored within shared memory segments.
 
 The usage of shared memory does not involve the operating system, after shared memory segments are setup.
 Thus, the operating system can no longer ensure freedom from interference between processes that have access to these
 shared memory regions.
-In order to restrict access we use ACL support of the operating system[20], [21].
+In order to restrict access we use ACL support of the operating system.
 
 In addition to the restricted permissions, we have to ensure that a corrupted shared memory region cannot influence
 other process-local memory regions.
@@ -238,13 +238,13 @@ Thus, a write operation to such a pointer could forward memory corruption.
 The basic idea to overcome such a scenario is, that we check that any pointer stays within the bounds of the shared
 memory region.
 Since anyhow only offset pointers can be stored in a shared memory region, this active bounds check can be performed
-whenever a offset pointer is dereferenced[22].
+whenever a offset pointer is dereferenced.
 
 The last possible impact can be on timing.
 If another process for example wrongly locks a mutex within the shared memory region and another process would then wait
 for this lock, we would end up in a deadlock.
 While timing is explicitly not a safety requirement (see :ref:`spec_mixed_criticality`), we still want to strive for
-wait-free algorithms to avoid such situations[23].
+wait-free algorithms to avoid such situations.
 Further, avoiding mutexes in our algorithms increases performance since it reduces kernel calls.
 
 .. _synchronization_algorithm:
@@ -252,14 +252,14 @@ Further, avoiding mutexes in our algorithms increases performance since it reduc
 Synchronization Algorithm
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A slot shall contain all necessary meta-information in order to synchronize data access[30].
+A slot shall contain all necessary meta-information in order to synchronize data access.
 This information most certainly needs to include a timestamp to indicate the order of produced data within the slots.
 Additionally, a use count is needed, indicating if a slot is currently in use by one process.
 The concrete data is implementation defined and must be covered by the detailed design.
 
-The main idea of the algorithm is that a producer shall always be able to store one new data sample[31].
+The main idea of the algorithm is that a producer shall always be able to store one new data sample.
 If he cannot find a respective slot, this indicates a contract violation, which indicates that a QM process misbehaved.
-In such a case, a producer should exclude any QM consumer from the communication[32].
+In such a case, a producer should exclude any QM consumer from the communication.
 
 This whole idea builds up on the split of shared memory segments by ASIL levels.
 This way we can ensure that an QM process will not degrade the ASIL Level for a communication path.
