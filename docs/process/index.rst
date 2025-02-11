@@ -34,6 +34,15 @@ Process Model
 The SCORE process model is described by workflows, executed by roles and is creating work products.
 Workflow activities are supported by guidances.
 
+General Concepts
+~~~~~~~~~~~~~~~~
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   general_concepts/index.rst
+
 Process Role definition
 ~~~~~~~~~~~~~~~~~~~~~~~
 
