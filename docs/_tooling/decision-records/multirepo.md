@@ -11,8 +11,14 @@ repository.
 
 ## Decision
 
-**Status**: Open
-**Solution**: 3. Uni-directional linking + Multiple platform websites
+**Status**: Agreed
+
+**Solution**: We'll use solution 2 (uni-directional linking). Details below.
+
+After that is implemented, we'll evaluate whether we can switch to
+bidirectional linking. Especially for the integration-build. We'll use solution
+1 or 3 implement the solution mentioned in 'Further Thoughts'. In any way, by
+then we'll have a better understanding of the problem and the requirements.
 
 ## Context: Repository Dependencies and Setup
 
@@ -131,6 +137,7 @@ documentation, everything is built in a single pass.
   tools.
 - Performance issues, especially with Doxygen and test results, as everything
   is rebuilt each time.
+- No reuse of already built documentation via Bazel cache.
 
 #### **Approach 1: Single Website**
 
@@ -154,8 +161,13 @@ If we were to drop the bi-directional linking requirement, we could simplify
 the setup significantly. The platform-website would not link to the modules,
 but modules would link to the platform-website.
 
-Bazel imports only `needs.json` from other repositories, or alternatively
-fetches `needs.json` from published websites.
+For uni-directional linking and link validations we use bazel to imports only
+`needs.json` from other repositories (from gh-pages branch, from the website,
+or from release artefacts).
+
+Potentially even better would be to simply depend on the docs:docs target of
+the other repositories and fetch the needs.json from there. This should not be
+a problem, as bazel should be able to cache the result.
 
 #### **Pros:**
 
@@ -164,13 +176,22 @@ fetches `needs.json` from published websites.
 #### **Cons:**
 
 - Versioning is managed at the website level, not by Bazel.
-- Linking is limited to versioned tags of repositories.
+- (Verified) Linking is limited to versioned tags of repositories.
 - Requires keeping multiple website versions.
 
 #### **Optimization:**
 
 - Changes to the platform could trigger module builds which will validate
   whether the link hashes are still correct. This could be done by a CI job.
+- We'll run link validation tests (hash comparisons) only for tagged versions
+  or non-draft requirements. In the meantime e.g. the latest module-\<xyz\>
+  version will point to the latest platform version without validation errors
+  leading to build errors. This is a trade-off between turn-around-times and
+  correctness.
+
+  Link/hash errors lead to:
+  * For tagged builds / for non-draft requirements: ERROR
+  * Otherwise: WARNING
 
 
 
