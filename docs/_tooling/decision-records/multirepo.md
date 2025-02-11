@@ -52,8 +52,8 @@ SCORE is structured as a multi-repository project.
 1. **Building platform documentation**
    - Includes process requirements, feature requirements, and guidance.
 2. **Building documentation for a single module**
-   - Includes module requirements, implementation, test results, and platform
-     coverage metrics.
+   - Includes module requirements, implementation, test results
+   - Potentially including platform coverage metrics.
 3. **Building documentation for an integration**
    - Includes platform requirements, all module documents, integration test
      results, and coverage metrics.
