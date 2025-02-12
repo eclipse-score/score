@@ -16,15 +16,15 @@ repository.
 **Solution**: We'll use solution 2 (uni-directional linking). Details below.
 
 Once implemented, we'll assess the feasibility of switching to bidirectional
-linking, particularly for the integration build. We'll probably use solution 1
-or 3 in combination with the approach mentioned in 'Further Thoughts.' By that
+linking, especially for the integration build. We'll probably use solution 1 or
+3 in combination with the approach mentioned in 'Further Thoughts.' By that
 time, we should have a clearer understanding of the problem and requirements.
 
 ## Context: Repository Dependencies and Setup
 
 SCORE is structured as a multi-repository project.
 
-![Repo Setup](_assets/multirepo_setup.drawio.svg)
+![Repository Setup Diagram](_assets/multirepo_setup.drawio.svg)
 
 ### **score (_platform_)**
 
@@ -110,12 +110,13 @@ This can be avoided by maintaining a single platform website that either:
 
 #### **Multiple Platform Websites Model**
 
-![Multiple Websites](_assets/multirepo_bidirectional.drawio.svg)
+![Diagram showing multiple platform websites with bidirectional
+links](_assets/multirepo_bidirectional.drawio.svg)
 
 #### **Single Platform Website Model**
 
-![Websites with Unidirectional
-Links](_assets/multirepo_unidirectional.drawio.svg)
+![Websites with Unidirectional Links
+Diagram](_assets/multirepo_unidirectional.drawio.svg)
 
 ## Solutions
 
