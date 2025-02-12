@@ -15,10 +15,47 @@
 General
 =======
 
+.. _naming_convention_files:
+
 Naming Conventions of Files
 ---------------------------
 
 The overall naming convention is to use snake case for all files and folders (all files are named lowercase and spaces are replaced by underscores).
+
+.. _naming_convention_needs:
+
+Naming Convention for UIDs
+--------------------------
+
+The naming convention for the UIDs of all elements shall be defined as follows:
+
+* It should not exceed 30 characters
+* It shall show a meaningful name
+* It shall only consist of lowercase, digits and underscores
+
+For all UIDs except for process UIDs also following convention shall be applied:
+
+* It shall consist of 3 parts separated by double underscore
+   * prefix
+   * structural element
+   * keyword
+
+The prefixes are defined in the metamodel.
+
+Structural elements depend on the type of the need for requirements it could be an abbreviation for the feature / subfeature.
+
+The keyword shall indicate the content of the requirement.
+
+As examples:
+
+* feat_req__ipc__e2e_protection
+* comp_req__kvs__storage
+
+For UIDs which refer to the process repository the structural element shall only be optional:
+
+* gd_temp__review
+* gd_req__req__structure
+
 
 .. _Platform_Folder_Structure:
 
