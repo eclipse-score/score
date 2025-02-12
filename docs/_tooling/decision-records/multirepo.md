@@ -20,6 +20,14 @@ linking, especially for the integration build. We'll probably use solution 1 or
 3 in combination with the approach mentioned in 'Further Thoughts.' By that
 time, we should have a clearer understanding of the problem and requirements.
 
+## Summary of Solutions
+
+| **Solution** | **Description** | **Pros** | **Cons** |
+|-------------|----------------|----------|----------|
+| **1. Bidirectional Linking (Build from Scratch)** | Fully integrates platform and module documentation in a single Bazel build. | ✔ Fully managed versioning via Bazel.<br>✔ Supports untagged versions (any commit ID). | ❌ Performance issues with full rebuilds.<br>❌ No reuse of cached documentation. |
+| **2. Uni-directional Linking + Website-Based Versioning** ✅ _(Chosen Solution)_ | Modules link to the platform website, but the platform does not link back. Modules fetch only `needs.json` for verification. | ✔ Fast and efficient builds.<br>✔ Less complex than bidirectional linking. | ❌ Versioning managed at the website level, not by Bazel.<br>❌ Requires multiple platform website versions. |
+| **3. Uni-directional Linking + Bazel-Based Versioning** | Similar to Solution 2, but modules reference pre-rendered versions of the platform website from release artifacts. | ✔ No need to maintain multiple platform websites.<br>✔ Versioning fully managed by Bazel. | ❌ More complex setup for handling pre-rendered artifacts.<br>❌ No immediate support for untagged versions. |
+
 ## Context: Repository Dependencies and Setup
 
 SCORE is structured as a multi-repository project.
