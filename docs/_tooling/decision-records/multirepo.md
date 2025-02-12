@@ -6,7 +6,7 @@ The SCORE project manages stakeholder and feature requirements in the `/score`
 repository (referred to as _platform_ hereafter). However, implementations and
 implementation-specific requirements reside in separate repositories
 (`/module-<xyz>`). These modules must link to the feature requirements they
-implement. However, currently linking is only possible within a single
+implement. However, currently, linking is only possible within a single
 repository.
 
 ## Decision
@@ -15,10 +15,10 @@ repository.
 
 **Solution**: We'll use solution 2 (uni-directional linking). Details below.
 
-After that is implemented, we'll evaluate whether we can switch to
-bidirectional linking. Especially for the integration-build. We'll use solution
-1 or 3 implement the solution mentioned in 'Further Thoughts'. In any way, by
-then we'll have a better understanding of the problem and the requirements.
+Once implemented, we'll assess the feasibility of switching to bidirectional
+linking, particularly for the integration build. We'll probably use solution 1
+or 3 in combination with the approach mentioned in 'Further Thoughts.' By that
+time, we should have a clearer understanding of the problem and requirements.
 
 ## Context: Repository Dependencies and Setup
 
@@ -58,8 +58,8 @@ SCORE is structured as a multi-repository project.
 1. **Building platform documentation**
    - Includes process requirements, feature requirements, and guidance.
 2. **Building documentation for a single module**
-   - Includes module requirements, implementation, test results
-   - Potentially including platform coverage metrics.
+   - Includes module requirements, implementation, test results.
+   - Potentially includes platform coverage metrics.
 3. **Building documentation for an integration**
    - Includes platform requirements, all module documents, integration test
      results, and coverage metrics.
@@ -68,67 +68,66 @@ SCORE is structured as a multi-repository project.
 
 - All repositories follow the same process (version) and tooling (version).
 - Custom Sphinx templates are only considered if provided centrally.
-- Data protection is not a concern as all content is open source under the same
-  license.
+- Data protection is not a concern, as all content is open source under the
+  same license.
 - Requirements originating from integrations are out of scope.
 
 ## Previous Decisions
 
-_Unfortunately those are not documented, therefore we cannot provide links to
-any decision records._
+_Unfortunately, these are not documented, so we cannot provide links to past
+decision records._
 
 - SCORE handles multiple repositories via Bazel.
 - Requirements and links are implemented using `sphinx-needs`.
 - Requirement-link versioning is managed through hashes.
-- We have two different mechanisms for versioning. Current assumption is that
-  we'll use bazel to pull other repositories in a specific version, while we
-  never pull different versions of the same repository. So basically, we have
-  the "classic multi repo setup" situation, as it's well known from e.g. git
-  submodules.
+- We have two different mechanisms for versioning. The current assumption is
+  that Bazel will pull other repositories in a specific version, while
+  different versions of the same repository will not be pulled. Essentially,
+  this follows the "classic multi-repo setup," similar to Git submodules.
 
 ## Bidirectional Linking Without Side Effects
 
-"Bidirectional linking without side effects" means that the _platform_-website
+"Bidirectional linking without side effects" means that the _platform_ website
 remains unaffected by the modules while still linking to them. This
-necessitates multiple versions of the platform-website.
+necessitates multiple versions of the platform website.
 
-This can be avoided by having a single platform-website that is either aware of
-all module-websites with bi-directional links or by no modules at all
-(uni-directional links from module-websites to platform-website).
+This can be avoided by maintaining a single platform website that either:
+- Is aware of all module websites with bi-directional links, or
+- Contains no module links at all (uni-directional links from module websites
+  to the platform website).
 
-### **Problems with multiple platform-websites**
+### **Problems with Multiple Platform Websites**
 
-- Maintaining multiple platform-websites results in different websites with
-  identical content but different module links.
-- Users must be cautious about which variant of the platform-website they view.
+- Maintaining multiple platform websites results in identical content with
+  different module links.
+- Users must be cautious about which variant of the platform website they view.
 
-### **Benefits of multiple platform-websites**
+### **Benefits of Multiple Platform Websites**
 
-- We don't need to have a platform-website hosted in hundreds of different
-  versions, or artificially restrict ourselves to fewer versions when linking
-  (e.g. only tagged versions). Each module can host any version of the
-  platform-website.
+- No need to host hundreds of platform website versions or artificially limit
+  linking (e.g., only linking to tagged versions). Each module can host any
+  version of the platform website.
 
-#### **multiple platform-websites Model**
+#### **Multiple Platform Websites Model**
 
 ![Multiple Websites](_assets/multirepo_bidirectional.drawio.svg)
 
-#### **single platform-website Model**
+#### **Single Platform Website Model**
 
 ![Websites with Unidirectional
 Links](_assets/multirepo_unidirectional.drawio.svg)
 
 ## Solutions
 
-### **1. Bidirectional Linking Without Side Effects = Multiple platform websites**
+### **1. Bidirectional Linking Without Side Effects = Build from scratch**
 
-Bazel imports other repositories. When building module or integration
-documentation, everything is built in a single pass.
+Bazel imports dependencies from other repositories. When building module or
+integration documentation, everything is built in a single pass.
 
 #### **Pros:**
 
-- Versioning is fully managed by Bazel with minimal overhead, since it happens
-  anyway for the source code.
+- Versioning is fully managed by Bazel with minimal overhead, as it is already
+  used for source code.
 - Supports untagged versions (any commit ID).
 
 #### **Cons:**
@@ -137,7 +136,7 @@ documentation, everything is built in a single pass.
   tools.
 - Performance issues, especially with Doxygen and test results, as everything
   is rebuilt each time.
-- No reuse of already built documentation via Bazel cache.
+- No reuse of previously built documentation via Bazel cache.
 
 #### **Approach 1: Single Website**
 
@@ -155,15 +154,16 @@ documentation, everything is built in a single pass.
 - Generates a landing page linking to each website.
 - **Con:** No shared navigation menu or search functionality.
 
-### **2. Uni-directional Linking + Single platform website**
 
-If we were to drop the bi-directional linking requirement, we could simplify
-the setup significantly. The platform-website would not link to the modules,
-but modules would link to the platform-website.
+### **2. Uni-directional Linking + Website-based-versioning**
 
-For uni-directional linking and link validations we use bazel to imports only
-`needs.json` from other repositories (from gh-pages branch, from the website,
-or from release artefacts).
+If we drop the bi-directional linking requirement, we can simplify the setup
+significantly. The platform website will not link to modules, but modules will
+link to the platform website.
+
+For uni-directional linking and link validations, Bazel imports only
+`needs.json` from other repositories (e.g., from the gh-pages branch, the
+website, or release artifacts).
 
 Potentially even better would be to simply depend on the docs:docs target of
 the other repositories and fetch the needs.json from there. This should not be
@@ -176,8 +176,8 @@ a problem, as bazel should be able to cache the result.
 #### **Cons:**
 
 - Versioning is managed at the website level, not by Bazel.
-- (Verified) Linking is limited to versioned tags of repositories.
-- Requires keeping multiple website versions.
+- Verified linking is limited to versioned tags of repositories.
+- Requires maintaining multiple website versions.
 
 #### **Optimization:**
 
@@ -195,16 +195,13 @@ a problem, as bazel should be able to cache the result.
 
 
 
-### **3. Uni-directional linking + Multiple platform websites**
+### **3. Uni-directional Linking + Bazel-based-versioning**
 
-Again we import the needs.json from the other repositories. But this time we
-don't link to the original repository, but copy the pre-rendered website from
-the gh-pages branch of that other repository. This way we can link to the
-original website, but we don't have to build it ourselves. Versioning is now
-fully handled by bazel, and not by providing multiple versions of the website.
-
-In the far far future we could extend this solution with back-links. See
-'further thoughts' at the end.
+Similar to solution 2, but instead of linking to the original repository, we
+copy the pre-rendered website from release artefacts or from the gh-pages
+branch of that repository. This allows linking to the original website while
+avoiding the need to build it ourselves. Versioning is fully managed by Bazel,
+eliminating the need to maintain multiple website versions.
 
 ## Considered Alternatives
 
