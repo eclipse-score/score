@@ -26,8 +26,6 @@ sys.path.insert(0, ".")
 from _tooling.conf_extras import layouts
 from sphinx.application import Sphinx
 
-from docs._tooling.sphinx_extensions.sphinx_extensions import checks
-
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
@@ -127,7 +125,3 @@ html_context = {
 needs_layouts = layouts.needs_layouts
 needs_global_options = {"collapse": True}
 needs_global_options = needs_global_options | layouts.needs_global_options
-
-
-def setup(app: Sphinx):
-    checks.add_warnings(app)

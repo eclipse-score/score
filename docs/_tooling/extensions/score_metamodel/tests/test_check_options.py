@@ -1,5 +1,5 @@
 # *******************************************************************************
-# Copyright (c) 2024 Contributors to the Eclipse Foundation
+# Copyright (c) 2025 Contributors to the Eclipse Foundation
 #
 # See the NOTICE file(s) distributed with this work for additional
 # information regarding copyright ownership.
@@ -10,18 +10,20 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
-from unittest.mock import ANY, MagicMock
 
 import pytest
-from sphinx.util.logging import SphinxLoggerAdapter
 from sphinx_needs.data import NeedsInfoType
 
+from docs._tooling.extensions.score_metamodel.checks.check_options import (
+    check_extra_options,
+    check_options,
+)
 from docs._tooling.extensions.score_metamodel.metamodel import (
     needs_types as production_needs_types,
 )
-from docs._tooling.sphinx_extensions.sphinx_extensions.check_options import (
-    check_extra_options,
-    check_options,
+from docs._tooling.extensions.score_metamodel.tests import (
+    fake_check_logger,
+    verify_log_string,
 )
 
 
@@ -59,9 +61,6 @@ class TestCheckOptions:
     assert type(NEED_TYPE_INFO) == type(production_needs_types)  # noqa: E721
     assert type(NEED_TYPE_INFO[0]) == type(production_needs_types[0])  # noqa: E721
 
-    LOGGER = MagicMock(spec=SphinxLoggerAdapter)
-    LOGGER.warning = MagicMock()
-
     def test_known_directive_with_mandatory_option_and_allowed_value(self):
         # Given a need with a type that is listed in the required options
         #  and mandatory options present
@@ -75,8 +74,11 @@ class TestCheckOptions:
             lineno=None,
         )
 
+        logger = fake_check_logger()
+
         # Expect that the checks pass
-        assert check_options(need, self.LOGGER, self.NEED_TYPE_INFO) is False
+        check_options(need, logger, self.NEED_TYPE_INFO)
+        assert not logger.has_warnings
 
     def test_known_directive_with_optional_and_mandatory_option_and_allowed_value(self):
         # Given a need with a type that is listed in the optional options
@@ -92,9 +94,32 @@ class TestCheckOptions:
             lineno=None,
         )
 
+        logger = fake_check_logger()
+
         # Expect that the checks pass
-        assert (
-            check_options(need, self.LOGGER, self.NEED_TYPE_INFO_WITH_OPT_OPT) is False
+        check_options(need, logger, self.NEED_TYPE_INFO_WITH_OPT_OPT)
+
+        assert not logger.has_warnings
+
+    def test_unknown_directive(self):
+        # Given a need with a an unknown type it should raise an error
+        need = NeedsInfoType(
+            target_id="TOOL_REQ__001",
+            id="TOOL_REQ__001",
+            type="unknown_type",
+            some_required_option="some_value__001",
+            docname=None,
+            lineno=None,
+        )
+
+        logger = fake_check_logger()
+
+        # Expect that the checks pass
+        check_options(need, logger, self.NEED_TYPE_INFO)
+        verify_log_string(
+            logger,
+            f'with type `{need['type']}`: no type info defined for semantic check.',
+            expect_location=False,
         )
 
     def test_unknown_option_present_in_req_opt(self):
@@ -109,11 +134,12 @@ class TestCheckOptions:
             lineno=None,
         )
 
+        logger = fake_check_logger()
+
         # Expect that the checks pass
-        assert check_extra_options(need, self.LOGGER, self.NEED_TYPE_INFO) is True
-        self.LOGGER.warning.assert_called_with(
-            f'Need: {need["id"]} have these extra options: `other_option`.',
-            location=ANY,
+        check_extra_options(need, logger, self.NEED_TYPE_INFO)
+        verify_log_string(
+            logger, "has these extra options: `other_option`.", expect_location=False
         )
 
     def test_unknown_option_present_in_neither_req_opt_neither_opt_opt(self):
@@ -129,14 +155,13 @@ class TestCheckOptions:
             lineno=None,
         )
 
+        logger = fake_check_logger()
+
         # Expect that the checks pass
-        assert (
-            check_extra_options(need, self.LOGGER, self.NEED_TYPE_INFO_WITH_OPT_OPT)
-            is True
-        )
-        self.LOGGER.warning.assert_called_with(
-            f'Need: {need["id"]} have these extra options: `other_option`.',
-            location=ANY,
+        check_extra_options(need, logger, self.NEED_TYPE_INFO_WITH_OPT_OPT)
+
+        verify_log_string(
+            logger, "has these extra options: `other_option`.", expect_location=False
         )
 
     def test_known_required_option_missing(self):
@@ -149,11 +174,14 @@ class TestCheckOptions:
             lineno=None,
         )
 
+        logger = fake_check_logger()
+
         # Expect that the checks fail and a warning is logged
-        assert check_options(need, self.LOGGER, self.NEED_TYPE_INFO) is True
-        self.LOGGER.warning.assert_called_with(
-            f'Need: {need["id"]} is missing required option: `some_required_option`.',
-            location=ANY,
+        check_options(need, logger, self.NEED_TYPE_INFO)
+        verify_log_string(
+            logger,
+            "is missing required option: `some_required_option`.",
+            expect_location=False,
         )
 
     def test_value_violates_pattern_for_required_option(self):
@@ -167,11 +195,14 @@ class TestCheckOptions:
             lineno=None,
         )
 
+        logger = fake_check_logger()
+
         # Expect that the checks fail and a warning is logged
-        assert check_options(need, self.LOGGER, self.NEED_TYPE_INFO) is True
-        self.LOGGER.warning.assert_called_with(
-            f'Need: {need["id"]} required option `some_required_option` with value `{need["some_required_option"]}` does not follow pattern `{self.NEED_TYPE_INFO[0]["req_opt"][1][1]}`.',
-            location=ANY,
+        check_options(need, logger, self.NEED_TYPE_INFO)
+        verify_log_string(
+            logger,
+            f'does not follow pattern `{self.NEED_TYPE_INFO[0]["req_opt"][1][1]}`.',
+            expect_location=False,
         )
 
     def test_value_violates_pattern_for_optional_option(self):
@@ -186,11 +217,12 @@ class TestCheckOptions:
             lineno=None,
         )
 
+        logger = fake_check_logger()
+
         # Expect that the checks fail and a warning is logged
-        assert (
-            check_options(need, self.LOGGER, self.NEED_TYPE_INFO_WITH_OPT_OPT) is True
-        )
-        self.LOGGER.warning.assert_called_with(
-            f'Need: {need["id"]} optional option `some_optional_option` with value `{need["some_optional_option"]}` does not follow pattern `{self.NEED_TYPE_INFO_WITH_OPT_OPT[0]["opt_opt"][0][1]}`.',
-            location=ANY,
+        check_options(need, logger, self.NEED_TYPE_INFO_WITH_OPT_OPT)
+        verify_log_string(
+            logger,
+            f'does not follow pattern `{self.NEED_TYPE_INFO_WITH_OPT_OPT[0]["opt_opt"][0][1]}`.',
+            expect_location=False,
         )

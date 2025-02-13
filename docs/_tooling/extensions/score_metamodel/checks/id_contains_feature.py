@@ -12,9 +12,10 @@
 # *******************************************************************************
 import os
 
+from sphinx_needs.data import NeedsInfoType
+
 from score_metamodel import (
     CheckLogger,
-    NeedsInfoType,
     local_check,
 )
 

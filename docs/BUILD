@@ -48,7 +48,6 @@ load("//tools/testing/pytest:defs.bzl", "score_py_pytest")
 sphinx_requirements = all_requirements + [
     "@rules_python//python/runfiles",
     ":plantuml_for_python",
-    "//docs/_tooling/sphinx_extensions",
 ]
 
 sphinx_docs(
