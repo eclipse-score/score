@@ -12,6 +12,7 @@
 # *******************************************************************************
 from unittest.mock import MagicMock
 
+import pytest
 from sphinx.util.logging import SphinxLoggerAdapter
 
 from docs._tooling.extensions.score_metamodel import CheckLogger, NeedsInfoType
@@ -20,9 +21,42 @@ from docs._tooling.extensions.score_metamodel import CheckLogger, NeedsInfoType
 def fake_check_logger():
     """Creates a CheckLogger with a mocked backend."""
 
-    LOGGER = MagicMock(spec=SphinxLoggerAdapter)
-    LOGGER.warning = MagicMock()
-    return CheckLogger(LOGGER)
+    class FakeCheckLogger(CheckLogger):
+        def __init__(self):
+            self._mock_logger = MagicMock(spec=SphinxLoggerAdapter)
+            self._mock_logger.warning = MagicMock()
+            super().__init__(self._mock_logger)
+
+        def assert_no_warnings(self):
+            if self.has_warnings:
+                warnings = "\n".join(
+                    f"* {call}" for call in self._mock_logger.warning.call_args_list
+                )
+                pytest.fail(f"Expected no warnings, but got:\n{warnings}")
+
+        def assert_warning(self, expected_substring, expect_location=True):
+            """
+            Assert that the logger was called exactly once with a message containing a specific substring.
+
+            This also verifies that the defaults from need() are used correctly.
+            So you must use need() to create the need object that is passed to the checks.
+            """
+            self._mock_logger.warning.assert_called_once()
+
+            # Retrieve the call arguments
+            args, kwargs = self._mock_logger.warning.call_args
+            log_message = args[0]
+
+            assert expected_substring in log_message, f"Expected substring '{
+                expected_substring
+            }' not found in log message: '{log_message}'"
+
+            assert kwargs["type"] == "score_metamodel"
+
+            if expect_location:
+                assert kwargs["location"] == "docname.rst:42"
+
+    return FakeCheckLogger()
 
 
 def need(**kwargs):
@@ -34,25 +68,3 @@ def need(**kwargs):
     kwargs.setdefault("lineno", "42")
 
     return NeedsInfoType(**kwargs)
-
-
-def verify_log_string(logger: CheckLogger, expected_substring, expect_location=True):
-    """
-    Assert that the logger was called exactly once with a message containing a specific substring.
-
-    This also verifies that the defaults from need() are used correctly.
-    So you must use need() to create the need object that is passed to the checks.
-    """
-    logger._log.warning.assert_called_once()
-
-    # Retrieve the call arguments
-    args, kwargs = logger._log.warning.call_args
-    log_message = args[0]
-
-    assert expected_substring in log_message, f"Expected substring '{
-            expected_substring}' not found in log message: '{log_message}'"
-
-    assert kwargs["type"] == "score_metamodel"
-
-    if expect_location:
-        assert kwargs["location"] == "docname.rst:42"

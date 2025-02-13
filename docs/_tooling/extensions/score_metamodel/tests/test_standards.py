@@ -15,10 +15,7 @@ from sphinx.util.logging import SphinxLoggerAdapter
 from sphinx_needs.data import NeedsInfoType
 
 from docs._tooling.extensions.score_metamodel.checks import standards
-from docs._tooling.extensions.score_metamodel.tests import (
-    fake_check_logger,
-    verify_log_string,
-)
+from docs._tooling.extensions.score_metamodel.tests import fake_check_logger
 
 
 class TestStandards:
@@ -61,7 +58,7 @@ class TestStandards:
         standards.check_all_standard_req_linked_item_via_the_compliance_req(
             needs, logger
         )
-        assert not logger.has_warnings
+        logger.assert_no_warnings()
 
     def test_check_standard_req_linked_item_via_the_compliance_req_negative(self):
         """
@@ -102,9 +99,7 @@ class TestStandards:
         standards.check_all_standard_req_linked_item_via_the_compliance_req(
             needs, logger
         )
-        assert logger.has_warnings
-        verify_log_string(
-            logger,
+        logger.assert_warning(
             f"Standard requirement `{need_1['id']}` is not linked to at least one item via the complies tag.",
             expect_location=False,
         )
@@ -146,7 +141,7 @@ class TestStandards:
         standards.check_all_standard_workproducts_linked_item_via_the_compliance_wp(
             needs, logger
         )
-        assert not logger.has_warnings
+        logger.assert_no_warnings()
 
     def test_check_standard_workproducts_linked_item_via_the_compliance_wp_negative(
         self,
@@ -184,8 +179,7 @@ class TestStandards:
             needs, logger
         )
 
-        verify_log_string(
-            logger,
+        logger.assert_warning(
             f"Standard workproduct `{need_1['id']}` is not linked to at least one item via the complies tag.",
             expect_location=False,
         )
@@ -232,7 +226,7 @@ class TestStandards:
         logger = fake_check_logger()
 
         standards.check_workproduct_uniqueness_over_workflows(needs, logger)
-        assert not logger.has_warnings
+        logger.assert_no_warnings()
 
     def test_check_workproduct_uniqueness_over_workflows_negative_wprkproduct_not_listed_in_any_workflow(
         self,
@@ -281,8 +275,7 @@ class TestStandards:
 
         standards.check_workproduct_uniqueness_over_workflows(needs, logger)
 
-        verify_log_string(
-            logger,
+        logger.assert_warning(
             "is not contained in any workflow, which is incorrect.",
             expect_location=False,
         )
@@ -355,8 +348,7 @@ class TestStandards:
 
         ids = [need_2["id"], need_3["id"]]
         workflows_str = ", ".join(f"`{id}`" for id in ids)
-        verify_log_string(
-            logger,
+        logger.assert_warning(
             f"is contained in {2} workflows: {workflows_str}, which is incorrect.",
             expect_location=False,
         )
@@ -416,7 +408,8 @@ class TestStandards:
             1,
             1,
         ], f"For function my_pie_linked_standard_requirements expected [1, 1] but got {
-                results}"
+            results
+        }"
 
     def test_my_pie_linked_standard_workproducts(self):
         """
@@ -465,7 +458,8 @@ class TestStandards:
             1,
             1,
         ], f"For function my_pie_linked_standard_workproducts expected [1, 1] but got {
-                results}"
+            results
+        }"
 
     def test_my_pie_workproducts_contained_in_exactly_one_workflow(self):
         """
@@ -584,7 +578,8 @@ class TestStandards:
         assert (
             results == [1, 1, 1]
         ), f"For function my_pie_workproducts_contained_in_exactly_one_workflow expected [1, 1, 1] but got {
-                results}"
+            results
+        }"
 
     def test_get_standards_needs(self):
         """

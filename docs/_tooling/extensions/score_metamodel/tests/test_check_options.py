@@ -21,10 +21,7 @@ from docs._tooling.extensions.score_metamodel.checks.check_options import (
 from docs._tooling.extensions.score_metamodel.metamodel import (
     needs_types as production_needs_types,
 )
-from docs._tooling.extensions.score_metamodel.tests import (
-    fake_check_logger,
-    verify_log_string,
-)
+from docs._tooling.extensions.score_metamodel.tests import fake_check_logger
 
 
 @pytest.mark.metadata(
@@ -78,7 +75,7 @@ class TestCheckOptions:
 
         # Expect that the checks pass
         check_options(need, logger, self.NEED_TYPE_INFO)
-        assert not logger.has_warnings
+        logger.assert_no_warnings()
 
     def test_known_directive_with_optional_and_mandatory_option_and_allowed_value(self):
         # Given a need with a type that is listed in the optional options
@@ -99,7 +96,7 @@ class TestCheckOptions:
         # Expect that the checks pass
         check_options(need, logger, self.NEED_TYPE_INFO_WITH_OPT_OPT)
 
-        assert not logger.has_warnings
+        logger.assert_no_warnings()
 
     def test_unknown_directive(self):
         # Given a need with a an unknown type it should raise an error
@@ -116,9 +113,8 @@ class TestCheckOptions:
 
         # Expect that the checks pass
         check_options(need, logger, self.NEED_TYPE_INFO)
-        verify_log_string(
-            logger,
-            f'with type `{need['type']}`: no type info defined for semantic check.',
+        logger.assert_warning(
+            f'with type `{need["type"]}`: no type info defined for semantic check.',
             expect_location=False,
         )
 
@@ -138,8 +134,9 @@ class TestCheckOptions:
 
         # Expect that the checks pass
         check_extra_options(need, logger, self.NEED_TYPE_INFO)
-        verify_log_string(
-            logger, "has these extra options: `other_option`.", expect_location=False
+        logger.assert_warning(
+            "has these extra options: `other_option`.",
+            expect_location=False,
         )
 
     def test_unknown_option_present_in_neither_req_opt_neither_opt_opt(self):
@@ -160,8 +157,9 @@ class TestCheckOptions:
         # Expect that the checks pass
         check_extra_options(need, logger, self.NEED_TYPE_INFO_WITH_OPT_OPT)
 
-        verify_log_string(
-            logger, "has these extra options: `other_option`.", expect_location=False
+        logger.assert_warning(
+            "has these extra options: `other_option`.",
+            expect_location=False,
         )
 
     def test_known_required_option_missing(self):
@@ -178,8 +176,7 @@ class TestCheckOptions:
 
         # Expect that the checks fail and a warning is logged
         check_options(need, logger, self.NEED_TYPE_INFO)
-        verify_log_string(
-            logger,
+        logger.assert_warning(
             "is missing required option: `some_required_option`.",
             expect_location=False,
         )
@@ -199,8 +196,7 @@ class TestCheckOptions:
 
         # Expect that the checks fail and a warning is logged
         check_options(need, logger, self.NEED_TYPE_INFO)
-        verify_log_string(
-            logger,
+        logger.assert_warning(
             f'does not follow pattern `{self.NEED_TYPE_INFO[0]["req_opt"][1][1]}`.',
             expect_location=False,
         )
@@ -221,8 +217,7 @@ class TestCheckOptions:
 
         # Expect that the checks fail and a warning is logged
         check_options(need, logger, self.NEED_TYPE_INFO_WITH_OPT_OPT)
-        verify_log_string(
-            logger,
+        logger.assert_warning(
             f'does not follow pattern `{self.NEED_TYPE_INFO_WITH_OPT_OPT[0]["opt_opt"][0][1]}`.',
             expect_location=False,
         )
