@@ -1,5 +1,5 @@
 # *******************************************************************************
-# Copyright (c) 2024 Contributors to the Eclipse Foundation
+# Copyright (c) 2025 Contributors to the Eclipse Foundation
 #
 # See the NOTICE file(s) distributed with this work for additional
 # information regarding copyright ownership.
@@ -11,7 +11,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 
-name: License Check
+name: License check preparation
 on:
   pull_request:
     types: [opened, reopened, synchronize]
@@ -20,6 +20,8 @@ on:
 jobs:
   license-check:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4.2.2
@@ -27,4 +29,36 @@ jobs:
         uses: bazel-contrib/setup-bazel@0.9.1
       - name: Run license checks
         run: |
-          bazel run //:license.check.python
+          # The bash script won't fail on error. We capture the stderr and stdout and we save
+          # the exit code of the bazel command in a variable
+          # The output will also be stored in a file using the tee command
+          # We save both  output and exit code in the GH actions env file
+          set +e  # Ensure script does not exit on failure, even if the bazel run fails, the execution will continue
+          OUTPUT=$(bazel run //:license.check.python 2>&1)
+          EXIT_CODE=$?
+          echo "$OUTPUT" | tee license-check-output.txt
+          echo "exit_code=$EXIT_CODE" >> $GITHUB_ENV
+          echo "output<<EOF" >> $GITHUB_ENV
+          echo "$OUTPUT" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: Comment on PR with License Check Results
+        if: github.event_name == 'pull_request'
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            ### License Check Results
+            🚀 The **license check preparation** job ran successfully.
+
+            **Status:** ${{ env.exit_code == 0 && '✅ Passed' || '⚠️ Needs Review' }}
+
+            <details>
+            <summary>Click to expand output</summary>
+
+            ```
+            ${{ env.output }}
+            ```
+
+            </details>
+          reactions: eyes
