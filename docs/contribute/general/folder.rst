@@ -77,7 +77,7 @@ can be in a different order.
             components/                             -> Components of the module.
                 <component_name>/                   -> Folder containing all artifacts corresponding to one component.
                     docs/                           -> Documentation of the component consisting of ...
-                        architecture/               -> ... Component architecture (only if sub-components exist) [wp__sw_component_architecture].
+                        architecture/               -> ... Component architecture (only if sub-components exist) [wf__cr_mt_comparch].
                         requirements/               -> ... Component requirements [wp__sw_component_req] and HSI (if relevant) [wp__hsi].
                         safety_analysis/            -> ... Safety analysis on component level [wp__sw_component_safety_analyses]
                         verification/               -> ... Architecture review [wp__sw_arch_verification], code inspection [wp__sw_code_inspect]

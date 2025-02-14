@@ -47,8 +47,6 @@ General Concepts
 
    general_concepts/index.rst
    process_areas/index.rst
-   process_areas/requirements_engineering/index.rst
-   process_areas/safety_management/index.rst
 
 Process Role definition
 ~~~~~~~~~~~~~~~~~~~~~~~

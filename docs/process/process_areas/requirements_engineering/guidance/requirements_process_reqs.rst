@@ -220,7 +220,7 @@ Process Requirements Checks
    It shall be checked if all mandatory attributes for each requirement is provided by the user. For all requirements following attributes shall be mandatory:
 
    .. needtable:: Overview mandatory requirement attributes
-      :filter: "mandatory" in tags and "attribute" in tags and type == "gd_req"
+      :filter: "mandatory" in tags and "attribute" in tags and "requirements_engineering" in tags and type == "gd_req"
       :style: table
       :columns: title
       :colwidths: 30

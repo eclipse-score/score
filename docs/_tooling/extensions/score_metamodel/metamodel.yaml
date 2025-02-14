@@ -139,16 +139,17 @@ needs_types:
     mandatory_options:
       id: "^stkh_req__[0-9a-z_]*$"
       reqtype: "^(Functional|Interface|Process|Legal|Non-Functional)$"
-      security: "^(YES|NO)$"
       safety: "^(QM|ASIL_B|ASIL_D)$"
       status: "^(valid|invalid)$"
       rationale: "^.+$"
     optional_options:
+      security: "^(YES|NO)$"
       codelink: "^.*$"
       testlink: "^.*$"
       reqcovered: "^(YES|NO)$"
       testcovered: "^(YES|NO)$"
       hash: "^.*$"
+
 
   feat_req:
     title: "Feature Requirement"
@@ -234,7 +235,7 @@ needs_types:
       safety: "^(QM|ASIL_B|ASIL_D)$"
       status: "^(valid|invalid)$"
     mandatory_links:
-      satisfies: "^feat_req__.*$"
+      fulfils: "^feat_req__.*$"
 
   feat_arc_dyn:
     title: "Feature Architecture Dynamic View"
@@ -247,7 +248,7 @@ needs_types:
       safety: "^(QM|ASIL_B|ASIL_D)$"
       status: "^(valid|invalid)$"
     mandatory_links:
-      satisfies: "^feat_req__.*$"
+      fulfils: "^feat_req__.*$"
 
   feat_arc_int:
     title: "Feature Architecture Interfaces"
@@ -260,7 +261,8 @@ needs_types:
       safety: "^(QM|ASIL_B|ASIL_D)$"
       status: "^(valid|invalid)$"
     mandatory_links:
-      satisfies: "^feat_req__.*$"
+      fulfils: "^feat_req__.*$"
+      includes: "^feat_arc_int_op__.*$"
 
   feat_arc_int_op:
     title: "Feature Architecture Interface Operation"
@@ -268,13 +270,10 @@ needs_types:
     color: "#FEDCD2"
     style: "card"
     mandatory_options:
-      # Original code uses ^FEAT_ARC_INT_OP__, but actually typed ^COMP_ARC_INT__ in comp_arc_int_op.
-      # This might be an original mismatch, but we'll keep it consistent with the Python code:
       id: "^feat_arc_int_op__[0-9a-z_]*$"
       security: "^(YES|NO)$"
       safety: "^(QM|ASIL_B|ASIL_D)$"
       status: "^(valid|invalid)$"
-      # no mandatory_links in the old code (commented out lines omitted)
 
   mod_arc_sta:
     title: "Module Architecture Static View"
@@ -286,6 +285,8 @@ needs_types:
       security: "^(YES|NO)$"
       safety: "^(QM|ASIL_B|ASIL_D)$"
       status: "^(valid|invalid)$"
+    mandatory_links:
+      includes: "^comp_arc_sta__.*$"
 
   comp_arc_sta:
     title: "Component Architecture Static View"
@@ -298,7 +299,11 @@ needs_types:
       safety: "^(QM|ASIL_B|ASIL_D)$"
       status: "^(valid|invalid)$"
     mandatory_links:
-      satisfies: "^comp_req__.*$"
+      fulfils: "^comp_req__.*$"
+    optional_links:
+      implements: "^comp_arc_int__.*$"
+      includes: "^sub_comp_arc_sta__.*$"
+      uses: "^comp_arc_int__.*$"
 
   comp_arc_dyn:
     title: "Component Architecture Dynamic View"
@@ -311,7 +316,7 @@ needs_types:
       safety: "^(QM|ASIL_B|ASIL_D)$"
       status: "^(valid|invalid)$"
     mandatory_links:
-      satisfies: "^comp_req__.*$"
+      fulfils: "^comp_req__.*$"
 
   comp_arc_int:
     title: "Component Architecture Interfaces"
@@ -324,7 +329,7 @@ needs_types:
       safety: "^(QM|ASIL_B|ASIL_D)$"
       status: "^(valid|invalid)$"
     mandatory_links:
-      satisfies: "^comp_req__.*$"
+      fulfils: "^comp_req__.*$"
 
   comp_arc_int_op:
     title: "Component Architecture Interface Operation"
@@ -332,13 +337,25 @@ needs_types:
     color: "#FEDCD2"
     style: "card"
     mandatory_options:
-      # Original code says id: "^COMP_ARC_INT__[0-9a-z_]*$", so we keep it as is:
-      id: "^comp_arc_int__[0-9a-z_]*$"
+      id: "^comp_arc_int_op__[0-9a-z_]*$"
       security: "^(YES|NO)$"
       safety: "^(QM|ASIL_B|ASIL_D)$"
       status: "^(valid|invalid)$"
     mandatory_links:
-      satisfies: "^comp_req__.*$"
+      implements: "^feat_arc_int_op__.*$"
+
+  sub_comp_arc_sta:
+    title: "Sub Component Architecture Static View"
+    prefix: "sub_comp_arc_sta__"
+    color: "#FEDCD2"
+    style: "card"
+    mandatory_options:
+      id: "^sub_comp_arc_sta__[0-9a-z_]*$"
+      security: "^(YES|NO)$"
+      safety: "^(QM|ASIL_B|ASIL_D)$"
+      status: "^(valid|invalid)$"
+    mandatory_links:
+      implements: "^comp_arc_int_op__.*$"
 
 # Extra link types, which shall be available and allow need types to be linked to each other.
 # We use a dedicated linked type for each type of a conncetion, for instance from
@@ -393,10 +410,21 @@ needs_extra_links:
     outgoing: "satisfies"
 
   # Architecture
+  fulfils:
+    incoming: "is fulfilled by"
+    outgoing: "fulfils"
+
   implements:
     incoming: "implemented by"
     outgoing: "implements"
 
+  uses:
+    incoming: "used by"
+    outgoing: "uses"
+
+  includes:
+    incoming: "is included in"
+    outgoing: "includes"
 ##############################################################
 # Graph Checks
 # The graph checks focus on the relation of the needs and their attributes.

@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,15 +12,25 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Workflows
-=========
+@startuml
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Contents:
+participant "Feature User" as actor
+participant "«component» :Sub Component 1" as sc1
+participant "«component» :Sub Component 3" as sc3
 
-   process_management
-   platform_management
-   change_management
-   quality_management
-   safety_analysis
+actor -> sc1: real operation 3 ()
+sc1 -> sc3: real operation 9 ()
+
+alt success
+    sc3 --> sc1: success
+else error
+    sc3 --> sc1: error type
+end
+
+alt success
+    sc1 --> actor: true
+else error
+    sc1 -> actor: error type
+end
+
+@enduml
