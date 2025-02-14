@@ -11,7 +11,6 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 
-from sphinx.util.logging import SphinxLoggerAdapter
 from sphinx_needs.data import NeedsInfoType
 
 from docs._tooling.extensions.score_metamodel.checks import standards
@@ -41,7 +40,7 @@ class TestStandards:
             id="GD_REQ__attribute_satisfies",
             tags="attribute",
             security="NO",
-            type="Process Requirements",
+            type="gd_req",
             complies=[
                 "STD_REQ_ISO26262__rq-8-6432",
                 "STD_REQ_ISO26262__rq-8-6422",
@@ -80,7 +79,7 @@ class TestStandards:
         need_2 = NeedsInfoType(
             target_id="Requirements attribute satisfies",
             id="GD_REQ__attribute_satisfies",
-            type="Process Requirements",
+            type="gd_req",
             tags="attribute",
             security="NO",
             complies=[
@@ -390,7 +389,7 @@ class TestStandards:
             id="GD_REQ__attribute_satisfies",
             tags="attribute",
             security="NO",
-            type="Process Requirements",
+            type="gd_req",
             complies=[
                 "STD_REQ_ISO26262__rq-8-6432",
                 "STD_REQ_ISO26262__rq-8-6422",
@@ -667,7 +666,7 @@ class TestStandards:
         need_2 = NeedsInfoType(
             target_id="Requirements attribute satisfies",
             id="GD_REQ__attribute_satisfies",
-            type="Process Requirements",
+            type="gd_req",
             tags="attribute",
             security="NO",
             complies=[
@@ -696,7 +695,7 @@ class TestStandards:
         need_1 = NeedsInfoType(
             target_id="Requirements attribute satisfies_1",
             id="GD_REQ__attribute_satisfies",
-            type="Process Requirements",
+            type="gd_req",
             tags="attribute",
             security="NO",
             complies=[
