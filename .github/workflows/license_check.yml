@@ -13,7 +13,7 @@
 
 name: License check preparation
 on:
-  pull_request:
+  pull_request_target:
     types: [opened, reopened, synchronize]
   merge_group:
     types: [checks_requested]
@@ -22,13 +22,29 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
-      id-token: write
-      contents: write
-      pages: write
       issues: write
     steps:
-      - name: Checkout repository
+      # ------------------------------------------------------------------------------
+      # Checkout the correct branch safely in all scenarios (PRs, forks, merges)
+      # ------------------------------------------------------------------------------
+      # | Condition                              | Event Type         | Checked Out Branch    |
+      # |----------------------------------------|--------------------|-----------------------|
+      # | github.head_ref                        | pull_request_target | PR branch (source branch) |
+      # | github.event.pull_request.head.ref     | pull_request        | PR branch (source branch) |
+      # | github.ref                             | push, merge_group   | The branch being pushed/merged |
+      # ------------------------------------------------------------------------------
+      # ------------------------------------------------------------------------------
+      # Checkout the correct repository safely in all scenarios (PRs, forks, merges)
+      # ------------------------------------------------------------------------------
+      # | Condition                                      | Event Type         | Checked Out Repository           |
+      # |------------------------------------------------|--------------------|----------------------------------|
+      # | github.event.pull_request.head.repo.full_name  | pull_request       | Forked repository (if PR is from a fork) |
+      # | github.repository                              | push, merge_group  | Default repository (same repo PRs, merges, pushes) |
+      - name: Checkout repository (Handle all events)
         uses: actions/checkout@v4.2.2
+        with:
+          ref: ${{ github.head_ref || github.event.pull_request.head.ref || github.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
       - name: Setup Bazel
         uses: bazel-contrib/setup-bazel@0.9.1
       - name: Run license checks
