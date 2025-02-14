@@ -12,5 +12,11 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Logging API
-###########
+.. Tracing
+.. #######
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   ./mw-fr_tracing.rst
