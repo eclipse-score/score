@@ -37,16 +37,6 @@ SCORE Management Roles
 
    The Technical Leads approve feature requests and perform the project management on SCORE platform level.
 
-.. role:: Safety Manager
-   :id: RL_safety_manager
-   :status: valid
-   :security: no
-   :safety: yes
-   :tags: safety_management
-   :contains: RL_committer
-
-   The safety managers support the planning, development and coordination of the safety activities, i.e. the safety management.
-
 .. role:: Quality Manager
    :id: RL_quality_manager
    :status: valid
@@ -147,16 +137,4 @@ SCORE cross functional teams
    :contains: RL_module_lead, RL_safety_manager, RL_quality_manager, RL_security_manager, RL_contributor, RL_committer
 
    The module team is responsible for all artefacts within the module SEooCs. Each module has only one responsible team but a team may also be responsible for several (small) modules.
-
-SCORE external roles
---------------------
-
-.. role:: External Assessor
-   :id: RL_external_assessor
-   :status: valid
-   :security: no
-   :safety: yes
-   :tags: safety_management
-
-   The external assessor performs safety confirmation measures like safety audit, assessment and confirmation reviews.
 

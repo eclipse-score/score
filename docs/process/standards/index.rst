@@ -19,4 +19,5 @@ Standards
    :maxdepth: 1
    :caption: Contents:
 
-   iso26262/index
+   iso26262
+   isopas8926

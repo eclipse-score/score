@@ -14,8 +14,8 @@
 
 .. _safety_management:
 
-Safety management
-------------------------
+Safety management Plan
+----------------------
 
 Purpose
 +++++++

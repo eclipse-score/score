@@ -140,60 +140,6 @@ Process
 
    Plan to manage and guide execution of the process management activities.
 
-Safety
-^^^^^^
-
-.. workproduct:: Platform Safety Plan
-   :id: WP_PLATFORM_SAFETY_PLAN
-   :status: draft
-   :tags: safety_management
-
-   Plan to manage and guide the execution of the safety activities of a project including dates, milestones, tasks, deliverables, responsibilities (including the Safety Manager appointment)  and resources.
-   Guidelines on how an impact analysis shall be concluded on each item or element involved together with it's connected items or elements.
-   This is on following level:
-   - Project/Platform (contains definitions how safety planning is performed generally in the project)
-
-.. workproduct:: Module Safety Plan
-   :id: WP_MODULE_SAFETY_PLAN
-   :status: draft
-   :tags: safety_management
-
-   Plan to manage and guide the execution of the safety activities of a project including dates, milestones, tasks, deliverables, responsibilities (including the Safety Manager appointment) and resources.
-   Guidelines on how an impact analysis shall be concluded on each item or element involved together with it's connected items or elements.
-   This is on following level:
-   - Project/Platform (contains definitions how safety planning is performed generally in the project)
-   - Module (contains activities planning based on a Contribution Request)
-
-.. workproduct:: Platform Safety Case
-   :id: WP_PLATFORM_SAFETY_CASE
-   :status: draft
-   :tags: safety_management
-
-   Argument that functional safety is achieved for items, or elements, and satisfied by evidence compiled from work products of activities during development. For Platform SEooC.
-
-.. workproduct:: Module Safety Case
-   :id: WP_MODULE_SAFETY_CASE
-   :status: draft
-   :tags: safety_management
-
-   Argument that functional safety is achieved for items, or elements, and satisfied by evidence compiled from work products of activities during development. For Module SEooC.
-
-
-.. workproduct:: Confirmation Review Reports
-   :id: WP_CMR_REPORTS
-   :status: draft
-   :tags: safety
-
-   Confirmation that a work product provides sufficient and convincing evidence of their contribution to the achievement of functional safety considering the corresponding objectives and requirements of ISO 26262.
-   Will contain confirmation review report for Safety Plan, Safety Case, Safety Analyses and Dependent Failure Analyses (DFA)
-
-.. workproduct:: Functional Safety Assessment Report
-   :id: WP_ASSESSMENT_REPORT
-   :status: draft
-   :tags: safety
-
-   Examination of whether a characteristic of a component achieves the ISO 26262 objectives and examination of an implemented process with regard to the process objectives.
-
 
 Product development
 -------------------
@@ -228,20 +174,6 @@ Platform development
    :tags: safety
 
    SW Safety Requirements for the user of the feature, exportable requirements for the user to integrate in their req mgt system.
-
-.. workproduct:: Platform Safety Manual
-   :id: WP_PLATFORM_SW_SAFETY_MANUAL
-   :status: draft
-   :tags: safety
-
-   The safety manual exists for every SEooC/qualified component. It describes:
-   - The Assumed Platform Requirements (Safety related);
-   - the safety concept of the SEooC (i.e. which faults are taken care of);
-   - the Assumptions of Use (of the features);
-   - a link to the user manual;
-   - the reactions of the implemented functions under anomalous operating conditions; and
-   - a description of known anomalies with corresponding workaround measures.
-   This is on platform level.
 
 .. workproduct:: Feature Architecture
    :id: WP_FEATURE_ARCHITECTURE
@@ -332,20 +264,6 @@ Component development
    :tags: safety
 
    SW Safety Requirements for the user of the component, exportable requirements for the user to integrate in their req mgt system.
-
-.. workproduct:: Module Safety Manual
-   :id: WP_MODULE_SW_SAFETY_MANUAL
-   :status: draft
-   :tags: safety
-
-   The safety manual exists for every SEooC/qualified component. It describes:
-   - The Assumed Platform Requirements (Safety related);
-   - the safety concept of the SEooC (i.e. which faults are taken care of);
-   - the Assumptions of Use (of the modules's components);
-   - a link to the user manual;
-   - the reactions of the implemented functions under anomalous operating conditions; and
-   - a description of known anomalies with corresponding workaround measures.
-   This is on module level.
 
 .. workproduct:: Hardware-software interface (HSI) specification
    :id: WP_HSI
@@ -470,18 +388,6 @@ Component development
 
    Component Testing verifies Component Requirements
 
-.. workproduct:: Software component classification
-   :id: WP_SW_COMPONENT_CLASS
-   :status: draft
-   :tags: process, safety
-
-   The classification shall include:
-   - the unique identification of the pre-developed software component;
-   - the maximum ASIL of the safety requirements allocated to it;
-   - a development processes analysis; and
-   - a complexity analysis of the pre-developed SW component; and
-   - finally a SW component classification as input for the safety planning (which is to cover the determined gaps, if any, by additional verification measures).
-
 
 Supporting activities
 ---------------------
@@ -508,19 +414,5 @@ Supporting activities
 
    According to the tool evaluation process, each tool's confidence level (TCL) must be determined. Based on TCL the appropriate qualification methods shall be applied.
 
-
-Tailoring
----------
-
-.. workproduct:: Tailoring Documents
-   :id: WP_TAILORING
-   :status: draft
-   :tags: process
-
-   This workproduct argues why some workproducts are not needed in the project.
-   It may have several levels:
-   - Project/Platform
-   - Feature/Component
-   It belongs to the Safety Plan.
 
 Note: All the work products are set to status "draft", as the linkage to standard requirements is missing currently on purpose, namely to those of ISO 26262.
