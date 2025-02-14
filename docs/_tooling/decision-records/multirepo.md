@@ -11,7 +11,7 @@ repository.
 
 ## Decision
 
-**Status**: Agreed
+**Status**: Re-opening due to an incomplete summary and a required full rewrite of Solution 3. The initial decision may need revision.
 
 **Solution**: We'll use solution 2 (uni-directional linking). Details below.
 
@@ -19,14 +19,6 @@ Once implemented, we'll assess the feasibility of switching to bidirectional
 linking, especially for the integration build. We'll probably use solution 1 or
 3 in combination with the approach mentioned in 'Further Thoughts.' By that
 time, we should have a clearer understanding of the problem and requirements.
-
-## Summary of Solutions
-
-| **Solution** | **Description** | **Pros** | **Cons** |
-|-------------|----------------|----------|----------|
-| **1. Bidirectional Linking (Build from Scratch)** | Fully integrates platform and module documentation in a single Bazel build. | ✔ Versioning fully managed by Bazel.<br>✔ Supports untagged versions (any commit ID). | ❌ Performance issues with full rebuilds.<br>❌ No reuse of cached documentation.❌ Multiple similar looking platform websites. |
-| **2. Uni-directional Linking + Website-Based Versioning** ✅ _(Chosen Solution)_ | Modules link to the platform website, but the platform does not link back. Modules fetch only `needs.json` for verification. | ✔ Fast and efficient builds.<br>✔ Less complex than bidirectional linking. | ❌ Versioning managed at the website level, not by Bazel.<br>❌ Requires multiple platform website versions. |
-| **3. Uni-directional Linking + Bazel-Based Versioning** | Similar to Solution 2, but modules reference pre-rendered versions of the platform website from release artifacts. | ✔ No need to maintain multiple platform websites.<br>✔ Versioning fully managed by Bazel.<br>✔ Supports untagged versions (any commit ID). | ❌ More complex setup for handling pre-rendered artifacts.<br>❌ No immediate support for untagged versions.<br>❌ Multiple similar looking platform websites. |
 
 ## Context: Repository Dependencies and Setup
 
@@ -53,6 +45,20 @@ SCORE is structured as a multi-repository project.
   platform and all required modules.
 - Other integrations may exist, using different versions of the platform and
   modules.
+
+## Summary of Solutions
+
+\*base-website = the website that is being linked to, e.g. the platform website
+by modules. But also modules by integrations.
+
+| Feature                                | Solution 1: Bidirectional Linking + Bazel-based versioning of locally rebuilt platform website | Solution 2: Uni-directional + Website-based versioning of a single platform website | Solution 3: Uni-directional + Bazel-based versioning of local platform website copy |
+|--------------------------------|-----------------|-----------------|-----------------|
+| **NO multiple similar-looking base-websites\*** | ❌ | ✅ | ❌ |
+| **NO multiple versions of base-website\* required** | ✅ | ❌ | ✅ |
+| **Bidirectional linking supported** | ✅ | ❌ | ❌ (extendable) |
+| **Fast and efficient builds** | ❌ | ✅ | ✅ |
+| **Link validation for tagged versions** | ✅ | ✅ | ✅ |
+| **Link validation for untagged versions (any commit ID)** | ✅ | ❌ | ✅ |
 
 ## Requirements
 
