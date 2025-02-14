@@ -65,7 +65,7 @@ can be in a different order.
         <feature_name>/                             -> Folder containing all sub-folders corresponding to one feature and the contribution request [WP_CONT_REQUEST]
             docs/                                   -> Documentation of the feature consisting of ...
                 architecture/                       -> ... Feature architecture [WP_FEATURE_ARCHITECTURE].
-                requirements/                       -> ... Feature requirements [WP_FEATURE_REQ].
+                requirements/                       -> ... Feature requirements [wp__requirements__feat].
                 safety_analysis/                    -> ... Safety analysis on feature level [WP_FEATURE_SAFETY_ANALYSES]
                 safety_planning/                    -> ... the feature specific safety workproducts planning
                 verification/                       -> ... Feature verification report (reporting all feature verifications) [WP_PLATFORM_SW_VERIFICATION_REPORT]

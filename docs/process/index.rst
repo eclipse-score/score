@@ -34,6 +34,19 @@ Process Model
 The SCORE process model is described by workflows, executed by roles and is creating work products.
 Workflow activities are supported by guidances.
 
+
+Process Areas
+~~~~~~~~~~~~~
+
+The process description for the SCORE project (e.g. requirements, architecture, safety management) can be found here:
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   process_areas/requirements_engineering/index.rst
+
+
 Process Role definition
 ~~~~~~~~~~~~~~~~~~~~~~~
 
