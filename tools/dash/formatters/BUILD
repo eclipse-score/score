@@ -11,38 +11,10 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 
-load("//tools/cr_checker:cr_checker.bzl", "copyright_checker")
-load("//tools/dash:dash.bzl", "dash_license_checker")
-
-test_suite(
-    name = "format.check",
-    tests = ["//tools/format:format.check"],
-)
-
-alias(
-    name = "format.fix",
-    actual = "//tools/format:format.fix",
-)
-
-copyright_checker(
-    name = "copyright",
+py_binary(
+    name = "dash_format_converter",
     srcs = [
-        ".github",
-        "docs",
-        "tools",
-        "//:BUILD",
-        "//:MODULE.bazel",
+        "dash_format_converter.py",
     ],
     visibility = ["//visibility:public"],
 )
-
-dash_license_checker(
-    name = "python",
-    src = "//docs:requirements_lock",
-    visibility = ["//visibility:public"],
-)
-
-exports_files([
-    "MODULE.bazel",
-    "BUILD",
-])

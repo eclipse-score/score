@@ -179,3 +179,12 @@ score_py_pytest(
     visibility = ["//visibility:public"],
     deps = [":score_metamodel"],
 )
+
+# Needed for Dash tool to check python dependency licenses.
+filegroup(
+    name = "requirements_lock",
+    srcs = [
+        "_tooling/requirements_lock.txt",
+    ],
+    visibility = ["//visibility:public"],
+)
