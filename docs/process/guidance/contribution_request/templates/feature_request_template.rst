@@ -28,11 +28,13 @@ Feature Request Template
 [Your Feature Name]
 ===================
 
-.. document:: [Your Feature Name]
-   :id: DOC__Your_Feature_Name
-   :status: draft
-   :safety: ASIL_D
-   :tags: contribution_request, feature_request
+.. code-block:: rst
+
+   .. document:: [Your Feature Name]
+      :id: DOC__Your_Feature_Name
+      :status: Your_Status
+      :safety: Your_ASIL
+      :tags: contribution_request, feature_request
 
 .. attention::
     The above directive must be updated according to your Feature.
@@ -53,7 +55,7 @@ To activate this feature, use the following feature flag:
 
     .. note::
      The feature flag must reflect the feature name in snake_case. Further, it is prepended with ``experimental_``, as
-     long as the feature is not yet stable.
+     long as the feature is not yet stable. See :doc:`/process/guidance/feature_flags/index` for more information.
 
 
 Abstract

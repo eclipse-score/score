@@ -18,6 +18,9 @@ import logging
 import sys
 import tempfile
 import mmap
+import json
+import shutil
+from datetime import datetime
 from pathlib import Path
 
 LOGGER = logging.getLogger()
@@ -96,6 +99,21 @@ class ParamFileAction(argparse.Action):  # pylint: disable=too-few-public-method
             setattr(namespace, self.dest, file_paths)
         else:
             setattr(namespace, self.dest, values)
+
+
+def get_years_from_config(config_path):
+    """
+    Reads the years from a JSON configuration file.
+
+    Args:
+        config_path (Path): Path to the configuration JSON file.
+
+    Returns:
+        list: List of years from the configuration file.
+    """
+    with config_path.open("r") as file:
+        config = json.load(file)
+    return config.get("years", [])
 
 
 def load_templates(path):
@@ -228,7 +246,7 @@ def load_text_from_file_with_mmap(path, header_length, encoding, offset):
             return fmap[:header_length].decode(encoding)
 
 
-def has_copyright(path, copyright_text, use_mmap, encoding, offset):
+def has_copyright(path, copyright_text, use_mmap, encoding, offset, config):
     """
     Checks if the specified copyright text is present in the beginning of a file.
 
@@ -242,6 +260,8 @@ def has_copyright(path, copyright_text, use_mmap, encoding, offset):
         offset (int): Additional number of characters to read beyond the length
                       of `copyright_text`, used to account for extra content
                       (such as a shebang) before the copyright text.
+        config (Path): Path to the config JSON file where configuration
+                variables are stored (e.g. years for copyright headers).
 
     Returns:
         bool: True if the file contains the copyright text, False if it is missing.
@@ -254,10 +274,14 @@ def has_copyright(path, copyright_text, use_mmap, encoding, offset):
     if use_mmap:
         load_text = load_text_from_file_with_mmap
 
-    if copyright_text not in load_text(path, len(copyright_text), encoding, offset):
-        return False
-    LOGGER.debug("File %s has copyright.", path)
-    return True
+    for year in get_years_from_config(config):
+        formated_cr = copyright_text.format(year=year)
+        if formated_cr in load_text(path, len(formated_cr), encoding, offset):
+            LOGGER.debug("File %s has copyright.", path)
+            return True
+
+    LOGGER.debug("File %s doesn't have copyright.", path)
+    return False
 
 
 def get_files_from_dir(directory, exts=None):
@@ -332,6 +356,28 @@ def create_temp_file(path, encoding):
     return temp.name
 
 
+def remove_old_header(file_path, encoding, num_of_chars):
+    """
+    Removes the first `num_of_chars` characters from a file and updates it in-place.
+
+    Args:
+        file_path (str): Path to the file to be modified.
+        encoding (str): Encoding used to read and write the file.
+        num_of_chars (int): Number of characters to remove from the beginning of the file.
+
+    Raises:
+        IOError: If there is an issue reading or writing the file.
+        ValueError: If `num_of_chars` is negative.
+    """
+    with open(file_path, "r", encoding=encoding) as file:
+        file.seek(num_of_chars)
+        with tempfile.NamedTemporaryFile(
+            "w", delete=False, encoding=encoding
+        ) as temp_file:
+            shutil.copyfileobj(file, temp_file)
+    shutil.move(temp_file.name, file_path)
+
+
 def fix_copyright(path, copyright_text, encoding, offset):
     """
     Inserts a copyright header into the specified file, ensuring that existing
@@ -361,7 +407,7 @@ def fix_copyright(path, copyright_text, encoding, offset):
         with open(path, "w", encoding=encoding) as handle:
             if offset > 0:
                 handle.write(first_line + "\n")
-            handle.write(copyright_text)
+            handle.write(copyright_text.format(year=datetime.now().year))
             # Reset the file pointer to the beginning of the temporary file
             temp.seek(0)
             for chunk in iter(lambda: temp.read(4096), ""):
@@ -369,7 +415,16 @@ def fix_copyright(path, copyright_text, encoding, offset):
     LOGGER.info("Fixed missing header in: %s", path)
 
 
-def process_files(files, templates, fix, use_mmap=False, encoding="utf-8", offset=0):  # pylint: disable=too-many-arguments
+def process_files(
+    files,
+    templates,
+    fix,
+    config,
+    use_mmap=False,
+    encoding="utf-8",
+    offset=0,
+    remove_offset=0,
+):  # pylint: disable=too-many-arguments
     """
     Processes a list of files to check for the presence of copyright text.
 
@@ -378,12 +433,16 @@ def process_files(files, templates, fix, use_mmap=False, encoding="utf-8", offse
         templates (dict): A dictionary where keys are file extensions
                           (e.g., '.py', '.txt') and values are strings or patterns
                           representing the required copyright text.
+        config (Path): Path to the config JSON file where configuration
+                       variables are stored (e.g. years for copyright headers).
         use_mmap (bool): Flag for using mmap function for reading files
                          (instead of standard option).
         encoding (str): Encoding type to use when reading the file.
         offset (int): Additional number of characters to read beyond the length
                       of `copyright_text`, used to account for extra content
                       (such as a shebang) before the copyright text.
+        remove_offset(int): Flag for removing old header from source files
+                             (before applying the new one) in number of chars.
 
     Returns:
         int: The number of files that do not contain the required copyright text.
@@ -397,8 +456,10 @@ def process_files(files, templates, fix, use_mmap=False, encoding="utf-8", offse
                 "Skipped (no configuration for selected file extension): %s", item
             )
             continue
-        if not has_copyright(item, templates[key], use_mmap, encoding, offset):
+        if not has_copyright(item, templates[key], use_mmap, encoding, offset, config):
             if fix:
+                if remove_offset:
+                    remove_old_header(item, encoding, remove_offset)
                 fix_copyright(item, templates[key], encoding, offset)
                 results["no_copyright"] += 1
                 results["fixed"] += 1
@@ -431,6 +492,14 @@ def parse_arguments(argv):
         type=Path,
         required=True,
         help="Path to the template file",
+    )
+
+    parser.add_argument(
+        "-c",
+        "--config-file",
+        type=Path,
+        required=True,
+        help="Path to the config file",
     )
 
     parser.add_argument(
@@ -481,6 +550,15 @@ def parse_arguments(argv):
     )
 
     parser.add_argument(
+        "--remove-offset",
+        dest="remove_offset",
+        type=int,
+        default=0,
+        help="Offset to remove old header from begining of the file \
+             (supported only with --fix mode)",
+    )
+
+    parser.add_argument(
         "inputs",
         nargs="+",
         action=ParamFileAction,
@@ -523,8 +601,23 @@ def main(argv=None):
 
     LOGGER.debug("Running check on files: %s", files)
 
+    if args.fix and args.remove_offset:
+        LOGGER.info("%s!------DANGER ZONE------!%s", COLORS["RED"], COLORS["ENDC"])
+        LOGGER.info("Remove offset set! This can REMOVE parts of source files!")
+        LOGGER.info(
+            "Use ONLY if invalid copyright header is present that needs to be removed!"
+        )
+        LOGGER.info("%s!-----------------------!%s", COLORS["RED"], COLORS["ENDC"])
+
     results = process_files(
-        files, templates, args.fix, args.use_memory_map, args.encoding, args.offset
+        files,
+        templates,
+        args.fix,
+        args.config_file,
+        args.use_memory_map,
+        args.encoding,
+        args.offset,
+        args.remove_offset,
     )
     total_no = results["no_copyright"]
     total_fixes = results["fixed"]

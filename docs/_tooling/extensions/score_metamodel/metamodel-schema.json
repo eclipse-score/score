@@ -1,0 +1,55 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://example.com/metamodel-schema.json",
+    "title": "Score Metamodel Schema",
+    "type": "object",
+    "properties": {
+      "types": {
+        "type": "object",
+        "description": "All Sphinx-Needs types (directives)",
+        "additionalProperties": {
+          "type": "object",
+          "properties": {
+            "title":      { "type": "string" },
+            "prefix":     { "type": "string" },
+            "color":      { "type": "string" },
+            "style":      { "type": "string" },
+            "mandatory_options": {
+              "type": "object",
+              "description": "Map of field_name -> regex pattern (these fields are required).",
+              "additionalProperties": { "type": "string" }
+            },
+            "optional_options": {
+              "type": "object",
+              "description": "Map of field_name -> regex pattern (these fields are optional).",
+              "additionalProperties": { "type": "string" }
+            },
+            "mandatory_links": {
+              "type": "object",
+              "description": "Map of link_field_name -> regex pattern (these link fields are required).",
+              "additionalProperties": { "type": "string" }
+            },
+            "optional_links": {
+              "type": "object",
+              "description": "Map of link_field_name -> regex pattern (these link fields are optional).",
+              "additionalProperties": { "type": "string" }
+            }
+          },
+          "required": ["title", "prefix", "mandatory_options"]
+        }
+      },
+      "links": {
+        "type": "object",
+        "description": "All extra link definitions. Key is the link 'option' name.",
+        "additionalProperties": {
+          "type": "object",
+          "properties": {
+            "incoming": { "type": "string" },
+            "outgoing": { "type": "string" }
+          },
+          "required": ["incoming", "outgoing"]
+        }
+      }
+    },
+    "required": ["types", "links"]
+  }

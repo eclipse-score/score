@@ -12,6 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+.. _bazel_registry:
+
 Bazel registry
 ##############
 
@@ -38,6 +40,55 @@ file of a module:
 
 Score registry is set as first registry with the fallback to Bazel's
 central registry for other open source modules.
+
+Minimal module entry
+====================
+
+The following directory layout reflects a minimal module entry:
+
+.. code::
+
+   ├── bazel_registry.json
+   ├── modules
+   │   └── score_example
+   │       ├── 0.1
+   │       │   ├── MODULE.bazel
+   │       │   └── source.json
+   │       └── metadata.json
+   └── README.md
+
+The *score_example* directory contains the metadata.json file which holds basic information about the module:
+
+.. code::
+
+   {
+       "homepage": "https://github.com/eclipse-score/example",
+       "repository": [
+           "github:eclipse-score/example"
+       ],
+       "versions": [
+           "0.1"
+       ],
+       "yanked_versions": {}
+   }
+
+Each version of the module is stored as a separate directory. Version directory requires a *source.json* and *MODULE.bazel* files.
+The *source.json* file tell bazel where to get the sources from.
+
+.. code::
+
+   {
+       "integrity": "sha256-hGJ4VQ+0q/HcxbvOrY/C2UT4SjMnNLVgQAD4k5aAToI=",
+       "strip_prefix": "example-872caac46177cc3699899ef91348a643881b0981",
+       "url": "https://github.com/eclipse-score/example/archive/872caac46177cc3699899ef91348a643881b0981.zip"
+   }
+
+
+The *MODULE.bazel* file should be the same as delpoyed in the referenced sources.
+
+Module version should comply to the established `Bazel version format <https://bazel.build/external/module#version_format>`_
+and use the `compatibility_level <https://bazel.build/external/module#compatibility_level>`_ to specify breaking changes.
+
 
 References
 ==========

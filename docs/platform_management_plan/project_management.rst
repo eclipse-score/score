@@ -87,6 +87,8 @@ Technical committees
     e.g. discussion of new features or coding guidelines. See `GitHub Discussions/Architecture Community <https://github.com/orgs/eclipse-score/discussions/categories/architecture-community>`_ for more.
   * *Software Development Process*: *community* for definition and maintaining
     of safety, security and quality software development process. See `GitHub Discussions/SW Dev Process Community <https://github.com/orgs/eclipse-score/discussions/categories/sw-dev-process-community>`_ for more.
+  * *Marketing & Communication (MarCom)*: *community* for coordination of public relations, e.g. the maintenance of the website & organization of general events.
+    See `GitHub Discussions/MarCom Community <https://github.com/orgs/eclipse-score/discussions/categories/marcom-community>`_ for more.
 
   The planning of the activities is done by every *Community* independent of other
   teams. Each *Community* has a *Community Lead*, who is nominated by the *Technical lead circle*. The prioritization of some topics can be requested by the *Technical lead circle*

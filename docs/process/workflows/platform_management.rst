@@ -26,8 +26,8 @@ todo: need to add guidance and standard links
    :status: draft
    :tags: process
    :responsible: RL_technical_lead
-   :approver: RL_process_community
-   :supporter: RL_safety_manager, RL_security_manager, RL_quality_manager
+   :approved_by: RL_process_community
+   :supported_by: RL_safety_manager, RL_security_manager, RL_quality_manager
    :input: WP_POLICIES, WP_ISSUE_TRACK_SYSTEM
    :output: WP_PLATFORM_MGMT
 
@@ -42,8 +42,8 @@ todo: need to add guidance and standard links
    :status: draft
    :tags: process
    :responsible: RL_technical_lead
-   :approver: RL_process_community
-   :supporter: RL_safety_manager, RL_security_manager, RL_quality_manager
+   :approved_by: RL_process_community
+   :supported_by: RL_safety_manager, RL_security_manager, RL_quality_manager
    :input: WP_PLATFORM_MGMT
    :output: WP_ISSUE_TRACK_SYSTEM
 

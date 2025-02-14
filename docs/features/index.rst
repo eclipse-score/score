@@ -21,9 +21,4 @@ Features
    :maxdepth: 1
    :glob:
 
-   infrastructure/index.rst
-   integration/index.rst
-   analysis-infra/index.rst
-   communication/index.rst
-   frameworks/index.rst
-   persistency/index.rst
+   */index

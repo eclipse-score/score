@@ -10,6 +10,7 @@
 - Can use memory mapping for large file handling.
 - Customizable file encoding and offset adjustments for header text positioning.
 - Can append copyright headers.
+- Can remove provided number of characters from begining of the file.
 
 ## Requirements
 
@@ -38,7 +39,10 @@ python cr_checker.py -t <template_file> [options] <inputs>
 - **--encoding**: File encoding (default is utf-8).
 - **--offset**: Additional offset for the header length to account for lines like a shebang.
 - **--fix**: Setting script into fix mode where copyright header will be added to the files if it's missing from same.
+- **--remove-offset**: Number of characters to remove before appending proper copyright header (works only with `--fix` option).
 - **inputs**: (Required) Directories or files to parse, or a parameter file prefixed with @ that lists files or directories.
+
+> NOTE: Option `--remove-offset` can have severe consequences if the offset is miscalculated. Use with **extreme caution**.
 
 ### Examples
 

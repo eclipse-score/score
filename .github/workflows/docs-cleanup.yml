@@ -1,0 +1,83 @@
+# *******************************************************************************
+# Copyright (c) 2025 Contributors to the Eclipse Foundation
+#
+# See the NOTICE file(s) distributed with this work for additional
+# information regarding copyright ownership.
+#
+# This program and the accompanying materials are made available under the
+# terms of the Apache License Version 2.0 which is available at
+# https://www.apache.org/licenses/LICENSE-2.0
+#
+# SPDX-License-Identifier: Apache-2.0
+# *******************************************************************************
+
+name: Daily Documentation Cleanup
+on:
+  schedule:
+    - cron: "0 0 * * *" # Runs every day at midnight UTC
+  workflow_dispatch: # Allows manual trigger
+
+jobs:
+  docs-cleanup:
+    name: Cleanup old documentation
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      contents: write
+    steps:
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository }}
+          ref: gh-pages
+          fetch-depth: 0
+
+      - name: Cleanup old documentation
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh auth status  # Verify authentication
+
+          # Fetch list of active branches
+          ACTIVE_BRANCHES=$(gh api --paginate repos/${{ github.repository }}/branches --jq '.[].name')
+
+          # Fetch list of open PRs
+          OPEN_PRS=$(gh api --paginate repos/${{ github.repository }}/pulls --jq '.[].number' | sed 's/^/pr-/')
+
+          # Combine active branches and PRs into one list
+          VALID_ENTRIES=$(echo -e "$ACTIVE_BRANCHES\n$OPEN_PRS")
+
+          # Get current folder names, excluding hidden folders
+          CURRENT_FOLDERS=$(find . -maxdepth 1 -type d -not -name '.' -not -path './.*' -exec basename {} \;)
+
+          # Read versions.json
+          if [[ -f versions.json ]]; then
+            jq '.' versions.json > versions_tmp.json
+          else
+            echo "[]" > versions_tmp.json
+          fi
+
+          # Remove outdated folders and update versions.json
+          for FOLDER in $CURRENT_FOLDERS; do
+            if ! echo "$VALID_ENTRIES" | grep -Fxq "$FOLDER"; then
+              echo "Removing $FOLDER"
+              rm -rf "$FOLDER"
+              jq --arg ver "$FOLDER" 'map(select(.version != $ver))' versions_tmp.json > tmp.json && mv tmp.json versions_tmp.json
+            fi
+          done
+
+          # Remove versions.json entries without corresponding folders
+          jq '[.[] | select((.version | IN($folders[])))]' --argjson folders "$(ls -1 | jq -R -s -c 'split("\n")[:-1]')" versions_tmp.json > versions_tmp_clean.json
+
+          # Ensure "main" is the first entry and others sorted alphabetically
+          jq '[.[] | select(.version != "main")] | sort_by(.version) | [{"version": "main", "url": "https://eclipse-score.github.io/score/main/"}] + .' versions_tmp_clean.json > versions.json
+
+          # Clean up temp files
+          rm versions_tmp.json versions_tmp_clean.json
+
+      - name: Commit and Push Changes
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: .
+          commit-message: "Daily cleanup of outdated documentation"

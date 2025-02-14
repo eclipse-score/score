@@ -18,8 +18,10 @@ def copyright_checker(
         srcs,
         visibility,
         template = "//tools/cr_checker/resources:templates",
+        config = "//tools/cr_checker/resources:config",
         extensions = [],
         offset = 0,
+        remove_offset = 0,
         debug = False,
         use_memory_map = False,
         fix = False):
@@ -34,9 +36,13 @@ def copyright_checker(
                            targets can use this rule.
         template (str, optional): Path to the template resource used for validation.
                                   Defaults to "//tools/cr_checker/resources:templates".
+        config (str, optional): Path to the config resource used for project variables.
+                                Defaults to "//tools/cr_checker/resources:config".
         extensions (list, optional): A list of file extensions to filter the source files.
                                      Defaults to an empty list, meaning all files are checked.
         offset (int, optional): The line offset for applying checks or modifications.
+                                Defaults to 0.
+        remove_offset (int, optional): The line offset for removing chars from begining of file.
                                 Defaults to 0.
         debug (bool, optional): Whether to enable debug mode, providing additional logs.
                                 Defaults to False.
@@ -53,7 +59,10 @@ def copyright_checker(
         "{}.fix".format(name),
     ]
 
-    args = ["-t $(location {})".format(template)]
+    args = [
+        "-t $(location {})".format(template),
+        "-c $(location {})".format(config),
+    ]
     data = []
     if len(extensions):
         args.append("-e {exts}".format(
@@ -75,6 +84,8 @@ def copyright_checker(
     for t_name in t_names:
         if t_name == "{}.fix".format(name):
             args.insert(0, "--fix")
+            if remove_offset:
+                args.append("--remove_offset {}".format(remove_offset))
 
         native.py_binary(
             name = t_name,
@@ -85,6 +96,7 @@ def copyright_checker(
             args = args,
             data = srcs + [
                 template,
+                config,
             ],
             visibility = visibility,
         )

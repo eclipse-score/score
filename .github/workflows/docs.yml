@@ -1,5 +1,5 @@
 # *******************************************************************************
-# Copyright (c) 2024 Contributors to the Eclipse Foundation
+# Copyright (c) 2025 Contributors to the Eclipse Foundation
 #
 # See the NOTICE file(s) distributed with this work for additional
 # information regarding copyright ownership.
@@ -11,63 +11,101 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 
-name: Documentation build
+name: Documentation
 on:
-  pull_request:
-    types: [opened, reopened, synchronize]
+  pull_request_target:
+    types: [opened, reopened, synchronize] # Handles forked PRs
   push:
-    branches:
-      - main
   merge_group:
     types: [checks_requested]
+
 jobs:
   docs-build:
+    name: Build documentation
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
     steps:
-      - name: Checkout repository
+      # ------------------------------------------------------------------------------
+      # Checkout the correct branch safely in all scenarios (PRs, forks, merges)
+      # ------------------------------------------------------------------------------
+      # | Condition                              | Event Type         | Checked Out Branch    |
+      # |----------------------------------------|--------------------|-----------------------|
+      # | github.head_ref                        | pull_request_target | PR branch (source branch) |
+      # | github.event.pull_request.head.ref     | pull_request        | PR branch (source branch) |
+      # | github.ref                             | push, merge_group   | The branch being pushed/merged |
+      # ------------------------------------------------------------------------------
+      # ------------------------------------------------------------------------------
+      # Checkout the correct repository safely in all scenarios (PRs, forks, merges)
+      # ------------------------------------------------------------------------------
+      # | Condition                                      | Event Type         | Checked Out Repository           |
+      # |------------------------------------------------|--------------------|----------------------------------|
+      # | github.event.pull_request.head.repo.full_name  | pull_request       | Forked repository (if PR is from a fork) |
+      # | github.repository                              | push, merge_group  | Default repository (same repo PRs, merges, pushes) |
+      - name: Checkout repository (Handle all events)
         uses: actions/checkout@v4.2.2
+        with:
+          ref: ${{ github.head_ref || github.event.pull_request.head.ref || github.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
       - name: Setup Bazel
         uses: bazel-contrib/setup-bazel@0.9.1
       - name: Build documentation
         run: |
           bazel build //docs:github-pages && cp bazel-bin/docs/github-pages.tar .
-      - name: Upload artifact for deployment
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        # ------------------------------------------------------------------------------
+        # Generate a unique artifact name to ensure proper tracking in all scenarios
+        # ------------------------------------------------------------------------------
+        # | Condition                                     | Event Type             | Artifact Name Value                          |
+        # |-----------------------------------------------|------------------------|----------------------------------------------|
+        # | github.event.pull_request.head.sha            | pull_request           | PR commit SHA (ensures uniqueness per PR)    |
+        # | github.event.pull_request.head.sha            | pull_request_target    | PR commit SHA (ensures uniqueness per PR)    |
+        # | github.sha                                    | push, merge_group      | Current commit SHA (used for main branch)    |
+        # ------------------------------------------------------------------------------
+      - name: Upload artifact for job analysis
         uses: actions/upload-artifact@v4.4.0
         with:
-          name: github-pages
-          path: ${{ github.workspace }}/github-pages.tar
+          name: github-pages-${{ github.event.pull_request.head.sha || github.sha }}
+          path: github-pages.tar
           retention-days: 1
           if-no-files-found: error
-      - name: Upload artifact for pull request link
-        if: github.event_name == 'pull_request'
-        id: upload-artifact-pr
-        uses: actions/upload-artifact@v4.4.0
-        with:
-          name: github-pages-${{ github.sha }}
-          path: ${{ github.workspace }}/github-pages.tar
-          retention-days: 1
-          if-no-files-found: error
-      - name: Comment artifact URL
-        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork == false
-        run: |
-          gh pr comment ${{ github.event.pull_request.number }} \
-            --body "Documentation artifact: ${{ steps.upload-artifact-pr.outputs.artifact-url }}"
-        env:
-          GH_TOKEN: ${{ github.token }}
+
   docs-deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    name: Deploy documentation to GitHub Pages
     permissions:
       pages: write
       id-token: write
+      contents: write
+      pull-requests: write
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: docs-build
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4.0.5
+      # ------------------------------------------------------------------------------
+      # Always checks out the BASE repository since pull_request_target is used.
+      # This ensures that the workflow runs with trusted code from the base repo,
+      # even when triggered by a pull request from a fork.
+      # ------------------------------------------------------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v4.2.2
+
+      - name: Download documentation artifact
+        uses: actions/download-artifact@v4.1.8
+        # ------------------------------------------------------------------------------
+        # Generate a unique artifact name to ensure proper tracking in all scenarios
+        # ------------------------------------------------------------------------------
+        # | Condition                                     | Event Type             | Artifact Name Value                          |
+        # |-----------------------------------------------|------------------------|----------------------------------------------|
+        # | github.event.pull_request.head.sha            | pull_request           | PR commit SHA (ensures uniqueness per PR)    |
+        # | github.event.pull_request.head.sha            | pull_request_target    | PR commit SHA (ensures uniqueness per PR)    |
+        # | github.sha                                    | push, merge_group      | Current commit SHA (used for main branch)    |
+        # ------------------------------------------------------------------------------
+        with:
+          name: github-pages-${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Untar documentation artifact
+        run: mkdir -p extracted_docs && tar -xf github-pages.tar -C extracted_docs
+
+      - name: Deploy 🚀
+        id: pages-deployment
+        uses: ./.github/actions/deploy-versioned-pages
+        with:
+          source_folder: extracted_docs

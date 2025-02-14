@@ -20,6 +20,7 @@ Score supports multiple methods for generating documentation, tailored to differ
 1. **Bazel-based builds** for clean, sandboxed outputs.
 2. **Incremental builds** for quick iterations during development.
 3. **IDE integration** for live previews, live warnings and even faster iterations.
+4. **IDE independent live preview** for live previews of documentation without IDE integration.
 
 ### Bazel-based Build
 
@@ -63,6 +64,39 @@ For features like type detection in conf.py or extensions,
 point your IDE to the .venv_docs virtual environment.
 
 Re-run //docs:ide_support if you update Sphinx extensions or other dependencies.
+
+### IDE independent live preview
+
+For a documentation live preview independent of an IDE (CLI + browser only), `sphinx-autobuild` can be used.
+This will automatically rebuild the preview after save and have it available at http://127.0.0.1:8000
+
+```sh
+bazel run //docs:live_preview
+```
+
+
+### Testing
+
+Use the following command to run all available tests:
+
+```
+$ bazel test //...
+```
+
+However it's also  possible to run specific tests or set of tests.
+
+To run all tests of a certain language use the command below, here an example for python.
+```
+$ bazel query 'kind(py.*, tests(//...))' | xargs bazel tests
+```
+
+Grouping of tests via tags is also supported:
+```
+$ bazel test --test_tag_filters=docs-build
+```
+You can add as many tags as you like, as long as a test has at least one of the tags it will be executed.
+*Note: In order for a test to be picked up by this it has to be marked with the tag. Read more [here](/tools/testing/pytest/README.md)
+
 
 ### Notes
 #### Output Locations

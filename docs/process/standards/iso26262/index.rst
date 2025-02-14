@@ -1,0 +1,1610 @@
+..
+   # *******************************************************************************
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
+   #
+   # See the NOTICE file(s) distributed with this work for additional
+   # information regarding copyright ownership.
+   #
+   # This program and the accompanying materials are made available under the
+   # terms of the Apache License Version 2.0 which is available at
+   # https://www.apache.org/licenses/LICENSE-2.0
+   #
+   # SPDX-License-Identifier: Apache-2.0
+   # *******************************************************************************
+
+ISO 26262
+---------
+
+The standard ISO 26262 has several parts. All work products and requirements are
+defined as references below, if those are relevant for the SCORE project.
+
+Irrelevant parts for SCORE process requirements and work products compliance are:
+
+"Part 3: Concept phase" - as this is in responsibility of system integrator
+
+"Part 1: Vocabluary" - as it contains no requirements and work products
+
+"Part 5: Product development at the hardware level" - as this is in responsibility of HW provider
+
+"Part 7: Production, operation, service and decommissioning" - as this is in responsibility of system integrator
+
+"Part 10: Guidelines on ISO 26262" - as it contains no requirements and work products
+
+"Part 11: Guidelines on application of ISO 26262 to semiconductors" - as no semiconductors are in the project scope of SCORE
+
+"Part 12: Adaptation of ISO 26262 for motorcycles" - if needed, motorcycles part is in responsibility of system integrator
+
+
+
+Relevant parts are:
+
+
+Part 2: Management of functional safety
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* Requirements
+    .. std_req:: management_1
+       :id: STD_REQ_ISO26262__management_1
+       :status: valid
+
+
+    .. std_req:: management_2
+       :id: STD_REQ_ISO26262__management_2
+       :status: valid
+
+
+    .. std_req:: management_3
+       :id: STD_REQ_ISO26262__management_3
+       :status: valid
+
+
+    .. std_req:: management_4
+       :id: STD_REQ_ISO26262__management_4
+       :status: valid
+
+
+    .. std_req:: management_5
+       :id: STD_REQ_ISO26262__management_5
+       :status: valid
+
+
+    .. std_req:: management_6
+       :id: STD_REQ_ISO26262__management_6
+       :status: valid
+
+
+    .. std_req:: management_7
+       :id: STD_REQ_ISO26262__management_7
+       :status: valid
+
+
+    .. std_req:: management_8
+       :id: STD_REQ_ISO26262__management_8
+       :status: valid
+
+
+    .. std_req:: management_9
+       :id: STD_REQ_ISO26262__management_9
+       :status: valid
+
+
+    .. std_req:: management_10
+       :id: STD_REQ_ISO26262__management_10
+       :status: valid
+
+
+    .. std_req:: management_11
+       :id: STD_REQ_ISO26262__management_11
+       :status: valid
+
+
+    .. std_req:: management_12
+       :id: STD_REQ_ISO26262__management_12
+       :status: valid
+
+
+    .. std_req:: management_13
+       :id: STD_REQ_ISO26262__management_13
+       :status: valid
+
+
+    .. std_req:: management_14
+       :id: STD_REQ_ISO26262__management_14
+       :status: valid
+
+
+    .. std_req:: management_15
+       :id: STD_REQ_ISO26262__management_15
+       :status: valid
+
+
+    .. std_req:: management_16
+       :id: STD_REQ_ISO26262__management_16
+       :status: valid
+
+
+    .. std_req:: management_17
+       :id: STD_REQ_ISO26262__management_17
+       :status: valid
+
+
+    .. std_req:: management_18
+       :id: STD_REQ_ISO26262__management_18
+       :status: valid
+
+
+    .. std_req:: management_19
+       :id: STD_REQ_ISO26262__management_19
+       :status: valid
+
+
+    .. std_req:: management_20
+       :id: STD_REQ_ISO26262__management_20
+       :status: valid
+
+
+    .. std_req:: management_21
+       :id: STD_REQ_ISO26262__management_21
+       :status: valid
+
+
+    .. std_req:: management_22
+       :id: STD_REQ_ISO26262__management_22
+       :status: valid
+
+
+    .. std_req:: management_23
+       :id: STD_REQ_ISO26262__management_23
+       :status: valid
+
+
+    .. std_req:: management_24
+       :id: STD_REQ_ISO26262__management_24
+       :status: valid
+
+
+    .. std_req:: management_25
+       :id: STD_REQ_ISO26262__management_25
+       :status: valid
+
+
+    .. std_req:: management_26
+       :id: STD_REQ_ISO26262__management_26
+       :status: valid
+
+
+    .. std_req:: management_27
+       :id: STD_REQ_ISO26262__management_27
+       :status: valid
+
+
+    .. std_req:: management_28
+       :id: STD_REQ_ISO26262__management_28
+       :status: valid
+
+
+    .. std_req:: management_29
+       :id: STD_REQ_ISO26262__management_29
+       :status: valid
+
+
+    .. std_req:: management_30
+       :id: STD_REQ_ISO26262__management_30
+       :status: valid
+
+
+    .. std_req:: management_31
+       :id: STD_REQ_ISO26262__management_31
+       :status: valid
+
+
+    .. std_req:: management_32
+       :id: STD_REQ_ISO26262__management_32
+       :status: valid
+
+
+    .. std_req:: management_33
+       :id: STD_REQ_ISO26262__management_33
+       :status: valid
+
+
+    .. std_req:: management_34
+       :id: STD_REQ_ISO26262__management_34
+       :status: valid
+
+
+    .. std_req:: management_35
+       :id: STD_REQ_ISO26262__management_35
+       :status: valid
+
+
+    .. std_req:: management_36
+       :id: STD_REQ_ISO26262__management_36
+       :status: valid
+
+
+    .. std_req:: management_37
+       :id: STD_REQ_ISO26262__management_37
+       :status: valid
+
+
+    .. std_req:: management_38
+       :id: STD_REQ_ISO26262__management_38
+       :status: valid
+
+
+    .. std_req:: management_39
+       :id: STD_REQ_ISO26262__management_39
+       :status: valid
+
+
+    .. std_req:: management_40
+       :id: STD_REQ_ISO26262__management_40
+       :status: valid
+
+
+    .. std_req:: management_41
+       :id: STD_REQ_ISO26262__management_41
+       :status: valid
+
+
+    .. std_req:: management_42
+       :id: STD_REQ_ISO26262__management_42
+       :status: valid
+
+
+    .. std_req:: management_43
+       :id: STD_REQ_ISO26262__management_43
+       :status: valid
+
+
+    .. std_req:: management_44
+       :id: STD_REQ_ISO26262__management_44
+       :status: valid
+
+
+    .. std_req:: management_45
+       :id: STD_REQ_ISO26262__management_45
+       :status: valid
+
+
+    .. std_req:: management_46
+       :id: STD_REQ_ISO26262__management_46
+       :status: valid
+
+
+    .. std_req:: management_47
+       :id: STD_REQ_ISO26262__management_47
+       :status: valid
+
+
+    .. std_req:: management_48
+       :id: STD_REQ_ISO26262__management_48
+       :status: valid
+
+
+    .. std_req:: management_49
+       :id: STD_REQ_ISO26262__management_49
+       :status: valid
+
+
+    .. std_req:: management_50
+       :id: STD_REQ_ISO26262__management_50
+       :status: valid
+
+
+    .. std_req:: management_51
+       :id: STD_REQ_ISO26262__management_51
+       :status: valid
+
+
+    .. std_req:: management_52
+       :id: STD_REQ_ISO26262__management_52
+       :status: valid
+
+
+    .. std_req:: management_53
+       :id: STD_REQ_ISO26262__management_53
+       :status: valid
+
+
+    .. std_req:: management_54
+       :id: STD_REQ_ISO26262__management_54
+       :status: valid
+
+
+    .. std_req:: management_55
+       :id: STD_REQ_ISO26262__management_55
+       :status: valid
+
+
+    .. std_req:: management_56
+       :id: STD_REQ_ISO26262__management_56
+       :status: valid
+
+
+    .. std_req:: management_57
+       :id: STD_REQ_ISO26262__management_57
+       :status: valid
+
+
+    .. std_req:: management_58
+       :id: STD_REQ_ISO26262__management_58
+       :status: valid
+
+
+    .. std_req:: management_59
+       :id: STD_REQ_ISO26262__management_59
+       :status: valid
+
+
+    .. std_req:: management_60
+       :id: STD_REQ_ISO26262__management_60
+       :status: valid
+
+
+    .. std_req:: management_61
+       :id: STD_REQ_ISO26262__management_61
+       :status: valid
+
+
+    .. std_req:: management_62
+       :id: STD_REQ_ISO26262__management_62
+       :status: valid
+
+
+    .. std_req:: management_63
+       :id: STD_REQ_ISO26262__management_63
+       :status: valid
+
+
+    .. std_req:: management_64
+       :id: STD_REQ_ISO26262__management_64
+       :status: valid
+
+
+    .. std_req:: management_65
+       :id: STD_REQ_ISO26262__management_65
+       :status: valid
+
+
+    .. std_req:: management_66
+       :id: STD_REQ_ISO26262__management_66
+       :status: valid
+
+
+    .. std_req:: management_67
+       :id: STD_REQ_ISO26262__management_67
+       :status: valid
+
+
+    .. std_req:: management_68
+       :id: STD_REQ_ISO26262__management_68
+       :status: valid
+
+
+    .. std_req:: management_69
+       :id: STD_REQ_ISO26262__management_69
+       :status: valid
+
+
+    .. std_req:: management_70
+       :id: STD_REQ_ISO26262__management_70
+       :status: valid
+
+
+    .. std_req:: management_71
+       :id: STD_REQ_ISO26262__management_71
+       :status: valid
+
+
+    .. std_req:: management_72
+       :id: STD_REQ_ISO26262__management_72
+       :status: valid
+
+
+    .. std_req:: management_73
+       :id: STD_REQ_ISO26262__management_73
+       :status: valid
+
+
+    .. std_req:: management_74
+       :id: STD_REQ_ISO26262__management_74
+       :status: valid
+
+
+* Workproducts
+    .. std_wp:: management_1
+       :id: STD_WP_ISO26262__management_1
+       :status: valid
+
+
+    .. std_wp:: management_2
+       :id: STD_WP_ISO26262__management_2
+       :status: valid
+
+
+    .. std_wp:: management_3
+       :id: STD_WP_ISO26262__management_3
+       :status: valid
+
+
+    .. std_wp:: management_4
+       :id: STD_WP_ISO26262__management_4
+       :status: valid
+
+
+    .. std_wp:: management_5
+       :id: STD_WP_ISO26262__management_5
+       :status: valid
+
+
+    .. std_wp:: management_6
+       :id: STD_WP_ISO26262__management_6
+       :status: valid
+
+
+    .. std_wp:: management_7
+       :id: STD_WP_ISO26262__management_7
+       :status: valid
+
+
+    .. std_wp:: management_8
+       :id: STD_WP_ISO26262__management_8
+       :status: valid
+
+
+    .. std_wp:: management_9
+       :id: STD_WP_ISO26262__management_9
+       :status: valid
+
+
+    .. std_wp:: management_10
+       :id: STD_WP_ISO26262__management_10
+       :status: valid
+
+
+    .. std_wp:: management_11
+       :id: STD_WP_ISO26262__management_11
+       :status: valid
+
+
+Part 4: Product development at the system level
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* Requirements
+     .. std_req:: system_1
+       :id: STD_REQ_ISO26262__system_1
+       :status: valid
+
+
+     .. std_req:: system_2
+       :id: STD_REQ_ISO26262__system_2
+       :status: valid
+
+
+     .. std_req:: system_3
+       :id: STD_REQ_ISO26262__system_3
+       :status: valid
+
+
+     .. std_req:: system_4
+       :id: STD_REQ_ISO26262__system_4
+       :status: valid
+
+
+     .. std_req:: system_5
+       :id: STD_REQ_ISO26262__system_5
+       :status: valid
+
+
+     .. std_req:: system_6
+       :id: STD_REQ_ISO26262__system_6
+       :status: valid
+
+
+     .. std_req:: system_7
+       :id: STD_REQ_ISO26262__system_7
+       :status: valid
+
+
+     .. std_req:: system_8
+       :id: STD_REQ_ISO26262__system_8
+       :status: valid
+
+
+     .. std_req:: system_9
+       :id: STD_REQ_ISO26262__system_9
+       :status: valid
+
+
+* Workproducts
+    .. std_wp:: system_1
+       :id: STD_WP_ISO26262__system_1
+       :status: valid
+
+
+    .. std_wp:: system_2
+       :id: STD_WP_ISO26262__system_2
+       :status: valid
+
+
+    .. std_wp:: system_3
+       :id: STD_WP_ISO26262__system_3
+       :status: valid
+
+
+    .. std_wp:: system_4
+       :id: STD_WP_ISO26262__system_4
+       :status: valid
+
+
+    .. std_wp:: system_5
+       :id: STD_WP_ISO26262__system_5
+       :status: valid
+
+
+    .. std_wp:: system_6
+       :id: STD_WP_ISO26262__system_6
+       :status: valid
+
+
+    .. std_wp:: system_7
+       :id: STD_WP_ISO26262__system_7
+       :status: valid
+
+
+    .. std_wp:: system_8
+       :id: STD_WP_ISO26262__system_8
+       :status: valid
+
+
+    .. std_wp:: system_9
+       :id: STD_WP_ISO26262__system_9
+       :status: valid
+
+
+    .. std_wp:: system_10
+       :id: STD_WP_ISO26262__system_10
+       :status: valid
+
+
+    .. std_wp:: system_11
+       :id: STD_WP_ISO26262__system_11
+       :status: valid
+
+
+
+Part 6: Product development at the software level
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* Requirements
+     .. std_req:: software_1
+       :id: STD_REQ_ISO26262__software_1
+       :status: valid
+
+
+     .. std_req:: software_2
+       :id: STD_REQ_ISO26262__software_2
+       :status: valid
+
+
+     .. std_req:: software_3
+       :id: STD_REQ_ISO26262__software_3
+       :status: valid
+
+
+     .. std_req:: software_4
+       :id: STD_REQ_ISO26262__software_4
+       :status: valid
+
+
+     .. std_req:: software_5
+       :id: STD_REQ_ISO26262__software_5
+       :status: valid
+
+
+     .. std_req:: software_6
+       :id: STD_REQ_ISO26262__software_6
+       :status: valid
+
+
+     .. std_req:: software_7
+       :id: STD_REQ_ISO26262__software_7
+       :status: valid
+
+
+     .. std_req:: software_8
+       :id: STD_REQ_ISO26262__software_8
+       :status: valid
+
+
+     .. std_req:: software_9
+       :id: STD_REQ_ISO26262__software_9
+       :status: valid
+
+
+     .. std_req:: software_10
+       :id: STD_REQ_ISO26262__software_10
+       :status: valid
+
+
+     .. std_req:: software_11
+       :id: STD_REQ_ISO26262__software_11
+       :status: valid
+
+
+     .. std_req:: software_12
+       :id: STD_REQ_ISO26262__software_12
+       :status: valid
+
+
+     .. std_req:: software_13
+       :id: STD_REQ_ISO26262__software_13
+       :status: valid
+
+
+     .. std_req:: software_14
+       :id: STD_REQ_ISO26262__software_14
+       :status: valid
+
+
+     .. std_req:: software_15
+       :id: STD_REQ_ISO26262__software_15
+       :status: valid
+
+
+     .. std_req:: software_16
+       :id: STD_REQ_ISO26262__software_16
+       :status: valid
+
+
+     .. std_req:: software_17
+       :id: STD_REQ_ISO26262__software_17
+       :status: valid
+
+
+     .. std_req:: software_18
+       :id: STD_REQ_ISO26262__software_18
+       :status: valid
+
+
+     .. std_req:: software_19
+       :id: STD_REQ_ISO26262__software_19
+       :status: valid
+
+
+     .. std_req:: software_20
+       :id: STD_REQ_ISO26262__software_20
+       :status: valid
+
+
+     .. std_req:: software_21
+       :id: STD_REQ_ISO26262__software_21
+       :status: valid
+
+
+     .. std_req:: software_22
+       :id: STD_REQ_ISO26262__software_22
+       :status: valid
+
+
+     .. std_req:: software_23
+       :id: STD_REQ_ISO26262__software_23
+       :status: valid
+
+
+     .. std_req:: software_24
+       :id: STD_REQ_ISO26262__software_24
+       :status: valid
+
+
+     .. std_req:: software_25
+       :id: STD_REQ_ISO26262__software_25
+       :status: valid
+
+
+     .. std_req:: software_26
+       :id: STD_REQ_ISO26262__software_26
+       :status: valid
+
+
+     .. std_req:: software_27
+       :id: STD_REQ_ISO26262__software_27
+       :status: valid
+
+
+     .. std_req:: software_28
+       :id: STD_REQ_ISO26262__software_28
+       :status: valid
+
+
+     .. std_req:: software_29
+       :id: STD_REQ_ISO26262__software_29
+       :status: valid
+
+
+     .. std_req:: software_30
+       :id: STD_REQ_ISO26262__software_30
+       :status: valid
+
+
+     .. std_req:: software_31
+       :id: STD_REQ_ISO26262__software_31
+       :status: valid
+
+
+     .. std_req:: software_32
+       :id: STD_REQ_ISO26262__software_32
+       :status: valid
+
+
+     .. std_req:: software_33
+       :id: STD_REQ_ISO26262__software_33
+       :status: valid
+
+
+     .. std_req:: software_34
+       :id: STD_REQ_ISO26262__software_34
+       :status: valid
+
+
+     .. std_req:: software_35
+       :id: STD_REQ_ISO26262__software_35
+       :status: valid
+
+
+     .. std_req:: software_36
+       :id: STD_REQ_ISO26262__software_36
+       :status: valid
+
+
+     .. std_req:: software_37
+       :id: STD_REQ_ISO26262__software_37
+       :status: valid
+
+
+     .. std_req:: software_38
+       :id: STD_REQ_ISO26262__software_38
+       :status: valid
+
+
+     .. std_req:: software_39
+       :id: STD_REQ_ISO26262__software_39
+       :status: valid
+
+
+     .. std_req:: software_40
+       :id: STD_REQ_ISO26262__software_40
+       :status: valid
+
+
+     .. std_req:: software_41
+       :id: STD_REQ_ISO26262__software_41
+       :status: valid
+
+
+     .. std_req:: software_42
+       :id: STD_REQ_ISO26262__software_42
+       :status: valid
+
+
+     .. std_req:: software_43
+       :id: STD_REQ_ISO26262__software_43
+       :status: valid
+
+
+     .. std_req:: software_44
+       :id: STD_REQ_ISO26262__software_44
+       :status: valid
+
+
+     .. std_req:: software_45
+       :id: STD_REQ_ISO26262__software_45
+       :status: valid
+
+
+     .. std_req:: software_46
+       :id: STD_REQ_ISO26262__software_46
+       :status: valid
+
+
+     .. std_req:: software_47
+       :id: STD_REQ_ISO26262__software_47
+       :status: valid
+
+
+     .. std_req:: software_48
+       :id: STD_REQ_ISO26262__software_48
+       :status: valid
+
+
+     .. std_req:: software_49
+       :id: STD_REQ_ISO26262__software_49
+       :status: valid
+
+
+     .. std_req:: software_50
+       :id: STD_REQ_ISO26262__software_50
+       :status: valid
+
+
+* Workproducts
+     .. std_wp:: software_1
+       :id: STD_WP_ISO26262__software_1
+       :status: valid
+
+
+     .. std_wp:: software_2
+       :id: STD_WP_ISO26262__software_2
+       :status: valid
+
+
+     .. std_wp:: software_3
+       :id: STD_WP_ISO26262__software_3
+       :status: valid
+
+
+     .. std_wp:: software_4
+       :id: STD_WP_ISO26262__software_4
+       :status: valid
+
+
+     .. std_wp:: software_5
+       :id: STD_WP_ISO26262__software_5
+       :status: valid
+
+
+     .. std_wp:: software_6
+       :id: STD_WP_ISO26262__software_6
+       :status: valid
+
+
+     .. std_wp:: software_7
+       :id: STD_WP_ISO26262__software_7
+       :status: valid
+
+
+     .. std_wp:: software_8
+       :id: STD_WP_ISO26262__software_8
+       :status: valid
+
+
+     .. std_wp:: software_9
+       :id: STD_WP_ISO26262__software_9
+       :status: valid
+
+
+     .. std_wp:: software_10
+       :id: STD_WP_ISO26262__software_10
+       :status: valid
+
+
+     .. std_wp:: software_11
+       :id: STD_WP_ISO26262__software_11
+       :status: valid
+
+
+     .. std_wp:: software_12
+       :id: STD_WP_ISO26262__software_12
+       :status: valid
+
+
+     .. std_wp:: software_13
+       :id: STD_WP_ISO26262__software_13
+       :status: valid
+
+
+     .. std_wp:: software_14
+       :id: STD_WP_ISO26262__software_14
+       :status: valid
+
+
+     .. std_wp:: software_15
+       :id: STD_WP_ISO26262__software_15
+       :status: valid
+
+
+     .. std_wp:: software_16
+       :id: STD_WP_ISO26262__software_16
+       :status: valid
+
+
+     .. std_wp:: software_17
+       :id: STD_WP_ISO26262__software_17
+       :status: valid
+
+
+     .. std_wp:: software_18
+       :id: STD_WP_ISO26262__software_18
+       :status: valid
+
+
+     .. std_wp:: software_19
+       :id: STD_WP_ISO26262__software_19
+       :status: valid
+
+
+     .. std_wp:: software_20
+       :id: STD_WP_ISO26262__software_20
+       :status: valid
+
+
+     .. std_wp:: software_21
+       :id: STD_WP_ISO26262__software_21
+       :status: valid
+
+
+     .. std_wp:: software_22
+       :id: STD_WP_ISO26262__software_22
+       :status: valid
+
+
+     .. std_wp:: software_23
+       :id: STD_WP_ISO26262__software_23
+       :status: valid
+
+
+     .. std_wp:: software_24
+       :id: STD_WP_ISO26262__software_24
+       :status: valid
+
+
+     .. std_wp:: software_25
+       :id: STD_WP_ISO26262__software_25
+       :status: valid
+
+
+
+Part 8: Supporting processes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* Requirements
+    .. std_req:: support_1
+       :id: STD_REQ_ISO26262__support_1
+       :status: valid
+
+
+    .. std_req:: support_2
+       :id: STD_REQ_ISO26262__support_2
+       :status: valid
+
+
+    .. std_req:: support_3
+       :id: STD_REQ_ISO26262__support_3
+       :status: valid
+
+
+    .. std_req:: support_4
+       :id: STD_REQ_ISO26262__support_4
+       :status: valid
+
+
+    .. std_req:: support_5
+       :id: STD_REQ_ISO26262__support_5
+       :status: valid
+
+
+    .. std_req:: support_6
+       :id: STD_REQ_ISO26262__support_6
+       :status: valid
+
+
+    .. std_req:: support_7
+       :id: STD_REQ_ISO26262__support_7
+       :status: valid
+
+
+    .. std_req:: support_8
+       :id: STD_REQ_ISO26262__support_8
+       :status: valid
+
+
+    .. std_req:: support_9
+       :id: STD_REQ_ISO26262__support_9
+       :status: valid
+
+
+    .. std_req:: support_10
+       :id: STD_REQ_ISO26262__support_10
+       :status: valid
+
+
+    .. std_req:: support_11
+       :id: STD_REQ_ISO26262__support_11
+       :status: valid
+
+
+    .. std_req:: support_12
+       :id: STD_REQ_ISO26262__support_12
+       :status: valid
+
+
+    .. std_req:: support_13
+       :id: STD_REQ_ISO26262__support_13
+       :status: valid
+
+
+    .. std_req:: support_14
+       :id: STD_REQ_ISO26262__support_14
+       :status: valid
+
+
+    .. std_req:: support_15
+       :id: STD_REQ_ISO26262__support_15
+       :status: valid
+
+
+    .. std_req:: support_16
+       :id: STD_REQ_ISO26262__support_16
+       :status: valid
+
+
+    .. std_req:: support_17
+       :id: STD_REQ_ISO26262__support_17
+       :status: valid
+
+
+    .. std_req:: support_18
+       :id: STD_REQ_ISO26262__support_18
+       :status: valid
+
+
+    .. std_req:: support_19
+       :id: STD_REQ_ISO26262__support_19
+       :status: valid
+
+
+    .. std_req:: support_20
+       :id: STD_REQ_ISO26262__support_20
+       :status: valid
+
+
+    .. std_req:: support_21
+       :id: STD_REQ_ISO26262__support_21
+       :status: valid
+
+
+    .. std_req:: support_22
+       :id: STD_REQ_ISO26262__support_22
+       :status: valid
+
+
+    .. std_req:: support_23
+       :id: STD_REQ_ISO26262__support_23
+       :status: valid
+
+
+    .. std_req:: support_24
+       :id: STD_REQ_ISO26262__support_24
+       :status: valid
+
+
+    .. std_req:: support_25
+       :id: STD_REQ_ISO26262__support_25
+       :status: valid
+
+
+    .. std_req:: support_26
+       :id: STD_REQ_ISO26262__support_26
+       :status: valid
+
+
+    .. std_req:: support_27
+       :id: STD_REQ_ISO26262__support_27
+       :status: valid
+
+
+    .. std_req:: support_28
+       :id: STD_REQ_ISO26262__support_28
+       :status: valid
+
+
+    .. std_req:: support_29
+       :id: STD_REQ_ISO26262__support_29
+       :status: valid
+
+
+    .. std_req:: support_30
+       :id: STD_REQ_ISO26262__support_30
+       :status: valid
+
+
+    .. std_req:: support_31
+       :id: STD_REQ_ISO26262__support_31
+       :status: valid
+
+
+    .. std_req:: support_32
+       :id: STD_REQ_ISO26262__support_32
+       :status: valid
+
+
+    .. std_req:: support_33
+       :id: STD_REQ_ISO26262__support_33
+       :status: valid
+
+
+    .. std_req:: support_34
+       :id: STD_REQ_ISO26262__support_34
+       :status: valid
+
+
+    .. std_req:: support_35
+       :id: STD_REQ_ISO26262__support_35
+       :status: valid
+
+
+    .. std_req:: support_36
+       :id: STD_REQ_ISO26262__support_36
+       :status: valid
+
+
+    .. std_req:: support_37
+       :id: STD_REQ_ISO26262__support_37
+       :status: valid
+
+
+    .. std_req:: support_38
+       :id: STD_REQ_ISO26262__support_38
+       :status: valid
+
+
+    .. std_req:: support_39
+       :id: STD_REQ_ISO26262__support_39
+       :status: valid
+
+
+    .. std_req:: support_40
+       :id: STD_REQ_ISO26262__support_40
+       :status: valid
+
+
+    .. std_req:: support_41
+       :id: STD_REQ_ISO26262__support_41
+       :status: valid
+
+
+    .. std_req:: support_42
+       :id: STD_REQ_ISO26262__support_42
+       :status: valid
+
+
+    .. std_req:: support_43
+       :id: STD_REQ_ISO26262__support_43
+       :status: valid
+
+
+    .. std_req:: support_44
+       :id: STD_REQ_ISO26262__support_44
+       :status: valid
+
+
+    .. std_req:: support_45
+       :id: STD_REQ_ISO26262__support_45
+       :status: valid
+
+
+    .. std_req:: support_46
+       :id: STD_REQ_ISO26262__support_46
+       :status: valid
+
+
+    .. std_req:: support_47
+       :id: STD_REQ_ISO26262__support_47
+       :status: valid
+
+
+    .. std_req:: support_48
+       :id: STD_REQ_ISO26262__support_48
+       :status: valid
+
+
+    .. std_req:: support_49
+       :id: STD_REQ_ISO26262__support_49
+
+
+    .. std_req:: support_50
+       :id: STD_REQ_ISO26262__support_50
+       :status: valid
+
+
+    .. std_req:: support_51
+       :id: STD_REQ_ISO26262__support_51
+       :status: valid
+
+
+    .. std_req:: support_52
+       :id: STD_REQ_ISO26262__support_52
+       :status: valid
+
+
+    .. std_req:: support_53
+       :id: STD_REQ_ISO26262__support_53
+       :status: valid
+
+
+    .. std_req:: support_54
+       :id: STD_REQ_ISO26262__support_54
+       :status: valid
+
+
+    .. std_req:: support_55
+       :id: STD_REQ_ISO26262__support_55
+       :status: valid
+
+
+    .. std_req:: support_56
+       :id: STD_REQ_ISO26262__support_56
+       :status: valid
+
+
+    .. std_req:: support_57
+       :id: STD_REQ_ISO26262__support_57
+       :status: valid
+
+
+    .. std_req:: support_58
+       :id: STD_REQ_ISO26262__support_58
+       :status: valid
+
+
+    .. std_req:: support_59
+       :id: STD_REQ_ISO26262__support_59
+       :status: valid
+
+
+    .. std_req:: support_60
+       :id: STD_REQ_ISO26262__support_60
+       :status: valid
+
+
+    .. std_req:: support_61
+       :id: STD_REQ_ISO26262__support_61
+       :status: valid
+
+
+    .. std_req:: support_62
+       :id: STD_REQ_ISO26262__support_62
+       :status: valid
+
+
+    .. std_req:: support_63
+       :id: STD_REQ_ISO26262__support_63
+       :status: valid
+
+
+    .. std_req:: support_64
+       :id: STD_REQ_ISO26262__support_64
+       :status: valid
+
+
+    .. std_req:: support_65
+       :id: STD_REQ_ISO26262__support_65
+       :status: valid
+
+
+    .. std_req:: support_66
+       :id: STD_REQ_ISO26262__support_66
+       :status: valid
+
+
+    .. std_req:: support_67
+       :id: STD_REQ_ISO26262__support_67
+       :status: valid
+
+
+    .. std_req:: support_68
+       :id: STD_REQ_ISO26262__support_68
+       :status: valid
+
+
+    .. std_req:: support_69
+       :id: STD_REQ_ISO26262__support_69
+       :status: valid
+
+
+    .. std_req:: support_70
+       :id: STD_REQ_ISO26262__support_70
+       :status: valid
+
+
+* Workproducts
+    .. std_wp:: support_1
+       :id: STD_WP_ISO26262__support_1
+       :status: valid
+
+
+    .. std_wp:: support_2
+       :id: STD_WP_ISO26262__support_2
+       :status: valid
+
+
+    .. std_wp:: support_3
+       :id: STD_WP_ISO26262__support_3
+       :status: valid
+
+
+    .. std_wp:: support_4
+       :id: STD_WP_ISO26262__support_4
+       :status: valid
+
+
+    .. std_wp:: support_5
+       :id: STD_WP_ISO26262__support_5
+       :status: valid
+
+
+    .. std_wp:: support_6
+       :id: STD_WP_ISO26262__support_6
+       :status: valid
+
+
+    .. std_wp:: support_7
+       :id: STD_WP_ISO26262__support_7
+       :status: valid
+
+
+    .. std_wp:: support_8
+       :id: STD_WP_ISO26262__support_8
+       :status: valid
+
+
+    .. std_wp:: support_9
+       :id: STD_WP_ISO26262__support_9
+       :status: valid
+
+
+    .. std_wp:: support_10
+       :id: STD_WP_ISO26262__support_10
+       :status: valid
+
+
+    .. std_wp:: support_11
+       :id: STD_WP_ISO26262__support_11
+       :status: valid
+
+
+    .. std_wp:: support_12
+       :id: STD_WP_ISO26262__support_12
+       :status: valid
+
+
+    .. std_wp:: support_13
+       :id: STD_WP_ISO26262__support_13
+       :status: valid
+
+
+    .. std_wp:: support_14
+       :id: STD_WP_ISO26262__support_14
+       :status: valid
+
+
+    .. std_wp:: support_15
+       :id: STD_WP_ISO26262__support_15
+       :status: valid
+
+
+    .. std_wp:: support_16
+       :id: STD_WP_ISO26262__support_16
+       :status: valid
+
+
+    .. std_wp:: support_17
+       :id: STD_WP_ISO26262__support_17
+       :status: valid
+
+
+    .. std_wp:: support_18
+       :id: STD_WP_ISO26262__support_18
+       :status: valid
+
+
+    .. std_wp:: support_19
+       :id: STD_WP_ISO26262__support_19
+       :status: valid
+
+
+    .. std_wp:: support_20
+       :id: STD_WP_ISO26262__support_20
+       :status: valid
+
+
+    .. std_wp:: support_21
+       :id: STD_WP_ISO26262__support_21
+       :status: valid
+
+
+    .. std_wp:: support_22
+       :id: STD_WP_ISO26262__support_22
+       :status: valid
+
+
+    .. std_wp:: support_23
+       :id: STD_WP_ISO26262__support_23
+       :status: valid
+
+
+    .. std_wp:: support_24
+       :id: STD_WP_ISO26262__support_24
+       :status: valid
+
+
+    .. std_wp:: support_25
+       :id: STD_WP_ISO26262__support_25
+       :status: valid
+
+
+    .. std_wp:: support_26
+       :id: STD_WP_ISO26262__support_26
+       :status: valid
+
+
+    .. std_wp:: support_27
+       :id: STD_WP_ISO26262__support_27
+       :status: valid
+
+
+Part 9: Automotive safety integrity level (ASIL)-oriented and safety-oriented analyses
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* Requirements
+    .. std_req:: analysis_1
+       :id: STD_REQ_ISO26262__analysis_1
+       :status: valid
+
+
+    .. std_req:: analysis_2
+       :id: STD_REQ_ISO26262__analysis_2
+       :status: valid
+
+
+    .. std_req:: analysis_3
+       :id: STD_REQ_ISO26262__analysis_3
+       :status: valid
+
+
+    .. std_req:: analysis_4
+       :id: STD_REQ_ISO26262__analysis_4
+       :status: valid
+
+
+    .. std_req:: analysis_5
+       :id: STD_REQ_ISO26262__analysis_5
+       :status: valid
+
+
+    .. std_req:: analysis_6
+       :id: STD_REQ_ISO26262__analysis_6
+       :status: valid
+
+
+    .. std_req:: analysis_7
+       :id: STD_REQ_ISO26262__analysis_7
+       :status: valid
+
+
+    .. std_req:: analysis_8
+       :id: STD_REQ_ISO26262__analysis_8
+       :status: valid
+
+
+    .. std_req:: analysis_9
+       :id: STD_REQ_ISO26262__analysis_9
+       :status: valid
+
+
+    .. std_req:: analysis_10
+       :id: STD_REQ_ISO26262__analysis_10
+       :status: valid
+
+
+    .. std_req:: analysis_11
+       :id: STD_REQ_ISO26262__analysis_11
+       :status: valid
+
+
+    .. std_req:: analysis_12
+       :id: STD_REQ_ISO26262__analysis_12
+       :status: valid
+
+
+    .. std_req:: analysis_13
+       :id: STD_REQ_ISO26262__analysis_13
+       :status: valid
+
+
+    .. std_req:: analysis_14
+       :id: STD_REQ_ISO26262__analysis_14
+       :status: valid
+
+
+    .. std_req:: analysis_15
+       :id: STD_REQ_ISO26262__analysis_15
+       :status: valid
+
+
+    .. std_req:: analysis_16
+       :id: STD_REQ_ISO26262__analysis_16
+       :status: valid
+
+
+    .. std_req:: analysis_17
+       :id: STD_REQ_ISO26262__analysis_17
+       :status: valid
+
+
+    .. std_req:: analysis_18
+       :id: STD_REQ_ISO26262__analysis_18
+       :status: valid
+
+
+    .. std_req:: analysis_19
+       :id: STD_REQ_ISO26262__analysis_19
+       :status: valid
+
+
+    .. std_req:: analysis_20
+       :id: STD_REQ_ISO26262__analysis_20
+       :status: valid
+
+
+    .. std_req:: analysis_21
+       :id: STD_REQ_ISO26262__analysis_21
+       :status: valid
+
+
+    .. std_req:: analysis_22
+       :id: STD_REQ_ISO26262__analysis_22
+       :status: valid
+
+
+    .. std_req:: analysis_23
+       :id: STD_REQ_ISO26262__analysis_23
+       :status: valid
+
+
+* Workproducts
+    .. std_wp:: analysis_1
+       :id: STD_WP_ISO26262__analysis_1
+       :status: valid
+
+
+    .. std_wp:: analysis_2
+       :id: STD_WP_ISO26262__analysis_2
+       :status: valid
+
+
+    .. std_wp:: analysis_3
+       :id: STD_WP_ISO26262__analysis_3
+       :status: valid
+
+
+    .. std_wp:: analysis_4
+       :id: STD_WP_ISO26262__analysis_4
+       :status: valid
+
+
+    .. std_wp:: analysis_5
+       :id: STD_WP_ISO26262__analysis_5
+       :status: valid
+
+
+    .. std_wp:: analysis_6
+       :id: STD_WP_ISO26262__analysis_6
+       :status: valid
+
+
+    .. std_wp:: analysis_7
+       :id: STD_ẂP__ISO26262_analysis_7
+       :status: valid
+
+
+.. note::
+   Titles of the ISO 26262 standard parts are from official `ISO website <https://www.iso.org/search.html>`_ (search for "26262").
+
+   Requirements and work products numbering as above is derived by the sequence as those are defined in the standard document.
+   All workproducts of the relevant parts are included in the list to enable the documentation of the project wide tailoring,
+   but the related requirements are not included as these are not needed to be covered.
+
+   A mapping table to ISO 26262 numbering can be provided by SCORE project on request for every holder of a ISO 26262 standard license.

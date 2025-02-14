@@ -1,0 +1,119 @@
+# *******************************************************************************
+# Copyright (c) 2025 Contributors to the Eclipse Foundation
+#
+# See the NOTICE file(s) distributed with this work for additional
+# information regarding copyright ownership.
+#
+# This program and the accompanying materials are made available under the
+# terms of the Apache License Version 2.0 which is available at
+# https://www.apache.org/licenses/LICENSE-2.0
+#
+# SPDX-License-Identifier: Apache-2.0
+# *******************************************************************************
+
+name: Deploy Versioned Pages
+description: Will push the documentation to the gh-pages branch, possibly with a versioned URL. When the PR is closed, the documentation will be deleted.
+# Note: this has some shortcomings, like race conditions when multiple PRs are opened at the same time,
+# problems with overwriting existing files, not deleting deleted files, etc.
+# We'll address these when we transform this action into a truly reusable independent action.
+# But for now, let's get it working!
+
+inputs:
+  source_folder:
+    description: "Path to the html files to deploy in current working directory"
+    required: true
+  versions_file:
+    description: "Path to the versions file on gh-pages branch"
+    default: "versions.json"
+  create_comment:
+    description: "Create a comment on the PR with the URL to the documentation" # in case of PR
+    default: "true"
+
+outputs:
+  target_folder:
+    description: "The target folder for the documentation"
+    value: ${{ steps.calc.outputs.target_folder }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Determine target_folder
+      id: calc
+      shell: bash
+      run: |
+        if [[ "${{ github.event_name }}" == 'pull_request_target' || "${{ github.event_name }}" == 'pull_request' ]]; then
+          target_folder="pr-${{ github.event.pull_request.number }}"
+        else
+          target_folder="${{github.ref_name}}"
+        fi
+        echo "target_folder=$target_folder" >> $GITHUB_OUTPUT
+
+    - name: Prepare the deploy folder
+      shell: bash
+      run: |
+        # Prepare the deploy folder
+        mkdir -p deploy_root
+        mkdir -p version_root
+        # Move the files to the deploy folder
+        mv ${{ inputs.source_folder }}/* deploy_root/
+        # Ensure that the folder is not treated as a Jekyll site
+        touch deploy_root/.nojekyll
+
+        # Add the target folder to the versions file
+        BASE_REPO="https://github.com/${{ github.repository }}.git"
+
+        echo "Fetching gh-pages from BASE_REPO: $BASE_REPO"
+        git remote add base "$BASE_REPO" || git remote set-url base "$BASE_REPO"
+        git fetch base gh-pages --depth 1
+
+        # Checkout only the versions file from gh-pages branch of the base repo
+        git checkout base/gh-pages -- "${{ inputs.versions_file }}"
+
+        target="${{ steps.calc.outputs.target_folder }}"
+        new_version="${{ steps.calc.outputs.target_folder }}"
+
+
+        if jq -e --arg version "$new_version" 'map(select(.version == $version)) | length > 0' "${{ inputs.versions_file }}" > /dev/null; then
+          echo "Version '$new_version' already exists in ${{ inputs.versions_file }}"
+        else
+          REPO_NAME=$(basename ${{ github.repository }})
+          USER_NAME=$(echo ${{ github.repository }} | cut -d'/' -f1)
+          GITHUB_PAGES_URL="https://${USER_NAME}.github.io/${REPO_NAME}"
+          if [ "$target" = "/" ]; then
+            new_url="${GITHUB_PAGES_URL}/"
+          else
+            new_url="${GITHUB_PAGES_URL}/$target/"
+          fi
+
+          jq --arg version "$new_version" --arg url "$new_url" '. + [{"version": $version, "url": $url}]' "${{ inputs.versions_file }}" > tmp_versions.json
+          mv tmp_versions.json "${{ inputs.versions_file }}"
+        fi
+        mv "${{ inputs.versions_file }}" version_root/
+        ls -al .
+        ls -al deploy_root
+        ls -al version_root
+        cat  version_root/"${{ inputs.versions_file }}"
+
+    - name: Deploy Documentation
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: deploy_root
+        target-folder: ${{ steps.calc.outputs.target_folder }}
+        clean: true
+        clean-exclude: .nojekyll
+
+    - name: Deploy  version file 🚀
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: version_root
+        clean: false
+
+
+    - name: Comment on PR with docs URL
+      if: ${{ github.event_name == 'pull_request_target' && inputs.create_comment == 'true' }}
+      uses: peter-evans/create-or-update-comment@v4
+      with:
+        issue-number: ${{github.event.pull_request.number}}
+        body: |
+          The created documentation from the pull request is available at: [docu-html](https://eclipse-score.github.io/score/${{steps.calc.outputs.target_folder}})
+        reactions: rocket

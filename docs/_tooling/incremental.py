@@ -26,6 +26,7 @@ sphinx_main(
     [
         "docs",  # src dir
         "_build",  # out dir
+        "-T",  # show details in case of errors in extensions
         "--jobs",
         "auto",
         "--conf-dir",

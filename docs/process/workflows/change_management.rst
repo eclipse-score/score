@@ -26,11 +26,11 @@ todo: need to add standard links
    :status: valid
    :tags: change_management
    :responsible: RL_contributor
-   :approver: RL_committer
-   :supporter: RL_technical_lead, RL_module_lead
+   :approved_by: RL_committer
+   :supported_by: RL_technical_lead, RL_module_lead
    :input: WP_POLICIES, WP_ISSUE_TRACK_SYSTEM
    :output: WP_FEAT_REQUEST, WP_ISSUE_TRACK_SYSTEM
-   :guidance: GD_GUIDL__Contr_Request_Guideline, GD_GUIDL__Pull_Request_Guideline, GD_GUIDL__Issue_Guideline
+   :contains: GD_GUIDL__Contr_Request_Guideline, GD_GUIDL__Pull_Request_Guideline, GD_GUIDL__Issue_Guideline
 
    | The change/contribution request is created and discussed.
    | The request must be filled out based on the existing templates.
@@ -44,11 +44,11 @@ todo: need to add standard links
    :status: valid
    :tags: change_management
    :responsible: RL_committer
-   :approver: RL_technical_lead, RL_module_lead
-   :supporter: RL_safety_manager, RL_security_manager, RL_quality_manager
+   :approved_by: RL_technical_lead, RL_module_lead
+   :supported_by: RL_safety_manager, RL_security_manager, RL_quality_manager
    :input: WP_FEAT_REQUEST, WP_ISSUE_TRACK_SYSTEM
    :output: WP_FEAT_REQUEST, WP_ISSUE_TRACK_SYSTEM
-   :guidance: GD_GUIDL__Contr_Request_Guideline, GD_GUIDL__Pull_Request_Guideline, GD_GUIDL__Issue_Guideline
+   :contains: GD_GUIDL__Contr_Request_Guideline, GD_GUIDL__Pull_Request_Guideline, GD_GUIDL__Issue_Guideline
 
    | The change/contribution request is reviewed and approved.
    | The final approval is done by the :need:`RL_technical_lead` or the :need:`RL_module_lead` dependent on scope.

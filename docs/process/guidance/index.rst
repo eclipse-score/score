@@ -24,6 +24,7 @@
 
    git/index.rst
    branch/index.rst
+   feature_flags/index.rst
    general/index.rst
    contribution_request/index.rst
    requirements/index.rst

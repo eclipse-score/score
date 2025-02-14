@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -71,3 +71,14 @@ The guidance for the SCORE project (e.g. templates, guidelines, checklists) can 
    :glob:
 
    guidance/index.rst
+
+Standards
+---------
+
+The the standard references the SCORE project's processes are derived from can be found here:
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   standards/index.rst

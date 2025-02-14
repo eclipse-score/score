@@ -25,11 +25,11 @@ todo: need to add guidance and standard links
    :id: WF_create_maintain_stakeholder_requirements
    :status: valid
    :responsible: RL_contributor
-   :approver: RL_technical_lead
-   :supporter: RL_safety_manager
+   :approved_by: RL_technical_lead
+   :supported_by: RL_safety_manager
    :input: WP_POLICIES, WP_ISSUE_TRACK_SYSTEM
    :output: WP_STAKEHOLDER_REQ
-   :guidance: GD_TEMP__stakeholder_requirements_template, GD_TEMP__requirement_formulation
+   :contains: GD_TEMP__stakeholder_requirements_template, GD_TEMP__requirement_formulation
 
    | Stakeholder requirements can be created during a contribution request. Any contributor can create a stakeholder requirement and propose it for approval.
 
@@ -38,11 +38,11 @@ todo: need to add guidance and standard links
    :status: valid
    :tags: requirements_management
    :responsible: RL_contributor
-   :approver: RL_technical_lead
-   :supporter: RL_safety_manager
+   :approved_by: RL_technical_lead
+   :supported_by: RL_safety_manager
    :input: WP_STAKEHOLDER_REQ, WP_ISSUE_TRACK_SYSTEM, WP_FEATURE_SAFETY_ANALYSES, WP_FEATURE_DFA
    :output: WP_FEATURE_REQ, WP_FEATURE_AOU, WP_PLATFORM_SW_SAFETY_MANUAL
-   :guidance: GD_TEMP__feature_requirements_template, GD_TEMP__requirement_formulation
+   :contains: GD_TEMP__feature_requirements_template, GD_TEMP__requirement_formulation
 
    | Depending on the stakeholder requirements feature requirements can be derived. This can be done by any contributor and will be approved by a contributor. If needed a Safety Manager can provide support.
 
@@ -51,11 +51,11 @@ todo: need to add guidance and standard links
    :status: valid
    :tags: requirements_management
    :responsible: RL_contributor
-   :approver: RL_committer
-   :supporter: RL_safety_manager
+   :approved_by: RL_committer
+   :supported_by: RL_safety_manager
    :input: WP_FEATURE_REQ, WP_ISSUE_TRACK_SYSTEM, WP_SW_COMPONENT_SAFETY_ANALYSES, WP_SW_COMPONENT_DFA
    :output: WP_SW_COMPONENT_REQ, WP_SW_COMPONENT_AOU, WP_MODULE_SW_SAFETY_MANUAL
-   :guidance: GD_TEMP__component_requirements_template, GD_TEMP__requirement_formulation
+   :contains: GD_TEMP__component_requirements_template, GD_TEMP__requirement_formulation
 
    | On the lowest level the component requirements are created and maintained. This can be done by any contributor and will be approved by a committer. If needed a safety manager can provide support.
 
@@ -64,11 +64,11 @@ todo: need to add guidance and standard links
    :status: valid
    :tags: requirements_management
    :responsible: RL_process_community
-   :approver: RL_infrastructure_tooling_community
-   :supporter: RL_safety_manager
+   :approved_by: RL_infrastructure_tooling_community
+   :supported_by: RL_safety_manager
    :input: WP_POLICIES, WP_STAKEHOLDER_REQ, WP_ISSUE_TRACK_SYSTEM
    :output: WP_TOOL_REQ
-   :guidance: GD_TEMP__tool_requirements_template, GD_TEMP__requirement_formulation
+   :contains: GD_TEMP__tool_requirements_template, GD_TEMP__requirement_formulation
 
    | The tool requirements are created and maintained.
 
@@ -77,8 +77,8 @@ todo: need to add guidance and standard links
    :status: valid
    :tags: requirements_management
    :responsible: RL_committer
-   :approver: RL_committer
-   :supporter: RL_safety_manager
+   :approved_by: RL_committer
+   :supported_by: RL_safety_manager
    :input: WP_STAKEHOLDER_REQ, WP_TOOL_REQ, WP_FEATURE_REQ, WP_SW_COMPONENT_REQ, WP_FEATURE_AOU, WP_SW_COMPONENT_AOU, WP_PLATFORM_SW_SAFETY_MANUAL, WP_MODULE_SW_SAFETY_MANUAL
    :output: WP_ISSUE_TRACK_SYSTEM, WP_SW_REQ_INSPECT
 

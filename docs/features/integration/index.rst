@@ -42,8 +42,8 @@ languages.
 All dependencies should be managed thru mechanisms available in Bazel.
 Dependency to host system should be limited as much as possible.
 
-Each repository should register an entry in the bazel_registry for
-dependency management between different modules.
+Each repository should register an entry in the `bazel_registry <https://github.com/eclipse-score/bazel_registry>`_
+for dependency management between different modules.
 
 High level integration dependency
 
@@ -59,6 +59,20 @@ Mandatory repositories:
 Optional repositories:
 
 -  repositories containing implementation of particular features
+
+Versioning and release cycle
+============================
+
+Each repository that is planned to be consumed as a dependency, should adopt
+the `Bazel versioning scheme <https://bazel.build/external/module#version_format>`_ and use the
+`compatibility_level <https://bazel.build/external/module#compatibility_level>`_
+to indicate breaking changes between the versions.
+
+This requires that each repository has its own release cycle. A release should create a tag in the repository
+and publish a new version in `bazel_registry <https://github.com/eclipse-score/bazel_registry>`_,
+which can then be consumed by the users.
+
+Refer to :ref:`Bazel registry <bazel_registry>` for detailed setup of a module entry.
 
 Incubation repositories
 =======================
