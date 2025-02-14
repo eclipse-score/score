@@ -23,6 +23,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4.2.2
+      - name: Debug Bazel Output Base
+        run: bazel info output_base
+      - name: List Bazel Cache Contents
+        run: ls -lh $(bazel info output_base)
+
       - name: Setup Bazel
         uses: bazel-contrib/setup-bazel@0.9.1
       - name: Run copyright checks
