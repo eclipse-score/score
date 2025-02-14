@@ -300,7 +300,11 @@ def get_files_from_dir(directory, exts=None):
     LOGGER.debug("Getting files from directory: %s", directory)
     for path in directory.rglob("*"):
         if path.is_file() and path.stat().st_size != 0:
-            if exts is None or path.suffix[1:] in exts:
+            if (
+                exts is None
+                or path.suffix[1:] in exts
+                or (path.name == "BUILD" and "BUILD" in exts)
+            ):
                 collected_files.append(path)
     return collected_files
 
@@ -330,7 +334,11 @@ def collect_inputs(inputs, exts=None):
         if item.is_dir():
             LOGGER.debug("Processing directory: %s", item)
             all_files.extend(get_files_from_dir(item, exts))
-        elif item.is_file() and (exts is None or item.suffix[1:] in exts):
+        elif item.is_file() and (
+            exts is None
+            or item.suffix[1:] in exts
+            or (item.name == "BUILD" and "BUILD" in exts)
+        ):
             LOGGER.debug("Processing file: %s", item)
             all_files.append(item)
         else:
