@@ -173,7 +173,7 @@ This document implements <add "need" link>
           - Checklist used in Pull Request Review
           - n/a
 
-        * - :need:`wp__sw_component_architecture`
+        * - :need:`wf__cr_mt_comparch`
           - <Link to process>
           - <automated>
           - <Link to issue>
@@ -266,7 +266,7 @@ This document implements <add "need" link>
           - n/a
           - Checklist used in Pull Request Review
 
-        * - :need:`wp__sw_component_architecture`
+        * - :need:`wf__cr_mt_comparch`
           - <Link to issue>
           - <Reasoning for tailoring, needed for example in case of deficits in process Id 3&4 and complexity Ids 1&4>
 
@@ -276,7 +276,7 @@ This document implements <add "need" link>
 
         * - :need:`wp__sw_arch_verification`
           - <Link to issue>
-          - <Reasoning for tailoring, needed if also wp__sw_component_architecture is required>
+          - <Reasoning for tailoring, needed if also wf__cr_mt_comparch is required>
 
         * - :need:`wp__sw_implementation`
           - n/a

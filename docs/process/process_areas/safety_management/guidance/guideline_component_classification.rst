@@ -253,7 +253,7 @@ Integration of the OSS component is performed via the modules's SW build config 
 **If CLAS_OUT=QR : Follow the process for pre-existing software architectural elements**
 
 * Based on the gaps detected in this classification which lead to a QR instead of a Q, add additional work products or improve the existing work products with the goal to get a better P or C rating ("1").
-* In case of too high complexity based on the Ids 1 and 4, a :need:`wp__sw_component_architecture` shall be derived from the OSS component source code and a classification done on the sub-components in this architecture. This could be repeated again and again until sufficiently low complex sub-components were broken down.
+* In case of too high complexity based on the Ids 1 and 4, a :need:`wf__cr_mt_comparch` shall be derived from the OSS component source code and a classification done on the sub-components in this architecture. This could be repeated again and again until sufficiently low complex sub-components were broken down.
 * If the classification of the (sub-)component is Q after the above, do as in section "Q:"
 
 **If CLAS_OUT=NQ : Do no use this element in safety context**

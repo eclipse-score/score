@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,15 +12,20 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Workflows
-=========
+.. _arch_design_process:
+
+###################
+Architecture Design
+###################
 
 .. toctree::
    :maxdepth: 1
-   :caption: Contents:
 
-   process_management
-   platform_management
-   change_management
-   quality_management
-   safety_analysis
+   architecture_getstrt
+   guidance/architecture_guideline
+   architecture_concept
+   guidance/index
+   architecture_roles
+   architecture_workflow
+   architecture_workproducts
+   _assets/architecture_modeling_example
