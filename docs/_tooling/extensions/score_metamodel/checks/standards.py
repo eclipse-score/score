@@ -64,14 +64,7 @@ def get_compliance_req_needs(needs) -> set:
     return {
         compliance_req
         for need in needs
-        if need.get("type", "")
-        in [
-            "Process Requirements",
-            "Process Template",
-            "Process Checklist",
-            "Process Guideline",
-            "Process Method",
-        ]
+        if need.get("type", "").startswith("gd_")
         for compliance_req in need.get("complies", [])
         if compliance_req
     }
