@@ -27,6 +27,8 @@ jobs:
         run: bazel info output_base
       - name: List Bazel Cache Contents
         run: ls -lh $(bazel info output_base)
+      - name: Debug MODULE.bazel in CI
+        run: cat MODULE.bazel
 
       - name: Setup Bazel
         uses: bazel-contrib/setup-bazel@0.9.1
