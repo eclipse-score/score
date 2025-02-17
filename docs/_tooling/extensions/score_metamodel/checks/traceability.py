@@ -14,10 +14,12 @@ from sphinx_needs.data import NeedsInfoType
 
 from score_metamodel import CheckLogger, graph_check
 
+from sphinx.application import Sphinx
+
 
 # req-traceability: TOOL_REQ__toolchain_sphinx_needs_build__requirement_linkage_status
 @graph_check
-def check_linkage_parent(needs: list[NeedsInfoType], log: CheckLogger):
+def check_linkage_parent(app: Sphinx, needs: list[NeedsInfoType], log: CheckLogger):
     """
     Checking if all linked parent requirements have status valid.
     """
@@ -41,7 +43,7 @@ def check_linkage_parent(needs: list[NeedsInfoType], log: CheckLogger):
 
 # req-traceability: TOOL_REQ__toolchain_sphinx_needs_build__requirement_linkage_safety_check
 @graph_check
-def check_linkage_safety(needs: list[NeedsInfoType], log: CheckLogger):
+def check_linkage_safety(app: Sphinx, needs: list[NeedsInfoType], log: CheckLogger):
     """
     Checking if for feature, component and tool requirements it shall be checked if at least one parent requirement
     contains the same or lower ASIL compared to the ASIL of the current requirement then it will return False.
@@ -85,7 +87,7 @@ def check_linkage_safety(needs: list[NeedsInfoType], log: CheckLogger):
 
 # req-traceability: TOOL_REQ__toolchain_sphinx_needs_build__requirement_linkage_status_check
 @graph_check
-def check_linkage_status(needs: list[NeedsInfoType], log: CheckLogger):
+def check_linkage_status(app: Sphinx, needs: list[NeedsInfoType], log: CheckLogger):
     """
     Checking if for valid feature, component and tool requirements it shall be checked if the status of the parent requirement is also valid.
     """

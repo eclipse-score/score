@@ -13,13 +13,11 @@
 import re
 
 from sphinx_needs.data import NeedsInfoType
+from sphinx.application import Sphinx
 
 from score_metamodel import (
     CheckLogger,
     local_check,
-)
-from score_metamodel import (
-    needs_types_list as production_needs_types,
 )
 
 
@@ -34,14 +32,14 @@ def get_need_type(needs_types: list[NeedsInfoType], directive: str):
 # req-traceability: TOOL_REQ__toolchain_sphinx_needs_build__options
 @local_check
 def check_options(
+    app: Sphinx,
     need: NeedsInfoType,
     log: CheckLogger,
-    needs_types=production_needs_types,
 ):
     """
     Checking if all described and wanted attributes are present and their values follow the described pattern.
     """
-
+    needs_types = app.config.needs_types
     try:
         need_options = get_need_type(needs_types, need["type"])
     except ValueError:
@@ -49,14 +47,14 @@ def check_options(
         log.warning_for_option(need, log, msg)
         return
 
-    required_options: list[tuple[str, str]] = need_options.get("req_opt", [])
-    optional_options: list[tuple[str, str]] = need_options.get("opt_opt", [])
+    required_options: dict[str, str] = need_options.get("mandatory_options", {})
+    optional_options: dict[str, str] = need_options.get("opt_opt", {})
 
     if len(required_options) == 0:
         msg = "no type info defined for semantic check."
-        log.warning_for_option((need, "type", msg))
+        log.warning_for_option(need, "type", msg)
 
-    for option, pattern in required_options:
+    for option, pattern in required_options.items():
         values = need.get(option, None)
 
         if values is None or values in [[], ""]:
@@ -77,7 +75,7 @@ def check_options(
                 log.warning_for_option(need, option, msg)
 
     if optional_options:
-        for option, pattern in optional_options:
+        for option, pattern in optional_options.items():
             values = need.get(option, None)
 
             if values is None or values in [[], ""]:  # Skip if no values
@@ -117,14 +115,16 @@ def check_options(
 
 @local_check
 def check_extra_options(
+    app: Sphinx,
     need: NeedsInfoType,
     log: CheckLogger,
-    needs_types=production_needs_types,
 ):
     """
     This function checks if the user specified attributes in the need which are not defined for this element in the metamodel or by default system attributes.
     """
 
+    needs_types = app.config.needs_types
+    default_options = app.config.defined_default_options
     try:
         need_options = get_need_type(needs_types, need["type"])
     except ValueError:
@@ -132,46 +132,11 @@ def check_extra_options(
         log.warning_for_option(need, log, msg)
         return
 
-    required_options: list[tuple[str, str]] = need_options.get("req_opt", [])
-    optional_options: list[tuple[str, str]] = need_options.get("opt_opt", [])
+    required_options: dict[str, str] = need_options.get("mandatory_options", {})
+    optional_options: dict[str, str] = need_options.get("opt_opt", {})
 
     allowed_options = (
-        [key for key, _ in required_options]
-        + [key for key, _ in optional_options]
-        # list of default system attributes to ignore
-        + [
-            "target_id",
-            "docname",
-            "lineno",
-            "type",
-            "lineno_content",
-            "doctype",
-            "content",
-            "type_name",
-            "type_color",
-            "type_style",
-            "title",
-            "full_title",
-            "layout",
-            "id_parent",
-            "id_complete",
-            "external_css",
-            "sections",
-            "section_name",
-            "type_prefix",
-            "constraints_passed",
-            "collapse",
-            "hide",
-            "delete",
-            "jinja_content",
-            "is_part",
-            "is_need",
-            "is_external",
-            "is_modified",
-            "modifications",
-            "has_dead_links",
-            "has_forbidden_dead_links",
-        ]
+        list(required_options.keys()) + list(optional_options.keys()) + default_options
     )
 
     extra_options = [
