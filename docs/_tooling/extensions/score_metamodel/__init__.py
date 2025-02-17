@@ -103,7 +103,7 @@ def load_metamodel_data():
     types_dict = data.get("needs_types", {})
     links_dict = data.get("needs_extra_links", {})
     # Default options by sphinx, sphinx-needs or anything else we need to account for
-    default_options = data.get("default_options", [])
+    default_options_list = default_options()
 
     # Convert "types" from {directive_name: {...}, ...} to a list of dicts
     needs_types_list = []
@@ -155,14 +155,55 @@ def load_metamodel_data():
 
     # We have to remove all 'default options' from the extra options.
     # As otherwise sphinx errors, due to an option being registered twice.
-    needs_extra_options = sorted(all_options - set(default_options))
+    # They are still inside the extra options we extract to enable constraint checking via regex
+    needs_extra_options = sorted(all_options - set(default_options_list))
 
+    # Returning default options inside here to enable one `load_metamodel_data` call to get all relevant information
     return {
         "needs_types": needs_types_list,
         "needs_extra_links": needs_extra_links_list,
         "needs_extra_options": needs_extra_options,
-        "defined_default_options": default_options,
+        "defined_default_options": default_options_list,
     }
+
+
+def default_options() -> list[str]:
+    "Helper function to get a list of all default options defined by sphinx, sphinx-needs etc."
+    return [
+        "target_id",
+        "id",
+        "status",
+        "docname",
+        "lineno",
+        "type",
+        "lineno_content",
+        "doctype",
+        "content",
+        "type_name",
+        "type_color",
+        "type_style",
+        "title",
+        "full_title",
+        "layout",
+        "id_parent",
+        "id_complete",
+        "external_css",
+        "sections",
+        "section_name",
+        "type_prefix",
+        "constraints_passed",
+        "collapse",
+        "hide",
+        "delete",
+        "jinja_content",
+        "is_part",
+        "is_need",
+        "is_external",
+        "is_modified",
+        "modifications",
+        "has_dead_links",
+        "has_forbidden_dead_links",
+    ]
 
 
 def setup(app: Sphinx):
