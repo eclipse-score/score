@@ -12,7 +12,7 @@
 # *******************************************************************************
 
 from score_metamodel.checks.id_contains_feature import id_contains_feature
-from score_metamodel.tests import fake_check_logger, need, verify_log_string
+from score_metamodel.tests import fake_check_logger, need
 
 
 def test_feature_ok():
@@ -30,4 +30,4 @@ def test_feature_not_ok():
     id_contains_feature(
         need(id="Req__feature17__Title", docname="path/to/feature15/index"), logger
     )
-    verify_log_string(logger, "feature15", expect_location=False)
+    logger.assert_warning("feature15", expect_location=False)
