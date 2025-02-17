@@ -1,0 +1,83 @@
+# *******************************************************************************
+# Copyright (c) 2025 Contributors to the Eclipse Foundation
+#
+# See the NOTICE file(s) distributed with this work for additional
+# information regarding copyright ownership.
+#
+# This program and the accompanying materials are made available under the
+# terms of the Apache License Version 2.0 which is available at
+# https://www.apache.org/licenses/LICENSE-2.0
+#
+# SPDX-License-Identifier: Apache-2.0
+# *******************************************************************************
+
+name: License check preparation
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize]
+  merge_group:
+    types: [checks_requested]
+jobs:
+  license-check:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      issues: write
+    steps:
+      # ------------------------------------------------------------------------------
+      # Checkout the correct branch safely in all scenarios (PRs, forks, merges)
+      # ------------------------------------------------------------------------------
+      # | Condition                              | Event Type         | Checked Out Branch    |
+      # |----------------------------------------|--------------------|-----------------------|
+      # | github.head_ref                        | pull_request_target | PR branch (source branch) |
+      # | github.event.pull_request.head.ref     | pull_request        | PR branch (source branch) |
+      # | github.ref                             | push, merge_group   | The branch being pushed/merged |
+      # ------------------------------------------------------------------------------
+      # ------------------------------------------------------------------------------
+      # Checkout the correct repository safely in all scenarios (PRs, forks, merges)
+      # ------------------------------------------------------------------------------
+      # | Condition                                      | Event Type         | Checked Out Repository           |
+      # |------------------------------------------------|--------------------|----------------------------------|
+      # | github.event.pull_request.head.repo.full_name  | pull_request       | Forked repository (if PR is from a fork) |
+      # | github.repository                              | push, merge_group  | Default repository (same repo PRs, merges, pushes) |
+      - name: Checkout repository (Handle all events)
+        uses: actions/checkout@v4.2.2
+        with:
+          ref: ${{ github.head_ref || github.event.pull_request.head.ref || github.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
+      - name: Setup Bazel
+        uses: bazel-contrib/setup-bazel@0.9.1
+      - name: Run license checks
+        run: |
+          # The bash script won't fail on error. We capture the stderr and stdout and we save
+          # the exit code of the bazel command in a variable
+          # The output will also be stored in a file using the tee command
+          # We save both  output and exit code in the GH actions env file
+          set +e  # Ensure script does not exit on failure, even if the bazel run fails, the execution will continue
+          OUTPUT=$(bazel run //:license.check.python 2>&1)
+          EXIT_CODE=$?
+          echo "$OUTPUT" | tee license-check-output.txt
+          echo "exit_code=$EXIT_CODE" >> $GITHUB_ENV
+          echo "output<<EOF" >> $GITHUB_ENV
+          echo "$OUTPUT" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+      - name: Comment on PR with License Check Results
+        if: github.event_name == 'pull_request'
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            ### License Check Results
+            🚀 The **license check preparation** job ran successfully.
+
+            **Status:** ${{ env.exit_code == 0 && '✅ Passed' || '⚠️ Needs Review' }}
+
+            <details>
+            <summary>Click to expand output</summary>
+
+            ```
+            ${{ env.output }}
+            ```
+
+            </details>
+          reactions: eyes
