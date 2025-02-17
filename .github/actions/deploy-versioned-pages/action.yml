@@ -108,12 +108,20 @@ runs:
         folder: version_root
         clean: false
 
+    - name: Find Comment
+      uses: peter-evans/find-comment@v3
+      id: fc
+      with:
+        issue-number: ${{ github.event.pull_request.number }}
+        comment-author: 'github-actions[bot]'
+        body-includes: [docu-html]
 
     - name: Comment on PR with docs URL
       if: ${{ github.event_name == 'pull_request_target' && inputs.create_comment == 'true' }}
       uses: peter-evans/create-or-update-comment@v4
       with:
         issue-number: ${{github.event.pull_request.number}}
+        comment-id: ${{ steps.fc.outputs.comment-id }}
         body: |
           The created documentation from the pull request is available at: [docu-html](https://eclipse-score.github.io/score/${{steps.calc.outputs.target_folder}})
         reactions: rocket
