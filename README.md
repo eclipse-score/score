@@ -9,9 +9,22 @@ The build currently supports Linux environments.
 Follow [instructions](https://github.com/bazelbuild/bazelisk) and setup bazelisk to manage your bazel version based on the .bazelversion file.
 
 ### Check and fix formatting
+```sh
+bazel test //:format.check
+bazel run //:format.fix
 ```
-$ bazel test //:format.check
-$ bazel run //:format.fix
+
+### Check and fix copyright
+```sh
+bazel run //:copyright.check
+bazel run //:copyright.fix
+```
+
+### Update and upgrade requirements
+
+```sh
+bazel run //docs:requirements.update
+bazel run //docs:requirements.update -- --upgrade 
 ```
 
 ## Documentation
@@ -79,19 +92,19 @@ bazel run //docs:live_preview
 
 Use the following command to run all available tests:
 
-```
+```sh
 $ bazel test //...
 ```
 
 However it's also  possible to run specific tests or set of tests.
 
 To run all tests of a certain language use the command below, here an example for python.
-```
+```sh
 $ bazel query 'kind(py.*, tests(//...))' | xargs bazel tests
 ```
 
 Grouping of tests via tags is also supported:
-```
+```sh
 $ bazel test --test_tag_filters=docs-build
 ```
 You can add as many tags as you like, as long as a test has at least one of the tags it will be executed.
