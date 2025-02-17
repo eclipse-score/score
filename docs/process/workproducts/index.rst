@@ -201,33 +201,6 @@ Product development
 Platform development
 ^^^^^^^^^^^^^^^^^^^^
 
-.. workproduct:: Stakeholder Requirements
-   :id: WP_STAKEHOLDER_REQ
-   :status: draft
-   :tags: requirements_management
-
-   Technical requirements from a stakeholder viewpoint and Assumptions of use based on the integration as SW platform SEooC in an assumed context.
-
-.. workproduct:: Tool Requirements
-   :id: WP_TOOL_REQ
-   :status: draft
-   :tags: requirements_management
-
-   SW Requirements for tools to ensure automatic enforcement of rules and as input for software tool qualification.
-
-.. workproduct:: Feature Requirements
-   :id: WP_FEATURE_REQ
-   :status: draft
-   :tags: requirements_management
-
-   SW Requirements describing in a more detailed way the functionality which will fulfill a set of stakeholder requirements. A "feature" consists of a set of requirements. These feature requirements shall also be the basis for integration testing on platform level.
-
-.. workproduct:: Feature Assumptions of Use
-   :id: WP_FEATURE_AOU
-   :status: draft
-   :tags: safety
-
-   SW Safety Requirements for the user of the feature, exportable requirements for the user to integrate in their req mgt system.
 
 .. workproduct:: Platform Safety Manual
    :id: WP_PLATFORM_SW_SAFETY_MANUAL

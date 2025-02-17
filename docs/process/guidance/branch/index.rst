@@ -16,6 +16,8 @@
  Branches
 ##########
 
+.. _branch_naming:
+
 *******************
  Naming Convention
 *******************
