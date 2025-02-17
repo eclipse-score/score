@@ -330,6 +330,12 @@ needs_types:
     mandatory_links:
       satisfies: "^comp_req__.*$"
 
+  review_header:
+    prefix: "RH__"
+    title: "Review Header"
+    mandatory_options:
+      id: "^RH__[0-9a-z_]*$"
+
 # Extra link types, which shall be available and allow need types to be linked to each other.
 # We use a dedicated linked type for each type of a conncetion, for instance from
 # a specification to a requirement. This makes filtering and visualization of such connections

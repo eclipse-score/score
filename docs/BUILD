@@ -59,6 +59,7 @@ sphinx_docs(
         "**/*.html",
         "**/*.css",
         "**/*.puml",
+        "**/*.need",
         # Include the docs tooling itself
         # Note: we don't use py_library here to make it as close as possible to docs:incremental.
         "**/*.py",
@@ -178,4 +179,22 @@ score_py_pytest(
     srcs = glob(["_tooling/extensions/score_metamodel/tests/**/*.py"]),
     visibility = ["//visibility:public"],
     deps = [":score_metamodel"],
+)
+
+# Dedicated metamodel target only for pytest.
+# It's required to define the imports for bazel pytest, so that python/pytest can
+# import "from header_service" without issues.
+py_library(
+    name = "header_service",
+    srcs = glob(["_tooling/extensions/header_service/**/*.py"]),
+    imports = ["_tooling/extensions"],
+    visibility = ["//visibility:public"],
+)
+
+score_py_pytest(
+    name = "header_service_test",
+    size = "small",
+    srcs = glob(["_tooling/extensions/header_service/test/**/*.py"]),
+    visibility = ["//visibility:public"],
+    deps = [":header_service"],
 )
