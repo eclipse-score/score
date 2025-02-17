@@ -11,7 +11,6 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 import re
-import sys
 
 from sphinx_needs.data import NeedsInfoType
 from sphinx.application import Sphinx
@@ -42,7 +41,7 @@ def check_options(
     """
     needs_types = app.config.needs_types
     try:
-        need_options = get_need_type(needs_types, need["type"], log)
+        need_options = get_need_type(needs_types, need["type"])
     except ValueError:
         msg = f"with type `{need['type']}`: no type info defined for semantic check."
         log.warning_for_option(need, log, msg)
@@ -50,7 +49,6 @@ def check_options(
 
     required_options: dict[str, str] = need_options.get("mandatory_options", {})
     optional_options: dict[str, str] = need_options.get("opt_opt", {})
-    # sys.exit(-1)
 
     if len(required_options) == 0:
         msg = "no type info defined for semantic check."
@@ -139,44 +137,6 @@ def check_extra_options(
 
     allowed_options = (
         list(required_options.keys()) + list(optional_options.keys()) + default_options
-        # [key for key. _ in required_options.]
-        # + [key for key, _ in optional_options]
-        # list of default system attributes to ignore
-        # [
-        #     "target_id",
-        #     "id",
-        #     "status"
-        #     "docname",
-        #     "lineno",
-        #     "type",
-        #     "lineno_content",
-        #     "doctype",
-        #     "content",
-        #     "type_name",
-        #     "type_color",
-        #     "type_style",
-        #     "title",
-        #     "full_title",
-        #     "layout",
-        #     "id_parent",
-        #     "id_complete",
-        #     "external_css",
-        #     "sections",
-        #     "section_name",
-        #     "type_prefix",
-        #     "constraints_passed",
-        #     "collapse",
-        #     "hide",
-        #     "delete",
-        #     "jinja_content",
-        #     "is_part",
-        #     "is_need",
-        #     "is_external",
-        #     "is_modified",
-        #     "modifications",
-        #     "has_dead_links",
-        #     "has_forbidden_dead_links",
-        # ]
     )
 
     extra_options = [
@@ -184,8 +144,6 @@ def check_extra_options(
         for option in list(need.keys())
         if option not in allowed_options and need[option] not in [None, {}, "", []]
     ]
-    # print(f"==== EXXTRA OPTS: {extra_options}")
-    # sys.exit(-1)
 
     if extra_options:
         extra_options_str = ", ".join(f"`{option}`" for option in extra_options)

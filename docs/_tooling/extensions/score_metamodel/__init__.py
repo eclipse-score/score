@@ -102,6 +102,7 @@ def load_metamodel_data():
 
     types_dict = data.get("needs_types", {})
     links_dict = data.get("needs_extra_links", {})
+    # Default options by sphinx, sphinx-needs or anything else we need to account for
     default_options = data.get("default_options", [])
 
     # Convert "types" from {directive_name: {...}, ...} to a list of dicts
@@ -122,14 +123,6 @@ def load_metamodel_data():
         # Store mandatory_options and optional_options directly as a dict
         one_type["mandatory_options"] = directive_data.get("mandatory_options", {})
         one_type["opt_opt"] = directive_data.get("optional_options", {})
-
-        # Rename "id" to "opt_id" and "status" to "opt_status"
-        # if "id" in mandatory_options:
-        #     mandatory_options["opt_id"] = mandatory_options.pop("id")
-        # if "status" in mandatory_options:
-        #     mandatory_options["opt_status"] = mandatory_options.pop("status")
-
-        # one_type["mandatory_options"] = mandatory_options
 
         # mandatory_links => "req_link"
         mand_links_yaml = directive_data.get("mandatory_links", {})
@@ -159,10 +152,10 @@ def load_metamodel_data():
     for directive_data in types_dict.values():
         all_options.update(directive_data.get("mandatory_options", {}).keys())
         all_options.update(directive_data.get("optional_options", {}).keys())
-    all_options = all_options - set(default_options)
-    print(f"==== DEFAULT OPTS: {default_options}")
-    needs_extra_options = sorted(all_options)
-    # needs_extra_options = sorted(all_options - set(default_options))
+
+    # We have to remove all 'default options' from the extra options.
+    # As otherwise sphinx errors, due to an option being registered twice.
+    needs_extra_options = sorted(all_options - set(default_options))
 
     return {
         "needs_types": needs_types_list,
