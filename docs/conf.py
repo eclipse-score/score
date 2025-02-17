@@ -43,6 +43,7 @@ extensions = [
     "sphinxcontrib.plantuml",
     "score_plantuml",
     "score_metamodel",
+    "score_feature_flag_handling",
 ]
 
 exclude_patterns = [
