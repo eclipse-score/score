@@ -71,20 +71,17 @@ def _run_checks(app: Sphinx, exception: Exception | None) -> None:
     # graph of other needs.
     for need in needs_all_needs.values():
         for check in local_checks:
-            check(need, log)
+            check(app, need, log)
 
     # Graph-Based checks: These warnings require a graph of all other needs to
     # be checked.
     needs = needs_all_needs.values()
     for check in graph_checks:
-        check(needs, log)
+        check(app, needs, log)
 
     if log.has_warnings:
         log.warning("Some needs have issues. See the log for more information.")
         # TODO: exit code
-
-
-needs_types_list = []
 
 
 def load_metamodel_data():
@@ -105,6 +102,7 @@ def load_metamodel_data():
 
     types_dict = data.get("needs_types", {})
     links_dict = data.get("needs_extra_links", {})
+    default_options = data.get("default_options", [])
 
     # Convert "types" from {directive_name: {...}, ...} to a list of dicts
     needs_types_list = []
@@ -122,16 +120,16 @@ def load_metamodel_data():
             one_type["style"] = directive_data["style"]
 
         # Store mandatory_options and optional_options directly as a dict
-        mandatory_options = directive_data.get("mandatory_options", {})
+        one_type["mandatory_options"] = directive_data.get("mandatory_options", {})
         one_type["opt_opt"] = directive_data.get("optional_options", {})
 
         # Rename "id" to "opt_id" and "status" to "opt_status"
-        if "id" in mandatory_options:
-            mandatory_options["opt_id"] = mandatory_options.pop("id")
-        if "status" in mandatory_options:
-            mandatory_options["opt_status"] = mandatory_options.pop("status")
+        # if "id" in mandatory_options:
+        #     mandatory_options["opt_id"] = mandatory_options.pop("id")
+        # if "status" in mandatory_options:
+        #     mandatory_options["opt_status"] = mandatory_options.pop("status")
 
-        one_type["mandatory_options"] = mandatory_options
+        # one_type["mandatory_options"] = mandatory_options
 
         # mandatory_links => "req_link"
         mand_links_yaml = directive_data.get("mandatory_links", {})
@@ -161,16 +159,21 @@ def load_metamodel_data():
     for directive_data in types_dict.values():
         all_options.update(directive_data.get("mandatory_options", {}).keys())
         all_options.update(directive_data.get("optional_options", {}).keys())
+    all_options = all_options - set(default_options)
+    print(f"==== DEFAULT OPTS: {default_options}")
     needs_extra_options = sorted(all_options)
+    # needs_extra_options = sorted(all_options - set(default_options))
 
     return {
         "needs_types": needs_types_list,
         "needs_extra_links": needs_extra_links_list,
         "needs_extra_options": needs_extra_options,
+        "defined_default_options": default_options,
     }
 
 
 def setup(app: Sphinx):
+    app.add_config_value("defined_default_options", [], "env")
     app.config.needs_id_required = True
     app.config.needs_id_regex = "^[A-Za-z0-9_-]{6,}"
 
@@ -181,6 +184,7 @@ def setup(app: Sphinx):
     app.config.needs_types = metamodel["needs_types"]
     app.config.needs_extra_links = metamodel["needs_extra_links"]
     app.config.needs_extra_options = metamodel["needs_extra_options"]
+    app.config.defined_default_options = metamodel["defined_default_options"]
 
     discover_checks()
 

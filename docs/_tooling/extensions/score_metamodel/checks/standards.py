@@ -11,6 +11,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 from sphinx_needs.data import NeedsInfoType
+from sphinx.application import Sphinx
 
 from score_metamodel import (
     CheckLogger,
@@ -93,7 +94,7 @@ def get_compliance_wp_needs(needs) -> set:
 
 @graph_check
 def check_all_standard_req_linked_item_via_the_compliance_req(
-    needs: list[NeedsInfoType], log: CheckLogger
+    app: Sphinx, needs: list[NeedsInfoType], log: CheckLogger
 ):
     """
     Checks if all standard requirements are linked to an item via the compliance_req tag.
@@ -110,7 +111,7 @@ def check_all_standard_req_linked_item_via_the_compliance_req(
 
 @graph_check
 def check_all_standard_workproducts_linked_item_via_the_compliance_wp(
-    needs: list[NeedsInfoType], log: CheckLogger
+    app: Sphinx, needs: list[NeedsInfoType], log: CheckLogger
 ):
     """
     Checks if all standard work products are linked to an item via the complies tag.
@@ -130,7 +131,7 @@ def check_all_standard_workproducts_linked_item_via_the_compliance_wp(
 
 @graph_check
 def check_workproduct_uniqueness_over_workflows(
-    needs: list[NeedsInfoType], log: CheckLogger
+    app: Sphinx, needs: list[NeedsInfoType], log: CheckLogger
 ):
     """
     Check if all workproducts are contained in exactly one workflow.
