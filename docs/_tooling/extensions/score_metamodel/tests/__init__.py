@@ -34,7 +34,7 @@ def fake_check_logger():
                 )
                 pytest.fail(f"Expected no warnings, but got:\n{warnings}")
 
-        def assert_warning(self, expected_substring, expect_location=True):
+        def assert_warning(self, expected_substring: str, expect_location=True):
             """
             Assert that the logger was called exactly once with a message containing a specific substring.
 
@@ -51,6 +51,7 @@ def fake_check_logger():
                 expected_substring
             }' not found in log message: '{log_message}'"
 
+            # All our checks shall report themselves as score_metamodel checks
             assert kwargs["type"] == "score_metamodel"
 
             if expect_location:
