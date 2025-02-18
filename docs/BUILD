@@ -43,7 +43,10 @@ load("@rules_pkg//pkg:mappings.bzl", "pkg_files")
 load("@rules_pkg//pkg:tar.bzl", "pkg_tar")
 load("@rules_python//python:pip.bzl", "compile_pip_requirements")
 load("@rules_python//sphinxdocs:sphinx.bzl", "sphinx_build_binary", "sphinx_docs")
+load("//tools/feature_flags:feature_flags.bzl", "define_feature_flags")
 load("//tools/testing/pytest:defs.bzl", "score_py_pytest")
+
+define_feature_flags(name = "filter_tags")
 
 sphinx_requirements = all_requirements + [
     "@rules_python//python/runfiles",
@@ -68,6 +71,7 @@ sphinx_docs(
     config = ":conf.py",
     extra_opts = [
         "--keep-going",
+        "-Dfilter_tags_file_path=$(location :filter_tags)",
     ],
     formats = [
         "html",
@@ -77,6 +81,7 @@ sphinx_docs(
         "manual",
     ],
     tools = [
+        ":filter_tags",
         ":plantuml",
     ],
 )
@@ -121,6 +126,7 @@ pkg_tar(
 py_binary(
     name = "incremental",
     srcs = ["_tooling/incremental.py"],
+    data = [":flags_file"],
     deps = sphinx_requirements,
 )
 
@@ -178,4 +184,30 @@ score_py_pytest(
     srcs = glob(["_tooling/extensions/score_metamodel/tests/**/*.py"]),
     visibility = ["//visibility:public"],
     deps = [":score_metamodel"],
+)
+
+py_library(
+    name = "score_feature_flag_handling",
+    srcs = glob(["_tooling/extensions/score_feature_flag_handling/**/*.py"]),
+    imports = ["_tooling/extensions"],
+    visibility = ["//visibility:public"],
+)
+
+score_py_pytest(
+    name = "score_feature_flag_handling_test",
+    size = "small",
+    srcs = glob(["_tooling/extensions/score_feature_flag_handling/tests/**/*.py"]),
+    args = [
+        "-s",
+        "-v",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [":score_feature_flag_handling"],
+)
+
+filegroup(
+    name = "flags_file",
+    srcs = [":filter_tags"],
+    output_group = "flags_file",
+    visibility = ["//visibility:public"],
 )
