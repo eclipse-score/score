@@ -37,7 +37,7 @@ def dash_license_checker(
     validation across projects.
     """
     dash_format_converter(
-        name = "formatted_deps",
+        name = "{}2dash".format(name),
         requirement_file = src,
     )
 
@@ -47,9 +47,9 @@ def dash_license_checker(
         runtime_deps = [
             "@dash_license_tool//jar",
         ],
-        args = ["$(location :formatted_deps)"],
+        args = ["$(location :{}2dash)".format(name)],
         data = [
-            ":formatted_deps",
+            ":{}2dash".format(name),
         ],
         visibility = ["//visibility:public"],
     )

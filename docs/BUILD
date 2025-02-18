@@ -43,6 +43,7 @@ load("@rules_pkg//pkg:mappings.bzl", "pkg_files")
 load("@rules_pkg//pkg:tar.bzl", "pkg_tar")
 load("@rules_python//python:pip.bzl", "compile_pip_requirements")
 load("@rules_python//sphinxdocs:sphinx.bzl", "sphinx_build_binary", "sphinx_docs")
+load("//tools/dash:dash.bzl", "dash_license_checker")
 load("//tools/testing/pytest:defs.bzl", "score_py_pytest")
 
 sphinx_requirements = all_requirements + [
@@ -186,5 +187,11 @@ filegroup(
     srcs = [
         "_tooling/requirements_lock.txt",
     ],
+    visibility = ["//visibility:public"],
+)
+
+dash_license_checker(
+    name = "python",
+    src = "//docs:requirements_lock",
     visibility = ["//visibility:public"],
 )

@@ -12,7 +12,6 @@
 # *******************************************************************************
 
 load("//tools/cr_checker:cr_checker.bzl", "copyright_checker")
-load("//tools/dash:dash.bzl", "dash_license_checker")
 
 test_suite(
     name = "format.check",
@@ -33,12 +32,6 @@ copyright_checker(
         "//:BUILD",
         "//:MODULE.bazel",
     ],
-    visibility = ["//visibility:public"],
-)
-
-dash_license_checker(
-    name = "python",
-    src = "//docs:requirements_lock",
     visibility = ["//visibility:public"],
 )
 
