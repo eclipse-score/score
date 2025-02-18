@@ -18,6 +18,7 @@ from sphinx.application import Sphinx
 from score_metamodel import (
     CheckLogger,
     local_check,
+    default_options,
 )
 
 
@@ -124,7 +125,7 @@ def check_extra_options(
     """
 
     needs_types = app.config.needs_types
-    default_options = app.config.defined_default_options
+    default_options_list = default_options()
     try:
         need_options = get_need_type(needs_types, need["type"])
     except ValueError:
@@ -136,7 +137,7 @@ def check_extra_options(
     optional_options: dict[str, str] = need_options.get("opt_opt", {})
 
     allowed_options = (
-        list(required_options.keys()) + list(optional_options.keys()) + default_options
+        list(required_options.keys()) + list(optional_options.keys()) + default_options_list
     )
 
     extra_options = [

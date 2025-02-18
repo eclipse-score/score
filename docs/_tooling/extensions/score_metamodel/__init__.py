@@ -158,12 +158,10 @@ def load_metamodel_data():
     # They are still inside the extra options we extract to enable constraint checking via regex
     needs_extra_options = sorted(all_options - set(default_options_list))
 
-    # Returning default options inside here to enable one `load_metamodel_data` call to get all relevant information
     return {
         "needs_types": needs_types_list,
         "needs_extra_links": needs_extra_links_list,
         "needs_extra_options": needs_extra_options,
-        "defined_default_options": default_options_list,
     }
 
 
@@ -218,7 +216,6 @@ def setup(app: Sphinx):
     app.config.needs_types = metamodel["needs_types"]
     app.config.needs_extra_links = metamodel["needs_extra_links"]
     app.config.needs_extra_options = metamodel["needs_extra_options"]
-    app.config.defined_default_options = metamodel["defined_default_options"]
 
     discover_checks()
 
