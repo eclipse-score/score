@@ -25,8 +25,8 @@ from .log import CheckLogger
 
 logger = logging.get_logger(__name__)
 
-local_checks: list[Callable[[NeedsInfoType, CheckLogger], None]] = []
-graph_checks: list[Callable[[dict[str, NeedsInfoType], CheckLogger], None]] = []
+local_checks: list[Callable[[Sphinx, NeedsInfoType, CheckLogger], None]] = []
+graph_checks: list[Callable[[Sphinx, dict[str, NeedsInfoType], CheckLogger], None]] = []
 
 
 def discover_checks():
@@ -42,14 +42,14 @@ def discover_checks():
         importlib.import_module(f"{package_name}.{module_name}", __package__)
 
 
-def local_check(func: Callable[[NeedsInfoType, CheckLogger], None]):
+def local_check(func: Callable[[Sphinx, NeedsInfoType, CheckLogger], None]):
     """Use this decorator to mark a function as a local check."""
     logger.debug(f"new local_check: {func}")
     local_checks.append(func)
     return func
 
 
-def graph_check(func: Callable[[dict[str, NeedsInfoType], CheckLogger], None]):
+def graph_check(func: Callable[[Sphinx, dict[str, NeedsInfoType], CheckLogger], None]):
     """Use this decorator to mark a function as a graph check."""
     logger.debug(f"new graph_check: {func}")
     graph_checks.append(func)
@@ -205,7 +205,6 @@ def default_options() -> list[str]:
 
 
 def setup(app: Sphinx):
-    app.add_config_value("defined_default_options", [], "env")
     app.config.needs_id_required = True
     app.config.needs_id_regex = "^[A-Za-z0-9_-]{6,}"
 

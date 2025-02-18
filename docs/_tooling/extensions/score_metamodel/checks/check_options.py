@@ -137,7 +137,9 @@ def check_extra_options(
     optional_options: dict[str, str] = need_options.get("opt_opt", {})
 
     allowed_options = (
-        list(required_options.keys()) + list(optional_options.keys()) + default_options_list
+        list(required_options.keys())
+        + list(optional_options.keys())
+        + default_options_list
     )
 
     extra_options = [
