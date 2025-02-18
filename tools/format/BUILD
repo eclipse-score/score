@@ -15,6 +15,8 @@ load("@aspect_rules_lint//format:defs.bzl", "format_multirun", "format_test")
 
 format_multirun(
     name = "format.fix",
+    c = "@llvm_toolchain_llvm//:bin/clang-format",
+    cc = "@llvm_toolchain_llvm//:bin/clang-format",
     python = "@aspect_rules_lint//format:ruff",
     starlark = "@buildifier_prebuilt//:buildifier",
     visibility = [
@@ -25,6 +27,8 @@ format_multirun(
 
 format_test(
     name = "format.check",
+    c = "@llvm_toolchain_llvm//:bin/clang-format",
+    cc = "@llvm_toolchain_llvm//:bin/clang-format",
     no_sandbox = True,
     python = "@aspect_rules_lint//format:ruff",
     starlark = "@buildifier_prebuilt//:buildifier",

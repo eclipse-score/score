@@ -79,3 +79,20 @@ bazel_dep(name = "buildifier_prebuilt", version = "7.3.1")
 #
 ###############################################################################
 bazel_dep(name = "aspect_rules_lint", version = "1.0.3")
+
+###############################################################################
+#
+# LLVM Toolchains
+#
+###############################################################################
+bazel_dep(name = "toolchains_llvm", version = "1.2.0")
+
+llvm = use_extension("@toolchains_llvm//toolchain/extensions:llvm.bzl", "llvm")
+llvm.toolchain(
+    cxx_standard = {"": "c++17"},
+    llvm_version = "19.1.0",
+)
+use_repo(llvm, "llvm_toolchain")
+use_repo(llvm, "llvm_toolchain_llvm")
+
+register_toolchains("@llvm_toolchain//:all")
