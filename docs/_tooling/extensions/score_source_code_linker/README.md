@@ -38,7 +38,7 @@ The extension uses two main components to integrate with bazel:
    - Constructs GitHub URLs with format:
      `{base_url}/{repo}/blob/{hash}/{file}#L{line_nr}`
 
-**Note:** The base_url is defined in `requirement_links.py`. Currently set to: `https://github.com/dependix/platform/blob/`
+**Note:** The base_url is defined in `requirement_links.py`. Currently set to: `https://github.com/eclipse-score/score/blob/`
 
 4. Output Generation:
    - Creates JSON mapping file:
@@ -70,6 +70,8 @@ The extension hooks into Sphinx's build process. It attaches to the `env-updated
 
 ## Usage Guide
 
+> **This part will be deleted once moved to the correct RST file**
+
 ### Adding Places to Search
 
 You can easily add files to be searched by adding targets / files to the deps inside the 
@@ -80,7 +82,8 @@ See here:
 requirement_links(
     name = "requirement_links",
     deps = [
-        "//tools/sphinx_extensions", 
+        ":score_metamodel",
+        ":score_source_code_linker",
         # add extra targets here
     ],
 )
@@ -106,7 +109,7 @@ Therefore stopping the sphinx-build.
 The error message looks similar to this:
 
 ```
-WARNING: Could not find TREQ_ID_200 in the needs id's. Found in file(s):['tools/sources/bad_implementation.py']
+WARNING: Could not find TREQ_ID_200 in the needs id's. Found in file(s):['_tooling/score_metamodel/bad_implementation.py']
 ```
 
 ### Quickly Finding Source Links
@@ -118,7 +121,7 @@ where the option is not empty.
 
 If you want to specifically execute the test suite for the extension please use the following command:
 ```bash
-bazel test //tools/sphinx_extensions/build/source_link/tests:test_source_link
+bazel test //docs:score_source_code_link_tests
 ```
 
 The test suite should also run if you run all tests via `bazel test //...`
@@ -140,9 +143,6 @@ The test suite should also run if you run all tests via `bazel test //...`
 
 ## Internal Architecture
 
-Key files and their responsibilities:
-All files are contained here `tools/sphinx_extensions/build/source_link`
-Inside `/source_link`:
 
 1. `requirement_links.bzl`:
    - Dependency management

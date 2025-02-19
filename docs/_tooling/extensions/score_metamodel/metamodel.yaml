@@ -2,7 +2,7 @@
 
 needs_types_base_options:
   optional_options:
-    source_code_link: "https://github.com/eclipse-score/score/blob/.+$"
+    source_code_link: "^https://github.com/eclipse-score/score/blob/[a-zA-Z0-9]+/[^#\\s]+(?:#L\\d+)?$"
 
 needs_types:
 
@@ -46,7 +46,7 @@ needs_types:
     title: "Process Requirements"
     prefix: "gd_req__"
     mandatory_options:
-      id: "gd_req__[0-9a-z_]*$"
+      id: "^gd_req__[0-9a-z_]*$"
       status: "^(valid|draft)$"
     optional_links:
       complies: "std_req__(iso26262|iso21434|isopas8926|aspice_40)__.*$"
