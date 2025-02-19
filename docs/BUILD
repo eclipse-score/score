@@ -43,8 +43,8 @@ load("@rules_pkg//pkg:mappings.bzl", "pkg_files")
 load("@rules_pkg//pkg:tar.bzl", "pkg_tar")
 load("@rules_python//python:pip.bzl", "compile_pip_requirements")
 load("@rules_python//sphinxdocs:sphinx.bzl", "sphinx_build_binary", "sphinx_docs")
+load("//docs:_tooling/extensions/score_source_code_linker/requirement_links.bzl", "requirement_links")
 load("//tools/testing/pytest:defs.bzl", "score_py_pytest")
-# load("source_link/requirement_links.bzl", "requirement_links")
 
 sphinx_requirements = all_requirements + [
     "@rules_python//python/runfiles",
@@ -69,6 +69,7 @@ sphinx_docs(
     config = ":conf.py",
     extra_opts = [
         "--keep-going",
+        "-Drequirement_links=$(location :requirement_links)",
     ],
     formats = [
         "html",
@@ -79,12 +80,21 @@ sphinx_docs(
     ],
     tools = [
         ":plantuml",
+        ":requirement_links",
     ],
 )
 
 sphinx_build_binary(
     name = "sphinx_build",
     deps = sphinx_requirements,
+)
+
+requirement_links(
+    name = "requirement_links",
+    deps = [
+        ":score_metamodel",
+        ":score_source_code_linker",
+    ],
 )
 
 # In order to update the requirements, change the `requirements.txt` file and run:
@@ -122,6 +132,7 @@ pkg_tar(
 py_binary(
     name = "incremental",
     srcs = ["_tooling/incremental.py"],
+    data = [":requirement_links"],
     deps = sphinx_requirements,
 )
 
@@ -147,6 +158,12 @@ java_binary(
     runtime_deps = [
         "@plantuml//jar",
     ],
+)
+
+py_binary(
+    name = "requirement_links_lib",
+    srcs = ["_tooling/extensions/score_source_code_linker/requirement_links.py"],
+    visibility = ["//visibility:public"],
 )
 
 # This makes it possible for py_venv to depend on plantuml.
@@ -192,7 +209,10 @@ filegroup(
 
 py_library(
     name = "score_source_code_linker",
-    srcs = glob(["_tooling/extensions/score_source_code_linker/**/*.py", "_tooling/extensions/score_source_code_linker/**/*.bzl"]),
+    srcs = glob(
+        ["_tooling/extensions/score_source_code_linker/**/*.py"],
+        exclude = ["_tooling/extensions/score_source_code_linker/tests/*.py"],
+    ),
     imports = ["_tooling/extensions"],
     visibility = ["//visibility:public"],
 )

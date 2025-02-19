@@ -1,3 +1,15 @@
+# *******************************************************************************
+# Copyright (c) 2025 Contributors to the Eclipse Foundation
+#
+# See the NOTICE file(s) distributed with this work for additional
+# information regarding copyright ownership.
+#
+# This program and the accompanying materials are made available under the
+# terms of the Apache License Version 2.0 which is available at
+# https://www.apache.org/licenses/LICENSE-2.0
+#
+# SPDX-License-Identifier: Apache-2.0
+# *******************************************************************************
 CollectedFilesInfo = provider(
     fields = {
         "files": "depset of source files",
@@ -64,7 +76,7 @@ requirement_links = rule(
             aspects = [collected_source_files_aspect],
         ),
         "_tool": attr.label(
-            default = "//tools/sphinx_extensions/sphinx_extensions/build:requirement_links",
+            default = "//docs:requirement_links_lib",
             executable = True,
             cfg = "exec",
         ),

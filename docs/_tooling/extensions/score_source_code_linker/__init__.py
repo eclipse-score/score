@@ -1,3 +1,15 @@
+# *******************************************************************************
+# Copyright (c) 2025 Contributors to the Eclipse Foundation
+#
+# See the NOTICE file(s) distributed with this work for additional
+# information regarding copyright ownership.
+#
+# This program and the accompanying materials are made available under the
+# terms of the Apache License Version 2.0 which is available at
+# https://www.apache.org/licenses/LICENSE-2.0
+#
+# SPDX-License-Identifier: Apache-2.0
+# *******************************************************************************
 import json
 from copy import deepcopy
 from score_source_code_linker.requirement_links import GITHUB_BASE_URL
@@ -79,10 +91,14 @@ def add_source_link(app: Sphinx, env) -> None:
                 except KeyError:
                     # NOTE: manipulating link to remove git-hash, making the output file location more readable
                     LOGGER.warning(
-                        f"Could not find {id} in the needs id's. Found in file(s): {[x.replace(GITHUB_BASE_URL, "").split("/",1)[-1] for x in link]}"
+                        f"Could not find {id} in the needs id's. Found in file(s): {[x.replace(GITHUB_BASE_URL, "").split("/",1)[-1] for x in link]}",
+                        type="score_source_code_linker",
                     )
         except Exception as e:
             LOGGER.warning(
-                f"An unexpected error occured while adding source_code_links to needs. Error: {e}"
+                f"An unexpected error occured while adding source_code_links to needs. Error: {e}",
+                type="score_source_code_linker",
             )
-            LOGGER.warning(f"Reading file: {path} right now")
+            LOGGER.warning(
+                f"Reading file: {path} right now", type="score_source_code_linker"
+            )

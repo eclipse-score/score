@@ -141,9 +141,6 @@ def check_extra_options(
         + list(optional_options.keys())
         + default_options_list
     )
-    # print("=================")
-    # print(allowed_options)
-    # pritn("===============\n\n")
 
     extra_options = [
         option
