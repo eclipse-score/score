@@ -1,7 +1,20 @@
+# *******************************************************************************
+# Copyright (c) 2025 Contributors to the Eclipse Foundation
+#
+# See the NOTICE file(s) distributed with this work for additional
+# information regarding copyright ownership.
+#
+# This program and the accompanying materials are made available under the
+# terms of the Apache License Version 2.0 which is available at
+# https://www.apache.org/licenses/LICENSE-2.0
+#
+# SPDX-License-Identifier: Apache-2.0
+# *******************************************************************************
 import subprocess
 import os
 import argparse
 import collections
+import functools
 import json
 from typing import Optional
 from pathlib import Path
@@ -26,14 +39,15 @@ def extract_requirements(
         git_hash_func (Optional[callable]): Optional parameter only supplied during testing. If left empty func 'get_git_hash' is used.
 
     Returns:
+        # TODO: change these links
         Returns dictionary per file like this:
         {
             "TOOL_REQ__toolchain_sphinx_needs_build__requirement_linkage_types": [
-                    https://github.com/dependix/platform/blob/3b3397ebc2777f47b1ae5258afc4d738095adb83/tools/sphinx_extensions/sphinx_extensions/utils.py,
+                    https://github.com/eclipse-score/score/blob/3b3397ebc2777f47b1ae5258afc4d738095adb83/_tooling/extensions/score_metamodel/utils.py,
                     ... # further found places of the same ID if there are any
                 ]
             "TOOL_REQ__toolchain_sphinx_needs_build__...": [
-                    https://github.com/dependix/platform/blob/3b3397ebc2777f47b1ae5258afc4d7wadhjalk83/tools/sphinx_extensions/build/build.py,
+                    https://github.com/eclipse-score/score/blob/3b3397ebc2777f47b1ae5258afc4d738095adb83/_tooling/extensions/score_metamodel/checks/id.py,
                     ... # places where this ID as found
             ]
         }
@@ -46,9 +60,14 @@ def extract_requirements(
             line = line.strip()
             if any(x in line for x in TAGS):
                 hash = get_hash(source_file)
-                req_id = line.split()[-1].strip()
-                link = f"{GITHUB_BASE_URL}{hash}/{source_file}#L{line_number}"
-                requirement_mapping[req_id].append(link)
+                cleaned_line = (
+                    line.replace("'", "").replace('"', "").replace(",", "").strip()
+                )
+                check_tag = cleaned_line.split(":")[1].strip()
+                if check_tag:
+                    req_id = cleaned_line.split(":")[-1].strip()
+                    link = f"{GITHUB_BASE_URL}{hash}/{source_file}#L{line_number}"
+                    requirement_mapping[req_id].append(link)
     return requirement_mapping
 
 
@@ -68,13 +87,13 @@ def get_git_hash(file_path: str) -> str:
     try:
         abs_path = Path(file_path).resolve()
         # HACK: could not think of a better way to get the root directory.
-        platform_path = abs_path.__str__().split("platform")[0] + "platform"
+        score_path = abs_path.__str__().split("score")[0] + "score"
         if not os.path.isfile(abs_path):
             print(f"File not found: {abs_path}", flush=True)
             return "file_not_found"
         result = subprocess.run(
             ["git", "log", "-n", "1", "--pretty=format:%H", "--", abs_path],
-            cwd=platform_path,
+            cwd=score_path,
             capture_output=True,
         )
         decoded_result = result.stdout.strip().decode()

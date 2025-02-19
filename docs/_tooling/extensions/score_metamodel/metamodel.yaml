@@ -1,5 +1,8 @@
 # yaml-language-server: $schema=./metamodel-schema.json
 
+needs_types_base_options:
+  optional_options:
+    source_code_link: "https://github.com/eclipse-score/score/blob/.+$"
 
 needs_types:
 
@@ -43,7 +46,7 @@ needs_types:
     title: "Process Requirements"
     prefix: "gd_req__"
     mandatory_options:
-      id: "^gd_req__[0-9a-z_]*$"
+      id: "gd_req__[0-9a-z_]*$"
       status: "^(valid|draft)$"
     optional_links:
       complies: "std_req__(iso26262|iso21434|isopas8926|aspice_40)__.*$"
@@ -390,4 +393,3 @@ needs_extra_links:
   implements:
     incoming: "implemented by"
     outgoing: "implements"
-

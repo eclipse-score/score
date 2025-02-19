@@ -102,11 +102,17 @@ def load_metamodel_data():
 
     types_dict = data.get("needs_types", {})
     links_dict = data.get("needs_extra_links", {})
+
+    global_base_options = data.get("needs_types_base_options", {})
+    global_base_options_optional_opts = global_base_options.get("optional_options", {})
+
     # Default options by sphinx, sphinx-needs or anything else we need to account for
     default_options_list = default_options()
 
     # Convert "types" from {directive_name: {...}, ...} to a list of dicts
     needs_types_list = []
+
+    all_options = set()
     for directive_name, directive_data in types_dict.items():
         # Build up a single "needs_types" item
         one_type = {
@@ -121,8 +127,15 @@ def load_metamodel_data():
             one_type["style"] = directive_data["style"]
 
         # Store mandatory_options and optional_options directly as a dict
-        one_type["mandatory_options"] = directive_data.get("mandatory_options", {})
-        one_type["opt_opt"] = directive_data.get("optional_options", {})
+        mandatory_options = directive_data.get("mandatory_options", {})
+        one_type["mandatory_options"] = mandatory_options
+
+        optional_options = directive_data.get("optional_options", {})
+        optional_options.update(global_base_options_optional_opts)
+        one_type["opt_opt"] = optional_options
+
+        all_options.update(list(mandatory_options.keys()))
+        all_options.update(list(optional_options.keys()))
 
         # mandatory_links => "req_link"
         mand_links_yaml = directive_data.get("mandatory_links", {})
@@ -146,12 +159,6 @@ def load_metamodel_data():
                 "outgoing": link_data.get("outgoing", ""),
             }
         )
-
-    # Compute needs_extra_options from all mandatory + optional options
-    all_options = set()
-    for directive_data in types_dict.values():
-        all_options.update(directive_data.get("mandatory_options", {}).keys())
-        all_options.update(directive_data.get("optional_options", {}).keys())
 
     # We have to remove all 'default options' from the extra options.
     # As otherwise sphinx errors, due to an option being registered twice.

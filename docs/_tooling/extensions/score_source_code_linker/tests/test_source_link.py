@@ -1,8 +1,21 @@
+# *******************************************************************************
+# Copyright (c) 2025 Contributors to the Eclipse Foundation
+#
+# See the NOTICE file(s) distributed with this work for additional
+# information regarding copyright ownership.
+#
+# This program and the accompanying materials are made available under the
+# terms of the Apache License Version 2.0 which is available at
+# https://www.apache.org/licenses/LICENSE-2.0
+#
+# SPDX-License-Identifier: Apache-2.0
+# *******************************************************************************
 import pytest
 import json
 from pathlib import Path
 from sphinx_needs.data import SphinxNeedsData
 from sphinx.testing.util import SphinxTestApp
+from score_source_code_linker.requirement_links import GITHUB_BASE_URL
 
 
 @pytest.fixture(scope="session")
@@ -77,11 +90,11 @@ TESTING SOURCE LINK
 def example_source_link_text_all_ok():
     return {
         "TREQ_ID_1": [
-            "https://github.com/dependix/platform/blob/aacce4887ceea1f884135242a8c182db1447050/tools/sources/implementation1.py#L2",
-            "https://github.com/dependix/platform/blob//tools/sources/implementation_2_new_file.py#L20",
+            f"{GITHUB_BASE_URL}aacce4887ceea1f884135242a8c182db1447050/tools/sources/implementation1.py#L2",
+            f"{GITHUB_BASE_URL}/tools/sources/implementation_2_new_file.py#L20",
         ],
         "TREQ_ID_2": [
-            "https://github.com/dependix/platform/blob/f53f50a0ab1186329292e6b28b8e6c93b37ea41/tools/sources/implementation1.py#L18"
+            f"{GITHUB_BASE_URL}f53f50a0ab1186329292e6b28b8e6c93b37ea41/tools/sources/implementation1.py#L18"
         ],
     }
 
@@ -90,7 +103,7 @@ def example_source_link_text_all_ok():
 def example_source_link_text_non_existent():
     return {
         "TREQ_ID_200": [
-            "https://github.com/dependix/platform/blob/f53f50a0ab1186329292e6b28b8e6c93b37ea41/tools/sources/bad_implementation.py#L17"
+            f"{GITHUB_BASE_URL}f53f50a0ab1186329292e6b28b8e6c93b37ea41/tools/sources/bad_implementation.py#L17"
         ],
     }
 
@@ -105,11 +118,8 @@ def test_source_link_integration_ok(
     app = sphinx_app_setup(basic_conf, basic_needs, example_source_link_text_all_ok)
     try:
         app.build()
-        # print(f"===== EXTENSIONS: {app.extensions.keys()}")
-        print(f"===== REQ-FILE: {app.env.config.requirement_links}")
         Needs_Data = SphinxNeedsData(app.env)
         needs_data = {x["id"]: x for x in Needs_Data.get_needs_view().values()}
-        # print(f"========== NEEDS_DATA: {needs_data}")
         assert "TREQ_ID_1" in needs_data
         assert "TREQ_ID_2" in needs_data
         assert (
