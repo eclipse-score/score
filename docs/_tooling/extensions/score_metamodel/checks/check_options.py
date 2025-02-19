@@ -148,7 +148,9 @@ def check_extra_options(
     extra_options = [
         option
         for option in list(need.keys())
-        if option not in allowed_options and need[option] not in [None, {}, "", []] and not option.endswith("_back")
+        if option not in allowed_options
+        and need[option] not in [None, {}, "", []]
+        and not option.endswith("_back")
     ]
 
     if extra_options:

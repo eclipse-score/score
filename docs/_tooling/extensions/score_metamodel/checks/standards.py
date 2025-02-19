@@ -172,7 +172,6 @@ def get_compliance_wp_needs(needs) -> set:
 #                    ╰──────────────────────────────────────────────────────────────────────────────╯
 
 
-
 def my_pie_linked_standard_requirements(needs, results, **kwargs):
     """
     Function to render the chart of check for standard requirements linked to at least an item via compliance-gd.
