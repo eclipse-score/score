@@ -62,6 +62,10 @@ In Score it is checked if git commit messages are written according
 to guidelines. However, it cannot enforce the meaningfulness of the
 message (and its parts).
 
+The tool ``gitlint`` is used to check the compliance with the rules described below. Please check our
+`gitlint configuration <https://github.com/eclipse-score/score/blob/main/.gitlint>`_
+for an overview of the rules we use.
+
 .. note::
 
    Remember that this information is shown in git log and other tools.
@@ -148,7 +152,7 @@ Example
 
     component: Short one line summary of change
 
-    More detailed explanatory text, if necessary. Wrap it to about 72
+    More detailed explanatory text, mandatory. Wrap it to about 72
     characters or less. The first line is treated as the subject and the
     rest of the text as the body. The blank line separating the summary from
     the body is critical (unless you omit the body entirely);
