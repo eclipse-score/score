@@ -45,6 +45,7 @@ load("@rules_python//python:pip.bzl", "compile_pip_requirements")
 load("@rules_python//sphinxdocs:sphinx.bzl", "sphinx_build_binary", "sphinx_docs")
 load("//tools/dash:dash.bzl", "dash_license_checker")
 load("//tools/testing/pytest:defs.bzl", "score_py_pytest")
+# load("source_link/requirement_links.bzl", "requirement_links")
 
 sphinx_requirements = all_requirements + [
     "@rules_python//python/runfiles",
@@ -182,6 +183,29 @@ score_py_pytest(
     deps = [":score_metamodel"],
 )
 
+
+py_library(
+    name = "score_source_code_linker",
+    srcs = glob(["_tooling/extensions/score_source_code_linker/**/*.py", "_tooling/extensions/score_source_code_linker/**/*.bzl"]),
+    imports = ["_tooling/extensions"],
+    visibility = ["//visibility:public"],
+)
+
+score_py_pytest(
+    name = "score_source_code_linker_test",
+    size = "small",
+    srcs = glob(["_tooling/extensions/score_source_code_linker/tests/**/*.py"]),
+    args = [
+        "--basetemp /tmp/pytest",
+    ],
+    plugins = [
+        "sphinx.testing.fixtures",
+    ],
+    deps = [
+        ":score_source_code_linker",
+    ],
+)
+
 # Needed for Dash tool to check python dependency licenses.
 filegroup(
     name = "requirements_lock",
@@ -190,6 +214,7 @@ filegroup(
     ],
     visibility = ["//visibility:public"],
 )
+
 
 dash_license_checker(
     name = "python",
