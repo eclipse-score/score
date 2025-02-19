@@ -13,13 +13,14 @@
 import os
 
 from sphinx_needs.data import NeedsInfoType
+from sphinx.application import Sphinx
 
 from score_metamodel import CheckLogger, local_check
 
 
 # req-Id: TOOL_REQ__toolchain_sphinx_needs_build__requirement_attributes_uid
 @local_check
-def check_id_format(need: NeedsInfoType, log: CheckLogger):
+def check_id_format(app: Sphinx, need: NeedsInfoType, log: CheckLogger):
     """
     Checking if the title, directory and feature are included in the requirement id or not.
     ---
@@ -38,7 +39,7 @@ def check_id_format(need: NeedsInfoType, log: CheckLogger):
 
 
 @local_check
-def check_id_length(need: NeedsInfoType, log: CheckLogger):
+def check_id_length(app: Sphinx, need: NeedsInfoType, log: CheckLogger):
     """
     Validates that the requirement ID does not exceed the hard limit of 40 characters.
     While the recommended limit is 30 characters, this check enforces a strict maximum of 40 characters.

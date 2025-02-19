@@ -141,11 +141,14 @@ def check_extra_options(
         + list(optional_options.keys())
         + default_options_list
     )
+    # print("=================")
+    # print(allowed_options)
+    # pritn("===============\n\n")
 
     extra_options = [
         option
         for option in list(need.keys())
-        if option not in allowed_options and need[option] not in [None, {}, "", []]
+        if option not in allowed_options and need[option] not in [None, {}, "", []] and not option.endswith("_back")
     ]
 
     if extra_options:
