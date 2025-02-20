@@ -250,57 +250,50 @@ def gen_interface_text(need: dict, all_needs: dict) -> str:
 
 
 #                    ╭──────────────────────────────────────────────────────────────────────────────╮
-#                    │                  Classes that combine strings for final uml output           │
+#                    │                  Final funcs that combine strings for uml output             │
 #                    ╰──────────────────────────────────────────────────────────────────────────────╯
 
 
-class draw_full_feature:
-    def __call__(self, need, all_needs: dict) -> str:
-        alias = gen_alias(need["title"])
-        structure_text = f'component "{need["title"]}" as {alias} {{\n'
-        for need_inc in need.get("includes", []):
-            curr_need = all_needs[need_inc]
+def draw_full_feature(need: dict, all_needs: dict) -> str:
+    alias = gen_alias(need["title"])
+    structure_text = f'component "{need["title"]}" as {alias} {{\n'
+    for need_inc in need.get("includes", []):
+        curr_need = all_needs[need_inc]
 
-            structure_text += gen_interface_text(curr_need, all_needs)
+        structure_text += gen_interface_text(curr_need, all_needs)
         structure_text += "}\n"
-        return structure_text
+    return structure_text
 
 
-class draw_logical_interface:
-    def __call__(self, need, all_needs: dict) -> str:
-        return gen_interface_text(need, all_needs)
+def draw_logical_interface(need: dict, all_needs: dict):
+    return gen_interface_text(need, all_needs)
 
 
-class draw_full_component:
-    def __call__(self, need, all_needs) -> str:
-        structure_text, linkage_text, processed_operations = draw_component(
-            need, all_needs, set()
-        )
-        return structure_text + "\n" + linkage_text
+def draw_full_component(need: dict, all_needs: dict) -> str:
+    structure_text, linkage_text, processed_operations = draw_component(
+        need, all_needs, set()
+    )
+    return structure_text + "\n" + linkage_text
 
 
-class draw_full_component_interface:
-    def __call__(self, need, all_needs) -> str:
-        structure_text, linkage_text, _ = draw_component_interface(
-            need, all_needs, set()
-        )
-        return structure_text + "\n" + linkage_text
+def draw_full_component_interface(need: dict, all_needs: dict) -> str:
+    structure_text, linkage_text, _ = draw_component_interface(need, all_needs, set())
+    return structure_text + "\n" + linkage_text
 
 
-class draw_module:
-    def __call__(self, need, all_needs) -> str:
-        alias = gen_alias(need["title"])
-        module_text = f'component "{need["title"]}" as {alias} {{\n'
-        for need_inc in need.get("includes", []):
-            curr_need = all_needs[need_inc]
-            module_text += draw_full_component().__call__(curr_need, all_needs)
-        return module_text
+def draw_module(need: dict, all_needs: dict) -> str:
+    alias = gen_alias(need["title"])
+    module_text = f'component "{need["title"]}" as {alias} {{\n'
+    for need_inc in need.get("includes", []):
+        curr_need = all_needs[need_inc]
+        module_text += draw_full_component(curr_need, all_needs)
+    return module_text
 
 
 draw_uml_function_context = {
-    "draw_logical_interface": draw_logical_interface(),
-    "draw_component_interface": draw_full_component_interface(),
-    "draw_component": draw_full_component(),
-    "draw_module": draw_module(),
-    "draw_feature": draw_full_feature(),
+    "draw_logical_interface": draw_logical_interface,
+    "draw_component_interface": draw_full_component_interface,
+    "draw_component": draw_full_component,
+    "draw_module": draw_module,
+    "draw_feature": draw_full_feature,
 }
