@@ -15,8 +15,8 @@
 Concept Description
 ###################
 
-.. doc_concept:: Requirements Process Concept Description
-   :id: DOC_CONCEPT__req__process
+.. doc_concept:: Concept Description
+   :id: doc_concept__req__process
    :status: valid
    :tags: requirements_engineering
 
@@ -34,25 +34,25 @@ Inputs
 Stakeholders for the requirements
 =================================
 
-#. :need:`Tech Lead Circle <RL_technical_lead>`
+#. :need:`Tech Lead Circle <rl__technical_lead>`
 
    * Define specification and content for the platform
    * Creation of a project timeline
    * Track project progress
 
-#. :need:`SW Architect <RL_committer>`
+#. :need:`SW Architect <rl__committer>`
 
    * Break down the platform specification into features (High Level)
    * Derive component architecture for each feature
    * Allocate requirements to architecture elements for specification of features/components
    * Define AoUs which arise from architecture
 
-#. :need:`Tester <RL_committer>`
+#. :need:`Tester <rl__committer>`
 
    * Verify that the specification is fulfilled by the elements under test
    * Consider AoUs for test case specification
 
-#. :need:`Safety Architect <RL_safety_manager>`
+#. :need:`Safety Architect <rl__safety_manager>`
 
    * *Dependent Failure Analysis*
 
@@ -62,7 +62,13 @@ Stakeholders for the requirements
 
      * Detailed element description to identify systematic errors within the element under investigation
 
-#. :need:`Platform/Tooling SW Developer <RL_committer>`
+#. :need:`Security Architect <rl__security_manager>`
+
+   * Trust Boundary Analysis
+   * Defense in Depth Analysis
+   * Qualitative Security Analysis (TARA or at least Attack Potential Analysis with impact category Safety)
+
+#. :need:`Platform/Tooling SW Developer <rl__committer>`
 
    * Implement the SW according to its specification
    * Create traceability by linking its specification to code
@@ -74,32 +80,23 @@ Stakeholders for the requirements
    * Get detailed information concerning the specification of a feature
    * Be informed about its boundary conditions (AoUs)
 
-#. :need:`Platform SW Developer of the Reference Integration <RL_committer>`
+#. :need:`Platform SW Developer of the Reference Integration <rl__committer>`
 
    * Requirements for Integration
 
-ISO26262 Requirements
+Standard Requirements
 =====================
 
-.. needtable:: Overview of SWE1 ASPICE Requirements
-   :style: table
-   :columns: title;id
-   :filter: search("(STD_REQ_ISO26262__support_[1-9]$)", id) or "STD_REQ_ISO26262__support_10" in id
-   :colwidths: 70,30
+Also requirements of standards need to be taken into consideration:
 
-ASPICE Requirements
-===================
-
-.. needtable:: Overview of SWE1 ASPICE Requirements
-   :style: table
-   :columns: title;id
-   :filter: "SWE-1-BP" in id
-   :colwidths: 70,30
+* ISO26262
+* ASPICE
+* ISO SAE 21434
 
 Requirement Levels
 ******************
 
-Based on the inputs of the previous chapter the types of requirements which need to be implemented in the project can be derived. The defined levels are shown in the *Building Blocks Meta Model* <TBD>
+Based on the inputs of the previous chapter the types of requirements which need to be implemented in the project can be derived. The defined levels are shown in <TBD>
 
 Stakeholder Requirements
 ========================
@@ -113,7 +110,7 @@ On the platform level the *Stakeholder (=customer) Requirements* are defined. Th
 Feature Requirements
 ====================
 
-The next level of requirements addresses mainly the integration level of SW modules and components. On this level the behavior of the feature on platform level shall be described including the correlations of the integrated components. It serves mainly as an input for (SW + Safety) Architects, Testers, Integrators. Those so called *Feature Requirements* are derived from the *Stakeholder Requirements*. To provide an example
+The *Feature Requirements* addresses mainly the integration level of SW modules and components. These shall describe the behavior of the feature on platform level shall be described including the correlations of the integrated components. They serves mainly as an input for (SW + Safety) Architects, Testers, Integrators and are derived from the *Stakeholder Requirements*. To provide an example
 
 .. code-block:: text
 
@@ -130,8 +127,8 @@ The lowest abstraction level is represented by the *component requirements*. The
 
    The component shall provide API calls to read and interpret every field of a JSON body in C++
 
-AoU Requirements
-================
+Assumption of Use Requirements
+==============================
 
 Last but not least a requirement type is needed which describes e.g. the boundary conditions which need to be fulfilled when using a software module. Those requirements are called *Assumption of Use* (AoUs)
 
@@ -197,7 +194,7 @@ Following attributes need to be filled manually for each requirement:
      - This attribute contains a hash value which is calculated over all mandatory requirement attributes. However this script needs to be executed manually, as this information is required to be present in the rst file.
      - Script / Bazel Target
    * - Satisfies Hash
-     - It contains the hash of the parent requirement. If the parent requirement is changed the hash will also change and the linkage has to be revisited again. A more detailed description is provided here: :need:`GD_REQ__req__attr_hash`
+     - It contains the hash of the parent requirement. If the parent requirement is changed the hash will also change and the linkage has to be revisited again. A more detailed description is provided here: :need:`gd_req__req__attr_hash`
      - Script / Bazel Target
    * - Implemented by
      - During Build the code files are parsed for a defined tag which includes the requirement id. If this is located a link to the code will be added in the requirement
@@ -210,9 +207,6 @@ Following attributes need to be filled manually for each requirement:
      - Sphinx Needs Build
 
 More details about the generation of the automated attributes are explained in the following chapter where the general workflow for generating requirements including their status is shown.
-
-For creating requirements templates are available for each specific type: :ref:`requirement templates`
-as well as a template for the formulation of requirements: :need:`GD_TEMP__req__formulation`
 
 .. _requirement_versioning:
 
@@ -257,12 +251,11 @@ As this check is included in the sphinx build as a warning it can be guaranteed 
 Reviews of the Requirements
 ***************************
 
-Some of the checks cannot be performed automatically. Therefore a manual inspection of the requirements is needed. The requirement review itself is triggered when a contributor wants to trigger a requirement review. For this review a checklist is available: :need:`GD_CHKLST__req__inspection`.
+Some of the checks cannot be performed automatically. Therefore a manual inspection of the requirements is needed. The requirement review itself is triggered when a contributor wants to trigger a requirement review.
 
-Following roles shall participate in a review of the requirement:
+In the general for the reviews a guideline exists: <TBD>
 
-* Requirement Author(s)
-* Tester
+.. _coverage_of_requirements:
 
 Coverage of requirements
 ************************
@@ -282,4 +275,4 @@ Traceability Concept for Requirements
 
 The standards require that a requirement can be traced throughout the complete hierarchy levels including its implementation and verification <TBD: Link>. In this project it is implemented the following way:
 
-In general the traceability is visualized is in main development work product traceability model (:numref:`wp_traceability_model`).
+In general the traceability is visualized in main development work product traceability model (:numref:`wp_traceability_model`).

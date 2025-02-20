@@ -14,13 +14,13 @@
 
 .. _requirement templates:
 
-Requirement Templates
-=====================
+Templates
+=========
 
 .. gd_temp:: Stakeholder Requirements Templates
-   :id: GD_TEMP__req__stkh_req
+   :id: gd_temp__req__stkh_req
    :status: valid
-   :complies: STD_WP_ISO26262__software_2, STD_REQ_ISO26262__support_1, STD_REQ_ISO26262__support_2, STD_REQ_ISO26262__support_6
+   :complies: std_wp__iso26262__software_2, std_wp__iso26262__support_1, std_wp__iso26262__support_2, std_wp__iso26262__support_6
 
    .. code-block:: rst
 
@@ -32,9 +32,9 @@ Requirement Templates
          :status: <valid|invalid>
 
 .. gd_temp:: Feature Requirements Templates
-   :id: GD_TEMP__req__feat_req
+   :id: gd_temp__req__feat_req
    :status: valid
-   :complies: STD_WP_ISO26262__software_2, STD_REQ_ISO26262__support_1, STD_REQ_ISO26262__support_2, STD_REQ_ISO26262__support_6
+   :complies: std_wp__iso26262__software_2, std_wp__iso26262__support_1, std_wp__iso26262__support_2, std_wp__iso26262__support_6
 
    .. code-block:: rst
 
@@ -47,9 +47,9 @@ Requirement Templates
         :status: <valid|invalid>
 
 .. gd_temp:: Component Requirements Templates
-   :id: GD_TEMP__req__comp_req
+   :id: gd_temp__req__comp_req
    :status: valid
-   :complies: STD_WP_ISO26262__software_2, STD_REQ_ISO26262__support_1, STD_REQ_ISO26262__support_2, STD_REQ_ISO26262__support_6
+   :complies: std_wp__iso26262__software_2, std_wp__iso26262__support_1, std_wp__iso26262__support_2, std_wp__iso26262__support_6
 
    .. code-block:: rst
 
@@ -61,10 +61,10 @@ Requirement Templates
          :satisfies: <link to feature requirement id>
          :status: <valid|invalid>
 
-.. gd_temp:: AoU Templates
-   :id: GD_TEMP__req__aou_req
+.. gd_temp:: AoU Requirement Templates
+   :id: gd_temp__req__aou_req
    :status: valid
-   :complies: STD_WP_ISO26262__software_2, STD_REQ_ISO26262__support_1, STD_REQ_ISO26262__support_2, STD_REQ_ISO26262__support_6
+   :complies: std_wp__iso26262__software_2, std_wp__iso26262__support_1, std_wp__iso26262__support_2, std_wp__iso26262__support_6
 
    .. code-block:: rst
 
@@ -77,21 +77,21 @@ Requirement Templates
          :mitigates: <link to safety analysis>
 
 .. gd_temp:: Process Requirements Templates
-   :id: GD_TEMP__req__process_req
+   :id: gd_temp__req__process_req
    :status: valid
-   :complies: STD_WP_ISO26262__software_2, STD_REQ_ISO26262__support_1, STD_REQ_ISO26262__support_2, STD_REQ_ISO26262__support_6
+   :complies: std_wp__iso26262__software_2, std_wp__iso26262__support_1, std_wp__iso26262__support_2, std_wp__iso26262__support_6
 
    .. code-block:: rst
 
       .. gd_req:: <Title>
-         :id: GD_REQ__<Tool>__<Title>
+         :id: gd_req__<Tool>__<Title>
          :satisfies: <link to guidance id>
          :status: <valid|invalid>
 
 .. gd_temp:: Requirement Formulation Template
-   :id: GD_TEMP__req__formulation
+   :id: gd_temp__req__formulation
    :status: valid
-   :complies: STD_WP_ISO26262__software_2, STD_REQ_ISO26262__support_1, STD_REQ_ISO26262__support_2, STD_REQ_ISO26262__support_6
+   :complies: std_wp__iso26262__software_2, std_wp__iso26262__support_1, std_wp__iso26262__support_2, std_wp__iso26262__support_6
 
    Requirements shall be specified according to the following schema:
 
