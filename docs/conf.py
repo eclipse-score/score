@@ -43,6 +43,7 @@ extensions = [
     "sphinxcontrib.plantuml",
     "score_plantuml",
     "score_metamodel",
+    "score_source_code_linker",
 ]
 
 exclude_patterns = [
@@ -125,3 +126,11 @@ html_context = {
 needs_layouts = layouts.needs_layouts
 needs_global_options = {"collapse": True}
 needs_global_options = needs_global_options | layouts.needs_global_options
+needs_string_links = {
+    "source_code_linker": {
+        "regex": r"(?P<value>[^,]+)",
+        "link_url": "{{value}}",
+        "link_name": "Source Code Link",
+        "options": ["source_code_link"],
+    },
+}

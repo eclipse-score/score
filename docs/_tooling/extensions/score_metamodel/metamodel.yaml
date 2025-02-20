@@ -1,5 +1,8 @@
 # yaml-language-server: $schema=./metamodel-schema.json
 
+needs_types_base_options:
+  optional_options:
+    source_code_link: "^https://github.com/eclipse-score/score/blob/[a-zA-Z0-9]+/[^#\\s]+(?:#L\\d+)?$"
 
 needs_types:
 
@@ -386,4 +389,3 @@ needs_extra_links:
   implements:
     incoming: "implemented by"
     outgoing: "implements"
-
