@@ -10,11 +10,10 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
+from sphinx.application import Sphinx
 from sphinx_needs.data import NeedsInfoType
 
 from score_metamodel import CheckLogger, graph_check
-
-from sphinx.application import Sphinx
 
 
 # req-traceability: TOOL_REQ__toolchain_sphinx_needs_build__requirement_linkage_status

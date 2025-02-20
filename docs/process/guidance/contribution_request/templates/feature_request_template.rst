@@ -18,7 +18,7 @@ Feature Request Template
 ########################
 
 .. gd_temp:: Feature Request Template
-   :id: GD_TEMP__Feat_Request_Template
+   :id: gd_temp__feat_request_template
    :status: valid
    :tags: contribution_request
 
@@ -31,7 +31,7 @@ Feature Request Template
 .. code-block:: rst
 
    .. document:: [Your Feature Name]
-      :id: DOC__Your_Feature_Name
+      :id: doc__your_feature_name
       :status: Your_Status
       :safety: Your_ASIL
       :tags: contribution_request, feature_request
@@ -93,7 +93,7 @@ Specification
 
    .. note::
       A Feature Request shall specify the stakeholder requirements as part of our platform/project.
-      Thereby the :need:`RL_technical_lead` will approve these requirements as part of accepting the Feature Request (e.g. merging the PR with the Feature Request).
+      Thereby the :need:`rl_technical_lead` will approve these requirements as part of accepting the Feature Request (e.g. merging the PR with the Feature Request).
 
 
 Backwards Compatibility

@@ -22,38 +22,38 @@ Workflows
 todo: need to add guidance and standard links
 
 .. workflow:: Create/Maintain Process Management Strategy
-   :id: WF_CR_MT_PROC_MGT_STRATEGY
+   :id: wf_cr_mt_proc_mgt_strategy
    :status: draft
    :tags: process
-   :responsible: RL_process_community
-   :approved_by: RL_project_lead
-   :supported_by: RL_external_assessor
-   :input: WP_POLICIES, WP_ISSUE_TRACK_SYSTEM
-   :output: WP_PROCESS_PLAN
+   :responsible: rl_process_community
+   :approved_by: rl_project_lead
+   :supported_by: rl_external_assessor
+   :input: wp_policies, wp_issue_track_system
+   :output: wp_process_plan
 
    Process management strategy is created and maintained.
    Process metamodel see :ref:`processes_introduction`.
 
 .. workflow:: Define/Approve Process
-   :id: WF_DEF_APP_PROCESS_DEFINTION
+   :id: wf_def_app_process_defintion
    :status: draft
    :tags: process
-   :responsible: RL_process_community
-   :approved_by: RL_technical_lead
-   :supported_by: RL_external_assessor
-   :input: WP_PROCESS_PLAN, WP_ISSUE_TRACK_SYSTEM
-   :output: WP_PROCESS_DEFINITION
+   :responsible: rl_process_community
+   :approved_by: rl_technical_lead
+   :supported_by: rl_external_assessor
+   :input: wp_process_plan, wp_issue_track_system
+   :output: wp_process_definition
 
    Process is defined and approved.
 
 .. workflow:: Monitor/Control Process
-   :id: WF_MON_CTRL_PROCESS_DEFINTION
+   :id: wf_mon_ctrl_process_defintion
    :status: draft
    :tags: process
-   :responsible: RL_process_community
-   :approved_by: RL_technical_lead
-   :supported_by: RL_external_assessor
-   :input: WP_PROCESS_DEFINITION
-   :output: WP_PROCESS_IMPR_REPORT
+   :responsible: rl_process_community
+   :approved_by: rl_technical_lead
+   :supported_by: rl_external_assessor
+   :input: wp_process_definition
+   :output: wp_process_impr_report
 
    Process is monitored and improvements are triggered, if required.

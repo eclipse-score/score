@@ -16,7 +16,7 @@ Inter-process Communication
 ===========================
 
 .. document:: Inter-process Communication
-   :id: DOC__IPC
+   :id: doc__ipc
    :status: valid
    :safety: ASIL_B
    :tags: contribution_request, feature_request

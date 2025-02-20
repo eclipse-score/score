@@ -22,14 +22,14 @@ Workflows
 todo: need to add guidance and standard links
 
 .. workflow:: Create/Maintain Platform Management Plan
-   :id: WF_CR_MT_PLATFORM_MNGMT_PLAN
+   :id: wf_cr_mt_platform_mngmt_plan
    :status: draft
    :tags: process
-   :responsible: RL_technical_lead
-   :approved_by: RL_process_community
-   :supported_by: RL_safety_manager, RL_security_manager, RL_quality_manager
-   :input: WP_POLICIES, WP_ISSUE_TRACK_SYSTEM
-   :output: WP_PLATFORM_MGMT
+   :responsible: rl_technical_lead
+   :approved_by: rl_process_community
+   :supported_by: rl_safety_manager, rl_security_manager, rl_quality_manager
+   :input: wp_policies, wp_issue_track_system
+   :output: wp_platform_mgmt
 
    | The Platform Management Plan shall include the Plans for Project and Risk Management, Safety and Quality Management, Release Management, Configuration Management, Change Management, Documentation Management, Problem Resolution, Requirement Management, Tool Management, Stakeholder Management and also the Software Development and Verification Plan.
    | These plans contain the measures for example:
@@ -38,14 +38,14 @@ todo: need to add guidance and standard links
    | - to manage, analyse and control changes of the work products during the project life cycle.
 
 .. workflow:: Monitor/Improve Platform Management Plan
-   :id: WF_MR_VY_PLATFORM_MNGMT_PLAN
+   :id: wf_mr_vy_platform_mngmt_plan
    :status: draft
    :tags: process
-   :responsible: RL_technical_lead
-   :approved_by: RL_process_community
-   :supported_by: RL_safety_manager, RL_security_manager, RL_quality_manager
-   :input: WP_PLATFORM_MGMT
-   :output: WP_ISSUE_TRACK_SYSTEM
+   :responsible: rl_technical_lead
+   :approved_by: rl_process_community
+   :supported_by: rl_safety_manager, rl_security_manager, rl_quality_manager
+   :input: wp_platform_mgmt
+   :output: wp_issue_track_system
 
    | The Project Manager is responsible for the monitoring of the activities against the platform management plan.
    | The Project Manager is responsible to adjust the plan, if deviations are detected.

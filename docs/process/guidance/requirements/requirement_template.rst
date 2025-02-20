@@ -18,12 +18,12 @@ Requirement Templates
 todo: add links to standards
 
 .. gd_temp:: Stakeholder Requirements Template
-  :id: GD_TEMP__stakeholder_requirements_template
+  :id: gd_temp__stakeholder_requirements_template
   :status: draft
   :tags: requirements_management
 
     | .. stkh_req:: <Title>
-    |    :id: STHK_REQ__<Title>
+    |    :id: sthk_req__<title>
     |    :reqtype: <Functional|Interface|Process|Legal|Non-Functional>
     |    :security: <YES|NO>
     |    :safety: <QM|ASIL_B|ASIL_D>
@@ -32,12 +32,12 @@ todo: add links to standards
 
 
 .. gd_temp:: Feature Requirements Template
-    :id: GD_TEMP__feature_requirements_template
+    :id: gd_temp__feature_requirements_template
     :status: draft
     :tags: safety
 
     | .. feat_req:: <Title>
-    |    :id: FEAT_REQ__<Feature>__<Title>
+    |    :id: feat_req__<feature>__<title>
     |    :reqtype: <Functional|Interface|Process|Legal|Non-Functional>
     |    :security: <YES|NO>
     |    :safety: <QM|ASIL_B|ASIL_D>
@@ -46,12 +46,12 @@ todo: add links to standards
 
 
 .. gd_temp:: Component Requirements Template
-    :id: GD_TEMP__component_requirements_template
+    :id: gd_temp__component_requirements_template
     :status: draft
     :tags: safety
 
     | .. comp_req:: <Title>
-    |    :id: COMP_REQ__<Component>__<Title>
+    |    :id: comp_req__<component>__<title>
     |    :reqtype: <Functional|Interface|Process|Legal|Non-Functional>
     |    :security: <YES|NO>
     |    :safety: <QM|ASIL_B|ASIL_D>
@@ -60,12 +60,12 @@ todo: add links to standards
 
 
 .. gd_temp:: Tool Requirements Template
-  :id: GD_TEMP__tool_requirements_template
+  :id: gd_temp__tool_requirements_template
   :status: draft
   :tags: safety
 
     | .. tool_req:: <Title>
-    |    :id: TOOL_REQ__<Tool>__<Title>
+    |    :id: tool_req__<tool>__<title>
     |    :reqtype: <Functional|Interface|Process|Legal|Non-Functional>
     |    :security: <YES|NO>
     |    :safety: <QM|ASIL_B|ASIL_D>
@@ -74,7 +74,7 @@ todo: add links to standards
 
 
 .. gd_temp:: Requirement Formulation Template
-   :id: GD_TEMP__requirement_formulation
+   :id: gd_temp__requirement_formulation
    :status: valid
    :tags: safety
 

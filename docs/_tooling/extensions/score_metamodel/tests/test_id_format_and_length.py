@@ -29,7 +29,7 @@ class TestId:
         """
 
         need = NeedsInfoType(
-            id="GD_REQ__attribute_satisfies",
+            id="gd_req_attribute_satisfies",
         )
 
         logger = fake_check_logger()
@@ -43,7 +43,7 @@ class TestId:
         """
 
         need = NeedsInfoType(
-            id="GD_REQ_attribute_satisfies",
+            id="gd_req_attribute_satisfies",
         )
 
         logger = fake_check_logger()
@@ -62,7 +62,7 @@ class TestId:
         """
 
         need = NeedsInfoType(
-            id="TOOL_REQ__1",
+            id="tool_req__1",
         )
 
         logger = fake_check_logger()
@@ -81,7 +81,7 @@ class TestId:
         """
 
         need = NeedsInfoType(
-            id="STD_REQ_ISO26262__rq_8_6432",
+            id="std_req__iso26262__rq_8_6432",
         )
 
         logger = fake_check_logger()
@@ -95,7 +95,7 @@ class TestId:
         """
 
         need = NeedsInfoType(
-            id="STD_REQ_ISO26262__rq_8_6432_00000000000",
+            id="std_req__iso26262__rq_8_6432_00000000000",
         )
 
         logger = fake_check_logger()

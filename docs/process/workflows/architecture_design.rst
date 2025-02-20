@@ -22,38 +22,38 @@ Workflows
 todo: need to add guidance and standard links
 
 .. workflow:: Create/Maintain Feature architecture
-   :id: WF_CR_MT_FeatArch
+   :id: wf_cr_mt_featarch
    :status: valid
    :tags: architecture_design
-   :responsible: RL_contributor
-   :approved_by: RL_committer
-   :supported_by: RL_safety_manager, RL_security_manager
-   :input: WP_FEATURE_REQ, WP_ISSUE_TRACK_SYSTEM
-   :output: WP_FEATURE_ARCHITECTURE
+   :responsible: rl_contributor
+   :approved_by: rl_committer
+   :supported_by: rl_safety_manager, rl_security_manager
+   :input: wp_feature_req, wp_issue_track_system
+   :output: wp_feature_architecture
 
    | The feature architectures are created and maintained.
 
 .. workflow:: Create/Maintain Components architecture
-   :id: WF_CR_MT_CompArch
+   :id: wf_cr_mt_comparch
    :status: invalid
    :tags: architecture_design
-   :responsible: RL_contributor
-   :approved_by: RL_committer
-   :supported_by: RL_safety_manager, RL_security_manager
-   :input: WP_FEATURE_ARCHITECTURE, WP_SW_COMPONENT_REQ, WP_ISSUE_TRACK_SYSTEM
-   :output: WP_SW_COMPONENT_ARCHITECTURE
+   :responsible: rl_contributor
+   :approved_by: rl_committer
+   :supported_by: rl_safety_manager, rl_security_manager
+   :input: wp_feature_architecture, wp_sw_component_req, wp_issue_track_system
+   :output: wp_sw_component_architecture
 
    | The component architectures are created and maintained.
 
 .. workflow:: Monitor/Verify Architecture
-   :id: WF_MR_VY_Arch
+   :id: wf_mr_vy_arch
    :status: valid
    :tags: architecture_design
-   :responsible: RL_contributor
-   :approved_by: RL_committer
-   :supported_by: RL_safety_manager, RL_security_manager
-   :input: WP_FEATURE_ARCHITECTURE, WP_SW_COMPONENT_ARCHITECTURE
-   :output: WP_ISSUE_TRACK_SYSTEM, WP_SW_ARCH_VERIFICATION
+   :responsible: rl_contributor
+   :approved_by: rl_committer
+   :supported_by: rl_safety_manager, rl_security_manager
+   :input: wp_feature_architecture, wp_sw_component_architecture
+   :output: wp_issue_track_system, wp_sw_arch_verification
 
    | The architecture designs are monitored and verified.
    | The inspection shall be implemented as integral part of the review in GitHub.

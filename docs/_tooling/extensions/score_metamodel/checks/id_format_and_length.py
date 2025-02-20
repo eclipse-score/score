@@ -12,8 +12,8 @@
 # *******************************************************************************
 import os
 
-from sphinx_needs.data import NeedsInfoType
 from sphinx.application import Sphinx
+from sphinx_needs.data import NeedsInfoType
 
 from score_metamodel import CheckLogger, local_check
 
@@ -28,7 +28,7 @@ def check_id_format(app: Sphinx, need: NeedsInfoType, log: CheckLogger):
     # Split the string by underscores
     parts = need["id"].split("__")
 
-    if need["type"].startswith(("gd_", "wf_", "wp_")):
+    if need["id"].startswith(("gd_", "wf__", "wp__")):
         if len(parts) != 2 and len(parts) != 3:
             msg = "expected to consisting of one of these 2 formats:`<Req Type>__<Abbreviations>` or `<Req Type>__<Abbreviations>__<Architectural Element>`."
             log.warning_for_option(need, "id", msg)

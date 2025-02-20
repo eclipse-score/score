@@ -19,41 +19,41 @@ High cohesion and loose coupling
 ================================
 
 .. feat_req:: Support for Time-based Architecture
-   :id: FEAT_REQ__ipc__time_based_arch
+   :id: feat_req__ipc__time_based_arch
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: STKH_REQ__2,STKH_REQ__281
+   :satisfies: stkh_req__2,stkh_req__281
    :status: valid
 
    The communication framework shall provide API to support a time-based architecture.
 
 .. feat_req:: Support for Data-driven Architecture
-   :id: FEAT_REQ__ipc__data_driven_arch
+   :id: feat_req__ipc__data_driven_arch
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: STKH_REQ__2,STKH_REQ__282
+   :satisfies: stkh_req__2,stkh_req__282
    :status: valid
 
    The communication framework shall provide API to support a data-driven architecture.
 
 .. feat_req:: Support for Request-driven Architecture
-   :id: FEAT_REQ__ipc__request_driven_arch
+   :id: feat_req__ipc__request_driven_arch
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: STKH_REQ__2,STKH_REQ__282
+   :satisfies: stkh_req__2,stkh_req__282
    :status: valid
 
    The communication framework shall provide API to support a request-driven architecture.
 
 .. feat_req:: Communication Interfaces
-   :id: FEAT_REQ__ipc__interfaces
+   :id: feat_req__ipc__interfaces
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: STKH_REQ__2,STKH_REQ__282,STKH_REQ__283
+   :satisfies: stkh_req__2,stkh_req__282,stkh_req__283
    :status: valid
 
    A communication interface consists of a combination of any number of the following elements:
@@ -63,11 +63,11 @@ High cohesion and loose coupling
    - Signals
 
 .. feat_req:: Event Type
-   :id: FEAT_REQ__ipc__event_type
+   :id: feat_req__ipc__event_type
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: STKH_REQ__2,STKH_REQ__282
+   :satisfies: stkh_req__2,stkh_req__282
    :status: valid
 
    An event-type is part of a communication interface and has:
@@ -79,11 +79,11 @@ High cohesion and loose coupling
    Consumers can subscribe to value-changed events of the element or poll unseen, cached events.
 
 .. feat_req:: Method
-   :id: FEAT_REQ__ipc__method
+   :id: feat_req__ipc__method
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: STKH_REQ__2,STKH_REQ__283
+   :satisfies: stkh_req__2,stkh_req__283
    :status: valid
 
    A method is part of a communication interface and has:
@@ -99,11 +99,11 @@ High cohesion and loose coupling
    A method call shall be possible both synchronously and asynchronously.
 
 .. feat_req:: Signal
-   :id: FEAT_REQ__ipc__signal
+   :id: feat_req__ipc__signal
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: STKH_REQ__2,STKH_REQ__281
+   :satisfies: stkh_req__2,stkh_req__281
    :status: valid
 
    A signal is part of a communication interface and has:
@@ -121,21 +121,21 @@ High cohesion and loose coupling
    Hypervisor Signalling APIs may be chosen.
 
 .. feat_req:: Producer-Consumer Pattern
-   :id: FEAT_REQ__ipc__producer_consumer
+   :id: feat_req__ipc__producer_consumer
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: STKH_REQ__2,STKH_REQ__281
+   :satisfies: stkh_req__2,stkh_req__281
    :status: valid
 
    Communication shall be cached based on the producer-consumer pattern.
 
 .. feat_req:: Service Instance
-   :id: FEAT_REQ__ipc__service_instance
+   :id: feat_req__ipc__service_instance
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: STKH_REQ__2
+   :satisfies: stkh_req__2
    :status: valid
 
    A communication interface that is offered to consumers is called a service instance.
@@ -143,11 +143,11 @@ High cohesion and loose coupling
    Multiple service instances shall be able to offer the same interface.
 
 .. feat_req:: Service Instance Names
-   :id: FEAT_REQ__ipc__service_instance_names
+   :id: feat_req__ipc__service_instance_names
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: STKH_REQ__2
+   :satisfies: stkh_req__2
    :status: valid
 
    A service instance is offered under one or more unique names by which it can be discovered.
@@ -158,11 +158,11 @@ High cohesion and loose coupling
 
 
 .. feat_req:: Versioning
-   :id: FEAT_REQ__ipc__versioning
+   :id: feat_req__ipc__versioning
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: STKH_REQ__2
+   :satisfies: stkh_req__2
    :status: valid
 
    The communication framework shall support versioning of service instances.
@@ -173,22 +173,22 @@ High cohesion and loose coupling
    Multiple service instances can have the same interface and version.
 
 .. feat_req:: Service location transparency
-   :id: FEAT_REQ__ipc__service_location_transparency
+   :id: feat_req__ipc__service_location_transparency
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: STKH_REQ__2
+   :satisfies: stkh_req__2
    :status: valid
 
    The interface to access service instances is agnostic to the binding used to communicate with the service.
    Note: Deployment information may require manual changes based on where the service is located.
 
 .. feat_req:: Stateless communication
-   :id: FEAT_REQ__ipc__stateless_communication
+   :id: feat_req__ipc__stateless_communication
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: STKH_REQ__2
+   :satisfies: stkh_req__2
    :status: valid
 
    The communication framework shall support stateless communication.
@@ -197,22 +197,22 @@ High cohesion and loose coupling
    - In case of RPC, the skeleton is not aware of the proxy, this request originated from.
 
 .. feat_req:: Service instance_granularity
-   :id: FEAT_REQ__ipc__service_instance_granularity
+   :id: feat_req__ipc__service_instance_granularity
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: STKH_REQ__2
+   :satisfies: stkh_req__2
    :status: valid
 
    The communication framework shall support multiple service instances per software architecture element.
    Note: A software architecture element is for example an application, activity, proces, ...
 
 .. feat_req:: Service discovery
-   :id: FEAT_REQ__ipc__service_discovery
+   :id: feat_req__ipc__service_discovery
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: STKH_REQ__2
+   :satisfies: stkh_req__2
    :status: valid
 
    The communication framework shall provide service discovery to find available services during runtime.
@@ -224,54 +224,54 @@ Mixed-Criticality safety systems
 ================================
 
 .. feat_req:: Safe communication over criticality levels
-   :id: FEAT_REQ__ipc__safe_communication
+   :id: feat_req__ipc__safe_communication
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies: STKH_REQ__2
+   :satisfies: stkh_req__2
    :status: valid
 
    The communication framework shall support safe communication involving communication partners on the same or multiple
    criticality levels.
 
 .. feat_req:: Data Corruption
-   :id: FEAT_REQ__ipc__data_corruption
+   :id: feat_req__ipc__data_corruption
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies: STKH_REQ__2
+   :satisfies: stkh_req__2
    :status: valid
 
    Consumers with lower criticality shall not be able to corrupt data consumed by partners with higher criticality.
 
 .. feat_req:: Data Reordering
-   :id: FEAT_REQ__ipc__data_reordering
+   :id: feat_req__ipc__data_reordering
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies: STKH_REQ__2
+   :satisfies: stkh_req__2
    :status: valid
 
    Consumers with lower criticality shall not be able to modify the order of data consumed by partners with higher
    criticality.
 
 .. feat_req:: Data Repetition
-   :id: FEAT_REQ__ipc__data_repetition
+   :id: feat_req__ipc__data_repetition
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies: STKH_REQ__2
+   :satisfies: stkh_req__2
    :status: valid
 
    Consumers with lower criticality shall not be able to duplicate data consumed by other communication partners with
    higher criticality.
 
 .. feat_req:: Data Loss
-   :id: FEAT_REQ__ipc__data_loss
+   :id: feat_req__ipc__data_loss
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies: STKH_REQ__2
+   :satisfies: stkh_req__2
    :status: valid
 
    Consumers with lower criticality shall not be able to drop data before it is consumed by partners with higher
@@ -281,11 +281,11 @@ Performance
 ===========
 
 .. feat_req:: Zero-Copy IPC
-   :id: FEAT_REQ__ipc__zero_copy
+   :id: feat_req__ipc__zero_copy
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: STKH_REQ__2,STKH_REQ__282
+   :satisfies: stkh_req__2,stkh_req__282
    :status: valid
 
    IPC communication shall be possible without copying to-be-transferred data.
@@ -294,31 +294,31 @@ User friendly API for information exchange
 ==========================================
 
 .. feat_req:: Support for multiple programming languages
-   :id: FEAT_REQ__ipc__multi_lang
+   :id: feat_req__ipc__multi_lang
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :satisfies: STKH_REQ__260
+   :satisfies: stkh_req__260
    :status: valid
 
    The communication framework shall provide a public API for each supported programming language of SCORE.
 
 .. feat_req:: Support for programming language idioms
-   :id: FEAT_REQ__ipc__lang_idioms
+   :id: feat_req__ipc__lang_idioms
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :satisfies: STKH_REQ__260
+   :satisfies: stkh_req__260
    :status: valid
 
    Each public API shall support the idioms of the programming language it is written in.
 
 .. feat_req:: Use programming language infrastructure
-   :id: FEAT_REQ__ipc__lang_infra
+   :id: feat_req__ipc__lang_infra
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :satisfies: STKH_REQ__260
+   :satisfies: stkh_req__260
    :status: valid
 
    Each public API shall use core infrastructure of its programming language and accompanying standard libraries,
@@ -330,21 +330,21 @@ Full testability for the user facing API
 ========================================
 
 .. feat_req:: Fully mockable public API
-   :id: FEAT_REQ__ipc__testability_mock_api
+   :id: feat_req__ipc__testability_mock_api
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :satisfies: STKH_REQ__2
+   :satisfies: stkh_req__2
    :status: valid
 
    The public API shall be fully mockable.
 
 .. feat_req:: Fake binding
-   :id: FEAT_REQ__ipc__testability_fake_binding
+   :id: feat_req__ipc__testability_fake_binding
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :satisfies: STKH_REQ__2
+   :satisfies: stkh_req__2
    :status: valid
 
    The communication framework shall provide a fake binding.
@@ -353,11 +353,11 @@ Multi-binding support
 =====================
 
 .. feat_req:: Multi-binding support
-   :id: FEAT_REQ__ipc__multi_binding_support
+   :id: feat_req__ipc__multi_binding_support
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: STKH_REQ__2
+   :satisfies: stkh_req__2
    :status: valid
 
    The communication framework shall support multiple bindings.
@@ -367,11 +367,11 @@ Multi-binding support
    It does this either directly or via a gateway approach.
 
 .. feat_req:: Binding-agnostic public API
-   :id: FEAT_REQ__ipc__binding_agnostic_api
+   :id: feat_req__ipc__binding_agnostic_api
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: STKH_REQ__2
+   :satisfies: stkh_req__2
    :status: valid
 
    The public API of the communication framework shall be binding-agnostic.
@@ -381,11 +381,11 @@ Multi-binding support
    binding is exchanged, the public API remains syntactically and semantically unchanged.
 
 .. feat_req:: Multi-binding deployment configuration
-   :id: FEAT_REQ__ipc__multi_binding_depl
+   :id: feat_req__ipc__multi_binding_depl
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: STKH_REQ__2
+   :satisfies: stkh_req__2
    :status: valid
 
    The association of a service instance and the appropriate binding shall be specified in the deployment configuration.
@@ -394,11 +394,11 @@ Dynamic deployment at runtime
 =============================
 
 .. feat_req:: Deployment configuration at runtime
-   :id: FEAT_REQ__ipc__depl_config_runtime
+   :id: feat_req__ipc__depl_config_runtime
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies: STKH_REQ__2
+   :satisfies: stkh_req__2
    :status: valid
 
    Deployment configuration shall be read from an integrity-checked configuration file at runtime.
@@ -407,11 +407,11 @@ Tracing
 =======
 
 .. feat_req:: Support for Tracing
-   :id: FEAT_REQ__ipc__tracing
+   :id: feat_req__ipc__tracing
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: STKH_REQ__242
+   :satisfies: stkh_req__242
    :status: valid
 
    The communication framework shall provide infrastructure to enable binding-agnostic, zero-copy, read-only tracing of
@@ -421,31 +421,31 @@ Security Impact
 ===============
 
 .. feat_req:: Access Control List Placement
-   :id: FEAT_REQ__ipc__acl_placement
+   :id: feat_req__ipc__acl_placement
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies: STKH_REQ__2
+   :satisfies: stkh_req__2
    :status: valid
 
    The communication framework shall support an Access Control Lists in the deployment configuration.
 
 .. feat_req:: Access Control List per service instance
-   :id: FEAT_REQ__ipc__acl_per_service_instance
+   :id: feat_req__ipc__acl_per_service_instance
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies: STKH_REQ__2
+   :satisfies: stkh_req__2
    :status: valid
 
    The communication framework shall support an Access Control List per service instance.
 
 .. feat_req:: Access Control List for producer
-   :id: FEAT_REQ__ipc__acl_for_producer
+   :id: feat_req__ipc__acl_for_producer
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies: STKH_REQ__2
+   :satisfies: stkh_req__2
    :status: valid
 
    The communication framework shall support an Access Control List for the communication partner offering a service
@@ -453,11 +453,11 @@ Security Impact
    An entry in the ACL corresponds to an allowed consumer.
 
 .. feat_req:: Access Control List for consumer
-   :id: FEAT_REQ__ipc__acl_for_consumer
+   :id: feat_req__ipc__acl_for_consumer
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies: STKH_REQ__2
+   :satisfies: stkh_req__2
    :status: valid
 
    The communication framework shall support an Access Control List for the communication partner consuming a service
@@ -465,31 +465,31 @@ Security Impact
    An entry in the ACL corresponds to an allowed producer.
 
 .. feat_req:: IPC Confidentiality
-   :id: FEAT_REQ__ipc__confidentiality
+   :id: feat_req__ipc__confidentiality
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies: STKH_REQ__2
+   :satisfies: stkh_req__2
    :status: valid
 
    The IPC binding shall ensure confidentiality of its communication.
 
 .. feat_req:: IPC Integrity
-   :id: FEAT_REQ__ipc__integrity
+   :id: feat_req__ipc__integrity
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies: STKH_REQ__2
+   :satisfies: stkh_req__2
    :status: valid
 
    The IPC binding shall ensure integrity of its communication.
 
 .. feat_req:: IPC Availability
-   :id: FEAT_REQ__ipc__availability
+   :id: feat_req__ipc__availability
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies: STKH_REQ__2
+   :satisfies: stkh_req__2
    :status: valid
 
    The IPC binding shall ensure availability of its communication, so that the availability is independent per
@@ -499,11 +499,11 @@ Safety Impact
 =============
 
 .. feat_req:: IPC ASIL level
-   :id: FEAT_REQ__ipc__asil
+   :id: feat_req__ipc__asil
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies: STKH_REQ__2
+   :satisfies: stkh_req__2
    :status: valid
 
    The communication framework shall support safe communication up to ASIL-B.
