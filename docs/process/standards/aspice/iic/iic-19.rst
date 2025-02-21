@@ -16,7 +16,7 @@
 ~~~~~
 
 .. std_req:: 19-01 Process performance strategy
-   :id: std_bp_aspice-40__iic-19-01
+   :id:std_bp__aspice-40__iic-19-01
    :status: valid
 
    Process performance strategy may have the following characteristics:

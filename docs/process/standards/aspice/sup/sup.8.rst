@@ -35,9 +35,9 @@ Base practices
 ~~~~~~~~~~~~~~
 
 .. std_req:: SUP.8.BP1: Identify configuration items
-   :id: std_bp_aspice-40__SUP-8-BP1
+   :id:std_bp__aspice-40__SUP-8-BP1
    :status: valid
-   :links: std_bp_aspice-40__iic-18-53, std_bp_aspice-40__iic-01-52
+   :links:std_bp__aspice-40__iic-18-53,std_bp__aspice-40__iic-01-52
 
    Define selection criteria for identifying relevant work products to be subject to configuration management.
    Identify and document configuration items according to the defined selection criteria.
@@ -57,9 +57,9 @@ Base practices
       The selection criteria may be applied to single work products or a group of work products.
 
 .. std_req:: SUP.8.BP2: Define configuration item properties
-   :id: std_bp_aspice-40__SUP-8-BP2
+   :id:std_bp__aspice-40__SUP-8-BP2
    :status: valid
-   :links: std_bp_aspice-40__iic-01-52
+   :links:std_bp__aspice-40__iic-01-52
 
    Define the necessary properties needed for the modification and control of configuration items.
 
@@ -76,9 +76,9 @@ Base practices
       The application of properties may be implemented by attributes of configuration items.
 
 .. std_req:: SUP.8.BP3: Establish configuration management
-   :id: std_bp_aspice-40__SUP-8-BP3
+   :id:std_bp__aspice-40__SUP-8-BP3
    :status: valid
-   :links: std_bp_aspice-40__iic-16-03, std_bp_aspice-40__iic-14-01
+   :links:std_bp__aspice-40__iic-16-03,std_bp__aspice-40__iic-14-01
 
    Establish configuration management mechanisms for control of identified configuration items including the configuration item properties,
    including mechanisms for controlling parallel modifications of configuration items.
@@ -88,9 +88,9 @@ Base practices
       This may include specific mechanisms for different configuration item types, such as branch and merge management, or checkout control.
 
 .. std_req:: SUP.8.BP4: Control modifications
-   :id: std_bp_aspice-40__SUP-8-BP4
+   :id:std_bp__aspice-40__SUP-8-BP4
    :status: valid
-   :links: std_bp_aspice-40__iic-16-03, std_bp_aspice-40__iic-14-01
+   :links:std_bp__aspice-40__iic-16-03,std_bp__aspice-40__iic-14-01
 
    Control modifications using the configuration management mechanisms.
 
@@ -99,16 +99,16 @@ Base practices
       This may include the application of a defined status model for configuration items.
 
 .. std_req:: SUP.8.BP5: Establish baselines
-   :id: std_bp_aspice-40__SUP-8-BP5
+   :id:std_bp__aspice-40__SUP-8-BP5
    :status: valid
-   :links: std_bp_aspice-40__iic-16-03, std_bp_aspice-40__iic-13-08
+   :links:std_bp__aspice-40__iic-16-03,std_bp__aspice-40__iic-13-08
 
    Define and establish baselines for internal purposes, and for external product delivery, for all relevant configuration items.
 
 .. std_req:: SUP.8.BP6: Summarize and communicate configuration status
-   :id: std_bp_aspice-40__SUP-8-BP6
+   :id:std_bp__aspice-40__SUP-8-BP6
    :status: valid
-   :links: std_bp_aspice-40__iic-14-01, std_bp_aspice-40__iic-15-56
+   :links:std_bp__aspice-40__iic-14-01,std_bp__aspice-40__iic-15-56
 
    Record, summarize, and communicate the status of configuration items and established baselines
    to affected parties in order to support the monitoring of progress and status.
@@ -119,9 +119,9 @@ Base practices
       project management, quality activities, and dedicated project phases such as software integration.
 
 .. std_req:: SUP.8.BP7: Ensure completeness and consistency
-   :id: std_bp_aspice-40__SUP-8-BP7
+   :id:std_bp__aspice-40__SUP-8-BP7
    :status: valid
-   :links: std_bp_aspice-40__iic-01-52, std_bp_aspice-40__iic-13-08, std_bp_aspice-40__iic-13-51
+   :links:std_bp__aspice-40__iic-01-52,std_bp__aspice-40__iic-13-08,std_bp__aspice-40__iic-13-51
 
    Ensure that the information about configuration items is correct and complete including configuration item properties.
    Ensure the completeness and consistency of baselines.
@@ -132,9 +132,9 @@ Base practices
       and have the required status. This can be used to support e.g., project gate approval.
 
 .. std_req:: SUP.8.BP8: Verify backup and recovery mechanisms availability.
-   :id: std_bp_aspice-40__SUP-8-BP8
+   :id:std_bp__aspice-40__SUP-8-BP8
    :status: valid
-   :links: std_bp_aspice-40__iic-06-52
+   :links:std_bp__aspice-40__iic-06-52
 
    Verify the availability of appropriate backup and recovery mechanisms for the configuration management including
    the controlled configuration items. Initiate measures in case of insufficient backup and recovery mechanisms.

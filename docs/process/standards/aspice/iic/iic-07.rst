@@ -16,7 +16,7 @@
 ~~~~~
 
 .. std_req:: 07-04 Process metric
-   :id: std_bp_aspice-40__iic-07-04
+   :id:std_bp__aspice-40__iic-07-04
    :status: valid
 
    Process metric may have the following characteristics:
@@ -30,7 +30,7 @@
    - Measures the efficiency of the process
 
 .. std_req:: 07-05 Project metric
-   :id: std_bp_aspice-40__iic-07-05
+   :id:std_bp__aspice-40__iic-07-05
    :status: valid
 
    Project metric may have the following characteristics:
@@ -48,7 +48,7 @@
    - References any goals established
 
 .. std_req:: 07-06 Quality metric
-   :id: std_bp_aspice-40__iic-07-06
+   :id:std_bp__aspice-40__iic-07-06
    :status: valid
 
    Quality metric may have the following characteristics:
@@ -67,7 +67,7 @@
       Refer ISO/IEC 25010 for detailed information on measurement of product quality.
 
 .. std_req:: 07-08 Service level metric
-   :id: std_bp_aspice-40__iic-07-08
+   :id:std_bp__aspice-40__iic-07-08
    :status: valid
 
    Service level metric may have the following characteristics:
@@ -83,7 +83,7 @@
        - job run time
 
 .. std_req:: 07-51 Measurement result
-   :id: std_bp_aspice-40__iic-07-51
+   :id:std_bp__aspice-40__iic-07-51
    :status: valid
 
    Measurement result may have the following characteristics:
@@ -122,7 +122,7 @@
    - Customer satisfaction survey
 
 .. std_req:: 07-61 Quantitative process metric
-   :id: std_bp_aspice-40__iic-07-61
+   :id:std_bp__aspice-40__iic-07-61
    :status: valid
 
    Quantitative process metric may have the following characteristics:
@@ -134,7 +134,7 @@
      sbased on data from related process elements, repositories, or tools
 
 .. std_req:: 07-62 Process analysis technique
-   :id: std_bp_aspice-40__iic-07-62
+   :id:std_bp__aspice-40__iic-07-62
    :status: valid
 
    Process analysis technique may have the following characteristics:
@@ -143,7 +143,7 @@
    - Frequency of data collection.
 
 .. std_req:: 07-63 Process control limits
-   :id: std_bp_aspice-40__iic-07-63
+   :id:std_bp__aspice-40__iic-07-63
    :status: valid
 
    Process control limits may have the following characteristics:
@@ -151,7 +151,7 @@
    - Quantitative control limits for the quantitative process metrics
 
 .. std_req:: 07-64 Process measurement data
-   :id: std_bp_aspice-40__iic-07-64
+   :id:std_bp__aspice-40__iic-07-64
    :status: valid
 
    Process measurement data may have the following characteristics:

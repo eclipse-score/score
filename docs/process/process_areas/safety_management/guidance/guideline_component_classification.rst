@@ -18,7 +18,7 @@ Component Classification Guideline
 .. gd_guidl:: Classification of a component
    :id: gd_guidl__component_classification
    :status: valid
-   :complies: std_req_isopas8926__1, std_req_isopas8926__2, std_req_isopas8926__3, std_req_isopas8926__4, std_req_isopas8926__5, std_req_isopas8926__6, std_req_isopas8926__7, std_req_isopas8926__8, std_req_isopas8926__9, std_req_isopas8926__10, std_req_isopas8926__11
+   :complies: std_req__isopas8926__1, std_req__isopas8926__2, std_req__isopas8926__3, std_req__isopas8926__4, std_req__isopas8926__5, std_req__isopas8926__6, std_req__isopas8926__7, std_req__isopas8926__8, std_req__isopas8926__9, std_req__isopas8926__10, std_req__isopas8926__11
 
 Purpose
 -------
@@ -63,7 +63,7 @@ The classification is based on two criterias:
 
 Figure 1: Overview of the workflow component classification
 
-.. image:: _assets/wf_component_classification.svg
+.. image:: _assets/wf__component_classification.svg
   :width: 800
   :alt: Overview of the workflow component classification
 
@@ -244,16 +244,16 @@ As soon as the contribution request containing this is in status "Accepted", the
 
 This is namely (for ASIL B) to provide the following work products according to the SW platform process:
 
-* :need:`WP_SW_COMPONENT_REQ` including their inspection
-* :need:`WP_SW_COMPONENT_AOU` derived from the OSS components user manual and interface description, includes specification of the component's configuration
-* :need:`WP_SW_COMPONENT_TEST` to test requirement and AoU implementation
+* :need:`wp__SW_COMPONENT_REQ` including their inspection
+* :need:`wp__SW_COMPONENT_AOU` derived from the OSS components user manual and interface description, includes specification of the component's configuration
+* :need:`wp__SW_COMPONENT_TEST` to test requirement and AoU implementation
 
 Integration of the OSS component is performed via the modules's SW build config and checked by feature integration tests (component integration if the OSS element is considered as a sub-component).
 
 **If CLAS_OUT=QR : Follow the process for pre-existing software architectural elements**
 
 * Based on the gaps detected in this classification which lead to a QR instead of a Q, add additional work products or improve the existing work products with the goal to get a better P or C rating ("1").
-* In case of too high complexity based on the Ids 1 and 4, a :need:`WP_SW_COMPONENT_ARCHITECTURE` shall be derived from the OSS component source code and a classification done on the sub-components in this architecture. This could be repeated again and again until sufficiently low complex sub-components were broken down.
+* In case of too high complexity based on the Ids 1 and 4, a :need:`wp__SW_COMPONENT_ARCHITECTURE` shall be derived from the OSS component source code and a classification done on the sub-components in this architecture. This could be repeated again and again until sufficiently low complex sub-components were broken down.
 * If the classification of the (sub-)component is Q after the above, do as in section "Q:"
 
 **If CLAS_OUT=NQ : Do no use this element in safety context**

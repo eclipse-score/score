@@ -41,9 +41,9 @@ Base practices
 ~~~~~~~~~~~~~~
 
 .. std_req:: SWE.3.BP1: Specify the static aspects of the detailed design
-   :id: std_bp_aspice-40__SWE-3-BP1
+   :id:std_bp__aspice-40__SWE-3-BP1
    :status: valid
-   :links: std_bp_aspice-40__iic-04-05; std_bp_aspice-40__iic-11-05
+   :links:std_bp__aspice-40__iic-04-05;std_bp__aspice-40__iic-11-05
 
    For each software component
    specify the behavior of its software units, their static structure and relationships, their interfaces
@@ -84,9 +84,9 @@ Base practices
 
 
 .. std_req:: SWE.3.BP2: Specify dynamic aspects of the detailed design
-   :id: std_bp_aspice-40__SWE-3-BP2
+   :id:std_bp__aspice-40__SWE-3-BP2
    :status: valid
-   :links: std_bp_aspice-40__iic-04-05; std_bp_aspice-40__iic-11-05
+   :links:std_bp__aspice-40__iic-04-05;std_bp__aspice-40__iic-11-05
 
    Specify and document the
    dynamic aspects of the detailed design with respect to the software architecture, including the
@@ -99,9 +99,9 @@ Base practices
 
 
 .. std_req:: SWE.3.BP3: Develop software units
-   :id: std_bp_aspice-40__SWE-3-BP3
+   :id:std_bp__aspice-40__SWE-3-BP3
    :status: valid
-   :links: std_bp_aspice-40__iic-11-05
+   :links:std_bp__aspice-40__iic-11-05
 
    Develop and document the software units consistent
    with the detailed design, and according to coding principles.
@@ -114,9 +114,9 @@ Base practices
 
 
 .. std_req:: SWE.3.BP4: Ensure consistency and establish bidirectional traceability
-   :id: std_bp_aspice-40__SWE-3-BP4
+   :id:std_bp__aspice-40__SWE-3-BP4
    :status: valid
-   :links: std_bp_aspice-40__iic-13-51
+   :links:std_bp__aspice-40__iic-13-51
 
    Ensure
    consistency and establish bidirectional traceability between the software detailed design and the
@@ -142,9 +142,9 @@ Base practices
 
 
 .. std_req:: SWE.3.BP5: Communicate agreed software detailed design and developed software units
-   :id: std_bp_aspice-40__SWE-3-BP5
+   :id:std_bp__aspice-40__SWE-3-BP5
    :status: valid
-   :links: std_bp_aspice-40__iic-13-52
+   :links:std_bp__aspice-40__iic-13-52
 
    Communicate the agreed software detailed design and developed software units to all
    affected parties.

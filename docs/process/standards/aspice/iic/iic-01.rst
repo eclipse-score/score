@@ -16,7 +16,7 @@
 ~~~~~
 
 .. std_req:: 01-03 Software Component
-   :id: std_bp_aspice-40__iic-01-03
+   :id:std_bp__aspice-40__iic-01-03
    :status: valid
 
    Software Component may have the following characteristics:
@@ -28,7 +28,7 @@
 
 
 .. std_req:: 01-50 Integrated Software
-   :id: std_bp_aspice-40__iic-01-50
+   :id:std_bp__aspice-40__iic-01-50
    :status: valid
 
    Integrated Software may have the following characteristics:
@@ -40,7 +40,7 @@
      - all configured software elements
 
 .. std_req:: 01-52 Configuration item list
-   :id: std_bp_aspice-40__iic-01-52
+   :id:std_bp__aspice-40__iic-01-52
    :status: valid
 
    Configuration item list may have the following characteristics:

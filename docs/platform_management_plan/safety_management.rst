@@ -83,13 +83,13 @@ Tailoring of safety activities:
 
 The following  ISO 26262 defined safety work products are not relevant for the SCORE SW platform development:
 
-Because these are in responsibility of the system integrator: :need:`std_wp_iso26262__management_11`,
-:need:`std_wp_iso26262__system_2`, :need:`std_wp_iso26262__system_3`, :need:`std_wp_iso26262__system_4`,
-:need:`std_wp_iso26262__system_5`, :need:`std_wp_iso26262__system_6`, :need:`std_wp_iso26262__system_7`,
-:need:`std_wp_iso26262__system_8`, :need:`std_wp_iso26262__system_9`, :need:`std_wp_iso26262__system_10`,
-:need:`std_wp_iso26262__system_11`
+Because these are in responsibility of the system integrator: :need:`std_wp__iso26262__management_11`,
+:need:`std_wp__iso26262__system_2`, :need:`std_wp__iso26262__system_3`, :need:`std_wp__iso26262__system_4`,
+:need:`std_wp__iso26262__system_5`, :need:`std_wp__iso26262__system_6`, :need:`std_wp__iso26262__system_7`,
+:need:`std_wp__iso26262__system_8`, :need:`std_wp__iso26262__system_9`, :need:`std_wp__iso26262__system_10`,
+:need:`std_wp__iso26262__system_11`
 
-Note that stakeholder requirements (:need:`std_wp_iso26262__system_1`) are in scope of the project,
+Note that stakeholder requirements (:need:`std_wp__iso26262__system_1`) are in scope of the project,
 to be able to cover System and HW related failures which are usually covered by SW (e.g. end to end protection for ECU external communication).
 But those are the "Assumed Technical Safety Requirements" of the SW platform SEooC and do not need to be tested by SEooC supplier.
 I.e. the system testing is out of scope.
@@ -97,22 +97,22 @@ There will be HW/SW integration tests of feature requirements, as required by IS
 These may be reused by the user on his HW platform also to cover his Technical Safety Requirements towards the SW platform.
 But this is the decision of the user.
 
-Because there is no calibration used for the SCORE SW platform components, only configuration: :need:`std_wp_iso26262__software_19`,
-:need:`std_wp_iso26262__software_21`, :need:`std_wp_iso26262__software_24`
+Because there is no calibration used for the SCORE SW platform components, only configuration: :need:`std_wp__iso26262__software_19`,
+:need:`std_wp__iso26262__software_21`, :need:`std_wp__iso26262__software_24`
 
 Because distributed development is not how the project is organized. All contributors are seen as part of the project team.
-When used, OSS components are qualified and external SEooCs are integrated in the project scope: :need:`std_wp_iso26262__support_1`,
-:need:`std_wp_iso26262__support_2`, :need:`std_wp_iso26262__support_3`, :need:`std_wp_iso26262__support_4`, :need:`std_wp_iso26262__support_5`
+When used, OSS components are qualified and external SEooCs are integrated in the project scope: :need:`std_wp__iso26262__support_1`,
+:need:`std_wp__iso26262__support_2`, :need:`std_wp__iso26262__support_3`, :need:`std_wp__iso26262__support_4`, :need:`std_wp__iso26262__support_5`
 
-Because in the SCORE SW platform HW elements are out of scope: :need:`std_wp_iso26262__support_21`, :need:`std_wp_iso26262__support_22`, :need:`std_wp_iso26262__support_23`
+Because in the SCORE SW platform HW elements are out of scope: :need:`std_wp__iso26262__support_21`, :need:`std_wp__iso26262__support_22`, :need:`std_wp__iso26262__support_23`
 
-Because in the SCORE SW platform a proven in use argument will not be applied: :need:`std_wp_iso26262__support_24`, :need:`std_wp_iso26262__support_25`
+Because in the SCORE SW platform a proven in use argument will not be applied: :need:`std_wp__iso26262__support_24`, :need:`std_wp__iso26262__support_25`
 
-Because in the SCORE SW platform interfacing of out of scope of ISO 26262 applications is not planned: :need:`std_wp_iso26262__support_26`
+Because in the SCORE SW platform interfacing of out of scope of ISO 26262 applications is not planned: :need:`std_wp__iso26262__support_26`
 
-Because in the SCORE SW platform integration of safety-related systems not developed according to ISO 26262 is not planned: :need:`std_wp_iso26262__support_27`
+Because in the SCORE SW platform integration of safety-related systems not developed according to ISO 26262 is not planned: :need:`std_wp__iso26262__support_27`
 
-Because in the SCORE SW platform no ASIL decomposition is planned: :need:`std_wp_iso26262__analysis_1`, :need:`std_wp_iso26262__analysis_2`
+Because in the SCORE SW platform no ASIL decomposition is planned: :need:`std_wp__iso26262__analysis_1`, :need:`std_wp__iso26262__analysis_2`
 
 Because in the SCORE SW platform integration of safety-related systems not developed according to ISO 26262 is not planned: :need:`std_wp_iso26262__support_27`
 

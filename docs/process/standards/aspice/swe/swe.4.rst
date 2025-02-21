@@ -40,9 +40,9 @@ Base practices
 ~~~~~~~~~~~~~~
 
 .. std_req:: SWE.4.BP1: Specify software unit verification measures
-   :id: std_bp_aspice-40__SWE-4-BP1
+   :id:std_bp__aspice-40__SWE-4-BP1
    :status: valid
-   :links: std_bp_aspice-40__iic-08-60
+   :links:std_bp__aspice-40__iic-08-60
 
    Specify verification measures for
    each software unit defined in the software detailed design, including
@@ -60,9 +60,9 @@ Base practices
 
 
 .. std_req:: SWE.4.BP2: Select software unit verification measures
-   :id: std_bp_aspice-40__SWE-4-BP2
+   :id:std_bp__aspice-40__SWE-4-BP2
    :status: valid
-   :links: std_bp_aspice-40__iic-08-58
+   :links:std_bp__aspice-40__iic-08-58
 
    Document the selection of
    verification measures considering selection criteria including criteria for regression verification.
@@ -70,9 +70,9 @@ Base practices
    the release scope.
 
 .. std_req:: SWE.4.BP3: Verify software units
-   :id: std_bp_aspice-40__SWE-4-BP3
+   :id:std_bp__aspice-40__SWE-4-BP3
    :status: valid
-   :links: std_bp_aspice-40__iic-03-50; std_bp_aspice-40__iic-15-52
+   :links:std_bp__aspice-40__iic-03-50;std_bp__aspice-40__iic-15-52
 
    Perform software unit verification using the selected
    verification measures. Record the verification results including pass/fail status and
@@ -84,9 +84,9 @@ Base practices
 
 
 .. std_req:: SWE.4.BP4: Ensure consistency and establish bidirectional traceability
-   :id: std_bp_aspice-40__SWE-4-BP4
+   :id:std_bp__aspice-40__SWE-4-BP4
    :status: valid
-   :links: std_bp_aspice-40__iic-13-51
+   :links:std_bp__aspice-40__iic-13-51
 
    Ensure
    consistency and establish bidirectional traceability between verification measures and the
@@ -101,9 +101,9 @@ Base practices
 
 
 .. std_req:: SWE.4.BP5: Summarize and communicate results
-   :id: std_bp_aspice-40__SWE-4-BP5
+   :id:std_bp__aspice-40__SWE-4-BP5
    :status: valid
-   :links: std_bp_aspice-40__iic-13-52
+   :links:std_bp__aspice-40__iic-13-52
 
    Summarize the results of software unit
    verification and communicate them to all affected parties.

@@ -33,9 +33,9 @@ Base practices
 ~~~~~~~~~~~~~~
 
 .. std_req:: SUP.1.BP1: Ensure independence of quality assurance
-   :id: std_bp_aspice-40__SUP-1-BP1
+   :id:std_bp__aspice-40__SUP-1-BP1
    :status: valid
-   :links: std_bp_aspice-40__iic-16-50
+   :links:std_bp__aspice-40__iic-16-50
 
    Ensure that quality assurance is performed independently and objectively without conflicts of interest.
 
@@ -45,9 +45,9 @@ Base practices
       structure as well as responsibility for processes that are subject to quality assurance (no self-monitoring).
 
 .. std_req:: SUP.1.BP2: Define criteria for quality assurance
-   :id: std_bp_aspice-40__SUP-1-BP2
+   :id:std_bp__aspice-40__SUP-1-BP2
    :status: valid
-   :links: std_bp_aspice-40__iic-18-07
+   :links:std_bp__aspice-40__iic-18-07
 
    Define quality criteria for work products as well as for process tasks and their performance.
 
@@ -56,9 +56,9 @@ Base practices
       Quality criteria may consider internal and external inputs such as customer requirements, standards, milestones, etc.
 
 .. std_req:: SUP.1.BP3: Assure quality of work products
-   :id: std_bp_aspice-40__SUP-1-BP3
+   :id:std_bp__aspice-40__SUP-1-BP3
    :status: valid
-   :links: std_bp_aspice-40__iic-18-07, std_bp_aspice-40__iic-13-52, std_bp_aspice-40__iic-13-18, std_bp_aspice-40__iic-13-19, std_bp_aspice-40__iic-14-02
+   :links:std_bp__aspice-40__iic-18-07,std_bp__aspice-40__iic-13-52,std_bp__aspice-40__iic-13-18,std_bp__aspice-40__iic-13-19,std_bp__aspice-40__iic-14-02
 
    Identify work products subject to quality assurance according to the quality criteria.
    Perform appropriate activities to evaluate the work products against the defined quality criteria and document the results.
@@ -69,9 +69,9 @@ Base practices
       lessons learned that improve the work products for further use.
 
 .. std_req:: SUP.1.BP4: Assure quality of process activities
-   :id: std_bp_aspice-40__SUP-1-BP4
+   :id:std_bp__aspice-40__SUP-1-BP4
    :status: valid
-   :links: std_bp_aspice-40__iic-18-07, std_bp_aspice-40__iic-13-52, std_bp_aspice-40__iic-13-18, std_bp_aspice-40__iic-13-19, std_bp_aspice-40__iic-14-02
+   :links:std_bp__aspice-40__iic-18-07,std_bp__aspice-40__iic-13-52,std_bp__aspice-40__iic-13-18,std_bp__aspice-40__iic-13-19,std_bp__aspice-40__iic-14-02
 
    Identify processes subject to quality assurance according to the quality criteria.
    Perform appropriate activities to evaluate the processes against their defined quality criteria and
@@ -83,16 +83,16 @@ Base practices
       the adherence to defined processes, and consideration of lessons learned.
 
 .. std_req:: SUP.1.BP5: Summarize and communicate quality assurance activities and results
-   :id: std_bp_aspice-40__SUP-1-BP5
+   :id:std_bp__aspice-40__SUP-1-BP5
    :status: valid
-   :links: std_bp_aspice-40__iic-16-50, std_bp_aspice-40__iic-18-52, std_bp_aspice-40__iic-18-07, std_bp_aspice-40__iic-13-52, std_bp_aspice-40__iic-13-18, std_bp_aspice-40__iic-13-19, std_bp_aspice-40__iic-14-02
+   :links:std_bp__aspice-40__iic-16-50,std_bp__aspice-40__iic-18-52,std_bp__aspice-40__iic-18-07,std_bp__aspice-40__iic-13-52,std_bp__aspice-40__iic-13-18,std_bp__aspice-40__iic-13-19,std_bp__aspice-40__iic-14-02
 
    Regularly report performance, non-conformances, and trends of quality assurance activities to all affected parties.
 
 .. std_req:: SUP.1.BP6: Ensure resolution of non-conformances
-   :id: std_bp_aspice-40__SUP-1-BP6
+   :id:std_bp__aspice-40__SUP-1-BP6
    :status: valid
-   :links: std_bp_aspice-40__iic-18-52, std_bp_aspice-40__iic-18-07, std_bp_aspice-40__iic-13-52, std_bp_aspice-40__iic-13-18, std_bp_aspice-40__iic-13-19, std_bp_aspice-40__iic-14-02
+   :links:std_bp__aspice-40__iic-18-52,std_bp__aspice-40__iic-18-07,std_bp__aspice-40__iic-13-52,std_bp__aspice-40__iic-13-18,std_bp__aspice-40__iic-13-19,std_bp__aspice-40__iic-14-02
 
    Analyze, track, correct, resolve, and further prevent non-conformances found in quality assurance activities.
 
@@ -105,9 +105,9 @@ Base practices
       Non-conformances detected in the process definition or implementation may be entered into a process improvement process (PIM.3).
 
 .. std_req:: SUP.1.BP7: Escalate non-conformances
-   :id: std_bp_aspice-40__SUP-1-BP7
+   :id:std_bp__aspice-40__SUP-1-BP7
    :status: valid
-   :links: std_bp_aspice-40__iic-16-50, std_bp_aspice-40__iic-18-52, std_bp_aspice-40__iic-13-52, std_bp_aspice-40__iic-14-02
+   :links:std_bp__aspice-40__iic-16-50,std_bp__aspice-40__iic-18-52,std_bp__aspice-40__iic-13-52,std_bp__aspice-40__iic-14-02
 
    Escalate relevant non-conformances to appropriate levels of management and other relevant stakeholders to facilitate their resolution.
 

@@ -16,7 +16,7 @@
 ~~~~~
 
 .. std_req:: 02-01 Commitment / agreement
-   :id: std_bp_aspice-40__iic-02-01
+   :id:std_bp__aspice-40__iic-02-01
    :status: valid
 
    Commitment / agreement may have the following characteristics:

@@ -18,7 +18,7 @@ Feature Safety Work Products Template
 .. gd_temp:: Feature Safety Work Products Template
    :id: gd_temp__feature_safety_wp
    :status: valid
-   :complies: std_req_iso26262__management_35, std_req_iso26262__management_36, std_req_iso26262__management_37, std_req_iso26262__management_38, std_req_iso26262__management_39
+   :complies: std_req__iso26262__management_35, std_req__iso26262__management_36, std_req__iso26262__management_37, std_req__iso26262__management_38, std_req__iso26262__management_39
 
 
  .. list-table:: Feature <feature> Workproducts
@@ -31,56 +31,56 @@ Feature Safety Work Products Template
           - Link to WP
           - WP status
 
-        * - :need:`WP_FEAT_REQUEST`
+        * - :need:`wp__FEAT_REQUEST`
           - :ref:`feature_request_template`
           - <automated>
           - <link to issue>
           - <link to WP>
           - <automated>
 
-        * - :need:`WP_FEATURE_REQ`
+        * - :need:`wp__FEATURE_REQ`
           - <link to process>
           - <automated>
           - <link to issue>
           - <Link to WP>
           - <automated>
 
-        * - :need:`WP_FEATURE_AOU`
+        * - :need:`wp__FEATURE_AOU`
           - <link to process>
           - <automated>
           - <link to issue>
           - <link to WP>
           - <automated>
 
-        * - :need:`WP_FEATURE_ARCHITECTURE`
+        * - :need:`wp__FEATURE_ARCHITECTURE`
           - <link to process>
           - <automated>
           - <link to issue>
           - <Link to WP>
           - <automated>
 
-        * - :need:`WP_FEATURE_SAFETY_ANALYSES`
+        * - :need:`wp__FEATURE_SAFETY_ANALYSES`
           - <link to process>
           - <automated>
           - <link to issue>
           - <Link to WP>
           - <automated>
 
-        * - :need:`WP_SW_REQ_INSPECT`
+        * - :need:`wp__SW_REQ_INSPECT`
           - <link to process>
           - <automated>
           - <link to issue>
           - Checklist used in Pull Request Review
           - <automated>
 
-        * - :need:`WP_SW_ARCH_VERIFICATION`
+        * - :need:`wp__SW_ARCH_VERIFICATION`
           - <link to process>
           - <automated>
           - <link to issue>
           - <Link to WP>
           - <automated>
 
-        * - :need:`WP_FEATURE_INTEGRATION_TEST`
+        * - :need:`wp__FEATURE_INTEGRATION_TEST`
           - <link to process>
           - <automated>
           - <link to issue>

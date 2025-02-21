@@ -16,7 +16,7 @@
 ~~~~~
 
 .. std_req:: 12-03 Reuse candidate
-   :id: std_bp_aspice-40__iic-12-03
+   :id:std_bp__aspice-40__iic-12-03
    :status: valid
 
    Reuse candidate may have the following characteristics:

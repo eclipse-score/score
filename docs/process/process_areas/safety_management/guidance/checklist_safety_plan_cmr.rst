@@ -18,7 +18,7 @@ Safety Plan Confirmation Review Checklist
 .. gd_chklst:: Safety Plan Confirmation Review Checklist
    :id: gd_chklst__safety_plan
    :status: valid
-   :complies: std_req_iso26262__management_45, std_req_iso26262__management_46, std_req_iso26262__management_47, std_req_iso26262__management_48, std_req_iso26262__management_49, std_req_iso26262__management_50, std_req_iso26262__management_51, std_req_iso26262__management_52
+   :complies: std_req__iso26262__management_45, std_req__iso26262__management_46, std_req__iso26262__management_47, std_req__iso26262__management_48, std_req__iso26262__management_49, std_req__iso26262__management_50, std_req__iso26262__management_51, std_req__iso26262__management_52
 
    **1. Purpose**
 

@@ -20,12 +20,12 @@ Safety Management Guideline
 .. gd_guidl:: Safety plan definitions
    :id: gd_guidl__saf_plan_definitions
    :status: valid
-   :complies: std_req_iso26262__management_35, std_req_iso26262__management_36, std_req_iso26262__management_37, std_req_iso26262__management_38, std_req_iso26262__management_39
+   :complies: std_req__iso26262__management_35, std_req__iso26262__management_36, std_req__iso26262__management_37, std_req__iso26262__management_38, std_req__iso26262__management_39
 
    | **Overall safety management:**
    | Safety culture:
    | Safety culture is planned to grow in the SW platform. This shall be fostered by doing a lessons learned after each feature development completion, using the ISO 26262-2 Table B.1 as a questionnaire.
-   | This lessons learned is the main input for process improvement managed by :need:`WP_PROCESS_IMPR_REPORT`
+   | This lessons learned is the main input for process improvement managed by :need:`wp__PROCESS_IMPR_REPORT`
    | As starting point for safety culture we define a Committer selection process to already have professionals with safety experience in the teams.
    | Additionally the SW platform's processes are defined with experience of several companies alrady performing successful safe SW development. This also improves independence of reviews for the process definitions.
    |
@@ -47,7 +47,7 @@ Safety Management Guideline
    | But also during development of change requests to existing features, bug reporting by the Open Source community or integration of existing SW components into new features may lead to the discovery of new safety anomalies.
    | Safety anomalies can also be deviations from the development process with impact on safety.
    | If these are known at the time of creation of a release they will be part of the :need:`wp__module_safety_case` or :need:`wp__platform_safety_case` for the SEooC.
-   | Safety anomalies relevant for already delivered releases will be identified as such and communicated (as defined in Problem Resolution part of :need:`WP_PLATFORM_MGMT`) via the :need:`WP_ISSUE_TRACK_SYSTEM` (which is also Open Source).
+   | Safety anomalies relevant for already delivered releases will be identified as such and communicated (as defined in Problem Resolution part of :need:`wp__PLATFORM_MGMT`) via the :need:`wp__ISSUE_TRACK_SYSTEM` (which is also Open Source).
    |
    | **Tailoring safety activities:**
    | Main tailoring driver is that the SW platform is pure SW development and is provided as "SEooC" - this explains mainly the generic, platform wide tailoring.
@@ -56,7 +56,7 @@ Safety Management Guideline
    |
    | **Planning safety activities:**
    | In the safety plan the nomination of the safety manager and the project manager is documented.
-   | The planning of safety activities is done using issues in the :need:`WP_ISSUE_TRACK_SYSTEM` as specified in the :ref:`project_management_plan`
+   | The planning of safety activities is done using issues in the :need:`wp__ISSUE_TRACK_SYSTEM` as specified in the :ref:`project_management_plan`
    | It contains for each issue
    | * objective - as part of the issue description
    | * dependencies on other activities or information - by links to the respective issues
@@ -71,27 +71,27 @@ Safety Management Guideline
    | A template exists to guide this: :need:`GD_TEMP__module_safety_plan`.
    |
    | **Planning supporting processes:**
-   | Supporting processes (Requirements Management, Configuration Managment, Change Management, Documentation Management, Tool Management) are planned within the :need:`WP_PLATFORM_MGMT`
+   | Supporting processes (Requirements Management, Configuration Managment, Change Management, Documentation Management, Tool Management) are planned within the :need:`wp__PLATFORM_MGMT`
    |
    | **Planning integration and verification:**
-   | Integration on the target hardware is not done in the scope of the SW platform project, but SW/SW integration up to the feature level is performed and its test results are part of the :need:`WP_PLATFORM_SW_VERIFICATION_REPORT`.
+   | Integration on the target hardware is not done in the scope of the SW platform project, but SW/SW integration up to the feature level is performed and its test results are part of the :need:`wp__PLATFORM_SW_VERIFICATION_REPORT`.
    | The integration on the target hardware done by the distributor or OEM is supported by delivering a set of HW/SW integration tests which were already run successfully on a reference HW platform.
    | This is planned by the respective work products:
-   | * :need:`WP_FEATURE_INTEGRATION_TEST`
-   | * :need:`WP_PLATFORM_TEST`
-   | Verification planning is documented in :need:`WP_VERIFICATION_PLAN`
+   | * :need:`wp__FEATURE_INTEGRATION_TEST`
+   | * :need:`wp__PLATFORM_TEST`
+   | Verification planning is documented in :need:`wp__VERIFICATION_PLAN`
    |
    | **Scheduling of confirmation reviews, audit and assessment:**
    | Scheduling is done in the same way as for all work products definition by issues. The respective work products are :need:`wp__cmr_reports` and  :need:`wp__audit_report`
    |
    | **Planning of dependent failures and safety analyses:**
    | In cases where the components consist of sub-components there will be more than one architecture level. DFA and Safety analysis will then be done on these multiple levels. See the respective work products:
-   | * feature level: :need:`WP_FEATURE_SAFETY_ANALYSES` and :need:`WP_FEATURE_DFA`
-   | * component level: :need:`WP_SW_COMPONENT_SAFETY_ANALYSES` and :need:`WP_SW_COMPONENT_DFA`
+   | * feature level: :need:`wp__FEATURE_SAFETY_ANALYSES` and :need:`wp__FEATURE_DFA`
+   | * component level: :need:`wp__SW_COMPONENT_SAFETY_ANALYSES` and :need:`wp__SW_COMPONENT_DFA`
    |
    | **Provision of the confidence in the use of software tools:**
-   | Tool Management planning is part of the :need:`WP_PLATFORM_MGMT`. The respective work product to be planned as an issue of the generic safety plan is the :need:`WP_TOOL_EVAL`, which contains tool evaluation and if applicable qualification of the SW platform toolchain.
-   | Components developed in C++ and Rust will have different toolchains. Both will be qualified once for the SW platform. Tool requirements will be documented in :need:`WP_TOOL_REQ`
+   | Tool Management planning is part of the :need:`wp__PLATFORM_MGMT`. The respective work product to be planned as an issue of the generic safety plan is the :need:`wp__TOOL_EVAL`, which contains tool evaluation and if applicable qualification of the SW platform toolchain.
+   | Components developed in C++ and Rust will have different toolchains. Both will be qualified once for the SW platform. Tool requirements will be documented in :need:`wp__TOOL_REQ`
    |
    | **(OSS) Component qualification planning:**
    | Based on the component classification as described in :need:`gd_guidl__component_classification`,
@@ -101,7 +101,7 @@ Safety Management Guideline
 .. gd_guidl:: Safety manual generation
    :id: gd_guidl__saf_man
    :status: valid
-   :complies: std_req_iso26262__system_1, std_req_iso26262__system_2, std_req_iso26262__system_3, std_req_iso26262__system_4, std_req_iso26262__system_5, std_req_iso26262__system_6, std_req_iso26262__software_4, std_req_iso26262__software_5, std_req_iso26262__software_8, std_req_iso26262__support_65
+   :complies: std_req__iso26262__system_1, std_req__iso26262__system_2, std_req__iso26262__system_3, std_req__iso26262__system_4, std_req__iso26262__system_5, std_req__iso26262__system_6, std_req__iso26262__software_4, std_req__iso26262__software_5, std_req__iso26262__software_8, std_req__iso26262__support_65
 
    | The safety manual collects several workproducts and adds some additional content mainly to instruct the user of
    | a SEooC (in this project on platform and module level) to safely use it in the context of the user's own safety
@@ -112,6 +112,6 @@ Safety Management Guideline
 .. gd_guidl:: Safety case automated generation
    :id: gd_guidl__saf_case
    :status: valid
-   :complies: std_req_iso26262__management_43, std_req_iso26262__management_44
+   :complies: std_req__iso26262__management_43, std_req__iso26262__management_44
 
    | The safety case shall be generated progressively and automatically compiling the work products.

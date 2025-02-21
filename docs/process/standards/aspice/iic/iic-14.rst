@@ -16,7 +16,7 @@
 ~~~~~
 
 .. std_req:: 14-01 Change history
-   :id: std_bp_aspice-40__iic-14-01
+   :id:std_bp__aspice-40__iic-14-01
    :status: valid
 
    Change history may have the following characteristics:
@@ -29,7 +29,7 @@
        - change control record information
 
 .. std_req:: 14-02 Corrective action
-   :id: std_bp_aspice-40__iic-14-02
+   :id:std_bp__aspice-40__iic-14-02
    :status: valid
 
    Corrective action may have the following characteristics:
@@ -42,7 +42,7 @@
    - Indicates follow up audit actions
 
 .. std_req:: 14-10 Work package
-   :id: std_bp_aspice-40__iic-14-10
+   :id:std_bp__aspice-40__iic-14-10
    :status: valid
 
    Work package may have the following characteristics:
@@ -60,7 +60,7 @@
       The work package descriptions may be integrated into the/be a part of a schedule, see 08-56
 
 .. std_req:: 14-50 Stakeholder groups list
-   :id: std_bp_aspice-40__iic-14-50
+   :id:std_bp__aspice-40__iic-14-50
    :status: valid
 
    Stakeholder groups list may have the following characteristics:
@@ -72,7 +72,7 @@
    - information needs of each stakeholder group
 
 .. std_req:: 14-53 Role Assignment
-   :id: std_bp_aspice-40__iic-14-53
+   :id:std_bp__aspice-40__iic-14-53
    :status: valid
 
    Role Assignment may have the following characteristics:
@@ -83,7 +83,7 @@
        - required experience and trainings based on identified competencies / skills gap
 
 .. std_req:: 14-55 Software Bill of materials
-   :id: std_bp_aspice-40__iic-14-55
+   :id:std_bp__aspice-40__iic-14-55
    :status: valid
 
    Software Bill of materials may have the following characteristics:

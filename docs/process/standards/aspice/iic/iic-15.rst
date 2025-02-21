@@ -16,7 +16,7 @@
 ~~~~~
 
 .. std_req:: 15-06 Project status
-   :id: std_bp_aspice-40__iic-15-06
+   :id:std_bp__aspice-40__iic-15-06
    :status: valid
 
    Project status may have the following characteristics:
@@ -30,7 +30,7 @@
    - contingency actions
 
 .. std_req:: 15-07 Reuse analysis evidence
-   :id: std_bp_aspice-40__iic-15-07
+   :id:std_bp__aspice-40__iic-15-07
    :status: valid
 
    Reuse analysis evidence may have the following characteristics:
@@ -42,7 +42,7 @@
    - Identification of known defects
 
 .. std_req:: 15-09 Risk status
-   :id: std_bp_aspice-40__iic-15-09
+   :id:std_bp__aspice-40__iic-15-09
    :status: valid
 
    Risk status may have the following characteristics:
@@ -55,7 +55,7 @@
        - risk treatment activities in progress
 
 .. std_req:: 15-12 Problem status
-   :id: std_bp_aspice-40__iic-15-12
+   :id:std_bp__aspice-40__iic-15-12
    :status: valid
 
    Problem status may have the following characteristics:
@@ -66,7 +66,7 @@
        - by problem resolution stage
 
 .. std_req:: 15-13 Assessment/audit report
-   :id: std_bp_aspice-40__iic-15-13
+   :id:std_bp__aspice-40__iic-15-13
    :status: valid
 
    Assessment/audit report may have the following characteristics:
@@ -88,7 +88,7 @@
    -- identifies the gaps, potentials, weaknesses or non-conformances that require corrective actions
 
 .. std_req:: 15-16 Improvement opportunity
-   :id: std_bp_aspice-40__iic-15-16
+   :id:std_bp__aspice-40__iic-15-16
    :status: valid
 
    Improvement opportunity may have the following characteristics:
@@ -100,7 +100,7 @@
    - Identifies the penalty for not making the improvement
 
 .. std_req:: 15-51 Analysis Results
-   :id: std_bp_aspice-40__iic-15-51
+   :id:std_bp__aspice-40__iic-15-51
    :status: valid
 
    Analysis Results may have the following characteristics:
@@ -128,7 +128,7 @@
      - validity
 
 .. std_req:: 15-52 Verification Results
-   :id: std_bp_aspice-40__iic-15-52
+   :id:std_bp__aspice-40__iic-15-52
    :status: valid
 
    Verification Results may have the following characteristics:
@@ -141,7 +141,7 @@
    - Abstraction or summary of verification results
 
 .. std_req:: 15-54 Tailoring documentation
-   :id: std_bp_aspice-40__iic-15-54
+   :id:std_bp__aspice-40__iic-15-54
    :status: valid
 
    Tailoring documentation results may have the following characteristics:
@@ -151,7 +151,7 @@
      to the defined criteria
 
 .. std_req:: 15-55 Problem analysis evidence
-   :id: std_bp_aspice-40__iic-15-55
+   :id:std_bp__aspice-40__iic-15-55
    :status: valid
 
    Problem analysis evidence may have the following characteristics:
@@ -166,7 +166,7 @@
        - Potential solution (if known)
 
 .. std_req:: 15-56 Configuration status
-   :id: std_bp_aspice-40__iic-15-56
+   :id:std_bp__aspice-40__iic-15-56
    :status: valid
 
    Configuration status may have the following characteristics:
@@ -176,7 +176,7 @@
    - Identification of baselines made
 
 .. std_req:: 15-57 Quantitative process analysis results
-   :id: std_bp_aspice-40__iic-15-57
+   :id:std_bp__aspice-40__iic-15-57
    :status: valid
 
    Quantitative process analysis results may have the following characteristics:
@@ -185,7 +185,7 @@
      from the established quantitative control limits (special causes of variations)
 
 .. std_req:: 15-58 Common cause of variation analysis results
-   :id: std_bp_aspice-40__iic-15-58
+   :id:std_bp__aspice-40__iic-15-58
    :status: valid
 
    Common cause of variation analysis results may have the following characteristics:

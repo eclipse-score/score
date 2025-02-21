@@ -16,7 +16,7 @@
 ~~~~~
 
 .. std_req:: 16-00 Repository
-   :id: std_bp_aspice-40__iic-16-00
+   :id:std_bp__aspice-40__iic-16-00
    :status: valid
 
    Repository may have the following characteristics:
@@ -28,7 +28,7 @@
    Package managers allow automatically installing and updating repositories, sometimes called "packages".
 
 .. std_req:: 16-03 Configuration management system
-   :id: std_bp_aspice-40__iic-16-03
+   :id:std_bp__aspice-40__iic-16-03
    :status: valid
 
    Configuration management system may have the following characteristics:
@@ -40,7 +40,7 @@
    - Has to cover all relevant tools
 
 .. std_req:: 16-06 Process repository
-   :id: std_bp_aspice-40__iic-16-06
+   :id:std_bp__aspice-40__iic-16-06
    :status: valid
 
    Process repository may have the following characteristics:
@@ -49,7 +49,7 @@
    - Supports multiple presentations of process assets
 
 .. std_req:: 16-50 Organizational structure
-   :id: std_bp_aspice-40__iic-16-50
+   :id:std_bp__aspice-40__iic-16-50
    :status: valid
 
    Organizational structure may have the following characteristics:

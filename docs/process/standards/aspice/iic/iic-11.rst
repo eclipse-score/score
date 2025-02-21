@@ -16,7 +16,7 @@
 ~~~~~
 
 .. std_req:: 11-03 Release note
-   :id: std_bp_aspice-40__iic-11-03
+   :id:std_bp__aspice-40__iic-11-03
    :status: valid
 
    Release note may have the following characteristics:
@@ -44,7 +44,7 @@
      new feature identification and a list of defect resolutions, known defects and workarounds
 
 .. std_req:: 11-04 Product release package
-   :id: std_bp_aspice-40__iic-11-04
+   :id:std_bp__aspice-40__iic-11-04
    :status: valid
 
    Product release package may have the following characteristics:
@@ -59,7 +59,7 @@
        - release letter
 
 .. std_req:: 11-05 Software Unit
-   :id: std_bp_aspice-40__iic-11-05
+   :id:std_bp__aspice-40__iic-11-05
    :status: valid
 
    Software Unit may have the following characteristics:

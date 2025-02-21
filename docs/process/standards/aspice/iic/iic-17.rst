@@ -16,7 +16,7 @@
 ~~~~~
 
 .. std_req:: 17-00 Requirement
-   :id: std_bp_aspice-40__iic-17-00
+   :id:std_bp__aspice-40__iic-17-00
    :status: valid
 
    Requirements may have the following characteristics:
@@ -66,7 +66,7 @@
        concept
 
 .. std_req:: 17-05 Requirements for work products
-   :id: std_bp_aspice-40__iic-17-05
+   :id:std_bp__aspice-40__iic-17-05
    :status: valid
 
    Requirements for work products may have the following characteristics:
@@ -84,7 +84,7 @@
        - May be specific for certain types of documents
 
 .. std_req:: 17-54 Requirement Attribute
-   :id: std_bp_aspice-40__iic-17-54
+   :id:std_bp__aspice-40__iic-17-54
    :status: valid
 
    Requirement Attributes may have the following characteristics:
@@ -99,7 +99,7 @@
       requirements.
 
 .. std_req:: 17-55 Resource needs
-   :id: std_bp_aspice-40__iic-17-55
+   :id:std_bp__aspice-40__iic-17-55
    :status: valid
 
    Resource needs may have the following characteristics:

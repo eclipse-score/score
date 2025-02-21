@@ -32,9 +32,9 @@ Base practices
 ~~~~~~~~~~~~~~
 
 .. std_req:: PIM.3.BP1: Establish commitment
-   :id: std_bp_aspice-40__PIM-3-BP1
+   :id:std_bp__aspice-40__PIM-3-BP1
    :status: valid
-   :links: std_bp_aspice-40__iic-02-01
+   :links:std_bp__aspice-40__iic-02-01
 
    Establish commitment to support the process improvement staff, to provide resources and further enablers to sustain improvement actions.
 
@@ -51,9 +51,9 @@ Base practices
       Enablers for improvement measures may include trainings, methods, infrastructure, etc.
 
 .. std_req:: PIM.3.BP2: Identify improvement measures
-   :id: std_bp_aspice-40__PIM-3-BP2
+   :id:std_bp__aspice-40__PIM-3-BP2
    :status: valid
-   :links: std_bp_aspice-40__iic-13-16, std_bp_aspice-40__iic-15-51, std_bp_aspice-40__iic-15-13, std_bp_aspice-40__iic-15-16
+   :links:std_bp__aspice-40__iic-13-16,std_bp__aspice-40__iic-15-51,std_bp__aspice-40__iic-15-13,std_bp__aspice-40__iic-15-16
 
 Identify issues from the analysis of process performance and derive improvement opportunities with justified reasons for change.
 
@@ -71,9 +71,9 @@ Identify issues from the analysis of process performance and derive improvement 
       Sources for identification of issues may include: process assessment results, audits, customer's satisfaction reports, measurements of organizational effectiveness/efficiency, costs of quality.
 
  .. std_req:: PIM.3.BP3: Establish process improvement goals
-   :id: std_bp_aspice-40__PIM-3-BP3
+   :id:std_bp__aspice-40__PIM-3-BP3
    :status: valid
-   :links: std_bp_aspice-40__iic-06-04, std_bp_aspice-40__iic-10-00, std_bp_aspice-40__iic-15-51, std_bp_aspice-40__iic-15-13, std_bp_aspice-40__iic-16-06
+   :links:std_bp__aspice-40__iic-06-04,std_bp__aspice-40__iic-10-00,std_bp__aspice-40__iic-15-51,std_bp__aspice-40__iic-15-13,std_bp__aspice-40__iic-16-06
 
    Analyze the current status of the existing processes and establish improvement goals.
 
@@ -82,16 +82,16 @@ Identify issues from the analysis of process performance and derive improvement 
       The current status of processes may be determined by process assessment.
 
  .. std_req:: PIM.3.BP4: Prioritize improvements
-   :id: std_bp_aspice-40__PIM-3-BP4
+   :id:std_bp__aspice-40__PIM-3-BP4
    :status: valid
-   :links: std_bp_aspice-40__iic-06-04, std_bp_aspice-40__iic-10-00, std_bp_aspice-40__iic-15-51, std_bp_aspice-40__iic-15-13, std_bp_aspice-40__iic-16-06
+   :links:std_bp__aspice-40__iic-06-04,std_bp__aspice-40__iic-10-00,std_bp__aspice-40__iic-15-51,std_bp__aspice-40__iic-15-13,std_bp__aspice-40__iic-16-06
 
    Prioritize the improvement goals and improvement measures.
 
  .. std_req:: PIM.3.BP5: Define process improvement measures
-   :id: std_bp_aspice-40__PIM-3-BP5
+   :id:std_bp__aspice-40__PIM-3-BP5
    :status: valid
-   :links: std_bp_aspice-40__iic-06-04, std_bp_aspice-40__iic-10-00, std_bp_aspice-40__iic-15-51, std_bp_aspice-40__iic-15-13, std_bp_aspice-40__iic-16-06
+   :links:std_bp__aspice-40__iic-06-04,std_bp__aspice-40__iic-10-00,std_bp__aspice-40__iic-15-51,std_bp__aspice-40__iic-15-13,std_bp__aspice-40__iic-16-06
 
    Process improvement measures are defined.
 
@@ -100,9 +100,9 @@ Identify issues from the analysis of process performance and derive improvement 
       Improvements may be documented in incremental steps.
 
  .. std_req:: PIM.3.BP6: Implement process improvement measures
-   :id: std_bp_aspice-40__PIM-3-BP6
+   :id:std_bp__aspice-40__PIM-3-BP6
    :status: valid
-   :links: std_bp_aspice-40__iic-06-04, std_bp_aspice-40__iic-10-00, std_bp_aspice-40__iic-15-51, std_bp_aspice-40__iic-15-13, std_bp_aspice-40__iic-16-06
+   :links:std_bp__aspice-40__iic-06-04,std_bp__aspice-40__iic-10-00,std_bp__aspice-40__iic-15-51,std_bp__aspice-40__iic-15-13,std_bp__aspice-40__iic-16-06
 
    Implement and apply the improvements to the processes. Update the Process documentation and train people as needed.
 
@@ -116,16 +116,16 @@ Identify issues from the analysis of process performance and derive improvement 
       Improvements may be piloted before roll out within the organization.
 
  .. std_req:: PIM.3.BP7: Confirm process improvement
-   :id: std_bp_aspice-40__PIM-3-BP7
+   :id:std_bp__aspice-40__PIM-3-BP7
    :status: valid
-   :links: std_bp_aspice-40__iic-07-04, std_bp_aspice-40__iic-15-51, std_bp_aspice-40__iic-15-13
+   :links:std_bp__aspice-40__iic-07-04,std_bp__aspice-40__iic-15-51,std_bp__aspice-40__iic-15-13
 
    The effects of process implementation are monitored and measured, and the achievement of defined improvement goals is confirmed.
 
  .. std_req:: PIM.3.BP8: Communicate results of improvement
-   :id: std_bp_aspice-40__PIM-3-BP8
+   :id:std_bp__aspice-40__PIM-3-BP8
    :status: valid
-   :links: std_bp_aspice-40__iic-06-04, std_bp_aspice-40__iic-07-04, std_bp_aspice-40__iic-13-52
+   :links:std_bp__aspice-40__iic-06-04,std_bp__aspice-40__iic-07-04,std_bp__aspice-40__iic-13-52
 
    Knowledge gained from the improvements and progress of the improvement implementation is communicated to affected parties.
 

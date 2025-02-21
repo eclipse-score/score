@@ -96,9 +96,9 @@ Generic practices
 ~~~~~~~~~~~~~~~~~
 
 .. std_req:: GP2.1.1: Identify the objectives and define a strategy for the performance of the process.
-   :id: std_bp_aspice-40__gp-211
+   :id:std_bp__aspice-40__gp-211
    :status: valid
-   :links: std_bp_aspice-40__iic-19-01
+   :links:std_bp__aspice-40__iic-19-01
 
    The scope of the process activities including the management of process performance and the management of work products are determined.
    Corresponding results to be achieved are determined.
@@ -123,9 +123,9 @@ Generic practices
       e.g, as part of a common project handbook or in a joint test strategy.
 
 .. std_req:: GP2.1.2: Plan the performance of the process.
-   :id: std_bp_aspice-40__gp-212
+   :id:std_bp__aspice-40__gp-212
    :status: valid
-   :links: std_bp_aspice-40__iic-08-56, std_bp_aspice-40__iic-14-10
+   :links:std_bp__aspice-40__iic-08-56,std_bp__aspice-40__iic-14-10
 
    The planning for the performance of the process is established according to the defined objectives, criteria, and strategy.
    Process activities and work packages are defined.
@@ -136,9 +136,9 @@ Generic practices
       Schedule and milestones are defined.
 
 .. std_req:: GP2.1.3: Determine resource needs.
-   :id: std_bp_aspice-40__gp-213
+   :id:std_bp__aspice-40__gp-213
    :status: valid
-   :links: std_bp_aspice-40__iic-17-55
+   :links:std_bp__aspice-40__iic-17-55
 
    The required amount of human resources, and experience, knowledge and skill needs for the for process performance are determined based on the planning.
    The needs for physical and material resources are determined based on the planning.
@@ -154,9 +154,9 @@ Generic practices
       The definition of responsibilities and authorities does not necessarily require formal role descriptions.
 
 .. std_req:: GP2.1.4: Identify and make available resources.
-   :id: std_bp_aspice-40__gp-214
+   :id:std_bp__aspice-40__gp-214
    :status: valid
-   :links: std_bp_aspice-40__iic-08-61
+   :links:std_bp__aspice-40__iic-08-61
 
    The individuals performing and managing the process are identified and allocated according to the determined needs.
    The individuals performing and managing the process are being qualified to execute their responsibilities.
@@ -168,18 +168,18 @@ Generic practices
    The other resources, necessary for performing the process are identified, made available, allocated and used according to the determined needs.
 
 .. std_req:: GP2.1.5: Monitor and adjust the performance of the process.
-   :id: std_bp_aspice-40__gp-215
+   :id:std_bp__aspice-40__gp-215
    :status: valid
-   :links: std_bp_aspice-40__iic-08-56, std_bp_aspice-40__iic-13-14
+   :links:std_bp__aspice-40__iic-08-56,std_bp__aspice-40__iic-13-14
 
    Process performance is monitored to identify deviations from the planning.
    Appropriate actions in case of deviations from the planning are taken.
    The planning is adjusted as necessary.
 
 .. std_req:: GP2.1.6: Manage the interfaces between involved parties.
-   :id: std_bp_aspice-40__gp-216
+   :id:std_bp__aspice-40__gp-216
    :status: valid
-   :links: std_bp_aspice-40__iic-08-62, std_bp_aspice-40__iic-13-52
+   :links:std_bp__aspice-40__iic-08-62,std_bp__aspice-40__iic-13-52
 
    The individuals and groups including required external parties involved in the process performance are determined.
    Responsibilities are assigned to the relevant individuals or parties.
@@ -206,9 +206,9 @@ Generic practices
 ~~~~~~~~~~~~~~~~~
 
 .. std_req:: GP2.2.1: Define the requirements for the work products.
-   :id: std_bp_aspice-40__gp-221
+   :id:std_bp__aspice-40__gp-221
    :status: valid
-   :links: std_bp_aspice-40__iic-17-05, std_bp_aspice-40__iic-18-07, std_bp_aspice-40__iic-18-59
+   :links:std_bp__aspice-40__iic-17-05,std_bp__aspice-40__iic-18-07,std_bp__aspice-40__iic-18-59
 
    The requirements for the content and structure of the work products to be produced are defined.
    Quality criteria for the work products are identified.
@@ -226,9 +226,9 @@ Generic practices
       is required, thus then there would be no need to define the corresponding criteria.
 
 .. std_req:: GP2.2.2: Define the requirements for storage and control of the work products.
-   :id: std_bp_aspice-40__gp-222
+   :id:std_bp__aspice-40__gp-222
    :status: valid
-   :links: std_bp_aspice-40__iic-17-05
+   :links:std_bp__aspice-40__iic-17-05
 
    Requirements for the storage and control of the work products are defined, including their identification and distribution.
 
@@ -245,9 +245,9 @@ Generic practices
       Where status of a work product is required in base practices, this should be managed via a defined status model.
 
 .. std_req:: GP2.2.3: Identify, store and control the work products.
-   :id: std_bp_aspice-40__gp-223
+   :id:std_bp__aspice-40__gp-223
    :status: valid
-   :links: std_bp_aspice-40__iic-13-08, std_bp_aspice-40__iic-16-00
+   :links:std_bp__aspice-40__iic-13-08,std_bp__aspice-40__iic-16-00
 
    The work products to be controlled are identified.
    The work products are stored and controlled in accordance with the requirements.
@@ -256,9 +256,9 @@ Generic practices
    The work products including the revision status are made available through appropriate mechanisms.
 
 .. std_req:: GP2.2.4: Review and adjust work products.
-   :id: std_bp_aspice-40__gp-224
+   :id:std_bp__aspice-40__gp-224
    :status: valid
-   :links: std_bp_aspice-40__iic-13-19
+   :links:std_bp__aspice-40__iic-13-19
 
    The work products are reviewed against the defined requirements and criteria.
    Resolution of issues arising from work products reviews is ensured.
@@ -287,7 +287,7 @@ Generic practices
 .. std_req:: GP3.1.1: Establish and maintain the standard process.
    :id: R_ASPICE-40_GP-311
    :status: valid
-   :links: std_bp_aspice-40__iic-06-51, std_bp_aspice-40__iic-10-00, std_bp_aspice-40__iic-10-50, std_bp_aspice-40__iic-10-51
+   :links:std_bp__aspice-40__iic-06-51,std_bp__aspice-40__iic-10-00,std_bp__aspice-40__iic-10-50,std_bp__aspice-40__iic-10-51
 
    A suitable standard process is developed including required activities and their interactions.
    Inputs and outputs of the standard process are defined including the corresponding entry and
@@ -314,7 +314,7 @@ Generic practices
 .. std_req:: GP3.1.2: Determine the required competencies.
    :id: R_ASPICE-40_GP-312
    :status: valid
-   :links: std_bp_aspice-40__iic-10-50, std_bp_aspice-40__iic-10-51
+   :links:std_bp__aspice-40__iic-10-50,std_bp__aspice-40__iic-10-51
 
    Required competencies, skills, and experience for performing the standard process are determined for the identified roles.
    Appropriate qualification methods to acquire the necessary competencies and skills are determined, maintained, and made available for the identified roles.
@@ -330,7 +330,7 @@ Generic practices
 .. std_req:: GP3.1.3: Determine the required resources.
    :id: R_ASPICE-40_GP-313
    :status: valid
-   :links: std_bp_aspice-40__iic-10-52
+   :links:std_bp__aspice-40__iic-10-52
 
    Required physical and material resources and process infrastructure needs for performing the standard process are determined.
 
@@ -341,7 +341,7 @@ Generic practices
 .. std_req:: GP3.1.4: Determine suitable methods to monitor the standard process.
    :id: R_ASPICE-40_GP-314
    :status: valid
-   :links: std_bp_aspice-40__iic-08-63
+   :links:std_bp__aspice-40__iic-08-63
 
    Methods and required activities for monitoring the effectiveness and adequacy of the standard process are determined.
 
@@ -378,7 +378,7 @@ Generic practices
 .. std_req:: GP3.2.1: Deploy a defined process that satisfies the context specific requirements of the use of the standard process.
    :id: R_ASPICE-40_GP-321
    :status: valid
-   :links: std_bp_aspice-40__iic-10-00, std_bp_aspice-40__iic-15-54
+   :links:std_bp__aspice-40__iic-10-00,std_bp__aspice-40__iic-15-54
 
    The defined process is appropriately selected and/or tailored from the standard process.
    Conformance of defined process with standard process requirements and tailoring criteria is verified.
@@ -391,7 +391,7 @@ Generic practices
 .. std_req:: GP3.2.2: Ensure required competencies for the defined roles.
    :id: R_ASPICE-40_GP-322
    :status: valid
-   :links: std_bp_aspice-40__iic-14-53
+   :links:std_bp__aspice-40__iic-14-53
 
    Human resources are allocated to the defined roles according to the required competencies and skills.
    Assignment of persons to roles and corresponding responsibilities and authorities for performing the defined process are communicated.
@@ -401,7 +401,7 @@ Generic practices
 .. std_req:: GP3.2.3: Ensure required resources to support the performance of the defined process.
    :id: R_ASPICE-40_GP-323
    :status: valid
-   :links: std_bp_aspice-40__iic-13-55
+   :links:std_bp__aspice-40__iic-13-55
 
    Required information to perform the defined process is made available, allocated and used.
    Required physical and material resources, process infrastructure and work environment are made available, allocated and used.
@@ -410,7 +410,7 @@ Generic practices
 .. std_req:: GP3.2.4: Monitor the performance of the defined process.
    :id: R_ASPICE-40_GP-324
    :status: valid
-   :links: std_bp_aspice-40__iic-03-06
+   :links:std_bp__aspice-40__iic-03-06
 
    Information is collected and analyzed according to the determined process monitoring methods to understand the effectiveness and adequacy of the defined process.
    Results of the analysis are made available to all effected parties and used to identify where continual improvement of the standard and/or defined process can be made.

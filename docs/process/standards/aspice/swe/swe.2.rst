@@ -36,9 +36,9 @@ Base practices
 ~~~~~~~~~~~~~~
 
 .. std_req:: SWE.2.BP1: Specify static aspects of the software architecture
-   :id: std_bp_aspice-40__SWE-2-BP1
+   :id:std_bp__aspice-40__SWE-2-BP1
    :status: valid
-   :links: std_bp_aspice-40__iic-04-04
+   :links:std_bp__aspice-40__iic-04-04
 
    Specify and document the static aspects of the software architecture
    with respect to the functional and non-functional software requirements,
@@ -52,9 +52,9 @@ Base practices
 
 
 .. std_req:: SWE.2.BP2: Specify dynamic aspects of the software architecture
-   :id: std_bp_aspice-40__SWE-2-BP2
+   :id:std_bp__aspice-40__SWE-2-BP2
    :status: valid
-   :links: std_bp_aspice-40__iic-04-04
+   :links:std_bp__aspice-40__iic-04-04
 
    Specify and document
    the dynamic aspects of the software architecture with respect to the functional and non-
@@ -73,9 +73,9 @@ Base practices
 
 
 .. std_req:: SWE.2.BP3: Analyze software architecture
-   :id: std_bp_aspice-40__SWE-2-BP3
+   :id:std_bp__aspice-40__SWE-2-BP3
    :status: valid
-   :links: std_bp_aspice-40__iic-15-51
+   :links:std_bp__aspice-40__iic-15-51
 
    Analyze the software architecture regarding
    relevant technical design aspects and to support project management regarding project
@@ -108,9 +108,9 @@ Base practices
 
 
 .. std_req:: SWE.2.BP4: Ensure consistency and establish bidirectional traceability
-   :id: std_bp_aspice-40__SWE-2-BP4
+   :id:std_bp__aspice-40__SWE-2-BP4
    :status: valid
-   :links: std_bp_aspice-40__iic-13-51
+   :links:std_bp__aspice-40__iic-13-51
 
    Ensure consistency and establish bidirectional traceability between the software architecture and the
    software requirements.
@@ -129,9 +129,9 @@ Base practices
 
 
 .. std_req:: SWE.2.BP5: Communicate agreed software architecture
-   :id: std_bp_aspice-40__SWE-2-BP5
+   :id:std_bp__aspice-40__SWE-2-BP5
    :status: valid
-   :links: std_bp_aspice-40__iic-13-52
+   :links:std_bp__aspice-40__iic-13-52
 
    Communicate the agreed software
    architecture to all affected parties.

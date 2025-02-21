@@ -10,8 +10,8 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
-from sphinx_needs.data import NeedsInfoType
 from sphinx.application import Sphinx
+from sphinx_needs.data import NeedsInfoType
 
 from score_metamodel import (
     CheckLogger,
@@ -27,7 +27,7 @@ def get_standards_needs(needs: list[NeedsInfoType]) -> dict:
     return {
         need["id"]: need
         for need in needs
-        if need["id"].startswith("STD_REQ_ISO26262__")
+        if need["id"].startswith("STD_REQ__ISO26262__")
     }
 
 
@@ -37,7 +37,9 @@ def get_standards_workproducts(needs: list[NeedsInfoType]) -> dict:
     """
 
     return {
-        need["id"]: need for need in needs if need["id"].startswith("STD_WP_ISO26262__")
+        need["id"]: need
+        for need in needs
+        if need["id"].startswith("STD_WP__ISO26262__")
     }
 
 

@@ -16,7 +16,7 @@
 ~~~~~
 
 .. std_req:: 06-04 Training material
-   :id: std_bp_aspice-40__iic-06-04
+   :id:std_bp__aspice-40__iic-06-04
    :status: valid
 
    Training material may have the following characteristics:
@@ -26,7 +26,7 @@
    - Course listings and availability
 
 .. std_req:: 06-50 Integration Sequence Instruction
-   :id: std_bp_aspice-40__iic-06-50
+   :id:std_bp__aspice-40__iic-06-50
    :status: valid
 
    Integration Sequence Instruction may have the following characteristics:
@@ -39,7 +39,7 @@
    - preconditions for starting system integration
 
 .. std_req:: 06-51 Tailoring guideline
-   :id: std_bp_aspice-40__iic-06-51
+   :id:std_bp__aspice-40__iic-06-51
    :status: valid
 
    Tailoring guideline may have the following characteristics:
@@ -51,7 +51,7 @@
    - Subset of process assets that is essential for the defined process
 
 .. std_req:: 06-52 Backup and recovery mechanism information
-   :id: std_bp_aspice-40__iic-06-52
+   :id:std_bp__aspice-40__iic-06-52
    :status: valid
 
    Backup and recovery mechanism information may have the following characteristics:

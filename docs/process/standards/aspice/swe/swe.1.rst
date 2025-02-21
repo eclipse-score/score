@@ -39,9 +39,9 @@ Base practices
 ~~~~~~~~~~~~~~
 
 .. std_req:: SWE.1.BP1: Specify software requirements
-   :id: std_bp_aspice-40__SWE-1-BP1
+   :id:std_bp__aspice-40__SWE-1-BP1
    :status: valid
-   :links: std_bp_aspice-40__iic-17-00
+   :links:std_bp__aspice-40__iic-17-00
 
    Use the system requirements and the system
    architecture to identify and document the functional and non-functional requirements for the
@@ -73,9 +73,9 @@ Base practices
 
 
 .. std_req:: SWE.1.BP2: Structure software requirements
-   :id: std_bp_aspice-40__SWE-1-BP2
+   :id:std_bp__aspice-40__SWE-1-BP2
    :status: valid
-   :links: std_bp_aspice-40__iic-17-00; std_bp_aspice-40__iic-17-54
+   :links:std_bp__aspice-40__iic-17-00;std_bp__aspice-40__iic-17-54
 
    Structure and prioritize the software requirements.
 
@@ -91,9 +91,9 @@ Base practices
 
 
 .. std_req:: SWE.1.BP3: Analyze software requirements
-   :id: std_bp_aspice-40__SWE-1-BP3
+   :id:std_bp__aspice-40__SWE-1-BP3
    :status: valid
-   :links: std_bp_aspice-40__iic-15-51
+   :links:std_bp__aspice-40__iic-15-51
 
    Analyze the specified software requirements
    including their interdependencies to ensure correctness, technical feasibility, and to support
@@ -110,17 +110,17 @@ Base practices
 
 
 .. std_req:: SWE.1.BP4: Analyze the impact on the operating environment
-   :id: std_bp_aspice-40__SWE-1-BP4
+   :id:std_bp__aspice-40__SWE-1-BP4
    :status: valid
-   :links: std_bp_aspice-40__iic-15-51
+   :links:std_bp__aspice-40__iic-15-51
 
    Analyze the impact that the
    software requirements will have on elements in the operating environment.
 
 .. std_req:: SWE.1.BP5: Ensure consistency and establish bidirectional traceability
-   :id: std_bp_aspice-40__SWE-1-BP5
+   :id:std_bp__aspice-40__SWE-1-BP5
    :status: valid
-   :links: std_bp_aspice-40__iic-13-51
+   :links:std_bp__aspice-40__iic-13-51
 
    Ensure
    consistency and establish bidirectional traceability between software requirements and system
@@ -151,9 +151,9 @@ Base practices
 
 
 .. std_req:: SWE.1.BP6: Communicate agreed software requirements and impact on the operating environment
-   :id: std_bp_aspice-40__SWE-1-BP6
+   :id:std_bp__aspice-40__SWE-1-BP6
    :status: valid
-   :links: std_bp_aspice-40__iic-13-52
+   :links:std_bp__aspice-40__iic-13-52
 
    Communicate the agreed software requirements, and the results of the analysis
    of impact on the operating environment, to all affected parties.

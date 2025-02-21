@@ -16,7 +16,7 @@
 ~~~~~
 
 .. std_req:: 03-06 Process performance information
-   :id: std_bp_aspice-40__iic-03-06
+   :id:std_bp__aspice-40__iic-03-06
    :status: valid
 
    Process performance information may have the following characteristics:
@@ -44,7 +44,7 @@
        - job run time
 
 .. std_req:: 03-50 Verification Measure Data
-   :id: std_bp_aspice-40__iic-03-50
+   :id:std_bp__aspice-40__iic-03-50
    :status: valid
 
    Verification Measure Data may have the following characteristics:

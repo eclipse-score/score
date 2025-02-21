@@ -30,9 +30,9 @@ Base practices
 ~~~~~~~~~~~~~~
 
 .. std_req:: SPL.2.BP1: Define the functional content of releases
-   :id: std_bp_aspice-40__SPL-2-BP1
+   :id:std_bp__aspice-40__SPL-2-BP1
    :status: valid
-   :links: std_bp_aspice-40__iic-11-03, std_bp_aspice-40__iic-18-06
+   :links:std_bp__aspice-40__iic-11-03,std_bp__aspice-40__iic-18-06
 
    Define the functionality to be included and the release criteria for each release.
 
@@ -42,9 +42,9 @@ Base practices
       (influencing the identified system functionality) that are needed for the release.
 
 .. std_req:: SPL.2.BP2: Define release package
-   :id: std_bp_aspice-40__SPL-2-BP2
+   :id:std_bp__aspice-40__SPL-2-BP2
    :status: valid
-   :links: std_bp_aspice-40__iic-11-03, std_bp_aspice-40__iic-18-06
+   :links:std_bp__aspice-40__iic-11-03,std_bp__aspice-40__iic-18-06
 
    Define the release as well as supporting tools and information.
 
@@ -53,9 +53,9 @@ Base practices
       The release package may include also programming tools.
 
 .. std_req:: SPL.2.BP3: Ensure unique identification of releases
-   :id: std_bp_aspice-40__SPL-2-BP3
+   :id:std_bp__aspice-40__SPL-2-BP3
    :status: valid
-   :links: std_bp_aspice-40__iic-11-03, std_bp_aspice-40__iic-11-04, std_bp_aspice-40__iic-13-06
+   :links:std_bp__aspice-40__iic-11-03,std_bp__aspice-40__iic-11-04,std_bp__aspice-40__iic-13-06
 
    Ensure a unique identification of the release based upon the intended purpose and expectations of the release.
 
@@ -64,9 +64,9 @@ Base practices
       Unique identification may be realized by a classification and numbering scheme for product releases.
 
 .. std_req:: SPL.2.BP4: Build the release from items under configuration control
-   :id: std_bp_aspice-40__SPL-2-BP4
+   :id:std_bp__aspice-40__SPL-2-BP4
    :status: valid
-   :links: std_bp_aspice-40__iic-11-04, std_bp_aspice-40__iic-18-06
+   :links:std_bp__aspice-40__iic-11-04,std_bp__aspice-40__iic-18-06
 
    Build the release from items under configuration control to ensure integrity.
 
@@ -75,16 +75,16 @@ Base practices
       This practice may be supported by the SUP.8 Configuration Management Process.
 
 .. std_req:: SPL.2.BP5: Ensure release approval before delivery
-   :id: std_bp_aspice-40__SPL-2-BP5
+   :id:std_bp__aspice-40__SPL-2-BP5
    :status: valid
-   :links: std_bp_aspice-40__iic-11-03, std_bp_aspice-40__iic-13-13, std_bp_aspice-40__iic-18-06
+   :links:std_bp__aspice-40__iic-11-03,std_bp__aspice-40__iic-13-13,std_bp__aspice-40__iic-18-06
 
    Criteria for the release are satisfied before delivery takes place.
 
 .. std_req:: SPL.2.BP6: Provide a release note
-   :id: std_bp_aspice-40__SPL-2-BP6
+   :id:std_bp__aspice-40__SPL-2-BP6
    :status: valid
-   :links: std_bp_aspice-40__iic-11-03, std_bp_aspice-40__iic-11-04, std_bp_aspice-40__iic-13-06, std_bp_aspice-40__iic-13-13
+   :links:std_bp__aspice-40__iic-11-03,std_bp__aspice-40__iic-11-04,std_bp__aspice-40__iic-13-06,std_bp__aspice-40__iic-13-13
 
    A release is accompanied by information detailing key characteristics of the release.
 
@@ -94,16 +94,16 @@ Base practices
       legislation that is considered etc. See also VAL.1 Validation.
 
 .. std_req:: SPL.2.BP7: Communicate the type, service level and duration of support for a release
-   :id: std_bp_aspice-40__SPL-2-BP7
+   :id:std_bp__aspice-40__SPL-2-BP7
    :status: valid
-   :links: std_bp_aspice-40__iic-11-03, std_bp_aspice-40__iic-11-04, std_bp_aspice-40__iic-13-06, std_bp_aspice-40__iic-13-13
+   :links:std_bp__aspice-40__iic-11-03,std_bp__aspice-40__iic-11-04,std_bp__aspice-40__iic-13-06,std_bp__aspice-40__iic-13-13
 
    Identify and communicate the type, service level and duration of support for a release.
 
 .. std_req:: SPL.2.BP8: Deliver the release package to the intended customer
-   :id: std_bp_aspice-40__SPL-2-BP8
+   :id:std_bp__aspice-40__SPL-2-BP8
    :status: valid
-   :links: std_bp_aspice-40__iic-11-03, std_bp_aspice-40__iic-13-06, std_bp_aspice-40__iic-13-13
+   :links:std_bp__aspice-40__iic-11-03,std_bp__aspice-40__iic-13-06,std_bp__aspice-40__iic-13-13
 
    Deliver the release package to the intended customer.
 

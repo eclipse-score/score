@@ -16,7 +16,7 @@
 ~~~~~
 
 .. std_req:: 08-53 Scope of work
-   :id: std_bp_aspice-40__iic-08-53
+   :id:std_bp__aspice-40__iic-08-53
    :status: valid
 
    Scope of work may have the following characteristics:
@@ -32,7 +32,7 @@
    - Integration of third party deliveries
 
 .. std_req:: 08-54 Feasibility analysis
-   :id: std_bp_aspice-40__iic-08-54
+   :id:std_bp__aspice-40__iic-08-54
    :status: valid
 
    Feasibility analysis may have the following characteristics:
@@ -41,7 +41,7 @@
      the project objectives with available resources
 
 .. std_req:: 08-55 Risk measure
-   :id: std_bp_aspice-40__iic-08-55
+   :id:std_bp__aspice-40__iic-08-55
    :status: valid
 
    Risk measure may have the following characteristics:
@@ -60,7 +60,7 @@
        - justifications
 
 .. std_req:: 08-56 Schedule
-   :id: std_bp_aspice-40__iic-08-56
+   :id:std_bp__aspice-40__iic-08-56
    :status: valid
 
    Schedule may have the following characteristics:
@@ -76,7 +76,7 @@
       A schedule is consistent with the defined work packages, see 14-10
 
 .. std_req:: 08-58 Verification Measure Selection Set
-   :id: std_bp_aspice-40__iic-08-58
+   :id:std_bp__aspice-40__iic-08-58
    :status: valid
 
    Verification Measure Selection Set may have the following characteristics:
@@ -85,7 +85,7 @@
    - Identification of verification measures, also for regression testing.
 
 .. std_req:: 08-60 Verification Measure
-   :id: std_bp_aspice-40__iic-08-60
+   :id:std_bp__aspice-40__iic-08-60
    :status: valid
 
    Verification Measure may have the following characteristics:
@@ -104,7 +104,7 @@
    - Necessary sequence or ordering
 
 .. std_req:: 08-61 Resource allocation
-   :id: std_bp_aspice-40__iic-08-61
+   :id:std_bp__aspice-40__iic-08-61
    :status: valid
 
    Resource allocation may have the following characteristics:
@@ -125,7 +125,7 @@
       Resources to be allocated are e.g., personnel/human resources for project roles and physical and material resources such as (special/limited) equipment, tool, licenses, test hardware, test vehicle, climate chambers etc.
 
 .. std_req:: 08-62 Communication matrix
-   :id: std_bp_aspice-40__iic-08-62
+   :id:std_bp__aspice-40__iic-08-62
    :status: valid
 
    Communication matrix may have the following characteristics:
@@ -138,7 +138,7 @@
    - Documentation needs of the communication (e.g., type of communication record)
 
 .. std_req:: 08-63 Process Monitoring Method
-   :id: std_bp_aspice-40__iic-08-63
+   :id:std_bp__aspice-40__iic-08-63
    :status: valid
 
    Process Monitoring Method may have the following characteristics:
@@ -147,7 +147,7 @@
    - Method for collecting and analyzing the monitoring measures
 
 .. std_req:: 08-66 Measures against deviations in quantitative process analysis
-   :id: std_bp_aspice-40__iic-08-66
+   :id:std_bp__aspice-40__iic-08-66
    :status: valid
 
    Measures against deviations in quantitative process analysis may have the following characteristics:

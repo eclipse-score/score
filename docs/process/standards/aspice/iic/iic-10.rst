@@ -16,7 +16,7 @@
 ~~~~~
 
 .. std_req:: 10-00 Process description
-   :id: std_bp_aspice-40__iic-10-00
+   :id:std_bp__aspice-40__iic-10-00
    :status: valid
 
    Process description may have the following characteristics:
@@ -31,7 +31,7 @@
        - specific methods/work instructions
 
 .. std_req:: 10-50 Role description
-   :id: std_bp_aspice-40__iic-10-50
+   :id:std_bp__aspice-40__iic-10-50
    :status: valid
 
    Role description may have the following characteristics:
@@ -42,7 +42,7 @@
    - Required competencies, skills, and experience
 
 .. std_req:: 10-51 Qualification method description
-   :id: std_bp_aspice-40__iic-10-51
+   :id:std_bp__aspice-40__iic-10-51
    :status: valid
 
    Qualification method description may have the following characteristics:
@@ -53,7 +53,7 @@
    - Self-learning material
 
 .. std_req:: 10-52 Process resource and infrastructure description
-   :id: std_bp_aspice-40__iic-10-52
+   :id:std_bp__aspice-40__iic-10-52
    :status: valid
 
    Process resource and infrastructure description may have the following characteristics:

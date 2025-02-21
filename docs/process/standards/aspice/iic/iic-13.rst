@@ -16,7 +16,7 @@
 ~~~~~
 
 .. std_req:: 13-06 Delivery evidence
-   :id: std_bp_aspice-40__iic-13-06
+   :id:std_bp__aspice-40__iic-13-06
    :status: valid
 
    Delivery evidence may have the following characteristics:
@@ -29,7 +29,7 @@
        - receipt of delivered product
 
 .. std_req:: 13-07 Problem
-   :id: std_bp_aspice-40__iic-13-07
+   :id:std_bp__aspice-40__iic-13-07
    :status: valid
 
    Problem may have the following characteristics:
@@ -44,7 +44,7 @@
    - Identifies the expected closure date
 
 .. std_req:: 13-08 Baseline
-   :id: std_bp_aspice-40__iic-13-08
+   :id:std_bp__aspice-40__iic-13-08
    :status: valid
 
    Baseline may have the following characteristics:
@@ -58,7 +58,7 @@
       This should be established before a release to identify consistent and complete delivery
 
 .. std_req:: 13-09 Meeting support evidence
-   :id: std_bp_aspice-40__iic-13-09
+   :id:std_bp__aspice-40__iic-13-09
    :status: valid
 
    Meeting support evidence may have the following characteristics:
@@ -74,7 +74,7 @@
        - next meeting if any
 
 .. std_req:: 13-13 Product release approval
-   :id: std_bp_aspice-40__iic-13-13
+   :id:std_bp__aspice-40__iic-13-13
    :status: valid
 
    Product release approval support evidence may have the following characteristics:
@@ -87,7 +87,7 @@
        - Evidence of supplier approval
 
 .. std_req:: 13-14 Progress status
-   :id: std_bp_aspice-40__iic-13-14
+   :id:std_bp__aspice-40__iic-13-14
    :status: valid
 
    Progress status may have the following characteristics:
@@ -102,7 +102,7 @@
    Record of any deviations from planned activities and reason why
 
 .. std_req:: 13-16 Change request
-   :id: std_bp_aspice-40__iic-13-16
+   :id:std_bp__aspice-40__iic-13-16
    :status: valid
 
    Change request may have the following characteristics:
@@ -120,7 +120,7 @@
        - rationale for changing a status
 
 .. std_req:: 13-18 Quality conformance evidence
-   :id: std_bp_aspice-40__iic-13-18
+   :id:std_bp__aspice-40__iic-13-18
    :status: valid
 
    Quality conformance evidence may have the following characteristics:
@@ -132,7 +132,7 @@
    - Identifies any associated measurements using the information
 
 .. std_req:: 13-19 Review evidence
-   :id: std_bp_aspice-40__iic-13-19
+   :id:std_bp__aspice-40__iic-13-19
    :status: valid
 
    Review evidence may have the following characteristics:
@@ -154,7 +154,7 @@
          - improvement suggestions
 
 .. std_req:: 13-25 Verification results
-   :id: std_bp_aspice-40__iic-13-25
+   :id:std_bp__aspice-40__iic-13-25
    :status: valid
 
    Verification results may have the following characteristics:
@@ -167,7 +167,7 @@
    - Abstraction or summary of verification results
 
 .. std_req:: 13-51 Consistency Evidence
-   :id: std_bp_aspice-40__iic-13-51
+   :id:std_bp__aspice-40__iic-13-51
    :status: valid
 
    Consistency Evidence may have the following characteristics:
@@ -195,7 +195,7 @@
       (DoD) approaches.
 
 .. std_req:: 13-52 Communication Evidence
-   :id: std_bp_aspice-40__iic-13-52
+   :id:std_bp__aspice-40__iic-13-52
    :status: valid
 
    Communication Evidence may have the following characteristics:
@@ -214,13 +214,13 @@
      - photo protocol
 
 .. std_req:: 13-53 Qualification evidence
-   :id: std_bp_aspice-40__iic-13-53
+   :id:std_bp__aspice-40__iic-13-53
    :status: valid
 
    Definition not available yet in PAM4.0 document.
 
 .. std_req:: 13-55 Process resource and infrastructure documentation
-   :id: std_bp_aspice-40__iic-13-55
+   :id:std_bp__aspice-40__iic-13-55
    :status: valid
 
    Process resource and infrastructure documentation may have the following characteristics:

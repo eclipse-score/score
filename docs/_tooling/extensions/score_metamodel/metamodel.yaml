@@ -11,14 +11,14 @@ needs_types:
     title: "Standard Requirement"
     prefix: "std_req__"
     mandatory_options:
-      id: "^(std_req_iso26262|std_req_iso21434|std_req_isopas8926|std_(g|b)p_aspice_40)__[0-9a-z_]*$"
+      id: "std_req__(iso26262|iso21434|isopas8926|aspice_40)__[0-9a-z_]*$"
       status: "^(valid)$"
 
   std_wp:
     title: "Standard Work Product"
     prefix: "std_wp__"
     mandatory_options:
-      id: "^(std_wp_iso26262|std_wp_iso21434|std_wp_isopas8926|std_(g|b)p_aspice_40)__[0-9a-z_]*$"
+      id: "std_wp__(iso26262|iso21434|isopas8926|aspice_40)__[0-9a-z_]*$"
       status: "^(valid)$"
   # Workflow
   workflow:
@@ -44,7 +44,7 @@ needs_types:
       id: "^gd_req__[0-9a-z_]*$"
       status: "^(valid|draft)$"
     mandatory_links:
-      complies: "^(std_req_iso26262|std_req_iso21434|std_req_isopas8926|std_(g|b)p_aspice_40)__.*$"
+      complies: "std_req__(iso26262|iso21434|isopas8926|aspice_40)__.*$"
 
   gd_temp:
     title: "Process Template"
@@ -53,7 +53,7 @@ needs_types:
       id: "^gd_temp__[0-9a-z_]*$"
       status: "^(valid|draft)$"
     mandatory_links:
-      complies: "^(std_req_iso26262|std_req_iso21434|std_req_isopas8926|std_(g|b)p_aspice_40)__.*$"
+      complies: "std_req__(iso26262|iso21434|isopas8926|aspice_40)__.*$"
 
   gd_chklst:
     title: "Process Checklist"
@@ -62,7 +62,7 @@ needs_types:
       id: "^gd_chklst__[0-9a-z_]*$"
       status: "^(valid|draft)$"
     mandatory_links:
-      complies: "^(std_req_iso26262|std_req_iso21434|std_req_isopas8926|std_(g|b)p_aspice_40)__.*$"
+      complies: "std_req__(iso26262|iso21434|isopas8926|aspice_40)__.*$"
 
   gd_guidl:
     title: "Process Guideline"
@@ -71,7 +71,7 @@ needs_types:
       id: "^gd_guidl__[0-9a-z_]*$"
       status: "^(valid|draft)$"
     mandatory_links:
-      complies: "^(std_req_iso26262|std_req_iso21434|std_req_isopas8926|std_(g|b)p_aspice_40)__.*$"
+      complies: "std_req__(iso26262|iso21434|isopas8926|aspice_40)__.*$"
 
   gd_method:
     title: "Process Method"
@@ -80,7 +80,7 @@ needs_types:
       id: "^gd_meth__[0-9a-z_]*$"
       status: "^(valid|draft)$"
     mandatory_links:
-      complies: "^(std_req_iso26262|std_req_iso21434|std_req_isopas8926|std_(g|b)p_aspice_40)__.*$"
+      complies: "std_req__(iso26262|iso21434|isopas8926|aspice_40)__.*$"
   # Score Workproduct
   workproduct:
     title: "Workproduct"
@@ -89,7 +89,7 @@ needs_types:
       id: "^wp__[0-9a-z_]*$"
       status: "^(valid|draft)$"
     mandatory_links:
-      complies: "^(std_wp_iso26262|std_wp_iso21434|std_wp_isopas8926|std_iic_aspice_40)__.*$"
+      complies: "std_(wp__iso26262|wp__iso21434|wp__isopas8926|iic_aspice_40)__.*$"
   # Role
   role:
     title: "Role"

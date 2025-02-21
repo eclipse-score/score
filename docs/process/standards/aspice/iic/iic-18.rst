@@ -16,7 +16,7 @@
 ~~~~~
 
 .. std_req:: 18-00 Standard
-   :id: std_bp_aspice-40__iic-18-00
+   :id:std_bp__aspice-40__iic-18-00
    :status: valid
 
    Standard may have the following characteristics:
@@ -27,7 +27,7 @@
    - Provisions for tailoring or exception to the requirements are included
 
 .. std_req:: 18-06 Product release criteria
-   :id: std_bp_aspice-40__iic-18-06
+   :id:std_bp__aspice-40__iic-18-06
    :status: valid
 
    Product release criteria may have the following characteristics:
@@ -41,7 +41,7 @@
        - change control status
 
 .. std_req:: 18-07 Quality criteria
-   :id: std_bp_aspice-40__iic-18-07
+   :id:std_bp__aspice-40__iic-18-07
    :status: valid
 
    Quality criteria may have the following characteristics:
@@ -54,7 +54,7 @@
    - Establishes expected performance attributes
 
 .. std_req:: 18-52 Escalation path
-   :id: std_bp_aspice-40__iic-18-52
+   :id:std_bp__aspice-40__iic-18-52
    :status: valid
 
    Escalation path may have the following characteristics:
@@ -64,7 +64,7 @@
    - Identifies levels of escalation
 
 .. std_req:: 18-53 Configuration item selection criteria
-   :id: std_bp_aspice-40__iic-18-53
+   :id:std_bp__aspice-40__iic-18-53
    :status: valid
 
    Configuration item selection criteria may have the following characteristics:
@@ -72,7 +72,7 @@
    - Identify types of work products to be subject to configuration control
 
 .. std_req:: 18-57 Change analysis criteria
-   :id: std_bp_aspice-40__iic-18-57
+   :id:std_bp__aspice-40__iic-18-57
    :status: valid
 
    Change analysis criteria may have the following characteristics:
@@ -84,7 +84,7 @@
        - benefits
 
 .. std_req:: 18-58 Process performance objectives
-   :id: std_bp_aspice-40__iic-18-58
+   :id:std_bp__aspice-40__iic-18-58
    :status: valid
 
    Process performance objectives may have the following characteristics:
@@ -98,7 +98,7 @@
        - Metrics (e.g., max. number of open change requests per release, max. ratio of configuration items in status “in work” at certain milestones before next delivery / release date)
 
 .. std_req:: 18-59 Review and approval criteria for work products
-   :id: std_bp_aspice-40__iic-18-59
+   :id:std_bp__aspice-40__iic-18-59
    :status: valid
 
    Process performance objectives may have the following characteristics:
@@ -111,7 +111,7 @@
       - Criteria for approval
 
 .. std_req:: 18-70 Business goals
-   :id: std_bp_aspice-40__iic-18-70
+   :id:std_bp__aspice-40__iic-18-70
    :status: valid
 
    Business goals may have the following characteristics:
@@ -125,7 +125,7 @@
    - Authorization at the highest level
 
 .. std_req:: 18-80 Improvement opportunity
-   :id: std_bp_aspice-40__iic-18-80
+   :id:std_bp__aspice-40__iic-18-80
    :status: valid
 
    Improvement opportunity may have the following characteristics:
@@ -140,7 +140,7 @@
    - Priorities
 
 .. std_req:: 18-81 Improvement evaluation results
-   :id: std_bp_aspice-40__iic-18-81
+   :id:std_bp__aspice-40__iic-18-81
    :status: valid
 
    Improvement evaluation results may have the following characteristics:

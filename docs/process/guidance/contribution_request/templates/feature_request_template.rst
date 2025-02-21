@@ -93,7 +93,7 @@ Specification
 
    .. note::
       A Feature Request shall specify the stakeholder requirements as part of our platform/project.
-      Thereby the :need:`rl_technical_lead` will approve these requirements as part of accepting the Feature Request (e.g. merging the PR with the Feature Request).
+      Thereby the :need:`rl__technical_lead` will approve these requirements as part of accepting the Feature Request (e.g. merging the PR with the Feature Request).
 
 
 Backwards Compatibility

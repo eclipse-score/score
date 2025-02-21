@@ -18,7 +18,7 @@ Module Safety Plan Template
 .. gd_temp:: Module Safety Plan Template
    :id: gd_temp__module_safety_plan
    :status: valid
-   :complies: std_req_iso26262__management_35, std_req_iso26262__management_36, std_req_iso26262__management_37, std_req_iso26262__management_38, std_req_iso26262__management_39
+   :complies: std_req__iso26262__management_35, std_req__iso26262__management_36, std_req__iso26262__management_37, std_req__iso26262__management_38, std_req__iso26262__management_39
 
 This document implements <add "need" link>
 
@@ -99,14 +99,14 @@ This document implements <add "need" link>
           - <Link to WP>
           - <WP status (manual)>
 
-        * - :need:`WP_SW_COMPONENT_DFA`
+        * - :need:`wp__SW_COMPONENT_DFA`
           - <Link to process>
           - <automated>
           - <Link to issue>
           - <Link to WP>
           - <automated>
 
-        * - :need:`WP_MODULE_SW_BUILD_CONFIG`
+        * - :need:`wp__MODULE_SW_BUILD_CONFIG`
           - :ref:`sw_development`
           - <automated>
           - <Link to issue>
@@ -120,14 +120,14 @@ This document implements <add "need" link>
           - <Link to WP>
           - <automated>
 
-        * - :need:`WP_MODULE_SW_VERIFICATION_REPORT`
+        * - :need:`wp__MODULE_SW_VERIFICATION_REPORT`
           - :ref:`sw_verification`
           - <automated>
           - <Link to issue>
           - <Link to WP>
           - <automated>
 
-        * - :need:`WP_MODULE_SW_RELEASE_NOTE`
+        * - :need:`wp__MODULE_SW_RELEASE_NOTE`
           - :ref:`release_management`
           - <automated>
           - <Link to issue>
@@ -145,84 +145,84 @@ This document implements <add "need" link>
           - Link to WP
           - WP status
 
-        * - :need:`WP_SW_COMPONENT_REQ`
+        * - :need:`wp__SW_COMPONENT_REQ`
           - <Link to process>
           - <automated>
           - <Link to issue>
           - <Link to WP>
           - <automated>
 
-        * - :need:`WP_SW_COMPONENT_AOU`
+        * - :need:`wp__SW_COMPONENT_AOU`
           - <Link to process>
           - <automated>
           - <Link to issue>
           - <Link to WP>
           - <automated>
 
-        * - :need:`WP_HSI`
+        * - :need:`wp__HSI`
           - <Link to process>
           - <automated>
           - <Link to issue>
           - <Link to WP>
           - <automated>
 
-        * - :need:`WP_SW_REQ_INSPECT`
+        * - :need:`wp__SW_REQ_INSPECT`
           - <Link to process>
           - <automated>
           - n/a
           - Checklist used in Pull Request Review
           - n/a
 
-        * - :need:`WP_SW_COMPONENT_ARCHITECTURE`
+        * - :need:`wp__SW_COMPONENT_ARCHITECTURE`
           - <Link to process>
           - <automated>
           - <Link to issue>
           - <Link to WP>
           - <automated>
 
-        * - :need:`WP_SW_COMPONENT_SAFETY_ANALYSES`
+        * - :need:`wp__SW_COMPONENT_SAFETY_ANALYSES`
           - <Link to process>
           - <automated>
           - <Link to issue>
           - <Link to WP>
           - <automated>
 
-        * - :need:`WP_SW_ARCH_VERIFICATION`
+        * - :need:`wp__SW_ARCH_VERIFICATION`
           - <Link to process>
           - <automated>
           - <Link to issue>
           - <Link to WP>
           - <automated>
 
-        * - :need:`WP_SW_IMPLEMENTATION`
+        * - :need:`wp__SW_IMPLEMENTATION`
           - <Link to process>
           - <automated>
           - <Link to issue>
           - <Link to WP>
           - <automated>
 
-        * - :need:`WP_SW_UNIT_TEST`
+        * - :need:`wp__SW_UNIT_TEST`
           - <Link to process>
           - <automated>
           - <Link to issue>
           - <Link to WP>
           - <automated>
 
-        * - :need:`WP_SW_CODE_INSPECT`
+        * - :need:`wp__SW_CODE_INSPECT`
           - <Link to process>
           - <automated>
           - <Link to issue>
           - <Link to WP>
           - <automated>
 
-        * - :need:`WP_SW_COMPONENT_INTEGRATION_TEST`
+        * - :need:`wp__SW_COMPONENT_INTEGRATION_TEST`
           - <Link to process>
           - <automated>
           - <Link to issue>
           - <Link to WP>
           - <automated>
 
-        * - :need:`WP_SW_COMPONENT_TEST`
+        * - :need:`wp__SW_COMPONENT_TEST`
           - <Link to process>
           - <automated>
           - <Link to issue>
@@ -250,51 +250,51 @@ This document implements <add "need" link>
           - Link to issue
           - Reasoning for tailoring
 
-        * - :need:`WP_SW_COMPONENT_REQ`
+        * - :need:`wp__SW_COMPONENT_REQ`
           - <Link to issue>
           - Always needed (for Q and QR classification) and also improves process Id 2
 
-        * - :need:`WP_SW_COMPONENT_AOU`
+        * - :need:`wp__SW_COMPONENT_AOU`
           - <Link to issue>
           - Always needed (for Q and QR classification) and also improves process Id 5
 
-        * - :need:`WP_HSI`
+        * - :need:`wp__HSI`
           - n/a
           - OSS needing special HW is an extreme exception.
 
-        * - :need:`WP_SW_REQ_INSPECT`
+        * - :need:`wp__SW_REQ_INSPECT`
           - n/a
           - Checklist used in Pull Request Review
 
-        * - :need:`WP_SW_COMPONENT_ARCHITECTURE`
+        * - :need:`wp__SW_COMPONENT_ARCHITECTURE`
           - <Link to issue>
           - <Reasoning for tailoring, needed for example in case of deficits in process Id 3&4 and complexity Ids 1&4>
 
-        * - :need:`WP_SW_COMPONENT_SAFETY_ANALYSES`
+        * - :need:`wp__SW_COMPONENT_SAFETY_ANALYSES`
           - <Link to issue>
           - <Reasoning for tailoring, could help arguing too high cyclomatic complexity covered by safety mechanisms>
 
-        * - :need:`WP_SW_ARCH_VERIFICATION`
+        * - :need:`wp__SW_ARCH_VERIFICATION`
           - <Link to issue>
-          - <Reasoning for tailoring, needed if also WP_SW_COMPONENT_ARCHITECTURE is required>
+          - <Reasoning for tailoring, needed if also wp__SW_COMPONENT_ARCHITECTURE is required>
 
-        * - :need:`WP_SW_IMPLEMENTATION`
+        * - :need:`wp__SW_IMPLEMENTATION`
           - n/a
           - If source code is modified, this is not a OSS qualification any more.
 
-        * - :need:`WP_SW_UNIT_TEST`
+        * - :need:`wp__SW_UNIT_TEST`
           - <Link to issue>
           - <Reasoning for tailoring, can improve deficits in process Id 6 and complexity Id 3>
 
-        * - :need:`WP_SW_CODE_INSPECT`
+        * - :need:`wp__SW_CODE_INSPECT`
           - <Link to issue>
           - <Reasoning for tailoring, can improve deficits in process Id 6 and complexity Id 2>
 
-        * - :need:`WP_SW_COMPONENT_INTEGRATION_TEST`
+        * - :need:`wp__SW_COMPONENT_INTEGRATION_TEST`
           - <Link to issue>
           - <Reasoning for tailoring, can improve deficits in process Id 6 and complexity Id 3&5>
 
-        * - :need:`WP_SW_COMPONENT_TEST`
+        * - :need:`wp__SW_COMPONENT_TEST`
           - <Link to issue>
           - Always needed (for Q and QR classification)
 

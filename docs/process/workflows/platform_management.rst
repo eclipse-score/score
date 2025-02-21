@@ -22,14 +22,14 @@ Workflows
 todo: need to add guidance and standard links
 
 .. workflow:: Create/Maintain Platform Management Plan
-   :id: wf_cr_mt_platform_mngmt_plan
+   :id: wf__cr_mt_platform_mngmt_plan
    :status: draft
    :tags: process
-   :responsible: rl_technical_lead
-   :approved_by: rl_process_community
-   :supported_by: rl_safety_manager, rl_security_manager, rl_quality_manager
-   :input: wp_policies, wp_issue_track_system
-   :output: wp_platform_mgmt
+   :responsible: rl__technical_lead
+   :approved_by: rl__process_community
+   :supported_by: rl__safety_manager, rl__security_manager, rl__quality_manager
+   :input: wp__policies, wp__issue_track_system
+   :output: wp__platform_mgmt
 
    | The Platform Management Plan shall include the Plans for Project and Risk Management, Safety and Quality Management, Release Management, Configuration Management, Change Management, Documentation Management, Problem Resolution, Requirement Management, Tool Management, Stakeholder Management and also the Software Development and Verification Plan.
    | These plans contain the measures for example:
@@ -38,14 +38,14 @@ todo: need to add guidance and standard links
    | - to manage, analyse and control changes of the work products during the project life cycle.
 
 .. workflow:: Monitor/Improve Platform Management Plan
-   :id: wf_mr_vy_platform_mngmt_plan
+   :id: wf__mr_vy_platform_mngmt_plan
    :status: draft
    :tags: process
-   :responsible: rl_technical_lead
-   :approved_by: rl_process_community
-   :supported_by: rl_safety_manager, rl_security_manager, rl_quality_manager
-   :input: wp_platform_mgmt
-   :output: wp_issue_track_system
+   :responsible: rl__technical_lead
+   :approved_by: rl__process_community
+   :supported_by: rl__safety_manager, rl__security_manager, rl__quality_manager
+   :input: wp__platform_mgmt
+   :output: wp__issue_track_system
 
    | The Project Manager is responsible for the monitoring of the activities against the platform management plan.
    | The Project Manager is responsible to adjust the plan, if deviations are detected.
