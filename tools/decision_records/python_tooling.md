@@ -4,7 +4,7 @@
 Agreed
 
 ## Context
-Selection of Python development tools needs to be made to ensure consistent code quality and maintainability across our codebase.   
+Selection of Python development tools needs to be made to aid in consistent code quality and maintainability across our codebase.   
 This decision covers core development tool selection in these categories:
 
 - Code formatting and linting
