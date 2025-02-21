@@ -38,7 +38,7 @@ Workflow Requirements Engineering
    :approved_by: rl__technical_lead
    :supported_by: rl__safety_manager, rl__security_manager
    :input: wp__requirements__stkh, wp__issue_track_system, wp__feature_safety_analyses, wp__feature_dfa
-   :output: wp__requirements__feat, wp__requirements__feat_aou, wp__platform_sw_safety_manual
+   :output: wp__requirements__feat, wp__requirements__feat_aou, wp__platform_safety_manual
    :contains: gd_temp__req__feat_req, gd_temp__req__formulation
    :has: doc_concept__req__process, doc_concept__req__process
 
@@ -53,7 +53,7 @@ Workflow Requirements Engineering
    :approved_by: rl__committer
    :supported_by: rl__safety_manager, rl__security_manager
    :input: wp__requirements__feat, wp__issue_track_system, wp__sw_component_safety_analyses, wp__sw_component_dfa
-   :output: wp__requirements__comp, wp__requirements__comp_aou, wp__platform_sw_safety_manual
+   :output: wp__requirements__comp, wp__requirements__comp_aou, wp__platform_safety_manual
    :contains: gd_temp__req__comp_req, gd_temp__req__formulation
    :has: doc_concept__req__process, doc_concept__req__process
 

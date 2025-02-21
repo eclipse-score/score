@@ -25,7 +25,7 @@ Templates
    .. code-block:: rst
 
       .. stkh_req:: <Title>
-         :id: STHK_REQ__<Title>
+         :id: stkh_req__<Title>
          :reqtype: <Functional|Interface|Process|Legal|Non-Functional>
          :safety: <QM|ASIL_B|ASIL_D>
          :rational: <The rationale provides the reason that the requirement is needed.>
@@ -39,7 +39,7 @@ Templates
    .. code-block:: rst
 
       .. feat_req:: <Title>
-        :id: FEAT_REQ__<Feature>__<Title>
+        :id: feat_req__<Feature>__<Title>
         :reqtype: <Functional|Interface|Process|Legal|Non-Functional>
         :security: <YES|NO>
         :safety: <QM|ASIL_B|ASIL_D>
@@ -54,7 +54,7 @@ Templates
    .. code-block:: rst
 
       .. comp_req:: <Title>
-         :id: COMP_REQ__<Component>__<Title>
+         :id: comp_req__<Component>__<Title>
          :reqtype: <Functional|Interface|Process|Legal|Non-Functional>
          :security: <YES|NO>
          :safety: <QM|ASIL_B|ASIL_D>
@@ -69,7 +69,7 @@ Templates
    .. code-block:: rst
 
       .. aou_req:: <Title>
-         :id: AOU__<Component>__<Title>
+         :id: aou_req__<Component>__<Title>
          :reqtype: <Functional|Interface|Process|Legal|Non-Functional>
          :security: <YES|NO>
          :safety: <QM|ASIL_B|ASIL_D>
