@@ -68,6 +68,7 @@ sphinx_docs(
     ]),
     config = ":conf.py",
     extra_opts = [
+        "-W",
         "--keep-going",
     ],
     formats = [

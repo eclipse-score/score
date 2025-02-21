@@ -25,12 +25,20 @@ It provieds this functionality by adding classes to `needs_render_context`, whic
 'needarch' and 'needuml' blocks in rst files.
 """
 
+import hashlib
+import time
+
+from functools import cache
+from pathlib import Path
 from sphinx.application import Sphinx
+from sphinx_needs.logging import get_logger
 from score_draw_uml_funcs.helpers import (
     gen_link_text,
     gen_alias,
     find_interfaces_of_operations,
 )
+
+logger = get_logger(__file__)
 
 
 def setup(app: Sphinx) -> dict:
@@ -40,6 +48,25 @@ def setup(app: Sphinx) -> dict:
         "parallel_read_safe": True,
         "parallel_write_safe": True,
     }
+
+
+@cache
+def scripts_directory_hash():
+    start = time.time()
+    all = ""
+    for file in Path(".devcontainer/sphinx_conf").glob("**/*.py"):
+        with open(file) as f:
+            all += f.read()
+    hash_object = hashlib.sha256(all.encode("utf-8"))
+    directory_hash = hash_object.hexdigest()
+    logger.info(
+        "calculate directory_hash = "
+        + directory_hash
+        + " within "
+        + str(time.time() - start)
+        + " seconds."
+    )
+    return directory_hash
 
 
 #                    ╭──────────────────────────────────────────────────────────────────────────────╮
@@ -250,50 +277,72 @@ def gen_interface_text(need: dict, all_needs: dict) -> str:
 
 
 #                    ╭──────────────────────────────────────────────────────────────────────────────╮
-#                    │                  Final funcs that combine strings for uml output             │
+#                    │                    Classes with hashing to enable caching                    │
 #                    ╰──────────────────────────────────────────────────────────────────────────────╯
 
 
-def draw_full_feature(need: dict, all_needs: dict) -> str:
-    alias = gen_alias(need["title"])
-    structure_text = f'component "{need["title"]}" as {alias} {{\n'
-    for need_inc in need.get("includes", []):
-        curr_need = all_needs[need_inc]
+class draw_full_feature:
+    def __repr__(self):
+        return "draw_full_feature" + " in " + scripts_directory_hash()
 
-        structure_text += gen_interface_text(curr_need, all_needs)
+    def __call__(self, need, all_needs: dict) -> str:
+        alias = gen_alias(need["title"])
+        structure_text = f'component "{need["title"]}" as {alias} {{\n'
+        for need_inc in need.get("includes", []):
+            curr_need = all_needs[need_inc]
+
+            structure_text += gen_interface_text(curr_need, all_needs)
         structure_text += "}\n"
-    return structure_text
+        return structure_text
 
 
-def draw_logical_interface(need: dict, all_needs: dict):
-    return gen_interface_text(need, all_needs)
+class draw_logical_interface:
+    def __repr__(self):
+        return "draw_logical_interface" + " in " + scripts_directory_hash()
+
+    def __call__(self, need, all_needs: dict) -> str:
+        return gen_interface_text(need, all_needs)
 
 
-def draw_full_component(need: dict, all_needs: dict) -> str:
-    structure_text, linkage_text, processed_operations = draw_component(
-        need, all_needs, set()
-    )
-    return structure_text + "\n" + linkage_text
+class draw_full_component:
+    def __repr__(self):
+        return "draw_full_component" + " in " + scripts_directory_hash()
+
+    def __call__(self, need, all_needs) -> str:
+        structure_text, linkage_text, processed_operations = draw_component(
+            need, all_needs, set()
+        )
+        return structure_text + "\n" + linkage_text
 
 
-def draw_full_component_interface(need: dict, all_needs: dict) -> str:
-    structure_text, linkage_text, _ = draw_component_interface(need, all_needs, set())
-    return structure_text + "\n" + linkage_text
+class draw_full_component_interface:
+    def __repr__(self):
+        return "draw_full_component_interface" + " in " + scripts_directory_hash()
+
+    def __call__(self, need, all_needs) -> str:
+        structure_text, linkage_text, _ = draw_component_interface(
+            need, all_needs, set()
+        )
+        return structure_text + "\n" + linkage_text
 
 
-def draw_module(need: dict, all_needs: dict) -> str:
-    alias = gen_alias(need["title"])
-    module_text = f'component "{need["title"]}" as {alias} {{\n'
-    for need_inc in need.get("includes", []):
-        curr_need = all_needs[need_inc]
-        module_text += draw_full_component(curr_need, all_needs)
-    return module_text
+class draw_module:
+    def __repr__(self):
+        return "draw_module" + " in " + scripts_directory_hash()
+
+    def __call__(self, need, all_needs) -> str:
+        alias = gen_alias(need["title"])
+        module_text = f'component "{need["title"]}" as {alias} {{\n'
+        for need_inc in need.get("includes", []):
+            curr_need = all_needs[need_inc]
+            module_text += draw_full_component().__call__(curr_need, all_needs)
+        return module_text
 
 
 draw_uml_function_context = {
-    "draw_logical_interface": draw_logical_interface,
-    "draw_component_interface": draw_full_component_interface,
-    "draw_component": draw_full_component,
-    "draw_module": draw_module,
-    "draw_feature": draw_full_feature,
+    "draw_logical_interface": draw_logical_interface(),
+    "draw_component_interface": draw_full_component_interface(),
+    "draw_component": draw_full_component(),
+    "draw_module": draw_module(),
+    "draw_feature": draw_full_feature(),
 }
