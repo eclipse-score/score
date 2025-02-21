@@ -42,6 +42,7 @@ Process Description
    :glob:
 
    process_areas/safety_management/index.rst
+   process_areas/documentation_management/index.rst
 
 Process Role definition
 ~~~~~~~~~~~~~~~~~~~~~~~

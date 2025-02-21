@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,30 +12,18 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _pmp:
+.. document:: Platform Management Plan
+   :id: doc__platform_mgt_plan
+   :status: draft
+   :safety: ASIL_B
+   :tags: platform_management
 
 Platform Management Plan
 ========================
 
-+---------------------------+-------------------------------+
-| DOCUMENT IDENTIFICATION   |                               |
-+===========================+===============================+
-| Document Type             | Plan                          |
-+---------------------------+-------------------------------+
-| Document ID               | PLATFORM-MANAGEMENT-PLAN      |
-+---------------------------+-------------------------------+
-| Project Name              | SCORE                         |
-+---------------------------+-------------------------------+
-| ASIL                      | B                             |
-+---------------------------+-------------------------------+
-| AUTHOR                    | <Process Manager>             |
-+---------------------------+-------------------------------+
-| Reviewer                  | <Quality Manager>             |
-+---------------------------+-------------------------------+
-| Approver                  | <Project Manager>             |
-+---------------------------+-------------------------------+
-| Status                    | DRAFT                         |
-+---------------------------+-------------------------------+
+This document implements :need:`wp__platform_mgmt`.
+
+.. _pmp:
 
 .. toctree::
    :maxdepth: 2
