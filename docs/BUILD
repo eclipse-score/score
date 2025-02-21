@@ -44,7 +44,7 @@ load("@rules_pkg//pkg:tar.bzl", "pkg_tar")
 load("@rules_python//python:pip.bzl", "compile_pip_requirements")
 load("@rules_python//sphinxdocs:sphinx.bzl", "sphinx_build_binary", "sphinx_docs")
 load("//tools/dash:dash.bzl", "dash_license_checker")
-load("//docs:_tooling/extensions/score_source_code_linker/requirement_links.bzl", "requirement_links")
+load("//docs:_tooling/extensions/score_source_code_linker/collect_source_files.bzl", "collect_source_files_for_score_source_code_linker")
 load("//tools/testing/pytest:defs.bzl", "score_py_pytest")
 
 sphinx_requirements = all_requirements + [
@@ -71,7 +71,9 @@ sphinx_docs(
     extra_opts = [
         "-W",
         "--keep-going",
-        "-Drequirement_links=$(location :requirement_links)",
+
+        # This is 'overwriting' the configuration parameter inside sphinx. As we only get this information during runtime
+        "-Dcollected_files_for_score_source_code_linker=$(location :collected_files_for_score_source_code_linker)",
     ],
     formats = [
         "html",
@@ -82,7 +84,7 @@ sphinx_docs(
     ],
     tools = [
         ":plantuml",
-        ":requirement_links",
+        ":collected_files_for_score_source_code_linker",
     ],
 )
 
@@ -91,13 +93,6 @@ sphinx_build_binary(
     deps = sphinx_requirements,
 )
 
-requirement_links(
-    name = "requirement_links",
-    deps = [
-        ":score_metamodel",
-        ":score_source_code_linker",
-    ],
-)
 
 # In order to update the requirements, change the `requirements.txt` file and run:
 # `bazel run //docs:requirements`.
@@ -134,7 +129,7 @@ pkg_tar(
 py_binary(
     name = "incremental",
     srcs = ["_tooling/incremental.py"],
-    data = [":requirement_links"],
+    data = [":collected_files_for_score_source_code_linker"],
     deps = sphinx_requirements,
 )
 
@@ -163,8 +158,8 @@ java_binary(
 )
 
 py_binary(
-    name = "requirement_links_lib",
-    srcs = ["_tooling/extensions/score_source_code_linker/requirement_links.py"],
+    name = "collected_files_for_score_source_code_linker_lib",
+    srcs = ["_tooling/extensions/score_source_code_linker/collected_files_for_score_source_code_linker.py"],
     visibility = ["//visibility:public"],
 )
 
@@ -201,6 +196,8 @@ score_py_pytest(
 )
 
 
+                        ───────────────────────── # Source code linker ────────────────────────
+
 py_library(
     name = "score_source_code_linker",
     srcs = glob(
@@ -226,6 +223,16 @@ score_py_pytest(
     ],
 )
 
+# Collects all source files from specified targets in 'deps', and makes them available for parsing for the source_code_linker
+collect_source_files_for_score_source_code_linker(
+    name = "collected_files_for_score_source_code_linker",
+    deps = [
+        ":score_metamodel",
+        ":score_source_code_linker",
+    ],
+)
+
+
 # Needed for Dash tool to check python dependency licenses.
 filegroup(
     name = "requirements_lock",
@@ -241,3 +248,4 @@ dash_license_checker(
     src = "//docs:requirements_lock",
     visibility = ["//visibility:public"],
 )
+
