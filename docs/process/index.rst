@@ -39,14 +39,16 @@ Process Areas
 ~~~~~~~~~~~~~
 
 The process description for the SCORE project (e.g. requirements, architecture, safety management) can be found here:
+General Concepts
+~~~~~~~~~~~~~~~~
 
 .. toctree::
    :maxdepth: 1
    :glob:
 
+   general_concepts/index.rst
    process_areas/requirements_engineering/index.rst
    process_areas/safety_management/index.rst
-
 
 Process Role definition
 ~~~~~~~~~~~~~~~~~~~~~~~
