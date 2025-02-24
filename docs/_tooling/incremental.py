@@ -26,6 +26,8 @@ sphinx_main(
     [
         "docs",  # src dir
         "_build",  # out dir
+        "-W",  # treat warning as errors
+        "--keep-going",  # do not abort after one error
         "-T",  # show details in case of errors in extensions
         "--jobs",
         "auto",
