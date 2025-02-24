@@ -203,12 +203,6 @@ score_py_pytest(
     name = "score_source_code_linker_test",
     size = "small",
     srcs = glob(["_tooling/extensions/score_source_code_linker/tests/**/*.py"]),
-    args = [
-        "--basetemp /tmp/pytest",
-    ],
-    plugins = [
-        "sphinx.testing.fixtures",
-    ],
     deps = [
         ":score_source_code_linker",
     ],
