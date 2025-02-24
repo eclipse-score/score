@@ -12,8 +12,8 @@
 # *******************************************************************************
 import os
 
-from sphinx_needs.data import NeedsInfoType
 from sphinx.application import Sphinx
+from sphinx_needs.data import NeedsInfoType
 
 from score_metamodel import (
     CheckLogger,
@@ -31,7 +31,7 @@ def id_contains_feature(app: Sphinx, need: NeedsInfoType, log: CheckLogger):
 
     parts = need["id"].split("__")
 
-    if len(parts) != 3:
+    if len(parts) != 3 or need["id"].startswith("stkh_req__"):
         # No warning needed here, as this is already checked in the metamodel.
         return
 

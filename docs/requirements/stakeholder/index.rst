@@ -21,7 +21,7 @@ Overall goals
 -------------
 
 .. stkh_req:: Reuse of application software via managed APIs
-   :id: stkh_req__20
+   :id: stkh_req__overall_goals__reuse_of_app_soft
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
@@ -34,7 +34,7 @@ Overall goals
 
 
 .. stkh_req:: Enable cooperation via standardized APIs
-    :id: stkh_req__30
+    :id: stkh_req__overall_goals__enable_cooperation
     :reqtype: Non-Functional
     :security: NO
     :safety: QM
@@ -44,7 +44,7 @@ Overall goals
     The software platform shall where possible be based on existing standards (e.g. network protocols).
 
 .. stkh_req:: Variant management
-    :id: stkh_req__60
+    :id: stkh_req__overall_goals__variant_management
     :reqtype: Functional
     :security: NO
     :safety: QM
@@ -58,7 +58,7 @@ Overall goals
 
 
 .. stkh_req:: IP protection
-   :id: stkh_req__50
+   :id: stkh_req__overall_goals__ip_protection
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
@@ -75,7 +75,7 @@ Functional requirements
 -----------------------
 
 .. stkh_req:: File Based Configuration
-   :id: stkh_req__8
+   :id: stkh_req__functional_req__file_based
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -85,7 +85,7 @@ Functional requirements
    The platform shall support configuration of applications via files (e.g. yaml, json)
 
 .. stkh_req:: Support of safe Key/Value store
-   :id: stkh_req__350
+   :id: stkh_req__functiona_req__support_of_store
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
@@ -98,7 +98,7 @@ Functional requirements
    Note: This is part of 0.1 release and therefore can only support ASIL_B. Goal is ASIL_D.
 
 .. stkh_req:: Safe Configuration
-   :id: stkh_req__9
+   :id: stkh_req__functional_req__safe_config
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
@@ -110,7 +110,7 @@ Functional requirements
 
 
 .. stkh_req:: Safe Computation
-   :id: stkh_req__10
+   :id: stkh_req__functional_req__safe_comput
    :reqtype: Functional
    :security: NO
    :safety: ASIL_D
@@ -121,7 +121,7 @@ Functional requirements
 
 
 .. stkh_req:: Hardware Accelerated Computation
-   :id: stkh_req__11
+   :id: stkh_req__functional_req__hardware_comput
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -132,7 +132,7 @@ Functional requirements
 
 
 .. stkh_req:: Data Persistency
-   :id: stkh_req__12
+   :id: stkh_req__functional_req__data_persistency
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -143,7 +143,7 @@ Functional requirements
 
 
 .. stkh_req:: Operating System
-   :id: stkh_req__13
+   :id: stkh_req__functional_req__operating_system
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
@@ -153,7 +153,7 @@ Functional requirements
    The platform shall support operating systems compliant with IEEE Std 1003.1 (2004 Edition or newer)
 
 .. stkh_req:: Video subsystem
-   :id: stkh_req__340
+   :id: stkh_req__functional_req__video_subsystem
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -172,7 +172,7 @@ Functional requirements
 
 
 .. stkh_req:: Compute subsystem
-   :id: stkh_req__330
+   :id: stkh_req__functional_req__comp_subsystem
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -194,7 +194,7 @@ Functional requirements
      * GSML serialized data
 
 .. stkh_req:: Communication with external MCUs/standby controllers
-   :id: stkh_req__310
+   :id: stkh_req__functional_req__comm_with_control
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -215,7 +215,7 @@ Dependability
 -------------
 
 .. stkh_req:: Automotive Safety Integrity Level
-   :id: stkh_req__70
+   :id: stkh_req__dependability__automotive_safety
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
@@ -229,7 +229,7 @@ Dependability
 
 
 .. stkh_req:: Safety features
-   :id: stkh_req__80
+   :id: stkh_req__dependability__safety_features
    :reqtype: Functional
    :security: NO
    :safety: ASIL_D
@@ -252,7 +252,7 @@ Dependability
 
 
 .. stkh_req:: Availability
-   :id: stkh_req__90
+   :id: stkh_req__dependability__availability
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -264,7 +264,7 @@ Dependability
 
 
 .. stkh_req:: Security features
-   :id: stkh_req__140
+   :id: stkh_req__dependability__security_features
    :reqtype: Functional
    :security: YES
    :safety: QM
@@ -320,7 +320,7 @@ interaction)** — each emphasize different operational priorities.
 
 
 .. stkh_req:: Support for Time-based Architectures
-   :id: stkh_req__281
+   :id: stkh_req__app_architectures__support_time
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -332,7 +332,7 @@ interaction)** — each emphasize different operational priorities.
 
 
 .. stkh_req:: Support for Data-driven Architecture
-   :id: stkh_req__282
+   :id: stkh_req__app_architectures__support_data
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -342,7 +342,7 @@ interaction)** — each emphasize different operational priorities.
    The platform shall support an event-driven, high-throughput application architecture where execution is triggered by data changes.
 
 .. stkh_req:: Support for Request-driven Architecture
-   :id: stkh_req__283
+   :id: stkh_req__app_architectures__support_request
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -357,7 +357,7 @@ Execution model
 ---------------
 
 .. stkh_req:: Processes and thread management
-   :id: stkh_req__280
+   :id: stkh_req__execution_model__processes
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -380,7 +380,7 @@ Execution model
      * signal handling, error handling (FPU Exceptions, other traps …)
 
 .. stkh_req:: Short application cycles
-   :id: stkh_req__110
+   :id: stkh_req__execution_model__short_app_cycles
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -391,7 +391,7 @@ Execution model
    platform assumed this is supported by the underlying hardware.
 
 .. stkh_req:: Realtime capabilities
-   :id: stkh_req__111
+   :id: stkh_req__execution_model__realtime_cap
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -402,7 +402,7 @@ Execution model
    (timing events, interrupts) within a defined timing interval.
 
 .. stkh_req:: Startup performance
-   :id: stkh_req__112
+   :id: stkh_req__execution_model__startup_perf
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -413,7 +413,7 @@ Execution model
    resume from hibernate mode.
 
 .. stkh_req:: Low power mode
-   :id: stkh_req__113
+   :id: stkh_req__execution_model__low_power
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -426,7 +426,7 @@ Communication
 -------------
 
 .. stkh_req:: Inter-process Communication
-   :id: stkh_req__2
+   :id: stkh_req__communication__inter_process
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -437,7 +437,7 @@ Communication
 
 
 .. stkh_req:: Intra-process Communication
-   :id: stkh_req__3
+   :id: stkh_req__communication__intra_process
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -447,7 +447,7 @@ Communication
    The platform shall support intra-process communication.
 
 .. stkh_req:: Stable application interfaces
-   :id: stkh_req__171
+   :id: stkh_req__communication__stable_app_inter
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -458,7 +458,7 @@ Communication
    external interfaces to keep application interfaces stable.
 
 .. stkh_req:: Extensible External Communication
-   :id: stkh_req__5
+   :id: stkh_req__communication__extensible_external
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -469,7 +469,7 @@ Communication
 
 
 .. stkh_req:: Safe Communication
-   :id: stkh_req__6
+   :id: stkh_req__communication__safe
    :reqtype: Functional
    :security: NO
    :safety: ASIL_D
@@ -480,7 +480,7 @@ Communication
 
 
 .. stkh_req:: Secure Communication
-   :id: stkh_req__7
+   :id: stkh_req__communication__secure
    :reqtype: Functional
    :security: YES
    :safety: QM
@@ -490,7 +490,7 @@ Communication
    The platform shall support secure communication.
 
 .. stkh_req:: Supported network protocols
-   :id: stkh_req__160
+   :id: stkh_req__communication__supported_net
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -509,7 +509,7 @@ Communication
 
 
 .. stkh_req:: Quality of service
-   :id: stkh_req__170
+   :id: stkh_req__communication__service_quality
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -526,7 +526,7 @@ Communication
 
 
 .. stkh_req:: Automotive diagnostics
-   :id: stkh_req__180
+   :id: stkh_req__communication__auto_diagnostics
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -543,7 +543,7 @@ Hardware support
 ----------------
 
 .. stkh_req:: Chipset support for ARM64 and x64
-   :id: stkh_req__190
+   :id: stkh_req__hardware_support__chipset_support
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -554,7 +554,7 @@ Hardware support
 
 
 .. stkh_req:: Virtualization support for debug and testing
-   :id: stkh_req__200
+   :id: stkh_req__hardware_support__debug_and_test
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -566,7 +566,7 @@ Hardware support
 
 
 .. stkh_req:: Support of container technologies
-   :id: stkh_req__210
+   :id: stkh_req__hardware_support__container_tech
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -585,7 +585,7 @@ Developer experience
 --------------------
 
 .. stkh_req:: IDL Support
-   :id: stkh_req__220
+   :id: stkh_req__dev_experience__idl_support
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -597,7 +597,7 @@ Developer experience
 
 
 .. stkh_req:: Developer experience and development toolchain
-   :id: stkh_req__230
+   :id: stkh_req__dev_experience__dev_toolchain
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
@@ -616,7 +616,7 @@ Developer experience
 
 
 .. stkh_req:: Performance analysis
-   :id: stkh_req__240
+   :id: stkh_req__dev_experience__perf_analysis
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
@@ -630,7 +630,7 @@ Developer experience
    * RAM usage statistics for long-term Memory behavior
 
 .. stkh_req:: Tracing of execution
-   :id: stkh_req__241
+   :id: stkh_req__dev_experience__tracing_of_exec
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
@@ -647,7 +647,7 @@ Developer experience
    * etc.
 
 .. stkh_req:: Tracing of communication
-   :id: stkh_req__242
+   :id: stkh_req__dev_experience__tracing_of_comm
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
@@ -658,7 +658,7 @@ Developer experience
    and external communication systems.
 
 .. stkh_req:: Tracing of memory access
-   :id: stkh_req__243
+   :id: stkh_req__dev_experience__tracing_of_memory
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
@@ -672,7 +672,7 @@ Developer experience
    * GPU Memory
 
 .. stkh_req:: Timing analysis
-   :id: stkh_req__120
+   :id: stkh_req__dev_experience__timing_analysis
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -683,7 +683,7 @@ Developer experience
    timing requirements with state-of-the-art analysis tools.
 
 .. stkh_req:: Debugging
-   :id: stkh_req__250
+   :id: stkh_req__dev_experience__debugging
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -695,7 +695,7 @@ Developer experience
 
 
 .. stkh_req:: Programming languages for application development
-   :id: stkh_req__260
+   :id: stkh_req__dev_experience__prog_languages
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -703,7 +703,7 @@ Developer experience
    :status: valid
 
    The platform shall support implementation of applications in the following
-   programming languages up to the highest ASIL level as defined in :need:`stkh_req__70`:
+   programming languages up to the highest ASIL level as defined in :need:`stkh_req__dependability__automotive_safety`:
 
    * C
    * C++
@@ -711,7 +711,7 @@ Developer experience
 
 
 .. stkh_req:: Reprocessing and simulation support
-   :id: stkh_req__270
+   :id: stkh_req__dev_experience__reprocessing
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -722,7 +722,7 @@ Developer experience
 
 
 .. stkh_req:: Logging support
-   :id: stkh_req__290
+   :id: stkh_req__dev_experience__logging_support
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -739,7 +739,7 @@ Developer experience
    * Logging of early startup events
 
 .. stkh_req:: Previous boot logging
-   :id: stkh_req__291
+   :id: stkh_req__dev_experience__boot_logging
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -755,7 +755,7 @@ Integration
 -----------
 
 .. stkh_req:: Multirepo integration
-   :id: stkh_req__int_multi_repo_integration
+   :id: stkh_req__integration__multi_repo
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
@@ -769,7 +769,7 @@ Quality
 -------
 
 .. stkh_req:: Document assumptions and design decisions
-   :id: stkh_req__qly_assumptions_and_dd
+   :id: stkh_req__quality__assumptions_and_dd
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
@@ -783,7 +783,7 @@ Requirements Engineering
 ------------------------
 
 .. stkh_req:: Requirements traceability
-   :id: stkh_req__re_requirements_traceability
+   :id: stkh_req__re_requirements__traceability
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
@@ -793,7 +793,7 @@ Requirements Engineering
    All requirements shall be linked from lower to upper level, whereby the top-level are the stakeholder requirements.
 
 .. stkh_req:: Document requirements as code
-   :id: stkh_req__re_requirements_as_code
+   :id: stkh_req__requirements__as_code
    :reqtype: Non-Functional
    :security: NO
    :safety: QM

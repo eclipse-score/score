@@ -250,7 +250,7 @@ This includes error handling, which shall follow one of the error handling conce
 1. :need:`feat_req__ipc__lang_idioms`
 2. :need:`feat_req__ipc__lang_infra`
 
-Since S-CORE supports multiple programming languages (see :need:`stkh_req__260`), this leads to multiple APIs that might
+Since S-CORE supports multiple programming languages (see :need:`stkh_req__dev_experience__prog_languages`), this leads to multiple APIs that might
 diverge significantly from each other, but provide the same feature set to the user.
 To support something like this, without reimplementing the full communication stack in both languages, an abstraction
 layer within the communication framework is unavoidable.
@@ -309,9 +309,9 @@ Bindings are specified in the deployment configuration.
 
 Some possible bindings are:
 
-- IPC  (see :need:`stkh_req__2`)
-- SOME/IP (see :need:`stkh_req__160`)
-- DDS (see :need:`stkh_req__160`)
+- IPC  (see :need:`stkh_req__communication__inter_process`)
+- SOME/IP (see :need:`stkh_req__communication__supported_net`)
+- DDS (see :need:`stkh_req__communication__supported_net`)
 - fake binding (for testing)
 
 Dynamic deployment at runtime
@@ -329,7 +329,7 @@ This information is enriched through a runtime `Service discovery`.
 Tracing
 -------
 
-Based on :need:`stkh_req__242` the communication framework must support tracing of communication events.
+Based on :need:`stkh_req__dev_experience__tracing_of_comm` the communication framework must support tracing of communication events.
 In a framework with multiple bindings, this requires a zero-copy binding-agnostic tracing solution in the abstraction
 layer.
 

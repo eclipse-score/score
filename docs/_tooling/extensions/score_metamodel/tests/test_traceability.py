@@ -92,12 +92,12 @@ class TestTraceability:
             status="valid",
             safety="QM",
             satisfies=[
-                "stkh_req__3",
+                "stkh_req__communication__intra_process",
             ],
         )
 
         need_3 = tests.need(
-            id="stkh_req__3",
+            id="stkh_req__communication__intra_process",
             status="valid",
             safety="QM",
         )
@@ -114,12 +114,12 @@ class TestTraceability:
             id="feat_req__1",
             safety="ASIL_D",
             satisfies=[
-                "stkh_req__2",
+                "stkh_req__communication__inter_process",
             ],
         )
 
         need_2 = tests.need(
-            id="stkh_req__2",
+            id="stkh_req__communication__inter_process",
             status="valid",
             safety="ASIL_B",
         )
@@ -141,12 +141,12 @@ class TestTraceability:
             id="feat_req__1",
             safety="ASIL_B",
             satisfies=[
-                "stkh_req__2",
+                "stkh_req__communication__inter_process",
             ],
         )
 
         need_2 = tests.need(
-            id="stkh_req__2",
+            id="stkh_req__communication__inter_process",
             safety="QM",
         )
         needs = [need_1, need_2]

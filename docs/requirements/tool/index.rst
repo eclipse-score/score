@@ -27,7 +27,7 @@ Integration tools
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__int_multi_repo_integration
+   :satisfies: stkh_req__integration__multi_repo
    :status: valid
 
    Bazel shall be used for building, testing and integrating software.
@@ -42,7 +42,7 @@ Process tools
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__re_requirements_as_code
+   :satisfies: stkh_req__requirements__as_code
    :status: valid
 
    Spinx-needs shall be used to model all processes within SCORE.

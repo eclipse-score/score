@@ -25,9 +25,8 @@ def check_linkage_parent(app: Sphinx, needs: list[NeedsInfoType], log: CheckLogg
     # Convert list to dictionary for easy lookup
     needs_dict = {need["id"]: need for need in needs}
 
-    parents_not_correct = []
-
     for need in needs:
+        parents_not_correct = []
         for satisfie_need in need.get("satisfies", []):
             if needs_dict.get(satisfie_need, {}).get("status") != "valid":
                 parents_not_correct.append(satisfie_need)
