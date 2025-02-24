@@ -9,12 +9,12 @@ In a second step this intermediary file is parsed during sphinx build. If a requ
 ### Bazel Integration
 The extension uses two main components to integrate with bazel:
 
-1. `requirement_links.bzl`
+1. `collect_source_files`
    - Processes all files from provided deps
-   - Passes files as `--input` arguments to `requirement_links.py`
+   - Passes files as `--input` arguments to `parse_source_files.py`
    - Handles dependency tracking for incremental builds
 
-2. `requirement_links.py`
+2. `parse_source_files.py`
    - Scans input files for template tags (e.g., `# req-traceability:`)
    - Retrieves git information (hash, file location)
    - Generates mapping file with requirement IDs and links
@@ -38,7 +38,7 @@ The extension uses two main components to integrate with bazel:
    - Constructs GitHub URLs with format:
      `{base_url}/{repo}/blob/{hash}/{file}#L{line_nr}`
 
-**Note:** The base_url is defined in `requirement_links.py`. Currently set to: `https://github.com/eclipse-score/score/blob/`
+**Note:** The base_url is defined in `parse_source_files.py`. Currently set to: `https://github.com/eclipse-score/score/blob/`
 
 4. Output Generation:
    - Creates JSON mapping file:
@@ -70,21 +70,19 @@ The extension hooks into Sphinx's build process. It attaches to the `env-updated
 
 ## Usage Guide
 
-> **This part will be deleted once moved to the correct RST file**
-
 ### Adding Places to Search
 
 You can easily add files to be searched by adding targets / files to the deps inside the 
-`requirement_links` in `docs/BUILD`.
+`collect_source_files_for_score_source_code_linker` in `docs/BUILD`.
 See here:
 
-```bazel
-requirement_links(
-    name = "requirement_links",
+```starlark
+collect_source_files_for_score_source_code_linker(
+    name = "collected_files_for_score_source_code_linker",
     deps = [
         ":score_metamodel",
         ":score_source_code_linker",
-        # add extra targets here
+        # Add targets to be parsed here
     ],
 )
 ```
@@ -92,7 +90,7 @@ requirement_links(
 ### Adding Tags to Source Files
 
 In order for a source_code_link to be generated there needs to be a **tag** inside the parsed file.
-Tags are defined inside `requirements_links.py`
+Tags are defined inside `parse_source_files.py`
 
 You can use them like this:
 
@@ -144,12 +142,12 @@ The test suite should also run if you run all tests via `bazel test //...`
 ## Internal Architecture
 
 
-1. `requirement_links.bzl`:
+1. `collect_source_files`:
    - Dependency management
    - File filtering
    - Build rule definition
 
-2. `requirement_links.py`:
+2. `parse_source_files.py`:
    - File parsing
    - Git integration
    - Link generation

@@ -12,7 +12,7 @@
 # *******************************************************************************
 import pytest
 from collections import defaultdict
-from score_source_code_linker.requirement_links import (
+from score_source_code_linker.parse_source_files import (
     get_git_hash,
     extract_requirements,
     GITHUB_BASE_URL,

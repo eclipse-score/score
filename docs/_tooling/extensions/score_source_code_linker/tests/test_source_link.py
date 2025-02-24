@@ -15,7 +15,7 @@ import json
 from pathlib import Path
 from sphinx_needs.data import SphinxNeedsData
 from sphinx.testing.util import SphinxTestApp
-from score_source_code_linker.requirement_links import GITHUB_BASE_URL
+from score_source_code_linker.parse_source_files import GITHUB_BASE_URL
 
 
 @pytest.fixture(scope="session")
@@ -40,7 +40,9 @@ def sphinx_app_setup(sphinx_base_dir):
             outdir=sphinx_base_dir / "out",
             buildername="html",
             warningiserror=True,
-            confoverrides={"requirement_links": str(src_dir / "requierments.txt")},
+            confoverrides={
+                "source_code_linker_file": str(src_dir / "requierments.txt")
+            },
         )
 
         return app

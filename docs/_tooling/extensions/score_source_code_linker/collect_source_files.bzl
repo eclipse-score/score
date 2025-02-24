@@ -69,14 +69,14 @@ def _requirement_links_impl(ctx):
 
     return [DefaultInfo(files = depset([out]), runfiles = ctx.runfiles([out]))]
 
-collect_source_files_for_source_code_linker = rule(
+collect_source_files_for_score_source_code_linker = rule(
     implementation = _requirement_links_impl,
     attrs = {
         "deps": attr.label_list(
             aspects = [collected_source_files_aspect],
         ),
         "_tool": attr.label(
-            default = "//docs:requirement_links_lib",
+            default = "//docs:parsed_source_files_for_source_code_linker",
             executable = True,
             cfg = "exec",
         ),

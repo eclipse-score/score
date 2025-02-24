@@ -23,12 +23,22 @@ workspace = os.getenv("BUILD_WORKSPACE_DIRECTORY")
 if workspace:
     # This will gives us all 'output files' and their location that are required by the 'source_link' extensions
     subprocess.run(
-        ["bazel", "build", "--noremote_accept_cached", "//docs:requirement_links"],
+        [
+            "bazel",
+            "build",
+            "--noremote_accept_cached",
+            "//docs:collected_files_for_score_source_code_linker",
+        ],
         cwd=workspace,
     )
 
     process = subprocess.Popen(
-        ["bazel", "cquery", "//docs:requirement_links", "--output=files"],
+        [
+            "bazel",
+            "cquery",
+            "//docs:collected_files_for_score_source_code_linker",
+            "--output=files",
+        ],
         cwd=workspace,
         stdout=subprocess.PIPE,
     )
@@ -47,6 +57,6 @@ sphinx_main(
         "auto",
         "--conf-dir",
         "docs",
-        f"-Drequirement_links={output_files}",
+        f"--define=source_code_linker_file={output_files}",
     ]
 )

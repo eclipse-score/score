@@ -12,8 +12,7 @@
 # *******************************************************************************
 import json
 from copy import deepcopy
-from score_source_code_linker.requirement_links import GITHUB_BASE_URL
-
+from score_source_code_linker.parse_source_files import GITHUB_BASE_URL
 from sphinx.application import Sphinx
 from sphinx_needs.data import SphinxNeedsData
 from sphinx_needs.logging import get_logger
@@ -39,7 +38,7 @@ def setup(app: Sphinx) -> dict:
             }
     """
     app.connect("env-updated", add_source_link)
-    app.add_config_value("requirement_links", "", rebuild="env")
+    app.add_config_value("source_code_linker_file", "", rebuild="env")
     return {
         "version": "0.1",
         "parallel_read_safe": True,
@@ -61,7 +60,7 @@ def find_dir_paths(app: Sphinx) -> list[str]:
         Example:
             [file-1, file-2]
     """
-    return [app.config.requirement_links]
+    return [app.config.source_code_linker_file]
 
 
 def add_source_link(app: Sphinx, env) -> None:
