@@ -88,8 +88,8 @@ General
 
 .. workproduct:: Platform Management Plan
    :id: wp__platform_mgmt
-   :status: draft
-   :tags: safety_management
+   :status: valid
+   :complies: std_wp_iso26262__support_6, std_wp_iso26262__support_7, std_wp_iso26262__support_14, std_wp_iso26262__support_15
 
    The Platform Management Plan shall include the Project Management Plan, Configuration Management Plan, Change Management Plan, Documentation Management Plan and Problem Resolution Plan.
    Plan to ensure that all work products can be uniquely identified and reproduced in a controlled manner at any time.
