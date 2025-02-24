@@ -32,12 +32,12 @@ needs_types:
     mandatory_links:
       input: "^wp__.*$"
       output: "^wp__.*$"
-      contains: "^gd_(req|temp|chklst|guidl|meth)__.*$"
-      has: "^doc_(getstrt|concept)__.*$"
       approved_by: "^rl__.*$"
       responsible: "^rl__.*$"
     optional_links:
       supported_by: "^rl__.*$"
+      contains: "^gd_(req|temp|chklst|guidl|meth)__.*$"
+      has: "^doc_(getstrt|concept)__.*$"
   # Guidances
   gd_req:
     title: "Process Requirements"
@@ -45,7 +45,7 @@ needs_types:
     mandatory_options:
       id: "^gd_req__[0-9a-z_]*$"
       status: "^(valid|draft)$"
-    mandatory_links:
+    optional_links:
       complies: "std_req__(iso26262|iso21434|isopas8926|aspice_40)__.*$"
 
   gd_temp:
@@ -54,7 +54,7 @@ needs_types:
     mandatory_options:
       id: "^gd_temp__[0-9a-z_]*$"
       status: "^(valid|draft)$"
-    mandatory_links:
+    optional_links:
       complies: "std_req__(iso26262|iso21434|isopas8926|aspice_40)__.*$"
 
   gd_chklst:
@@ -63,7 +63,7 @@ needs_types:
     mandatory_options:
       id: "^gd_chklst__[0-9a-z_]*$"
       status: "^(valid|draft)$"
-    mandatory_links:
+    optional_links:
       complies: "std_req__(iso26262|iso21434|isopas8926|aspice_40)__.*$"
 
   gd_guidl:
@@ -72,7 +72,7 @@ needs_types:
     mandatory_options:
       id: "^gd_guidl__[0-9a-z_]*$"
       status: "^(valid|draft)$"
-    mandatory_links:
+    optional_links:
       complies: "std_req__(iso26262|iso21434|isopas8926|aspice_40)__.*$"
 
   gd_method:
@@ -81,7 +81,7 @@ needs_types:
     mandatory_options:
       id: "^gd_meth__[0-9a-z_]*$"
       status: "^(valid|draft)$"
-    mandatory_links:
+    optional_links:
       complies: "std_req__(iso26262|iso21434|isopas8926|aspice_40)__.*$"
   # Score Workproduct
   workproduct:
@@ -90,7 +90,7 @@ needs_types:
     mandatory_options:
       id: "^wp__[0-9a-z_]*$"
       status: "^(valid|draft)$"
-    mandatory_links:
+    optional_links:
       complies: "std_(wp__iso26262|wp__iso21434|wp__isopas8926|iic_aspice_40)__.*$"
   # Role
   role:
@@ -125,7 +125,7 @@ needs_types:
     mandatory_options:
       id: "^doc__[0-9a-z_]*$"
       safety: "^(QM|ASIL_B|ASIL_D)$"
-      status: "^(valid|invalid)$"
+      status: "^(valid|draft|invalid)$"
   # Requirements
   stkh_req:
     title: "Stakeholder Requirement"
@@ -191,7 +191,7 @@ needs_types:
       safety: "^(QM|ASIL_B|ASIL_D)$"
       status: "^(valid|invalid)$"
     mandatory_links:
-      satisfies: "^gd_.*$"
+      satisfies: "^stkh_req__.*$"
     optional_options:
       codelink: "^.*$"
       testlink: "^.*$"
@@ -366,12 +366,12 @@ needs_extra_links:
     outgoing: "responsible"
 
   approved_by:
-    incoming: "approved by"
-    outgoing: "approves"
+    incoming: "approves"
+    outgoing: "approved by"
 
   supported_by:
-    incoming: "supported by"
-    outgoing: "supports"
+    incoming: "supports"
+    outgoing: "supported by"
 
   # Workproduct
   complies:
