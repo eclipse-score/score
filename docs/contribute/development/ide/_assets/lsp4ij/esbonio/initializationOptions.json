@@ -1,0 +1,16 @@
+{
+  "previewManager": false,
+  "server": {
+    "pythonPath": "${workspaceFolder}/.venv_docs/bin/python",
+    "installBehavior": "nothing",
+    "logLevel": "debug"
+  },
+  "sphinx": {
+    "pythonPath": "${workspaceFolder}/.venv_docs/bin/python",
+    "pythonCommand": ".venv_docs/bin/python",
+    "srcDir": "${workspaceFolder}/docs",
+    "confDir": "${workspaceFolder}/docs",
+    "buildDir": "${workspaceFolder}/_build",
+    "buildCommand": ["docs", "_build", "--jobs", "auto", "--conf-dir", "docs"]
+  }
+}
