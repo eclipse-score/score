@@ -52,7 +52,7 @@ Feature Safety Work Products Template
       - <link to WP>
       - <automated>
 
-    * - :need:`wp__feature_architecture`
+    * - :need:`wf__cr_mt_featarch`
       - <link to process>
       - <automated>
       - <link to issue>

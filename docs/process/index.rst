@@ -46,7 +46,6 @@ The process description for the SCORE project (e.g. requirements, architecture, 
 
    process_areas/index.rst
 
-
 Process Role definition
 ~~~~~~~~~~~~~~~~~~~~~~~
 

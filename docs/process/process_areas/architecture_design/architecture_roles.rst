@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,15 +12,18 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Workflows
-=========
+Roles
+#####
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Contents:
+For architecture design no additional roles need to be defined.
 
-   process_management
-   platform_management
-   change_management
-   quality_management
-   safety_analysis
+Contributing Roles:
+
+   * :need:`Contributor <rl__contributor>`
+   * :need:`Committer <rl__committer>`
+   * :need:`Safety Manager <rl__safety_manager>`
+   * :need:`Security Manager <rl__security_manager>`
+
+A detailed overview of the responsibility for the steps of the architecture design process is listed here:
+
+:ref:`arch_workflow`
