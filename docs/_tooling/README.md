@@ -1,19 +1,19 @@
 # Score Project Tooling Development Guide
 
-*This document is meant for *developers* of the `_tooling` aspect of the score repository.*  
+*This document is meant for *developers* of the `_tooling` of docs in the score repository.*  
 It should be treated as a 'get-started' guide, giving you all needed information to get up and running.
 
 ## Quick Start
 
-1. Install Bazelisk (version manager for Bazel)
-2. Clone the repository  
-3. Setup the environment
+1. Clone the repository  
+2. Setup the environment
 - *No Devcontainer*
-    1. Create the Python virtual environment:
+    1. Install Bazelisk (version manager for Bazel)
+    2. Create the Python virtual environment:
    ```bash
    bazel run //docs:ide_support
    ```
-    2. Select `.venv_docs/bin/python` as the python interpreter inside your IDE  
+    3. Select `.venv_docs/bin/python` as the python interpreter inside your IDE  
     *Note: This virtual environment does **not** have pip, therefore `pip install` is not available.*  
 <br>
 
@@ -26,15 +26,18 @@ It should be treated as a 'get-started' guide, giving you all needed information
 
 - **Operating System**: Linux (required)
 - **Core Tools**:
-  - Bazel 7.4.0 (via Bazelisk)
-  - Python 3.12
+  - Bazel 
+  - Python 
   - Git
+  - **VSCode** (Optional)
+    - Several integrations and guides are development primarily with VS Code in mind.
+
+For current versions used please see the [requirement lockfile](/docs/_tooling/requirement_lock.txt)
 
 
 ### Key external tools used inside `_tooling`
 
 1. **Bazel Build System**
-   - Version: 7.4.0
    - Primary build orchestrator
    - Handles dependency management
    - Coordinates testing and documentation
@@ -42,7 +45,7 @@ It should be treated as a 'get-started' guide, giving you all needed information
 
 2. **Documentation Tools**
    - Sphinx with custom extensions
-   - Esbonio 0.16.5 for IDE integration
+   - Esbonio for IDE integration
    - Real-time documentation validation
 
 3. **Development Tools**
@@ -66,65 +69,10 @@ docs/_tooling/
 └── templates/        # Documentation templates
 ```
 
-## Development Workflow
 
+Find all important bazel commands in the [project README](/README.md)
 
-#### Documentation Development
-```bash
-# Incremental documentation build (recommended during development)
-bazel run //docs:incremental
-
-# Full documentation build
-bazel build //docs:docs
-```
-
-#### Testing
-```bash
-# Run all tests
-bazel test //...
-
-# Run specific test suite
-bazel test //docs:<test_suite_name>
-```
-
-#### Code Quality
-```bash
-# Format checking
-bazel test //:format.check
-
-# Auto-format code
-bazel run //:format.fix
-
-# Copyright headers check
-bazel run //:copyright.check
-bazel run //:copyright.fix
-```
-
-### Adding New Test Suites
-
-To add a new test suite to the build system:
-
-1. Create a new entry in `docs/BUILD`:
-```python
-py_library(
-    name = "your_tool",
-    srcs = glob(["_tooling/your_tool/**/*.py"]),
-    imports = ["required_imports"],
-    visibility = ["//visibility:public"],
-)
-
-score_py_pytest(
-    name = "your_tool_test",
-    size = "small",  # small/medium/large
-    srcs = glob(["_tooling/your_tool/tests/**/*.py"]),
-    deps = [":your_tool"],
-)
-```
-
-2. Run your tests:
-```bash
-bazel test //docs:your_tool_test
-```
+Find everything related to testing and how to add your on test suite [here](/tools/testing/pytest/README.md)
 
 ## Developing new tools
 
