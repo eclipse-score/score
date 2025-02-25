@@ -12,28 +12,17 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+.. _contribute:
+
+Contribute
 ##########
- Branches
-##########
 
-.. _branch_naming:
+.. toctree::
+   :maxdepth: 2
 
-*******************
- Naming Convention
-*******************
+   general/index
+   contribution_request/index
+   documentation/index
+   development/index
+   ci/index
 
-In order to keep an overview which branch belongs to whom the branch
-name also should be descriptive. The following rules shall apply:
-
-#. The branch name shall start with your github username. This will make
-   it easier for everybody to identify the owner of the branch.
-#. Branch names must be lower case.
-#. Concatenation is done by underscores _.
-
-An example could look like this:
-
-Mustermann, GitHub Name: maximuster
-
-.. code::
-
-   maximuster_my_awesome_branch_name

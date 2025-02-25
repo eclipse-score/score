@@ -55,7 +55,7 @@ To activate this feature, use the following feature flag:
 
     .. note::
      The feature flag must reflect the feature name in snake_case. Further, it is prepended with ``experimental_``, as
-     long as the feature is not yet stable. See :doc:`/process/guidance/feature_flags/index` for more information.
+     long as the feature is not yet stable. See :ref:`feature_flags` for more information.
 
 
 Abstract

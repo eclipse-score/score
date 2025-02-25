@@ -12,11 +12,10 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Guidance
-========
+Contribution Request
+####################
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
-   docs-as-code
-   publishing-gh-pages
+   contribution_request

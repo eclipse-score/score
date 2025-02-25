@@ -12,9 +12,9 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-###############################
- Contribution Request Guideline
-###############################
+
+Contribution Request Guideline
+##############################
 
 .. gd_guidl:: Contribution Request Guideline
   :id: gd_guidl__contr_request_guideline

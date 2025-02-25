@@ -42,7 +42,6 @@ The process description for the SCORE project (e.g. requirements, architecture, 
 
 .. toctree::
    :maxdepth: 1
-   :glob:
 
    process_areas/index.rst
 
@@ -52,7 +51,6 @@ Process Role definition
 
 .. toctree::
    :maxdepth: 1
-   :glob:
 
    roles/index.rst
 
@@ -61,7 +59,6 @@ Workproducts
 
 .. toctree::
    :maxdepth: 1
-   :glob:
 
    workproducts/index.rst
 
@@ -70,20 +67,15 @@ Workflows
 
 .. toctree::
    :maxdepth: 1
-   :glob:
 
    workflows/index.rst
 
-Process Guidances
+How To Contribute
 -----------------
 
-The guidance for the SCORE project (e.g. templates, guidelines, checklists) can be found here:
+How to contribute to the SCORE project (e.g. naming convention, folder structure, IDE setup) can be found here:
 
-.. toctree::
-   :maxdepth: 1
-   :glob:
-
-   guidance/index.rst
+:ref:`contribute`
 
 Standards
 ---------
@@ -92,6 +84,5 @@ The the standard references the SCORE project's processes are derived from can b
 
 .. toctree::
    :maxdepth: 1
-   :glob:
 
    standards/index.rst

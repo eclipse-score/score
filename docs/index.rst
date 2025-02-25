@@ -118,7 +118,7 @@ Project structure and processes
       ^^^
       Understand how we work, by reading our :ref:`Process description <process_description>`.
       And receive tips & tricks for our used tool stack by reading the
-      :ref:`Guidance <process_guidance>`.
+      :ref:`contribute`.
 
    .. grid-item-card::
 
@@ -131,11 +131,11 @@ Project structure and processes
 .. dropdown:: Click to see the complete sitemap
 
    .. toctree::
-      :maxdepth: 3
+      :maxdepth: 1
 
       requirements/index
       features/index
-      guidance/index
+      contribute/index
       Releases <score_releases/index.rst>
       process/index
       PMP <platform_management_plan/index.rst>

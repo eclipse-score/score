@@ -12,18 +12,10 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _process_guidance:
-
-#########
- Guidance
-#########
+Documentation
+#############
 
 .. toctree::
    :maxdepth: 1
-   :glob:
 
-   git/index.rst
-   branch/index.rst
-   feature_flags/index.rst
-   general/index.rst
-   contribution_request/index.rst
+   docs-as-code

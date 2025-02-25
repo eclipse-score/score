@@ -14,12 +14,10 @@
 
 .. _contribution_templates:
 
-#######################
- Contribution Templates
-#######################
+Contribution Templates
+######################
 
 .. toctree::
    :maxdepth: 1
-   :glob:
 
    feature_request_template.rst
