@@ -19,9 +19,9 @@ needs_layouts = {
                 '<<meta("title")>>',
             ],
             "head": [
-                'status: **<<meta("status")>>**',
-                'security: **<<meta("security")>>**',
-                'safety: **<<meta("safety")>>**',
+                '<<meta("status",prefix="status: ")>>',
+                '<<meta("security",prefix="security: ")>>',
+                '<<meta("safety",prefix="safety: ")>>',
             ],
             "head_right": [
                 '<<collapse_button("meta",collapsed="icon:arrow-down-circle", visible="icon:arrow-right-circle", initial=False)>> '
