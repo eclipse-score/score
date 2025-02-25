@@ -30,7 +30,6 @@ def get_need_type(needs_types: list[NeedsInfoType], directive: str):
     raise ValueError(f"Need type {directive} not found in needs_types")
 
 
-# req-traceability: TOOL_REQ__toolchain_sphinx_needs_build__options
 @local_check
 def check_options(
     app: Sphinx,

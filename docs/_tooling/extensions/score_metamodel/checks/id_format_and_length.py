@@ -18,7 +18,6 @@ from sphinx_needs.data import NeedsInfoType
 from score_metamodel import CheckLogger, local_check
 
 
-# req-Id: TOOL_REQ__toolchain_sphinx_needs_build__requirement_attributes_uid
 @local_check
 def check_id_format(app: Sphinx, need: NeedsInfoType, log: CheckLogger):
     """

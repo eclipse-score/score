@@ -16,7 +16,6 @@ from sphinx_needs.data import NeedsInfoType
 from score_metamodel import CheckLogger, graph_check
 
 
-# req-traceability: TOOL_REQ__toolchain_sphinx_needs_build__requirement_linkage_status
 @graph_check
 def check_linkage_parent(app: Sphinx, needs: list[NeedsInfoType], log: CheckLogger):
     """
@@ -40,7 +39,6 @@ def check_linkage_parent(app: Sphinx, needs: list[NeedsInfoType], log: CheckLogg
             log.warning_for_need(need, msg)
 
 
-# req-traceability: TOOL_REQ__toolchain_sphinx_needs_build__requirement_linkage_safety_check
 @graph_check
 def check_linkage_safety(app: Sphinx, needs: list[NeedsInfoType], log: CheckLogger):
     """
@@ -84,7 +82,6 @@ def check_linkage_safety(app: Sphinx, needs: list[NeedsInfoType], log: CheckLogg
             log.warning_for_need(need, msg)
 
 
-# req-traceability: TOOL_REQ__toolchain_sphinx_needs_build__requirement_linkage_status_check
 @graph_check
 def check_linkage_status(app: Sphinx, needs: list[NeedsInfoType], log: CheckLogger):
     """

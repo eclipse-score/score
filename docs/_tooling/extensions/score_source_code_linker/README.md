@@ -19,8 +19,6 @@ The extension uses two main components to integrate with bazel:
    - Retrieves git information (hash, file location)
    - Generates mapping file with requirement IDs and links
 
-**Note:** The extension also works when you use `bazel run //docs:incremental`
-
 ### Link Generation Process
 
 1. File Discovery:
@@ -28,28 +26,43 @@ The extension uses two main components to integrate with bazel:
    - Filters for relevant file types
    - Creates file list for processing
 
+<br>
+
 2. Tag Processing:
    - Scans files for template strings
    - Extracts requirement IDs
    - Maps IDs to file locations
+   - *Git Integration*:
+       - Gets current git hash for each file
+       - Constructs GitHub URLs with format:
+         `{base_url}/{repo}/blob/{hash}/{file}#L{line_nr}`
+        **Note:** The base_url is defined in `parse_source_files.py`. Currently set to: `https://github.com/eclipse-score/score/blob/`  
 
-3. Git Integration:
-   - Gets current git hash for each file
-   - Constructs GitHub URLs with format:
-     `{base_url}/{repo}/blob/{hash}/{file}#L{line_nr}`
+Produces JSON mapping file:
+```json
+{
+    "REQ_ID": [
+        "github_link1",
+        "github_link2"  // If multiple implementations exist
+    ]
+}
+```
 
-**Note:** The base_url is defined in `parse_source_files.py`. Currently set to: `https://github.com/eclipse-score/score/blob/`
+<br>
 
-4. Output Generation:
-   - Creates JSON mapping file:
-     ```json
-     {
-         "REQ_ID": [
-             "github_link1",
-             "github_link2"  // If multiple implementations exist
-         ]
-     }
-     ```
+3. Sphinx extension & Sphinx-needs:
+    - Parses JSON file
+    - Adds 'url-string' to needs
+    - Converts 'url-string' to clickable link
+
+<hr>
+
+> An overview of the data flow inside the extension and it's parts
+
+![Data flow inside extension](data_flow.png)
+
+---
+
 
 ### Sphinx Integration
 The extension hooks into Sphinx's build process. It attaches to the `env-updated` event.
