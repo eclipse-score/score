@@ -44,8 +44,7 @@ The process description for the SCORE project (e.g. requirements, architecture, 
    :maxdepth: 1
    :glob:
 
-   process_areas/requirements_engineering/index.rst
-   process_areas/safety_management/index.rst
+   process_areas/index.rst
 
 
 Process Role definition

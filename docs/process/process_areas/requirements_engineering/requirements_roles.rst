@@ -12,17 +12,18 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _requirements_engineering:
+Roles
+#####
 
-Requirements Engineering
-########################
+For requirements engineering no additional roles need to be defined.
 
-.. toctree::
-   :maxdepth: 1
+Contributing Roles:
 
-   requirements_getstrt
-   requirements_concept
-   guidance/index
-   requirements_roles
-   requirements_workflow
-   requirements_workproducts
+   * :need:`Contributor <rl__contributor>`
+   * :need:`Committer <rl__committer>`
+   * :need:`Safety Manager <rl__safety_manager>`
+   * :need:`Security Manager <rl__security_manager>`
+
+A detailed overview of the responsibility for the steps of the requirement process is listed here:
+
+:ref:`workflow_requirements`

@@ -12,17 +12,19 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _requirements_engineering:
-
-Requirements Engineering
-########################
+Guidance
+########
 
 .. toctree::
    :maxdepth: 1
+   :glob:
 
-   requirements_getstrt
-   requirements_concept
-   guidance/index
-   requirements_roles
-   requirements_workflow
-   requirements_workproducts
+   guideline_safety_management.rst
+   guideline_component_classification.rst
+   template_feature_safety_wp.rst
+   template_module_safety_plan.rst
+   template_component_classification.rst
+   template_safety_manual.rst
+   checklist_safety_plan_cmr.rst
+   checklist_safety_case_cmr.rst
+   process_req.rst

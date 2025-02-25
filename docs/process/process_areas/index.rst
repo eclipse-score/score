@@ -12,17 +12,12 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _requirements_engineering:
-
-Requirements Engineering
-########################
+Process Areas
+#############
 
 .. toctree::
    :maxdepth: 1
+   :glob:
 
-   requirements_getstrt
-   requirements_concept
-   guidance/index
-   requirements_roles
-   requirements_workflow
-   requirements_workproducts
+   requirements_engineering/index.rst
+   safety_management/index.rst

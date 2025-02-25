@@ -117,12 +117,4 @@ Guidance
    :maxdepth: 1
    :glob:
 
-   guidance/guideline_safety_management.rst
-   guidance/guideline_component_classification.rst
-   guidance/template_feature_safety_wp.rst
-   guidance/template_module_safety_plan.rst
-   guidance/template_component_classification.rst
-   guidance/template_safety_manual.rst
-   guidance/checklist_safety_plan_cmr.rst
-   guidance/checklist_safety_case_cmr.rst
-   guidance/process_req.rst
+   guidance/index.rst
