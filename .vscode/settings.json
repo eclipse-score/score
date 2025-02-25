@@ -1,15 +1,14 @@
 {
     // General Settings
     "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
     "editor.insertSpaces": true,
     "editor.tabCompletion": "on",
-
     // Default for any filetype
     "editor.rulers": [
         99
     ],
-
     // Exclude build, temp and cache folders
     "files.watcherExclude": {
         ".*/**": true,
@@ -18,7 +17,6 @@
         ".venv*/**": true,
         "_build/**": true,
     },
-
     // Python Settings
     // Exclude build, temp and cache folders
     "python.analysis.exclude": [
@@ -41,17 +39,15 @@
         },
         "editor.defaultFormatter": "charliermarsh.ruff",
     },
-
     // Markdown Settings
     "[markdown]": {
         // We mostly write markdown in some combination with python,
         // so we use the same rulers as python.
         "editor.rulers": [
-            79, 99
+            79,
+            99
         ]
     },
-
-
     // RST Settings
     "[restructuredtext]": {
         "editor.tabSize": 3,
@@ -93,7 +89,6 @@
         "--ignore-glob=bazel-*/*",
         "--ignore-glob=.venv_docs/*",
         "--ignore-glob=_build/*",
-
     ],
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true,

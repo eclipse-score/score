@@ -13,8 +13,23 @@
 
 import os
 import subprocess
+import argparse
+import debugpy
 
-from sphinx.cmd.build import main as sphinx_main  # type: ignore
+from sphinx.cmd.build import main as sphinx_main
+
+
+parser = argparse.ArgumentParser()
+parser.add_argument("-p", "--port", help="port to listen to client", default=5678)
+parser.add_argument("--debug", help="Select Debugging", action="store_true")
+args = parser.parse_args()
+if args.debug:
+    debugpy.listen(("0.0.0.0", args.port))
+    print("Waiting for client to connect on port: " + str(args.port))
+    debugpy.wait_for_client()
+    pass
+else:
+    print("No debugging selected")
 
 # sphinx will print relative paths to the current directory.
 # Change to the workspace root so that the paths are readable and clickable.
@@ -50,7 +65,6 @@ if workspace:
     output_files = process.stdout.readline().decode().strip() if process.stdout else ""
 
     os.chdir(workspace)
-
 
 sphinx_main(
     [
