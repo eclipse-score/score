@@ -43,6 +43,7 @@ extensions = [
     "sphinxcontrib.plantuml",
     "score_plantuml",
     "score_metamodel",
+    "header_service.header_service",
     "score_draw_uml_funcs",
 ]
 
@@ -127,5 +128,10 @@ html_context = {
 
 # Setting the needs layouts
 needs_layouts = layouts.needs_layouts
+needs_template_folder = "_templates"
 needs_global_options = {"collapse": True}
 needs_global_options = needs_global_options | layouts.needs_global_options
+
+# Specify method for automatic header generation
+# set to False to use the commit message instead
+header_service_use_github_data = True
