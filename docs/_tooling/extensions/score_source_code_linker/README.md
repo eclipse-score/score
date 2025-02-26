@@ -43,7 +43,7 @@ Produces JSON mapping file:
 {
     "REQ_ID": [
         "github_link1",
-        "github_link2"  // If multiple implementations exist
+        "github_link2"  // If multiple code-links exist
     ]
 }
 ```
