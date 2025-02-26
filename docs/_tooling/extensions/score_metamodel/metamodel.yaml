@@ -49,7 +49,8 @@ needs_types:
       id: "^gd_req__[0-9a-z_]*$"
       status: "^(valid|draft)$"
     optional_links:
-      complies: "std_req__(iso26262|iso21434|isopas8926|aspice_40)__.*$"
+      complies: "^std_req__(iso26262|iso21434|isopas8926|aspice_40)__.*$"
+      satisfies: "^wf__.*$"
 
   gd_temp:
     title: "Process Template"

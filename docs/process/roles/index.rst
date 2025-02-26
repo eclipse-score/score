@@ -80,8 +80,6 @@ SCORE Management Roles
 .. role:: Quality Manager
    :id: rl__quality_manager
    :status: valid
-   :security: no
-   :safety: no
    :tags: quality_management
    :contains: rl__committer
 
@@ -89,7 +87,6 @@ SCORE Management Roles
 
 .. role:: Security Manager
    :id: rl__security_manager
-   :security: yes
    :status: draft
    :tags: quality_management
    :contains: rl__committer
@@ -98,8 +95,6 @@ SCORE Management Roles
 
 .. role:: Module Project Lead
    :id: rl__module_lead
-   :security: yes
-   :safety: yes
    :status: valid
    :tags: project_management
    :contains: rl__committer
@@ -112,8 +107,6 @@ SCORE process roles
 .. role:: Process Community Member
    :id: rl__process_community
    :status: valid
-   :security: yes
-   :safety: yes
    :tags: process_management
    :contains: rl__committer
 
@@ -126,8 +119,6 @@ SCORE development roles
 .. role:: Infrastructure Tooling Community Member
    :id: rl__infrastructure_tooling_community
    :status: valid
-   :security: yes
-   :safety: yes
    :tags: development
    :contains: rl__committer
 
@@ -146,8 +137,6 @@ SCORE development roles
 .. role:: Committer
    :id: rl__committer
    :status: valid
-   :security: yes
-   :safety: yes
    :tags: development
 
    (Eclipse) Open Source Role, person(s) who accept(s) possible contribution(s) as pull request(s) to the main line and maintains the product.
@@ -161,8 +150,6 @@ SCORE cross functional teams
 .. role:: Platform Team
    :id: rl__platform_team
    :status: valid
-   :security: yes
-   :safety: yes
    :tags: cross_functional
    :contains: rl__technical_lead, rl__safety_manager, rl__quality_manager, rl__security_manager, rl__contributor, rl__committer, rl__infrastructure_tooling_community, rl__process_community
 
@@ -171,8 +158,6 @@ SCORE cross functional teams
 .. role:: Module Team
    :id: rl__module_team
    :status: valid
-   :security: yes
-   :safety: yes
    :tags: cross_functional
    :contains: rl__module_lead, rl__safety_manager, rl__quality_manager, rl__security_manager, rl__contributor, rl__committer
 
