@@ -46,6 +46,14 @@ load("@rules_python//sphinxdocs:sphinx.bzl", "sphinx_build_binary", "sphinx_docs
 load("//tools/dash:dash.bzl", "dash_license_checker")
 load("//tools/testing/pytest:defs.bzl", "score_py_pytest")
 
+config_setting(
+    name = "ci_build",
+    values = {
+        # Matches when user passes --define=CI_BUILD=true
+        "define": "CI_BUILD=true",
+    },
+)
+
 sphinx_requirements = all_requirements + [
     "@rules_python//python/runfiles",
     ":plantuml_for_python",

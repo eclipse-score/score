@@ -59,3 +59,40 @@ This will:
 1. Use dash_format_converter to process requirements_lock.txt.
 2. Create a java_binary target that executes the DASH license checker with the converted file.
 3. Ensure compliance with dependency licensing requirements in your project.
+
+
+## Local vs. CI Execution
+
+### Local Development
+
+By default, simply run:
+
+```bash
+bazel run //tools/dash:license.check.my_project_license_check
+```
+
+If we're not enabling review mode (no --define=CI_BUILD=true), the checker will parse
+the dependencies without requiring an authentication token or performing any “review” logic.
+
+
+### CI Integration
+
+In the Continuous Integration (CI) pipeline  we'll typically:
+
+Pass `--define=CI_BUILD=true` to enable review mode (via a select() in the BUILD file).
+Supply additional parameters (like -token, -project, -repo) at runtime after the double dash (--).
+
+
+- `--define=CI_BUILD=true` triggers your macro to append `-review` (if configured).
+- `-project`, `-repo`, and `-token` are passed directly to the resulting Java process at runtime.
+All secrets (like the token) are injected from the GitHub Actions environment or repository secrets
+and **never stored in Bazel’s BUILD files**.
+
+
+### Security Considerations
+- **Token passing**: Always supply tokens and other secrets at runtime
+(-token "${{ secrets.ECLIPSE_GITLAB_API_TOKEN }}") rather than hardcoding them in BUILD files.
+
+- **review mode**: Typically only enabled in CI, since we individual developers won't be granted access tokens
+
+- **Hermetic builds**: The build remains hermetic and consistent, while secrets are introduced only at runtime.
