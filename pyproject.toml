@@ -1,0 +1,35 @@
+# This file is at the root level, as it applies to all Python code,
+# not only to docs or to tools.
+
+[tool.pyright]
+typeCheckingMode = "standard"
+pythonVersion = "3.12" # Keep in sync with MODULE.bazel
+
+exclude = [
+    "**/__pycache__",
+    ".DS_Store",
+    "bazel-*",
+]
+
+[tool.ruff]
+target-version = "py312"
+extend-exclude = [
+    "bazel-*",
+]
+
+# Selected rules for clean code, readability, and bug prevention
+select = [
+    "E",    # pycodestyle (PEP8)
+    "F",    # pyflakes (undefined vars, unused imports)
+    "I",    # isort (import sorting)
+    "B",    # flake8-bugbear (likely bugs)
+    "C90",  # mccabe (complexity checks)
+    "UP",   # pyupgrade (modern Python 3.12+ features)
+    "SIM",  # flake8-simplify (simplifies code patterns)
+    "RET"   # flake8-return (consistent return statements)
+]
+
+ignore = [
+    # Rules we want to ignore go in here.
+    # Always provide a comment explaining why.
+]
