@@ -64,28 +64,6 @@ General
    | * Identifies the associated quality criteria
    | * Identifies any associated measurements using the information
 
-.. workproduct:: Issue tracking system
-   :id: wp__issue_track_system
-   :status: draft
-   :tags: requirements_management, safety_management
-
-   | - Identified safety anomaly reports
-   | - Change requests (= Contribution Request)
-   | - Impact analysis
-   | - change request plan
-   | - Change report
-   |
-   | Safety anomaly: Conditions that deviate from expectations and that can lead to harm.
-   | The documentation of a change shall contain the list of changed work products, the details of the change and the planned date of deployment of the change.
-
-.. workproduct:: Feature Request
-   :id: wp__feat_request
-   :status: draft
-   :tags: contribution_management, safety_management
-
-   | - Feature request
-   | - Change request
-
 .. workproduct:: Platform Management Plan
    :id: wp__platform_mgmt
    :status: valid
