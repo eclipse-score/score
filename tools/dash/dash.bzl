@@ -47,7 +47,17 @@ def dash_license_checker(
         runtime_deps = [
             "@dash_license_tool//jar",
         ],
-        args = ["$(location :{}2dash)".format(name)],
+        # We'll build up "args" in the order: [ static options ] + select() + [ file last ]
+        args = [
+            # If we have any always-on flags, put them here
+        ] + select({
+            # If CI_BUILD=true, add "-review"
+            ":ci_build": ["-review"],
+            "//conditions:default": [],
+        }) + [
+            # The file is last
+            "$(location :{}2dash)".format(name),
+        ],
         data = [
             ":{}2dash".format(name),
         ],

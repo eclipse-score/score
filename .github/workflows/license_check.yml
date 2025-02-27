@@ -47,6 +47,13 @@ jobs:
           repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
       - name: Setup Bazel
         uses: bazel-contrib/setup-bazel@0.9.1
+      - name: Derive project shortname and repo URL
+        run: |
+          # Convert slash to dot for the Dash shortname
+          SHORTNAME=$(echo "${GITHUB_REPOSITORY}" | tr '/' '.')
+          REPO_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git"
+          echo "SHORTNAME=$SHORTNAME" >> $GITHUB_ENV
+          echo "REPO_URL=$REPO_URL" >> $GITHUB_ENV
       - name: Run license checks
         run: |
           # The bash script won't fail on error. We capture the stderr and stdout and we save
@@ -54,7 +61,12 @@ jobs:
           # The output will also be stored in a file using the tee command
           # We save both  output and exit code in the GH actions env file
           set +e  # Ensure script does not exit on failure, even if the bazel run fails, the execution will continue
-          OUTPUT=$(bazel run //:license.check.python 2>&1)
+          OUTPUT=$(
+            bazel run //docs:license.check.python --define=CI_BUILD=true -- \
+              -project "$SHORTNAME" \
+              -repo "$REPO_URL" \
+              -token "${{ secrets.ECLIPSE_GITLAB_API_TOKEN }}" 2>&1
+          )
           EXIT_CODE=$?
           echo "$OUTPUT" | tee license-check-output.txt
           echo "exit_code=$EXIT_CODE" >> $GITHUB_ENV
