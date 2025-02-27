@@ -120,8 +120,8 @@ This document implements <add "need" link>
           - <Link to WP>
           - <automated>
 
-        * - :need:`wp__module_sw_verification_report`
-          - :ref:`sw_verification`
+        * - :need:`wp__verification__module_ver_report`
+          - :ref:`process_verification`
           - <automated>
           - <Link to issue>
           - <Link to WP>
@@ -145,14 +145,14 @@ This document implements <add "need" link>
           - Link to WP
           - WP status
 
-        * - :need:`wp__sw_component_req`
+        * - :need:`wp__requirements__comp`
           - <Link to process>
           - <automated>
           - <Link to issue>
           - <Link to WP>
           - <automated>
 
-        * - :need:`wp__sw_component_aou`
+        * - :need:`wp__requirements__comp_aou`
           - <Link to process>
           - <automated>
           - <Link to issue>
@@ -166,7 +166,7 @@ This document implements <add "need" link>
           - <Link to WP>
           - <automated>
 
-        * - :need:`wp__sw_req_inspect`
+        * - :need:`wp__requirements__inspect`
           - <Link to process>
           - <automated>
           - n/a
@@ -201,7 +201,7 @@ This document implements <add "need" link>
           - <Link to WP>
           - <automated>
 
-        * - :need:`wp__sw_unit_test`
+        * - :need:`wp__verification__sw_unit_test`
           - <Link to process>
           - <automated>
           - <Link to issue>
@@ -215,14 +215,14 @@ This document implements <add "need" link>
           - <Link to WP>
           - <automated>
 
-        * - :need:`wp__sw_component_integration_test`
+        * - :need:`wp__verification__comp_int_test`
           - <Link to process>
           - <automated>
           - <Link to issue>
           - <Link to WP>
           - <automated>
 
-        * - :need:`wp__sw_component_test`
+        * - :need:`wp__verification__component_test`
           - <Link to process>
           - <automated>
           - <Link to issue>
@@ -250,11 +250,11 @@ This document implements <add "need" link>
           - Link to issue
           - Reasoning for tailoring
 
-        * - :need:`wp__sw_component_req`
+        * - :need:`wp__requirements__comp`
           - <Link to issue>
           - Always needed (for Q and QR classification) and also improves process Id 2
 
-        * - :need:`wp__sw_component_aou`
+        * - :need:`wp__requirements__comp_aou`
           - <Link to issue>
           - Always needed (for Q and QR classification) and also improves process Id 5
 
@@ -262,7 +262,7 @@ This document implements <add "need" link>
           - n/a
           - OSS needing special HW is an extreme exception.
 
-        * - :need:`wp__sw_req_inspect`
+        * - :need:`wp__requirements__inspect`
           - n/a
           - Checklist used in Pull Request Review
 
@@ -282,7 +282,7 @@ This document implements <add "need" link>
           - n/a
           - If source code is modified, this is not a OSS qualification any more.
 
-        * - :need:`wp__sw_unit_test`
+        * - :need:`wp__verification__sw_unit_test`
           - <Link to issue>
           - <Reasoning for tailoring, can improve deficits in process Id 6 and complexity Id 3>
 
@@ -290,11 +290,11 @@ This document implements <add "need" link>
           - <Link to issue>
           - <Reasoning for tailoring, can improve deficits in process Id 6 and complexity Id 2>
 
-        * - :need:`wp__sw_component_integration_test`
+        * - :need:`wp__verification__comp_int_test`
           - <Link to issue>
           - <Reasoning for tailoring, can improve deficits in process Id 6 and complexity Id 3&5>
 
-        * - :need:`wp__sw_component_test`
+        * - :need:`wp__verification__component_test`
           - <Link to issue>
           - Always needed (for Q and QR classification)
 

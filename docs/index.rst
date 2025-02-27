@@ -126,7 +126,7 @@ Project structure and processes
       ^^^
       Read about our project and organization structure in the
       :ref:`Project Handbook <project_management_plan>`.
-      And learn how we deal with :ref:`process_safety_management` or care about :ref:`sw_verification`.
+      And learn how we deal with :ref:`process_safety_management` or care about :ref:`process_verification`.
 
 .. dropdown:: Click to see the complete sitemap
 

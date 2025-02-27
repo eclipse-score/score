@@ -12,16 +12,359 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _sw_verification:
+.. document:: Software Verification Plan
+   :id: doc__verification_plan
+   :status: draft
+   :safety: ASIL_B
+   :tags: platform_management
 
-Software Verification
-------------------------
+Software verification
+---------------------
+
+This document implements :need:`wp__verification__plan`.
 
 Purpose
 +++++++
 
+The present document describes the plan for software integration and verification of the project. It intends to give
+an overview by linking to other relevant sources and provide further information about the verification and testing
+activities.
+
+Main purpose of this document is to show the objectives, approaches, and strategies that are defined to contribute to
+the overall quality of the software project. The target groups of this document are mainly :need:`rl__contributor`
+and :need:`rl__committer`.
+
 Objectives and scope
 ++++++++++++++++++++
 
+Objectives
+~~~~~~~~~~
+
+The overall objectives of the projects software integration and verification activities are the following:
+
+#. **Correctness** - Verify that the software platform and its modules perform their intended functions correctly and
+   produce the expected results.
+#. **Completeness** - Ensure that all specified requirements have been implemented.
+#. **Reliability** - Confirm that the software operates reliably under specified conditions and can handle errors
+   properly.
+#. **Performance** - Assess the software's performance to ensure it meets the required performance criteria, such as
+   response time and throughput.
+#. **Maintainability** - Check that the software is maintainable, with clear documentation and code.
+#. **Compliance** - Ensure that the software complies with defined processes and guidelines of the project.
+#. **Traceability** - Verify that all requirements are traceable through the development process and that changes are
+   properly managed and documented according to the processes defined in this project.
+
+Verification scope and constraints
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The software verification aspects described in this document focus on the verification of the software platform
+and modules developed within this project. The integration of the platform on a target device and the respective
+verification and validation should be considered by the distributor of the platform. On target integration tests that
+are running on a reference hardware in context of this project can be taken as a starting point.
+
+Risks and mitigation
+~~~~~~~~~~~~~~~~~~~~
+
+Potential risks that derived from the verification activities and their respective mitigation measures are handled by
+the :doc:`risk_management`.
+
+Schedules
+~~~~~~~~~
+
+The integration of software elements is driven by contribution requests and their respective
+``[TODO: add link to lifecyle phases]`` model. The contribution of a feature itself implies that it gets fully
+verified.
+
 Approach
 ++++++++
+
+General approach
+~~~~~~~~~~~~~~~~
+
+The above defined objectives are supposed to be achieved by the following approaches.
+
+The projects infrastructure is highly driven by a Continuous Integration (CI) methodology. Thus, not just the
+integration but also the verification approaches of the project are following that. Another aspect is the fact that
+software build and verification processes are fully automated. Software elements, infrastructure, tests, and
+documentation are defined as code. The following sections provide more details about the software integration as well
+as the software verification.
+
+Software integration
+~~~~~~~~~~~~~~~~~~~~
+
+The already mentioned approach of Continuous Integration means that software integration is performed with each fully
+automated software build at any time.
+
+The following types of integrations are applicable:
+
+#. **New software elements** get integrated according to the ``[TODO: add link to lifecyle phases]``  of a
+   contribution.
+#. **Fixes of defects** get integrated based on their prioritization described by the
+   :doc:`problem_resolution`.
+
+
+Levels of integration and verification
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+There are the following different levels of integration (2, 3) and verification (1, 2, 3) defined:
+
+1. Software unit verification to verify software detailed design
+2. Software component verification to verify the integration of units to a component and also
+   the integration of smaller component(s) to a componant based on
+
+   #. component architecture and
+   #. component requirements
+
+3. Software feature verification to verify the integration of components to a feature based on
+
+   #. feature architecture and
+   #. feature requirements
+
+Workproducts and traceability
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The traceability between verification relevant work products is one of the defined objectives. An overall overview of
+the different workproducts and their relationship is given in project context - see
+:doc:`/process//workproducts/index`. The following workproducts are related to verification
+activities in general.
+
+As part of the development of the product:
+
+#. :need:`wp__verification__platform_test`
+#. :need:`wp__verification__platform_ver_report`
+#. :need:`wp__verification__feat_int_test`
+#. :need:`wp__verification__comp_int_test`
+#. :need:`wp__verification__module_ver_report`
+#. :need:`wp__verification__component_test`
+#. :need:`wp__verification__sw_unit_test`
+#. :need:`wp__requirements__inspect`
+#. :need:`wp__sw_arch_verification`
+#. :need:`wp__sw_code_inspect`
+
+
+As part of supporting activities:
+
+#. :need:`wp__verification__plan`
+#. :need:`wp__verification__specification`
+
+The link between a verification specification and the respective requirement or design specification is given by the
+identifier of the reference annotated to the verification specification.
+
+Methods
+~~~~~~~
+
+A verification is based on different methods. The derivation of test cases can also be based on certain methods. An
+overview of the different methods that are applicable in the project are given in this section. Usually the defined
+methods are not applied on each verification level. Due to that the following tables contain a column that defines the
+applicable level. Another column defines if a respective method is supposed to be applied if the linked references are
+QM or ASIL B relevant.
+
+Automated test cases should contain further information about which methods have been applied. The corresponding
+guidance is given here: :doc:`/process/process_areas/verification/guidance/verification_guidance`. The identifier of the respective
+method is to be used as meta data (*TestType* and *DerivationTechnique*).
+
+.. list-table:: Software verification methods (TestType)
+   :header-rows: 1
+   :align: center
+
+   * - Methods
+     - Identifier
+     - Applicable on level
+     - Applicable for QM / ASIL B
+   * - Control Flow Analysis
+     - control-flow-analysis
+     - 1, 2, 3
+     - QM, ASIL B
+   * - Data Flow Analysis
+     - data-flow-analysis
+     - 1, 2, 3
+     - QM, ASIL B
+   * - Fault Injection
+     - fault-injection
+     - 1, 2, 3
+     - ASIL B
+   * - Inspection
+     - inspection
+     - 1
+     - ASIL B
+   * - Interface Test
+     - interface-test
+     - 1, 2, 3
+     - QM, ASIL B
+   * - Requirements-based Test
+     - requirements-based
+     - 1, 2, 3
+     - QM, ASIL B
+   * - Resource Usage Evaluation (only on reference environment)
+     - resource_usage
+     - 1, 2, 3
+     - QM, ASIL B
+   * - Static Code Analysis
+     - static-code-analysis
+     - 1, 2, 3
+     - QM, ASIL B
+   * - Structural Statement Coverage (Code coverage)
+     - structural-statement-coverage
+     - 1
+     - QM, ASIL B
+   * - Structural Branch Coverage (Code coverage)
+     - structural-branch-coverage
+     - 1
+     - QM, ASIL B
+   * - Walkthrough
+     - walkthrough
+     - 1, 2, 3
+     - QM
+
+.. list-table:: Test case derivation methods (DerivationTechnique)
+   :header-rows: 1
+   :align: center
+
+   * - Methods
+     - Identifier
+     - Applicable on level
+     - Applicable for QM / ASIL B
+   * - Analysis of Boundary Values
+     - boundary-values
+     - 1, 2, 3
+     - QM, ASIL B
+   * - Analysis of Equivalence Classes
+     - equivalence-classes
+     - 1, 2, 3
+     - QM, ASIL B
+   * - Analysis of Requirements
+     - requirements-analysis
+     - 1, 2, 3
+     - QM, ASIL B
+   * - Error Guessing based on Knowledge or Experience
+     - error-guessing
+     - 1, 2, 3
+     - QM, ASIL B
+
+Quality criteria
+~~~~~~~~~~~~~~~~
+
+The quality criteria of the software verification activities are defined at the following table. The defined goals are
+to be reached with every contribution.
+
+.. list-table:: Quality criteria and respective goals
+   :header-rows: 1
+   :align: center
+
+   * - #
+     - Criterion
+     - Goal for QM
+     - Goal for Safety
+   * - 1
+     - Structural Statement Coverage
+     - 95%
+     - 100%
+   * - 2
+     - Structural Branch Coverage
+     - 85%
+     - 100%
+   * - 3
+     - Verification coverage of software detailed design (test coverage)
+     - 100%
+     - 100%
+   * - 4
+     - Verification coverage of software architecture design (test coverage)
+     - 100%
+     - 100%
+   * - 5
+     - Verification coverage of software requirements specifications (test coverage)
+     - 100%
+     - 100%
+   * - 6
+     - Relative amount of executed tests
+     - 100%
+     - 100%
+   * - 7
+     - Relative amount of failed tests
+     - 0%
+     - 0%
+
+Further quality goals are defined in section :doc:`quality_management`.
+
+Test development
+~~~~~~~~~~~~~~~~
+
+The verification steps as well as the development of test cases is done along with the implementation of code. A full
+automation of tests should be achieved and the derived test cases should contain meta data that gives further
+information as defined in :doc:`/process/process_areas/verification/guidance/verification_process_toolreqs`. The list of
+relevant workproducts is shown above (as part of the development of the product).
+
+The different environments that can be used for the test development are defined below.
+
+Test execution and result analysis
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The execution of the tests is based on a full automation defined by build pipelines. The analysis of the test results
+needs to be performed by the contributor.
+
+Test selection and regression testing
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+All existing test cases should be executed within continuous integration pipelines to verify initially developed
+components or software changes. A specific selection of sub sets is not planned. The fact that all existing and
+automated tests get executed continuously covers the approach to identify regressions.
+
+Environments and resources
+++++++++++++++++++++++++++
+
+Roles
+~~~~~~
+
+In general, the different roles of this project are defined within the Process documentation:
+:doc:`/process/roles/index`. The following roles are crucial to comply with the aspects defined in this
+document:
+
+#. The :need:`rl__contributor` needs to make sure that the objectives of the software integration and verification are
+   fulfilled when contributing to the project.
+#. The :need:`rl__committer` needs to verify that the contributor has fulfilled the expected objectives.
+
+Tools
+~~~~~
+
+The list of the tools mentioned here does not reflect the full list of tools that are used for the whole project. Only
+tools that have an important impact on the test execution and reporting are given here. A full list of tools (and their
+versions) is maintained by :doc:`tool_management`. The aim of the given list here is to provide a better picture of
+the software test strategy and corresponding processes.
+
+.. rubric:: Bazel
+
+The main build environment of the project is based on `Bazel <https://bazel.build>`__. It it used to build software
+components, documentation, and automated tests.
+
+.. rubric:: GoogleTest
+
+The software components of the project written in C++ are tested with the help of
+`GoogleTest <https://google.github.io/googletest/>`__.
+
+.. rubric:: Integration Testing Framework (ITF)
+
+The integration of software components can be verified with the help of the ITF. It allows the definition and execution
+of test based on `pytest <https://pytest.org>`__.
+
+.. rubric:: Rust
+
+The platform developed in this project supports `Rust <https://www.rust-lang.org>`__ as a programming language. Its
+built-in test framework is used to test respective software components.
+
+Verification setups and variants
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Different test frameworks get used to verify software components and their integration into the platform (see Tools
+section above). Driven by that the following test setups can be derived:
+
+#. GoogleTest
+#. Rust
+#. ITF
+
+All defined setups are used to run automated tests within continuous integration pipelines.
+
+Test sets
+~~~~~~~~~
+
+A test set is a combination of different test scenarios running based on one or several verification setups. The list
+of sets has not been established yet.

@@ -74,12 +74,12 @@ Safety Management Guideline
    | Supporting processes (Requirements Management, Configuration Managment, Change Management, Documentation Management, Tool Management) are planned within the :need:`wp__platform_mgmt`
    |
    | **Planning integration and verification:**
-   | Integration on the target hardware is not done in the scope of the SW platform project, but SW/SW integration up to the feature level is performed and its test results are part of the :need:`wp__platform_sw_verification_report`.
+   | Integration on the target hardware is not done in the scope of the SW platform project, but SW/SW integration up to the feature level is performed and its test results are part of the :need:`wp__verification__platform_ver_report`.
    | The integration on the target hardware done by the distributor or OEM is supported by delivering a set of HW/SW integration tests which were already run successfully on a reference HW platform.
    | This is planned by the respective work products:
-   | * :need:`wp__feature_integration_test`
-   | * :need:`wp__platform_test`
-   | Verification planning is documented in :need:`wp__verification_plan`
+   | * :need:`wp__verification__feat_int_test`
+   | * :need:`wp__verification__platform_test`
+   | Verification planning is documented in :need:`wp__verification__plan`
    |
    | **Scheduling of confirmation reviews, audit and assessment:**
    | Scheduling is done in the same way as for all work products definition by issues. The respective work products are :need:`wp__cmr_reports` and  :need:`wp__audit_report`

@@ -66,7 +66,7 @@ Feature Safety Work Products Template
       - <Link to WP>
       - <automated>
 
-    * - :need:`wp__sw_req_inspect`
+    * - :need:`wp__requirements__inspect`
       - <link to process>
       - <automated>
       - <link to issue>
@@ -80,7 +80,7 @@ Feature Safety Work Products Template
       - <Link to WP>
       - <automated>
 
-    * - :need:`wp__feature_integration_test`
+    * - :need:`wp__verification__feat_int_test`
       - <link to process>
       - <automated>
       - <link to issue>
