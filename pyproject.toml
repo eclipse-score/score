@@ -7,13 +7,15 @@ pythonVersion = "3.12" # Keep in sync with MODULE.bazel
 
 exclude = [
     "**/__pycache__",
-    ".DS_Store",
+    "**/.*",
     "bazel-*",
 ]
 
 [tool.ruff]
 target-version = "py312"
 extend-exclude = [
+    "__pycache__",
+    ".*",
     "bazel-*",
 ]
 
