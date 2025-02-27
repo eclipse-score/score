@@ -11,8 +11,8 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 import importlib
-from pathlib import Path
 import pkgutil
+from pathlib import Path
 from typing import Callable
 
 from ruamel.yaml import YAML
@@ -21,7 +21,6 @@ from sphinx_needs import logging
 from sphinx_needs.data import NeedsInfoType, SphinxNeedsData
 
 from .log import CheckLogger
-
 
 logger = logging.get_logger(__name__)
 
@@ -208,6 +207,7 @@ def default_options() -> list[str]:
         "modifications",
         "has_dead_links",
         "has_forbidden_dead_links",
+        "tags",
     ]
 
 

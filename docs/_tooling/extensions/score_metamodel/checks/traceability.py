@@ -48,10 +48,8 @@ def check_linkage_safety(app: Sphinx, needs: list[NeedsInfoType], log: CheckLogg
     needs_dict = {need["id"]: need for need in needs}
 
     for need in needs:
-        if need["id"].startswith("TOOL_REQ") or need["id"].startswith("GD"):
-            return  # TO REMOVE when safety is defined for TOOL_REQ requirements
-
         allowed_values = ["QM"]
+        parents_have_safety = False
 
         if need["safety"] == "QM":
             return
@@ -61,6 +59,8 @@ def check_linkage_safety(app: Sphinx, needs: list[NeedsInfoType], log: CheckLogg
                     "safety"
                 )  # Lookup parent need safely
                 allowed_values = ["ASIL_B", "ASIL_D"]
+                if safety:
+                    parents_have_safety = True
                 if safety in ["ASIL_B", "ASIL_D"]:
                     continue
         elif need["safety"] == "ASIL_D":
@@ -68,12 +68,14 @@ def check_linkage_safety(app: Sphinx, needs: list[NeedsInfoType], log: CheckLogg
                 safety = needs_dict.get(satisfie_need, {}).get(
                     "safety"
                 )  # Lookup parent need safely
+                if safety:
+                    parents_have_safety = True
                 allowed_values = ["ASIL_D"]
                 if safety == "ASIL_D":
                     continue
 
         # Checking if the requirement has satisfies field before logging
-        if need.get("satisfies"):
+        if need.get("satisfies") and parents_have_safety:
             msg = (
                 f"with `{need['safety']}` has no parent requirement that contains the same or lower ASIL. "
                 f"Allowed ASIL values: {', '.join(f'`{value}`' for value in allowed_values)}. \n"
