@@ -89,7 +89,6 @@ def check_linkage_status(app: Sphinx, needs: list[NeedsInfoType], log: CheckLogg
     Checking if for valid feature, component and tool requirements it shall be checked if the status of the parent requirement is also valid.
     """
     needs_dict = {need["id"]: need for need in needs}
-
     for need in needs:
         if need["status"] == "valid":
             for satisfie_need in need.get("satisfies", []):

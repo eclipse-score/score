@@ -11,23 +11,29 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 
+from unittest.mock import Mock
+
+from sphinx.application import Sphinx
+
 from score_metamodel.checks.id_contains_feature import id_contains_feature
 from score_metamodel.tests import fake_check_logger, need
 
 
 def test_feature_ok():
     logger = fake_check_logger()
+    app = Mock(spec=Sphinx)
 
     id_contains_feature(
-        need(id="Req__feature17__Title", docname="path/to/feature17/index"), logger
+        app, need(id="Req__feature17__Title", docname="path/to/feature17/index"), logger
     )
     logger._log.warning.assert_not_called()
 
 
 def test_feature_not_ok():
     logger = fake_check_logger()
+    app = Mock(spec=Sphinx)
 
     id_contains_feature(
-        need(id="Req__feature17__Title", docname="path/to/feature15/index"), logger
+        app, need(id="Req__feature17__Title", docname="path/to/feature15/index"), logger
     )
     logger.assert_warning("feature15", expect_location=False)

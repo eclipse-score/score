@@ -10,6 +10,9 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
+from unittest.mock import Mock
+
+from sphinx.application import Sphinx
 from sphinx_needs.data import NeedsInfoType
 
 from docs._tooling.extensions.score_metamodel.checks.id_format_and_length import (
@@ -18,7 +21,6 @@ from docs._tooling.extensions.score_metamodel.checks.id_format_and_length import
 )
 from docs._tooling.extensions.score_metamodel.tests import (
     fake_check_logger,
-    verify_log_string,
 )
 
 
@@ -29,12 +31,13 @@ class TestId:
         """
 
         need = NeedsInfoType(
-            id="gd_req_attribute_satisfies",
+            id="gd_req__attribute_satisfies",
         )
 
         logger = fake_check_logger()
+        app = Mock(spec=Sphinx)
 
-        check_id_format(need, logger)
+        check_id_format(app, need, logger)
         assert not logger.has_warnings
 
     def test_check_id_format_two_mendatory_substrings_parts_negative(self):
@@ -47,11 +50,11 @@ class TestId:
         )
 
         logger = fake_check_logger()
+        app = Mock(spec=Sphinx)
 
-        check_id_format(need, logger)
+        check_id_format(app, need, logger)
 
-        verify_log_string(
-            logger,
+        logger.assert_warning(
             "expected to consisting of one of these 2 formats:`<Req Type>__<Abbreviations>` or `<Req Type>__<Abbreviations>__<Architectural Element>`.",
             expect_location=False,
         )
@@ -62,15 +65,15 @@ class TestId:
         """
 
         need = NeedsInfoType(
-            id="tool_req__1",
+            id="feat_req__1",
         )
 
         logger = fake_check_logger()
+        app = Mock(spec=Sphinx)
 
-        check_id_format(need, logger)
+        check_id_format(app, need, logger)
 
-        verify_log_string(
-            logger,
+        logger.assert_warning(
             "expected to consisting of this format: `<Req Type>__<Abbreviations>__<Architectural Element>`.",
             expect_location=False,
         )
@@ -85,8 +88,9 @@ class TestId:
         )
 
         logger = fake_check_logger()
+        app = Mock(spec=Sphinx)
 
-        check_id_length(need, logger)
+        check_id_length(app, need, logger)
         assert not logger.has_warnings
 
     def test_check_id_length_negative(self):
@@ -95,14 +99,14 @@ class TestId:
         """
 
         need = NeedsInfoType(
-            id="std_req__iso26262__rq_8_6432_00000000000",
+            id="std_req__iso26262__rq_8_6432_0000000000000000000000",
         )
 
         logger = fake_check_logger()
+        app = Mock(spec=Sphinx)
 
-        check_id_length(need, logger)
-        verify_log_string(
-            logger,
-            f'exceeds the maximum allowed length of 40 characters (current length: {len(need['id'])}).',
+        check_id_length(app, need, logger)
+        logger.assert_warning(
+            f'exceeds the maximum allowed length of 45 characters (current length: {len(need['id'])}).',
             expect_location=False,
         )

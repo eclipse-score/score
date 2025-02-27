@@ -35,16 +35,19 @@ def check_options(
     app: Sphinx,
     need: NeedsInfoType,
     log: CheckLogger,
+    needs_types: list[NeedsInfoType] = None,
 ):
     """
     Checking if all described and wanted attributes are present and their values follow the described pattern.
     """
-    needs_types = app.config.needs_types
+    production_needs_types = app.config.needs_types
+    if not needs_types:
+        needs_types = production_needs_types
     try:
         need_options = get_need_type(needs_types, need["type"])
     except ValueError:
-        msg = f"with type `{need['type']}`: no type info defined for semantic check."
-        log.warning_for_option(need, log, msg)
+        msg = "no type info defined for semantic check."
+        log.warning_for_option(need, "type", msg)
         return
 
     required_options: dict[str, str] = need_options.get("mandatory_options", {})
@@ -62,36 +65,34 @@ def check_options(
             log.warning_for_need(need, msg)
             continue
 
-        # Normalize values, which can be a list or a string, to a list of strings
-        if type(values) is not list:
+        # Normalize values (list or string)
+        if not isinstance(values, list):
             values = [values]
 
         for value in values:
-            assert type(value) is str
+            assert isinstance(value, str)
             regex = re.compile(pattern)
 
             if not regex.match(value):
                 msg = f"does not follow pattern `{pattern}`."
                 log.warning_for_option(need, option, msg)
 
-    if optional_options:
-        for option, pattern in optional_options.items():
-            values = need.get(option, None)
+    for option, pattern in optional_options.items():
+        values = need.get(option, None)
 
-            if values is None or values in [[], ""]:  # Skip if no values
-                continue
+        if values is None or values in [[], ""]:  # Skip if empty
+            continue
 
-            # Normalize values, which can be a list or a string, to a list of strings
-            if not isinstance(values, list):
-                values = [values]
+        if not isinstance(values, list):
+            values = [values]
 
-            for value in values:
-                assert isinstance(value, str)
-                regex = re.compile(pattern)  # Compile regex only if a value exists
+        for value in values:
+            assert isinstance(value, str)
+            regex = re.compile(pattern)
 
-                if not regex.match(value):
-                    msg = f"does not follow pattern `{pattern}`."
-                    log.warning_for_option(need, option, msg)
+            if not regex.match(value):
+                msg = f"does not follow pattern `{pattern}`."
+                log.warning_for_option(need, option, msg)
 
     required_links: list[tuple[str, str]] = need_options.get("req_link", [])
     if required_links:
@@ -118,18 +119,22 @@ def check_extra_options(
     app: Sphinx,
     need: NeedsInfoType,
     log: CheckLogger,
+    needs_types: list[NeedsInfoType] = None,
 ):
     """
     This function checks if the user specified attributes in the need which are not defined for this element in the metamodel or by default system attributes.
     """
 
-    needs_types = app.config.needs_types
+    production_needs_types = app.config.needs_types
+    if not needs_types:
+        needs_types = production_needs_types
+
     default_options_list = default_options()
     try:
         need_options = get_need_type(needs_types, need["type"])
     except ValueError:
-        msg = f"with type `{need['type']}`: no type info defined for semantic check."
-        log.warning_for_option(need, log, msg)
+        msg = "no type info defined for semantic check."
+        log.warning_for_option(need, "type", msg)
         return
 
     required_options: dict[str, str] = need_options.get("mandatory_options", {})
