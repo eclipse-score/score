@@ -100,7 +100,13 @@ html_theme_options = {
             "url": "https://github.com/eclipse-score",
             "icon": "fa-brands fa-github",
             "type": "fontawesome",
-        }
+        },
+        {
+            "name": "Eclipse Foundation",
+            "url": "https://projects.eclipse.org/projects/automotive.score",
+            "icon": "fa-solid fa-e",
+            "type": "fontawesome",
+        },
     ],
     # https://pydata-sphinx-theme.readthedocs.io/en/stable/user_guide/source-buttons.html#add-an-edit-button
     "use_edit_page_button": True,
