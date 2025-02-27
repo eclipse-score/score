@@ -18,7 +18,7 @@ extend-exclude = [
 ]
 
 # Selected rules for clean code, readability, and bug prevention
-select = [
+lint.select = [
     "E",    # pycodestyle (PEP8)
     "F",    # pyflakes (undefined vars, unused imports)
     "I",    # isort (import sorting)
@@ -29,7 +29,7 @@ select = [
     "RET"   # flake8-return (consistent return statements)
 ]
 
-ignore = [
+lint.ignore = [
     # Rules we want to ignore go in here.
     # Always provide a comment explaining why.
 ]
