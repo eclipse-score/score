@@ -12,18 +12,18 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Process Areas
-#############
+MISRA C++:2023 Rule Mapping
+###########################
 
-.. toctree::
-   :maxdepth: 1
-   :glob:
+.. gd_guidl:: MISRA C++:2023 Rule Mapping
+   :id: gd_guidl__cpp__misra2023_rule_mapping
+   :status: draft
+   :complies: std_req__iso26262__software_1, std_req__iso26262__software_2, std_req__iso26262__software_3, std_req__iso26262__software_31
 
-   architecture_design/index.rst
-   change_management/index.rst
-   documentation_management/index.rst
-   implementation/index.rst
-   requirements_engineering/index.rst
-   safety_management/index.rst
-   verification/index.rst
-
+..
+    .. csv-table:: MISRA C++:2023 Rule Mapping
+    :name: misra_2023_rule_mapping
+    :file: _assets/misra_2023.csv
+    :widths: 5, 5, 30, 30, 30
+    :header-rows: 1
+    :delim: ;

@@ -12,18 +12,12 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Process Areas
-#############
+C++
+###
 
 .. toctree::
    :maxdepth: 1
-   :glob:
 
-   architecture_design/index.rst
-   change_management/index.rst
-   documentation_management/index.rst
-   implementation/index.rst
-   requirements_engineering/index.rst
-   safety_management/index.rst
-   verification/index.rst
-
+   coding_guidelines
+   code_analysis
+   misra_2023_rule_mapping

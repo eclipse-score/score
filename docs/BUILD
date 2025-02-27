@@ -66,6 +66,7 @@ sphinx_docs(
         "**/*.py",
         "**/*.yaml",
         "**/*.json",
+        "**/*.csv",
     ]),
     config = ":conf.py",
     extra_opts = [
