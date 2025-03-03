@@ -22,6 +22,7 @@ The basic steps for setup the development environment and building the source fi
 
 
 This includes:
+
 * on your linux operating system `Bazelisk <https://github.com/bazelbuild/bazelisk>`_ is available
 * the score repository is cloned to your hard drive
 
@@ -74,21 +75,22 @@ Basically following steps need to be performed:
 
 IDE Support
 ===========
+Currently as a goal for this project the IDE shall provide support for most of the languages which are used in this project. For this Project *VS Code* is selected as the primary IDE. This means that only *VS code* will be checked in case of breaking changes!
 
-Currently as a goal for this project the IDE shall provide support for:
+Other IDE integrations are provided on a community best effort basis.
 
-* Starlark (Bazel)
-* C++
-* Python
-* Sphinx
-
-The tooling environment, which includes all essential python packages can be built in a *virtual python environment* which is located in <workspace_root/.venv_dovs>. It needs be build first:
+Python Environment
+------------------
+The tooling environment, which includes all essential python packages for *docs* can be built in a *virtual python environment* which is located in <workspace_root/.venv_dovs>. It needs be build first:
 
 .. code-block:: shell
 
    bazel run //docs:ide_support
 
 Later the different IDEs shall be configured to use the tools which were installed into this virtual environment.
+
+IDE Guides
+----------
 
 .. toctree::
    :maxdepth: 1

@@ -38,11 +38,11 @@ Sphinx
 
 Code Formatting
 ---------------
-A definition of the tabsize is included in project settings.
+A definition of the tab size of .rst files is included in project settings.
 
 Error Highlighting
 ------------------
-To provide errorhandling within the Sphinx Docs build the Plugin `LSP4IJ <https://plugins.jetbrains.com/plugin/23257-lsp4ij>`_ is required. The plugin can be configured using predefined configuration files:
+To provide error handling within the Sphinx Docs build the Plugin `LSP4IJ <https://plugins.jetbrains.com/plugin/23257-lsp4ij>`_ is required. The plugin can be configured using predefined configuration files:
 
 * Download Configuration file from `Github <https://github.com/eclipse-score/score/tree/main/docs/contribute/development/ide/_assets/lsp4ij/esbonio>`_
 * Navigate to `File | Settings | Languages & Frameworks | Language Servers <jetbrains://JetBrainsClient/settings?name=Languages+%26+Frameworks--Language+Servers>`_
@@ -59,4 +59,4 @@ For the preview of the documentation the live preview can be used:
    bazel build //docs:live_preview
    bazel-bin/docs/live_preview
 
-If the live preview is build and run via the executable with these two separte commands the bazel instance is not blocked in the repository.
+If the live preview is build and run via the executable with these two separate commands the bazel instance is not blocked in the repository.

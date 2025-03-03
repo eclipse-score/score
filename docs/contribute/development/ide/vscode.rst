@@ -23,7 +23,7 @@ For VS Code any preexisting configuration is provided via the workspace configur
 Starlark
 ========
 
-For Starlark currently no solution is integrated in VScode.
+For *Starlark* currently no solution is integrated in VScode.
 
 C++
 ===
@@ -32,16 +32,20 @@ C++
 Python
 ======
 
-For Python currently the full feature set of the official `Python <https://marketplace.visualstudio.com/items?itemName=ms-python.python>`_  Extension (MIT License) is provided included features e.g. autocomplete, syntax checking, ...
+For *Python* to work inside VS code the virtual environment needs to be selected. If not suggested automatically it can be performed manually:
 
-Also the configuration for displaying and executing pytest in the IDE is provided.
+Click on the *Python* Version which is displayed in the lower right corner of the screen and select the *.venv_docs*.
+
+After selecting the virtual environment the full feature set of the official `Python <https://marketplace.visualstudio.com/items?itemName=ms-python.python>`_  Extension (MIT License) is provided included features e.g. autocomplete, syntax checking, ...
+
+Also the configuration for displaying and executing *pytest* in the IDE is provided.
 
 As a linter the `ruff extension <https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff>`_  (MIT License) is set up.
 
 Debugging
 ---------
 
-For debugging the `Python Debugger <https://marketplace.visualstudio.com/items?itemName=ms-python.debugpy>`_ (MIT License) and *debugpy* can be used for remote debugging.
+For *usual* debugging the `Python Debugger <https://marketplace.visualstudio.com/items?itemName=ms-python.debugpy>`_ (MIT License) can be used.
 
 Debugging the docs build
 ''''''''''''''''''''''''
@@ -52,10 +56,8 @@ For debugging the docs environment all necessary configuration is already provid
    bazel run //docs:incremental -- --debug
 
 Debugging python code started via bazel
-''''''''''''''''
-For all other tools the debugging should work out of the box via VS Code Python extension.
-
-In rare cases where this does not fit, mostly because you want to start the tool via bazel, you can reuse the debugpy approach from docs:incremental:
+'''''''''''''''''''''''''''''''''''''''
+In rare cases where this does not fit, mostly because you want to start the tool via bazel, you can reuse the *debugpy* approach from *//docs:incremental* and use remote debugging:
 
 #. Add following code to the project (e.g. the __init__.py)
 
@@ -70,9 +72,6 @@ In rare cases where this does not fit, mostly because you want to start the tool
    .. code-block:: json
 
       {
-      // Use IntelliSense to learn about possible attributes.
-      // Hover to view descriptions of existing attributes.
-      // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
       "version": "0.2.0",
       "configurations": [
          {
@@ -81,7 +80,7 @@ In rare cases where this does not fit, mostly because you want to start the tool
                "request": "attach",
                "connect": {
                   "host": "<<localhost or name of remote workstation>>",
-                  "port": "<<portnumber>>",
+                  "port": "<<port number>>",
                },
          }
          ]
@@ -107,8 +106,10 @@ Therefore when you open the project you get some recommendations for extensions 
    * `swyddfa.esbonio <https://marketplace.visualstudio.com/items?itemName=swyddfa.esbonio>`_ (only release version): linting and live preview (MIT License)
    * `usernamehw.errorlens <https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens>`_: highlights errors and warnings in IDE (MIT License)
 
-The live-preview can then be activated inside a .rst file by pressing Ctrl + Shift + V or clicking on the tiny symbol on the top right corner which looks like a book with a magnifier.
+The live-preview can then be activated inside a .rst file by pressing "Ctrl + Shift + V" or clicking on the tiny symbol on the top right corner which looks like a book with a magnifier.
 
-If the sphinx configuration is altered the language server has to be restartet: Ctrl + Shift + P and select "Esbonio: Restart Language Server"
+If the sphinx configuration is altered the language server has to be restarted:
+
+"Ctrl + Shift + P" and select "Esbonio: Restart Language Server"
 
 If there is any issue with the preview or syntax highlighting the error log can be visualized via the output and select "Esbonio"
