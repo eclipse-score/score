@@ -101,6 +101,7 @@ def load_metamodel_data():
 
     types_dict = data.get("needs_types", {})
     links_dict = data.get("needs_extra_links", {})
+    graph_check_dict = data.get("graph_checks", {})
 
     global_base_options = data.get("needs_types_base_options", {})
     global_base_options_optional_opts = global_base_options.get("optional_options", {})
@@ -168,6 +169,7 @@ def load_metamodel_data():
         "needs_types": needs_types_list,
         "needs_extra_links": needs_extra_links_list,
         "needs_extra_options": needs_extra_options,
+        "needs_graph_check": graph_check_dict,
     }
 
 
@@ -222,6 +224,7 @@ def setup(app: Sphinx):
     app.config.needs_types = metamodel["needs_types"]
     app.config.needs_extra_links = metamodel["needs_extra_links"]
     app.config.needs_extra_options = metamodel["needs_extra_options"]
+    app.config.graph_checks = metamodel["needs_graph_check"]
 
     discover_checks()
 
