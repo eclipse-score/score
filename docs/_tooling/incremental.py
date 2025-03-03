@@ -20,7 +20,7 @@ from sphinx.cmd.build import main as sphinx_main
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument("-p", "--port", help="port to listen to client", default=5678)
+parser.add_argument("-dp", "--debug_port", help="port to listen to debugging client", default=5678)
 parser.add_argument("--debug", help="Select Debugging", action="store_true")
 args = parser.parse_args()
 if args.debug:
