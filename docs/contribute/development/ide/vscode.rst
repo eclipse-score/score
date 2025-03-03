@@ -51,9 +51,11 @@ For debugging the docs environment all necessary configuration is already provid
 
    bazel run //docs:incremental -- --debug
 
-Manual debugging
+Debugging python code started via bazel
 ''''''''''''''''
-For all other tools the debugging needs to be setup manually. Therefore following steps need to be executed:
+For all other tools the debugging should work out of the box via VS Code Python extension.
+
+In rare cases where this does not fit, mostly because you want to start the tool via bazel, you can reuse the debugpy approach from docs:incremental:
 
 #. Add following code to the project (e.g. the __init__.py)
 
@@ -99,7 +101,7 @@ For Sphinx development currently following features are supported:
 * live-preview within IDE
 * autocompletion
 
-Therefore a configuration for following plugins is available:
+Therefore when you open the project you get some recommendations for extensions (open directory) or preinstalled extensions (open devcontainer). A configuration for following plugins is available:
 
    * `lextudio.restructuredtext <https://marketplace.visualstudio.com/items?itemName=lextudio.restructuredtext>`_ : rst syntax highlighting (MIT License)
    * `swyddfa.esbonio <https://marketplace.visualstudio.com/items?itemName=swyddfa.esbonio>`_ (only release version): linting and live preview (MIT License)

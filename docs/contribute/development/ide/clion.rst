@@ -59,4 +59,4 @@ For the preview of the documentation the live preview can be used:
    bazel build //docs:live_preview
    bazel-bin/docs/live_preview
 
-If the live preview is build and run via the executable the bazel instance is not blocked in the repository.
+If the live preview is build and run via the executable with these two separte commands the bazel instance is not blocked in the repository.
