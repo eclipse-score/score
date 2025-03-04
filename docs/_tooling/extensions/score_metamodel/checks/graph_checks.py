@@ -1,4 +1,4 @@
-# *****************************************************************************
+# *******************************************************************************
 # Copyright (c) 2025 Contributors to the Eclipse Foundation
 #
 # See the NOTICE file(s) distributed with this work for additional
@@ -9,7 +9,7 @@
 # https://www.apache.org/licenses/LICENSE-2.0
 #
 # SPDX-License-Identifier: Apache-2.0
-# *****************************************************************************
+# *******************************************************************************
 import operator
 import re
 
@@ -126,14 +126,15 @@ def check_metamodel_graph(
         selected_needs = get_need_selection(all_needs, apply)
 
         for need in selected_needs:
-            parent_ids = need[eval["relation"]]
+            for parent_relation in list(eval.keys()):
+                parent_ids = need[parent_relation]
 
-            for parent_id in parent_ids:
-                parent_need = needs_dict.get(parent_id, {})
+                for parent_id in parent_ids:
+                    parent_need = needs_dict.get(parent_id, {})
 
-                if not eval_need_condition(parent_need, eval["condition"]):
-                    msg = (
-                        f"parent need `{parent_id}` does not fulfill "
-                        f"condition `{eval['condition']}`."
-                    )
-                    log.warning_for_need(need, msg)
+                    if not eval_need_condition(parent_need, eval[parent_relation]):
+                        msg = (
+                            f"parent need `{parent_id}` does not fulfill "
+                            f"condition `{eval[parent_relation]}`."
+                        )
+                        log.warning_for_need(need, msg)

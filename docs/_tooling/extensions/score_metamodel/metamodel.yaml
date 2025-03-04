@@ -412,13 +412,28 @@ needs_extra_links:
 #     - [and / or / xor / not]
 ##############################################################
 graph_checks:
-  safety_check:
-    apply:
+  comp_req_safety:
+    needs:
       include: "comp_req"
-      condition: "safety != QM"
-    check:
-      relation: "satisfies"
       condition:
         and:
           - "safety != QM"
           - "status == valid"
+    check:
+      satisfies:
+        and:
+          - "safety != QM"
+          - "status == valid"
+      fulfils:
+        and:
+          - "safety != QM"
+          - "status == valid"
+  feat_req_safety:
+    needs:
+      include: "feat_req"
+      condition:
+        and:
+          - "safety != QM"
+          - "status == valid"
+    check:
+      satisfies: "status == valid"
