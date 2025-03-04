@@ -140,4 +140,3 @@ Project structure and processes
       process/index
       PMP <platform_management_plan/index.rst>
       SCORE <https://eclipse-score.github.io>
-      Eclipse <https://projects.eclipse.org/projects/automotive.score>
