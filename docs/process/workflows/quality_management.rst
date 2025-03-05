@@ -77,7 +77,7 @@ todo: need to add guidance and standard links
    :approved_by: rl__quality_manager
    :supported_by: rl__technical_lead
    :input: wp__qms, wp__process_definition
-   :output: wp__platform_sw_verification_report
+   :output: wp__verification__platform_ver_report
 
    | The quality of the work products is assured.
 
@@ -100,7 +100,7 @@ todo: need to add guidance and standard links
    :responsible: rl__committer
    :approved_by: rl__quality_manager
    :supported_by: rl__technical_lead
-   :input: wp__qms, wp__platform_sw_release_note, wp__module_sw_release_note, wp__process_impr_report, wp__qms_report, wp__platform_sw_verification_report, wp__module_sw_verification_report, wp__training_path
+   :input: wp__qms, wp__platform_sw_release_note, wp__module_sw_release_note, wp__process_impr_report, wp__qms_report, wp__verification__platform_ver_report, wp__verification__module_ver_report, wp__training_path
    :output: wp__issue_track_system
 
    | The Quality Manager is responsible for the monitoring of the activities against the quality management plan.

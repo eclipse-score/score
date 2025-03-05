@@ -40,7 +40,7 @@ todo: need to add guidance and standard links
    :responsible: rl__contributor
    :approved_by: rl__committer
    :supported_by: rl__safety_manager, rl__security_manager
-   :input: wp__feature_architecture, wp__sw_component_req, wp__issue_track_system
+   :input: wp__feature_architecture, wp__requirements__comp, wp__issue_track_system
    :output: wp__sw_component_architecture
 
    | The component architectures are created and maintained.

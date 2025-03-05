@@ -91,7 +91,7 @@ Workflows
    :status: valid
    :responsible: rl__safety_manager
    :approved_by: rl__technical_lead
-   :input: wp__requirements__feat_aou, wp__requirements__feat, wp__feature_architecture, wp__feature_safety_analyses, wp__feature_dfa, wp__sw_component_aou, wp__sw_component_req, wp__sw_component_architecture, wp__sw_component_safety_analyses, wp__sw_component_dfa
+   :input: wp__requirements__feat_aou, wp__requirements__feat, wp__feature_architecture, wp__feature_safety_analyses, wp__feature_dfa, wp__requirements__comp_aou, wp__requirements__comp, wp__sw_component_architecture, wp__sw_component_safety_analyses, wp__sw_component_dfa
    :output: wp__platform_safety_manual, wp__module_safety_manual
    :contains: gd_guidl__saf_man, gd_temp__safety_manual
    :has: doc_concept__safety_management__process, doc_getstrt__safety_management__process

@@ -50,6 +50,15 @@ Workproducts Requirements Engineering
 
    SW Safety Requirements for the user of the component, exportable requirements for the user to integrate in their req mgt system.
 
+.. workproduct:: Requirements Inspection
+   :id: wp__requirements__inspect
+   :status: draft
+   :complies: std_wp__iso26262__software_4
+
+   | Depends on requirements management tooling, expect text based requirements maintained in git.
+   | - github review with integrated inspection checklist, only valid requirements get merged
+   |
+   | Compare also `Gitub documentationt <https://docs.github.com/en>`_
 
 .. needextend:: "docs/process/requirements_engineering" in docname
    :+tags: requirements_engineering

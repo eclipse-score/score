@@ -183,35 +183,6 @@ Platform development
    Build configuration capable to create the SEooC Library for the reference HW, platform level.
    Note: Embedded software in the sense of the Iso (i.e. deployed on the production HW) is not part of our delivery.
 
-.. workproduct:: Feature Integration test
-   :id: wp__feature_integration_test
-   :status: draft
-   :tags: safety
-
-   Integration Testing verifies feature requirements and architecture:
-   - all interfaces from Static view and
-   - all flows from Dynamic View and
-   - performance: i.e. RAM and processor usage
-   on reference HW
-
-.. workproduct:: Platform test
-   :id: wp__platform_test
-   :status: draft
-   :tags: safety
-
-   Platform Testing verfies Stakeholder Requirements performed on reference HW
-
-.. workproduct:: Platform Verification Report
-   :id: wp__platform_sw_verification_report
-   :status: draft
-   :tags: safety
-
-   Verification Report contains:
-   - List of requirements (and architecture/detailed design tags) tested by which test (can be several levels), passed/failed and completeness verdict, including normal operation and failure reactions
-   - The list of requirements may also contain other verification methods like "Analysis"
-   - Formal evidence about the preformed DFA.
-   - Formal evidence about the performed Safety Analyses
-
 .. workproduct:: Platform Release Notes
    :id: wp__platform_sw_release_note
    :status: draft
@@ -223,20 +194,6 @@ Platform development
 Component development
 ^^^^^^^^^^^^^^^^^^^^^
 
-.. workproduct:: Component Requirements
-   :id: wp__sw_component_req
-   :status: draft
-   :tags: requirements_management
-
-   | SW Requirements for own and OSS qualified components/libraries. QM and ASIL requirements are distinguished by attributes/tags.
-
-.. workproduct:: Component Assumptions of Use
-   :id: wp__sw_component_aou
-   :status: draft
-   :tags: safety
-
-   SW Safety Requirements for the user of the component, exportable requirements for the user to integrate in their req mgt system.
-
 .. workproduct:: Hardware-software interface (HSI) specification
    :id: wp__hsi
    :status: draft
@@ -244,16 +201,6 @@ Component development
 
    | The HSI specification shall specify the hardware and software interaction and be consistent with the technical safety concept.
    | The HSI specification shall include the component's hardware parts that are controlled by software and hardware resources that support the execution of the software.
-
-.. workproduct:: Requirements Inspection
-   :id: wp__sw_req_inspect
-   :status: draft
-   :tags: safety
-
-   | Depends on requirements management tooling, expect text based requirements maintained in git.
-   | - github review with integrated inspection checklist, only valid requirements get merged
-   |
-   | Compare also `Gitub documentationt <https://docs.github.com/en>`_
 
 .. workproduct:: Component Architecture
    :id: wp__sw_component_architecture
@@ -286,7 +233,7 @@ Component development
 .. workproduct:: Architecture Verification
    :id: wp__sw_arch_verification
    :status: draft
-   :tags: safety
+   :complies: std_wp__iso26262__software_8
 
    Depends on architecture, FMEA and DFA tooling.
    May include several methods like inspection, modelling ... Which are selected in SW Development Plan.
@@ -299,43 +246,12 @@ Component development
    Implementation includes source code and detailed design (e.g. in form of comments or linked graphical representations) and SW configuration (e.g. #ifdef)
    The "how to" is described in the SW Development Plan guidelines
 
-.. workproduct:: Unit test
-   :id: wp__sw_unit_test
-   :status: draft
-   :tags: safety
-
-   Unit testing verifies component requirements and detailed design (traced to). Tooling defined in SW Development Plan and integrated in CI/Build.
-
 .. workproduct:: Code Inspection
    :id: wp__sw_code_inspect
    :status: draft
-   :tags: safety
+   :complies: std_wp__iso26262__software_12
 
    github review with integrated inspection checklist (includes manual checking of coding guidelines)
-
-.. workproduct:: Module Verification Report
-   :id: wp__module_sw_verification_report
-   :status: draft
-   :tags: safety
-
-   Verification Report contains:
-   - List of requirements (and architecture/detailed design tags) tested by which test (can be several levels), passed/failed and completeness verdict, including normal operation and failure reactions
-   - The list of requirements may also contain other verification methods like "Analysis"
-   - Structural Coverage (C0 and C1, from unit testing on host) per unit
-   - Static Code Analysis (including compiler warnings, automated checking of coding guidelines and additional checks)
-   - Formal evidence about the preformed DFA.
-   - Formal evidence about the performed Safety Analyses
-   - Software component qualification verification report
-
-.. workproduct:: Component Integration test
-   :id: wp__sw_component_integration_test
-   :status: draft
-   :tags: safety
-
-   Integration Testing verifies component architecture:
-   - all interfaces from Static view and
-   - all flows from Dynamic View and
-   performance: i.e. RAM and processor usage on reference HW
 
 .. workproduct:: Module Build Configuration
    :id: wp__module_sw_build_config
@@ -353,31 +269,8 @@ Component development
    Release notes describe the qualified SW version including known bugs from own testing and field reporting, with clear statement, that these bugs do not lead to violation of any safety requirements or with corresponding workaround measures. Module level.
 
 
-.. workproduct:: Component test
-   :id: wp__sw_component_test
-   :status: draft
-   :tags: safety
-
-   Component Testing verifies Component Requirements
-
-
 Supporting activities
 ---------------------
-
-.. workproduct:: Verification Plan
-   :id: wp__verification_plan
-   :status: draft
-   :tags: process, safety
-
-   Verification planning for each phase of the safety lifecycle must detail the work products, objectives, methods, criteria, environments, equipment, resources, actions for anomalies, and regression strategies, considering method adequacy, complexity, prior experiences, and technology maturity or risks.
-
-.. workproduct:: Verification Specification
-   :id: wp__verification_spec
-   :status: draft
-   :tags: process, safety
-
-   The verification specification must outline the verification methods, including review or analysis checklists, simulation scenarios.
-   Test cases, test data, and test objects are part of the respective test WPs.
 
 .. workproduct:: Software tool criteria evaluation report
    :id: wp__tool_eval

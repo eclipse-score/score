@@ -41,7 +41,7 @@ todo: need to add guidance and standard links
    :responsible: rl__committer
    :approved_by: rl__safety_manager
    :supported_by: rl__module_lead, rl__security_manager
-   :input:  wp__sw_component_req, wp__sw_component_architecture, wp__issue_track_system
+   :input:  wp__requirements__comp, wp__sw_component_architecture, wp__issue_track_system
    :output: wp__sw_component_safety_analyses, wp__sw_component_dfa
 
    | The safety analysis and DFA for the component is executed.

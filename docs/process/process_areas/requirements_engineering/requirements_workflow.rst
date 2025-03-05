@@ -67,7 +67,7 @@ Workflow Requirements Engineering
    :approved_by: rl__committer
    :supported_by: rl__safety_manager
    :input: wp__requirements__stkh, wp__requirements__feat, wp__requirements__comp, wp__requirements__feat_aou, wp__requirements__comp_aou, wp__platform_safety_manual, wp__module_safety_manual
-   :output: wp__issue_track_system, wp__sw_req_inspect
+   :output: wp__issue_track_system, wp__requirements__inspect
    :contains: gd_chklst__req__inspection
 
    The requirements are monitored and verified. The inspection shall be implemented as integral part of the review in GitHub.

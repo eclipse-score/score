@@ -406,7 +406,7 @@ Functional Safety Management SW Platform Work Products
       - <Link to WP>
       - <automated>
 
-    * - :need:`wp__platform_sw_verification_report`
+    * - :need:`wp__verification__platform_ver_report`
       - <Link to process>
       - <Process status>
       - <Link to issue>
@@ -427,7 +427,7 @@ Functional Safety Management SW Platform Work Products
       - :doc:`software_development`
       - not started
 
-    * - :need:`wp__verification_plan`
+    * - :need:`wp__verification__plan`
       - :need:`wf__cr_mt_platform_mngmt_plan`
       - :ndf:`copy('status', need_id='wf__cr_mt_platform_mngmt_plan')`
       - <Link to issue>
