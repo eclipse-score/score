@@ -1,0 +1,14 @@
+@startuml
+
+title Sequence Diagram - unit1 & unit2
+
+participant "unit1" as unit1
+participant "unit2" as unit2
+
+unit1 -> unit2 : api1
+unit2 --> unit1 : int
+
+unit1 -> unit2 : api3
+unit2 --> unit1 : int
+
+@enduml

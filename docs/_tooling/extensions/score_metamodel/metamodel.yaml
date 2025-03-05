@@ -340,6 +340,59 @@ needs_types:
     mandatory_links:
       satisfies: "^comp_req__.*$"
 
+ # Detailed Design
+  unit_dd_sta:
+    title: "Detailed Design Static View"
+    prefix: "unit_dd_sta__"
+    color: "#FEDCD2"
+    style: "card"
+    mandatory_options:
+      id: "^unit_dd_sta__[0-9a-z_]*$"
+      security: "^(YES|NO)$"
+      safety: "^(QM|ASIL_B|ASIL_D)$"
+      status: "^(valid|invalid)$"
+    mandatory_links:
+     # implements: "^comp_req__.*$"
+
+  unit_dd_dyn:
+    title: "Detailed Design Dynamic View"
+    prefix: "unit_dd_dyn__"
+    color: "#FEDCD2"
+    style: "card"
+    mandatory_options:
+      id: "^unit_dd_dyn__[0-9a-z_]*$"
+      security: "^(YES|NO)$"
+      safety: "^(QM|ASIL_B|ASIL_D)$"
+      status: "^(valid|invalid)$"
+    mandatory_links:
+      #implements: "^comp_req__.*$"
+
+  unit_dd:
+    title: "Detailed Design Units"
+    prefix: "unit_dd__"
+    color: "#FEDCD2"
+    style: "card"
+    mandatory_options:
+      id: "^unit_dd__[0-9a-z_]*$"
+      security: "^(YES|NO)$"
+      safety: "^(QM|ASIL_B|ASIL_D)$"
+      status: "^(valid|invalid)$"
+    mandatory_links:
+      #implements: "^comp_req__.*$"
+
+  unit_dd_int:
+    title: "Detailed Design Interfaces"
+    prefix: "unit_dd_int__"
+    color: "#FEDCD2"
+    style: "card"
+    mandatory_options:
+      id: "^unit_dd_int__[0-9a-z_]*$"
+      security: "^(YES|NO)$"
+      safety: "^(QM|ASIL_B|ASIL_D)$"
+      status: "^(valid|invalid)$"
+    mandatory_links:
+      #implements: "^comp_req__.*$"
+
 # Extra link types, which shall be available and allow need types to be linked to each other.
 # We use a dedicated linked type for each type of a conncetion, for instance from
 # a specification to a requirement. This makes filtering and visualization of such connections

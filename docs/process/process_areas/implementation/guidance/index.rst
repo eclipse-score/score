@@ -12,14 +12,13 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Process Areas
-#############
+Guidance
+########
 
 .. toctree::
    :maxdepth: 1
-   :glob:
 
-   requirements_engineering/index.rst
-   safety_management/index.rst
-   documentation_management/index.rst
-   implementation/index.rst
+   implementation_checklist
+   detailed_design_template
+   implementation_guideline
+

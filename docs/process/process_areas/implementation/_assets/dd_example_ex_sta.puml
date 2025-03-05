@@ -1,0 +1,21 @@
+@startuml
+
+title Static View - dd example
+
+skinparam component {
+    BackgroundColor<<component>> white
+}
+
+skinparam rectangle {
+    BackgroundColor<<unit>> green
+}
+
+' Define Features
+component "component1" <<component>> {
+    rectangle "unit1" as unit1 <<unit>>
+    rectangle "unit2" as unit2 <<unit>>
+}
+
+unit1 ..> unit2 : uses
+
+@enduml
