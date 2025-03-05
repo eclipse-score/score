@@ -43,7 +43,7 @@ def eval_need_check(need, check):
     if len(parts) != 3:
         raise ValueError(f"Invalid check defined: {check}")
 
-    if not (parts[1] in oper):
+    if parts[1] not in oper:
         raise ValueError(f"Binary Operator not defined: {parts[1]}")
 
     return oper[parts[1]](need[parts[0]], parts[2])
@@ -91,18 +91,29 @@ def get_need_selection(needs, selection):
     """
 
     selected_needs = []
-
-    if "include" in selection:
-        pattern = selection["include"]
-    elif "exclude" in selection:
-        pattern = "^" + selection["exclude"]
+    need_pattern = list(selection.keys())[0]
+    # Verify Inputs
+    if need_pattern in ["include", "exclude"]:
+        pattern = re.sub(", ", "|", list(selection.values())[0])
+        pattern = re.sub(" ", "|", pattern)
+        pattern = re.sub(",", "|", pattern)
+        pattern = "(" + pattern + ")"
     else:
-        raise ValueError(f"Invalid selection: {selection}")
+        raise ValueError(f"Invalid need selection: {selection}")
 
+    if "condition" in selection:
+        condition = selection["condition"]
+    else:
+        raise ValueError(f"Test Condition not defined: {selection}")
+
+    # Evaluate Conditions
     for need in needs:
-        if (re.match(pattern, need["type"])) and (
-            eval_need_condition(need, selection["condition"])
-        ):
+        if need_pattern == "include":
+            sel = bool(re.match(pattern, need["type"]))
+        else:
+            sel = not bool(re.match(pattern, need["type"]))
+
+        if sel and (eval_need_condition(need, condition)):
             selected_needs.append(need)
 
     return selected_needs
