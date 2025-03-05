@@ -101,8 +101,7 @@ def add_source_link(app: Sphinx, env) -> None:
                         x.replace(GITHUB_BASE_URL, "").split("/", 1)[-1] for x in link
                     ]
                     LOGGER.warning(
-                        f"Could not find {id} in the needs id's."
-                        f"Found in file(s): {files}",
+                        f"Could not find {id} in the needs id's. Found in file(s): {files}",
                         type="score_source_code_linker",
                     )
         except Exception as e:
