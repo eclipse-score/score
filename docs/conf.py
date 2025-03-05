@@ -44,6 +44,7 @@ extensions = [
     "score_metamodel",
     "score_draw_uml_funcs",
     "score_source_code_linker",
+    "score_layout",
 ]
 
 exclude_patterns = [
@@ -69,69 +70,9 @@ templates_path = ["_templates"]
 numfig = True
 
 
-# -- Options for HTML output -------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
-
-html_theme = "pydata_sphinx_theme"  # "alabaster"
-html_static_path = ["_tooling/assets", "_assets"]
-html_css_files = [
-    "css/score.css",
-    "css/score_needs.css",
-    "css/score_design.css",
-]
-
-html_context = {
-    # "github_url": "https://github.com", # or your GitHub Enterprise site
-    "github_user": "eclipse-score",
-    "github_repo": "score",
-    "github_version": "main",
-    "doc_path": "docs",
-}
-
-# html_logo = "_assets/S-CORE_Logo_white.svg"
-
-html_theme_options = {
-    "navbar_align": "content",
-    "header_links_before_dropdown": 5,
-    "icon_links": [
-        {
-            "name": "GitHub",
-            "url": "https://github.com/eclipse-score",
-            "icon": "fa-brands fa-github",
-            "type": "fontawesome",
-        }
-    ],
-    # https://pydata-sphinx-theme.readthedocs.io/en/stable/user_guide/source-buttons.html#add-an-edit-button
-    "use_edit_page_button": True,
-    "collapse_navigation": True,
-    # Enable version switcher
-    "switcher": {
-        "json_url": (
-            f"https://{html_context['github_user']}.github.io/"
-            f"{html_context['github_repo']}/versions.json"
-        ),  # URL to JSON file, hardcoded for now
-        "version_match": release,
-    },
-    "navbar_end": ["theme-switcher", "navbar-icon-links", "version-switcher"],
-    "logo": {
-        "text": "Eclipse S-CORE",
-    },
-}
-
-html_context = {
-    # "github_url": "https://github.com", # or your GitHub Enterprise site
-    "github_user": "eclipse-score",
-    "github_repo": "score",
-    "github_version": "main",
-    "doc_path": "docs",
-}
-
 # -- sphinx-needs configuration --------------------------------------------
-
 # Setting the needs layouts
-needs_layouts = layouts.needs_layouts
 needs_global_options = {"collapse": True}
-needs_global_options = needs_global_options | layouts.needs_global_options
 needs_string_links = {
     "source_code_linker": {
         "regex": r"(?P<value>[^,]+)",
