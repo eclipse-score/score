@@ -401,13 +401,15 @@ needs_extra_links:
 # Graph Checks
 # The graph checks focus on the relation of the needs and their attributes.
 # Checks are defined in the following way:
-# - apply: defines the needs types to which the check should be applied
+# check_name:
+#   needs:defines the needs types to which the check should be applied
 #   - [include / exclude]: need types to which the check should be applied;
+#                          multiple need types can be defined by separating them with a comma;
 #                          to perform the check on all needs types, set include to "."
 #   - condition: defines (together with apply) the condition which the needs need to fulfill
 #     - [and / or / xor / not]
 # - check: defines the check that should be applied
-#   - relation: defines the relation which is used derive the type of the parent need
+#   - <relation>: defines the relation which is used derive the type of the parent need
 #   - condition: defines the condition that should be checked
 #     - [and / or / xor / not]
 ##############################################################
