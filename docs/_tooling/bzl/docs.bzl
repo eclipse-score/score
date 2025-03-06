@@ -1,3 +1,15 @@
+# *******************************************************************************
+# Copyright (c) 2025 Contributors to the Eclipse Foundation
+#
+# See the NOTICE file(s) distributed with this work for additional
+# information regarding copyright ownership.
+#
+# This program and the accompanying materials are made available under the
+# terms of the Apache License Version 2.0 which is available at
+# https://www.apache.org/licenses/LICENSE-2.0
+#
+# SPDX-License-Identifier: Apache-2.0
+# *******************************************************************************
 """Defines Bazel targets for running docs related actions."""
 
 load("@aspect_rules_py//py:defs.bzl", "py_binary", "py_library", "py_venv")
@@ -58,14 +70,12 @@ def live_preview():
         deps = sphinx_requirements,
     )
 
-
 def ide_support():
     py_venv(
         name = "ide_support",
         venv_name = ".venv_docs",
         deps = sphinx_requirements,
     )
-
 
 def docs():
     sphinx_docs(
@@ -105,5 +115,5 @@ def docs():
 
     sphinx_build_binary(
         name = "sphinx_build",
-        deps = sphinx_requirements 
+        deps = sphinx_requirements,
     )

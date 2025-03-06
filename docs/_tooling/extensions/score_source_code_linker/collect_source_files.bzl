@@ -19,7 +19,6 @@ def parser():
         visibility = ["//visibility:public"],
     )
 
-
 CollectedFilesInfo = provider(
     fields = {
         "files": "depset of source files",
@@ -104,4 +103,4 @@ collect_source_files_for_score_source_code_linker = rule(
 
 def collect_and_parse(srcs, deps):
     parser()
-    collect_source_files_for_score_source_code_linker(name = "collected_files_for_score_source_code_linker",srcs = srcs, deps = deps,)
+    collect_source_files_for_score_source_code_linker(name = "collected_files_for_score_source_code_linker", srcs = srcs, deps = deps)

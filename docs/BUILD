@@ -43,11 +43,10 @@ load("@rules_pkg//pkg:mappings.bzl", "pkg_files")
 load("@rules_pkg//pkg:tar.bzl", "pkg_tar")
 load("@rules_python//python:pip.bzl", "compile_pip_requirements")
 load("@rules_python//sphinxdocs:sphinx.bzl", "sphinx_build_binary", "sphinx_docs")
-load("//docs:_tooling/extensions/score_source_code_linker/collect_source_files.bzl","collect_and_parse")
+load("//docs:_tooling/bzl/docs.bzl", "docs", "ide_support", "incremental", "live_preview", "plantuml_bzl")
+load("//docs:_tooling/extensions/score_source_code_linker/collect_source_files.bzl", "collect_and_parse")
 load("//tools/dash:dash.bzl", "dash_license_checker")
 load("//tools/testing/pytest:defs.bzl", "score_py_pytest")
-load("//docs:_tooling/bzl/docs.bzl", "incremental", "plantuml_bzl", "live_preview", "ide_support", "docs")
-
 
 # creates target //docs:docs
 docs()
@@ -98,12 +97,12 @@ plantuml_bzl()
 # creates :ide_support target for virtualenv
 ide_support()
 
-# Idea: replace glob with 'filegroup' 
+# Idea: replace glob with 'filegroup'
 
 score_py_pytest(
     name = "score_metamodel_test",
     size = "small",
-    srcs = glob(["_tooling/extensions/score_metamodel/**/*.py"]), 
+    srcs = glob(["_tooling/extensions/score_metamodel/**/*.py"]),
     visibility = ["//visibility:public"],
 )
 
@@ -134,7 +133,7 @@ score_py_pytest(
 
 # Creates target for 'collect_source_files_for_score_source_code_linker' aspect
 collect_and_parse(
-    srcs=glob(["_tooling/extensions/score_metamodel/**/*.py"]),
+    srcs = glob(["_tooling/extensions/score_metamodel/**/*.py"]),
     deps = [
         ":score_source_code_linker",
     ],
