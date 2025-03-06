@@ -46,7 +46,7 @@ load("@rules_python//sphinxdocs:sphinx.bzl", "sphinx_build_binary", "sphinx_docs
 load("//docs:_tooling/extensions/score_source_code_linker/collect_source_files.bzl", "collect_source_files_for_score_source_code_linker")
 load("//tools/dash:dash.bzl", "dash_license_checker")
 load("//tools/testing/pytest:defs.bzl", "score_py_pytest")
-load("//docs:_tooling/incremental.bzl", "incremental_binary")
+load("//docs:_tooling/bzl/docs.bzl", "incremental", "plantuml")
 
 sphinx_requirements = all_requirements + [
     "@rules_python//python/runfiles",
@@ -125,13 +125,7 @@ pkg_tar(
 )
 
 # Run-time build of documentation, incl. incremental build support.
-# py_binary(
-#     name = "incremental",
-#     srcs = ["_tooling/incremental.py"],
-#     data = [":collected_files_for_score_source_code_linker"],
-#     deps = sphinx_requirements,
-# )
-incremental_binary()
+incremental()
 
 #sphinx-autobuild, used for no IDE live preview
 py_binary(
@@ -149,28 +143,7 @@ py_venv(
     location = "",
 )
 
-java_binary(
-    name = "plantuml",
-    jvm_flags = ["-Djava.awt.headless=true"],
-    main_class = "net.sourceforge.plantuml.Run",
-    runtime_deps = [
-        "@plantuml//jar",
-    ],
-)
-
-# This makes it possible for py_venv to depend on plantuml.
-# Note: py_venv can only depend on py_library.
-# TODO: Investigate if this can be simplified with a custom bzl rule
-#       which replaces / wraps py_venv.
-#       see https://github.com/aspect-build/rules_py/blob/main/py/private/py_venv.bzl
-#       see https://github.com/bazelbuild/rules_python/blob/main/sphinxdocs/private/sphinx.bzl
-py_library(
-    name = "plantuml_for_python",
-    srcs = ["_tooling/dummy.py"],
-    data = [
-        ":plantuml",
-    ],
-)
+plantuml()
 
 # Dedicated metamodel target only for pytest.
 # It's required to define the imports for bazel pytest, so that python/pytest can
