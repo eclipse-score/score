@@ -47,6 +47,10 @@ def _requirement_links_impl(ctx):
 
     all_files = depset(transitive = accumulated).to_list()
 
+    # Add additional files to scan for links (passed via srcs attribute)
+    for f in ctx.attr.srcs:
+        all_files.extend(f.files.to_list())
+
     content = ""
     for filename in all_files:
         content += "%s\n" % filename.path
@@ -74,6 +78,11 @@ collect_source_files_for_score_source_code_linker = rule(
     attrs = {
         "deps": attr.label_list(
             aspects = [collected_source_files_aspect],
+            doc = "Targets to scan for links.",
+        ),
+        "srcs": attr.label_list(
+            allow_files = True,
+            doc = "Additional files to scan for links.",
         ),
         "_tool": attr.label(
             default = "//docs:parsed_source_files_for_source_code_linker",

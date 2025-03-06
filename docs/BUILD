@@ -197,8 +197,8 @@ py_binary(
 # For more information see documentation at _tooling/extensions/score_source_code_linker/README.md
 collect_source_files_for_score_source_code_linker(
     name = "collected_files_for_score_source_code_linker",
+    srcs=glob(["_tooling/extensions/score_metamodel/**/*.py"]),
     deps = [
-        ":score_metamodel",
         ":score_source_code_linker",
     ],
 )
