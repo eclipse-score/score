@@ -12,7 +12,7 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _architecture:
+.. _architecture_inspection_checklist:
 
 Inspection Checklist Template
 =============================
@@ -27,7 +27,7 @@ Purpose
 -------
 
 The purpose of the software architecture checklist is to ensure that the design meets the criteria and quality as
-defined per Score processes and guidelines for feature and component architectural design elements.
+defined per S-CORE processes and guidelines for feature and component architectural design elements.
 It helps to check the compliance with requirements, identify errors or inconsistencies, and ensure adherence to best
 practices.
 The checklist guides evaluation of the architecture design, identifies potential problems, and aids in
@@ -37,7 +37,7 @@ Checklist
 ---------
 
 .. list-table:: Architecture Design Review Checklist
-    :header-rows: 2
+    :header-rows: 1
 
     * - Review Id
       - Acceptance criteria
@@ -47,8 +47,8 @@ Checklist
       - Remarks
       - Issue link
     * - ARC_01_01
-      - Is the traceability from software architectural elements to requirements, and upper level architectural
-        elements (e.g. component to feature) established?
+      - Is the traceability from software architectural elements to requirements, and other level architectural
+        elements (e.g. component to interface) established according to the defined :ref:`metamodel<metamodel_architectural_design>`?
       - automated
       - QM
       -

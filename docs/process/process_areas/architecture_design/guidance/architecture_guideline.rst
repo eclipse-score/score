@@ -21,7 +21,7 @@ Guideline
    :id: gd_guidl__arch__design
    :status: valid
 
-The guideline focuses on the steps which need to be performed in order to create the architectural design. The concept behind those steps is described in :need:`[[title]] <doc_concept__arch__process>`
+The guideline focuses on the steps which need to be performed in order to create the architectural design. The concept behind those steps is described in the :need:`[[title]] <doc_concept__arch__process>`
 
 General Hints
 =============
@@ -65,7 +65,7 @@ Those steps are:
      - Description
      - Responsible
    * - 1.
-     - :ref:`Create high level architecture (Concept) <create_high_level_architecture>`
+     - :ref:`Create feature architecture (Concept) <create_feature_architecture>`
      - :need:`[[title]] <rl__contributor>`
    * - 2.
      - :ref:`Model feature architecture <model_feature_architecture>`
@@ -95,15 +95,15 @@ Those steps are:
      - Merge component architectural design into module
      - :need:`[[title]]  <rl__committer>`
 
-.. _create_high_level_architecture:
+.. _create_feature_architecture:
 
-Create high level architecture (Concept)
+Create feature architecture (Concept)
 ----------------------------------------
 
-The high level architecture (HLA) shall be created in the feature tree of the platform repository.
+The feature architecture (= high level architecture) shall be created in the feature tree of the platform repository.
 As a starting point a :need:`template <gd_temp__arch__feature>` is available.
 
-Based on this template the HLA shall describe the concept of the feature including supporting figures and drawings.
+Based on this template the feature architecture shall describe the concept of the feature including supporting figures and drawings.
 
 For this step following guidances are available:
 
@@ -125,15 +125,15 @@ Based on the concept description a model of the feature architecture should be d
    * - Element
      - Sphinx directive
      - VS Code Template
+   * - Feature Architecture
+     - feat_arc_sta
+     - feat_arc_sta_t
    * - Logical Interface
      - feat_arc_int
      - feat_arc_int_t
    * - Logical Interface Operation
      - feat_arc_int_op
      - feat_arc_int_op_t
-   * - SW Module
-     - mod_arc_sta
-     - mod_arc_sta_t
 
 The relations of those elements are described in :numref:`metamodel_architectural_design`.
 
@@ -147,7 +147,9 @@ The relations of those elements are described in :numref:`metamodel_architectura
 Allocate feature requirements to architectural elements
 -------------------------------------------------------
 
-In the next step the already derived feature requirements shall be allocated to the architectural elements. If needed also additional feature requirements, which may arise due to architectural decisions, should be created and allocated to the stakeholder requirements.
+In the next step the already derived feature requirements shall be allocated to the architectural elements depending on the content of the requirement. Functional Requirement may either be allocated to static or dynamic architecture. Interface requirements shall only be allocated to the interface architecture.
+
+If needed also additional feature requirements, which may arise due to architectural decisions, should be created and allocated to the feature architecture itself.
 
 Those links shall be established from architectural elements to feature requirements via the attribute *fulfils*
 
@@ -172,7 +174,7 @@ Following roles should be included in the review:
 Create component architecture (Concept)
 ---------------------------------------
 
-Based on the HLA the concept component architecture shall be created in the SW module. As a starting point a :need:`template <gd_temp__arch__comp>` is provided. It shall describe which components need to be created and how they correlate with each other in order to provide the required functionality.
+Based on the *feature architecture* the concept for the *component architecture* shall be created in the SW module. It shall describe which components need to be created and how they correlate with each other in order to provide the required functionality. As a starting point a :need:`template <gd_temp__arch__comp>` is provided.
 
 For this step following guidances are available:
 
@@ -185,7 +187,7 @@ For this step following guidances are available:
 Model component architecture
 ----------------------------
 
-According to the concept description of the component architecture the model for the component architecture shall be created. It shall consist of components, real interfaces and real interface operations. Depending on the size of the component also sub-components can be used.
+According to the architecture design description the model for the component architecture shall be created. It shall consist of components, real interfaces and real interface operations. Depending on the size of the component it can also be split into multiple (sub) components.
 
 .. list-table:: Architectural Elements of the Component Architecture
    :header-rows: 1
@@ -197,9 +199,6 @@ According to the concept description of the component architecture the model for
    * - Component Architecture
      - comp_arc_sta
      - comp_arc_sta_t
-   * - Sub-Component Architecture
-     - sub_comp_arc_sta
-     - sub_comp_arc_sta_t
    * - (Real) Interface
      - comp_arc_int
      - comp_arc_int_t

@@ -17,7 +17,10 @@
 Example model of architectural design
 #####################################
 
-.. Feature Architecture
+This chapter only serves as an example how an architecture could be modeled in *Sphinx Needs*. All the needs are required to print the views which are displayed in the Static- and Interface Views. In the actual process this files would be split into multiple different files:
+
+Feature Architecture File
+=========================
 
 .. feat_arc_sta:: Feature 1
    :id: feat_arc_sta__archdes_static
@@ -50,8 +53,8 @@ Example model of architectural design
       {{ draw_logical_interface(need(), needs) }}
 
 
-.. feat_arc_int:: Logical Interface 4
-   :id: feat_arc_int__archdes_logical_interface_4
+.. feat_arc_int:: Logical Interface 3
+   :id: feat_arc_int__archdes_logical_interface_3
    :security: YES
    :safety: ASIL_B
    :status: valid
@@ -85,13 +88,13 @@ Example model of architectural design
    :safety: ASIL_B
    :status: valid
 
-.. feat_arc_int_op:: Logical Operation 4
+.. feat_arc_int_op:: Logical Operation 5
    :id: feat_arc_int_op__archdes_logical_operation_5
    :security: YES
    :safety: ASIL_B
    :status: valid
 
-.. feat_arc_int_op:: Logical Operation 4
+.. feat_arc_int_op:: Logical Operation 6
    :id: feat_arc_int_op__archdes_logical_operation_6
    :security: YES
    :safety: ASIL_B
@@ -109,22 +112,8 @@ Example model of architectural design
    :safety: ASIL_B
    :status: valid
 
-.. Module Level
-
-.. mod_arc_sta:: Module 1
-   :id: mod_arc_sta__archdes_module_1
-   :security: YES
-   :safety: ASIL_B
-   :status: valid
-   :includes: comp_arc_sta__archdes_component_1
-
-   .. needarch::
-      :scale: 50
-      :align: center
-
-      {{ draw_module(need(), needs) }}
-
-.. Component Level
+Component Architecure File(s)
+=============================
 
 .. comp_arc_sta:: Component 1
    :id: comp_arc_sta__archdes_component_1
@@ -134,6 +123,7 @@ Example model of architectural design
    :uses: comp_arc_int__archdes_component_interface_3
    :implements: comp_arc_int__archdes_component_interface_1
    :fulfils: comp_req__archdes_example_req
+   :includes: comp_arc_sta__archdes_sub_component_1, comp_arc_sta__archdes_sub_component_2
 
    .. needarch::
       :scale: 50
@@ -167,31 +157,33 @@ Example model of architectural design
    :includes: comp_arc_int_op__archdes_real_operation_7, comp_arc_int_op__archdes_real_operation_8
    :fulfils: comp_req__archdes_example_req
 
-.. Subcompoents
+.. Subcomponents
 
-.. sub_comp_arc_sta:: Sub Component 1
-   :id: sub_comp_arc_sta__archdes_sub_component_1
+.. comp_arc_sta:: Sub Component 1
+   :id: comp_arc_sta__archdes_sub_component_1
    :status: valid
    :safety: ASIL_B
    :security: NO
    :uses: comp_arc_int_op__archdes_real_operation_7
    :implements: comp_arc_int_op__archdes_real_operation_3
+   :fulfils: comp_req__archdes_example_req
 
-.. sub_comp_arc_sta:: Sub Component 2
-   :id: sub_comp_arc_sta__archdes_sub_component_2
+.. comp_arc_sta:: Sub Component 2
+   :id: comp_arc_sta__archdes_sub_component_2
    :status: valid
    :safety: ASIL_B
    :security: NO
    :uses: comp_arc_int_op__archdes_real_operation_8
    :implements: comp_arc_int_op__archdes_real_operation_4
+   :fulfils: comp_req__archdes_example_req
 
-.. sub_comp_arc_sta:: Sub Component 3
-   :id: sub_comp_arc_sta__archdes_sub_component_3
+.. comp_arc_sta:: Sub Component 3
+   :id: comp_arc_sta__archdes_sub_component_3
    :status: valid
    :safety: ASIL_B
    :security: NO
-   :uses:
    :implements: comp_arc_int_op__archdes_real_operation_7, comp_arc_int_op__archdes_real_operation_8
+   :fulfils: comp_req__archdes_example_req
 
 .. Component Interface Operations
 
@@ -269,6 +261,8 @@ Example model of architectural design
    :satisfies: stkh_req__archdes_example_req
    :status: valid
 
+   The feature shall provide the functionality to ....
+
 .. comp_req:: Example Component Req
    :id: comp_req__archdes_example_req
    :reqtype: Functional
@@ -277,4 +271,4 @@ Example model of architectural design
    :satisfies: feat_req__archdes_example_req
    :status: valid
 
-
+   The component shall provide the Logical Operation 4 to get the ..

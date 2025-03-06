@@ -210,6 +210,7 @@ def default_options() -> list[str]:
         "has_dead_links",
         "has_forbidden_dead_links",
         "tags",
+        "arch",
     ]
 
 

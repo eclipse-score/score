@@ -49,7 +49,7 @@ Architecture Workflow
    :id: wf__mr_vy_arch
    :status: valid
    :tags: architecture_design
-   :responsible: rl__contributor
+   :responsible: rl__committer
    :approved_by: rl__committer
    :supported_by: rl__safety_manager, rl__security_manager
    :input: wp__feature_arch, wp__component_arch

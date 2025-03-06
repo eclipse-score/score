@@ -236,6 +236,7 @@ needs_types:
       status: "^(valid|invalid)$"
     mandatory_links:
       fulfils: "^feat_req__.*$"
+      includes: "^feat_arc_int__.*$"
 
   feat_arc_dyn:
     title: "Feature Architecture Dynamic View"
@@ -262,6 +263,7 @@ needs_types:
       status: "^(valid|invalid)$"
     mandatory_links:
       fulfils: "^feat_req__.*$"
+    optional_links:
       includes: "^feat_arc_int_op__.*$"
 
   feat_arc_int_op:
@@ -274,19 +276,6 @@ needs_types:
       security: "^(YES|NO)$"
       safety: "^(QM|ASIL_B|ASIL_D)$"
       status: "^(valid|invalid)$"
-
-  mod_arc_sta:
-    title: "Module Architecture Static View"
-    prefix: "mod_arc_sta__"
-    color: "#FEDCD2"
-    style: "card"
-    mandatory_options:
-      id: "^mod_arc_sta__[0-9a-z_]*$"
-      security: "^(YES|NO)$"
-      safety: "^(QM|ASIL_B|ASIL_D)$"
-      status: "^(valid|invalid)$"
-    mandatory_links:
-      includes: "^comp_arc_sta__.*$"
 
   comp_arc_sta:
     title: "Component Architecture Static View"
@@ -302,7 +291,7 @@ needs_types:
       fulfils: "^comp_req__.*$"
     optional_links:
       implements: "^comp_arc_int__.*$"
-      includes: "^sub_comp_arc_sta__.*$"
+      includes: "^comp_arc_sta__.*$"
       uses: "^comp_arc_int__.*$"
 
   comp_arc_dyn:
@@ -330,6 +319,8 @@ needs_types:
       status: "^(valid|invalid)$"
     mandatory_links:
       fulfils: "^comp_req__.*$"
+    optional_links:
+      includes: "^comp_arc_int_op__.*$"
 
   comp_arc_int_op:
     title: "Component Architecture Interface Operation"
@@ -343,19 +334,6 @@ needs_types:
       status: "^(valid|invalid)$"
     mandatory_links:
       implements: "^feat_arc_int_op__.*$"
-
-  sub_comp_arc_sta:
-    title: "Sub Component Architecture Static View"
-    prefix: "sub_comp_arc_sta__"
-    color: "#FEDCD2"
-    style: "card"
-    mandatory_options:
-      id: "^sub_comp_arc_sta__[0-9a-z_]*$"
-      security: "^(YES|NO)$"
-      safety: "^(QM|ASIL_B|ASIL_D)$"
-      status: "^(valid|invalid)$"
-    mandatory_links:
-      implements: "^comp_arc_int_op__.*$"
 
 # Extra link types, which shall be available and allow need types to be linked to each other.
 # We use a dedicated linked type for each type of a conncetion, for instance from

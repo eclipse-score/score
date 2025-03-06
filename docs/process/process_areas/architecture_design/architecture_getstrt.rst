@@ -21,23 +21,21 @@ Getting Started
    :id: doc_getstrt__arch__process
    :status: valid
 
-This document describes the steps which need to be done to create the high level architecture (HLA) and the component architecture.
+As described in the :ref:`Architecure Design Concept <architectural_viewpoints>` currently two views are defined. The *getting started* provides an overview which steps need to be done to create the feature architecture and the component architecture.
 
-Therefore both an architecture :need:`[[title]] <gd_guidl__arch__design>` and a :need:`[[title]]<doc_concept__arch__process>` are available.
+For the detailed description both an :need:`[[title]] <gd_guidl__arch__design>` and an :need:`[[title]]<doc_concept__arch__process>` are available.
 
 General Workflow
 ****************
 
-.. figure:: _assets/architecture_workflow.svg
+.. figure:: _assets/architecture_workflow.drawio.svg
    :width: 80%
    :align: center
    :name: architecture_workflow_fig
 
    Architecture Design Workflow
 
-:numref:`architecture_workflow_fig` shows all steps which are required to create an architectural design. In this getting started only a short overview is given. A more detailed description of all the step is provided in the guideline:
-
-:need:`[[title]] <gd_guidl__arch__design>`
+:numref:`architecture_workflow_fig` shows all steps which are required to create an architectural design. In this getting started only a short overview is given. A more detailed description of all the step is provided in the :need:`guideline <gd_guidl__arch__design>`
 
 Tooling support
 ***************
@@ -45,11 +43,12 @@ Tooling support
 Templates
 =========
 
-For creating the architectural design snippets in vs code are available:
+For creating the architectural design, snippets in vs code are available:
 
 * feat_arc_<sta|dyn|int|int_op>_t
 * comp_arc_<sta|dyn|int|int_op>_t
-* mod_arc_sta
+
+The needs itself which are the basis for the template are defined in the :ref:`Architectural Design <architectural_design>`.
 
 .. _arch_gen_sphinx:
 
@@ -59,15 +58,14 @@ Architecture Generation for Sphinx-Needs
 Overview
 --------
 
-The system provides utilities to generate UML diagrams from requirement specifications. It supports various component types including:
+The system provides utilities to generate UML diagrams from requirement specifications. It supports various architectural elements types including:
 
+* Features
+* Logical Interfaces
 * Components
 * Component Interfaces
-* Logical Interfaces
-* Modules
-* Features
 
-as well as linkages between them.
+as well as the linkage between them.
 
 Usage
 -----
@@ -101,11 +99,6 @@ Available Drawing Classes
 
    {{ draw_logical_interface(need(), needs) }}
 
-   # Draw Module
-   # Renders a module containing multiple components.
-
-   {{ draw_module(need(), needs) }}
-
    # Draw Component
    # Creates a complete component diagram including internal structure and linkages.
 
@@ -135,40 +128,6 @@ Rendered Examples
 ^^^^^^^^^^^^^^^^^
 
 Here are some excerpts of UML diagrams made from the requirements of that file.
-
-**Module**
-
-.. code-block:: rst
-
-   .. mod_arc_sta:: Module 1
-      :id: mod_arc_sta__module_getstrt
-      :security: YES
-      :safety: ASIL_B
-      :status: valid
-      :includes: comp_arc_sta__component_getstrt
-
-      .. needarch::
-         :scale: 50
-         :align: center
-
-         allowmixing
-         {{ draw_module( need(), needs ) }}
-
-Which then gives us this rendered image:
-
-.. mod_arc_sta:: Module 1
-   :id: mod_arc_sta__module_getstrt
-   :security: YES
-   :safety: ASIL_B
-   :status: valid
-   :includes: comp_arc_sta__component_getstrt
-
-   .. needarch::
-         :scale: 50
-         :align: center
-
-         allowmixing
-         {{ draw_module( need(), needs ) }}
 
 **Component**
 
@@ -218,7 +177,7 @@ To make *needuml* work we have to replace the *need()* call with a different fun
 
 .. code-block:: rst
 
-   .. comp_arc_sta:: Component Manual 1
+   .. comp_arc_sta:: Component Get Startet Manually Edited
       :id: comp_arc_sta__component_manual_getstrt
       :status: valid
       :safety: ASIL_B
@@ -234,8 +193,8 @@ To make *needuml* work we have to replace the *need()* call with a different fun
          }
          CM -> LI1: EXTRA_LINKAGE_MANUALLY_ADDED
 
-.. comp_arc_sta:: Component Manual 1
-   :id: comp_arc_sta__component_manual_getstrt_1
+.. comp_arc_sta:: Component Get Startet Manually Edited
+   :id: comp_arc_sta__component_manual_getstrt
    :status: valid
    :safety: ASIL_B
    :security: NO
@@ -256,6 +215,4 @@ Limitations
 
 * Grouping functionality needs improvement
 * Manual extendability is limited to the same type as the underlying drawing, either class or association diagram types
-* Currently only looks for the options *includes, uses, implements*
-
-
+* Currently only uses the need attributes *includes, uses, implements*

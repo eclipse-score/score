@@ -23,7 +23,7 @@ Architecture Workproducts
 
    Feature Architecture linked to Feature Requirements, i.e. interaction of components
 
-   * Static view (Sphinx Needs) - Feature interfaces (to outside of Feature) and Interfaces between own Components
+   * Static view (Sphinx Needs) - Feature interfaces (to outside of Feature) and interfaces between own components
    * Dynamic view (UML) - Sequences of component interactions and state diagrams
    * Interface view (Sphinx Needs) - Overview of used and provided interfaces
 
@@ -35,9 +35,8 @@ Architecture Workproducts
 
    Component Architecture linked to Component Requirements
 
-   * Static view (Sphinx Needs) - Component interfaces (to outside of Component) and Interfaces between own Sub-Components
-   * Dynamic view (UML) - Sequences of Sub-Components interactions and Components States
+   * Static view (Sphinx Needs) - Component interfaces (to outside of Component) and interfaces between own (sub) components
+   * Dynamic view (UML) - Sequences of components interactions and components states
    * Interface view (Sphinx Needs) - Overview of used and provided interfaces
 
-   .. note::
-      In case no sub-components exist, this can be covered by Detailed Design (in "Implementation" workproduct)
+   Technical concept on component level.

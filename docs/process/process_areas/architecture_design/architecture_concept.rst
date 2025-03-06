@@ -24,19 +24,19 @@ In this section a concept for the architecture design will be discussed.
 Inputs
 ******
 
-#. Stakeholders for the architectural design?
+#. Use cases which require the architectural design?
 #. Who needs which information?
 #. Which standard requirements need to be fulfilled
 
-Stakeholders for the architectural information
-==============================================
+Use Cases which require architectural information
+=================================================
 
-#. **Contribution Request Author:**
+#. **Contribution Request**
 
    * Platform High Level Architecture
    * Graphical Feature Description
 
-#. **Safety Architect**
+#. **Safety Analysis**
 
    * *Dependent Failure Analysis*
 
@@ -49,43 +49,43 @@ Stakeholders for the architectural information
       * usage of the components (interface of the component under analysis itself)
       * allocate safety requirements to architectural elements
 
-#. **Security Architect**
+#. **Security Analysis**
 
    * TBD
 
-#. **Safety Manager**
+#. **Safety Planning**
 
    * Decomposition into modules and components for the safety planning
 
-#. **Security Manager**
+#. **Security Planing**
 
    * TBD
 
-#. **Platform SW Developer**
+#. **Platform SW Development**
 
    * Interfaces of own component and their respective contracts (including dynamic architecture) which need to be implemented
    * Interfaces of the interacting components which are used to obtain required information (including AoUs)
    * White Box view of the component itself
 
-#. **Tester**
+#. **Testing**
 
    * Use cases for the component including their AoUs
    * On component level an overview of the actual interfaces
    * All the interfaces and AoUs of the interacting components which need to be provided for a black box test
 
-#. **Integrator**
+#. **Software Integration**
 
    * components which need to be integrated
    * dependencies for the integrated components including their configuration
    * order and task scheduling for all components
 
-#. **User/application SW Developer**
+#. **Application SW Development**
 
    * public interfaces which are provided at the top level including their contracts
    * expected sequence of the single operations
    * a detailed api description of the interface
 
-#. **Project Manager**
+#. **Project Management**
 
    * High Level Architecture for project structuring and planning
 
@@ -95,10 +95,12 @@ Requirements based on standards
 Additionally also standards specify requirements towards the architectural design:
 
 * ISO26262
-* A-SPICE
+* ASPICE
 * ISO21434
 
 Their requirements are linked via the guidances.
+
+.. _architectural_viewpoints:
 
 Definition of architectural viewpoints
 **************************************
@@ -119,7 +121,7 @@ Feature View
 Static View
 -----------
 
-The first viewpoint is named as *feature architecture*. It displays the SW modules which are required to realize the feature including their interactions. Also the *logical interfaces* and the interaction between the feature and the user are included in this view. On this architectural level the feature requirements shall be allocated. An example for the static architecture is shown here:
+The first viewpoint is named as *feature architecture*. It displays the SW modules (= top level SW components) which are required to realize the feature including their interactions. Also the *logical interfaces* and the interaction between the feature and the user are included in this view. On this architectural level the feature requirements shall be allocated. An example for the static architecture is shown here:
 
 .. feat_arc_sta:: Feature 1
    :id: feat_arc_sta__feature_1
@@ -138,7 +140,7 @@ The first viewpoint is named as *feature architecture*. It displays the SW modul
 Dynamic View
 ------------
 
-The next chart shows the dynamic behavior of the feature including the interaction of its modules with the user. Following scenarios are should be included:
+The next chart shows the dynamic behavior of the feature including the interaction of its modules with the user. Following scenarios should be included:
 
 *  important use cases or features: how do components execute them?
 *  interactions at critical external interfaces: how do components cooperate with users and neighboring components?
@@ -169,24 +171,10 @@ On the feature level only *logical interfaces* shall be displayed. This means th
 
       {{ draw_logical_interface(need(), needs) }}
 
-Module View
-===========
+SW Module View
+==============
 
-Static View
------------
-
-It displays the composition of the modules into their SW components including the correlations of the modules with each other. Also the *logical interfaces* are connected to *component interfaces* on this level.
-
-.. note::
-   On the module level no requirements shall be allocated. It is only meant to describe the allocation of SW components into modules including the correlations between them.
-
-.. mod_arc_sta:: Module 2
-   :id: mod_arc_sta__archdes_module_2
-   :security: YES
-   :safety: ASIL_B
-   :status: valid
-   :includes: comp_arc_sta__archdes_component_2, comp_arc_sta__archdes_component_1
-
+A SW module can rather be defined as a top level component view. Since a *SW module view* can also be provided by the top level *SW component* view no additional view is required here.
 
 Component View
 ==============
@@ -194,14 +182,14 @@ Component View
 Static View
 -----------
 
-The second viewpoint is the *component architecture* which describes how these functionalities are implemented in a white-box view of the platform. It describes the structural decomposition of the SW components into sub components. In the score project this viewpoint provides more detailed information on the respective interfaces of a component. If a SW component interacts with a different component it is alo included via a *use* relationship in the diagram. An example of the *component architecture* is displayed here:
+The second viewpoint is named as *component architecture* and describes the implementation of the functionalities in a white-box view of the platform. It describes the structural decomposition of the *SW components* into *lower level* SW components. In the S-CORE project this viewpoint provides more detailed information concerning the respective interfaces of a component. If a SW component interacts with a different component it is also included via a *use* relationship in the diagram. An example of the *component architecture* is displayed here:
 
 .. comp_arc_sta:: Component 2
    :id: comp_arc_sta__archdes_component_2
    :status: valid
    :safety: ASIL_B
    :security: NO
-   :includes: sub_comp_arc_sta__archdes_sub_component_1, sub_comp_arc_sta__archdes_sub_component_2, sub_comp_arc_sta__archdes_sub_component_3
+   :includes: comp_arc_sta__archdes_sub_component_1, comp_arc_sta__archdes_sub_component_2, comp_arc_sta__archdes_sub_component_3
    :fulfils: comp_req__archdes_example_req
 
    .. needarch::
@@ -210,12 +198,12 @@ The second viewpoint is the *component architecture* which describes how these f
 
       {{ draw_component(need(), needs) }}
 
-The Level of Sub-Component is optional and relies on the complexity of the component.
+The *lower level components* are optional and rely on the complexity of the component. Thus there is no graphic representation required for it.
 
 Dynamic View
 ------------
 
-The dynamic view of the component architecture shows the order of the interactions of the respective subcomponents. It is displayed via relations to the interface operations which are provided or used by each subcomponent.
+The dynamic view of the component architecture shows the order of the interactions between the respective components. It is displayed via relations to the interface operations which are provided or used by each component.
 
 .. uml:: _assets/component_architecture_dynamic.puml
    :align: center
@@ -249,6 +237,8 @@ Although it is required to create a *DFA* on platform level no additional view i
 
 #. The feature set depends on the feature selection on platform level. This means that this view would depend highly on the selection of features which an integration choses to integrate on platform level. Thus this view would need to be generated based on the feature selection.
 
+.. _architectural_design:
+
 Specification of the architectural design
 *****************************************
 
@@ -272,22 +262,16 @@ The *static view* shows the *building blocks* of the architecture. It shall be c
    * - Feature Architecture
      - feat_arc_sta
      - feat_arc_sta_t
-   * - Module Architecture
-     - mod_arc_sta
-     - mod_arc_sta_t
    * - Component Architecture
      - comp_arc_sta
      - comp_arc_sta_t
-   * - Sub-Component Architecture
-     - sub_comp_arc_sta
-     - sub_comp_arc_sta_t
 
 Dynamic view
 ============
 
 The *dynamic view* describes the concrete behavior and interactions of the *building blocks* in form of use cases which were described above.
 
-The dynamic view shall be modeled partly in Sphinx Needs and PlantUML. The components itself shall be generated from the sphinx needs model into the plantuml diagram. The dynamic relations between the component and the interfaces shall be modeled in PlantUML as it would be a huge effort to model the dynamic behavior in sphinx needs and would not provide any additional benefit.
+The dynamic view shall be modeled partly in Sphinx Needs and PlantUML. The components itself shall be generated from the sphinx needs model into the PlantUML diagram. The dynamic relations between the component and the interfaces shall be modeled in PlantUML as it would be a huge effort to model the dynamic behavior in sphinx needs and would not provide any additional benefit.
 
 .. list-table:: Definition of the dynamic architectural elements
    :header-rows: 1
@@ -299,7 +283,7 @@ The dynamic view shall be modeled partly in Sphinx Needs and PlantUML. The compo
    * - Dynamic Feature Architecture
      - feat_arc_dyn
      - feat_arc_sta_t
-   * - Component Architecture
+   * - Dynamic Component Architecture
      - comp_arc_dyn
      - comp_arc_dyn_t
 
@@ -330,7 +314,7 @@ Relations between the architectural elements
 
 The traceability between the architectural elements itself shall be established by modeling the elements in the *docs-as-code* tool. Here a "clickable" architecture can be generated which allows an easy tracing through the element tree. The previously introduced architectural components shall be connected by using following relations:
 
-.. figure:: _assets/metamodel_architectural_design.svg
+.. figure:: _assets/metamodel_architectural_design.drawio.svg
    :width: 90%
    :align: center
    :alt: Definition of the Metamodel for Architectural Design
@@ -360,20 +344,9 @@ Following attributes need to be filled manually for each requirement:
    * - Safety
      - This attribute describes the impact of the architectural element on functional safety. Currently only following values are defined [QM, ASIL_B, ASIL_D]. Other values are not required at the moment as *ASIL decomposition* is not used so far.
    * - Security
-     - This attribute describes if the architectural element has any impact on the security of the platform.
+     - This attribute describes if the architectural element has any impact on the security of the platform. [YES,NO]
    * - Fulfils
      - With this attribute the relations to the corresponding requirements shall be described
-
-.. list-table:: Automated attributes
-   :header-rows: 1
-   :widths: 15,70,15
-
-   * - Attribute
-     - Description
-     - Tool
-   * - Fulfilled by
-     - This attribute is automatically generated based on the attribute Fulfils in related elements
-     - Sphinx Needs Build
 
 For creating architectural elements also templates for each level are available:
 
@@ -393,5 +366,3 @@ Reviews of the architecture
 ***************************
 
 Some of the checks cannot be performed automatically. Therefore a manual inspection of the architecture is needed. The architecture review itself is included in the PR review which is triggered if a contributor wants to commit code to the main line. For this review a checklist is available: :need:`gd_chklst__arch__inspection_checklist`.
-
-

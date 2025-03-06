@@ -20,6 +20,6 @@ Process Areas
    :glob:
 
    architecture_design/index.rst
+   documentation_management/index.rst
    requirements_engineering/index.rst
    safety_management/index.rst
-   documentation_management/index.rst
