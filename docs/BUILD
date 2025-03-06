@@ -46,6 +46,7 @@ load("@rules_python//sphinxdocs:sphinx.bzl", "sphinx_build_binary", "sphinx_docs
 load("//docs:_tooling/extensions/score_source_code_linker/collect_source_files.bzl", "collect_source_files_for_score_source_code_linker")
 load("//tools/dash:dash.bzl", "dash_license_checker")
 load("//tools/testing/pytest:defs.bzl", "score_py_pytest")
+load("//docs:_tooling/incremental.bzl", "incremental_binary")
 
 sphinx_requirements = all_requirements + [
     "@rules_python//python/runfiles",
@@ -124,12 +125,13 @@ pkg_tar(
 )
 
 # Run-time build of documentation, incl. incremental build support.
-py_binary(
-    name = "incremental",
-    srcs = ["_tooling/incremental.py"],
-    data = [":collected_files_for_score_source_code_linker"],
-    deps = sphinx_requirements,
-)
+# py_binary(
+#     name = "incremental",
+#     srcs = ["_tooling/incremental.py"],
+#     data = [":collected_files_for_score_source_code_linker"],
+#     deps = sphinx_requirements,
+# )
+incremental_binary()
 
 #sphinx-autobuild, used for no IDE live preview
 py_binary(
@@ -144,6 +146,7 @@ py_venv(
     name = "ide_support",
     venv_name = ".venv_docs",
     deps = sphinx_requirements,
+    location = "",
 )
 
 java_binary(

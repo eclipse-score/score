@@ -21,24 +21,21 @@ import sys
 
 # sys.path extension for local files is needed, because the conf.py file is not
 # executed, but imported by Sphinx
-sys.path.insert(0, ".")
+# sys.path.insert(0, "../docs") # TODO
 
 # -- Project information -----------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = "Score"
-author = "Score"
+project = "Score Module Example (docs2)"
 release = "0.1"
 
 # -- General configuration ---------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-sys.path.insert(0, os.path.abspath("_tooling/extensions"))
+sys.path.insert(0, os.path.abspath("../docs_tooling/extensions")) # TODO
 extensions = [
-    "sphinx_design",
-    "sphinx_needs",
-    "sphinxcontrib.plantuml",
-    "score_plantuml",
+    "sphinx_design", # -> TODO: can we hide this in score_layout?
+    "sphinx_needs", # -> TODO: can we hide this in score_metamodel?
+    "sphinxcontrib.plantuml", # -> TODO: can we hide this in score_plantuml?
+    "score_plantuml", # -> TODO: make this a generic bazel_plantuml?
     "score_metamodel",
     "score_draw_uml_funcs",
     "score_source_code_linker",
@@ -49,24 +46,14 @@ exclude_patterns = [
     "Thumbs.db",
     ".DS_Store",
     "**/_template",
-    "docs/architecture",
     # The following entries are not required when building the documentation
     # via 'bazel build //docs:docs', as that command runs in a sandboxed environment.
     # However, when building the documentation via 'sphinx-build' or esbonio,
     # these entries are required to prevent the build from failing.
+    # TODO: can we add this via an extension?
     "bazel-*",
     ".venv_docs",
-    "modules/cb2needs",
-    "modules/index_bazel.rst",
-    "platform_integration_tests",
-    "_tooling/sphinx_extensions/test",
 ]
-
-templates_path = ["_templates"]
-
-# Enable numref
-numfig = True
-
 
 # -- sphinx-needs configuration --------------------------------------------
 # Setting the needs layouts
@@ -79,3 +66,5 @@ needs_string_links = {
         "options": ["source_code_link"],
     },
 }
+
+# TODO: external needs
