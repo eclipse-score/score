@@ -30,7 +30,7 @@ def get_standards_needs(needs: list[NeedsInfoType]) -> dict:
         if need["id"].startswith(
             (
                 "std_req__iso26262__",
-                "std_req__iso21434",
+                "std_req__isosae21434",
                 "std_req__isopas8926",
                 "std_req__aspice_40",
             )
@@ -49,7 +49,7 @@ def get_standards_workproducts(needs: list[NeedsInfoType]) -> dict:
         if need["id"].startswith(
             (
                 "std_wp__iso26262__",
-                "std_wp__iso21434",
+                "std_wp__isosae21434",
                 "std_wp__isopas8926",
                 "std_wp__aspice_40",
             )
