@@ -10,6 +10,16 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
+load("@aspect_rules_py//py:defs.bzl", "py_binary")
+
+def parser():
+    py_binary(
+        name = "parse_source_files_for_source_code_linker",
+        srcs = ["//docs:_tooling/extensions/score_source_code_linker/parse_source_files.py"],
+        visibility = ["//visibility:public"],
+    )
+
+
 CollectedFilesInfo = provider(
     fields = {
         "files": "depset of source files",
@@ -85,9 +95,13 @@ collect_source_files_for_score_source_code_linker = rule(
             doc = "Additional files to scan for links.",
         ),
         "_tool": attr.label(
-            default = "//docs:parsed_source_files_for_source_code_linker",
+            default = "//docs:parse_source_files_for_source_code_linker",
             executable = True,
             cfg = "exec",
         ),
     },
 )
+
+def collect_and_parse(srcs, deps):
+    parser()
+    collect_source_files_for_score_source_code_linker(name = "collected_files_for_score_source_code_linker",srcs = srcs, deps = deps,)

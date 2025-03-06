@@ -37,61 +37,20 @@
 #
 # For user-facing documentation, refer to `/README.md`.
 
-load("@aspect_rules_py//py:defs.bzl", "py_binary", "py_library", "py_venv")
+load("@aspect_rules_py//py:defs.bzl", "py_binary", "py_library")
 load("@pip_sphinx//:requirements.bzl", "all_requirements", "requirement")
 load("@rules_pkg//pkg:mappings.bzl", "pkg_files")
 load("@rules_pkg//pkg:tar.bzl", "pkg_tar")
 load("@rules_python//python:pip.bzl", "compile_pip_requirements")
 load("@rules_python//sphinxdocs:sphinx.bzl", "sphinx_build_binary", "sphinx_docs")
-load("//docs:_tooling/extensions/score_source_code_linker/collect_source_files.bzl", "collect_source_files_for_score_source_code_linker")
+load("//docs:_tooling/extensions/score_source_code_linker/collect_source_files.bzl","collect_and_parse")
 load("//tools/dash:dash.bzl", "dash_license_checker")
 load("//tools/testing/pytest:defs.bzl", "score_py_pytest")
-load("//docs:_tooling/bzl/docs.bzl", "incremental", "plantuml")
+load("//docs:_tooling/bzl/docs.bzl", "incremental", "plantuml_bzl", "live_preview", "ide_support", "docs")
 
-sphinx_requirements = all_requirements + [
-    "@rules_python//python/runfiles",
-    ":plantuml_for_python",
-]
 
-sphinx_docs(
-    name = "docs",
-    srcs = glob([
-        "**/*.png",
-        "**/*.svg",
-        "**/*.rst",
-        "**/*.html",
-        "**/*.css",
-        "**/*.puml",
-        # Include the docs tooling itself
-        # Note: we don't use py_library here to make it as close as possible to docs:incremental.
-        "**/*.py",
-        "**/*.yaml",
-        "**/*.json",
-    ]),
-    config = ":conf.py",
-    extra_opts = [
-        "-W",
-        "--keep-going",
-        # This is 'overwriting' the configuration parameter inside sphinx. As we only get this information during runtime
-        "--define=source_code_linker_file=$(location :collected_files_for_score_source_code_linker)",
-    ],
-    formats = [
-        "html",
-    ],
-    sphinx = ":sphinx_build",
-    tags = [
-        "manual",
-    ],
-    tools = [
-        ":collected_files_for_score_source_code_linker",
-        ":plantuml",
-    ],
-)
-
-sphinx_build_binary(
-    name = "sphinx_build",
-    deps = sphinx_requirements,
-)
+# creates target //docs:docs
+docs()
 
 # In order to update the requirements, change the `requirements.txt` file and run:
 # `bazel run //docs:requirements`.
@@ -128,39 +87,24 @@ pkg_tar(
 incremental()
 
 #sphinx-autobuild, used for no IDE live preview
-py_binary(
-    name = "live_preview",
-    srcs = ["_tooling/live_preview.py"],
-    deps = sphinx_requirements,
-)
+live_preview()
 
 # Virtual python environment for working on the documentation (esbonio).
 # incl. python support when working on conf.py and sphinx extensions.
-py_venv(
-    name = "ide_support",
-    venv_name = ".venv_docs",
-    deps = sphinx_requirements,
-    location = "",
-)
 
-plantuml()
+# create  :plantuml & :plantuml_for_python targets
+plantuml_bzl()
 
-# Dedicated metamodel target only for pytest.
-# It's required to define the imports for bazel pytest, so that python/pytest can
-# import "from score_metamodel" without issues.
-py_library(
-    name = "score_metamodel",
-    srcs = glob(["_tooling/extensions/score_metamodel/**/*.py"]),
-    imports = ["_tooling/extensions"],
-    visibility = ["//visibility:public"],
-)
+# creates :ide_support target for virtualenv
+ide_support()
+
+# Idea: replace glob with 'filegroup' 
 
 score_py_pytest(
     name = "score_metamodel_test",
     size = "small",
-    srcs = glob(["_tooling/extensions/score_metamodel/tests/**/*.py"]),
+    srcs = glob(["_tooling/extensions/score_metamodel/**/*.py"]), 
     visibility = ["//visibility:public"],
-    deps = [":score_metamodel"],
 )
 
 # ───────────────────────── Source code linker ────────────────────────
@@ -178,25 +122,18 @@ py_library(
 score_py_pytest(
     name = "score_source_code_linker_test",
     size = "small",
-    srcs = glob(["_tooling/extensions/score_source_code_linker/tests/**/*.py"]),
-    deps = [
-        ":score_source_code_linker",
-    ],
+    srcs = glob(["_tooling/extensions/score_source_code_linker/**/*.py"]),
 )
 
 # Needed to make the file parser executeable and findable for the aspect below
-py_binary(
-    name = "parsed_source_files_for_source_code_linker",
-    srcs = ["_tooling/extensions/score_source_code_linker/parse_source_files.py"],
-    visibility = ["//visibility:public"],
-)
 
 # Running this executes the `collect_source_files.bzl` aspect.
 # Collects all source files from specified targets in 'deps', and makes them available for parsing for the source_code_linker
 
 # For more information see documentation at _tooling/extensions/score_source_code_linker/README.md
-collect_source_files_for_score_source_code_linker(
-    name = "collected_files_for_score_source_code_linker",
+
+# Creates target for 'collect_source_files_for_score_source_code_linker' aspect
+collect_and_parse(
     srcs=glob(["_tooling/extensions/score_metamodel/**/*.py"]),
     deps = [
         ":score_source_code_linker",
