@@ -22,6 +22,7 @@ def setup(app: Sphinx) -> dict[str, str | bool]:
         "parallel_write_safe": True,
     }
 
+
 def update_config(app: Sphinx, config):
     app.config.needs_layouts = sphinx_options.needs_layouts
     app.config.needs_global_options = sphinx_options.needs_global_options
