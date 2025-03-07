@@ -58,14 +58,12 @@ pkg_tar(
 )
 
 # Creates all documentation targets:
-# - `incremental` for building docs incrementally at runtime
-# - `live_preview` for sphinx-autobuild, used for no IDE live preview
-# - `plantuml_bzl` for creating `:plantuml` and `:plantuml_for_python` targets
-# - `ide_support` for creating `:ide_support` target for virtualenv
-# - `docs` for creating `:docs` target for build time documentation
+# - `docs:incremental` for building docs incrementally at runtime
+# - `docs:live_preview` for live preview in the browser without an IDE
+# - `docs:ide_support` for creating python virtualenv for IDE support
+# - `docs:docs` for building documentation at build-time
+# - `docs:plantuml` and `:plantuml_for_python` targets, to be used as dependencies for plantuml generation
 all_docs_targets()
-
-# Idea: replace glob with 'filegroup'
 
 score_py_pytest(
     name = "score_metamodel_test",
