@@ -78,7 +78,7 @@ def incremental(name = "incremental", extra_dependencies = list()):
 
     py_binary(
         name = name,
-        srcs = ["_tooling/bzl/incremental.py"],
+        srcs = ["_tooling/incremental.py"],
         data = [":collected_files_for_score_source_code_linker"],
         deps = dependencies,
     )

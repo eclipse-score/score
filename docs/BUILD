@@ -21,8 +21,8 @@ load("@aspect_rules_py//py:defs.bzl", "py_library")
 load("@rules_pkg//pkg:mappings.bzl", "pkg_files")
 load("@rules_pkg//pkg:tar.bzl", "pkg_tar")
 load("@rules_python//python:pip.bzl", "compile_pip_requirements")
-load("//docs:_tooling/bzl/docs.bzl", "all_docs_targets")
-load("//docs:_tooling/extensions/score_source_code_linker/collect_source_files.bzl", "collect_and_parse")
+load("//docs:_tooling/docs.bzl", "all_docs_targets")
+load("//docs:_tooling/extensions/score_source_code_linker/collect_source_files.bzl", "parse_source_files_for_needs_links")
 load("//tools/dash:dash.bzl", "dash_license_checker")
 load("//tools/testing/pytest:defs.bzl", "score_py_pytest")
 
@@ -97,8 +97,8 @@ score_py_pytest(
 
 # For more information see documentation at _tooling/extensions/score_source_code_linker/README.md
 
-# Creates target for 'collect_source_files_for_score_source_code_linker' aspect
-collect_and_parse(
+# Trigger source code linker on these files.
+parse_source_files_for_needs_links(
     deps = [
         ":score_metamodel_test", # score_metamodel incl tests
         ":score_source_code_linker",

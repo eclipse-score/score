@@ -10,6 +10,8 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
+"""Defines Bazel targets for linking source code to documentation."""
+
 load("@aspect_rules_py//py:defs.bzl", "py_binary")
 
 def parser():
@@ -34,7 +36,7 @@ def _extract_source_files(rule, attr):
                     collected_source_files.append(f)
     return collected_source_files
 
-def _collected_source_files_aspect_impl(target, ctx):
+def _collected_source_files_aspect_impl(_target, ctx):
     collected_source_files = []
     collected_source_files += _extract_source_files(ctx.rule, "srcs")
     collected_source_files += _extract_source_files(ctx.rule, "hdrs")
@@ -101,6 +103,14 @@ collect_source_files_for_score_source_code_linker = rule(
     },
 )
 
-def collect_and_parse(srcs, deps):
+def parse_source_files_for_needs_links(
+        name = "collected_files_for_score_source_code_linker",
+        srcs = None,
+        deps = None):
+
     parser()
-    collect_source_files_for_score_source_code_linker(name = "collected_files_for_score_source_code_linker", srcs = srcs, deps = deps)
+    collect_source_files_for_score_source_code_linker(
+        name = name,
+        srcs = srcs if srcs != None else [],
+        deps = deps if deps != None else [],
+    )
