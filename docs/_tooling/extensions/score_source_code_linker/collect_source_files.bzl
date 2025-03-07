@@ -10,6 +10,17 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
+"""Defines Bazel targets for linking source code to documentation."""
+
+load("@aspect_rules_py//py:defs.bzl", "py_binary")
+
+def parser():
+    py_binary(
+        name = "parse_source_files_for_source_code_linker",
+        srcs = ["//docs:_tooling/extensions/score_source_code_linker/parse_source_files.py"],
+        visibility = ["//visibility:public"],
+    )
+
 CollectedFilesInfo = provider(
     fields = {
         "files": "depset of source files",
@@ -25,7 +36,7 @@ def _extract_source_files(rule, attr):
                     collected_source_files.append(f)
     return collected_source_files
 
-def _collected_source_files_aspect_impl(target, ctx):
+def _collected_source_files_aspect_impl(_target, ctx):
     collected_source_files = []
     collected_source_files += _extract_source_files(ctx.rule, "srcs")
     collected_source_files += _extract_source_files(ctx.rule, "hdrs")
@@ -46,6 +57,10 @@ def _requirement_links_impl(ctx):
         accumulated.append(dep[CollectedFilesInfo].files)
 
     all_files = depset(transitive = accumulated).to_list()
+
+    # Add additional files to scan for links (passed via srcs attribute)
+    for f in ctx.attr.srcs:
+        all_files.extend(f.files.to_list())
 
     content = ""
     for filename in all_files:
@@ -74,11 +89,28 @@ collect_source_files_for_score_source_code_linker = rule(
     attrs = {
         "deps": attr.label_list(
             aspects = [collected_source_files_aspect],
+            doc = "Targets to scan for links.",
+        ),
+        "srcs": attr.label_list(
+            allow_files = True,
+            doc = "Additional files to scan for links.",
         ),
         "_tool": attr.label(
-            default = "//docs:parsed_source_files_for_source_code_linker",
+            default = "//docs:parse_source_files_for_source_code_linker",
             executable = True,
             cfg = "exec",
         ),
     },
 )
+
+def parse_source_files_for_needs_links(
+        name = "collected_files_for_score_source_code_linker",
+        srcs = None,
+        deps = None):
+
+    parser()
+    collect_source_files_for_score_source_code_linker(
+        name = name,
+        srcs = srcs if srcs != None else [],
+        deps = deps if deps != None else [],
+    )
