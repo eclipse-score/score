@@ -10,29 +10,9 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
-
-# Multiple approaches are available to build the same documentation output:
-#
-# 1. **Esbonio via IDE support (`ide_support` target)**:
-#    - Listed first as it offers the least flexibility in implementation.
-#    - Designed for live previews and quick iterations when editing documentation.
-#    - Integrates with IDEs like VS Code but requires the Esbonio extension.
-#    - Requires a virtual environment with consistent dependencies (see 2).
-#
-# 2. **Directly running Sphinx in the virtual environment**:
-#    - As mentioned above, a virtual environment is required for running esbonio.
-#    - Therefore, the same environment can be used to run Sphinx directly.
-#    - Option 1: Run Sphinx manually via `.venv_docs/bin/python -m sphinx docs _build --jobs auto`.
-#    - Option 2: Use the `incremental` target, which simplifies this process.
-#    - Usable in CI pipelines to validate the virtual environment used by Esbonio.
-#    - Ideal for quickly generating documentation during development.
-#
-# 3. **Bazel-based build (`docs` target)**:
-#    - Runs the documentation build in a Bazel sandbox, ensuring clean, isolated builds.
-#    - Less convenient for frequent local edits but ensures build reproducibility.
 #
 # **Consistency**:
-# When modifying Sphinx extensions or configuration, ensure all three methods
+# When modifying Sphinx extensions or configuration, ensure all methods of building documentation
 # (Esbonio, incremental, and Bazel) work as expected to avoid discrepancies.
 #
 # For user-facing documentation, refer to `/README.md`.
@@ -41,13 +21,10 @@ load("@aspect_rules_py//py:defs.bzl", "py_library")
 load("@rules_pkg//pkg:mappings.bzl", "pkg_files")
 load("@rules_pkg//pkg:tar.bzl", "pkg_tar")
 load("@rules_python//python:pip.bzl", "compile_pip_requirements")
-load("//docs:_tooling/bzl/docs.bzl", "docs", "ide_support", "incremental", "live_preview", "plantuml_bzl")
+load("//docs:_tooling/bzl/docs.bzl", "all_docs_targets")
 load("//docs:_tooling/extensions/score_source_code_linker/collect_source_files.bzl", "collect_and_parse")
 load("//tools/dash:dash.bzl", "dash_license_checker")
 load("//tools/testing/pytest:defs.bzl", "score_py_pytest")
-
-# creates target //docs:docs
-docs()
 
 # In order to update the requirements, change the `requirements.txt` file and run:
 # `bazel run //docs:requirements`.
@@ -80,20 +57,13 @@ pkg_tar(
     srcs = [":html_files"],
 )
 
-# Run-time build of documentation, incl. incremental build support.
-incremental()
-
-#sphinx-autobuild, used for no IDE live preview
-live_preview()
-
-# Virtual python environment for working on the documentation (esbonio).
-# incl. python support when working on conf.py and sphinx extensions.
-
-# create  :plantuml & :plantuml_for_python targets
-plantuml_bzl()
-
-# creates :ide_support target for virtualenv
-ide_support()
+# Creates all documentation targets:
+# - `incremental` for building docs incrementally at runtime
+# - `live_preview` for sphinx-autobuild, used for no IDE live preview
+# - `plantuml_bzl` for creating `:plantuml` and `:plantuml_for_python` targets
+# - `ide_support` for creating `:ide_support` target for virtualenv
+# - `docs` for creating `:docs` target for build time documentation
+all_docs_targets()
 
 # Idea: replace glob with 'filegroup'
 

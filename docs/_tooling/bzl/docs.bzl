@@ -16,9 +16,55 @@ load("@aspect_rules_py//py:defs.bzl", "py_binary", "py_library", "py_venv")
 load("@pip_sphinx//:requirements.bzl", "all_requirements")
 load("@rules_java//java:defs.bzl", "java_binary")
 load("@rules_python//sphinxdocs:sphinx.bzl", "sphinx_build_binary", "sphinx_docs")
-# load("//docs:BUILD", "plantuml_for_python") # TODO temp @unused
+
+
+# Multiple approaches are available to build the same documentation output:
+#
+# 1. **Esbonio via IDE support (`ide_support` target)**:
+#    - Listed first as it offers the least flexibility in implementation.
+#    - Designed for live previews and quick iterations when editing documentation.
+#    - Integrates with IDEs like VS Code but requires the Esbonio extension.
+#    - Requires a virtual environment with consistent dependencies (see 2).
+#
+# 2. **Directly running Sphinx in the virtual environment**:
+#    - As mentioned above, a virtual environment is required for running esbonio.
+#    - Therefore, the same environment can be used to run Sphinx directly.
+#    - Option 1: Run Sphinx manually via `.venv_docs/bin/python -m sphinx docs _build --jobs auto`.
+#    - Option 2: Use the `incremental` target, which simplifies this process.
+#    - Usable in CI pipelines to validate the virtual environment used by Esbonio.
+#    - Ideal for quickly generating documentation during development.
+#
+# 3. **Bazel-based build (`docs` target)**:
+#    - Runs the documentation build in a Bazel sandbox, ensuring clean, isolated builds.
+#    - Less convenient for frequent local edits but ensures build reproducibility.
+
 
 sphinx_requirements = all_requirements + ["@rules_python//python/runfiles", ":plantuml_for_python"]
+
+def all_docs_targets():
+    """
+    Creates all targets related to documentation.
+
+    By using this function, you'll get any and all updates for documentation targets in one place.
+    """
+
+    # Run-time build of documentation, incl. incremental build support.
+    incremental()
+
+    #sphinx-autobuild, used for no IDE live preview
+    live_preview()
+
+    # Virtual python environment for working on the documentation (esbonio).
+    # incl. python support when working on conf.py and sphinx extensions.
+
+    # create  :plantuml & :plantuml_for_python targets
+    plantuml_bzl()
+
+    # creates :ide_support target for virtualenv
+    ide_support()
+
+    # creates :docs target for build time documentation
+    docs()
 
 def incremental(name = "incremental", extra_dependencies = list()):
     """
