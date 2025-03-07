@@ -15,15 +15,20 @@ from score_layout import html_options, sphinx_options
 
 
 def setup(app: Sphinx) -> dict[str, str | bool]:
-    app.config.needs_layouts = sphinx_options.needs_layouts
-    app.config.needs_global_options = sphinx_options.needs_global_options
-    app.config.html_theme = html_options.html_theme
-    app.config.html_context = html_options.html_context
-    app.config.html_css_files = html_options.html_css_files
-    app.config.html_static_path = html_options.html_static_path
-    app.config.html_theme_options = html_options.return_html_theme_options(app)
+    app.connect("config-inited", update_config)
     return {
         "version": "0.1",
         "parallel_read_safe": True,
         "parallel_write_safe": True,
     }
+
+def update_config(app: Sphinx, config):
+    app.config.needs_layouts = sphinx_options.needs_layouts
+    app.config.needs_global_options = sphinx_options.needs_global_options
+    app.config.html_theme = html_options.html_theme
+    app.config.html_context = html_options.html_context
+    app.config.html_static_path = html_options.html_static_path
+    app.add_css_file("css/score.css")
+    app.add_css_file("css/score_needs.css")
+    app.add_css_file("css/score_design.css")
+    app.config.html_theme_options = html_options.return_html_theme_options(app)
