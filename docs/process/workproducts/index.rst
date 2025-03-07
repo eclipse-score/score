@@ -212,13 +212,6 @@ Platform development
    - Formal evidence about the preformed DFA.
    - Formal evidence about the performed Safety Analyses
 
-.. workproduct:: Platform Release Notes
-   :id: wp__platform_sw_release_note
-   :status: draft
-   :tags: safety_management
-
-   Release notes describe the qualified SW version including known bugs from own testing and field reporting, with clear statement, that these bugs do not lead to violation of any safety requirements or with corresponding workaround measures. Platform level.
-
 
 Component development
 ^^^^^^^^^^^^^^^^^^^^^
@@ -344,14 +337,6 @@ Component development
 
    Build configuration capable to create the SEooC Library for the reference HW, module level.
    Note: Embedded software in the sense of the Iso (i.e. deployed on the production HW) is not part of our delivery.
-
-.. workproduct:: Module Release Notes
-   :id: wp__module_sw_release_note
-   :status: draft
-   :tags: safety_management
-
-   Release notes describe the qualified SW version including known bugs from own testing and field reporting, with clear statement, that these bugs do not lead to violation of any safety requirements or with corresponding workaround measures. Module level.
-
 
 .. workproduct:: Component test
    :id: wp__sw_component_test

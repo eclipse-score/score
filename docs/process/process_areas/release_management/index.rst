@@ -12,14 +12,16 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Process Areas
-#############
+.. _release_management:
+
+Release Management
+########################
 
 .. toctree::
    :maxdepth: 1
-   :glob:
 
-   requirements_engineering/index.rst
-   safety_management/index.rst
-   documentation_management/index.rst
-   release_management/index.rst
+   release_concept
+   release_workflow
+   guidance/index
+   release_workproducts
+   release_roles
