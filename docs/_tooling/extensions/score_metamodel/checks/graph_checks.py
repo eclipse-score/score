@@ -11,7 +11,6 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 import operator
-import re
 
 from sphinx.application import Sphinx
 from sphinx_needs.data import NeedsInfoType
@@ -22,7 +21,7 @@ from score_metamodel import (
 )
 
 
-def eval_need_check(need, check):
+def eval_need_check(need, check, log):
     """
     Perform a single check on a need:
     1. Split the check into its parts
@@ -43,13 +42,18 @@ def eval_need_check(need, check):
     if len(parts) != 3:
         raise ValueError(f"Invalid check defined: {check}")
 
-    if parts[1] not in oper:
+    if not (parts[1] in oper):
         raise ValueError(f"Binary Operator not defined: {parts[1]}")
 
-    return oper[parts[1]](need[parts[0]], parts[2])
+    if parts[0] not in need.keys():
+        msg = f"Attribute not defined: {parts[0]}"
+        log.warning_for_need(need, msg)
+        return False
+    else:
+        return oper[parts[1]](need[parts[0]], parts[2])
 
 
-def eval_need_condition(need, condition):
+def eval_need_condition(need, condition, log):
     """Evaluate a condition on a need:
     1. Check if the condition is only a simple check (e.g. "status == valid")
        If so call the check function.
@@ -67,7 +71,7 @@ def eval_need_condition(need, condition):
     }
 
     if not isinstance(condition, dict):
-        return eval_need_check(need, condition)
+        return eval_need_check(need, condition, log)
 
     cond = list(condition.keys())[0]
     vals = list(condition.values())[0]
@@ -75,8 +79,8 @@ def eval_need_condition(need, condition):
     if cond in ["and", "or", "xor", "not"]:
         for i in range(len(vals) - 1):
             return oper[cond](
-                eval_need_condition(need, vals[i]),
-                eval_need_condition(need, vals[i + 1]),
+                eval_need_condition(need, vals[i], log),
+                eval_need_condition(need, vals[i + 1], log),
             )
     else:
         raise ValueError(f"Binary Operator not defined: {vals}")
@@ -84,36 +88,34 @@ def eval_need_condition(need, condition):
     return True
 
 
-def get_need_selection(needs, selection):
+def get_need_selection(needs, selection, log):
     """Create a list of needs that match the selection criteria.:
     - If it is an include selection add the include to the pattern
     - If it is an exclude selection add a "^" to the pattern
     """
 
     selected_needs = []
+    pattern = []
     need_pattern = list(selection.keys())[0]
     # Verify Inputs
     if need_pattern in ["include", "exclude"]:
-        pattern = re.sub(", ", "|", list(selection.values())[0])
-        pattern = re.sub(" ", "|", pattern)
-        pattern = re.sub(",", "|", pattern)
-        pattern = "(" + pattern + ")"
+        for pat in list(selection.values())[0].split(","):
+            pattern.append(pat.lstrip())
     else:
         raise ValueError(f"Invalid need selection: {selection}")
 
     if "condition" in selection:
         condition = selection["condition"]
     else:
-        raise ValueError(f"Test Condition not defined: {selection}")
+        raise ValueError(f"Invalid selection: {selection}")
 
-    # Evaluate Conditions
     for need in needs:
         if need_pattern == "include":
-            sel = bool(re.match(pattern, need["type"]))
+            sel = need["type"] in pattern
         else:
-            sel = not bool(re.match(pattern, need["type"]))
+            sel = need["type"] not in pattern
 
-        if sel and (eval_need_condition(need, condition)):
+        if sel and (eval_need_condition(need, condition, log)):
             selected_needs.append(need)
 
     return selected_needs
@@ -134,16 +136,20 @@ def check_metamodel_graph(
         apply, eval = check[1].values()
 
         # Get all needs that match the selection criteria
-        selected_needs = get_need_selection(all_needs, apply)
+        selected_needs = get_need_selection(all_needs, apply, log)
 
         for need in selected_needs:
             for parent_relation in list(eval.keys()):
+                if parent_relation not in need:
+                    msg = f"Attribute not defined: {parent_relation}"
+                    log.warning_for_need(need, msg)
+                    continue
                 parent_ids = need[parent_relation]
 
                 for parent_id in parent_ids:
                     parent_need = needs_dict.get(parent_id, {})
 
-                    if not eval_need_condition(parent_need, eval[parent_relation]):
+                    if not eval_need_condition(parent_need, eval[parent_relation], log):
                         msg = (
                             f"parent need `{parent_id}` does not fulfill "
                             f"condition `{eval[parent_relation]}`."
