@@ -101,8 +101,8 @@ score_py_pytest(
 
 # Creates target for 'collect_source_files_for_score_source_code_linker' aspect
 collect_and_parse(
-    srcs = glob(["_tooling/extensions/score_metamodel/**/*.py"]),
     deps = [
+        ":score_metamodel_test", # score_metamodel incl tests
         ":score_source_code_linker",
     ],
 )
