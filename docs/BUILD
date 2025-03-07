@@ -37,12 +37,10 @@
 #
 # For user-facing documentation, refer to `/README.md`.
 
-load("@aspect_rules_py//py:defs.bzl", "py_binary", "py_library")
-load("@pip_sphinx//:requirements.bzl", "all_requirements", "requirement")
+load("@aspect_rules_py//py:defs.bzl", "py_library")
 load("@rules_pkg//pkg:mappings.bzl", "pkg_files")
 load("@rules_pkg//pkg:tar.bzl", "pkg_tar")
 load("@rules_python//python:pip.bzl", "compile_pip_requirements")
-load("@rules_python//sphinxdocs:sphinx.bzl", "sphinx_build_binary", "sphinx_docs")
 load("//docs:_tooling/bzl/docs.bzl", "docs", "ide_support", "incremental", "live_preview", "plantuml_bzl")
 load("//docs:_tooling/extensions/score_source_code_linker/collect_source_files.bzl", "collect_and_parse")
 load("//tools/dash:dash.bzl", "dash_license_checker")
