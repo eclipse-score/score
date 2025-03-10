@@ -80,18 +80,16 @@ Those steps are:
      - Merge architectural design into score repository
      - :need:`[[title]] <rl__committer>`
    * - 6.
-     - :ref:`Create component architecture (Concept) <create_component_architecture>`
+     - | :ref:`Create component architecture (Concept) <create_component_architecture>`
+       | :ref:`Allocate component requirements to architectural elements <allocate_component_requirements>`
      - :need:`[[title]] <rl__contributor>`
    * - 7.
      - :ref:`Model component architecture <model_component_architecture>`
      - :need:`[[title]] <rl__contributor>`
    * - 8.
-     - :ref:`Allocate component requirements to architectural elements <allocate_component_requirements>`
-     - :need:`[[title]] <rl__contributor>`
-   * - 9.
      - :ref:`Review component architecture <review_component_architecture>`
      - :need:`[[title]] <rl__committer>`
-   * - 10.
+   * - 9.
      - Merge component architectural design into module
      - :need:`[[title]]  <rl__committer>`
 
@@ -182,6 +180,13 @@ For this step following guidances are available:
 * :ref:`Git Guidelines <git_guidelines>`
 * :need:`[[title]] <gd_temp__arch__comp>`
 
+.. _allocate_component_requirements:
+
+Allocate component requirements to architectural elements
+---------------------------------------------------------
+
+In this step the component requirements shall be derived (see :need:`[[title]] <gd_guidl__req__engineering>`) and allocated to the architectural elements via the attribute *fulfils*.
+
 .. _model_component_architecture:
 
 Model component architecture
@@ -207,13 +212,6 @@ According to the architecture design description the model for the component arc
      - comp_arc_int_op_t
 
 The relations of those elements are described in :numref:`metamodel_architectural_design`
-
-.. _allocate_component_requirements:
-
-Allocate component requirements to architectural elements
----------------------------------------------------------
-
-In this step the component requirements shall be derived (see :need:`[[title]] <gd_guidl__req__engineering>`) and allocated to the architectural elements via the attribute *fulfils*.
 
 .. _review_component_architecture:
 

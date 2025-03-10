@@ -56,9 +56,9 @@ can be in a different order.
     features/                                       -> All features of the platform.
         <feature_name>/                             -> Folder containing all sub-folders corresponding to one feature and the contribution request [wp__cont_request]
             docs/                                   -> Documentation of the feature consisting of ...
-                architecture/                       -> ... Feature architecture [WP_FEATURE_ARCHITECTURE].
+                architecture/                       -> ... Feature architecture [wp__feature_architecture].
                 requirements/                       -> ... Feature requirements [wp__requirements__feat].
-                safety_analysis/                    -> ... Safety analysis on feature level [WP_FEATURE_SAFETY_ANALYSES]
+                safety_analysis/                    -> ... Safety analysis on feature level [wp__feature_safety_analysis]
                 safety_planning/                    -> ... the feature specific safety workproducts planning
                 verification/                       -> ... Feature verification report (reporting all feature verifications) [wp__platform_sw_verification_report]
             tests/                                  -> Feature tests, consisting of ...
@@ -77,7 +77,7 @@ can be in a different order.
             components/                             -> Components of the module.
                 <component_name>/                   -> Folder containing all artifacts corresponding to one component.
                     docs/                           -> Documentation of the component consisting of ...
-                        architecture/               -> ... Component architecture (only if sub-components exist) [wf__cr_mt_comparch].
+                        architecture/               -> ... Component architecture (only if sub-components exist) [wp__cr_mt_comparch].
                         requirements/               -> ... Component requirements [wp__sw_component_req] and HSI (if relevant) [wp__hsi].
                         safety_analysis/            -> ... Safety analysis on component level [wp__sw_component_safety_analyses]
                         verification/               -> ... Architecture review [wp__sw_arch_verification], code inspection [wp__sw_code_inspect]
