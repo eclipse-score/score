@@ -19,7 +19,7 @@ Component Architecture Template
     :id: gd_temp__arch__comp
     :status: valid
     :tags: architecture_design
-    :complies: std_wp__iso26262__software_5
+    :complies: std_req__iso26262__software_11, std_req__iso26262__software_12, std_req__iso26262__software_13
 
 Component Architecture : <Component>/<sub-component>
 ====================================================
@@ -92,4 +92,3 @@ Interfaces
 
 .. note::
    Architecture can be split into multiple files. At component level the public interfaces to be used by the user and tester to be shown.
-

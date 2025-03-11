@@ -236,7 +236,7 @@ needs_types:
       status: "^(valid|invalid)$"
     mandatory_links:
       fulfils: "^feat_req__.*$"
-      includes: "^feat_arc_int__.*$"
+      includes: "^feat_arc_int(_op)*__.*$"
 
   feat_arc_dyn:
     title: "Feature Architecture Dynamic View"
@@ -290,9 +290,9 @@ needs_types:
     mandatory_links:
       fulfils: "^comp_req__.*$"
     optional_links:
-      implements: "^comp_arc_int__.*$"
+      implements: "^comp_arc_int(_op)*__.*$"
       includes: "^comp_arc_sta__.*$"
-      uses: "^comp_arc_int__.*$"
+      uses: "^comp_arc_int(_op)*__.*$"
 
   comp_arc_dyn:
     title: "Component Architecture Dynamic View"

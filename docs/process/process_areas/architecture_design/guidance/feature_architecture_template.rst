@@ -18,7 +18,7 @@ Feature Architecture Template
 .. gd_temp:: Feature Architecture Templates
     :id: gd_temp__arch__feature
     :status: valid
-    :complies: std_wp__iso26262__software_5
+    :complies: std_req__iso26262__software_11, std_req__iso26262__software_12, std_req__iso26262__software_13
 
 Feature Architecture : <Feature>/<sub-feature>
 ==================================================
