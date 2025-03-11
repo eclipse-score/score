@@ -213,10 +213,13 @@ More details about the generation of the automated attributes are explained in t
 Requirements Versioning
 ***********************
 
+Individual Requirements
+=======================
+
 For the requirements the version management is basically provided by the git history. However it needs to be identified if the content of a requirement changed. So this concept aims only at identifying a change in the mandatory attributes of a requirement.
 
 Calculate hash for current requirements
-=======================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For each requirement a hash shall be calculated and stored in its dedicated own attribute *Hash* in the RST file. It shall include all mandatory manual attributes:
 
@@ -233,7 +236,7 @@ There shall be a tooling available which can be executed by the user during the 
 During Sphinx build it shall be checked if the attribute hash matches the actual has value of the requirement.
 
 Linking child requirements including hashes
-===========================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If a requirement is linked to a top level requirement also the hash of the target requirement shall be part of the link. It shall automatically be written into the attribute *satisfies hash*. Upon Sphinx Build it shall be checked if the attribute *satisfies hash* matches the calculated hash of the requirement which is linked via *satisfies*.
 
@@ -247,6 +250,15 @@ As this check is included in the sphinx build as a warning it can be guaranteed 
    Versioning of Requirements
 
 .. _reviews of the requirements:
+
+Sets of Requirements / Baselines
+================================
+
+GitHub standard functionality provides the means to version sets of requirements, as those are collected in files.
+The files commit history can be displayed, to show change date, author and differences.
+And via Git "Blame" also the changes on every requirement line.
+Requirement baseline generation is part of the configuration mangement,
+it is also done with GitHub means by tagging a complete set of artefacts/files in a repository.
 
 Reviews of the Requirements
 ***************************
