@@ -24,7 +24,7 @@ def test_feature_ok():
     app = Mock(spec=Sphinx)
 
     id_contains_feature(
-        app, need(id="Req__feature17__Title", docname="path/to/feature17/index"), logger
+        app, need(id="req__feature17__title", docname="path/to/feature17/index"), logger
     )
     logger._log.warning.assert_not_called()
 
@@ -34,6 +34,6 @@ def test_feature_not_ok():
     app = Mock(spec=Sphinx)
 
     id_contains_feature(
-        app, need(id="Req__feature17__Title", docname="path/to/feature15/index"), logger
+        app, need(id="req__feature17__title", docname="path/to/feature15/index"), logger
     )
     logger.assert_warning("feature15", expect_location=False)

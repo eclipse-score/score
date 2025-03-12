@@ -24,18 +24,7 @@ def get_standards_needs(needs: list[NeedsInfoType]) -> dict:
     Return a dictionary of all standard requirements from the Sphinx app's needs.
     """
 
-    return {
-        need["id"]: need
-        for need in needs
-        if need["id"].startswith(
-            (
-                "std_req__iso26262__",
-                "std_req__iso21434",
-                "std_req__isopas8926",
-                "std_req__aspice_40",
-            )
-        )
-    }
+    return {need["id"]: need for need in needs if need["type"] == "std_req"}
 
 
 def get_standards_workproducts(needs: list[NeedsInfoType]) -> dict:
@@ -43,18 +32,7 @@ def get_standards_workproducts(needs: list[NeedsInfoType]) -> dict:
     Return a dictionary of standard workproducts from the Sphinx app's needs.
     """
 
-    return {
-        need["id"]: need
-        for need in needs
-        if need["id"].startswith(
-            (
-                "std_wp__iso26262__",
-                "std_wp__iso21434",
-                "std_wp__isopas8926",
-                "std_wp__aspice_40",
-            )
-        )
-    }
+    return {need["id"]: need for need in needs if need["type"] == "std_wp"}
 
 
 def get_workflows(needs: list[NeedsInfoType]) -> dict:
