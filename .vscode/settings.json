@@ -11,25 +11,6 @@
         99
     ],
 
-    // Exclude build, temp and cache folders
-    "files.watcherExclude": {
-        ".*/**": true,
-        "**/__pycache__/**": true,
-        "bazel-*/**": true,
-        ".venv*/**": true,
-        "_build/**": true,
-    },
-
-    // Python Settings
-    // Exclude build, temp and cache folders
-    "python.analysis.exclude": [
-        // Note: this overrides the default setting, so we need to re-exclude defaults like .* and **/__pycache__
-        ".*",
-        "**/__pycache__",
-        "bazel-*",
-        ".venv*",
-        "_build",
-    ],
     "[python]": {
         // In python using 80 characters per line is the standard.
         "editor.rulers": [

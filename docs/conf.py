@@ -48,20 +48,12 @@ extensions = [
 ]
 
 exclude_patterns = [
-    "Thumbs.db",
-    ".DS_Store",
-    "**/_template",
-    "docs/architecture",
     # The following entries are not required when building the documentation
     # via 'bazel build //docs:docs', as that command runs in a sandboxed environment.
     # However, when building the documentation via 'sphinx-build' or esbonio,
     # these entries are required to prevent the build from failing.
     "bazel-*",
     ".venv_docs",
-    "modules/cb2needs",
-    "modules/index_bazel.rst",
-    "platform_integration_tests",
-    "_tooling/sphinx_extensions/test",
 ]
 
 templates_path = ["_templates"]

@@ -23,48 +23,15 @@ LOGGER = get_logger(__name__)
 
 
 def setup(app: Sphinx) -> dict:
-    """
-    Setup function needed to identify this file as a Sphinx-Extension
-
-    Args:
-        app: Sphinx app of the current running application. Populated automatically.
-
-    Returns:
-        (dict):
-            Return extension metadata.
-
-            {
-                "version": "0.1",
-                "parallel_read_safe": True,
-                "parallel_write_safe": True,
-            }
-    """
-    app.connect("env-updated", add_source_link)
     app.add_config_value("source_code_linker_file", "", rebuild="env")
+    if app.config.source_code_linker_file:
+        LOGGER.info("Loading source code linker...")
+        app.connect("env-updated", add_source_link)
     return {
         "version": "0.1",
         "parallel_read_safe": True,
         "parallel_write_safe": True,
     }
-
-
-def find_dir_paths(app: Sphinx) -> list[str]:
-    """
-    Reading 'requirement_links' config value and returning it as list
-    The 'requirement_links' config value contains all source links found
-    that need to be parsed.
-    Args:
-        app: Sphinx app of the current running application
-
-    Returns:
-        (list[str]):
-                List of filenames as strings captured from the 'requirement_links'
-                configuration value.
-
-        Example:
-            [file-1, file-2]
-    """
-    return [app.config.source_code_linker_file]
 
 
 def add_source_link(app: Sphinx, env) -> None:
@@ -80,7 +47,7 @@ def add_source_link(app: Sphinx, env) -> None:
     Needs_Data = SphinxNeedsData(env)
     needs = Needs_Data.get_needs_mutable()
     needs_copy = deepcopy(needs)
-    json_paths = find_dir_paths(app)
+    json_paths = [app.config.source_code_linker_file]
     for path in json_paths:
         try:
             with open(path) as f:
