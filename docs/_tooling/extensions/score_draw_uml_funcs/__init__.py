@@ -30,12 +30,19 @@ import time
 from functools import cache
 from pathlib import Path
 
-from sphinx.application import Sphinx
-from sphinx_needs.logging import get_logger
+from sphinx.application import Sphinx  # type: ignore
+from sphinx_needs.logging import get_logger  # type: ignore
 
 from score_draw_uml_funcs.helpers import (
     find_interfaces_of_operations,
+    gen_struct_element,
     gen_alias,
+    gen_interface_element,
+    get_interface,
+    gen_link_text,
+    get_real_interface_logical,
+    get_impl_comp_from_real_iface,
+    get_logical_interface_real,
 )
 
 logger = get_logger(__file__)
@@ -75,8 +82,11 @@ def scripts_directory_hash():
 
 
 def draw_component(
-    need: dict, all_needs: dict, processed_operations: set[str] | None = None
-) -> tuple[str, str, set[str]]:
+    need: dict,
+    all_needs: dict,
+    proc_real_interfaces: dict[str, str] | None = None,
+    proc_logical_interfaces: dict[str, str] | None = None,
+) -> tuple[str, str, dict[str, str], dict[str, str]]:
     """
     Drawing and parsing function of a component.
 
@@ -84,7 +94,7 @@ def draw_component(
         input:
             need: component_1
             all_needs: all_needs_dict
-            processed_operations: set()
+            processed_interfaces: set()
         return:
             # Part 1 Structure Text
             component "Component 1" as C1 {
@@ -109,47 +119,42 @@ def draw_component(
             C1 --> CI1: implements
             C1 --> CI3: uses
 
-            # Part 3 Processed Operations
+            # Part 3 processed_interfaces
             {
-             'real_operation_1',
-             'real_operation_6',
-             'real_operation_2',
-             'real_operation_5',
+             'real_interface_1',
+             'real_interface_2',
              'logical_interface_1'
             }
 
+            # Part 4 processed_interfaces
+            {
+             'logical_interface_1',
+             'logical_interface_2'
+            }
 
             Note: part 1 and 2 are returned as one text item separated by '\n'.
             They are interpreted and names are shortened here to aid readability.
-
-
-    Args:
-        need: the need that currently should be drawn / traversed
-        all_needs: all_needs_dict
-        processed_operations: set of processed_operations. Default: None
-
-
     Returns:
-        Tuple of 3 parts.
-        (Structure Text, Linkage Text, Processed Operations)
+        Tuple of 4 parts.
+        (Structure Text, Linkage Text, Processed (Real Interfaces), Processed Logical Interfaces)
 
     """
-    processed_operations = processed_operations or set()
-    alias = gen_alias(need["title"])
-    structure_text = f'component "{need["title"]}" as {alias} {{\n'
+    proc_real_interfaces = proc_real_interfaces or dict()
+    proc_logical_interfaces = proc_logical_interfaces or dict()
     linkage_text = ""
 
-    # Process includes (subcomponents and interfaces)
+    # Draw outer component
+    structure_text = f"{gen_struct_element('component', need)}  {{\n"
+
+    # Process includes: Draw inner (sub)components recursively
     for need_inc in need.get("includes", []):
         curr_need = all_needs[need_inc]
 
-        if "component_interface" in need_inc:
-            sub_structure, sub_links, processed_operations = draw_component_interface(
-                curr_need, all_needs, processed_operations
-            )
-        elif "component" in need_inc or "sub_component" in need_inc:
-            sub_structure, sub_links, processed_operations = draw_component(
-                curr_need, all_needs, processed_operations
+        if "comp_arc_sta" in curr_need["type"]:
+            sub_structure, sub_links, proc_real_interfaces, proc_logical_interfaces = (
+                draw_component(
+                    curr_need, all_needs, proc_real_interfaces, proc_logical_interfaces
+                )
             )
         else:
             continue
@@ -157,131 +162,52 @@ def draw_component(
         structure_text += sub_structure
         linkage_text += sub_links
 
-    structure_text += "}\n"
+    # close component
+    structure_text += f"}} /' {need['title']} '/ \n\n"
 
-    for relationship_type in ["implements", "uses"]:
-        if need.get(relationship_type):
-            interface_ids = set()
-            for op_id in need[relationship_type]:
-                # Determine parent interface for operations
-                parent_id = (
-                    all_needs[op_id]["includes_back"][0]
-                    if "operation" in op_id
-                    else op_id
+    local_interfaces = dict()
+    # Fill proc_real_interfaces with relation to implements and uses
+    for interface in need.get("implements") or []:
+        iface = get_interface(interface, all_needs)
+        if iface not in local_interfaces:
+            local_interfaces[iface] = "implements"
+
+    for interface in need.get("uses") or []:
+        iface = get_interface(interface, all_needs)
+        if iface not in local_interfaces:
+            local_interfaces[iface] = "uses"
+
+    for iface in local_interfaces:
+        # Draw interfaces
+        if iface not in proc_real_interfaces:
+            structure_text += gen_interface_element(iface, all_needs, True)
+            proc_logical_interfaces[iface] = get_logical_interface_real(
+                iface, all_needs
+            )
+            proc_real_interfaces[iface] = local_interfaces[iface]
+
+        # Determine Component alignment
+        arrow = "-->" if proc_real_interfaces[iface] == "uses" else "-->"
+
+        # Draw connection between real components and interfaces
+        linkage_text += f"{
+            gen_link_text(
+                need['title'], arrow, all_needs[iface]['title'], local_interfaces[iface]
+            )
+        } \n"
+
+        # Draw connection between real interfaces and logical interfaces - if link exists
+        if len(proc_logical_interfaces[iface]):
+            linkage_text += f"{
+                gen_link_text(
+                    all_needs[iface]['title'], "-->", all_needs[proc_logical_interfaces[iface]]['title'], "implements"
                 )
-                interface_ids.add(parent_id)
-
-            # Create links
-            for iface_id in interface_ids:
-                iface_alias = gen_alias(all_needs[iface_id]["title"])
-                linkage_text += f"{alias} --> {iface_alias}: {relationship_type}\n"
-
-            # Draw interfaces
-            for iface_id in interface_ids:
-                curr_need = all_needs[iface_id]
-                sub_structure, sub_links, processed_operations = (
-                    draw_component_interface(curr_need, all_needs, processed_operations)
-                )
-                structure_text += sub_structure
-                linkage_text += sub_links
+            } \n"
 
     # Remove duplicate links
     linkage_text = "\n".join(set(linkage_text.split("\n"))) + "\n"
 
-    return structure_text, linkage_text, processed_operations
-
-
-def draw_component_interface(
-    need: dict, all_needs: dict, processed_operations: set[str] | None = None
-) -> tuple[str, str, set[str]]:
-    """
-    Parsing and drawing of a component interface.
-    If needed it also will follow and draw any linked interfaces
-
-    Example:
-        input:
-            need: component_interface_3
-            all_needs: all_needs_dict
-            processed_operations: None
-        returns:
-
-            # Part 1 Structure Text
-            interface "Component Interface 3" as CI3 {
-            real operation 5 ()
-            real operation 6 ()
-            }
-
-            # Part 2 Linkage Text
-            ""
-
-            # Part 3 Processed Operations
-            (real_operation_5, real_operation_6)
-
-            Note: part 1 and 2 are returned as one text item separated by '\n'.
-            They are interpreted and names are shortened here to aid readability.
-
-    Args:
-        need: need that should be parsed / drawn
-        all_needs: all_needs_dict
-        processed_operations: set of already processed_operations. Default: None
-
-    Returns:
-        Tuple of 3 parts.
-        (Structure Text, Linkage Text, Processed Operations)
-
-    """
-    processed_operations = processed_operations or set()
-
-    # Skip if not an interface
-    if "interface" not in need["id"]:
-        return "", "", processed_operations
-
-    alias = gen_alias(need["title"])
-    interface_text = f'interface "{need["title"]}" as {alias} {{\n'
-
-    # Process unprocessed operations
-    new_includes = [inc for inc in need["includes"] if inc not in processed_operations]
-    processed_operations.update(new_includes)
-
-    # Add operations as methods
-    operation_str = "\n".join(
-        all_needs[inc]["title"] for inc in new_includes if "operation" in inc
-    )
-    interface_text += operation_str + "\n}\n\n"
-
-    # Find and create links to upper interfaces
-    linkage_text = ""
-    includes_id = [all_needs[inc]["id"] for inc in need["includes"]]
-    upper_interfaces = find_interfaces_of_operations(all_needs, includes_id)
-
-    for upper_id in upper_interfaces:
-        upper_alias = gen_alias(all_needs[upper_id]["title"])
-        linkage_text += f"{alias} --> {upper_alias}: implements\n"
-
-    # Generate text for upper interfaces
-    # (like the logical interfaces from the logic ops we are linking to)
-    upper_interface_text = "".join(
-        gen_interface_text(all_needs[iface_id], all_needs)
-        for iface_id in upper_interfaces
-        if iface_id not in processed_operations and "interface" in iface_id
-    )
-    processed_operations.update(
-        iface_id for iface_id in upper_interfaces if "interface" in iface_id
-    )
-
-    return interface_text + upper_interface_text, linkage_text, processed_operations
-
-
-def gen_interface_text(need: dict, all_needs: dict) -> str:
-    """Generate interface text if it's an actual interface."""
-    if "interface" not in need["id"]:
-        return ""
-
-    alias = gen_alias(need["title"])
-    text = f'interface "{need["title"]}" as {alias} {{\n'
-    includes_str = "\n".join(all_needs[inc]["title"] for inc in need["includes"])
-    text += includes_str + "\n}\n\n"
-    return text
+    return structure_text, linkage_text, proc_real_interfaces, proc_logical_interfaces
 
 
 #       ╭──────────────────────────────────────────────────────────────────────────────╮
@@ -294,22 +220,58 @@ class draw_full_feature:
         return "draw_full_feature" + " in " + scripts_directory_hash()
 
     def __call__(self, need, all_needs: dict) -> str:
-        alias = gen_alias(need["title"])
-        structure_text = f'component "{need["title"]}" as {alias} {{\n'
+        interfacelist = []
+        impl_comp = {}
+
+        structure_text = "allowmixing\n"
+        structure_text += f'actor "Feature User" as {gen_alias("Feature User")} \n'
+
+        # Define Feature as a package
+        structure_text += f"{gen_struct_element('package', need)} {{\n"
+
+        # Add logical Interfaces / Interface Operations (aka includes)
         for need_inc in need.get("includes", []):
-            curr_need = all_needs[need_inc]
+            # Generate list of interfaces since both interfaces and interface operations can be included
+            iface = get_interface(need_inc, all_needs)
+            interfacelist.append(iface) if iface not in interfacelist else None
 
-            structure_text += gen_interface_text(curr_need, all_needs)
-        structure_text += "}\n"
-        return structure_text
+        for iface in interfacelist:
+            structure_text += gen_interface_element(iface, all_needs, True)
 
+            # Determine Components which implement the interfaces
+            real_iface = get_real_interface_logical(iface, all_needs)
+            impl_comp[iface] = get_impl_comp_from_real_iface(real_iface[0], all_needs)
 
-class draw_logical_interface:
-    def __repr__(self):
-        return "draw_logical_interface" + " in " + scripts_directory_hash()
+            if len(impl_comp[iface]):
+                structure_text += (
+                    f"{gen_struct_element('class', all_needs[impl_comp[iface][0]])}\n"
+                )
 
-    def __call__(self, need, all_needs: dict) -> str:
-        return gen_interface_text(need, all_needs)
+        # Close Package
+        structure_text += f"}} /' {need['title']}  '/ \n\n"
+
+        link_text = ""
+
+        for iface in interfacelist:
+            # Add relation between Actor and Interfaces
+            link_text += f"{
+                gen_link_text('Feature User', '-d->', all_needs[iface]['title'], 'use')
+            } \n"
+
+            # Add relation between interface and component
+            if len(impl_comp[iface]):
+                link_text += f"{
+                    gen_link_text(
+                        all_needs[impl_comp[iface][0]]['title'],
+                        '-->',
+                        all_needs[iface]['title'],
+                        'implements',
+                    )
+                } \n"
+            else:
+                logger.warning(f"Interface {iface} is not implemented by any component")
+
+        return structure_text + link_text
 
 
 class draw_full_component:
@@ -317,40 +279,32 @@ class draw_full_component:
         return "draw_full_component" + " in " + scripts_directory_hash()
 
     def __call__(self, need, all_needs) -> str:
-        structure_text, linkage_text, processed_operations = draw_component(
-            need, all_needs, set()
+        structure_text, linkage_text, processed_interfaces, logical_interfacelist = (
+            draw_component(need, all_needs, dict(), dict())
         )
-        return structure_text + "\n" + linkage_text
+
+        # Draw Logical Interfaces
+        for iface in logical_interfacelist:
+            if len(logical_interfacelist[iface]):
+                structure_text += gen_interface_element(
+                    logical_interfacelist[iface], all_needs, True
+                )
+
+        return "allow_mixing\n" + structure_text + "\n" + linkage_text
 
 
-class draw_full_component_interface:
+class draw_full_interface:
     def __repr__(self):
-        return "draw_full_component_interface" + " in " + scripts_directory_hash()
+        return "draw_full_interface" + " in " + scripts_directory_hash()
 
     def __call__(self, need, all_needs) -> str:
-        structure_text, linkage_text, _ = draw_component_interface(
-            need, all_needs, set()
-        )
-        return structure_text + "\n" + linkage_text
+        structure_text = gen_interface_element(need["id"], all_needs, True)
 
-
-class draw_module:
-    def __repr__(self):
-        return "draw_module" + " in " + scripts_directory_hash()
-
-    def __call__(self, need, all_needs) -> str:
-        alias = gen_alias(need["title"])
-        module_text = f'component "{need["title"]}" as {alias} {{\n'
-        for need_inc in need.get("includes", []):
-            curr_need = all_needs[need_inc]
-            module_text += draw_full_component().__call__(curr_need, all_needs)
-        return module_text
+        return structure_text + "\n"
 
 
 draw_uml_function_context = {
-    "draw_logical_interface": draw_logical_interface(),
-    "draw_component_interface": draw_full_component_interface(),
+    "draw_interface": draw_full_interface(),
     "draw_component": draw_full_component(),
-    "draw_module": draw_module(),
     "draw_feature": draw_full_feature(),
 }

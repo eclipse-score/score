@@ -17,34 +17,91 @@ def gen_alias(title: str) -> str:
     return "".join(word[0] for word in title.split())
 
 
-def gen_link_text(alias_from: str, alias_to: list[str], link_text: str) -> str:
+def gen_struct_element(element: str, need: dict) -> str:
+    return f'{element} "{need["title"]}" as {gen_alias(need["title"])}'
+
+
+def gen_link_text(from_need: str, link_type: str, to_need: str, link_text: str) -> str:
     """
     Helper function that generates link text to be appended to the end
     of a UML diagram to display linkages.
 
     Example:
         input:
-            alias_from: CI1
-            alias_to: [LI1, LI2]
+            from_id: Component Interface 1
+            to_id: Logical Interface 1
+            link_type: -->
             link_text: uses
         return:
             CI1 --> LI1: uses
-            CI1 --> LI2: uses
 
         Note: The actual string contains '\n' characters between lines,
         shown here as visual line breaks for readability
-
-    Args:
-        alias_from: The alias from what you want to link
-        alias_to: A list of aliases to which you want to link
-        link_text: What text to use to link those things together.
-                   (Text that will be written by the arrow)
-
-    Returns:
-        link_text (str): Text with each link from alias_from to alias_to
-                         via link_text separated via '\n'
     """
-    return "\n".join(f"{alias_from} --> {al_to}: {link_text}" for al_to in alias_to)
+    return f"{gen_alias(from_need)} {link_type} {gen_alias(to_need)}: {link_text}"
+
+
+def gen_interface_element(need_id: str, all_needs: dict, incl_ops: bool = False) -> str:
+    """Generate interface text and include actual operations if selected."""
+    if "_int" not in all_needs[need_id]["type"]:
+        return ""
+    text = f"{gen_struct_element('interface', all_needs[need_id])} {{\n"
+    if incl_ops:
+        for op in all_needs[need_id].get("includes"):
+            text += f"{all_needs[op]['title']}\n"
+
+    text += f"\n}} /' {all_needs[need_id]['title']} '/ \n\n"
+    return text
+
+
+def get_interface(need_id: str, all_needs: dict) -> str:
+    if "_int_op" in all_needs[need_id]["type"]:
+        iface = all_needs[need_id]["includes_back"][0]
+    else:
+        iface = need_id
+
+    return iface
+
+
+def get_real_interface_logical(need_id: str, all_needs: dict) -> list[str]:
+    real_ifaces = []
+    real_ifops = []
+    logical_ops = all_needs[need_id]["includes"]
+
+    for logical_op in logical_ops:
+        real_ifop = all_needs[logical_op]["implements_back"][0]
+        real_ifops.append(real_ifop) if real_ifop not in real_ifops else None
+
+        real_iface = all_needs[real_ifop]["includes_back"][0]
+        real_ifaces.append(real_iface) if real_iface not in real_ifaces else None
+
+    return real_ifaces
+
+
+def get_logical_interface_real(need_id: str, all_needs: dict) -> str:
+    logical_ifaces = ""
+
+    real_ifops = all_needs[need_id].get("includes")
+
+    for real_ifop in real_ifops:
+        logical_ifop = (
+            all_needs[real_ifop].get("implements")[0]
+            if all_needs[real_ifop].get("implements") is not []
+            else ""
+        )
+
+        tmp = all_needs[logical_ifop].get("includes_back")
+        logical_ifaces = tmp[0] if len(tmp) else ""
+
+    return logical_ifaces
+
+
+def get_impl_comp_from_real_iface(real_iface: str, all_needs: dict) -> list[str]:
+    return all_needs[real_iface]["implements_back"]
+
+
+def get_use_comp_from_real_iface(real_iface: str, all_needs: dict) -> list[str]:
+    return all_needs[real_iface]["uses_back"]
 
 
 def find_interfaces_of_operations(needs: dict, needs_inc: list[str]) -> set[str]:

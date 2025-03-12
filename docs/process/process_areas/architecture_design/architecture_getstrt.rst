@@ -58,7 +58,7 @@ Architecture Generation for Sphinx-Needs
 Overview
 --------
 
-The system provides utilities to generate UML diagrams from requirement specifications. It supports various architectural elements types including:
+The system provides utilities to generate `PlantUML <https://plantuml.com/en/>`_ diagrams from requirement specifications. It supports various architectural elements types including:
 
 * Features
 * Logical Interfaces
@@ -80,8 +80,6 @@ To generate a UML diagram, use the *needarch* directive in your Sphinx-Needs doc
 
       {{ draw_feature(need(), needs) }}
 
-You can add any layout or additional configuration you want before you call the *draw_xyz*.
-
 It's also possible to manually extend the drawing. For an example, check out :ref:`manual_addition_uml`
 
 Available Drawing Classes
@@ -94,42 +92,69 @@ Available Drawing Classes
 
    {{ draw_feature(need(), needs) }}
 
-   # Draw Logical Interface
-   # Renders a logical interface and its operations.
+   # Draw Any Interface
+   # Renders a logical interface and its operations or a component interface with its operations and implementations.
 
-   {{ draw_logical_interface(need(), needs) }}
+   {{ draw_interface(need(), needs) }}
 
    # Draw Component
    # Creates a complete component diagram including internal structure and linkages.
 
    {{ draw_component(need(), needs) }}
 
-   # Draw Component Interface
-   # Generates a component interface diagram with its operations and implementations.
-
-   {{ draw_component_interface(need(), needs)}}
-
-.. note::
-
-   Note: The above syntax is for the *needarch* directive. It is also possible to use the *needuml* directive.
-   To achieve this the *need()* call needs to be replaced with the following, as *needuml* does not support *need()*
-
-.. code-block:: none
-
-   # need() => needs.__getitem__('ID OF THE REQUIREMENT YOU ARE IN')
-
-   # For example, drawing the requirement:
-   `COMP_ARC_STA__component_manual_1`
-
-    would then look as such
-   {{ draw_component( needs.__getitem__('COMP_ARC_STA__component_manual_1'), needs ) }}
-
 Rendered Examples
-^^^^^^^^^^^^^^^^^
+-----------------
 
 Here are some excerpts of UML diagrams made from the requirements of that file.
 
-**Component**
+Feature Architecture
+^^^^^^^^^^^^^^^^^^^^
+.. feat_arc_sta:: Feature Getting Started
+      :id: feat_arc_sta__archdes_getstrt
+      :security: YES
+      :safety: QM
+      :status: valid
+      :includes: feat_arc_int__archdes_logical_interface_1, feat_arc_int__archdes_logical_interface_2
+      :fulfils: feat_req__archdes_example_req
+
+      .. needarch::
+         :scale: 50
+         :align: center
+
+         {{ draw_feature(need(), needs) }}
+
+.. code-block:: rst
+
+   .. feat_arc_sta:: Feature Getting Started
+      :id: feat_arc_sta__archdes_getstrt
+      :security: YES
+      :safety: QM
+      :status: valid
+      :includes: feat_arc_int__archdes_logical_interface_1, feat_arc_int__archdes_logical_interface_2
+      :fulfils: feat_req__archdes_example_req
+
+      .. needarch::
+         :scale: 50
+         :align: center
+
+         {{ draw_feature(need(), needs) }}
+
+Component Architecture
+^^^^^^^^^^^^^^^^^^^^^^
+.. comp_arc_sta:: Component 1
+   :id: comp_arc_sta__component_getstrt
+   :status: valid
+   :safety: ASIL_B
+   :security: NO
+   :uses: comp_arc_int__archdes_component_interface_3
+   :implements: comp_arc_int__archdes_component_interface_1
+   :fulfils: comp_req__archdes_example_req
+
+   .. needarch::
+      :scale: 50
+      :align: center
+
+      {{ draw_component( need(), needs ) }}
 
 .. code-block:: rst
 
@@ -146,30 +171,34 @@ Here are some excerpts of UML diagrams made from the requirements of that file.
          :scale: 50
          :align: center
 
-         allowmixing
          {{ draw_component( need(), needs ) }}
 
+Debugging PlantUML Figures
+--------------------------
+For debugging PlantUML diagrams which are generated via the *needarch* directive following options are available:
 
-.. comp_arc_sta:: Component 1
-   :id: comp_arc_sta__component_getstrt
-   :status: valid
-   :safety: ASIL_B
-   :security: NO
-   :uses: comp_arc_int__archdes_component_interface_3
-   :implements: comp_arc_int__archdes_component_interface_1
-   :fulfils: comp_req__archdes_example_req
+**Storing the PlantUML File**
+
+It is possible to store the generate PlantUML file in the directory ``<workspace_root>/_build/_plantuml_sources``
+Therefore the *needarch* directive needs to be extended with the attribute ``:save:``
+
+.. code-block:: rst
 
    .. needarch::
-         :scale: 50
-         :align: center
+      :scale: 50
+      :align: center
+      :save: comp1.puml
 
-         allowmixing
-         {{ draw_component( need(), needs ) }}
+      {{ draw_component( need(), needs ) }}
+
+**Printing the PlantUML Code**
+
+Besides storing the output it is also possible to display the generated PlantUML text below the rendered Figure. Therefore the *needarch* directive needs to be extended with the attribute ``:debug:``
 
 .. _manual_addition_uml:
 
 Manual Addition to the UML
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------
 
 We use a similar rst as above, just this time we use *needuml* and add some extra manual UML at the end.
 To make *needuml* work we have to replace the *need()* call with a different function call.
@@ -208,6 +237,24 @@ To make *needuml* work we have to replace the *need()* call with a different fun
          component "Component Manual" as CM {
          }
          CM -> LI1: EXTRA_LINKAGE_MANUALLY_ADDED
+
+You can add any layout or additional configuration you want before you call the *draw_xyz*.
+
+Using NeedUML directive
+-----------------------
+
+The above syntax is for the *needarch* directive. It is also possible to use the *needuml* directive.
+To achieve this the *need()* call needs to be replaced with the following, as *needuml* does not support *need()*
+
+   .. code-block:: none
+
+      # need() => needs.__getitem__('ID OF THE REQUIREMENT YOU ARE IN')
+
+      # For example, drawing the requirement:
+      `COMP_ARC_STA__component_manual_1`
+
+      would then look as such
+      {{ draw_component( needs.__getitem__('COMP_ARC_STA__component_manual_1'), needs ) }}
 
 
 Limitations

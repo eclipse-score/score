@@ -169,7 +169,7 @@ On the feature level only *logical interfaces* shall be displayed. This means th
       :scale: 50
       :align: center
 
-      {{ draw_logical_interface(need(), needs) }}
+      {{ draw_interface(need(), needs) }}
 
 SW Module View
 ==============
@@ -226,7 +226,7 @@ The component interface view shows the actual interfaces of the component. Also 
       :scale: 50
       :align: center
 
-      {{ draw_component_interface(need(), needs)}}
+      {{ draw_interface(need(), needs)}}
 
 Platform View
 =============

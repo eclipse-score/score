@@ -50,7 +50,7 @@ Feature Architecture File
       :scale: 50
       :align: center
 
-      {{ draw_logical_interface(need(), needs) }}
+      {{ draw_interface(need(), needs) }}
 
 
 .. feat_arc_int:: Logical Interface 3
@@ -121,7 +121,7 @@ Component Architecure File(s)
    :safety: ASIL_B
    :security: NO
    :uses: comp_arc_int__archdes_component_interface_3
-   :implements: comp_arc_int__archdes_component_interface_1
+   :implements: comp_arc_int__archdes_component_interface_1, comp_arc_int__archdes_component_interface_2
    :fulfils: comp_req__archdes_example_req
    :includes: comp_arc_sta__archdes_sub_component_1, comp_arc_sta__archdes_sub_component_2
 
