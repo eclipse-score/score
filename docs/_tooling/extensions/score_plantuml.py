@@ -104,6 +104,7 @@ def setup(app: Sphinx):
     app.config.plantuml = str(get_plantuml_path())
     app.config.plantuml_output_format = "svg_obj"
     app.config.plantuml_syntax_error_image = True
+    app.config.plantuml_needs_build_needumls = "_plantuml_sources"
 
     logger.debug(f"PlantUML binary found at {app.config.plantuml}")
 
