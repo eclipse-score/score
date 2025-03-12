@@ -15,9 +15,11 @@ from unittest.mock import Mock
 from sphinx.application import Sphinx
 from sphinx_needs.data import NeedsInfoType
 
-from docs._tooling.extensions.score_metamodel.checks.id_format_and_length import (
+from docs._tooling.extensions.score_metamodel.checks.attributes_format import (
+    check_description,
     check_id_format,
     check_id_length,
+    check_title,
 )
 from docs._tooling.extensions.score_metamodel.tests import (
     fake_check_logger,
@@ -25,6 +27,9 @@ from docs._tooling.extensions.score_metamodel.tests import (
 
 
 class TestId:
+    STOP_WORDS = ["shall", "must", "will"]
+    WEAK_WORDS = ["just", "that", "about", "really", "some", "thing", "absolutely"]
+
     def test_check_id_format_positive(self):
         """
         Test check_id_length function with a positive case.
@@ -95,7 +100,7 @@ class TestId:
 
     def test_check_id_length_negative(self):
         """
-        Test check_id_length function with a positive case.
+        Test check_id_length function with a negative case.
         """
 
         need = NeedsInfoType(
@@ -108,5 +113,82 @@ class TestId:
         check_id_length(app, need, logger)
         logger.assert_warning(
             f'exceeds the maximum allowed length of 45 characters (current length: {len(need['id'])}).',
+            expect_location=False,
+        )
+
+    def test_check_title_positive(self):
+        need = NeedsInfoType(
+            id="std_req__iso26262__rq_8_6432",
+            title="std_req  iso26262",
+            type="feat_req",
+        )
+
+        logger = fake_check_logger()
+        app = Mock(spec=Sphinx)
+        app.config = Mock()
+        app.config.stop_words = self.STOP_WORDS
+
+        check_title(app, need, logger)
+        assert not logger.has_warnings
+
+    def test_check_title_negative(self):
+        """
+        Test check_title function with a negative case.
+        """
+
+        need = NeedsInfoType(
+            id="gd_req__doc_shall_approver",
+            title="gd_req doc shall approver",
+            type="feat_req",
+        )
+
+        logger = fake_check_logger()
+        app = Mock(spec=Sphinx)
+        app.config = Mock()
+        app.config.stop_words = self.STOP_WORDS
+
+        check_title(app, need, logger)
+        logger.assert_warning(
+            (
+                "contains a stop word: `shall`. The title is meant to provide a short summary, "
+                "not to repeat the requirement statement. Please revise the title for clarity and brevity."
+            ),
+            expect_location=False,
+        )
+
+    def test_check_description_positive(self):
+        need = NeedsInfoType(
+            id="std_req__iso26262__rq_8_6432",
+            content="This is the description of the requirement",
+            type="feat_req",
+        )
+
+        logger = fake_check_logger()
+        app = Mock(spec=Sphinx)
+        app.config = Mock()
+        app.config.weak_words = self.WEAK_WORDS
+
+        check_description(app, need, logger)
+        assert not logger.has_warnings
+
+    def test_check_description_negative(self):
+        """
+        Test check_description function with a negative case.
+        """
+
+        need = NeedsInfoType(
+            id="gd_req__doc_shall_approver",
+            content="This is just the description of the requirement",
+            type="feat_req",
+        )
+
+        logger = fake_check_logger()
+        app = Mock(spec=Sphinx)
+        app.config = Mock()
+        app.config.weak_words = self.WEAK_WORDS
+
+        check_description(app, need, logger)
+        logger.assert_warning(
+            "contains a weak word: `just`. Please revise the description.",
             expect_location=False,
         )

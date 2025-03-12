@@ -26,7 +26,7 @@ from score_metamodel.checks.traceability import (
 
 @pytest.mark.metadata(
     Verifies=[
-        "TOOL_REQ__toolchain_sphinx_needs_build__requirement_linkage_status_check"
+        "tool_req__toolchain_sphinx_needs_build__requirement_linkage_status_check"
     ],
     Description="It should check the traceability like linkage of attributes.",
     ASIL="ASIL_D",
@@ -40,7 +40,7 @@ class TestTraceability:
         app = Mock(spec=Sphinx)
 
         need_1 = NeedsInfoType(
-            id="TOOL_REQ__1",
+            id="tool_req__1",
             status="valid",
             satisfies=[
                 "feat_req__2",
@@ -51,7 +51,7 @@ class TestTraceability:
             id="feat_req__2",
             status="valid",
             satisfies=[
-                "TOOL_REQ__1",
+                "tool_req__1",
             ],
         )
         needs = [need_1, need_2]
@@ -64,7 +64,7 @@ class TestTraceability:
         app = Mock(spec=Sphinx)
 
         need_1 = NeedsInfoType(
-            id="TOOL_REQ__1",
+            id="tool_req__1",
             status="valid",
             satisfies=[
                 "feat_req__2",
@@ -85,7 +85,7 @@ class TestTraceability:
         app = Mock(spec=Sphinx)
 
         need_1 = NeedsInfoType(
-            id="COMP_REQ__1",
+            id="comp_req__1",
             status="valid",
             safety="QM",
             satisfies=[
@@ -168,7 +168,7 @@ class TestTraceability:
         app = Mock(spec=Sphinx)
 
         need_1 = NeedsInfoType(
-            id="TOOL_REQ__1",
+            id="tool_req__1",
             status="valid",
             satisfies=[
                 "feat_req__2",
@@ -189,7 +189,7 @@ class TestTraceability:
         app = Mock(spec=Sphinx)
 
         need_1 = NeedsInfoType(
-            id="TOOL_REQ__001",
+            id="tool_req__001",
             status="valid",
             satisfies=["feat_req__2"],
         )
