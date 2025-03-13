@@ -10,16 +10,16 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
+import re
+
+
 def gen_alias(title: str) -> str:
     return "".join(word[0] for word in title.split())
 
 
 def gen_format(need: dict) -> str:
     if need["safety"] == "ASIL_B":
-        if "comp_arc_sta" in need["type"]:
-            color = "<<asilb>>"
-        else:
-            color = ""
+        color = "<<asilb>>" if "comp_arc_sta" in need["type"] else ""
     else:
         color = ""
 
@@ -53,13 +53,17 @@ def gen_link_text(from_need: str, link_type: str, to_need: str, link_text: str) 
 
 
 def gen_interface_element(need_id: str, all_needs: dict, incl_ops: bool = False) -> str:
-    """Generate interface text and include actual operations if selected."""
+    """Generate interface text and include all operations if selected."""
     if "_int" not in all_needs[need_id]["type"]:
         return ""
     text = f"{gen_struct_element('interface', all_needs[need_id])} {{\n"
     if incl_ops:
         for op in all_needs[need_id].get("includes"):
-            text += f"{all_needs[op]['title']}\n"
+            raw_text = all_needs[op]["title"]
+            if re.match(".*\(\)$", raw_text):
+                text += f"{raw_text}\n"
+            else:
+                text += f"{raw_text} ()\n"
 
     text += f"\n}} /' {all_needs[need_id]['title']} '/ \n\n"
     return text
@@ -97,7 +101,7 @@ def get_logical_interface_real(need_id: str, all_needs: dict) -> str:
     for real_ifop in real_ifops:
         logical_ifop = (
             all_needs[real_ifop].get("implements")[0]
-            if all_needs[real_ifop].get("implements") is not []
+            if all_needs[real_ifop].get("implements") != []
             else ""
         )
 

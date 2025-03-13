@@ -167,12 +167,12 @@ def draw_component(
 
     local_interfaces = dict()
     # Fill proc_real_interfaces with relation to implements and uses
-    for interface in need.get("implements") or []:
+    for interface in need.get("implements", []):
         iface = get_interface(interface, all_needs)
         if iface not in local_interfaces:
             local_interfaces[iface] = "implements"
 
-    for interface in need.get("uses") or []:
+    for interface in need.get("uses", []):
         iface = get_interface(interface, all_needs)
         if iface not in local_interfaces:
             local_interfaces[iface] = "uses"
@@ -186,24 +186,21 @@ def draw_component(
             )
             proc_real_interfaces[iface] = local_interfaces[iface]
 
-        # Determine Component alignment
-        arrow = "-->" if proc_real_interfaces[iface] == "uses" else "-->"
-
         # Draw connection between real components and interfaces
         linkage_text += f"{
             gen_link_text(
-                need['title'], arrow, all_needs[iface]['title'], local_interfaces[iface]
+                need['title'], '-->', all_needs[iface]['title'], local_interfaces[iface]
             )
         } \n"
 
         # Draw connection between real interfaces and logical interfaces
         # if link exists
-        if len(proc_logical_interfaces[iface]):
+        if interfaces := proc_logical_interfaces[iface]:
             linkage_text += f"{
                 gen_link_text(
                     all_needs[iface]['title'],
                     '-->',
-                    all_needs[proc_logical_interfaces[iface]]['title'],
+                    all_needs[interfaces]['title'],
                     'implements',
                 )
             } \n"
@@ -225,7 +222,7 @@ class draw_full_feature:
 
     def __call__(self, need, all_needs: dict) -> str:
         interfacelist = []
-        impl_comp = {}
+        impl_comp = dict()
 
         structure_text = "allowmixing\n"
         structure_text += f'actor "Feature User" as {gen_alias("Feature User")} \n'
@@ -247,9 +244,9 @@ class draw_full_feature:
             real_iface = get_real_interface_logical(iface, all_needs)
             impl_comp[iface] = get_impl_comp_from_real_iface(real_iface[0], all_needs)
 
-            if len(impl_comp[iface]):
+            if imcomp := impl_comp[iface]:
                 structure_text += (
-                    f"{gen_struct_element('class', all_needs[impl_comp[iface][0]])}\n"
+                    f"{gen_struct_element('class', all_needs[imcomp[0]])}\n"
                 )
 
         # Close Package
@@ -264,17 +261,17 @@ class draw_full_feature:
             } \n"
 
             # Add relation between interface and component
-            if len(impl_comp[iface]):
+            if imcomp := impl_comp[iface]:
                 link_text += f"{
                     gen_link_text(
-                        all_needs[impl_comp[iface][0]]['title'],
+                        all_needs[imcomp[0]]['title'],
                         '-->',
                         all_needs[iface]['title'],
                         'implements',
                     )
                 } \n"
             else:
-                logger.warning(f"Interface {iface} is not implemented by any component")
+                print(f"Interface {iface} is not implemented by any component")
 
         return gen_header() + structure_text + link_text
 
@@ -290,10 +287,8 @@ class draw_full_component:
 
         # Draw Logical Interfaces
         for iface in logical_interfacelist:
-            if len(logical_interfacelist[iface]):
-                structure_text += gen_interface_element(
-                    logical_interfacelist[iface], all_needs, True
-                )
+            if log_int := logical_interfacelist[iface]:
+                structure_text += gen_interface_element(log_int, all_needs, True)
 
         return gen_header() + structure_text + "\n" + linkage_text
 
