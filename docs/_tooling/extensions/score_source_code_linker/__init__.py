@@ -25,7 +25,7 @@ LOGGER = get_logger(__name__)
 def setup(app: Sphinx) -> dict:
     app.add_config_value("source_code_linker_file", "", rebuild="env")
     if app.config.source_code_linker_file:
-        LOGGER.info("Loading source code linker...")
+        LOGGER.info("Loading source code linker...", type="score_source_code_linker")
         app.connect("env-updated", add_source_link)
     return {
         "version": "0.1",
