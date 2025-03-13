@@ -32,6 +32,7 @@ class TestStandards:
     #        need_1 = NeedsInfoType(
     #            target_id="Traceability of safety requirements",
     #            id="std_req__iso26262__rq-8-6432",
+    #            type="std_req",
     #            reqtype="Functional",
     #            status="valid",
     #            docname=None,
@@ -40,7 +41,7 @@ class TestStandards:
     #
     #        need_2 = NeedsInfoType(
     #            target_id="Requirements attribute satisfies",
-    #            id="GD_REQ__attribute_satisfies",
+    #            id="gd_req__attribute_satisfies",
     #            tags="attribute",
     #            security="NO",
     #            type="gd_req",
@@ -50,7 +51,7 @@ class TestStandards:
     #            ],
     #            status="valid",
     #            satisfies=[
-    #             "GD__create_maintain_requirements",
+    #             "gd_req__create_maintain_requirements",
     #         ],
     #         docname=None,
     #         lineno=None,
@@ -74,6 +75,7 @@ class TestStandards:
     #     need_1 = NeedsInfoType(
     #         target_id="Traceability of safety requirements",
     #         id="std_req__iso26262__rq-8-6432",
+    #         type="std_req",
     #         reqtype="Functional",
     #         status="valid",
     #         docname=None,
@@ -82,7 +84,7 @@ class TestStandards:
 
     #     need_2 = NeedsInfoType(
     #         target_id="Requirements attribute satisfies",
-    #         id="GD_REQ__attribute_satisfies",
+    #         id="gd_req__attribute_satisfies",
     #         type="gd_req",
     #         tags="attribute",
     #         security="NO",
@@ -92,7 +94,7 @@ class TestStandards:
     #         ],
     #         status="valid",
     #         satisfies=[
-    #             "GD__create_maintain_requirements",
+    #             "gd_req__create_maintain_requirements",
     #         ],
     #         docname=None,
     #         lineno=None,
@@ -121,6 +123,7 @@ class TestStandards:
     #     need_1 = NeedsInfoType(
     #         target_id="Organization-specific rules and processes for functional safety",
     #         id="std_wp__iso26262__wp-2-551",
+    #         type="std_wp",
     #         status="valid",
     #         docname=None,
     #         lineno=None,
@@ -161,6 +164,7 @@ class TestStandards:
     #     need_1 = NeedsInfoType(
     #         target_id="Organization-specific rules and processes for functional safety",
     #         id="std_wp__iso26262__wp-2-551",
+    #         type="std_wp",
     #         status="valid",
     #         docname=None,
     #         lineno=None,
@@ -173,7 +177,7 @@ class TestStandards:
     #         status="draft",
     #         complies=[
     #             "std_wp__iso26262__wp-2-777",
-    #             "STD_REQ__iso21434__wp-05-88",
+    #             "std_req__iso21434__wp-05-88",
     #         ],
     #         docname=None,
     #         lineno=None,
@@ -215,7 +219,7 @@ class TestStandards:
     #     need_2 = NeedsInfoType(
     #         target_id="Create/Maintain Safety Plan",
     #         type="workflow",
-    #         id="WF__CR_MT_SAFETY_PLAN",
+    #         id="wf__cr_mt_safety_plan",
     #         status="draft",
     #         input=["wp__platform_mgmt", "wp__issue_track_system"],
     #         output=["wp__module_safety_plan", "wp__platform_safety_plan"],
@@ -264,7 +268,7 @@ class TestStandards:
     #     need_2 = NeedsInfoType(
     #         target_id="Create/Maintain Safety Plan",
     #         type="workflow",
-    #         id="WF__CR_MT_SAFETY_PLAN",
+    #         id="wf__cr_mt_safety_plan",
     #         status="draft",
     #         input=["wp__platform_mgmt", "wp__issue_track_system"],
     #         output=["wp__platform_safety_plan"],
@@ -316,7 +320,7 @@ class TestStandards:
     #     need_2 = NeedsInfoType(
     #         target_id="Create/Maintain Safety Plan",
     #         type="workflow",
-    #         id="WF__CR_MT_SAFETY_PLAN",
+    #         id="wf__cr_mt_safety_plan",
     #         status="draft",
     #         input=["wp__platform_mgmt", "wp__issue_track_system"],
     #         output=["wp__module_safety_plan", "wp__platform_safety_plan"],
@@ -334,18 +338,18 @@ class TestStandards:
     #     need_3 = NeedsInfoType(
     #         target_id="Review/Approve Contribution request",
     #         type="workflow",
-    #         id="WF__RV_AP_ContrRequest",
+    #         id="wf__rv_ap_ContrRequest",
     #         status="valid",
     #         input=["wp__cont_request"],
     #         output=["wp__module_safety_plan", "wp__cont_request"],
     #         contains=[
     #             "std_req__iso26262__rq-8-8411",
-    #             "STD_REQ__isoPAS8926__rq-4431",
-    #             "STD_REQ__isoPAS8926__rq-44321",
-    #             "STD_REQ__isoPAS8926__rq-44322",
-    #             "STD_REQ__isoPAS8926__rq-4433",
-    #             "STD_REQ__isoPAS8926__rq-44341",
-    #             "STD_REQ__isoPAS8926__rq-44342",
+    #             "std_req__isoPAS8926__rq-4431",
+    #             "std_req__isoPAS8926__rq-44321",
+    #             "std_req__isoPAS8926__rq-44322",
+    #             "std_req__isoPAS8926__rq-4433",
+    #             "std_req__isoPAS8926__rq-44341",
+    #             "std_req__isoPAS8926__rq-44342",
     #         ],
     #         docname=None,
     #         lineno=None,
@@ -377,6 +381,7 @@ class TestStandards:
         need_1 = NeedsInfoType(
             target_id="Traceability of safety requirements",
             id="std_req__iso26262__rq-8-6432",
+            type="std_req",
             reqtype="Functional",
             status="valid",
             docname=None,
@@ -386,6 +391,7 @@ class TestStandards:
         need_2 = NeedsInfoType(
             target_id="Traceability",
             id="std_req__iso26262__rq-8-0000",
+            type="std_req",
             reqtype="Functional",
             status="valid",
             docname=None,
@@ -394,8 +400,7 @@ class TestStandards:
 
         need_3 = NeedsInfoType(
             target_id="Requirements attribute satisfies",
-            id="GD_REQ__attribute_satisfies",
-            tags="attribute",
+            id="gd_req__attribute_satisfies",
             security="NO",
             type="gd_req",
             complies=[
@@ -404,7 +409,7 @@ class TestStandards:
             ],
             status="valid",
             satisfies=[
-                "GD__create_maintain_requirements",
+                "gd_req__create_maintain_requirements",
             ],
             docname=None,
             lineno=None,
@@ -434,6 +439,7 @@ class TestStandards:
         need_1 = NeedsInfoType(
             target_id="Organization-specific rules and processes for functional safety",
             id="std_wp__iso26262__wp-2-551",
+            type="std_wp",
             status="valid",
             docname=None,
             lineno=None,
@@ -442,6 +448,7 @@ class TestStandards:
         need_2 = NeedsInfoType(
             target_id="specific rules for processes",
             id="std_wp__iso26262__wp-2-0000",
+            type="std_wp",
             status="valid",
             docname=None,
             lineno=None,
@@ -454,7 +461,7 @@ class TestStandards:
             type="workproduct",
             complies=[
                 "std_wp__iso26262__wp-2-551",
-                "STD_REQ__iso21434_wp-05-01",
+                "std_req__iso21434_wp-05-01",
             ],
             docname=None,
             lineno=None,
@@ -499,7 +506,7 @@ class TestStandards:
         need_2 = NeedsInfoType(
             target_id="Create/Maintain Safety Plan",
             type="workflow",
-            id="WF__CR_MT_SAFETY_PLAN",
+            id="wf__cr_mt_safety_plan",
             status="draft",
             input=["wp__platform_mgmt", "wp__issue_track_system"],
             output=["wp__module_safety_plan", "wp__platform_safety_plan"],
@@ -564,18 +571,18 @@ class TestStandards:
         need_6 = NeedsInfoType(
             target_id="Review/Approve Contribution request",
             type="workflow",
-            id="WF__RV_AP_ContrRequest",
+            id="wf__rv_ap_ContrRequest",
             status="valid",
             input=["wp__cont_request"],
             output=["wp__module_safety", "wp__cont_request"],
             contains=[
                 "std_req__iso26262__rq-8-8411",
-                "STD_REQ__isoPAS8926__rq-4431",
-                "STD_REQ__isoPAS8926__rq-44321",
-                "STD_REQ__isoPAS8926__rq-44322",
-                "STD_REQ__isoPAS8926__rq-4433",
-                "STD_REQ__isoPAS8926__rq-44341",
-                "STD_REQ__isoPAS8926__rq-44342",
+                "std_req__isoPAS8926__rq-4431",
+                "std_req__isoPAS8926__rq-44321",
+                "std_req__isoPAS8926__rq-44322",
+                "std_req__isoPAS8926__rq-4433",
+                "std_req__isoPAS8926__rq-44341",
+                "std_req__isoPAS8926__rq-44342",
             ],
             docname=None,
             lineno=None,
@@ -603,6 +610,7 @@ class TestStandards:
         need_1 = NeedsInfoType(
             target_id="Traceability of safety requirements",
             id="std_req__iso26262__rq-8-6432",
+            type="std_req",
             reqtype="Functional",
             status="valid",
             docname=None,
@@ -611,7 +619,8 @@ class TestStandards:
 
         need_2 = NeedsInfoType(
             target_id="Traceability of requirements",
-            id="R_11111111",
+            id="wp__11111111",
+            type="workproduct",
             reqtype="Functional",
             status="valid",
             docname=None,
@@ -631,6 +640,7 @@ class TestStandards:
         need_1 = NeedsInfoType(
             target_id="Organization-specific rules and processes for functional safety",
             id="std_wp__iso26262__wp-2-551",
+            type="std_wp",
             status="valid",
             docname=None,
             lineno=None,
@@ -638,7 +648,8 @@ class TestStandards:
 
         need_2 = NeedsInfoType(
             target_id="Traceability of requirements",
-            id="R_11111111",
+            id="wp__11111111",
+            type="workproduct",
             reqtype="Functional",
             status="valid",
             docname=None,
@@ -658,7 +669,7 @@ class TestStandards:
 
         need_1 = NeedsInfoType(
             target_id="Requirements attribute satisfies",
-            id="GD_REQ__attribute_satisfies",
+            id="gd_req__attribute_satisfies",
             type="workproduct",
             tags="attribute",
             security="NO",
@@ -668,7 +679,7 @@ class TestStandards:
             ],
             status="valid",
             satisfies=[
-                "GD__create_maintain_requirements",
+                "gd_req__create_maintain_requirements",
             ],
             docname=None,
             lineno=None,
@@ -676,7 +687,7 @@ class TestStandards:
 
         need_2 = NeedsInfoType(
             target_id="Requirements attribute satisfies",
-            id="GD_REQ__attribute_satisfies",
+            id="gd_req__attribute_satisfies",
             type="gd_req",
             tags="attribute",
             security="NO",
@@ -686,7 +697,7 @@ class TestStandards:
             ],
             status="valid",
             satisfies=[
-                "GD__create_maintain_requirements",
+                "gd_req__create_maintain_requirements",
             ],
             docname=None,
             lineno=None,
@@ -705,7 +716,7 @@ class TestStandards:
 
         need_1 = NeedsInfoType(
             target_id="Requirements attribute satisfies_1",
-            id="GD_REQ__attribute_satisfies",
+            id="gd_req__attribute_satisfies",
             type="gd_req",
             tags="attribute",
             security="NO",
@@ -714,7 +725,7 @@ class TestStandards:
                 "std_req__iso26262__rq-8-6422",
             ],
             status="valid",
-            satisfies=["GD__create_maintain_requirements"],
+            satisfies=["gd_req__create_maintain_requirements"],
             docname=None,
             lineno=None,
         )
@@ -730,7 +741,7 @@ class TestStandards:
                 "std_wp__iso26262__rq-8-6777",
             ],
             status="valid",
-            satisfies=["GD__create_maintain_requirements"],
+            satisfies=["gd_req__create_maintain_requirements"],
             docname=None,
             lineno=None,
         )
@@ -763,7 +774,7 @@ class TestStandards:
         need_2 = NeedsInfoType(
             target_id="Create/Maintain Safety Plan",
             type="workflow",
-            id="WF__CR_MT_SAFETY_PLAN",
+            id="wf__cr_mt_safety_plan",
             status="draft",
             input=["wp__platform_mgmt", "wp__issue_track_system"],
             output=["wp__module_safety_plan", "wp__platform_safety_plan"],
@@ -807,7 +818,7 @@ class TestStandards:
         need_2 = NeedsInfoType(
             target_id="Create/Maintain Safety Plan",
             type="workflow",
-            id="WF__CSTD_REQ__MT_SAFETY_PLAN",
+            id="wf__cstd_req__mt_safety_plan",
             status="draft",
             input=["wp__platform_mgmt", "wp__issue_track_system"],
             output=["wp__module_safety_plan", "wp__platform_safety_plan"],
