@@ -24,11 +24,9 @@ Code Analysis C++
 
 Static Code Analysis
 ====================
-In order to fulfil standard requirements a concept for *Static Code Analysis* needs to be established. Input for this is based upon *MISRA* and *ISO26262*.
+In order to fulfil the SCORE related standard requirements a concept for *Static Code Analysis* needs to be established. Input for the analysis is based upon *MISRA* and *ISO26262* standards in accordance to the :need:`gd_guidl__cpp_coding_guidelines`.
 
-*MISRA* introduces coding rules which need to be implemented and enforced. Checking those rules can partially be automated and implemented by a combination of different tools. Thus a mapping needs to be established which provides a linkage of all *MISRA* requirements to the respective tool requirements/rules. For *MISRA C++:2023* this mapping is established: :need:`here <gd_guidl__cpp__misra2023_rule_mapping>`
-
-Additionally several other SW Analyses are required by *ISO26262*. Together with the *MISRA* rules those can be fulfilled by following toolset:
+Checking those rules can partially be automated and implemented by a combination of different tools. Thus a mapping needs to be established which provides a linkage of all *MISRA* requirements to the respective tool requirements/rules. For *MISRA C++:2023* this mapping is established: :need:`here <gd_guidl__cpp__misra2023_rule_mapping>`
 
 .. needuml::
 
@@ -45,9 +43,13 @@ Additionally several other SW Analyses are required by *ISO26262*. Together with
    cw --> clang
    static --> cov
 
+One of the reasons why this tooling setup is selected is, that it was already proven in use. Also with a combination of the two compilers a lager set of findings could be addressed.
+
+If for some technical reason any *MISRA* finding can not be addressed it needs to be justified appropriately. This means that it needs to be explained why it does not have any impact on the safety of the code and finally documented within the source code. A detailed workflow will follow on demand.
+
 Dynamic Code Analysis
 =====================
-A dynamic code analysis is not explicitly required by a standard. However to provide a sufficient good SW quality following tools should be used to catch most common errors:
+A dynamic code analysis is not explicitly required by any SCORE related standards. However to provide a sufficient good SW quality following tools should be used to catch most common errors:
 
 .. needuml::
 
@@ -100,9 +102,12 @@ If both tools are combined at runtime memory leaks and the corresponding address
 Coverage
 ========
 
-As required by the verification guideline coverage needs to be calculated for the code which is used in the project. For a release the coverage needs to be calculated on the target (QNX). However for development also a quicker approach on the host shall be available.
+As required by the verification guideline coverage needs to be calculated for the code which is used in the project. Therefore two approaches should be available:
 
-To enable this, following tools shall be used:
+* As a quick solution it is possible to calculate the coverage on the host via gcc.
+* But for a more accurate statement coverage can also be calculated with the qcc compiler with the appropriate libraries and POSIX interfaces. This method will also be used for the reporting.
+
+To enable this, following tools are used:
 
 .. needuml::
 
