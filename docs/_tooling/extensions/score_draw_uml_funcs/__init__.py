@@ -30,19 +30,19 @@ import time
 from functools import cache
 from pathlib import Path
 
-from sphinx.application import Sphinx  # type: ignore
-from sphinx_needs.logging import get_logger  # type: ignore
+from sphinx.application import Sphinx
+from sphinx_needs.logging import get_logger
 
 from score_draw_uml_funcs.helpers import (
-    find_interfaces_of_operations,
-    gen_struct_element,
     gen_alias,
+    gen_header,
     gen_interface_element,
-    get_interface,
     gen_link_text,
-    get_real_interface_logical,
+    gen_struct_element,
     get_impl_comp_from_real_iface,
+    get_interface,
     get_logical_interface_real,
+    get_real_interface_logical,
 )
 
 logger = get_logger(__file__)
@@ -136,8 +136,8 @@ def draw_component(
             They are interpreted and names are shortened here to aid readability.
     Returns:
         Tuple of 4 parts.
-        (Structure Text, Linkage Text, Processed (Real Interfaces), Processed Logical Interfaces)
-
+        (Structure Text, Linkage Text, Processed (Real Interfaces),
+        Processed Logical Interfaces)
     """
     proc_real_interfaces = proc_real_interfaces or dict()
     proc_logical_interfaces = proc_logical_interfaces or dict()
@@ -196,11 +196,15 @@ def draw_component(
             )
         } \n"
 
-        # Draw connection between real interfaces and logical interfaces - if link exists
+        # Draw connection between real interfaces and logical interfaces
+        # if link exists
         if len(proc_logical_interfaces[iface]):
             linkage_text += f"{
                 gen_link_text(
-                    all_needs[iface]['title'], "-->", all_needs[proc_logical_interfaces[iface]]['title'], "implements"
+                    all_needs[iface]['title'],
+                    '-->',
+                    all_needs[proc_logical_interfaces[iface]]['title'],
+                    'implements',
                 )
             } \n"
 
@@ -231,7 +235,8 @@ class draw_full_feature:
 
         # Add logical Interfaces / Interface Operations (aka includes)
         for need_inc in need.get("includes", []):
-            # Generate list of interfaces since both interfaces and interface operations can be included
+            # Generate list of interfaces since both interfaces
+            # and interface operations can be included
             iface = get_interface(need_inc, all_needs)
             interfacelist.append(iface) if iface not in interfacelist else None
 
@@ -271,7 +276,7 @@ class draw_full_feature:
             else:
                 logger.warning(f"Interface {iface} is not implemented by any component")
 
-        return structure_text + link_text
+        return gen_header() + structure_text + link_text
 
 
 class draw_full_component:
@@ -290,7 +295,7 @@ class draw_full_component:
                     logical_interfacelist[iface], all_needs, True
                 )
 
-        return "allow_mixing\n" + structure_text + "\n" + linkage_text
+        return gen_header() + structure_text + "\n" + linkage_text
 
 
 class draw_full_interface:

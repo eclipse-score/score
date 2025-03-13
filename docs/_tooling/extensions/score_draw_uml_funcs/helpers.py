@@ -10,15 +10,26 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
-from itertools import chain
-
-
 def gen_alias(title: str) -> str:
     return "".join(word[0] for word in title.split())
 
 
+def gen_format(need: dict) -> str:
+    if need["safety"] == "ASIL_B":
+        if "comp_arc_sta" in need["type"]:
+            color = "<<asilb>>"
+        else:
+            color = ""
+    else:
+        color = ""
+
+    return color
+
+
 def gen_struct_element(element: str, need: dict) -> str:
-    return f'{element} "{need["title"]}" as {gen_alias(need["title"])}'
+    return (
+        f'{element} "{need["title"]}" as {gen_alias(need["title"])} {gen_format(need)}'
+    )
 
 
 def gen_link_text(from_need: str, link_type: str, to_need: str, link_text: str) -> str:
@@ -104,28 +115,23 @@ def get_use_comp_from_real_iface(real_iface: str, all_needs: dict) -> list[str]:
     return all_needs[real_iface]["uses_back"]
 
 
-def find_interfaces_of_operations(needs: dict, needs_inc: list[str]) -> set[str]:
-    """
-    Helper function to find 'interfaces' that operations belong to.
+def gen_header() -> str:
+    return (
+        "allow_mixing\n"
+        + "left to right direction\n"
+        + "hide stereotype\n"
+        + gen_sytle_header()
+        + "\n"
+    )
 
-    Example:
-        input:
-            needs: all_needs_dict
-            needs_inc: ["logical_operation_1", "logical_operation_2"]
-        output:
-            set: ("Logical_interface_1")
 
-    Args:
-        needs: Dictionary of all needs
-        needs_inc: List of 'operation ids' that the interface they belong to
-                   should be found for
-
-    Returns:
-        set: Id's of interfaces the `needs_inc` belong to.
-
-    """
-    if not needs_inc:
-        return set()
-
-    needs_implements = set(chain(*(needs[id]["implements"] for id in needs_inc)))
-    return set(chain(*(needs[id]["includes_back"] for id in needs_implements)))
+def gen_sytle_header() -> str:
+    return (
+        """<style>
+        .asilb {
+        LineColor blue
+        LineThickness 3.0
+        }
+    </style>"""
+        + "\n"
+    )
