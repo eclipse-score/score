@@ -173,7 +173,7 @@ class TestStandards:
     #         status="draft",
     #         complies=[
     #             "std_wp__iso26262__wp-2-777",
-    #             "STD_REQ__iso21434__wp-05-88",
+    #             "STD_REQ__isosae21434__wp-05-88",
     #         ],
     #         docname=None,
     #         lineno=None,
@@ -454,7 +454,7 @@ class TestStandards:
             type="workproduct",
             complies=[
                 "std_wp__iso26262__wp-2-551",
-                "STD_REQ__iso21434_wp-05-01",
+                "STD_REQ__isosae21434_wp-05-01",
             ],
             docname=None,
             lineno=None,
@@ -682,7 +682,7 @@ class TestStandards:
             security="NO",
             complies=[
                 "std_wp__iso26262__wp-2-551",
-                "std_wp__iso21434_wp-05-01",
+                "std_wp__isosae21434_wp-05-01",
             ],
             status="valid",
             satisfies=[

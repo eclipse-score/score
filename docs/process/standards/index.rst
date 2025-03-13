@@ -22,6 +22,7 @@ Standards
    iso26262/iso26262
    isopas8926/isopas8926
    aspice_40/index
+   isosae21434/isosae21434
 
 .. needpie:: Percentage of standard requirements which are linked to at least one item
    :labels: Connected Requirements, Not Connected Requirements
@@ -40,4 +41,3 @@ Standards
    :legend:
    :colors: red, green, blue
    :filter-func: _tooling.extensions.score_metamodel.checks.standards.my_pie_workproducts_contained_in_exactly_one_workflow
-
