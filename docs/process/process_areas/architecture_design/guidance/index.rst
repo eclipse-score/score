@@ -18,6 +18,7 @@ Guidances
 .. toctree::
    :maxdepth: 1
 
+   architecture_guideline
    architecture_inspection_checklist
    feature_architecture_template
    component_architecture_template

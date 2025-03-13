@@ -15,8 +15,8 @@
 @startuml
 
 participant "Feature User" as actor
-participant "«component» :Sub Component 1" as sc1
-participant "«component» :Sub Component 3" as sc3
+participant "«component» :Lower Level Component 1" as sc1
+participant "«component» :Lower Level Component 3" as sc3
 
 actor -> sc1: real operation 3 ()
 sc1 -> sc3: real operation 9 ()

@@ -137,6 +137,8 @@ The first viewpoint is named as *feature architecture*. It displays the SW modul
 
       {{ draw_feature(need(), needs) }}
 
+In all views the Components which are marked as ASIL_B related are drawn in blue color.
+
 Dynamic View
 ------------
 

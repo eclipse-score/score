@@ -22,7 +22,6 @@ Architecture Design
    :maxdepth: 1
 
    architecture_getstrt
-   guidance/architecture_guideline
    architecture_concept
    guidance/index
    architecture_roles

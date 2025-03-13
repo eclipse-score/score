@@ -123,7 +123,7 @@ Component Architecure File(s)
    :uses: comp_arc_int__archdes_component_interface_3
    :implements: comp_arc_int__archdes_component_interface_1, comp_arc_int__archdes_component_interface_2
    :fulfils: comp_req__archdes_example_req
-   :includes: comp_arc_sta__archdes_sub_component_1, comp_arc_sta__archdes_sub_component_2
+   :includes: comp_arc_sta__archdes_sub_component_1, comp_arc_sta__archdes_sub_component_2, comp_arc_sta__archdes_sub_component_3
 
    .. needarch::
       :scale: 50
@@ -159,7 +159,7 @@ Component Architecure File(s)
 
 .. Subcomponents
 
-.. comp_arc_sta:: Sub Component 1
+.. comp_arc_sta:: Lower Level Component 1
    :id: comp_arc_sta__archdes_sub_component_1
    :status: valid
    :safety: ASIL_B
@@ -168,7 +168,7 @@ Component Architecure File(s)
    :implements: comp_arc_int_op__archdes_real_operation_3
    :fulfils: comp_req__archdes_example_req
 
-.. comp_arc_sta:: Sub Component 2
+.. comp_arc_sta:: Lower Level Component 2
    :id: comp_arc_sta__archdes_sub_component_2
    :status: valid
    :safety: ASIL_B
@@ -177,10 +177,10 @@ Component Architecure File(s)
    :implements: comp_arc_int_op__archdes_real_operation_4
    :fulfils: comp_req__archdes_example_req
 
-.. comp_arc_sta:: Sub Component 3
+.. comp_arc_sta:: Lower Level Component 3
    :id: comp_arc_sta__archdes_sub_component_3
    :status: valid
-   :safety: ASIL_B
+   :safety: QM
    :security: NO
    :implements: comp_arc_int_op__archdes_real_operation_7, comp_arc_int_op__archdes_real_operation_8
    :fulfils: comp_req__archdes_example_req

@@ -60,7 +60,7 @@ def gen_interface_element(need_id: str, all_needs: dict, incl_ops: bool = False)
     if incl_ops:
         for op in all_needs[need_id].get("includes"):
             raw_text = all_needs[op]["title"]
-            if re.match(".*\(\)$", raw_text):
+            if re.match(".*'()'$", raw_text):
                 text += f"{raw_text}\n"
             else:
                 text += f"{raw_text} ()\n"

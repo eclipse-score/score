@@ -246,7 +246,7 @@ class draw_full_feature:
 
             if imcomp := impl_comp[iface]:
                 structure_text += (
-                    f"{gen_struct_element('class', all_needs[imcomp[0]])}\n"
+                    f"{gen_struct_element('component', all_needs[imcomp[0]])}\n"
                 )
 
         # Close Package
@@ -290,7 +290,7 @@ class draw_full_component:
             if log_int := logical_interfacelist[iface]:
                 structure_text += gen_interface_element(log_int, all_needs, True)
 
-        return gen_header() + structure_text + "\n" + linkage_text
+        return gen_header() + structure_text + linkage_text
 
 
 class draw_full_interface:
