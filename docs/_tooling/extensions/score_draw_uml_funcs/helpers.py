@@ -10,7 +10,11 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
-import re
+
+
+def gen_need_link(need) -> str:
+    link = ".." + "/" + need["docname"] + ".html#" + need["id_parent"]
+    return f"[[{link}]]"
 
 
 def gen_alias(title: str) -> str:
@@ -28,7 +32,8 @@ def gen_format(need: dict) -> str:
 
 def gen_struct_element(element: str, need: dict) -> str:
     return (
-        f'{element} "{need["title"]}" as {gen_alias(need["title"])} {gen_format(need)}'
+        f'{element} "{need["title"]}" as {gen_alias(need["title"])} '
+        f"{gen_format(need)} {gen_need_link(need)}"
     )
 
 
@@ -60,7 +65,7 @@ def gen_interface_element(need_id: str, all_needs: dict, incl_ops: bool = False)
     if incl_ops:
         for op in all_needs[need_id].get("includes"):
             raw_text = all_needs[op]["title"]
-            if re.match(".*'()'$", raw_text):
+            if raw_text.endswith("()"):
                 text += f"{raw_text}\n"
             else:
                 text += f"{raw_text} ()\n"
@@ -134,8 +139,8 @@ def gen_sytle_header() -> str:
         """<style>
         .asilb {
         LineColor blue
-        LineThickness 3.0
+        LineThickness 2.0
         }
-    </style>"""
+        </style>"""
         + "\n"
     )
