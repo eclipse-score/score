@@ -18,58 +18,35 @@
 
 import os
 import sys
-from pathlib import Path
-from pprint import pprint
 
-from sphinx_needs import logging
-
-# TODO: if we provide the extensions as py_library, we can remove this...
-# Originally the intention was better LSP support. But since we do not "import"
-# the extensions, but only use them in the extensions list, this is not needed
-# anymore.
-runfiles = os.getenv("RUNFILES_DIR")
-if not runfiles:
-    git_root = Path(__file__).resolve()
-    while not (git_root / ".git").exists():
-        git_root = git_root.parent
-        if git_root == Path("/"):
-            sys.exit("Could not find git root.")
-
-    runfiles_dir = git_root / "bazel-bin" / "docs" / "ide_support.runfiles"
-    if not runfiles_dir.exists():
-        sys.exit(
-            f"Could not find ide_support.runfiles at {runfiles_dir}. "
-            "Have a look at README.md for instructions on how to build docs."
-        )
-    runfiles = str(runfiles_dir)
-
-sys.path.insert(0, os.path.join(runfiles, "_main/docs/_tooling/extensions"))
-
-logger = logging.get_logger(__name__)
+# sys.path extension for local files is needed, because the conf.py file is not
+# executed, but imported by Sphinx
+# sys.path.insert(0, "../")
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = "Score"
-author = "Score"
+project = "Score docs2"
 release = "0.1"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-# TODO: consider a score_everything extension?
+if runfiles := os.getenv("RUNFILES_DIR"):
+    sys.path.insert(0, os.path.join(runfiles, "_main/docs/_tooling/extensions"))
+
+
 extensions = [
     "sphinx_design",
     "sphinx_needs",
     "sphinxcontrib.plantuml",
-    "score_plantuml", # TODO: implicitly load sphinxcontrib.plantuml
+    "score_plantuml",
     "score_metamodel",
     "score_draw_uml_funcs",
-    "score_layout", # TODO: implicitly load sphinx_design
     "score_source_code_linker",
+    "score_layout",
 ]
 
-# TODO: move these to some score extension?!
 exclude_patterns = [
     # The following entries are not required when building the documentation
     # via 'bazel build //docs:docs', as that command runs in a sandboxed environment.
@@ -82,15 +59,12 @@ exclude_patterns = [
 templates_path = ["_templates"]
 
 # Enable numref
-numfig = True
+needs_build_json = True
 
 
 # -- sphinx-needs configuration --------------------------------------------
 # Setting the needs layouts
-# TODO: move to score_layout extension?!
 needs_global_options = {"collapse": True}
-
-# TODO: move to source_code_linker extension?!
 needs_string_links = {
     "source_code_linker": {
         "regex": r"(?P<value>[^,]+)",
