@@ -43,7 +43,7 @@ load("@rules_pkg//pkg:mappings.bzl", "pkg_files")
 load("@rules_pkg//pkg:tar.bzl", "pkg_tar")
 load("@rules_python//python:pip.bzl", "compile_pip_requirements")
 load("@rules_python//sphinxdocs:sphinx.bzl", "sphinx_build_binary", "sphinx_docs")
-load("//docs:_tooling/extensions/score_source_code_linker/collect_source_files.bzl", "collect_source_files_for_score_source_code_linker")
+load("//docs:_tooling/docs.bzl", "docs")
 load("//tools/dash:dash.bzl", "dash_license_checker")
 load("//tools/testing/pytest:defs.bzl", "score_py_pytest")
 
@@ -52,46 +52,7 @@ sphinx_requirements = all_requirements + [
     ":plantuml_for_python",
 ]
 
-sphinx_docs(
-    name = "docs",
-    srcs = glob([
-        "**/*.png",
-        "**/*.svg",
-        "**/*.rst",
-        "**/*.html",
-        "**/*.css",
-        "**/*.puml",
-        # Include the docs tooling itself
-        # Note: we don't use py_library here to make it as close as possible to docs:incremental.
-        "**/*.py",
-        "**/*.yaml",
-        "**/*.json",
-        "**/*.csv",
-    ]),
-    config = ":conf.py",
-    extra_opts = [
-        "-W",
-        "--keep-going",
-        # This is 'overwriting' the configuration parameter inside sphinx. As we only get this information during runtime
-        "--define=source_code_linker_file=$(location :collected_files_for_score_source_code_linker)",
-    ],
-    formats = [
-        "html",
-    ],
-    sphinx = ":sphinx_build",
-    tags = [
-        "manual",
-    ],
-    tools = [
-        ":collected_files_for_score_source_code_linker",
-        ":plantuml",
-    ],
-)
-
-sphinx_build_binary(
-    name = "sphinx_build",
-    deps = sphinx_requirements,
-)
+docs()
 
 # In order to update the requirements, change the `requirements.txt` file and run:
 # `bazel run //docs:requirements`.
@@ -124,26 +85,8 @@ pkg_tar(
     srcs = [":html_files"],
 )
 
-# Run-time build of documentation, incl. incremental build support.
-py_binary(
-    name = "incremental",
-    srcs = ["_tooling/incremental.py"],
-    data = [":collected_files_for_score_source_code_linker"],
-    deps = sphinx_requirements,
-)
-
-#sphinx-autobuild, used for no IDE live preview
-py_binary(
-    name = "live_preview",
-    srcs = ["_tooling/live_preview.py"],
-    deps = sphinx_requirements,
-)
-
-# Virtual python environment for working on the documentation (esbonio).
-# incl. python support when working on conf.py and sphinx extensions.
-py_venv(
-    name = "ide_support",
-    venv_name = ".venv_docs",
+sphinx_build_binary(
+    name = "sphinx_build",
     deps = sphinx_requirements,
 )
 
@@ -158,10 +101,8 @@ java_binary(
 
 # This makes it possible for py_venv to depend on plantuml.
 # Note: py_venv can only depend on py_library.
-# TODO: Investigate if this can be simplified with a custom bzl rule
-#       which replaces / wraps py_venv.
-#       see https://github.com/aspect-build/rules_py/blob/main/py/private/py_venv.bzl
-#       see https://github.com/bazelbuild/rules_python/blob/main/sphinxdocs/private/sphinx.bzl
+# TODO: This can be removed with the next
+# upgrade of `aspect_rules_py` since the py_venv rule now supports a data field
 py_library(
     name = "plantuml_for_python",
     srcs = ["_tooling/dummy.py"],
@@ -218,15 +159,6 @@ py_binary(
 
 # Running this executes the `collect_source_files.bzl` aspect.
 # Collects all source files from specified targets in 'deps', and makes them available for parsing for the source_code_linker
-
-# For more information see documentation at _tooling/extensions/score_source_code_linker/README.md
-collect_source_files_for_score_source_code_linker(
-    name = "collected_files_for_score_source_code_linker",
-    deps = [
-        ":score_metamodel",
-        ":score_source_code_linker",
-    ],
-)
 
 # Needed for Dash tool to check python dependency licenses.
 filegroup(
