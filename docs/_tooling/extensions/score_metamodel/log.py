@@ -12,6 +12,7 @@
 # *******************************************************************************
 from sphinx_needs.data import NeedsInfoType
 from sphinx_needs.logging import SphinxLoggerAdapter
+from pathlib import Path
 
 
 class CheckLogger:
@@ -27,7 +28,14 @@ class CheckLogger:
         if get("docname") and get("doctype") and get("lineno"):
             # Note: passing the location as a string allows us to use readable relative paths,
             # passing as a tuple results in absolute paths to ~/.cache/.../bazel-out/..
-            return f"{need['docname']}{need['doctype']}:{need['lineno']}"
+
+            document = f"{need['docname']}{need['doctype']}"
+            docs_prefixes = ["features", "platform_management_plan", "process", "requirements", "score_releases"]
+            for prefix in docs_prefixes:
+                if document.startswith(prefix):
+                    document = "docs/" + document
+                    break
+            return f"{document}:{need['lineno']}"
         return None
 
     def warning_for_option(self, need: NeedsInfoType, option: str, msg: str):
