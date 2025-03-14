@@ -58,7 +58,7 @@ Checklist
       - If the architectural element is related to any supplier manuals (incl. safety and security)
         are the relevant parts covered?
       - manual
-      - If the architecture makes use of supplied elements, their manuals (like safety) have to be considered and and AoUs fulfilled.
+      - If the architecture makes use of supplied elements, their manuals (like safety) have to be considered (i.e. its provided functionality matches the expectation and assumptions are fulfilled). Note that in case of safety component this means that assumed Technical Safety Requirements and AoUs of the safety manual are covered.
       -
       -
       -
@@ -116,7 +116,7 @@ Checklist
         (e.g., UML diagrams), comprehensible and complete?
       - manual
       - Use of semi-formal notation is expected for architectural elements with an allocated ASIL level.
-        Is the architecture template correctly fillled?
+        Is the architecture template correctly filled?
       -
       -
       -
