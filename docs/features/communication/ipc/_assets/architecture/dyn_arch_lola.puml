@@ -1,0 +1,192 @@
+/'
+   # *******************************************************************************
+   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   #
+   # See the NOTICE file(s) distributed with this work for additional
+   # information regarding copyright ownership.
+   #
+   # This program and the accompanying materials are made available under the
+   # terms of the Apache License Version 2.0 which is available at
+   # https://www.apache.org/licenses/LICENSE-2.0
+   #
+   # SPDX-License-Identifier: Apache-2.0
+   # *******************************************************************************
+'/
+autonumber "<b>[00]"
+
+' Participants
+participant "User Application" as UA
+participant "IPC" as IPC
+participant "JSON" as JSON
+participant "OS::RAMFS\n///tmp_discovery//" as OSRAMFS_disco
+participant "OS::RAMFS\n///dev/lola-data//" as OSRAMFS_data
+participant "OS::RAMFS\n///dev/lola-ctrl//" as OSRAMFS_ctrl
+participant "OS::IPC" as OSIPC
+participant "IPCTracing" as ipctracing
+
+
+' First Iteration
+UA -> IPC: Initialize()
+note over OSRAMFS_disco, OSRAMFS_ctrl
+    These are not SWCs but externally visible
+    "named shared memory" files
+end note
+activate UA
+activate IPC
+note left: The Configuration file can be used from a\ndefault location or be given as an argument
+
+IPC -> JSON: parse the given configuration json
+activate JSON
+JSON -[dashed]-> IPC
+deactivate JSON
+IPC -[dashed]-> UA
+UA -> IPC: Offer Service (s)
+
+' Loop
+loop for each offered service
+    IPC -> OSRAMFS_disco: create folder structure and instance and usage marker file
+    activate OSRAMFS_disco
+    OSRAMFS_disco -[dashed]-> IPC
+    deactivate OSRAMFS_disco
+    IPC -> OSRAMFS_disco: flock exclusive instance marker file
+    activate OSRAMFS_disco
+    note right: if the exclusive flock fails,\nwe know that this service is already offered
+    OSRAMFS_disco -[dashed]-> IPC
+    deactivate OSRAMFS_disco
+
+    IPC -> OSRAMFS_ctrl: create "control-blobs" for services defined in configuration file
+    activate OSRAMFS_ctrl
+    note right: To provide FFI between ASIL-B and QM communication,\nseparate shared memory objects are defined
+    OSRAMFS_ctrl -[dashed]-> IPC
+    IPC -> OSRAMFS_ctrl: configure the ACL for the "control-blobs" as defined in configuration file
+    OSRAMFS_ctrl -[dashed]-> IPC
+    deactivate OSRAMFS_ctrl
+
+    IPC -> OSRAMFS_data: create shared memory "data-blobs" for services defined in configuration file
+    activate OSRAMFS_data
+    OSRAMFS_data -[dashed]-> IPC
+    deactivate OSRAMFS_data
+
+    IPC -> OSRAMFS_ctrl: configure the ACL for the "data-blobs" as defined in the configuration file
+    activate OSRAMFS_ctrl
+    OSRAMFS_ctrl -[dashed]-> IPC
+    deactivate OSRAMFS_ctrl
+
+    deactivate IPC
+end
+
+' Sending Events
+group sending Events
+    hnote across:**General Procedure**\n- search free slot in ctrl-segment and mark it "IN WRITING"\n- update corresponding data-segment\n- set slot in ctrl-segment to "VALID"
+    UA -> UA: update data to be sent
+    UA -> IPC: send(data) or update()
+    activate IPC
+    IPC -> OSRAMFS_ctrl: update ctrl: IN WRITING
+    activate OSRAMFS_ctrl
+    OSRAMFS_ctrl -[dashed]> IPC
+    deactivate OSRAMFS_ctrl
+
+    IPC -> OSRAMFS_data: update data
+    activate OSRAMFS_data
+    OSRAMFS_data -[dashed]-> IPC
+    deactivate OSRAMFS_data
+
+    IPC -> OSRAMFS_ctrl: update ctrl: VALID
+    activate OSRAMFS_ctrl
+    OSRAMFS_ctrl -[dashed]> IPC
+    deactivate OSRAMFS_ctrl
+
+    IPC -> ipctracing: trace
+    activate ipctracing
+    ipctracing -[dashed]-> IPC
+    deactivate ipctracing
+
+    IPC -> OSIPC: IPC message to the registered proxy
+    activate OSIPC
+    OSIPC -[dashed]-> IPC
+    deactivate OSIPC
+    IPC -[dashed]-> UA
+    deactivate IPC
+end
+
+' Receiving Events
+group receiving events
+    UA -> IPC: StartFindService
+    activate IPC
+
+    IPC -> OSRAMFS_disco: check file/directory existence (craw fs)
+    activate OSRAMFS_disco
+    OSRAMFS_disco -[dashed]-> IPC
+    deactivate OSRAMFS_disco
+
+    IPC -> OSRAMFS_disco: setup inotify watches
+    activate OSRAMFS_disco
+    OSRAMFS_disco -[dashed]-> IPC
+    deactivate OSRAMFS_disco
+
+    IPC -[dashed]-> UA: handle
+
+    OSRAMFS_disco -> IPC: watch notification
+    activate OSRAMFS_disco
+    IPC -[dashed]-> OSRAMFS_disco
+    IPC -> UA: FindServiceHandler()
+    UA -> IPC: create proxy (handle)
+    IPC -> OSRAMFS_ctrl: Rollback existing transaction log
+    activate OSRAMFS_ctrl
+    OSRAMFS_ctrl -[dashed]-> IPC
+    deactivate OSRAMFS_ctrl
+    IPC -> OSRAMFS_disco: shared flock usage marker file
+    OSRAMFS_disco -[dashed]-> IPC
+    deactivate OSRAMFS_disco
+
+    IPC -> OSRAMFS_data: open()
+    activate OSRAMFS_data
+    OSRAMFS_data -[dashed]-> IPC
+    deactivate OSRAMFS_data
+
+    IPC -> OSRAMFS_ctrl: open()
+    activate OSRAMFS_ctrl
+    OSRAMFS_ctrl -> IPC
+    deactivate OSRAMFS_ctrl
+
+    group opt opening the /dev/shm/ objects was possible
+        note right of IPC
+            If Application can open the shm objects
+            permission was granted by ACL
+        end note
+    end
+
+    IPC -[dashed]-> UA: proxy instance
+    UA -> IPC: subscribe
+
+    IPC -> OSRAMFS_ctrl: make subscription in shared memory
+    activate OSRAMFS_ctrl
+    OSRAMFS_ctrl -[dashed]-> IPC
+    deactivate OSRAMFS_ctrl
+
+    IPC -[dashed]-> UA
+
+    ' Loop
+    loop for each received sample
+        UA -> IPC: GetNewSamples()
+        note left: user must provide a callback pointer to mw::com\nonly polling mode is supported in ASIL-B
+
+        IPC -> OSRAMFS_ctrl: transaction start
+        note right: more details about transaction log\nin section partial restart
+        activate OSRAMFS_ctrl
+        OSRAMFS_ctrl -[dashed]-> IPC
+        deactivate OSRAMFS_ctrl
+
+        IPC -> IPC: get a pointer to next unreceived data buffer
+        IPC -> OSRAMFS_ctrl: transaction commit
+        activate OSRAMFS_ctrl
+        OSRAMFS_ctrl -[dashed]-> IPC
+        deactivate OSRAMFS_ctrl
+        IPC -> UA: call callback function with ptr to next unreceived data handle
+    end
+
+
+
+end
+
+deactivate UA
