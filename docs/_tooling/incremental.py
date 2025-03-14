@@ -43,11 +43,27 @@ logger = logging.getLogger(__name__)
 
 
 def get_runfiles_dir() -> Path:
+
+    #=== BAZEL RUN //docs:incremental
+    #Using runfiles to determine plantuml path.
+    #runfiles_dir=PosixPath('/home/maxi/.cache/bazel/_bazel_maxi/89803d8d7e779098ef8f611da809502f/execroot/_main/bazel-out/k8-fastbuild/bin/docs/incremental.runfiles')
+    #relative_path=PosixPath('bazel-out/k8-fastbuild/bin/docs/incremental.runfiles')
+    #source_code_linker_file=''
+    #assets_dir_prefix='../bazel-out/k8-fastbuild/bin/docs/incremental.runfiles/_main/docs'
+
+    ##=== RUINFILES DIR FUNC
+    #Using runfiles to determine plantuml path.
+    #runfiles_dir=PosixPath('bazel-bin/docs/incremental.runfiles')
+    #relative_path=PosixPath('bazel-out/bazel-bin/docs/incremental.runfiles')
+    #source_code_linker_file=''
+    #assets_dir_prefix='../bazel-out/bazel-bin/docs/incremental.runfiles/_main/docs'
+
+    print("=== RUINFILES DIR FUNC")
     if r := Runfiles.Create():
         # Runfiles are only available when running in Bazel.
         # bazel build and bazel run are both supported.
         # i.e. `bazel build //docs:docs` and `bazel run //docs:incremental`.
-        logger.debug("Using runfiles to determine plantuml path.")
+        print("Using runfiles to determine plantuml path.")
 
         runfiles_dir = Path(r.EnvVars()["RUNFILES_DIR"])
 
@@ -64,7 +80,7 @@ def get_runfiles_dir() -> Path:
         # environment.
         # We'll still use the plantuml binary from the bazel build.
         # But we need to find it first.
-        logger.debug("Running outside bazel.")
+        print("Running outside bazel.")
 
         git_root = Path(__file__).resolve().parents[3]
         assert (git_root / ".git").exists(), (
@@ -98,7 +114,10 @@ runfiles_dir = get_runfiles_dir()
 print(f"{runfiles_dir=}")
 # runfiles_dir points to a cache directory which has a new hash every time.
 # Use the relative path that is available from workspace root.
-relative_path = Path("bazel-out") / str(runfiles_dir).split('/bazel-out/', 1)[-1]
+if str(runfiles_dir).startswith("/"):
+    relative_path = Path("bazel-out") / str(runfiles_dir).split('/bazel-out/', 1)[-1]
+else:
+    relative_path = runfiles_dir
 print(f"{relative_path=}") # TODO
 
 workspace = os.getenv("BUILD_WORKSPACE_DIRECTORY")

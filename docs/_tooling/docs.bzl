@@ -16,7 +16,7 @@ load("@aspect_rules_py//py:defs.bzl", "py_binary", "py_library", "py_venv")
 load("@pip_sphinx//:requirements.bzl", "all_requirements")
 load("@rules_java//java:defs.bzl", "java_binary")
 load("@rules_python//sphinxdocs:sphinx.bzl", "sphinx_build_binary", "sphinx_docs")
-load("//docs:_tooling/extensions/score_source_code_linker/collect_source_files.bzl", "parse_source_files_for_needs_links", "SourceCodeLinks")
+load("//docs:_tooling/extensions/score_source_code_linker/collect_source_files.bzl", "parse_source_files_for_needs_links", "SourceCodeLinksInfo")
 
 # Multiple approaches are available to build the same documentation output:
 #
@@ -57,20 +57,21 @@ def docs(source_files_to_scan_for_needs_links = None, source_dir = "docs", conf_
     """
 
     # Parse source files for needs links
-    source_code_linker = parse_source_files_for_needs_links(
+    parse_source_files_for_needs_links(
         name = "score_source_code_parser",
-        srcs = source_files_to_scan_for_needs_links if source_files_to_scan_for_needs_links else [],
+        srcs_and_deps = source_files_to_scan_for_needs_links if source_files_to_scan_for_needs_links else [],
     )
+    # source_code_links = SourceCodeLinksInfo.file
 
     # Get the output of source_code_linker
     # Does not work:
     # rule_info = native.existing_rule(source_code_linker.name)
     # source_code_links = rule_info[SourceCodeLinks].file.path
     # Workaround:
-    source_code_links = source_code_linker.name + ".json"
+    source_code_links = "score_source_code_parser.json"
 
     # Run-time build of documentation, incl. incremental build support and non-IDE live preview.
-    _incremental(source_code_linker, source_code_links, source_dir = source_dir, conf_dir = conf_dir, build_dir = build_dir_for_incremental)
+    _incremental(":score_source_code_parser", source_code_links, source_dir = source_dir, conf_dir = conf_dir, build_dir = build_dir_for_incremental)
 
     # create  :plantuml & :plantuml_for_python targets
     _plantuml_bzl()
@@ -81,7 +82,7 @@ def docs(source_files_to_scan_for_needs_links = None, source_dir = "docs", conf_
     _ide_support()
 
     # creates :docs target for build time documentation
-    _docs(source_code_linker, source_code_links)
+    _docs(":score_source_code_parser", source_code_links)
 
 def _incremental(source_code_linker, source_code_links, source_dir = "docs", conf_dir = "docs", build_dir = "_build", extra_dependencies = list()):
     """

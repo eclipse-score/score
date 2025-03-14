@@ -70,7 +70,8 @@ def get_runfiles_dir() -> Path:
 
 
 def setup(app: Sphinx):
-    app.config.plantuml = str(get_runfiles_dir() / ".." / "plantuml")
+    app.config.plantuml = str(get_runfiles_dir() / ".." / "plantuml ")
+    print(f"=== PLANTUML CONFIG: {app.config.plantuml}")
     app.config.plantuml_output_format = "svg_obj"
     app.config.plantuml_syntax_error_image = True
     app.config.needs_build_needumls = "_plantuml_sources"

@@ -120,6 +120,7 @@ def _collect_and_parse_source_files_impl(ctx):
         ),
     ]
 
+
 parse_source_files_for_needs_links = rule(
     implementation = _collect_and_parse_source_files_impl,
     attrs = {
@@ -130,7 +131,7 @@ parse_source_files_for_needs_links = rule(
         ),
         "_source_files_parser": attr.label(
             # TODO: rename to source_files_parser in next PR
-            default = Label("//docs:parsed_source_files_for_source_code_linker"),
+            default = Label("//docs:source_files_parser"),
             executable = True,
             cfg = "exec",
         ),
@@ -141,6 +142,7 @@ parse_source_files_for_needs_links = rule(
     ],
     doc = "Rule that collects and parses source files for linking documentation. (Internal)",
 )
+
 
 # -----------------------------------------------------------------------------
 # Backwards compatibility

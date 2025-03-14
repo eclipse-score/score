@@ -13,7 +13,7 @@
 from collections import defaultdict
 
 import pytest
-from score_source_code_linker.parse_source_files import (
+from score_source_code_linker.source_files_parser import (
     GITHUB_BASE_URL,
     extract_requirements,
     get_git_hash,

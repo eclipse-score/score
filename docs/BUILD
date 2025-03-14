@@ -86,14 +86,16 @@ filegroup(
 # - `docs:docs` for building documentation at build-time
 # - `docs:plantuml` and `:plantuml_for_python` targets, to be used as dependencies for plantuml generation
 docs(source_files_to_scan_for_needs_links=[
-        # Note: you can add filegroups, globs, or entire targets here.
+        # Note: you can add filegroups, globs, or entire targets here. 
         ":score_metamodel_sources",
         ":score_source_code_linker",
     ])
 
+score_metamodel_sources = glob(["_tooling/extensions/score_metamodel/**/*.py"])
+
 filegroup(
     name = "score_metamodel_sources",
-    srcs = glob(["_tooling/extensions/score_metamodel/**/*.py"]),
+    srcs = score_metamodel_sources
 )
 
 filegroup(
@@ -105,7 +107,7 @@ filegroup(
 score_py_pytest(
     name = "score_metamodel_test",
     size = "small",
-    srcs = [":score_metamodel_sources"],
+    srcs = score_metamodel_sources,
     visibility = ["//visibility:public"],
 )
 
@@ -121,10 +123,18 @@ py_library(
     visibility = ["//visibility:public"],
 )
 
+
+
 score_py_pytest(
     name = "score_source_code_linker_test",
     size = "small",
     srcs = glob(["_tooling/extensions/score_source_code_linker/**/*.py"]),
+)
+
+py_binary(
+    name = "source_files_parser",
+    srcs = ["_tooling/extensions/score_source_code_linker/source_files_parser.py"],
+    visibility = ["//visibility:public"],
 )
 
 

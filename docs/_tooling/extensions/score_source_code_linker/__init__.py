@@ -18,7 +18,7 @@ from sphinx.application import Sphinx
 from sphinx_needs.data import SphinxNeedsData
 from sphinx_needs.logging import get_logger
 
-from score_source_code_linker.parse_source_files import GITHUB_BASE_URL
+GITHUB_BASE_URL = "https://github.com/eclipse-score/score/blob/"
 
 LOGGER = get_logger(__name__)
 
