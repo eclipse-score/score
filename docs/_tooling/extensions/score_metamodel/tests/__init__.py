@@ -13,6 +13,8 @@
 from unittest.mock import MagicMock
 
 import pytest
+
+from sphinx.application import Sphinx
 from sphinx.util.logging import SphinxLoggerAdapter
 
 from docs._tooling.extensions.score_metamodel import CheckLogger, NeedsInfoType
@@ -25,7 +27,8 @@ def fake_check_logger():
         def __init__(self):
             self._mock_logger = MagicMock(spec=SphinxLoggerAdapter)
             self._mock_logger.warning = MagicMock()
-            super().__init__(self._mock_logger)
+            app_path = MagicMock()
+            super().__init__(self._mock_logger, app_path)
 
         def assert_no_warnings(self):
             if self.has_warnings:
