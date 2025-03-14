@@ -24,16 +24,13 @@ def setup(app: Sphinx) -> dict[str, str | bool]:
     }
 
 
-def update_config(app: Sphinx, config):
+def update_config(app: Sphinx, _config):
     app.config.needs_layouts = sphinx_options.needs_layouts
     app.config.needs_global_options = sphinx_options.needs_global_options
     app.config.html_theme = html_options.html_theme
     app.config.html_context = html_options.html_context
-    app.add_css_file("css/score.css")
-    app.add_css_file("css/score_needs.css")
-    app.add_css_file("css/score_design.css")
     app.config.html_theme_options = html_options.return_html_theme_options(app)
 
-    # Allow overwrite from outside
-    if not app.config.html_static_path:
-        app.config.html_static_path = html_options.html_static_path
+    app.add_css_file("css/score.css", priority=500)
+    app.add_css_file("css/score_needs.css", priority=500)
+    app.add_css_file("css/score_design.css", priority=500)

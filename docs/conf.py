@@ -23,7 +23,6 @@ import sys
 # executed, but imported by Sphinx
 sys.path.insert(0, ".")
 
-from _tooling.conf_extras import layouts
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
@@ -65,6 +64,7 @@ numfig = True
 # -- sphinx-needs configuration --------------------------------------------
 # Setting the needs layouts
 needs_global_options = {"collapse": True}
+html_static_path = ["_tooling/assets", "_assets"]
 needs_string_links = {
     "source_code_linker": {
         "regex": r"(?P<value>[^,]+)",
