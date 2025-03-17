@@ -38,6 +38,7 @@ Change request are traced to all affected work products.
 
 .. figure:: _assets/score_traceability_model_wp_overview.drawio.svg
   :width: 100%
+  :name: score_wp_traceability
   :align: center
   :alt: High level traceability overview for **S-CORE** work products
 

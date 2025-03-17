@@ -28,7 +28,7 @@ The subsequent steps of linking requirements to code and test cases are describe
 
 Linking Requirements
 
-* to code: <TBD Implementation Guideline>
+* to code: :need:`gd_guidl__implementation`
 * to tests: :need:`gd_guidl__verification_guide`
 
 General Workflow
@@ -51,12 +51,12 @@ Linking Requirements to Source Code
 
 For linking requirements to source code a tool is available:
 
-<TBD link implementation guideline>
+<TBD Linking Reqs to Source>
 
 Linking Requirements to Tests
 =============================
 
-For linking Requirements to tests metatags shall be used <TBD link Verification Guideline>
+For linking Requirements to tests metatags shall be used :need:`gd_req__link_tests`
 
 
 Developer Experience
@@ -71,7 +71,7 @@ Additionally tooling is provided to assist the :need:`[[title]] <rl__contributor
    :filter: "ide" in tags and type == "tool_req"
    :colwidths: 70,30
 
-A *HowTo* which describes the setup of Sphinx Needs in VScode is available here: <TBD>
+A *HowTo* which describes the setup of the development environment for Sphinx Needs is available :ref:`here <setting_up_dev_env>`.
 
 For all RST files also a linter is configured, it will be automatically run in the CI upon check-in.
 Locally it can be run via

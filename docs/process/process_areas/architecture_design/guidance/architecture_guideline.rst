@@ -219,7 +219,7 @@ The relations of the static elements are described in :numref:`metamodel_archite
 Review component architecture
 -----------------------------
 
-As soon as the design is in a mature state it can be reviewed according to <TBD> and merged into the main branch of the module repository.
+As soon as the design is in a mature state it can be :ref:`reviewed <review_concept>` and merged into the main branch of the module repository.
 
 Following roles should be included in the review:
 

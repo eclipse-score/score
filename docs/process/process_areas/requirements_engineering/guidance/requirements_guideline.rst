@@ -68,7 +68,7 @@ For all requirements following mandatory attributes need to be defined:
 
 
 * Title and description: For the formulation of requirements following template shall be used :need:`[[title]]<gd_temp__req__formulation>`
-* ID: The naming convention for the ID is defined here <TBD>.
+* ID: The naming convention for the ID is defined :ref:`here <naming_convention_needs>`.
 * Furthermore the requirements need to be versioned. Therefore a hash value of the requirement will to be calculated. The concept is described: :ref:`traceability concept for requirements`
 * For the remaining attributes only predefined values can be used. A more detailed description can be found here: :ref:`attributes of the requirements`
 
@@ -141,7 +141,7 @@ Therefore following guidelines are available:
 Review parent requirement
 -------------------------
 
-As soon as the parent requirements are in a mature state it can be reviewed according to <TBD> and merged into the main branch of the score repository. However this is not the formal inspection of the requirements, this will follow in an upcoming step.
+As soon as the parent requirements are in a mature state it can be :ref:`reviewed <review_concept>` and merged into the main branch of the score repository. However this is not the formal inspection of the requirements, this will follow in an upcoming step.
 
 Following roles should be included in the review:
 
@@ -167,7 +167,7 @@ Following guidelines are available:
 Review child requirement
 ------------------------
 
-As soon as also the child requirements are in a mature state they can be reviewed according to <TBD> and merged into the main branch of the respective repository. Again this is not a formal inspection as it will be performed in a later step.
+As soon as also the child requirements are in a mature state they can be :ref:`reviewed <review_concept>` and merged into the main branch of the respective repository. Again this is not a formal inspection as it will be performed in a later step.
 
 .. _generate_linkage_document:
 

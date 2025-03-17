@@ -61,7 +61,11 @@ Process Requirement Attributes
    :satisfies: wf__req__stkh_req, wf__req__feat_req, wf__req__comp_req
    :complies: std_req__iso26262__support_5
 
-   The title of the requirement shall provide a short summary of the description. This means that e.g. the word "shall" must not be used here.
+   The title of the requirement shall provide a short summary of the description. This means that e.g. the word "shall" must not be used int the title for:
+
+   * Stakeholder Requirements
+   * Feature Requirements
+   * Component Requirements
 
 .. gd_req:: Requirement attribute: description
    :id: gd_req__requirements_attr_description
@@ -231,7 +235,12 @@ Process Requirements Checks
    :tags: attribute, check
    :satisfies: wf__req__stkh_req, wf__req__feat_req, wf__req__comp_req
 
-   It shall be ensured that no *weak words* are contained in the requirement description.
+   It shall be ensured that no *weak words* are contained in the requirement description for:
+
+   * Stakeholder Requirements
+   * Feature Requirements
+   * Component Requirements
+
 
 .. gd_req:: Requirements linkage level
    :id: gd_req__req__linkage_fulfill

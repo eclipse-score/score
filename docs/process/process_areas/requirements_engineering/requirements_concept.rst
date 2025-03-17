@@ -96,7 +96,7 @@ Also requirements of standards need to be taken into consideration:
 Requirement Levels
 ******************
 
-Based on the inputs of the previous chapter the types of requirements which need to be implemented in the project can be derived. The defined levels are shown in <TBD>
+Based on the inputs of the previous chapter the types of requirements which need to be implemented in the project can be derived. The defined levels are shown in the :ref:`Traceability Concept <score_wp_traceability>`.
 
 Stakeholder Requirements
 ========================
@@ -226,7 +226,7 @@ For each requirement a hash shall be calculated and stored in its dedicated own 
 .. _requirement_mandatory_attributes:
 
 .. needtable:: Overview mandatory requirement attributes
-   :filter: "mandatory" in tags and "attribute" in tags and type == "gd_req"
+   :filter: "mandatory" in tags and "attribute" in tags and "requirements_engineering" in tags and type == "gd_req"
    :style: table
    :columns: title;id
    :colwidths: 60,40
@@ -255,17 +255,18 @@ Sets of Requirements / Baselines
 ================================
 
 GitHub standard functionality provides the means to version sets of requirements, as those are collected in files.
-The files commit history can be displayed, to show change date, author and differences.
-And via Git "Blame" also the changes on every requirement line.
-Requirement baseline generation is part of the configuration mangement,
-it is also done with GitHub means by tagging a complete set of artefacts/files in a repository.
+
+* The files commit history can be displayed, to show change date, author and differences
+* via git "Blame" also the changes on every line are available
+
+Requirement baseline generation is part of the configuration management, it is also done with GitHub means by tagging a complete set of artifacts/files in a repository.
 
 Reviews of the Requirements
 ***************************
 
 Some of the checks cannot be performed automatically. Therefore a manual inspection of the requirements is needed. The requirement review itself is triggered when a contributor wants to trigger a requirement review.
 
-In the general for the reviews a guideline exists: <TBD>
+In the general for the reviews a :ref:`guideline <review_concept>` exists.
 
 .. _coverage_of_requirements:
 
@@ -285,6 +286,6 @@ Additionally during build it shall be checked if exactly the requirements and ha
 Traceability Concept for Requirements
 *************************************
 
-The standards require that a requirement can be traced throughout the complete hierarchy levels including its implementation and verification <TBD: Link>. In this project it is implemented the following way:
+The standards require that a requirement can be traced throughout the complete hierarchy levels including its :ref:`implementation <implementation>` and :ref:`verification <process_verification>`. In this project it is implemented the following way:
 
 In general the traceability is visualized in main development work product traceability model (:numref:`wp_traceability_model`).

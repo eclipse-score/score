@@ -86,6 +86,7 @@ Templates
       .. gd_req:: <Title>
          :id: gd_req__<Tool>__<Title>
          :satisfies: <link to guidance id>
+         :complies: <link to standard requirement>
          :status: <valid|invalid>
 
 .. gd_temp:: Requirement Formulation Template
