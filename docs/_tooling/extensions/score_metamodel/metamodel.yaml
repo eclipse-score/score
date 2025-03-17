@@ -479,9 +479,10 @@ needs_extra_links:
 #     - [and / or / xor / not]
 ##############################################################
 graph_checks:
-  comp_req_safety:
+  # req-Id: gd_req__req__linkage_safety
+  req_safety_linkage:
     needs:
-      include: "comp_req"
+      include: "comp_req, feat_req"
       condition:
         and:
           - "safety != QM"
@@ -491,16 +492,22 @@ graph_checks:
         and:
           - "safety != QM"
           - "status == valid"
-      fulfils:
-        and:
-          - "safety != QM"
-          - "status == valid"
-  feat_req_safety:
+  req_linkage:
     needs:
-      include: "feat_req"
+      include: "comp_req, feat_req"
+      condition: "status == valid"
+    check:
+      satisfies: "status == valid"
+  # req-Id: gd_req__req__linkage_architecture
+  arch_safety_linkage:
+    needs:
+      include: "comp_req, feat_req"
       condition:
         and:
           - "safety != QM"
           - "status == valid"
     check:
-      satisfies: "status == valid"
+      fulfils:
+        and:
+          - "safety != QM"
+          - "status == valid"
