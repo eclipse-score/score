@@ -31,7 +31,6 @@ sphinx_requirements = all_requirements + [
 # - `docs:live_preview` for live preview in the browser without an IDE
 # - `docs:ide_support` for creating python virtualenv for IDE support
 # - `docs:docs` for building documentation at build-time
-# - `docs:plantuml` and `:plantuml_for_python` targets, to be used as dependencies for plantuml generation
 docs(source_files_to_scan_for_needs_links = [
     # Note: you can add filegroups, globs, or entire targets here.
     ":score_metamodel",
