@@ -74,22 +74,23 @@ can be in a different order.
                 safety_analysis/                    -> ... Safety analysis on module level [wp__sw_component_dfa]
                 verification/                       -> ... Module verification report (reporting all module's components verifications) [wp__module_sw_verification_report] plus safety analysis conformance reviews [wp__cmr_reports]
 
-            components/                             -> Components of the module.
-                <component_name>/                   -> Folder containing all artifacts corresponding to one component.
-                    docs/                           -> Documentation of the component consisting of ...
-                        architecture/               -> ... Component architecture (only if sub-components exist) [wp__cr_mt_comparch].
-                        requirements/               -> ... Component requirements [wp__sw_component_req] and HSI (if relevant) [wp__hsi].
-                        safety_analysis/            -> ... Safety analysis on component level [wp__sw_component_safety_analyses]
-                        verification/               -> ... Architecture review [wp__sw_arch_verification], code inspection [wp__sw_code_inspect]
-                    src/                            -> Source files of the component (incl. detailed design) [wp__sw_implementation].
-                    include/                        -> Include files of the component
-                    tests/                          -> Component tests, consisting of ...
-                        unit/                       -> ... unit tests [wp__sw_unit_test] (for lowest level of components).
-                        integration/                -> ... integration tests [wp__sw_component_integration_test].
-                        verification/               -> ... verification tests [wp__sw_component_test].
-                    <sub_component_name>/           -> Sub-Component of the Component.
-                         copy the relevant folders below <component-name> if applicable (example: no code inspection needed for sub-components from the Open Source)
 
+            <component_name>/                       -> Components of the module.
+                                                    -> Folder containing all artifacts corresponding to one component.
+
+            ./                                      -> Source files of the component (incl. detailed design)
+                                                    -> ... unit tests [wp__sw_unit_test] (for lowest level of components).[wp__sw_implementation].
+                                                    -> Include files of the component
+
+            docs/                                   -> Documentation of the component consisting of ...
+               architecture/                        -> ... Component architecture (only if sub-components exist) [wp__cr_mt_comparch].
+               requirements/                        -> ... Component requirements [wp__sw_component_req] and HSI (if relevant) [wp__hsi].
+               safety_analysis/                     -> ... Safety analysis on component level [wp__sw_component_safety_analyses]
+               verification/                        -> ... Architecture review [wp__sw_arch_verification], code inspection [wp__sw_code_inspect]
+
+                    tests/                          -> Component tests, consisting of ...
+                                                    -> ... integration tests [wp__sw_component_integration_test].
+                                                    -> ... verification tests [wp__sw_component_test].
     platform_integration_tests/                     -> Integration tests on reference hardware.
 
     process/                                        -> process definition including workflows, workproducts, roles, guidance [wp__process_definition]
