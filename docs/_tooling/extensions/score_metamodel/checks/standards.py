@@ -13,10 +13,10 @@
 from sphinx.application import Sphinx
 from sphinx_needs.data import NeedsInfoType
 
-from score_metamodel import (
-    CheckLogger,
-    graph_check,
-)
+# from score_metamodel import (
+#    CheckLogger,
+#    graph_check,
+# )
 
 
 def get_standards_needs(needs: list[NeedsInfoType]) -> dict:
@@ -169,11 +169,20 @@ def get_compliance_wp_needs(needs) -> set:
 def my_pie_linked_standard_requirements(needs, results, **kwargs):
     """
     Function to render the chart of check for standard requirements linked to at least an item via compliance-gd.
+    Passed arguments can be accessed via kwargs['arg<position>']
+    See: https://sphinx-needs.readthedocs.io/en/latest/filter.html#arguments
     """
     cnt_connected = 0
     cnt_not_connected = 0
 
-    standards_needs = get_standards_needs(needs)
+    standard = kwargs["arg1"]
+
+    all_standards_needs = get_standards_needs(needs)
+    standards_needs = {
+        k: v
+        for k, v in all_standards_needs.items()
+        if k.startswith(f"std_req__{standard}__")
+    }
     compliance_req_needs = get_compliance_req_needs(needs)
 
     for need in standards_needs.values():
@@ -188,12 +197,21 @@ def my_pie_linked_standard_requirements(needs, results, **kwargs):
 
 def my_pie_linked_standard_workproducts(needs, results, **kwargs):
     """
-    Function to render the chart of check for standar workproducts linked to at least an item via compliance-wp.
+    Function to render the chart of check for standard workproducts linked to at least an item via compliance-wp.
+    Passed arguments can be accessed via kwargs['arg<position>']
+    See: https://sphinx-needs.readthedocs.io/en/latest/filter.html#arguments
     """
     cwp_connected = 0
     cwp_not_connected = 0
 
-    standard_workproducts = get_standards_workproducts(needs)
+    standard = kwargs["arg1"]
+
+    all_standard_workproducts = get_standards_workproducts(needs)
+    standard_workproducts = {
+        k: v
+        for k, v in all_standard_workproducts.items()
+        if k.startswith(f"std_wp__{standard}__")
+    }
 
     compliance_wp_needs = get_compliance_wp_needs(needs)
 

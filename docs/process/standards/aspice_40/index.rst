@@ -17,3 +17,6 @@
    :caption: Contents:
 
    aspice
+
+.. needextend:: "standards/aspice_40" in docname
+   :+tags: aspice_40
