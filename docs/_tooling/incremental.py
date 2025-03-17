@@ -85,7 +85,6 @@ def get_runfiles_dir() -> Path:
     return runfiles_dir
 
 
-
 # Registering a default value
 source_code_linker_file = ""
 
@@ -124,7 +123,7 @@ else:
     filename = get_env("SOURCE_CODE_LINKS")
     source_code_linker_file = str(relative_path.parent) + "/" + filename
     incremental_args = base_arguments + [
-        # Overwriting config values 
+        # Overwriting config values
         f"--define=source_code_linker_file={source_code_linker_file}",
         f"--define=html_static_path={assets_dir_prefix}/_assets,{assets_dir_prefix}/_tooling/assets",
     ]

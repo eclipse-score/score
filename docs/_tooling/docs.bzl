@@ -98,7 +98,7 @@ def _incremental(source_code_linker, source_code_links, source_dir = "docs", con
     """
 
     dependencies = sphinx_requirements + extra_dependencies
-   
+
     py_binary(
         name = "incremental",
         srcs = ["//docs:_tooling/incremental.py"],
