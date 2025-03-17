@@ -425,7 +425,7 @@ Functional Safety Management SW Platform Work Products
       - :ref:`stakeholder_requirements`
       - <automated>
 
-    * - :need:`wp__sw_dev_plan`
+    * - :need:`wp__sw_development_plan`
       - :need:`wf__cr_mt_platform_mngmt_plan`
       - :ndf:`copy('status', need_id='wf__cr_mt_platform_mngmt_plan')`
       - <Link to issue>

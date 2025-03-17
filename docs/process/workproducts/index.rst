@@ -76,23 +76,6 @@ General
    Documents should be precise, concise, clearly structured, understandable for intended users, verifiable, maintainable, and organized according to in-house procedures to facilitate information retrieval.
    Documentation guideline requirements must be defined for each WP. Each work product or document must include a title, author and approver, unique revision identification, change history, and status.
 
-.. workproduct:: Software Development Plan
-   :id: wp__sw_dev_plan
-   :status: draft
-   :tags: process
-
-   | Process description of SW development including
-   | - selection of design and programming language
-   | - design guideline
-   | - coding guideline (e.g. MISRA, can also include style guide or naming convention)
-   | - SW configuration guideline
-   | - Method selection (e.g. for Architecture Verification)
-   | - development tools
-   |
-   | Compare also `Gitub documentation <https://docs.github.com/en>`_
-   | Compare also `Eclipse Project Handbook <https://www.eclipse.org/projects/handbook/>`_
-
-
 Process
 ^^^^^^^
 
@@ -193,30 +176,6 @@ Component development
 
    Depends on architecture, FMEA and DFA tooling.
    May include several methods like inspection, modelling ... Which are selected in SW Development Plan.
-
-.. workproduct:: Module Verification Report
-   :id: wp__module_sw_verification_report
-   :status: draft
-   :tags: safety
-
-   Verification Report contains:
-   - List of requirements (and architecture/detailed design tags) tested by which test (can be several levels), passed/failed and completeness verdict, including normal operation and failure reactions
-   - The list of requirements may also contain other verification methods like "Analysis"
-   - Structural Coverage (C0 and C1, from unit testing on host) per unit
-   - Static Code Analysis (including compiler warnings, automated checking of coding guidelines and additional checks)
-   - Formal evidence about the preformed DFA.
-   - Formal evidence about the performed Safety Analyses
-   - Software component qualification verification report
-
-.. workproduct:: Component Integration test
-   :id: wp__sw_component_integration_test
-   :status: draft
-   :tags: safety
-
-   Integration Testing verifies component architecture:
-   - all interfaces from Static view and
-   - all flows from Dynamic View and
-   performance: i.e. RAM and processor usage on reference HW
 
 .. workproduct:: Module Build Configuration
    :id: wp__module_sw_build_config
