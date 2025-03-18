@@ -55,6 +55,32 @@ class TestCheckOptions:
         }
     ]
 
+    NEED_TYPE_INFO_WITH_REQ_LINK = [
+        {
+            "directive": "workflow",
+            "mandatory_options": {
+                "id": "wf__.*$",
+                "status": "^(valid|draft)$",
+            },
+            "req_link": [
+                ("input", "^wp__.*$"),
+            ],
+        }
+    ]
+
+    NEED_TYPE_INFO_WITH_OPT_LINK = [
+        {
+            "directive": "workflow",
+            "mandatory_options": {
+                "id": "wf__.*$",
+                "status": "^(valid|draft)$",
+            },
+            "opt_link": [
+                ("supported_by", "^rl__.*$"),
+            ],
+        }
+    ]
+
     def test_known_directive_with_mandatory_option_and_allowed_value(self):
         # Given a need with a type that is listed in the required options
         #  and mandatory options present
@@ -234,3 +260,50 @@ class TestCheckOptions:
             f'does not follow pattern `{self.NEED_TYPE_INFO_WITH_OPT_OPT[0]["opt_opt"]["some_optional_option"]}`.',
             expect_location=False,
         )
+
+    def test_known_required_link_missing(self):
+        # Given a need without an option that is listed in the required options
+        need = NeedsInfoType(
+            target_id="wf__p_confirm_rv",
+            id="wf__p_confirm_rv",
+            status="valid",
+            type="workflow",
+            docname=None,
+            lineno=None,
+        )
+
+        logger = fake_check_logger()
+        app = Mock(spec=Sphinx)
+        app.config = Mock()
+        app.config.needs_types = self.NEED_TYPE_INFO
+        # Expect that the checks fail and a warning is logged
+        check_options(app, need, logger, self.NEED_TYPE_INFO_WITH_REQ_LINK)
+        logger.assert_warning(
+            "is missing required link: `input`.",
+            expect_location=False,
+        )
+
+    # TODO: Remove commented code when re
+
+    # def test_value_violates_pattern_for_optional_link(self):
+    #     # Given a need without an option that is listed in the required options
+    #     need = NeedsInfoType(
+    #         target_id="wf__p_confirm_rv",
+    #         id="wf__p_confirm_rv",
+    #         status="valid",
+    #         type="workflow",
+    #         supported_by="rl_process_community",
+    #         docname=None,
+    #         lineno=None,
+    #     )
+
+    #     logger = fake_check_logger()
+    #     app = Mock(spec=Sphinx)
+    #     app.config = Mock()
+    #     app.config.needs_types = self.NEED_TYPE_INFO
+    #     # Expect that the checks fail and a warning is logged
+    #     check_options(app, need, logger, self.NEED_TYPE_INFO_WITH_OPT_LINK)
+    #     logger.assert_warning(
+    #         "does not follow pattern",
+    #         expect_location=False,
+    #     )

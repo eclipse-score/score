@@ -101,12 +101,22 @@ def load_metamodel_data():
     with open(yaml_path, "r", encoding="utf-8") as f:
         data = yaml.load(f)
 
+    # Access the custom validation block
+    prohibited_words_dict = data.get("needs_types_base_options", {}).get(
+        "prohibited_words", {}
+    )
+
     types_dict = data.get("needs_types", {})
     links_dict = data.get("needs_extra_links", {})
     graph_check_dict = data.get("graph_checks", {})
 
     global_base_options = data.get("needs_types_base_options", {})
     global_base_options_optional_opts = global_base_options.get("optional_options", {})
+
+    # Get the list of stop-words and weak-words
+    # Get the stop_words and weak_words as separate lists
+    stop_words_list = prohibited_words_dict.get("title", [])
+    weak_words_list = prohibited_words_dict.get("content", [])
 
     # Default options by sphinx, sphinx-needs or anything else we need to account for
     default_options_list = default_options()
@@ -168,6 +178,8 @@ def load_metamodel_data():
     needs_extra_options = sorted(all_options - set(default_options_list))
 
     return {
+        "stop_words": stop_words_list,
+        "weak_words": weak_words_list,
         "needs_types": needs_types_list,
         "needs_extra_links": needs_extra_links_list,
         "needs_extra_options": needs_extra_options,
@@ -228,6 +240,8 @@ def setup(app: Sphinx):
     app.config.needs_extra_links = metamodel["needs_extra_links"]
     app.config.needs_extra_options = metamodel["needs_extra_options"]
     app.config.graph_checks = metamodel["needs_graph_check"]
+    app.config.stop_words = metamodel["stop_words"]
+    app.config.weak_words = metamodel["weak_words"]
 
     discover_checks()
 

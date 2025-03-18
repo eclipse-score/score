@@ -15,6 +15,19 @@
 needs_types_base_options:
   optional_options:
     source_code_link: "^https://github.com/eclipse-score/score/blob/.*$"
+  # Custom semantic validation rules
+  prohibited_words:
+    title:
+      - shall
+      - must
+      - will
+    content:
+      - just
+      - about
+      - really
+      - some
+      - thing
+      - absolutely
 
 needs_types:
 
@@ -144,6 +157,10 @@ needs_types:
     optional_options:
       safety: "^(QM|ASIL_B|ASIL_D)$"
       realizes: "^wp__.+$"
+  # The following 3 guidance requirements enforce the requirement structure and attributes:
+  # req-Id: gd_req__req__structure
+  # req-Id: gd_req__requirements_attr_description
+  # req-Id: gd_req__req__linkage
   # Requirements
   stkh_req:
     title: "Stakeholder Requirement"
@@ -162,7 +179,6 @@ needs_types:
       testcovered: "^(YES|NO)$"
       hash: "^.*$"
 
-
   feat_req:
     title: "Feature Requirement"
     prefix: "feat_req__"
@@ -174,6 +190,7 @@ needs_types:
       safety: "^(QM|ASIL_B|ASIL_D)$"
       status: "^(valid|invalid)$"
     mandatory_links:
+      # req-Id: gd_req__req__linkage_fulfill
       satisfies: "^stkh_req__.*$"
     optional_options:
       codelink: "^.*$"
@@ -478,6 +495,8 @@ needs_extra_links:
 #   - condition: defines the condition that should be checked
 #     - [and / or / xor / not]
 ##############################################################
+# req-Id: gd_req__req__linkage_architecture
+# req-Id: gd_req__req__linkage_safety
 graph_checks:
   comp_req_safety:
     needs:
@@ -504,3 +523,7 @@ graph_checks:
           - "status == valid"
     check:
       satisfies: "status == valid"
+      fulfils:
+        and:
+          - "safety != QM"
+          - "status == valid"

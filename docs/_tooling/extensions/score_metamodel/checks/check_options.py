@@ -30,6 +30,49 @@ def get_need_type(needs_types: list[NeedsInfoType], directive: str):
     raise ValueError(f"Need type {directive} not found in needs_types")
 
 
+def validate_fields(
+    need: NeedsInfoType,
+    log: CheckLogger,
+    fields: dict[str, str],
+    required: bool,
+    field_type: str,
+):
+    """
+    Validates that fields (options or links) in a need match their expected patterns.
+
+    :param need: The need object containing the data.
+    :param log: Logger for warnings.
+    :param fields: A dictionary of field names and their regex patterns.
+    :param required: Whether the fields are required (True) or optional (False).
+    :param field_type: A string indicating the field type ('option' or 'link').
+    """
+    for field, pattern in fields.items():
+        values = need.get(field, None)
+
+        if required and (values is None or values in [[], ""]):
+            log.warning_for_need(need, f"is missing required {field_type}: `{field}`.")
+            continue
+
+        if values is None or values in [[], ""]:
+            continue  # Skip optional empty fields
+
+        if not isinstance(values, list):
+            values = [values]
+
+        for value in values:
+            assert isinstance(value, str)
+            if not re.match(pattern, value):
+                log.warning_for_option(
+                    need, field, f"does not follow pattern `{pattern}`."
+                )
+
+
+# req-Id: gd_req__req__attr_type
+# req-Id: gd_req__requirements_attr_security
+# req-Id: gd_req__req__attr_safety
+# req-Id: gd_req__req__attr_status
+# req-Id: gd_req__req__attr_rationale
+# req-Id: gd_req__req__attr_mandatory
 @local_check
 def check_options(
     app: Sphinx,
@@ -38,80 +81,42 @@ def check_options(
     needs_types: list[NeedsInfoType] = None,
 ):
     """
-    Checking if all described and wanted attributes are present and their values follow the described pattern.
+    Checks that required and optional options and links are present and follow their defined patterns.
     """
     production_needs_types = app.config.needs_types
     if not needs_types:
         needs_types = production_needs_types
+
     try:
         need_options = get_need_type(needs_types, need["type"])
     except ValueError:
-        msg = "no type info defined for semantic check."
-        log.warning_for_option(need, "type", msg)
+        log.warning_for_option(need, "type", "no type info defined for semantic check.")
         return
 
-    required_options: dict[str, str] = need_options.get("mandatory_options", {})
-    optional_options: dict[str, str] = need_options.get("opt_opt", {})
+    if not need_options.get("mandatory_options", {}):
+        log.warning_for_option(need, "type", "no type info defined for semantic check.")
 
-    if len(required_options) == 0:
-        msg = "no type info defined for semantic check."
-        log.warning_for_option(need, "type", msg)
+    # Validate Options and Links
+    checking_dict = {
+        "option": [
+            (need_options.get("mandatory_options", {}), True),
+            (need_options.get("opt_opt", {}), False),
+        ],
+        "link": [
+            (dict(need_options.get("req_link", [])), True),
+            #    (dict(need_options.get("opt_link", [])), False),
+        ],
+    }
 
-    for option, pattern in required_options.items():
-        values = need.get(option, None)
-
-        if values is None or values in [[], ""]:
-            msg = f"is missing required option: `{option}`."
-            log.warning_for_need(need, msg)
-            continue
-
-        # Normalize values (list or string)
-        if not isinstance(values, list):
-            values = [values]
-
-        for value in values:
-            assert isinstance(value, str)
-            regex = re.compile(pattern)
-
-            if not regex.match(value):
-                msg = f"does not follow pattern `{pattern}`."
-                log.warning_for_option(need, option, msg)
-
-    for option, pattern in optional_options.items():
-        values = need.get(option, None)
-
-        if values is None or values in [[], ""]:  # Skip if empty
-            continue
-
-        if not isinstance(values, list):
-            values = [values]
-
-        for value in values:
-            assert isinstance(value, str)
-            regex = re.compile(pattern)
-
-            if not regex.match(value):
-                msg = f"does not follow pattern `{pattern}`."
-                log.warning_for_option(need, option, msg)
-
-    required_links: list[tuple[str, str]] = need_options.get("req_link", [])
-    if required_links:
-        for link, pattern in required_links:
-            values = need.get(link, None)
-            if values is None or values in [[], ""]:
-                msg = f"is missing required link: `{link}`."
-                log.warning_for_need(need, msg)
-                continue
-
-            if not isinstance(values, list):
-                values = [values]
-
-            for value in values:
-                assert isinstance(value, str)
-                regex = re.compile(pattern)
-                if not regex.match(value):
-                    msg = f"does not follow pattern `{pattern}`."
-                    log.warning_for_option(need, link, msg)
+    for field_type, check_fields in checking_dict.items():
+        for field_values, is_required in check_fields:
+            validate_fields(
+                need,
+                log,
+                field_values,
+                required=is_required,
+                field_type=field_type,
+            )
 
 
 @local_check
