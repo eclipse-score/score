@@ -49,12 +49,12 @@ def validate_fields(
     for field, pattern in fields.items():
         values = need.get(field, None)
 
-        if required and (values is None or values in [[], ""]):
-            log.warning_for_need(need, f"is missing required {field_type}: `{field}`.")
-            continue
-
-        if values is None or values in [[], ""]:
-            continue  # Skip optional empty fields
+        if values in [None, [], ""]:
+            if required:
+                log.warning_for_need(
+                    need, f"is missing required {field_type}: `{field}`."
+                )
+            continue  # Skip empty optional fields
 
         if not isinstance(values, list):
             values = [values]
