@@ -34,25 +34,6 @@ def setup(app: Sphinx) -> dict:
     }
 
 
-def find_dir_paths(app: Sphinx) -> list[str]:
-    """
-    Reading 'requirement_links' config value and returning it as list
-    The 'requirement_links' config value contains all source links found
-    that need to be parsed.
-    Args:
-        app: Sphinx app of the current running application
-
-    Returns:
-        (list[str]):
-                List of filenames as strings captured from the 'requirement_links'
-                configuration value.
-
-        Example:
-            [file-1, file-2]
-    """
-    return [app.config.source_code_linker_file]
-
-
 # req-Id: gd_req__req__attr_impl
 def add_source_link(app: Sphinx, env) -> None:
     """
