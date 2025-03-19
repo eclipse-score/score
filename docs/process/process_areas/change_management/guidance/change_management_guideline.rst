@@ -55,15 +55,13 @@ For all Change Requests following mandatory attributes need to be defined:
 
 .. needtable:: Overview of mandatory change request attributes
    :tags: change_management
-   :filter: "mandatory" in tags and "attribute" in tags and type == "gd_req"
+   :filter: "mandatory" in tags and "attribute" in tags and "chm" in tags
    :style: table
    :columns: title
    :colwidths: 30
 
 
-* ID: Unique integer number
-* For the remaining attributes only predefined values can be used. A more detailed description can
-  be found here: :ref:`chm_attributes`
+A more detailed description can be found here: :ref:`chm_process_requirements`
 
 
 .. _workflow_chm_requirements:
