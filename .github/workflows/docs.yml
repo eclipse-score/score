@@ -105,6 +105,13 @@ jobs:
         with:
           name: github-pages-${{ github.event.pull_request.head.sha || github.sha }}
 
+      - name: Run setup test
+        env:
+          SCORE_QNX_USER: ${{ secrets.SCORE_QNX_USER }}
+          SCORE_QNX_PASSWORD: ${{ secrets.SCORE_QNX_PASSWORD }}
+        run: |
+          echo "Just for testing env"
+
       - name: Untar documentation artifact
         run: mkdir -p extracted_docs && tar -xf github-pages.tar -C extracted_docs
 
