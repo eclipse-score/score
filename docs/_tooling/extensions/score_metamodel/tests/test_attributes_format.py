@@ -60,7 +60,9 @@ class TestId:
         check_id_format(app, need, logger)
 
         logger.assert_warning(
-            "expected to consisting of one of these 2 formats:`<Req Type>__<Abbreviations>` or `<Req Type>__<Abbreviations>__<Architectural Element>`.",
+            "expected to consisting of one of these 2 formats:"
+            "`<Req Type>__<Abbreviations>` or "
+            "`<Req Type>__<Abbreviations>__<Architectural Element>`.",
             expect_location=False,
         )
 
@@ -79,7 +81,8 @@ class TestId:
         check_id_format(app, need, logger)
 
         logger.assert_warning(
-            "expected to consisting of this format: `<Req Type>__<Abbreviations>__<Architectural Element>`.",
+            "expected to consisting of this format: "
+            "`<Req Type>__<Abbreviations>__<Architectural Element>`.",
             expect_location=False,
         )
 
@@ -112,7 +115,8 @@ class TestId:
 
         check_id_length(app, need, logger)
         logger.assert_warning(
-            f'exceeds the maximum allowed length of 45 characters (current length: {len(need['id'])}).',
+            f"exceeds the maximum allowed length of 45 characters "
+            f"(current length: {len(need["id"])}).",
             expect_location=False,
         )
 
@@ -150,8 +154,9 @@ class TestId:
         check_title(app, need, logger)
         logger.assert_warning(
             (
-                "contains a stop word: `shall`. The title is meant to provide a short summary, "
-                "not to repeat the requirement statement. Please revise the title for clarity and brevity."
+                "contains a stop word: `shall`. The title is meant to provide a short "
+                "summary, not to repeat the requirement statement. Please revise "
+                "the title for clarity and brevity."
             ),
             expect_location=False,
         )

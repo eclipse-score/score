@@ -174,7 +174,8 @@ def load_metamodel_data():
 
     # We have to remove all 'default options' from the extra options.
     # As otherwise sphinx errors, due to an option being registered twice.
-    # They are still inside the extra options we extract to enable constraint checking via regex
+    # They are still inside the extra options we extract to enable
+    # constraint checking via regex
     needs_extra_options = sorted(all_options - set(default_options_list))
 
     return {
@@ -188,7 +189,10 @@ def load_metamodel_data():
 
 
 def default_options() -> list[str]:
-    "Helper function to get a list of all default options defined by sphinx, sphinx-needs etc."
+    """
+    Helper function to get a list of all default options defined by
+    sphinx, sphinx-needs etc.
+    """
     return [
         "target_id",
         "id",

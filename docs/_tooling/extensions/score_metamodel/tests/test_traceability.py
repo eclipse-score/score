@@ -84,7 +84,8 @@
 #         check_linkage_parent(app, needs, logger)
 #
 #         logger.assert_warning(
-#             f"has a parent requirement(s): `{need_1['satisfies'][0]}` with an invalid status.",
+#             f"has a parent requirement(s): `{need_1['satisfies'][0]}` with an "
+#             f"invalid status.",
 #             expect_location=False,
 #         )
 #
@@ -143,7 +144,8 @@
 #
 #         check_linkage_safety(app, needs, logger)
 #         logger.assert_warning(
-#             f"with `{need_1['safety']}` has no parent requirement that contains the same or lower ASIL. Allowed ASIL values: `ASIL_D`.",
+#             f"with `{need_1['safety']}` has no parent requirement that contains "
+#             f"the same or lower ASIL. Allowed ASIL values: `ASIL_D`.",
 #             expect_location=False,
 #         )
 #
@@ -167,7 +169,8 @@
 #
 #         check_linkage_safety(app, needs, logger)
 #         logger.assert_warning(
-#             f"with `{need_1['safety']}` has no parent requirement that contains the same or lower ASIL. Allowed ASIL values: `ASIL_B`, `ASIL_D`.",
+#             f"with `{need_1['safety']}` has no parent requirement that contains "
+#             f"the same or lower ASIL. Allowed ASIL values: `ASIL_B`, `ASIL_D`.",
 #             expect_location=False,
 #         )
 #
@@ -220,6 +223,7 @@
 #         check_linkage_status(app, needs, logger)
 #
 #         logger.assert_warning(
-#             "has a valid status but one of its parents: `feat_req__3` has an invalid status.",
+#             "has a valid status but one of its parents: `feat_req__3` has an "
+#              "invalid status.",
 #             expect_location=False,
 #         )

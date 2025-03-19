@@ -21,7 +21,8 @@ from score_metamodel import CheckLogger, local_check
 @local_check
 def check_id_format(app: Sphinx, need: NeedsInfoType, log: CheckLogger):
     """
-    Checking if the title, directory and feature are included in the requirement id or not.
+    Checking if the title, directory and feature are included in
+    the requirement id or not.
     ---
     """
     # Split the string by underscores
@@ -31,11 +32,18 @@ def check_id_format(app: Sphinx, need: NeedsInfoType, log: CheckLogger):
         ("gd_", "wf__", "wp__", "rl__", "stkh_req__", "tool_req__", "doc__")
     ) or ("process/" in need.get("docname", "")):
         if len(parts) != 2 and len(parts) != 3:
-            msg = "expected to consisting of one of these 2 formats:`<Req Type>__<Abbreviations>` or `<Req Type>__<Abbreviations>__<Architectural Element>`."
+            msg = (
+                "expected to consisting of one of these 2 formats:"
+                "`<Req Type>__<Abbreviations>` or "
+                "`<Req Type>__<Abbreviations>__<Architectural Element>`."
+            )
             log.warning_for_option(need, "id", msg)
     else:
         if len(parts) != 3:
-            msg = "expected to consisting of this format: `<Req Type>__<Abbreviations>__<Architectural Element>`."
+            msg = (
+                "expected to consisting of this format: "
+                "`<Req Type>__<Abbreviations>__<Architectural Element>`."
+            )
             log.warning_for_option(need, "id", msg)
 
 
@@ -43,12 +51,16 @@ def check_id_format(app: Sphinx, need: NeedsInfoType, log: CheckLogger):
 def check_id_length(app: Sphinx, need: NeedsInfoType, log: CheckLogger):
     """
     Validates that the requirement ID does not exceed the hard limit of 45 characters.
-    While the recommended limit is 30 characters, this check enforces a strict maximum of 45 characters.
+    While the recommended limit is 30 characters, this check enforces a strict maximum
+    of 45 characters.
     If the ID exceeds 45 characters, a warning is logged specifying the actual length.
     ---
     """
     if len(need["id"]) > 45:
-        msg = f"exceeds the maximum allowed length of 45 characters (current length: {len(need['id'])})."
+        msg = (
+            f"exceeds the maximum allowed length of 45 characters "
+            f"(current length: {len(need['id'])})."
+        )
         log.warning_for_option(need, "id", msg)
 
 

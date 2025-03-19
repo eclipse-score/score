@@ -81,7 +81,8 @@ def check_options(
     needs_types: list[NeedsInfoType] = None,
 ):
     """
-    Checks that required and optional options and links are present and follow their defined patterns.
+    Checks that required and optional options and links are present
+    and follow their defined patterns.
     """
     production_needs_types = app.config.needs_types
     if not needs_types:
@@ -127,7 +128,9 @@ def check_extra_options(
     needs_types: list[NeedsInfoType] = None,
 ):
     """
-    This function checks if the user specified attributes in the need which are not defined for this element in the metamodel or by default system attributes.
+    This function checks if the user specified attributes in the need
+    which are not defined for this element in the metamodel or by default
+    system attributes.
     """
 
     production_needs_types = app.config.needs_types

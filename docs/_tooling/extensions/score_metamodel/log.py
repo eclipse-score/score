@@ -28,8 +28,9 @@ class CheckLogger:
             return need.get(key, None)
 
         if get("docname") and get("doctype") and get("lineno"):
-            # Note: passing the location as a string allows us to use readable relative paths,
-            # passing as a tuple results in absolute paths to ~/.cache/.../bazel-out/..
+            # Note: passing the location as a string allows us to use
+            # readable relative paths, passing as a tuple results
+            # in absolute paths to ~/.cache/.../bazel-out/..
             if "RUNFILES_DIR" in os.environ or "RUNFILES_MANIFEST_FILE" in os.environ:
                 matching_file = f"{need['docname']}{need['doctype']}"
             else:

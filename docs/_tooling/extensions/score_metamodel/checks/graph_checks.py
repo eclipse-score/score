@@ -42,15 +42,15 @@ def eval_need_check(need, check, log):
     if len(parts) != 3:
         raise ValueError(f"Invalid check defined: {check}")
 
-    if not (parts[1] in oper):
+    if parts[1] not in oper:
         raise ValueError(f"Binary Operator not defined: {parts[1]}")
 
-    if parts[0] not in need.keys():
+    if parts[0] not in need:
         msg = f"Attribute not defined: {parts[0]}"
         log.warning_for_need(need, msg)
         return False
-    else:
-        return oper[parts[1]](need[parts[0]], parts[2])
+
+    return oper[parts[1]](need[parts[0]], parts[2])
 
 
 def eval_need_condition(need, condition, log):

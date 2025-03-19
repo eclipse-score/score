@@ -40,15 +40,19 @@
 #             formatted_parents_not_correct = ", ".join(
 #                 f"`{parent}`" for parent in parents_not_correct
 #             )
-#             msg = f"has a parent requirement(s): {formatted_parents_not_correct} with an invalid status."
+#             msg = (
+#                       f"has a parent requirement(s): {formatted_parents_not_correct} "
+#                       f"with an invalid status."
+#                   )
 #             log.warning_for_need(need, msg)
 #
 #
 # @graph_check
 # def check_linkage_safety(app: Sphinx, needs: list[NeedsInfoType], log: CheckLogger):
 #     """
-#     Checking if for feature, component and tool requirements it shall be checked if at least one parent requirement
-#     contains the same or lower ASIL compared to the ASIL of the current requirement then it will return False.
+#     Checking if for feature, component and tool requirements it shall be checked
+#     if at least one parent requirement contains the same or lower ASIL compared
+#     to the ASIL of the current requirement then it will return False.
 #     """
 #     # Convert list to dictionary for easy lookup
 #     needs_dict = {need["id"]: need for need in needs}
@@ -78,8 +82,10 @@
 #                 unsafe_parents.append(parent)
 #         if unsafe_parents:
 #             msg = (
-#                 f"`{need['id']}` parents: {unsafe_parents} have either no, or not allowed safety ASIL values. "
-#                 f"Allowed ASIL values: {', '.join(f'`{value}`' for value in allowed_values)}. \n"
+#                 f"`{need['id']}` parents: {unsafe_parents} have either no, or not "
+#                "allowed safety ASIL values. "
+#                 f"Allowed ASIL values: "
+#                 f"{', '.join(f'`{value}`' for value in allowed_values)}. \n"
 #             )
 #             log.warning_for_need(need, msg)
 #
@@ -87,7 +93,8 @@
 # @graph_check
 # def check_linkage_status(app: Sphinx, needs: list[NeedsInfoType], log: CheckLogger):
 #     """
-#     Checking if for valid feature, component and tool requirements it shall be checked if the status of the parent requirement is also valid.
+#     Checking if for valid feature, component and tool requirements it shall be checked
+#     if the status of the parent requirement is also valid.
 #     """
 #     needs_dict = {need["id"]: need for need in needs}
 #     for need in needs:
@@ -96,5 +103,6 @@
 #                 parent_need = needs_dict.get(satisfie_need)  # Get parent requirement
 #
 #                 if not parent_need or parent_need.get("status") != "valid":
-#                     msg = f"has a valid status but one of its parents: `{satisfie_need}` has an invalid status. \n"
+#                     msg = f"has a valid status but one of its parents:
+#                     "`{satisfie_need}` has an invalid status. \n"
 #                     log.warning_for_need(need, msg)

@@ -11,22 +11,28 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 
-from unittest.mock import Mock
+# from unittest.mock import Mock
 
-from sphinx.application import Sphinx
+# from sphinx.application import Sphinx
 from sphinx_needs.data import NeedsInfoType
 
 from docs._tooling.extensions.score_metamodel.checks import standards
-from docs._tooling.extensions.score_metamodel.tests import fake_check_logger
+
+# from docs._tooling.extensions.score_metamodel.tests import fake_check_logger
 
 
 class TestStandards:
-    #                    ╭──────────────────────────────────────────────────────────────────────────────╮
-    #                    │                             Disabled temporarly                              │
-    #                    ╰──────────────────────────────────────────────────────────────────────────────╯
-    #   def test_check_all_standard_req_linked_item_via_the_compliance_req_positive(self):
+    #                    ╭─────────────────────────────────────────────────────────────╮
+    #                    │                             Disabled temporarly             │
+    #                    ╰─────────────────────────────────────────────────────────────╯
+    #   def test_check_all_standard_req_linked_item_via_the_compliance_req_positive(
+    #       self
+    #   ):
     #        """
-    #        Test if check all_standard_req_linked_item_via_the_compliance_req function will give a False value (check is valid) when giving a standar requirement which is linked to at least one of the list of items that have complies tag via the same tag.
+    #        Test if check all_standard_req_linked_item_via_the_compliance_req
+    #        function will give a False value (check is valid) when giving a standar
+    #        requirement which is linked to at least one of the list of items that
+    #        have complies tag via the same tag.
     #        """
     #
     #        need_1 = NeedsInfoType(
@@ -69,7 +75,10 @@ class TestStandards:
 
     # def test_check_standard_req_linked_item_via_the_compliance_req_negative(self):
     #     """
-    #     Test if check all_standard_req_linked_item_via_the_compliance_req function will give a False value (check is invalid) when giving a standar requirement which is not linked to at least one of the list of items that have complies tag via the same tag.
+    #     Test if check all_standard_req_linked_item_via_the_compliance_req
+    #     function will give a False value (check is invalid) when giving a standar
+    #     requirement which is not linked to at least one of the list of items that
+    #     have complies tag via the same tag.
     #     """
 
     #     need_1 = NeedsInfoType(
@@ -109,7 +118,8 @@ class TestStandards:
     #         app, needs, logger
     #     )
     #     logger.assert_warning(
-    #         f"Standard requirement `{need_1['id']}` is not linked to at least one item via the complies tag.",
+    #         f"Standard requirement `{need_1['id']}` is not linked to at least one "
+    #         f"item via the complies tag.",
     #         expect_location=False,
     #     )
 
@@ -117,11 +127,14 @@ class TestStandards:
     #     self,
     # ):
     #     """
-    #     Test if check all_standard_workproducts_linked_item_via_the_compliance_wp function will give a False value (check is valid) when giving a standar workproduct which is linked to at least one of the list of items that have complies tag via the same tag.
+    #     Test if check all_standard_workproducts_linked_item_via_the_compliance_wp
+    #     function will give a False value (check is valid) when giving a standar
+    #     workproduct which is linked to at least one of the list of items that have
+    #     complies tag via the same tag.
     #     """
 
     #     need_1 = NeedsInfoType(
-    #         target_id="Organization-specific rules and processes for functional safety",
+    #         target_id="Organization-specific rules and processes for safety",
     #         id="std_wp__iso26262__wp-2-551",
     #         type="std_wp",
     #         status="valid",
@@ -158,11 +171,14 @@ class TestStandards:
     #     self,
     # ):
     #     """
-    #     Test if check all_standard_workproducts_linked_item_via_the_compliance_wp function will give a True value (check is invalid) when giving a standar workproduct which is not linked to at least one of the list of items that have complies tag via the same tag.
+    #     Test if check all_standard_workproducts_linked_item_via_the_compliance_wp
+    #     function will give a True value (check is invalid) when giving a standar
+    #     workproduct which is not linked to at least one of the list of items that
+    #     have complies tag via the same tag.
     #     """
 
     #     need_1 = NeedsInfoType(
-    #         target_id="Organization-specific rules and processes for functional safety",
+    #         target_id="Organization-specific rules and processes for safety",
     #         id="std_wp__iso26262__wp-2-551",
     #         type="std_wp",
     #         status="valid",
@@ -193,13 +209,17 @@ class TestStandards:
     #     )
 
     #     logger.assert_warning(
-    #         f"Standard workproduct `{need_1['id']}` is not linked to at least one item via the complies tag.",
+    #         f"Standard workproduct `{need_1['id']}` is not linked to at least one "
+    #         f"item via the complies tag.",
     #         expect_location=False,
     #     )
 
     # def test_check_workproduct_uniqueness_over_workflows_positive(self):
     #     """
-    #     Test if check check_workproduct_uniqueness_over_workflows function will give a False value (check is valid) when giving a workproduct which is linked exactly to one workflow least from the list of all workflows via output option.
+    #     Test if check check_workproduct_uniqueness_over_workflows function will give
+    #     a False value (check is valid) when giving a workproduct which is linked
+    #     exactly to one workflow least from the list of all workflows via
+    #     output option.
     #     """
     #     need_1 = NeedsInfoType(
     #         target_id="Module Safety Plan",
@@ -246,7 +266,10 @@ class TestStandards:
     #     self,
     # ):
     #     """
-    #     Test if check check_workproduct_uniqueness_over_workflows function will give a True value (check is invalid) when giving a workproduct which is linked exactly to no workflow from the list of all workflows via output option.
+    #     Test if check check_workproduct_uniqueness_over_workflows function will
+    #     give a True value (check is invalid) when giving a workproduct which is
+    #     linked exactly to no workflow from the list of all workflows via
+    #     output option.
     #     """
 
     #     need_1 = NeedsInfoType(
@@ -299,7 +322,10 @@ class TestStandards:
     #     self,
     # ):
     #     """
-    #     Test if check check_workproduct_uniqueness_over_workflows function will give a True value (check is invalid) when giving a workproduct which is linked exactly to more then one workflow from the list of all workflows via output option.
+    #     Test if check check_workproduct_uniqueness_over_workflows function will
+    #     give a True value (check is invalid) when giving a workproduct which is
+    #     linked exactly to more then one workflow from the list of all workflows
+    #     via output option.
     #     """
 
     #     need_1 = NeedsInfoType(
@@ -368,13 +394,15 @@ class TestStandards:
     #         f"is contained in {2} workflows: {workflows_str}, which is incorrect.",
     #         expect_location=False,
     #     )
-    #                    ╭──────────────────────────────────────────────────────────────────────────────╮
-    #                    │                            END OF TEMP DISABLING                             │
-    #                    ╰──────────────────────────────────────────────────────────────────────────────╯
+    #                    ╭─────────────────────────────────────────────────────────────╮
+    #                    │                            END OF TEMP DISABLING            │
+    #                    ╰─────────────────────────────────────────────────────────────╯
 
     def test_my_pie_linked_standard_requirements(self):
         """
-        Simulate results  for my_pie_linked_standard_requirements function and check if the result parameter after calling this function a special case will give the correct value.
+        Simulate results  for my_pie_linked_standard_requirements function and
+        check if the result parameter after calling this function a special case
+        will give the correct value.
         """
         needs = {}
 
@@ -433,11 +461,13 @@ class TestStandards:
 
     def test_my_pie_linked_standard_workproducts(self):
         """
-        Simulate results  for test_my_pie_linked_standard_workproducts function and check if the result parameter after calling this function with a special case will give the correct value.
+        Simulate results  for test_my_pie_linked_standard_workproducts function
+        and check if the result parameter after calling this function with
+        a special case will give the correct value.
         """
 
         need_1 = NeedsInfoType(
-            target_id="Organization-specific rules and processes for functional safety",
+            target_id="Organization-specific rules and processes for safety",
             id="std_wp__iso26262__wp-2-551",
             type="std_wp",
             status="valid",
@@ -485,7 +515,9 @@ class TestStandards:
 
     def test_my_pie_workproducts_contained_in_exactly_one_workflow(self):
         """
-        Simulate results  for test_my_pie_workproducts_contained_in_exactly_one_workflow function and check if the result parameter after calling this function with a special case will give the correct value.
+        Simulate results  for test_my_pie_workproducts_contained_in_exactly_one_workflow
+        function and check if the result parameter after calling this function with
+        a special case will give the correct value.
         """
 
         need_1 = NeedsInfoType(
@@ -597,9 +629,12 @@ class TestStandards:
         standards.my_pie_workproducts_contained_in_exactly_one_workflow(needs, results)
 
         # Check that results are [1, 1]
-        assert (
-            results == [1, 1, 1]
-        ), f"For function my_pie_workproducts_contained_in_exactly_one_workflow expected [1, 1, 1] but got {
+        assert results == [
+            1,
+            1,
+            1,
+        ], "For function my_pie_workproducts_contained_in_exactly_one_workflow expected"
+        f"[1, 1, 1] but got {
             results
         }"
 
@@ -635,10 +670,11 @@ class TestStandards:
 
     def test_get_standards_workproducts(self):
         """
-        Test if get_standards_workproducts works as expected with a positive and negative test.
+        Test if get_standards_workproducts works as expected with a
+        positive and negative test.
         """
         need_1 = NeedsInfoType(
-            target_id="Organization-specific rules and processes for functional safety",
+            target_id="Organization-specific rules and processes for safety",
             id="std_wp__iso26262__wp-2-551",
             type="std_wp",
             status="valid",
@@ -664,7 +700,8 @@ class TestStandards:
 
     def test_get_compliance_req_needs(self):
         """
-        Test if get_compliance_req_needs works as expected with a positive and negative test.
+        Test if get_compliance_req_needs works as expected with a positive
+        and negative test.
         """
 
         need_1 = NeedsInfoType(
@@ -711,7 +748,8 @@ class TestStandards:
 
     def test_get_compliance_wp_needs(self):
         """
-        Test if get_compliance_wp_needs works as expected with a positive and negative test.
+        Test if get_compliance_wp_needs works as expected with a positive and
+        negative test.
         """
 
         need_1 = NeedsInfoType(

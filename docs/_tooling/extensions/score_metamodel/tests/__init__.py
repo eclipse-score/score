@@ -13,8 +13,6 @@
 from unittest.mock import MagicMock
 
 import pytest
-
-from sphinx.application import Sphinx
 from sphinx.util.logging import SphinxLoggerAdapter
 
 from docs._tooling.extensions.score_metamodel import CheckLogger, NeedsInfoType
@@ -39,10 +37,12 @@ def fake_check_logger():
 
         def assert_warning(self, expected_substring: str, expect_location=True):
             """
-            Assert that the logger was called exactly once with a message containing a specific substring.
+            Assert that the logger was called exactly once with a message containing
+            a specific substring.
 
             This also verifies that the defaults from need() are used correctly.
-            So you must use need() to create the need object that is passed to the checks.
+            So you must use need() to create the need object that is passed
+            to the checks.
             """
             self._mock_logger.warning.assert_called_once()
 
