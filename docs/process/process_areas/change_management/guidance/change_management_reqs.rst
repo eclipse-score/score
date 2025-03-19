@@ -89,10 +89,10 @@ Change Request Attributes
       * Yes
       * No
 
-.. gd_req:: Change Request: Types
-   :id: gd_req__change__types
+.. gd_req:: Change Request attribute: Types
+   :id: gd_req__change__attr_types
    :status: valid
-   :tags: structure
+   :tags: attribute, mandatory
    :satisfies: wf__change__cr_an_change_request, wf__change__rv_ap_change_request
    :complies: std_req__aspice_40__SUP-10-BP1
 

@@ -130,7 +130,7 @@ description.
 :need:`[[title]] <gd_req__change__attr_impact_security>` is defined in the linked PR or part of the
 description.
 
-:need:`[[title]] <gd_req__change__types>` is defined by label of a ISSUE and part of the
+:need:`[[title]] <gd_req__change__attr_types>` is defined by label of a ISSUE and part of the
 description.
 
 :need:`[[title]] <gd_req__change__attr_affected_wp>` is defined in the linked PR or part of the
