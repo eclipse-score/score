@@ -33,7 +33,7 @@ sphinx_requirements = all_requirements + [
 # - `docs:docs` for building documentation at build-time
 docs(source_files_to_scan_for_needs_links = [
     # Note: you can add filegroups, globs, or entire targets here.
-    ":score_metamodel",
+    ":score_metamodel_files",
     ":score_source_code_linker",
 ])
 
@@ -66,6 +66,13 @@ compile_pip_requirements(
     tags = [
         "manual",
     ],
+)
+
+# Enables source_code_linker to parse all file types, not just .py
+filegroup(
+    name="score_metamodel_files",
+    srcs = glob(["_tooling/extensions/score_metamodel/**"], exclude=["**/__pycache__/**"]),
+    visibility = ["//visibility:public"],
 )
 
 # Used inside //docs.bzl to enable access to the assets (css files etc.)
