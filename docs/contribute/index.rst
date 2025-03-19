@@ -49,4 +49,4 @@ to the Project Lead Circle.
    documentation/index
    development/index
    ci/index
-
+   knowledge_base/index
