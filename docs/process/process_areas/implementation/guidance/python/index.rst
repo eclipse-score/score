@@ -12,16 +12,10 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Guidance
-########
+Python
+######
 
 .. toctree::
    :maxdepth: 1
 
-   implementation_guideline
-   cpp/index
-   python/index
-   implementation_checklist
-   detailed_design_template
-   implementation_process_reqs
-   software_development_template
+   coding_guidelines
