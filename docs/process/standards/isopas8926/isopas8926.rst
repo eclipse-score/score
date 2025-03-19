@@ -192,3 +192,6 @@ ISO PAS 8926
    Requirements and work products numbering as above is derived by the sequence as those are defined in the standard document.
 
    A mapping table to ISO PAS 8926 numbering can be provided by SCORE project on request for every holder of a ISO PAS 8926 standard license.
+
+.. needextend:: "standards/isopas8926" in docname
+   :+tags: isopas8926

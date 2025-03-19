@@ -490,3 +490,6 @@ Clause 15: Threat analysis and risk assessment methods
    but the related requirements are not included as these are not needed to be covered.
 
    A mapping table to ISO 21434 numbering can be provided by S-CORE project on request for every holder of a ISO/SAE 21434 standard license.
+
+.. needextend:: "standards/isosae21434" in docname
+   :+tags: isosae21434

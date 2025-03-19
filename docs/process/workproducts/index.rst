@@ -206,3 +206,13 @@ Supporting activities
 
 
 Note: All the work products are set to status "draft", as the linkage to standard requirements is missing currently on purpose, namely to those of ISO 26262.
+
+
+SCORE Workproduct Linkage
+-------------------------
+
+.. needpie:: SCORE workproducts contained in exactly one SCORE workflow
+   :labels: Not-Linked, Linked Workproduct, Linked Workproduct To Multiple Workflows
+   :legend:
+   :colors: red, green, blue
+   :filter-func: score_metamodel.checks.standards.my_pie_workproducts_contained_in_exactly_one_workflow

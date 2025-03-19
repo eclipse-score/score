@@ -449,7 +449,7 @@ class TestStandards:
         results = []
 
         # Call the function
-        standards.my_pie_linked_standard_requirements(needs, results)
+        standards.my_pie_linked_standard_requirements(needs, results, arg1="iso26262")
 
         # Check that results are [1, 1]
         assert results == [
@@ -503,7 +503,7 @@ class TestStandards:
         results = []
 
         # Call the function
-        standards.my_pie_linked_standard_workproducts(needs, results)
+        standards.my_pie_linked_standard_workproducts(needs, results, arg1="iso26262")
 
         # Check that results are [1, 1]
         assert results == [
@@ -655,9 +655,9 @@ class TestStandards:
         need_2 = NeedsInfoType(
             target_id="Traceability of requirements",
             id="wp__11111111",
-            type="workproduct",
             reqtype="Functional",
             status="valid",
+            type="std_wp",
             docname=None,
             lineno=None,
         )
@@ -685,9 +685,9 @@ class TestStandards:
         need_2 = NeedsInfoType(
             target_id="Traceability of requirements",
             id="wp__11111111",
-            type="workproduct",
             reqtype="Functional",
             status="valid",
+            type="std_req",
             docname=None,
             lineno=None,
         )
