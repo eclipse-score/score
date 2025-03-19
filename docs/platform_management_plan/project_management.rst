@@ -139,7 +139,7 @@ is the integration repository, where everything comes together. It contains:
 * integration rules for software modules.
 
 The main repository references multiple other repositories, mostly repositories, where
-software modules or toolchains are defined. This results in the following :ref:`Folder Structure of Platform Repository <Platform_Folder_Structure>`. Every software module has its own repository, that contains multiple components, their requirements, architecture, implementation and tests.
+software modules or toolchains are defined. This results in the following :ref:`Folder Structure of Platform Repository <platform_folder_structure>`. Every software module has its own repository, that contains multiple components, their requirements, architecture, implementation and tests.
 A software module and its repository can be part of the main S-CORE *Eclipse Project* and corresponding *GitHub organization* or can be moved to a standalone *Eclipse child project*, if necessary.
 
   .. image:: _assets/project_organization.svg
