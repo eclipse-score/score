@@ -12,18 +12,16 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Process Areas
-#############
+Work Products Problem Resolution
+################################
 
-.. toctree::
-   :maxdepth: 1
-   :glob:
+.. workproduct:: Platform Problem Resolution Plan
+   :id: wp__prm_plan
+   :status: valid
+   :tags: problem_resolution
+   :complies: std_wp__iso26262__support_7
 
-   architecture_design/index.rst
-   change_management/index.rst
-   documentation_management/index.rst
-   implementation/index.rst
-   problem_resolution/index.rst
-   requirements_engineering/index.rst
-   safety_management/index.rst
-   verification/index.rst
+   Problem Resolution Plan (Part of the Platform Management Plan)
+
+.. needextend:: "docs/process/problem_resolution" in docname
+   :+tags: problem_resolution

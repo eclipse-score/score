@@ -12,18 +12,18 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Process Areas
-#############
+.. _problem_resolution:
+
+Problem Resolution
+##################
 
 .. toctree::
    :maxdepth: 1
-   :glob:
 
-   architecture_design/index.rst
-   change_management/index.rst
-   documentation_management/index.rst
-   implementation/index.rst
-   problem_resolution/index.rst
-   requirements_engineering/index.rst
-   safety_management/index.rst
-   verification/index.rst
+
+   problem_resolution_getstrt
+   problem_resolution_concept
+   guidance/index
+   problem_resolution_roles
+   problem_resolution_workflow
+   problem_resolution_workproducts
