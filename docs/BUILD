@@ -70,8 +70,11 @@ compile_pip_requirements(
 
 # Enables source_code_linker to parse all file types, not just .py
 filegroup(
-    name="score_metamodel_files",
-    srcs = glob(["_tooling/extensions/score_metamodel/**"], exclude=["**/__pycache__/**"]),
+    name = "score_metamodel_files",
+    srcs = glob(
+        ["_tooling/extensions/score_metamodel/**"],
+        exclude = ["**/__pycache__/**"],
+    ),
     visibility = ["//visibility:public"],
 )
 
