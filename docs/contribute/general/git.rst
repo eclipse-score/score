@@ -49,7 +49,26 @@ So this file must at least include the following lines:
 ***************
 
 Before merging a PR all commits shall be squashed into few (desired only
-one) logical commits.
+one) logical commits. This is done following the rules below.
+
+Use ``Squash & Merge`` in case:
+
+   #. there is one initial commit + n "fix findings" commits
+
+      **AND**
+   #. all commits by the same author.
+
+Use ``Rebase & Merge`` or ``Merge Commit`` in case:
+
+   #. the commits address different topics
+      (sort by topics and combine each topic to a single commit)
+
+      **OR**
+   #. the commits have different authors
+
+      **OR**
+   #. any other reason to keep the separate commits.
+
 
 .. note::
 
