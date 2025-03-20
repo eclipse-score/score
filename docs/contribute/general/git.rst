@@ -53,7 +53,9 @@ one) logical commits. This is done following the rules below.
 
 Use ``Squash & Merge`` in case:
 
-   #. there is one initial commit + n "fix findings" commits
+   #. there are multiple commits on top of the initial commit
+
+      - Reasons for multiple commits are fixing of review findings or work in progress PRs.
 
       **AND**
    #. all commits by the same author.
@@ -61,14 +63,17 @@ Use ``Squash & Merge`` in case:
 Use ``Rebase & Merge`` or ``Merge Commit`` in case:
 
    #. the commits address different topics
-      (sort by topics and combine each topic to a single commit)
+
+      - Sort by topics and combine each topic to a single commit.
+      - It is advised that a PR addresses a single/atomic topic.
+      - Preferred way are separated PRs for separate topics.
 
       **OR**
    #. the commits have different authors
 
-      **OR**
-   #. any other reason to keep the separate commits.
-
+      - It is preferred to squash the commits, in case all authors agree to squash.
+      - ``Co-authored-by: x y <x.y@z.com>`` can be a good option to show appreciation to co-authors.
+      - Reasons to not squash a commit of multiple authors may be liability or IP concerns.
 
 .. note::
 
