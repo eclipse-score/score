@@ -24,7 +24,7 @@ This is required, to separate the frontend from the underlying communication mec
 This ensures a stable public API, independent of the underlying binding(s).
 At the same time, the communication framework can support many different communication protocols in a flexible manner.
 
-.. image:: _assets/architecture/lola_layers.drawio.svg
+.. image:: _assets/lola_layers.drawio.svg
    :alt: Layered architecture with binding-agnostic mw::com and bindings beneath
 
 In the following sections we will look on the different architectural elements of the communication framework in more
@@ -150,7 +150,7 @@ In order to cope with the latter, we split up the shared memory into three segme
   This way it can be ensured that no low-level ASIL process interferes with higher level ones.
   More information on shared memory handling can be found in :ref:`shared_memory_handling`.
 
-.. image:: _assets/architecture/lola_mixed_crit_1_n.drawio.svg
+.. image:: _assets/lola_mixed_crit_1_n.drawio.svg
    :alt: Mixed criticality setup for zero-copy IPC
 
 One of the main ideas in this concept is the split of control data from sample (user) data.
@@ -159,7 +159,7 @@ By convention, we then define that the slot indexes correlate.
 Meaning, slot 0 in the control data is used to synchronize slot 0 in the sample data.
 More information on these slot and the underlying algorithm can be found in :ref:`synchronization_algorithm`.
 
-.. image:: _assets/architecture/lola_slots.drawio.svg
+.. image:: _assets/lola_slots.drawio.svg
    :alt: Relation of control data and sample data
 
 .. _message_passing_facilities:
@@ -192,7 +192,7 @@ Further, it must be possible to register callbacks for mentioned messages.
 These callbacks shall then be invoked in the context of the socket specific thread.
 This way we can ensure that messages are received in a serialized manner.
 
-.. image:: _assets/architecture/lola_message_passing.drawio.svg
+.. image:: _assets/lola_message_passing.drawio.svg
    :alt: Message Passing in LoLa
 
 .. _shared_memory_handling:
@@ -374,7 +374,7 @@ Static Architecture
    :fulfils: feat_req__ipc__data_loss, feat_req__ipc__time_based_arch, feat_req__ipc__data_driven_arch, feat_req__ipc__request_driven_arch, feat_req__ipc__event_type, feat_req__ipc__method, feat_req__ipc__signal, feat_req__ipc__producer_consumer, feat_req__ipc__service_instance, feat_req__ipc__service_instance_names, feat_req__ipc__versioning, feat_req__ipc__service_location_transparency, feat_req__ipc__stateless_communication, feat_req__ipc__service_instance_granularity, feat_req__ipc__service_discovery, feat_req__ipc__safe_communication, feat_req__ipc__data_corruption, feat_req__ipc__data_reordering, feat_req__ipc__data_repetition, feat_req__ipc__data_loss, feat_req__ipc__asil
    :includes: feat_arc_int__communication__ipc
 
-   .. uml:: _assets/architecture/stat_arch_lola.puml
+   .. uml:: _assets/stat_arch_lola.puml
       :scale: 50
       :align: center
 
@@ -388,7 +388,7 @@ Dynamic Architecture
    :safety: ASIL_B
    :fulfils: feat_req__ipc__depl_config_runtime
 
-   .. uml:: _assets/architecture/dyn_arch_lola.puml
+   .. uml:: _assets/dyn_arch_lola.puml
       :scale: 50
       :align: center
 
