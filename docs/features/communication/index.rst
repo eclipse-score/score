@@ -16,5 +16,8 @@ Communication
 #############
 
 .. toctree::
+   :maxdepth: 1
+   :glob:
+   :titlesonly:
 
-   ipc/index.rst
+   */index

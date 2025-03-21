@@ -15,7 +15,7 @@
 .. _ipc_feature:
 
 Inter-process Communication
-===========================
+###########################
 
 .. document:: Inter-process Communication
    :id: doc__ipc
@@ -27,9 +27,9 @@ Inter-process Communication
 .. toctree::
    :hidden:
 
-   architecture.rst
-   roadmap.rst
+   architecture/index.rst
    requirements/index.rst
+   roadmap.rst
 
 
 Feature flag
