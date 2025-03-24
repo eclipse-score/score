@@ -29,8 +29,8 @@ Roadmap is a living document.
 Overview
 --------
 
-.. image:: _assets/score_v_05.svg
-   :width: 900
+.. image:: _assets/architecture.drawio.svg
+   :width: 1000
    :alt: Infrastructure overview
    :align: center
 
