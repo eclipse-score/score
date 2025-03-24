@@ -15,12 +15,9 @@
 Code Analysis C++
 #################
 
-.. gd_guidl:: Static Code Analysis
-   :id: gd_guidl__cpp__code_analysis
+.. document:: Static Code Analysis C++
+   :id: doc__cpp__code_analysis
    :status: valid
-   :complies: std_req__iso26262__software_1, std_req__iso26262__software_2, std_req__iso26262__software_3, std_req__iso26262__software_31
-
-   Guideline for Static Code Analysis
 
 Static Code Analysis
 ====================

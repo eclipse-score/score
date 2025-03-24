@@ -15,10 +15,9 @@
 Writing C++ Code
 ################
 
-.. gd_guidl:: Coding Guidelines CPP
-   :id: gd_guidl__cpp_coding_guidelines
+.. document:: Coding Guidelines C++
+   :id: doc__cpp_coding_guidelines
    :status: valid
-   :complies: std_req__iso26262__software_1, std_req__iso26262__software_2, std_req__iso26262__software_3
 
 Coding Guidelines
 =================

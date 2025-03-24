@@ -15,8 +15,8 @@
 Writing Python Code
 ###################
 
-.. gd_guidl:: Coding Guidelines Python
-   :id: gd_guidl__python_coding_guidelines
+.. document:: Coding Guidelines Python
+   :id: doc__python_coding_guidelines
    :status: valid
 
 Coding Guidelines
@@ -80,10 +80,3 @@ The configuration is managed by infrastructure and process communities.
 *Compliance to all tools is mandatory.*
 
 Currently we do NOT aim at supporting older Python versions.
-
-Templates, Checklists and other guidelines
-------------------------------------------------
-
-While the S-CORE templates and checklists are far from useless, and should be adhered to in
-general, they are not necessary for Python Code. The same goes for the ISO26262 guidelines: while
-they are important and should be followed in general, they are not applicable to Python Code.

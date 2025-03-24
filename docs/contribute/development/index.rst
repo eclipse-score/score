@@ -19,4 +19,5 @@ Development
    :maxdepth: 1
 
    development_environment
-
+   cpp/index
+   python/index
