@@ -11,11 +11,12 @@
    #
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
+
 Tracing
 #######
 
-.. document:: Tracing
-   :id: DOC__Your_Feature_Name
+.. document:: doc__tracing
+   :id: doc__tracing
    :status: draft
    :safety: ASIL_D
    :tags: contribution_request, feature_request
@@ -74,11 +75,6 @@ Specification
 
 [Describe the requirements, architecture of any new feature.] or
 [Describe the change to requirements, architecture, implementation, process, documentation, infrastructure of any change request.]
-
-   .. note::
-      A Feature Request shall specify the stakeholder requirements as part of our platform/project.
-      Thereby the :need:`RL_technical_lead` will approve these requirements as part of accepting the Feature Request (e.g. merging the PR with the Feature Request).
-
 
 Backwards Compatibility
 =======================
