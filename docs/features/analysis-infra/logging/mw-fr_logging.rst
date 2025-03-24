@@ -15,8 +15,8 @@
 Logging
 #######
 
-.. document:: Logging
-   :id: DOC_Logging
+.. document:: doc__logging
+   :id: doc__logging
    :status: draft
    :safety: ASIL_B
    :tags: feature_request
@@ -32,7 +32,7 @@ To activate this feature, use the following feature flag:
 Abstract
 ========
 
-This feature request proposes the development of a safe, efficient and robust logging framework for embedded systems.
+This feature request proposes the development of a safe, efficient and robust logging framework within S-CORE.
 
 
 Motivation
@@ -51,10 +51,6 @@ Specification
 
 [Describe the requirements, architecture of any new feature.] [or]
 [Describe the change to requirements, architecture, implementation, process, documentation, infrastructure of any change request.]
-
-   .. note::
-      A Feature Request shall specify the stakeholder requirements as part of our platform/project.
-      Thereby the :need:`RL_technical_lead` will approve these requirements as part of accepting the Feature Request (e.g. merging the PR with the Feature Request).
 
 Functionality
 -------------
@@ -82,6 +78,11 @@ Logging has to support the following features:
 - message loss detection
 
   - optional functionality for logging. Important for tracing.
+  - Message loss detection
+
+    - The logging framework must detect and report any message loss.
+    - It should provide mechanisms to handle message loss gracefully, such as buffering or prioritizing critical messages.
+    - The log consumer must be informed about any message loss to ensure the trustworthiness of the logs.
   - would become mandatory in case verification is done via logging feature (not recommended)
 
 - Context specific log level activation at runtime
@@ -147,7 +148,11 @@ Resource consumption
 
 Norms/Standards
 ---------------
+The logging framework should be compatible with the Diagnostic Log and Trace (DLT) protocol. This includes:
 
+- Support for DLT message format
+- Ability to send and receive DLT messages
+- Integration with existing DLT tools and infrastructure
 
 Backwards Compatibility
 =======================
