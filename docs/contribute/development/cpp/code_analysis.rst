@@ -15,18 +15,15 @@
 Code Analysis C++
 #################
 
-.. gd_guidl:: Static Code Analysis
-   :id: gd_guidl__cpp__code_analysis
+.. document:: Static Code Analysis C++
+   :id: doc__cpp__code_analysis
    :status: valid
-   :complies: std_req__iso26262__software_1, std_req__iso26262__software_2, std_req__iso26262__software_3, std_req__iso26262__software_31
-
-   Guideline for Static Code Analysis
 
 Static Code Analysis
 ====================
-In order to fulfil the SCORE related standard requirements a concept for *Static Code Analysis* needs to be established. Input for the analysis is based upon *MISRA* and *ISO26262* standards in accordance to the :need:`gd_guidl__cpp_coding_guidelines`.
+In order to fulfil the SCORE related standard requirements a concept for *Static Code Analysis* needs to be established. Input for the analysis is based upon *MISRA* and *ISO26262* standards in accordance to the :need:`doc__cpp_coding_guidelines`.
 
-Checking those rules can partially be automated and implemented by a combination of different tools. Thus a mapping needs to be established which provides a linkage of all *MISRA* requirements to the respective tool requirements/rules. For *MISRA C++:2023* this mapping is established: :need:`here <gd_guidl__cpp__misra2023_rule_mapping>`
+Checking those rules can partially be automated and implemented by a combination of different tools. Thus a mapping needs to be established which provides a linkage of all *MISRA* requirements to the respective tool requirements/rules. For *MISRA C++:2023* this mapping is established: :need:`here <doc__cpp__misra2023_rule_mapping>`
 
 .. needuml::
 

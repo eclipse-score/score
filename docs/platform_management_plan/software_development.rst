@@ -69,7 +69,7 @@ The design guideline is defined in :need:`doc_concept__imp__concept` and :need:`
 Coding guideline
 ^^^^^^^^^^^^^^^^
 
-**C++** - see :need:`gd_guidl__cpp_coding_guidelines`
+**C++** - see :need:`doc__cpp_coding_guidelines`
 
 **Rust** - state of the art open source Rust guidelines are currently developed by `Safety Critical Rust Consortium <https://github.com/rustfoundation/safety-critical-rust-consortium/>`_
 (which will be adopted by the S-CORE project)

@@ -12,14 +12,17 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Guidance
-########
+MISRA C++:2023 Rule Mapping
+###########################
 
-.. toctree::
-   :maxdepth: 1
+.. document:: MISRA C++:2023 Rule Mapping
+   :id: doc__cpp__misra2023_rule_mapping
+   :status: draft
 
-   implementation_guideline
-   implementation_checklist
-   detailed_design_template
-   implementation_process_reqs
-   software_development_template
+..
+    .. csv-table:: MISRA C++:2023 Rule Mapping
+    :name: misra_2023_rule_mapping
+    :file: _assets/misra_2023.csv
+    :widths: 5, 5, 30, 30, 30
+    :header-rows: 1
+    :delim: ;

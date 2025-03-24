@@ -33,7 +33,7 @@ Detailed description which steps are need for implementation.
    In this step, the components are broken down into smaller, independent units that can be tested
    separately during the unit testing phase. The detailed design shall be so exact, that test and
    implementation can be run simultaneously.
-#. Implement the source code, by using the coding guidelines :need:`gd_guidl__cpp_coding_guidelines` for C++,
+#. Implement the source code, by using the coding guidelines :need:`doc__cpp_coding_guidelines` for C++,
    or <TBD> for Rust.
 #. Create a pull request for your change.
 #. Detail Design and Code Inspection is done to review the code of the software and detect errors in it.
