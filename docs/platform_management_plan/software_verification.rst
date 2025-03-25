@@ -367,28 +367,24 @@ document:
 
 In this way roles are followed as defined in :ref:`verification_roles`.
 
-Independence of verification team
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Independence of verification
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-As there are common role for software developer and test developer with :need:`rl__contributor` and
-:need:`rl__committer` it is important to show independence. This is achieved by having different
+As there are no separated roles for a software developer and test developer with :need:`rl__contributor` and
+:need:`rl__committer` it is important to achieve independence. This is done by having different
 people responsible for the test implementation and the actual code which gets tested.
 
-Any test from :need:`wp__verification__comp_int_test` and above is in responsibility of the verification
-team. Note that a developer of one function can be a verification engineer for another function.
-Independence is achieved by a 4 eyes principle for test case creation and software development.
+Any test from :need:`wp__verification__comp_int_test` and above is in responsibility of the testing
+community. Still developing one function doesn't prevent a developer from writing tests for other functions they do not own.
+Independence is achieved by the establishment of testing community and their responsibilities ``[TODO: add link once #777 is closed]``.
 
 An exception is the development of unit tests as described in :need:`wp__verification__sw_unit_test`
 where the developer can be the same person as the test case creator. A level of independence is
 achieved as the review process demands to have a review by another person than the author of a
-Pull Request. This is also described in tool requirement :need:`gd_req__verification_independence`.
+Pull Request. This is also described in process requirement :need:`gd_req__verification_independence`.
 
-It should be further stated that the testing team is placed as other teams and working groups in the
-same project setup structure. This means there is no management independence in the project achieved,
-but as there is no bounding or authority to give directives by others, each contributor can act as
-individual.
 
-Additionally, each contributor and committer of the project acts in a publicly visible space where
+Note that, each contributor and committer of the project acts in a publicly visible space where
 also others see the contribution and have the possibility to perform additional independent reviews.
 
 Tools
