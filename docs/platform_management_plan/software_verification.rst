@@ -105,20 +105,25 @@ The following types of integrations are applicable:
 Levels of integration and verification
 --------------------------------------
 
-There are the following different levels of integration (2, 3) and verification (1, 2, 3) defined:
+There are the following different levels of integration and verification defined:
 
-1. Software unit verification to verify software detailed design
-2. Software component verification to verify the integration of units to a component and also
-   the integration of smaller component(s) to a component based on
+1. Software unit (incl. detailed design) and component verification to verify the integration of
+   units to a component and also the integration of smaller component(s) to a complex component based on
 
+   #. detailed design and
    #. component architecture and
    #. component requirements
 
-3. Software feature verification to verify the integration of components to a feature based on
+2. Software feature verification to verify the integration of components to a feature based on
 
    #. feature architecture and
    #. feature requirements
 
+3. Platform testing (on reference hardware)
+
+   #. Stakeholder requirements
+
+These three levels translate to the levels of ISO 26262 part 6 clauses 9 to 11.
 
 Verification Methods
 --------------------
@@ -141,53 +146,54 @@ method is to be used as meta data (*TestType* and *DerivationTechnique*).
      - Identifier
      - Applicable on level
      - Applicable for QM / ASIL B
-   * - Control Flow Analysis
-     - control-flow-analysis
-     - 1, 2, -
-     - QM & ASIL B
-   * - Data Flow Analysis
-     - data-flow-analysis
-     - 1, 2, -
-     - QM & ASIL B
-   * - Fault Injection
-     - fault-injection
-     - 1, -, -
-     - ASIL B
-   * - Inspection
-     - inspection
-     - 1, -, -
-     - ASIL B
-   * - Interface Test
-     - interface-test
-     - -, 2, 3
-     - QM & ASIL B
-   * - Requirements-based Test
-     - requirements-based
-     - -,  2, 3
-     - QM & ASIL B
-   * - Resource Usage Evaluation (only on reference environment)
-     - resource-usage
-     - -, -, 3
-     - QM & ASIL B
    * - Static Code Analysis
      - static-code-analysis
-     - 1, 2, 3
+     - 1, 2, -
      - QM & ASIL B
    * - Structural Statement Coverage (Code coverage)
      - structural-statement-coverage
      - 1, -, -
      - ASIL B
-   * - Structural Branch Coverage (Code coverage)
-     - structural-branch-coverage
+   * - Structural Condition Coverage (Code coverage)
+     - structural-condition-coverage
      - 1, -, -
      - ASIL B
    * - Walkthrough
      - walkthrough
      - 1, 2, 3
      - QM
+   * - Inspection
+     - inspection
+     - 1, 2, -
+     - ASIL B
+   * - Interface Test
+     - interface-test
+     - 1, 2, -
+     - QM & ASIL B
+   * - Requirements-based Test
+     - requirements-based
+     - 1,  2, 3
+     - QM & ASIL B
+   * - Resource Usage Evaluation (only on reference environment)
+     - resource-usage
+     - -, 2, 3
+     - QM & ASIL B
+   * - **Optional:** Control Flow Analysis
+     - control-flow-analysis
+     - 1, 2, -
+     - ASIL B
+   * - **Optional**: Data Flow Analysis
+     - data-flow-analysis
+     - 1, 2, -
+     - ASIL B
+   * - **Optional**: Fault Injection
+     - fault-injection
+     - 1, -, -
+     - ASIL B
 
 For QM software some of the methods may be executed with less rigor compared to safety-critical elements.
-These are data-flow-analysis as well as control-flow-analysis
+These may be interface testing or resource usage evaluation, in case there is an argument for
+sufficient freedom from interference with safety critical software parts.
 
 Static code analysis is part of the :need:`wp__sw_implementation`.
 
@@ -202,29 +208,29 @@ Test Derivation Methods
      - Identifier
      - Applicable on level
      - Applicable for QM / ASIL B
-   * - Analysis of Boundary Values
-     - boundary-values
-     - 1, 2, 3
-     - QM, ASIL B
-   * - Analysis of Equivalence Classes
-     - equivalence-classes
-     - 2, 3
-     - QM, ASIL B
    * - Analysis of Requirements
      - requirements-analysis
-     - 2, 3
+     - 1, 2, 3
      - QM, ASIL B
-   * - Error Guessing based on Knowledge or Experience
+   * - Analysis of Boundary Values
+     - boundary-values
+     - 1, 2, -
+     - ASIL B
+   * - Analysis of Equivalence Classes
+     - equivalence-classes
+     - 1, 2, 3
+     - ASIL B
+   * - Optional: Error Guessing based on Knowledge or Experience
      - error-guessing
-     - 2, 3
+     - 1, 2, 3
      - QM, ASIL B
-   * - Random Testing
-     - monkey-testing
-     - 3
-     - QM, ASIL B
-   * - Exlporative Testing
+   * - Optional: Explorative Testing (based on operational use cases)
      - explorative-testing
-     - 2, 3
+     - -, 2, 3
+     - QM, ASIL B
+   * - Fuzzy Testing
+     - fuzz-testing
+     - 1, 2, -
      - QM, ASIL B
 
 For non-safety-critical(QM) software parts, you can generally reduce the rigor of the
