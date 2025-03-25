@@ -54,7 +54,7 @@ Test Linking to Requirements
         * Analysis of equivalence classes (equivalence-classes)
         * Error guessing based on knowledge or experience (error-guessing)
         * Random testing (monkey-testing)
-        * Exlporative testing (explorative-testing)
+        * Explorative testing (explorative-testing)
 
     More information can be found in the :need:`gd_guidl__verification_guide`, :need:`doc_concept__verification__process`,
     and :need:`gd_guidl__verification_specification`.

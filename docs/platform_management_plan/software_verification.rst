@@ -222,7 +222,7 @@ Test Derivation Methods
      - monkey-testing
      - 3
      - QM, ASIL B
-   * - Exlporative Testing
+   * - Explorative Testing
      - explorative-testing
      - 2, 3
      - QM, ASIL B
