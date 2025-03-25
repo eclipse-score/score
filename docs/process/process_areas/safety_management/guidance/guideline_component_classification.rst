@@ -18,7 +18,7 @@ Component Classification Guideline
 .. gd_guidl:: Classification of a component
    :id: gd_guidl__component_classification
    :status: valid
-   :complies: std_req__isopas8926__1, std_req__isopas8926__2, std_req__isopas8926__3, std_req__isopas8926__4, std_req__isopas8926__5, std_req__isopas8926__6, std_req__isopas8926__7, std_req__isopas8926__8, std_req__isopas8926__9, std_req__isopas8926__10, std_req__isopas8926__11
+   :complies: std_req__isopas8926__441, std_req__isopas8926__4421, std_req__isopas8926__4422, std_req__isopas8926__4423, std_req__isopas8926__4424, std_req__isopas8926__4425, std_req__isopas8926__4426, std_req__isopas8926__4427, std_req__isopas8926__4428, std_req__isopas8926__4429, std_req__isopas8926__44210
 
 Purpose
 -------

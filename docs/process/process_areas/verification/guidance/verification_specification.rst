@@ -18,7 +18,7 @@ Test Specification Guideline
 .. gd_guidl:: Test Specification Guideline
    :id: gd_guidl__verification_specification
    :status: valid
-   :complies: std_wp__iso26262__support_12
+   :complies: std_wp__iso26262__support_952
 
 Test specification
 ------------------

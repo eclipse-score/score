@@ -35,27 +35,31 @@ General
    :id: wp__policies
    :status: draft
    :tags: requirements_management
+   :complies: std_wp__iso26262__management_551
 
-   Organization-specific rules and processes for functional safety and cybersecurity.
+   Policies for functional safety and cybersecurity.
 
 .. workproduct:: Training path
    :id: wp__training_path
    :status: draft
    :tags: safety
+   :complies: std_wp__iso26262__management_552
 
-   Evidence of competence management.
+   Trainings for safety and security for S-CORE
 
-.. workproduct:: Quality management system
+.. workproduct:: Quality management plan
    :id: wp__qms
    :status: draft
    :tags: safety
+   :complies: std_wp__iso26262__management_553
 
-   Evidence of quality management.
+   Quality management process descriptions and definitions
 
 .. workproduct:: Quality report
    :id: wp__qms_report
    :status: draft
    :tags: safety
+   :complies: std_wp__iso26262__management_553
 
    | Evidence of quality conformance:
    | * Identifies what tasks/activities/process produce the information
@@ -67,7 +71,7 @@ General
 .. workproduct:: Platform Management Plan
    :id: wp__platform_mgmt
    :status: valid
-   :complies: std_wp__iso26262__support_6, std_wp__iso26262__support_7, std_wp__iso26262__support_14, std_wp__iso26262__support_15
+   :complies: std_wp__iso26262__support_751, std_wp__iso26262__support_851, std_wp__iso26262__support_1051, std_wp__iso26262__support_1052
 
    The Platform Management Plan shall include the Project Management Plan, Configuration Management Plan, Change Management Plan, Documentation Management Plan and Problem Resolution Plan.
    Plan to ensure that all work products can be uniquely identified and reproduced in a controlled manner at any time.
@@ -108,10 +112,11 @@ Product development
 Platform development
 ^^^^^^^^^^^^^^^^^^^^
 
-.. workproduct:: Feature Safety Analyses
-   :id: wp__feature_safety_analyses
+.. workproduct:: Feature Safety Analysis
+   :id: wp__feature_safety_analysis
    :status: draft
    :tags: safety
+   :complies: std_wp__iso26262__analysis_851, std_wp__iso26262__software_752
 
    Bottom-Up Safety Analysis with e.g. FMEA method, verifies the feature architecture (as part of SW Safety Concept)
    - Detection and prevention mitigations linked to Software Feature Requirements or Assumptions of Use
@@ -120,6 +125,7 @@ Platform development
    :id: wp__feature_dfa
    :status: draft
    :tags: safety
+   :complies: std_wp__iso26262__analysis_751, std_wp__iso26262__software_753
 
    Dependent Failure Analysis on platform/feature level
    - Detection and prevention mitigations linked to Software Feature Requirements or Assumptions of Use
@@ -129,6 +135,7 @@ Platform development
    :id: wp__platform_sw_build_config
    :status: draft
    :tags: safety
+   :complies: std_wp__iso26262__software_1052
 
    Build configuration capable to create the SEooC Library for the reference HW, platform level.
    Note: Embedded software in the sense of the Iso (i.e. deployed on the production HW) is not part of our delivery.
@@ -137,25 +144,28 @@ Platform development
    :id: wp__platform_sw_release_note
    :status: draft
    :tags: safety_management
+   :complies: std_wp__iso26262__management_656
 
    Release notes describe the qualified SW version including known bugs from own testing and field reporting, with clear statement, that these bugs do not lead to violation of any safety requirements or with corresponding workaround measures. Platform level.
+
+.. workproduct:: Hardware-software interface document
+   :id: wp__hsi
+   :status: draft
+   :tags: safety
+   :complies: std_wp__iso26262__software_652
+
+   | The document shall specify the hardware and software interaction and be consistent with the safety concept.
+   | It shall include the platform's hardware parts that are controlled by software and hardware resources that support the execution of the software.
 
 
 Component development
 ^^^^^^^^^^^^^^^^^^^^^
 
-.. workproduct:: Hardware-software interface (HSI) specification
-   :id: wp__hsi
+.. workproduct:: Component Safety Analysis
+   :id: wp__sw_component_safety_analysis
    :status: draft
    :tags: safety
-
-   | The HSI specification shall specify the hardware and software interaction and be consistent with the technical safety concept.
-   | The HSI specification shall include the component's hardware parts that are controlled by software and hardware resources that support the execution of the software.
-
-.. workproduct:: Component Safety Analyses
-   :id: wp__sw_component_safety_analyses
-   :status: draft
-   :tags: safety
+   :complies: std_wp__iso26262__analysis_851, std_wp__iso26262__software_752
 
    Bottom-Up Safety Analysis with e.g. FMEA method, verifies the component architecture (as part of SW Safety Concept)
    - Detection and prevention mitigations linked to Software Component Requirements or Assumptions of Use
@@ -164,6 +174,7 @@ Component development
    :id: wp__sw_component_dfa
    :status: draft
    :tags: safety
+   :complies: std_wp__iso26262__analysis_751, std_wp__iso26262__software_753
 
    Dependent Failure Analysis on component/module level
    - Detection and prevention mitigations linked to Software Component Requirements or Assumptions of Use
@@ -173,7 +184,7 @@ Component development
 .. workproduct:: Architecture Verification
    :id: wp__sw_arch_verification
    :status: draft
-   :complies: std_wp__iso26262__software_8
+   :complies: std_wp__iso26262__software_754
 
    Depends on architecture, FMEA and DFA tooling.
    May include several methods like inspection, modelling ... Which are selected in SW Development Plan.
@@ -182,6 +193,7 @@ Component development
    :id: wp__module_sw_build_config
    :status: draft
    :tags: safety
+   :complies: std_wp__iso26262__software_1052
 
    Build configuration capable to create the SEooC Library for the reference HW, module level.
    Note: Embedded software in the sense of the Iso (i.e. deployed on the production HW) is not part of our delivery.
@@ -190,6 +202,7 @@ Component development
    :id: wp__module_sw_release_note
    :status: draft
    :tags: safety_management
+   :complies: std_wp__iso26262__management_656
 
    Release notes describe the qualified SW version including known bugs from own testing and field reporting, with clear statement, that these bugs do not lead to violation of any safety requirements or with corresponding workaround measures. Module level.
 
@@ -197,15 +210,16 @@ Component development
 Supporting activities
 ---------------------
 
-.. workproduct:: Software tool criteria evaluation report
-   :id: wp__tool_eval
+.. workproduct:: Tool Verification Report
+   :id: wp__tool_verification
    :status: draft
-   :tags: process, safety
+   :tags: process, safety, security
+   :complies: std_wp__iso26262__support_1151, std_wp__iso26262__support_1152
 
-   According to the tool evaluation process, each tool's confidence level (TCL) must be determined. Based on TCL the appropriate qualification methods shall be applied.
+   According to the safety tool process, each tool's confidence level (TCL) must be determined. Based on TCL the appropriate qualification methods shall be applied.
 
 
-Note: All the work products are set to status "draft", as the linkage to standard requirements is missing currently on purpose, namely to those of ISO 26262.
+Note: All the work products in this list are set to status "draft", as their producing workflows are not final and complete.
 
 
 SCORE Workproduct Linkage

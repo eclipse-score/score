@@ -41,28 +41,28 @@ Workflows
 
    | The Safety Manager shall approve the OSS component classification performed by an expert on this component.
 
-.. workflow:: Create/Maintain Draft Safety Case
-   :id: wf__cr_mt_safety_case
+.. workflow:: Create/Maintain Safety Package
+   :id: wf__cr_mt_safety_package
    :status: valid
    :responsible: rl__safety_manager
    :approved_by: rl__technical_lead
    :input: wp__module_safety_plan, wp__platform_safety_plan, wp__issue_track_system
-   :output: wp__module_safety_case, wp__platform_safety_case
-   :contains: gd_guidl__saf_case, gd_temp__feature_safety_wp, gd_temp__module_safety_plan
+   :output: wp__module_safety_package, wp__platform_safety_package
+   :contains: gd_guidl__saf_package, gd_temp__feature_safety_wp, gd_temp__module_safety_plan
    :has: doc_concept__safety_management__process, doc_getstrt__safety_management__process
 
    | The Safety Manager in SCORE is NOT responsible to provide the argument for the achievement of functional safety.
-   | But the Safety Manager creates and maintains the safety case in the sense of a collection of safety related work products.
-   | The generation and the maintainance of this draft safety case shall be automtated as much as possible.
-   | It is draft in a sense that it does not contain the final argumentation of the safety of the product.
-   | As the draft safety case is only a collection of work products, the safety plan (template) can be used for documentation.
+   | But the Safety Manager creates and maintains the safety package in the sense of a collection of safety related work products.
+   | The generation and the maintainance of this draft safety package shall be automtated as much as possible.
+   | It does not contain the final argumentation of the safety of the product.
+   | As the safety package is only a collection of work products, the safety plan (template) can be used for documentation.
 
 .. workflow:: Perform Safety Audit
    :id: wf__p_fs_audit
    :status: valid
    :responsible: rl__external_auditor
    :approved_by: rl__safety_manager
-   :input: wp__module_safety_plan, wp__platform_safety_plan, wp__module_safety_case, wp__platform_safety_case
+   :input: wp__module_safety_plan, wp__platform_safety_plan, wp__module_safety_package, wp__platform_safety_package
    :output: wp__audit_report
    :contains: gd_guidl__saf_plan_definitions
    :has: doc_concept__safety_management__process, doc_getstrt__safety_management__process
@@ -71,19 +71,19 @@ Workflows
    | The Safety Manager and the process community shall support the external auditor during this.
    | The Project Manager and and the Safety Manager shall approve the audit report.
 
-.. workflow:: Perform Confirmation Reviews
-   :id: wf__p_confirm_rv
+.. workflow:: Perform Formal Reviews
+   :id: wf__p_formal_rv
    :status: valid
    :responsible: rl__external_auditor
    :approved_by: rl__safety_manager
-   :input: wp__module_safety_plan, wp__platform_safety_plan, wp__module_safety_case, wp__platform_safety_case
-   :output: wp__cmr_reports
-   :contains: gd_guidl__saf_plan_definitions, gd_chklst__safety_plan, gd_chklst__safety_case
+   :input: wp__module_safety_plan, wp__platform_safety_plan, wp__module_safety_package, wp__platform_safety_package
+   :output: wp__fdr_reports
+   :contains: gd_guidl__saf_plan_definitions, gd_chklst__safety_plan, gd_chklst__safety_package
    :has: doc_concept__safety_management__process, doc_getstrt__safety_management__process
 
-   | The external auditor is responsible to perform the confirmation reviews on Safety plan and Safety Analysis.
+   | The external auditor is responsible to perform the formal reviews on Safety plan and Safety Analysis.
    | The Safety Manager shall support the external auditor during the reviews.
-   | The Project Manager and and the Safety Manager shall approve the confirmation reports.
+   | The Project Manager and and the Safety Manager shall approve the formal reviews.
    | Therefore a checklists exist to guide the creator of the relevant safety documents.
 
 .. workflow:: Create/Maintain Safety Manual
@@ -91,7 +91,7 @@ Workflows
    :status: valid
    :responsible: rl__safety_manager
    :approved_by: rl__technical_lead
-   :input: wp__requirements__feat_aou, wp__requirements__feat, wp__feature_arch, wp__feature_safety_analyses, wp__feature_dfa, wp__requirements__comp_aou, wp__requirements__comp, wp__component_arch, wp__sw_component_safety_analyses, wp__sw_component_dfa
+   :input: wp__requirements__feat_aou, wp__requirements__feat, wp__feature_arch, wp__feature_safety_analysis, wp__feature_dfa, wp__requirements__comp_aou, wp__requirements__comp, wp__component_arch, wp__sw_component_safety_analysis, wp__sw_component_dfa
    :output: wp__platform_safety_manual, wp__module_safety_manual
    :contains: gd_guidl__saf_man, gd_temp__safety_manual
    :has: doc_concept__safety_management__process, doc_getstrt__safety_management__process
@@ -105,7 +105,7 @@ Workflows
    :status: valid
    :responsible: rl__safety_manager
    :approved_by: rl__technical_lead
-   :input: wp__module_safety_plan, wp__platform_safety_plan, wp__module_safety_case, wp__platform_safety_case, wp__audit_report, wp__cmr_reports
+   :input: wp__module_safety_plan, wp__platform_safety_plan, wp__module_safety_package, wp__platform_safety_package, wp__audit_report, wp__fdr_reports
    :output: wp__issue_track_system, wp__module_sw_release_note, wp__platform_sw_release_note
    :contains: gd_guidl__saf_plan_definitions
    :has: doc_concept__safety_management__process, doc_getstrt__safety_management__process

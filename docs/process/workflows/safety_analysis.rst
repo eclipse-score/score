@@ -30,7 +30,7 @@ todo: need to add guidance and standard links
    :approved_by: rl__safety_manager
    :supported_by: rl__technical_lead, rl__security_manager
    :input: wp__requirements__feat, wp__feature_arch, wp__issue_track_system
-   :output: wp__feature_safety_analyses, wp__feature_dfa
+   :output: wp__feature_safety_analysis, wp__feature_dfa
 
    | The safety analysis and DFA for the feature is executed.
 
@@ -42,7 +42,7 @@ todo: need to add guidance and standard links
    :approved_by: rl__safety_manager
    :supported_by: rl__module_lead, rl__security_manager
    :input:  wp__requirements__comp, wp__component_arch, wp__issue_track_system
-   :output: wp__sw_component_safety_analyses, wp__sw_component_dfa
+   :output: wp__sw_component_safety_analysis, wp__sw_component_dfa
 
    | The safety analysis and DFA for the component is executed.
 
@@ -53,7 +53,7 @@ todo: need to add guidance and standard links
    :responsible: rl__committer
    :approved_by: rl__safety_manager
    :supported_by: rl__technical_lead, rl__module_lead, rl__security_manager
-   :input: wp__feature_safety_analyses, wp__feature_dfa, wp__sw_component_safety_analyses, wp__sw_component_dfa
+   :input: wp__feature_safety_analysis, wp__feature_dfa, wp__sw_component_safety_analysis, wp__sw_component_dfa
    :output: wp__sw_arch_verification, wp__issue_track_system
 
    | The safety analyses and DFA are monitored and verified.

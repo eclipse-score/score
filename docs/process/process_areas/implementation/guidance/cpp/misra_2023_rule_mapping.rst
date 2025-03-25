@@ -18,7 +18,7 @@ MISRA C++:2023 Rule Mapping
 .. gd_guidl:: MISRA C++:2023 Rule Mapping
    :id: gd_guidl__cpp__misra2023_rule_mapping
    :status: draft
-   :complies: std_req__iso26262__software_1, std_req__iso26262__software_2, std_req__iso26262__software_3, std_req__iso26262__software_31
+   :complies: std_req__iso26262__software_541, std_req__iso26262__software_542, std_req__iso26262__software_543, std_req__iso26262__software_942
 
 ..
     .. csv-table:: MISRA C++:2023 Rule Mapping

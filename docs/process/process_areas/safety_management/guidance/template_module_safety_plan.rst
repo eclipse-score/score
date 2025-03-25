@@ -18,7 +18,7 @@ Module Safety Plan Template
 .. gd_temp:: Module Safety Plan Template
    :id: gd_temp__module_safety_plan
    :status: valid
-   :complies: std_req__iso26262__management_35, std_req__iso26262__management_36, std_req__iso26262__management_37, std_req__iso26262__management_38, std_req__iso26262__management_39
+   :complies: std_req__iso26262__management_6465, std_req__iso26262__management_6466, std_req__iso26262__management_6467, std_req__iso26262__management_6468, std_req__iso26262__management_6469
 
 This document implements <add "need" link>
 
@@ -64,29 +64,29 @@ This document implements <add "need" link>
           - this document
           - see above
 
-        * - :need:`wp__module_safety_case`
+        * - :need:`wp__module_safety_package`
           - :ref:`guideline_safety_management`
           - <automated>
           - <Link to issue>
           - <Link to WP>
           - <automated>
 
-        * - :need:`wp__cmr_reports` (module Safety Plan)
+        * - :need:`wp__fdr_reports` (module Safety Plan)
           - :need:`gd_chklst__safety_plan`
           - <automated>
           - <Link to issue>
           - <Link to WP>
           - <automated>
 
-        * - :need:`wp__cmr_reports` (module Safety Case)
-          - :need:`gd_chklst__safety_case`
+        * - :need:`wp__fdr_reports` (module Safety Package)
+          - :need:`gd_chklst__safety_package`
           - <automated>
           - <Link to issue>
           - <Link to WP>
           - <automated>
 
-        * - :need:`wp__cmr_reports` (module's Safety Analyses & DFA)
-          - Safety Analysis CMR tbd
+        * - :need:`wp__fdr_reports` (module's Safety Analyses & DFA)
+          - Safety Analysis FDR tbd
           - <automated>
           - <Link to issue>
           - <Link to WP>
@@ -180,7 +180,7 @@ This document implements <add "need" link>
           - <Link to WP>
           - <automated>
 
-        * - :need:`wp__sw_component_safety_analyses`
+        * - :need:`wp__sw_component_safety_analysis`
           - <Link to process>
           - <automated>
           - <Link to issue>
@@ -270,7 +270,7 @@ This document implements <add "need" link>
           - <Link to issue>
           - <Reasoning for tailoring, needed for example in case of deficits in process Id 3&4 and complexity Ids 1&4>
 
-        * - :need:`wp__sw_component_safety_analyses`
+        * - :need:`wp__sw_component_safety_analysis`
           - <Link to issue>
           - <Reasoning for tailoring, could help arguing too high cyclomatic complexity covered by safety mechanisms>
 

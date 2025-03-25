@@ -18,7 +18,7 @@ Feature Safety Work Products Template
 .. gd_temp:: Feature Safety Work Products Template
    :id: gd_temp__feature_safety_wp
    :status: valid
-   :complies: std_req__iso26262__management_35, std_req__iso26262__management_36, std_req__iso26262__management_37, std_req__iso26262__management_38, std_req__iso26262__management_39
+   :complies: std_req__iso26262__management_6465, std_req__iso26262__management_6466, std_req__iso26262__management_6467, std_req__iso26262__management_6468, std_req__iso26262__management_6469
 
 
 .. list-table:: Feature <feature> Workproducts
@@ -59,7 +59,7 @@ Feature Safety Work Products Template
       - <Link to WP>
       - <automated>
 
-    * - :need:`wp__feature_safety_analyses`
+    * - :need:`wp__feature_safety_analysis`
       - <link to process>
       - <automated>
       - <link to issue>

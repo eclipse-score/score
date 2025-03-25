@@ -21,7 +21,7 @@ Test Linking to Requirements
 .. gd_req:: Linking Requirements to Tests
     :id: gd_req__link_tests
     :status: valid
-    :complies: std_req__iso26262__support_8
+    :complies: std_req__iso26262__support_6432
 
     For linking test suites to requirements following metadata shall be used:
 
@@ -62,7 +62,7 @@ Test Linking to Requirements
 .. gd_req:: Linking Requirements to Tests (C++)
     :id: gd_req__link_tests_cpp
     :status: valid
-    :complies: std_req__iso26262__support_8
+    :complies: std_req__iso26262__support_6432
 
     For linking C++ test suites to requirements **record properties** shall be used. Attributes
     which are common for all test cases can be specified in the Setup Function (SetUp()), the other
@@ -94,7 +94,7 @@ Test Linking to Requirements
 .. gd_req:: Linking Requirements to Tests (Python)
     :id: gd_req__link_tests_python
     :status: valid
-    :complies: std_req__iso26262__support_8
+    :complies: std_req__iso26262__support_6432
 
     For linking python tests to requirements **metadata** shall be used. Attributes which are
     common for all test cases can be specified in the Test Suite (above the class), the other
@@ -117,7 +117,7 @@ Test Linking to Requirements
 .. gd_req:: Linking Requirements to Tests (Rust)
     :id: gd_req__link_tests_rust
     :status: valid
-    :complies: std_req__iso26262__support_8
+    :complies: std_req__iso26262__support_6432
 
     For linking Rust tests to requirements **#[record_property]** shall be used:
 

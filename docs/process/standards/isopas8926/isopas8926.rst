@@ -19,179 +19,187 @@ ISO PAS 8926
 
 * Requirements:
     .. std_req:: Pas1
-       :id: std_req__isopas8926__1
+       :id: std_req__isopas8926__441
        :status: valid
 
     .. std_req:: Pas2
-       :id: std_req__isopas8926__2
+       :id: std_req__isopas8926__4421
        :status: valid
 
     .. std_req:: Pas3
-       :id: std_req__isopas8926__3
+       :id: std_req__isopas8926__4422
        :status: valid
 
     .. std_req:: Pas4
-       :id: std_req__isopas8926__4
+       :id: std_req__isopas8926__4423
        :status: valid
 
     .. std_req:: Pas5
-       :id: std_req__isopas8926__5
+       :id: std_req__isopas8926__4424
        :status: valid
 
     .. std_req:: Pas6
-       :id: std_req__isopas8926__6
+       :id: std_req__isopas8926__4425
        :status: valid
 
     .. std_req:: Pas7
-       :id: std_req__isopas8926__7
+       :id: std_req__isopas8926__4426
        :status: valid
 
     .. std_req:: Pas8
-       :id: std_req__isopas8926__8
+       :id: std_req__isopas8926__4427
        :status: valid
 
     .. std_req:: Pas9
-       :id: std_req__isopas8926__9
+       :id: std_req__isopas8926__4428
        :status: valid
 
     .. std_req:: Pas10
-       :id: std_req__isopas8926__10
+       :id: std_req__isopas8926__4429
        :status: valid
 
     .. std_req:: Pas11
-       :id: std_req__isopas8926__11
+       :id: std_req__isopas8926__44210
        :status: valid
 
     .. std_req:: Pas12
-       :id: std_req__isopas8926__12
+       :id: std_req__isopas8926__4431
        :status: valid
 
     .. std_req:: Pas13
-       :id: std_req__isopas8926__13
+       :id: std_req__isopas8926__44321
        :status: valid
 
     .. std_req:: Pas14
-       :id: std_req__isopas8926__14
+       :id: std_req__isopas8926__44322
        :status: valid
 
     .. std_req:: Pas19
-       :id: std_req__isopas8926__15
+       :id: std_req__isopas8926__4433
        :status: valid
 
     .. std_req:: Pas18
-       :id: std_req__isopas8926__16
+       :id: std_req__isopas8926__44341
        :status: valid
 
     .. std_req:: Pas17
-       :id: std_req__isopas8926__17
+       :id: std_req__isopas8926__44342
        :status: valid
 
     .. std_req:: Pas18
-       :id: std_req__isopas8926__18
+       :id: std_req__isopas8926__44411
        :status: valid
 
     .. std_req:: Pas19
-       :id: std_req__isopas8926__19
+       :id: std_req__isopas8926__44412
        :status: valid
 
     .. std_req:: Pas20
-       :id: std_req__isopas8926__20
+       :id: std_req__isopas8926__44421
        :status: valid
 
     .. std_req:: Pas21
-       :id: std_req__isopas8926__21
+       :id: std_req__isopas8926__44422
        :status: valid
 
     .. std_req:: Pas22
-       :id: std_req__isopas8926__22
+       :id: std_req__isopas8926__44423
        :status: valid
 
     .. std_req:: Pas23
-       :id: std_req__isopas8926__23
+       :id: std_req__isopas8926__44431
        :status: valid
 
     .. std_req:: Pas24
-       :id: std_req__isopas8926__24
+       :id: std_req__isopas8926__44432
        :status: valid
 
     .. std_req:: Pas25
-       :id: std_req__isopas8926__25
+       :id: std_req__isopas8926__44433
        :status: valid
 
     .. std_req:: Pas26
-       :id: std_req__isopas8926__26
+       :id: std_req__isopas8926__44441
        :status: valid
 
     .. std_req:: Pas27
-       :id: std_req__isopas8926__27
+       :id: std_req__isopas8926__44442
        :status: valid
 
     .. std_req:: Pas28
-       :id: std_req__isopas8926__28
+       :id: std_req__isopas8926__44443
        :status: valid
 
     .. std_req:: Pas29
-       :id: std_req__isopas8926__29
+       :id: std_req__isopas8926__445
        :status: valid
 
     .. std_req:: Pas30
-       :id: std_req__isopas8926__30
+       :id: std_req__isopas8926__44611
        :status: valid
 
     .. std_req:: Pas31
-       :id: std_req__isopas8926__31
+       :id: std_req__isopas8926__44612
        :status: valid
 
     .. std_req:: Pas32
-       :id: std_req__isopas8926__32
+       :id: std_req__isopas8926__4462
        :status: valid
 
     .. std_req:: Pas33
-       :id: std_req__isopas8926__33
+       :id: std_req__isopas8926__4463
        :status: valid
+
 
 * Workproducts:
-    .. std_wp:: Pas1
-       :id: std_wp__isopas8926__1
+    .. std_wp:: isopas8926__4511
+       :id: std_wp__isopas8926__4511
        :status: valid
 
-    .. std_wp:: Pas2
-       :id: std_wp__isopas8926__2
+
+    .. std_wp:: isopas8926__4512
+       :id: std_wp__isopas8926__4512
        :status: valid
 
-    .. std_wp:: Pas3
-       :id: std_wp__isopas8926__3
+
+    .. std_wp:: isopas8926__4521
+       :id: std_wp__isopas8926__4521
        :status: valid
 
-    .. std_wp:: Pas4
-       :id: std_wp__isopas8926__4
+
+    .. std_wp:: isopas8926__4522
+       :id: std_wp__isopas8926__4522
        :status: valid
 
-    .. std_wp:: Pas5
-       :id: std_wp__isopas8926__5
+
+    .. std_wp:: isopas8926__4523
+       :id: std_wp__isopas8926__4523
        :status: valid
 
-    .. std_wp:: Pas6
-       :id: std_wp__isopas8926__6
+
+    .. std_wp:: isopas8926__4524
+       :id: std_wp__isopas8926__4524
        :status: valid
 
-    .. std_wp:: Pas7
-       :id: std_wp__isopas8926__7
+
+    .. std_wp:: isopas8926__4525
+       :id: std_wp__isopas8926__4525
        :status: valid
 
-    .. std_wp:: Pas8
-       :id: std_wp__isopas8926__8
+
+    .. std_wp:: isopas8926__4526
+       :id: std_wp__isopas8926__4526
        :status: valid
 
-    .. std_wp:: Pas9
-       :id: std_wp__isopas8926__9
+
+    .. std_wp:: isopas8926__4527
+       :id: std_wp__isopas8926__4527
        :status: valid
+
 
 
 .. note::
-   Requirements and work products numbering as above is derived by the sequence as those are defined in the standard document.
-
-   A mapping table to ISO PAS 8926 numbering can be provided by SCORE project on request for every holder of a ISO PAS 8926 standard license.
+   Sub-Clause numbers from the official standard document are used for Ids creation for better reference.
 
 .. needextend:: "standards/isopas8926" in docname
    :+tags: isopas8926

@@ -297,8 +297,8 @@ Beside :need:`wp__verification__comp_int_test` and :need:`wp__verification__feat
 following aspects define the coverage of the architectural design.
 
 - :need:`wp__sw_arch_verification`
-- :need:`wp__sw_component_safety_analyses` for safety-critical parts
-- :need:`wp__feature_safety_analyses` for safety-critical parts
+- :need:`wp__sw_component_safety_analysis` for safety-critical parts
+- :need:`wp__feature_safety_analysis` for safety-critical parts
 
 Each architectural element has at least one test case linked with attribute "fully verified" or
 multiple test cases with attribute "partially verified".

@@ -23,7 +23,7 @@ Platform
 .. workproduct:: Verification Plan
    :id: wp__verification__plan
    :status: valid
-   :complies: std_wp__iso26262__support_11, std_wp__iso26262__support_12, std_wp__iso26262__support_19
+   :complies: std_wp__iso26262__support_951, std_wp__iso26262__support_952, std_wp__iso26262__support_1252
 
    Verification planning for each phase of the safety lifecycle must detail the work products,
    objectives, methods, criteria, environments, equipment, resources, actions for anomalies, and
@@ -34,14 +34,14 @@ Platform
 .. workproduct:: Platform test
    :id: wp__verification__platform_test
    :status: valid
-   :complies: std_wp__iso26262__support_12
+   :complies: std_wp__iso26262__support_952
 
    Platform Testing verifies Stakeholder Requirements performed on reference HW
 
 .. workproduct:: Platform Verification Report
    :id: wp__verification__platform_ver_report
    :status: valid
-   :complies: std_wp__iso26262__software_15, std_wp__iso26262__support_13, std_wp__iso26262__analysis_5, std_wp__iso26262__analysis_7
+   :complies: std_wp__iso26262__software_1053, std_wp__iso26262__support_953, std_wp__iso26262__analysis_752, std_wp__iso26262__analysis_852
 
    Verification Report contains:
 
@@ -58,7 +58,7 @@ Feature
 .. workproduct:: Feature Integration test
    :id: wp__verification__feat_int_test
    :status: valid
-   :complies: std_wp__iso26262__software_13, std_wp__iso26262__support_12
+   :complies: std_wp__iso26262__software_1051, std_wp__iso26262__support_952
 
    Integration Testing verifies feature requirements and architecture:
 
@@ -73,7 +73,7 @@ Module
 .. workproduct:: Module Verification Report
    :id: wp__verification__module_ver_report
    :status: valid
-   :complies: std_wp__iso26262__software_12, std_wp__iso26262__software_15, std_wp__iso26262__support_13, std_wp__iso26262__support_20, std_wp__iso26262__analysis_5, std_wp__iso26262__analysis_7, std_wp__iso26262__support_19
+   :complies: std_wp__iso26262__software_952, std_wp__iso26262__software_1053, std_wp__iso26262__support_953, std_wp__iso26262__support_1253, std_wp__iso26262__analysis_752, std_wp__iso26262__analysis_852, std_wp__iso26262__support_1252
 
    Verification Report contains:
 
@@ -94,14 +94,14 @@ Component
 .. workproduct:: Component test
    :id: wp__verification__component_test
    :status: valid
-   :complies: std_wp__iso26262__support_12
+   :complies: std_wp__iso26262__support_952
 
    Component Testing verifies Component Requirements
 
 .. workproduct:: Component Integration test
    :id: wp__verification__comp_int_test
    :status: valid
-   :complies: std_wp__iso26262__software_13, std_wp__iso26262__support_12
+   :complies: std_wp__iso26262__software_1051, std_wp__iso26262__support_952
 
    Component Integration Testing verifies the detailed design and component architecture:
 
@@ -114,7 +114,7 @@ Component
 .. workproduct:: Unit test
    :id: wp__verification__sw_unit_test
    :status: valid
-   :complies: std_wp__iso26262__software_11, std_wp__iso26262__support_12, std_req__iso26262__software_29
+   :complies: std_wp__iso26262__software_951, std_wp__iso26262__support_952, std_req__iso26262__software_845
 
    Unit testing verifies detailed design (traced to).
    Respective tooling is defined in :need:`wp__platform_mgmt`, :need:`wp__verification__plan` and integrated in CI/Build.
@@ -131,11 +131,11 @@ The work products are handled within these process areas:
      * :ref:`arch_design_process` implementing :need:`wp__sw_arch_verification`
      * :ref:`implementation` implementing :need:`wp__sw_implementation_inspection`
 
-Tool Evaluation
-***************
+Tool Verification
+*****************
 
-As part of tool qualification as supporting function it is handled as follows
+As part of tool management as supporting function it is handled as follows
 
-     * :ref:`general_concepts_tool_evaluation` describes implementation of :need:`wp__tool_eval`
+     * :ref:`general_concepts_tool_verification` describes implementation of :need:`wp__tool_verification`
 
 It is planned in the :need:`wp__platform_mgmt`

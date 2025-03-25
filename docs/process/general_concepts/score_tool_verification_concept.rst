@@ -12,7 +12,7 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _general_concepts_tool_evaluation:
+.. _general_concepts_tool_verification:
 
 Tool evaluation concept
 -----------------------
@@ -20,5 +20,3 @@ Tool evaluation concept
 
 Tool qualification concept
 --------------------------
-
-

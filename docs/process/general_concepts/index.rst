@@ -24,5 +24,5 @@ General concepts
    score_lifecycle_concept.rst
    score_building_blocks_concept.rst
    score_traceability_concept.rst
-   score_tool_eval_qual_concept.rst
+   score_tool_verification_concept.rst
    score_review_concept.rst

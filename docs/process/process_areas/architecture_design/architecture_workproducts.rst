@@ -20,6 +20,7 @@ Architecture Workproducts
 .. workproduct:: Feature Architecture
    :id: wp__feature_arch
    :status: valid
+   :complies: std_wp__iso26262__software_751
 
    Feature Architecture linked to Feature Requirements, i.e. interaction of components
 
@@ -32,6 +33,7 @@ Architecture Workproducts
 .. workproduct:: Component Architecture
    :id: wp__component_arch
    :status: valid
+   :complies: std_wp__iso26262__software_751
 
    Component Architecture linked to Component Requirements
 

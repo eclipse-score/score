@@ -12,35 +12,35 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Safety Case Confirmation Review Checklist
+Safety Package Formal Review Checklist
 =========================================
 
-.. gd_chklst:: Safety Case Confirmation Review Checklist
-   :id: gd_chklst__safety_case
+.. gd_chklst:: Safety Package Formal Review Checklist
+   :id: gd_chklst__safety_package
    :status: valid
-   :complies: std_req__iso26262__management_45, std_req__iso26262__management_46, std_req__iso26262__management_47, std_req__iso26262__management_48, std_req__iso26262__management_49, std_req__iso26262__management_50, std_req__iso26262__management_51, std_req__iso26262__management_52
+   :complies: std_req__iso26262__management_6491, std_req__iso26262__management_6492, std_req__iso26262__management_6493, std_req__iso26262__management_64101, std_req__iso26262__management_64102, std_req__iso26262__management_64103, std_req__iso26262__management_64104, std_req__iso26262__management_64105
 
    **1. Purpose**
 
-   The purpose of this safety case confirmation review checklist is to report status of the confirmation review for the safety case.
+   The purpose of this review checklist is to report status of the formal review for the safety package.
 
    **2. Checklist**
 
-.. list-table:: Safety Case Checklist
+.. list-table:: Safety Package Checklist
         :header-rows: 1
 
         * - Id
-          - Safety case activity
+          - Safety package activity
           - Compliant to ISO 26262?
           - Comment
 
         * - 1
-          - Is a safety case provided which matches the safety plan (i.e. all planned workproducts referenced)?
+          - Is a safety package provided which matches the safety plan (i.e. all planned workproducts referenced)?
           - [YES | NO ]
           - <Rationale for result>
 
         * - 2
-          - Is the argument how functional safety is achieved, provided in the safety case, plausible and sufficient?
+          - Is the argument how functional safety is achieved, provided in the safety package, plausible and sufficient?
           - NO
           - The argument is intentionally not provided by SCORE.
 
@@ -50,7 +50,7 @@ Safety Case Confirmation Review Checklist
           - <Rationale for result>
 
         * - 4
-          - Are the referenced work products in released state, including the functional safety audit?
+          - Are the referenced work products in released state, including the process safety audit?
           - [YES | NO ]
           - <Rationale for result>
 
