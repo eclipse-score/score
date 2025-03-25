@@ -34,8 +34,7 @@ steering and planning of the project.
 Further details on the project structure, planning etc. can be found in the
 :need:`Project Management Plan <doc__project_mgt_plan>`.
 
-For details how we handle contributions, please see the section :ref:`contribute_contribution_request`
-and in particular the :need:`gd_guidl__contr_request_guideline`.
+For details how we handle contributions, please see the section :ref:`contribute_contribution_request`.
 
 In case you're a company and want to join the Eclipse S-CORE project, please reach out
 to the Project Lead Circle.
@@ -44,9 +43,8 @@ to the Project Lead Circle.
 .. toctree::
    :maxdepth: 2
 
-   general/index
    contribution_request/index
+   general/index
    documentation/index
    development/index
    ci/index
-
