@@ -164,6 +164,7 @@ Practical approaches are:
 
 Interface Test
 """"""""""""""
+
 Interface testing is a type of software testing that focuses on verifying the proper communication
 and data exchange between different software components or features. It's about ensuring that the
 interfaces (the points where different parts of the system connect and interact) are working
@@ -200,6 +201,22 @@ Types of ``interface-test`` are:
 
     Measure the latency and throughput of the interfaces. This is mainly on integration level and is
     hard to have reasonable testing in the reference implementation
+
+
+Condition Coverage
+""""""""""""""""""
+
+Condition coverage is a white-box testing technique used to test each Boolean condition in a
+software component. The goal is to ensure that each condition evaluates to both true and false at
+least once during the testing process.
+
+Condition coverage is also creating branch coverage, so a 100% `structural-condition-coverage` will not
+guarantee a 100% branch coverage. The actual branch coverage percentage depends on the actual code
+under test.
+
+Fro C++ based unit testing gTest is the "software tool" which supports conditional coverage, but
+has no direct option to create branch coverage. This has be considered, while writing unit tests.
+
 
 Derivation Techniques
 ^^^^^^^^^^^^^^^^^^^^^

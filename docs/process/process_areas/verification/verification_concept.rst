@@ -109,7 +109,7 @@ applicable in the project are:
  * Resource Usage Evaluation (resource-usage)
  * Static Code Analysis (static-code-analysis)
  * Structural Statement coverage (structural-statement-coverage)
- * Structural Branch Coverage (structural-branch-coverage)
+ * Structural Condition Coverage (structural-condition-coverage)
  * Walkthrough (walkthrough)
 
 The derivation of test cases can also be based on certain methods.

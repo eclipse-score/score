@@ -177,8 +177,8 @@ method is to be used as meta data (*TestType* and *DerivationTechnique*).
      - structural-statement-coverage
      - 1, -, -
      - ASIL B
-   * - Structural Branch Coverage (Code coverage)
-     - structural-branch-coverage
+   * - Structural Condition Coverage (Code coverage)
+     - structural-condition-coverage
      - 1, -, -
      - ASIL B
    * - Walkthrough

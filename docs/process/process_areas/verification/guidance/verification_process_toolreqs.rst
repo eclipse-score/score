@@ -45,7 +45,7 @@ Test Linking to Requirements
         * Resource Usage Evaluation (resource-usage)
         * Static Code Analysis (static-code-analysis)
         * Structural Statement coverage (structural-statement-coverage)
-        * Structural Branch Coverage (structural-branch-coverage)
+        * Structural Condition Coverage (structural-condition-coverage)
         * Walkthrough (walkthrough)
     * DerivationTechnique
         * Analysis of requirements (requirements-analysis)
