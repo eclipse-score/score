@@ -10,7 +10,6 @@
     "editor.rulers": [
         99
     ],
-
     "[python]": {
         // In python using 80 characters per line is the standard.
         "editor.rulers": [
@@ -84,5 +83,27 @@
       "run",
       "//tools/starpls:starpls",
       "--"
-    ]
+    ],
+    "cSpell.enabledFileTypes": {
+        "rst": true
+    },
+    "cSpell.words": [
+        "__getitem__",
+        "bazel",
+        "metatags",
+        "getstrt",
+        "reqs"
+    ],
+    "cSpell.ignoreRegExpList": [
+        "/:\\w+:\\s+[`]?[^`,\n]+(?:,\\s*[^`,\n]+)*[`]?/", //ignore any words following :text:
+        "/:\\w+:\\s*`[^`]+`/", //ignore any words following :text: inside backticks also
+        "/\\.\\.\\s+\\w+::\\s+[`]?[^`,\\n]+(?:,\\s*[^`,\\n]+)*[`]?/", //ignore any words following .. text::
+        "/workproduct(s)?/i", //ignore workproduct word and variations
+        "/metamodel(s)?/i", //ignore metamodels word and variations
+        "/memcheck?/i", //ignore memcheck word and variations
+        "/\\.\\.\\s+\\w+/", //ignore .. word
+        "/``[^`]+``/", //ignore words between double backticks
+        "/\\*?need[a-zA-Z0-9_()]*\\*?/i", // ignore *needSomeWord*
+        "/\\b[A-Z]+(?:_[A-Z]+)*\\b/", //ignore all CAPS, also if includes underscore
+      ]
 }
