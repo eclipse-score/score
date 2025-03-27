@@ -21,3 +21,4 @@ Contribution Request
    :maxdepth: 1
 
    contribution_request
+   feature_request
