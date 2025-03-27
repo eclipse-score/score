@@ -124,7 +124,7 @@ def get_need_selection(needs, selection, log):
 @graph_check
 def check_metamodel_graph(
     app: Sphinx,
-    all_needs: NeedsInfoType,
+    all_needs: list[NeedsInfoType],
     log: CheckLogger,
 ):
     graph_checks_global = app.config.graph_checks

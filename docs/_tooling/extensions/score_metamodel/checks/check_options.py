@@ -13,6 +13,7 @@
 import re
 
 from sphinx.application import Sphinx
+from sphinx_needs.config import NeedType
 from sphinx_needs.data import NeedsInfoType
 
 from score_metamodel import (
@@ -22,7 +23,7 @@ from score_metamodel import (
 )
 
 
-def get_need_type(needs_types: list[NeedsInfoType], directive: str):
+def get_need_type(needs_types: list[NeedType], directive: str):
     for need_type in needs_types:
         assert isinstance(need_type, dict), need_type
         if need_type["directive"] == directive:
@@ -78,18 +79,15 @@ def check_options(
     app: Sphinx,
     need: NeedsInfoType,
     log: CheckLogger,
-    needs_types: list[NeedsInfoType] = None,
 ):
     """
     Checks that required and optional options and links are present
     and follow their defined patterns.
     """
     production_needs_types = app.config.needs_types
-    if not needs_types:
-        needs_types = production_needs_types
 
     try:
-        need_options = get_need_type(needs_types, need["type"])
+        need_options = get_need_type(production_needs_types, need["type"])
     except ValueError:
         log.warning_for_option(need, "type", "no type info defined for semantic check.")
         return
@@ -125,7 +123,6 @@ def check_extra_options(
     app: Sphinx,
     need: NeedsInfoType,
     log: CheckLogger,
-    needs_types: list[NeedsInfoType] = None,
 ):
     """
     This function checks if the user specified attributes in the need
@@ -134,12 +131,9 @@ def check_extra_options(
     """
 
     production_needs_types = app.config.needs_types
-    if not needs_types:
-        needs_types = production_needs_types
-
     default_options_list = default_options()
     try:
-        need_options = get_need_type(needs_types, need["type"])
+        need_options = get_need_type(production_needs_types, need["type"])
     except ValueError:
         msg = "no type info defined for semantic check."
         log.warning_for_option(need, "type", msg)
