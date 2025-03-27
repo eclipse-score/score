@@ -11,17 +11,16 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 
-import os
 import argparse
-import debugpy
 import logging
+import os
 import sys
-
 from pathlib import Path
-from python.runfiles import Runfiles
+
+import debugpy
+from python.runfiles import Runfiles  # type: ignore
 from sphinx.cmd.build import main as sphinx_main
 from sphinx_autobuild.__main__ import main as sphinx_autobuild_main
-
 
 logger = logging.getLogger(__name__)
 

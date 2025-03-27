@@ -60,7 +60,8 @@ def add_source_link(app: Sphinx, env) -> None:
                     # the needs gets 're-evaluated'.
                     need = needs_copy[id]  # NeedsInfoType
                     Needs_Data.remove_need(need["id"])
-                    need["source_code_link"] = ",".join(link)
+                    # extra_options are only available at runtime
+                    need["source_code_link"] = ",".join(link)  # type: ignore
                     Needs_Data.add_need(need)
                 except KeyError:
                     # NOTE: manipulating link to remove git-hash,
