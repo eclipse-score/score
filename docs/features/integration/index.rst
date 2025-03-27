@@ -23,7 +23,7 @@ Documentation
 Description
 ===========
 
-Bazel is the build/test infrastructure of choice for the Score project.
+Bazel is the build/test infrastructure of choice for the S-CORE project.
 Overall integration and build should be realized using available rules
 or custom rules developed for the project. This means that the following
 should be integrated with bazel:
@@ -52,7 +52,7 @@ High level integration dependency
 Mandatory repositories:
 
 -  bazel_registry (implicit dependency, stores version of all modules)
--  process_description (Score development process description)
+-  process_description (S-CORE development process description)
 -  score (requirements and architecture)
 -  reference_integration (brings all parts together)
 

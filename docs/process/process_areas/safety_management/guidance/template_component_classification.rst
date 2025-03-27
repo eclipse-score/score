@@ -143,7 +143,7 @@ Step 2: Determine (C): the uncertainty of finding systematic faults based on the
 
 | (C=1) shall be selected when none of the determined complexity measures indicate HM or NM.
 | (C=2) shall be selected when at least one of the determined complexity measures indicate HM or NM, but the gaps evaluated are acceptable, means
-|       the risk of systematic faults due to these gaps is sufficiently low in the context of S-Core or manageable by mitigating the gaps.
+|       the risk of systematic faults due to these gaps is sufficiently low in the context of S-CORE or manageable by mitigating the gaps.
 | (C=3) in all other cases.
 |
 

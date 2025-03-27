@@ -15,8 +15,8 @@
 Roles
 =====
 
-SCORE Management Roles
-----------------------
+S-CORE Management Roles
+-----------------------
 
 .. role:: Project Lead
    :id: rl__project_lead
@@ -51,7 +51,7 @@ SCORE Management Roles
    :id: rl__technical_lead
    :status: valid
 
-   The Technical Leads approve feature requests and perform the project management of the SCORE platform.
+   The Technical Leads approve feature requests and perform the project management of the S-CORE platform.
 
    Required skills
 
@@ -66,7 +66,7 @@ SCORE Management Roles
 
    Responsibility
 
-   * Review and approval of contributions, e.g. Feature Requests, which add or modify SCORE platform features
+   * Review and approval of contributions, e.g. Feature Requests, which add or modify S-CORE platform features
    * Project management of the platform development - i.e. filling the project management role as defined by ISO26262
    * High-level project control and coordination between multiple software modules
    * Escalation instance for software module project leads (external to S-CORE), safety managers and committers
@@ -99,10 +99,10 @@ SCORE Management Roles
    :tags: project_management
    :contains: rl__committer
 
-   The module Project Leads perform the project management on module level. If a module is developed in a sub-project of SCORE they have the eclipse project lead role for this.
+   The module Project Leads perform the project management on module level. If a module is developed in a sub-project of S-CORE they have the eclipse project lead role for this.
 
-SCORE process roles
--------------------
+S-CORE process roles
+--------------------
 
 .. role:: Process Community Member
    :id: rl__process_community
@@ -113,8 +113,8 @@ SCORE process roles
    The process community members are responsible for the definition of the process architecture of the project integrated management system and how they processes interact.
    The approval and release of the process is done by the safety, quality and security managers and the technical leads (for the parts which affect them).
 
-SCORE development roles
------------------------
+S-CORE development roles
+------------------------
 
 .. role:: Infrastructure Tooling Community Member
    :id: rl__infrastructure_tooling_community
@@ -129,7 +129,7 @@ SCORE development roles
    :status: valid
 
    (Eclipse) Open Source Role, person(s) who provide(s) possible contribution(s) as pull request(s) to the main line.
-   Any contributor which contributes code, tests or documentation to SCORE.
+   Any contributor which contributes code, tests or documentation to S-CORE.
 
    .. note::
       Follows the processes defined by the :need:`rl__process_community`
@@ -156,8 +156,8 @@ SCORE development roles
    units. In this way the testing community takes a supportive role for unit testing
 
 
-SCORE cross functional teams
-----------------------------
+S-CORE cross functional teams
+-----------------------------
 
 .. role:: Platform Team
    :id: rl__platform_team

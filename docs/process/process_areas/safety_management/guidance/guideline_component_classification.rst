@@ -42,7 +42,7 @@ The classification is based on two criteria:
 * The uncertainty of the Processes (P) applied for the development of the existing element
 * The uncertainty of finding systematic faults based on the Complexity (C) of the existing element
 
-| Assumption is that the context for the usage of the existing element is always the operation environment and context of the *Score* platform.
+| Assumption is that the context for the usage of the existing element is always the operation environment and context of the *S-CORE* platform.
 | (P) shall be natural values out of the set[1,2,3]
 | (C) shall be natural values out of the set[1,2,3]
 |
@@ -77,7 +77,7 @@ Apply the process measures to determine (P).
 The result of a process measure shall have as outcome [NE, PE, NE]
 
 * HE: High Evidence
-* PE: Partly Evidence but Manageable within *Score*
+* PE: Partly Evidence but Manageable within *S-CORE*
 * NE: No Evidence
 
 .. list-table:: Determination of P
@@ -134,7 +134,7 @@ The result of a process measure shall have as outcome [NE, PE, NE]
 
 
 | (P=1) shall be selected when none of the determined process measures indicate PE or NE.
-| (P=2) shall be selected when at least one of the determined process measures indicate PE or NE but the gaps evaluated are acceptable, means the risk of systematic faults due to these gaps is sufficiently low in the context of *Score* or manageable by mitigating the gaps.
+| (P=2) shall be selected when at least one of the determined process measures indicate PE or NE but the gaps evaluated are acceptable, means the risk of systematic faults due to these gaps is sufficiently low in the context of *S-CORE* or manageable by mitigating the gaps.
 | (P=3) in all other cases.
 |
 | Other existing documentation could be used to cover lack in other documents 1-6 to get from NE to HE or PE
@@ -146,8 +146,8 @@ Step 2: Determination of (C)
 | Apply the complexity measures to determine (C).
 | The result of a complexity measure shall have as outcome [NH, HM, NM]
 | - NH: Not High
-| - HM: High but Manageable within *Score*
-| - NM: high and Not Manageable within *Score*
+| - HM: High but Manageable within *S-CORE*
+| - NM: high and Not Manageable within *S-CORE*
 
 **Complexity measure for programming language: RUST**
 
@@ -209,7 +209,7 @@ Step 2: Determination of (C)
 | TODO
 |
 | (C=1) shall be selected when none of the determined complexity measures indicate HM or NM.
-| (C=2) shall be selected when at least one of the determined complexity measures indicate HM or NM, but the gaps evaluated are acceptable, means the risk of systematic faults due to these gaps is sufficiently low in the context of *Score* or manageable by mitigating the gaps.
+| (C=2) shall be selected when at least one of the determined complexity measures indicate HM or NM, but the gaps evaluated are acceptable, means the risk of systematic faults due to these gaps is sufficiently low in the context of *S-CORE* or manageable by mitigating the gaps.
 | (C=3) in all other cases.
 
 

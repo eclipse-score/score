@@ -42,7 +42,7 @@ Safety Package Formal Review Checklist
         * - 2
           - Is the argument how functional safety is achieved, provided in the safety package, plausible and sufficient?
           - NO
-          - The argument is intentionally not provided by SCORE.
+          - The argument is intentionally not provided by S-CORE.
 
         * - 3
           - Are the referenced work products available?

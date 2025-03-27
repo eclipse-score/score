@@ -84,7 +84,7 @@ Use ``Rebase & Merge`` or ``Merge Commit`` in case:
  Commit Message Format
 **********************
 
-In Score it is checked if git commit messages are written according
+In S-CORE it is checked if git commit messages are written according
 to guidelines. However, it cannot enforce the meaningfulness of the
 message (and its parts).
 

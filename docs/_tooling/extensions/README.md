@@ -1,6 +1,6 @@
 # Guide to Creating a Sphinx Extension
 
-This document will help you with the most important building blocks and provide all information needed to start writing your own Sphinx extension in the Score project.   
+This document will help you with the most important building blocks and provide all information needed to start writing your own Sphinx extension in the S-CORE project.
 **It is intended for developers, it will not show how to use extensions.**
 
 ## Getting Started
@@ -22,8 +22,8 @@ def setup(app: Sphinx) -> dict:
     }
 ```
 
-The `setup` function is vital as this is the one that Sphinx will call when loading your extension.   
-From here you can attach to different events emitted by Sphinx or sphinx-needs, emit events yourself, 
+The `setup` function is vital as this is the one that Sphinx will call when loading your extension.
+From here you can attach to different events emitted by Sphinx or sphinx-needs, emit events yourself,
 or implement the logic needed for your extension to work.
 
 ## Attaching to an Event
@@ -37,12 +37,12 @@ def setup(app: Sphinx) -> dict:
 ```
 
 It's important to ensure that the function you are attaching to the event accepts the correct number of arguments in the right order.
-Depending on the event you attach to, some information might not be available, or might be locked. 
+Depending on the event you attach to, some information might not be available, or might be locked.
 Some events also expect a return value.
 
 For more information, please see the related documentation:
 - [Attaching function signature](https://www.sphinx-doc.org/en/master/extdev/appapi.html#sphinx.application.Sphinx.connect)
-- [Build API events](https://www.sphinx-doc.org/en/master/extdev/event_callbacks.html#core-events-overview)  
+- [Build API events](https://www.sphinx-doc.org/en/master/extdev/event_callbacks.html#core-events-overview)
 - [sphinx-needs events](https://github.com/useblocks/sphinx-needs/blob/master/docs/contributing.rst#structure-of-the-extensions-logic)
 
 ## Adding a New Configuration Value
@@ -55,11 +55,11 @@ def setup(app: Sphinx) -> dict:
     ...
 ```
 
-Each configuration value has an associated 'rebuild' value that determines what needs to be rebuilt if this value is changed.  
+Each configuration value has an associated 'rebuild' value that determines what needs to be rebuilt if this value is changed.
 It must be one of these values:
-- `'env'`: if a change in the setting only takes effect when a document is parsed - this means that the whole environment must be rebuilt.  
-- `'html'`: if a change in the setting needs a full rebuild of HTML documents.  
-- `''`: if a change in the setting will not need any special rebuild.  
+- `'env'`: if a change in the setting only takes effect when a document is parsed - this means that the whole environment must be rebuilt.
+- `'html'`: if a change in the setting needs a full rebuild of HTML documents.
+- `''`: if a change in the setting will not need any special rebuild.
 
 More information is available in the [documentation here](https://www.sphinx-doc.org/en/master/extdev/appapi.html#sphinx.application.Sphinx.add_config_value).
 
@@ -122,7 +122,7 @@ For examples on how to use and implement the sphinx testing app, you can check o
 
 Find everything related to testing within bazel and how to add your test suite to it, [see here](/tools/testing/pytest/README.md)
 
-Also look at already built extensions inside Score. They can be found in their respective folders:
+Also look at already built extensions inside S-CORE. They can be found in their respective folders:
 - [score_metamodel](/docs/_tooling/extensions/score_metamodel/README.md)
 - [score_draw_uml_funcs](/docs/_tooling/extensions/score_draw_uml_funcs/__init__.py)
 
@@ -131,6 +131,5 @@ Also look at already built extensions inside Score. They can be found in their r
 - [Sphinx Documentation](https://www.sphinx-doc.org/en)
 - [Sphinx Testing Fixture](https://www.sphinx-doc.org/en/master/extdev/testing.html#module-sphinx.testing)
 - [Sphinx Needs Documentation](https://sphinx-needs.readthedocs.io/en/latest/)
-- [Sphinx Tutorials](https://www.sphinx-doc.org/en/master/development/tutorials/index.html)  
+- [Sphinx Tutorials](https://www.sphinx-doc.org/en/master/development/tutorials/index.html)
 - [Pytest Documentation](https://docs.pytest.org/en/stable/)
-

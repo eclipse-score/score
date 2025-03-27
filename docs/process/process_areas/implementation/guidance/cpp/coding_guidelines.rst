@@ -26,7 +26,7 @@ Most programming languages are not specifically designed to be used within safet
 
 MISRA C++:2023
 --------------
-*MISRA* introduces coding rules for C++ which aim at providing a language subset which guarantees a high code quality. As *MISRA* is mostly accepted as an industry standard, SCORE will adhere to those rules.
+*MISRA* introduces coding rules for C++ which aim at providing a language subset which guarantees a high code quality. As *MISRA* is mostly accepted as an industry standard, S-CORE will adhere to those rules.
 
 *MISRA C++:2023* guidelines were released on November 2023. They are designed to be used with *C++17* and replace the *AUTOSAR guidelines for C++14* and the *MISRA C++:2008 guidelines*.
 

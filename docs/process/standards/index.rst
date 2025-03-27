@@ -27,7 +27,7 @@ Standards
 The graphs below presents statistics on:
 
 * percentage of standard requirements linked to guidances
-* percentage of standard workproducts linked to SCORE workproducts
+* percentage of standard workproducts linked to S-CORE workproducts
 
 ISO26262
 --------

@@ -51,7 +51,7 @@ Workflows
    :contains: gd_guidl__saf_package, gd_temp__feature_safety_wp, gd_temp__module_safety_plan
    :has: doc_concept__safety_management__process, doc_getstrt__safety_management__process
 
-   | The Safety Manager in SCORE is NOT responsible to provide the argument for the achievement of functional safety.
+   | The Safety Manager in S-CORE is NOT responsible to provide the argument for the achievement of functional safety.
    | But the Safety Manager creates and maintains the safety package in the sense of a collection of safety related work products.
    | The generation and the maintainance of this draft safety package shall be automtated as much as possible.
    | It does not contain the final argumentation of the safety of the product.

@@ -21,7 +21,7 @@ Contribution Request Guideline
   :status: valid
   :tags: contribution_management
 
-Contributions to the *SCORE* project are the key to grow the content including the code. Contributions may cover simple improvement proposals, bug or problem reports, but also more complex scope changes of features up to new feature requests. Depending on the contribution scope, several steps may be required to finally merge it within the *SCORE* repository.
+Contributions to the *S-CORE* project are the key to grow the content including the code. Contributions may cover simple improvement proposals, bug or problem reports, but also more complex scope changes of features up to new feature requests. Depending on the contribution scope, several steps may be required to finally merge it within the *S-CORE* repository.
 
 This guidline shall help the contributor (:need:`Contributor <rl__contributor>`) to find the right path for his contribution.
 
@@ -41,7 +41,7 @@ If possible, the reviewer should use the suggestion functionality to suggest a c
 
 You can also join our `Slack <https://sdvworkinggroup.slack.com/archives/C083Z4VL90B>`_ for real-time discussions.
 
-The *SCORE* project defines a Contribution Request (**COR**) as any defined and allowed trigger to start the active contribution to the *SCORE* project. That means obviously that a *PR* is a Contribution Request.
+The *S-CORE* project defines a Contribution Request (**COR**) as any defined and allowed trigger to start the active contribution to the *S-CORE* project. That means obviously that a *PR* is a Contribution Request.
 
 Summary:
 
@@ -68,7 +68,7 @@ For all possibilites the project contains simple templates (provided by committe
   :status: valid
   :tags: contribution_management
 
-A Pull Request (**PR**) is the **ONLY** way to contribute **CODE** to the *SCORE* project.
+A Pull Request (**PR**) is the **ONLY** way to contribute **CODE** to the *S-CORE* project.
 
 The figure below shows a simplified workflow for a PR.
 
@@ -83,28 +83,28 @@ The figure below shows a simplified workflow for a PR.
 
   Simple *PR* based contribution request workflow overview
 
-Content in general may contain features, requirements, architectural designs, modules, components, detailed designs, implementations and source code, tests, process descriptions, any documentations, guidelines, tutorials, tools, or infrastructure topics and more of the *SCORE* project. In case of doubt or for any other input we strongly encourage to open a *GitHub Issue* (:need:`gd_guidl__issue_guideline`) first.
+Content in general may contain features, requirements, architectural designs, modules, components, detailed designs, implementations and source code, tests, process descriptions, any documentations, guidelines, tutorials, tools, or infrastructure topics and more of the *S-CORE* project. In case of doubt or for any other input we strongly encourage to open a *GitHub Issue* (:need:`gd_guidl__issue_guideline`) first.
 
-The *PR* should provide all required information of the new or changed content. Therefore the *SCORE* project provides content specific templates, which the contributor (:need:`Contributor <rl__contributor>`) must use for his *PR* (ToDo link here to the templates overview). Templates may be *PR* templates, *GitHub Issue* templates and also additional document or work product templates.
+The *PR* should provide all required information of the new or changed content. Therefore the *S-CORE* project provides content specific templates, which the contributor (:need:`Contributor <rl__contributor>`) must use for his *PR* (ToDo link here to the templates overview). Templates may be *PR* templates, *GitHub Issue* templates and also additional document or work product templates.
 
 The content of any *PR* is the commit content and the description as well as the comments given in GitHub and is kept in a versioned repository, their revision history is the historical record of the PR.
 
 This historical record is available by the normal git commands for retrieving older revisions, and can also be browsed on GitHub.
 
-**************************************
-Detailed *SCORE* Pull Request Workflow
-**************************************
+***************************************
+Detailed *S-CORE* Pull Request Workflow
+***************************************
 
-This chapter is only for optional read to understand the details for the Pull Request workflow defined in *SCORE*.
+This chapter is only for optional read to understand the details for the Pull Request workflow defined in *S-CORE*.
 
 The figure below gives an overview about all the possible steps for a *PR* until it is either accepted or rejected.
 
 .. figure:: _assets/score_contribution_request_standard.drawio.svg
   :width: 100%
   :align: center
-  :alt: Detailed *SCORE* Pull request workflow overview
+  :alt: Detailed *S-CORE* Pull request workflow overview
 
-  Detailed *SCORE* Pull request workflow overview
+  Detailed *S-CORE* Pull request workflow overview
 
 Create a PR
 ===========
@@ -116,7 +116,7 @@ Reviewers will be automatically assigned (:need:`Committer <rl__committer>`) bas
 Review and merge a PR
 =====================
 
-A *PR* is reviewed with all content that adds/modifies it. As long as a *PR* requires further work by the contributor (:need:`Contributor <rl__contributor>`), the *PR* is not approved and thus not merged and further changes are requested. Once the contributor (:need:`Contributor <rl__contributor>`) considers all review comments as resolved, :need:`Contributor <rl__contributor>` can re-request a review. The committer (:need:`Committer <rl__committer>`) reviews the *PR* content according the *SCORE* review and acceptance criteria (ToDo link here to the criteria).
+A *PR* is reviewed with all content that adds/modifies it. As long as a *PR* requires further work by the contributor (:need:`Contributor <rl__contributor>`), the *PR* is not approved and thus not merged and further changes are requested. Once the contributor (:need:`Contributor <rl__contributor>`) considers all review comments as resolved, :need:`Contributor <rl__contributor>` can re-request a review. The committer (:need:`Committer <rl__committer>`) reviews the *PR* content according the *S-CORE* review and acceptance criteria (ToDo link here to the criteria).
 Further the contributor (:need:`Contributor <rl__contributor>`) must resolve found issues from the automated checks, if they do not pass.
 
 As long as the *PR* does not meet the defined criteria and the checks does not pass, it will not be approved. If it does not follow the required templates, based on the provided content or the templates are not filled out properly, the committer as reviewer (:need:`Committer <rl__committer>`) will place the *PR* to the "Draft" state.
