@@ -32,7 +32,7 @@ Workproducts Requirements Engineering
 .. workproduct:: Component Requirements
    :id: wp__requirements__comp
    :status: valid
-   :complies: std_wp__iso26262__software_651
+   :complies: std_wp__iso26262__software_651, std_wp__isopas8926__4521
 
    SW Requirements for components
 
@@ -46,7 +46,7 @@ Workproducts Requirements Engineering
 .. workproduct:: Component Assumptions of Use
    :id: wp__requirements__comp_aou
    :status: valid
-   :complies: std_wp__iso26262__software_651
+   :complies: std_wp__iso26262__software_651, std_wp__isopas8926__4521
 
    SW Safety Requirements for the user of the component, exportable requirements for the user to integrate in their req mgt system.
 

@@ -27,7 +27,7 @@ Work Products Change Management
    :id: wp__issue_track_system
    :status: valid
    :tags: change_management
-   :complies: std_wp__iso26262__support_852, std_wp__iso26262__support_853, std_wp__iso26262__support_854, std_req__aspice_40__iic-13-16
+   :complies: std_wp__iso26262__support_852, std_wp__iso26262__support_853, std_wp__iso26262__support_854, std_req__aspice_40__iic-13-16, std_wp__isopas8926__4527
 
    | - Change request
    | - Change request plan

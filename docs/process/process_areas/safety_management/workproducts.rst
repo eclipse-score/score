@@ -33,7 +33,7 @@ Work products
 .. workproduct:: Module Safety Plan
    :id: wp__module_safety_plan
    :status: valid
-   :complies: std_wp__iso26262__management_552, std_wp__iso26262__management_653, std_wp__iso26262__support_853, std_wp__iso26262__support_1251, std_wp__iso26262__support_1252
+   :complies: std_wp__iso26262__management_552, std_wp__iso26262__management_653, std_wp__iso26262__support_853, std_wp__iso26262__support_1251, std_wp__iso26262__support_1252, std_wp__isopas8926__4512
 
    Plan to manage and guide the execution of the safety activities of a project including dates, milestones, tasks, deliverables, responsibilities (including the Safety Manager appointment) and resources.
 
@@ -112,7 +112,7 @@ Work products
 .. workproduct:: Software component classification
    :id: wp__sw_component_class
    :status: valid
-   :complies: std_wp__iso26262__support_1251
+   :complies: std_wp__iso26262__support_1251, std_wp__isopas8926__4511
 
    The classification shall include:
 

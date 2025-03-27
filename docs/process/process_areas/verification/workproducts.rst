@@ -73,7 +73,7 @@ Module
 .. workproduct:: Module Verification Report
    :id: wp__verification__module_ver_report
    :status: valid
-   :complies: std_wp__iso26262__software_952, std_wp__iso26262__software_1053, std_wp__iso26262__support_953, std_wp__iso26262__support_1253, std_wp__iso26262__analysis_752, std_wp__iso26262__analysis_852, std_wp__iso26262__support_1252
+   :complies: std_wp__iso26262__software_952, std_wp__iso26262__software_1053, std_wp__iso26262__support_953, std_wp__iso26262__support_1253, std_wp__iso26262__analysis_752, std_wp__iso26262__analysis_852, std_wp__iso26262__support_1252, std_wp__isopas8926__4526
 
    Verification Report contains:
 
@@ -94,14 +94,14 @@ Component
 .. workproduct:: Component test
    :id: wp__verification__component_test
    :status: valid
-   :complies: std_wp__iso26262__support_952
+   :complies: std_wp__iso26262__software_1051, std_wp__iso26262__support_952, std_wp__isopas8926__4525
 
    Component Testing verifies Component Requirements
 
 .. workproduct:: Component Integration test
    :id: wp__verification__comp_int_test
    :status: valid
-   :complies: std_wp__iso26262__software_1051, std_wp__iso26262__support_952
+   :complies: std_wp__iso26262__software_1051, std_wp__iso26262__support_952, std_wp__isopas8926__4525
 
    Component Integration Testing verifies the detailed design and component architecture:
 
@@ -114,7 +114,7 @@ Component
 .. workproduct:: Unit test
    :id: wp__verification__sw_unit_test
    :status: valid
-   :complies: std_wp__iso26262__software_951, std_wp__iso26262__support_952, std_req__iso26262__software_845
+   :complies: std_wp__iso26262__software_951, std_wp__iso26262__support_952, std_req__iso26262__software_845, std_wp__isopas8926__4525
 
    Unit testing verifies detailed design (traced to).
    Respective tooling is defined in :need:`wp__platform_mgmt`, :need:`wp__verification__plan` and integrated in CI/Build.

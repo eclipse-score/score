@@ -18,7 +18,7 @@ Module Safety Plan Template
 .. gd_temp:: Module Safety Plan Template
    :id: gd_temp__module_safety_plan
    :status: valid
-   :complies: std_req__iso26262__management_6465, std_req__iso26262__management_6466, std_req__iso26262__management_6467, std_req__iso26262__management_6468, std_req__iso26262__management_6469
+   :complies: std_req__iso26262__management_6465, std_req__iso26262__management_6466, std_req__iso26262__management_6467, std_req__iso26262__management_6468, std_req__iso26262__management_6469, std_req__isopas8926__44341, std_req__isopas8926__44342, std_req__isopas8926__44611, std_req__isopas8926__4463
 
 This document implements <add "need" link>
 

@@ -33,7 +33,7 @@ Architecture Workproducts
 .. workproduct:: Component Architecture
    :id: wp__component_arch
    :status: valid
-   :complies: std_wp__iso26262__software_751
+   :complies: std_wp__iso26262__software_751, std_wp__isopas8926__4523
 
    Component Architecture linked to Component Requirements
 

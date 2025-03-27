@@ -20,7 +20,7 @@ Impact Analysis Template
 .. gd_temp:: Impact Analysis Template
    :id: gd_temp__change__impact_analysis
    :status: valid
-   :complies: std_req__aspice_40__SUP-10-BP2, std_req__aspice_40__iic-18-57, std_req__iso26262__support_8431, std_req__iso26262__support_8432
+   :complies: std_req__aspice_40__SUP-10-BP2, std_req__aspice_40__iic-18-57, std_req__iso26262__support_8431, std_req__iso26262__support_8432, std_req__isopas8926__4462
 
 Type of Change Request
 ----------------------

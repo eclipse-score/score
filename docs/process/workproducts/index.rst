@@ -152,7 +152,7 @@ Platform development
    :id: wp__hsi
    :status: draft
    :tags: safety
-   :complies: std_wp__iso26262__software_652
+   :complies: std_wp__iso26262__software_652, std_wp__isopas8926__4522
 
    | The document shall specify the hardware and software interaction and be consistent with the safety concept.
    | It shall include the platform's hardware parts that are controlled by software and hardware resources that support the execution of the software.
@@ -165,7 +165,7 @@ Component development
    :id: wp__sw_component_safety_analysis
    :status: draft
    :tags: safety
-   :complies: std_wp__iso26262__analysis_851, std_wp__iso26262__software_752
+   :complies: std_wp__iso26262__analysis_851, std_wp__iso26262__software_752, std_wp__isopas8926__4524
 
    Bottom-Up Safety Analysis with e.g. FMEA method, verifies the component architecture (as part of SW Safety Concept)
    - Detection and prevention mitigations linked to Software Component Requirements or Assumptions of Use
