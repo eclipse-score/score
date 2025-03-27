@@ -53,10 +53,10 @@ Checklist
      -
    * - IMPL_01_02
      - Are the SOLID design principles applied?
-     - The Unit Design shall archieve the following principles:
-       Correct order of excecution of the functions,
+     - The Unit Design shall achieve the following principles:
+       Correct order of execution of the functions,
        consistency of the interfaces between the units,
-       correctness of data flow and data controll between the units,
+       correctness of data flow and data control between the units,
        simplicity, readability and comprehensibility, robustness,
        suitability for modifications, verifiability
      -
