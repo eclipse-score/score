@@ -30,6 +30,6 @@ With focus on testability, requirements getting reviewed by:
 
    * :need:`rl__testing_community`
 
-The tool evaluation, verification and reporting is handled by:
+The tool verification and qualification is handled by:
 
    * :need:`rl__infrastructure_tooling_community`.
