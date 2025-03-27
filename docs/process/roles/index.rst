@@ -144,6 +144,18 @@ SCORE development roles
    .. note::
       Defines and enforces processes.
 
+.. role:: Testing Community Member
+   :id: rl__testing_community
+   :status: valid
+   :tags: verification
+   :contains: rl__committer
+
+   The testing community members are responsible for the test case development from component to
+   platform level. They shall be included in any requirements reviews. They can also improve
+   independence argumentation when involved in the development of unit testing on safety critical
+   units. In this way the testing community takes a supportive role for unit testing
+
+
 SCORE cross functional teams
 ----------------------------
 
@@ -153,7 +165,7 @@ SCORE cross functional teams
    :tags: cross_functional
    :contains: rl__technical_lead, rl__safety_manager, rl__quality_manager, rl__security_manager, rl__contributor, rl__committer, rl__infrastructure_tooling_community, rl__process_community
 
-   The platform team is responsible for all artefacts within the platform SEooC. Additionally it is also responsible for the overall process including its support by tooling.
+   The platform team is responsible for all artifacts within the platform SEooC. Additionally it is also responsible for the overall process including its support by tooling.
 
 .. role:: Module Team
    :id: rl__module_team
@@ -161,5 +173,4 @@ SCORE cross functional teams
    :tags: cross_functional
    :contains: rl__module_lead, rl__safety_manager, rl__quality_manager, rl__security_manager, rl__contributor, rl__committer
 
-   The module team is responsible for all artefacts within the module SEooCs. Each module has only one responsible team but a team may also be responsible for several (small) modules.
-
+   The module team is responsible for all artifacts within the module SEooCs. Each module has only one responsible team but a team may also be responsible for several (small) modules.
