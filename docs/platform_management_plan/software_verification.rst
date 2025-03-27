@@ -123,7 +123,12 @@ There are the following different levels of integration and verification defined
 
    #. Stakeholder requirements
 
-These three levels translate to the levels of ISO 26262 part 6 clauses 9 to 11.
+
+  **Note:** These three levels translate to the levels of ISO 26262 part 6 clauses 9 to 11. The platform
+  testing will be executed by the integrator. S-Core project only executes tests on reference hardware.
+  These tests serve as an optional base for the integrator and will also be part of the
+  :need:`wp__verification__platform_ver_report`, but more on an informative character.
+  The full scope of clause 11 is tailored out accordingly for S-Core.
 
 Verification Methods
 --------------------
@@ -176,26 +181,37 @@ method is to be used as meta data (*TestType* and *DerivationTechnique*).
      - QM & ASIL B
    * - Resource Usage Evaluation (only on reference environment)
      - resource-usage
-     - -, 2, 3
+     - -, 2, -
      - QM & ASIL B
-   * - **Optional:** Control Flow Analysis
-     - control-flow-analysis
-     - 1, 2, -
-     - ASIL B
-   * - **Optional**: Data Flow Analysis
-     - data-flow-analysis
-     - 1, 2, -
-     - ASIL B
-   * - **Optional**: Fault Injection
-     - fault-injection
-     - 1, -, -
-     - ASIL B
+
 
 For QM software some of the methods may be executed with less rigor compared to safety-critical elements.
 These may be interface testing or resource usage evaluation, in case there is an argument for
 sufficient freedom from interference with safety critical software parts.
 
 Static code analysis is part of the :need:`wp__sw_implementation`.
+
+As an additional measure the resource usage evaluation ``resource-usage`` should also be considered
+for level 3 testing as this is the level executed also on reference hardware with the integrated
+platform. This can help to identify resource constraints on "system" level from a security and safety
+perspective.
+
+The following test methods are optional for lower safety integrity levels, but may become required
+at higher levels:
+
+   #. Control Flow Analysis (``control-flow-analysis``):
+
+      Most beneficial for testing level 1 and 2.
+   #. Data Flow Analysis (``data-flow-analysis``):
+
+      Most beneficial for testing level 1 and 2.
+   #. Fault Injection (``fault-injection``):
+
+      Most beneficial for testing level 2.
+   #. Structural Function/Call Coverage (``struct-func-cov`` & ``struct-call-cov``)
+
+      Most beneficial for testing level 2.
+
 
 Test Derivation Methods
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -228,10 +244,12 @@ Test Derivation Methods
      - explorative-testing
      - -, 2, 3
      - QM, ASIL B
-   * - Fuzzy Testing
+   * - Fuzzy Testing (focus security)
      - fuzz-testing
      - 1, 2, -
      - QM, ASIL B
+
+The ``fuzz-testing`` should especially be taken into account to increase security of the software.
 
 For non-safety-critical(QM) software parts, you can generally reduce the rigor of the
 testing approaches, but cannot omit them completely. It may be possible to reduce the
