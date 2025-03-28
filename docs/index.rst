@@ -67,8 +67,7 @@ Introduction
       How to Contribute?
       ^^^
       The only way to influence Eclipse S-CORE is to contribute - S-CORE is open! Please check our
-      :ref:`Get Involved <introduction_get_involved>` guide for more
-      information.
+      :ref:`Contribute <contribute>` guide for more information.
 
 
 Software artifacts

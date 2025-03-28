@@ -158,8 +158,4 @@ The people working in this project are listed `here <https://projects.eclipse.or
 
 How to contribute
 ^^^^^^^^^^^^^^^^^
-
-.. toctree::
-   :maxdepth: 1
-
-   get_involved.rst
+For a guide on how to get involved and start contributing, please checkout :ref:`contribute`.
