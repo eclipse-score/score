@@ -89,6 +89,7 @@ Interfaces
       :security: <YES|NO>
       :safety: <QM|ASIL_B|ASIL_D>
       :fulfils: <link to component requirement id>
+      :language: cpp
 
 .. note::
    Architecture can be split into multiple files. At component level the public interfaces to be used by the user and tester to be shown.
