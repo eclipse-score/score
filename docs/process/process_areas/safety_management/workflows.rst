@@ -20,7 +20,7 @@ Workflows
    :status: valid
    :responsible: rl__safety_manager
    :approved_by: rl__technical_lead
-   :input: wp__platform_mgmt, wp__issue_track_system, wp__sw_component_class
+   :input: wp__platform_mgmt, wp__issue_track_system, wp__sw_component_class, wp__tailoring
    :output: wp__module_safety_plan, wp__platform_safety_plan
    :contains: gd_guidl__saf_plan_definitions, gd_temp__feature_safety_wp, gd_temp__module_safety_plan
    :has: doc_concept__safety_management__process, doc_getstrt__safety_management__process

@@ -91,10 +91,14 @@ Because these are in responsibility of the system integrator: :need:`std_wp__iso
 Note that stakeholder requirements (:need:`std_wp__iso26262__system_651`) are in scope of the project,
 to be able to cover System and HW related failures which are usually covered by SW (e.g. end to end protection for ECU external communication).
 But those are the "Assumed Technical Safety Requirements" of the SW platform SEooC and do not need to be tested by SEooC supplier.
-I.e. the system testing is out of scope.
-There will be HW/SW integration tests of feature requirements, as required by ISO 26262 part 6.
-These may be reused by the user on his HW platform also to cover his Technical Safety Requirements towards the SW platform.
-But this is the decision of the user.
+I.e. the system testing is out of scope. Note that S-CORE will implement platform test of stakeholder requirements for demonstration,
+but these are not intended to be completely covering the stakeholder requirements.
+There will be SW integration tests of feature requirements, as required by ISO 26262 part 6-10.
+These may be reused by the users on their HW platform to cover Technical Safety Requirements towards the SW platform.
+But if these are sufficiently also covering the TSRs must be analyzed and decided by the user.
+
+Also tailored out is the SW testing on the target, as the S-CORE project can only test on reference HW
+(part of SW integration testing). So these are not relevant: :need:`std_wp__iso26262__software_1151`, :need:`std_wp__iso26262__software_1152`
 
 Because there is no calibration used for the S-CORE SW platform components, only configuration: :need:`std_wp__iso26262__software_app_c_52`,
 :need:`std_wp__iso26262__software_app_c_54`, :need:`std_wp__iso26262__software_app_c_57`
@@ -113,6 +117,13 @@ Because in the S-CORE SW platform integration of safety-related systems not deve
 
 Because in the S-CORE SW platform no ASIL decomposition is planned: :need:`std_wp__iso26262__analysis_551`, :need:`std_wp__iso26262__analysis_552`
 
+.. workproduct:: Tailoring Document Platform
+   :id: wp__tailoring_platform
+   :status: valid
+   :complies: std_wp__iso26262__management_751, std_wp__iso26262__system_652, std_wp__iso26262__system_653, std_wp__iso26262__system_654, std_wp__iso26262__system_655, std_wp__iso26262__system_656, std_wp__iso26262__system_657, std_wp__iso26262__system_751, std_wp__iso26262__system_752, std_wp__iso26262__system_851, std_wp__iso26262__system_852, std_wp__iso26262__software_1151, std_wp__iso26262__software_1152, std_wp__iso26262__software_app_c_52, std_wp__iso26262__software_app_c_54, std_wp__iso26262__software_app_c_57, std_wp__iso26262__support_551, std_wp__iso26262__support_552, std_wp__iso26262__support_553, std_wp__iso26262__support_554, std_wp__iso26262__support_555, std_wp__iso26262__support_1351, std_wp__iso26262__support_1352, std_wp__iso26262__support_1353, std_wp__iso26262__support_1451, std_wp__iso26262__support_1452, std_wp__iso26262__support_1551, std_wp__iso26262__support_1651, std_wp__iso26262__analysis_551, std_wp__iso26262__analysis_552
+
+   This work product instantiation links to all the work products which are tailored out in the platform safety plan,
+   to be able to demonstrate completeness in :ref:`external_standards`
 
 Approach
 ++++++++

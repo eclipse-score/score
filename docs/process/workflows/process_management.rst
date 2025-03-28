@@ -42,7 +42,7 @@ todo: need to add guidance and standard links
    :approved_by: rl__technical_lead
    :supported_by: rl__external_auditor
    :input: wp__process_plan, wp__issue_track_system
-   :output: wp__process_definition
+   :output: wp__process_definition, wp__tailoring
 
    Process is defined and approved.
 
