@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,13 +12,10 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Development
-###########
+Rust
+####
 
 .. toctree::
    :maxdepth: 1
 
-   development_environment
-   cpp/index
-   rust/index
-   python/index
+   coding_guidelines
