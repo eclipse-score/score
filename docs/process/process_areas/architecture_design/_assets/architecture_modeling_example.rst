@@ -167,7 +167,6 @@ Component Architecure File(s)
    :status: valid
    :safety: ASIL_B
    :security: NO
-   :uses: comp_arc_int__archdes_component_interface_3
    :implements: comp_arc_int__archdes_component_interface_3
    :fulfils: comp_req__archdes_example_req
 

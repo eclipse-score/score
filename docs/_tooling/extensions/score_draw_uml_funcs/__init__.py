@@ -251,6 +251,9 @@ def draw_module(
         if not (proc_logical_interfaces.get(iface, [])):
             # Currently only one Logical Interface per Real Interface supported
             logical_iface_tmp = get_logical_interface_real(iface, all_needs)
+            assert (
+                len(logical_iface_tmp) == 1
+            ), "only one logical interface per real interface supported"
             if logical_iface_tmp:
                 logical_iface = logical_iface_tmp[0]
                 proc_logical_interfaces[logical_iface] = iface
@@ -377,7 +380,7 @@ class draw_full_feature:
 
 class draw_full_module:
     def __repr__(self):
-        return "draw_full_component" + " in " + scripts_directory_hash()
+        return "draw_full_module" + " in " + scripts_directory_hash()
 
     def __call__(self, need, all_needs) -> str:
         structure_text, linkage_text = draw_module(need, all_needs)
