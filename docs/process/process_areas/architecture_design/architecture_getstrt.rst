@@ -240,6 +240,11 @@ To make *needuml* work we have to replace the *need()* call with a different fun
 
 You can add any layout or additional configuration you want before you call the *draw_xyz*.
 
+Facing Build Issues
+-------------------
+
+If for some reason the docs build gets stuck in an endless loop a more detailed info can be retrieved by using the **incremental build**. Usually this build aborts and points to the failure.
+
 Using NeedUML directive
 -----------------------
 

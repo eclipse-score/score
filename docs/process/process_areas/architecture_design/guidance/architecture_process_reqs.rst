@@ -45,6 +45,8 @@ Architectural Structuring
    * dynamic view
    * interface view
 
+   An additional view only shall be created on module level.
+
 .. gd_req:: Architecture Modeling
    :id: gd_req__arch__model
    :status: valid
@@ -62,6 +64,7 @@ Architectural Structuring
    For modeling the viewpoints following elements shall be used:
 
    * Feature
+   * Module
    * Component
    * Logical Interfaces
    * Interfaces
