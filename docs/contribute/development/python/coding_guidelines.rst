@@ -29,8 +29,11 @@ Coding Guidelines
 
 The art lies in balancing completeness of this document vs keeping it short, since frankly, no one
 will read a long document. Let's focus on issues that actively come up in real life and are worth
-discussing and agreeing upon, not on things that *might* be important. (We don't want to write a
-book here. And we don't have to, since Python is not used for safety critical systems.)
+discussing and agreeing upon, not on things that *might* be important.
+
+We don't want to write a book here. And we don't have to, since Python is not used for safety
+critical systems. However, to provide sufficient argumentation for code quality when it comes to
+tool qualification it is necessary to have and actively use guidelines.
 
 This guide is a **living document**—keep it concise, relevant, and practical.
 
@@ -46,6 +49,7 @@ Comments
 - The first rule of comments is to write them **only when something is worth explaining**.
 - Comments should explain *why* the code does something, not *what* it does.
 - Avoid redundant comments: if the code is clear enough, a comment is not needed.
+- Take the user's perspective when writing docstrings
 
 Testing
 -------
@@ -77,6 +81,6 @@ We're using Python, Ruff (linting & formatting), Pyright (linting) and pytest fo
 versions are managed by the infrastructure community and will be updated as frequently as possible.
 The configuration is managed by infrastructure and process communities.
 
-*Compliance to all tools is mandatory.*
+*Compliance to all tools is mandatory, and will be enforced by pull request checks.*
 
 Currently we do NOT aim at supporting older Python versions.
