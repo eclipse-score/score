@@ -99,17 +99,17 @@ def draw_comp_incl_impl_int(
 
         # check for misspelled include
         if not curr_need:
-            print(f"{need}: include {need_inc} not defined")
+            logger.info(f"{need}: include {need_inc} could not be found")
             continue
 
-        if ("comp_arc_sta") in curr_need.get("type", []):
-            sub_structure, sub_linkage, proc_impl_interfaces, proc_used_interfaces = (
-                draw_comp_incl_impl_int(
-                    curr_need, all_needs, proc_impl_interfaces, proc_used_interfaces
-                )
-            )
-        else:
+        if curr_need["type"] != "comp_arc_sta":
             continue
+
+        sub_structure, sub_linkage, proc_impl_interfaces, proc_used_interfaces = (
+            draw_comp_incl_impl_int(
+                curr_need, all_needs, proc_impl_interfaces, proc_used_interfaces
+            )
+        )
 
         structure_text += sub_structure
         linkage_text += sub_linkage
@@ -126,7 +126,7 @@ def draw_comp_incl_impl_int(
     for iface in local_impl_interfaces:
         # check for misspelled implements
         if not all_needs.get(iface, []):
-            print(f"{need}: implements {iface} not defined")
+            logger.info(f"{need}: implements {iface} could not be found")
             continue
 
         if not (interface := proc_impl_interfaces.get(iface, [])):
@@ -145,7 +145,7 @@ def draw_comp_incl_impl_int(
     for iface in local_used_interfaces:
         # check for misspelled used
         if not all_needs.get(iface, []):
-            print(f"{need}: uses {iface} not defined")
+            logger.info(f"{need}: uses {iface} could not be found")
             continue
 
         if not (interface := proc_used_interfaces.get(iface, [])):
@@ -228,19 +228,17 @@ def draw_module(
 
         # check for misspelled include
         if not curr_need:
-            print(f"{need}: include {need_inc} not defined")
+            logger.info(f"{need}: include {need_inc} could not be found")
             continue
 
-        if (("comp_arc_sta") in curr_need.get("type", [])) or (
-            ("mod_view_sta") in curr_need.get("type", [])
-        ):
-            sub_structure, sub_linkage, proc_impl_interfaces, proc_used_interfaces = (
-                draw_comp_incl_impl_int(
-                    curr_need, all_needs, proc_impl_interfaces, proc_used_interfaces
-                )
-            )
-        else:
+        if curr_need["type"] not in ["comp_arc_sta", "mod_view_sta"]:
             continue
+
+        sub_structure, sub_linkage, proc_impl_interfaces, proc_used_interfaces = (
+            draw_comp_incl_impl_int(
+                curr_need, all_needs, proc_impl_interfaces, proc_used_interfaces
+            )
+        )
 
         structure_text += sub_structure
         linkage_text += sub_linkage
@@ -250,7 +248,7 @@ def draw_module(
 
     # Add logical interfaces only to implemented interfaces
     for iface, component in proc_impl_interfaces.items():
-        if not (interface := proc_logical_interfaces.get(iface, [])):
+        if not (proc_logical_interfaces.get(iface, [])):
             # Currently only one Logical Interface per Real Interface supported
             logical_iface_tmp = get_logical_interface_real(iface, all_needs)
             if logical_iface_tmp:
