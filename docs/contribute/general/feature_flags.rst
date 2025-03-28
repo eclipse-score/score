@@ -28,7 +28,7 @@ development to enable or disable features dynamically. The main goal is to
 allow teams to manage and release new features more effectively, enabling A/B
 testing and quickly roll back if issues arise. This guidance aims
 to define how we intend to make use of these features for configuration and
-variant management of SCORE.
+variant management of S-CORE.
 
 There are two categories of flags, build flags and runtime feature toggles:
 
@@ -107,8 +107,8 @@ be allowed in CI testing.
 
 
 
-Design Guidance of feature flags in SCORE
------------------------------------------
+Design Guidance of feature flags in S-CORE
+------------------------------------------
 
 Goals
 ^^^^^
@@ -162,7 +162,7 @@ Goals
 Feature flags structure
 -----------------------
 
-SCORE has four categories of feature flags.
+S-CORE has four categories of feature flags.
 
 Generic requirements for feature flags:
 
@@ -453,7 +453,7 @@ It was confirmed using a Java example, which is the language with most advanced
 support, this is behaving as desired.
 
 Path mapping for C++ is `supported <https://github.com/bazelbuild/bazel/pull/22876>`_
-since Bazel version 7.3.0. Any internal custom rules in SCORE must also support this.
+since Bazel version 7.3.0. Any internal custom rules in S-CORE must also support this.
 A starting point for requirements based on the rules can be found
 `here <https://github.com/bazelbuild/bazel/discussions/22658>`_.
 Please be advised, that this may be incomplete. Please refer to Bazel documentation.

@@ -198,7 +198,7 @@ Workflow for Creating and Linking Assumption of Use (AoU)
 An AoU is a category of requirement which is originates from a safety concept of an architectural element (and thus it is confirmed by a safety analysis). As it can not be fulfilled by the architecture element (e.g. component) itself, it needs to be fulfilled by the user of the module.
 In Safety Elements out of Context (SEooC) the AoUs will normally be part of the safety manual.
 In this project (as it develops SEooCs) these AoUs are created both internally and externally - if existing SEooCs are integrated into the platform (e.g. a qualified Operating System).
-For AoU which arise from Score specific modules the template is almost identical to the one for feature/component requirements. The only difference is that it defined such that the attribute "satisfies" is replaced with the attribute "mitigates" (see picture below).
+For AoU which arise from S-CORE specific modules the template is almost identical to the one for feature/component requirements. The only difference is that it defined such that the attribute "satisfies" is replaced with the attribute "mitigates" (see picture below).
 For externally provided AoUs of course the sentence template cannot be taken into account, as these are only imported from an external safety manual. It is also not possible to link it to other development artifacts via the attribute "mitigates".
 
 AoUs can be of different class and shall be handled by tracing those

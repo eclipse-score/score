@@ -15,10 +15,10 @@
 
 .. _contribution_attribution:
 
-Actions to Ensure Proper Contribution Attribution in Eclipse SCORE
-=====================================================================
+Actions to Ensure Proper Contribution Attribution in Eclipse S-CORE
+===================================================================
 
-To ensure that contributions are correctly attributed to organizations in the **Eclipse SCORE** project, follow these steps:
+To ensure that contributions are correctly attributed to organizations in the **Eclipse S-CORE** project, follow these steps:
 
 Actions for Contributors
 --------------------------

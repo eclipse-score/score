@@ -14,8 +14,8 @@
 
 .. _releases:
 
-SCORE Releases Overview
-=======================
+S-CORE Releases Overview
+========================
 
 Roadmap
 --------
@@ -37,7 +37,7 @@ Overview
 SW Module List
 --------------
 
-.. list-table:: SCORE software modules overview
+.. list-table:: S-CORE software modules overview
    :header-rows: 1
 
    * - SW Module Name

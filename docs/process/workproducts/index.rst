@@ -76,7 +76,7 @@ General
    The Platform Management Plan shall include the Project Management Plan, Configuration Management Plan, Change Management Plan, Documentation Management Plan and Problem Resolution Plan.
    Plan to ensure that all work products can be uniquely identified and reproduced in a controlled manner at any time.
    Plan to ensure that relations and differences between versions can be traced.
-   Plan to manage, analyse and control changes of the work products during the project life cycle.
+   Plan to manage, analyze and control changes of the work products during the project life cycle.
    Documents should be precise, concise, clearly structured, understandable for intended users, verifiable, maintainable, and organized according to in-house procedures to facilitate information retrieval.
    Documentation guideline requirements must be defined for each WP. Each work product or document must include a title, author and approver, unique revision identification, change history, and status.
 
@@ -222,10 +222,10 @@ Supporting activities
 Note: All the work products in this list are set to status "draft", as their producing workflows are not final and complete.
 
 
-SCORE Workproduct Linkage
--------------------------
+S-CORE Workproduct Linkage
+--------------------------
 
-.. needpie:: SCORE workproducts contained in exactly one SCORE workflow
+.. needpie:: S-CORE workproducts contained in exactly one S-CORE workflow
    :labels: Not-Linked, Linked Workproduct, Linked Workproduct To Multiple Workflows
    :legend:
    :colors: red, green, blue

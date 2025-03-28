@@ -21,11 +21,11 @@ Documentation
 Description
 ===========
 
-Score project uses GitHub for hosting source code as well as GitHub
+S-CORE project uses GitHub for hosting source code as well as GitHub
 Actions for all CI/CD task. The configuration of the organization and
 repositories is managed by otterdog, a config-as-code solution. GitHub
 provides several approaches to set up repositories. In order to provide
-unified experience among all the Score repositories, the following rules
+unified experience among all the S-CORE repositories, the following rules
 should be followed.
 
 For in depth description of the properties and the relations, please

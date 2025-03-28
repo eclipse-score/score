@@ -776,7 +776,7 @@ Quality
    :rationale: This is a usability constraint needed for long term maintenance support
    :status: valid
 
-   All assumptions and design decisions made shall be specified as requirements and agreed within the SCORE community.
+   All assumptions and design decisions made shall be specified as requirements and agreed within the S-CORE community.
 
 
 Requirements Engineering

@@ -73,7 +73,7 @@ Roles
    Required skills, Knowledge of standards, Experience
 
    * External Auditor comes from organization specialized in safety audits and assessment, thus sufficient skill should be guaranteed by the sending organization.
-   * For performing the confirmation reviews also a safety manager from another (SCORE) project can play the role of an external auditor, in this case the same skills apply as for the safety manager.
+   * For performing the confirmation reviews also a safety manager from another (S-CORE) project can play the role of an external auditor, in this case the same skills apply as for the safety manager.
 
    Responsibility
 

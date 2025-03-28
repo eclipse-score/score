@@ -18,12 +18,12 @@ Docs-As-Code
 Introduction
 ------------
 
-This document describes how to write and publish documentation using the SCORE Docs-As-Code approach.
+This document describes how to write and publish documentation using the S-CORE Docs-As-Code approach.
 
 Diagrams
 --------
 
-The SCORE Docs-As-Code solution supports several ways to create diagrams.
+The S-CORE Docs-As-Code solution supports several ways to create diagrams.
 Each has its own strengths and weaknesses.
 
 Draw.io

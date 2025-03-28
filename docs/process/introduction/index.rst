@@ -48,6 +48,6 @@ Approach
 .. figure:: _assets/score_process_model.drawio.svg
   :width: 100%
   :align: center
-  :alt: Score process model
+  :alt: S-CORE process model
 
-  Score process model
+  S-CORE process model
