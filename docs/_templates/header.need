@@ -1,0 +1,32 @@
+.. list-table::
+   :widths: 50 50
+   :header-rows: 0
+
+   * - **DOCUMENT IDENTIFICATION**
+     -
+   * - Document Type
+     - Checklist
+   * - Document ID
+     - DPX-CONTR-REVIEW-CHECKLIST
+   * - Project Name
+     - Dependix
+   * - ASIL
+     - B
+   * - Security Classification
+     - CONFIDENTIAL
+   * - Author
+     - {{ author }}
+   * - Reviewer
+     -
+{%- for r in reviewers.split(", ") %}
+       | {{ r -}}
+{% endfor %}
+   * - Approver
+     -
+{%- for a in approvers.split(", ") %}
+       | {{ a -}}
+{% endfor %}
+   * - Version
+     - {{ hash }}
+   * - Status
+     - RELEASED

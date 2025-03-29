@@ -38,6 +38,10 @@ needs_layouts = {
             "footer_right": [],
         },
     },
+    "focus": {
+        "grid": "content",
+        "layout": {},
+    },
 }
 
 needs_global_options = {"layout": "score"}

@@ -363,6 +363,17 @@ needs_types:
       status: "^(valid|invalid)$"
     mandatory_links:
       implements: "^feat_arc_int_op__.*$"
+
+  review_header:
+    prefix: "review__header"
+    title: "Review Header"
+    mandatory_options:
+      id: "^review__header__[0-9a-z_]*$"
+      reviewers: "^.*$"
+      approvers: "^.*$"
+      hash: "^.*$"
+      template: "^.*$"
+
   # Implementation
   dd_sta:
     title: "Static detailed design"

@@ -44,6 +44,7 @@ extensions = [
     "score_draw_uml_funcs",
     "score_source_code_linker",
     "score_layout",
+    "score_header_service",
 ]
 
 exclude_patterns = [
@@ -63,6 +64,7 @@ numfig = True
 
 # -- sphinx-needs configuration --------------------------------------------
 # Setting the needs layouts
+needs_template_folder = "_templates"
 needs_global_options = {"collapse": True}
 html_static_path = ["_tooling/assets", "_assets"]
 needs_string_links = {
@@ -73,3 +75,7 @@ needs_string_links = {
         "options": ["source_code_link"],
     },
 }
+
+# Specify method for automatic header generation
+# set to False to use the commit message instead
+header_service_use_github_data = True

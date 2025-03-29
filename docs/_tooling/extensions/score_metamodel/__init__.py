@@ -209,6 +209,7 @@ def default_options() -> list[str]:
         "title",
         "full_title",
         "layout",
+        "template",
         "id_parent",
         "id_complete",
         "external_css",
