@@ -38,6 +38,11 @@ needs_layouts = {
             "footer_right": [],
         },
     },
+    "focus": {
+        # Just show content without title
+        "grid": "content",
+        "layout": {},
+    },
 }
 
 needs_global_options = {"layout": "score"}

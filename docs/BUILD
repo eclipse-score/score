@@ -189,3 +189,21 @@ dash_license_checker(
     src = "//docs:requirements_lock",
     visibility = ["//visibility:public"],
 )
+
+# Dedicated metamodel target only for pytest.
+# It's required to define the imports for bazel pytest, so that python/pytest can
+# import "from header_service" without issues.
+py_library(
+    name = "header_service",
+    srcs = glob(["_tooling/extensions/score_header_service/**/*.py"]),
+    imports = ["_tooling/extensions"],
+    visibility = ["//visibility:public"],
+)
+
+score_py_pytest(
+    name = "header_service_test",
+    size = "small",
+    srcs = glob(["_tooling/extensions/score_header_service/test/**/*.py"]),
+    visibility = ["//visibility:public"],
+    deps = [":header_service"],
+)

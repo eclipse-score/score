@@ -384,6 +384,16 @@ needs_types:
       implements: "^feat_arc_int_op__.+$"
       included_by: "^comp_arc_int__.+$"
 
+  review_header:
+    prefix: "review__header"
+    title: "Review Header"
+    mandatory_options:
+      id: "^review__header__[0-9a-z_]*$"
+      reviewers: "^.*$"
+      approvers: "^.*$"
+      hash: "^.*$"
+      template: "^.*$"
+
   # Implementation
   dd_sta:
     title: "Static detailed design"
