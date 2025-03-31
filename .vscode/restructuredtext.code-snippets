@@ -1,334 +1,375 @@
 {
-  "std_req_directive": {
-    "prefix": "std_req__",
-    "description": "Create a Standard Requirement",
-    "body": [
-      ".. std_req:: $1",
-      "   :id: std_req__$2",
-      "   :status: ${3|valid|}",
-      "",
-      "   ${4}"
-    ]
-  },
-  "std_wp_directive": {
-    "prefix": "std_wp__",
-    "description": "Create a Standard Work Product",
-    "body": [
-      ".. std_wp:: $1",
-      "   :id: std_wp__$2",
-      "   :status: ${3|valid|}",
-      "",
-      "   ${4}"
-    ]
-  },
-  "workflow_directive": {
-    "prefix": "wf__",
-    "description": "Create a Workflow",
-    "body": [
-      ".. workflow:: $1",
-      "   :id: wf__$2",
-      "   :status: ${3|valid, draft|}",
-      "   :input: ${4}",
-      "   :output: ${5}",
-      "   :approved_by: ${6}",
-      "   :responsible: ${7}",
-      "",
-      "   ${8}"
-    ]
-  },
-  "gd_req_directive": {
-    "prefix": "gd_req__",
-    "description": "Create a Process Requirements",
-    "body": [
-      ".. gd_req:: $1",
-      "   :id: gd_req__$2",
-      "   :status: ${3|valid, draft|}",
-      "",
-      "   ${4}"
-    ]
-  },
-  "gd_temp_directive": {
-    "prefix": "gd_temp__",
-    "description": "Create a Process Template",
-    "body": [
-      ".. gd_temp:: $1",
-      "   :id: gd_temp__$2",
-      "   :status: ${3|valid, draft|}",
-      "",
-      "   ${4}"
-    ]
-  },
-  "gd_chklst_directive": {
-    "prefix": "gd_chklst__",
-    "description": "Create a Process Checklist",
-    "body": [
-      ".. gd_chklst:: $1",
-      "   :id: gd_chklst__$2",
-      "   :status: ${3|valid, draft|}",
-      "",
-      "   ${4}"
-    ]
-  },
-  "gd_guidl_directive": {
-    "prefix": "gd_guidl__",
-    "description": "Create a Process Guideline",
-    "body": [
-      ".. gd_guidl:: $1",
-      "   :id: gd_guidl__$2",
-      "   :status: ${3|valid, draft|}",
-      "",
-      "   ${4}"
-    ]
-  },
-  "gd_method_directive": {
-    "prefix": "gd_meth__",
-    "description": "Create a Process Method",
-    "body": [
-      ".. gd_method:: $1",
-      "   :id: gd_meth__$2",
-      "   :status: ${3|valid, draft|}",
-      "",
-      "   ${4}"
-    ]
-  },
-  "workproduct_directive": {
-    "prefix": "wp__",
-    "description": "Create a Workproduct",
-    "body": [
-      ".. workproduct:: $1",
-      "   :id: wp__$2",
-      "   :status: ${3|valid, draft|}",
-      "",
-      "   ${4}"
-    ]
-  },
-  "role_directive": {
-    "prefix": "rl__",
-    "description": "Create a Role",
-    "body": [
-      ".. role:: $1",
-      "   :id: rl__$2",
-      "",
-      "   ${3}"
-    ]
-  },
-  "doc_concept_directive": {
-    "prefix": "doc_concept__",
-    "description": "Create a Concept Definition",
-    "body": [
-      ".. doc_concept:: $1",
-      "   :id: doc_concept__$2",
-      "   :status: ${3|valid, draft|}",
-      "",
-      "   ${4}"
-    ]
-  },
-  "doc_getstrt_directive": {
-    "prefix": "doc_getstrt__",
-    "description": "Create a Getting Startet",
-    "body": [
-      ".. doc_getstrt:: $1",
-      "   :id: doc_getstrt__$2",
-      "   :status: ${3|valid, draft|}",
-      "",
-      "   ${4}"
-    ]
-  },
-  "document_directive": {
-    "prefix": "doc__",
-    "description": "Create a Generic Document",
-    "body": [
-      ".. document:: $1",
-      "   :id: doc__$2",
-      "   :safety: ${3|QM, ASIL_B, ASIL_D|}",
-      "   :status: ${4|valid, draft, invalid|}",
-      "",
-      "   ${5}"
-    ]
-  },
-  "stkh_req_directive": {
-    "prefix": "stkh_req__",
-    "description": "Create a Stakeholder Requirement",
-    "body": [
-      ".. stkh_req:: $1",
-      "   :id: stkh_req__$2",
-      "   :reqtype: ${3|Functional, Interface, Process, Legal, Non-Functional|}",
-      "   :security: ${4|YES, NO|}",
-      "   :safety: ${5|QM, ASIL_B, ASIL_D|}",
-      "   :status: ${6|valid, invalid|}",
-      "   :rationale: ${7}",
-      "",
-      "   ${8}"
-    ]
-  },
-  "feat_req_directive": {
-    "prefix": "feat_req__",
-    "description": "Create a Feature Requirement",
-    "body": [
-      ".. feat_req:: $1",
-      "   :id: feat_req__$2",
-      "   :reqtype: ${3|Functional, Interface, Process, Legal, Non-Functional|}",
-      "   :security: ${4|YES, NO|}",
-      "   :safety: ${5|QM, ASIL_B, ASIL_D|}",
-      "   :status: ${6|valid, invalid|}",
-      "   :satisfies: ${7}",
-      "",
-      "   ${8}"
-    ]
-  },
-  "comp_req_directive": {
-    "prefix": "comp_req__",
-    "description": "Create a Component Requirement",
-    "body": [
-      ".. comp_req:: $1",
-      "   :id: comp_req__$2",
-      "   :reqtype: ${3|Functional, Interface, Process, Legal, Non-Functional|}",
-      "   :security: ${4|YES, NO|}",
-      "   :safety: ${5|QM, ASIL_B, ASIL_D|}",
-      "   :status: ${6|valid, invalid|}",
-      "   :satisfies: ${7}",
-      "",
-      "   ${8}"
-    ]
-  },
-  "tool_req_directive": {
-    "prefix": "tool_req__",
-    "description": "Create a Tool Requirement",
-    "body": [
-      ".. tool_req:: $1",
-      "   :id: tool_req__$2",
-      "   :reqtype: ${3|Functional, Interface, Process, Legal, Non-Functional|}",
-      "   :security: ${4|YES, NO|}",
-      "   :safety: ${5|QM, ASIL_B, ASIL_D|}",
-      "   :status: ${6|valid, invalid|}",
-      "   :satisfies: ${7}",
-      "",
-      "   ${8}"
-    ]
-  },
-  "aou_req_directive": {
-    "prefix": "aou_req__",
-    "description": "Create a Assumption of Use",
-    "body": [
-      ".. aou_req:: $1",
-      "   :id: aou_req__$2",
-      "   :reqtype: ${3|Functional, Interface, Process, Legal, Non-Functional|}",
-      "   :security: ${4|YES, NO|}",
-      "   :safety: ${5|QM, ASIL_B, ASIL_D|}",
-      "   :status: ${6|valid, invalid|}",
-      "",
-      "   ${7}"
-    ]
-  },
-  "feat_arc_sta_directive": {
-    "prefix": "feat_arc_sta__",
-    "description": "Create a Feature Architecture Static View",
-    "body": [
-      ".. feat_arc_sta:: $1",
-      "   :id: feat_arc_sta__$2",
-      "   :security: ${3|YES, NO|}",
-      "   :safety: ${4|QM, ASIL_B, ASIL_D|}",
-      "   :status: ${5|valid, invalid|}",
-      "   :satisfies: ${6}",
-      "",
-      "   ${7}"
-    ]
-  },
-  "feat_arc_dyn_directive": {
-    "prefix": "feat_arc_dyn__",
-    "description": "Create a Feature Architecture Dynamic View",
-    "body": [
-      ".. feat_arc_dyn:: $1",
-      "   :id: feat_arc_dyn__$2",
-      "   :security: ${3|YES, NO|}",
-      "   :safety: ${4|QM, ASIL_B, ASIL_D|}",
-      "   :status: ${5|valid, invalid|}",
-      "   :satisfies: ${6}",
-      "",
-      "   ${7}"
-    ]
-  },
-  "feat_arc_int_directive": {
-    "prefix": "feat_arc_int__",
-    "description": "Create a Feature Architecture Interfaces",
-    "body": [
-      ".. feat_arc_int:: $1",
-      "   :id: feat_arc_int__$2",
-      "   :security: ${3|YES, NO|}",
-      "   :safety: ${4|QM, ASIL_B, ASIL_D|}",
-      "   :status: ${5|valid, invalid|}",
-      "   :satisfies: ${6}",
-      "",
-      "   ${7}"
-    ]
-  },
-  "feat_arc_int_op_directive": {
-    "prefix": "feat_arc_int_op__",
-    "description": "Create a Feature Architecture Interface Operation",
-    "body": [
-      ".. feat_arc_int_op:: $1",
-      "   :id: feat_arc_int_op__$2",
-      "   :security: ${3|YES, NO|}",
-      "   :safety: ${4|QM, ASIL_B, ASIL_D|}",
-      "   :status: ${5|valid, invalid|}",
-      "",
-      "   ${6}"
-    ]
-},
-  "comp_arc_sta_directive": {
-    "prefix": "comp_arc_sta__",
-    "description": "Create a Component Architecture Static View",
-    "body": [
-      ".. comp_arc_sta:: $1",
-      "   :id: comp_arc_sta__$2",
-      "   :security: ${3|YES, NO|}",
-      "   :safety: ${4|QM, ASIL_B, ASIL_D|}",
-      "   :status: ${5|valid, invalid|}",
-      "   :satisfies: ${6}",
-      "",
-      "   ${7}"
-    ]
-  },
-  "comp_arc_dyn_directive": {
-    "prefix": "comp_arc_dyn__",
-    "description": "Create a Component Architecture Dynamic View",
-    "body": [
-      ".. comp_arc_dyn:: $1",
-      "   :id: comp_arc_dyn__$2",
-      "   :security: ${3|YES, NO|}",
-      "   :safety: ${4|QM, ASIL_B, ASIL_D|}",
-      "   :status: ${5|valid, invalid|}",
-      "   :satisfies: ${6}",
-      "",
-      "   ${7}"
-    ]
-  },
-  "comp_arc_int_directive": {
-    "prefix": "comp_arc_int__",
-    "description": "Create a Component Architecture Interfaces",
-    "body": [
-      ".. comp_arc_int:: $1",
-      "   :id: comp_arc_int__$2",
-      "   :security: ${3|YES, NO|}",
-      "   :safety: ${4|QM, ASIL_B, ASIL_D|}",
-      "   :status: ${5|valid, invalid|}",
-      "   :satisfies: ${6}",
-      "",
-      "   ${7}"
-    ]
-  },
-  "comp_arc_int_op_directive": {
-    "prefix": "comp_arc_int_op__",
-    "description": "Create a Component Architecture Interface Operation",
-    "body": [
-      ".. comp_arc_int_op:: $1",
-      "   :id: comp_arc_int_op__$2",
-      "   :security: ${3|YES, NO|}",
-      "   :safety: ${4|QM, ASIL_B, ASIL_D|}",
-      "   :status: ${5|valid, invalid|}",
-      "   :satisfies: ${6}",
-      "",
-      "   ${7}"
-    ]
-  }
+    "std_req_directive": {
+        "prefix": "std_req__",
+        "description": "Create a Standard Requirement",
+        "body": [
+            ".. std_req:: $1",
+            "   :id: std_req__$2",
+            "   :status: ${3|valid|}",
+            "",
+            "   ${4}"
+        ]
+    },
+    "std_wp_directive": {
+        "prefix": "std_wp__",
+        "description": "Create a Standard Work Product",
+        "body": [
+            ".. std_wp:: $1",
+            "   :id: std_wp__$2",
+            "   :status: ${3|valid|}",
+            "",
+            "   ${4}"
+        ]
+    },
+    "workflow_directive": {
+        "prefix": "wf__",
+        "description": "Create a Workflow",
+        "body": [
+            ".. workflow:: $1",
+            "   :id: wf__$2",
+            "   :status: ${3|valid, draft|}",
+            "   :input: ${4}",
+            "   :output: ${5}",
+            "   :approved_by: ${6}",
+            "   :responsible: ${7}",
+            "",
+            "   ${8}"
+        ]
+    },
+    "gd_req_directive": {
+        "prefix": "gd_req__",
+        "description": "Create a Process Requirements",
+        "body": [
+            ".. gd_req:: $1",
+            "   :id: gd_req__$2",
+            "   :status: ${3|valid, draft|}",
+            "",
+            "   ${4}"
+        ]
+    },
+    "gd_temp_directive": {
+        "prefix": "gd_temp__",
+        "description": "Create a Process Template",
+        "body": [
+            ".. gd_temp:: $1",
+            "   :id: gd_temp__$2",
+            "   :status: ${3|valid, draft|}",
+            "",
+            "   ${4}"
+        ]
+    },
+    "gd_chklst_directive": {
+        "prefix": "gd_chklst__",
+        "description": "Create a Process Checklist",
+        "body": [
+            ".. gd_chklst:: $1",
+            "   :id: gd_chklst__$2",
+            "   :status: ${3|valid, draft|}",
+            "",
+            "   ${4}"
+        ]
+    },
+    "gd_guidl_directive": {
+        "prefix": "gd_guidl__",
+        "description": "Create a Process Guideline",
+        "body": [
+            ".. gd_guidl:: $1",
+            "   :id: gd_guidl__$2",
+            "   :status: ${3|valid, draft|}",
+            "",
+            "   ${4}"
+        ]
+    },
+    "gd_method_directive": {
+        "prefix": "gd_meth__",
+        "description": "Create a Process Method",
+        "body": [
+            ".. gd_method:: $1",
+            "   :id: gd_meth__$2",
+            "   :status: ${3|valid, draft|}",
+            "",
+            "   ${4}"
+        ]
+    },
+    "workproduct_directive": {
+        "prefix": "wp__",
+        "description": "Create a Workproduct",
+        "body": [
+            ".. workproduct:: $1",
+            "   :id: wp__$2",
+            "   :status: ${3|valid, draft|}",
+            "",
+            "   ${4}"
+        ]
+    },
+    "role_directive": {
+        "prefix": "rl__",
+        "description": "Create a Role",
+        "body": [
+            ".. role:: $1",
+            "   :id: rl__$2",
+            "",
+            "   ${3}"
+        ]
+    },
+    "doc_concept_directive": {
+        "prefix": "doc_concept__",
+        "description": "Create a Concept Definition",
+        "body": [
+            ".. doc_concept:: $1",
+            "   :id: doc_concept__$2",
+            "   :status: ${3|valid, draft|}",
+            "",
+            "   ${4}"
+        ]
+    },
+    "doc_getstrt_directive": {
+        "prefix": "doc_getstrt__",
+        "description": "Create a Getting Startet",
+        "body": [
+            ".. doc_getstrt:: $1",
+            "   :id: doc_getstrt__$2",
+            "   :status: ${3|valid, draft|}",
+            "",
+            "   ${4}"
+        ]
+    },
+    "document_directive": {
+        "prefix": "doc__",
+        "description": "Create a Generic Document",
+        "body": [
+            ".. document:: $1",
+            "   :id: doc__$2",
+            "   :safety: ${3|QM, ASIL_B, ASIL_D|}",
+            "   :status: ${4|valid, draft, invalid|}",
+            "",
+            "   ${5}"
+        ]
+    },
+    "stkh_req_directive": {
+        "prefix": "stkh_req__",
+        "description": "Create a Stakeholder Requirement",
+        "body": [
+            ".. stkh_req:: $1",
+            "   :id: stkh_req__$2",
+            "   :reqtype: ${3|Functional, Interface, Process, Legal, Non-Functional|}",
+            "   :security: ${4|YES, NO|}",
+            "   :safety: ${5|QM, ASIL_B, ASIL_D|}",
+            "   :status: ${6|valid, invalid|}",
+            "   :rationale: ${7}",
+            "",
+            "   ${8}"
+        ]
+    },
+    "feat_req_directive": {
+        "prefix": "feat_req__",
+        "description": "Create a Feature Requirement",
+        "body": [
+            ".. feat_req:: $1",
+            "   :id: feat_req__$2",
+            "   :reqtype: ${3|Functional, Interface, Process, Legal, Non-Functional|}",
+            "   :security: ${4|YES, NO|}",
+            "   :safety: ${5|QM, ASIL_B, ASIL_D|}",
+            "   :status: ${6|valid, invalid|}",
+            "   :satisfies: ${7}",
+            "",
+            "   ${8}"
+        ]
+    },
+    "comp_req_directive": {
+        "prefix": "comp_req__",
+        "description": "Create a Component Requirement",
+        "body": [
+            ".. comp_req:: $1",
+            "   :id: comp_req__$2",
+            "   :reqtype: ${3|Functional, Interface, Process, Legal, Non-Functional|}",
+            "   :security: ${4|YES, NO|}",
+            "   :safety: ${5|QM, ASIL_B, ASIL_D|}",
+            "   :status: ${6|valid, invalid|}",
+            "   :satisfies: ${7}",
+            "",
+            "   ${8}"
+        ]
+    },
+    "tool_req_directive": {
+        "prefix": "tool_req__",
+        "description": "Create a Tool Requirement",
+        "body": [
+            ".. tool_req:: $1",
+            "   :id: tool_req__$2",
+            "   :reqtype: ${3|Functional, Interface, Process, Legal, Non-Functional|}",
+            "   :security: ${4|YES, NO|}",
+            "   :safety: ${5|QM, ASIL_B, ASIL_D|}",
+            "   :status: ${6|valid, invalid|}",
+            "   :satisfies: ${7}",
+            "",
+            "   ${8}"
+        ]
+    },
+    "aou_req_directive": {
+        "prefix": "aou_req__",
+        "description": "Create a Assumption of Use",
+        "body": [
+            ".. aou_req:: $1",
+            "   :id: aou_req__$2",
+            "   :reqtype: ${3|Functional, Interface, Process, Legal, Non-Functional|}",
+            "   :security: ${4|YES, NO|}",
+            "   :safety: ${5|QM, ASIL_B, ASIL_D|}",
+            "   :status: ${6|valid, invalid|}",
+            "",
+            "   ${7}"
+        ]
+    },
+    "feat_arc_sta_directive": {
+        "prefix": "feat_arc_sta__",
+        "description": "Create a Feature Architecture Static View",
+        "body": [
+            ".. feat_arc_sta:: $1",
+            "   :id: feat_arc_sta__$2",
+            "   :security: ${3|YES, NO|}",
+            "   :safety: ${4|QM, ASIL_B, ASIL_D|}",
+            "   :status: ${5|valid, invalid|}",
+            "   :fulfils: feat_req__${6}",
+            "   :implements: feat_arc_int__${7}",
+            "",
+            "   .. needarch::",
+            "      :scale: 50",
+            "      :align: center",
+            "",
+            "      {{ draw_feature(need(), needs) }}",
+            "      ${8}"
+        ]
+    },
+    "feat_arc_dyn_directive": {
+        "prefix": "feat_arc_dyn__",
+        "description": "Create a Feature Architecture Dynamic View",
+        "body": [
+            ".. feat_arc_dyn:: $1",
+            "   :id: feat_arc_dyn__$2",
+            "   :security: ${3|YES, NO|}",
+            "   :safety: ${4|QM, ASIL_B, ASIL_D|}",
+            "   :status: ${5|valid, invalid|}",
+            "   :fulfils: ${6}",
+            "",
+            "   ${7}"
+        ]
+    },
+    "feat_arc_int_directive": {
+        "prefix": "feat_arc_int__",
+        "description": "Create a Feature Architecture Interfaces",
+        "body": [
+            ".. feat_arc_int:: $1",
+            "   :id: feat_arc_int__$2",
+            "   :security: ${3|YES, NO|}",
+            "   :safety: ${4|QM, ASIL_B, ASIL_D|}",
+            "   :status: ${5|valid, invalid|}",
+            "   :fulfils: feat_req__${6}",
+            "",
+            "   .. needarch::",
+            "      :scale: 50",
+            "      :align: center",
+            "",
+            "      {{ draw_interface(need(), needs) }}",
+            "      ${7}"
+        ]
+    },
+    "feat_arc_int_op_directive": {
+        "prefix": "feat_arc_int_op__",
+        "description": "Create a Feature Architecture Interface Operation",
+        "body": [
+            ".. feat_arc_int_op:: $1",
+            "   :id: feat_arc_int_op__$2",
+            "   :security: ${3|YES, NO|}",
+            "   :safety: ${4|QM, ASIL_B, ASIL_D|}",
+            "   :status: ${5|valid, invalid|}",
+            "   :included_by: feat_arc_int__${6}",
+            "",
+            "   ${7}"
+        ]
+    },
+    "comp_arc_sta_directive": {
+        "prefix": "comp_arc_sta__",
+        "description": "Create a Component Architecture Static View",
+        "body": [
+            ".. comp_arc_sta:: $1",
+            "   :id: comp_arc_sta__$2",
+            "   :security: ${3|YES, NO|}",
+            "   :safety: ${4|QM, ASIL_B, ASIL_D|}",
+            "   :status: ${5|valid, invalid|}",
+            "   :fulfils: comp_req__${6}",
+            "   :implements: comp_arc_int__${7}",
+            "   :uses: comp_arc_int__${8}",
+            "",
+            "   .. needarch::",
+            "      :scale: 50",
+            "      :align: center",
+            "",
+            "      {{ draw_component(need(), needs) }}",
+            "      ${9}"
+        ]
+    },
+    "comp_arc_dyn_directive": {
+        "prefix": "comp_arc_dyn__",
+        "description": "Create a Component Architecture Dynamic View",
+        "body": [
+            ".. comp_arc_dyn:: $1",
+            "   :id: comp_arc_dyn__$2",
+            "   :security: ${3|YES, NO|}",
+            "   :safety: ${4|QM, ASIL_B, ASIL_D|}",
+            "   :status: ${5|valid, invalid|}",
+            "   :fulfils: comp_req__${6}",
+            "",
+            "   ${7}"
+        ]
+    },
+    "comp_arc_int_directive": {
+        "prefix": "comp_arc_int__",
+        "description": "Create a Component Architecture Interfaces",
+        "body": [
+            ".. comp_arc_int:: $1",
+            "   :id: comp_arc_int__$2",
+            "   :security: ${3|YES, NO|}",
+            "   :safety: ${4|QM, ASIL_B, ASIL_D|}",
+            "   :status: ${5|valid, invalid|}",
+            "   :fulfils: comp_req__${6}",
+            "",
+            "   .. needarch::",
+            "      :scale: 50",
+            "      :align: center",
+            "",
+            "      {{ draw_interface(need(), needs) }}",
+            "      ${7}"
+        ]
+    },
+    "comp_arc_int_op_directive": {
+        "prefix": "comp_arc_int_op__",
+        "description": "Create a Component Architecture Interface Operation",
+        "body": [
+            ".. comp_arc_int_op:: $1",
+            "   :id: comp_arc_int_op__$2",
+            "   :security: ${3|YES, NO|}",
+            "   :safety: ${4|QM, ASIL_B, ASIL_D|}",
+            "   :status: ${5|valid, invalid|}",
+            "   :included_by: comp_arc_int__${6}",
+            "   :implements: feat_arc_int_op__${7}",
+            "",
+            "   ${7}"
+        ]
+    },
+    "mod_view_sta_directive": {
+        "prefix": "mod_view_sta__",
+        "description": "Create a Module View",
+        "body": [
+            ".. mod_view_sta__:: $1",
+            "   :id: mod_view_sta__$2",
+            "   :includes: comp_arc_sta__${3}",
+            "",
+            "   .. needarch::",
+            "      :scale: 50",
+            "      :align: center",
+            "",
+            "      {{ draw_module(need(), needs) }}",
+            "      ${7}"
+        ]
+    }
 }

@@ -164,7 +164,6 @@ On the feature level only *logical interfaces* shall be displayed. This means th
    :security: YES
    :safety:  ASIL_B
    :status: valid
-   :includes: feat_arc_int_op__archdes_logical_operation_1, feat_arc_int_op__archdes_logical_operation_2
    :fulfils: feat_req__archdes_example_req
 
    .. needarch::
@@ -176,7 +175,20 @@ On the feature level only *logical interfaces* shall be displayed. This means th
 SW Module View
 ==============
 
-A SW module can rather be defined as a top level component view. Since a *SW module view* can also be provided by the top level *SW component* view no additional view is required here.
+A SW Module in S-CORE represents a `Bazel Module <https://bazel.build/external/module>`_. It serves only as a container (or package) which can include components. It is not meant to be an architectural element which includes that no requirements can be allocated to it.
+
+On this level also a view shall be defined which is called *Module View*. It represents the allocation of components into modules and displays the dependencies between the single modules. In this view also cyclic dependencies between modules can be identified.
+
+.. mod_view_sta:: Module 3
+   :id: mod_view_sta__archdes_3
+   :includes: comp_arc_sta__archdes_component_1
+
+   .. needarch::
+      :scale: 50
+      :align: center
+
+
+      {{ draw_module(need(), needs) }}
 
 Component View
 ==============
@@ -221,8 +233,8 @@ The component interface view shows the actual interfaces of the component. Also 
    :status: valid
    :safety: ASIL_B
    :security: NO
-   :includes: comp_arc_int_op__archdes_real_operation_1, comp_arc_int_op__archdes_real_operation_2
    :fulfils: comp_req__archdes_example_req
+   :language: cpp
 
    .. needarch::
       :scale: 50
@@ -267,6 +279,19 @@ The *static view* shows the *building blocks* of the architecture. It shall be c
    * - Component Architecture
      - comp_arc_sta
      - comp_arc_sta_t
+
+To represent the `Bazel Modules <https://bazel.build/external/module>`_ an additional container (or package) is introduced. It can only contain components:
+
+.. list-table:: Definition of the static module view
+   :header-rows: 1
+   :widths: 15,35,35
+
+   * - Element
+     - Sphinx Needs Directive
+     - Code Template
+   * - Module View
+     - mod_view_sta
+     - mod_view_sta_t
 
 Dynamic view
 ============

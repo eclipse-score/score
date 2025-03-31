@@ -43,7 +43,6 @@ Feature Architecture File
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :includes: feat_arc_int_op__archdes_logical_operation_3, feat_arc_int_op__archdes_logical_operation_4
    :fulfils: feat_req__archdes_example_req
 
    .. needarch::
@@ -69,48 +68,80 @@ Feature Architecture File
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :included_by: feat_arc_int__archdes_logical_interface_1
 
 .. feat_arc_int_op:: Logical Operation 2
    :id: feat_arc_int_op__archdes_logical_operation_2
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :included_by: feat_arc_int__archdes_logical_interface_1
 
 .. feat_arc_int_op:: Logical Operation 3
    :id: feat_arc_int_op__archdes_logical_operation_3
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :included_by: feat_arc_int__archdes_logical_interface_2
 
 .. feat_arc_int_op:: Logical Operation 4
    :id: feat_arc_int_op__archdes_logical_operation_4
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :included_by: feat_arc_int__archdes_logical_interface_2
 
 .. feat_arc_int_op:: Logical Operation 5
    :id: feat_arc_int_op__archdes_logical_operation_5
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :included_by: feat_arc_int__archdes_logical_interface_3
 
 .. feat_arc_int_op:: Logical Operation 6
    :id: feat_arc_int_op__archdes_logical_operation_6
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :included_by: feat_arc_int__archdes_logical_interface_3
 
 .. feat_arc_int_op:: Logical Operation 7
    :id: feat_arc_int_op__archdes_logical_operation_7
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :included_by: feat_arc_int__archdes_logical_interface_3
 
 .. feat_arc_int_op:: Logical Operation 8
    :id: feat_arc_int_op__archdes_logical_operation_8
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :included_by: feat_arc_int__archdes_logical_interface_3
+
+
+Module Viewpoint
+================
+
+.. mod_view_sta:: Module 1
+   :id: mod_view_sta__archdes_1
+   :includes: comp_arc_sta__archdes_component_1
+
+   .. needarch::
+      :scale: 50
+      :align: center
+
+      {{ draw_module(need(), needs) }}
+
+.. mod_view_sta:: Module 2
+   :id: mod_view_sta__archdes_2
+   :includes: comp_arc_sta__archdes_component_3
+
+   .. needarch::
+      :scale: 50
+      :align: center
+
+      {{ draw_module(need(), needs) }}
 
 Component Architecure File(s)
 =============================
@@ -131,6 +162,20 @@ Component Architecure File(s)
 
       {{ draw_component(need(), needs) }}
 
+.. comp_arc_sta:: Component 3
+   :id: comp_arc_sta__archdes_component_3
+   :status: valid
+   :safety: ASIL_B
+   :security: NO
+   :implements: comp_arc_int__archdes_component_interface_3
+   :fulfils: comp_req__archdes_example_req
+
+   .. needarch::
+      :scale: 50
+      :align: center
+
+      {{ draw_component(need(), needs) }}
+
 .. Component Interfaces
 
 .. comp_arc_int:: Component Interface 2
@@ -138,24 +183,24 @@ Component Architecure File(s)
    :status: valid
    :safety: ASIL_B
    :security: NO
-   :includes: comp_arc_int_op__archdes_real_operation_3, comp_arc_int_op__archdes_real_operation_4
    :fulfils: comp_req__archdes_example_req
+   :language: cpp
 
 .. comp_arc_int:: Component Interface 3
    :id: comp_arc_int__archdes_component_interface_3
    :status: valid
    :safety: ASIL_B
    :security: NO
-   :includes: comp_arc_int_op__archdes_real_operation_5, comp_arc_int_op__archdes_real_operation_6
    :fulfils: comp_req__archdes_example_req
+   :language: cpp
 
 .. comp_arc_int:: Component Interface 4
    :id: comp_arc_int__archdes_component_interface_4
    :status: valid
    :safety: ASIL_B
    :security: NO
-   :includes: comp_arc_int_op__archdes_real_operation_7, comp_arc_int_op__archdes_real_operation_8
    :fulfils: comp_req__archdes_example_req
+   :language: cpp
 
 .. Subcomponents
 
@@ -193,6 +238,7 @@ Component Architecure File(s)
    :safety: ASIL_B
    :security: NO
    :implements: feat_arc_int_op__archdes_logical_operation_1
+   :included_by: comp_arc_int__archdes_component_interface_1
 
 .. comp_arc_int_op:: real operation 2
    :id: comp_arc_int_op__archdes_real_operation_2
@@ -200,6 +246,7 @@ Component Architecure File(s)
    :safety: ASIL_B
    :security: NO
    :implements: feat_arc_int_op__archdes_logical_operation_2
+   :included_by: comp_arc_int__archdes_component_interface_1
 
 .. comp_arc_int_op:: real operation 3
    :id: comp_arc_int_op__archdes_real_operation_3
@@ -207,6 +254,7 @@ Component Architecure File(s)
    :safety: ASIL_B
    :security: NO
    :implements: feat_arc_int_op__archdes_logical_operation_3
+   :included_by: comp_arc_int__archdes_component_interface_2
 
 .. comp_arc_int_op:: real operation 4
    :id: comp_arc_int_op__archdes_real_operation_4
@@ -214,6 +262,7 @@ Component Architecure File(s)
    :safety: ASIL_B
    :security: NO
    :implements: feat_arc_int_op__archdes_logical_operation_4
+   :included_by: comp_arc_int__archdes_component_interface_2
 
 .. comp_arc_int_op:: real operation 5
    :id: comp_arc_int_op__archdes_real_operation_5
@@ -221,6 +270,7 @@ Component Architecure File(s)
    :safety: ASIL_B
    :security: NO
    :implements: feat_arc_int_op__archdes_logical_operation_5
+   :included_by: comp_arc_int__archdes_component_interface_3
 
 .. comp_arc_int_op:: real operation 6
    :id: comp_arc_int_op__archdes_real_operation_6
@@ -228,6 +278,7 @@ Component Architecure File(s)
    :safety: ASIL_B
    :security: NO
    :implements: feat_arc_int_op__archdes_logical_operation_6
+   :included_by: comp_arc_int__archdes_component_interface_3
 
 .. comp_arc_int_op:: real operation 7
    :id: comp_arc_int_op__archdes_real_operation_7
@@ -235,6 +286,7 @@ Component Architecure File(s)
    :safety: ASIL_B
    :security: NO
    :implements: feat_arc_int_op__archdes_logical_operation_7
+   :included_by: comp_arc_int__archdes_component_interface_4
 
 .. comp_arc_int_op:: real operation 8
    :id: comp_arc_int_op__archdes_real_operation_8
@@ -242,6 +294,7 @@ Component Architecure File(s)
    :safety: ASIL_B
    :security: NO
    :implements: feat_arc_int_op__archdes_logical_operation_8
+   :included_by: comp_arc_int__archdes_component_interface_4
 
 ..
     Requirements
