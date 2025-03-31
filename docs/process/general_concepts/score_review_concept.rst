@@ -156,7 +156,7 @@ Process Requirements
 .. gd_req:: Storage of pull requests documentation
    :id: gd_req__general__pull_request_storage
    :status: valid
-   :complies: std_req__iso26262__support_9, std_req__iso26262__software_24
+   :complies: std_req__iso26262__support_6433, std_req__iso26262__software_7414
    :satisfies: wf__monitor_verify_requirements, wf__mr_vy_arch
 
    The content of pull requests (conversation, commits, files changed) shall be stored permanently
@@ -168,7 +168,7 @@ Process Requirements
 .. gd_req:: Hash value for inspected requirements
    :id: gd_req__general__requirements_hash
    :status: valid
-   :complies: std_req__iso26262__support_9, std_req__iso26262__software_24
+   :complies: std_req__iso26262__support_6433, std_req__iso26262__software_7414
    :satisfies: wf__monitor_verify_requirements, wf__mr_vy_arch
 
    The hash value of a requirement shall not change by an inspection. In case the status of the
@@ -179,7 +179,7 @@ Process Requirements
 .. gd_req:: Checklist templates in pull requests
    :id: gd_req__general__checklist_templates
    :status: valid
-   :complies: std_req__iso26262__support_9, std_req__iso26262__software_24, std_req__iso26262__software_31
+   :complies: std_req__iso26262__support_6433, std_req__iso26262__software_7414, std_req__iso26262__software_942
    :satisfies: wf__monitor_verify_requirements, wf__mr_vy_arch
 
    For all the pull requests modifying a work product subject to inspection,
@@ -190,7 +190,7 @@ Process Requirements
 .. gd_req:: Status Check
    :id: gd_req__general__status_check
    :status: valid
-   :complies: std_req__iso26262__support_9, std_req__iso26262__software_24
+   :complies: std_req__iso26262__support_6433, std_req__iso26262__software_7414
    :satisfies: wf__monitor_verify_requirements, wf__mr_vy_arch
 
    It shall be checked that only a PR with the inspection checklist filled out can set a status to valid(inspected).

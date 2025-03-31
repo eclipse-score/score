@@ -15,8 +15,8 @@
 Roles
 =====
 
-SCORE Management Roles
-----------------------
+S-CORE Management Roles
+-----------------------
 
 .. role:: Project Lead
    :id: rl__project_lead
@@ -51,7 +51,7 @@ SCORE Management Roles
    :id: rl__technical_lead
    :status: valid
 
-   The Technical Leads approve feature requests and perform the project management of the SCORE platform.
+   The Technical Leads approve feature requests and perform the project management of the S-CORE platform.
 
    Required skills
 
@@ -66,7 +66,7 @@ SCORE Management Roles
 
    Responsibility
 
-   * Review and approval of contributions, e.g. Feature Requests, which add or modify SCORE platform features
+   * Review and approval of contributions, e.g. Feature Requests, which add or modify S-CORE platform features
    * Project management of the platform development - i.e. filling the project management role as defined by ISO26262
    * High-level project control and coordination between multiple software modules
    * Escalation instance for software module project leads (external to S-CORE), safety managers and committers
@@ -99,10 +99,10 @@ SCORE Management Roles
    :tags: project_management
    :contains: rl__committer
 
-   The module Project Leads perform the project management on module level. If a module is developed in a sub-project of SCORE they have the eclipse project lead role for this.
+   The module Project Leads perform the project management on module level. If a module is developed in a sub-project of S-CORE they have the eclipse project lead role for this.
 
-SCORE process roles
--------------------
+S-CORE process roles
+--------------------
 
 .. role:: Process Community Member
    :id: rl__process_community
@@ -113,8 +113,8 @@ SCORE process roles
    The process community members are responsible for the definition of the process architecture of the project integrated management system and how they processes interact.
    The approval and release of the process is done by the safety, quality and security managers and the technical leads (for the parts which affect them).
 
-SCORE development roles
------------------------
+S-CORE development roles
+------------------------
 
 .. role:: Infrastructure Tooling Community Member
    :id: rl__infrastructure_tooling_community
@@ -129,7 +129,7 @@ SCORE development roles
    :status: valid
 
    (Eclipse) Open Source Role, person(s) who provide(s) possible contribution(s) as pull request(s) to the main line.
-   Any contributor which contributes code, tests or documentation to SCORE.
+   Any contributor which contributes code, tests or documentation to S-CORE.
 
    .. note::
       Follows the processes defined by the :need:`rl__process_community`
@@ -144,8 +144,20 @@ SCORE development roles
    .. note::
       Defines and enforces processes.
 
-SCORE cross functional teams
-----------------------------
+.. role:: Testing Community Member
+   :id: rl__testing_community
+   :status: valid
+   :tags: verification
+   :contains: rl__committer
+
+   The testing community members are responsible for the test case development from component to
+   platform level. They shall be included in any requirements reviews. They can also improve
+   independence argumentation when involved in the development of unit testing on safety critical
+   units. In this way the testing community takes a supportive role for unit testing
+
+
+S-CORE cross functional teams
+-----------------------------
 
 .. role:: Platform Team
    :id: rl__platform_team
@@ -153,7 +165,7 @@ SCORE cross functional teams
    :tags: cross_functional
    :contains: rl__technical_lead, rl__safety_manager, rl__quality_manager, rl__security_manager, rl__contributor, rl__committer, rl__infrastructure_tooling_community, rl__process_community
 
-   The platform team is responsible for all artefacts within the platform SEooC. Additionally it is also responsible for the overall process including its support by tooling.
+   The platform team is responsible for all artifacts within the platform SEooC. Additionally it is also responsible for the overall process including its support by tooling.
 
 .. role:: Module Team
    :id: rl__module_team
@@ -161,5 +173,4 @@ SCORE cross functional teams
    :tags: cross_functional
    :contains: rl__module_lead, rl__safety_manager, rl__quality_manager, rl__security_manager, rl__contributor, rl__committer
 
-   The module team is responsible for all artefacts within the module SEooCs. Each module has only one responsible team but a team may also be responsible for several (small) modules.
-
+   The module team is responsible for all artifacts within the module SEooCs. Each module has only one responsible team but a team may also be responsible for several (small) modules.

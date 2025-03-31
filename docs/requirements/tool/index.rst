@@ -45,4 +45,4 @@ Process tools
    :satisfies: stkh_req__requirements__as_code
    :status: valid
 
-   Spinx-needs shall be used to model all processes within SCORE.
+   Spinx-needs shall be used to model all processes within S-CORE.

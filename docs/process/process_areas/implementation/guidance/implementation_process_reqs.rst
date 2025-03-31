@@ -20,7 +20,7 @@ Process Requirements
    :status: valid
    :tags: mandatory
    :satisfies: wp__sw_implementation
-   :complies: std_req__iso26262__software_27
+   :complies: std_req__iso26262__software_843
 
    The static diagram represents the unit and their relationships using UML 2.0 notations by using PlantUML.
 
@@ -29,7 +29,7 @@ Process Requirements
    :status: valid
    :tags: mandatory
    :satisfies: wp__sw_implementation
-   :complies: std_req__iso26262__software_27
+   :complies: std_req__iso26262__software_843
 
    The dynamic diagram represents the unit and their relationships using UML 2.0 notations by using PlantUML.
 

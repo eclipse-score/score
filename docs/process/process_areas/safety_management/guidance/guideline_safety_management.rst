@@ -20,7 +20,7 @@ Safety Management Guideline
 .. gd_guidl:: Safety plan definitions
    :id: gd_guidl__saf_plan_definitions
    :status: valid
-   :complies: std_req__iso26262__management_35, std_req__iso26262__management_36, std_req__iso26262__management_37, std_req__iso26262__management_38, std_req__iso26262__management_39
+   :complies: std_req__iso26262__management_6465, std_req__iso26262__management_6466, std_req__iso26262__management_6467, std_req__iso26262__management_6468, std_req__iso26262__management_6469
 
    | **Overall safety management:**
    | Safety culture:
@@ -46,7 +46,7 @@ Safety Management Guideline
    | As the SW platform organization does not have own vehicles in the field, it relies on feedback from OEMs and Distributors on bugs discovered in the field. The need for this feedback is part of each safety manual.
    | But also during development of change requests to existing features, bug reporting by the Open Source community or integration of existing SW components into new features may lead to the discovery of new safety anomalies.
    | Safety anomalies can also be deviations from the development process with impact on safety.
-   | If these are known at the time of creation of a release they will be part of the :need:`wp__module_safety_case` or :need:`wp__platform_safety_case` for the SEooC.
+   | If these are known at the time of creation of a release they will be part of the :need:`wp__module_safety_package` or :need:`wp__platform_safety_package` for the SEooC.
    | Safety anomalies relevant for already delivered releases will be identified as such and communicated (as defined in Problem Resolution part of :need:`wp__platform_mgmt`) via the :need:`wp__issue_track_system` (which is also Open Source).
    |
    | **Tailoring safety activities:**
@@ -82,15 +82,15 @@ Safety Management Guideline
    | Verification planning is documented in :need:`wp__verification__plan`
    |
    | **Scheduling of confirmation reviews, audit and assessment:**
-   | Scheduling is done in the same way as for all work products definition by issues. The respective work products are :need:`wp__cmr_reports` and  :need:`wp__audit_report`
+   | Scheduling is done in the same way as for all work products definition by issues. The respective work products are :need:`wp__fdr_reports` and  :need:`wp__audit_report`
    |
    | **Planning of dependent failures and safety analyses:**
    | In cases where the components consist of sub-components there will be more than one architecture level. DFA and Safety analysis will then be done on these multiple levels. See the respective work products:
-   | * feature level: :need:`wp__feature_safety_analyses` and :need:`wp__feature_dfa`
-   | * component level: :need:`wp__sw_component_safety_analyses` and :need:`wp__sw_component_dfa`
+   | * feature level: :need:`wp__feature_safety_analysis` and :need:`wp__feature_dfa`
+   | * component level: :need:`wp__sw_component_safety_analysis` and :need:`wp__sw_component_dfa`
    |
    | **Provision of the confidence in the use of software tools:**
-   | Tool Management planning is part of the :need:`wp__platform_mgmt`. The respective work product to be planned as an issue of the generic safety plan is the :need:`wp__tool_eval`, which contains tool evaluation and if applicable qualification of the SW platform toolchain.
+   | Tool Management planning is part of the :need:`wp__platform_mgmt`. The respective work product to be planned as an issue  of the generic safety plan is the :need:`wp__tool_verification`, which contains tool evaluation and if applicable qualification of the SW platform toolchain.
    | Components developed in C++ and Rust will have different toolchains. Both will be qualified once for the SW platform.
    |
    | **(OSS) Component qualification planning:**
@@ -101,7 +101,7 @@ Safety Management Guideline
 .. gd_guidl:: Safety manual generation
    :id: gd_guidl__saf_man
    :status: valid
-   :complies: std_req__iso26262__system_1, std_req__iso26262__system_2, std_req__iso26262__system_3, std_req__iso26262__system_4, std_req__iso26262__system_5, std_req__iso26262__system_6, std_req__iso26262__software_4, std_req__iso26262__software_5, std_req__iso26262__software_8, std_req__iso26262__support_65
+   :complies: std_req__iso26262__system_6411, std_req__iso26262__system_6412, std_req__iso26262__system_6413, std_req__iso26262__system_6414, std_req__iso26262__system_6421, std_req__iso26262__system_6422, std_req__iso26262__software_641, std_req__iso26262__software_642, std_req__iso26262__software_645, std_req__iso26262__support_12421
 
    | The safety manual collects several workproducts and adds some additional content mainly to instruct the user of
    | a SEooC (in this project on platform and module level) to safely use it in the context of the user's own safety
@@ -109,9 +109,9 @@ Safety Management Guideline
    | Its main content is described in :need:`wp__platform_safety_manual` and :need:`wp__module_safety_manual`
    | A template exists to guide the definition of the safety manual on platform and module level (:need:`gd_temp__safety_manual`).
 
-.. gd_guidl:: Safety case automated generation
-   :id: gd_guidl__saf_case
+.. gd_guidl:: Safety package automated generation
+   :id: gd_guidl__saf_package
    :status: valid
-   :complies: std_req__iso26262__management_43, std_req__iso26262__management_44
+   :complies: std_req__iso26262__management_6481, std_req__iso26262__management_6482
 
-   | The safety case shall be generated progressively and automatically compiling the work products.
+   | The safety package shall be generated progressively and automatically compiling the work products.

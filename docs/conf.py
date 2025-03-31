@@ -27,8 +27,8 @@ sys.path.insert(0, ".")
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = "Score"
-author = "Score"
+project = "S-CORE"
+author = "S-CORE"
 release = "0.1"
 
 # -- General configuration ---------------------------------------------------

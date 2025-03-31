@@ -23,7 +23,7 @@ Documentation
 Description
 ===========
 
-Score, as a multi repository projects requires a setup of it's own
+S-CORE, as a multi repository projects requires a setup of it's own
 registry, that will help managing the dependencies between various
 parts.
 
@@ -38,7 +38,7 @@ file of a module:
    common --registry=https://raw.githubusercontent.com/eclipse-score/bazel_registry/main/
    common --registry=https://bcr.bazel.build
 
-Score registry is set as first registry with the fallback to Bazel's
+S-CORE registry is set as first registry with the fallback to Bazel's
 central registry for other open source modules.
 
 Minimal module entry

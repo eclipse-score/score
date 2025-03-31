@@ -99,7 +99,7 @@ class TestCheckOptions:
         app.config = Mock()
         app.config.needs_types = self.NEED_TYPE_INFO
         # Expect that the checks pass
-        check_options(app, need, logger, self.NEED_TYPE_INFO)
+        check_options(app, need, logger)
         logger.assert_no_warnings()
 
     def test_known_directive_with_optional_and_mandatory_option_and_allowed_value(self):
@@ -121,7 +121,7 @@ class TestCheckOptions:
         app.config = Mock()
         app.config.needs_types = self.NEED_TYPE_INFO_WITH_OPT_OPT
         # Expect that the checks pass
-        check_options(app, need, logger, self.NEED_TYPE_INFO_WITH_OPT_OPT)
+        check_options(app, need, logger)
 
         logger.assert_no_warnings()
 
@@ -141,7 +141,7 @@ class TestCheckOptions:
         app.config = Mock()
         app.config.needs_types = self.NEED_TYPE_INFO
         # Expect that the checks pass
-        check_options(app, need, logger, self.NEED_TYPE_INFO)
+        check_options(app, need, logger)
         logger.assert_warning(
             "no type info defined for semantic check.",
             expect_location=False,
@@ -164,7 +164,7 @@ class TestCheckOptions:
         app.config = Mock()
         app.config.needs_types = self.NEED_TYPE_INFO
         # Expect that the checks pass
-        check_extra_options(app, need, logger, self.NEED_TYPE_INFO)
+        check_extra_options(app, need, logger)
         logger.assert_warning(
             "has these extra options: `other_option`.",
             expect_location=False,
@@ -188,7 +188,7 @@ class TestCheckOptions:
         app.config = Mock()
         app.config.needs_types = self.NEED_TYPE_INFO_WITH_OPT_OPT
         # Expect that the checks pass
-        check_extra_options(app, need, logger, self.NEED_TYPE_INFO_WITH_OPT_OPT)
+        check_extra_options(app, need, logger)
 
         logger.assert_warning(
             "has these extra options: `other_option`.",
@@ -210,7 +210,7 @@ class TestCheckOptions:
         app.config = Mock()
         app.config.needs_types = self.NEED_TYPE_INFO
         # Expect that the checks fail and a warning is logged
-        check_options(app, need, logger, self.NEED_TYPE_INFO)
+        check_options(app, need, logger)
         logger.assert_warning(
             "is missing required option: `some_required_option`.",
             expect_location=False,
@@ -232,7 +232,7 @@ class TestCheckOptions:
         app.config = Mock()
         app.config.needs_types = self.NEED_TYPE_INFO
         # Expect that the checks fail and a warning is logged
-        check_options(app, need, logger, self.NEED_TYPE_INFO)
+        check_options(app, need, logger)
         logger.assert_warning(
             f'does not follow pattern `{self.NEED_TYPE_INFO[0]["mandatory_options"]["some_required_option"]}`.',
             expect_location=False,
@@ -255,7 +255,7 @@ class TestCheckOptions:
         app.config = Mock()
         app.config.needs_types = self.NEED_TYPE_INFO_WITH_OPT_OPT
         # Expect that the checks fail and a warning is logged
-        check_options(app, need, logger, self.NEED_TYPE_INFO_WITH_OPT_OPT)
+        check_options(app, need, logger)
         logger.assert_warning(
             f'does not follow pattern `{self.NEED_TYPE_INFO_WITH_OPT_OPT[0]["opt_opt"]["some_optional_option"]}`.',
             expect_location=False,
@@ -275,9 +275,9 @@ class TestCheckOptions:
         logger = fake_check_logger()
         app = Mock(spec=Sphinx)
         app.config = Mock()
-        app.config.needs_types = self.NEED_TYPE_INFO
+        app.config.needs_types = self.NEED_TYPE_INFO_WITH_REQ_LINK
         # Expect that the checks fail and a warning is logged
-        check_options(app, need, logger, self.NEED_TYPE_INFO_WITH_REQ_LINK)
+        check_options(app, need, logger)
         logger.assert_warning(
             "is missing required link: `input`.",
             expect_location=False,

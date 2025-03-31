@@ -20,7 +20,7 @@ Verification Report Templates
 .. gd_temp:: Module Verification Report Template
     :id: gd_temp__mod_ver_report
     :status: valid
-    :complies: std_wp__iso26262__software_12, std_wp__iso26262__software_15, std_wp__iso26262__support_13, std_wp__iso26262__support_20, std_wp__iso26262__analysis_5, std_wp__iso26262__analysis_7, std_wp__iso26262__support_19
+    :complies: std_wp__iso26262__software_952, std_wp__iso26262__software_1053, std_wp__iso26262__support_953, std_wp__iso26262__support_1253, std_wp__iso26262__analysis_752, std_wp__iso26262__analysis_852, std_wp__iso26262__support_1252
 
     This document implements :need:`wp__verification__module_ver_report`.
 
@@ -85,7 +85,7 @@ Verification Report Templates
 .. gd_temp:: Platform Verification Report Template
     :id: gd_temp__platform_ver_report
     :status: valid
-    :complies: std_wp__iso26262__software_15, std_wp__iso26262__support_13, std_wp__iso26262__analysis_5, std_wp__iso26262__analysis_7
+    :complies: std_wp__iso26262__software_1053, std_wp__iso26262__support_953, std_wp__iso26262__analysis_752, std_wp__iso26262__analysis_852
 
     This document implements :need:`wp__verification__platform_ver_report`.
 

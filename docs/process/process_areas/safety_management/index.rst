@@ -72,8 +72,8 @@ Safety Management Work Products
 Apart from the safety plans the main work products of safety management are (see also the link to workflows below):
 
 * :need:`Safety Manual <wp__platform_safety_manual>` - the safety manual defines the requirements for safe usage or integration of the SW platform (or its individual modules)
-* :need:`Confirmation Reviews <wp__cmr_reports>` - on safety plan, safety case and safety analyses, according to ISO 26262 requirements
-* :need:`Draft Safety Case <wp__platform_safety_case>` - the safety case compiled is draft as it does not contain the safety argumentation. By this the S-CORE project ensures it does not take over liability for the SW platform (or its individual modules). But it enables the distributor to integrate the SW platform (or its individual modules) in his safety case.
+* :need:`Confirmation Reviews <wp__fdr_reports>` - on safety plan, safety package and safety analyses, according to ISO 26262 requirements
+* :need:`Safety Package <wp__platform_safety_package>` - the safety package does not contain the safety argumentation. By this the S-CORE project ensures it does not take over liability for the SW platform (or its individual modules). But it enables the distributors to integrate the SW platform (or its individual modules) in their safety package.
 
 Safety Management Tooling
 ^^^^^^^^^^^^^^^^^^^^^^^^^

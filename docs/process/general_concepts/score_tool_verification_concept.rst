@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,10 +12,11 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _contribution_templates:
+.. _general_concepts_tool_verification:
 
-Contribution Templates
-######################
+Tool evaluation concept
+-----------------------
 
-.. toctree::
-   :maxdepth: 1
+
+Tool qualification concept
+--------------------------

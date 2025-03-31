@@ -18,7 +18,7 @@ Software Development Plan Template
 .. gd_temp:: Software Development Plan Template
    :id: gd_temp__software_development_plan
    :status: draft
-   :complies: std_req__iso26262__software_1
+   :complies: std_req__iso26262__software_541
 
 Purpose
 +++++++

@@ -17,6 +17,7 @@ Verification Guideline
 .. gd_guidl:: Verification Guideline
    :id: gd_guidl__verification_guide
    :status: valid
+   :complies: std_req__isopas8926__445
 
    This guideline outlines the responsibilities and procedures for developers performing
    verification activities (testcase creation, inspection, and review) for documentation,

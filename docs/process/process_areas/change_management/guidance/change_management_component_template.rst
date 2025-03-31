@@ -20,7 +20,7 @@ Component Template
 .. gd_temp:: Component Request Template
    :id: gd_temp__change__component_request
    :status: valid
-   :complies: std_req__aspice_40__SUP-10-BP1, std_req__aspice_40__SUP-10-BP2, std_req__aspice_40__SUP-10-BP3, std_req__aspice_40__SUP-10-BP5, std_req__iso26262__support_21, std_req__iso26262__support_22, , std_req__iso26262__support_23, std_req__aspice_40__iic-18-57
+   :complies: std_req__aspice_40__SUP-10-BP1, std_req__aspice_40__SUP-10-BP2, std_req__aspice_40__SUP-10-BP3, std_req__aspice_40__SUP-10-BP5, std_req__aspice_40__iic-18-57, std_req__iso26262__support_8422, std_req__iso26262__support_8431, std_req__iso26262__support_8432
 
 .. attention::
     Remove everything above when copying and filling the template.

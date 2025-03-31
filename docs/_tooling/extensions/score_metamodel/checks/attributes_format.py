@@ -30,7 +30,7 @@ def check_id_format(app: Sphinx, need: NeedsInfoType, log: CheckLogger):
 
     if need["id"].startswith(
         ("gd_", "wf__", "wp__", "rl__", "stkh_req__", "tool_req__", "doc__")
-    ) or ("process/" in need.get("docname", "")):
+    ) or ("process/" in str(need.get("docname", ""))):
         if len(parts) != 2 and len(parts) != 3:
             msg = (
                 "expected to consisting of one of these 2 formats:"
@@ -76,8 +76,10 @@ def check_title(app: Sphinx, need: NeedsInfoType, log: CheckLogger):
         for word in stop_words:
             if word in need["title"]:
                 msg = (
-                    f"contains a stop word: `{word}`. The title is meant to provide a short summary, "
-                    "not to repeat the requirement statement. Please revise the title for clarity and brevity."
+                    f"contains a stop word: `{word}`. "
+                    "The title is meant to provide a short summary, "
+                    "not to repeat the requirement statement. "
+                    "Please revise the title for clarity and brevity."
                 )
                 log.warning_for_option(need, "title", msg)
                 break

@@ -20,7 +20,7 @@ Guidance
 .. toctree::
    :maxdepth: 1
 
-   verification_guidance
+   verification_guideline
    verification_specification
    verification_process_toolreqs
    verification_templates

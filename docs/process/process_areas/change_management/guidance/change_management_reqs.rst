@@ -27,7 +27,7 @@ Change Request Attributes
    :status: valid
    :tags: attribute,mandatory
    :satisfies: wf__change__cr_an_change_request, wf__change__rv_ap_change_request
-   :complies: std_req__aspice_40__SUP-10-BP1, std_req__iso26262__support_16, std_req__iso26262__support_20, std_req__iso26262__support_23, std_req__iso26262__support_28
+   :complies: std_req__aspice_40__SUP-10-BP1, std_req__iso26262__support_8411, std_req__iso26262__support_8421, std_req__iso26262__support_8432, std_req__iso26262__support_8453
 
    Each Change Request shall have a unique ID. It shall be in an integer number.
 
@@ -36,7 +36,7 @@ Change Request Attributes
    :status: valid
    :tags: attribute, mandatory
    :satisfies: wf__change__cr_an_change_request, wf__change__rv_ap_change_request
-   :complies: std_req__aspice_40__SUP-10-BP3, std_req__aspice_40__SUP-10-BP5, std_req__aspice_40__SUP-10-BP6, std_req__iso26262__support_16, std_req__iso26262__support_21, std_req__iso26262__support_23, std_req__iso26262__support_25
+   :complies: std_req__aspice_40__SUP-10-BP3, std_req__aspice_40__SUP-10-BP5, std_req__aspice_40__SUP-10-BP6, std_req__iso26262__support_8411, std_req__iso26262__support_8422, std_req__iso26262__support_8432, std_req__iso26262__support_8442
 
    Each Change Request shall have a status:
 
@@ -50,7 +50,7 @@ Change Request Attributes
    :status: valid
    :tags: attribute, mandatory
    :satisfies: wf__change__cr_an_change_request, wf__change__rv_ap_change_request
-   :complies: std_req__aspice_40__SUP-10-BP1, std_req__iso26262__support_16, std_req__iso26262__support_21
+   :complies: std_req__aspice_40__SUP-10-BP1, std_req__iso26262__support_8411, std_req__iso26262__support_8422
 
    Reason for the Change Request
 
@@ -59,7 +59,7 @@ Change Request Attributes
    :status: valid
    :tags: attribute, mandatory
    :satisfies: wf__change__cr_an_change_request, wf__change__rv_ap_change_request
-   :complies: std_req__aspice_40__SUP-10-BP2, std_req__iso26262__support_16, std_req__iso26262__support_21, std_req__iso26262__support_22, std_req__iso26262__support_23, std_req__iso26262__support_27, std_req__iso26262__support_28
+   :complies: std_req__aspice_40__SUP-10-BP2, std_req__iso26262__support_8411, std_req__iso26262__support_8422, std_req__iso26262__support_8431, std_req__iso26262__support_8432, std_req__iso26262__support_8452, std_req__iso26262__support_8453
 
    Exact description of the Change Request, including impact analysis on functional safety,
    security, implementation (schedule, risks, resources) verification (measures defined).
@@ -69,7 +69,7 @@ Change Request Attributes
    :status: valid
    :tags: attribute, mandatory
    :satisfies: wf__change__cr_an_change_request, wf__change__rv_ap_change_request
-   :complies: std_req__aspice_40__SUP-10-BP2, std_req__iso26262__support_21
+   :complies: std_req__aspice_40__SUP-10-BP2, std_req__iso26262__support_8422
 
    Each Change Request shall have a automotive safety integrity level (ASIL) identifier:
 
@@ -82,7 +82,7 @@ Change Request Attributes
    :status: valid
    :tags: attribute, mandatory
    :satisfies: wf__change__cr_an_change_request, wf__change__rv_ap_change_request
-   :complies: std_req__aspice_40__SUP-10-BP2, std_req__iso26262__support_21
+   :complies: std_req__aspice_40__SUP-10-BP2, std_req__iso26262__support_8422
 
    Each Change Request shall have a security relevance identifier:
 
@@ -108,7 +108,7 @@ Change Request Attributes
    :status: valid
    :tags: attribute, mandatory
    :satisfies: wf__change__cr_an_change_request, wf__change__rv_ap_change_request
-   :complies: std_req__aspice_40__SUP-10-BP4, std_req__iso26262__support_17, std_req__iso26262__support_21, std_req__iso26262__support_27, std_req__iso26262__support_28
+   :complies: std_req__aspice_40__SUP-10-BP4, std_req__iso26262__support_8412, std_req__iso26262__support_8422, std_req__iso26262__support_8452, std_req__iso26262__support_8453
 
    Links to the work products affected by the Change Request
 
@@ -117,7 +117,7 @@ Change Request Attributes
    :status: valid
    :tags: attribute, mandatory
    :satisfies: wf__change__cr_an_change_request, wf__change__rv_ap_change_request
-   :complies: std_req__aspice_40__SUP-10-BP6, std_req__iso26262__support_18
+   :complies: std_req__aspice_40__SUP-10-BP6, std_req__iso26262__support_8413
 
    Milestone until the Change Request must be implemented (used for prioritization)
 

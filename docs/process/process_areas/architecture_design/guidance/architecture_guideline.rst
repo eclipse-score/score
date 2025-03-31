@@ -20,6 +20,7 @@ Architecture Guideline
 .. gd_guidl:: Architectural Design
    :id: gd_guidl__arch__design
    :status: valid
+   :complies: std_req__isopas8926__44411, std_req__isopas8926__44412
 
 The guideline focuses on the steps which need to be performed in order to create the architectural design. The concept behind those steps is described in the :need:`[[title]] <doc_concept__arch__process>`
 

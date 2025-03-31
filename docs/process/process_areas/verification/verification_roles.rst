@@ -17,13 +17,19 @@
 Roles
 #####
 
-For verification activities no additional roles need to be defined.
+Verification activities are a shared effort by :need:`Contributor <rl__contributor>` as well as
+:need:`Committer <rl__committer>`. There is also a dedicated :need:`Testing Community <rl__testing_community>`
+which develops and reviews tests and is involved in the requirements review.
 
-Verification artifacts in form of test cases and specification are created by:
+Verification artifacts in form of test cases and specification are mainly created by:
 
    * :need:`rl__contributor`
    * :need:`rl__committer`
 
-The tool evaluation, verification and reporting is handled by:
+With focus on testability, requirements getting reviewed by:
+
+   * :need:`rl__testing_community`
+
+The tool verification and qualification is handled by:
 
    * :need:`rl__infrastructure_tooling_community`.

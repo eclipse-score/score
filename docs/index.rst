@@ -39,7 +39,7 @@ Documentation
 Welcome & Overview
 ------------------
 
-**Welcome to the Software documentation of the SCORE project.**
+**Welcome to the Software documentation of the S-CORE project.**
 
 Introduction
 ~~~~~~~~~~~~
@@ -66,9 +66,8 @@ Introduction
 
       How to Contribute?
       ^^^
-      The only way to influence Eclipse SCORE is to contribute - SCORE is open! Please check our
-      :ref:`Get Involved <introduction_get_involved>` guide for more
-      information.
+      The only way to influence Eclipse S-CORE is to contribute - S-CORE is open! Please check our
+      :ref:`Contribute <contribute>` guide for more information.
 
 
 Software artifacts
@@ -82,7 +81,7 @@ Software artifacts
       Requirements
       ^^^
       Analyze :ref:`Stakeholder <stakeholder_requirements>` requirements for
-      the work with and implementation inside SCORE.
+      the work with and implementation inside S-CORE.
       Or get the complete picture on the :ref:`requirements` page.
 
 
@@ -91,7 +90,7 @@ Software artifacts
 
       Features
       ^^^
-      :ref:`Features <features>` are the heart of the SCORE software.
+      :ref:`Features <features>` are the heart of the S-CORE software.
       Understand the internal details of :ref:`Infrastructure <infrastructure_feature>`
       or :ref:`Integration <integration_features>` Features.
 

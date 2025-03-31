@@ -18,7 +18,7 @@ Component Classification Template
 .. gd_temp:: Component Classification Template
    :id: gd_temp__component_classification
    :status: valid
-   :complies: std_req__isopas8926__1, std_req__isopas8926__2, std_req__isopas8926__3, std_req__isopas8926__4, std_req__isopas8926__5, std_req__isopas8926__6, std_req__isopas8926__7, std_req__isopas8926__8, std_req__isopas8926__9, std_req__isopas8926__10, std_req__isopas8926__11
+   :complies: std_req__isopas8926__441, std_req__isopas8926__4421, std_req__isopas8926__4422, std_req__isopas8926__4423, std_req__isopas8926__4424, std_req__isopas8926__4425, std_req__isopas8926__4426, std_req__isopas8926__4427, std_req__isopas8926__4428, std_req__isopas8926__4429, std_req__isopas8926__44210
 
 
 | Classification of <component>
@@ -143,7 +143,7 @@ Step 2: Determine (C): the uncertainty of finding systematic faults based on the
 
 | (C=1) shall be selected when none of the determined complexity measures indicate HM or NM.
 | (C=2) shall be selected when at least one of the determined complexity measures indicate HM or NM, but the gaps evaluated are acceptable, means
-|       the risk of systematic faults due to these gaps is sufficiently low in the context of S-Core or manageable by mitigating the gaps.
+|       the risk of systematic faults due to these gaps is sufficiently low in the context of S-CORE or manageable by mitigating the gaps.
 | (C=3) in all other cases.
 |
 

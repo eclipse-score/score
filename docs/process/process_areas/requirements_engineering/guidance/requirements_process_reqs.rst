@@ -22,7 +22,7 @@ Process Requirements
    :status: valid
    :tags: structure
    :satisfies: wf__req__stkh_req, wf__req__feat_req, wf__req__comp_req
-   :complies: std_req__iso26262__support_7, std_req__iso26262__support_8
+   :complies: std_req__iso26262__support_6431, std_req__iso26262__support_6432
 
    Requirements shall be hierarchically grouped into different levels.
 
@@ -44,7 +44,7 @@ Process Requirement Attributes
    :status: valid
    :tags: attribute,mandatory
    :satisfies: wf__req__stkh_req, wf__req__feat_req, wf__req__comp_req
-   :complies: std_req__iso26262__support_6, std_req__iso26262__support_8
+   :complies: std_req__iso26262__support_6425, std_req__iso26262__support_6432
 
    Each requirement shall have a unique ID. It shall be in a format which is also human readable and consists of
 
@@ -59,7 +59,7 @@ Process Requirement Attributes
    :status: valid
    :tags: attribute, mandatory
    :satisfies: wf__req__stkh_req, wf__req__feat_req, wf__req__comp_req
-   :complies: std_req__iso26262__support_5
+   :complies: std_req__iso26262__support_6424
 
    The title of the requirement shall provide a short summary of the description. This means that e.g. the word "shall" must not be used int the title for:
 
@@ -72,7 +72,7 @@ Process Requirement Attributes
    :status: valid
    :tags: attribute, mandatory
    :satisfies: wf__req__stkh_req, wf__req__feat_req, wf__req__comp_req
-   :complies: std_req__iso26262__support_5
+   :complies: std_req__iso26262__support_6424
 
    Each requirement shall have a description.
 
@@ -111,7 +111,7 @@ Process Requirement Attributes
    :id: gd_req__req__attr_safety
    :status: valid
    :tags: attribute, mandatory
-   :complies: std_req__iso26262__support_2, std_req__iso26262__support_6
+   :complies: std_req__iso26262__support_6421, std_req__iso26262__support_6425
    :satisfies: wf__req__stkh_req, wf__req__feat_req, wf__req__comp_req
 
    Each requirement shall have a automotive safety integrity level (ASIL) identifier:
@@ -124,7 +124,7 @@ Process Requirement Attributes
    :id: gd_req__req__attr_status
    :status: valid
    :tags: attribute, mandatory
-   :complies: std_req__iso26262__support_6
+   :complies: std_req__iso26262__support_6425
    :satisfies: wf__req__stkh_req, wf__req__feat_req, wf__req__comp_req
 
    Each requirement shall have a status:
@@ -149,7 +149,7 @@ Process Requirement Linkage
    :id: gd_req__req__linkage
    :status: valid
    :tags: attribute, automated
-   :complies: std_req__iso26262__support_8
+   :complies: std_req__iso26262__support_6432
    :satisfies: wf__req__stkh_req, wf__req__feat_req, wf__req__comp_req
 
    Requirements shall be linked to its adjacent level via the attribute satisfies.
@@ -162,7 +162,7 @@ Process Requirement Linkage
    :id: gd_req__req__attr_req_cov
    :status: valid
    :tags: attribute, automated
-   :complies: std_req__iso26262__support_4
+   :complies: std_req__iso26262__support_6423
    :satisfies: wf__req__stkh_req, wf__req__feat_req
 
    It shall be possible to specify the requirement coverage.
@@ -183,7 +183,7 @@ Process Requirement Linkage
    :status: valid
    :tags: attribute, automated
    :satisfies: wf__req__feat_req, wf__req__comp_req
-   :complies: std_req__iso26262__support_9, std_req__iso26262__software_33
+   :complies: std_req__iso26262__support_6433, std_req__iso26262__software_944
 
    It shall be possible to link requirements to tests and automatically include a link to the test case in the attribute testlink.
 
@@ -192,7 +192,7 @@ Process Requirement Linkage
    :status: valid
    :tags: attribute, automated
    :satisfies: wf__req__feat_req, wf__req__comp_req
-   :complies: std_req__iso26262__support_9, std_req__iso26262__software_33
+   :complies: std_req__iso26262__support_6433, std_req__iso26262__software_944
 
    It shall be possible to specify if requirements are completely covered by the linked test cases.
 
@@ -204,7 +204,7 @@ Process Requirement Linkage
    :status: valid
    :tags: attribute, automated
    :satisfies: wf__req__stkh_req, wf__req__feat_req, wf__req__comp_req
-   :complies: std_req__iso26262__support_6, std_req__iso26262__support_10
+   :complies: std_req__iso26262__support_6425, std_req__iso26262__support_6434
 
    It shall be possible to provide a versioning for requirements. It shall be possible to detect if any of the mandatory attributes differ from the versioning: :need:`gd_req__req__attr_mandatory`
 
@@ -246,7 +246,7 @@ Process Requirements Checks
    :id: gd_req__req__linkage_fulfill
    :status: valid
    :tags: attribute, check
-   :complies: std_req__iso26262__support_8
+   :complies: std_req__iso26262__support_6432
    :satisfies: wf__req__stkh_req, wf__req__feat_req, wf__req__comp_req
 
    Every feature- and component requirement shall be linked to at least one parent requirement according to the defined traceability scheme:
@@ -257,7 +257,7 @@ Process Requirements Checks
    :id: gd_req__req__linkage_architecture
    :status: valid
    :tags: attribute, check
-   :complies: std_req__iso26262__support_4
+   :complies: std_req__iso26262__support_6423
    :satisfies: wf__req__feat_req, wf__req__comp_req
 
    It shall be checked if every feature- and component requirement is linked at least to one architectural element.
@@ -267,7 +267,7 @@ Process Requirements Checks
    :status: valid
    :tags: attribute, check
    :satisfies: wf__req__stkh_req, wf__req__feat_req, wf__req__comp_req
-   :complies: std_req__iso26262__support_3
+   :complies: std_req__iso26262__support_6422
 
    It shall be checked that safety requirements (Safety != QM) can only be linked against safety requirements.
 

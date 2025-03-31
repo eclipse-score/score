@@ -25,6 +25,6 @@ Guidance
    template_module_safety_plan.rst
    template_component_classification.rst
    template_safety_manual.rst
-   checklist_safety_plan_cmr.rst
-   checklist_safety_case_cmr.rst
+   checklist_safety_plan.rst
+   checklist_safety_package.rst
    process_req.rst

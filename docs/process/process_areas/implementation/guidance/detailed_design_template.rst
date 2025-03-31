@@ -19,7 +19,7 @@ Detailed Design Template
 .. gd_temp:: Detailed Design Templates
    :id: gd_temp__detailed_design
    :status: valid
-   :complies: std_req__iso26262__software_2, std_req__iso26262__support_1, std_req__iso26262__support_2, std_req__iso26262__support_6
+   :complies: std_req__iso26262__software_542, std_req__iso26262__support_641, std_req__iso26262__support_6421, std_req__iso26262__support_6425
 
 Detailed Design for Component: <Component Name>
 ===============================================

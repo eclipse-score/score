@@ -129,13 +129,14 @@ def test_source_link_integration_ok(
         needs_data = {x["id"]: x for x in Needs_Data.get_needs_view().values()}
         assert "TREQ_ID_1" in needs_data
         assert "TREQ_ID_2" in needs_data
+        # extra_options are only available at runtime
         assert (
             ",".join(example_source_link_text_all_ok["TREQ_ID_1"])
-            == needs_data["TREQ_ID_1"]["source_code_link"]
+            == needs_data["TREQ_ID_1"]["source_code_link"]  # type: ignore
         )
         assert (
             ",".join(example_source_link_text_all_ok["TREQ_ID_2"])
-            == needs_data["TREQ_ID_2"]["source_code_link"]
+            == needs_data["TREQ_ID_2"]["source_code_link"]  # type: ignore
         )
     finally:
         app.cleanup()

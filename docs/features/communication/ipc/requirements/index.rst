@@ -301,7 +301,7 @@ User friendly API for information exchange
    :satisfies: stkh_req__dev_experience__prog_languages
    :status: valid
 
-   The communication framework shall provide a public API for each supported programming language of SCORE.
+   The communication framework shall provide a public API for each supported programming language of S-CORE.
 
 .. feat_req:: Support for programming language idioms
    :id: feat_req__ipc__lang_idioms

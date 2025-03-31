@@ -43,7 +43,7 @@ Workflow Verification
    :status: valid
    :tags: verification
    :responsible: rl__contributor
-   :approved_by: rl__committer
+   :approved_by: rl__committer, rl__testing_community
    :supported_by: rl__safety_manager
    :input: wp__requirements__comp, wp__requirements__comp_aou, wp__verification__plan
    :output: wp__verification__component_test
@@ -62,7 +62,7 @@ Workflow Verification
    :status: valid
    :tags: verification
    :responsible: rl__contributor
-   :approved_by: rl__committer
+   :approved_by: rl__committer, rl__testing_community
    :supported_by: rl__safety_manager
    :input: wp__component_arch, wp__sw_implementation, wp__verification__plan
    :output: wp__verification__comp_int_test
@@ -81,7 +81,7 @@ Workflow Verification
    :status: valid
    :tags: verification
    :responsible: rl__contributor
-   :approved_by: rl__committer
+   :approved_by: rl__committer, rl__testing_community
    :supported_by: rl__safety_manager
    :input: wp__feature_arch, wp__requirements__feat, wp__requirements__feat_aou,
            wp__verification__plan
@@ -101,7 +101,7 @@ Workflow Verification
    :status: valid
    :tags: verification
    :responsible: rl__contributor
-   :approved_by: rl__committer
+   :approved_by: rl__committer, rl__testing_community
    :supported_by: rl__safety_manager
    :input: wp__requirements__stkh, wp__verification__plan
    :output: wp__verification__platform_test
@@ -119,10 +119,10 @@ Workflow Verification
    :id: wf__verification__plan
    :status: valid
    :tags: verification
-   :responsible: rl__committer
+   :responsible: rl__committer, rl__testing_community
    :approved_by: rl__technical_lead
    :supported_by: rl__safety_manager, rl__infrastructure_tooling_community
-   :input: wp__requirements__stkh, wp__platform_mgmt, wp__tool_eval
+   :input: wp__requirements__stkh, wp__platform_mgmt, wp__tool_verification
    :output: wp__verification__plan
    :contains: gd_guidl__verification_guide, gd_temp__verification__plan
    :has: doc_concept__verification__process, doc_getstrt__verification__process
@@ -136,13 +136,13 @@ Workflow Verification
    :id: wf__verification__plan_maintain
    :status: valid
    :tags: verification
-   :responsible: rl__committer
+   :responsible: rl__committer, rl__testing_community
    :approved_by: rl__technical_lead
    :supported_by: rl__safety_manager, rl__infrastructure_tooling_community
    :input: wp__verification__plan, wp__requirements__stkh, wp__platform_mgmt,
            wp__feature_arch, wp__requirements__feat, wp__requirements__feat_aou,
            wp__component_arch, wp__requirements__comp, wp__requirements__comp_aou,
-           wp__tool_eval
+           wp__tool_verification
    :output: wp__verification__plan
    :contains: gd_guidl__verification_guide, gd_temp__verification__plan
    :has: doc_concept__verification__process, doc_getstrt__verification__process
@@ -158,12 +158,12 @@ Workflow Verification
    :id: wf__verification__mod_ver_report
    :status: valid
    :tags: verification
-   :responsible: rl__committer
+   :responsible: rl__committer, rl__testing_community
    :approved_by: rl__technical_lead
    :supported_by: rl__safety_manager, rl__infrastructure_tooling_community
    :input: wp__verification__plan, wp__requirements__comp, wp__requirements__comp_aou,
            wp__component_arch, wp__module_sw_release_note, wp__platform_mgmt,
-           wp__sw_component_safety_analyses, wp__sw_component_dfa,
+           wp__sw_component_safety_analysis, wp__sw_component_dfa,
            wp__sw_arch_verification, wp__sw_implementation_inspection, wp__requirements__inspect,
            wp__verification__component_test, wp__verification__comp_int_test, wp__verification__sw_unit_test
    :output: wp__verification__module_ver_report
@@ -182,12 +182,12 @@ Workflow Verification
    :id: wf__verification__platform_ver_report
    :status: valid
    :tags: verification
-   :responsible: rl__committer
+   :responsible: rl__committer, rl__testing_community
    :approved_by: rl__technical_lead
    :supported_by: rl__safety_manager, rl__infrastructure_tooling_community
    :input: wp__verification__plan, wp__requirements__stkh, wp__requirements__feat, wp__requirements__feat_aou,
            wp__feature_arch, wp__platform_sw_release_note, wp__platform_mgmt,
-           wp__feature_safety_analyses, wp__feature_dfa,
+           wp__feature_safety_analysis, wp__feature_dfa,
            wp__sw_arch_verification, wp__requirements__inspect,
            wp__verification__feat_int_test, wp__verification__platform_test
    :output: wp__verification__platform_ver_report

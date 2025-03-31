@@ -19,7 +19,7 @@ Workproducts Implementation
    :id: wp__sw_implementation
    :status: valid
    :tags: safety
-   :complies: std_wp__iso26262__software_9, std_wp__iso26262__software_10
+   :complies: std_wp__iso26262__software_851, std_wp__iso26262__software_852
 
    Implementation includes source code and detailed design (e.g. in form of comments or linked graphical representations) and SW configuration (e.g. #ifdef)
    The "how to" is described in the SW Development Plan guidelines
@@ -28,7 +28,7 @@ Workproducts Implementation
    :id: wp__sw_implementation_inspection
    :status: valid
    :tags: safety
-   :complies: std_wp__iso26262__software_11, std_wp__iso26262__software_11
+   :complies: std_wp__iso26262__software_952
 
    Github review with integrated inspection checklist, only valid Detailed Design and Code get merged
 
@@ -36,7 +36,7 @@ Workproducts Implementation
    :id: wp__sw_development_plan
    :status: valid
    :tags: safety
-   :complies: std_wp__iso26262__software_1, std_wp__iso26262__software_25, std_wp__iso26262__management_7
+   :complies: std_wp__iso26262__software_551, std_wp__iso26262__software_app_c_58
 
    Process description of SW development including
    - selection of design and programming language

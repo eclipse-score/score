@@ -18,7 +18,7 @@ Safety Management Process Requirements
 .. gd_req:: Safety Management Process Requirement 1
    :id: gd_req__sm_doc_status
    :status: valid
-   :complies: std_req__iso26262__management_38
+   :complies: std_req__iso26262__management_6468
 
    Safety plans shall contain documents references where the status is derived automatically.
 
@@ -27,7 +27,7 @@ Safety Management Process Requirements
 .. gd_req:: Safety Management Process Requirement 2
    :id: gd_req__sm_wp_status
    :status: valid
-   :complies: std_req__iso26262__management_38
+   :complies: std_req__iso26262__management_6468
 
    Safety plans shall contain work product references where the accumulated status is derived automatically.
 

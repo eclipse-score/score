@@ -1,11 +1,11 @@
-# Score Project Tooling Development Guide
+# S-CORE Project Tooling Development Guide
 
-*This document is meant for *developers* of the `_tooling` of docs in the score repository.*  
+*This document is meant for *developers* of the `_tooling` of docs in the score repository.*
 It should be treated as a 'get-started' guide, giving you all needed information to get up and running.
 
 ## Quick Start
 
-1. Clone the repository  
+1. Clone the repository
 2. Setup the environment
 - *No Devcontainer*
     1. Install Bazelisk (version manager for Bazel)
@@ -13,8 +13,8 @@ It should be treated as a 'get-started' guide, giving you all needed information
    ```bash
    bazel run //docs:ide_support
    ```
-    3. Select `.venv_docs/bin/python` as the python interpreter inside your IDE  
-    *Note: This virtual environment does **not** have pip, therefore `pip install` is not available.*  
+    3. Select `.venv_docs/bin/python` as the python interpreter inside your IDE
+    *Note: This virtual environment does **not** have pip, therefore `pip install` is not available.*
 <br>
 
 - *With Devcontainer (VSCode)*
@@ -26,8 +26,8 @@ It should be treated as a 'get-started' guide, giving you all needed information
 
 - **Operating System**: Linux (required)
 - **Core Tools**:
-  - Bazel 
-  - Python 
+  - Bazel
+  - Python
   - Git
   - **VSCode** (Optional)
     - Several integrations and guides are development primarily with VS Code in mind.
@@ -114,5 +114,5 @@ Common issues and solutions:
 
 ## Additional Resources
 - [Sphinx extension guide](/docs/_tooling/extensions/README.md)
-- [Score Metamodel Documentation](/docs/_tooling/extensions/score_metamodel/README.md)
+- [S-CORE Metamodel Documentation](/docs/_tooling/extensions/score_metamodel/README.md)
 - [Pytest Integration Guide](/tools/testing/pytest/README.md)

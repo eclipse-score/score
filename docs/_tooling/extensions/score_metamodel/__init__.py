@@ -12,8 +12,8 @@
 # *******************************************************************************
 import importlib
 import pkgutil
+from collections.abc import Callable
 from pathlib import Path
-from typing import Callable
 
 from ruamel.yaml import YAML
 from sphinx.application import Sphinx
@@ -25,7 +25,7 @@ from .log import CheckLogger
 logger = logging.get_logger(__name__)
 
 local_checks: list[Callable[[Sphinx, NeedsInfoType, CheckLogger], None]] = []
-graph_checks: list[Callable[[Sphinx, dict[str, NeedsInfoType], CheckLogger], None]] = []
+graph_checks: list[Callable[[Sphinx, list[NeedsInfoType], CheckLogger], None]] = []
 
 
 def discover_checks():
@@ -48,7 +48,7 @@ def local_check(func: Callable[[Sphinx, NeedsInfoType, CheckLogger], None]):
     return func
 
 
-def graph_check(func: Callable[[Sphinx, dict[str, NeedsInfoType], CheckLogger], None]):
+def graph_check(func: Callable[[Sphinx, list[NeedsInfoType], CheckLogger], None]):
     """Use this decorator to mark a function as a graph check."""
     logger.debug(f"new graph_check: {func}")
     graph_checks.append(func)
@@ -64,7 +64,7 @@ def _run_checks(app: Sphinx, exception: Exception | None) -> None:
 
     logger.debug(f"Running checks for {len(needs_all_needs)} needs")
 
-    prefix = Path(app.srcdir).relative_to(Path.cwd())
+    prefix = str(Path(app.srcdir).relative_to(Path.cwd()))
 
     log = CheckLogger(logger, prefix)
 
@@ -76,7 +76,7 @@ def _run_checks(app: Sphinx, exception: Exception | None) -> None:
 
     # Graph-Based checks: These warnings require a graph of all other needs to
     # be checked.
-    needs = needs_all_needs.values()
+    needs = list(needs_all_needs.values())
     for check in graph_checks:
         check(app, needs, log)
 
@@ -98,7 +98,7 @@ def load_metamodel_data():
     yaml_path = Path(__file__).resolve().parent / "metamodel.yaml"
 
     yaml = YAML()
-    with open(yaml_path, "r", encoding="utf-8") as f:
+    with open(yaml_path, encoding="utf-8") as f:
         data = yaml.load(f)
 
     # Access the custom validation block

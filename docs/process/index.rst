@@ -17,7 +17,7 @@
 Process
 =======
 
-Processes are the basis to describe the way of working within the SCORE project.
+Processes are the basis to describe the way of working within the S-CORE project.
 
 Introduction
 ------------
@@ -31,7 +31,7 @@ Introduction
 
 Process Model
 -------------
-The SCORE process model is described by workflows, executed by roles and is creating work products.
+The S-CORE process model is described by workflows, executed by roles and is creating work products.
 Workflow activities are supported by guidances.
 
 .. figure:: _assets/score_process_area_overview.drawio.svg
@@ -54,7 +54,7 @@ General concepts like traceability of work products, life cycle model, buidling 
 Process Areas
 ~~~~~~~~~~~~~
 
-The process description for the SCORE project (e.g. requirements, architecture, safety management) can be found here:
+The process description for the S-CORE project (e.g. requirements, architecture, safety management) can be found here:
 
 .. toctree::
    :maxdepth: 1
@@ -88,14 +88,14 @@ Workflows
 How To Contribute
 -----------------
 
-How to contribute to the SCORE project (e.g. naming convention, folder structure, IDE setup) can be found here:
+How to contribute to the S-CORE project (e.g. naming convention, folder structure, IDE setup) can be found here:
 
 :ref:`contribute`
 
 Standards
 ---------
 
-The the standard references the SCORE project's processes are derived from can be found here:
+The the standard references the S-CORE project's processes are derived from can be found here:
 
 .. toctree::
    :maxdepth: 1
