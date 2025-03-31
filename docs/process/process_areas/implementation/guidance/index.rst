@@ -19,7 +19,6 @@ Guidance
    :maxdepth: 1
 
    implementation_guideline
-   cpp/index
    implementation_checklist
    detailed_design_template
    implementation_process_reqs

@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,13 +12,17 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Development
-###########
+MISRA C++:2023 Rule Mapping
+###########################
 
-.. toctree::
-   :maxdepth: 1
+.. document:: MISRA C++:2023 Rule Mapping
+   :id: doc__cpp__misra2023_rule_mapping
+   :status: draft
 
-   development_environment
-   cpp/index
-   rust/index
-   python/index
+..
+    .. csv-table:: MISRA C++:2023 Rule Mapping
+    :name: misra_2023_rule_mapping
+    :file: _assets/misra_2023.csv
+    :widths: 5, 5, 30, 30, 30
+    :header-rows: 1
+    :delim: ;
