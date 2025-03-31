@@ -32,7 +32,7 @@ High level traceability overview
 
 The following figure shows the traceability between the major **S-CORE** work products on each
 requirements level. Starting from top, the platform level, going down to feature, component
-to the bottom the unit level. The concept is based on the classical V-Cylce approach.
+to the bottom the unit level. The concept is based on the classical V-model approach.
 
 Change request are traced to all affected work products.
 
