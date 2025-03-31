@@ -1,0 +1,98 @@
+/'
+   # *******************************************************************************
+   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   #
+   # See the NOTICE file(s) distributed with this work for additional
+   # information regarding copyright ownership.
+   #
+   # This program and the accompanying materials are made available under the
+   # terms of the Apache License Version 2.0 which is available at
+   # https://www.apache.org/licenses/LICENSE-2.0
+   #
+   # SPDX-License-Identifier: Apache-2.0
+   # *******************************************************************************
+'/
+allowmixing
+
+component "User Application" as UA
+
+package IPC <<feature>> as feat_ipc {
+
+    interface "mw::com" as mwcom {
+    }
+
+    package IPC as mod_ipc <<Rectangle>> {
+    component "mw::com" <<component>> as lola
+    }
+
+    package os as os <<Rectangle>> {
+    component "OS::RAMFS" as osramfs
+    component "OS::FS" as osfs
+    component "OS::IPC" as osipc
+    component "OS::ACL" as osacl
+    component "OS::inotify" as osinotify
+    }
+
+    package logging as logging <<Rectangle>> {
+    component "log::ipctracing" as ipctracing
+    }
+
+    package json as mod_json <<Rectangle>> {
+    component "json" as json
+    }
+
+    interface "ipctracing" as i_ipctracing {
+    }
+
+    interface "communication binding configuration" as i_combind {
+    file: mw_com_config.json
+    type: persistent memory, read-only
+    }
+
+    interface "posix files" as i_pf {
+    file: /dev/shm
+    type: shared memory
+    }
+
+    interface "Access Control List" as i_acl {
+    file: access control of shared memory objects
+    type: shared memory
+    ACL control of file owners / permissions
+    }
+
+    interface "IPC" as i_ipc {
+    file: IPC as a control channel for shared memory
+    type: OS::IPC
+    }
+
+    interface "flock" as i_flock{
+    file: unique ownership of marker files during process lifetime
+    type: shared memory
+    }
+
+    interface "inotify" as i_inotify{
+    file: event based information of file creation, alteration or deletion
+    type: inotify, shared memory
+    }
+
+    mod_ipc -u-|> mwcom : implement
+
+    mod_ipc -d[dashed]-> i_pf : use
+    mod_ipc -d[dashed]-> i_acl : use
+    mod_ipc -d[dashed]-> i_ipc : use
+    mod_ipc -d[dashed]-> i_flock : use
+    mod_ipc -d[dashed]-> i_inotify : use
+    mod_ipc -d[dashed]-> i_combind : use
+    mod_ipc -d[dashed]-> i_ipctracing : use
+
+    json -u-|> i_combind : implement
+    ipctracing -u-|> i_ipctracing : implement
+
+    osramfs -u-|> i_pf : implement
+    osacl -u-|> i_acl : implement
+    osipc -u-|> i_ipc : implement
+    osfs -u-|> i_flock : implement
+    osinotify -u-|> i_inotify : implement
+}
+
+UA -d-> mwcom : use

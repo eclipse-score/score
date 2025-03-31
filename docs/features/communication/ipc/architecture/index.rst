@@ -12,12 +12,15 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Communication
+Architecture
 #############
 
+.. note::
+   For now we store the component architecture in the feature tree, because multi-repo docs are not yet supported.
+   Once this support becomes available the component architecture will be moved to the module.
+
 .. toctree::
-   :maxdepth: 1
-   :glob:
    :titlesonly:
 
-   */index
+   feature_architecture
+   component_architecture

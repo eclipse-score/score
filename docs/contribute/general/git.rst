@@ -49,7 +49,31 @@ So this file must at least include the following lines:
 ***************
 
 Before merging a PR all commits shall be squashed into few (desired only
-one) logical commits.
+one) logical commits. This is done following the rules below.
+
+Use ``Squash & Merge`` in case:
+
+   #. there are multiple commits on top of the initial commit
+
+      - Reasons for multiple commits are fixing of review findings or work in progress PRs.
+
+      **AND**
+   #. all commits by the same author.
+
+Use ``Rebase & Merge`` or ``Merge Commit`` in case:
+
+   #. the commits address different topics
+
+      - Sort by topics and combine each topic to a single commit.
+      - It is advised that a PR addresses a single/atomic topic.
+      - Preferred way are separated PRs for separate topics.
+
+      **OR**
+   #. the commits have different authors
+
+      - It is preferred to squash the commits, in case all authors agree to squash.
+      - ``Co-authored-by: x y <x.y@z.com>`` can be a good option to show appreciation to co-authors.
+      - Reasons to not squash a commit of multiple authors may be liability or IP concerns.
 
 .. note::
 

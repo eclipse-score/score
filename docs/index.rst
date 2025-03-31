@@ -41,9 +41,6 @@ Welcome & Overview
 
 **Welcome to the Software documentation of the SCORE project.**
 
-If this is the first time you get in touch with SCORE, the `SCORE main page <https://eclipse-score.github.io/>`__
-may be a good starting point to receive first insights of the project itself.
-
 Introduction
 ~~~~~~~~~~~~
 
@@ -56,21 +53,21 @@ Introduction
       ^^^
       The project develops an open source core stack for Software Defined Vehicles (SDVs),
       targeting embedded high-performance Electronic Control Units (ECUs).
-      Check our `Scope <https://eclipse-score.github.io/#scope>`_ for details.
+      Check our :ref:`Scope <introduction_scope>` for details.
 
    .. grid-item-card::
 
       Project Status
       ^^^
       Check out our roadmap to see the project's key milestones and features we have planned.
-      `Click here to explore! <https://eclipse-score.github.io/index.html#roadmap>`_
+      :ref:`Click here to explore! <introduction_roadmap>`
 
    .. grid-item-card::
 
       How to Contribute?
       ^^^
       The only way to influence Eclipse SCORE is to contribute - SCORE is open! Please check our
-      `Get Involved <https://eclipse-score.github.io/get_involved.html>`_ guide for more
+      :ref:`Get Involved <introduction_get_involved>` guide for more
       information.
 
 
@@ -84,7 +81,7 @@ Software artifacts
 
       Requirements
       ^^^
-      Analyse :ref:`Stakeholder <stakeholder_requirements>` or :ref:`Tool <tool_requirements>` requirements for
+      Analyze :ref:`Stakeholder <stakeholder_requirements>` requirements for
       the work with and implementation inside SCORE.
       Or get the complete picture on the :ref:`requirements` page.
 
@@ -133,11 +130,11 @@ Project structure and processes
    .. toctree::
       :maxdepth: 1
 
+      introduction/index
       requirements/index
       features/index
       contribute/index
       Releases <score_releases/index.rst>
       process/index
       PMP <platform_management_plan/index.rst>
-      SCORE <https://eclipse-score.github.io>
       Eclipse <https://projects.eclipse.org/projects/automotive.score>

@@ -12,12 +12,13 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Communication
-#############
+.. _roadmap:
 
-.. toctree::
-   :maxdepth: 1
-   :glob:
-   :titlesonly:
+Roadmap
+=======
 
-   */index
+- Support for versioning -> Milestone Q3/2025
+- Support for methods -> Milestone Q2/2025
+- Support for signals -> Milestone Q1/2026
+- Support for Rust in early POC stage -> Milestone Q4/2025
+- Implicit service discovery -> Milestone Q4/2025
