@@ -5,6 +5,21 @@
 typeCheckingMode = "standard"
 pythonVersion = "3.12" # Keep in sync with MODULE.bazel
 
+# Warn if function parameters lack type annotations
+reportMissingParameterType = "warning"
+
+# Warn if generic types (e.g. List) are missing type args
+reportMissingTypeArgument = "warning"
+
+# Warn when using members marked as private (e.g. _log)
+reportPrivateUsage = "warning"
+
+# Warn when variable type can't be inferred or is 'Any'
+reportUnknownVariableType = "warning"
+
+# Warn about declared but unused variables
+reportUnusedVariable = "warning"
+
 exclude = [
     "**/__pycache__",
     "**/.*",
@@ -12,7 +27,7 @@ exclude = [
 ]
 
 [tool.ruff]
-target-version = "py312"
+target-version = "py312" # Keep in sync with MODULE.bazel
 extend-exclude = [
     "__pycache__",
     ".*",

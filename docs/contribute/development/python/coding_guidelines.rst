@@ -73,6 +73,23 @@ Documentation
 - If the design impacts multiple components, consider an architecture diagram.
 - User-facing documentation is stored under `docs/guidance`.
 
+Type Annotations
+----------------
+Type annotations in Python improve code readability and enable static type checking.
+We use `pyright <https://github.com/eclipse-score/score/blob/main/pyproject.toml>`_
+for type checks (currently only in IDEs).
+
+- Annotate **all function parameters**.
+- Ensure **pyright can always infer the type**, using annotations, ``cast()``, or other means.
+- Prefer **modern type hints (PEP 585+)**:
+  - Use ``list[int]`` instead of ``List[int]``
+  - Use ``int | None`` instead of ``Optional[int]``
+- Use **generic types**, especially for APIs, not concrete containers:
+  - Prefer ``Sequence[str]`` or ``Iterable[str]`` over ``list[str]``
+  - Prefer ``Mapping[str, Any]`` over ``dict[str, Any]``
+
+This guideline is intentionally short. For details, refer to the :ref:`pyright config <https://github.com/eclipse-score/score/blob/main/pyproject.toml>`_.
+
 
 Tools & Versions
 ================
@@ -82,5 +99,3 @@ versions are managed by the infrastructure community and will be updated as freq
 The configuration is managed by infrastructure and process communities.
 
 *Compliance to all tools is mandatory, and will be enforced by pull request checks.*
-
-Currently we do NOT aim at supporting older Python versions.
