@@ -127,8 +127,10 @@ There are the following different levels of integration and verification defined
   **Note:** These three levels translate to the levels of ISO 26262 part 6 clauses 9 to 11. The platform
   testing will be executed by the integrator. S-Core project only executes tests on reference hardware.
   These tests serve as an optional base for the integrator and will also be part of the
-  :need:`wp__verification__platform_ver_report`, but more on an informative character.
-  The full scope of clause 11 is tailored out accordingly for S-Core.
+  :need:`wp__verification__platform_ver_report`, but more on an informative character. The full scope
+  of clause 11 is tailored out accordingly for S-Core. Practically, this means S-CORE will implement
+  platform test of stakeholder requirements for demonstration, but these are not intended to completely
+  covering all stakeholder requirements.
 
 Verification Methods
 --------------------
@@ -153,16 +155,16 @@ method is to be used as meta data (*TestType* and *DerivationTechnique*).
      - Applicable for QM / ASIL B
    * - Static Code Analysis
      - static-code-analysis
-     - 1, 2, -
+     - 1, -, -
      - QM & ASIL B
    * - Structural Statement Coverage (Code coverage)
      - structural-statement-coverage
      - 1, -, -
-     - ASIL B
+     - QM & ASIL B
    * - Structural Condition Coverage (Code coverage)
      - structural-condition-coverage
      - 1, -, -
-     - ASIL B
+     - QM & ASIL B
    * - Walkthrough
      - walkthrough
      - 1, 2, 3
@@ -177,7 +179,7 @@ method is to be used as meta data (*TestType* and *DerivationTechnique*).
      - QM & ASIL B
    * - Requirements-based Test
      - requirements-based
-     - 1,  2, 3
+     - 1,  2, -
      - QM & ASIL B
    * - Resource Usage Evaluation (only on reference environment)
      - resource-usage
@@ -195,6 +197,10 @@ As an additional measure the resource usage evaluation ``resource-usage`` should
 for level 3 testing as this is the level executed also on reference hardware with the integrated
 platform. This can help to identify resource constraints on "system" level from a security and safety
 perspective.
+
+Additionally, while ``requirements-based`` testing is not mandatory to cover 100% of the stakeholder
+requirements, where demos or test cases suffice to verify stakeholder requirements the traceability
+should be established. The tailoring is also explained in the :need:`doc__platform_safety_plan`.
 
 The following test methods are optional for lower safety integrity levels, but may become required
 at higher levels:
@@ -234,16 +240,8 @@ Test Derivation Methods
      - ASIL B
    * - Analysis of Equivalence Classes
      - equivalence-classes
-     - 1, 2, 3
+     - 1, 2, -
      - ASIL B
-   * - Optional: Error Guessing based on Knowledge or Experience
-     - error-guessing
-     - 1, 2, 3
-     - QM, ASIL B
-   * - Optional: Explorative Testing (based on operational use cases)
-     - explorative-testing
-     - -, 2, 3
-     - QM, ASIL B
    * - Fuzzy Testing (focus security)
      - fuzz-testing
      - 1, 2, -
@@ -258,6 +256,12 @@ Similar for the equivalence-classes the focus can be put on more likely classes 
 invalid classes, empty/null/zero values, system limits. Equivalence Classes should be
 supplemented by Boundary Value Analysis.
 
+The following test derivation methods are optional, but may become required at higher safety levels:
+
+   * Error Guessing derived from knowledge or experience of the contributor valid for all test levels
+     indicated by ``error-guessing`` as derivation technique.
+   * Explorative Testing (based on platform integration use cases) for feature and platform testing level
+     indicated by ``explorative-testing`` as derivation technique.
 
 Quality criteria
 ----------------
@@ -278,7 +282,7 @@ to be reached with every contribution.
      - 85%
      - 100%
    * - 2
-     - Structural Branch Coverage
+     - Structural Condition Coverage
      - 85%
      - 100%
    * - 3

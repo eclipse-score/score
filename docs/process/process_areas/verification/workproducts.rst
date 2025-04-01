@@ -36,7 +36,9 @@ Platform
    :status: valid
    :complies: std_wp__iso26262__support_952
 
-   Platform Testing verifies Stakeholder Requirements performed on reference HW
+   Platform Testing verifies Stakeholder Requirements performed on reference HW.
+   Depending on the nature of the project, respective tailoring (e.g. for reduced requirements
+   coverage) has to be reflected in the :need:`wp__verification__plan` and :need:`wp__platform_safety_plan`.
 
 .. workproduct:: Platform Verification Report
    :id: wp__verification__platform_ver_report
