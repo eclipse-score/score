@@ -75,7 +75,3 @@ needs_string_links = {
         "options": ["source_code_link"],
     },
 }
-
-# Specify method for automatic header generation
-# set to False to use the commit message instead
-header_service_use_github_data = True
