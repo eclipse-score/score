@@ -95,7 +95,7 @@ The modules and components shall follow the folder structure which was presented
                                              Source Files
                                              Detailed Design [:need:`wp__sw_implementation`]
                                              Unit tests [:need:`wp__verification__sw_unit_test`]
-            <lower_level_comp>/        -> lower level component following <component> folder structure
+            <lower_level_comp>/        -> lower level component following <component_name> folder structure
 
          docs/                         -> Documentation of the component
             architecture/              -> Component architecture (only if lower level components exist)
