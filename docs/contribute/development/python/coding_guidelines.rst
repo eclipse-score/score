@@ -40,9 +40,9 @@ This guide is a **living document**—keep it concise, relevant, and practical.
 We assume basic programming and software-engineering know-how and will not repeat basics here! Go
 ask Google or ChatGPT. Or one of these established Python best practice websites:
 
-- [PEP 8](https://pep8.org/)
-- [The Hitchhiker's Guide to Python](https://docs.python-guide.org/)
-- [Real Python](https://realpython.com/)
+- `PEP 8 <https://pep8.org/>`_
+- `The Hitchhiker's Guide to Python <https://docs.python-guide.org/>`_
+- `Real Python <https://realpython.com/>`_
 
 Comments
 --------
@@ -73,6 +73,24 @@ Documentation
 - If the design impacts multiple components, consider an architecture diagram.
 - User-facing documentation is stored under `docs/guidance`.
 
+Type Annotations
+----------------
+Type annotations in Python improve code readability and enable static type checking.
+We use `pyright <https://github.com/eclipse-score/score/blob/main/pyproject.toml>`_
+for type checks (currently only in IDEs).
+
+- Annotate **all function parameters**.
+- Ensure **pyright can always infer the type**, using annotations, ``cast()``, or other means.
+- Prefer **modern type hints (PEP 585+)**:
+  - Use ``list[int]`` instead of ``List[int]``
+  - Use ``int | None`` instead of ``Optional[int]``
+- Use **generic types**, especially for APIs, not concrete containers:
+  - Prefer ``Sequence[str]`` or ``Iterable[str]`` over ``list[str]``
+  - Prefer ``Mapping[str, Any]`` over ``dict[str, Any]``
+
+This guideline is intentionally short. For details, refer to the `pyright config
+<https://github.com/eclipse-score/score/blob/main/pyproject.toml>`_.
+
 
 Tools & Versions
 ================
@@ -82,5 +100,3 @@ versions are managed by the infrastructure community and will be updated as freq
 The configuration is managed by infrastructure and process communities.
 
 *Compliance to all tools is mandatory, and will be enforced by pull request checks.*
-
-Currently we do NOT aim at supporting older Python versions.
