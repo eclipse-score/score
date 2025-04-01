@@ -40,9 +40,9 @@ This guide is a **living document**—keep it concise, relevant, and practical.
 We assume basic programming and software-engineering know-how and will not repeat basics here! Go
 ask Google or ChatGPT. Or one of these established Python best practice websites:
 
-- [PEP 8](https://pep8.org/)
-- [The Hitchhiker's Guide to Python](https://docs.python-guide.org/)
-- [Real Python](https://realpython.com/)
+- `PEP 8 <https://pep8.org/>`_
+- `The Hitchhiker's Guide to Python <https://docs.python-guide.org/>`_
+- `Real Python <https://realpython.com/>`_
 
 Comments
 --------
@@ -88,7 +88,8 @@ for type checks (currently only in IDEs).
   - Prefer ``Sequence[str]`` or ``Iterable[str]`` over ``list[str]``
   - Prefer ``Mapping[str, Any]`` over ``dict[str, Any]``
 
-This guideline is intentionally short. For details, refer to the :ref:`pyright config <https://github.com/eclipse-score/score/blob/main/pyproject.toml>`_.
+This guideline is intentionally short. For details, refer to the `pyright config
+<https://github.com/eclipse-score/score/blob/main/pyproject.toml>`_.
 
 
 Tools & Versions
