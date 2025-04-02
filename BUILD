@@ -11,6 +11,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 
+load("@dash_license_checker//:dash.bzl", "dash_license_checker")
 load("//tools/cr_checker:cr_checker.bzl", "copyright_checker")
 
 test_suite(
@@ -39,3 +40,9 @@ exports_files([
     "MODULE.bazel",
     "BUILD",
 ])
+
+dash_license_checker(
+    src = "//docs:requirements_lock",
+    file_type = "requirements",
+    visibility = ["//visibility:public"],
+)

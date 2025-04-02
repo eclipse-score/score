@@ -19,13 +19,3 @@ score_py_pytest(
         "test_rules_are_working_correctly.py",
     ],
 )
-
-score_py_pytest(
-    name = "test_dash_format_converter",
-    srcs = [
-        "test_dash_format_converter.py",
-    ],
-    deps = [
-        "//tools/dash/formatters:dash_format_converter_lib",
-    ],
-)

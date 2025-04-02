@@ -93,16 +93,6 @@ http_jar(
     url = "https://github.com/plantuml/plantuml/releases/download/v1.2025.0/plantuml-1.2025.0.jar",
 )
 
-DASH_VERSION = "1.1.0"
-
-http_jar(
-    name = "dash_license_tool",
-    sha256 = "ba4e84e1981f0e51f92a42ec8fc8b9668dabb08d1279afde46b8414e11752b06",
-    urls = [
-        "https://repo.eclipse.org/content/repositories/dash-licenses/org/eclipse/dash/org.eclipse.dash.licenses/{version}/org.eclipse.dash.licenses-{version}.jar".format(version = DASH_VERSION),
-    ],
-)
-
 http_file = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_file")
 
 http_file(
@@ -110,3 +100,10 @@ http_file(
     sha256 = "45692ecb9d94a19a15b1e7b240acdff5702f78cd22188dac41e1879cb8bdcdcf",
     urls = ["https://github.com/withered-magic/starpls/releases/download/v0.1.21/starpls-linux-amd64"],
 )
+
+###############################################################################
+#
+# Misc. dependency
+#
+###############################################################################
+bazel_dep(name = "dash_license_checker", version = "0.1.0")
