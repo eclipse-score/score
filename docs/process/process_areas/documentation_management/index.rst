@@ -24,7 +24,7 @@ Concept
    :id: doc_concept__documentation__process
    :status: valid
 
-In this section a concept for the documentation management will be discussed. Inputs for this concepts are mainly the requirements of ISO26262 "Part 2: Management of functional safety"
+In this section a concept for the documentation management will be discussed. Inputs for this concepts are mainly the requirements of ISO26262 "Part 8: Supporting Processes"
 
 Inputs
 ^^^^^^

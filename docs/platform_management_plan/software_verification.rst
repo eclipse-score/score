@@ -99,7 +99,7 @@ The following types of integrations are applicable:
 #. **New software elements** get integrated according to the :need:`gd_guidl__contr_request_guideline`
 #. **Fixes of defects** get integrated based on their prioritization described by the
    :doc:`problem_resolution`.
-#. **Changes** get integrated based on the :need:`wf__cr_dc_changerequest` and will follow
+#. **Changes** get integrated based on the :need:`wf__change__cr_an_change_request` and will follow
    the :need:`gd_guidl__pull_request_guideline` as any other artifact.
 
 Levels of integration and verification
