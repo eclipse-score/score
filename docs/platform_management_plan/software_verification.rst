@@ -367,6 +367,35 @@ document:
 
 In this way roles are followed as defined in :ref:`verification_roles`.
 
+Independence of verification
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+As there are no separated roles for a software developer and test developer with :need:`rl__contributor` and
+:need:`rl__committer` it is important to achieve independence. This is done by having different
+people responsible for the test implementation and the actual code which gets tested.
+
+The following test level fall in the responsibility of the :need:`rl__testing_community`:
+
+* :need:`wp__verification__comp_int_test`
+* :need:`wp__verification__feat_int_test`
+* :need:`wp__verification__platform_test`
+
+Still a :need:`rl__contributor` of one function in a component doesn't prevent them from writing tests
+for other functions they do not own.
+Independence is achieved by the establishment of :need:`rl__testing_community` performing reviews.
+
+The following test level fall in the responsibility of the :need:`rl__contributor`:
+
+* :need:`wp__verification__sw_unit_test`
+
+Unit tests can be the developed by the same :need:`rl__contributor` who also contributed the unit code.
+A level of independence is achieved as the review process demands to have a review by a :need:`rl__committer`
+different to the author of a Pull Request. This is also described in process requirement :need:`gd_req__verification_independence`.
+
+Note that, each :need:`rl__contributor` of the project acts in a publicly visible space where also
+others see the contribution and have the possibility to perform additional reviews independent from
+the :need:`rl__committer` and :need:`rl__testing_community`.
+
 Tools
 -----
 
