@@ -171,7 +171,7 @@ method is to be used as meta data (*TestType* and *DerivationTechnique*).
      - QM
    * - Inspection
      - inspection
-     - 1, 2, -
+     - 1, 2, 3
      - ASIL B
    * - Interface Test
      - interface-test
