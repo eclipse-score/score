@@ -18,7 +18,7 @@ Work Products Platform Management
 .. workproduct:: Platform Management Plan
    :id: wp__platform_mgmt
    :status: valid
-   :complies:
+   :complies: std_wp__isosae21434__org_management_553, std_wp__isosae21434__org_management_554
 
    The Platform Management Plan shall include the plans as defined by the
    :ref:`Platform Management Plan Template <platform_templates>`.

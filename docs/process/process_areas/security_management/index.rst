@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,14 +12,18 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Risk management
-------------------------
+.. _security_management:
 
-Purpose
-+++++++
+Security Management
+###################
 
-Objectives and scope
-++++++++++++++++++++
+.. toctree::
+   :maxdepth: 1
 
-Approach
-++++++++
+
+   security_management_getstrt
+   security_management_concept
+   guidance/index
+   security_management_roles
+   security_management_workflow
+   security_management_workproducts

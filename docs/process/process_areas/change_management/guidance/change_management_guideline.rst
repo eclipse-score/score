@@ -18,7 +18,7 @@ Guideline
 .. gd_guidl:: Change Request Guideline
    :id: gd_guidl__change__change_request
    :status: valid
-   :complies: std_req__iso26262__support_8414, std_req__iso26262__support_8432, std_req__iso26262__support_8442, std_req__iso26262__support_8451
+   :complies: std_req__iso26262__support_8414, std_req__iso26262__support_8432, std_req__iso26262__support_8442, std_req__iso26262__support_8451, std_req__isosae21434__org_management_5441, std_req__isosae21434__continual_8321, std_req__isosae21434__continual_8322, std_req__isosae21434__continual_8323
 
 This document describes the general guidances for Change Management based on the concept which is defined :need:`[[title]]<doc_concept__change__process>`.
 

@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,14 +12,16 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Stakeholder Management
-------------------------
+Guidance
+########
 
-Purpose
-+++++++
+.. toctree::
+   :maxdepth: 1
 
-Objectives and scope
-++++++++++++++++++++
-
-Approach
-++++++++
+   security_management_guideline
+   security_management_feature_security_wp_template
+   security_management_module_security_plan_template
+   security_management_security_manual_template
+   security_management_checklist_security_package
+   security_management_checklist_security_plan
+   security_management_process_reqs

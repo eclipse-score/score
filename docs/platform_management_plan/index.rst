@@ -29,9 +29,8 @@ Platform Management Plan
    :caption: Content
 
    project_management
-   stakeholder_management
    safety_management
-   risk_management
+   security_management
    quality_management
    config_management
    tool_management

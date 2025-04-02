@@ -39,10 +39,6 @@ Irrelevant clauses for S-CORE process requirements and work products compliance 
 
 Relevant clauses are:
 
-Tailoring documentation is planned in
-https://github.com/eclipse-score/score/issues/696
-
-
 Clause 5: Organizational cybersecurity management
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

@@ -43,7 +43,7 @@ General
    :id: wp__training_path
    :status: draft
    :tags: safety
-   :complies: std_wp__iso26262__management_552
+   :complies: std_wp__iso26262__management_552, std_wp__isosae21434__org_management_552
 
    Trainings for safety and security for S-CORE
 
@@ -51,7 +51,7 @@ General
    :id: wp__qms
    :status: draft
    :tags: safety
-   :complies: std_wp__iso26262__management_553
+   :complies: std_wp__iso26262__management_553, std_wp__isosae21434__org_management_553
 
    Quality management process descriptions and definitions
 
@@ -171,7 +171,7 @@ Component development
 .. workproduct:: Architecture Verification
    :id: wp__sw_arch_verification
    :status: draft
-   :complies: std_wp__iso26262__software_754
+   :complies: std_wp__iso26262__software_754, std_wp__isosae21434__development_1054
 
    Depends on architecture, FMEA and DFA tooling.
    May include several methods like inspection, modelling ... Which are selected in SW Development Plan.
@@ -217,3 +217,20 @@ S-CORE Workproduct Linkage
    :legend:
    :colors: red, green, blue
    :filter-func: score_metamodel.checks.standards.my_pie_workproducts_contained_in_exactly_one_workflow
+
+
+Tailoring activities
+--------------------
+.. workproduct:: Tailoring Documents
+   :id: wp__tailoring
+   :status: valid
+   :complies: std_wp__iso26262__management_751, std_wp__iso26262__system_652, std_wp__iso26262__system_653, std_wp__iso26262__system_654, std_wp__iso26262__system_655, std_wp__iso26262__system_656, std_wp__iso26262__system_657, std_wp__iso26262__system_751, std_wp__iso26262__system_752, std_wp__iso26262__system_851, std_wp__iso26262__system_852, std_wp__iso26262__software_1151, std_wp__iso26262__software_1152, std_wp__iso26262__software_app_c_52, std_wp__iso26262__software_app_c_54, std_wp__iso26262__software_app_c_57, std_wp__iso26262__support_551, std_wp__iso26262__support_552, std_wp__iso26262__support_553, std_wp__iso26262__support_554, std_wp__iso26262__support_555, std_wp__iso26262__support_1351, std_wp__iso26262__support_1352, std_wp__iso26262__support_1353, std_wp__iso26262__support_1451, std_wp__iso26262__support_1452, std_wp__iso26262__support_1551, std_wp__iso26262__support_1651, std_wp__iso26262__analysis_551, std_wp__iso26262__analysis_552, std_wp__isosae21434__org_management_551, std_wp__isosae21434__org_management_555, std_wp__isosae21434__prj_management_653, std_wp__isosae21434__assessment_15331, std_wp__isosae21434__assessment_15332, std_wp__isosae21434__assessment_15431, std_wp__isosae21434__assessment_15531
+
+   This work product argues why some work products are not needed in the project.
+
+   It may have several levels:
+
+   * Project/Platform
+   * Feature/Component
+
+   It belongs to the Platform Management Plan.
