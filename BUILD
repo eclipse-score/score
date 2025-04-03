@@ -12,7 +12,7 @@
 # *******************************************************************************
 
 load("@dash_license_checker//:dash.bzl", "dash_license_checker")
-load("//tools/cr_checker:cr_checker.bzl", "copyright_checker")
+load("@score_cr_checker//:cr_checker.bzl", "copyright_checker")
 
 test_suite(
     name = "format.check",
@@ -33,6 +33,8 @@ copyright_checker(
         "//:BUILD",
         "//:MODULE.bazel",
     ],
+    config = "@score_cr_checker//resources:config",
+    template = "@score_cr_checker//resources:templates",
     visibility = ["//visibility:public"],
 )
 

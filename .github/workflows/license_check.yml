@@ -17,6 +17,12 @@ on:
     types: [opened, reopened, synchronize]
   merge_group:
     types: [checks_requested]
+
+permissions:
+  pull-requests: write
+  issues: write
+
+
 jobs:
   license-check:
     uses: eclipse-score/cicd-workflows/.github/workflows/license-check.yml@main
