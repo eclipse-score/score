@@ -25,7 +25,7 @@ Workflow Change Management
    :supported_by: rl__technical_lead, rl__module_lead
    :input: wp__policies, wp__issue_track_system, wp__feat_request, wp__cmpt_request
    :output: wp__issue_track_system, wp__feat_request, wp__cmpt_request
-   :contains: gd_guidl__change__change_request, gd_temp__change__feature_request, gd_temp__change__component_request, gd_temp__change__impact_analysis, gd_temp__component_classification, gd_req__change__attr_uid, gd_req__change__attr_status, gd_req__change__attr_title, gd_req__change__attr_impact_description, gd_req__change__attr_impact_safety, gd_req__change__attr_impact_security, gd_req__change__types, gd_req__change__attr_affected_wp, gd_req__change__attr_milestone, gd_req__change_tool_impact_analysis
+   :contains: gd_guidl__change__change_request, gd_temp__change__feature_request, gd_temp__change__component_request, gd_temp__change__impact_analysis, gd_temp__component_classification, gd_req__change__attr_uid, gd_req__change__attr_status, gd_req__change__attr_title, gd_req__change__attr_impact_description, gd_req__change__attr_impact_safety, gd_req__change__attr_impact_security, gd_req__change__attr_types, gd_req__change__attr_affected_wp, gd_req__change__attr_milestone, gd_req__change_tool_impact_analysis
    :has: doc_concept__change__process, doc_getstrt__change__process
 
    The Change Request is created and analyzed.
@@ -49,7 +49,7 @@ Workflow Change Management
    :supported_by: rl__safety_manager, rl__security_manager, rl__quality_manager
    :input: wp__issue_track_system, wp__feat_request, wp__cmpt_request
    :output: wp__issue_track_system, wp__feat_request, wp__cmpt_request
-   :contains: gd_guidl__change__change_request, gd_temp__change__feature_request, gd_temp__change__component_request, gd_temp__change__impact_analysis, gd_temp__component_classification, gd_req__change__attr_uid, gd_req__change__attr_status, gd_req__change__attr_title, gd_req__change__attr_impact_description, gd_req__change__attr_impact_safety, gd_req__change__attr_impact_security, gd_req__change__types, gd_req__change__attr_affected_wp, gd_req__change__attr_milestone, gd_req__change_tool_impact_analysis
+   :contains: gd_guidl__change__change_request, gd_temp__change__feature_request, gd_temp__change__component_request, gd_temp__change__impact_analysis, gd_temp__component_classification, gd_req__change__attr_uid, gd_req__change__attr_status, gd_req__change__attr_title, gd_req__change__attr_impact_description, gd_req__change__attr_impact_safety, gd_req__change__attr_impact_security, gd_req__change__attr_types, gd_req__change__attr_affected_wp, gd_req__change__attr_milestone, gd_req__change_tool_impact_analysis
    :has: doc_concept__change__process, doc_getstrt__change__process
 
    The Change Request is evaluated based on the analysis result either approved, rejected or delayed.

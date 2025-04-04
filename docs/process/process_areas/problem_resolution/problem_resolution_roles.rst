@@ -12,18 +12,22 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Process Areas
-#############
+Roles
+#####
 
-.. toctree::
-   :maxdepth: 1
-   :glob:
+For problem resolution no additional roles need to be defined.
 
-   architecture_design/index.rst
-   change_management/index.rst
-   documentation_management/index.rst
-   implementation/index.rst
-   problem_resolution/index.rst
-   requirements_engineering/index.rst
-   safety_management/index.rst
-   verification/index.rst
+Contributing Roles:
+
+   * :need:`Contributor <rl__contributor>`
+   * :need:`Committer <rl__committer>`
+   * :need:`Technical Lead  <rl__technical_lead>`
+   * :need:`Module Project Lead <rl__module_lead>`
+   * :need:`Safety Manager <rl__safety_manager>`
+   * :need:`Security Manager <rl__security_manager>`
+   * :need:`Quality Manager <rl__quality_manager>`
+
+A detailed overview of the responsibilities for the steps of the problem resolution process is
+listed here:
+
+:ref:`workflow_prm_requirements`
