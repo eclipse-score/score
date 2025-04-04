@@ -29,8 +29,10 @@ can include multiple software module releases within a platform release scope.
 Inputs
 ******
 
-#. Module safety case
-#. Platform safety case
+#. Module safety package
+#. Platform safety package
+#. Module verification report
+#. Platform verification report
 #. Issue tracking system
 #. Platform Management Plan
 
@@ -46,25 +48,25 @@ Platform Release Plan
 
 The platform release plan provides a reliable plan on what software modules can be expected in the
 upcoming platform release. The platform release plan is reflected by feature requests which are
-demanded. Therefore it is of importance that the *Project Leads* are aligned with
-the various software module *Technical Leads* and *Project Leads* to align the platform release
+demanded. Therefore it is of importance that the *Technical Leads* on platform level are aligned with
+the various software module *Technical Leads* and to align the platform release
 plan properly with the module release plan as the platform release plan has a clear dependency on
 its output.
 
 #. :need:`Tech Lead Circle <rl__technical_lead>`
 
-   * Define and proposes scope of individual module release
+   * Defines and proposes scope of individual module release
+   * Creates and maintains the platform release plan
    * Aligns module release timeline with platform release plan
 
 #. :need:`Project Lead Circle <rl__project_lead>`
 
-   * Creates and maintains the platform release plan
-   * Aligns with the *Tech Lead Circle* the timeline from various module release plans
+   * Approves the platform release plan
 
 Platform Release
 ================
 
-The Platform Release contains the full *SCORE* scope which spans over many modules. The releases
+The Platform Release contains the full *S-CORE* scope which spans over many modules. The releases
 are proposed by the *Technical Leads* and approved by *Project Leads*. Every software module
 has its own repository which contains multiple components, their requirements, architecture,
 implementation and tests.
@@ -107,8 +109,9 @@ Only released software modules can be included into a platform release.
 
 #. :need:`Project Lead Circle <rl__project_lead>`
 
-   * Aligns software module release timing schedule
+   * Approves the module release notes
    * Adds and removes Software modules to the Platform
+   * Releases the module
 
 Branching Strategy
 ==================

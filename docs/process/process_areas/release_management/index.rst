@@ -25,3 +25,6 @@ Release Management
    guidance/index
    release_workproducts
    release_roles
+
+.. needextend:: "process_areas/release_management" in docname
+   :+tags: release_mgt

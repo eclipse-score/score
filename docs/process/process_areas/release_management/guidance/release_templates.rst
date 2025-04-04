@@ -17,8 +17,8 @@ Templates
 
 .. gd_temp:: Platform Release Note Template
    :id: gd_temp__rel__plat_rel_note
-   :status: draft
-   :complies: std_req__iso26262__management_27
+   :status: valid
+   :complies: std_req__iso26262__management_64134, std_req__iso26262__management_64135
 
    |  Platform Release Notes
    |  ======================
@@ -74,8 +74,8 @@ Templates
 
 .. gd_temp:: Module Release Note Template
    :id: gd_temp__rel__mod_rel_note
-   :status: draft
-   :complies: std_req__iso26262__management_27
+   :status: valid
+   :complies: std_req__iso26262__management_64134, std_req__iso26262__management_64135
 
    | Software Module Release Notes
    | =============================
@@ -134,3 +134,22 @@ Templates
    | -------------------
    |
    | For any questions or support, please contact the *Project lead* or raise an issue/discussion.
+
+.. gd_temp:: Release Issue Template
+   :id: gd_temp__rel__issue
+   :status: valid
+   :complies: std_req__iso26262__management_64131, std_req__iso26262__management_64132, std_req__iso26262__management_64133
+
+Copy the below steps into the release ticket:
+
+Release <add version number> for <platform/module_name>
+-------------------------------------------------------
+
+1. Link this issue to the correct milestone and assign to the technical lead
+2. Check respective Verification report on the release candidate's github tag
+3. Check bugfixes or justify failed tests
+4. Check the safety package completeness (supported by the safety manager)
+5. Create/update the release note (pull request to close this issue)
+6. Document safety manager's "recommendation to release" by asking his GitHub review approval of the release note
+7. Create the "release" in GitHub according to :need:`gd_guidl__rel_management`
+8. Merge PR and close this issue to complete the release

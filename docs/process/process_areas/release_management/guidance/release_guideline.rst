@@ -33,27 +33,25 @@ Software Module Release
 
    * Create a release plan for each software module.
    * The release plan should include timelines, milestones, and deliverables.
-   * Coordinate with other module owners to align release schedules.
+   * Coordinate with other module owners and platform to align release schedules.
 
 3. **Development and Testing**:
 
-   * Follow the development guidelines and coding standards.
-   * Conduct thorough testing, including unit tests, integration tests, and system tests.
-   * Ensure that all tests pass before proceeding to the release.
-   * In case of failed test, evaluate and possibly justify their continued existence.
+   * According process, cross functional teams implement and test.
+   * Check the :need:`wp__verification__module_ver_report` to ensure that all tests pass before proceeding to the release.
+   * In case of failed test, evaluate and possibly justify their failure.
 
 4. **Release Preparation**:
 
-   * Update the version number according to the versioning policy.
+   * Update the version number according to the versioning policy (defined in :need:`doc__platform_release_management_plan`).
    * Prepare release notes documenting the changes, improvements, and bug fixes.
-   * Ensure the relevant safety cases are available.
+   * Ensure the relevant safety packages are available.
    * Tag the release in the GitHub repository.
 
 5. **Release Execution**:
 
-   * Push the release to the main branch.
-   * Create a release in the GitHub repository and attach the release notes.
-   * Notify the tech lead circle about the release.
+   * Create a release in the GitHub repository release branch and attach the release notes. For this consider the `GitHub Howto Release <https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository/>`_
+   * Notify the project lead circle about the release for approval.
 
 
 Platform Release
@@ -71,75 +69,26 @@ Platform Release
 
 3. **Development and Testing**:
 
-   * Integrate the released software modules into the platform.
+   * Integrate the software modules release candidates into the platform.
    * Conduct comprehensive testing to ensure compatibility and stability.
-   * Address any integration issues promptly.
+   * Check the :need:`wp__verification__platform_ver_report` to ensure that all tests pass before proceeding to the release.
+   * Address any integration issues promptly to initiate bugfixing of the modules.
+   * In case of still failed test, evaluate and possibly justify their failure.
 
 4. **Release Preparation**:
 
+   * Check if modules are released.
    * Update the platform version number according to the versioning policy.
    * Prepare platform release notes summarizing the updates from all integrated software modules.
-   * Ensure the relevant safety cases are available.
+   * Ensure the relevant safety packages are available.
    * Tag the platform release in the GitHub repository.
 
 5. **Release Execution**:
 
-   * Push the platform release to the main branch.
-   * Create a release in the GitHub repository and attach the platform release notes.
-   * Publish within Eclipse SDV
+   * Create a release in the GitHub repository release branch and attach the platform release notes. For this consider the `GitHub Howto Release <https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository/>`_
+   * Notify the project lead circle about the release for approval.
+   * Publish within Eclipse SDV.
 
-Release Versioning Rules
-------------------------
-
-1. Semantic Versioning Format
-
-   Use the format MAJOR.MINOR.PATCH for version numbers.
-
-
-2. Version Components
-
-   * MAJOR: Incremented for incompatible API changes.
-   * MINOR: Incremented for backward-compatible functionality additions.
-   * PATCH: Incremented for backward-compatible bug fixes.
-
-3. Rules for Incrementing Versions
-
-   * Major Version (MAJOR)
-
-      Increment the MAJOR version when making changes that break backward compatibility.
-
-      Examples:
-
-      * Removing or renaming public APIs.
-      * Significant changes to the architecture that require modifications from dependent modules.
-
-   * Minor Version (MINOR)
-
-      Increment the MINOR version when adding new features or functionality in a backward-compatible manner.
-
-      Examples:
-
-      * Adding new APIs or modules.
-      * Enhancements to existing features that do not affect existing functionality.
-
-   * Patch Version (PATCH)
-
-      Increment the PATCH version when making backward-compatible bug fixes.
-
-      Examples:
-
-      * Fixing bugs or issues in the existing code.
-      * Minor improvements that do not add new features or change existing ones.
-
-4. Pre-Release Versions
-
-   * Use pre-release versions for features or fixes that are not yet ready for production.
-   * Format: MAJOR.MINOR.PATCH-<pre-release-tag>, e.g., 1.0.0-alpha, 1.0.0-beta.
-
-5. Tagging Releases
-
-   * Tag each release in the repository with the version number.
-   * Format: vMAJOR.MINOR.PATCH, e.g., v1.3.0.
 
 Tracking and Communication
 ---------------------------
@@ -151,8 +100,9 @@ Tracking and Communication
 
 2. **Communication**:
 
-   * Regularly update all stakeholders on the release status.
+   * Regularly update all stakeholders on the release status as part of the project lead circle.
    * Hold periodic meetings to discuss progress, issues, and dependencies within the tech lead circle.
+   * meeting definition and schedule see :ref:`pmp_pm_steering_committees`.
 
 
 Templates
