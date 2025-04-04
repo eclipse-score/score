@@ -38,25 +38,6 @@ Workflow Verification
    The actual :need:`rl__committer` of the implementation can also be the creator of the unit tests.
    Independence is achieved by different approver at PRs and by the :need:`wp__verification__module_ver_report`.
 
-.. workflow:: Create/Maintain Component Test
-   :id: wf__verification__comp_test
-   :status: valid
-   :tags: verification
-   :responsible: rl__contributor
-   :approved_by: rl__committer, rl__testing_community
-   :supported_by: rl__safety_manager
-   :input: wp__requirements__comp, wp__requirements__comp_aou, wp__verification__plan
-   :output: wp__verification__component_test
-   :contains: gd_req__link_tests, gd_guidl__verification_specification
-   :has: doc_concept__verification__process, doc_getstrt__verification__process
-
-   Component test cases are based on component requirements.
-   Any contributor can create a component test and create a PR for it.
-   During the review process the test cases will be approved by a committer.
-   Committer and contributor need to differ.
-   The tests are automatically executed as part of the CI after PR merge.
-   In case of changes at inputs, the workflow need to be executed again as part of maintenance.
-
 .. workflow:: Create/Maintain Component Integration Test
    :id: wf__verification__comp_int_test
    :status: valid
@@ -64,17 +45,19 @@ Workflow Verification
    :responsible: rl__contributor
    :approved_by: rl__committer, rl__testing_community
    :supported_by: rl__safety_manager
-   :input: wp__component_arch, wp__sw_implementation, wp__verification__plan
+   :input: wp__component_arch, wp__sw_implementation, wp__requirements__comp, wp__requirements__comp_aou, wp__verification__plan
    :output: wp__verification__comp_int_test
    :contains: gd_req__link_tests, gd_guidl__verification_specification
    :has: doc_concept__verification__process, doc_getstrt__verification__process
 
-   Component Integration test cases are based on component architecture and detailed design of implementation.
+   Component Integration test cases are based on component architecture and component requirements.
+   They may optionally cover the detailed design of implementation as an optional element where units are seen complex.
    Any contributor can create a component integration test and create a PR for it.
    During the review process the test cases will be approved by a committer.
    Committer and contributor need to differ.
    The tests are automatically executed as part of the CI after PR merge.
    In case of changes at inputs, the workflow need to be executed again as part of maintenance.
+
 
 .. workflow:: Create/Maintain Feature Integration Test
    :id: wf__verification__feat_int_test
@@ -165,7 +148,7 @@ Workflow Verification
            wp__component_arch, wp__module_sw_release_note, wp__platform_mgmt,
            wp__sw_component_safety_analysis, wp__sw_component_dfa,
            wp__sw_arch_verification, wp__sw_implementation_inspection, wp__requirements__inspect,
-           wp__verification__component_test, wp__verification__comp_int_test, wp__verification__sw_unit_test
+           wp__verification__comp_int_test, wp__verification__sw_unit_test
    :output: wp__verification__module_ver_report
    :contains: gd_temp__mod_ver_report
    :has: doc_concept__verification__process, doc_getstrt__verification__process

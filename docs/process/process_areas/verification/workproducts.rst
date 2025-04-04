@@ -93,25 +93,23 @@ Module
 Component
 *********
 
-.. workproduct:: Component test
-   :id: wp__verification__component_test
-   :status: valid
-   :complies: std_wp__iso26262__software_1051, std_wp__iso26262__support_952, std_wp__isopas8926__4525
-
-   Component Testing verifies Component Requirements
-
 .. workproduct:: Component Integration test
    :id: wp__verification__comp_int_test
    :status: valid
    :complies: std_wp__iso26262__software_1051, std_wp__iso26262__support_952, std_wp__isopas8926__4525
 
-   Component Integration Testing verifies the detailed design and component architecture:
+   Component Integration Testing verifies the component architecture and component requirements:
 
    - all interfaces from Static view and
    - all flows from Dynamic View
    - integration of units into components based on detailed design
+   - detailed design of complex units
 
    Performance (i.e. RAM and processor usage) is only tested on reference HW.
+
+   As an optional part component integration tests can cover additional testing for complex units
+   touching specifically the detailed design. This is needed where :need:`wp__verification__sw_unit_test`
+   is not sufficient to cover the measures defined in the implementation of the :need:`wp__verification__plan`.
 
 .. workproduct:: Unit test
    :id: wp__verification__sw_unit_test
