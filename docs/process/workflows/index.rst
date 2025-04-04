@@ -21,6 +21,5 @@ Workflows
 
    process_management
    platform_management
-   change_management
    quality_management
    safety_analysis

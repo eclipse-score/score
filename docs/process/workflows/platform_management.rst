@@ -31,11 +31,8 @@ todo: need to add guidance and standard links
    :input: wp__policies, wp__issue_track_system
    :output: wp__platform_mgmt
 
-   | The Platform Management Plan shall include the Plans for Project and Risk Management, Safety and Quality Management, Release Management, Configuration Management, Change Management, Documentation Management, Problem Resolution, Requirement Management, Tool Management, Stakeholder Management and also the Software Development and Verification Plan.
-   | These plans contain the measures for example:
-   | - to ensure that all work products can be uniquely identified and reproduced in a controlled manner at any time.
-   | - to ensure that relations and differences between versions can be traced.
-   | - to manage, analyse and control changes of the work products during the project life cycle.
+   The Platform Management Plan (which is really a collection of plans) is used by the technical lead
+   to document the project specific realizations of several process areas (e.g. which tools are used).
 
 .. workflow:: Monitor/Improve Platform Management Plan
    :id: wf__mr_vy_platform_mngmt_plan
@@ -47,5 +44,6 @@ todo: need to add guidance and standard links
    :input: wp__platform_mgmt
    :output: wp__issue_track_system
 
-   | The Project Manager is responsible for the monitoring of the activities against the platform management plan.
-   | The Project Manager is responsible to adjust the plan, if deviations are detected.
+   The technical lead (circle) is responsible for the monitoring of the activities against the platform management plan.
+
+   The technical lead (circle) is responsible to adjust the plan, if deviations are detected.
