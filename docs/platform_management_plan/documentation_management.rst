@@ -17,6 +17,7 @@
    :status: draft
    :safety: ASIL_B
    :tags: platform_management
+   :realizes: wp__document_mgt_plan
 
 Documentation Management Plan
 -----------------------------
@@ -37,11 +38,6 @@ Goal of this plan is to describe
 
 Approach
 ++++++++
-
-.. gd_guidl:: Documentation
-   :id: gd_guidl__documentation
-   :status: valid
-   :complies: std_req__iso26262__support_1041, std_req__iso26262__support_1042, std_req__iso26262__support_1043, std_req__iso26262__support_1044, std_req__iso26262__support_1045, std_req__iso26262__support_1046
 
 Some of the work products of the S-CORE project are modelled specifically
 (e.g. the requirements and architecture have a specific set of attributes)

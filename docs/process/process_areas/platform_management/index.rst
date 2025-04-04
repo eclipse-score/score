@@ -12,17 +12,18 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _process_documentation_management:
+.. _platform_management:
 
-Documentation Management
-========================
+Platform Management
+###################
 
 .. toctree::
    :maxdepth: 1
 
-   documentation_getstrt
-   documentation_concept
+
+   platform_management_getstrt
+   platform_management_concept
    guidance/index
-   documentation_roles
-   documentation_workflow
-   documentation_workproducts
+   platform_management_roles
+   platform_management_workflow
+   platform_management_workproducts

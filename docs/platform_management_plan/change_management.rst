@@ -274,8 +274,8 @@ Change Management SW Platform Work Products
       - established
 
     * - :need:`wp__platform_mgmt`
-      - :need:`wf__cr_mt_platform_mngmt_plan`
-      - :ndf:`copy('status', need_id='wf__cr_mt_platform_mngmt_plan')`
+      - :need:`wf__platform__cr_mt_platform_mgmt_plan`
+      - :ndf:`copy('status', need_id='wf__platform__cr_mt_platform_mgmt_plan')`
       - <Link to issue>
       - :doc:`index`
       - :ndf:`copy('status', need_id='doc__platform_mgt_plan')`

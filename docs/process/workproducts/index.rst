@@ -68,19 +68,6 @@ General
    | * Identifies the associated quality criteria
    | * Identifies any associated measurements using the information
 
-.. workproduct:: Platform Management Plan
-   :id: wp__platform_mgmt
-   :status: valid
-   :complies: std_wp__iso26262__support_751, std_wp__iso26262__support_851, std_wp__iso26262__support_1051, std_wp__iso26262__support_1052
-
-   The Platform Management Plan shall include the Project Management Plan, Configuration Management Plan, Change Management Plan, Documentation Management Plan and Problem Resolution Plan.
-   Plan to ensure that all work products can be uniquely identified and reproduced in a controlled manner at any time.
-   Plan to ensure that relations and differences between versions can be traced.
-   Plan to manage, analyze and control changes of the work products during the project life cycle.
-   Documents should be precise, concise, clearly structured, understandable for intended users, verifiable, maintainable, and organized according to in-house procedures to facilitate information retrieval.
-   Documentation guideline requirements must be defined for each WP. Each work product or document must include a title, author and approver, unique revision identification, change history, and status.
-
-
 Process
 ^^^^^^^
 

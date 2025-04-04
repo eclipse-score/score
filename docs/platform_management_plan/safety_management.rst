@@ -308,8 +308,8 @@ Functional Safety Management SW Platform Work Products
       - to be shown to assessor
 
     * - :need:`wp__qms`
-      - :need:`wf__cr_mt_platform_mngmt_plan`
-      - :ndf:`copy('status', need_id='wf__cr_mt_platform_mngmt_plan')`
+      - :need:`wf__platform__cr_mt_platform_mgmt_plan`
+      - :ndf:`copy('status', need_id='wf__platform__cr_mt_platform_mgmt_plan')`
       - `#316 <https://github.com/eclipse-score/score/issues/316>`_
       - :doc:`quality_management`
       - not started
@@ -322,8 +322,8 @@ Functional Safety Management SW Platform Work Products
       - established
 
     * - :need:`wp__platform_mgmt`
-      - :need:`wf__cr_mt_platform_mngmt_plan`
-      - :ndf:`copy('status', need_id='wf__cr_mt_platform_mngmt_plan')`
+      - :need:`wf__platform__cr_mt_platform_mgmt_plan`
+      - :ndf:`copy('status', need_id='wf__platform__cr_mt_platform_mgmt_plan')`
       - `#540 <https://github.com/eclipse-score/score/issues/540>`_
       - :doc:`index`
       - :ndf:`copy('status', need_id='doc__platform_mgt_plan')`
@@ -434,15 +434,15 @@ Functional Safety Management SW Platform Work Products
       - <automated>
 
     * - :need:`wp__sw_development_plan`
-      - :need:`wf__cr_mt_platform_mngmt_plan`
-      - :ndf:`copy('status', need_id='wf__cr_mt_platform_mngmt_plan')`
+      - :need:`wf__platform__cr_mt_platform_mgmt_plan`
+      - :ndf:`copy('status', need_id='wf__platform__cr_mt_platform_mgmt_plan')`
       - <Link to issue>
       - :doc:`software_development`
       - not started
 
     * - :need:`wp__verification__plan`
-      - :need:`wf__cr_mt_platform_mngmt_plan`
-      - :ndf:`copy('status', need_id='wf__cr_mt_platform_mngmt_plan')`
+      - :need:`wf__platform__cr_mt_platform_mgmt_plan`
+      - :ndf:`copy('status', need_id='wf__platform__cr_mt_platform_mgmt_plan')`
       - <Link to issue>
       - :doc:`software_verification`
       - not started

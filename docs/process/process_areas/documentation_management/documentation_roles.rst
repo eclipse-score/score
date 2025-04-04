@@ -12,17 +12,21 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _process_documentation_management:
+Roles
+#####
 
-Documentation Management
-========================
+For documentation management no additional roles need to be defined.
 
-.. toctree::
-   :maxdepth: 1
+Contributing Roles:
 
-   documentation_getstrt
-   documentation_concept
-   guidance/index
-   documentation_roles
-   documentation_workflow
-   documentation_workproducts
+   * :need:`Contributor <rl__contributor>`
+   * :need:`Committer <rl__committer>`
+   * :need:`Technical Lead <rl__technical_lead>`
+   * :need:`Module Project Lead <rl__module_lead>`
+   * :need:`Safety Manager <rl__safety_manager>`
+   * :need:`Security Manager <rl__security_manager>`
+   * :need:`Quality Manager <rl__quality_manager>`
+
+A detailed overview of the responsibility for the steps of the documentation management is listed here:
+
+:need:`wf__platform__cr_mt_platform_mgmt_plan`

@@ -47,36 +47,6 @@ S-CORE Management Roles
    * Election and replacement of all role's personnel
    * Decide on addition/removal of modules repositories or split-off of projects
 
-.. role:: Technical Lead
-   :id: rl__technical_lead
-   :status: valid
-
-   The Technical Leads approve feature requests and perform the project management of the S-CORE platform.
-
-   Required skills
-
-   * Degree: Master's degree in electrical engineering/computer science/mathematics, or similar degree, or comparable work experience
-   * Know-How of project management
-   * Technical know-how of embedded systems
-   * Preferred training: Basic and Management specific safety and security trainings
-
-   Experience
-
-   * 2 years of experience in project management or similar position
-
-   Responsibility
-
-   * Review and approval of contributions, e.g. Feature Requests, which add or modify S-CORE platform features
-   * Project management of the platform development - i.e. filling the project management role as defined by ISO26262
-   * High-level project control and coordination between multiple software modules
-   * Escalation instance for software module project leads (external to S-CORE), safety managers and committers
-   * Planning the releases of the S-CORE SW platform and modules
-
-   Authority
-
-   * Decisions in the technical lead circle
-   * Approving the releases of the S-CORE SW platform and modules
-
 .. role:: Quality Manager
    :id: rl__quality_manager
    :status: valid
@@ -92,14 +62,6 @@ S-CORE Management Roles
    :contains: rl__committer
 
    The security managers shall be responsible for the planning and coordination of the security activities.
-
-.. role:: Module Project Lead
-   :id: rl__module_lead
-   :status: valid
-   :tags: project_management
-   :contains: rl__committer
-
-   The module Project Leads perform the project management on module level. If a module is developed in a sub-project of S-CORE they have the eclipse project lead role for this.
 
 S-CORE process roles
 --------------------

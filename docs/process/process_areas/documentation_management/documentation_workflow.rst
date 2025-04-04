@@ -12,17 +12,12 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _process_documentation_management:
 
-Documentation Management
-========================
+Workflow Documentation Management
+#################################
 
-.. toctree::
-   :maxdepth: 1
+The main work product is the documentation management plan, which is a part of the platform
+management plan. Thus the work flow :need:`wf__platform__cr_mt_platform_mgmt_plan` applies.
 
-   documentation_getstrt
-   documentation_concept
-   guidance/index
-   documentation_roles
-   documentation_workflow
-   documentation_workproducts
+The documentation management plan should contain the strategy to manage the identified
+documentations in an effective and repeatable way for the project life cycle.

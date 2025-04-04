@@ -12,17 +12,12 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _process_documentation_management:
-
-Documentation Management
-========================
+Guidance
+########
 
 .. toctree::
    :maxdepth: 1
 
-   documentation_getstrt
-   documentation_concept
-   guidance/index
-   documentation_roles
-   documentation_workflow
-   documentation_workproducts
+   documentation_guideline
+   documentation_checklist
+   documentation_process_reqs

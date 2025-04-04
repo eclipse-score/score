@@ -15,7 +15,8 @@
 .. document:: Project Management Plan
    :id: doc__project_mgt_plan
    :status: draft
-   :safety: QM
+   :safety: ASIL_B
+   :realizes: wp__project_mgt
    :tags: platform_management
 
 Project management plan
