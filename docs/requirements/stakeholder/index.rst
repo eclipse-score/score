@@ -539,6 +539,17 @@ Communication
    * Diagnostic jobs
 
 
+.. stkh_req:: JSON parser
+   :id: stkh_req__communication__json_parser
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :rationale: tbd
+   :status: valid
+
+   The software platform shall provide a JSON parser.
+
+
 Hardware support
 ----------------
 
