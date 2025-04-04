@@ -307,7 +307,7 @@ Functional Safety Management SW Platform Work Products
       - not open sourced
       - to be shown to assessor
 
-    * - :need:`wp__qms`
+    * - :need:`wp__qms_plan`
       - :need:`wf__cr_mt_platform_mngmt_plan`
       - :ndf:`copy('status', need_id='wf__cr_mt_platform_mngmt_plan')`
       - `#316 <https://github.com/eclipse-score/score/issues/316>`_

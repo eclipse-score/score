@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,14 +12,14 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Workflows
-=========
+Guidance
+########
 
 .. toctree::
    :maxdepth: 1
-   :caption: Contents:
 
-   process_management
-   platform_management
-   change_management
-   safety_analysis
+   quality_plan_guideline
+   quality_plan_template
+   quality_review_checklist
+   quality_process_reqs
+   quality_work_product_review_guideline

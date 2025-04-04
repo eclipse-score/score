@@ -12,18 +12,15 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Process Areas
-#############
+Process Reqirements
+===================
 
-.. toctree::
-   :maxdepth: 1
-   :glob:
+.. gd_req:: Quality report automated generation
+   :id: gd_req__qlm_report
+   :status: valid
+   :tags: structure
+   :complies: std_req__iso26262__management_5423, std_req__aspice_40__SUP-1-BP5, std_req__aspice_40__SUP-1-BP6
 
-   architecture_design/index.rst
-   change_management/index.rst
-   documentation_management/index.rst
-   implementation/index.rst
-   requirements_engineering/index.rst
-   safety_management/index.rst
-   verification/index.rst
-   quality_management/index.rst
+   | The quality report shall be generated progressively and automatically compiling the work products.
+   | A template exists to guide the reporting and the right collection of the required work products.
+   | (ToDo Compare here: <Link to GD_Saf_Case_Report_Template>)
