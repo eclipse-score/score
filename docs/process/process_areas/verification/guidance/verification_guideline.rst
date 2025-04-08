@@ -211,9 +211,30 @@ Condition coverage is a white-box testing technique used to test each Boolean co
 software component. The goal is to ensure that each condition evaluates to both true and false at
 least once during the testing process.
 
-Condition coverage is also creating branch coverage, so a 100% `structural-condition-coverage` will not
+Condition coverage is also creating branch coverage, but a 100% `structural-condition-coverage` will not
 guarantee a 100% branch coverage. The actual branch coverage percentage depends on the actual code
 under test.
+
+**Example:**
+
+.. code-block:: cpp
+
+    if (a || b) {
+      	// Block 1
+    } else {
+        // Block 2
+    }
+
+With these test cases:
+
+  - a = true, b = true
+  - a = true, b = false
+  - a = false, b = true
+
+This achieves 100% condition coverage as both 'a' and 'b' have been tested as true and false.
+However, it only achieves 50% branch coverage because the "else" branch (Block 2) is never executed,
+since none of the test cases make the condition (a || b) evaluate to false. To achieve 100% branch
+coverage, a fourth test case has to be added where both a and b are false.
 
 The key differences between branch coverage and condition coverage are:
 
