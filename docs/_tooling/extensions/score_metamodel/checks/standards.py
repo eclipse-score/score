@@ -13,13 +13,15 @@
 # from sphinx.application import Sphinx
 from typing import Any
 
+from sphinx_needs.data import NeedsInfoType
+
 # from score_metamodel import (
 #    CheckLogger,
 #    graph_check,
 # )
 
 
-def get_standards_needs(needs: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
+def get_standards_needs(needs: list[NeedsInfoType]) -> dict[str, NeedsInfoType]:
     """
     Return a dictionary of all standard requirements from the Sphinx app's needs.
     """
@@ -28,8 +30,8 @@ def get_standards_needs(needs: list[dict[str, Any]]) -> dict[str, dict[str, Any]
 
 
 def get_standards_workproducts(
-    needs: list[dict[str, Any]],
-) -> dict[str, dict[str, Any]]:
+    needs: list[NeedsInfoType],
+) -> dict[str, NeedsInfoType]:
     """
     Return a dictionary of standard workproducts from the Sphinx app's needs.
     """
@@ -37,7 +39,7 @@ def get_standards_workproducts(
     return {need["id"]: need for need in needs if need["type"] == "std_wp"}
 
 
-def get_workflows(needs: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
+def get_workflows(needs: list[NeedsInfoType]) -> dict[str, NeedsInfoType]:
     """
     Return a dictionary of all workflows from the Sphinx app's needs.
     """
@@ -45,7 +47,7 @@ def get_workflows(needs: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
     return {need["id"]: need for need in needs if need.get("type") == "workflow"}
 
 
-def get_workproducts(needs: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
+def get_workproducts(needs: list[NeedsInfoType]) -> dict[str, NeedsInfoType]:
     """
     Return a dictionary of all workproducts from the Sphinx app's needs.
     """
@@ -53,7 +55,7 @@ def get_workproducts(needs: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
     return {need["id"]: need for need in needs if need.get("type") == "workproduct"}
 
 
-def get_compliance_req_needs(needs: list[dict[str, Any]]) -> set[str]:
+def get_compliance_req_needs(needs: list[NeedsInfoType]) -> set[str]:
     """
     Return a set of all compliance_req values from the Sphinx app's needs,
     but only if the need type is one of the specified process-related types.
@@ -67,7 +69,7 @@ def get_compliance_req_needs(needs: list[dict[str, Any]]) -> set[str]:
     }
 
 
-def get_compliance_wp_needs(needs: list[dict[str, Any]]) -> set[str]:
+def get_compliance_wp_needs(needs: list[NeedsInfoType]) -> set[str]:
     """
     Return a set of all compliance_wp values from the Sphinx app's needs,
     but only if the need type is "workproduct".
@@ -86,7 +88,7 @@ def get_compliance_wp_needs(needs: list[dict[str, Any]]) -> set[str]:
 #        ╰─────────────────────────────────────────────────────────────────────────────╯
 # @graph_check
 # def check_all_standard_req_linked_item_via_the_compliance_req(
-#     app: Sphinx, needs: list[dict[str, Any]], log: CheckLogger
+#     app: Sphinx, needs: list[NeedsInfoType], log: CheckLogger
 # ):
 #     """
 #     Checks if all standard requirements are linked to an item via the compliance_req
@@ -106,7 +108,7 @@ def get_compliance_wp_needs(needs: list[dict[str, Any]]) -> set[str]:
 #
 # @graph_check
 # def check_all_standard_workproducts_linked_item_via_the_compliance_wp(
-#     app: Sphinx,needs: list[dict[str, Any]], log: CheckLogger
+#     app: Sphinx,needs: list[NeedsInfoType], log: CheckLogger
 # ):
 #     """
 #     Checks if all standard work products are linked to an item via the complies tag.
@@ -126,7 +128,7 @@ def get_compliance_wp_needs(needs: list[dict[str, Any]]) -> set[str]:
 #
 # @graph_check
 # def check_workproduct_uniqueness_over_workflows(
-#     app: Sphinx,needs: list[dict[str, Any]], log: CheckLogger
+#     app: Sphinx,needs: list[NeedsInfoType], log: CheckLogger
 # ):
 #     """
 #     Check if all workproducts are contained in exactly one workflow.
@@ -143,7 +145,7 @@ def get_compliance_wp_needs(needs: list[dict[str, Any]]) -> set[str]:
 #
 #     # Iterate over workflows and update the counts and workflows
 #     for workflow in all_workflows.values():
-#         for output in workflow["output"]:
+#         for output in workflow.get("output",[]):
 #             # Increment count and add workflow_id if workproduct is in analysis
 #             if output in workproduct_analysis:
 #                 workproduct_analysis[output]["count"] += 1
@@ -176,7 +178,7 @@ def get_compliance_wp_needs(needs: list[dict[str, Any]]) -> set[str]:
 
 
 def my_pie_linked_standard_requirements(
-    needs: list[dict[str, Any]], results: list[int], **kwargs: str | int | float
+    needs: list[NeedsInfoType], results: list[int], **kwargs: str | int | float
 ) -> None:
     """
     Function to render the chart of check for standard requirements linked
@@ -209,7 +211,7 @@ def my_pie_linked_standard_requirements(
 
 
 def my_pie_linked_standard_workproducts(
-    needs: list[dict[str, Any]], results: list[int], **kwargs: str | int | float
+    needs: list[NeedsInfoType], results: list[int], **kwargs: str | int | float
 ) -> None:
     """
     Function to render the chart of check for standar workproducts linked
@@ -243,7 +245,7 @@ def my_pie_linked_standard_workproducts(
 
 
 def my_pie_workproducts_contained_in_exactly_one_workflow(
-    needs: list[dict[str, Any]], results: list[int], **kwargs: str | int | float
+    needs: list[NeedsInfoType], results: list[int], **kwargs: str | int | float
 ) -> None:
     """
     Function to render the chart of check for workproducts that are contained
@@ -258,7 +260,7 @@ def my_pie_workproducts_contained_in_exactly_one_workflow(
 
     # Iterate over workflows and update the counts and workflows
     for workflow in all_workflows.values():
-        for output in workflow["output"]:
+        for output in workflow.get("output",[]):
             # Increment count and add workflow_id if workproduct is in analysis
             if output in workproduct_analysis:
                 workproduct_analysis[output]["count"] += 1

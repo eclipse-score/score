@@ -248,7 +248,7 @@ def draw_module(
     structure_text += f"}} /' {need['title']} '/ \n\n"
 
     # Add logical interfaces only to implemented interfaces
-    for iface, _ in proc_impl_interfaces.items():
+    for iface in proc_impl_interfaces:
         if not (proc_logical_interfaces.get(iface, [])):
             # Currently only one Logical Interface per Real Interface supported
             logical_iface_tmp = get_logical_interface_real(iface, all_needs)
