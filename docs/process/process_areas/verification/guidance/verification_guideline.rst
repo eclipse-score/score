@@ -215,7 +215,29 @@ Condition coverage is also creating branch coverage, so a 100% `structural-condi
 guarantee a 100% branch coverage. The actual branch coverage percentage depends on the actual code
 under test.
 
-Fro C++ based unit testing gTest is the "software tool" which supports conditional coverage, but
+The key differences between branch coverage and condition coverage are:
+
+* **Branch Coverage:** Measures whether each possible branch (decision outcome) in the code has
+  been executed. It focuses on the overall boolean result of a decision point (if, while, etc.).
+* **Condition Coverage:** Measures whether each boolean sub-expression in a decision has independently
+  taken all possible outcomes (true/false). It evaluates individual conditions within complex boolean expressions.
+* **Condition coverage is more granular** than branch coverage. For example, in a statement like
+  ``if (A && B)``, branch coverage only requires the entire expression to evaluate to both true
+  and false at least once. Condition coverage would require that A and B each independently
+  evaluate to both true and false.
+
+  **Example**
+
+  .. code-block:: cpp
+
+      if (x > 0 && y > 0) {
+          // Do something
+      }
+
+  * Branch coverage: Need test cases where the entire expression is true, and where it's false
+  * Condition coverage: Need test cases where x > 0 is true/false and y > 0 is true/false independently
+
+For C++ based unit testing gTest is the "software tool" which supports conditional coverage, but
 has no direct option to create branch coverage. This has be considered, while writing unit tests.
 
 
