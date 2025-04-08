@@ -18,6 +18,7 @@
 
 import os
 import sys
+from typing import Any
 
 # sys.path extension for local files is needed, because the conf.py file is not
 # executed, but imported by Sphinx
@@ -67,7 +68,7 @@ numfig = True
 needs_template_folder = "_templates"
 needs_global_options = {"collapse": True}
 html_static_path = ["_tooling/assets", "_assets"]
-needs_string_links = {
+needs_string_links: dict[str, dict[str, Any]] = {
     "source_code_linker": {
         "regex": r"(?P<value>[^,]+)",
         "link_url": "{{value}}",

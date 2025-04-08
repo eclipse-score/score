@@ -22,7 +22,7 @@ from score_source_code_linker.parse_source_files import GITHUB_BASE_URL
 LOGGER = get_logger(__name__)
 
 
-def setup(app: Sphinx) -> dict:
+def setup(app: Sphinx) -> dict[str, str | bool]:
     app.add_config_value("source_code_linker_file", "", rebuild="env")
     if app.config.source_code_linker_file:
         LOGGER.info("Loading source code linker...", type="score_source_code_linker")

@@ -10,12 +10,12 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
-from collections import defaultdict
+import hashlib
 import os
+import random
 import re
 import subprocess
-import hashlib
-import random
+from collections import defaultdict
 from typing import Any
 
 from github import (
@@ -26,11 +26,11 @@ from github import (
     PullRequestReview,
     Repository,
 )
-from sphinx_needs.services.base import BaseService
-from sphinx.environment import BuildEnvironment
-from sphinx_needs.data import SphinxNeedsData
 from sphinx.application import Sphinx
+from sphinx.environment import BuildEnvironment
 from sphinx.util.docutils import SphinxDirective
+from sphinx_needs.data import SphinxNeedsData
+from sphinx_needs.services.base import BaseService
 
 # req-traceability: GD__automatic_document_header_generation
 APPROVER_TEAMS = ["automotive-score-committers"]
@@ -155,7 +155,7 @@ def _extract_merge_commit_data(location: str) -> dict[str, str | list[str]]:
     hash = lines[0]
     author = lines[1]
 
-    data: defaultdict[str, list] = defaultdict(list)
+    data: defaultdict[str, list[str]] = defaultdict(list)
 
     pattern = r"(Approved|Reviewed): \{(.*)} \( \{(.*)\} \) on \{(.*)\}"
 

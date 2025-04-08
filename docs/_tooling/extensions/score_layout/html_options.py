@@ -13,7 +13,7 @@
 from sphinx.application import Sphinx
 
 
-def return_html_theme_options(app: Sphinx) -> dict:
+def return_html_theme_options(app: Sphinx) -> dict[str, object]:
     return {
         "navbar_align": "content",
         "header_links_before_dropdown": 5,

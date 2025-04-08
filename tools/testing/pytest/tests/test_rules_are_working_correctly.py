@@ -10,5 +10,5 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
-def test_local_fixture_has_correct_value(fixture42):
+def test_local_fixture_has_correct_value(fixture42: int) -> None:
     assert fixture42 == 42

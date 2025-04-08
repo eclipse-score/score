@@ -29,6 +29,7 @@ import hashlib
 import time
 from functools import cache
 from pathlib import Path
+from typing import Any, Callable
 
 from sphinx.application import Sphinx
 from sphinx_needs.logging import get_logger
@@ -50,7 +51,7 @@ from score_draw_uml_funcs.helpers import (
 logger = get_logger(__file__)
 
 
-def setup(app: Sphinx) -> dict:
+def setup(app: Sphinx) -> dict[str, object]:
     app.config.needs_render_context = draw_uml_function_context
     return {
         "version": "0.1",
@@ -85,10 +86,10 @@ def scripts_directory_hash():
 
 def draw_comp_incl_impl_int(
     need: dict[str, str],
-    all_needs: dict[str, dict],
+    all_needs: dict[str, dict[str, Any]],
     proc_impl_interfaces: dict[str, str],
-    proc_used_interfaces: dict[str, list],
-) -> tuple[str, str, dict[str, str], dict[str, list]]:
+    proc_used_interfaces: dict[str, list[str]],
+) -> tuple[str, str, dict[str, str], dict[str, list[str]]]:
     # Draw outer component
     structure_text = f"{gen_struct_element('component', need)}  {{\n"
     linkage_text = ""
@@ -129,7 +130,7 @@ def draw_comp_incl_impl_int(
             logger.info(f"{need}: implements {iface} could not be found")
             continue
 
-        if not (interface := proc_impl_interfaces.get(iface, [])):
+        if not proc_impl_interfaces.get(iface, []):
             structure_text += gen_interface_element(iface, all_needs, True)
             linkage_text += f"{
                 gen_link_text(
@@ -148,7 +149,7 @@ def draw_comp_incl_impl_int(
             logger.info(f"{need}: uses {iface} could not be found")
             continue
 
-        if not (interface := proc_used_interfaces.get(iface, [])):
+        if not proc_used_interfaces.get(iface, []):
             proc_used_interfaces[iface] = [need["id"]]
         else:
             proc_used_interfaces[iface].append(need["id"])
@@ -158,7 +159,7 @@ def draw_comp_incl_impl_int(
 
 def draw_module(
     need: dict[str, str],
-    all_needs: dict[str, dict],
+    all_needs: dict[str, dict[str, Any]],
 ) -> tuple[str, str]:
     """
     Drawing and parsing function of a component.
@@ -247,7 +248,7 @@ def draw_module(
     structure_text += f"}} /' {need['title']} '/ \n\n"
 
     # Add logical interfaces only to implemented interfaces
-    for iface, component in proc_impl_interfaces.items():
+    for iface, _ in proc_impl_interfaces.items():
         if not (proc_logical_interfaces.get(iface, [])):
             # Currently only one Logical Interface per Real Interface supported
             logical_iface_tmp = get_logical_interface_real(iface, all_needs)
@@ -316,7 +317,9 @@ class draw_full_feature:
     def __repr__(self):
         return "draw_full_feature" + " in " + scripts_directory_hash()
 
-    def __call__(self, need, all_needs: dict) -> str:
+    def __call__(
+        self, need: dict[str, Any], all_needs: dict[str, dict[str, Any]]
+    ) -> str:
         interfacelist = []
         impl_comp = dict()
 
@@ -382,7 +385,9 @@ class draw_full_module:
     def __repr__(self):
         return "draw_full_module" + " in " + scripts_directory_hash()
 
-    def __call__(self, need, all_needs) -> str:
+    def __call__(
+        self, need: dict[str, Any], all_needs: dict[str, dict[str, Any]]
+    ) -> str:
         structure_text, linkage_text = draw_module(need, all_needs)
 
         return gen_header() + structure_text + linkage_text
@@ -392,9 +397,11 @@ class draw_full_component:
     def __repr__(self):
         return "draw_full_component" + " in " + scripts_directory_hash()
 
-    def __call__(self, need, all_needs) -> str:
-        structure_text, linkage_text, processed_interfaces, logical_interfacelist = (
-            draw_comp_incl_impl_int(need, all_needs, dict(), dict())
+    def __call__(
+        self, need: dict[str, Any], all_needs: dict[str, dict[str, Any]]
+    ) -> str:
+        structure_text, linkage_text, _, _ = draw_comp_incl_impl_int(
+            need, all_needs, dict(), dict()
         )
 
         return gen_header() + structure_text + linkage_text
@@ -404,13 +411,17 @@ class draw_full_interface:
     def __repr__(self):
         return "draw_full_interface" + " in " + scripts_directory_hash()
 
-    def __call__(self, need, all_needs) -> str:
+    def __call__(
+        self, need: dict[str, Any], all_needs: dict[str, dict[str, Any]]
+    ) -> str:
         structure_text = gen_interface_element(need["id"], all_needs, True)
 
         return structure_text + "\n"
 
 
-draw_uml_function_context = {
+CallableType = Callable[[dict[str, Any], dict[str, dict[str, Any]]], str]
+
+draw_uml_function_context: dict[str, CallableType] = {
     "draw_interface": draw_full_interface(),
     "draw_module": draw_full_module(),
     "draw_component": draw_full_component(),

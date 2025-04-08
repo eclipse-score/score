@@ -37,7 +37,7 @@ if args.debug:
     pass
 
 
-def get_env(name):
+def get_env(name: str) -> str:
     val = os.environ.get(name, None)
     logger.debug(f"Env: {name} = {val}")
     if val is None:

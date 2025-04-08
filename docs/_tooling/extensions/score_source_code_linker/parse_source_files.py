@@ -64,8 +64,8 @@ def get_git_hash(file_path: str) -> str:
 
 def extract_requirements(
     source_file: str,
-    git_hash_func: Callable | None = get_git_hash,
-) -> dict[str, list]:
+    git_hash_func: Callable[[str], str] | None = get_git_hash,
+) -> dict[str, list[str]]:
     """
     This extracts the file-path, lineNr as well as the git hash of the file
     where a tag was found.

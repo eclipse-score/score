@@ -10,6 +10,9 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
+from typing import Any
+
+
 def gen_need_link(need: dict[str, str]) -> str:
     """Generate the link to the need element from the PlantUML Diagram"""
     link = ".." + "/" + need["docname"] + ".html#" + need["id_parent"]
@@ -69,7 +72,7 @@ def gen_struct_element(UMLelement: str, need: dict[str, str]) -> str:
 
 
 def gen_interface_element(
-    need_id: str, all_needs: dict[str, dict], incl_ops: bool = False
+    need_id: str, all_needs: dict[str, dict[str, Any]], incl_ops: bool = False
 ) -> str:
     """Generate interface text and include all operations if selected."""
 
@@ -108,7 +111,9 @@ def gen_link_text(
     return f"{gen_alias(from_need)} {link_type} {gen_alias(to_need)}: {link_text}"
 
 
-def get_module(component: str, all_needs: dict[str, dict]) -> tuple[str, str, str, str]:
+def get_module(
+    component: str, all_needs: dict[str, dict[str, Any]]
+) -> tuple[str, str, str, str]:
     need = all_needs[component]
 
     open_text = ""
@@ -147,7 +152,7 @@ def get_module(component: str, all_needs: dict[str, dict]) -> tuple[str, str, st
 
 
 def get_interface_from_component(
-    component: dict[str, str], relation: str, all_needs: dict[str, dict]
+    component: dict[str, str], relation: str, all_needs: dict[str, dict[str, Any]]
 ) -> list[str]:
     local_interfaces = []
 
@@ -159,7 +164,7 @@ def get_interface_from_component(
     return local_interfaces
 
 
-def get_interface_from_int(need_id: str, all_needs: dict[str, dict]) -> str:
+def get_interface_from_int(need_id: str, all_needs: dict[str, dict[str, Any]]) -> str:
     """Get Interface for a provided Interface or Interface Operation"""
     if "_int_op" in all_needs[need_id]["type"]:
         iface = all_needs[need_id]["included_by"][0]
@@ -169,7 +174,9 @@ def get_interface_from_int(need_id: str, all_needs: dict[str, dict]) -> str:
     return iface
 
 
-def get_real_interface_logical(logical_interface_id: str, all_needs: dict) -> list[str]:
+def get_real_interface_logical(
+    logical_interface_id: str, all_needs: dict[str, dict[str, Any]]
+) -> list[str]:
     """Get real interface for provided logical interface
     The relation is traced via the interface operations
     """
@@ -188,7 +195,7 @@ def get_real_interface_logical(logical_interface_id: str, all_needs: dict) -> li
 
 
 def get_logical_interface_real(
-    real_interface_id: str, all_needs: dict[str, dict]
+    real_interface_id: str, all_needs: dict[str, dict[str, Any]]
 ) -> list[str]:
     """Get logical interface based on real interface"""
     logical_ifaces = list()
@@ -214,7 +221,9 @@ def get_logical_interface_real(
     return logical_ifaces
 
 
-def get_impl_comp_from_real_iface(real_iface: str, all_needs: dict[str, dict]) -> str:
+def get_impl_comp_from_real_iface(
+    real_iface: str, all_needs: dict[str, dict[str, Any]]
+) -> str:
     """Get implementing component of the interface"""
 
     implcomp = all_needs[real_iface].get("implements_back", [])
@@ -228,7 +237,7 @@ def get_impl_comp_from_real_iface(real_iface: str, all_needs: dict[str, dict]) -
 
 
 def get_use_comp_from_real_iface(
-    real_iface: str, all_needs: dict[str, dict]
+    real_iface: str, all_needs: dict[str, dict[str, Any]]
 ) -> list[str]:
     """Get components which use the interface"""
     usecomp = all_needs[real_iface].get("uses_back", [])

@@ -35,7 +35,7 @@ def fake_check_logger():
                 )
                 pytest.fail(f"Expected no warnings, but got:\n{warnings}")
 
-        def assert_warning(self, expected_substring: str, expect_location=True):
+        def assert_warning(self, expected_substring: str, expect_location: bool = True):
             """
             Assert that the logger was called exactly once with a message containing
             a specific substring.
