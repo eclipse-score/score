@@ -260,7 +260,7 @@ def my_pie_workproducts_contained_in_exactly_one_workflow(
 
     # Iterate over workflows and update the counts and workflows
     for workflow in all_workflows.values():
-        for output in workflow.get("output",[]):
+        for output in workflow.get("output", []):
             # Increment count and add workflow_id if workproduct is in analysis
             if output in workproduct_analysis:
                 workproduct_analysis[output]["count"] += 1
