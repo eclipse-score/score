@@ -252,9 +252,10 @@ def draw_module(
         if not (proc_logical_interfaces.get(iface, [])):
             # Currently only one Logical Interface per Real Interface supported
             logical_iface_tmp = get_logical_interface_real(iface, all_needs)
-            assert (
-                len(logical_iface_tmp) == 1
-            ), "only one logical interface per real interface supported"
+            if len(logical_iface_tmp) > 1:
+                logger.warning(
+                    f"{logical_iface_tmp}: only one logical interface per real interface supported"
+                )
             if logical_iface_tmp:
                 logical_iface = logical_iface_tmp[0]
                 proc_logical_interfaces[logical_iface] = iface

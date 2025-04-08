@@ -12,6 +12,10 @@
 # *******************************************************************************
 from typing import Any
 
+from sphinx_needs.logging import get_logger
+
+logger = get_logger(__file__)
+
 
 def gen_need_link(need: dict[str, str]) -> str:
     """Generate the link to the need element from the PlantUML Diagram"""
@@ -140,7 +144,7 @@ def get_module(
 
         else:
             # If Top Level Leaf is not a Module
-            print(f"{need['id']}: not contained in any module")
+            logger.info(f"{need['id']}: not contained in any module")
             open_text += f"{gen_struct_element('component', need)}  {{\n"
             close_text += f"}} /' {need['title']} '/ \n\n"
     else:
@@ -166,7 +170,14 @@ def get_interface_from_component(
 
 def get_interface_from_int(need_id: str, all_needs: dict[str, dict[str, Any]]) -> str:
     """Get Interface for a provided Interface or Interface Operation"""
-    if "_int_op" in all_needs[need_id]["type"]:
+
+    int_need = all_needs.get(need_id)
+
+    if not int_need:
+        logger.warning(f"{need_id}: not defined, misspelled?")
+        return ""
+
+    if "_int_op" in int_need["type"]:
         iface = all_needs[need_id]["included_by"][0]
     else:
         iface = need_id
@@ -185,11 +196,20 @@ def get_real_interface_logical(
     logical_ops = all_needs[logical_interface_id]["included_by_back"]
 
     for logical_op in logical_ops:
-        real_ifop = all_needs[logical_op]["implements_back"][0]
-        real_ifops.append(real_ifop) if real_ifop not in real_ifops else None
+        real_ifop = all_needs[logical_op].get("implements_back")
+        if not real_ifop:
+            logger.info(f"{logical_op}: not implemented by any real operation")
+            continue
 
-        real_iface = all_needs[real_ifop]["included_by"][0]
-        real_ifaces.append(real_iface) if real_iface not in real_ifaces else None
+        real_ifops.extend(real_ifop) if real_ifop not in real_ifops else None
+
+        real_iface = all_needs[real_ifop[0]].get("included_by")
+
+        if not real_iface:
+            logger.info(f"{real_ifop[0]}: not included in any interface")
+            continue
+
+        real_ifaces.extend(real_iface) if real_iface not in real_ifaces else None
 
     return real_ifaces
 
@@ -205,18 +225,27 @@ def get_logical_interface_real(
     for real_ifop in real_ifops:
         logical_ifop = all_needs[real_ifop].get("implements", [])
 
-        if logical_ifop:
-            logical_iface = all_needs[logical_ifop[0]].get("included_by", [])[0]
+        if not logical_ifop:
+            logger.info(f"{real_ifop}: Logical Interface Operation not specified!")
+            continue
 
-            if logical_iface:
-                logical_ifaces.append(
-                    logical_iface
-                ) if not logical_iface in logical_ifaces else logical_ifaces
-            else:
-                print(f"{logical_ifop}: Logical Interface not specified!")
+        logical_ifop_need = all_needs.get(logical_ifop[0])
+        if not logical_ifop_need:
+            logger.info(
+                f"{real_ifop}: Logical Interface Operation Need not defined, probably misspelled!"
+            )
+            continue
 
-        else:
-            print(f"{real_ifop}: Logical Interface Operation not specified!")
+        logical_iface = logical_ifop_need.get("included_by", [])
+
+        if not logical_iface:
+            logger.info(f"{logical_ifop[0]}: Logical Interface not specified!")
+            continue
+
+        if logical_iface not in logical_ifaces:
+            logical_ifaces.extend(
+                logical_iface
+            ) if logical_iface not in logical_ifaces else logical_ifaces
 
     return logical_ifaces
 
@@ -229,7 +258,9 @@ def get_impl_comp_from_real_iface(
     implcomp = all_needs[real_iface].get("implements_back", [])
 
     if not implcomp:
-        print(f"{all_needs[real_iface]['id']}: Implementing Component not specified!")
+        logger.info(
+            f"{all_needs[real_iface]['id']}: Implementing Component not specified!"
+        )
     else:
         implcomp = implcomp[0]
 
@@ -243,6 +274,6 @@ def get_use_comp_from_real_iface(
     usecomp = all_needs[real_iface].get("uses_back", [])
 
     if usecomp:
-        print(f"{all_needs[real_iface]}: Interface not used by component!")
+        logger.info(f"{all_needs[real_iface]}: Interface not used by component!")
 
     return usecomp
