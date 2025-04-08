@@ -28,6 +28,7 @@ change rather frequently. At the time of writing, the following settings are rec
 *ctrl+,*):
 
 .. code-block:: json
+
    "github.copilot.nextEditSuggestions.enabled": true,
 
 Starlark
@@ -59,6 +60,7 @@ The following settings are recommended to be added to your user configuration (e
 however as they are not universal we do not enforce them e.g. via devcontainer:
 
    .. code-block:: json
+
       "editor.formatOnSave": true,
       "python.analysis.inlayHints.callArgumentNames": "partial",
       "python.analysis.inlayHints.functionReturnTypes": true,
