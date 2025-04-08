@@ -20,6 +20,16 @@ For VS Code any preexisting configuration is provided via the workspace configur
 * some formatting rules
 * configuration for recommended plugins
 
+Github Copilot
+==============
+
+In case you are using Github Copilot, you might need to keep up with the settings yourself,as they
+change rather frequently. At the time of writing, the following settings are recommended (e.g. via
+*ctrl+,*):
+
+.. code-block:: json
+   "github.copilot.nextEditSuggestions.enabled": true,
+
 Starlark
 ========
 
@@ -41,6 +51,19 @@ After selecting the virtual environment the full feature set of the official `Py
 Also the configuration for displaying and executing *pytest* in the IDE is provided.
 
 As a linter the `ruff extension <https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff>`_  (MIT License) is set up.
+
+Recommended Settings
+--------------------
+
+The following settings are recommended to be added to your user configuration (e.g. via *ctrl+,*),
+however as they are not universal we do not enforce them e.g. via devcontainer:
+
+   .. code-block:: json
+      "editor.formatOnSave": true,
+      "python.analysis.inlayHints.callArgumentNames": "partial",
+      "python.analysis.inlayHints.functionReturnTypes": true,
+      "python.analysis.inlayHints.pytestParameters": true,
+      "python.analysis.inlayHints.variableTypes": true,
 
 Debugging
 ---------

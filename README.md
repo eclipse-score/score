@@ -2,32 +2,27 @@
 
 ## Building
 
-### Supported environment
+### Development environment
 The build currently supports Linux environments.
+Follow [instructions](https://eclipse-score.github.io/score/main/contribute/development/index.html) to set up your development environment.
 
-### Use bazelisk for bazel version management
-Follow [instructions](https://github.com/bazelbuild/bazelisk) and setup bazelisk to manage your bazel version based on the .bazelversion file.
+Some important commands to get you started:
 
-### Check and fix formatting
 ```sh
+# Check formatting
 bazel test //:format.check
-bazel run //:format.fix
-```
 
-### Check and fix copyright
-```sh
+# Fix formatting
+bazel run //:format.fix
+
+# Check for license headers
 bazel run //:copyright.check
+
+# Fix license headers
 bazel run //:copyright.fix
 ```
 
-### Update and upgrade requirements
-
-```sh
-bazel run //docs:requirements.update
-bazel run //docs:requirements.update -- --upgrade 
-```
-
-## Documentation
+### Building Documentation
 
 Score supports multiple methods for generating documentation, tailored to different workflows:
 1. **Bazel-based builds** for clean, sandboxed outputs.
@@ -35,7 +30,7 @@ Score supports multiple methods for generating documentation, tailored to differ
 3. **IDE integration** for live previews, live warnings and even faster iterations.
 4. **IDE independent live preview** for live previews of documentation without IDE integration.
 
-### Bazel-based Build
+#### Bazel-based Build
 
 This method ensures clean and isolated documentation builds in a controlled Bazel environment.
 It is best suited for CI pipelines or production-ready outputs, although it takes longer compared to
@@ -47,7 +42,7 @@ bazel build //docs:docs
 The output will be located in bazel-bin/docs/docs/_build/html.
 
 
-### Incremental build
+#### Incremental build
 
 For local changes and faster feedback, use the incremental build.
 This method generates the documentation directly in the _build directory.
@@ -59,7 +54,7 @@ Unlike IDE integration, which renders only the current file, this approach is id
 verifying edits across the entire documentation during development.
 
 
-### IDE integration
+#### IDE integration
 
 For live previews, warnings, and linting during development,
 integrate Esbonio with your IDE (e.g., VS Code):
@@ -78,7 +73,7 @@ point your IDE to the .venv_docs virtual environment.
 
 Re-run //docs:ide_support if you update Sphinx extensions or other dependencies.
 
-### IDE independent live preview
+#### IDE independent live preview
 
 For a documentation live preview independent of an IDE (CLI + browser only), `sphinx-autobuild` can be used.
 This will automatically rebuild the preview after save and have it available at http://127.0.0.1:8000

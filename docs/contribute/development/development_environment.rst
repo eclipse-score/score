@@ -17,20 +17,52 @@
 Setting Up the Development Environment
 ######################################
 
+*The development environment may vary depending on the repository you want to contribute to. This
+document describes the setup for the `score` repository. Others should be similar.*
+
+Devcontainer Setup
+==================
+
+The recommended way to set up the development environment is by using the provided devcontainer.
+The devcontainer includes all necessary tools and dependencies pre-configured for development, as
+not everything can be installed via Bazel.
+
+To use the devcontainer:
+
+1. Ensure you have Docker installed and running on your system.
+2. Open the project in a `devcontainer capable editor of your choice <https://containers.dev/supporting>`_.
+3. e.g. for VSCode (see IDE section below for more details):
+
+   * Install the "Remote - Containers" extension in VS Code if not already installed.
+   * Open the project in VS Code.
+   * When prompted, select "Reopen in Container" to build and start the devcontainer.
+     Alternatively, you can open the Command Palette (Ctrl+Shift+P) and select "Remote-Containers:
+     Reopen in Container".
+
+This approach simplifies the setup process and ensures a consistent development environment.
+
+Note: buildifier and autocompletion are not yet provided via the devcontainer or via bazel, so you
+will need to set them up manually. See below.
+
+Manual Setup
+============
+
+If you prefer to set up the development environment manually, follow the steps below:
+
 General Setup
-=============
+-------------
 
-The basic steps for setup the development environment and building the source file are described in the `readme.md <https://github.com/eclipse-score/score/blob/main/README.md>`_ of the score repository.
+* Install the required dependencies for your operating system. This includes:
 
+  * Bazelisk
+  * Python 3.x
+  * Graphviz/Dot (for generating diagrams)
 
-This includes:
+  Check `Dockerfile <https://github.com/eclipse-score/score/blob/main/.devcontainer/Dockerfile>`_ for
+  an accurate list and exemplary instructions.
+* Clone the score repository to your hard drive.
 
-* on your linux operating system `Bazelisk <https://github.com/bazelbuild/bazelisk>`_ is available
-* the score repository is cloned to your hard drive
-
-Additional assistance for working with Bazel is provided by following tools:
-
-.. _buildifier:
+Additional assistance for working with Bazel is provided by the following tools:
 
 Buildifier
 ----------
@@ -75,12 +107,10 @@ Basically following steps need to be performed:
       cd ..
       rm -rf bazel
 
-
-
 Graphviz/Dot Installation
 -------------------------
 
-Graphviz/Dot is mandatory for local development (outside the `devcointainer`).
+Graphviz/Dot is mandatory for local development (outside the `devcontainer`).
 To install it on a Linux system using apt, execute the following command:
 
 .. code-block:: shell
