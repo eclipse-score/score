@@ -205,7 +205,7 @@ Types of ``interface-test`` are:
 
 
 Structural Coverage
-""""""""""""""""""
+"""""""""""""""""""
 
 Structural coverage is a white-box testing technique used to check if the testing is sufficient by
 analyzing if code constructs were called during testing.
