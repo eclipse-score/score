@@ -118,7 +118,7 @@ The derivation of test cases can also be based on certain methods.
  * Analysis of equivalence classes (equivalence-classes)
  * Analysis of requirements (requirements-analysis)
  * Error guessing based on knowledge or experience (error-guessing)
- * Random Testing (monkey-testing)
+ * Fuzzy testing (fuzz-testing)
  * Explorative testing (explorative-testing)
 
 Usually the defined methods are not applied on each verification level between unit and platform level.

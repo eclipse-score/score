@@ -36,25 +36,21 @@ Test Linking to Requirements
         * valid
         * invalid
     * TestType
-        * Control Flow Analysis (control-flow-analysis)
-        * Data Flow Analysis (data-flow-analysis)
         * Fault Injection (fault-injection)
-        * Inspection (inspection)
         * Interface Test (interface-test)
         * Requirements-based Test (requirements-based)
         * Resource Usage Evaluation (resource-usage)
-        * Static Code Analysis (static-code-analysis)
         * Structural Statement coverage (structural-statement-coverage)
         * Structural Condition Coverage (structural-condition-coverage)
-        * Walkthrough (walkthrough)
     * DerivationTechnique
         * Analysis of requirements (requirements-analysis)
         * Analysis of design (design-analysis)
         * Analysis of boundary values (boundary-values)
         * Analysis of equivalence classes (equivalence-classes)
+        * Fuzzy testing (fuzz-testing)
         * Error guessing based on knowledge or experience (error-guessing)
-        * Random testing (monkey-testing)
         * Explorative testing (explorative-testing)
+
 
     More information can be found in the :need:`gd_guidl__verification_guide`, :need:`doc_concept__verification__process`,
     and :need:`gd_guidl__verification_specification`.
