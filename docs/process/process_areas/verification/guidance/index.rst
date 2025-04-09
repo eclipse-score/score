@@ -26,3 +26,4 @@ Guidance
    verification_templates
    verification_plan_template
    verification_report_template
+   verification_methods
