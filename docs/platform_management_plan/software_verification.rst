@@ -161,8 +161,8 @@ method is to be used as meta data (*TestType* and *DerivationTechnique*).
      - structural-statement-coverage
      - 1, -, -
      - QM & ASIL B
-   * - Structural Condition Coverage (Code coverage)
-     - structural-condition-coverage
+   * - Structural Branch Coverage (Code coverage)
+     - structural-branch-coverage
      - 1, -, -
      - QM & ASIL B
    * - Walkthrough
@@ -437,10 +437,21 @@ the software test strategy and corresponding processes.
 The main build environment of the project is based on `Bazel <https://bazel.build>`__. It it used to build software
 components, documentation, and automated tests.
 
-.. rubric:: GoogleTest
+.. rubric:: GoogleTest (gtest)
 
-The software components of the project written in C++ are tested with the help of
+The software components of the project written in C++ are unit tested with the help of
 `GoogleTest <https://google.github.io/googletest/>`__.
+
+.. rubric:: gcov/gcovr
+
+The structural coverage reached by unit testing in the project is evaluated by the gcov/gcovr tool chain
+`gcovr <https://github.com/gcovr/gcovr>`__ - gcov is part of the GNU compiler collection (gcc).
+
+Note that gcov/gcovr supports several coverage metrics:
+
+- "statement" - used in S-CORE for the structural-statement-coverage method
+- "decision" - used in S-CORE for the structural-branch-coverage method
+- "branch" - used in S-CORE to support manual analysis of the code coverage if the "decision" coverage is reported as "cannot be determined" by the tooling. As the "branch" coverage on target is determined by the tool as object code coverage and as the compiler adds object branches for fast evaluation of complex conditions in decisions, this is more than required by the structural-branch-coverage method.
 
 .. rubric:: Integration Testing Framework (ITF)
 

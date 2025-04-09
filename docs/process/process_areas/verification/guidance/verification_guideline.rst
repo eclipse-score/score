@@ -204,63 +204,23 @@ Types of ``interface-test`` are:
     hard to have reasonable testing in the reference implementation
 
 
-Condition Coverage
+Stuctural Coverage
 """"""""""""""""""
 
-Condition coverage is a white-box testing technique used to test each Boolean condition in a
-software component. The goal is to ensure that each condition evaluates to both true and false at
-least once during the testing process.
+Structural coverage is a white-box testing technique used to check if the testing is sufficient by
+analyzing if code constructs were called during testing.
 
-Condition coverage is also creating branch coverage, but a 100% `structural-condition-coverage` will not
-guarantee a 100% branch coverage. The actual branch coverage percentage depends on the actual code
-under test.
+In S-CORE we do both:
 
-**Example:**
-
-.. code-block:: cpp
-
-    if (a || b) {
-      	// Block 1
-    } else {
-        // Block 2
-    }
-
-With these test cases:
-
-  - a = true, b = true
-  - a = true, b = false
-  - a = false, b = true
-
-This achieves 100% condition coverage as both 'a' and 'b' have been tested as true and false.
-However, it only achieves 50% branch coverage because the "else" branch (Block 2) is never executed,
-since none of the test cases make the condition (a || b) evaluate to false. To achieve 100% branch
-coverage, a fourth test case has to be added where both a and b are false.
-
-The key differences between branch coverage and condition coverage are:
+* **Statement Coverage:** Measures whether each executable source code statement has been executed.
 
 * **Branch Coverage:** Measures whether each possible branch (decision outcome) in the code has
   been executed. It focuses on the overall boolean result of a decision point (if, while, etc.).
-* **Condition Coverage:** Measures whether each boolean sub-expression in a decision has independently
-  taken all possible outcomes (true/false). It evaluates individual conditions within complex boolean expressions.
-* **Condition coverage is more granular** than branch coverage. For example, in a statement like
-  ``if (A && B)``, branch coverage only requires the entire expression to evaluate to both true
-  and false at least once. Condition coverage would require that A and B each independently
-  evaluate to both true and false.
 
-  **Example**
+S-CORE evaluates this coverage using the compiler selected for the target reference platform.
 
-  .. code-block:: cpp
-
-      if (x > 0 && y > 0) {
-          // Do something
-      }
-
-  * Branch coverage: Need test cases where the entire expression is true, and where it's false
-  * Condition coverage: Need test cases where x > 0 is true/false and y > 0 is true/false independently
-
-For C++ based unit testing gTest is the "software tool" which supports conditional coverage, but
-has no direct option to create branch coverage. This has be considered, while writing unit tests.
-
+If a sufficient structural coverage is not reached then additional test cases are added.
+What is sufficient and how to determine the coverage is defined in the :need:`doc__verification_plan`.
 
 Derivation Techniques
 ^^^^^^^^^^^^^^^^^^^^^
