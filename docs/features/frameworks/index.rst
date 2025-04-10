@@ -19,3 +19,4 @@ Frameworks
 .. toctree::
 
    fixed-execution-order/index.rst
+   determinisic-app-abstraction-layer/index.rst
