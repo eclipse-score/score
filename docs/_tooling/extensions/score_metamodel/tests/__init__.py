@@ -10,6 +10,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
+from typing import Any
 from unittest.mock import MagicMock
 
 import pytest
@@ -63,7 +64,7 @@ def fake_check_logger():
     return FakeCheckLogger()
 
 
-def need(**kwargs):
+def need(**kwargs: Any) -> NeedsInfoType:
     """Convinience function to create a NeedsInfoType object with some defaults."""
 
     kwargs.setdefault("id", "test_need")

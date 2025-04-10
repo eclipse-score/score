@@ -10,6 +10,8 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
+from typing import Any
+
 from sphinx.application import Sphinx
 
 from score_layout import html_options, sphinx_options
@@ -24,7 +26,7 @@ def setup(app: Sphinx) -> dict[str, str | bool]:
     }
 
 
-def update_config(app: Sphinx, _config):
+def update_config(app: Sphinx, _config: Any):
     app.config.needs_layouts = sphinx_options.needs_layouts
     app.config.needs_global_options = sphinx_options.needs_global_options
     app.config.html_theme = html_options.html_theme

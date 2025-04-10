@@ -10,16 +10,19 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
-from unittest.mock import ANY, MagicMock, patch
-import score_header_service.header_service as hs
-import pytest
+from collections.abc import Callable
 from pathlib import Path
-from sphinx_needs.data import SphinxNeedsData
+from typing import Any
+from unittest.mock import MagicMock, patch
+
+import pytest
+import score_header_service.header_service as hs
+from pytest import TempPathFactory
 from sphinx.testing.util import SphinxTestApp
 
 
 @pytest.fixture(scope="session", autouse=True)
-def add_metadata(record_testsuite_property):
+def add_metadata(record_testsuite_property: Callable[[str, str | list[str]], None]):
     record_testsuite_property("Verifies", ["GD__automatic_document_header_generation"])
     record_testsuite_property(
         "Description", "It should check the generation of the header information."
@@ -31,13 +34,21 @@ def add_metadata(record_testsuite_property):
 
 
 @pytest.fixture(scope="session")
-def sphinx_base_dir(tmp_path_factory):
+def sphinx_base_dir(tmp_path_factory: TempPathFactory) -> Path:
     return tmp_path_factory.mktemp("sphinx")
 
 
 @pytest.fixture(scope="session")
-def sphinx_app_setup(sphinx_base_dir):
-    def _create_app(conf_content, rst_content, template_content, conf_overrides=dict()):
+def sphinx_app_setup(
+    sphinx_base_dir: Path,
+) -> Callable[[str, str, str, dict[str, Any] | None], SphinxTestApp]:
+    def _create_app(
+        conf_content: str,
+        rst_content: str,
+        template_content: str,
+        conf_overrides: dict[str, Any] | None = None,
+    ) -> SphinxTestApp:
+        conf_overrides = conf_overrides or {}
         src_dir = sphinx_base_dir / "src"
         src_dir.mkdir(exist_ok=True)
         template_folder = sphinx_base_dir / "_templates"
@@ -52,7 +63,7 @@ def sphinx_app_setup(sphinx_base_dir):
             }
         )
 
-        app = SphinxTestApp(
+        return SphinxTestApp(
             freshenv=True,
             srcdir=Path(src_dir),
             confdir=Path(src_dir),
@@ -61,14 +72,13 @@ def sphinx_app_setup(sphinx_base_dir):
             warningiserror=False,
             confoverrides=conf_overrides,
         )
-        return app
 
     return _create_app
 
 
 @pytest.fixture(scope="session")
 def basic_conf():
-    def wrapper(use_github_data=True):
+    def wrapper(use_github_data: bool = True):
         return f"""
 extensions = [
     "sphinx_needs",
@@ -151,70 +161,66 @@ def template_needs():
 @patch("score_header_service.header_service.generate_hash")
 @patch("score_header_service.header_service._extract_github_data")
 def test_header_service_integration_github_data(
-    mock_extract_github_data,
-    mock_generate_hash,
-    sphinx_app_setup,
-    basic_conf,
-    basic_needs,
-    template_needs,
+    mock_extract_github_data: MagicMock,
+    mock_generate_hash: MagicMock,
+    sphinx_app_setup: Callable[[str, str, str, dict[str, Any] | None], SphinxTestApp],
+    basic_conf: Callable[[], str],
+    basic_needs: str,
+    template_needs: str,
 ):
     github_data = {
         "author": "John Doe",
-        "approvers": "aprover_1",
+        "approvers": "approver_1",
         "reviewers": "reviewer_1",
         "hash": "abcdef",
     }
     mock_generate_hash.return_value = "abcdef"
     mock_extract_github_data.return_value = github_data
     mock_basic_conf = basic_conf()
-    app = sphinx_app_setup(
-        mock_basic_conf,
-        basic_needs,
-        template_needs,
+    app: SphinxTestApp = sphinx_app_setup(
+        mock_basic_conf, basic_needs, template_needs, None
     )
     try:
         app.build()
-        html_content = (app.outdir / "index.html").read_text()
+        html_content: str = (app.outdir / "index.html").read_text()
         mock_extract_github_data.assert_called_once()
         assert "John Doe" in html_content
-        assert "aprover_1" in html_content
+        assert "approver_1" in html_content
         assert "reviewer_1" in html_content
         assert "abcdef" in html_content
-    except Exception as e:
-        assert False, f"Build failed: {e}"
+    except Exception as err:
+        raise AssertionError(f"Build failed: {err}") from err
 
 
 @patch("score_header_service.header_service.generate_hash")
 @patch("score_header_service.header_service._extract_merge_commit_data")
 def test_header_service_integration_commit_data(
-    mock_extract_merge_commit_data,
-    mock_generate_hash,
-    sphinx_app_setup,
-    basic_needs,
-    template_needs,
-    basic_conf,
+    mock_extract_merge_commit_data: MagicMock,
+    mock_generate_hash: MagicMock,
+    sphinx_app_setup: Callable[[str, str, str, dict[str, Any] | None], SphinxTestApp],
+    basic_needs: str,
+    template_needs: str,
+    basic_conf: Callable[..., Any],
 ):
     github_data = {
         "author": "John Doe",
-        "approvers": "aprover_1",
+        "approvers": "approver_1",
         "reviewers": "reviewer_1",
         "hash": "abcdef",
     }
     mock_generate_hash.return_value = "abcdef"
     mock_extract_merge_commit_data.return_value = github_data
     mock_basic_conf = basic_conf(use_github_data=False)
-    app = sphinx_app_setup(
-        mock_basic_conf,
-        basic_needs,
-        template_needs,
+    app: SphinxTestApp = sphinx_app_setup(
+        mock_basic_conf, basic_needs, template_needs, None
     )
     try:
         app.build()
-        html_content = (app.outdir / "index.html").read_text()
+        html_content: str = (app.outdir / "index.html").read_text()
         mock_extract_merge_commit_data.assert_called_once()
         assert "John Doe" in html_content
-        assert "aprover_1" in html_content
+        assert "approver_1" in html_content
         assert "reviewer_1" in html_content
         assert "abcdef" in html_content
-    except Exception as e:
-        assert False, f"Build failed: {e}"
+    except Exception as err:
+        raise AssertionError(f"Build failed: {err}") from err

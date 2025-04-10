@@ -11,6 +11,8 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 import operator
+from collections.abc import Callable
+from typing import Any, Literal
 
 from sphinx.application import Sphinx
 from sphinx_needs.data import NeedsInfoType
@@ -21,14 +23,14 @@ from score_metamodel import (
 )
 
 
-def eval_need_check(need, check, log):
+def eval_need_check(need: NeedsInfoType, check: str, log: CheckLogger) -> bool:
     """
     Perform a single check on a need:
     1. Split the check into its parts
        (e.g. "status == valid" -> ["status", "==", "valid"])
     2. Perform the check with the operator specified in the yaml file.
     """
-    oper = {
+    oper: dict[str, Callable[[Any, Any], bool]] = {
         "==": operator.eq,
         "!=": operator.ne,
         ">": operator.gt,
@@ -53,7 +55,9 @@ def eval_need_check(need, check, log):
     return oper[parts[1]](need[parts[0]], parts[2])
 
 
-def eval_need_condition(need, condition, log):
+def eval_need_condition(
+    need: NeedsInfoType, condition: str | dict[str, list[Any]], log: CheckLogger
+) -> bool:
     """Evaluate a condition on a need:
     1. Check if the condition is only a simple check (e.g. "status == valid")
        If so call the check function.
@@ -63,7 +67,7 @@ def eval_need_condition(need, condition, log):
        results with the binary operation which was specified in the yaml file.
     """
 
-    oper = {
+    oper: dict[str, Any] = {
         "and": operator.and_,
         "or": operator.or_,
         "not": operator.not_,
@@ -73,8 +77,8 @@ def eval_need_condition(need, condition, log):
     if not isinstance(condition, dict):
         return eval_need_check(need, condition, log)
 
-    cond = list(condition.keys())[0]
-    vals = list(condition.values())[0]
+    cond: str = list(condition.keys())[0]
+    vals: list[Any] = list(condition.values())[0]
 
     if cond in ["and", "or", "xor", "not"]:
         for i in range(len(vals) - 1):
@@ -88,15 +92,17 @@ def eval_need_condition(need, condition, log):
     return True
 
 
-def get_need_selection(needs, selection, log):
+def get_need_selection(
+    needs: list[NeedsInfoType], selection: dict[str, str], log: CheckLogger
+) -> list[NeedsInfoType]:
     """Create a list of needs that match the selection criteria.:
     - If it is an include selection add the include to the pattern
     - If it is an exclude selection add a "^" to the pattern
     """
 
-    selected_needs = []
+    selected_needs: list[NeedsInfoType] = []
     pattern = []
-    need_pattern = list(selection.keys())[0]
+    need_pattern: str = list(selection.keys())[0]
     # Verify Inputs
     if need_pattern in ["include", "exclude"]:
         for pat in list(selection.values())[0].split(","):
@@ -147,7 +153,11 @@ def check_metamodel_graph(
                 parent_ids = need[parent_relation]
 
                 for parent_id in parent_ids:
-                    parent_need = needs_dict.get(parent_id, {})
+                    parent_need = needs_dict.get(parent_id)
+                    if parent_need is None:
+                        msg = f"Parent need `{parent_id}` not found in needs_dict."
+                        log.warning_for_need(need, msg)
+                        continue
 
                     if not eval_need_condition(parent_need, eval[parent_relation], log):
                         msg = (

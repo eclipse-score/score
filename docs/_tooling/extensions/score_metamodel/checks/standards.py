@@ -11,7 +11,6 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 # from sphinx.application import Sphinx
-from typing import Any
 
 from sphinx_needs.data import NeedsInfoType
 

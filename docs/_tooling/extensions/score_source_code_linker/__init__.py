@@ -14,6 +14,7 @@ import json
 from copy import deepcopy
 
 from sphinx.application import Sphinx
+from sphinx.environment import BuildEnvironment
 from sphinx_needs.data import SphinxNeedsData
 from sphinx_needs.logging import get_logger
 
@@ -35,7 +36,7 @@ def setup(app: Sphinx) -> dict[str, str | bool]:
 
 
 # req-Id: gd_req__req__attr_impl
-def add_source_link(app: Sphinx, env) -> None:
+def add_source_link(app: Sphinx, env: BuildEnvironment) -> None:
     """
     'Main' function that facilitates the running of all other functions
     in correct order.

@@ -27,9 +27,10 @@ which then can be invoked inside 'needarch' and 'needuml' blocks in rst files.
 
 import hashlib
 import time
+from collections.abc import Callable
 from functools import cache
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any
 
 from sphinx.application import Sphinx
 from sphinx_needs.logging import get_logger

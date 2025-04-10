@@ -11,22 +11,28 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 import json
+from collections.abc import Callable
 from pathlib import Path
 
 import pytest
+from pytest import TempPathFactory
 from score_source_code_linker.parse_source_files import GITHUB_BASE_URL
 from sphinx.testing.util import SphinxTestApp
 from sphinx_needs.data import SphinxNeedsData
 
 
 @pytest.fixture(scope="session")
-def sphinx_base_dir(tmp_path_factory):
+def sphinx_base_dir(tmp_path_factory: TempPathFactory) -> Path:
     return tmp_path_factory.mktemp("sphinx")
 
 
 @pytest.fixture(scope="session")
-def sphinx_app_setup(sphinx_base_dir):
-    def _create_app(conf_content, rst_content, requierments_text=None):
+def sphinx_app_setup(
+    sphinx_base_dir: Path,
+) -> Callable[[str, str, dict[str, list[str]]], SphinxTestApp]:
+    def _create_app(
+        conf_content: str, rst_content: str, requierments_text: dict[str, list[str]]
+    ):
         src_dir = sphinx_base_dir / "src"
         src_dir.mkdir(exist_ok=True)
 
@@ -116,11 +122,11 @@ def example_source_link_text_non_existent():
 
 
 def test_source_link_integration_ok(
-    sphinx_app_setup,
-    basic_conf,
-    basic_needs,
-    example_source_link_text_all_ok,
-    sphinx_base_dir,
+    sphinx_app_setup: Callable[[str, str, dict[str, list[str]]], SphinxTestApp],
+    basic_conf: str,
+    basic_needs: str,
+    example_source_link_text_all_ok: dict[str, list[str]],
+    sphinx_base_dir: Path,
 ):
     app = sphinx_app_setup(basic_conf, basic_needs, example_source_link_text_all_ok)
     try:
@@ -143,18 +149,18 @@ def test_source_link_integration_ok(
 
 
 def test_source_link_integration_non_existent_id(
-    sphinx_app_setup,
-    basic_conf,
-    basic_needs,
-    example_source_link_text_non_existent,
-    sphinx_base_dir,
+    sphinx_app_setup: Callable[[str, str, dict[str, list[str]]], SphinxTestApp],
+    basic_conf: str,
+    basic_needs: str,
+    example_source_link_text_non_existent: dict[str, list[str]],
+    sphinx_base_dir: Path,
 ):
     app = sphinx_app_setup(
         basic_conf, basic_needs, example_source_link_text_non_existent
     )
     try:
         app.build()
-        warnings = app._warning.getvalue()
+        warnings = app.warning.getvalue()
         assert (
             "WARNING: Could not find TREQ_ID_200 in the needs id's. Found in "
             "file(s): ['tools/sources/bad_implementation.py#L17']" in warnings

@@ -26,7 +26,7 @@ def test_feature_ok():
     id_contains_feature(
         app, need(id="req__feature17__title", docname="path/to/feature17/index"), logger
     )
-    logger._log.warning.assert_not_called()
+    logger._log.warning.assert_not_called()  # type: ignore
 
 
 def test_feature_not_ok():

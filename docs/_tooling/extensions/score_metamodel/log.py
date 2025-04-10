@@ -11,7 +11,9 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 import os
+from typing import Any
 
+from docutils.nodes import Node
 from sphinx_needs.data import NeedsInfoType
 from sphinx_needs.logging import SphinxLoggerAdapter
 
@@ -24,7 +26,7 @@ class CheckLogger:
 
     @staticmethod
     def _location(need: NeedsInfoType, prefix: str):
-        def get(key):
+        def get(key: str) -> Any:
             return need.get(key, None)
 
         if get("docname") and get("doctype") and get("lineno"):
@@ -50,7 +52,11 @@ class CheckLogger:
             f"{need['id']}: " + msg, location=CheckLogger._location(need, self._prefix)
         )
 
-    def warning(self, msg: str, location=None):
+    def warning(
+        self,
+        msg: str,
+        location: None | str | tuple[str | None, int | None] | Node = None,
+    ):
         self._log.warning(msg, type="score_metamodel", location=location)
         self._count += 1
 

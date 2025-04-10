@@ -11,8 +11,11 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 from collections import defaultdict
+from collections.abc import Callable
+from pathlib import Path
 
 import pytest
+from pytest import TempPathFactory
 from score_source_code_linker.parse_source_files import (
     GITHUB_BASE_URL,
     extract_requirements,
@@ -21,8 +24,8 @@ from score_source_code_linker.parse_source_files import (
 
 
 @pytest.fixture(scope="session")
-def create_tmp_files(tmp_path_factory):
-    root_dir = tmp_path_factory.mktemp("test_root")
+def create_tmp_files(tmp_path_factory: TempPathFactory) -> Path:
+    root_dir: Path = tmp_path_factory.mktemp("test_root")
     test_file_contents = """
 
 
@@ -65,17 +68,17 @@ def implementation_4():
     return root_dir
 
 
-def dummy_git_hash_func(input):
+def dummy_git_hash_func(input: str) -> Callable[[str], str]:
     return lambda _: input
 
 
-def test_extract_requirements(create_tmp_files):
+def test_extract_requirements(create_tmp_files: Path):
     root_dir = create_tmp_files
 
     results_dict1 = extract_requirements(
-        root_dir / "testfile.txt", dummy_git_hash_func("no-hash")
+        str(root_dir / "testfile.txt"), dummy_git_hash_func("no-hash")
     )
-    expected_dict1 = defaultdict(list)
+    expected_dict1: dict[str, list[str]] = defaultdict(list)
     expected_dict1["TEST_REQ__LINKED_ID"].append(
         f"{GITHUB_BASE_URL}no-hash/{root_dir}/testfile.txt#L7"
     )
@@ -85,23 +88,23 @@ def test_extract_requirements(create_tmp_files):
 
     # Assumed random hash here to test if passed correctly
     results_dict2 = extract_requirements(
-        root_dir / "testfile2.txt",
+        str(root_dir / "testfile2.txt"),
         dummy_git_hash_func("aacce4887ceea1f884135242a8c182db1447050"),
     )
-    expected_dict2 = defaultdict(list)
+    expected_dict2: dict[str, list[str]] = defaultdict(list)
     expected_dict2["TEST_REQ__LINKED_DIFFERENT_FILE"].append(
         f"{GITHUB_BASE_URL}aacce4887ceea1f884135242a8c182db1447050/{root_dir}/testfile2.txt#L3"
     )
 
-    results_dict3 = extract_requirements(root_dir / "testfile3.txt")
-    expected_dict3 = defaultdict(list)
+    results_dict3 = extract_requirements(str(root_dir / "testfile3.txt"))
+    expected_dict3: dict[str, list[str]] = defaultdict(list)
 
     # if there is no git-hash returned from command.
     # This happens if the file is new and not committed yet.
     results_dict4 = extract_requirements(
-        root_dir / "testfile2.txt", dummy_git_hash_func("")
+        str(root_dir / "testfile2.txt"), dummy_git_hash_func("")
     )
-    expected_dict4 = defaultdict(list)
+    expected_dict4: dict[str, list[str]] = defaultdict(list)
     expected_dict4["TEST_REQ__LINKED_DIFFERENT_FILE"].append(
         f"{GITHUB_BASE_URL}/{root_dir}/testfile2.txt#L3"
     )
