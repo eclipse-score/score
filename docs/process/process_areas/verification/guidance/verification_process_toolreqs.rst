@@ -40,8 +40,7 @@ Test Linking to Requirements
         * Interface Test (interface-test)
         * Requirements-based Test (requirements-based)
         * Resource Usage Evaluation (resource-usage)
-        * Structural Statement coverage (structural-statement-coverage)
-        * Structural Condition Coverage (structural-condition-coverage)
+
     * DerivationTechnique
         * Analysis of requirements (requirements-analysis)
         * Analysis of design (design-analysis)
