@@ -149,7 +149,7 @@ def _docs():
             "**/*.yaml",
             "**/*.json",
             "**/*.csv",
-        ]),
+        ], exclude = ["**/tests/rst/**/*.rst"]),
         config = ":conf.py",
         extra_opts = [
             "-W",
