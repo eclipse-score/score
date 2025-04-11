@@ -18,27 +18,17 @@ Requirements
 General Requirements
 ====================
 
-.. feat_req:: Support for JSON buffer reading
-   :id: feat_req__json__buffer_reading
+.. feat_req:: JSON Validation
+   :id: feat_req__json__validation
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
    :satisfies: stkh_req__communication__json_parser,stkh_req__functional_req__file_based
    :status: valid
 
-   The JSON parser should be able to read data from a JSON formatted buffer.
+   The JSON-Library shall provide a service to check the well-formedness of JSON data.
 
-.. feat_req:: Support for JSON file reading
-   :id: feat_req__json__file_reading
-   :reqtype: Functional
-   :security: NO
-   :safety: ASIL_B
-   :satisfies: stkh_req__communication__json_parser,stkh_req__functional_req__file_based
-   :status: valid
-
-   The JSON parser should be able to open a JSON formatted file and read data from it.
-
-.. feat_req:: Support for JSON deserialization
+.. feat_req:: JSON Deserialization
    :id: feat_req__json__deserialization
    :reqtype: Functional
    :security: NO
@@ -46,7 +36,7 @@ General Requirements
    :satisfies: stkh_req__communication__json_parser,stkh_req__functional_req__file_based
    :status: valid
 
-   The JSON parser should be able to convert data from JSON format to the user format.
+   The JSON-Library shall provide a service to parse JSON data according to RFC8259.
 
 User friendly API for information exchange
 ==========================================
