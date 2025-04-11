@@ -65,7 +65,7 @@ Risks and mitigation
 --------------------
 
 Potential risks that derived from the verification activities and their respective mitigation measures are handled by
-the :doc:`risk_management`.
+the :doc:`project_management`.
 
 Schedules
 ---------

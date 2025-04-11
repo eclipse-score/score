@@ -28,7 +28,7 @@ Workproducts Implementation
    :id: wp__sw_implementation_inspection
    :status: valid
    :tags: safety
-   :complies: std_wp__iso26262__software_952
+   :complies: std_wp__iso26262__software_952, std_wp__isosae21434__development_1054
 
    Github review with integrated inspection checklist, only valid Detailed Design and Code get merged
 
@@ -36,7 +36,7 @@ Workproducts Implementation
    :id: wp__sw_development_plan
    :status: valid
    :tags: safety
-   :complies: std_wp__iso26262__software_551, std_wp__iso26262__software_app_c_58
+   :complies: std_wp__iso26262__software_551, std_wp__iso26262__software_app_c_58, std_wp__isosae21434__development_1053
 
    Process description of SW development including
    - selection of design and programming language

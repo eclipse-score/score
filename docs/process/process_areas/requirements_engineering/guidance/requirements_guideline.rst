@@ -18,7 +18,7 @@ Guideline
 .. gd_guidl:: Requirements Guideline
    :id: gd_guidl__req__engineering
    :status: valid
-   :complies: std_req__isopas8926__44421, std_req__isopas8926__44422, std_req__isopas8926__44423
+   :complies: std_req__isopas8926__44421, std_req__isopas8926__44422, std_req__isopas8926__44423, std_req__isosae21434__org_management_5441
 
 This document describes the general guidances for requirements based on the concept which is defined :need:`[[title]]<doc_concept__req__process>`.
 

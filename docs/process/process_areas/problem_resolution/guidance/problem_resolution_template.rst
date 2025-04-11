@@ -20,7 +20,7 @@ Problem Report Template
 .. gd_temp:: Problem Template
    :id: gd_temp__problem__template
    :status: valid
-   :complies: std_req__aspice_40__SUP-9-BP1, std_req__aspice_40__SUP-9-BP2, std_req__aspice_40__SUP-9-BP3, std_req__aspice_40__SUP-9-BP4,
+   :complies: std_req__aspice_40__SUP-9-BP1, std_req__aspice_40__SUP-9-BP2, std_req__aspice_40__SUP-9-BP3, std_req__aspice_40__SUP-9-BP4, std_req__isosae21434__continual_8322, std_req__isosae21434__continual_8421, std_req__isosae21434__continual_8521, std_req__isosae21434__continual_8522, std_req__isosae21434__continual_8621, std_req__isosae21434__continual_8622
 
 
 Parts of the Problem Template shall be created automatically by the defined Issue Tracking System,

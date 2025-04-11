@@ -121,17 +121,3 @@ Work products
    * a development processes analysis; and
    * a complexity analysis of the pre-developed SW component; and
    * finally a SW component classification as input for the safety planning (which is to cover the determined gaps, if any, by additional verification measures).
-
-.. workproduct:: Tailoring Documents
-   :id: wp__tailoring
-   :status: valid
-   :complies: std_wp__iso26262__management_653
-
-   This work product argues why some work products are not needed in the project.
-
-   It may have several levels:
-
-   * Project/Platform
-   * Feature/Component
-
-   It belongs to the Safety Plan.
