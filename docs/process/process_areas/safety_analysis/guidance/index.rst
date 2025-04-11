@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,12 +12,15 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Workflows
-=========
+Guidance
+########
 
 .. toctree::
    :maxdepth: 1
-   :caption: Contents:
 
-   process_management
-   quality_management
+   dfa_checklist_template
+   dfa_template
+   fault_models_guideline
+   safety_analysis_guideline
+   safety_analysis_process_reqs
+   safety_analysis_templates

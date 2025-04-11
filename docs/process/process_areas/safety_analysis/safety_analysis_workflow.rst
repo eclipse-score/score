@@ -12,15 +12,13 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Safety Analysis
-===============
 
+.. _workflow_safety_analysis:
 
-Workflows
----------
+Workflow Safety Analysis
+########################
 
 todo: need to add guidance and standard links
-
 
 .. workflow:: Analyse Feature Architecture
    :id: wf__analyse_featarch
@@ -57,4 +55,19 @@ todo: need to add guidance and standard links
    :output: wp__sw_arch_verification, wp__issue_track_system
 
    | The safety analyses and DFA are monitored and verified.
-   | The inspection shall be implemented as integral part of the review tool.
+   | The inspection shall be implemented as an integral part of the review tool.
+
+
+
+
+RAS(IC) for Safety Analysis
+***************************
+
+
+.. needtable:: RASIC Overview for Safety Analysis
+   :tags: safety_analysis
+   :filter: "safety_analysis" in tags and type == "workflow"
+   :style: table
+   :sort: status
+   :columns: id as "Activity";responsible as "Responsible";approved_by as "Approver";supported_by as "Supporter"
+   :colwidths: 30,30,30,30
