@@ -26,3 +26,6 @@ Documentation Management
    documentation_roles
    documentation_workflow
    documentation_workproducts
+
+.. needextend:: "process_areas/documentation_management" in docname
+   :+tags: doc_mgt

@@ -168,14 +168,6 @@ Component development
    Perform analysis of safety related and non-safety related sub-elements or sub-elements with different ASIL.
    Perform analysis on interactions between safety related and non-safety related sub-components or sub-components with different ASIL of one component. Including potential influences from the other components in the component's module.
 
-.. workproduct:: Architecture Verification
-   :id: wp__sw_arch_verification
-   :status: draft
-   :complies: std_wp__iso26262__software_754
-
-   Depends on architecture, FMEA and DFA tooling.
-   May include several methods like inspection, modelling ... Which are selected in SW Development Plan.
-
 .. workproduct:: Module Build Configuration
    :id: wp__module_sw_build_config
    :status: draft
@@ -209,11 +201,25 @@ Supporting activities
 Note: All the work products in this list are set to status "draft", as their producing workflows are not final and complete.
 
 
-S-CORE Workproduct Linkage
---------------------------
+S-CORE Work product Linkage
+---------------------------
 
 .. needpie:: S-CORE workproducts contained in exactly one S-CORE workflow
    :labels: Not-Linked, Linked Workproduct, Linked Workproduct To Multiple Workflows
    :legend:
    :colors: red, green, blue
    :filter-func: score_metamodel.checks.standards.my_pie_workproducts_contained_in_exactly_one_workflow
+
+S-CORE Work product list
+------------------------
+
+.. needtable::
+   :style: table
+   :columns: title;id;tags
+   :colwidths: 25,25,25
+   :sort: title
+
+   results = []
+
+   for need in needs.filter_types(["workproduct"]):
+                results.append(need)

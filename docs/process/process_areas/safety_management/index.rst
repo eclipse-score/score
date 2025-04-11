@@ -118,3 +118,6 @@ Guidance
    :glob:
 
    guidance/index.rst
+
+.. needextend:: "process_areas/safety_management" in docname
+   :+tags: safety_mgt

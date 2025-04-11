@@ -28,3 +28,7 @@ Architecture Design
    architecture_workflow
    architecture_workproducts
    _assets/architecture_modeling_example
+
+
+.. needextend:: "process_areas/architecture_design" in docname
+   :+tags: architecture_design

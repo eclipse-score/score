@@ -244,6 +244,3 @@ Checks for Architectural Design
    :tags: model, check
 
    It shall be checked if all SW components which are mentioned in the dynamic architecture are defined in the static architecture.
-
-.. needextend:: "process_areas/architecture_design" in docname
-   :+tags: architecture_design

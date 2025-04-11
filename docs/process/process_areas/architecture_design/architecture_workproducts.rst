@@ -42,3 +42,11 @@ Architecture Workproducts
    * Interface view (Sphinx Needs) - Overview of used and provided interfaces
 
    Technical concept on component level.
+
+.. workproduct:: Architecture Verification
+   :id: wp__sw_arch_verification
+   :status: valid
+   :complies: std_wp__iso26262__software_754
+
+   Depends on architecture guideline and tooling.
+   May include several methods like inspection, modelling ... Which are selected in SW Verification Plan.

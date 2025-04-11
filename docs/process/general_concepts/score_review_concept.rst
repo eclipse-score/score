@@ -58,7 +58,7 @@ In this project there are inspections on the following work products, which are 
           - :need:`gd_chklst__arch__inspection_checklist`
 
         * - :need:`wp__sw_implementation`
-          - <link to detailed design and code inspection checklist>
+          - :need:`gd_chklst__impl_inspection_checklist`
 
 Note that for testcases on unit, component and feature level (as defined in :need:`doc__verification_plan`)
 also a review checklist is provided for guidance, but no formal inspection is required. The same is true for Safety Analysis and DFA.
