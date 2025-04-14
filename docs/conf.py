@@ -36,7 +36,10 @@ release = "0.1"
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 sys.path.insert(0, os.path.abspath("_tooling/extensions"))
+sys.path.insert(0, os.path.abspath("../xml"))
+
 extensions = [
+    "breathe",
     "sphinx_design",
     "sphinx_needs",
     "sphinxcontrib.plantuml",
@@ -62,6 +65,9 @@ templates_path = ["_templates"]
 # Enable numref
 numfig = True
 
+# Breathe
+breathe_projects = {"S-CORE": "../xml"}
+breathe_default_project = "S-CORE"
 
 # -- sphinx-needs configuration --------------------------------------------
 # Setting the needs layouts

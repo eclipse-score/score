@@ -135,21 +135,24 @@ def _ide_support():
 def _docs():
     sphinx_docs(
         name = "docs",
-        srcs = native.glob([
-            "**/*.png",
-            "**/*.svg",
-            "**/*.rst",
-            "**/*.html",
-            "**/*.css",
-            "**/*.puml",
-            "**/*.need",
-            # Include the docs tooling itself
-            # Note: we don't use py_library here to make it as close as possible to docs:incremental.
-            "**/*.py",
-            "**/*.yaml",
-            "**/*.json",
-            "**/*.csv",
-        ], exclude = ["**/tests/rst/**/*.rst"]),
+        srcs = ["//docs:doxygen"] + native.glob(
+            [
+                "**/*.png",
+                "**/*.svg",
+                "**/*.rst",
+                "**/*.html",
+                "**/*.css",
+                "**/*.puml",
+                "**/*.need",
+                # Include the docs tooling itself
+                # Note: we don't use py_library here to make it as close as possible to docs:incremental.
+                "**/*.py",
+                "**/*.yaml",
+                "**/*.json",
+                "**/*.csv",
+            ],
+            exclude = ["**/tests/rst/**/*.rst"],
+        ),
         config = ":conf.py",
         extra_opts = [
             "-W",
