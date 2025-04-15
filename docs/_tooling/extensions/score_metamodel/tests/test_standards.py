@@ -14,11 +14,9 @@
 # from unittest.mock import Mock
 
 # from sphinx.application import Sphinx
-from sphinx_needs.data import NeedsInfoType
 
 from docs._tooling.extensions.score_metamodel.checks import standards
-
-# from docs._tooling.extensions.score_metamodel.tests import fake_check_logger
+from docs._tooling.extensions.score_metamodel.tests import need  # ,fake_check_logger
 
 
 class TestStandards:
@@ -35,7 +33,7 @@ class TestStandards:
     #        have complies tag via the same tag.
     #        """
     #
-    #        need_1 = NeedsInfoType(
+    #        need_1 = need(
     #            target_id="Traceability of safety requirements",
     #            id="std_req__iso26262__rq-8-6432",
     #            type="std_req",
@@ -45,7 +43,7 @@ class TestStandards:
     #            lineno=None,
     #        )
     #
-    #        need_2 = NeedsInfoType(
+    #        need_2 = need(
     #            target_id="Requirements attribute satisfies",
     #            id="gd_req__attribute_satisfies",
     #            tags="attribute",
@@ -81,7 +79,7 @@ class TestStandards:
     #     have complies tag via the same tag.
     #     """
 
-    #     need_1 = NeedsInfoType(
+    #     need_1 = need(
     #         target_id="Traceability of safety requirements",
     #         id="std_req__iso26262__rq-8-6432",
     #         type="std_req",
@@ -91,7 +89,7 @@ class TestStandards:
     #         lineno=None,
     #     )
 
-    #     need_2 = NeedsInfoType(
+    #     need_2 = need(
     #         target_id="Requirements attribute satisfies",
     #         id="gd_req__attribute_satisfies",
     #         type="gd_req",
@@ -123,17 +121,17 @@ class TestStandards:
     #         expect_location=False,
     #     )
 
-    # def test_check_all_standard_workproducts_linked_item_via_the_compliance_wp_positive(
+    # def test_all_workproduct_linked_via_compliance_wp(
     #     self,
     # ):
     #     """
     #     Test if check all_standard_workproducts_linked_item_via_the_compliance_wp
-    #     function will give a False value (check is valid) when giving a standar
+    #     function will give a False value (check is valid) when giving a standard
     #     workproduct which is linked to at least one of the list of items that have
     #     complies tag via the same tag.
     #     """
 
-    #     need_1 = NeedsInfoType(
+    #     need_1 = need(
     #         target_id="Organization-specific rules and processes for safety",
     #         id="std_wp__iso26262__wp-2-551",
     #         type="std_wp",
@@ -142,7 +140,7 @@ class TestStandards:
     #         lineno=None,
     #     )
 
-    #     need_2 = NeedsInfoType(
+    #     need_2 = need(
     #         target_id="wp__policies",
     #         id="wp__policies",
     #         type="workproduct",
@@ -177,7 +175,7 @@ class TestStandards:
     #     have complies tag via the same tag.
     #     """
 
-    #     need_1 = NeedsInfoType(
+    #     need_1 = need(
     #         target_id="Organization-specific rules and processes for safety",
     #         id="std_wp__iso26262__wp-2-551",
     #         type="std_wp",
@@ -186,7 +184,7 @@ class TestStandards:
     #         lineno=None,
     #     )
 
-    #     need_2 = NeedsInfoType(
+    #     need_2 = need(
     #         target_id="wp__policies",
     #         id="wp__policies",
     #         type="workproduct",
@@ -221,7 +219,7 @@ class TestStandards:
     #     exactly to one workflow least from the list of all workflows via
     #     output option.
     #     """
-    #     need_1 = NeedsInfoType(
+    #     need_1 = need(
     #         target_id="Module Safety Plan",
     #         type="workproduct",
     #         id="wp__module_safety_plan",
@@ -236,7 +234,7 @@ class TestStandards:
     #         lineno=None,
     #     )
 
-    #     need_2 = NeedsInfoType(
+    #     need_2 = need(
     #         target_id="Create/Maintain Safety Plan",
     #         type="workflow",
     #         id="wf__cr_mt_safety_plan",
@@ -262,7 +260,7 @@ class TestStandards:
     #     standards.check_workproduct_uniqueness_over_workflows(app, needs, logger)
     #     logger.assert_no_warnings()
 
-    # def test_check_workproduct_uniqueness_over_workflows_negative_wprkproduct_not_listed_in_any_workflow(
+    # test_workproduct_not_in_any_workflow(
     #     self,
     # ):
     #     """
@@ -272,7 +270,7 @@ class TestStandards:
     #     output option.
     #     """
 
-    #     need_1 = NeedsInfoType(
+    #     need_1 = need(
     #         target_id="Module Safety Plan",
     #         type="workproduct",
     #         id="wp__module_safety_plan",
@@ -288,7 +286,7 @@ class TestStandards:
     #         lineno=None,
     #     )
 
-    #     need_2 = NeedsInfoType(
+    #     need_2 = need(
     #         target_id="Create/Maintain Safety Plan",
     #         type="workflow",
     #         id="wf__cr_mt_safety_plan",
@@ -318,7 +316,7 @@ class TestStandards:
     #         expect_location=False,
     #     )
 
-    # def test_check_workproduct_uniqueness_over_workflows_negative_wprkproduct_listed_in_multiple_workflows(
+    # def test_workproduct_not_in_different_workflows(
     #     self,
     # ):
     #     """
@@ -328,7 +326,7 @@ class TestStandards:
     #     via output option.
     #     """
 
-    #     need_1 = NeedsInfoType(
+    #     need_1 = need(
     #         target_id="Module Safety Plan",
     #         type="workproduct",
     #         id="wp__module_safety_plan",
@@ -343,7 +341,7 @@ class TestStandards:
     #         lineno=None,
     #     )
 
-    #     need_2 = NeedsInfoType(
+    #     need_2 = need(
     #         target_id="Create/Maintain Safety Plan",
     #         type="workflow",
     #         id="wf__cr_mt_safety_plan",
@@ -361,7 +359,7 @@ class TestStandards:
     #         lineno=None,
     #     )
 
-    #     need_3 = NeedsInfoType(
+    #     need_3 = need(
     #         target_id="Review/Approve Contribution request",
     #         type="workflow",
     #         id="wf__rv_ap_ContrRequest",
@@ -406,7 +404,7 @@ class TestStandards:
         """
         needs = {}
 
-        need_1 = NeedsInfoType(
+        need_1 = need(
             target_id="Traceability of safety requirements",
             id="std_req__iso26262__rq-8-6432",
             type="std_req",
@@ -416,7 +414,7 @@ class TestStandards:
             lineno=None,
         )
 
-        need_2 = NeedsInfoType(
+        need_2 = need(
             target_id="Traceability",
             id="std_req__iso26262__rq-8-0000",
             type="std_req",
@@ -426,7 +424,7 @@ class TestStandards:
             lineno=None,
         )
 
-        need_3 = NeedsInfoType(
+        need_3 = need(
             target_id="Requirements attribute satisfies",
             id="gd_req__attribute_satisfies",
             security="NO",
@@ -466,7 +464,7 @@ class TestStandards:
         a special case will give the correct value.
         """
 
-        need_1 = NeedsInfoType(
+        need_1 = need(
             target_id="Organization-specific rules and processes for safety",
             id="std_wp__iso26262__wp-2-551",
             type="std_wp",
@@ -475,7 +473,7 @@ class TestStandards:
             lineno=None,
         )
 
-        need_2 = NeedsInfoType(
+        need_2 = need(
             target_id="specific rules for processes",
             id="std_wp__iso26262__wp-2-0000",
             type="std_wp",
@@ -484,7 +482,7 @@ class TestStandards:
             lineno=None,
         )
 
-        need_3 = NeedsInfoType(
+        need_3 = need(
             target_id="wp__policies",
             id="wp__policies",
             status="draft",
@@ -520,7 +518,7 @@ class TestStandards:
         a special case will give the correct value.
         """
 
-        need_1 = NeedsInfoType(
+        need_1 = need(
             target_id="Module Safety Plan",
             type="workproduct",
             id="wp__module_safety_plan",
@@ -535,7 +533,7 @@ class TestStandards:
             lineno=None,
         )
 
-        need_2 = NeedsInfoType(
+        need_2 = need(
             target_id="Create/Maintain Safety Plan",
             type="workflow",
             id="wf__cr_mt_safety_plan",
@@ -553,7 +551,7 @@ class TestStandards:
             lineno=None,
         )
 
-        need_3 = NeedsInfoType(
+        need_3 = need(
             target_id="Module Safety Plan",
             type="workproduct",
             id="wp__module",
@@ -568,7 +566,7 @@ class TestStandards:
             lineno=None,
         )
 
-        need_4 = NeedsInfoType(
+        need_4 = need(
             target_id="Module Safety Plan",
             type="workproduct",
             id="wp__module_safety",
@@ -582,7 +580,7 @@ class TestStandards:
             lineno=None,
         )
 
-        need_5 = NeedsInfoType(
+        need_5 = need(
             target_id="Create/Maintain Safety Plan",
             type="workflow",
             id="WF__CR_MT_SAFETY",
@@ -600,7 +598,7 @@ class TestStandards:
             lineno=None,
         )
 
-        need_6 = NeedsInfoType(
+        need_6 = need(
             target_id="Review/Approve Contribution request",
             type="workflow",
             id="wf__rv_ap_ContrRequest",
@@ -642,7 +640,7 @@ class TestStandards:
         """
         Test if get_standards_needs works as expected with a positive and negative test.
         """
-        need_1 = NeedsInfoType(
+        need_1 = need(
             target_id="Traceability of safety requirements",
             id="std_req__iso26262__rq-8-6432",
             type="std_req",
@@ -652,7 +650,7 @@ class TestStandards:
             lineno=None,
         )
 
-        need_2 = NeedsInfoType(
+        need_2 = need(
             target_id="Traceability of requirements",
             id="wp__11111111",
             reqtype="Functional",
@@ -673,7 +671,7 @@ class TestStandards:
         Test if get_standards_workproducts works as expected with a
         positive and negative test.
         """
-        need_1 = NeedsInfoType(
+        need_1 = need(
             target_id="Organization-specific rules and processes for safety",
             id="std_wp__iso26262__wp-2-551",
             type="std_wp",
@@ -682,7 +680,7 @@ class TestStandards:
             lineno=None,
         )
 
-        need_2 = NeedsInfoType(
+        need_2 = need(
             target_id="Traceability of requirements",
             id="wp__11111111",
             reqtype="Functional",
@@ -704,7 +702,7 @@ class TestStandards:
         and negative test.
         """
 
-        need_1 = NeedsInfoType(
+        need_1 = need(
             target_id="Requirements attribute satisfies",
             id="gd_req__attribute_satisfies",
             type="workproduct",
@@ -722,7 +720,7 @@ class TestStandards:
             lineno=None,
         )
 
-        need_2 = NeedsInfoType(
+        need_2 = need(
             target_id="Requirements attribute satisfies",
             id="gd_req__attribute_satisfies",
             type="gd_req",
@@ -752,7 +750,7 @@ class TestStandards:
         negative test.
         """
 
-        need_1 = NeedsInfoType(
+        need_1 = need(
             target_id="Requirements attribute satisfies_1",
             id="gd_req__attribute_satisfies",
             type="gd_req",
@@ -768,7 +766,7 @@ class TestStandards:
             lineno=None,
         )
 
-        need_2 = NeedsInfoType(
+        need_2 = need(
             target_id="Requirements attribute satisfies",
             id="wp__attribute_satisfies_2",
             type="workproduct",
@@ -794,7 +792,7 @@ class TestStandards:
         """
         Test if get_workflows works as expected with a positive and negative test.
         """
-        need_1 = NeedsInfoType(
+        need_1 = need(
             target_id="Module Safety Plan",
             type="workproduct",
             id="wp__module_safety_plan",
@@ -809,7 +807,7 @@ class TestStandards:
             lineno=None,
         )
 
-        need_2 = NeedsInfoType(
+        need_2 = need(
             target_id="Create/Maintain Safety Plan",
             type="workflow",
             id="wf__cr_mt_safety_plan",
@@ -838,7 +836,7 @@ class TestStandards:
         Test if get_workproducts works as expected with a positive and negative test.
         """
 
-        need_1 = NeedsInfoType(
+        need_1 = need(
             target_id="Module Safety Plan",
             type="workproduct",
             id="wp__module_safety_plan",
@@ -853,7 +851,7 @@ class TestStandards:
             lineno=None,
         )
 
-        need_2 = NeedsInfoType(
+        need_2 = need(
             target_id="Create/Maintain Safety Plan",
             type="workflow",
             id="wf__cstd_req__mt_safety_plan",

@@ -22,6 +22,9 @@ from score_metamodel import (
     local_check,
 )
 
+FieldCheck = tuple[dict[str, str], bool]
+CheckingDictType = dict[str, list[FieldCheck]]
+
 
 def get_need_type(needs_types: list[NeedType], directive: str):
     for need_type in needs_types:
@@ -48,20 +51,25 @@ def validate_fields(
     :param field_type: A string indicating the field type ('option' or 'link').
     """
     for field, pattern in fields.items():
-        values = need.get(field, None)
+        raw_value: str | list[str] | None = need.get(field, None)
 
-        if values in [None, [], ""]:
+        if raw_value in [None, [], ""]:
             if required:
                 log.warning_for_need(
                     need, f"is missing required {field_type}: `{field}`."
                 )
             continue  # Skip empty optional fields
 
-        if not isinstance(values, list):
-            values = [values]
+        values: list[str]
+
+        if isinstance(raw_value, str):
+            values = [raw_value]
+        elif isinstance(raw_value, list) and all(isinstance(v, str) for v in raw_value):
+            values = raw_value
+        else:
+            values = [str(raw_value)]
 
         for value in values:
-            assert isinstance(value, str)
             if not re.match(pattern, value):
                 log.warning_for_option(
                     need, field, f"does not follow pattern `{pattern}`."
@@ -96,7 +104,7 @@ def check_options(
         log.warning_for_option(need, "type", "no type info defined for semantic check.")
 
     # Validate Options and Links
-    checking_dict = {
+    checking_dict: CheckingDictType = {
         "option": [
             (need_options.get("mandatory_options", {}), True),
             (need_options.get("opt_opt", {}), False),

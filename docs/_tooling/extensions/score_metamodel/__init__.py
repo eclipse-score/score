@@ -102,9 +102,6 @@ def load_metamodel_data():
         data = yaml.load(f)
 
     # Access the custom validation block
-    prohibited_words_dict = data.get("needs_types_base_options", {}).get(
-        "prohibited_words", {}
-    )
 
     types_dict = data.get("needs_types", {})
     links_dict = data.get("needs_extra_links", {})
@@ -115,8 +112,8 @@ def load_metamodel_data():
 
     # Get the list of stop-words and weak-words
     # Get the stop_words and weak_words as separate lists
-    stop_words_list = prohibited_words_dict.get("title", [])
-    weak_words_list = prohibited_words_dict.get("content", [])
+    stop_words_list = global_base_options.get("prohibited_words", {}).get("title", [])
+    weak_words_list = global_base_options.get("prohibited_words", {}).get("content", [])
 
     # Default options by sphinx, sphinx-needs or anything else we need to account for
     default_options_list = default_options()
@@ -233,7 +230,7 @@ def default_options() -> list[str]:
     ]
 
 
-def setup(app: Sphinx):
+def setup(app: Sphinx) -> dict[str, str | bool]:
     app.config.needs_id_required = True
     app.config.needs_id_regex = "^[A-Za-z0-9_-]{6,}"
 

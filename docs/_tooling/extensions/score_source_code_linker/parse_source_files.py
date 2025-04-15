@@ -94,7 +94,7 @@ def extract_requirements(
     if git_hash_func is None:
         git_hash_func = get_git_hash
 
-    requirement_mapping = collections.defaultdict(list)
+    requirement_mapping: dict[str, list[str]] = collections.defaultdict(list)
     with open(source_file) as f:
         for line_number, line in enumerate(f):
             line_number = line_number + 1
@@ -118,7 +118,7 @@ if __name__ == "__main__":
     parser.add_argument("inputs", nargs="*")
 
     args, _ = parser.parse_known_args()
-    requirement_mappings = collections.defaultdict(list)
+    requirement_mappings: dict[str, list[str]] = collections.defaultdict(list)
     for input in args.inputs:
         with open(input) as f:
             for source_file in f:

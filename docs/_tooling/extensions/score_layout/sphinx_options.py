@@ -10,7 +10,17 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
-needs_layouts = {
+from typing import Literal, TypedDict
+
+LayoutDict = dict[str, list[str]]
+
+
+class SingleLayout(TypedDict):
+    grid: Literal["complex", "content"]
+    layout: dict[str, list[str]]
+
+
+needs_layouts: dict[str, SingleLayout] = {
     "score": {
         "grid": "complex",
         "layout": {

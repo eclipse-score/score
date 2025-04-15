@@ -16,6 +16,7 @@ from unittest.mock import ANY, MagicMock, patch
 
 import pytest
 import score_header_service.header_service as hs
+from sphinx.util.docutils import SphinxDirective
 
 
 @pytest.fixture(scope="session", autouse=True)
@@ -125,7 +126,8 @@ def test_debug(mock_app: MagicMock, mock_request_from_directive: MagicMock):
     debug_data = [{"key": "value"}]
     mock_request_from_directive.return_value = debug_data
     header_service = hs.HeaderService(mock_app, "dummy-service", None)
-    assert header_service.debug(None) == debug_data
+    mock_directive = MagicMock(spec=SphinxDirective)  # ✅ This matches expected type
+    assert header_service.debug(mock_directive) == debug_data
 
 
 @patch("score_header_service.header_service.subprocess.run")
@@ -156,7 +158,8 @@ Reviewed: {reviewer3} ( {reviewer3@mail.com} ) on {2024-12-3}"""
     }
     run_mock.assert_called_once_with(
         [
-            'git log --pretty="format:%H%n%an, %ae%n%b" --max-count=1 --merges --first-parent -p "/req/feature1'
+            'git log --pretty="format:%H%n%an, %ae%n%b" '
+            '--max-count=1 --merges --first-parent -p "/req/feature1"'
         ],
         shell=True,
         capture_output=True,

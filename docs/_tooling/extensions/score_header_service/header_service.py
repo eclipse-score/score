@@ -16,7 +16,7 @@ import random
 import re
 import subprocess
 from collections import defaultdict
-from typing import Any, ClassVar
+from typing import Any
 
 from github import (
     Auth,
@@ -72,7 +72,7 @@ def generate_hash() -> str:
 
 
 class HeaderService(BaseService):
-    options = {}
+    options = []
 
     def __init__(
         self,
@@ -141,7 +141,10 @@ def _extract_merge_commit_data(location: str) -> dict[str, str | list[str]]:
         "hash": "N/A",
     }
 
-    git_cmd = f'git log --pretty="format:%H%n%an, %ae%n%b" --max-count=1 --merges --first-parent -p "{location}'
+    git_cmd = (
+        f'git log --pretty="format:%H%n%an, %ae%n%b" --max-count=1 --merges '
+        f'--first-parent -p "{location}"'
+    )
 
     result = subprocess.run([git_cmd], shell=True, capture_output=True)
 

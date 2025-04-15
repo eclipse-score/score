@@ -96,10 +96,10 @@ def draw_comp_incl_impl_int(
 
     :param dict[str,str] need: Component which should be drawn
     :param dict all_needs: Dictionary containing all needs
-    :param dict[str,dict] proc_impl_interfaces: Dictionary containing all implemented interfaces
-    which were already processed during this cycle
-    :param dict[str,dict] proc_used_interfaces: Dictionary containing all used interfaces
-    which were already processed during this cycle
+    :param dict[str,dict] proc_impl_interfaces: Dictionary containing all implemented
+      interfaces which were already processed during this cycle
+    :param dict[str,dict] proc_used_interfaces: Dictionary containing
+        all used interfaces which were already processed during this cycle
     """
     # Draw outer component
     structure_text = f"{gen_struct_element('component', need)}  {{\n"
@@ -229,94 +229,123 @@ def draw_module(
     proc_used_interfaces: dict[str, list[str]] = dict()
     proc_logical_interfaces: dict[str, str] = dict()
 
+    structure_text = f"{gen_struct_element('package', need)}  {{\n"
     linkage_text = ""
 
-    # Draw outer module
-    structure_text = f"{gen_struct_element('package', need)}  {{\n"
+    structure_text, linkage_text, proc_impl_interfaces, proc_used_interfaces = (
+        process_included_components(
+            need,
+            all_needs,
+            structure_text,
+            linkage_text,
+            proc_impl_interfaces,
+            proc_used_interfaces,
+        )
+    )
+    structure_text += f"}} /' {need['title']} '/ \n\n"
 
-    # Draw inner components recursively
+    structure_text, linkage_text, proc_logical_interfaces = add_logical_interfaces(
+        proc_impl_interfaces,
+        proc_logical_interfaces,
+        all_needs,
+        structure_text,
+        linkage_text,
+    )
+    structure_text, linkage_text = add_used_interfaces(
+        proc_used_interfaces,
+        proc_impl_interfaces,
+        all_needs,
+        structure_text,
+        linkage_text,
+    )
+    linkage_text = "\n".join(set(linkage_text.split("\n"))) + "\n"
+
+    return structure_text, linkage_text
+
+
+def process_included_components(
+    need: dict[str, str],
+    all_needs: dict[str, dict[str, str]],
+    structure_text: str,
+    linkage_text: str,
+    proc_impl_interfaces: dict[str, str],
+    proc_used_interfaces: dict[str, list[str]],
+) -> tuple[str, str, dict[str, str], dict[str, list[str]]]:
     for need_inc in need.get("includes", []):
         curr_need = all_needs.get(need_inc, {})
-
-        # check for misspelled include
         if not curr_need:
             logger.info(f"{need}: include with id {need_inc} could not be found")
             continue
-
         if curr_need["type"] not in ["comp_arc_sta", "mod_view_sta"]:
             continue
-
         sub_structure, sub_linkage, proc_impl_interfaces, proc_used_interfaces = (
             draw_comp_incl_impl_int(
-                curr_need, all_needs, proc_impl_interfaces, proc_used_interfaces
+                curr_need,
+                all_needs,
+                proc_impl_interfaces,
+                proc_used_interfaces,
             )
         )
-
         structure_text += sub_structure
         linkage_text += sub_linkage
 
-    # close outer component
-    structure_text += f"}} /' {need['title']} '/ \n\n"
+    return structure_text, linkage_text, proc_impl_interfaces, proc_used_interfaces
 
-    # Add logical interfaces only to implemented interfaces
+
+def add_logical_interfaces(
+    proc_impl_interfaces: dict[str, str],
+    proc_logical_interfaces: dict[str, str],
+    all_needs: dict[str, dict[str, str]],
+    structure_text: str,
+    linkage_text: str,
+) -> tuple[str, str, dict[str, str]]:
     for iface in proc_impl_interfaces:
-        if not (proc_logical_interfaces.get(iface, [])):
-            # Currently only one Logical Interface per Real Interface supported
+        if not proc_logical_interfaces.get(iface, []):
             logical_iface_tmp = get_logical_interface_real(iface, all_needs)
             if len(logical_iface_tmp) > 1:
                 logger.warning(
-                    f"{logical_iface_tmp}: only one logical interface per real interface supported"
+                    f"{logical_iface_tmp}: only one logical interface per real "
+                    "interface supported"
                 )
             if logical_iface_tmp:
                 logical_iface = logical_iface_tmp[0]
                 proc_logical_interfaces[logical_iface] = iface
-
                 structure_text += gen_interface_element(logical_iface, all_needs, True)
-
-                linkage_text += f"{
-                    gen_link_text(
-                        all_needs[iface],
-                        '-u->',
-                        all_needs[logical_iface],
-                        'implements',
-                    )
-                } \n"
+                linkage_text += f"{gen_link_text(all_needs[iface], '-u->',
+                                    all_needs[logical_iface],
+                                    'implements')}\n"
             else:
                 print(f"{iface}: Not connected to any virtual interface")
+    return structure_text, linkage_text, proc_logical_interfaces
 
-    # Add all interfaces which are used by component
+
+def add_used_interfaces(
+    proc_used_interfaces: dict[str, list[str]],
+    proc_impl_interfaces: dict[str, str],
+    all_needs: dict[str, dict[str, str]],
+    structure_text: str,
+    linkage_text: str,
+) -> tuple[str, str]:
     for iface, comps in proc_used_interfaces.items():
         if iface not in proc_impl_interfaces:
-            # Add implementing components and modules
             impl_comp_str = get_impl_comp_from_real_iface(iface, all_needs)
-
             impl_comp = all_needs.get(impl_comp_str[0], {}) if impl_comp_str else ""
 
             if impl_comp:
                 retval = get_hierarchy_text(impl_comp_str[0], all_needs)
-                structure_text += retval[2]  # module open
-                structure_text += retval[0]  # rest open
-
-                structure_text += retval[1]  # rest close
-                structure_text += retval[3]  # module close
+                structure_text += retval[2] + retval[0] + retval[1] + retval[3]
                 structure_text += gen_interface_element(iface, all_needs, True)
-
-                # Draw connection between implementing components and interface
-                linkage_text += f"{gen_link_text(impl_comp, '-u->', all_needs[iface], 'implements')} \n"
-
+                linkage_text += f"{gen_link_text(impl_comp, '-u->',
+                                all_needs[iface],
+                                'implements')} \n"
             else:
-                # Add only interface if component not defined
                 print(f"{iface}: No implementing component defined")
                 structure_text += gen_interface_element(iface, all_needs, True)
 
-        # Interface can be used by multiple components
         for comp in comps:
-            # Draw connection between used interfaces and components
-            linkage_text += f"{gen_link_text(all_needs[comp], '-d[#green]->', all_needs[iface], 'uses')} \n"
-
-    # Remove duplicate links
-    linkage_text = "\n".join(set(linkage_text.split("\n"))) + "\n"
-
+            linkage_text += f"{gen_link_text(all_needs[comp],
+                                            '-d[#green]->',
+                                            all_needs[iface], 'uses')} \n"
     return structure_text, linkage_text
 
 
@@ -332,77 +361,68 @@ class draw_full_feature:
     def __call__(
         self, need: dict[str, str], all_needs: dict[str, dict[str, str]]
     ) -> str:
-        interfacelist: list[str] = []
-        impl_comp: dict[str, str] = dict()
-
-        structure_text = (
-            f'actor "Feature User" as {get_alias({"id": "Feature_User"})} \n'
+        interfacelist = self._get_interface_list(need, all_needs)
+        structure_text, impl_comp = self._generate_structure_and_components(
+            interfacelist, all_needs
         )
+        link_text = self._generate_links(interfacelist, impl_comp, all_needs, need)
+        return gen_header() + structure_text + link_text
 
-        # Define Feature as a package
-        # structure_text += f"{gen_struct_element('package', need)} {{\n"
-
-        # Add logical Interfaces / Interface Operations (aka includes)
+    def _get_interface_list(
+        self, need: dict[str, str], all_needs: dict[str, dict[str, str]]
+    ) -> list[str]:
+        interfacelist: list[str] = []
         for need_inc in need.get("includes", []):
-            # Generate list of interfaces since both interfaces
-            # and interface operations can be included
             iface = get_interface_from_int(need_inc, all_needs)
             if iface not in interfacelist:
                 interfacelist.append(iface)
+        return interfacelist
+
+    def _generate_structure_and_components(
+        self,
+        interfacelist: list[str],
+        all_needs: dict[str, dict[str, str]],
+    ) -> tuple[str, dict[str, str]]:
+        structure_text = (
+            f'actor "Feature User" as {get_alias({"id": "Feature_User"})} \n'
+        )
+        impl_comp: dict[str, str] = {}
 
         for iface in interfacelist:
-            if imcomp := all_needs.get(iface):
+            if all_needs.get(iface):
                 structure_text += gen_interface_element(iface, all_needs, True)
-
-                # Determine Components which implement the interfaces
                 real_iface = get_real_interface_logical(iface, all_needs)
                 if real_iface:
                     comps = get_impl_comp_from_real_iface(real_iface[0], all_needs)
-
                     if comps:
                         impl_comp[iface] = comps[0]
-
-                if imcomp := impl_comp.get(iface, {}):
-                    structure_text += (
-                        f"{gen_struct_element('component', all_needs[imcomp])}\n"
-                    )
+                if im := impl_comp.get(iface):
+                    structure_text += f"{gen_struct_element('component',
+                                         all_needs[im])}\n"
             else:
-                logger.info(f"{need}: Interface {iface} could not be found")
-                continue
+                logger.info(f"Interface {iface} could not be found")
+        return structure_text, impl_comp
 
-        # Close Package
-        # structure_text += f"}} /' {need['title']}  '/ \n\n"
-
+    def _generate_links(
+        self,
+        interfacelist: list[str],
+        impl_comp: dict[str, str],
+        all_needs: dict[str, dict[str, str]],
+        need: dict[str, str],
+    ) -> str:
         link_text = ""
-
         for iface in interfacelist:
             if imcomp := impl_comp.get(iface):
-                # Add relation between Actor and Interfaces
-                link_text += f"{
-                    gen_link_text(
-                        {'id': 'Feature_User'}, '-d->', all_needs[iface], 'use'
-                    )
-                } \n"
-
-                # Add relation between interface and component
-                if imcomp := impl_comp.get(iface):
-                    link_text += f"{
-                        gen_link_text(
-                            all_needs[imcomp],
-                            '-u->',
-                            all_needs[iface],
-                            'implements',
-                        )
-                    } \n"
-                else:
-                    logger.info(
-                        f"Interface {iface} is not implemented by any component"
-                    )
+                link_text += f"{gen_link_text({'id': 'Feature_User'}, '-d->',
+                                    all_needs[iface],
+                                    'use')} \n"
+                link_text += f"{gen_link_text(all_needs[imcomp],
+                                    '-u->',
+                                    all_needs[iface],
+                                    'implements')} \n"
             else:
                 logger.info(f"{need}: Interface {iface} could not be found")
-                continue
-
-        return gen_header() + structure_text + link_text
+        return link_text
 
 
 class draw_full_module:

@@ -276,8 +276,8 @@ def get_impl_comp_from_real_iface(
     real_iface: str, all_needs: dict[str, dict[str, str]]
 ) -> list[str]:
     """Get implementing component of the interface"""
-    implcomp: list[str] = all_needs[real_iface].get("implements_back", [])
-
+    value = all_needs[real_iface].get("implements_back", [])
+    implcomp = value if isinstance(value, list) else []
     if not implcomp:
         logger.info(
             f"{all_needs[real_iface]['id']}: Implementing Component not specified!"
