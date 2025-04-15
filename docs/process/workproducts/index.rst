@@ -189,16 +189,6 @@ Component development
 Supporting activities
 ---------------------
 
-.. workproduct:: Tool Verification Report
-   :id: wp__tool_verification
-   :status: draft
-   :tags: process, safety, security
-   :complies: std_wp__iso26262__support_1151, std_wp__iso26262__support_1152
-
-   According to the safety tool process, each tool's confidence level (TCL) must be determined. Based on TCL the appropriate qualification methods shall be applied.
-
-
-Note: All the work products in this list are set to status "draft", as their producing workflows are not final and complete.
 
 
 S-CORE Work product Linkage
