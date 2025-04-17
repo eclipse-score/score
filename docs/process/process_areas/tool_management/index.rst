@@ -12,21 +12,17 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Process Areas
-#############
+.. _tool_management:
+
+Tool Management
+###############
 
 .. toctree::
    :maxdepth: 1
-   :glob:
 
-   architecture_design/index.rst
-   change_management/index.rst
-   configuration_management/index.rst
-   documentation_management/index.rst
-   implementation/index.rst
-   platform_management/index.rst
-   problem_resolution/index.rst
-   requirements_engineering/index.rst
-   safety_management/index.rst
-   tool_management/index.rst
-   verification/index.rst
+   tool_management_getstrt
+   tool_management_concept
+   guidance/index
+   tool_management_roles
+   tool_management_workflow
+   tool_management_workproducts

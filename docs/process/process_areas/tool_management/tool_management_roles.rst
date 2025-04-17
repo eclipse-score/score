@@ -12,21 +12,20 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Process Areas
-#############
+Roles
+#####
 
-.. toctree::
-   :maxdepth: 1
-   :glob:
+For tool management no additional roles need to be defined.
 
-   architecture_design/index.rst
-   change_management/index.rst
-   configuration_management/index.rst
-   documentation_management/index.rst
-   implementation/index.rst
-   platform_management/index.rst
-   problem_resolution/index.rst
-   requirements_engineering/index.rst
-   safety_management/index.rst
-   tool_management/index.rst
-   verification/index.rst
+Contributing Roles:
+
+   * :need:`Infrastructure, Tooling Community <rl__infrastructure_tooling_community>`
+   * :need:`Technical Lead  <rl__technical_lead>`
+   * :need:`Module Project Lead <rl__module_lead>`
+   * :need:`Safety Manager <rl__safety_manager>`
+   * :need:`Security Manager <rl__security_manager>`
+
+A detailed overview of the responsibilities for the steps of the tool management process is
+listed here:
+
+:ref:`workflow_tlm_requirements`

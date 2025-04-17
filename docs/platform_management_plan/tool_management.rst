@@ -12,14 +12,138 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Tool Management
-------------------------
+.. document:: Tool Management Plan
+   :id: doc__platform_tool_management_plan
+   :status: draft
+   :safety: ASIL_B
+   :tags: platform_management
+   :realizes: wp__tlm_plan
+
+
+Tool Management/ Tool Management Plan
+-------------------------------------
+
+This document implements parts of the :need:`wp__platform_mgmt`.
 
 Purpose
 +++++++
+The purpose of the Tool Management Plan is to guide the identification, evaluation and qualification of
+project tools.
 
-Objectives and scope
+S-CORE objectives is to use OSS tools for the generation of all required work products. Thus all
+tools which will be used as part of the tool chain for the work product generation must be identified,
+documented and evaluated and if applicable, qualified.
+
+
+Objectives and Scope
 ++++++++++++++++++++
+
+Tool Management Goals
+^^^^^^^^^^^^^^^^^^^^^
+
+* Tools are identified and documented
+* Tools are evaluated
+* Tools are qualified, if applicable
 
 Approach
 ++++++++
+
+
+Identification
+^^^^^^^^^^^^^^
+
+Each tool is identified by its name or UID and version.
+The tools are stored in one GitHub repository, `tooling repository <https://GitHub.com/eclipse-score/tooling/>`_.
+
+For each tool the :need:`gd_temp__tool_management__verif_rpt_template` shall be used to document
+the relevant information.
+
+:need:`gd_chklst__tool__cr_review` may used to check that all relevant information is considered.
+
+The configuration of tools is part of the :need:`doc__config_mgt_plan`.
+
+
+Evaluation
+^^^^^^^^^^
+
+The tool confidence level (TCL) must be determined as outlined in the
+:need:`doc_concept__tool__process`.
+
+Step-by-Step guide:
+
+1. Determine the tool impact
+2. Determine the tool error detection
+3. Determine the tool confidence level
+
+**To Step 1**
+
+Based on the found malfunctions or threats judge, if any safety or security requirements may violated.
+If this is the case, determine tool impact to "YES" otherwise to "NO".
+
+If tool impact is "NO", continue with 3, otherwise 2.
+
+**To Step 2**
+
+Based on the found malfunctions or threats judge, if these can be all detected or prevented?
+Consider also potential safety measures and security controls to increase the detection and
+prevention of these, if applicable.
+If there is no guarantee to either detect or prevent these, judge tool error detection to "NO",
+otherwise to "YES".
+
+**To Step 3**
+
+If tool impact is judged to "YES" and tool error detection judged to "YES", the tool confidence
+level is determined to "LOW", otherwise "HIGH".
+
+In case the tool confidence level is "LOW", tool qualification is required,
+
+
+Qualification
+^^^^^^^^^^^^^
+
+As method validation of software tool is applied.
+
+Specify requirements for the tools purpose and usage in the S-CORE context.
+Analyze the malfunctions and threats and specify safety measures and security controls to increase
+the prevention and detection of them.
+Specify test cases and tests to verify the requirements and generate a test report.
+Update the Tool Verification Report accordingly to document the outcomes.
+
+For the generation of requirements, verification and analyses the processes defined in the
+:need:`wp__platform_mgmt` shall be used (Requirements Engineering, Verification,
+Safety/Security Analyzes).
+
+Tailoring
+^^^^^^^^^
+Tailoring of safety activities for confidence in the use of software tools:
+
+The following ISO 26262 defined safety requirements are not relevant for the S-CORE SW platform
+development, as they are not used:
+
+:need:`std_req__iso26262__support_11471`, :need:`std_req__iso26262__support_11472`,
+:need:`std_req__iso26262__support_11473`, :need:`std_req__iso26262__support_11474`,
+:need:`std_req__iso26262__support_11481`, :need:`std_req__iso26262__support_11482`,
+:need:`std_req__iso26262__support_11483`
+
+
+Tool List
+^^^^^^^^^
+
+.. list-table:: SW Platform tool overview
+    :header-rows: 1
+
+    * - tool Id
+      - tool name
+      - tool status
+      - tool TCL
+      - Link to evaluation issue
+      - Link to qualification issue
+      - Link to verification report
+
+    * - #
+      - sphinx-needs
+      - draft <automated>
+      - not evaluated yet
+      - <Link to issue>
+      - <Link to issue>
+      - <Link to tool verification report>
