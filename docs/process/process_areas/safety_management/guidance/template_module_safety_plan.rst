@@ -222,7 +222,7 @@ This document implements <add "need" link>
           - <Link to WP>
           - <automated>
 
-        * - :need:`wp__verification__component_test`
+        * - :need:`wp__verification__comp_int_test`
           - <Link to process>
           - <automated>
           - <Link to issue>
@@ -291,10 +291,6 @@ This document implements <add "need" link>
           - <Reasoning for tailoring, can improve deficits in process Id 6 and complexity Id 2>
 
         * - :need:`wp__verification__comp_int_test`
-          - <Link to issue>
-          - <Reasoning for tailoring, can improve deficits in process Id 6 and complexity Id 3&5>
-
-        * - :need:`wp__verification__component_test`
           - <Link to issue>
           - Always needed (for Q and QR classification)
 
