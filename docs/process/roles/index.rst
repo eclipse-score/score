@@ -40,6 +40,7 @@ S-CORE Management Roles
    * Decisions about strategical topics
    * Filling the Project Lead role according to the `Eclipse Foundation Project Handbook <https://www.eclipse.org/projects/handbook>`_
    * Election of all roles in the S-CORE project, including the :need:`Safety Manager <rl__safety_manager>` on SW platform and module level
+   * Approval of release planning and releases
 
    Authority
 

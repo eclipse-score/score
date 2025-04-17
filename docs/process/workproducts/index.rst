@@ -127,14 +127,6 @@ Platform development
    Build configuration capable to create the SEooC Library for the reference HW, platform level.
    Note: Embedded software in the sense of the Iso (i.e. deployed on the production HW) is not part of our delivery.
 
-.. workproduct:: Platform Release Notes
-   :id: wp__platform_sw_release_note
-   :status: draft
-   :tags: safety_management
-   :complies: std_wp__iso26262__management_656
-
-   Release notes describe the qualified SW version including known bugs from own testing and field reporting, with clear statement, that these bugs do not lead to violation of any safety requirements or with corresponding workaround measures. Platform level.
-
 .. workproduct:: Hardware-software interface document
    :id: wp__hsi
    :status: draft
@@ -176,14 +168,6 @@ Component development
 
    Build configuration capable to create the SEooC Library for the reference HW, module level.
    Note: Embedded software in the sense of the Iso (i.e. deployed on the production HW) is not part of our delivery.
-
-.. workproduct:: Module Release Notes
-   :id: wp__module_sw_release_note
-   :status: draft
-   :tags: safety_management
-   :complies: std_wp__iso26262__management_656
-
-   Release notes describe the qualified SW version including known bugs from own testing and field reporting, with clear statement, that these bugs do not lead to violation of any safety requirements or with corresponding workaround measures. Module level.
 
 
 Supporting activities

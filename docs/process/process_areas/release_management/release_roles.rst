@@ -12,21 +12,17 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Process Areas
-#############
+Roles
+#####
 
-.. toctree::
-   :maxdepth: 1
-   :glob:
+For Release Management no additional roles need to be defined.
 
-   architecture_design/index.rst
-   change_management/index.rst
-   configuration_management/index.rst
-   documentation_management/index.rst
-   implementation/index.rst
-   platform_management/index.rst
-   problem_resolution/index.rst
-   release_management/index.rst
-   requirements_engineering/index.rst
-   safety_management/index.rst
-   verification/index.rst
+Contributing Roles:
+
+   * :need:`Technical Lead <rl__technical_lead>`
+   * :need:`Project Lead <rl__project_lead>`
+
+A detailed overview of the responsibility for the steps of the Release Management process
+is listed here:
+
+:ref:`workflow_release`
