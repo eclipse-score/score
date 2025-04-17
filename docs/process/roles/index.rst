@@ -136,3 +136,17 @@ S-CORE cross functional teams
    :contains: rl__module_lead, rl__safety_manager, rl__quality_manager, rl__security_manager, rl__contributor, rl__committer
 
    The module team is responsible for all artifacts within the module SEooCs. Each module has only one responsible team but a team may also be responsible for several (small) modules.
+
+S-CORE Roles list
+-----------------
+
+.. needtable::
+   :style: table
+   :columns: title;id;tags
+   :colwidths: 25,25,25
+   :sort: title
+
+   results = []
+
+   for need in needs.filter_types(["role"]):
+                results.append(need)
