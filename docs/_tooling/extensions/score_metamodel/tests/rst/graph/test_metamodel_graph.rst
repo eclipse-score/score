@@ -11,6 +11,7 @@
    #
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
+#CHECK: check_metamodel_graph
 
 .. feat_req:: Parent requirement
    :id: feat_req__parent__abcd

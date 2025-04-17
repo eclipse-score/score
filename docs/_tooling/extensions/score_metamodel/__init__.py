@@ -10,6 +10,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
+import copy
 import importlib
 import pkgutil
 from collections.abc import Callable
@@ -24,8 +25,11 @@ from .log import CheckLogger
 
 logger = logging.get_logger(__name__)
 
-local_checks: list[Callable[[Sphinx, NeedsInfoType, CheckLogger], None]] = []
-graph_checks: list[Callable[[Sphinx, list[NeedsInfoType], CheckLogger], None]] = []
+local_check_function = Callable[[Sphinx, NeedsInfoType, CheckLogger], None]
+graph_check_function = Callable[[Sphinx, list[NeedsInfoType], CheckLogger], None]
+
+local_checks: list[local_check_function] = []
+graph_checks: list[graph_check_function] = []
 
 
 def discover_checks():
@@ -41,14 +45,14 @@ def discover_checks():
         importlib.import_module(f"{package_name}.{module_name}", __package__)
 
 
-def local_check(func: Callable[[Sphinx, NeedsInfoType, CheckLogger], None]):
+def local_check(func: local_check_function):
     """Use this decorator to mark a function as a local check."""
     logger.debug(f"new local_check: {func}")
     local_checks.append(func)
     return func
 
 
-def graph_check(func: Callable[[Sphinx, list[NeedsInfoType], CheckLogger], None]):
+def graph_check(func: graph_check_function):
     """Use this decorator to mark a function as a graph check."""
     logger.debug(f"new graph_check: {func}")
     graph_checks.append(func)
@@ -71,13 +75,13 @@ def _run_checks(app: Sphinx, exception: Exception | None) -> None:
     # Need-Local checks: checks which can be checked file-local, without a
     # graph of other needs.
     for need in needs_all_needs.values():
-        for check in local_checks:
+        for check in app.config.score_metamodel_checks["local_checks"]:
             check(app, need, log)
 
     # Graph-Based checks: These warnings require a graph of all other needs to
     # be checked.
     needs = list(needs_all_needs.values())
-    for check in graph_checks:
+    for check in app.config.score_metamodel_checks["graph_checks"]:
         check(app, needs, log)
 
     if log.has_warnings:
@@ -246,6 +250,11 @@ def setup(app: Sphinx) -> dict[str, str | bool]:
     app.config.weak_words = metamodel["weak_words"]
 
     discover_checks()
+    app.add_config_value("score_metamodel_checks", "", rebuild="env")
+    app.config.score_metamodel_checks = {
+        "local_checks": copy.deepcopy(local_checks),
+        "graph_checks": copy.deepcopy(graph_checks),
+    }
 
     app.connect("build-finished", _run_checks)
 
