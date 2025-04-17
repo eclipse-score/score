@@ -232,7 +232,7 @@ def default_options() -> list[str]:
 
 def setup(app: Sphinx) -> dict[str, str | bool]:
     app.config.needs_id_required = True
-    app.config.needs_id_regex = "^[A-Za-z0-9_-]{6,}"
+    app.config.needs_id_regex = "^[A-Za-z0-9_]{6,}"
 
     # load metamodel.yaml via ruamel.yaml
     metamodel = load_metamodel_data()

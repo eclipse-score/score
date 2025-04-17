@@ -50,6 +50,12 @@ use_repo(pip, "pip_sphinx")
 # `py_binary`. But more importantly, it provides `py_venv`.
 bazel_dep(name = "aspect_rules_py", version = "1.0.0")
 
+# Rules for Doxygen
+bazel_dep(name = "rules_doxygen", version = "2.2.1", dev_dependency = True)
+
+doxygen_dep = use_extension("@rules_doxygen//:extensions.bzl", "doxygen_extension")
+use_repo(doxygen_dep, "doxygen")
+
 ###############################################################################
 #
 # Packaging dependencies

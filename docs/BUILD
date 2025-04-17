@@ -12,6 +12,7 @@
 # *******************************************************************************
 
 load("@aspect_rules_py//py:defs.bzl", "py_binary", "py_library", "py_venv")
+load("@doxygen//:doxygen.bzl", "doxygen")
 load("@pip_sphinx//:requirements.bzl", "all_requirements", "requirement")
 load("@rules_pkg//pkg:mappings.bzl", "pkg_files")
 load("@rules_pkg//pkg:tar.bzl", "pkg_tar")
@@ -214,4 +215,27 @@ score_py_pytest(
     srcs = glob(["_tooling/extensions/score_header_service/test/**/*.py"]),
     visibility = ["//visibility:public"],
     deps = [":header_service"],
+)
+
+doxygen(
+    name = "doxygen",
+    srcs = glob([
+        "process/process_areas/implementation/**/*.h",
+        "process/process_areas/implementation/**/*.cpp",
+    ]),
+    outs = [
+        "html",
+        "xml",
+    ],
+    aliases = [
+        "intf{3}=\\verbatim embed:rst^^    .. comp_arc_int:: \\1^^       :id: \\2^^       :fulfils: \\3^^       :language: cpp^^\\endverbatim",
+        "intfop{4}=\\verbatim embed:rst^^    .. comp_arc_int_op:: \\1^^       :id: \\2^^       :implements: \\3^^       :included_by: \\4^^\\endverbatim",
+    ],
+    generate_html = True,
+    generate_latex = False,
+    generate_xml = True,
+    optimize_output_for_c = True,
+    project_brief = "S-CORE Doxygen Documentation",
+    project_name = "S-CORE",
+    xml_programlisting = False,
 )
