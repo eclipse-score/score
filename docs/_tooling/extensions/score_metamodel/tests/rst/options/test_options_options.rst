@@ -11,6 +11,7 @@
    #
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
+#CHECK: check_options
 
 #EXPECT: std_wp__test__abcd: is missing required option: `status`.
 
