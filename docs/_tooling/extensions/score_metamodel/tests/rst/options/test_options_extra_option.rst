@@ -11,6 +11,7 @@
    #
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
+#CHECK: check_extra_options
 
 #EXPECT: std_wp__test__abcd: has these extra options: `safety`.
 
