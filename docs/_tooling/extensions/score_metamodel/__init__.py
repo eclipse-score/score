@@ -30,11 +30,14 @@ graph_check_function = Callable[[Sphinx, list[NeedsInfoType], CheckLogger], None
 local_checks: list[local_check_function] = []
 graph_checks: list[graph_check_function] = []
 
+
 def parse_checks_filter(filter: str) -> list[str]:
     """
     Parse the checks filter string into a list of individual checks.
     When empty, an empty list is returned = all checks are enabled.
     """
+    if not filter:
+        return []
     return [check.strip() for check in filter.split(",")]
 
 

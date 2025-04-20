@@ -138,7 +138,9 @@ def extract_test_data(rst_file: Path) -> RstData | None:
                 rst_data.enabled_checks = parse_line_for_message(line)
         # Check last InfoElement
         if test_info:
-            print("ERROR: CHECK or EXPECT statement without according need found")
+            raise AssertionError(
+                "Last EXPECT/EXPECT-NOT line is not followed by a need."
+            )
         return rst_data
 
 
