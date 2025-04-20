@@ -10,7 +10,6 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
-import copy
 import importlib
 import pkgutil
 from collections.abc import Callable
@@ -30,6 +29,13 @@ graph_check_function = Callable[[Sphinx, list[NeedsInfoType], CheckLogger], None
 
 local_checks: list[local_check_function] = []
 graph_checks: list[graph_check_function] = []
+
+def parse_checks_filter(filter: str) -> list[str]:
+    """
+    Parse the checks filter string into a list of individual checks.
+    When empty, an empty list is returned = all checks are enabled.
+    """
+    return [check.strip() for check in filter.split(",")]
 
 
 def discover_checks():
@@ -72,21 +78,27 @@ def _run_checks(app: Sphinx, exception: Exception | None) -> None:
 
     log = CheckLogger(logger, prefix)
 
+    checks_filter = parse_checks_filter(app.config.score_metamodel_checks)
+
+    def is_check_enabled(check: local_check_function | graph_check_function):
+        return not checks_filter or check.__name__ in checks_filter
+
     # Need-Local checks: checks which can be checked file-local, without a
     # graph of other needs.
     for need in needs_all_needs.values():
-        for check in app.config.score_metamodel_checks["local_checks"]:
+        for check in [c for c in local_checks if is_check_enabled(c)]:
+            logger.info(f"Running local check {check} for need {need['id']}")
             check(app, need, log)
 
     # Graph-Based checks: These warnings require a graph of all other needs to
     # be checked.
     needs = list(needs_all_needs.values())
-    for check in app.config.score_metamodel_checks["graph_checks"]:
+    for check in [c for c in graph_checks if is_check_enabled(c)]:
+        logger.info(f"Running graph check {check} for all needs")
         check(app, needs, log)
 
     if log.has_warnings:
         log.warning("Some needs have issues. See the log for more information.")
-        # TODO: exit code
 
 
 def load_metamodel_data():
@@ -250,11 +262,15 @@ def setup(app: Sphinx) -> dict[str, str | bool]:
     app.config.weak_words = metamodel["weak_words"]
 
     discover_checks()
-    app.add_config_value("score_metamodel_checks", "", rebuild="env")
-    app.config.score_metamodel_checks = {
-        "local_checks": copy.deepcopy(local_checks),
-        "graph_checks": copy.deepcopy(graph_checks),
-    }
+
+    app.add_config_value(
+        "score_metamodel_checks",
+        "",
+        rebuild="env",
+        description=(
+            "Comma separated list of enabled checks. When empty, all checks are enabled"
+        ),
+    )
 
     app.connect("build-finished", _run_checks)
 

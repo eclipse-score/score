@@ -50,3 +50,14 @@ lint.ignore = [
     # Rules we want to ignore go in here.
     # Always provide a comment explaining why.
 ]
+
+[tool.pytest.ini_options]
+# Not our problem... hide the warnings!
+filterwarnings = [
+    # Most warnings are from sphinx-needs, which we don't control.
+    "ignore::DeprecationWarning:sphinx_needs.*",
+
+    # One warning is from some s* library, however it's not clear which one.
+    # "s[a-z]" doesn't match. Only "s*" works.
+    "ignore::DeprecationWarning:s*.*",
+]

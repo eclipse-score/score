@@ -98,14 +98,15 @@ class RstData:
     #### Holds filename, all infos about warnings and
     # which checks to enable if not all
     filename: str
-    checks: list[str] = field(default_factory=list)
+    enabled_checks: str = ""
     warning_infos: list[WarningInfo] = field(default_factory=list)
 
 
-def extract_warning(line: str) -> str:
+def parse_line_for_message(line: str) -> str:
     #### Extract the warning message from the line
     # The line format is "#EXPECT: <warning message>"
     # or "#EXPECT-NOT: <warning message>"
+    # or "#CHECK: <checks>"
     return line.split(": ", 1)[1].strip()
 
 
@@ -131,10 +132,10 @@ def extract_test_data(rst_file: Path) -> RstData | None:
                     if line.startswith("#EXPECT:")
                     else test_info.not_expected
                 )
-                target_list.append(extract_warning(line))
+                target_list.append(parse_line_for_message(line))
             elif line.startswith("#CHECK:"):
-                assert not rst_data.checks, "only one CHECK per file allowed"
-                rst_data.checks = extract_warning(line).split(",")
+                assert not rst_data.enabled_checks, "only one CHECK per file allowed"
+                rst_data.enabled_checks = parse_line_for_message(line)
         # Check last InfoElement
         if test_info:
             print("ERROR: CHECK or EXPECT statement without according need found")
@@ -176,28 +177,34 @@ def apply_enabled_check_filter(
 
 
 @pytest.mark.parametrize("rst_file", RST_FILES)
-def test_check_rules(
+def test_rst_files(
     rst_file: str, sphinx_app_setup: Callable[[Path], SphinxTestApp]
 ) -> None:
     ### Test function to check rules in the given rst file
     # The function uses the SphinxTestApp to build the documentation
     # and checks for the expected/unexpected warnings.
-    assert (rst_data := extract_test_data(RST_DIR / rst_file)), (
-        "Unable to extract test data"
-    )
+    rst_data = extract_test_data(RST_DIR / rst_file)
+    if not rst_data:
+        raise AssertionError(
+            "Unable to extract test data from the rst file: "
+            f"{rst_file}. Please check the file for the correct format."
+        )
+
     app: SphinxTestApp = sphinx_app_setup(RST_DIR / rst_file)
     os.chdir(app.srcdir)  # Change working directory to the source directory
 
-    apply_enabled_check_filter(app.config.score_metamodel_checks, rst_data.checks)
-
+    # Build the documentation with the enabled checks
+    app.config.score_metamodel_checks = rst_data.enabled_checks
     app.build()
+
+    # Collect the warnings
     warnings = app.warning.getvalue().splitlines()
+
+    # Check if the expected warnings are present
     for warning_info in rst_data.warning_infos:
-        for expected in warning_info.expected:
-            assert warning_matches(rst_data, warning_info, expected, warnings), (
-                f"Expected warning: {expected} not found"
-            )
-        for not_expected in warning_info.not_expected:
-            assert not warning_matches(
-                rst_data, warning_info, not_expected, warnings
-            ), f"Unexpected warning: {not_expected} found"
+        for w in warning_info.expected:
+            if not warning_matches(rst_data, warning_info, w, warnings):
+                raise AssertionError(f"Expected warning: '{w}' not found")
+        for w in warning_info.not_expected:
+            if warning_matches(rst_data, warning_info, w, warnings):
+                raise AssertionError(f"Unexpected warning: '{w}' found")

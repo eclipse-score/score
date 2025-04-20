@@ -55,6 +55,7 @@ exclude_patterns = [
     # these entries are required to prevent the build from failing.
     "bazel-*",
     ".venv_docs",
+    "docs/_tooling/extensions/score_metamodel/tests/rst",
 ]
 
 templates_path = ["_templates"]
