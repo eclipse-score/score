@@ -161,23 +161,6 @@ def warning_matches(
     return False
 
 
-def apply_enabled_check_filter(
-    checks: dict[str, list[local_check_function | graph_check_function]],
-    enabled_checks: list[str],
-):
-    if enabled_checks:
-        checks["local_checks"] = [
-            check
-            for check in checks["local_checks"]
-            if check.__name__ in enabled_checks
-        ]
-        checks["graph_checks"] = [
-            check
-            for check in checks["graph_checks"]
-            if check.__name__ in enabled_checks
-        ]
-
-
 @pytest.mark.parametrize("rst_file", RST_FILES)
 def test_rst_files(
     rst_file: str, sphinx_app_setup: Callable[[Path], SphinxTestApp]
