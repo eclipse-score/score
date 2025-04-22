@@ -26,6 +26,7 @@ def fake_check_logger():
         def __init__(self):
             self._mock_logger = MagicMock(spec=SphinxLoggerAdapter)
             self._mock_logger.warning = MagicMock()
+            self._mock_logger.info = MagicMock()
             app_path = MagicMock()
             super().__init__(self._mock_logger, app_path)
 
@@ -36,9 +37,16 @@ def fake_check_logger():
                 )
                 pytest.fail(f"Expected no warnings, but got:\n{warnings}")
 
+        def assert_no_infos(self):
+            if self.has_infos:
+                infos = "\n".join(
+                    f"* {call}" for call in self._mock_logger.info.call_args_list
+                )
+                pytest.fail(f"Expected no infos, but got:\n{infos}")
+
         def assert_warning(self, expected_substring: str, expect_location: bool = True):
             """
-            Assert that the logger was called exactly once with a message containing
+            Assert that the logger warning was called exactly once with a message containing
             a specific substring.
 
             This also verifies that the defaults from need() are used correctly.
@@ -49,6 +57,31 @@ def fake_check_logger():
 
             # Retrieve the call arguments
             args, kwargs = self._mock_logger.warning.call_args
+            log_message = args[0]
+
+            assert expected_substring in log_message, f"Expected substring '{
+                expected_substring
+            }' not found in log message: '{log_message}'"
+
+            # All our checks shall report themselves as score_metamodel checks
+            assert kwargs["type"] == "score_metamodel"
+
+            if expect_location:
+                assert kwargs["location"] == "docname.rst:42"
+
+        def assert_info(self, expected_substring: str, expect_location: bool = True):
+            """
+            Assert that the logger info was called exactly once with a message containing
+            a specific substring.
+
+            This also verifies that the defaults from need() are used correctly.
+            So you must use need() to create the need object that is passed
+            to the checks.
+            """
+            self._mock_logger.info.assert_called_once()
+
+            # Retrieve the call arguments
+            args, kwargs = self._mock_logger.info.call_args
             log_message = args[0]
 
             assert expected_substring in log_message, f"Expected substring '{
