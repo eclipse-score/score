@@ -12,6 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+.. _safety_planning_ipc:
+
 Safety Planning
 ###############
 
@@ -32,8 +34,8 @@ Inter-process Communication Safety Work Products
       - :need:`PROCESS_gd_temp__change__feature_request`
       - :ndf:`copy('status', need_id='PROCESS_gd_temp__change__feature_request')`
       - `#69 <https://github.com/eclipse-score/score/issues/69>`_
-      - :need:`doc__ipc`
-      - :ndf:`copy('status', need_id='doc__ipc')`
+      - :need:`doc__com_ipc`
+      - :ndf:`copy('status', need_id='doc__com_ipc')`
 
     * - :need:`PROCESS_wp__requirements__feat`
       - :need:`PROCESS_gd_temp__req__feat_req`

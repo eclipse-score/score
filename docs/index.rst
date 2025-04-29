@@ -132,6 +132,7 @@ Project structure and processes
       introduction/index
       requirements/index
       features/index
+      modules/index
       contribute/index
       Releases <score_releases/index.rst>
       PMP <platform_management_plan/index.rst>

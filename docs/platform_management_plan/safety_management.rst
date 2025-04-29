@@ -469,7 +469,7 @@ Functional Safety Management Feature Specific Work Products
 
 See feature tree documents (created by using :need:`PROCESS_gd_temp__feature_safety_wp`):
 
-- Inter-process Communication: :doc:`/features/communication/ipc/safety_planning/index`
+- Inter-process Communication: :ref:`safety_planning_ipc`
 - Common Libraries: <link>
 - Logging: <link>
 - Persistency: <link>

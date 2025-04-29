@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,13 +12,18 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _roadmap:
+Frontend Architecture
+*********************
 
-Roadmap
-=======
+.. comp_arc_sta:: Lola Configuration
+   :id: comp_arc_sta__com__configuration
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :uses: logic_arc_int__logging__logging
 
-- Support for versioning -> Milestone Q3/2025
-- Support for methods -> Milestone Q2/2025
-- Support for signals -> Milestone Q1/2026
-- Support for Rust in early POC stage -> Milestone Q4/2025
-- Implicit service discovery -> Milestone Q4/2025
+   .. needarch::
+      :scale: 50
+      :align: center
+
+      {{ draw_component(need(), needs) }}
