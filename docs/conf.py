@@ -53,9 +53,7 @@ exclude_patterns = [
     # via 'bazel build //docs:docs', as that command runs in a sandboxed environment.
     # However, when building the documentation via 'sphinx-build' or esbonio,
     # these entries are required to prevent the build from failing.
-    "bazel-*",
-    ".venv_docs",
-    "docs/_tooling/extensions/score_metamodel/tests/rst",
+    "_tooling/extensions/score_metamodel/tests/rst",
 ]
 
 templates_path = ["_templates"]

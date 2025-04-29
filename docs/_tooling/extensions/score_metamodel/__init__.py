@@ -92,14 +92,14 @@ def _run_checks(app: Sphinx, exception: Exception | None) -> None:
     # graph of other needs.
     for need in needs_all_needs.values():
         for check in enabled_local_checks:
-            logger.info(f"Running local check {check} for need {need['id']}")
+            logger.debug(f"Running local check {check} for need {need['id']}")
             check(app, need, log)
 
     # Graph-Based checks: These warnings require a graph of all other needs to
     # be checked.
     needs = list(needs_all_needs.values())
     for check in [c for c in graph_checks if is_check_enabled(c)]:
-        logger.info(f"Running graph check {check} for all needs")
+        logger.debug(f"Running graph check {check} for all needs")
         check(app, needs, log)
 
     if log.has_warnings:
