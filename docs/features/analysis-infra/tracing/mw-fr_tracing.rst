@@ -12,8 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Tracing
-#######
+Feature Request
+###############
 
 .. document:: doc__tracing
    :id: doc__tracing

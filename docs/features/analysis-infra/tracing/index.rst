@@ -12,11 +12,10 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. Tracing
-.. #######
+Tracing
+#######
 
 .. toctree::
-   :titlesonly:
    :maxdepth: 1
 
    ./mw-fr_tracing.rst

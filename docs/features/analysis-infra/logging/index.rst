@@ -12,11 +12,11 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. Logging
-.. #######
+Logging
+#######
 
 .. toctree::
-   :titlesonly:
    :maxdepth: 1
 
    ./mw-fr_logging.rst
+   ./docs/requirements/mw-fr_logging_req.rst
