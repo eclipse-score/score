@@ -12,7 +12,7 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _requirement templates:
+
 
 Requirements
 ############
@@ -24,6 +24,7 @@ Requirements
 ..    :complies: std_wp__iso26262__software_651, std_req__iso26262__support_641, std_req__iso26262__support_6421, std_req__iso26262__support_6425
 
 ..    .. code-block:: rst
+
 .. feat_req:: Timestamping - Local Timestamp
    :id: feat_req__logging__timestamping_local
    :reqtype: Functional

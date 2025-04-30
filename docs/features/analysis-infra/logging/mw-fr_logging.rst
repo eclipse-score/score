@@ -73,6 +73,7 @@ Logging has to support the following features:
   - Out of scope "time" (tooling topic)
   - logs filtering by logging entity ID (e.g., ECU ID, Application ID, Context ID such as in DLT)
   - logs filtering by log level (e.g., FATAL, ERROR, WARN, INFO, DEBUG, VERBOSE such as in DLT)
+
   .. - Filtering options: it should have filter on app id and more fine-tuned filters on context ids.
 
 - message loss detection
