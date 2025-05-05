@@ -81,8 +81,8 @@ Logical Interfaces
 
 .. code-block:: rst
 
-   .. feat_arc_int:: <Title>
-      :id: feat_arc_int__<feature>__<Title>
+   .. logic_arc_int:: <Title>
+      :id: logic_arc_int__<feature>__<Title>
       :security: <YES|NO>
       :safety: <QM|ASIL_B|ASIL_D>
       :fulfils: <link to feature requirement id>

@@ -27,19 +27,20 @@ Feature Architecture File
    :security: YES
    :safety: QM
    :status: valid
-   :includes: feat_arc_int__archdes_logical_interface_1, feat_arc_int__archdes_logical_interface_2
+   :includes: logic_arc_int__archdes_logical_interface_1, logic_arc_int__archdes_logical_interface_2
    :fulfils: feat_req__archdes_example_req
 
    .. needarch::
       :scale: 50
       :align: center
+      :debug:
 
       {{ draw_feature(need(), needs) }}
 
 .. Logical Interfaces
 
-.. feat_arc_int:: Logical Interface 2
-   :id: feat_arc_int__archdes_logical_interface_2
+.. logic_arc_int:: Logical Interface 2
+   :id: logic_arc_int__archdes_logical_interface_2
    :security: YES
    :safety: ASIL_B
    :status: valid
@@ -52,72 +53,71 @@ Feature Architecture File
       {{ draw_interface(need(), needs) }}
 
 
-.. feat_arc_int:: Logical Interface 3
-   :id: feat_arc_int__archdes_logical_interface_3
+.. logic_arc_int:: Logical Interface 3
+   :id: logic_arc_int__archdes_logical_interface_3
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :includes: feat_arc_int_op__archdes_logical_operation_7, feat_arc_int_op__archdes_logical_operation_8
    :fulfils: feat_req__archdes_example_req
 
 
 .. Logical Interface Operation
 
-.. feat_arc_int_op:: Logical Operation 1
-   :id: feat_arc_int_op__archdes_logical_operation_1
+.. logic_arc_int_op:: Logical Operation 1
+   :id: logic_arc_int_op__archdes_logical_operation_1
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :included_by: feat_arc_int__archdes_logical_interface_1
+   :included_by: logic_arc_int__archdes_logical_interface_1
 
-.. feat_arc_int_op:: Logical Operation 2
-   :id: feat_arc_int_op__archdes_logical_operation_2
+.. logic_arc_int_op:: Logical Operation 2
+   :id: logic_arc_int_op__archdes_logical_operation_2
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :included_by: feat_arc_int__archdes_logical_interface_1
+   :included_by: logic_arc_int__archdes_logical_interface_1
 
-.. feat_arc_int_op:: Logical Operation 3
-   :id: feat_arc_int_op__archdes_logical_operation_3
+.. logic_arc_int_op:: Logical Operation 3
+   :id: logic_arc_int_op__archdes_logical_operation_3
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :included_by: feat_arc_int__archdes_logical_interface_2
+   :included_by: logic_arc_int__archdes_logical_interface_2
 
-.. feat_arc_int_op:: Logical Operation 4
-   :id: feat_arc_int_op__archdes_logical_operation_4
+.. logic_arc_int_op:: Logical Operation 4
+   :id: logic_arc_int_op__archdes_logical_operation_4
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :included_by: feat_arc_int__archdes_logical_interface_2
+   :included_by: logic_arc_int__archdes_logical_interface_2
 
-.. feat_arc_int_op:: Logical Operation 5
-   :id: feat_arc_int_op__archdes_logical_operation_5
+.. logic_arc_int_op:: Logical Operation 5
+   :id: logic_arc_int_op__archdes_logical_operation_5
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :included_by: feat_arc_int__archdes_logical_interface_3
+   :included_by: logic_arc_int__archdes_logical_interface_3
 
-.. feat_arc_int_op:: Logical Operation 6
-   :id: feat_arc_int_op__archdes_logical_operation_6
+.. logic_arc_int_op:: Logical Operation 6
+   :id: logic_arc_int_op__archdes_logical_operation_6
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :included_by: feat_arc_int__archdes_logical_interface_3
+   :included_by: logic_arc_int__archdes_logical_interface_3
 
-.. feat_arc_int_op:: Logical Operation 7
-   :id: feat_arc_int_op__archdes_logical_operation_7
+.. logic_arc_int_op:: Logical Operation 7
+   :id: logic_arc_int_op__archdes_logical_operation_7
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :included_by: feat_arc_int__archdes_logical_interface_3
+   :included_by: logic_arc_int__archdes_logical_interface_3
 
-.. feat_arc_int_op:: Logical Operation 8
-   :id: feat_arc_int_op__archdes_logical_operation_8
+.. logic_arc_int_op:: Logical Operation 8
+   :id: logic_arc_int_op__archdes_logical_operation_8
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :included_by: feat_arc_int__archdes_logical_interface_3
+   :included_by: logic_arc_int__archdes_logical_interface_3
 
 
 Module Viewpoint
@@ -151,14 +151,15 @@ Component Architecure File(s)
    :status: valid
    :safety: ASIL_B
    :security: NO
-   :uses: comp_arc_int__archdes_component_interface_3
-   :implements: comp_arc_int__archdes_component_interface_1, comp_arc_int__archdes_component_interface_2
+   :uses: logic_arc_int__archdes_logical_interface_3
+   :implements: logic_arc_int__archdes_logical_interface_1, logic_arc_int__archdes_logical_interface_2
    :fulfils: comp_req__archdes_example_req
    :includes: comp_arc_sta__archdes_sub_component_1, comp_arc_sta__archdes_sub_component_2, comp_arc_sta__archdes_sub_component_3
 
    .. needarch::
       :scale: 50
       :align: center
+      :debug:
 
       {{ draw_component(need(), needs) }}
 
@@ -167,7 +168,7 @@ Component Architecure File(s)
    :status: valid
    :safety: ASIL_B
    :security: NO
-   :implements: comp_arc_int__archdes_component_interface_3
+   :implements: logic_arc_int__archdes_logical_interface_3
    :fulfils: comp_req__archdes_example_req
 
    .. needarch::
@@ -176,32 +177,6 @@ Component Architecure File(s)
 
       {{ draw_component(need(), needs) }}
 
-.. Component Interfaces
-
-.. comp_arc_int:: Component Interface 2
-   :id: comp_arc_int__archdes_component_interface_2
-   :status: valid
-   :safety: ASIL_B
-   :security: NO
-   :fulfils: comp_req__archdes_example_req
-   :language: cpp
-
-.. comp_arc_int:: Component Interface 3
-   :id: comp_arc_int__archdes_component_interface_3
-   :status: valid
-   :safety: ASIL_B
-   :security: NO
-   :fulfils: comp_req__archdes_example_req
-   :language: cpp
-
-.. comp_arc_int:: Component Interface 4
-   :id: comp_arc_int__archdes_component_interface_4
-   :status: valid
-   :safety: ASIL_B
-   :security: NO
-   :fulfils: comp_req__archdes_example_req
-   :language: cpp
-
 .. Subcomponents
 
 .. comp_arc_sta:: Lower Level Component 1
@@ -209,8 +184,8 @@ Component Architecure File(s)
    :status: valid
    :safety: ASIL_B
    :security: NO
-   :uses: comp_arc_int_op__archdes_real_operation_7
-   :implements: comp_arc_int_op__archdes_real_operation_3
+   :uses: logic_arc_int__archdes_logical_interface_3
+   :implements: logic_arc_int__archdes_logical_interface_2
    :fulfils: comp_req__archdes_example_req
 
 .. comp_arc_sta:: Lower Level Component 2
@@ -218,8 +193,8 @@ Component Architecure File(s)
    :status: valid
    :safety: ASIL_B
    :security: NO
-   :uses: comp_arc_int_op__archdes_real_operation_8
-   :implements: comp_arc_int_op__archdes_real_operation_4
+   :uses: logic_arc_int__archdes_logical_interface_3
+   :implements: logic_arc_int__archdes_logical_interface_2
    :fulfils: comp_req__archdes_example_req
 
 .. comp_arc_sta:: Lower Level Component 3
@@ -227,74 +202,8 @@ Component Architecure File(s)
    :status: valid
    :safety: QM
    :security: NO
-   :implements: comp_arc_int_op__archdes_real_operation_7, comp_arc_int_op__archdes_real_operation_8
+   :implements: logic_arc_int__archdes_logical_interface_3
    :fulfils: comp_req__archdes_example_req
-
-.. Component Interface Operations
-
-.. comp_arc_int_op:: real operation 1
-   :id: comp_arc_int_op__archdes_real_operation_1
-   :status: valid
-   :safety: ASIL_B
-   :security: NO
-   :implements: feat_arc_int_op__archdes_logical_operation_1
-   :included_by: comp_arc_int__archdes_component_interface_1
-
-.. comp_arc_int_op:: real operation 2
-   :id: comp_arc_int_op__archdes_real_operation_2
-   :status: valid
-   :safety: ASIL_B
-   :security: NO
-   :implements: feat_arc_int_op__archdes_logical_operation_2
-   :included_by: comp_arc_int__archdes_component_interface_1
-
-.. comp_arc_int_op:: real operation 3
-   :id: comp_arc_int_op__archdes_real_operation_3
-   :status: valid
-   :safety: ASIL_B
-   :security: NO
-   :implements: feat_arc_int_op__archdes_logical_operation_3
-   :included_by: comp_arc_int__archdes_component_interface_2
-
-.. comp_arc_int_op:: real operation 4
-   :id: comp_arc_int_op__archdes_real_operation_4
-   :status: valid
-   :safety: ASIL_B
-   :security: NO
-   :implements: feat_arc_int_op__archdes_logical_operation_4
-   :included_by: comp_arc_int__archdes_component_interface_2
-
-.. comp_arc_int_op:: real operation 5
-   :id: comp_arc_int_op__archdes_real_operation_5
-   :status: valid
-   :safety: ASIL_B
-   :security: NO
-   :implements: feat_arc_int_op__archdes_logical_operation_5
-   :included_by: comp_arc_int__archdes_component_interface_3
-
-.. comp_arc_int_op:: real operation 6
-   :id: comp_arc_int_op__archdes_real_operation_6
-   :status: valid
-   :safety: ASIL_B
-   :security: NO
-   :implements: feat_arc_int_op__archdes_logical_operation_6
-   :included_by: comp_arc_int__archdes_component_interface_3
-
-.. comp_arc_int_op:: real operation 7
-   :id: comp_arc_int_op__archdes_real_operation_7
-   :status: valid
-   :safety: ASIL_B
-   :security: NO
-   :implements: feat_arc_int_op__archdes_logical_operation_7
-   :included_by: comp_arc_int__archdes_component_interface_4
-
-.. comp_arc_int_op:: real operation 8
-   :id: comp_arc_int_op__archdes_real_operation_8
-   :status: valid
-   :safety: ASIL_B
-   :security: NO
-   :implements: feat_arc_int_op__archdes_logical_operation_8
-   :included_by: comp_arc_int__archdes_component_interface_4
 
 ..
     Requirements

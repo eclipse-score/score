@@ -114,7 +114,7 @@ Feature Architecture
       :security: YES
       :safety: QM
       :status: valid
-      :includes: feat_arc_int__archdes_logical_interface_1, feat_arc_int__archdes_logical_interface_2
+      :includes: logic_arc_int__archdes_logical_interface_1, logic_arc_int__archdes_logical_interface_2
       :fulfils: feat_req__archdes_example_req
 
       .. needarch::
@@ -130,7 +130,7 @@ Feature Architecture
       :security: YES
       :safety: QM
       :status: valid
-      :includes: feat_arc_int__archdes_logical_interface_1, feat_arc_int__archdes_logical_interface_2
+      :includes: logic_arc_int__archdes_logical_interface_1, logic_arc_int__archdes_logical_interface_2
       :fulfils: feat_req__archdes_example_req
 
       .. needarch::
@@ -146,8 +146,8 @@ Component Architecture
    :status: valid
    :safety: ASIL_B
    :security: NO
-   :uses: comp_arc_int__archdes_component_interface_3
-   :implements: comp_arc_int__archdes_component_interface_1
+   :uses: logic_arc_int__archdes_logical_interface_3
+   :implements: logic_arc_int__archdes_logical_interface_1
    :fulfils: comp_req__archdes_example_req
 
    .. needarch::
@@ -227,8 +227,8 @@ To make *needuml* work we have to replace the *need()* call with a different fun
    :status: valid
    :safety: ASIL_B
    :security: NO
-   :uses: comp_arc_int__archdes_component_interface_3
-   :implements: comp_arc_int__archdes_component_interface_1
+   :uses: logic_arc_int__archdes_logical_interface_3
+   :implements: logic_arc_int__archdes_logical_interface_1
    :fulfils: comp_req__archdes_example_req
 
    .. needuml::

@@ -128,10 +128,11 @@ The first viewpoint is named as *feature architecture*. It displays the SW modul
    :security: YES
    :safety: QM
    :status: valid
-   :includes: feat_arc_int__archdes_logical_interface_1, feat_arc_int__archdes_logical_interface_2
+   :includes: logic_arc_int__archdes_logical_interface_1, logic_arc_int__archdes_logical_interface_2
    :fulfils: feat_req__archdes_example_req
 
    .. needarch::
+      :debug:
       :scale: 50
       :align: center
 
@@ -159,8 +160,8 @@ Interface View
 
 On the feature level only *logical interfaces* shall be displayed. This means that only logical names shall be provided for both the interface and the operations within. Those *logical interfaces* shall be connected to component interfaces on the module view.
 
-.. feat_arc_int:: Logical Interface 1
-   :id: feat_arc_int__archdes_logical_interface_1
+.. logic_arc_int:: Logical Interface 1
+   :id: logic_arc_int__archdes_logical_interface_1
    :security: YES
    :safety:  ASIL_B
    :status: valid
@@ -324,11 +325,11 @@ The *interface view* focuses on the interfaces of the components and shows the o
    :widths: 15,35,35
 
    * - (Logical) Interface
-     - feat_arc_int
-     - feat_arc_int_t
+     - logic_arc_int
+     - logic_arc_int_t
    * - (Logical) Interface Operation
-     - feat_arc_int_op
-     - feat_arc_int_op_t
+     - logic_arc_int_op
+     - logic_arc_int_op_t
    * - (Real) Interface
      - comp_arc_int
      - comp_arc_int_t

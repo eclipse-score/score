@@ -128,11 +128,11 @@ Based on the concept description a model of the feature architecture should be d
      - feat_arc_sta, feat_arc_dyn
      - feat_arc_sta_t, feat_arc_dyn_t
    * - Logical Interface
-     - feat_arc_int
-     - feat_arc_int_t
+     - logic_arc_int
+     - logic_arc_int_t
    * - Logical Interface Operation
-     - feat_arc_int_op
-     - feat_arc_int_op_t
+     - logic_arc_int_op
+     - logic_arc_int_op_t
 
 The relations of the static elements are described in :numref:`metamodel_architectural_design`.
 
