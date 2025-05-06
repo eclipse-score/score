@@ -34,9 +34,9 @@ the quality of the commits and their respective commit messages.
  Git Configuration
 ******************
 
-Since name and e-mail address are part of the commit (and thus be part
-of the commit history) they shall be specified via the .gitconfig file.
-So this file must at least include the following lines:
+Authors name and e-mail address are part of the commit (and thus be part of the commit history).
+They must match the name and e-mail used for eclipse registration. They can be specified via the
+.gitconfig file:
 
 .. code-block::
 
@@ -45,11 +45,10 @@ So this file must at least include the following lines:
    name = Max Mustermann
 
 ***************
- Commit History
+ Merging PRs
 ***************
 
-Before merging a PR all commits shall be squashed into few (desired only
-one) logical commits. This is done following the rules below.
+When merging a PR via the GitHub user interface:
 
 Use ``Squash & Merge`` in case:
 
@@ -62,11 +61,8 @@ Use ``Squash & Merge`` in case:
 
 Use ``Rebase & Merge`` or ``Merge Commit`` in case:
 
-   #. the commits address different topics
-
-      - Sort by topics and combine each topic to a single commit.
-      - It is advised that a PR addresses a single/atomic topic.
-      - Preferred way are separated PRs for separate topics.
+   #. the commits address different topics. Note however that it is preferred that a PR addresses a
+      single/atomic topic.
 
       **OR**
    #. the commits have different authors
@@ -114,37 +110,20 @@ Summary
 
    <prefix_name>: Summary
 
-The Subject shall describe what was changed in a single line max 72
-characters long. It shall include a prefix for the module, component or
-feature which was changed e.g. "doc:" or "bazel:" It shall start with a
-capital letter and should not be ended by a trailing period in the
-subject line.
+The Subject shall describe what was changed in a single line max 72 characters long. It shall not
+start or end with whitespace. It shall not end with a period.
 
 Good and bad examples for a subject are:
 
--  **mw: Show colorful output** not Add file
--  **bazel: Test Requirement SWS_CM_00001** not Add test
--  **osal: Split responsibilities of job handling and execution** not Refactor code
+-  **Show colorful output** not Add file
+-  **Test Requirement SWS_CM_00001** not Add test
+-  **Split responsibilities of job handling and execution** not Refactor code
 
 Description
 ===========
 
-The description must contain a brief summary of the content of the
-commit and why this is necessary. Furthermore it must be consistent and
-logically complete.
-
-If feasible, the commit message body should be extended with quoted
-material such as compiler warnings, debugger stack traces or measurement
-data for performance optimizations.
-
-The description may mention issues and link to them. A detailed description
-of linking commits to issues is available on `GitHub
-<https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue>`__.
-Be aware that keywords like (close | fix | resolve) will also close the
-referenced issue if the pull request is merged.
-
-Git commits are not required to mention issues. It is sufficient if the PR
-links to any relevant issues.
+The optional description can contain a brief summary of the content of the
+commit and why this is necessary.
 
 Footer
 ======
@@ -156,31 +135,25 @@ in the following format:
 
    Also-by: Some Bodyelse <somebodyelse@nowhere.com>
 
-An additional check is implemented to suppress false positives: if a
-commit message has revert/merge in the first line, the linting rules
-will not be applied to it. Thereby headaches when performing reverts or
-merges are reduced.
-
 Layout Summary
 ==============
 
 In short the commit message shall consist of:
 
 -  Summary
--  Empty line
--  Description
--  Empty line
--  Footer
+-  Empty line (required in case description is present)
+-  Description (optional)
+-  Empty line (required if footer is present)
+-  Footer (optional)
 
 Example
 =======
 .. code-block::
 
-    component: Short one line summary of change
+    Short one line summary of change
 
-    More detailed explanatory text, mandatory. Wrap it to about 72
-    characters or less. The first line is treated as the subject and the
-    rest of the text as the body. The blank line separating the summary from
+    More detailed explanatory text, optional. Wrap it to about 72
+    characters or less. The blank line separating the summary from
     the body is critical (unless you omit the body entirely);
 
     -  Bullet points are okay, too
