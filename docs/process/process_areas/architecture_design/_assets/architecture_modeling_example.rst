@@ -33,7 +33,6 @@ Feature Architecture File
    .. needarch::
       :scale: 50
       :align: center
-      :debug:
 
       {{ draw_feature(need(), needs) }}
 
@@ -159,7 +158,6 @@ Component Architecure File(s)
    .. needarch::
       :scale: 50
       :align: center
-      :debug:
 
       {{ draw_component(need(), needs) }}
 

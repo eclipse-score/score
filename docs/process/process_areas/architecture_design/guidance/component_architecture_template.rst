@@ -84,8 +84,8 @@ Interfaces
 
 .. code-block:: rst
 
-   .. comp_arc_int:: <Title>
-      :id: comp_arc_int__<component>__<Title>
+   .. real_arc_int:: <Title>
+      :id: real_arc_int__<component>__<Title>
       :security: <YES|NO>
       :safety: <QM|ASIL_B|ASIL_D>
       :fulfils: <link to component requirement id>

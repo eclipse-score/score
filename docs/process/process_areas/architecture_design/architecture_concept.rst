@@ -132,7 +132,6 @@ The first viewpoint is named as *feature architecture*. It displays the SW modul
    :fulfils: feat_req__archdes_example_req
 
    .. needarch::
-      :debug:
       :scale: 50
       :align: center
 
@@ -229,8 +228,8 @@ Interface View
 
 The component interface view shows the actual interfaces of the component. Also links to their corresponding logical interfaces are displayed in this view:
 
-.. comp_arc_int:: Component Interface 1
-   :id: comp_arc_int__archdes_component_interface_1
+.. real_arc_int:: Component Interface 1
+   :id: real_arc_int__archdes_component_interface_1
    :status: valid
    :safety: ASIL_B
    :security: NO
@@ -331,11 +330,11 @@ The *interface view* focuses on the interfaces of the components and shows the o
      - logic_arc_int_op
      - logic_arc_int_op_t
    * - (Real) Interface
-     - comp_arc_int
-     - comp_arc_int_t
+     - real_arc_int
+     - real_arc_int_t
    * - (Real) Interface Operation
-     - comp_arc_int_op
-     - comp_arc_int_op_t
+     - real_arc_int_op
+     - real_arc_int_op_t
 
 Relations between the architectural elements
 ============================================

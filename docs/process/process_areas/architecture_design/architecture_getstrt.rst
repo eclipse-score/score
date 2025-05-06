@@ -163,8 +163,8 @@ Component Architecture
       :status: valid
       :safety: ASIL_B
       :security: NO
-      :uses: comp_arc_int__archdes_component_interface_3
-      :implements: comp_arc_int__archdes_component_interface_1
+      :uses: real_arc_int__archdes_component_interface_3
+      :implements: real_arc_int__archdes_component_interface_1
       :fulfils: comp_req__archdes_example_req
 
       .. needarch::
@@ -211,8 +211,8 @@ To make *needuml* work we have to replace the *need()* call with a different fun
       :status: valid
       :safety: ASIL_B
       :security: NO
-      :uses: comp_arc_int__archdes_component_interface_3
-      :implements: comp_arc_int__archdes_component_interface_1
+      :uses: real_arc_int__archdes_component_interface_3
+      :implements: real_arc_int__archdes_component_interface_1
       :fulfils: comp_req__archdes_example_req
 
       .. needuml::

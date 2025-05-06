@@ -207,11 +207,11 @@ According to the architecture design description the model for the component arc
      - comp_arc_sta, comp_arc_dyn
      - comp_arc_sta_t, comp_arc_dyn_t
    * - (Real) Interface
-     - comp_arc_int
-     - comp_arc_int_t
+     - real_arc_int
+     - real_arc_int_t
    * - (Real) Interface Operation
-     - comp_arc_int_op
-     - comp_arc_int_op_t
+     - real_arc_int_op
+     - real_arc_int_op_t
 
 The relations of the static elements are described in :numref:`metamodel_architectural_design`
 

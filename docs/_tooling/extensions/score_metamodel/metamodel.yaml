@@ -337,9 +337,9 @@ needs_types:
       safety: "^(QM|ASIL_B|ASIL_D)$"
       status: "^(valid|invalid)$"
     optional_links:
-      implements: "^comp_arc_int(_op)*__.+$"
+      implements: "^real_arc_int(_op)*__.+$"
       includes: "^comp_arc_sta__.+$"
-      uses: "^comp_arc_int(_op)*__.+$"
+      uses: "^real_arc_int(_op)*__.+$"
       fulfils: "^comp_req__.+$"
 
   comp_arc_dyn:
@@ -355,13 +355,13 @@ needs_types:
     optional_links:
       fulfils: "^comp_req__.+$"
 
-  comp_arc_int:
+  real_arc_int:
     title: "Component Architecture Interfaces"
-    prefix: "comp_arc_int__"
+    prefix: "real_arc_int__"
     color: "#FEDCD2"
     style: "card"
     mandatory_options:
-      id: "^comp_arc_int__[0-9a-z_]+$"
+      id: "^real_arc_int__[0-9a-z_]+$"
       security: "^(YES|NO)$"
       safety: "^(QM|ASIL_B|ASIL_D)$"
       status: "^(valid|invalid)$"
@@ -369,18 +369,18 @@ needs_types:
     optional_links:
       fulfils: "^comp_req__.+$"
 
-  comp_arc_int_op:
+  real_arc_int_op:
     title: "Component Architecture Interface Operation"
-    prefix: "comp_arc_int_op__"
+    prefix: "real_arc_int_op__"
     color: "#FEDCD2"
     style: "card"
     mandatory_options:
-      id: "^comp_arc_int_op__[0-9a-z_]+$"
+      id: "^real_arc_int_op__[0-9a-z_]+$"
       security: "^(YES|NO)$"
       safety: "^(QM|ASIL_B|ASIL_D)$"
       status: "^(valid|invalid)$"
     mandatory_links:
-      included_by: "^comp_arc_int__.+$"
+      included_by: "^real_arc_int__.+$"
     optional_links:
       implements: "^logic_arc_int_op__.+$"
 
