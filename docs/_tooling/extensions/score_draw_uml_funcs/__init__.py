@@ -381,7 +381,9 @@ class draw_full_feature:
 
                     # FIXME: sometimes module is empty, then the following code fails
                     if not module:
-                        logger.info(f"FIXME: {need['id']}: Module for interface {iface} -> {imcomp} is empty.")
+                        logger.info(
+                            f"FIXME: {need['id']}: Module for interface {iface} -> {imcomp} is empty."
+                        )
                         continue
 
                     if module not in proc_modules:

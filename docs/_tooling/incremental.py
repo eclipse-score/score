@@ -70,9 +70,9 @@ def get_runfiles_dir() -> Path:
         logger.info("Running outside bazel.")
 
         git_root = Path(__file__).resolve().parents[3]
-        assert (
-            git_root / ".git"
-        ).exists(), f"Could not find git root. Assumed path: {git_root}"
+        assert (git_root / ".git").exists(), (
+            f"Could not find git root. Assumed path: {git_root}"
+        )
 
         runfiles_dir = git_root / "bazel-bin" / "docs" / "ide_support.runfiles"
         if not runfiles_dir.exists():

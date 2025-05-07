@@ -17,8 +17,8 @@ load("@rules_pkg//pkg:mappings.bzl", "pkg_files")
 load("@rules_pkg//pkg:tar.bzl", "pkg_tar")
 load("@rules_python//python:pip.bzl", "compile_pip_requirements")
 load("@rules_python//sphinxdocs:sphinx.bzl", "sphinx_build_binary", "sphinx_docs")
-load("//docs:_tooling/docs.bzl", "docs")
 load("@score_python_basics//:defs.bzl", "score_py_pytest")
+load("//docs:_tooling/docs.bzl", "docs")
 
 sphinx_requirements = all_requirements + [
     "@rules_python//python/runfiles",

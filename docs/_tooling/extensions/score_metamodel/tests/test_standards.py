@@ -632,9 +632,7 @@ class TestStandards:
             1,
             1,
         ], "For function my_pie_workproducts_contained_in_exactly_one_workflow expected"
-        f"[1, 1, 1] but got {
-            results
-        }"
+        f"[1, 1, 1] but got {results}"
 
     def test_get_standards_needs(self):
         """
