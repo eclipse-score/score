@@ -16,13 +16,14 @@
 # For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
+import html
 import os
 import sys
 from typing import Any
 
 # sys.path extension for local files is needed, because the conf.py file is not
 # executed, but imported by Sphinx
-sys.path.insert(0, ".")
+# sys.path.insert(0, ".")
 
 
 # -- Project information -----------------------------------------------------
@@ -35,7 +36,6 @@ release = "0.1"
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-sys.path.insert(0, os.path.abspath("_tooling/extensions"))
 extensions = [
     "sphinx_design",
     "sphinx_needs",
@@ -53,7 +53,6 @@ exclude_patterns = [
     # via 'bazel build //docs:docs', as that command runs in a sandboxed environment.
     # However, when building the documentation via 'sphinx-build' or esbonio,
     # these entries are required to prevent the build from failing.
-    "_tooling/extensions/score_metamodel/tests/rst",
 ]
 
 templates_path = ["_templates"]
@@ -65,8 +64,8 @@ numfig = True
 # -- sphinx-needs configuration --------------------------------------------
 # Setting the needs layouts
 needs_template_folder = "_templates"
+# html_static_path = ["_assets"]
 needs_global_options = {"collapse": True}
-html_static_path = ["_tooling/assets", "_assets"]
 needs_string_links: dict[str, dict[str, Any]] = {
     "source_code_linker": {
         "regex": r"(?P<value>[^,]+)",
