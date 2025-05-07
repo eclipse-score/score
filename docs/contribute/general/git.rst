@@ -122,7 +122,7 @@ Good and bad examples for a subject are:
 Description
 ===========
 
-The optional description can contain a brief summary of the content of the
+The optional description can be used to provide a brief summary of the content of the
 commit and why this is necessary.
 
 Footer
