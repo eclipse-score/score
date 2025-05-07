@@ -19,9 +19,8 @@ module(
 
 ###############################################################################
 #
-# Python version
+# Python
 #
-###############################################################################
 bazel_dep(name = "rules_python", version = "1.0.0")
 
 PYTHON_VERSION = "3.12"
@@ -36,9 +35,14 @@ use_repo(python)
 
 ###############################################################################
 #
+# S-CORE Python Basics
+#
+bazel_dep(name = "score_python_basics", version = "0.3.0")
+
+###############################################################################
+#
 # docs dependencies (Sphinx)
 #
-###############################################################################
 pip = use_extension("@rules_python//python/extensions:pip.bzl", "pip")
 pip.parse(
     hub_name = "pip_sphinx",
@@ -55,7 +59,6 @@ bazel_dep(name = "aspect_rules_py", version = "1.0.0")
 #
 # Packaging dependencies
 #
-###############################################################################
 bazel_dep(name = "rules_pkg", version = "1.0.1")
 
 ###############################################################################
@@ -63,29 +66,24 @@ bazel_dep(name = "rules_pkg", version = "1.0.1")
 # Buildifier dependency
 # Provides formatting and linting of Bazel files.
 #
-###############################################################################
 bazel_dep(name = "buildifier_prebuilt", version = "7.3.1")
 
 ###############################################################################
 #
 # Generic linting and formatting rules
 #
-###############################################################################
-bazel_dep(name = "aspect_rules_lint", version = "1.0.3")
+bazel_dep(name = "aspect_rules_lint", version = "1.3.1")
 
 ###############################################################################
 #
-# Java version
+# Java
 #
-###############################################################################
 bazel_dep(name = "rules_java", version = "8.6.3")
 
 ###############################################################################
 #
-# HTTP Jar rule deps
+# PlantUML
 #
-###############################################################################
-
 http_jar = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_jar")
 
 http_jar(
@@ -96,21 +94,18 @@ http_jar(
 
 ###############################################################################
 #
-# Misc. dependency
+# Dash License Checker
 #
-###############################################################################
 bazel_dep(name = "score_dash_license_checker", version = "0.1.1")
 
 ###############################################################################
 #
-# Checker rule for CopyRight checks/fixes
+# CopyRight checks/fixes
 #
-###############################################################################
 bazel_dep(name = "score_cr_checker", version = "0.2.2")
 
 ###############################################################################
 #
 # StarPLS LSP server
 #
-###############################################################################
 bazel_dep(name = "score_starpls_lsp", version = "0.1.0")

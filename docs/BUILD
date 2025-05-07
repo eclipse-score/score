@@ -18,7 +18,7 @@ load("@rules_pkg//pkg:tar.bzl", "pkg_tar")
 load("@rules_python//python:pip.bzl", "compile_pip_requirements")
 load("@rules_python//sphinxdocs:sphinx.bzl", "sphinx_build_binary", "sphinx_docs")
 load("//docs:_tooling/docs.bzl", "docs")
-load("//tools/testing/pytest:defs.bzl", "score_py_pytest")
+load("@score_python_basics//:defs.bzl", "score_py_pytest")
 
 sphinx_requirements = all_requirements + [
     "@rules_python//python/runfiles",
@@ -155,7 +155,7 @@ score_py_pytest(
     visibility = ["//visibility:public"],
     deps = [
         ":score_metamodel",
-    ],
+    ] + all_requirements,
 )
 
 # ───────────────────────── Source code linker ────────────────────────
@@ -176,7 +176,7 @@ score_py_pytest(
     srcs = glob(["_tooling/extensions/score_source_code_linker/tests/**/*.py"]),
     deps = [
         ":score_source_code_linker",
-    ],
+    ] + all_requirements,
 )
 
 # Needed to make the file parser executeable and findable for the source_code_linker aspect
@@ -213,5 +213,5 @@ score_py_pytest(
     size = "small",
     srcs = glob(["_tooling/extensions/score_header_service/test/**/*.py"]),
     visibility = ["//visibility:public"],
-    deps = [":header_service"],
+    deps = [":header_service"] + all_requirements,
 )
