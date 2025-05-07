@@ -28,9 +28,9 @@ docs(
             "suffix": "",  # local without external needs
         },
     ],
+    setup_dependencies = True,
     source_dir = "docs",
     source_files_to_scan_for_needs_links = [],
-    setup_dependencies = True,
 )
 
 # These are only exported because they're passed as files to the //docs.bzl

@@ -15,10 +15,10 @@ load("@score_cr_checker//:cr_checker.bzl", "copyright_checker")
 load("@score_dash_license_checker//:dash.bzl", "dash_license_checker")
 load("@score_starpls_lsp//:starpls.bzl", "setup_starpls")
 
-# test_suite(
-#     name = "format.check",
-#     tests = ["//tools/format:format.check"],
-# )
+test_suite(
+    name = "format.check",
+    tests = ["//tools/format:format.check"],
+)
 
 alias(
     name = "format.fix",
