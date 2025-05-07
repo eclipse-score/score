@@ -125,6 +125,9 @@ Description
 The optional description can be used to provide a brief summary of the content of the
 commit and why this is necessary.
 
+Git commits are not required to mention issues. It is sufficient if the PR
+links to any relevant issues.
+
 Footer
 ======
 
