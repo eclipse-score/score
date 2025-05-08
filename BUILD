@@ -45,7 +45,7 @@ exports_files([
 ])
 
 dash_license_checker(
-    src = "@docs-as-code//src:requirements.txt",
+    src = "@score_docs_as_code//src:requirements.txt",
     file_type = "requirements",
     visibility = ["//visibility:public"],
 )

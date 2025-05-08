@@ -11,7 +11,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 
-load("@docs-as-code//:docs.bzl", "docs")
+load("@score_docs_as_code//:docs.bzl", "docs")
 load("@rules_pkg//pkg:mappings.bzl", "pkg_files")
 load("@rules_pkg//pkg:tar.bzl", "pkg_tar")
 
@@ -28,22 +28,9 @@ docs(
             "suffix": "",  # local without external needs
         },
     ],
-    setup_dependencies = True,
     source_dir = "docs",
     source_files_to_scan_for_needs_links = [],
 )
-
-# These are only exported because they're passed as files to the //docs.bzl
-# macros, and thus must be visible to other packages. They should only be
-# referenced by the //docs.bzl macros.
-
-# In order to update the requirements, change the `requirements.txt` file and run:
-# `bazel run //docs:requirements`.
-# This will update the `requirements_lock.txt` file.
-# To upgrade all dependencies to their latest versions, run:
-# `bazel run //docs:requirements -- --upgrade`.
-
-# Enables source_code_linker to parse all file types, not just .py
 
 # Used inside //docs.bzl to enable access to the assets (css files etc.)
 filegroup(
@@ -70,12 +57,3 @@ pkg_tar(
     name = "github-pages",
     srcs = [":html_files"],
 )
-
-# Needed for Dash tool to check python dependency licenses.
-# filegroup(
-#     name = "requirements_lock",
-#     srcs = [
-#         "/requirements_lock.txt",
-#     ],
-#     visibility = ["//visibility:public"],
-# )
