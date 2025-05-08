@@ -11,9 +11,9 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 
-load("@score_docs_as_code//:docs.bzl", "docs")
 load("@rules_pkg//pkg:mappings.bzl", "pkg_files")
 load("@rules_pkg//pkg:tar.bzl", "pkg_tar")
+load("@score_docs_as_code//:docs.bzl", "docs")
 
 # Creates all documentation targets:
 # - `docs:incremental` for building docs incrementally at runtime

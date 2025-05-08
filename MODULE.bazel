@@ -34,19 +34,6 @@ python.toolchain(
 )
 use_repo(python)
 
-###############################################################################
-#
-# docs dependencies (Sphinx)
-#
-###############################################################################
-# pip = use_extension("@rules_python//python/extensions:pip.bzl", "pip")
-# pip.parse(
-#     hub_name = "pip_sphinx",
-#     python_version = PYTHON_VERSION,
-#     requirements_lock = "//docs:_tooling/requirements_lock.txt",
-# )
-# use_repo(pip, "pip_sphinx")
-
 # Additional Python rules provided by aspect, e.g. an improved version of
 # `py_binary`. But more importantly, it provides `py_venv`.
 bazel_dep(name = "aspect_rules_py", version = "1.0.0")
@@ -82,31 +69,9 @@ bazel_dep(name = "rules_java", version = "8.6.3")
 
 ###############################################################################
 #
-# HTTP Jar rule deps
-#
-###############################################################################
-http_file = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_file")
-
-http_file(
-    name = "starpls_prebuilt",
-    sha256 = "45692ecb9d94a19a15b1e7b240acdff5702f78cd22188dac41e1879cb8bdcdcf",
-    urls = ["https://github.com/withered-magic/starpls/releases/download/v0.1.21/starpls-linux-amd64"],
-)
-
-http_jar = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_jar")
-
-http_jar(
-    name = "plantuml",
-    sha256 = "6f38f70455d08438979451c2257cd5d58647c6460094bb829bc2a12878d47331",
-    url = "https://github.com/plantuml/plantuml/releases/download/v1.2025.0/plantuml-1.2025.0.jar",
-)
-
-###############################################################################
-#
 # Misc. dependency
 #
 ###############################################################################
-bazel_dep(name = "score_dash_license_checker", version = "0.1.1", dev_dependency = True)
 
 bazel_dep(name = "score_python_basics", version = "0.3.0")
 
@@ -124,6 +89,5 @@ bazel_dep(name = "score_cr_checker", version = "0.2.2")
 ###############################################################################
 bazel_dep(name = "score_starpls_lsp", version = "0.1.0")
 # Checker rule for CopyRight checks/fixs
-
 
 bazel_dep(name = "score_docs_as_code", version = "0.1.0")

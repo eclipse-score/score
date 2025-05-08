@@ -64,7 +64,7 @@ numfig = True
 # -- sphinx-needs configuration --------------------------------------------
 # Setting the needs layouts
 needs_template_folder = "_templates"
-# html_static_path = ["_assets"]
+html_static_path = ["_assets"]
 needs_global_options = {"collapse": True}
 needs_string_links: dict[str, dict[str, Any]] = {
     "source_code_linker": {

@@ -12,7 +12,6 @@
 # *******************************************************************************
 
 load("@score_cr_checker//:cr_checker.bzl", "copyright_checker")
-load("@score_dash_license_checker//:dash.bzl", "dash_license_checker")
 load("@score_starpls_lsp//:starpls.bzl", "setup_starpls")
 
 test_suite(
@@ -43,12 +42,6 @@ exports_files([
     "MODULE.bazel",
     "BUILD",
 ])
-
-dash_license_checker(
-    src = "@score_docs_as_code//src:requirements.txt",
-    file_type = "requirements",
-    visibility = ["//visibility:public"],
-)
 
 setup_starpls(
     name = "starpls_server",

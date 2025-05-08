@@ -378,6 +378,12 @@ class draw_full_feature:
 
                 if imcomp := impl_comp.get(iface, {}):
                     module = get_module(imcomp, all_needs)
+                    # FIXME: sometimes module is empty, then the following code fails
+                    if not module:
+                        logger.info(
+                            f"FIXME: {need['id']}: Module for interface {iface} -> {imcomp} is empty."
+                        )
+                        continue
 
                     if module not in proc_modules:
                         tmp, link_text, proc_impl_interfaces, proc_used_interfaces = (
