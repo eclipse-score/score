@@ -16,14 +16,7 @@
 # For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
-import html
-import os
-import sys
 from typing import Any
-
-# sys.path extension for local files is needed, because the conf.py file is not
-# executed, but imported by Sphinx
-# sys.path.insert(0, ".")
 
 
 # -- Project information -----------------------------------------------------
