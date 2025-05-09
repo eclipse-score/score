@@ -7,12 +7,12 @@
 #   T5: title-must-not-contain-word (disabled)
 #   T6: title-leading-whitespace
 #   T7: title-match-regex
-#   B1: body-max-line-length (disabled)
+#   B1: body-max-line-length (disabled: allows longer lines when needed, as this is just annoying post writing)
 #   B2: body-trailing-whitespace
 #   B3: body-hard-tab
 #   B4: body-first-line-empty
 #   B5: body-min-length (disabled)
-#   B6: body-is-missing
+#   B6: body-is-missing (disabled: allow trivial commits without a body)
 #   B7: body-changed-file-mention (disabled)
 #
 # See http://jorisroovers.github.io/gitlint/rules/ for a full description of the rules.
@@ -20,19 +20,12 @@
 
 # Ignore some default rules and enable regex style searching
 [general]
-ignore=T3,T5,B1,B5,B7
+ignore=T3,T5,B1,B5,B6,B7
 regex-style-search=true
 
 # Maximum length of the title
 [title-max-length]
 line-length=72
 
-[title-match-regex]
-regex=^[a-z_-]+: .+$
-
 # First line of the commit message body must be empty. (second line of the commit message)
 [body-first-line-empty]
-
-#Ignores the title if it starts with Revert or Merge
-[ignore-by-title]
-regex=(^Revert |^Merge )
