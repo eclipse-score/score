@@ -210,6 +210,16 @@ Functional requirements
    * debugging
    * feature activation
 
+.. stkh_req:: Readout DTCs via SOVD
+   :id: stkh_req__diagnostics__dtc_read_sovd
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: tbd
+   :status: valid
+
+   The system shall provide users the ability to retrieve current Diagnostic Trouble Codes (DTCs) from the ECU via the SOVD protocol.
+
 
 Dependability
 -------------
