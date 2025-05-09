@@ -801,3 +801,42 @@ Requirements Engineering
    :status: valid
 
    Requirements shall be documented as code (Docs-as-code).
+
+
+API Documentation
+-----------------
+
+.. stkh_req:: Discoverability APIs
+   :id: stkh_req__api__discoverability
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: QM
+   :rationale: Allow swift onboarding and good developer experience.
+   :status: valid
+
+   API documentation shall be usable w/o the need to know the overall organization and w/o the need
+   to know specific technical terms used.
+
+
+.. stkh_req:: Point of contact
+   :id: stkh_req__api__contact
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: QM
+   :rationale: Clarify expert groups.
+   :status: valid
+
+   The API documentation shall provide an easily accessible way to reach out to the owners or
+   maintainers of a feature.
+
+
+.. stkh_req:: Organization of the API documentation
+   :id: stkh_req__api__organization_api_navigation
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: QM
+   :rationale: Allow swift onboarding and good developer experience.
+   :status: valid
+
+   The clustering / hierarchical organization of features in the API documentation shall be
+   independent of the organization of the source code.
