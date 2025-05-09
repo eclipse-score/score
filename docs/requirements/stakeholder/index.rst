@@ -150,7 +150,15 @@ Functional requirements
    :rationale: This allows portability of platform on POSIX compliant operating systems.
    :status: valid
 
-   The platform shall support operating systems compliant with IEEE Std 1003.1 (2004 Edition or newer)
+.. stkh_req:: Logging
+   :id: stkh_req__functional_req__logging
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: This allows portability of platform on POSIX compliant operating systems.
+   :status: valid
+
+   The platform should have one central logging framework
 
 .. stkh_req:: Video subsystem
    :id: stkh_req__functional_req__video_subsystem
