@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,5 +12,14 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Key-value Storage
-#################
+Architecture
+#############
+
+.. note::
+   For now we store the component architecture in the feature tree, because multi-repo docs are not yet supported.
+   Once this support becomes available the component architecture will be moved to the module.
+
+.. toctree::
+   :titlesonly:
+
+   feature_architecture

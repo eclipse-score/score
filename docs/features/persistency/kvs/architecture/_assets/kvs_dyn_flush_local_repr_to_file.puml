@@ -1,0 +1,60 @@
+@startuml
+
+title Sequence Diagram: Flush Local Representation to Data File
+
+participant "User" as actor
+participant "«component» :kvs" as kvs
+participant "«component» :snapshot" as snapshot
+participant "«component» :TinyJSON" as json_parser
+participant "«component» :fs" as fs
+participant "«component» :Adler32" as hasher
+
+actor -> kvs: Flush KVS
+
+kvs -> json_parser: Generate string from local representation
+
+alt json-string
+    json_parser --> kvs: JSON data string
+else json-string-error
+    json_parser --> kvs: JSON generator error
+    kvs --> actor: JSON generator error
+end
+
+kvs -> snapshot: Rotate snapshots
+
+alt snapshot-rotate
+    snapshot -> kvs: Snapshots rotated
+else snapshot-rotate-error
+    snapshot --> kvs: Snapshot-Rotate-Error
+    kvs --> actor: Snapshot-Rotate-Error
+end
+
+kvs -> hasher: Create JSON data string hash
+
+alt hash-created
+    hasher --> kvs: Data hash
+else hash-create-error
+    hasher --> kvs: Hash-Calc-Error
+    kvs --> actor: Hash-Calc-Error
+end
+
+kvs -> fs: Write JSON data string to file
+
+alt file-write
+    fs --> kvs: File successfully written
+else file-write-error
+    fs --> kvs: File-Write-Error
+    kvs --> actor: File-Write-Error
+end
+
+kvs -> fs: Write JSON data hash to file
+
+alt file-hash-write
+    fs --> kvs: Hash file successfully written
+    kvs --> actor: Flush successful
+else file-hash-write-error
+    fs --> kvs: File-Hash-Write-Error
+    kvs --> actor: File-Hash-Write-Error
+end
+
+@enduml
