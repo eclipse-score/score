@@ -44,7 +44,6 @@ filegroup(
 filegroup(
     name = "html",
     srcs = [":docs"],
-    output_group = "html",
 )
 
 pkg_files(
