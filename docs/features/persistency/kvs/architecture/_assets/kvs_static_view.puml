@@ -1,0 +1,32 @@
+@startuml
+allowmixing
+
+title Static View - kvs
+
+!include kvs_interface.puml
+
+
+skinparam package {
+    BackgroundColor #E0E0D0
+    BorderColor Black
+    backgroundColor<<feature>> yellow
+}
+
+skinparam component {
+    backgroundColor<<component>> white
+}
+
+' Define Features
+package "kvs" <<feature>> {
+    component kvs <<component>>
+    component fs <<component>>
+    component tiny_json <<component>>
+}
+
+kvs -u- Kvs
+
+kvs  ..>  tiny_json : use
+kvs  ..>  fs : use
+
+
+@enduml
