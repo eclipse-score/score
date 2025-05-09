@@ -48,14 +48,6 @@ S-CORE Management Roles
    * Election and replacement of all role's personnel
    * Decide on addition/removal of modules repositories or split-off of projects
 
-.. role:: Quality Manager
-   :id: rl__quality_manager
-   :status: valid
-   :tags: quality_management
-   :contains: rl__committer
-
-   The quality managers shall be responsible for the planning and coordination of the quality activities, i.e. the quality management.
-
 .. role:: Security Manager
    :id: rl__security_manager
    :status: draft
@@ -136,18 +128,4 @@ S-CORE cross functional teams
    :tags: cross_functional
    :contains: rl__module_lead, rl__safety_manager, rl__quality_manager, rl__security_manager, rl__contributor, rl__committer
 
-   The module team is responsible for all artifacts within the module SEooCs. Each module has only one responsible team but a team may also be responsible for several (small) modules.
-
-S-CORE Roles list
------------------
-
-.. needtable::
-   :style: table
-   :columns: title;id;tags
-   :colwidths: 25,25,25
-   :sort: title
-
-   results = []
-
-   for need in needs.filter_types(["role"]):
-                results.append(need)
+   The module team is responsible for all artefacts within the module SEooCs. Each module has only one responsible team but a team may also be responsible for several (small) modules.

@@ -12,23 +12,14 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Process Areas
-#############
+Guidance
+########
 
 .. toctree::
    :maxdepth: 1
-   :glob:
 
-   architecture_design/index.rst
-   change_management/index.rst
-   configuration_management/index.rst
-   documentation_management/index.rst
-   implementation/index.rst
-   platform_management/index.rst
-   problem_resolution/index.rst
-   release_management/index.rst
-   quality_management/index.rst
-   requirements_engineering/index.rst
-   safety_management/index.rst
-   tool_management/index.rst
-   verification/index.rst
+   quality_plan_guideline
+   quality_plan_template
+   quality_review_checklist
+   quality_process_reqs
+   quality_work_product_review_guideline
