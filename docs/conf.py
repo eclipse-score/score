@@ -26,6 +26,7 @@ project = "S-CORE"
 author = "S-CORE"
 release = "0.1"
 
+version = release
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
