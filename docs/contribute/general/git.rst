@@ -128,6 +128,9 @@ commit and why this is necessary.
 Git commits are not required to mention issues. It is sufficient if the PR
 links to any relevant issues.
 
+The description may mention issues and link to them. Note that when squashing as described above, a
+link to the PR is automatically added.
+
 Footer
 ======
 
