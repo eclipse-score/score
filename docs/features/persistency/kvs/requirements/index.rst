@@ -23,7 +23,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__prog_languages
    :status: valid
 
-   The key-value storage shall allow concurrent access via C++ and Rust interfaces.
+   The key-value storage system shall provide concurrent access through both C++ and Rust interfaces.
 
 .. feat_req:: Maximum Size
    :id: feat_req__kvs__maximum_size
@@ -33,7 +33,7 @@ Requirements
    :satisfies: stkh_req__functiona_req__support_of_store
    :status: valid
 
-   The key-value storage shall have a maximum size defined at compile time.
+   The key-value storage system shall support specification of its maximum capacity at compile time.
 
 .. feat_req:: Thread Safety
    :id: feat_req__kvs__thread_safety
@@ -43,7 +43,7 @@ Requirements
    :satisfies: stkh_req__functiona_req__support_of_store
    :status: valid
 
-   The key-value storage shall allow thread safe access per key.
+   The key-value storage system shall provide thread-safe access on a per-key basis.
 
 .. feat_req:: Multiple KVS per Software Architecture Element
    :id: feat_req__kvs__multiple_kvs
@@ -53,7 +53,7 @@ Requirements
    :satisfies: stkh_req__functiona_req__support_of_store
    :status: valid
 
-   The key-value storage shall allow to instantiate multiple key-value storages per software architecture element.
+   The key-value storage system shall allow instantiating multiple independent stores per software architecture element.
 
 .. feat_req:: Supported Datatypes (Keys)
    :id: feat_req__kvs__supported_datatypes_keys
@@ -63,7 +63,7 @@ Requirements
    :satisfies: stkh_req__functiona_req__support_of_store
    :status: valid
 
-   The key-value storage shall allow only UTF-8 encoded strings as keys.
+   The key-value storage system shall support UTF-8 encoded strings as valid key types.
 
 .. feat_req:: Supported Datatypes (Values)
    :id: feat_req__kvs__supported_datatypes_values
@@ -73,8 +73,8 @@ Requirements
    :satisfies: stkh_req__functiona_req__support_of_store
    :status: valid
 
-   The key-value storage shall allow the storage of primitive and non-primitive datatypes as values.
-   The allowed datatypes shall be identical to the ones in the IPC feature.
+   The key-value storage system shall support storing both primitive and non-primitive datatypes as values.
+   The supported datatypes shall match those used by the IPC feature.
 
 .. feat_req:: Default Values
    :id: feat_req__kvs__default_values
@@ -84,10 +84,8 @@ Requirements
    :satisfies: stkh_req__functiona_req__support_of_store
    :status: valid
 
-   The key-value storage shall support default values for each key.
-   The default values shall be pre-defined in a configuration file.
-
-   Note: Not each key does require a default value.
+   The key-value storage system shall support predefined default values for keys, specified via a configuration file.
+   Note: Not every key is required to have a default value.
 
 .. feat_req:: Default Value Retrieval
    :id: feat_req__kvs__default_value_retrieval
@@ -97,7 +95,7 @@ Requirements
    :satisfies: stkh_req__functiona_req__support_of_store
    :status: valid
 
-   The key-value storage shall allow the retrieval of a key's default value.
+   The key-value storage system shall support retrieving the default value associated with a key.
 
 .. feat_req:: Default Value Reset
    :id: feat_req__kvs__default_value_reset
@@ -107,7 +105,7 @@ Requirements
    :satisfies: stkh_req__functiona_req__support_of_store
    :status: valid
 
-   The key-value storage shall allow the reset of a specific key or all keys to its/their default value(s).
+   The key-value storage system shall support resetting a single key or all keys to their respective default values.
 
 .. feat_req:: Persistency
    :id: feat_req__kvs__persistency
@@ -117,7 +115,7 @@ Requirements
    :satisfies: stkh_req__functiona_req__support_of_store
    :status: valid
 
-   The key-value storage shall store the data persistent. It shall provide an API to trigger the persistency.
+   The key-value storage system shall persist stored data and provide an API to explicitly trigger persistence.
 
 .. feat_req:: Integrity Check
    :id: feat_req__kvs__integrity_check
@@ -127,7 +125,8 @@ Requirements
    :satisfies: stkh_req__functiona_req__support_of_store
    :status: valid
 
-   The key-value storage shall detect data corruption. TODO: Dependent on AoUs.
+   The key-value storage system shall detect and report data corruption.
+   Note: Implementation depends on AoUs.
 
 .. feat_req:: Versioning
    :id: feat_req__kvs__versioning
@@ -137,7 +136,7 @@ Requirements
    :satisfies: stkh_req__functiona_req__support_of_store
    :status: valid
 
-   The key-value storage shall support the versioning of different layouts.
+   The key-value storage system shall support versioning for different layout configurations.
 
 .. feat_req:: Update Mechanism
    :id: feat_req__kvs__update_mechanism
@@ -147,8 +146,7 @@ Requirements
    :satisfies: stkh_req__functiona_req__support_of_store
    :status: valid
 
-   The key-value storage shall implement a mechanism to support the update from one version to another version.
-   In addition, multiple version jumps at once shall be supported.
+   The key-value storage system shall implement mechanisms to upgrade from one version to another, including multi-version jumps.
 
 .. feat_req:: Snapshots
    :id: feat_req__kvs__snapshots
@@ -158,11 +156,8 @@ Requirements
    :satisfies: stkh_req__functiona_req__support_of_store
    :status: valid
 
-   The key-value storage shall allow the explicit creation of snapshots of a specific version and
-   shall support the roll-back to previous snapshots, e.g. in case the integrity check fails or an rolled-back update.
-   The snapshots shall be associated with an unique ID to be referenced.
-
-   The key-value storage shall allow the deletion of snapshots.
+   The key-value storage system shall support explicit creation of snapshots identified by unique IDs and allow rollback to previous snapshots.
+   Snapshots shall also be deletable.
 
 .. feat_req:: Tooling
    :id: feat_req__kvs__tooling
@@ -172,7 +167,7 @@ Requirements
    :satisfies: stkh_req__functiona_req__support_of_store
    :status: valid
 
-   The key-value storage shall support tooling to view and modify key-value pairs for development and debugging purposes.
+   The key-value storage system shall provide tooling support for viewing and modifying key-value pairs during development and debugging.
 
 .. feat_req:: Stable APIs
    :id: feat_req__kvs__stable_api
@@ -182,8 +177,7 @@ Requirements
    :satisfies: stkh_req__communication__stable_app_inter
    :status: valid
 
-   The KVS API will be designed to provide a stable interface over the
-   lifecylcle without preventing new functionality from beeing implemented.
+   The KVS API shall remain stable throughout its lifecycle while enabling the addition of new functionalities.
 
 .. feat_req:: Variant management support
    :id: feat_req__kvs__variant_management
@@ -193,7 +187,7 @@ Requirements
    :satisfies: stkh_req__overall_goals__variant_management
    :status: valid
 
-   The KVS ensures compatibilty between architectures and versions.
+   The KVS shall ensure compatibility across different architectures and versions.
 
 .. feat_req:: Set default key values via file
    :id: feat_req__kvs__default_value_file
@@ -203,7 +197,7 @@ Requirements
    :satisfies: stkh_req__functional_req__file_based
    :status: valid
 
-   The KVS allows to configure default key values by using a file.
+   The KVS shall support the configuration of default key values using an external file.
 
 .. feat_req:: Configure limits via file
    :id: feat_req__kvs__config_file
@@ -213,7 +207,7 @@ Requirements
    :satisfies: stkh_req__functional_req__file_based
    :status: valid
 
-   The KVS allows to configure memory and other limits by using a config file.
+   The KVS shall support the configuration of memory and other resource limits via a configuration file.
 
 .. feat_req:: Store persistent data
    :id: feat_req__kvs__persist_data
@@ -223,8 +217,7 @@ Requirements
    :satisfies: stkh_req__functional_req__data_persistency
    :status: valid
 
-   The KVS must be able to store and load its data to/from a persistent
-   storage.
+   The KVS shall support storing and loading its data to and from persistent storage.
 
 .. feat_req:: Support ASIL-B
    :id: feat_req__kvs__safety_asil_b
@@ -234,7 +227,7 @@ Requirements
    :satisfies: stkh_req__dependability__automotive_safety
    :status: valid
 
-   The KVS must support at least ASIL-B.
+   The KVS shall comply with the requirements for ASIL-B.
 
 .. feat_req:: Support engineering and field mode
    :id: feat_req__kvs__dev_mode
@@ -244,8 +237,8 @@ Requirements
    :satisfies: stkh_req__dependability__safety_features
    :status: valid
 
-   The KVS must support an engineering (developer) and a field mode. The
-   engineering must provide a way to to access all data without restrictions.
+   The KVS shall provide both engineering (developer) and field modes.
+   The engineering mode shall allow unrestricted data access.
 
 .. feat_req:: Provide an async API
    :id: feat_req__kvs__async_api
@@ -255,7 +248,7 @@ Requirements
    :satisfies: stkh_req__dependability__availability, stkh_req__app_architectures__support_request
    :status: valid
 
-   The KVS must provide an async API.
+   The KVS shall provide an asynchronous API for accessing and manipulating data.
 
 .. feat_req:: Separate data stores
    :id: feat_req__kvs__access_control
@@ -265,7 +258,7 @@ Requirements
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The KVS must make sure that data stores can only be accessed by allowed components.
+   The KVS shall ensure that only authorized components can access individual data stores.
 
 .. feat_req:: Data-change events
    :id: feat_req__kvs__events
@@ -275,8 +268,7 @@ Requirements
    :satisfies: stkh_req__app_architectures__support_data
    :status: valid
 
-   The KVS must provide an API to register callbacks which will be called for
-   several events like keys are changed or removed.
+   The KVS shall provide an API to register callbacks that are triggered on events such as key updates or deletions.
 
 .. feat_req:: Fast access
    :id: feat_req__kvs__fast_access
@@ -286,7 +278,7 @@ Requirements
    :satisfies: stkh_req__execution_model__short_app_cycles
    :status: valid
 
-   The KVS must ensure that operations are usually done in under 5 ms.
+   The KVS shall ensure that key operations are typically completed within 5 milliseconds.
 
 .. feat_req:: Fast startup
    :id: feat_req__kvs__fast_startup
@@ -296,9 +288,7 @@ Requirements
    :satisfies: stkh_req__execution_model__startup_perf
    :status: valid
 
-   The KVS must ensure that the startup time, besides the time that is needed
-   to read the files from the filesystem, must be very short in terms of
-   initial parsing and hash checking.
+   The KVS shall ensure minimal startup time, excluding file read durations, with optimized parsing and hash checking.
 
 .. feat_req:: Intra-process communication
    :id: feat_req__kvs__intra_process_comm
@@ -308,7 +298,7 @@ Requirements
    :satisfies: stkh_req__communication__intra_process
    :status: valid
 
-   The KVS must support concurrent access to the data.
+   The KVS shall support concurrent intra-process data access.
 
 .. feat_req:: Multi-architecture support
    :id: feat_req__kvs__multi_arch
@@ -318,7 +308,7 @@ Requirements
    :satisfies: stkh_req__hardware_support__chipset_support
    :status: valid
 
-   The KVS must run on all S-CORE platforms.
+   The KVS shall be compatible with all S-CORE platforms.
 
 .. feat_req:: Logging and tracing
    :id: feat_req__kvs__log_trace
@@ -328,7 +318,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The KVS must use the provided S-CORE logging and tracing framework.
+   The KVS shall utilize the S-CORE logging and tracing framework.
 
 .. feat_req:: Development steering
    :id: feat_req__kvs__dev_steering
@@ -338,7 +328,7 @@ Requirements
    :satisfies: stkh_req__re_requirements__traceability
    :status: valid
 
-   Requirements must be linked to top-level (Stakeholder) requirements.
+   All requirements shall be traceable to corresponding top-level stakeholder requirements.
 
 .. feat_req:: Document requirements as code
    :id: feat_req__kvs__req_as_code
@@ -348,4 +338,4 @@ Requirements
    :satisfies: stkh_req__requirements__as_code
    :status: valid
 
-   Requirements must be documented as code.
+   Requirements shall be documented and maintained as code.
