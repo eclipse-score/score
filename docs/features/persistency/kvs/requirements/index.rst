@@ -219,16 +219,6 @@ Requirements
 
    The KVS shall support storing and loading its data to and from persistent storage.
 
-.. feat_req:: Support ASIL-B
-   :id: feat_req__kvs__safety_asil_b
-   :reqtype: Functional
-   :security: NO
-   :safety: ASIL_B
-   :satisfies: stkh_req__dependability__automotive_safety
-   :status: valid
-
-   The KVS shall comply with the requirements for ASIL-B.
-
 .. feat_req:: Support engineering and field mode
    :id: feat_req__kvs__dev_mode
    :reqtype: Functional
@@ -268,7 +258,9 @@ Requirements
    :satisfies: stkh_req__app_architectures__support_data
    :status: valid
 
-   The KVS shall provide an API to register callbacks that are triggered on events such as key updates or deletions.
+   The KVS shall provide an API that allows for the registration of callback
+   functions. These callbacks shall be invoked in response to specific events,
+   such as when keys are changed or removed.
 
 .. feat_req:: Fast access
    :id: feat_req__kvs__fast_access
@@ -280,16 +272,6 @@ Requirements
 
    The KVS shall ensure that key operations are typically completed within 5 milliseconds.
 
-.. feat_req:: Fast startup
-   :id: feat_req__kvs__fast_startup
-   :reqtype: Non-Functional
-   :security: NO
-   :safety: QM
-   :satisfies: stkh_req__execution_model__startup_perf
-   :status: valid
-
-   The KVS shall ensure minimal startup time, excluding file read durations, with optimized parsing and hash checking.
-
 .. feat_req:: Intra-process communication
    :id: feat_req__kvs__intra_process_comm
    :reqtype: Functional
@@ -299,43 +281,3 @@ Requirements
    :status: valid
 
    The KVS shall support concurrent intra-process data access.
-
-.. feat_req:: Multi-architecture support
-   :id: feat_req__kvs__multi_arch
-   :reqtype: Functional
-   :security: NO
-   :safety: QM
-   :satisfies: stkh_req__hardware_support__chipset_support
-   :status: valid
-
-   The KVS shall be compatible with all S-CORE platforms.
-
-.. feat_req:: Logging and tracing
-   :id: feat_req__kvs__log_trace
-   :reqtype: Functional
-   :security: NO
-   :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
-   :status: valid
-
-   The KVS shall utilize the S-CORE logging and tracing framework.
-
-.. feat_req:: Development steering
-   :id: feat_req__kvs__dev_steering
-   :reqtype: Non-Functional
-   :security: NO
-   :safety: QM
-   :satisfies: stkh_req__re_requirements__traceability
-   :status: valid
-
-   All requirements shall be traceable to corresponding top-level stakeholder requirements.
-
-.. feat_req:: Document requirements as code
-   :id: feat_req__kvs__req_as_code
-   :reqtype: Non-Functional
-   :security: NO
-   :safety: QM
-   :satisfies: stkh_req__requirements__as_code
-   :status: valid
-
-   Requirements shall be documented and maintained as code.
