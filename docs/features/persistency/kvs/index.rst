@@ -48,7 +48,7 @@ language through language specific interfaces.
 Motivation
 ==========
 
-The current solutions availabkle mostly don't meet the specific needs of the
+The current solutions available mostly don't meet the specific needs of the
 S-CORE project like storing specific datatypes without a BASE64 conversation or
 having no rollback/replay feature. Also the integration into analysis tools is
 simpler when the solution grows with the needs instead having to adapt existing
@@ -77,7 +77,7 @@ is allowed to have multiple KVS.
 Staying compatible through updates and rollbacks is a main requirement for the
 project.
 
-3. The same KVS should be read/writeable from C++ & Rust and any other language.
+3. The same KVS should be read/writable from C++ & Rust and any other language.
 
 Having a flexible interface allows to focus on solutions where the language
 fits the needs.
@@ -90,7 +90,7 @@ should return an error if the key needs to be written first.
 5. KVS should use a simple data representation.
 
 The KVS should use a data representation that supports versioned up- and
-downgrading like JSON or Cap'n Proto and is easily debugable by the developer.
+downgrading like JSON or Cap'n Proto and is easily debuggable by the developer.
 
 6. Integrity of the KVS should be checked.
 
@@ -132,7 +132,7 @@ Safety Impact
 [What is the expected classification of the contribution?]
 
    .. note::
-      Use the component classification method here to classfiy your component, if it shall to be used in a safety context: (TODO: add link to component classification).
+      Use the component classification method here to classify your component, if it shall to be used in a safety context: (TODO: add link to component classification).
 
 
 License Impact
