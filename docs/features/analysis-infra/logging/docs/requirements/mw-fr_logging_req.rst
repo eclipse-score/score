@@ -134,6 +134,7 @@ Requirements
    :status: valid
 
    The logging framework shall provide mechanisms to handle message loss gracefully.
+
    Additional Information: e.g. buffering or prioritizing critical messages
 
 .. feat_req:: Context-Specific Log Level Activation
@@ -317,7 +318,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall allow configuration of logging entity IDs (e.g., ECU ID, Application ID, Context ID such as in DLT).
+   The logging framework shall allow configuration of logging entity IDs.
 
 .. feat_req:: Configuration - On-Demand Functionality
    :id: feat_req__logging__config_on_demand
@@ -458,9 +459,9 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-
    The logging framework shall be DLT (Diagnostic Log and Trace) compatible.
-   Additional Info: support for DLT message format, sending and receiving DLT messages, and integration with existing DLT tools and infrastructure.
+
+   Additional Information: support for DLT message format, sending and receiving DLT messages, and integration with existing DLT tools and infrastructure.
 
 .. feat_req:: Security - Log File Access
    :id: feat_req__logging__security_log_access
