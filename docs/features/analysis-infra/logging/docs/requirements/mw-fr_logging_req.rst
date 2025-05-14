@@ -184,7 +184,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-    The logging framework shall support local file system as log sink.
+   The logging framework shall support local file system as log sink.
 
 
 
@@ -248,8 +248,9 @@ Requirements
    :status: valid
 
    The logging framework shall support configuration of the log storage device.
-   .. feat_req:: Log Sinks - multiple Storage Device
-   :id: feat_req__logging__sink_multiple__device
+
+.. feat_req:: Log Sinks - multiple Storage Device
+   :id: feat_req__logging__sink_multiple_device
    :reqtype: Functional
    :security: NO
    :safety: QM
