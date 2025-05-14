@@ -86,7 +86,7 @@ Requirements
    The logging framework shall support logging of early startup events to capture critical initialization information.
 
 .. feat_req:: Log entity Identifier
-   :id: feat_req__logging__entity__identifier
+   :id: feat_req__logging__entity_identifier
    :reqtype: Functional
    :security: NO
    :safety: QM
