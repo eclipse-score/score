@@ -21,5 +21,5 @@ Glossary
 - Component -
 - Logging severity level - e.g., FATAL, ERROR, WARN, INFO, DEBUG, VERBOSE such as in DLT
 - Logging entity - SW entity which generates log messages
-- Logging entity identifier - unique identifier for the logging entity, e.g., ECU ID / application ID / context ID, similar to DLT
+- Logging entity identifier - unique identifier for the logging entity, e.g., ECU ID / application ID / context ID, similar to DLT.
 - log storage strategy - strategy to write/sync the cached log messages in the log storage location e.g., on system shutdown, on each message, on demand, on file size, on cache size, with circular or linear buffer
