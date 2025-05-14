@@ -17,5 +17,3 @@ Tracing
 
 .. toctree::
    :maxdepth: 1
-
-   ./mw-fr_tracing.rst

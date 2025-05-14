@@ -85,15 +85,15 @@ Requirements
 
    The logging framework shall support logging of early startup events to capture critical initialization information.
 
-.. feat_req:: Log Filtering - Application and Context Identifier
-   :id: feat_req__logging__filtering_app_context
+.. feat_req:: Log entity Identifier
+   :id: feat_req__logging__entity__identifier
    :reqtype: Functional
    :security: NO
    :safety: QM
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall support filtering by application and context identifiers, similar to DLT.
+   The logging framework shall support logging entity identifiers for each log entry.
 
 .. feat_req:: Log Filtering - Log Levels
    :id: feat_req__logging__filtering_log_levels
@@ -113,7 +113,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall support filtering logs by logging entity IDs (e.g., ECU ID, Application ID, Context ID such as in DLT).
+   The logging framework shall support filtering by logging entity identifiers.
 
 .. feat_req:: Message Loss Detection - Detection and Reporting
    :id: feat_req__logging__message_loss_detection
@@ -133,7 +133,8 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall provide mechanisms to handle message loss gracefully, such as buffering or prioritizing critical messages.
+   The logging framework shall provide mechanisms to handle message loss gracefully.
+   Additional Information: e.g. buffering or prioritizing critical messages
 
 .. feat_req:: Context-Specific Log Level Activation
    :id: feat_req__logging__context_log_level
@@ -183,17 +184,9 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall support local file systems as log sinks.
+    The logging framework shall support local file system as log sink.
 
-.. feat_req:: Log Sinks - External Mounted PCIe Drive
-   :id: feat_req__logging__log_sinks_pcie_drive
-   :reqtype: Functional
-   :security: NO
-   :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
-   :status: valid
 
-   The logging framework shall support external mounted PCIe drives as log sinks.
 
 .. feat_req:: Log Sinks - Cloud Native Drive
    :id: feat_req__logging__log_sinks_cloud_drive
@@ -244,7 +237,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall allow configuration of log levels.
+   The logging framework shall support configuration of log levels.
 
 .. feat_req:: Log Sinks - Storage Device
    :id: feat_req__logging__sink_device
@@ -254,7 +247,16 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall support configurable log storage devices for storing log data.
+   The logging framework shall support configuration of the log storage device.
+   .. feat_req:: Log Sinks - multiple Storage Device
+   :id: feat_req__logging__sink_multiple__device
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :satisfies: stkh_req__dev_experience__logging_support
+   :status: valid
+
+   The logging framework shall support multiple log storage devices.
 
 .. feat_req:: Log Sinks - Storage Strategy
    :id: feat_req__logging__sink_strategy
@@ -264,7 +266,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall support configurable log storage strategies(e.g., on system shutdown, on each message, on demand, on file size, on cache size, with circular or linear buffer).
+   The logging framework shall support configurable log storage strategy.
 
 .. feat_req:: Configuration - Buffer Size
    :id: feat_req__logging__config_buffer_size
@@ -274,7 +276,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall allow configuration of buffer size.
+   The logging framework shall allow configuration of internal buffers sizes.
 
 .. feat_req:: Configuration - Storage Size
    :id: feat_req__logging__config_storage_size
@@ -284,7 +286,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall allow configuration of storage size for log files.
+   The logging framework shall allow configuration of storage size per log file.
 
 .. feat_req:: Configuration - Permission Settings
    :id: feat_req__logging__config_permissions
@@ -428,13 +430,23 @@ Requirements
 
 .. feat_req:: Resource Consumption - Performance Impact
    :id: feat_req__logging__resource_performance
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :satisfies: stkh_req__dev_experience__logging_support
+   :status: valid
+
+   The logging framework shall have low impact on overall system performance.
+
+.. feat_req:: Quality of Service - Message Handling
+   :id: feat_req__logging__qos_message_handling
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall have low impact on overall system performance and provide QoS for handling overflows or dropping log messages.
+   The logging framework shall provide QoS for handling overflows or dropping log messages.
 .. ist "rovide QoS for handling overflows or dropping log messages." doppelt zu den loos detection req.?
 
 .. feat_req:: Compatibility - DLT Protocol
@@ -445,11 +457,13 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall be compatible with the Diagnostic Log and Trace (DLT) protocol, including support for DLT message format, sending and receiving DLT messages, and integration with existing DLT tools and infrastructure.
+
+   The logging framework shall be DLT (Diagnostic Log and Trace) compatible.
+   Additional Info: support for DLT message format, sending and receiving DLT messages, and integration with existing DLT tools and infrastructure.
 
 .. feat_req:: Security - Log File Access
    :id: feat_req__logging__security_log_access
-   :reqtype: Functional
+   :reqtype: Non-Functional
    :security: YES
    :safety: QM
    :satisfies: stkh_req__dev_experience__logging_support
