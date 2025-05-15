@@ -84,17 +84,15 @@ Technical committees
   in order to achieve milestones on time. All important architectural decisions
   should be reported to the project as *Feature Request* to get the final approvement from the *Technical lead circle*.
 
-* **Cross functional teams**
+* **Feature Teams**
 
-  *Cross functional teams* are responsible for some piece
-  of work from the beginning (e.g. definition of the architecture) till the end
-  (e.g. integration tests) and are usually assigned to the *S-CORE* main integration project or to one particular software module. *Cross-functional teams* work independently from each other on *GitHub Issues* in the assigned software module. *Cross-functional teams* consist of the contributors, who can specify requirements, define architecture, develop source code and implement tests afterwards. *Project Leads* and *Committers* are also *Contributors* and effectively work on processing of *GitHub Issues*.
+  *Feature Teams* have end-to-end responsibility for specific functionalities. This includes all aspects beginning with the architecture definition to the integration test. They are usually assigned to the *S-CORE* main integration project or to one particular software module. *Feature Teams* work independently of each other on *GitHub Issues* in the assigned software module. *Feature Teams* consist of the contributors, who can specify requirements, define architecture, develop source code and implement tests afterwards. *Project Leads* and *Committers* are also *Contributors* and effectively work on processing of *GitHub Issues*.
 
-  *Cross-functional team* usually consists of the following roles: Project Lead, Safety Manager, Quality Manager, Security Manager, Committers and Contributors. Every *cross-functional* team has at least one committer who can approve and merge the Pull Requests of the Contributors.
+  *Feature Team* usually consists of the following roles: Project Lead, Safety Manager, Quality Manager, Security Manager, Committers and Contributors. Every *Feature Team* has at least one committer who can approve and merge the Pull Requests of the Contributors.
 
-  In case *Cross-functional team* needs to request a new repository, this can be done be extending the `otterdog configuration file <https://github.com/eclipse-score/.eclipsefdn/blob/main/otterdog/eclipse-score.jsonnet>`_ and creating a new PR, that should be approved by the *Eclipse Project Security Team*.
+  In case a *Feature Team* needs to request a new repository, this can be done be extending the `otterdog configuration file <https://github.com/eclipse-score/.eclipsefdn/blob/main/otterdog/eclipse-score.jsonnet>`_ and creating a new PR, that has to be approved by the *Eclipse Project Security Team*.
 
-  The *GitHub Discussions* for cross-functional teams can be found in the `Cross-functional teams section <https://github.com/orgs/eclipse-score/discussions>`_ of the main *S-CORE* project.
+  The *GitHub Discussions* for feature teams can be found in the `Feature Teams section <https://github.com/orgs/eclipse-score/discussions>`_ of the main *S-CORE* project.
 
 Meeting Structure
 -----------------
@@ -364,7 +362,7 @@ and gets assigned to one of the *Communities* for refinement. The state of the s
     :alt: Planning workflow
     :align: center
 
-The members of the *Responsible Community* define or refine feature, process or tool requirements. They may also create feature architecture and high level component requirements for every involved software component. Depending on the feature scope, one of the cross-functional team can be requested to make a POC in the `incubation repository <https://eclipse-score.github.io/score/features/integration/index.html#incubation-repositories>`_. Finally, *Responsible Community* does the break down of the corresponding *saga* to the tickets that can be assigned to the individual software modules or *communities*.
+The members of the *Responsible Community* define or refine feature, process or tool requirements. They may also create feature architecture and high level component requirements for every involved software component. Depending on the feature scope, one of the feature team can be requested to make a POC in the `incubation repository <https://eclipse-score.github.io/score/features/integration/index.html#incubation-repositories>`_. Finally, *Responsible Community* does the break down of the corresponding *saga* to the tickets that can be assigned to the individual software modules or *communities*.
 As most of the software modules will have their own separate repository,
 then the detailed tracking of their work will also happen inside of that repository.
 However, the corresponding saga of the S-CORE repository will still have a sub-issue of type epic,

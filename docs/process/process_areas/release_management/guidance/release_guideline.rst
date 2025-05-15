@@ -38,7 +38,7 @@ Software Module Release
 
 3. **Development and Testing**:
 
-   * According process, cross functional teams implement and test.
+   * According process, feature teams implement and test.
    * Check the :need:`wp__verification__module_ver_report` to ensure that all tests pass before proceeding to the release.
    * In case of failed test, evaluate and possibly justify their failure.
 

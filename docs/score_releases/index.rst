@@ -53,28 +53,28 @@ SW Module List
      - Q4
      - _
      - `inc_mw_com <https://github.com/eclipse-score/inc_mw_com>`_
-     - `Communication CTF <https://github.com/orgs/eclipse-score/discussions/categories/communication-cft>`_
+     - `Communication CTF <https://github.com/orgs/eclipse-score/discussions/categories/communication-ft>`_
    * - Fixed Execution Order Framework (incl. Orchestrator)
      - Holger Grandy, Gerd Schäfer, Nico Hartmann, Sven Kappel, Thilo Schmitt
      - v0.5
      - Q4
      - _
      - `inc_feo <https://github.com/eclipse-score/inc_feo>`_
-     - `FEO CTF <https://github.com/orgs/eclipse-score/discussions/categories/feo-cft>`_
+     - `FEO CTF <https://github.com/orgs/eclipse-score/discussions/categories/feo-ft>`_
    * - Logging
      - Holger Grandy, Gerd Schäfer, Nico Hartmann
      - v0.5
      - Q4
      - _
      - `inc_mw_log <https://github.com/eclipse-score/inc_mw_log>`_
-     - `Logging CTF <https://github.com/orgs/eclipse-score/discussions/categories/logging-cft>`_
+     - `Logging CTF <https://github.com/orgs/eclipse-score/discussions/categories/logging-ft>`_
    * - Persistency
      - Gerd Schäfer, Nico Hartmann, Sven Kappel
      - v0.5
      - Q4
      - _
      - `inc_mw_per <https://github.com/eclipse-score/inc_mw_per>`_
-     - `Persistency CTF <https://github.com/orgs/eclipse-score/discussions/categories/persistency-cft>`_
+     - `Persistency CTF <https://github.com/orgs/eclipse-score/discussions/categories/persistency-ft>`_
    * - Integration Testing Framework
      - Holger Grandy
      - v0.5

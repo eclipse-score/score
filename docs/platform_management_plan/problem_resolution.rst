@@ -120,7 +120,7 @@ ISSUE using the Problem Template :ref:`prm_templates`.
 
 :need:`[[title]] <gd_req__problem__attr_stakeholder>` is defined in the description part of the
 ISSUE using the Problem Template :ref:`prm_templates`. For S-CORE stakeholder use pre-defined labels
-for Communities or Cross Functional Teams (Feature Owner) (under discussion, compare
+for Communities or Feature Teams (Feature Owner) (under discussion, compare
 https://github.com/eclipse-score/score/issues/870)
 
 :need:`[[title]] <gd_req__problem__attr_classification>` is defined in the description part of the

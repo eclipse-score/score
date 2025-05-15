@@ -119,7 +119,7 @@ S-CORE development roles
    units. In this way the testing community takes a supportive role for unit testing
 
 
-S-CORE cross functional teams
+S-CORE feature teams
 -----------------------------
 
 .. role:: Platform Team

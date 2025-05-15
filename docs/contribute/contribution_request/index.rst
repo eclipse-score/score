@@ -78,7 +78,7 @@ Join Us in Building S-CORE
   Submit a contribution pitch for a specific feature request if you have a solution you'd like to share.
 
 - **Looking to Improve What's Already There?**
-  Contribute enhancements to existing implementations or get involved with one of our cross-functional teams (CFTs).
+  Contribute enhancements to existing implementations or get involved with one of our Feature Teams (FTs).
 
 We're excited to have you on board. Together, we can shape S-CORE into a platform that's not only innovative but also a joy to be a part of.
 
