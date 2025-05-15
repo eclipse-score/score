@@ -18,4 +18,5 @@ Frameworks
 
 .. toctree::
 
-   feo/index.rst
+   fixed-execution-order/index.rst
+   daal/index.rst
