@@ -149,7 +149,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging :term:`framework` shall support user applications as log sources.
+   The logging :term:`framework` shall support user application as log source.
 
 .. feat_req:: Log Sources - Component and Platform
    :id: feat_req__logging__log_sources
