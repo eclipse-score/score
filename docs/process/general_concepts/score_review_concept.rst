@@ -66,6 +66,23 @@ The independence of testing respectively of test case review is covered by the u
 Which means that at least the test case definition or the test case review is performed by
 another person as the author of the verified work product.
 
+.. _workproduct_list_quality_review:
+
+S-CORE Work product list for Quality Review
+-------------------------------------------
+
+.. needtable::
+   :style: table
+   :columns: title;id;tags
+   :colwidths: 25,25,25
+   :sort: title
+
+   results = []
+
+   for need in needs.filter_types(["workproduct"]):
+                results.append(need)
+
+
 Inspection Conduct
 ^^^^^^^^^^^^^^^^^^
 
