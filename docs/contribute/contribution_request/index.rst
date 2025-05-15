@@ -179,3 +179,9 @@ The figure below shows options to report something.
   :alt: Reporting options overview
 
   Reporting options overview
+
+.. toctree::
+   :hidden:
+   :maxdepth: 2
+
+   feature_request

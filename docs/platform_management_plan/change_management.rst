@@ -19,6 +19,8 @@
    :tags: platform_management
    :realizes: wp__chm_plan
 
+.. _change_mgmt_plan:
+
 Change Management / Change Management Plan
 ------------------------------------------
 
