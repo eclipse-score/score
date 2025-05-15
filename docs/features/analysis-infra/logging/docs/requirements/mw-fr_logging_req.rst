@@ -471,11 +471,13 @@ Requirements
    :id: feat_req__logging__asil_support
    :reqtype: Non-Functional
    :security: NO
-   :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :safety: ASIL_D
+   :satisfies: stkh_req__functional_req__safe_comput
    :status: valid
 
    The logging :term:`framework` shall support the ASIL level of the user function to ensure compliance with the safety requirements of the application.
+
+   Additional Information: Freedom from interfernce must be guaranteed with regard to the calling components.
 
 .. feat_req:: Safety - System Classification
    :id: feat_req__logging__system_class
