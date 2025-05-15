@@ -18,12 +18,6 @@ Requirements
 ############
 
 
-.. .. gd_temp:: Feature Requirements Templates
-..    :id: gd_temp__log_req_feat_req
-..    :status: valid
-..    :complies: std_wp__iso26262__software_651, std_req__iso26262__support_641, std_req__iso26262__support_6421, std_req__iso26262__support_6425
-
-..    .. code-block:: rst
 
 .. feat_req:: Timestamping - Local Timestamp
    :id: feat_req__logging__timestamping_local
@@ -33,7 +27,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall support local timestamps for each log entry.
+   The logging :term:`framework` shall support local timestamps for each log entry.
 
 .. feat_req:: Timestamping - Original Timestamp
    :id: feat_req__logging__timestamping_original
@@ -43,7 +37,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall support original timestamps for routed log entries.
+   The logging :term:`framework` shall support original timestamps for routed log entries.
 
 .. feat_req:: Timestamping - Timestamp Synchronization
    :id: feat_req__logging__timestamping_sync
@@ -53,7 +47,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall support timestamp synchronization for log entries coming from different logging nodes.
+   The logging :term:`framework` shall support timestamp synchronization for log entries coming from different :term:`logging nodes <logging node>`.
 
 .. feat_req:: Log Severity Levels
    :id: feat_req__logging__severity_levels
@@ -63,7 +57,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall support log severity levels to categorize logs based on their importance.
+   The logging framework shall support a log level for each log entry.
 
 .. feat_req:: Log Prioritization
    :id: feat_req__logging__prioritization
@@ -83,7 +77,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall support logging of early startup events to capture critical initialization information.
+   The logging :term:`framework` shall support logging of early startup events to capture critical initialization information.
 
 .. feat_req:: Log entity Identifier
    :id: feat_req__logging__entity_identifier
@@ -93,7 +87,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall support logging entity identifiers for each log entry.
+   The logging :term:`framework` shall support :term:`logging entity identifiers<logging entity identifier>` for each log entry.
 
 .. feat_req:: Log Filtering - Log Levels
    :id: feat_req__logging__filtering_log_levels
@@ -103,7 +97,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall support filtering by log levels (e.g., FATAL, ERROR, WARN, INFO, DEBUG, VERBOSE such as in DLT).
+   The logging :term:`framework` shall support filtering by :term:`log levels <Log level>`.
 
 .. feat_req:: Log Filtering - Logging Entity ID
    :id: feat_req__logging__filtering_entity_id
@@ -113,7 +107,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall support filtering by logging entity identifiers.
+   The logging :term:`framework` shall support filtering by :term:`logging entity identifiers<logging entity identifier>`.
 
 .. feat_req:: Message Loss Detection - Detection and Reporting
    :id: feat_req__logging__message_loss_detection
@@ -123,7 +117,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall detect and report any message loss.
+   The logging :term:`framework` shall detect and report any message loss.
 
 .. feat_req:: Message Loss Detection - Graceful Handling
    :id: feat_req__logging__message_loss_handling
@@ -133,7 +127,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall provide mechanisms to handle message loss gracefully.
+   The logging :term:`framework` shall provide mechanisms to handle message loss gracefully.
 
    Additional Information: e.g. buffering or prioritizing critical messages
 
@@ -145,7 +139,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall allow context-specific log level activation at runtime to enable fine-grained control over logging behavior.
+   The logging :term:`framework` shall allow context-specific :term:`log level` activation at runtime to enable fine-grained control over logging behavior.
 
 .. feat_req:: Log Sources - User Application
    :id: feat_req__logging__log_sources_user_app
@@ -155,7 +149,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall support user applications as log sources.
+   The logging :term:`framework` shall support user applications as log sources.
 
 .. feat_req:: Log Sources - Component and Platform
    :id: feat_req__logging__log_sources
@@ -165,7 +159,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall support component features and platform as log sources.
+   The logging :term:`framework` shall support :term:`component` features and :term:` platform` as log sources.
 
 .. feat_req:: Log Sinks - Console
    :id: feat_req__logging__log_sinks_console
@@ -175,7 +169,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall support console as a log sink.
+   The logging :term:`framework` shall support console as a log sink.
 
 .. feat_req:: Log Sinks - Local File System
    :id: feat_req__logging__log_sinks_local_fs
@@ -185,7 +179,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall support local file system as log sink.
+   The logging :term:`framework` shall support local file system as log sink.
 
 
 
@@ -197,7 +191,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall support cloud-native drives via network as log sinks.
+   The logging :term:`framework` shall support cloud-native drives via network as log sinks.
 
 .. feat_req:: Log Sinks - Network
    :id: feat_req__logging__log_sinks_network
@@ -207,7 +201,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall support network channels, including a second dedicated Ethernet channel, as log sinks.
+   The logging :term:`framework` shall support network channels, including a second dedicated Ethernet channel, as log sinks.
 
 .. feat_req:: Log Sinks - Stdout for Unit Tests
    :id: feat_req__logging__log_sinks_stdout
@@ -217,7 +211,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall ensure logs appear on stdout when running unit tests.
+   The logging :term:`framework` shall ensure logs appear on stdout when running unit tests.
 
 .. feat_req:: Previous boot logging
    :id: feat_req__logging__boot_logging
@@ -227,7 +221,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__boot_logging
    :status: valid
 
-   The logging framework shall support logging of data to memory which survives a reboot
+   The logging :term:`framework` shall support logging of data to memory which survives a reboot
    cycle.
 
 .. feat_req:: Configuration - Log Level
@@ -238,7 +232,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall support configuration of log levels.
+   The logging :term:`framework` shall support configuration of :term:`log levels <Log level>`.
 
 .. feat_req:: Log Sinks - Storage Device
    :id: feat_req__logging__sink_device
@@ -248,7 +242,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall support configuration of the log storage device.
+   The logging :term:`framework` shall support configuration of the log storage device.
 
 .. feat_req:: Log Sinks - multiple Storage Device
    :id: feat_req__logging__sink_multiple_device
@@ -258,7 +252,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall support multiple log storage devices.
+   The logging :term:`framework` shall support multiple log storage devices.
 
 .. feat_req:: Log Sinks - Storage Strategy
    :id: feat_req__logging__sink_strategy
@@ -268,7 +262,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall support configurable log storage strategy.
+   The logging :term:`framework` shall support configurable :term:`log storage strategy`.
 
 .. feat_req:: Configuration - Buffer Size
    :id: feat_req__logging__config_buffer_size
@@ -278,7 +272,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall allow configuration of internal buffers sizes.
+   The logging :term:`framework` shall allow configuration of internal buffers sizes.
 
 .. feat_req:: Configuration - Storage Size
    :id: feat_req__logging__config_storage_size
@@ -288,7 +282,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall allow configuration of storage size per log file.
+   The logging :term:`framework` shall allow configuration of storage size per log file.
 
 .. feat_req:: Configuration - Permission Settings
    :id: feat_req__logging__config_permissions
@@ -298,7 +292,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall allow configuration of permission settings for log access.
+   The logging :term:`framework` shall allow configuration of permission settings for log access.
 
 .. feat_req:: Configuration - Log Filter
    :id: feat_req__logging__config_log_filter
@@ -308,7 +302,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall allow configuration of log filters.
+   The logging :term:`framework` shall allow configuration of log filters.
 
 .. feat_req:: Configuration - Logging Entity ID
    :id: feat_req__logging__config_entity_id
@@ -318,7 +312,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall allow configuration of logging entity IDs.
+   The logging :term:`framework` shall allow configuration of logging entity IDs.
 
 .. feat_req:: Configuration - On-Demand Functionality
    :id: feat_req__logging__config_on_demand
@@ -328,7 +322,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall support on-demand functionality, such as enabling or disabling log storage.
+   The logging :term:`framework` shall support on-demand functionality, such as enabling or disabling log storage.
 
 .. feat_req:: Configuration - Fallback Configurations
    :id: feat_req__logging__config_fallback
@@ -338,7 +332,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall provide fallback configurations, such as application-wide or system-wide defaults.
+   The logging :term:`framework` shall provide fallback configurations, such as application-wide or system-wide defaults.
 
 .. feat_req:: Configuration - Custom Types Extension
    :id: feat_req__logging__config_custom_types
@@ -348,7 +342,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall allow extensions for custom log types.
+   The logging :term:`framework` shall allow extensions for custom log types.
 
 .. feat_req:: Error Handling - Recoverable Errors
    :id: feat_req__logging__error_handling_recoverable
@@ -358,7 +352,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall continue operation in case of recoverable errors.
+   In case of recoverable error, the logging :term:`framework` shall continue the current operations.
 
 .. feat_req:: Error Handling - Non-Recoverable Errors
    :id: feat_req__log__err_handling_nonrec
@@ -368,7 +362,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall deactivate silently and set an error state reported on shutdown in case of non-recoverable errors.
+   In case of non-recoverable error, the logging :term:`framework` shall deactivate silently and set an error state reported on shutdown.
 
 .. feat_req:: Error Handling - Application Isolation
    :id: feat_req__logging__error_handling_isolation
@@ -378,7 +372,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall ensure that user applications are not affected by logging framework errors.
+   The logging :term:`framework` shall ensure that user applications are not affected by logging :term:`framework` errors.
 
 .. feat_req:: Compatibility - Supported Operating Systems
    :id: feat_req__logging__compat_os
@@ -388,17 +382,17 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall support QNX and Linux operating systems (encapsulated via OSAL).
+   The logging :term:`framework` shall support QNX and Linux operating systems (encapsulated via OSAL).
 
 .. feat_req:: Compatibility - Supported Programming Languages
    :id: feat_req__logging__compat_languages
    :reqtype: Interface
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :satisfies: stkh_req__dev_experience__logging_support, stkh_req__dev_experience__prog_languages
    :status: valid
 
-   The logging framework shall support C++, Rust, and Python programming languages.
+   The logging :term:`framework` shall support C++, Rust, and Python programming languages.
 
 .. feat_req:: Resource Consumption - Storage
    :id: feat_req__logging__resource_storage
@@ -408,7 +402,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall minimize storage resource consumption.
+   The logging :term:`framework` shall minimize storage resource consumption.
 
 .. feat_req:: Resource Consumption - Communication Channel
    :id: feat_req__logging__resource_comm_channel
@@ -418,7 +412,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall minimize communication channel resource consumption.
+   The logging :term:`framework` shall minimize communication channel resource consumption.
 
 .. feat_req:: Resource Consumption - Runtime Resources
    :id: feat_req__logging__resource_runtime
@@ -428,7 +422,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall minimize runtime resource consumption.
+   The logging :term:`framework` shall minimize runtime resource consumption.
 
 .. feat_req:: Resource Consumption - Performance Impact
    :id: feat_req__logging__resource_performance
@@ -438,7 +432,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall have low impact on overall system performance.
+   The logging :term:`framework` shall have low impact on overall system performance.
 
 .. feat_req:: Quality of Service - Message Handling
    :id: feat_req__logging__qos_message_handling
@@ -448,7 +442,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall provide QoS for handling overflows or dropping log messages.
+   The logging :term:`framework` shall provide:term:` QoS` for handling overflows or dropping log messages.
 .. ist "rovide QoS for handling overflows or dropping log messages." doppelt zu den loos detection req.?
 
 .. feat_req:: Compatibility - DLT Protocol
@@ -456,10 +450,10 @@ Requirements
    :reqtype: Interface
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :satisfies: stkh_req__dev_experience__logging_support, stkh_req__overall_goals__enable_cooperation
    :status: valid
 
-   The logging framework shall be DLT (Diagnostic Log and Trace) compatible.
+   The logging :term:`framework` shall be :term:`DLT` compatible.
 
    Additional Information: support for DLT message format, sending and receiving DLT messages, and integration with existing DLT tools and infrastructure.
 
@@ -468,10 +462,10 @@ Requirements
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__dev_experience__logging_support
+   :satisfies: stkh_req__dev_experience__logging_support, stkh_req__dependability__security_features
    :status: valid
 
-   The logging framework shall ensure that only authorized users can access log files.
+   The logging :term:`framework` shall ensure that only authorized users can access log files.
 
 .. feat_req:: Safety - ASIL Level Support
    :id: feat_req__logging__asil_support
@@ -481,7 +475,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall support the ASIL level of the user function to ensure compliance with the safety requirements of the application.
+   The logging :term:`framework` shall support the ASIL level of the user function to ensure compliance with the safety requirements of the application.
 
 .. feat_req:: Safety - System Classification
    :id: feat_req__logging__system_class
@@ -491,4 +485,4 @@ Requirements
    :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
-   The logging framework shall be classified according to the overall system's safety concept if logging information is part of the verification strategy.
+   The logging :term:`framework` shall be classified according to the overall system's safety concept if logging information is part of the verification strategy.
