@@ -12,16 +12,10 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Feature Safety Work Products Template
-=====================================
+Inter-process Communication Safety Work Products
+================================================
 
-.. gd_temp:: Feature Safety Work Products Template
-   :id: gd_temp__feature_safety_wp
-   :status: valid
-   :complies: std_req__iso26262__management_6465, std_req__iso26262__management_6466, std_req__iso26262__management_6467, std_req__iso26262__management_6468, std_req__iso26262__management_6469
-
-
-.. list-table:: Feature <feature> Workproducts
+.. list-table:: Feature Inter-process Communication Workproducts
     :header-rows: 1
 
     * - Workproduct Id
@@ -34,29 +28,29 @@ Feature Safety Work Products Template
     * - :need:`wp__feat_request`
       - :need:`gd_temp__change__feature_request`
       - :ndf:`copy('status', need_id='gd_temp__change__feature_request')`
-      - <link to issue>
-      - <Link to WP>
-      - <automated>
+      - `#69 <https://github.com/eclipse-score/score/issues/69>`_
+      - :need:`doc__ipc`
+      - :ndf:`copy('status', need_id='doc__ipc')`
 
     * - :need:`wp__requirements__feat`
       - :need:`gd_temp__req__feat_req`
       - :ndf:`copy('status', need_id='gd_temp__req__feat_req')`
-      - <link to issue>
-      - <Link to WP>
+      - `#69 <https://github.com/eclipse-score/score/issues/69>`_
+      - :doc:`../requirements/index`
       - <automated>
 
     * - :need:`wp__requirements__feat_aou`
       - :need:`gd_temp__req__aou_req`
       - :ndf:`copy('status', need_id='gd_temp__req__aou_req')`
       - <link to issue>
-      - <Link to WP>
+      - :doc:`../requirements/index`
       - <automated>
 
     * - :need:`wf__cr_mt_featarch`
       - :need:`gd_temp__arch__feature`
       - :ndf:`copy('status', need_id='gd_temp__arch__feature')`
-      - <link to issue>
-      - <Link to WP>
+      - `#388 <https://github.com/eclipse-score/score/issues/388>`_
+      - :doc:`../architecture/index`
       - <automated>
 
     * - :need:`wp__feature_safety_analysis`

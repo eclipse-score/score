@@ -29,6 +29,7 @@ Inter-process Communication
 
    architecture/index.rst
    requirements/index.rst
+   safety_planning/index.rst
    roadmap.rst
 
 
@@ -393,4 +394,3 @@ License Impact
 
 How to Teach This
 =================
-

@@ -414,8 +414,8 @@ Functional Safety Management SW Platform Work Products
       - <automated>
 
     * - :need:`wp__platform_sw_release_note`
-      - :doc:`release_management`
-      - not started
+      - :need:`gd_temp__rel__plat_rel_note`
+      - :ndf:`copy('status', need_id='gd_temp__rel__plat_rel_note')`
       - <Link to issue>
       - <Link to WP>
       - <automated>
@@ -437,20 +437,20 @@ Functional Safety Management SW Platform Work Products
     * - :need:`wp__sw_development_plan`
       - :need:`wf__platform__cr_mt_platform_mgmt_plan`
       - :ndf:`copy('status', need_id='wf__platform__cr_mt_platform_mgmt_plan')`
-      - <Link to issue>
-      - :doc:`software_development`
-      - not started
+      - `#583 <https://github.com/eclipse-score/score/issues/583>`_
+      - :need:`doc__software_development_plan`
+      - :ndf:`copy('status', need_id='doc__software_development_plan')`
 
     * - :need:`wp__verification__plan`
       - :need:`wf__platform__cr_mt_platform_mgmt_plan`
       - :ndf:`copy('status', need_id='wf__platform__cr_mt_platform_mgmt_plan')`
-      - <Link to issue>
-      - :doc:`software_verification`
-      - not started
+      - `#611 <https://github.com/eclipse-score/score/issues/611>`_
+      - :need:`doc__verification_plan`
+      - :ndf:`copy('status', need_id='doc__verification_plan')`
 
     * - :need:`wp__tool_verification_report`
-      - :doc:`tool_management`
-      - not started
+      - :need:`doc__platform_tool_management_plan`
+      - :ndf:`copy('status', need_id='doc__platform_tool_management_plan')`
       - <Link to issue>
       - <Link to WP>
       - <automated>
@@ -467,10 +467,17 @@ Functional Safety Management Feature Specific Work Products
 
 See feature tree documents (created by using :need:`gd_temp__feature_safety_wp`):
 
-<link to document for every feature>
+- Inter-process Communication: :doc:`/features/communication/ipc/safety_planning/index`
+- Common Libraries: <link>
+- Logging: <link>
+- Persistency: <link>
+- Fixed Execution Order (Framework): <link>
 
-Functional Safety Work Products Status Charts
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: list of features for v0.5 according to `S-CORE Roadmap <https://github.com/orgs/eclipse-score/projects/17>`_
+and :ref:`releases`
+
+Platform Management Plan - Documents Status Chart
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. needtable::
    :style: table
