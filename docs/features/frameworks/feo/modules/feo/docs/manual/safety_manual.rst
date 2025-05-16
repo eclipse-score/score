@@ -40,7 +40,6 @@ Assumptions on the Environment
    :safety: ASIL_B
    :status: invalid
 
-   The following list is *not yet complete*. It needs to be refined based on a final implementation.
    Only the following crates of the FEO module shall be used to build code that runs on
    targets in release builds.
 
@@ -57,7 +56,7 @@ Assumptions on the Environment
    :safety: ASIL_B
    :status: valid
 
-   The Rust core lib shall be safety qualified
+   The Rust core lib used to build FEO shall be qualified according to the same ASIL level as the FEO framework.
 
 
 .. aou_req:: rust_std_lib_modules
@@ -67,10 +66,6 @@ Assumptions on the Environment
    :safety: ASIL_B
    :status: invalid
 
-   The following list is *not yet complete*. It needs to be refined based on a final implementation.
-   At the moment, it covers probably about 95% of std library usages.
-   An accurate list could be determined by switching feo to #![no_std] and looking at the compilation errors,
-   but it gets quickly out of date with a changing codebase.
    The following items from the Rust std library shall be safety qualified:
 
    - std::collections::HashMap
@@ -97,6 +92,11 @@ Assumptions on the Environment
    - std::time::SystemTime
    - std::time::UNIX_EPOCH
    - std::vec::Vec
+
+   **Note:** The above list is not yet complete. It needs to be refined based on a final implementation.
+   At the moment, it covers probably about 95% of std library usages.
+   An accurate list could be determined by switching feo to #![no_std] and looking at the compilation errors,
+   but it gets quickly out of date with a changing codebase.
 
 
 

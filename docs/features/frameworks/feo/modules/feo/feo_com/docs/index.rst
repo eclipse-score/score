@@ -13,15 +13,8 @@
    # *******************************************************************************
 
 
-Module Documentation: feo
-#########################
+Component Documentation: feo_com
+################################
 
-.. toctree::
-   :maxdepth: 1
-
-   manual/safety_manual
-   ../feo/docs/index
-   ../feo_com/docs/index
-   ../feo_log/docs/index
-   ../feo_time/docs/index
-   ../feo_tracing/docs/index
+This component will be replaced by or become a wrapper of the interface `mw::com` provided by the feature
+"Communication". In the latter case, it is planned to be integrated into the component feo (see :ref:`comp_doc_feo`).
