@@ -38,7 +38,7 @@ To activate this feature, use the following feature flag:
 Abstract
 ========
 
-This feature request describes the key-value storage that is needed by
+This feature request describes the key-value storage (KVS) that is needed by
 applications to store either temporary or permanent data in an easy way that
 conforms to most programming languages that provide a hash, hashmap, dictionary
 or similar data structure. Access to the KVS is possible from any support

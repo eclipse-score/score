@@ -23,7 +23,7 @@ Requirements
    :satisfies: stkh_req__dev_experience__prog_languages
    :status: valid
 
-   The key-value storage system shall provide concurrent access through both C++ and Rust interfaces.
+   The KVS system shall provide access through both C++ and Rust interfaces.
 
 .. feat_req:: Maximum Size
    :id: feat_req__kvs__maximum_size
@@ -31,19 +31,9 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :satisfies: stkh_req__functiona_req__support_of_store
-   :status: valid
+   :status: invalid
 
-   The key-value storage system shall support specification of its maximum capacity at compile time.
-
-.. feat_req:: Thread Safety
-   :id: feat_req__kvs__thread_safety
-   :reqtype: Functional
-   :security: NO
-   :safety: ASIL_B
-   :satisfies: stkh_req__functiona_req__support_of_store
-   :status: valid
-
-   The key-value storage system shall provide thread-safe access on a per-key basis.
+   The KVS system shall support specification of its maximum capacity at compile time.
 
 .. feat_req:: Multiple KVS per Software Architecture Element
    :id: feat_req__kvs__multiple_kvs
@@ -53,7 +43,7 @@ Requirements
    :satisfies: stkh_req__functiona_req__support_of_store
    :status: valid
 
-   The key-value storage system shall allow instantiating multiple independent stores per software architecture element.
+   The KVS system shall allow instantiating multiple independent stores per software architecture element.
 
 .. feat_req:: Supported Datatypes (Keys)
    :id: feat_req__kvs__supported_datatypes_keys
@@ -63,7 +53,7 @@ Requirements
    :satisfies: stkh_req__functiona_req__support_of_store
    :status: valid
 
-   The key-value storage system shall support UTF-8 encoded strings as valid key types.
+   The KVS system shall support UTF-8 encoded strings as valid key types.
 
 .. feat_req:: Supported Datatypes (Values)
    :id: feat_req__kvs__supported_datatypes_values
@@ -73,7 +63,7 @@ Requirements
    :satisfies: stkh_req__functiona_req__support_of_store
    :status: valid
 
-   The key-value storage system shall support storing both primitive and non-primitive datatypes as values.
+   The KVS system shall support storing both primitive and non-primitive datatypes as values.
    The supported datatypes shall match those used by the IPC feature.
 
 .. feat_req:: Default Values
@@ -84,8 +74,7 @@ Requirements
    :satisfies: stkh_req__functiona_req__support_of_store
    :status: valid
 
-   The key-value storage system shall support predefined default values for keys, specified via a configuration file.
-   Note: Not every key is required to have a default value.
+   The KVS system shall support predefined default values for keys.
 
 .. feat_req:: Default Value Retrieval
    :id: feat_req__kvs__default_value_retrieval
@@ -95,7 +84,7 @@ Requirements
    :satisfies: stkh_req__functiona_req__support_of_store
    :status: valid
 
-   The key-value storage system shall support retrieving the default value associated with a key.
+   The KVS system shall support retrieving the default value associated with a key.
 
 .. feat_req:: Default Value Reset
    :id: feat_req__kvs__default_value_reset
@@ -105,7 +94,7 @@ Requirements
    :satisfies: stkh_req__functiona_req__support_of_store
    :status: valid
 
-   The key-value storage system shall support resetting a single key or all keys to their respective default values.
+   The KVS system shall support resetting a single key or all keys to their respective default values.
 
 .. feat_req:: Persistency
    :id: feat_req__kvs__persistency
@@ -115,7 +104,7 @@ Requirements
    :satisfies: stkh_req__functiona_req__support_of_store
    :status: valid
 
-   The key-value storage system shall persist stored data and provide an API to explicitly trigger persistence.
+   The KVS system shall persist stored data and provide an API to explicitly trigger persistence.
 
 .. feat_req:: Integrity Check
    :id: feat_req__kvs__integrity_check
@@ -125,7 +114,7 @@ Requirements
    :satisfies: stkh_req__functiona_req__support_of_store
    :status: valid
 
-   The key-value storage system shall detect and report data corruption.
+   The KVS system shall detect and report data corruption.
    Note: Implementation depends on AoUs.
 
 .. feat_req:: Versioning
@@ -136,7 +125,7 @@ Requirements
    :satisfies: stkh_req__functiona_req__support_of_store
    :status: valid
 
-   The key-value storage system shall support versioning for different layout configurations.
+   The KVS system shall support versioning for different layout configurations.
 
 .. feat_req:: Update Mechanism
    :id: feat_req__kvs__update_mechanism
@@ -146,7 +135,7 @@ Requirements
    :satisfies: stkh_req__functiona_req__support_of_store
    :status: valid
 
-   The key-value storage system shall implement mechanisms to upgrade from one version to another, including multi-version jumps.
+   The KVS system shall implement mechanisms to upgrade from one version to another, including multi-version jumps.
 
 .. feat_req:: Snapshots
    :id: feat_req__kvs__snapshots
@@ -156,7 +145,7 @@ Requirements
    :satisfies: stkh_req__functiona_req__support_of_store
    :status: valid
 
-   The key-value storage system shall support explicit creation of snapshots identified by unique IDs and allow rollback to previous snapshots.
+   The KVS system shall support explicit creation of snapshots identified by unique IDs and allow rollback to previous snapshots.
    Snapshots shall also be deletable.
 
 .. feat_req:: Tooling
@@ -167,7 +156,7 @@ Requirements
    :satisfies: stkh_req__functiona_req__support_of_store
    :status: valid
 
-   The key-value storage system shall provide tooling support for viewing and modifying key-value pairs during development and debugging.
+   The KVS system shall provide tooling support for viewing and modifying key-value pairs during development and debugging.
 
 .. feat_req:: Stable APIs
    :id: feat_req__kvs__stable_api
@@ -272,7 +261,7 @@ Requirements
 
    The KVS shall ensure that key operations are typically completed within 5 milliseconds.
 
-.. feat_req:: Intra-process communication
+.. feat_req:: Intra-Process Data Access
    :id: feat_req__kvs__intra_process_comm
    :reqtype: Functional
    :security: NO
