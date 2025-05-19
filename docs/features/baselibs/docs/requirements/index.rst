@@ -25,6 +25,16 @@ Requirements
 
    The base libraries shall include core software utilities and common infrastructure components needed by multiple platform modules.
 
+.. feat_req:: Safety Relevance
+   :id: feat_req__baselibs__safety
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :satisfies: stkh_req__functional_req__base_libraries
+   :status: valid
+
+   The base libraries shall implement functionality necessary to support safety-relevant platform components up to ASIL-B.
+
 .. feat_req:: Multi-Language APIs
    :id: feat_req__baselibs__multi_language_apis
    :reqtype: Functional
@@ -54,3 +64,13 @@ Requirements
    :status: valid
 
    The base libraries shall be designed for maintainability and code reuse.
+
+.. feat_req:: Security Robustness
+   :id: feat_req__baselibs__security
+   :reqtype: Non-Functional
+   :security: YES
+   :safety: QM
+   :satisfies: stkh_req__functional_req__base_libraries
+   :status: valid
+
+   The base libraries shall adhere to secure coding standards to prevent vulnerabilities across platform components.

@@ -133,7 +133,7 @@ The base libraries are licensed under Apache License 2.0.
 How to Teach This
 =================
 
-Each library is expected to have documentation that includes an API reference and usage examples
+Each library is expected to have a user manual that includes an API reference and usage examples
 where necessary.
 
 Rejected Ideas

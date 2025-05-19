@@ -123,7 +123,7 @@ Functional requirements
 .. stkh_req:: Base Libraries
    :id: stkh_req__functional_req__base_libraries
    :reqtype: Functional
-   :security: NO
+   :security: YES
    :safety: ASIL_B
    :rationale: Common libraries reduce duplication, improve consistency and quality across components.
    :status: valid
