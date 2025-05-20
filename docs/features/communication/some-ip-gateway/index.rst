@@ -12,13 +12,13 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _ipc_feature:
+.. _some_ip_gateway_feature:
 
 SOME/IP-Gateway
 ###########################
 
 .. document:: SOME/IP-Gateway
-   :id:
+   :id: _some_ip_gateway_feature
    :status: valid
    :safety: ASIL_B
    :tags: contribution_request, feature_request
@@ -42,7 +42,7 @@ To activate this feature, use the following feature flag:
 Abstract
 ========
 
-his contribution describes how data-exchange that is outside the scope of internal communication (IPC) shall be handled in modules that service data-input and data-output to a platform.
+This contribution describes how data-exchange that is outside the scope of internal communication (IPC) shall be handled in modules that service data-input and data-output to a platform.
 Services handling data in this context can be considered as gateways.
 The focus is on a gateway to handle SOME/IP communication with external devices or counterparts, therefore this feature request is called: SOME/IP-Gateway
 
@@ -61,24 +61,23 @@ For data-exchange between applications the IPC feature is providing high-speed c
 the S-CORE platform, services are required that will handle protocols for communication with both side. This is for instance the case when communication with rest of vehicle or sensors
 needs to be realized with the SOME/IP protocol.
 
-For application developers it should be
+For software component developers it should be unrecognized that data is originated from a SOME/IP communication channel, the data should be provided with the same API as in IPC.
+Nonetheless integrators and architects will have to configure the system to receive or send data over SOME/IP, hence provide it as a SOME/IP service.
 
-IPC Security Goals
-------------------
+SOME/IP Gateway Security Goals
+------------------------------
 
-The security approach of the IPC binding achieves the security goals:
+The security approach for SOME/IP shall achieve the following security goals:
 
-- confidentiality (:need:`feat_req__ipc__confidentiality`)
-- integrity (:need:`feat_req__ipc__integrity`)
-- availability (per criticality-level) (:need:`feat_req__ipc__acl_placement`)
+- to be defined
 
 Safety Impact
 =============
 
-The safety impact was already exhaustively covered in :ref:`mot_mixed_criticality` and :ref:`spec_mixed_criticality`.
+  # The safety impact was already exhaustively covered in :ref:`mot_mixed_criticality` and :ref:`spec_mixed_criticality`.
 
-Overall, the communication framework supports use cases up to ASIL-B (:need:`feat_req__ipc__asil`).
-Future extension to ASIL-D use cases is feasible but not in scope for now.
+  # Overall, the communication framework supports use cases up to ASIL-B (:need:`feat_req__ipc__asil`).
+  # Future extension to ASIL-D use cases is feasible but not in scope for now.
 
 License Impact
 ==============
