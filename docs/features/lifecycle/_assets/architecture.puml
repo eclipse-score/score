@@ -1,0 +1,29 @@
+@startuml
+
+
+
+interface IComponentHealth as ICH
+interface ILifecycleHealthStatus as ILHS
+interface ILifecycleControl as ILC
+
+
+package "Lifecycle and Health Management" as LM {
+    [Launch and Health Manager] <<process>>
+    [LM] -- ICH: provide
+    [LM] -- ILHS: provide
+    [LM] -- ILC: provide
+}
+
+
+[LM] --> [Configuration files]: use
+
+component "ECU State Manager" as ESM
+[ESM] -> ILC: use
+[ESM] -> ILHS: use
+
+package "ProcessHealthManager" as PH {
+    [Heathmonitor] <<library>>
+    
+}
+
+@enduml

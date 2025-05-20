@@ -18,26 +18,18 @@
 
 .. note:: Document header
 
-.. document:: [Your Feature Name]
-   :id: doc__change__feature_name
+.. document:: Lifecycle and Health
+   :id: doc__lifecycle_health
    :status: draft
    :safety: ASIL_B
-   :tags: template
-
-.. attention::
-    The above directive must be updated according to your Feature.
-
-    - Modify ``name`` to be your Feature Name
-    - Modify ``id`` to be your Feature Name in upper snake case preceded by ``DOC_``
-    - Adjust ``status`` to be ``valid``
-    - Adjust ``asil`` according to your needs
+   :tags: feature_request, lifecycle_health
 
 Feature flag
 ------------
 
 To activate this feature, use the following feature flag:
 
-``experimental_[your_feature_name]``
+``experimental_lifecycle_health``
 
     .. note::
      The feature flag must reflect the feature name in snake_case. Further, it is prepended with ``experimental_``, as
@@ -45,6 +37,12 @@ To activate this feature, use the following feature flag:
 
 Abstract
 --------
+
+The platform requires a standard way to start and stop applications. Additionally, there must be a way
+to supervise the application health and control recovery of failed applications.
+
+TODO, add more here...
+
 
 [A short (~200 word) description of the contribution being addressed.]
 
@@ -75,6 +73,55 @@ Rationale
 Specification
 -------------
 
+Requirements
+-------------
+high level:
+- There must be a way to launch applications
+- Launching of the applications must be configurable
+- Support static bootup
+- Support dynamic control of the applications 
+- Dynamically loading configuration during runtime
+  
+Architecture
+-------------
+
+High level static architecture:
+(add diagram here)
+
+- Specify what the health management means
+   - Support Alive
+   - Support Deadline
+   - Support "logical health" management
+   - Support loading of the configuration from a file
+   - Support specifying the  programmable configuration
+- Specify PLMS component structure
+- Dependency tree approach
+
+
+
+
+
+
+- Launch manager
+  * Provide infrastructure for starting process
+  * Configuration files for static rules
+  * Provided API for dynamic control of the startup
+     *  Start component(s)
+     *  Stop component(s)
+     *  Control health monitoring
+     *  Health management of launch manager itself
+     *  
+  * Consumed API
+  
+
+
+- Process Health Management
+
+
+
+
+
+
 [Describe the requirements, architecture of any new feature.] or
 [Describe the change to requirements, architecture, implementation, process, documentation, infrastructure of any change request.]
 
@@ -87,7 +134,7 @@ Specification
 Backwards Compatibility
 -----------------------
 
-[Describe potential impact (especially including safety and security impacts) and severity on pre-existing platform/project elements.]
+Initial development, not relevant
 
 
 Security Impact
