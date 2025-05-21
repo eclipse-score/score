@@ -55,7 +55,7 @@ jobs:
         run: sudo apt update && sudo apt install -y graphviz
       - name: Build documentation
         run: |
-          bazel build //docs:github-pages && cp bazel-bin/docs/github-pages.tar .
+          bazel build //docs:github_pages && cp bazel-bin/docs/github_pages.tar .
         # ------------------------------------------------------------------------------
         # Generate a unique artifact name to ensure proper tracking in all scenarios
         # ------------------------------------------------------------------------------
