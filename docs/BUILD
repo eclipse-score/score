@@ -33,26 +33,26 @@ docs(
 )
 
 # Used inside //docs.bzl to enable access to the assets (css files etc.)
-filegroup(
-    name = "assets",
-    srcs = glob([
-        "_assets/**",
-    ]),
-    visibility = ["//visibility:public"],
-)
-
-filegroup(
-    name = "html",
-    srcs = [":docs"],
-)
-
-pkg_files(
-    name = "html_files",
-    srcs = [":html"],
-    renames = {"html": ""},
-)
-
-pkg_tar(
-    name = "github-pages",
-    srcs = [":html_files"],
-)
+# filegroup(
+#     name = "assets",
+#     srcs = glob([
+#         "_assets/**",
+#     ]),
+#     visibility = ["//visibility:public"],
+# )
+#
+# filegroup(
+#     name = "html",
+#     srcs = [":docs"],
+# )
+#
+# pkg_files(
+#     name = "html_files",
+#     srcs = [":html"],
+#     renames = {"html": ""},
+# )
+#
+# pkg_tar(
+#     name = "github-pages",
+#     srcs = [":html_files"],
+# )
