@@ -69,7 +69,7 @@ jobs:
         uses: actions/upload-artifact@v4.4.0
         with:
           name: github-pages-${{ github.event.pull_request.head.sha || github.sha }}
-          path: github-pages.tar
+          path: github_pages.tar
           retention-days: 1
           if-no-files-found: error
 
