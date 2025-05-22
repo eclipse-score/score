@@ -13,7 +13,7 @@
 
 module(
     name = "score_platform",
-    version = "0.1.0",
+    version = "0.1.1",
     compatibility_level = 0,
 )
 
@@ -22,7 +22,7 @@ module(
 # Python version
 #
 ###############################################################################
-bazel_dep(name = "rules_python", version = "1.0.0")
+bazel_dep(name = "rules_python", version = "1.4.1")
 
 PYTHON_VERSION = "3.12"
 
@@ -90,4 +90,4 @@ bazel_dep(name = "score_cr_checker", version = "0.2.2")
 bazel_dep(name = "score_starpls_lsp", version = "0.1.0")
 # Checker rule for CopyRight checks/fixs
 
-bazel_dep(name = "score_docs_as_code", version = "0.2.4")
+bazel_dep(name = "score_docs_as_code", version = "0.2.5")
