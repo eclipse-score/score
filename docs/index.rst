@@ -136,4 +136,5 @@ Project structure and processes
       Releases <score_releases/index.rst>
       process/index
       PMP <platform_management_plan/index.rst>
+      verification/index
       Eclipse <https://projects.eclipse.org/projects/automotive.score>

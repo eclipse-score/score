@@ -12,12 +12,13 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Safety Manual Template
-======================
+Folder Templates
+################
 
-.. gd_temp:: Safety Manual Template
-   :id: gd_temp__safety_manual
-   :status: valid
-   :complies: std_req__iso26262__system_6411, std_req__iso26262__system_6412, std_req__iso26262__system_6413, std_req__iso26262__system_6414, std_req__iso26262__system_6421, std_req__iso26262__system_6422, std_req__iso26262__software_641, std_req__iso26262__software_642, std_req__iso26262__software_645, std_req__iso26262__support_12421
+.. toctree::
+   :maxdepth: 1
+   :glob:
+   :titlesonly:
 
-   For the content see here: :need:`doc__module_name_safety_manual`
+   features/index.rst
+   modules/index.rst

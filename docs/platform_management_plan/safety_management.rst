@@ -392,13 +392,6 @@ Functional Safety Management SW Platform Work Products
       - <Link to WP>
       - intermediate
 
-    * - :need:`wp__feature_dfa`
-      - <Link to process>
-      - <Process status>
-      - <Link to issue>
-      - <Link to WP>
-      - <automated>
-
     * - :need:`wp__platform_sw_build_config`
       - :need:`doc__software_development_plan`
       - :ndf:`copy('status', need_id='doc__software_development_plan')`

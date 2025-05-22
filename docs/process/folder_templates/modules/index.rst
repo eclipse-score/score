@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2025 Contributors to the Eclipse Foundation
+   # Copyright (c) 2024 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,12 +12,14 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Feature Architecture Template
-#############################
+.. _modules_template:
 
-.. gd_temp:: Feature Architecture Templates
-    :id: gd_temp__arch__feature
-    :status: valid
-    :complies: std_req__iso26262__software_741, std_req__iso26262__software_742, std_req__iso26262__software_743
+Modules
+=======
 
-    For the content see here: :ref:`feature_architecture_template`
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   */docs/index
+   */*/docs/index

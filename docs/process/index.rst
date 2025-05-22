@@ -95,9 +95,20 @@ How to contribute to the S-CORE project (e.g. naming convention, folder structur
 Standards
 ---------
 
-The the standard references the S-CORE project's processes are derived from can be found here:
+The standard references the S-CORE project's processes are derived from can be found here:
 
 .. toctree::
    :maxdepth: 1
 
    standards/index.rst
+
+Templates for Folders
+---------------------
+
+These template folders for features, modules and components can be copied to establish the intended structure
+and they include the available templates for the work products already in the right place:
+
+.. toctree::
+   :maxdepth: 1
+
+   folder_templates/index.rst
