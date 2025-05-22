@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -13,10 +13,8 @@
    # *******************************************************************************
 
 
-Frameworks
-##########
+Component Documentation: feo_log
+################################
 
-.. toctree::
-
-   feo/index.rst
-   feo/modules/index
+This component will be replaced by or become a wrapper of the interface `mw::com` provided by the feature
+"Logging". In the latter case, it is planned to be integrated into the component feo (see :ref:`comp_doc_feo`).

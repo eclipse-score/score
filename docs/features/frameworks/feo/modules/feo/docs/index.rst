@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -13,10 +13,15 @@
    # *******************************************************************************
 
 
-Frameworks
-##########
+Module Documentation: feo
+#########################
 
 .. toctree::
+   :maxdepth: 1
 
-   feo/index.rst
-   feo/modules/index
+   manual/safety_manual
+   ../feo/docs/index
+   ../feo_com/docs/index
+   ../feo_log/docs/index
+   ../feo_time/docs/index
+   ../feo_tracing/docs/index
