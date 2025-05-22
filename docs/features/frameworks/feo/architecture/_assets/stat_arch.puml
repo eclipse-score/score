@@ -1,0 +1,60 @@
+/'
+   # *******************************************************************************
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
+   #
+   # See the NOTICE file(s) distributed with this work for additional
+   # information regarding copyright ownership.
+   #
+   # This program and the accompanying materials are made available under the
+   # terms of the Apache License Version 2.0 which is available at
+   # https://www.apache.org/licenses/LICENSE-2.0
+   #
+   # SPDX-License-Identifier: Apache-2.0
+   # *******************************************************************************
+'/
+allowmixing
+
+package FEO <<feature>> as feat_feo {
+
+    struct "feo::agent::Primary" as feo_primary
+    struct "feo::agent::PrimaryConfig" as feo_primary_config
+    struct "feo::agent::Secondary" as feo_secondary
+    struct "feo::agent::SecondaryConfig" as feo_secondary_config
+    struct "feo::scheduler::Scheduler" as feo_scheduler {
+        run()
+        sync_remotes()
+    }
+
+    interface "feo::activity::Activity" as activity {
+        startup()
+        step()
+        shutdown()
+    }
+
+    feo_primary -d-> activity: use
+    feo_primary -d-> feo_scheduler: use
+
+    feo_secondary -d-> activity: use
+
+}
+
+package "User Application" <<application>> as user_application {
+
+    component "Primary Process" as PP
+    component "Secondary Process" as SP
+
+    struct "UserActivity_1" as user_activity_1
+    struct "UserActivity_2" as user_activity_2
+
+    PP -d-> user_activity_1 : use
+    SP -d-> user_activity_2 : use
+
+    user_activity_1 .d.|> activity : impl
+    user_activity_2 .d.|> activity : impl
+}
+
+PP -d-> feo_primary : use
+PP -d-> feo_primary_config : use
+SP -d-> feo_secondary : use
+SP -d-> feo_secondary_config : use
+

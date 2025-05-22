@@ -28,6 +28,7 @@ and :need:`Feature Request Template <gd_temp__change__feature_request>`.
    :hidden:
 
    requirements/index.rst
+   architecture/feature_architecture
 
 Feature flag
 ============
