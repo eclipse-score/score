@@ -120,6 +120,17 @@ Functional requirements
    The platform shall support safe computation.
 
 
+.. stkh_req:: Base Libraries
+   :id: stkh_req__functional_req__base_libraries
+   :reqtype: Functional
+   :security: YES
+   :safety: ASIL_B
+   :rationale: Common libraries reduce duplication, improve consistency and quality across components.
+   :status: valid
+
+   The software platform shall provide a set of base libraries offering common functionality for platform components.
+
+
 .. stkh_req:: Hardware Accelerated Computation
    :id: stkh_req__functional_req__hardware_comput
    :reqtype: Functional
