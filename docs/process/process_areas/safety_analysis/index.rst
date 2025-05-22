@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,26 +12,17 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Workflows
-=========
+.. _safety_analysis:
+
+Safety Analysis
+###############
 
 .. toctree::
    :maxdepth: 1
-   :caption: Contents:
 
-   process_management
-   quality_management
-
-S-CORE Workflow list
---------------------
-
-.. needtable::
-   :style: table
-   :columns: title;id;tags
-   :colwidths: 25,25,25
-   :sort: title
-
-   results = []
-
-   for need in needs.filter_types(["workflow"]):
-                results.append(need)
+   guidance/index
+   safety_analysis_concept
+   safety_analysis_getstrt
+   safety_analysis_roles
+   safety_analysis_workflow
+   safety_analysis_workproducts

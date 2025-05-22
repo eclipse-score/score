@@ -28,6 +28,7 @@ Process Areas
    problem_resolution/index.rst
    release_management/index.rst
    requirements_engineering/index.rst
+   safety_analysis/index.rst
    safety_management/index.rst
    tool_management/index.rst
    verification/index.rst
