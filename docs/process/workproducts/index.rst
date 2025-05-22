@@ -47,26 +47,6 @@ General
 
    Trainings for safety and security for S-CORE
 
-.. workproduct:: Quality management plan
-   :id: wp__qms
-   :status: draft
-   :tags: safety
-   :complies: std_wp__iso26262__management_553
-
-   Quality management process descriptions and definitions
-
-.. workproduct:: Quality report
-   :id: wp__qms_report
-   :status: draft
-   :tags: safety
-   :complies: std_wp__iso26262__management_553
-
-   | Evidence of quality conformance:
-   | * Identifies what tasks/activities/process produce the information
-   | * Identifies when the data was collected
-   | * Identifies source of any associated data
-   | * Identifies the associated quality criteria
-   | * Identifies any associated measurements using the information
 
 Process
 ^^^^^^^
@@ -77,13 +57,6 @@ Process
    :tags: process
 
    Process definitions.
-
-.. workproduct:: Process Improvement Report
-   :id: wp__process_impr_report
-   :status: draft
-   :tags: process
-
-   Process improvement report.
 
 .. workproduct:: Process Management Strategy
    :id: wp__process_plan
