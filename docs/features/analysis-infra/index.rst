@@ -16,4 +16,7 @@ Analysis Infrastructure
 #######################
 
 .. toctree::
-   logging/index.rst
+   :maxdepth: 2
+
+   ./logging/index
+   ./tracing/index

@@ -12,5 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Logging API
-###########
+Tracing
+#######
+
+.. toctree::
+   :maxdepth: 1
