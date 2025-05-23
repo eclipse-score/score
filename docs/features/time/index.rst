@@ -70,7 +70,13 @@ S-CORE must support industry-standard synchronization protocols like gPTP (IEEE 
 
 todo: time syntonization vs synchronization
 todo: add standards for other technologies
+   for 1.0 concentrate (ntp), gptp, can?
+   extend for time e.g. via someip
 
+todo: should we support only gPTP or also PTP? for >1.0
+todo: should we support NPT? for >1.0
+
+for 1.0 we focus
 
 Clocks, Accuracy, and Reading Current Time
 ---------------------------------------------
@@ -83,6 +89,20 @@ Software stacks contain multiple clock sources:
 
 Programming languages typically abstract these clocks (e.g., ``std::chrono`` in C++, ``std::time`` in Rust). Therefore, the integration of S-CORE with existing language-specific abstractions is essential for consistency and ease of use.
 
+TODO: differentiate between time base (e.g. identify source, synchronized clocks) and how the time is accessed (synchronized clock available via std::chrono)
+TODO: S-CORE time/clocks should be explicitly targeted and not implicitly hidden in e.g. std::chrono. score::chrono e.g. could provide a  thin wrapper for std::chrono but the user should explicitly choose a score supported time to avoid confusion with std::chrono.
+
+TODO: asking for a time stamp, should be as fast as possible.
+
+TODO: states of synchronized clocks, how to handle them? e.g. asking for current time when the clock is not synchronized. Error handling should be possible on per app use-case.
+TODO: should we expose the information on time difference since the last synchronization? dedicated api required.
+
+TODO: alignment with Crypto feature request on secure clocks
+
+note: the daemon that is responsible for the nw time synrchonization should also synchronize the local hw clock.
+
+TODO: use existing time synchronization form OS or develop own? Use OS provided might me used for development but finally we need a qualified time synchronization for production.
+
 
 Consistent Logical Time Within Cause-Effect Cycles
 -----------------------------------------------------
@@ -92,6 +112,12 @@ In automotive applications, cause-effect chains or distributed algorithms freque
 The capability to record and replay logical time is also crucial for providing a sufficient simulation environment for algorithms. This feature enables developers to test and validate algorithms under controlled and repeatable conditions, ensuring their robustness and reliability before deployment. By simulating consistent logical time, it becomes possible to analyze the behavior of distributed systems, identify potential issues, and optimize performance in scenarios that closely mimic real-world operations.
 
 todo: add reasoning why "the same logical time" is crucial in a cause-effect/task chain (e.g., integrating speed to ...)
+
+note: potentially exposing the current time stamp by the executor and make it available via IPC to the activities. within activities this could be abstraced by a time api but therefore the time is recordable and replayable.
+
+Differentiation between where logical time is required.
+
+
 
 
 
