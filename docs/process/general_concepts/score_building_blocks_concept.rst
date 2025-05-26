@@ -67,6 +67,8 @@ to a Component.
 
   Building blocks overview for **S-CORE** platform
 
+.. _building_block_example:
+
 Building blocks example
 +++++++++++++++++++++++
 
