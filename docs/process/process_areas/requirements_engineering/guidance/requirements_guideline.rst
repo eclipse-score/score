@@ -33,6 +33,7 @@ Templates
 .. list-table:: Overview
    :header-rows: 1
    :widths: 37, 37, 25
+
    * - Requirement Level
      - Template
      - VS Code Snippet
