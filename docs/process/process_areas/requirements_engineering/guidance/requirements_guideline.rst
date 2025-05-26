@@ -33,7 +33,6 @@ Templates
 .. list-table:: Overview
    :header-rows: 1
    :widths: 37, 37, 25
-
    * - Requirement Level
      - Template
      - VS Code Snippet
@@ -53,6 +52,8 @@ Templates
      - :need:`[[title]] <gd_temp__req__process_req>`
      - gd_req_t
 
+.. warning:: the templates have slightly different names, e.g. `stkh_req__`
+
 Additionally for the formulation of requirements following template is available: :need:`[[title]]<gd_temp__req__formulation>`
 
 Attributes
@@ -67,6 +68,7 @@ For all requirements following mandatory attributes need to be defined:
    :columns: title
    :colwidths: 30
 
+.. warning:: On first glance that's not the case for std_req and gd_req. Security is missing. Overall this is enforcable via metamodel.
 
 * Title and description: For the formulation of requirements following template shall be used :need:`[[title]]<gd_temp__req__formulation>`
 * ID: The naming convention for the ID is defined :ref:`here <naming_convention_needs>`.
@@ -151,6 +153,8 @@ Following roles should be included in the review:
 * :need:`[[title]] <rl__committer>`
 
 .. _derive_child_requirement:
+
+.. warning:: It's a "should", but let's ensure we understand correctly. No automatic enforcement.
 
 Derive child requirement and establish traceability
 ---------------------------------------------------

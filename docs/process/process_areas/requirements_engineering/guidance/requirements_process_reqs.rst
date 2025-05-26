@@ -34,6 +34,10 @@ Process Requirements
       * Assumption of use requirement
       * Process requirement
 
+   .. warning::
+
+      Automatable, but unclear.
+
 .. _process_requirement_attributes:
 
 Process Requirement Attributes
@@ -54,6 +58,12 @@ Process Requirement Attributes
 
    The naming convention is defined here: :ref:`naming_convention_needs`
 
+   .. warning::
+
+      We cannot automate "human readable" and "keyword describing the content of the requirement".
+      We can enforce a unique ID. And probably whether it contains the last part of the feature tree, as long
+      as the feature tree is defined.
+
 .. gd_req:: Requirement attribute: title
    :id: gd_req__requirements_attr_title
    :status: valid
@@ -66,6 +76,10 @@ Process Requirement Attributes
    * Stakeholder Requirements
    * Feature Requirements
    * Component Requirements
+
+   .. warning::
+
+      We cannot automate "a short summary of the description". But we can enforce that "shall" is not used in the title.
 
 .. gd_req:: Requirement attribute: description
    :id: gd_req__requirements_attr_description
@@ -82,6 +96,10 @@ Process Requirement Attributes
 
       The concepts shall apply.
 
+   .. warning::
+
+      Enforceable!
+
 .. gd_req:: Requirement attribute: type
    :id: gd_req__req__attr_type
    :status: valid
@@ -96,6 +114,10 @@ Process Requirement Attributes
       * Legal
       * Non-Functional
 
+   .. warning::
+
+      Enforceable!
+
 .. gd_req:: Requirements attribute: security
    :id: gd_req__requirements_attr_security
    :status: valid
@@ -106,6 +128,10 @@ Process Requirement Attributes
 
       * Yes
       * No
+
+   .. warning::
+
+      Enforceable! But we should really clarify "Each".
 
 .. gd_req:: Requirement attribute: safety
    :id: gd_req__req__attr_safety
@@ -120,6 +146,10 @@ Process Requirement Attributes
       * ASIL_B
       * ASIL_D
 
+   .. warning::
+
+      Enforceable! We don't need B(D) etc?
+
 .. gd_req:: Requirement attribute: status
    :id: gd_req__req__attr_status
    :status: valid
@@ -132,6 +162,10 @@ Process Requirement Attributes
       * valid
       * invalid
 
+   .. warning::
+
+      Enforceable!
+
 .. gd_req:: Requirement attribute: rationale
    :id: gd_req__req__attr_rationale
    :status: valid
@@ -139,6 +173,10 @@ Process Requirement Attributes
    :satisfies: wf__req__stkh_req
 
    Each stakeholder requirement shall provide a in the attribute rationale the reason why that the requirement is needed.
+
+   .. warning::
+
+      NOT Enforceable!
 
 .. _process_requirement_linkage:
 
@@ -158,6 +196,12 @@ Process Requirement Linkage
       * feature requirements <-> component requirements
       * workflow <-> process requirements
 
+   .. warning::
+
+      Doesn't this replace gd_req__req__structure?
+      Anyway, it's enforcable. But the direction is confusing.
+      stakeholder requirements satisfy feature requirements??
+
 .. gd_req:: Requirement attribute: requirement covered
    :id: gd_req__req__attr_req_cov
    :status: valid
@@ -170,6 +214,9 @@ Process Requirement Linkage
       * Yes
       * No
 
+   .. warning::
+      Is this a manual attribute or an automated one? Is it intentionally under linkage?
+
 .. gd_req:: Requirement attribute: link to implementation
    :id: gd_req__req__attr_impl
    :status: valid
@@ -177,6 +224,9 @@ Process Requirement Linkage
    :satisfies: wf__req__feat_req, wf__req__comp_req
 
    It shall be possible to link requirements to code and include a link to github to the respective line of code in an attribute of the requirement.
+
+   .. warning::
+      We can do that... but isn't it wrong? It shall be possible to link requirements FROM code. In such cases the rendered requirement shall link to GitHub to the respective line of code...
 
 .. gd_req:: Requirement attribute: link to test
    :id: gd_req__req__attr_testlink
@@ -186,6 +236,9 @@ Process Requirement Linkage
    :complies: std_req__iso26262__support_6433, std_req__iso26262__software_944
 
    It shall be possible to link requirements to tests and automatically include a link to the test case in the attribute testlink.
+
+   .. warning::
+      Unclear! What exactly is a "test case"?
 
 .. gd_req:: Requirement attribute: test covered
    :id: gd_req__req__attr_test_covered
@@ -199,6 +252,9 @@ Process Requirement Linkage
       * Yes
       * No
 
+   .. warning::
+      = Optional attribute "testcovered". Why is this under linkage?
+
 .. gd_req:: Requirement attribute: versioning
    :id: gd_req__req__attr_hash
    :status: valid
@@ -209,6 +265,10 @@ Process Requirement Linkage
    It shall be possible to provide a versioning for requirements. It shall be possible to detect if any of the mandatory attributes differ from the versioning: :need:`gd_req__req__attr_mandatory`
 
    A more detailed description of the concept can be found here: :need:`gd_req__req__attr_hash`
+
+   .. warning::
+      Hash is a solution, which we may not need anymore since we have versioned releases.
+      We could just as well introdocude versioning like `stkh_req_1@v0.1`.
 
 .. _process_requirement_checks:
 
@@ -229,6 +289,11 @@ Process Requirements Checks
       :columns: title
       :colwidths: 30
 
+   .. warning::
+
+      Isn't this redundant to all the requirements above?
+      As they are finer grained, it would make more sense to implement the ones above?!
+
 .. gd_req:: Requirements no weak words
    :id: gd_req__req__attr_desc_weak
    :status: valid
@@ -241,6 +306,11 @@ Process Requirements Checks
    * Feature Requirements
    * Component Requirements
 
+   .. warning::
+
+      Definition of "weak words" is not clear.
+
+      Note: implementation is wrong, as it checks all needs, not just those 3.
 
 .. gd_req:: Requirements linkage level
    :id: gd_req__req__linkage_fulfill
@@ -253,6 +323,11 @@ Process Requirements Checks
 
    :ref:`traceability concept for requirements`
 
+   .. warning::
+
+      Even invalid ones etc? Seems it's not easily possible to create a draft requirement.
+      But it's enforcable!
+
 .. gd_req:: Requirements linkage architecture
    :id: gd_req__req__linkage_architecture
    :status: valid
@@ -261,6 +336,10 @@ Process Requirements Checks
    :satisfies: wf__req__feat_req, wf__req__comp_req
 
    It shall be checked if every feature- and component requirement is linked at least to one architectural element.
+
+   .. warning::
+
+      Shouldn't there be some logic like feature requirements to feature architectural elements?
 
 .. gd_req:: Requirements linkage safety
    :id: gd_req__req__linkage_safety
@@ -271,5 +350,14 @@ Process Requirements Checks
 
    It shall be checked that safety requirements (Safety != QM) can only be linked against safety requirements.
 
+   .. warning::
+
+      Does this include all links in all directions?
+
 .. needextend:: "process_areas/requirements_engineering" in docname
    :+tags: requirements_engineering
+
+.. warning::
+
+   Observation overall: this entire page is a weak (unprecise!) description of our metamodel.yml file.
+   Not sure what to do with that. But it does seem like duplicated effort/information.
