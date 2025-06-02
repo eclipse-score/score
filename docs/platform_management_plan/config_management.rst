@@ -53,7 +53,7 @@ Approach
 .. gd_guidl:: Configuration
    :id: gd_guidl__configuration
    :status: valid
-   :complies: std_req__iso26262__support_741, std_req__iso26262__support_742, std_req__iso26262__support_743, std_req__iso26262__support_744, std_req__iso26262__support_745, std_req__aspice_40__SUP-8-BP1, std_req__aspice_40__SUP-8-BP3, std_req__aspice_40__SUP-8-BP4, std_req__aspice_40__SUP-8-BP5, std_req__aspice_40__SUP-8-BP8
+   :complies: PROCESS_std_req__iso26262__support_741, PROCESS_std_req__iso26262__support_742, PROCESS_std_req__iso26262__support_743, PROCESS_std_req__iso26262__support_744, PROCESS_std_req__iso26262__support_745, PROCESS_std_req__aspice_40__SUP-8-BP1, PROCESS_std_req__aspice_40__SUP-8-BP3, PROCESS_std_req__aspice_40__SUP-8-BP4, PROCESS_std_req__aspice_40__SUP-8-BP5, PROCESS_std_req__aspice_40__SUP-8-BP8
 
 
 Identification
@@ -89,9 +89,9 @@ For other artefacts: these are pulled into S-CORE integration repository by fork
 Modification
 ^^^^^^^^^^^^
 
-Files or new work products contained in them are created in local branches by the :need:`Contributor <rl__contributor>`
+Files or new work products contained in them are created in local branches by the :need:`Contributor <PROCESS_rl__contributor>`
 and shared for review and incorporation into the main branch via GitHub pull-requests,
-which are after their acceptance merged by the :need:`Committer <rl__committer>`. The same applies for changes in existing configuration items.
+which are after their acceptance merged by the :need:`Committer <PROCESS_rl__committer>`. The same applies for changes in existing configuration items.
 See also :need:`doc__platform_change_management_plan`.
 
 For other artefacts modifications are controlled by the bazel build files which are also under configuration control.

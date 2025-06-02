@@ -16,7 +16,7 @@
    :id: doc__contribution_guideline
    :status: valid
    :safety: ASIL_B
-   :realizes: wp__sw_development_plan
+   :realizes: PROCESS_wp__sw_development_plan
 
 .. _contribute:
 

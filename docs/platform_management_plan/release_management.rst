@@ -21,7 +21,7 @@
 Release management Plan
 -----------------------
 
-This document implements parts of the :need:`wp__platform_mgmt`.
+This document implements parts of the :need:`PROCESS_wp__platform_mgmt`.
 
 Purpose
 +++++++

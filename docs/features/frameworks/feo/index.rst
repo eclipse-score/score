@@ -21,8 +21,8 @@ Fixed execution order framework (FEO)
    :safety: ASIL_B
    :tags: feature_request
 
-:need:`Change Request Guideline <gd_guidl__change__change_request>`
-and :need:`Feature Request Template <gd_temp__change__feature_request>`.
+:need:`Change Request Guideline <PROCESS_gd_guidl__change__change_request>`
+and :need:`Feature Request Template <PROCESS_gd_temp__change__feature_request>`.
 
 .. toctree::
    :hidden:

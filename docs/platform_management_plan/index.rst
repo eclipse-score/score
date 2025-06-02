@@ -16,7 +16,7 @@
    :id: doc__platform_mgt_plan
    :status: draft
    :safety: ASIL_B
-   :realizes: wp__platform_mgmt
+   :realizes: PROCESS_wp__platform_mgmt
    :tags: platform_management
 
 Platform Management Plan

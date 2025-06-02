@@ -25,8 +25,15 @@ docs(
     conf_dir = "docs",
     docs_targets = [
         {
-            "suffix": "",  # local without external needs
-        },
+            "suffix": "latest",  # latest main branch documentation build
+            "external_needs_info": [
+                {
+                    "base_url": "https://eclipse-score.github.io/process_description/main",
+                    "json_url": "https://eclipse-score.github.io/process_description/main/needs.json",
+                    "id_prefix": "process_",
+                },
+            ],
+        }
     ],
     source_dir = "docs",
     source_files_to_scan_for_needs_links = [],

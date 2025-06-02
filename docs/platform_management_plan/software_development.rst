@@ -20,7 +20,7 @@ Software Development
    :id: doc__software_development_plan
    :status: draft
    :safety: ASIL_B
-   :realizes: wp__sw_development_plan
+   :realizes: PROCESS_wp__sw_development_plan
    :tags: platform_management
 
 Purpose
@@ -48,13 +48,13 @@ Design and programming language
 
 For specifying **Detailed Design** (like for the Architecture) a mixture of UML diagrams and natural language is used.
 Additionally for the Detailed Design linking to code, Doxygen style comments are used.
-This is described in :need:`doc_concept__imp__concept` and guided by :need:`gd_temp__detailed_design`
+This is described in :need:`PROCESS_doc_concept__imp__concept` and guided by :need:`PROCESS_gd_temp__detailed_design`
 
 As required in :need:`stkh_req__dev_experience__prog_languages`, S-CORE allows the use of two programming languages:
 
 **C++ with the language set of C++17** - in case additional elements from C++20 are needed this will be considered by
-:need:`rl__safety_manager`, :need:`rl__security_manager` and :need:`rl__quality_manager`
-and based on their analysis decided by the technical tead circle (:need:`rl__technical_lead`).
+:need:`PROCESS_rl__safety_manager`, :need:`PROCESS_rl__security_manager` and :need:`PROCESS_rl__quality_manager`
+and based on their analysis decided by the technical tead circle (:need:`PROCESS_rl__technical_lead`).
 
 **Rust - in "Edition" <tbd>** - selection of language edition has still to be done in the S-CORE project.
 For the Rust code of ASIL rated units the "safe subset" shall be used (which is checked by the compiler by configuration of #![forbid(unsafe_code)] in lib.rs)
@@ -64,7 +64,7 @@ C language is allowed in incubation phase, as long it is compilable be the selec
 Design guideline
 ^^^^^^^^^^^^^^^^
 
-The design guideline is defined in :need:`doc_concept__imp__concept` and :need:`gd_guidl__implementation`.
+The design guideline is defined in :need:`PROCESS_doc_concept__imp__concept` and :need:`PROCESS_gd_guidl__implementation`.
 
 Coding guideline
 ^^^^^^^^^^^^^^^^

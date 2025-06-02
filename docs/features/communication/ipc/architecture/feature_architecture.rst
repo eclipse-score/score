@@ -54,5 +54,5 @@ Interfaces
    :status: valid
    :fulfils: feat_req__ipc__interfaces
 
-.. needextend:: "communication/ipc/architecture" in docname
+.. needextend:: if docname not None and "communication/ipc/architecture" in docname
    :+tags: ipc

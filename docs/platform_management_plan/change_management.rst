@@ -24,7 +24,7 @@
 Change Management / Change Management Plan
 ------------------------------------------
 
-This document implements parts of the :need:`wp__platform_mgmt`.
+This document implements parts of the :need:`PROCESS_wp__platform_mgmt`.
 
 Purpose
 +++++++
@@ -95,50 +95,50 @@ Changes are clustered in the following types:
      - Description
      - Infrastructure
    * - Feature
-     - Created by :need:`Contributor <rl__contributor>` to change requirements and work products, new feature
+     - Created by :need:`Contributor <PROCESS_rl__contributor>` to change requirements and work products, new feature
      - ISSUE with label ``feature_request``
    * - Feature Modification
-     - Created by :need:`Contributor <rl__contributor>` to change requirements and work products, scope change
+     - Created by :need:`Contributor <PROCESS_rl__contributor>` to change requirements and work products, scope change
      - ISSUE with label ``feature_modification``
    * - Component
-     - Created by :need:`Contributor <rl__contributor>` to change requirements and work products, new component
+     - Created by :need:`Contributor <PROCESS_rl__contributor>` to change requirements and work products, new component
      - ISSUE with label ``component_request``
    * - Component Modification
-     - Created by :need:`Contributor <rl__contributor>` to change requirements and work products, scope change
+     - Created by :need:`Contributor <PROCESS_rl__contributor>` to change requirements and work products, scope change
      - ISSUE with label ``component_modification``
 
 
 Change Request Traceability Impact Analysis requires the following tools:
 
-:need:`[[title]] <gd_req__change_tool_impact_analysis>`
+:need:`[[title]] <PROCESS_gd_req__change_tool_impact_analysis>`
 
 Change Request Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 :ref:`chm_process_change_request_attributes` are implemented as follows:
 
-:need:`[[title]] <gd_req__change__attr_uid>` is identical to the ISSUE number.
+:need:`[[title]] <PROCESS_gd_req__change__attr_uid>` is identical to the ISSUE number.
 
-:need:`[[title]] <gd_req__change__attr_status>` is defined by the combination of the ISSUE state
+:need:`[[title]] <PROCESS_gd_req__change__attr_status>` is defined by the combination of the ISSUE state
 and the states of the linked PRs.
 
-:need:`[[title]] <gd_req__change__attr_title>` is identical to the ISSUE title.
+:need:`[[title]] <PROCESS_gd_req__change__attr_title>` is identical to the ISSUE title.
 
-:need:`[[title]] <gd_req__change__attr_impact_description>` is defined in the linked PR or part of the
+:need:`[[title]] <PROCESS_gd_req__change__attr_impact_description>` is defined in the linked PR or part of the
 description.
 
-:need:`[[title]] <gd_req__change__attr_impact_safety>` is defined in the linked PR or part of the
+:need:`[[title]] <PROCESS_gd_req__change__attr_impact_safety>` is defined in the linked PR or part of the
 description.
 
-:need:`[[title]] <gd_req__change__attr_impact_security>` is defined in the linked PR or part of the
+:need:`[[title]] <PROCESS_gd_req__change__attr_impact_security>` is defined in the linked PR or part of the
 description.
 
-:need:`[[title]] <gd_req__change__attr_types>` is defined by label of a ISSUE and part of the
+:need:`[[title]] <PROCESS_gd_req__change__attr_types>` is defined by label of a ISSUE and part of the
 description.
 
-:need:`[[title]] <gd_req__change__attr_affected_wp>` is defined in the linked PR or part of the
+:need:`[[title]] <PROCESS_gd_req__change__attr_affected_wp>` is defined in the linked PR or part of the
 description.
 
-:need:`[[title]] <gd_req__change__attr_milestone>` is defined by the Milestone of a ISSUE.
+:need:`[[title]] <PROCESS_gd_req__change__attr_milestone>` is defined by the Milestone of a ISSUE.
 
 
 .. _change_mgmt_workflow:
@@ -178,7 +178,7 @@ other required affected and changed work products or implementation and verifica
 
 Planning is done by setting the milestone of the ISSUE accordingly.
 
-As long as the :need:`Contributor <rl__contributor>` wants to modify the content of the Change
+As long as the :need:`Contributor <PROCESS_rl__contributor>` wants to modify the content of the Change
 Request, the linked PR is kept in status ``DRAFT``.
 
 Change request status: ``draft`` is implemented as
@@ -196,8 +196,8 @@ To trigger the next step the PR status is changed from ``DRAFT`` to ``OPEN``.
 
 **To 2. Review the Change Request:**
 
-The Change Request is reviewed from the :need:`Committer <rl__committer>` and the
-review results are resolved by the :need:`Contributor <rl__contributor>`. The review results
+The Change Request is reviewed from the :need:`Committer <PROCESS_rl__committer>` and the
+review results are resolved by the :need:`Contributor <PROCESS_rl__contributor>`. The review results
 are documented in the PR. As long as the information is not sufficient, the related PR is kept in
 status ``OPEN``.
 
@@ -213,10 +213,10 @@ ISSUE status ``OPEN`` and PR status ``OPEN``.
 
 
 **To 3. Approve the Change Request:**
-:need:`Technical Lead <rl__technical_lead>` or  :need:`Module Lead <rl__module_lead>` decides finally,
+:need:`Technical Lead <PROCESS_rl__technical_lead>` or  :need:`Module Lead <PROCESS_rl__module_lead>` decides finally,
 if the Change Request is accepted or rejected.
 
-:need:`Committer <rl__committer>` checks finally if the Change Request is completed and the
+:need:`Committer <PROCESS_rl__committer>` checks finally if the Change Request is completed and the
 required verification measures are executed and sucessfully passed.
 
 If ``approved``, the status of the concerned PRs change to ``MERGED``,
@@ -270,23 +270,23 @@ Change Management SW Platform Work Products
       - Link to WP
       - WP status
 
-    * - :need:`wp__issue_track_system`
+    * - :need:`PROCESS_wp__issue_track_system`
       - :doc:`index`
       - :ndf:`copy('status', need_id='doc__platform_mgt_plan')`
       - n/a
       - `Project issues <https://github.com/eclipse-score/score/issues>`_
       - established
 
-    * - :need:`wp__platform_mgmt`
-      - :need:`wf__platform__cr_mt_platform_mgmt_plan`
-      - :ndf:`copy('status', need_id='wf__platform__cr_mt_platform_mgmt_plan')`
+    * - :need:`PROCESS_wp__platform_mgmt`
+      - :need:`PROCESS_wf__platform__cr_mt_platform_mgmt_plan`
+      - :ndf:`copy('status', need_id='PROCESS_wf__platform__cr_mt_platform_mgmt_plan')`
       - <Link to issue>
       - :doc:`index`
       - :ndf:`copy('status', need_id='doc__platform_mgt_plan')`
 
-    * - :need:`wp__process_definition`
-      - :need:`wf__def_app_process_definition`
-      - :ndf:`copy('status', need_id='wf__def_app_process_definition')`
+    * - :need:`PROCESS_wp__process_definition`
+      - :need:`PROCESS_wf__def_app_process_definition`
+      - :ndf:`copy('status', need_id='PROCESS_wf__def_app_process_definition')`
       - `Process community issues <https://github.com/orgs/eclipse-score/projects/7>`_
       - :ref:`process_description`
       - <automated>
