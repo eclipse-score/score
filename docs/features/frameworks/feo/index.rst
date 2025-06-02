@@ -436,3 +436,40 @@ w.r.t impact of computation load and latency.
 .. |example_task_chain_3_threads_optimized| image:: _assets/example_task_chain_3_threads_optimized.png
 
 .. |example_task_chain_3_threads_dynamic| image:: _assets/example_task_chain_3_threads_dynamic.png
+
+
+Error Handling
+==============
+
+Possible error cases during the different FEO life cycle states shall be handled as follows.
+
+* Independent of state
+    - If the primary process dies, the external lifecycle management shall kill all dependent processes.
+    - If a secondary process dies, the lifecycle management shall send a termination signal to the primary process.
+      The primary process shall call the shutdown function of all remaining activities in arbitrary sequence and
+      terminate itself.
+
+* State: Lifecycle Manger creates all processes (primary & secondaries)
+    - If one or more processes cannot be created, the problem will be handled directly by the Lifecycle Manager
+      (e.g. system restart / retry)
+    - If not all secondaries connect to the primary in time, the primary shall report an error to the
+      lifecycle/health management. The startup functions shall not be triggered.
+
+* State: Lifecycle Manager has created all processes (primary & secondaries), all secondaries have connected to the primary
+    - If an error occurs during the execution of a startup function, the primary process shall abort calling
+      startup functions, report the issue to health management and terminate itself. For all of the activities
+      whose startup functions have already been called successfully, the corresponding shutdown functions shall be
+      executed in arbitrary sequence.
+    - If a timeout occurs during startup, stepping or shutdown of an activity, the issue shall be reported to
+      health-management. The primary process shall shutdown all successfully started activities in arbitrary sequence
+      and terminate itself.
+
+* State: Lifecycle Manager has created all processes  (primary & secondaries), all secondaries have connected to the primary, all activities have been started up successfully
+    - If an activity fails in the step function, a logical waypoint error shall be reported to health management.
+      The primary process shall call shutdown for all activities in arbitrary sequence and terminate itself.
+    - If activities do not meet their intermediate (time/memory/cpu-) budgets the issue shall be detected and handled
+      outside of FEO. (Resource supervision and quotas will be defined in a separate feature request, if needed.)
+
+* State: Shutdown of activities
+    - If an activity fails in the shutdown function, a logical waypoint error shall be reported to health management.
+      The primary process shall shutdown all remaining activities and terminate itself.

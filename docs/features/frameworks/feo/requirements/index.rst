@@ -211,3 +211,83 @@ Supervision
     This can be done e.g. via evaluation of floating point exceptions,
     checking of hardware registers or status information of the
     software platform.
+
+
+Error Handling
+==============
+
+.. feat_req:: Response to termination request
+    :id: feat_req__feo__response_term_request
+    :reqtype: Functional
+    :security: YES
+    :safety: ASIL_B
+    :satisfies: stkh_req__dependability__safety_features, stkh_req__dependability__availability, stkh_req__execution_model__processes
+    :status: valid
+
+    If the primary process receives a termination signal from the Lifecycle Manager, it shall call the shutdown
+    function of all remaining activities in arbitrary sequence and terminate itself.
+
+    If a secondary process receives a termination signal from the Lifecycle Manager, it shall terminate itself.
+
+
+.. feat_req:: Secondary connection timeout
+    :id: feat_req__feo__secondary_conn_timeout
+    :reqtype: Functional
+    :security: YES
+    :safety: ASIL_B
+    :satisfies: stkh_req__dependability__safety_features, stkh_req__dependability__availability, stkh_req__execution_model__processes
+    :status: valid
+
+    If not all secondary processes connect to the primary in time, the primary shall report an error to the
+    lifecycle/health management. The startup functions shall not be triggered.
+
+
+.. feat_req:: Activity startup error
+    :id: feat_req__feo__act_startup_error
+    :reqtype: Functional
+    :security: YES
+    :safety: ASIL_B
+    :satisfies: stkh_req__dependability__safety_features, stkh_req__dependability__availability, stkh_req__execution_model__processes
+    :status: valid
+
+    If an error occurs during the execution of a startup function, the primary process shall abort calling
+    startup functions, report the issue to health management and terminate itself. For all of the activities
+    whose startup functions have already been called successfully, the corresponding shutdown functions shall be
+    executed in arbitrary sequence.
+
+
+.. feat_req:: Activity timeout
+    :id: feat_req__feo__act_timeout
+    :reqtype: Functional
+    :security: YES
+    :safety: ASIL_B
+    :satisfies: stkh_req__dependability__safety_features, stkh_req__dependability__availability, stkh_req__execution_model__processes
+    :status: valid
+
+    If a timeout occurs during startup, stepping or shutdown of an activity, the issue shall be reported to
+    health-management. The primary process shall shutdown all successfully started activities in arbitrary sequence
+    and terminate itself.
+
+
+.. feat_req:: Activity stepping error
+    :id: feat_req__feo__act_stepping_error
+    :reqtype: Functional
+    :security: YES
+    :safety: ASIL_B
+    :satisfies: stkh_req__dependability__safety_features, stkh_req__dependability__availability, stkh_req__execution_model__processes
+    :status: valid
+
+    If an activity fails in the step function, a logical waypoint error shall be reported to health management.
+    The primary process shall call shutdown for all activities in arbitrary sequence and terminate itself.
+
+
+.. feat_req:: Activity shutdown error
+    :id: feat_req__feo__act_shutdown_error
+    :reqtype: Functional
+    :security: YES
+    :safety: ASIL_B
+    :satisfies: stkh_req__dependability__safety_features, stkh_req__dependability__availability, stkh_req__execution_model__processes
+    :status: valid
+
+    If an activity fails in the shutdown function, a logical waypoint error shall be reported to health management.
+    The primary process shall shutdown all remaining activities and terminate itself.
