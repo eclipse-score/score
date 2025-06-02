@@ -12,26 +12,14 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Workflows
-=========
+.. _modules_template:
+
+Module
+======
 
 .. toctree::
    :maxdepth: 1
-   :caption: Contents:
+   :glob:
 
-   process_management
-   quality_management
-
-S-CORE Workflow list
---------------------
-
-.. needtable::
-   :style: table
-   :columns: title;id;tags
-   :colwidths: 25,25,25
-   :sort: title
-
-   results = []
-
-   for need in needs.filter_types(["workflow"]):
-                results.append(need)
+   */docs/index
+   */*/docs/index
