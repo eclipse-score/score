@@ -1,0 +1,155 @@
+/'
+   # *******************************************************************************
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
+   #
+   # See the NOTICE file(s) distributed with this work for additional
+   # information regarding copyright ownership.
+   #
+   # This program and the accompanying materials are made available under the
+   # terms of the Apache License Version 2.0 which is available at
+   # https://www.apache.org/licenses/LICENSE-2.0
+   #
+   # SPDX-License-Identifier: Apache-2.0
+   # *******************************************************************************
+'/
+
+box "Primary Process" #E0E0E0
+participant "Primary Agent" as prim
+participant "Scheduler" as scheduler
+participant "UserActivity 1" as activity_1
+end box
+
+box "Secondary Process 1" #F0F0F0
+participant "Secondary Agent 1" as sec_1
+participant "UserActivity 2" as activity_2
+participant "UserActivity 3" as activity_3
+end box
+
+box "Secondary Process 2" #F0F0F0
+participant "Secondary Agent 2" as sec_2
+participant "UserActivity 4" as activity_4
+end box
+
+== Process Startup ==
+
+prim -> prim: create \nworker threads
+sec_1 -> sec_1: create \nworker threads
+sec_2 -> sec_2: create \nworker threads
+
+sec_1 -> prim: connect
+sec_2 -> prim: connect
+
+
+prim -> scheduler: sync_remotes()
+activate scheduler
+
+scheduler -> sec_1: sync
+scheduler -> sec_2: sync
+sec_1 -> sec_1: sync
+sec_2 -> sec_2: sync
+sec_1 --> scheduler: ready
+sec_2 --> scheduler: ready
+
+scheduler --> prim: ok
+deactivate scheduler
+
+
+== Activity Init ==
+
+note over scheduler, activity_4
+Call each activity's init() method exactly once in an arbitrary order.
+end note
+
+prim -> scheduler: run()
+activate scheduler
+
+scheduler -> activity_1: init()
+activity_1 -> activity_1: init
+activity_1 --> scheduler: ready
+
+scheduler -> sec_1: init(a2)
+sec_1 -> activity_2: init()
+activity_2 -> activity_2: init
+activity_2 --> sec_1: ready
+sec_1 --> scheduler: ready(a2)
+
+scheduler -> sec_1: init(a3)
+sec_1 -> activity_3: init()
+activity_3 -> activity_3: init
+activity_3 --> sec_1: ready
+sec_1 --> scheduler: ready(a3)
+
+scheduler -> sec_2: init(a4)
+sec_2 -> activity_4: init()
+activity_4 -> activity_4: init
+activity_4 --> sec_2: ready
+sec_2 --> scheduler: ready(a4)
+
+== Main Loop ==
+
+loop break on termination signal to Primary Process
+
+note over scheduler, activity_4
+Call each activity's step() method in the order defined by the activity graph.
+end note
+
+scheduler -> sec_1: step(a3)
+note left: Step a3 first
+sec_1 -> activity_3: step()
+activity_3 --> sec_1: ready
+sec_1 --> scheduler: ready(a3)
+
+scheduler -> sec_2: step(a4)
+note left: Step a1 and a4\nin parallel, but\nafter end of a3
+sec_2 -> activity_4: step()
+scheduler -> activity_1: step()
+activity_1 --> scheduler: ready
+activity_4 --> sec_2: ready
+sec_2 --> scheduler: ready(a4)
+
+scheduler -> sec_1: step(a2)
+note left: Step a2 after\nend of a1 and a4
+sec_1 -> activity_2: step()
+activity_2 --> sec_1: ready
+sec_1 --> scheduler: ready(a2)
+
+
+hnote over scheduler
+sleep until end
+of cycle time
+end note
+
+end loop
+
+== Activity Shutdown ==
+
+note over scheduler, activity_4
+Call each activity's shutdown() method exactly once in an arbitrary order.
+end note
+
+scheduler -> activity_1: shutdown()
+activity_1 -> activity_1: shutdown
+activity_1 --> scheduler: ready
+
+scheduler -> sec_1: shutdown(a2)
+sec_1 -> activity_2: shutdown()
+activity_2 -> activity_2: shutdown
+activity_2 --> sec_1: ready
+sec_1 --> scheduler: ready(a2)
+
+scheduler -> sec_1: shutdown(a3)
+sec_1 -> activity_3: shutdown()
+activity_3 -> activity_3: shutdown
+activity_3 --> sec_1: ready
+sec_1 --> scheduler: ready(a3)
+
+scheduler -> sec_2: shutdown(a4)
+sec_2 -> activity_4: shutdown()
+activity_4 -> activity_4: shutdown
+activity_4 --> sec_2: ready
+sec_2 --> scheduler: ready(a4)
+
+scheduler --> prim: ok
+
+deactivate scheduler
+
