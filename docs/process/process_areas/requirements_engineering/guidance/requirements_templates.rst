@@ -17,6 +17,8 @@
 Templates
 =========
 
+.. warning:: These are not synced? e.g. security is missing.
+
 .. gd_temp:: Stakeholder Requirements Templates
    :id: gd_temp__req__stkh_req
    :status: valid
