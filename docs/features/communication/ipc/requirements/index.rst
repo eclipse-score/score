@@ -508,5 +508,5 @@ Safety Impact
 
    The communication framework shall support safe communication up to ASIL-B.
 
-.. needextend:: if docname not None and "communication/ipc/requirements" in docname
+.. needextend:: docname is not None and "communication/ipc/requirements" in docname
    :+tags: ipc
