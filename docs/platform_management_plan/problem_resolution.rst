@@ -63,8 +63,8 @@ problem reported within **S-CORE**.
 
 The next figure gives an overview, how problems are created in **S-CORE**. An ISSUE is
 used to create a problem report including required attributes as defined in the
-:ref:`Problem Process Requirements <prm_process_problem_attributes>`.
-Therefore the Problem Template :ref:`prm_templates` shall be used.
+:need:`Problem Process Requirements <PROCESS_gd_req__problem__attr_uid>`.
+Therefore the Problem Template :need:`PROCESS_gd_temp__problem__template` shall be used.
 
 .. figure:: _assets/score_problem_resolution_overview.drawio.svg
   :width: 100%
@@ -74,7 +74,7 @@ Therefore the Problem Template :ref:`prm_templates` shall be used.
 
 Problem Resolution Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-:ref:`prm_process_problem_attributes` are implemented as follows:
+:need:`Problem Process Requirements <PROCESS_gd_req__problem__attr_uid>` are implemented as follows:
 
 :need:`[[title]] <PROCESS_gd_req__problem__attr_uid>` is identical to the ISSUE number.
 
@@ -113,18 +113,18 @@ and the state in the Projects dashboard view. The PR status is also used, if app
 :need:`[[title]] <PROCESS_gd_req__problem__attr_title>` is identical to the ISSUE title.
 
 :need:`[[title]] <PROCESS_gd_req__problem__attr_impact_description>` is defined in the description part of the
-ISSUE using the Problem Template :ref:`prm_templates`.
+ISSUE using the Problem Template :need:`PROCESS_gd_temp__problem__template`.
 
 :need:`[[title]] <PROCESS_gd_req__problem__attr_anaylsis_results>` is defined in the description part of the
-ISSUE using the Problem Template :ref:`prm_templates`.
+ISSUE using the Problem Template :need:`PROCESS_gd_temp__problem__template`.
 
 :need:`[[title]] <PROCESS_gd_req__problem__attr_stakeholder>` is defined in the description part of the
-ISSUE using the Problem Template :ref:`prm_templates`. For S-CORE stakeholder use pre-defined labels
+ISSUE using the Problem Template :need:`PROCESS_gd_temp__problem__template`. For S-CORE stakeholder use pre-defined labels
 for Communities or Feature Teams (Feature Owner) (under discussion, compare
 https://github.com/eclipse-score/score/issues/870)
 
 :need:`[[title]] <PROCESS_gd_req__problem__attr_classification>` is defined in the description part of the
-ISSUE using the Problem Template :ref:`prm_templates`. For S-CORE labels are defined as:
+ISSUE using the Problem Template :need:`PROCESS_gd_temp__problem__template`. For S-CORE labels are defined as:
 
 .. list-table:: Problem Classification
    :header-rows: 1
@@ -142,7 +142,7 @@ ISSUE using the Problem Template :ref:`prm_templates`. For S-CORE labels are def
      - ``blocker``
 
 :need:`[[title]] <PROCESS_gd_req__problem__attr_category>` is defined in the description part of the
-ISSUE using the Problem Template :ref:`prm_templates`. For S-CORE labels are defined as:
+ISSUE using the Problem Template :need:`PROCESS_gd_temp__problem__template`. For S-CORE labels are defined as:
 
 .. list-table:: Problem Categories
    :header-rows: 1
@@ -162,7 +162,7 @@ ISSUE using the Problem Template :ref:`prm_templates`. For S-CORE labels are def
 :need:`[[title]] <PROCESS_gd_req__problem__attr_safety_affected>`,
 :need:`[[title]] <PROCESS_gd_req__problem__attr_security_affected>`,
 :need:`[[title]] <PROCESS_gd_req__problem__attr_quality_affected>` are defined in the description part of the
-ISSUE using the Problem Template :ref:`prm_templates`. For S-CORE labels are defined to mark affected
+ISSUE using the Problem Template :need:`PROCESS_gd_temp__problem__template`. For S-CORE labels are defined to mark affected
 ISSUEs:
 ``safety``, ``security``, ``quality``
 
@@ -224,7 +224,7 @@ status ``Open`` and Projects status ``Todo``, means ``in review``.
 If the information is sufficient and it is decided to initiate the problem resolution, the
 ISSUE status is kept ``Open`` and the Projects status is set to ``In Progress``.
 
-:ref:`prm_checklist` can help to verify whether the information is complete.
+:need:`PROCESS_gd_chklst__problem__cr_review` can help to verify whether the information is complete.
 
 In case affected parties need to be informed :need:`Technical Lead <PROCESS_rl__technical_lead>` or
 :need:`Module Lead <PROCESS_rl__module_lead>` will notfiy them.
@@ -261,7 +261,7 @@ case all linked ISSUEs or PRs are closed or merged, respectively.
 Especially the solution measure must be checked for their effectivness and the argumentation
 is convincing.
 
-:ref:`prm_checklist` can help to verify whether it can be closed.
+:need:`PROCESS_gd_chklst__problem__cr_review` can help to verify whether it can be closed.
 
 If this is the case the ISSUE status is set to ``Closed``, otherwise the Projects status is set
 back to ``In Progress``.

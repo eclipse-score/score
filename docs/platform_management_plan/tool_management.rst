@@ -56,7 +56,7 @@ Approach
 
 Tool Management Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-:ref:`tlm_process_attributes` are implemented as follows:
+:need:`PROCESS_gd_req__tool__attr_uid` are implemented as follows:
 
 
 Identification

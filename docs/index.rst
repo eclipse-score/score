@@ -112,7 +112,7 @@ Project structure and processes
 
       Process
       ^^^
-      Understand how we work, by reading our :ref:`Process description <process_description>`.
+      Understand how we work, by reading our `Process description <REPLACE_process_description>`.
       And receive tips & tricks for our used tool stack by reading the
       :ref:`contribute`.
 
@@ -122,7 +122,7 @@ Project structure and processes
       ^^^
       Read about our project and organization structure in the
       :ref:`Project Handbook <pmp>`.
-      And learn how we deal with :ref:`process_safety_management` or care about :ref:`process_verification`.
+      And learn how we deal with :need:`doc__platform_safety_plan` or care about :need:`doc__verification_plan`.
 
 .. dropdown:: Click to see the complete sitemap
 
@@ -134,6 +134,5 @@ Project structure and processes
       features/index
       contribute/index
       Releases <score_releases/index.rst>
-      process/index
       PMP <platform_management_plan/index.rst>
       Eclipse <https://projects.eclipse.org/projects/automotive.score>

@@ -65,7 +65,7 @@ the safety package work products may be incomplete and will be identified as "Pr
 Release Planning and Execution
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Generally release planning and execution is described in :ref:`release_management` process.
+Generally release planning and execution is described in :need:`PROCESS_wf__rel__mod_rel_note` process.
 It is part of project planning and therefore also documented with the same means. Generally a Release
 is planned as an issue linked to a milestone in the `GitHub Milestone Planning <https://github.com/orgs/eclipse-score/projects/13>`_.
 And this issue is closed by merging a pull request which creates/updates a release note.

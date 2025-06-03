@@ -71,7 +71,7 @@ Schedules
 ---------
 
 The integration of software elements is driven by change requests and their respective
-:ref:`general_concepts_lifecycle` model. The contribution of a feature itself implies that it gets fully
+:need:`PROCESS_doc_getstrt__change__process` model. The contribution of a feature itself implies that it gets fully
 verified.
 
 Approach
@@ -342,7 +342,7 @@ Test development
 
 The verification steps as well as the development of test cases is done along with the implementation
 of code. A full automation of tests should be achieved and the derived test cases should contain meta
-data that gives further information as defined in :ref:`verification_process_reqs`. The list of
+data that gives further information as defined in :need:`PROCESS_gd_req__link_tests`. The list of
 relevant work products is shown above (as part of the development of the product).
 
 The different environments that can be used for the test development are defined below.
@@ -372,9 +372,9 @@ Work products and traceability
 
 The traceability between verification relevant work products is one of the defined objectives.
 An overall overview of the different work products and their relationship is given in project
-context - see :doc:`/process/workproducts/index`.
+context - see :need:`PROCESS_wp__verification__plan`.
 
-The work products are related to verification can be found in :ref:`verification_work_products`.
+The work products are related to verification can be found in :need:`PROCESS_wp__verification__plan`.
 
 The link between a test specification and the respective requirement or design specification is given by the
 identifier of the reference annotated to the verification specification.
@@ -386,14 +386,14 @@ Roles
 -----
 
 In general, the different roles of this project are defined within the Process documentation:
-:doc:`/process/roles/index`. The following roles are crucial to comply with the aspects defined in this
+:need:`PROCESS_rl__project_lead`. The following roles are crucial to comply with the aspects defined in this
 document:
 
 #. The :need:`PROCESS_rl__contributor` needs to make sure that the objectives of the software integration and verification are
    fulfilled when contributing to the project.
 #. The :need:`PROCESS_rl__committer` needs to verify that the contributor has fulfilled the expected objectives.
 
-In this way roles are followed as defined in :ref:`verification_roles`.
+In this way roles are followed as defined in :need:`PROCESS_doc_concept__verification__process`.
 
 Independence of verification
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^

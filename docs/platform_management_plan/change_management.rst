@@ -73,7 +73,7 @@ of Change Requests. The tool is used to implement and verify Change Requests wit
 
 The next figure gives an overview, how Change Requests are realized in **S-CORE**. An ISSUE is
 used to create a Change Request including required attributes as defined in
-:ref:`chm_process_change_request_attributes`.
+:need:`PROCESS_gd_req__change__attr_uid`.
 The ISSUE may be linked to other ISSUEs or SUB-ISSUEs, if required, to manage more complex Change
 Requests. The implementation of a Change Request requires at least one PR linked to the ISSUE created
 for the Change Request.
@@ -114,7 +114,7 @@ Change Request Traceability Impact Analysis requires the following tools:
 
 Change Request Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-:ref:`chm_process_change_request_attributes` are implemented as follows:
+:need:`PROCESS_gd_req__change__attr_uid` are implemented as follows:
 
 :need:`[[title]] <PROCESS_gd_req__change__attr_uid>` is identical to the ISSUE number.
 
@@ -164,13 +164,13 @@ The figure below shows the workflow for the simplest case of a Change Request.
 An ISSUE with the label according to the Change Request type is created in status ``OPEN``.
 The title of the ISSUE reflects the potential change. The description of the ISSUE may give a brief
 description of the requested change or modification. Further add here the
-:ref:`Impact Analysis Template <chm_impact_analysis_templates>` and fill it out accordingly.
+:need:`Impact Analysis Template <PROCESS_gd_temp__change__impact_analysis>` and fill it out accordingly.
 
 The details are part of the Feature/Component Request work product. The Feature/Component Request
 is provided by a PR, which is linked to the ISSUE in status ``DRAFT``.
 
-For a new Feature/Component Request the provided templates :ref:`Feature Request<chm_feature_templates>`,
-:ref:`Component Request<chm_component_templates>` must be used. For a modification of an existing
+For a new Feature/Component Request the provided templates :need:`Feature Request<PROCESS_gd_temp__change__feature_request>`,
+:need:`Component Request<PROCESS_gd_temp__change__component_request>` must be used. For a modification of an existing
 Feature/Component, update the existing work products.
 
 The linked PR in status ``DRAFT``, which contains the Feature/Component Requests, may contain also
@@ -201,7 +201,7 @@ review results are resolved by the :need:`Contributor <PROCESS_rl__contributor>`
 are documented in the PR. As long as the information is not sufficient, the related PR is kept in
 status ``OPEN``.
 
-:ref:`chm_checklist` can help to verify whether the information is complete.
+:need:`PROCESS_gd_chklst__change__cr_review` can help to verify whether the information is complete.
 
 The realisation parts of the Change Request are reviewed according the checklists of the affected
 work products. Verification of the realisation parts must be successful.
@@ -288,5 +288,5 @@ Change Management SW Platform Work Products
       - :need:`PROCESS_wf__def_app_process_definition`
       - :ndf:`copy('status', need_id='PROCESS_wf__def_app_process_definition')`
       - `Process community issues <https://github.com/orgs/eclipse-score/projects/7>`_
-      - :ref:`process_description`
+      - `REPLACE_process_description`
       - <automated>

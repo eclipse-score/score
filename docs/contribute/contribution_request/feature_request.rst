@@ -25,7 +25,7 @@ This Guideline is based on or references following documents:
 
 * :ref:`Contribution Guideline <contribute_contribution_guideline>`
 * :ref:`Change Management Plan <change_mgmt_plan>`
-* :ref:`Feature Template <chm_feature_templates>`
+* :need:`Feature Template <PROCESS_gd_temp__change__feature_request>`
 
 Creation of Feature Request
 ================================
@@ -79,7 +79,7 @@ First of all, change the status of *Feature Request* to "in Progress" state.
 *Feature Requests*, that stay in the status "Draft" longer as 4 weeks, will be deleted.
 Afterwards create a PR with your proposal in the `/docs/features <https://github.com/eclipse-score/score/tree/main/docs/features>`_ score repository.
 There you will find currently existing features as subfolders. Please choose the one that fits your *feature request* the most or
-create a new subfolder, if none of existing feature match your *feature request*. Please take care, that the PR follows the :ref:`Feature Template <chm_feature_templates>`.
+create a new subfolder, if none of existing feature match your *feature request*. Please take care, that the PR follows the :need:`Feature Template <PROCESS_gd_temp__change__feature_request>`.
 You should try to put as much information as possible, as a good exhaustive description is a prerequisite for *feature request* to be accepted.
 
 It is important to understand, that *feature request* consists of an GitHub Issue, that is used to track organizational information and

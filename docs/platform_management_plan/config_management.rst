@@ -44,7 +44,7 @@ Goal of this plan is to describe
 * how to backup and recover (including long term storage)
 * how to report the configuration status
 
-note: for definition of "configuration items" check :ref:`process_configuration_management`
+note: for definition of "configuration items" check :need:`PROCESS_doc_concept__configuration__process`
 
 
 Approach
@@ -122,4 +122,4 @@ Backup and Recovery
 ^^^^^^^^^^^^^^^^^^^
 
 Backup and recovery are covered by the Eclipse Foundation hosting the GitHub service for S-CORE.
-For the long term storage, additional measures are taken, see :need:`gd_req__workproducts_storage`
+For the long term storage, additional measures are taken, see :need:`PROCESS_gd_req__workproducts_storage`

@@ -25,7 +25,7 @@ How to Contribute?
 How we Work
 ===========
 
-At S-CORE, we believe that every contribution makes our platform stronger. Whether you're a seasoned developer or just starting out in open source, your ideas and work are warmly welcomed. We follow a structured yet flexible process rooted in our change management principles and overall lifecycle concept. For more details on our processes, feel free to explore our :ref:`general_concepts_lifecycle` and the :ref:`change_management`. And if you want to dive right into contributing, check out :ref:`what_is_a_pr` and :ref:`what_is_a_github_issue`.
+At S-CORE, we believe that every contribution makes our platform stronger. Whether you're a seasoned developer or just starting out in open source, your ideas and work are warmly welcomed. We follow a structured yet flexible process rooted in our change management principles and overall lifecycle concept. For more details on our processes, feel free to explore our `Life Cycle Concept <https://eclipse-score.github.io/process_description/main/general_concepts/score_lifecycle_concept.html>`_ and the :need:`doc__platform_change_management_plan`. And if you want to dive right into contributing, check out :ref:`what_is_a_pr` and :ref:`what_is_a_github_issue`.
 
 Feature Requests: Our Shared Roadmap
 ------------------------------------

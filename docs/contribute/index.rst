@@ -43,7 +43,7 @@ The only way to influence S-CORE is TO CONTRIBUTE. Everybody can contribute - S-
 
 Active Contributions to the S-CORE project are the basis for getting involved. The S-CORE Project works according to the Eclipse Project Handbook and has named and elected project leads and committers (see `Eclipse Safe Open Vehicle Core <https://projects.eclipse.org/projects/automotive.score>`_). The direction of the S-CORE project is discussed and decided in the project lead circle, the technical direction is created and upfront in the tech lead circle. Meeting notes are transparent via the `S-CORE GitHub Discussions <https://github.com/orgs/eclipse-score/discussions>`_.
 
-We aim to build a safety ready full stack architecture, where components fit to each other in automotive grade Software Quality and performance. To achieve this, we follow a strict :ref:`feature roadmap and architecture <releases>` and a :ref:`rigid software development process <process_description>` (currently under development).
+We aim to build a safety ready full stack architecture, where components fit to each other in automotive grade Software Quality and performance. To achieve this, we follow a strict :ref:`feature roadmap and architecture <releases>` and a `rigid software development process <https://eclipse-score.github.io/process_description/main/index.html>`_ (currently under development).
 
 Contributions to the S-CORE project must therefore follow the technical direction of the project and the S-CORE architecture. For an introduction on how to contribute, please check out our :need:`Contribution Guideline <doc__contr_guideline>`.
 

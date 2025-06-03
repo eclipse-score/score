@@ -124,7 +124,9 @@ Because in the S-CORE SW platform no ASIL decomposition is planned: :need:`PROCE
    :complies: PROCESS_std_wp__iso26262__management_751, PROCESS_std_wp__iso26262__system_652, PROCESS_std_wp__iso26262__system_653, PROCESS_std_wp__iso26262__system_654, PROCESS_std_wp__iso26262__system_655, PROCESS_std_wp__iso26262__system_656, PROCESS_std_wp__iso26262__system_657, PROCESS_std_wp__iso26262__system_751, PROCESS_std_wp__iso26262__system_752, PROCESS_std_wp__iso26262__system_851, PROCESS_std_wp__iso26262__system_852, PROCESS_std_wp__iso26262__software_1151, PROCESS_std_wp__iso26262__software_1152, PROCESS_std_wp__iso26262__software_app_c_52, PROCESS_std_wp__iso26262__software_app_c_54, PROCESS_std_wp__iso26262__software_app_c_57, PROCESS_std_wp__iso26262__support_551, PROCESS_std_wp__iso26262__support_552, PROCESS_std_wp__iso26262__support_553, PROCESS_std_wp__iso26262__support_554, PROCESS_std_wp__iso26262__support_555, PROCESS_std_wp__iso26262__support_1351, PROCESS_std_wp__iso26262__support_1352, PROCESS_std_wp__iso26262__support_1353, PROCESS_std_wp__iso26262__support_1451, PROCESS_std_wp__iso26262__support_1452, PROCESS_std_wp__iso26262__support_1551, PROCESS_std_wp__iso26262__support_1651, PROCESS_std_wp__iso26262__analysis_551, PROCESS_std_wp__iso26262__analysis_552
 
    This work product instantiation links to all the work products which are tailored out in the platform safety plan,
-   to be able to demonstrate completeness in :ref:`external_standards`
+   to be able to demonstrate completeness in `REPLACE external_standards`, and this is a document, not work product
+
+
 
 Approach
 ++++++++
@@ -249,9 +251,9 @@ is determined by Safety Audit and not be Eclipse project reviews.
 
 Functional Safety Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Requirement Engineering is defined in the process description. See :ref:`requirements_engineering`
+Requirement Engineering is defined in the process description. See :doc:`requirements_management`.
 
-The application of ISO 26262 standards requirements is realized by defining process guidances and matching those to the ISO 26262 requirements (see :ref:`processes_introduction`).
+The application of ISO 26262 standards requirements is realized by defining process guidances and matching those to the ISO 26262 requirements (see e.g. for example :need:`PROCESS_gd_req__sm_doc_status`).
 
 Functional Safety Schedule
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -333,7 +335,7 @@ Functional Safety Management SW Platform Work Products
       - :need:`PROCESS_wf__def_app_process_definition`
       - :ndf:`copy('status', need_id='PROCESS_wf__def_app_process_definition')`
       - `Process community issues <https://github.com/orgs/eclipse-score/projects/7>`_
-      - :ref:`process_description`
+      - `REPLACE_process_description`
       - <automated>
 
     * - :need:`PROCESS_wp__process_impr_report`
@@ -455,11 +457,11 @@ Functional Safety Management SW Platform Work Products
       - <Link to WP>
       - <automated>
 
-    * - :need:`wp__tailoring` (generic)
+    * - :need:`PROCESS_wp__tailoring` (generic)
       - :need:`PROCESS_gd_guidl__saf_plan_definitions`
       - :ndf:`copy('status', need_id='PROCESS_gd_guidl__saf_plan_definitions')`
       - `#307 <https://github.com/eclipse-score/score/issues/307>`_
-      - :ref:`standard_iso26262` & :need:`doc__platform_safety_plan`
+      - :need:`PROCESS_std_req__iso26262__management_5421` & :need:`doc__platform_safety_plan`
       - valid
 
 Functional Safety Management Feature Specific Work Products
