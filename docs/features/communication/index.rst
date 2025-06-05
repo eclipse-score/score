@@ -46,10 +46,10 @@ Abstract
 The Communication Module contains:
 
 - an abstraction layer to enable different communication mechanisms (aka Frontend)
-- different bindings which provide the communication functionality (e.g. IPC or SomeIP)
+- different bindings which provide the communication functionality (e.g. IPC or Some/IP)
 
 The abstraction layer is designed in a way to ensure full testability for an end-user, while enabling runtime selection
-of the underlying communication mechanism with the help of different bindings (e.g. IPC, Some-IP ...).
+of the underlying communication mechanism with the help of different bindings (e.g. IPC, Some/IP ...).
 
 It provides the user with a high-level API to focus on the content of information – and not on low-level specifics of the used binding. The concept is displayed in Figure :numref:`lola_layers`
 
@@ -285,7 +285,7 @@ The communication framework must support :need:`tracing of communication events 
 Architecture
 ------------
 
-The architecure of communication is diplayed :ref:`here<com_architecture>`
+The architecure of communication is displayed :ref:`here<com_architecture>`
 
 Requirements
 ------------

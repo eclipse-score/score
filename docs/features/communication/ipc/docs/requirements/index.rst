@@ -57,6 +57,3 @@ Requirements
 
    The IPC binding shall ensure availability of its communication, so that the availability is independent per
    criticality level.
-
-.. needextend:: "communication/ipc/docs/requirements" in docname
-   :+tags: ipc
