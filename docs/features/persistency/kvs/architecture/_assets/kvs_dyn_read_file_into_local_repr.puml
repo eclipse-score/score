@@ -1,0 +1,47 @@
+@startuml
+
+title Sequence Diagram: Read Data into Local Representation (KvsValue)
+
+participant "User" as actor
+participant "«component» :kvs" as kvs
+participant "«component» :json" as json_parser
+participant "«component» :fs" as fs
+
+actor -> kvs: Open KVS
+
+kvs -> fs: Read defaults file
+
+alt file-exists
+    fs --> kvs: Defaults file content (JSON)
+else file-based-error
+    fs --> kvs: File-Error
+    kvs -> actor: File-Error
+end
+
+kvs -> fs: Read defaults file hash
+
+alt file-exists
+    fs --> kvs: Defaults file hash
+else file-based-error
+    fs --> kvs: File-Error
+    kvs -> actor: File-Error
+end
+
+kvs -> kvs: Generate defaults file hash
+
+alt hash-match-success
+    kvs -> json_parser: Parse JSON data
+else hash-match-error
+    kvs -> actor: Hash-Error
+end
+
+alt parsing-success
+    json_parser --> kvs: Parsed JSON object
+else parsing-based-error
+    json_parser -> kvs: Parser-Error
+    kvs -> actor: Parser-Error
+end
+
+kvs --> actor: KVS instance
+
+@enduml

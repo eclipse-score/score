@@ -17,14 +17,13 @@ Key-Value-Storage
 
 .. document:: Persistency Key-Value-Storage
    :id: doc__persistency_kvs
-   :status: draft
+   :status: valid
    :safety: ASIL_B
-   :tags: contribution_request, feature_request
+   :tags: feature_request, persistency_kvs
 
 .. toctree::
-   :hidden:
-
    requirements/index.rst
+   architecture/index.rst
 
 
 Feature flag
@@ -67,36 +66,18 @@ platform.
 Rationale
 =========
 
-1. There are multiple key-value storages allowed per application.
-
-To allow for data separation and different levels of security, each application
-is allowed to have multiple KVS.
-
-2. There must be an update mechanism from different versions of a KVS to another version.
-
-Staying compatible through updates and rollbacks is a main requirement for the
-project.
-
-3. The same KVS should be read/writable from C++ & Rust and any other language.
-
-Having a flexible interface allows to focus on solutions where the language
-fits the needs.
-
-4. KVS should store default values.
-
-If possible, all keys should return a configurable default value or the access
-should return an error if the key needs to be written first.
-
-5. KVS should use a simple data representation.
-
-The KVS should use a data representation that supports versioned up- and
-downgrading like JSON or Cap'n Proto and is easily debuggable by the developer.
-
-6. Integrity of the KVS should be checked.
-
-The KVS is always be in a consistent state that either provides the currently
-stored data or if not possible the previous snapshot.
-
+1. | Requirement 1: Multiple key-value storages per application
+   | Solution: Allow each application to have multiple key-value storages (KVS) to enable data separation and different levels of security.
+2. | Requirement 2: Update mechanism for KVS versions
+   | Solution: Implement an update mechanism to ensure compatibility through updates and rollbacks of different KVS versions.
+3. | Requirement 3: Language-agnostic KVS interface
+   | Solution: Design a flexible interface that allows the KVS to be read and written from multiple programming languages, including C++, Rust, and others.
+4. | Requirement 4: Default values for KVS
+   | Solution: Configure the KVS to store default values for all keys, returning either the default value or an error if the key needs to be written first.
+5. | Requirement 5: Simple data representation for KVS
+   | Solution: Utilize a simple data representation, such as JSON or Cap'n Proto, that supports versioned up- and downgrading and is easily debuggable by developers.
+6. | Requirement 6: KVS integrity checking
+   | Solution: Ensure the KVS maintains a consistent state, providing either the currently stored data or the previous snapshot if data retrieval is not possible.
 
 Backwards Compatibility
 =======================
@@ -112,27 +93,31 @@ Security Impact
 ===============
 
 Access to the key-value-storage would allow a malicious user to control the
-behaviour of the device so it needs to be secured as much as possible, like
-only providing debug access when a debug firmware image is installed.
+behaviour of the device, so it must be secured to prevent unauthorized access.
+To achieve this, debug access should only be provided when a debug firmware
+image is installed.
 
 
 Safety Impact
 =============
 
-   .. note::
-      One key-value storage should not be used within different processes (freedom from interference) -> To be added to AoUs?
+The expected ASIL level is ASIL-B. To reach this goal we will apply the S-CORE
+development process. Key elements of it are listed in the process descriptions
+of safety management and safety analysis. In the safety analysis we will
+analyze the impact of the feature.
 
-[How could the safety be impacted by the new feature?]
+ .. note::
+    TODO: Link to safety analysis.
 
-   .. note::
-      If there are safety concerns in relation to the Feature Request, those concerns should be explicitly written out to make sure reviewers of the Feature Request are aware of them.
-      ToDo - Link to the Safety Impact Method
+We use an iterative development process and apply results from the next steps
+back to the feature request. For TinyJSON we will perform a software component
+classification.
 
-[What is the expected ASIL level?]
-[What is the expected classification of the contribution?]
+  .. note::
+    TODO: Link to component classification.
 
-   .. note::
-      Use the component classification method here to classify your component, if it shall to be used in a safety context: (TODO: add link to component classification).
+To ensure the freedom of interference the feature key-value storage should not
+be used within different processes.
 
 
 License Impact
