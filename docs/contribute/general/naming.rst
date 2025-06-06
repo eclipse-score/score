@@ -54,7 +54,7 @@ For the naming of the UIDs also following convention shall be applied:
 As examples:
 
 * feat_req__ipc__e2e_protection
-* comp_req__kvs__storage
+* comp_req__persistency__storage
 
 Only for **process UIDs** the structural element is optional:
 

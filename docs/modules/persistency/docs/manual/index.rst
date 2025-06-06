@@ -12,5 +12,10 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-File Access
-###########
+Manuals
+#######
+
+.. toctree::
+   :titlesonly:
+
+   safety_manual
