@@ -42,8 +42,8 @@ Here it is possible to build it either with the current 'main' branch of [proces
 
 
 ```sh
-bazel build //docs:docs_latest # use current main branch
-bazel build //docs:docs_release # use release imported in MODULE.bazel
+bazel build //docs:docs_latest # use current main branch of imported docs repositories (e.g. process_description)
+bazel build //docs:docs_release # use release version imported in MODULE.bazel
 ```
 The output will be located here,depending on which way was chosen: 
 - bazel-bin/docs/docs_latest/_build/html. 
@@ -57,8 +57,8 @@ For local changes and faster feedback, use the incremental build.
 This method generates the documentation directly in the _build directory.
 
 ```sh
-bazel run //docs:incremental_latest # use current main branch
-bazel run //docs:incremental_release # use release imported in MODULE.bazel
+bazel run //docs:incremental_latest # use current main branch of imported docs repositories (e.g. process_description)
+bazel run //docs:incremental_release # use release version imported in MODULE.bazel
 ```
 Unlike IDE integration, which renders only the current file, this approach is ideal for quickly
 verifying edits across the entire documentation during development.
@@ -89,8 +89,8 @@ For a documentation live preview independent of an IDE (CLI + browser only), `sp
 This will automatically rebuild the preview after save and have it available at http://127.0.0.1:8000
 Release and latest are both available here as well.
 ```sh
-bazel run //docs:live_preview_latest
-bazel run //docs:live_preview_release
+bazel run //docs:live_preview_latest # use current main branch of imported docs repositories (e.g. process_description)
+bazel run //docs:live_preview_release # use release version imported in MODULE.bazel
 ```
 
 
