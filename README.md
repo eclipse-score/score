@@ -35,11 +35,20 @@ Score supports multiple methods for generating documentation, tailored to differ
 This method ensures clean and isolated documentation builds in a controlled Bazel environment.
 It is best suited for CI pipelines or production-ready outputs, although it takes longer compared to
 incremental builds.
+Here it is possible to build it either with the current 'main' branch of [process](https://github.com/eclipse-score/process_description) or with the imported release version of it.
+
+
+> Note: 'latest' might not work if it's executed behind a proxy or vpn. If this is the case please use 'release'
+
 
 ```sh
-bazel build //docs:docs
+bazel build //docs:docs_latest # use current main branch
+bazel build //docs:docs_release # use release imported in MODULE.bazel
 ```
-The output will be located in bazel-bin/docs/docs/_build/html.
+The output will be located here,depending on which way was chosen: 
+- bazel-bin/docs/docs_latest/_build/html. 
+- bazel-bin/docs/docs_release/_build/html. 
+
 
 
 #### Incremental build
@@ -48,7 +57,8 @@ For local changes and faster feedback, use the incremental build.
 This method generates the documentation directly in the _build directory.
 
 ```sh
-bazel run //docs:incremental
+bazel run //docs:incremental_latest # use current main branch
+bazel run //docs:incremental_release # use release imported in MODULE.bazel
 ```
 Unlike IDE integration, which renders only the current file, this approach is ideal for quickly
 verifying edits across the entire documentation during development.
@@ -77,9 +87,10 @@ Re-run //docs:ide_support if you update Sphinx extensions or other dependencies.
 
 For a documentation live preview independent of an IDE (CLI + browser only), `sphinx-autobuild` can be used.
 This will automatically rebuild the preview after save and have it available at http://127.0.0.1:8000
-
+Release and latest are both available here as well.
 ```sh
-bazel run //docs:live_preview
+bazel run //docs:live_preview_latest
+bazel run //docs:live_preview_release
 ```
 
 
@@ -131,10 +142,13 @@ sudo apt install lcov
 
 ### Notes
 #### Output Locations
-* Bazel builds output to bazel-bin/docs/docs/_build/html.
-* Incremental builds output to _build.
+* Bazel builds output, depending on which build was chosen:
+    - bazel-bin/docs/docs_latest/_build/html. 
+    - bazel-bin/docs/docs_release/_build/html. 
+* Incremental builds output to _build, regardless of chosen way.
 
 #### Troubleshooting
 * Restart your IDE if live previews or warnings are not working after running ide_support.
 * Ensure your virtual environment is up-to-date by re-running //docs:ide_support when dependencies
   change.
+* Ensure you ran //docs:ide_support before executing //:format.check or //:format.fix
