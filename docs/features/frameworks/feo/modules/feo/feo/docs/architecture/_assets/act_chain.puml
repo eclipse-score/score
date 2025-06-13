@@ -1,4 +1,4 @@
-..
+/'
    # *******************************************************************************
    # Copyright (c) 2025 Contributors to the Eclipse Foundation
    #
@@ -11,15 +11,21 @@
    #
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
+'/
 
-.. _comp_doc_feo:
+hide empty description
 
-Component Documentation: feo
-############################
+state "UserActivity 1" as a1
+state "UserActivity 2" as a2
+state "UserActivity 3" as a3
+state "UserActivity 4" as a4
 
+a1: Primary Process
+a2: Secondary Process 1
+a3: Secondary Process 1
+a4: Secondary Process 2
 
-.. toctree::
-   :maxdepth: 1
-
-   architecture/component_architecture
-   requirements/component_requirements
+a3 --> a1
+a3 --> a4
+a1 --> a2
+a4 --> a2
