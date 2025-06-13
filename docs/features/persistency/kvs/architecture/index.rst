@@ -12,8 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Feature Architecture : persistency/kvs
-======================================
+Architecture
+============
 
 Overview
 --------
