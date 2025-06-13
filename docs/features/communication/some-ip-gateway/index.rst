@@ -64,12 +64,35 @@ needs to be realized with the SOME/IP protocol.
 For software component developers it should be unrecognized that data is originated from a SOME/IP communication channel, the data should be provided with the same API as in IPC.
 Nonetheless integrators and architects will have to configure the system to receive or send data over SOME/IP, hence provide it as a SOME/IP service.
 
+
+.. _Rationale:
+
+Rationale
+==========
+
+.. _Specification:
+
+Specification
+=============
+
+To provide a clear picture of the base requirements to an IPC communication framework, we formalize the primary and
+secondary aspects in this section. For aspects that are mentioned for the first time, we also provide a rationale.
+
+
 SOME/IP Gateway Security Goals
 ------------------------------
 
 The security approach for SOME/IP shall achieve the following security goals:
 
 - to be defined
+
+Backwards Compatibility
+=======================
+
+As there is currently no previous solution for communication in S-CORE, no backwards compatibility is required.
+
+Security Impact
+===============
 
 Safety Impact
 =============
