@@ -80,7 +80,10 @@ translate the different data-types and representations of the two contexts.
 
 The SOME/IP side shall, where possible, use an existing SOME/IP stack that is fully compatible and complying with the SOME/IP specification from AUTOSAR Adaptive.
 
-
+This module shall fulfill the following requirements:
+- Multi-Binding support - :need:`feat_req__ipc__multi_binding_support`
+- agnostic binding - :need:`feat_req__ipc__binding_agnostic_api`
+- deployment configuration - :need:`feat_req__ipc__multi_binding_depl`
 
 .. _Specification:
 
@@ -94,17 +97,23 @@ secondary aspects in this section. For aspects that are mentioned for the first 
 SOME/IP Gateway Security Goals
 ------------------------------
 
-The security approach for SOME/IP shall achieve the following security goals:
+As with IPC generally, the security approach for SOME/IP gateway shall achieve the following security goals:
 
-- to be defined
+- confidentiality (:need:`feat_req__ipc__confidentiality`)
+- integrity (:need:`feat_req__ipc__integrity`)
+- availability (per criticality-level) (:need:`feat_req__ipc__acl_placement`)
 
 Backwards Compatibility
 =======================
 
 As there is currently no previous solution for communication in S-CORE, no backwards compatibility is required.
+Subsequent changes to the SOME/IP gateway module shall keep the API stable where possible and introduce breaking APIs only with approval from tech lead cricle.
+Applications shall stay stable on API layer, recompilations are fine.
 
 Security Impact
 ===============
+
+As the SOME/IP gateway will open direct communication channels on the SOME/IP channels, the SOME/IP implementation shall comply with standard security
 
 Safety Impact
 =============
