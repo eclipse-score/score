@@ -70,6 +70,18 @@ Nonetheless integrators and architects will have to configure the system to rece
 Rationale
 ==========
 
+SOME/IP and IPC use different mechanisms to communicate on different channels. Applications integrating on S-CORE platform may have certain requirements to data-input that is not directly supported with SOME/IP and vice versa
+SOME/IP definition may have requirements that cannot directly be supported by the application providing data on IPC. Therefor it's not only a task of this gateway
+to adapt the communication, but also to translate data between the two communication channels and probably even fill data, i.e. when applications require new data that has not be received on SOME/IP or vice versa.
+
+Hence the gateway on the one side should act as a participant in IPC and fulfill all requirements to this accordingly, whereas on the other side it shall participate in SOME/IP communication
+acting as a SOME/IP service fulfilling all SOME/IP requirements and defined communication. Between these two contexts developers shall be able to create signal or data mappings and
+translate the different data-types and representations of the two contexts.
+
+The SOME/IP side shall, where possible, use an existing SOME/IP stack that is fully compatible and complying with the SOME/IP specification from AUTOSAR Adaptive.
+
+
+
 .. _Specification:
 
 Specification
