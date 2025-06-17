@@ -25,7 +25,7 @@ Safety Impact
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies:
+   :satisfies: stkh_req__communication__safe
    :status: valid
 
    The SOME/IP Gateway shall support safe communication up to ASIL-B.

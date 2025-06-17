@@ -18,7 +18,7 @@ SOME/IP-Gateway
 ###########################
 
 .. document:: SOME_IP-Gateway
-   :id: _some_ip_gateway_feature
+   :id: doc__some_ip_gateway
    :status: valid
    :safety: ASIL_B
    :tags: contribution_request, feature_request
@@ -27,9 +27,8 @@ SOME/IP-Gateway
 .. toctree::
    :hidden:
 
-   # architecture/index.rst
-   # requirements/index.rst
-   # roadmap.rst
+   architecture/index.rst
+   requirements/index.rst
 
 
 Feature flag
