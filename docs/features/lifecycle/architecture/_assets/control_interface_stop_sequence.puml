@@ -1,0 +1,37 @@
+@startuml
+title Control Interface - Stop components
+
+autonumber "<b>[00]"
+
+
+participant "Tester" as Tester
+participant "State Manager" as SM
+participant "Launch Manager" as LM
+participant "OS (kernel)" as kernel
+participant "DemoApp1" as DemoApp1
+participant "DemoApp2" as DemoApp2
+
+
+
+Tester -> SM: Stop Group (eg. UDS)
+SM -> SM: evaluate request
+SM -> LM: Stop group DemoApps
+activate LM
+LM -> DemoApp1: SIGTERM
+activate DemoApp1
+LM -> DemoApp2: SIGTERM
+activate DemoApp2
+
+DemoApp1 -> DemoApp1: do shutdown actions
+DemoApp2 -> DemoApp2: do shutdown actions
+
+destroy DemoApp1
+
+LM -> LM: check if the apps terminated within\nthe termination timeout?
+LM -> DemoApp2: SIGKILL
+destroy DemoApp2
+
+
+LM --> SM: DemoApps terminated
+
+@enduml
