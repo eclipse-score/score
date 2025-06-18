@@ -1,0 +1,93 @@
+@startuml
+title External Monitoring
+
+autonumber "<b>[000]"
+
+participant "External Watchdog" as EWD
+participant "Watchdog Proxy" as WDP
+participant "Launch Manager" as LM
+
+activate LM
+
+LM --> LM: parse configuration
+deactivate LM
+
+activate WDP
+
+alt "Proxy registers to Launch Manager"
+WDP -> LM: Register for alive notifications (callback)
+activate LM
+LM --> WDP: Return value
+else "Launch manager opens the watchdog device itself"
+LM -> WDP: open watchdog device (eg. /dev/watchdog)
+WDP -> LM: Return value
+end
+deactivate WDP
+
+
+
+note right of WDP: IPC (POSIX or OS-specific event) 
+activate WDP
+activate LM
+LM --> LM: internal health check
+alt "Health OK"
+LM --> WDP: alive notification (callback)
+activate WDP
+end
+deactivate LM
+
+
+note right of EWD: ECU specific notification.\nGPIO, UART, SPI, etc.
+
+WDP --> EWD: notify external watchdog
+deactivate WDP
+activate EWD
+EWD --> EWD: Check if the notification fits the alive window\nreset the timeout timer
+deactivate EWD
+note right of LM: Wait until the next scheduled notification time
+
+
+activate LM
+LM --> LM: internal health check
+alt "Health OK"
+activate WDP
+LM --> WDP: alive notification (callback)
+end
+deactivate LM
+
+activate WDP
+WDP --> EWD: notify external watchdog
+deactivate WDP
+activate EWD
+EWD --> EWD: Check if the notification fits the alive window\nreset the timeout timer
+deactivate EWD
+
+note right of LM: Wait until the next scheduled notification time
+
+activate LM
+LM --> LM: internal health check
+alt "Health OK"
+activate WDP
+LM --> WDP: alive notification (callback)
+end
+deactivate LM
+
+
+activate WDP
+WDP --> EWD: notify external watchdog
+deactivate WDP
+activate EWD
+EWD --> EWD: Check if the notification fits the alive window\nreset the timeout timer
+deactivate EWD
+
+note right of LM: Wait until the next scheduled notification time
+activate LM
+LM --> LM: internal health check
+note right of LM: status failed, don't trigger
+
+activate EWD
+EWD --> EWD: Check if the notification fits the alive window\nreset the timeout timer
+deactivate EWD
+note right of EWD: alive notification missed\nTrigger error reaction
+
+@enduml
