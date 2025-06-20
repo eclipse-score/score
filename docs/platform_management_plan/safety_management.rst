@@ -251,7 +251,7 @@ is determined by Safety Audit and not be Eclipse project reviews.
 
 Functional Safety Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Requirement Engineering is defined in the process description. See :doc:`requirements_management`.
+Requirement Engineering is defined in the process description. See :need:`doc__project_mgt_plan`.
 
 The application of ISO 26262 standards requirements is realized by defining process guidances and matching those to the ISO 26262 requirements (see e.g. for example :need:`PROCESS_gd_req__sm_doc_status`).
 
