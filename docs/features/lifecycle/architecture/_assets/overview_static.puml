@@ -1,0 +1,47 @@
+@startuml
+title Launch Manager Static Architecture
+
+
+package "<<executable>> Launch Manager" {
+    [Launch Manager] as LM #A9DCDF
+    interface AliveMonitoring
+    interface ConfigurationFiles
+    interface HealthStatus
+    interface CommandLineArguments
+    interface Logging
+    interface ControlInterface
+
+
+    LM --> AliveMonitoring : provides
+    LM --> ConfigurationFiles : requires
+    LM --> CommandLineArguments : requires
+    LM --> HealthStatus: provides
+    LM --> ControlInterface: provides
+    LM --> Logging: requires
+}
+
+package "<<executable>> Monitored Application (MA)" {
+    [Application logic] as MA
+    [Health Monitor (HM)] as HM #A9DCDF
+
+    interface HealthMonitorAPI 
+
+    HM --|> HealthMonitorAPI : implements
+    MA --> HealthMonitorAPI : uses
+}
+HM -up-> AliveMonitoring : connects to
+
+package "<<executable>> State Manager" {
+    [State Manager] as SM
+}
+
+SM -up-> ControlInterface : uses
+
+note left of [SM] : Start/Stop/Restart components\nQuery status\n...
+
+legend right
+    |Color| Type |
+    |<#A9DCDF>| Part of feature|
+endlegend
+
+@enduml

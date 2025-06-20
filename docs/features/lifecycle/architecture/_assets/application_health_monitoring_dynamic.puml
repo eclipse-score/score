@@ -1,0 +1,54 @@
+@startuml
+autonumber "<b>[000]"
+
+participant "Launch Manager" as LM
+
+
+box "Monitored Application"
+    participant "Application Logic" as App
+    participant "HealthMonitor" as HM
+end box
+
+LM -> LM: Parse monitoring rules\nof the monitored app
+LM -> LM: Start startup grace period timer
+
+LM -> App : Start component
+
+activate App
+App -> HM: Register health monitoring\n(Alive/Deadline/Logical)
+activate HM
+HM -> HM: sleep until the next wakeup time
+App -> HM: Checkpoint
+HM -> HM: Wakeup and check if the\ncheckpoints have been called
+HM -> LM: Alive notification
+
+hnote across: Use Case: Missed checkpoint
+
+App --x HM: Missed Checkpoint
+HM -> HM: Wakeup and check if the\ncheckpoints have been called
+
+HM -> LM: Supervision failure notification
+
+HM -X LM: Stop triggering alive
+LM -> LM: Error reaction\n(notify State manager)
+
+hnote across: Use Case: Direct error report by the Application
+
+App -> HM: Report error
+HM -> LM: Supervision failure notification
+
+HM -X LM: Stop triggering alive
+LM -> LM: Error reaction\n(notify State manager)
+
+hnote across: Use Case: Crashed Application
+
+App -> App: application error, crash
+destroy App
+destroy HM
+
+LM -> LM: Wakeup and check if the\ncheckpoints have been called 
+LM -> LM: No alive notification seen
+LM -> LM: Error reaction\n(notify State manager)
+
+
+@enduml
