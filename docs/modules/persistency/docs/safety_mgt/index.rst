@@ -12,14 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _modules_template:
-
-Module
-======
+Safety Management
+#################
 
 .. toctree::
-   :maxdepth: 1
-   :glob:
-
-   */docs/index
-   */*/docs/index
+   :titlesonly:
