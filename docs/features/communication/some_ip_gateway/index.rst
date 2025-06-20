@@ -48,6 +48,7 @@ The focus is on a gateway to handle SOME/IP communication with external devices 
 This feature request includes:
 - A description of how a SOME/IP gateway service (or data broker) shall be implemented
 - How the SOME/IP gateway services shall integrate with the zero-copy communication from IPC (which might become a general description of how services plug-in to the IPC context)
+- How data shall be mapped or translated between SOME/IP protocol and IPC communication
 
 .. _Motivation:
 
@@ -89,8 +90,12 @@ This module shall fulfill the following requirements:
 Specification
 =============
 
-To provide a clear picture of the base requirements to an IPC communication framework, we formalize the primary and
-secondary aspects in this section. For aspects that are mentioned for the first time, we also provide a rationale.
+SOME/IP Gateway protocol implementation
+---------------------------------------
+
+The protocol implementation shall be fully compatible and complying with the SOME/IP specification from AUTOSAR Adaptive.
+Protocol implementations shall be wrapped in an abstraction API, that stays stable and allows implementations may be exchanged, potentially even by binary only libraries.
+
 
 
 SOME/IP Gateway Security Goals
@@ -107,12 +112,12 @@ Backwards Compatibility
 
 As there is currently no previous solution for communication in S-CORE, no backwards compatibility is required.
 Subsequent changes to the SOME/IP gateway module shall keep the API stable where possible and introduce breaking APIs only with approval from tech lead cricle.
-Applications shall stay stable on API layer, recompilations are fine.
+Applications shall stay stable on API layer, need to recompile is acceptable.
 
 Security Impact
 ===============
 
-As the SOME/IP gateway will open direct communication channels on the SOME/IP channels, the SOME/IP implementation shall comply with standard security
+As the SOME/IP gateway will open direct communication channels on the SOME/IP channels, the SOME/IP implementation shall comply with standard security requirements.
 
 Safety Impact
 =============
