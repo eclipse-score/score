@@ -83,12 +83,42 @@ a change of the operting mode.
 Specification
 -------------
 
+.. feat_arc_sta:: Feature architecture
+   :id: feat_arc_sta__lifecycle__overview
+   :security: YES
+   :safety:  ASIL_B
+   :status: valid
+   :fulfils:
+   :includes: logic_arc_int__lifecycle__controlif, logic_arc_int__lifecycle__health_monitor_if, logic_arc_int__lifecycle__alive_if
+
+
+   .. needarch::
+      :scale: 50
+      :align: center
+
+      {{ draw_feature(need(), needs) }}
+
+
+.. mod_view_sta:: Lifecycle
+   :id: mod_view_sta__lifecycle__1
+   :includes: comp_arc_sta__lifecycle__launch_manager, comp_arc_sta__lifecycle__healthmonitor
+
+   .. needarch::
+      :scale: 50
+      :align: center
+
+      {{ draw_module(need(), needs) }}
+
+
 The overall concept is based on 2 components: 
 
 * Component Launch Manager: Responsible for starting and stopping components based on the defined operating modes
   and alive supervision of the started components
 * Component Health Monitor: Provides process local monitoring fucntionalities 
   such as deadline monitoring and logical program flow monitoring.
+
+
+
 
 .. uml:: architecture/_assets/overview_static.puml
     :scale: 50

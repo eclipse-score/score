@@ -19,17 +19,30 @@ Application Health Monitor
 Static Architecture
 ===================
 
-.. feat_arc_sta:: Application health monitoring
-   :id: feat_arc_sta__lifecycle__app_health_moni
-   :security: YES
-   :status: invalid
-   :safety: ASIL_B
-   :fulfils: feat_req__lifecycle__launch_support 
-   :includes: feat_arc_sta__lifecycle__control_interface
 
-   .. uml:: _assets/application_health_monitor_static.puml
+.. comp_arc_sta:: <<library>\nHealth Monitor
+   :id: comp_arc_sta__lifecycle__healthmonitor
+   :status: valid
+   :safety: ASIL_B
+   :implements: logic_arc_int__lifecycle__health_monitor_if
+   :uses: logic_arc_int__lifecycle__alive_if
+   :security: NO
+   :includes: 
+   :fulfils:
+
+   .. needarch::
       :scale: 50
       :align: center
+
+      {{ draw_component(need(), needs) }}
+
+
+.. logic_arc_int:: Health Monitor API
+   :id: logic_arc_int__lifecycle__health_monitor_if
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :fulfils: feat_req__com__interfaces
 
 
 
@@ -42,7 +55,6 @@ Dynamic Architecture
    :status: invalid
    :safety: ASIL_B
    :fulfils: feat_req__lifecycle__process_monitoring
-   :includes: feat_arc_sta__lifecycle__control_interface
 
    .. uml:: _assets/application_health_monitoring_dynamic.puml
       :scale: 50

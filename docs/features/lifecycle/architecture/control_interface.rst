@@ -25,17 +25,13 @@ which allows the implementation of a state management applications to support dy
 Static Architecture
 ===================
 
-.. feat_arc_sta:: Control interface static Architecture
-   :id: feat_arc_sta__lifecycle__control_interface
-   :security: YES
-   :status: valid
-   :safety: ASIL_B
-   :fulfils: feat_req__lifecycle__control_commands, feat_req__lifecycle__query_commands, feat_req__lifecycle__request_group_launch, feat_req__lifecycle__request_group_stop, feat_req__lifecycle__request_group_restart
-   :includes: 
 
-   .. uml:: _assets/control_interface_static.puml
-      :scale: 50
-      :align: center
+.. logic_arc_int:: Control Interface
+   :id: logic_arc_int__lifecycle__controlif
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :fulfils: feat_req__com__interfaces
 
 
 
