@@ -30,7 +30,7 @@ Static Architecture
    :security: YES
    :status: valid
    :safety: ASIL_B
-   :fulfils: - `feat_req__lifecycle__control_commands`, `feat_req__lifecycle__query_commands`, `feat_req__lifecycle__request_group_launch`, `feat_req__lifecycle__request_group_stop`, `feat_req__lifecycle__request_group_restart`
+   :fulfils: feat_req__lifecycle__control_commands, feat_req__lifecycle__query_commands, feat_req__lifecycle__request_group_launch, feat_req__lifecycle__request_group_stop, feat_req__lifecycle__request_group_restart
    :includes: 
 
    .. uml:: _assets/control_interface_static.puml
@@ -62,7 +62,7 @@ Stopping a component (or a group of components)
 
 
 Getting the status of a component (or a group of components)
------------------------------------------------
+------------------------------------------------------------
 
 The `Launch Manager` shall provide an interface to requery of the status of a component or a group of components.
 
@@ -70,24 +70,24 @@ The `Launch Manager` shall provide an interface to requery of the status of a co
 Dynamic Architecture
 ====================
 
-.. feat_arc_sta:: Control interface dynamic architecture start of components
-   :id: feat_arc_dyn__lifecycle__control_interface_start
+.. feat_arc_dyn:: Control interface dynamic architecture start of components
+   :id: feat_arc_dyn__lifecycle__control_if_start
    :security: YES
    :status: valid
    :safety: ASIL_B
-   :fulfils: - `feat_req__lifecycle__control_commands`, `feat_req__lifecycle__request_group_launch`
+   :fulfils: feat_req__lifecycle__control_commands, feat_req__lifecycle__request_group_launch
    :includes: 
 
    .. uml:: _assets/control_interface_start_sequence.puml
       :scale: 50
       :align: center
 
-.. feat_arc_sta:: Control interface dynamic architecture stop of components
-   :id: feat_arc_dyn__lifecycle__control_interface_stop
+.. feat_arc_dyn:: Control interface dynamic architecture stop of components
+   :id: feat_arc_dyn__lifecycle__control_if_stop
    :security: YES
    :status: valid
    :safety: ASIL_B
-   :fulfils: - `feat_req__lifecycle__control_commands`, `feat_req__lifecycle__request_group_stop`
+   :fulfils: feat_req__lifecycle__control_commands, feat_req__lifecycle__request_group_stop
    :includes: 
 
    .. uml:: _assets/control_interface_stop_sequence.puml

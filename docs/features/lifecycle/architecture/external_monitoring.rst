@@ -48,7 +48,7 @@ In QNX, one could implement a component listening to the events (or even poll) f
 Requirements related to the external monitoring
 ===============================================
 
-- :need:`feat_req__lifecycle__lm_self_heath_check`
+- :need:`feat_req__lifecycle__lm_self_health_check`
 - :need:`feat_req__lifecycle__lm_ext_watchdog_notify`
 - :need:`feat_req__lifecycle__lm_ext_wdg_failed_test`
 - :need:`feat_req__lifecycle__lm_ext_watchdog_cfg`

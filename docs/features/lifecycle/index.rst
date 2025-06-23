@@ -21,10 +21,10 @@ Lifecycle
 .. note:: Document header
 
 .. document:: Lifecycle
-   :id: DOC_Lifecycle
+   :id: doc__lifecycle
    :status: draft
    :safety: ASIL_B
-   :tags: 
+   :tags: feature_request 
 
 
 Feature flag
@@ -150,6 +150,7 @@ Architecture
    ./architecture/control_interface
    ./architecture/external_monitoring
    ./architecture/configuration_parameters
+   ./architecture/launch_manager
    
 
 Requirements

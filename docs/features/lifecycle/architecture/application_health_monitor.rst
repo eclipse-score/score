@@ -20,12 +20,12 @@ Static Architecture
 ===================
 
 .. feat_arc_sta:: Application health monitoring
-   :id: feat_arc_sta__lifecycle__app_health_monitoring
+   :id: feat_arc_sta__lifecycle__app_health_moni
    :security: YES
-   :status: draft
+   :status: invalid
    :safety: ASIL_B
-   :fulfils: 
-   :includes: 
+   :fulfils: feat_req__lifecycle__launch_support 
+   :includes: feat_arc_sta__lifecycle__control_interface
 
    .. uml:: _assets/application_health_monitor_static.puml
       :scale: 50
@@ -36,13 +36,13 @@ Static Architecture
 Dynamic Architecture
 ====================
 
- .. feat_arc_sta:: Application health monitoring
-   :id: feat_arc_dyn__lifecycle__app_health_monitoring
+ .. feat_arc_dyn:: Application health monitoring
+   :id: feat_arc_dyn__lifecycle__app_health_moni
    :security: YES
-   :status: draft
+   :status: invalid
    :safety: ASIL_B
-   :fulfils: 
-   :includes: 
+   :fulfils: feat_req__lifecycle__process_monitoring
+   :includes: feat_arc_sta__lifecycle__control_interface
 
    .. uml:: _assets/application_health_monitoring_dynamic.puml
       :scale: 50
