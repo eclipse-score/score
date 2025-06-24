@@ -80,10 +80,12 @@ translate the different data-types and representations of the two contexts.
 
 The SOME/IP side shall, where possible, use an existing SOME/IP stack that is fully compatible and complying with the SOME/IP specification from AUTOSAR Adaptive.
 
-This module shall fulfill the following requirements:
-- Multi-Binding support - :need:`feat_req__ipc__multi_binding_support`
-- agnostic binding - :need:`feat_req__ipc__binding_agnostic_api`
-- deployment configuration - :need:`feat_req__ipc__multi_binding_depl`
+
+..
+   # This module shall fulfill the following requirements:
+   # - Multi-Binding support - :need:`feat_req__ipc__multi_binding_support`
+   # - agnostic binding - :need:`feat_req__ipc__binding_agnostic_api`
+   # - deployment configuration - :need:`feat_req__ipc__multi_binding_depl`
 
 .. _Specification:
 
@@ -103,9 +105,12 @@ SOME/IP Gateway Security Goals
 
 As with IPC generally, the security approach for SOME/IP gateway shall achieve the following security goals:
 
-- confidentiality (:need:`feat_req__ipc__confidentiality`)
-- integrity (:need:`feat_req__ipc__integrity`)
-- availability (per criticality-level) (:need:`feat_req__ipc__acl_placement`)
+
+..
+   #
+   #  - confidentiality (:need:`feat_req__ipc__confidentiality`)
+   #   - integrity (:need:`feat_req__ipc__integrity`)
+   #   - availability (per criticality-level) (:need:`feat_req__ipc__acl_placement`)
 
 Backwards Compatibility
 =======================
@@ -122,10 +127,6 @@ As the SOME/IP gateway will open direct communication channels on the SOME/IP ch
 Safety Impact
 =============
 
-  # The safety impact was already exhaustively covered in :ref:`mot_mixed_criticality` and :ref:`spec_mixed_criticality`.
-
-  # Overall, the communication framework supports use cases up to ASIL-B (:need:`feat_req__ipc__asil`).
-  # Future extension to ASIL-D use cases is feasible but not in scope for now.
 
 License Impact
 ==============
