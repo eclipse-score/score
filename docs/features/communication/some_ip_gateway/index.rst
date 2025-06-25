@@ -105,18 +105,16 @@ SOME/IP Gateway Security Goals
 
 As with IPC generally, the security approach for SOME/IP gateway shall achieve the following security goals:
 
+- confidentiality (:need:`feat_req__ipc__confidentiality`)
+- integrity (:need:`feat_req__ipc__integrity`)
+- availability (per criticality-level) (:need:`feat_req__ipc__availability`)
 
-..
-   #
-   #  - confidentiality (:need:`feat_req__ipc__confidentiality`)
-   #   - integrity (:need:`feat_req__ipc__integrity`)
-   #   - availability (per criticality-level) (:need:`feat_req__ipc__acl_placement`)
 
 Backwards Compatibility
 =======================
 
 As there is currently no previous solution for communication in S-CORE, no backwards compatibility is required.
-Subsequent changes to the SOME/IP gateway module shall keep the API stable where possible and introduce breaking APIs only with approval from tech lead cricle.
+Subsequent changes to the SOME/IP gateway module shall keep the API stable where possible and introduce breaking APIs only with approval from tech lead circle.
 Applications shall stay stable on API layer, need to recompile is acceptable.
 
 Security Impact
