@@ -1,0 +1,57 @@
+@startuml
+actor "Client" as Client
+participant "LogicalFlowSupervisor" as LFS
+participant "Transition" as T
+participant "Condition" as C
+
+== Initialization Phase ==
+Client -> LFS: add_entry_point(checkpoint_id)
+activate LFS
+LFS -> LFS: Add checkpoint_id to entry_points
+deactivate LFS
+
+Client -> LFS: add_exit_point(checkpoint_id)
+activate LFS
+LFS -> LFS: Add checkpoint_id to exit_points
+deactivate LFS
+
+Client -> LFS: add_allowed_transition(transition)
+activate LFS
+LFS -> T: get_source()
+LFS -> T: get_target()
+LFS -> LFS: Add edge to allowed_transitions (source -> target)
+deactivate LFS
+
+Client -> LFS: link_condition(condition)
+activate LFS
+LFS -> C: Store reference to condition
+LFS -> LFS: Add to linked_conditions
+deactivate LFS
+
+== Supervision (Runtime) Phase ==
+Client -> LFS: record_checkpoint(checkpoint_id)
+activate LFS
+LFS -> LFS: Check if transition is allowed
+alt Allowed transition
+    LFS -> LFS: Update last_checkpoint
+    LFS -> LFS: Update state
+    LFS -> LFS: Notify linked conditions
+else Invalid transition
+    LFS -> LFS: Set status to Failure
+    LFS -> LFS: Notify linked conditions
+end
+deactivate LFS
+
+Client -> LFS: enable()
+activate LFS
+LFS -> LFS: Set enabled state
+LFS -> LFS: Prepare for supervision
+deactivate LFS
+
+Client -> LFS: disable()
+activate LFS
+LFS -> LFS: Set disabled state
+LFS -> LFS: Cleanup
+deactivate LFS
+
+@enduml

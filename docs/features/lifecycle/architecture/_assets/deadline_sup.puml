@@ -1,0 +1,54 @@
+@startuml
+actor "Client" as Client
+participant "TimeConstraintMonitor" as TCM
+participant "ConditionLink" as CL
+
+== Setup Phase ==
+Client -> TCM: configure_minimum_time(min_time)
+activate TCM
+TCM -> TCM: store min_time
+deactivate TCM
+
+Client -> TCM: configure_maximum_time(max_time)
+activate TCM
+TCM -> TCM: store max_time
+deactivate TCM
+
+Client -> TCM: link_condition(condition)
+activate TCM
+TCM -> CL: save reference to condition
+deactivate TCM
+
+== Monitoring Phase ==
+Client -> TCM: mark_start()
+activate TCM
+TCM -> TCM: start internal_timer
+deactivate TCM
+
+Client -> TCM: mark_end()
+activate TCM
+TCM -> TCM: stop internal_timer
+deactivate TCM
+
+TCM -> TCM: on_timer_expiry()
+activate TCM
+alt Within allowed window
+    TCM -> TCM: set status to Success
+    TCM -> TCM: inform_linked_conditions()
+else Outside allowed window
+    TCM -> TCM: set status to Failure
+    TCM -> TCM: inform_linked_conditions()
+end
+deactivate TCM
+
+Client -> TCM: enable_monitoring()
+activate TCM
+TCM -> TCM: set active
+deactivate TCM
+
+Client -> TCM: disable_monitoring()
+activate TCM
+TCM -> TCM: set inactive
+deactivate TCM
+
+@enduml
