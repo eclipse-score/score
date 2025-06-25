@@ -86,13 +86,107 @@ Technical committees
 
 * **Feature Teams**
 
-  *Feature Teams* have end-to-end responsibility for specific functionalities. This includes all aspects beginning with the architecture definition to the integration test. They are usually assigned to the *S-CORE* main integration project or to one particular software module. *Feature Teams* work independently of each other on *GitHub Issues* in the assigned software module. *Feature Teams* consist of the contributors, who can specify requirements, define architecture, develop source code and implement tests afterwards. *Project Leads* and *Committers* are also *Contributors* and effectively work on processing of *GitHub Issues*.
+  *Feature Teams* have end-to-end responsibility for specific functionalities. This includes all
+  aspects beginning with the architecture definition to the integration test. They are usually assigned
+  to the *S-CORE* main integration project or to one particular software module. *Feature Teams* work
+  independently of each other on *GitHub Issues* in the assigned software module.
+  *Feature Teams* consist of the contributors, who can specify requirements, define architecture,
+  develop source code and implement tests afterwards.
+  *Project Leads* and *Committers* are also *Contributors* and effectively work on processing of *GitHub Issues*.
 
-  *Feature Team* usually consists of the following roles: Project Lead, Safety Manager, Quality Manager, Security Manager, Committers and Contributors. Every *Feature Team* has at least one committer who can approve and merge the Pull Requests of the Contributors.
+  *Feature Team* usually consists of the following roles: Project Lead, Safety Manager, Quality Manager, Security Manager, Committers and Contributors.
+  Every *Feature Team* has at least one committer who can approve and merge the Pull Requests of the Contributors.
 
-  In case a *Feature Team* needs to request a new repository, this can be done be extending the `otterdog configuration file <https://github.com/eclipse-score/.eclipsefdn/blob/main/otterdog/eclipse-score.jsonnet>`_ and creating a new PR, that has to be approved by the *Eclipse Project Security Team*.
 
-  The *GitHub Discussions* for feature teams can be found in the `Feature Teams section <https://github.com/orgs/eclipse-score/discussions>`_ of the main *S-CORE* project.
+Creation of a new Feature Team
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Decision to create a new *Feature Team* is normally done in *Technical Lead Circle* in case a particular,
+already *accepted* *Feature Request* can not be assigned to any of already existing *Feature Teams*.
+As every *Feature Team* has always an exactly one dedicated repository assigned to it, the decision criteria
+is normally whether the code for the new *Feature Request* would thematically fit into the existing repository of
+one of the existing *Feature Teams*. If not, then a new *Feature Team* should be created.
+
+As a first step, the decision to create a new Feature Team is protocolled in the `Tech Lead Circle meeeting minutes <https://github.com/orgs/eclipse-score/discussions/categories/technical-lead-circle>`_.
+Afterwards a GitHub Issue is created in the `Technical Lead Cirle LOP project <https://github.com/orgs/eclipse-score/projects/3>`_
+using the special *Feature Team Creation* GitHub Issue template and is assigned to one of the Technical Leads.
+
+**ToDo**: create such a template.
+
+Usage of the special GitHub Issue template ensures, that all GitHub issues for creation of new *Feature
+Teams* follow the same rules, e.g. that title always has the same format or
+that description always contains the reasoning for the creation of a new *Feature Team*.
+
+Additionally, GitHub Issue created based on the template, contains *DoD list*, that serves as a checklist
+for the Technical Lead to ensure, that he or she has completed all necessary activities/steps to create a new *Feature Team*.
+The current *DoD list* is always documented in the template. The most important activities are:
+
+* **Creation of labels**
+
+  Every *Feature Team* should have it's own label for filtering of GitHub Issues, PRs or discussions.
+
+* **Creation of discussion**
+
+  Every *Feature Team* should have it's own discussion section in the `Feature Teams section <https://github.com/orgs/eclipse-score/discussions>`_
+  of the main *S-CORE* project.
+
+* **Creation of project**
+
+  Every *Feature Team* should have it's own GitHub project for tracking of Feature Team specific GitHub issues.
+
+* **Creation of repository**
+
+  Normally, every *Feature Team* should have a dedicated repository. Creation of new repository is done
+  be extending the `otterdog configuration file <https://github.com/eclipse-score/.eclipsefdn/blob/main/otterdog/eclipse-score.jsonnet>`_
+  and creating a new PR, that has to be approved by the *Eclipse Project Security Team*.
+
+* **Developer GitHub Team**
+
+  Every *Feature Team* should have a corresponding software developer GitHub team, e.g. *ipc_ft_dev*, that contains all
+  developers, that are actively participating in this *Feature Team*. This GitHub group can be used e.g. to
+  send notifications for upcoming meetings or discussions.
+
+* **Codeowner GitHub Team**
+
+  Every *Feature Team* should have a corresponding codeowner GitHub team, e.g. *ipc_ft_co*, that contains all
+  software developers, whose review is mandatory for every PR in the repository and who have rights to merge PRs to the repository.
+
+
+Merge rights & code ownership
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+As already stated, every *Feature Team* has exactly one dedicated repository. Before the creation of the
+new repository, it should be clarified, whose review is mandatory for merging PRs to the repository
+and who is at the end allowed to merge PRs to the repository.
+
+In the S-CORE project, the configuration whose review is mandatory to merge a PR to the repository is done
+using `CODEOWNERS file and branch protection <https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners#codeowners-and-branch-protection>`_ .
+Every repository has a CODEOWNERS file, where one or multiple teams or persons are specified, whose review is needed for the PR
+to be able to be merged. The teams listed there are normally:
+
+* *Codeowner GitHub Team* for this *Feature Team*
+* GitHub Team for security managers
+* GitHub Team for quality managers
+* GitHub Team for safety managers
+
+**ToDo**: can we have an 'AND relationship' for teams in CODEOWNERS file?
+
+*Codeowner GitHub Team* for the corresponding *Feature Team* consists of the senior software developers, that understand how
+the particular feature works or should work. The members of this team should be selected and agreed
+during the creation of the *Feature Team* by the *Technical Leads*. The criteria for the selection should be the
+technical competence of the software developers, e.g. in case during the :ref:`Feature Request process <feature_request_guideline>`
+it was decided to take over already existing source code, then persons who were actively participating in the
+development of that code are always good candidates to be part of *Codeowner GitHub team*.
+The decision who should be initially part of the *Codeowner GitHub team* and the reasoning for this
+should be protocolled in the GitHub Issue, that is used for creation of the *Feature Team*.
+
+In case further software developers should be added to the *Codeowener GitHub team* in the future,
+that decision and it's reasoning should be protocolled in one of the *Feature Team* GitHub discussions.
+
+Members of the *Codeowner GitHub team* should be also the ones, who can merge the PRs to the corresponding repository.
+Therefore as soon as *Codeowner GitHub team* is created, Technical Lead, who is the assignee of the ticket for the *Feature
+Team* creation, should start committer elections for all software developers in the *Codeowner GitHub team*. All other
+Technical Leads, who are also committers in the S-CORE project, should support these elections through positive voting in case no
+concrete objections exist.
+
 
 Meeting Structure
 -----------------
