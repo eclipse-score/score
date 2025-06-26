@@ -21,13 +21,13 @@ Time
    :id: doc__time
    :status: valid
    :safety: ASIL_B
-   :tags: change_management
+   :tags: time, feature_request, change_management
 
 
-.. toctree::
-   :hidden:
+.. .. toctree::
+..    :hidden:
 
-   requirements.rst
+..    requirements.rst
 
 
 Feature flag
@@ -45,80 +45,65 @@ Abstract
 Motivation
 ==========
 
-Efficient and accurate time management is critical in automotive systems, affecting functionality, safety, and reliability across various applications. Generally, time relevance can be categorized into the following levels:
-
-* External Time Synchronization
-* In-Vehicle Time Synchronization
-* Clocks, Accuracy, and Reading Current Time
-* Consistent Logical Time Within Cause-Effect Cycles
-
+Efficient and accurate time management is critical in automotive systems, affecting functionality, safety, and reliability across various applications. Time handling spans several layers, from synchronization with external time sources to the consistent use of logical time within in-vehicle software cycles. For this reason, the motivation section describes the context broadly, even if the actual feature request later focuses on a more specific scope.
 
 External Time Synchronization
---------------------------------
+-----------------------------
 
-External time synchronization aims to align the vehicle's internal time reference with a global or external standard. The primary objective is to synchronize with universal time standards such as UTC, which enables accurate timestamping of data across geographically distributed systems, crucial for telematics, fleet management, and regulatory compliance (e.g., event logging, diagnostics, cybersecurity). Additional use cases include ensuring consistent timing across vehicles in a fleet to facilitate coordinated operations or data analysis. Typical synchronization methods include GPS-based satellite synchronization, backend server synchronization over cellular networks.
+.. figure:: _assets/timesync-external.drawio.svg
+   :alt: External Time Synchronization
+   :align: center
 
+External time synchronization establishes a reference to a global time standard, such as UTC, through methods like GPS-based synchronization or backend servers accessed via cellular networks. These time sources are relevant for fleet-wide timestamping, telematics, and ensuring regulatory compliance (e.g., event logging, cybersecurity).
+
+The details of external synchronization are out of scope for this request but are included to clarify the overall context.
 
 In-Vehicle Time Synchronization
-----------------------------------
+-------------------------------
 
-In-vehicle synchronization ensures all Electronic Control Units (ECUs) within a vehicle operate based on a consistent internal time reference, crucial for real-time and safety-critical applications such as autonomous driving, audio/video streaming, and event logging. The synchronization architecture generally involves designating a single ECU as the *Time Grand Master*, typically the ECU with the fastest boot-up time (often a zonal controller hosting a microcontroller portion). Other ECUs synchronize their internal clocks to this master.
+.. figure:: _assets/timesync-vehicle.drawio.svg
+   :alt: In-Vehicle Time Synchronization
+   :align: center
 
-Given the distributed nature of automotive E/E architectures, direct end-to-end synchronization across all ECUs is impractical due to latency and accumulated errors. Instead, synchronization typically occurs via peer-to-peer communication, with time gateways or zonal controllers acting as local masters within subnetworks to maintain accuracy. Network-specific synchronization protocols, such as gPTP for Ethernet, ensure robust, standardized synchronization.
+Within the vehicle, synchronization ensures that all ECUs reference a consistent internal time. In modern architectures, this is achieved by designating a statically defined Time Grand Master, typically a zonal controller equipped with a fast-booting microcontroller and responsible for early vehicle functions such as key detection. This controller synchronizes with the external time source and propagates time over the in-vehicle network.
 
-S-CORE must support industry-standard synchronization protocols like gPTP (IEEE 802.1AS) for Ethernet-based networks, including restrictions defined in AUTOSAR's Time Synchronization Protocol. For CAN-based networks, synchronization standards defined by AUTOSAR, such as the Time Synchronization over CAN, should be supported.
+The synchronization protocols relevant here are primarily Ethernet-based. The focus lies on gPTP (IEEE 802.1AS) and the corresponding specifications in AUTOSAR Adaptive to ensure compatibility with existing ECUs. Syntonization, the alignment of clock frequency, is as essential as synchronization and must be supported to maintain long-term timing consistency.
 
-todo: time syntonization vs synchronization
-todo: add standards for other technologies
-   for 1.0 concentrate (ntp), gptp, can?
-   extend for time e.g. via someip
-
-todo: should we support only gPTP or also PTP? for >1.0
-todo: should we support NPT? for >1.0
-
-for 1.0 we focus
+Bridging between different network domains (e.g., Ethernet to CAN) is outside the scope of this feature. In the system context, the High-Performance Computer (HPC) is assumed to be a slave in the time distribution topology and connects via Ethernet to the grandmaster. Time synchronization within CAN segments, typically handled by zonal controllers, is not covered by this feature.
 
 Clocks, Accuracy, and Reading Current Time
----------------------------------------------
+------------------------------------------
 
-Software stacks contain multiple clock sources:
+Modern software environments contain several types of clocks (or time bases), including:
 
-- Local Clocks: These include monotonic, system, steady, and high-resolution clocks, providing internal time references independent of external synchronization.
-- Synchronized Clocks: These clocks are synchronized to external or internal standards and are critical for tasks requiring accurate timestamps or coordinated execution.
-- Secure Clocks: Used specifically in cryptographic contexts to validate digital certificates or ensure secure transaction timestamps; these require protection against tampering and robust synchronization.
+* Local clocks, such as monotonic or steady clocks
+* Synchronized clocks, aligned with a vehicle-wide or external time base
+* Secure or authentic clocks, protected against tampering
 
-Programming languages typically abstract these clocks (e.g., ``std::chrono`` in C++, ``std::time`` in Rust). Therefore, the integration of S-CORE with existing language-specific abstractions is essential for consistency and ease of use.
+Mixing clock types unintentionally can lead to non-deterministic behaviors, negatively affecting system stability and correctness. Therefore, explicit selection of the time base by the application is mandatory. TimePoints of different clocks shall be incompatible types.
 
-TODO: differentiate between time base (e.g. identify source, synchronized clocks) and how the time is accessed (synchronized clock available via std::chrono)
-TODO: S-CORE time/clocks should be explicitly targeted and not implicitly hidden in e.g. std::chrono. score::chrono e.g. could provide a  thin wrapper for std::chrono but the user should explicitly choose a score supported time to avoid confusion with std::chrono.
+Applications must be able to detect when a chosen time base is invalid or unsynchronized, enabling them to define appropriate fallback or error-handling strategies. Error states or drift conditions must be detectable by the application.
 
-TODO: asking for a time stamp, should be as fast as possible.
+Clock introspection capabilities are required, allowing applications to determine synchronization status and time elapsed since the last successful synchronization. This information is vital during error handling or fallback situations.
 
-TODO: states of synchronized clocks, how to handle them? e.g. asking for current time when the clock is not synchronized. Error handling should be possible on per app use-case.
-TODO: should we expose the information on time difference since the last synchronization? dedicated api required.
+Access to TimePoints should be as performant as technically feasible due to their frequent use in control loops and high-frequency applications. Although specific latency targets are not defined here, low latency is a fundamental design consideration.
 
-TODO: alignment with Crypto feature request on secure clocks
+For cryptographic scenarios the feature also targets secure or authentic clocks. In such cases, a tamper-resistant time source is needed to ensure that time cannot be rolled back to re-enable expired certificates or bypass security controls. Authentic clocks might be signed or verified using hardware security modules.
 
-note: the daemon that is responsible for the nw time synrchonization should also synchronize the local hw clock.
-
-TODO: use existing time synchronization form OS or develop own? Use OS provided might me used for development but finally we need a qualified time synchronization for production.
-
+To integrate cleanly with modern programming languages, the time access API should align with idiomatic constructs (e.g., ``std::chrono`` in C++, ``time`` in Rust), while making clear that the source of time is provided by the S-CORE platform. A dedicated namespace such as ``score::chrono`` may wrap native types to make the time source explicit.
 
 Consistent Logical Time Within Cause-Effect Cycles
------------------------------------------------------
+--------------------------------------------------
 
-In automotive applications, cause-effect chains or distributed algorithms frequently collaborate within defined execution cycles. Within these cycles, it is crucial that all involved algorithms reference the **same logical time** despite potential differences in actual execution start times. Maintaining consistent logical timing within cycles ensures accurate data integration and computational coherence. This consistency is particularly vital in applications such as sensor fusion, control systems, and coordinated vehicle dynamics, where discrepancies in perceived time could lead to inaccuracies in integrated values (e.g., vehicle speed, acceleration, or positional calculations).
+.. figure:: _assets/timesync-chain.drawio.svg
+   :alt: Consistent Logical Time Within Cause-Effect Cycles
+   :align: center
 
-The capability to record and replay logical time is also crucial for providing a sufficient simulation environment for algorithms. This feature enables developers to test and validate algorithms under controlled and repeatable conditions, ensuring their robustness and reliability before deployment. By simulating consistent logical time, it becomes possible to analyze the behavior of distributed systems, identify potential issues, and optimize performance in scenarios that closely mimic real-world operations.
+In distributed automotive applications, control logic is often structured into cause-effect chains. These chains consist of multiple interdependent tasks executing concurrently. Within each cycle of these chains, it is critical that all tasks perceive the same logical timestamp, even if their execution occurs at different actual CPU times.
 
-todo: add reasoning why "the same logical time" is crucial in a cause-effect/task chain (e.g., integrating speed to ...)
+Sharing a consistent logical timestamp ensures deterministic computations. For instance, integrating sensor measurements such as speed over time into position data requires stable and jitter-resilient timestamps shared across tasks. Additionally, consistent logical time enables reproducibility in testing, simulation, and validation scenarios, as the sequence and timing of events can be reliably replayed.
 
-note: potentially exposing the current time stamp by the executor and make it available via IPC to the activities. within activities this could be abstraced by a time api but therefore the time is recordable and replayable.
-
-Differentiation between where logical time is required.
-
-
-
+Logical time must be explicitly provided to the tasks within these cause-effect chains, but its availability in background processes or non-time-sensitive tasks is not required.
 
 
 .. Rationale
@@ -127,6 +112,30 @@ Differentiation between where logical time is required.
 
 Specification
 =============
+
+.. note::
+   From S-CORE workshop regarding Clocks, Accuracy, and Reading Current Time:
+
+   The basic concept of Time is represented by two initial and one derived element:
+
+   *Clocks* are the sources of time. A clock produced a sequence on *Timepoints*, each representing a specific point in time.
+   Timepoints have an Order, i.e. the relations "equal" and "less than" are defined. Because of this, TimePoints can be substracted, creating a *TimeSpan*.
+
+   The following operations are valid between TimePoints and TimeSpans:
+
+   * Substraction: TimeSpan := TimePoint - TimePoint; TimeSpan := [TimeSpan - TimeSpan] | Negative TimeSpans shall not be allowed, the substraction saturates to zero.
+   * Addition: TimePoint := TimePoint + TimeSpan; TimeSpan := TimeSpan + TimeSpan
+   * Multiplication: TimeSpan := Factor * TimeSpan
+   * Equality: bool := TimePoint == TimePoint; bool := TimeSpan == TimeSpan
+   * Comparison: bool := TimePoint < TimePoint; bool := TimeSpan < TimeSpan (this includes with equality the less-than-or-equal relation)
+
+   The clock is characterized by main attributes:
+
+   * Frequency: The frequency with which the clock updates the TimePoints it issues.
+   * Resolution: The accuracy of an individual timepoint. While an ideal clock would have a resolution that is the reciproke of the frequency in reality this may not be the case.
+   * Monotony: A clock can be monotonous (TP[n+1] >= TP[n] is always maintained), strictly monotonous or not monotonous
+   * Steady: A steady clock will update in fixed intervals, i.e. each increment is exactly 1/Frequency. For example system clock is neither monotonous nor steady because of summer/winter time and leap seconds.
+   * Epoch: The TimePoint the clock started ticking. The semantic of the epoch is a documentation property of the clock. Example: Unix system clock has an Epoch value of 0 on 01.01.1970, 00:00:00 UTC.
 
 In-Vehicle Time Synchronization
 -------------------------------
@@ -196,6 +205,7 @@ Monotonic Clock
 ---------------
 
 * REQ_0015: the score::time feature shall provide a mechanism to access (read only) to monotonic, not adjustable clock value, which is mapped from the known OS or HW clock.
+
 
 
 .. Backwards Compatibility
