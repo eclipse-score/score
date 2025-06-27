@@ -80,12 +80,11 @@ translate the different data-types and representations of the two contexts.
 
 The SOME/IP side shall, where possible, use an existing SOME/IP stack that is fully compatible and complying with the SOME/IP specification from AUTOSAR Adaptive.
 
+This module shall fulfill the following requirements:
+ - Multi-Binding support - :need:`feat_req__com__multi_binding_support`
+ - agnostic binding - :need:`feat_req__com__binding_agnostic_api`
+ - deployment configuration - :need:`feat_req__com__multi_binding_depl`
 
-..
-   # This module shall fulfill the following requirements:
-   # - Multi-Binding support - :need:`feat_req__ipc__multi_binding_support`
-   # - agnostic binding - :need:`feat_req__ipc__binding_agnostic_api`
-   # - deployment configuration - :need:`feat_req__ipc__multi_binding_depl`
 
 .. _Specification:
 
@@ -96,6 +95,7 @@ SOME/IP Gateway protocol implementation
 ---------------------------------------
 
 The protocol implementation shall be fully compatible and complying with the SOME/IP specification from AUTOSAR Adaptive.
+Specifically the SOME/IP specification from AUTOSAR release 24-11 shall be supported by the SOME/IP Gateway. This shall guarantee that systems integrated with the SOME/IP gateway can be used in
 Protocol implementations shall be wrapped in an abstraction API, that stays stable and allows implementations may be exchanged, potentially even by binary only libraries.
 
 
