@@ -449,7 +449,7 @@ Possible error cases during the different FEO life cycle states shall be handled
       The primary process shall call the shutdown function of all remaining activities in arbitrary sequence and
       terminate itself.
 
-* State: Lifecycle Manger creates all processes (primary & secondaries)
+* State: Lifecycle Manager creates all processes (primary & secondaries)
     - If one or more processes cannot be created, the problem will be handled directly by the Lifecycle Manager
       (e.g. system restart / retry)
     - If not all secondaries connect to the primary in time, the primary shall report an error to the
@@ -460,9 +460,14 @@ Possible error cases during the different FEO life cycle states shall be handled
       startup functions, report the issue to health management and terminate itself. For all of the activities
       whose startup functions have already been called successfully, the corresponding shutdown functions shall be
       executed in arbitrary sequence.
+    - During initialization (i.e. in the startup function of an activity), activities shall check for resource allocation
+      and report an error to the executor in case of failure.
     - If a timeout occurs during startup, stepping or shutdown of an activity, the issue shall be reported to
       health-management. The primary process shall shutdown all successfully started activities in arbitrary sequence
       and terminate itself.
+    - If not all activities reach their initialized state within a certain period of time (startup timeout),
+      the issue shall be reported to health-management. The primary process shall shutdown all successfully
+      started activities in arbitrary sequence and terminate itself.
 
 * State: Lifecycle Manager has created all processes  (primary & secondaries), all secondaries have connected to the primary, all activities have been started up successfully
     - If an activity fails in the step function, a logical waypoint error shall be reported to health management.

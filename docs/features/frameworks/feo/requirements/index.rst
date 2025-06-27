@@ -58,7 +58,7 @@ Definitions
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
+    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data, stkh_req__execution_model__processes
     :status: valid
 
     All activities within an application are arranged within a `Task Chain`.
@@ -113,7 +113,7 @@ Dynamic Architecture
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
+    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data, stkh_req__execution_model__processes
     :status: valid
 
     The Application Lifecycle consists of 3 phases: Init, Run and Shutdown.
@@ -123,7 +123,7 @@ Dynamic Architecture
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
+    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data, stkh_req__execution_model__processes
     :status: valid
 
     Initialization of activities is done during application initialization.
@@ -138,7 +138,7 @@ Dynamic Architecture
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
+    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data, stkh_req__execution_model__processes
     :status: valid
 
     Each activity is stepped once within each execution of the task chain they belong to.
@@ -150,7 +150,7 @@ Dynamic Architecture
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
+    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data, stkh_req__execution_model__processes
     :status: valid
 
     Shutdown of activities is done during application shutdown.
@@ -256,6 +256,18 @@ Error Handling
     executed in arbitrary sequence.
 
 
+.. feat_req:: Activity resource allocation error
+    :id: feat_req__feo__act_alloc_error
+    :reqtype: Functional
+    :security: YES
+    :safety: ASIL_B
+    :satisfies: stkh_req__dependability__safety_features, stkh_req__dependability__availability, stkh_req__execution_model__processes
+    :status: valid
+
+    During initialization (i.e. in the startup function of an activity), activities shall check for resource allocation
+    and report an error to the executor in case of failure.
+
+
 .. feat_req:: Activity timeout
     :id: feat_req__feo__act_timeout
     :reqtype: Functional
@@ -267,6 +279,19 @@ Error Handling
     If a timeout occurs during startup, stepping or shutdown of an activity, the issue shall be reported to
     health-management. The primary process shall shutdown all successfully started activities in arbitrary sequence
     and terminate itself.
+
+
+.. feat_req:: Startup timeout
+    :id: feat_req__feo__startup_timeout
+    :reqtype: Functional
+    :security: YES
+    :safety: ASIL_B
+    :satisfies: stkh_req__dependability__safety_features, stkh_req__dependability__availability, stkh_req__execution_model__processes
+    :status: valid
+
+    If not all activities reach their initialized state within a certain period of time (startup timeout),
+    the issue shall be reported to health-management. The primary process shall shutdown all successfully
+    started activities in arbitrary sequence and terminate itself.
 
 
 .. feat_req:: Activity stepping error
