@@ -36,7 +36,6 @@ Platform Management Plan
    release_management
    problem_resolution
    change_management
-   requirements_management
    software_verification
    documentation_management
    software_development
