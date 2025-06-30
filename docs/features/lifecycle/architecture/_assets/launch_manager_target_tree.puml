@@ -1,0 +1,41 @@
+@startuml
+  title Dependency based lifecycle management
+
+  state debug #lightblue
+  state running #lightblue
+  state ready_for_shutdown #lightblue
+
+  state app1: /opt/bin/app1
+  state app2: /opt/bin/app2
+  state app3: /opt/bin/app3
+
+  state ssh: /usr/bin/ssh
+  state setup_filesystems: /etc/setup_filesystems.sh
+  state eth_driver: /bin/net-dev-eth
+  state filesystem: /bin/net-dev-ufs
+  state flash_driver: /bin/dev-emmc
+
+  [*] --> debug
+  [*] -[hidden]-> running
+  [*] -[hidden]-> ready_for_shutdown
+
+
+  running --> app1
+  app1 --> app2
+  app2 --> networking
+  running --> app3 
+  app3 --> networking
+
+  debug --> ssh
+  ssh --> networking
+  networking --> setup_filesystems
+  setup_filesystems --> filesystem
+  networking --> eth_driver
+  filesystem --> flash_driver
+
+  legend right
+      |Color| Type |
+      |<#lightblue>| Operating modes provided by the ControlInterface|
+  endlegend
+@enduml
+

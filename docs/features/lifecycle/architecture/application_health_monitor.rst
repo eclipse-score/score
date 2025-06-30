@@ -25,7 +25,7 @@ Static Architecture
    :status: valid
    :safety: ASIL_B
    :implements: logic_arc_int__lifecycle__health_monitor_if
-   :uses: logic_arc_int__lifecycle__alive_if
+   :uses: logic_arc_int__lifecycle__alive_if, logic_arc_int__logging__logging
    :security: NO
    :includes: 
    :fulfils:
