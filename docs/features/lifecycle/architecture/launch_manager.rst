@@ -28,7 +28,7 @@ Launch manager
    :status: valid
    :safety: ASIL_B
    :implements: logic_arc_int__lifecycle__controlif, logic_arc_int__lifecycle__alive_if
-   :uses: logic_arc_int__logging__logging
+   :uses: logic_arc_int__logging__logging,logic_arc_int__baselibs__json 
    :security: NO
    :includes: 
    :fulfils:
