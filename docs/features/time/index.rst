@@ -75,19 +75,40 @@ Bridging between different network domains (e.g., Ethernet to CAN) is outside th
 Clocks, Accuracy, and Reading Current Time
 ------------------------------------------
 
+The basic concept of Time is represented by two initial and one derived element:
+
+*Clocks* are the sources of time. A clock produced a sequence on *Timepoints*, each representing a specific point in time. 
+Timepoints have an Order, i.e. the relations "equal" and "less than" are defined. Because of this, TimePoints can be substracted, creating a *TimeSpan*.
+
+The following operations are valid between TimePoints and TimeSpans:
+
+* Substraction: TimeSpan := TimePoint - TimePoint; TimeSpan := [TimeSpan - TimeSpan] | Negative TimeSpans shall not be allowed, the substraction saturates to zero.
+* Addition: TimePoint := TimePoint + TimeSpan; TimeSpan := TimeSpan + TimeSpan
+* Multiplication: TimeSpan := Factor * TimeSpan
+* Equality: bool := TimePoint == TimePoint; bool := TimeSpan == TimeSpan
+* Comparison: bool := TimePoint < TimePoint; bool := TimeSpan < TimeSpan (this includes with equality the less-than-or-equal relation)
+
+The clock is characterized by main attributes:
+
+* Frequency: The frequency with which the clock updates the TimePoints it issues.
+* Resolution: The accuracy of an individual timepoint. While an ideal clock would have a resolution that is the reciproke of the frequency in reality this may not be the case.
+* Monotony: A clock can be monotonous (TP[n+1] >= TP[n] is always maintained), strictly monotonous or not monotonous 
+* Steady: A steady clock will update in fixed intervals, i.e. each increment is exactly 1/Frequency. For example system clock is neither monotonous nor steady because of summer/winter time and leap seconds. 
+* Epoch: The TimePoint the clock started ticking. The semantic of the epoch is a documentation property of the clock. Example: Unix system clock has an Epoch value of 0 on 01.01.1970, 00:00:00 UTC.
+
 Modern software environments contain several types of clocks (or time bases), including:
 
 * Local clocks, such as monotonic or steady clocks
 * Synchronized clocks, aligned with a vehicle-wide or external time base
 * Secure or authentic clocks, protected against tampering
 
-Mixing clock types unintentionally can lead to non-deterministic behaviors, negatively affecting system stability and correctness. Therefore, explicit selection of the time base by the application is mandatory.
+Mixing clock types unintentionally can lead to non-deterministic behaviors, negatively affecting system stability and correctness. Therefore, explicit selection of the time base by the application is mandatory. TimePoints of different clocks shall be incompatible types.
 
 Applications must be able to detect when a chosen time base is invalid or unsynchronized, enabling them to define appropriate fallback or error-handling strategies. Error states or drift conditions must be detectable by the application.
 
 Clock introspection capabilities are required, allowing applications to determine synchronization status and time elapsed since the last successful synchronization. This information is vital during error handling or fallback situations.
 
-Access to timestamps should be as performant as technically feasible due to their frequent use in control loops and high-frequency applications. Although specific latency targets are not defined here, low latency is a fundamental design consideration.
+Access to TimePoints should be as performant as technically feasible due to their frequent use in control loops and high-frequency applications. Although specific latency targets are not defined here, low latency is a fundamental design consideration.
 
 For cryptographic scenarios the feature also targets secure or authentic clocks. In such cases, a tamper-resistant time source is needed to ensure that time cannot be rolled back to re-enable expired certificates or bypass security controls. Authentic clocks might be signed or verified using hardware security modules.
 
