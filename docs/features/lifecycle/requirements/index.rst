@@ -498,7 +498,7 @@ Launching Processes
     The Launch Manager shall permit the stop order of non-dependent processes to be specified.
 
 .. feat_req:: OCI ompliant
-    :id: feat_req__lifecycle__oci_compliant
+    :id:: feat_req__lifecycle__oci_compliant
     :reqtype: Functional
     :security: NO
     :safety: ASIL_D
@@ -1000,7 +1000,7 @@ Configuration file
     The launch manager shall provide modular configuration file support to configure process attributes.
 
 .. feat_req:: Runtime configuration compliance
-    :id: feat_req__lifecycle__config_support_oci
+    :id: feat_req__lifecycle__modular_config_support
     :reqtype: Functional
     :security: NO
     :safety: ASIL_D
