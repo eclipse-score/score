@@ -16,7 +16,7 @@ Control Interface
 #################
 
 
-It's foreseen ECU projects will need a custom state management to fulfill ECU-project specific requirements.  THe S-Core will offer a framework to control application lifecycle, but will not specify the State Manager.
+It's foreseen ECU projects will need a custom state management to fulfill ECU-project specific requirements.  The S-Core will offer a framework to control application lifecycle, but will not specify the State Manager.
 
 The `Launch Manager` shall provide an interface, which allows an external State Manager application to request the `Launch Manager` to start, stop or restart applications or groups of applications,
 which allows the implementation of a state management applications to support dynamic state control.
@@ -72,7 +72,7 @@ Dynamic Architecture
    :status: valid
    :safety: ASIL_B
    :fulfils: feat_req__lifecycle__control_commands, feat_req__lifecycle__request_group_launch
-   :includes: 
+   :includes:
 
    .. uml:: _assets/control_interface_start_sequence.puml
       :scale: 50
@@ -84,7 +84,7 @@ Dynamic Architecture
    :status: valid
    :safety: ASIL_B
    :fulfils: feat_req__lifecycle__control_commands, feat_req__lifecycle__request_group_stop
-   :includes: 
+   :includes:
 
    .. uml:: _assets/control_interface_stop_sequence.puml
       :scale: 50
