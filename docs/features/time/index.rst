@@ -21,7 +21,6 @@ Time
    :id: doc__time
    :status: valid
    :safety: ASIL_B
-   :realizes: wp__feat_request
    :tags: time, feature_request, change_management
 
 
@@ -75,27 +74,6 @@ Bridging between different network domains (e.g., Ethernet to CAN) is outside th
 Clocks, Accuracy, and Reading Current Time
 ------------------------------------------
 
-The basic concept of Time is represented by two initial and one derived element:
-
-*Clocks* are the sources of time. A clock produced a sequence on *Timepoints*, each representing a specific point in time. 
-Timepoints have an Order, i.e. the relations "equal" and "less than" are defined. Because of this, TimePoints can be substracted, creating a *TimeSpan*.
-
-The following operations are valid between TimePoints and TimeSpans:
-
-* Substraction: TimeSpan := TimePoint - TimePoint; TimeSpan := [TimeSpan - TimeSpan] | Negative TimeSpans shall not be allowed, the substraction saturates to zero.
-* Addition: TimePoint := TimePoint + TimeSpan; TimeSpan := TimeSpan + TimeSpan
-* Multiplication: TimeSpan := Factor * TimeSpan
-* Equality: bool := TimePoint == TimePoint; bool := TimeSpan == TimeSpan
-* Comparison: bool := TimePoint < TimePoint; bool := TimeSpan < TimeSpan (this includes with equality the less-than-or-equal relation)
-
-The clock is characterized by main attributes:
-
-* Frequency: The frequency with which the clock updates the TimePoints it issues.
-* Resolution: The accuracy of an individual timepoint. While an ideal clock would have a resolution that is the reciproke of the frequency in reality this may not be the case.
-* Monotony: A clock can be monotonous (TP[n+1] >= TP[n] is always maintained), strictly monotonous or not monotonous 
-* Steady: A steady clock will update in fixed intervals, i.e. each increment is exactly 1/Frequency. For example system clock is neither monotonous nor steady because of summer/winter time and leap seconds. 
-* Epoch: The TimePoint the clock started ticking. The semantic of the epoch is a documentation property of the clock. Example: Unix system clock has an Epoch value of 0 on 01.01.1970, 00:00:00 UTC.
-
 Modern software environments contain several types of clocks (or time bases), including:
 
 * Local clocks, such as monotonic or steady clocks
@@ -128,16 +106,36 @@ Sharing a consistent logical timestamp ensures deterministic computations. For i
 Logical time must be explicitly provided to the tasks within these cause-effect chains, but its availability in background processes or non-time-sensitive tasks is not required.
 
 
-
-
-
-
 .. Rationale
 .. ==========
 
 
 Specification
 =============
+
+.. note::
+   From S-CORE workshop regarding Clocks, Accuracy, and Reading Current Time:
+
+   The basic concept of Time is represented by two initial and one derived element:
+
+   *Clocks* are the sources of time. A clock produced a sequence on *Timepoints*, each representing a specific point in time.
+   Timepoints have an Order, i.e. the relations "equal" and "less than" are defined. Because of this, TimePoints can be substracted, creating a *TimeSpan*.
+
+   The following operations are valid between TimePoints and TimeSpans:
+
+   * Substraction: TimeSpan := TimePoint - TimePoint; TimeSpan := [TimeSpan - TimeSpan] | Negative TimeSpans shall not be allowed, the substraction saturates to zero.
+   * Addition: TimePoint := TimePoint + TimeSpan; TimeSpan := TimeSpan + TimeSpan
+   * Multiplication: TimeSpan := Factor * TimeSpan
+   * Equality: bool := TimePoint == TimePoint; bool := TimeSpan == TimeSpan
+   * Comparison: bool := TimePoint < TimePoint; bool := TimeSpan < TimeSpan (this includes with equality the less-than-or-equal relation)
+
+   The clock is characterized by main attributes:
+
+   * Frequency: The frequency with which the clock updates the TimePoints it issues.
+   * Resolution: The accuracy of an individual timepoint. While an ideal clock would have a resolution that is the reciproke of the frequency in reality this may not be the case.
+   * Monotony: A clock can be monotonous (TP[n+1] >= TP[n] is always maintained), strictly monotonous or not monotonous
+   * Steady: A steady clock will update in fixed intervals, i.e. each increment is exactly 1/Frequency. For example system clock is neither monotonous nor steady because of summer/winter time and leap seconds.
+   * Epoch: The TimePoint the clock started ticking. The semantic of the epoch is a documentation property of the clock. Example: Unix system clock has an Epoch value of 0 on 01.01.1970, 00:00:00 UTC.
 
 In-Vehicle Time Synchronization
 -------------------------------
@@ -207,6 +205,7 @@ Monotonic Clock
 ---------------
 
 * REQ_0015: the score::time feature shall provide a mechanism to access (read only) to monotonic, not adjustable clock value, which is mapped from the known OS or HW clock.
+
 
 
 .. Backwards Compatibility
