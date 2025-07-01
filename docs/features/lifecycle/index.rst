@@ -47,6 +47,15 @@ For every ECU, handling of startup, shutdown, and monitoring of components is cr
 to ensure the system operates correctly and efficiently. Additionally, we need to
 provide the means to set the system in different operating modes, such as normal
 operation, engineering/debug mode, flash mode etc.
+started, stopped, and monitored effectively, providing a robust framework for managing the state of the system.
+
+Motivation
+----------
+
+For every ecu handling of startup, shutdown, and monitoring of components is crucial to
+ensure the system operates correctly and efficiently. Additionally we need do provide the
+means to set the system in different operating modes, such as normal operation, engineering/debug mode,
+flash mode etc.
 
 
 Rationale
@@ -56,23 +65,27 @@ Main task of the lifecycle system is to start and stop :term:`processes` dependi
 overall state the user wants to achieve and the functional dependencies between
 the :term:`processes`.
 
+:term:`Lifecycle Components` can be very simple like a single process or more complex like a set of processes
+which are started in a certain order and with certain dependencies between them or `container`s.
+
 We call a state of the system an :term:`Operating Mode`, which is defined via the
-:term:`processes` running on the system at a certain point in time.
+:term:`Lifecycle Components` running on the system at a certain point in time.
+A `lifecycle component` is a configuration unit, which describes the `executable`, which shall be executed
+and the :term:`sandbox` the platform has to provide to run this executable.
 
-Examples for operating modes are `startup`, `running`, `shutdown` etc.
-
-Via the configuration we define a certain :term:`Operating Mode` and add all the components,
-which are needed to realize this :term:`Operating Mode` as dependencies.
-
-A :term:`Lifecycle Component` is a configuration unit, which describes the
-`executable`, which shall be executed and the :term:`Sandbox` the platform has
-to provide to run this executable. E.g. the :term:`Sandbox` shall describe:
+E.g. the :term:`sandbox`` shall describe
 
 - environment variables, which shall be set via the lifecycle system
 - secpol policies on QNX, which shall be applied to the process
 - cgroup configurations on Linux, which shall be applied to the process
 - user and group IDs under which the process shall be started
 - ...
+
+
+
+Via the configuration we define a certain operting mode and add all the components, which are needed to
+realize this operating mode as dependencies.
+  
 
 A second task of the lifecycle system is to supervise the aliveness of the :term:`processes`,
 which are started and to initiate appropriate actions in case of a failure, which
@@ -88,6 +101,32 @@ The Lifecycle feature addresses the following stakeholder requirements:
 • **Safety Features** - :need:`stkh_req__dependability__safety_features`: Implementation of monitoring safety mechanisms
 
 • **Logging Support** - :need:`stkh_req__dev_experience__logging_support`: Comprehensive logging capabilities including slog2, file-based logging, state transitions, timestamps, and DAG visualization for debugging and monitoring
+
+A second task of the lifecycle system is to supervise the aliveness of the processes, which are started
+and to initiate appropriate actions in case of a failure, which might result in many cases in
+a change of the operting mode.
+
+Support of containers
+---------------------
+
+A :term:`Sandbox` can e.g. realized as a `container`, which is  a lightweight, standalone executable 
+package that includes everything needed to run a piece of software,
+including the code, runtime, libraries, and system tools.
+In the context of the S-SCORE platform, container can be used to encapsulate applications and their dependencies,
+ensuring consistent execution across different environments.
+
+Main task of the lifecycle system is to start and stop components with an `OCI` compliant runtime enviroment `<https://github.com/opencontainers/runtime-spec>`_ depending on the overall state the
+user wants to achieve and the functional dependencies between the processes.
+
+We call a runtime-state of the system an `operating mode`, which is defined via the processes running on the
+system at a certain point in time the with the `OCI` runtime.
+
+Coming from the OCI Specification the `operation modes` is a superset of the `OCI` states
+
+- Creating
+- Created
+- Running
+- Stopped
 
 Specification
 -------------
