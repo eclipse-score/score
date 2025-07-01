@@ -486,10 +486,11 @@ Launching Processes
     The Launch Manager shall permit the stop order of non-dependent processes to be specified.
 
 .. feat_req:: OCI ompliant
-    :id feat_req_oci_compliant
+    :id: feat_req_oci_compliant
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_B
+    :safety: ASIL_D
+    :status: invalid
     :satisfies: stkh_req__overall_goals__enable_cooperation
 
     The Launch Manager shall be complient to the `OCI Specfication v1.2.0  < https://github.com/opencontainers/runtime-spec/releases/tag/v1.2.0>`
@@ -972,10 +973,10 @@ Configuration file
     The launch manager shall provide modular configuration file support to configure process attributes.
 
 .. feat_req:: Runtime configuration compliance
-    :id: feat_req__lifecycle__modular_config_support
+    :id: feat_req__lifecycle__modular_config_support_oci
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_B
+    :safety: ASIL_D
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
