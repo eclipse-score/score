@@ -45,6 +45,147 @@ Static Architecture
    :fulfils: feat_req__com__interfaces
 
 
+.. logic_arc_int:: Deadline Monitor API
+   :id: logic_arc_int__lifecycle__deadline_monitor_if
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :fulfils: feat_req__com__interfaces
+
+
+
+.. logic_arc_int_op:: configure_minimum_time
+   :id: logic_arc_int_op__lifecycle__min_time
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__lifecycle__health_monitor_if
+
+.. logic_arc_int_op:: configure_maximum_time
+   :id: logic_arc_int_op__lifecycle__max_time
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__lifecycle__deadline_monitor_if
+
+.. logic_arc_int_op:: link_condition
+   :id: logic_arc_int_op__lifecycle__link_cond
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__lifecycle__deadline_monitor_if
+
+.. logic_arc_int_op:: mark_start
+   :id: logic_arc_int_op__lifecycle__start
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__lifecycle__deadline_monitor_if
+
+.. logic_arc_int_op:: mark_end
+   :id: logic_arc_int_op__lifecycle__end
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__lifecycle__deadline_monitor_if
+
+.. logic_arc_int_op:: on_timer_expiry
+   :id: logic_arc_int_op__lifecycle__timer_expiry
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__lifecycle__deadline_monitor_if
+
+.. logic_arc_int_op:: enable_monitoring
+   :id: logic_arc_int_op__lifecycle__enable_mon
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__lifecycle__deadline_monitor_if
+
+.. logic_arc_int_op:: disable_monitoring
+   :id: logic_arc_int_op__lifecycle__disable_mon
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__lifecycle__deadline_monitor_if
+
+.. logic_arc_int_op:: check_configuration
+   :id: logic_arc_int_op__lifecycle__check_cfg
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__lifecycle__deadline_monitor_if
+
+
+
+.. logic_arc_int:: Logical Monitor API
+   :id: logic_arc_int__lifecycle__logical_monitor_if
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :fulfils: feat_req__com__interfaces
+
+
+
+.. logic_arc_int_op:: add_entry_point
+   :id: logic_arc_int_op__lifecycle__entry_point
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__lifecycle__logical_monitor_if
+
+.. logic_arc_int_op:: add_exit_point
+   :id: logic_arc_int_op__lifecycle__exit_point
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__lifecycle__logical_monitor_if
+
+.. logic_arc_int_op:: add_allowed_transition
+   :id: logic_arc_int_op__lifecycle__allowed_trans
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__lifecycle__logical_monitor_if
+
+.. logic_arc_int_op:: link_condition
+   :id: logic_arc_int_op__lifecycle__link_cond
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__lifecycle__logical_monitor_if
+
+.. logic_arc_int_op:: record_checkpoint
+   :id: logic_arc_int_op__lifecycle__rec_checkpoint
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__lifecycle__logical_monitor_if
+
+.. logic_arc_int_op:: enable
+   :id: logic_arc_int_op__lifecycle__enable
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__lifecycle__logical_monitor_if
+
+.. logic_arc_int_op:: disable
+   :id: logic_arc_int_op__lifecycle__disable
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__lifecycle__logical_monitor_if
+
+.. logic_arc_int_op:: verify
+   :id: logic_arc_int_op__lifecycle__verify
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__lifecycle__logical_monitor_if
+
+
+
 
 Dynamic Architecture
 ====================
