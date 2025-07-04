@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Architecture &#8212; S-CORE 0.1 documentation</title>
+    <title>SOME/IP Gateway Architecture &#8212; S-CORE 0.1 documentation</title>
   
   
   
@@ -406,7 +406,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../ipc/index.html">Inter-process Communication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../modules/index.html">Modules</a></li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">SOME/IP-Gateway</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l3 current active has-children"><a class="current reference internal" href="#">Architecture</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+<li class="toctree-l3 current active has-children"><a class="current reference internal" href="#">SOME/IP Gateway Architecture</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
 </ul>
 </details></li>
 <li class="toctree-l3"><a class="reference internal" href="../requirements/index.html">Requirements</a></li>
@@ -467,7 +467,7 @@
     
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">SOME/IP-Gateway</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Architecture</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">SOME/IP Gateway Architecture</span></li>
   </ul>
 </nav>
 </div>
@@ -484,8 +484,8 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="architecture">
-<h1>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h1>
+  <section id="some-ip-gateway-architecture">
+<span id="id1"></span><h1>SOME/IP Gateway Architecture<a class="headerlink" href="#some-ip-gateway-architecture" title="Link to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>For now we store the component architecture in the feature tree, because multi-repo docs are not yet supported.
@@ -493,6 +493,27 @@ Once this support becomes available the component architecture will be moved to 
 </div>
 <div class="toctree-wrapper compound">
 </div>
+<p>SOME/IP Gateway on one side is a regular participant in IPC and uses the according mechanisms to publish
+data or to subscribe to data. As such it will need to know and understand the data types that are used in
+the IPC network.</p>
+<p>It also is a participant in the SOME/IP network and provides services for the service oriented communication.
+This shall be possible by including SOME/IP stacks that are AUTOSAR compliant.</p>
+<p>There need to be some components between the two communication networks as data types and their according representations and
+transmission cadence can be different. Translation of data types could be handled in some translation module
+that might be independent of the rest of the gateway. But buffering / queuing of messages, events, signals
+should be mostly freely programmable by integrators using the SOME/IP gateway.</p>
+<figure class="align-center" id="id2">
+<img alt="../../../../_images/some_ip_gateway_architecture.drawio.svg" src="../../../../_images/some_ip_gateway_architecture.drawio.svg" />
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">General overview of SOME/IP Gateway</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="some-ip-gateway-details">
+<img alt="../../../../_images/some_ip_gateway_details.drawio.svg" src="../../../../_images/some_ip_gateway_details.drawio.svg" />
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">General overview of SOME/IP Gateway</span><a class="headerlink" href="#some-ip-gateway-details" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 
 
