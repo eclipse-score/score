@@ -27,10 +27,26 @@ jobs:
       pull-requests: write
       issues: write # Allow label creation
     steps:
+      - name: Close abandoned feature-request PRs
+        uses: actions/stale@v9
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          only-pr-labels: feature_request
+          days-before-issue-stale: -1 # Override days-before-stale for issues only
+          days-before-issue-close: -1 # Override days-before-close for issues only
+          days-before-pr-stale: 90 # 30 days idle → stale
+          days-before-pr-close: 10 # close countdown
+          stale-pr-message: >
+            This feature request has been idle for 90 days. We'll auto-close it in 10 days unless there's new activity.
+          close-pr-label: autoclosed
+          operations-per-run: 90
+          close-pr-message: "Auto-closing: no activity for 90 days. If this is still relevant, reopen or create a fresh PR."
+
       - name: Close abandoned PRs
         uses: actions/stale@v9
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+          exempt-pr-labels: feature_request
 
           # days-before-stale Idle number of days before marking issues/PRs stale (default: 60)
           # days-before-close Idle number of days before closing stale issues/PRs (default: 7)
