@@ -15,6 +15,71 @@
 Application Health Monitor
 ##########################
 
+The `Application Health Monitor` is library, that together with the `Launch Manager` provide a way to monitor
+the application health in similar fashion as the AUTOSAR `Platform Health Manager` (PHM).
+
+The main features of the `Application Health Monitor` are the following monitoring functions:
+
+- Alive supervision
+  - Periodic monitoring of checkpoints, which must fit the pre-configured expected number of notifications in the given interval (not too many, not too few)
+  - Protecting from running checks too often or too rarely
+- Deadline supervision
+  - Timing requirement between two checkpoints.
+- Logical
+  - Specifies in which order two or more checkpoints must be called
+
+The `Application Health Monitor` itself is monitored via the `Launch Manager` with via alive supervision only.
+
+
+Benefits over classical external process monitoring
+===================================================
+
+- Inter process communication (IPC) only needed for the alive monitoring between `Application Health Monitor` and `Launch Manager`
+- Easier configuration
+    - The monitoring rules can be configured dynamically on demand basis
+    - The monitoring can be started and stopped dynamically
+- Debugging of problems possibly easier
+    - Mapping of the events from a single process vs. the monitored application and the monitor
+
+Drawbacks over classical external process monitoring
+====================================================
+
+- Harder safety argumentation. The following chapter describes the issues and the possible solutions.
+
+Safety
+======
+
+As the `Application Health Monitor` is linked as part of the monitored application, it raises the following concerns
+with respect to safety:
+
+- How can it be ensured, that the monitored application does not interfere with the monitoring functionality?
+- How can it be ensured, that the `Application Health Monitor` does not incorrectly report alive to the `Launch Manager` when it has detected
+  a supervision error?
+
+
+These concerns are valid, but can be addressed using the following techniques:
+
+- Hiding of the internal data from the user:
+    - For example, if the monitoring is implemented in a thread, the thread ID must not be exposed to the calling application.
+    - Hide the implementation for example with the pImpl-approach
+- Protecting the memory of the library by using guard pages where the application memory is located, and protect it with mprotect()
+   - possibly with a help of a custom allocator
+- Protecting the data with a checksum and possibly a sequence counter
+   - The internal data of the library can be checksum'ed every operation cycle, and by adding for example, a sequence
+     counter (or some more complex mathematical function), further checkpoints for detecting misbehavior can be implemented
+- Using a safe programming language, which does not allow a raw pointer access
+- Testing the application with Valgrid etc.
+- Redundant monitoring, if the self monitoring with above is not sufficient, an another library in another memory location can detect sporadic corruption of the other.
+
+
+Error Reactions
+===============
+
+- When the `Application Health Monitor` detects a failed supervision, it shall stop triggering alive notifications to the `Launch Manager`.
+- Additionally, when the error occurs, the `Application Health Monitor` triggers a failure notification to the `Launch Manager` to reduce the time
+  to react on the error. This obviously will only work if the `Application Health Monitor` is still working and correctly scheduled. Thus the
+  worst case reaction time calculations must be made on the monitoring rules specified in the `Launch Manager` for the monitored application.
+
 
 Static Architecture
 ===================
