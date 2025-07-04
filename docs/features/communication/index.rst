@@ -31,6 +31,7 @@ Communication
    docs/**/index
    ipc/index
    modules/index
+   some_ip_gateway/index
 
 Feature flag
 ============
