@@ -19,3 +19,4 @@ Rust
    :maxdepth: 1
 
    coding_guidelines
+   rust_api_design
