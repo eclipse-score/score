@@ -171,8 +171,7 @@ Supervision
     :status: valid
 
     The framework shall provide the functionality to enable the reporting of 
-    alive supervision checkpoint to an external health management system 
-    (e.g. watchdog) 
+    alive supervision checkpoint via the health management API(tbd.) 
 
 .. feat_req:: Support of deadline supervision checkpoints
     :id: feat_req__feo__deadline_supervision
@@ -183,8 +182,7 @@ Supervision
     :status: valid
 
     The framework shall provide the functionality to enable the reporting of 
-    deadline supervision checkpoints to an external health management system 
-    (e.g. watchdog) 
+    deadline supervision checkpoints via the health management API(tbd.)
 
 .. feat_req:: Support of logical supervision
     :id: feat_req__feo__logical_supervision
@@ -195,8 +193,7 @@ Supervision
     :status: valid
 
     The framework shall provide the functionality to enable the reporting of 
-    logical supervision checkpoints to an external health management system 
-    (e.g. watchdog) 
+    logical supervision checkpoints via the health management API(tbd.)
 
 .. feat_req:: Trustable computation
     :id: feat_req__feo__trustable_computation
