@@ -81,7 +81,7 @@ A more robust design would allow timing monitors and error paths to be expressed
 Concurrency Overhead in Service Infrastructure
 ----------------------------------------------
 
-The system must also support platform services such as diagnostics, configuration management, health supervision, and communication gateways. In existing stacks, these services often run one thread per client, leading to rapid thread growth. For instance, 15 services accessed by 150 applications would result in over 2,000 threads. This creates significant performance problems, including increased context-switching, memory pressure, and degraded throughput.
+The system must also support platform services such as diagnostics, configuration management, health supervision, and communication gateways. In existing stacks, these services often run one thread per client, leading to rapid thread growth. For instance, 15 services accessed by 150 applications would result in over 2,000 threads. This can create significant performance problems, including increased context-switching, memory pressure, and degraded throughput.
 
 The platform must support a concurrency model that can scale to such numbers without relying on a one-thread-per-task model. Reducing thread count while preserving concurrency is essential, both for platform services and for user-level applications.
 
@@ -169,7 +169,7 @@ Preemptive special tasks are managed distinctly and do not compete with cooperat
 Scaling
 ~~~~~~~
 
-Scaling across multiple Executors is achieved through instantiating additional Executor instances rather than dynamically scaling existing thread pools. Each Executor instance is independently configured regarding:
+Scaling across multiple Executors is achieved through instantiating additional Executor instances rather than dynamically scaling existing thread pools. While each Executor is assigned to a single process, a single process may host multiple Executors to partition workloads or isolate scheduling domains. Each Executor instance is independently configured regarding:
 
 - Thread pool size
 - OS-level priority
@@ -300,9 +300,8 @@ The Executor and Orchestrator frameworks expose observability hooks to integrate
 
 The Executor and Programs are considered healthy when:
 
-- All timing constraints (execution monitors) within Programs are consistently satisfied.
-- Defined error-handling logic within Programs executes correctly and completely whenever timing violations or other faults occur.
-- Critical tasks are executed reliably, with no instances of starvation, deadlocks, or indefinite blocking observed within Executors.
+- Either all timing constraints (execution monitors) within Programs are consistently satisfied, or the defined error-handling logic within Programs executes correctly and completely in response to any timing violations or other faults.
+- And critical tasks are executed reliably, with no instances of starvation, deadlocks, or indefinite blocking observed within Executors.
 
 The design ensures tasks themselves do not require explicit interfacing with external monitoring mechanisms. Instead, Executor and Program frameworks transparently integrate health checkpoints internally. The external health monitor is considered out of scope for the orchestrator feature request (see lifecycle and health feature).
 
@@ -374,6 +373,9 @@ Glossary
 
    preemptive
       A scheduling model where task execution can be interrupted externally.
+
+   fairness-based scheduling
+      A scheduling strategy that aims to ensure all ready tasks or threads are given equitable opportunities to progress over time. In cooperative scheduling (e.g., async executors), this involves polling tasks in a way that prevents any single task from monopolizing the scheduler, assuming tasks yield control appropriately. In preemptive systems, it ensures that no runnable thread is starved of CPU time. Fairness may be implemented via round-robin, aging, or probabilistic approaches, but it does not guarantee strict time-sharing.
 
    program
       A static, declarative graph that defines the control flow and timing semantics of an application's task logic.

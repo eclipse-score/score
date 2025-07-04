@@ -471,7 +471,7 @@
                   
   <section id="orchestration">
 <span id="orchestration-feature"></span><h1>Orchestration<a class="headerlink" href="#orchestration" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-74d500e5">
+<div class="need_container docutils container" id="SNCB-36ce9033">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__orchestration">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -550,7 +550,7 @@
 </section>
 <section id="concurrency-overhead-in-service-infrastructure">
 <h3>Concurrency Overhead in Service Infrastructure<a class="headerlink" href="#concurrency-overhead-in-service-infrastructure" title="Link to this heading">#</a></h3>
-<p>The system must also support platform services such as diagnostics, configuration management, health supervision, and communication gateways. In existing stacks, these services often run one thread per client, leading to rapid thread growth. For instance, 15 services accessed by 150 applications would result in over 2,000 threads. This creates significant performance problems, including increased context-switching, memory pressure, and degraded throughput.</p>
+<p>The system must also support platform services such as diagnostics, configuration management, health supervision, and communication gateways. In existing stacks, these services often run one thread per client, leading to rapid thread growth. For instance, 15 services accessed by 150 applications would result in over 2,000 threads. This can create significant performance problems, including increased context-switching, memory pressure, and degraded throughput.</p>
 <p>The platform must support a concurrency model that can scale to such numbers without relying on a one-thread-per-task model. Reducing thread count while preserving concurrency is essential, both for platform services and for user-level applications.</p>
 </section>
 <section id="observability-and-validation-in-real-deployments">
@@ -617,7 +617,7 @@
 </section>
 <section id="scaling">
 <h4>Scaling<a class="headerlink" href="#scaling" title="Link to this heading">#</a></h4>
-<p>Scaling across multiple Executors is achieved through instantiating additional Executor instances rather than dynamically scaling existing thread pools. Each Executor instance is independently configured regarding:</p>
+<p>Scaling across multiple Executors is achieved through instantiating additional Executor instances rather than dynamically scaling existing thread pools. While each Executor is assigned to a single process, a single process may host multiple Executors to partition workloads or isolate scheduling domains. Each Executor instance is independently configured regarding:</p>
 <ul class="simple">
 <li><p>Thread pool size</p></li>
 <li><p>OS-level priority</p></li>
@@ -742,9 +742,8 @@
 <p>The Executor and Orchestrator frameworks expose observability hooks to integrate with external supervisory systems, such as systemd’s watchdog or custom health monitors. These hooks provide mechanisms for external entities to verify and validate the health of Executors and Programs without requiring direct task-level instrumentation.</p>
 <p>The Executor and Programs are considered healthy when:</p>
 <ul class="simple">
-<li><p>All timing constraints (execution monitors) within Programs are consistently satisfied.</p></li>
-<li><p>Defined error-handling logic within Programs executes correctly and completely whenever timing violations or other faults occur.</p></li>
-<li><p>Critical tasks are executed reliably, with no instances of starvation, deadlocks, or indefinite blocking observed within Executors.</p></li>
+<li><p>Either all timing constraints (execution monitors) within Programs are consistently satisfied, or the defined error-handling logic within Programs executes correctly and completely in response to any timing violations or other faults.</p></li>
+<li><p>And critical tasks are executed reliably, with no instances of starvation, deadlocks, or indefinite blocking observed within Executors.</p></li>
 </ul>
 <p>The design ensures tasks themselves do not require explicit interfacing with external monitoring mechanisms. Instead, Executor and Program frameworks transparently integrate health checkpoints internally. The external health monitor is considered out of scope for the orchestrator feature request (see lifecycle and health feature).</p>
 </section>
@@ -786,6 +785,8 @@
 <dt id="term-cooperative">cooperative<a class="headerlink" href="#term-cooperative" title="Link to this term">#</a></dt><dd><p>A scheduling model in which tasks voluntarily yield control to enable other tasks to execute. In cooperative multitasking, task switching occurs at well-defined points, reducing the overhead of context switching and simplifying the management of shared resources.</p>
 </dd>
 <dt id="term-preemptive">preemptive<a class="headerlink" href="#term-preemptive" title="Link to this term">#</a></dt><dd><p>A scheduling model where task execution can be interrupted externally.</p>
+</dd>
+<dt id="term-fairness-based-scheduling">fairness-based scheduling<a class="headerlink" href="#term-fairness-based-scheduling" title="Link to this term">#</a></dt><dd><p>A scheduling strategy that aims to ensure all ready tasks or threads are given equitable opportunities to progress over time. In cooperative scheduling (e.g., async executors), this involves polling tasks in a way that prevents any single task from monopolizing the scheduler, assuming tasks yield control appropriately. In preemptive systems, it ensures that no runnable thread is starved of CPU time. Fairness may be implemented via round-robin, aging, or probabilistic approaches, but it does not guarantee strict time-sharing.</p>
 </dd>
 <dt id="term-program">program<a class="headerlink" href="#term-program" title="Link to this term">#</a></dt><dd><p>A static, declarative graph that defines the control flow and timing semantics of an application’s task logic.</p>
 </dd>
