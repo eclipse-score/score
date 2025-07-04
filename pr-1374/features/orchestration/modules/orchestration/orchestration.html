@@ -408,6 +408,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../docs/architecture/index.html">Architecture</a></li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">Modules</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../baselibs/index.html">Baselibs Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../communication/index.html">Communication Module</a></li>
 <li class="toctree-l3 current active has-children"><a class="reference internal" href="index.html">Orchestration Module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l4 current active"><a class="current reference internal" href="#">Frontend Architecture</a></li>
 <li class="toctree-l4"><a class="reference internal" href="runtime.html">Frontend Architecture</a></li>
@@ -489,7 +490,7 @@
                   
   <section id="frontend-architecture">
 <h1>Frontend Architecture<a class="headerlink" href="#frontend-architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-9fc5a7a4">
+<div class="need_container docutils container" id="SNCB-f55fe033">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__orch__orchestration">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -513,7 +514,7 @@
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">implements: <span class="implements"><span><a class="reference internal" href="../../docs/architecture/index.html#logic_arc_int__orchestration__user" title="comp_arc_sta__orch__orchestration">logic_arc_int__orchestration__user</a></span></span></div>
-<div class="line">uses: <span class="uses"><span><a class="reference internal" href="../../../communication/modules/logging/index.html#logic_arc_int__logging__logging" title="comp_arc_sta__orch__orchestration">logic_arc_int__logging__logging</a>, <a class="reference internal" href="../../../communication/modules/tracing/index.html#logic_arc_int__tracing__tracing" title="comp_arc_sta__orch__orchestration">logic_arc_int__tracing__tracing</a>, <a class="reference internal" href="../baselibs/containers.html#logic_arc_int__baselibs__cont" title="comp_arc_sta__orch__orchestration">logic_arc_int__baselibs__cont</a>, <a class="reference internal" href="../baselibs/sync.html#logic_arc_int__baselibs__sync" title="comp_arc_sta__orch__orchestration">logic_arc_int__baselibs__sync</a>, <a class="reference internal" href="../../../communication/docs/architecture/index.html#logic_arc_int__communication__user" title="comp_arc_sta__orch__orchestration">logic_arc_int__communication__user</a></span></span></div>
+<div class="line">uses: <span class="uses"><span><a class="reference internal" href="../../../communication/modules/logging/index.html#logic_arc_int__logging__logging" title="comp_arc_sta__orch__orchestration">logic_arc_int__logging__logging</a>, <a class="reference internal" href="../../../communication/modules/tracing/index.html#logic_arc_int__tracing__tracing" title="comp_arc_sta__orch__orchestration">logic_arc_int__tracing__tracing</a>, <a class="reference internal" href="../baselibs/containers.html#logic_arc_int__baselibs__cont" title="comp_arc_sta__orch__orchestration">logic_arc_int__baselibs__cont</a>, <a class="reference internal" href="../baselibs/sync.html#logic_arc_int__baselibs__sync" title="comp_arc_sta__orch__orchestration">logic_arc_int__baselibs__sync</a>, <a class="reference internal" href="../communication/com.html#logic_arc_int__communication__com" title="comp_arc_sta__orch__orchestration">logic_arc_int__communication__com</a></span></span></div>
 <div class="line">included by: <span class="includes"><span><a class="reference internal" href="index.html#mod_view_sta__orch__orchestration" title="comp_arc_sta__orch__orchestration">mod_view_sta__orch__orchestration</a></span></span></div>
 </span></div>
 </div>
@@ -521,7 +522,7 @@
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-features/orchestration/modules/orchestration/orchestration-0">
-<object data="../../../../_images/plantuml-f2fb792cd2c10276ce26942bf789de47925256e1.svg" type="image/svg+xml" style="width:209px;height:192px;background:#FFFFFF;"></object></p>
+<object data="../../../../_images/plantuml-5f3017b98630a479b9932d6a7993e4d4c101e058.svg" type="image/svg+xml" style="width:209px;height:225px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -538,11 +539,11 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b60e6e35">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__orch__initialize">
+<div class="need_container docutils container" id="SNCB-f1107b6a">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__orch__register_func">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">Initialize</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">register function</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -561,7 +562,7 @@
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="../../docs/architecture/index.html#logic_arc_int__orchestration__user" title="logic_arc_int_op__orch__initialize">logic_arc_int__orchestration__user</a></span></span></div>
+<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="../../docs/architecture/index.html#logic_arc_int__orchestration__user" title="logic_arc_int_op__orch__register_func">logic_arc_int__orchestration__user</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -570,7 +571,97 @@
 <tr class="content row-odd"><td class="content" colspan="6"></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
-<div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int_op__orch__initialize" title="logic_arc_int_op__orch__initialize">logic_arc_int_op__orch__initialize</a></span></span></div>
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int_op__orch__register_func" title="logic_arc_int_op__orch__register_func">logic_arc_int_op__orch__register_func</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Logical Architecture Interface Operation</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-22afe824">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__orch__register_event">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">register event</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
+<div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="../../docs/architecture/index.html#logic_arc_int__orchestration__user" title="logic_arc_int_op__orch__register_event">logic_arc_int__orchestration__user</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int_op__orch__register_event" title="logic_arc_int_op__orch__register_event">logic_arc_int_op__orch__register_event</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Logical Architecture Interface Operation</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-c32a16cf">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__orch__add_program">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">add program</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
+<div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="../../docs/architecture/index.html#logic_arc_int__orchestration__user" title="logic_arc_int_op__orch__add_program">logic_arc_int__orchestration__user</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int_op__orch__add_program" title="logic_arc_int_op__orch__add_program">logic_arc_int_op__orch__add_program</a></span></span></div>
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">

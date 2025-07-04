@@ -22,7 +22,7 @@ Frontend Architecture
    :safety:  ASIL_B
    :status: valid
    :implements: logic_arc_int__orchestration__user
-   :uses: logic_arc_int__logging__logging, logic_arc_int__tracing__tracing,logic_arc_int__baselibs__cont,logic_arc_int__baselibs__sync,logic_arc_int__communication__user
+   :uses: logic_arc_int__logging__logging, logic_arc_int__tracing__tracing,logic_arc_int__baselibs__cont,logic_arc_int__baselibs__sync,logic_arc_int__communication__com
 
    .. needarch::
       :scale: 50
@@ -30,8 +30,24 @@ Frontend Architecture
 
       {{ draw_component(need(), needs) }}
 
-.. logic_arc_int_op:: Initialize
-   :id: logic_arc_int_op__orch__initialize
+.. logic_arc_int_op:: register function
+   :id: logic_arc_int_op__orch__register_func
+   :security: YES
+   :safety:  ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__orchestration__user
+
+
+.. logic_arc_int_op:: register event
+   :id: logic_arc_int_op__orch__register_event
+   :security: YES
+   :safety:  ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__orchestration__user
+
+
+.. logic_arc_int_op:: add program
+   :id: logic_arc_int_op__orch__add_program
    :security: YES
    :safety:  ASIL_B
    :status: valid

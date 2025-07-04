@@ -32,9 +32,9 @@ A description of the orchestration module is located.
 Static Architecture
 -------------------
 
-As discussed in :ref:`com_rationale`, the overall architecture of the communication framework must be layered. This is required, to separate the frontend from the underlying communication mechanisms (also called bindings).
+ The overall architecture of the orchestration framework is to be layered.Orchestration uses the runtime component which abstracts
 
-This ensures a stable public API, independent of the underlying binding(s). At the same time, the communication framework can support many different communication protocols in a flexible manner.
+ execution specific details like threads.
 
 .. feat_arc_sta:: Feature Architecture Orchestration
    :id: feat_arc_sta__orch__orchestration
@@ -71,4 +71,3 @@ The public API for the frontend is defined as:
       :align: center
 
       {{ draw_interface(need(), needs) }}
-
