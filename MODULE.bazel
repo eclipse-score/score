@@ -92,3 +92,45 @@ bazel_dep(name = "score_starpls_lsp", version = "0.1.0")
 
 bazel_dep(name = "score_docs_as_code", version = "0.4.4")
 bazel_dep(name = "score_process", version = "1.0.4")
+
+###############################################################################
+#
+# TRLC
+#
+###############################################################################
+pip = use_extension("@rules_python//python/extensions:pip.bzl", "pip")
+bazel_dep(
+    name = "trlc",
+    version = "0.0.0",
+)
+
+pip.parse(
+    hub_name = "trlc_renderer_dependencies",
+    python_version = PYTHON_VERSION,
+    requirements_lock = "//tools/trlc_renderer:requirements.txt",
+)
+
+use_repo(pip, "trlc_renderer_dependencies")
+
+git_override(
+    module_name = "trlc",
+    remote = "https://github.com/castler/trlc.git",
+    commit = "7133093d0ebfa511bbb25d0798c952de7c0bb1a4",
+    #remote = "https://github.com/bmw-software-engineering/trlc.git",
+)   #commit = "4d88708905c893110061bc3052b731131c0a214b",
+
+###############################################################################
+#
+# Lobster
+#
+###############################################################################
+bazel_dep(
+    name = "lobster",
+    version = "0.0.0",
+)
+
+git_override(
+    module_name = "lobster",
+    remote = "https://github.com/castler/lobster.git",
+    commit = "a85472cf03512705fce1681867da66d23a229e1f",
+)

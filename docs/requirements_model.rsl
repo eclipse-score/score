@@ -1,0 +1,109 @@
+/********************************************************************************
+ * Copyright (c) 2025 Contributors to the Eclipse Foundation
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Apache License Version 2.0 which is available at
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ ********************************************************************************/
+
+package ScoreReq
+
+import ScoreType
+
+abstract type Requirement {
+    title                   String
+    status					ScoreType.Status
+	description				String
+	reqtype					ScoreType.Reqtype
+    safety                  ScoreType.Asil
+}
+
+tuple ReqId {
+    requirement             Requirement
+    separator               @
+    LinkVersion             Integer
+}
+
+type StdReq extends Requirement {
+    standard                ScoreType.Standard
+    id                      String
+}
+
+abstract type ScoreRequirement extends Requirement {
+    version                 Integer
+}
+
+tuple ScoreReqId {
+   item    ScoreRequirement
+   separator @
+   LinkVersion Integer
+}
+
+type VersionedScoreRequirement extends ScoreRequirement {
+    id                      ScoreReqId
+}
+
+type StkhReq extends ScoreRequirement {
+    rationale				String
+}
+
+tuple StkhReqId {
+   item    StkhReq
+   separator @
+   LinkVersion Integer
+}
+
+type FeatReq extends ScoreRequirement {
+	security				ScoreType.Sec
+    derived_from			StkhReqId[1 .. *]
+}
+
+tuple FeatReqId {
+   item    FeatReq
+   separator @
+   LinkVersion Integer
+}
+
+type CompReq extends ScoreRequirement {
+	security				ScoreType.Sec
+    derived_from		    ScoreReq.FeatReqId[1 .. *]
+}
+
+tuple CompReqId {
+   item    CompReq
+   separator @
+   LinkVersion Integer
+}
+
+type AssumedFeatureRequirement extends ScoreRequirement
+{
+
+}
+
+type AssumedTechnicalSafetyRequirement extends ScoreRequirement
+{
+
+}
+
+checks ScoreRequirement {
+
+    not matches(title, "(shall)"),
+        warning "A title must not include shall or should",
+	    title
+
+    not matches(description, "(shall|should)"),
+        warning "The description must include (shall|should)",
+	    description
+
+}
+
+checks StkhReq {
+
+    rationale != null implies len(rationale) >= 5, "rationale too short"
+
+}
