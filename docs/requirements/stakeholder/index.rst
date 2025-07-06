@@ -451,6 +451,15 @@ Communication
 
    The platform shall support inter-process communication.
 
+.. stkh_req:: ABI Compatible Data Types
+   :id: stkh_req__communication__abi_compatible
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: ABI compatiblity ensures that the same memory location is correctly interpreted by different programming languages.
+   :status: valid
+
+   The platform shall support ABI compatible data types for zero-copy communication between Rust and C++ applications.
 
 .. stkh_req:: Intra-process Communication
    :id: stkh_req__communication__intra_process
