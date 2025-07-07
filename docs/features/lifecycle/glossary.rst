@@ -108,3 +108,6 @@ Glossary
 
     SWC
       Software Components - modular software units that can be independently managed.
+
+    Operating System
+      The system software that manages computer hardware and software resources and provides common services for computer programs.

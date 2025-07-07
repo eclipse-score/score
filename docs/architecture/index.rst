@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2025 Contributors to the Eclipse Foundation
+   # Copyright (c) 2024 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -11,15 +11,10 @@
    #
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
-Modules
-=======
 
-.. mod_view_sta:: Lifecycle
-   :id: mod_view_sta__lifecycle__modules
-   :includes: comp_arc_sta__lifecycle__launch_manager, comp_arc_sta__lifecycle__healthmonitor
+Architecture
+============
 
-   .. needarch::
-      :scale: 50
-      :align: center
+This section contains the overall system architecture documentation for the S-CORE platform.
 
-      {{ draw_module(need(), needs) }}
+For feature-specific architecture details, please refer to the individual feature documentation sections.

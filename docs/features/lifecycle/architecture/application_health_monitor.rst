@@ -134,7 +134,7 @@ Static Architecture
    :included_by: logic_arc_int__lifecycle__deadline_monitor_if
 
 .. logic_arc_int_op:: link_condition
-   :id: logic_arc_int_op__lifecycle__link_cond
+   :id: logic_arc_int_op__lifecycle__link_cond_dl
    :security: YES
    :safety: ASIL_B
    :status: valid
@@ -215,7 +215,7 @@ Static Architecture
    :included_by: logic_arc_int__lifecycle__logical_monitor_if
 
 .. logic_arc_int_op:: link_condition
-   :id: logic_arc_int_op__lifecycle__link_cond
+   :id: logic_arc_int_op__lifecycle__link_cond_lg
    :security: YES
    :safety: ASIL_B
    :status: valid
@@ -297,3 +297,12 @@ The most important interactions are the following:
      - Trigger a failure event to the Launch Manager. This event allows the monitor react faster than waiting for the timeout to expire.
    * - 012
      - Additionally, triggering alive must be stopped
+
+
+Interface Details
+=================
+
+.. toctree::
+   :maxdepth: 1
+
+   _assets/logical_deadline_supervision_interfaces
