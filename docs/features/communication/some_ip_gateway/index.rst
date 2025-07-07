@@ -46,9 +46,9 @@ Services handling data in this context can be considered as gateways.
 The focus is on a gateway to handle SOME/IP communication with external devices or counterparts, therefore this feature request is called: SOME/IP-Gateway
 
 This feature request includes:
-- A description of how a SOME/IP gateway service (or data broker) shall be implemented
-- How the SOME/IP gateway services shall integrate with the zero-copy communication from IPC (which might become a general description of how services plug-in to the IPC context)
-- How data shall be mapped or translated between SOME/IP protocol and IPC communication
+  - A description of how a SOME/IP gateway service (or data broker) shall be implemented
+  - How the SOME/IP gateway services shall integrate with the zero-copy communication from IPC (which might become a general description of how services plug-in to the IPC context)
+  - How data shall be mapped or translated between SOME/IP protocol and IPC communication
 
 .. _Motivation:
 
