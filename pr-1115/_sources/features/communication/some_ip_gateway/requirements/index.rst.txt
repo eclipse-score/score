@@ -12,8 +12,17 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Requirements
-############
+SOME/IP Gateway Requirements
+############################
+
+
+Functional Requirements
+=======================
+
+
+
+Security Impact
+===============
 
 
 
@@ -29,3 +38,13 @@ Safety Impact
    :status: valid
 
    The SOME/IP Gateway shall support safe communication up to ASIL-B.
+
+.. feat_req:: SOME/IP Gateway QM network stack
+   :id: feat_req__some_ip_gateway__network_stack
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :satisfies: stkh_req__communication__safe
+   :status: valid
+
+   If SOME/IP network stacks are available as QM only.

@@ -65,7 +65,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'features/communication/some_ip_gateway/architecture/index';</script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="Requirements" href="../requirements/index.html" />
+    <link rel="next" title="SOME/IP Gateway Requirements" href="../requirements/index.html" />
     <link rel="prev" title="SOME/IP-Gateway" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -409,7 +409,7 @@
 <li class="toctree-l3 current active has-children"><a class="current reference internal" href="#">SOME/IP Gateway Architecture</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
 </ul>
 </details></li>
-<li class="toctree-l3"><a class="reference internal" href="../requirements/index.html">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../requirements/index.html">SOME/IP Gateway Requirements</a></li>
 </ul>
 </details></li>
 </ul>
@@ -508,10 +508,15 @@ should be mostly freely programmable by integrators using the SOME/IP gateway.</
 <p><span class="caption-number">Fig. 5 </span><span class="caption-text">General overview of SOME/IP Gateway</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p>SOME/IP stacks as supplied by AUTOSAR vendors mostly are available as QM only.
+In the case that SOME/IP implementations are not developed under ASIL-B constraints, adequate measures need to be taken to
+separate this QM component from the otherwise ASIL-B compliant components. This may be achieved through separate processes,
+which again will require dedicated inter-process-communication between the SOME/IP-stack and the rest of the gateway.
+It is preferred to avoid such additional IPC.</p>
 <figure class="align-center" id="some-ip-gateway-details">
 <img alt="../../../../_images/some_ip_gateway_details.drawio.svg" src="../../../../_images/some_ip_gateway_details.drawio.svg" />
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">General overview of SOME/IP Gateway</span><a class="headerlink" href="#some-ip-gateway-details" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Detailed components view of SOME/IP Gateway</span><a class="headerlink" href="#some-ip-gateway-details" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -540,7 +545,7 @@ should be mostly freely programmable by integrators using the SOME/IP gateway.</
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Requirements</p>
+        <p class="prev-next-title">SOME/IP Gateway Requirements</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
