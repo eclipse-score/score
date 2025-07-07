@@ -12,31 +12,22 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+Orchestration Module
+####################
 
-Containers Component Architecture
-==================================
-
-.. comp_arc_sta:: communication
-   :id: comp_arc_sta__communication__com
-   :security: YES
-   :safety:  ASIL_B
-   :status: valid
-   :implements: logic_arc_int__communication__com
+.. mod_view_sta:: Orchestration
+   :id: mod_view_sta__orch__orchestration
+   :includes: comp_arc_sta__orch__orchestration
 
    .. needarch::
       :scale: 50
       :align: center
 
-      {{ draw_component(need(), needs) }}
+      {{ draw_module(need(), needs) }}
 
-.. logic_arc_int:: communication
-   :id: logic_arc_int__communication__com
-   :security: YES
-   :safety:  ASIL_B
-   :status: valid
+Module Documents
+================
 
-   .. needarch::
-      :scale: 50
-      :align: center
-
-      {{ draw_interface(need(), needs) }}
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:

@@ -12,12 +12,12 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Communication Module
+Executor Module
 ####################
 
-.. mod_view_sta:: Communication
-   :id: mod_view_sta__com___commm
-   :includes: comp_arc_sta__communication__com
+.. mod_view_sta:: Executor
+   :id: mod_view_sta__orch__executor
+   :includes: comp_arc_sta__orch__runtime
 
    .. needarch::
       :scale: 50
@@ -25,10 +25,9 @@ Communication Module
 
       {{ draw_module(need(), needs) }}
 
-Components
-==========
+Module Documents
+================
 
 .. toctree::
+   :maxdepth: 2
    :titlesonly:
-
-   com

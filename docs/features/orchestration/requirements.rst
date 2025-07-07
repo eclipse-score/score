@@ -12,9 +12,12 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-
-Requirements
-#############
+.. document:: Orchestration Requirements
+   :id: doc__orch_requirements
+   :status: valid
+   :safety: ASIL_B
+   :realizes: wp__requirements_feat
+   :tags: feature_request
 
 .. evaluate following sth requirements:
 .. com driven:

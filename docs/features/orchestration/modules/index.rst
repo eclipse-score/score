@@ -19,4 +19,5 @@ Modules
    :maxdepth: 1
    :glob:
 
-   */index
+   */docs/index
+   */*/docs/index
