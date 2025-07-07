@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Configuration Parameters &#8212; S-CORE 0.1 documentation</title>
+    <title>Launch Manager Configuration Parameters &#8212; S-CORE 0.1 documentation</title>
   
   
   
@@ -159,6 +159,13 @@
 </li>
 
 
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../architecture/index.html">
+    Architecture
+  </a>
+</li>
+
+
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="../../index.html">
     Features
@@ -172,13 +179,6 @@
   </a>
 </li>
 
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../contribute/index.html">
-    Contribute
-  </a>
-</li>
-
             <li class="nav-item dropdown">
                 <button class="btn dropdown-toggle nav-item" type="button"
                 data-bs-toggle="dropdown" aria-expanded="false"
@@ -187,6 +187,13 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../../score_releases/index.html">
     Releases
@@ -313,6 +320,13 @@
 </li>
 
 
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../architecture/index.html">
+    Architecture
+  </a>
+</li>
+
+
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="../../index.html">
     Features
@@ -420,6 +434,9 @@
 
 
 
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="../../persistency/index.html">Persistency</a></li>
 </ul>
 </div>
@@ -467,7 +484,7 @@
     
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Lifecycle</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Configuration Parameters</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Launch Manager Configuration Parameters</span></li>
   </ul>
 </nav>
 </div>
@@ -484,37 +501,45 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="configuration-parameters">
-<h1>Configuration Parameters<a class="headerlink" href="#configuration-parameters" title="Link to this heading">#</a></h1>
-<section id="launch-manager-configuration-parameters">
-<h2>Launch Manager Configuration Parameters<a class="headerlink" href="#launch-manager-configuration-parameters" title="Link to this heading">#</a></h2>
-</section>
+  <section id="launch-manager-configuration-parameters">
+<h1>Launch Manager Configuration Parameters<a class="headerlink" href="#launch-manager-configuration-parameters" title="Link to this heading">#</a></h1>
+<p>The <cite>Launch Manager</cite> supports a set of configuration parameters, which are grouped in the following categories:</p>
 <section id="component-configuration-parameters">
 <h2>Component Configuration Parameters<a class="headerlink" href="#component-configuration-parameters" title="Link to this heading">#</a></h2>
+<p>These parameters specify the arguments needed for spawning a process.</p>
 <ul class="simple">
-<li><p>UID feat_req__lifecycle__lm_uid_gid</p></li>
-<li><p>GID feat_req__lifecycle__lm_uid_gid</p></li>
-<li><p>supplementary groups feat_req__lifecycle__lm_supplementary</p></li>
-<li><p>runmask feat_req__lifecycle__lm_runmask</p></li>
-<li><p>priority feat_req__lifecycle__lm_priority</p></li>
-<li><p>ability</p></li>
-<li><p>security policies</p></li>
-<li><p>cwd (current working directory) feat_req__lifecycle__lm_cwd</p></li>
-<li><p>environmental variables feat_req__lifecycle__lm_env_var</p></li>
-<li><p>command to be executed</p></li>
-<li><p>arguments feat_req__lifecycle__lm_arguments</p></li>
-<li><p>stdin feat_req__lifecycle__lm_std_out_in_err_redir</p></li>
-<li><p>stdout feat_req__lifecycle__lm_std_out_in_err_redir</p></li>
-<li><p>stderr feat_req__lifecycle__lm_std_out_in_err_redir</p></li>
-<li><p>aslr feat_req__lifecycle__lm_aslr</p></li>
-<li><p>rlimits feat_req__lifecycle__lm_rlimit</p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__uid_gid_support" title="feat_req__lifecycle__uid_gid_support"><em class="xref need">Process user, group IDs sup... (feat_req__lifecycle__uid_gid_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__supplementary_groups" title="feat_req__lifecycle__supplementary_groups"><em class="xref need">Supplementary group support (feat_req__lifecycle__supplementary_groups)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__runmask_support" title="feat_req__lifecycle__runmask_support"><em class="xref need">CPU runmask support (feat_req__lifecycle__runmask_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__launch_priority_support" title="feat_req__lifecycle__launch_priority_support"><em class="xref need">Process priority support (feat_req__lifecycle__launch_priority_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__cwd_support" title="feat_req__lifecycle__cwd_support"><em class="xref need">CWD support (feat_req__lifecycle__cwd_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__process_launch_args" title="feat_req__lifecycle__process_launch_args"><em class="xref need">Handling process args (feat_req__lifecycle__process_launch_args)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__std_handle_redir" title="feat_req__lifecycle__std_handle_redir"><em class="xref need">Standard handle redirection (feat_req__lifecycle__std_handle_redir)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__aslr_support" title="feat_req__lifecycle__aslr_support"><em class="xref need">ASLR support (feat_req__lifecycle__aslr_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__process_rlimit_support" title="feat_req__lifecycle__process_rlimit_support"><em class="xref need">Resource limit support (feat_req__lifecycle__process_rlimit_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__procmgr_support" title="feat_req__lifecycle__procmgr_support"><em class="xref need">Procmgr ability support (feat_req__lifecycle__procmgr_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__support_secpol_type" title="feat_req__lifecycle__support_secpol_type"><em class="xref need">Security policy support (feat_req__lifecycle__support_secpol_type)</em></a></p></li>
+<li><p>command to be executed TODO</p></li>
+<li><p>environmental variables TODO</p></li>
 </ul>
 </section>
-<section id="dependency-and-recovery-parameters">
-<h2>Dependency and recovery Parameters<a class="headerlink" href="#dependency-and-recovery-parameters" title="Link to this heading">#</a></h2>
+<section id="dependency-parameters">
+<h2>Dependency parameters<a class="headerlink" href="#dependency-parameters" title="Link to this heading">#</a></h2>
+<p>These parameters specify how the components depend on each other.</p>
+<p>TODO</p>
+</section>
+<section id="recovery-parameters">
+<h2>Recovery parameters<a class="headerlink" href="#recovery-parameters" title="Link to this heading">#</a></h2>
+<p>These parameters specify the recovery actions for a component, when it fails.</p>
+</section>
+<section id="alive-monitoring-parameters">
+<h2>Alive monitoring parameters<a class="headerlink" href="#alive-monitoring-parameters" title="Link to this heading">#</a></h2>
+<p>These parameters specify the alive monitoring rules for the application.</p>
+<p>TODO</p>
 </section>
 <section id="requirements-related-to-the-external-monitoring">
 <h2>Requirements related to the external monitoring<a class="headerlink" href="#requirements-related-to-the-external-monitoring" title="Link to this heading">#</a></h2>
+<p>These parameters specify how the <cite>Launch manager</cite> itself is monitored.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__lm_self_health_check" title="feat_req__lifecycle__lm_self_health_check"><em class="xref need">Launch manager self health ... (feat_req__lifecycle__lm_self_health_check)</em></a></p></li>
 <li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__lm_ext_watchdog_notify" title="feat_req__lifecycle__lm_ext_watchdog_notify"><em class="xref need">Launch manager external wat... (feat_req__lifecycle__lm_ext_watchdog_notify)</em></a></p></li>
@@ -522,8 +547,57 @@
 <li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__lm_ext_watchdog_cfg" title="feat_req__lifecycle__lm_ext_watchdog_cfg"><em class="xref need">Launch manager external mon... (feat_req__lifecycle__lm_ext_watchdog_cfg)</em></a></p></li>
 </ul>
 </section>
-<section id="dynamic-architecture">
-<h2>Dynamic Architecture<a class="headerlink" href="#dynamic-architecture" title="Link to this heading">#</a></h2>
+<section id="static-architecture">
+<h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
+<div class="need_container docutils container" id="SNCB-ce859867">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__cfg_params_static">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Configuration parameters static architecture</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
+<div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../../communication/docs/requirements/index.html#feat_req__com__interfaces" title="logic_arc_int__lifecycle__cfg_params_static">feat_req__com__interfaces</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><figure class="align-center">
+<p class="plantuml">
+<object data="../../../_images/plantuml-304f2b4160e1de5442e26ac3d8c5d06214ecd385.svg" type="image/svg+xml" style="width:1121px;height:791px;background:#FFFFFF;"></object></p>
+</figure>
+</td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int__lifecycle__cfg_params_static" title="logic_arc_int__lifecycle__cfg_params_static">logic_arc_int__lifecycle__cfg_params_static</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Logical Architecture Interfaces</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
 </section>
 
@@ -574,11 +648,12 @@
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#launch-manager-configuration-parameters">Launch Manager Configuration Parameters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#component-configuration-parameters">Component Configuration Parameters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependency-and-recovery-parameters">Dependency and recovery Parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependency-parameters">Dependency parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recovery-parameters">Recovery parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alive-monitoring-parameters">Alive monitoring parameters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements-related-to-the-external-monitoring">Requirements related to the external monitoring</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-architecture">Dynamic Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#static-architecture">Static Architecture</a></li>
 </ul>
   </nav></div>
 

@@ -12,43 +12,54 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Configuration Parameters
-########################
-
-
 Launch Manager Configuration Parameters
-=======================================
+#######################################
 
+The `Launch Manager` supports a set of configuration parameters, which are grouped in the following categories:
 
 Component Configuration Parameters
 ==================================
-- UID feat_req__lifecycle__lm_uid_gid
-- GID feat_req__lifecycle__lm_uid_gid
-- supplementary groups feat_req__lifecycle__lm_supplementary
-- runmask feat_req__lifecycle__lm_runmask
-- priority feat_req__lifecycle__lm_priority
-- ability
-- security policies
-- cwd (current working directory) feat_req__lifecycle__lm_cwd
-- environmental variables feat_req__lifecycle__lm_env_var
-- command to be executed
-- arguments feat_req__lifecycle__lm_arguments
-- stdin feat_req__lifecycle__lm_std_out_in_err_redir
-- stdout feat_req__lifecycle__lm_std_out_in_err_redir
-- stderr feat_req__lifecycle__lm_std_out_in_err_redir
-- aslr feat_req__lifecycle__lm_aslr
-- rlimits feat_req__lifecycle__lm_rlimit
+
+These parameters specify the arguments needed for spawning a process.
+
+- :need:`feat_req__lifecycle__uid_gid_support`
+- :need:`feat_req__lifecycle__supplementary_groups`
+- :need:`feat_req__lifecycle__runmask_support`
+- :need:`feat_req__lifecycle__launch_priority_support`
+- :need:`feat_req__lifecycle__cwd_support`
+- :need:`feat_req__lifecycle__process_launch_args`
+- :need:`feat_req__lifecycle__std_handle_redir`
+- :need:`feat_req__lifecycle__aslr_support`
+- :need:`feat_req__lifecycle__process_rlimit_support`
+- :need:`feat_req__lifecycle__procmgr_support`
+- :need:`feat_req__lifecycle__support_secpol_type`
+- command to be executed TODO
+- environmental variables TODO
+
+Dependency parameters
+=====================
+
+These parameters specify how the components depend on each other.
+
+TODO
+
+Recovery parameters
+===================
+
+These parameters specify the recovery actions for a component, when it fails.
 
 
-Dependency and recovery Parameters
-==================================
+Alive monitoring parameters
+===========================
 
+These parameters specify the alive monitoring rules for the application.
 
-
-
+TODO
 
 Requirements related to the external monitoring
 ===============================================
+
+These parameters specify how the `Launch manager` itself is monitored.
 
 - :need:`feat_req__lifecycle__lm_self_health_check`
 - :need:`feat_req__lifecycle__lm_ext_watchdog_notify`
@@ -56,5 +67,17 @@ Requirements related to the external monitoring
 - :need:`feat_req__lifecycle__lm_ext_watchdog_cfg`
 
 
-Dynamic Architecture
-====================
+Static Architecture
+===================
+
+.. logic_arc_int:: Configuration parameters static architecture
+   :id: logic_arc_int__lifecycle__cfg_params_static
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :fulfils: feat_req__com__interfaces
+
+   .. uml:: _assets/config_params_static.puml
+      :scale: 50
+      :align: center
+

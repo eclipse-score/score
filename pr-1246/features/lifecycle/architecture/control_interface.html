@@ -66,7 +66,7 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="External Monitoring" href="external_monitoring.html" />
-    <link rel="prev" title="Application Health Monitor" href="application_health_monitor.html" />
+    <link rel="prev" title="Deadline and Logical Supervision Interfaces" href="_assets/logical_deadline_supervision_interfaces.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
@@ -159,6 +159,13 @@
 </li>
 
 
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../architecture/index.html">
+    Architecture
+  </a>
+</li>
+
+
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="../../index.html">
     Features
@@ -172,13 +179,6 @@
   </a>
 </li>
 
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../contribute/index.html">
-    Contribute
-  </a>
-</li>
-
             <li class="nav-item dropdown">
                 <button class="btn dropdown-toggle nav-item" type="button"
                 data-bs-toggle="dropdown" aria-expanded="false"
@@ -187,6 +187,13 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../../score_releases/index.html">
     Releases
@@ -313,6 +320,13 @@
 </li>
 
 
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../architecture/index.html">
+    Architecture
+  </a>
+</li>
+
+
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="../../index.html">
     Features
@@ -420,6 +434,9 @@
 
 
 
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="../../persistency/index.html">Persistency</a></li>
 </ul>
 </div>
@@ -491,7 +508,7 @@
 which allows the implementation of a state management applications to support dynamic state control.</p>
 <section id="static-architecture">
 <h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-c0063d0e">
+<div class="need_container docutils container" id="SNCB-5e71ed7a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__controlif">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -563,7 +580,7 @@ If any of the components failed to start, respond to the caller with a status in
 </section>
 <section id="dynamic-architecture">
 <h2>Dynamic Architecture<a class="headerlink" href="#dynamic-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-52d86560">
+<div class="need_container docutils container" id="SNCB-4acb087b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__lifecycle__control_if_start">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -612,7 +629,7 @@ If any of the components failed to start, respond to the caller with a status in
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a9ef646f">
+<div class="need_container docutils container" id="SNCB-73ab8cb7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__lifecycle__control_if_stop">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -665,11 +682,11 @@ If any of the components failed to start, respond to the caller with a status in
 <section id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__control_commands" title="feat_req__lifecycle__control_commands"><em class="xref need">control commands (feat_req__lifecycle__control_commands)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__query_commands" title="feat_req__lifecycle__query_commands"><em class="xref need">query commands (feat_req__lifecycle__query_commands)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__request_group_launch" title="feat_req__lifecycle__request_group_launch"><em class="xref need">request group launch (feat_req__lifecycle__request_group_launch)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__request_group_stop" title="feat_req__lifecycle__request_group_stop"><em class="xref need">request group stop (feat_req__lifecycle__request_group_stop)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__request_group_restart" title="feat_req__lifecycle__request_group_restart"><em class="xref need">request group restart (feat_req__lifecycle__request_group_restart)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__control_commands" title="feat_req__lifecycle__control_commands"><em class="xref need">Control commands (feat_req__lifecycle__control_commands)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__query_commands" title="feat_req__lifecycle__query_commands"><em class="xref need">Query commands (feat_req__lifecycle__query_commands)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__request_group_launch" title="feat_req__lifecycle__request_group_launch"><em class="xref need">Request group launch (feat_req__lifecycle__request_group_launch)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__request_group_stop" title="feat_req__lifecycle__request_group_stop"><em class="xref need">Request group stop (feat_req__lifecycle__request_group_stop)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__request_group_restart" title="feat_req__lifecycle__request_group_restart"><em class="xref need">Request group restart (feat_req__lifecycle__request_group_restart)</em></a></p></li>
 </ul>
 </section>
 </section>
@@ -685,12 +702,12 @@ If any of the components failed to start, respond to the caller with a status in
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="application_health_monitor.html"
+       href="_assets/logical_deadline_supervision_interfaces.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Application Health Monitor</p>
+        <p class="prev-next-title">Deadline and Logical Supervision Interfaces</p>
       </div>
     </a>
     <a class="right-next"
