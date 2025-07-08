@@ -51,8 +51,9 @@ It includes two classes of communication/data-exchange:
 
 2. Streamed data based on shared queues (stream of events or data)
    - Queues shall be configurable by client (VM) (number of elements etc..)
-     - Size of a queue
-     - Allocation of buffers for the data elements
+   - Size of a queue
+   - Allocation of buffers for the data elements
+
    - Queues shall support lock-free access to data elements
    - Support for bi-directional communication via writable data elements by the client
    - Asynchronous bi-directional support via multiple queues
