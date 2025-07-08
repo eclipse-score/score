@@ -35,7 +35,7 @@ Component Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :uses: logic_arc_int__osal__osal
+   :uses: logic_arc_int__osal__osal, logic_arc_int__baselibs__json
    :implements: logic_arc_int__log__logging
 
    .. needarch::
