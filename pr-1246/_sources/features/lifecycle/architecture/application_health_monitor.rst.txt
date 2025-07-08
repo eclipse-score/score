@@ -85,7 +85,7 @@ Static Architecture
 ===================
 
 
-.. comp_arc_sta:: <<library>\nHealth Monitor
+.. comp_arc_sta:: <<library>>\nHealth Monitor
    :id: comp_arc_sta__lifecycle__healthmonitor
    :status: valid
    :safety: ASIL_B
@@ -109,6 +109,12 @@ Static Architecture
    :status: valid
    :fulfils: feat_req__com__interfaces
 
+   .. needarch::
+      :scale: 50
+      :align: center
+
+      {{ draw_interface(need(), needs) }}
+
 
 .. logic_arc_int:: Deadline Monitor API
    :id: logic_arc_int__lifecycle__deadline_monitor_if
@@ -117,7 +123,11 @@ Static Architecture
    :status: valid
    :fulfils: feat_req__com__interfaces
 
+   .. needarch::
+      :scale: 50
+      :align: center
 
+      {{ draw_interface(need(), needs) }}
 
 .. logic_arc_int_op:: configure_minimum_time
    :id: logic_arc_int_op__lifecycle__min_time
@@ -184,14 +194,14 @@ Static Architecture
 
 
 
+
+
 .. logic_arc_int:: Logical Monitor API
    :id: logic_arc_int__lifecycle__logical_monitor_if
    :security: YES
    :safety: ASIL_B
    :status: valid
    :fulfils: feat_req__com__interfaces
-
-
 
 .. logic_arc_int_op:: add_entry_point
    :id: logic_arc_int_op__lifecycle__entry_point
@@ -297,12 +307,3 @@ The most important interactions are the following:
      - Trigger a failure event to the Launch Manager. This event allows the monitor react faster than waiting for the timeout to expire.
    * - 012
      - Additionally, triggering alive must be stopped
-
-
-Interface Details
-=================
-
-.. toctree::
-   :maxdepth: 1
-
-   _assets/logical_deadline_supervision_interfaces

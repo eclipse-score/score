@@ -65,8 +65,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'features/lifecycle/architecture/launch_manager';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Glossary" href="../glossary.html" />
-    <link rel="prev" title="Launch Manager Configuration Parameters" href="configuration_parameters.html" />
+    <link rel="next" title="Control Interface" href="control_interface.html" />
+    <link rel="prev" title="Requirements" href="../requirements/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
@@ -418,25 +418,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../../frameworks/index.html">Frameworks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../infrastructure/index.html">Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../integration/index.html">Integration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Lifecycle</a></li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Lifecycle</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../requirements/index.html">Requirements</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Launch manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="control_interface.html">Control Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration_parameters.html">Launch Manager Configuration Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application_health_monitor.html">Application Health Monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external_monitoring.html">External Monitoring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/index.html">Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../persistency/index.html">Persistency</a></li>
 </ul>
 </div>
@@ -503,7 +495,9 @@
                   
   <section id="launch-manager">
 <h1>Launch manager<a class="headerlink" href="#launch-manager" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-b4afd85e">
+<section id="static-architecture">
+<h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
+<div class="need_container docutils container" id="SNCB-3a1b360b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__alive_if">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -551,7 +545,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a4e80320">
+<div class="need_container docutils container" id="SNCB-714d4c64">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__lifecycle__launch_manager">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -575,7 +569,7 @@
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">implements: <span class="implements"><span><a class="reference internal" href="control_interface.html#logic_arc_int__lifecycle__controlif" title="comp_arc_sta__lifecycle__launch_manager">logic_arc_int__lifecycle__controlif</a>, <a class="reference internal" href="#logic_arc_int__lifecycle__alive_if" title="comp_arc_sta__lifecycle__launch_manager">logic_arc_int__lifecycle__alive_if</a></span></span></div>
-<div class="line">uses: <span class="uses"><span><a class="reference internal" href="../../communication/modules/logging/index.html#logic_arc_int__logging__logging" title="comp_arc_sta__lifecycle__launch_manager">logic_arc_int__logging__logging</a>, <a class="reference internal" href="../../communication/modules/baselibs/json_component_architecture.html#logic_arc_int__baselibs__json" title="comp_arc_sta__lifecycle__launch_manager">logic_arc_int__baselibs__json</a></span></span></div>
+<div class="line">uses: <span class="uses"><span><a class="reference internal" href="../../communication/modules/logging/index.html#logic_arc_int__logging__logging" title="comp_arc_sta__lifecycle__launch_manager">logic_arc_int__logging__logging</a>, <a class="reference internal" href="../../communication/modules/baselibs/json_component_architecture.html#logic_arc_int__baselibs__json" title="comp_arc_sta__lifecycle__launch_manager">logic_arc_int__baselibs__json</a>, <a class="reference internal" href="../../communication/modules/os/message_passing_architecture.html#logic_arc_int__os__fork" title="comp_arc_sta__lifecycle__launch_manager">logic_arc_int__os__fork</a></span></span></div>
 <div class="line">included by: <span class="includes"><span><a class="reference internal" href="../index.html#mod_view_sta__lifecycle__1" title="comp_arc_sta__lifecycle__launch_manager">mod_view_sta__lifecycle__1</a>, <a class="reference internal" href="../modules/index.html#mod_view_sta__lifecycle__modules" title="comp_arc_sta__lifecycle__launch_manager">mod_view_sta__lifecycle__modules</a></span></span></div>
 </span></div>
 </div>
@@ -601,6 +595,62 @@
 </div>
 </div>
 </section>
+<section id="dynamic-architecture">
+<h2>Dynamic Architecture<a class="headerlink" href="#dynamic-architecture" title="Link to this heading">#</a></h2>
+<figure class="align-center">
+<p class="plantuml">
+<object data="../../../_images/plantuml-bd782eb11465389ebaeee963cc44551a28c5e033.svg" type="image/svg+xml" style="width:437px;height:917px;background:#FFFFFF;"></object></p>
+</figure>
+</section>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__launch_support" title="feat_req__lifecycle__launch_support"><em class="xref need">Support for launching proce... (feat_req__lifecycle__launch_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__process_ordering" title="feat_req__lifecycle__process_ordering"><em class="xref need">Process dependency handling (feat_req__lifecycle__process_ordering)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__parallel_launch_support" title="feat_req__lifecycle__parallel_launch_support"><em class="xref need">Launching processes in para... (feat_req__lifecycle__parallel_launch_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__waitfor_support" title="feat_req__lifecycle__waitfor_support"><em class="xref need">Conditional waitfor launching (feat_req__lifecycle__waitfor_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__process_input_output" title="feat_req__lifecycle__process_input_output"><em class="xref need">Forward process information (feat_req__lifecycle__process_input_output)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__essential_processes" title="feat_req__lifecycle__essential_processes"><em class="xref need">Support for essential proce... (feat_req__lifecycle__essential_processes)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__essential_process_fail" title="feat_req__lifecycle__essential_process_fail"><em class="xref need">Stop further processing on ... (feat_req__lifecycle__essential_process_fail)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__error_reaction_config" title="feat_req__lifecycle__error_reaction_config"><em class="xref need">Error reaction on essential... (feat_req__lifecycle__error_reaction_config)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__process_launch_args" title="feat_req__lifecycle__process_launch_args"><em class="xref need">Handling process args (feat_req__lifecycle__process_launch_args)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__uid_gid_support" title="feat_req__lifecycle__uid_gid_support"><em class="xref need">Process user, group IDs sup... (feat_req__lifecycle__uid_gid_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__total_wait_time_support" title="feat_req__lifecycle__total_wait_time_support"><em class="xref need">Conditional launch total wa... (feat_req__lifecycle__total_wait_time_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__polling_interval" title="feat_req__lifecycle__polling_interval"><em class="xref need">Conditional launch polling ... (feat_req__lifecycle__polling_interval)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__launch_priority_support" title="feat_req__lifecycle__launch_priority_support"><em class="xref need">Process priority support (feat_req__lifecycle__launch_priority_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__cwd_support" title="feat_req__lifecycle__cwd_support"><em class="xref need">CWD support (feat_req__lifecycle__cwd_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__terminal_support" title="feat_req__lifecycle__terminal_support"><em class="xref need">Launching terminal (feat_req__lifecycle__terminal_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__std_handle_redir" title="feat_req__lifecycle__std_handle_redir"><em class="xref need">Standard handle redirection (feat_req__lifecycle__std_handle_redir)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__builtin_command_support" title="feat_req__lifecycle__builtin_command_support"><em class="xref need">Builtin commands (feat_req__lifecycle__builtin_command_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__secpol_non_root" title="feat_req__lifecycle__secpol_non_root"><em class="xref need">Non-root support (feat_req__lifecycle__secpol_non_root)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__retries_configurable" title="feat_req__lifecycle__retries_configurable"><em class="xref need">Configurable amount of retries (feat_req__lifecycle__retries_configurable)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__procmgr_support" title="feat_req__lifecycle__procmgr_support"><em class="xref need">Procmgr ability support (feat_req__lifecycle__procmgr_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__fd_inheritance" title="feat_req__lifecycle__fd_inheritance"><em class="xref need">File descriptor inheritance... (feat_req__lifecycle__fd_inheritance)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__support_secpol_type" title="feat_req__lifecycle__support_secpol_type"><em class="xref need">Security policy support (feat_req__lifecycle__support_secpol_type)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__supplementary_groups" title="feat_req__lifecycle__supplementary_groups"><em class="xref need">Supplementary group support (feat_req__lifecycle__supplementary_groups)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__scheduling_policy" title="feat_req__lifecycle__scheduling_policy"><em class="xref need">Scheduling support (feat_req__lifecycle__scheduling_policy)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__runmask_support" title="feat_req__lifecycle__runmask_support"><em class="xref need">CPU runmask support (feat_req__lifecycle__runmask_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__aslr_support" title="feat_req__lifecycle__aslr_support"><em class="xref need">ASLR support (feat_req__lifecycle__aslr_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__process_rlimit_support" title="feat_req__lifecycle__process_rlimit_support"><em class="xref need">Resource limit support (feat_req__lifecycle__process_rlimit_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__detach_parent_process" title="feat_req__lifecycle__detach_parent_process"><em class="xref need">Process detach from parent ... (feat_req__lifecycle__detach_parent_process)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__critical_processes" title="feat_req__lifecycle__critical_processes"><em class="xref need">Critical process support (feat_req__lifecycle__critical_processes)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__running_processes" title="feat_req__lifecycle__running_processes"><em class="xref need">Process adoption (feat_req__lifecycle__running_processes)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__drop_supervsion" title="feat_req__lifecycle__drop_supervsion"><em class="xref need">Dropping process responsibi... (feat_req__lifecycle__drop_supervsion)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__multi_start_support" title="feat_req__lifecycle__multi_start_support"><em class="xref need">Multiple instance of execut... (feat_req__lifecycle__multi_start_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__validate_conditions" title="feat_req__lifecycle__validate_conditions"><em class="xref need">Pre-start validation (feat_req__lifecycle__validate_conditions)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__validation_conditions" title="feat_req__lifecycle__validation_conditions"><em class="xref need">post-start validation (feat_req__lifecycle__validation_conditions)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__process_ownership" title="feat_req__lifecycle__process_ownership"><em class="xref need">Managing an externally star... (feat_req__lifecycle__process_ownership)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__consistent_dependencies" title="feat_req__lifecycle__consistent_dependencies"><em class="xref need">Invalid dependency (feat_req__lifecycle__consistent_dependencies)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__stop_process_dependents" title="feat_req__lifecycle__stop_process_dependents"><em class="xref need">Dangling dependency (feat_req__lifecycle__stop_process_dependents)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__stop_order_spec" title="feat_req__lifecycle__stop_order_spec"><em class="xref need">Coordination stop dependency (feat_req__lifecycle__stop_order_spec)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__oci_compliant" title="feat_req__lifecycle__oci_compliant"><em class="xref need">OCI Compliant (feat_req__lifecycle__oci_compliant)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__request_group_stop" title="feat_req__lifecycle__request_group_stop"><em class="xref need">Request group stop (feat_req__lifecycle__request_group_stop)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__request_group_restart" title="feat_req__lifecycle__request_group_restart"><em class="xref need">Request group restart (feat_req__lifecycle__request_group_restart)</em></a></p></li>
+<li></li>
+</ul>
+<p>TODO: complete requiremeents</p>
+</section>
+</section>
 
 
                 </article>
@@ -613,20 +663,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="configuration_parameters.html"
+       href="../requirements/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Launch Manager Configuration Parameters</p>
+        <p class="prev-next-title">Requirements</p>
       </div>
     </a>
     <a class="right-next"
-       href="../glossary.html"
+       href="control_interface.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Glossary</p>
+        <p class="prev-next-title">Control Interface</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -640,6 +690,20 @@
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#static-architecture">Static Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-architecture">Dynamic Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
 
