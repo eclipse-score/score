@@ -22,6 +22,7 @@ Logging Module
    .. needarch::
       :scale: 50
       :align: center
+      :config: score_config
 
       {{ draw_module(need(), needs) }}
 
@@ -38,6 +39,7 @@ Component Architecture
    .. needarch::
       :scale: 50
       :align: center
+      :config: score_config
 
       {{ draw_component(need(), needs) }}
 
@@ -50,6 +52,7 @@ Component Architecture
    .. needarch::
       :scale: 50
       :align: center
+      :config: score_config
 
       {{ draw_interface(need(), needs) }}
 

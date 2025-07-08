@@ -25,5 +25,6 @@ Mock Binding Architecture
    .. needarch::
       :scale: 50
       :align: center
+      :config: score_config
 
       {{ draw_component(need(), needs) }}

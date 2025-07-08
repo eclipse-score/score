@@ -47,6 +47,7 @@ This ensures a stable public API, independent of the underlying binding(s). At t
    .. needarch::
       :scale: 50
       :align: center
+      :config: score_config
 
       {{ draw_feature(need(), needs) }}
       mod_view_sta__tracing__tracing -[hidden]-> mod_view_sta__baselibs__baselibs
@@ -70,6 +71,7 @@ A producer creates a `Skeleton` to communicate with consumers. Each consumer cre
     :name: doc__communication__proxy_skeleton
     :caption: Communication through mw::com
 
+    !include https://raw.githubusercontent.com/kalu-an/score_communication/refs/heads/puml_theme/score/mw/com/design/puml-theme-score.puml
     package "Consumer" <<Rectangle>> {
         package "Frontend" <<Frame>> #D5E8D4 {
         object "Proxy" as proxy_t
@@ -129,6 +131,7 @@ The public API for the frontend is defined as:
    .. needarch::
       :scale: 50
       :align: center
+      :config: score_config
 
       {{ draw_interface(need(), needs) }}
 

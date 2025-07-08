@@ -70,3 +70,9 @@ needs_string_links: dict[str, dict[str, Any]] = {
 }
 # This ensures all needs that are imported show up in the build 'needs.json'
 needs_builder_filter = ""
+
+needs_flow_configs = {
+    'score_config': """
+        !include https://raw.githubusercontent.com/kalu-an/score_communication/refs/heads/puml_theme/score/mw/com/design/puml-theme-score.puml
+    """
+}

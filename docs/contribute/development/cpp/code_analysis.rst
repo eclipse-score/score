@@ -29,6 +29,7 @@ Checking those rules can partially be automated and implemented by a combination
 
 .. needuml::
 
+   !include https://raw.githubusercontent.com/kalu-an/score_communication/refs/heads/puml_theme/score/mw/com/design/puml-theme-score.puml
    object "Static Code Analysis" as static
    object "Clang-Tidy" as ct
    object "Compiler Warnings" as cw
@@ -52,6 +53,7 @@ A dynamic code analysis is not explicitly required by any S-CORE related standar
 
 .. needuml::
 
+   !include https://raw.githubusercontent.com/kalu-an/score_communication/refs/heads/puml_theme/score/mw/com/design/puml-theme-score.puml
    object "Dynamic Code Analysis" as dynamic
    object "Sanitizers" as sanitizers
    object "gcc" as gcc
@@ -110,6 +112,7 @@ To enable this, following tools are used:
 
 .. needuml::
 
+   !include https://raw.githubusercontent.com/kalu-an/score_communication/refs/heads/puml_theme/score/mw/com/design/puml-theme-score.puml
    object "Coverage" as coverage
    object "gtest" as gtest
    object "gcov + gcovr" as gcov
