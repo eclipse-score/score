@@ -503,7 +503,7 @@
                   
   <section id="diagnostic-and-fault-management">
 <span id="diagnostics-feature"></span><h1>Diagnostic and Fault Management<a class="headerlink" href="#diagnostic-and-fault-management" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-8528c802">
+<div class="need_container docutils container" id="SNCB-4909e75b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__diagnostics">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -605,19 +605,23 @@ It provides a standardized and extensible interface that enables better interope
 <li><p>The interface needs to be specified further but will likely include: Fault ID (FID), time, ENUM fault type (like DLT ENUMs), optional meta data.</p></li>
 <li><p>Fault lib is the base for activity specific, custom fault handling.</p></li>
 <li><p>Can and should also be used by platform components to report faults.</p></li>
+<li><p>Potentially source of faults to be acted upon - e.g. by Health and Lifecycle Management.</p></li>
+<li><p>Also needs to enforce regulatory requirements for certain faults - e.g. emission relevant.</p></li>
 <li><p>Decentral component.</p></li>
 </ul>
 <p>Diagnostic Fault Manager</p>
 <ul class="simple">
 <li><p>Aggregates and manages diagnostic fault data from Fault libs across the system.</p></li>
 <li><p>Provides centralized fault status to the SOVD Server.</p></li>
+<li><p>Not part of SOVD specification directly but a stack specific diagnostic implementation.</p></li>
 <li><p>Interfaces with the Diagnostic DB (persistency) to store and retrieve data.</p></li>
 <li><p>Stores (persistently) central configuration (e.g. for debouncing thresholds) which can be loaded during startup by Fault libs.</p></li>
 <li><p>Central component.</p></li>
 </ul>
 <p>Diagnostic DB</p>
 <ul class="simple">
-<li><p>Stores static and runtime diagnostic data</p></li>
+<li><p>Potentially part of the Diagnostic Fault Manager process.</p></li>
+<li><p>Stores static and runtime diagnostic data.</p></li>
 <li><p>Is considered in scope due to the domain specific data format but internally uses S-CORE::Persistency.</p></li>
 <li><p>The data format needs to be specified further but will likely include:</p></li>
 <li><p>Diagnostic Trouble Code (DTC): OEM specific code, relevant for end-user.</p></li>
@@ -631,12 +635,14 @@ It provides a standardized and extensible interface that enables better interope
 <li><p>Central entry point for all diagnostic requests via SOVD.</p></li>
 <li><p>Implements the SOVD API and dispatches requests to services, DB, and fault manager.</p></li>
 <li><p>Manages authentication, configuration, and data access via IPC.</p></li>
+<li><p>SOVD communication via HTTP.</p></li>
 <li><p>Central component.</p></li>
 </ul>
 <p>Service App</p>
 <ul class="simple">
 <li><p>Is a base concept to extend the system with system-specific diagnostic services/routines (e.g. DTC clear, ECU reset, Flash Master).</p></li>
 <li><p>Interfaces with the SOVD Server via IPC.</p></li>
+<li><p>Base for all specific service app implementations.</p></li>
 <li><p>Central component derived from base service app.</p></li>
 </ul>
 <p>SOVD Gateway</p>
@@ -665,7 +671,7 @@ It provides a standardized and extensible interface that enables better interope
 <li><p>Exposes selected SOVD functionality via UDS for backward-compatible testers.</p></li>
 <li><p>Acts as a local translation layer between UDS clients and SOVD stack.</p></li>
 <li><p>Configured via ODX files to define what is exposed.</p></li>
-<li><p>Central component and unique per system.</p></li>
+<li><p>Central component and unique per ECU (one per ECU or per System is possible).</p></li>
 </ul>
 </section>
 <section id="out-of-scope-components">
@@ -741,13 +747,18 @@ authenticate endpoints using certificates (see architecture diagram), and implem
 While diagnostics do not directly impact functional safety, a successful attack could indirectly influence safety-relevant functions
 - for example by setting the system into a different state.
 Therefore, the overall security architecture must be revisited in detail to assess and mitigate potential risks introduced by the SOVD integration.</p>
+<p>Since diagnostics is QM, even being able to breach into the SOVD stack must not violate safety guarantees.
+This implies that session/mode-sensitive operations must be treated by the implementing apps in a way that doesn’t impact safety.
+The client lib(s) need to be developed with the same quality standards as safe components to ensure that and also provide FFI guarantees.</p>
 </section>
 <section id="safety-impact">
 <h2>Safety Impact<a class="headerlink" href="#safety-impact" title="Link to this heading">#</a></h2>
 <p>At this point in time no direct safety impact is foreseen. The expected ASIL level is QM.
 Configuration Management could have a safety impact but is handled in another feature request and out of scope of this document.
 As pointed out in “Security Impact”, a breach in the diagnostic system could theoretically effect safety-relevant functions
-- for example by setting the system into a different state.</p>
+- for example by setting the system into a different state.
+The Fault Library could also have a safety impact if faults are propagated and act upon by other components
+- for example Health and Lifecycle Management.</p>
 </section>
 <section id="license-impact">
 <h2>License Impact<a class="headerlink" href="#license-impact" title="Link to this heading">#</a></h2>
@@ -774,10 +785,15 @@ Because no FOSS SOVD stack exists currently, it presents an opportunity for S-CO
 <h2>Open Issues<a class="headerlink" href="#open-issues" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Interfacing concept with Autosar Adaptive Diagnostic Stack for mixed stacks and/or a transitional phase</p></li>
-<li><p>Investigate synergies between Configuration Manager and Diagnostic Fault Manager</p></li>
 <li><p>Evaluate publication of XML schemata to handle/convert ODX files as per ISO 22901</p></li>
-<li><p>Check if Diagnostic Fault Manager component is required at all and could be removed (how would this impact dependency of Flib to persistency and access management?)</p></li>
 <li><p>Provide sequence diagram for a use case</p></li>
+<li><p>Is the fault lib the source for faults to be acted upon by Health and Lifecycle Management?</p></li>
+<li><p>List regulatory requirements for certain faults/DTCs - e.g. emission relevant faults</p></li>
+<li><p>Provide recommended transition/migration scenario for UDS based components moving to SOVD</p></li>
+<li><p>Decide if SOVD communication inside the ECU uses IP based communication or an alternative such as UDS</p></li>
+<li><p>Decide on a common concept for Service Validation. How are Services Validated and where (Server vs. Service)?</p></li>
+<li><p>For Service Validation: How do Services access the state of the ECU and the state of certain apps?</p></li>
+<li><p>Add concept of how to interact with ECU State Management</p></li>
 </ul>
 </section>
 <section id="footnotes">
