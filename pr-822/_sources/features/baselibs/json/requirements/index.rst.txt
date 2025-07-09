@@ -46,7 +46,7 @@ User friendly API for information exchange
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :satisfies: feat_req__baselibs__json_library
+   :satisfies: feat_req__baselibs__json_library, feat_req__baselibs__consistent_apis
    :status: valid
 
    Each public API shall support the idioms of the programming language it is written in.
@@ -85,7 +85,7 @@ Safety Impact
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies: feat_req__baselibs__json_library
+   :satisfies: feat_req__baselibs__json_library, feat_req__baselibs__safety
    :status: valid
 
    The JSON library shall support safe communication up to ASIL-B.

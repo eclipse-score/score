@@ -31,7 +31,7 @@ JSON-Library
 Abstract
 ========
 
-This feature request proposes the integration of a safe JSON-Library with parsing functionality.
+This component request proposes the integration of a safe JSON-Library with parsing functionality.
 
 
 Basic Functionality
@@ -104,7 +104,7 @@ As there is currently no previous solution in S-CORE, no backwards compatibility
 Security Impact
 ===============
 
-The module will likely work with input and output streams.
+For access control and manipulation prevention (e.g. dm-verity) the hosting process and system configuration are responsible.
 
 Safety Impact
 =============
