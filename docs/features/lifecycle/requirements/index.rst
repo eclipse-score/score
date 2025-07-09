@@ -997,7 +997,8 @@ Configuration file
     :satisfies: stkh_req__functional_req__file_based
     :status: invalid
 
-    The launch manager shall provide modular configuration file support to configure process attributes.
+    The :term:`Launch Manager` shall provide modular configuration file support to
+    configure process attributes.
 
 .. feat_req:: Runtime configuration compliance
     :id: feat_req__lifecycle__runtime_config_compat
