@@ -97,8 +97,6 @@ Glossary
     QNX
       A real-time operating system commonly used in embedded systems.
 
-    QOS
-      QNX Operating System.
 
     DSS
       Device Safe State - a safe operational state that a system can enter during failures.
