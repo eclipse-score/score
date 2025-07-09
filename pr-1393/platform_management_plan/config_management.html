@@ -470,7 +470,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-223a0223">
+  <div class="need_container docutils container" id="SNCB-90062d73">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__config_mgt_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -597,6 +597,11 @@ Only the technical lead is allowed to approve a merge into a release branch. The
 Baselines are created by using the GitHub “tag” function. The tag name shall correspond to
 the release branch name the tag is created, adding patch version and pre-release tag.
 See also <a class="reference internal" href="release_management.html#doc__platform_release_management_plan" title="doc__platform_release_management_plan"><em class="xref need">Release Management Plan (doc__platform_release_management_plan)</em></a>.</p>
+<p>As described in “Identification and Properties” above, there are several repositories for the modules and the platform integration.
+Baselines are created individually in these repositories, even a different version schema could be adopted.
+In case of dependent repositories, the repository dependet upon on has to be baselined first, to be available
+to refer to this baseline when integrating it. That means that for example a platform baseline also
+documents the versions(baselines) of the modules the platform consists of. This can then also be seen in the platform release note.</p>
 <p>Every change in the release repository is also taken over into the main branch. The module development team
 can decide how to ensure this (e.g. by development in main and cherrypick to release branch).</p>
 </section>

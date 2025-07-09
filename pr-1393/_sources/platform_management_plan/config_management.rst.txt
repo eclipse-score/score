@@ -122,6 +122,12 @@ Baselines are created by using the GitHub "tag" function. The tag name shall cor
 the release branch name the tag is created, adding patch version and pre-release tag.
 See also :need:`doc__platform_release_management_plan`.
 
+As described in "Identification and Properties" above, there are several repositories for the modules and the platform integration.
+Baselines are created individually in these repositories, even a different version schema could be adopted.
+In case of dependent repositories, the repository dependet upon on has to be baselined first, to be available
+to refer to this baseline when integrating it. That means that for example a platform baseline also
+documents the versions(baselines) of the modules the platform consists of. This can then also be seen in the platform release note.
+
 Every change in the release repository is also taken over into the main branch. The module development team
 can decide how to ensure this (e.g. by development in main and cherrypick to release branch).
 
