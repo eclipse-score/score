@@ -116,7 +116,7 @@ Git defines branches as a means of parallel development. In the S-CORE project t
 
 The "remote" branch is not "local" to the developer but resides on the "remote" GitHub server.
 
-In S-CORE all configuration items are kept in GitHub, this means that there only needs to be one baseline for these
+In S-CORE all configuration items are kept in GitHub, this means that there only needs to be one baseline (per repository) for these
 (and not multiple ones for each of the work products which are maintained in seperate tools).
 Baselines are created by using the GitHub "tag" function. The tag name shall correspond to
 the release branch name the tag is created, adding patch version and pre-release tag.
@@ -126,7 +126,7 @@ As described in "Identification and Properties" above, there are several reposit
 Baselines are created individually in these repositories, even a different version schema could be adopted.
 In case of dependent repositories, the repository dependet upon on has to be baselined first, to be available
 to refer to this baseline when integrating it. That means that for example a platform baseline also
-documents the versions(baselines) of the modules the platform consists of. This can then also be seen in the platform release note.
+documents the versions (baselines) of the modules the platform consists of. This can then also be seen in the platform release note.
 
 Every change in the release repository is also taken over into the main branch. The module development team
 can decide how to ensure this (e.g. by development in main and cherrypick to release branch).
@@ -147,7 +147,9 @@ The main communication means is a document list containing all documents and wor
 This list is typically part of the Documentation Management Plan :need:`doc__documentation_mgt_plan` as part of the Platform Management Plan,
 as defined in :need:`PROCESS_gd_guidl__documentation`.
 Completeness of the configuration items (within a baseline) is checked at least for every release
-against the list of planned documents and workproducts, which is also part of the Documentation Management Plan.
+against the list of planned documents and other artefacts realizing a work product (e.g. requirements),
+which is also part of the Documentation Management Plan. Note that also the used tools are documented
+as a "tool list" which may be part of the Documentation Management Plan or referenced from it (and also need to be checked for completeness).
 
 
 Configuration Management Tooling
