@@ -23,7 +23,7 @@ Preface
 =======
 
 This document describes how public Rust APIs shall be designed in the S-CORE context. While these guidelines canalso be
-beneficial for private APIs, following them also inside a single module is reommended to improve the code consistency
+beneficial for private APIs, following them also inside a single module is recommended to improve the code consistency
 and also benefit from the perks it gives to the code.
 
 Writing Mockable Rust Code
