@@ -1,0 +1,72 @@
+/'
+   # *******************************************************************************
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
+   #
+   # See the NOTICE file(s) distributed with this work for additional
+   # information regarding copyright ownership.
+   #
+   # This program and the accompanying materials are made available under the
+   # terms of the Apache License Version 2.0 which is available at
+   # https://www.apache.org/licenses/LICENSE-2.0
+   #
+   # SPDX-License-Identifier: Apache-2.0
+   # *******************************************************************************
+'/
+allowmixing
+
+
+frame "User Application" as application {
+    agent "Primary Process" as PP
+    agent "Secondary Processes\n(optional)" as SP
+}
+
+component "Lifecycle Manager" as life_mgr
+component "Health Manager" as health_mgr
+
+component "communication" as com_mgr
+component "logging/\ntracing" as log_trace_mgr
+component "time" as time_mgr
+
+frame "feo" as feo {
+    component "feo_com"
+    component "feo_log"
+    component "feo_time"
+    component "feo_tracing"
+}
+
+interface "Activity" as activity {
+}
+interface "Primary Agent" as primary
+interface "Secondary Agent" as secondary
+
+interface "Health" as health
+interface "Lifecycle Listener" as lifecycle
+
+interface "mw::com" as mw_com
+interface "logging" as logging
+interface "tracing" as tracing
+interface "time" as time
+
+health_mgr -u-|> health: impl
+
+com_mgr -u-|> mw_com: impl
+log_trace_mgr -u-|> logging: impl
+log_trace_mgr -u-|> tracing: impl
+time_mgr -u-|> time: impl
+
+feo -u-|> primary: impl
+feo -u-|> secondary: impl
+feo -u-|> activity: impl
+feo -u-|> lifecycle: impl
+
+feo -d-> health: use
+feo -d-> mw_com: use
+feo -d-> logging: use
+feo -d-> tracing: use
+feo -d-> time: use
+
+application -d-> activity: use
+application -d-> secondary: use
+application -d-> primary: use
+
+life_mgr --> lifecycle: use
