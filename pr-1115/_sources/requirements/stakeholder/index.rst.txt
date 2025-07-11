@@ -95,7 +95,7 @@ Functional requirements
    The software platform shall provide towards the applications a safe
    (ISO26262-2018) key/value store.
 
-   Note: This is part of 0.1 release and therefore can only support ASIL_B. Goal is ASIL_D.
+   Note: This is part of 0.5 release and therefore can only support ASIL_B. Goal is ASIL_D.
 
 .. stkh_req:: Safe Configuration
    :id: stkh_req__functional_req__safe_config
@@ -106,18 +106,21 @@ Functional requirements
    :status: valid
 
    The platform shall support safe configuration.
-   Note: This is part of 0.1 release and therefore can only support ASIL_B. Goal is ASIL_D.
+
+   Note: This is part of 0.5 release and therefore can only support ASIL_B. Goal is ASIL_D.
 
 
 .. stkh_req:: Safe Computation
    :id: stkh_req__functional_req__safe_comput
    :reqtype: Functional
    :security: NO
-   :safety: ASIL_D
+   :safety: ASIL_B
    :rationale: Safe systems require computations to be done in safe environments.
    :status: valid
 
    The platform shall support safe computation.
+
+   Note: This is part of 0.5 release and therefore can only support ASIL_B. Goal is ASIL_D.
 
 
 .. stkh_req:: Base Libraries
@@ -236,14 +239,14 @@ Dependability
    The software platform shall support applications with an automotive safety
    integrity level up to ASIL-B.
 
-   Note: This is part of 0.1 release and therefore can only support ASIL_B. Goal is ASIL_D.
+   Note: This is part of 0.5 release and therefore can only support ASIL_B. Goal is ASIL_D.
 
 
 .. stkh_req:: Safety features
    :id: stkh_req__dependability__safety_features
    :reqtype: Functional
    :security: NO
-   :safety: ASIL_D
+   :safety: ASIL_B
    :rationale: tbd
    :status: valid
 
@@ -260,6 +263,8 @@ Dependability
    * Software Lockstep
    * Power management integrated circuit (PMIC), external watchdog and voltage monitoring
    * Safe switch from engineering for field mode and back
+
+   Note: This is part of 0.5 release and therefore can only support ASIL_B. Goal is ASIL_D.
 
 
 .. stkh_req:: Availability
@@ -483,11 +488,13 @@ Communication
    :id: stkh_req__communication__safe
    :reqtype: Functional
    :security: NO
-   :safety: ASIL_D
+   :safety: ASIL_B
    :rationale: Distributed safe systems often require communication to be safe.
    :status: valid
 
    The platform shall support safe communication.
+
+   Note: This is part of 0.5 release and therefore can only support ASIL_B. Goal is ASIL_D.
 
 
 .. stkh_req:: Secure Communication
