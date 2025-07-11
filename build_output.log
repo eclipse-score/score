@@ -1,0 +1,24 @@
+Computing main repo mapping: 
+Loading: 
+Loading: 0 packages loaded
+Analyzing: target //docs:docs_release (0 packages loaded, 0 targets configured)
+Analyzing: target //docs:docs_release (0 packages loaded, 0 targets configured)
+
+INFO: Analyzed target //docs:docs_release (0 packages loaded, 0 targets configured).
+[2 / 3] Sphinx building html for //docs:docs_release; 1s processwrapper-sandbox
+[2 / 3] Sphinx building html for //docs:docs_release; 11s processwrapper-sandbox
+ERROR: /home/q290047/score/eclipse-score-score/docs/BUILD:24:5: Sphinx building html for //docs:docs_release failed: (Exit 1): sphinx_build_release failed: error executing SphinxBuildDocs command (from target //docs:docs_release) bazel-out/k8-opt-exec-ST-d57f47055a04/bin/docs/sphinx_build_release --show-traceback --builder html --quiet --jobs auto --fresh-env --write-all -W --keep-going ... (remaining 3 arguments skipped)
+
+Use --sandbox_debug to see verbose messages from the sandbox and retain the sandbox build root for debugging
+/home/q290047/.cache/bazel/_bazel_q290047/a6a5dfdfe554f356d61af073c100dfcc/sandbox/processwrapper-sandbox/23/execroot/_main/bazel-out/k8-fastbuild/bin/docs/_docs_release/_sources/docs/features/lifecycle/index.rst:68: WARNING: Inline interpreted text or phrase reference start-string without end-string. [docutils]
+/home/q290047/.cache/bazel/_bazel_q290047/a6a5dfdfe554f356d61af073c100dfcc/sandbox/processwrapper-sandbox/23/execroot/_main/bazel-out/k8-fastbuild/bin/docs/_docs_release/_sources/docs/architecture/index.rst: WARNING: document isn't included in any toctree [toc.not_included]
+/home/q290047/.cache/bazel/_bazel_q290047/a6a5dfdfe554f356d61af073c100dfcc/sandbox/processwrapper-sandbox/23/execroot/_main/bazel-out/k8-fastbuild/bin/docs/_docs_release/_sources/docs/features/lifecycle/architecture/_assets/logical_deadline_supervision_interfaces.rst: WARNING: document isn't included in any toctree [toc.not_included]
+/home/q290047/.cache/bazel/_bazel_q290047/a6a5dfdfe554f356d61af073c100dfcc/sandbox/processwrapper-sandbox/23/execroot/_main/bazel-out/k8-fastbuild/bin/docs/_docs_release/_sources/docs/features/lifecycle/index.rst:71: WARNING: term not in glossary: 'Lifecycle Component`s running on the system at a certain point in time. A lifecycle component is a configuration unit, which describes the executable, which shall be executed and the :term:`sandbox' [ref.term]
+features/lifecycle/architecture/application_health_monitor.rst:136: WARNING: logic_arc_int_op__lifecycle__link_cond_deadline.id (logic_arc_int_op__lifecycle__link_cond_deadline): exceeds the maximum allowed length of 45 characters (current length: 47). [score_metamodel]
+features/lifecycle/architecture/application_health_monitor.rst:217: WARNING: logic_arc_int_op__lifecycle__link_cond_logical.id (logic_arc_int_op__lifecycle__link_cond_logical): exceeds the maximum allowed length of 45 characters (current length: 46). [score_metamodel]
+WARNING: Some needs have issues. See the log for more information. [score_metamodel]
+Target //docs:docs_release failed to build
+Use --verbose_failures to see the command lines of failed build steps.
+INFO: Elapsed time: 15.397s, Critical Path: 15.15s
+INFO: 3 processes: 3 internal.
+ERROR: Build did NOT complete successfully

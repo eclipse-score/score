@@ -131,6 +131,7 @@ Project structure and processes
 
       introduction/index
       requirements/index
+      architecture/index
       features/index
       modules/index
       contribute/index

@@ -1,0 +1,19 @@
+@startuml
+title Control Interface Static Architecture
+
+package "Launch Manager" {
+    [Launch Manager (LM)] as LM
+    interface ControlInterface
+    
+    LM -- ControlInterface : implements
+}
+
+package "State Manager" {
+    [State Manager] as SM
+}
+
+SM -up-> ControlInterface : uses
+
+note right of [ControlInterface] : Start/Stop/Restart components\nQuery status\n...
+
+@enduml
