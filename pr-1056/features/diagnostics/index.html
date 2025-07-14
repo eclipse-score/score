@@ -503,7 +503,7 @@
                   
   <section id="diagnostic-and-fault-management">
 <span id="diagnostics-feature"></span><h1>Diagnostic and Fault Management<a class="headerlink" href="#diagnostic-and-fault-management" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-75530cd6">
+<div class="need_container docutils container" id="SNCB-36e02d73">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__diagnostics">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -616,6 +616,7 @@ It provides a standardized and extensible interface that enables better interope
 <li><p>Not part of SOVD specification directly but a stack specific diagnostic implementation.</p></li>
 <li><p>Interfaces with the Diagnostic DB (persistency) to store and retrieve data.</p></li>
 <li><p>Stores (persistently) central configuration (e.g. for debouncing thresholds) which can be loaded during startup by Fault libs.</p></li>
+<li><p>Implements the operation cycle concept (suppressing faults during phases where faults are to be expected).</p></li>
 <li><p>Central component.</p></li>
 </ul>
 <p>Diagnostic DB</p>
@@ -664,6 +665,7 @@ It provides a standardized and extensible interface that enables better interope
 <li><p>Translates SOVD service calls to UDS commands.</p></li>
 <li><p>Enables backward compatibility with legacy ECUs that only support UDS.</p></li>
 <li><p>Configured via ODX files describing ECU-specific UDS expectations.</p></li>
+<li><p>UDS transport layer (e.g. DoIP or other vendor specific transports) shared with UDS2SOVD Proxy.</p></li>
 <li><p>Central component and unique per system.</p></li>
 </ul>
 <p>UDS2SOVD Proxy</p>
@@ -671,6 +673,8 @@ It provides a standardized and extensible interface that enables better interope
 <li><p>Allows for the mapping of any UDS service to SOVD functionality in an arbitrary way for backward-compatible testers.</p></li>
 <li><p>Acts as a local translation layer between UDS clients and SOVD stack.</p></li>
 <li><p>Configured via ODX files to define what is exposed.</p></li>
+<li><p>Implements the UDS session handling concept.</p></li>
+<li><p>UDS transport layer (e.g. DoIP or other vendor specific transports) shared with Classic Diagnostic Adapter.</p></li>
 <li><p>Central component and unique per ECU (one per ECU or per System is possible).</p></li>
 </ul>
 </section>

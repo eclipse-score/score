@@ -120,6 +120,7 @@ Diagnostic Fault Manager
 - Not part of SOVD specification directly but a stack specific diagnostic implementation.
 - Interfaces with the Diagnostic DB (persistency) to store and retrieve data.
 - Stores (persistently) central configuration (e.g. for debouncing thresholds) which can be loaded during startup by Fault libs.
+- Implements the operation cycle concept (suppressing faults during phases where faults are to be expected).
 - Central component.
 
 Diagnostic DB
@@ -168,6 +169,7 @@ Classic Diagnostic Adapter
 - Translates SOVD service calls to UDS commands.
 - Enables backward compatibility with legacy ECUs that only support UDS.
 - Configured via ODX files describing ECU-specific UDS expectations.
+- UDS transport layer (e.g. DoIP or other vendor specific transports) shared with UDS2SOVD Proxy.
 - Central component and unique per system.
 
 UDS2SOVD Proxy
@@ -175,6 +177,8 @@ UDS2SOVD Proxy
 - Allows for the mapping of any UDS service to SOVD functionality in an arbitrary way for backward-compatible testers.
 - Acts as a local translation layer between UDS clients and SOVD stack.
 - Configured via ODX files to define what is exposed.
+- Implements the UDS session handling concept.
+- UDS transport layer (e.g. DoIP or other vendor specific transports) shared with Classic Diagnostic Adapter.
 - Central component and unique per ECU (one per ECU or per System is possible).
 
 
