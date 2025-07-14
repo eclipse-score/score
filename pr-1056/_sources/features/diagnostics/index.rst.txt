@@ -314,7 +314,7 @@ Open Issues
 - Is the fault lib the source for faults to be acted upon by Health and Lifecycle Management?
 - List regulatory requirements for certain faults/DTCs - e.g. emission relevant faults
 - Provide recommended transition/migration scenario for UDS based components moving to SOVD
-- Decide if SOVD communication inside the ECU uses IP based communication or an alternative such as UDS
+- Decide if SOVD communication inside the ECU uses IP based communication or an alternative such as UDS (Unix Domain Sockets)
 - Decide on a common concept for Service Validation. How are Services Validated and where (Server vs. Service)?
 - For Service Validation: How do Services access the state of the ECU and the state of certain apps?
 - Add concept of how to interact with ECU State Management
