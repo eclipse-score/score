@@ -49,7 +49,7 @@ User friendly API for information exchange
    :satisfies: feat_req__baselibs__json_library, feat_req__baselibs__consistent_apis
    :status: valid
 
-   Each public API shall support the idioms of the programming language it is written in.
+   The public API shall support the idioms of the programming language it is written in.
 
 .. comp_req:: Use programming language infrastructure
    :id: comp_req__json__lang_infra
@@ -59,10 +59,23 @@ User friendly API for information exchange
    :satisfies: feat_req__baselibs__json_library
    :status: valid
 
-   Each public API shall use core infrastructure of its programming language and accompanying standard libraries,
+   The public API shall use core infrastructure of its programming language and accompanying standard libraries,
    whenever possible and meaningful.
 
    Note: This includes error handling.
+
+.. comp_req:: Enforce strict type compatibility
+   :id: comp_req__json__type_compatibility
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: QM
+   :satisfies: feat_req__baselibs__json_library
+   :status: valid
+
+   The public API shall enforce strict type compatibility. When a user requests a value, the API shall 
+   validate that the requested return type is compatible with the type of the stored JSON data.
+
+   Note: This includes checking if the stored value exceeds the range of the expected type.
 
 Full testability for the user facing API
 ========================================
