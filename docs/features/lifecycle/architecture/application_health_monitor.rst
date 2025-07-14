@@ -12,13 +12,13 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Application Health Monitor
-##########################
+Health Monitor
+##############
 
-The `Application Health Monitor` is library, that together with the `Launch Manager` provide a way to monitor
+The :term:`Health Monitor` is library, that together with the :term:`Launch Manager` provide a way to monitor
 the application health in similar fashion as the AUTOSAR `Platform Health Manager` (PHM).
 
-The main features of the `Application Health Monitor` are the following monitoring functions:
+The main features of the :term:`Health Monitor` are the following monitoring functions:
 
 - Alive supervision
   - Periodic monitoring of checkpoints, which must fit the pre-configured expected number of notifications in the given interval (not too many, not too few)
@@ -28,13 +28,13 @@ The main features of the `Application Health Monitor` are the following monitori
 - Logical
   - Specifies in which order two or more checkpoints must be called
 
-The `Application Health Monitor` itself is monitored via the `Launch Manager` with via alive supervision only.
+The :term:`Health Monitor` itself is monitored via the :term:`Launch Manager` with via alive supervision only.
 
 
 Benefits over classical external process monitoring
 ===================================================
 
-- Inter process communication (IPC) only needed for the alive monitoring between `Application Health Monitor` and `Launch Manager`
+- Inter process communication (IPC) only needed for the alive monitoring between :term:`Health Monitor` and :term:`Launch Manager`
 - Easier configuration
     - The monitoring rules can be configured dynamically on demand basis
     - The monitoring can be started and stopped dynamically
@@ -49,11 +49,11 @@ Drawbacks over classical external process monitoring
 Safety
 ======
 
-As the `Application Health Monitor` is linked as part of the monitored application, it raises the following concerns
+As the :term:`Health Monitor` is linked as part of the monitored application, it raises the following concerns
 with respect to safety:
 
 - How can it be ensured, that the monitored application does not interfere with the monitoring functionality?
-- How can it be ensured, that the `Application Health Monitor` does not incorrectly report alive to the `Launch Manager` when it has detected
+- How can it be ensured, that the :term:`Health Monitor` does not incorrectly report alive to the :term:`Launch Manager` when it has detected
   a supervision error?
 
 
@@ -75,17 +75,17 @@ These concerns are valid, but can be addressed using the following techniques:
 Error Reactions
 ===============
 
-- When the `Application Health Monitor` detects a failed supervision, it shall stop triggering alive notifications to the `Launch Manager`.
-- Additionally, when the error occurs, the `Application Health Monitor` triggers a failure notification to the `Launch Manager` to reduce the time
-  to react on the error. This obviously will only work if the `Application Health Monitor` is still working and correctly scheduled. Thus the
-  worst case reaction time calculations must be made on the monitoring rules specified in the `Launch Manager` for the monitored application.
+- When the :term:`Health Monitor` detects a failed supervision, it shall stop triggering alive notifications to the :term:`Launch Manager`.
+- Additionally, when the error occurs, the :term:`Health Monitor` triggers a failure notification to the :term:`Launch Manager` to reduce the time
+  to react on the error. This obviously will only work if the :term:`Health Monitor` is still working and correctly scheduled. Thus the
+  worst case reaction time calculations must be made on the monitoring rules specified in the :term:`Launch Manager` for the monitored application.
 
 
 Static Architecture
 ===================
 
 
-.. comp_arc_sta:: <<library>>\nHealth Monitor
+.. comp_arc_sta:: Health Monitor
    :id: comp_arc_sta__lifecycle__healthmonitor
    :status: valid
    :safety: ASIL_B
@@ -291,7 +291,7 @@ The most important interactions are the following:
    * - Sequence number
      - Description
    * - 001
-     - `Launch manager` configuration for the alive monitoring of the `Monitored application` is parsed. This contains for example, what is the expected interval of alive notifications,
+     - :term:`Launch Manager` configuration for the alive monitoring of the `Monitored application` is parsed. This contains for example, what is the expected interval of alive notifications,
        how long grace period is given before failing to a missed (never received) alive notification etc.
    * - 002
      - Start the startup grace period timer to allow the application to startup, before timing out to a missed alive notification

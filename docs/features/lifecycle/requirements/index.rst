@@ -22,7 +22,7 @@ Launching Processes
     :id: feat_req__lifecycle__launch_support
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -32,7 +32,7 @@ Launching Processes
     :id: feat_req__lifecycle__process_ordering
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -44,7 +44,7 @@ Launching Processes
     :id: feat_req__lifecycle__parallel_launch_support
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -55,7 +55,7 @@ Launching Processes
     :id: feat_req__lifecycle__waitfor_support
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -66,7 +66,7 @@ Launching Processes
     :id: feat_req__lifecycle__custom_cond_support
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -78,7 +78,7 @@ Launching Processes
     :id: feat_req__lifecycle__process_input_output
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -89,7 +89,7 @@ Launching Processes
     :id: feat_req__lifecycle__cond_process_start
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -101,7 +101,7 @@ Launching Processes
     :id: feat_req__lifecycle__essential_processes
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -113,7 +113,7 @@ Launching Processes
     :id: feat_req__lifecycle__essential_process_fail
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -125,7 +125,7 @@ Launching Processes
     :id: feat_req__lifecycle__error_reaction_config
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -143,7 +143,7 @@ Launching Processes
     :id: feat_req__lifecycle__process_launch_args
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -165,7 +165,7 @@ Launching Processes
     :id: feat_req__lifecycle__support_held_state
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -177,7 +177,7 @@ Launching Processes
     :id: feat_req__lifecycle__uid_gid_support
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -188,7 +188,7 @@ Launching Processes
     :id: feat_req__lifecycle__total_wait_time_support
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -199,7 +199,7 @@ Launching Processes
     :id: feat_req__lifecycle__polling_interval
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -211,7 +211,7 @@ Launching Processes
     :id: feat_req__lifecycle__launch_priority_support
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -223,7 +223,7 @@ Launching Processes
     :id: feat_req__lifecycle__cwd_support
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -234,7 +234,7 @@ Launching Processes
     :id: feat_req__lifecycle__terminal_support
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -245,7 +245,7 @@ Launching Processes
     :id: feat_req__lifecycle__std_handle_redir
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -256,7 +256,7 @@ Launching Processes
     :id: feat_req__lifecycle__builtin_command_support
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -267,7 +267,7 @@ Launching Processes
     :id: feat_req__lifecycle__secpol_non_root
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__dependability__safety_features
     :status: invalid
 
@@ -278,7 +278,7 @@ Launching Processes
     :id: feat_req__lifecycle__retries_configurable
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -290,7 +290,7 @@ Launching Processes
     :id: feat_req__lifecycle__procmgr_support
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -301,7 +301,7 @@ Launching Processes
     :id: feat_req__lifecycle__fd_inheritance
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -313,7 +313,7 @@ Launching Processes
     :id: feat_req__lifecycle__support_secpol_type
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__dependability__safety_features
     :status: invalid
 
@@ -324,7 +324,7 @@ Launching Processes
     :id: feat_req__lifecycle__supplementary_groups
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -335,7 +335,7 @@ Launching Processes
     :id: feat_req__lifecycle__scheduling_policy
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -346,7 +346,7 @@ Launching Processes
     :id: feat_req__lifecycle__runmask_support
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -358,7 +358,7 @@ Launching Processes
     :id: feat_req__lifecycle__aslr_support
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__dependability__safety_features
     :status: invalid
 
@@ -369,7 +369,7 @@ Launching Processes
     :id: feat_req__lifecycle__process_rlimit_support
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -381,7 +381,7 @@ Launching Processes
     :id: feat_req__lifecycle__detach_parent_process
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -392,7 +392,7 @@ Launching Processes
     :id: feat_req__lifecycle__critical_processes
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -403,7 +403,7 @@ Launching Processes
     :id: feat_req__lifecycle__running_processes
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -413,7 +413,7 @@ Launching Processes
     :id: feat_req__lifecycle__drop_supervsion
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -425,7 +425,7 @@ Launching Processes
     :id: feat_req__lifecycle__multi_start_support
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -436,7 +436,7 @@ Launching Processes
     :id: feat_req__lifecycle__validate_conditions
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -447,7 +447,7 @@ Launching Processes
     :id: feat_req__lifecycle__validation_conditions
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -458,7 +458,7 @@ Launching Processes
     :id: feat_req__lifecycle__process_ownership
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -469,7 +469,7 @@ Launching Processes
     :id: feat_req__lifecycle__consistent_dependencies
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -480,7 +480,7 @@ Launching Processes
     :id: feat_req__lifecycle__stop_process_dependents
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -491,7 +491,7 @@ Launching Processes
     :id: feat_req__lifecycle__stop_order_spec
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -501,7 +501,7 @@ Launching Processes
     :id: feat_req__lifecycle__oci_compliant
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :status: invalid
     :satisfies: stkh_req__overall_goals__enable_cooperation
 
@@ -515,7 +515,7 @@ Groups
     :id: feat_req__lifecycle__named_group_executables
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -526,7 +526,7 @@ Groups
     :id: feat_req__lifecycle__start_named_group_exe
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -536,7 +536,7 @@ Groups
     :id: feat_req__lifecycle__stop_group_executables
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -547,7 +547,7 @@ Groups
     :id: feat_req__lifecycle__launcher_start_group
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -558,7 +558,7 @@ Groups
     :id: feat_req__lifecycle__process_state_comm
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -574,7 +574,7 @@ Terminating Processes
     :id: feat_req__lifecycle__configurable_timeout
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -585,7 +585,7 @@ Terminating Processes
     :id: feat_req__lifecycle__process_termination
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -595,7 +595,7 @@ Terminating Processes
     :id: feat_req__lifecycle__terminationn_dependency
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -607,7 +607,7 @@ Terminating Processes
     :id: feat_req__lifecycle__time_to_wait_config
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -618,7 +618,7 @@ Terminating Processes
     :id: feat_req__lifecycle__launch_manager_shutdown
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -630,7 +630,7 @@ Terminating Processes
     :id: feat_req__lifecycle__slow_shutdown_support
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -641,7 +641,7 @@ Terminating Processes
     :id: feat_req__lifecycle__fast_shutdown_support
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -652,7 +652,7 @@ Terminating Processes
     :id: feat_req__lifecycle__launcher_exit_shutdown
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -663,7 +663,7 @@ Terminating Processes
     :id: feat_req__lifecycle__shutdown_signal
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -678,7 +678,7 @@ Terminating Processes
     :id: feat_req__lifecycle__control_commands
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -689,7 +689,7 @@ Terminating Processes
     :id: feat_req__lifecycle__query_commands
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -701,7 +701,7 @@ Terminating Processes
     :id: feat_req__lifecycle__controlif_status
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -714,7 +714,7 @@ Terminating Processes
     :id: feat_req__lifecycle__request_group_launch
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -725,7 +725,7 @@ Terminating Processes
     :id: feat_req__lifecycle__request_group_stop
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -736,7 +736,7 @@ Terminating Processes
     :id: feat_req__lifecycle__request_group_restart
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -751,7 +751,7 @@ Monitoring, Notification and Recovery
     :id: feat_req__lifecycle__monitor_abnormal_term
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -762,7 +762,7 @@ Monitoring, Notification and Recovery
     :id: feat_req__lifecycle__ext_monitor_notify
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -774,7 +774,7 @@ Monitoring, Notification and Recovery
     :id: feat_req__lifecycle__recovery_action_support
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -785,7 +785,7 @@ Monitoring, Notification and Recovery
     :id: feat_req__lifecycle__recover_group
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -797,7 +797,7 @@ Monitoring, Notification and Recovery
     :id: feat_req__lifecycle__smart_watchdog_config
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -809,7 +809,7 @@ Monitoring, Notification and Recovery
     :id: feat_req__lifecycle__configurable_wait_time
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -820,7 +820,7 @@ Monitoring, Notification and Recovery
     :id: feat_req__lifecycle__monitoring_processes
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -831,7 +831,7 @@ Monitoring, Notification and Recovery
     :id: feat_req__lifecycle__failure_detect
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -842,7 +842,7 @@ Monitoring, Notification and Recovery
     :id: feat_req__lifecycle__liveliness_detection
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -853,7 +853,7 @@ Monitoring, Notification and Recovery
     :id: feat_req__lifecycle__process_monitoring
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -865,7 +865,7 @@ Monitoring, Notification and Recovery
     :id: feat_req__lifecycle__process_failure_react
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -878,7 +878,7 @@ Monitoring, Notification and Recovery
     :id: feat_req__lifecycle__multi_instance_support
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -889,7 +889,7 @@ Monitoring, Notification and Recovery
     :id: feat_req__lifecycle__lm_self_health_check
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -899,7 +899,7 @@ Monitoring, Notification and Recovery
     :id: feat_req__lifecycle__lm_ext_watchdog_notify
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -910,7 +910,7 @@ Monitoring, Notification and Recovery
     :id: feat_req__lifecycle__lm_ext_wdg_failed_test
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -921,7 +921,7 @@ Monitoring, Notification and Recovery
     :id: feat_req__lifecycle__lm_ext_watchdog_cfg
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -935,7 +935,7 @@ Logging
     :id: feat_req__lifecycle__slog2_logging
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__dev_experience__logging_support
     :status: invalid
 
@@ -946,7 +946,7 @@ Logging
     :id: feat_req__lifecycle__process_logging_support
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__dev_experience__logging_support
     :status: invalid
 
@@ -957,7 +957,7 @@ Logging
     :id: feat_req__lifecycle__log_timestamp
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__dev_experience__logging_support
     :status: invalid
 
@@ -968,7 +968,7 @@ Logging
     :id: feat_req__lifecycle__dag_logging_controlif
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__dev_experience__logging_support
     :status: invalid
 
@@ -993,7 +993,7 @@ Configuration file
     :id: feat_req__lifecycle__modular_config_support
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__functional_req__file_based
     :status: invalid
 
@@ -1003,7 +1003,7 @@ Configuration file
     :id: feat_req__lifecycle__runtime_config_compat
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -1014,7 +1014,7 @@ Configuration file
     :id: feat_req__lifecycle__session_extension
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__functional_req__file_based
     :status: invalid
 
@@ -1025,7 +1025,7 @@ Configuration file
     :id: feat_req__lifecycle__clustering_modules_supp
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__functional_req__file_based
     :status: invalid
 
@@ -1037,7 +1037,7 @@ Configuration file
     :id: feat_req__lifecycle__central_default_defines
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -1048,7 +1048,7 @@ Configuration file
     :id: feat_req__lifecycle__lazy_check
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -1084,7 +1084,7 @@ Condition Check
     :id: feat_req__lifecycle__launcher_status_storage
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -1095,7 +1095,7 @@ Condition Check
     :id: feat_req__lifecycle__condition_check_method
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -1106,7 +1106,7 @@ Condition Check
     :id: feat_req__lifecycle__config_actions_cond
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -1117,7 +1117,7 @@ Condition Check
     :id: feat_req__lifecycle__path_condition_check
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -1128,7 +1128,7 @@ Condition Check
     :id: feat_req__lifecycle__env_variable_cond_check
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -1139,7 +1139,7 @@ Condition Check
     :id: feat_req__lifecycle__dependency_check
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -1150,7 +1150,7 @@ Condition Check
     :id: feat_req__lifecycle__check_dependency_exec
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -1161,7 +1161,7 @@ Condition Check
     :id: feat_req__lifecycle__define_swc_dependencies
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
@@ -1172,7 +1172,7 @@ Condition Check
     :id: feat_req__lifecycle__stop_sequence
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
