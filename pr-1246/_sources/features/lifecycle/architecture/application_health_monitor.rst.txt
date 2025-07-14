@@ -89,7 +89,7 @@ Static Architecture
    :id: comp_arc_sta__lifecycle__healthmonitor
    :status: valid
    :safety: ASIL_B
-   :implements: logic_arc_int__lifecycle__health_monitor_if,logic_arc_int__lifecycle__deadline_monitor_if
+   :implements: logic_arc_int__lifecycle__health_monitor_if,logic_arc_int__lifecycle__deadline_monitor_if,logic_arc_int__lifecycle__logical_monitor_if
    :uses: logic_arc_int__lifecycle__alive_if
    :security: NO
    :includes:
@@ -202,6 +202,12 @@ Static Architecture
    :safety: ASIL_B
    :status: valid
    :fulfils: feat_req__com__interfaces
+
+   .. needarch::
+      :scale: 50
+      :align: center
+
+      {{ draw_interface(need(), needs) }}
 
 .. logic_arc_int_op:: add_entry_point
    :id: logic_arc_int_op__lifecycle__entry_point
