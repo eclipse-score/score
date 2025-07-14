@@ -124,3 +124,9 @@ SW Module List
      - _
      - _
      - _
+
+.. toctree::
+   :hidden:
+   :maxdepth: 2
+
+   platform_release_note

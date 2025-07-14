@@ -216,7 +216,7 @@ Component Requirements: feo
     :id: comp_req__feo__alive_supervision
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: feat_req__feo__alive_supervision
     :status: valid
 
@@ -229,7 +229,7 @@ Component Requirements: feo
     :id: comp_req__feo__deadline_supervision
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: feat_req__feo__deadline_supervision
     :status: valid
 
@@ -242,7 +242,7 @@ Component Requirements: feo
     :id: comp_req__feo__logical_supervision
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: feat_req__feo__logical_supervision
     :status: valid
 
@@ -264,4 +264,3 @@ Component Requirements: feo
     This can be done e.g. via evaluation of floating point exceptions,
     checking of hardware registers or status information of the
     software platform.
-

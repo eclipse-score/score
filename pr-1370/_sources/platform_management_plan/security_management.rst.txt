@@ -22,8 +22,8 @@
 Security management / Platform Security Plan
 --------------------------------------------
 
-WARNING: Security Management Process is NOT release yet, so links to Process_description using
-`PROCESS_`... will not work yet. After releasing, document must be updated.
+WARNING: Security Management Process is NOT released yet, so links to Process_description using
+`PROCESS_`... will not work yet, thus commented out. After releasing, document must be updated.
 
 Purpose
 +++++++
@@ -62,9 +62,9 @@ Security Management Scope
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There is no deviation from the scope presented in the `S-CORE project page <https://eclipse-score.github.io/>`_ .
-The platform and its components are developed, and integrated for an assumed technical system as Element out of Context (EooC).
+The platform and its components are developed, and integrated for an assumed technical system as platform and components Out of Context (OoC).
 The development of the platform and its components follows the defined processes.
-Responsibilities for development, implementation, integration and verification are also defined int the processes.
+Responsibilities for development, implementation, integration and verification are also defined in the processes.
 
 Regarding the platform specifics:
 
@@ -72,7 +72,7 @@ Regarding the platform specifics:
 * if relevant, security activities from a procedural point of view and SW are developed using additional rigour
 
 The SW platform functionality consists of features, which are based on a set of requirements and are developed in parallel.
-These features are developed into SW components contained in "modules", which are another set of EooCs (initiated by a contribution request).
+These features are developed into SW components contained in "modules", which are another set of OoCs (initiated by a change request).
 A template exists to guide this: need:`PROCESS_gd_temp__module_security_plan`.
 
 Tailoring
@@ -80,9 +80,9 @@ Tailoring
 Tailoring of security activities:
 
 * The tailoring is divided into project wide and module specific rules.
-* Project wide tailoring is documented in this document - this is based on development of a platform EooC.
-* Module EooC specific tailoring is documented in the module development Security Plans - this may be based on EooC specifics
-* In case of a change request on an existing feature (i.e. a contribution request), the subsequent security planning will be done based on an impact analysis.
+* Project wide tailoring is documented in this document - this is based on development of a platform OoC.
+* Module OoC specific tailoring is documented in the module development Security Plans - this may be based on OoC specifics
+* In case of a change request on an existing feature (i.e. a feature modification request), the subsequent security planning will be done based on an impact analysis.
 
 The following ISO SAE 21434 defined security work products are not relevant for the S-CORE SW platform development:
 
@@ -131,13 +131,12 @@ Project role assignment is done in every feature development Security Plan.
 
 *Critical dependencies*
 
-The project has not implemented a quality management system yet.
-But it aims to be conform to ASPICE, as defined in the management system.
+The project has implemented a quality management system, aiming to be conform to ASPICE, as defined in the management system.
 Continuous improvement is part to all processes. Improvements are handled in the scope of Quality Management.
 
 *Risk*
 
-Organization and management system has not a mature level yet.
+Organization and management system has not a compliant mature level yet.
 
 *Skills*
 
@@ -151,12 +150,12 @@ each committer has to prove his knowledge in security SW development by
 * an absolved training in ISO SAE 21434 (or equivalent standard, at least 16h of SW development specific training by a trusted training provider) OR
 * by attending the projects's ISO SAE 21434 SW development training (given by a security team member)
 
-Additionally the project repository is organized in "CODEOWNER" sections. These "CODEOWNERS" need to approve any pull request modifying a file in their area before it is merged.
+Additionally, the project repository shall be organized in a way that independent roles (to the technical solution) have to approve any pull request before it’s merged.
 
-In case of security related "CODEOWNER" sections (e.g. a file containing feature requirements with a security relevance) the persons having "CODEOWNER" rights need to have:
+In case of security related sections (e.g. a file containing feature requirements with a security relevance) the persons having approver rights need to have:
 * One year of professional practice of security related SW development (or management) relevant for the section content
 
-The successful checking of committers and CODEOWNERS skills is ensured by the security manager and documented in the role assignment document.
+The successful checking of committers and independent role skills is ensured by the security manager and documented in the role assignment document.
 One important aspect to this is, that we ensure the identity of the committer by applying the GitHub digital signature mechanism.
 
 *Policies*
@@ -166,7 +165,7 @@ The `Eclipse Foundation Security Policy <https://www.eclipse.org/security/policy
 Security Resources
 ^^^^^^^^^^^^^^^^^^
 
-A dedicated security manager is elected by :need:`PROCESS_rl__project_lead` for all the S-CORE EooCs development.
+Security managers are elected by :need:`PROCESS_rl__project_lead` for all the S-CORE OoCs development.
 
 The security manager, supported by the project manager (i.e. the :need:`PROCESS_rl__technical_lead`),  will ensure that
 security activities are actively planned, developed, analyzed, verified and tested and managed throughout the life cycle of the project.
@@ -200,23 +199,23 @@ To exchange general information and to clarify general topics the following comm
 The security management status is reported in the Technical Lead Circle Meeting which is defined in :need:`doc__project_mgt_plan`.
 The status report is based on security plans work product lists (see below) and verification reports on platform and module level:
 
-* need:`PROCESS_wp__platform_security_plan`
-* need:`PROCESS_wp__module_security_plan`
+* (tbc after release of process description) need:`PROCESS_wp__platform_security_plan`
+* (tbc after release of process description) need:`PROCESS_wp__module_security_plan`
 * :need:`PROCESS_wp__verification__platform_ver_report`
 * :need:`PROCESS_wp__verification__module_ver_report`
 
 *Escalation*
 
-* :need:`PROCESS_rl__security_manager` to :need:`PROCESS_rl__technical_lead`
+* Security Manager :need:`PROCESS_rl__security_manager` to steering committee documented in :need:`doc__project_mgt_plan`.
 * :need:`PROCESS_rl__technical_lead` to :need:`PROCESS_rl__project_lead`
 
 Examples for valid escalation causes are:
 
 * Security issues cannot be resolved on module level or with the available resources.
-* There are conflicting points-of-view between the project manager and the security manager
+* There are conflicting points of view between the Project Lead :need:`PROCESS_rl__project_lead`, Technical Lead :need:`PROCESS_rl__technical_lead`, Safety Manager :need:`PROCESS_rl__safety_manager`, Security Manager :need:`PROCESS_rl__security_manager` and the Quality Manager :need:`PROCESS_rl__quality_manager`
 
-Security Management Life Cycle
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Security Management Lifecycle
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The security lifecycle of the S-CORE project is initiated at the project set-up and driven and maintained by the security manager supported by the :need:`PROCESS_rl__process_community`.
 Note that the Eclipse Foundation also defines `project phases <https://www.eclipse.org/projects/handbook/#starting-project-phases>`_.
@@ -226,7 +225,7 @@ is determined by Security Audit and not be Eclipse project reviews.
 
 Security Requirements
 ^^^^^^^^^^^^^^^^^^^^^
-Requirement Engineering is defined in the process description. See `REPLACE_requirements_engineering`
+Requirement Engineering is defined in the process description. See See :doc:`software_development`.
 
 The application of ISO SAE 21434 standards requirements is realized by defining process guidances and matching those to the ISO SAE 21434 requirements (see `REPLACE_processes_introduction`).
 
@@ -234,9 +233,9 @@ Security Schedule
 ^^^^^^^^^^^^^^^^^
 The schedule is defined in section "Platform Security Plan" below, but also within each module security plan. See linked issues below and in need:`PROCESS_gd_temp__module_security_plan`.
 
-Security Development
-^^^^^^^^^^^^^^^^^^^^
-The SW development is defined in the project-wide software development plan. See :doc:`software_development`
+Security SW Development
+^^^^^^^^^^^^^^^^^^^^^^^
+The SW development is defined in the project-wide software development plan. See :doc:`software_development`.
 
 Security Verification
 ^^^^^^^^^^^^^^^^^^^^^
