@@ -85,8 +85,8 @@ E.g. the :term:`sandbox` shall describe
 
 
 
-Via the configuration we define a certain :term:`Operating Mode` and add all the components,
-which are needed to realize this :term:`Operating Mode` as dependencies.
+Via the configuration we define a certain operting mode and add all the components, which are needed to
+realize this operating mode as dependencies.
 
 
 A second task of the lifecycle system is to supervise the aliveness of the :term:`processes`,
@@ -104,9 +104,9 @@ The Lifecycle feature addresses the following stakeholder requirements:
 
 • :need:`stkh_req__dependability__safety_features`: Implementation of monitoring safety mechanisms
 
-A second task of the lifecycle system is to supervise the aliveness of the :term:`processes`,
-which are started and to initiate appropriate actions in case of a failure, which
-might result in many cases in a change of the :term:`Operating Mode`.
+A second task of the lifecycle system is to supervise the aliveness of the processes, which are started
+and to initiate appropriate actions in case of a failure, which might result in many cases in
+a change of the operting mode.
 
 Support of containers
 =====================
@@ -195,6 +195,9 @@ Requirements
    requirements/*
 
 Modules
+=======
+
+
 .. mod_view_sta:: Lifecycle
    :id: mod_view_sta__lifecycle__1
    :includes: comp_arc_sta__lifecycle__launch_manager, comp_arc_sta__lifecycle__healthmonitor
@@ -263,13 +266,9 @@ Rejected Ideas
 
 TBD
 
-TBD
-
 
 Open Issues
 ===========
-
-TBD
 
 TBD
 
