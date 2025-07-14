@@ -172,7 +172,7 @@ Classic Diagnostic Adapter
 
 UDS2SOVD Proxy
 
-- Exposes selected SOVD functionality via UDS for backward-compatible testers.
+- Allows for the mapping of any UDS service to SOVD functionality in an arbitrary way for backward-compatible testers.
 - Acts as a local translation layer between UDS clients and SOVD stack.
 - Configured via ODX files to define what is exposed.
 - Central component and unique per ECU (one per ECU or per System is possible).
