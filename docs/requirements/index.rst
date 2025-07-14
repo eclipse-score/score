@@ -21,3 +21,4 @@ Requirements
 
    stakeholder/index
    tool/index
+   adr/index
