@@ -54,7 +54,62 @@ flash mode etc.
 Rationale
 ---------
 
-Main task of the lifecycle system is to start and stop components with an `OCI` compliant runtime enviroment `<https://github.com/opencontainers/runtime-spec>`_ depending on the overall state the
+Main task of the lifecycle system is to start and stop :term:`processes` depending on the
+overall state the user wants to achieve and the functional dependencies between
+the :term:`processes`.
+
+:term:`Lifecycle Component` can be very simple like a single process or more complex like a set of processes
+which are started in a certain order and with certain dependencies between them or containers.
+
+We call a state of the system an :term:`Operating Mode`, which is defined via the
+:term:`Lifecycle Component` running on the system at a certain point in time.
+A lifecycle component is a configuration unit, which describes the executable, which shall be executed
+and the :term:`sandbox` the platform has to provide to run this executable.
+
+E.g. the :term:`sandbox` shall describe
+
+- environment variables, which shall be set via the lifecycle system
+- secpol policies on QNX, which shall be applied to the process
+- cgroup configurations on Linux, which shall be applied to the process
+- user and group IDs under which the process shall be started
+- ...
+
+
+
+Via the configuration we define a certain operting mode and add all the components, which are needed to
+realize this operating mode as dependencies.
+
+
+A second task of the lifecycle system is to supervise the aliveness of the :term:`processes`,
+which are started and to initiate appropriate actions in case of a failure, which
+might result in many cases in a change of the :term:`Operating Mode`.
+
+
+The Lifecycle feature addresses the following stakeholder requirements:
+
+• :need:`stkh_req__execution_model__processes`: Comprehensive process lifecycle management
+  including startup, shutdown, recovery, and cross-process synchronization of threads
+
+• :need:`stkh_req__functional_req__file_based`: Modular configuration file support allowing changes
+  without rebuilding software, enabling flexible system setup and module management
+
+• :need:`stkh_req__dependability__safety_features`: Implementation of monitoring safety mechanisms
+
+A second task of the lifecycle system is to supervise the aliveness of the processes, which are started
+and to initiate appropriate actions in case of a failure, which might result in many cases in
+a change of the operting mode.
+
+Support of containers
+=====================
+
+A :term:`Sandbox` can e.g. realized as a container, which is  a lightweight, standalone executable
+package that includes everything needed to run a piece of software,
+including the code, runtime, libraries, and system tools.
+In the context of the S-SCORE platform, container can be used to encapsulate applications and their dependencies,
+ensuring consistent execution across different environments.
+
+Main task of the lifecycle system is to start and stop components with an OCI compliant runtime
+environment `<https://github.com/opencontainers/runtime-spec>`__ depending on the overall state the
 user wants to achieve and the functional dependencies between the processes.
 
 A `container` is a lightweight, standalone executable package that includes everything needed to run a piece of software,
@@ -106,6 +161,55 @@ Specification
       :align: center
 
       {{ draw_feature(need(), needs) }}
+
+
+
+
+The overall functionality of the feature can be split into 2 subfeatures, which are
+closely coupled to each other:
+
+* **Lifecycle Management**: This subfeature is responsible for the management of
+  the lifecycle of a :term:`Lifecycle Component`, including starting and stopping :term:`processes`,
+  managing their dependencies, and handling different operating modes.
+
+* **Health Monitoring**: Provides platform functionality to monitor certain health
+  conditions of applications:
+
+  * Alive Monitoring
+  * Deadline Monitoring
+  * Logical Programflow Monitoring
+
+
+
+Architecture
+============
+
+The concept is based on 2 major components:
+
+* **:term:`Launch Manager`**: Responsible for starting and stopping components based on
+  the defined operating modes and alive supervision of the started components
+
+* **:term:`Health Monitor`**: Provides process local monitoring functionalities such as
+  deadline monitoring and logical program flow monitoring
+
+
+
+
+
+
+
+
+Requirements
+============
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   requirements/*
+
+Modules
+=======
 
 
 .. mod_view_sta:: Lifecycle
@@ -229,11 +333,15 @@ How to Teach This
 
 
 Rejected Ideas
---------------
+==============
+
+TBD
 
 
 Open Issues
------------
+===========
+
+TBD
 
 
 Footnotes
