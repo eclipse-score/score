@@ -38,3 +38,4 @@ that are used for development.
 
    bazel_registry
    config_as_code
+   sphinx_needs
