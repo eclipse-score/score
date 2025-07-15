@@ -101,6 +101,8 @@ Real Example: Logging Module - :need:`mod_view_sta__logging__logging`
 
 Real Example: Logging Component - :need:`comp_arc_sta__logging__logging`
 
+.. _needuml showcase:
+
 ``.. needuml::`` showcase
 -------------------------
 To apply the theme on PlantUML diagrams the ``!include`` directive could be used to include the theme file from the repository.
@@ -163,7 +165,7 @@ Similar to c language which allows to use `PlantUML preprocessing <https://plant
 Styling and Formatting
 ----------------------
 
-``Skinparam`` impact on *whole* diagram. Styles or html tags could be used for formatting dedicated *diagram elements*.
+``Skinparam`` impact on *whole* diagram. Styles ``<style>..</style>`` or html tags ``<tag>..</tag>``could be used for formatting dedicated *diagram elements*.
 
 **Skinparam**
 
@@ -315,3 +317,44 @@ This will render like this:
       C -> S++ :  Hello()
       S --> C-- :
    @enduml
+
+
+GitHub
+------
+For writing PlantUML diagrams in markdown used for GitHub comments, discussions, reviews, etc. a PlantUML server could be used to render the diagrams.
+
+Therefore the markdown link directive is applied, where the \*.puml file could be passed through the proxy. ``![<Link Text>](https://www.plantuml.com/plantuml/proxy?src=<URL_TO_PUML_FILE>)``
+
+The theme could be applied by using the ``!include`` directive within the \*.puml file, as shown in :ref:`needuml showcase`.
+
+**Case 1: *.puml file already present in a online repository**
+
+``![](https://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/eclipse-score/score/refs/heads/main/docs/contribute/documentation/assets/docs-as-code/example.puml)``
+
+.. note::
+   The URL should point to the `raw` content of the \*.puml file.
+
+**Case 2: *.puml file not present in a online repository**
+
+Here the public PlantUML servers could be used to render the diagram online and create an URL.
+
+#. Visit `PlantUML.com <https://www.plantuml.com/>`_
+#. Write your diagram in the editor
+#. Copy the URL of the rendered diagram
+#. Use the URL in the markdown link directive
+
+Example:
+
+.. code-block:: rst
+
+   !include https://raw.githubusercontent.com/kalu-an/score_communication/refs/heads/puml_theme/score/mw/com/design/puml-theme-score.puml
+   @startuml
+      Alice -> Bob: Which PlantUML version are you using?
+      Bob --> Alice: I am using PlantUML version %version()
+   @enduml
+
+
+``![](https://www.plantuml.com/plantuml/png/POqnJyGm38Nt_Wep8C6GUky01niII2o8yUHBJHEHEAVOuSI_9stPRhFUzpw_WnfLQpaDDr5yQZD3C3lhX5ZfCYxHGZirvUgB68kDlcJyfjGS2QelbOyzoKsY9uj5iFANOc2Q5S_zxT42PzwRc2-uwZDhN6J3RiDkm-CQ303mbA9dS0_mN4uJV8Re0xmd4ljuUuKVhjftW2h3RsdGDChosBMr3QvRcpx12r3UwRLy-t_StGy7bhdl_W40)``
+
+.. attention::
+   Since the PlantUML server is public, it is not recommended to use it for sensitive data in diagrams.
