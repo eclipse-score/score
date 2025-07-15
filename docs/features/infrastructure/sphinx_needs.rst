@@ -165,7 +165,7 @@ Similar to c language which allows to use `PlantUML preprocessing <https://plant
 Styling and Formatting
 ----------------------
 
-``Skinparam`` impact on *whole* diagram. Styles ``<style>..</style>`` or html tags ``<tag>..</tag>``could be used for formatting dedicated *diagram elements*.
+``Skinparam`` impact on *whole* diagram. Styles ``<style>..</style>`` or html tags ``<tag>..</tag>`` could be used for formatting dedicated *diagram elements*.
 
 **Skinparam**
 
