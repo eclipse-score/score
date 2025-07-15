@@ -552,9 +552,94 @@ Communication
    :status: valid
 
    The following diagnostic protocols shall be supported
-   * UDS (ISO14229) Diagnostics
+   * SOVD (ISO 17978)
+   * UDS (ISO 14229) Diagnostics
    * Diagnostic trouble codes
    * Diagnostic jobs
+
+
+Diagnostics and Fault Management
+--------------------------------
+
+.. stkh_req:: Diagnostic via SOVD
+   :id: stkh_req__diagnostics__via_sovd
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: Enables modern, scalable diagnostics using a standard REST-based protocol to improve integration, interoperability, and maintainability.
+   :status: valid
+
+   The system shall support vehicle diagnostics via the SOVD protocol as defined in ISO 17978, to allow scalable and secure diagnostic access.
+
+.. stkh_req:: Fault Reporting Infrastructure
+   :id: stkh_req__diagnostics__fault_reporting
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: Enables applications and components to report faults in a structured, reusable, and system-wide accessible manner.
+   :status: valid
+
+   The system shall support a reusable fault reporting infrastructure that enables applications and platform components to report, persist, and manage diagnostic fault information.
+
+.. stkh_req:: Readout DTCs via SOVD
+   :id: stkh_req__diagnostics__dtc_read_sovd
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: Enables reading of Diagnostic Trouble Codes (DTCs) from the ECU for various use-cases like production or maintenance.
+   :status: valid
+
+   The system shall provide users the ability to retrieve current Diagnostic Trouble Codes (DTCs) from the ECU via the SOVD protocol.
+
+.. stkh_req:: Extensibility of Diagnostic Services
+   :id: stkh_req__diagnostics__custom_services
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: Enables OEMs and developers to implement system-specific or project-specific routines for diagnostic control and testing.
+   :status: valid
+
+   The diagnostic system shall support extensibility mechanisms that allow integration of custom diagnostic services and routines via the SOVD interface.
+
+.. stkh_req:: Compatibility with UDS Testers
+   :id: stkh_req__diagnostics__uds_tester_compat
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: Ensures continued usability of existing test infrastructure, avoiding costly replacement of legacy tools and ensuring fulfillment of legal requirements.
+   :status: valid
+
+   The diagnostic system shall provide compatibility with UDS-based testers by offering a proxy to translate UDS requests into SOVD-compatible actions.
+
+.. stkh_req:: Compatibility with UDS ECUs
+   :id: stkh_req__diagnostics__uds_ecus
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: Ensures continued operability of ECUs that are not SOVD-capable.
+   :status: valid
+
+   The diagnostic system shall support integration with ECUs that use UDS by providing a compatibility adapter to translate SOVD requests to UDS commands.
+
+.. stkh_req:: Support for Distributed and Multi-ECU Diagnostics
+   :id: stkh_req__diagnostics__distributed_support
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: Enables the system to operate in modern, distributed vehicle architectures where diagnostics span multiple ECUs and subsystems.
+   :status: valid
+
+   The diagnostic system shall support distributed diagnostics across multiple ECUs and network segments, enabling routing and aggregation of diagnostic data.
+
+.. stkh_req:: Secure Access to Diagnostic Interfaces
+   :id: stkh_req__diagnostics__secure_access
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: Diagnostic access allows deep system introspection and manipulation, which must be protected against unauthorized use.
+   :status: valid
+
+   The diagnostic system shall enforce secure access control for all diagnostic interfaces, including authentication, encryption, and role-based access enforcement.
 
 
 Hardware support
