@@ -1,0 +1,255 @@
+html {
+    --pst-font-size-base: 17px;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+/*  SCORE specfic colors
+    A list of available colro variable names for pyData Sphinx Theme can be found at
+    https://pydata-sphinx-theme.readthedocs.io/en/stable/_downloads/565fbb3ecf2b3048f5fb3953890ba176/_color.scss
+
+    The base color is TEAL */
+
+
+html[data-theme="light"] {
+    --pst-color-primary: #547980;
+    --pst-color-secondary: #45ADA8;
+    --pst-color-accent: #9DE0AD;
+    --pst-color-target: #E5FCC2;
+    --pst-color-on-surface: #594F4F;
+    --pst-color-on-background: var(--pst-color-secondary);
+    --pst-color-text-muted: #FFFFFF;
+    --pst-color-table-row-zebra-high-bg: #e6e7e8;
+    --pst-color-table-row-hover-bg: var(--pst-color-secondary); /*#d7d6d6;*/
+}
+
+html[data-theme="dark"] {
+    --pst-color-primary: #45ADA8;
+    --pst-color-secondary: #547980;
+    --pst-color-accent: #9DE0AD;
+    --pst-color-target: #E5FCC2;
+    --pst-color-on-surface: #594F4F;
+    --pst-color-on-background: var(--pst-color-secondary);
+    --pst-color-text-muted: #FFFFFF;
+    --pst-color-table-row-zebra-high-bg: #20242b;
+    --pst-color-table-row-hover-bg: var(--pst-color-secondary); /*#30353e;*/
+}
+
+/* Content area size */
+/* Docs: https://pydata-sphinx-theme.readthedocs.io/en/stable/user_guide/layout.html#horizontal-spacing */
+.bd-main .bd-content .bd-article-container {
+    max-width: 100%;  /* default is 60em */
+  }
+/* Whole page size */
+.bd-page-width {
+    max-width: 100rem;  /* default is 88rem */
+}
+
+
+.search-button-field {
+    color: var(--pst-color-primary);
+}
+html .pst-navbar-icon:hover {
+    border-bottom: max(3px,.1875rem,.12em) solid var(--pst-color-primary) !important;
+    color: var(--pst-color-primary) !important;
+  }
+
+.bd-header ul.navbar-nav > li.nav-item.current > .nav-link {
+    color: var(--pst-color-text-muted) !important;
+    font-weight: 900 !important;
+}
+
+.bd-header ul.navbar-nav > li.nav-item > .nav-link:hover {
+    color: var(--pst-color-primary);
+}
+
+ul.navbar-nav li a {
+    color: var(--pst-color-primary);
+}
+
+.bd-search input.form-control::placeholder,
+.bd-search input.form-control {
+    color: var(--pst-color-primary) !important;
+}
+
+/* Right sidebar */
+.toc-entry a.nav-link {
+    color: var(--pst-color-text-base);
+}
+/* Left, top SCORE brand  */
+.navbar-brand p
+{
+    color: var(--pst-color-text-muted);
+    font-weight: 900;
+}
+.navbar-brand:hover, .navbar-brand:visited:hover {
+    text-decoration: none;
+}
+
+/* GitHub logo for shorten URL  */
+a.github::before {
+    content: var(--pst-icon-github);
+    color: var(--pst-color-text-base);
+}
+a.github {
+    text-decoration: none !important;
+}
+
+/* Left sidebar links */
+nav.bd-links li > a {
+    color: var(--pst-color-text-base);
+}
+
+/* Breadcrumbs, above page content: Link color */
+ul.bd-breadcrumbs li.breadcrumb-item a {
+    color: var(--pst-color-text-base);
+    text-decoration: none;
+}
+
+/* Breadcrumbs, above page content: Arrow color */
+ul.bd-breadcrumbs li.breadcrumb-item:not(.breadcrumb-home)::before {
+    color: var(--pst-color-text-base);
+}
+/* Next/previous area under content */
+.prev-next-area p,
+.prev-next-area a {
+    color: var(--pst-color-text-base);
+}
+
+blockquote {
+    color: var(--pst-color-text-base);
+}
+
+.admonition, div.admonition {
+    background-color: rgba(0,0,0,0.1);
+}
+
+/* Left sidebar fix, to hide scrollbar if not needed */
+.bd-sidebar-primary .sidebar-primary-items__end {
+    margin-bottom: 1em;
+    margin-top: 0;
+}
+
+/* Reduce width of left sidebar and set maximum for wide screens */
+/* .navbar-header-items__start is the left navbar logo, which needs to */
+/* be shorten as well to jkepp the navbar-entries aligned with the content */
+.bd-sidebar-primary,
+.navbar-header-items__start {
+    width: 20%; /* default: 25% */
+    max-width: 350px; /* default: not set */
+    overflow-x: hidden;
+}
+
+@media screen and (max-width: 959px) {
+    .bd-sidebar-primary,
+    .navbar-header-items__start {
+        width: unset;
+        max-width: 350px; /* default: not set */
+        overflow-x: hidden;
+    }
+}
+
+/* Less Sidebar border/distance */
+.bd-sidebar-primary,
+.bd-sidebar-secondary {
+    padding: 0.5rem 0.2rem 0.2rem;
+}
+
+.bd-sidebar-primary li.has-children > details > summary .toctree-toggle {
+    right: 1em
+}
+
+/* SCORE Background video
+   Source: https://www.imi21.com/background-video-full-screen.php */
+
+div.score_banner {
+    background-color: var(--pst-color-on-surface);
+}
+#videowrapper{
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+
+#fullScreenDiv{
+    height: 300px;
+    width: 100%;
+    padding:0;
+    margin: 0;
+    /* background-color: gray;
+    position: relative; */
+    container-type: inline-size;
+}
+
+#video{
+    width: 100%;
+    /* height: auto;
+    margin: auto;
+    display: block; */
+}
+@media (min-aspect-ratio: 16/9) {
+  #video{
+    width: 100%;
+    height:auto;
+  }
+}
+
+#score-title {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: var(--pst-color-text-base);
+    /* font-size: 4.5em; */
+    font-size: 8.0cqw;
+    font-weight: 900;
+    margin-bottom: 20px;
+    /* Is somehow cool with image/video title background */
+    /*animation: fadeIn 3s;  */
+}
+
+/* As long as no image or video is shown in
+   the title, this is not needed, but kept
+   for future needs */
+/* html[data-theme="light"] #score-title {
+    background-color: rgba(0,0,0,0.3);
+}
+html[data-theme="dark"] #score-title {
+    background-color: rgba(0,0,0,0.5);
+} */
+
+#score-subtitle {
+    font-size: 0.4em;
+}
+
+#score-phrase {
+    font-size: 0.3em;
+    font-weight: 400;
+}
+
+#logo_center_drk {
+    background-color: transparent;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+/* Ensure the version switcher dropdown is scrollable if it exceeds the max height */
+.version-switcher__menu {
+    position: absolute;
+    width: 100%;
+    max-height: 300px; /* Adjust this value as needed */
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
