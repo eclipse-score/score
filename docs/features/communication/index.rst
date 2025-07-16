@@ -30,7 +30,6 @@ Communication
 
    docs/**/index
    ipc/index
-   modules/index
 
 Feature flag
 ============

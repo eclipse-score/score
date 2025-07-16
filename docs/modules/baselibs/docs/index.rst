@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,13 +12,25 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _modules_template:
+Baselibs Module
+###############
 
-Module
-======
+.. mod_view_sta:: Baselibs
+   :id: mod_view_sta__baselibs__baselibs
+   :includes: comp_arc_sta__baselibs__json, comp_arc_sta__baselibs__message_passing, comp_arc_sta__baselibs__memory_shared
+
+   .. needarch::
+      :scale: 50
+      :align: center
+
+      {{ draw_module(need(), needs) }}
+
+Components
+==========
 
 .. toctree::
-   :maxdepth: 1
-   :glob:
+   :titlesonly:
 
-   **/docs/index
+   ../json/docs/architecture/index.rst
+   ../memory_shared/docs/architecture/index.rst
+   ../message_passing/docs/architecture/index.rst
