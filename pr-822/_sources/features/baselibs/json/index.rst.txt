@@ -94,7 +94,7 @@ Full testability for the public API
 Our users will be required to proof certain coverage metrics, like line coverage or branch coverage.
 For them to reach full coverage, they need to be easily able to mock or fake the public API of the JSON-Library in their unit tests.
 
-:need:`comp_req__json__testability_mock_api`
+:need:`comp_req__json__full_testability`
 
 Backwards Compatibility
 =======================

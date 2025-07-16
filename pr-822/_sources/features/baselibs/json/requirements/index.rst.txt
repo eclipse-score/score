@@ -80,15 +80,17 @@ User friendly API for information exchange
 Full testability for the user facing API
 ========================================
 
-.. comp_req:: Fully mockable public API
-   :id: comp_req__json__testability_mock_api
+.. comp_req:: Fully testable public API
+   :id: comp_req__json__full_testability
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
    :satisfies: feat_req__baselibs__json_library
    :status: valid
 
-   The public API shall be fully mockable.
+   The public API of the library shall support dependency injection with test doubles.
+
+   Note: This enables full testability of the user code.
 
 Safety Impact
 =============
