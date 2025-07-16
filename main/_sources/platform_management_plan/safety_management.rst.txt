@@ -16,7 +16,7 @@
    :id: doc__platform_safety_plan
    :status: draft
    :safety: ASIL_B
-   :realizes: PROCESS_wp__platform_safety_plan
+   :realizes: PROCESS_wp__platform_safety_plan,PROCESS_wp__tailoring
    :tags: platform_management
 
 Safety management / Platform Safety Plan
@@ -117,15 +117,10 @@ Because in the S-CORE SW platform integration of safety-related systems not deve
 
 Because in the S-CORE SW platform no ASIL decomposition is planned: :need:`PROCESS_std_wp__iso26262__analysis_551`, :need:`PROCESS_std_wp__iso26262__analysis_552`
 
-.. workproduct:: Tailoring Document Platform
-   :id: wp__tailoring_platform
-   :status: valid
-   :tags: safety_mgt
-   :complies: PROCESS_std_wp__iso26262__management_751, PROCESS_std_wp__iso26262__system_652, PROCESS_std_wp__iso26262__system_653, PROCESS_std_wp__iso26262__system_654, PROCESS_std_wp__iso26262__system_655, PROCESS_std_wp__iso26262__system_656, PROCESS_std_wp__iso26262__system_657, PROCESS_std_wp__iso26262__system_751, PROCESS_std_wp__iso26262__system_752, PROCESS_std_wp__iso26262__system_851, PROCESS_std_wp__iso26262__system_852, PROCESS_std_wp__iso26262__software_1151, PROCESS_std_wp__iso26262__software_1152, PROCESS_std_wp__iso26262__software_app_c_52, PROCESS_std_wp__iso26262__software_app_c_54, PROCESS_std_wp__iso26262__software_app_c_57, PROCESS_std_wp__iso26262__support_551, PROCESS_std_wp__iso26262__support_552, PROCESS_std_wp__iso26262__support_553, PROCESS_std_wp__iso26262__support_554, PROCESS_std_wp__iso26262__support_555, PROCESS_std_wp__iso26262__support_1351, PROCESS_std_wp__iso26262__support_1352, PROCESS_std_wp__iso26262__support_1353, PROCESS_std_wp__iso26262__support_1451, PROCESS_std_wp__iso26262__support_1452, PROCESS_std_wp__iso26262__support_1551, PROCESS_std_wp__iso26262__support_1651, PROCESS_std_wp__iso26262__analysis_551, PROCESS_std_wp__iso26262__analysis_552
-
-   This work product instantiation links to all the work products which are tailored out in the platform safety plan,
-   to be able to demonstrate completeness in `REPLACE external_standards`, and this is a document, not work product
-
+Because HSI is coming from HW (and systems) engineering which are not part of S-CORE
+and the standard only asks for refinement during SW development. As the input is missing, there is nothing to refine.
+Expectations towards the HW/Environment are covered by AoUs. Additionally S-CORE only provides reference HW integration,
+so every user of the platform would have to redo the effort anyway: :need:`PROCESS_std_wp__iso26262__software_652`
 
 
 Approach

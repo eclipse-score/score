@@ -100,8 +100,7 @@ The modules and components shall follow the folder structure which was presented
          docs/                         -> Documentation of the component
             architecture/              -> Component architecture (only if lower level components exist)
                                              [:need:`PROCESS_wp__component_arch`].
-            requirements/              -> Component requirements [:need:`PROCESS_wp__requirements__comp`],
-                                             HSI (if relevant) [:need:`PROCESS_wp__hsi`]
+            requirements/              -> Component requirements [:need:`PROCESS_wp__requirements__comp`]
             safety_analysis/           -> Safety analysis on component level
                                              [:need:`PROCESS_wp__sw_component_safety_analysis`]
             verification/              -> Architecture review [:need:`PROCESS_wp__sw_arch_verification`],
