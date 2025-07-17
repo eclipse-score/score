@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -195,6 +195,13 @@
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../../../platform_management_plan/index.html">
     PMP
   </a>
@@ -342,6 +349,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../platform_management_plan/index.html">
     PMP
   </a>
@@ -402,6 +416,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../baselibs/index.html">Base Libraries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../communication/index.html">Communication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../diagnostics/index.html">Diagnostic and Fault Management</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">Frameworks</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">Fixed execution order framework (FEO)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Requirements</a></li>
@@ -483,7 +498,7 @@
 <h1>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h1>
 <section id="definitions">
 <h2>Definitions<a class="headerlink" href="#definitions" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-b5d56c14">
+<div class="need_container docutils container" id="SNCB-6555c7c9">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__feo__application">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -537,7 +552,7 @@ Each process contains one ore more operating system threads.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5abe5ee3">
+<div class="need_container docutils container" id="SNCB-cc283b38">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__feo__activity">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -592,7 +607,7 @@ Each activity is mapped to exactly one thread and provides the following functio
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-72f25863">
+<div class="need_container docutils container" id="SNCB-a31fbcde">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__feo__task_chain">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -647,7 +662,7 @@ The purpose of an output service activity is to collect signals produced by acti
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-8ade3f70">
+<div class="need_container docutils container" id="SNCB-3b874006">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__feo__service_activity">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -700,7 +715,7 @@ network communication, direct sensor input or direct actuator output</p></li>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5bc01d16">
+<div class="need_container docutils container" id="SNCB-fc87e883">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__feo__agent">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -760,7 +775,7 @@ associated with an agent.</p>
 </section>
 <section id="dynamic-architecture">
 <h2>Dynamic Architecture<a class="headerlink" href="#dynamic-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-7ef4fa99">
+<div class="need_container docutils container" id="SNCB-0679ede2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__feo__application_lifecycle">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -807,7 +822,7 @@ associated with an agent.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-8c682820">
+<div class="need_container docutils container" id="SNCB-f1018ab9">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__feo__activity_init">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -858,7 +873,7 @@ Note that <cite>init</cite>, <cite>step</cite> and <cite>shutdown</cite> functio
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-2945bc6d">
+<div class="need_container docutils container" id="SNCB-36b12bbe">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__feo__activitiy_step">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -907,7 +922,7 @@ Note that <cite>init</cite>, <cite>step</cite> and <cite>shutdown</cite> functio
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d23b3236">
+<div class="need_container docutils container" id="SNCB-ed9e16a9">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__feo__activity_shutdown">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -960,7 +975,7 @@ Note that <cite>init</cite>, <cite>step</cite> and <cite>shutdown</cite> functio
 </section>
 <section id="supervision">
 <h2>Supervision<a class="headerlink" href="#supervision" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-793b1790">
+<div class="need_container docutils container" id="SNCB-c436e9cd">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__feo__alive_supervision">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1009,7 +1024,7 @@ alive supervision checkpoint to an external health management system
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-90c4a580">
+<div class="need_container docutils container" id="SNCB-8ab6dc00">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__feo__deadline_supervision">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1058,7 +1073,7 @@ deadline supervision checkpoints to an external health management system
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-64d680df">
+<div class="need_container docutils container" id="SNCB-221c7c66">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__feo__logical_supervision">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1107,7 +1122,7 @@ logical supervision checkpoints to an external health management system
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7b0f524c">
+<div class="need_container docutils container" id="SNCB-1c16176d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__feo__trustable_computation">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
