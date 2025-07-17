@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2025 Contributors to the Eclipse Foundation
+   # Copyright (c) 2024 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,11 +12,21 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Rust
-####
+.. _tools:
+
+S-CORE Tools Overview
+=====================
+
+.. needtable:: Tools List
+   :tags: tool_management
+   :filter: "tool_management" in tags and type == "document" and is_external == False
+   :style: table
+   :sort: status
+   :columns: id as "UID";title as "TITLE";status as "STATUS";safety as "SAFETY"
+   :colwidths: 30,30,30,30
 
 .. toctree::
-   :maxdepth: 1
+   :hidden:
+   :maxdepth: 2
 
-   coding_guidelines
-   rust_api_design
+   doc_as_code
