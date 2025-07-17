@@ -192,14 +192,15 @@ Here is an example file
 
 .. code-block:: json
    :caption: Example metadata.json file
-
+   
+   { 
     "homepage": "<the homepage of your repository / documentation>",
     "maintainers": [
         {
             "name": "<Name>",
             "email": "<E-Mail>",
             "github": "<Github Username>",
-            "github_user_id": <Github User ID>
+            "github_user_id": "<Your GH User ID as NUMBER>"
         }
     ],
     "repository": [
@@ -209,7 +210,6 @@ Here is an example file
         "0.1.0",
         "0.1.2",
         "0.2.0",
-        ... < all available versions >
     ],
     "yanked_versions": {}
    }
