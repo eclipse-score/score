@@ -12,9 +12,6 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Logging Module
-##############
-
 .. mod_view_sta:: Logging
    :id: mod_view_sta__logging__logging
    :includes: comp_arc_sta__logging__logging
@@ -26,10 +23,9 @@ Logging Module
       {{ draw_module(need(), needs) }}
 
 
-Components
-==========
+Module Documents
+================
 
 .. toctree::
+   :maxdepth: 2
    :titlesonly:
-
-   ../logging/docs/architecture/index.rst

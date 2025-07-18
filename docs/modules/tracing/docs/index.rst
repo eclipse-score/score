@@ -12,9 +12,6 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Tracing Module
-##############
-
 .. mod_view_sta:: Tracing
    :id: mod_view_sta__tracing__tracing
    :includes: comp_arc_sta__tracing__tracing
@@ -26,10 +23,9 @@ Tracing Module
       {{ draw_module(need(), needs) }}
 
 
-Components
-==========
+Module Documents
+================
 
 .. toctree::
+   :maxdepth: 2
    :titlesonly:
-
-   ../tracing/docs/architecture/index.rst

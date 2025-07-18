@@ -12,16 +12,16 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _modules:
 
-Modules Documentation
-#####################
+feo_tracing
+###########
 
-.. note::
-   For now, we store the modules documentation in the feature tree, because multi-repo docs are not yet supported.
-   Once this support becomes available it will be moved to the modules tree.
+This component will be replaced by or become a wrapper of the interface `mw::com` provided by the feature
+"Logging". In the latter case, it is planned to be integrated into the component feo (see :ref:`comp_doc_feo`).
+
+Component Documents
+===================
 
 .. toctree::
-   :maxdepth: 1
-
-   feo/docs/index
+   :maxdepth: 2
+   :titlesonly:

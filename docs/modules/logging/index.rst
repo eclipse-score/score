@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,10 +12,21 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-
-Frameworks
-##########
+Logging Module
+##############
 
 .. toctree::
+   :titlesonly:
+   :maxdepth: 2
 
-   feo/index.rst
+   ./docs/index
+
+Components
+==========
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :glob:
+
+   ./*/docs/index

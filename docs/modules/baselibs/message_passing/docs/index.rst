@@ -12,9 +12,12 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+.. _comp_doc_baselib_message_passing:
 
-Component Documentation: feo_log
-################################
+message_passing
+###############
 
-This component will be replaced by or become a wrapper of the interface `mw::com` provided by the feature
-"Logging". In the latter case, it is planned to be integrated into the component feo (see :ref:`comp_doc_feo`).
+.. toctree::
+   :hidden:
+
+   architecture/index

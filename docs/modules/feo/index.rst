@@ -12,13 +12,22 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _comp_doc_feo:
 
-Component Documentation: feo
-############################
-
+feo Module
+##########
 
 .. toctree::
-   :maxdepth: 1
+   :titlesonly:
+   :maxdepth: 2
 
-   requirements/component_requirements
+   ./docs/index
+
+Components
+==========
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :glob:
+
+   ./*/docs/index

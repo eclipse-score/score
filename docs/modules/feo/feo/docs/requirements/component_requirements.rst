@@ -12,8 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Component Requirements: feo
-###########################
+Requirements
+############
 
 .. comp_req:: Application Processes
     :id: comp_req__feo__application

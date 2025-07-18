@@ -12,9 +12,6 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Baselibs Module
-###############
-
 .. mod_view_sta:: Baselibs
    :id: mod_view_sta__baselibs__baselibs
    :includes: comp_arc_sta__baselibs__json, comp_arc_sta__baselibs__message_passing, comp_arc_sta__baselibs__memory_shared
@@ -25,12 +22,9 @@ Baselibs Module
 
       {{ draw_module(need(), needs) }}
 
-Components
-==========
+Module Documents
+================
 
 .. toctree::
+   :maxdepth: 2
    :titlesonly:
-
-   ../json/docs/architecture/index.rst
-   ../memory_shared/docs/architecture/index.rst
-   ../message_passing/docs/architecture/index.rst

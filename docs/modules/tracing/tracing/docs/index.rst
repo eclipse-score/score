@@ -12,16 +12,16 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+.. _comp_doc_tracing:
 
-Module Documentation: feo
-#########################
+tracing
+#######
+
+Component Documents
+===================
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
+   :titlesonly:
 
-   manual/safety_manual
-   ../feo/docs/index
-   ../feo_com/docs/index
-   ../feo_log/docs/index
-   ../feo_time/docs/index
-   ../feo_tracing/docs/index
+   architecture/index
