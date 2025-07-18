@@ -1,0 +1,23 @@
+@startuml
+title Component Architecture Diagram
+
+package "<<executable>> Launch Manager" {
+    [Launch Manager] as LM
+    interface AliveMonitoring 
+    
+    LM --|> AliveMonitoring : offers
+}
+
+package "<<executable>> Monitored Application (MA)" {
+    [Application logic] as MA
+    [Health Monitor (HM)] as HM
+
+    interface HealthMonitorAPI 
+
+    HM --|> HealthMonitorAPI : implements
+    HM --> AliveMonitoring : connects to
+    MA --> HealthMonitorAPI : uses
+}
+
+
+@enduml

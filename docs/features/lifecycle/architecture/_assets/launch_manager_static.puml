@@ -1,0 +1,21 @@
+@startuml
+title Launch Manager Static Architecture
+
+package "Launch Manager" {
+    [Launch Manager] as LM
+    interface AliveMonitoring
+    interface ConfigurationFiles
+    interface HealthStatus
+    interface CommandLineArguments
+    interface Logging
+
+
+    LM --> AliveMonitoring : provides
+    LM --> ConfigurationFiles : requires
+    LM --> CommandLineArguments : requires
+    LM --> HealthStatus: offers
+    LM --> Logging: requires
+}
+
+
+@enduml
