@@ -22,6 +22,7 @@ Baselibs Module
    .. needarch::
       :scale: 50
       :align: center
+      :config: score_config
 
       {{ draw_module(need(), needs) }}
 

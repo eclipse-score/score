@@ -22,6 +22,7 @@ Communication Module
    .. needarch::
       :scale: 50
       :align: center
+      :config: score_config
 
       {{ draw_module(need(), needs) }}
       comp_arc_sta__com__ipc_binding -r[hidden]-> comp_arc_sta__com__frontend

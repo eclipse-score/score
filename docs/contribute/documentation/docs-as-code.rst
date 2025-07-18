@@ -12,6 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+.. _docs-as-code:
+
 Docs-As-Code
 ============
 
@@ -65,8 +67,9 @@ You can use them inline in markdown files like this:
    .. uml::
 
       @startuml
-      Alice -> Bob: Authentication Request
-      Bob --> Alice: Authentication Response
+      !include https://raw.githubusercontent.com/kalu-an/score_communication/refs/heads/puml_theme/score/mw/com/design/puml-theme-score.puml
+      Alice -> Bob: Which PlantUML version are you using?
+      Bob --> Alice: I am using PlantUML version %version()
       @enduml
 
 Which will render like this:
@@ -74,8 +77,9 @@ Which will render like this:
 .. uml::
 
    @startuml
-   Alice -> Bob: Authentication Request
-   Bob --> Alice: Authentication Response
+   !include https://raw.githubusercontent.com/kalu-an/score_communication/refs/heads/puml_theme/score/mw/com/design/puml-theme-score.puml
+   Alice -> Bob: Which PlantUML version are you using?
+   Bob --> Alice: I am using PlantUML version %version()
    @enduml
 
 Alternatively you can include them as .puml files like this:
