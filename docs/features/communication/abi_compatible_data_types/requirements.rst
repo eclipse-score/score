@@ -100,7 +100,7 @@ Restrictions on Native Types
    :satisfies: stkh_req__communication__abi_compatible
    :status: valid
 
-   For ABI compatibility, all native types shall be ABI-compatible across compilers (e.g. GCC and Clang) on the same architecture and endianness.
+   For ABI compatibility, all native types shall be ABI-compatible across compilers (e.g. GCC and Clang) using the same endianness.
 
 Custom Types
 ------------
@@ -122,15 +122,16 @@ Vector
 
       #[repr(C)]
       pub struct AbiVec<T> {
-         pub len: u32,
-         pub capacity: u32,
-         pub elements: [T; N],
+         len: u32,
+         capacity: u32,
+         elements: [T; N],
       }
 
    .. code-block:: cpp
 
       template<typename T, std::size_t N>
       struct AbiVec {
+      private:
          std::uint32_t len;
          std::uint32_t capacity;
          T elements[N];
@@ -184,14 +185,15 @@ Option
 
 ..       #[repr(C)]
 ..       pub struct AbiOption<T> {
-..          pub is_some: u8,
-..          pub value: T,
+..          is_some: u8,
+..          value: T,
 ..       }
 
 ..    .. code-block:: cpp
 
 ..       template<typename T>
 ..       struct AbiOption {
+..       private:
 ..          std::uint8_t is_some;
 ..          T value;
 ..       };
@@ -233,20 +235,21 @@ Result
 
       #[repr(C)]
       pub struct AbiResult<T, E> {
-         pub is_ok: u8,
-         pub value: AbiResultUnion<T, E>,
+         is_ok: u8,
+         value: AbiResultUnion<T, E>,
       }
 
       #[repr(C)]
-      pub union AbiResultUnion<T, E> {
-         pub ok: T,
-         pub err: E,
+      union AbiResultUnion<T, E> {
+         ok: T,
+         err: E,
       }
 
    .. code-block:: cpp
 
       template<typename T, typename E>
       struct AbiResult {
+      private:
          std::uint8_t is_ok;
          union {
             T ok;
