@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -481,7 +481,7 @@
                   
   <section id="abi-compatible-data-types">
 <span id="abi-compatible-data-types-feature"></span><h1>ABI Compatible Data Types<a class="headerlink" href="#abi-compatible-data-types" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-3613af23">
+<div class="need_container docutils container" id="SNCB-aebfc347">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__abi_compatible_data_types">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -595,6 +595,39 @@
 <h3>Type Description<a class="headerlink" href="#type-description" title="Link to this heading">#</a></h3>
 <p>A critical scalability feature involves gateway processes, which subscribe to IPC endpoints and translate ABI-compatible data types into external serialization formats. These gateways require the ability to interpret data without compile-time access to type definitions. To address this, an explicit runtime-readable type description format is necessary. This description allows dynamic, runtime interpretation of data structures, enabling the addition of new IPC topics without recompiling gateway processes.</p>
 <p>In summary, the motivation behind this feature request is to define and standardize ABI-compatible data types and a runtime-accessible type description mechanism to ensure interoperability and scalability in zero-copy IPC scenarios involving multiple languages and dynamic environments.</p>
+<section id="reflection">
+<h4>Reflection<a class="headerlink" href="#reflection" title="Link to this heading">#</a></h4>
+<p>Reflection, in this context, is the ability to inspect data at runtime even if its structure is not or not fully known at compile time.
+It depends on some form of <em>type descriptions</em> being available to be able to interpret an unstructured sequence of bytes.</p>
+<p>Benefits of reflection include:</p>
+<ul class="simple">
+<li><p>Consumers can perform additional consistency checks, because reflection provides a second, redundant description of the structure of the received data stream.</p></li>
+<li><p>Recorded data can be translated into a human-readable format (e.g., JSON or CSV) without having to know the type definitions beforehand; this allows general-purpose data recording and transformation tools.</p></li>
+<li><p>As a special case, if a data structure already contains <em>inline type descriptions</em> in the form of SOME/IP TLV tags, it doesn’t need to be transformed before being sent over a SOME/IP connection.</p></li>
+</ul>
+</section>
+<section id="inline-type-descriptions">
+<h4>Inline Type Descriptions<a class="headerlink" href="#inline-type-descriptions" title="Link to this heading">#</a></h4>
+<p>An explicit transformation step between the in-memory representation and the SOME/IP+TLV format can – in theory – be avoided by adding TLVs to ABI compatible types.
+This approach, however, comes with significant downsides:</p>
+<ul class="simple">
+<li><p>Adding inline type descriptions incurs a significant memory overhead across the board, and leads to worse cache behavior.</p></li>
+<li><p>It mandates TLV for <em>all</em> instances of <em>all</em> ABI compatible types, even when TLV is not needed (for example, in a non-TLV SOME/IP gateway).
+* This might be mitigated by making TLV optional through a generic respectively a template parameter on the type declaration.</p></li>
+<li><p>SOME/IP’s specification of big-endianness is in conflict with the requirement of native-endianness for ABI compatible types, making the feasibility of this approach questionable.</p></li>
+<li><p>SOME/IP doesn’t support “unused” slots in dynamic arrays, so ABI compatible types containing <em>vectors</em> (which differentiate between the length and the capacity) couldn’t be directly represented in SOME/IP anyway.</p></li>
+</ul>
+</section>
+<section id="alternative-approach">
+<h4>Alternative Approach<a class="headerlink" href="#alternative-approach" title="Link to this heading">#</a></h4>
+<p>Instead of inserting inline type descriptions into each instance of an ABI compatible type, the full type description can be made available to a consumer only once, either proactively or on request.
+The consumer decides if it uses or ignores this metadata.</p>
+<p>This type description can be used to dynamically translate between the compact, non-reflective ABI compatible data structures on one side, and a reflective, inline-describing format on the other side.
+Although this incurs a copy and some minor processing, the overhead should be negligible compared to other computational tasks involving the payload.</p>
+<p>One method to efficiently translate a payload consisting of ABI compatible types to an inline-described reflective format is to convert the hierarchical type description to a flat list of <em>instructions</em> which can be executed by an interpreter.
+Both the instructions and the interpreter would be specific for the target format.
+For example, to translate in-memory ABI compatible types to SOME/IP data structures, the instructions could look like this:</p>
+</section>
 </section>
 </section>
 <section id="specification">
@@ -908,7 +941,12 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#abi-compatibility">ABI Compatibility</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#type-description">Type Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#type-description">Type Description</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">Reflection</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inline-type-descriptions">Inline Type Descriptions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-approach">Alternative Approach</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specification">Specification</a><ul class="nav section-nav flex-column">

@@ -106,6 +106,65 @@ A critical scalability feature involves gateway processes, which subscribe to IP
 
 In summary, the motivation behind this feature request is to define and standardize ABI-compatible data types and a runtime-accessible type description mechanism to ensure interoperability and scalability in zero-copy IPC scenarios involving multiple languages and dynamic environments.
 
+Reflection
+^^^^^^^^^^
+
+Reflection, in this context, is the ability to inspect data at runtime even if its structure is not or not fully known at compile time.
+It depends on some form of *type descriptions* being available to be able to interpret an unstructured sequence of bytes.
+
+Benefits of reflection include:
+
+* Consumers can perform additional consistency checks, because reflection provides a second, redundant description of the structure of the received data stream.
+* Recorded data can be translated into a human-readable format (e.g., JSON or CSV) without having to know the type definitions beforehand; this allows general-purpose data recording and transformation tools.
+* As a special case, if a data structure already contains *inline type descriptions* in the form of SOME/IP TLV tags, it doesn't need to be transformed before being sent over a SOME/IP connection.
+
+Inline Type Descriptions
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+An explicit transformation step between the in-memory representation and the SOME/IP+TLV format can – in theory – be avoided by adding TLVs to ABI compatible types.
+This approach, however, comes with significant downsides:
+
+* Adding inline type descriptions incurs a significant memory overhead across the board, and leads to worse cache behavior.
+* It mandates TLV for *all* instances of *all* ABI compatible types, even when TLV is not needed (for example, in a non-TLV SOME/IP gateway).
+  * This might be mitigated by making TLV optional through a generic respectively a template parameter on the type declaration.
+* SOME/IP's specification of big-endianness is in conflict with the requirement of native-endianness for ABI compatible types, making the feasibility of this approach questionable.
+* SOME/IP doesn't support "unused" slots in dynamic arrays, so ABI compatible types containing *vectors* (which differentiate between the length and the capacity) couldn't be directly represented in SOME/IP anyway.
+
+Alternative Approach
+^^^^^^^^^^^^^^^^^^^^
+
+Instead of inserting inline type descriptions into each instance of an ABI compatible type, the full type description can be made available to a consumer only once, either proactively or on request.
+The consumer decides if it uses or ignores this metadata.
+
+This type description can be used to dynamically translate between the compact, non-reflective ABI compatible data structures on one side, and a reflective, inline-describing format on the other side.
+Although this incurs a copy and some minor processing, the overhead should be negligible compared to other computational tasks involving the payload.
+
+One method to efficiently translate a payload consisting of ABI compatible types to an inline-described reflective format is to convert the hierarchical type description to a flat list of *instructions* which can be executed by an interpreter.
+Both the instructions and the interpreter would be specific for the target format.
+For example, to translate in-memory ABI compatible types to SOME/IP data structures, the instructions could look like this:
+
+.. code: rust
+
+    enum Transformation {
+        /// Copies `length` bytes from input to output.
+        Copy { length: usize, }
+
+        /// Copies 2 bytes from input to output, swapping endianness.
+        SwapEndian2,
+
+        /// Copies 4 bytes from input to output, swapping endianness.
+        SwapEndian4,
+
+        /// Copies 8 bytes from input to output, swapping endianness.
+        SwapEndian8,
+
+        /// Reads an ABI compatible vector (with an element size of `stride` bytes) from the input,
+        /// writes the length as big-endian to the output, and writes the given number of elements
+        /// to the output.
+        CopyVectorWithLength { stride: usize },
+
+        ...
+    }
 
 .. Rationale
 .. ==========
