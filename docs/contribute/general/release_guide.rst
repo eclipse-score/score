@@ -69,7 +69,7 @@ Follow semantic versioning (SemVer) principles:
 
 * **PATCH**: Incremented for backward-compatible bug fixes.
 
-For a more detailed description of when to update which version look at the `Release Management Process <https://eclipse-score.github.io/score/pr-1445/platform_management_plan/release_management.html#identification>`_
+For a more detailed description of when to update which version look at the process `here <https://eclipse-score.github.io/score/pr-1445/platform_management_plan/release_management.html#identification>`_
 
 If you have a major version change that **breaks** backwards compatibility, then make sure to also increase the 
 compatibility level inside the MODULE.bazel file.   
