@@ -30,6 +30,7 @@ Communication
 
    docs/**/index
    ipc/index
+   abi_compatible_data_types/index
    modules/index
 
 Feature flag
