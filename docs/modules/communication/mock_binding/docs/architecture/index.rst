@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,10 +12,18 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+Mock Binding Component Architecture
+***********************************
 
-Frameworks
-##########
+.. comp_arc_sta:: Mock binding
+   :id: comp_arc_sta__com__mock_binding
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :uses: logic_arc_int__logging__logging
 
-.. toctree::
+   .. needarch::
+      :scale: 50
+      :align: center
 
-   feo/index.rst
+      {{ draw_component(need(), needs) }}
