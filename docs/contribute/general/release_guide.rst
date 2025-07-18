@@ -30,11 +30,11 @@ Prerequisites
 Before starting the release process, ensure you have:
 
 - Write access to the GitHub repository which contains the to be released Module
-- Access & ability to create pr's (via Fork or otherwise) to the `S-CORE Bazel registry repository <https://github.com/eclipse-score/bazel_registry>`
+- Access & ability to create pr's (via Fork or otherwise) to the `S-CORE Bazel registry repository <https://github.com/eclipse-score/bazel_registry>`_
 - All necessary changes merged into the main branch
 - Understanding of semantic versioning principles
 
-For further and more detailed information take a look at the `Release Management Process <https://eclipse-score.github.io/score/pr-1445/platform_management_plan/release_management.html>`
+For further and more detailed information take a look at the `Release Management Process <https://eclipse-score.github.io/score/pr-1445/platform_management_plan/release_management.html>`_
 
 Module Release Process
 ----------------------
@@ -69,7 +69,7 @@ Follow semantic versioning (SemVer) principles:
 
 * **PATCH**: Incremented for backward-compatible bug fixes.
 
-For a more detailed description of when to update which version look at the `Release Management Process <https://eclipse-score.github.io/score/pr-1445/platform_management_plan/release_management.html#identification>`
+For a more detailed description of when to update which version look at the `Release Management Process <https://eclipse-score.github.io/score/pr-1445/platform_management_plan/release_management.html#identification>`_
 
 If you have a major version change that **breaks** backwards compatibility, then make sure to also increase the 
 compatibility level inside the MODULE.bazel file.   
