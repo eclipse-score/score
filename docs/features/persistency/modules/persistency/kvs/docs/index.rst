@@ -12,32 +12,17 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Key-Value-Storage
-#################
+.. _component_PersistencyKvs:
 
-.. document:: Persistency Key-Value-Storage
-   :id: doc__persistency_kvs
-   :status: valid
+KVS (Key Value Store)
+#####################
+
+.. document:: Persistency KVS
+   :id: doc__persistencykvs
+   :status: draft
    :safety: ASIL_B
-   :tags: feature_request, persistency_kvs
-
-.. toctree::
-   requirements/index.rst
-   architecture/index.rst
-   requirements/chklst_req_inspection.rst
-   safety_analysis/fmea.rst
-   safety_analysis/dfa.rst
-   safety_planning/index.rst
-
-
-
-Feature flag
-============
-
-To activate this feature, use the following feature flag:
-
-``persistency_kvs``
-
+   :realizes: PROCESS_wp__cmpt_request
+   :tags: Persistency KVS
 
 Abstract
 ========
@@ -47,14 +32,6 @@ applications to store either temporary or permanent data in an easy way that
 conforms to most programming languages that provide a hash, hashmap, dictionary
 or similar data structure. Access to the KVS is possible from any support
 language through language specific interfaces.
-
-In the scope of S-CORE, an application can range from a system service to an
-end-user visible UI. The application uses the KVS as an external memory store
-to read and persist data as needed. For example, an application that controls
-the air conditioning system in a car could use the KVS to store the current
-temperature setting. When the car is started again, the application can
-retrieve the temperature setting from the persistent KVS storage, providing a
-seamless user experience by restoring the previous state.
 
 
 Motivation
@@ -91,6 +68,18 @@ Rationale
    | Solution: Utilize a simple data representation, such as JSON or Cap'n Proto, that supports versioned up- and downgrading and is easily debuggable by developers.
 6. | Requirement 6: KVS integrity checking
    | Solution: Ensure the KVS maintains a consistent state, providing either the currently stored data or the previous snapshot if data retrieval is not possible.
+
+
+Specification
+=============
+
+[Describe the requirements, architecture of any new component.] or
+[Describe the change to requirements, architecture, implementation, documentation of any change request.]
+
+   .. note::
+      A CR shall specify the component requirements as part of our platform/project.
+      Thereby the :need:`PROCESS_rl__module_lead` will approve these requirements as part of accepting the CR (e.g. merging the PR with the CR).
+
 
 Backwards Compatibility
 =======================
@@ -137,3 +126,29 @@ License Impact
    .. note::
       The key-value storage itself uses the Apache-2.0 license. Licenses of
       used libraries are need to be checked.
+
+
+Open Issues
+===========
+
+[Any points that are still being decided/discussed.]
+
+   .. note::
+       While a CR is in draft, ideas can come up which warrant further discussion.
+       Those ideas should be recorded so people know that they are being thought about but do not have a concrete resolution.
+       This helps make sure all issues required for the CR to be ready for consideration are complete and reduces people duplicating prior discussion.
+
+
+
+Footnotes
+=========
+
+[A collection of footnotes cited in the CR, and a place to list non-inline hyperlink targets.]
+
+.. toctree::
+   :hidden:
+
+   requirements/index.rst
+   architecture/index.rst
+   safety_analysis/fmea.rst
+   safety_analysis/dfa.rst
