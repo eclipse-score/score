@@ -12,9 +12,6 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Communication Module
-####################
-
 .. mod_view_sta:: Communication
    :id: mod_view_sta__com__communication
    :includes: comp_arc_sta__com__configuration, comp_arc_sta__com__ipc_binding, comp_arc_sta__com__mock_binding, comp_arc_sta__com__frontend
@@ -29,13 +26,10 @@ Communication Module
       comp_arc_sta__com__mock_binding -r[hidden]-> comp_arc_sta__com__configuration
       logic_arc_int__tracing__tracing -r[hidden]-> logic_arc_int__logging__logging
 
-Components
-==========
+
+Module Documents
+================
 
 .. toctree::
+   :maxdepth: 2
    :titlesonly:
-
-   ../configuration/docs/architecture/index.rst
-   ../frontent/docs/architecture/index.rst
-   ../ipc_binding/docs/architecture/index.rst
-   ../mock_binding/docs/architecture/index.rst

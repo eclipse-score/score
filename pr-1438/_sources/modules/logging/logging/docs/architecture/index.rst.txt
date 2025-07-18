@@ -12,8 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Logging Component Architecture
-******************************
+Component Architecture
+**********************
 
 .. comp_arc_sta:: Logging
    :id: comp_arc_sta__logging__logging

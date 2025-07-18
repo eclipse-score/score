@@ -65,8 +65,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'modules/communication/frontent/docs/architecture/index';</script>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
-    <link rel="next" title="IPC Binding Component Architecture" href="../../../ipc_binding/docs/architecture/index.html" />
-    <link rel="prev" title="Configuration Component Architecture" href="../../../configuration/docs/architecture/index.html" />
+    <link rel="next" title="ipc_binding" href="../../../ipc_binding/docs/index.html" />
+    <link rel="prev" title="frontent" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
@@ -168,7 +168,7 @@
 
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="../../../../index.html">
-    Module
+    Modules
   </a>
 </li>
 
@@ -329,7 +329,7 @@
 
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="../../../../index.html">
-    Module
+    Modules
   </a>
 </li>
 
@@ -412,17 +412,22 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../../../baselibs/docs/index.html">Baselibs Module</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../docs/index.html">Communication Module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../../configuration/docs/architecture/index.html">Configuration Component Architecture</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Frontend Component Architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../ipc_binding/docs/architecture/index.html">IPC Binding Component Architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../mock_binding/docs/architecture/index.html">Mock Binding Component Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../baselibs/index.html">Baselibs Module</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../index.html">Communication Module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/index.html">Module Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../configuration/docs/index.html">configuration</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">frontent</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Frontend Component Architecture</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../logging/docs/index.html">Logging Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../os/docs/index.html">OS Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../tracing/docs/index.html">Tracing Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ipc_binding/docs/index.html">ipc_binding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../mock_binding/docs/index.html">mock_binding</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../feo/index.html">feo Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../logging/index.html">Logging Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../os/index.html">OS Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tracing/index.html">Tracing Module</a></li>
 </ul>
 </div>
 </nav></div>
@@ -464,10 +469,13 @@
       </a>
     </li>
     
-    <li class="breadcrumb-item"><a href="../../../../index.html" class="nav-link">Module</a></li>
+    <li class="breadcrumb-item"><a href="../../../../index.html" class="nav-link">Modules</a></li>
     
     
-    <li class="breadcrumb-item"><a href="../../../docs/index.html" class="nav-link">Communication Module</a></li>
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Communication Module</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">frontent</a></li>
     
     <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Frontend Component Architecture</span></li>
   </ul>
@@ -488,7 +496,7 @@
                   
   <section id="frontend-component-architecture">
 <h1>Frontend Component Architecture<a class="headerlink" href="#frontend-component-architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-738246eb">
+<div class="need_container docutils container" id="SNCB-1e5fbd2d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__com__frontend">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -537,7 +545,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-026eacfd">
+<div class="need_container docutils container" id="SNCB-458da3d2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__com__initialize">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -582,7 +590,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-613f5181">
+<div class="need_container docutils container" id="SNCB-c4643e95">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__com__offer_service">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -627,7 +635,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-80dda068">
+<div class="need_container docutils container" id="SNCB-552e0065">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__com__update">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -672,7 +680,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7313edcf">
+<div class="need_container docutils container" id="SNCB-a0f71ae6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__com__send">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -717,7 +725,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-c75ad9bc">
+<div class="need_container docutils container" id="SNCB-fedd2874">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__com__startfindserv">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -762,7 +770,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a45f3cb6">
+<div class="need_container docutils container" id="SNCB-8c6d4192">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__com__createproxy">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -807,7 +815,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b727ad85">
+<div class="need_container docutils container" id="SNCB-f8021c00">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__com__subscribe">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -852,7 +860,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e1e751e8">
+<div class="need_container docutils container" id="SNCB-b23f7ae2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__com__getnewsamples">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -910,20 +918,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../../../configuration/docs/architecture/index.html"
+       href="../index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Configuration Component Architecture</p>
+        <p class="prev-next-title">frontent</p>
       </div>
     </a>
     <a class="right-next"
-       href="../../../ipc_binding/docs/architecture/index.html"
+       href="../../../ipc_binding/docs/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">IPC Binding Component Architecture</p>
+        <p class="prev-next-title">ipc_binding</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
