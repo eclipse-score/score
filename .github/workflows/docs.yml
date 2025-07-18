@@ -55,7 +55,8 @@ jobs:
         run: sudo apt update && sudo apt install -y graphviz
       - name: Build documentation
         run: |
-          bazel build //docs:github_pages__release && cp bazel-bin/docs/github_pages__release.tar .
+          bazel run //docs:incremental_release -- --github_user=${{ github.repository_owner }} --github_repo=${{ github.event.repository.name }}
+          tar -cf github-pages.tar _build
         # ------------------------------------------------------------------------------
         # Generate a unique artifact name to ensure proper tracking in all scenarios
         # ------------------------------------------------------------------------------
@@ -69,7 +70,7 @@ jobs:
         uses: actions/upload-artifact@v4.4.0
         with:
           name: github-pages-${{ github.event.pull_request.head.sha || github.sha }}
-          path: github_pages__release.tar
+          path: github-pages.tar
           retention-days: 1
           if-no-files-found: error
 
@@ -106,10 +107,10 @@ jobs:
           name: github-pages-${{ github.event.pull_request.head.sha || github.sha }}
 
       - name: Untar documentation artifact
-        run: mkdir -p extracted_docs && tar -xf github_pages__release.tar -C extracted_docs
+        run: mkdir -p extracted_docs && tar -xf github-pages.tar -C extracted_docs
 
       - name: Deploy 🚀
         id: pages-deployment
         uses: ./.github/actions/deploy-versioned-pages
         with:
-          source_folder: extracted_docs/html
+          source_folder: extracted_docs/_build
