@@ -524,7 +524,7 @@ For now it only contains Assumptions of Use related to the use of Rust libraries
 <div class="line-block">
 <div class="line">Generally the assumption of the S-CORE platform SEooC is that it is integrated in a safe system, i.e. the POSIX OS it runs on is qualified and also the HW related failures are taken into account by the system integrator, if not otherwise stated in the module’s safety concept.</div>
 </div>
-<div class="need_container docutils container" id="SNCB-66bf4be8">
+<div class="need_container docutils container" id="SNCB-6fc51993">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__feo__on_target_crates">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -544,6 +544,7 @@ For now it only contains Assumptions of Use related to the use of Rust libraries
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">invalid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
@@ -577,7 +578,7 @@ targets in release builds.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5281e28d">
+<div class="need_container docutils container" id="SNCB-bb369966">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__feo__rust_core_lib">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -597,6 +598,7 @@ targets in release builds.</p>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
@@ -622,7 +624,7 @@ targets in release builds.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f5d00004">
+<div class="need_container docutils container" id="SNCB-a808106d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__feo__rust_std_lib_modules">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -642,6 +644,7 @@ targets in release builds.</p>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">invalid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
@@ -699,7 +702,36 @@ but it gets quickly out of date with a changing codebase.</p>
 </div>
 </div>
 <p>List of AoUs expected from the environment the platform / module runs on:</p>
-<p class="needs_filter_warning" id="needtable-features/frameworks/feo/modules/feo/docs/manual/safety_manual-0">No needs passed the filters</p>
+<div class="needstable_wrapper docutils container" id="needtable-features/frameworks/feo/modules/feo/docs/manual/safety_manual-0">
+<div class="pst-scrollable-table-container"><table class="NEEDS_TABLE table" id="needtable-features/frameworks/feo/modules/feo/docs/manual/safety_manual-0-table_node">
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Title</p></th>
+<th class="head"><p>ID</p></th>
+<th class="head"><p>Status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="need row-even"><td class="needs_title"><p>Application deadlock</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../../../../../persistency/kvs/requirements/index.html#aou_req__persistency__appl_design">aou_req__persistency__appl_design</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>Application execution</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../../../../../persistency/kvs/requirements/index.html#aou_req__persistency__appl_exec">aou_req__persistency__appl_exec</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>Persistency Error handling</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../../../../../persistency/kvs/requirements/index.html#aou_req__persistency__error_handling">aou_req__persistency__error_handling</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
 <section id="assumptions-on-the-user">
 <h3>Assumptions on the User<a class="headerlink" href="#assumptions-on-the-user" title="Link to this heading">#</a></h3>

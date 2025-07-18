@@ -136,7 +136,7 @@ Backup and Recovery
 ^^^^^^^^^^^^^^^^^^^
 
 Backup and recovery are covered by the Eclipse Foundation hosting the GitHub service for S-CORE.
-For the long term storage, additional measures are taken, see :need:`PROCESS_gd_req__workproducts_storage`
+For the long term storage, additional measures are taken, see :need:`PROCESS_gd_req__config__workproducts_storage`
 
 
 Status and Reporting
