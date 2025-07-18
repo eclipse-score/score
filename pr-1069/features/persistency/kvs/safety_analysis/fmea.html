@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -167,15 +167,15 @@
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../modules/index.html">
-    Module
+  <a class="nav-link nav-internal" href="../../../../contribute/index.html">
+    Contribute
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../contribute/index.html">
-    Contribute
+  <a class="nav-link nav-internal" href="../../../../score_releases/index.html">
+    Releases
   </a>
 </li>
 
@@ -188,8 +188,8 @@
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../../../score_releases/index.html">
-    Releases
+  <a class="nav-link dropdown-item nav-internal" href="../../../../score_tools/index.html">
+    Tools
   </a>
 </li>
 
@@ -321,13 +321,6 @@
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../modules/index.html">
-    Module
-  </a>
-</li>
-
-
-<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../contribute/index.html">
     Contribute
   </a>
@@ -337,6 +330,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../score_releases/index.html">
     Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../score_tools/index.html">
+    Tools
   </a>
 </li>
 
@@ -401,6 +401,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../analysis-infra/index.html">Analysis Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../baselibs/index.html">Base Libraries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../communication/index.html">Communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../diagnostics/index.html">Diagnostic and Fault Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../frameworks/index.html">Frameworks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../infrastructure/index.html">Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../integration/index.html">Integration</a></li>
@@ -415,6 +417,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../safety_planning/index.html">Feature Safety Planning</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/index.html">Module</a></li>
 </ul>
 </details></li>
 </ul>
@@ -485,7 +488,7 @@
                   
   <section id="persistency-safety-analysis">
 <h1>Persistency Safety Analysis<a class="headerlink" href="#persistency-safety-analysis" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-d1cb7b99">
+<div class="need_container docutils container" id="SNCB-2c0d0256">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__persistency_safety_analysis">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -505,7 +508,7 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">feature_persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">feature_persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
@@ -513,217 +516,10 @@
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><div class="line-block">
-<div class="line">.. feat_saf_fmea:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore</div>
-<div class="line">:id: feat_saf_FMEA__persistency_MF_01_01</div>
-<div class="line">:failure_mode: MF_01_01</div>
-<div class="line">:failure_effect: Message is not received.</div>
-<div class="line">:mitigation: aou_req__persistency__error_handling</div>
-<div class="line">:mitigation_issue: None</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: User is not able to use the feature. Middleware cant be used.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_fmea:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore</div>
-<div class="line">:id: feat_saf_FMEA__persistency_MF_01_02</div>
-<div class="line">:failure_mode: MF_01_02</div>
-<div class="line">:failure_effect: message received too late.</div>
-<div class="line">:mitigation: aou_req__persistency__error_handling</div>
-<div class="line">:mitigation_issue: None</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: User is not able to use the feature. Middleware cant be used.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_fmea:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore</div>
-<div class="line">:id: feat_saf_FMEA__persistency_MF_01_03</div>
-<div class="line">:failure_mode: MF_01_03</div>
-<div class="line">:failure_effect: message received too early.</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: None</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: No impact / feature reacts only if triggered on the trigger.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_fmea:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore</div>
-<div class="line">:id: feat_saf_FMEA__persistency_MF_01_04</div>
-<div class="line">:failure_mode: MF_01_04</div>
-<div class="line">:failure_effect: message not received correctly by all recipients (different messages or messages partly lost).</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: None</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Failure mode not applicable at persistency, so no mitigation is needed.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_fmea:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore</div>
-<div class="line">:id: feat_saf_FMEA__persistency_MF_01_05</div>
-<div class="line">:failure_mode: MF_01_05</div>
-<div class="line">:failure_effect: message is corrupted.</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: None</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Covered by MF_01_01</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_fmea:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore</div>
-<div class="line">:id: feat_saf_FMEA__persistency_MF_01_06</div>
-<div class="line">:failure_mode: MF_01_06</div>
-<div class="line">:failure_effect: message is not sent.</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: None</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Covered by MF_01_01</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_fmea:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore</div>
-<div class="line">:id: feat_saf_FMEA__persistency_MF_01_07</div>
-<div class="line">:failure_mode: MF_01_07</div>
-<div class="line">:failure_effect: message is unintended sent.</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: None</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Covered by MF_01_01</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_fmea:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore</div>
-<div class="line">:id: feat_saf_FMEA__persistency_CO_01_01</div>
-<div class="line">:failure_mode: CO_01_01</div>
-<div class="line">:failure_effect: minimum constraint boundary is violated.</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: None</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Failure mode not applicable at persistency, so no mitigation is needed.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_fmea:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore</div>
-<div class="line">:id: feat_saf_FMEA__persistency_CO_01_02</div>
-<div class="line">:failure_mode: CO_01_02</div>
-<div class="line">:failure_effect: maximum constraint boundary is violated.</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: None</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Failure mode not applicable at persistency, so no mitigation is needed.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_fmea:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore</div>
-<div class="line">:id: feat_saf_FMEA__persistency_EX_01_01</div>
-<div class="line">:failure_mode: EX_01_01</div>
-<div class="line">:failure_effect: Process calculates wrong result(s).</div>
-<div class="line">:mitigation: aou_req__persistency__error_handling</div>
-<div class="line">:mitigation_issue: None</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: User is not able to use the feature. Middleware cant be used.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_fmea:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore</div>
-<div class="line">:id: feat_saf_FMEA__persistency_EX_01_02</div>
-<div class="line">:failure_mode: EX_01_02</div>
-<div class="line">:failure_effect: processing too slow.</div>
-<div class="line">:mitigation: aou_req__persistency__error_handling</div>
-<div class="line">:mitigation_issue: None</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: User is not able to use the feature. Middleware cant be used.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_fmea:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore</div>
-<div class="line">:id: feat_saf_FMEA__persistency_EX_01_03</div>
-<div class="line">:failure_mode: EX_01_03</div>
-<div class="line">:failure_effect: processing too fast.</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: None</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Failure mode not applicable at persistency, so no mitigation is needed.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_fmea:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore</div>
-<div class="line">:id: feat_saf_FMEA__persistency_EX_01_04</div>
-<div class="line">:failure_mode: EX_01_04</div>
-<div class="line">:failure_effect: loss of execution.</div>
-<div class="line">:mitigation: aou_req__persistency__error_handling</div>
-<div class="line">:mitigation_issue: None</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: User is not able to use the feature. Middleware cant be used.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_fmea:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore</div>
-<div class="line">:id: feat_saf_FMEA__persistency_EX_01_05</div>
-<div class="line">:failure_mode: EX_01_05</div>
-<div class="line">:failure_effect: processing changes to arbitrary process.</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: None</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Failure mode not applicable at persistency, so no mitigation is needed.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_fmea:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore</div>
-<div class="line">:id: feat_saf_FMEA__persistency_EX_01_06</div>
-<div class="line">:failure_mode: EX_01_06</div>
-<div class="line">:failure_effect: processing is not complete (infinite loop).</div>
-<div class="line">:mitigation: aou_req__persistency__error_handling</div>
-<div class="line">:mitigation_issue: None</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: User is not able to use the feature. Middleware cant be used.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-</td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The FMEA is done by applying the fault model list. If a fault model doesn’t apply, it is not listed here.
+Persistency is developed in a full deterministic way. A failure will lead to a specified reaction of the persistency feature.
+These failures must be handled by the application. Also failures that will lead to a unspecified usage of the feature
+like signals were corrupted or messages are not sent.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__persistency_safety_analysis" title="doc__persistency_safety_analysis">doc__persistency_safety_analysis</a></span></span></div>
@@ -731,6 +527,534 @@
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
 <div class="line"><span><span class="needs_type_name"><span class="needs_data">Generic Document</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-a8fad78e">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_saf_fmea table" id="feat_saf_fmea__persistency__message_nreived">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Persistency</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
+<div class="line"><span class="needs_sufficient"><span class="needs_label">sufficient: </span><span class="needs_data">yes</span></span></div>
+<div class="line"><span class="needs_violation_cause"><span class="needs_label">violation_cause: </span><span class="needs_data">Message is not received.</span></span></div>
+<div class="line"><span class="needs_violation_id"><span class="needs_label">violation_id: </span><span class="needs_data">MF_01_01</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">mitigates: <span class="mitigates"><span><a class="reference internal" href="../requirements/index.html#aou_req__persistency__error_handling" title="feat_saf_fmea__persistency__message_nreived">aou_req__persistency__error_handling</a></span></span></div>
+<div class="line">verifies: <span class="verifies"><span><a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__check_key_default" title="feat_saf_fmea__persistency__message_nreived">feat_arc_dyn__persistency__check_key_default</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__delete_key" title="feat_saf_fmea__persistency__message_nreived">feat_arc_dyn__persistency__delete_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__flush" title="feat_saf_fmea__persistency__message_nreived">feat_arc_dyn__persistency__flush</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__read_key" title="feat_saf_fmea__persistency__message_nreived">feat_arc_dyn__persistency__read_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__read_from_storage" title="feat_saf_fmea__persistency__message_nreived">feat_arc_dyn__persistency__read_from_storage</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__write_key" title="feat_saf_fmea__persistency__message_nreived">feat_arc_dyn__persistency__write_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__snapshot_restore" title="feat_saf_fmea__persistency__message_nreived">feat_arc_dyn__persistency__snapshot_restore</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>User is not able to use the feature. Middleware cant be used.</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_saf_fmea__persistency__message_nreived" title="feat_saf_fmea__persistency__message_nreived">feat_saf_fmea__persistency__message_nreived</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">FMEA</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-2d1d0b9e">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_saf_fmea table" id="feat_saf_fmea__persistency__late_message">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Persistency</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
+<div class="line"><span class="needs_sufficient"><span class="needs_label">sufficient: </span><span class="needs_data">yes</span></span></div>
+<div class="line"><span class="needs_violation_cause"><span class="needs_label">violation_cause: </span><span class="needs_data">message received too late.</span></span></div>
+<div class="line"><span class="needs_violation_id"><span class="needs_label">violation_id: </span><span class="needs_data">MF_01_02</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">mitigates: <span class="mitigates"><span><a class="reference internal" href="../requirements/index.html#aou_req__persistency__error_handling" title="feat_saf_fmea__persistency__late_message">aou_req__persistency__error_handling</a></span></span></div>
+<div class="line">verifies: <span class="verifies"><span><a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__check_key_default" title="feat_saf_fmea__persistency__late_message">feat_arc_dyn__persistency__check_key_default</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__delete_key" title="feat_saf_fmea__persistency__late_message">feat_arc_dyn__persistency__delete_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__flush" title="feat_saf_fmea__persistency__late_message">feat_arc_dyn__persistency__flush</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__read_key" title="feat_saf_fmea__persistency__late_message">feat_arc_dyn__persistency__read_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__read_from_storage" title="feat_saf_fmea__persistency__late_message">feat_arc_dyn__persistency__read_from_storage</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__write_key" title="feat_saf_fmea__persistency__late_message">feat_arc_dyn__persistency__write_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__snapshot_restore" title="feat_saf_fmea__persistency__late_message">feat_arc_dyn__persistency__snapshot_restore</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>User is not able to use the feature. Middleware cant be used.</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_saf_fmea__persistency__late_message" title="feat_saf_fmea__persistency__late_message">feat_saf_fmea__persistency__late_message</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">FMEA</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-a29f4459">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_saf_fmea table" id="feat_saf_fmea__persistency__corrupted_message">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Persistency</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
+<div class="line"><span class="needs_sufficient"><span class="needs_label">sufficient: </span><span class="needs_data">yes</span></span></div>
+<div class="line"><span class="needs_violation_cause"><span class="needs_label">violation_cause: </span><span class="needs_data">message is corrupted.</span></span></div>
+<div class="line"><span class="needs_violation_id"><span class="needs_label">violation_id: </span><span class="needs_data">MF_01_05</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">mitigates: <span class="mitigates"><span><a class="reference internal" href="../requirements/index.html#aou_req__persistency__error_handling" title="feat_saf_fmea__persistency__corrupted_message">aou_req__persistency__error_handling</a></span></span></div>
+<div class="line">verifies: <span class="verifies"><span><a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__check_key_default" title="feat_saf_fmea__persistency__corrupted_message">feat_arc_dyn__persistency__check_key_default</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__delete_key" title="feat_saf_fmea__persistency__corrupted_message">feat_arc_dyn__persistency__delete_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__flush" title="feat_saf_fmea__persistency__corrupted_message">feat_arc_dyn__persistency__flush</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__read_key" title="feat_saf_fmea__persistency__corrupted_message">feat_arc_dyn__persistency__read_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__read_from_storage" title="feat_saf_fmea__persistency__corrupted_message">feat_arc_dyn__persistency__read_from_storage</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__write_key" title="feat_saf_fmea__persistency__corrupted_message">feat_arc_dyn__persistency__write_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__snapshot_restore" title="feat_saf_fmea__persistency__corrupted_message">feat_arc_dyn__persistency__snapshot_restore</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>Covered by MF_01_01</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_saf_fmea__persistency__corrupted_message" title="feat_saf_fmea__persistency__corrupted_message">feat_saf_fmea__persistency__corrupted_message</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">FMEA</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-34e6e2fb">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_saf_fmea table" id="feat_saf_fmea__persistency__not_sent">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Persistency</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
+<div class="line"><span class="needs_sufficient"><span class="needs_label">sufficient: </span><span class="needs_data">yes</span></span></div>
+<div class="line"><span class="needs_violation_cause"><span class="needs_label">violation_cause: </span><span class="needs_data">message is not sent.</span></span></div>
+<div class="line"><span class="needs_violation_id"><span class="needs_label">violation_id: </span><span class="needs_data">MF_01_06</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">mitigates: <span class="mitigates"><span><a class="reference internal" href="../requirements/index.html#aou_req__persistency__error_handling" title="feat_saf_fmea__persistency__not_sent">aou_req__persistency__error_handling</a></span></span></div>
+<div class="line">verifies: <span class="verifies"><span><a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__check_key_default" title="feat_saf_fmea__persistency__not_sent">feat_arc_dyn__persistency__check_key_default</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__delete_key" title="feat_saf_fmea__persistency__not_sent">feat_arc_dyn__persistency__delete_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__flush" title="feat_saf_fmea__persistency__not_sent">feat_arc_dyn__persistency__flush</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__read_key" title="feat_saf_fmea__persistency__not_sent">feat_arc_dyn__persistency__read_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__read_from_storage" title="feat_saf_fmea__persistency__not_sent">feat_arc_dyn__persistency__read_from_storage</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__write_key" title="feat_saf_fmea__persistency__not_sent">feat_arc_dyn__persistency__write_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__snapshot_restore" title="feat_saf_fmea__persistency__not_sent">feat_arc_dyn__persistency__snapshot_restore</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>Covered by MF_01_01</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_saf_fmea__persistency__not_sent" title="feat_saf_fmea__persistency__not_sent">feat_saf_fmea__persistency__not_sent</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">FMEA</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-11c4766a">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_saf_fmea table" id="feat_saf_fmea__persistency__unintendend">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Persistency</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
+<div class="line"><span class="needs_sufficient"><span class="needs_label">sufficient: </span><span class="needs_data">yes</span></span></div>
+<div class="line"><span class="needs_violation_cause"><span class="needs_label">violation_cause: </span><span class="needs_data">message is unintended sent.</span></span></div>
+<div class="line"><span class="needs_violation_id"><span class="needs_label">violation_id: </span><span class="needs_data">MF_01_07</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">mitigates: <span class="mitigates"><span><a class="reference internal" href="../requirements/index.html#aou_req__persistency__error_handling" title="feat_saf_fmea__persistency__unintendend">aou_req__persistency__error_handling</a></span></span></div>
+<div class="line">verifies: <span class="verifies"><span><a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__check_key_default" title="feat_saf_fmea__persistency__unintendend">feat_arc_dyn__persistency__check_key_default</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__delete_key" title="feat_saf_fmea__persistency__unintendend">feat_arc_dyn__persistency__delete_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__flush" title="feat_saf_fmea__persistency__unintendend">feat_arc_dyn__persistency__flush</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__read_key" title="feat_saf_fmea__persistency__unintendend">feat_arc_dyn__persistency__read_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__read_from_storage" title="feat_saf_fmea__persistency__unintendend">feat_arc_dyn__persistency__read_from_storage</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__write_key" title="feat_saf_fmea__persistency__unintendend">feat_arc_dyn__persistency__write_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__snapshot_restore" title="feat_saf_fmea__persistency__unintendend">feat_arc_dyn__persistency__snapshot_restore</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>Covered by MF_01_01</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_saf_fmea__persistency__unintendend" title="feat_saf_fmea__persistency__unintendend">feat_saf_fmea__persistency__unintendend</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">FMEA</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-ef806d15">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_saf_fmea table" id="feat_saf_fmea__persistency__calc_wrong">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Persistency</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
+<div class="line"><span class="needs_sufficient"><span class="needs_label">sufficient: </span><span class="needs_data">yes</span></span></div>
+<div class="line"><span class="needs_violation_cause"><span class="needs_label">violation_cause: </span><span class="needs_data">Process calculates wrong result(s).</span></span></div>
+<div class="line"><span class="needs_violation_id"><span class="needs_label">violation_id: </span><span class="needs_data">EX_01_01</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">mitigates: <span class="mitigates"><span><a class="reference internal" href="../requirements/index.html#aou_req__persistency__error_handling" title="feat_saf_fmea__persistency__calc_wrong">aou_req__persistency__error_handling</a></span></span></div>
+<div class="line">verifies: <span class="verifies"><span><a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__check_key_default" title="feat_saf_fmea__persistency__calc_wrong">feat_arc_dyn__persistency__check_key_default</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__delete_key" title="feat_saf_fmea__persistency__calc_wrong">feat_arc_dyn__persistency__delete_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__flush" title="feat_saf_fmea__persistency__calc_wrong">feat_arc_dyn__persistency__flush</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__read_key" title="feat_saf_fmea__persistency__calc_wrong">feat_arc_dyn__persistency__read_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__read_from_storage" title="feat_saf_fmea__persistency__calc_wrong">feat_arc_dyn__persistency__read_from_storage</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__write_key" title="feat_saf_fmea__persistency__calc_wrong">feat_arc_dyn__persistency__write_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__snapshot_restore" title="feat_saf_fmea__persistency__calc_wrong">feat_arc_dyn__persistency__snapshot_restore</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>User is not able to use the feature. Middleware cant be used.</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_saf_fmea__persistency__calc_wrong" title="feat_saf_fmea__persistency__calc_wrong">feat_saf_fmea__persistency__calc_wrong</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">FMEA</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-6f44bcc5">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_saf_fmea table" id="feat_saf_fmea__persistency__too_slow">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Persistency</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
+<div class="line"><span class="needs_sufficient"><span class="needs_label">sufficient: </span><span class="needs_data">yes</span></span></div>
+<div class="line"><span class="needs_violation_cause"><span class="needs_label">violation_cause: </span><span class="needs_data">processing too slow.</span></span></div>
+<div class="line"><span class="needs_violation_id"><span class="needs_label">violation_id: </span><span class="needs_data">EX_01_02</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">mitigates: <span class="mitigates"><span><a class="reference internal" href="../requirements/index.html#aou_req__persistency__error_handling" title="feat_saf_fmea__persistency__too_slow">aou_req__persistency__error_handling</a></span></span></div>
+<div class="line">verifies: <span class="verifies"><span><a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__check_key_default" title="feat_saf_fmea__persistency__too_slow">feat_arc_dyn__persistency__check_key_default</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__delete_key" title="feat_saf_fmea__persistency__too_slow">feat_arc_dyn__persistency__delete_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__flush" title="feat_saf_fmea__persistency__too_slow">feat_arc_dyn__persistency__flush</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__read_key" title="feat_saf_fmea__persistency__too_slow">feat_arc_dyn__persistency__read_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__read_from_storage" title="feat_saf_fmea__persistency__too_slow">feat_arc_dyn__persistency__read_from_storage</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__write_key" title="feat_saf_fmea__persistency__too_slow">feat_arc_dyn__persistency__write_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__snapshot_restore" title="feat_saf_fmea__persistency__too_slow">feat_arc_dyn__persistency__snapshot_restore</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>User is not able to use the feature. Middleware cant be used.</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_saf_fmea__persistency__too_slow" title="feat_saf_fmea__persistency__too_slow">feat_saf_fmea__persistency__too_slow</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">FMEA</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-bab46b94">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_saf_fmea table" id="feat_saf_fmea__persistency__too_fast">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Persistency</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
+<div class="line"><span class="needs_sufficient"><span class="needs_label">sufficient: </span><span class="needs_data">yes</span></span></div>
+<div class="line"><span class="needs_violation_cause"><span class="needs_label">violation_cause: </span><span class="needs_data">processing too fast.</span></span></div>
+<div class="line"><span class="needs_violation_id"><span class="needs_label">violation_id: </span><span class="needs_data">EX_01_03</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">mitigates: <span class="mitigates"><span><a class="reference internal" href="../requirements/index.html#aou_req__persistency__error_handling" title="feat_saf_fmea__persistency__too_fast">aou_req__persistency__error_handling</a></span></span></div>
+<div class="line">verifies: <span class="verifies"><span><a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__check_key_default" title="feat_saf_fmea__persistency__too_fast">feat_arc_dyn__persistency__check_key_default</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__delete_key" title="feat_saf_fmea__persistency__too_fast">feat_arc_dyn__persistency__delete_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__flush" title="feat_saf_fmea__persistency__too_fast">feat_arc_dyn__persistency__flush</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__read_key" title="feat_saf_fmea__persistency__too_fast">feat_arc_dyn__persistency__read_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__read_from_storage" title="feat_saf_fmea__persistency__too_fast">feat_arc_dyn__persistency__read_from_storage</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__write_key" title="feat_saf_fmea__persistency__too_fast">feat_arc_dyn__persistency__write_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__snapshot_restore" title="feat_saf_fmea__persistency__too_fast">feat_arc_dyn__persistency__snapshot_restore</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>User is not able to use the feature. Middleware cant be used.</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_saf_fmea__persistency__too_fast" title="feat_saf_fmea__persistency__too_fast">feat_saf_fmea__persistency__too_fast</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">FMEA</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-bf61c169">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_saf_fmea table" id="feat_saf_fmea__persistency__err_handl">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Persistency</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
+<div class="line"><span class="needs_sufficient"><span class="needs_label">sufficient: </span><span class="needs_data">yes</span></span></div>
+<div class="line"><span class="needs_violation_cause"><span class="needs_label">violation_cause: </span><span class="needs_data">loss of execution.</span></span></div>
+<div class="line"><span class="needs_violation_id"><span class="needs_label">violation_id: </span><span class="needs_data">EX_01_04</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">mitigates: <span class="mitigates"><span><a class="reference internal" href="../requirements/index.html#aou_req__persistency__error_handling" title="feat_saf_fmea__persistency__err_handl">aou_req__persistency__error_handling</a></span></span></div>
+<div class="line">verifies: <span class="verifies"><span><a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__check_key_default" title="feat_saf_fmea__persistency__err_handl">feat_arc_dyn__persistency__check_key_default</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__delete_key" title="feat_saf_fmea__persistency__err_handl">feat_arc_dyn__persistency__delete_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__flush" title="feat_saf_fmea__persistency__err_handl">feat_arc_dyn__persistency__flush</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__read_key" title="feat_saf_fmea__persistency__err_handl">feat_arc_dyn__persistency__read_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__read_from_storage" title="feat_saf_fmea__persistency__err_handl">feat_arc_dyn__persistency__read_from_storage</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__write_key" title="feat_saf_fmea__persistency__err_handl">feat_arc_dyn__persistency__write_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__snapshot_restore" title="feat_saf_fmea__persistency__err_handl">feat_arc_dyn__persistency__snapshot_restore</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>User is not able to use the feature. Middleware cant be used.</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_saf_fmea__persistency__err_handl" title="feat_saf_fmea__persistency__err_handl">feat_saf_fmea__persistency__err_handl</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">FMEA</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-6c7e0919">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_saf_fmea table" id="feat_saf_fmea__persistency__arbitrary">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Persistency</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
+<div class="line"><span class="needs_sufficient"><span class="needs_label">sufficient: </span><span class="needs_data">yes</span></span></div>
+<div class="line"><span class="needs_violation_cause"><span class="needs_label">violation_cause: </span><span class="needs_data">processing changes to arbitrary process.</span></span></div>
+<div class="line"><span class="needs_violation_id"><span class="needs_label">violation_id: </span><span class="needs_data">EX_01_05</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">mitigates: <span class="mitigates"><span><a class="reference internal" href="../requirements/index.html#aou_req__persistency__error_handling" title="feat_saf_fmea__persistency__arbitrary">aou_req__persistency__error_handling</a></span></span></div>
+<div class="line">verifies: <span class="verifies"><span><a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__check_key_default" title="feat_saf_fmea__persistency__arbitrary">feat_arc_dyn__persistency__check_key_default</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__delete_key" title="feat_saf_fmea__persistency__arbitrary">feat_arc_dyn__persistency__delete_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__flush" title="feat_saf_fmea__persistency__arbitrary">feat_arc_dyn__persistency__flush</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__read_key" title="feat_saf_fmea__persistency__arbitrary">feat_arc_dyn__persistency__read_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__read_from_storage" title="feat_saf_fmea__persistency__arbitrary">feat_arc_dyn__persistency__read_from_storage</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__write_key" title="feat_saf_fmea__persistency__arbitrary">feat_arc_dyn__persistency__write_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__snapshot_restore" title="feat_saf_fmea__persistency__arbitrary">feat_arc_dyn__persistency__snapshot_restore</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>User is not able to use the feature. Middleware cant be used.</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_saf_fmea__persistency__arbitrary" title="feat_saf_fmea__persistency__arbitrary">feat_saf_fmea__persistency__arbitrary</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">FMEA</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-22324917">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_saf_fmea table" id="feat_saf_fmea__persistency__infinite">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Persistency</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
+<div class="line"><span class="needs_sufficient"><span class="needs_label">sufficient: </span><span class="needs_data">yes</span></span></div>
+<div class="line"><span class="needs_violation_cause"><span class="needs_label">violation_cause: </span><span class="needs_data">processing is not complete (infinite loop).</span></span></div>
+<div class="line"><span class="needs_violation_id"><span class="needs_label">violation_id: </span><span class="needs_data">EX_01_06</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">mitigates: <span class="mitigates"><span><a class="reference internal" href="../requirements/index.html#aou_req__persistency__error_handling" title="feat_saf_fmea__persistency__infinite">aou_req__persistency__error_handling</a></span></span></div>
+<div class="line">verifies: <span class="verifies"><span><a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__check_key_default" title="feat_saf_fmea__persistency__infinite">feat_arc_dyn__persistency__check_key_default</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__delete_key" title="feat_saf_fmea__persistency__infinite">feat_arc_dyn__persistency__delete_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__flush" title="feat_saf_fmea__persistency__infinite">feat_arc_dyn__persistency__flush</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__read_key" title="feat_saf_fmea__persistency__infinite">feat_arc_dyn__persistency__read_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__read_from_storage" title="feat_saf_fmea__persistency__infinite">feat_arc_dyn__persistency__read_from_storage</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__write_key" title="feat_saf_fmea__persistency__infinite">feat_arc_dyn__persistency__write_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__snapshot_restore" title="feat_saf_fmea__persistency__infinite">feat_arc_dyn__persistency__snapshot_restore</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>User is not able to use the feature. Middleware cant be used.</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_saf_fmea__persistency__infinite" title="feat_saf_fmea__persistency__infinite">feat_saf_fmea__persistency__infinite</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">FMEA</span></span></span></div>
 </div>
 </td>
 <td class="footer_right" colspan="2"></td>

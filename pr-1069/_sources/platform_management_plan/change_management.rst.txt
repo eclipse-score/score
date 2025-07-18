@@ -17,7 +17,7 @@
    :status: draft
    :safety: ASIL_B
    :tags: platform_management
-   :realizes: wp__chm_plan
+   :realizes: PROCESS_wp__chm_plan
 
 .. _change_mgmt_plan:
 
@@ -110,7 +110,7 @@ Changes are clustered in the following types:
 
 Change Request Traceability Impact Analysis requires the following tools:
 
-:need:`[[title]] <PROCESS_gd_req__change_tool_impact_analysis>`
+:need:`[[title]] <PROCESS_gd_req__change__tool_impact_analysis>`
 
 Change Request Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -217,7 +217,7 @@ ISSUE status ``OPEN`` and PR status ``OPEN``.
 if the Change Request is accepted or rejected.
 
 :need:`Committer <PROCESS_rl__committer>` checks finally if the Change Request is completed and the
-required verification measures are executed and sucessfully passed.
+required verification measures are executed and successfully passed.
 
 If ``approved``, the status of the concerned PRs change to ``MERGED``,
 otherwise, if rejected, PR status changes to ``CLOSED``.

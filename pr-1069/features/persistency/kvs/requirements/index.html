@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -167,15 +167,15 @@
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../modules/index.html">
-    Module
+  <a class="nav-link nav-internal" href="../../../../contribute/index.html">
+    Contribute
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../contribute/index.html">
-    Contribute
+  <a class="nav-link nav-internal" href="../../../../score_releases/index.html">
+    Releases
   </a>
 </li>
 
@@ -188,8 +188,8 @@
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../../../score_releases/index.html">
-    Releases
+  <a class="nav-link dropdown-item nav-internal" href="../../../../score_tools/index.html">
+    Tools
   </a>
 </li>
 
@@ -321,13 +321,6 @@
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../modules/index.html">
-    Module
-  </a>
-</li>
-
-
-<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../contribute/index.html">
     Contribute
   </a>
@@ -337,6 +330,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../score_releases/index.html">
     Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../score_tools/index.html">
+    Tools
   </a>
 </li>
 
@@ -401,6 +401,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../analysis-infra/index.html">Analysis Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../baselibs/index.html">Base Libraries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../communication/index.html">Communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../diagnostics/index.html">Diagnostic and Fault Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../frameworks/index.html">Frameworks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../infrastructure/index.html">Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../integration/index.html">Integration</a></li>
@@ -415,6 +417,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../safety_planning/index.html">Feature Safety Planning</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/index.html">Module</a></li>
 </ul>
 </details></li>
 </ul>
@@ -485,7 +488,7 @@
                   
   <section id="requirements">
 <span id="feature-requirements-persistencykvs"></span><h1>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-ac116285">
+<div class="need_container docutils container" id="SNCB-19bad333">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__persistency_kvs_feat_reqs">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -505,11 +508,11 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistencykvs</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
-<div class="line"><span class="needs_realizes"><span class="needs_label">realizes: </span><span class="needs_data">wp__feature_reqs</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 </span></span></div>
-<div class="line"><span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements__feat">PROCESS_wp__requirements__feat</a></span></span></div>
+</span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
@@ -530,7 +533,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-ccaf7a3d">
+<div class="need_container docutils container" id="SNCB-e6705a08">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__persistency__cpp_rust_interop">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -550,13 +553,12 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistencykvs</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__prog_languages" title="feat_req__persistency__cpp_rust_interop">stkh_req__dev_experience__prog_languages</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__language_agnostic" title="feat_req__persistency__cpp_rust_interop">comp_req__persistency__language_agnostic</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -579,7 +581,7 @@ interfaces.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5b69fce2">
+<div class="need_container docutils container" id="SNCB-b433e76e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__persistency__maximum_size">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -599,7 +601,7 @@ interfaces.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistencykvs</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
@@ -627,7 +629,7 @@ compile time.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-02581c38">
+<div class="need_container docutils container" id="SNCB-6eda8abf">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__persistency__multiple_kvs">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -647,13 +649,13 @@ compile time.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistencykvs</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functiona_req__support_of_store" title="feat_req__persistency__multiple_kvs">stkh_req__functiona_req__support_of_store</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__multi_instance" title="feat_req__persistency__multiple_kvs">comp_req__persistency__multi_instance</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__multi_instance" title="feat_req__persistency__multiple_kvs">comp_req__persistency__multi_instance</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -676,7 +678,7 @@ per software architecture element.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-08a8334c">
+<div class="need_container docutils container" id="SNCB-f7a73cd8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__persistency__support_datatype_keys">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -696,13 +698,13 @@ per software architecture element.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistencykvs</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functiona_req__support_of_store" title="feat_req__persistency__support_datatype_keys">stkh_req__functiona_req__support_of_store</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__key_naming" title="feat_req__persistency__support_datatype_keys">comp_req__persistency__key_naming</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__key_encoding" title="feat_req__persistency__support_datatype_keys">comp_req__persistency__key_encoding</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__key_uniqueness" title="feat_req__persistency__support_datatype_keys">comp_req__persistency__key_uniqueness</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__key_length" title="feat_req__persistency__support_datatype_keys">comp_req__persistency__key_length</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__key_naming" title="feat_req__persistency__support_datatype_keys">comp_req__persistency__key_naming</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__key_encoding" title="feat_req__persistency__support_datatype_keys">comp_req__persistency__key_encoding</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__key_uniqueness" title="feat_req__persistency__support_datatype_keys">comp_req__persistency__key_uniqueness</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__key_length" title="feat_req__persistency__support_datatype_keys">comp_req__persistency__key_length</a></span></span></div>
 <div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#feat_arc_sta__persistency__static" title="feat_req__persistency__support_datatype_keys">feat_arc_sta__persistency__static</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__read_key" title="feat_req__persistency__support_datatype_keys">feat_arc_dyn__persistency__read_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__write_key" title="feat_req__persistency__support_datatype_keys">feat_arc_dyn__persistency__write_key</a></span></span></div>
 </span></div>
 </div>
@@ -726,7 +728,7 @@ types.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-2b4a5c04">
+<div class="need_container docutils container" id="SNCB-31854dbb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__persistency__support_datatype_value">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -752,7 +754,7 @@ types.</p></td>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functiona_req__support_of_store" title="feat_req__persistency__support_datatype_value">stkh_req__functiona_req__support_of_store</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__value_data_types" title="feat_req__persistency__support_datatype_value">comp_req__persistency__value_data_types</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__value_serialize" title="feat_req__persistency__support_datatype_value">comp_req__persistency__value_serialize</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__value_length" title="feat_req__persistency__support_datatype_value">comp_req__persistency__value_length</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__value_default" title="feat_req__persistency__support_datatype_value">comp_req__persistency__value_default</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__value_reset" title="feat_req__persistency__support_datatype_value">comp_req__persistency__value_reset</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__value_data_types" title="feat_req__persistency__support_datatype_value">comp_req__persistency__value_data_types</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__value_serialize" title="feat_req__persistency__support_datatype_value">comp_req__persistency__value_serialize</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__value_length" title="feat_req__persistency__support_datatype_value">comp_req__persistency__value_length</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__value_default" title="feat_req__persistency__support_datatype_value">comp_req__persistency__value_default</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__value_reset" title="feat_req__persistency__support_datatype_value">comp_req__persistency__value_reset</a></span></span></div>
 <div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#feat_arc_sta__persistency__static" title="feat_req__persistency__support_datatype_value">feat_arc_sta__persistency__static</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__read_key" title="feat_req__persistency__support_datatype_value">feat_arc_dyn__persistency__read_key</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__write_key" title="feat_req__persistency__support_datatype_value">feat_arc_dyn__persistency__write_key</a></span></span></div>
 </span></div>
 </div>
@@ -777,7 +779,7 @@ IPC feature.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-fd50dedf">
+<div class="need_container docutils container" id="SNCB-cbd0ae2a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__persistency__default_values">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -797,13 +799,13 @@ IPC feature.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistencykvs</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functiona_req__support_of_store" title="feat_req__persistency__default_values">stkh_req__functiona_req__support_of_store</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__value_default" title="feat_req__persistency__default_values">comp_req__persistency__value_default</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__value_reset" title="feat_req__persistency__default_values">comp_req__persistency__value_reset</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__default_value_types" title="feat_req__persistency__default_values">comp_req__persistency__default_value_types</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__default_value_query" title="feat_req__persistency__default_values">comp_req__persistency__default_value_query</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__default_value_config" title="feat_req__persistency__default_values">comp_req__persistency__default_value_config</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__default_value_checksum" title="feat_req__persistency__default_values">comp_req__persistency__default_value_checksum</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__value_default" title="feat_req__persistency__default_values">comp_req__persistency__value_default</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__value_reset" title="feat_req__persistency__default_values">comp_req__persistency__value_reset</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__default_value_types" title="feat_req__persistency__default_values">comp_req__persistency__default_value_types</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__default_value_query" title="feat_req__persistency__default_values">comp_req__persistency__default_value_query</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__default_value_config" title="feat_req__persistency__default_values">comp_req__persistency__default_value_config</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__default_value_checksum" title="feat_req__persistency__default_values">comp_req__persistency__default_value_checksum</a></span></span></div>
 <div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#feat_arc_sta__persistency__static" title="feat_req__persistency__default_values">feat_arc_sta__persistency__static</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__check_key_default" title="feat_req__persistency__default_values">feat_arc_dyn__persistency__check_key_default</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__read_key" title="feat_req__persistency__default_values">feat_arc_dyn__persistency__read_key</a></span></span></div>
 </span></div>
 </div>
@@ -826,7 +828,7 @@ IPC feature.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7e7ecdc3">
+<div class="need_container docutils container" id="SNCB-942b35fb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__persistency__default_value_get">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -846,13 +848,13 @@ IPC feature.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistencykvs</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functiona_req__support_of_store" title="feat_req__persistency__default_value_get">stkh_req__functiona_req__support_of_store</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__default_value_types" title="feat_req__persistency__default_value_get">comp_req__persistency__default_value_types</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__default_value_query" title="feat_req__persistency__default_value_get">comp_req__persistency__default_value_query</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__default_value_config" title="feat_req__persistency__default_value_get">comp_req__persistency__default_value_config</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__default_value_checksum" title="feat_req__persistency__default_value_get">comp_req__persistency__default_value_checksum</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__default_value_types" title="feat_req__persistency__default_value_get">comp_req__persistency__default_value_types</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__default_value_query" title="feat_req__persistency__default_value_get">comp_req__persistency__default_value_query</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__default_value_config" title="feat_req__persistency__default_value_get">comp_req__persistency__default_value_config</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__default_value_checksum" title="feat_req__persistency__default_value_get">comp_req__persistency__default_value_checksum</a></span></span></div>
 <div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#feat_arc_sta__persistency__static" title="feat_req__persistency__default_value_get">feat_arc_sta__persistency__static</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__check_key_default" title="feat_req__persistency__default_value_get">feat_arc_dyn__persistency__check_key_default</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__read_key" title="feat_req__persistency__default_value_get">feat_arc_dyn__persistency__read_key</a></span></span></div>
 </span></div>
 </div>
@@ -876,7 +878,7 @@ with a key.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-acf5ec1b">
+<div class="need_container docutils container" id="SNCB-1ef855e7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__persistency__default_value_reset">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -896,13 +898,13 @@ with a key.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistencykvs</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functiona_req__support_of_store" title="feat_req__persistency__default_value_reset">stkh_req__functiona_req__support_of_store</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__default_value_types" title="feat_req__persistency__default_value_reset">comp_req__persistency__default_value_types</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__default_value_query" title="feat_req__persistency__default_value_reset">comp_req__persistency__default_value_query</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__default_value_config" title="feat_req__persistency__default_value_reset">comp_req__persistency__default_value_config</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__default_value_checksum" title="feat_req__persistency__default_value_reset">comp_req__persistency__default_value_checksum</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__default_value_types" title="feat_req__persistency__default_value_reset">comp_req__persistency__default_value_types</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__default_value_query" title="feat_req__persistency__default_value_reset">comp_req__persistency__default_value_query</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__default_value_config" title="feat_req__persistency__default_value_reset">comp_req__persistency__default_value_config</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__default_value_checksum" title="feat_req__persistency__default_value_reset">comp_req__persistency__default_value_checksum</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -925,7 +927,7 @@ their respective default values.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f4f28e30">
+<div class="need_container docutils container" id="SNCB-0d379e82">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__persistency__persistency">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -945,13 +947,13 @@ their respective default values.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistencykvs</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functiona_req__support_of_store" title="feat_req__persistency__persistency">stkh_req__functiona_req__support_of_store</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__persist_data_store_com" title="feat_req__persistency__persistency">comp_req__persistency__persist_data_store_com</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__pers_data_store_csum" title="feat_req__persistency__persistency">comp_req__persistency__pers_data_store_csum</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__pers_data_store_bend" title="feat_req__persistency__persistency">comp_req__persistency__pers_data_store_bend</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__pers_data_store_fmt" title="feat_req__persistency__persistency">comp_req__persistency__pers_data_store_fmt</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__persist_data_store_com" title="feat_req__persistency__persistency">comp_req__persistency__persist_data_store_com</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__pers_data_csum_write" title="feat_req__persistency__persistency">comp_req__persistency__pers_data_csum_write</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__pers_data_csum_verify" title="feat_req__persistency__persistency">comp_req__persistency__pers_data_csum_verify</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__pers_data_store_bend" title="feat_req__persistency__persistency">comp_req__persistency__pers_data_store_bend</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__pers_data_store_fmt" title="feat_req__persistency__persistency">comp_req__persistency__pers_data_store_fmt</a></span></span></div>
 <div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#feat_arc_sta__persistency__static" title="feat_req__persistency__persistency">feat_arc_sta__persistency__static</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__flush" title="feat_req__persistency__persistency">feat_arc_dyn__persistency__flush</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__read_from_storage" title="feat_req__persistency__persistency">feat_arc_dyn__persistency__read_from_storage</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__snapshot_restore" title="feat_req__persistency__persistency">feat_arc_dyn__persistency__snapshot_restore</a></span></span></div>
 </span></div>
 </div>
@@ -975,7 +977,7 @@ explicitly trigger persistence.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-95fdcb49">
+<div class="need_container docutils container" id="SNCB-4e3abcd7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__persistency__integrity_check">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -995,13 +997,13 @@ explicitly trigger persistence.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistencykvs</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functiona_req__support_of_store" title="feat_req__persistency__integrity_check">stkh_req__functiona_req__support_of_store</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__persist_data_store_com" title="feat_req__persistency__integrity_check">comp_req__persistency__persist_data_store_com</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__pers_data_store_csum" title="feat_req__persistency__integrity_check">comp_req__persistency__pers_data_store_csum</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__pers_data_store_bend" title="feat_req__persistency__integrity_check">comp_req__persistency__pers_data_store_bend</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__pers_data_store_fmt" title="feat_req__persistency__integrity_check">comp_req__persistency__pers_data_store_fmt</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__persist_data_store_com" title="feat_req__persistency__integrity_check">comp_req__persistency__persist_data_store_com</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__pers_data_csum_write" title="feat_req__persistency__integrity_check">comp_req__persistency__pers_data_csum_write</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__pers_data_csum_verify" title="feat_req__persistency__integrity_check">comp_req__persistency__pers_data_csum_verify</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__pers_data_store_bend" title="feat_req__persistency__integrity_check">comp_req__persistency__pers_data_store_bend</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__pers_data_store_fmt" title="feat_req__persistency__integrity_check">comp_req__persistency__pers_data_store_fmt</a></span></span></div>
 <div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#feat_arc_sta__persistency__static" title="feat_req__persistency__integrity_check">feat_arc_sta__persistency__static</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__flush" title="feat_req__persistency__integrity_check">feat_arc_dyn__persistency__flush</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__read_from_storage" title="feat_req__persistency__integrity_check">feat_arc_dyn__persistency__read_from_storage</a></span></span></div>
 </span></div>
 </div>
@@ -1025,7 +1027,7 @@ Note: Implementation depends on AoUs.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7c689dd7">
+<div class="need_container docutils container" id="SNCB-6f03496c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__persistency__versioning">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1045,13 +1047,13 @@ Note: Implementation depends on AoUs.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistencykvs</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functiona_req__support_of_store" title="feat_req__persistency__versioning">stkh_req__functiona_req__support_of_store</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__pers_data_version" title="feat_req__persistency__versioning">comp_req__persistency__pers_data_version</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__pers_data_schema" title="feat_req__persistency__versioning">comp_req__persistency__pers_data_schema</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__pers_data_version" title="feat_req__persistency__versioning">comp_req__persistency__pers_data_version</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__pers_data_schema" title="feat_req__persistency__versioning">comp_req__persistency__pers_data_schema</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1074,7 +1076,7 @@ configurations.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-1eb48696">
+<div class="need_container docutils container" id="SNCB-80bbaefb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__persistency__update_mechanism">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1094,13 +1096,13 @@ configurations.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistencykvs</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functiona_req__support_of_store" title="feat_req__persistency__update_mechanism">stkh_req__functiona_req__support_of_store</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__pers_data_version" title="feat_req__persistency__update_mechanism">comp_req__persistency__pers_data_version</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__pers_data_schema" title="feat_req__persistency__update_mechanism">comp_req__persistency__pers_data_schema</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__pers_data_version" title="feat_req__persistency__update_mechanism">comp_req__persistency__pers_data_version</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__pers_data_schema" title="feat_req__persistency__update_mechanism">comp_req__persistency__pers_data_schema</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1123,7 +1125,7 @@ to another, including multi-version jumps.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-0c02b23f">
+<div class="need_container docutils container" id="SNCB-6726b3be">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__persistency__snapshots">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1143,13 +1145,13 @@ to another, including multi-version jumps.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistencykvs</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functiona_req__support_of_store" title="feat_req__persistency__snapshots">stkh_req__functiona_req__support_of_store</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__snapshot_creation" title="feat_req__persistency__snapshots">comp_req__persistency__snapshot_creation</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__snapshot_max_num" title="feat_req__persistency__snapshots">comp_req__persistency__snapshot_max_num</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__snapshot_id" title="feat_req__persistency__snapshots">comp_req__persistency__snapshot_id</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__snapshot_rotate" title="feat_req__persistency__snapshots">comp_req__persistency__snapshot_rotate</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__snapshot_restore" title="feat_req__persistency__snapshots">comp_req__persistency__snapshot_restore</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__snapshot_delete" title="feat_req__persistency__snapshots">comp_req__persistency__snapshot_delete</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__snapshot_creation" title="feat_req__persistency__snapshots">comp_req__persistency__snapshot_creation</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__snapshot_max_num" title="feat_req__persistency__snapshots">comp_req__persistency__snapshot_max_num</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__snapshot_id" title="feat_req__persistency__snapshots">comp_req__persistency__snapshot_id</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__snapshot_rotate" title="feat_req__persistency__snapshots">comp_req__persistency__snapshot_rotate</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__snapshot_restore" title="feat_req__persistency__snapshots">comp_req__persistency__snapshot_restore</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__snapshot_delete" title="feat_req__persistency__snapshots">comp_req__persistency__snapshot_delete</a></span></span></div>
 <div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#feat_arc_sta__persistency__static" title="feat_req__persistency__snapshots">feat_arc_sta__persistency__static</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__flush" title="feat_req__persistency__snapshots">feat_arc_dyn__persistency__flush</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__read_from_storage" title="feat_req__persistency__snapshots">feat_arc_dyn__persistency__read_from_storage</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__snapshot_restore" title="feat_req__persistency__snapshots">feat_arc_dyn__persistency__snapshot_restore</a></span></span></div>
 </span></div>
 </div>
@@ -1174,7 +1176,7 @@ shall also be deletable.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-df105a80">
+<div class="need_container docutils container" id="SNCB-afbfdca0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__persistency__tooling">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1194,7 +1196,7 @@ shall also be deletable.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistencykvs</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
@@ -1222,7 +1224,7 @@ modifying key-value pairs during development and debugging.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-01f9a145">
+<div class="need_container docutils container" id="SNCB-3b6239e7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__persistency__variant_management">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1242,7 +1244,7 @@ modifying key-value pairs during development and debugging.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistencykvs</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
@@ -1271,7 +1273,7 @@ architectures and versions.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-bc9848de">
+<div class="need_container docutils container" id="SNCB-610987b5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__persistency__default_value_file">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1281,7 +1283,7 @@ architectures and versions.</p></td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
-<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
 <td class="head_right" colspan="2"><div class="needs_head_right line-block">
@@ -1291,13 +1293,13 @@ architectures and versions.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistencykvs</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functional_req__file_based" title="feat_req__persistency__default_value_file">stkh_req__functional_req__file_based</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__default_value_types" title="feat_req__persistency__default_value_file">comp_req__persistency__default_value_types</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__default_value_query" title="feat_req__persistency__default_value_file">comp_req__persistency__default_value_query</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__default_value_config" title="feat_req__persistency__default_value_file">comp_req__persistency__default_value_config</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__default_value_checksum" title="feat_req__persistency__default_value_file">comp_req__persistency__default_value_checksum</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__default_value_types" title="feat_req__persistency__default_value_file">comp_req__persistency__default_value_types</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__default_value_query" title="feat_req__persistency__default_value_file">comp_req__persistency__default_value_query</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__default_value_config" title="feat_req__persistency__default_value_file">comp_req__persistency__default_value_config</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__default_value_checksum" title="feat_req__persistency__default_value_file">comp_req__persistency__default_value_checksum</a></span></span></div>
 <div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#feat_arc_sta__persistency__static" title="feat_req__persistency__default_value_file">feat_arc_sta__persistency__static</a></span></span></div>
 </span></div>
 </div>
@@ -1321,7 +1323,7 @@ using an external file.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e8b07f52">
+<div class="need_container docutils container" id="SNCB-f3c7bf03">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__persistency__config_file">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1331,7 +1333,7 @@ using an external file.</p></td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
-<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
 <td class="head_right" colspan="2"><div class="needs_head_right line-block">
@@ -1341,13 +1343,13 @@ using an external file.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistencykvs</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functional_req__file_based" title="feat_req__persistency__config_file">stkh_req__functional_req__file_based</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__constraints" title="feat_req__persistency__config_file">comp_req__persistency__constraints</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__constraints" title="feat_req__persistency__config_file">comp_req__persistency__constraints</a></span></span></div>
 <div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#feat_arc_sta__persistency__static" title="feat_req__persistency__config_file">feat_arc_sta__persistency__static</a></span></span></div>
 </span></div>
 </div>
@@ -1371,7 +1373,7 @@ resource limits via a configuration file.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-24393713">
+<div class="need_container docutils container" id="SNCB-b460ab96">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__persistency__persist_data">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1381,7 +1383,7 @@ resource limits via a configuration file.</p></td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
-<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
 <td class="head_right" colspan="2"><div class="needs_head_right line-block">
@@ -1391,13 +1393,13 @@ resource limits via a configuration file.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistencykvs</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functional_req__data_persistency" title="feat_req__persistency__persist_data">stkh_req__functional_req__data_persistency</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__persist_data_store_com" title="feat_req__persistency__persist_data">comp_req__persistency__persist_data_store_com</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__pers_data_store_csum" title="feat_req__persistency__persist_data">comp_req__persistency__pers_data_store_csum</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__pers_data_store_bend" title="feat_req__persistency__persist_data">comp_req__persistency__pers_data_store_bend</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__pers_data_store_fmt" title="feat_req__persistency__persist_data">comp_req__persistency__pers_data_store_fmt</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__persist_data_store_com" title="feat_req__persistency__persist_data">comp_req__persistency__persist_data_store_com</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__pers_data_csum_write" title="feat_req__persistency__persist_data">comp_req__persistency__pers_data_csum_write</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__pers_data_csum_verify" title="feat_req__persistency__persist_data">comp_req__persistency__pers_data_csum_verify</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__pers_data_store_bend" title="feat_req__persistency__persist_data">comp_req__persistency__pers_data_store_bend</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__pers_data_store_fmt" title="feat_req__persistency__persist_data">comp_req__persistency__pers_data_store_fmt</a></span></span></div>
 <div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#feat_arc_sta__persistency__static" title="feat_req__persistency__persist_data">feat_arc_sta__persistency__static</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__flush" title="feat_req__persistency__persist_data">feat_arc_dyn__persistency__flush</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__read_from_storage" title="feat_req__persistency__persist_data">feat_arc_dyn__persistency__read_from_storage</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__snapshot_restore" title="feat_req__persistency__persist_data">feat_arc_dyn__persistency__snapshot_restore</a></span></span></div>
 </span></div>
 </div>
@@ -1421,7 +1423,7 @@ persistent storage.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-768858f9">
+<div class="need_container docutils container" id="SNCB-fc46446f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__persistency__eng_mode">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1441,13 +1443,13 @@ persistent storage.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistencykvs</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dependability__safety_features" title="feat_req__persistency__eng_mode">stkh_req__dependability__safety_features</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__eng_mode" title="feat_req__persistency__eng_mode">comp_req__persistency__eng_mode</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__eng_mode" title="feat_req__persistency__eng_mode">comp_req__persistency__eng_mode</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1470,7 +1472,7 @@ The engineering mode shall allow unrestricted data access.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-2019ed1f">
+<div class="need_container docutils container" id="SNCB-ecdb1ad4">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__persistency__field_mode">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1490,13 +1492,13 @@ The engineering mode shall allow unrestricted data access.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistencykvs</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dependability__safety_features" title="feat_req__persistency__field_mode">stkh_req__dependability__safety_features</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__field_mode" title="feat_req__persistency__field_mode">comp_req__persistency__field_mode</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__field_mode" title="feat_req__persistency__field_mode">comp_req__persistency__field_mode</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1519,7 +1521,7 @@ The field mode should enforce the most restrictive data access controls feasible
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-8b65b2cb">
+<div class="need_container docutils container" id="SNCB-fe73a920">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__persistency__async_api">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1529,7 +1531,7 @@ The field mode should enforce the most restrictive data access controls feasible
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
-<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
 <td class="head_right" colspan="2"><div class="needs_head_right line-block">
@@ -1539,14 +1541,14 @@ The field mode should enforce the most restrictive data access controls feasible
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistencykvs</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dependability__availability" title="feat_req__persistency__async_api">stkh_req__dependability__availability</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_request" title="feat_req__persistency__async_api">stkh_req__app_architectures__support_request</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__async_api" title="feat_req__persistency__async_api">comp_req__persistency__async_api</a></span></span></div>
-<div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#feat_arc_sta__persistency__static" title="feat_req__persistency__async_api">feat_arc_sta__persistency__static</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__async_api" title="feat_req__persistency__async_api">comp_req__persistency__async_api</a></span></span></div>
+<div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#feat_arc_sta__persistency__static" title="feat_req__persistency__async_api">feat_arc_sta__persistency__static</a>, <a class="reference internal" href="../architecture/index.html#logic_arc_int__persistency__interface" title="feat_req__persistency__async_api">logic_arc_int__persistency__interface</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1569,7 +1571,7 @@ manipulating data.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d2aa7eab">
+<div class="need_container docutils container" id="SNCB-5da8e5ce">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__persistency__access_control">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1579,7 +1581,7 @@ manipulating data.</p></td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
-<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
 <td class="head_right" colspan="2"><div class="needs_head_right line-block">
@@ -1589,13 +1591,13 @@ manipulating data.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistencykvs</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__persistency__access_control">stkh_req__dependability__security_features</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__permission_control" title="feat_req__persistency__access_control">comp_req__persistency__permission_control</a>, <a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__permission_err_handle" title="feat_req__persistency__access_control">comp_req__persistency__permission_err_handle</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__permission_control" title="feat_req__persistency__access_control">comp_req__persistency__permission_control</a>, <a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__permission_err_handle" title="feat_req__persistency__access_control">comp_req__persistency__permission_err_handle</a></span></span></div>
 <div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#feat_arc_sta__persistency__static" title="feat_req__persistency__access_control">feat_arc_sta__persistency__static</a></span></span></div>
 </span></div>
 </div>
@@ -1619,7 +1621,7 @@ access individual data stores.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-08e91290">
+<div class="need_container docutils container" id="SNCB-3ffd5e12">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__persistency__events">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1639,13 +1641,13 @@ access individual data stores.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistencykvs</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_data" title="feat_req__persistency__events">stkh_req__app_architectures__support_data</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__callback_support" title="feat_req__persistency__events">comp_req__persistency__callback_support</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__callback_support" title="feat_req__persistency__events">comp_req__persistency__callback_support</a></span></span></div>
 <div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#feat_arc_sta__persistency__static" title="feat_req__persistency__events">feat_arc_sta__persistency__static</a>, <a class="reference internal" href="../architecture/index.html#feat_arc_dyn__persistency__delete_key" title="feat_req__persistency__events">feat_arc_dyn__persistency__delete_key</a></span></span></div>
 </span></div>
 </div>
@@ -1670,7 +1672,7 @@ specific events, such as when keys are changed or removed.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-65c3ef3a">
+<div class="need_container docutils container" id="SNCB-8d1d3fd5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__persistency__fast_access">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1690,13 +1692,12 @@ specific events, such as when keys are changed or removed.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistencykvs</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__execution_model__short_app_cycles" title="feat_req__persistency__fast_access">stkh_req__execution_model__short_app_cycles</a></span></span></div>
-<div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#logic_arc_int__persistency__interface" title="feat_req__persistency__fast_access">logic_arc_int__persistency__interface</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1719,7 +1720,7 @@ specific events, such as when keys are changed or removed.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-13d1a6e3">
+<div class="need_container docutils container" id="SNCB-6e90fa83">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__persistency__intra_process_comm">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1729,7 +1730,7 @@ specific events, such as when keys are changed or removed.</p></td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
-<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
 <td class="head_right" colspan="2"><div class="needs_head_right line-block">
@@ -1739,13 +1740,13 @@ specific events, such as when keys are changed or removed.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistencykvs</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__intra_process" title="feat_req__persistency__intra_process_comm">stkh_req__communication__intra_process</a></span></span></div>
-<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__concurrency" title="feat_req__persistency__intra_process_comm">comp_req__persistency__concurrency</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../modules/persistency/kvs/docs/requirements/index.html#comp_req__persistency__concurrency" title="feat_req__persistency__intra_process_comm">comp_req__persistency__concurrency</a></span></span></div>
 <div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#feat_arc_sta__persistency__static" title="feat_req__persistency__intra_process_comm">feat_arc_sta__persistency__static</a></span></span></div>
 </span></div>
 </div>
@@ -1771,7 +1772,7 @@ specific events, such as when keys are changed or removed.</p></td>
 </section>
 <section id="aou-requirements">
 <h1>AoU Requirements<a class="headerlink" href="#aou-requirements" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-c8227324">
+<div class="need_container docutils container" id="SNCB-4c3a1d9e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__persistency__error_handling">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1791,12 +1792,13 @@ specific events, such as when keys are changed or removed.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">environment</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">environment</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
-<div class="line"><span></span></div>
+<div class="line"><span><div class="line">mitigated by: <span class="mitigates"><span><a class="reference internal" href="../safety_analysis/fmea.html#feat_saf_fmea__persistency__message_nreived" title="aou_req__persistency__error_handling">feat_saf_fmea__persistency__message_nreived</a>, <a class="reference internal" href="../safety_analysis/fmea.html#feat_saf_fmea__persistency__late_message" title="aou_req__persistency__error_handling">feat_saf_fmea__persistency__late_message</a>, <a class="reference internal" href="../safety_analysis/fmea.html#feat_saf_fmea__persistency__corrupted_message" title="aou_req__persistency__error_handling">feat_saf_fmea__persistency__corrupted_message</a>, <a class="reference internal" href="../safety_analysis/fmea.html#feat_saf_fmea__persistency__not_sent" title="aou_req__persistency__error_handling">feat_saf_fmea__persistency__not_sent</a>, <a class="reference internal" href="../safety_analysis/fmea.html#feat_saf_fmea__persistency__unintendend" title="aou_req__persistency__error_handling">feat_saf_fmea__persistency__unintendend</a>, <a class="reference internal" href="../safety_analysis/fmea.html#feat_saf_fmea__persistency__calc_wrong" title="aou_req__persistency__error_handling">feat_saf_fmea__persistency__calc_wrong</a>, <a class="reference internal" href="../safety_analysis/fmea.html#feat_saf_fmea__persistency__too_slow" title="aou_req__persistency__error_handling">feat_saf_fmea__persistency__too_slow</a>, <a class="reference internal" href="../safety_analysis/fmea.html#feat_saf_fmea__persistency__too_fast" title="aou_req__persistency__error_handling">feat_saf_fmea__persistency__too_fast</a>, <a class="reference internal" href="../safety_analysis/fmea.html#feat_saf_fmea__persistency__err_handl" title="aou_req__persistency__error_handling">feat_saf_fmea__persistency__err_handl</a>, <a class="reference internal" href="../safety_analysis/fmea.html#feat_saf_fmea__persistency__arbitrary" title="aou_req__persistency__error_handling">feat_saf_fmea__persistency__arbitrary</a>, <a class="reference internal" href="../safety_analysis/fmea.html#feat_saf_fmea__persistency__infinite" title="aou_req__persistency__error_handling">feat_saf_fmea__persistency__infinite</a></span></span></div>
+</span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
@@ -1817,7 +1819,7 @@ specific events, such as when keys are changed or removed.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-0f51f589">
+<div class="need_container docutils container" id="SNCB-a1dfd575">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__persistency__appl_design">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1837,7 +1839,7 @@ specific events, such as when keys are changed or removed.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">environment</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">environment</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
@@ -1863,7 +1865,7 @@ specific events, such as when keys are changed or removed.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4f0c0bc6">
+<div class="need_container docutils container" id="SNCB-0fbb06a1">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__persistency__appl_exec">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1883,7 +1885,7 @@ specific events, such as when keys are changed or removed.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">environment</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">environment</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>

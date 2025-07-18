@@ -21,7 +21,7 @@ Architecture
    :id: doc__persistency_kvs_feat_arch
    :status: valid
    :safety: ASIL_B
-   :realizes: wp__feature_arch
+   :realizes: PROCESS_wp__feature_arch
 
 Overview
 --------
@@ -138,7 +138,7 @@ Logical Interfaces
    :id: logic_arc_int__persistency__interface
    :security: YES
    :safety: ASIL_B
-   :fulfils: stkh_req__communication__stable_app_inter,stkh_req__dev_experience__prog_languages,feat_req__persistency__fast_access
+   :fulfils: feat_req__persistency__async_api
    :status: valid
 
    .. uml:: _assets/kvs_interface.puml
