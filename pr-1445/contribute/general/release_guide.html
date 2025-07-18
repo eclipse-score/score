@@ -492,24 +492,25 @@
 <span id="id1"></span><h1>Module Release Guide<a class="headerlink" href="#module-release-guide" title="Link to this heading">#</a></h1>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
-<p>In order to use different modules via the Bazel ecosystem, the modules have to be released and registered in the Score Bazel Registry.
-This short guide will show you the steps necessary to create a release and make it available for other Bazel modules.</p>
+<p>In order to use different Modules via the Bazel ecosystem, the Modules have to be released and registered in the S-CORE Bazel Registry.
+This short guide will show you the steps necessary to create a release and make it available for other Bazel Modules.</p>
 </section>
 <section id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
 <p>Before starting the release process, ensure you have:</p>
 <ul class="simple">
-<li><p>Write access to the GitHub repository</p></li>
-<li><p>Access to the Bazel Central Registry repository</p></li>
+<li><p>Write access to the GitHub repository which contains the to be released Module</p></li>
+<li><p>Access &amp; ability to create pr’s (via Fork or otherwise) to the <cite>S-CORE Bazel registry repository &lt;https://github.com/eclipse-score/bazel_registry&gt;</cite></p></li>
 <li><p>All necessary changes merged into the main branch</p></li>
 <li><p>Understanding of semantic versioning principles</p></li>
 </ul>
+<p>For further and more detailed information take a look at the <cite>Release Management Process &lt;https://eclipse-score.github.io/score/pr-1445/platform_management_plan/release_management.html&gt;</cite></p>
 </section>
-<section id="step-by-step-release-process">
-<h2>Step-by-Step Release Process<a class="headerlink" href="#step-by-step-release-process" title="Link to this heading">#</a></h2>
+<section id="module-release-process">
+<h2>Module Release Process<a class="headerlink" href="#module-release-process" title="Link to this heading">#</a></h2>
 <section id="verify-main-branch-status">
 <h3>1. Verify Main Branch Status<a class="headerlink" href="#verify-main-branch-status" title="Link to this heading">#</a></h3>
-<p>Ensure that all wanted changes are merged into the newest main branch.</p>
+<p>Navigate to your GitHub repository and ensure that all wanted changes are merged into the main branch.</p>
 </section>
 <section id="update-module-bazel-version">
 <h3>2. Update MODULE.bazel Version<a class="headerlink" href="#update-module-bazel-version" title="Link to this heading">#</a></h3>
@@ -521,28 +522,48 @@ This short guide will show you the steps necessary to create a release and make 
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>Follow semantic versioning (SemVer) principles:
-- <strong>Major version</strong> (x): (Often times), Breaking changes
-- <strong>Minor version</strong> (y): New features, backward compatible
-- <strong>Patch version</strong> (z): Bug fixes, backward compatible</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><em>If the version in the MODULE.bazel is different from the one you want to release, you need to update them to match</em></p>
+</div>
+<p>Follow semantic versioning (SemVer) principles:</p>
+<ul class="simple">
+<li><p><strong>MAJOR</strong>: Incremented for incompatible API changes.</p></li>
+<li><p><strong>MINOR</strong>: Incremented for backward-compatible functionality additions.</p></li>
+<li><p><strong>PATCH</strong>: Incremented for backward-compatible bug fixes.</p></li>
+</ul>
+<p>For a more detailed description of when to update which version look at the <cite>Release Management Process &lt;https://eclipse-score.github.io/score/pr-1445/platform_management_plan/release_management.html#identification&gt;</cite></p>
 <p>If you have a major version change that <strong>breaks</strong> backwards compatibility, then make sure to also increase the
-compatibility level inside the MODULE.bazel file.
-The compatibility level should be the lowest supported major version that this new version is still compatible with.</p>
+compatibility level inside the MODULE.bazel file.</p>
+<p>The compatibility level should be the lowest supported major version that this new version is still compatible with.</p>
 </section>
 <section id="create-github-release">
 <h3>3. Create GitHub Release<a class="headerlink" href="#create-github-release" title="Link to this heading">#</a></h3>
-<p>Navigate to your GitHub repository and create a new release:</p>
+<blockquote>
+<div><p>Create a new release:</p>
+</div></blockquote>
 <ol class="loweralpha">
 <li><p>Go to the GitHub repository page</p></li>
 <li><p>On the right-hand side, click ‘Create a new release’</p>
 <a class="reference internal image-reference" href="../../_images/Github_release_button.png"><img alt="Github Release Button Location" src="../../_images/Github_release_button.png" style="width: 800px;" />
 </a>
 </li>
-<li><p>Create a new tag for your release</p></li>
 </ol>
-</section>
-<section id="create-release-tag">
-<h3>4. Create Release Tag<a class="headerlink" href="#create-release-tag" title="Link to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Your Release button might look different</p>
+<a class="reference internal image-reference" href="../../_images/Releases_other_way.png"><img alt="Github Release Alternate Look" src="../../_images/Releases_other_way.png" style="width: 800px;" />
+</a>
+</div>
+<p><strong>If this is the case, you then can create a new release via this button on the following screen.</strong></p>
+<a class="reference internal image-reference" href="../../_images/Releases_other_way_button.png"><img alt="Github Release Alternate Look Page 2" src="../../_images/Releases_other_way_button.png" style="width: 800px;" />
+</a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ol class="loweralpha simple" start="3">
+<li><p>Create a release tag</p></li>
+</ol>
 <p>Create a new tag following the format <code class="docutils literal notranslate"><span class="pre">vx.y.z</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">v1.2.3</span></code>):</p>
 <ul>
 <li><p>The tag should match exactly with the version in <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code></p></li>
@@ -560,6 +581,12 @@ The compatibility level should be the lowest supported major version that this n
 <section id="write-release-notes">
 <h3>5. Write Release Notes<a class="headerlink" href="#write-release-notes" title="Link to this heading">#</a></h3>
 <p>Add meaningful release notes that document the changes you made since your last release.</p>
+<p>You can use the generate release notes button to get a good starting point.</p>
+<a class="reference internal image-reference" href="../../_images/Generate_release_notes_button.png"><img alt="Generate Release Notes Button" src="../../_images/Generate_release_notes_button.png" style="width: 400px;" />
+</a>
+<p>This then will give you something similar to this:</p>
+<a class="reference internal image-reference" href="../../_images/Generated_release_notes.png"><img alt="Generated Release Notes" src="../../_images/Generated_release_notes.png" style="width: 400px;" />
+</a>
 </section>
 <section id="set-pre-release-status-if-applicable">
 <h3>6. Set Pre-release Status (if applicable)<a class="headerlink" href="#set-pre-release-status-if-applicable" title="Link to this heading">#</a></h3>
@@ -571,7 +598,7 @@ The compatibility level should be the lowest supported major version that this n
 </section>
 <section id="register-in-bazel-central-registry">
 <h3>7. Register in Bazel Central Registry<a class="headerlink" href="#register-in-bazel-central-registry" title="Link to this heading">#</a></h3>
-<p>After publishing the GitHub release, you need to add the module to the Bazel Central Registry:</p>
+<p>After publishing the GitHub release in the Module repository, you need to add the Module to the Bazel Central Registry:</p>
 <section id="copy-module-bazel">
 <h4>8.1 Copy MODULE.bazel<a class="headerlink" href="#copy-module-bazel" title="Link to this heading">#</a></h4>
 <p>Copy the <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code> file from your released version to the registry structure:</p>
@@ -645,9 +672,9 @@ add your release version to it.</p>
 <span class="w">     </span><span class="s2">&quot;github:&lt;your-org&gt;/&lt;your-repo&gt;&quot;</span>
 <span class="w"> </span><span class="p">],</span>
 <span class="w"> </span><span class="nt">&quot;versions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">     </span><span class="s2">&quot;0.1.0&quot;</span><span class="p">,</span>
-<span class="w">     </span><span class="s2">&quot;0.1.2&quot;</span><span class="p">,</span>
-<span class="w">     </span><span class="s2">&quot;0.2.0&quot;</span><span class="p">,</span>
+<span class="w">     </span><span class="s2">&quot;0.0.7&quot;</span><span class="p">,</span>
+<span class="w">     </span><span class="s2">&quot;0.0.8&quot;</span><span class="p">,</span>
+<span class="w">     </span><span class="s2">&quot;0.1.0&quot;</span>
 <span class="w"> </span><span class="p">],</span>
 <span class="w"> </span><span class="nt">&quot;yanked_versions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
 <span class="p">}</span>
@@ -657,16 +684,16 @@ add your release version to it.</p>
 </section>
 <section id="verify-module-registration-create-a-pr">
 <h3>10. Verify Module Registration &amp; Create a PR<a class="headerlink" href="#verify-module-registration-create-a-pr" title="Link to this heading">#</a></h3>
-<p>Before submitting your changes, verify that the module is correctly configured:</p>
+<p>Before submitting your changes, verify that the Module is correctly configured:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># In the bazel-central-registry directory</span>
 bazel<span class="w"> </span>run<span class="w"> </span>//tools:verify_modules
 </pre></div>
 </div>
 <p>This command will:
-- Validate the module structure
+- Validate the Module structure
 - Check that all files are present and correctly formatted
 - Verify that the archive can be downloaded and extracted
-- Ensure the module can be built successfully</p>
+- Ensure the Module can be built successfully</p>
 <p>If everything is green, create a PR that includes your changes.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -675,9 +702,12 @@ bazel<span class="w"> </span>run<span class="w"> </span>//tools:verify_modules
 </section>
 <section id="your-module-should-now-be-available">
 <h3>Your Module Should now Be Available<a class="headerlink" href="#your-module-should-now-be-available" title="Link to this heading">#</a></h3>
-<p>Once your pull request is merged into the main branch of the Bazel Central Registry, your module becomes available for use as a dependency in any other Bazel project.</p>
-<p>Users can now add your module to their <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code> file:</p>
+<p>Once your pull request is merged into the main branch of the Bazel Central Registry, your Module becomes available for use as a dependency in any other Bazel project.</p>
+<p>Users can now add your Module to their <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code> file:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;your_module_name&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;x.y.z&quot;</span><span class="p">)</span>
+
+<span class="c1"># example</span>
+<span class="c1"># bazel_dep(name = &quot;score_process&quot;, version = &quot;1.0.4&quot;)</span>
 </pre></div>
 </div>
 </section>
@@ -733,11 +763,10 @@ bazel<span class="w"> </span>run<span class="w"> </span>//tools:verify_modules
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-by-step-release-process">Step-by-Step Release Process</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-release-process">Module Release Process</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-main-branch-status">1. Verify Main Branch Status</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update-module-bazel-version">2. Update MODULE.bazel Version</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-github-release">3. Create GitHub Release</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-release-tag">4. Create Release Tag</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-release-notes">5. Write Release Notes</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-pre-release-status-if-applicable">6. Set Pre-release Status (if applicable)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#register-in-bazel-central-registry">7. Register in Bazel Central Registry</a><ul class="nav section-nav flex-column">
