@@ -21,26 +21,28 @@ Module Release Guide
 Overview
 --------
 
-In order to use different modules via the Bazel ecosystem, the modules have to be released and registered in the Score Bazel Registry. 
-This short guide will show you the steps necessary to create a release and make it available for other Bazel modules.
+In order to use different Modules via the Bazel ecosystem, the Modules have to be released and registered in the S-CORE Bazel Registry. 
+This short guide will show you the steps necessary to create a release and make it available for other Bazel Modules.
 
 Prerequisites
 -------------
 
 Before starting the release process, ensure you have:
 
-- Write access to the GitHub repository
-- Access to the Bazel Central Registry repository
+- Write access to the GitHub repository which contains the to be released Module
+- Access & ability to create pr's (via Fork or otherwise) to the `S-CORE Bazel registry repository <https://github.com/eclipse-score/bazel_registry>`
 - All necessary changes merged into the main branch
 - Understanding of semantic versioning principles
 
-Step-by-Step Release Process
-----------------------------
+For further and more detailed information take a look at the `Release Management Process <https://eclipse-score.github.io/score/pr-1445/platform_management_plan/release_management.html>`
+
+Module Release Process
+----------------------
 
 1. Verify Main Branch Status
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Ensure that all wanted changes are merged into the newest main branch.
+Navigate to your GitHub repository and ensure that all wanted changes are merged into the main branch.
 
 
 2. Update MODULE.bazel Version
@@ -56,19 +58,28 @@ Ensure that the ``MODULE.bazel`` version matches the version you are about to re
        compatibility_level = 0,
    )
 
+.. important:: 
+   *If the version in the MODULE.bazel is different from the one you want to release, you need to update them to match*
+
 Follow semantic versioning (SemVer) principles:
-- **Major version** (x): (Often times), Breaking changes
-- **Minor version** (y): New features, backward compatible
-- **Patch version** (z): Bug fixes, backward compatible
+
+* **MAJOR**: Incremented for incompatible API changes.
+
+* **MINOR**: Incremented for backward-compatible functionality additions.
+
+* **PATCH**: Incremented for backward-compatible bug fixes.
+
+For a more detailed description of when to update which version look at the `Release Management Process <https://eclipse-score.github.io/score/pr-1445/platform_management_plan/release_management.html#identification>`
 
 If you have a major version change that **breaks** backwards compatibility, then make sure to also increase the 
-compatibility level inside the MODULE.bazel file. 
+compatibility level inside the MODULE.bazel file.   
+
 The compatibility level should be the lowest supported major version that this new version is still compatible with.
 
 3. Create GitHub Release
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Navigate to your GitHub repository and create a new release:
+ Create a new release:
 
 a. Go to the GitHub repository page
 b. On the right-hand side, click 'Create a new release'
@@ -77,13 +88,25 @@ b. On the right-hand side, click 'Create a new release'
       :width: 800
       :alt: Github Release Button Location
 
-c. Create a new tag for your release
+.. note:: Your Release button might look different
 
 
+   .. image:: _assets/Releases_other_way.png
+      :width: 800
+      :alt: Github Release Alternate Look 
+
+**If this is the case, you then can create a new release via this button on the following screen.**
+
+.. image:: _assets/Releases_other_way_button.png
+   :width: 800
+   :alt: Github Release Alternate Look Page 2
 
 
-4. Create Release Tag
-~~~~~~~~~~~~~~~~~~~~~
+|
+
+c. Create a release tag
+
+
 
 Create a new tag following the format ``vx.y.z`` (e.g., ``v1.2.3``):
 
@@ -99,10 +122,25 @@ Create a new tag following the format ``vx.y.z`` (e.g., ``v1.2.3``):
       :width: 800
       :alt: Creating Tag On Publish
 
+
 5. Write Release Notes
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Add meaningful release notes that document the changes you made since your last release.
+Add meaningful release notes that document the changes you made since your last release.  
+
+
+You can use the generate release notes button to get a good starting point.
+
+.. image:: _assets/Generate_release_notes_button.png
+   :width: 400
+   :alt: Generate Release Notes Button
+
+
+This then will give you something similar to this:
+
+.. image:: _assets/Generated_release_notes.png
+   :width: 400
+   :alt: Generated Release Notes
 
 
 6. Set Pre-release Status (if applicable)
@@ -118,7 +156,7 @@ Ensure all entered information is correct before you release. Check the pre-rele
 7. Register in Bazel Central Registry
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-After publishing the GitHub release, you need to add the module to the Bazel Central Registry:
+After publishing the GitHub release in the Module repository, you need to add the Module to the Bazel Central Registry:
 
 8.1 Copy MODULE.bazel
 """""""""""""""""""""
@@ -207,9 +245,9 @@ Here is an example file
         "github:<your-org>/<your-repo>"
     ],
     "versions": [
-        "0.1.0",
-        "0.1.2",
-        "0.2.0",
+        "0.0.7",
+        "0.0.8",
+        "0.1.0" 
     ],
     "yanked_versions": {}
    }
@@ -219,7 +257,7 @@ Here is an example file
 10. Verify Module Registration & Create a PR
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Before submitting your changes, verify that the module is correctly configured:
+Before submitting your changes, verify that the Module is correctly configured:
 
 .. code-block:: bash
 
@@ -227,10 +265,10 @@ Before submitting your changes, verify that the module is correctly configured:
    bazel run //tools:verify_modules
 
 This command will:
-- Validate the module structure
+- Validate the Module structure
 - Check that all files are present and correctly formatted
 - Verify that the archive can be downloaded and extracted
-- Ensure the module can be built successfully
+- Ensure the Module can be built successfully
 
 If everything is green, create a PR that includes your changes.
 
@@ -240,11 +278,15 @@ If everything is green, create a PR that includes your changes.
 Your Module Should now Be Available
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Once your pull request is merged into the main branch of the Bazel Central Registry, your module becomes available for use as a dependency in any other Bazel project.
+Once your pull request is merged into the main branch of the Bazel Central Registry, your Module becomes available for use as a dependency in any other Bazel project.
 
-Users can now add your module to their ``MODULE.bazel`` file:
+Users can now add your Module to their ``MODULE.bazel`` file:
 
 .. code-block:: python
 
    bazel_dep(name = "your_module_name", version = "x.y.z")
+
+   # example 
+   # bazel_dep(name = "score_process", version = "1.0.4")
+   
 
