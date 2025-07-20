@@ -68,7 +68,7 @@ This evaluation initially targets the following process configurations:
 * Processes running on different operating systems but under the same hypervisor.
 
 Supporting different endianness between processes is explicitly out of scope, as it inherently demands bit manipulation, effectively requiring serialization.
-Different bit widths, however, are implicity supported by specifying the width of all types and excluding word-size integers.
+Different bit widths, however, are implicitly supported by specifying the width of all types and excluding word-size integers.
 
 The following data types shall be supported by the IPC mechanism:
 
@@ -110,19 +110,9 @@ A critical scalability feature involves gateway processes, which subscribe to IP
 
 In summary, the motivation behind this feature request is to define and standardize ABI-compatible data types and a runtime-accessible type description mechanism to ensure interoperability and scalability in zero-copy IPC scenarios involving multiple languages and dynamic environments.
 
-Reflection
-^^^^^^^^^^
 
-Reflection, in this context, is the ability to inspect data at runtime even if its structure is not or not fully known at compile time.
-Benefits of reflection include being able to translate recorded data into a human-readable format (e.g., JSON or CSV) without having to know the type definitions at compile time; this enables general-purpose data recording and transformation tools.
-
-This ability requires some form of *type description* being available at runtime, so that a sequence of bytes can be interpreted as a data structure.
-There exist two primary approaches:
-
-* *inline type descriptions*, which precede each instance of every type, and
-* *explicit type descriptions*, which are stored separately from the data.
-
-Reflection will not be part of version 1.0 of this feature request.
+.. Rationale
+.. ==========
 
 
 Specification
@@ -171,7 +161,7 @@ These types are ABI-compatible when declared using fixed-size standard types:
      - C++17
    * - Boolean
      - ``bool``
-     - ``bool`` (1 byte)
+     - ``bool`` (1 byte, with ``0x00`` and ``0x01`` as the only valid bit patterns)
    * - Integers (N = 8..128)
      - ``uN``, ``iN``
      - ``std::uintN_t``, ``std::intN_t``
@@ -187,7 +177,11 @@ Structs and Tuples
 Structs and tuples are supported using standard layout rules:
 
 * **Rust**: Requires ``#[repr(C)]``
-* **C++**: Requires ``standard_layout`` types with no inheritance or virtual functions
+  (guarantees C-compatible memory layout;
+  `full specification <https://doc.rust-lang.org/reference/type-layout.html#the-c-representation>`__)
+* **C++**: Requires ``standard_layout``
+  (no virtual functions, no virtual inheritance, and only one class in the hierarchy has non-static data members;
+  `full specification <https://en.cppreference.com/w/cpp/language/classes.html#Standard-layout_class>`__)
 
 Field ordering must be preserved and padding must be identical across compilers. Any alignment greater than the default must be explicitly declared.
 
@@ -405,8 +399,72 @@ All functionality shall be available to applications rated up to ASIL-B.
 .. How to Teach This
 .. ==================
 
-.. Rejected Ideas
-.. ==============
+
+Rejected Ideas
+==============
+
+Reflection
+----------
+
+Reflection, in this context, is the ability to inspect data at runtime even if its structure is not or not fully known at compile time.
+Benefits of reflection include being able to translate recorded data into a human-readable format (e.g., JSON or CSV) without having to know the type definitions at compile time; this enables general-purpose data recording and transformation tools.
+
+This ability requires some form of *type description* being available at runtime, so that a sequence of bytes can be interpreted as a data structure.
+There are two primary approaches to achieve this goal:
+
+* *inline type descriptions*, which precede each instance of every type, and
+* *external type descriptions*, which are stored separately from the data.
+
+Reflection will not be part of version 1.0 of this feature request.
+
+Inline Type Descriptions
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+An explicit transformation step between the in-memory representation and the SOME/IP+TLV format can – in theory – be avoided by adding TLVs to ABI compatible types.
+This approach, however, comes with significant downsides:
+
+* Adding inline type descriptions incurs a significant memory overhead across the board, and leads to worse cache behavior.
+* It mandates TLV for *all* instances of *all* ABI compatible types, even when TLV is not needed (for example, in a non-TLV SOME/IP gateway).
+  * This might be mitigated by making TLV optional through a generic respectively a template parameter on the type declaration.
+* SOME/IP's specification of big-endianness is in conflict with the requirement of native-endianness for ABI compatible types, making the feasibility of this approach questionable.
+* SOME/IP doesn't support "unused" slots in dynamic arrays, so ABI compatible types containing *vectors* (which differentiate between the length and the capacity) couldn't be directly represented in SOME/IP anyway.
+
+Alternative Approach
+^^^^^^^^^^^^^^^^^^^^
+
+Instead of inserting inline type descriptions into each instance of an ABI compatible type, the full type description can be made available to a consumer only once, either proactively or on request.
+The consumer decides if it uses or ignores this metadata.
+
+This type description can be used to dynamically translate between the compact, non-reflective ABI compatible data structures on one side, and a reflective, inline-describing format on the other side.
+Although this incurs a copy and some minor processing, the overhead should be negligible compared to other computational tasks involving the payload.
+
+One method to efficiently translate a payload consisting of ABI compatible types to an inline-described reflective format is to convert the hierarchical type description to a flat list of *instructions* which can be executed by an interpreter.
+Both the instructions and the interpreter would be specific for the target format.
+For example, to translate in-memory ABI compatible types to SOME/IP data structures, the instructions could look like this:
+
+.. code-block:: rust
+
+    enum Transformation {
+        /// Copies `length` bytes from input to output.
+        Copy { length: usize, }
+
+        /// Copies 2 bytes from input to output, swapping endianness.
+        SwapEndian2,
+
+        /// Copies 4 bytes from input to output, swapping endianness.
+        SwapEndian4,
+
+        /// Copies 8 bytes from input to output, swapping endianness.
+        SwapEndian8,
+
+        /// Reads an ABI compatible vector (with an element size of `stride` bytes) from the input,
+        /// writes the length as big-endian to the output, and writes the given number of elements
+        /// to the output.
+        CopyVectorWithLength { stride: usize },
+
+        ...
+    }
+
 
 .. Open Issues
 .. ===========
