@@ -171,7 +171,7 @@ These types are ABI-compatible when declared using fixed-size standard types:
      - C++17
    * - Boolean
      - ``bool``
-     - ``bool`` (1 byte)
+     - ``bool`` (1 byte, with ``0x00`` and ``0x01`` as the only valid bit patterns)
    * - Integers (N = 8..128)
      - ``uN``, ``iN``
      - ``std::uintN_t``, ``std::intN_t``
@@ -187,7 +187,11 @@ Structs and Tuples
 Structs and tuples are supported using standard layout rules:
 
 * **Rust**: Requires ``#[repr(C)]``
-* **C++**: Requires ``standard_layout`` types with no inheritance or virtual functions
+  (guarantees C-compatible memory layout;
+  `full specification <https://doc.rust-lang.org/reference/type-layout.html#the-c-representation>`__)
+* **C++**: Requires ``standard_layout``
+  (no virtual functions, no virtual inheritance, and only one class in the hierarchy has non-static data members;
+  `full specification <https://en.cppreference.com/w/cpp/language/classes.html#Standard-layout_class>`__)
 
 Field ordering must be preserved and padding must be identical across compilers. Any alignment greater than the default must be explicitly declared.
 
