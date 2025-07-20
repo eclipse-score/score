@@ -481,7 +481,7 @@
                   
   <section id="abi-compatible-data-types">
 <span id="abi-compatible-data-types-feature"></span><h1>ABI Compatible Data Types<a class="headerlink" href="#abi-compatible-data-types" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-06571cf4">
+<div class="need_container docutils container" id="SNCB-6e8b57be">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__abi_compatible_data_types">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -877,7 +877,6 @@ There are two primary approaches to achieve this goal:</p>
 <li><p><em>inline type descriptions</em>, which precede each instance of every type, and</p></li>
 <li><p><em>external type descriptions</em>, which are stored separately from the data.</p></li>
 </ul>
-<p>Reflection will not be part of version 1.0 of this feature request.</p>
 <section id="inline-type-descriptions">
 <h4>Inline Type Descriptions<a class="headerlink" href="#inline-type-descriptions" title="Link to this heading">#</a></h4>
 <p>An explicit transformation step between the in-memory representation and the SOME/IP+TLV format can – in theory – be avoided by adding TLVs to ABI compatible types.
@@ -921,6 +920,22 @@ For example, to translate in-memory ABI compatible types to SOME/IP data structu
 <span class="p">}</span>
 </pre></div>
 </div>
+</section>
+<section id="rationale-for-rejection">
+<h4>Rationale for Rejection<a class="headerlink" href="#rationale-for-rejection" title="Link to this heading">#</a></h4>
+<p>Reflection will not be part of version 1.0 of this feature request.</p>
+<ul class="simple">
+<li><p>Inline type descriptions are too intrusive and generate too much overhead:</p>
+<ol class="arabic simple">
+<li><p>Choosing one particular format, like SOME/IP TLV, would bias the entire system against other formats.</p></li>
+<li><p>To take full advantage of zero-copy IPC, ABI compatible types must be used during production and consumption of the transmitted data. Having to carry around inline type descriptions in those computations would have a non-negligible performance overhead.</p></li>
+<li><p>The specification for SOME/IP types is incompatible with the requirement of ABI vectors that can grow dynamically during construction, i.e., vectors which contain fewer valid elements than they take up space in memory.</p></li>
+<li><p>Inserting inline type descriptions on demand is expected to be a relatively cheap operation, which negates the main motivation for including them directly in ABI types in the first place.</p></li>
+</ol>
+</li>
+<li><p>External type descriptions will probably be included in a later version of this feature request.
+For now, they’re postponed until we have a better understanding of the relevant use cases.</p></li>
+</ul>
 </section>
 </section>
 </section>
@@ -1010,6 +1025,7 @@ For example, to translate in-memory ABI compatible types to SOME/IP data structu
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">Reflection</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inline-type-descriptions">Inline Type Descriptions</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-approach">Alternative Approach</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale-for-rejection">Rationale for Rejection</a></li>
 </ul>
 </li>
 </ul>

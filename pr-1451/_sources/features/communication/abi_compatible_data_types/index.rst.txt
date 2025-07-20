@@ -415,8 +415,6 @@ There are two primary approaches to achieve this goal:
 * *inline type descriptions*, which precede each instance of every type, and
 * *external type descriptions*, which are stored separately from the data.
 
-Reflection will not be part of version 1.0 of this feature request.
-
 Inline Type Descriptions
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -464,6 +462,21 @@ For example, to translate in-memory ABI compatible types to SOME/IP data structu
 
         ...
     }
+
+Rationale for Rejection
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Reflection will not be part of version 1.0 of this feature request.
+
+* Inline type descriptions are too intrusive and generate too much overhead:
+
+  1. Choosing one particular format, like SOME/IP TLV, would bias the entire system against other formats.
+  2. To take full advantage of zero-copy IPC, ABI compatible types must be used during production and consumption of the transmitted data. Having to carry around inline type descriptions in those computations would have a non-negligible performance overhead.
+  3. The specification for SOME/IP types is incompatible with the requirement of ABI vectors that can grow dynamically during construction, i.e., vectors which contain fewer valid elements than they take up space in memory.
+  4. Inserting inline type descriptions on demand is expected to be a relatively cheap operation, which negates the main motivation for including them directly in ABI types in the first place.
+
+* External type descriptions will probably be included in a later version of this feature request.
+  For now, they're postponed until we have a better understanding of the relevant use cases.
 
 
 .. Open Issues
