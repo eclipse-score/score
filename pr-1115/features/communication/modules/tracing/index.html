@@ -63,6 +63,13 @@
     <script src="../../../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
     <script src="../../../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'features/communication/modules/tracing/index';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
     <link rel="next" title="SOME/IP-Gateway" href="../../some_ip_gateway/index.html" />
@@ -260,6 +267,26 @@
         </li>
 </ul></div>
       
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
     </div>
     
   </div>
@@ -402,6 +429,26 @@
         </li>
 </ul></div>
         
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
       </div>
     
   </div>
@@ -503,7 +550,7 @@
                   
   <section id="tracing-module">
 <h1>Tracing Module<a class="headerlink" href="#tracing-module" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-5746334e">
+<div class="need_container docutils container" id="SNCB-030b0dfa">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_mod_view_sta table" id="mod_view_sta__tracing__tracing">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -522,7 +569,8 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span></span></span></div>
+</span></span></div>
 <div class="line"><span><div class="line">includes: <span class="includes"><span><a class="reference internal" href="#comp_arc_sta__tracing__tracing" title="mod_view_sta__tracing__tracing">comp_arc_sta__tracing__tracing</a></span></span></div>
 </span></div>
 </div>
@@ -530,7 +578,7 @@
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-features/communication/modules/tracing/index-0">
-<object data="../../../../_images/plantuml-a11aa36cd69e0771b0d56bc1ecdb5a3f24897245.svg" type="image/svg+xml" style="width:153px;height:230px;background:#FFFFFF;"></object></p>
+<object data="../../../../_images/plantuml-a436e374bfe9d9ceb56fa396c9e796500ddef1aa.svg" type="image/svg+xml" style="width:153px;height:230px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -549,7 +597,7 @@
 </div>
 <section id="tracing-component-architecture">
 <h2>Tracing Component Architecture<a class="headerlink" href="#tracing-component-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-6687896e">
+<div class="need_container docutils container" id="SNCB-aa457dc3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__tracing__tracing">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -569,6 +617,7 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span></span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
 </span></span></div>
@@ -595,7 +644,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-62ea1b94">
+<div class="need_container docutils container" id="SNCB-cb1389f6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__tracing__tracing">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -615,11 +664,12 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span></span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="#comp_arc_sta__tracing__tracing" title="logic_arc_int__tracing__tracing">comp_arc_sta__tracing__tracing</a></span></span></div>
-<div class="line">used by: <span class="uses"><span><a class="reference internal" href="../communication/ipc_binding_architecture.html#comp_arc_sta__com__ipc_binding" title="logic_arc_int__tracing__tracing">comp_arc_sta__com__ipc_binding</a>, <a class="reference internal" href="../communication/frontent_component_architecture.html#comp_arc_sta__com__frontend" title="logic_arc_int__tracing__tracing">comp_arc_sta__com__frontend</a></span></span></div>
+<div class="line">used by: <span class="uses"><span><a class="reference internal" href="../communication/frontent_component_architecture.html#comp_arc_sta__com__frontend" title="logic_arc_int__tracing__tracing">comp_arc_sta__com__frontend</a>, <a class="reference internal" href="../communication/ipc_binding_architecture.html#comp_arc_sta__com__ipc_binding" title="logic_arc_int__tracing__tracing">comp_arc_sta__com__ipc_binding</a></span></span></div>
 <div class="line">includes: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int_op__tracing__trace" title="logic_arc_int__tracing__tracing">logic_arc_int_op__tracing__trace</a></span></span></div>
 </span></div>
 </div>
@@ -642,7 +692,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-31f8d530">
+<div class="need_container docutils container" id="SNCB-f2ae653d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__tracing__trace">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -662,6 +712,7 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span></span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
 </span></span></div>
@@ -745,7 +796,7 @@
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/dummy/dummy/edit/main/docs/features/communication/modules/tracing/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/features/communication/modules/tracing/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       

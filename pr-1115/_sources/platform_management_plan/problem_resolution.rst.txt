@@ -160,11 +160,10 @@ ISSUE using the Problem Template :need:`PROCESS_gd_temp__problem__template`. For
 
 
 :need:`[[title]] <PROCESS_gd_req__problem__attr_safety_affected>`,
-:need:`[[title]] <PROCESS_gd_req__problem__attr_security_affected>`,
-:need:`[[title]] <PROCESS_gd_req__problem__attr_quality_affected>` are defined in the description part of the
+:need:`[[title]] <PROCESS_gd_req__problem__attr_security_affected>` are defined in the description part of the
 ISSUE using the Problem Template :need:`PROCESS_gd_temp__problem__template`. For S-CORE labels are defined to mark affected
 ISSUEs:
-``safety``, ``security``, ``quality``
+``safety``, ``security``
 
 Combinations of them are allowed.
 

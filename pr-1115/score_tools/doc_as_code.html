@@ -63,6 +63,13 @@
     <script src="../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
     <script src="../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'score_tools/doc_as_code';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Platform Management Plan" href="../platform_management_plan/index.html" />
@@ -260,6 +267,26 @@
         </li>
 </ul></div>
       
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
     </div>
     
   </div>
@@ -402,6 +429,26 @@
         </li>
 </ul></div>
         
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
       </div>
     
   </div>
@@ -473,17 +520,17 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-86124bf5">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__tool__doc_as_code">
+  <div class="need_container docutils container" id="SNCB-02bbe236">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_doc_tool table" id="doc_tool__doc_as_code">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
 <div class="line"><span><span class="needs_title"><span class="needs_data">Doc-as-Code</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
-<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></span></div>
-<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
-<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">evaluated</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span></span></div>
 </div>
 </td>
 <td class="head_right" colspan="2"><div class="needs_head_right line-block">
@@ -492,12 +539,15 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">tool_management</span></span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
-<div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">evaluated</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">tool_management</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_safety_affected"><span class="needs_label">safety_affected: </span><span class="needs_data">YES</span></span></div>
+<div class="line"><span class="needs_security_affected"><span class="needs_label">security_affected: </span><span class="needs_data">YES</span></span></div>
+<div class="line"><span class="needs_tcl"><span class="needs_label">tcl: </span><span class="needs_data">LOW</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span><span class="needs_data">v0.4.4</span></span></div>
 </span></span></div>
-<div class="line"><span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/tool_management/tool_management_workproducts.html#wp__tool_verification_report">PROCESS_wp__tool_verification_report</a></span></span></div>
+</span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
@@ -505,11 +555,11 @@
 <tr class="content row-odd"><td class="content" colspan="6"></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
-<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__tool__doc_as_code" title="doc__tool__doc_as_code">doc__tool__doc_as_code</a></span></span></div>
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc_tool__doc_as_code" title="doc_tool__doc_as_code">doc_tool__doc_as_code</a></span></span></div>
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
-<div class="line"><span><span class="needs_type_name"><span class="needs_data">Generic Document</span></span></span></div>
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Tool Verification Report</span></span></span></div>
 </div>
 </td>
 <td class="footer_right" colspan="2"></td>
@@ -520,18 +570,6 @@
 </div>
 <section id="doc-as-code-verification-report">
 <h1>Doc-as-Code Verification Report<a class="headerlink" href="#doc-as-code-verification-report" title="Link to this heading">#</a></h1>
-<section id="identification">
-<h2>Identification<a class="headerlink" href="#identification" title="Link to this heading">#</a></h2>
-<div class="line-block">
-<div class="line">UID                  Doc-as-Code</div>
-<div class="line">Version:             release-0.2.4</div>
-<div class="line">Status:              evaluated</div>
-<div class="line">Tcl:                 low</div>
-<div class="line">Safety_affected:     yes</div>
-<div class="line">Security_affected:   yes</div>
-</div>
-<p>(todo: discuss to update metamodel with the attributes above, what can be automated?)</p>
-</section>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <section id="scope-and-purpose">
@@ -562,7 +600,7 @@ Outputs are HTML files (.html)</p>
 <section id="installation-and-integration">
 <h2>Installation and integration<a class="headerlink" href="#installation-and-integration" title="Link to this heading">#</a></h2>
 <p>Tool location:</p>
-<p><a class="reference external" href="https://github.com/eclipse-score/docs-as-code/tree/v0.4.2">Release 0.4.2</a></p>
+<p><a class="reference external" href="https://github.com/eclipse-score/docs-as-code/tree/v0.4.4">Release v0.4.4</a></p>
 <p>How to integrate:</p>
 <p><a class="reference external" href="https://eclipse-score.github.io/docs-as-code/main/how-to-integrate/index.html">Doc-as-Code Integration</a></p>
 <p>Environment: github, python, Version 3.y.z, sphinx, Version x.y.z, sphinx-needs, Version x.y.z
@@ -711,7 +749,6 @@ Supported platforms: Windows, Linux</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identification">Identification</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scope-and-purpose">Scope and purpose</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs-and-outputs">Inputs and outputs</a></li>
@@ -732,7 +769,7 @@ Supported platforms: Windows, Linux</p>
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/dummy/dummy/edit/main/docs/score_tools/doc_as_code.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/score_tools/doc_as_code.rst">
       <i class="fa-solid fa-pencil"></i>
       
       

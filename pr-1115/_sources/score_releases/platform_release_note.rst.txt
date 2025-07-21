@@ -21,7 +21,7 @@ Platform Release Notes
    :id: doc__platform_release_note
    :status: draft
    :safety: ASIL_B
-   :realizes: wp__platform_sw_release_note
+   :realizes: PROCESS_wp__platform_sw_release_note
 
 | Platform Name: [S-CORE]
 | Release Tag: v0.5.0
