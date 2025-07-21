@@ -19,11 +19,11 @@ S-CORE Tools Overview
 
 .. needtable:: Tools List
    :tags: tool_management
-   :filter: "tool_management" in tags and type == "document" and is_external == False
+   :filter: "tool_management" in tags and type == "doc_tool" and is_external == False
    :style: table
    :sort: status
-   :columns: id as "UID";title as "TITLE";status as "STATUS";safety as "SAFETY"
-   :colwidths: 30,30,30,30
+   :columns: id as "UID";title as "TITLE";version as "VERSION";status as "STATUS";tcl as "TCL";safety_affected as "SAFETY AFFECTED";security_affected as "SECURITY AFFECTED"
+   :colwidths: 30,30,30,30,30,30,30
 
 .. toctree::
    :hidden:

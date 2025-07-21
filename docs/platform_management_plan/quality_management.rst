@@ -379,13 +379,6 @@ None
           - <Link to WP>
           - <automated>
 
-        * - :need:`PROCESS_wp__hsi`
-          - n/a
-          - draft
-          - <Link to issue>
-          - <Link to WP>
-          - <automated>
-
         * - :need:`PROCESS_wp__module_safety_manual`
           - :need:`PROCESS_gd_guidl__saf_plan_definitions`
           - :ndf:`copy('status', need_id='PROCESS_gd_guidl__saf_plan_definitions')`

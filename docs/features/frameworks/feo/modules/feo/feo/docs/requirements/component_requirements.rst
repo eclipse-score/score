@@ -19,7 +19,7 @@ Component Requirements: feo
     :id: comp_req__feo__application
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: feat_req__feo__application
     :status: valid
 
@@ -36,7 +36,7 @@ Component Requirements: feo
     :id: comp_req__feo__activity
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: feat_req__feo__activity
     :status: valid
 
@@ -52,7 +52,7 @@ Component Requirements: feo
     :id: comp_req__feo__task_chain
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: feat_req__feo__task_chain
     :status: valid
 
@@ -72,7 +72,7 @@ Component Requirements: feo
     :id: comp_req__feo__scheduler
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: feat_req__feo__application, feat_req__feo__agent
     :status: valid
 
@@ -83,7 +83,7 @@ Component Requirements: feo
     :id: comp_req__feo__service_activity
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: feat_req__feo__service_activity
     :status: valid
 
@@ -98,7 +98,7 @@ Component Requirements: feo
     :id: comp_req__feo__agent
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: feat_req__feo__agent
     :status: valid
 
@@ -115,7 +115,7 @@ Component Requirements: feo
     :id: comp_req__feo__activitiy_thread
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: feat_req__feo__activity_init, feat_req__feo__activitiy_step, feat_req__feo__activity_shutdown, feat_req__feo__activity
     :status: valid
 
@@ -127,7 +127,7 @@ Component Requirements: feo
     :id: comp_req__feo__application_lifecycle
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: feat_req__feo__application_lifecycle
     :status: valid
 
@@ -138,7 +138,7 @@ Component Requirements: feo
     :id: comp_req__feo__activity_init
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: feat_req__feo__activity_init
     :status: valid
 
@@ -152,7 +152,7 @@ Component Requirements: feo
     :id: comp_req__feo__activitiy_step
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: feat_req__feo__activitiy_step, feat_req__feo__activity_init, feat_req__feo__activity
     :status: valid
 
@@ -165,7 +165,7 @@ Component Requirements: feo
     :id: comp_req__feo__activity_shutdown
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: feat_req__feo__activity_shutdown
     :status: valid
 
@@ -179,7 +179,7 @@ Component Requirements: feo
     :id: comp_req__feo__comp_cfg
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: feat_req__feo__activity, feat_req__feo__task_chain
     :status: valid
 
@@ -194,7 +194,7 @@ Component Requirements: feo
     :id: comp_req__feo__comp_cfg_file
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: feat_req__feo__activity
     :status: valid
 
@@ -205,7 +205,7 @@ Component Requirements: feo
     :id: comp_req__feo__act_map_cfg
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: feat_req__feo__activity
     :status: valid
 
@@ -255,7 +255,7 @@ Component Requirements: feo
     :id: comp_req__feo__trustable_computation
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: feat_req__feo__trustable_computation
     :status: valid
 

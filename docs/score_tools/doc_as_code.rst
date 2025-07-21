@@ -12,29 +12,19 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. document:: Doc-as-Code
-   :id: doc__tool__doc_as_code
-   :status: draft
-   :safety: ASIL_B
-   :security: YES
+.. doc_tool:: Doc-as-Code
+   :id: doc_tool__doc_as_code
+   :status: evaluated
+   :version: v0.4.4
+   :tcl: LOW
+   :safety_affected: YES
+   :security_affected: YES
+   :realizes: PROCESS_wp__tool_verification_report
    :tags: tool_management
 
 
 Doc-as-Code Verification Report
 ===============================
-
-
-Identification
---------------
-| UID                  Doc-as-Code
-| Version:             release-0.2.4
-| Status:              evaluated
-| Tcl:                 low
-| Safety_affected:     yes
-| Security_affected:   yes
-
-(todo: discuss to update metamodel with the attributes above, what can be automated?)
-
 
 Introduction
 ------------
@@ -76,7 +66,7 @@ Installation and integration
 
 Tool location:
 
-`Release 0.4.2 <https://github.com/eclipse-score/docs-as-code/tree/v0.4.2>`_
+`Release v0.4.4 <https://github.com/eclipse-score/docs-as-code/tree/v0.4.4>`_
 
 How to integrate:
 

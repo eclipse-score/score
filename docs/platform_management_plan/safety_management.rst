@@ -122,6 +122,8 @@ The following  ISO 26262 defined safety work products are not relevant for the S
   Expectations towards the HW/Environment are covered by AoUs. Additionally S-CORE only provides reference HW integration,
   so every user of the platform would have to redo the effort anyway: :need:`PROCESS_std_wp__iso26262__software_652`
 
+* Because the SW platform is not an safety item but an element: :need:`PROCESS_std_wp__iso26262__management_651`
+
 But also some activities based on requirements defining what has to be done to create a workproduct which is in scope of the S-CORE platform are tailored:
 
 * Because those are not relevant for ASIL_B: :need:`PROCESS_std_req__iso26262__system_6423`,
@@ -252,7 +254,7 @@ Functional Safety Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Requirement Engineering is defined in the process description. See :need:`doc__project_mgt_plan`.
 
-The application of ISO 26262 standards requirements is realized by defining process guidances and matching those to the ISO 26262 requirements (see e.g. for example :need:`PROCESS_gd_req__sm_doc_status`).
+The application of ISO 26262 standards requirements is realized by defining process guidances and matching those to the ISO 26262 requirements (see e.g. for example :need:`PROCESS_gd_req__safety__doc_status`).
 
 Functional Safety Schedule
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
