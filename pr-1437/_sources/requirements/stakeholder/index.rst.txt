@@ -127,7 +127,7 @@ Functional requirements
    :id: stkh_req__functional_req__base_libraries
    :reqtype: Functional
    :security: YES
-   :safety: ASIL_B
+   :safety: QM
    :rationale: Common libraries reduce duplication, improve consistency and quality across components.
    :status: valid
 
@@ -351,7 +351,7 @@ interaction)** — each emphasize different operational priorities.
    :id: stkh_req__app_architectures__support_data
    :reqtype: Functional
    :security: NO
-   :safety: ASIL_B
+   :safety: QM
    :rationale: tbd - potentially above explanation
    :status: valid
 
@@ -361,7 +361,7 @@ interaction)** — each emphasize different operational priorities.
    :id: stkh_req__app_architectures__support_request
    :reqtype: Functional
    :security: NO
-   :safety: ASIL_B
+   :safety: QM
    :rationale: tbd - potentially above explanation
    :status: valid
 
@@ -445,7 +445,7 @@ Communication
    :id: stkh_req__communication__inter_process
    :reqtype: Functional
    :security: NO
-   :safety: ASIL_B
+   :safety: QM
    :rationale: Application software typically consists of multiple processes which need to interact.
    :status: valid
 
