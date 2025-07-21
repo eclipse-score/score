@@ -38,7 +38,7 @@ What is a theme in context of PlantUML?
 
 * A PlantUML theme is a set of colors, styles, format options, shading applied to do dedicated elements used within the PlantUML diagram syntax.
 * The theme will overwrite default ones.
-* The diagram creator is not forced or limited to stay with the overrides by SCORE theme, he/she could further adjust every styling element and/or ``skinparam`` according to his/her needs.
+* The diagram creator is not forced or limited to stay with the overrides by S-CORE theme, he/she could further adjust every styling element and/or ``skinparam`` according to his/her needs.
 
 .. note::
    The theme is `puml-theme-score.puml <https://raw.githubusercontent.com/kalu-an/score_communication/refs/heads/puml_theme/score/mw/com/design/puml-theme-score.puml>`_ currently located in a fork of communication repository. This might change in the future.
