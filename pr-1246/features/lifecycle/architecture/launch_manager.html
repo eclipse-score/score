@@ -63,6 +63,13 @@
     <script src="../../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
     <script src="../../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'features/lifecycle/architecture/launch_manager';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Control Interface" href="control_interface.html" />
@@ -260,6 +267,26 @@
         </li>
 </ul></div>
       
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
     </div>
     
   </div>
@@ -402,6 +429,26 @@
         </li>
 </ul></div>
         
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
       </div>
     
   </div>
@@ -424,7 +471,7 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Launch manager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="control_interface.html">Control Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="configuration_parameters.html">Launch Manager Configuration Parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="application_health_monitor.html">Application Health Monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application_health_monitor.html">Health Monitor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="external_monitoring.html">External Monitoring</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/index.html">Modules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
@@ -496,9 +543,15 @@
                   
   <section id="launch-manager">
 <h1>Launch manager<a class="headerlink" href="#launch-manager" title="Link to this heading">#</a></h1>
+<p>The <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch manager</span></a> is a component that provides a framework for managing the lifecycle of
+processes in the S-CORE platform.
+It allows for launching, monitoring, and controlling processes based on defined configurations and
+requirements.
+As such it is a central part of the lifecycle management in S-CORE and knows about the state of all
+processes in the system</p>
 <section id="static-architecture">
 <h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-974e0013">
+<div class="need_container docutils container" id="SNCB-8e21e55e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__alive_if">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -546,7 +599,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-657497ad">
+<div class="need_container docutils container" id="SNCB-5983dafe">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__lifecycle__launch_manager">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -598,9 +651,12 @@
 </section>
 <section id="dynamic-architecture">
 <h2>Dynamic Architecture<a class="headerlink" href="#dynamic-architecture" title="Link to this heading">#</a></h2>
+<p>The dynamic behaviour of the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> is defined by a configuration data, which spawn
+a directed acyclic graph (DAG) of processes and so called <span class="xref std std-term">Run Targets</span>.
+The <span class="xref std std-term">Run Targets</span> are virtual nodes in the DAG and reperesent <span class="xref std std-term">Operting Modes</span> of the system.</p>
 <figure class="align-center">
 <p class="plantuml">
-<object data="../../../_images/plantuml-bd782eb11465389ebaeee963cc44551a28c5e033.svg" type="image/svg+xml" style="width:437px;height:917px;background:#FFFFFF;"></object></p>
+<object data="../../../_images/plantuml-fb8ee0061e8fd858d299ce55b392a403ce5b875c.svg" type="image/svg+xml" style="width:437px;height:917px;background:#FFFFFF;"></object></p>
 </figure>
 </section>
 <section id="requirements">
@@ -710,7 +766,7 @@
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/dummy/dummy/edit/main/docs/features/lifecycle/architecture/launch_manager.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/features/lifecycle/architecture/launch_manager.rst">
       <i class="fa-solid fa-pencil"></i>
       
       

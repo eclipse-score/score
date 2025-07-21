@@ -15,6 +15,12 @@
 Launch manager
 ##############
 
+The :term:`Launch manager` is a component that provides a framework for managing the lifecycle of
+processes in the S-CORE platform.
+It allows for launching, monitoring, and controlling processes based on defined configurations and
+requirements.
+As such it is a central part of the lifecycle management in S-CORE and knows about the state of all
+processes in the system
 
 Static Architecture
 ===================
@@ -46,6 +52,10 @@ Static Architecture
 
 Dynamic Architecture
 ====================
+
+The dynamic behaviour of the :term:`Launch Manager` is defined by a configuration data, which spawn
+a directed acyclic graph (DAG) of processes and so called :term:`Run Targets`.
+The :term:`Run Targets` are virtual nodes in the DAG and reperesent :term:`Operting Modes` of the system.
 
 .. uml:: _assets/launch_manager_target_tree.puml
    :scale: 50

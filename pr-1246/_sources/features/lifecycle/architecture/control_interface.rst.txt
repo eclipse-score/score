@@ -18,7 +18,7 @@ Control Interface
 
 It's foreseen ECU projects will need a custom state management to fulfill ECU-project specific requirements.  THe S-Core will offer a framework to control application lifecycle, but will not specify the State Manager.
 
-The `Launch Manager` shall provide an interface, which allows an external State Manager application to request the `Launch Manager` to start, stop or restart applications or groups of applications,
+The :term:`Launch Manager` shall provide an interface, which allows an external State Manager application to request the :term:`Launch Manager` to start, stop or restart applications or groups of applications,
 which allows the implementation of a state management applications to support dynamic state control.
 
 
@@ -38,12 +38,12 @@ Static Architecture
 Use cases
 =========
 
-The following use cases are supported by the `ControlInterface` provided by the `Launch Manager`.
+The following use cases are supported by the `ControlInterface` provided by the :term:`Launch Manager`.
 
 Starting a component (or a group of components)
 -----------------------------------------------
 
-When a request to start component(s) is received via the `ControlInterface`, the `Launch Manager` shall first evaluate if the conditions are correct for the launching of the component. At least the following conditions must be valid:
+When a request to start component(s) is received via the `ControlInterface`, the :term:`Launch Manager` shall first evaluate if the conditions are correct for the launching of the component. At least the following conditions must be valid:
 
 - The component exists in the model
 - If the component has dependencies, the dependencies must be valid
@@ -60,7 +60,7 @@ Stopping a component (or a group of components)
 Getting the status of a component (or a group of components)
 ------------------------------------------------------------
 
-The `Launch Manager` shall provide an interface to requery of the status of a component or a group of components.
+The :term:`Launch Manager` shall provide an interface to requery of the status of a component or a group of components.
 
 
 Dynamic Architecture
@@ -72,7 +72,7 @@ Dynamic Architecture
    :status: valid
    :safety: ASIL_B
    :fulfils: feat_req__lifecycle__control_commands, feat_req__lifecycle__request_group_launch
-   :includes: 
+   :includes:
 
    .. uml:: _assets/control_interface_start_sequence.puml
       :scale: 50
@@ -84,7 +84,7 @@ Dynamic Architecture
    :status: valid
    :safety: ASIL_B
    :fulfils: feat_req__lifecycle__control_commands, feat_req__lifecycle__request_group_stop
-   :includes: 
+   :includes:
 
    .. uml:: _assets/control_interface_stop_sequence.puml
       :scale: 50

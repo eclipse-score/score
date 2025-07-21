@@ -63,10 +63,17 @@
     <script src="../../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
     <script src="../../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'features/lifecycle/architecture/external_monitoring';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Modules" href="../modules/index.html" />
-    <link rel="prev" title="Application Health Monitor" href="application_health_monitor.html" />
+    <link rel="prev" title="Health Monitor" href="application_health_monitor.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
@@ -260,6 +267,26 @@
         </li>
 </ul></div>
       
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
     </div>
     
   </div>
@@ -402,6 +429,26 @@
         </li>
 </ul></div>
         
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
       </div>
     
   </div>
@@ -424,7 +471,7 @@
 <li class="toctree-l2"><a class="reference internal" href="launch_manager.html">Launch manager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="control_interface.html">Control Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="configuration_parameters.html">Launch Manager Configuration Parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="application_health_monitor.html">Application Health Monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application_health_monitor.html">Health Monitor</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">External Monitoring</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/index.html">Modules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
@@ -497,26 +544,26 @@
   <section id="external-monitoring">
 <h1>External Monitoring<a class="headerlink" href="#external-monitoring" title="Link to this heading">#</a></h1>
 <p class="plantuml">
-<object data="../../../_images/plantuml-6fdf30956140a44ddee9f3cd823119bdd4158b07.svg" type="image/svg+xml" style="width:685px;height:121px;background:#FFFFFF;"></object></p>
+<object data="../../../_images/plantuml-f3d4263d87677c02da10eb6a5e927a402dc4afef.svg" type="image/svg+xml" style="width:685px;height:121px;background:#FFFFFF;"></object></p>
 <p>The following participants are related to the concept.</p>
 <section id="launch-manager">
 <h2>Launch Manager<a class="headerlink" href="#launch-manager" title="Link to this heading">#</a></h2>
-<p>As the <cite>Launch manager</cite> is critical component for the system, it shall support alive monitoring of itself. This means it must implement internal health management, such as
+<p>As the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> is critical component for the system, it shall support alive monitoring of itself. This means it must implement internal health management, such as
 a worker thread, that wakes up every N milliseconds, checks if the component is in a consistent state, and send a notification to the external monitor.</p>
 </section>
 <section id="external-monitor">
 <h2>External monitor<a class="headerlink" href="#external-monitor" title="Link to this heading">#</a></h2>
-<p>The aliveness of the <cite>Launch Manager</cite> shall be monitored by an <a class="reference external" href="https://en.wikipedia.org/wiki/Watchdog_timer">external monitor, or a watchdog</a>, to be able to detect “hanging” of the
+<p>The aliveness of the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> shall be monitored by an <a class="reference external" href="https://en.wikipedia.org/wiki/Watchdog_timer">external monitor, or a watchdog</a>, to be able to detect “hanging” of the
 <cite>Launch Manager</cite>. The implementation of the external watchdog is out of scope in S-SCORE, as it is ECU and/or project specific.</p>
 </section>
 <section id="watchdog-proxy">
 <h2>Watchdog Proxy<a class="headerlink" href="#watchdog-proxy" title="Link to this heading">#</a></h2>
-<p>The component <cite>Watchdog Proxy</cite> is the project specific logical component, which has to implement the logical interface <cite>HealthStatus</cite> and translate alive events from the <cite>Launch Manager</cite> as
+<p>The component <cite>Watchdog Proxy</cite> is the project specific logical component, which has to implement the logical interface <cite>HealthStatus</cite> and translate alive events from the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> as
 project specific messages to the <cite>External monitor</cite>. The channel for sending these notifications is project specific, and can be for example <cite>GPIO</cite>, <cite>UART</cite> or <cite>SPI</cite>.
 In a hypervisor based environment, the <cite>external monitor</cite> could also run with the same SoC as software only solution.</p>
-<p>The <cite>Watchdog Proxy</cite> implementation is not specified in the S-CORE with high details, as the realization depends heavily on OS, <cite>Launch Manager</cite> or even project specific needs.
-For example, in Linux and <cite>systemd</cite> as the <cite>launch manager</cite>, the interface can be <cite>/dev/watchdog</cite>, and <cite>systemd</cite> can use the interface directly.</p>
-<p>In QNX, one could implement a component listening to the events (or even poll) from the <cite>Launch manager</cite> and translate these events as hardware specific notifications.</p>
+<p>The <cite>Watchdog Proxy</cite> implementation is not specified in the S-CORE with high details, as the realization depends heavily on OS, <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> or even project specific needs.
+For example, in Linux and <cite>systemd</cite> as the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a>, the interface can be <cite>/dev/watchdog</cite>, and <cite>systemd</cite> can use the interface directly.</p>
+<p>In QNX, one could implement a component listening to the events (or even poll) from the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> and translate these events as hardware specific notifications.</p>
 <section id="requirements-related-to-the-external-monitoring">
 <h3>Requirements related to the external monitoring<a class="headerlink" href="#requirements-related-to-the-external-monitoring" title="Link to this heading">#</a></h3>
 <ul class="simple">
@@ -529,7 +576,7 @@ For example, in Linux and <cite>systemd</cite> as the <cite>launch manager</cite
 <section id="dynamic-architecture">
 <h3>Dynamic Architecture<a class="headerlink" href="#dynamic-architecture" title="Link to this heading">#</a></h3>
 <p class="plantuml">
-<object data="../../../_images/plantuml-cd412af3ea009e4dcb6ea820ab50ca84aaa253a1.svg" type="image/svg+xml" style="width:1147px;height:1275px;background:#FFFFFF;"></object></p>
+<object data="../../../_images/plantuml-d215d7fc8fc2f545fae87981f09cce9968ef5fce.svg" type="image/svg+xml" style="width:1147px;height:1275px;background:#FFFFFF;"></object></p>
 <p>The most important interactions are the following:</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id1">
 <caption><span class="caption-number">Table 3 </span><span class="caption-text">Sequence diagram Description</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
@@ -547,7 +594,7 @@ For example, in Linux and <cite>systemd</cite> as the <cite>launch manager</cite
 <td><p>The configuration. (notification interval, startup grace period, etc.) Additionally, if a watchdog interface is used, the used interface name (eg. /dev/watchdog) must be configurable.</p></td>
 </tr>
 <tr class="row-odd"><td><p>002</p></td>
-<td><p>If the <cite>Launch manager</cite> provides a client library implementation, the library must connect and attach to the <cite>Launch manager</cite></p></td>
+<td><p>If the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> provides a client library implementation, the library must connect and attach to the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p>006</p></td>
 <td><p>Check the internal status and trigger alive notification (007)</p></td>
@@ -559,7 +606,7 @@ For example, in Linux and <cite>systemd</cite> as the <cite>launch manager</cite
 <td><p>Watchdog to check if the notification fits the expected window</p></td>
 </tr>
 <tr class="row-odd"><td><p>018</p></td>
-<td><p>If the status check fails, do not trigger alive notification (or <cite>Launch manager</cite> has crashed)</p></td>
+<td><p>If the status check fails, do not trigger alive notification (or <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> has crashed)</p></td>
 </tr>
 <tr class="row-even"><td><p>019</p></td>
 <td><p>If there is no alive notification, trigger watchdog error reaction</p></td>
@@ -587,7 +634,7 @@ For example, in Linux and <cite>systemd</cite> as the <cite>launch manager</cite
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Application Health Monitor</p>
+        <p class="prev-next-title">Health Monitor</p>
       </div>
     </a>
     <a class="right-next"
@@ -632,7 +679,7 @@ For example, in Linux and <cite>systemd</cite> as the <cite>launch manager</cite
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/dummy/dummy/edit/main/docs/features/lifecycle/architecture/external_monitoring.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/features/lifecycle/architecture/external_monitoring.rst">
       <i class="fa-solid fa-pencil"></i>
       
       

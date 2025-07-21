@@ -63,6 +63,13 @@
     <script src="../../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
     <script src="../../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'features/lifecycle/architecture/control_interface';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Launch Manager Configuration Parameters" href="configuration_parameters.html" />
@@ -260,6 +267,26 @@
         </li>
 </ul></div>
       
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
     </div>
     
   </div>
@@ -402,6 +429,26 @@
         </li>
 </ul></div>
         
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
       </div>
     
   </div>
@@ -424,7 +471,7 @@
 <li class="toctree-l2"><a class="reference internal" href="launch_manager.html">Launch manager</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Control Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="configuration_parameters.html">Launch Manager Configuration Parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="application_health_monitor.html">Application Health Monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="application_health_monitor.html">Health Monitor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="external_monitoring.html">External Monitoring</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/index.html">Modules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
@@ -497,11 +544,11 @@
   <section id="control-interface">
 <h1>Control Interface<a class="headerlink" href="#control-interface" title="Link to this heading">#</a></h1>
 <p>It’s foreseen ECU projects will need a custom state management to fulfill ECU-project specific requirements.  THe S-Core will offer a framework to control application lifecycle, but will not specify the State Manager.</p>
-<p>The <cite>Launch Manager</cite> shall provide an interface, which allows an external State Manager application to request the <cite>Launch Manager</cite> to start, stop or restart applications or groups of applications,
+<p>The <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> shall provide an interface, which allows an external State Manager application to request the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> to start, stop or restart applications or groups of applications,
 which allows the implementation of a state management applications to support dynamic state control.</p>
 <section id="static-architecture">
 <h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-57c48703">
+<div class="need_container docutils container" id="SNCB-eba1d1ae">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__controlif">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -551,10 +598,10 @@ which allows the implementation of a state management applications to support dy
 </section>
 <section id="use-cases">
 <h2>Use cases<a class="headerlink" href="#use-cases" title="Link to this heading">#</a></h2>
-<p>The following use cases are supported by the <cite>ControlInterface</cite> provided by the <cite>Launch Manager</cite>.</p>
+<p>The following use cases are supported by the <cite>ControlInterface</cite> provided by the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a>.</p>
 <section id="starting-a-component-or-a-group-of-components">
 <h3>Starting a component (or a group of components)<a class="headerlink" href="#starting-a-component-or-a-group-of-components" title="Link to this heading">#</a></h3>
-<p>When a request to start component(s) is received via the <cite>ControlInterface</cite>, the <cite>Launch Manager</cite> shall first evaluate if the conditions are correct for the launching of the component. At least the following conditions must be valid:</p>
+<p>When a request to start component(s) is received via the <cite>ControlInterface</cite>, the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> shall first evaluate if the conditions are correct for the launching of the component. At least the following conditions must be valid:</p>
 <ul class="simple">
 <li><p>The component exists in the model</p></li>
 <li><p>If the component has dependencies, the dependencies must be valid</p></li>
@@ -568,12 +615,12 @@ If any of the components failed to start, respond to the caller with a status in
 </section>
 <section id="getting-the-status-of-a-component-or-a-group-of-components">
 <h3>Getting the status of a component (or a group of components)<a class="headerlink" href="#getting-the-status-of-a-component-or-a-group-of-components" title="Link to this heading">#</a></h3>
-<p>The <cite>Launch Manager</cite> shall provide an interface to requery of the status of a component or a group of components.</p>
+<p>The <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> shall provide an interface to requery of the status of a component or a group of components.</p>
 </section>
 </section>
 <section id="dynamic-architecture">
 <h2>Dynamic Architecture<a class="headerlink" href="#dynamic-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-afcc748b">
+<div class="need_container docutils container" id="SNCB-506f9868">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__lifecycle__control_if_start">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -604,7 +651,7 @@ If any of the components failed to start, respond to the caller with a status in
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><figure class="align-center">
 <p class="plantuml">
-<object data="../../../_images/plantuml-c604f124d28394ebe6a20fb234d43fe18530620d.svg" type="image/svg+xml" style="width:1158px;height:517px;background:#FFFFFF;"></object></p>
+<object data="../../../_images/plantuml-b70e91ae00135a09f7d84b2ea10e7b14cf658de2.svg" type="image/svg+xml" style="width:1158px;height:517px;background:#FFFFFF;"></object></p>
 </figure>
 </td>
 </tr>
@@ -622,7 +669,7 @@ If any of the components failed to start, respond to the caller with a status in
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-8b602287">
+<div class="need_container docutils container" id="SNCB-385e3e63">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__lifecycle__control_if_stop">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -653,7 +700,7 @@ If any of the components failed to start, respond to the caller with a status in
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><figure class="align-center">
 <p class="plantuml">
-<object data="../../../_images/plantuml-5d67d3157644903e028465c99a9345256ed3d526.svg" type="image/svg+xml" style="width:1234px;height:487px;background:#FFFFFF;"></object></p>
+<object data="../../../_images/plantuml-14d53960470803826dd6cb17f581689749ed9f66.svg" type="image/svg+xml" style="width:1234px;height:487px;background:#FFFFFF;"></object></p>
 </figure>
 </td>
 </tr>
@@ -747,7 +794,7 @@ If any of the components failed to start, respond to the caller with a status in
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/dummy/dummy/edit/main/docs/features/lifecycle/architecture/control_interface.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/features/lifecycle/architecture/control_interface.rst">
       <i class="fa-solid fa-pencil"></i>
       
       

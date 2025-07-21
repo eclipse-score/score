@@ -15,7 +15,7 @@
 Launch Manager Configuration Parameters
 #######################################
 
-The `Launch Manager` supports a set of configuration parameters, which are grouped in the following categories:
+The :term:`Launch Manager` supports a set of configuration parameters, which are grouped in the following categories:
 
 Component Configuration Parameters
 ==================================
@@ -59,7 +59,7 @@ TODO
 Requirements related to the external monitoring
 ===============================================
 
-These parameters specify how the `Launch manager` itself is monitored.
+These parameters specify how the :term:`Launch Manager` itself is monitored.
 
 - :need:`feat_req__lifecycle__lm_self_health_check`
 - :need:`feat_req__lifecycle__lm_ext_watchdog_notify`
@@ -80,4 +80,3 @@ Static Architecture
    .. uml:: _assets/config_params_static.puml
       :scale: 50
       :align: center
-

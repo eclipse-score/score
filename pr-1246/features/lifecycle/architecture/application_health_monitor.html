@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Application Health Monitor &#8212; S-CORE 0.1 documentation</title>
+    <title>Health Monitor &#8212; S-CORE 0.1 documentation</title>
   
   
   
@@ -63,6 +63,13 @@
     <script src="../../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
     <script src="../../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'features/lifecycle/architecture/application_health_monitor';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="External Monitoring" href="external_monitoring.html" />
@@ -260,6 +267,26 @@
         </li>
 </ul></div>
       
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
     </div>
     
   </div>
@@ -402,6 +429,26 @@
         </li>
 </ul></div>
         
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
       </div>
     
   </div>
@@ -424,7 +471,7 @@
 <li class="toctree-l2"><a class="reference internal" href="launch_manager.html">Launch manager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="control_interface.html">Control Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="configuration_parameters.html">Launch Manager Configuration Parameters</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Application Health Monitor</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Health Monitor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="external_monitoring.html">External Monitoring</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/index.html">Modules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
@@ -477,7 +524,7 @@
     
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Lifecycle</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Application Health Monitor</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Health Monitor</span></li>
   </ul>
 </nav>
 </div>
@@ -494,11 +541,11 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="application-health-monitor">
-<h1>Application Health Monitor<a class="headerlink" href="#application-health-monitor" title="Link to this heading">#</a></h1>
-<p>The <cite>Application Health Monitor</cite> is library, that together with the <cite>Launch Manager</cite> provide a way to monitor
+  <section id="health-monitor">
+<h1>Health Monitor<a class="headerlink" href="#health-monitor" title="Link to this heading">#</a></h1>
+<p>The <a class="reference internal" href="../glossary.html#term-Health-Monitor"><span class="xref std std-term">Health Monitor</span></a> is library, that together with the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> provide a way to monitor
 the application health in similar fashion as the AUTOSAR <cite>Platform Health Manager</cite> (PHM).</p>
-<p>The main features of the <cite>Application Health Monitor</cite> are the following monitoring functions:</p>
+<p>The main features of the <a class="reference internal" href="../glossary.html#term-Health-Monitor"><span class="xref std std-term">Health Monitor</span></a> are the following monitoring functions:</p>
 <ul class="simple">
 <li><p>Alive supervision
 - Periodic monitoring of checkpoints, which must fit the pre-configured expected number of notifications in the given interval (not too many, not too few)
@@ -508,11 +555,11 @@ the application health in similar fashion as the AUTOSAR <cite>Platform Health M
 <li><p>Logical
 - Specifies in which order two or more checkpoints must be called</p></li>
 </ul>
-<p>The <cite>Application Health Monitor</cite> itself is monitored via the <cite>Launch Manager</cite> with via alive supervision only.</p>
+<p>The <a class="reference internal" href="../glossary.html#term-Health-Monitor"><span class="xref std std-term">Health Monitor</span></a> itself is monitored via the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> with via alive supervision only.</p>
 <section id="benefits-over-classical-external-process-monitoring">
 <h2>Benefits over classical external process monitoring<a class="headerlink" href="#benefits-over-classical-external-process-monitoring" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Inter process communication (IPC) only needed for the alive monitoring between <cite>Application Health Monitor</cite> and <cite>Launch Manager</cite></p></li>
+<li><p>Inter process communication (IPC) only needed for the alive monitoring between <a class="reference internal" href="../glossary.html#term-Health-Monitor"><span class="xref std std-term">Health Monitor</span></a> and <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a></p></li>
 <li><dl class="simple">
 <dt>Easier configuration</dt><dd><ul>
 <li><p>The monitoring rules can be configured dynamically on demand basis</p></li>
@@ -538,11 +585,11 @@ the application health in similar fashion as the AUTOSAR <cite>Platform Health M
 </section>
 <section id="safety">
 <h2>Safety<a class="headerlink" href="#safety" title="Link to this heading">#</a></h2>
-<p>As the <cite>Application Health Monitor</cite> is linked as part of the monitored application, it raises the following concerns
+<p>As the <a class="reference internal" href="../glossary.html#term-Health-Monitor"><span class="xref std std-term">Health Monitor</span></a> is linked as part of the monitored application, it raises the following concerns
 with respect to safety:</p>
 <ul class="simple">
 <li><p>How can it be ensured, that the monitored application does not interfere with the monitoring functionality?</p></li>
-<li><p>How can it be ensured, that the <cite>Application Health Monitor</cite> does not incorrectly report alive to the <cite>Launch Manager</cite> when it has detected
+<li><p>How can it be ensured, that the <a class="reference internal" href="../glossary.html#term-Health-Monitor"><span class="xref std std-term">Health Monitor</span></a> does not incorrectly report alive to the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> when it has detected
 a supervision error?</p></li>
 </ul>
 <p>These concerns are valid, but can be addressed using the following techniques:</p>
@@ -578,19 +625,19 @@ counter (or some more complex mathematical function), further checkpoints for de
 <section id="error-reactions">
 <h2>Error Reactions<a class="headerlink" href="#error-reactions" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>When the <cite>Application Health Monitor</cite> detects a failed supervision, it shall stop triggering alive notifications to the <cite>Launch Manager</cite>.</p></li>
-<li><p>Additionally, when the error occurs, the <cite>Application Health Monitor</cite> triggers a failure notification to the <cite>Launch Manager</cite> to reduce the time
-to react on the error. This obviously will only work if the <cite>Application Health Monitor</cite> is still working and correctly scheduled. Thus the
-worst case reaction time calculations must be made on the monitoring rules specified in the <cite>Launch Manager</cite> for the monitored application.</p></li>
+<li><p>When the <a class="reference internal" href="../glossary.html#term-Health-Monitor"><span class="xref std std-term">Health Monitor</span></a> detects a failed supervision, it shall stop triggering alive notifications to the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a>.</p></li>
+<li><p>Additionally, when the error occurs, the <a class="reference internal" href="../glossary.html#term-Health-Monitor"><span class="xref std std-term">Health Monitor</span></a> triggers a failure notification to the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> to reduce the time
+to react on the error. This obviously will only work if the <a class="reference internal" href="../glossary.html#term-Health-Monitor"><span class="xref std std-term">Health Monitor</span></a> is still working and correctly scheduled. Thus the
+worst case reaction time calculations must be made on the monitoring rules specified in the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> for the monitored application.</p></li>
 </ul>
 </section>
 <section id="static-architecture">
 <h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-8dc1e0f7">
+<div class="need_container docutils container" id="SNCB-ac0a9827">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__lifecycle__healthmonitor">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">&lt;&lt;library&gt;&gt;\nHealth Monitor</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">Health Monitor</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -618,7 +665,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-features/lifecycle/architecture/application_health_monitor-0">
-<object data="../../../_images/plantuml-7e3ade3385af06b4ac3e506b935897e8bde73db7.svg" type="image/svg+xml" style="width:729px;height:322px;background:#FFFFFF;"></object></p>
+<object data="../../../_images/plantuml-8876fd27b171dfcd4f6c9554c2e2c5a0679bde2a.svg" type="image/svg+xml" style="width:729px;height:306px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -635,7 +682,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e66e2d7b">
+<div class="need_container docutils container" id="SNCB-05cdf06d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__health_monitor_if">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -685,7 +732,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-c19aeb46">
+<div class="need_container docutils container" id="SNCB-d63605ef">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__deadline_monitor_if">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -734,7 +781,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-129100b8">
+<div class="need_container docutils container" id="SNCB-c26cd501">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__min_time">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -779,7 +826,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-06391242">
+<div class="need_container docutils container" id="SNCB-03c30739">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__max_time">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -824,7 +871,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-46a9aef3">
+<div class="need_container docutils container" id="SNCB-409c87ee">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__link_cond_dl">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -869,7 +916,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-77c5d449">
+<div class="need_container docutils container" id="SNCB-a60ab0b7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__start">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -914,7 +961,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e024cc33">
+<div class="need_container docutils container" id="SNCB-5aea6c1b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__end">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -959,7 +1006,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-0c5170de">
+<div class="need_container docutils container" id="SNCB-30e489cb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__timer_expiry">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1004,7 +1051,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-2afddfb7">
+<div class="need_container docutils container" id="SNCB-505d436d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__enable_mon">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1049,7 +1096,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-224ac4b0">
+<div class="need_container docutils container" id="SNCB-a7a4d9fe">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__disable_mon">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1094,7 +1141,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-c9b0e366">
+<div class="need_container docutils container" id="SNCB-6ff18361">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__check_cfg">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1139,7 +1186,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-261c2d43">
+<div class="need_container docutils container" id="SNCB-d6962e36">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__logical_monitor_if">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1188,7 +1235,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f755400a">
+<div class="need_container docutils container" id="SNCB-8a5d6487">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__entry_point">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1233,7 +1280,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-54cfe6ac">
+<div class="need_container docutils container" id="SNCB-4955c1f4">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__exit_point">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1278,7 +1325,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5aaba49e">
+<div class="need_container docutils container" id="SNCB-d239703e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__allowed_trans">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1323,7 +1370,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5bb3749a">
+<div class="need_container docutils container" id="SNCB-74e7f6d6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__link_cond_lg">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1368,7 +1415,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7352be04">
+<div class="need_container docutils container" id="SNCB-5e0385a3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__rec_checkpoint">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1413,7 +1460,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-2d2f6c71">
+<div class="need_container docutils container" id="SNCB-4add6ae4">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__enable">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1458,7 +1505,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-87260b0e">
+<div class="need_container docutils container" id="SNCB-f6344ae3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__disable">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1503,7 +1550,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4da76bc7">
+<div class="need_container docutils container" id="SNCB-6d9122fb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__verify">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1552,7 +1599,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 <section id="dynamic-architecture">
 <h2>Dynamic Architecture<a class="headerlink" href="#dynamic-architecture" title="Link to this heading">#</a></h2>
 <blockquote>
-<div><div class="need_container docutils container" id="SNCB-43715fcd">
+<div><div class="need_container docutils container" id="SNCB-8b5c5472">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__lifecycle__app_health_moni">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1583,7 +1630,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><figure class="align-center">
 <p class="plantuml">
-<object data="../../../_images/plantuml-f5c39eac0a50d83bf44976d8c4af54a795816288.svg" type="image/svg+xml" style="width:858px;height:1091px;background:#FFFFFF;"></object></p>
+<object data="../../../_images/plantuml-432f0319ec488101562b1be30e491204ebd80854.svg" type="image/svg+xml" style="width:858px;height:1091px;background:#FFFFFF;"></object></p>
 </figure>
 </td>
 </tr>
@@ -1616,7 +1663,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 </thead>
 <tbody>
 <tr class="row-even"><td><p>001</p></td>
-<td><p><cite>Launch manager</cite> configuration for the alive monitoring of the <cite>Monitored application</cite> is parsed. This contains for example, what is the expected interval of alive notifications,
+<td><p><a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> configuration for the alive monitoring of the <cite>Monitored application</cite> is parsed. This contains for example, what is the expected interval of alive notifications,
 how long grace period is given before failing to a missed (never received) alive notification etc.</p></td>
 </tr>
 <tr class="row-odd"><td><p>002</p></td>
@@ -1715,7 +1762,7 @@ how long grace period is given before failing to a missed (never received) alive
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/dummy/dummy/edit/main/docs/features/lifecycle/architecture/application_health_monitor.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/features/lifecycle/architecture/application_health_monitor.rst">
       <i class="fa-solid fa-pencil"></i>
       
       

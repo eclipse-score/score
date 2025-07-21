@@ -24,26 +24,26 @@ The following participants are related to the concept.
 Launch Manager
 --------------
 
-As the `Launch manager` is critical component for the system, it shall support alive monitoring of itself. This means it must implement internal health management, such as
+As the :term:`Launch Manager` is critical component for the system, it shall support alive monitoring of itself. This means it must implement internal health management, such as
 a worker thread, that wakes up every N milliseconds, checks if the component is in a consistent state, and send a notification to the external monitor.
 
 External monitor
 ----------------
 
-The aliveness of the `Launch Manager` shall be monitored by an `external monitor, or a watchdog <https://en.wikipedia.org/wiki/Watchdog_timer>`_, to be able to detect "hanging" of the
+The aliveness of the :term:`Launch Manager` shall be monitored by an `external monitor, or a watchdog <https://en.wikipedia.org/wiki/Watchdog_timer>`_, to be able to detect "hanging" of the
 `Launch Manager`. The implementation of the external watchdog is out of scope in S-SCORE, as it is ECU and/or project specific.
 
 Watchdog Proxy
 --------------
 
-The component `Watchdog Proxy` is the project specific logical component, which has to implement the logical interface `HealthStatus` and translate alive events from the `Launch Manager` as
+The component `Watchdog Proxy` is the project specific logical component, which has to implement the logical interface `HealthStatus` and translate alive events from the :term:`Launch Manager` as
 project specific messages to the `External monitor`. The channel for sending these notifications is project specific, and can be for example `GPIO`, `UART` or `SPI`.
 In a hypervisor based environment, the `external monitor` could also run with the same SoC as software only solution.
 
-The `Watchdog Proxy` implementation is not specified in the S-CORE with high details, as the realization depends heavily on OS, `Launch Manager` or even project specific needs.
-For example, in Linux and `systemd` as the `launch manager`, the interface can be `/dev/watchdog`, and `systemd` can use the interface directly.
+The `Watchdog Proxy` implementation is not specified in the S-CORE with high details, as the realization depends heavily on OS, :term:`Launch Manager` or even project specific needs.
+For example, in Linux and `systemd` as the :term:`Launch Manager`, the interface can be `/dev/watchdog`, and `systemd` can use the interface directly.
 
-In QNX, one could implement a component listening to the events (or even poll) from the `Launch manager` and translate these events as hardware specific notifications.
+In QNX, one could implement a component listening to the events (or even poll) from the :term:`Launch Manager` and translate these events as hardware specific notifications.
 
 Requirements related to the external monitoring
 ===============================================
@@ -71,7 +71,7 @@ The most important interactions are the following:
    * - 001
      - The configuration. (notification interval, startup grace period, etc.) Additionally, if a watchdog interface is used, the used interface name (eg. /dev/watchdog) must be configurable.
    * - 002
-     - If the `Launch manager` provides a client library implementation, the library must connect and attach to the `Launch manager`
+     - If the :term:`Launch Manager` provides a client library implementation, the library must connect and attach to the :term:`Launch Manager`
    * - 006
      - Check the internal status and trigger alive notification (007)
    * - 007
@@ -79,8 +79,6 @@ The most important interactions are the following:
    * - 009
      - Watchdog to check if the notification fits the expected window
    * - 018
-     - If the status check fails, do not trigger alive notification (or `Launch manager` has crashed)
+     - If the status check fails, do not trigger alive notification (or :term:`Launch Manager` has crashed)
    * - 019
      - If there is no alive notification, trigger watchdog error reaction
-
- 

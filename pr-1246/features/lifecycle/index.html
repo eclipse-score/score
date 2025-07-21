@@ -63,6 +63,13 @@
     <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
     <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'features/lifecycle/index';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Requirements" href="requirements/index.html" />
@@ -260,6 +267,26 @@
         </li>
 </ul></div>
       
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
     </div>
     
   </div>
@@ -402,6 +429,26 @@
         </li>
 </ul></div>
         
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
       </div>
     
   </div>
@@ -424,7 +471,7 @@
 <li class="toctree-l2"><a class="reference internal" href="architecture/launch_manager.html">Launch manager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="architecture/control_interface.html">Control Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="architecture/configuration_parameters.html">Launch Manager Configuration Parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="architecture/application_health_monitor.html">Application Health Monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture/application_health_monitor.html">Health Monitor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="architecture/external_monitoring.html">External Monitoring</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modules/index.html">Modules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="glossary.html">Glossary</a></li>
@@ -497,7 +544,7 @@
 <p class="admonition-title">Note</p>
 <p>Document header</p>
 </div>
-<div class="need_container docutils container" id="SNCB-711aad38">
+<div class="need_container docutils container" id="SNCB-97ce0c19">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__lifecycle">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -623,7 +670,7 @@ system at a certain point in time the with the OCI runtime.</p>
 </section>
 <section id="specification">
 <h2>Specification<a class="headerlink" href="#specification" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-0e8d38e5">
+<div class="need_container docutils container" id="SNCB-38d56aa3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_sta table" id="feat_arc_sta__lifecycle__overview">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -653,7 +700,7 @@ system at a certain point in time the with the OCI runtime.</p>
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-features/lifecycle/index-0">
-<object data="../../_images/plantuml-d8cef6b401c0fe49cadbf9d209ec3928bf751425.svg" type="image/svg+xml" style="width:1084px;height:791px;background:#FFFFFF;"></object></p>
+<object data="../../_images/plantuml-250d79a7857ef21625f448fa4d1e7c7f8236f57b.svg" type="image/svg+xml" style="width:1083px;height:774px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -706,7 +753,7 @@ deadline monitoring and logical program flow monitoring</p></li>
 </section>
 <section id="modules">
 <h2>Modules<a class="headerlink" href="#modules" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-597e8867">
+<div class="need_container docutils container" id="SNCB-a3b06d96">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_mod_view_sta table" id="mod_view_sta__lifecycle__1">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -733,7 +780,7 @@ deadline monitoring and logical program flow monitoring</p></li>
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-features/lifecycle/index-1">
-<object data="../../_images/plantuml-2e8d6cb1a3c5ff1b758a125c031eb75c352beb2b.svg" type="image/svg+xml" style="width:1084px;height:640px;background:#FFFFFF;"></object></p>
+<object data="../../_images/plantuml-20261ba7889943077d0c642b666d0db52d3badb5.svg" type="image/svg+xml" style="width:1084px;height:623px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -755,7 +802,7 @@ deadline monitoring and logical program flow monitoring</p></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture/launch_manager.html">Launch manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture/control_interface.html">Control Interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture/configuration_parameters.html">Launch Manager Configuration Parameters</a></li>
-<li class="toctree-l1"><a class="reference internal" href="architecture/application_health_monitor.html">Application Health Monitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture/application_health_monitor.html">Health Monitor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture/external_monitoring.html">External Monitoring</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules/index.html">Modules</a></li>
 </ul>
@@ -879,7 +926,7 @@ safety reasons.</p>
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/dummy/dummy/edit/main/docs/features/lifecycle/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/features/lifecycle/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
