@@ -23,7 +23,7 @@ Definitions
     :id: feat_req__feo__application
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
@@ -40,7 +40,7 @@ Definitions
     :id: feat_req__feo__activity
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
@@ -57,7 +57,7 @@ Definitions
     :id: feat_req__feo__task_chain
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data, stkh_req__execution_model__processes
     :status: valid
 
@@ -76,7 +76,7 @@ Definitions
     :id: feat_req__feo__service_activity
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
@@ -89,7 +89,7 @@ Definitions
     :id: feat_req__feo__agent
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
@@ -112,7 +112,7 @@ Dynamic Architecture
     :id: feat_req__feo__application_lifecycle
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data, stkh_req__execution_model__processes
     :status: valid
 
@@ -122,7 +122,7 @@ Dynamic Architecture
     :id: feat_req__feo__activity_init
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data, stkh_req__execution_model__processes
     :status: valid
 
@@ -137,7 +137,7 @@ Dynamic Architecture
     :id: feat_req__feo__activitiy_step
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data, stkh_req__execution_model__processes
     :status: valid
 
@@ -149,7 +149,7 @@ Dynamic Architecture
     :id: feat_req__feo__activity_shutdown
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data, stkh_req__execution_model__processes
     :status: valid
 
@@ -166,91 +166,92 @@ Supervision
     :id: feat_req__feo__alive_supervision
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__dependability__safety_features, stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
-    The framework shall provide the functionality to enable the reporting of 
-    alive supervision checkpoint to an external health management system 
-    (e.g. watchdog) 
+    The framework shall provide the functionality to enable the reporting of
+    alive supervision checkpoint to an external health management system
+    (e.g. watchdog)
 
 .. feat_req:: Support of deadline supervision checkpoints
     :id: feat_req__feo__deadline_supervision
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__dependability__safety_features, stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
-    The framework shall provide the functionality to enable the reporting of 
-    deadline supervision checkpoints to an external health management system 
-    (e.g. watchdog) 
+    The framework shall provide the functionality to enable the reporting of
+    deadline supervision checkpoints to an external health management system
+    (e.g. watchdog)
 
 .. feat_req:: Support of logical supervision
     :id: feat_req__feo__logical_supervision
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__dependability__safety_features, stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
-    The framework shall provide the functionality to enable the reporting of 
-    logical supervision checkpoints to an external health management system 
-    (e.g. watchdog) 
+    The framework shall provide the functionality to enable the reporting of
+    logical supervision checkpoints to an external health management system
+    (e.g. watchdog)
 
 .. feat_req:: Trustable computation
     :id: feat_req__feo__trustable_computation
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: stkh_req__dependability__safety_features, stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
-    The framework shall provide mechanisms to check after the computation of 
+    The framework shall provide mechanisms to check after the computation of
     an Activity if the result is trustable.
-    This can be done e.g. via evaluation of floating point exceptions, 
+    This can be done e.g. via evaluation of floating point exceptions,
     checking of hardware registers or status information of the
     software platform.
 
-Error Handling
-==============
+
+Error Handling for S-CORE v0.5
+==============================
 
 .. feat_req:: Response to termination request
     :id: feat_req__feo__response_term_request
     :reqtype: Functional
     :security: YES
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: stkh_req__dependability__safety_features, stkh_req__dependability__availability, stkh_req__execution_model__processes
     :status: valid
 
-    If the primary process receives a termination signal from the Lifecycle Manager, it shall call the shutdown
+    If the primary process receives a termination signal, it shall call the shutdown
     function of all remaining activities in arbitrary sequence and terminate itself.
 
-    If a secondary process receives a termination signal from the Lifecycle Manager, it shall terminate itself.
+    If a secondary process receives a termination signal, it shall terminate itself.
 
 
 .. feat_req:: Secondary connection timeout
     :id: feat_req__feo__secondary_conn_timeout
     :reqtype: Functional
     :security: YES
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: stkh_req__dependability__safety_features, stkh_req__dependability__availability, stkh_req__execution_model__processes
     :status: valid
 
-    If not all secondary processes connect to the primary in time, the primary shall report an error to the
-    lifecycle/health management. The startup functions shall not be triggered.
+    If not all secondary processes connect to the primary in time, the primary shall terminate itself.
+    The startup functions shall not be triggered.
 
 
 .. feat_req:: Activity startup error
     :id: feat_req__feo__act_startup_error
     :reqtype: Functional
     :security: YES
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: stkh_req__dependability__safety_features, stkh_req__dependability__availability, stkh_req__execution_model__processes
     :status: valid
 
     If an error occurs during the execution of a startup function, the primary process shall abort calling
-    startup functions, report the issue to health management and terminate itself. For all of the activities
+    startup functions and terminate itself. For all of the activities
     whose startup functions have already been called successfully, the corresponding shutdown functions shall be
     executed in arbitrary sequence.
 
@@ -259,7 +260,7 @@ Error Handling
     :id: feat_req__feo__act_alloc_error
     :reqtype: Functional
     :security: YES
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: stkh_req__dependability__safety_features, stkh_req__dependability__availability, stkh_req__execution_model__processes
     :status: valid
 
@@ -271,47 +272,45 @@ Error Handling
     :id: feat_req__feo__act_timeout
     :reqtype: Functional
     :security: YES
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: stkh_req__dependability__safety_features, stkh_req__dependability__availability, stkh_req__execution_model__processes
     :status: valid
 
-    If a timeout occurs during startup, stepping or shutdown of an activity, the issue shall be reported to
-    health-management. The primary process shall shutdown all successfully started activities in arbitrary sequence
-    and terminate itself.
+    If a timeout occurs during startup, stepping or shutdown of an activity, the primary process shall shutdown all
+    successfully started activities in arbitrary sequence and terminate itself.
 
 
 .. feat_req:: Startup timeout
     :id: feat_req__feo__startup_timeout
     :reqtype: Functional
     :security: YES
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: stkh_req__dependability__safety_features, stkh_req__dependability__availability, stkh_req__execution_model__processes
     :status: valid
 
     If not all activities reach their initialized state within a certain period of time (startup timeout),
-    the issue shall be reported to health-management. The primary process shall shutdown all successfully
-    started activities in arbitrary sequence and terminate itself.
+    the primary process shall shutdown all successfully started activities in arbitrary sequence and terminate itself.
 
 
 .. feat_req:: Activity stepping error
     :id: feat_req__feo__act_stepping_error
     :reqtype: Functional
     :security: YES
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: stkh_req__dependability__safety_features, stkh_req__dependability__availability, stkh_req__execution_model__processes
     :status: valid
 
-    If an activity fails in the step function, a logical waypoint error shall be reported to health management.
-    The primary process shall call shutdown for all activities in arbitrary sequence and terminate itself.
+    If an activity fails in the step function, the primary process shall call shutdown for all activities
+    in arbitrary sequence and terminate itself.
 
 
 .. feat_req:: Activity shutdown error
     :id: feat_req__feo__act_shutdown_error
     :reqtype: Functional
     :security: YES
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: stkh_req__dependability__safety_features, stkh_req__dependability__availability, stkh_req__execution_model__processes
     :status: valid
 
-    If an activity fails in the shutdown function, a logical waypoint error shall be reported to health management.
-    The primary process shall shutdown all remaining activities and terminate itself.
+    If an activity fails in the shutdown function, the primary process shall shutdown all remaining activities
+    in arbitrary sequence and terminate itself.

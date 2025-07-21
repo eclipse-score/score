@@ -16,5 +16,8 @@ Logging
 #######
 
 .. toctree::
-   console-output/index.rst
-   mw-log-api/index.rst
+   :maxdepth: 1
+
+   ./mw-fr_logging.rst
+   ./docs/requirements/mw-fr_logging_req.rst
+   ./docs/glossary.rst

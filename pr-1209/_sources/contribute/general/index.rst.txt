@@ -23,3 +23,4 @@ General
    folder
    feature_flags
    contribution_attribution
+   release_guide

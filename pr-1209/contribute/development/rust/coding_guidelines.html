@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -63,9 +63,16 @@
     <script src="../../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
     <script src="../../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contribute/development/rust/coding_guidelines';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Python" href="../python/index.html" />
+    <link rel="next" title="Rust API design guidelines" href="rust_api_design.html" />
     <link rel="prev" title="Rust" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -166,16 +173,16 @@
 </li>
 
 
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="../../index.html">
-    Contribute
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../modules/index.html">
+    Module
   </a>
 </li>
 
 
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../score_releases/index.html">
-    Releases
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../index.html">
+    Contribute
   </a>
 </li>
 
@@ -187,6 +194,20 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../../platform_management_plan/index.html">
     PMP
@@ -245,6 +266,26 @@
             <span class="sr-only">GitHub</span></a>
         </li>
 </ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
       
     </div>
     
@@ -313,6 +354,13 @@
 </li>
 
 
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../modules/index.html">
+    Module
+  </a>
+</li>
+
+
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="../../index.html">
     Contribute
@@ -323,6 +371,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../score_releases/index.html">
     Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../score_tools/index.html">
+    Tools
   </a>
 </li>
 
@@ -374,6 +429,26 @@
         </li>
 </ul></div>
         
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
       </div>
     
   </div>
@@ -392,6 +467,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../cpp/index.html">C++</a></li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Rust</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Writing Rust Code</a></li>
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="rust_api_design.html">Rust API design guidelines</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../python/index.html">Python</a></li>
@@ -466,7 +548,7 @@
                   
   <section id="writing-rust-code">
 <h1>Writing Rust Code<a class="headerlink" href="#writing-rust-code" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-d7219928">
+<div class="need_container docutils container" id="SNCB-136a5d6f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__rust_coding_guidelines">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -474,7 +556,7 @@
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
-<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">invalid</span></span></span></div>
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -485,7 +567,8 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">invalid</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span></span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -508,10 +591,92 @@
 </table>
 </div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The Rust coding guidelines are not yet defined. This is a placeholder for future content.</p>
-</div>
+<section id="coding-guidelines">
+<h2>Coding Guidelines<a class="headerlink" href="#coding-guidelines" title="Link to this heading">#</a></h2>
+<p>The Safety-Critical Rust Consortium aims to make Rust suitable for use in
+automotive and other safety-critical environments by building and maintaining a
+set of essential tools that are vetted by the community for certification
+purposes. They track the development status of these tools and document their
+progress. The consortium is considering whether to develop specialized training
+materials for safety-critical Rust, though this may require a separate group.
+Their current activities include supporting a qualified compiler (with
+Ferrocene available for some targets), developing a certified core library,
+working on tools for coding style verification, and assessing the need for
+static analysis and code metrics tools. Some tools, such as MC/DC coverage
+reporting and code metrics generators, are still unavailable, and the
+consortium is evaluating what further tooling and support are necessary to
+enable certification and safe use of Rust in automotive applications.</p>
+<p><a class="reference external" href="https://rustfoundation.org/safety-critical-rust-consortium">Safety-Critical Rust Consortium</a></p>
+<p><a class="reference external" href="https://github.com/rustfoundation/safety-critical-rust-consortium/tree/main/subcommittee/coding-guidelines/">Safety-Critical Rust Consortium Guidelines</a></p>
+<p><a class="reference external" href="https://google.github.io/learn_unsafe_rust/">Learn unsafe Rust</a></p>
+<p><a class="reference external" href="https://doc.rust-lang.org/book/ch20-01-unsafe-rust.html">Rust language</a></p>
+</section>
+</section>
+<section id="state-of-rust-safety-critical-tooling">
+<h1>State of Rust Safety-Critical Tooling<a class="headerlink" href="#state-of-rust-safety-critical-tooling" title="Link to this heading">#</a></h1>
+<p>The linked document provides a current overview of the tooling landscape for
+certifying Rust in safety-critical applications, presenting a
+community-approved list of essential tools and tracking their development
+status. It also explores whether developing specialized training curricula for
+safety-critical Rust is necessary, potentially requiring a separate
+subcommittee. The document details the state of specific tools—such as
+compilers and analysis utilities—by outlining their intended purposes,
+certification requirements, and their availability or progress. While some
+tools, such as the Ferrocene compiler, are already available or being actively
+developed, others remain under evaluation or are not yet accessible.</p>
+<p><a class="reference external" href="https://github.com/rustfoundation/safety-critical-rust-consortium/blob/main/subcommittee/tooling/mission-statement.md">Mission Statement - Tooling Subcommittee</a></p>
+</section>
+<section id="explanation-of-ara-applications-in-rust">
+<h1>Explanation of ARA Applications in Rust<a class="headerlink" href="#explanation-of-ara-applications-in-rust" title="Link to this heading">#</a></h1>
+<p>AUTOSAR also shares a public available document that explains how to use Rust in
+ARA applications as Rust is offering safety and performance advantages. While
+ecosystem support is still maturing, Rust-based ARA applications can lead to
+safer, more reliable automotive software, especially in safety-critical and
+high-performance domains.</p>
+<p><a class="reference external" href="https://www.autosar.org/fileadmin/standards/R24-11/AP/AUTOSAR_AP_EXP_ARARustApplications.pdf">AUTOSAR ARA Applications in Rust</a></p>
+</section>
+<section id="misra-vs-cert">
+<h1>MISRA vs Cert<a class="headerlink" href="#misra-vs-cert" title="Link to this heading">#</a></h1>
+<p>This issue contrasts the MISRA and CERT coding standards, highlighting their
+different approaches to software safety and security. MISRA is noted for its
+restrictive language subsetting and complex compliance process, often imposing
+outdated or ineffective rules that do not guarantee improved safety or
+security. This can create unnecessary work for developers without clear
+benefits and is sometimes inconsistent across languages. CERT, on the other
+hand, is praised for its focus on practical, consensus-based rules that target
+real security vulnerabilities in existing code, avoiding excessive constraints.
+The overall recommendation is to favor guidelines like CERT’s—practical,
+evidence-based, and focused on real-world issues—over rigid, untested standards
+that hinder adoption and developer productivity.</p>
+<p><a class="reference external" href="https://github.com/rustfoundation/safety-critical-rust-coding-guidelines/issues/75/">MISRA vs Cert</a></p>
+</section>
+<section id="link-to-clippy">
+<h1>Link to Clippy<a class="headerlink" href="#link-to-clippy" title="Link to this heading">#</a></h1>
+<p>Rust Clippy is a collection of lints (code style and correctness checks) for
+the Rust programming language. It helps developers identify common mistakes,
+improve code quality, and follow best practices by providing warnings and
+suggestions as part of the Rust toolchain. Clippy can be run on Rust projects
+to catch issues that the standard compiler might miss, making it an essential
+tool for writing clean, idiomatic, and efficient Rust code.</p>
+<p><a class="reference external" href="https://github.com/rustfoundation/safety-critical-rust-coding-guidelines/issues/78/">Link to Clippy</a></p>
+</section>
+<section id="link-to-miri">
+<h1>Link to Miri<a class="headerlink" href="#link-to-miri" title="Link to this heading">#</a></h1>
+<p>Miri is an Undefined Behavior detection tool for Rust. It can run binaries
+and test suites of cargo projects and detect unsafe code that fails to
+uphold its safety requirements.</p>
+<p><a class="reference external" href="https://github.com/rust-lang/miri">Link to Miri</a></p>
+</section>
+<section id="conclusions-for-s-core">
+<h1>Conclusions for S-CORE<a class="headerlink" href="#conclusions-for-s-core" title="Link to this heading">#</a></h1>
+<p>During the S-CORE project formatting and clippy checks are enforced. Miri can
+be used to detect undefined behaviors. Also the code should compile with zero warnings.
+Additional guidelines by the Rust Community, the Rust Foundation and the Safety-Critical
+Rust Consortium are applied where applicable but not enforced. If possible the usage
+of <cite>unsafe</cite> is avoided. To keep the code <cite>panic</cite>-free only APIs with a proper return value
+should be used.</p>
+<p>The adaption of these guidelines will be documented in the S-CORE project
+documentation.</p>
 </section>
 
 
@@ -534,11 +699,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="../python/index.html"
+       href="rust_api_design.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Python</p>
+        <p class="prev-next-title">Rust API design guidelines</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -554,10 +719,32 @@
 
 
   <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Writing Rust Code</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-guidelines">Coding Guidelines</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#state-of-rust-safety-critical-tooling">State of Rust Safety-Critical Tooling</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#explanation-of-ara-applications-in-rust">Explanation of ARA Applications in Rust</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#misra-vs-cert">MISRA vs Cert</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#link-to-clippy">Link to Clippy</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#link-to-miri">Link to Miri</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions-for-s-core">Conclusions for S-CORE</a></li>
+</ul>
+
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/dummy/dummy/edit/main/docs/contribute/development/rust/coding_guidelines.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/contribute/development/rust/coding_guidelines.rst">
       <i class="fa-solid fa-pencil"></i>
       
       

@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -63,6 +63,13 @@
     <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
     <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contribute/general/folder';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Feature Flags" href="feature_flags.html" />
@@ -166,16 +173,16 @@
 </li>
 
 
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="../index.html">
-    Contribute
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../modules/index.html">
+    Module
   </a>
 </li>
 
 
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../score_releases/index.html">
-    Releases
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Contribute
   </a>
 </li>
 
@@ -187,6 +194,20 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../platform_management_plan/index.html">
     PMP
@@ -245,6 +266,26 @@
             <span class="sr-only">GitHub</span></a>
         </li>
 </ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
       
     </div>
     
@@ -313,6 +354,13 @@
 </li>
 
 
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../modules/index.html">
+    Module
+  </a>
+</li>
+
+
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="../index.html">
     Contribute
@@ -323,6 +371,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../score_releases/index.html">
     Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../score_tools/index.html">
+    Tools
   </a>
 </li>
 
@@ -374,6 +429,26 @@
         </li>
 </ul></div>
         
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
       </div>
     
   </div>
@@ -391,6 +466,7 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Folder Structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feature_flags.html">Feature Flags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contribution_attribution.html">Actions to Ensure Proper Contribution Attribution in Eclipse S-CORE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_guide.html">Module Release Guide</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../documentation/index.html">Documentation</a></li>
@@ -471,7 +547,7 @@
            docs/                   -&gt; Documentation of the feature
                architecture/       -&gt; Feature architecture [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/architecture_design/architecture_workproducts.html#wp__feature_arch">PROCESS_wp__feature_arch</a>]
                requirements/       -&gt; Feature requirements [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements__feat">PROCESS_wp__requirements__feat</a>]
-               safety_analysis/    -&gt; Safety analysis on feature level [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/workproducts/index.html#wp__feature_safety_analysis">PROCESS_wp__feature_safety_analysis</a>]
+               safety_analysis/    -&gt; Safety analysis on feature level [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/safety_analysis/safety_analysis_workproducts.html#wp__feature_safety_analysis">PROCESS_wp__feature_safety_analysis</a>]
                safety_planning/    -&gt; Feature specific safety workproducts planning
                verification/       -&gt; Feature verification report (reporting all feature verifications)
                                          [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/verification/workproducts.html#wp__verification__platform_ver_report">PROCESS_wp__verification__platform_ver_report</a>]
@@ -486,7 +562,7 @@
     platform_management_plan/      -&gt; Overall Platform Management Plan [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/platform_management/platform_management_workproducts.html#wp__platform_mgmt">PROCESS_wp__platform_mgmt</a>]
     score_releases/                -&gt; [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/release_management/release_workproducts.html#wp__platform_sw_release_note">PROCESS_wp__platform_sw_release_note</a>]
     safety/                        -&gt; safety documentation on platform level (SEooC):
-                                         [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/workproducts/index.html#wp__feature_dfa">PROCESS_wp__feature_dfa</a>], [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/safety_management/workproducts.html#wp__platform_safety_manual">PROCESS_wp__platform_safety_manual</a>],
+                                         [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/safety_analysis/safety_analysis_workproducts.html#wp__feature_dfa">PROCESS_wp__feature_dfa</a>], [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/safety_management/workproducts.html#wp__platform_safety_manual">PROCESS_wp__platform_safety_manual</a>],
                                          [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/safety_management/workproducts.html#wp__platform_safety_package">PROCESS_wp__platform_safety_package</a>], [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/safety_management/workproducts.html#wp__fdr_reports">PROCESS_wp__fdr_reports</a>],
                                          [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/safety_management/workproducts.html#wp__audit_report">PROCESS_wp__audit_report</a>]
     security/                      -&gt; security documentation on platform level
@@ -516,7 +592,7 @@ README.md                          -&gt; Entrypoint of the repository</pre>
       safety_plan/                  -&gt; Module safety plan [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/safety_management/workproducts.html#wp__module_safety_plan">PROCESS_wp__module_safety_plan</a>],
                                           module safety case [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/safety_management/workproducts.html#wp__module_safety_package">PROCESS_wp__module_safety_package</a>],
                                           conformance reviews [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/safety_management/workproducts.html#wp__fdr_reports">PROCESS_wp__fdr_reports</a>]
-      safety_analysis/              -&gt; Safety analysis on module level [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/workproducts/index.html#wp__sw_component_dfa">PROCESS_wp__sw_component_dfa</a>]
+      safety_analysis/              -&gt; Safety analysis on module level [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/safety_analysis/safety_analysis_workproducts.html#wp__sw_component_dfa">PROCESS_wp__sw_component_dfa</a>]
       verification/                 -&gt; Module verification report
                                           components verifications [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/verification/workproducts.html#wp__verification__module_ver_report">PROCESS_wp__verification__module_ver_report</a>],
                                           safety analysis conformance reviews [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/safety_management/workproducts.html#wp__fdr_reports">PROCESS_wp__fdr_reports</a>]
@@ -534,10 +610,9 @@ README.md                          -&gt; Entrypoint of the repository</pre>
       docs/                         -&gt; Documentation of the component
          architecture/              -&gt; Component architecture (only if lower level components exist)
                                           [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/architecture_design/architecture_workproducts.html#wp__component_arch">PROCESS_wp__component_arch</a>].
-         requirements/              -&gt; Component requirements [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements__comp">PROCESS_wp__requirements__comp</a>],
-                                          HSI (if relevant) [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/workproducts/index.html#wp__hsi">PROCESS_wp__hsi</a>]
+         requirements/              -&gt; Component requirements [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements__comp">PROCESS_wp__requirements__comp</a>]
          safety_analysis/           -&gt; Safety analysis on component level
-                                          [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/workproducts/index.html#wp__sw_component_safety_analysis">PROCESS_wp__sw_component_safety_analysis</a>]
+                                          [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/safety_analysis/safety_analysis_workproducts.html#wp__sw_component_safety_analysis">PROCESS_wp__sw_component_safety_analysis</a>]
          verification/              -&gt; Architecture review [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/architecture_design/architecture_workproducts.html#wp__sw_arch_verification">PROCESS_wp__sw_arch_verification</a>],
                                           code inspection [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/implementation/implementation_workproducts.html#wp__sw_implementation_inspection">PROCESS_wp__sw_implementation_inspection</a>]
          &lt;lower_level_comp&gt;/        -&gt; Lower level component following &lt;component_name&gt; folder structure
@@ -603,7 +678,7 @@ README.md                          -&gt; Entrypoint of the repository</pre>
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/dummy/dummy/edit/main/docs/contribute/general/folder.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/contribute/general/folder.rst">
       <i class="fa-solid fa-pencil"></i>
       
       

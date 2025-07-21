@@ -21,4 +21,5 @@ Component Documentation: feo
 .. toctree::
    :maxdepth: 1
 
+   architecture/component_architecture
    requirements/component_requirements

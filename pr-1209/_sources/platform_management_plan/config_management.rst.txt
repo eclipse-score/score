@@ -50,17 +50,23 @@ note: for definition of "configuration items" check :need:`PROCESS_doc_concept__
 Approach
 ++++++++
 
-.. gd_guidl:: Configuration
-   :id: gd_guidl__configuration
-   :status: valid
-   :complies: PROCESS_std_req__iso26262__support_741, PROCESS_std_req__iso26262__support_742, PROCESS_std_req__iso26262__support_743, PROCESS_std_req__iso26262__support_744, PROCESS_std_req__iso26262__support_745, PROCESS_std_req__aspice_40__SUP-8-BP1, PROCESS_std_req__aspice_40__SUP-8-BP3, PROCESS_std_req__aspice_40__SUP-8-BP4, PROCESS_std_req__aspice_40__SUP-8-BP5, PROCESS_std_req__aspice_40__SUP-8-BP8
+The steps below describe how configuration identification, retrieval, modification, branches and baselines, backup and recovery are organized.
 
 
-Identification
-^^^^^^^^^^^^^^
+Lifecycle
+^^^^^^^^^
 
-Each work product is identified by its sphinx-needs Id, this includes documents identified as such (see project documents list in :need:`doc__documentation_mgt_plan`).
-Spinx-needs checks for Id duplicates.
+The configuration management of the S-CORE project is in place during the complete development lifecycle.
+I.e. in Concept Phase, Development Phase and Maintenance.
+
+
+Identification and Properties
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Each work product is identified by its sphinx-needs Id, this includes documents identified as such (by the document header as defined in :need:`PROCESS_gd_temp__documentation`).
+The complete list of project documents is defined in the :need:`doc__documentation_mgt_plan`.
+Ids are checked for uniqueness, see :need:`PROCESS_gd_req__configuration_uid`.
+sphinx-needs is also used to document the work products properties/attributes defined in the process area descriptions.
 The work products are stored in text or code files (these are identified by their filenames) within GitHub repositories.
 There is one `platform repository <https://GitHub.com/eclipse-score/score/>`_ and one repository for each module.
 
@@ -86,33 +92,42 @@ For release versioning rules check the respective section of release guideline.
 For other artefacts: these are pulled into S-CORE integration repository by forking to be handled as above.
 
 
-Modification
-^^^^^^^^^^^^
+Control and Modification
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Files or new work products contained in them are created in local branches by the :need:`Contributor <PROCESS_rl__contributor>`
 and shared for review and incorporation into the main branch via GitHub pull-requests,
 which are after their acceptance merged by the :need:`Committer <PROCESS_rl__committer>`. The same applies for changes in existing configuration items.
+All modifications (differences between before and after) are documented in the pull-requests and are the main input to the pull-request reviews.
 See also :need:`doc__platform_change_management_plan`.
 
-For other artefacts modifications are controlled by the bazel build files which are also under configuration control.
+For tool/binaries modifications (version changes) are controlled by the bazel build files. These build files, like other files, are also maintained in GitHub.
 
 
 Branches and Baselines
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Git defines branches as a means of parallel development. In the S-CORE project the following types of branches will be used:
+Branches are used as a means of parallel development. In the S-CORE project the following types of branches will be used:
 
 * local branches - created from "remote" branches, in these the development of the contributors takes place, no restriction on naming.
 * main branch - a "remote" branch (named "main") which contains all the latest file versions checked by CI, reviewed, accepted and merged.
 * release branch - a "remote" branch derived from main branch which is used to prepare a release,
   no functional code changes are allowed, only bug fixes and verification based improvements.
-  Only the technical lead is allowed to approve a merge into a release branch. The branch name is "release-<MAJOR_version>.<MINOR_version>
+  Only the technical lead is allowed to approve a merge into a release branch. The branch name is given as defined in :need:`PROCESS_doc_concept__rel__process`.
 
 The "remote" branch is not "local" to the developer but resides on the "remote" GitHub server.
 
+In S-CORE all configuration items are kept in GitHub, this means that there only needs to be one baseline (per repository) for these
+(and not multiple ones for each of the work products types which are maintained in separate tools).
 Baselines are created by using the GitHub "tag" function. The tag name shall correspond to
 the release branch name the tag is created, adding patch version and pre-release tag.
 See also :need:`doc__platform_release_management_plan`.
+
+As described in "Identification and Properties" above, there are several repositories for the modules and the platform integration.
+Baselines are created individually in these repositories, even a different version schema could be adopted.
+In case of dependent repositories, the repository dependet upon on has to be baselined first, to be available
+to refer to this baseline when integrating it. That means that for example a platform baseline also
+documents the versions (baselines) of the modules the platform consists of. This can then also be seen in the platform release note.
 
 Every change in the release repository is also taken over into the main branch. The module development team
 can decide how to ensure this (e.g. by development in main and cherrypick to release branch).
@@ -122,4 +137,41 @@ Backup and Recovery
 ^^^^^^^^^^^^^^^^^^^
 
 Backup and recovery are covered by the Eclipse Foundation hosting the GitHub service for S-CORE.
-For the long term storage, additional measures are taken, see :need:`PROCESS_gd_req__workproducts_storage`
+For the long term storage, additional measures are taken, see :need:`PROCESS_gd_req__config__workproducts_storage`
+
+
+Status and Reporting
+^^^^^^^^^^^^^^^^^^^^
+
+Work products defined in our proceses have "status" attributes. These are used to communicate to all the stakeholders.
+The main communication means is a document list containing all documents including their status.
+This list is part of the Documentation Management Plan :need:`doc__documentation_mgt_plan` as part of the Platform Management Plan,
+as defined in :need:`PROCESS_gd_guidl__documentation`.
+Completeness of the configuration items (within a baseline) is checked at least for every release
+against the list of planned documents, which is also part of the Documentation Management Plan.
+
+Note that work products consisting of several elements (documented as needs) will be collected in one file
+which will form a document (e.g. there will be a document (doc__*) "feature xy requirements" and in it all the feature's requirements(feat_req__*)).
+This applies to requirements, architeture, detailed design and safety analysis.
+The files containing the source code and test code are not part of documents as above,
+their status is implicitly "valid", as these are subject to code and test review before every merge.
+
+Also the used tools status and version is reported within a "tool list" which may be part of
+the Documentation Management Plan or referenced from it (and also need to be checked for completeness).
+
+
+Configuration Management Tooling
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Almost all requirements of the standards towards configuration management can be covered by
+standard versioning tooling of the Eclipse Foundation and of the S-CORE project
+("Docs-as-Code" identification of work products).
+The respective tools used in the project are:
+
+* versioning tool: GitHub
+* "Docs-as-Code" tool: sphinx-needs
+* CI build tool: Bazel
+
+Note 1: A versioning tool covers part of configuration management but not all (namely: storage, retrieval, control and modification, branching and baselining).
+
+Note 2: A "Docs-as-Code" tool is used to identify, attribute and link parts of text files and generate human and machine readable documentation.

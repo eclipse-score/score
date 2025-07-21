@@ -72,7 +72,7 @@ Coding guideline
 **C++** - see :need:`doc__cpp_coding_guidelines`
 
 **Rust** - state of the art open source Rust guidelines are currently developed by `Safety Critical Rust Consortium <https://github.com/rustfoundation/safety-critical-rust-consortium/>`_
-(which will be adopted by the S-CORE project)
+(which will be adopted by the S-CORE project). A summary of the current state of informations regarding Rust in safety critical applications can be found in :need:`doc__rust_coding_guidelines`.
 
 SW configuration guideline
 ^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -63,6 +63,13 @@
     <script src="../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
     <script src="../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'platform_management_plan/problem_resolution';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Change Management / Change Management Plan" href="change_management.html" />
@@ -167,15 +174,15 @@
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../contribute/index.html">
-    Contribute
+  <a class="nav-link nav-internal" href="../modules/index.html">
+    Module
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../score_releases/index.html">
-    Releases
+  <a class="nav-link nav-internal" href="../contribute/index.html">
+    Contribute
   </a>
 </li>
 
@@ -187,6 +194,20 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
 <li class=" current active">
   <a class="nav-link dropdown-item nav-internal" href="index.html">
     PMP
@@ -245,6 +266,26 @@
             <span class="sr-only">GitHub</span></a>
         </li>
 </ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
       
     </div>
     
@@ -314,6 +355,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../modules/index.html">
+    Module
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../contribute/index.html">
     Contribute
   </a>
@@ -323,6 +371,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../score_releases/index.html">
     Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../score_tools/index.html">
+    Tools
   </a>
 </li>
 
@@ -374,6 +429,26 @@
         </li>
 </ul></div>
         
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
       </div>
     
   </div>
@@ -387,13 +462,13 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="project_management.html">Project management plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="safety_management.html">Safety management / Platform Safety Plan</a></li>
-<li class="toctree-l1"><a class="reference internal" href="quality_management.html">Quality management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security_management.html">Security management / Platform Security Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quality_management.html">Quality Management / Platform Quality Management Plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="config_management.html">Config management / Configuration Management Plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tool_management.html">Tool Management/ Tool Management Plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release_management.html">Release management Plan</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Problem Resolution / Problem Resolution Plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="change_management.html">Change Management / Change Management Plan</a></li>
-<li class="toctree-l1"><a class="reference internal" href="requirements_management.html">Requirements management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="software_verification.html">Software verification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="documentation_management.html">Documentation Management Plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="software_development.html">Software Development</a></li>
@@ -457,7 +532,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-a5a61fe5">
+  <div class="need_container docutils container" id="SNCB-3f6642bf">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__platform_problem_resolution_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -477,11 +552,11 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">platform_management</span></span></span></div>
-<div class="line"><span class="needs_realizes"><span class="needs_label">realizes: </span><span class="needs_data">PROCESS_wp__prm_plan</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">platform_management</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 </span></span></div>
-<div class="line"><span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/problem_resolution/problem_resolution_workproducts.html#wp__prm_plan">PROCESS_wp__prm_plan</a></span></span></div>
+</span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
@@ -553,7 +628,7 @@ Therefore the Problem Template <a class="external_link reference external" href=
 <p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/problem_resolution/guidance/problem_resolution_reqs.html#gd_req__problem__attr_status">PROCESS_gd_req__problem__attr_status</a> is defined by the combination of the ISSUE state
 and the state in the Projects dashboard view. The PR status is also used, if applicable.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id1">
-<caption><span class="caption-number">Table 7 </span><span class="caption-text">Problem Status</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 12 </span><span class="caption-text">Problem Status</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 11.5%" />
 <col style="width: 65.4%" />
@@ -608,7 +683,7 @@ for Communities or Feature Teams (Feature Owner) (under discussion, compare
 <p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/problem_resolution/guidance/problem_resolution_reqs.html#gd_req__problem__attr_classification">PROCESS_gd_req__problem__attr_classification</a> is defined in the description part of the
 ISSUE using the Problem Template <a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/problem_resolution/guidance/problem_resolution_template.html#gd_temp__problem__template">PROCESS_gd_temp__problem__template</a>. For S-CORE labels are defined as:</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id2">
-<caption><span class="caption-number">Table 8 </span><span class="caption-text">Problem Classification</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 13 </span><span class="caption-text">Problem Classification</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 50.0%" />
 <col style="width: 50.0%" />
@@ -637,7 +712,7 @@ ISSUE using the Problem Template <a class="external_link reference external" hre
 <p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/problem_resolution/guidance/problem_resolution_reqs.html#gd_req__problem__attr_category">PROCESS_gd_req__problem__attr_category</a> is defined in the description part of the
 ISSUE using the Problem Template <a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/problem_resolution/guidance/problem_resolution_template.html#gd_temp__problem__template">PROCESS_gd_temp__problem__template</a>. For S-CORE labels are defined as:</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id3">
-<caption><span class="caption-number">Table 9 </span><span class="caption-text">Problem Categories</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 14 </span><span class="caption-text">Problem Categories</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 13.0%" />
 <col style="width: 73.9%" />
@@ -662,11 +737,10 @@ ISSUE using the Problem Template <a class="external_link reference external" hre
 </table>
 </div>
 <p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/problem_resolution/guidance/problem_resolution_reqs.html#gd_req__problem__attr_safety_affected">PROCESS_gd_req__problem__attr_safety_affected</a>,
-<a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/problem_resolution/guidance/problem_resolution_reqs.html#gd_req__problem__attr_security_affected">PROCESS_gd_req__problem__attr_security_affected</a>,
-<a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/problem_resolution/guidance/problem_resolution_reqs.html#gd_req__problem__attr_quality_affected">PROCESS_gd_req__problem__attr_quality_affected</a> are defined in the description part of the
+<a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/problem_resolution/guidance/problem_resolution_reqs.html#gd_req__problem__attr_security_affected">PROCESS_gd_req__problem__attr_security_affected</a> are defined in the description part of the
 ISSUE using the Problem Template <a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/problem_resolution/guidance/problem_resolution_template.html#gd_temp__problem__template">PROCESS_gd_temp__problem__template</a>. For S-CORE labels are defined to mark affected
 ISSUEs:
-<code class="docutils literal notranslate"><span class="pre">safety</span></code>, <code class="docutils literal notranslate"><span class="pre">security</span></code>, <code class="docutils literal notranslate"><span class="pre">quality</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">safety</span></code>, <code class="docutils literal notranslate"><span class="pre">security</span></code></p>
 <p>Combinations of them are allowed.</p>
 <p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/problem_resolution/guidance/problem_resolution_reqs.html#gd_req__problem__attr_milestone">PROCESS_gd_req__problem__attr_milestone</a> is defined by the Milestone of a ISSUE.</p>
 </section>
@@ -709,7 +783,7 @@ set the ISSUE status to <code class="docutils literal notranslate"><span class="
 <a class="reference internal image-reference" href="../_images/score_problem_resolution_workflow_simple.drawio.svg"><img alt="Problem Resolution Simple Workflow Overview" src="../_images/score_problem_resolution_workflow_simple.drawio.svg" style="width: 100%;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Problem Resolution Simple Workflow Overview</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Problem Resolution Simple Workflow Overview</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>To 2. Analyse the Problem Report:</strong></p>
@@ -821,7 +895,7 @@ back to <code class="docutils literal notranslate"><span class="pre">In</span> <
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/dummy/dummy/edit/main/docs/platform_management_plan/problem_resolution.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/platform_management_plan/problem_resolution.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
