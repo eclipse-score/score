@@ -41,7 +41,8 @@ To activate this feature, use the following feature flag:
 
 Abstract
 ========
-This feature request defines a set of ABI-compatible data types and a runtime type description format to support zero-copy inter-process communication between C++17 and Rust 1.8x processes on the same architecture and endianness. It ensures consistent type layouts across languages by requiring fixed-size, statically allocated types with no pointers or language-specific metadata.
+
+This feature request defines a set of ABI-compatible data types and a runtime type description format to support zero-copy inter-process communication between C++17 and Rust 1.8x processes using the same endianness. It ensures consistent type layouts across languages by requiring fixed-size, statically allocated types with no pointers or language-specific metadata.
 
 The specification covers primitive types, structs, enums, arrays, and introduces ABI-stable representations for vectors, options, and results. A runtime-readable type description enables processes to interpret shared memory without compile-time access to type definitions.
 
@@ -59,45 +60,48 @@ This feature request addresses specific challenges in achieving type compatibili
 ABI Compatibility
 -----------------
 
-Our communication feature relies on shared memory to transfer data between processes. For effective zero-copy data exchange, processes written in C++17 and Rust 1.8x must inherently understand the data at shared memory locations identically. Achieving this requires ensuring that data types have consistent, fixed-size, coherent memory layouts.
+Our communication feature relies on shared memory to transfer data between processes. For effective zero-copy data exchange, processes written in C++17 and Rust 1.8x must inherently understand the data at shared memory locations identically. Achieving this requires ensuring that data types have consistent, fixed-size memory layouts.
 
 This evaluation initially targets the following process configurations:
 
 * Processes running on the same operating system.
 * Processes running on different operating systems but under the same hypervisor.
 
-Future considerations may include processes running on different chips or architectures with the same endianness. Supporting different endianness is explicitly out of scope, as it inherently demands bit manipulation, effectively requiring serialization.
+Supporting different endianness between processes is explicitly out of scope, as it inherently demands bit manipulation, effectively requiring serialization.
+Different bit widths, however, are implicitly supported by specifying the width of all types and excluding word-size integers.
 
 The following data types shall be supported by the IPC mechanism:
 
 * **Primitive Types**:
 
   * Boolean
-  * Numeric (Fixed-size integers 8-128 bits, signed and unsigned; IEEE 754 floating-point numbers)
+  * Numeric (fixed-size integers 8-128 bits, signed and unsigned; IEEE 754 floating-point numbers)
 
 * **Sequence Types**:
 
-  * Tuple
-  * Array
+  * Array (fixed-length)
 
-* **User-defined Types**:
+* **User-Defined Types**:
 
   * Struct
-  * Enum
+  * Tuple
+  * Enum (tag-only)
+  * Variant ("tagged union"; *optional*)
 
-* **Fixed-size Containers**:
+* **Fixed-Size, Variable-Length Containers**:
 
   * Vector
-  * Hash map (optional)
-  * Hash set (optional)
-  * Binary tree (optional)
+  * Queue
+  * Hash map (*optional*)
+  * Hash set (*optional*)
+  * Binary tree (*optional*)
 
-* **Union-like Constructs** (no direct unions):
+* **Specialized Variants**:
 
   * Result
   * Option
 
-All provided data types must ensure fixed size and coherent memory layouts.
+All provided data types must ensure fixed size and consistent memory layouts.
 
 Type Description
 ----------------
@@ -106,69 +110,9 @@ A critical scalability feature involves gateway processes, which subscribe to IP
 
 In summary, the motivation behind this feature request is to define and standardize ABI-compatible data types and a runtime-accessible type description mechanism to ensure interoperability and scalability in zero-copy IPC scenarios involving multiple languages and dynamic environments.
 
-Reflection
-^^^^^^^^^^
-
-Reflection, in this context, is the ability to inspect data at runtime even if its structure is not or not fully known at compile time.
-It depends on some form of *type descriptions* being available to be able to interpret an unstructured sequence of bytes.
-
-Benefits of reflection include:
-
-* Consumers can perform additional consistency checks, because reflection provides a second, redundant description of the structure of the received data stream.
-* Recorded data can be translated into a human-readable format (e.g., JSON or CSV) without having to know the type definitions beforehand; this allows general-purpose data recording and transformation tools.
-* As a special case, if a data structure already contains *inline type descriptions* in the form of SOME/IP TLV tags, it doesn't need to be transformed before being sent over a SOME/IP connection.
-
-Inline Type Descriptions
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-An explicit transformation step between the in-memory representation and the SOME/IP+TLV format can – in theory – be avoided by adding TLVs to ABI compatible types.
-This approach, however, comes with significant downsides:
-
-* Adding inline type descriptions incurs a significant memory overhead across the board, and leads to worse cache behavior.
-* It mandates TLV for *all* instances of *all* ABI compatible types, even when TLV is not needed (for example, in a non-TLV SOME/IP gateway).
-  * This might be mitigated by making TLV optional through a generic respectively a template parameter on the type declaration.
-* SOME/IP's specification of big-endianness is in conflict with the requirement of native-endianness for ABI compatible types, making the feasibility of this approach questionable.
-* SOME/IP doesn't support "unused" slots in dynamic arrays, so ABI compatible types containing *vectors* (which differentiate between the length and the capacity) couldn't be directly represented in SOME/IP anyway.
-
-Alternative Approach
-^^^^^^^^^^^^^^^^^^^^
-
-Instead of inserting inline type descriptions into each instance of an ABI compatible type, the full type description can be made available to a consumer only once, either proactively or on request.
-The consumer decides if it uses or ignores this metadata.
-
-This type description can be used to dynamically translate between the compact, non-reflective ABI compatible data structures on one side, and a reflective, inline-describing format on the other side.
-Although this incurs a copy and some minor processing, the overhead should be negligible compared to other computational tasks involving the payload.
-
-One method to efficiently translate a payload consisting of ABI compatible types to an inline-described reflective format is to convert the hierarchical type description to a flat list of *instructions* which can be executed by an interpreter.
-Both the instructions and the interpreter would be specific for the target format.
-For example, to translate in-memory ABI compatible types to SOME/IP data structures, the instructions could look like this:
-
-.. code: rust
-
-    enum Transformation {
-        /// Copies `length` bytes from input to output.
-        Copy { length: usize, }
-
-        /// Copies 2 bytes from input to output, swapping endianness.
-        SwapEndian2,
-
-        /// Copies 4 bytes from input to output, swapping endianness.
-        SwapEndian4,
-
-        /// Copies 8 bytes from input to output, swapping endianness.
-        SwapEndian8,
-
-        /// Reads an ABI compatible vector (with an element size of `stride` bytes) from the input,
-        /// writes the length as big-endian to the output, and writes the given number of elements
-        /// to the output.
-        CopyVectorWithLength { stride: usize },
-
-        ...
-    }
 
 .. Rationale
 .. ==========
-
 
 
 Specification
@@ -177,14 +121,14 @@ Specification
 ABI Compatibility
 -----------------
 
-This specification defines the set of rules and constraints for representing data types in shared memory such that they can be interpreted consistently across processes implemented in C++17 and Rust 1.8x. These types enable zero-copy inter-process communication by enforcing ABI compatibility at the memory layout level. The focus is on data exchange between processes running on the same CPU architecture and using the same endianness.
+This specification defines the set of rules and constraints for representing data types in shared memory such that they can be interpreted consistently across processes implemented in C++17 and Rust 1.8x. These types enable zero-copy inter-process communication by enforcing ABI compatibility at the memory layout level. The focus is on data exchange between processes using the same endianness.
 
 Assumptions
 ^^^^^^^^^^^
 
 * Shared memory regions are mapped at correctly aligned virtual addresses in both processes.
 * No serialization or runtime copying occurs when interpreting a type from memory.
-* Processes execute on the same instruction set architecture and use the same endianness.
+* Processes use the same endianness.
 * No synchronization or atomicity guarantees are defined at the data type level; these are provided by the IPC framework.
 * All memory is allocated statically or pre-reserved. Dynamic memory allocation is disallowed.
 
@@ -217,7 +161,7 @@ These types are ABI-compatible when declared using fixed-size standard types:
      - C++17
    * - Boolean
      - ``bool``
-     - ``bool`` (1 byte)
+     - ``bool`` (1 byte, with ``0x00`` and ``0x01`` as the only valid bit patterns)
    * - Integers (N = 8..128)
      - ``uN``, ``iN``
      - ``std::uintN_t``, ``std::intN_t``
@@ -233,7 +177,11 @@ Structs and Tuples
 Structs and tuples are supported using standard layout rules:
 
 * **Rust**: Requires ``#[repr(C)]``
-* **C++**: Requires ``standard_layout`` types with no inheritance or virtual functions
+  (guarantees C-compatible memory layout;
+  `full specification <https://doc.rust-lang.org/reference/type-layout.html#the-c-representation>`__)
+* **C++**: Requires ``standard_layout``
+  (no virtual functions, no virtual inheritance, and only one class in the hierarchy has non-static data members;
+  `full specification <https://en.cppreference.com/w/cpp/language/classes.html#Standard-layout_class>`__)
 
 Field ordering must be preserved and padding must be identical across compilers. Any alignment greater than the default must be explicitly declared.
 
@@ -266,15 +214,16 @@ To provide bounded sequence types with familiar APIs, a custom vector implementa
 
     #[repr(C)]
     pub struct AbiVec<T> {
-        pub len: u32,
-        pub capacity: u32,
-        pub elements: [T; N],
+        len: u32,
+        capacity: u32,
+        elements: [T; N],
     }
 
 .. code-block:: cpp
 
     template<typename T, std::size_t N>
     struct AbiVec {
+    private:
         std::uint32_t len;
         std::uint32_t capacity;
         T elements[N];
@@ -295,14 +244,15 @@ ABI-compatible optional types must be implemented manually using a one-byte tag 
 
     #[repr(C)]
     pub struct AbiOption<T> {
-        pub is_some: u8,
-        pub value: T,
+        is_some: u8,
+        value: T,
     }
 
 .. code-block:: cpp
 
     template<typename T>
     struct AbiOption {
+    private:
         std::uint8_t is_some;
         T value;
     };
@@ -320,20 +270,21 @@ Result types represent tagged unions with two possible states.
 
     #[repr(C)]
     pub struct AbiResult<T, E> {
-        pub is_ok: u8,
-        pub value: AbiResultUnion<T, E>,
+        is_ok: u8,
+        value: AbiResultUnion<T, E>,
     }
 
     #[repr(C)]
-    pub union AbiResultUnion<T, E> {
-        pub ok: T,
-        pub err: E,
+    union AbiResultUnion<T, E> {
+        ok: T,
+        err: E,
     }
 
 .. code-block:: cpp
 
     template<typename T, typename E>
     struct AbiResult {
+    private:
         std::uint8_t is_ok;
         union {
             T ok;
@@ -448,8 +399,85 @@ All functionality shall be available to applications rated up to ASIL-B.
 .. How to Teach This
 .. ==================
 
-.. Rejected Ideas
-.. ==============
+
+Rejected Ideas
+==============
+
+Reflection
+----------
+
+Reflection, in this context, is the ability to inspect data at runtime even if its structure is not or not fully known at compile time.
+Benefits of reflection include being able to translate recorded data into a human-readable format (e.g., JSON or CSV) without having to know the type definitions at compile time; this enables general-purpose data recording and transformation tools.
+
+This ability requires some form of *type description* being available at runtime, so that a sequence of bytes can be interpreted as a data structure.
+There are two primary approaches to achieve this goal:
+
+* *inline type descriptions*, which precede each instance of every type, and
+* *external type descriptions*, which are stored separately from the data.
+
+Inline Type Descriptions
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+An explicit transformation step between the in-memory representation and the SOME/IP+TLV format can – in theory – be avoided by adding TLVs to ABI compatible types.
+This approach, however, comes with significant downsides:
+
+* Adding inline type descriptions incurs a significant memory overhead across the board, and leads to worse cache behavior.
+* It mandates TLV for *all* instances of *all* ABI compatible types, even when TLV is not needed (for example, in a non-TLV SOME/IP gateway).
+  * This might be mitigated by making TLV optional through a generic respectively a template parameter on the type declaration.
+* SOME/IP's specification of big-endianness is in conflict with the requirement of native-endianness for ABI compatible types, making the feasibility of this approach questionable.
+* SOME/IP doesn't support "unused" slots in dynamic arrays, so ABI compatible types containing *vectors* (which differentiate between the length and the capacity) couldn't be directly represented in SOME/IP anyway.
+
+Alternative Approach
+^^^^^^^^^^^^^^^^^^^^
+
+Instead of inserting inline type descriptions into each instance of an ABI compatible type, the full type description can be made available to a consumer only once, either proactively or on request.
+The consumer decides if it uses or ignores this metadata.
+
+This type description can be used to dynamically translate between the compact, non-reflective ABI compatible data structures on one side, and a reflective, inline-describing format on the other side.
+Although this incurs a copy and some minor processing, the overhead should be negligible compared to other computational tasks involving the payload.
+
+One method to efficiently translate a payload consisting of ABI compatible types to an inline-described reflective format is to convert the hierarchical type description to a flat list of *instructions* which can be executed by an interpreter.
+Both the instructions and the interpreter would be specific for the target format.
+For example, to translate in-memory ABI compatible types to SOME/IP data structures, the instructions could look like this:
+
+.. code-block:: rust
+
+    enum Transformation {
+        /// Copies `length` bytes from input to output.
+        Copy { length: usize, }
+
+        /// Copies 2 bytes from input to output, swapping endianness.
+        SwapEndian2,
+
+        /// Copies 4 bytes from input to output, swapping endianness.
+        SwapEndian4,
+
+        /// Copies 8 bytes from input to output, swapping endianness.
+        SwapEndian8,
+
+        /// Reads an ABI compatible vector (with an element size of `stride` bytes) from the input,
+        /// writes the length as big-endian to the output, and writes the given number of elements
+        /// to the output.
+        CopyVectorWithLength { stride: usize },
+
+        ...
+    }
+
+Rationale for Rejection
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Reflection will not be part of version 1.0 of this feature request.
+
+* Inline type descriptions are too intrusive and generate too much overhead:
+
+  1. Choosing one particular format, like SOME/IP TLV, would bias the entire system against other formats.
+  2. To take full advantage of zero-copy IPC, ABI compatible types must be used during production and consumption of the transmitted data. Having to carry around inline type descriptions in those computations would have a non-negligible performance overhead.
+  3. The specification for SOME/IP types is incompatible with the requirement of ABI vectors that can grow dynamically during construction, i.e., vectors which contain fewer valid elements than they take up space in memory.
+  4. Inserting inline type descriptions on demand is expected to be a relatively cheap operation, which negates the main motivation for including them directly in ABI types in the first place.
+
+* External type descriptions will probably be included in a later version of this feature request.
+  For now, they're postponed until we have a better understanding of the relevant use cases.
+
 
 .. Open Issues
 .. ===========

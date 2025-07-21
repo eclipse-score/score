@@ -63,6 +63,13 @@
     <script src="../../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
     <script src="../../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'features/communication/abi_compatible_data_types/index';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Requirements" href="requirements.html" />
@@ -253,6 +260,26 @@
         </li>
 </ul></div>
       
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
     </div>
     
   </div>
@@ -388,6 +415,26 @@
         </li>
 </ul></div>
         
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
       </div>
     
   </div>
@@ -481,7 +528,7 @@
                   
   <section id="abi-compatible-data-types">
 <span id="abi-compatible-data-types-feature"></span><h1>ABI Compatible Data Types<a class="headerlink" href="#abi-compatible-data-types" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-aebfc347">
+<div class="need_container docutils container" id="SNCB-b1546d5a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__abi_compatible_data_types">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -535,7 +582,7 @@
 </section>
 <section id="abstract">
 <h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
-<p>This feature request defines a set of ABI-compatible data types and a runtime type description format to support zero-copy inter-process communication between C++17 and Rust 1.8x processes on the same architecture and endianness. It ensures consistent type layouts across languages by requiring fixed-size, statically allocated types with no pointers or language-specific metadata.</p>
+<p>This feature request defines a set of ABI-compatible data types and a runtime type description format to support zero-copy inter-process communication between C++17 and Rust 1.8x processes using the same endianness. It ensures consistent type layouts across languages by requiring fixed-size, statically allocated types with no pointers or language-specific metadata.</p>
 <p>The specification covers primitive types, structs, enums, arrays, and introduces ABI-stable representations for vectors, options, and results. A runtime-readable type description enables processes to interpret shared memory without compile-time access to type definitions.</p>
 </section>
 <section id="motivation">
@@ -547,100 +594,70 @@
 </ol>
 <section id="abi-compatibility">
 <h3>ABI Compatibility<a class="headerlink" href="#abi-compatibility" title="Link to this heading">#</a></h3>
-<p>Our communication feature relies on shared memory to transfer data between processes. For effective zero-copy data exchange, processes written in C++17 and Rust 1.8x must inherently understand the data at shared memory locations identically. Achieving this requires ensuring that data types have consistent, fixed-size, coherent memory layouts.</p>
+<p>Our communication feature relies on shared memory to transfer data between processes. For effective zero-copy data exchange, processes written in C++17 and Rust 1.8x must inherently understand the data at shared memory locations identically. Achieving this requires ensuring that data types have consistent, fixed-size memory layouts.</p>
 <p>This evaluation initially targets the following process configurations:</p>
 <ul class="simple">
 <li><p>Processes running on the same operating system.</p></li>
 <li><p>Processes running on different operating systems but under the same hypervisor.</p></li>
 </ul>
-<p>Future considerations may include processes running on different chips or architectures with the same endianness. Supporting different endianness is explicitly out of scope, as it inherently demands bit manipulation, effectively requiring serialization.</p>
+<p>Supporting different endianness between processes is explicitly out of scope, as it inherently demands bit manipulation, effectively requiring serialization.
+Different bit widths, however, are implicitly supported by specifying the width of all types and excluding word-size integers.</p>
 <p>The following data types shall be supported by the IPC mechanism:</p>
 <ul class="simple">
 <li><p><strong>Primitive Types</strong>:</p>
 <ul>
 <li><p>Boolean</p></li>
-<li><p>Numeric (Fixed-size integers 8-128 bits, signed and unsigned; IEEE 754 floating-point numbers)</p></li>
+<li><p>Numeric (fixed-size integers 8-128 bits, signed and unsigned; IEEE 754 floating-point numbers)</p></li>
 </ul>
 </li>
 <li><p><strong>Sequence Types</strong>:</p>
 <ul>
-<li><p>Tuple</p></li>
-<li><p>Array</p></li>
+<li><p>Array (fixed-length)</p></li>
 </ul>
 </li>
-<li><p><strong>User-defined Types</strong>:</p>
+<li><p><strong>User-Defined Types</strong>:</p>
 <ul>
 <li><p>Struct</p></li>
-<li><p>Enum</p></li>
+<li><p>Tuple</p></li>
+<li><p>Enum (tag-only)</p></li>
+<li><p>Variant (“tagged union”; <em>optional</em>)</p></li>
 </ul>
 </li>
-<li><p><strong>Fixed-size Containers</strong>:</p>
+<li><p><strong>Fixed-Size, Variable-Length Containers</strong>:</p>
 <ul>
 <li><p>Vector</p></li>
-<li><p>Hash map (optional)</p></li>
-<li><p>Hash set (optional)</p></li>
-<li><p>Binary tree (optional)</p></li>
+<li><p>Queue</p></li>
+<li><p>Hash map (<em>optional</em>)</p></li>
+<li><p>Hash set (<em>optional</em>)</p></li>
+<li><p>Binary tree (<em>optional</em>)</p></li>
 </ul>
 </li>
-<li><p><strong>Union-like Constructs</strong> (no direct unions):</p>
+<li><p><strong>Specialized Variants</strong>:</p>
 <ul>
 <li><p>Result</p></li>
 <li><p>Option</p></li>
 </ul>
 </li>
 </ul>
-<p>All provided data types must ensure fixed size and coherent memory layouts.</p>
+<p>All provided data types must ensure fixed size and consistent memory layouts.</p>
 </section>
 <section id="type-description">
 <h3>Type Description<a class="headerlink" href="#type-description" title="Link to this heading">#</a></h3>
 <p>A critical scalability feature involves gateway processes, which subscribe to IPC endpoints and translate ABI-compatible data types into external serialization formats. These gateways require the ability to interpret data without compile-time access to type definitions. To address this, an explicit runtime-readable type description format is necessary. This description allows dynamic, runtime interpretation of data structures, enabling the addition of new IPC topics without recompiling gateway processes.</p>
 <p>In summary, the motivation behind this feature request is to define and standardize ABI-compatible data types and a runtime-accessible type description mechanism to ensure interoperability and scalability in zero-copy IPC scenarios involving multiple languages and dynamic environments.</p>
-<section id="reflection">
-<h4>Reflection<a class="headerlink" href="#reflection" title="Link to this heading">#</a></h4>
-<p>Reflection, in this context, is the ability to inspect data at runtime even if its structure is not or not fully known at compile time.
-It depends on some form of <em>type descriptions</em> being available to be able to interpret an unstructured sequence of bytes.</p>
-<p>Benefits of reflection include:</p>
-<ul class="simple">
-<li><p>Consumers can perform additional consistency checks, because reflection provides a second, redundant description of the structure of the received data stream.</p></li>
-<li><p>Recorded data can be translated into a human-readable format (e.g., JSON or CSV) without having to know the type definitions beforehand; this allows general-purpose data recording and transformation tools.</p></li>
-<li><p>As a special case, if a data structure already contains <em>inline type descriptions</em> in the form of SOME/IP TLV tags, it doesn’t need to be transformed before being sent over a SOME/IP connection.</p></li>
-</ul>
-</section>
-<section id="inline-type-descriptions">
-<h4>Inline Type Descriptions<a class="headerlink" href="#inline-type-descriptions" title="Link to this heading">#</a></h4>
-<p>An explicit transformation step between the in-memory representation and the SOME/IP+TLV format can – in theory – be avoided by adding TLVs to ABI compatible types.
-This approach, however, comes with significant downsides:</p>
-<ul class="simple">
-<li><p>Adding inline type descriptions incurs a significant memory overhead across the board, and leads to worse cache behavior.</p></li>
-<li><p>It mandates TLV for <em>all</em> instances of <em>all</em> ABI compatible types, even when TLV is not needed (for example, in a non-TLV SOME/IP gateway).
-* This might be mitigated by making TLV optional through a generic respectively a template parameter on the type declaration.</p></li>
-<li><p>SOME/IP’s specification of big-endianness is in conflict with the requirement of native-endianness for ABI compatible types, making the feasibility of this approach questionable.</p></li>
-<li><p>SOME/IP doesn’t support “unused” slots in dynamic arrays, so ABI compatible types containing <em>vectors</em> (which differentiate between the length and the capacity) couldn’t be directly represented in SOME/IP anyway.</p></li>
-</ul>
-</section>
-<section id="alternative-approach">
-<h4>Alternative Approach<a class="headerlink" href="#alternative-approach" title="Link to this heading">#</a></h4>
-<p>Instead of inserting inline type descriptions into each instance of an ABI compatible type, the full type description can be made available to a consumer only once, either proactively or on request.
-The consumer decides if it uses or ignores this metadata.</p>
-<p>This type description can be used to dynamically translate between the compact, non-reflective ABI compatible data structures on one side, and a reflective, inline-describing format on the other side.
-Although this incurs a copy and some minor processing, the overhead should be negligible compared to other computational tasks involving the payload.</p>
-<p>One method to efficiently translate a payload consisting of ABI compatible types to an inline-described reflective format is to convert the hierarchical type description to a flat list of <em>instructions</em> which can be executed by an interpreter.
-Both the instructions and the interpreter would be specific for the target format.
-For example, to translate in-memory ABI compatible types to SOME/IP data structures, the instructions could look like this:</p>
-</section>
 </section>
 </section>
 <section id="specification">
 <h2>Specification<a class="headerlink" href="#specification" title="Link to this heading">#</a></h2>
 <section id="id1">
 <h3>ABI Compatibility<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<p>This specification defines the set of rules and constraints for representing data types in shared memory such that they can be interpreted consistently across processes implemented in C++17 and Rust 1.8x. These types enable zero-copy inter-process communication by enforcing ABI compatibility at the memory layout level. The focus is on data exchange between processes running on the same CPU architecture and using the same endianness.</p>
+<p>This specification defines the set of rules and constraints for representing data types in shared memory such that they can be interpreted consistently across processes implemented in C++17 and Rust 1.8x. These types enable zero-copy inter-process communication by enforcing ABI compatibility at the memory layout level. The focus is on data exchange between processes using the same endianness.</p>
 <section id="assumptions">
 <h4>Assumptions<a class="headerlink" href="#assumptions" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Shared memory regions are mapped at correctly aligned virtual addresses in both processes.</p></li>
 <li><p>No serialization or runtime copying occurs when interpreting a type from memory.</p></li>
-<li><p>Processes execute on the same instruction set architecture and use the same endianness.</p></li>
+<li><p>Processes use the same endianness.</p></li>
 <li><p>No synchronization or atomicity guarantees are defined at the data type level; these are provided by the IPC framework.</p></li>
 <li><p>All memory is allocated statically or pre-reserved. Dynamic memory allocation is disallowed.</p></li>
 </ul>
@@ -672,7 +689,7 @@ For example, to translate in-memory ABI compatible types to SOME/IP data structu
 <tbody>
 <tr class="row-even"><td><p>Boolean</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code> (1 byte)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code> (1 byte, with <code class="docutils literal notranslate"><span class="pre">0x00</span></code> and <code class="docutils literal notranslate"><span class="pre">0x01</span></code> as the only valid bit patterns)</p></td>
 </tr>
 <tr class="row-odd"><td><p>Integers (N = 8..128)</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">uN</span></code>, <code class="docutils literal notranslate"><span class="pre">iN</span></code></p></td>
@@ -691,8 +708,12 @@ For example, to translate in-memory ABI compatible types to SOME/IP data structu
 <h5>Structs and Tuples<a class="headerlink" href="#structs-and-tuples" title="Link to this heading">#</a></h5>
 <p>Structs and tuples are supported using standard layout rules:</p>
 <ul class="simple">
-<li><p><strong>Rust</strong>: Requires <code class="docutils literal notranslate"><span class="pre">#[repr(C)]</span></code></p></li>
-<li><p><strong>C++</strong>: Requires <code class="docutils literal notranslate"><span class="pre">standard_layout</span></code> types with no inheritance or virtual functions</p></li>
+<li><p><strong>Rust</strong>: Requires <code class="docutils literal notranslate"><span class="pre">#[repr(C)]</span></code>
+(guarantees C-compatible memory layout;
+<a class="reference external" href="https://doc.rust-lang.org/reference/type-layout.html#the-c-representation">full specification</a>)</p></li>
+<li><p><strong>C++</strong>: Requires <code class="docutils literal notranslate"><span class="pre">standard_layout</span></code>
+(no virtual functions, no virtual inheritance, and only one class in the hierarchy has non-static data members;
+<a class="reference external" href="https://en.cppreference.com/w/cpp/language/classes.html#Standard-layout_class">full specification</a>)</p></li>
 </ul>
 <p>Field ordering must be preserved and padding must be identical across compilers. Any alignment greater than the default must be explicitly declared.</p>
 </section>
@@ -719,14 +740,15 @@ For example, to translate in-memory ABI compatible types to SOME/IP data structu
 <p>To provide bounded sequence types with familiar APIs, a custom vector implementation must be provided in both languages that matches the memory layout defined below.</p>
 <div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="cp">#[repr(C)]</span>
 <span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">AbiVec</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">len</span><span class="p">:</span><span class="w"> </span><span class="kt">u32</span><span class="p">,</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">capacity</span><span class="p">:</span><span class="w"> </span><span class="kt">u32</span><span class="p">,</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">elements</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">T</span><span class="p">;</span><span class="w"> </span><span class="n">N</span><span class="p">],</span>
+<span class="w">    </span><span class="n">len</span><span class="p">:</span><span class="w"> </span><span class="kt">u32</span><span class="p">,</span>
+<span class="w">    </span><span class="n">capacity</span><span class="p">:</span><span class="w"> </span><span class="kt">u32</span><span class="p">,</span>
+<span class="w">    </span><span class="n">elements</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">T</span><span class="p">;</span><span class="w"> </span><span class="n">N</span><span class="p">],</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">N</span><span class="o">&gt;</span>
 <span class="k">struct</span><span class="w"> </span><span class="nc">AbiVec</span><span class="w"> </span><span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">len</span><span class="p">;</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">capacity</span><span class="p">;</span>
 <span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">elements</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
@@ -746,13 +768,14 @@ For example, to translate in-memory ABI compatible types to SOME/IP data structu
 <p>ABI-compatible optional types must be implemented manually using a one-byte tag followed by a payload.</p>
 <div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="cp">#[repr(C)]</span>
 <span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">AbiOption</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">is_some</span><span class="p">:</span><span class="w"> </span><span class="kt">u8</span><span class="p">,</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span>
+<span class="w">    </span><span class="n">is_some</span><span class="p">:</span><span class="w"> </span><span class="kt">u8</span><span class="p">,</span>
+<span class="w">    </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
 <span class="k">struct</span><span class="w"> </span><span class="nc">AbiOption</span><span class="w"> </span><span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">is_some</span><span class="p">;</span>
 <span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
 <span class="p">};</span>
@@ -769,19 +792,20 @@ For example, to translate in-memory ABI compatible types to SOME/IP data structu
 <p>Result types represent tagged unions with two possible states.</p>
 <div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="cp">#[repr(C)]</span>
 <span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">AbiResult</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">E</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">is_ok</span><span class="p">:</span><span class="w"> </span><span class="kt">u8</span><span class="p">,</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="nc">AbiResultUnion</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">E</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">is_ok</span><span class="p">:</span><span class="w"> </span><span class="kt">u8</span><span class="p">,</span>
+<span class="w">    </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="nc">AbiResultUnion</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">E</span><span class="o">&gt;</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="cp">#[repr(C)]</span>
-<span class="k">pub</span><span class="w"> </span><span class="k">union</span><span class="w"> </span><span class="nc">AbiResultUnion</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">E</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">ok</span><span class="p">:</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">err</span><span class="p">:</span><span class="w"> </span><span class="nc">E</span><span class="p">,</span>
+<span class="k">union</span><span class="w"> </span><span class="nc">AbiResultUnion</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">E</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ok</span><span class="p">:</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span>
+<span class="w">    </span><span class="n">err</span><span class="p">:</span><span class="w"> </span><span class="nc">E</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">E</span><span class="o">&gt;</span>
 <span class="k">struct</span><span class="w"> </span><span class="nc">AbiResult</span><span class="w"> </span><span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">is_ok</span><span class="p">;</span>
 <span class="w">    </span><span class="k">union</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">T</span><span class="w"> </span><span class="n">ok</span><span class="p">;</span>
@@ -888,6 +912,80 @@ For example, to translate in-memory ABI compatible types to SOME/IP data structu
 </div>
 <p>All functionality shall be available to applications rated up to ASIL-B.</p>
 </section>
+<section id="rejected-ideas">
+<h2>Rejected Ideas<a class="headerlink" href="#rejected-ideas" title="Link to this heading">#</a></h2>
+<section id="reflection">
+<h3>Reflection<a class="headerlink" href="#reflection" title="Link to this heading">#</a></h3>
+<p>Reflection, in this context, is the ability to inspect data at runtime even if its structure is not or not fully known at compile time.
+Benefits of reflection include being able to translate recorded data into a human-readable format (e.g., JSON or CSV) without having to know the type definitions at compile time; this enables general-purpose data recording and transformation tools.</p>
+<p>This ability requires some form of <em>type description</em> being available at runtime, so that a sequence of bytes can be interpreted as a data structure.
+There are two primary approaches to achieve this goal:</p>
+<ul class="simple">
+<li><p><em>inline type descriptions</em>, which precede each instance of every type, and</p></li>
+<li><p><em>external type descriptions</em>, which are stored separately from the data.</p></li>
+</ul>
+<section id="inline-type-descriptions">
+<h4>Inline Type Descriptions<a class="headerlink" href="#inline-type-descriptions" title="Link to this heading">#</a></h4>
+<p>An explicit transformation step between the in-memory representation and the SOME/IP+TLV format can – in theory – be avoided by adding TLVs to ABI compatible types.
+This approach, however, comes with significant downsides:</p>
+<ul class="simple">
+<li><p>Adding inline type descriptions incurs a significant memory overhead across the board, and leads to worse cache behavior.</p></li>
+<li><p>It mandates TLV for <em>all</em> instances of <em>all</em> ABI compatible types, even when TLV is not needed (for example, in a non-TLV SOME/IP gateway).
+* This might be mitigated by making TLV optional through a generic respectively a template parameter on the type declaration.</p></li>
+<li><p>SOME/IP’s specification of big-endianness is in conflict with the requirement of native-endianness for ABI compatible types, making the feasibility of this approach questionable.</p></li>
+<li><p>SOME/IP doesn’t support “unused” slots in dynamic arrays, so ABI compatible types containing <em>vectors</em> (which differentiate between the length and the capacity) couldn’t be directly represented in SOME/IP anyway.</p></li>
+</ul>
+</section>
+<section id="alternative-approach">
+<h4>Alternative Approach<a class="headerlink" href="#alternative-approach" title="Link to this heading">#</a></h4>
+<p>Instead of inserting inline type descriptions into each instance of an ABI compatible type, the full type description can be made available to a consumer only once, either proactively or on request.
+The consumer decides if it uses or ignores this metadata.</p>
+<p>This type description can be used to dynamically translate between the compact, non-reflective ABI compatible data structures on one side, and a reflective, inline-describing format on the other side.
+Although this incurs a copy and some minor processing, the overhead should be negligible compared to other computational tasks involving the payload.</p>
+<p>One method to efficiently translate a payload consisting of ABI compatible types to an inline-described reflective format is to convert the hierarchical type description to a flat list of <em>instructions</em> which can be executed by an interpreter.
+Both the instructions and the interpreter would be specific for the target format.
+For example, to translate in-memory ABI compatible types to SOME/IP data structures, the instructions could look like this:</p>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span><span class="w"> </span><span class="nc">Transformation</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="sd">/// Copies `length` bytes from input to output.</span>
+<span class="w">    </span><span class="nb">Copy</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">length</span><span class="p">:</span><span class="w"> </span><span class="kt">usize</span><span class="p">,</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="sd">/// Copies 2 bytes from input to output, swapping endianness.</span>
+<span class="w">    </span><span class="n">SwapEndian2</span><span class="p">,</span>
+
+<span class="w">    </span><span class="sd">/// Copies 4 bytes from input to output, swapping endianness.</span>
+<span class="w">    </span><span class="n">SwapEndian4</span><span class="p">,</span>
+
+<span class="w">    </span><span class="sd">/// Copies 8 bytes from input to output, swapping endianness.</span>
+<span class="w">    </span><span class="n">SwapEndian8</span><span class="p">,</span>
+
+<span class="w">    </span><span class="sd">/// Reads an ABI compatible vector (with an element size of `stride` bytes) from the input,</span>
+<span class="w">    </span><span class="sd">/// writes the length as big-endian to the output, and writes the given number of elements</span>
+<span class="w">    </span><span class="sd">/// to the output.</span>
+<span class="w">    </span><span class="n">CopyVectorWithLength</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">stride</span><span class="p">:</span><span class="w"> </span><span class="kt">usize</span><span class="w"> </span><span class="p">},</span>
+
+<span class="w">    </span><span class="o">..</span><span class="p">.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="rationale-for-rejection">
+<h4>Rationale for Rejection<a class="headerlink" href="#rationale-for-rejection" title="Link to this heading">#</a></h4>
+<p>Reflection will not be part of version 1.0 of this feature request.</p>
+<ul class="simple">
+<li><p>Inline type descriptions are too intrusive and generate too much overhead:</p>
+<ol class="arabic simple">
+<li><p>Choosing one particular format, like SOME/IP TLV, would bias the entire system against other formats.</p></li>
+<li><p>To take full advantage of zero-copy IPC, ABI compatible types must be used during production and consumption of the transmitted data. Having to carry around inline type descriptions in those computations would have a non-negligible performance overhead.</p></li>
+<li><p>The specification for SOME/IP types is incompatible with the requirement of ABI vectors that can grow dynamically during construction, i.e., vectors which contain fewer valid elements than they take up space in memory.</p></li>
+<li><p>Inserting inline type descriptions on demand is expected to be a relatively cheap operation, which negates the main motivation for including them directly in ABI types in the first place.</p></li>
+</ol>
+</li>
+<li><p>External type descriptions will probably be included in a later version of this feature request.
+For now, they’re postponed until we have a better understanding of the relevant use cases.</p></li>
+</ul>
+</section>
+</section>
+</section>
 </section>
 
 
@@ -941,12 +1039,7 @@ For example, to translate in-memory ABI compatible types to SOME/IP data structu
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#abi-compatibility">ABI Compatibility</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#type-description">Type Description</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">Reflection</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inline-type-descriptions">Inline Type Descriptions</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-approach">Alternative Approach</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#type-description">Type Description</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specification">Specification</a><ul class="nav section-nav flex-column">
@@ -975,6 +1068,15 @@ For example, to translate in-memory ABI compatible types to SOME/IP data structu
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#security-impact">Security Impact</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#safety-impact">Safety Impact</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rejected-ideas">Rejected Ideas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">Reflection</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inline-type-descriptions">Inline Type Descriptions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-approach">Alternative Approach</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale-for-rejection">Rationale for Rejection</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
@@ -982,7 +1084,7 @@ For example, to translate in-memory ABI compatible types to SOME/IP data structu
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/dummy/dummy/edit/main/docs/features/communication/abi_compatible_data_types/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/features/communication/abi_compatible_data_types/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
