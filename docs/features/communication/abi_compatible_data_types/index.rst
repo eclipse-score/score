@@ -74,6 +74,7 @@ The following data types shall be supported by the IPC mechanism:
 
   * Boolean
   * Numeric (Fixed-size integers 8-128 bits, signed and unsigned; IEEE 754 floating-point numbers)
+  * TypeTag
 
 * **Sequence Types**:
 
@@ -96,8 +97,11 @@ The following data types shall be supported by the IPC mechanism:
 
   * Result
   * Option
+  * Variant (optional)
 
 All provided data types must ensure fixed size and coherent memory layouts.
+Additionally, they should provide means to safety access memory. That is why C-style unions should
+not exist for ABI compatible types.
 
 Type Description
 ----------------
@@ -109,8 +113,12 @@ In summary, the motivation behind this feature request is to define and standard
 Reflection
 ^^^^^^^^^^
 
-Reflection, in this context, is the ability to inspect data at runtime even if its structure is not or not fully known at compile time.
-It depends on some form of *type descriptions* being available to be able to interpret an unstructured sequence of bytes.
+Reflection, in this context, is the ability to retrieve information on ABI data types at runtime.
+Type information allows software at runtime to correctly interpret the memory layout of data seen.
+
+We distinguish to reflection approaches:
+* Static reflection allows access to types that are known at compile-time
+* Dynamic reflection allows access to types that are only known at runtime.
 
 Benefits of reflection include:
 
@@ -118,8 +126,46 @@ Benefits of reflection include:
 * Recorded data can be translated into a human-readable format (e.g., JSON or CSV) without having to know the type definitions beforehand; this allows general-purpose data recording and transformation tools.
 * As a special case, if a data structure already contains *inline type descriptions* in the form of SOME/IP TLV tags, it doesn't need to be transformed before being sent over a SOME/IP connection.
 
-Inline Type Descriptions
-^^^^^^^^^^^^^^^^^^^^^^^^
+Type Tags & Type Information
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+With ABI types the ability to communicate on types appears desireable.
+
+Transporting information on a type minimally requires a globally unique type tag that every application
+can interpret identically. This `TypeTag` should map to a single value, ideally primitive and atomic.
+
+The `TypeTag` itself is an ABI type.
+
+Note: We choose the name `TypeTag` to not collide with compiler-specific `type_id` and similar data.
+
+Using the type tag the ABI type system can provide more details on the inner structure and layout of the type.
+These details we call type information.
+
+Examples:
+
+* An IEEE-754 32 bit single precision floating-point value has unique `TypeTag` value 'AA__F_32'.
+  The associated type information reveals it is primitive, floating, and sized 4 bytes.
+
+* A CAN message has a `TypeTag`value 'AA__BCAN_'.
+  The associated type information reveals it is a struct with the fields id, len, and data. Data's
+  type code resolving into the information it beeing an array of 8 bytes.
+
+
+Inline Type Reflection
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Inline type reflection means storing on type reflection data together with value data.
+
+There are two ways to achieve this:
+
+* Store the type tag only, type information is implicit: This is type tag inlining.
+* Store the full type information explicitly: This is type information inlining.
+
+While storing any kind of reflection with values has its proper use-cases, e.g. to protect certain memory
+structures in (shared) memory, storing reflection data in general is a discouraged practise.
+
+SOME/IP considerations
+""""""""""""""""""""""
 
 An explicit transformation step between the in-memory representation and the SOME/IP+TLV format can – in theory – be avoided by adding TLVs to ABI compatible types.
 This approach, however, comes with significant downsides:
@@ -131,7 +177,7 @@ This approach, however, comes with significant downsides:
 * SOME/IP doesn't support "unused" slots in dynamic arrays, so ABI compatible types containing *vectors* (which differentiate between the length and the capacity) couldn't be directly represented in SOME/IP anyway.
 
 Alternative Approach
-^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""
 
 Instead of inserting inline type descriptions into each instance of an ABI compatible type, the full type description can be made available to a consumer only once, either proactively or on request.
 The consumer decides if it uses or ignores this metadata.
@@ -186,7 +232,6 @@ Assumptions
 * No serialization or runtime copying occurs when interpreting a type from memory.
 * Processes execute on the same instruction set architecture and use the same endianness.
 * No synchronization or atomicity guarantees are defined at the data type level; these are provided by the IPC framework.
-* All memory is allocated statically or pre-reserved. Dynamic memory allocation is disallowed.
 
 Type Conformance
 ^^^^^^^^^^^^^^^^
@@ -196,7 +241,7 @@ Types used in shared memory must meet the following criteria:
 1. **Fixed size and alignment**: Every type must have a known, constant size and alignment at compile time.
 2. **Consistent layout across languages**: The layout of a type must be identical in Rust and C++ on the same platform.
 3. **No pointers or references**: Types must not contain pointers to heap memory, function pointers, or references.
-4. **No language-specific metadata**: No vtables, slice headers, or implementation-specific type markers are allowed.
+4. **No language-specific metadata**: No vtables, slice headers, or implicit implementation-specific type markers are allowed.
 
 Each type definition must clearly indicate whether it conforms to these rules natively or requires a custom definition to do so.
 
@@ -223,7 +268,11 @@ These types are ABI-compatible when declared using fixed-size standard types:
      - ``std::uintN_t``, ``std::intN_t``
    * - Floating point
      - ``f32``, ``f64``
-     - ``float``, ``double``
+     - ``float``, ``double``^
+   * - Type tag
+     - ``TypeTag`` proposed to equal `u64` and be able to
+      * encode 8 ASCII characters if MSB is `0` and
+      * any 63 bit value if MSB is `1`
 
 All types must avoid trap representations and undefined padding.
 
@@ -344,6 +393,37 @@ Result types represent tagged unions with two possible states.
 * ``is_ok == 1`` indicates ``ok`` field is valid
 * ``is_ok == 0`` indicates ``err`` field is valid
 * The layout must guarantee correct union member interpretation based on the discriminant
+
+Variant Types
+""""""""""""
+
+Variant types represent tagged unions with arbitrary (256 max) possible states.
+
+.. code-block:: rust
+
+    #[repr(C)]
+    ...
+
+.. code-block:: cpp
+
+    template<typename T, typename R...>
+    struct AbiResult {
+        std::uint8_t tag;
+        union {
+            T value;
+            AbiResult<R...> r;
+        } value;
+    };
+
+    template<typename T>
+    struct AbiResult {
+       std::uint8_t tag;
+       T value;
+    };
+
+* ``tag`` containing the current variant.
+* The layout must guarantee correct union member interpretation based on the discriminant
+
 
 Language Conformance Summary
 """"""""""""""""""""""""""""
