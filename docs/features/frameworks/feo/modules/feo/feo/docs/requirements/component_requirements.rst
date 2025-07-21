@@ -264,3 +264,105 @@ Component Requirements: feo
     This can be done e.g. via evaluation of floating point exceptions,
     checking of hardware registers or status information of the
     software platform.
+
+Error Handling for S-CORE v0.5
+==============================
+
+.. comp_req:: Response to termination request
+    :id: comp_req__feo__response_term_request
+    :reqtype: Functional
+    :security: YES
+    :safety: ASIL_B
+    :satisfies: feat_req__feo__response_term_request
+    :status: valid
+
+    If the primary process receives a termination signal, it shall call the shutdown
+    function of all remaining activities in arbitrary sequence and terminate itself.
+
+    If a secondary process receives a termination signal, it shall terminate itself.
+
+
+.. comp_req:: Secondary connection timeout
+    :id: comp_req__feo__secondary_conn_timeout
+    :reqtype: Functional
+    :security: YES
+    :safety: ASIL_B
+    :satisfies: feat_req__feo__secondary_conn_timeout
+    :status: valid
+
+    If not all secondary processes connect to the primary in time, the primary shall terminate itself.
+    The startup functions shall not be triggered.
+
+
+.. comp_req:: Activity startup error
+    :id: comp_req__feo__act_startup_error
+    :reqtype: Functional
+    :security: YES
+    :safety: ASIL_B
+    :satisfies: feat_req__feo__act_startup_error
+    :status: valid
+
+    If an error occurs during the execution of a startup function, the primary process shall abort calling
+    startup functions and terminate itself. For all of the activities
+    whose startup functions have already been called successfully, the corresponding shutdown functions shall be
+    executed in arbitrary sequence.
+
+
+.. comp_req:: Activity resource allocation error
+    :id: comp_req__feo__act_alloc_error
+    :reqtype: Functional
+    :security: YES
+    :safety: ASIL_B
+    :satisfies: feat_req__feo__act_alloc_error
+    :status: valid
+
+    During initialization (i.e. in the startup function of an activity), activities shall check for resource allocation
+    and report an error to the executor in case of failure.
+
+
+.. comp_req:: Activity timeout
+    :id: comp_req__feo__act_timeout
+    :reqtype: Functional
+    :security: YES
+    :safety: ASIL_B
+    :satisfies: feat_req__feo__act_timeout
+    :status: valid
+
+    If a timeout occurs during startup, stepping or shutdown of an activity, the primary process shall shutdown all
+    successfully started activities in arbitrary sequence and terminate itself.
+
+
+.. comp_req:: Startup timeout
+    :id: comp_req__feo__startup_timeout
+    :reqtype: Functional
+    :security: YES
+    :safety: ASIL_B
+    :satisfies: feat_req__feo__startup_timeout
+    :status: valid
+
+    If not all activities reach their initialized state within a certain period of time (startup timeout),
+    the primary process shall shutdown all successfully started activities in arbitrary sequence and terminate itself.
+
+
+.. comp_req:: Activity stepping error
+    :id: comp_req__feo__act_stepping_error
+    :reqtype: Functional
+    :security: YES
+    :safety: ASIL_B
+    :satisfies: feat_req__feo__act_stepping_error
+    :status: valid
+
+    If an activity fails in the step function, the primary process shall call shutdown for all activities
+    in arbitrary sequence and terminate itself.
+
+
+.. comp_req:: Activity shutdown error
+    :id: comp_req__feo__act_shutdown_error
+    :reqtype: Functional
+    :security: YES
+    :safety: ASIL_B
+    :satisfies: feat_req__feo__act_shutdown_error
+    :status: valid
+
+    If an activity fails in the shutdown function, the primary process shall shutdown all remaining activities
+    in arbitrary sequence and terminate itself.

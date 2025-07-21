@@ -213,8 +213,8 @@ Supervision
     software platform.
 
 
-Error Handling
-==============
+Error Handling for S-CORE v0.5
+==============================
 
 .. feat_req:: Response to termination request
     :id: feat_req__feo__response_term_request
@@ -224,10 +224,10 @@ Error Handling
     :satisfies: stkh_req__dependability__safety_features, stkh_req__dependability__availability, stkh_req__execution_model__processes
     :status: valid
 
-    If the primary process receives a termination signal from the Lifecycle Manager, it shall call the shutdown
+    If the primary process receives a termination signal, it shall call the shutdown
     function of all remaining activities in arbitrary sequence and terminate itself.
 
-    If a secondary process receives a termination signal from the Lifecycle Manager, it shall terminate itself.
+    If a secondary process receives a termination signal, it shall terminate itself.
 
 
 .. feat_req:: Secondary connection timeout
@@ -238,8 +238,8 @@ Error Handling
     :satisfies: stkh_req__dependability__safety_features, stkh_req__dependability__availability, stkh_req__execution_model__processes
     :status: valid
 
-    If not all secondary processes connect to the primary in time, the primary shall report an error to the
-    lifecycle/health management. The startup functions shall not be triggered.
+    If not all secondary processes connect to the primary in time, the primary shall terminate itself.
+    The startup functions shall not be triggered.
 
 
 .. feat_req:: Activity startup error
@@ -251,7 +251,7 @@ Error Handling
     :status: valid
 
     If an error occurs during the execution of a startup function, the primary process shall abort calling
-    startup functions, report the issue to health management and terminate itself. For all of the activities
+    startup functions and terminate itself. For all of the activities
     whose startup functions have already been called successfully, the corresponding shutdown functions shall be
     executed in arbitrary sequence.
 
@@ -276,9 +276,8 @@ Error Handling
     :satisfies: stkh_req__dependability__safety_features, stkh_req__dependability__availability, stkh_req__execution_model__processes
     :status: valid
 
-    If a timeout occurs during startup, stepping or shutdown of an activity, the issue shall be reported to
-    health-management. The primary process shall shutdown all successfully started activities in arbitrary sequence
-    and terminate itself.
+    If a timeout occurs during startup, stepping or shutdown of an activity, the primary process shall shutdown all
+    successfully started activities in arbitrary sequence and terminate itself.
 
 
 .. feat_req:: Startup timeout
@@ -290,8 +289,7 @@ Error Handling
     :status: valid
 
     If not all activities reach their initialized state within a certain period of time (startup timeout),
-    the issue shall be reported to health-management. The primary process shall shutdown all successfully
-    started activities in arbitrary sequence and terminate itself.
+    the primary process shall shutdown all successfully started activities in arbitrary sequence and terminate itself.
 
 
 .. feat_req:: Activity stepping error
@@ -302,8 +300,8 @@ Error Handling
     :satisfies: stkh_req__dependability__safety_features, stkh_req__dependability__availability, stkh_req__execution_model__processes
     :status: valid
 
-    If an activity fails in the step function, a logical waypoint error shall be reported to health management.
-    The primary process shall call shutdown for all activities in arbitrary sequence and terminate itself.
+    If an activity fails in the step function, the primary process shall call shutdown for all activities
+    in arbitrary sequence and terminate itself.
 
 
 .. feat_req:: Activity shutdown error
@@ -314,5 +312,5 @@ Error Handling
     :satisfies: stkh_req__dependability__safety_features, stkh_req__dependability__availability, stkh_req__execution_model__processes
     :status: valid
 
-    If an activity fails in the shutdown function, a logical waypoint error shall be reported to health management.
-    The primary process shall shutdown all remaining activities and terminate itself.
+    If an activity fails in the shutdown function, the primary process shall shutdown all remaining activities
+    in arbitrary sequence and terminate itself.
