@@ -63,9 +63,16 @@
     <script src="../../../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
     <script src="../../../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'features/frameworks/feo/requirements/index';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="Modules Documentation" href="../modules/index.html" />
+    <link rel="next" title="Feature Architecture: FEO" href="../architecture/feature_architecture.html" />
     <link rel="prev" title="Fixed execution order framework (FEO)" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -195,6 +202,13 @@
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../../../platform_management_plan/index.html">
     PMP
   </a>
@@ -252,6 +266,26 @@
             <span class="sr-only">GitHub</span></a>
         </li>
 </ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
       
     </div>
     
@@ -342,6 +376,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../platform_management_plan/index.html">
     PMP
   </a>
@@ -388,6 +429,26 @@
         </li>
 </ul></div>
         
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
       </div>
     
   </div>
@@ -401,9 +462,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../analysis-infra/index.html">Analysis Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../baselibs/index.html">Base Libraries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../communication/index.html">Communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../diagnostics/index.html">Diagnostic and Fault Management</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">Frameworks</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">Fixed execution order framework (FEO)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../architecture/feature_architecture.html">Feature Architecture: FEO</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/index.html">Modules Documentation</a></li>
@@ -482,7 +546,7 @@
 <h1>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h1>
 <section id="definitions">
 <h2>Definitions<a class="headerlink" href="#definitions" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-5f84889e">
+<div class="need_container docutils container" id="SNCB-fb91c946">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__feo__application">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -492,7 +556,7 @@
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
-<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
 <td class="head_right" colspan="2"><div class="needs_head_right line-block">
@@ -502,12 +566,14 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_time" title="feat_req__feo__application">stkh_req__app_architectures__support_time</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_data" title="feat_req__feo__application">stkh_req__app_architectures__support_data</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../modules/feo/feo/docs/requirements/component_requirements.html#comp_req__feo__application" title="feat_req__feo__application">comp_req__feo__application</a>, <a class="reference internal" href="../modules/feo/feo/docs/requirements/component_requirements.html#comp_req__feo__scheduler" title="feat_req__feo__application">comp_req__feo__scheduler</a></span></span></div>
+<div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/feature_architecture.html#feat_arc_sta__feo__main" title="feat_req__feo__application">feat_arc_sta__feo__main</a>, <a class="reference internal" href="../architecture/feature_architecture.html#feat_arc_dyn__feo__main" title="feat_req__feo__application">feat_arc_dyn__feo__main</a>, <a class="reference internal" href="../architecture/feature_architecture.html#logic_arc_int__feo__activity" title="feat_req__feo__application">logic_arc_int__feo__activity</a>, <a class="reference internal" href="../architecture/feature_architecture.html#logic_arc_int__feo__prim_agent" title="feat_req__feo__application">logic_arc_int__feo__prim_agent</a>, <a class="reference internal" href="../architecture/feature_architecture.html#logic_arc_int__feo__sec_agent" title="feat_req__feo__application">logic_arc_int__feo__sec_agent</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -536,7 +602,7 @@ Each process contains one ore more operating system threads.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-aeafa8c2">
+<div class="need_container docutils container" id="SNCB-8a78bfd3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__feo__activity">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -546,7 +612,7 @@ Each process contains one ore more operating system threads.</p>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
-<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
 <td class="head_right" colspan="2"><div class="needs_head_right line-block">
@@ -556,12 +622,14 @@ Each process contains one ore more operating system threads.</p>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_time" title="feat_req__feo__activity">stkh_req__app_architectures__support_time</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_data" title="feat_req__feo__activity">stkh_req__app_architectures__support_data</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../modules/feo/feo/docs/requirements/component_requirements.html#comp_req__feo__activity" title="feat_req__feo__activity">comp_req__feo__activity</a>, <a class="reference internal" href="../modules/feo/feo/docs/requirements/component_requirements.html#comp_req__feo__activitiy_thread" title="feat_req__feo__activity">comp_req__feo__activitiy_thread</a>, <a class="reference internal" href="../modules/feo/feo/docs/requirements/component_requirements.html#comp_req__feo__activitiy_step" title="feat_req__feo__activity">comp_req__feo__activitiy_step</a>, <a class="reference internal" href="../modules/feo/feo/docs/requirements/component_requirements.html#comp_req__feo__comp_cfg" title="feat_req__feo__activity">comp_req__feo__comp_cfg</a>, <a class="reference internal" href="../modules/feo/feo/docs/requirements/component_requirements.html#comp_req__feo__comp_cfg_file" title="feat_req__feo__activity">comp_req__feo__comp_cfg_file</a>, <a class="reference internal" href="../modules/feo/feo/docs/requirements/component_requirements.html#comp_req__feo__act_map_cfg" title="feat_req__feo__activity">comp_req__feo__act_map_cfg</a></span></span></div>
+<div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/feature_architecture.html#feat_arc_sta__feo__main" title="feat_req__feo__activity">feat_arc_sta__feo__main</a>, <a class="reference internal" href="../architecture/feature_architecture.html#feat_arc_dyn__feo__main" title="feat_req__feo__activity">feat_arc_dyn__feo__main</a>, <a class="reference internal" href="../architecture/feature_architecture.html#logic_arc_int__feo__activity" title="feat_req__feo__activity">logic_arc_int__feo__activity</a>, <a class="reference internal" href="../architecture/feature_architecture.html#logic_arc_int__feo__prim_agent" title="feat_req__feo__activity">logic_arc_int__feo__prim_agent</a>, <a class="reference internal" href="../architecture/feature_architecture.html#logic_arc_int__feo__sec_agent" title="feat_req__feo__activity">logic_arc_int__feo__sec_agent</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -591,7 +659,7 @@ Each activity is mapped to exactly one thread and provides the following functio
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9fbbe85a">
+<div class="need_container docutils container" id="SNCB-b0be4a8c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__feo__task_chain">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -601,7 +669,7 @@ Each activity is mapped to exactly one thread and provides the following functio
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
-<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
 <td class="head_right" colspan="2"><div class="needs_head_right line-block">
@@ -611,12 +679,14 @@ Each activity is mapped to exactly one thread and provides the following functio
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_time" title="feat_req__feo__task_chain">stkh_req__app_architectures__support_time</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_data" title="feat_req__feo__task_chain">stkh_req__app_architectures__support_data</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../modules/feo/feo/docs/requirements/component_requirements.html#comp_req__feo__task_chain" title="feat_req__feo__task_chain">comp_req__feo__task_chain</a>, <a class="reference internal" href="../modules/feo/feo/docs/requirements/component_requirements.html#comp_req__feo__comp_cfg" title="feat_req__feo__task_chain">comp_req__feo__comp_cfg</a></span></span></div>
+<div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/feature_architecture.html#feat_arc_sta__feo__main" title="feat_req__feo__task_chain">feat_arc_sta__feo__main</a>, <a class="reference internal" href="../architecture/feature_architecture.html#feat_arc_dyn__feo__main" title="feat_req__feo__task_chain">feat_arc_dyn__feo__main</a>, <a class="reference internal" href="../architecture/feature_architecture.html#logic_arc_int__feo__prim_agent" title="feat_req__feo__task_chain">logic_arc_int__feo__prim_agent</a>, <a class="reference internal" href="../architecture/feature_architecture.html#logic_arc_int__feo__sec_agent" title="feat_req__feo__task_chain">logic_arc_int__feo__sec_agent</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -646,7 +716,7 @@ The purpose of an output service activity is to collect signals produced by acti
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-07a3123f">
+<div class="need_container docutils container" id="SNCB-b83e653d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__feo__service_activity">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -656,7 +726,7 @@ The purpose of an output service activity is to collect signals produced by acti
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
-<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
 <td class="head_right" colspan="2"><div class="needs_head_right line-block">
@@ -666,8 +736,9 @@ The purpose of an output service activity is to collect signals produced by acti
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_time" title="feat_req__feo__service_activity">stkh_req__app_architectures__support_time</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_data" title="feat_req__feo__service_activity">stkh_req__app_architectures__support_data</a></span></span></div>
@@ -699,7 +770,7 @@ network communication, direct sensor input or direct actuator output</p></li>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-42cfee2d">
+<div class="need_container docutils container" id="SNCB-f503961f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__feo__agent">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -709,7 +780,7 @@ network communication, direct sensor input or direct actuator output</p></li>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
-<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
 <td class="head_right" colspan="2"><div class="needs_head_right line-block">
@@ -719,12 +790,14 @@ network communication, direct sensor input or direct actuator output</p></li>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_time" title="feat_req__feo__agent">stkh_req__app_architectures__support_time</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_data" title="feat_req__feo__agent">stkh_req__app_architectures__support_data</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../modules/feo/feo/docs/requirements/component_requirements.html#comp_req__feo__scheduler" title="feat_req__feo__agent">comp_req__feo__scheduler</a>, <a class="reference internal" href="../modules/feo/feo/docs/requirements/component_requirements.html#comp_req__feo__agent" title="feat_req__feo__agent">comp_req__feo__agent</a></span></span></div>
+<div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/feature_architecture.html#feat_arc_sta__feo__main" title="feat_req__feo__agent">feat_arc_sta__feo__main</a>, <a class="reference internal" href="../architecture/feature_architecture.html#feat_arc_dyn__feo__main" title="feat_req__feo__agent">feat_arc_dyn__feo__main</a>, <a class="reference internal" href="../architecture/feature_architecture.html#logic_arc_int__feo__prim_agent" title="feat_req__feo__agent">logic_arc_int__feo__prim_agent</a>, <a class="reference internal" href="../architecture/feature_architecture.html#logic_arc_int__feo__sec_agent" title="feat_req__feo__agent">logic_arc_int__feo__sec_agent</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -759,7 +832,7 @@ associated with an agent.</p>
 </section>
 <section id="dynamic-architecture">
 <h2>Dynamic Architecture<a class="headerlink" href="#dynamic-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-885dbb6b">
+<div class="need_container docutils container" id="SNCB-fe16a4fa">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__feo__application_lifecycle">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -769,7 +842,7 @@ associated with an agent.</p>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
-<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
 <td class="head_right" colspan="2"><div class="needs_head_right line-block">
@@ -779,12 +852,14 @@ associated with an agent.</p>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_time" title="feat_req__feo__application_lifecycle">stkh_req__app_architectures__support_time</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_data" title="feat_req__feo__application_lifecycle">stkh_req__app_architectures__support_data</a></span></span></div>
 <div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../modules/feo/feo/docs/requirements/component_requirements.html#comp_req__feo__application_lifecycle" title="feat_req__feo__application_lifecycle">comp_req__feo__application_lifecycle</a></span></span></div>
+<div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/feature_architecture.html#logic_arc_int__feo__lifecycle" title="feat_req__feo__application_lifecycle">logic_arc_int__feo__lifecycle</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -806,7 +881,7 @@ associated with an agent.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-2f003fec">
+<div class="need_container docutils container" id="SNCB-e9dda7c0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__feo__activity_init">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -816,7 +891,7 @@ associated with an agent.</p>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
-<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
 <td class="head_right" colspan="2"><div class="needs_head_right line-block">
@@ -826,8 +901,9 @@ associated with an agent.</p>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_time" title="feat_req__feo__activity_init">stkh_req__app_architectures__support_time</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_data" title="feat_req__feo__activity_init">stkh_req__app_architectures__support_data</a></span></span></div>
@@ -857,7 +933,7 @@ Note that <cite>init</cite>, <cite>step</cite> and <cite>shutdown</cite> functio
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7ee338e8">
+<div class="need_container docutils container" id="SNCB-4e6b359d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__feo__activitiy_step">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -867,7 +943,7 @@ Note that <cite>init</cite>, <cite>step</cite> and <cite>shutdown</cite> functio
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
-<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
 <td class="head_right" colspan="2"><div class="needs_head_right line-block">
@@ -877,8 +953,9 @@ Note that <cite>init</cite>, <cite>step</cite> and <cite>shutdown</cite> functio
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_time" title="feat_req__feo__activitiy_step">stkh_req__app_architectures__support_time</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_data" title="feat_req__feo__activitiy_step">stkh_req__app_architectures__support_data</a></span></span></div>
@@ -906,7 +983,7 @@ Note that <cite>init</cite>, <cite>step</cite> and <cite>shutdown</cite> functio
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-8e094023">
+<div class="need_container docutils container" id="SNCB-60f7b665">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__feo__activity_shutdown">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -916,7 +993,7 @@ Note that <cite>init</cite>, <cite>step</cite> and <cite>shutdown</cite> functio
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
-<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
 <td class="head_right" colspan="2"><div class="needs_head_right line-block">
@@ -926,8 +1003,9 @@ Note that <cite>init</cite>, <cite>step</cite> and <cite>shutdown</cite> functio
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_time" title="feat_req__feo__activity_shutdown">stkh_req__app_architectures__support_time</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_data" title="feat_req__feo__activity_shutdown">stkh_req__app_architectures__support_data</a></span></span></div>
@@ -959,7 +1037,7 @@ Note that <cite>init</cite>, <cite>step</cite> and <cite>shutdown</cite> functio
 </section>
 <section id="supervision">
 <h2>Supervision<a class="headerlink" href="#supervision" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-e8fff284">
+<div class="need_container docutils container" id="SNCB-90f7e5c1">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__feo__alive_supervision">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -969,7 +1047,7 @@ Note that <cite>init</cite>, <cite>step</cite> and <cite>shutdown</cite> functio
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
-<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_D</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
 <td class="head_right" colspan="2"><div class="needs_head_right line-block">
@@ -979,8 +1057,9 @@ Note that <cite>init</cite>, <cite>step</cite> and <cite>shutdown</cite> functio
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_D</span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dependability__safety_features" title="feat_req__feo__alive_supervision">stkh_req__dependability__safety_features</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_time" title="feat_req__feo__alive_supervision">stkh_req__app_architectures__support_time</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_data" title="feat_req__feo__alive_supervision">stkh_req__app_architectures__support_data</a></span></span></div>
@@ -1008,7 +1087,7 @@ alive supervision checkpoint to an external health management system
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-0d1cad67">
+<div class="need_container docutils container" id="SNCB-525f5312">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__feo__deadline_supervision">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1018,7 +1097,7 @@ alive supervision checkpoint to an external health management system
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
-<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_D</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
 <td class="head_right" colspan="2"><div class="needs_head_right line-block">
@@ -1028,8 +1107,9 @@ alive supervision checkpoint to an external health management system
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_D</span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dependability__safety_features" title="feat_req__feo__deadline_supervision">stkh_req__dependability__safety_features</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_time" title="feat_req__feo__deadline_supervision">stkh_req__app_architectures__support_time</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_data" title="feat_req__feo__deadline_supervision">stkh_req__app_architectures__support_data</a></span></span></div>
@@ -1057,7 +1137,7 @@ deadline supervision checkpoints to an external health management system
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-87e14691">
+<div class="need_container docutils container" id="SNCB-43ac73ee">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__feo__logical_supervision">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1067,7 +1147,7 @@ deadline supervision checkpoints to an external health management system
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
-<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_D</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
 <td class="head_right" colspan="2"><div class="needs_head_right line-block">
@@ -1077,8 +1157,9 @@ deadline supervision checkpoints to an external health management system
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_D</span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dependability__safety_features" title="feat_req__feo__logical_supervision">stkh_req__dependability__safety_features</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_time" title="feat_req__feo__logical_supervision">stkh_req__app_architectures__support_time</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_data" title="feat_req__feo__logical_supervision">stkh_req__app_architectures__support_data</a></span></span></div>
@@ -1106,7 +1187,7 @@ logical supervision checkpoints to an external health management system
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-445f9811">
+<div class="need_container docutils container" id="SNCB-1c8c9573">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__feo__trustable_computation">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1116,7 +1197,7 @@ logical supervision checkpoints to an external health management system
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
-<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
 <td class="head_right" colspan="2"><div class="needs_head_right line-block">
@@ -1126,8 +1207,9 @@ logical supervision checkpoints to an external health management system
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dependability__safety_features" title="feat_req__feo__trustable_computation">stkh_req__dependability__safety_features</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_time" title="feat_req__feo__trustable_computation">stkh_req__app_architectures__support_time</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_data" title="feat_req__feo__trustable_computation">stkh_req__app_architectures__support_data</a></span></span></div>
@@ -1180,11 +1262,11 @@ software platform.</p></td>
       </div>
     </a>
     <a class="right-next"
-       href="../modules/index.html"
+       href="../architecture/feature_architecture.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Modules Documentation</p>
+        <p class="prev-next-title">Feature Architecture: FEO</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1217,7 +1299,7 @@ software platform.</p></td>
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/dummy/dummy/edit/main/docs/features/frameworks/feo/requirements/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/features/frameworks/feo/requirements/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       

@@ -45,7 +45,7 @@ Static Architecture
    :security: YES
    :safety: ASIL_B
    :includes: logic_arc_int__persistency__interface
-   :fulfils: feat_req__persistency__default_value_get,feat_req__persistency__default_values,feat_req__persistency__events,feat_req__persistency__integrity_check,feat_req__persistency__persist_data,feat_req__persistency__persistency,feat_req__persistency__snapshots,feat_req__persistency__stable_api,feat_req__persistency__support_datatype_keys,feat_req__persistency__support_datatype_value
+   :fulfils: feat_req__persistency__default_value_get,feat_req__persistency__default_values,feat_req__persistency__events,feat_req__persistency__integrity_check,feat_req__persistency__persist_data,feat_req__persistency__persistency,feat_req__persistency__snapshots,feat_req__persistency__support_datatype_keys,feat_req__persistency__support_datatype_value
    :status: valid
 
    .. uml:: _assets/kvs_static_view.puml
@@ -123,7 +123,7 @@ Logical Interfaces
    :id: logic_arc_int__persistency__interface
    :security: YES
    :safety: ASIL_B
-   :fulfils: feat_req__persistency__stable_api
+   :fulfils: feat_req__persistency__async_api
    :status: valid
 
    .. uml:: _assets/kvs_interface.puml

@@ -30,17 +30,17 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__base_libraries
+   :satisfies: stkh_req__functional_req__base_libraries, stkh_req__dependability__automotive_safety
    :status: valid
 
-   The base libraries shall implement functionality necessary to support safety-relevant platform components up to ASIL-B.
+   The base libraries shall implement functionality necessary to support safety-relevant platform components up to ASIL-B for selected functionalities.
 
 .. feat_req:: Multi-Language APIs
    :id: feat_req__baselibs__multi_language_apis
    :reqtype: Functional
    :security: NO
-   :safety: QM
-   :satisfies: stkh_req__functional_req__base_libraries, stkh_req__dev_experience__prog_languages
+   :safety: ASIL_B
+   :satisfies: stkh_req__functional_req__base_libraries, stkh_req__dev_experience__prog_languages, stkh_req__dependability__automotive_safety
    :status: valid
 
    The base libraries shall provide APIs for C++, Rust, or both, depending on the requirements of consuming platform components.
