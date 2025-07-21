@@ -38,6 +38,18 @@ General Requirements
 
    The JSON-Library shall provide a service to parse JSON data according to RFC8259.
 
+.. comp_req:: Return data in user format
+   :id: comp_req__json__user_format
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :satisfies: feat_req__baselibs__json_library
+   :status: valid
+
+   The JSON-Library shall return parsed data in a compatible user format.
+
+   Note: The user format shall be a regular type and not defined within the library.
+
 User friendly API for information exchange
 ==========================================
 
@@ -45,7 +57,7 @@ User friendly API for information exchange
    :id: comp_req__json__lang_idioms
    :reqtype: Non-Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :satisfies: feat_req__baselibs__json_library, feat_req__baselibs__consistent_apis
    :status: valid
 
@@ -55,7 +67,7 @@ User friendly API for information exchange
    :id: comp_req__json__lang_infra
    :reqtype: Non-Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :satisfies: feat_req__baselibs__json_library
    :status: valid
 
@@ -68,7 +80,7 @@ User friendly API for information exchange
    :id: comp_req__json__type_compatibility
    :reqtype: Non-Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :satisfies: feat_req__baselibs__json_library
    :status: valid
 
@@ -84,7 +96,7 @@ Full testability for the user facing API
    :id: comp_req__json__full_testability
    :reqtype: Non-Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :satisfies: feat_req__baselibs__json_library
    :status: valid
 
