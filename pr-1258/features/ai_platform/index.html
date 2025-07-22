@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -63,9 +63,16 @@
     <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
     <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'features/ai_platform/index';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Requirements" href="requirements/index.html" />
+    <link rel="next" title="Gen AI" href="gen_ai/index.html" />
     <link rel="prev" title="Features" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -246,6 +253,26 @@
         </li>
 </ul></div>
       
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
     </div>
     
   </div>
@@ -374,6 +401,26 @@
         </li>
 </ul></div>
         
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
       </div>
     
   </div>
@@ -385,6 +432,7 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">AI Platform</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="gen_ai/index.html">Gen AI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requirements/index.html">Requirements</a></li>
 </ul>
 </details></li>
@@ -456,7 +504,7 @@
                   
   <section id="ai-platform">
 <span id="ai-platform-feature"></span><h1>AI Platform<a class="headerlink" href="#ai-platform" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-c4cc67b1">
+<div class="need_container docutils container" id="SNCB-e01604e1">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__ai_platform">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -515,8 +563,9 @@ The primary goal is to provide support for ASIL-B compliant use cases on QNX thr
 vendor-agnostic abstraction layer for AI backends such as TensorRT or QNN.
 For non-safety-critical applications, a standardized inference backend—such as ONNX Runtime—should be supported,
 despite its current lack of compatibility with QNX.
-Generative AI (GenAI) workloads are a core part of the platform scope on Linux,
-enabling on-device LLM inference for intelligent in-vehicle interactions.</p>
+Generative AI (GenAI) workloads are part of the platform scope on Linux,
+enabling on-device LLM inference for intelligent in-vehicle interactions.
+The platform’s support for GenAI is outlined in a seperate feature request <a class="reference internal" href="gen_ai/index.html"><span class="doc">Gen AI</span></a>.</p>
 <p>The document proposes extending S-CORE components (e.g., FEO, Communication, Error Handling)
 to support AI models natively, avoiding duplicate logic across software domains.
 Furthermore, it introduces a scoped investigation into GPU shared memory (SHM) and
@@ -547,8 +596,8 @@ backend integration, and GPU-based communication.</p>
 <h3>Operating System Support and ASIL Alignment<a class="headerlink" href="#operating-system-support-and-asil-alignment" title="Link to this heading">#</a></h3>
 <p>The platform must support both Linux and QNX, with differing priorities and use-case profiles.
 QNX is prioritized (Priority 1) due to its relevance in safety applications.
-Linux support (Priority 2) primarily targets non-safety-critical applications, including Generative AI (GenAI) workloads.
-Safety use cases will adhere to the constraints imposed by functional safety requirements,
+Linux support (Priority 2) primarily targets non-safety-critical applications.
+Safety use-cases will adhere to the constraints imposed by functional safety requirements,
 whereas Linux allows for more flexible development.
 All features available on QNX will also be available on Linux.</p>
 <section id="qnx">
@@ -640,169 +689,7 @@ Therefore, the exact scope and feasibilty of this component and its respective g
 </section>
 <section id="genai">
 <h3>GenAI<a class="headerlink" href="#genai" title="Link to this heading">#</a></h3>
-<p>This section defines the platform’s support for Generative AI (GenAI), with a focus on enabling on-device inference
-using small and large language models (SLM/LLMs) for interactions in the vehicle context.</p>
-<p>In addition to standard prompt-response interaction, the scope includes support for agentic capabilities — enabling
-LLM-based agents that operate with situational awareness, memory, goal orientation, and structured communication with vehicle systems.</p>
-<section id="scope-overview">
-<h4>Scope Overview<a class="headerlink" href="#scope-overview" title="Link to this heading">#</a></h4>
-<p>The platform shall support Generative AI inference on Linux targets for non-safety-critical use cases,
-enabling contextual in-vehicle assistance and edge-based small and large language model (SLM/LLM) execution.
-The focus is on enabling model execution, streamlined integration with in-vehicle communication systems and flexible data injection via APIs.</p>
-<p><em>Note: SLM/LLMs need function calling capability for the whole scope of this proposal to be accessible.</em></p>
-<p>Key Goals:</p>
-<ul class="simple">
-<li><p>Enable on-device SLM/LLM inference using runtimes such as llama.cpp</p></li>
-<li><p>Support inference on multiple models at the same time</p></li>
-<li><p>Define a Context API that allows the injection of relevant task context, session memory, driver preferences, and environmental factors into the LLM</p></li>
-<li><p>Provide an MCP Server that exposes vehicle states and control interfaces to the SLM/LLM in a structured, machine-readable format, enabling real-time interaction with in-vehicle systems</p></li>
-</ul>
-<p>The table below gives a brief overview of considered components and their respective function.</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Component</strong></p></th>
-<th class="head"><p><strong>Description</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Runtime</p></td>
-<td><p>Runtime support for lightweight LLMs (e.g. llama.cpp)</p></td>
-</tr>
-<tr class="row-odd"><td><p>Prompting Interface</p></td>
-<td><p>Manages prompt templates, roles, chaining, and streaming I/O</p></td>
-</tr>
-<tr class="row-even"><td><p>Context API</p></td>
-<td><p>Interface to manage agent memory, goals, session</p></td>
-</tr>
-<tr class="row-odd"><td><p>MCP Server</p></td>
-<td><p>Provides structured vehicle context and tools</p></td>
-</tr>
-<tr class="row-even"><td><p>Action Validator</p></td>
-<td><p>Safety layer to validate LLM-generated actions before execution</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>The figure below outlines the core data and control flow connections between components in the GenAI Subsystem.</p>
-<img alt="AI Platform GenAI Subsystem" src="../../_images/score-aip-genai.drawio.svg" />
-<p>Basic data/control flow explanation:</p>
-<ul class="simple">
-<li><p>The Prompting Interface sends a fully constructed prompt — containing system messages, user input, and injected context — to the LLM for inference. This serves as the main entry point for user interaction and model execution.</p></li>
-<li><p>The Prompting Interface also monitors the token stream returned by the LLM, buffering output for speech or display and detecting structured outputs such as function calls or action proposals. When an action is detected, it is passed to the Action Validator for policy enforcement.</p></li>
-<li><p>The Prompting Interface retrieves relevant context from the Context API. This includes session memory, task goals, and personalization data that shape how prompts are built and responses are interpreted. In addition, it queries live vehicle state and resource availability via the MCP Client.</p></li>
-<li><p>The Context API manages user preferences, goals, and session memory.</p></li>
-<li><p>The MCP Server acts as a proxy between the GenAI subsystem and the vehicle platform. It reads sensor and state data from the Vehicle API and exposes tools (i.e., callable functions) for executing commands like HVAC control.</p></li>
-<li><p>When the Action Validator approves a proposed action, the MCP Server sends the command to the Vehicle API for execution by the vehicle systems.</p></li>
-</ul>
-</section>
-<section id="runtime">
-<h4>Runtime<a class="headerlink" href="#runtime" title="Link to this heading">#</a></h4>
-<p>The platform shall support model runtimes like llama.cpp <a class="footnote-reference brackets" href="#s2" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> for model execution.
-It is <strong>not</strong> a goal to provide a proprietary runtime.</p>
-</section>
-<section id="prompting-interface">
-<h4>Prompting Interface<a class="headerlink" href="#prompting-interface" title="Link to this heading">#</a></h4>
-<p>The Prompting Interface is the central orchestration layer that governs how LLMs receive inputs, structure responses, and interact with other system components.
-While the underlying runtime performs raw text generation one token at a time, the Prompting Interface manages everything around it —
-ensuring that prompts are context-aware, structured, and suitable for interactive, real-time use.
-Additionally, it is hosted in the same process as the MCP Client which allows it to retrieve context and tools from a domain like the vehicle.</p>
-<p>The prompting interface includes following features:</p>
-<ul class="simple">
-<li><dl class="simple">
-<dt>Prompt Templating</dt><dd><ul>
-<li><p>Supports distinct roles (system, user) and injects them as structured tokens</p></li>
-<li><p>The roles enable a differentiation between user and non-user interactions</p></li>
-<li><p>Ensures prompts are predictable, reusable, and structured across tasks</p></li>
-<li><p>Encourages consistent tone and framing</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Dynamic Context Injection</dt><dd><ul>
-<li><p>Pulls real-time and personalized data from other sources (e.g., MCP server, Context API)</p></li>
-<li><p>Injects variables such as <code class="docutils literal notranslate"><span class="pre">current_speed</span></code>, <code class="docutils literal notranslate"><span class="pre">destination</span></code>, <code class="docutils literal notranslate"><span class="pre">driver_name</span></code>, <code class="docutils literal notranslate"><span class="pre">external_temperature</span></code></p></li>
-<li><p>Allows LLMs to tailor responses based on driving situation, weather, or personal preferences</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Prompt Chaining</dt><dd><ul>
-<li><p>Splits complex queries or tasks into smaller subtasks and manages their sequencing</p></li>
-<li><p>Useful for multi-turn workflows (e.g. POI search + voice confirmation)</p></li>
-<li><p>May involve internal reasoning steps that remain hidden from the user</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Streaming Output Decoding</dt><dd><ul>
-<li><p>Handles incremental output from the model, token by token</p></li>
-<li><p>Enables responsive voice assistants and progressive rendering of long responses</p></li>
-<li><p>Manages buffering, line completion, and fallback behavior (e.g. timeouts, retries)</p></li>
-<li><p>Passes actions to MCP Client for invokation</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-</ul>
-<p>Together, these features elevate the SLM/LLM from a raw text generator to a well-structured, interactive agent.
-The Prompting Interface is essential for ensuring that GenAI systems behave predictably, contextually, and safely in embedded, real-time environments.</p>
-</section>
-<section id="context-api">
-<h4>Context API<a class="headerlink" href="#context-api" title="Link to this heading">#</a></h4>
-<p>The Context API is a conceptual interface for managing task-level memory, dialogue state, and user preferences during LLM-based interactions.
-It provides structured access to:</p>
-<ul class="simple">
-<li><p>Short-term context: Current goal, location, dialogue state</p></li>
-<li><p>Long-term context: Driver preferences, history, personalization</p></li>
-</ul>
-<p>This modular separation allows LLMs/agents to reason over abstract context without being tightly coupled to hardware interfaces.
-This modular separation allows LLMs and agents to reason over abstract context — such as goals, preferences, and session state —
-without direct coupling to low-level system interfaces like the file system or persistent storage.</p>
-<p>The Context API will also allow updates to long-term user context.</p>
-</section>
-<section id="model-context-protocol-mcp-client-server">
-<h4>Model Context Protocol (MCP) Client/Server<a class="headerlink" href="#model-context-protocol-mcp-client-server" title="Link to this heading">#</a></h4>
-<p>MCP <a class="footnote-reference brackets" href="#s3" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> provides structured data to the LLM in a machine-readable format. For example:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">vehicle.speed</span></code>: Current vehicle speed</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">nav.destination</span></code>: Active navigation goal</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">climate.status</span></code>: A/C on/off, temperature</p></li>
-</ul>
-<p>It also maps safe commands that may be executed. For example:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;set_temperature&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;zone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;driver&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="w"> </span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>This ensures LLM/agent outputs can be transformed into machine-executable commands through explicit contracts.</p>
-<p>Due to the MCP specification enforcing a 1:1 client-server connection, the MCP Client is hosted within the Main Application.
-This architectural choice ensures that only a single authoritative interface manages communication with the MCP Server.
-Consequently, the Context API does not interface with the MCP Server directly.
-Instead, the Prompting Interface (PI) retrieves live vehicle context data via the MCP Client,
-combining it with internal session and user state managed by the Context API.</p>
-</section>
-<section id="action-validator">
-<h4>Action Validator<a class="headerlink" href="#action-validator" title="Link to this heading">#</a></h4>
-<p>To ensure safety and traceability, all GenAI-generated commands should be validated by an Action Validator before being executed.
-This component should be designed as an abstract base class and extended for the final use case by the user.</p>
-<p>Implementations examples include:</p>
-<ul class="simple">
-<li><p>Rule-based filters (e.g. prohibit certain actions at high speed)</p></li>
-<li><p>Context-aware rejection (e.g. don’t open windows in rain)</p></li>
-</ul>
-<p>This mechanism ensures that LLMs remain advisory and non-authoritative in mixed-criticality systems.
-Upon approval by the Action Validator, the MCP Server executes the command of the respective MCP tool.</p>
-<p>Advantages of using the Action Validator in the MCP Server (rather than in the Prompting Interface) include:</p>
-<ul class="simple">
-<li><p>Action validation is close to the domain and can follow same domain specific non-functional requirements</p></li>
-<li><p>MCP Server already has access to state data which simplifies rule checking</p></li>
-<li><p>Easy to extend for new or existing MCP tools - only one component is affected by change</p></li>
-</ul>
-</section>
+<p>The platform’s support for Generative AI (GenAI) is outlined in a seperate feature request <a class="reference internal" href="gen_ai/index.html"><span class="doc">Gen AI</span></a>.</p>
 </section>
 <section id="requirements">
 <h3>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h3>
@@ -815,7 +702,7 @@ Upon approval by the Action Validator, the MCP Server executes the command of th
 </section>
 <section id="security-impact">
 <h2>Security Impact<a class="headerlink" href="#security-impact" title="Link to this heading">#</a></h2>
-<p>The AI Platform introduces several new attack surfaces that require security consideration across both inference and GenAI subsystems.
+<p>The AI Platform introduces several new attack surfaces that require security considerationss.
 Therefore, the overall security architecture must be revisited in detail to assess and mitigate potential risks.</p>
 <p>The following non-complete list highlights a few security considerations per component.</p>
 <ul class="simple">
@@ -823,22 +710,6 @@ Therefore, the overall security architecture must be revisited in detail to asse
 <dt>Inference Backends</dt><dd><ul>
 <li><p>Ensure that model binaries are verified, authenticated, and integrity-checked before execution</p></li>
 <li><p>Restrict model file loading to trusted paths and signed artifacts to prevent tampering or malicious injection</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>GenAI (LLM) Execution</dt><dd><ul>
-<li><p>Prompt inputs must be validated and rate-limited to protect against injection attacks or malformed sequences</p></li>
-<li><p>The action validator must enforce whitelisting of executable commands to prevent unsafe or unintended vehicle operations</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>MCP and Context APIs</dt><dd><ul>
-<li><p>All communication with the MCP Server must be authenticated and authorized</p></li>
-<li><p>Write operations to the Context API (e.g. preference updates) must be explicitly scoped and validated</p></li>
 </ul>
 </dd>
 </dl>
@@ -866,14 +737,6 @@ Therefore, the overall security architecture must be revisited in detail to asse
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>GenAI</dt><dd><ul>
-<li><p>GenAI workloads are scoped as QM</p></li>
-<li><p>LLM-driven actions must not bypass safety monitoring or certified control paths</p></li>
-</ul>
-</dd>
-</dl>
-</li>
 </ul>
 </section>
 <section id="license-impact">
@@ -890,9 +753,7 @@ Therefore, the overall security architecture must be revisited in detail to asse
 <h2>How to Teach This<a class="headerlink" href="#how-to-teach-this" title="Link to this heading">#</a></h2>
 <p>The following sources are recommended for onboarding:</p>
 <ul class="simple">
-<li><p>ONNX Runtime GitHub Repo <a class="footnote-reference brackets" href="#s1" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
-<li><p>llama.cpp GitHub Repo <a class="footnote-reference brackets" href="#s2" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p></li>
-<li><p>MCP Servers GitHub Repo <a class="footnote-reference brackets" href="#s3" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p></li>
+<li><p>ONNX Runtime GitHub Repo <a class="footnote-reference brackets" href="#s1" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
 </ul>
 <p>And of course: Udemy, Youtube, Google, etc.</p>
 </section>
@@ -909,10 +770,7 @@ The adapter-based architecture allows better testability and reuse across QNX an
 <li><p>GPU shared memory data pipeline and tight coupling of GPU memory object to vendor specific libraries</p></li>
 <li><p>ONNX support on QNX</p></li>
 <li><p>S-CORE recording may not capture GPU-to-GPU data flows</p></li>
-<li><p>Agentic support evaluation</p></li>
 <li><p>Decide on inference engine for QNX (e.g. ONNX, LiteRT, ExecuTorch)</p></li>
-<li><p>Decide on GenAI runtime (e.g. llama.cpp)</p></li>
-<li><p>Select language per components (cpp vs rust), e.g. rust for MCP Server</p></li>
 </ul>
 </section>
 <section id="footnotes">
@@ -920,18 +778,8 @@ The adapter-based architecture allows better testability and reuse across QNX an
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="s1" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
-<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id4">2</a>)</span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>)</span>
 <p>“ONNX Runtime repo”, GitHub Microsoft, <a class="github reference external" href="https://github.com/microsoft/onnxruntime">microsoft/onnxruntime</a>.</p>
-</aside>
-<aside class="footnote brackets" id="s2" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
-<span class="backrefs">(<a role="doc-backlink" href="#id2">1</a>,<a role="doc-backlink" href="#id5">2</a>)</span>
-<p>“llama.cpp repo”, GitHub ggml-org, <a class="github reference external" href="https://github.com/ggml-org/llama.cpp">ggml-org/llama.cpp</a>.</p>
-</aside>
-<aside class="footnote brackets" id="s3" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
-<span class="backrefs">(<a role="doc-backlink" href="#id3">1</a>,<a role="doc-backlink" href="#id6">2</a>)</span>
-<p>“MCP Servers repo”, GitHub modelcontextprotocol, <a class="github reference external" href="https://github.com/modelcontextprotocol/servers">modelcontextprotocol/servers</a>.</p>
 </aside>
 </aside>
 </section>
@@ -957,11 +805,11 @@ The adapter-based architecture allows better testability and reuse across QNX an
       </div>
     </a>
     <a class="right-next"
-       href="requirements/index.html"
+       href="gen_ai/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Requirements</p>
+        <p class="prev-next-title">Gen AI</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1002,15 +850,7 @@ The adapter-based architecture allows better testability and reuse across QNX an
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-pipelining-and-gpu-communication-abstraction">Data Pipelining and GPU Communication Abstraction</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#s-core-integration-feo-communication-and-fault-management">S-CORE Integration: FEO, Communication, and Fault Management</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#genai">GenAI</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scope-overview">Scope Overview</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#runtime">Runtime</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prompting-interface">Prompting Interface</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#context-api">Context API</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#model-context-protocol-mcp-client-server">Model Context Protocol (MCP) Client/Server</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#action-validator">Action Validator</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#genai">GenAI</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
 </ul>
 </li>
@@ -1029,7 +869,7 @@ The adapter-based architecture allows better testability and reuse across QNX an
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/dummy/dummy/edit/main/docs/features/ai_platform/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/features/ai_platform/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       

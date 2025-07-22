@@ -543,15 +543,15 @@ AI Platform
 -----------
 
 
-.. stkh_req:: On-board AI/ML Workloads
+.. stkh_req:: On-board ML Workloads
    :id: stkh_req__ai_platform__enablement
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :rationale: Modern vehicles require the integration of AI/ML capabilities to remain competitive and support customer expectations.
+   :rationale: Modern vehicles require the integration of ML capabilities to remain competitive and support customer expectations.
    :status: valid
 
-   The platform shall support the execution of traditional ML and Generative AI workloads on-board.
+   The platform shall support the execution of traditional ML workloads on-board.
 
 
 .. stkh_req:: Support for Safety-Critical ML
@@ -563,17 +563,6 @@ AI Platform
    :status: valid
 
    The platform shall support safety-compliant (ASIL-B) deployment of AI/ML components, including inference backends and pipelines.
-
-
-.. stkh_req:: GenAI User Interaction
-   :id: stkh_req__ai_platform__genai_interaction
-   :reqtype: Functional
-   :security: YES
-   :safety: QM
-   :rationale: HMIs are expected to support intelligent, natural interaction using LLM-based assistants.
-   :status: valid
-
-   The platform shall support on-device GenAI-based models with user interaction.
 
 
 .. stkh_req:: Runtime Efficiency for Edge Devices
@@ -609,8 +598,41 @@ AI Platform
    The platform shall ensure secure, verified, and integrity-checked model execution.
 
 
+.. stkh_req:: Deterministic Execution Paths
+   :id: stkh_req__ai_platform__runtime_determinism
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: ASIL_B
+   :rationale: Safety certification requires predictable and bounded system behavior.
+   :status: valid
+
+   The platform shall ensure deterministic behavior for AI components used in safety-relevant paths.
+
+
+.. stkh_req:: On-board GenAI Workloads
+   :id: stkh_req__gen_ai__enablement
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: Modern vehicles require the integration of AI/ML capabilities to remain competitive and support customer expectations.
+   :status: valid
+
+   The platform shall support the execution of Generative AI workloads on-board.
+
+
+.. stkh_req:: GenAI User Interaction
+   :id: stkh_req__gen_ai__interaction
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: HMIs are expected to support intelligent, natural interaction using LLM-based assistants.
+   :status: valid
+
+   The platform shall support on-device GenAI-based models with user interaction.
+
+
 .. stkh_req:: Action Safety and Governance
-   :id: stkh_req__ai_platform__genai_safety_filter
+   :id: stkh_req__gen_ai__safety_filter
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
@@ -621,7 +643,7 @@ AI Platform
 
 
 .. stkh_req:: Seamless Integration with Vehicle Systems
-   :id: stkh_req__ai_platform__genai_vehicle_com
+   :id: stkh_req__gen_ai__vehicle_com
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
@@ -629,17 +651,6 @@ AI Platform
    :status: valid
 
    The platform shall expose structured APIs to access vehicle state and execute safe commands.
-
-
-.. stkh_req:: Deterministic Execution Paths
-   :id: stkh_req__ai_platform__runtime_determinism
-   :reqtype: Non-Functional
-   :security: NO
-   :safety: ASIL_B
-   :rationale: Safety certification requires predictable and bounded system behavior.
-   :status: valid
-
-   The platform shall ensure deterministic behavior for AI components used in safety-relevant paths.
 
 
 Hardware support

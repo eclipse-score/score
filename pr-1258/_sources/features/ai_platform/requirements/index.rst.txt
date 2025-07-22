@@ -17,7 +17,7 @@
 Requirements
 ============
 
-.. feat_req:: ML and GenAI Execution
+.. feat_req:: ML Execution
    :id: feat_req__ai_platform__workloads_execution
    :reqtype: Functional
    :security: NO
@@ -25,7 +25,7 @@ Requirements
    :satisfies: stkh_req__ai_platform__enablement
    :status: valid
 
-   The platform shall support the execution of both traditional ML models and Generative AI models (e.g., LLMs) on embedded automotive hardware.
+   The platform shall support the execution of traditional ML models on embedded automotive hardware.
 
 .. feat_req:: ASIL-B ML Inference
    :id: feat_req__ai_platform__safety_backends
@@ -36,16 +36,6 @@ Requirements
    :status: valid
 
    The platform shall support deployment of safety-certified inference backends and abstraction layers for ASIL-B use cases.
-
-.. feat_req:: GenAI Interaction Layer
-   :id: feat_req__ai_platform__genai_ui
-   :reqtype: Functional
-   :security: YES
-   :safety: QM
-   :satisfies: stkh_req__ai_platform__genai_interaction
-   :status: valid
-
-   The platform shall provide a Prompting Interface for GenAI-based agents, enabling structured prompts, streaming output, and context-aware user interaction.
 
 .. feat_req:: Efficient Embedded Runtime
    :id: feat_req__ai_platform__embedded_efficiency
@@ -76,26 +66,6 @@ Requirements
    :status: valid
 
    The platform shall ensure model artifacts are verified via cryptographic signatures before execution, and model loading is restricted to trusted paths.
-
-.. feat_req:: GenAI Action Validation
-   :id: feat_req__ai_platform__genai_validator
-   :reqtype: Functional
-   :security: YES
-   :safety: ASIL_B
-   :satisfies: stkh_req__ai_platform__genai_safety_filter
-   :status: valid
-
-   The platform shall validate all LLM-generated actions via domain-specific policies before they are executed.
-
-.. feat_req:: Structured Vehicle Interface
-   :id: feat_req__ai_platform__structured_api
-   :reqtype: Functional
-   :security: YES
-   :safety: ASIL_B
-   :satisfies: stkh_req__ai_platform__genai_vehicle_com
-   :status: valid
-
-   The platform shall provide structured APIs (e.g., via MCP) to access vehicle state and invoke safe vehicle commands.
 
 .. feat_req:: Static Backend Selection
    :id: feat_req__ai_platform__static_backend
