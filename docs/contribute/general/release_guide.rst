@@ -12,17 +12,17 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _module_release_guide:
+.. _module_release_manual:
 
 
-Module Release Guide
-====================
+Module Release Manual
+=====================
 
 Overview
 --------
 
-In order to use different Modules via the Bazel ecosystem, the Modules have to be released and registered in the S-CORE Bazel Registry. 
-This short guide will show you the steps necessary to create a release and make it available for other Bazel Modules.
+In order to use different Modules via the Bazel ecosystem, the Modules have to be released and registered in the S-CORE Bazel Registry.
+This short manual will show you the steps necessary to create a release and make it available for other Bazel Modules.
 
 Prerequisites
 -------------
@@ -34,7 +34,7 @@ Before starting the release process, ensure you have:
 - All necessary changes merged into the main branch
 - Understanding of semantic versioning principles
 
-For further and more detailed information take a look at the `Release Management Process <https://eclipse-score.github.io/score/pr-1445/platform_management_plan/release_management.html>`_
+For further and more detailed information take a look at the :need:`doc__platform_release_management_plan`.
 
 Module Release Process
 ----------------------
@@ -58,7 +58,7 @@ Ensure that the ``MODULE.bazel`` version matches the version you are about to re
        compatibility_level = 0,
    )
 
-.. important:: 
+.. important::
    *If the version in the MODULE.bazel is different from the one you want to release, you need to update them to match*
 
 Follow semantic versioning (SemVer) principles:
@@ -69,14 +69,14 @@ Follow semantic versioning (SemVer) principles:
 
 * **PATCH**: Incremented for backward-compatible bug fixes.
 
-For a more detailed description of when to update which version look at the process `here <https://eclipse-score.github.io/score/pr-1445/platform_management_plan/release_management.html#identification>`_
+For a more detailed description of when to update which version look at the "Identification" section of :need:`doc__platform_release_management_plan`
 
-If you have a major version change that **breaks** backwards compatibility, then make sure to also increase the 
-compatibility level inside the MODULE.bazel file.   
+If you have a major version change that **breaks** backwards compatibility, then make sure to also increase the
+compatibility level inside the MODULE.bazel file.
 
 The compatibility level should be the lowest supported major version that this new version is still compatible with.
 
-3. Create GitHub Release
+1. Create GitHub Release
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
  Create a new release:
@@ -93,7 +93,7 @@ b. On the right-hand side, click 'Create a new release'
 
    .. image:: _assets/Releases_other_way.png
       :width: 800
-      :alt: Github Release Alternate Look 
+      :alt: Github Release Alternate Look
 
 **If this is the case, you then can create a new release via this button on the following screen.**
 
@@ -126,7 +126,7 @@ Create a new tag following the format ``vx.y.z`` (e.g., ``v1.2.3``):
 5. Write Release Notes
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Add meaningful release notes that document the changes you made since your last release.  
+Add meaningful release notes that document the changes you made since your last release.
 
 
 You can use the generate release notes button to get a good starting point.
@@ -141,6 +141,9 @@ This then will give you something similar to this:
 .. image:: _assets/Generated_release_notes.png
    :width: 400
    :alt: Generated Release Notes
+
+For an official release (note) you need to consider the :need:`doc__platform_release_management_plan`
+and follow the process as in :need:`PROCESS_gd_guidl__rel_management`.
 
 
 6. Set Pre-release Status (if applicable)
@@ -167,10 +170,10 @@ Copy the ``MODULE.bazel`` file from your released version to the registry struct
 
    # Navigate to your local copy of the Bazel Central Registry
    cd bazel-central-registry
-   
+
    # Create the module directory structure if it doesn't exist
    mkdir -p modules/your_module_name/x.y.z
-   
+
    # Copy the MODULE.bazel file
    cp /path/to/your/project/MODULE.bazel modules/your_module_name/x.y.z/
 
@@ -182,8 +185,8 @@ Calculate the SHA256 hash of the release archive via the following command:
 .. code-block:: bash
 
    curl -Ls  "https://github.com/your_org/your_repo/archive/refs/tags/vx.y.z.tar.gz" | sha256sum | awk '{ print $1 }' | xxd -r -p | base64 | sed 's/^/sha256-/'
-   
-   # output will look something like this: 
+
+   # output will look something like this:
    # sha256-s48hf6x3E7XvwgnrDMnKI/97PZju4haQnF0AnPXK9VE=
 
 
@@ -230,8 +233,8 @@ Here is an example file
 
 .. code-block:: json
    :caption: Example metadata.json file
-   
-   { 
+
+   {
     "homepage": "<the homepage of your repository / documentation>",
     "maintainers": [
         {
@@ -247,7 +250,7 @@ Here is an example file
     "versions": [
         "0.0.7",
         "0.0.8",
-        "0.1.0" 
+        "0.1.0"
     ],
     "yanked_versions": {}
    }
@@ -286,7 +289,5 @@ Users can now add your Module to their ``MODULE.bazel`` file:
 
    bazel_dep(name = "your_module_name", version = "x.y.z")
 
-   # example 
+   # example
    # bazel_dep(name = "score_process", version = "1.0.4")
-   
-
