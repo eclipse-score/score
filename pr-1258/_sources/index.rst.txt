@@ -132,7 +132,9 @@ Project structure and processes
       introduction/index
       requirements/index
       features/index
+      modules/index
       contribute/index
       Releases <score_releases/index.rst>
+      Tools <score_tools/index.rst>
       PMP <platform_management_plan/index.rst>
       Eclipse <https://projects.eclipse.org/projects/automotive.score>

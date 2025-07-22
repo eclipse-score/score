@@ -23,7 +23,7 @@ Definitions
     :id: feat_req__feo__application
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
@@ -40,7 +40,7 @@ Definitions
     :id: feat_req__feo__activity
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
@@ -57,7 +57,7 @@ Definitions
     :id: feat_req__feo__task_chain
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
@@ -76,7 +76,7 @@ Definitions
     :id: feat_req__feo__service_activity
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
@@ -89,7 +89,7 @@ Definitions
     :id: feat_req__feo__agent
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
@@ -112,7 +112,7 @@ Dynamic Architecture
     :id: feat_req__feo__application_lifecycle
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
@@ -122,7 +122,7 @@ Dynamic Architecture
     :id: feat_req__feo__activity_init
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
@@ -137,7 +137,7 @@ Dynamic Architecture
     :id: feat_req__feo__activitiy_step
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
@@ -149,7 +149,7 @@ Dynamic Architecture
     :id: feat_req__feo__activity_shutdown
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
@@ -166,49 +166,48 @@ Supervision
     :id: feat_req__feo__alive_supervision
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__dependability__safety_features, stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
-    The framework shall provide the functionality to enable the reporting of 
-    alive supervision checkpoint to an external health management system 
-    (e.g. watchdog) 
+    The framework shall provide the functionality to enable the reporting of
+    alive supervision checkpoint to an external health management system
+    (e.g. watchdog)
 
 .. feat_req:: Support of deadline supervision checkpoints
     :id: feat_req__feo__deadline_supervision
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__dependability__safety_features, stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
-    The framework shall provide the functionality to enable the reporting of 
-    deadline supervision checkpoints to an external health management system 
-    (e.g. watchdog) 
+    The framework shall provide the functionality to enable the reporting of
+    deadline supervision checkpoints to an external health management system
+    (e.g. watchdog)
 
 .. feat_req:: Support of logical supervision
     :id: feat_req__feo__logical_supervision
     :reqtype: Functional
     :security: NO
-    :safety: ASIL_D
+    :safety: ASIL_B
     :satisfies: stkh_req__dependability__safety_features, stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
-    The framework shall provide the functionality to enable the reporting of 
-    logical supervision checkpoints to an external health management system 
-    (e.g. watchdog) 
+    The framework shall provide the functionality to enable the reporting of
+    logical supervision checkpoints to an external health management system
+    (e.g. watchdog)
 
 .. feat_req:: Trustable computation
     :id: feat_req__feo__trustable_computation
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: stkh_req__dependability__safety_features, stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
-    The framework shall provide mechanisms to check after the computation of 
+    The framework shall provide mechanisms to check after the computation of
     an Activity if the result is trustable.
-    This can be done e.g. via evaluation of floating point exceptions, 
+    This can be done e.g. via evaluation of floating point exceptions,
     checking of hardware registers or status information of the
     software platform.
-

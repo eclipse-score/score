@@ -342,7 +342,7 @@ Test development
 
 The verification steps as well as the development of test cases is done along with the implementation
 of code. A full automation of tests should be achieved and the derived test cases should contain meta
-data that gives further information as defined in :need:`PROCESS_gd_req__link_tests`. The list of
+data that gives further information as defined in :need:`PROCESS_gd_req__verification__link_tests`. The list of
 relevant work products is shown above (as part of the development of the product).
 
 The different environments that can be used for the test development are defined below.
@@ -352,7 +352,7 @@ Pre-existing test cases
 
 The recommendations according to the :need:`PROCESS_gd_guidl__verification_guide` for pre-existing test
 cases is followed. Any pre-existing test case (e.g. from OSS components) is reviewed and adopted
-to follow the :need:`PROCESS_gd_guidl__verification_specification` and :need:`PROCESS_gd_req__link_tests`.
+to follow the :need:`PROCESS_gd_guidl__verification_specification` and :need:`PROCESS_gd_req__verification__link_tests`.
 
 Test execution and result analysis
 ----------------------------------
@@ -418,7 +418,7 @@ The following test level fall in the responsibility of the :need:`PROCESS_rl__co
 
 Unit tests can be the developed by the same :need:`PROCESS_rl__contributor` who also contributed the unit code.
 A level of independence is achieved as the review process demands to have a review by a :need:`PROCESS_rl__committer`
-different to the author of a Pull Request. This is also described in process requirement :need:`PROCESS_gd_req__verification_independence`.
+different to the author of a Pull Request. This is also described in process requirement :need:`PROCESS_gd_req__verification__independence`.
 
 Note that, each :need:`PROCESS_rl__contributor` of the project acts in a publicly visible space where also
 others see the contribution and have the possibility to perform additional reviews independent from

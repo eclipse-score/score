@@ -72,8 +72,8 @@
         </script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="File Access" href="file-access/index.html" />
-    <link rel="prev" title="Integration" href="../integration/index.html" />
+    <link rel="next" title="Key-Value-Storage" href="kvs/index.html" />
+    <link rel="prev" title="Requirements" href="../orchestration/requirements.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
@@ -174,15 +174,15 @@
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../contribute/index.html">
-    Contribute
+  <a class="nav-link nav-internal" href="../../modules/index.html">
+    Module
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../score_releases/index.html">
-    Releases
+  <a class="nav-link nav-internal" href="../../contribute/index.html">
+    Contribute
   </a>
 </li>
 
@@ -194,6 +194,20 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../platform_management_plan/index.html">
     PMP
@@ -341,6 +355,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../modules/index.html">
+    Module
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../contribute/index.html">
     Contribute
   </a>
@@ -350,6 +371,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../score_releases/index.html">
     Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../score_tools/index.html">
+    Tools
   </a>
 </li>
 
@@ -433,12 +461,15 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../ai_platform/index.html">AI Platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../analysis-infra/index.html">Analysis Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../baselibs/index.html">Base Libraries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../communication/index.html">Communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagnostics/index.html">Diagnostic and Fault Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../frameworks/index.html">Frameworks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../infrastructure/index.html">Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../integration/index.html">Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../orchestration/index.html">Orchestration</a></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Persistency</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="file-access/index.html">File Access</a></li>
 <li class="toctree-l2"><a class="reference internal" href="kvs/index.html">Key-Value-Storage</a></li>
 </ul>
 </details></li>
@@ -506,19 +537,7 @@
 <h1>Persistency<a class="headerlink" href="#persistency" title="Link to this heading">#</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="file-access/index.html">File Access</a></li>
-<li class="toctree-l1"><a class="reference internal" href="kvs/index.html">Key-Value-Storage</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="kvs/index.html#feature-flag">Feature flag</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kvs/index.html#abstract">Abstract</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kvs/index.html#motivation">Motivation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kvs/index.html#rationale">Rationale</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kvs/index.html#backwards-compatibility">Backwards Compatibility</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kvs/index.html#security-impact">Security Impact</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kvs/index.html#safety-impact">Safety Impact</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kvs/index.html#license-impact">License Impact</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kvs/index.html#how-to-teach-this">How to Teach This</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="kvs/index.html">Key-Value-Storage</a></li>
 </ul>
 </div>
 </section>
@@ -534,20 +553,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../integration/index.html"
+       href="../orchestration/requirements.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Integration</p>
+        <p class="prev-next-title">Requirements</p>
       </div>
     </a>
     <a class="right-next"
-       href="file-access/index.html"
+       href="kvs/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">File Access</p>
+        <p class="prev-next-title">Key-Value-Storage</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

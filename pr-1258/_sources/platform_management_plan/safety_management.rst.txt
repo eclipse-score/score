@@ -16,7 +16,7 @@
    :id: doc__platform_safety_plan
    :status: draft
    :safety: ASIL_B
-   :realizes: PROCESS_wp__platform_safety_plan
+   :realizes: PROCESS_wp__platform_safety_plan,PROCESS_wp__tailoring
    :tags: platform_management
 
 Safety management / Platform Safety Plan
@@ -82,51 +82,52 @@ Tailoring of safety activities:
 
 The following  ISO 26262 defined safety work products are not relevant for the S-CORE SW platform development:
 
-Because these are in responsibility of the system integrator: :need:`PROCESS_std_wp__iso26262__management_751`,
-:need:`PROCESS_std_wp__iso26262__system_652`, :need:`PROCESS_std_wp__iso26262__system_653`, :need:`PROCESS_std_wp__iso26262__system_654`,
-:need:`PROCESS_std_wp__iso26262__system_655`, :need:`PROCESS_std_wp__iso26262__system_656`, :need:`PROCESS_std_wp__iso26262__system_657`,
-:need:`PROCESS_std_wp__iso26262__system_751`, :need:`PROCESS_std_wp__iso26262__system_752`, :need:`PROCESS_std_wp__iso26262__system_851`,
-:need:`PROCESS_std_wp__iso26262__system_852`
+* Because these are in responsibility of the system integrator: :need:`PROCESS_std_wp__iso26262__management_751`,
+  :need:`PROCESS_std_wp__iso26262__system_652`, :need:`PROCESS_std_wp__iso26262__system_653`, :need:`PROCESS_std_wp__iso26262__system_654`,
+  :need:`PROCESS_std_wp__iso26262__system_655`, :need:`PROCESS_std_wp__iso26262__system_656`, :need:`PROCESS_std_wp__iso26262__system_657`,
+  :need:`PROCESS_std_wp__iso26262__system_751`, :need:`PROCESS_std_wp__iso26262__system_752`, :need:`PROCESS_std_wp__iso26262__system_851`,
+  :need:`PROCESS_std_wp__iso26262__system_852`
 
-Note that stakeholder requirements (:need:`PROCESS_std_wp__iso26262__system_651`) are in scope of the project,
-to be able to cover System and HW related failures which are usually covered by SW (e.g. end to end protection for ECU external communication).
-But those are the "Assumed Technical Safety Requirements" of the SW platform SEooC and do not need to be tested by SEooC supplier.
-I.e. the system testing is out of scope. Note that S-CORE will implement platform test of stakeholder requirements for demonstration,
-but these are not intended to be completely covering the stakeholder requirements.
-There will be SW integration tests of feature requirements, as required by ISO 26262 part 6-10.
-These may be reused by the users on their HW platform to cover Technical Safety Requirements towards the SW platform.
-But if these are sufficiently also covering the TSRs must be analyzed and decided by the user.
+  Note that stakeholder requirements (:need:`PROCESS_std_wp__iso26262__system_651`) are in scope of the project,
+  to be able to cover System and HW related failures which are usually covered by SW (e.g. end to end protection for ECU external communication).
+  But those are the "Assumed Technical Safety Requirements" of the SW platform SEooC and do not need to be tested by SEooC supplier.
+  I.e. the system testing is out of scope. Note that S-CORE will implement platform test of stakeholder requirements for demonstration,
+  but these are not intended to be completely covering the stakeholder requirements.
+  There will be SW integration tests of feature requirements, as required by ISO 26262 part 6-10.
+  These may be reused by the users on their HW platform to cover Technical Safety Requirements towards the SW platform.
+  But if these are sufficiently also covering the TSRs must be analyzed and decided by the user.
 
-Also tailored out is the SW testing on the target, as the S-CORE project can only test on reference HW
-(part of SW integration testing). So these are not relevant: :need:`PROCESS_std_wp__iso26262__software_1151`, :need:`PROCESS_std_wp__iso26262__software_1152`
+* Also tailored out is the SW testing on the target, as the S-CORE project can only test on reference HW
+  (part of SW integration testing). So these are not relevant: :need:`PROCESS_std_wp__iso26262__software_1151`, :need:`PROCESS_std_wp__iso26262__software_1152`
 
-Because there is no calibration used for the S-CORE SW platform components, only configuration: :need:`PROCESS_std_wp__iso26262__software_app_c_52`,
-:need:`PROCESS_std_wp__iso26262__software_app_c_54`, :need:`PROCESS_std_wp__iso26262__software_app_c_57`
+* Because there is no calibration used for the S-CORE SW platform components, only configuration: :need:`PROCESS_std_wp__iso26262__software_app_c_52`,
+  :need:`PROCESS_std_wp__iso26262__software_app_c_54`, :need:`PROCESS_std_wp__iso26262__software_app_c_57`
 
-Because distributed development is not how the project is organized. All contributors are seen as part of the project team.
-When used, OSS components are qualified and external SEooCs are integrated in the project scope: :need:`PROCESS_std_wp__iso26262__support_551`,
-:need:`PROCESS_std_wp__iso26262__support_552`, :need:`PROCESS_std_wp__iso26262__support_553`, :need:`PROCESS_std_wp__iso26262__support_554`, :need:`PROCESS_std_wp__iso26262__support_555`
+* Because distributed development is not how the project is organized. All contributors are seen as part of the project team.
+  When used, OSS components are qualified and external SEooCs are integrated in the project scope: :need:`PROCESS_std_wp__iso26262__support_551`,
+  :need:`PROCESS_std_wp__iso26262__support_552`, :need:`PROCESS_std_wp__iso26262__support_553`, :need:`PROCESS_std_wp__iso26262__support_554`, :need:`PROCESS_std_wp__iso26262__support_555`
 
-Because in the S-CORE SW platform HW elements are out of scope: :need:`PROCESS_std_wp__iso26262__support_1351`, :need:`PROCESS_std_wp__iso26262__support_1352`, :need:`PROCESS_std_wp__iso26262__support_1353`
+* Because in the S-CORE SW platform HW elements are out of scope: :need:`PROCESS_std_wp__iso26262__support_1351`, :need:`PROCESS_std_wp__iso26262__support_1352`, :need:`PROCESS_std_wp__iso26262__support_1353`
 
-Because in the S-CORE SW platform a proven in use argument will not be applied: :need:`PROCESS_std_wp__iso26262__support_1451`, :need:`PROCESS_std_wp__iso26262__support_1452`
+* Because in the S-CORE SW platform a proven in use argument will not be applied: :need:`PROCESS_std_wp__iso26262__support_1451`, :need:`PROCESS_std_wp__iso26262__support_1452`
 
-Because in the S-CORE SW platform interfacing of out of scope of ISO 26262 applications is not planned: :need:`PROCESS_std_wp__iso26262__support_1551`
+* Because in the S-CORE SW platform interfacing of out of scope of ISO 26262 applications is not planned: :need:`PROCESS_std_wp__iso26262__support_1551`
 
-Because in the S-CORE SW platform integration of safety-related systems not developed according to ISO 26262 is not planned: :need:`PROCESS_std_wp__iso26262__support_1651`
+* Because in the S-CORE SW platform integration of safety-related systems not developed according to ISO 26262 is not planned: :need:`PROCESS_std_wp__iso26262__support_1651`
 
-Because in the S-CORE SW platform no ASIL decomposition is planned: :need:`PROCESS_std_wp__iso26262__analysis_551`, :need:`PROCESS_std_wp__iso26262__analysis_552`
+* Because in the S-CORE SW platform no ASIL decomposition is planned: :need:`PROCESS_std_wp__iso26262__analysis_551`, :need:`PROCESS_std_wp__iso26262__analysis_552`
 
-.. workproduct:: Tailoring Document Platform
-   :id: wp__tailoring_platform
-   :status: valid
-   :tags: safety_mgt
-   :complies: PROCESS_std_wp__iso26262__management_751, PROCESS_std_wp__iso26262__system_652, PROCESS_std_wp__iso26262__system_653, PROCESS_std_wp__iso26262__system_654, PROCESS_std_wp__iso26262__system_655, PROCESS_std_wp__iso26262__system_656, PROCESS_std_wp__iso26262__system_657, PROCESS_std_wp__iso26262__system_751, PROCESS_std_wp__iso26262__system_752, PROCESS_std_wp__iso26262__system_851, PROCESS_std_wp__iso26262__system_852, PROCESS_std_wp__iso26262__software_1151, PROCESS_std_wp__iso26262__software_1152, PROCESS_std_wp__iso26262__software_app_c_52, PROCESS_std_wp__iso26262__software_app_c_54, PROCESS_std_wp__iso26262__software_app_c_57, PROCESS_std_wp__iso26262__support_551, PROCESS_std_wp__iso26262__support_552, PROCESS_std_wp__iso26262__support_553, PROCESS_std_wp__iso26262__support_554, PROCESS_std_wp__iso26262__support_555, PROCESS_std_wp__iso26262__support_1351, PROCESS_std_wp__iso26262__support_1352, PROCESS_std_wp__iso26262__support_1353, PROCESS_std_wp__iso26262__support_1451, PROCESS_std_wp__iso26262__support_1452, PROCESS_std_wp__iso26262__support_1551, PROCESS_std_wp__iso26262__support_1651, PROCESS_std_wp__iso26262__analysis_551, PROCESS_std_wp__iso26262__analysis_552
+* Because HSI is coming from HW (and systems) engineering which are not part of S-CORE
+  and the standard only asks for refinement during SW development. As the input is missing, there is nothing to refine.
+  Expectations towards the HW/Environment are covered by AoUs. Additionally S-CORE only provides reference HW integration,
+  so every user of the platform would have to redo the effort anyway: :need:`PROCESS_std_wp__iso26262__software_652`
 
-   This work product instantiation links to all the work products which are tailored out in the platform safety plan,
-   to be able to demonstrate completeness in `REPLACE external_standards`, and this is a document, not work product
+* Because the SW platform is not an safety item but an element: :need:`PROCESS_std_wp__iso26262__management_651`
 
+But also some activities based on requirements defining what has to be done to create a workproduct which is in scope of the S-CORE platform are tailored:
 
+* Because those are not relevant for ASIL_B: :need:`PROCESS_std_req__iso26262__system_6423`,
+  :need:`PROCESS_std_req__iso26262__system_6424`, :need:`PROCESS_std_req__iso26262__system_6425`
 
 Approach
 ++++++++
@@ -251,9 +252,9 @@ is determined by Safety Audit and not be Eclipse project reviews.
 
 Functional Safety Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Requirement Engineering is defined in the process description. See :doc:`requirements_management`.
+Requirement Engineering is defined in the process description. See :need:`doc__project_mgt_plan`.
 
-The application of ISO 26262 standards requirements is realized by defining process guidances and matching those to the ISO 26262 requirements (see e.g. for example :need:`PROCESS_gd_req__sm_doc_status`).
+The application of ISO 26262 standards requirements is realized by defining process guidances and matching those to the ISO 26262 requirements (see e.g. for example :need:`PROCESS_gd_req__safety__doc_status`).
 
 Functional Safety Schedule
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -310,7 +311,7 @@ Functional Safety Management SW Platform Work Products
       - not open sourced
       - to be shown to assessor
 
-    * - :need:`PROCESS_wp__qms`
+    * - :need:`PROCESS_wp__qms_plan`
       - :need:`PROCESS_wf__platform__cr_mt_platform_mgmt_plan`
       - :ndf:`copy('status', need_id='PROCESS_wf__platform__cr_mt_platform_mgmt_plan')`
       - `#316 <https://github.com/eclipse-score/score/issues/316>`_
