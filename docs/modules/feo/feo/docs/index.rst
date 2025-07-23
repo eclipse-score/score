@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,10 +12,17 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+.. _comp_doc_feo:
 
-Frameworks
-##########
+feo
+###
+
+Component Documents
+===================
 
 .. toctree::
+   :maxdepth: 2
+   :titlesonly:
 
-   feo/index.rst
+   architecture/component_architecture
+   requirements/component_requirements
