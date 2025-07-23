@@ -1,0 +1,216 @@
+..
+   # *******************************************************************************
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
+   #
+   # See the NOTICE file(s) distributed with this work for additional
+   # information regarding copyright ownership.
+   #
+   # This program and the accompanying materials are made available under the
+   # terms of the Apache License Version 2.0 which is available at
+   # https://www.apache.org/licenses/LICENSE-2.0
+   #
+   # SPDX-License-Identifier: Apache-2.0
+   # *******************************************************************************
+
+Security & Cryptography
+#######################
+
+.. document:: Security & Cryptography
+   :id: doc__security_crypto
+   :status: draft
+   :safety: QM
+   :realizes: wp__feat_request
+
+Feature flag
+============
+
+To activate this feature, use the following feature flag:
+
+``experimental_security_crypto``
+
+
+Abstract
+========
+
+Embedded systems have general security goals like confidentiality, integrity, trust and availability.
+A security subsystem inside of S-CORE needs to provide several functionalities to achieve these goals
+by using cryptographic algorithms.
+
+
+Motivation
+==========
+
+S-CORE will be embedded in an automotive embedded SoC and interconnected via network interfaces with
+the overall vehicle network. It will process data fom various sources, provide data internally and
+outside of its own ECU. S-CORE as a framework will ensure that itself, processed data and its hosted applications
+operate in a secure manner.
+
+
+Rationale
+=========
+
+The features presented in this proposal are derived from the above mentioned security goals.
+A single feature offering just 'cryptographic alorithms' is not enough to provide effective measures to ensure
+confidentiality, integrity, and trust. Therefore this proposal already considers this as a security & crypto
+subsystem.
+
+
+Specification
+=============
+
+In order to achieve the above mentioned security goals, a security subsystem needs to provide the following
+functionalities.
+
+* 'Symmetric encryption' - with the same key known to both communication parties
+* 'Asymmetric encryption' - to allow a trusted exchange of secrets with a pair of keys (public and private) for encryption and decryption.
+* 'Signature functionality' - to ensure that data is authentic and not tampered (integrity) if verified to be valid.
+  Functionality is i) to create a signature and to ii) verify a signature.
+* 'Certificate management' - to manage a set of signed and verified (trusted) certificates.
+* 'Generation of entropy' - to ensure algorithm can rely on true/sufficiently random numbers
+* 'Ensure data integrity' - achieved with a hash function.
+
+Additionally a cryptographic subsystem will typically as well offer
+* key management: secure generation, import, storage, update and deletion of key material
+* offer the usage of the above mentioned functionality (decrypt, encrypt) while 'not revealing the key material' to users of the API
+* The cryptographic subsystem should be aware that certain attacks will try to observe the overall
+  system to analyze its inner workings to guess secrets (side channel/timing attacks) or to influence
+  it to limit its availability for system critical tasks.
+
+
+Backwards Compatibility & Dependencies
+======================================
+
+* The cryptographic subsystem typically needs to 'rely on hardware acceleration' to execute operations
+  efficiently or to access a TRNG (True random number generator) for entropy. Additionally, it MAY be a
+  good idea to as well have a software-only solution.
+* Will use system level means (co-processor, hardware security module, Trusted Execution Environment, ...)
+  to ensure it is protected (memory, CPU) from applications and the normal operating system while still offering its functionality to
+  applications and middleware services.
+* 'Time' in the sense of real world wall clock is crucial for the cryptographic subsystem to ensure
+  that for example a certificate or token is only used within its validity period.
+
+Architecture::
+
+           | --> Signature (create / verify)
+           | --> Symmmetic crypto (encrypt, decrypt)
+           | --> KeyMngmt (generate, import, update, delete, check)
+           | --> CertificateManagement (add, update, verify)
+           | --> Hash (data)
+           |
+  |------------------|
+  | Crypto-API       |---------> used by Applications / Other middleware
+  |------------------|
+            |
+            |
+            |
+  |------------------------------|      |<------- Real-world trusted time
+  | Security-Subsystem           |------|
+  |                              |      | -------> HW-Accelerated execution in HSM or SW-Emulation
+  | ---------------------        |
+  | | Crypto-Algorithms |        |
+  | ---------------------        |
+  |------------------------------|
+           |
+           |
+  |------------------|
+  |    KeyStore      |
+  |------------------|
+
+
+Proposal for common crypto algorithms
+-------------------------------------
+
+The following algorithms should match the above goals and shall be offered by the security subsystem.
+The selection of alorithms is a proposal and subject to joint discussion.
+Side note: The Eclipse Heimlig project directly supports these.
+
+* Symmetric encryption and decryption (AES-CBC, AES-GCM, AES-CCM, Chacha20Poly1305 )
+* Signing and verification (ECDSA)
+* Key exchange (ECDH)
+* Hashing (SHA-2, SHA-3, BLAKE3)
+* Random number generation (ChaCha20Rng)
+
+
+Security Impact
+===============
+
+TBD
+
+
+Safety Impact
+=============
+
+TBD
+
+
+License Impact
+==============
+
+Certain strong cryptographic functionality needs to be condisered with respect to export control regulations.
+
+
+How to Teach This
+=================
+
+TBD
+
+
+Rejected Ideas
+==============
+
+TBD
+
+
+Additional thinking
+===================
+
+Security plan
+-------------
+
+A security subsystem is a key component that should provide in itself limited surface for
+attacks. As the overall system the security subsystem should be based on a security plan including
+'security goals', 'plausible attacks', 'critical failures', and 'countermeasures'.
+Due to the nature of our overall system to be deployed for 10+ years in an embedded systems
+such a security plan needs to as well cover 'software-update strategy', 'field observation', 'crypto
+algorithm updates', 'repairability', and 'whitstand reverse engineering of secrets'.
+
+As the security subsystem of S-CORE will be open source, the plan needs to ensure that an attacker
+can analyze the security subsystem without gaining benefits from it with regards to compromising a
+system in which S-SCORE is deployed on the road. (Obvious: avoid security by obscurity)
+
+Finally the security subsystem needs to consider the production scenario where potentially several
+'initial production keys' are brought into the system.
+
+Memory safe language
+---------------------
+
+Following the white house cybersecurity plan and other industry voices to improve robustness of
+critical systems by using memory safe languages S-CORE decided to have Rust as a 1st class
+citizen. The security subsystem SHALL be developed entirely in Rust.
+
+
+Open Issues
+===========
+
+* OS security mechanisms
+* Trusted computing environmeent / HSM
+* Roles and capability rights management
+* Connection to IDS / anomaly detection
+* Zero trust - BS or where to use ?
+* Critical subsystem states
+* Attack scenario by exceeding computation capabilities (DoS) with malicious messages that create exceptional load
+
+
+Post quantum readiness
+----------------------
+
+See `NIST <https://www.nist.gov/news-events/news/2024/08/nist-releases-first-3-finalized-post-quantum-encryption-standards>`:
+* https://csrc.nist.gov/pubs/fips/203/final
+* https://csrc.nist.gov/pubs/fips/204/final
+* https://csrc.nist.gov/pubs/fips/205/final.
+
+
+Footnotes
+=========
+
+TBD
