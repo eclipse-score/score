@@ -1,0 +1,32 @@
+@startuml
+title Control Interface - Start components
+
+autonumber "<b>[00]"
+
+
+participant "Tester" as Tester
+participant "State Manager" as SM
+participant "Launch Manager" as LM
+participant "OS (kernel)" as kernel
+participant "DemoApp1" as DemoApp1
+participant "DemoApp2" as DemoApp2
+
+
+
+Tester -> SM: Start Group (eg. UDS)
+SM -> SM: evaluate request
+SM -> LM: Start group DemoApps
+activate LM
+LM -> kernel: spawn DemoApp1
+kernel -> DemoApp1: spawn
+kernel --> LM: result of spawning of DemoApp1
+kernel -> DemoApp2: spawn
+activate DemoApp2
+kernel --> LM: result of spawning of DemoApp2
+
+LM -> LM: wait for DemoApp2 ready status
+DemoApp2 -> DemoApp2: register device /dev/Demo2
+kernel --> LM: event /dev/Demo2 registered
+LM --> SM: DemoApps started
+
+@enduml
