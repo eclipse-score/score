@@ -46,3 +46,24 @@ Process tools
    :status: valid
 
    Spinx-needs shall be used to model all processes within S-CORE.
+
+
+.. tool_req:: PlantUML Theming
+   :id: tool_req__tool__sphinx_needs_theming
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: QM
+   :satisfies: stkh_req__requirements__as_code
+   :status: valid
+
+   The PlantUML theming feature shall support a consistent *look-and-feel* for all diagrams.
+   Details and Instructions are described in document :need:`doc__plantuml_theming`.
+   A brief example is shown below.
+
+   .. needarch::
+      :scale: 50
+      :align: center
+      :config: score_config
+
+      Alice -> Bob: Hi Bob
+      Bob --> Alice: hi Alice

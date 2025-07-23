@@ -26,6 +26,7 @@ libc
    .. needarch::
       :scale: 50
       :align: center
+      :config: score_config
 
       {{ draw_component(need(), needs) }}
 
@@ -40,6 +41,7 @@ libc
    .. needarch::
       :scale: 50
       :align: center
+      :config: score_config
 
       {{ draw_interface(need(), needs) }}
 
@@ -75,6 +77,7 @@ libc
    .. needarch::
       :scale: 50
       :align: center
+      :config: score_config
 
       {{ draw_interface(need(), needs) }}
 
@@ -101,6 +104,7 @@ libc
    .. needarch::
       :scale: 50
       :align: center
+      :config: score_config
 
       {{ draw_interface(need(), needs) }}
 
