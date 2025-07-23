@@ -51,7 +51,7 @@ Launching Processes
     The :term:`Launch Manager` shall provide support for launching :term:`processes`
     in parallel.
 
-.. feat_req:: Conditional waitfor launching
+.. feat_req:: Conditional launching
     :id: feat_req__lifecycle__waitfor_support
     :reqtype: Functional
     :security: NO
@@ -59,8 +59,7 @@ Launching Processes
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
-    The :term:`Launch Manager` shall provide support for waitfor conditions to be
-    satisfied to launch :term:`processes`.
+    The :term:`Launch Manager` shall provide launching processes based on conditions.
 
 .. feat_req:: Control interface support
     :id: feat_req__lifecycle__custom_cond_support
@@ -96,48 +95,6 @@ Launching Processes
     The :term:`Launch Manager` shall provide support to conditionally start a process
     or process group based on the return value of a single or multiple :term:`processes`
     executed before.
-
-.. feat_req:: Support for essential processes
-    :id: feat_req__lifecycle__essential_processes
-    :reqtype: Functional
-    :security: NO
-    :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
-    :status: invalid
-
-    The :term:`Launch Manager` shall allow to mark :term:`processes` as "essential"
-    for the startup.
-
-
-.. feat_req:: Stop further processing on failing essential process
-    :id: feat_req__lifecycle__essential_process_fail
-    :reqtype: Functional
-    :security: NO
-    :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
-    :status: invalid
-
-    In case a process that is marked as "essential" for the startup fails to start,
-    the :term:`Launch Manager` shall stop the further processing of its config and
-    stop the startup sequence.
-
-.. feat_req:: Error reaction on essential process failure
-    :id: feat_req__lifecycle__error_reaction_config
-    :reqtype: Functional
-    :security: NO
-    :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
-    :status: invalid
-
-    The :term:`Launch Manager` shall support to configure the error reaction in case
-    an "essential" process failed to start. Possible error reactions are:
-
-    * System halt
-
-    * System reset
-
-    * Execution of a specifically marked process
-
 
 .. feat_req:: Handling process args
     :id: feat_req__lifecycle__process_launch_args
@@ -184,7 +141,7 @@ Launching Processes
     The :term:`Launch Manager` shall provide support for launching a process with a
     given :term:`UID`/:term:`GID` (user name/Group Identifier).
 
-.. feat_req:: Conditional launch total wait time
+.. feat_req:: Condition timeout
     :id: feat_req__lifecycle__total_wait_time_support
     :reqtype: Functional
     :security: NO
@@ -252,17 +209,6 @@ Launching Processes
     The :term:`Launch Manager` shall provide support for stdin, stdout, stderr
     redirection.
 
-.. feat_req:: Builtin commands
-    :id: feat_req__lifecycle__builtin_command_support
-    :reqtype: Functional
-    :security: NO
-    :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
-    :status: invalid
-
-    The :term:`Launch Manager` shall provide support for builtin commands.
-
-
 .. feat_req:: Non-root support
     :id: feat_req__lifecycle__secpol_non_root
     :reqtype: Functional
@@ -285,9 +231,8 @@ Launching Processes
     The :term:`Launch Manager` shall support a configurable amount of retries in
     case error occurs during startup of a component (e.g. file not available) occurs.
 
-
-.. feat_req:: Procmgr ability support
-    :id: feat_req__lifecycle__procmgr_support
+.. feat_req:: Process capability support
+    :id: feat_req__lifecycle__capability_support
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
@@ -295,7 +240,7 @@ Launching Processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for launching :term:`processes`
-    with configured :term:`procmgr` abilities.
+    with configured OS-specific capabilities and privileges.
 
 .. feat_req:: File descriptor inheritance support
     :id: feat_req__lifecycle__fd_inheritance
@@ -388,17 +333,6 @@ Launching Processes
     The :term:`Launch Manager` shall provide support for launching a process to
     detach from parent.
 
-.. feat_req:: Critical process support
-    :id: feat_req__lifecycle__critical_processes
-    :reqtype: Functional
-    :security: NO
-    :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
-    :status: invalid
-
-    The :term:`Launch Manager` shall provide support for launching a process as a
-    critical process.
-
 .. feat_req:: Process adoption
     :id: feat_req__lifecycle__running_processes
     :reqtype: Functional
@@ -454,17 +388,6 @@ Launching Processes
     The Launch Manager shall be able to validate the start of the executable using the conditions.
 
 
-.. feat_req:: Managing an externally started process
-    :id: feat_req__lifecycle__process_ownership
-    :reqtype: Functional
-    :security: NO
-    :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
-    :status: invalid
-
-    The Launch Manager shall be able to own an externally started process.
-
-
 .. feat_req:: Invalid dependency
     :id: feat_req__lifecycle__consistent_dependencies
     :reqtype: Functional
@@ -511,48 +434,36 @@ Launching Processes
 Groups
 ......
 
-.. feat_req:: Named group
-    :id: feat_req__lifecycle__named_group_executables
+.. feat_req:: Run target support
+    :id: feat_req__lifecycle__run_target_support
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
-    The :term:`Launch Manager` shall permit to represent a set of executables as a
-    named group.
+    The :term:`Launch Manager` shall provide support for run targets to define
+    collections of :term:`processes` that can be launched together.
 
-.. feat_req:: Launching group
-    :id: feat_req__lifecycle__start_named_group_exe
+.. feat_req:: Launching run target
+    :id: feat_req__lifecycle__start_named_run_target
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
-    The :term:`Launch Manager` shall be able to start a named group of executables.
+    The :term:`Launch Manager` shall be able to start a named run target.
 
-.. feat_req:: Stopping group
-    :id: feat_req__lifecycle__stop_group_executables
+.. feat_req:: Switch between run targets
+    :id: feat_req__lifecycle__switch_run_targets
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
-    The :term:`Launch Manager` shall be able to stop a named group of executables.
-
-
-.. feat_req:: Start group launch
-    :id: feat_req__lifecycle__launcher_start_group
-    :reqtype: Functional
-    :security: NO
-    :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
-    :status: invalid
-
-    The :term:`Launch Manager` shall be able to start a named group when the launcher
-    is started.
+    The :term:`Launch Manager` shall be able to switch between different run targets.
 
 .. feat_req:: Process state
     :id: feat_req__lifecycle__process_state_comm
@@ -710,38 +621,16 @@ Terminating Processes
 
     Note: status can be "started/running/degraded" - refer to documentation for details
 
-.. feat_req:: Request group launch
-    :id: feat_req__lifecycle__request_group_launch
+.. feat_req:: Request run target launch
+    :id: feat_req__lifecycle__request_run_target_launch
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
-    The :term:`Launch Manager` shall be able to start a named group respecting the
+    The :term:`Launch Manager` shall be able to start a named run target respecting the
     dependencies when requested.
-
-.. feat_req:: Request group stop
-    :id: feat_req__lifecycle__request_group_stop
-    :reqtype: Functional
-    :security: NO
-    :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
-    :status: invalid
-
-    The :term:`Launch Manager` shall be able to stop a named group respecting the
-    dependencies when requested.
-
-.. feat_req:: Request group restart
-    :id: feat_req__lifecycle__request_group_restart
-    :reqtype: Functional
-    :security: NO
-    :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
-    :status: invalid
-
-    The :term:`Launch Manager` shall be able to restart a named group respecting
-    the dependencies when requested.
 
 
 Monitoring, Notification and Recovery
@@ -781,17 +670,17 @@ Monitoring, Notification and Recovery
     The :term:`Launch Manager` shall support :term:`Recovery Action` for the
     abnormally terminated :term:`processes`.
 
-.. feat_req:: Restart of named group as recovery action
-    :id: feat_req__lifecycle__recover_group
+.. feat_req:: Run target switch as recovery action
+    :id: feat_req__lifecycle__recover_run_target_switch
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
-    The :term:`Launch Manager` shall support a restart of a named group as recovery
-    method in case a single process out of that group terminated abnormally or lost
-    its :term:`Liveliness`.
+    The :term:`Launch Manager` shall support switching to a different run target as
+    recovery action in case a single process terminated abnormally or lost its
+    :term:`Liveliness`.
 
 .. feat_req:: Monitoring and recovery: watchdog support
     :id: feat_req__lifecycle__smart_watchdog_config
@@ -939,8 +828,8 @@ Logging
     :satisfies: stkh_req__dev_experience__logging_support
     :status: invalid
 
-    The :term:`Launch Manager` shall support slog2 and a logging file as logging
-    destinations.
+    The :term:`Launch Manager` shall support OS specific logging facilities to analyze the early
+    boot sequence.
 
 .. feat_req:: Logging state transitions
     :id: feat_req__lifecycle__process_logging_support
