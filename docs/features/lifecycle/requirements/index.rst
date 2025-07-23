@@ -161,7 +161,7 @@ Launching Processes
     The :term:`Launch Manager` shall provide support for launching process with a
     given set of debug arguments in debug mode.
 
-.. feat_req:: Launching process in HELD state
+.. feat_req:: Launching process in state waiting for a debugger connection
     :id: feat_req__lifecycle__support_held_state
     :reqtype: Functional
     :security: NO
@@ -169,8 +169,8 @@ Launching Processes
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
-    The :term:`Launch Manager` shall provide support for launching a process in a
-    HELD state.
+    The :term:`Launch Manager` shall provide support for launching a process in a state
+    waiting for a debugger connection.
 
 
 .. feat_req:: Process user, group IDs support
@@ -407,7 +407,7 @@ Launching Processes
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
-    The :term:`Launch Manager` shall adopt already running :term:`processes`.
+    The :term:`Launch Manager` shall be able to adopt already running :term:`processes`.
 
 .. feat_req:: Dropping process responsibility
     :id: feat_req__lifecycle__drop_supervsion
@@ -801,7 +801,7 @@ Monitoring, Notification and Recovery
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
-    The :term:`Launch Manager` shall support smart :term:`Watchdog`, configurable
+    The :term:`Launch Manager` shall support a smart :term:`Watchdog`, configurable
     per process.
 
 
@@ -1033,7 +1033,7 @@ Configuration file
     as modules.
 
 
-.. feat_req:: global process properties
+.. feat_req:: Global process properties
     :id: feat_req__lifecycle__central_default_defines
     :reqtype: Functional
     :security: NO
@@ -1143,7 +1143,7 @@ Condition Check
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
-    The Launch Manager shall provide a method to check if all dependency has been executed.
+    The Launch Manager shall provide a method to check if all dependencies have been executed.
 
 
 .. feat_req:: Condition check based on at least one dependency
