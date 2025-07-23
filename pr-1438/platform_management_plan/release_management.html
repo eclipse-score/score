@@ -532,7 +532,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-1876aed9">
+  <div class="need_container docutils container" id="SNCB-ea452d59">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__platform_release_management_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -552,7 +552,7 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">platform_management</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">platform_management</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
@@ -609,8 +609,14 @@ is reproducible, so this can be re-created from source any time.</p>
 <p>Release types are strongly associated with the release version numbering, which is explained in
 “Identification” section below.</p>
 <p>S-CORE has two major kinds of releases: experimental and official. These correspond with the “feature flags”
-defined in <a class="reference internal" href="project_management.html#doc__project_mgt_plan" title="doc__project_mgt_plan"><em class="xref need">Project Management Plan (doc__project_mgt_plan)</em></a>. Experimental means that the development artefacts needed for
-the safety package work products may be incomplete and will be identified as “Pre-Release” versions.</p>
+defined in <a class="reference internal" href="project_management.html#doc__project_mgt_plan" title="doc__project_mgt_plan"><em class="xref need">Project Management Plan (doc__project_mgt_plan)</em></a>.</p>
+<ul class="simple">
+<li><p><strong>Experimental</strong> means that the development artefacts needed for the safety package work products may be incomplete.
+These releases are done during development phase to be able to sync between the module repositories.</p></li>
+<li><p><strong>Official</strong> means that the processes are fully executed to produce all work products and are documented
+with a releae note as in <a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/release_management/guidance/release_templates.html#gd_temp__rel__plat_rel_note">PROCESS_gd_temp__rel__plat_rel_note</a> or <a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/release_management/guidance/release_templates.html#gd_temp__rel__mod_rel_note">PROCESS_gd_temp__rel__mod_rel_note</a>.
+For an official release also consider <a class="reference external" href="https://www.eclipse.org/projects/handbook/#release-releases">Eclipse Project Handbook - Releases</a>.</p></li>
+</ul>
 </section>
 <section id="release-planning-and-execution">
 <h3>Release Planning and Execution<a class="headerlink" href="#release-planning-and-execution" title="Link to this heading">#</a></h3>
@@ -626,6 +632,7 @@ With increasing maturity of the modules it is expected that this period can be r
 <p>As defined in the process, the releases on module and platform level need to be coordinated.
 Major version updates denote API incompatibility, so the modules in a platform release are expected to have the same
 major version.</p>
+<p>For the release execution follow the steps described in <a class="reference internal" href="../contribute/general/release_guide.html#module-release-manual"><span class="std std-ref">Module Release Manual</span></a>.</p>
 </section>
 <section id="identification">
 <h3>Identification<a class="headerlink" href="#identification" title="Link to this heading">#</a></h3>
