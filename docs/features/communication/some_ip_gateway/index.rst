@@ -108,6 +108,8 @@ As with IPC generally, the security approach for SOME/IP gateway shall achieve t
 - confidentiality (:need:`feat_req__ipc__confidentiality`)
 - integrity (:need:`feat_req__ipc__integrity`)
 - availability (per criticality-level) (:need:`feat_req__ipc__availability`)
+- secure communication (:need:`feat_req__some_ip_gateway__secure_com`)
+- access control (:need:`feat_req__some_ip_gateway__access_control`)
 
 
 Backwards Compatibility
@@ -120,7 +122,136 @@ Applications shall stay stable on API layer, need to recompile is acceptable.
 Security Impact
 ===============
 
-As the SOME/IP gateway will open direct communication channels on the SOME/IP channels, the SOME/IP implementation shall comply with standard security requirements.
+There are multiple protocols targeting secure communication. In general a holistic security concept for a vehicle will not apply all together.
+
+.. figure:: assets/some_ip_gateway_sec_protocols.drawio.svg
+   :align: center
+   :name: some_ip_gateway_sec_protocols_
+
+   Secure communication protocols
+
+
+.. note::
+   Access Control List (ACL) is not a security protocol, but a mechanism to restrict access to the SOME/IP Gateway services and tylically allocated within the stateful packet inspection firewall.
+
+Scope
+-----
+
+As the SOME/IP gateway will open direct communication channels via SOME/IP, where the SOME/IP implementation shall comply with standard security requirements.
+
+Since SOME/IP is a protocol relies on the security of the underlying transport layer, the SOME/IP gateway makes use of the security features relevant for it. This includes:
+
+- VLAN (= Virtual Local Area Network): A virtual interface that separates ethernet network packets identified by a VLAN ID
+- MACsec: Provides L2 data Integrity, Authenticity and optionally Confidentiality for point-to-point communication.
+- IPsec: A network layer protocol suite that secures network connections by encrypting and/or authenticating IP packets.
+- TLS (= Transport Layer Security): Authentication, integrity, confidentiality of TCP channels -> Protection for one to one communication.
+- DTLS (= Datagram Transport Layer Security): Authentication, integrity, confidentiality of UDP packets -> Protection for multicast communication.
+- ACL (= Access Control List): A filter mechanism to ensure that only allowed SOME/IP communication can take place.
+
+Features included `Feature Request for Security & Crypto <https://github.com/eclipse-score/score/issues/905>`_ e.g cryptographic algorithms, symmetric-, asymmetric encryption, Signature functionality, Certificate management, certificate management, entropy generation, data integrity, key management, are out of scope.
+
+
+Access Control List
+-------------------
+
+An access control mechanism is part of a firewall solution, which states that only the traffic defined in the security policy is allowed onto the network and all other traffic must be silently dropped.
+Access Control acts on OSI Layer 5-7. It shall fulfill following:
+
+- Whitelisting of SOME/IP services and methods based on IP addresses and therefore IP address authenticity.
+- A static list which could be updated via OTA (= Over-The-Air) updates.
+- Versioning
+- ACL shall be able to be switched on/off to allow bypassing in an secured environment e.g. engineering mode or repair shop.
+- ACL drop actions shall be logged persistently via a DTC (= Diagnostic Trouble Code) including needed environment data to clearly understand the context of the drop, including the sender, timestamp, Service ID and Instance ID.
+- To avoid code injection attacks, into services of the system, only authenticated and authorized communication partners are allowed to write or delete entries into the **Service Registry**.
+
+.. note::
+  - Checking SOME/IP-SD messages with the ACL is optional because no functional data is transported.
+  - SOME/IP-SD messages are not protected as per AUTSAR Adaptive specification.
+
+
+.. uml::
+   :name: doc__acl_activity_diagram
+   :scale: 80
+   :align: center
+   :caption: Simplified Access Control Activity Diagram
+
+   !include assets/puml-theme-score.puml
+
+   start
+
+   :Ingress SOME/IP;
+   :ACL Check;
+
+   if (Packet matches ACL entry?) then (Yes)
+      :Process Packet;
+   else (No)
+      :Log Event;
+      if (ACL is active?) then (Yes)
+         :Drop Packet;
+      else (No)
+         :Process Packet;
+      endif
+   endif
+
+   stop
+
+
+E2E and CRC (Informal Notes)
+----------------------------
+
+There are several E2E (= End-to-End) profiles, which utilize various CRC routines as part of AUTOSAR E2E Protocol Specification:
+
+- CRC8 (SAEJ1850)
+- CRC8H2F (0x2F polynomial)
+- CRC16 (also known as CCITT-FALSE 16-bit CRC)
+- CRC32 (also known as IEEE 802.3 Ethernet 32-bit CRC)
+- CRC32P4 (0xF4ACFB13 polynomial)
+- CRC64 (CRC-64-ECMA)
+- CRC32_J1939 (0x6938392D polynomial) (used by Profile 76).
+
+These routines can be implemented using different calculation methods:
+
+- Table based calculation for faster execution, but requiring a larger code size due to ROM tables.
+- Runtime calculation for smaller code size (no ROM table), but resulting in slower execution.
+- Hardware supported CRC calculation (device-specific) for fast execution and less CPU time.
+
+The E2E Library itself does not provide CRC routine implementations, instead, it calls the CRC routines from a dedicated CRC library.
+It is also a requirement that the CRC used in an E2E profile must be different from the CRC used by the underlying physical communication protocol.
+
+All E2E profiles can be used in combination with SOME/IP, although specific profiles may have limitations regarding maximum data length or being restricted to fixed-length messages.
+
+For E2E protection with SOME/IP, the CRC is calculated over specific parts of the serialized SOME/IP message:
+
+- For profiles 1, 2, 4, 5, 6, 7, 11, and 22, which are typically used for signal-based or periodic event-based communication, the E2E CRC should be calculated over the following elements of the serialized SOME/IP message:
+
+  - Request ID (Client ID / Session ID)
+  - Protocol Version
+  - Interface Version
+  - Message Type
+  -  Return Code
+  - Payload
+
+- For profiles 4m, 7m, 8m, and 44m, which are designed for method-based (client-server) communication, the E2E CRC shall be calculated over specific parts of the serialized SOME/IP message. These method-specific profiles incorporate additional fields like Message Type and Message Result within their E2E headers to distinguish between request and response messages and their outcomes.
+
+The E2E communication protection process involves the sender adding control fields, including the CRC, to the transmitted data, and the receiver then evaluating these fields upon reception.
+The middleware, is responsible for determining parameters like DataID, Message Type, Message Result, and SourceID from the exchanged information and then invoking the E2E functions.
+The CRC is calculated over the entire E2E header (excluding the CRC bytes themselves) and the user data.
+For some profiles (e.g., Profile 5, 6, 22), the Data ID is included as an extension at the end of the user data for CRC calculation, even if it is not explicitly transmitted.
+
+
+References
+
+- `AUTOSAR_FO_PRS_E2EProtocol <https://www.autosar.org/fileadmin/standards/R24-11/FO/AUTOSAR_FO_PRS_E2EProtocol.pdf>`_
+- `AUTOSAR_FO_RS_E2E <https://www.autosar.org/fileadmin/standards/R24-11/FO/AUTOSAR_FO_RS_E2E.pdf>`_
+
+SecOC (Informal Notes)
+----------------------
+
+- The SecOC protocol provides a mechanism to verify the authenticity and integrity but lacks of confidentiality.
+- SecOC (= Secured Onboard Communication) does not offer encryption support by design.
+- In contrast to SecOC, TLS can protect all payload of an AUTOSAR PDU including the AUTOSAR PDU header used which overlaps with the SOME/IP message header.
+- In case of SOME/IP protocol, the SOME/IP message id can not be protected by SecOC, because it is stripped before SecO is invoked.
+
 
 Safety Impact
 =============

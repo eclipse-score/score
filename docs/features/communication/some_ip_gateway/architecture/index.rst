@@ -37,7 +37,7 @@ that might be independent of the rest of the gateway. But buffering / queuing of
 should be mostly freely programmable by integrators using the SOME/IP gateway.
 
 
-.. figure:: some_ip_gateway_architecture.drawio.svg
+.. figure:: ../assets/some_ip_gateway_architecture.drawio.svg
    :align: center
    :name: _some_ip_gateway_architecture
 
@@ -50,7 +50,7 @@ separate this QM component from the otherwise ASIL-B compliant components. This 
 which again will require dedicated inter-process-communication between the SOME/IP-stack and the rest of the gateway.
 It is preferred to avoid such additional IPC.
 
-.. figure:: some_ip_gateway_details.drawio.svg
+.. figure:: ../assets/some_ip_gateway_details.drawio.svg
    :align: center
    :name: _some_ip_gateway_details
 
