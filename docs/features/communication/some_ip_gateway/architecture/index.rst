@@ -24,6 +24,8 @@ SOME/IP Gateway Architecture
 .. toctree::
    :titlesonly:
 
+Context View
+============
 SOME/IP Gateway on one side is a regular participant in IPC and uses the according mechanisms to publish
 data or to subscribe to data. As such it will need to know and understand the data types that are used in
 the IPC network.
@@ -43,7 +45,8 @@ should be mostly freely programmable by integrators using the SOME/IP gateway.
 
    General overview of SOME/IP Gateway
 
-
+Structural View
+===============
 SOME/IP stacks as supplied by AUTOSAR vendors mostly are available as QM only.
 In the case that SOME/IP implementations are not developed under ASIL-B constraints, adequate measures need to be taken to
 separate this QM component from the otherwise ASIL-B compliant components. This may be achieved through separate processes,
@@ -55,3 +58,78 @@ It is preferred to avoid such additional IPC.
    :name: _some_ip_gateway_details
 
    Detailed components view of SOME/IP Gateway
+
+E2E Considerations
+==================
+To cope with SOME/IP stack just beeing QM, we need to prepare for end-to-end protection. The goal shall be to
+do the E2E protection/check **as centrally as possible** in the gateway. Unfortunately, the centralized end-to-end
+check cannot be done for all relevant E2E properties. The following table proposes where the corresponding E2E properties shall 
+checked.
+
+.. list-table:: E2E properties
+   :widths: 20 50 5 5
+   :header-rows: 1
+
+   * - Protection Property
+     - Purpose
+     - Gateway
+     - IPC Client
+   * - CRC
+     - Detects data corruption in the payload and metadata.
+     - x
+     - 
+   * - Counter
+     - Detects message loss, duplication, or reordering.
+     - x
+     - x
+   * - Alive Counter
+     - Detects if the sender is still active or stuck/frozen
+     - x
+     - x
+   * - Data ID
+     - Identifies the data format version to prevent misinterpretation.
+     - 
+     - x
+   * - Timeout
+     - Detects if no message is received within a defined time window.
+     - 
+     - x
+
+E2E Design and Interface Considerations
+---------------------------------------
+As mentioned above, not all E2E checks can be kept hidden within the gateway. For some problems it is up to the application to decide
+whether it is still valuable to access and process the data. This is in particular true for duplication or re-odering issues.
+Therefore, it is required to pass a **tupel** consisting of the **payload data** as well as **supplementary E2E metadata and error information**
+to the IPC clients to enable the client to individually judge on particular E2E issues.
+
+* The API design needs to put the payload information as well as the additional E2E metadata as close as possible together to easily enable and motivate clients to consequently check for potential errors.
+* Additional metadata and error information needs to be incorporated into regular mw::com user interface
+* Error related interface design needs to be highly optimezed for the "good case" to have an optimized support for the common IPC case
+* AoU's need to be provided to force the user to check for the (E2E-) result
+* Additional E2E metadata to be handed over to the clients:
+
+  * Counter, slightly different interpretation depending on profile, n/a in case the profile doesn't support it
+  * Data ID, n/a in case the profile does not support it or if the Data ID is not explicitely transmitted like in profile 22
+  * Profile identification, required to properly interpret E2E attributes like "Counter". (Could be either an "Alive Counter" or a "Sequence Counter" depending on the profile)
+  * Detailed, profile specific error code (enum)
+
+* Proposed Error Enumeration
+
+  * No E2E error
+  * CRC Error
+  * Sequence error (further subqualification in loss, duplication, reordering is up to the client based on the counter)
+
+.. note::
+   The proposed error enumeration is an abstraction. Deriving detailed errors
+   based on the E2E metadata is task of the client.
+   For reference, this is the error enumeration of the Autosar specification (R24-11):
+
+   * OK
+   * ERROR
+   * OKSOMELOST
+   * REPEATED
+   * WRONGSEQUENCE
+   * NONEWDATA
+   * SYNC
+   * INITIAL
+
