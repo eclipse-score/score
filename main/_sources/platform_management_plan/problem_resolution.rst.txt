@@ -16,6 +16,7 @@
    :id: doc__platform_problem_resolution_plan
    :status: draft
    :safety: ASIL_B
+   :security: YES
    :tags: platform_management
    :realizes: PROCESS_wp__prm_plan
 
@@ -66,15 +67,19 @@ used to create a problem report including required attributes as defined in the
 :need:`Problem Process Requirements <PROCESS_gd_req__problem__attr_uid>`.
 Therefore the Problem Template :need:`PROCESS_gd_temp__problem__template` shall be used.
 
+.. note::
+  The template is automatically included in the ISSUE from type **BUG** by the creation.
+
 .. figure:: _assets/score_problem_resolution_overview.drawio.svg
   :width: 100%
   :align: center
   :alt: Problem Resolution Overview
 
+The content below must be updated after v1.1.0 of Process_Description is released.
 
 Problem Resolution Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-:need:`Problem Process Requirements <PROCESS_gd_req__problem__attr_uid>` are implemented as follows:
+The Problem Problem Resolution Process Requirements are implemented as follows:
 
 :need:`[[title]] <PROCESS_gd_req__problem__attr_uid>` is identical to the ISSUE number.
 
@@ -140,23 +145,6 @@ ISSUE using the Problem Template :need:`PROCESS_gd_temp__problem__template`. For
      - ``critical``
    * - blocker
      - ``blocker``
-
-:need:`[[title]] <PROCESS_gd_req__problem__attr_category>` is defined in the description part of the
-ISSUE using the Problem Template :need:`PROCESS_gd_temp__problem__template`. For S-CORE labels are defined as:
-
-.. list-table:: Problem Categories
-   :header-rows: 1
-   :widths: 15,85,15
-
-   * - Category
-     - Description
-     - Infrastructure
-   * - User
-     - Created by any user or :need:`Contributor <PROCESS_rl__contributor>` to report potential identified problems
-     - ISSUE with type BUG
-   * - Bug
-     - Created by :need:`Contributor <PROCESS_rl__contributor>` to report problems found during verification
-     - ISSUE with type BUG and with label ``<test level>``
 
 
 :need:`[[title]] <PROCESS_gd_req__problem__attr_safety_affected>`,
