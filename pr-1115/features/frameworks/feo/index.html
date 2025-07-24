@@ -175,7 +175,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../modules/index.html">
-    Module
+    Modules
   </a>
 </li>
 
@@ -356,7 +356,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../modules/index.html">
-    Module
+    Modules
   </a>
 </li>
 
@@ -470,11 +470,11 @@
 <li class="toctree-l3"><a class="reference internal" href="architecture/feature_architecture.html">Feature Architecture: FEO</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/index.html">Modules Documentation</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../infrastructure/index.html">Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../integration/index.html">Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../orchestration/index.html">Orchestration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../persistency/index.html">Persistency</a></li>
 </ul>
 </div>
@@ -541,7 +541,7 @@
                   
   <section id="fixed-execution-order-framework-feo">
 <h1>Fixed execution order framework (FEO)<a class="headerlink" href="#fixed-execution-order-framework-feo" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-04b6697a">
+<div class="need_container docutils container" id="SNCB-1db8827d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__feo">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -984,6 +984,105 @@ timing of activities, supporting safety-critical applications
 in the automotive domain. In this domain the footprint of the framework is curcial especially
 w.r.t impact of computation load and latency.</p>
 </section>
+<section id="error-handling-for-s-core-v0-5">
+<h2>Error Handling for S-CORE v0.5<a class="headerlink" href="#error-handling-for-s-core-v0-5" title="Link to this heading">#</a></h2>
+<p>Possible error cases during the different FEO life cycle states shall be handled as follows. For now, the
+descriptions are focussed on the intended implementation for S-CORE v0.5. Potential adaptations for
+S-CORE v1.0 have been noted down, but shall be considered as drafts only.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Independent of state</dt><dd><ul>
+<li><p>If the primary process dies, the external lifecycle management shall kill all dependent processes.</p></li>
+<li><p>If a secondary process dies, the lifecycle management shall send a termination signal to the primary process.
+The primary process shall call the shutdown function of all remaining activities in arbitrary sequence and
+terminate itself.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>State: Lifecycle Manager creates all processes (primary &amp; secondaries)</dt><dd><ul>
+<li><dl class="simple">
+<dt>If not all secondaries connect to the primary in time,</dt><dd><ul>
+<li><p>S-CORE v0.5: the primary will terminate itself. The startup functions shall not be triggered.</p></li>
+<li><p>S-CORE v1.0: the primary will not terminate, but report an error to the lifecycle/health management.
+The startup functions shall not be triggered.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>State: Lifecycle Manager has created all processes (primary &amp; secondaries), all secondaries have connected to the primary</dt><dd><ul>
+<li><dl class="simple">
+<dt>If an error occurs during the execution of a startup function,</dt><dd><ul>
+<li><p>S-CORE v0.5: the primary process shall abort calling startup functions
+and terminate itself. For all of the activities whose startup functions have already been called successfully,
+the corresponding shutdown functions shall be executed in arbitrary sequence.</p></li>
+<li><p>S-CORE v1.0: in addition, the primary process shall report the issue to health management.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>During initialization (i.e. in the startup function of an activity), activities shall check for resource allocation
+and report an error to the executor in case of failure.</p></li>
+<li><dl class="simple">
+<dt>If a timeout occurs during startup, stepping or shutdown of an activity,</dt><dd><ul>
+<li><p>S-CORE v0.5: the primary process shall shutdown all successfully started activities in arbitrary sequence
+and terminate itself.</p></li>
+<li><p>S-CORE v1.0: In addition, the primary process shall report the issue to health management.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>If not all activities reach their initialized state within a certain period of time (startup timeout),</dt><dd><ul>
+<li><p>S-CORE v0.5: the primary process shall shutdown all successfully
+started activities in arbitrary sequence and terminate itself.</p></li>
+<li><p>S-CORE v1.0: In addition, the primary process shall report the issue to health management.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>State: Lifecycle Manager has created all processes  (primary &amp; secondaries), all secondaries have connected to the primary, all activities have been started up successfully</dt><dd><ul>
+<li><dl class="simple">
+<dt>If an activity fails in the step function,</dt><dd><ul>
+<li><p>S-CORE v0.5: the primary process shall call shutdown for all activities in arbitrary sequence and terminate itself.</p></li>
+<li><p>S-CORE v1.0: In addition, a logical waypoint error shall be reported to health management.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>If activities do not meet their intermediate (time/memory/cpu-) budgets the issue shall be detected and handled
+outside of FEO. (Resource supervision and quotas will be defined in a separate feature request, if needed.)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>State: Shutdown of activities</dt><dd><ul>
+<li><dl class="simple">
+<dt>If an activity fails in the shutdown function,</dt><dd><ul>
+<li><p>S-CORE v0.5: the primary process shall shutdown all remaining activities and terminate itself.</p></li>
+<li><p>S-CORE v1.0: In addition, a logical waypoint error shall be reported to health management.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
 </section>
 
 
@@ -1053,6 +1152,7 @@ w.r.t impact of computation load and latency.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reprocessing">Reprocessing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tracing">Tracing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performance">Performance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-handling-for-s-core-v0-5">Error Handling for S-CORE v0.5</a></li>
 </ul>
   </nav></div>
 

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Module Release Guide &#8212; S-CORE 0.1 documentation</title>
+    <title>Module Release Manual &#8212; S-CORE 0.1 documentation</title>
   
   
   
@@ -175,7 +175,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../modules/index.html">
-    Module
+    Modules
   </a>
 </li>
 
@@ -356,7 +356,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../modules/index.html">
-    Module
+    Modules
   </a>
 </li>
 
@@ -466,7 +466,7 @@
 <li class="toctree-l2"><a class="reference internal" href="folder.html">Folder Structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feature_flags.html">Feature Flags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contribution_attribution.html">Actions to Ensure Proper Contribution Attribution in Eclipse S-CORE</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Module Release Guide</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Module Release Manual</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../documentation/index.html">Documentation</a></li>
@@ -518,7 +518,7 @@
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">General</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Module Release Guide</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Module Release Manual</span></li>
   </ul>
 </nav>
 </div>
@@ -535,12 +535,12 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="module-release-guide">
-<span id="id1"></span><h1>Module Release Guide<a class="headerlink" href="#module-release-guide" title="Link to this heading">#</a></h1>
+  <section id="module-release-manual">
+<span id="id1"></span><h1>Module Release Manual<a class="headerlink" href="#module-release-manual" title="Link to this heading">#</a></h1>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
 <p>In order to use different Modules via the Bazel ecosystem, the Modules have to be released and registered in the S-CORE Bazel Registry.
-This short guide will show you the steps necessary to create a release and make it available for other Bazel Modules.</p>
+This short manual will show you the steps necessary to create a release and make it available for other Bazel Modules.</p>
 </section>
 <section id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
@@ -551,7 +551,7 @@ This short guide will show you the steps necessary to create a release and make 
 <li><p>All necessary changes merged into the main branch</p></li>
 <li><p>Understanding of semantic versioning principles</p></li>
 </ul>
-<p>For further and more detailed information take a look at the <a class="reference external" href="https://eclipse-score.github.io/score/pr-1445/platform_management_plan/release_management.html">Release Management Process</a></p>
+<p>For further and more detailed information take a look at the <a class="reference internal" href="../../platform_management_plan/release_management.html#doc__platform_release_management_plan" title="doc__platform_release_management_plan"><em class="xref need">Release Management Plan (doc__platform_release_management_plan)</em></a>.</p>
 </section>
 <section id="module-release-process">
 <h2>Module Release Process<a class="headerlink" href="#module-release-process" title="Link to this heading">#</a></h2>
@@ -579,13 +579,13 @@ This short guide will show you the steps necessary to create a release and make 
 <li><p><strong>MINOR</strong>: Incremented for backward-compatible functionality additions.</p></li>
 <li><p><strong>PATCH</strong>: Incremented for backward-compatible bug fixes.</p></li>
 </ul>
-<p>For a more detailed description of when to update which version look at the process <a class="reference external" href="https://eclipse-score.github.io/score/pr-1445/platform_management_plan/release_management.html#identification">here</a></p>
+<p>For a more detailed description of when to update which version look at the “Identification” section of <a class="reference internal" href="../../platform_management_plan/release_management.html#doc__platform_release_management_plan" title="doc__platform_release_management_plan"><em class="xref need">Release Management Plan (doc__platform_release_management_plan)</em></a></p>
 <p>If you have a major version change that <strong>breaks</strong> backwards compatibility, then make sure to also increase the
 compatibility level inside the MODULE.bazel file.</p>
 <p>The compatibility level should be the lowest supported major version that this new version is still compatible with.</p>
 </section>
 <section id="create-github-release">
-<h3>3. Create GitHub Release<a class="headerlink" href="#create-github-release" title="Link to this heading">#</a></h3>
+<h3>1. Create GitHub Release<a class="headerlink" href="#create-github-release" title="Link to this heading">#</a></h3>
 <blockquote>
 <div><p>Create a new release:</p>
 </div></blockquote>
@@ -634,6 +634,8 @@ compatibility level inside the MODULE.bazel file.</p>
 <p>This then will give you something similar to this:</p>
 <a class="reference internal image-reference" href="../../_images/Generated_release_notes.png"><img alt="Generated Release Notes" src="../../_images/Generated_release_notes.png" style="width: 400px;" />
 </a>
+<p>For an official release (note) you need to consider the <a class="reference internal" href="../../platform_management_plan/release_management.html#doc__platform_release_management_plan" title="doc__platform_release_management_plan"><em class="xref need">Release Management Plan (doc__platform_release_management_plan)</em></a>
+and follow the process as in <a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/release_management/guidance/release_guideline.html#gd_guidl__rel_management">PROCESS_gd_guidl__rel_management</a>.</p>
 </section>
 <section id="set-pre-release-status-if-applicable">
 <h3>6. Set Pre-release Status (if applicable)<a class="headerlink" href="#set-pre-release-status-if-applicable" title="Link to this heading">#</a></h3>
@@ -813,7 +815,7 @@ bazel<span class="w"> </span>run<span class="w"> </span>//tools:verify_modules
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-release-process">Module Release Process</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-main-branch-status">1. Verify Main Branch Status</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update-module-bazel-version">2. Update MODULE.bazel Version</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-github-release">3. Create GitHub Release</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-github-release">1. Create GitHub Release</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-release-notes">5. Write Release Notes</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-pre-release-status-if-applicable">6. Set Pre-release Status (if applicable)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#register-in-bazel-central-registry">7. Register in Bazel Central Registry</a><ul class="nav section-nav flex-column">
