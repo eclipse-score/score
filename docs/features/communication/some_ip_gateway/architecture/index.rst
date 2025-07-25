@@ -133,3 +133,49 @@ to the IPC clients to enable the client to individually judge on particular E2E 
    * SYNC
    * INITIAL
 
+E2E State Machine Considerations
+--------------------------------
+The E2E (End-to-End) state machine as defined within AUTOSAR E2E protocol provides a summarized result
+about the overall health and state of a communication channel. Unlike individual E2E Profile Check() functions,
+which assess data validity for a single communication cycle, the state machine aggregates results from multiple Check()
+function invocations over a period. This allows it to determine a more holistic and debounced status of the communication.
+
+Purpose of the E2E State Machine:
+The primary purpose of the E2E state machine is to transform instantaneous "per-cycle" check results into a stable,
+long-term communication channel status. This aggregated status is then provided to the consuming application,
+enabling it to make informed decisions about whether the received data can be trusted and used for safety-related functions.
+
+As mentioned above, the E2E statemachine is associated to one communication channel which is in turn associated to exactly one
+individual IPC client. Therefore it is an obvious consequence, that the individiual state machine handling and state machine
+configuration is responsibility of the client and not a central responsibility of the gateway.
+The diagram below outlines this distribution of responsibilties.
+
+*Diagram: E2E state machine responsibility associated to IPC client*
+
+.. figure:: e2e_state_machine_on_client_side.drawio.svg
+   :align: center
+   :name: _e2e_state_machine_on_client_side
+
+   E2E state machine responsibility associated to IPC client
+
+**Considered Alternative**
+
+If we allocate the statemachine responsibility to the gateway the distribution of resposnibilities would look like in the following diagram
+
+*Diagram: E2E state machine responsibility associated to the gateway*
+
+.. figure:: e2e_state_machine_in_gateway.drawio.svg
+   :align: center
+   :name: _e2e_state_machine_in_gateway
+
+   E2E state machine responsibility associated to the gateway
+
+Due to pub/sub nature of mw::com, clients listening on the same topic can not be separately addressed. Therefore, **the state machine results
+can not be selectively distributed according to the particular communication channel they belong to**.
+
+**=> Alternative dismissed**
+
+.. note::
+   The End-to-End consideration in this chapter do not yet consider methods.
+
+
