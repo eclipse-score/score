@@ -32,10 +32,9 @@ The following shows the folder structure of the platform repository (ordered alp
                requirements/           -> Feature requirements [:need:`PROCESS_wp__requirements__feat`]
                safety_analysis/        -> Safety analysis on feature level [:need:`PROCESS_wp__feature_safety_analysis`], [:need:`PROCESS_wp__feature_dfa`]
                safety_planning/        -> Feature specific safety workproducts planning
-               verification/           -> Feature verification, consisting of
-                  integration_tests/   -> Integration tests [:need:`PROCESS_wp__verification__feat_int_test`]
+               verification/           -> Feature verification, consisting of Architecture review [:need:`PROCESS_wp__sw_arch_verification`],
+                  integration_tests/   -> Feature Integration tests [:need:`PROCESS_wp__verification__feat_int_test`]
 
-            toolchain/                 -> Definition of toolchain
         glossary/                      -> Glossary of abbreviations used in the platform context
         introduction/                  -> Background, scope and high-level architecture of the platform features
         manuals/                       -> User and integration manual(s)
@@ -75,13 +74,12 @@ The modules and components shall follow the folder structure which was presented
                                              safety manual [:need:`PROCESS_wp__requirements__comp_aou`],
                                              [:need:`PROCESS_wp__module_safety_manual`].
          release/                      -> Module release note [:need:`PROCESS_wp__module_sw_release_note`],
-                                             safety assessment [:need:`PROCESS_wp__audit_report`]
-         safety_plan/                  -> Module safety plan [:need:`PROCESS_wp__module_safety_plan`],
-                                             module safety case [:need:`PROCESS_wp__module_safety_package`],
-                                             conformance reviews [:need:`PROCESS_wp__fdr_reports`]
-         verification/                 -> Module verification report
+         safety_mgt/                   -> Module safety plan [:need:`PROCESS_wp__module_safety_plan`],
+                                             module safety package [:need:`PROCESS_wp__module_safety_package`],
+                                             formal documents reviews [:need:`PROCESS_wp__fdr_reports`]
+         verification_report/          -> Module verification report
                                              components verifications [:need:`PROCESS_wp__verification__module_ver_report`],
-                                             safety analysis conformance reviews [:need:`PROCESS_wp__fdr_reports`]
+                                             safety analysis formal reviews [:need:`PROCESS_wp__fdr_reports`]
 
       <component_name>/                -> Components of the module.
                                              Folder containing all artifacts corresponding to one component.
@@ -97,11 +95,9 @@ The modules and components shall follow the folder structure which was presented
             architecture/              -> Component architecture (only if lower level components exist)
                                              [:need:`PROCESS_wp__component_arch`].
             requirements/              -> Component requirements [:need:`PROCESS_wp__requirements__comp`]
-            safety_analysis/           -> Safety analysis on component level
+            safety_analysis/           -> Safety analysis on component level (only if component architecture exists)
                                              [:need:`PROCESS_wp__sw_component_safety_analysis`], [:need:`PROCESS_wp__sw_component_dfa`]
-            verification/              -> Architecture review [:need:`PROCESS_wp__sw_arch_verification`],
-                                             code inspection [:need:`PROCESS_wp__sw_implementation_inspection`]
+            verification/              -> Component verification, consisting of Architecture review [:need:`PROCESS_wp__sw_arch_verification`],
+                                          code inspection [:need:`PROCESS_wp__sw_implementation_inspection`],
+               integration_tests/      -> Component integration tests [:need:`PROCESS_wp__verification__comp_int_test`]
             <lower_level_comp>/        -> Lower level component following <component_name> folder structure
-
-         tests/                        -> Feature level tests, consisting of
-                                             integration tests [:need:`PROCESS_wp__verification__comp_int_test`]
