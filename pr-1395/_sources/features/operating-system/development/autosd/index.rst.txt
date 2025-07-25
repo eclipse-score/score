@@ -17,7 +17,7 @@ AutoSD
 
 Abstract
 --------
-AutoSD is the upstream binary idistribution that serves as the public, in-development preview and functional precursor
+AutoSD is the upstream binary distribution that serves as the public, in-development preview and functional precursor
 of the Red Hat In-Vehicle Operating System (OS).
 
 AutoSD is downstream of CentOS Stream, so it retains most of the CentOS Stream code with a few divergences,
