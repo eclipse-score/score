@@ -545,7 +545,7 @@ the Red Hat In-Vehicle Operating System (OS).</p>
 <p>This section is split into sub-sections to highlight AutoSD’s main features.</p>
 <section id="declarative-workloads">
 <h3>Declarative Workloads<a class="headerlink" href="#declarative-workloads" title="Link to this heading">#</a></h3>
-<p>AutoSD uses Quadlet, a tool that extends Systemd unit files to define linux container workloads
+<p>AutoSD uses Quadlet, podman-systemd.unit, a tool that extends Systemd unit files to define linux container workloads
 managed by podman and orchestrated by Systemd.</p>
 <p>System level files can be deployed at /etc/containers/systemd.</p>
 <p>Quadlet parse those files when the OS is booting or when a “systemd daemon-reload” is triggered,

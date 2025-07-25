@@ -41,7 +41,7 @@ This section is split into sub-sections to highlight AutoSD's main features.
 Declarative Workloads
 ^^^^^^^^^^^^^^^^^^^^^^
 
-AutoSD uses Quadlet, a tool that extends Systemd unit files to define linux container workloads
+AutoSD uses Quadlet, podman-systemd.unit, a tool that extends Systemd unit files to define linux container workloads
 managed by podman and orchestrated by Systemd.
 
 System level files can be deployed at /etc/containers/systemd.
