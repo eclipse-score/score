@@ -125,6 +125,9 @@ As the SOME/IP gateway will open direct communication channels on the SOME/IP ch
 Safety Impact
 =============
 
+SOME/IP stack and underlying OS network stacks are typically QM only. Freedom from interference needs to be respected between the
+safty classified IPC component (mw::com) and the SOME/IP stack which is part of the gateway. The SOME/IP communication itself needs
+to be properly protected by E2E to maintain a safe communication via the grey SOME/IP channel.
 
 License Impact
 ==============
