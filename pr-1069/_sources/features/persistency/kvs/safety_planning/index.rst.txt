@@ -95,6 +95,7 @@ Feature Requirements Status
 ---------------------------
 
 .. needtable::
+   :filter: "persistency" in docname and "requirements" in docname and docname is not None
    :style: table
    :types: feat_req
    :tags: persistency
@@ -106,6 +107,7 @@ Feature AoU Status
 ------------------
 
 .. needtable::
+   :filter: "persistency" in docname and "requirements" in docname and docname is not None
    :style: table
    :types: aou_req
    :tags: persistency
@@ -117,10 +119,10 @@ Feature Architecture Status
 ---------------------------
 
 .. needtable::
+   :filter: "persistency" in docname and "requirements" in docname and docname is not None
    :style: table
    :types: feat_arc_sta; feat_arc_dyn
    :tags: persistency
    :columns: id;status
    :colwidths: 25,25
    :sort: title
-
