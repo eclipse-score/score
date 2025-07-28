@@ -190,7 +190,7 @@ The Context API will also allow updates to long-term user context.
 Model Context Protocol (MCP) Client/Server
 ------------------------------------------
 
-MCP [#s3]_ provides structured data to the LLM in a machine-readable format. For example:
+MCP [#s2]_ provides structured data to the LLM in a machine-readable format. For example:
 
 - ``vehicle.speed``: Current vehicle speed
 - ``nav.destination``: Active navigation goal
