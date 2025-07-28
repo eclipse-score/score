@@ -58,8 +58,13 @@ Release types are strongly associated with the release version numbering, which 
 "Identification" section below.
 
 S-CORE has two major kinds of releases: experimental and official. These correspond with the "feature flags"
-defined in :need:`doc__project_mgt_plan`. Experimental means that the development artefacts needed for
-the safety package work products may be incomplete and will be identified as "Pre-Release" versions.
+defined in :need:`doc__project_mgt_plan`.
+
+* **Experimental** means that the development artefacts needed for the safety package work products may be incomplete.
+  These releases are done during development phase to be able to sync between the module repositories.
+* **Official** means that the processes are fully executed to produce all work products and are documented
+  with a releae note as in :need:`PROCESS_gd_temp__rel__plat_rel_note` or :need:`PROCESS_gd_temp__rel__mod_rel_note`.
+  For an official release also consider `Eclipse Project Handbook - Releases <https://www.eclipse.org/projects/handbook/#release-releases>`_.
 
 
 Release Planning and Execution
@@ -79,6 +84,8 @@ With increasing maturity of the modules it is expected that this period can be r
 As defined in the process, the releases on module and platform level need to be coordinated.
 Major version updates denote API incompatibility, so the modules in a platform release are expected to have the same
 major version.
+
+For the release execution follow the steps described in :ref:`module_release_manual`.
 
 Identification
 ^^^^^^^^^^^^^^
