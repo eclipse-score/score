@@ -51,16 +51,6 @@ Launching Processes
     The :term:`Launch Manager` shall provide support for launching :term:`processes`
     in parallel.
 
-.. feat_req:: Conditional launching
-    :id: feat_req__lifecycle__waitfor_support
-    :reqtype: Functional
-    :security: NO
-    :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
-    :status: invalid
-
-    The :term:`Launch Manager` shall provide launching processes based on conditions.
-
 .. feat_req:: Control interface support
     :id: feat_req__lifecycle__custom_cond_support
     :reqtype: Functional
@@ -83,18 +73,6 @@ Launching Processes
 
     The :term:`Launch Manager` shall provide support to pass the output of one or
     multiple :term:`processes` as input arguments to another process.
-
-.. feat_req:: Conditionally launch of processes
-    :id: feat_req__lifecycle__cond_process_start
-    :reqtype: Functional
-    :security: NO
-    :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
-    :status: invalid
-
-    The :term:`Launch Manager` shall provide support to conditionally start a process
-    or process group based on the return value of a single or multiple :term:`processes`
-    executed before.
 
 .. feat_req:: Handling process args
     :id: feat_req__lifecycle__process_launch_args
@@ -140,29 +118,6 @@ Launching Processes
 
     The :term:`Launch Manager` shall provide support for launching a process with a
     given :term:`UID`/:term:`GID` (user name/Group Identifier).
-
-.. feat_req:: Condition timeout
-    :id: feat_req__lifecycle__total_wait_time_support
-    :reqtype: Functional
-    :security: NO
-    :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
-    :status: invalid
-
-    The :term:`Launch Manager` shall provide support for per condition configurable
-    total wait time for launch conditions to be satisfied.
-
-.. feat_req:: Conditional launch polling interval
-    :id: feat_req__lifecycle__polling_interval
-    :reqtype: Functional
-    :security: NO
-    :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
-    :status: invalid
-
-    The :term:`Launch Manager` shall provide support for per condition configurable
-    :term:`Polling Interval` for launch conditions to be checked.
-
 
 .. feat_req:: Process priority support
     :id: feat_req__lifecycle__launch_priority_support
@@ -333,6 +288,166 @@ Launching Processes
     The :term:`Launch Manager` shall provide support for launching a process to
     detach from parent.
 
+Conditional Launching
+---------------------
+
+.. feat_req:: Conditional launching
+    :id: feat_req__lifecycle__waitfor_support
+    :reqtype: Functional
+    :security: NO
+    :safety: ASIL_B
+    :satisfies: stkh_req__execution_model__processes
+    :status: invalid
+
+    The :term:`Launch Manager` shall provide launching processes based on conditions.
+
+.. feat_req:: Conditionally launch of processes
+    :id: feat_req__lifecycle__cond_process_start
+    :reqtype: Functional
+    :security: NO
+    :safety: ASIL_B
+    :satisfies: stkh_req__execution_model__processes
+    :status: invalid
+
+    The :term:`Launch Manager` shall provide support to conditionally start a process
+    or process group based on the return value of a single or multiple :term:`processes`
+    executed before.
+
+.. feat_req:: Condition timeout
+    :id: feat_req__lifecycle__total_wait_time_support
+    :reqtype: Functional
+    :security: NO
+    :safety: ASIL_B
+    :satisfies: stkh_req__execution_model__processes
+    :status: invalid
+
+    The :term:`Launch Manager` shall provide support for per condition configurable
+    total wait time for launch conditions to be satisfied.
+
+.. feat_req:: Conditional launch polling interval
+    :id: feat_req__lifecycle__polling_interval
+    :reqtype: Functional
+    :security: NO
+    :safety: ASIL_B
+    :satisfies: stkh_req__execution_model__processes
+    :status: invalid
+
+    The :term:`Launch Manager` shall provide support for per condition configurable
+    :term:`Polling Interval` for launch conditions to be checked.
+
+.. feat_req:: Pre-start validation
+    :id: feat_req__lifecycle__validate_conditions
+    :reqtype: Functional
+    :security: NO
+    :safety: ASIL_B
+    :satisfies: stkh_req__execution_model__processes
+    :status: invalid
+
+    The Launch Manager shall be able to validate the pre-start conditions of the executable using the conditions.
+
+.. feat_req:: post-start validation
+    :id: feat_req__lifecycle__validation_conditions
+    :reqtype: Functional
+    :security: NO
+    :safety: ASIL_B
+    :satisfies: stkh_req__execution_model__processes
+    :status: invalid
+
+    The Launch Manager shall be able to validate the start of the executable using the conditions.
+
+.. feat_req:: Launched Process status
+    :id: feat_req__lifecycle__launcher_status_storage
+    :reqtype: Functional
+    :security: NO
+    :safety: ASIL_B
+    :satisfies: stkh_req__execution_model__processes
+    :status: invalid
+
+    The Launch Manager shall provide a way to store the status of the launched process.
+
+.. feat_req:: Condition check based on status
+    :id: feat_req__lifecycle__condition_check_method
+    :reqtype: Functional
+    :security: NO
+    :safety: ASIL_B
+    :satisfies: stkh_req__execution_model__processes
+    :status: invalid
+
+    The Launch Manager shall provide a method for condition check based on process state.
+
+.. feat_req:: Configuration of action based on condition evaluation
+    :id: feat_req__lifecycle__config_actions_cond
+    :reqtype: Functional
+    :security: NO
+    :safety: ASIL_B
+    :satisfies: stkh_req__execution_model__processes
+    :status: invalid
+
+    The Launch Manager shall provide a way to configure actions based on condition evaluation i.e. to be able to configure SUCCESS and FAILURE case.
+
+.. feat_req:: Condition check based on path
+    :id: feat_req__lifecycle__path_condition_check
+    :reqtype: Functional
+    :security: NO
+    :safety: ASIL_B
+    :satisfies: stkh_req__execution_model__processes
+    :status: invalid
+
+    The Launch Manager shall provide a method for condition check for a path.
+
+.. feat_req:: Condition check based on ENV
+    :id: feat_req__lifecycle__env_variable_cond_check
+    :reqtype: Functional
+    :security: NO
+    :safety: ASIL_B
+    :satisfies: stkh_req__execution_model__processes
+    :status: invalid
+
+    The Launch Manager shall provide a method for condition check for environment variable.
+
+.. feat_req:: Condition check based on all dependency
+    :id: feat_req__lifecycle__dependency_check
+    :reqtype: Functional
+    :security: NO
+    :safety: ASIL_B
+    :satisfies: stkh_req__execution_model__processes
+    :status: invalid
+
+    The Launch Manager shall provide a method to check if all dependencies have been executed.
+
+.. feat_req:: Condition check based on at least one dependency
+    :id: feat_req__lifecycle__check_dependency_exec
+    :reqtype: Functional
+    :security: NO
+    :safety: ASIL_B
+    :satisfies: stkh_req__execution_model__processes
+    :status: invalid
+
+    The Launch Manager shall provide a method to check if at least one dependency has been executed.
+
+.. feat_req:: Condition check for each SWC its dependencies
+    :id: feat_req__lifecycle__define_swc_dependencies
+    :reqtype: Functional
+    :security: NO
+    :safety: ASIL_B
+    :satisfies: stkh_req__execution_model__processes
+    :status: invalid
+
+    The Launch Manager shall provide a way to define for each :term:`SWC` (Software Components), its dependencies.
+
+.. feat_req:: Condition check for each SWC its stop sequence
+    :id: feat_req__lifecycle__stop_sequence
+    :reqtype: Functional
+    :security: NO
+    :safety: ASIL_B
+    :satisfies: stkh_req__execution_model__processes
+    :status: invalid
+
+    The Launch Manager shall provide a way to define the stop sequence for each :term:`SWC` (Software Components).
+
+Process Adoption and Management
+-------------------------------
+
 .. feat_req:: Process adoption
     :id: feat_req__lifecycle__running_processes
     :reqtype: Functional
@@ -364,28 +479,6 @@ Launching Processes
     :status: invalid
 
     The Launch Manager shall permit an executable to be launched more than once.
-
-
-.. feat_req:: Pre-start validation
-    :id: feat_req__lifecycle__validate_conditions
-    :reqtype: Functional
-    :security: NO
-    :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
-    :status: invalid
-
-    The Launch Manager shall be able to validate the pre-start conditions of the executable using the conditions.
-
-
-.. feat_req:: post-start validation
-    :id: feat_req__lifecycle__validation_conditions
-    :reqtype: Functional
-    :security: NO
-    :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
-    :status: invalid
-
-    The Launch Manager shall be able to validate the start of the executable using the conditions.
 
 
 .. feat_req:: Invalid dependency
@@ -442,7 +535,7 @@ Groups
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
-    The :term:`Launch Manager` shall provide support for run targets to define
+    The :term:`Launch Manager` shall provide support for :term:`run targets <Run target>` to define
     collections of :term:`processes` that can be launched together.
 
 .. feat_req:: Launching run target
@@ -453,7 +546,7 @@ Groups
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
-    The :term:`Launch Manager` shall be able to start a named run target.
+    The :term:`Launch Manager` shall be able to start a named :term:`Run target`.
 
 .. feat_req:: Switch between run targets
     :id: feat_req__lifecycle__switch_run_targets
@@ -463,7 +556,7 @@ Groups
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
-    The :term:`Launch Manager` shall be able to switch between different run targets.
+    The :term:`Launch Manager` shall be able to switch between different :term:`run targets <Run target>`.
 
 .. feat_req:: Process state
     :id: feat_req__lifecycle__process_state_comm
@@ -622,14 +715,14 @@ Terminating Processes
     Note: status can be "started/running/degraded" - refer to documentation for details
 
 .. feat_req:: Request run target launch
-    :id: feat_req__lifecycle__request_run_target_launch
+    :id: feat_req__lifecycle__request_run_target_start
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
-    The :term:`Launch Manager` shall be able to start a named run target respecting the
+    The :term:`Launch Manager` shall be able to start a named :term:`Run target` respecting the
     dependencies when requested.
 
 
@@ -671,14 +764,14 @@ Monitoring, Notification and Recovery
     abnormally terminated :term:`processes`.
 
 .. feat_req:: Run target switch as recovery action
-    :id: feat_req__lifecycle__recover_run_target_switch
+    :id: feat_req__lifecycle__recov_run_target_switch
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
-    The :term:`Launch Manager` shall support switching to a different run target as
+    The :term:`Launch Manager` shall support switching to a different :term:`Run target` as
     recovery action in case a single process terminated abnormally or lost its
     :term:`Liveliness`.
 
@@ -964,105 +1057,3 @@ Configuration file
     :status: invalid
 
     The Launch Manager shall have a means to validate the configuration offline.
-
-
-Condition Check
----------------
-
-.. feat_req:: Launched Process status
-    :id: feat_req__lifecycle__launcher_status_storage
-    :reqtype: Functional
-    :security: NO
-    :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
-    :status: invalid
-
-    The Launch Manager shall provide a way to store the status of the launched process.
-
-
-.. feat_req:: Condition check based on status
-    :id: feat_req__lifecycle__condition_check_method
-    :reqtype: Functional
-    :security: NO
-    :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
-    :status: invalid
-
-    The Launch Manager shall provide a method for condition check based on process state.
-
-
-.. feat_req:: Configuration of action based on condition evaluation
-    :id: feat_req__lifecycle__config_actions_cond
-    :reqtype: Functional
-    :security: NO
-    :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
-    :status: invalid
-
-    The Launch Manager shall provide a way to configure actions based on condition evaluation i.e. to be able to configure SUCCESS and FAILURE case.
-
-
-.. feat_req:: Condition check based on path
-    :id: feat_req__lifecycle__path_condition_check
-    :reqtype: Functional
-    :security: NO
-    :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
-    :status: invalid
-
-    The Launch Manager shall provide a method for condition check for a path.
-
-
-.. feat_req:: Condition check based on ENV
-    :id: feat_req__lifecycle__env_variable_cond_check
-    :reqtype: Functional
-    :security: NO
-    :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
-    :status: invalid
-
-    The Launch Manager shall provide a method for condition check for environment variable.
-
-
-.. feat_req:: Condition check based on all dependency
-    :id: feat_req__lifecycle__dependency_check
-    :reqtype: Functional
-    :security: NO
-    :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
-    :status: invalid
-
-    The Launch Manager shall provide a method to check if all dependencies have been executed.
-
-
-.. feat_req:: Condition check based on at least one dependency
-    :id: feat_req__lifecycle__check_dependency_exec
-    :reqtype: Functional
-    :security: NO
-    :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
-    :status: invalid
-
-    The Launch Manager shall provide a method to check if at least one dependency has been executed.
-
-
-.. feat_req:: Condition check for each SWC its dependencies
-    :id: feat_req__lifecycle__define_swc_dependencies
-    :reqtype: Functional
-    :security: NO
-    :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
-    :status: invalid
-
-    The Launch Manager shall provide a way to define for each :term:`SWC` (Software Components), its dependencies.
-
-
-.. feat_req:: Condition check for each SWC its stop sequence
-    :id: feat_req__lifecycle__stop_sequence
-    :reqtype: Functional
-    :security: NO
-    :safety: ASIL_B
-    :satisfies: stkh_req__execution_model__processes
-    :status: invalid
-
-    The Launch Manager shall provide a way to define the stop sequence for each :term:`SWC` (Software Components).

@@ -471,7 +471,7 @@ Requirements
    :id: feat_req__logging__asil_support
    :reqtype: Non-Functional
    :security: NO
-   :safety: ASIL_D
+   :safety: ASIL_B
    :satisfies: stkh_req__functional_req__safe_comput
    :status: valid
 
