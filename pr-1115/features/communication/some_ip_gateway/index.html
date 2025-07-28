@@ -544,7 +544,7 @@
                   
   <section id="some-ip-gateway">
 <span id="some-ip-gateway-feature"></span><h1>SOME/IP-Gateway<a class="headerlink" href="#some-ip-gateway" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-58fb2e6f">
+<div class="need_container docutils container" id="SNCB-7f9b01dd">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__some_ip_gateway">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -667,6 +667,9 @@ Applications shall stay stable on API layer, need to recompile is acceptable.</p
 </section>
 <section id="safety-impact">
 <h2>Safety Impact<a class="headerlink" href="#safety-impact" title="Link to this heading">#</a></h2>
+<p>SOME/IP stack and underlying OS network stacks are typically QM only. Freedom from interference needs to be respected between the
+safty classified IPC component (mw::com) and the SOME/IP stack which is part of the gateway. The SOME/IP communication itself needs
+to be properly protected by E2E to maintain a safe communication via the grey SOME/IP channel.</p>
 </section>
 <section id="license-impact">
 <h2>License Impact<a class="headerlink" href="#license-impact" title="Link to this heading">#</a></h2>
