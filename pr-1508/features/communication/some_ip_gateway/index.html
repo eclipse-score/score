@@ -544,7 +544,7 @@
                   
   <section id="some-ip-gateway">
 <span id="some-ip-gateway-feature"></span><h1>SOME/IP-Gateway<a class="headerlink" href="#some-ip-gateway" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-d237d359">
+<div class="need_container docutils container" id="SNCB-041b9e4a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__some_ip_gateway">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -669,7 +669,7 @@ Applications shall stay stable on API layer, need to recompile is acceptable.</p
 <figure class="align-center" id="some-ip-gateway-sec-protocols">
 <img alt="../../../_images/some_ip_gateway_sec_protocols.drawio.svg" src="../../../_images/some_ip_gateway_sec_protocols.drawio.svg" />
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Secure communication protocols</span><a class="headerlink" href="#some-ip-gateway-sec-protocols" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Secure communication protocols</span><a class="headerlink" href="#some-ip-gateway-sec-protocols" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -713,7 +713,7 @@ Access Control acts on OSI Layer 5-7. It shall fulfill following:</p>
 <p class="plantuml">
 <object data="../../../_images/plantuml-d6055e741d1cbbb58ff002b03f129698a9c81ee9.svg" type="image/svg+xml" style="width:423px;height:429px;"></object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Simplified Access Control Activity Diagram</span><a class="headerlink" href="#doc-acl-activity-diagram" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Simplified Access Control Activity Diagram</span><a class="headerlink" href="#doc-acl-activity-diagram" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -774,6 +774,9 @@ For some profiles (e.g., Profile 5, 6, 22), the Data ID is included as an extens
 </section>
 <section id="safety-impact">
 <h2>Safety Impact<a class="headerlink" href="#safety-impact" title="Link to this heading">#</a></h2>
+<p>SOME/IP stack and underlying OS network stacks are typically QM only. Freedom from interference needs to be respected between the
+safty classified IPC component (mw::com) and the SOME/IP stack which is part of the gateway. The SOME/IP communication itself needs
+to be properly protected by E2E to maintain a safe communication via the grey SOME/IP channel.</p>
 </section>
 <section id="license-impact">
 <h2>License Impact<a class="headerlink" href="#license-impact" title="Link to this heading">#</a></h2>
