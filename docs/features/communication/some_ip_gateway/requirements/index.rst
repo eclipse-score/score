@@ -24,7 +24,25 @@ Functional Requirements
 Security Impact
 ===============
 
+.. feat_req:: SOME/IP Gateway Secure Communication
+   :id: feat_req__some_ip_gateway__secure_com
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :satisfies: stkh_req__communication__secure
+   :status: valid
 
+   The platform shall support secure communication.
+
+.. feat_req:: SOME/IP Gateway Access Control
+   :id: feat_req__some_ip_gateway__access_control
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :satisfies: stkh_req__dependability__security_features
+   :status: valid
+
+   The SOME/IP Gateway shall support access control to restrict access to the gateway services.
 
 Safety Impact
 =============
@@ -43,7 +61,7 @@ Safety Impact
    :id: feat_req__some_ip_gateway__network_stack
    :reqtype: Functional
    :security: YES
-   :safety: QM
+   :safety: ASIL_B
    :satisfies: stkh_req__communication__safe
    :status: valid
 
