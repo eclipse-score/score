@@ -39,7 +39,7 @@ that might be independent of the rest of the gateway. But buffering / queuing of
 should be mostly freely programmable by integrators using the SOME/IP gateway.
 
 
-.. figure:: some_ip_gateway_architecture.drawio.svg
+.. figure:: ../assets/some_ip_gateway_architecture.drawio.svg
    :align: center
    :name: _some_ip_gateway_architecture
 
@@ -53,7 +53,7 @@ separate this QM component from the otherwise ASIL-B compliant components. This 
 which again will require dedicated inter-process-communication between the SOME/IP-stack and the rest of the gateway.
 It is preferred to avoid such additional IPC.
 
-.. figure:: some_ip_gateway_details.drawio.svg
+.. figure:: ../assets/some_ip_gateway_details.drawio.svg
    :align: center
    :name: _some_ip_gateway_details
 
@@ -63,7 +63,7 @@ E2E Considerations
 ==================
 To cope with SOME/IP stack just beeing QM, we need to prepare for end-to-end protection. The goal shall be to
 do the E2E protection/check **as centrally as possible** in the gateway. Unfortunately, the centralized end-to-end
-check cannot be done for all relevant E2E properties. The following table proposes where the corresponding E2E properties shall 
+check cannot be done for all relevant E2E properties. The following table proposes where the corresponding E2E properties shall
 checked.
 
 .. list-table:: E2E properties
@@ -77,7 +77,7 @@ checked.
    * - CRC
      - Detects data corruption in the payload and metadata.
      - x
-     - 
+     -
    * - Counter
      - Detects message loss, duplication, or reordering.
      - x
@@ -88,11 +88,11 @@ checked.
      - x
    * - Data ID
      - Identifies the data format version to prevent misinterpretation.
-     - 
+     -
      - x
    * - Timeout
      - Detects if no message is received within a defined time window.
-     - 
+     -
      - x
 
 E2E Design and Interface Considerations
@@ -152,7 +152,7 @@ The diagram below outlines this distribution of responsibilties.
 
 *Diagram: E2E state machine responsibility associated to IPC client*
 
-.. figure:: e2e_state_machine_on_client_side.drawio.svg
+.. figure:: ../assets/e2e_state_machine_on_client_side.drawio.svg
    :align: center
    :name: _e2e_state_machine_on_client_side
 
@@ -164,7 +164,7 @@ If we allocate the statemachine responsibility to the gateway the distribution o
 
 *Diagram: E2E state machine responsibility associated to the gateway*
 
-.. figure:: e2e_state_machine_in_gateway.drawio.svg
+.. figure:: ../assets/e2e_state_machine_in_gateway.drawio.svg
    :align: center
    :name: _e2e_state_machine_in_gateway
 
@@ -177,5 +177,3 @@ can not be selectively distributed according to the particular communication cha
 
 .. note::
    The End-to-End consideration in this chapter do not yet consider methods.
-
-
