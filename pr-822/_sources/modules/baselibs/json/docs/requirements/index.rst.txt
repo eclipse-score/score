@@ -115,4 +115,4 @@ Safety Impact
    :satisfies: feat_req__baselibs__json_library, feat_req__baselibs__safety
    :status: valid
 
-   The JSON library shall support safe communication up to ASIL-B.
+   The JSON library shall be ASIL-B compliant.
