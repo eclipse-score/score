@@ -24,10 +24,13 @@ Time
    :tags: time, feature_request, change_management
 
 
-.. .. toctree::
-..    :hidden:
+.. toctree::
+   :maxdepth: 1
+   :glob:
+   :titlesonly:
+   :hidden:
 
-..    requirements.rst
+   docs/**/index
 
 
 Feature flag
@@ -142,70 +145,31 @@ In-Vehicle Time Synchronization
 
 Definitions:
 
-**Time Slave**
+**Time client**
 An actor that runs on the system and is responsible for
 
-* synchronizing the local clock with an external Time Master using the PTP protocol (IEEE 802.1AS).
+* synchronizing the local clock with an external *time host* using the PTP protocol (IEEE 802.1AS).
 * providing the synchronization meta information to the clients, including score::time feature. Where meta information includes, but not limited to synchronization status (synchronized, not synchronized, unstable), time difference to the external time source, last synchronization time, current time point of the local clock and so on.
 
 **Synchronization process metadata**
-Data which is provided by the **Time Slave** and includes the current synchronized time, synchronization status, rate correction, and so on, which are the output or intermediate artifacts of the synchronization process.
+Data which is provided by the **time client** and includes the current synchronized time, synchronization status, rate correction, and so on, which are the output or intermediate artifacts of the synchronization process.
 
-Requirements:
-
-* REQ_0001: the **Time Slave**, as part of score::time feature, shall synchronize the local clock with an external **Time Master** using the PTP protocol (IEEE 802.1AS).
-* REQ_0002: the score::time shall get the current synchronized time and its metadata from the **Time Slave**.
-* REQ_0003: the score::time shall maintain the current synchronized time, its synchronization status and **Synchronization process metadata**, to be able to provide the latest values by clients request.
-* REQ_0004: the score::time shall validate the current synchronized time, which was received from the **Time Slave** and reflect the validation results in the time point status accordingly.
-  Validation of the current synchronized time includes:
-
-  * checking the time point for loss of synchronization
-  * checking the time point for monotonicity
-  * checking the time point for instability, like time jumps to the past or to the future
-
-* REQ_0005: the score::time feature shall provide a mechanism to access (read only) to the synchronized time and its status across multiple applications within one ECU.
-* REQ_0006: the score::time feature shall provide an access to the synchronized time and its status, see REQ_0005, in an efficient way without any additional overhead, like kernel calls, Resource manager involvement and so on.
-  *Use case:* frequent access to the current synchronized time and its metadata by multiple clients within one ECU.
-* REQ_0007: the score::time feature shall provide a mechanism to access (read only) to the internal state of the synchronization process, see **Synchronization process metadata**, across multiple applications within one ECU.
-* REQ_0008: the score::time shall provide a mechanism to log the internal state of the synchronization process, see **Synchronization process metadata**, to be able to debug and diagnose the time synchronization process.
-  *Use case:* Debugging and diagnostics of the time synchronization process.
-
-The diagram above illustrates the data flow and interactions between the Time Slave, score::time middleware, and client applications within an ECU during PTP-based time synchronization.
+The diagram bellow illustrates the data flow and interactions between the Time client, score::time middleware, and client applications within an ECU during PTP-based time synchronization.
 
 .. uml:: data_flow.puml
-   :caption: Data flow between Time Slave, score::time, and clients
+   :caption: Data flow between time client, score::time, and clients
 
 Where
 
-* The **Time Slave** (gPTP stack) communicates with an external Time Master to maintain accurate time synchronization using the PTP protocol.
-* The **Time base provider** periodically reads the synchronized time from the Time Slave, validates it, and writes the results (including status flags and timestamps) into some shared resource towards **score::time** middleware. Different IPC mechanisms can be used for to provide actual synchronized time and its metadata to **Time base provider**, like:
+* The **time client** (gPTP stack) communicates with an external time host to maintain accurate time synchronization using the PTP protocol.
+* The **Time base provider** periodically reads the synchronized time from the Time client, validates it, and writes the results (including status flags and timestamps) into some shared resource towards **score::time** middleware. Different IPC mechanisms can be used for to provide actual synchronized time and its metadata to **Time base provider**, like:
 
-  * shared memory, then the **Time Slave** writes the synchronized time and its metadata into the shared memory, which is then read by the **Time base provider** middleware.
+  * shared memory, then the **time client** writes the synchronized time and its metadata into the shared memory, which is then read by the **Time base provider** middleware.
   * **Time base provider** polls for current EMAC value with ``devctl`` calls.
   * other IPC methods.
 
 * The **score::time** middleware accesses this shared resource to obtain the latest synchronized time and its metadata, adjusting the time as needed based on the local clock by requests from client applications.
 * This architecture ensures efficient, low-overhead distribution of synchronized time and its status to multiple applications within the ECU, supporting both real-time and diagnostic use cases.
-
-External Time Synchronization
------------------------------
-
-* REQ_0010: the score::time feature shall support synchronization with external time sources, such as GPS, based on SOME/IP messages.
-* REQ_0011: the score::time shall maintain the current synchronized time and its synchronization status, to be able to provide the latest values by clients request.
-* REQ_0012: the score::time feature shall provide a mechanism to access (read only) the current synchronized time from external time sources and its synchronization status.
-* REQ_0013: the score::time feature shall provide a mechanism to log the internal state of the external time synchronization process, to be able to debug and diagnose the synchronization process.
-
-High precision Clock
---------------------
-
-* REQ_0014: the score::time feature shall provide a mechanism to access (read only) the high precision clock in nanoseconds precision.
-  *Use case:* such clocks might be used for time-critical applications, such as audio/video streaming, event logging, and diagnostics.
-
-Monotonic Clock
----------------
-
-* REQ_0015: the score::time feature shall provide a mechanism to access (read only) to monotonic, not adjustable clock value, which is mapped from the known OS or HW clock.
-
 
 
 .. Backwards Compatibility
@@ -230,14 +194,15 @@ How to Teach This
 .. Rejected Ideas
 .. ==============
 
+
 .. Open Issues
 .. ===========
+
 
 Glossary
 ========
 
 
 .. _footnotes:
-
 Footnotes
 =========
