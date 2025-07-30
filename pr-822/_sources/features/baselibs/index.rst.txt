@@ -28,7 +28,6 @@ Base Libraries
    :hidden:
 
    docs/requirements/index.rst
-   json/index
 
 
 Feature flag
