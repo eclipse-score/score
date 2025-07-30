@@ -106,7 +106,10 @@ As there is currently no previous solution in S-CORE, no backwards compatibility
 Security Impact
 ===============
 
+Assumptions of Use
+----------------------------------------
 For access control and manipulation prevention (e.g. dm-verity) the hosting process and system configuration are responsible.
+The integrity of input JSON data shall be ensured by the user.
 
 Safety Impact
 =============
