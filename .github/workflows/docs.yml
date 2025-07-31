@@ -55,7 +55,7 @@ jobs:
         run: sudo apt update && sudo apt install -y graphviz
       - name: Build documentation
         run: |
-          bazel run //docs:incremental_release -- --github_user=${{ github.repository_owner }} --github_repo=${{ github.event.repository.name }}
+          bazel run //:docs -- --github_user=${{ github.repository_owner }} --github_repo=${{ github.event.repository.name }}
           tar -cf github-pages.tar _build
         # ------------------------------------------------------------------------------
         # Generate a unique artifact name to ensure proper tracking in all scenarios

@@ -13,6 +13,7 @@
 
 load("@score_cli_helper//:cli_helper.bzl", "cli_helper")
 load("@score_cr_checker//:cr_checker.bzl", "copyright_checker")
+load("@score_docs_as_code//:docs.bzl", "docs")
 load("@score_starpls_lsp//:starpls.bzl", "setup_starpls")
 
 test_suite(
@@ -60,4 +61,11 @@ exports_files([
 setup_starpls(
     name = "starpls_server",
     visibility = ["//visibility:public"],
+)
+
+docs(
+    data = [
+        "@score_process//:needs_json",
+    ],
+    source_dir = "docs",
 )
