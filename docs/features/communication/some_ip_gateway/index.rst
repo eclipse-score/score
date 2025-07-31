@@ -29,6 +29,7 @@ SOME/IP-Gateway
 
    architecture/index.rst
    requirements/index.rst
+   service_discovery/index.rst
 
 
 Feature flag
