@@ -12,6 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+   # #914 Feature Request for SOME/IP Gateway
+
 .. _some_ip_gateway_feature:
 
 SOME/IP-Gateway
@@ -96,8 +98,23 @@ SOME/IP Gateway protocol implementation
 ---------------------------------------
 
 The protocol implementation shall be fully compatible and complying with the SOME/IP specification from AUTOSAR Adaptive.
-Specifically the SOME/IP specification from AUTOSAR release 24-11 shall be supported by the SOME/IP Gateway. This shall guarantee that systems integrated with the SOME/IP gateway can be used in
+Specifically the SOME/IP specification from AUTOSAR release 24-11 shall be supported by the SOME/IP Gateway. This shall guarantee that systems integrated with the SOME/IP gateway can be used in according
+automotive E/E-architectures.
 Protocol implementations shall be wrapped in an abstraction API, that stays stable and allows implementations may be exchanged, potentially even by binary only libraries.
+
+
+..
+   # fix #1424 SOME/IP Gateway in lifecycle-management
+
+SOME/IP Gateway processes and life cycle management
+---------------------------------------------------
+
+The implementation of a gateway likely requires using one or multiple processes. Startup of processes for the gateway, as with any other
+process in the s-core system, need to be put under the control of lifecycle-management (see feature Lifecycle).
+Hence the SOME/IP Gateway must not start any processes on its own, but configure the lifecycle launch and health-monitoring accordingly.
+Specifically for the integration of the SOME/IP Stack "plug-in", which is expected to be QM, whereas the rest of the gateway is ASIL-B,
+if one or more additional processes need to be spawned and additional executables need to be involved with the implementation,
+all need to go into launch control in health monitoring and must not be setup (fork()) by the gateway.
 
 
 
@@ -116,7 +133,7 @@ As with IPC generally, the security approach for SOME/IP gateway shall achieve t
 Backwards Compatibility
 =======================
 
-As there is currently no previous solution for communication in S-CORE, no backwards compatibility is required.
+As there is currently no previous solution for gateways in S-CORE, no backwards compatibility is required.
 Subsequent changes to the SOME/IP gateway module shall keep the API stable where possible and introduce breaking APIs only with approval from tech lead circle.
 Applications shall stay stable on API layer, need to recompile is acceptable.
 
@@ -266,6 +283,12 @@ License Impact
 
 [How could the copyright impacted by the license of the new contribution?]
 
+Since SOME/IP is a protocol, including applied E2E protection and the according profile (polynom, etc.),
+defined by AUTOSAR and published under the license of AUTOSAR, the gateway implementation shall carefully distinguish between the SOME/IP communication stack,
+the E2E protection of data, and the integration into S-CORE mw::com. Breach of foreign licenses must be avoided.
+
 
 How to Teach This
 =================
+
+TBD
