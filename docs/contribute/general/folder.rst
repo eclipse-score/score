@@ -31,7 +31,7 @@ The following shows the folder structure of the platform repository (ordered alp
                docs/                   -> Documentation of the feature
                    architecture/       -> Feature architecture [:need:`PROCESS_wp__feature_arch`]
                    requirements/       -> Feature requirements [:need:`PROCESS_wp__requirements__feat`]
-                   safety_analysis/    -> Safety analysis on feature level [:need:`PROCESS_wp__feature_safety_analysis`]
+                   safety_analysis/    -> Safety analysis on feature level [:need:`PROCESS_wp__feature_fmea`, :need:`PROCESS_wp__feature_dfa`, :need:`PROCESS_wp__platform_dfa`]
                    safety_planning/    -> Feature specific safety workproducts planning
                    verification/       -> Feature verification report (reporting all feature verifications)
                                              [:need:`PROCESS_wp__verification__platform_ver_report`]
@@ -102,7 +102,7 @@ The modules and components shall follow the folder structure which was presented
                                              [:need:`PROCESS_wp__component_arch`].
             requirements/              -> Component requirements [:need:`PROCESS_wp__requirements__comp`]
             safety_analysis/           -> Safety analysis on component level
-                                             [:need:`PROCESS_wp__sw_component_safety_analysis`]
+                                             [:need:`PROCESS_wp__sw_component_fmea`, :need:`PROCESS_wp__sw_component_dfa` ]
             verification/              -> Architecture review [:need:`PROCESS_wp__sw_arch_verification`],
                                              code inspection [:need:`PROCESS_wp__sw_implementation_inspection`]
             <lower_level_comp>/        -> Lower level component following <component_name> folder structure

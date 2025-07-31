@@ -19,6 +19,7 @@ Development
    :maxdepth: 1
 
    development_environment
+   api_guideline
    cpp/index
    rust/index
    python/index
