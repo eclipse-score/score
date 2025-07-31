@@ -16,7 +16,7 @@
    :id: doc__platform_safety_plan
    :status: draft
    :safety: ASIL_B
-   :realizes: PROCESS_wp__platform_dfa,PROCESS_wp__tailoring
+   :realizes: PROCESS_wp__platform_safety_plan,PROCESS_wp__tailoring
    :tags: platform_management
 
 Safety management / Platform Safety Plan
@@ -226,7 +226,7 @@ To exchange general information and to clarify general topics the following comm
 The safety management status is reported in the Technical Lead Circle Meeting which is defined in :need:`doc__project_mgt_plan`.
 The status report is based on safety plans work product lists (see below) and verification reports on platform and module level:
 
-* :need:`PROCESS_wp__platform_dfa`
+* :need:`PROCESS_wp__platform_safety_plan`
 * :need:`PROCESS_wp__module_safety_plan`
 * :need:`PROCESS_wp__verification__platform_ver_report`
 * :need:`PROCESS_wp__verification__module_ver_report`
@@ -353,7 +353,7 @@ Functional Safety Management SW Platform Work Products
       - `Process community issues <https://github.com/orgs/eclipse-score/projects/7>`_
       - <automated>
 
-    * - :need:`PROCESS_wp__platform_dfa`
+    * - :need:`PROCESS_wp__platform_safety_plan`
       - :need:`PROCESS_gd_guidl__saf_plan_definitions`
       - :ndf:`copy('status', need_id='PROCESS_gd_guidl__saf_plan_definitions')`
       - `#381 <https://github.com/eclipse-score/score/issues/381>`_
