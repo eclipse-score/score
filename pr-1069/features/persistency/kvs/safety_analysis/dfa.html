@@ -535,7 +535,7 @@
                   
   <section id="persistency-dfa">
 <h1>Persistency DFA<a class="headerlink" href="#persistency-dfa" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-e7b790dc">
+<div class="need_container docutils container" id="SNCB-27ececf5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__persistency_dfa">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -563,510 +563,63 @@
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__SR_01_01</div>
-<div class="line">:violation_id: SR_01_01</div>
-<div class="line">:violation_cause: Reused software module</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: NONE</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: There are no reused software modules, so no mitigation is needed.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__SR_01_02</div>
-<div class="line">:violation_id: SR_01_02</div>
-<div class="line">:violation_cause: Library fs</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: NONE</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: The file system fs is a library. No mitigation for persistency is needed, because is an elementary library without the functionalites of S-CORE are not availabe.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__SR_01_02</div>
-<div class="line">:violation_id: SR_01_02</div>
-<div class="line">:violation_cause: Library json</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: NONE</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: JSON is a library. A mitigation might be needed but it will not be considered at persistency.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__SR_01_04</div>
-<div class="line">:violation_id: SR_01_04</div>
-<div class="line">:violation_cause: Basic software</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: NONE</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: There are no basic software within persistency, so no mitigation is needed.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__SR_01_05</div>
-<div class="line">:violation_id: SR_01_05</div>
-<div class="line">:violation_cause: Operating system including scheduler</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: NONE</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Will be considered at feature platform DFA. Mitigation can’t be handled at middleware.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__SR_01_06</div>
-<div class="line">:violation_id: SR_01_06</div>
-<div class="line">:violation_cause: Any service stack, e.g. communication stack</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: NONE</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: There is no service stack at persistency used, so no mitigation is needed.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__SR_01_07</div>
-<div class="line">:violation_id: SR_01_07</div>
-<div class="line">:violation_cause: Configuration data. Return values might be falsified.</div>
-<div class="line">:mitigation: Integritry check feat_req__persistency__integrity_check</div>
-<div class="line">:mitigation_issue: NONE</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Integrity check will fail, so the failure will be detected.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__SR_01_09</div>
-<div class="line">:violation_id: SR_01_09</div>
-<div class="line">:violation_cause: Execution time.</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: NONE</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: There is timing impact at persistency, so no mitigation is needed.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__SR_01_10</div>
-<div class="line">:violation_id: SR_01_10</div>
-<div class="line">:violation_cause: Allocated memory.</div>
-<div class="line">:mitigation: &lt; NONE|ID from Feature Requirement&gt;</div>
-<div class="line">:mitigation_issue: &lt;ID from Issue Tracker| None if no issue needed&gt;</div>
-<div class="line">:sufficient: &lt;yes|no&gt;</div>
-<div class="line">:argument: Acutally discussed in feature community. JSON can do it, but it should not be allowed.</div>
-<div class="line">:status: &lt;valid|invalid&gt;</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__CO_01_01</div>
-<div class="line">:violation_id: CO_01_01</div>
-<div class="line">:violation_cause: Information passed via argument through a function call, or via writing/reading a variable being global to the two software functions (data flow)</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: NONE</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Failure initiator not applicable at persistency, so no mitigation is needed.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__CO_01_02</div>
-<div class="line">:violation_id: CO_01_02</div>
-<div class="line">:violation_cause: Data or message corruption / repetition / loss / delay / masquerading or incorrect addressing of information.</div>
-<div class="line">:mitigation: &lt; NONE|ID from Feature Requirement&gt;  feat_req__persistency__integrity_check? Maybe mitigation is needed. Persistency will be not available or be falsified executed.</div>
-<div class="line">:mitigation_issue: &lt;ID from Issue Tracker| None if no issue needed&gt;</div>
-<div class="line">:sufficient: &lt;yes|no&gt;</div>
-<div class="line">:argument: &lt;text to argument why mitigation is sufficient&gt;</div>
-<div class="line">:status: &lt;valid|invalid&gt;</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__CO_01_03</div>
-<div class="line">:violation_id: CO_01_03</div>
-<div class="line">:violation_cause: Insertion / sequence of information</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: NONE</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Subset of feat_saf_DFA__persistency__static CO_01_02</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__CO_01_04</div>
-<div class="line">:violation_id: CO_01_04</div>
-<div class="line">:violation_cause: Corruption of information, inconsistent data</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: NONE</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Subset of feat_saf_DFA__persistency__static CO_01_02</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__CO_01_05</div>
-<div class="line">:violation_id: CO_01_05</div>
-<div class="line">:violation_cause: Asymmetric information sent from a sender to multiple receivers, so that not all defined receivers have the same informations</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: NONE</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Failure initiator not applicable at persistency, so no mitigation is needed.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__CO_01_06</div>
-<div class="line">:violation_id: CO_01_06</div>
-<div class="line">:violation_cause: Information from a sender received by only a subset of the receivers.</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: NONE</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Failure initiator not applicable at persistency, so no mitigation is needed.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__CO_01_07</div>
-<div class="line">:violation_id: CO_01_07</div>
-<div class="line">:violation_cause: Blocking access to a communication channel</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: NONE</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Failure initiator not applicable at persistency, so no mitigation is needed.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__SI_01_02</div>
-<div class="line">:violation_id: SI_01_02</div>
-<div class="line">:violation_cause: Configuration data.</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: NONE</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Failure initiator not applicable at persistency, so no mitigation is needed.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__SI_01_03</div>
-<div class="line">:violation_id: SI_01_03</div>
-<div class="line">:violation_cause: Constants, or variables, being global to the two software functions.</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: NONE</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Failure initiator not applicable at persistency, so no mitigation is needed.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__SI_01_04</div>
-<div class="line">:violation_id: SI_01_04</div>
-<div class="line">:violation_cause: Basic software passes data (read from hardware register and converted into logical information) to two applications software functions.</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: NONE</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Failure initiator not applicable at persistency, so no mitigation is needed.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__SI_01_05</div>
-<div class="line">:violation_id: SI_01_05</div>
-<div class="line">:violation_cause: Data / function parameter arguments / messages delivered by software function to more than one other function.</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: NONE</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Failure initiator not applicable at persistency, so no mitigation is needed.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__UI_01_01</div>
-<div class="line">:violation_id: UI_01_01</div>
-<div class="line">:violation_cause: Memory miss-allocation and leaks.</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: NONE</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Will be considered at feature platform DFA.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__UI_01_02</div>
-<div class="line">:violation_id: UI_01_02</div>
-<div class="line">:violation_cause: Read/Write access to memory allocated to another software element.</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: NONE</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Will be considered at feature platform DFA.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__UI_01_03</div>
-<div class="line">:violation_id: UI_01_03</div>
-<div class="line">:violation_cause: Stack/Buffer under-/overflow. Might happens but very unlikely in RUST. Recursive functions could be the violation cause.</div>
-<div class="line">:mitigation: &lt; NONE|ID from Feature Requirement&gt; Compilerüberwachung / AoU</div>
-<div class="line">:mitigation_issue: &lt;ID from Issue Tracker| None if no issue needed&gt;</div>
-<div class="line">:sufficient: &lt;yes|no&gt;</div>
-<div class="line">:argument: &lt;text to argument why mitigation is sufficient&gt;</div>
-<div class="line">:status: &lt;valid|invalid&gt;</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__UI_01_04</div>
-<div class="line">:violation_id: UI_01_04</div>
-<div class="line">:violation_cause: Deadlocks.</div>
-<div class="line">:mitigation: aou_req__persistency__appl_design</div>
-<div class="line">:mitigation_issue: None</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Deadlocks are not caused by the KVS, but by the application.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__UI_01_05</div>
-<div class="line">:violation_id: UI_01_05</div>
-<div class="line">:violation_cause: Livelocks</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: NONE</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Same consideration as done in feat_saf_DFA__persistency__static UI_01_04</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__UI_01_06</div>
-<div class="line">:violation_id: UI_01_06</div>
-<div class="line">:violation_cause: Blocking of execution.</div>
-<div class="line">:mitigation: aou_req__persistency__appl_exec</div>
-<div class="line">:mitigation_issue: None</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Execution blocking will make persistency not available.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__UI_01_07</div>
-<div class="line">:violation_id: UI_01_07</div>
-<div class="line">:violation_cause: Incorrect allocation of execution time.</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: NONE</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Failure initiator not applicable at persistency, so no mitigation is needed.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__UI_01_08</div>
-<div class="line">:violation_id: UI_01_08</div>
-<div class="line">:violation_cause: Incorrect execution flow</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: NONE</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Failure initiator not applicable at persistency, so no mitigation is needed.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__UI_01_09</div>
-<div class="line">:violation_id: UI_01_09</div>
-<div class="line">:violation_cause: Incorrect synchronization between software elements</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: NONE</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Failure initiator not applicable at persistency, so no mitigation is needed.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__UI_01_10</div>
-<div class="line">:violation_id: UI_01_10</div>
-<div class="line">:violation_cause: CPU time depletion</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: NONE</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Failure initiator not applicable at persistency, so no mitigation is needed.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__UI_01_11</div>
-<div class="line">:violation_id: UI_01_11</div>
-<div class="line">:violation_cause: Memory depletion</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: NONE</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Failure initiator not applicable at persistency, so no mitigation is needed.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__UI_01_12</div>
-<div class="line">:violation_id: UI_01_12</div>
-<div class="line">:violation_cause: Other HW unavailability</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: NONE</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Failure initiator not applicable at persistency, so no mitigation is needed.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__SC_01_02</div>
-<div class="line">:violation_id: SC_01_02</div>
-<div class="line">:violation_cause: Same development approaches (e.g. IDE, programming and/or modelling language)</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: NONE</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Will be considered at feature platform DFA.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__SC_01_03</div>
-<div class="line">:violation_id: SC_01_03</div>
-<div class="line">:violation_cause: Same personal</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: NONE</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Will be considered at feature platform DFA.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__SC_01_04</div>
-<div class="line">:violation_id: SC_01_04</div>
-<div class="line">:violation_cause: Same social-cultural context (even if different personnel). Only applicable if diverse development is needed.</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: NONE</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Will be considered at feature platform DFA.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line">.. feat_saf_dfa:: Persistency</div>
-<div class="line-block">
-<div class="line">:verifies: feat_arc_sta__persistency__static</div>
-<div class="line">:id: feat_saf_DFA__persistency__SC_01_05</div>
-<div class="line">:violation_id: SC_01_05</div>
-<div class="line">:violation_cause: Development fault (e.g. human error, insufficient qualification, insufficient methods). Only applicable if diverse development is needed.</div>
-<div class="line">:mitigation: NONE</div>
-<div class="line">:mitigation_issue: NONE</div>
-<div class="line">:sufficient: yes</div>
-<div class="line">:argument: Will be considered at feature platform DFA.</div>
-<div class="line">:status: valid</div>
-</div>
-</div>
+<tr class="content row-odd"><td class="content" colspan="6"><p>For the DFA analysis where the failure initiators <a class="reference internal" href="#Unknown need" title="gd_guidl__dfa_failure_initiators?"><em class="xref need">gd_guidl__dfa_failure_initiators</em></a> are used. The analysis is done before the platform DFA is done.
+Safety mechanisms that are used by many features are not considered here, but at the platform DFA. The analysis is only done for the needs of the persistency feature.
+The components KVS and JSON will also be considered at the platform DFA. No additional violations within the persistency feature are expected.</p>
+<p>The following failure initiators doesn’t apply to the persistency feature:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>SR_01_01: Reused software module: No reused software modules are used.</p></li>
+<li><p>SR_01_02: Library: The file system fs is a library. It will be considered at the platform DFA. Same argument is used for the JSON library.</p></li>
+<li><p>SR_01_04: Basic software: No basic software is used.</p></li>
+<li><p>SR_01_05: Operating system including scheduler: Might be considered at the platform DFA or is out of scope.</p></li>
+<li><p>SR_01_06: Any service stack, e.g. communication stack: No service stack is used.</p></li>
+<li><p>SR_01_09: Execution time: There is no timing impact at persistency, so no mitigation is needed.</p></li>
+<li><p>SR_01_10: Allocated memory: Will be considered at the platform DFA. JSON can effect it, but it should not be allowed.</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>CO_01_01: Information passed via argument through a function call, or via writing/reading a variable being global to the two software functions (data flow): Failure initiator not applicable at persistency, so no mitigation is needed.</p></li>
+<li><p>CO_01_02: Data or message corruption / repetition / loss / delay / masquerading or incorrect addressing of information: Persistency is developed fully deterministic. So no corruption, repetition, loss, delay, masquerading or incorrect addressing of information is expected.</p></li>
+<li><p>CO_01_03: Insertion / sequence of information: Subset of CO_01_02.</p></li>
+<li><p>CO_01_04: Corruption of information, inconsistent data: Subset of CO_01_02.</p></li>
+<li><p>CO_01_05: Asymmetric information sent from a sender to multiple receivers, so that not all defined receivers have the same informations: Failure initiator not applicable at persistency, so no mitigation is needed.</p></li>
+<li><p>CO_01_06: Information from a sender received by only a subset of the receivers: Failure initiator not applicable at persistency, so no mitigation is needed.</p></li>
+<li><p>CO_01_07: Blocking access to a communication channel: Failure initiator not applicable at persistency, so no mitigation is needed.</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>SI_01_02: Configuration data: Failure initiator not applicable at persistency, so no mitigation is needed.</p></li>
+<li><p>SI_01_03: Constants, or variables, being global to the two software functions: Failure initiator not applicable at persistency, so no mitigation is needed.</p></li>
+<li><p>SI_01_04: Basic software passes data (read from hardware register and converted into logical information) to two applications software functions: Failure initiator not applicable at persistency, so no mitigation is needed.</p></li>
+<li><p>SI_01_05: Data / function parameter arguments / messages delivered by software function to more than one other function: Failure initiator not applicable at persistency, so no mitigation is needed.</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>UI_01_01: Memory miss-allocation and leaks: Will be considered at the platform DFA.</p></li>
+<li><p>UI_01_02: Read/Write access to memory allocated to another software element: Will be considered at the platform DFA.</p></li>
+<li><p>UI_01_03: Stack/Buffer under-/overflow: Might happens but very unlikely in RUST. Will be considered at the platform DFA.</p></li>
+<li><p>UI_01_04: Deadlocks: Deadlocks are not caused by the KVS, but by the application.</p></li>
+<li><p>UI_01_05: Livelocks: Same consideration as done in UI_01_04.</p></li>
+<li><p>UI_01_07: Incorrect allocation of execution time: Failure initiator not applicable at persistency, so no mitigation is needed.</p></li>
+<li><p>UI_01_08: Incorrect execution flow: Failure initiator not applicable at persistency, so no mitigation is needed.</p></li>
+<li><p>UI_01_09: Incorrect synchronization between software elements: Failure initiator not applicable at persistency, so no mitigation is needed.</p></li>
+<li><p>UI_01_10: CPU time depletion: Failure initiator not applicable at persistency, so no mitigation is needed. Will be anylysed at the platform DFA.</p></li>
+<li><p>UI_01_11: Memory depletion: Failure initiator not applicable at persistency, so no mitigation is needed. Will be anylysed at the platform DFA.</p></li>
+<li><p>UI_01_12: Other HW unavailability: Failure initiator not applicable at persistency, so no mitigation is needed.</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>SC_01_02: Same development approaches (e.g. IDE, programming and/or modelling language): Will be considered at feature platform DFA.</p></li>
+<li><p>SC_01_03: Same personal: Will be considered at feature platform DFA.</p></li>
+<li><p>SC_01_04: Same social-cultural context (even if different personnel): Will be considered at feature platform DFA.</p></li>
+<li><p>SC_01_05: Development fault (e.g. human error, insufficient qualification, insufficient methods): Will be considered at feature platform DFA.</p></li>
+</ul>
+</div></blockquote>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
