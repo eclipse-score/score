@@ -28,6 +28,7 @@ and :need:`Feature Request Template <PROCESS_gd_temp__change__feature_request>`.
    :hidden:
 
    requirements/index.rst
+   architecture/feature_architecture
 
 Feature flag
 ============
@@ -435,3 +436,52 @@ w.r.t impact of computation load and latency.
 .. |example_task_chain_3_threads_optimized| image:: _assets/example_task_chain_3_threads_optimized.png
 
 .. |example_task_chain_3_threads_dynamic| image:: _assets/example_task_chain_3_threads_dynamic.png
+
+
+Error Handling for S-CORE v0.5
+==============================
+
+Possible error cases during the different FEO life cycle states shall be handled as follows. For now, the
+descriptions are focussed on the intended implementation for S-CORE v0.5. Potential adaptations for
+S-CORE v1.0 have been noted down, but shall be considered as drafts only.
+
+* Independent of state
+    - If the primary process dies, the external lifecycle management shall kill all dependent processes.
+    - If a secondary process dies, the lifecycle management shall send a termination signal to the primary process.
+      The primary process shall call the shutdown function of all remaining activities in arbitrary sequence and
+      terminate itself.
+
+* State: Lifecycle Manager creates all processes (primary & secondaries)
+    - If not all secondaries connect to the primary in time,
+        - S-CORE v0.5: the primary will terminate itself. The startup functions shall not be triggered.
+        - S-CORE v1.0: the primary will not terminate, but report an error to the lifecycle/health management.
+          The startup functions shall not be triggered.
+
+* State: Lifecycle Manager has created all processes (primary & secondaries), all secondaries have connected to the primary
+    - If an error occurs during the execution of a startup function,
+        - S-CORE v0.5: the primary process shall abort calling startup functions
+          and terminate itself. For all of the activities whose startup functions have already been called successfully,
+          the corresponding shutdown functions shall be executed in arbitrary sequence.
+        - S-CORE v1.0: in addition, the primary process shall report the issue to health management.
+    - During initialization (i.e. in the startup function of an activity), activities shall check for resource allocation
+      and report an error to the executor in case of failure.
+    - If a timeout occurs during startup, stepping or shutdown of an activity,
+        - S-CORE v0.5: the primary process shall shutdown all successfully started activities in arbitrary sequence
+          and terminate itself.
+        - S-CORE v1.0: In addition, the primary process shall report the issue to health management.
+    - If not all activities reach their initialized state within a certain period of time (startup timeout),
+        - S-CORE v0.5: the primary process shall shutdown all successfully
+          started activities in arbitrary sequence and terminate itself.
+        - S-CORE v1.0: In addition, the primary process shall report the issue to health management.
+
+* State: Lifecycle Manager has created all processes  (primary & secondaries), all secondaries have connected to the primary, all activities have been started up successfully
+    - If an activity fails in the step function,
+        - S-CORE v0.5: the primary process shall call shutdown for all activities in arbitrary sequence and terminate itself.
+        - S-CORE v1.0: In addition, a logical waypoint error shall be reported to health management.
+    - If activities do not meet their intermediate (time/memory/cpu-) budgets the issue shall be detected and handled
+      outside of FEO. (Resource supervision and quotas will be defined in a separate feature request, if needed.)
+
+* State: Shutdown of activities
+    - If an activity fails in the shutdown function,
+        - S-CORE v0.5: the primary process shall shutdown all remaining activities and terminate itself.
+        - S-CORE v1.0: In addition, a logical waypoint error shall be reported to health management.

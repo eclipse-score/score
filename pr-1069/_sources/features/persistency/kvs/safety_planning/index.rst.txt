@@ -55,11 +55,11 @@ Feature Safety Planning
       - :ref:`feature_architecture_PersistencyKvs`
       - valid
 
-    * - :need:`PROCESS_wp__feature_safety_analysis`
+    * - :need:`PROCESS_wp__feature_fmea`
       - :need:`PROCESS_gd_guidl__safety_analysis`
       - :ndf:`copy('status', need_id='PROCESS_gd_guidl__safety_analysis')`
       - https://github.com/eclipse-score/score/issues/965
-      - :need:`doc__persistency_safety_analysis`
+      - :need:`doc__persistency_fmea`
       - valid
 
     * - :need:`PROCESS_wp__feature_dfa`

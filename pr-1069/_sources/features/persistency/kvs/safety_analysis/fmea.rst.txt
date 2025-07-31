@@ -21,11 +21,10 @@ Persistency FMEA
    :safety: ASIL_B
    :tags: feature_persistency
 
-   For the FMEA analysis where the fault models :need:`gd_guidl__fault_models` are used.
+   For the FMEA analysis where the fault models :need:`PROCESS_gd_guidl__fault_models` are used.
    The following fault models doesn't apply to the persistency feature:
 
    Fault models
-   ^^^^^^^^^^^^^
       - MF_01_03: Message received too early: Failure initiator not applicable at persistency, so no mitigation is needed.
       - MF_01_04: message not received correctly by all recipients (different messages or messages partly lost): Failure initiator not applicable at persistency, so no mitigation is needed.
       - MF_01_07: Message is unintended sent: Failure initiator not applicable at persistency. Feature developed fully deterministic, so no unintended messages are expected.
@@ -40,11 +39,11 @@ Persistency FMEA
 
 
 .. feat_saf_fmea:: Persistency
-    :verifies: feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore
+    :violates: feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore
     :id: feat_saf_fmea__persistency__message_nreived
-    :violation_id: MF_01_01
-    :violation_cause: Message is not received so the feature persistency is not available.
-    :mitigates: aou_req__persistency__error_handling
+    :fault_id: MF_01_01
+    :failure_effect: Message is not received so the feature persistency is not available.
+    :mitigated_by: aou_req__persistency__error_handling
     :sufficient: yes
     :status: valid
 
@@ -52,47 +51,46 @@ Persistency FMEA
     Failure handling is addressed to the application by the aou_req__persistency__error_handling.
 
 .. feat_saf_fmea:: Persistency
-    :verifies: feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore
+    :violates: feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore
     :id: feat_saf_fmea__persistency__late_message
-    :violation_id: MF_01_02
-    :violation_cause: message received too late.
-    :mitigates: aou_req__persistency__error_handling
+    :fault_id: MF_01_02
+    :failure_effect: message received too late.
+    :mitigated_by: aou_req__persistency__error_handling
     :sufficient: yes
     :status: valid
 
     Subset of MF_01_01 if the delay is to long.
 
 .. feat_saf_fmea:: Persistency
-    :verifies: feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore
+    :violates: feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore
     :id: feat_saf_fmea__persistency__corrupted_message
-    :violation_id: MF_01_05
-    :violation_cause: message is corrupted so the feature persistency is not available.
-    :mitigates: aou_req__persistency__error_handling
+    :fault_id: MF_01_05
+    :failure_effect: message is corrupted so the feature persistency is not available.
+    :mitigated_by: aou_req__persistency__error_handling
     :sufficient: yes
     :status: valid
 
     Covered by MF_01_01
 
 .. feat_saf_fmea:: Persistency
-    :verifies: feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore
+    :violates: feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore
     :id: feat_saf_fmea__persistency__not_sent
-    :violation_id: MF_01_06
-    :violation_cause: message is not sent so the feature persistency is not available.
-    :mitigates: aou_req__persistency__error_handling
+    :fault_id: MF_01_06
+    :failure_effect: message is not sent so the feature persistency is not available.
+    :mitigated_by: aou_req__persistency__error_handling
     :sufficient: yes
     :status: valid
 
     Covered by MF_01_01 because the violation cause is the same.
 
 .. feat_saf_fmea:: Persistency
-    :verifies: feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore
+    :violates: feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore
     :id: feat_saf_fmea__persistency__err_handl
-    :violation_id: EX_01_04
-    :violation_cause: loss of execution will lead to an unavailability of the persistency feature.
-    :mitigates: aou_req__persistency__error_handling
+    :fault_id: EX_01_04
+    :failure_effect: loss of execution will lead to an unavailability of the persistency feature.
+    :mitigated_by: aou_req__persistency__error_handling
     :sufficient: yes
     :status: valid
 
     User is not able to use the feature. Middleware cant be used. Loss of execution can only be caused by the application, not by the persistency feature itself.
     Failure handling is addressed to the application by the aou_req__persistency__error_handling.
-

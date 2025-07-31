@@ -108,7 +108,7 @@ development process. Key elements of it are listed in the process descriptions
 of safety management and safety analysis. In the safety analysis we will
 analyze the impact of the feature.
 
-:need:`doc__persistency_safety_analysis`
+:need:`doc__persistency_fmea`
 
 We use an iterative development process and apply results from the next steps
 back to the feature request. For TinyJSON we will perform a software component

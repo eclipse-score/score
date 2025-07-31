@@ -186,8 +186,8 @@ Component <name> Workproducts List
           - Checklist used in Pull Request Review
           - n/a
 
-        * - :need:`PROCESS_wp__sw_component_safety_analysis`
-          - :need:`PROCESS_wp__sw_component_safety_analysis`
+        * - :need:`PROCESS_wp__sw_component_fmea`
+          - :need:`PROCESS_wp__sw_component_fmea`
           - :ndf:`copy('status', need_id='PROCESS_gd_guidl__safety_analysis')`
           - https://github.com/eclipse-score/score/issues/952?issue=eclipse-score%7Cscore%7C965
           - :need:`doc__kvs_fmea`
@@ -270,7 +270,7 @@ If the OSS element is classified as a
           - <Link to issue>
           - <Reasoning for tailoring, needed for example in case of deficits in process Id 3&4 and complexity Ids 1&4>
 
-        * - :need:`PROCESS_wp__sw_component_safety_analysis`
+        * - :need:`PROCESS_wp__sw_component_fmea`
           - https://github.com/eclipse-score/score/issues/952?issue=eclipse-score%7Cscore%7C965
           - <Reasoning for tailoring, could help arguing too high cyclomatic complexity covered by safety mechanisms>
 
