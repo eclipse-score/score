@@ -34,7 +34,7 @@ Score supports multiple methods for generating documentation, tailored to differ
 
 
 ```sh
-bazel run //:docs # use versions of the dependencies needed for documentation build that are imported in MODULE.bazel
+bazel run //:docs 
 ```
 The output will be located in `_build`
 
@@ -44,7 +44,7 @@ The output will be located in `_build`
 For a documentation live preview independent of an IDE (CLI + browser only), `sphinx-autobuild` can be used.  
 This will automatically rebuild the preview after save and have it available at `http://127.0.0.1:8000`  
 ```sh
-bazel run //:live_preview # use versions of the dependencies needed for documentation build that are imported in MODULE.bazel
+bazel run //:live_preview 
 ```
 
 #### IDE integration
