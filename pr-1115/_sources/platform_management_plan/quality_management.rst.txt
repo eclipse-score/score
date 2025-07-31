@@ -372,13 +372,6 @@ None
           - <Link to WP>
           - <automated>
 
-        * - :need:`PROCESS_wp__feature_safety_analysis`
-          - :need:`PROCESS_gd_guidl__safety_analysis`
-          - :ndf:`copy('status', need_id='PROCESS_gd_guidl__safety_analysis')`
-          - <Link to issue>
-          - <Link to WP>
-          - <automated>
-
         * - :need:`PROCESS_wp__module_safety_manual`
           - :need:`PROCESS_gd_guidl__saf_plan_definitions`
           - :ndf:`copy('status', need_id='PROCESS_gd_guidl__saf_plan_definitions')`
@@ -414,7 +407,7 @@ None
           - <Link to WP>
           - <automated>
 
-        * - :need:`PROCESS_wp__platform_feature_dfa`
+        * - :need:`PROCESS_wp__platform_dfa`
           - :need:`PROCESS_gd_guidl__safety_analysis`
           - :ndf:`copy('status', need_id='PROCESS_gd_guidl__safety_analysis')`
           - <Link to issue>
@@ -582,7 +575,14 @@ None
           - <Link to WP>
           - <automated>
 
-        * - :need:`PROCESS_wp__sw_component_safety_analysis`
+        * - :need:`PROCESS_wp__sw_component_fmea`
+          - :need:`PROCESS_gd_guidl__safety_analysis`
+          - :ndf:`copy('status', need_id='PROCESS_gd_guidl__safety_analysis')`
+          - <Link to issue>
+          - <Link to WP>
+          - <automated>
+
+        * - :need:`PROCESS_wp__sw_component_dfa` 
           - :need:`PROCESS_gd_guidl__safety_analysis`
           - :ndf:`copy('status', need_id='PROCESS_gd_guidl__safety_analysis')`
           - <Link to issue>

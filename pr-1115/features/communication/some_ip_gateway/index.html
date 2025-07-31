@@ -545,7 +545,7 @@
                   
   <section id="some-ip-gateway">
 <span id="some-ip-gateway-feature"></span><h1>SOME/IP-Gateway<a class="headerlink" href="#some-ip-gateway" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-eb6ed3ba">
+<div class="need_container docutils container" id="SNCB-057409f5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__some_ip_gateway">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -643,8 +643,18 @@ translate the different data-types and representations of the two contexts.</p>
 <section id="some-ip-gateway-protocol-implementation">
 <h3>SOME/IP Gateway protocol implementation<a class="headerlink" href="#some-ip-gateway-protocol-implementation" title="Link to this heading">#</a></h3>
 <p>The protocol implementation shall be fully compatible and complying with the SOME/IP specification from AUTOSAR Adaptive.
-Specifically the SOME/IP specification from AUTOSAR release 24-11 shall be supported by the SOME/IP Gateway. This shall guarantee that systems integrated with the SOME/IP gateway can be used in
+Specifically the SOME/IP specification from AUTOSAR release 24-11 shall be supported by the SOME/IP Gateway. This shall guarantee that systems integrated with the SOME/IP gateway can be used in according
+automotive E/E-architectures.
 Protocol implementations shall be wrapped in an abstraction API, that stays stable and allows implementations may be exchanged, potentially even by binary only libraries.</p>
+</section>
+<section id="some-ip-gateway-processes-and-life-cycle-management">
+<h3>SOME/IP Gateway processes and life cycle management<a class="headerlink" href="#some-ip-gateway-processes-and-life-cycle-management" title="Link to this heading">#</a></h3>
+<p>The implementation of a gateway likely requires using one or multiple processes. Startup of processes for the gateway, as with any other
+process in the s-core system, need to be put under the control of lifecycle-management (see feature Lifecycle).
+Hence the SOME/IP Gateway must not start any processes on its own, but configure the lifecycle launch and health-monitoring accordingly.
+Specifically for the integration of the SOME/IP Stack “plug-in”, which is expected to be QM, whereas the rest of the gateway is ASIL-B,
+if one or more additional processes need to be spawned and additional executables need to be involved with the implementation,
+all need to go into launch control in health monitoring and must not be setup (fork()) by the gateway.</p>
 </section>
 <section id="some-ip-gateway-security-goals">
 <h3>SOME/IP Gateway Security Goals<a class="headerlink" href="#some-ip-gateway-security-goals" title="Link to this heading">#</a></h3>
@@ -660,7 +670,7 @@ Protocol implementations shall be wrapped in an abstraction API, that stays stab
 </section>
 <section id="backwards-compatibility">
 <h2>Backwards Compatibility<a class="headerlink" href="#backwards-compatibility" title="Link to this heading">#</a></h2>
-<p>As there is currently no previous solution for communication in S-CORE, no backwards compatibility is required.
+<p>As there is currently no previous solution for gateways in S-CORE, no backwards compatibility is required.
 Subsequent changes to the SOME/IP gateway module shall keep the API stable where possible and introduce breaking APIs only with approval from tech lead circle.
 Applications shall stay stable on API layer, need to recompile is acceptable.</p>
 </section>
@@ -782,9 +792,13 @@ to be properly protected by E2E to maintain a safe communication via the grey SO
 <section id="license-impact">
 <h2>License Impact<a class="headerlink" href="#license-impact" title="Link to this heading">#</a></h2>
 <p>[How could the copyright impacted by the license of the new contribution?]</p>
+<p>Since SOME/IP is a protocol, including applied E2E protection and the according profile (polynom, etc.),
+defined by AUTOSAR and published under the license of AUTOSAR, the gateway implementation shall carefully distinguish between the SOME/IP communication stack,
+the E2E protection of data, and the integration into S-CORE mw::com. Breach of foreign licenses must be avoided.</p>
 </section>
 <section id="how-to-teach-this">
 <h2>How to Teach This<a class="headerlink" href="#how-to-teach-this" title="Link to this heading">#</a></h2>
+<p>TBD</p>
 </section>
 </section>
 
@@ -841,6 +855,7 @@ to be properly protected by E2E to maintain a safe communication via the grey SO
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale">Rationale</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specification">Specification</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-ip-gateway-protocol-implementation">SOME/IP Gateway protocol implementation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-ip-gateway-processes-and-life-cycle-management">SOME/IP Gateway processes and life cycle management</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-ip-gateway-security-goals">SOME/IP Gateway Security Goals</a></li>
 </ul>
 </li>
