@@ -28,44 +28,25 @@ bazel run //:copyright.fix
 ### Building Documentation
 
 Score supports multiple methods for generating documentation, tailored to different workflows:
-1. **Bazel-based builds** for clean, sandboxed outputs.
-2. **Incremental builds** for quick iterations during development.
-3. **IDE integration** for live previews, live warnings and even faster iterations.
+2. **Documentation builds** for building the documentation.
 4. **IDE independent live preview** for live previews of documentation without IDE integration.
-
-#### Bazel-based Build
-
-This method ensures clean and isolated documentation builds in a controlled Bazel environment.
-It is best suited for CI pipelines or production-ready outputs, although it takes longer compared to
-incremental builds.
-Here it is possible to build it either with the current 'main' branch of [process](https://github.com/eclipse-score/process_description) or with the imported release version of it.
-
-
-> Note: 'latest' might not work if it's executed behind a proxy or vpn. If this is the case please use 'release'
+3. **IDE integration** for live previews, live warnings and even faster iterations.
 
 
 ```sh
-bazel build //docs:docs_latest # use current main branch of imported docs repositories (e.g. process_description)
-bazel build //docs:docs_release # use release version imported in MODULE.bazel
+bazel run //:docs # use versions of the dependencies needed for documentation build that are imported in MODULE.bazel
 ```
-The output will be located here,depending on which way was chosen: 
-- bazel-bin/docs/docs_latest/_build/html. 
-- bazel-bin/docs/docs_release/_build/html. 
+The output will be located in `_build`
 
 
+#### IDE independent live preview
 
-#### Incremental build
-
-For local changes and faster feedback, use the incremental build.
-This method generates the documentation directly in the _build directory.
-
+For a documentation live preview independent of an IDE (CLI + browser only), `sphinx-autobuild` can be used.
+This will automatically rebuild the preview after save and have it available at http://127.0.0.1:8000
+Release and latest are both available here as well.
 ```sh
-bazel run //docs:incremental_latest # use current main branch of imported docs repositories (e.g. process_description)
-bazel run //docs:incremental_release # use release version imported in MODULE.bazel
+bazel run //:live_preview # use versions of the dependencies needed for documentation build that are imported in MODULE.bazel
 ```
-Unlike IDE integration, which renders only the current file, this approach is ideal for quickly
-verifying edits across the entire documentation during development.
-
 
 #### IDE integration
 
@@ -73,7 +54,7 @@ For live previews, warnings, and linting during development,
 integrate Esbonio with your IDE (e.g., VS Code):
 
 ```sh
-bazel run //docs:ide_support
+bazel run //:ide_support
 ```
 
 VS Code: Install the Esbonio extension in VS Code. After installation, restart your IDE.
@@ -86,15 +67,6 @@ point your IDE to the .venv_docs virtual environment.
 
 Re-run //docs:ide_support if you update Sphinx extensions or other dependencies.
 
-#### IDE independent live preview
-
-For a documentation live preview independent of an IDE (CLI + browser only), `sphinx-autobuild` can be used.
-This will automatically rebuild the preview after save and have it available at http://127.0.0.1:8000
-Release and latest are both available here as well.
-```sh
-bazel run //docs:live_preview_latest # use current main branch of imported docs repositories (e.g. process_description)
-bazel run //docs:live_preview_release # use release version imported in MODULE.bazel
-```
 
 
 ### Testing
@@ -145,13 +117,11 @@ sudo apt install lcov
 
 ### Notes
 #### Output Locations
-* Bazel builds output, depending on which build was chosen:
-    - bazel-bin/docs/docs_latest/_build/html. 
-    - bazel-bin/docs/docs_release/_build/html. 
+* Bazel builds output in the `_build` directory (cmd: `bazel run //:docs`)
 * Incremental builds output to _build, regardless of chosen way.
 
 #### Troubleshooting
 * Restart your IDE if live previews or warnings are not working after running ide_support.
 * Ensure your virtual environment is up-to-date by re-running //docs:ide_support when dependencies
   change.
-* Ensure you ran //docs:ide_support before executing //:format.check or //:format.fix
+* Ensure you ran //:ide_support before executing //:format.check or //:format.fix
