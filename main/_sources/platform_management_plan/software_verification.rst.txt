@@ -325,8 +325,8 @@ Beside :need:`PROCESS_wp__verification__comp_int_test` and :need:`PROCESS_wp__ve
 following aspects define the coverage of the architectural design.
 
 - :need:`PROCESS_wp__sw_arch_verification` - done by walkthrough (QM) or inspection (safety-critical parts)
-- :need:`PROCESS_wp__sw_component_safety_analysis` for safety-critical parts
-- :need:`PROCESS_wp__feature_safety_analysis` for safety-critical parts
+- :need:`PROCESS_wp__sw_component_fmea` and :need:`PROCESS_wp__sw_component_dfa` for safety-critical parts
+- :need:`PROCESS_wp__feature_fmea` and :need:`PROCESS_wp__feature_dfa` for safety-critical parts
 
 Each architectural element has at least one test case linked with attribute "fully verified" or
 multiple test cases with attribute "partially verified".

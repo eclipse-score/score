@@ -58,7 +58,7 @@ Inter-process Communication Safety Work Products
       - :doc:`../architecture/index`
       - see below
 
-    * - :need:`PROCESS_wp__feature_safety_analysis`
+    * - :need:`PROCESS_wp__feature_fmea`, :need:`PROCESS_wp__feature_dfa`
       - <link to process>
       - <automated>
       - <link to issue>
