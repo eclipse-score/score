@@ -12,14 +12,12 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Development
-###########
+Safety Management
+#################
 
 .. toctree::
-   :maxdepth: 1
+   :titlesonly:
 
-   development_environment
-   api_guideline
-   cpp/index
-   rust/index
-   python/index
+   module_safety_plan
+   module_safety_plan_fdr
+   module_safety_package_fdr

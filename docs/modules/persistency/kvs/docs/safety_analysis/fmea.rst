@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,14 +12,15 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Development
-###########
 
-.. toctree::
-   :maxdepth: 1
+Safety Analysis : FMEA
+======================
 
-   development_environment
-   api_guideline
-   cpp/index
-   rust/index
-   python/index
+.. document:: KVS FMEA
+   :id: doc__kvs_fmea
+   :status: valid
+   :safety: ASIL_B
+   :realizes: PROCESS_wp__sw_component_fmea
+   :tags: Persistency KVS
+
+Because there is no sub-components in KVS, the results of the FMEA are the same as on feature level :need:`doc__persistency_fmea`.
