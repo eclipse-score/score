@@ -1,0 +1,83 @@
+/'
+   # *******************************************************************************
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
+   #
+   # See the NOTICE file(s) distributed with this work for additional
+   # information regarding copyright ownership.
+   #
+   # This program and the accompanying materials are made available under the
+   # terms of the Apache License Version 2.0 which is available at
+   # https://www.apache.org/licenses/LICENSE-2.0
+   #
+   # SPDX-License-Identifier: Apache-2.0
+   # *******************************************************************************
+'/
+allowmixing
+
+package FEO <<feature>> as feat_feo {
+
+    struct "feo::agent::Primary" as feo_primary {
+        + new(config: PrimaryConfig) -> Self
+        + run(&mut self) -> Result
+    }
+
+    struct "feo::agent::Secondary" as feo_secondary {
+        + new(config: SecondaryConfig) -> Self
+        + fn run(self)
+    }
+
+    struct "feo::agent::PrimaryConfig" as feo_primary_config {
+        + cycle_time : Duration
+        + activity_dependencies : HashMap<ActivityId, Vec<ActivityId>>
+        + recorder_ids : Vec<AgentId>
+        {field} + worker_assignments : Vec<(WorkerId, Vec<ActivityIdAndBuilder>)>
+        + timeout : Duration
+        + endpoint : NodeAddress,
+    }
+
+    struct "feo::agent::SecondaryConfig" as feo_secondary_config {
+        + id: AgentId
+        {field} + worker_assignments: Vec<(WorkerId, Vec<ActivityIdAndBuilder>)>
+        + timeout: Duration,
+        + endpoint: NodeAddress,
+    }
+
+    struct "feo::scheduler::Scheduler" as feo_scheduler {
+        + new(...) -> Self
+        + run()
+        + sync_remotes() -> Result
+    }
+
+    interface "feo::activity::Activity" as activity {
+        + init()
+        + step()
+        + shutdown()
+    }
+
+    feo_primary --> activity: use
+    feo_primary --> feo_scheduler: use
+
+    feo_secondary --> activity: use
+
+}
+
+package "User Application" <<application>> as user_application {
+
+    component "Primary Process" as PP
+    component "Secondary Process" as SP
+
+    struct "UserActivity_1" as user_activity_1
+    struct "UserActivity_2" as user_activity_2
+
+    PP --> user_activity_1 : use
+    SP --> user_activity_2 : use
+
+    user_activity_1 ..|> activity : impl
+    user_activity_2 ..|> activity : impl
+}
+
+PP --> feo_primary : use
+PP --> feo_primary_config : use
+SP --> feo_secondary : use
+SP --> feo_secondary_config : use
+

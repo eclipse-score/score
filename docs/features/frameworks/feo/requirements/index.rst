@@ -23,7 +23,7 @@ Definitions
     :id: feat_req__feo__application
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
@@ -40,7 +40,7 @@ Definitions
     :id: feat_req__feo__activity
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
@@ -57,8 +57,8 @@ Definitions
     :id: feat_req__feo__task_chain
     :reqtype: Functional
     :security: NO
-    :safety: QM
-    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
+    :safety: ASIL_B
+    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data, stkh_req__execution_model__processes
     :status: valid
 
     All activities within an application are arranged within a `Task Chain`.
@@ -76,7 +76,7 @@ Definitions
     :id: feat_req__feo__service_activity
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
@@ -89,7 +89,7 @@ Definitions
     :id: feat_req__feo__agent
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
@@ -112,8 +112,8 @@ Dynamic Architecture
     :id: feat_req__feo__application_lifecycle
     :reqtype: Functional
     :security: NO
-    :safety: QM
-    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
+    :safety: ASIL_B
+    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data, stkh_req__execution_model__processes
     :status: valid
 
     The Application Lifecycle consists of 3 phases: Init, Run and Shutdown.
@@ -122,8 +122,8 @@ Dynamic Architecture
     :id: feat_req__feo__activity_init
     :reqtype: Functional
     :security: NO
-    :safety: QM
-    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
+    :safety: ASIL_B
+    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data, stkh_req__execution_model__processes
     :status: valid
 
     Initialization of activities is done during application initialization.
@@ -137,8 +137,8 @@ Dynamic Architecture
     :id: feat_req__feo__activitiy_step
     :reqtype: Functional
     :security: NO
-    :safety: QM
-    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
+    :safety: ASIL_B
+    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data, stkh_req__execution_model__processes
     :status: valid
 
     Each activity is stepped once within each execution of the task chain they belong to.
@@ -149,8 +149,8 @@ Dynamic Architecture
     :id: feat_req__feo__activity_shutdown
     :reqtype: Functional
     :security: NO
-    :safety: QM
-    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
+    :safety: ASIL_B
+    :satisfies: stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data, stkh_req__execution_model__processes
     :status: valid
 
     Shutdown of activities is done during application shutdown.
@@ -202,7 +202,7 @@ Supervision
     :id: feat_req__feo__trustable_computation
     :reqtype: Functional
     :security: NO
-    :safety: QM
+    :safety: ASIL_B
     :satisfies: stkh_req__dependability__safety_features, stkh_req__app_architectures__support_time, stkh_req__app_architectures__support_data
     :status: valid
 
@@ -211,3 +211,106 @@ Supervision
     This can be done e.g. via evaluation of floating point exceptions,
     checking of hardware registers or status information of the
     software platform.
+
+
+Error Handling for S-CORE v0.5
+==============================
+
+.. feat_req:: Response to termination request
+    :id: feat_req__feo__response_term_request
+    :reqtype: Functional
+    :security: YES
+    :safety: ASIL_B
+    :satisfies: stkh_req__dependability__safety_features, stkh_req__dependability__availability, stkh_req__execution_model__processes
+    :status: valid
+
+    If the primary process receives a termination signal, it shall call the shutdown
+    function of all remaining activities in arbitrary sequence and terminate itself.
+
+    If a secondary process receives a termination signal, it shall terminate itself.
+
+
+.. feat_req:: Secondary connection timeout
+    :id: feat_req__feo__secondary_conn_timeout
+    :reqtype: Functional
+    :security: YES
+    :safety: ASIL_B
+    :satisfies: stkh_req__dependability__safety_features, stkh_req__dependability__availability, stkh_req__execution_model__processes
+    :status: valid
+
+    If not all secondary processes connect to the primary in time, the primary shall terminate itself.
+    The startup functions shall not be triggered.
+
+
+.. feat_req:: Activity startup error
+    :id: feat_req__feo__act_startup_error
+    :reqtype: Functional
+    :security: YES
+    :safety: ASIL_B
+    :satisfies: stkh_req__dependability__safety_features, stkh_req__dependability__availability, stkh_req__execution_model__processes
+    :status: valid
+
+    If an error occurs during the execution of a startup function, the primary process shall abort calling
+    startup functions and terminate itself. For all of the activities
+    whose startup functions have already been called successfully, the corresponding shutdown functions shall be
+    executed in arbitrary sequence.
+
+
+.. feat_req:: Activity resource allocation error
+    :id: feat_req__feo__act_alloc_error
+    :reqtype: Functional
+    :security: YES
+    :safety: ASIL_B
+    :satisfies: stkh_req__dependability__safety_features, stkh_req__dependability__availability, stkh_req__execution_model__processes
+    :status: valid
+
+    During initialization (i.e. in the startup function of an activity), activities shall check for resource allocation
+    and report an error to the executor in case of failure.
+
+
+.. feat_req:: Activity timeout
+    :id: feat_req__feo__act_timeout
+    :reqtype: Functional
+    :security: YES
+    :safety: ASIL_B
+    :satisfies: stkh_req__dependability__safety_features, stkh_req__dependability__availability, stkh_req__execution_model__processes
+    :status: valid
+
+    If a timeout occurs during startup, stepping or shutdown of an activity, the primary process shall shutdown all
+    successfully started activities in arbitrary sequence and terminate itself.
+
+
+.. feat_req:: Startup timeout
+    :id: feat_req__feo__startup_timeout
+    :reqtype: Functional
+    :security: YES
+    :safety: ASIL_B
+    :satisfies: stkh_req__dependability__safety_features, stkh_req__dependability__availability, stkh_req__execution_model__processes
+    :status: valid
+
+    If not all activities reach their initialized state within a certain period of time (startup timeout),
+    the primary process shall shutdown all successfully started activities in arbitrary sequence and terminate itself.
+
+
+.. feat_req:: Activity stepping error
+    :id: feat_req__feo__act_stepping_error
+    :reqtype: Functional
+    :security: YES
+    :safety: ASIL_B
+    :satisfies: stkh_req__dependability__safety_features, stkh_req__dependability__availability, stkh_req__execution_model__processes
+    :status: valid
+
+    If an activity fails in the step function, the primary process shall call shutdown for all activities
+    in arbitrary sequence and terminate itself.
+
+
+.. feat_req:: Activity shutdown error
+    :id: feat_req__feo__act_shutdown_error
+    :reqtype: Functional
+    :security: YES
+    :safety: ASIL_B
+    :satisfies: stkh_req__dependability__safety_features, stkh_req__dependability__availability, stkh_req__execution_model__processes
+    :status: valid
+
+    If an activity fails in the shutdown function, the primary process shall shutdown all remaining activities
+    in arbitrary sequence and terminate itself.

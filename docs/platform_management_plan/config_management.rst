@@ -63,8 +63,9 @@ I.e. in Concept Phase, Development Phase and Maintenance.
 Identification and Properties
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Each work product is identified by its sphinx-needs Id, this includes documents identified as such (see project documents list in :need:`doc__documentation_mgt_plan`).
-Ids are checked for uniqueness, see <link PROCESS_gd_req__configuration__UID when merged>.
+Each work product is identified by its sphinx-needs Id, this includes documents identified as such (by the document header as defined in :need:`PROCESS_gd_temp__documentation`).
+The complete list of project documents is defined in the :need:`doc__documentation_mgt_plan`.
+Ids are checked for uniqueness, see :need:`PROCESS_gd_req__configuration_uid`.
 sphinx-needs is also used to document the work products properties/attributes defined in the process area descriptions.
 The work products are stored in text or code files (these are identified by their filenames) within GitHub repositories.
 There is one `platform repository <https://GitHub.com/eclipse-score/score/>`_ and one repository for each module.
@@ -100,19 +101,19 @@ which are after their acceptance merged by the :need:`Committer <PROCESS_rl__com
 All modifications (differences between before and after) are documented in the pull-requests and are the main input to the pull-request reviews.
 See also :need:`doc__platform_change_management_plan`.
 
-For other artefacts modifications are controlled by the bazel build files which are also under configuration control.
+For tool/binaries modifications (version changes) are controlled by the bazel build files. These build files, like other files, are also maintained in GitHub.
 
 
 Branches and Baselines
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Git defines branches as a means of parallel development. In the S-CORE project the following types of branches will be used:
+Branches are used as a means of parallel development. In the S-CORE project the following types of branches will be used:
 
 * local branches - created from "remote" branches, in these the development of the contributors takes place, no restriction on naming.
 * main branch - a "remote" branch (named "main") which contains all the latest file versions checked by CI, reviewed, accepted and merged.
 * release branch - a "remote" branch derived from main branch which is used to prepare a release,
   no functional code changes are allowed, only bug fixes and verification based improvements.
-  Only the technical lead is allowed to approve a merge into a release branch. The branch name is "release-<MAJOR_version>.<MINOR_version>
+  Only the technical lead is allowed to approve a merge into a release branch. The branch name is given as defined in :need:`PROCESS_doc_concept__rel__process`.
 
 The "remote" branch is not "local" to the developer but resides on the "remote" GitHub server.
 
@@ -136,7 +137,7 @@ Backup and Recovery
 ^^^^^^^^^^^^^^^^^^^
 
 Backup and recovery are covered by the Eclipse Foundation hosting the GitHub service for S-CORE.
-For the long term storage, additional measures are taken, see :need:`PROCESS_gd_req__workproducts_storage`
+For the long term storage, additional measures are taken, see :need:`PROCESS_gd_req__config__workproducts_storage`
 
 
 Status and Reporting
@@ -144,10 +145,11 @@ Status and Reporting
 
 Work products defined in our proceses have "status" attributes. These are used to communicate to all the stakeholders.
 The main communication means is a document list containing all documents including their status.
-This list is typically part of the Documentation Management Plan :need:`doc__documentation_mgt_plan` as part of the Platform Management Plan,
+This list is part of the Documentation Management Plan :need:`doc__documentation_mgt_plan` as part of the Platform Management Plan,
 as defined in :need:`PROCESS_gd_guidl__documentation`.
 Completeness of the configuration items (within a baseline) is checked at least for every release
 against the list of planned documents, which is also part of the Documentation Management Plan.
+
 Note that work products consisting of several elements (documented as needs) will be collected in one file
 which will form a document (e.g. there will be a document (doc__*) "feature xy requirements" and in it all the feature's requirements(feat_req__*)).
 This applies to requirements, architeture, detailed design and safety analysis.
@@ -163,9 +165,13 @@ Configuration Management Tooling
 
 Almost all requirements of the standards towards configuration management can be covered by
 standard versioning tooling of the Eclipse Foundation and of the S-CORE project
-("structured text" identification of work products).
+("Docs-as-Code" identification of work products).
 The respective tools used in the project are:
 
-* versioning: GitHub
-* structured text: sphinx-needs
-* CI build: Bazel
+* versioning tool: GitHub
+* "Docs-as-Code" tool: sphinx-needs
+* CI build tool: Bazel
+
+Note 1: A versioning tool covers part of configuration management but not all (namely: storage, retrieval, control and modification, branching and baselining).
+
+Note 2: A "Docs-as-Code" tool is used to identify, attribute and link parts of text files and generate human and machine readable documentation.

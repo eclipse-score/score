@@ -23,6 +23,8 @@ from typing import Any
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = "S-CORE"
+project_url = "https://eclipse-score.github.io/score"
+project_prefix = "S-CORE_"
 author = "S-CORE"
 release = "0.1"
 
