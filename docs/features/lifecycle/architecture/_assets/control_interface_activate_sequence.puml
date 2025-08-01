@@ -1,0 +1,47 @@
+@startuml
+title Control Interface - Activate Run Target
+
+autonumber "<b>[00]"
+
+participant "Tester" as Tester
+participant "State Manager" as SM
+participant "Launch Manager" as LM
+participant "OS (kernel)" as kernel
+participant "DemoApp1" as DemoApp1
+participant "DemoApp2" as DemoApp2
+participant "NetworkApp" as NetworkApp
+
+note over SM, LM: Current Run Target: "BasicApps" (DemoApp1 running)
+note over SM, LM: Requested Run Target: "DemoGroup" (DemoApp1, DemoApp2)
+
+Tester -> SM: Activate Run Target "DemoGroup"
+SM -> SM: evaluate request
+SM -> LM: activate_run_target("DemoGroup")
+activate LM
+
+LM -> LM: analyze current state
+note right of LM: Current: BasicApps (DemoApp1)\nTarget: DemoGroup (DemoApp1, DemoApp2)\nAction: Start DemoApp2, keep DemoApp1
+
+LM -> LM: validate run target "DemoGroup"
+LM -> LM: check dependencies for DemoGroup
+LM -> LM: determine transition plan
+
+alt DemoApp2 needs to be started
+    LM -> kernel: spawn DemoApp2
+    kernel -> DemoApp2: spawn
+    activate DemoApp2
+    kernel --> LM: result of spawning DemoApp2
+
+    LM -> LM: wait for DemoApp2 ready condition
+    DemoApp2 -> DemoApp2: initialize and register device /dev/Demo2
+    DemoApp2 -> LM: signal ready state via Lifecycle API
+    kernel --> LM: event /dev/Demo2 registered
+end
+
+LM -> LM: verify all components in "DemoGroup" are running
+LM -> LM: update current run target state to "DemoGroup"
+LM --> SM: run target "DemoGroup" activated successfully
+
+note over SM, LM: New Run Target: "DemoGroup" (DemoApp1, DemoApp2 running)
+
+@enduml
