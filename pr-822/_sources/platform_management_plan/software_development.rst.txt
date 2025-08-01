@@ -66,6 +66,12 @@ Design guideline
 
 The design guideline is defined in :need:`PROCESS_doc_concept__imp__concept` and :need:`PROCESS_gd_guidl__implementation`.
 
+API guideline
+^^^^^^^^^^^^^
+
+To provide the user with a consistent approach on the use of APIs, there is a guideline documented in :need:`doc__api_guidelines`,
+this defines for example the error handling concept or rules to improve user experience.
+
 Coding guideline
 ^^^^^^^^^^^^^^^^
 
