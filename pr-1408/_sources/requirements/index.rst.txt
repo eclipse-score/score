@@ -18,7 +18,5 @@ Requirements
 ============
 
 .. toctree::
-
    stakeholder/index
-   tool/index
    adr/index

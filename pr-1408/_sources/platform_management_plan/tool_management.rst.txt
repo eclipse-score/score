@@ -169,23 +169,4 @@ development, as they are not used:
 Tool List
 ^^^^^^^^^
 
-.. _platform_tool_list:
-
-.. list-table:: SW Platform tool overview
-    :header-rows: 1
-
-    * - tool Id
-      - tool name
-      - tool status
-      - tool TCL
-      - Link to tool evaluation issue (GitHub Issue)
-      - Link to tool qualification issue (GitHub Issue)
-      - Link to verification report (contains version, use cases, link to manuals, etc.)
-
-    * - #
-      - sphinx-needs
-      - draft <automated>
-      - not evaluated yet
-      - <Link to issue>
-      - <Link to issue>
-      - <Link to tool verification report>
+The S-CORE tools overview can be found here: :ref:`tools`
