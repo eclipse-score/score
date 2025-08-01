@@ -1,8 +1,7 @@
 @startuml
-title Control Interface - Start components
+title Control Interface - Activate Run Target (Legacy)
 
 autonumber "<b>[00]"
-
 
 participant "Tester" as Tester
 participant "State Manager" as SM
@@ -11,22 +10,33 @@ participant "OS (kernel)" as kernel
 participant "DemoApp1" as DemoApp1
 participant "DemoApp2" as DemoApp2
 
+note over SM, LM: Activating Run Target "DemoTarget"
 
-
-Tester -> SM: Start Group (eg. UDS)
+Tester -> SM: Activate Run Target "DemoTarget"
 SM -> SM: evaluate request
-SM -> LM: Start group DemoApps
+SM -> LM: activate_run_target("DemoTarget")
 activate LM
+
+LM -> LM: validate run target exists
+LM -> LM: analyze current vs target state
+LM -> LM: determine components to start
+
 LM -> kernel: spawn DemoApp1
 kernel -> DemoApp1: spawn
-kernel --> LM: result of spawning of DemoApp1
+activate DemoApp1
+kernel --> LM: result of spawning DemoApp1
+
+LM -> kernel: spawn DemoApp2
 kernel -> DemoApp2: spawn
 activate DemoApp2
-kernel --> LM: result of spawning of DemoApp2
+kernel --> LM: result of spawning DemoApp2
 
-LM -> LM: wait for DemoApp2 ready status
+LM -> LM: wait for run target ready conditions
 DemoApp2 -> DemoApp2: register device /dev/Demo2
+DemoApp2 -> LM: signal ready via Lifecycle API
 kernel --> LM: event /dev/Demo2 registered
-LM --> SM: DemoApps started
+
+LM -> LM: verify run target "DemoTarget" fully active
+LM --> SM: run target "DemoTarget" activated
 
 @enduml
