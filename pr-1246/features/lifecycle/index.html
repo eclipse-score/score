@@ -72,7 +72,7 @@
         </script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Requirements" href="requirements/index.html" />
+    <link rel="next" title="Launch manager" href="architecture/launch_manager.html" />
     <link rel="prev" title="Integration" href="../integration/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -468,13 +468,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../infrastructure/index.html">Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../integration/index.html">Integration</a></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Lifecycle</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="requirements/index.html">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="architecture/launch_manager.html">Launch manager</a></li>
-<li class="toctree-l2"><a class="reference internal" href="architecture/control_interface.html">Control Interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="architecture/configuration_parameters.html">Launch Manager Configuration Parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="architecture/application_health_monitor.html">Health Monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture/launch_manager_configuration.html">Launch Manager Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture/health_monitor.html">Health Monitor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="architecture/external_monitoring.html">External Monitoring</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/index.html">Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements/index.html">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="glossary.html">Glossary</a></li>
 </ul>
 </details></li>
@@ -546,7 +544,7 @@
 <p class="admonition-title">Note</p>
 <p>Document header</p>
 </div>
-<div class="need_container docutils container" id="SNCB-38f42190">
+<div class="need_container docutils container" id="SNCB-ae75958e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__lifecycle">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -566,7 +564,7 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">feature_request</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">feature_request</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
@@ -601,30 +599,18 @@
 components in the S-SCORE platform. The goal is to ensure that components can be
 started, stopped, and monitored effectively, providing a robust framework for
 managing the state of the system.</p>
-<p>For every ECU, handling of startup, shutdown, and monitoring of components is crucial
-to ensure the system operates correctly and efficiently. Additionally, we need to
-provide the means to set the system in different operating modes, such as normal
-operation, engineering/debug mode, flash mode etc.
-started, stopped, and monitored effectively, providing a robust framework for managing the state of the system.</p>
 </section>
 <section id="motivation">
 <h2>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h2>
-<p>For every ecu handling of startup, shutdown, and monitoring of components is crucial to
-ensure the system operates correctly and efficiently. Additionally we need do provide the
-means to set the system in different operating modes, such as normal operation, engineering/debug mode,
-flash mode etc.</p>
+<p>For every ECU, handling of startup, shutdown, and monitoring of components is crucial to ensure the system operates correctly and efficiently. Additionally, we need to provide the means to set the system in different Run States, such as normal operation, engineering/debug mode, flash mode etc.
+started, stopped, and monitored effectively, providing a robust framework for managing the state of the system.</p>
 </section>
 <section id="rationale">
 <h2>Rationale<a class="headerlink" href="#rationale" title="Link to this heading">#</a></h2>
-<p>Main task of the lifecycle system is to start and stop <a class="reference internal" href="glossary.html#term-Processes"><span class="xref std std-term">processes</span></a> depending on the
-overall state the user wants to achieve and the functional dependencies between
-the <a class="reference internal" href="glossary.html#term-Processes"><span class="xref std std-term">processes</span></a>.</p>
-<p><a class="reference internal" href="glossary.html#term-Lifecycle-Component"><span class="xref std std-term">Lifecycle Component</span></a> can be very simple like a single process or more complex like a set of processes
-which are started in a certain order and with certain dependencies between them or containers.</p>
-<p>We call a state of the system an <a class="reference internal" href="glossary.html#term-Operating-Mode"><span class="xref std std-term">Operating Mode</span></a>, which is defined via the
-<a class="reference internal" href="glossary.html#term-Lifecycle-Component"><span class="xref std std-term">Lifecycle Component</span></a> running on the system at a certain point in time.
-A lifecycle component is a configuration unit, which describes the executable, which shall be executed
-and the <a class="reference internal" href="glossary.html#term-Sandbox"><span class="xref std std-term">sandbox</span></a> the platform has to provide to run this executable.</p>
+<p>Main task of the lifecycle system is to start and stop <a class="reference internal" href="glossary.html#term-Process"><span class="xref std std-term">Processes</span></a> depending on the overall state the user wants to achieve and the functional dependencies between the <a class="reference internal" href="glossary.html#term-Process"><span class="xref std std-term">Processes</span></a>.</p>
+<p>A <a class="reference internal" href="glossary.html#term-Lifecycle-Component"><span class="xref std std-term">Lifecycle Component</span></a> can be very simple like a single process or more complex like a set of processeswhich are started in a certain order and with certain dependencies between them or containers.</p>
+<p>We call a state of the system a <a class="reference internal" href="glossary.html#term-Run-State"><span class="xref std std-term">Run State</span></a>, which is defined via the <a class="reference internal" href="glossary.html#term-Lifecycle-Component"><span class="xref std std-term">Lifecycle Components</span></a> running on the system at a certain point in time.
+A lifecycle component is a configuration unit, which describes the executable, which shall be executed and the <a class="reference internal" href="glossary.html#term-Sandbox"><span class="xref std std-term">sandbox</span></a> the platform has to provide to run this executable.</p>
 <p>E.g. the <a class="reference internal" href="glossary.html#term-Sandbox"><span class="xref std std-term">sandbox</span></a> shall describe</p>
 <ul class="simple">
 <li><p>environment variables, which shall be set via the lifecycle system</p></li>
@@ -633,35 +619,25 @@ and the <a class="reference internal" href="glossary.html#term-Sandbox"><span cl
 <li><p>user and group IDs under which the process shall be started</p></li>
 <li><p>…</p></li>
 </ul>
-<p>Via the configuration we define a certain operting mode and add all the components, which are needed to
-realize this operating mode as dependencies.</p>
-<p>A second task of the lifecycle system is to supervise the aliveness of the <a class="reference internal" href="glossary.html#term-Processes"><span class="xref std std-term">processes</span></a>,
-which are started and to initiate appropriate actions in case of a failure, which
-might result in many cases in a change of the <a class="reference internal" href="glossary.html#term-Operating-Mode"><span class="xref std std-term">Operating Mode</span></a>.</p>
+<p>Via the configuration we define a certain <a class="reference internal" href="glossary.html#term-Run-State"><span class="xref std std-term">Run State</span></a> and add all the components, which are needed to realize this Run State as dependencies.</p>
+<p>A second task of the lifecycle system is to supervise the aliveness of the <a class="reference internal" href="glossary.html#term-Process"><span class="xref std std-term">Processes</span></a>,
+which are started and to initiate appropriate actions in case of a failure, which might result in many cases in a change of the <a class="reference internal" href="glossary.html#term-Run-State"><span class="xref std std-term">Run State</span></a>.</p>
 <p>The Lifecycle feature addresses the following stakeholder requirements:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="../../requirements/stakeholder/index.html#stkh_req__execution_model__processes" title="stkh_req__execution_model__processes"><em class="xref need">Processes and thread manage... (stkh_req__execution_model__processes)</em></a>: Comprehensive process lifecycle management
-including startup, shutdown, recovery, and cross-process synchronization of threads</p></li>
-<li><p><a class="reference internal" href="../../requirements/stakeholder/index.html#stkh_req__functional_req__file_based" title="stkh_req__functional_req__file_based"><em class="xref need">File Based Configuration (stkh_req__functional_req__file_based)</em></a>: Modular configuration file support allowing changes
-without rebuilding software, enabling flexible system setup and module management</p></li>
+<li><p><a class="reference internal" href="../../requirements/stakeholder/index.html#stkh_req__execution_model__processes" title="stkh_req__execution_model__processes"><em class="xref need">Processes and thread manage... (stkh_req__execution_model__processes)</em></a>: Comprehensive process lifecycle management including startup, shutdown, recovery, and cross-process synchronization of threads</p></li>
+<li><p><a class="reference internal" href="../../requirements/stakeholder/index.html#stkh_req__functional_req__file_based" title="stkh_req__functional_req__file_based"><em class="xref need">File Based Configuration (stkh_req__functional_req__file_based)</em></a>: Modular configuration file support allowing changes without rebuilding software, enabling flexible system setup and module management</p></li>
 <li><p><a class="reference internal" href="../../requirements/stakeholder/index.html#stkh_req__dependability__safety_features" title="stkh_req__dependability__safety_features"><em class="xref need">Safety features (stkh_req__dependability__safety_features)</em></a>: Implementation of monitoring safety mechanisms</p></li>
 </ul>
-<p>A second task of the lifecycle system is to supervise the aliveness of the processes, which are started
-and to initiate appropriate actions in case of a failure, which might result in many cases in
-a change of the operting mode.</p>
-</section>
+<p>A second task of the lifecycle system is to supervise the aliveness of the processes, which are started and to initiate appropriate actions in case of a failure, which might result in many cases in a change of the operting mode.</p>
 <section id="support-of-containers">
-<h2>Support of containers<a class="headerlink" href="#support-of-containers" title="Link to this heading">#</a></h2>
-<p>A <a class="reference internal" href="glossary.html#term-Sandbox"><span class="xref std std-term">Sandbox</span></a> can e.g. realized as a container, which is  a lightweight, standalone executable
-package that includes everything needed to run a piece of software,
-including the code, runtime, libraries, and system tools.
+<h3>Support of containers<a class="headerlink" href="#support-of-containers" title="Link to this heading">#</a></h3>
+<p>A <a class="reference internal" href="glossary.html#term-Sandbox"><span class="xref std std-term">Sandbox</span></a> can also be realized as a container, which is  a lightweight, standalone executable package that includes everything needed to run a piece of software, including the code, runtime, libraries, and system tools.
 In the context of the S-SCORE platform, container can be used to encapsulate applications and their dependencies,
 ensuring consistent execution across different environments.</p>
 <p>Main task of the lifecycle system is to start and stop components with an OCI compliant runtime
 environment <a class="github reference external" href="https://github.com/opencontainers/runtime-spec">opencontainers/runtime-spec</a> depending on the overall state the
 user wants to achieve and the functional dependencies between the processes.</p>
-<p>We call a runtime-state of the system an operating mode, which is defined via the processes running on the
-system at a certain point in time the with the OCI runtime.</p>
+<p>We call a runtime-state of the system an Run State, which is defined via the processes running on the system at a certain point in time.</p>
 <p>Coming from the OCI Specification the operation modes is a superset of the OCI states</p>
 <ul class="simple">
 <li><p>Creating</p></li>
@@ -670,19 +646,20 @@ system at a certain point in time the with the OCI runtime.</p>
 <li><p>Stopped</p></li>
 </ul>
 </section>
+</section>
 <section id="specification">
 <h2>Specification<a class="headerlink" href="#specification" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-505f6c31">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_sta table" id="feat_arc_sta__lifecycle__overview">
+<div class="need_container docutils container" id="SNCB-0493f56a">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_mod_view_sta table" id="mod_view_sta__lifecycle__overview">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
 <div class="line"><span><span class="needs_title"><span class="needs_data">Feature architecture</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
-<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
-<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
-<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span></span></div>
 </div>
 </td>
 <td class="head_right" colspan="2"><div class="needs_head_right line-block">
@@ -691,104 +668,20 @@ system at a certain point in time the with the OCI runtime.</p>
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span></span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
-<div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">includes: <span class="includes"><span><a class="reference internal" href="architecture/control_interface.html#logic_arc_int__lifecycle__controlif" title="feat_arc_sta__lifecycle__overview">logic_arc_int__lifecycle__controlif</a>, <a class="reference internal" href="architecture/application_health_monitor.html#logic_arc_int__lifecycle__health_monitor_if" title="feat_arc_sta__lifecycle__overview">logic_arc_int__lifecycle__health_monitor_if</a>, <a class="reference internal" href="architecture/launch_manager.html#logic_arc_int__lifecycle__alive_if" title="feat_arc_sta__lifecycle__overview">logic_arc_int__lifecycle__alive_if</a></span></span></div>
+<div class="line"><span><div class="line">includes: <span class="includes"><span><a class="reference internal" href="../../modules/lifecycle/index.html#comp_arc_sta__lifecycle__launch_manager" title="mod_view_sta__lifecycle__overview">comp_arc_sta__lifecycle__launch_manager</a>, <a class="reference internal" href="../../modules/lifecycle/index.html#comp_arc_sta__lifecycle__healthmonitor" title="mod_view_sta__lifecycle__overview">comp_arc_sta__lifecycle__healthmonitor</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-features/lifecycle/index-0">
-<object data="../../_images/plantuml-2adeed5d91c633d2ba72ea021b88feb6aec653b3.svg" type="image/svg+xml" style="width:1084px;height:774px;background:#FFFFFF;"></object></p>
+<object data="../../_images/plantuml-1ed0d4aa3de2b300403594044ace3684953216b1.svg" type="image/svg+xml" style="width:1185px;height:757px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
-<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_arc_sta__lifecycle__overview" title="feat_arc_sta__lifecycle__overview">feat_arc_sta__lifecycle__overview</a></span></span></div>
-</div>
-</td>
-<td class="footer" colspan="2"><div class="needs_footer line-block">
-<div class="line"><span><span class="needs_type_name"><span class="needs_data">Feature Architecture Static View</span></span></span></div>
-</div>
-</td>
-<td class="footer_right" colspan="2"></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>The overall functionality of the feature can be split into 2 subfeatures, which are
-closely coupled to each other:</p>
-<ul class="simple">
-<li><p><strong>Lifecycle Management</strong>: This subfeature is responsible for the management of
-the lifecycle of a <a class="reference internal" href="glossary.html#term-Lifecycle-Component"><span class="xref std std-term">Lifecycle Component</span></a>, including starting and stopping <a class="reference internal" href="glossary.html#term-Processes"><span class="xref std std-term">processes</span></a>,
-managing their dependencies, and handling different operating modes.</p></li>
-<li><p><strong>Health Monitoring</strong>: Provides platform functionality to monitor certain health
-conditions of applications:</p>
-<ul>
-<li><p>Alive Monitoring</p></li>
-<li><p>Deadline Monitoring</p></li>
-<li><p>Logical Programflow Monitoring</p></li>
-</ul>
-</li>
-</ul>
-</section>
-<section id="architecture">
-<h2>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h2>
-<p>The concept is based on 2 major components:</p>
-<ul class="simple">
-<li><p><strong>:term:`Launch Manager`</strong>: Responsible for starting and stopping components based on
-the defined operating modes and alive supervision of the started components</p></li>
-<li><p><strong>:term:`Health Monitor`</strong>: Provides process local monitoring functionalities such as
-deadline monitoring and logical program flow monitoring</p></li>
-</ul>
-</section>
-<section id="requirements">
-<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="requirements/index.html">Requirements</a></li>
-</ul>
-</div>
-</section>
-<section id="modules">
-<h2>Modules<a class="headerlink" href="#modules" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-e831ce16">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_mod_view_sta table" id="mod_view_sta__lifecycle__1">
-<tbody>
-<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">Lifecycle</span></span></span></div>
-</div>
-</td>
-<td class="head_center" colspan="2"><div class="needs_head line-block">
-<div class="line"><span></span></div>
-<div class="line"><span></span></div>
-<div class="line"><span></span></div>
-</div>
-</td>
-<td class="head_right" colspan="2"><div class="needs_head_right line-block">
-<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
-</div>
-</td>
-</tr>
-<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span></span></span></div>
-</span></span></div>
-<div class="line"><span><div class="line">includes: <span class="includes"><span><a class="reference internal" href="architecture/launch_manager.html#comp_arc_sta__lifecycle__launch_manager" title="mod_view_sta__lifecycle__1">comp_arc_sta__lifecycle__launch_manager</a>, <a class="reference internal" href="architecture/application_health_monitor.html#comp_arc_sta__lifecycle__healthmonitor" title="mod_view_sta__lifecycle__1">comp_arc_sta__lifecycle__healthmonitor</a></span></span></div>
-</span></div>
-</div>
-</td>
-<td class="meta" colspan="3"></td>
-</tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-features/lifecycle/index-1">
-<object data="../../_images/plantuml-f38f45e87b03c472a101a12f8d588b86790d479b.svg" type="image/svg+xml" style="width:1083px;height:623px;background:#FFFFFF;"></object></p>
-</td>
-</tr>
-<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
-<div class="line"><span><span class="needs-id"><a class="reference internal" href="#mod_view_sta__lifecycle__1" title="mod_view_sta__lifecycle__1">mod_view_sta__lifecycle__1</a></span></span></div>
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#mod_view_sta__lifecycle__overview" title="mod_view_sta__lifecycle__overview">mod_view_sta__lifecycle__overview</a></span></span></div>
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
@@ -801,14 +694,50 @@ deadline monitoring and logical program flow monitoring</p></li>
 </table>
 </div>
 </div>
+<p>The overall functionality of the feature can be split into 2 subfeatures, which are
+closely coupled to each other:</p>
+<ul class="simple">
+<li><p><strong>Lifecycle Management</strong>: This subfeature is responsible for the management of
+the lifecycle of a <a class="reference internal" href="glossary.html#term-Lifecycle-Component"><span class="xref std std-term">Lifecycle Component</span></a>,
+* Creating/Initializing <a class="reference internal" href="glossary.html#term-Sandbox"><span class="xref std std-term">Sandbox</span></a>
+* Starting and stopping <a class="reference internal" href="glossary.html#term-Process"><span class="xref std std-term">Processes</span></a> via <a class="reference internal" href="glossary.html#term-Run-State"><span class="xref std std-term">Run State</span></a> s</p></li>
+<li><p><strong>Health Monitoring</strong>: Provides platform functionality to monitor certain health
+conditions of applications:</p>
+<ul>
+<li><p>Alive Monitoring</p></li>
+<li><p>Deadline Monitoring</p></li>
+<li><p>Logical Programflow Monitoring</p></li>
+</ul>
+</li>
+<li><p><strong>External Monitoring</strong>: Provides a concept to integrate with a external monitoring facilities.</p></li>
+</ul>
+</section>
+<section id="architecture">
+<h2>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h2>
+<p>The concept is based on 2 major components:</p>
+<ul class="simple">
+<li><p><strong>Launch Manager</strong>: Responsible for starting and stopping components based on
+the defined Run States and alive supervision of the started components</p></li>
+<li><p><strong>Health Monitor</strong>: Provides process local monitoring functionalities such as
+deadline monitoring and logical program flow monitoring</p></li>
+</ul>
+<section id="details">
+<h3>Details<a class="headerlink" href="#details" title="Link to this heading">#</a></h3>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="architecture/launch_manager.html">Launch manager</a></li>
-<li class="toctree-l1"><a class="reference internal" href="architecture/control_interface.html">Control Interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="architecture/configuration_parameters.html">Launch Manager Configuration Parameters</a></li>
-<li class="toctree-l1"><a class="reference internal" href="architecture/application_health_monitor.html">Health Monitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture/launch_manager_configuration.html">Launch Manager Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture/health_monitor.html">Health Monitor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture/external_monitoring.html">External Monitoring</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modules/index.html">Modules</a></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="requirements/index.html">Requirements</a></li>
 </ul>
 </div>
 </section>
@@ -828,17 +757,17 @@ deadline monitoring and logical program flow monitoring</p></li>
 <h2>Security Impact<a class="headerlink" href="#security-impact" title="Link to this heading">#</a></h2>
 <p>The <a class="reference internal" href="glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> has to ensure a proper isolation of the different proceses for
 security reasons.</p>
-<p>TODO: Add security requirements.</p>
 </section>
 <section id="safety-impact">
 <h2>Safety Impact<a class="headerlink" href="#safety-impact" title="Link to this heading">#</a></h2>
 <p>The <a class="reference internal" href="glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> has to ensure a proper isolation of the different proceses for
 safety reasons.</p>
-<p>TODO: Add safety requirements.</p>
 </section>
 <section id="license-impact">
 <h2>License Impact<a class="headerlink" href="#license-impact" title="Link to this heading">#</a></h2>
-<p>TBD</p>
+<ul class="simple">
+<li></li>
+</ul>
 </section>
 <section id="how-to-teach-this">
 <h2>How to Teach This<a class="headerlink" href="#how-to-teach-this" title="Link to this heading">#</a></h2>
@@ -846,11 +775,13 @@ safety reasons.</p>
 </section>
 <section id="rejected-ideas">
 <h2>Rejected Ideas<a class="headerlink" href="#rejected-ideas" title="Link to this heading">#</a></h2>
-<p>TBD</p>
+<p>None so far</p>
 </section>
 <section id="open-issues">
 <h2>Open Issues<a class="headerlink" href="#open-issues" title="Link to this heading">#</a></h2>
-<p>TBD</p>
+<ul class="simple">
+<li><p>Define safety and security concept</p></li>
+</ul>
 </section>
 <section id="footnotes">
 <h2>Footnotes<a class="headerlink" href="#footnotes" title="Link to this heading">#</a></h2>
@@ -878,11 +809,11 @@ safety reasons.</p>
       </div>
     </a>
     <a class="right-next"
-       href="requirements/index.html"
+       href="architecture/launch_manager.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Requirements</p>
+        <p class="prev-next-title">Launch manager</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -908,12 +839,16 @@ safety reasons.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-flag">Feature Flag</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale">Rationale</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-of-containers">Support of containers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale">Rationale</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#support-of-containers">Support of containers</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specification">Specification</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#details">Details</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modules">Modules</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terms-and-definitions">Terms and Definitions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backwards-compatibility">Backwards Compatibility</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#security-impact">Security Impact</a></li>

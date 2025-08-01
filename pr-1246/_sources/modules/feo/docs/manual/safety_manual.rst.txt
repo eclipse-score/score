@@ -95,7 +95,7 @@ Assumptions on the Environment
    - std::vec::Vec
 
    **Note:** The above list is not yet complete. It needs to be refined based on a final implementation.
-   At the moment, it covers probably about 95% of std library usages.
+   At the moment, it covers approximately 95% of std library usages.
    An accurate list could be determined by switching feo to #![no_std] and looking at the compilation errors,
    but it gets quickly out of date with a changing codebase.
 

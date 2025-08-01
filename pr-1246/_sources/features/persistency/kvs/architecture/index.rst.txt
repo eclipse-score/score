@@ -12,14 +12,22 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Feature Architecture : persistency/kvs
-======================================
+.. _feature_architecture_PersistencyKvs:
+
+Architecture
+============
+
+.. document:: Persistency KVS Feature Architecture
+   :id: doc__persistency_kvs_feat_arch
+   :status: valid
+   :safety: ASIL_B
+   :realizes: PROCESS_wp__feature_arch
 
 Overview
 --------
 
-- kvs provides the capability to efficiently store, retrieve, and
-  manage key-value pairs in a persistent storage system.
+The Key-Value-Storage (kvs) provides the capability to efficiently store,
+retrieve, and manage key-value pairs in a persistent storage system.
 
 Description
 -----------
@@ -37,6 +45,13 @@ Rationale Behind Architecture Decomposition
 - The architecture is decomposed to include a FileStorage component (fs) to read and write to the file system.
 
 
+Glossary
+--------
+
+- User: Program code that is written by a person that initiates the given
+  functionality call or receives a callback.
+
+
 Static Architecture
 -------------------
 
@@ -45,7 +60,7 @@ Static Architecture
    :security: YES
    :safety: ASIL_B
    :includes: logic_arc_int__persistency__interface
-   :fulfils: feat_req__persistency__default_value_get,feat_req__persistency__default_values,feat_req__persistency__events,feat_req__persistency__integrity_check,feat_req__persistency__persist_data,feat_req__persistency__persistency,feat_req__persistency__snapshots,feat_req__persistency__support_datatype_keys,feat_req__persistency__support_datatype_value
+   :fulfils: feat_req__persistency__default_value_get,feat_req__persistency__default_values,feat_req__persistency__events,feat_req__persistency__integrity_check,feat_req__persistency__persist_data,feat_req__persistency__persistency,feat_req__persistency__snapshots,feat_req__persistency__support_datatype_keys,feat_req__persistency__support_datatype_value,feat_req__persistency__variant_management,feat_req__persistency__default_value_file,feat_req__persistency__config_file,feat_req__persistency__async_api,feat_req__persistency__access_control,feat_req__persistency__intra_process_comm
    :status: valid
 
    .. uml:: _assets/kvs_static_view.puml

@@ -26,7 +26,7 @@ Launching Processes
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
-    The :term:`Launch Manager` shall provide support for launching :term:`processes`.
+    The :term:`Launch Manager` shall provide support for launching :term:`Processes <Process>`.
 
 .. feat_req:: Process dependency handling
     :id: feat_req__lifecycle__process_ordering
@@ -37,7 +37,7 @@ Launching Processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for ordering the launching of
-    :term:`processes` based on the dependencies.
+    :term:`Processes <Process>` based on the dependencies.
 
 
 .. feat_req:: Launching processes in parallel
@@ -48,7 +48,7 @@ Launching Processes
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
-    The :term:`Launch Manager` shall provide support for launching :term:`processes`
+    The :term:`Launch Manager` shall provide support for launching :term:`Processes <Process>`
     in parallel.
 
 .. feat_req:: Control interface support
@@ -72,7 +72,7 @@ Launching Processes
     :status: invalid
 
     The :term:`Launch Manager` shall provide support to pass the output of one or
-    multiple :term:`processes` as input arguments to another process.
+    multiple :term:`Processes <Process>` as input arguments to another process.
 
 .. feat_req:: Handling process args
     :id: feat_req__lifecycle__process_launch_args
@@ -194,7 +194,7 @@ Launching Processes
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
-    The :term:`Launch Manager` shall provide support for launching :term:`processes`
+    The :term:`Launch Manager` shall provide support for launching :term:`Processes <Process>`
     with configured OS-specific capabilities and privileges.
 
 .. feat_req:: File descriptor inheritance support
@@ -310,7 +310,7 @@ Conditional Launching
     :status: invalid
 
     The :term:`Launch Manager` shall provide support to conditionally start a process
-    or process group based on the return value of a single or multiple :term:`processes`
+    or process group based on the return value of a single or multiple :term:`Processes <Process>`
     executed before.
 
 .. feat_req:: Condition timeout
@@ -445,8 +445,8 @@ Conditional Launching
 
     The Launch Manager shall provide a way to define the stop sequence for each :term:`SWC` (Software Components).
 
-Process Adoption and Management
--------------------------------
+Process Management
+------------------
 
 .. feat_req:: Process adoption
     :id: feat_req__lifecycle__running_processes
@@ -456,7 +456,7 @@ Process Adoption and Management
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
-    The :term:`Launch Manager` shall be able to adopt already running :term:`processes`.
+    The :term:`Launch Manager` shall be able to adopt already running :term:`Processes <Process>`.
 
 .. feat_req:: Dropping process responsibility
     :id: feat_req__lifecycle__drop_supervsion
@@ -467,7 +467,7 @@ Process Adoption and Management
     :status: invalid
 
     The :term:`Launch Manager` shall provide support to dropping all surveillance
-    and failure reaction activities of :term:`processes`.
+    and failure reaction activities of :term:`Processes <Process>`.
 
 
 .. feat_req:: Multiple instance of executable
@@ -524,8 +524,8 @@ Process Adoption and Management
     The Launch Manager shall be compliant to the `OCI Specification v1.2.0 <https://github.com/opencontainers/runtime-spec/releases/tag/v1.2.0>`__.
 
 
-Groups
-......
+Run targets
+-----------
 
 .. feat_req:: Run target support
     :id: feat_req__lifecycle__run_target_support
@@ -536,7 +536,7 @@ Groups
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for :term:`run targets <Run target>` to define
-    collections of :term:`processes` that can be launched together.
+    collections of :term:`Processes <Process>` that can be launched together.
 
 .. feat_req:: Launching run target
     :id: feat_req__lifecycle__start_named_run_target
@@ -566,7 +566,7 @@ Groups
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
-    The :term:`Launch Manager` shall have a means for the launched :term:`processes`
+    The :term:`Launch Manager` shall have a means for the launched :term:`Processes <Process>`
     to communicate a state, which represents the launched processes' internal state,
     to the launcher.
 
@@ -593,7 +593,7 @@ Terminating Processes
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
-    The :term:`Launch Manager` shall provide support for terminating :term:`processes`.
+    The :term:`Launch Manager` shall provide support for terminating :term:`Processes <Process>`.
 
 .. feat_req:: Handling process dependency in termination
     :id: feat_req__lifecycle__terminationn_dependency
@@ -603,7 +603,7 @@ Terminating Processes
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
-    The :term:`Launch Manager` shall terminate the :term:`processes` based on the
+    The :term:`Launch Manager` shall terminate the :term:`Processes <Process>` based on the
     dependency order.
 
 
@@ -639,7 +639,7 @@ Terminating Processes
     :status: invalid
 
     The :term:`Launch Manager` shall support slow shutdown by terminating the
-    :term:`processes` in the dependency order.
+    :term:`Processes <Process>` in the dependency order.
 
 .. feat_req:: Fast shutdown
     :id: feat_req__lifecycle__fast_shutdown_support
@@ -650,7 +650,7 @@ Terminating Processes
     :status: invalid
 
     The :term:`Launch Manager` shall support fast shutdown by terminating itself
-    without affecting the started :term:`processes`.
+    without affecting the started :term:`Processes <Process>`.
 
 .. feat_req:: Launch Manager shutdown
     :id: feat_req__lifecycle__launcher_exit_shutdown
@@ -661,7 +661,7 @@ Terminating Processes
     :status: invalid
 
     The :term:`Launch Manager` shall exit after performing shutdown operation by
-    stopping all the :term:`processes` it owns in the dependency order when requested.
+    stopping all the :term:`Processes <Process>` it owns in the dependency order when requested.
 
 .. feat_req:: Shutdown signal handling
     :id: feat_req__lifecycle__shutdown_signal
@@ -675,8 +675,8 @@ Terminating Processes
     the process. In case the process does not terminate itself, a SIGKILL shall be sent.
 
 
-:term:`Control Interface`
--------------------------
+Control Interface
+-----------------
 
 .. feat_req:: Control commands
     :id: feat_req__lifecycle__control_commands
@@ -738,7 +738,7 @@ Monitoring, Notification and Recovery
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for monitoring abnormal
-    termination of :term:`processes`.
+    termination of :term:`Processes <Process>`.
 
 .. feat_req:: Process state notification
     :id: feat_req__lifecycle__ext_monitor_notify
@@ -761,7 +761,7 @@ Monitoring, Notification and Recovery
     :status: invalid
 
     The :term:`Launch Manager` shall support :term:`Recovery Action` for the
-    abnormally terminated :term:`processes`.
+    abnormally terminated :term:`Processes <Process>`.
 
 .. feat_req:: Run target switch as recovery action
     :id: feat_req__lifecycle__recov_run_target_switch
@@ -807,7 +807,7 @@ Monitoring, Notification and Recovery
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for monitoring adopted
-    :term:`processes`.
+    :term:`Processes <Process>`.
 
 .. feat_req:: Process launch monitoring
     :id: feat_req__lifecycle__failure_detect
@@ -829,7 +829,7 @@ Monitoring, Notification and Recovery
     :status: invalid
 
     The :term:`Launch Manager` shall be able to detect and react to loss of
-    :term:`Liveliness` of the :term:`processes` it owns.
+    :term:`Liveliness` of the :term:`Processes <Process>` it owns.
 
 .. feat_req:: Process monitoring
     :id: feat_req__lifecycle__process_monitoring
@@ -839,7 +839,7 @@ Monitoring, Notification and Recovery
     :satisfies: stkh_req__execution_model__processes
     :status: invalid
 
-    The :term:`Launch Manager` shall monitor the state of the :term:`processes` as
+    The :term:`Launch Manager` shall monitor the state of the :term:`Processes <Process>` as
     specified by the set of executables.
 
 
@@ -933,7 +933,7 @@ Logging
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for logging process launches,
-    :term:`processes` exit/recovery, internal tasks, and interaction with external monitor.
+    :term:`Processes <Process>` exit/recovery, internal tasks, and interaction with external monitor.
 
 .. feat_req:: Logging timestamp
     :id: feat_req__lifecycle__log_timestamp

@@ -72,8 +72,8 @@
         </script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Control Interface" href="control_interface.html" />
-    <link rel="prev" title="Requirements" href="../requirements/index.html" />
+    <link rel="next" title="Launch Manager Configuration" href="launch_manager_configuration.html" />
+    <link rel="prev" title="Lifecycle" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
@@ -468,13 +468,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../../infrastructure/index.html">Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../integration/index.html">Integration</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Lifecycle</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../requirements/index.html">Requirements</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Launch manager</a></li>
-<li class="toctree-l2"><a class="reference internal" href="control_interface.html">Control Interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configuration_parameters.html">Launch Manager Configuration Parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="application_health_monitor.html">Health Monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="launch_manager_configuration.html">Launch Manager Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="health_monitor.html">Health Monitor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="external_monitoring.html">External Monitoring</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../modules/index.html">Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../requirements/index.html">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 </ul>
 </details></li>
@@ -545,19 +543,41 @@
                   
   <section id="launch-manager">
 <h1>Launch manager<a class="headerlink" href="#launch-manager" title="Link to this heading">#</a></h1>
-<p>The <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch manager</span></a> is a component that provides a framework for managing the lifecycle of
-processes in the S-CORE platform.
-It allows for launching, monitoring, and controlling processes based on defined configurations and
-requirements.
-As such it is a central part of the lifecycle management in S-CORE and knows about the state of all
-processes in the system</p>
+<p>The <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> is a component that provides a framework for managing
+the lifecycle of processes in the S-CORE platform. It allows for launching,
+monitoring, and controlling processes based on defined configurations and
+requirements. As such, it is a central part of the lifecycle management in
+S-CORE and knows about the state of all processes in the system.</p>
+<p>It’s foreseen ECU projects will need a custom state management to fulfill ECU-project specific requirements.  The S-Core stack will offer a framework to control application lifecycle, but will not specify the State Manager.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>The functionality of the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> is defined by configuration data, which spawns a directed acyclic graph (DAG) of <a class="reference internal" href="../../analysis-infra/logging/docs/glossary.html#term-component"><span class="xref std std-term">Components</span></a> and so called <a class="reference internal" href="../glossary.html#term-Run-target"><span class="xref std std-term">Run Targets</span></a>.
+The <a class="reference internal" href="../glossary.html#term-Run-target"><span class="xref std std-term">Run Targets</span></a> are virtual nodes in the DAG and represent <a class="reference internal" href="../glossary.html#term-Run-State"><span class="xref std std-term">Run States</span></a> of the system.
+The <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> is responsible for starting and stopping the processes in the correct order, based on the dependencies defined in the configuration data.</p>
+<p>E.g. the configuration below consists of three <a class="reference internal" href="../glossary.html#term-Run-target"><span class="xref std std-term">Run Targets</span></a> managing 9 components. If the user selects e.g. the <a class="reference internal" href="../glossary.html#term-Run-target"><span class="xref std std-term">Run Target</span></a> “debug” the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> will start the components in the following order defined by the dependencies.</p>
+<ol class="arabic simple">
+<li><p>flash driver</p></li>
+<li><p>filesystem</p></li>
+<li><p>setup filesystems</p></li>
+<li><p>networking</p></li>
+<li><p>ssh</p></li>
+</ol>
+<figure class="align-center">
+<p class="plantuml">
+<object data="../../../_images/plantuml-61a7f68f7f8a22f51b992ae80355e1922455e2ae.svg" type="image/svg+xml" style="width:397px;height:933px;background:#FFFFFF;"></object></p>
+</figure>
+<p>The <a class="reference internal" href="../../../modules/lifecycle/index.html#comp_arc_sta__lifecycle__launch_manager" title="comp_arc_sta__lifecycle__launch_manager"><em class="xref need">Launch Manager (comp_arc_sta__lifecycle__launch_manager)</em></a> implements the following interfaces,for the selection of <a class="reference internal" href="../glossary.html#term-Run-target"><span class="xref std std-term">Run Target</span></a> s, starting and stopping of components and monitoring of the processes.</p>
+</section>
+<section id="control-interface">
+<h2>Control Interface<a class="headerlink" href="#control-interface" title="Link to this heading">#</a></h2>
+<p>This interface provides control functionality for activating and managing run targets.It allows users to trigger execution of configured <a class="reference internal" href="../glossary.html#term-Run-target"><span class="xref std std-term">Run targets</span></a> through a standardized activation mechanism.</p>
 <section id="static-architecture">
-<h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-5982c997">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__alive_if">
+<h3>Static architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h3>
+<div class="need_container docutils container" id="SNCB-4a0a99c6">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__controlif">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">Alive Interface</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">Control Interface</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -573,20 +593,523 @@ processes in the system</p>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../../communication/docs/requirements/index.html#feat_req__com__interfaces" title="logic_arc_int__lifecycle__alive_if">feat_req__com__interfaces</a></span></span></div>
-<div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="#comp_arc_sta__lifecycle__launch_manager" title="logic_arc_int__lifecycle__alive_if">comp_arc_sta__lifecycle__launch_manager</a></span></span></div>
-<div class="line">used by: <span class="uses"><span><a class="reference internal" href="application_health_monitor.html#comp_arc_sta__lifecycle__healthmonitor" title="logic_arc_int__lifecycle__alive_if">comp_arc_sta__lifecycle__healthmonitor</a></span></span></div>
-<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../index.html#feat_arc_sta__lifecycle__overview" title="logic_arc_int__lifecycle__alive_if">feat_arc_sta__lifecycle__overview</a></span></span></div>
+<div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../../communication/docs/requirements/index.html#feat_req__com__interfaces" title="logic_arc_int__lifecycle__controlif">feat_req__com__interfaces</a></span></span></div>
+<div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="../../../modules/lifecycle/index.html#comp_arc_sta__lifecycle__launch_manager" title="logic_arc_int__lifecycle__controlif">comp_arc_sta__lifecycle__launch_manager</a></span></span></div>
+<div class="line">includes: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int_op__lifecycle__activate_target" title="logic_arc_int__lifecycle__controlif">logic_arc_int_op__lifecycle__activate_target</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int__lifecycle__controlif" title="logic_arc_int__lifecycle__controlif">logic_arc_int__lifecycle__controlif</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Logical Architecture Interfaces</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><strong>Operations</strong></p>
+<div class="need_container docutils container" id="SNCB-6374c033">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__activate_target">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Activate Run Target</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
+<div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__lifecycle__controlif" title="logic_arc_int_op__lifecycle__activate_target">logic_arc_int__lifecycle__controlif</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int_op__lifecycle__activate_target" title="logic_arc_int_op__lifecycle__activate_target">logic_arc_int_op__lifecycle__activate_target</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Logical Architecture Interface Operation</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> shall provide an interface, which allows an external State Manager application to request the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> to start, stop or restart applications or groups of applications,
+which allows the implementation of a state management applications to support dynamic state control.</p>
+</section>
+<section id="dynamic-architecture">
+<h3>Dynamic architecture<a class="headerlink" href="#dynamic-architecture" title="Link to this heading">#</a></h3>
+<p>The following use cases are supported by the <cite>ControlInterface</cite> provided by the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a>.</p>
+<p><strong>Activating a Run Target</strong></p>
+<p>When a request to activate a run target is received via the <cite>ControlInterface</cite>, the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> shall perform the following operations:</p>
+<ol class="arabic simple">
+<li><p><strong>Validation</strong>: Evaluate if the conditions are correct for activating the requested run target:
+- The run target exists in the configuration
+- All dependencies for the run target are resolvable
+- Required resources are available</p></li>
+<li><p><strong>Transition Logic</strong>: Determine the transition from the current state to the target state:
+- If a different run target is active, perform a switch operation (stop current, start requested)
+- If the same run target is already active, verify its state and potentially restart failed components</p></li>
+<li><p><strong>Execution</strong>: Execute the transition in the correct dependency order:
+- Stop components that are not part of the new run target
+- Start components that are required for the new run target
+- Respect dependency relationships during both stop and start operations</p></li>
+<li><p><strong>Response</strong>: Return status to the caller:
+- Success if all components transitioned correctly
+- Failure with detailed error information if any component failed to transition</p></li>
+</ol>
+<p>This unified approach allows external state managers to request any run target activation without needing to know the current system state, as the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> handles the transition logic internally.</p>
+<div class="need_container docutils container" id="SNCB-02aea5bf">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__lifecycle__control_if_activate">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Control interface dynamic architecture activate run target</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
+<div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__control_commands" title="feat_arc_dyn__lifecycle__control_if_activate">feat_req__lifecycle__control_commands</a>, <a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__request_run_target_start" title="feat_arc_dyn__lifecycle__control_if_activate">feat_req__lifecycle__request_run_target_start</a>, <a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__switch_run_targets" title="feat_arc_dyn__lifecycle__control_if_activate">feat_req__lifecycle__switch_run_targets</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><figure class="align-center">
+<p class="plantuml">
+<object data="../../../_images/plantuml-361ce0685cc4c26a9ca495a3590ee9c15a510d53.svg" type="image/svg+xml" style="width:1396px;height:779px;background:#FFFFFF;"></object></p>
+</figure>
+</td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_arc_dyn__lifecycle__control_if_activate" title="feat_arc_dyn__lifecycle__control_if_activate">feat_arc_dyn__lifecycle__control_if_activate</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Feature Architecture Dynamic View</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="requirements">
+<h3>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__control_commands" title="feat_req__lifecycle__control_commands"><em class="xref need">Control commands (feat_req__lifecycle__control_commands)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__request_run_target_start" title="feat_req__lifecycle__request_run_target_start"><em class="xref need">Request run target launch (feat_req__lifecycle__request_run_target_start)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__switch_run_targets" title="feat_req__lifecycle__switch_run_targets"><em class="xref need">Switch between run targets (feat_req__lifecycle__switch_run_targets)</em></a></p></li>
+</ul>
+</section>
+</section>
+<section id="lifecycle-interface">
+<h2>Lifecycle Interface<a class="headerlink" href="#lifecycle-interface" title="Link to this heading">#</a></h2>
+<p>The <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> provides interfaces for communication with launched applications, supporting two distinct application types:</p>
+<ol class="arabic simple">
+<li><p><strong>SCORE Applications</strong>: Implement the full Lifecycle Interface for bidirectional communication with state reporting, liveliness indication, and conditional signaling</p></li>
+<li><p><strong>Native Applications</strong>: Controlled exclusively via POSIX signals (SIGTERM, SIGKILL, etc.) without direct API communication</p></li>
+</ol>
+<p>This dual approach enables the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> to manage both legacy native applications and SCORE-aware applications within the same system.</p>
+<p>The Lifecycle Interface serves as the communication channel between applications and the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a>:</p>
+<p><strong>For SCORE Applications:</strong>
+- Application state reporting (started, running, stopped)
+- Conditional signaling for application dependencies</p>
+<p><strong>For Native Applications:</strong>
+- Process lifecycle control via POSIX signals
+- Basic process monitoring (PID-based status checking)
+- Exit code evaluation for failure detection</p>
+<section id="id1">
+<h3>Static architecture<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<div class="need_container docutils container" id="SNCB-be5f7b11">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__lifecycle_if">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Lifecycle Interface</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
+<div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__process_state_comm" title="logic_arc_int__lifecycle__lifecycle_if">feat_req__lifecycle__process_state_comm</a>, <a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__liveliness_detection" title="logic_arc_int__lifecycle__lifecycle_if">feat_req__lifecycle__liveliness_detection</a></span></span></div>
+<div class="line">used by: <span class="uses"><span><a class="reference internal" href="../../../modules/lifecycle/index.html#comp_arc_sta__lifecycle__launch_manager" title="logic_arc_int__lifecycle__lifecycle_if">comp_arc_sta__lifecycle__launch_manager</a></span></span></div>
+<div class="line">includes: <span class="includes"><span><a class="reference internal" href="#logic_arc_int_op__lifecycle__run" title="logic_arc_int__lifecycle__lifecycle_if">logic_arc_int_op__lifecycle__run</a>, <a class="reference internal" href="#logic_arc_int_op__lifecycle__terminate" title="logic_arc_int__lifecycle__lifecycle_if">logic_arc_int_op__lifecycle__terminate</a></span></span></div>
+<div class="line">includes: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int_op__lifecycle__run" title="logic_arc_int__lifecycle__lifecycle_if">logic_arc_int_op__lifecycle__run</a>, <a class="reference internal" href="#logic_arc_int_op__lifecycle__terminate" title="logic_arc_int__lifecycle__lifecycle_if">logic_arc_int_op__lifecycle__terminate</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-features/lifecycle/architecture/launch_manager-0">
+<object data="../../../_images/plantuml-8b69cd2ef24300e6ea7c03de5d0064819801ac4a.svg" type="image/svg+xml" style="width:181px;height:101px;background:#FFFFFF;"></object></p>
+</td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int__lifecycle__lifecycle_if" title="logic_arc_int__lifecycle__lifecycle_if">logic_arc_int__lifecycle__lifecycle_if</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Logical Architecture Interfaces</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-42cd2d2e">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__run">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">run</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
+<div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">included by: <span class="includes"><span><a class="reference internal" href="#logic_arc_int__lifecycle__lifecycle_if" title="logic_arc_int_op__lifecycle__run">logic_arc_int__lifecycle__lifecycle_if</a></span></span></div>
+<div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__lifecycle__lifecycle_if" title="logic_arc_int_op__lifecycle__run">logic_arc_int__lifecycle__lifecycle_if</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int_op__lifecycle__run" title="logic_arc_int_op__lifecycle__run">logic_arc_int_op__lifecycle__run</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Logical Architecture Interface Operation</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-6ebcd271">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__terminate">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">terminate</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
+<div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">included by: <span class="includes"><span><a class="reference internal" href="#logic_arc_int__lifecycle__lifecycle_if" title="logic_arc_int_op__lifecycle__terminate">logic_arc_int__lifecycle__lifecycle_if</a></span></span></div>
+<div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__lifecycle__lifecycle_if" title="logic_arc_int_op__lifecycle__terminate">logic_arc_int__lifecycle__lifecycle_if</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int_op__lifecycle__terminate" title="logic_arc_int_op__lifecycle__terminate">logic_arc_int_op__lifecycle__terminate</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Logical Architecture Interface Operation</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The following use cases are supported by the Lifecycle Interface, with different capabilities depending on the application type.</p>
+<p><strong>SCORE Application State Communication</strong></p>
+<p>SCORE applications implementing the Lifecycle Interface can communicate their internal state to the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a>. The state information includes:</p>
+<ul class="simple">
+<li><p><strong>Started</strong>: Application has successfully initialized and is ready to operate</p></li>
+<li><p><strong>Running</strong>: Application is actively executing its main functionality</p></li>
+<li><p><strong>Stopped</strong>: Application has terminated or is in the process of shutting down</p></li>
+</ul>
+<p>The <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> uses this state information for:</p>
+<ul class="simple">
+<li><p>Dependency resolution for other applications</p></li>
+<li><p>Recovery action decisions</p></li>
+<li><p>Status reporting to external state managers via the Control Interface</p></li>
+</ul>
+<p><strong>SCORE Application Conditional Signaling</strong></p>
+<p>SCORE applications can signal custom conditions to the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> via the Alive Interface. This enables:</p>
+<ul class="simple">
+<li><p>Complex dependency management beyond simple process startup</p></li>
+<li><p>Coordination between interdependent applications</p></li>
+</ul>
+<p>Custom conditions can be used by other applications as launch dependencies, allowing for sophisticated startup orchestration.</p>
+<p><strong>Native Application Control</strong></p>
+<p>Native applications that do not implement the Lifecycle Interface are controlled through POSIX signals:</p>
+<ul class="simple">
+<li><p><strong>SIGTERM</strong>: Graceful shutdown request</p></li>
+<li><p><strong>SIGKILL</strong>: Forced termination (after timeout)</p></li>
+<li><p><strong>SIGUSR1/SIGUSR2</strong>: Application-specific signals (if configured)</p></li>
+</ul>
+<p>The <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> monitors native applications through:</p>
+<ul class="simple">
+<li><p>Process ID (PID) tracking</p></li>
+<li><p>Exit code evaluation</p></li>
+<li><p>Resource usage monitoring via OS facilities</p></li>
+<li><p>Timeout-based failure detection</p></li>
+</ul>
+<p>For native applications, the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> provides:</p>
+<ul class="simple">
+<li><p>Basic lifecycle control (start/stop)</p></li>
+<li><p>Simple dependency management based on process existence</p></li>
+<li><p>Configurable startup/shutdown timeouts</p></li>
+<li><p>Exit code-based success/failure determination</p></li>
+</ul>
+</section>
+<section id="id2">
+<h3>Dynamic Architecture<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<div class="need_container docutils container" id="SNCB-703a0d80">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__lifecycle__state_machine">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Lifecyle Interface</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
+<div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__control_commands" title="feat_arc_dyn__lifecycle__state_machine">feat_req__lifecycle__control_commands</a>, <a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__request_run_target_start" title="feat_arc_dyn__lifecycle__state_machine">feat_req__lifecycle__request_run_target_start</a>, <a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__switch_run_targets" title="feat_arc_dyn__lifecycle__state_machine">feat_req__lifecycle__switch_run_targets</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><figure class="align-center">
+<p class="plantuml">
+<object data="../../../_images/plantuml-c1baab680a7ac8b325ebd7216007d33e9bcd5acd.svg" type="image/svg+xml" style="width:313px;height:524px;background:#FFFFFF;"></object></p>
+</figure>
+</td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_arc_dyn__lifecycle__state_machine" title="feat_arc_dyn__lifecycle__state_machine">feat_arc_dyn__lifecycle__state_machine</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Feature Architecture Dynamic View</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="id3">
+<h3>Requirements<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__process_state_comm" title="feat_req__lifecycle__process_state_comm"><em class="xref need">Process state (feat_req__lifecycle__process_state_comm)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__custom_cond_support" title="feat_req__lifecycle__custom_cond_support"><em class="xref need">Control interface support (feat_req__lifecycle__custom_cond_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__smart_watchdog_config" title="feat_req__lifecycle__smart_watchdog_config"><em class="xref need">Monitoring and recovery: wa... (feat_req__lifecycle__smart_watchdog_config)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__process_monitoring" title="feat_req__lifecycle__process_monitoring"><em class="xref need">Process monitoring (feat_req__lifecycle__process_monitoring)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__process_termination" title="feat_req__lifecycle__process_termination"><em class="xref need">Terminating process (feat_req__lifecycle__process_termination)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__shutdown_signal" title="feat_req__lifecycle__shutdown_signal"><em class="xref need">Shutdown signal handling (feat_req__lifecycle__shutdown_signal)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__launch_support" title="feat_req__lifecycle__launch_support"><em class="xref need">Support for launching proce... (feat_req__lifecycle__launch_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__process_ordering" title="feat_req__lifecycle__process_ordering"><em class="xref need">Process dependency handling (feat_req__lifecycle__process_ordering)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__parallel_launch_support" title="feat_req__lifecycle__parallel_launch_support"><em class="xref need">Launching processes in para... (feat_req__lifecycle__parallel_launch_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__waitfor_support" title="feat_req__lifecycle__waitfor_support"><em class="xref need">Conditional launching (feat_req__lifecycle__waitfor_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__process_input_output" title="feat_req__lifecycle__process_input_output"><em class="xref need">Forward process information (feat_req__lifecycle__process_input_output)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__process_launch_args" title="feat_req__lifecycle__process_launch_args"><em class="xref need">Handling process args (feat_req__lifecycle__process_launch_args)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__uid_gid_support" title="feat_req__lifecycle__uid_gid_support"><em class="xref need">Process user, group IDs sup... (feat_req__lifecycle__uid_gid_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__total_wait_time_support" title="feat_req__lifecycle__total_wait_time_support"><em class="xref need">Condition timeout (feat_req__lifecycle__total_wait_time_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__polling_interval" title="feat_req__lifecycle__polling_interval"><em class="xref need">Conditional launch polling ... (feat_req__lifecycle__polling_interval)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__launch_priority_support" title="feat_req__lifecycle__launch_priority_support"><em class="xref need">Process priority support (feat_req__lifecycle__launch_priority_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__cwd_support" title="feat_req__lifecycle__cwd_support"><em class="xref need">CWD support (feat_req__lifecycle__cwd_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__terminal_support" title="feat_req__lifecycle__terminal_support"><em class="xref need">Launching terminal (feat_req__lifecycle__terminal_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__std_handle_redir" title="feat_req__lifecycle__std_handle_redir"><em class="xref need">Standard handle redirection (feat_req__lifecycle__std_handle_redir)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__secpol_non_root" title="feat_req__lifecycle__secpol_non_root"><em class="xref need">Non-root support (feat_req__lifecycle__secpol_non_root)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__retries_configurable" title="feat_req__lifecycle__retries_configurable"><em class="xref need">Configurable amount of retries (feat_req__lifecycle__retries_configurable)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__fd_inheritance" title="feat_req__lifecycle__fd_inheritance"><em class="xref need">File descriptor inheritance... (feat_req__lifecycle__fd_inheritance)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__support_secpol_type" title="feat_req__lifecycle__support_secpol_type"><em class="xref need">Security policy support (feat_req__lifecycle__support_secpol_type)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__supplementary_groups" title="feat_req__lifecycle__supplementary_groups"><em class="xref need">Supplementary group support (feat_req__lifecycle__supplementary_groups)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__scheduling_policy" title="feat_req__lifecycle__scheduling_policy"><em class="xref need">Scheduling support (feat_req__lifecycle__scheduling_policy)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__runmask_support" title="feat_req__lifecycle__runmask_support"><em class="xref need">CPU runmask support (feat_req__lifecycle__runmask_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__aslr_support" title="feat_req__lifecycle__aslr_support"><em class="xref need">ASLR support (feat_req__lifecycle__aslr_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__process_rlimit_support" title="feat_req__lifecycle__process_rlimit_support"><em class="xref need">Resource limit support (feat_req__lifecycle__process_rlimit_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__detach_parent_process" title="feat_req__lifecycle__detach_parent_process"><em class="xref need">Process detach from parent ... (feat_req__lifecycle__detach_parent_process)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__running_processes" title="feat_req__lifecycle__running_processes"><em class="xref need">Process adoption (feat_req__lifecycle__running_processes)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__drop_supervsion" title="feat_req__lifecycle__drop_supervsion"><em class="xref need">Dropping process responsibi... (feat_req__lifecycle__drop_supervsion)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__multi_start_support" title="feat_req__lifecycle__multi_start_support"><em class="xref need">Multiple instance of execut... (feat_req__lifecycle__multi_start_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__validate_conditions" title="feat_req__lifecycle__validate_conditions"><em class="xref need">Pre-start validation (feat_req__lifecycle__validate_conditions)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__validation_conditions" title="feat_req__lifecycle__validation_conditions"><em class="xref need">post-start validation (feat_req__lifecycle__validation_conditions)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__consistent_dependencies" title="feat_req__lifecycle__consistent_dependencies"><em class="xref need">Invalid dependency (feat_req__lifecycle__consistent_dependencies)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__stop_process_dependents" title="feat_req__lifecycle__stop_process_dependents"><em class="xref need">Dangling dependency (feat_req__lifecycle__stop_process_dependents)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__stop_order_spec" title="feat_req__lifecycle__stop_order_spec"><em class="xref need">Coordination stop dependency (feat_req__lifecycle__stop_order_spec)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__oci_compliant" title="feat_req__lifecycle__oci_compliant"><em class="xref need">OCI Compliant (feat_req__lifecycle__oci_compliant)</em></a></p></li>
+</ul>
+</section>
+</section>
+<section id="alive-interface">
+<h2>Alive Interface<a class="headerlink" href="#alive-interface" title="Link to this heading">#</a></h2>
+<p>The Alive Interface provides a basic watchdog functionality interface that delivers essential monitoring capabilities for system health and responsiveness tracking.
+It implements core watchdog operations including heartbeat signals to ensure reliable operation and automatic recovery from unresponsive states.</p>
+<p><strong>SCORE Application Liveliness Reporting</strong></p>
+<p>SCORE applications can periodically signal their liveliness to the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> through the Alive Interface. This mechanism allows the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> to:</p>
+<ul class="simple">
+<li><p>Detect application failures or hangs</p></li>
+<li><p>Trigger recovery actions when liveliness is lost</p></li>
+<li><p>Maintain accurate process health status</p></li>
+</ul>
+<p>The liveliness mechanism includes:</p>
+<ul class="simple">
+<li><p>Configurable heartbeat intervals per application</p></li>
+<li><p>Timeout detection and failure handling</p></li>
+</ul>
+<section id="id4">
+<h3>Static architecture<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<div class="need_container docutils container" id="SNCB-7255240d">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__alive_if">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Alive API</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
+<div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../../communication/docs/requirements/index.html#feat_req__com__interfaces" title="logic_arc_int__lifecycle__alive_if">feat_req__com__interfaces</a></span></span></div>
+<div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="../../../modules/lifecycle/index.html#comp_arc_sta__lifecycle__launch_manager" title="logic_arc_int__lifecycle__alive_if">comp_arc_sta__lifecycle__launch_manager</a></span></span></div>
+<div class="line">used by: <span class="uses"><span><a class="reference internal" href="../../../modules/lifecycle/index.html#comp_arc_sta__lifecycle__healthmonitor" title="logic_arc_int__lifecycle__alive_if">comp_arc_sta__lifecycle__healthmonitor</a></span></span></div>
+<div class="line">includes: <span class="included_by"><span><a class="reference internal" href="health_monitor.html#logic_arc_int_op__lifecycle__min_time" title="logic_arc_int__lifecycle__alive_if">logic_arc_int_op__lifecycle__min_time</a>, <a class="reference internal" href="#logic_arc_int_op__lifecycle__report_health" title="logic_arc_int__lifecycle__alive_if">logic_arc_int_op__lifecycle__report_health</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-features/lifecycle/architecture/launch_manager-1">
+<object data="../../../_images/plantuml-4653d0e7f50d358ade239d02127ab4e9d2c920be.svg" type="image/svg+xml" style="width:240px;height:101px;background:#FFFFFF;"></object></p>
+</td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int__lifecycle__alive_if" title="logic_arc_int__lifecycle__alive_if">logic_arc_int__lifecycle__alive_if</a></span></span></div>
@@ -602,16 +1125,17 @@ processes in the system</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-794daad5">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__lifecycle__launch_manager">
+<p><strong>Operations</strong></p>
+<div class="need_container docutils container" id="SNCB-beb28ae2">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__report_health">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">Launch Manager</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">report_health_status</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
-<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
 <div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
@@ -622,28 +1146,24 @@ processes in the system</p>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
-<div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
+<div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">implements: <span class="implements"><span><a class="reference internal" href="control_interface.html#logic_arc_int__lifecycle__controlif" title="comp_arc_sta__lifecycle__launch_manager">logic_arc_int__lifecycle__controlif</a>, <a class="reference internal" href="#logic_arc_int__lifecycle__alive_if" title="comp_arc_sta__lifecycle__launch_manager">logic_arc_int__lifecycle__alive_if</a></span></span></div>
-<div class="line">uses: <span class="uses"><span><a class="reference internal" href="../../../modules/logging/logging/docs/architecture/index.html#logic_arc_int__logging__logging" title="comp_arc_sta__lifecycle__launch_manager">logic_arc_int__logging__logging</a>, <a class="reference internal" href="../../../modules/baselibs/json/docs/architecture/index.html#logic_arc_int__baselibs__json" title="comp_arc_sta__lifecycle__launch_manager">logic_arc_int__baselibs__json</a>, <a class="reference internal" href="../../../modules/os/message_passing/docs/architecture/index.html#logic_arc_int__os__fork" title="comp_arc_sta__lifecycle__launch_manager">logic_arc_int__os__fork</a></span></span></div>
-<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../index.html#mod_view_sta__lifecycle__1" title="comp_arc_sta__lifecycle__launch_manager">mod_view_sta__lifecycle__1</a>, <a class="reference internal" href="../modules/index.html#mod_view_sta__lifecycle__modules" title="comp_arc_sta__lifecycle__launch_manager">mod_view_sta__lifecycle__modules</a></span></span></div>
+<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__lifecycle__alive_if" title="logic_arc_int_op__lifecycle__report_health">logic_arc_int__lifecycle__alive_if</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-features/lifecycle/architecture/launch_manager-0">
-<object data="../../../_images/plantuml-f7580e026470e40e431da93fec593075add051c8.svg" type="image/svg+xml" style="width:332px;height:176px;background:#FFFFFF;"></object></p>
-</td>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
-<div class="line"><span><span class="needs-id"><a class="reference internal" href="#comp_arc_sta__lifecycle__launch_manager" title="comp_arc_sta__lifecycle__launch_manager">comp_arc_sta__lifecycle__launch_manager</a></span></span></div>
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int_op__lifecycle__report_health" title="logic_arc_int_op__lifecycle__report_health">logic_arc_int_op__lifecycle__report_health</a></span></span></div>
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
-<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component Architecture Static View</span></span></span></div>
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Logical Architecture Interface Operation</span></span></span></div>
 </div>
 </td>
 <td class="footer_right" colspan="2"></td>
@@ -653,63 +1173,68 @@ processes in the system</p>
 </div>
 </div>
 </section>
-<section id="dynamic-architecture">
-<h2>Dynamic Architecture<a class="headerlink" href="#dynamic-architecture" title="Link to this heading">#</a></h2>
-<p>The dynamic behaviour of the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> is defined by a configuration data, which spawn
-a directed acyclic graph (DAG) of processes and so called <span class="xref std std-term">Run Targets</span>.
-The <span class="xref std std-term">Run Targets</span> are virtual nodes in the DAG and reperesent <span class="xref std std-term">Operting Modes</span> of the system.</p>
-<figure class="align-center">
+<section id="id5">
+<h3>Dynamic architecture<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<div class="need_container docutils container" id="SNCB-afa7a1e8">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__lifecycle__alive_monitoring">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Alive Monitoring</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
+<div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__monitoring_processes" title="feat_arc_dyn__lifecycle__alive_monitoring">feat_req__lifecycle__monitoring_processes</a>, <a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__polling_interval" title="feat_arc_dyn__lifecycle__alive_monitoring">feat_req__lifecycle__polling_interval</a>, <a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__failure_detect" title="feat_arc_dyn__lifecycle__alive_monitoring">feat_req__lifecycle__failure_detect</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><figure class="align-center">
 <p class="plantuml">
-<object data="../../../_images/plantuml-fb8ee0061e8fd858d299ce55b392a403ce5b875c.svg" type="image/svg+xml" style="width:437px;height:917px;background:#FFFFFF;"></object></p>
+<object data="../../../_images/plantuml-e359bdc6ce48829951522624f9b90a831380ec12.svg" type="image/svg+xml" style="width:487px;height:478px;background:#FFFFFF;"></object></p>
 </figure>
+</td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_arc_dyn__lifecycle__alive_monitoring" title="feat_arc_dyn__lifecycle__alive_monitoring">feat_arc_dyn__lifecycle__alive_monitoring</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Feature Architecture Dynamic View</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
-<section id="requirements">
-<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h2>
+<section id="id6">
+<h3>Requirements<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__launch_support" title="feat_req__lifecycle__launch_support"><em class="xref need">Support for launching proce... (feat_req__lifecycle__launch_support)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__process_ordering" title="feat_req__lifecycle__process_ordering"><em class="xref need">Process dependency handling (feat_req__lifecycle__process_ordering)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__parallel_launch_support" title="feat_req__lifecycle__parallel_launch_support"><em class="xref need">Launching processes in para... (feat_req__lifecycle__parallel_launch_support)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__waitfor_support" title="feat_req__lifecycle__waitfor_support"><em class="xref need">Conditional launching (feat_req__lifecycle__waitfor_support)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__process_input_output" title="feat_req__lifecycle__process_input_output"><em class="xref need">Forward process information (feat_req__lifecycle__process_input_output)</em></a></p></li>
-<li><p><a class="reference internal" href="#Unknown need" title="feat_req__lifecycle__essential_processes?"><em class="xref need">feat_req__lifecycle__essential_processes</em></a></p></li>
-<li><p><a class="reference internal" href="#Unknown need" title="feat_req__lifecycle__essential_process_fail?"><em class="xref need">feat_req__lifecycle__essential_process_fail</em></a></p></li>
-<li><p><a class="reference internal" href="#Unknown need" title="feat_req__lifecycle__error_reaction_config?"><em class="xref need">feat_req__lifecycle__error_reaction_config</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__process_launch_args" title="feat_req__lifecycle__process_launch_args"><em class="xref need">Handling process args (feat_req__lifecycle__process_launch_args)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__uid_gid_support" title="feat_req__lifecycle__uid_gid_support"><em class="xref need">Process user, group IDs sup... (feat_req__lifecycle__uid_gid_support)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__total_wait_time_support" title="feat_req__lifecycle__total_wait_time_support"><em class="xref need">Condition timeout (feat_req__lifecycle__total_wait_time_support)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__monitoring_processes" title="feat_req__lifecycle__monitoring_processes"><em class="xref need">Monitoring and recovery: ad... (feat_req__lifecycle__monitoring_processes)</em></a></p></li>
 <li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__polling_interval" title="feat_req__lifecycle__polling_interval"><em class="xref need">Conditional launch polling ... (feat_req__lifecycle__polling_interval)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__launch_priority_support" title="feat_req__lifecycle__launch_priority_support"><em class="xref need">Process priority support (feat_req__lifecycle__launch_priority_support)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__cwd_support" title="feat_req__lifecycle__cwd_support"><em class="xref need">CWD support (feat_req__lifecycle__cwd_support)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__terminal_support" title="feat_req__lifecycle__terminal_support"><em class="xref need">Launching terminal (feat_req__lifecycle__terminal_support)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__std_handle_redir" title="feat_req__lifecycle__std_handle_redir"><em class="xref need">Standard handle redirection (feat_req__lifecycle__std_handle_redir)</em></a></p></li>
-<li><p><a class="reference internal" href="#Unknown need" title="feat_req__lifecycle__builtin_command_support?"><em class="xref need">feat_req__lifecycle__builtin_command_support</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__secpol_non_root" title="feat_req__lifecycle__secpol_non_root"><em class="xref need">Non-root support (feat_req__lifecycle__secpol_non_root)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__retries_configurable" title="feat_req__lifecycle__retries_configurable"><em class="xref need">Configurable amount of retries (feat_req__lifecycle__retries_configurable)</em></a></p></li>
-<li><p><a class="reference internal" href="#Unknown need" title="feat_req__lifecycle__procmgr_support?"><em class="xref need">feat_req__lifecycle__procmgr_support</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__fd_inheritance" title="feat_req__lifecycle__fd_inheritance"><em class="xref need">File descriptor inheritance... (feat_req__lifecycle__fd_inheritance)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__support_secpol_type" title="feat_req__lifecycle__support_secpol_type"><em class="xref need">Security policy support (feat_req__lifecycle__support_secpol_type)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__supplementary_groups" title="feat_req__lifecycle__supplementary_groups"><em class="xref need">Supplementary group support (feat_req__lifecycle__supplementary_groups)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__scheduling_policy" title="feat_req__lifecycle__scheduling_policy"><em class="xref need">Scheduling support (feat_req__lifecycle__scheduling_policy)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__runmask_support" title="feat_req__lifecycle__runmask_support"><em class="xref need">CPU runmask support (feat_req__lifecycle__runmask_support)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__aslr_support" title="feat_req__lifecycle__aslr_support"><em class="xref need">ASLR support (feat_req__lifecycle__aslr_support)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__process_rlimit_support" title="feat_req__lifecycle__process_rlimit_support"><em class="xref need">Resource limit support (feat_req__lifecycle__process_rlimit_support)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__detach_parent_process" title="feat_req__lifecycle__detach_parent_process"><em class="xref need">Process detach from parent ... (feat_req__lifecycle__detach_parent_process)</em></a></p></li>
-<li><p><a class="reference internal" href="#Unknown need" title="feat_req__lifecycle__critical_processes?"><em class="xref need">feat_req__lifecycle__critical_processes</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__running_processes" title="feat_req__lifecycle__running_processes"><em class="xref need">Process adoption (feat_req__lifecycle__running_processes)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__drop_supervsion" title="feat_req__lifecycle__drop_supervsion"><em class="xref need">Dropping process responsibi... (feat_req__lifecycle__drop_supervsion)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__multi_start_support" title="feat_req__lifecycle__multi_start_support"><em class="xref need">Multiple instance of execut... (feat_req__lifecycle__multi_start_support)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__validate_conditions" title="feat_req__lifecycle__validate_conditions"><em class="xref need">Pre-start validation (feat_req__lifecycle__validate_conditions)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__validation_conditions" title="feat_req__lifecycle__validation_conditions"><em class="xref need">post-start validation (feat_req__lifecycle__validation_conditions)</em></a></p></li>
-<li><p><a class="reference internal" href="#Unknown need" title="feat_req__lifecycle__process_ownership?"><em class="xref need">feat_req__lifecycle__process_ownership</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__consistent_dependencies" title="feat_req__lifecycle__consistent_dependencies"><em class="xref need">Invalid dependency (feat_req__lifecycle__consistent_dependencies)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__stop_process_dependents" title="feat_req__lifecycle__stop_process_dependents"><em class="xref need">Dangling dependency (feat_req__lifecycle__stop_process_dependents)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__stop_order_spec" title="feat_req__lifecycle__stop_order_spec"><em class="xref need">Coordination stop dependency (feat_req__lifecycle__stop_order_spec)</em></a></p></li>
-<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__oci_compliant" title="feat_req__lifecycle__oci_compliant"><em class="xref need">OCI Compliant (feat_req__lifecycle__oci_compliant)</em></a></p></li>
-<li><p><a class="reference internal" href="#Unknown need" title="feat_req__lifecycle__request_group_stop?"><em class="xref need">feat_req__lifecycle__request_group_stop</em></a></p></li>
-<li><p><a class="reference internal" href="#Unknown need" title="feat_req__lifecycle__request_group_restart?"><em class="xref need">feat_req__lifecycle__request_group_restart</em></a></p></li>
-<li></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__failure_detect" title="feat_req__lifecycle__failure_detect"><em class="xref need">Process launch monitoring (feat_req__lifecycle__failure_detect)</em></a></p></li>
+<li><p><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__liveliness_detection" title="feat_req__lifecycle__liveliness_detection"><em class="xref need">Process liveliness detection (feat_req__lifecycle__liveliness_detection)</em></a></p></li>
 </ul>
-<p>TODO: complete requiremeents</p>
+</section>
 </section>
 </section>
 
@@ -724,20 +1249,20 @@ The <span class="xref std std-term">Run Targets</span> are virtual nodes in the 
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../requirements/index.html"
+       href="../index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Requirements</p>
+        <p class="prev-next-title">Lifecycle</p>
       </div>
     </a>
     <a class="right-next"
-       href="control_interface.html"
+       href="launch_manager_configuration.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Control Interface</p>
+        <p class="prev-next-title">Launch Manager Configuration</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -760,9 +1285,25 @@ The <span class="xref std std-term">Run Targets</span> are virtual nodes in the 
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#static-architecture">Static Architecture</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-architecture">Dynamic Architecture</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-interface">Control Interface</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#static-architecture">Static architecture</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-architecture">Dynamic architecture</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lifecycle-interface">Lifecycle Interface</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Static architecture</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Dynamic Architecture</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Requirements</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alive-interface">Alive Interface</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Static architecture</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Dynamic architecture</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Requirements</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
