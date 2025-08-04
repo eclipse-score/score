@@ -20,4 +20,3 @@ Requirements
 .. toctree::
 
    stakeholder/index
-   tool/index
