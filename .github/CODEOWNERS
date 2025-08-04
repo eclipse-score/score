@@ -1,46 +1,64 @@
-# Comment out as not in score yet
-# *                                  @eclipse-score/infrastructure-tooling-community
-# .*                                 @eclipse-score/infrastructure-tooling-community
-# .github/CODEOWNERS                 @eclipse-score/technical-lead
+# GitHub CODEOWNERS file is a simple way to automate review system on github,
+# by automatically assigning owners to a pull request based on which files
+# were modified. All directories should have a proper codeowner
+# Syntax: https://help.github.com/articles/about-codeowners/
 
-# /docs                              @eclipse-score/process-community
-# /docs/concepts                     @eclipse-score/automotive-score-committers
-# /docs/glossary                     @eclipse-score/automotive-score-committers
-# /docs/features                     @eclipse-score/technical-lead
-# /docs/features/*/architecture      @eclipse-score/automotive-score-committers
-# /docs/features/*/requirements      @eclipse-score/technical-lead
-# /docs/features/*/safety_analysis   @eclipse-score/safety-manager
-# /docs/features/*/safety_planning   @eclipse-score/safety-manager @eclipse-score/technical-lead
-# /docs/features/*/verification      @eclipse-score/quality-manager @eclipse-score/safety-manager
-# /docs/manual                       @eclipse-score/automotive-score-committers
-# /docs/overview                     @eclipse-score/project-lead
-# /docs/pmp                          @eclipse-score/technical-lead @eclipse-score/process-community
-# /docs/pmp/quality_management       @eclipse-score/quality-manager
-# /docs/pmp/safety_management        @eclipse-score/safety-manager
-# /docs/pmp/security_management      @eclipse-score/security-manager
-# /docs/requirements/stakeholder     @eclipse-score/technical-lead
-# /docs/requirements/tool            @eclipse-score/infrastructure-tooling-community @eclipse-score/process-community
-# /docs/release                      @eclipse-score/quality-manager @eclipse-score/technical-lead
-# /docs/safety                       @eclipse-score/safety-manager @eclipse-score/technical-lead
-# /docs/security                     @eclipse-score/security-manager @eclipse-score/technical-lead
-# /docs/tutorials                    @eclipse-score/automotive-score-committers
+# Interim solution, commented out is future solution
+# *                                   @eclipse-score/infrastructure-maintainers
+*                                     @AlexanderLanin @MaximilianSoerenPollak @dcalavrezo-qorix
+# .*                                  @eclipse-score/infrastructure-maintainers
+.*                                    @AlexanderLanin @MaximilianSoerenPollak @dcalavrezo-qorix
+# .github/CODEOWNERS                  @eclipse-score/automotive-score-technical-leads
+.github/CODEOWNERS                    @antonkri @FScholPer @qor-lb @johannes-esr @markert-r
 
-# /examples                          @eclipse-score/automotive-score-committers
-# /integration_tests                 @eclipse-score/automotive-score-committers
-# /tools                             @eclipse-score/infrastructure-tooling-community
+# /docs/                              @eclipse-score/community-process
+/docs/                                @pahmann @PhilipPartsch @masc2023 @aschemmel-tech
+/docs/conf.py                         @AlexanderLanin @MaximilianSoerenPollak @dcalavrezo-qorix
+/docs/contribute/                     @eclipse-score/automotive-score-committers
+# /docs/features/                     @eclipse-score/automotive-score-technical-leads
+/docs/features/                       @antonkri @FScholPer @qor-lb @johannes-esr @markert-r
+architecture/                         @eclipse-score/automotive-score-committers
+# requirements/                       @eclipse-score/automotive-score-technical-leads
+requirements/                         @antonkri @FScholPer @qor-lb @johannes-esr @markert-r
+# safety_analysis/                    @eclipse-score/safety-managers
+safety_analysis/                      @aschemmel-tech @PhilipPartsch @masc2023
+# safety_planning/                    @eclipse-score/automotive-score-technical-leads
+safety_planning/                      @antonkri @FScholPer @qor-lb @johannes-esr @markert-r
+verification/                         @eclipse-score/automotive-score-committers
+/docs/glossary/                       @eclipse-score/automotive-score-committers
+/docs/introduction/                   @eclipse-score/automotive-score-committers
+/docs/manuals/                        @eclipse-score/automotive-score-committers
+/docs/modules/                        @eclipse-score/automotive-score-committers
+# /docs/platform_management_plan/     @eclipse-score/automotive-score-technical-leads
+/docs/platform_management_plan/       @antonkri @FScholPer @qor-lb @johannes-esr @markert-r
+# /docs/quality/                      @eclipse-score/quality-managers
+/docs/quality/                        @masc2023 @pahmann
+# /docs/requirements/stakeholder/     @eclipse-score/automotive-score-technical-leads
+/docs/requirements/stakeholder/       @antonkri @FScholPer @qor-lb @johannes-esr @markert-r
+# /docs/requirements/tool/            @eclipse-score/community-process
+/docs/requirements/tool/              @pahmann @PhilipPartsch @masc2023 @aschemmel-tech
+# /docs/safety/                       @eclipse-score/safety-managers
+/docs/safety/                         @aschemmel-tech @PhilipPartsch @masc2023
+# /docs/score_releases/               @eclipse-score/automotive-score-project-leads
+/docs/score_releases/                 @thilo-schmitt @HartmannNico @skappel29 @grandyholger
+/docs/score_tools/                    @eclipse-score/automotive-score-committers
+# /docs/security/                     @eclipse-score/security-managers
+/docs/security/                       @masc2023
+# /docs/verification_report           @eclipse-score/automotive-score-technical-leads
+/docs/verification_report             @antonkri @FScholPer @qor-lb @johannes-esr @markert-r
 
-# in separate process_description repository:
-#
-# /process                  @eclipse-score/process-community
+/platform_integration_tests/          @eclipse-score/automotive-score-committers
+# /tools/                             @eclipse-score/infrastructure-maintainers
+/tools/                               @AlexanderLanin @MaximilianSoerenPollak @dcalavrezo-qorix
 
 # in separate <module_name> repositories:
 #
-# /docs                     @eclipse-score/process-community
-# /docs/manual              @eclipse-score/<module_name>/safety-manager
-# /docs/release             @eclipse-score/<module_name>/quality-manager @eclipse-score/<module_name>/module-lead
-# /docs/safety_plan         @eclipse-score/<module_name>/safety-manager @eclipse-score/<module_name>/module-lead
-# /docs/safety_analysis     @eclipse-score/<module_name>/safety-manager
-# /docs/verification        @eclipse-score/<module_name>/quality-manager @eclipse-score/<module_name>/safety-manager
-# /components               @eclipse-score/<module_name>/technical-lead
-# /components/*/            @eclipse-score/<module_name>/automotive-score-committers
-
+# *                                    @eclipse-score/ft-<teamname>
+# .*                                   @eclipse-score/ft-<teamname>
+# /docs                                @eclipse-score/community-process
+# /docs/manual/safety_manual           @eclipse-score/safety-managers
+# /docs/release                        @eclipse-score/automotive-score-technical-leads
+# /docs/safety_mgt                     @eclipse-score/safety-managers
+# /docs/safety_mgt/module_safety_plan  @eclipse-score/automotive-score-technical-leads
+# /docs/verification_report            @eclipse-score/automotive-score-technical-leads
+# safety_analysis/                     @eclipse-score/safety-managers
