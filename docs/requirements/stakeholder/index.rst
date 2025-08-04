@@ -904,3 +904,67 @@ Requirements Engineering
    :status: valid
 
    Requirements shall be documented as code (Docs-as-code).
+
+
+Supported Platforms
+-------------------
+
+.. stkh_req:: Host Platform Support
+   :id: stkh_req__supported_platforms__host
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: Host platforms are required to execute the development process.
+   :status: valid
+
+   The platform shall support host platforms for executing the development process, including integration with CI systems.
+
+.. stkh_req:: Development Target Support
+   :id: stkh_req__supported_platforms__dev_target
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: Development targets are required to functionally validate reference integrations.
+   :status: valid
+
+   The platform shall support development targets to enable functional validation of reference integrations.
+
+.. stkh_req:: Production Target Support
+   :id: stkh_req__supported_platforms__prod_target
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: Production targets ensure conformance between assumed and available AoUs.
+   :status: valid
+
+   The platform shall support production targets by confirming conformance between assumed and available Assumptions of Use (AoUs).
+
+.. stkh_req:: Linux Host Platform
+   :id: stkh_req__supported_platforms__linux
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: Linux is required as a host platform.
+   :status: valid
+
+   The platform shall support Linux as a host platform on the x86_64 architecture.
+
+.. stkh_req:: CentOS AutoSD 9 Development Target
+   :id: stkh_req__supported_platforms__autosd_dev
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: CentOS AutoSD 9 is required as a development target.
+   :status: valid
+
+   The platform shall include CentOS AutoSD 9 as a development target on the aarch64 architecture.
+
+.. stkh_req:: QNX 8.0 Production Target
+   :id: stkh_req__supported_platforms__qnx8_prod
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: QNX 8.0 is required as a production target.
+   :status: valid
+
+   The platform shall include QNX 8.0 as a production target on the aarch64 architecture.
