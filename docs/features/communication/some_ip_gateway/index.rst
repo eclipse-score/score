@@ -275,7 +275,7 @@ Safety Impact
 =============
 
 SOME/IP stack and underlying OS network stacks are typically QM only. Freedom from interference needs to be respected between the
-safty classified IPC component (mw::com) and the SOME/IP stack which is part of the gateway. The SOME/IP communication itself needs
+safety classified IPC component (mw::com) and the SOME/IP stack which is part of the gateway. The SOME/IP communication itself needs
 to be properly protected by E2E to maintain a safe communication via the grey SOME/IP channel.
 
 License Impact
@@ -287,6 +287,11 @@ Since SOME/IP is a protocol, including applied E2E protection and the according 
 defined by AUTOSAR and published under the license of AUTOSAR, the gateway implementation shall carefully distinguish between the SOME/IP communication stack,
 the E2E protection of data, and the integration into S-CORE mw::com. Breach of foreign licenses must be avoided.
 
+Anybody using SOME/IP Gateway in a commercial application (i.e. vehicle) needs to make sure to follow the license conditions and rules of AUTOSAR.
+
+.. note::
+   by 2025-08, anybody exploiting AUTOSAR software commercially must be an AUTOSAR member.
+   Please refer to http://autosar.org/ for more information.
 
 How to Teach This
 =================
