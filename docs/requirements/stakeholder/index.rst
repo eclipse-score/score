@@ -557,6 +557,18 @@ Communication
    * Diagnostic trouble codes
    * Diagnostic jobs
 
+Time Synchronization
+--------------------
+
+.. stkh_req:: Time Synchronization
+   :id: stkh_req__time__synchronization
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: Enables the system to synchronize its internal clock with external time sources, ensuring the data aging across distributed ECUs.
+   :status: valid
+
+   The software platform shall provide time synchronization framework to synchronize its clock with external time sources.
 
 Diagnostics and Fault Management
 --------------------------------
@@ -796,6 +808,16 @@ Developer experience
    The software platform shall provide a method and interface to enable
    debugging of the software on target and in vehicle.
 
+.. stkh_req:: Fake implementation for application testing
+   :id: stkh_req__dev_experience__fake_public_apis
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: tbd
+   :status: valid
+
+   The software platform shall provide support for mocking and faking its public interfaces,
+   enabling unit, component and integration testing of applications.
 
 .. stkh_req:: Programming languages for application development
    :id: stkh_req__dev_experience__prog_languages

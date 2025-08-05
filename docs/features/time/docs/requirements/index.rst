@@ -15,12 +15,15 @@
 Requirements
 ############
 
+Time Synchronization
+^^^^^^^^^^^^^^^^^^^^
+
 .. feat_req:: Time client PTP sync
    :id: feat_req__time__trec_external_sync_ptp
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies:
+   :satisfies: stkh_req__time__synchronization
    :status: valid
 
    The **time client**, as part of score::time feature, shall synchronize the local clock with an external **time host** using the PTP protocol (IEEE 802.1AS).
@@ -44,7 +47,7 @@ Requirements
    :status: valid
 
    The score::time shall validate the current synchronized time, which was received from the **time host** and reflect the validation results in the time point status accordingly.
-   
+
    Validation of the current synchronized time includes:
    * checking the time point for loss of synchronization
    * checking the time point for monotonicity
@@ -94,8 +97,8 @@ Requirements
    *Use case:* Debugging and diagnostics of the time synchronization process.
 
 
-External Time Synchronization
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Time Synchronization to external sources
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. feat_req:: score::time external synchronization
    :id: feat_req__time__external_sync
    :reqtype: Functional
@@ -164,3 +167,16 @@ Monotonic Clock
    :status: valid
 
    The score::time feature shall provide a mechanism to access (read only) to monotonic, not adjustable clock value, which is mapped from the known OS or HW clock.
+
+Testability
+^^^^^^^^^^^^
+
+.. feat_req:: score::time fake APIs implementation
+   :id: feat_req__time__apis_faking
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :satisfies: stkh_req__dev_experience__fake_public_apis
+   :status: valid
+
+   The score::time feature shall provide support for mocking (faking) its public interfaces, enabling unit, component and integration testing of applications.
