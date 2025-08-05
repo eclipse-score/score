@@ -1,0 +1,63 @@
+@startuml
+title Control Interface - Switch Run Target Scenario
+
+autonumber "<b>[00]"
+
+participant "Tester" as Tester
+participant "State Manager" as SM
+participant "Launch Manager" as LM
+participant "OS (kernel)" as kernel
+participant "DemoApp1" as DemoApp1
+participant "DemoApp2" as DemoApp2
+participant "NetworkApp" as NetworkApp
+
+note over SM, LM: Current Run Target: "NetworkGroup" (NetworkApp running)
+note over SM, LM: Requested Run Target: "DemoGroup" (DemoApp1, DemoApp2)
+
+Tester -> SM: Activate Run Target "DemoGroup"
+SM -> SM: evaluate request
+SM -> LM: activate_run_target("DemoGroup")
+activate LM
+
+LM -> LM: analyze transition from "NetworkGroup" to "DemoGroup"
+note right of LM: Current: NetworkGroup (NetworkApp)\nTarget: DemoGroup (DemoApp1, DemoApp2)\nAction: Stop NetworkApp, Start DemoApp1 & DemoApp2
+
+LM -> LM: validate target run target "DemoGroup"
+LM -> LM: check dependencies and resource conflicts
+LM -> LM: create transition plan
+
+== Stop Current Run Target Components ==
+LM -> NetworkApp: send SIGTERM
+NetworkApp -> NetworkApp: cleanup and shutdown
+NetworkApp --> LM: shutdown complete via Lifecycle API
+LM -> kernel: wait for NetworkApp termination
+kernel --> LM: NetworkApp terminated
+
+== Start Target Run Target Components ==
+alt Start DemoApp1
+    LM -> kernel: spawn DemoApp1
+    kernel -> DemoApp1: spawn
+    activate DemoApp1
+    kernel --> LM: spawn result for DemoApp1
+    DemoApp1 -> LM: signal started via Lifecycle API
+end
+
+alt Start DemoApp2 (depends on DemoApp1)
+    LM -> LM: wait for DemoApp1 ready condition
+    LM -> kernel: spawn DemoApp2
+    kernel -> DemoApp2: spawn
+    activate DemoApp2
+    kernel --> LM: spawn result for DemoApp2
+    
+    DemoApp2 -> DemoApp2: initialize and register device /dev/Demo2
+    DemoApp2 -> LM: signal ready via Lifecycle API
+    kernel --> LM: device /dev/Demo2 registered
+end
+
+LM -> LM: verify all "DemoGroup" components are running
+LM -> LM: update current run target to "DemoGroup"
+LM --> SM: run target "DemoGroup" activated successfully
+
+note over SM, LM: New Run Target: "DemoGroup" (DemoApp1, DemoApp2 running)
+
+@enduml

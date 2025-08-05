@@ -40,6 +40,18 @@ Message Passing Component Architecture
 
       {{ draw_interface(need(), needs) }}
 
+.. logic_arc_int:: OS::fork
+   :id: logic_arc_int__os__fork
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+
+   .. needarch::
+      :scale: 50
+      :align: center
+
+      {{ draw_interface(need(), needs) }}
+
 .. logic_arc_int_op:: Reply
    :id: logic_arc_int_op__os__reply
    :security: YES
