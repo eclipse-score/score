@@ -15,10 +15,10 @@
 .. _adr-template:
 
 ======================================
-ADR 0.5 Template
+ADR Template
 ======================================
 
-This template is used to create new Architecture Decision Records (ADRs) for S-CORE. Each ADR should be stored in the `docs/requirements/adr/0.5/` directory and follow the naming convention `*-adr-*.rst`, where `*` can be replaced with a descriptive title or identifier.
+This template is used to create new Architecture Decision Records (ADRs) for S-CORE. Each ADR should be stored in the `docs/requirements/adr/index.rst` directory and should use the sphinx needs type adr.
 
 In each ADR file, include the following sections:
 
