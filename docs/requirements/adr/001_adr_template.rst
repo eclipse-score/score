@@ -22,11 +22,20 @@ This template is used to create new Architecture Decision Records (ADRs) for S-C
 
 In each ADR file, include the following sections:
 
+.. adr:: ADR Template
+   :id: adr__001
+   :title: Provide a descriptive and concise title. Summarizing the decision.
+   :status: proposed
+   :context: Describe the issue or motivation behind this decision or change.
+   :decision: Detail the proposed change or decision.
+   :consequences: Explain the impact of this change, including what becomes easier or more difficult.
+
+
 .. container:: adr-template
 
     +--------------------------------------------------+
     | **ID**                                           |
-    | Unique id for the ADR like ADR-001               |
+    | Unique id for the ADR in format ADR-{uint8}      |
     +--------------------------------------------------+
     | **Title**                                        |
     | Provide a descriptive and concise title          |
@@ -34,7 +43,8 @@ In each ADR file, include the following sections:
     +--------------------------------------------------+
     | **Status**                                       |
     | Indicate the current status, such as proposed,   |
-    | accepted, rejected, deprecated, superseded, etc. |
+    | proposed, accepted, deprecated, rejected,        |
+    | superseded                                       |
     +--------------------------------------------------+
     | **Context**                                      |
     | Describe the issue or motivation behind this     |

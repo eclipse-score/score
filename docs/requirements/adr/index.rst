@@ -23,4 +23,4 @@ including the rationale behind them and their implications.
    :maxdepth: 1
 
 
-   0.5/001_adr_template
+   001_adr_template
