@@ -17,7 +17,7 @@
    :status: draft
    :safety: ASIL_B
    :tags: platform_management
-   :realizes: wp__chm_plan
+   :realizes: PROCESS_wp__chm_plan
 
 .. _change_mgmt_plan:
 
@@ -110,7 +110,7 @@ Changes are clustered in the following types:
 
 Change Request Traceability Impact Analysis requires the following tools:
 
-:need:`[[title]] <PROCESS_gd_req__change_tool_impact_analysis>`
+:need:`[[title]] <PROCESS_gd_req__change__tool_impact_analysis>`
 
 Change Request Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^

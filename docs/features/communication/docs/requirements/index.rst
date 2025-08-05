@@ -22,7 +22,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__communication__inter_process, stkh_req__app_architectures__support_time
+   :satisfies: stkh_req__communication__inter_process, stkh_req__app_architectures__support_time, stkh_req__communication__safe
    :status: valid
 
    The communication framework shall provide API to support a time-based architecture.
@@ -52,7 +52,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__communication__inter_process, stkh_req__app_architectures__support_data,stkh_req__app_architectures__support_request
+   :satisfies: stkh_req__communication__inter_process, stkh_req__app_architectures__support_data,stkh_req__app_architectures__support_time, stkh_req__communication__safe, stkh_req__app_architectures__support_request
    :status: valid
 
    A communication interface consists of a combination of any number of the following elements:
@@ -66,7 +66,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__communication__inter_process, stkh_req__app_architectures__support_data
+   :satisfies: stkh_req__communication__inter_process, stkh_req__app_architectures__support_time
    :status: valid
 
    An event-type is part of a communication interface and has:
@@ -82,7 +82,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__communication__inter_process, stkh_req__app_architectures__support_request
+   :satisfies: stkh_req__communication__inter_process, stkh_req__app_architectures__support_request, stkh_req__communication__safe
    :status: valid
 
    A method is part of a communication interface and has:
@@ -102,7 +102,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__communication__inter_process, stkh_req__app_architectures__support_time
+   :satisfies: stkh_req__communication__inter_process, stkh_req__app_architectures__support_request
    :status: valid
 
    A signal is part of a communication interface and has:
@@ -124,7 +124,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__communication__inter_process, stkh_req__app_architectures__support_time
+   :satisfies: stkh_req__communication__inter_process, stkh_req__app_architectures__support_time, stkh_req__communication__safe
    :status: valid
 
    Communication shall be cached based on the producer-consumer pattern.
@@ -134,7 +134,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__communication__inter_process
+   :satisfies: stkh_req__communication__inter_process, stkh_req__communication__safe
    :status: valid
 
    Multiple service instances shall be able to offer the same interface.
@@ -147,7 +147,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__communication__inter_process
+   :satisfies: stkh_req__communication__inter_process, stkh_req__communication__safe
    :status: valid
 
    A service instance is offered under one or more unique names by which it can be discovered.
@@ -162,7 +162,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__communication__inter_process
+   :satisfies: stkh_req__communication__inter_process, stkh_req__communication__safe
    :status: valid
 
    The communication framework shall support versioning of service instances:
@@ -178,7 +178,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__communication__inter_process
+   :satisfies: stkh_req__communication__inter_process, stkh_req__communication__safe
    :status: valid
 
    The interface to access service instances is agnostic to the binding used to communicate with the service.
@@ -191,7 +191,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__communication__inter_process
+   :satisfies: stkh_req__communication__inter_process, stkh_req__communication__safe
    :status: valid
 
    The communication framework shall support stateless communication.
@@ -205,7 +205,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__communication__inter_process
+   :satisfies: stkh_req__communication__inter_process, stkh_req__communication__safe
    :status: valid
 
    The communication framework shall support multiple service instances per software architecture element.
@@ -218,10 +218,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__communication__inter_process
+   :satisfies: stkh_req__communication__inter_process, stkh_req__communication__safe
    :status: valid
 
-   The communication framework shall provide service discovery to find available services during runtime.    Service discovery shall consider version compatibility. Service discovery shall be handled implicitly (where possible).
+   The communication framework shall provide service discovery to find available services during runtime. Service discovery shall consider version compatibility. Service discovery shall be handled implicitly (where possible).
 
    .. note::
       The service discovery may be restricted/impacted by availability of deployment information.
@@ -235,7 +235,7 @@ Mixed-Criticality safety systems
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies: stkh_req__communication__inter_process
+   :satisfies: stkh_req__communication__inter_process, stkh_req__communication__safe
    :status: valid
 
    The communication framework shall support safe communication involving communication partners on the same or multiple
@@ -246,7 +246,7 @@ Mixed-Criticality safety systems
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies: stkh_req__communication__inter_process
+   :satisfies: stkh_req__communication__inter_process, stkh_req__communication__safe
    :status: valid
 
    Consumers with lower criticality shall not be able to corrupt data consumed by partners with higher criticality.
@@ -256,7 +256,7 @@ Mixed-Criticality safety systems
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies: stkh_req__communication__inter_process
+   :satisfies: stkh_req__communication__inter_process, stkh_req__communication__safe
    :status: valid
 
    Consumers with lower criticality shall not be able to modify the order of data consumed by partners with higher
@@ -267,7 +267,7 @@ Mixed-Criticality safety systems
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies: stkh_req__communication__inter_process
+   :satisfies: stkh_req__communication__inter_process, stkh_req__communication__safe
    :status: valid
 
    Consumers with lower criticality shall not be able to duplicate data consumed by other communication partners with
@@ -278,7 +278,7 @@ Mixed-Criticality safety systems
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies: stkh_req__communication__inter_process
+   :satisfies: stkh_req__communication__inter_process, stkh_req__communication__safe
    :status: valid
 
    Consumers with lower criticality shall not be able to drop data before it is consumed by partners with higher
@@ -293,7 +293,7 @@ Performance
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__communication__inter_process,stkh_req__app_architectures__support_data
+   :satisfies: stkh_req__communication__inter_process,stkh_req__app_architectures__support_data, stkh_req__app_architectures__support_request
    :status: valid
 
    The communication framework shall enable Zero-Copy communication without copying to-be-transferred data.
@@ -409,7 +409,7 @@ Dynamic deployment at runtime
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies: stkh_req__communication__inter_process
+   :satisfies: stkh_req__communication__inter_process, stkh_req__communication__safe
    :status: valid
 
    Deployment configuration shall be read from an integrity-checked configuration file at runtime.
@@ -422,7 +422,7 @@ Tracing
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__dev_experience__tracing_of_comm
+   :satisfies: stkh_req__dev_experience__tracing_of_comm, stkh_req__communication__safe
    :status: valid
 
    The communication framework shall provide infrastructure to enable binding-agnostic, zero-copy, read-only tracing of
@@ -436,7 +436,7 @@ Security Impact
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__communication__inter_process
+   :satisfies: stkh_req__communication__inter_process, stkh_req__dependability__security_features
    :status: valid
 
    The communication framework shall support an Access Control Lists in the deployment configuration.
@@ -446,7 +446,7 @@ Security Impact
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__communication__inter_process
+   :satisfies: stkh_req__communication__inter_process, stkh_req__dependability__security_features
    :status: valid
 
    The communication framework shall support an Access Control List per service instance.
@@ -456,7 +456,7 @@ Security Impact
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__communication__inter_process
+   :satisfies: stkh_req__communication__inter_process, stkh_req__dependability__security_features
    :status: valid
 
    The communication framework shall support an Access Control List for the communication partner offering a service
@@ -468,7 +468,7 @@ Security Impact
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :satisfies: stkh_req__communication__inter_process
+   :satisfies: stkh_req__communication__inter_process, stkh_req__dependability__security_features
    :status: valid
 
    The communication framework shall support an Access Control List for the communication partner consuming a service
@@ -483,7 +483,7 @@ Safety Impact
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies: stkh_req__communication__inter_process
+   :satisfies: stkh_req__communication__inter_process, stkh_req__communication__safe
    :status: valid
 
    The communication framework shall support safe communication up to ASIL-B.
