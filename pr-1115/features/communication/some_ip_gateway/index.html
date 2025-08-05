@@ -545,7 +545,7 @@
                   
   <section id="some-ip-gateway">
 <span id="some-ip-gateway-feature"></span><h1>SOME/IP-Gateway<a class="headerlink" href="#some-ip-gateway" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-057409f5">
+<div class="need_container docutils container" id="SNCB-cc9667cb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__some_ip_gateway">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -786,7 +786,7 @@ For some profiles (e.g., Profile 5, 6, 22), the Data ID is included as an extens
 <section id="safety-impact">
 <h2>Safety Impact<a class="headerlink" href="#safety-impact" title="Link to this heading">#</a></h2>
 <p>SOME/IP stack and underlying OS network stacks are typically QM only. Freedom from interference needs to be respected between the
-safty classified IPC component (mw::com) and the SOME/IP stack which is part of the gateway. The SOME/IP communication itself needs
+safety classified IPC component (mw::com) and the SOME/IP stack which is part of the gateway. The SOME/IP communication itself needs
 to be properly protected by E2E to maintain a safe communication via the grey SOME/IP channel.</p>
 </section>
 <section id="license-impact">
@@ -795,6 +795,12 @@ to be properly protected by E2E to maintain a safe communication via the grey SO
 <p>Since SOME/IP is a protocol, including applied E2E protection and the according profile (polynom, etc.),
 defined by AUTOSAR and published under the license of AUTOSAR, the gateway implementation shall carefully distinguish between the SOME/IP communication stack,
 the E2E protection of data, and the integration into S-CORE mw::com. Breach of foreign licenses must be avoided.</p>
+<p>Anybody using SOME/IP Gateway in a commercial application (i.e. vehicle) needs to make sure to follow the license conditions and rules of AUTOSAR.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>by 2025-08, anybody exploiting AUTOSAR software commercially must be an AUTOSAR member.
+Please refer to <a class="reference external" href="http://autosar.org/">http://autosar.org/</a> for more information.</p>
+</div>
 </section>
 <section id="how-to-teach-this">
 <h2>How to Teach This<a class="headerlink" href="#how-to-teach-this" title="Link to this heading">#</a></h2>
