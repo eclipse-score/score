@@ -24,6 +24,11 @@ Key-Value-Storage
 .. toctree::
    requirements/index.rst
    architecture/index.rst
+   requirements/chklst_req_inspection.rst
+   safety_analysis/fmea.rst
+   safety_analysis/dfa.rst
+   safety_planning/index.rst
+
 
 
 Feature flag
@@ -42,6 +47,14 @@ applications to store either temporary or permanent data in an easy way that
 conforms to most programming languages that provide a hash, hashmap, dictionary
 or similar data structure. Access to the KVS is possible from any support
 language through language specific interfaces.
+
+In the scope of S-CORE, an application can range from a system service to an
+end-user visible UI. The application uses the KVS as an external memory store
+to read and persist data as needed. For example, an application that controls
+the air conditioning system in a car could use the KVS to store the current
+temperature setting. When the car is started again, the application can
+retrieve the temperature setting from the persistent KVS storage, providing a
+seamless user experience by restoring the previous state.
 
 
 Motivation
@@ -106,15 +119,13 @@ development process. Key elements of it are listed in the process descriptions
 of safety management and safety analysis. In the safety analysis we will
 analyze the impact of the feature.
 
- .. note::
-    TODO: Link to safety analysis.
+:need:`doc__persistency_fmea`
 
 We use an iterative development process and apply results from the next steps
 back to the feature request. For TinyJSON we will perform a software component
 classification.
 
-  .. note::
-    TODO: Link to component classification.
+:need:`doc__persistency_component_classification`
 
 To ensure the freedom of interference the feature key-value storage should not
 be used within different processes.
@@ -126,7 +137,3 @@ License Impact
    .. note::
       The key-value storage itself uses the Apache-2.0 license. Licenses of
       used libraries are need to be checked.
-
-
-How to Teach This
-=================

@@ -12,11 +12,23 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _modules_template:
+.. _modules:
 
-Module
-======
+Modules
+=======
+
+.. image:: _assets/module_architecture.drawio.svg
+   :alt: Module Architecture
+
+
+.. note::
+   For now, we store the modules documentation in the modules tree, because multi-repo docs are not yet supported.
+   Once this support becomes available it will be moved to the right repo.
+
+
 
 .. toctree::
    :maxdepth: 1
    :glob:
+
+   ./*/index

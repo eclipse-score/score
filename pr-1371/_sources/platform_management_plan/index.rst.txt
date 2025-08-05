@@ -30,6 +30,7 @@ Platform Management Plan
 
    project_management
    safety_management
+   security_management
    quality_management
    config_management
    tool_management

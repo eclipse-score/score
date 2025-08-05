@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -63,6 +63,13 @@
     <script src="../../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
     <script src="../../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'features/frameworks/feo/index';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Requirements" href="requirements/index.html" />
@@ -168,7 +175,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../modules/index.html">
-    Module
+    Modules
   </a>
 </li>
 
@@ -190,6 +197,13 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../../score_releases/index.html">
     Releases
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../score_tools/index.html">
+    Tools
   </a>
 </li>
 
@@ -252,6 +266,26 @@
             <span class="sr-only">GitHub</span></a>
         </li>
 </ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
       
     </div>
     
@@ -322,7 +356,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../modules/index.html">
-    Module
+    Modules
   </a>
 </li>
 
@@ -337,6 +371,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../score_releases/index.html">
     Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../score_tools/index.html">
+    Tools
   </a>
 </li>
 
@@ -388,6 +429,26 @@
         </li>
 </ul></div>
         
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
       </div>
     
   </div>
@@ -401,17 +462,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../../analysis-infra/index.html">Analysis Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../baselibs/index.html">Base Libraries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../communication/index.html">Communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagnostics/index.html">Diagnostic and Fault Management</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Frameworks</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">Fixed execution order framework (FEO)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="requirements/index.html">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture/feature_architecture.html">Feature Architecture: FEO</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/index.html">Modules Documentation</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../infrastructure/index.html">Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../integration/index.html">Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../nonipc/index.html">NonIPC Communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../orchestration/index.html">Orchestration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../persistency/index.html">Persistency</a></li>
 </ul>
 </div>
@@ -478,7 +542,7 @@
                   
   <section id="fixed-execution-order-framework-feo">
 <h1>Fixed execution order framework (FEO)<a class="headerlink" href="#fixed-execution-order-framework-feo" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-3c574b6e">
+<div class="need_container docutils container" id="SNCB-01a7a491">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__feo">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -498,7 +562,7 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">feature_request</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">feature_request</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
@@ -522,8 +586,8 @@
 </table>
 </div>
 </div>
-<p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/change_management/guidance/change_management_guideline.html#gd_guidl__change__change_request">PROCESS_gd_guidl__change__change_request</a>
-and <a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/process_areas/change_management/guidance/change_management_feature_template.html#gd_temp__change__feature_request">PROCESS_gd_temp__change__feature_request</a>.</p>
+<p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_guideline.html#gd_guidl__change__change_request">PROCESS_gd_guidl__change__change_request</a>
+and <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_feature_template.html#gd_temp__change__feature_request">PROCESS_gd_temp__change__feature_request</a>.</p>
 <div class="toctree-wrapper compound">
 </div>
 <section id="feature-flag">
@@ -921,6 +985,105 @@ timing of activities, supporting safety-critical applications
 in the automotive domain. In this domain the footprint of the framework is curcial especially
 w.r.t impact of computation load and latency.</p>
 </section>
+<section id="error-handling-for-s-core-v0-5">
+<h2>Error Handling for S-CORE v0.5<a class="headerlink" href="#error-handling-for-s-core-v0-5" title="Link to this heading">#</a></h2>
+<p>Possible error cases during the different FEO life cycle states shall be handled as follows. For now, the
+descriptions are focussed on the intended implementation for S-CORE v0.5. Potential adaptations for
+S-CORE v1.0 have been noted down, but shall be considered as drafts only.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Independent of state</dt><dd><ul>
+<li><p>If the primary process dies, the external lifecycle management shall kill all dependent processes.</p></li>
+<li><p>If a secondary process dies, the lifecycle management shall send a termination signal to the primary process.
+The primary process shall call the shutdown function of all remaining activities in arbitrary sequence and
+terminate itself.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>State: Lifecycle Manager creates all processes (primary &amp; secondaries)</dt><dd><ul>
+<li><dl class="simple">
+<dt>If not all secondaries connect to the primary in time,</dt><dd><ul>
+<li><p>S-CORE v0.5: the primary will terminate itself. The startup functions shall not be triggered.</p></li>
+<li><p>S-CORE v1.0: the primary will not terminate, but report an error to the lifecycle/health management.
+The startup functions shall not be triggered.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>State: Lifecycle Manager has created all processes (primary &amp; secondaries), all secondaries have connected to the primary</dt><dd><ul>
+<li><dl class="simple">
+<dt>If an error occurs during the execution of a startup function,</dt><dd><ul>
+<li><p>S-CORE v0.5: the primary process shall abort calling startup functions
+and terminate itself. For all of the activities whose startup functions have already been called successfully,
+the corresponding shutdown functions shall be executed in arbitrary sequence.</p></li>
+<li><p>S-CORE v1.0: in addition, the primary process shall report the issue to health management.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>During initialization (i.e. in the startup function of an activity), activities shall check for resource allocation
+and report an error to the executor in case of failure.</p></li>
+<li><dl class="simple">
+<dt>If a timeout occurs during startup, stepping or shutdown of an activity,</dt><dd><ul>
+<li><p>S-CORE v0.5: the primary process shall shutdown all successfully started activities in arbitrary sequence
+and terminate itself.</p></li>
+<li><p>S-CORE v1.0: In addition, the primary process shall report the issue to health management.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>If not all activities reach their initialized state within a certain period of time (startup timeout),</dt><dd><ul>
+<li><p>S-CORE v0.5: the primary process shall shutdown all successfully
+started activities in arbitrary sequence and terminate itself.</p></li>
+<li><p>S-CORE v1.0: In addition, the primary process shall report the issue to health management.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>State: Lifecycle Manager has created all processes  (primary &amp; secondaries), all secondaries have connected to the primary, all activities have been started up successfully</dt><dd><ul>
+<li><dl class="simple">
+<dt>If an activity fails in the step function,</dt><dd><ul>
+<li><p>S-CORE v0.5: the primary process shall call shutdown for all activities in arbitrary sequence and terminate itself.</p></li>
+<li><p>S-CORE v1.0: In addition, a logical waypoint error shall be reported to health management.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>If activities do not meet their intermediate (time/memory/cpu-) budgets the issue shall be detected and handled
+outside of FEO. (Resource supervision and quotas will be defined in a separate feature request, if needed.)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>State: Shutdown of activities</dt><dd><ul>
+<li><dl class="simple">
+<dt>If an activity fails in the shutdown function,</dt><dd><ul>
+<li><p>S-CORE v0.5: the primary process shall shutdown all remaining activities and terminate itself.</p></li>
+<li><p>S-CORE v1.0: In addition, a logical waypoint error shall be reported to health management.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
 </section>
 
 
@@ -990,6 +1153,7 @@ w.r.t impact of computation load and latency.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reprocessing">Reprocessing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tracing">Tracing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performance">Performance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-handling-for-s-core-v0-5">Error Handling for S-CORE v0.5</a></li>
 </ul>
   </nav></div>
 
@@ -997,7 +1161,7 @@ w.r.t impact of computation load and latency.</p>
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/dummy/dummy/edit/main/docs/features/frameworks/feo/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/features/frameworks/feo/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
