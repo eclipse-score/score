@@ -15,7 +15,7 @@
 .. _crossvm_feature:
 
 Cross Virtual Machine Communication
-####################
+###################################
 
 .. document:: Cross-VM Communication
    :id: doc__com_crossvm
