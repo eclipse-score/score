@@ -564,15 +564,15 @@ Communication
 
    The SW-platform shall support intra-process communication.
 
-.. stkh_req:: Non-Intra-process Communication
+.. stkh_req:: Cross-VM Communication
    :id: stkh_req__communication__vm
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :rationale: Application software typically maps software building blocks into the same process.
+   :rationale: Different VMs in a system involved. Somethimes they interact.
    :status: valid
 
-   The platform shall support not only IPC but also intra VM communication.
+   The platform shall support not only IPC but also intra Virtual Machine communication.
 
 .. stkh_req:: Stable application interfaces
    :id: stkh_req__communication__stable_app_inter

@@ -12,16 +12,16 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _non-ipc_feature:
+.. _crossvm_feature:
 
-NonIPC Communication
+Cross Virtual Machine Communication
 ####################
 
-.. document:: NonIPC Communication
-   :id: doc__nonipc
+.. document:: Cross-VM Communication
+   :id: doc__com_crossvm
    :status: valid
    :safety: ASIL_B
-   :tags: feature_request
+   :tags: feature_modification_request
 
 
 .. toctree::
@@ -35,12 +35,12 @@ Feature flag
 
 To activate this feature, use the following feature flag:
 
-``experimental_nonipc_com``
+``experimental_crossvm_com``
 
 Abstract
 ========
 
-This feature provides mechanisms for communication and data exchange between processes without using IPC.
+This feature provides mechanisms for communication and data exchange between processes in different Virtual Machines (VM).
 It includes two classes of communication/data-exchange:
 
 1. One-way data sharing into a VM for (vehicle) state read-only for the VM (snapshot state)
@@ -53,7 +53,6 @@ It includes two classes of communication/data-exchange:
    - Queues shall be configurable by client (VM) (number of elements etc..)
    - Size of a queue
    - Allocation of buffers for the data elements
-
    - Queues shall support lock-free access to data elements
    - Support for bi-directional communication via writable data elements by the client
    - Asynchronous bi-directional support via multiple queues
@@ -61,7 +60,7 @@ It includes two classes of communication/data-exchange:
 Motivation
 ==========
 
-NonIPC communication mechanisms are essential to ensure efficient and reliable data exchange between processes, especially in scenarios where IPC may not be suitable or desired.
+Cross-VM communication mechanisms are essential to ensure efficient and reliable data exchange between VMs.
 
 Rationale
 =========
@@ -71,7 +70,7 @@ These communication mechanisms are developed to address specific needs for data 
 Specification
 =============
 
-The NonIPC communication feature consists of the following mechanisms:
+The Cross-VM communication feature consists of the following mechanisms:
 
 - **One-way data sharing**: Allows read-only access to vehicle state data in a VM, ensuring consistency and lock-free access.
 - **Streamed data**: Utilizes shared queues for streaming events or data, configurable by the client, supporting bi-directional communication.
@@ -86,12 +85,12 @@ General requirements:
 Backwards Compatibility
 =======================
 
-As this is a new feature, there are no backwards compatibility concerns.
+It should be shure that both Cross-VM and normal IPC work seamlessly together
 
 Security Impact
 ===============
 
-NonIPC communication mechanisms present varying security risks as vulnerabilities could affect multiple components simultaneously.
+Cross-VM communication mechanisms present varying security risks as vulnerabilities could affect multiple components simultaneously.
 Each mechanism requires individual security impact analysis based on its functionality and usage patterns.
 
 Safety Impact
@@ -99,11 +98,12 @@ Safety Impact
 
 - Due to wide usage of these communication mechanisms throughout the platform, extra care is needed in design, implementation, and testing to minimize safety impact.
 - Mechanisms are developed at various integrity levels from QM (non-safety) up to ASIL-B, depending on their intended use cases.
+- Freedom from Interference has to be taken into account when different VMs
 
 License Impact
 ==============
 
-The NonIPC communication mechanisms are licensed under Apache License 2.0.
+The Cross-VM communication mechanisms are licensed under Apache License 2.0.
 
 How to Teach This
 =================
@@ -113,9 +113,9 @@ Each mechanism is expected to have a user manual that includes an API reference 
 Rejected Ideas
 ==============
 
-There are no rejected ideas related to the NonIPC communication feature at this time.
+There are no rejected ideas related to the Cross-VM communication feature at this time.
 
 Open Issues
 ===========
 
-There are currently no open issues related to the NonIPC communication feature.
+There are currently no open issues related to the Cross-VM communication feature.
