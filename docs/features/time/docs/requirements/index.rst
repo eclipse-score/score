@@ -33,7 +33,7 @@ Time Synchronization
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies:
+   :satisfies: stkh_req__time__synchronization_validation
    :status: valid
 
    The score::time shall get the current synchronized time and its metadata from the **time host**.
@@ -43,7 +43,7 @@ Time Synchronization
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies:
+   :satisfies: stkh_req__time__synchronization_validation
    :status: valid
 
    The score::time shall validate the current synchronized time, which was received from the **time host** and reflect the validation results in the time point status accordingly.
@@ -102,9 +102,9 @@ Time Synchronization to external sources
 .. feat_req:: score::time external synchronization
    :id: feat_req__time__external_sync
    :reqtype: Functional
-   :security: NO
+   :security: YES
    :safety: QM
-   :satisfies:
+   :satisfies: stkh_req__time__external_timebase_sync
    :status: valid
 
    The score::time feature shall support synchronization with external time sources, such as GPS, based on SOME/IP messages.
@@ -112,9 +112,9 @@ Time Synchronization to external sources
 .. feat_req:: score::time external synchronization status
    :id: feat_req__time__external_sync_status
    :reqtype: Functional
-   :security: NO
+   :security: YES
    :safety: QM
-   :satisfies:
+   :satisfies: stkh_req__time__external_timebase_security_qualifier, stkh_req__time__external_timebase_accuracy_qualifier
    :status: valid
 
    The score::time shall maintain the current synchronized time and its synchronization status, to be able to provide the latest values by clients request.
@@ -122,9 +122,9 @@ Time Synchronization to external sources
 .. feat_req:: score::time external synchronization time
    :id: feat_req__time__external_sync_time
    :reqtype: Functional
-   :security: NO
+   :security: YES
    :safety: QM
-   :satisfies:
+   :satisfies: stkh_req__time__external_timebase_api
    :status: valid
 
    The score::time feature shall provide a mechanism to access (read only) the current synchronized time from external time sources and its synchronization status.
@@ -134,7 +134,7 @@ Time Synchronization to external sources
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies:
+   :satisfies: stkh_req__dev_experience__debugging
    :status: valid
 
    The score::time feature shall provide a mechanism to log the internal state of the external time synchronization process, to be able to debug and diagnose the synchronization process.
@@ -171,12 +171,12 @@ Monotonic Clock
 Testability
 ^^^^^^^^^^^^
 
-.. feat_req:: score::time fake APIs implementation
-   :id: feat_req__time__apis_faking
+.. feat_req:: score::time mocking APIs implementation
+   :id: feat_req__time__apis_mocking
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__dev_experience__fake_public_apis
+   :satisfies: stkh_req__dev_experience__mockup_public_apis
    :status: valid
 
-   The score::time feature shall provide support for mocking (faking) its public interfaces, enabling unit, component and integration testing of applications.
+   The score::time feature shall provide support for mocking its public interfaces, enabling unit, component and integration testing of applications.
