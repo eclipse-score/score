@@ -557,18 +557,84 @@ Communication
    * Diagnostic trouble codes
    * Diagnostic jobs
 
-Time Synchronization
---------------------
+Time
+----
 
-.. stkh_req:: Time Synchronization
+Time synchronization to internal (in-vehicle) sources
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. stkh_req:: In-Vehicle Time base Synchronization
    :id: stkh_req__time__synchronization
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :rationale: Enables the system to synchronize its internal clock with external time sources, ensuring the data aging across distributed ECUs.
+   :rationale: Enables the system to compare events chronologically.
    :status: valid
 
-   The software platform shall provide time synchronization framework to synchronize its clock with external time sources.
+   The software platform shall provide a time synchronization framework to synchronize its clock with external to ECU time sources.
+
+.. stkh_req:: Validation of In-Vehicle Time base synchronization
+   :id: stkh_req__time__synchronization_validation
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: Enables the system to validate the time synchronization process, ensuring that the synchronized clock is accurate and reliable.
+   :status: valid
+
+   The software platform shall provide a mechanism to validate the synchronized clock.
+
+.. stkh_req:: In-Vehicle Time base API
+   :id: stkh_req__time__in_time_base_api
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: Enables an application to correlate its data with a vehicle-internal time reference for event timestamping and chronological events comparison.
+   :status: valid
+
+   The software platform shall provide the APIs to read the synchronized time from Local Time Slave.
+
+Time synchronization to external (out-of-vehicle) sources
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. stkh_req:: Time Synchronization with absolute external time sources
+   :id: stkh_req__time__external_timebase_sync
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: Enables the system to validate a certificate or token with temporal validity conditions, adding a UTC-timestamp to a data set.
+   :status: valid
+
+   The software platform shall provide a framework for external time synchronization (UTC) to ensure accurate timekeeping across distributed systems.
+
+.. stkh_req:: Ext-Vehicle Time base API
+   :id: stkh_req__time__external_timebase_api
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: Enables an application to correlate its data with an absolute vehicle-external time reference for event timestamping and chronological events comparison.
+   :status: valid
+
+   The software platform shall provide the APIs to read the absolute time bases, synchronized to external time sources.
+
+.. stkh_req:: Ext-Vehicle Time base accuracy qualifier
+   :id: stkh_req__time__external_timebase_accuracy_qualifier
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: Enables an application to make informed decisions based on the accuracy of the external time reference, ensuring that timestamped data is reliable and consistent.
+   :status: valid
+
+   The software platform shall provide the APIs to read accuracy qualifier of the absolute time base, synchronized to external time sources.
+
+.. stkh_req:: Ext-Vehicle Time base security qualifier
+   :id: stkh_req__time__external_timebase_security_qualifier
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: Enables an application to make informed decisions based on the security of the external time reference, ensuring that timestamped data is reliable and consistent.
+   :status: valid
+
+   The software platform shall provide the APIs to read security qualifier of the absolute time base, synchronized to external time sources.
 
 Diagnostics and Fault Management
 --------------------------------
@@ -808,15 +874,15 @@ Developer experience
    The software platform shall provide a method and interface to enable
    debugging of the software on target and in vehicle.
 
-.. stkh_req:: Fake implementation for application testing
-   :id: stkh_req__dev_experience__fake_public_apis
+.. stkh_req:: Mockup implementation for application testing
+   :id: stkh_req__dev_experience__mockup_public_apis
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :rationale: tbd
+   :rationale: Enables unit, component and integration testing for both platform related and non-platform related applications.
    :status: valid
 
-   The software platform shall provide support for mocking and faking its public interfaces,
+   The software platform shall provide support for mocking its public interfaces,
    enabling unit, component and integration testing of applications.
 
 .. stkh_req:: Programming languages for application development

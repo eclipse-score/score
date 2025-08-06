@@ -535,7 +535,7 @@
                   
   <section id="time">
 <span id="time-feature"></span><h1>Time<a class="headerlink" href="#time" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-19e5f263">
+<div class="need_container docutils container" id="SNCB-cf65ee1f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__time">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -671,13 +671,6 @@ An actor that runs on the system and is responsible for</p>
 <p><strong>Synchronization process metadata</strong>
 Data which is provided by the <strong>time client</strong> and includes the current synchronized time, synchronization status, rate correction, and so on, which are the output or intermediate artifacts of the synchronization process.</p>
 <p>The diagram bellow illustrates the data flow and interactions between the Time client, score::time middleware, and client applications within an ECU during PTP-based time synchronization.</p>
-<figure class="align-default" id="id3">
-<p class="plantuml">
-<object data="../../_images/plantuml-c55001a248549b99fd3a76264a83c30ecedec28a.svg" type="image/svg+xml" style="width:1907px;height:1516px;background:#FFFFFF;"></object></p>
-<figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Data flow between time client, score::time, and clients</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
 <p>Where</p>
 <ul class="simple">
 <li><p>The <strong>time client</strong> (gPTP stack) communicates with an external time host to maintain accurate time synchronization using the PTP protocol.</p></li>
