@@ -30,6 +30,7 @@ Communication
 
    docs/**/index
    ipc/index
+   crossvm/index
 
 Feature flag
 ============

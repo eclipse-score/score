@@ -2,13 +2,13 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../" >
+<html lang="en" data-content_root="../../../" >
 
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>NonIPC Communication &#8212; S-CORE 0.1 documentation</title>
+    <title>Cross Virtual Machine Communication &#8212; S-CORE 0.1 documentation</title>
   
   
   
@@ -27,42 +27,42 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/score.css?v=940e959b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/score_needs.css?v=e97392eb" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/score_design.css?v=d9fd870c" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=803738c0" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/score.css?v=940e959b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/score_needs.css?v=e97392eb" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/score_design.css?v=d9fd870c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/jquery.js?v=5d32c60e"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../../_static/documentation_options.js?v=2709fde1"></script>
-    <script src="../../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-    <script src="../../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
-    <script src="../../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
-    <script src="../../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
-    <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
-    <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'features/nonipc/index';</script>
+    <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
+    <script src="../../../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
+    <script src="../../../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
+    <script src="../../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
+    <script src="../../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'features/communication/crossvm/index';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
@@ -70,10 +70,10 @@
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Requirements" href="requirements/index.html" />
-    <link rel="prev" title="Integration" href="../integration/index.html" />
+    <link rel="prev" title="Roadmap" href="../ipc/docs/roadmap.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
@@ -95,7 +95,7 @@
   <dialog id="pst-search-dialog">
     
 <form class="bd-search d-flex align-items-center"
-      action="../../search.html"
+      action="../../../search.html"
       method="get">
   <i class="fa-solid fa-magnifying-glass"></i>
   <input type="search"
@@ -131,7 +131,7 @@
     
   
 
-<a class="navbar-brand logo" href="../../index.html">
+<a class="navbar-brand logo" href="../../../index.html">
   
   
   
@@ -153,35 +153,35 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../introduction/index.html">
+  <a class="nav-link nav-internal" href="../../../introduction/index.html">
     Introduction
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../requirements/index.html">
+  <a class="nav-link nav-internal" href="../../../requirements/index.html">
     Requirements
   </a>
 </li>
 
 
 <li class="nav-item current active">
-  <a class="nav-link nav-internal" href="../index.html">
+  <a class="nav-link nav-internal" href="../../index.html">
     Features
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../modules/index.html">
+  <a class="nav-link nav-internal" href="../../../modules/index.html">
     Modules
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../contribute/index.html">
+  <a class="nav-link nav-internal" href="../../../contribute/index.html">
     Contribute
   </a>
 </li>
@@ -195,21 +195,21 @@
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../score_releases/index.html">
+  <a class="nav-link dropdown-item nav-internal" href="../../../score_releases/index.html">
     Releases
   </a>
 </li>
 
 
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../score_tools/index.html">
+  <a class="nav-link dropdown-item nav-internal" href="../../../score_tools/index.html">
     Tools
   </a>
 </li>
 
 
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../platform_management_plan/index.html">
+  <a class="nav-link dropdown-item nav-internal" href="../../../platform_management_plan/index.html">
     PMP
   </a>
 </li>
@@ -334,56 +334,56 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../introduction/index.html">
+  <a class="nav-link nav-internal" href="../../../introduction/index.html">
     Introduction
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../requirements/index.html">
+  <a class="nav-link nav-internal" href="../../../requirements/index.html">
     Requirements
   </a>
 </li>
 
 
 <li class="nav-item current active">
-  <a class="nav-link nav-internal" href="../index.html">
+  <a class="nav-link nav-internal" href="../../index.html">
     Features
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../modules/index.html">
+  <a class="nav-link nav-internal" href="../../../modules/index.html">
     Modules
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../contribute/index.html">
+  <a class="nav-link nav-internal" href="../../../contribute/index.html">
     Contribute
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../score_releases/index.html">
+  <a class="nav-link nav-internal" href="../../../score_releases/index.html">
     Releases
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../score_tools/index.html">
+  <a class="nav-link nav-internal" href="../../../score_tools/index.html">
     Tools
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../platform_management_plan/index.html">
+  <a class="nav-link nav-internal" href="../../../platform_management_plan/index.html">
     PMP
   </a>
 </li>
@@ -459,20 +459,25 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../analysis-infra/index.html">Analysis Infrastructure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../baselibs/index.html">Base Libraries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../communication/index.html">Communication</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../diagnostics/index.html">Diagnostic and Fault Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../frameworks/index.html">Frameworks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../infrastructure/index.html">Infrastructure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../integration/index.html">Integration</a></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">NonIPC Communication</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="requirements/index.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../analysis-infra/index.html">Analysis Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../baselibs/index.html">Base Libraries</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Communication</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../docs/architecture/index.html">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../docs/requirements/index.html">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ipc/index.html">Inter-process Communication</a></li>
+<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">Cross Virtual Machine Communication</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="requirements/index.html">Requirements</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../orchestration/index.html">Orchestration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../persistency/index.html">Persistency</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagnostics/index.html">Diagnostic and Fault Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../frameworks/index.html">Frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../infrastructure/index.html">Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../integration/index.html">Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../orchestration/index.html">Orchestration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../persistency/index.html">Persistency</a></li>
 </ul>
 </div>
 </nav></div>
@@ -509,14 +514,17 @@
   <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
-      <a href="../../index.html" class="nav-link" aria-label="Home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
     
-    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Features</a></li>
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Features</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">NonIPC Communication</span></li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Communication</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Cross Virtual Machine Communication</span></li>
   </ul>
 </nav>
 </div>
@@ -533,13 +541,13 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="nonipc-communication">
-<span id="non-ipc-feature"></span><h1>NonIPC Communication<a class="headerlink" href="#nonipc-communication" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-7e17ae3e">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__nonipc">
+  <section id="cross-virtual-machine-communication">
+<span id="crossvm-feature"></span><h1>Cross Virtual Machine Communication<a class="headerlink" href="#cross-virtual-machine-communication" title="Link to this heading">#</a></h1>
+<div class="need_container docutils container" id="SNCB-1fce9428">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__com_crossvm">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">NonIPC Communication</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">Cross-VM Communication</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -555,7 +563,7 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">feature_request</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">feature_modification_request</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
@@ -566,7 +574,7 @@
 <tr class="content row-odd"><td class="content" colspan="6"></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
-<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__nonipc" title="doc__nonipc">doc__nonipc</a></span></span></div>
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__com_crossvm" title="doc__com_crossvm">doc__com_crossvm</a></span></span></div>
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
@@ -587,11 +595,11 @@
 <section id="feature-flag">
 <h2>Feature flag<a class="headerlink" href="#feature-flag" title="Link to this heading">#</a></h2>
 <p>To activate this feature, use the following feature flag:</p>
-<p><code class="docutils literal notranslate"><span class="pre">experimental_nonipc_com</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">experimental_crossvm_com</span></code></p>
 </section>
 <section id="abstract">
 <h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
-<p>This feature provides mechanisms for communication and data exchange between processes without using IPC.
+<p>This feature provides mechanisms for communication and data exchange between processes in different Virtual Machines (VM).
 It includes two classes of communication/data-exchange:</p>
 <ol class="arabic simple">
 <li><p>One-way data sharing into a VM for (vehicle) state read-only for the VM (snapshot state)
@@ -602,18 +610,15 @@ It includes two classes of communication/data-exchange:</p>
 <li><p>Streamed data based on shared queues (stream of events or data)
 - Queues shall be configurable by client (VM) (number of elements etc..)
 - Size of a queue
-- Allocation of buffers for the data elements</p>
-<ul class="simple">
-<li><p>Queues shall support lock-free access to data elements</p></li>
-<li><p>Support for bi-directional communication via writable data elements by the client</p></li>
-<li><p>Asynchronous bi-directional support via multiple queues</p></li>
-</ul>
-</li>
+- Allocation of buffers for the data elements
+- Queues shall support lock-free access to data elements
+- Support for bi-directional communication via writable data elements by the client
+- Asynchronous bi-directional support via multiple queues</p></li>
 </ol>
 </section>
 <section id="motivation">
 <h2>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h2>
-<p>NonIPC communication mechanisms are essential to ensure efficient and reliable data exchange between processes, especially in scenarios where IPC may not be suitable or desired.</p>
+<p>Cross-VM communication mechanisms are essential to ensure efficient and reliable data exchange between VMs.</p>
 </section>
 <section id="rationale">
 <h2>Rationale<a class="headerlink" href="#rationale" title="Link to this heading">#</a></h2>
@@ -621,7 +626,7 @@ It includes two classes of communication/data-exchange:</p>
 </section>
 <section id="specification">
 <h2>Specification<a class="headerlink" href="#specification" title="Link to this heading">#</a></h2>
-<p>The NonIPC communication feature consists of the following mechanisms:</p>
+<p>The Cross-VM communication feature consists of the following mechanisms:</p>
 <ul class="simple">
 <li><p><strong>One-way data sharing</strong>: Allows read-only access to vehicle state data in a VM, ensuring consistency and lock-free access.</p></li>
 <li><p><strong>Streamed data</strong>: Utilizes shared queues for streaming events or data, configurable by the client, supporting bi-directional communication.</p></li>
@@ -637,11 +642,11 @@ It includes two classes of communication/data-exchange:</p>
 </section>
 <section id="backwards-compatibility">
 <h2>Backwards Compatibility<a class="headerlink" href="#backwards-compatibility" title="Link to this heading">#</a></h2>
-<p>As this is a new feature, there are no backwards compatibility concerns.</p>
+<p>It should be shure that both Cross-VM and normal IPC work seamlessly together</p>
 </section>
 <section id="security-impact">
 <h2>Security Impact<a class="headerlink" href="#security-impact" title="Link to this heading">#</a></h2>
-<p>NonIPC communication mechanisms present varying security risks as vulnerabilities could affect multiple components simultaneously.
+<p>Cross-VM communication mechanisms present varying security risks as vulnerabilities could affect multiple components simultaneously.
 Each mechanism requires individual security impact analysis based on its functionality and usage patterns.</p>
 </section>
 <section id="safety-impact">
@@ -649,11 +654,12 @@ Each mechanism requires individual security impact analysis based on its functio
 <ul class="simple">
 <li><p>Due to wide usage of these communication mechanisms throughout the platform, extra care is needed in design, implementation, and testing to minimize safety impact.</p></li>
 <li><p>Mechanisms are developed at various integrity levels from QM (non-safety) up to ASIL-B, depending on their intended use cases.</p></li>
+<li><p>Freedom from Interference has to be taken into account when different VMs</p></li>
 </ul>
 </section>
 <section id="license-impact">
 <h2>License Impact<a class="headerlink" href="#license-impact" title="Link to this heading">#</a></h2>
-<p>The NonIPC communication mechanisms are licensed under Apache License 2.0.</p>
+<p>The Cross-VM communication mechanisms are licensed under Apache License 2.0.</p>
 </section>
 <section id="how-to-teach-this">
 <h2>How to Teach This<a class="headerlink" href="#how-to-teach-this" title="Link to this heading">#</a></h2>
@@ -661,11 +667,11 @@ Each mechanism requires individual security impact analysis based on its functio
 </section>
 <section id="rejected-ideas">
 <h2>Rejected Ideas<a class="headerlink" href="#rejected-ideas" title="Link to this heading">#</a></h2>
-<p>There are no rejected ideas related to the NonIPC communication feature at this time.</p>
+<p>There are no rejected ideas related to the Cross-VM communication feature at this time.</p>
 </section>
 <section id="open-issues">
 <h2>Open Issues<a class="headerlink" href="#open-issues" title="Link to this heading">#</a></h2>
-<p>There are currently no open issues related to the NonIPC communication feature.</p>
+<p>There are currently no open issues related to the Cross-VM communication feature.</p>
 </section>
 </section>
 
@@ -680,12 +686,12 @@ Each mechanism requires individual security impact analysis based on its functio
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../integration/index.html"
+       href="../ipc/docs/roadmap.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Integration</p>
+        <p class="prev-next-title">Roadmap</p>
       </div>
     </a>
     <a class="right-next"
@@ -738,7 +744,7 @@ Each mechanism requires individual security impact analysis based on its functio
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/features/nonipc/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/features/communication/crossvm/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -754,7 +760,7 @@ Each mechanism requires individual security impact analysis based on its functio
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../_sources/features/nonipc/index.rst.txt"
+      <li><a href="../../../_sources/features/communication/crossvm/index.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div></div>
@@ -772,8 +778,8 @@ Each mechanism requires individual security impact analysis based on its functio
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
