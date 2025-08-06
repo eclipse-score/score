@@ -301,7 +301,7 @@ Requirements
 
    The Key-Value-Storage shall support concurrent intra-process data access.
 
-.. needextend:: docname is not None
+.. needextend:: docname is not None and "persistency/kvs/requirements" in docname
    :+tags: persistency
 
 AoU Requirements
