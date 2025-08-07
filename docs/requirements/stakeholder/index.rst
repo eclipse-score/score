@@ -572,7 +572,7 @@ Communication
    :rationale: Different VMs in a system involved. Somethimes they interact.
    :status: valid
 
-   The platform shall support not only IPC but also intra Virtual Machine communication.
+   The platform shall support not only IPC but also intra Virtual Machine (VM) communication.
 
 .. stkh_req:: Stable application interfaces
    :id: stkh_req__communication__stable_app_inter
