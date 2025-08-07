@@ -221,32 +221,65 @@ Every software module project, located in another repository, is free to define
 additionally its own labels. It is recommended to create labels at least
 for specific areas that may encompass multiple features.
 
-Types of tasks and structure
-------------------------------
+Types of work items and structure
+----------------------------------
 For better structuring of the tickets following *GitHub Issue* types are introduced
-in the main *S-CORE* repository. It is recommended for all *child projects* to
-introduce the same types.
+in the main *S-CORE* repository. In order to create a consistent overview of all work items (WIs),
+the WIs need to be maintained in one single project within the main *S-CORE* repository.
+Having separate WI backlogs within separate repositories will increase the complexity
+and reduce the transparency too much.
+
+All *child projects* are only allowed to have their separate list of issues. All other WI types
+shall not be available for them. The planning WIs of the main *S-CORE* repository therefore are used
+to link WIs to *GitHub issues* of *child projects*.
+For example a *Bug* WI within the main repository is linked to a *GitHub Issue* of the *communication*
+repository but no *Bug* WI shall be created in the *child project* repository.
 
 .. image:: _assets/issue_types.png
     :width: 600
     :alt: Issue types overview
     :align: center
 
-* *Saga* *GitHub Issue* of type *Saga* is the highest level hierarchy and can not
-  be a sub-issue of another ticket. If you want to group *Sagas* together, you will
-  need to use labels. *Saga* can have multiple *Epics* as sub-issues. In really
-  exceptional cases, also a *Story* can be a direct sub-issue of a *Saga* as well.
-* *Epic* *GitHub Issue* of type *Epic* groups multiple *Stories* together and is sub-issue
-  of exactly one *Saga*. *Epics* can be also standalone *GitHub Issues* without being
-  a child of any *Saga*. *Saga* should be the only way for grouping *Epics* together.
-  Grouping standalone *Epics* with labels is not something, what we encourage you to do.
-* *Story* *GitHub Issue* of type *Story* is the lowest planning granularity and represents
-  concrete task, that should be done, e.g. by a developer. Normally *Stories* are
-  grouped together in an Epic. In some cases a *Story* can exist as a standalone *GitHub issue*.
-  Grouping standalone *Stories* with labels is not something, what we encourage you to do.
-* *Bug* *GitHub Issue* of type *Bug* is used to report any kind of problems. It can be
-  a standalone *GitHub Issue* or can be a sub-issue of an *Epic* or a *Saga*.
-  It is also ok to use labels to group multiple *Bugs* that are related to the same topic.
+* A *Task* *GitHub Issue* represents the smallest unit of planning and typically corresponds
+  to a concrete piece of work to be completed, such as by a developer. *Task* work items are usually
+  grouped under a *Story* work item.
+  In certain cases, a *Task* may exist as a standalone *GitHub Issue*.
+  However, standalone *Task* work items must not be grouped using labels.
+  If multiple *Task* work items are related, a *Story* work item should be created instead,
+  with all associated *Task* work items added as child items under that *Story*.
+
+* A *Story* *GitHub Issue* is the primary planning work item for development teams.
+  *Story* work items should be scoped in a way that allows them to be completed within
+  the defined *Iteration* length (e.g., 2, 3, or 4 weeks) of the S-CORE project.
+  While a *Story* work item can be implemented by multiple team members, it is recommended
+  that one developer takes main responsibility for its completion. Quality assurance activities,
+  such as code reviews, should be performed by other team members.
+  *Story* work items are typically grouped under an *Epic* work item.
+  However, a *Story* work item can also exist as a standalone work item if its outcome represents
+  a complete functional improvement, making a related *Epic* work item unnecessary.
+
+* A *Milestone* *GitHub Issue* represents the highest level in the work item hierarchy and
+  cannot be linked as a child of another issue. If you need to group multiple *Milestone* work items,
+  this must be done using labels.
+  A *Milestone* work item can have multiple *Epic* work items as child work items.
+  In exceptional cases, a *Story* work item may also be linked as a child of a *Milestone* work item
+  if its outcome represents a complete functional improvement.
+
+* An *Epic* *GitHub Issue* represents a complete, experienceable functional improvement whose
+  implementation cannot be completed within a single Iteration. Therefore, *Epic* work items
+  consist of multiple *Story* work items that collectively contribute to fulfilling the scope
+  of the *Epic* work item.
+  An *Epic* work item should be linked as a child to a *Milestone* work item to indicate
+  when the content of the *Epic* work item is expected to be delivered.
+  *Epic* work items can also exist as standalone work items without being linked as a child
+  to any *Milestone* work item but *Milestone* work items should be the only method used
+  to group multiple *Epic* work items together.
+
+* A *Bug* *GitHub Issue* is used to report any kind of problem or malfunction. It is considered
+  a special type of *Story* work item and follows the same rules as regular *Story* work items,
+  with the key difference that it focuses on fixing defects in existing functionality
+  rather than creating or extending functionality.
+  A *Bug* work item can be handled as a standalone work item or linked as a child to an *Epic* work item.
 
 Main *S-CORE* project defines templates for every type of *GitHub Issues*
 to ensure, that every ticket has all necessary information.
