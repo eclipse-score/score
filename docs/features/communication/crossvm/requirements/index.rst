@@ -23,7 +23,7 @@ Requirements
    :satisfies: stkh_req__communication__vm
    :status: valid
 
-   The system shall support one-way data sharing into a VM for vehicle state read-only for the VM (snapshot state).
+   The system shall support one-way data sharing into a Virtual Machine (VM) for vehicle state read-only for the VM (snapshot state).
 
 .. feat_req:: Read-only access for VM
    :id: feat_req__crossvm__readonly_vm
