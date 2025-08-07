@@ -98,7 +98,7 @@ Safety Impact
 
 - Due to wide usage of these communication mechanisms throughout the platform, extra care is needed in design, implementation, and testing to minimize safety impact.
 - Mechanisms are developed at various integrity levels from QM (non-safety) up to ASIL-B, depending on their intended use cases.
-- Freedom from Interference has to be taken into account when different VMs
+- Freedom from Interference has to be taken into account when different VMs with different integrity or safety levels communicate or share resources, to ensure that faults or failures in one VM do not adversely affect others.
 
 License Impact
 ==============
