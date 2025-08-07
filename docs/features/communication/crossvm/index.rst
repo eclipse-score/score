@@ -85,7 +85,7 @@ General requirements:
 Backwards Compatibility
 =======================
 
-It should be shure that both Cross-VM and normal IPC work seamlessly together
+It should be sure that both Cross-VM and normal IPC work seamlessly together
 
 Security Impact
 ===============
