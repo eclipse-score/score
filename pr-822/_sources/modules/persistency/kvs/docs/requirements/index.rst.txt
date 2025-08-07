@@ -389,5 +389,5 @@ Requirements
 
    The component shall provide an API for registering callbacks that are triggered by data change events.
 
-.. needextend:: docname is not None
+.. needextend:: docname is not None and "persistency/kvs/requirements" in docname
    :+tags: persistencykvs
