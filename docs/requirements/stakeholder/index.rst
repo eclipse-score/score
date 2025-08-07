@@ -569,7 +569,7 @@ Communication
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :rationale: Different VMs in a system involved. Somethimes they interact.
+   :rationale: Different VMs in a system involved. Sometimes they interact.
    :status: valid
 
    The platform shall support not only IPC but also intra Virtual Machine (VM) communication.
