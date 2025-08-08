@@ -19,20 +19,26 @@ SOME/IP Gateway Requirements
 Functional Requirements
 =======================
 
-
-
-Security Impact
-===============
-
-.. feat_req:: SOME/IP Gateway Secure Communication
-   :id: feat_req__some_ip_gateway__secure_com
+.. feat_req:: Plug-In-IFC for SOME/IP protocol stacks
+   :id: feat_req__some_ip_gateway__stack_plugin_ifc
    :reqtype: Functional
-   :security: YES
+   :security: NO
    :safety: QM
-   :satisfies: stkh_req__communication__secure
+   :satisfies: stkh_req__communication__extensible_external
    :status: valid
 
-   The platform shall support secure communication.
+   The SOME/IP Gateway shall support an interface to plug-in a SOME/IP stack implementation.
+
+.. feat_req:: Plug-In-IFC for End-to-End protection modules
+   :id: feat_req__some_ip_gateway__e2e_plugin_ifc
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :satisfies: stkh_req__communication__safe
+   :status: valid
+
+   The SOME/IP Gateway shall support an interface to plug-in a E2E protection service implementation.
+
 
 .. feat_req:: SOME/IP Gateway Access Control
    :id: feat_req__some_ip_gateway__access_control
@@ -56,13 +62,3 @@ Safety Impact
    :status: valid
 
    The SOME/IP Gateway shall support safe communication up to ASIL-B.
-
-.. feat_req:: SOME/IP Gateway QM network stack
-   :id: feat_req__some_ip_gateway__network_stack
-   :reqtype: Functional
-   :security: YES
-   :safety: ASIL_B
-   :satisfies: stkh_req__communication__safe
-   :status: valid
-
-   If SOME/IP network stacks are available as QM only.
