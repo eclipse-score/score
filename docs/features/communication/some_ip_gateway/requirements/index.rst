@@ -24,7 +24,7 @@ Functional Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies:
+   :satisfies: stkh_req__communication__extensible_external
    :status: valid
 
    The SOME/IP Gateway shall support an interface to plug-in a SOME/IP stack implementation.
@@ -33,8 +33,8 @@ Functional Requirements
    :id: feat_req__some_ip_gateway__e2e_plugin_ifc
    :reqtype: Functional
    :security: NO
-   :safety: QM
-   :satisfies:
+   :safety: ASIL_B
+   :satisfies: stkh_req__communication__safe
    :status: valid
 
    The SOME/IP Gateway shall support an interface to plug-in a E2E protection service implementation.
