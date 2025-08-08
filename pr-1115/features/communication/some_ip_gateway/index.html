@@ -545,7 +545,7 @@
                   
   <section id="some-ip-gateway">
 <span id="some-ip-gateway-feature"></span><h1>SOME/IP-Gateway<a class="headerlink" href="#some-ip-gateway" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-dccd1cc6">
+<div class="need_container docutils container" id="SNCB-2759fb3b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__some_ip_gateway">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -604,8 +604,10 @@ The focus is on a gateway to handle SOME/IP communication with external devices 
 <dl class="simple">
 <dt>This feature request includes:</dt><dd><ul class="simple">
 <li><p>A description of how a SOME/IP gateway service (or data broker) shall be implemented</p></li>
-<li><p>How the SOME/IP gateway services shall integrate with the zero-copy communication from IPC (which might become a general description of how services plug-in to the IPC context)</p></li>
+<li><p>How the SOME/IP gateway services shall integrate with the zero-copy communication from IPC</p></li>
 <li><p>How data shall be mapped or translated between SOME/IP protocol and IPC communication</p></li>
+<li><p>How service discovery should be integrated, also for services that are offered by IPC-Clients</p></li>
+<li><p>How End-to-End protection and checking shall be realized</p></li>
 </ul>
 </dd>
 </dl>
@@ -618,21 +620,19 @@ For data-exchange between applications the IPC feature is providing high-speed c
 the S-CORE platform, services are required that will handle protocols for communication with both side. This is for instance the case when communication with rest of vehicle or sensors
 needs to be realized with the SOME/IP protocol.</p>
 <p>For software component developers it should be unrecognized that data is originated from a SOME/IP communication channel, the data should be provided with the same API as in IPC.
-Nonetheless integrators and architects will have to configure the system to receive or send data over SOME/IP, hence provide it as a SOME/IP service.</p>
+Nonetheless integrators and architects will have to configure the system to receive or send data over SOME/IP.</p>
 </section>
 <section id="rationale">
 <span id="id2"></span><h2>Rationale<a class="headerlink" href="#rationale" title="Link to this heading">#</a></h2>
-<p>SOME/IP and IPC use different mechanisms to communicate on different channels. Applications integrating on S-CORE platform may have certain requirements to data-input that is not directly supported with SOME/IP and vice versa
-SOME/IP definition may have requirements that cannot directly be supported by the application providing data on IPC. Therefor it’s not only a task of this gateway
-to adapt the communication, but also to translate data between the two communication channels and probably even fill data, i.e. when applications require new data that has not be received on SOME/IP or vice versa.</p>
-<p>Hence the gateway on the one side should act as a participant in IPC and fulfill all requirements to this accordingly, whereas on the other side it shall participate in SOME/IP communication
-acting as a SOME/IP service fulfilling all SOME/IP requirements and defined communication. Between these two contexts developers shall be able to create signal or data mappings and
-translate the different data-types and representations of the two contexts.</p>
-<p>The SOME/IP side shall, where possible, use an existing SOME/IP stack that is fully compatible and complying with the SOME/IP specification from AUTOSAR Adaptive.</p>
+<p>SOME/IP and IPC use different mechanisms and data representations to communicate. Therefor it’s not only a task of this gateway
+to adapt the communication, but also to transform from one representation to another. This includes changing data layout, filling in missing data, filtering traffic, error handling, service discovery and further steps.</p>
+<p>Hence the gateway shall be a transparent bridge between IPC and SOME/IP. On the one side it should act as a participant in IPC and fulfill all requirements to this accordingly, where providing data or consuming it.
+whereas on the other side it shall participate in SOME/IP communication acting as a SOME/IP service and client fulfilling all SOME/IP requirements and defined communication.
+Between these two contexts developers shall be able to create signal or data mappings and translate the different data-types and representations of the two contexts.</p>
 <dl class="simple">
 <dt>This module shall fulfill the following requirements:</dt><dd><ul class="simple">
 <li><p>Multi-Binding support - <a class="reference internal" href="../docs/requirements/index.html#feat_req__com__multi_binding_support" title="feat_req__com__multi_binding_support"><em class="xref need">Multi-binding support (feat_req__com__multi_binding_support)</em></a></p></li>
-<li><p>agnostic binding - <a class="reference internal" href="../docs/requirements/index.html#feat_req__com__binding_agnostic_api" title="feat_req__com__binding_agnostic_api"><em class="xref need">Binding-agnostic public API (feat_req__com__binding_agnostic_api)</em></a></p></li>
+<li><p>binding agnostic API - <a class="reference internal" href="../docs/requirements/index.html#feat_req__com__binding_agnostic_api" title="feat_req__com__binding_agnostic_api"><em class="xref need">Binding-agnostic public API (feat_req__com__binding_agnostic_api)</em></a></p></li>
 <li><p>deployment configuration - <a class="reference internal" href="../docs/requirements/index.html#feat_req__com__multi_binding_depl" title="feat_req__com__multi_binding_depl"><em class="xref need">Multi-binding deployment co... (feat_req__com__multi_binding_depl)</em></a></p></li>
 </ul>
 </dd>
@@ -640,12 +640,14 @@ translate the different data-types and representations of the two contexts.</p>
 </section>
 <section id="specification">
 <span id="id3"></span><h2>Specification<a class="headerlink" href="#specification" title="Link to this heading">#</a></h2>
-<section id="some-ip-gateway-protocol-implementation">
-<h3>SOME/IP Gateway protocol implementation<a class="headerlink" href="#some-ip-gateway-protocol-implementation" title="Link to this heading">#</a></h3>
+<section id="some-ip-protocol-implementation">
+<h3>SOME/IP protocol implementation<a class="headerlink" href="#some-ip-protocol-implementation" title="Link to this heading">#</a></h3>
 <p>The protocol implementation shall be fully compatible and complying with the SOME/IP specification from AUTOSAR Adaptive.
 Specifically the SOME/IP specification from AUTOSAR release 24-11 shall be supported by the SOME/IP Gateway. This shall guarantee that systems integrated with the SOME/IP gateway can be used in according
 automotive E/E-architectures.
 Protocol implementations shall be wrapped in an abstraction API, that stays stable and allows implementations may be exchanged, potentially even by binary only libraries.</p>
+<p>The SOME/IP Gateway shall support SOME/IP Events, Fields and Methods and shall map these accordingly into IPC.</p>
+<p>The SOME/IP Gateway shall support SOME/IP Service Discovery. Please refer to the Service Discovery page for detailed discussions on how SD shall be realized with IPC-Clients.</p>
 </section>
 <section id="some-ip-gateway-processes-and-life-cycle-management">
 <h3>SOME/IP Gateway processes and life cycle management<a class="headerlink" href="#some-ip-gateway-processes-and-life-cycle-management" title="Link to this heading">#</a></h3>
@@ -658,12 +660,8 @@ all need to go into launch control in health monitoring and must not be setup (f
 </section>
 <section id="some-ip-gateway-security-goals">
 <h3>SOME/IP Gateway Security Goals<a class="headerlink" href="#some-ip-gateway-security-goals" title="Link to this heading">#</a></h3>
-<p>As with IPC generally, the security approach for SOME/IP gateway shall achieve the following security goals:</p>
+<p>The security approach for SOME/IP gateway shall achieve the following security goals:</p>
 <ul class="simple">
-<li><p>confidentiality (<a class="reference internal" href="../ipc/docs/requirements/index.html#feat_req__ipc__confidentiality" title="feat_req__ipc__confidentiality"><em class="xref need">IPC Confidentiality (feat_req__ipc__confidentiality)</em></a>)</p></li>
-<li><p>integrity (<a class="reference internal" href="../ipc/docs/requirements/index.html#feat_req__ipc__integrity" title="feat_req__ipc__integrity"><em class="xref need">IPC Integrity (feat_req__ipc__integrity)</em></a>)</p></li>
-<li><p>availability (per criticality-level) (<a class="reference internal" href="../ipc/docs/requirements/index.html#feat_req__ipc__availability" title="feat_req__ipc__availability"><em class="xref need">IPC Availability (feat_req__ipc__availability)</em></a>)</p></li>
-<li><p>secure communication (<a class="reference internal" href="requirements/index.html#feat_req__some_ip_gateway__secure_com" title="feat_req__some_ip_gateway__secure_com"><em class="xref need">SOME/IP Gateway Secure Comm... (feat_req__some_ip_gateway__secure_com)</em></a>)</p></li>
 <li><p>access control (<a class="reference internal" href="requirements/index.html#feat_req__some_ip_gateway__access_control" title="feat_req__some_ip_gateway__access_control"><em class="xref need">SOME/IP Gateway Access Control (feat_req__some_ip_gateway__access_control)</em></a>)</p></li>
 </ul>
 </section>
@@ -676,110 +674,57 @@ Applications shall stay stable on API layer, need to recompile is acceptable.</p
 </section>
 <section id="security-impact">
 <h2>Security Impact<a class="headerlink" href="#security-impact" title="Link to this heading">#</a></h2>
-<p>There are multiple protocols targeting secure communication. In general a holistic security concept for a vehicle will not apply all together.</p>
-<figure class="align-center" id="some-ip-gateway-sec-protocols">
-<img alt="../../../_images/some_ip_gateway_sec_protocols.drawio.svg" src="../../../_images/some_ip_gateway_sec_protocols.drawio.svg" />
-<figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Secure communication protocols</span><a class="headerlink" href="#some-ip-gateway-sec-protocols" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
+<p>Be aware, communication with SOME/IP generally is considered to be not secure. Integrators may apply measures that are outside the
+scope of the SOME/IP gateway to secure the communication (IPsec, MACsec, …).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Access Control List (ACL) is not a security protocol, but a mechanism to restrict access to the SOME/IP Gateway services and tylically allocated within the stateful packet inspection firewall.</p>
+<p>it is expected that a feature request for crypto and security will cover the necessary measures.
+<a class="reference external" href="https://github.com/eclipse-score/score/issues/905">Feature Request for Security &amp; Crypto</a></p>
 </div>
-<section id="scope">
-<h3>Scope<a class="headerlink" href="#scope" title="Link to this heading">#</a></h3>
-<p>As the SOME/IP gateway will open direct communication channels via SOME/IP, where the SOME/IP implementation shall comply with standard security requirements.</p>
-<p>Since SOME/IP is a protocol relies on the security of the underlying transport layer, the SOME/IP gateway makes use of the security features relevant for it. This includes:</p>
-<ul class="simple">
-<li><p>VLAN (= Virtual Local Area Network): A virtual interface that separates ethernet network packets identified by a VLAN ID</p></li>
-<li><p>MACsec: Provides L2 data Integrity, Authenticity and optionally Confidentiality for point-to-point communication.</p></li>
-<li><p>IPsec: A network layer protocol suite that secures network connections by encrypting and/or authenticating IP packets.</p></li>
-<li><p>TLS (= Transport Layer Security): Authentication, integrity, confidentiality of TCP channels -&gt; Protection for one to one communication.</p></li>
-<li><p>DTLS (= Datagram Transport Layer Security): Authentication, integrity, confidentiality of UDP packets -&gt; Protection for multicast communication.</p></li>
-<li><p>ACL (= Access Control List): A filter mechanism to ensure that only allowed SOME/IP communication can take place.</p></li>
-</ul>
-<p>Features included <a class="reference external" href="https://github.com/eclipse-score/score/issues/905">Feature Request for Security &amp; Crypto</a> e.g cryptographic algorithms, symmetric-, asymmetric encryption, Signature functionality, Certificate management, certificate management, entropy generation, data integrity, key management, are out of scope.</p>
-</section>
-<section id="access-control-list">
-<h3>Access Control List<a class="headerlink" href="#access-control-list" title="Link to this heading">#</a></h3>
+<section id="access-control-list-acl">
+<h3>Access Control List (ACL)<a class="headerlink" href="#access-control-list-acl" title="Link to this heading">#</a></h3>
+<p>The gateway shall only forward selective service instances originating from IP addresses configured in an allow-list.
+The logic required for this is protocol specific and therefore part of this feature request.</p>
+<p>Be aware that an additional security mechanism may be necessary that ensures that IP addresses are not forged. This mechanism is out of scope of this feature.</p>
 <p>An access control mechanism is part of a firewall solution, which states that only the traffic defined in the security policy is allowed onto the network and all other traffic must be silently dropped.
-Access Control acts on OSI Layer 5-7. It shall fulfill following:</p>
+Access Control acts on OSI Layer 5-7. It shall fulfill the following:</p>
 <ul class="simple">
-<li><p>Whitelisting of SOME/IP services and methods based on IP addresses and therefore IP address authenticity.</p></li>
-<li><p>A static list which could be updated via OTA (= Over-The-Air) updates.</p></li>
-<li><p>Versioning</p></li>
-<li><p>ACL shall be able to be switched on/off to allow bypassing in an secured environment e.g. engineering mode or repair shop.</p></li>
-<li><p>ACL drop actions shall be logged persistently via a DTC (= Diagnostic Trouble Code) including needed environment data to clearly understand the context of the drop, including the sender, timestamp, Service ID and Instance ID.</p></li>
-<li><p>To avoid code injection attacks, into services of the system, only authenticated and authorized communication partners are allowed to write or delete entries into the <strong>Service Registry</strong>.</p></li>
+<li><p>What SOME/IP service instances to forward</p></li>
+<li><p>What IP address is allowed to offer a SOME/IP service instance</p></li>
+<li><p>Configuration of ACL is done at deployment</p></li>
+<li><p>Versioning of services</p></li>
+<li><p>ACL shall be able to be switched on/off</p></li>
+<li><p>It shall be possible to persistently log ACL drop actions</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
 <li><p>Checking SOME/IP-SD messages with the ACL is optional because no functional data is transported.</p></li>
-<li><p>SOME/IP-SD messages are not protected as per AUTSAR Adaptive specification.</p></li>
+<li><p>SOME/IP-SD messages are not protected as per AUTOSAR Adaptive specification.</p></li>
 </ul>
 </div>
 <figure class="align-center" id="doc-acl-activity-diagram">
 <p class="plantuml">
 <object data="../../../_images/plantuml-d6055e741d1cbbb58ff002b03f129698a9c81ee9.svg" type="image/svg+xml" style="width:423px;height:429px;"></object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Simplified Access Control Activity Diagram</span><a class="headerlink" href="#doc-acl-activity-diagram" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Simplified Access Control Activity Diagram</span><a class="headerlink" href="#doc-acl-activity-diagram" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
-<section id="e2e-and-crc-informal-notes">
-<h3>E2E and CRC (Informal Notes)<a class="headerlink" href="#e2e-and-crc-informal-notes" title="Link to this heading">#</a></h3>
-<p>There are several E2E (= End-to-End) profiles, which utilize various CRC routines as part of AUTOSAR E2E Protocol Specification:</p>
-<ul class="simple">
-<li><p>CRC8 (SAEJ1850)</p></li>
-<li><p>CRC8H2F (0x2F polynomial)</p></li>
-<li><p>CRC16 (also known as CCITT-FALSE 16-bit CRC)</p></li>
-<li><p>CRC32 (also known as IEEE 802.3 Ethernet 32-bit CRC)</p></li>
-<li><p>CRC32P4 (0xF4ACFB13 polynomial)</p></li>
-<li><p>CRC64 (CRC-64-ECMA)</p></li>
-<li><p>CRC32_J1939 (0x6938392D polynomial) (used by Profile 76).</p></li>
-</ul>
-<p>These routines can be implemented using different calculation methods:</p>
-<ul class="simple">
-<li><p>Table based calculation for faster execution, but requiring a larger code size due to ROM tables.</p></li>
-<li><p>Runtime calculation for smaller code size (no ROM table), but resulting in slower execution.</p></li>
-<li><p>Hardware supported CRC calculation (device-specific) for fast execution and less CPU time.</p></li>
-</ul>
-<p>The E2E Library itself does not provide CRC routine implementations, instead, it calls the CRC routines from a dedicated CRC library.
-It is also a requirement that the CRC used in an E2E profile must be different from the CRC used by the underlying physical communication protocol.</p>
-<p>All E2E profiles can be used in combination with SOME/IP, although specific profiles may have limitations regarding maximum data length or being restricted to fixed-length messages.</p>
-<p>For E2E protection with SOME/IP, the CRC is calculated over specific parts of the serialized SOME/IP message:</p>
-<ul class="simple">
-<li><p>For profiles 1, 2, 4, 5, 6, 7, 11, and 22, which are typically used for signal-based or periodic event-based communication, the E2E CRC should be calculated over the following elements of the serialized SOME/IP message:</p>
-<ul>
-<li><p>Request ID (Client ID / Session ID)</p></li>
-<li><p>Protocol Version</p></li>
-<li><p>Interface Version</p></li>
-<li><p>Message Type</p></li>
-<li><p>Return Code</p></li>
-<li><p>Payload</p></li>
-</ul>
-</li>
-<li><p>For profiles 4m, 7m, 8m, and 44m, which are designed for method-based (client-server) communication, the E2E CRC shall be calculated over specific parts of the serialized SOME/IP message. These method-specific profiles incorporate additional fields like Message Type and Message Result within their E2E headers to distinguish between request and response messages and their outcomes.</p></li>
-</ul>
-<p>The E2E communication protection process involves the sender adding control fields, including the CRC, to the transmitted data, and the receiver then evaluating these fields upon reception.
-The middleware, is responsible for determining parameters like DataID, Message Type, Message Result, and SourceID from the exchanged information and then invoking the E2E functions.
-The CRC is calculated over the entire E2E header (excluding the CRC bytes themselves) and the user data.
-For some profiles (e.g., Profile 5, 6, 22), the Data ID is included as an extension at the end of the user data for CRC calculation, even if it is not explicitly transmitted.</p>
+<section id="end-to-end-e2e-protection-with-crc-and-counters">
+<h3>End-to-End (E2E) protection with CRC and counters<a class="headerlink" href="#end-to-end-e2e-protection-with-crc-and-counters" title="Link to this heading">#</a></h3>
+<p>Applications communicating over the network may have to secure data with end-to-end protection (E2E), which may involve
+CRC-protection and checks, and message counters.</p>
+<p>There are several E2E (= End-to-End) profiles, which utilize various CRC routines as part of AUTOSAR E2E Protocol Specification, that shall be supported with the SOME/IP Gateway.</p>
+<p>Though the SOME/IP protocol itself is likely not going to be ASIL-B compliant and have a safety consideration of QM rather,
+E2E-checks and protection need to happen in an ASIL-B context. The gateway may perform the CRC routines as a central service.
+All communication channels (IPC) to this central service must be qualified for ASIL-B, and protected against data loss / loss of samples.</p>
+<p>SOME/IP Events, Methods, and Fields need to be supported with E2E protection.</p>
+<p>Please refer to the SOME/IP Gateway architecture for further details.</p>
 <p>References</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.autosar.org/fileadmin/standards/R24-11/FO/AUTOSAR_FO_PRS_E2EProtocol.pdf">AUTOSAR_FO_PRS_E2EProtocol</a></p></li>
 <li><p><a class="reference external" href="https://www.autosar.org/fileadmin/standards/R24-11/FO/AUTOSAR_FO_RS_E2E.pdf">AUTOSAR_FO_RS_E2E</a></p></li>
-</ul>
-</section>
-<section id="secoc-informal-notes">
-<h3>SecOC (Informal Notes)<a class="headerlink" href="#secoc-informal-notes" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>The SecOC protocol provides a mechanism to verify the authenticity and integrity but lacks of confidentiality.</p></li>
-<li><p>SecOC (= Secured Onboard Communication) does not offer encryption support by design.</p></li>
-<li><p>In contrast to SecOC, TLS can protect all payload of an AUTOSAR PDU including the AUTOSAR PDU header used which overlaps with the SOME/IP message header.</p></li>
-<li><p>In case of SOME/IP protocol, the SOME/IP message id can not be protected by SecOC, because it is stripped before SecO is invoked.</p></li>
 </ul>
 </section>
 </section>
@@ -795,12 +740,7 @@ to be properly protected by E2E to maintain a safe communication via the grey SO
 <p>Since SOME/IP is a protocol, including applied E2E protection and the according profile (polynom, etc.),
 defined by AUTOSAR and published under the license of AUTOSAR, the gateway implementation shall carefully distinguish between the SOME/IP communication stack,
 the E2E protection of data, and the integration into S-CORE mw::com. Breach of foreign licenses must be avoided.</p>
-<p>Anybody using SOME/IP Gateway in a commercial application (i.e. vehicle) needs to make sure to follow the license conditions and rules of AUTOSAR.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>by 2025-08, anybody exploiting AUTOSAR software commercially must be an AUTOSAR member.
-Please refer to <a class="reference external" href="http://autosar.org/">http://autosar.org/</a> for more information.</p>
-</div>
+<p>Anybody using SOME/IP Gateway needs to make sure to follow the license conditions and rules of AUTOSAR.</p>
 </section>
 <section id="how-to-teach-this">
 <h2>How to Teach This<a class="headerlink" href="#how-to-teach-this" title="Link to this heading">#</a></h2>
@@ -860,17 +800,15 @@ Please refer to <a class="reference external" href="http://autosar.org/">http://
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale">Rationale</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specification">Specification</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-ip-gateway-protocol-implementation">SOME/IP Gateway protocol implementation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-ip-protocol-implementation">SOME/IP protocol implementation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-ip-gateway-processes-and-life-cycle-management">SOME/IP Gateway processes and life cycle management</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-ip-gateway-security-goals">SOME/IP Gateway Security Goals</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backwards-compatibility">Backwards Compatibility</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#security-impact">Security Impact</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scope">Scope</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-control-list">Access Control List</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e2e-and-crc-informal-notes">E2E and CRC (Informal Notes)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#secoc-informal-notes">SecOC (Informal Notes)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-control-list-acl">Access Control List (ACL)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#end-to-end-e2e-protection-with-crc-and-counters">End-to-End (E2E) protection with CRC and counters</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#safety-impact">Safety Impact</a></li>

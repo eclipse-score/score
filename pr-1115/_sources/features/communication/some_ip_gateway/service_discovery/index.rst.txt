@@ -163,7 +163,7 @@ Only lookup of running services is done.
    end
    @enduml
 
-If an service is configured to be needed and no OfferService has been received yet, the SOME/IP communication stack may send a SOME/IP-SD message containing a FindService entry.
+If a service is configured to be needed and no OfferService has been received yet, the SOME/IP communication stack shall send a SOME/IP-SD message containing a FindService entry.
 
 .. uml::
    :alt: Gateway sends FindService to the network
