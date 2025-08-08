@@ -198,7 +198,7 @@ Access Control acts on OSI Layer 5-7. It shall fulfill the following:
 
 
 End-to-End (E2E) protection with CRC and counters
------------------------------------------------
+-------------------------------------------------
 
 Applications communicating over the network may have to secure data with end-to-end protection (E2E), which may involve
 CRC-protection and checks, and message counters.
