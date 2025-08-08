@@ -561,7 +561,7 @@ Time
 ----
 
 Time synchronization to internal (in-vehicle) sources
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. stkh_req:: In-Vehicle Time base Synchronization
    :id: stkh_req__time__in_vehicle_synchronization
@@ -648,7 +648,7 @@ Time synchronization to internal (in-vehicle) sources
 
 
 Time synchronization to external (out-of-vehicle) sources
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. stkh_req:: Time Synchronization with absolute external time sources
    :id: stkh_req__time__external_timebase_sync
@@ -678,7 +678,13 @@ Time synchronization to external (out-of-vehicle) sources
    :rationale: Enables an application to make informed decisions based on the accuracy of the external time reference, ensuring that timestamped data is reliable and consistent.
    :status: valid
 
-   The software platform shall provide the APIs to read accuracy qualifier of the absolute time base, synchronized to external time sources.
+   The software platform shall provide the API to read accuracy qualifier of the absolute time base, synchronized to external time sources.
+
+   Note: the inaccuracy could be indicated in the following manner
+
+   * Inaccuracy higher than 24h
+   * Inaccuracy less than 24h
+   * Inaccuracy less than 1h and so on.
 
 .. stkh_req:: Ext-Vehicle Time base security qualifier
    :id: stkh_req__time__external_timebase_security_qualifier
@@ -688,7 +694,36 @@ Time synchronization to external (out-of-vehicle) sources
    :rationale: Enables an application to make informed decisions based on the security of the external time reference, ensuring that timestamped data is reliable and consistent.
    :status: valid
 
-   The software platform shall provide the APIs to read security qualifier of the absolute time base, synchronized to external time sources.
+   The software platform shall provide the API to read security qualifier of the absolute time base, synchronized to external time sources.
+
+System time provider
+^^^^^^^^^^^^^^^^^^^^
+
+.. stkh_req:: High precision Clock API
+   :id: stkh_req__time__external_high_precision_clock_api
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: Enables an application to get the current system time, which is essential for time-sensitive operations and event scheduling,
+   via common, mockable and standardized API.
+   :status: valid
+
+   The software platform shall provide the APIs to read the current high precision clock from the system time provider in nanoseconds.
+
+   Note: to which clock the high precision clock is mapped, depends on the system design.
+
+.. stkh_req:: Monotonic Clock API
+   :id: stkh_req__time__external_monotonic_clock_api
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: Enables an application to get the current system time, which is essential for time-sensitive operations and event scheduling,
+   via common, mockable and standardized API.
+   :status: valid
+
+   The software platform shall provide the APIs to read the current monotonic clock from the system time provider.
+
+   Note: to which clock the monotonic clock is mapped, depends on the system design.
 
 Diagnostics and Fault Management
 --------------------------------

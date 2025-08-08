@@ -23,7 +23,7 @@ Time Synchronization
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__time__synchronization
+   :satisfies: stkh_req__time__in_vehicle_synchronization
    :status: valid
 
    The **time client**, as part of score::time feature, shall synchronize the local clock with an external **time host** using the PTP protocol (IEEE 802.1AS).
@@ -33,7 +33,7 @@ Time Synchronization
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__time__synchronization_validation
+   :satisfies: stkh_req__time__in_vehicle_timebase_accuracy_qualifier
    :status: valid
 
    The score::time shall get the current synchronized time and its metadata from the **time host**.
@@ -43,7 +43,7 @@ Time Synchronization
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__time__synchronization_validation
+   :satisfies: stkh_req__time__in_vehicle_timebase_accuracy_qualifier
    :status: valid
 
    The score::time shall validate the current synchronized time, which was received from the **time host** and reflect the validation results in the time point status accordingly.
@@ -148,7 +148,7 @@ High precision Clock
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies:
+   :satisfies: stkh_req__time__external_high_precision_clock_api
    :status: valid
 
    The score::time feature shall provide a mechanism to access (read only) the high precision clock in nanoseconds precision.
@@ -163,7 +163,7 @@ Monotonic Clock
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies:
+   :satisfies: stkh_req__time__external_monotonic_clock_api
    :status: valid
 
    The score::time feature shall provide a mechanism to access (read only) to monotonic, not adjustable clock value, which is mapped from the known OS or HW clock.
