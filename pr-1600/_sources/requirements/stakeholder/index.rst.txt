@@ -564,34 +564,88 @@ Time synchronization to internal (in-vehicle) sources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. stkh_req:: In-Vehicle Time base Synchronization
-   :id: stkh_req__time__synchronization
+   :id: stkh_req__time__in_vehicle_synchronization
    :reqtype: Functional
    :security: NO
    :safety: QM
    :rationale: Enables the system to compare events chronologically.
    :status: valid
 
-   The software platform shall provide a time synchronization framework to synchronize its clock with external to ECU time sources.
-
-.. stkh_req:: Validation of In-Vehicle Time base synchronization
-   :id: stkh_req__time__synchronization_validation
-   :reqtype: Functional
-   :security: NO
-   :safety: QM
-   :rationale: Enables the system to validate the time synchronization process, ensuring that the synchronized clock is accurate and reliable.
-   :status: valid
-
-   The software platform shall provide a mechanism to validate the synchronized clock.
+   The software platform shall provide a time synchronization framework to synchronize its clock
+   with external to ECU, but internal to vehicle time sources.
 
 .. stkh_req:: In-Vehicle Time base API
-   :id: stkh_req__time__in_time_base_api
+   :id: stkh_req__time__in_vehicle_time_base_api
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :rationale: Enables an application to correlate its data with a vehicle-internal time reference for event timestamping and chronological events comparison.
+   :rationale: Enables an application to correlate its data with a vehicle-internal time reference
+   for event timestamping and chronological events comparison.
    :status: valid
 
-   The software platform shall provide the APIs to read the synchronized time from Local Time Slave.
+   The software platform shall provide an API to read the synchronized time from Local Time Slave.
+
+.. stkh_req:: In-Vehicle Time synchronization precision
+   :id: stkh_req__time__in_vehicle_time_sync_precision
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: Enables the system to compare high frequent events chronologically.
+   :status: valid
+
+   The software platform shall synchronized the local time base with Global Time within a defined
+   precision, based on the system setup.
+
+   Note:
+
+   * for AVB nodes the maximum difference in the synchronized time between two AVB ports/ECUs while
+   both are in state SYNC, and could be 1 usec
+   * for non-AVB node the precision is released, comparing to AVB ones
+
+.. stkh_req:: In-Vehicle Time synchronization local clock adaptations
+   :id: stkh_req__time__in_vehicle_time_sync_local_clock_adaptations
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: Enables the system to compare high frequent events chronologically.
+   :status: valid
+
+   The software platform shall keep the threshold for all local clock adaptations (including
+   timestamping, converting and so on) which take part in time communication, based on the system setup.
+   Note:
+
+   * for AVB nodes the threshold the threshold might be 100 nsec
+   * for non-AVB node the precision is released, comparing to AVB ones, and be up to 500 usec
+
+.. stkh_req:: in-Vehicle Time base accuracy qualifier
+   :id: stkh_req__time__in_vehicle_timebase_accuracy_qualifier
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: Enables an application to make informed decisions based on the accuracy of the local time reference, ensuring that timestamped data is reliable and consistent.
+   :status: valid
+
+   The software platform shall provide an API to read accuracy qualifier of the local synchronized time base.
+
+   Note: qualifier shall reflect the accuracy of the local time base, e.g.
+
+   * if it is synchronized to an external time source or not,
+   * are there any time jumps, etc.
+
+.. stkh_req:: in-Vehicle Time base time point qualifier
+   :id: stkh_req__time__in_vehicle_timebase_time_point_qualifier
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: Enables an application to make informed decisions based on the accuracy of the local time reference, ensuring that timestamped data is reliable and consistent.
+   :status: valid
+
+   The software platform shall provide the APIs to read the time point qualifier of the local synchronized time base.
+
+   Note: qualifier shall reflect if the time point could be treated as ASIL-B data or QM data
+
+   TODO: do we need this qualifier?
+
 
 Time synchronization to external (out-of-vehicle) sources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
