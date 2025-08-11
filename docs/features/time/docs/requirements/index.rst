@@ -15,152 +15,229 @@
 Requirements
 ############
 
-.. feat_req:: Time client PTP sync
-   :id: feat_req__time__trec_external_sync_ptp
+Time Synchronization
+^^^^^^^^^^^^^^^^^^^^
+
+.. feat_req:: Vehicle Time synchronization
+   :id: feat_req__time__vehicle_time__sync_with_ptp
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :satisfies: stkh_req__time__vehicle_time__time_synchronization
+   :status: valid
+
+   The **score::time feature** shall synchronize the local clock with an external **Time Master** using the gPTP protocol (IEEE 802.1AS).
+
+.. feat_req:: Vehicle Time synchronization precision
+   :id: feat_req__time__vehicle_time__sync_precision
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :satisfies: stkh_req__time__vehicle_time__time_synchronization
+   :status: valid
+
+   The **score::time feature** shall synchronize the local time, see feat_req__time__vehicle_time__sync_with_ptp, base with **Time Master** within a defined
+   precision, based on the system setup.
+
+   Note:
+
+   * the particular target precision depends on the system setup
+   * for AVB nodes the maximum difference in the synchronized time between two AVB ports/ECUs while
+   both are in state SYNC, and could be 1 usec
+   * for non-AVB node the precision is relaxed, and could be 200-500 usec
+
+.. feat_req:: Update the HW clock with Vehicle Time
+   :id: feat_req__time__vehicle_time__hw_synchronization
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :satisfies: stkh_req__time__vehicle_time__hw_clock_synchronization
+   :status: valid
+
+   The **score::time feature** shall synchronize the local HW clock, which is being used for timestamping ingress and egress network frames, to vehicle time.
+
+.. feat_req:: Vehicle Time base API
+   :id: feat_req__time__vehicle_time__time_base_api
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :satisfies: stkh_req__time__vehicle_time__time_base_api
+   :status: valid
+
+   The **score::time feature** shall provide an API to access the synchronized vehicle time.
+
+.. feat_req:: Vehicle Time base accuracy qualifier
+   :id: feat_req__time__vehicle_time__accuracy_qualifier_api
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :satisfies: stkh_req__time__vehicle_time__time_base_api
+   :status: valid
+
+   The **score::time feature** shall provide an API to read the accuracy qualifier of the local synchronized time base.
+
+   Note: qualifier shall reflect the accuracy of the local time base, e.g.
+
+   * if it is synchronized to an external time source or not,
+   * are there any instabilities, like time jumps to the past or to the future
+   * does the time increase in a monotonic manner.
+
+.. feat_req:: Vehicle Time base time point qualifier
+   :id: feat_req__time__vehicle_time__time_point_qualifier_api
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL-B
+   :satisfies: stkh_req__time__vehicle_time__time_base_api
+   :status: valid
+
+   The **score::time feature** shall provide an API to read the time point qualifier of the local synchronized time base.
+
+   Note: qualifier shall reflect if the time point could be treated as ASIL-B data or QM data
+
+.. feat_req:: Vehicle Time control flow
+   :id: feat_req__time__vehicle_time__control_flow
    :reqtype: Functional
    :security: NO
    :safety: QM
    :satisfies:
    :status: valid
 
-   The **time client**, as part of score::time feature, shall synchronize the local clock with an external **time host** using the PTP protocol (IEEE 802.1AS).
+   The **score::time feature** shall provide an access its data via specified APIs in a fast and very efficient manner,
+   avoiding, if possible, kernel calls, resource manager involvement and so on.
 
-.. feat_req:: score::time metadata
-   :id: feat_req__time__time_metadata
-   :reqtype: Functional
-   :security: NO
-   :safety: QM
-   :satisfies:
-   :status: valid
+   For APIs see:
 
-   The score::time shall get the current synchronized time and its metadata from the **time host**.
+   * feat_req__time__vehicle_time__time_base_api
+   * feat_req__time__vehicle_time__accuracy_qualifier_api
+   * feat_req__time__vehicle_time__time_point_qualifier_api
 
-.. feat_req:: score::time validation
-   :id: feat_req__time__time_validataion
-   :reqtype: Functional
-   :security: NO
-   :safety: QM
-   :satisfies:
-   :status: valid
-
-   The score::time shall validate the current synchronized time, which was received from the **time host** and reflect the validation results in the time point status accordingly.
-   
-   Validation of the current synchronized time includes:
-   * checking the time point for loss of synchronization
-   * checking the time point for monotonicity
-   * checking the time point for instability, like time jumps to the past or to the future
-
-.. feat_req:: score::time multiple applications
-   :id: feat_req__time__multiple_applications
-   :reqtype: Functional
-   :security: NO
-   :safety: QM
-   :satisfies:
-   :status: valid
-
-   The score::time feature shall provide a mechanism to access (read only) to the synchronized time and its status across multiple applications within one ECU.
-
-.. feat_req:: score::time efficiency
-   :id: feat_req__time__client_efficiency
-   :reqtype: Functional
-   :security: NO
-   :safety: QM
-   :satisfies:
-   :status: valid
-
-   The score::time feature shall provide an access to the synchronized time and its status, see feat_req__time__multiple_applications, in an efficient way without any additional overhead, like kernel calls, Resource manager involvement and so on.
    *Use case:* frequent access to the current synchronized time and its metadata by multiple clients within one ECU.
 
-
-.. feat_req:: score::time synchronization process metadata
-   :id: feat_req__time__sync_process_metadata
+.. feat_req:: Vehicle Time synchronization logging
+   :id: feat_req__time__vehicle_time__sync_logging
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies:
+   :satisfies: stkh_req__dev_experience__debugging
    :status: valid
 
-   The score::time feature shall provide a mechanism to access (read only) to the internal state of the synchronization process, see **Synchronization process metadata**, across multiple applications within one ECU.
+   The **score::time feature** shall provide a mechanism to log the internal state of the synchronization process,
+   to be able to debug and diagnose the synchronization process.
 
-.. feat_req:: score::time synchronization stat logging
-   :id: feat_req__time__sync_stat_logging
-   :reqtype: Functional
-   :security: NO
-   :safety: QM
-   :satisfies:
-   :status: valid
-
-   The score::time shall provide a mechanism to log the internal state of the synchronization process, see **Synchronization process metadata**, to be able to debug and diagnose the time synchronization process.
    *Use case:* Debugging and diagnostics of the time synchronization process.
 
-
-External Time Synchronization
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Time Synchronization to absolute external sources
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. feat_req:: score::time external synchronization
-   :id: feat_req__time__external_sync
+   :id: feat_req__time__absolute_time_syncronization
    :reqtype: Functional
-   :security: NO
+   :security: YES
    :safety: QM
-   :satisfies:
+   :satisfies: stkh_req__time__absolute_time__time_synchronization
    :status: valid
 
-   The score::time feature shall support synchronization with external time sources, such as GPS, based on SOME/IP messages.
+   The **score::time feature** shall support synchronization with external time sources, such as UTC time from GPS.
 
-.. feat_req:: score::time external synchronization status
-   :id: feat_req__time__external_sync_status
+.. feat_req:: Absolute Time base API
+   :id: stkh_req__time__external_timebase_api
    :reqtype: Functional
-   :security: NO
+   :security: YES
    :safety: QM
-   :satisfies:
+   :satisfies: stkh_req__time__absolute_time__time_base_api
    :status: valid
 
-   The score::time shall maintain the current synchronized time and its synchronization status, to be able to provide the latest values by clients request.
+   The **score::time feature** shall provide an API to read the absolute time base, synchronized to external time sources.
 
-.. feat_req:: score::time external synchronization time
-   :id: feat_req__time__external_sync_time
+.. feat_req:: Absolute Time base accuracy qualifier
+   :id: stkh_req__time__external_timebase_accuracy_qualifier
    :reqtype: Functional
-   :security: NO
+   :security: YES
    :safety: QM
-   :satisfies:
+   :satisfies: stkh_req__time__absolute_time__time_base_api
    :status: valid
 
-   The score::time feature shall provide a mechanism to access (read only) the current synchronized time from external time sources and its synchronization status.
+   The **score::time feature** shall provide an API to read accuracy qualifier of the absolute time base, synchronized to external time sources.
 
-.. feat_req:: score::time external synchronization status log
+   Note: the inaccuracy could be  indicated in the following manner
+
+   * Inaccuracy higher than 24h
+   * Inaccuracy less than 24h
+   * Inaccuracy less than 1h
+   * Inaccuracy less than 15min
+   * Inaccuracy less than 60s
+   * Inaccuracy less than 10s
+   * Inaccuracy less than 1s
+   * Inaccuracy less than 500ms
+   * Inaccuracy less than 100ms
+   * Inaccuracy less than 50ms
+   * Inaccuracy less than 10ms
+   * Inaccuracy not available
+
+.. feat_req:: Absolute Time base security qualifier
+   :id: stkh_req__time__external_timebase_security_qualifier
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :satisfies: stkh_req__time__absolute_time__time_base_api
+   :status: valid
+
+   The **score::time feature** shall provide an API to read security qualifier of the absolute time base, synchronized to external time sources.
+
+   Note: the security level might be indicated in the following steps
+
+   * No time available
+   * Time not trustworthy
+   * Time trustworthy
+   * Time very trustworthy
+
+.. feat_req:: Absolute Time synchronization status log
    :id: feat_req__time__external_sync_status_log
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies:
+   :satisfies: stkh_req__dev_experience__debugging
    :status: valid
 
-   The score::time feature shall provide a mechanism to log the internal state of the external time synchronization process, to be able to debug and diagnose the synchronization process.
+   The **score::time feature** shall provide a mechanism to log the internal state of the absolute time synchronization process,
+   to be able to debug and diagnose the synchronization process.
 
-
-High precision Clock
+Local Clock
 ^^^^^^^^^^^^^^^^^^^^
 
-.. feat_req:: score::time high precision clock
-   :id: feat_req__time__high_precision_clock
+.. feat_req:: High precision clock API
+   :id: feat_req__time__local_time__high_precision_clock_api
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies:
+   :satisfies: stkh_req__time__local_time__high_precision_clock_api
    :status: valid
 
-   The score::time feature shall provide a mechanism to access (read only) the high precision clock in nanoseconds precision.
+   The **score::time feature** shall provide an API to read the high precision clock in nanoseconds precision.
+
+   Note: to which clock the high precision clock is mapped, depends on the system design.
+
    *Use case:* such clocks might be used for time-critical applications, such as audio/video streaming, event logging, and diagnostics.
 
-
-Monotonic Clock
-^^^^^^^^^^^^^^^
-
-.. feat_req:: score::time monotonic clock
-   :id: feat_req__time__monotonic_clock
+.. feat_req:: Monotonic clock API
+   :id: feat_req__time__local_time__monotonic_clock_api
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies:
+   :satisfies: stkh_req__time__local_time__monotonic_clock_api
    :status: valid
 
-   The score::time feature shall provide a mechanism to access (read only) to monotonic, not adjustable clock value, which is mapped from the known OS or HW clock.
+   The **score::time feature** shall provide an API to read monotonic, not adjustable clock value.
+
+Testability
+^^^^^^^^^^^^
+
+.. feat_req:: score::time mocking APIs implementation
+   :id: feat_req__time__apis_mocking
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :satisfies: stkh_req__dev_experience__mockup_public_apis
+   :status: valid
+
+   The **score::time feature** shall provide support for mocking its public interfaces, enabling unit,
+   component and integration testing of applications.

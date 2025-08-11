@@ -156,7 +156,7 @@ Data which is provided by the **time client** and includes the current synchroni
 
 The diagram bellow illustrates the data flow and interactions between the Time client, score::time middleware, and client applications within an ECU during PTP-based time synchronization.
 
-.. uml:: data_flow.puml
+.. uml:: architecture/_assets/data_flow.puml
    :caption: Data flow between time client, score::time, and clients
 
 Where
