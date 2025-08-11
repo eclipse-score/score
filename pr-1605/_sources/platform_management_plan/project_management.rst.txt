@@ -301,6 +301,33 @@ are related to the same topic, together.
     :alt: Sub issues overview
     :align: center
 
+Status of Work Items
+^^^^^^^^^^^^^^^^^^^^
+* *New*
+  The *New* status represents a newly created work item that has not yet been processed
+  for further evaluation. However, the content may be continuously updated by the author.
+
+* *Analyze*
+  The *Analyze* status indicates that evaluation activities are underway regarding the work item.
+  At this stage, no output is produced in a repository, but clarification of the content may be
+  in progress. Relevant teams might be estimating the effort, assessing feasibility, or
+  identifying potential risks. This status is primarily used during the planning phase before
+  the item becomes part of committed work.
+
+* *In Progress*
+  The *In Progress* status is used when a person or team is actively working on the item,
+  producing commits and pull requests related to its content. Parent work items should also
+  be set to *In Progress* if any of their child work items are in this status.
+
+* *Blocked*
+  The *Blocked* status indicates that an issue is preventing the work item from progressing.
+  Blocked items require special attention, as they may impact entire milestone work items or
+  even release deliveries.
+
+* *Done*
+  The *Done* status is set when a work item is completed. If the item type is bound to a
+  specific Definition of Done (DoD), fulfillment of this DoD is an additional requirement
+  for marking the item as *Done*.
 
 Traceability
 ^^^^^^^^^^^^

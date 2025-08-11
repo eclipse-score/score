@@ -532,7 +532,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-c003ac7b">
+  <div class="need_container docutils container" id="SNCB-aad58b87">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__project_mgt_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -817,6 +817,32 @@ That allows better structuring of the project and helps to keep <em>GitHub Issue
 are related to the same topic, together.</p>
 <a class="reference internal image-reference" href="../_images/sub_issues.png"><img alt="Sub issues overview" class="align-center" src="../_images/sub_issues.png" style="width: 600px;" />
 </a>
+<section id="status-of-work-items">
+<h4>Status of Work Items<a class="headerlink" href="#status-of-work-items" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><em>New</em>
+The <em>New</em> status represents a newly created work item that has not yet been processed
+for further evaluation. However, the content may be continuously updated by the author.</p></li>
+<li><p><em>Analyze</em>
+The <em>Analyze</em> status indicates that evaluation activities are underway regarding the work item.
+At this stage, no output is produced in a repository, but clarification of the content may be
+in progress. Relevant teams might be estimating the effort, assessing feasibility, or
+identifying potential risks. This status is primarily used during the planning phase before
+the item becomes part of committed work.</p></li>
+<li><p><em>In Progress</em>
+The <em>In Progress</em> status is used when a person or team is actively working on the item,
+producing commits and pull requests related to its content. Parent work items should also
+be set to <em>In Progress</em> if any of their child work items are in this status.</p></li>
+<li><p><em>Blocked</em>
+The <em>Blocked</em> status indicates that an issue is preventing the work item from progressing.
+Blocked items require special attention, as they may impact entire milestone work items or
+even release deliveries.</p></li>
+<li><p><em>Done</em>
+The <em>Done</em> status is set when a work item is completed. If the item type is bound to a
+specific Definition of Done (DoD), fulfillment of this DoD is an additional requirement
+for marking the item as <em>Done</em>.</p></li>
+</ul>
+</section>
 <section id="traceability">
 <h4>Traceability<a class="headerlink" href="#traceability" title="Link to this heading">#</a></h4>
 <p>To achieve a better traceability it is highly recommended to link all <em>PRs</em> to the corresponding
@@ -986,6 +1012,7 @@ is changed from “experimental” to “official”.</p>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-work-items-and-structure">Types of work items and structure</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#status-of-work-items">Status of Work Items</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#traceability">Traceability</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#github-projects">GitHub Projects</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#releases-and-milestones">Releases and milestones</a></li>
