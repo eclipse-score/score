@@ -561,7 +561,7 @@ Time
 ----
 
 .. stkh_req:: Vehicle Time base Synchronization
-   :id: stkh_req__time__vehicle_time__time_synchronization
+   :id: stkh_req__time__vehicle_time_sync
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -572,7 +572,7 @@ Time
    to Time Master within the vehicle.
 
 .. stkh_req:: Vehicle Time base API
-   :id: stkh_req__time__vehicle_time__time_base_api
+   :id: stkh_req__time__vehicle_time_api
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -581,8 +581,8 @@ Time
 
    The software platform shall provide access to synchronized vehicle time.
 
-.. stkh_req:: Synchrnize the HW clock with Vehicle Time
-   :id: stkh_req__time__vehicle_time__hw_clock_synchronization
+.. stkh_req:: Synchronize the HW clock with Vehicle Time
+   :id: stkh_req__time__hw_clock_sync
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -591,8 +591,8 @@ Time
 
    The software platform shall synchronize the local HW clock to vehicle time.
 
-.. stkh_req:: Time Synchronization with absolute external time sources
-   :id: stkh_req__time__absolute_time__time_synchronization
+.. stkh_req:: Time Synchronization with external sources
+   :id: stkh_req__time__absolute_time_sync
    :reqtype: Functional
    :security: YES
    :safety: QM
@@ -602,7 +602,7 @@ Time
    The software platform shall provide a framework to synchronize the clock to external-to-vehicle absolute time base (UTC).
 
 .. stkh_req:: Absolute time base API
-   :id: stkh_req__time__absolute_time__time_base_api
+   :id: stkh_req__time__absolute_time_api
    :reqtype: Functional
    :security: YES
    :safety: QM
@@ -612,7 +612,7 @@ Time
    The software platform shall provide access to the absolute time base, synchronized with external time sources.
 
 .. stkh_req:: Local High precision Clock API
-   :id: stkh_req__time__local_time__high_precision_clock_api
+   :id: stkh_req__time__high_precision_clock_api
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -624,7 +624,7 @@ Time
    Note: to which clock the high precision clock is mapped, depends on the system design.
 
 .. stkh_req:: Local Monotonic Clock API
-   :id: stkh_req__time__local_time__monotonic_clock_api
+   :id: stkh_req__time__monotonic_clock_api
    :reqtype: Functional
    :security: NO
    :safety: QM
