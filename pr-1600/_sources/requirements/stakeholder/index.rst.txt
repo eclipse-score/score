@@ -581,6 +581,16 @@ Time
 
    The software platform shall provide access to synchronized vehicle time.
 
+.. stkh_req:: Synchrnize the HW clock with Vehicle Time
+   :id: stkh_req__time__vehicle_time__hw_clock_synchronization
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: Enables the system to compare events from different ECUs chronologically, using the same time base for timestamping ingress and egress frames.
+   :status: valid
+
+   The software platform shall synchronize the local HW clock to vehicle time.
+
 .. stkh_req:: Time Synchronization with absolute external time sources
    :id: stkh_req__time__absolute_time__time_synchronization
    :reqtype: Functional
@@ -589,7 +599,7 @@ Time
    :rationale: Enables the system to validate a certificate or token with temporal validity conditions, adding a UTC-timestamp to a data set.
    :status: valid
 
-   The software platform shall provide a framework for external to vehicle time synchronization (UTC).
+   The software platform shall provide a framework to synchronize the clock to external-to-vehicle absolute time base (UTC).
 
 .. stkh_req:: Absolute time base API
    :id: stkh_req__time__absolute_time__time_base_api

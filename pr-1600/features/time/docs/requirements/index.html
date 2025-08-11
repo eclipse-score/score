@@ -540,7 +540,7 @@
 <h1>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h1>
 <section id="time-synchronization">
 <h2>Time Synchronization<a class="headerlink" href="#time-synchronization" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-f83ce487">
+<div class="need_container docutils container" id="SNCB-7999484d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__time__vehicle_time__sync_with_ptp">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -571,7 +571,7 @@
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The <strong>score::time feature</strong> shall synchronize the local clock with an external <strong>Time Master</strong> using the PTP protocol (IEEE 802.1AS).</p></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The <strong>score::time feature</strong> shall synchronize the local clock with an external <strong>Time Master</strong> using the gPTP protocol (IEEE 802.1AS).</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__time__vehicle_time__sync_with_ptp" title="feat_req__time__vehicle_time__sync_with_ptp">feat_req__time__vehicle_time__sync_with_ptp</a></span></span></div>
@@ -587,7 +587,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b819cbe5">
+<div class="need_container docutils container" id="SNCB-a985cebe">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__time__vehicle_time__sync_precision">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -626,7 +626,7 @@ precision, based on the system setup.</p>
 <li><p>for AVB nodes the maximum difference in the synchronized time between two AVB ports/ECUs while</p></li>
 </ul>
 <p>both are in state SYNC, and could be 1 usec
-* for non-AVB node the precision is released, and could be 200-500 usec</p>
+* for non-AVB node the precision is relaxed, and could be 200-500 usec</p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -643,11 +643,11 @@ precision, based on the system setup.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6aac26cb">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__time__vehicle_time__local_clock_adaptations">
+<div class="need_container docutils container" id="SNCB-b4126cf1">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__time__vehicle_time__hw_synchronization">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">Vehicle Time synchronization local clock adaptations</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">Update the HW clock with Vehicle Time</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -668,23 +668,16 @@ precision, based on the system setup.</p>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__time__vehicle_time__time_synchronization" title="feat_req__time__vehicle_time__local_clock_adaptations">stkh_req__time__vehicle_time__time_synchronization</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__time__vehicle_time__hw_clock_synchronization" title="feat_req__time__vehicle_time__hw_synchronization">stkh_req__time__vehicle_time__hw_clock_synchronization</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The <strong>score::time feature</strong> shall keep the threshold for all local clock adaptations (including
-timestamping, converting and so on) which take part in time communication, based on the system setup.
-Note:</p>
-<ul class="simple">
-<li><p>for AVB nodes the threshold the threshold might be 100 nsec</p></li>
-<li><p>for non-AVB node the precision is released, comparing to AVB ones, and be up to 500 usec</p></li>
-</ul>
-</td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The <strong>score::time feature</strong> shall synchronize the local HW clock, which is being used for timestamping ingress and egress network frames, to vehicle time.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
-<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__time__vehicle_time__local_clock_adaptations" title="feat_req__time__vehicle_time__local_clock_adaptations">feat_req__time__vehicle_time__local_clock_adaptations</a></span></span></div>
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__time__vehicle_time__hw_synchronization" title="feat_req__time__vehicle_time__hw_synchronization">feat_req__time__vehicle_time__hw_synchronization</a></span></span></div>
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
@@ -697,7 +690,7 @@ Note:</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-67eb9dcb">
+<div class="need_container docutils container" id="SNCB-09b1810a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__time__vehicle_time__time_base_api">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -744,7 +737,7 @@ Note:</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-54ef23ac">
+<div class="need_container docutils container" id="SNCB-46b2e3e4">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__time__vehicle_time__accuracy_qualifier_api">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -780,7 +773,7 @@ Note:</p>
 <ul class="simple">
 <li><p>if it is synchronized to an external time source or not,</p></li>
 <li><p>are there any instabilities, like time jumps to the past or to the future</p></li>
-<li><p>does the time increase in a monotonic manner</p></li>
+<li><p>does the time increase in a monotonic manner.</p></li>
 </ul>
 </td>
 </tr>
@@ -798,7 +791,7 @@ Note:</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-54494b45">
+<div class="need_container docutils container" id="SNCB-2d012c52">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__time__vehicle_time__time_point_qualifier_api">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -847,7 +840,7 @@ Note:</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-46d89dc2">
+<div class="need_container docutils container" id="SNCB-623634e7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__time__vehicle_time__control_flow">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -877,8 +870,8 @@ Note:</p>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The <strong>score::time feature</strong> shall provide an access its data via specified APIs without blocking synchronous calls like
-kernel calls, Resource manager involvement and so on.</p>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The <strong>score::time feature</strong> shall provide an access its data via specified APIs in a fast and very efficient manner,
+avoiding, if possible, kernel calls, resource manager involvement and so on.</p>
 <p>For APIs see:</p>
 <ul class="simple">
 <li><p>feat_req__time__vehicle_time__time_base_api</p></li>
@@ -902,7 +895,7 @@ kernel calls, Resource manager involvement and so on.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-125a22cc">
+<div class="need_container docutils container" id="SNCB-f98535de">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__time__vehicle_time__sync_logging">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -955,7 +948,7 @@ to be able to debug and diagnose the synchronization process.</p>
 </section>
 <section id="time-synchronization-to-absolute-external-sources">
 <h2>Time Synchronization to absolute external sources<a class="headerlink" href="#time-synchronization-to-absolute-external-sources" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-ec3725c5">
+<div class="need_container docutils container" id="SNCB-1e44bf86">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__time__absolute_time_syncronization">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -986,7 +979,7 @@ to be able to debug and diagnose the synchronization process.</p>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The <strong>score::time feature</strong> shall support synchronization with external time sources, such as GPS.</p></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The <strong>score::time feature</strong> shall support synchronization with external time sources, such as UTC time from GPS.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__time__absolute_time_syncronization" title="feat_req__time__absolute_time_syncronization">feat_req__time__absolute_time_syncronization</a></span></span></div>
@@ -1002,7 +995,7 @@ to be able to debug and diagnose the synchronization process.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b96b0497">
+<div class="need_container docutils container" id="SNCB-82555fc8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="stkh_req__time__external_timebase_api">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1049,7 +1042,7 @@ to be able to debug and diagnose the synchronization process.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-805fdbf0">
+<div class="need_container docutils container" id="SNCB-1b770626">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="stkh_req__time__external_timebase_accuracy_qualifier">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1112,7 +1105,7 @@ to be able to debug and diagnose the synchronization process.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-fac268cc">
+<div class="need_container docutils container" id="SNCB-e7287400">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="stkh_req__time__external_timebase_security_qualifier">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1167,7 +1160,7 @@ to be able to debug and diagnose the synchronization process.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-32c42849">
+<div class="need_container docutils container" id="SNCB-34e7b421">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__time__external_sync_status_log">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1218,7 +1211,7 @@ to be able to debug and diagnose the synchronization process.</p></td>
 </section>
 <section id="local-clock">
 <h2>Local Clock<a class="headerlink" href="#local-clock" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-f72e9f95">
+<div class="need_container docutils container" id="SNCB-1d882d41">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__time__local_time__high_precision_clock_api">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1268,7 +1261,7 @@ to be able to debug and diagnose the synchronization process.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-62dc45ab">
+<div class="need_container docutils container" id="SNCB-4649e685">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__time__local_time__monotonic_clock_api">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1318,7 +1311,7 @@ to be able to debug and diagnose the synchronization process.</p></td>
 </section>
 <section id="testability">
 <h2>Testability<a class="headerlink" href="#testability" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-8c20e104">
+<div class="need_container docutils container" id="SNCB-35c00c66">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__time__apis_mocking">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">

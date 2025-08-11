@@ -26,7 +26,7 @@ Time Synchronization
    :satisfies: stkh_req__time__vehicle_time__time_synchronization
    :status: valid
 
-   The **score::time feature** shall synchronize the local clock with an external **Time Master** using the PTP protocol (IEEE 802.1AS).
+   The **score::time feature** shall synchronize the local clock with an external **Time Master** using the gPTP protocol (IEEE 802.1AS).
 
 .. feat_req:: Vehicle Time synchronization precision
    :id: feat_req__time__vehicle_time__sync_precision
@@ -44,22 +44,17 @@ Time Synchronization
    * the particular target precision depends on the system setup
    * for AVB nodes the maximum difference in the synchronized time between two AVB ports/ECUs while
    both are in state SYNC, and could be 1 usec
-   * for non-AVB node the precision is released, and could be 200-500 usec
+   * for non-AVB node the precision is relaxed, and could be 200-500 usec
 
-.. feat_req:: Vehicle Time synchronization local clock adaptations
-   :id: feat_req__time__vehicle_time__local_clock_adaptations
+.. feat_req:: Update the HW clock with Vehicle Time
+   :id: feat_req__time__vehicle_time__hw_synchronization
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__time__vehicle_time__time_synchronization
+   :satisfies: stkh_req__time__vehicle_time__hw_clock_synchronization
    :status: valid
 
-   The **score::time feature** shall keep the threshold for all local clock adaptations (including
-   timestamping, converting and so on) which take part in time communication, based on the system setup.
-   Note:
-
-   * for AVB nodes the threshold the threshold might be 100 nsec
-   * for non-AVB node the precision is released, comparing to AVB ones, and be up to 500 usec
+   The **score::time feature** shall synchronize the local HW clock, which is being used for timestamping ingress and egress network frames, to vehicle time.
 
 .. feat_req:: Vehicle Time base API
    :id: feat_req__time__vehicle_time__time_base_api
@@ -85,7 +80,7 @@ Time Synchronization
 
    * if it is synchronized to an external time source or not,
    * are there any instabilities, like time jumps to the past or to the future
-   * does the time increase in a monotonic manner
+   * does the time increase in a monotonic manner.
 
 .. feat_req:: Vehicle Time base time point qualifier
    :id: feat_req__time__vehicle_time__time_point_qualifier_api
@@ -107,8 +102,8 @@ Time Synchronization
    :satisfies:
    :status: valid
 
-   The **score::time feature** shall provide an access its data via specified APIs without blocking synchronous calls like
-   kernel calls, Resource manager involvement and so on.
+   The **score::time feature** shall provide an access its data via specified APIs in a fast and very efficient manner,
+   avoiding, if possible, kernel calls, resource manager involvement and so on.
 
    For APIs see:
 
@@ -141,7 +136,7 @@ Time Synchronization to absolute external sources
    :satisfies: stkh_req__time__absolute_time__time_synchronization
    :status: valid
 
-   The **score::time feature** shall support synchronization with external time sources, such as GPS.
+   The **score::time feature** shall support synchronization with external time sources, such as UTC time from GPS.
 
 .. feat_req:: Absolute Time base API
    :id: stkh_req__time__external_timebase_api
