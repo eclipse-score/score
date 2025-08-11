@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -545,7 +545,7 @@
                   
   <section id="some-ip-gateway">
 <span id="some-ip-gateway-feature"></span><h1>SOME/IP-Gateway<a class="headerlink" href="#some-ip-gateway" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-1de8699a">
+<div class="need_container docutils container" id="SNCB-55c9c3d4">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__some_ip_gateway">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -640,6 +640,7 @@ Between these two contexts developers shall be able to create signal or data map
 </section>
 <section id="specification">
 <span id="id3"></span><h2>Specification<a class="headerlink" href="#specification" title="Link to this heading">#</a></h2>
+<p>The requirements from Communication generally apply to the SOME/IP Gateway.</p>
 <section id="some-ip-protocol-implementation">
 <h3>SOME/IP protocol implementation<a class="headerlink" href="#some-ip-protocol-implementation" title="Link to this heading">#</a></h3>
 <p>The protocol implementation shall be fully compatible and complying with the SOME/IP specification from AUTOSAR Adaptive.
@@ -662,7 +663,12 @@ all need to go into launch control in health monitoring and must not be setup (f
 <h3>SOME/IP Gateway Security Goals<a class="headerlink" href="#some-ip-gateway-security-goals" title="Link to this heading">#</a></h3>
 <p>The security approach for SOME/IP gateway shall achieve the following security goals:</p>
 <ul class="simple">
-<li><p>access control (<a class="reference internal" href="requirements/index.html#feat_req__some_ip_gateway__access_control" title="feat_req__some_ip_gateway__access_control"><em class="xref need">SOME/IP Gateway Access Control (feat_req__some_ip_gateway__access_control)</em></a>)</p></li>
+<li><p>access control (<a class="reference internal" href="../docs/requirements/index.html#feat_req__com__acl_per_service_instance" title="feat_req__com__acl_per_service_instance"><em class="xref need">Access Control List per ser... (feat_req__com__acl_per_service_instance)</em></a>)</p></li>
+</ul>
+<p>The SOME/IP Gateway service instance shall be defined in the deployment configuration.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../docs/requirements/index.html#feat_req__com__acl_placement" title="feat_req__com__acl_placement"><em class="xref need">ACL Placement (feat_req__com__acl_placement)</em></a></p></li>
+<li><p><a class="reference internal" href="../docs/requirements/index.html#feat_req__com__acl_per_service_instance" title="feat_req__com__acl_per_service_instance"><em class="xref need">ACL per Service Instance (feat_req__com__acl_per_service_instance)</em></a></p></li>
 </ul>
 </section>
 </section>

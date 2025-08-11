@@ -94,6 +94,9 @@ This module shall fulfill the following requirements:
 Specification
 =============
 
+The requirements from Communication generally apply to the SOME/IP Gateway.
+
+
 SOME/IP protocol implementation
 -------------------------------
 
@@ -126,7 +129,12 @@ SOME/IP Gateway Security Goals
 
 The security approach for SOME/IP gateway shall achieve the following security goals:
 
-- access control (:need:`feat_req__some_ip_gateway__access_control`)
+- access control (:need:`feat_req__com__acl_per_service_instance`)
+
+The SOME/IP Gateway service instance shall be defined in the deployment configuration.
+
+- :need:`ACL Placement <feat_req__com__acl_placement>`
+- :need:`ACL per Service Instance <feat_req__com__acl_per_service_instance>`
 
 
 Backwards Compatibility

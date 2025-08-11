@@ -24,7 +24,7 @@ Functional Requirements
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__communication__extensible_external
+   :satisfies: stkh_req__communication__extensible_external, stkh_req__communication__supported_net
    :status: valid
 
    The SOME/IP Gateway shall support an interface to plug-in a SOME/IP stack implementation.
@@ -38,27 +38,3 @@ Functional Requirements
    :status: valid
 
    The SOME/IP Gateway shall support an interface to plug-in a E2E protection service implementation.
-
-
-.. feat_req:: SOME/IP Gateway Access Control
-   :id: feat_req__some_ip_gateway__access_control
-   :reqtype: Functional
-   :security: YES
-   :safety: QM
-   :satisfies: stkh_req__dependability__security_features
-   :status: valid
-
-   The SOME/IP Gateway shall support access control to restrict access to the gateway services.
-
-Safety Impact
-=============
-
-.. feat_req:: SOME/IP Gateway ASIL level
-   :id: feat_req__some_ip_gateway__asil
-   :reqtype: Functional
-   :security: YES
-   :safety: ASIL_B
-   :satisfies: stkh_req__communication__safe
-   :status: valid
-
-   The SOME/IP Gateway shall support safe communication up to ASIL-B.
