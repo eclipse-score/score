@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -532,7 +532,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-f335a3d6">
+  <div class="need_container docutils container" id="SNCB-c003ac7b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__project_mgt_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -782,12 +782,6 @@ such as code reviews, should be performed by other team members.
 <em>Story</em> work items are typically grouped under an <em>Epic</em> work item.
 However, a <em>Story</em> work item can also exist as a standalone work item if its outcome represents
 a complete functional improvement, making a related <em>Epic</em> work item unnecessary.</p></li>
-<li><p>A <em>Milestone</em> <em>GitHub Issue</em> represents the highest level in the work item hierarchy and
-cannot be linked as a child of another issue. If you need to group multiple <em>Milestone</em> work items,
-this must be done using labels.
-A <em>Milestone</em> work item can have multiple <em>Epic</em> work items as child work items.
-In exceptional cases, a <em>Story</em> work item may also be linked as a child of a <em>Milestone</em> work item
-if its outcome represents a complete functional improvement.</p></li>
 <li><p>An <em>Epic</em> <em>GitHub Issue</em> represents a complete, experienceable functional improvement whose
 implementation cannot be completed within a single Iteration. Therefore, <em>Epic</em> work items
 consist of multiple <em>Story</em> work items that collectively contribute to fulfilling the scope
@@ -797,6 +791,16 @@ when the content of the <em>Epic</em> work item is expected to be delivered.
 <em>Epic</em> work items can also exist as standalone work items without being linked as a child
 to any <em>Milestone</em> work item but <em>Milestone</em> work items should be the only method used
 to group multiple <em>Epic</em> work items together.</p></li>
+<li><p>A <em>Milestone</em> <em>GitHub Issue</em> represents the highest level in the work item hierarchy and
+cannot be linked as a child of another issue. If you need to group multiple <em>Milestone</em> work items,
+this must be done using labels.
+A <em>Milestone</em> work item can have multiple <em>Epic</em> work items as child work items.
+In exceptional cases, a <em>Story</em> work item may also be linked as a child of a <em>Milestone</em> work item
+if its outcome represents a complete functional improvement.</p></li>
+<li><p>A <em>Feature Request</em> <em>GitHub Issues</em> represents an independent work item used to describe and
+track a high-level request for the project. Its content serves as input for the creation of
+<em>Epic</em>, <em>Story</em> and <em>Milestone</em> work items. <em>Feature Request</em> work items can be linked to
+other work items, but they must not be treated as parent work items.</p></li>
 <li><p>A <em>Bug</em> <em>GitHub Issue</em> is used to report any kind of problem or malfunction. It is considered
 a special type of <em>Story</em> work item and follows the same rules as regular <em>Story</em> work items,
 with the key difference that it focuses on fixing defects in existing functionality

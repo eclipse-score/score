@@ -258,13 +258,6 @@ repository but no *Bug* WI shall be created in the *child project* repository.
   However, a *Story* work item can also exist as a standalone work item if its outcome represents
   a complete functional improvement, making a related *Epic* work item unnecessary.
 
-* A *Milestone* *GitHub Issue* represents the highest level in the work item hierarchy and
-  cannot be linked as a child of another issue. If you need to group multiple *Milestone* work items,
-  this must be done using labels.
-  A *Milestone* work item can have multiple *Epic* work items as child work items.
-  In exceptional cases, a *Story* work item may also be linked as a child of a *Milestone* work item
-  if its outcome represents a complete functional improvement.
-
 * An *Epic* *GitHub Issue* represents a complete, experienceable functional improvement whose
   implementation cannot be completed within a single Iteration. Therefore, *Epic* work items
   consist of multiple *Story* work items that collectively contribute to fulfilling the scope
@@ -274,6 +267,18 @@ repository but no *Bug* WI shall be created in the *child project* repository.
   *Epic* work items can also exist as standalone work items without being linked as a child
   to any *Milestone* work item but *Milestone* work items should be the only method used
   to group multiple *Epic* work items together.
+
+* A *Milestone* *GitHub Issue* represents the highest level in the work item hierarchy and
+  cannot be linked as a child of another issue. If you need to group multiple *Milestone* work items,
+  this must be done using labels.
+  A *Milestone* work item can have multiple *Epic* work items as child work items.
+  In exceptional cases, a *Story* work item may also be linked as a child of a *Milestone* work item
+  if its outcome represents a complete functional improvement.
+
+* A *Feature Request* *GitHub Issues* represents an independent work item used to describe and
+  track a high-level request for the project. Its content serves as input for the creation of
+  *Epic*, *Story* and *Milestone* work items. *Feature Request* work items can be linked to
+  other work items, but they must not be treated as parent work items.
 
 * A *Bug* *GitHub Issue* is used to report any kind of problem or malfunction. It is considered
   a special type of *Story* work item and follows the same rules as regular *Story* work items,
