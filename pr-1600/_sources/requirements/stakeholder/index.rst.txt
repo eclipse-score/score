@@ -560,7 +560,7 @@ Communication
 Time
 ----
 
-.. stkh_req:: In-Vehicle Time base Synchronization
+.. stkh_req:: Vehicle Time base Synchronization
    :id: stkh_req__time__vehicle_time__time_synchronization
    :reqtype: Functional
    :security: NO
@@ -576,8 +576,7 @@ Time
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :rationale: Enables an application to correlate its data with a vehicle-internal time reference
-   for event timestamp and chronological events comparison.
+   :rationale: Enables an application to correlate its data with a vehicle-internal time reference for event timestamp and chronological events comparison.
    :status: valid
 
    The software platform shall provide access to synchronized vehicle time.
@@ -587,8 +586,7 @@ Time
    :reqtype: Functional
    :security: YES
    :safety: QM
-   :rationale: Enables the system to validate a certificate or token with temporal validity
-   conditions, adding a UTC-timestamp to a data set.
+   :rationale: Enables the system to validate a certificate or token with temporal validity conditions, adding a UTC-timestamp to a data set.
    :status: valid
 
    The software platform shall provide a framework for external to vehicle time synchronization (UTC).
@@ -608,8 +606,7 @@ Time
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :rationale: Enables an application to get the current system time, which is essential for time-sensitive operations and event scheduling,
-   via common, mockable and standardized API.
+   :rationale: Enables an application to get the current system time, which is essential for time-sensitive operations and event scheduling, via common, mockable and standardized API.
    :status: valid
 
    The software platform shall provide access to the current high precision clock from the system time provider in nanoseconds.
@@ -621,8 +618,7 @@ Time
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :rationale: Enables an application to get the current system time, which is essential for time-sensitive operations and event scheduling,
-   via common, mockable and standardized API.
+   :rationale: Enables an application to get the current system time, which is essential for time-sensitive operations and event scheduling, via common, mockable and standardized API.
    :status: valid
 
    The software platform shall provide access to the current monotonic clock from the system time provider.
