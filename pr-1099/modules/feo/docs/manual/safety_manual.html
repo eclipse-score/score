@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -475,6 +475,7 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../logging/index.html">Logging Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../os/index.html">OS Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../persistency/index.html">KVS Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tracing/index.html">Tracing Module</a></li>
 </ul>
 </div>
@@ -561,7 +562,7 @@ For now it only contains Assumptions of Use related to the use of Rust libraries
 <div class="line-block">
 <div class="line">Generally the assumption of the S-CORE platform SEooC is that it is integrated in a safe system, i.e. the POSIX OS it runs on is qualified and also the HW related failures are taken into account by the system integrator, if not otherwise stated in the module’s safety concept.</div>
 </div>
-<div class="need_container docutils container" id="SNCB-61401343">
+<div class="need_container docutils container" id="SNCB-4b30adcc">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__feo__on_target_crates">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -581,7 +582,6 @@ For now it only contains Assumptions of Use related to the use of Rust libraries
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">invalid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
@@ -615,7 +615,7 @@ targets in release builds.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7cee0f5e">
+<div class="need_container docutils container" id="SNCB-586f04b1">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__feo__rust_core_lib">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -635,7 +635,6 @@ targets in release builds.</p>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
@@ -661,7 +660,7 @@ targets in release builds.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9f91a6ac">
+<div class="need_container docutils container" id="SNCB-2a6f7551">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__feo__rust_std_lib_modules">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -681,7 +680,6 @@ targets in release builds.</p>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">invalid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span></span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
@@ -719,7 +717,7 @@ targets in release builds.</p>
 <li><p>std::vec::Vec</p></li>
 </ul>
 <p><strong>Note:</strong> The above list is not yet complete. It needs to be refined based on a final implementation.
-At the moment, it covers probably about 95% of std library usages.
+At the moment, it covers approximately 95% of std library usages.
 An accurate list could be determined by switching feo to #![no_std] and looking at the compilation errors,
 but it gets quickly out of date with a changing codebase.</p>
 </td>
@@ -793,8 +791,16 @@ but it gets quickly out of date with a changing codebase.</p>
 </tr>
 </thead>
 <tbody>
+<tr class="need row-even"><td class="needs_title"><p>Access control</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../../baselibs/json/docs/requirements/index.html#aou_req__json__access_control">aou_req__json__access_control</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>JSON data integrity</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../../baselibs/json/docs/requirements/index.html#aou_req__json__data_integrity">aou_req__json__data_integrity</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
 <tr class="need row-even"><td class="needs_title"><p>Next Title</p></td>
-<td class="needs_id external_link"><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/folder_templates/modules/module_name/component_name/docs/requirements/index.html#aou_req__component_name__next_title">PROCESS_aou_req__component_name__next_title</a></p></td>
+<td class="needs_id external_link"><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/folder_templates/modules/module_name/component_name/docs/requirements/index.html#aou_req__component_name__next_title">PROCESS_aou_req__component_name__next_title</a></p></td>
 <td class="needs_status"><p>invalid</p></td>
 </tr>
 <tr class="need row-odd"><td class="needs_title"><p>on_target_crates</p></td>
@@ -810,7 +816,7 @@ but it gets quickly out of date with a changing codebase.</p>
 <td class="needs_status"><p>invalid</p></td>
 </tr>
 <tr class="need row-even"><td class="needs_title"><p>Some Other Title</p></td>
-<td class="needs_id external_link"><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description/main/folder_templates/features/feature_name/requirements/index.html#aou_req__feature_name__some_other_title">PROCESS_aou_req__feature_name__some_other_title</a></p></td>
+<td class="needs_id external_link"><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/folder_templates/features/feature_name/requirements/index.html#aou_req__feature_name__some_other_title">PROCESS_aou_req__feature_name__some_other_title</a></p></td>
 <td class="needs_status"><p>invalid</p></td>
 </tr>
 </tbody>
