@@ -42,7 +42,7 @@ To activate this feature, use the following feature flag:
 Abstract
 ========
 
-This feature request defines a set of ABI-compatible data types and a runtime type description format to support zero-copy inter-process communication between C++17 and Rust 1.8x processes using the same endianness. It ensures consistent type layouts across languages by requiring fixed-size, statically allocated types with no pointers or language-specific metadata.
+This feature request defines a set of ABI-compatible data types and a runtime type description format to support zero-copy inter-process communication between C++17 and Rust 1.8x processes using the same endianness. It ensures consistent type layouts across languages by requiring fixed-size, statically allocated types without absolute pointers or language-specific metadata.
 
 The specification covers primitive types, structs, enums, arrays, and introduces ABI-stable representations for vectors, options, and results. A runtime-readable type description enables processes to interpret shared memory without compile-time access to type definitions.
 
@@ -138,8 +138,8 @@ Type Conformance
 Types used in shared memory must meet the following criteria:
 
 1. **Fixed size and alignment**: Every type must have a known, constant size and alignment at compile time.
-2. **Consistent layout across languages**: The layout of a type must be identical in Rust and C++ on the same platform.
-3. **No pointers or references**: Types must not contain pointers to heap memory, function pointers, or references.
+2. **Consistent layout across languages**: The layout of a type must be identical in Rust and C++, and on all platforms.
+3. **No absolute pointers or references**: Types must not contain pointers to heap memory, function pointers, or references.
 4. **No language-specific metadata**: No vtables, slice headers, or implementation-specific type markers are allowed.
 
 Each type definition must clearly indicate whether it conforms to these rules natively or requires a custom definition to do so.
@@ -162,7 +162,7 @@ These types are ABI-compatible when declared using fixed-size standard types:
    * - Boolean
      - ``bool``
      - ``bool`` (1 byte, with ``0x00`` and ``0x01`` as the only valid bit patterns)
-   * - Integers (N = 8..128)
+   * - Integers (N = 8, 16, 32, 64)
      - ``uN``, ``iN``
      - ``std::uintN_t``, ``std::intN_t``
    * - Floating point
