@@ -54,7 +54,7 @@ This feature request addresses specific challenges in achieving type compatibili
 
 1. **ABI Compatibility**: Processes implemented in different programming languages (C++17 and Rust 1.8x) must interpret a shared memory location consistently as the same native type, provided both have compile-time access to the type definition. This scenario eliminates serialization overhead and allows direct memory access.
 
-2. **Type Description**: Processes responsible for translating data between internal ABI-compatible formats and external serialization formats should perform this translation without compile-time knowledge of type definitions. This runtime interpretation capability is critical for scalability, ensuring that gateway processes (or similar entities) can dynamically handle new data types without recompilation.
+2. **Type Description**: Processes responsible for translating data between internal ABI-compatible formats and external serialization formats should perform this translation without compile-time knowledge of type definitions. This runtime interpretation capability is critical for scalability, ensuring that gateway processes and tools for recording/replaying/inspecting data can dynamically handle new data types without recompilation.
 
 
 ABI Compatibility
