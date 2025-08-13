@@ -548,14 +548,15 @@
                   
   <section id="some-ip-gateway-service-discovery">
 <span id="id1"></span><h1>SOME/IP-Gateway Service Discovery<a class="headerlink" href="#some-ip-gateway-service-discovery" title="Link to this heading">#</a></h1>
-<p>Service discovery deals with discovery and connection setup of services.
+<p>The implementation shall be fully compatible and complying with the SOME/IP Service Discovery Protocol specification from AUTOSAR Adaptive.
+Service discovery deals with discovery and connection setup of services.
 The basic summary of service discovery is as follows:</p>
 <ul class="simple">
 <li><p>provided / required services (including their service elements like events, methods, and fields) must be configured</p></li>
 <li><p>(locally) provided services are discovered (locally) via IPC and then offered on the network by sending a SOME/IP-SD message with an OfferService entry according to configuration</p></li>
-<li><p>(locally) required services may trigger the discovery on the network by sending of a SOME/IP-SD message with a FindService entry</p></li>
+<li><p>(locally) required services trigger the discovery on the network by sending of a SOME/IP-SD message with a FindService entry</p></li>
 <li><p>when a SOME/IP-SD message containing a FindService entry is received, the SOME/IP gateway checks this service has been already offered locally via IPC</p></li>
-<li><p>for IPC service discovery the features of lola are used by the SOME/IP gateway</p></li>
+<li><p>the IPC service discovery is used by the SOME/IP gateway and no parallel discovery mechanism is introduced</p></li>
 </ul>
 <section id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">#</a></h2>
@@ -602,7 +603,7 @@ but can only start offering it after having received an OfferService message fro
 This behavior may reduce the time until the service is available for consumers, but may increase boot time.
 Thus the decision is to create the service only after having received an OfferService message from the network.</p>
 </div>
-<p>Upon reception of SOME/IP-SD message containing an StopOfferService entry, the SOME/IP communication stack stops the proxy service offered via IPC as well.</p>
+<p>Upon reception of SOME/IP-SD message containing an StopOfferService entry, the SOME/IP communication stack stops the service offered via IPC as well.</p>
 <p class="plantuml">
 <object data="../../../../_images/plantuml-69b7df11691d6959d738cd08f6b1e31c38c3d2d6.svg" type="image/svg+xml" style="width:611px;height:311px;background:#FFFFFF;"></object></p>
 <div class="admonition note">
