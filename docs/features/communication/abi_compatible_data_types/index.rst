@@ -70,7 +70,7 @@ This evaluation initially targets the following process configurations:
 Supporting different endianness between processes is explicitly out of scope, as it inherently demands bit manipulation, effectively requiring serialization.
 Different bit widths, however, are implicitly supported by specifying the width of all types and excluding word-size integers.
 
-The following data types shall be supported by the IPC mechanism:
+The following data types shall be supported:
 
 * **Primitive Types**:
 
@@ -129,7 +129,7 @@ Assumptions
 * Shared memory regions are mapped at correctly aligned virtual addresses in both processes.
 * No serialization or runtime copying occurs when interpreting a type from memory.
 * Processes use the same endianness.
-* No synchronization or atomicity guarantees are defined at the data type level; these are provided by the IPC framework.
+* No synchronization or atomicity guarantees are defined at the data type level; these must be provided by the accessing code.
 * All memory is allocated statically or pre-reserved. Dynamic memory allocation is disallowed.
 
 Type Conformance
@@ -139,7 +139,7 @@ Types used in shared memory must meet the following criteria:
 
 1. **Fixed size and alignment**: Every type must have a known, constant size and alignment at compile time.
 2. **Consistent layout across languages**: The layout of a type must be identical in Rust and C++, and on all platforms.
-3. **No absolute pointers or references**: Types must not contain pointers to heap memory, function pointers, or references.
+3. **No absolute pointers or references**: Types must not contain absolute pointers/function pointers/references or any pointers/references that point out of the transferred data.
 4. **No language-specific metadata**: No vtables, slice headers, or implementation-specific type markers are allowed.
 
 Each type definition must clearly indicate whether it conforms to these rules natively or requires a custom definition to do so.
@@ -167,7 +167,7 @@ These types are ABI-compatible when declared using fixed-size standard types:
      - ``std::uintN_t``, ``std::intN_t``
    * - Floating point
      - ``f32``, ``f64``
-     - ``float``, ``double``
+     - ``float``, ``double`` (compliant with IEEE 754)
 
 All types must avoid trap representations and undefined padding.
 
@@ -193,7 +193,7 @@ Only fieldless enums with a defined underlying integer type are supported. These
 * ``#[repr(u8)]``, ``#[repr(u16)]``, etc. in Rust
 * ``enum class MyEnum : std::uint8_t`` in C++
 
-Enums with payloads (discriminated unions) are not supported.
+*Note:* Enums with payloads ("variants" or "tagged unions") are optionally supported.
 
 Arrays
 """"""
@@ -201,7 +201,7 @@ Arrays
 Fixed-size arrays are naturally ABI-compatible and supported in both languages.
 
 * Rust: ``[T; N]``
-* C++: ``T[N]``
+* C++: wrapper around ``T[N]`` to enforce bounds-checking for element access
 
 Element types must also conform to this specification. No dynamic length information is allowed.
 
