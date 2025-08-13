@@ -379,7 +379,7 @@ Security Impact
 
    This section does not replace a formal security impact analysis. This only guides the design thoughts behind security related topics and is to be understood as a starting point for later workflows.
 
-No assumed impact on security.
+The memory underlying an ABI compatible type may potentially be corrupted, e.g., because it originates from an untrusted process, or because of a bug in the producer. As a consequence, any pointers, indices, and offsets need to be validated before they're used to access memory, to ensure they don't address any out-of-bounds locations. In addition, care must be taken to avoid TOC/TOU (*time-of-check to time-of-use*) issues, where the producer might maliciously or inadvertently modify a value after the consumer has already validated it.
 
 
 Safety Impact
