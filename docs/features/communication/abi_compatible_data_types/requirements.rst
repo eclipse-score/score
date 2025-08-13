@@ -30,7 +30,7 @@ Restrictions on Native Types
    :satisfies: stkh_req__communication__abi_compatible
    :status: valid
 
-   For ABI compatibility, the implementation shall restrict boolean types to one byte (`bool` in Rust and C++).
+   For ABI compatibility, the implementation shall restrict boolean types to one byte (``bool`` in Rust and C++).
 
 .. feat_req:: Fixed-width integers
    :id: feat_req__abi_compatible_data_types__int_fix
@@ -40,7 +40,7 @@ Restrictions on Native Types
    :satisfies: stkh_req__communication__abi_compatible
    :status: valid
 
-   For ABI compatibility, all integer types shall use fixed-width definitions (`uN`/`iN` in Rust; `std::uintN_t`/`std::intN_t` in C++), for N ∈ {8, 16, 32, 64, 128}.
+   For ABI compatibility, all integer types shall use fixed-width definitions (``uN``/``iN`` in Rust; ``std::uintN_t``/``std::intN_t`` in C++), for N ∈ {8, 16, 32, 64}.
 
 .. feat_req:: Limit floating-point sizes
    :id: feat_req__abi_compatible_data_types__flt_sz
@@ -50,7 +50,7 @@ Restrictions on Native Types
    :satisfies: stkh_req__communication__abi_compatible
    :status: valid
 
-   For ABI compatibility, floating-point types shall be limited to 32-bit (`f32` in Rust / `float` in C++) and 64-bit (`f64` in Rust / `double` in C++).
+   For ABI compatibility, floating-point types shall be limited to 32-bit (``f32`` in Rust / ``float`` in C++) and 64-bit (``f64`` in Rust / ``double`` in C++); all floating-point representations shall be compliant with IEEE 754.
 
 .. feat_req:: Fixed-size arrays
    :id: feat_req__abi_compatible_data_types__arr_fix
@@ -60,7 +60,7 @@ Restrictions on Native Types
    :satisfies: stkh_req__communication__abi_compatible
    :status: valid
 
-   For ABI compatibility, fixed-size arrays shall be declared as `[T; N]` in Rust and `T[N]` in C++, where T itself conforms to the ABI compatibility rules.
+   For ABI compatibility, fixed-size arrays shall be declared as ``[T; N]`` in Rust and with a wrapper around ``T[N]`` to perform bounds-checking in C++, where T itself conforms to the ABI compatibility rules.
 
 .. feat_req:: Struct and tuple ABI layout
    :id: feat_req__abi_compatible_data_types__st_tpl
@@ -70,7 +70,7 @@ Restrictions on Native Types
    :satisfies: stkh_req__communication__abi_compatible
    :status: valid
 
-   For ABI compatibility, tuples and structs shall preserve field order, use `#[repr(C)]` in Rust, and be `standard_layout` in C++ (no inheritance or virtuals).
+   For ABI compatibility, tuples and structs shall preserve field order, use ``#[repr(C)]`` in Rust, and be ``standard_layout`` in C++ (no inheritance or virtuals).
 
 .. feat_req:: Explicit enum representation
    :id: feat_req__abi_compatible_data_types__enum_udr
@@ -80,7 +80,7 @@ Restrictions on Native Types
    :satisfies: stkh_req__communication__abi_compatible
    :status: valid
 
-   For ABI compatibility, enums shall have an explicit, fixed underlying representation (e.g. `#[repr(u8)]` in Rust; `enum class E : std::uint8_t` in C++).
+   For ABI compatibility, enums shall have an explicit, fixed underlying representation (e.g. ``#[repr(u8)]`` in Rust; ``enum class E : std::uint8_t`` in C++).
 
 .. feat_req:: Disallow pointers and metadata
    :id: feat_req__abi_compatible_data_types__nop_mt
@@ -90,7 +90,7 @@ Restrictions on Native Types
    :satisfies: stkh_req__communication__abi_compatible
    :status: valid
 
-   For ABI compatibility, types shall not contain pointers, references, slices, function pointers, vtables, or any language-specific metadata.
+   For ABI compatibility, types shall not contain absolute pointers, references, slices, function pointers, vtables, or any language-specific metadata.
 
 .. feat_req:: Compiler-agnostic ABI
    :id: feat_req__abi_compatible_data_types__compabi
