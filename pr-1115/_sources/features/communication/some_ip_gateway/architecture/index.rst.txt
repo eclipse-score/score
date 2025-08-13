@@ -116,6 +116,10 @@ to the IPC clients to enable the client to individually judge on particular E2E 
   * Sequence error (further sub-qualification in loss, duplication, reordering is up to the client based on the counter)
 
 .. note::
+   CRC Errors might cause problems with corrupted service / instance IDs, as such messages might not get forwarded to the correct recipient.
+   This requires further discussion during implementation phase.
+
+.. note::
    The proposed error enumeration is an abstraction. Deriving detailed errors
    based on the E2E metadata is task of the client.
    For reference, this is the error enumeration of the AUTOSAR specification (R24-11):
