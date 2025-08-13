@@ -43,12 +43,13 @@ Persistency FMEA
     :id: feat_saf_fmea__persistency__message_nreived
     :fault_id: MF_01_01
     :failure_effect: Message is not received so the feature persistency is not available.
-    :mitigated_by: aou_req__persistency__error_handling
+    :mitigated_by: aou_req__persistency__error_handling, aou_req__persistency__non_existence
     :sufficient: yes
     :status: valid
 
-    User is not able to use the feature. Middleware cant be used. User is not able to use the feature. Middleware cant be used. Loss of execution can only be caused by the application, not by the persistency feature itself.
-    Failure handling is addressed to the application by the aou_req__persistency__error_handling.
+    User is not able to use the feature. Middleware cant be used.
+    Loss of execution can only be caused by the application, not by the persistency feature itself.
+    Failure handling is addressed to the application by the :need:`aou_req__persistency__error_handling.
 
 .. feat_saf_fmea:: Persistency
     :violates: feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore
@@ -92,5 +93,6 @@ Persistency FMEA
     :sufficient: yes
     :status: valid
 
-    User is not able to use the feature. Middleware cant be used. Loss of execution can only be caused by the application, not by the persistency feature itself.
-    Failure handling is addressed to the application by the aou_req__persistency__error_handling.
+    User is not able to use the feature. Middleware cant be used.
+    Loss of execution can only be caused by the application, not by the persistency feature itself.
+    Failure handling is addressed to the application by the :need:`aou_req__persistency__error_handling`.
