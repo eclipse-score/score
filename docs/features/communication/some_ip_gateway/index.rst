@@ -100,7 +100,7 @@ The requirements from Communication generally apply to the SOME/IP Gateway.
 SOME/IP protocol implementation
 -------------------------------
 
-The protocol implementation shall be fully compatible and complying with the SOME/IP specification from AUTOSAR Adaptive.
+The protocol implementation shall be fully compatible and complying with the SOME/IP specification from AUTOSAR Adaptive. (:need:`feat_req__some_ip_gateway__someip_protocol`)
 Specifically the SOME/IP specification from AUTOSAR release 24-11 shall be supported by the SOME/IP Gateway. This shall guarantee that systems integrated with the SOME/IP gateway can be used in according
 automotive E/E-architectures.
 Protocol implementations shall be wrapped in an abstraction API, that stays stable and allows implementations may be exchanged, potentially even by binary only libraries.
@@ -134,7 +134,6 @@ The security approach for SOME/IP gateway shall achieve the following security g
 The SOME/IP Gateway service instance shall be defined in the deployment configuration.
 
 - :need:`ACL Placement <feat_req__com__acl_placement>`
-- :need:`ACL per Service Instance <feat_req__com__acl_per_service_instance>`
 
 
 Backwards Compatibility
@@ -205,15 +204,22 @@ Access Control acts on OSI Layer 5-7. It shall fulfill the following:
    stop
 
 
+Safety Impact
+=============
+
+SOME/IP stack and underlying OS network stacks are typically QM only. Freedom from interference needs to be respected between the
+safety classified IPC component (mw::com) and the SOME/IP stack which is part of the gateway. The SOME/IP communication itself needs
+to be properly protected by E2E to maintain a safe communication via the grey SOME/IP channel.
+
 End-to-End (E2E) protection with CRC and counters
 -------------------------------------------------
 
-Applications communicating over the network may have to secure data with end-to-end protection (E2E), which may involve
+Applications communicating over the network may have to protect data with end-to-end protection (E2E), which may involve
 CRC-protection and checks, and message counters.
 
 There are several E2E (= End-to-End) profiles, which utilize various CRC routines as part of AUTOSAR E2E Protocol Specification, that shall be supported with the SOME/IP Gateway.
 
-Though the SOME/IP protocol itself is likely not going to be ASIL-B compliant and have a safety consideration of QM rather,
+Though the implementation of the SOME/IP protocol itself is likely not going to be ASIL-B compliant and have a safety consideration of QM rather,
 E2E-checks and protection need to happen in an ASIL-B context. The gateway may perform the CRC routines as a central service.
 All communication channels (IPC) to this central service must be qualified for ASIL-B, and protected against data loss / loss of samples.
 
@@ -225,14 +231,6 @@ References
 
 - `AUTOSAR_FO_PRS_E2EProtocol <https://www.autosar.org/fileadmin/standards/R24-11/FO/AUTOSAR_FO_PRS_E2EProtocol.pdf>`_
 - `AUTOSAR_FO_RS_E2E <https://www.autosar.org/fileadmin/standards/R24-11/FO/AUTOSAR_FO_RS_E2E.pdf>`_
-
-
-Safety Impact
-=============
-
-SOME/IP stack and underlying OS network stacks are typically QM only. Freedom from interference needs to be respected between the
-safety classified IPC component (mw::com) and the SOME/IP stack which is part of the gateway. The SOME/IP communication itself needs
-to be properly protected by E2E to maintain a safe communication via the grey SOME/IP channel.
 
 License Impact
 ==============
