@@ -49,7 +49,7 @@ Persistency FMEA
 
     User is not able to use the feature. Middleware cant be used.
     Loss of execution can only be caused by the application, not by the persistency feature itself.
-    Failure handling is addressed to the application by the :need:`aou_req__persistency__error_handling.
+    Failure handling is addressed to the application by the :need:`aou_req__persistency__error_handling`.
 
 .. feat_saf_fmea:: Persistency
     :violates: feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore
