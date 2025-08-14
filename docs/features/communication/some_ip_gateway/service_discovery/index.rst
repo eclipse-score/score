@@ -33,6 +33,7 @@ Configuration
 The configuration tells the SOME/IP communication stack which services it should provide and which services it should require on the network.
 The configuration contains SOME/IP and SOME/IP-SD settings as well as IP interface bindings.
 Events, methods and fields are configured as well.
+Only full interfaces of services are forwarded (all events, methods, fields of a service).
 
 The integrator must be able to change configuration at runtime deployment.
 Thus it is likely read from one or multiple files.
