@@ -47,8 +47,10 @@ To use the devcontainer:
 
 This approach simplifies the setup process and ensures a consistent development environment.
 
-Note: buildifier and autocompletion are not yet provided via the devcontainer or via bazel, so you
-will need to set them up manually. See below.
+**No** manual setup needs to be done when using the devcontainer.
+
+.. note::
+    If you are using Docker on Windows **without WSL2** in between, you have to select the alternative container `eclipse-s-core-docker-on-windows`.
 
 Manual Setup
 ============
@@ -64,7 +66,7 @@ General Setup
   * Python 3.x
   * Graphviz/Dot (for generating diagrams)
 
-  Check `Dockerfile <https://github.com/eclipse-score/score/blob/main/.devcontainer/Dockerfile>`_ for
+  Check `Dockerfile <https://github.com/eclipse-score/devcontainer/tree/main/src/s-core-devcontainer/.devcontainer>`_ for
   an accurate list and exemplary instructions.
 * Clone the score repository to your hard drive.
 
