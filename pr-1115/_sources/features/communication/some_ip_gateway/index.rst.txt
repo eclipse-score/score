@@ -169,7 +169,7 @@ Access Control acts on OSI Layer 5-7. It shall fulfill the following:
 - What IP address is allowed to offer a SOME/IP service instance
 - Configuration of ACL is done at deployment
 - Versioning of services
-- ACL shall be able to be switched on/off
+- ACL, or single parameters of it, shall be able to be switched on/off
 - It shall be possible to persistently log ACL drop actions
 
 .. note::

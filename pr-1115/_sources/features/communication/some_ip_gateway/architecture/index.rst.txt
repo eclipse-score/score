@@ -142,6 +142,7 @@ function invocations over a period. This allows it to determine a more holistic 
 
 Purpose of the E2E State Machine
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The primary purpose of the E2E state machine is to transform instantaneous "per-cycle" check results into a stable,
 long-term communication channel status. This aggregated status is then provided to the consuming application,
 enabling it to make informed decisions about whether the received data can be trusted and used for safety-related functions.
 

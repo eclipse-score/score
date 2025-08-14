@@ -691,7 +691,8 @@ which assess data validity for a single communication cycle, the state machine a
 function invocations over a period. This allows it to determine a more holistic and debounced status of the communication.</p>
 <section id="purpose-of-the-e2e-state-machine">
 <h4>Purpose of the E2E State Machine<a class="headerlink" href="#purpose-of-the-e2e-state-machine" title="Link to this heading">#</a></h4>
-<p>long-term communication channel status. This aggregated status is then provided to the consuming application,
+<p>The primary purpose of the E2E state machine is to transform instantaneous “per-cycle” check results into a stable,
+long-term communication channel status. This aggregated status is then provided to the consuming application,
 enabling it to make informed decisions about whether the received data can be trusted and used for safety-related functions.</p>
 <p>As mentioned above, the E2E state-machine is associated to one communication channel which is in turn associated to exactly one
 individual IPC client. Therefore it is an obvious consequence, that the individual state machine handling and state machine
