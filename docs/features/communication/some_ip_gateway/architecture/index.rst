@@ -140,8 +140,8 @@ about the overall health and state of a communication channel. Unlike individual
 which assess data validity for a single communication cycle, the state machine aggregates results from multiple Check()
 function invocations over a period. This allows it to determine a more holistic and debounced status of the communication.
 
-Purpose of the E2E State Machine:
-The primary purpose of the E2E state machine is to transform instantaneous "per-cycle" check results into a stable,
+Purpose of the E2E State Machine
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 long-term communication channel status. This aggregated status is then provided to the consuming application,
 enabling it to make informed decisions about whether the received data can be trusted and used for safety-related functions.
 
@@ -170,8 +170,8 @@ If we allocate the state-machine responsibility to the gateway the distribution 
 
    E2E state machine responsibility associated to the gateway
 
-Due to pub/sub nature of mw::com, clients listening on the same topic can not be separately addressed. Therefore, **the state machine results
-can not be selectively distributed according to the particular communication channel they belong to**.
+Due to pub/sub nature of mw::com, clients listening on the same topic cannot be separately addressed. Therefore, **the state machine results
+cannot be selectively distributed according to the particular communication channel they belong to**.
 
 **=> Alternative dismissed**
 
