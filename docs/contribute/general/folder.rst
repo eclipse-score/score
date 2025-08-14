@@ -96,7 +96,9 @@ The modules and components shall follow the folder structure which was presented
                                              Include files
                                              Source Files
                                              Unit tests [:need:`PROCESS_wp__verification__sw_unit_test`]
+                                             Test doubles
             <lower_level_comp>/        -> lower level component following <component_name> folder structure
+            details/                   -> Private implementation details of the component following <component_name> folder structure
 
          docs/                         -> Documentation of the component
             architecture/              -> Component architecture (only if lower level components exist)
