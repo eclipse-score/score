@@ -1,20 +1,5 @@
 {
-	"build": {
-		"dockerfile": "Dockerfile"
-	},
-	"features": {
-		"ghcr.io/devcontainers-community/features/bazel:1": {}
-	},
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				"ms-python.python",
-				"usernamehw.errorlens",
-				"hediet.vscode-drawio",
-				"swyddfa.esbonio",
-				"lextudio.restructuredtext",
-				"charliermarsh.ruff"
-			]
-		}
-	}
+    "name": "eclipse-s-core",
+    "image": "ghcr.io/eclipse-score/devcontainer:latest",
+    "initializeCommand": "mkdir -p ${localEnv:HOME}/.cache/bazel"
 }

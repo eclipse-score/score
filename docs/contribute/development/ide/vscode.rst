@@ -31,14 +31,11 @@ change rather frequently. At the time of writing, the following settings are rec
 
    "github.copilot.nextEditSuggestions.enabled": true,
 
-Starlark
-========
+Starlark / Python / C++ / Rust
+==============================
 
-For *Starlark* currently no solution is integrated in VScode.
-
-C++
-===
-
+The devcontainer has Starlark, Python, C++ and Rust support.
+How to setup code completion for C++ and Rust is described at `eclipse-score/devcontainer <https://github.com/eclipse-score/devcontainer/tree/main?tab=readme-ov-file#inside-the-container>`_.
 
 Python
 ======
