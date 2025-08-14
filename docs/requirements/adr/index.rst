@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,11 +12,15 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _requirements:
+Architecture Decision Records
+==================================================
+Here you can find the Architecture Decision Records (ADRs) for S-CORE. They document the decisions made during the development of S-CORE,
+including the rationale behind them and their implications.
 
-Requirements
-============
 
 .. toctree::
-   stakeholder/index
-   adr/index
+   :hidden:
+   :maxdepth: 1
+
+
+   001_adr_template
