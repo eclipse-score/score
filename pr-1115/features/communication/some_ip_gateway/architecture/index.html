@@ -689,9 +689,9 @@ For reference, this is the error enumeration of the AUTOSAR specification (R24-1
 about the overall health and state of a communication channel. Unlike individual E2E Profile Check() functions,
 which assess data validity for a single communication cycle, the state machine aggregates results from multiple Check()
 function invocations over a period. This allows it to determine a more holistic and debounced status of the communication.</p>
-<p>Purpose of the E2E State Machine:
-The primary purpose of the E2E state machine is to transform instantaneous “per-cycle” check results into a stable,
-long-term communication channel status. This aggregated status is then provided to the consuming application,
+<section id="purpose-of-the-e2e-state-machine">
+<h4>Purpose of the E2E State Machine<a class="headerlink" href="#purpose-of-the-e2e-state-machine" title="Link to this heading">#</a></h4>
+<p>long-term communication channel status. This aggregated status is then provided to the consuming application,
 enabling it to make informed decisions about whether the received data can be trusted and used for safety-related functions.</p>
 <p>As mentioned above, the E2E state-machine is associated to one communication channel which is in turn associated to exactly one
 individual IPC client. Therefore it is an obvious consequence, that the individual state machine handling and state machine
@@ -714,13 +714,14 @@ If we allocate the state-machine responsibility to the gateway the distribution 
 <p><span class="caption-number">Fig. 8 </span><span class="caption-text">E2E state machine responsibility associated to the gateway</span><a class="headerlink" href="#e2e-state-machine-in-gateway" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Due to pub/sub nature of mw::com, clients listening on the same topic can not be separately addressed. Therefore, <strong>the state machine results
-can not be selectively distributed according to the particular communication channel they belong to</strong>.</p>
+<p>Due to pub/sub nature of mw::com, clients listening on the same topic cannot be separately addressed. Therefore, <strong>the state machine results
+cannot be selectively distributed according to the particular communication channel they belong to</strong>.</p>
 <p><strong>=&gt; Alternative dismissed</strong></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The End-to-End consideration in this chapter do not yet consider methods.</p>
 </div>
+</section>
 </section>
 </section>
 </section>
@@ -776,7 +777,10 @@ can not be selectively distributed according to the particular communication cha
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structural-view">Structural View</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#e2e-considerations">E2E Considerations</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e2e-design-and-interface-considerations">E2E Design and Interface Considerations</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e2e-state-machine-considerations">E2E State Machine Considerations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e2e-state-machine-considerations">E2E State Machine Considerations</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose-of-the-e2e-state-machine">Purpose of the E2E State Machine</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
