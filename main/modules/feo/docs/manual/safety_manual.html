@@ -562,7 +562,7 @@ For now it only contains Assumptions of Use related to the use of Rust libraries
 <div class="line-block">
 <div class="line">Generally the assumption of the S-CORE platform SEooC is that it is integrated in a safe system, i.e. the POSIX OS it runs on is qualified and also the HW related failures are taken into account by the system integrator, if not otherwise stated in the module’s safety concept.</div>
 </div>
-<div class="need_container docutils container" id="SNCB-a399ba6b">
+<div class="need_container docutils container" id="SNCB-2f07e66c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__feo__on_target_crates">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -615,7 +615,7 @@ targets in release builds.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9abcb079">
+<div class="need_container docutils container" id="SNCB-c580d412">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__feo__rust_core_lib">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -660,7 +660,7 @@ targets in release builds.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b6de51ee">
+<div class="need_container docutils container" id="SNCB-08ebf61a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__feo__rust_std_lib_modules">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -795,29 +795,45 @@ but it gets quickly out of date with a changing codebase.</p>
 <td class="needs_id"><p><a class="reference internal" href="../../../baselibs/json/docs/requirements/index.html#aou_req__json__access_control">aou_req__json__access_control</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>JSON data integrity</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>Error Domain Implementation</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../../baselibs/result/docs/requirements.html#aou_req__result__error_domain_implementation">aou_req__result__error_domain_implementation</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>JSON data integrity</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../baselibs/json/docs/requirements/index.html#aou_req__json__data_integrity">aou_req__json__data_integrity</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>Next Title</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>Next Title</p></td>
 <td class="needs_id external_link"><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/folder_templates/modules/module_name/component_name/docs/requirements/index.html#aou_req__component_name__next_title">PROCESS_aou_req__component_name__next_title</a></p></td>
 <td class="needs_status"><p>invalid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>on_target_crates</p></td>
+<tr class="need row-even"><td class="needs_title"><p>on_target_crates</p></td>
 <td class="needs_id"><p><a class="reference internal" href="#aou_req__feo__on_target_crates">aou_req__feo__on_target_crates</a></p></td>
 <td class="needs_status"><p>invalid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>rust_core_lib</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>Resource Lifetime</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../../baselibs/result/docs/requirements.html#aou_req__result__resource_lifetime">aou_req__result__resource_lifetime</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>Result Value Handling</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../../baselibs/result/docs/requirements.html#aou_req__result__value_handling">aou_req__result__value_handling</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>rust_core_lib</p></td>
 <td class="needs_id"><p><a class="reference internal" href="#aou_req__feo__rust_core_lib">aou_req__feo__rust_core_lib</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>rust_std_lib_modules</p></td>
+<tr class="need row-even"><td class="needs_title"><p>rust_std_lib_modules</p></td>
 <td class="needs_id"><p><a class="reference internal" href="#aou_req__feo__rust_std_lib_modules">aou_req__feo__rust_std_lib_modules</a></p></td>
 <td class="needs_status"><p>invalid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>Some Other Title</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>Some Other Title</p></td>
 <td class="needs_id external_link"><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/folder_templates/features/feature_name/requirements/index.html#aou_req__feature_name__some_other_title">PROCESS_aou_req__feature_name__some_other_title</a></p></td>
 <td class="needs_status"><p>invalid</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>Thread Safety</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../../baselibs/result/docs/requirements.html#aou_req__result__thread_safety">aou_req__result__thread_safety</a></p></td>
+<td class="needs_status"><p>valid</p></td>
 </tr>
 </tbody>
 </table>
