@@ -232,7 +232,7 @@ Requirements
    :satisfies: stkh_req__dependability__safety_features
    :status: valid
 
-   The Key-Value-Storage shall an engineering (developer) mode.
+   The Key-Value-Storage shall xyz an engineering (developer) mode.
    The engineering mode shall allow unrestricted data access.
 
 .. feat_req:: Support field mode
@@ -243,7 +243,7 @@ Requirements
    :satisfies: stkh_req__dependability__safety_features
    :status: valid
 
-   The Key-Value-Storage shall a field mode.
+   The Key-Value-Storage shall xyz a field mode.
    The field mode should enforce the most restrictive data access controls feasible.
 
 .. feat_req:: Provide an async API
@@ -257,10 +257,10 @@ Requirements
    The Key-Value-Storage shall provide an asynchronous API for accessing and
    manipulating data.
 
-.. feat_req:: Separate data stores
+.. feat_req:: Access control
    :id: feat_req__persistency__access_control
    :reqtype: Functional
-   :security: NO
+   :security: YES
    :safety: ASIL_B
    :satisfies: stkh_req__dependability__security_features
    :status: valid
@@ -315,7 +315,18 @@ AoU Requirements
    :status: valid
    :tags: environment
 
-   The application shall handle if the feature persistency is not available.
+   The application shall implement a error-handling mechanism to react on errors
+   reported by the Key-Value Storage.
+
+.. aou_req:: Persistency Error handling
+   :id: aou_req__persistency__non_existence
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :status: valid
+   :tags: environment
+
+   The application shall tolerate if the feature persistency is not available.
 
 .. aou_req:: Application deadlock
    :id: aou_req__persistency__appl_design
