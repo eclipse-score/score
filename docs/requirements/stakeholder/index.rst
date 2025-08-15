@@ -557,6 +557,83 @@ Communication
    * Diagnostic trouble codes
    * Diagnostic jobs
 
+Time
+----
+
+.. stkh_req:: Vehicle Time base Synchronization
+   :id: stkh_req__time__vehicle_time_sync
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: Enables the system to compare events chronologically.
+   :status: valid
+
+   The software platform shall provide a time synchronization framework to synchronize its clock
+   to Time Master within the vehicle.
+
+.. stkh_req:: Vehicle Time base API
+   :id: stkh_req__time__vehicle_time_api
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: Enables an application to correlate its data with a vehicle-internal time reference for event timestamp and chronological events comparison.
+   :status: valid
+
+   The software platform shall provide access to synchronized vehicle time.
+
+.. stkh_req:: Synchronize the HW clock with Vehicle Time
+   :id: stkh_req__time__hw_clock_sync
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: Enables the system to compare events from different ECUs chronologically, using the same time base for timestamping ingress and egress frames.
+   :status: valid
+
+   The software platform shall synchronize the local HW clock to vehicle time.
+
+.. stkh_req:: Time Synchronization with external sources
+   :id: stkh_req__time__absolute_time_sync
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: Enables the system to validate a certificate or token with temporal validity conditions, adding a UTC-timestamp to a data set.
+   :status: valid
+
+   The software platform shall provide a framework to synchronize the clock to external-to-vehicle absolute time base (UTC).
+
+.. stkh_req:: Absolute time base API
+   :id: stkh_req__time__absolute_time_api
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: Enables an application to correlate its data with an absolute vehicle-external time reference for event timestamping and chronological events comparison.
+   :status: valid
+
+   The software platform shall provide access to the absolute time base, synchronized with external time sources.
+
+.. stkh_req:: Local High precision Clock API
+   :id: stkh_req__time__high_precision_clock_api
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: Enables an application to get the current system time, which is essential for time-sensitive operations and event scheduling, via common, mockable and standardized API.
+   :status: valid
+
+   The software platform shall provide access to the current high precision clock from the system time provider in nanoseconds.
+
+   Note: to which clock the high precision clock is mapped, depends on the system design.
+
+.. stkh_req:: Local Monotonic Clock API
+   :id: stkh_req__time__monotonic_clock_api
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: Enables an application to get the current system time, which is essential for time-sensitive operations and event scheduling, via common, mockable and standardized API.
+   :status: valid
+
+   The software platform shall provide access to the current monotonic clock from the system time provider.
+
+   Note: to which clock the monotonic clock is mapped, depends on the system design.
 
 Diagnostics and Fault Management
 --------------------------------
@@ -796,6 +873,16 @@ Developer experience
    The software platform shall provide a method and interface to enable
    debugging of the software on target and in vehicle.
 
+.. stkh_req:: Mockup implementation for application testing
+   :id: stkh_req__dev_experience__mockup_public_apis
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: Enables unit, component and integration testing for both platform related and non-platform related applications.
+   :status: valid
+
+   The software platform shall provide support for mocking its public interfaces,
+   enabling unit, component and integration testing of applications.
 
 .. stkh_req:: Programming languages for application development
    :id: stkh_req__dev_experience__prog_languages
