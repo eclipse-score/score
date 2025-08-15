@@ -1,0 +1,32 @@
+@startuml
+title Alive Monitoring
+
+autonumber "<b>[000]"
+
+participant "Launch Manager" as LM
+participant "Application" as App
+
+activate LM
+
+LM --> LM: parse configuration
+LM --> App: fork
+activate App
+
+App -> LM: Register for alive notifications (callback)
+LM --> App: Return value
+
+note over LM, App: Cyclicly report health state
+loop health_status == ok
+    App --> LM : report_healt_status()
+end
+
+note over LM, App: Trigger Error Reaction
+alt health_status != ok
+    LM --> App: initiate Error Reaction
+end
+
+App -> LM: Return value
+deactivate App
+
+deactivate LM
+@enduml
