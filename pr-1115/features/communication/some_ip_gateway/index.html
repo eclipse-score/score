@@ -545,7 +545,7 @@
                   
   <section id="some-ip-gateway">
 <span id="some-ip-gateway-feature"></span><h1>SOME/IP-Gateway<a class="headerlink" href="#some-ip-gateway" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-afd8f625">
+<div class="need_container docutils container" id="SNCB-0fc2828c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__some_ip_gateway">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -627,7 +627,7 @@ Nonetheless integrators and architects will have to configure the system to rece
 <p>SOME/IP and IPC use different mechanisms and data representations to communicate. Therefor it’s not only a task of this gateway
 to adapt the communication, but also to transform from one representation to another. This includes changing data layout, filling in missing data, filtering traffic, error handling, service discovery and further steps.</p>
 <p>Hence the gateway shall be a transparent bridge between IPC and SOME/IP. On the one side it should act as a participant in IPC and fulfill all requirements to this accordingly, where providing data or consuming it.
-whereas on the other side it shall participate in SOME/IP communication acting as a SOME/IP service and client fulfilling all SOME/IP requirements and defined communication.
+Whereas on the other side it shall participate in SOME/IP communication acting as a SOME/IP service and client fulfilling all SOME/IP requirements and defined communication.
 Between these two contexts developers shall be able to create signal or data mappings and translate the different data-types and representations of the two contexts.</p>
 <dl class="simple">
 <dt>This module shall fulfill the following requirements:</dt><dd><ul class="simple">
@@ -644,7 +644,7 @@ Between these two contexts developers shall be able to create signal or data map
 <section id="some-ip-protocol-implementation">
 <h3>SOME/IP protocol implementation<a class="headerlink" href="#some-ip-protocol-implementation" title="Link to this heading">#</a></h3>
 <p>The protocol implementation shall be fully compatible and complying with the SOME/IP specification from AUTOSAR Adaptive. (<a class="reference internal" href="requirements/index.html#feat_req__some_ip_gateway__someip_protocol" title="feat_req__some_ip_gateway__someip_protocol"><em class="xref need">Compatibility with AUTOSAR ... (feat_req__some_ip_gateway__someip_protocol)</em></a>)
-Specifically the SOME/IP specification from AUTOSAR release 24-11 shall be supported by the SOME/IP Gateway. This shall guarantee that systems integrated with the SOME/IP gateway can be used in according
+Specifically the SOME/IP specification from AUTOSAR release R24-11 shall be supported by the SOME/IP Gateway. This shall guarantee that systems integrated with the SOME/IP gateway can be used in according
 automotive E/E-architectures.
 Protocol implementations shall be wrapped in an abstraction API, that stays stable and allows implementations may be exchanged, potentially even by binary only libraries.</p>
 <p>The SOME/IP Gateway shall support SOME/IP Events, Fields and Methods and shall map these accordingly into IPC.</p>
@@ -653,7 +653,7 @@ Protocol implementations shall be wrapped in an abstraction API, that stays stab
 <section id="some-ip-gateway-processes-and-life-cycle-management">
 <h3>SOME/IP Gateway processes and life cycle management<a class="headerlink" href="#some-ip-gateway-processes-and-life-cycle-management" title="Link to this heading">#</a></h3>
 <p>The implementation of a gateway likely requires using one or multiple processes. Startup of processes for the gateway, as with any other
-process in the s-core system, need to be put under the control of lifecycle-management (see feature Lifecycle).
+process in the S-CORE system, need to be put under the control of lifecycle-management (see feature Lifecycle).
 Hence the SOME/IP Gateway must not start any processes on its own, but configure the lifecycle launch and health-monitoring accordingly.
 Specifically for the integration of the SOME/IP Stack “plug-in”, which is expected to be QM, whereas the rest of the gateway is ASIL-B,
 if one or more additional processes need to be spawned and additional executables need to be involved with the implementation,
