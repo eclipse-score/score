@@ -1,0 +1,35 @@
+@startuml Work Package Workflow
+
+    (*top) -->"New"
+
+    'New State
+    "New" --> "Analyze"
+    "New" --> "Blocked"
+    "New" --> "Done"
+        note left
+          in case work packages is obsolete
+
+    'Analyze State
+    "Analyze" --> "In Progress"
+    "Analyze" --> "Blocked"
+    "Analyze" --> "Done"
+
+    'In Progress state
+    "In Progress" --> "Analyze"
+        note left
+          in case new information
+          forces the work package to
+          be re-evaluated
+
+    "In Progress" --> "Blocked"
+    "In Progress" --> "Done"
+
+    'Done State
+    "Done" --> "Analyze"
+    "Done" --> (*)
+
+    'Blocked State
+    "Blocked" --> "Analyze"
+    "Blocked" --> "In Progress"
+
+@enduml

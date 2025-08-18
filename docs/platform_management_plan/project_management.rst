@@ -334,48 +334,8 @@ Status of Work Packages
   specific Definition of Done (DoD), fulfillment of this DoD is an additional requirement
   for marking the work package as *Done*.
 
-.. uml::
-    :name: doc__acl_activity_diagram
-    :scale: 80
-    :align: center
-    :caption: Workflow of work package status
-
-    !include assets/puml-theme-score.puml
-
-    (*top) --> "New"
-
-    'New State
-    "New" --> "Analyze"
-    "New" --> "Blocked"
-    "New" --> "Done"
-        note left
-          in case work packages is obsolete
-
-    'Analyze State
-    "Analyze" --> "In Progress"
-    "Analyze" --> "Blocked"
-    "Analyze" --> "Done"
-
-    'In Progress state
-    "In Progress" --> "Analyze"
-        note left
-          in case new information
-          forces the work package to
-          be re-evaluated
-
-    "In Progress" --> "Blocked"
-    "In Progress" --> "Done"
-
-    'Done State
-    "Done" --> "Analyze"
-    "Done" --> (*)
-
-    'Blocked State
-    "Blocked" --> "Analyze"
-    "Blocked" --> "In Progress"
-
-  @enduml
-
+.. uml:: assets/work_packages_workflow.puml
+    :alt: Example Diagram
 
 
 Traceability
