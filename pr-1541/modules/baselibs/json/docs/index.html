@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>json &#8212; S-CORE 0.1 documentation</title>
+    <title>JSON-Library &#8212; S-CORE 0.1 documentation</title>
   
   
   
@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -72,7 +72,7 @@
         </script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="JSON Component Architecture" href="architecture/index.html" />
+    <link rel="next" title="Requirements" href="requirements/index.html" />
     <link rel="prev" title="Module Documents" href="../../docs/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -461,12 +461,23 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">Baselibs Module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../docs/index.html">Module Documents</a></li>
-<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">json</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">JSON-Library</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="requirements/index.html">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="architecture/index.html">JSON Component Architecture</a></li>
 </ul>
 </details></li>
+
+
+
+
+
+
+
+
+
 <li class="toctree-l2"><a class="reference internal" href="../../memory_shared/docs/index.html">memory_shared</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../message_passing/docs/index.html">message_passing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../result/docs/index.html">result</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../communication/index.html">Communication Module</a></li>
@@ -521,7 +532,7 @@
     
     <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Baselibs Module</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">json</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">JSON-Library</span></li>
   </ul>
 </nav>
 </div>
@@ -538,10 +549,135 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="json">
-<span id="comp-doc-json"></span><h1>json<a class="headerlink" href="#json" title="Link to this heading">#</a></h1>
+  <section id="json-library">
+<h1>JSON-Library<a class="headerlink" href="#json-library" title="Link to this heading">#</a></h1>
+<div class="need_container docutils container" id="SNCB-d2a71cf8">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__json">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">JSON-Library</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">component_request</span></span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
+</span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__json" title="doc__json">doc__json</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Generic Document</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div class="toctree-wrapper compound">
 </div>
+</section>
+<section id="abstract">
+<h1>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h1>
+<p>This component request proposes the integration of a safe JSON-Library with parsing functionality.</p>
+<section id="basic-functionality">
+<h2>Basic Functionality<a class="headerlink" href="#basic-functionality" title="Link to this heading">#</a></h2>
+<p>The component shall support parsing JSON data and convert that information to a compatible user format.</p>
+</section>
+<section id="future-extensions">
+<h2>Future Extensions<a class="headerlink" href="#future-extensions" title="Link to this heading">#</a></h2>
+<p>The component shall support a future extension for serializing from user format into JSON data.</p>
+<p>Optional extensions which may be added if required:</p>
+<ul class="simple">
+<li><p>JSON schema validation.</p></li>
+<li><p>Compile-time parsing (used for test purposes to ensure that a component with errors cannot exist even in the absence of a pipeline).</p></li>
+</ul>
+</section>
+</section>
+<section id="motivation">
+<h1>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h1>
+<p>S-CORE is targeting high-performance automotive systems with safety impact.
+Some applications, like the IPC communication solution, require a safe JSON-Library with parsing functionality to enable loading of configuration information at runtime.
+There is currently no solution for this inside S-CORE.</p>
+</section>
+<section id="rationale">
+<h1>Rationale<a class="headerlink" href="#rationale" title="Link to this heading">#</a></h1>
+<p>A JSON-Library with parsing functionality needs to be introduced in S-CORE software platform due to specific functional dependencies of different features (ex: IPC).</p>
+<p>Further details are available in the following section:
+.. _Specification:</p>
+</section>
+<section id="specification">
+<h1>Specification<a class="headerlink" href="#specification" title="Link to this heading">#</a></h1>
+<p>The following details and requirements describe the aspects of current feature in the context of S-CORE.</p>
+<section id="general-considerations">
+<h2>General considerations<a class="headerlink" href="#general-considerations" title="Link to this heading">#</a></h2>
+<p>The JSON-Library should provide parsing and data conversion capabilities:</p>
+<p><a class="reference internal" href="requirements/index.html#comp_req__json__validation" title="comp_req__json__validation"><em class="xref need">JSON Validation (comp_req__json__validation)</em></a>
+<a class="reference internal" href="requirements/index.html#comp_req__json__deserialization" title="comp_req__json__deserialization"><em class="xref need">JSON Deserialization (comp_req__json__deserialization)</em></a>
+<a class="reference internal" href="requirements/index.html#comp_req__json__user_format" title="comp_req__json__user_format"><em class="xref need">Return data in user format (comp_req__json__user_format)</em></a></p>
+<p>The component should be extensible in the future in order to support conversion of user format to JSON data.</p>
+</section>
+<section id="user-friendly-api">
+<h2>User friendly API<a class="headerlink" href="#user-friendly-api" title="Link to this heading">#</a></h2>
+<p>Programming languages have their own feature set and idioms.
+It is crucial for any library that it seamlessly integrates into both.
+This means, wherever possible and meaningful, infrastructure of the programming language and accompanying standard
+libraries shall be reused.
+Further, a developer used to the programming language shall have no problems understanding the API.
+It should feel natural to use.
+This includes error handling, which shall follow one of the error handling concepts of the programming language.</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="requirements/index.html#comp_req__json__lang_idioms" title="comp_req__json__lang_idioms"><em class="xref need">Support for programming lan... (comp_req__json__lang_idioms)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements/index.html#comp_req__json__lang_infra" title="comp_req__json__lang_infra"><em class="xref need">Use programming language in... (comp_req__json__lang_infra)</em></a></p></li>
+</ol>
+</section>
+<section id="full-testability-for-the-public-api">
+<h2>Full testability for the public API<a class="headerlink" href="#full-testability-for-the-public-api" title="Link to this heading">#</a></h2>
+<p>Our users will be required to proof certain coverage metrics, like line coverage or branch coverage.
+For them to reach full coverage, they need to be easily able to mock or fake the public API of the JSON-Library in their unit tests.</p>
+<p><a class="reference internal" href="requirements/index.html#comp_req__json__full_testability" title="comp_req__json__full_testability"><em class="xref need">Fully testable public API (comp_req__json__full_testability)</em></a></p>
+</section>
+</section>
+<section id="backwards-compatibility">
+<h1>Backwards Compatibility<a class="headerlink" href="#backwards-compatibility" title="Link to this heading">#</a></h1>
+<p>As there is currently no previous solution in S-CORE, no backwards compatibility is required.</p>
+</section>
+<section id="security-impact">
+<h1>Security Impact<a class="headerlink" href="#security-impact" title="Link to this heading">#</a></h1>
+<p>[How could a malicious user take advantage of this new/modified component?]</p>
+</section>
+<section id="safety-impact">
+<h1>Safety Impact<a class="headerlink" href="#safety-impact" title="Link to this heading">#</a></h1>
+<p>Overall, the component shall support use cases up to ASIL-B.</p>
+</section>
+<section id="license-impact">
+<h1>License Impact<a class="headerlink" href="#license-impact" title="Link to this heading">#</a></h1>
+<p>[How could the copyright impacted by the license of the new contribution?]</p>
+</section>
+<section id="how-to-teach-this">
+<h1>How to Teach This<a class="headerlink" href="#how-to-teach-this" title="Link to this heading">#</a></h1>
+<p>[How to teach users, new and experienced, how to apply the CR to their work.]</p>
 </section>
 
 
@@ -564,11 +700,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="architecture/index.html"
+       href="requirements/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">JSON Component Architecture</p>
+        <p class="prev-next-title">Requirements</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -582,6 +718,37 @@
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">JSON-Library</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-functionality">Basic Functionality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#future-extensions">Future Extensions</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale">Rationale</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#specification">Specification</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-considerations">General considerations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-friendly-api">User friendly API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#full-testability-for-the-public-api">Full testability for the public API</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#backwards-compatibility">Backwards Compatibility</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#security-impact">Security Impact</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#safety-impact">Safety Impact</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#license-impact">License Impact</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-teach-this">How to Teach This</a></li>
+</ul>
+
+  </nav></div>
 
   <div class="sidebar-secondary-item">
 
