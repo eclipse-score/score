@@ -532,7 +532,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-45fde44f">
+  <div class="need_container docutils container" id="SNCB-1725fb90">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__project_mgt_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -751,61 +751,61 @@ additionally its own labels. It is recommended to create labels at least
 for specific areas that may encompass multiple features.</p>
 </section>
 </section>
-<section id="types-of-work-items-and-structure">
-<h3>Types of work items and structure<a class="headerlink" href="#types-of-work-items-and-structure" title="Link to this heading">#</a></h3>
+<section id="types-of-work-packages-and-structure">
+<h3>Types of work packages and structure<a class="headerlink" href="#types-of-work-packages-and-structure" title="Link to this heading">#</a></h3>
 <p>For better structuring of the tickets following <em>GitHub Issue</em> types are introduced
-in the main <em>S-CORE</em> repository. In order to create a consistent overview of all work items (WIs),
-the WIs need to be maintained in one single project within the main <em>S-CORE</em> repository.
-Having separate WI backlogs within separate repositories will increase the complexity
+in the main <em>S-CORE</em> repository. In order to create a consistent overview of all work packages (WPs),
+the WPs need to be maintained in one single project within the main <em>S-CORE</em> repository.
+Having separate WP backlogs within separate repositories will increase the complexity
 and reduce the transparency too much.</p>
-<p>All <em>child projects</em> are only allowed to have their separate list of issues. All other WI types
-shall not be available for them. The planning WIs of the main <em>S-CORE</em> repository therefore are used
-to link WIs to <em>GitHub issues</em> of <em>child projects</em>.
-For example a <em>Bug</em> WI within the main repository is linked to a <em>GitHub Issue</em> of the <em>communication</em>
-repository but no <em>Bug</em> WI shall be created in the <em>child project</em> repository.</p>
+<p>All <em>child projects</em> are only allowed to have their separate list of issues. All other WP types
+shall not be available for them. The planning WPs of the main <em>S-CORE</em> repository therefore are used
+to link WPs to <em>GitHub issues</em> of <em>child projects</em>.
+For example a <em>Bug</em> WP within the main repository is linked to a <em>GitHub Issue</em> of the <em>communication</em>
+repository but no <em>Bug</em> WP shall be created in the <em>child project</em> repository.</p>
 <a class="reference internal image-reference" href="../_images/issue_types.png"><img alt="Issue types overview" class="align-center" src="../_images/issue_types.png" style="width: 600px;" />
 </a>
 <ul class="simple">
 <li><p>A <em>Task</em> <em>GitHub Issue</em> represents the smallest unit of planning and typically corresponds
-to a concrete piece of work to be completed, such as by a developer. <em>Task</em> work items are usually
-grouped under a <em>Story</em> work item.
+to a concrete piece of work to be completed, such as by a developer. <em>Task</em> work packages are usually
+grouped under a <em>Story</em> work package.
 In certain cases, a <em>Task</em> may exist as a standalone <em>GitHub Issue</em>.
-However, standalone <em>Task</em> work items must not be grouped using labels.
-If multiple <em>Task</em> work items are related, a <em>Story</em> work item should be created instead,
-with all associated <em>Task</em> work items added as child items under that <em>Story</em>.</p></li>
-<li><p>A <em>Story</em> <em>GitHub Issue</em> is the primary planning work item for development teams.
-<em>Story</em> work items should be scoped in a way that allows them to be completed within
+However, standalone <em>Task</em> work packages must not be grouped using labels.
+If multiple <em>Task</em> work packages are related, a <em>Story</em> work package should be created instead,
+with all associated <em>Task</em> work packages added as child work packages under that <em>Story</em>.</p></li>
+<li><p>A <em>Story</em> <em>GitHub Issue</em> is the primary planning work package for development teams.
+<em>Story</em> work packages should be scoped in a way that allows them to be completed within
 the defined <em>Iteration</em> length (e.g., 2, 3, or 4 weeks) of the S-CORE project.
-While a <em>Story</em> work item can be implemented by multiple team members, it is recommended
+While a <em>Story</em> work package can be implemented by multiple team members, it is recommended
 that one developer takes main responsibility for its completion. Quality assurance activities,
 such as code reviews, should be performed by other team members.
-<em>Story</em> work items are typically grouped under an <em>Epic</em> work item.
-However, a <em>Story</em> work item can also exist as a standalone work item if its outcome represents
-a complete functional improvement, making a related <em>Epic</em> work item unnecessary.</p></li>
+<em>Story</em> work packages are typically grouped under an <em>Epic</em> work package.
+However, a <em>Story</em> work package can also exist as a standalone work package if its outcome represents
+a complete functional improvement, making a related <em>Epic</em> work package unnecessary.</p></li>
 <li><p>An <em>Epic</em> <em>GitHub Issue</em> represents a complete, experienceable functional improvement whose
-implementation cannot be completed within a single Iteration. Therefore, <em>Epic</em> work items
-consist of multiple <em>Story</em> work items that collectively contribute to fulfilling the scope
-of the <em>Epic</em> work item.
-An <em>Epic</em> work item should be linked as a child to a <em>Milestone</em> work item to indicate
-when the content of the <em>Epic</em> work item is expected to be delivered.
-<em>Epic</em> work items can also exist as standalone work items without being linked as a child
-to any <em>Milestone</em> work item but <em>Milestone</em> work items should be the only method used
-to group multiple <em>Epic</em> work items together.</p></li>
-<li><p>A <em>Milestone</em> <em>GitHub Issue</em> represents the highest level in the work item hierarchy and
-cannot be linked as a child of another issue. If you need to group multiple <em>Milestone</em> work items,
+implementation cannot be completed within a single Iteration. Therefore, <em>Epic</em> work packages
+consist of multiple <em>Story</em> work packages that collectively contribute to fulfilling the scope
+of the <em>Epic</em> work package.
+An <em>Epic</em> work package should be linked as a child to a <em>Milestone</em> work package to indicate
+when the content of the <em>Epic</em> work package is expected to be delivered.
+<em>Epic</em> work packages can also exist as standalone work packages without being linked as a child
+to any <em>Milestone</em> work package but <em>Milestone</em> work packages should be the only method used
+to group multiple <em>Epic</em> work packages together.</p></li>
+<li><p>A <em>Milestone</em> <em>GitHub Issue</em> represents the highest level in the work package hierarchy and
+cannot be linked as a child of another issue. If you need to group multiple <em>Milestone</em> work packages,
 this must be done using labels.
-A <em>Milestone</em> work item can have multiple <em>Epic</em> work items as child work items.
-In exceptional cases, a <em>Story</em> work item may also be linked as a child of a <em>Milestone</em> work item
+A <em>Milestone</em> work package can have multiple <em>Epic</em> work packages as child work packages.
+In exceptional cases, a <em>Story</em> work package may also be linked as a child of a <em>Milestone</em> work package
 if its outcome represents a complete functional improvement.</p></li>
-<li><p>A <em>Feature Request</em> <em>GitHub Issues</em> represents an independent work item used to describe and
+<li><p>A <em>Feature Request</em> <em>GitHub Issues</em> represents an independent work package used to describe and
 track a high-level request for the project. Its content serves as input for the creation of
-<em>Epic</em>, <em>Story</em> and <em>Milestone</em> work items. <em>Feature Request</em> work items can be linked to
-other work items, but they must not be treated as parent work items.</p></li>
+<em>Epic</em>, <em>Story</em> and <em>Milestone</em> work packages. <em>Feature Request</em> work packages can be linked to
+other work packages, but they must not be treated as parent work packages.</p></li>
 <li><p>A <em>Bug</em> <em>GitHub Issue</em> is used to report any kind of problem or malfunction. It is considered
-a special type of <em>Story</em> work item and follows the same rules as regular <em>Story</em> work items,
+a special type of <em>Story</em> work package and follows the same rules as regular <em>Story</em> work packages,
 with the key difference that it focuses on fixing defects in existing functionality
 rather than creating or extending functionality.
-A <em>Bug</em> work item can be handled as a standalone work item or linked as a child to an <em>Epic</em> work item.</p></li>
+A <em>Bug</em> work package can be handled as a standalone work package or linked as a child to an <em>Epic</em> work package.</p></li>
 </ul>
 <p>Main <em>S-CORE</em> project defines templates for every type of <em>GitHub Issues</em>
 to ensure, that every ticket has all necessary information.</p>
@@ -817,36 +817,38 @@ That allows better structuring of the project and helps to keep <em>GitHub Issue
 are related to the same topic, together.</p>
 <a class="reference internal image-reference" href="../_images/sub_issues.png"><img alt="Sub issues overview" class="align-center" src="../_images/sub_issues.png" style="width: 600px;" />
 </a>
-<section id="status-of-work-items">
-<h4>Status of Work Items<a class="headerlink" href="#status-of-work-items" title="Link to this heading">#</a></h4>
+<section id="status-of-work-packages">
+<h4>Status of Work Packages<a class="headerlink" href="#status-of-work-packages" title="Link to this heading">#</a></h4>
 <ul>
 <li><p><strong>New</strong></p>
-<p>The <em>New</em> status represents a newly created work item that has not yet been processed
+<p>The <em>New</em> status represents a newly created work package that has not yet been processed
 for further evaluation. However, the content may be continuously updated by the author.</p>
 </li>
 <li><p><strong>Analyze</strong></p>
-<p>The <em>Analyze</em> status indicates that evaluation activities are underway regarding the work item.
+<p>The <em>Analyze</em> status indicates that evaluation activities are underway regarding the work package.
 At this stage, no output is produced in a repository, but clarification of the content may be
 in progress. Relevant teams might be estimating the effort, assessing feasibility, or
 identifying potential risks. This status is primarily used during the planning phase before
-the item becomes part of committed work.</p>
+the work package becomes part of committed work.</p>
 </li>
 <li><p><strong>In Progress</strong></p>
-<p>The <em>In Progress</em> status is used when a person or team is actively working on the item,
-producing commits and pull requests related to its content. Parent work items should also
-be set to <em>In Progress</em> if any of their child work items are in this status.</p>
+<p>The <em>In Progress</em> status is used when a person or team is actively working on the work package,
+producing commits and pull requests related to its content. Parent work packages should also
+be set to <em>In Progress</em> if any of their child work packages are in this status.</p>
 </li>
 <li><p><strong>Blocked</strong></p>
-<p>The <em>Blocked</em> status indicates that an issue is preventing the work item from progressing.
-Blocked items require special attention, as they may impact entire milestone work items or
+<p>The <em>Blocked</em> status indicates that an issue is preventing the work package from progressing.
+Blocked packages require special attention, as they may impact entire milestone work packages or
 even release deliveries.</p>
 </li>
 <li><p><strong>Done</strong></p>
-<p>The <em>Done</em> status is set when a work item is completed. If the item type is bound to a
+<p>The <em>Done</em> status is set when a work package is completed. If the work package type is bound to a
 specific Definition of Done (DoD), fulfillment of this DoD is an additional requirement
-for marking the item as <em>Done</em>.</p>
+for marking the work package as <em>Done</em>.</p>
 </li>
 </ul>
+<p class="plantuml">
+<object data="../_images/plantuml-1d9fbf76dd672510f344c6be36c19cdb0fb5d1f2.svg" type="image/svg+xml" style="width:469px;height:422px;background:#FFFFFF;"></object></p>
 </section>
 <section id="traceability">
 <h4>Traceability<a class="headerlink" href="#traceability" title="Link to this heading">#</a></h4>
@@ -1016,8 +1018,8 @@ is changed from “experimental” to “official”.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#labels">Labels</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-work-items-and-structure">Types of work items and structure</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#status-of-work-items">Status of Work Items</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-work-packages-and-structure">Types of work packages and structure</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#status-of-work-packages">Status of Work Packages</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#traceability">Traceability</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#github-projects">GitHub Projects</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#releases-and-milestones">Releases and milestones</a></li>
