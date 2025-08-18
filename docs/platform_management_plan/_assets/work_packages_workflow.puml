@@ -1,36 +1,37 @@
-@startuml Work Package Workflow
+@startuml
+title State Diagram: Work Package Workflow
 
-    (*top) -->"New"
+(*) --> "New"
 
-    ' New State
-    "New" --> "Analyze"
-    "New" --> "Blocked"
-    "New" --> "Done"
-        note left
-          in case work packages is obsolete
-        end note
+' New State
+"New" --> "Analyze"
+"New" --> "Blocked"
+"New" --> "Done"
+    note left
+        in case work package is obsolete
+    end note
 
-    ' Analyze State
-    "Analyze" --> "In Progress"
-    "Analyze" --> "Blocked"
-    "Analyze" --> "Done"
+' Analyze State
+"Analyze" --> "In Progress"
+"Analyze" --> "Blocked"
+"Analyze" --> "Done"
 
-    ' In Progress State
-    "In Progress" --> "Analyze"
-        note left
-          in case new information
-          forces the work package to
-          be re-evaluated
-        end note
-    "In Progress" --> "Blocked"
-    "In Progress" --> "Done"
+' In Progress State
+"In Progress" --> "Analyze"
+    note left
+        in case new information
+        forces the work package to
+        be re-evaluated
+    end note
+"In Progress" --> "Blocked"
+"In Progress" --> "Done"
 
-    ' Blocked State
-    "Blocked" --> "Analyze"
-    "Blocked" --> "In Progress"
+' Blocked State
+"Blocked" --> "Analyze"
+"Blocked" --> "In Progress"
 
-    ' Done State
-    "Done" --> "Analyze"
-    "Done" --> (*)
+' Done State
+"Done" --> "Analyze"
+"Done" --> (*)
 
 @enduml

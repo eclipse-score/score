@@ -335,8 +335,6 @@ Status of Work Packages
   for marking the work package as *Done*.
 
 .. uml:: _assets/work_packages_workflow.puml
-    :alt: Example Diagram
-
 
 Traceability
 ^^^^^^^^^^^^
