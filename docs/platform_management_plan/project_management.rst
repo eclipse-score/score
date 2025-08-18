@@ -334,7 +334,7 @@ Status of Work Packages
   specific Definition of Done (DoD), fulfillment of this DoD is an additional requirement
   for marking the work package as *Done*.
 
-.. uml:: assets/work_packages_workflow.puml
+.. uml:: _assets/work_packages_workflow.puml
     :alt: Example Diagram
 
 
