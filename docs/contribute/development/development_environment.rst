@@ -49,9 +49,6 @@ This approach simplifies the setup process and ensures a consistent development 
 
 **No** manual setup needs to be done when using the devcontainer.
 
-.. note::
-    If you are using Docker on Windows **without WSL2** in between, you have to select the alternative container `eclipse-s-core-docker-on-windows`.
-
 Manual Setup
 ============
 
