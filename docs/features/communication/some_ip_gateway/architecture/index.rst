@@ -17,10 +17,6 @@
 SOME/IP Gateway Architecture
 ############################
 
-.. note::
-   For now we store the component architecture in the feature tree, because multi-repo docs are not yet supported.
-   Once this support becomes available the component architecture will be moved to the module.
-
 .. toctree::
    :titlesonly:
 
@@ -61,7 +57,7 @@ It is preferred to avoid such additional IPC.
 
 E2E Considerations
 ==================
-To cope with SOME/IP stack just beeing QM, we need to prepare for end-to-end protection. The goal shall be to
+To cope with SOME/IP stack just being QM, we need to prepare for end-to-end protection. The goal shall be to
 do the E2E protection/check **as centrally as possible** in the gateway. Unfortunately, the centralized end-to-end
 check cannot be done for all relevant E2E properties. The following table proposes where the corresponding E2E properties shall
 checked.
@@ -98,18 +94,18 @@ checked.
 E2E Design and Interface Considerations
 ---------------------------------------
 As mentioned above, not all E2E checks can be kept hidden within the gateway. For some problems it is up to the application to decide
-whether it is still valuable to access and process the data. This is in particular true for duplication or re-odering issues.
+whether it is still valuable to access and process the data. This is in particular true for duplication or re-ordering issues.
 Therefore, it is required to pass a **tupel** consisting of the **payload data** as well as **supplementary E2E metadata and error information**
 to the IPC clients to enable the client to individually judge on particular E2E issues.
 
 * The API design needs to put the payload information as well as the additional E2E metadata as close as possible together to easily enable and motivate clients to consequently check for potential errors.
 * Additional metadata and error information needs to be incorporated into regular mw::com user interface
-* Error related interface design needs to be highly optimezed for the "good case" to have an optimized support for the common IPC case
-* AoU's need to be provided to force the user to check for the (E2E-) result
+* Error related interface design needs to be highly optimized for the "good case" to have an optimized support for the common IPC case
+* Assumptions of Use need to be provided to force the user to check for the (E2E-) result
 * Additional E2E metadata to be handed over to the clients:
 
   * Counter, slightly different interpretation depending on profile, n/a in case the profile doesn't support it
-  * Data ID, n/a in case the profile does not support it or if the Data ID is not explicitely transmitted like in profile 22
+  * Data ID, n/a in case the profile does not support it or if the Data ID is not explicitly transmitted like in profile 22
   * Profile identification, required to properly interpret E2E attributes like "Counter". (Could be either an "Alive Counter" or a "Sequence Counter" depending on the profile)
   * Detailed, profile specific error code (enum)
 
@@ -117,12 +113,16 @@ to the IPC clients to enable the client to individually judge on particular E2E 
 
   * No E2E error
   * CRC Error
-  * Sequence error (further subqualification in loss, duplication, reordering is up to the client based on the counter)
+  * Sequence error (further sub-qualification in loss, duplication, reordering is up to the client based on the counter)
+
+.. note::
+   CRC Errors might cause problems with corrupted service / instance IDs, as such messages might not get forwarded to the correct recipient.
+   This requires further discussion during implementation phase.
 
 .. note::
    The proposed error enumeration is an abstraction. Deriving detailed errors
    based on the E2E metadata is task of the client.
-   For reference, this is the error enumeration of the Autosar specification (R24-11):
+   For reference, this is the error enumeration of the AUTOSAR specification (R24-11):
 
    * OK
    * ERROR
@@ -140,15 +140,17 @@ about the overall health and state of a communication channel. Unlike individual
 which assess data validity for a single communication cycle, the state machine aggregates results from multiple Check()
 function invocations over a period. This allows it to determine a more holistic and debounced status of the communication.
 
-Purpose of the E2E State Machine:
+Purpose of the E2E State Machine
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The primary purpose of the E2E state machine is to transform instantaneous "per-cycle" check results into a stable,
 long-term communication channel status. This aggregated status is then provided to the consuming application,
 enabling it to make informed decisions about whether the received data can be trusted and used for safety-related functions.
 
-As mentioned above, the E2E statemachine is associated to one communication channel which is in turn associated to exactly one
-individual IPC client. Therefore it is an obvious consequence, that the individiual state machine handling and state machine
+As mentioned above, the E2E state-machine is associated to one communication channel which is in turn associated to exactly one
+individual IPC client. Therefore it is an obvious consequence, that the individual state machine handling and state machine
 configuration is responsibility of the client and not a central responsibility of the gateway.
-The diagram below outlines this distribution of responsibilties.
+Even for the same service different clients may use different state machine configuration.
+The diagram below outlines this distribution of responsibilities.
 
 *Diagram: E2E state machine responsibility associated to IPC client*
 
@@ -159,8 +161,7 @@ The diagram below outlines this distribution of responsibilties.
    E2E state machine responsibility associated to IPC client
 
 **Considered Alternative**
-
-If we allocate the statemachine responsibility to the gateway the distribution of resposnibilities would look like in the following diagram
+If we allocate the state-machine responsibility to the gateway the distribution of responsibilities would look like in the following diagram
 
 *Diagram: E2E state machine responsibility associated to the gateway*
 
@@ -170,8 +171,8 @@ If we allocate the statemachine responsibility to the gateway the distribution o
 
    E2E state machine responsibility associated to the gateway
 
-Due to pub/sub nature of mw::com, clients listening on the same topic can not be separately addressed. Therefore, **the state machine results
-can not be selectively distributed according to the particular communication channel they belong to**.
+Due to pub/sub nature of mw::com, clients listening on the same topic cannot be separately addressed. Therefore, **the state machine results
+cannot be selectively distributed according to the particular communication channel they belong to**.
 
 **=> Alternative dismissed**
 

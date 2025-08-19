@@ -19,50 +19,59 @@ SOME/IP Gateway Requirements
 Functional Requirements
 =======================
 
-
-
-Security Impact
-===============
-
-.. feat_req:: SOME/IP Gateway Secure Communication
-   :id: feat_req__some_ip_gateway__secure_com
+.. feat_req:: Plug-In-IFC for SOME/IP protocol stacks
+   :id: feat_req__some_ip_gateway__stack_plugin_ifc
    :reqtype: Functional
-   :security: YES
+   :security: NO
    :safety: QM
-   :satisfies: stkh_req__communication__secure
+   :satisfies: stkh_req__communication__extensible_external, stkh_req__communication__supported_net
    :status: valid
 
-   The platform shall support secure communication.
+   The SOME/IP Gateway shall support an interface to plug-in a SOME/IP stack implementation.
 
-.. feat_req:: SOME/IP Gateway Access Control
-   :id: feat_req__some_ip_gateway__access_control
+.. feat_req:: Plug-In-IFC for End-to-End protection modules
+   :id: feat_req__some_ip_gateway__e2e_plugin_ifc
    :reqtype: Functional
-   :security: YES
-   :safety: QM
-   :satisfies: stkh_req__dependability__security_features
-   :status: valid
-
-   The SOME/IP Gateway shall support access control to restrict access to the gateway services.
-
-Safety Impact
-=============
-
-.. feat_req:: SOME/IP Gateway ASIL level
-   :id: feat_req__some_ip_gateway__asil
-   :reqtype: Functional
-   :security: YES
+   :security: NO
    :safety: ASIL_B
    :satisfies: stkh_req__communication__safe
    :status: valid
 
-   The SOME/IP Gateway shall support safe communication up to ASIL-B.
+   The SOME/IP Gateway shall support an interface to plug-in a E2E protection service implementation.
 
-.. feat_req:: SOME/IP Gateway QM network stack
-   :id: feat_req__some_ip_gateway__network_stack
+.. feat_req:: Compatibility with AUTOSAR SOME/IP Protocol Specification
+   :id: feat_req__some_ip_gateway__someip_protocol
    :reqtype: Functional
-   :security: YES
+   :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__communication__safe
+   :satisfies: stkh_req__communication__supported_net
    :status: valid
 
-   If SOME/IP network stacks are available as QM only.
+   The SOME/IP protocol implementation shall be fully compatible and complying with the SOME/IP protocol specification from AUTOSAR Adaptive Version 24-11.
+   - `AUTOSAR_FO_PRS_SOMEIPProtocol <https://www.autosar.org/fileadmin/standards/R24-11/FO/AUTOSAR_FO_PRS_SOMEIPProtocol.pdf>`_
+   - `AUTOSAR_FO_RS_SOMEIPProtocol <https://www.autosar.org/fileadmin/standards/R24-11/FO/AUTOSAR_FO_RS_SOMEIPProtocol.pdf>`_
+
+.. feat_req:: Compatibility with AUTOSAR E2E Protocol Specification
+   :id: feat_req__some_ip_gateway__e2e_specs
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :satisfies: stkh_req__communication__supported_net
+   :status: valid
+
+   The E2E protection implementation shall be fully compatible and complying with the E2E protocol specification from AUTOSAR Adaptive Version 24-11.
+   - `AUTOSAR_FO_PRS_E2EProtocol <https://www.autosar.org/fileadmin/standards/R24-11/FO/AUTOSAR_FO_PRS_E2EProtocol.pdf>`_
+   - `AUTOSAR_FO_RS_E2E <https://www.autosar.org/fileadmin/standards/R24-11/FO/AUTOSAR_FO_RS_E2E.pdf>`_
+
+
+.. feat_req:: Compatibility with AUTOSAR SOME/IP Service Discovery Protocol Specification
+   :id: feat_req__some_ip_gateway__someip_sd_protocol
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :satisfies: stkh_req__communication__supported_net
+   :status: valid
+
+   The Service Discovery implementation shall be fully compatible and complying with the SOME/IP service discovery specification from AUTOSAR Adaptive Version 24-11.
+   - `AUTOSAR_FO_PRS_SOMEIPServiceDiscoveryProtocol <https://www.autosar.org/fileadmin/standards/R24-11/FO/AUTOSAR_FO_PRS_SOMEIPServiceDiscoveryProtocol.pdf>`_
+   - `AUTOSAR_FO_RS_SOMEIPServiceDiscoveryProtocol <https://www.autosar.org/fileadmin/standards/R24-11/FO/AUTOSAR_FO_RS_SOMEIPServiceDiscoveryProtocol.pdf>`_

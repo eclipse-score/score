@@ -14,17 +14,18 @@
 
 .. _some_ip_gateway_service_discovery:
 
-SOME/IP-Gateway Service Discovery
+SOME/IP Gateway Service Discovery
 #################################
 
+The implementation shall be fully compatible and complying with the SOME/IP Service Discovery Protocol specification from AUTOSAR Adaptive.
 Service discovery deals with discovery and connection setup of services.
 The basic summary of service discovery is as follows:
 
 - provided / required services (including their service elements like events, methods, and fields) must be configured
 - (locally) provided services are discovered (locally) via IPC and then offered on the network by sending a SOME/IP-SD message with an OfferService entry according to configuration
-- (locally) required services may trigger the discovery on the network by sending of a SOME/IP-SD message with a FindService entry
+- (locally) required services trigger the discovery on the network by sending of a SOME/IP-SD message with a FindService entry
 - when a SOME/IP-SD message containing a FindService entry is received, the SOME/IP gateway checks this service has been already offered locally via IPC
-- for IPC service discovery the features of lola are used by the SOME/IP gateway
+- the IPC service discovery is used by the SOME/IP gateway and no parallel discovery mechanism is introduced
 
 Configuration
 =============
@@ -32,6 +33,7 @@ Configuration
 The configuration tells the SOME/IP communication stack which services it should provide and which services it should require on the network.
 The configuration contains SOME/IP and SOME/IP-SD settings as well as IP interface bindings.
 Events, methods and fields are configured as well.
+Only full interfaces of services are forwarded (all events, methods, fields of a service).
 
 The integrator must be able to change configuration at runtime deployment.
 Thus it is likely read from one or multiple files.
@@ -116,7 +118,7 @@ Here, initial reception is the first reception after a previous service loss or 
    This behavior may reduce the time until the service is available for consumers, but may increase boot time.
    Thus the decision is to create the service only after having received an OfferService message from the network.
 
-Upon reception of SOME/IP-SD message containing an StopOfferService entry, the SOME/IP communication stack stops the proxy service offered via IPC as well.
+Upon reception of SOME/IP-SD message containing an StopOfferService entry, the SOME/IP communication stack stops the service offered via IPC as well.
 
 .. uml::
    :alt: Gateway receives StopOfferService from the network
@@ -163,7 +165,7 @@ Only lookup of running services is done.
    end
    @enduml
 
-If an service is configured to be needed and no OfferService has been received yet, the SOME/IP communication stack may send a SOME/IP-SD message containing a FindService entry.
+If a service is configured to be needed and no OfferService has been received yet, the SOME/IP communication stack shall send a SOME/IP-SD message containing a FindService entry.
 
 .. uml::
    :alt: Gateway sends FindService to the network
