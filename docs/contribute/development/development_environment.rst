@@ -151,7 +151,7 @@ IDE Guides
 
 WSL2 Settings
 =============
-If you are using a Linux box running on WSL2, the following minimal settings in your .wslconfig file are recommended:
+If you encounter memory issues on WSL2, the following minimal settings in your .wslconfig file are recommended:
 
 .. code-block:: shell
 
