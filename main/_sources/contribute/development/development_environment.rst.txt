@@ -148,3 +148,13 @@ IDE Guides
 
    ide/vscode
    ide/clion
+
+WSL2 Settings
+=============
+If you encounter memory issues on WSL2, the following minimal settings in your .wslconfig file are recommended:
+
+.. code-block:: shell
+
+   [wsl2]
+   swap=8GB
+   memory=16GB
