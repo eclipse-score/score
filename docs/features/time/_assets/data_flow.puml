@@ -1,0 +1,98 @@
+@startuml
+
+hide footbox
+
+autonumber "<font color=red><b>[00]"
+
+title PTP data flow
+
+legend top left
+| <#LightCoral>  | external ECU/Switch   |
+| <#LightBlue>   | gptp stack            |
+| <#LightGrey>   | hw on ECU             |
+| <#LightGreen>  | mw stack              |
+| <#LightSalmon> | applications          |
+endlegend
+
+!pragma teoz true
+box "ECU" #f0f5f5
+  box "ClientApp" #e6ffe6
+    participant "Business logic" as app #LightSalmon
+    participant "score::time" as mw #LightGreen
+  end box
+  participant "Shared resource (ipc)" as sh #LightGreen
+  box "Time base provider" #LightSteelBlue
+    participant "Business logic" as timed_bs #LightBlue
+    participant "libgptp" as libgptp #LightBlue
+  end box
+  participant "OS" as os #LightBlue
+  participant "Time Slave" as gptp #LightBlue
+  participant "EMAC(eth)" as emac #LightGrey
+end box
+participant "TimeMaster" as ptp #LightCoral
+
+==Setup and Initialization==
+timed_bs -> sh : create()
+app -> mw: init()
+note right
+  Create and initialize
+  score::time
+end note
+mw -> sh: init()
+mw --> app : timebase ptr*
+
+==PTP synchronization==
+loop every 125ms
+  ptp <--> gptp : Performing ptp\ncommunication
+  gptp -> gptp : Calculation GM time\nas per ptp protocol
+  gptp -> emac : Set synchronized time\nbased on ptp
+end loop
+
+==Main Loop / Runtime==
+loop every 50ms
+  timed_bs -> libgptp : Read current synchronized ptp time
+  libgptp -> gptp : Use `devctl` to obtain\ncurrent time
+  note left
+    switch to kernel space and involve resource manager
+  end note
+  gptp -> emac : Read time from\nEMAC register
+  gptp -> os : get current system (local) time
+  os --> gptp : Read local clock(TL0)
+  emac --> gptp: Synchronized ptp time 'Tptp0'
+  gptp --> libgptp : Current synchronized ptp time 'Tptp0' and 'TL0'
+  note left
+    switch to user space
+  end note
+  libgptp --> timed_bs : Current synchronized ptp time 'Tptp0' and 'TL0'
+  timed_bs -> os : get current system (local) time
+  os --> timed_bs : current time (TL1)
+  timed_bs -> timed_bs : Validate ptp time and set status flags
+  note left
+    Validation of ptp time using local clock ('TL2'):
+    1. Inaccuracy detection
+    2. loosing data frames detection
+    3. verification for monotonicity
+  end note
+  timed_bs -> sh : Write data
+  note left
+    Store to shared resource received data
+    1. last ptp time 'Tptp0'
+    2. local clock 'TL0', when ptp was read and
+    3. status flags
+  end note
+
+end loop
+
+==Client use-case==
+app -> mw : Call ::Now() to read time status
+mw -> sh : Read data
+sh --> mw
+mw -> os : get current system (local) time
+os --> mw : Current time (TL2)
+mw -> mw : Adjust ptp time, with local clock
+note right
+  current_ptp_time = Tptp0 + (Tl2 - TL0)
+end note
+mw --> app : Adjusted ptp time and it's status
+
+@enduml
