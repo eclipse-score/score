@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -175,7 +175,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../modules/index.html">
-    Module
+    Modules
   </a>
 </li>
 
@@ -197,6 +197,13 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../score_releases/index.html">
     Releases
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../score_tools/index.html">
+    Tools
   </a>
 </li>
 
@@ -349,7 +356,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../modules/index.html">
-    Module
+    Modules
   </a>
 </li>
 
@@ -364,6 +371,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../score_releases/index.html">
     Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../score_tools/index.html">
+    Tools
   </a>
 </li>
 
@@ -454,6 +468,7 @@
 <li class="toctree-l3"><a class="reference internal" href="ide/clion.html">CLion</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="api_guideline.html">Designing API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpp/index.html">C++</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rust/index.html">Rust</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python/index.html">Python</a></li>
@@ -523,7 +538,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-2d94dd54">
+  <div class="need_container docutils container" id="SNCB-a2ac31b6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__develop_environment">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -543,10 +558,10 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_realizes"><span class="needs_label">realizes: </span><span class="needs_data">PROCESS_wp__sw_development_plan</span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 </span></span></div>
-<div class="line"><span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/implementation_workproducts.html#wp__sw_development_plan">PROCESS_wp__sw_development_plan</a></span></span></div>
+</span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
@@ -591,8 +606,7 @@ Reopen in Container”.</p></li>
 </li>
 </ol>
 <p>This approach simplifies the setup process and ensures a consistent development environment.</p>
-<p>Note: buildifier and autocompletion are not yet provided via the devcontainer or via bazel, so you
-will need to set them up manually. See below.</p>
+<p><strong>No</strong> manual setup needs to be done when using the devcontainer.</p>
 </section>
 <section id="manual-setup">
 <h2>Manual Setup<a class="headerlink" href="#manual-setup" title="Link to this heading">#</a></h2>
@@ -606,7 +620,7 @@ will need to set them up manually. See below.</p>
 <li><p>Python 3.x</p></li>
 <li><p>Graphviz/Dot (for generating diagrams)</p></li>
 </ul>
-<p>Check <a class="reference external" href="https://github.com/eclipse-score/score/blob/main/.devcontainer/Dockerfile">Dockerfile</a> for
+<p>Check <a class="reference external" href="https://github.com/eclipse-score/devcontainer/tree/main/src/s-core-devcontainer/.devcontainer">Dockerfile</a> for
 an accurate list and exemplary instructions.</p>
 </li>
 <li><p>Clone the score repository to your hard drive.</p></li>
@@ -688,6 +702,15 @@ To install it on a Linux system using apt, execute the following command:</p>
 </div>
 </section>
 </section>
+<section id="wsl2-settings">
+<h2>WSL2 Settings<a class="headerlink" href="#wsl2-settings" title="Link to this heading">#</a></h2>
+<p>If you encounter memory issues on WSL2, the following minimal settings in your .wslconfig file are recommended:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>wsl2<span class="o">]</span>
+<span class="nv">swap</span><span class="o">=</span>8GB
+<span class="nv">memory</span><span class="o">=</span>16GB
+</pre></div>
+</div>
+</section>
 </section>
 
 
@@ -750,6 +773,7 @@ To install it on a Linux system using apt, execute the following command:</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ide-guides">IDE Guides</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wsl2-settings">WSL2 Settings</a></li>
 </ul>
   </nav></div>
 

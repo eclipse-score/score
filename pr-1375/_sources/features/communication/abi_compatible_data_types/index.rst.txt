@@ -21,7 +21,6 @@ ABI Compatible Data Types
    :id: doc__abi_compatible_data_types
    :status: valid
    :safety: ASIL_B
-   :realizes: wp__feat_request
    :tags: feature_request, change_management, communication, abi_compatible_data_types
 
 
@@ -42,7 +41,7 @@ To activate this feature, use the following feature flag:
 Abstract
 ========
 
-This feature request defines a set of ABI-compatible data types and a runtime type description format to support zero-copy inter-process communication between C++17 and Rust 1.8x processes using the same endianness. It ensures consistent type layouts across languages by requiring fixed-size, statically allocated types with no pointers or language-specific metadata.
+This feature request defines a set of ABI-compatible data types and a runtime type description format to support zero-copy inter-process communication between C++17 and Rust 1.8x processes using the same endianness. It ensures consistent type layouts across languages by requiring fixed-size, statically allocated types without absolute pointers or language-specific metadata.
 
 The specification covers primitive types, structs, enums, arrays, and introduces ABI-stable representations for vectors, options, and results. A runtime-readable type description enables processes to interpret shared memory without compile-time access to type definitions.
 
@@ -54,7 +53,7 @@ This feature request addresses specific challenges in achieving type compatibili
 
 1. **ABI Compatibility**: Processes implemented in different programming languages (C++17 and Rust 1.8x) must interpret a shared memory location consistently as the same native type, provided both have compile-time access to the type definition. This scenario eliminates serialization overhead and allows direct memory access.
 
-2. **Type Description**: Processes responsible for translating data between internal ABI-compatible formats and external serialization formats should perform this translation without compile-time knowledge of type definitions. This runtime interpretation capability is critical for scalability, ensuring that gateway processes (or similar entities) can dynamically handle new data types without recompilation.
+2. **Type Description**: It should be possible to record arbitrary data streams, and convert or analyze them at a later time and/or on a different system, without having to recompile the conversion or analysis tools for that particular data format. A machine-readable description of the format, including any user-defined data types, should be available on request during runtime. In addition, this description could potentially be used by gateway processes to perform relatively simple but generic transformations between different data representations.
 
 
 ABI Compatibility
@@ -70,7 +69,7 @@ This evaluation initially targets the following process configurations:
 Supporting different endianness between processes is explicitly out of scope, as it inherently demands bit manipulation, effectively requiring serialization.
 Different bit widths, however, are implicitly supported by specifying the width of all types and excluding word-size integers.
 
-The following data types shall be supported by the IPC mechanism:
+The following data types shall be supported:
 
 * **Primitive Types**:
 
@@ -129,7 +128,7 @@ Assumptions
 * Shared memory regions are mapped at correctly aligned virtual addresses in both processes.
 * No serialization or runtime copying occurs when interpreting a type from memory.
 * Processes use the same endianness.
-* No synchronization or atomicity guarantees are defined at the data type level; these are provided by the IPC framework.
+* No synchronization or atomicity guarantees are defined at the data type level; these must be provided by the accessing code.
 * All memory is allocated statically or pre-reserved. Dynamic memory allocation is disallowed.
 
 Type Conformance
@@ -138,8 +137,8 @@ Type Conformance
 Types used in shared memory must meet the following criteria:
 
 1. **Fixed size and alignment**: Every type must have a known, constant size and alignment at compile time.
-2. **Consistent layout across languages**: The layout of a type must be identical in Rust and C++ on the same platform.
-3. **No pointers or references**: Types must not contain pointers to heap memory, function pointers, or references.
+2. **Consistent layout across languages**: The layout of a type must be identical in Rust and C++, and on all platforms.
+3. **No absolute pointers or references**: Types must not contain absolute pointers/function pointers/references or any pointers/references that point out of the transferred data.
 4. **No language-specific metadata**: No vtables, slice headers, or implementation-specific type markers are allowed.
 
 Each type definition must clearly indicate whether it conforms to these rules natively or requires a custom definition to do so.
@@ -162,12 +161,12 @@ These types are ABI-compatible when declared using fixed-size standard types:
    * - Boolean
      - ``bool``
      - ``bool`` (1 byte, with ``0x00`` and ``0x01`` as the only valid bit patterns)
-   * - Integers (N = 8..128)
+   * - Integers (N = 8, 16, 32, 64)
      - ``uN``, ``iN``
      - ``std::uintN_t``, ``std::intN_t``
    * - Floating point
      - ``f32``, ``f64``
-     - ``float``, ``double``
+     - ``float``, ``double`` (compliant with IEEE 754)
 
 All types must avoid trap representations and undefined padding.
 
@@ -193,7 +192,7 @@ Only fieldless enums with a defined underlying integer type are supported. These
 * ``#[repr(u8)]``, ``#[repr(u16)]``, etc. in Rust
 * ``enum class MyEnum : std::uint8_t`` in C++
 
-Enums with payloads (discriminated unions) are not supported.
+*Note:* Enums with payloads ("variants" or "tagged unions") are optionally supported.
 
 Arrays
 """"""
@@ -201,7 +200,7 @@ Arrays
 Fixed-size arrays are naturally ABI-compatible and supported in both languages.
 
 * Rust: ``[T; N]``
-* C++: ``T[N]``
+* C++: wrapper around ``T[N]`` to enforce bounds-checking for element access
 
 Element types must also conform to this specification. No dynamic length information is allowed.
 
@@ -379,7 +378,7 @@ Security Impact
 
    This section does not replace a formal security impact analysis. This only guides the design thoughts behind security related topics and is to be understood as a starting point for later workflows.
 
-No assumed impact on security.
+The memory underlying an ABI compatible type may potentially be corrupted, e.g., because it originates from an untrusted process, or because of a bug in the producer. As a consequence, any pointers, indices, and offsets need to be validated before they're used to access memory, to ensure they don't address any out-of-bounds locations. In addition, care must be taken to avoid TOC/TOU (*time-of-check to time-of-use*) issues, where the producer might maliciously or inadvertently modify a value after the consumer has already validated it.
 
 
 Safety Impact

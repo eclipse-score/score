@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -175,7 +175,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../modules/index.html">
-    Module
+    Modules
   </a>
 </li>
 
@@ -197,6 +197,13 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../../../score_releases/index.html">
     Releases
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../score_tools/index.html">
+    Tools
   </a>
 </li>
 
@@ -349,7 +356,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../modules/index.html">
-    Module
+    Modules
   </a>
 </li>
 
@@ -364,6 +371,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../score_releases/index.html">
     Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../score_tools/index.html">
+    Tools
   </a>
 </li>
 
@@ -445,6 +459,7 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../ai_platform/index.html">AI Platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../analysis-infra/index.html">Analysis Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../baselibs/index.html">Base Libraries</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">Communication</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -452,13 +467,14 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ipc/index.html">Inter-process Communication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../abi_compatible_data_types/index.html">ABI Compatible Data Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../modules/index.html">Modules</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../diagnostics/index.html">Diagnostic and Fault Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../frameworks/index.html">Frameworks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../infrastructure/index.html">Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../integration/index.html">Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../orchestration/index.html">Orchestration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../persistency/index.html">Persistency</a></li>
 </ul>
 </div>
@@ -525,7 +541,7 @@
                   
   <section id="requirements">
 <span id="com-requirements"></span><h1>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-33c52a24">
+<div class="need_container docutils container" id="SNCB-ad7046cd">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__time_based_arch">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -549,7 +565,7 @@
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__time_based_arch">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_time" title="feat_req__com__time_based_arch">stkh_req__app_architectures__support_time</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__time_based_arch">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_time" title="feat_req__com__time_based_arch">stkh_req__app_architectures__support_time</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__time_based_arch">stkh_req__communication__safe</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -571,7 +587,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d0b085f4">
+<div class="need_container docutils container" id="SNCB-dae0a3ae">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__data_driven_arch">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -617,7 +633,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9a23599d">
+<div class="need_container docutils container" id="SNCB-c9d5d4bb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__request_driven_arch">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -663,7 +679,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b54dfd6c">
+<div class="need_container docutils container" id="SNCB-1c60d468">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__interfaces">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -687,7 +703,7 @@
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__interfaces">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_data" title="feat_req__com__interfaces">stkh_req__app_architectures__support_data</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_request" title="feat_req__com__interfaces">stkh_req__app_architectures__support_request</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__interfaces">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_data" title="feat_req__com__interfaces">stkh_req__app_architectures__support_data</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_time" title="feat_req__com__interfaces">stkh_req__app_architectures__support_time</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__interfaces">stkh_req__communication__safe</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_request" title="feat_req__com__interfaces">stkh_req__app_architectures__support_request</a></span></span></div>
 <div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#feat_arc_sta__com__communication" title="feat_req__com__interfaces">feat_arc_sta__com__communication</a>, <a class="reference internal" href="../architecture/index.html#logic_arc_int__communication__user" title="feat_req__com__interfaces">logic_arc_int__communication__user</a></span></span></div>
 </span></div>
 </div>
@@ -716,7 +732,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6c6f7baa">
+<div class="need_container docutils container" id="SNCB-4ff6c49e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__event_type">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -740,7 +756,7 @@
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__event_type">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_data" title="feat_req__com__event_type">stkh_req__app_architectures__support_data</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__event_type">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_time" title="feat_req__com__event_type">stkh_req__app_architectures__support_time</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -769,7 +785,7 @@ Consumers can subscribe to value-changed events of the element or poll unseen, c
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a4c359ff">
+<div class="need_container docutils container" id="SNCB-2f74f1f9">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__method">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -793,7 +809,7 @@ Consumers can subscribe to value-changed events of the element or poll unseen, c
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__method">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_request" title="feat_req__com__method">stkh_req__app_architectures__support_request</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__method">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_request" title="feat_req__com__method">stkh_req__app_architectures__support_request</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__method">stkh_req__communication__safe</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -826,7 +842,7 @@ Consumers can subscribe to value-changed events of the element or poll unseen, c
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6b99b51b">
+<div class="need_container docutils container" id="SNCB-9909cf6f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__signal">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -850,7 +866,7 @@ Consumers can subscribe to value-changed events of the element or poll unseen, c
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__signal">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_time" title="feat_req__com__signal">stkh_req__app_architectures__support_time</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__signal">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_request" title="feat_req__com__signal">stkh_req__app_architectures__support_request</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -886,7 +902,7 @@ The service instance offering the trigger can:</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4e4a1700">
+<div class="need_container docutils container" id="SNCB-3916f56d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__producer_consumer">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -910,7 +926,7 @@ The service instance offering the trigger can:</p>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__producer_consumer">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_time" title="feat_req__com__producer_consumer">stkh_req__app_architectures__support_time</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__producer_consumer">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_time" title="feat_req__com__producer_consumer">stkh_req__app_architectures__support_time</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__producer_consumer">stkh_req__communication__safe</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -932,7 +948,7 @@ The service instance offering the trigger can:</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-728fd62a">
+<div class="need_container docutils container" id="SNCB-912de9f1">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__service_instance">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -956,7 +972,7 @@ The service instance offering the trigger can:</p>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__service_instance">stkh_req__communication__inter_process</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__service_instance">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__service_instance">stkh_req__communication__safe</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -983,7 +999,7 @@ The service instance offering the trigger can:</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-143104d0">
+<div class="need_container docutils container" id="SNCB-8d75fafc">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__service_instance_names">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1007,7 +1023,7 @@ The service instance offering the trigger can:</p>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__service_instance_names">stkh_req__communication__inter_process</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__service_instance_names">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__service_instance_names">stkh_req__communication__safe</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1036,7 +1052,7 @@ discovery.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e456fed7">
+<div class="need_container docutils container" id="SNCB-401123d1">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__versioning">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1060,7 +1076,7 @@ discovery.</p>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__versioning">stkh_req__communication__inter_process</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__versioning">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__versioning">stkh_req__communication__safe</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1091,7 +1107,7 @@ discovery.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-06b15faa">
+<div class="need_container docutils container" id="SNCB-cbdd6089">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__service_location_transparency">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1115,7 +1131,7 @@ discovery.</p>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__service_location_transparency">stkh_req__communication__inter_process</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__service_location_transparency">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__service_location_transparency">stkh_req__communication__safe</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1142,7 +1158,7 @@ discovery.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-2b82bba4">
+<div class="need_container docutils container" id="SNCB-1c9c2786">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__stateless_communication">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1166,7 +1182,7 @@ discovery.</p>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__stateless_communication">stkh_req__communication__inter_process</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__stateless_communication">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__stateless_communication">stkh_req__communication__safe</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1196,7 +1212,7 @@ discovery.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d0e6482a">
+<div class="need_container docutils container" id="SNCB-f5d26bde">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__service_instance_granularity">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1220,7 +1236,7 @@ discovery.</p>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__service_instance_granularity">stkh_req__communication__inter_process</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__service_instance_granularity">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__service_instance_granularity">stkh_req__communication__safe</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1247,7 +1263,7 @@ discovery.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6b2e0b26">
+<div class="need_container docutils container" id="SNCB-a3b570e2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__service_discovery">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1271,13 +1287,13 @@ discovery.</p>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__service_discovery">stkh_req__communication__inter_process</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__service_discovery">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__service_discovery">stkh_req__communication__safe</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The communication framework shall provide service discovery to find available services during runtime.    Service discovery shall consider version compatibility. Service discovery shall be handled implicitly (where possible).</p>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The communication framework shall provide service discovery to find available services during runtime. Service discovery shall consider version compatibility. Service discovery shall be handled implicitly (where possible).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The service discovery may be restricted/impacted by availability of deployment information.</p>
@@ -1300,7 +1316,7 @@ discovery.</p>
 </div>
 <section id="mixed-criticality-safety-systems">
 <h2>Mixed-Criticality safety systems<a class="headerlink" href="#mixed-criticality-safety-systems" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-dd442a37">
+<div class="need_container docutils container" id="SNCB-24fbc445">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__safe_communication">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1324,7 +1340,7 @@ discovery.</p>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__safe_communication">stkh_req__communication__inter_process</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__safe_communication">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__safe_communication">stkh_req__communication__safe</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1347,7 +1363,7 @@ criticality levels.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e6e0639a">
+<div class="need_container docutils container" id="SNCB-af6e775c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__data_corruption">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1371,7 +1387,7 @@ criticality levels.</p></td>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__data_corruption">stkh_req__communication__inter_process</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__data_corruption">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__data_corruption">stkh_req__communication__safe</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1393,7 +1409,7 @@ criticality levels.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a7f6b1ee">
+<div class="need_container docutils container" id="SNCB-531a9ae0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__data_reordering">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1417,7 +1433,7 @@ criticality levels.</p></td>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__data_reordering">stkh_req__communication__inter_process</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__data_reordering">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__data_reordering">stkh_req__communication__safe</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1440,7 +1456,7 @@ criticality.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-74bbca0b">
+<div class="need_container docutils container" id="SNCB-11cbdb83">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__data_repetition">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1464,7 +1480,7 @@ criticality.</p></td>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__data_repetition">stkh_req__communication__inter_process</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__data_repetition">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__data_repetition">stkh_req__communication__safe</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1487,7 +1503,7 @@ higher criticality.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-1e4e03a4">
+<div class="need_container docutils container" id="SNCB-7a0a5029">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__data_loss">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1511,7 +1527,7 @@ higher criticality.</p></td>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__data_loss">stkh_req__communication__inter_process</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__data_loss">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__data_loss">stkh_req__communication__safe</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1537,7 +1553,7 @@ criticality.</p></td>
 </section>
 <section id="performance">
 <h2>Performance<a class="headerlink" href="#performance" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-5622d0ac">
+<div class="need_container docutils container" id="SNCB-57ea5852">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__zero_copy">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1561,7 +1577,7 @@ criticality.</p></td>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__zero_copy">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_data" title="feat_req__com__zero_copy">stkh_req__app_architectures__support_data</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__zero_copy">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_data" title="feat_req__com__zero_copy">stkh_req__app_architectures__support_data</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__app_architectures__support_request" title="feat_req__com__zero_copy">stkh_req__app_architectures__support_request</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1590,7 +1606,7 @@ criticality.</p></td>
 </div>
 <section id="user-friendly-api-for-information-exchange">
 <h3>User friendly API for information exchange<a class="headerlink" href="#user-friendly-api-for-information-exchange" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-0bf11d11">
+<div class="need_container docutils container" id="SNCB-76e8257a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__multi_lang">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1636,7 +1652,7 @@ criticality.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-53c163f2">
+<div class="need_container docutils container" id="SNCB-cf844d3a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__lang_idioms">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1682,7 +1698,7 @@ criticality.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d40d84a0">
+<div class="need_container docutils container" id="SNCB-deca72bc">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__lang_infra">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1738,7 +1754,7 @@ whenever possible and meaningful.</p>
 </section>
 <section id="full-testability-for-the-user-facing-api">
 <h2>Full testability for the user facing API<a class="headerlink" href="#full-testability-for-the-user-facing-api" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-df1929e4">
+<div class="need_container docutils container" id="SNCB-91a2c65b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__testability_mock_api">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1784,7 +1800,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-785c30e0">
+<div class="need_container docutils container" id="SNCB-dae096a3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__testability_fake_binding">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1833,7 +1849,7 @@ whenever possible and meaningful.</p>
 </section>
 <section id="multi-binding-support">
 <h2>Multi-binding support<a class="headerlink" href="#multi-binding-support" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-47a24105">
+<div class="need_container docutils container" id="SNCB-9e1f451d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__multi_binding_support">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1884,7 +1900,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-157ec2c4">
+<div class="need_container docutils container" id="SNCB-8c6431c6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__binding_agnostic_api">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1935,7 +1951,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-891dd71f">
+<div class="need_container docutils container" id="SNCB-db30e3bb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__multi_binding_depl">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1984,7 +2000,7 @@ whenever possible and meaningful.</p>
 </section>
 <section id="dynamic-deployment-at-runtime">
 <h2>Dynamic deployment at runtime<a class="headerlink" href="#dynamic-deployment-at-runtime" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-58512fec">
+<div class="need_container docutils container" id="SNCB-6170ffb8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__depl_config_runtime">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2008,7 +2024,7 @@ whenever possible and meaningful.</p>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__depl_config_runtime">stkh_req__communication__inter_process</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__depl_config_runtime">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__depl_config_runtime">stkh_req__communication__safe</a></span></span></div>
 <div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../../ipc/docs/architecture/index.html#feat_arc_dyn__communication__ipc" title="feat_req__com__depl_config_runtime">feat_arc_dyn__communication__ipc</a></span></span></div>
 </span></div>
 </div>
@@ -2033,7 +2049,7 @@ whenever possible and meaningful.</p>
 </div>
 <section id="tracing">
 <h3>Tracing<a class="headerlink" href="#tracing" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-4cfd1603">
+<div class="need_container docutils container" id="SNCB-47ad8b8f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__tracing">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2057,7 +2073,7 @@ whenever possible and meaningful.</p>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__tracing_of_comm" title="feat_req__com__tracing">stkh_req__dev_experience__tracing_of_comm</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__tracing_of_comm" title="feat_req__com__tracing">stkh_req__dev_experience__tracing_of_comm</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__tracing">stkh_req__communication__safe</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -2083,7 +2099,7 @@ communication.</p></td>
 </section>
 <section id="security-impact">
 <h3>Security Impact<a class="headerlink" href="#security-impact" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-0e03eecd">
+<div class="need_container docutils container" id="SNCB-195bd749">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__acl_placement">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2107,7 +2123,7 @@ communication.</p></td>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__acl_placement">stkh_req__communication__inter_process</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__acl_placement">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__com__acl_placement">stkh_req__dependability__security_features</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -2129,7 +2145,7 @@ communication.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-0bc81716">
+<div class="need_container docutils container" id="SNCB-891eebe4">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__acl_per_service_instance">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2153,7 +2169,7 @@ communication.</p></td>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__acl_per_service_instance">stkh_req__communication__inter_process</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__acl_per_service_instance">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__com__acl_per_service_instance">stkh_req__dependability__security_features</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -2175,7 +2191,7 @@ communication.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-fc8dccff">
+<div class="need_container docutils container" id="SNCB-a1fac18b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__acl_for_producer">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2199,7 +2215,7 @@ communication.</p></td>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__acl_for_producer">stkh_req__communication__inter_process</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__acl_for_producer">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__com__acl_for_producer">stkh_req__dependability__security_features</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -2223,7 +2239,7 @@ An entry in the ACL corresponds to an allowed consumer.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-11c414f5">
+<div class="need_container docutils container" id="SNCB-879bf7a4">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__acl_for_consumer">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2247,7 +2263,7 @@ An entry in the ACL corresponds to an allowed consumer.</p></td>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__acl_for_consumer">stkh_req__communication__inter_process</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__acl_for_consumer">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="feat_req__com__acl_for_consumer">stkh_req__dependability__security_features</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -2274,7 +2290,7 @@ An entry in the ACL corresponds to an allowed producer.</p></td>
 </section>
 <section id="safety-impact">
 <h3>Safety Impact<a class="headerlink" href="#safety-impact" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-30351f8d">
+<div class="need_container docutils container" id="SNCB-c0c76e55">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__com__asil">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2298,7 +2314,7 @@ An entry in the ACL corresponds to an allowed producer.</p></td>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__asil">stkh_req__communication__inter_process</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__inter_process" title="feat_req__com__asil">stkh_req__communication__inter_process</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__communication__safe" title="feat_req__com__asil">stkh_req__communication__safe</a></span></span></div>
 </span></div>
 </div>
 </td>

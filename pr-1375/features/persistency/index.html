@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -73,7 +73,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Key-Value-Storage" href="kvs/index.html" />
-    <link rel="prev" title="Integration" href="../integration/index.html" />
+    <link rel="prev" title="Requirements" href="../orchestration/requirements.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
@@ -175,7 +175,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../modules/index.html">
-    Module
+    Modules
   </a>
 </li>
 
@@ -197,6 +197,13 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../score_releases/index.html">
     Releases
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../score_tools/index.html">
+    Tools
   </a>
 </li>
 
@@ -349,7 +356,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../modules/index.html">
-    Module
+    Modules
   </a>
 </li>
 
@@ -364,6 +371,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../score_releases/index.html">
     Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../score_tools/index.html">
+    Tools
   </a>
 </li>
 
@@ -445,13 +459,16 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ai_platform/index.html">AI Platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../analysis-infra/index.html">Analysis Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../baselibs/index.html">Base Libraries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../communication/index.html">Communication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diagnostics/index.html">Diagnostic and Fault Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../frameworks/index.html">Frameworks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../infrastructure/index.html">Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../integration/index.html">Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../orchestration/index.html">Orchestration</a></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Persistency</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="kvs/index.html">Key-Value-Storage</a></li>
 </ul>
@@ -523,6 +540,18 @@
 <li class="toctree-l1"><a class="reference internal" href="kvs/index.html">Key-Value-Storage</a></li>
 </ul>
 </div>
+<section id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
+<p>Persistency is a critical feature that ensures the long-term storage and
+retrieval of data within the S-CORE. It provides a reliable mechanism for
+preserving information, allowing the application to maintain its state and data
+integrity over time. This feature is essential for enabling the system to
+resume operations seamlessly, even in the event of unexpected shutdowns or
+system failures. By implementing robust persistence mechanisms, the application
+can guarantee the persistence of user-generated content, configuration
+settings, and other vital data, ensuring a consistent and reliable user
+experience.</p>
+</section>
 </section>
 
 
@@ -536,12 +565,12 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../integration/index.html"
+       href="../orchestration/requirements.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Integration</p>
+        <p class="prev-next-title">Requirements</p>
       </div>
     </a>
     <a class="right-next"
@@ -563,6 +592,18 @@
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
 
