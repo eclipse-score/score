@@ -462,6 +462,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../baselibs/index.html">Baselibs Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../communication/index.html">Communication Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../feo/index.html">feo Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lifecycle/index.html">Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../logging/index.html">Logging Module</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../index.html">OS Module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../../docs/index.html">Module Documents</a></li>
@@ -542,7 +543,7 @@
                   
   <section id="libc-component-architecture">
 <h1>libc Component Architecture<a class="headerlink" href="#libc-component-architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-3f49f86b">
+<div class="need_container docutils container" id="SNCB-5abb7231">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__os__libc">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -565,7 +566,7 @@
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">implements: <span class="implements"><span><a class="reference internal" href="#logic_arc_int__os__fcntl" title="comp_arc_sta__os__libc">logic_arc_int__os__fcntl</a>, <a class="reference internal" href="#logic_arc_int__os__stat" title="comp_arc_sta__os__libc">logic_arc_int__os__stat</a>, <a class="reference internal" href="#logic_arc_int__os__mmap" title="comp_arc_sta__os__libc">logic_arc_int__os__mmap</a></span></span></div>
+<div class="line"><span><div class="line">implements: <span class="implements"><span><a class="reference internal" href="#logic_arc_int__os__fcntl" title="comp_arc_sta__os__libc">logic_arc_int__os__fcntl</a>, <a class="reference internal" href="#logic_arc_int__os__stat" title="comp_arc_sta__os__libc">logic_arc_int__os__stat</a>, <a class="reference internal" href="#logic_arc_int__os__mmap" title="comp_arc_sta__os__libc">logic_arc_int__os__mmap</a>, <a class="reference internal" href="../../../message_passing/docs/architecture/index.html#logic_arc_int__os__fork" title="comp_arc_sta__os__libc">logic_arc_int__os__fork</a></span></span></div>
 <div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../docs/index.html#mod_view_sta__os__os" title="comp_arc_sta__os__libc">mod_view_sta__os__os</a></span></span></div>
 </span></div>
 </div>
@@ -573,7 +574,7 @@
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-modules/os/libc/docs/architecture/index-0">
-<object data="../../../../../_images/plantuml-10fa73578991a18f7c4fffc8e7d7b5020d88bd73.svg" type="image/svg+xml" style="width:453px;height:274px;background:#FFFFFF;"></object></p>
+<object data="../../../../../_images/plantuml-49004814ae9bf1a996fb8f99f2991baa00c9a712.svg" type="image/svg+xml" style="width:577px;height:274px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -590,7 +591,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-444ba61f">
+<div class="need_container docutils container" id="SNCB-b2aa8d1a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__os__fcntl">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -640,7 +641,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-8691ebef">
+<div class="need_container docutils container" id="SNCB-644343a1">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__os__open">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -685,7 +686,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d6b24941">
+<div class="need_container docutils container" id="SNCB-369535ec">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__os__fallocate">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -730,7 +731,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f3fb3756">
+<div class="need_container docutils container" id="SNCB-015b42c2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__os__flock">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -775,7 +776,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e7a8029e">
+<div class="need_container docutils container" id="SNCB-3fd413f2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__os__mmap">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -825,7 +826,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b7934372">
+<div class="need_container docutils container" id="SNCB-247ef341">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__os__shm_open">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -870,7 +871,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-135f4a9d">
+<div class="need_container docutils container" id="SNCB-2387c921">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__os__shm_unlink">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -915,7 +916,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-c00ae82d">
+<div class="need_container docutils container" id="SNCB-4f40ff74">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__os__stat">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -964,7 +965,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6dcd8323">
+<div class="need_container docutils container" id="SNCB-48d6c0ab">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__os__fstat">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1009,7 +1010,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-8c259fe8">
+<div class="need_container docutils container" id="SNCB-eebb8188">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__os__mkdir">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1054,7 +1055,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-cffdd6fc">
+<div class="need_container docutils container" id="SNCB-00ffd7d4">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__os__chmod">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1099,7 +1100,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-da6a3ab4">
+<div class="need_container docutils container" id="SNCB-4d8d250d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__os__fchmod">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1144,7 +1145,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-983db928">
+<div class="need_container docutils container" id="SNCB-c2f79c7b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__os__umask">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1189,7 +1190,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6da20e17">
+<div class="need_container docutils container" id="SNCB-b9c392ca">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__os__fcomask">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
