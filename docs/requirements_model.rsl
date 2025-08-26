@@ -56,6 +56,24 @@ tuple StkhReqId {
    item    StkhReq
    separator @
    LinkVersion Integer
+   separator @
+   derived_safety "item@safety" optional ScoreType.Asil
+   separator @
+   derived_version "item@version" optional Integer
+   separator @
+   own_safety "$parent@safety" optional ScoreType.Asil
+}
+
+checks StkhReqId {
+    (
+        if derived_safety == ScoreType.Asil.B then own_safety == ScoreType.Asil.B
+        elsif derived_safety == ScoreType.Asil.D then own_safety == ScoreType.Asil.D or own_safety == ScoreType.Asil.B
+        else own_safety == ScoreType.Asil.QM
+    ),
+        error "A safety StkhReq can only link to a safety FeatReq"
+
+    LinkVersion == derived_version,
+        error "link no match"
 }
 
 type FeatReq extends ScoreRequirement {
@@ -67,6 +85,25 @@ tuple FeatReqId {
    item    FeatReq
    separator @
    LinkVersion Integer
+   separator @
+   derived_safety "item@safety" optional ScoreType.Asil
+   separator @
+   derived_version "item@version" optional Integer
+   separator @
+   own_safety "$parent@safety" optional ScoreType.Asil
+}
+
+checks FeatReqId
+{
+    (
+        if derived_safety == ScoreType.Asil.B then own_safety == ScoreType.Asil.B
+        elsif derived_safety == ScoreType.Asil.D then own_safety == ScoreType.Asil.D or own_safety == ScoreType.Asil.B
+        else own_safety == ScoreType.Asil.QM
+    ),
+        error "A safety StkhReq can only link to a safety FeatReq"
+
+    LinkVersion == derived_version,
+        error "link no match"
 }
 
 type CompReq extends ScoreRequirement {

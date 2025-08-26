@@ -24,3 +24,15 @@ ScoreReq.StkhReq interprocess_communication {
     safety = ScoreType.Asil.B
     version = 1
 }
+
+
+ScoreReq.FeatReq testFeatReq {
+    title = "Interprocess Communication"
+    description = "The platform shall support inter-process communication."
+    status = ScoreType.Status.valid
+    reqtype = ScoreType.Reqtype.functional
+    safety = ScoreType.Asil.B
+    version = 1
+    security = ScoreType.Sec.yes
+    derived_from = [interprocess_communication@1]
+}
