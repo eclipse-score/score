@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -175,7 +175,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../modules/index.html">
-    Module
+    Modules
   </a>
 </li>
 
@@ -197,6 +197,13 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../../../score_releases/index.html">
     Releases
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../score_tools/index.html">
+    Tools
   </a>
 </li>
 
@@ -349,7 +356,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../modules/index.html">
-    Module
+    Modules
   </a>
 </li>
 
@@ -364,6 +371,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../score_releases/index.html">
     Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../score_tools/index.html">
+    Tools
   </a>
 </li>
 
@@ -445,6 +459,7 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../ai_platform/index.html">AI Platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../analysis-infra/index.html">Analysis Infrastructure</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">Base Libraries</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Requirements</a></li>
@@ -452,10 +467,13 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../communication/index.html">Communication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../diagnostics/index.html">Diagnostic and Fault Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../frameworks/index.html">Frameworks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../infrastructure/index.html">Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../integration/index.html">Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lifecycle/index.html">Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../operating-system/index.html">Operating System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../orchestration/index.html">Orchestration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../persistency/index.html">Persistency</a></li>
 </ul>
 </div>
@@ -522,7 +540,7 @@
                   
   <section id="requirements">
 <h1>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-abca4f76">
+<div class="need_container docutils container" id="SNCB-d8f0a1cb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__baselibs__core_utilities">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -547,6 +565,7 @@
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functional_req__base_libraries" title="feat_req__baselibs__core_utilities">stkh_req__functional_req__base_libraries</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../../../modules/baselibs/result/docs/requirements.html#comp_req__result__error_handling" title="feat_req__baselibs__core_utilities">comp_req__result__error_handling</a>, <a class="reference internal" href="../../../../modules/baselibs/result/docs/requirements.html#comp_req__result__domain_error_information" title="feat_req__baselibs__core_utilities">comp_req__result__domain_error_information</a>, <a class="reference internal" href="../../../../modules/baselibs/result/docs/requirements.html#comp_req__result__deterministic_behavior" title="feat_req__baselibs__core_utilities">comp_req__result__deterministic_behavior</a>, <a class="reference internal" href="../../../../modules/baselibs/result/docs/requirements.html#comp_req__result__exception_free_operation" title="feat_req__baselibs__core_utilities">comp_req__result__exception_free_operation</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -568,7 +587,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-3b94ab00">
+<div class="need_container docutils container" id="SNCB-48919fce">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__baselibs__safety">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -592,13 +611,14 @@
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functional_req__base_libraries" title="feat_req__baselibs__safety">stkh_req__functional_req__base_libraries</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functional_req__base_libraries" title="feat_req__baselibs__safety">stkh_req__functional_req__base_libraries</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dependability__automotive_safety" title="feat_req__baselibs__safety">stkh_req__dependability__automotive_safety</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../../../modules/baselibs/json/docs/requirements/index.html#comp_req__json__asil" title="feat_req__baselibs__safety">comp_req__json__asil</a>, <a class="reference internal" href="../../../../modules/baselibs/result/docs/requirements.html#comp_req__result__error_handling" title="feat_req__baselibs__safety">comp_req__result__error_handling</a>, <a class="reference internal" href="../../../../modules/baselibs/result/docs/requirements.html#comp_req__result__domain_error_information" title="feat_req__baselibs__safety">comp_req__result__domain_error_information</a>, <a class="reference internal" href="../../../../modules/baselibs/result/docs/requirements.html#comp_req__result__type_safety" title="feat_req__baselibs__safety">comp_req__result__type_safety</a>, <a class="reference internal" href="../../../../modules/baselibs/result/docs/requirements.html#comp_req__result__std_integration" title="feat_req__baselibs__safety">comp_req__result__std_integration</a>, <a class="reference internal" href="../../../../modules/baselibs/result/docs/requirements.html#comp_req__result__deterministic_behavior" title="feat_req__baselibs__safety">comp_req__result__deterministic_behavior</a>, <a class="reference internal" href="../../../../modules/baselibs/result/docs/requirements.html#comp_req__result__exception_free_operation" title="feat_req__baselibs__safety">comp_req__result__exception_free_operation</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The base libraries shall implement functionality necessary to support safety-relevant platform components up to ASIL-B.</p></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The base libraries shall implement functionality necessary to support safety-relevant platform components up to ASIL-B for selected functionalities.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__baselibs__safety" title="feat_req__baselibs__safety">feat_req__baselibs__safety</a></span></span></div>
@@ -614,7 +634,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5b22b06d">
+<div class="need_container docutils container" id="SNCB-72becbed">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__baselibs__multi_language_apis">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -624,7 +644,7 @@
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
-<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
 <td class="head_right" colspan="2"><div class="needs_head_right line-block">
@@ -635,10 +655,10 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functional_req__base_libraries" title="feat_req__baselibs__multi_language_apis">stkh_req__functional_req__base_libraries</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__prog_languages" title="feat_req__baselibs__multi_language_apis">stkh_req__dev_experience__prog_languages</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functional_req__base_libraries" title="feat_req__baselibs__multi_language_apis">stkh_req__functional_req__base_libraries</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__prog_languages" title="feat_req__baselibs__multi_language_apis">stkh_req__dev_experience__prog_languages</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dependability__automotive_safety" title="feat_req__baselibs__multi_language_apis">stkh_req__dependability__automotive_safety</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -660,7 +680,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-db0ffa1a">
+<div class="need_container docutils container" id="SNCB-7b6db7f6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__baselibs__consistent_apis">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -685,6 +705,7 @@
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functional_req__base_libraries" title="feat_req__baselibs__consistent_apis">stkh_req__functional_req__base_libraries</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__prog_languages" title="feat_req__baselibs__consistent_apis">stkh_req__dev_experience__prog_languages</a>, <a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__overall_goals__reuse_of_app_soft" title="feat_req__baselibs__consistent_apis">stkh_req__overall_goals__reuse_of_app_soft</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../../../modules/baselibs/json/docs/requirements/index.html#comp_req__json__lang_idioms" title="feat_req__baselibs__consistent_apis">comp_req__json__lang_idioms</a>, <a class="reference internal" href="../../../../modules/baselibs/result/docs/requirements.html#comp_req__result__type_safety" title="feat_req__baselibs__consistent_apis">comp_req__result__type_safety</a>, <a class="reference internal" href="../../../../modules/baselibs/result/docs/requirements.html#comp_req__result__std_integration" title="feat_req__baselibs__consistent_apis">comp_req__result__std_integration</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -706,7 +727,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a645596f">
+<div class="need_container docutils container" id="SNCB-79143b5b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__baselibs__maintainable_design">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -752,7 +773,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7845ff89">
+<div class="need_container docutils container" id="SNCB-a557bcd0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__baselibs__security">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -786,6 +807,100 @@
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__baselibs__security" title="feat_req__baselibs__security">feat_req__baselibs__security</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Feature Requirement</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-d9038b9a">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__baselibs__json_library">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">JSON-Library</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
+<div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functional_req__base_libraries" title="feat_req__baselibs__json_library">stkh_req__functional_req__base_libraries</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../../../modules/baselibs/json/docs/requirements/index.html#comp_req__json__validation" title="feat_req__baselibs__json_library">comp_req__json__validation</a>, <a class="reference internal" href="../../../../modules/baselibs/json/docs/requirements/index.html#comp_req__json__deserialization" title="feat_req__baselibs__json_library">comp_req__json__deserialization</a>, <a class="reference internal" href="../../../../modules/baselibs/json/docs/requirements/index.html#comp_req__json__user_format" title="feat_req__baselibs__json_library">comp_req__json__user_format</a>, <a class="reference internal" href="../../../../modules/baselibs/json/docs/requirements/index.html#comp_req__json__lang_idioms" title="feat_req__baselibs__json_library">comp_req__json__lang_idioms</a>, <a class="reference internal" href="../../../../modules/baselibs/json/docs/requirements/index.html#comp_req__json__lang_infra" title="feat_req__baselibs__json_library">comp_req__json__lang_infra</a>, <a class="reference internal" href="../../../../modules/baselibs/json/docs/requirements/index.html#comp_req__json__type_compatibility" title="feat_req__baselibs__json_library">comp_req__json__type_compatibility</a>, <a class="reference internal" href="../../../../modules/baselibs/json/docs/requirements/index.html#comp_req__json__full_testability" title="feat_req__baselibs__json_library">comp_req__json__full_testability</a>, <a class="reference internal" href="../../../../modules/baselibs/json/docs/requirements/index.html#comp_req__json__asil" title="feat_req__baselibs__json_library">comp_req__json__asil</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The base libraries shall provide a JSON-Library with parsing functionality.</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__baselibs__json_library" title="feat_req__baselibs__json_library">feat_req__baselibs__json_library</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Feature Requirement</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-8ae6b981">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__baselibs__result_library">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Exception-Free Development Support</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
+<div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functional_req__base_libraries" title="feat_req__baselibs__result_library">stkh_req__functional_req__base_libraries</a></span></span></div>
+<div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../../../modules/baselibs/result/docs/requirements.html#comp_req__result__error_handling" title="feat_req__baselibs__result_library">comp_req__result__error_handling</a>, <a class="reference internal" href="../../../../modules/baselibs/result/docs/requirements.html#comp_req__result__domain_error_information" title="feat_req__baselibs__result_library">comp_req__result__domain_error_information</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The base libraries shall provide error handling mechanisms that enable development without relying on C++ exceptions.</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__baselibs__result_library" title="feat_req__baselibs__result_library">feat_req__baselibs__result_library</a></span></span></div>
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
