@@ -36,7 +36,7 @@ use_repo(python)
 
 # Additional Python rules provided by aspect, e.g. an improved version of
 # `py_binary`. But more importantly, it provides `py_venv`.
-bazel_dep(name = "aspect_rules_py", version = "1.4.0")
+bazel_dep(name = "aspect_rules_py", version = "1.6.3")
 
 ###############################################################################
 #
@@ -58,44 +58,20 @@ bazel_dep(name = "buildifier_prebuilt", version = "8.2.0.2")
 # Generic linting and formatting rules
 #
 ###############################################################################
-bazel_dep(name = "aspect_rules_lint", version = "1.4.4")
+bazel_dep(name = "aspect_rules_lint", version = "1.5.3")
 
 ###############################################################################
 #
 # Java version
 #
 ###############################################################################
-bazel_dep(name = "rules_java", version = "8.13.0")
+bazel_dep(name = "rules_java", version = "8.15.1")
 
 ###############################################################################
 #
-# Misc. dependency
+# Score custom modules loading
 #
 ###############################################################################
-
-bazel_dep(name = "score_python_basics", version = "0.3.4")
-
-###############################################################################
-#
-# Checker rule for CopyRight checks/fixes
-#
-###############################################################################
-bazel_dep(name = "score_cr_checker", version = "0.3.1")
-
-###############################################################################
-#
-# CLI helper rule for CLI help
-#
-###############################################################################
-bazel_dep(name = "score_cli_helper", version = "0.1.1")
-
-###############################################################################
-#
-# StarPLS LSP server
-#
-###############################################################################
-bazel_dep(name = "score_starpls_lsp", version = "0.1.0")
-# Checker rule for CopyRight checks/fixs
-
-bazel_dep(name = "score_docs_as_code", version = "1.0.2")
-bazel_dep(name = "score_process", version = "1.1.1")
+bazel_dep(name = "score_tooling", version = "1.0.1")
+bazel_dep(name = "score_docs_as_code", version = "1.1.0")
+bazel_dep(name = "score_process", version = "1.1.2")
