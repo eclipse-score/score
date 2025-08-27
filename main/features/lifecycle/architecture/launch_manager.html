@@ -574,7 +574,7 @@ The <a class="reference internal" href="../glossary.html#term-Launch-Manager"><s
 <p>This interface provides control functionality for activating and managing run targets.It allows users to trigger execution of configured <a class="reference internal" href="../glossary.html#term-Run-target"><span class="xref std std-term">Run targets</span></a> through a standardized activation mechanism.</p>
 <section id="static-architecture">
 <h3>Static architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-75cc2f27">
+<div class="need_container docutils container" id="SNCB-ff0b4aaf">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__controlif">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -593,10 +593,7 @@ The <a class="reference internal" href="../glossary.html#term-Launch-Manager"><s
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
-<div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
-</span></span></div>
+<div class="line"><span><span></span></span></div>
 <div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../../communication/docs/requirements/index.html#feat_req__com__interfaces" title="logic_arc_int__lifecycle__controlif">feat_req__com__interfaces</a></span></span></div>
 <div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="../../../modules/lifecycle/index.html#comp_arc_sta__lifecycle__launch_manager" title="logic_arc_int__lifecycle__controlif">comp_arc_sta__lifecycle__launch_manager</a></span></span></div>
 <div class="line">includes: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int_op__lifecycle__activate_target" title="logic_arc_int__lifecycle__controlif">logic_arc_int_op__lifecycle__activate_target</a></span></span></div>
@@ -622,7 +619,7 @@ The <a class="reference internal" href="../glossary.html#term-Launch-Manager"><s
 </div>
 </div>
 <p><strong>Operations</strong></p>
-<div class="need_container docutils container" id="SNCB-aa6c5089">
+<div class="need_container docutils container" id="SNCB-ca7063c8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__activate_target">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -641,10 +638,7 @@ The <a class="reference internal" href="../glossary.html#term-Launch-Manager"><s
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
-<div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
-</span></span></div>
+<div class="line"><span><span></span></span></div>
 <div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__lifecycle__controlif" title="logic_arc_int_op__lifecycle__activate_target">logic_arc_int__lifecycle__controlif</a></span></span></div>
 </span></div>
 </div>
@@ -692,7 +686,7 @@ which allows the implementation of a state management applications to support dy
 - Failure with detailed error information if any component failed to transition</p></li>
 </ol>
 <p>This unified approach allows external state managers to request any run target activation without needing to know the current system state, as the <a class="reference internal" href="../glossary.html#term-Launch-Manager"><span class="xref std std-term">Launch Manager</span></a> handles the transition logic internally.</p>
-<div class="need_container docutils container" id="SNCB-348b9e80">
+<div class="need_container docutils container" id="SNCB-a4b519fe">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__lifecycle__control_if_activate">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -711,10 +705,7 @@ which allows the implementation of a state management applications to support dy
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
-<div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
-</span></span></div>
+<div class="line"><span><span></span></span></div>
 <div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__control_commands" title="feat_arc_dyn__lifecycle__control_if_activate">feat_req__lifecycle__control_commands</a>, <a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__request_run_target_start" title="feat_arc_dyn__lifecycle__control_if_activate">feat_req__lifecycle__request_run_target_start</a>, <a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__switch_run_targets" title="feat_arc_dyn__lifecycle__control_if_activate">feat_req__lifecycle__switch_run_targets</a></span></span></div>
 </span></div>
 </div>
@@ -769,7 +760,7 @@ which allows the implementation of a state management applications to support dy
 - Exit code evaluation for failure detection</p>
 <section id="id1">
 <h3>Static architecture<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-de64bdd8">
+<div class="need_container docutils container" id="SNCB-0d663abb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__lifecycle_if">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -788,10 +779,7 @@ which allows the implementation of a state management applications to support dy
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
-<div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
-</span></span></div>
+<div class="line"><span><span></span></span></div>
 <div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__process_state_comm" title="logic_arc_int__lifecycle__lifecycle_if">feat_req__lifecycle__process_state_comm</a>, <a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__liveliness_detection" title="logic_arc_int__lifecycle__lifecycle_if">feat_req__lifecycle__liveliness_detection</a></span></span></div>
 <div class="line">used by: <span class="uses"><span><a class="reference internal" href="../../../modules/lifecycle/index.html#comp_arc_sta__lifecycle__launch_manager" title="logic_arc_int__lifecycle__lifecycle_if">comp_arc_sta__lifecycle__launch_manager</a></span></span></div>
 <div class="line">includes: <span class="includes"><span><a class="reference internal" href="#logic_arc_int_op__lifecycle__run" title="logic_arc_int__lifecycle__lifecycle_if">logic_arc_int_op__lifecycle__run</a>, <a class="reference internal" href="#logic_arc_int_op__lifecycle__terminate" title="logic_arc_int__lifecycle__lifecycle_if">logic_arc_int_op__lifecycle__terminate</a></span></span></div>
@@ -819,7 +807,7 @@ which allows the implementation of a state management applications to support dy
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-196e13f7">
+<div class="need_container docutils container" id="SNCB-b42a65f9">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__run">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -838,10 +826,7 @@ which allows the implementation of a state management applications to support dy
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
-<div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
-</span></span></div>
+<div class="line"><span><span></span></span></div>
 <div class="line"><span><div class="line">included by: <span class="includes"><span><a class="reference internal" href="#logic_arc_int__lifecycle__lifecycle_if" title="logic_arc_int_op__lifecycle__run">logic_arc_int__lifecycle__lifecycle_if</a></span></span></div>
 <div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__lifecycle__lifecycle_if" title="logic_arc_int_op__lifecycle__run">logic_arc_int__lifecycle__lifecycle_if</a></span></span></div>
 </span></div>
@@ -865,7 +850,7 @@ which allows the implementation of a state management applications to support dy
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-eedc1a2f">
+<div class="need_container docutils container" id="SNCB-d53e2978">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__terminate">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -884,10 +869,7 @@ which allows the implementation of a state management applications to support dy
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
-<div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
-</span></span></div>
+<div class="line"><span><span></span></span></div>
 <div class="line"><span><div class="line">included by: <span class="includes"><span><a class="reference internal" href="#logic_arc_int__lifecycle__lifecycle_if" title="logic_arc_int_op__lifecycle__terminate">logic_arc_int__lifecycle__lifecycle_if</a></span></span></div>
 <div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__lifecycle__lifecycle_if" title="logic_arc_int_op__lifecycle__terminate">logic_arc_int__lifecycle__lifecycle_if</a></span></span></div>
 </span></div>
@@ -956,7 +938,7 @@ which allows the implementation of a state management applications to support dy
 </section>
 <section id="id2">
 <h3>Dynamic Architecture<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-38a503d8">
+<div class="need_container docutils container" id="SNCB-cef0fc61">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__lifecycle__state_machine">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -975,10 +957,7 @@ which allows the implementation of a state management applications to support dy
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
-<div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
-</span></span></div>
+<div class="line"><span><span></span></span></div>
 <div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__control_commands" title="feat_arc_dyn__lifecycle__state_machine">feat_req__lifecycle__control_commands</a>, <a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__request_run_target_start" title="feat_arc_dyn__lifecycle__state_machine">feat_req__lifecycle__request_run_target_start</a>, <a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__switch_run_targets" title="feat_arc_dyn__lifecycle__state_machine">feat_req__lifecycle__switch_run_targets</a></span></span></div>
 </span></div>
 </div>
@@ -1068,7 +1047,7 @@ It implements core watchdog operations including heartbeat signals to ensure rel
 </ul>
 <section id="id4">
 <h3>Static architecture<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-30e4fbeb">
+<div class="need_container docutils container" id="SNCB-eacc7019">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__alive_if">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1087,10 +1066,7 @@ It implements core watchdog operations including heartbeat signals to ensure rel
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
-<div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
-</span></span></div>
+<div class="line"><span><span></span></span></div>
 <div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../../communication/docs/requirements/index.html#feat_req__com__interfaces" title="logic_arc_int__lifecycle__alive_if">feat_req__com__interfaces</a></span></span></div>
 <div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="../../../modules/lifecycle/index.html#comp_arc_sta__lifecycle__launch_manager" title="logic_arc_int__lifecycle__alive_if">comp_arc_sta__lifecycle__launch_manager</a></span></span></div>
 <div class="line">used by: <span class="uses"><span><a class="reference internal" href="../../../modules/lifecycle/index.html#comp_arc_sta__lifecycle__healthmonitor" title="logic_arc_int__lifecycle__alive_if">comp_arc_sta__lifecycle__healthmonitor</a></span></span></div>
@@ -1119,7 +1095,7 @@ It implements core watchdog operations including heartbeat signals to ensure rel
 </div>
 </div>
 <p><strong>Operations</strong></p>
-<div class="need_container docutils container" id="SNCB-9001c7c5">
+<div class="need_container docutils container" id="SNCB-d7f10bb9">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__report_health">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1138,10 +1114,7 @@ It implements core watchdog operations including heartbeat signals to ensure rel
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
-<div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
-</span></span></div>
+<div class="line"><span><span></span></span></div>
 <div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__lifecycle__alive_if" title="logic_arc_int_op__lifecycle__report_health">logic_arc_int__lifecycle__alive_if</a></span></span></div>
 </span></div>
 </div>
@@ -1167,7 +1140,7 @@ It implements core watchdog operations including heartbeat signals to ensure rel
 </section>
 <section id="id5">
 <h3>Dynamic architecture<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-00a78171">
+<div class="need_container docutils container" id="SNCB-096eae05">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__lifecycle__alive_monitoring">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1186,10 +1159,7 @@ It implements core watchdog operations including heartbeat signals to ensure rel
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
-<div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
-</span></span></div>
+<div class="line"><span><span></span></span></div>
 <div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__monitoring_processes" title="feat_arc_dyn__lifecycle__alive_monitoring">feat_req__lifecycle__monitoring_processes</a>, <a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__polling_interval" title="feat_arc_dyn__lifecycle__alive_monitoring">feat_req__lifecycle__polling_interval</a>, <a class="reference internal" href="../requirements/index.html#feat_req__lifecycle__failure_detect" title="feat_arc_dyn__lifecycle__alive_monitoring">feat_req__lifecycle__failure_detect</a></span></span></div>
 </span></div>
 </div>
