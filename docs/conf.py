@@ -16,9 +16,6 @@
 # For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
-from typing import Any
-
-
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
@@ -62,7 +59,7 @@ numfig = True
 needs_template_folder = "_templates"
 html_static_path = ["_assets"]
 needs_global_options = {"collapse": True}
-needs_string_links: dict[str, dict[str, Any]] = {
+needs_string_links: dict[str, dict[str, object]] = {
     "source_code_linker": {
         "regex": r"(?P<value>[^,]+)",
         "link_url": "{{value}}",
