@@ -16,7 +16,9 @@
    :id: doc__config_mgt_plan
    :status: draft
    :safety: ASIL_B
+   :security: YES
    :tags: platform_management
+   :realizes: PROCESS_wp__config_mgt_plan
 
 Config management / Configuration Management Plan
 -------------------------------------------------
@@ -25,7 +27,7 @@ Purpose
 +++++++
 
 The Configuration Management Plan defines how the integrity of all work products
-and other project relevant artefacts can be reached and maintained.
+and other project relevant artifacts can be reached and maintained.
 
 
 Objectives and scope
@@ -44,7 +46,7 @@ Goal of this plan is to describe
 * how to backup and recover (including long term storage)
 * how to report the configuration status
 
-note: for definition of "configuration items" check :need:`PROCESS_doc_concept__configuration__process`
+note: for definition of "configuration items" check :need:`PROCESS_doc_concept__configuration_process`
 
 
 Approach
@@ -89,7 +91,7 @@ Also baselines (which are sets of files) can be shown via GitHub by switching to
 These baselines are used to build the release, i.e. the documentation, code and verification reports for this tag.
 For release versioning rules check the respective section of release guideline.
 
-For other artefacts: these are pulled into S-CORE integration repository by forking to be handled as above.
+For other artifacts: these are pulled into S-CORE integration repository by forking to be handled as above.
 
 
 Control and Modification
@@ -113,7 +115,7 @@ Branches are used as a means of parallel development. In the S-CORE project the 
 * main branch - a "remote" branch (named "main") which contains all the latest file versions checked by CI, reviewed, accepted and merged.
 * release branch - a "remote" branch derived from main branch which is used to prepare a release,
   no functional code changes are allowed, only bug fixes and verification based improvements.
-  Only the technical lead is allowed to approve a merge into a release branch. The branch name is given as defined in :need:`PROCESS_doc_concept__rel__process`.
+  Only the technical lead is allowed to approve a merge into a release branch. The branch name is given as defined in :need:`PROCESS_doc_concept__rel_process`.
 
 The "remote" branch is not "local" to the developer but resides on the "remote" GitHub server.
 
@@ -125,25 +127,25 @@ See also :need:`doc__platform_release_management_plan`.
 
 As described in "Identification and Properties" above, there are several repositories for the modules and the platform integration.
 Baselines are created individually in these repositories, even a different version schema could be adopted.
-In case of dependent repositories, the repository dependet upon on has to be baselined first, to be available
+In case of dependent repositories, the repository dependent upon on has to be base-lined first, to be available
 to refer to this baseline when integrating it. That means that for example a platform baseline also
 documents the versions (baselines) of the modules the platform consists of. This can then also be seen in the platform release note.
 
 Every change in the release repository is also taken over into the main branch. The module development team
-can decide how to ensure this (e.g. by development in main and cherrypick to release branch).
+can decide how to ensure this (e.g. by development in main and cherry-pick to release branch).
 
 
 Backup and Recovery
 ^^^^^^^^^^^^^^^^^^^
 
 Backup and recovery are covered by the Eclipse Foundation hosting the GitHub service for S-CORE.
-For the long term storage, additional measures are taken, see :need:`PROCESS_gd_req__config__workproducts_storage`
+For the long term storage, additional measures are taken, see :need:`PROCESS_gd_req__config_workproducts_storage`
 
 
 Status and Reporting
 ^^^^^^^^^^^^^^^^^^^^
 
-Work products defined in our proceses have "status" attributes. These are used to communicate to all the stakeholders.
+Work products defined in our processes have "status" attributes. These are used to communicate to all the stakeholders.
 The main communication means is a document list containing all documents including their status.
 This list is part of the Documentation Management Plan :need:`doc__documentation_mgt_plan` as part of the Platform Management Plan,
 as defined in :need:`PROCESS_gd_guidl__documentation`.
@@ -152,7 +154,7 @@ against the list of planned documents, which is also part of the Documentation M
 
 Note that work products consisting of several elements (documented as needs) will be collected in one file
 which will form a document (e.g. there will be a document (doc__*) "feature xy requirements" and in it all the feature's requirements(feat_req__*)).
-This applies to requirements, architeture, detailed design and safety analysis.
+This applies to requirements, architecture, detailed design and safety analysis.
 The files containing the source code and test code are not part of documents as above,
 their status is implicitly "valid", as these are subject to code and test review before every merge.
 
@@ -172,6 +174,6 @@ The respective tools used in the project are:
 * "Docs-as-Code" tool: sphinx-needs
 * CI build tool: Bazel
 
-Note 1: A versioning tool covers part of configuration management but not all (namely: storage, retrieval, control and modification, branching and baselining).
+Note 1: A versioning tool covers part of configuration management but not all (namely: storage, retrieval, control and modification, branching and base-lining).
 
 Note 2: A "Docs-as-Code" tool is used to identify, attribute and link parts of text files and generate human and machine readable documentation.

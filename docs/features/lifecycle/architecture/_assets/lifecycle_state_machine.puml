@@ -1,0 +1,8 @@
+@startuml
+[*] --> Created : set-up Sandbox
+Created --> Terminated
+Terminated --> Init : fork()/exec()
+Init --> Run : report run
+Run --> Terminated : exit/SIGTERM/SIGKILL
+Terminated --> [*]
+@enduml

@@ -11,10 +11,8 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 
-load("@score_cli_helper//:cli_helper.bzl", "cli_helper")
-load("@score_cr_checker//:cr_checker.bzl", "copyright_checker")
 load("@score_docs_as_code//:docs.bzl", "docs")
-load("@score_starpls_lsp//:starpls.bzl", "setup_starpls")
+load("@score_tooling//:defs.bzl", "cli_helper", "copyright_checker", "setup_starpls")
 
 test_suite(
     name = "format.check",
@@ -43,8 +41,8 @@ copyright_checker(
         "//:BUILD",
         "//:MODULE.bazel",
     ],
-    config = "@score_cr_checker//resources:config",
-    template = "@score_cr_checker//resources:templates",
+    config = "@score_tooling//cr_checker/resources:config",
+    template = "@score_tooling//cr_checker/resources:templates",
     visibility = ["//visibility:public"],
 )
 

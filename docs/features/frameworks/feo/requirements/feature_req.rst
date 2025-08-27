@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,8 +12,15 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Requirements
-############
+.. document:: FEO Feature Requirements
+   :id: doc__frameworks_feo_feat_reqs
+   :status: valid
+   :security: NO
+   :safety: ASIL_B
+   :realizes: PROCESS_wp__requirements_feat
+
+FEO Feature Requirements
+========================
 
 
 Definitions
@@ -314,3 +321,6 @@ Error Handling for S-CORE v0.5
 
     If an activity fails in the shutdown function, the primary process shall shutdown all remaining activities
     in arbitrary sequence and terminate itself.
+
+.. needextend:: docname is not None and "frameworks/feo/requirements" in docname
+   :+tags: frameworks_feo

@@ -16,7 +16,7 @@ MISRA C++:2023 Rule Mapping
 ###########################
 
 .. document:: MISRA C++:2023 Rule Mapping
-   :id: doc__cpp__misra2023_rule_mapping
+   :id: doc__cpp_misra2023_rule_mapping
    :status: draft
 
 ..

@@ -124,7 +124,7 @@ Module Workproducts List
           - :need:`doc__persistency_safety_manual`
           - :ndf:`copy('status', need_id='doc__persistency_safety_manual')`
 
-        * - :need:`PROCESS_wp__verification__module_ver_report`
+        * - :need:`PROCESS_wp__verification_module_ver_report`
           - :need:`PROCESS_gd_temp__mod_ver_report`
           - :ndf:`copy('status', need_id='PROCESS_gd_temp__mod_ver_report')`
           - https://github.com/eclipse-score/score/issues/952?issue=eclipse-score%7Cscore%7C964
@@ -132,8 +132,8 @@ Module Workproducts List
           - :ndf:`copy('status', need_id='doc__persistency_verification_report')`
 
         * - :need:`PROCESS_wp__module_sw_release_note`
-          - :need:`PROCESS_gd_temp__rel__mod_rel_note`
-          - :ndf:`copy('status', need_id='PROCESS_gd_temp__rel__mod_rel_note')`
+          - :need:`PROCESS_gd_temp__rel_mod_rel_note`
+          - :ndf:`copy('status', need_id='PROCESS_gd_temp__rel_mod_rel_note')`
           - <Link to issue>
           - :need:`doc__persistency_release_note`
           - :ndf:`copy('status', need_id='doc__persistency_release_note')`
@@ -151,37 +151,37 @@ Component <name> Workproducts List
           - Link to WP
           - WP/doc status
 
-        * - :need:`PROCESS_wp__requirements__comp`
-          - :need:`PROCESS_gd_temp__req__comp_req`
-          - :ndf:`copy('status', need_id='PROCESS_gd_temp__req__comp_req')`
+        * - :need:`PROCESS_wp__requirements_comp`
+          - :need:`PROCESS_gd_temp__req_comp_req`
+          - :ndf:`copy('status', need_id='PROCESS_gd_temp__req_comp_req')`
           - https://github.com/eclipse-score/score/issues/952?issue=eclipse-score%7Cscore%7C960
           - :need:`doc__persistency_kvs_mod_req`
           - :ndf:`copy('status', need_id='doc__persistency_kvs_mod_req')` & WP below
 
-        * - :need:`PROCESS_wp__requirements__comp_aou`
-          - :need:`PROCESS_gd_temp__req__aou_req`
-          - :ndf:`copy('status', need_id='PROCESS_gd_temp__req__aou_req')`
+        * - :need:`PROCESS_wp__requirements_comp_aou`
+          - :need:`PROCESS_gd_temp__req_aou_req`
+          - :ndf:`copy('status', need_id='PROCESS_gd_temp__req_aou_req')`
           - https://github.com/eclipse-score/score/issues/952?issue=eclipse-score%7Cscore%7C960
           - :need:`doc__persistency_kvs_mod_req`
           - :ndf:`copy('status', need_id='doc__persistency_kvs_mod_req')` & WP below
 
-        * - :need:`PROCESS_wp__requirements__inspect`
-          - :need:`PROCESS_gd_chklst__req__inspection`
-          - :ndf:`copy('status', need_id='PROCESS_gd_chklst__req__inspection')`
+        * - :need:`PROCESS_wp__requirements_inspect`
+          - :need:`PROCESS_gd_chklst__req_inspection`
+          - :ndf:`copy('status', need_id='PROCESS_gd_chklst__req_inspection')`
           - n/a
           - Checklist used in Pull Request Review
           - n/a
 
         * - :need:`PROCESS_wp__component_arch`
-          - :need:`PROCESS_gd_temp__arch__comp`
-          - :ndf:`copy('status', need_id='PROCESS_gd_temp__arch__comp')`
+          - :need:`PROCESS_gd_temp__arch_comp`
+          - :ndf:`copy('status', need_id='PROCESS_gd_temp__arch_comp')`
           - https://github.com/eclipse-score/score/issues/952?issue=eclipse-score%7Cscore%7C1020
           - :need:`doc__persistency_kvs_mod_arch`
           - :ndf:`copy('status', need_id='doc__persistency_kvs_mod_arch')` & WP below
 
         * - :need:`PROCESS_wp__sw_arch_verification`
-          - :need:`PROCESS_gd_chklst__arch__inspection_checklist`
-          - :ndf:`copy('status', need_id='PROCESS_gd_chklst__arch__inspection_checklist')`
+          - :need:`PROCESS_gd_chklst__arch_inspection_checklist`
+          - :ndf:`copy('status', need_id='PROCESS_gd_chklst__arch_inspection_checklist')`
           - n/a
           - Checklist used in Pull Request Review
           - n/a
@@ -207,7 +207,7 @@ Component <name> Workproducts List
           - <Link to WP>
           - <automated>
 
-        * - :need:`PROCESS_wp__verification__sw_unit_test`
+        * - :need:`PROCESS_wp__verification_sw_unit_test`
           - :need:`PROCESS_gd_guidl__verification_guide`
           - :ndf:`copy('status', need_id='PROCESS_gd_guidl__verification_guide')`
           - https://github.com/eclipse-score/score/issues/952?issue=eclipse-score%7Cscore%7C964
@@ -221,7 +221,7 @@ Component <name> Workproducts List
           - Checklist used in Pull Request Review
           - n/a
 
-        * - :need:`PROCESS_wp__verification__comp_int_test`
+        * - :need:`PROCESS_wp__verification_comp_int_test`
           - :need:`PROCESS_gd_guidl__verification_guide`
           - :ndf:`copy('status', need_id='PROCESS_gd_guidl__verification_guide')`
           - https://github.com/eclipse-score/score/issues/952?issue=eclipse-score%7Cscore%7C964
@@ -254,15 +254,15 @@ If the OSS element is classified as a
           - Link to issue
           - Reasoning for tailoring
 
-        * - :need:`PROCESS_wp__requirements__comp`
+        * - :need:`PROCESS_wp__requirements_comp`
           - https://github.com/eclipse-score/score/issues/952?issue=eclipse-score%7Cscore%7C960
           - Always needed (for Q and QR classification) and also improves process Id 2
 
-        * - :need:`PROCESS_wp__requirements__comp_aou`
+        * - :need:`PROCESS_wp__requirements_comp_aou`
           - https://github.com/eclipse-score/score/issues/952?issue=eclipse-score%7Cscore%7C960
           - Always needed (for Q and QR classification) and also improves process Id 5
 
-        * - :need:`PROCESS_wp__requirements__inspect`
+        * - :need:`PROCESS_wp__requirements_inspect`
           - n/a
           - Checklist used in Pull Request Review
 
@@ -282,7 +282,7 @@ If the OSS element is classified as a
           - n/a
           - If source code is modified, this is not a OSS qualification any more.
 
-        * - :need:`PROCESS_wp__verification__sw_unit_test`
+        * - :need:`PROCESS_wp__verification_sw_unit_test`
           - https://github.com/eclipse-score/score/issues/952?issue=eclipse-score%7Cscore%7C964
           - <Reasoning for tailoring, can improve deficits in process Id 6 and complexity Id 3>
 
@@ -290,7 +290,7 @@ If the OSS element is classified as a
           - https://github.com/eclipse-score/score/issues/952?issue=eclipse-score%7Cscore%7C961
           - <Reasoning for tailoring, can improve deficits in process Id 6 and complexity Id 2>
 
-        * - :need:`PROCESS_wp__verification__comp_int_test`
+        * - :need:`PROCESS_wp__verification_comp_int_test`
           - https://github.com/eclipse-score/score/issues/952?issue=eclipse-score%7Cscore%7C964
           - Always needed (for Q and QR classification)
 
