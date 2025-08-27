@@ -12,8 +12,16 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Requirements
-############
+.. document:: FEO Component Requirements
+   :id: doc__component_feo_requirements
+   :status: draft
+   :security: NO
+   :safety: ASIL_B
+   :realizes: PROCESS_wp__requirements_comp
+   :tags: component_feo
+
+FEO Component Requirements
+==========================
 
 .. comp_req:: Application Processes
     :id: comp_req__feo__application
@@ -366,3 +374,6 @@ Error Handling for S-CORE v0.5
 
     If an activity fails in the shutdown function, the primary process shall shutdown all remaining activities
     in arbitrary sequence and terminate itself.
+
+.. needextend:: docname is not None and "feo/docs/requirements" in docname
+   :+tags: component_feo

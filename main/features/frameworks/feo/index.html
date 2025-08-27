@@ -72,7 +72,7 @@
         </script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Requirements" href="requirements/index.html" />
+    <link rel="next" title="FEO Feature Requirements" href="requirements/feature_req.html" />
     <link rel="prev" title="Frameworks" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -467,8 +467,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../../diagnostics/index.html">Diagnostic and Fault Management</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Frameworks</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">Fixed execution order framework (FEO)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="requirements/index.html">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="architecture/feature_architecture.html">Feature Architecture: FEO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements/feature_req.html">FEO Feature Requirements</a></li>
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="requirements/aou_req.html">FEO Feature Assumption of Use Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements/chklst_req_inspection.html">FEO Feature Requirement Inspection Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture/feature_architecture.html">FEO Feature Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture/chklst_arch_inspection.html">FEO Feature Architecture Inspection Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="safety_planning/index.html">FEO Safety Planning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="safety_analysis/feature_fmea.html">FEO Feature FMEA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="safety_analysis/feature_dfa.html">FEO Feature DFA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="safety_analysis/chklst_safety_analysis_inspection.html">FEO Feature Safety Analysis Checklist</a></li>
 </ul>
 </details></li>
 </ul>
@@ -543,8 +554,8 @@
                   
   <section id="fixed-execution-order-framework-feo">
 <h1>Fixed execution order framework (FEO)<a class="headerlink" href="#fixed-execution-order-framework-feo" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-bf60fc49">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__feo">
+<div class="need_container docutils container" id="SNCB-1229f9f8">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__frameworks_feo">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
 <div class="line"><span><span class="needs_title"><span class="needs_data">Fixed execution order framework</span></span></span></div>
@@ -552,7 +563,7 @@
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
-<div class="line"><span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
 <div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
@@ -563,8 +574,9 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">feature_request</span></span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">feature_request</span><span class="needs_spacer">, </span><span class="needs_data">frameworks_feo</span></span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
+<div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -574,7 +586,7 @@
 <tr class="content row-odd"><td class="content" colspan="6"></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
-<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__feo" title="doc__feo">doc__feo</a></span></span></div>
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__frameworks_feo" title="doc__frameworks_feo">doc__frameworks_feo</a></span></span></div>
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
@@ -587,8 +599,6 @@
 </table>
 </div>
 </div>
-<p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_guideline.html#gd_guidl__change__change_request">PROCESS_gd_guidl__change__change_request</a>
-and <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_feature_template.html#gd_temp__change__feature_request">PROCESS_gd_temp__change__feature_request</a>.</p>
 <div class="toctree-wrapper compound">
 </div>
 <section id="feature-flag">
@@ -664,7 +674,7 @@ see below)</p></li>
 <ul class="simple">
 <li><p>Application activities must only use APIs provided by the framework as defined above</p></li>
 <li><p>Application activities are single threaded, they can not run outside of their entry points,
-they must not spawn other threads or processs</p></li>
+they must not spawn other threads or process</p></li>
 <li><p>Activities can be implemented in C++ or Rust, mixed systems with both
 C++ and Rust activities shall be supported.</p></li>
 </ul>
@@ -705,7 +715,7 @@ the set of known communication topics and the assignment of which activity
 sends and receives to/from which topic is “runtime static”</p></li>
 <li><p>“runtime static” means “static after the startup phase”, i.e. during startup, the
 framework can configure or build up communication connections, but as soon as the
-run phase starts (where the activties’ step() functions are called), the connections
+run phase starts (where the activities’ step() functions are called), the connections
 are fixed and will not change any more.</p></li>
 <li><p>Communication relations are typically configured in configuration files</p></li>
 <li><p>Messages/topics are statically typed</p></li>
@@ -811,7 +821,7 @@ as can be seen below.</p>
 <li><p>shutdown phase</p></li>
 </ul>
 </li>
-<li><p>During startup phase, the primary proces connects with the secondary processes
+<li><p>During startup phase, the primary process connects with the secondary processes
 (if present), in order to:</p>
 <ul>
 <li><p>Build up connections for communication (e.g. find shared memory segments
@@ -852,7 +862,7 @@ invocation may happen in parallel or sequentially</p></li>
 <li><p>There is exactly one task chain per application</p></li>
 <li><p>The task chain describes the execution order of the activities in the run phase</p></li>
 <li><p>Task chains run cyclically, e.g. every 30ms</p></li>
-<li><p>Optional: task chains can be triggerd on event</p></li>
+<li><p>Optional: task chains can be triggered on event</p></li>
 <li><p>All activities are executed once per task chain run</p></li>
 <li><p>All activities finish within a single task chain run</p></li>
 <li><p>Running an activity means that the framework is calling its step() function
@@ -955,7 +965,7 @@ store it back for the next task chain invocation</p></li>
 <li><p>In a replay scenario, the framework is used to reproduce the communication messages
 and other API behavior (e.g. time, parameters, persistency) as was
 recorded in a previous run</p></li>
-<li><p>In case a whole task chain is reprocessed, the outputs of the input service activites
+<li><p>In case a whole task chain is reprocessed, the outputs of the input service activities
 will be reproduced</p></li>
 <li><p>In case only a single activity is reprocessed, the outputs of the predecessors
 in the task chain will be reproduced</p></li>
@@ -983,7 +993,7 @@ inspection e.g. using a UI like Google Perfetto or Eclipse TraceCompass.</p></li
 <h2>Performance<a class="headerlink" href="#performance" title="Link to this heading">#</a></h2>
 <p>The framework is designed to ensure deterministic execution order and
 timing of activities, supporting safety-critical applications
-in the automotive domain. In this domain the footprint of the framework is curcial especially
+in the automotive domain. In this domain the footprint of the framework is crucial especially
 w.r.t impact of computation load and latency.</p>
 </section>
 <section id="error-handling-for-s-core-v0-5">
@@ -1107,11 +1117,11 @@ outside of FEO. (Resource supervision and quotas will be defined in a separate f
       </div>
     </a>
     <a class="right-next"
-       href="requirements/index.html"
+       href="requirements/feature_req.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Requirements</p>
+        <p class="prev-next-title">FEO Feature Requirements</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

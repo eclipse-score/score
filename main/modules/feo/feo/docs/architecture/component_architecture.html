@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>feo Component Architecture &#8212; S-CORE 0.1 documentation</title>
+    <title>FEO Component Architecture &#8212; S-CORE 0.1 documentation</title>
   
   
   
@@ -72,8 +72,8 @@
         </script>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
-    <link rel="next" title="Requirements" href="../requirements/component_requirements.html" />
-    <link rel="prev" title="feo" href="../index.html" />
+    <link rel="next" title="FEO Component Architecture Inspection Checklist" href="chklst_arch_inspection.html" />
+    <link rel="prev" title="FEO Component Assumption of Use Requirements" href="../requirements/aou_req.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
@@ -461,13 +461,21 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../../baselibs/index.html">Baselibs Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../communication/index.html">Communication Module</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../index.html">feo Module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../../docs/index.html">Module Documents</a></li>
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">feo</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">feo Component Architecture</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../index.html">FEO Module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../docs/index.html">FEO Module Documents</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">FEO Component</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../requirements/component_requirements.html">FEO Component Requirements</a></li>
 
-
-<li class="toctree-l3"><a class="reference internal" href="../requirements/component_requirements.html">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../requirements/chklst_req_inspection.html">FEO Component Requirement Inspection Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../requirements/aou_req.html">FEO Component Assumption of Use Requirements</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">FEO Component Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chklst_arch_inspection.html">FEO Component Architecture Inspection Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detailed_design/component_detailed_design.html">FEO Component Detailed Design</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detailed_design/chklst_dd_inspection.html">FEO Implementation Inspection Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../safety_analysis/component_fmea.html">FEO Component FMEA (Failure Modes and Effects Analysis)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../safety_analysis/component_dfa.html">FEO Component DFA (Dependent Failure Analysis)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../safety_analysis/chklst_safety_analysis_inspection.html">FEO Component Safety Analysis Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../component_classification.html">Component Classification</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../feo_com/docs/index.html">feo_com</a></li>
@@ -525,12 +533,12 @@
     <li class="breadcrumb-item"><a href="../../../../index.html" class="nav-link">Modules</a></li>
     
     
-    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">feo Module</a></li>
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">FEO Module</a></li>
     
     
-    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">feo</a></li>
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">FEO Component</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">feo Component Architecture</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">FEO Component Architecture</span></li>
   </ul>
 </nav>
 </div>
@@ -547,8 +555,54 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="feo-component-architecture">
-<h1>feo Component Architecture<a class="headerlink" href="#feo-component-architecture" title="Link to this heading">#</a></h1>
+  <div class="need_container docutils container" id="SNCB-15479ad7">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__component_feo_architecture">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">FEO Component Architecture</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">component_feo</span></span></span></div>
+<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
+<div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/architecture_workproducts.html#wp__component_arch">PROCESS_wp__component_arch</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__component_feo_architecture" title="doc__component_feo_architecture">doc__component_feo_architecture</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Generic Document</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<section id="feo-component-architecture">
+<h1>FEO Component Architecture<a class="headerlink" href="#feo-component-architecture" title="Link to this heading">#</a></h1>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
 <p>The current implementation of the feature “FEO” (Fixed Execution Order Framework) consists of a main
@@ -559,10 +613,8 @@ possibly become sub-components of the main component.</p>
 </section>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h2>
-</section>
-</section>
 <section id="sub-components">
-<h1>Sub-Components<a class="headerlink" href="#sub-components" title="Link to this heading">#</a></h1>
+<h3>Sub-Components<a class="headerlink" href="#sub-components" title="Link to this heading">#</a></h3>
 <p>The main component “FEO” consists of the following sub-components:</p>
 <ul class="simple">
 <li><p>feo: Implements activities, threads, agents, and scheduling</p></li>
@@ -573,12 +625,14 @@ possibly become sub-components of the main component.</p>
 sub-components cannot easily be combined into a single one.</p>
 </section>
 <section id="rationale-behind-architecture-decomposition">
-<h1>Rationale Behind Architecture Decomposition<a class="headerlink" href="#rationale-behind-architecture-decomposition" title="Link to this heading">#</a></h1>
+<h3>Rationale Behind Architecture Decomposition<a class="headerlink" href="#rationale-behind-architecture-decomposition" title="Link to this heading">#</a></h3>
 <p>The main component “FEO” has been split into three sub-components mainly according to usability
 considerations and Rust compiler constraints. (Rust proc-macros must reside in their own crate.)</p>
+</section>
+</section>
 <section id="static-architecture">
 <h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-c1426f40">
+<div class="need_container docutils container" id="SNCB-fb445d28">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__feo__main">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -598,6 +652,7 @@ considerations and Rust compiler constraints. (Rust proc-macros must reside in t
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">component_feo</span></span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
 </span></span></div>
@@ -619,7 +674,7 @@ considerations and Rust compiler constraints. (Rust proc-macros must reside in t
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
-<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component Architecture Static View</span></span></span></div>
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component &amp; Component Package Diagram</span></span></span></div>
 </div>
 </td>
 <td class="footer_right" colspan="2"></td>
@@ -631,7 +686,7 @@ considerations and Rust compiler constraints. (Rust proc-macros must reside in t
 </section>
 <section id="dynamic-architecture">
 <h2>Dynamic Architecture<a class="headerlink" href="#dynamic-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-1c0f6abd">
+<div class="need_container docutils container" id="SNCB-c16815e6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_dyn table" id="comp_arc_dyn__feo__main">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -651,6 +706,7 @@ considerations and Rust compiler constraints. (Rust proc-macros must reside in t
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">component_feo</span></span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
 </span></span></div>
@@ -677,7 +733,7 @@ As an example, we consider the simple task chain and process distribution depict
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
-<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component Architecture Dynamic View</span></span></span></div>
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component Sequence Diagram</span></span></span></div>
 </div>
 </td>
 <td class="footer_right" colspan="2"></td>
@@ -689,7 +745,7 @@ As an example, we consider the simple task chain and process distribution depict
 </section>
 <section id="interfaces">
 <h2>Interfaces<a class="headerlink" href="#interfaces" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-bfee2bdb">
+<div class="need_container docutils container" id="SNCB-b238b529">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_real_arc_int table" id="real_arc_int__feo__primary_config">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -709,6 +765,7 @@ As an example, we consider the simple task chain and process distribution depict
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">component_feo</span></span></span></div>
 <div class="line"><span class="needs_language"><span class="needs_label">language: </span><span class="needs_data">rust</span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
@@ -727,7 +784,7 @@ As an example, we consider the simple task chain and process distribution depict
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
-<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component Architecture Interfaces</span></span></span></div>
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Interface &amp; Component Interface</span></span></span></div>
 </div>
 </td>
 <td class="footer_right" colspan="2"></td>
@@ -736,7 +793,7 @@ As an example, we consider the simple task chain and process distribution depict
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f5d925e9">
+<div class="need_container docutils container" id="SNCB-93e7e9a3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_real_arc_int table" id="real_arc_int__feo__primary">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -756,6 +813,7 @@ As an example, we consider the simple task chain and process distribution depict
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">component_feo</span></span></span></div>
 <div class="line"><span class="needs_language"><span class="needs_label">language: </span><span class="needs_data">rust</span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
@@ -774,7 +832,7 @@ As an example, we consider the simple task chain and process distribution depict
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
-<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component Architecture Interfaces</span></span></span></div>
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Interface &amp; Component Interface</span></span></span></div>
 </div>
 </td>
 <td class="footer_right" colspan="2"></td>
@@ -783,7 +841,7 @@ As an example, we consider the simple task chain and process distribution depict
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4b4e07bb">
+<div class="need_container docutils container" id="SNCB-935fdb39">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_real_arc_int table" id="real_arc_int__feo__secondary_config">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -803,6 +861,7 @@ As an example, we consider the simple task chain and process distribution depict
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">component_feo</span></span></span></div>
 <div class="line"><span class="needs_language"><span class="needs_label">language: </span><span class="needs_data">rust</span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
@@ -821,7 +880,7 @@ As an example, we consider the simple task chain and process distribution depict
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
-<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component Architecture Interfaces</span></span></span></div>
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Interface &amp; Component Interface</span></span></span></div>
 </div>
 </td>
 <td class="footer_right" colspan="2"></td>
@@ -830,7 +889,7 @@ As an example, we consider the simple task chain and process distribution depict
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9eb373e3">
+<div class="need_container docutils container" id="SNCB-1347ad03">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_real_arc_int table" id="real_arc_int__feo__secondary">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -850,6 +909,7 @@ As an example, we consider the simple task chain and process distribution depict
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">component_feo</span></span></span></div>
 <div class="line"><span class="needs_language"><span class="needs_label">language: </span><span class="needs_data">rust</span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
@@ -868,7 +928,7 @@ As an example, we consider the simple task chain and process distribution depict
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
-<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component Architecture Interfaces</span></span></span></div>
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Interface &amp; Component Interface</span></span></span></div>
 </div>
 </td>
 <td class="footer_right" colspan="2"></td>
@@ -877,7 +937,7 @@ As an example, we consider the simple task chain and process distribution depict
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-ef38f52d">
+<div class="need_container docutils container" id="SNCB-d6e647ea">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_real_arc_int table" id="real_arc_int__feo__activity">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -897,6 +957,7 @@ As an example, we consider the simple task chain and process distribution depict
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
+<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">component_feo</span></span></span></div>
 <div class="line"><span class="needs_language"><span class="needs_label">language: </span><span class="needs_data">rust</span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
 <div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
@@ -915,7 +976,7 @@ As an example, we consider the simple task chain and process distribution depict
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
-<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component Architecture Interfaces</span></span></span></div>
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Interface &amp; Component Interface</span></span></span></div>
 </div>
 </td>
 <td class="footer_right" colspan="2"></td>
@@ -938,20 +999,20 @@ As an example, we consider the simple task chain and process distribution depict
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../index.html"
+       href="../requirements/aou_req.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">feo</p>
+        <p class="prev-next-title">FEO Component Assumption of Use Requirements</p>
       </div>
     </a>
     <a class="right-next"
-       href="../requirements/component_requirements.html"
+       href="chklst_arch_inspection.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Requirements</p>
+        <p class="prev-next-title">FEO Component Architecture Inspection Checklist</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -974,20 +1035,16 @@ As an example, we consider the simple task chain and process distribution depict
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">feo Component Architecture</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sub-components">Sub-Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale-behind-architecture-decomposition">Rationale Behind Architecture Decomposition</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sub-components">Sub-Components</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale-behind-architecture-decomposition">Rationale Behind Architecture Decomposition</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#static-architecture">Static Architecture</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-architecture">Dynamic Architecture</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interfaces">Interfaces</a></li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
   <div class="sidebar-secondary-item">

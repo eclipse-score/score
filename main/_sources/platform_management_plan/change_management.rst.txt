@@ -16,6 +16,7 @@
    :id: doc__platform_change_management_plan
    :status: draft
    :safety: ASIL_B
+   :security: YES
    :tags: platform_management
    :realizes: PROCESS_wp__chm_plan
 
@@ -73,7 +74,7 @@ of Change Requests. The tool is used to implement and verify Change Requests wit
 
 The next figure gives an overview, how Change Requests are realized in **S-CORE**. An ISSUE is
 used to create a Change Request including required attributes as defined in
-:need:`PROCESS_gd_req__change__attr_uid`.
+:need:`PROCESS_gd_req__change_attr_uid`.
 The ISSUE may be linked to other ISSUEs or SUB-ISSUEs, if required, to manage more complex Change
 Requests. The implementation of a Change Request requires at least one PR linked to the ISSUE created
 for the Change Request.
@@ -110,35 +111,35 @@ Changes are clustered in the following types:
 
 Change Request Traceability Impact Analysis requires the following tools:
 
-:need:`[[title]] <PROCESS_gd_req__change__tool_impact_analysis>`
+:need:`[[title]] <PROCESS_gd_req__change_tool_impact_analysis>`
 
 Change Request Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-:need:`PROCESS_gd_req__change__attr_uid` are implemented as follows:
+:need:`PROCESS_gd_req__change_attr_uid` are implemented as follows:
 
-:need:`[[title]] <PROCESS_gd_req__change__attr_uid>` is identical to the ISSUE number.
+:need:`[[title]] <PROCESS_gd_req__change_attr_uid>` is identical to the ISSUE number.
 
-:need:`[[title]] <PROCESS_gd_req__change__attr_status>` is defined by the combination of the ISSUE state
+:need:`[[title]] <PROCESS_gd_req__change_attr_status>` is defined by the combination of the ISSUE state
 and the states of the linked PRs.
 
-:need:`[[title]] <PROCESS_gd_req__change__attr_title>` is identical to the ISSUE title.
+:need:`[[title]] <PROCESS_gd_req__change_attr_title>` is identical to the ISSUE title.
 
-:need:`[[title]] <PROCESS_gd_req__change__attr_impact_description>` is defined in the linked PR or part of the
+:need:`[[title]] <PROCESS_gd_req__change_attr_impact_description>` is defined in the linked PR or part of the
 description.
 
-:need:`[[title]] <PROCESS_gd_req__change__attr_impact_safety>` is defined in the linked PR or part of the
+:need:`[[title]] <PROCESS_gd_req__change_attr_impact_safety>` is defined in the linked PR or part of the
 description.
 
-:need:`[[title]] <PROCESS_gd_req__change__attr_impact_security>` is defined in the linked PR or part of the
+:need:`[[title]] <PROCESS_gd_req__change_attr_impact_security>` is defined in the linked PR or part of the
 description.
 
-:need:`[[title]] <PROCESS_gd_req__change__attr_types>` is defined by label of a ISSUE and part of the
+:need:`[[title]] <PROCESS_gd_req__change_attr_types>` is defined by label of a ISSUE and part of the
 description.
 
-:need:`[[title]] <PROCESS_gd_req__change__attr_affected_wp>` is defined in the linked PR or part of the
+:need:`[[title]] <PROCESS_gd_req__change_attr_affected_wp>` is defined in the linked PR or part of the
 description.
 
-:need:`[[title]] <PROCESS_gd_req__change__attr_milestone>` is defined by the Milestone of a ISSUE.
+:need:`[[title]] <PROCESS_gd_req__change_attr_milestone>` is defined by the Milestone of a ISSUE.
 
 
 .. _change_mgmt_workflow:
@@ -164,13 +165,13 @@ The figure below shows the workflow for the simplest case of a Change Request.
 An ISSUE with the label according to the Change Request type is created in status ``OPEN``.
 The title of the ISSUE reflects the potential change. The description of the ISSUE may give a brief
 description of the requested change or modification. Further add here the
-:need:`Impact Analysis Template <PROCESS_gd_temp__change__impact_analysis>` and fill it out accordingly.
+:need:`Impact Analysis Template <PROCESS_gd_temp__change_impact_analysis>` and fill it out accordingly.
 
 The details are part of the Feature/Component Request work product. The Feature/Component Request
 is provided by a PR, which is linked to the ISSUE in status ``DRAFT``.
 
-For a new Feature/Component Request the provided templates :need:`Feature Request<PROCESS_gd_temp__change__feature_request>`,
-:need:`Component Request<PROCESS_gd_temp__change__component_request>` must be used. For a modification of an existing
+For a new Feature/Component Request the provided templates :need:`Feature Request<PROCESS_gd_temp__change_feature_request>`,
+:need:`Component Request<PROCESS_gd_temp__change_component_request>` must be used. For a modification of an existing
 Feature/Component, update the existing work products.
 
 The linked PR in status ``DRAFT``, which contains the Feature/Component Requests, may contain also
@@ -201,10 +202,10 @@ review results are resolved by the :need:`Contributor <PROCESS_rl__contributor>`
 are documented in the PR. As long as the information is not sufficient, the related PR is kept in
 status ``OPEN``.
 
-:need:`PROCESS_gd_chklst__change__cr_review` can help to verify whether the information is complete.
+:need:`PROCESS_gd_chklst__change_cr_review` can help to verify whether the information is complete.
 
-The realisation parts of the Change Request are reviewed according the checklists of the affected
-work products. Verification of the realisation parts must be successful.
+The realization parts of the Change Request are reviewed according the checklists of the affected
+work products. Verification of the realization parts must be successful.
 If the verification is not sufficient, the related PR is kept in status ``OPEN`` or may changed
 back to ``DRAFT`` (compare :need:`doc__issue_guideline`).
 
@@ -278,8 +279,8 @@ Change Management SW Platform Work Products
       - established
 
     * - :need:`PROCESS_wp__platform_mgmt`
-      - :need:`PROCESS_wf__platform__cr_mt_platform_mgmt_plan`
-      - :ndf:`copy('status', need_id='PROCESS_wf__platform__cr_mt_platform_mgmt_plan')`
+      - :need:`PROCESS_wf__platform_cr_mt_platform_mgmt_plan`
+      - :ndf:`copy('status', need_id='PROCESS_wf__platform_cr_mt_platform_mgmt_plan')`
       - <Link to issue>
       - :doc:`index`
       - :ndf:`copy('status', need_id='doc__platform_mgt_plan')`

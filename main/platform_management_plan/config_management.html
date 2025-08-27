@@ -532,7 +532,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-ad6f6c13">
+  <div class="need_container docutils container" id="SNCB-84fd09c2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__config_mgt_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -541,7 +541,7 @@
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></span></div>
-<div class="line"><span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
 <div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
@@ -554,8 +554,10 @@
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></div>
 <div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">platform_management</span></span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
+<div class="line"><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></div>
 </span></span></div>
-<div class="line"><span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/configuration_management/configuration_workproducts.html#wp__config_mgt_plan">PROCESS_wp__config_mgt_plan</a></span></span></div>
+</span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
@@ -581,7 +583,7 @@
 <section id="purpose">
 <h2>Purpose<a class="headerlink" href="#purpose" title="Link to this heading">#</a></h2>
 <p>The Configuration Management Plan defines how the integrity of all work products
-and other project relevant artefacts can be reached and maintained.</p>
+and other project relevant artifacts can be reached and maintained.</p>
 </section>
 <section id="objectives-and-scope">
 <h2>Objectives and scope<a class="headerlink" href="#objectives-and-scope" title="Link to this heading">#</a></h2>
@@ -598,7 +600,7 @@ and other project relevant artefacts can be reached and maintained.</p>
 <li><p>how to backup and recover (including long term storage)</p></li>
 <li><p>how to report the configuration status</p></li>
 </ul>
-<p>note: for definition of “configuration items” check <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/configuration_management/configuration_concept.html#doc_concept__configuration__process">PROCESS_doc_concept__configuration__process</a></p>
+<p>note: for definition of “configuration items” check <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/configuration_management/configuration_concept.html#doc_concept__configuration_process">PROCESS_doc_concept__configuration_process</a></p>
 </section>
 <section id="approach">
 <h2>Approach<a class="headerlink" href="#approach" title="Link to this heading">#</a></h2>
@@ -633,7 +635,7 @@ into this file and these commits show the change history (which is also availabl
 Also baselines (which are sets of files) can be shown via GitHub by switching to a “tag” created to mark the baseline versions.
 These baselines are used to build the release, i.e. the documentation, code and verification reports for this tag.
 For release versioning rules check the respective section of release guideline.</p>
-<p>For other artefacts: these are pulled into S-CORE integration repository by forking to be handled as above.</p>
+<p>For other artifacts: these are pulled into S-CORE integration repository by forking to be handled as above.</p>
 </section>
 <section id="control-and-modification">
 <h3>Control and Modification<a class="headerlink" href="#control-and-modification" title="Link to this heading">#</a></h3>
@@ -652,7 +654,7 @@ See also <a class="reference internal" href="change_management.html#doc__platfor
 <li><p>main branch - a “remote” branch (named “main”) which contains all the latest file versions checked by CI, reviewed, accepted and merged.</p></li>
 <li><p>release branch - a “remote” branch derived from main branch which is used to prepare a release,
 no functional code changes are allowed, only bug fixes and verification based improvements.
-Only the technical lead is allowed to approve a merge into a release branch. The branch name is given as defined in <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/release_management/release_concept.html#doc_concept__rel__process">PROCESS_doc_concept__rel__process</a>.</p></li>
+Only the technical lead is allowed to approve a merge into a release branch. The branch name is given as defined in <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/release_management/release_concept.html#doc_concept__rel_process">PROCESS_doc_concept__rel_process</a>.</p></li>
 </ul>
 <p>The “remote” branch is not “local” to the developer but resides on the “remote” GitHub server.</p>
 <p>In S-CORE all configuration items are kept in GitHub, this means that there only needs to be one baseline (per repository) for these
@@ -662,20 +664,20 @@ the release branch name the tag is created, adding patch version and pre-release
 See also <a class="reference internal" href="release_management.html#doc__platform_release_management_plan" title="doc__platform_release_management_plan"><em class="xref need">Release Management Plan (doc__platform_release_management_plan)</em></a>.</p>
 <p>As described in “Identification and Properties” above, there are several repositories for the modules and the platform integration.
 Baselines are created individually in these repositories, even a different version schema could be adopted.
-In case of dependent repositories, the repository dependet upon on has to be baselined first, to be available
+In case of dependent repositories, the repository dependent upon on has to be base-lined first, to be available
 to refer to this baseline when integrating it. That means that for example a platform baseline also
 documents the versions (baselines) of the modules the platform consists of. This can then also be seen in the platform release note.</p>
 <p>Every change in the release repository is also taken over into the main branch. The module development team
-can decide how to ensure this (e.g. by development in main and cherrypick to release branch).</p>
+can decide how to ensure this (e.g. by development in main and cherry-pick to release branch).</p>
 </section>
 <section id="backup-and-recovery">
 <h3>Backup and Recovery<a class="headerlink" href="#backup-and-recovery" title="Link to this heading">#</a></h3>
 <p>Backup and recovery are covered by the Eclipse Foundation hosting the GitHub service for S-CORE.
-For the long term storage, additional measures are taken, see <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/configuration_management/guidance/configuration_process_req.html#gd_req__config__workproducts_storage">PROCESS_gd_req__config__workproducts_storage</a></p>
+For the long term storage, additional measures are taken, see <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/configuration_management/guidance/configuration_process_req.html#gd_req__config_workproducts_storage">PROCESS_gd_req__config_workproducts_storage</a></p>
 </section>
 <section id="status-and-reporting">
 <h3>Status and Reporting<a class="headerlink" href="#status-and-reporting" title="Link to this heading">#</a></h3>
-<p>Work products defined in our proceses have “status” attributes. These are used to communicate to all the stakeholders.
+<p>Work products defined in our processes have “status” attributes. These are used to communicate to all the stakeholders.
 The main communication means is a document list containing all documents including their status.
 This list is part of the Documentation Management Plan <a class="reference internal" href="documentation_management.html#doc__documentation_mgt_plan" title="doc__documentation_mgt_plan"><em class="xref need">Documentation Management Plan (doc__documentation_mgt_plan)</em></a> as part of the Platform Management Plan,
 as defined in <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/guidance/documentation_guideline.html#gd_guidl__documentation">PROCESS_gd_guidl__documentation</a>.
@@ -683,7 +685,7 @@ Completeness of the configuration items (within a baseline) is checked at least 
 against the list of planned documents, which is also part of the Documentation Management Plan.</p>
 <p>Note that work products consisting of several elements (documented as needs) will be collected in one file
 which will form a document (e.g. there will be a document (doc__*) “feature xy requirements” and in it all the feature’s requirements(feat_req__*)).
-This applies to requirements, architeture, detailed design and safety analysis.
+This applies to requirements, architecture, detailed design and safety analysis.
 The files containing the source code and test code are not part of documents as above,
 their status is implicitly “valid”, as these are subject to code and test review before every merge.</p>
 <p>Also the used tools status and version is reported within a “tool list” which may be part of
@@ -700,7 +702,7 @@ The respective tools used in the project are:</p>
 <li><p>“Docs-as-Code” tool: sphinx-needs</p></li>
 <li><p>CI build tool: Bazel</p></li>
 </ul>
-<p>Note 1: A versioning tool covers part of configuration management but not all (namely: storage, retrieval, control and modification, branching and baselining).</p>
+<p>Note 1: A versioning tool covers part of configuration management but not all (namely: storage, retrieval, control and modification, branching and base-lining).</p>
 <p>Note 2: A “Docs-as-Code” tool is used to identify, attribute and link parts of text files and generate human and machine readable documentation.</p>
 </section>
 </section>

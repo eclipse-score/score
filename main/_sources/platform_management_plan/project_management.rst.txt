@@ -16,6 +16,7 @@
    :id: doc__project_mgt_plan
    :status: draft
    :safety: ASIL_B
+   :security: YES
    :realizes: PROCESS_wp__project_mgt
    :tags: platform_management
 

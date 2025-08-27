@@ -16,6 +16,7 @@
    :id: doc__platform_tool_management_plan
    :status: valid
    :safety: ASIL_B
+   :security: YES
    :tags: platform_management
    :realizes: PROCESS_wp__tlm_plan
 
@@ -56,7 +57,7 @@ Approach
 
 Tool Management Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-:need:`PROCESS_gd_req__tool__attr_uid` are implemented as follows:
+:need:`PROCESS_gd_req__tool_attr_uid` are implemented as follows:
 
 
 Identification
@@ -69,10 +70,10 @@ The most important tools are stored in one GitHub repository,
 
 But in general Tool can be stored all over the place.
 
-For each Tool the :need:`PROCESS_gd_temp__tool_management__verif_rpt_template` shall be used to document
+For each Tool the :need:`PROCESS_gd_temp__tool_management_verif_rpt_template` shall be used to document
 the relevant information.
 
-:need:`PROCESS_gd_chklst__tool__cr_review` shall be used to check that all relevant information is considered.
+:need:`PROCESS_gd_chklst__tool_cr_review` shall be used to check that all relevant information is considered.
 
 The configuration of tools is part of the :need:`doc__config_mgt_plan`.
 
@@ -83,7 +84,7 @@ Evaluation
 ^^^^^^^^^^
 
 The tool confidence level (TCL) must be determined as outlined in the
-:need:`PROCESS_doc_concept__tool__process`.
+:need:`PROCESS_doc_concept__tool_process`.
 
 Step-by-Step guide:
 
@@ -136,9 +137,9 @@ in the :need:`PROCESS_wp__platform_mgmt` shall be used.
 
 In detail:
 
-* Use :need:`PROCESS_wf__req__comp_req` to create requirements for the software tool and :need:`PROCESS_wf__monitor_verify_requirements` for the verification
+* Use :need:`PROCESS_wf__req_comp_req` to create requirements for the software tool and :need:`PROCESS_wf__monitor_verify_requirements` for the verification
 
-* Use :need:`PROCESS_wf__verification__comp_int_test` to test the requirements for the software tool and :need:`PROCESS_wf__verification__mod_ver_report` to report
+* Use :need:`PROCESS_wf__verification_comp_int_test` to test the requirements for the software tool and :need:`PROCESS_wf__verification_mod_ver_report` to report
 
 * If applicable, use for the Analyses: (to be added, after Safety/Security Analyses have been merged)
 
