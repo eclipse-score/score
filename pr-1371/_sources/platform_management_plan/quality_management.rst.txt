@@ -28,7 +28,7 @@ Purpose
 
 The purpose of this document is to define a quality strategy and an approach for the platform.
 This includes an approach to providing an independent and objective assurance that work products and processes
-comply with predefined provisions and plans and that non-conformances are resolved and further prevented.
+comply with predefined provisions and plans and that non-conformance is resolved and further prevented.
 This document includes quality assurance activities, roles and responsibilities, goals, schedule, etc. and a
 general strategy to implement quality assurance process in this platform. The quality assurance is
 ensured by automated checks and restrictions, manual checks which includes to proof that there is no manipulation
@@ -134,7 +134,7 @@ Objectives and scope
       - :need:`stkh_req__dependability__automotive_safety`, :doc:`../requirements/stakeholder/index`
       - 100% of project/platform work products are quality-assured
       - Feature is released as experimental
-      - Ensured by the process quality and tool management, :need:`PROCESS_wp__verification__platform_ver_report` - Work products contain the verification of the quality assurance
+      - Ensured by the process quality and tool management, :need:`PROCESS_wp__verification_platform_ver_report` - Work products contain the verification of the quality assurance
     * - 4
       - Only quality-assured project/platform releases are delivered to the community
       - :need:`stkh_req__dependability__automotive_safety`, :doc:`../requirements/stakeholder/index`
@@ -152,7 +152,7 @@ Objectives and scope
       - :need:`stkh_req__dependability__automotive_safety`, :doc:`../requirements/stakeholder/index`
       - 100% of the quality improvement, non-conformance issues are closed
       - None
-      - Ensured by the process quality management, :need:`PROCESS_wp__issue_track_system` contain improvements and non-conformances
+      - Ensured by the process quality management, :need:`PROCESS_wp__issue_track_system` contain improvements and non-conformance
 
 
 3.4 Work Product Quality Goals
@@ -317,22 +317,22 @@ None
           - <automated>
 
         * - :need:`PROCESS_wp__chm_plan`
-          - :need:`PROCESS_gd_guidl__change__change_request`
-          - :ndf:`copy('status', need_id='PROCESS_gd_guidl__change__change_request')`
+          - :need:`PROCESS_gd_guidl__change_change_request`
+          - :ndf:`copy('status', need_id='PROCESS_gd_guidl__change_change_request')`
           - <Link to issue>
           - <Link to WP>
           - <automated>
 
         * - :need:`PROCESS_wp__cmpt_request`
-          - :need:`PROCESS_gd_guidl__change__change_request`
-          - :ndf:`copy('status', need_id='PROCESS_gd_guidl__change__change_request')`
+          - :need:`PROCESS_gd_guidl__change_change_request`
+          - :ndf:`copy('status', need_id='PROCESS_gd_guidl__change_change_request')`
           - <Link to issue>
           - <Link to WP>
           - <automated>
 
         * - :need:`PROCESS_wp__component_arch`
-          - :need:`PROCESS_gd_guidl__arch__design`
-          - :ndf:`copy('status', need_id='PROCESS_gd_guidl__arch__design')`
+          - :need:`PROCESS_gd_guidl__arch_design`
+          - :ndf:`copy('status', need_id='PROCESS_gd_guidl__arch_design')`
           - <Link to issue>
           - <Link to WP>
           - <automated>
@@ -352,15 +352,15 @@ None
           - <automated>
 
         * - :need:`PROCESS_wp__feat_request`
-          - :need:`PROCESS_gd_guidl__change__change_request`
-          - :ndf:`copy('status', need_id='PROCESS_gd_guidl__change__change_request')`
+          - :need:`PROCESS_gd_guidl__change_change_request`
+          - :ndf:`copy('status', need_id='PROCESS_gd_guidl__change_change_request')`
           - <Link to issue>
-          - :need:`doc__logging`, :need:`doc__com`, :need:`doc__feo`, :need:`doc__persistency_kvs`
+          - :need:`doc__logging`, :need:`doc__com`, :need:`doc__frameworks_feo`, :need:`doc__persistency_kvs`
           - <automated>
 
         * - :need:`PROCESS_wp__feature_arch`
-          - :need:`PROCESS_gd_guidl__arch__design`
-          - :ndf:`copy('status', need_id='PROCESS_gd_guidl__arch__design')`
+          - :need:`PROCESS_gd_guidl__arch_design`
+          - :ndf:`copy('status', need_id='PROCESS_gd_guidl__arch_design')`
           - <Link to issue>
           - <Link to WP>
           - <automated>
@@ -464,8 +464,8 @@ None
           - <automated>
 
         * - :need:`PROCESS_wp__prm_plan`
-          - :need:`PROCESS_gd_guidl__problem__problem`
-          - :ndf:`copy('status', need_id='PROCESS_gd_guidl__problem__problem')`
+          - :need:`PROCESS_gd_guidl__problem_problem`
+          - :ndf:`copy('status', need_id='PROCESS_gd_guidl__problem_problem')`
           - <Link to issue>
           - <Link to WP>
           - <automated>
@@ -478,8 +478,8 @@ None
           - <automated>
 
         * - :need:`PROCESS_wp__process_impr_report`
-          - :need:`PROCESS_gd_guidl__platform__mgmt_plan`
-          - :ndf:`copy('status', need_id='PROCESS_gd_guidl__platform__mgmt_plan')`
+          - :need:`PROCESS_gd_guidl__platform_mgmt_plan`
+          - :ndf:`copy('status', need_id='PROCESS_gd_guidl__platform_mgmt_plan')`
           - <Link to issue>
           - <Link to WP>
           - <automated>
@@ -492,8 +492,8 @@ None
           - <automated>
 
         * - :need:`PROCESS_wp__project_mgt`
-          - :need:`PROCESS_gd_guidl__platform__mgmt_plan`
-          - :ndf:`copy('status', need_id='PROCESS_gd_guidl__platform__mgmt_plan')`
+          - :need:`PROCESS_gd_guidl__platform_mgmt_plan`
+          - :ndf:`copy('status', need_id='PROCESS_gd_guidl__platform_mgmt_plan')`
           - <Link to issue>
           - <Link to WP>
           - <automated>
@@ -512,51 +512,51 @@ None
           - <Link to WP>
           - <automated>
 
-        * - :need:`PROCESS_wp__requirements__comp`
-          - :need:`PROCESS_gd_guidl__req__engineering`
-          - :ndf:`copy('status', need_id='PROCESS_gd_guidl__req__engineering')`
+        * - :need:`PROCESS_wp__requirements_comp`
+          - :need:`PROCESS_gd_guidl__req_engineering`
+          - :ndf:`copy('status', need_id='PROCESS_gd_guidl__req_engineering')`
           - <Link to issue>
           - <Link to WP>
           - <automated>
 
-        * - :need:`PROCESS_wp__requirements__comp_aou`
-          - :need:`PROCESS_gd_guidl__req__engineering`
-          - :ndf:`copy('status', need_id='PROCESS_gd_guidl__req__engineering')`
+        * - :need:`PROCESS_wp__requirements_comp_aou`
+          - :need:`PROCESS_gd_guidl__req_engineering`
+          - :ndf:`copy('status', need_id='PROCESS_gd_guidl__req_engineering')`
           - <Link to issue>
           - <Link to WP>
           - <automated>
 
-        * - :need:`PROCESS_wp__requirements__feat`
-          - :need:`PROCESS_gd_guidl__req__engineering`
-          - :ndf:`copy('status', need_id='PROCESS_gd_guidl__req__engineering')`
+        * - :need:`PROCESS_wp__requirements_feat`
+          - :need:`PROCESS_gd_guidl__req_engineering`
+          - :ndf:`copy('status', need_id='PROCESS_gd_guidl__req_engineering')`
           - <Link to issue>
           - <Link to WP>
           - <automated>
 
-        * - :need:`PROCESS_wp__requirements__feat_aou`
-          - :need:`PROCESS_gd_guidl__req__engineering`
-          - :ndf:`copy('status', need_id='PROCESS_gd_guidl__req__engineering')`
+        * - :need:`PROCESS_wp__requirements_feat_aou`
+          - :need:`PROCESS_gd_guidl__req_engineering`
+          - :ndf:`copy('status', need_id='PROCESS_gd_guidl__req_engineering')`
           - <Link to issue>
           - <Link to WP>
           - <automated>
 
-        * - :need:`PROCESS_wp__requirements__inspect`
-          - :need:`PROCESS_gd_guidl__req__engineering`
-          - :ndf:`copy('status', need_id='PROCESS_gd_guidl__req__engineering')`
+        * - :need:`PROCESS_wp__requirements_inspect`
+          - :need:`PROCESS_gd_guidl__req_engineering`
+          - :ndf:`copy('status', need_id='PROCESS_gd_guidl__req_engineering')`
           - <Link to issue>
           - <Link to WP>
           - <automated>
 
-        * - :need:`PROCESS_wp__requirements__stkh`
-          - :need:`PROCESS_gd_guidl__req__engineering`
-          - :ndf:`copy('status', need_id='PROCESS_gd_guidl__req__engineering')`
+        * - :need:`PROCESS_wp__requirements_stkh`
+          - :need:`PROCESS_gd_guidl__req_engineering`
+          - :ndf:`copy('status', need_id='PROCESS_gd_guidl__req_engineering')`
           - <Link to issue>
           - <Link to WP>
           - <automated>
 
         * - :need:`PROCESS_wp__sw_arch_verification`
-          - :need:`PROCESS_gd_guidl__arch__design`
-          - :ndf:`copy('status', need_id='PROCESS_gd_guidl__arch__design')`
+          - :need:`PROCESS_gd_guidl__arch_design`
+          - :ndf:`copy('status', need_id='PROCESS_gd_guidl__arch_design')`
           - <Link to issue>
           - <Link to WP>
           - <automated>
@@ -582,7 +582,7 @@ None
           - <Link to WP>
           - <automated>
 
-        * - :need:`PROCESS_wp__sw_component_dfa` 
+        * - :need:`PROCESS_wp__sw_component_dfa`
           - :need:`PROCESS_gd_guidl__safety_analysis`
           - :ndf:`copy('status', need_id='PROCESS_gd_guidl__safety_analysis')`
           - <Link to issue>
@@ -618,15 +618,15 @@ None
           - <automated>
 
         * - :need:`PROCESS_wp__tlm_plan`
-          - :need:`PROCESS_doc_concept__tool__process`
-          - :ndf:`copy('status', need_id='PROCESS_doc_concept__tool__process')`
+          - :need:`PROCESS_doc_concept__tool_process`
+          - :ndf:`copy('status', need_id='PROCESS_doc_concept__tool_process')`
           - <Link to issue>
           - :need:`doc__platform_tool_management_plan`
           - <automated>
 
         * - :need:`PROCESS_wp__tool_verification_report`
-          - :need:`PROCESS_doc_concept__tool__process`
-          - :ndf:`copy('status', need_id='PROCESS_doc_concept__tool__process')`
+          - :need:`PROCESS_doc_concept__tool_process`
+          - :ndf:`copy('status', need_id='PROCESS_doc_concept__tool_process')`
           - <Link to issue>
           - <Link to WP>
           - <automated>
@@ -639,49 +639,49 @@ None
           - <automated>
 
 
-        * - :need:`PROCESS_wp__verification__comp_int_test`
+        * - :need:`PROCESS_wp__verification_comp_int_test`
           - :need:`PROCESS_gd_guidl__verification_guide`
           - :ndf:`copy('status', need_id='PROCESS_gd_guidl__verification_guide')`
           - <Link to issue>
           - <Link to WP>
           - <automated>
 
-        * - :need:`PROCESS_wp__verification__feat_int_test`
+        * - :need:`PROCESS_wp__verification_feat_int_test`
           - :need:`PROCESS_gd_guidl__verification_guide`
           - :ndf:`copy('status', need_id='PROCESS_gd_guidl__verification_guide')`
           - <Link to issue>
           - <Link to WP>
           - <automated>
 
-        * - :need:`PROCESS_wp__verification__module_ver_report`
+        * - :need:`PROCESS_wp__verification_module_ver_report`
           - :need:`PROCESS_gd_guidl__verification_guide`
           - :ndf:`copy('status', need_id='PROCESS_gd_guidl__verification_guide')`
           - <Link to issue>
           - <Link to WP>
           - <automated>
 
-        * - :need:`PROCESS_wp__verification__plan`
+        * - :need:`PROCESS_wp__verification_plan`
           - :need:`PROCESS_gd_guidl__verification_guide`
           - :ndf:`copy('status', need_id='PROCESS_gd_guidl__verification_guide')`
           - <Link to issue>
           - <Link to WP>
           - <automated>
 
-        * - :need:`PROCESS_wp__verification__platform_test`
+        * - :need:`PROCESS_wp__verification_platform_test`
           - :need:`PROCESS_gd_guidl__verification_guide`
           - :ndf:`copy('status', need_id='PROCESS_gd_guidl__verification_guide')`
           - <Link to issue>
           - <Link to WP>
           - <automated>
 
-        * - :need:`PROCESS_wp__verification__platform_ver_report`
+        * - :need:`PROCESS_wp__verification_platform_ver_report`
           - :need:`PROCESS_gd_guidl__verification_guide`
           - :ndf:`copy('status', need_id='PROCESS_gd_guidl__verification_guide')`
           - <Link to issue>
           - <Link to WP>
           - <automated>
 
-        * - :need:`PROCESS_wp__verification__sw_unit_test`
+        * - :need:`PROCESS_wp__verification_sw_unit_test`
           - :need:`PROCESS_gd_guidl__verification_guide`
           - :ndf:`copy('status', need_id='PROCESS_gd_guidl__verification_guide')`
           - <Link to issue>

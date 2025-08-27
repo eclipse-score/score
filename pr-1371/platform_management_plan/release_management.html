@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -532,7 +532,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-cf514add">
+  <div class="need_container docutils container" id="SNCB-1f22e0c5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__platform_release_management_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -541,7 +541,7 @@
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></span></div>
-<div class="line"><span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
 <div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
@@ -551,9 +551,7 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">platform_management</span><span class="needs_spacer">, </span><span class="needs_data">persistency</span><span class="needs_spacer">, </span><span class="needs_data">persistencykvs</span></span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">platform_management</span></span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -597,9 +595,9 @@
 <h2>Approach<a class="headerlink" href="#approach" title="Link to this heading">#</a></h2>
 <section id="release-scope">
 <h3>Release Scope<a class="headerlink" href="#release-scope" title="Link to this heading">#</a></h3>
-<p>One release contains all the files of one repository. So there is a platform release and seperate releases for the modules.
+<p>One release contains all the files of one repository. So there is a platform release and separate releases for the modules.
 It contains also all the verification reports (including their input e.g. test run logs) and documentation collaterals
-(e.g. the htmls for the S-CORE homepage) as created during the CI build based on the release tagged repository files.
+(e.g. the html’s for the S-CORE homepage) as created during the CI build based on the release tagged repository files.
 It does not contain the binary produced in the CI build, as this is not a qualified work product of S-CORE and
 the user will need to re-build in the context of his system. Furthermore the binary build with Bazel
 is reproducible, so this can be re-created from source any time.</p>
@@ -611,23 +609,23 @@ is reproducible, so this can be re-created from source any time.</p>
 <p>S-CORE has two major kinds of releases: experimental and official. These correspond with the “feature flags”
 defined in <a class="reference internal" href="project_management.html#doc__project_mgt_plan" title="doc__project_mgt_plan"><em class="xref need">Project Management Plan (doc__project_mgt_plan)</em></a>.</p>
 <ul class="simple">
-<li><p><strong>Experimental</strong> means that the development artefacts needed for the safety package work products may be incomplete.
+<li><p><strong>Experimental</strong> means that the development artifacts needed for the safety package work products may be incomplete.
 These releases are done during development phase to be able to sync between the module repositories.</p></li>
 <li><p><strong>Official</strong> means that the processes are fully executed to produce all work products and are documented
-with a releae note as in <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/release_management/guidance/release_templates.html#gd_temp__rel__plat_rel_note">PROCESS_gd_temp__rel__plat_rel_note</a> or <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/release_management/guidance/release_templates.html#gd_temp__rel__mod_rel_note">PROCESS_gd_temp__rel__mod_rel_note</a>.
+with a release note as in <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/release_management/guidance/release_templates.html#gd_temp__rel_plat_rel_note">PROCESS_gd_temp__rel_plat_rel_note</a> or <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/release_management/guidance/release_templates.html#gd_temp__rel_mod_rel_note">PROCESS_gd_temp__rel_mod_rel_note</a>.
 For an official release also consider <a class="reference external" href="https://www.eclipse.org/projects/handbook/#release-releases">Eclipse Project Handbook - Releases</a>.</p></li>
 </ul>
 </section>
 <section id="release-planning-and-execution">
 <h3>Release Planning and Execution<a class="headerlink" href="#release-planning-and-execution" title="Link to this heading">#</a></h3>
-<p>Generally release planning and execution is described in <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/release_management/release_workflow.html#wf__rel__mod_rel_note">PROCESS_wf__rel__mod_rel_note</a> process.
+<p>Generally release planning and execution is described in <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/release_management/release_workflow.html#wf__rel_mod_rel_note">PROCESS_wf__rel_mod_rel_note</a> process.
 It is part of project planning and therefore also documented with the same means. Generally a Release
 is planned as an issue linked to a milestone in the <a class="reference external" href="https://github.com/orgs/eclipse-score/projects/13">GitHub Milestone Planning</a>.
 And this issue is closed by merging a pull request which creates/updates a release note.</p>
 <p>Before every release there will be a phase in which, for the features to be released, no functional
 updates will be allowed but only bug fixes, addition of tests and quality improvements.
-This period will be planned by the technical leads in the mileston planning. There is no general
-timespan defined for this, but for the first releases a period of four weeks is recommended as good practice.
+This period will be planned by the technical leads in the milestone planning. There is no general
+time-span defined for this, but for the first releases a period of four weeks is recommended as good practice.
 With increasing maturity of the modules it is expected that this period can be reduced.</p>
 <p>As defined in the process, the releases on module and platform level need to be coordinated.
 Major version updates denote API incompatibility, so the modules in a platform release are expected to have the same

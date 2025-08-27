@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -16,19 +16,25 @@ Fixed execution order framework (FEO)
 #####################################
 
 .. document:: Fixed execution order framework
-   :id: doc__feo
+   :id: doc__frameworks_feo
    :status: valid
+   :security: NO
    :safety: ASIL_B
-   :tags: feature_request
+   :tags: feature_request, frameworks_feo
 
-:need:`Change Request Guideline <PROCESS_gd_guidl__change__change_request>`
-and :need:`Feature Request Template <PROCESS_gd_temp__change__feature_request>`.
 
 .. toctree::
    :hidden:
 
-   requirements/index.rst
+   requirements/feature_req.rst
+   requirements/aou_req.rst
+   requirements/chklst_req_inspection.rst
    architecture/feature_architecture
+   architecture/chklst_arch_inspection.rst
+   safety_planning/index.rst
+   safety_analysis/feature_fmea.rst
+   safety_analysis/feature_dfa.rst
+   safety_analysis/chklst_safety_analysis_inspection.rst
 
 Feature flag
 ============
@@ -40,19 +46,19 @@ To activate this feature, use the following feature flag:
 Abstract
 ========
 
-This contribution request describes the fixed execution order and reprocessing 
-framework (FEO), which is intended to support data-driven or time-driven 
-applications. It provides a fixed execution order for activities and the 
+This contribution request describes the fixed execution order and reprocessing
+framework (FEO), which is intended to support data-driven or time-driven
+applications. It provides a fixed execution order for activities and the
 necessary infrastructure to reprocess activities in a simulated environment.
 
 
 Motivation
-========== 
+==========
 
 There are several automotive use-cases that require a fixed and deterministic computation of tasks.
-This is particularly crucial for safety-critical applications where the execution order 
-of tasks is essential for the correct operation of the system. The FEO framework is designed 
-for applications supporting data-driven and time-driven applications 
+This is particularly crucial for safety-critical applications where the execution order
+of tasks is essential for the correct operation of the system. The FEO framework is designed
+for applications supporting data-driven and time-driven applications
 mainly in the ADAS domain, ensuring a fixed execution order and supporting reprocessing.
 (See also :need:`stkh_req__app_architectures__support_data`, :
 need:`stkh_req__app_architectures__support_time`, `stkh_req__dev_experience__reprocessing`)
@@ -71,11 +77,11 @@ these aspects can be implemented.
 Applications
 ============
 
-* The framework is used to build applications 
+* The framework is used to build applications
 * Multiple applications based on
-  the framework can run in parallel on the same host machine 
+  the framework can run in parallel on the same host machine
 * Applications based on the framework can run in parallel with other
-  applications not based on the framework 
+  applications not based on the framework
 * The framework does not support
   communication between different applications (except via service activities,
   see below)
@@ -105,8 +111,8 @@ Application Activities
 ======================
 
 * Application activities must only use APIs provided by the framework as defined above
-* Application activities are single threaded, they can not run outside of their entry points, 
-  they must not spawn other threads or processs
+* Application activities are single threaded, they can not run outside of their entry points,
+  they must not spawn other threads or process
 * Activities can be implemented in C++ or Rust, mixed systems with both
   C++ and Rust activities shall be supported.
 
@@ -118,9 +124,9 @@ Service Activities
   network communication, direct sensor input or direct actuator output
 * Service activities may also use APIs external to the framework
   (e.g. networking APIs, reading from external sensor devices, writing HW I/O, etc.)
-* Service activities run at the beginning ("input service activity") and at the end 
+* Service activities run at the beginning ("input service activity") and at the end
   ("output service activity") of a task chain (see below)
-* Input service activities provide the input values to the application activities 
+* Input service activities provide the input values to the application activities
   within the task chain, by means of communication
 * All input service activities must finish execution before the first application activity
   is run. This can be achieved by proper setup of the chain dependencies (see below)
@@ -135,7 +141,7 @@ Service Activities
 Communication
 =============
 
-* Application type activities can only communicate to other activities within 
+* Application type activities can only communicate to other activities within
   the same application and using the provided communication API
 * Communication consists of sending and receiving messages on named topics
 * The receiver of a message on a topic does not know the sender, instead it only
@@ -145,9 +151,9 @@ Communication
 * There is no publish/subscribe mechanism accessible to activities, instead
   the set of known communication topics and the assignment of which activity
   sends and receives to/from which topic is "runtime static"
-* "runtime static" means "static after the startup phase", i.e. during startup, the 
+* "runtime static" means "static after the startup phase", i.e. during startup, the
   framework can configure or build up communication connections, but as soon as the
-  run phase starts (where the activties' step() functions are called), the connections
+  run phase starts (where the activities' step() functions are called), the connections
   are fixed and will not change any more.
 * Communication relations are typically configured in configuration files
 * Messages/topics are statically typed
@@ -200,12 +206,12 @@ Process/Thread/Activity Mapping
 * There is one executable per process, so an application may consist of multiple executables
 * Each executable contains part of this framework as well as the activities mapped to the
   corresponding process
-* It is assumed that an external entity starts all the executables belonging to the 
+* It is assumed that an external entity starts all the executables belonging to the
   same application. The reason for this is, that for security reasons, only very
   specific entities should have the ability to create processes
 * The executables belonging to an application are grouped (e.g. in the filesystem) so that
   it's clear that they belong together
-* One reason for having multiple processes per application is to 
+* One reason for having multiple processes per application is to
   achieve Freedom From Interference for safety relevant applications
 
 
@@ -262,7 +268,7 @@ Lifecycle
   - run phase
   - shutdown phase
 
-* During startup phase, the primary proces connects with the secondary processes 
+* During startup phase, the primary process connects with the secondary processes
   (if present), in order to:
 
   - Build up connections for communication (e.g. find shared memory segments
@@ -281,14 +287,14 @@ Lifecycle
 
 Activity Init:
 
-* At the end of the startup phase, the framework will invoke the init() entry point 
+* At the end of the startup phase, the framework will invoke the init() entry point
   of each activity
 * The init() method will run in the thread assigned to the activity.
 * The order in which init() is called for different activities is arbitrary, it may happen in parallel or sequentially.
 
 Activity Shutdown:
 
-* At the beginning of the shutdown phase, the framework will invoke the shutdown() 
+* At the beginning of the shutdown phase, the framework will invoke the shutdown()
   entry point of each application
 * The shutdown() method will run in the thread assigned to the activity.
 * The order of invoking the shutdown() entry points across activities is not defined,
@@ -302,15 +308,15 @@ Scheduling
 * There is exactly one task chain per application
 * The task chain describes the execution order of the activities in the run phase
 * Task chains run cyclically, e.g. every 30ms
-* Optional: task chains can be triggerd on event
+* Optional: task chains can be triggered on event
 * All activities are executed once per task chain run
 * All activities finish within a single task chain run
-* Running an activity means that the framework is calling its step() function 
+* Running an activity means that the framework is calling its step() function
   within the process/thread it has been mapped to
 * The execution order is defined by a dependency model:
 
   - Each activity can depend on N other activities in the same task chain
-  - An activity's step() function gets called as soon as the step() 
+  - An activity's step() function gets called as soon as the step()
     functions of the activities it depends on have been called
 
 * The framework takes care to run the activities in this order,
@@ -323,7 +329,7 @@ Scheduling
   and activity mapping, the invocation delay is deterministic
   (apart from differences in the activity execution times)
 * The execution order and timing of an activity are independent of any communication that activity may perform.
-* The dependencies should be defined by the application developer in a way so that 
+* The dependencies should be defined by the application developer in a way so that
   processing results passed via communication are available when they are needed
   (if an activity needs an output of another activity it sets that other
   activity as its dependency and therefore will only run once the other one
@@ -336,7 +342,7 @@ Executor and Agents
 * The coordinating entity in the primary process is the "executor"
 * The executor coordinates the invocation of the activities in the
   order as described above
-* As a central entity the executor is able to trace, record or monitor the 
+* As a central entity the executor is able to trace, record or monitor the
   system behavior as sequence of activity invocations (see below)
 * The actual activity invocation is done by an "agent"
 * The agent exists in each process belonging to an application
@@ -396,9 +402,9 @@ Reprocessing
   - replay of one or many executions of a single activity
 
 * In a replay scenario, the framework is used to reproduce the communication messages
-  and other API behavior (e.g. time, parameters, persistency) as was 
+  and other API behavior (e.g. time, parameters, persistency) as was
   recorded in a previous run
-* In case a whole task chain is reprocessed, the outputs of the input service activites
+* In case a whole task chain is reprocessed, the outputs of the input service activities
   will be reproduced
 * In case only a single activity is reprocessed, the outputs of the predecessors
   in the task chain will be reproduced
@@ -423,9 +429,9 @@ Tracing
 Performance
 ===========
 
-The framework is designed to ensure deterministic execution order and 
-timing of activities, supporting safety-critical applications 
-in the automotive domain. In this domain the footprint of the framework is curcial especially
+The framework is designed to ensure deterministic execution order and
+timing of activities, supporting safety-critical applications
+in the automotive domain. In this domain the footprint of the framework is crucial especially
 w.r.t impact of computation load and latency.
 
 

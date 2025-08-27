@@ -12,8 +12,16 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-feo Component Architecture
-**************************
+.. document:: FEO Component Architecture
+   :id: doc__component_feo_architecture
+   :status: draft
+   :security: NO
+   :safety: ASIL_B
+   :realizes: PROCESS_wp__component_arch
+   :tags: component_feo
+
+FEO Component Architecture
+==========================
 
 Overview
 --------
@@ -87,7 +95,7 @@ Dynamic Architecture
 
 
 Interfaces
-------------------
+----------
 
 .. real_arc_int:: feo::agent::PrimaryConfig
   :id: real_arc_int__feo__primary_config
@@ -142,3 +150,6 @@ Interfaces
   :language: rust
 
   See static architecture.
+
+.. needextend:: docname is not None and "feo/docs/architecture" in docname
+   :+tags: component_feo

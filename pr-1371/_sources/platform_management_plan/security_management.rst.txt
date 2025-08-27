@@ -16,6 +16,7 @@
    :id: doc__platform_security_plan
    :status: draft
    :safety: ASIL_B
+   :security: YES
    :realizes: PROCESS_wp__platform_security_plan, PROCESS_wp__tailoring
    :tags: platform_management
 
@@ -73,7 +74,7 @@ Regarding the platform specifics:
 
 The SW platform functionality consists of features, which are based on a set of requirements and are developed in parallel.
 These features are developed into SW components contained in "modules", which are another set of OoCs (initiated by a change request).
-A template exists to guide this: need:`PROCESS_gd_temp__module_security_plan`.
+A template exists to guide this: :need:`PROCESS_gd_temp__module_security_plan`.
 
 Tailoring
 ^^^^^^^^^
@@ -199,10 +200,10 @@ To exchange general information and to clarify general topics the following comm
 The security management status is reported in the Technical Lead Circle Meeting which is defined in :need:`doc__project_mgt_plan`.
 The status report is based on security plans work product lists (see below) and verification reports on platform and module level:
 
-* (tbc after release of process description) need:`PROCESS_wp__platform_security_plan`
-* (tbc after release of process description) need:`PROCESS_wp__module_security_plan`
-* :need:`PROCESS_wp__verification__platform_ver_report`
-* :need:`PROCESS_wp__verification__module_ver_report`
+* :need:`PROCESS_wp__platform_security_plan`
+* :need:`PROCESS_wp__module_security_plan`
+* :need:`PROCESS_wp__verification_platform_ver_report`
+* :need:`PROCESS_wp__verification_module_ver_report`
 
 *Escalation*
 
@@ -247,7 +248,7 @@ The platform management plan defines :doc:`tool_management`
 
 Security Work Products
 ^^^^^^^^^^^^^^^^^^^^^^
-The work products relevant for a module development is defined within each module security management plan. See need:`PROCESS_gd_temp__module_security_plan`.
+The work products relevant for a module development is defined within each module security management plan. See :need:`PROCESS_gd_temp__module_security_plan`.
 Generic project wide work products are defined below.
 
 Security Quality Criteria
@@ -278,29 +279,29 @@ Security Management SW Platform Work Products
       - to be shown to assessor
 
     * - :need:`PROCESS_wp__platform_mgmt`
-      - :need:`PROCESS_wf__platform__cr_mt_platform_mgmt_plan`
-      - :ndf:`copy('status', need_id='PROCESS_wf__platform__cr_mt_platform_mgmt_plan')`
+      - :need:`PROCESS_wf__platform_cr_mt_platform_mgmt_plan`
+      - :ndf:`copy('status', need_id='PROCESS_wf__platform_cr_mt_platform_mgmt_plan')`
       - `#540 <https://github.com/eclipse-score/score/issues/540>`_
       - :doc:`index`
       - :ndf:`copy('status', need_id='doc__platform_mgt_plan')`
 
     * - :need:`PROCESS_wp__qms_plan`
-      - :need:`PROCESS_wf__platform__cr_mt_platform_mgmt_plan`
-      - :ndf:`copy('status', need_id='PROCESS_wf__platform__cr_mt_platform_mgmt_plan')`
+      - :need:`PROCESS_wf__platform_cr_mt_platform_mgmt_plan`
+      - :ndf:`copy('status', need_id='PROCESS_wf__platform_cr_mt_platform_mgmt_plan')`
       - `#316 <https://github.com/eclipse-score/score/issues/316>`_
       - :doc:`quality_management`
       - not started
 
-    * - need:`PROCESS_wp__platform_security_plan`
-      - need:`PROCESS_gd_guidl__security_plan_definitions`
-      - ndf:`copy('status', need_id='PROCESS_gd_guidl__security_plan_definitions')`
+    * - :need:`PROCESS_wp__platform_security_plan`
+      - :need:`PROCESS_gd_guidl__security_plan_definitions`
+      - :ndf:`copy('status', need_id='PROCESS_gd_guidl__security_plan_definitions')`
       - `#TBD <https://github.com/eclipse-score/score/issues/381>`_
       - this document
       - see above
 
-    * - need:`PROCESS_wp__platform_security_package`
-      - need:`PROCESS_gd_guidl__security_package`
-      - ndf:`copy('status', need_id='PROCESS_gd_guidl__security_package')`
+    * - :need:`PROCESS_wp__platform_security_package`
+      - :need:`PROCESS_gd_guidl__security_package`
+      - :ndf:`copy('status', need_id='PROCESS_gd_guidl__security_package')`
       - <Link to issue>
       - <Link to WP>
       - <automated>
@@ -333,28 +334,28 @@ Security Management SW Platform Work Products
       - `Process community issues <https://github.com/orgs/eclipse-score/projects/7>`_
       - <automated>
 
-    * - need:`PROCESS_wp__fdr_reports_security` (platform Security Plan)
-      - need:`PROCESS_gd_chklst__security_plan`
-      - ndf:`copy('status', need_id='PROCESS_gd_chklst__security_plan')`
+    * - :need:`PROCESS_wp__fdr_reports_security` (platform Security Plan)
+      - :need:`PROCESS_gd_chklst__security_plan`
+      - :ndf:`copy('status', need_id='PROCESS_gd_chklst__security_plan')`
       - <Link to issue>
       - <Link to WP>
       - <automated>
 
-    * - need:`PROCESS_wp__fdr_reports_security` (platform Security Package)
-      - need:`PROCESS_gd_chklst__security_package`
-      - ndf:`copy('status', need_id='PROCESS_gd_chklst__security_package')`
+    * - :need:`PROCESS_wp__fdr_reports_security` (platform Security Package)
+      - :need:`PROCESS_gd_chklst__security_package`
+      - :ndf:`copy('status', need_id='PROCESS_gd_chklst__security_package')`
       - <Link to issue>
       - <Link to WP>
       - <automated>
 
-    * - need:`PROCESS_wp__fdr_reports_security` (feature's Security Analyses)
+    * - :need:`PROCESS_wp__fdr_reports_security` (feature's Security Analyses)
       - Security Analysis FDR tbd
       - <automated>
       - <Link to issue>
       - <Link to WP>
       - <automated>
 
-    * - need:`PROCESS_wp__audit_report_security`
+    * - :need:`PROCESS_wp__audit_report_security`
       - performed by external experts
       - n/a
       - `#TBD1 <https://github.com/eclipse-score/score/issues/470>`_
@@ -368,9 +369,9 @@ Security Management SW Platform Work Products
       - <Link to WP>
       - <automated>
 
-    * - need:`PROCESS_wp__platform_security_manual`
-      - need:`PROCESS_gd_temp__security_manual`
-      - ndf:`copy('status', need_id='PROCESS_gd_temp__security_manual')`
+    * - :need:`PROCESS_wp__platform_security_manual`
+      - :need:`PROCESS_gd_temp__security_manual`
+      - :ndf:`copy('status', need_id='PROCESS_gd_temp__security_manual')`
       - <Link to issue>
       - <Link to WP>
       - <automated>
@@ -382,30 +383,30 @@ Security Management SW Platform Work Products
       - <Link to WP>
       - <automated>
 
-    * - :need:`PROCESS_wp__verification__platform_ver_report`
+    * - :need:`PROCESS_wp__verification_platform_ver_report`
       - :need:`PROCESS_gd_temp__mod_ver_report`
       - :ndf:`copy('status', need_id='PROCESS_gd_temp__mod_ver_report')`
       - <Link to issue>
       - <Link to WP>
       - <automated>
 
-    * - :need:`PROCESS_wp__requirements__stkh`
-      - :need:`PROCESS_gd_temp__req__stkh_req`
-      - :ndf:`copy('status', need_id='PROCESS_gd_temp__req__stkh_req')`
+    * - :need:`PROCESS_wp__requirements_stkh`
+      - :need:`PROCESS_gd_temp__req_stkh_req`
+      - :ndf:`copy('status', need_id='PROCESS_gd_temp__req_stkh_req')`
       - n/a (done already)
       - :ref:`stakeholder_requirements`
       - <automated>
 
     * - :need:`PROCESS_wp__sw_development_plan`
-      - :need:`PROCESS_wf__platform__cr_mt_platform_mgmt_plan`
-      - :ndf:`copy('status', need_id='PROCESS_wf__platform__cr_mt_platform_mgmt_plan')`
+      - :need:`PROCESS_wf__platform_cr_mt_platform_mgmt_plan`
+      - :ndf:`copy('status', need_id='PROCESS_wf__platform_cr_mt_platform_mgmt_plan')`
       - <Link to issue>
       - :doc:`software_development`
       - not started
 
-    * - :need:`PROCESS_wp__verification__plan`
-      - :need:`PROCESS_wf__platform__cr_mt_platform_mgmt_plan`
-      - :ndf:`copy('status', need_id='PROCESS_wf__platform__cr_mt_platform_mgmt_plan')`
+    * - :need:`PROCESS_wp__verification_plan`
+      - :need:`PROCESS_wf__platform_cr_mt_platform_mgmt_plan`
+      - :ndf:`copy('status', need_id='PROCESS_wf__platform_cr_mt_platform_mgmt_plan')`
       - <Link to issue>
       - :doc:`software_verification`
       - not started
@@ -418,14 +419,14 @@ Security Management SW Platform Work Products
       - <automated>
 
     * - :need:`PROCESS_wp__tailoring` (generic)
-      - need:`PROCESS_gd_guidl__security_plan_definitions`
-      - ndf:`copy('status', need_id='PROCESS_gd_guidl__security_plan_definitions')`
+      - :need:`PROCESS_gd_guidl__security_plan_definitions`
+      - :ndf:`copy('status', need_id='PROCESS_gd_guidl__security_plan_definitions')`
       - `#TBD2 <https://github.com/eclipse-score/score/issues/307>`_
       - `REPLACEstandard_iso26262` & :need:`doc__platform_safety_plan`
       - valid
 
-    * - need:`PROCESS_wp__sw_platform_sbom`
-      - need:`PROCESS_wf__cr_mt_security_sbom`
+    * - :need:`PROCESS_wp__sw_platform_sbom`
+      - :need:`PROCESS_wf__cr_mt_security_sbom`
       - not started
       - <Link to issue>
       - <Link to WP>
@@ -434,7 +435,7 @@ Security Management SW Platform Work Products
 Security Management Feature Specific Work Products
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-See feature tree documents (created by using need:`PROCESS_gd_temp__feature_security_wp`):
+See feature tree documents (created by using :need:`PROCESS_gd_temp__feature_security_wp`):
 
 <link to document for every feature>
 

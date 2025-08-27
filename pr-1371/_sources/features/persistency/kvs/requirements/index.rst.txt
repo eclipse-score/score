@@ -22,7 +22,7 @@ Requirements
    :id: doc__persistency_kvs_feat_reqs
    :status: valid
    :safety: ASIL_B
-   :realizes: PROCESS_wp__requirements__feat
+   :realizes: PROCESS_wp__requirements_feat
 
 .. feat_req:: C++ & Rust Interoperability
    :id: feat_req__persistency__cpp_rust_interop
@@ -301,7 +301,7 @@ Requirements
 
    The Key-Value-Storage shall support concurrent intra-process data access.
 
-.. needextend:: docname is not None
+.. needextend:: docname is not None and "persistency/kvs/requirements" in docname
    :+tags: persistency
 
 AoU Requirements
