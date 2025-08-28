@@ -12,22 +12,15 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Infrastructure
-==============
-
-Scope
-~~~~~
-
-* Integration & Automation according to modern software engineering practices
-* Common toolchains for C++, Rust, and Python
-* Tools which are required for software development, CI/CD, and quality assurance
-* Docs-as-Code tool development
-
 Decision Records
-~~~~~~~~~~~~~~~~
+================
+
+
+Infrastructure
+~~~~~~~~~~~~~~
 
 .. toctree::
    :maxdepth: 1
    :glob:
 
-   DR*
+   DR-*-infra*

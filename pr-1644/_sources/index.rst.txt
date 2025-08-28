@@ -138,4 +138,4 @@ Project structure and processes
       Tools <score_tools/index.rst>
       PMP <platform_management_plan/index.rst>
       Eclipse <https://projects.eclipse.org/projects/automotive.score>
-      infrastructure/index
+      design_decisions/index
