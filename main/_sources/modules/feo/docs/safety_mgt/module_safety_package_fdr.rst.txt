@@ -12,7 +12,7 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. document:: [Your Module Name] Safety Package Formal Review
+.. document:: FEO Module Safety Package Formal Review
    :id: doc__module_name_safety_package_fdr
    :status: draft
    :security: NO
@@ -20,8 +20,8 @@
    :realizes: PROCESS_wp__fdr_reports
    :tags: module_feo
 
-FEO Safety Package Formal Review Report
-=======================================
+FEO Module Safety Package Formal Review Report
+==============================================
 
 **1. Purpose**
 
