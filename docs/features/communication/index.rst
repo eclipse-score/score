@@ -31,6 +31,7 @@ Communication
    docs/**/index
    ipc/index
    some_ip_gateway/index
+   crossvm/index
 
 Feature flag
 ============
