@@ -31,6 +31,7 @@ Communication
    docs/**/index
    ipc/index
    some_ip_gateway/index
+   abi_compatible_data_types/index
 
 Feature flag
 ============
