@@ -222,32 +222,70 @@ Every software module project, located in another repository, is free to define
 additionally its own labels. It is recommended to create labels at least
 for specific areas that may encompass multiple features.
 
-Types of tasks and structure
-------------------------------
+Types of work packages and structure
+------------------------------------
 For better structuring of the tickets following *GitHub Issue* types are introduced
-in the main *S-CORE* repository. It is recommended for all *child projects* to
-introduce the same types.
+in the main *S-CORE* repository. In order to create a consistent overview of all work packages (WPs),
+the WPs need to be maintained in one single project within the main *S-CORE* repository.
+Having separate WP backlogs within separate repositories will increase the complexity
+and reduce the transparency too much.
+
+All *child projects* are only allowed to have their separate list of issues. All other WP types
+shall not be available for them. The planning WPs of the main *S-CORE* repository therefore are used
+to link WPs to *GitHub issues* of *child projects*.
+For example a *Bug* WP within the main repository is linked to a *GitHub Issue* of the *communication*
+repository but no *Bug* WP shall be created in the *child project* repository.
 
 .. image:: _assets/issue_types.png
     :width: 600
     :alt: Issue types overview
     :align: center
 
-* *Saga* *GitHub Issue* of type *Saga* is the highest level hierarchy and can not
-  be a sub-issue of another ticket. If you want to group *Sagas* together, you will
-  need to use labels. *Saga* can have multiple *Epics* as sub-issues. In really
-  exceptional cases, also a *Story* can be a direct sub-issue of a *Saga* as well.
-* *Epic* *GitHub Issue* of type *Epic* groups multiple *Stories* together and is sub-issue
-  of exactly one *Saga*. *Epics* can be also standalone *GitHub Issues* without being
-  a child of any *Saga*. *Saga* should be the only way for grouping *Epics* together.
-  Grouping standalone *Epics* with labels is not something, what we encourage you to do.
-* *Story* *GitHub Issue* of type *Story* is the lowest planning granularity and represents
-  concrete task, that should be done, e.g. by a developer. Normally *Stories* are
-  grouped together in an Epic. In some cases a *Story* can exist as a standalone *GitHub issue*.
-  Grouping standalone *Stories* with labels is not something, what we encourage you to do.
-* *Bug* *GitHub Issue* of type *Bug* is used to report any kind of problems. It can be
-  a standalone *GitHub Issue* or can be a sub-issue of an *Epic* or a *Saga*.
-  It is also ok to use labels to group multiple *Bugs* that are related to the same topic.
+* A *Task* *GitHub Issue* represents the smallest unit of planning and typically corresponds
+  to a concrete piece of work to be completed, such as by a developer. *Task* work packages are usually
+  grouped under a *Story* work package.
+  In certain cases, a *Task* may exist as a standalone *GitHub Issue*.
+  However, standalone *Task* work packages must not be grouped using labels.
+  If multiple *Task* work packages are related, a *Story* work package should be created instead,
+  with all associated *Task* work packages added as child work packages under that *Story*.
+
+* A *Story* *GitHub Issue* is the primary planning work package for development teams.
+  *Story* work packages should be scoped in a way that allows them to be completed within
+  the defined *Iteration* length (e.g., 2, 3, or 4 weeks) of the S-CORE project.
+  While a *Story* work package can be implemented by multiple team members, it is recommended
+  that one developer takes main responsibility for its completion. Quality assurance activities,
+  such as code reviews, should be performed by other team members.
+  *Story* work packages are typically grouped under an *Epic* work package.
+  However, a *Story* work package can also exist as a standalone work package if its outcome represents
+  a complete functional improvement, making a related *Epic* work package unnecessary.
+
+* An *Epic* *GitHub Issue* represents a complete, experienceable functional improvement whose
+  implementation cannot be completed within a single Iteration. Therefore, *Epic* work packages
+  consist of multiple *Story* work packages that collectively contribute to fulfilling the scope
+  of the *Epic* work package.
+  An *Epic* work package should be linked as a child to a *Milestone* work package to indicate
+  when the content of the *Epic* work package is expected to be delivered.
+  *Epic* work packages can also exist as standalone work packages without being linked as a child
+  to any *Milestone* work package but *Milestone* work packages should be the only method used
+  to group multiple *Epic* work packages together.
+
+* A *Milestone* *GitHub Issue* represents the highest level in the work package hierarchy and
+  cannot be linked as a child of another issue. If you need to group multiple *Milestone* work packages,
+  this must be done using labels.
+  A *Milestone* work package can have multiple *Epic* work packages as child work packages.
+  In exceptional cases, a *Story* work package may also be linked as a child of a *Milestone* work package
+  if its outcome represents a complete functional improvement.
+
+* A *Feature Request* *GitHub Issues* represents an independent work package used to describe and
+  track a high-level request for the project. Its content serves as input for the creation of
+  *Epic*, *Story* and *Milestone* work packages. *Feature Request* work packages can be linked to
+  other work packages, but they must not be treated as parent work packages.
+
+* A *Bug* *GitHub Issue* is used to report any kind of problem or malfunction. It is considered
+  a special type of *Story* work package and follows the same rules as regular *Story* work packages,
+  with the key difference that it focuses on fixing defects in existing functionality
+  rather than creating or extending functionality.
+  A *Bug* work package can be handled as a standalone work package or linked as a child to an *Epic* work package.
 
 Main *S-CORE* project defines templates for every type of *GitHub Issues*
 to ensure, that every ticket has all necessary information.
@@ -264,6 +302,40 @@ are related to the same topic, together.
     :alt: Sub issues overview
     :align: center
 
+Status of Work Packages
+^^^^^^^^^^^^^^^^^^^^^^^
+* **New**
+
+  The *New* status represents a newly created work package that has not yet been processed
+  for further evaluation. However, the content may be continuously updated by the author.
+
+* **Analyze**
+
+  The *Analyze* status indicates that evaluation activities are underway regarding the work package.
+  At this stage, no output is produced in a repository, but clarification of the content may be
+  in progress. Relevant teams might be estimating the effort, assessing feasibility, or
+  identifying potential risks. This status is primarily used during the planning phase before
+  the work package becomes part of committed work.
+
+* **In Progress**
+
+  The *In Progress* status is used when a person or team is actively working on the work package,
+  producing commits and pull requests related to its content. Parent work packages should also
+  be set to *In Progress* if any of their child work packages are in this status.
+
+* **Blocked**
+
+  The *Blocked* status indicates that an issue is preventing the work package from progressing.
+  Blocked packages require special attention, as they may impact entire milestone work packages or
+  even release deliveries.
+
+* **Done**
+
+  The *Done* status is set when a work package is completed. If the work package type is bound to a
+  specific Definition of Done (DoD), fulfillment of this DoD is an additional requirement
+  for marking the work package as *Done*.
+
+.. uml:: _assets/work_packages_workflow.puml
 
 Traceability
 ^^^^^^^^^^^^
