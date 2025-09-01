@@ -84,3 +84,13 @@ Requirements
    :status: valid
 
    The base libraries shall provide a JSON-Library with parsing functionality.
+
+.. feat_req:: Exception-Free Development Support
+   :id: feat_req__baselibs__result_library
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :satisfies: stkh_req__functional_req__base_libraries
+   :status: valid
+
+   The base libraries shall provide error handling mechanisms that enable development without relying on C++ exceptions.

@@ -16,6 +16,7 @@
    :id: doc__documentation_mgt_plan
    :status: draft
    :safety: ASIL_B
+   :security: NO
    :tags: platform_management
    :realizes: PROCESS_wp__document_mgt_plan
 

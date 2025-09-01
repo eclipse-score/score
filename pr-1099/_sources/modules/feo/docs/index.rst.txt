@@ -12,11 +12,18 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Module Documents
-================
+.. _feo_module_documentation:
+
+
+FEO Module Documents
+####################
 
 .. toctree::
-   :maxdepth: 2
    :titlesonly:
+   :maxdepth: 1
+   :glob:
 
-   manual/safety_manual.rst
+   manual/index.rst
+   safety_mgt/index.rst
+   verification/module_verification_report.rst
+   release/release_note.rst

@@ -46,16 +46,6 @@ Time Synchronization
       both are in state SYNC, and could be 1 usec
    * for non-AVB node the precision is relaxed, and could be 200-500 usec
 
-.. feat_req:: Update the HW clock with Vehicle Time
-   :id: feat_req__time__vehicle_time_hw_sync
-   :reqtype: Functional
-   :security: NO
-   :safety: QM
-   :satisfies: stkh_req__time__hw_clock_sync
-   :status: valid
-
-   The **score::time feature** shall synchronize the local HW clock, which is being used for timestamping ingress and egress network frames, to vehicle time.
-
 .. feat_req:: Vehicle Time base API
    :id: feat_req__time__vehicle_time_time_api
    :reqtype: Functional

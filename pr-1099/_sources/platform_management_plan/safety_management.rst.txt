@@ -16,6 +16,7 @@
    :id: doc__platform_safety_plan
    :status: draft
    :safety: ASIL_B
+   :security: NO
    :realizes: PROCESS_wp__platform_safety_plan,PROCESS_wp__tailoring
    :tags: platform_management
 
@@ -228,8 +229,8 @@ The status report is based on safety plans work product lists (see below) and ve
 
 * :need:`PROCESS_wp__platform_safety_plan`
 * :need:`PROCESS_wp__module_safety_plan`
-* :need:`PROCESS_wp__verification__platform_ver_report`
-* :need:`PROCESS_wp__verification__module_ver_report`
+* :need:`PROCESS_wp__verification_platform_ver_report`
+* :need:`PROCESS_wp__verification_module_ver_report`
 
 *Escalation*
 
@@ -254,7 +255,7 @@ Functional Safety Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Requirement Engineering is defined in the process description. See :need:`doc__project_mgt_plan`.
 
-The application of ISO 26262 standards requirements is realized by defining process guidances and matching those to the ISO 26262 requirements (see e.g. for example :need:`PROCESS_gd_req__safety__doc_status`).
+The application of ISO 26262 standards requirements is realized by defining process guidances and matching those to the ISO 26262 requirements (see e.g. for example :need:`PROCESS_gd_req__safety_doc_status`).
 
 Functional Safety Schedule
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -312,8 +313,8 @@ Functional Safety Management SW Platform Work Products
       - to be shown to assessor
 
     * - :need:`PROCESS_wp__qms_plan`
-      - :need:`PROCESS_wf__platform__cr_mt_platform_mgmt_plan`
-      - :ndf:`copy('status', need_id='PROCESS_wf__platform__cr_mt_platform_mgmt_plan')`
+      - :need:`PROCESS_wf__platform_cr_mt_platform_mgmt_plan`
+      - :ndf:`copy('status', need_id='PROCESS_wf__platform_cr_mt_platform_mgmt_plan')`
       - `#316 <https://github.com/eclipse-score/score/issues/316>`_
       - :doc:`quality_management`
       - not started
@@ -326,8 +327,8 @@ Functional Safety Management SW Platform Work Products
       - established
 
     * - :need:`PROCESS_wp__platform_mgmt`
-      - :need:`PROCESS_wf__platform__cr_mt_platform_mgmt_plan`
-      - :ndf:`copy('status', need_id='PROCESS_wf__platform__cr_mt_platform_mgmt_plan')`
+      - :need:`PROCESS_wf__platform_cr_mt_platform_mgmt_plan`
+      - :ndf:`copy('status', need_id='PROCESS_wf__platform_cr_mt_platform_mgmt_plan')`
       - `#540 <https://github.com/eclipse-score/score/issues/540>`_
       - :doc:`index`
       - :ndf:`copy('status', need_id='doc__platform_mgt_plan')`
@@ -417,36 +418,36 @@ Functional Safety Management SW Platform Work Products
       - <automated>
 
     * - :need:`PROCESS_wp__platform_sw_release_note`
-      - :need:`PROCESS_gd_temp__rel__plat_rel_note`
-      - :ndf:`copy('status', need_id='PROCESS_gd_temp__rel__plat_rel_note')`
+      - :need:`PROCESS_gd_temp__rel_plat_rel_note`
+      - :ndf:`copy('status', need_id='PROCESS_gd_temp__rel_plat_rel_note')`
       - <Link to issue>
       - <Link to WP>
       - <automated>
 
-    * - :need:`PROCESS_wp__verification__platform_ver_report`
+    * - :need:`PROCESS_wp__verification_platform_ver_report`
       - :need:`PROCESS_gd_temp__mod_ver_report`
       - :ndf:`copy('status', need_id='PROCESS_gd_temp__mod_ver_report')`
       - <Link to issue>
       - <Link to WP>
       - <automated>
 
-    * - :need:`PROCESS_wp__requirements__stkh`
-      - :need:`PROCESS_gd_temp__req__stkh_req`
-      - :ndf:`copy('status', need_id='PROCESS_gd_temp__req__stkh_req')`
+    * - :need:`PROCESS_wp__requirements_stkh`
+      - :need:`PROCESS_gd_temp__req_stkh_req`
+      - :ndf:`copy('status', need_id='PROCESS_gd_temp__req_stkh_req')`
       - n/a (done already)
       - :ref:`stakeholder_requirements`
       - <automated>
 
     * - :need:`PROCESS_wp__sw_development_plan`
-      - :need:`PROCESS_wf__platform__cr_mt_platform_mgmt_plan`
-      - :ndf:`copy('status', need_id='PROCESS_wf__platform__cr_mt_platform_mgmt_plan')`
+      - :need:`PROCESS_wf__platform_cr_mt_platform_mgmt_plan`
+      - :ndf:`copy('status', need_id='PROCESS_wf__platform_cr_mt_platform_mgmt_plan')`
       - `#583 <https://github.com/eclipse-score/score/issues/583>`_
       - :need:`doc__software_development_plan`
       - :ndf:`copy('status', need_id='doc__software_development_plan')`
 
-    * - :need:`PROCESS_wp__verification__plan`
-      - :need:`PROCESS_wf__platform__cr_mt_platform_mgmt_plan`
-      - :ndf:`copy('status', need_id='PROCESS_wf__platform__cr_mt_platform_mgmt_plan')`
+    * - :need:`PROCESS_wp__verification_plan`
+      - :need:`PROCESS_wf__platform_cr_mt_platform_mgmt_plan`
+      - :ndf:`copy('status', need_id='PROCESS_wf__platform_cr_mt_platform_mgmt_plan')`
       - `#611 <https://github.com/eclipse-score/score/issues/611>`_
       - :need:`doc__verification_plan`
       - :ndf:`copy('status', need_id='doc__verification_plan')`

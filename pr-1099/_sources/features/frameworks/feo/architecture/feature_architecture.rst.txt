@@ -12,8 +12,16 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Feature Architecture: FEO
-=========================
+.. document:: FEO Feature Architecture
+   :id: doc__frameworks_feo_feat_arch
+   :status: valid
+   :security: NO
+   :safety: ASIL_B
+   :realizes: PROCESS_wp__feature_arch
+
+
+FEO Feature Architecture
+========================
 
 Overview
 --------
@@ -30,24 +38,24 @@ Feature Components
 
 * feo: The main component
 
-* feo-com: Interface to inter-activity data communication
+* feo_com: Interface to inter-activity data communication
 
   Will be replaced by or become a wrapper of the interface `mw::com` provided by the feature
   "Communication".
 
-* feo-log: Logging macros (Rust and C++) and logger implementation
+* feo_log: Logging macros (Rust and C++) and logger implementation
 
   Consists of the following sub-components:
-  - feo-log: Logging macros (Rust and C++)
-  - feo-logger: Logger implementation (Rust and C++)
+  - feo_log: Logging macros (Rust and C++)
+  - feo_logger: Logger implementation (Rust and C++)
 
   Will be replaced by or become a wrapper of an interface provided by the feature "Logging".
 
-* feo-time: Interface to system clocks
+* feo_time: Interface to system clocks
 
   Will be replaced by or become a wrapper of an interface provided by the feature "Time".
 
-* feo-tracing: Subscriber for Rust tracing API
+* feo_tracing: Subscriber for Rust tracing API
 
   Will be replaced by or become a wrapper of an interface provided by the feature "Logging".
 
@@ -55,10 +63,10 @@ Feature Components
 Utility and Example Applications
 ********************************
 
-* feo-tracer: A simple tracing daemon receiving trace messages from all feo agents
+* feo_tracer: A simple tracing daemon receiving trace messages from all feo agents
 
   Consists of the following sub-components:
-  - feo-tracer: Tracing daemon
+  - feo_tracer: Tracing daemon
   - perfetto-model: Support for the Perfetto trace file format
 
   Will be replaced by an alternative solution provided by the feature "Tracing".
@@ -156,3 +164,6 @@ Logical Interfaces
   :fulfils: feat_req__feo__application_lifecycle
 
   See static architecture.
+
+.. needextend:: docname is not None and "frameworks/feo/architecture" in docname
+   :+tags: frameworks_feo

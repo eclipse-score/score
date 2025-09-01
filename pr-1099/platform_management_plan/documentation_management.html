@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -221,6 +221,13 @@
   </a>
 </li>
 
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../design_decisions/index.html">
+    Decision Records
+  </a>
+</li>
+
                 </ul>
             </li>
             
@@ -395,6 +402,13 @@
   </a>
 </li>
 
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../design_decisions/index.html">
+    Decision Records
+  </a>
+</li>
+
   </ul>
 </nav></div>
           
@@ -532,7 +546,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-e22bf19b">
+  <div class="need_container docutils container" id="SNCB-a9e28fcc">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__documentation_mgt_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -541,7 +555,7 @@
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></span></div>
-<div class="line"><span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
 <div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
@@ -551,9 +565,7 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">platform_management</span></span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">platform_management</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/documentation_management/documentation_workproducts.html#wp__document_mgt_plan">PROCESS_wp__document_mgt_plan</a></span></span></div>
 </span></div>
@@ -660,85 +672,95 @@ Versioning of documents is done as for every work product with github means and 
 <td class="needs_status"><p>draft</p></td>
 <td class="needs_tags"><p>template<em>; </em>component_name</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>[Your Component Name] Detailed Design</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>[Your Component Name] Component Classification</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../modules/feo/feo/docs/component_classification.html#doc__component_name_comp_class">doc__component_name_comp_class</a></p></td>
+<td class="needs_status"><p>draft</p></td>
+<td class="needs_tags"><p>commponent_feo</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>[Your Component Name] Detailed Design</p></td>
 <td class="needs_id external_link"><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/folder_templates/modules/module_name/component_name/docs/detailed_design/index.html#doc__component_name_detailed_design">PROCESS_doc__component_name_detailed_design</a></p></td>
 <td class="needs_status"><p>draft</p></td>
 <td class="needs_tags"><p>template<em>; </em>component_name</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>[Your Component Name] DFA</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>[Your Component Name] DFA</p></td>
 <td class="needs_id external_link"><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/folder_templates/modules/module_name/component_name/docs/safety_analysis/dfa.html#doc__component_name_dfa">PROCESS_doc__component_name_dfa</a></p></td>
 <td class="needs_status"><p>draft</p></td>
 <td class="needs_tags"><p>template<em>; </em>component_name</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>[Your Component Name] FMEA</p></td>
+<tr class="need row-even"><td class="needs_title"><p>[Your Component Name] FMEA</p></td>
 <td class="needs_id external_link"><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/folder_templates/modules/module_name/component_name/docs/safety_analysis/fmea.html#doc__component_name_fmea">PROCESS_doc__component_name_fmea</a></p></td>
 <td class="needs_status"><p>draft</p></td>
 <td class="needs_tags"><p>template<em>; </em>component_name</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>[Your Component Name] Requirements</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>[Your Component Name] Requirements</p></td>
 <td class="needs_id external_link"><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/folder_templates/modules/module_name/component_name/docs/requirements/index.html#doc__component_name_requirements">PROCESS_doc__component_name_requirements</a></p></td>
 <td class="needs_status"><p>draft</p></td>
 <td class="needs_tags"><p>template<em>; </em>component_name</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>[Your Feature Name]</p></td>
+<tr class="need row-even"><td class="needs_title"><p>[Your Feature Name]</p></td>
 <td class="needs_id external_link"><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/folder_templates/features/feature_name/index.html#doc__feature_name">PROCESS_doc__feature_name</a></p></td>
 <td class="needs_status"><p>draft</p></td>
 <td class="needs_tags"><p>template<em>; </em>feature_name</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>[Your Feature Name] Architecture</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>[Your Feature Name] Architecture</p></td>
 <td class="needs_id external_link"><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/folder_templates/features/feature_name/architecture/index.html#doc__feature_name_architecture">PROCESS_doc__feature_name_architecture</a></p></td>
 <td class="needs_status"><p>draft</p></td>
 <td class="needs_tags"><p>template<em>; </em>feature_name</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>[Your Feature Name] DFA</p></td>
+<tr class="need row-even"><td class="needs_title"><p>[Your Feature Name] DFA</p></td>
 <td class="needs_id external_link"><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/folder_templates/features/feature_name/safety_analysis/dfa.html#doc__feature_name_dfa">PROCESS_doc__feature_name_dfa</a></p></td>
 <td class="needs_status"><p>draft</p></td>
 <td class="needs_tags"><p>template<em>; </em>feature_name</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>[Your Feature Name] FMEA</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>[Your Feature Name] FMEA</p></td>
 <td class="needs_id external_link"><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/folder_templates/features/feature_name/safety_analysis/fmea.html#doc__feature_name_fmea">PROCESS_doc__feature_name_fmea</a></p></td>
 <td class="needs_status"><p>draft</p></td>
 <td class="needs_tags"><p>template<em>; </em>feature_name</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>[Your Feature Name] Requirements</p></td>
+<tr class="need row-even"><td class="needs_title"><p>[Your Feature Name] Requirements</p></td>
 <td class="needs_id external_link"><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/folder_templates/features/feature_name/requirements/index.html#doc__feature_name_requirements">PROCESS_doc__feature_name_requirements</a></p></td>
 <td class="needs_status"><p>draft</p></td>
 <td class="needs_tags"><p>template<em>; </em>feature_name</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>[Your Feature Name] Safety WPs</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>[Your Feature Name] Safety WPs</p></td>
 <td class="needs_id external_link"><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/folder_templates/features/feature_name/safety_planning/index.html#doc__feature_name_safety_wp">PROCESS_doc__feature_name_safety_wp</a></p></td>
 <td class="needs_status"><p>draft</p></td>
 <td class="needs_tags"><p>template<em>; </em>feature_name</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>[Your Module Name] Release Note</p></td>
+<tr class="need row-even"><td class="needs_title"><p>[Your Module Name] Release Note</p></td>
 <td class="needs_id external_link"><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/folder_templates/modules/module_name/docs/release/release_note.html#doc__module_name_release_note">PROCESS_doc__module_name_release_note</a></p></td>
 <td class="needs_status"><p>draft</p></td>
 <td class="needs_tags"><p>template</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>[Your Module Name] Safety Manual</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>[Your Module Name] Safety Manual</p></td>
 <td class="needs_id external_link"><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/folder_templates/modules/module_name/docs/manual/safety_manual.html#doc__module_name_safety_manual">PROCESS_doc__module_name_safety_manual</a></p></td>
 <td class="needs_status"><p>draft</p></td>
 <td class="needs_tags"><p>template</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>[Your Module Name] Safety Package Formal Review</p></td>
+<tr class="need row-even"><td class="needs_title"><p>[Your Module Name] Safety Package Formal Review</p></td>
 <td class="needs_id external_link"><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/folder_templates/modules/module_name/docs/safety_mgt/module_safety_package_fdr.html#doc__module_name_safety_package_fdr">PROCESS_doc__module_name_safety_package_fdr</a></p></td>
 <td class="needs_status"><p>draft</p></td>
 <td class="needs_tags"><p>template</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>[Your Module Name] Safety Plan</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>[Your Module Name] Safety Plan</p></td>
 <td class="needs_id external_link"><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/folder_templates/modules/module_name/docs/safety_mgt/module_safety_plan.html#doc__module_name_safety_plan">PROCESS_doc__module_name_safety_plan</a></p></td>
 <td class="needs_status"><p>draft</p></td>
 <td class="needs_tags"><p>template</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>[Your Module Name] Safety Plan Formal Review</p></td>
+<tr class="need row-even"><td class="needs_title"><p>[Your Module Name] Safety Plan Formal Review</p></td>
 <td class="needs_id external_link"><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/folder_templates/modules/module_name/docs/safety_mgt/module_safety_plan_fdr.html#doc__module_name_safety_plan_fdr">PROCESS_doc__module_name_safety_plan_fdr</a></p></td>
 <td class="needs_status"><p>draft</p></td>
 <td class="needs_tags"><p>template</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>[Your Module Name] Verification Report</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>[Your Module Name] Verification Report</p></td>
 <td class="needs_id external_link"><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/folder_templates/modules/module_name/docs/verification/module_verification_report.html#doc__module_name_verification_report">PROCESS_doc__module_name_verification_report</a></p></td>
 <td class="needs_status"><p>draft</p></td>
 <td class="needs_tags"><p>template</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>AI-Platform</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../features/ai_platform/index.html#doc__ai_platform">doc__ai_platform</a></p></td>
+<td class="needs_status"><p>draft</p></td>
+<td class="needs_tags"><p>feature_request</p></td>
 </tr>
 <tr class="need row-odd"><td class="needs_title"><p>API Guidelines</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../contribute/development/api_guideline.html#doc__api_guidelines">doc__api_guidelines</a></p></td>
@@ -825,48 +847,188 @@ Versioning of documents is done as for every work product with github means and 
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p></p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>Fixed execution order framework</p></td>
-<td class="needs_id"><p><a class="reference internal" href="../features/frameworks/feo/index.html#doc__feo">doc__feo</a></p></td>
+<tr class="need row-even"><td class="needs_title"><p>FEO Assumptions of Use Requirements</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../features/frameworks/feo/requirements/aou_req.html#doc__frameworks_feo_aou_reqs">doc__frameworks_feo_aou_reqs</a></p></td>
 <td class="needs_status"><p>valid</p></td>
-<td class="needs_tags"><p>feature_request</p></td>
+<td class="needs_tags"><p>frameworks_feo</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>FEO Component</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../modules/feo/feo/docs/index.html#doc__component_name">doc__component_name</a></p></td>
+<td class="needs_status"><p>draft</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>FEO Component Architecture</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../modules/feo/feo/docs/architecture/component_architecture.html#doc__component_feo_architecture">doc__component_feo_architecture</a></p></td>
+<td class="needs_status"><p>draft</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>FEO Component Architecture Inspection Checklist</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../modules/feo/feo/docs/architecture/chklst_arch_inspection.html#doc__arch_inspection_component_feo">doc__arch_inspection_component_feo</a></p></td>
+<td class="needs_status"><p>draft</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>FEO Component Assumptions of Use Requirements</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../modules/feo/feo/docs/requirements/aou_req.html#doc__component_feo_aou_reqs">doc__component_feo_aou_reqs</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>FEO Component Detailed Design</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../modules/feo/feo/docs/detailed_design/component_detailed_design.html#doc__component_feo_detailed_design">doc__component_feo_detailed_design</a></p></td>
+<td class="needs_status"><p>draft</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>FEO Component DFA</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../modules/feo/feo/docs/safety_analysis/component_dfa.html#doc__component_feo_dfa">doc__component_feo_dfa</a></p></td>
+<td class="needs_status"><p>draft</p></td>
+<td class="needs_tags"><p>coponent_feo</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>FEO Component Requirements</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../modules/feo/feo/docs/requirements/component_requirements.html#doc__component_feo_requirements">doc__component_feo_requirements</a></p></td>
+<td class="needs_status"><p>draft</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>FEO Component Requirements Inspection Checklist</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../modules/feo/feo/docs/requirements/chklst_req_inspection.html#doc__req_inspection_component_feo">doc__req_inspection_component_feo</a></p></td>
+<td class="needs_status"><p>draft</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>FEO Feature Architecture</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../features/frameworks/feo/architecture/feature_architecture.html#doc__frameworks_feo_feat_arch">doc__frameworks_feo_feat_arch</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>frameworks_feo</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>FEO Feature Architecture Inspection Checklist</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../features/frameworks/feo/architecture/chklst_arch_inspection.html#doc__arch_inspection_frameworks_feo">doc__arch_inspection_frameworks_feo</a></p></td>
+<td class="needs_status"><p>draft</p></td>
+<td class="needs_tags"><p>frameworks_feo</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>FEO Feature DFA</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../features/frameworks/feo/safety_analysis/feature_dfa.html#doc__frameworks_feo_dfa">doc__frameworks_feo_dfa</a></p></td>
+<td class="needs_status"><p>draft</p></td>
+<td class="needs_tags"><p>frameworks_feo</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>FEO Feature Requirements</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../features/frameworks/feo/requirements/feature_req.html#doc__frameworks_feo_feat_reqs">doc__frameworks_feo_feat_reqs</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>frameworks_feo</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>FEO Feature Requirements Inspection Checklist</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../features/frameworks/feo/requirements/chklst_req_inspection.html#doc__req_inspection_frameworks_feo">doc__req_inspection_frameworks_feo</a></p></td>
+<td class="needs_status"><p>draft</p></td>
+<td class="needs_tags"><p>frameworks_feo</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>FEO Feature Safety Analysis Inspection Checklist</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../features/frameworks/feo/safety_analysis/chklst_safety_analysis_inspection.html#doc__saf_ana_inspec_frameworks_feo">doc__saf_ana_inspec_frameworks_feo</a></p></td>
+<td class="needs_status"><p>draft</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>FEO FMEA</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../modules/feo/feo/docs/safety_analysis/component_fmea.html#doc__component_feo_fmea">doc__component_feo_fmea</a></p></td>
+<td class="needs_status"><p>draft</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>FEO Implementation Inspection Checklist</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../modules/feo/feo/docs/detailed_design/chklst_dd_inspection.html#doc__impl_inspection_component_feo">doc__impl_inspection_component_feo</a></p></td>
+<td class="needs_status"><p>draft</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>FEO Module Release Note</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../modules/feo/docs/release/release_note.html#doc__feo_release_note">doc__feo_release_note</a></p></td>
+<td class="needs_status"><p>draft</p></td>
+<td class="needs_tags"><p>module_feo</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>FEO Module Safety Manual</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../modules/feo/docs/manual/safety_manual.html#doc__feo_safety_manual">doc__feo_safety_manual</a></p></td>
+<td class="needs_status"><p>draft</p></td>
+<td class="needs_tags"><p>module_feo</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>FEO Module Safety Package Formal Review</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../modules/feo/docs/safety_mgt/module_safety_package_fdr.html#doc__module_name_safety_package_fdr">doc__module_name_safety_package_fdr</a></p></td>
+<td class="needs_status"><p>draft</p></td>
+<td class="needs_tags"><p>module_feo</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>FEO Module Safety Plan</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../modules/feo/docs/safety_mgt/module_safety_plan.html#doc__feo_safety_plan">doc__feo_safety_plan</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>module_feo</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>FEO Module Safety Plan Formal Review</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../modules/feo/docs/safety_mgt/module_safety_plan_fdr.html#doc__feo_safety_plan_fdr">doc__feo_safety_plan_fdr</a></p></td>
+<td class="needs_status"><p>draft</p></td>
+<td class="needs_tags"><p>module_feo</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>FEO Module Verification Report</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../modules/feo/docs/verification/module_verification_report.html#doc__feo_verification_report">doc__feo_verification_report</a></p></td>
+<td class="needs_status"><p>draft</p></td>
+<td class="needs_tags"><p>module_template</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>FEO Safety Analysis Inspection Checklist</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../modules/feo/feo/docs/safety_analysis/chklst_safety_analysis_inspection.html#doc__safety_analysis_inspection_component_feo">doc__safety_analysis_inspection_component_feo</a></p></td>
+<td class="needs_status"><p>draft</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>FEO Safety Work Products</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../features/frameworks/feo/safety_planning/index.html#doc__feo_safety_wp">doc__feo_safety_wp</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>framework_feo</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>Fixed execution order framework</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../features/frameworks/feo/index.html#doc__frameworks_feo">doc__frameworks_feo</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>feature_request<em>; </em>frameworks_feo</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>FMEA</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../features/frameworks/feo/safety_analysis/feature_fmea.html#doc__frameworks_feo_fmea">doc__frameworks_feo_fmea</a></p></td>
+<td class="needs_status"><p>draft</p></td>
+<td class="needs_tags"><p>frameworks_feo</p></td>
 </tr>
 <tr class="need row-odd"><td class="needs_title"><p>FMEA</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../features/persistency/kvs/safety_analysis/fmea.html#doc__persistency_fmea">doc__persistency_fmea</a></p></td>
 <td class="needs_status"><p>draft</p></td>
 <td class="needs_tags"><p>feature_persistency</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>Git Guidelines</p></td>
+<tr class="need row-even"><td class="needs_title"><p>Gen-AI</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../features/ai_platform/gen_ai/index.html#doc__gen_ai">doc__gen_ai</a></p></td>
+<td class="needs_status"><p>draft</p></td>
+<td class="needs_tags"><p>feature_request</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>Git Guidelines</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../contribute/general/git.html#doc__git_coding_guidelines">doc__git_coding_guidelines</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p></p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>Inter-process Communication</p></td>
+<tr class="need row-even"><td class="needs_title"><p>Inter-process Communication</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../features/communication/ipc/index.html#doc__com_ipc">doc__com_ipc</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p>contribution_request<em>; </em>feature_request</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>Issue Guideline</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>Issue Guideline</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../contribute/contribution_request/index.html#doc__issue_guideline">doc__issue_guideline</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p></p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>JSON-Library</p></td>
+<tr class="need row-even"><td class="needs_title"><p>JSON-Library</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/json/docs/index.html#doc__json">doc__json</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p>component_request</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>KVS DFA</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>KVS DFA</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/persistency/kvs/docs/safety_analysis/dfa.html#doc__kvs_dfa">doc__kvs_dfa</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p>Persistency KVS</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>KVS FMEA</p></td>
+<tr class="need row-even"><td class="needs_title"><p>KVS FMEA</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/persistency/kvs/docs/safety_analysis/fmea.html#doc__kvs_fmea">doc__kvs_fmea</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p>Persistency KVS</p></td>
 </tr>
+<tr class="need row-odd"><td class="needs_title"><p>Lifecycle</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../features/lifecycle/index.html#doc__lifecycle">doc__lifecycle</a></p></td>
+<td class="needs_status"><p>draft</p></td>
+<td class="needs_tags"><p>feature_request</p></td>
+</tr>
 <tr class="need row-even"><td class="needs_title"><p>MISRA C++:2023 Rule Mapping</p></td>
-<td class="needs_id"><p><a class="reference internal" href="../contribute/development/cpp/misra_2023_rule_mapping.html#doc__cpp__misra2023_rule_mapping">doc__cpp__misra2023_rule_mapping</a></p></td>
+<td class="needs_id"><p><a class="reference internal" href="../contribute/development/cpp/misra_2023_rule_mapping.html#doc__cpp_misra2023_rule_mapping">doc__cpp_misra2023_rule_mapping</a></p></td>
 <td class="needs_status"><p>draft</p></td>
 <td class="needs_tags"><p></p></td>
 </tr>
@@ -908,7 +1070,7 @@ Versioning of documents is done as for every work product with github means and 
 <tr class="need row-even"><td class="needs_title"><p>Persistency KVS Feature Requirements</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../features/persistency/kvs/requirements/index.html#doc__persistency_kvs_feat_reqs">doc__persistency_kvs_feat_reqs</a></p></td>
 <td class="needs_status"><p>valid</p></td>
-<td class="needs_tags"><p>persistency<em>; </em>persistencykvs</p></td>
+<td class="needs_tags"><p>persistencykvs<em>; </em>persistency</p></td>
 </tr>
 <tr class="need row-odd"><td class="needs_title"><p>Persistency KVS Module Architecture</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/persistency/kvs/docs/architecture/index.html#doc__persistency_kvs_mod_arch">doc__persistency_kvs_mod_arch</a></p></td>
@@ -1005,23 +1167,33 @@ Versioning of documents is done as for every work product with github means and 
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p>persistency<em>; </em>persistencykvs</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>Rust API design guidelines</p></td>
+<tr class="need row-even"><td class="needs_title"><p>Result Library Requirements</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/result/docs/requirements.html#doc__result_lib_requirements">doc__result_lib_requirements</a></p></td>
+<td class="needs_status"><p>draft</p></td>
+<td class="needs_tags"><p>requirements<em>; </em>result_library</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>Rust API design guidelines</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../contribute/development/rust/rust_api_design.html#doc__rust_api_design">doc__rust_api_design</a></p></td>
 <td class="needs_status"><p>draft</p></td>
 <td class="needs_tags"><p></p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>Software Development Plan</p></td>
+<tr class="need row-even"><td class="needs_title"><p>Software Development Plan</p></td>
 <td class="needs_id"><p><a class="reference internal" href="software_development.html#doc__software_development_plan">doc__software_development_plan</a></p></td>
 <td class="needs_status"><p>draft</p></td>
 <td class="needs_tags"><p>platform_management</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>Software Verification Plan</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>Software Verification Plan</p></td>
 <td class="needs_id"><p><a class="reference internal" href="software_verification.html#doc__verification_plan">doc__verification_plan</a></p></td>
 <td class="needs_status"><p>draft</p></td>
 <td class="needs_tags"><p>platform_management</p></td>
 </tr>
+<tr class="need row-even"><td class="needs_title"><p>SOME_IP-Gateway</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../features/communication/some_ip_gateway/index.html#doc__some_ip_gateway">doc__some_ip_gateway</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>contribution_request<em>; </em>feature_request</p></td>
+</tr>
 <tr class="need row-odd"><td class="needs_title"><p>Static Code Analysis C++</p></td>
-<td class="needs_id"><p><a class="reference internal" href="../contribute/development/cpp/code_analysis.html#doc__cpp__code_analysis">doc__cpp__code_analysis</a></p></td>
+<td class="needs_id"><p><a class="reference internal" href="../contribute/development/cpp/code_analysis.html#doc__cpp_code_analysis">doc__cpp_code_analysis</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p></p></td>
 </tr>
