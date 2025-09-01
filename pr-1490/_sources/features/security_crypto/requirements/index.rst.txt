@@ -21,7 +21,7 @@ Symmetric Encryption
 --------------------
 
 .. feat_req:: Symmetric Encryption and Decryption
-   :id: feat_req__sec_cryt__sym_symmetric_encrypt
+   :id: feat_req__sec_crypt__sym_symmetric_encrypt
    :reqtype: Functional
    :security: YES
    :safety: QM
@@ -31,7 +31,7 @@ Symmetric Encryption
    The security subsystem shall provide functionality for symmetric encryption and decryption.
 
 .. feat_req:: AES-CBC Support
-   :id: feat_req__sec_cryt__sym_symm_algo_aes_cbc
+   :id: feat_req__sec_crypt__sym_symm_algo_aes_cbc
    :reqtype: Functional
    :security: YES
    :safety: QM
@@ -41,7 +41,7 @@ Symmetric Encryption
    The security subsystem shall support the AES-CBC symmetric encryption algorithm.
 
 .. feat_req:: AES-GCM Support
-   :id: feat_req__sec_cryt__sym_sym_algo_aes_gcm
+   :id: feat_req__sec_crypt__sym_sym_algo_aes_gcm
    :reqtype: Functional
    :security: YES
    :safety: QM
@@ -51,7 +51,7 @@ Symmetric Encryption
    The security subsystem shall support the AES-GCM symmetric encryption algorithm.
 
 .. feat_req:: AES-CCM Support
-   :id: feat_req__sec_cryt__sym_sym_algo_aes_ccm
+   :id: feat_req__sec_crypt__sym_sym_algo_aes_ccm
    :reqtype: Functional
    :security: YES
    :safety: QM
@@ -61,7 +61,7 @@ Symmetric Encryption
    The security subsystem shall support the AES-CCM symmetric encryption algorithm.
 
 .. feat_req:: ChaCha20-Poly1305 Support
-   :id: feat_req__sec_cryt__sym_algo_chacha20poly1305
+   :id: feat_req__sec_crypt__sym_algo_chacha20
    :reqtype: Functional
    :security: YES
    :safety: QM
@@ -74,7 +74,7 @@ Asymmetric Encryption
 ---------------------
 
 .. feat_req:: Asymmetric Encryption and Decryption
-   :id: feat_req__sec_cryt__asym_encryption
+   :id: feat_req__sec_crypt__asym_encryption
    :reqtype: Functional
    :security: YES
    :safety: QM
@@ -84,7 +84,7 @@ Asymmetric Encryption
    The security subsystem shall provide functionality for asymmetric encryption and decryption.
 
 .. feat_req:: ECDH Support
-   :id: feat_req__sec_cryt__asym_algo_ecdh
+   :id: feat_req__sec_crypt__asym_algo_ecdh
    :reqtype: Functional
    :security: YES
    :safety: QM
@@ -97,7 +97,7 @@ Digital Signatures
 ------------------
 
 .. feat_req:: Signature Creation
-   :id: feat_req__sec_cryt__sig_creation
+   :id: feat_req__sec_crypt__sig_creation
    :reqtype: Functional
    :security: YES
    :safety: QM
@@ -107,7 +107,7 @@ Digital Signatures
    The security subsystem shall provide functionality to create digital signatures.
 
 .. feat_req:: Signature Verification
-   :id: feat_req__sec_cryt__sig_verification
+   :id: feat_req__sec_crypt__sig_verification
    :reqtype: Functional
    :security: YES
    :safety: QM
@@ -117,7 +117,7 @@ Digital Signatures
    The security subsystem shall provide functionality to verify digital signatures.
 
 .. feat_req:: ECDSA Support
-   :id: feat_req__sec_cryt__sig_algo_ecdsa
+   :id: feat_req__sec_crypt__sig_algo_ecdsa
    :reqtype: Functional
    :security: YES
    :safety: QM
@@ -130,7 +130,7 @@ Message Authentication Code (MAC)
 ---------------------------------
 
 .. feat_req:: Message Authentication Code
-   :id: feat_req__sec_cryt__mac
+   :id: feat_req__sec_crypt__mac
    :reqtype: Functional
    :security: YES
    :safety: QM
@@ -144,7 +144,7 @@ Hashing
 -------
 
 .. feat_req:: Hashing Functionality
-   :id: feat_req__sec_cryt__hashing
+   :id: feat_req__sec_crypt__hashing
    :reqtype: Functional
    :security: YES
    :safety: QM
@@ -154,7 +154,7 @@ Hashing
    The security subsystem shall provide hashing functionality.
 
 .. feat_req:: SHA-2 Support
-   :id: feat_req__sec_cryt__hashing_algo_sha2
+   :id: feat_req__sec_crypt__hashing_algo_sha2
    :reqtype: Functional
    :security: YES
    :safety: QM
@@ -164,7 +164,7 @@ Hashing
    The security subsystem shall support the SHA-2 hashing algorithm.
 
 .. feat_req:: SHA-3 Support
-   :id: feat_req__sec_cryt__hashing_algo_sha3
+   :id: feat_req__sec_crypt__hashing_algo_sha3
    :reqtype: Functional
    :security: YES
    :safety: QM
@@ -178,7 +178,7 @@ Key Derivation Functions (KDF)
 ------------------------------
 
 .. feat_req:: Key Derivation
-   :id: feat_req__sec_cryt__kdf
+   :id: feat_req__sec_crypt__kdf
    :reqtype: Functional
    :security: YES
    :safety: QM
@@ -192,7 +192,7 @@ Random Number Generation
 ------------------------
 
 .. feat_req:: Entropy Source
-   :id: feat_req__sec_cryt__rng
+   :id: feat_req__sec_crypt__rng
    :reqtype: Functional
    :security: YES
    :safety: QM
@@ -202,7 +202,7 @@ Random Number Generation
    The security subsystem shall provide a source of entropy for random number generation.
 
 .. feat_req:: ChaCha20Rng Support
-   :id: feat_req__sec_cryt__rng_algo_chacha20rng
+   :id: feat_req__sec_crypt__rng_algo_chacha20rng
    :reqtype: Functional
    :security: YES
    :safety: QM
@@ -215,7 +215,7 @@ Certificate Management
 ----------------------
 
 .. feat_req:: Certificate Management
-   :id: feat_req__sec_cryt__cert_management
+   :id: feat_req__sec_crypt__cert_management
    :reqtype: Functional
    :security: YES
    :safety: QM
@@ -229,7 +229,7 @@ Key Management
 --------------
 
 .. feat_req:: Secure Key Generation
-   :id: feat_req__sec_cryt__key_generation
+   :id: feat_req__sec_crypt__key_generation
    :reqtype: Functional
    :security: YES
    :safety: QM
@@ -239,7 +239,7 @@ Key Management
    The security subsystem shall support the secure generation of key material.
 
 .. feat_req:: Secure Key Import
-   :id: feat_req__sec_cryt__key_import
+   :id: feat_req__sec_crypt__key_import
    :reqtype: Functional
    :security: YES
    :safety: QM
@@ -249,7 +249,7 @@ Key Management
    The security subsystem shall support the secure import of key material.
 
 .. feat_req:: Secure Key Storage
-   :id: feat_req__sec_cryt__key_storage
+   :id: feat_req__sec_crypt__key_storage
    :reqtype: Functional
    :security: YES
    :safety: QM
@@ -259,7 +259,7 @@ Key Management
    The security subsystem shall support the secure storage of key material.
 
 .. feat_req:: Secure Key Update
-   :id: feat_req__sec_cryt__key_update
+   :id: feat_req__sec_crypt__key_update
    :reqtype: Functional
    :security: YES
    :safety: QM
@@ -269,7 +269,7 @@ Key Management
    The security subsystem shall support the secure update of key material.
 
 .. feat_req:: Secure Key Deletion
-   :id: feat_req__sec_cryt__key_deletion
+   :id: feat_req__sec_crypt__key_deletion
    :reqtype: Functional
    :security: YES
    :safety: QM
@@ -283,7 +283,7 @@ Non-Functional Requirements
 ---------------------------
 
 .. feat_req:: No Key Material Exposure
-   :id: feat_req__sec_cryt__no_key_exposure
+   :id: feat_req__sec_crypt__no_key_exposure
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
@@ -293,7 +293,7 @@ Non-Functional Requirements
    The API of the security subsystem shall not reveal key material to its users.
 
 .. feat_req:: Side-Channel Attack Mitigation
-   :id: feat_req__sec_cryt__side_channel_mitigation
+   :id: feat_req__sec_crypt__side_channel_mitigation
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
@@ -304,7 +304,7 @@ Non-Functional Requirements
 
 
 .. feat_req:: Standardized Algorithm Naming
-   :id: feat_req__sec_cryt__algo_naming
+   :id: feat_req__sec_crypt__algo_naming
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
@@ -315,7 +315,7 @@ Non-Functional Requirements
    algorithms.
 
 .. feat_req:: API Lifecycle Management
-   :id: feat_req__sec_cryt__api_lifecycle
+   :id: feat_req__sec_crypt__api_lifecycle
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
@@ -326,7 +326,7 @@ Non-Functional Requirements
     (request, reuse, release), and de-initialization of cryptographic resources.
 
 .. feat_req:: Structured Error Handling
-   :id: feat_req__sec_cryt__error_handling
+   :id: feat_req__sec_crypt__error_handling
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
@@ -337,7 +337,7 @@ Non-Functional Requirements
    and logging.
 
 .. feat_req:: Rust Implementation
-   :id: feat_req__sec_cryt__rust_implementation
+   :id: feat_req__sec_crypt__rust_implementation
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
@@ -347,7 +347,7 @@ Non-Functional Requirements
    The security subsystem MAY be implemented in Rust.
 
 .. feat_req:: Security Plan
-   :id: feat_req__sec_cryt__security_plan
+   :id: feat_req__sec_crypt__security_plan
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
@@ -358,7 +358,7 @@ Non-Functional Requirements
    attacks, critical failures, and countermeasures.
 
 .. feat_req:: Software Update Strategy
-   :id: feat_req__sec_cryt__update_strategy
+   :id: feat_req__sec_crypt__update_strategy
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
@@ -368,7 +368,7 @@ Non-Functional Requirements
    The security plan shall cover a software-update strategy for the security subsystem.
 
 .. feat_req:: Field Observation Strategy
-   :id: feat_req__sec_cryt__field_observation
+   :id: feat_req__sec_crypt__field_observation
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
@@ -378,7 +378,7 @@ Non-Functional Requirements
    The security plan shall cover a strategy for field observation of the security subsystem.
 
 .. feat_req:: Crypto Algorithm Update Strategy
-   :id: feat_req__sec_cryt__algo_updates
+   :id: feat_req__sec_crypt__algo_updates
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
@@ -389,7 +389,7 @@ Non-Functional Requirements
    subsystem.
 
 .. feat_req:: Repairability Strategy
-   :id: feat_req__sec_cryt__repairability
+   :id: feat_req__sec_crypt__repairability
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
@@ -399,7 +399,7 @@ Non-Functional Requirements
    The security plan shall cover the repair-ability of the security subsystem.
 
 .. feat_req:: Reverse Engineering Protection
-   :id: feat_req__sec_cryt__reverse_eng_protection
+   :id: feat_req__sec_crypt__reverse_eng_protection
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
@@ -410,7 +410,7 @@ Non-Functional Requirements
    secrets.
 
 .. feat_req:: Initial Production Key Handling
-   :id: feat_req__sec_cryt__production_keys
+   :id: feat_req__sec_crypt__production_keys
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
@@ -421,7 +421,7 @@ Non-Functional Requirements
    brought into the system.
 
 .. feat_req:: Post-Quantum Readiness
-   :id: feat_req__sec_cryt__pqc_readiness
+   :id: feat_req__sec_crypt__pqc_readiness
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
@@ -431,7 +431,7 @@ Non-Functional Requirements
    The security subsystem shall be designed to be ready for post-quantum cryptography.
 
 .. feat_req:: Hardware Acceleration Support
-   :id: feat_req__sec_cryt__hw_acceleration
+   :id: feat_req__sec_crypt__hw_acceleration
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
@@ -442,7 +442,7 @@ Non-Functional Requirements
    operations.
 
 .. feat_req:: Software Fallback
-   :id: feat_req__sec_cryt__sw_fallback
+   :id: feat_req__sec_crypt__sw_fallback
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
@@ -452,7 +452,7 @@ Non-Functional Requirements
    A software-only solution for cryptographic operations shall be available as a fallback.
 
 .. feat_req:: Trusted Time Source
-   :id: feat_req__sec_cryt__trusted_time
+   :id: feat_req__sec_crypt__trusted_time
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
@@ -462,7 +462,7 @@ Non-Functional Requirements
    The security subsystem shall have access to a trusted real-world wall clock.
 
 .. feat_req:: OS-Level Protection
-   :id: feat_req__sec_cryt__os_protection
+   :id: feat_req__sec_crypt__os_protection
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
@@ -473,7 +473,7 @@ Non-Functional Requirements
    its memory and CPU from applications and the normal operating system.
 
 .. feat_req:: Access Control
-   :id: feat_req__sec_cryt__access_control
+   :id: feat_req__sec_crypt__access_control
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
@@ -484,7 +484,7 @@ Non-Functional Requirements
    control to cryptographic functions and key material.
 
 .. feat_req:: Intrusion Detection System (IDS) Integration
-   :id: feat_req__sec_cryt__ids_integration
+   :id: feat_req__sec_crypt__ids_integration
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
@@ -495,7 +495,7 @@ Non-Functional Requirements
    threats to an Intrusion Detection System (IDS).
 
 .. feat_req:: Denial-of-Service (DoS) Mitigation
-   :id: feat_req__sec_cryt__dos_mitigation
+   :id: feat_req__sec_crypt__dos_mitigation
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
@@ -509,7 +509,7 @@ Secure Communication Protocols
 ------------------------------
 
 .. feat_req:: TLS Support
-   :id: feat_req__sec_cryt__tls_support
+   :id: feat_req__sec_crypt__tls_support
    :reqtype: Functional
    :security: YES
    :safety: QM
