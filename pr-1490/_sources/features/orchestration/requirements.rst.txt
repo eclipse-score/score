@@ -188,7 +188,7 @@ Program Definition
    :id: feat_req__orchestration__orch_static_graphs
    :reqtype: Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :satisfies: stkh_req__execution_model__processes, stkh_req__app_architectures__support_time
    :status: valid
 
@@ -198,7 +198,7 @@ Program Definition
    :id: feat_req__orchestration__orch_ctrl_flows
    :reqtype: Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :satisfies: stkh_req__execution_model__processes, stkh_req__app_architectures__support_time
    :status: valid
 
@@ -208,7 +208,7 @@ Program Definition
    :id: feat_req__orchestration__orch_event_sync
    :reqtype: Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :satisfies: stkh_req__execution_model__processes, stkh_req__app_architectures__support_time
    :status: valid
 
@@ -218,7 +218,7 @@ Program Definition
    :id: feat_req__orchestration__orch_fault_mon
    :reqtype: Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :satisfies: stkh_req__execution_model__processes, stkh_req__app_architectures__support_time
    :status: valid
 
@@ -231,7 +231,7 @@ API Design
    :id: feat_req__orchestration__orch_code_api
    :reqtype: Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :satisfies: stkh_req__execution_model__processes, stkh_req__app_architectures__support_time
    :status: valid
 
@@ -244,7 +244,7 @@ Execution Model
    :id: feat_req__orchestration__orch_single_deploy
    :reqtype: Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :satisfies: stkh_req__execution_model__processes, stkh_req__app_architectures__support_time
    :status: valid
 
@@ -254,7 +254,7 @@ Execution Model
    :id: feat_req__orchestration__orch_multi_prog
    :reqtype: Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :satisfies: stkh_req__execution_model__processes, stkh_req__app_architectures__support_time
    :status: valid
 
@@ -264,7 +264,7 @@ Execution Model
    :id: feat_req__orchestration__orch_event_comm
    :reqtype: Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :satisfies: stkh_req__execution_model__processes, stkh_req__app_architectures__support_time
    :status: valid
 

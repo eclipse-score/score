@@ -558,6 +558,120 @@ Communication
    * Diagnostic jobs
 
 
+AI Platform
+-----------
+
+
+.. stkh_req:: On-board ML Workloads
+   :id: stkh_req__ai_platform__enablement
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: Modern vehicles require the integration of ML capabilities to remain competitive and support customer expectations.
+   :status: valid
+
+   The platform shall support the execution of traditional ML workloads on-board.
+
+
+.. stkh_req:: Support for Safety-Critical ML
+   :id: stkh_req__ai_platform__safety_critical
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :rationale: Some ML-based functionality is required to be certified up to ASIL-B.
+   :status: valid
+
+   The platform shall support safety-compliant (ASIL-B) deployment of AI/ML components, including inference backends and pipelines.
+
+
+.. stkh_req:: Runtime Efficiency for Edge Devices
+   :id: stkh_req__ai_platform__runtime_efficiency
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: QM
+   :rationale: Automotive platforms have limited compute and thermal budgets.
+   :status: valid
+
+   The AI platform shall be optimized for runtime performance and memory footprint on embedded hardware targets.
+
+
+.. stkh_req:: Platform Portability (QNX + Linux)
+   :id: stkh_req__ai_platform__platform_portability
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: QM
+   :rationale: AI/ML use cases span both safety and non-safety environments, requiring portability across operating systems.
+   :status: valid
+
+   The platform shall support both QNX (for safety) and Linux (for GenAI and flexibility) with reusable components.
+
+
+.. stkh_req:: Secure Model Execution
+   :id: stkh_req__ai_platform__model_security
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: AI model execution must be protected against tampering or abuse.
+   :status: valid
+
+   The platform shall ensure secure, verified, and integrity-checked model execution.
+
+
+.. stkh_req:: Deterministic Execution Paths
+   :id: stkh_req__ai_platform__runtime_determinism
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: ASIL_B
+   :rationale: Safety certification requires predictable and bounded system behavior.
+   :status: valid
+
+   The platform shall ensure deterministic behavior for AI components used in safety-relevant paths.
+
+
+.. stkh_req:: On-board GenAI Workloads
+   :id: stkh_req__gen_ai__enablement
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: Modern vehicles require the integration of AI/ML capabilities to remain competitive and support customer expectations.
+   :status: valid
+
+   The platform shall support the execution of Generative AI workloads on-board.
+
+
+.. stkh_req:: GenAI User Interaction
+   :id: stkh_req__gen_ai__interaction
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: HMIs are expected to support intelligent, natural interaction using LLM-based assistants.
+   :status: valid
+
+   The platform shall support on-device GenAI-based models with user interaction.
+
+
+.. stkh_req:: Action Safety and Governance
+   :id: stkh_req__gen_ai__safety_filter
+   :reqtype: Functional
+   :security: YES
+   :safety: ASIL_B
+   :rationale: GenAI output may be unpredictable or unsafe and must be controlled before affecting vehicle behavior.
+   :status: valid
+
+   The platform shall validate all actions proposed by GenAI models against safety and policy rules prior to execution.
+
+
+.. stkh_req:: Seamless Integration with Vehicle Systems
+   :id: stkh_req__gen_ai__vehicle_com
+   :reqtype: Functional
+   :security: YES
+   :safety: ASIL_B
+   :rationale: AI components must interact with vehicle state and control interfaces.
+   :status: valid
+
+   The platform shall expose structured APIs to access vehicle state and execute safe commands.
+
+
 Diagnostics and Fault Management
 --------------------------------
 

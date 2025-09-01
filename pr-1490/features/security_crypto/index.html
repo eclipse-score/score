@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -72,8 +72,8 @@
         </script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Module" href="../../modules/index.html" />
-    <link rel="prev" title="Feature Architecture : persistency/kvs" href="../persistency/kvs/architecture/index.html" />
+    <link rel="next" title="Requirements" href="requirements/index.html" />
+    <link rel="prev" title="Feature Safety Planning" href="../persistency/kvs/safety_planning/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
@@ -175,7 +175,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../modules/index.html">
-    Module
+    Modules
   </a>
 </li>
 
@@ -356,7 +356,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../modules/index.html">
-    Module
+    Modules
   </a>
 </li>
 
@@ -459,6 +459,7 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ai_platform/index.html">AI Platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../analysis-infra/index.html">Analysis Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../baselibs/index.html">Base Libraries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../communication/index.html">Communication</a></li>
@@ -467,9 +468,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../frameworks/index.html">Frameworks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../infrastructure/index.html">Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../integration/index.html">Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lifecycle/index.html">Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../orchestration/index.html">Orchestration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../persistency/index.html">Persistency</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Security &amp; Cryptography</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Security &amp; Cryptography</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="requirements/index.html">Requirements</a></li>
+</ul>
+</details></li>
 </ul>
 </div>
 </nav></div>
@@ -532,7 +537,7 @@
                   
   <section id="security-cryptography">
 <h1>Security &amp; Cryptography<a class="headerlink" href="#security-cryptography" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-61e728f5">
+<div class="need_container docutils container" id="SNCB-d0dd8908">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__security_crypto">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -552,10 +557,9 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">persistency</span></span></span></div>
 <div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">realizes: <span class="realizes"><span><span class="needs_dead_link forbidden">wp__feat_request</span></span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="reference internal" href="../../requirements/stakeholder/index.html#stkh_req__dependability__security_features" title="doc__security_crypto">stkh_req__dependability__security_features</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -577,6 +581,8 @@
 </table>
 </div>
 </div>
+<div class="toctree-wrapper compound">
+</div>
 <section id="feature-flag">
 <h2>Feature flag<a class="headerlink" href="#feature-flag" title="Link to this heading">#</a></h2>
 <p>To activate this feature, use the following feature flag:</p>
@@ -584,63 +590,67 @@
 </section>
 <section id="abstract">
 <h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
-<p>Embedded systems have general security goals like confidentiality, integrity, trust and availability.
-A security subsystem inside of S-CORE needs to provide several functionalities to achieve these goals
-by using cryptographic algorithms.</p>
+<p>Embedded systems have general security goals like confidentiality, integrity, trust and
+availability. A security subsystem inside of S-CORE needs to provide several functionalities to
+achieve these goals by using cryptographic algorithms.</p>
 </section>
 <section id="motivation">
 <h2>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h2>
-<p>S-CORE will be embedded in an automotive embedded SoC and interconnected via network interfaces with
-the overall vehicle network. It will process data fom various sources, provide data internally and
-outside of its own ECU. S-CORE as a framework will ensure that itself, processed data and its hosted applications
-operate in a secure manner.</p>
+<p>S-CORE will be embedded in an automotive embedded SoC and interconnected via network interfaces
+with the overall vehicle network. It will process data fom various sources, provide data internally
+and outside of its own ECU. S-CORE as a framework will ensure that itself, processed data and its
+hosted applications operate in a secure manner.</p>
 </section>
 <section id="rationale">
 <h2>Rationale<a class="headerlink" href="#rationale" title="Link to this heading">#</a></h2>
 <p>The features presented in this proposal are derived from the above mentioned security goals.
-A single feature offering just ‘cryptographic alorithms’ is not enough to provide effective measures to ensure
-confidentiality, integrity, and trust. Therefore this proposal already considers this as a security &amp; crypto
+A single feature offering just ‘cryptographic algorithms’ is not enough to provide effective
+measures to ensure confidentiality, integrity, and trust. Therefore this proposal already considers
+this as a security &amp; crypto
 subsystem.</p>
 </section>
 <section id="specification">
 <h2>Specification<a class="headerlink" href="#specification" title="Link to this heading">#</a></h2>
-<p>In order to achieve the above mentioned security goals, a security subsystem needs to provide the following
-functionalities.</p>
+<p>In order to achieve the above mentioned security goals, a security subsystem needs to provide the
+following functionalities.</p>
 <ul class="simple">
 <li><p>‘Symmetric encryption’ - with the same key known to both communication parties</p></li>
-<li><p>‘Asymmetric encryption’ - to allow a trusted exchange of secrets with a pair of keys (public and private) for encryption and decryption.</p></li>
-<li><p>‘Signature functionality’ - to ensure that data is authentic and not tampered (integrity) if verified to be valid.
+<li><p>‘Asymmetric encryption’ - to allow a trusted exchange of secrets with a pair of keys (public and
+private) for encryption and decryption.</p></li>
+<li><p>‘Signature functionality’ - to ensure that data is authentic and not tampered (integrity) if
+verified to be valid.
 Functionality is i) to create a signature and to ii) verify a signature.</p></li>
 <li><p>‘Certificate management’ - to manage a set of signed and verified (trusted) certificates.</p></li>
 <li><p>‘Generation of entropy’ - to ensure algorithm can rely on true/sufficiently random numbers</p></li>
 <li><p>‘Ensure data integrity’ - achieved with a hash function.</p></li>
 </ul>
-<p>Additionally a cryptographic subsystem will typically as well offer
-* key management: secure generation, import, storage, update and deletion of key material
-* offer the usage of the above mentioned functionality (decrypt, encrypt) while ‘not revealing the key material’ to users of the API
-* The cryptographic subsystem should be aware that certain attacks will try to observe the overall</p>
-<blockquote>
-<div><p>system to analyze its inner workings to guess secrets (side channel/timing attacks) or to influence
-it to limit its availability for system critical tasks.</p>
-</div></blockquote>
+<p>Additionally a cryptographic subsystem will typically as well offer</p>
+<ul class="simple">
+<li><p>key management: secure generation, import, storage, update and deletion of key material</p></li>
+<li><p>the usage of the above mentioned functionality (decrypt, encrypt) while not revealing the
+key material to users of the API</p></li>
+</ul>
+<p>The cryptographic subsystem should be aware that certain attacks will try to observe the overall
+system to analyze its inner workings to guess secrets (side channel/timing attacks) or to
+influence it to limit its availability for system critical tasks.</p>
 </section>
 <section id="backwards-compatibility-dependencies">
 <h2>Backwards Compatibility &amp; Dependencies<a class="headerlink" href="#backwards-compatibility-dependencies" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>The cryptographic subsystem typically needs to ‘rely on hardware acceleration’ to execute operations
-efficiently or to access a TRNG (True random number generator) for entropy. Additionally, it MAY be a
-good idea to as well have a software-only solution.</p></li>
-<li><p>Will use system level means (co-processor, hardware security module, Trusted Execution Environment, …)
-to ensure it is protected (memory, CPU) from applications and the normal operating system while still offering its functionality to
-applications and middleware services.</p></li>
+<li><p>The cryptographic subsystem typically needs to ‘rely on hardware acceleration’ to execute
+operations efficiently or to access a TRNG (True random number generator) for entropy.
+Additionally, it MAY be a good idea to as well have a software-only solution.</p></li>
+<li><p>Will use system level means (co-processor, hardware security module, Trusted Execution
+Environment, …) to ensure it is protected (memory, CPU) from applications and the normal
+operating system while still offering its functionality to applications and middleware services.</p></li>
 <li><p>‘Time’ in the sense of real world wall clock is crucial for the cryptographic subsystem to ensure
 that for example a certificate or token is only used within its validity period.</p></li>
 </ul>
 <p>Architecture:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>         <span class="o">|</span> <span class="o">--&gt;</span> <span class="n">Signature</span> <span class="p">(</span><span class="n">create</span> <span class="o">/</span> <span class="n">verify</span><span class="p">)</span>
-         <span class="o">|</span> <span class="o">--&gt;</span> <span class="n">Symmmetic</span> <span class="n">crypto</span> <span class="p">(</span><span class="n">encrypt</span><span class="p">,</span> <span class="n">decrypt</span><span class="p">)</span>
-         <span class="o">|</span> <span class="o">--&gt;</span> <span class="n">KeyMngmt</span> <span class="p">(</span><span class="n">generate</span><span class="p">,</span> <span class="n">import</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="n">delete</span><span class="p">,</span> <span class="n">check</span><span class="p">)</span>
-         <span class="o">|</span> <span class="o">--&gt;</span> <span class="n">CertificateManagement</span> <span class="p">(</span><span class="n">add</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="n">verify</span><span class="p">)</span>
+         <span class="o">|</span> <span class="o">--&gt;</span> <span class="n">Symmetric</span> <span class="n">crypto</span> <span class="p">(</span><span class="n">encrypt</span><span class="p">,</span> <span class="n">decrypt</span><span class="p">)</span>
+         <span class="o">|</span> <span class="o">--&gt;</span> <span class="n">Key</span> <span class="n">Management</span> <span class="p">(</span><span class="n">generate</span><span class="p">,</span> <span class="n">import</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="n">delete</span><span class="p">,</span> <span class="n">check</span><span class="p">)</span>
+         <span class="o">|</span> <span class="o">--&gt;</span> <span class="n">Certificate</span> <span class="n">Management</span> <span class="p">(</span><span class="n">add</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="n">verify</span><span class="p">)</span>
          <span class="o">|</span> <span class="o">--&gt;</span> <span class="n">Hash</span> <span class="p">(</span><span class="n">data</span><span class="p">)</span>
          <span class="o">|</span>
 <span class="o">|------------------|</span>
@@ -665,8 +675,8 @@ that for example a certificate or token is only used within its validity period.
 </div>
 <section id="proposal-for-common-crypto-algorithms">
 <h3>Proposal for common crypto algorithms<a class="headerlink" href="#proposal-for-common-crypto-algorithms" title="Link to this heading">#</a></h3>
-<p>The following algorithms should match the above goals and shall be offered by the security subsystem.
-The selection of alorithms is a proposal and subject to joint discussion.
+<p>The following algorithms should match the above goals and shall be offered by the security
+subsystem. The selection of algorithms is a proposal and subject to joint discussion.
 Side note: The Eclipse Heimlig project directly supports these.</p>
 <ul class="simple">
 <li><p>Symmetric encryption and decryption (AES-CBC, AES-GCM, AES-CCM, Chacha20Poly1305 )</p></li>
@@ -687,7 +697,8 @@ Side note: The Eclipse Heimlig project directly supports these.</p>
 </section>
 <section id="license-impact">
 <h2>License Impact<a class="headerlink" href="#license-impact" title="Link to this heading">#</a></h2>
-<p>Certain strong cryptographic functionality needs to be condisered with respect to export control regulations.</p>
+<p>Certain strong cryptographic functionality needs to be considered with respect to export control
+regulations.</p>
 </section>
 <section id="how-to-teach-this">
 <h2>How to Teach This<a class="headerlink" href="#how-to-teach-this" title="Link to this heading">#</a></h2>
@@ -705,8 +716,8 @@ Side note: The Eclipse Heimlig project directly supports these.</p>
 attacks. As the overall system the security subsystem should be based on a security plan including
 ‘security goals’, ‘plausible attacks’, ‘critical failures’, and ‘countermeasures’.
 Due to the nature of our overall system to be deployed for 10+ years in an embedded systems
-such a security plan needs to as well cover ‘software-update strategy’, ‘field observation’, ‘crypto
-algorithm updates’, ‘repairability’, and ‘whitstand reverse engineering of secrets’.</p>
+such a security plan needs to as well cover ‘software-update strategy’, ‘field observation’,
+‘crypto algorithm updates’, ‘repair-ability’, and ‘withstand reverse engineering of secrets’.</p>
 <p>As the security subsystem of S-CORE will be open source, the plan needs to ensure that an attacker
 can analyze the security subsystem without gaining benefits from it with regards to compromising a
 system in which S-SCORE is deployed on the road. (Obvious: avoid security by obscurity)</p>
@@ -729,19 +740,19 @@ citizen. The security subsystem SHALL be developed entirely in Rust.</p>
 <li><p>Connection to IDS / anomaly detection</p></li>
 <li><p>Zero trust - BS or where to use ?</p></li>
 <li><p>Critical subsystem states</p></li>
-<li><p>Attack scenario by exceeding computation capabilities (DoS) with malicious messages that create exceptional load</p></li>
+<li><p>Attack scenario by exceeding computation capabilities (DoS) with malicious messages that create
+exceptional load</p></li>
 </ul>
 <section id="post-quantum-readiness">
 <h3>Post quantum readiness<a class="headerlink" href="#post-quantum-readiness" title="Link to this heading">#</a></h3>
-<p>See <cite>NIST &lt;https://www.nist.gov/news-events/news/2024/08/nist-releases-first-3-finalized-post-quantum-encryption-standards&gt;</cite>:
-* <a class="reference external" href="https://csrc.nist.gov/pubs/fips/203/final">https://csrc.nist.gov/pubs/fips/203/final</a>
-* <a class="reference external" href="https://csrc.nist.gov/pubs/fips/204/final">https://csrc.nist.gov/pubs/fips/204/final</a>
-* <a class="reference external" href="https://csrc.nist.gov/pubs/fips/205/final">https://csrc.nist.gov/pubs/fips/205/final</a>.</p>
+<p>See <cite>NIST &lt;https://www.nist.gov/news-events/news/2024/08/nist-releases-first-3-finalized-post-
+quantum-encryption-standards&gt;</cite>:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://csrc.nist.gov/pubs/fips/203/final">https://csrc.nist.gov/pubs/fips/203/final</a></p></li>
+<li><p><a class="reference external" href="https://csrc.nist.gov/pubs/fips/204/final">https://csrc.nist.gov/pubs/fips/204/final</a></p></li>
+<li><p><a class="reference external" href="https://csrc.nist.gov/pubs/fips/205/final">https://csrc.nist.gov/pubs/fips/205/final</a>.</p></li>
+</ul>
 </section>
-</section>
-<section id="footnotes">
-<h2>Footnotes<a class="headerlink" href="#footnotes" title="Link to this heading">#</a></h2>
-<p>TBD</p>
 </section>
 </section>
 
@@ -756,20 +767,20 @@ citizen. The security subsystem SHALL be developed entirely in Rust.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../persistency/kvs/architecture/index.html"
+       href="../persistency/kvs/safety_planning/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Feature Architecture : persistency/kvs</p>
+        <p class="prev-next-title">Feature Safety Planning</p>
       </div>
     </a>
     <a class="right-next"
-       href="../../modules/index.html"
+       href="requirements/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Module</p>
+        <p class="prev-next-title">Requirements</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -815,7 +826,6 @@ citizen. The security subsystem SHALL be developed entirely in Rust.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#post-quantum-readiness">Post quantum readiness</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#footnotes">Footnotes</a></li>
 </ul>
   </nav></div>
 
