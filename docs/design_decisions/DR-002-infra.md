@@ -79,7 +79,7 @@ multiple pull requests must land together, and a post-merge fuller suite. Each p
 a manifest, runs an appropriate depth of tests, and may record the tuple if successful.
 
 ### Visual Overview
-```mermaid
+```{mermaid}
 flowchart TB
   subgraph COMP[Component Repos]
     pr[PR opened / updated<br/>&lt;event&gt;]:::event --> comp_ci[Component tests]:::step
