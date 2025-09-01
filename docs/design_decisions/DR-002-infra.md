@@ -13,7 +13,7 @@ SPDX-License-Identifier: Apache-2.0
 
 # DR-002-Infra: Integration Testing in a Distributed Monolith
 
-* **Status:** Draft. Bazel integration missing.
+* **Status:** Agreed within Community
 * **Owner:** Infrastructure Community
 * **Date:** 2025-09-01
 
@@ -318,6 +318,18 @@ as coordination defers detection to the last merge.
 **Signs it is working:** Interface breakage is caught pre-merge. Coordinated change sets
 show unified status. Multi-repository regressions are localised rapidly using stored
 manifests.
+
+## Releases and Bazel Registry
+
+Bazel modules should be released only once they are verified, which in this setup is
+equivalent to being included in the known-good store. This does not imply that all
+verified versions need to end up in a release. That's still up to the module
+maintainers.
+
+However in some cases pre-releases are even mandatory: when two modules are verified
+together (multi repo PR) and one depends on the other, the PR cannot be merged without
+internally releasing the dependent module, and setting the appropriate dependency in the
+other.
 
 ## Summary
 By expressing the integrated system as explicit manifests, curating a fast integration
