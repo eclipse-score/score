@@ -589,6 +589,7 @@ SPDX-License-Identifier: Apache-2.0
 <p>Note: this concept is easily extendable to support multiple versions of S-CORE. But that’s currently not required.</p>
 </section>
 </section>
+<hr class="docutils" />
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>Teams often split what is functionally a single system across many repositories. Each
@@ -604,6 +605,7 @@ have or will create a central integration repository used only for orchestration
 of those are absent you will need to establish them first; the rest of the discussion
 builds on them.</p>
 </section>
+<hr class="docutils" />
 <section id="motivation-where-problems-usually-appear">
 <h2>Motivation / Where Problems Usually Appear<a class="headerlink" href="#motivation-where-problems-usually-appear" title="Link to this heading">#</a></h2>
 <p>An interface change (for example a renamed field in a shared schema) is updated in two
@@ -617,6 +619,7 @@ Coordinated multi-repository changes are then handled informally through ad-hoc
 ordering: “merge yours after mine”. Late detection raises cost and makes regression
 origins harder to locate.</p>
 </section>
+<hr class="docutils" />
 <section id="core-concepts">
 <h2>Core Concepts<a class="headerlink" href="#core-concepts" title="Link to this heading">#</a></h2>
 <p>We model the integrated system as an explicit set of (component, commit) pairs captured
@@ -646,6 +649,7 @@ integration-specific helpers (overrides, fixtures, seam tests), and persist know
 records. It should not contain business logic; keeping it lean reduces accidental
 coupling and simplifies review.</p>
 </section>
+<hr class="docutils" />
 <section id="integration-workflows">
 <h2>Integration Workflows<a class="headerlink" href="#integration-workflows" title="Link to this heading">#</a></h2>
 <p>We use three recurring workflows: a single pull request, a coordinated subset when
@@ -757,6 +761,7 @@ the integrated system later.</p>
 <p>Large configuration belongs elsewhere; manifests should stay readable and diffable.</p>
 </section>
 </section>
+<hr class="docutils" />
 <section id="example-github-actions-conceptual">
 <h2>Example: GitHub Actions (Conceptual)<a class="headerlink" href="#example-github-actions-conceptual" title="Link to this heading">#</a></h2>
 <p><em>Conceptual outline; not yet implemented here.</em></p>
@@ -862,6 +867,7 @@ manifests to isolate drift) without relying on (rather fragile) links to unique 
 your CI system.</p>
 </section>
 </section>
+<hr class="docutils" />
 <section id="operating-it">
 <h2>Operating It<a class="headerlink" href="#operating-it" title="Link to this heading">#</a></h2>
 <p><strong>Curating the fast subset:</strong> Tests should fail quickly when public seams change. Keep
@@ -888,6 +894,7 @@ as coordination defers detection to the last merge.</p>
 show unified status. Multi-repository regressions are localised rapidly using stored
 manifests.</p>
 </section>
+<hr class="docutils" />
 <section id="releases-and-bazel-registry">
 <h2>Releases and Bazel Registry<a class="headerlink" href="#releases-and-bazel-registry" title="Link to this heading">#</a></h2>
 <p>Bazel modules should be released only once they are verified, which in this setup is
@@ -899,6 +906,7 @@ together (multi repo PR) and one depends on the other, the PR cannot be merged w
 internally releasing the dependent module, and setting the appropriate dependency in the
 other.</p>
 </section>
+<hr class="docutils" />
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
 <p>By expressing the integrated system as explicit manifests, curating a fast integration
