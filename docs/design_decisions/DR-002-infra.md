@@ -18,6 +18,29 @@ SPDX-License-Identifier: Apache-2.0
 * **Date:** 2025-09-01
 
 ---
+
+## Executive Summary
+
+Large systems often span multiple repositories. Each repository can look “green” on its own, yet problems only show up when everything is combined. These late surprises slow down development and make debugging painful.
+
+The concept described here turns a collection of separate repositories into a system that behaves like a single, continuously tested whole — ensuring the main line is always integrable across all components.
+
+### Proposed Approach
+- Every change in any repository is tested **in combination with the rest of the system**, not just in isolation.
+- There are **two testing layers**:
+  - a **fast feedback loop** (lightweight tests that run on every pull request),
+  - and a **deeper validation** (heavier tests run after merges or on a schedule).
+- This setup guarantees that developers can trust the system as a whole to consistently work.
+
+### Benefits
+- Problems across repositories are caught early.
+- Developers spend less time coordinating merges (“merge after me” scenarios disappear).
+- The project always has a “known good” baseline to fall back on, enabling stability while still moving fast.
+
+Note: this concept is easily extendable to support multiple versions of S-CORE. But that's currently not required.
+
+## Introduction
+
 Teams often split what is functionally a single system across many repositories. Each
 repository can show a green build while the assembled system is already broken. This
 article looks at how to bring system-level feedback earlier when you work that way. This
@@ -32,7 +55,7 @@ have or will create a central integration repository used only for orchestration
 of those are absent you will need to establish them first; the rest of the discussion
 builds on them.
 
-## Where Problems Usually Appear
+## Motivation / Where Problems Usually Appear
 An interface change (for example a renamed field in a shared schema) is updated in two
 direct consumers. Their pull requests pass. Another consumer several repositories away
 still depends on the old interface and only fails once the whole set of changes reaches
