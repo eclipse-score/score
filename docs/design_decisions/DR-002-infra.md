@@ -18,7 +18,6 @@ SPDX-License-Identifier: Apache-2.0
 * **Date:** 2025-09-01
 
 ---
-
 ## Executive Summary
 
 Large systems often span multiple repositories. Each repository can look “green” on its own, yet problems only show up when everything is combined. These late surprises slow down development and make debugging painful.
@@ -39,6 +38,7 @@ The concept described here turns a collection of separate repositories into a sy
 
 Note: this concept is easily extendable to support multiple versions of S-CORE. But that's currently not required.
 
+---
 ## Introduction
 
 Teams often split what is functionally a single system across many repositories. Each
@@ -55,6 +55,7 @@ have or will create a central integration repository used only for orchestration
 of those are absent you will need to establish them first; the rest of the discussion
 builds on them.
 
+---
 ## Motivation / Where Problems Usually Appear
 An interface change (for example a renamed field in a shared schema) is updated in two
 direct consumers. Their pull requests pass. Another consumer several repositories away
@@ -68,6 +69,7 @@ Coordinated multi-repository changes are then handled informally through ad-hoc
 ordering: “merge yours after mine”. Late detection raises cost and makes regression
 origins harder to locate.
 
+---
 ## Core Concepts
 We model the integrated system as an explicit set of (component, commit) pairs captured
 in a manifest. Manifests are derived deterministically from events: a single pull
@@ -96,6 +98,7 @@ integration-specific helpers (overrides, fixtures, seam tests), and persist know
 records. It should not contain business logic; keeping it lean reduces accidental
 coupling and simplifies review.
 
+---
 ## Integration Workflows
 We use three recurring workflows: a single pull request, a coordinated subset when
 multiple pull requests must land together, and a post-merge fuller suite. Each produces
@@ -206,6 +209,7 @@ changeset: feature-x
 
 Large configuration belongs elsewhere; manifests should stay readable and diffable.
 
+---
 ## Example: GitHub Actions (Conceptual)
 *Conceptual outline; not yet implemented here.*
 
@@ -312,6 +316,7 @@ passed before a release), gating (choose any known-good tuple), and comparison (
 manifests to isolate drift) without relying on (rather fragile) links to unique runs in
 your CI system.
 
+---
 ## Operating It
 **Curating the fast subset:** Tests should fail quickly when public seams change. Keep
 the list explicit (e.g. //integration/subset:pr_fast). Remove redundant tests and
@@ -342,6 +347,7 @@ as coordination defers detection to the last merge.
 show unified status. Multi-repository regressions are localised rapidly using stored
 manifests.
 
+---
 ## Releases and Bazel Registry
 
 Bazel modules should be released only once they are verified, which in this setup is
@@ -354,6 +360,7 @@ together (multi repo PR) and one depends on the other, the PR cannot be merged w
 internally releasing the dependent module, and setting the appropriate dependency in the
 other.
 
+---
 ## Summary
 By expressing the integrated system as explicit manifests, curating a fast integration
 subset for pull requests, and running a deeper post-merge suite, you move discovery of
