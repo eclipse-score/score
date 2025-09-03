@@ -562,6 +562,35 @@ SPDX-License-Identifier: Apache-2.0
 <li><p><strong>Date:</strong> 2025-09-01</p></li>
 </ul>
 <hr class="docutils" />
+<section id="executive-summary">
+<h2>Executive Summary<a class="headerlink" href="#executive-summary" title="Link to this heading">#</a></h2>
+<p>Large systems often span multiple repositories. Each repository can look “green” on its own, yet problems only show up when everything is combined. These late surprises slow down development and make debugging painful.</p>
+<p>The concept described here turns a collection of separate repositories into a system that behaves like a single, continuously tested whole — ensuring the main line is always integrable across all components.</p>
+<section id="proposed-approach">
+<h3>Proposed Approach<a class="headerlink" href="#proposed-approach" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Every change in any repository is tested <strong>in combination with the rest of the system</strong>, not just in isolation.</p></li>
+<li><p>There are <strong>two testing layers</strong>:</p>
+<ul>
+<li><p>a <strong>fast feedback loop</strong> (lightweight tests that run on every pull request),</p></li>
+<li><p>and a <strong>deeper validation</strong> (heavier tests run after merges or on a schedule).</p></li>
+</ul>
+</li>
+<li><p>This setup guarantees that developers can trust the system as a whole to consistently work.</p></li>
+</ul>
+</section>
+<section id="benefits">
+<h3>Benefits<a class="headerlink" href="#benefits" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Problems across repositories are caught early.</p></li>
+<li><p>Developers spend less time coordinating merges (“merge after me” scenarios disappear).</p></li>
+<li><p>The project always has a “known good” baseline to fall back on, enabling stability while still moving fast.</p></li>
+</ul>
+<p>Note: this concept is easily extendable to support multiple versions of S-CORE. But that’s currently not required.</p>
+</section>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>Teams often split what is functionally a single system across many repositories. Each
 repository can show a green build while the assembled system is already broken. This
 article looks at how to bring system-level feedback earlier when you work that way. This
@@ -574,8 +603,9 @@ checks; you have multiple interdependent repositories that ship together; and yo
 have or will create a central integration repository used only for orchestration. If any
 of those are absent you will need to establish them first; the rest of the discussion
 builds on them.</p>
-<section id="where-problems-usually-appear">
-<h2>Where Problems Usually Appear<a class="headerlink" href="#where-problems-usually-appear" title="Link to this heading">#</a></h2>
+</section>
+<section id="motivation-where-problems-usually-appear">
+<h2>Motivation / Where Problems Usually Appear<a class="headerlink" href="#motivation-where-problems-usually-appear" title="Link to this heading">#</a></h2>
 <p>An interface change (for example a renamed field in a shared schema) is updated in two
 direct consumers. Their pull requests pass. Another consumer several repositories away
 still depends on the old interface and only fails once the whole set of changes reaches
@@ -919,7 +949,13 @@ Farley), trunk-based development resources.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-problems-usually-appear">Where Problems Usually Appear</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#executive-summary">Executive Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-approach">Proposed Approach</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#benefits">Benefits</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-where-problems-usually-appear">Motivation / Where Problems Usually Appear</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-concepts">Core Concepts</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-workflows">Integration Workflows</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-overview">Visual Overview</a></li>
