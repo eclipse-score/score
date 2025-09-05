@@ -1,17 +1,44 @@
 # Fork Strategy for the S-CORE Organization
 
-> Early work in progress!
+> Single-page guide structured as: 1. WHY (context & goals) → 2. WHAT (models & decisions) → 3. HOW (workflows & tooling).
 
-## Table of contents
+## Table of Contents
 
-- [1. Purpose and audience](#1-purpose-and-audience)
-- [2. Models and decision framework](#2-models-and-decision-framework)
-- [3. Deep dive into "Both" model](#3-deep-dive-into-both-model)
-- [4. Updating a fork](#4-updating-a-fork)
-- [5. Internal-first workflow](#5-internal-first-workflow)
-- [6. Transformation / publication pipeline (Copybara)](#6-transformation--publication-pipeline-copybara)
+- [Fork Strategy for the S-CORE Organization](#fork-strategy-for-the-s-core-organization)
+  - [Table of Contents](#table-of-contents)
+  - [1. Why – Purpose \& Context](#1-why--purpose--context)
+    - [1.1 Audience](#11-audience)
+    - [1.2 Goals](#12-goals)
+    - [1.3 Out of Scope](#13-out-of-scope)
+    - [1.4 Principles](#14-principles)
+  - [2. What – Fork Models \& Decision Framework](#2-what--fork-models--decision-framework)
+    - [2.1 Model Overview (At a Glance)](#21-model-overview-at-a-glance)
+      - [Models](#models)
+    - [2.2 Selection Criteria](#22-selection-criteria)
+    - [2.3 Model Details](#23-model-details)
+      - [2.3.1 Public Fork](#231-public-fork)
+      - [2.3.2 Internal Fork](#232-internal-fork)
+      - [2.3.3 Hybrid (Both)](#233-hybrid-both)
+  - [3. How – Implementation \& Workflows](#3-how--implementation--workflows)
+    - [3.1 Keeping Your Fork Updated](#31-keeping-your-fork-updated)
+    - [3.2 Hybrid Contribution Workflows](#32-hybrid-contribution-workflows)
+      - [3.2.1 Public-first Workflow](#321-public-first-workflow)
+      - [3.2.2 Internal-first Workflow](#322-internal-first-workflow)
+        - [Optional: GitHub App Setup](#optional-github-app-setup)
+        - [Automated Publication Workflow](#automated-publication-workflow)
+        - [Manual Publication Workflow (Git only)](#manual-publication-workflow-git-only)
+    - [3.3 Transformation / Filtering Pipeline (Copybara Implementation)](#33-transformation--filtering-pipeline-copybara-implementation)
+      - [Overview](#overview)
+      - [Key Benefits](#key-benefits)
+      - [Minimal Configuration Example](#minimal-configuration-example)
+      - [CI Integration](#ci-integration)
+      - [Local Usage](#local-usage)
+      - [Challenges \& Trade-offs](#challenges--trade-offs)
+      - [Summary](#summary)
 
-## 1. Purpose and audience
+---
+
+## 1. Why – Purpose & Context
 
 This guide helps companies (tool vendors, integrators, OEMs, suppliers) decide how to structure forks of S-CORE repositories to:
 
@@ -23,73 +50,115 @@ This guide helps companies (tool vendors, integrators, OEMs, suppliers) decide h
 
 > S-CORE spans 50+ repositories. You DON'T need a one-size-fits-all approach. Pick the minimal model per repository and evolve when needs grow.
 
-Note that this guide will not address license requirements. We are not lawyers. We do not give any advice. You will need to comply to S-CORE licensing on your own.
+### 1.1 Audience
+Engineering orgs managing both internal and external code flows; platform / DevEx teams formalizing contribution and publication pipelines; compliance/security stakeholders.
 
-## 2. Models and decision framework
+### 1.2 Goals
+Provide a decision and execution framework that reduces friction and risk while keeping the path to upstream contribution short.
 
-### 2.1 Core models (at a glance)
+### 1.3 Out of Scope
+License interpretation, export control, internal HR / policy approvals. You must comply with S-CORE licensing independently.
 
-Below are the core fork models explained as short sub-sections so it's easier to expand details and constraints later.
+### 1.4 Principles
 
-#### Public fork
+- Minimize complexity until required
+- Prefer reversible choices
+- Keep sensitive assets out of public history
+- Preserve authorship and traceability
+- Automate repeatable publication steps
 
-- Us in case of:
-  - Contributions to S-CORE or
-  - Creating a real fork of S-CORE.
-- Pros:
-  - Simple
-  - Fast, zero internal infrastructure required.
+---
 
-#### Internal fork
+## 2. What – Fork Models & Decision Framework
 
-- When to use:
-  - Passive consumption of S-CORE (read-only) or
-  - Extending S-CORE with internal modules, enhancements, glue code etc.
-- Constraints: Requires workflows to keep syncing manageable.
+### 2.1 Model Overview (At a Glance)
 
-#### Both (public + internal)
+Below are the core fork models in increasing complexity. Pick the first that satisfies your needs and evolve only when forced by requirements.
 
-- When to use: when both criteria from above apply
-- Constraints: Requires clear policies and workflows to avoid accidental leakage and to keep syncing manageable.
+#### Models
 
-#### Transformation / publication pipeline (Copybara, etc.)
+- Public Fork
+- Internal Fork
+- Hybrid (Both: public + internal)
+- Transformation / Publication Layer (Copybara / custom)
 
-- When to use: You need to filter files, rewrite metadata, or enforce policy transformations before publishing upstream.
-- Pros: Powerful, auditable, and repeatable; supports strict policy enforcement and selective publishing.
-- Constraints: Adds extra tooling and maintenance burden; requires engineering effort to build and operate.
+### 2.2 Selection Criteria
+Consider the following when choosing a model:
 
-There is no generic recommendation, as it truly depends on your needs. The options are sorted roughly by complexity — pick the first one that fits your needs and evolve from there.
+- Contribution frequency & size
+- Need to keep internal-only extensions
+- Security / compliance gating before publication
+- File / metadata filtering requirements
+- Desire to preserve granular commit history externally
+- Automation maturity (manual → scripted → policy-enforced)
 
-## 3. Deep dive into "Both" model
 
-Depending on company policy and other restrictions different contribution styles are possible.
-Again, we'll sort from simple to complex and you need to pick the first one that makes sense for you.
+### 2.3 Model Details
 
-### 3.1 Public-first
+Each model description focuses on WHEN to use it and inherent CONSTRAINTS. Implementation lives in Section 3 (How).
 
-All developers work on the public fork, and individually create PRs for S-CORE.
-This is suitable for individual contributors and companies with no overhead due to internal policies.
+#### 2.3.1 Public Fork
 
-1. Everyone works on short lived feature branches, e.g. `topic` or `<username>/<topic>`
-2. Everyone creates individual PRs against S-CORE
-3. Once PR is merged, the branch is deleted
+- Use when: You only need to contribute upstream or maintain a long-lived divergence openly.
+- Pros: Simple; no internal infra.
+- Constraints: No internal-only code separation; risk of accidental leakage if you try to “hide” things manually.
 
-Note: the `main` branch could either be intentionally dead or reflect S-CORE main branch. No recommendation on that yet. The main branch could serve as independent backup of the source code if this is required by your company policies.
+#### 2.3.2 Internal Fork
 
-Note: public-first usually does not hold for BIG contributions. Whatever big means for your company. Those usually need to be whitelisted internally before going public.
+- Use when: You passively consume S-CORE (read-only) or maintain internal extensions not (yet) publishable.
+- Pros: Freedom to experiment internally; shield proprietary assets.
+- Constraints: Requires disciplined syncing from upstream to avoid drift.
 
-### 3.2 Internal-first
+#### 2.3.3 Hybrid (Both)
 
-Most developers work on the internal fork, and individually create internal PRs before going public.
-This is suitable for companies which require this due to internal policies.
+- Use when: You both maintain internal-only additions AND contribute upstream regularly.
+- Core need: Clear policy to prevent leakage and friction.
+- Variants (see Section 3.2):
+  - Public-first
+  - Internal-first
+  - With transformation layer
 
-Setup:
+---
 
-- 🔒 Internal development is protected and private.
-- 🧼 Public forks remain clean, reviewable and stripped of internal tooling.
-- 🔁 Pull Requests (PRs) require the source branch to have a common ancestor with the base repository — meaning the fork must share history with the original.
+## 3. How – Implementation & Workflows
 
-Visual Diagram:
+Implementation guidance for updating forks, contributing from hybrids, and operating transformation pipelines.
+
+### 3.1 Keeping Your Fork Updated
+
+Relevant for real (non-contribution-only) forks. Periodically create PRs (or fast-forward merges) from S-CORE `main` into your fork `main`, running internal workflows (tests, linting, compliance) before acceptance. Neglecting this increases integration cost over time.
+
+### 3.2 Hybrid Contribution Workflows
+
+Depending on policy and compliance constraints, pick the simplest viable variant.
+
+#### 3.2.1 Public-first Workflow
+
+All developers work on the public fork and create PRs directly against S-CORE.
+
+Steps:
+
+1. Short-lived feature branches (e.g., `topic` or `<username>/<topic>`)
+2. Individual PRs upstream
+3. Delete merged branches
+
+
+Notes:
+
+- `main` in your public fork may either track upstream or remain unused (can serve as a backup copy if required by policy).
+- Large contributions may need internal pre-approval before public exposure.
+
+#### 3.2.2 Internal-first Workflow
+
+Most development occurs internally; publication is an explicit step.
+
+Characteristics:
+
+- 🔒 Internal repo private
+- 🧼 Public fork stays clean (only intended contributions)
+- 🔁 Branches must share history with upstream for straightforward PRs
+
+Diagram:
 
 ```text
 score_internal (private)
@@ -98,56 +167,40 @@ score_internal (private)
 my-company/score (public fork)
   │
   ▼  Pull Request ➝ base: main
- eclipse-score/score (upstream)
+eclipse-score/score (upstream)
 ```
 
-Con: complex setup. See How-To in the next chapters.
+Con: More setup & process overhead.
 
-### 3.3 Transformation / filtering layer
+##### Optional: GitHub App Setup
 
-Add (Copybara / custom) only if filtering / rewriting is required.
+Optional. Start without this if you're experimenting: a fine‑grained PAT (scoped to needed repos: contents + pull requests) stored as a secret (e.g. `GH_TOKEN`) is enough. Migrate to a **GitHub App** when you need org‑wide automation, stronger auditability, or to avoid long‑lived personal tokens.
 
-Con: complex setup. See How-To in the next chapters.
+You can adopt a **GitHub App** (e.g., `qorix-repo-publisher`) to replace PATs for more secure, scalable automation.
 
-## 4. Updating a fork
+Why adopt a GitHub App (benefits over PAT):
 
-This is only relevant for real, non-contribution-only forks.
+- Short‑lived tokens
+- Scoped repo access
+- Works across private + public
 
-You'll need to create PRs from S-CORE `main` to your forked `main`, and run your workflows (e.g. tests, linting) to decide whether to accept the changes.
-Of course if you don't, you are screwed.
-
-## 5. Internal-first workflow
-
-This section describes how to safely publish changes developed internally to a public fork and then upstream, while preserving history and avoiding leakage of internal-only assets.
-
-### 5.1 GitHub App setup
-
-To avoid using personal access tokens (PATs) and to enable secure automation at the org level, use a **GitHub App** (e.g. `qorix-repo-publisher`).
-
-#### Why use a GitHub App?
-
-- Short‑lived tokens (reduced blast radius)
-- Scoped installation access (principle of least privilege)
-- Works across private + public repos
-
-#### Setup steps
+Setup Steps (only if/when you choose to adopt):
 
 1. GitHub → Developer Settings → GitHub Apps → New GitHub App
-2. Name it (e.g. `qorix-repo-publisher`)
-3. Grant access to:
-   - `qorix-group/inc_orchestrator_internal`
-   - `qorix-group/inc_orchestrator`
-4. Generate a private key and store as secrets:
-   - `GH_APP_ID` (numeric ID)
-   - `GH_APP_PRIVATE_KEY` (contents of the `.pem` file)
+1. Name it (e.g. `qorix-repo-publisher`)
+1. Grant access to:
 
-#### Requesting access
+- `qorix-group/inc_orchestrator_internal`
+- `qorix-group/inc_orchestrator`
 
-When new repositories are created, request the infrastructure / platform team to install the app on them.
+1. Generate private key → store as secrets:
 
-#### Token generation in workflow
+- `GH_APP_ID`
+- `GH_APP_PRIVATE_KEY`
 
-Use the [tibdex/github-app-token](https://github.com/tibdex/github-app-token) action:
+Requesting Access: Ask platform/infrastructure team to install on new repos.
+
+Token Generation (workflow snippet):
 
 ```yaml
 - name: Generate GitHub App token
@@ -158,28 +211,24 @@ Use the [tibdex/github-app-token](https://github.com/tibdex/github-app-token) ac
     private_key: ${{ secrets.GH_APP_PRIVATE_KEY }}
 ```
 
-### 5.2 Automated publication workflow
+##### Automated Publication Workflow
 
-This GitHub Action typically:
+Typical automation:
 
-1. Checks out the internal repo (e.g., `inc_orchestrator_internal`)
-2. Fast‑forwards its `main` to match upstream (`eclipse-score/inc_orchestrator`)
-3. Creates a feature branch and pushes it to the public fork (`qorix-group/inc_orchestrator`)
-4. (Optionally) verifies the branch exists and is PR‑ready
+1. Checkout internal repo (`inc_orchestrator_internal`)
+2. Fast‑forward `main` to match upstream
+3. Create feature branch & push to public fork (`qorix-group/inc_orchestrator`)
+4. (Optional) Validate branch state for PR readiness
 
-Result: The branch can be used to open a PR into the upstream project.
+Trigger: Manually through GitHub Actions.
 
-#### How to run
+Inputs:
 
-Triggered manually via GitHub Actions UI.
+- `repo_slug` (e.g. `inc_orchestrator`)
+- `source_branch` (e.g. `main`)
+- `dest_branch` (e.g. `feature/myfix`)
 
-#### Input parameters
-
-- `repo_slug`: project selector (e.g. `inc_orchestrator`)
-- `source_branch`: base branch (e.g. `main`)
-- `dest_branch`: feature branch to publish (e.g. `feature/myfix`)
-
-Example trigger UI:
+Example UI:
 
 ```text
 Repo:         [inc_orchestrator ▾ ]
@@ -188,14 +237,13 @@ Destination:  feature/myfix
 ▶ Run Workflow
 ```
 
-#### Example use case
+Example Use Case:
 
-You finished your work internally and want to contribute upstream:
 1. Run workflow with `dest_branch=myfeature`
 2. Open PR from public fork branch → base: `eclipse-score/inc_orchestrator/main`
 3. Merge after review
 
-### 5.3 Manual workflow (Git only)
+##### Manual Publication Workflow (Git only)
 
 For developers preferring local control:
 
@@ -217,58 +265,45 @@ git merge --ff-only upstream/main
 git checkout -b feature/my_branch
 git push fork HEAD:feature/my_branch
 ```
+After pushing: open a Pull Request from `feature/my_branch` in the public fork to upstream.
 
-After pushing, open a Pull Request from `feature/my_branch` in the public fork to the upstream repository.
 
-## 6. Transformation / publication pipeline (Copybara)
+### 3.3 Transformation / Filtering Pipeline (Copybara Implementation)
 
-### What is Copybara?
+Adds controlled publication with filtering & metadata normalization.
 
-[Copybara](https://github.com/google/copybara) is an open-source tool developed by Google that helps synchronize code between repositories. It's built to support workflows where you need to:
+#### Overview
 
-- Mirror code across internal and external repos
-- Filter out unwanted files
-- Transform file content or commit metadata
-- Keep histories clean and consistent
+[Copybara](https://github.com/google/copybara) synchronizes code between repositories where you need to:
 
----
+- Mirror internal → public
+- Filter files
+- Transform content / metadata
+- Preserve coherent history
 
-### Key benefits of Copybara
+#### Key Benefits
 
-#### Iterative (non-squash) commits
-
-By default, Copybara supports both **squash** and **iterative** commit models. We use the `ITERATIVE` mode to:
+Iterative (non-squash) commits:
 
 - Retain individual commits
-- Preserve commit messages and timestamps
-- Avoid compressing change history into one lump commit
+- Preserve messages & timestamps
+- Avoid history compression
 
-#### File filtering
+File filtering:
 
-You can configure Copybara to:
+- Exclude internal-only assets (e.g., `.github/workflows`, `copy.bara.sky`)
+- Publish only OSS-relevant content
 
-- Exclude internal-only files (e.g., `.github/workflows`, `copy.bara.sky`, credentials)
-- Include only open-source-relevant content
-
-This ensures your public fork stays clean.
-
-#### Author preservation
-
-Using:
+Author preservation:
 
 ```python
 authoring = authoring.pass_thru("Qorix Bot <bot@qorix.dev>")
 ```
 
-Copybara keeps the **original commit authors** — important for traceability and contribution credit.
+Preserves original commit authors for traceability.
 
-#### Transformations
-
-Copybara supports custom transformations such as:
-
-- `core.replace`, `core.move`, `core.transform`
-- Injecting headers
-- Renaming folders
+Transformations:
+Supports `core.replace`, `core.move`, `core.transform`, header injection, folder renames.
 
 Example:
 
@@ -281,9 +316,7 @@ transformations = [
 ]
 ```
 
----
-
-### Minimal configuration example
+#### Minimal Configuration Example
 
 ```python
 origin = git.origin(
@@ -316,9 +349,7 @@ core.workflow(
 )
 ```
 
----
-
-### CI integration (GitHub Actions)
+#### CI Integration
 
 ```yaml
 - name: Generate GitHub App token
@@ -341,42 +372,22 @@ core.workflow(
     java -jar copybara_deploy.jar migrate copy.bara.sky publish_branch
 ```
 
----
-
-### Local usage
-
-You can also run Copybara manually on your local machine:
+#### Local Usage
 
 ```bash
 java -jar copybara_deploy.jar --init-history --force copy.bara.sky publish_branch
 ```
-
 Use this to preview migrations or sync new branches outside CI.
 
-Check the `copybara` directory for some configuration examples.
+#### Challenges & Trade-offs
 
-### Challenges and trade-offs
+| Challenge | Impact |
+|-----------|--------|
+| No native GH default token support | Extra auth setup |
+| Requires state for first branch push | One-time `--init-history` nuance |
+| Credential & Git config ceremony | Boilerplate in CI |
+| Additional maintenance | Long-term ownership needed |
 
-While Copybara works well locally, it's tricky to use in GitHub Actions, which automate tasks when code changes:
+#### Summary
 
-❌ It doesn’t support GitHub’s default token system.
-
-❌ It expects stored state (which CI environments don’t persist).
-
-❌ It needs special setup for credentials and Git configuration.
-
-❌ It requires --init-history the first time you push a new branch — and only the first time.
-
----
-
-### Summary
-
-Copybara offers a powerful, flexible way to control how code moves between repositories. While more complex than plain `git`, it allows full control over filtering, authoring, and commit structure.
-
-It works best when:
-
-- You need to filter out sensitive files
-- You want to preserve authorship
-- You want to define repeatable sync logic
-
-> We use it to mirror internal development to our public forks while maintaining clean, auditable, and collaborative histories.
+Copybara offers controlled, scriptable synchronization with filtering and author preservation. Choose it only when manual git workflows no longer scale or policy filtering is mandatory.
