@@ -40,7 +40,6 @@ Steering of the project is done by two committees: *project lead circle* and *te
 
   * Definition, discussion of and decisions about strategical topics (e.g. which associations to approach, confirmation of roadmap, representation in public).
   * Decision on which new software modules should be added or removed from the project. The decision is done based on proposal from the *Technical lead circle*. In case of changes to the existing modules and no concordant decision in the *Technical Lead Circle*, the *Project Lead Circle* has to decide about the change.
-  * Election of new Project Leads.
   * Election of Technical Leads.
   * Last instance of escalation path.
 
