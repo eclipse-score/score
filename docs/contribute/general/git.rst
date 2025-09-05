@@ -41,7 +41,7 @@ the quality of the commits and their respective commit messages.
 ******************
 
 Authors name and e-mail address are part of the commit (and thus be part of the commit history).
-They must match the name and e-mail used for eclipse registration. They can be specified via the
+They must match the name and e-mail used for Eclipse registration. They can be specified via the
 .gitconfig file:
 
 .. code-block::
@@ -178,3 +178,28 @@ Example
     repositories.
 
     Also-by: Some Bodyelse <somebodyelse@nowhere.com>
+
+********************
+ Correcting Mistakes
+********************
+
+Sometimes it happens that mistakes are made in the commit history.
+This can usually be corrected.
+
+Examples of problematic history include:
+
+-  Multiple, consecutive commits by the same author, like "draft one", "after review", "forgotten in previous commit".
+   Such commits should be squashed into a single commit, with a well-written commit message.
+-  Merges from the main branch into a feature branch.
+   Instead, the feature branch should be rebased on top of the main branch.
+   This preserves a linear history.
+
+A strategy which can be used to correct the commit history of a branch is to use a feature of git called 'interactive rebase'.
+Afterwards, the (now cleaned-up) branch can be force-pushed to the remote repository.
+This works also if there is already a pull-request open for this branch.
+
+The Git Documentation contains `a well-written section <https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History>`_ about "rewriting history".
+However, to be fair, this is not simple when you do it for the first time.
+The most efficient approach is to do this together with someone experienced in Git.
+Such a pairing session can show you how to "think Git".
+However, be confident: as long as you have not force-pushed the branch to GitHub, all changes you did are local and can be undone easily.
