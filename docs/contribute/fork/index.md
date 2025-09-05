@@ -2,10 +2,7 @@
 
 > Single-page guide structured as: 1. WHY (context & goals) → 2. WHAT (models & decisions) → 3. HOW (workflows & tooling).
 
-## Table of Contents
-
 - [Fork Strategy for the S-CORE Organization](#fork-strategy-for-the-s-core-organization)
-  - [Table of Contents](#table-of-contents)
   - [1. Why – Purpose \& Context](#1-why--purpose--context)
     - [1.1 Audience](#11-audience)
     - [1.2 Goals](#12-goals)
