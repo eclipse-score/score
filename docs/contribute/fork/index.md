@@ -1,241 +1,232 @@
+> This document defines recommended fork strategies for companies contributing to S-CORE. It is public, vendor-neutral and evolves with community feedback.
 
-> ⚠️ **Disclaimer:** This document is a living draft, incorporating community feedback. Scope and details may evolve.
+# Fork Strategy for the S-CORE Organization
 
-# Forking the SCORE Organization: Public & Private Forks
+## 1. Purpose & Audience
 
+This guide helps companies (tool vendors, integrators, OEMs, suppliers) decide how to structure forks of S-CORE repositories to:
 
-Partners working with SCORE often use **two forks**:
-1. a **public fork** to contribute upstream via PRs
-2. a **private/internal fork** to integrate SCORE with company systems (CI/CD, compliance, secrets, proprietary code)
+- Contribute efficiently upstream
+- Integrate internal compliance / security workflows
+- Keep proprietary or distribution-specific assets separate
+- Avoid accidental leakage of secrets or internal IP
+- Automate promotion of reviewed code to the public community
 
-However, for simple or initial contributions, a **public fork alone may be sufficient**. Many organizations start with only a public fork and add an internal fork as needs grow (see below for detailed reasons).
+> S-CORE spans 50+ repositories. You DON'T need a one-size-fits-all approach. Pick the minimal model per repository and evolve when needs grow.
 
-This guide introduces the concept at **three levels of detail**:
-- **Executive level:** why both forks matter (and when you might only need one)
-- **Normal level:** typical workflows and contribution models
-- **Implementation level:** sync, branches, protections, and real-world automation (Qorix example, Copybara)
+## 2. Models & Decision Framework
 
----
+### 2.1 Core Models (At a Glance)
+| Model | When to use | Pros | Constraints |
+|-------|-------------|------|-------------|
+| Single Public Fork (individual or shared org) | Early exploration, doc fixes, small features | Fast, zero internal infra needed | No internal CI with secrets, no private adaptations |
+| Dual Fork (Internal + Public) | Compliance gates, internal packaging, secret-backed tests | Separation of concerns, audit trail, safe reviews | Needs automation & policy, slight latency |
+| Internal Mirror Only (read-only) | Passive consumers tracking upstream state | Simplifies dependency pinning | Not for contributing unless paired with public fork |
+| Transformation/Pub Pipeline (Copybara etc.) | Need to filter files / rewrite metadata | Powerful, auditable, repeatable | Extra tooling & maintenance |
 
+Recommendation: Most corporate contributors benefit long-term from the Dual Fork model (Internal authoritative workspace + Public publishing fork).
 
-## 1. Executive Level (Why)
+### 2.2 Decision Checklist
+Answer these to pick a starting model:
+1. Secrets / licenses in tests? → Internal fork needed.
+2. Proprietary integration code? → Internal fork.
+3. Only docs / small fixes? → Start public-only.
+4. Need audit-grade traceability? → Internal-first promotion.
+5. Need file filtering / rewriting? → Add transformation pipeline.
 
-- **Public forks** keep contributions visible, upstreamable, and community-friendly.
-- **Private/internal forks** allow integration with proprietary code, internal policies, and company-specific workflows.
+## 3. Roles, Topology & Branching
 
-### When is a public fork enough?
-For "public-first" workflows, a public fork may be sufficient—especially for initial or simple contributions. You can always add an internal fork later if your needs grow.
+### 3.1 Roles & Responsibilities
+| Role | Owns | Responsibilities |
+|------|------|------------------|
+| Upstream (eclipse-score/*) | Canonical open source history | Reviews public PRs, enforces project guidelines |
+| Company Internal Repo | Integration & gated development | Compliance scans, secret-backed CI, internal code retention |
+| Public Company Fork | Clean staging for upstream PRs | Holds publish-ready feature branches only |
+| Automation (Bot / App) | Sync & publish operations | Keeps mirrors up to date, strips internal-only assets |
 
-### Why have an internal fork? (More detailed reasons)
-- **Control:** You must have control over the source code you use for customers and not depend on external repositories, which could disappear (compliance).
-- **Integration:** Add company-specific code, packaging, or system tests that cannot be open sourced.
-- **Proprietary code:** Maintain proprietary modules, glue code, or customer-specific modifications.
-- **Compliance:** Enforce internal CI/CD, security, and compliance checks before code is made public.
-- **Support:** Maintain bug-fixes or support branches for customers, even if not yet up-streamed.
-- **Separation:** Keep internal-only files, secrets, or business logic out of the public eye.
+### 3.2 Repository & Branch Topology
+Internal Repository (authoritative workspace):
+- Mirrors (FF-only): `upstream/main`, `upstream/release/*`
+- Integration branches: `internal/main`, `internal/release/*`
+- Features: `internal/feat/<topic>`
+- Optional support: `support/<customer|version>`
 
-### Contribution Models
-- **Internal-first (gated):** Private review and compliance before public PR. Safer, but slower and more complex.
-- **Public-first (open):** Direct contribution via public fork. Faster, more transparent, but needs guardrails to avoid leaks.
+Public Fork (minimal surface):
+- Short-lived `feature/<topic>` branches only
+- No secrets, internal configs, or generated artifacts
 
----
+Naming Guidance:
+- Lower-case, hyphen or slash separated
+- Avoid internal ticket IDs in public branch names
 
+## 4. Workflows & Promotion
 
-## 2. Normal Level (What)
+### 4.1 Public-First (Simple)
+1. Fork → branch `feature/<topic>` → develop → PR → merge → delete.
+Use When: No secrets, fast iteration, minimal process.
 
-### Fork Types
-- **Public Forks**
-  - For feature branches and PRs only.
-  - Must remain clean and minimal (no secrets, no internal code).
+### 4.2 Internal-First (Regulated / Commercial)
+1. Fast-forward internal mirror
+2. Branch `internal/feat/<topic>`
+3. Internal CI & compliance
+4. (Optional) Tag snapshot
+5. Rebase & publish sanitized branch to public fork `feature/<topic>`
+6. Open upstream PR
+7. After merge, sync back & reconcile
 
-- **Private/Internal Forks**
-  - Host mirrored upstream branches (`main`, `release/*`).
-  - Contain company-specific branches (`internal/main`, `internal/feature/*`).
-  - Enforce internal CI/CD, CODEOWNERS, and compliance.
-  - Used for integration, compliance, and proprietary work.
+### 4.3 Transformation / Filtering Layer
+Add (Copybara / custom) only if filtering / rewriting is required.
 
-### Contribution Models
-- **Internal-first (gated):**
-  - Flow: dev → internal PR → internal review → promote branch → public fork → upstream PR.
-  - Pros: compliance, confidentiality, control.
-  - Cons: slower, more complex.
+### 4.4 Sync & Promotion Mechanics
+Essentials:
+- Avoid routine `git push --mirror` after seeding
+- Upstream → Internal: controlled fast-forward
+- Internal → Public: audited promotion
 
-- **Public-first (open):**
-  - Flow: dev → public fork feature branch → upstream PR.
-  - Pros: fast, transparent, community-friendly.
-  - Cons: needs guardrails to avoid leaks; may not fit all compliance needs.
-
----
-
-
-## 3. Implementation Level (How)
-
-### Repo Sync
-- **Initial seed:** One-time full mirror into an empty private repo.
-- **Ongoing sync:** Explicitly push upstream branches (e.g., `main`, `release/*`) into private fork; avoid overwriting `internal/*`.
-- **Avoid `git push --mirror`** except at initial seed or for read-only mirrors.
-
-### Branch Layout
-- `main`, `release/*` → upstream mirrors (bot-only updates).
-- `internal/*` → private company branches (integration, compliance, proprietary code).
-- `feature/*` → short-lived public fork branches for upstream PRs.
-
-### Protections & Policies
-- **Public fork:**
-  - No secrets or internal code.
-  - Basic lint/format/build/test checks.
-- **Private fork:**
-  - Internal CI with compliance/security.
-  - Protect upstream branches.
-  - Require CODEOWNERS + review on `internal/*`.
-
-### Promotion Flow
-- **Internal-first:**
-  - Rebase internal feature branch onto upstream main.
-  - Strip internal-only commits/files if needed.
-  - Push result into public fork, open PR upstream.
-
-### CI Hooks
-- Internal PRs: run full secret-backed compliance checks.
-- Public PRs: run open CI checks only.
-- Optional: trigger internal CI on public PR head (read-only, no secret leaks).
-
----
-
-## 4. Real-World Example: Qorix Pseudo-fork Publisher Workflow
-
-Some organizations automate the promotion of internal branches to public forks. For example, Qorix uses a dedicated GitHub Action workflow to publish a development branch from an internal repository to a public fork, enabling secure and auditable contributions to upstream.
-
-### Qorix Model: Three Repositories
-- `repo_internal` — private internal repo (development, compliance, secrets)
-- `qorix-group/repo` — public fork (clean, reviewable)
-- `eclipse-score/repo` — original open-source repo (upstream PRs)
-
-#### Naming Convention
-- Private repo: suffix `_internal` (e.g., `inc_orchestrator_internal`)
-- Public fork: same name as upstream (e.g., `inc_orchestrator`)
-
-#### Secure Automation with GitHub App
-Qorix uses a GitHub App (`qorix-repo-publisher`) for secure, scoped automation. The app generates short-lived tokens for pushing branches from private to public repos.
-
-##### Example GitHub Action Step
-```yaml
-- name: Generate GitHub App token
-  id: generate_token
-  uses: tibdex/github-app-token@v2
-  with:
-    app_id: ${{ secrets.GH_APP_ID }}
-    private_key: ${{ secrets.GH_APP_PRIVATE_KEY }}
-```
-
-#### Workflow Summary
-1. Checkout internal repo
-2. Fast-forward main branch to match upstream
-3. Create feature branch, push to public fork
-4. Open PR from public fork to upstream
-
-##### Manual Git Steps
+Initial Seed:
 ```bash
-# 1. Clone the internal repo
-git clone git@github.com:qorix-group/inc_orchestrator_internal.git
-cd inc_orchestrator_internal
-
-# 2. Add upstream and fork remotes
-git remote add upstream https://github.com/eclipse-score/inc_orchestrator.git
-git remote add fork https://github.com/qorix-group/inc_orchestrator.git
-
-# 3. Sync internal/main with upstream/main
+git clone https://github.com/eclipse-score/<repo>.git upstream_tmp
+git clone git@github.com:your-org/<repo>_internal.git internal
+cd internal
+git remote add upstream ../upstream_tmp/.git
 git fetch upstream
-git checkout main
-git merge --ff-only upstream/main
-
-# 4. Create and push your branch to the public fork
-git checkout -b feature/my_branch
-git push fork HEAD:feature/my_branch
+git push origin refs/remotes/upstream/main:refs/heads/upstream/main
 ```
 
----
-
-## 5. Advanced: Using Copybara for Repo Sync
-
-[Copybara](https://github.com/google/copybara) is an open-source tool for synchronizing code between internal and public repositories, with support for filtering files, preserving authorship, and custom transformations.
-
-### Key Benefits
-- **Iterative commits:** Retain individual commit history
-- **File filtering:** Exclude internal-only files
-- **Author preservation:** Keep original commit authors
-- **Transformations:** Rename, move, or modify files/metadata as needed
-
-#### Minimal Copybara Config Example
-```python
-origin = git.origin(
-    url = "https://github.com/qorix-group/inc_orchestrator_internal.git",
-    ref = "main",
-)
-
-destination = git.destination(
-    url = "https://github.com/qorix-group/inc_orchestrator.git",
-    fetch = "refs/heads/main",
-    push = "refs/heads/{{BRANCH}}",
-)
-
-core.workflow(
-    name = "publish_branch",
-    mode = "ITERATIVE",
-    origin = origin,
-    origin_files = glob(
-        ["**"],
-        exclude = [
-            "copy.bara.sky",
-            "sync.sky",
-            ".github/workflows/copybara.yml",
-            ".github/workflows/sync.yml",
-        ],
-    ),
-    destination = destination,
-    authoring = authoring.pass_thru("Qorix Bot <bot@qorix.dev>"),
-    transformations = [],
-)
+Fast-Forward Sync:
+```bash
+git fetch upstream main
+git checkout upstream/main
+git reset --hard upstream/main
+git push origin HEAD:upstream/main
 ```
 
-#### Running Copybara in CI
+Promotion (example):
+```bash
+git fetch upstream main
+git checkout internal/feat/my-topic
+git rebase upstream/main
+git push public HEAD:feature/my-topic --force-with-lease
+```
+
+## 5. CI, Compliance & Governance
+
+### 5.1 Separation of Checks
+| Check Type | Internal Repo | Public Fork | Upstream PR |
+|------------|---------------|-------------|-------------|
+| License / key-based tests | Yes | No | No |
+| Deep security scanning | Yes | Optional summary | Project policy |
+| Lint / format / unit tests | Yes | Yes | Yes |
+| Binary provenance / SBOM | Yes | No (sanitized) | Optional attachment |
+
+Best Practice: Re-run a secret-free subset publicly.
+
+### 5.2 Governance Artifacts (Internal)
+- Fork Ownership Matrix
+- Data Classification Matrix
+- Promotion Checklist
+- Exception / Override Log
+
+## 6. Automation & Tooling
+
+### 6.1 GitHub App (Scoped Token) Publisher
+Example action step:
 ```yaml
-- name: Generate GitHub App token
-  id: generate_token
+- name: App Token
+  id: app_token
   uses: tibdex/github-app-token@v2
   with:
-    app_id: ${{ secrets.GH_APP_ID }}
-    private_key: ${{ secrets.GH_APP_PRIVATE_KEY }}
-
-- name: Configure Git
-  run: |
-    git config --global user.name  "Qorix Bot"
-    git config --global user.email "bot@qorix.dev"
-    echo "https://x-access-token:${{ steps.generate_token.outputs.token }}@github.com" > ~/.git-credentials
-
-- name: Run Copybara
-  run: |
-    sed -i "s/{{BRANCH}}/${{ github.event.inputs.branch_name }}/g" copy.bara.sky
-    curl -LO https://github.com/qorix-group/copybara/releases/download/v20250508/copybara_deploy.jar
-    java -jar copybara_deploy.jar migrate copy.bara.sky publish_branch
+    app_id: ${{ secrets.FORK_PUBLISHER_APP_ID }}
+    private_key: ${{ secrets.FORK_PUBLISHER_APP_KEY }}
 ```
-
-#### Local Usage
+Push published branch:
 ```bash
-java -jar copybara_deploy.jar --init-history --force copy.bara.sky publish_branch
+git push "https://x-access-token:${TOKEN}@github.com/your-org/<repo>.git" HEAD:feature/my-topic
 ```
 
----
+### 6.2 Copybara (Advanced)
+Minimal illustrative config:
+```python
+origin = git.origin(url = "git@github.com:your-org/<repo>_internal.git", ref = "internal/feat/my-topic")
+destination = git.destination(url = "git@github.com:your-org/<repo>.git", push = "refs/heads/feature/my-topic")
+core.workflow(
+  name = "publish_feature",
+  mode = "ITERATIVE",
+  origin = origin,
+  origin_files = glob(["**"], exclude=["internal_scripts/**", "docs/internal/**"]),
+  destination = destination,
+  authoring = authoring.pass_thru("Your Bot <bot@your-org.example>")
+)
+```
 
----
+### 6.3 Lightweight Alternative
+Shell + rsync + sanitize script; upgrade to Copybara when complexity grows.
 
+## 7. Security & Risk Management
 
-## TL;DR
+| Risk | Mitigation |
+|------|------------|
+| Secret leakage | Pre-publish scan (regex + entropy), allow-list, CI fail on match |
+| Overwritten mirrors | Protect `upstream/*`; automation-only pushes |
+| Branch drift | Enforce rebase window; stale report bot |
+| Untracked manual promotions | All promotions via workflow logging SHA mapping |
+| Internal-only files published | Classification list + deny/allow checks |
 
-- For most partners, **two forks** (public + private/internal) are best for compliance, integration, and control.
-- For simple or initial contributions, a **public fork alone may be enough**.
-- Choose a contribution model:
-  - **Internal-first** = safer, more compliant, but slower.
-  - **Public-first** = faster, more transparent, but needs guardrails.
-- Protect mirrored upstream branches; keep internal work separate.
-- Automate syncs, document policies, and define responsibilities.
+## 8. Adoption Roadmap & Metrics
+
+### 8.1 Incremental Adoption
+1. Public fork → first PRs
+2. Add internal mirror for key repos
+3. Add internal CI & scans
+4. Formalize branch protections
+5. Automate promotion (GitHub App)
+6. Introduce transformation pipeline (if needed)
+7. Add dashboards (latency, drift, scan health)
+
+### 8.2 Operational Metrics
+- Median: internal ready → PR opened
+- Rebase drift (commit delta at promotion)
+- Secret scan FP / TP ratio
+- Promotion failure categories
+- Feature branch upstream merge rate
+
+## 9. Reference (Cheat Sheet, FAQ, Glossary)
+
+### 9.1 Quick Commands
+```bash
+# Sync upstream into internal mirror
+git fetch upstream main
+git push origin refs/remotes/upstream/main:refs/heads/upstream/main
+
+# Start feature (internal)
+git checkout -b internal/feat/my-topic upstream/main
+
+# Rebase before publish
+git rebase upstream/main
+
+# Publish sanitized branch
+git push public HEAD:feature/my-topic --force-with-lease
+```
+
+### 9.2 FAQ
+**Do we need two forks for every repo?** Only where internal integration or compliance adds value.
+
+**Can engineers push directly to the public fork?** Yes (Public-First). In Internal-First restrict to automation.
+
+**How do we handle hotfixes?** Branch from upstream tag internally → fix → publish → PR → backport.
+
+**How to keep authorship?** Avoid unnecessary squashes; use iterative promotion.
+
+**How to remove internal-only files?** Allow-list publishable paths; fail build on unclassified additions.
+
+### 9.3 Glossary
+- Promotion: Moving vetted internal branch to public fork for PR.
+- Mirror: Fast-forward copy of upstream branch internally.
+- Sanitization: Removing / transforming internal-only content before publishing.
+- Drift: Commits difference between upstream main and working branch.
+
+## 10. Summary
+
+Start simple; add structure only as risk and scale justify it. A disciplined Dual Fork plus automated promotion balances safety, compliance, and upstream velocity.
+
+Contributions to improve this guide are welcome—open a PR with additional patterns or automation examples.
