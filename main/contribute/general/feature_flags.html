@@ -584,7 +584,7 @@ the platform. A platform is for example QNX on an ARM architecture.</p>
 <h3>Example for a feature flag<a class="headerlink" href="#example-for-a-feature-flag" title="Link to this heading">#</a></h3>
 <p>Feature flags are defined in BUILD Files:</p>
 <div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-number">Listing 1 </span><span class="caption-text">some_module/BUILD</span><a class="headerlink" href="#id3" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 4 </span><span class="caption-text">some_module/BUILD</span><a class="headerlink" href="#id3" title="Link to this code">#</a></div>
 <div class="highlight-bazel notranslate"><div class="highlight"><pre><span></span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;@bazel_skylib//rules:common_settings.bzl&quot;</span><span class="p">,</span> <span class="s2">&quot;bool_flag&quot;</span><span class="p">)</span>
 
 <span class="n">bool_flag</span><span class="p">(</span>
@@ -615,7 +615,7 @@ disable features for builds and tests.</p>
 <p>To simplify the user interface, configurations can be defined that specify
 values for a set of feature flags.</p>
 <div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-number">Listing 2 </span><span class="caption-text">.bazelrc</span><a class="headerlink" href="#id4" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 5 </span><span class="caption-text">.bazelrc</span><a class="headerlink" href="#id4" title="Link to this code">#</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>build:no_rear_doors<span class="w"> </span>--//rear_doors:left_door<span class="o">=</span>False<span class="w"> </span>--//rear_doors:right_door<span class="o">=</span>False
 </pre></div>
 </div>
@@ -746,7 +746,7 @@ different programming languages.</p>
 <section id="definition-of-public-apis">
 <h3>Definition of Public APIs<a class="headerlink" href="#definition-of-public-apis" title="Link to this heading">#</a></h3>
 <div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-number">Listing 3 </span><span class="caption-text">some_module/BUILD</span><a class="headerlink" href="#id5" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 6 </span><span class="caption-text">some_module/BUILD</span><a class="headerlink" href="#id5" title="Link to this code">#</a></div>
 <div class="highlight-bazel notranslate"><div class="highlight"><pre><span></span><span class="n">alias</span><span class="p">(</span>
     <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;public_lib&quot;</span><span class="p">,</span>
     <span class="n">actual</span> <span class="o">=</span> <span class="n">select</span><span class="p">({</span>
@@ -765,7 +765,7 @@ different programming languages.</p>
 <p>Please refrain from trying to use the approach below.
 It will not work, since <cite>select()</cite> cannot be combined with <cite>visibility</cite>.</p>
 <div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-number">Listing 4 </span><span class="caption-text">some_module/BUILD</span><a class="headerlink" href="#id6" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 7 </span><span class="caption-text">some_module/BUILD</span><a class="headerlink" href="#id6" title="Link to this code">#</a></div>
 <div class="highlight-bazel notranslate"><div class="highlight"><pre><span></span><span class="n">cc_library</span><span class="p">(</span>
     <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;public_lib&quot;</span><span class="p">,</span>
     <span class="n">visibility</span> <span class="o">=</span> <span class="n">select</span><span class="p">({</span>
@@ -794,7 +794,7 @@ It will not work, since <cite>select()</cite> cannot be combined with <cite>visi
 <h3>Python<a class="headerlink" href="#python" title="Link to this heading">#</a></h3>
 <p>We recommend to propagate features via command line arguments. e.g.</p>
 <div class="literal-block-wrapper docutils container" id="id7">
-<div class="code-block-caption"><span class="caption-number">Listing 5 </span><span class="caption-text">some_module/BUILD</span><a class="headerlink" href="#id7" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 8 </span><span class="caption-text">some_module/BUILD</span><a class="headerlink" href="#id7" title="Link to this code">#</a></div>
 <div class="highlight-bazel notranslate"><div class="highlight"><pre><span></span><span class="n">py_binary</span><span class="p">(</span>
   <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;foo.py&quot;</span><span class="p">,</span>
   <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;test.cpp&quot;</span><span class="p">],</span>
@@ -813,7 +813,7 @@ It will not work, since <cite>select()</cite> cannot be combined with <cite>visi
 <p>Feature flags can be used in config files via bazel template expansion.
 E.g.:</p>
 <div class="literal-block-wrapper docutils container" id="id8">
-<div class="code-block-caption"><span class="caption-number">Listing 6 </span><span class="caption-text">some_module/config.json.tmpl</span><a class="headerlink" href="#id8" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 9 </span><span class="caption-text">some_module/config.json.tmpl</span><a class="headerlink" href="#id8" title="Link to this code">#</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;some_key&quot;</span><span class="p">:</span> <span class="nd">@SOME_FEATURE</span><span class="o">@</span>
 <span class="p">}</span>
@@ -821,7 +821,7 @@ E.g.:</p>
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="id9">
-<div class="code-block-caption"><span class="caption-number">Listing 7 </span><span class="caption-text">some_module/BUILD</span><a class="headerlink" href="#id9" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 10 </span><span class="caption-text">some_module/BUILD</span><a class="headerlink" href="#id9" title="Link to this code">#</a></div>
 <div class="highlight-bazel notranslate"><div class="highlight"><pre><span></span><span class="n">expand_template</span><span class="p">(</span>
     <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;config&quot;</span><span class="p">,</span>
     <span class="n">out</span> <span class="o">=</span> <span class="s2">&quot;config.json&quot;</span><span class="p">,</span>
@@ -870,7 +870,7 @@ generally recommended anyways.</p></li>
 be done via preprocessor macros in the test.cpp.</p>
 <p>The activation/deactivation of features is propagated via <cite>local_defines</cite>.</p>
 <div class="literal-block-wrapper docutils container" id="id10">
-<div class="code-block-caption"><span class="caption-number">Listing 8 </span><span class="caption-text">some_module/test.cpp</span><a class="headerlink" href="#id10" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 11 </span><span class="caption-text">some_module/test.cpp</span><a class="headerlink" href="#id10" title="Link to this code">#</a></div>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#if defined(SOME_FEATURE)</span>
 <span class="w">    </span><span class="n">EXPECT_CALL</span><span class="p">(...)</span>
 <span class="cp">#else</span>
@@ -879,7 +879,7 @@ be done via preprocessor macros in the test.cpp.</p>
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="id11">
-<div class="code-block-caption"><span class="caption-number">Listing 9 </span><span class="caption-text">some_module/BUILD</span><a class="headerlink" href="#id11" title="Link to this code">#</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 12 </span><span class="caption-text">some_module/BUILD</span><a class="headerlink" href="#id11" title="Link to this code">#</a></div>
 <div class="highlight-bazel notranslate"><div class="highlight"><pre><span></span><span class="n">cc_test</span><span class="p">(</span>
     <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span>
     <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;test.cpp&quot;</span><span class="p">],</span>
