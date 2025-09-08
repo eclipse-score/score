@@ -7,11 +7,12 @@
     - [1.1 Audience](#11-audience)
     - [1.2 Goals](#12-goals)
     - [1.3 Out of Scope](#13-out-of-scope)
-    - [1.4 Principles](#14-principles)
-  - [2. Private vs Public Forks](#2-private-vs-public-forks)
-    - [2.1 Public Fork](#21-public-fork)
-    - [2.2 Internal Fork](#22-internal-fork)
-    - [2.3 Hybrid (Both)](#23-hybrid-both)
+    - [1.4 Private vs Public Forks](#14-private-vs-public-forks)
+    - [Public Fork](#public-fork)
+    - [Internal Fork](#internal-fork)
+    - [Hybrid (Both)](#hybrid-both)
+  - [2. How To work with forks](#2-how-to-work-with-forks)
+    - [Opinionated Proposal: change main reference](#opinionated-proposal-change-main-reference)
   - [3. Hybrid Implementation](#3-hybrid-implementation)
     - [3.1 Public-first Workflow](#31-public-first-workflow)
     - [3.2 Internal-first Workflow](#32-internal-first-workflow)
@@ -53,33 +54,23 @@ Provide a decision and execution framework that reduces friction and risk while 
 ### 1.3 Out of Scope
 License interpretation, export control, internal HR / policy approvals. You must comply with S-CORE licensing independently.
 
-### 1.4 Principles
-
-- Minimize complexity until required
-- Prefer reversible choices
-- Keep sensitive assets out of public history
-- Preserve authorship and traceability
-- Automate repeatable publication steps
-
----
-
-## 2. Private vs Public Forks
+### 1.4 Private vs Public Forks
 
 Each model description focuses on WHEN to use it and inherent CONSTRAINTS. Implementation details are in Section 3.
 
-### 2.1 Public Fork
+### Public Fork
 
 - Use when: You only need to contribute upstream or maintain a long-lived divergence openly.
 - Pros: Simple; no internal infra.
 - Constraints: No internal-only code separation; risk of accidental leakage if you try to “hide” things manually.
 
-### 2.2 Internal Fork
+### Internal Fork
 
 - Use when: You passively consume S-CORE (read-only) or maintain internal extensions not (yet) publishable.
 - Pros: Freedom to experiment internally; shield proprietary assets.
 - Constraints: Requires disciplined syncing from upstream to avoid drift.
 
-### 2.3 Hybrid (Both)
+### Hybrid (Both)
 
 - Use when: You both maintain internal-only additions AND contribute upstream regularly.
 - Core need: Clear policy to prevent leakage and friction.
@@ -90,16 +81,52 @@ Each model description focuses on WHEN to use it and inherent CONSTRAINTS. Imple
 
 ---
 
+## 2. How To work with forks
+
+First and foremost see [GitHub's guide to working with forks](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)
+
+Note that in enterprise environments forks will usually be created by forking into an company organization (e.g. `my_company/score`) rather than a personal account. And those will be created by infrastructure administrators rather than individual developers.
+
+Such a fork can be created by e.g. [`gh repo fork eclipse-score/score`](https://cli.github.com/manual/gh_repo_fork) or some infrastructure as code approach.
+
+The default remote names will be:
+
+- `origin`: your fork (e.g. `my_company/score`)
+- `upstream`: the original repo (e.g. `eclipse-score/score`)
+
+### Opinionated Proposal: change main reference
+
+Life can be simplified by making your local `main` track `upstream/main` directly. Since typically you do not care about `my_company/main` at all. This way you can always fast-forward `main` to the latest upstream state.
+
+```bash
+git switch main
+git branch --set-upstream-to=upstream/main
+git reset --hard upstream/main
+```
+
+The daily workflow is then the same as without a fork:
+
+```bash
+git switch main
+git pull
+git switch -c `<feature-branch>`
+...
+git push
+```
+
+---
+
 ## 3. Hybrid Implementation
 
-As public and private forks are rather trivial, this section focuses on hybrid workflows.
+As public and internal forks are rather trivial, this section focuses on hybrid workflows.
 It provides implementation guidance for updating forks, contributing from hybrids, and operating transformation pipelines.
 
 Depending on policy and compliance constraints, pick the simplest viable variant.
 
 ### 3.1 Public-first Workflow
 
-Before a branch is started, it is known whether the target is internal or public domain. All S-CORE targeting contributions happen on the public fork.
+Before a branch is started, it is known whether the target is internal or public domain.
+All S-CORE targeting contributions happen on the public fork.
 
 Recommendations:
 
