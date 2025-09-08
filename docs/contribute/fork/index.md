@@ -12,14 +12,12 @@
     - [Internal Fork](#internal-fork)
     - [Hybrid (Both)](#hybrid-both)
   - [2. How To work with forks](#2-how-to-work-with-forks)
-    - [Opinionated Proposal: change main reference](#opinionated-proposal-change-main-reference)
+    - [Flow of a feature](#flow-of-a-feature)
+      - [Opinionated Alternative: change main reference](#opinionated-alternative-change-main-reference)
   - [3. Hybrid Implementation](#3-hybrid-implementation)
     - [3.1 Public-first Workflow](#31-public-first-workflow)
     - [3.2 Internal-first Workflow](#32-internal-first-workflow)
       - [Workflow Overview](#workflow-overview)
-      - [Example: GitHub App Setup](#example-github-app-setup)
-      - [Automated Publication Workflow](#automated-publication-workflow)
-      - [Manual Publication Workflow (Git only)](#manual-publication-workflow-git-only)
     - [3.3 Transformation / Filtering Pipeline (Copybara Implementation)](#33-transformation--filtering-pipeline-copybara-implementation)
       - [Overview](#overview)
       - [Key Benefits](#key-benefits)
@@ -30,6 +28,7 @@
       - [Summary](#summary)
   - [Rest, unsorted](#rest-unsorted)
     - [Keeping Your Fork Updated](#keeping-your-fork-updated)
+    - [Prefer GitHub Apps instead of (Fine Grained) Personal Access Tokens](#prefer-github-apps-instead-of-fine-grained-personal-access-tokens)
 
 ---
 
@@ -70,6 +69,8 @@ Each model description focuses on WHEN to use it and inherent CONSTRAINTS. Imple
 - Pros: Freedom to experiment internally; shield proprietary assets.
 - Constraints: Requires disciplined syncing from upstream to avoid drift.
 
+Note that internal forks can use any infrastructure and do not need to be on GitHub.
+
 ### Hybrid (Both)
 
 - Use when: You both maintain internal-only additions AND contribute upstream regularly.
@@ -94,9 +95,33 @@ The default remote names will be:
 - `origin`: your fork (e.g. `my_company/score`)
 - `upstream`: the original repo (e.g. `eclipse-score/score`)
 
-### Opinionated Proposal: change main reference
+### Flow of a feature
 
-Life can be simplified by making your local `main` track `upstream/main` directly. Since typically you do not care about `my_company/main` at all. This way you can always fast-forward `main` to the latest upstream state.
+There is a number of ways to achieve the same result in git, and it comes down to personal/team preference. Here is one possible approach.
+
+```bash
+# Update main
+git switch main
+git pull upstream main
+
+# Create branch
+git switch -c `<feature-branch>`
+
+# Commit changes...
+...
+git push
+```
+
+
+Now you can create PRs from `<feature-branch>` to `upstream/main` directly. See [GitHub Docs - Creating a pull request from a fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork) for details.
+Alternatively you can use `gh pr create` to create PRs from the command line.
+
+
+#### Opinionated Alternative: change main reference
+
+The flow can be simplified by making your local `main` track `upstream/main` directly. Since typically `my_company/main` is not relevant. This way you can always fast-forward `main` to the latest upstream state. And keeping `my_company/main` in sync is not needed.
+
+Setup:
 
 ```bash
 git switch main
@@ -104,7 +129,7 @@ git branch --set-upstream-to=upstream/main
 git reset --hard upstream/main
 ```
 
-The daily workflow is then the same as without a fork:
+The daily flow is then the same as without a fork:
 
 ```bash
 git switch main
@@ -155,100 +180,6 @@ Just an example, obviously adapt to your needs.
 - Transfer to `public_fork/feature` (manual or automated).
 - PR to `eclipse-score/feature` (manual or automated).
 
-#### Example: GitHub App Setup
-
-Optional. Start without this if you're experimenting: a fine‑grained PAT (scoped to needed repos: contents + pull requests) stored as a secret (e.g. `GH_TOKEN`) is enough. Migrate to a **GitHub App** when you need org‑wide automation, stronger auditability, or to avoid long‑lived personal tokens.
-
-You can adopt a **GitHub App** (e.g., `qorix-repo-publisher`) to replace PATs for more secure, scalable automation.
-
-Why adopt a GitHub App (benefits over PAT):
-
-- Short‑lived tokens
-- Scoped repo access
-- Works across private + public
-
-Setup Steps (only if/when you choose to adopt):
-
-1. GitHub → Developer Settings → GitHub Apps → New GitHub App
-1. Name it (e.g. `qorix-repo-publisher`)
-1. Grant access to:
-
-- `qorix-group/inc_orchestrator_internal`
-- `qorix-group/inc_orchestrator`
-
-1. Generate private key → store as secrets:
-
-- `GH_APP_ID`
-- `GH_APP_PRIVATE_KEY`
-
-Requesting Access: Ask platform/infrastructure team to install on new repos.
-
-Token Generation (workflow snippet):
-
-```yaml
-- name: Generate GitHub App token
-  id: generate_token
-  uses: tibdex/github-app-token@v2
-  with:
-    app_id: ${{ secrets.GH_APP_ID }}
-    private_key: ${{ secrets.GH_APP_PRIVATE_KEY }}
-```
-
-#### Automated Publication Workflow
-
-Typical automation:
-
-1. Checkout internal repo (`inc_orchestrator_internal`)
-2. Fast‑forward `main` to match upstream
-3. Create feature branch & push to public fork (`qorix-group/inc_orchestrator`)
-4. (Optional) Validate branch state for PR readiness
-
-Trigger: Manually through GitHub Actions.
-
-Inputs:
-
-- `repo_slug` (e.g. `inc_orchestrator`)
-- `source_branch` (e.g. `main`)
-- `dest_branch` (e.g. `feature/myfix`)
-
-Example UI:
-
-```text
-Repo:         [inc_orchestrator ▾ ]
-Source:       main
-Destination:  feature/myfix
-▶ Run Workflow
-```
-
-Example Use Case:
-
-1. Run workflow with `dest_branch=myfeature`
-2. Open PR from public fork branch → base: `eclipse-score/inc_orchestrator/main`
-3. Merge after review
-
-#### Manual Publication Workflow (Git only)
-
-For developers preferring local control:
-
-```bash
-# 1. Clone the internal repo
-git clone git@github.com:qorix-group/inc_orchestrator_internal.git
-cd inc_orchestrator_internal
-
-# 2. Add upstream and fork remotes
-git remote add upstream https://github.com/eclipse-score/inc_orchestrator.git
-git remote add fork https://github.com/qorix-group/inc_orchestrator.git
-
-# 3. Sync internal/main with upstream/main
-git fetch upstream
-git checkout main
-git merge --ff-only upstream/main
-
-# 4. Create and push your branch to the public fork
-git checkout -b feature/my_branch
-git push fork HEAD:feature/my_branch
-```
-After pushing: open a Pull Request from `feature/my_branch` in the public fork to upstream.
 
 
 ### 3.3 Transformation / Filtering Pipeline (Copybara Implementation)
@@ -380,3 +311,7 @@ Copybara offers controlled, scriptable synchronization with filtering and author
 ### Keeping Your Fork Updated
 
 Relevant for real (non-contribution-only) forks. Periodically create PRs (or fast-forward merges) from S-CORE `main` into your fork `main`, running internal workflows (tests, linting, compliance) before acceptance. Neglecting this increases integration cost over time.
+
+### Prefer GitHub Apps instead of (Fine Grained) Personal Access Tokens
+
+TODO
