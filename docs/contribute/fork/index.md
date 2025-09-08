@@ -1,29 +1,24 @@
 # Fork Strategy for the S-CORE Organization
 
-> Single-page guide structured as: 1. WHY (context & goals) → 2. WHAT (models & decisions) → 3. HOW (workflows & tooling).
+> Single-page guide: purpose, fork models, and practical workflows.
 
 - [Fork Strategy for the S-CORE Organization](#fork-strategy-for-the-s-core-organization)
-  - [1. Why – Purpose \& Context](#1-why--purpose--context)
+  - [1. Purpose \& Context](#1-purpose--context)
     - [1.1 Audience](#11-audience)
     - [1.2 Goals](#12-goals)
     - [1.3 Out of Scope](#13-out-of-scope)
     - [1.4 Principles](#14-principles)
-  - [2. What – Fork Models \& Decision Framework](#2-what--fork-models--decision-framework)
-    - [2.1 Model Overview (At a Glance)](#21-model-overview-at-a-glance)
-      - [Models](#models)
-    - [2.2 Selection Criteria](#22-selection-criteria)
-    - [2.3 Model Details](#23-model-details)
-      - [2.3.1 Public Fork](#231-public-fork)
-      - [2.3.2 Internal Fork](#232-internal-fork)
-      - [2.3.3 Hybrid (Both)](#233-hybrid-both)
-  - [3. How – Implementation \& Workflows](#3-how--implementation--workflows)
-    - [3.1 Keeping Your Fork Updated](#31-keeping-your-fork-updated)
-    - [3.2 Hybrid Contribution Workflows](#32-hybrid-contribution-workflows)
-      - [3.2.1 Public-first Workflow](#321-public-first-workflow)
-      - [3.2.2 Internal-first Workflow](#322-internal-first-workflow)
-        - [Optional: GitHub App Setup](#optional-github-app-setup)
-        - [Automated Publication Workflow](#automated-publication-workflow)
-        - [Manual Publication Workflow (Git only)](#manual-publication-workflow-git-only)
+  - [2. Private vs Public Forks](#2-private-vs-public-forks)
+    - [2.1 Public Fork](#21-public-fork)
+    - [2.2 Internal Fork](#22-internal-fork)
+    - [2.3 Hybrid (Both)](#23-hybrid-both)
+  - [3. Hybrid Implementation](#3-hybrid-implementation)
+    - [3.1 Public-first Workflow](#31-public-first-workflow)
+    - [3.2 Internal-first Workflow](#32-internal-first-workflow)
+      - [Workflow Overview](#workflow-overview)
+      - [Example: GitHub App Setup](#example-github-app-setup)
+      - [Automated Publication Workflow](#automated-publication-workflow)
+      - [Manual Publication Workflow (Git only)](#manual-publication-workflow-git-only)
     - [3.3 Transformation / Filtering Pipeline (Copybara Implementation)](#33-transformation--filtering-pipeline-copybara-implementation)
       - [Overview](#overview)
       - [Key Benefits](#key-benefits)
@@ -32,10 +27,12 @@
       - [Local Usage](#local-usage)
       - [Challenges \& Trade-offs](#challenges--trade-offs)
       - [Summary](#summary)
+  - [Rest, unsorted](#rest-unsorted)
+    - [Keeping Your Fork Updated](#keeping-your-fork-updated)
 
 ---
 
-## 1. Why – Purpose & Context
+## 1. Purpose & Context
 
 This guide helps companies (tool vendors, integrators, OEMs, suppliers) decide how to structure forks of S-CORE repositories to:
 
@@ -66,110 +63,72 @@ License interpretation, export control, internal HR / policy approvals. You must
 
 ---
 
-## 2. What – Fork Models & Decision Framework
+## 2. Private vs Public Forks
 
-### 2.1 Model Overview (At a Glance)
+Each model description focuses on WHEN to use it and inherent CONSTRAINTS. Implementation details are in Section 3.
 
-Below are the core fork models in increasing complexity. Pick the first that satisfies your needs and evolve only when forced by requirements.
-
-#### Models
-
-- Public Fork
-- Internal Fork
-- Hybrid (Both: public + internal)
-- Transformation / Publication Layer (Copybara / custom)
-
-### 2.2 Selection Criteria
-Consider the following when choosing a model:
-
-- Contribution frequency & size
-- Need to keep internal-only extensions
-- Security / compliance gating before publication
-- File / metadata filtering requirements
-- Desire to preserve granular commit history externally
-- Automation maturity (manual → scripted → policy-enforced)
-
-
-### 2.3 Model Details
-
-Each model description focuses on WHEN to use it and inherent CONSTRAINTS. Implementation lives in Section 3 (How).
-
-#### 2.3.1 Public Fork
+### 2.1 Public Fork
 
 - Use when: You only need to contribute upstream or maintain a long-lived divergence openly.
 - Pros: Simple; no internal infra.
 - Constraints: No internal-only code separation; risk of accidental leakage if you try to “hide” things manually.
 
-#### 2.3.2 Internal Fork
+### 2.2 Internal Fork
 
 - Use when: You passively consume S-CORE (read-only) or maintain internal extensions not (yet) publishable.
 - Pros: Freedom to experiment internally; shield proprietary assets.
 - Constraints: Requires disciplined syncing from upstream to avoid drift.
 
-#### 2.3.3 Hybrid (Both)
+### 2.3 Hybrid (Both)
 
 - Use when: You both maintain internal-only additions AND contribute upstream regularly.
 - Core need: Clear policy to prevent leakage and friction.
-- Variants (see Section 3.2):
+- Variants (see Section 3):
   - Public-first
   - Internal-first
   - With transformation layer
 
 ---
 
-## 3. How – Implementation & Workflows
+## 3. Hybrid Implementation
 
-Implementation guidance for updating forks, contributing from hybrids, and operating transformation pipelines.
-
-### 3.1 Keeping Your Fork Updated
-
-Relevant for real (non-contribution-only) forks. Periodically create PRs (or fast-forward merges) from S-CORE `main` into your fork `main`, running internal workflows (tests, linting, compliance) before acceptance. Neglecting this increases integration cost over time.
-
-### 3.2 Hybrid Contribution Workflows
+As public and private forks are rather trivial, this section focuses on hybrid workflows.
+It provides implementation guidance for updating forks, contributing from hybrids, and operating transformation pipelines.
 
 Depending on policy and compliance constraints, pick the simplest viable variant.
 
-#### 3.2.1 Public-first Workflow
+### 3.1 Public-first Workflow
 
-All developers work on the public fork and create PRs directly against S-CORE.
+Before a branch is started, it is known whether the target is internal or public domain. All S-CORE targeting contributions happen on the public fork.
 
-Steps:
+Recommendations:
 
 1. Short-lived feature branches (e.g., `topic` or `<username>/<topic>`)
 2. Individual PRs upstream
 3. Delete merged branches
-
 
 Notes:
 
 - `main` in your public fork may either track upstream or remain unused (can serve as a backup copy if required by policy).
 - Large contributions may need internal pre-approval before public exposure.
 
-#### 3.2.2 Internal-first Workflow
+### 3.2 Internal-first Workflow
 
-Most development occurs internally; publication is an explicit step.
+Most development occurs internally; publication is an explicit step. This ensures internal compliance checks before public exposure. Each pull request is reviewed internally before being pushed to the public fork for upstream submission.
+This results in significantly more setup & process overhead.
+We have seen examples where this is mandated by policy.
+We have seen examples where this makes collaboration impossible due to long delays on every PR.
 
-Characteristics:
+#### Workflow Overview
 
-- 🔒 Internal repo private
-- 🧼 Public fork stays clean (only intended contributions)
-- 🔁 Branches must share history with upstream for straightforward PRs
+Just an example, obviously adapt to your needs.
 
-Diagram:
+- Development happens in `internal/feature_unverfied`.
+- PR to `internal/feature_verified`.
+- Transfer to `public_fork/feature` (manual or automated).
+- PR to `eclipse-score/feature` (manual or automated).
 
-```text
-score_internal (private)
-  │
-  ▼  ➝ publish branch ➝ e.g. feature/myfix
-my-company/score (public fork)
-  │
-  ▼  Pull Request ➝ base: main
-eclipse-score/score (upstream)
-```
-
-Con: More setup & process overhead.
-
-##### Optional: GitHub App Setup
+#### Example: GitHub App Setup
 
 Optional. Start without this if you're experimenting: a fine‑grained PAT (scoped to needed repos: contents + pull requests) stored as a secret (e.g. `GH_TOKEN`) is enough. Migrate to a **GitHub App** when you need org‑wide automation, stronger auditability, or to avoid long‑lived personal tokens.
 
@@ -208,7 +167,7 @@ Token Generation (workflow snippet):
     private_key: ${{ secrets.GH_APP_PRIVATE_KEY }}
 ```
 
-##### Automated Publication Workflow
+#### Automated Publication Workflow
 
 Typical automation:
 
@@ -240,7 +199,7 @@ Example Use Case:
 2. Open PR from public fork branch → base: `eclipse-score/inc_orchestrator/main`
 3. Merge after review
 
-##### Manual Publication Workflow (Git only)
+#### Manual Publication Workflow (Git only)
 
 For developers preferring local control:
 
@@ -388,3 +347,9 @@ Use this to preview migrations or sync new branches outside CI.
 #### Summary
 
 Copybara offers controlled, scriptable synchronization with filtering and author preservation. Choose it only when manual git workflows no longer scale or policy filtering is mandatory.
+
+## Rest, unsorted
+
+### Keeping Your Fork Updated
+
+Relevant for real (non-contribution-only) forks. Periodically create PRs (or fast-forward merges) from S-CORE `main` into your fork `main`, running internal workflows (tests, linting, compliance) before acceptance. Neglecting this increases integration cost over time.
