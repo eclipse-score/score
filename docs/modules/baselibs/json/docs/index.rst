@@ -72,13 +72,12 @@ The following details and requirements describe the aspects of current feature i
 General considerations
 ----------------------
 
-The JSON-Library should provide parsing and data conversion capabilities:
+The JSON-Library should provide parsing, writing and data conversion capabilities:
 
 :need:`comp_req__json__validation`
 :need:`comp_req__json__deserialization`
+:need:`comp_req__json__serialization`
 :need:`comp_req__json__user_format`
-
-The component should be extensible in the future in order to support conversion of user format to JSON data.
 
 User friendly API
 -----------------
