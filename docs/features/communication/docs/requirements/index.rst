@@ -295,7 +295,7 @@ Cross VM Communication
 ^^^^^^^^^^^^^^^^^^^^^^
 
 .. feat_req:: Cross VM
-   :id: feat_req__cross__vm
+   :id: feat_req__com__cross__vm
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
