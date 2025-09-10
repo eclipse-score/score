@@ -90,21 +90,22 @@ Technical committees
   aspects beginning with the architecture definition to the integration test. They are usually assigned
   to the *S-CORE* main integration project or to one particular software module. *Feature Teams* work
   independently of each other on *GitHub Issues* in the assigned software module.
-  *Feature Teams* consist of the contributors, who can specify requirements, define architecture,
-  develop source code and implement tests afterwards.
-  *Project Leads* and *Committers* are also *Contributors* and effectively work on processing of *GitHub Issues*.
+  *Feature Teams* consist mainly of the contributors, who can specify requirements, define architecture,
+  develop source code and implement tests afterwards. *Project Leads* and *Committers* are also *Contributors*
+  and effectively work on processing of *GitHub Issues*.
 
-  *Feature Team* usually consists of the following roles: Project Lead, Safety Manager, Quality Manager, Security Manager, Committers and Contributors.
-  Every *Feature Team* has at least one committer who can approve and merge the Pull Requests of the Contributors.
+  Every *Feature Team* should have at least one committer who can approve and merge the Pull Requests of the Contributors.
+
+  Every *Feature Team* should also have a *Feature Team Lead*. The person with this role is responsible for
+  organizing the meetings, writing meeting protocols and representing the current status of the *Feature Team*
+  work in various management reporting or plannig calls. *Feature Team Lead* is nominated by *Technical Leads* by election.
+  Normally, this is the owner of the original *Feature Request*.
 
 
 Creation of a new Feature Team
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Decision to create a new *Feature Team* is normally done in *Technical Lead Circle* in case a particular,
 already *accepted* *Feature Request* can not be assigned to any of already existing *Feature Teams*.
-As every *Feature Team* has always an exactly one dedicated repository assigned to it, the decision criteria
-is normally whether the code for the new *Feature Request* would thematically fit into the existing repository of
-one of the existing *Feature Teams*. If not, then a new *Feature Team* should be created.
 
 As a first step, the decision to create a new Feature Team is protocolled in the `Tech Lead Circle meeeting minutes <https://github.com/orgs/eclipse-score/discussions/categories/technical-lead-circle>`_.
 Afterwards a GitHub Issue is created in the `Technical Lead Cirle LOP project <https://github.com/orgs/eclipse-score/projects/3>`_
@@ -113,31 +114,36 @@ using the special *Feature Team Creation* GitHub Issue template and is assigned 
 **ToDo**: create such a template.
 
 Usage of the special GitHub Issue template ensures, that all GitHub issues for creation of new *Feature
-Teams* follow the same rules, e.g. that title always has the same format or
-that description always contains the reasoning for the creation of a new *Feature Team*.
+Teams* follow the same rules, e.g. that the title always has the same format or
+that the description always contains the reasoning for the creation of a new *Feature Team*.
 
-Additionally, GitHub Issue created based on the template, contains *DoD list*, that serves as a checklist
-for the Technical Lead to ensure, that he or she has completed all necessary activities/steps to create a new *Feature Team*.
-The current *DoD list* is always documented in the template. The most important activities are:
+Additionally, the GitHub Issue created from the template includes a *DoD list*, which serves as a checklist
+for the Technical Lead to ensure that all necessary activities and steps have been completed to establish a new *Feature Team*.
+Its current *DoD list* is always documented in the template. The most important activities are:
 
 * **Creation of labels**
 
-  Every *Feature Team* should have it's own label for filtering of GitHub Issues, PRs or discussions.
+  Every *Feature Team* should have its own label for filtering of GitHub Issues, PRs or discussions.
 
 * **Creation of discussion**
 
-  Every *Feature Team* should have it's own discussion section in the `Feature Teams section <https://github.com/orgs/eclipse-score/discussions>`_
+  Every *Feature Team* should have its own discussion section in the `Feature Teams section <https://github.com/orgs/eclipse-score/discussions>`_
   of the main *S-CORE* project.
 
-* **Creation of project**
+* **Adding a new Team to the main S-Core GitHub project**
 
-  Every *Feature Team* should have it's own GitHub project for tracking of Feature Team specific GitHub issues.
+  Every *Feature Team* should be added as a further select option of the "Team" field
+  in the `main S-Core project <https://github.com/orgs/eclipse-score/projects/17/views/27>`_, so that *Technical Leads*
+  can assign tickets to the team and filter for the tickets of the new team.
+  Additionally, every team is free to create its own GitHub project, but then the team tickets should be still
+  visible in the main S-Core project.
 
 * **Creation of repository**
 
   Normally, every *Feature Team* should have a dedicated repository. Creation of new repository is done
   be extending the `otterdog configuration file <https://github.com/eclipse-score/.eclipsefdn/blob/main/otterdog/eclipse-score.jsonnet>`_
-  and creating a new PR, that has to be approved by the *Eclipse Project Security Team*.
+  and creating a new PR, that has to be approved by the *Eclipse Project Security Team*. Creation of the
+  repository is the responsibility of the *Feature Team Lead*.
 
 * **Developer GitHub Team**
 
@@ -153,13 +159,13 @@ The current *DoD list* is always documented in the template. The most important 
 
 Merge rights & code ownership
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-As already stated, every *Feature Team* has exactly one dedicated repository. Before the creation of the
-new repository, it should be clarified, whose review is mandatory for merging PRs to the repository
+As already stated, every *Feature Team* has normally a dedicated repository. Before the creation of the new repository,
+*Feature Team Lead* together with *Technical Leads* should nominate initial codeowners, whose review is mandatory for merging PRs to the repository
 and who is at the end allowed to merge PRs to the repository.
 
 In the S-CORE project, the configuration whose review is mandatory to merge a PR to the repository is done
 using `CODEOWNERS file and branch protection <https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners#codeowners-and-branch-protection>`_ .
-Every repository has a CODEOWNERS file, where one or multiple teams or persons are specified, whose review is needed for the PR
+Every repository has a CODEOWNERS file, where one or multiple teams are specified, whose review is needed for the PR
 to be able to be merged. The teams listed there are normally:
 
 * *Codeowner GitHub Team* for this *Feature Team*
@@ -169,9 +175,9 @@ to be able to be merged. The teams listed there are normally:
 
 **ToDo**: can we have an 'AND relationship' for teams in CODEOWNERS file?
 
-*Codeowner GitHub Team* for the corresponding *Feature Team* consists of the senior software developers, that understand how
+*Codeowner GitHub Team* for the corresponding *Feature Team* consists of the software developers, that understand how
 the particular feature works or should work. The members of this team should be selected and agreed
-during the creation of the *Feature Team* by the *Technical Leads*. The criteria for the selection should be the
+during the creation of the *Feature Team* by the *Technical Leads* and *Feature Team Lead*. The criteria for the selection should be the
 technical competence of the software developers, e.g. in case during the :ref:`Feature Request process <feature_request_guideline>`
 it was decided to take over already existing source code, then persons who were actively participating in the
 development of that code are always good candidates to be part of *Codeowner GitHub team*.
@@ -179,14 +185,13 @@ The decision who should be initially part of the *Codeowner GitHub team* and the
 should be protocolled in the GitHub Issue, that is used for creation of the *Feature Team*.
 
 In case further software developers should be added to the *Codeowener GitHub team* in the future,
-that decision and it's reasoning should be protocolled in one of the *Feature Team* GitHub discussions.
+that decision and its reasoning should be protocolled in one of the *Feature Team* GitHub discussions.
 
-Members of the *Codeowner GitHub team* should be also the ones, who can merge the PRs to the corresponding repository.
-Therefore as soon as *Codeowner GitHub team* is created, Technical Lead, who is the assignee of the ticket for the *Feature
-Team* creation, should start committer elections for all software developers in the *Codeowner GitHub team*. All other
-Technical Leads, who are also committers in the S-CORE project, should support these elections through positive voting in case no
-concrete objections exist.
-
+Members of the *Codeowner GitHub team* should also be authorized to merge pull requests (PRs) into the corresponding repository.
+Therefore, once the *Codeowner GitHub team* has been created, the Technical Lead assigned to the ticket for the *Feature
+Team* setup should initiate committer elections for all software developers in the *Codeowner GitHub team*.
+All other Technical Leads who are already committers in the S-CORE project are expected to support these
+elections by voting positively, provided there are no specific objections.
 
 Meeting Structure
 -----------------
