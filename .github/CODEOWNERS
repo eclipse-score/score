@@ -3,15 +3,16 @@
 # were modified. All directories should have a proper codeowner
 # Syntax: https://help.github.com/articles/about-codeowners/
 
-# Interim solution, commented out is future solution
-# *                                   @eclipse-score/infrastructure-maintainers
+# Note: last match wins
+
+# By Default reviews go to the infrastructure community, to address missing lines in this document.
 *                                     @AlexanderLanin @MaximilianSoerenPollak @dcalavrezo-qorix
-# .*                                  @eclipse-score/infrastructure-maintainers
+
+# All special files go to infrastructure as well
 .*                                    @AlexanderLanin @MaximilianSoerenPollak @dcalavrezo-qorix
-# .github/CODEOWNERS                  @eclipse-score/automotive-score-technical-leads
+
 .github/CODEOWNERS                    @antonkri @FScholPer @qor-lb @johannes-esr @markert-r
 
-# /docs/                              @eclipse-score/community-process
 /docs/                                @pahmann @PhilipPartsch @masc2023 @aschemmel-tech
 /docs/conf.py                         @AlexanderLanin @MaximilianSoerenPollak @dcalavrezo-qorix
 /docs/contribute/                     @eclipse-score/automotive-score-committers
@@ -25,6 +26,7 @@ safety_analysis/                      @aschemmel-tech @PhilipPartsch @masc2023
 # safety_planning/                    @eclipse-score/automotive-score-technical-leads
 safety_planning/                      @antonkri @FScholPer @qor-lb @johannes-esr @markert-r
 verification/                         @eclipse-score/automotive-score-committers
+/docs/design_decisions/*infra*        @AlexanderLanin @MaximilianSoerenPollak @dcalavrezo-qorix
 /docs/glossary/                       @eclipse-score/automotive-score-committers
 /docs/introduction/                   @eclipse-score/automotive-score-committers
 /docs/manuals/                        @eclipse-score/automotive-score-committers
@@ -50,15 +52,3 @@ verification/                         @eclipse-score/automotive-score-committers
 /platform_integration_tests/          @eclipse-score/automotive-score-committers
 # /tools/                             @eclipse-score/infrastructure-maintainers
 /tools/                               @AlexanderLanin @MaximilianSoerenPollak @dcalavrezo-qorix
-
-# in separate <module_name> repositories:
-#
-# *                                    @eclipse-score/ft-<teamname>
-# .*                                   @eclipse-score/ft-<teamname>
-# /docs                                @eclipse-score/community-process
-# /docs/manual/safety_manual           @eclipse-score/safety-managers
-# /docs/release                        @eclipse-score/automotive-score-technical-leads
-# /docs/safety_mgt                     @eclipse-score/safety-managers
-# /docs/safety_mgt/module_safety_plan  @eclipse-score/automotive-score-technical-leads
-# /docs/verification_report            @eclipse-score/automotive-score-technical-leads
-# safety_analysis/                     @eclipse-score/safety-managers

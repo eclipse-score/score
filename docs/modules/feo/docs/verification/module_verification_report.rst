@@ -12,7 +12,7 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. document:: FEO Verification Report
+.. document:: FEO Module Verification Report
    :id: doc__feo_verification_report
    :status: draft
    :security: NO
@@ -20,8 +20,8 @@
    :realizes: PROCESS_wp__verification_module_ver_report
    :tags: module_template
 
-FEO Verification Report
-=======================
+FEO Module Verification Report
+==============================
 
 This verification report is based on the :need:`PROCESS_gd_temp__verification_plan`.
 It covers all the components of the above stated module.

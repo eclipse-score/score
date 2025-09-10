@@ -342,79 +342,13 @@ Executor and Agents
 * The coordinating entity in the primary process is the "executor"
 * The executor coordinates the invocation of the activities in the
   order as described above
-* As a central entity the executor is able to trace, record or monitor the
+* As a central entity, the executor is able to trace and monitor the
   system behavior as sequence of activity invocations (see below)
 * The actual activity invocation is done by an "agent"
 * The agent exists in each process belonging to an application
 * The agent connects to the executor during the startup phase
 * The agent takes invocation commands sent by the executor and
   executes them in its local process on behalf of the executor
-
-
-External state
-==============
-
-* Depending on the reprocessing scenario (see below) it might be necessary
-  to put the activities into a well defined state. This can either be done
-  by providing all the input to the activities which they need to get
-  into that state (which could involve many task chain invocations).
-  Another way is to let the framework record activity state just as it
-  records communication messages
-* External state is a means to make activity state recordable
-* Using external state, activities don't hold their state in activity local
-  variables (like C++ member variables) but in a state storage provided
-  by the framework. This way, they "do not remember anything" from the
-  last task chain invocation. Instead, on every new task chain invocation,
-  they first read in the external state from the framework provided storage,
-  then potentially manipulate the state based on their inputs and then
-  store it back for the next task chain invocation
-
-Recording
-=========
-
-* The framework can record all messages going over its communication topics
-* For each message the recording includes:
-
-  - topic
-  - data
-  - timestamp
-  - sender [optional]
-
-* The framework can record certain execution events:
-
-  - task chain start/end
-  - init/step/shutdown() entry point enter per activity
-  - init/step/shutdown() entry point leave per activity
-
-* For each event the recording includes:
-
-  - type (e.g. step_enter)
-  - context (e.g. activity name of step() entered)
-  - timestamp
-
-
-Reprocessing
-============
-
-* There are multiple possible reprocessing scenarios, for example:
-
-  - replay of one or many executions of a task chain
-  - replay of one or many executions of a single activity
-
-* In a replay scenario, the framework is used to reproduce the communication messages
-  and other API behavior (e.g. time, parameters, persistency) as was
-  recorded in a previous run
-* In case a whole task chain is reprocessed, the outputs of the input service activities
-  will be reproduced
-* In case only a single activity is reprocessed, the outputs of the predecessors
-  in the task chain will be reproduced
-* Outputs of application activities are typically not replayed but
-  freshly calculated by the activities running during the replay
-* The framework supports reprocessing by
-
-  - Starting a task chain at the same point in time as recorded
-  - Replaying communication data as recorded
-  - Providing time via its time API as recorded
 
 
 Tracing
@@ -444,12 +378,12 @@ w.r.t impact of computation load and latency.
 .. |example_task_chain_3_threads_dynamic| image:: _assets/example_task_chain_3_threads_dynamic.png
 
 
-Error Handling for S-CORE v0.5
-==============================
+Error Handling
+==============
 
 Possible error cases during the different FEO life cycle states shall be handled as follows. For now, the
 descriptions are focussed on the intended implementation for S-CORE v0.5. Potential adaptations for
-S-CORE v1.0 have been noted down, but shall be considered as drafts only.
+S-CORE v1.0 have been noted down in the next Section.
 
 * Independent of state
     - If the primary process dies, the external lifecycle management shall kill all dependent processes.
@@ -458,36 +392,142 @@ S-CORE v1.0 have been noted down, but shall be considered as drafts only.
       terminate itself.
 
 * State: Lifecycle Manager creates all processes (primary & secondaries)
-    - If not all secondaries connect to the primary in time,
-        - S-CORE v0.5: the primary will terminate itself. The startup functions shall not be triggered.
-        - S-CORE v1.0: the primary will not terminate, but report an error to the lifecycle/health management.
-          The startup functions shall not be triggered.
+    - If not all secondaries connect to the primary in time, the primary will terminate itself.
+      The startup functions shall not be triggered.
 
 * State: Lifecycle Manager has created all processes (primary & secondaries), all secondaries have connected to the primary
-    - If an error occurs during the execution of a startup function,
-        - S-CORE v0.5: the primary process shall abort calling startup functions
+    - If an error occurs during the execution of a startup function, the primary process shall abort calling startup functions
           and terminate itself. For all of the activities whose startup functions have already been called successfully,
           the corresponding shutdown functions shall be executed in arbitrary sequence.
-        - S-CORE v1.0: in addition, the primary process shall report the issue to health management.
     - During initialization (i.e. in the startup function of an activity), activities shall check for resource allocation
       and report an error to the executor in case of failure.
-    - If a timeout occurs during startup, stepping or shutdown of an activity,
-        - S-CORE v0.5: the primary process shall shutdown all successfully started activities in arbitrary sequence
-          and terminate itself.
-        - S-CORE v1.0: In addition, the primary process shall report the issue to health management.
+    - If a timeout occurs during startup, stepping or shutdown of an activity, the primary process shall shutdown
+      all successfully started activities in arbitrary sequence and terminate itself.
     - If not all activities reach their initialized state within a certain period of time (startup timeout),
-        - S-CORE v0.5: the primary process shall shutdown all successfully
-          started activities in arbitrary sequence and terminate itself.
-        - S-CORE v1.0: In addition, the primary process shall report the issue to health management.
+      the primary process shall shutdown all successfully started activities in arbitrary sequence and terminate itself.
 
 * State: Lifecycle Manager has created all processes  (primary & secondaries), all secondaries have connected to the primary, all activities have been started up successfully
-    - If an activity fails in the step function,
-        - S-CORE v0.5: the primary process shall call shutdown for all activities in arbitrary sequence and terminate itself.
-        - S-CORE v1.0: In addition, a logical waypoint error shall be reported to health management.
+    - If an activity fails in the step function, the primary process shall call shutdown for all activities in
+      arbitrary sequence and terminate itself.
     - If activities do not meet their intermediate (time/memory/cpu-) budgets the issue shall be detected and handled
       outside of FEO. (Resource supervision and quotas will be defined in a separate feature request, if needed.)
 
 * State: Shutdown of activities
-    - If an activity fails in the shutdown function,
-        - S-CORE v0.5: the primary process shall shutdown all remaining activities and terminate itself.
-        - S-CORE v1.0: In addition, a logical waypoint error shall be reported to health management.
+    - If an activity fails in the shutdown function, the primary process shall shutdown all remaining activities
+      and terminate itself.
+
+
+Extended features for S-CORE v1.0
+=================================
+
+The following features will not be implemented as part of S-CORE v0.5, but have been noted down as potential extensions
+for v1.0. They shall be considered as drafts only.
+
+
+External state
+''''''''''''''
+
+* Depending on the reprocessing scenario (see below) it might be necessary
+  to put the activities into a well defined state. This can either be done
+  by providing all the input to the activities which they need to get
+  into that state (which could involve many task chain invocations).
+  Another way is to let the framework record activity state just as it
+  records communication messages
+* External state is a means to make activity state recordable
+* Using external state, activities don't hold their state in activity local
+  variables (like C++ member variables) but in a state storage provided
+  by the framework. This way, they "do not remember anything" from the
+  last task chain invocation. Instead, on every new task chain invocation,
+  they first read in the external state from the framework provided storage,
+  then potentially manipulate the state based on their inputs and then
+  store it back for the next task chain invocation
+
+
+Recording
+'''''''''
+
+* As a central entity, the executor is able to record the system behavior as sequence
+  of activity invocations.
+* The framework can record all messages going over its communication topics
+* For each message the recording includes:
+
+  - topic
+  - data
+  - timestamp
+  - sender [optional]
+
+* The framework can record certain execution events:
+
+  - task chain start/end
+  - init/step/shutdown() entry point enter per activity
+  - init/step/shutdown() entry point leave per activity
+
+* For each event the recording includes:
+
+  - type (e.g. step_enter)
+  - context (e.g. activity name of step() entered)
+  - timestamp
+
+
+Reprocessing
+''''''''''''
+
+* There are multiple possible reprocessing scenarios, for example:
+
+  - replay of one or many executions of a task chain
+  - replay of one or many executions of a single activity
+
+* In a replay scenario, the framework is used to reproduce the communication messages
+  and other API behavior (e.g. time, parameters, persistency) as was
+  recorded in a previous run
+* In case a whole task chain is reprocessed, the outputs of the input service activities
+  will be reproduced
+* In case only a single activity is reprocessed, the outputs of the predecessors
+  in the task chain will be reproduced
+* Outputs of application activities are typically not replayed but
+  freshly calculated by the activities running during the replay
+* The framework supports reprocessing by
+
+  - Starting a task chain at the same point in time as recorded
+  - Replaying communication data as recorded
+  - Providing time via its time API as recorded
+
+
+Extended Error Handling
+'''''''''''''''''''''''
+
+* Independent of state
+    - If the primary process dies, the external lifecycle management shall kill all dependent processes.
+    - If a secondary process dies, the lifecycle management shall send a termination signal to the primary process.
+      The primary process shall call the shutdown function of all remaining activities in arbitrary sequence and
+      terminate itself.
+
+* State: Lifecycle Manager creates all processes (primary & secondaries)
+    - If not all secondaries connect to the primary in time, the primary will not terminate, but report an error to the
+      lifecycle/health management. The startup functions shall not be triggered.
+
+* State: Lifecycle Manager has created all processes (primary & secondaries), all secondaries have connected to the primary
+    - If an error occurs during the execution of a startup function, the primary process shall abort calling startup
+      functions and terminate itself. For all of the activities whose startup functions have already been called successfully,
+      the corresponding shutdown functions shall be executed in arbitrary sequence.
+      In addition, the primary process shall report the issue to health management.
+    - During initialization (i.e. in the startup function of an activity), activities shall check for resource allocation
+      and report an error to the executor in case of failure.
+    - If a timeout occurs during startup, stepping or shutdown of an activity, the primary process shall shutdown all
+      successfully started activities in arbitrary sequence and terminate itself.
+      In addition, the primary process shall report the issue to health management.
+    - If not all activities reach their initialized state within a certain period of time (startup timeout), the
+      primary process shall shutdown all successfully started activities in arbitrary sequence and terminate itself.
+      In addition, the primary process shall report the issue to health management.
+
+* State: Lifecycle Manager has created all processes  (primary & secondaries), all secondaries have connected to the primary, all activities have been started up successfully
+    - If an activity fails in the step function, the primary process shall call shutdown for all activities in
+      arbitrary sequence and terminate itself.
+      In addition, a logical waypoint error shall be reported to health management.
+    - If activities do not meet their intermediate (time/memory/cpu-) budgets the issue shall be detected and handled
+      outside of FEO. (Resource supervision and quotas will be defined in a separate feature request, if needed.)
+
+* State: Shutdown of activities
+    - If an activity fails in the shutdown function, the primary process shall shutdown all remaining activities and
+      terminate itself.
+      In addition, a logical waypoint error shall be reported to health management.

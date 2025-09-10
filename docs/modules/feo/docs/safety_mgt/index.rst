@@ -12,8 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-FEO Safety Management
-#####################
+FEO Module Safety Management
+############################
 
 .. toctree::
    :titlesonly:

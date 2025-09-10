@@ -12,9 +12,9 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. document:: FEO Safety Plan
+.. document:: FEO Module Safety Plan
    :id: doc__feo_safety_plan
-   :status: draft
+   :status: valid
    :security: NO
    :safety: ASIL_B
    :realizes: PROCESS_wp__module_safety_plan
@@ -50,16 +50,15 @@ Tailoring
 Additional to the tailoring in the SW platform project as defined in the :need:`doc__platform_safety_plan` we define here the additional tailoring on module level.
 
 - Excluded for this module are additionally the following work products (and their related requirements):
-  - Software Component Qualification :need:`PROCESS_wp__sw_component_class` is not needed, as the code is developed from the scratch: :need:`PROCESS_std_wp__isopas8926__4511`, :need:`PROCESS_std_wp__iso26262__support_1251`
+  - No work products excluded
 
-
-Functional Safety Module Work products
+Functional Safety Module Work Products
 ======================================
 
 One set of work products for the module and one set for each component of the module:
 
-Module Work products List
--------------------------
+FEO Module Work Products List
+-----------------------------
 
 .. list-table:: Module Work products
         :header-rows: 1
@@ -72,72 +71,72 @@ Module Work products List
           - WP status
 
         * - :need:`PROCESS_wp__module_safety_plan`
-          - :need:`PROCESS_gd_guidl__saf_plan_definitions`
+          - :need:`PROCESS_gd_guidl__saf_plan_definitions`, :need:`PROCESS_gd_temp__module_safety_plan`
           - :ndf:`copy('status', need_id='PROCESS_gd_guidl__saf_plan_definitions')`
-          - <Link to issue>
+          - https://github.com/eclipse-score/score/issues/1658
           - this document
           - see above
 
         * - :need:`PROCESS_wp__module_safety_package`
           - :need:`PROCESS_gd_guidl__saf_package`
           - :ndf:`copy('status', need_id='PROCESS_gd_guidl__saf_package')`
-          - <Link to issue>
+          - https://github.com/eclipse-score/score/issues/1659
           - this document (including the linked documentation)
-          - see above (and below)
+          - see above (and below), safety manual
 
         * - :need:`PROCESS_wp__fdr_reports` (module Safety Plan)
           - :need:`PROCESS_gd_chklst__safety_plan`
           - :ndf:`copy('status', need_id='PROCESS_gd_chklst__safety_plan')`
-          - <Link to issue>
+          - https://github.com/eclipse-score/score/issues/1660
           - :need:`doc__feo_safety_plan_fdr`
           - :ndf:`copy('status', need_id='doc__feo_safety_plan_fdr')`
 
         * - :need:`PROCESS_wp__fdr_reports` (module Safety Package)
           - :need:`PROCESS_gd_chklst__safety_package`
           - :ndf:`copy('status', need_id='PROCESS_gd_chklst__safety_package')`
-          - <Link to issue>
+          - https://github.com/eclipse-score/score/issues/1660
           - :need:`doc__module_name_safety_package_fdr`
           - :ndf:`copy('status', need_id='doc__module_name_safety_package_fdr')`
 
         * - :need:`PROCESS_wp__fdr_reports` (module's Safety Analyses & DFA)
           - :need:`PROCESS_gd_chklst__safety_analysis`
           - :ndf:`copy('status', need_id='PROCESS_gd_chklst__safety_analysis')`
-          - <Link to issue>
+          - https://github.com/eclipse-score/score/issues/1660
           - :need:`doc__safety_analysis_inspection_component_feo`
           - :ndf:`copy('status', need_id='doc__safety_analysis_inspection_component_feo')`
 
         * - :need:`PROCESS_wp__audit_report`
           - performed by external experts
           - n/a
-          - <Link to issue>
+          - https://github.com/eclipse-score/score/issues/1661
           - <Link to WP>
           - <WP status (manual)>
 
         * - :need:`PROCESS_wp__module_sw_build_config`
           - :need:`PROCESS_gd_temp__software_development_plan`
-          - `copy('status', need_id='PROCESS_gd_temp__software_development_plan')`
-          - <Link to issue>
+          - :ndf:`copy('status', need_id='PROCESS_gd_temp__software_development_plan')`
+          - https://github.com/eclipse-score/score/issues/1662
           - <Link to WP>
           - <automated>
 
         * - :need:`PROCESS_wp__module_safety_manual`
           - :need:`PROCESS_gd_temp__safety_manual`
           - :ndf:`copy('status', need_id='PROCESS_gd_temp__safety_manual')`
-          - <Link to issue>
+          - https://github.com/eclipse-score/score/issues/1663
           - :need:`doc__feo_safety_manual`
           - :ndf:`copy('status', need_id='doc__feo_safety_manual')`
 
         * - :need:`PROCESS_wp__verification_module_ver_report`
           - :need:`PROCESS_gd_temp__mod_ver_report`
           - :ndf:`copy('status', need_id='PROCESS_gd_temp__mod_ver_report')`
-          - <Link to issue>
+          - https://github.com/eclipse-score/score/issues/1665
           - :need:`doc__feo_verification_report`
           - :ndf:`copy('status', need_id='doc__feo_verification_report')`
 
         * - :need:`PROCESS_wp__module_sw_release_note`
           - :need:`PROCESS_gd_temp__rel_mod_rel_note`
           - :ndf:`copy('status', need_id='PROCESS_gd_temp__rel_mod_rel_note')`
-          - <Link to issue>
+          - https://github.com/eclipse-score/score/issues/1666
           - :need:`doc__feo_release_note`
           - :ndf:`copy('status', need_id='doc__feo_release_note')`
 
@@ -157,89 +156,89 @@ FEO Component Work Products List
         * - :need:`PROCESS_wp__requirements_comp`
           - :need:`PROCESS_gd_temp__req_comp_req`
           - :ndf:`copy('status', need_id='PROCESS_gd_temp__req_comp_req')`
-          - <Link to issue>
+          - https://github.com/eclipse-score/score/issues/1668
           - :need:`doc__component_feo_requirements`
           - doc :ndf:`copy('status', need_id='doc__component_feo_requirements')` & WP below
 
         * - :need:`PROCESS_wp__requirements_comp_aou`
           - :need:`PROCESS_gd_temp__req_aou_req`
           - :ndf:`copy('status', need_id='PROCESS_gd_temp__req_aou_req')`
-          - <Link to issue>
+          - https://github.com/eclipse-score/score/issues/1669
           - :need:`doc__component_feo_aou_reqs`
           - doc :ndf:`copy('status', need_id='doc__component_feo_aou_reqs')` & WP below
 
         * - :need:`PROCESS_wp__requirements_inspect`
           - :need:`PROCESS_gd_chklst__req_inspection`
           - :ndf:`copy('status', need_id='PROCESS_gd_chklst__req_inspection')`
-          - <Link to issue>
+          - https://github.com/eclipse-score/score/issues/1670
           - :need:`doc__req_inspection_component_feo`
           - doc :ndf:`copy('status', need_id='doc__req_inspection_component_feo')`
 
         * - :need:`PROCESS_wp__component_arch`
           - :need:`PROCESS_gd_temp__arch_comp`
           - :ndf:`copy('status', need_id='PROCESS_gd_temp__arch_comp')`
-          - <Link to issue>
+          - https://github.com/eclipse-score/score/issues/1671
           - :need:`doc__component_feo_architecture`
           - doc :ndf:`copy('status', need_id='doc__component_feo_architecture')` & WP below
 
         * - :need:`PROCESS_wp__sw_arch_verification`
           - :need:`PROCESS_gd_chklst__arch_inspection_checklist`
           - :ndf:`copy('status', need_id='PROCESS_gd_chklst__arch_inspection_checklist')`
-          - <Link to issue>
+          - https://github.com/eclipse-score/score/issues/1672
           - :need:`doc__arch_inspection_component_feo`
           - doc :ndf:`copy('status', need_id='doc__arch_inspection_component_feo')`
 
         * - :need:`PROCESS_wp__sw_component_fmea`
           - :need:`PROCESS_gd_temp__comp_saf_fmea`
           - :ndf:`copy('status', need_id='PROCESS_gd_temp__comp_saf_fmea')`
-          - <Link to issue>
+          - https://github.com/eclipse-score/score/issues/1673
           - :need:`doc__component_feo_fmea`
           - doc :ndf:`copy('status', need_id='doc__component_feo_fmea')` & WP below
 
         * - :need:`PROCESS_wp__sw_component_dfa`
           - :need:`PROCESS_gd_temp__comp_saf_fmea`
           - :ndf:`copy('status', need_id='PROCESS_gd_temp__comp_saf_fmea')`
-          - <Link to issue>
+          - https://github.com/eclipse-score/score/issues/1674
           - :need:`doc__component_feo_dfa`
           - doc :ndf:`copy('status', need_id='doc__component_feo_dfa')` & WP below
 
         * - :need:`PROCESS_wp__sw_implementation`
           - :need:`PROCESS_gd_guidl__implementation`
           - :ndf:`copy('status', need_id='PROCESS_gd_guidl__implementation')`
-          - <Link to issue>
+          - https://github.com/eclipse-score/score/issues/1675
           - <Link to WP>
           - <automated>
 
         * - :need:`PROCESS_wp__verification_sw_unit_test`
           - :need:`PROCESS_gd_guidl__verification_guide`
           - :ndf:`copy('status', need_id='PROCESS_gd_guidl__verification_guide')`
-          - <Link to issue>
+          - https://github.com/eclipse-score/score/issues/1676
           - <Link to WP>
           - <automated>
 
         * - :need:`PROCESS_wp__sw_implementation_inspection`
           - :need:`PROCESS_gd_chklst__impl_inspection_checklist`
           - :ndf:`copy('status', need_id='PROCESS_gd_chklst__impl_inspection_checklist')`
-          - <Link to issue>
+          - https://github.com/eclipse-score/score/issues/1677
           - :need:`doc__impl_inspection_component_feo`
           - :ndf:`copy('status', need_id='doc__impl_inspection_component_feo')`
 
         * - :need:`PROCESS_wp__verification_comp_int_test`
           - :need:`PROCESS_gd_guidl__verification_guide`
           - :ndf:`copy('status', need_id='PROCESS_gd_guidl__verification_guide')`
-          - <Link to issue>
+          - https://github.com/eclipse-score/score/issues/1667
           - <Link to WP>
           - <automated>
 
         * - :need:`PROCESS_wp__sw_component_class`
           - :need:`PROCESS_gd_guidl__component_classification`
           - :ndf:`copy('status', need_id='PROCESS_gd_guidl__component_classification')`
-          - not applicable, tailored out
+          - https://github.com/eclipse-score/score/issues/1679
           - :need:`doc__component_name_comp_class`
           - :ndf:`copy('status', need_id='doc__component_name_comp_class')`
 
 Note: In case the component is a new development, :need:`PROCESS_wp__sw_component_class` shall be removed from the above list (and also from the folders).
-In case an OSS element is used in the module, part 6 has to be filled out.
+In case an OSS element is used in the module, part 6 has to be filled out, depending on the component classification results.
 
 OSS (sub-)component qualification plan
 ======================================

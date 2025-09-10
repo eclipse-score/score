@@ -12,7 +12,7 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. document:: FEO Safety Manual
+.. document:: FEO Module Safety Manual
    :id: doc__feo_safety_manual
    :status: draft
    :security: NO

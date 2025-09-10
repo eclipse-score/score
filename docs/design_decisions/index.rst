@@ -12,10 +12,15 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-FEO Module Manuals
-##################
+Decision Records
+================
+
+
+Infrastructure
+~~~~~~~~~~~~~~
 
 .. toctree::
-   :titlesonly:
+   :maxdepth: 1
+   :glob:
 
-   safety_manual
+   DR-*-infra*
