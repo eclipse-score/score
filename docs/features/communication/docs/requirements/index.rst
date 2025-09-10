@@ -302,7 +302,7 @@ Cross VM Communication
    :satisfies: stkh_req__communication__vm
    :status: valid
 
-   The communication framework show allow to communicate between different vms over shared memory
+   The communication framework shall allow to communicate between different VMs over shared memory
 
 
 Performance
