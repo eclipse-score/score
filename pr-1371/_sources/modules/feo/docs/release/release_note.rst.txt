@@ -12,7 +12,7 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. document:: FEO Release Note
+.. document:: FEO Module Release Note
    :id: doc__feo_release_note
    :status: draft
    :security: NO
@@ -21,8 +21,8 @@
    :tags: module_feo
 
 
-FEO Release Note
-================
+FEO Module Release Note
+=======================
 
 
 | Module Name: FEO

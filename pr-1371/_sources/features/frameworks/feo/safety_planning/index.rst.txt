@@ -13,19 +13,19 @@
    # *******************************************************************************
 
 
-FEO Safety Planning
-===================
+FEO Feature Safety Planning
+===========================
 
-.. document:: FEO Safety WPs
+.. document:: FEO Safety Work Products
    :id: doc__feo_safety_wp
-   :status: draft
+   :status: valid
    :security: NO
    :safety: ASIL_B
    :realizes: PROCESS_wp__platform_safety_plan
    :tags: framework_feo
 
 
-.. list-table:: FEO Work products
+.. list-table:: FEO Feature Work Products
     :header-rows: 1
 
     * - Work product Id
@@ -38,70 +38,70 @@ FEO Safety Planning
     * - :need:`PROCESS_wp__feat_request`
       - :need:`PROCESS_gd_temp__change_feature_request`
       - :ndf:`copy('status', need_id='PROCESS_gd_temp__change_feature_request')`
-      - <link to issue>
+      - https://github.com/eclipse-score/score/issues/1646
       - :need:`doc__frameworks_feo`
       - :ndf:`copy('status', need_id='doc__frameworks_feo')`
 
     * - :need:`PROCESS_wp__requirements_feat`
       - :need:`PROCESS_gd_temp__req_feat_req`
       - :ndf:`copy('status', need_id='PROCESS_gd_temp__req_feat_req')`
-      - <link to issue>
+      - https://github.com/eclipse-score/score/issues/1647
       - :need:`doc__frameworks_feo_feat_reqs`
       - doc :ndf:`copy('status', need_id='doc__frameworks_feo_feat_reqs')` & WP below
 
     * - :need:`PROCESS_wp__requirements_feat_aou`
       - :need:`PROCESS_gd_temp__req_aou_req`
       - :ndf:`copy('status', need_id='PROCESS_gd_temp__req_aou_req')`
-      - <link to issue>
+      - https://github.com/eclipse-score/score/issues/1648
       - :need:`doc__frameworks_feo_aou_reqs`
       - doc :ndf:`copy('status', need_id='doc__frameworks_feo_aou_reqs')` & WP below
 
     * - :need:`PROCESS_wp__feature_arch`
       - :need:`PROCESS_gd_temp__arch_feature`
       - :ndf:`copy('status', need_id='PROCESS_gd_temp__arch_feature')`
-      - <link to issue>
+      - https://github.com/eclipse-score/score/issues/1649
       - :need:`doc__frameworks_feo_feat_arch`
       - doc :ndf:`copy('status', need_id='doc__frameworks_feo_feat_arch')` & WP below
 
     * - :need:`PROCESS_wp__feature_fmea`
       - :need:`PROCESS_gd_temp__feat_saf_fmea`
       - :ndf:`copy('status', need_id='PROCESS_gd_temp__feat_saf_fmea')`
-      - <link to issue>
+      - https://github.com/eclipse-score/score/issues/1650
       - :need:`doc__frameworks_feo_dfa`
       - doc :ndf:`copy('status', need_id='doc__frameworks_feo_dfa')` & WP below
 
     * - :need:`PROCESS_wp__feature_dfa`
       - :need:`PROCESS_gd_temp__feat_saf_dfa`
       - :ndf:`copy('status', need_id='PROCESS_gd_temp__feat_saf_dfa')`
-      - <Link to issue>
+      - https://github.com/eclipse-score/score/issues/1651
       - :need:`doc__frameworks_feo_fmea`
       - doc :ndf:`copy('status', need_id='doc__frameworks_feo_fmea')` & WP below
 
     * - :need:`PROCESS_wp__fdr_reports` (features's Safety Analyses & DFA)
       - :need:`PROCESS_gd_chklst__safety_analysis`
       - :ndf:`copy('status', need_id='PROCESS_gd_chklst__safety_analysis')`
-      - <Link to issue>
+      - https://github.com/eclipse-score/score/issues/1652
       - :need:`doc__saf_ana_inspec_frameworks_feo`
       - :ndf:`copy('status', need_id='doc__saf_ana_inspec_frameworks_feo')`
 
     * - :need:`PROCESS_wp__requirements_inspect`
       - :need:`PROCESS_gd_chklst__req_inspection`
       - :ndf:`copy('status', need_id='PROCESS_gd_chklst__req_inspection')`
-      - <Link to issue>
+      - https://github.com/eclipse-score/score/issues/1653
       - :need:`doc__req_inspection_frameworks_feo`
       - :ndf:`copy('status', need_id='doc__req_inspection_frameworks_feo')`
 
     * - :need:`PROCESS_wp__sw_arch_verification`
       - :need:`PROCESS_gd_chklst__arch_inspection_checklist`
       - :ndf:`copy('status', need_id='PROCESS_gd_chklst__arch_inspection_checklist')`
-      - <Link to issue>
+      - https://github.com/eclipse-score/score/issues/1654
       - :need:`doc__arch_inspection_frameworks_feo`
       - :ndf:`copy('status', need_id='doc__arch_inspection_frameworks_feo')`
 
     * - :need:`PROCESS_wp__verification_feat_int_test`
       - :need:`PROCESS_gd_guidl__verification_guide`
       - :ndf:`copy('status', need_id='PROCESS_gd_guidl__verification_guide')`
-      - <link to issue>
+      - https://github.com/eclipse-score/score/issues/1655
       - <Link to WP>
       - <automated>
 

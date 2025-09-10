@@ -284,6 +284,19 @@ Mixed-Criticality safety systems
    Consumers with lower criticality shall not be able to drop data before it is consumed by partners with higher
    criticality.
 
+Cross VM Communication
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. feat_req:: Cross VM
+   :id: feat_req__com__cross_vm
+   :reqtype: Functional
+   :security: YES
+   :safety: ASIL_B
+   :satisfies: stkh_req__communication__vm
+   :status: valid
+
+   The communication framework shall allow to communicate between different VMs over shared memory
+
 
 Performance
 ^^^^^^^^^^^
