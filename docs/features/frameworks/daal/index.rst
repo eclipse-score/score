@@ -18,7 +18,7 @@ Deterministic App Abstraction Layer
 .. document:: Deterministic App Abstraction Layer
    :id: doc__daal
    :status: valid
-   :safety: ASIL_B
+   :safety: QM
    :tags: contribution_request, feature_request
 
 .. toctree::
