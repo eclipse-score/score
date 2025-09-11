@@ -1,0 +1,16 @@
+@startuml
+
+title Sequence Diagram: Delete Key from KVS Instance
+
+participant "User" as actor
+participant "«component» :kvs" as kvs
+
+actor -> kvs: Remove key
+
+alt key-exists
+    kvs --> actor: Successfully deleted key
+else key-doesnt-exist
+    kvs --> actor: Key-Not-Found-Error
+end
+
+@enduml

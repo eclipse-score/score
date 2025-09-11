@@ -1,0 +1,66 @@
+/'
+   # *******************************************************************************
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
+   #
+   # See the NOTICE file(s) distributed with this work for additional
+   # information regarding copyright ownership.
+   #
+   # This program and the accompanying materials are made available under the
+   # terms of the Apache License Version 2.0 which is available at
+   # https://www.apache.org/licenses/LICENSE-2.0
+   #
+   # SPDX-License-Identifier: Apache-2.0
+   # *******************************************************************************
+'/
+
+participant "Lifecycle Manager" as lifecycle
+
+participant "User Application" as application
+
+participant feo #C0F0F0
+
+participant communication
+participant "logging/tracing" as logtrace
+participant time
+participant "Health Manager" as health
+
+lifecycle -> application: startup\nprimary process
+lifecycle -> application: startup\nsecondary processes
+activate application
+
+application -> feo: create\nprimary\nagent
+activate feo
+
+application -> feo: create\nsecondary\nagents
+
+feo -> feo: init activities
+
+group running until term signal
+
+feo -> communication: send signal
+feo <- communication: forward signal
+
+feo -> logtrace: log or trace events
+
+feo -> communication: publish data
+
+feo -> communication: read data
+feo <-- communication: data
+
+feo -> time: read clock
+feo <-- time: time info
+
+feo -> health: report health status
+
+alt end of life cycle
+lifecycle -> application: signal termination
+end
+
+end group
+
+feo -> feo: shutdown activities
+
+feo --> application
+deactivate feo
+
+deactivate application

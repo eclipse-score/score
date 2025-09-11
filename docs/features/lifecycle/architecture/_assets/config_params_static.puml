@@ -1,0 +1,76 @@
+@startuml
+
+class LaunchManager
+{
+
+}
+
+class LaunchConfiguration
+{
+  
+}
+
+LaunchManager "1" -- "1" LaunchConfiguration
+
+
+class ConfigFile
+{
+
+}
+
+LaunchConfiguration "1" -- "1..*" ConfigFile
+
+
+
+class ComponentConfig {
+
+}
+
+ConfigFile "1" -- "1..*" ComponentConfig
+
+class AliveMonitoring {
+  + alive notification interval
+  + Startup grace period
+  + failure tolerance limit
+}
+
+
+class RecoveryAction {
+   + recovery action type (eg. restart, stop, ignore, DSS)
+   + retry count (how many times to try)
+   + wait time (before the component can be started again)
+}
+
+
+class Dependency {
+  + depency type
+}
+
+class ProcessConfig {
++ UID 
++ GID 
++ supplementary groups 
++ runmask 
++ priority 
++ ability
++ security
++ cwd 
++ environmental variables 
++ command
++ arguments 
++ stdin 
++ stdout 
++ stderr 
++ aslr 
++ rlimits
++ time between sigterm and sigkill
+}
+
+ComponentConfig "1" -- "1" Dependency
+ComponentConfig "1" -- "1" ProcessConfig
+ComponentConfig "1" -- "1" AliveMonitoring
+ComponentConfig "1" -- "1" RecoveryAction
+
+Dependency "1" --> "0..*" ComponentConfig: (reference to another component)
+
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+
+
+package "Monitored controller" {
+  [Watchdog Proxy] - Ext_IPC
+  HealthStatus -[Watchdog Proxy]
+  [Launch Manager] - HealthStatus
+}
+
+package "External monitor" {
+  Ext_IPC - [Watchdog] : UART\nGPIO\netc.
+}
+
+@enduml

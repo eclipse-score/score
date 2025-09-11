@@ -13,7 +13,7 @@
 
 module(
     name = "score_platform",
-    version = "0.2.0",
+    version = "0.3.0",
     compatibility_level = 0,
 )
 
@@ -43,7 +43,7 @@ bazel_dep(name = "aspect_rules_py", version = "1.4.0")
 # Packaging dependencies
 #
 ###############################################################################
-bazel_dep(name = "rules_pkg", version = "1.0.1")
+bazel_dep(name = "rules_pkg", version = "1.1.0")
 
 ###############################################################################
 #
@@ -51,44 +51,27 @@ bazel_dep(name = "rules_pkg", version = "1.0.1")
 # Provides formatting and linting of Bazel files.
 #
 ###############################################################################
-bazel_dep(name = "buildifier_prebuilt", version = "7.3.1")
+bazel_dep(name = "buildifier_prebuilt", version = "8.2.0.2")
 
 ###############################################################################
 #
 # Generic linting and formatting rules
 #
 ###############################################################################
-bazel_dep(name = "aspect_rules_lint", version = "1.4.2")
+bazel_dep(name = "aspect_rules_lint", version = "1.5.3")
 
 ###############################################################################
 #
 # Java version
 #
 ###############################################################################
-bazel_dep(name = "rules_java", version = "8.11.0")
+bazel_dep(name = "rules_java", version = "8.15.1")
 
 ###############################################################################
 #
-# Misc. dependency
+# Score custom modules loading
 #
 ###############################################################################
-
-bazel_dep(name = "score_python_basics", version = "0.3.2")
-
-###############################################################################
-#
-# Checker rule for CopyRight checks/fixes
-#
-###############################################################################
-bazel_dep(name = "score_cr_checker", version = "0.2.2")
-
-###############################################################################
-#
-# StarPLS LSP server
-#
-###############################################################################
-bazel_dep(name = "score_starpls_lsp", version = "0.1.0")
-# Checker rule for CopyRight checks/fixs
-
-bazel_dep(name = "score_docs_as_code", version = "0.3.3")
-bazel_dep(name = "score_process", version = "0.2.0")
+bazel_dep(name = "score_tooling", version = "1.0.2")
+bazel_dep(name = "score_docs_as_code", version = "1.2.0")
+bazel_dep(name = "score_process", version = "1.1.2")

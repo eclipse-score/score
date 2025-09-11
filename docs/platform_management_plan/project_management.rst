@@ -16,7 +16,8 @@
    :id: doc__project_mgt_plan
    :status: draft
    :safety: ASIL_B
-   :realizes: wp__project_mgt
+   :security: YES
+   :realizes: PROCESS_wp__project_mgt
    :tags: platform_management
 
 Project management plan
@@ -39,7 +40,6 @@ Steering of the project is done by two committees: *project lead circle* and *te
 
   * Definition, discussion of and decisions about strategical topics (e.g. which associations to approach, confirmation of roadmap, representation in public).
   * Decision on which new software modules should be added or removed from the project. The decision is done based on proposal from the *Technical lead circle*. In case of changes to the existing modules and no concordant decision in the *Technical Lead Circle*, the *Project Lead Circle* has to decide about the change.
-  * Election of new Project Leads.
   * Election of Technical Leads.
   * Last instance of escalation path.
 
@@ -327,6 +327,11 @@ In the main *S-CORE* project we use milestones to mark important stages of the p
 *Releases* are used for structuring of the development activities. Exact scheme for the releases of the *S-CORE* will be provided here later.
 
 You can find "up to date" overview of the release plan and milestones in the following section `S-CORE Releases <https://eclipse-score.github.io/score/score_releases/index.html>`_.
+
+The users of the S-CORE platform need to adapt their planning to the milestones defined in the S-CORE project,
+but they have always the possibility to takeover the development of a new feature, modifications and bugfixes
+in their own development branch / fork and merge these improvements in the next or later releases
+back into the S-CORE "main" line.
 
 Planning process
 ----------------

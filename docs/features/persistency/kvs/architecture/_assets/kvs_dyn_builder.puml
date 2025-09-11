@@ -1,0 +1,25 @@
+@startuml
+
+title Sequence Diagram: Build KVS Instance
+
+participant "User" as actor
+participant "«component» :kvs" as kvs
+
+actor -> kvs: Create KVS builder
+kvs --> actor: KVS builder instance
+
+actor -> kvs: Set need_defaults flag
+kvs --> actor: KVS builder instance
+
+actor -> kvs: Set need_kvs flag
+kvs --> actor: KVS builder instance
+
+actor -> kvs: Build KVS instance
+
+alt kvs-builder-success
+    kvs --> actor: KVS instance with builder config
+else kvs-builder-error
+    kvs --> actor: KVS ErrorCode
+end
+
+@enduml

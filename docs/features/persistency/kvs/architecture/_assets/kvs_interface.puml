@@ -1,0 +1,21 @@
+@startuml
+
+interface IKvs {
+    open
+    flush_on_exit
+    reset
+    get_all_keys
+    key_exists
+    get_value
+    get_default_value
+    has_default_value
+    set_default_value
+    set_value
+    remove_key
+    flush
+    snapshot_count
+    snapshot_max_count
+    snapshot_restore
+}
+
+@enduml

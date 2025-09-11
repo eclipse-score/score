@@ -1,0 +1,56 @@
+@startuml
+
+title Sequence Diagram: Flush Local Representation to Data File
+
+participant "User" as actor
+participant "«component» :kvs" as kvs
+participant "«component» :json" as json_parser
+participant "«component» :fs" as fs
+
+actor -> kvs: Flush KVS
+
+kvs -> json_parser: Generate string from local representation
+
+alt json-string
+    json_parser --> kvs: JSON data string
+else json-string-error
+    json_parser --> kvs: JSON generator error
+    kvs --> actor: JSON generator error
+end
+
+kvs -> kvs: Rotate snapshots
+
+alt snapshot-rotate-success
+    kvs --> kvs: Snapshots rotated
+else snapshot-rotate-error
+    kvs --> actor: Snapshot-Rotate-Error
+end
+
+kvs -> kvs: Create JSON data hash
+
+alt hash-created-success
+    kvs -> kvs: Data hash
+else hash-create-error
+    kvs --> actor: Hash-Calc-Error
+end
+
+kvs -> fs: Write JSON data string to file
+
+alt file-write
+    fs --> kvs: File successfully written
+else file-write-error
+    fs --> kvs: File-Write-Error
+    kvs --> actor: File-Write-Error
+end
+
+kvs -> fs: Write JSON data hash to file
+
+alt file-hash-write
+    fs --> kvs: Hash file successfully written
+    kvs --> actor: Flush successful
+else file-hash-write-error
+    fs --> kvs: File-Hash-Write-Error
+    kvs --> actor: File-Hash-Write-Error
+end
+
+@enduml

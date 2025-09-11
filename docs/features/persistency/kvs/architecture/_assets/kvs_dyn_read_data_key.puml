@@ -1,0 +1,20 @@
+@startuml
+
+title Sequence Diagram: Read Key from KVS Instance
+
+participant "User" as actor
+participant "«component» :kvs" as kvs
+
+actor -> kvs: Get value for key
+
+alt key-exists
+    kvs --> actor: Return value for key
+else key-doesnt-exist
+    alt default-exists
+        kvs --> actor: Return default value for key
+    else default-doesnt-exist
+        kvs --> actor: Key-Not-Found error
+    end
+end
+
+@enduml

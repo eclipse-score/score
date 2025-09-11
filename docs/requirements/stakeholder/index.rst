@@ -95,7 +95,7 @@ Functional requirements
    The software platform shall provide towards the applications a safe
    (ISO26262-2018) key/value store.
 
-   Note: This is part of 0.1 release and therefore can only support ASIL_B. Goal is ASIL_D.
+   Note: This is part of 0.5 release and therefore can only support ASIL_B. Goal is ASIL_D.
 
 .. stkh_req:: Safe Configuration
    :id: stkh_req__functional_req__safe_config
@@ -106,18 +106,32 @@ Functional requirements
    :status: valid
 
    The platform shall support safe configuration.
-   Note: This is part of 0.1 release and therefore can only support ASIL_B. Goal is ASIL_D.
+
+   Note: This is part of 0.5 release and therefore can only support ASIL_B. Goal is ASIL_D.
 
 
 .. stkh_req:: Safe Computation
    :id: stkh_req__functional_req__safe_comput
    :reqtype: Functional
    :security: NO
-   :safety: ASIL_D
+   :safety: ASIL_B
    :rationale: Safe systems require computations to be done in safe environments.
    :status: valid
 
    The platform shall support safe computation.
+
+   Note: This is part of 0.5 release and therefore can only support ASIL_B. Goal is ASIL_D.
+
+
+.. stkh_req:: Base Libraries
+   :id: stkh_req__functional_req__base_libraries
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: Common libraries reduce duplication, improve consistency and quality across components.
+   :status: valid
+
+   The software platform shall provide a set of base libraries offering common functionality for platform components.
 
 
 .. stkh_req:: Hardware Accelerated Computation
@@ -233,14 +247,14 @@ Dependability
    The software platform shall support applications with an automotive safety
    integrity level up to ASIL-B.
 
-   Note: This is part of 0.1 release and therefore can only support ASIL_B. Goal is ASIL_D.
+   Note: This is part of 0.5 release and therefore can only support ASIL_B. Goal is ASIL_D.
 
 
 .. stkh_req:: Safety features
    :id: stkh_req__dependability__safety_features
    :reqtype: Functional
    :security: NO
-   :safety: ASIL_D
+   :safety: ASIL_B
    :rationale: tbd
    :status: valid
 
@@ -257,6 +271,8 @@ Dependability
    * Software Lockstep
    * Power management integrated circuit (PMIC), external watchdog and voltage monitoring
    * Safe switch from engineering for field mode and back
+
+   Note: This is part of 0.5 release and therefore can only support ASIL_B. Goal is ASIL_D.
 
 
 .. stkh_req:: Availability
@@ -343,7 +359,7 @@ interaction)** — each emphasize different operational priorities.
    :id: stkh_req__app_architectures__support_data
    :reqtype: Functional
    :security: NO
-   :safety: ASIL_B
+   :safety: QM
    :rationale: tbd - potentially above explanation
    :status: valid
 
@@ -353,7 +369,7 @@ interaction)** — each emphasize different operational priorities.
    :id: stkh_req__app_architectures__support_request
    :reqtype: Functional
    :security: NO
-   :safety: ASIL_B
+   :safety: QM
    :rationale: tbd - potentially above explanation
    :status: valid
 
@@ -437,12 +453,21 @@ Communication
    :id: stkh_req__communication__inter_process
    :reqtype: Functional
    :security: NO
-   :safety: ASIL_B
+   :safety: QM
    :rationale: Application software typically consists of multiple processes which need to interact.
    :status: valid
 
    The platform shall support inter-process communication.
 
+.. stkh_req:: ABI Compatible Data Types
+   :id: stkh_req__communication__abi_compatible
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: ABI compatiblity ensures that the same memory location is correctly interpreted by different programming languages.
+   :status: valid
+
+   The platform shall support ABI compatible data types for zero-copy communication between Rust and C++ applications.
 
 .. stkh_req:: Intra-process Communication
    :id: stkh_req__communication__intra_process
@@ -480,11 +505,13 @@ Communication
    :id: stkh_req__communication__safe
    :reqtype: Functional
    :security: NO
-   :safety: ASIL_D
+   :safety: ASIL_B
    :rationale: Distributed safe systems often require communication to be safe.
    :status: valid
 
    The platform shall support safe communication.
+
+   Note: This is part of 0.5 release and therefore can only support ASIL_B. Goal is ASIL_D.
 
 
 .. stkh_req:: Secure Communication
@@ -542,9 +569,285 @@ Communication
    :status: valid
 
    The following diagnostic protocols shall be supported
-   * UDS (ISO14229) Diagnostics
+   * SOVD (ISO 17978)
+   * UDS (ISO 14229) Diagnostics
    * Diagnostic trouble codes
    * Diagnostic jobs
+
+Time
+----
+
+.. stkh_req:: Vehicle Time base Synchronization
+   :id: stkh_req__time__vehicle_time_sync
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: Enables the system to compare events chronologically.
+   :status: valid
+
+   The software platform shall provide a time synchronization framework to synchronize its clock
+   to Time Master within the vehicle.
+
+.. stkh_req:: Vehicle Time base API
+   :id: stkh_req__time__vehicle_time_api
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: Enables an application to correlate its data with a vehicle-internal time reference for event timestamp and chronological events comparison.
+   :status: valid
+
+   The software platform shall provide access to synchronized vehicle time.
+
+.. stkh_req:: Synchronize the HW clock with Vehicle Time
+   :id: stkh_req__time__hw_clock_sync
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: Enables the system to compare events from different ECUs chronologically, using the same time base for timestamping ingress and egress frames.
+   :status: valid
+
+   The software platform shall synchronize the local HW clock to vehicle time.
+
+.. stkh_req:: Time Synchronization with external sources
+   :id: stkh_req__time__absolute_time_sync
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: Enables the system to validate a certificate or token with temporal validity conditions, adding a UTC-timestamp to a data set.
+   :status: valid
+
+   The software platform shall provide a framework to synchronize the clock to external-to-vehicle absolute time base (UTC).
+
+.. stkh_req:: Absolute time base API
+   :id: stkh_req__time__absolute_time_api
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: Enables an application to correlate its data with an absolute vehicle-external time reference for event timestamping and chronological events comparison.
+   :status: valid
+
+   The software platform shall provide access to the absolute time base, synchronized with external time sources.
+
+.. stkh_req:: Local High precision Clock API
+   :id: stkh_req__time__high_precision_clock_api
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: Enables an application to get the current system time, which is essential for time-sensitive operations and event scheduling, via common, mockable and standardized API.
+   :status: valid
+
+   The software platform shall provide access to the current high precision clock from the system time provider in nanoseconds.
+
+   Note: to which clock the high precision clock is mapped, depends on the system design.
+
+.. stkh_req:: Local Monotonic Clock API
+   :id: stkh_req__time__monotonic_clock_api
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: Enables an application to get the current system time, which is essential for time-sensitive operations and event scheduling, via common, mockable and standardized API.
+   :status: valid
+
+   The software platform shall provide access to the current monotonic clock from the system time provider.
+
+   Note: to which clock the monotonic clock is mapped, depends on the system design.
+
+AI Platform
+-----------
+
+
+.. stkh_req:: On-board ML Workloads
+   :id: stkh_req__ai_platform__enablement
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: Modern vehicles require the integration of ML capabilities to remain competitive and support customer expectations.
+   :status: valid
+
+   The platform shall support the execution of traditional ML workloads on-board.
+
+
+.. stkh_req:: Support for Safety-Critical ML
+   :id: stkh_req__ai_platform__safety_critical
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :rationale: Some ML-based functionality is required to be certified up to ASIL-B.
+   :status: valid
+
+   The platform shall support safety-compliant (ASIL-B) deployment of AI/ML components, including inference backends and pipelines.
+
+
+.. stkh_req:: Runtime Efficiency for Edge Devices
+   :id: stkh_req__ai_platform__runtime_efficiency
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: QM
+   :rationale: Automotive platforms have limited compute and thermal budgets.
+   :status: valid
+
+   The AI platform shall be optimized for runtime performance and memory footprint on embedded hardware targets.
+
+
+.. stkh_req:: Platform Portability (QNX + Linux)
+   :id: stkh_req__ai_platform__platform_portability
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: QM
+   :rationale: AI/ML use cases span both safety and non-safety environments, requiring portability across operating systems.
+   :status: valid
+
+   The platform shall support both QNX (for safety) and Linux (for GenAI and flexibility) with reusable components.
+
+
+.. stkh_req:: Secure Model Execution
+   :id: stkh_req__ai_platform__model_security
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: AI model execution must be protected against tampering or abuse.
+   :status: valid
+
+   The platform shall ensure secure, verified, and integrity-checked model execution.
+
+
+.. stkh_req:: Deterministic Execution Paths
+   :id: stkh_req__ai_platform__runtime_determinism
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: ASIL_B
+   :rationale: Safety certification requires predictable and bounded system behavior.
+   :status: valid
+
+   The platform shall ensure deterministic behavior for AI components used in safety-relevant paths.
+
+
+.. stkh_req:: On-board GenAI Workloads
+   :id: stkh_req__gen_ai__enablement
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: Modern vehicles require the integration of AI/ML capabilities to remain competitive and support customer expectations.
+   :status: valid
+
+   The platform shall support the execution of Generative AI workloads on-board.
+
+
+.. stkh_req:: GenAI User Interaction
+   :id: stkh_req__gen_ai__interaction
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: HMIs are expected to support intelligent, natural interaction using LLM-based assistants.
+   :status: valid
+
+   The platform shall support on-device GenAI-based models with user interaction.
+
+
+.. stkh_req:: Action Safety and Governance
+   :id: stkh_req__gen_ai__safety_filter
+   :reqtype: Functional
+   :security: YES
+   :safety: ASIL_B
+   :rationale: GenAI output may be unpredictable or unsafe and must be controlled before affecting vehicle behavior.
+   :status: valid
+
+   The platform shall validate all actions proposed by GenAI models against safety and policy rules prior to execution.
+
+
+.. stkh_req:: Seamless Integration with Vehicle Systems
+   :id: stkh_req__gen_ai__vehicle_com
+   :reqtype: Functional
+   :security: YES
+   :safety: ASIL_B
+   :rationale: AI components must interact with vehicle state and control interfaces.
+   :status: valid
+
+   The platform shall expose structured APIs to access vehicle state and execute safe commands.
+
+
+Diagnostics and Fault Management
+--------------------------------
+
+.. stkh_req:: Diagnostic via SOVD
+   :id: stkh_req__diagnostics__via_sovd
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: Enables modern, scalable diagnostics using a standard REST-based protocol to improve integration, interoperability, and maintainability.
+   :status: valid
+
+   The system shall support vehicle diagnostics via the SOVD protocol as defined in ISO 17978, to allow scalable and secure diagnostic access.
+
+.. stkh_req:: Fault Reporting Infrastructure
+   :id: stkh_req__diagnostics__fault_reporting
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: Enables applications and components to report faults in a structured, reusable, and system-wide accessible manner.
+   :status: valid
+
+   The system shall support a reusable fault reporting infrastructure that enables applications and platform components to report, persist, and manage diagnostic fault information.
+
+.. stkh_req:: Readout DTCs via SOVD
+   :id: stkh_req__diagnostics__dtc_read_sovd
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: Enables reading of Diagnostic Trouble Codes (DTCs) from the ECU for various use-cases like production or maintenance.
+   :status: valid
+
+   The system shall provide users the ability to retrieve current Diagnostic Trouble Codes (DTCs) from the ECU via the SOVD protocol.
+
+.. stkh_req:: Extensibility of Diagnostic Services
+   :id: stkh_req__diagnostics__custom_services
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: Enables OEMs and developers to implement system-specific or project-specific routines for diagnostic control and testing.
+   :status: valid
+
+   The diagnostic system shall support extensibility mechanisms that allow integration of custom diagnostic services and routines via the SOVD interface.
+
+.. stkh_req:: Compatibility with UDS Testers
+   :id: stkh_req__diagnostics__uds_tester_compat
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: Ensures continued usability of existing test infrastructure, avoiding costly replacement of legacy tools and ensuring fulfillment of legal requirements.
+   :status: valid
+
+   The diagnostic system shall provide compatibility with UDS-based testers by offering a proxy to translate UDS requests into SOVD-compatible actions.
+
+.. stkh_req:: Compatibility with UDS ECUs
+   :id: stkh_req__diagnostics__uds_ecus
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: Ensures continued operability of ECUs that are not SOVD-capable.
+   :status: valid
+
+   The diagnostic system shall support integration with ECUs that use UDS by providing a compatibility adapter to translate SOVD requests to UDS commands.
+
+.. stkh_req:: Support for Distributed and Multi-ECU Diagnostics
+   :id: stkh_req__diagnostics__distributed_support
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: Enables the system to operate in modern, distributed vehicle architectures where diagnostics span multiple ECUs and subsystems.
+   :status: valid
+
+   The diagnostic system shall support distributed diagnostics across multiple ECUs and network segments, enabling routing and aggregation of diagnostic data.
+
+.. stkh_req:: Secure Access to Diagnostic Interfaces
+   :id: stkh_req__diagnostics__secure_access
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :rationale: Diagnostic access allows deep system introspection and manipulation, which must be protected against unauthorized use.
+   :status: valid
+
+   The diagnostic system shall enforce secure access control for all diagnostic interfaces, including authentication, encryption, and role-based access enforcement.
 
 
 Hardware support
@@ -701,6 +1004,16 @@ Developer experience
    The software platform shall provide a method and interface to enable
    debugging of the software on target and in vehicle.
 
+.. stkh_req:: Mockup implementation for application testing
+   :id: stkh_req__dev_experience__mockup_public_apis
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: Enables unit, component and integration testing for both platform related and non-platform related applications.
+   :status: valid
+
+   The software platform shall provide support for mocking its public interfaces,
+   enabling unit, component and integration testing of applications.
 
 .. stkh_req:: Programming languages for application development
    :id: stkh_req__dev_experience__prog_languages

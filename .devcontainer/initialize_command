@@ -1,0 +1,6 @@
+#!/bin/sh
+set -eu
+
+# Create Bazel cache directory if it doesn't exist
+home="$1"
+mkdir -p "$home/.cache/bazel"
