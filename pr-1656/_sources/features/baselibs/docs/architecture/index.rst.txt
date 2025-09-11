@@ -94,38 +94,10 @@ Static Architecture
 Logical Interfaces
 ------------------
 
-The Baselibs feature exposes the following logical interfaces defined in the modules:
+The Baselibs feature exposes the following logical interfaces defined in the :doc:`/modules/baselibs/index`:
 
-- :need:`logic_arc_int__baselibs__json`: JSON parsing and serialization capabilities with pluggable backend support. See :doc:`JSON Module Architecture </modules/baselibs/json/docs/architecture/index>` for detailed implementation.
-
-- :need:`logic_arc_int__baselibs__memory_shared`: Shared memory operations for inter-process communication with safety guarantees. See :doc:`Memory Shared Module Architecture </modules/baselibs/memory_shared/docs/architecture/index>` for detailed implementation.
-
-- :need:`logic_arc_int__baselibs__message_passing`: Inter-process and inter-thread message communication with deterministic behavior. See :doc:`Message Passing Module Architecture </modules/baselibs/message_passing/docs/architecture/index>` for detailed implementation.
-
-Module Viewpoint
-----------------
-
-.. mod_view_sta:: Baselibs
-   :id: mod_view_sta__baselibs__baselibs_arch
-   :includes: comp_arc_sta__baselibs__json, comp_arc_sta__baselibs__memory_shared, comp_arc_sta__baselibs__message_passing
-
-   .. uml::
-      :scale: 50
-      :align: center
-      :name: doc__baselibs__modules
-      :caption: Baselibs Core Modules
-
-      package "Baselibs" <<Rectangle>> {
-          package "JSON Module" <<Frame>> #D5E8D4 {
-              object "JSON Parser" as json_parser
-              object "Serialization" as json_serial
-          }
-          package "Memory Shared Module" <<Frame>> #DAE8FC {
-              object "Shared Memory" as shared_mem
-              object "Safety Guarantees" as mem_safety
-          }
-          package "Message Passing Module" <<Frame>> #FFF2CC {
-              object "IPC Messages" as ipc_msg
-              object "Thread Messages" as thread_msg
-          }
-      }
+.. needtable::
+   :style: table
+   :columns: title;id;status
+   :sort: title
+   :filter: id in ['logic_arc_int__baselibs__json', 'logic_arc_int__baselibs__memory_shared', 'logic_arc_int__baselibs__message_passing']

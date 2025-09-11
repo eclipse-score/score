@@ -582,14 +582,14 @@ More information on shared memory handling can be found in <a class="reference i
 <figure class="align-center" id="mixed-criticality-ipc">
 <img alt="../../../../../_images/lola_mixed_crit_1_n.drawio.svg" src="../../../../../_images/lola_mixed_crit_1_n.drawio.svg" />
 <figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Mixed criticality setup for zero-copy IPC</span><a class="headerlink" href="#mixed-criticality-ipc" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Mixed criticality setup for zero-copy IPC</span><a class="headerlink" href="#mixed-criticality-ipc" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>One of the main ideas in this concept is the split of control data from sample (user) data. In order to ensure a mapping, the shared memory segments are divided into slots. By convention, we then define that the slot indexes correlate. Meaning, slot 0 in the control data is used to synchronize slot 0 in the sample data. More information on these slot and the underlying algorithm can be found in <a class="reference internal" href="#ipc-synchronization-algorithm"><span class="std std-ref">Synchronization Algorithm</span></a>.</p>
 <figure class="align-center" id="relation-slots-ipc">
 <img alt="../../../../../_images/lola_slots.drawio.svg" src="../../../../../_images/lola_slots.drawio.svg" />
 <figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Relation of control data and sample data</span><a class="headerlink" href="#relation-slots-ipc" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Relation of control data and sample data</span><a class="headerlink" href="#relation-slots-ipc" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -616,7 +616,7 @@ This way we can ensure that messages are received in a serialized manner.</p>
 <figure class="align-center" id="message-passing-ipc">
 <img alt="../../../../../_images/lola_message_passing.drawio.svg" src="../../../../../_images/lola_message_passing.drawio.svg" />
 <figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Message Passing in LoLa</span><a class="headerlink" href="#message-passing-ipc" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Message Passing in LoLa</span><a class="headerlink" href="#message-passing-ipc" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -705,7 +705,7 @@ The communication partner is barred from rejoining the communication.</p></li>
 </section>
 <section id="dynamic-architecture">
 <span id="ipc-dyn-arch"></span><h2>Dynamic Architecture<a class="headerlink" href="#dynamic-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-948264c4">
+<div class="need_container docutils container" id="SNCB-3d7de66d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__communication__ipc">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">

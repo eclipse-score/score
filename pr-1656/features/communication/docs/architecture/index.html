@@ -554,7 +554,7 @@
 <span id="com-static-architecture"></span><h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
 <p>As discussed in <a class="reference internal" href="../../index.html#com-rationale"><span class="std std-ref">Rationale</span></a>, the overall architecture of the communication framework must be layered. This is required, to separate the frontend from the underlying communication mechanisms (also called bindings).</p>
 <p>This ensures a stable public API, independent of the underlying binding(s). At the same time, the communication framework can support many different communication protocols in a flexible manner.</p>
-<div class="need_container docutils container" id="SNCB-bdc39797">
+<div class="need_container docutils container" id="SNCB-10a8f83a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_sta table" id="feat_arc_sta__com__communication">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -582,7 +582,7 @@
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-features/communication/docs/architecture/index-0">
-<object data="../../../../_images/plantuml-345ace79c7f83b4c235da38ad83aff83eb304bf7.svg" type="image/svg+xml" style="width:1081px;height:942px;background:#FFFFFF;"></object></p>
+<object data="../../../../_images/plantuml-b6dbf1fbc67386e35871ded3b3c7f986934c83f8.svg" type="image/svg+xml" style="width:982px;height:1025px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -611,7 +611,7 @@ consumer/client.</p>
 <p class="plantuml">
 <object data="../../../../_images/plantuml-f4832c61f43392f1f4b945e4401e0c04a182cb78.svg" type="image/svg+xml" style="width:327px;height:278px;background:#FFFFFF;"></object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Communication through mw::com</span><a class="headerlink" href="#doc-communication-proxy-skeleton" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Communication through mw::com</span><a class="headerlink" href="#doc-communication-proxy-skeleton" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In addition to these elements, a runtime singleton is used for background tasks to reduce resource consumption. This runtime is invisible to the user. This runtime is responsible for service discovery (explained in <a class="reference internal" href="../../ipc/docs/architecture/index.html#ipc-service-discovery"><span class="std std-ref">Service Discovery</span></a>), notification reception and other infrastructure tasks.</p>
@@ -633,7 +633,7 @@ This is the case when:</p>
 <section id="interface-description">
 <h3>Interface Description<a class="headerlink" href="#interface-description" title="Link to this heading">#</a></h3>
 <p>The public API for the frontend is defined as:</p>
-<div class="need_container docutils container" id="SNCB-c999f947">
+<div class="need_container docutils container" id="SNCB-ee7fa883">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__communication__user">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
