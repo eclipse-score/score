@@ -42,7 +42,7 @@ Abstract
 
 Embedded systems have general security goals like confidentiality, integrity, trust and
 availability. A security subsystem inside of S-CORE needs to provide several functionalities to
-achieve these goals by using cryptographic algorithms.
+achieve these properties by using cryptographic algorithms.
 
 
 Motivation
@@ -139,6 +139,7 @@ subsystem. The selection of algorithms is a proposal and subject to joint discus
 Side note: The Eclipse Heimlig project directly supports these.
 
 * Symmetric encryption and decryption (AES-CBC, AES-GCM, AES-CCM, Chacha20Poly1305 )
+* RSA for a-sym, EDDSA, MLDSA, SLDSA
 * Signing and verification (ECDSA)
 * Key exchange (ECDH)
 * Hashing (SHA-2, SHA-3, BLAKE3)
@@ -179,12 +180,12 @@ TBD
 Additional thinking
 ===================
 
-Security plan
--------------
+Security concept
+----------------
 
 A security subsystem is a key component that should provide in itself limited surface for
-attacks. As the overall system the security subsystem should be based on a security plan including
-'security goals', 'plausible attacks', 'critical failures', and 'countermeasures'.
+attacks. As the overall system the security subsystem should be based on a security concept
+including 'security goals', 'plausible attacks', 'critical failures', and 'countermeasures'.
 Due to the nature of our overall system to be deployed for 10+ years in an embedded systems
 such a security plan needs to as well cover 'software-update strategy', 'field observation',
 'crypto algorithm updates', 'repair-ability', and 'withstand reverse engineering of secrets'.
