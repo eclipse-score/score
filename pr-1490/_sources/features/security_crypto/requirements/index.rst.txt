@@ -269,9 +269,41 @@ Key Management
 
    The security component shall support the secure deletion of key material.
 
+.. feat_req:: API to allow selection of different algorithms
+   :id: feat_req__sec_crypt__flexible_api
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :satisfies: stkh_req__dependability__security_features
+   :status: valid
+
+   The API of the security component shall allow a selection of the available
+   algorithms based on their unique name.
 
 Non-Functional Requirements
 ---------------------------
+
+ .. feat_req:: Performance benchmark tooling
+   :id: feat_req__sec_crypt__performance_tooling
+   :reqtype: Non-Functional
+   :security: YES
+   :safety: QM
+   :satisfies: stkh_req__dependability__security_features
+   :status: valid
+
+   The security component shall contain a set of extendable benchmark tests to derive KPIs from
+   running all it's cryptographic operations on different systems.
+
+.. feat_req:: Standardized Algorithm Naming
+   :id: feat_req__sec_crypt__algo_naming
+   :reqtype: Non-Functional
+   :security: YES
+   :safety: QM
+   :satisfies: stkh_req__dependability__security_features
+   :status: valid
+
+   The security component shall use a uniform and unambiguous naming scheme for cryptographic
+   algorithms.
 
 .. feat_req:: No Key Material Exposure
    :id: feat_req__sec_crypt__no_key_exposure
@@ -292,18 +324,6 @@ Non-Functional Requirements
    :status: valid
 
    The security component shall be designed to mitigate side-channel and timing attacks.
-
-
-.. feat_req:: Standardized Algorithm Naming
-   :id: feat_req__sec_crypt__algo_naming
-   :reqtype: Non-Functional
-   :security: YES
-   :safety: QM
-   :satisfies: stkh_req__dependability__security_features
-   :status: valid
-
-   The security component shall use a uniform and unambiguous naming scheme for cryptographic
-   algorithms.
 
 .. feat_req:: API Lifecycle Management
    :id: feat_req__sec_crypt__api_lifecycle
