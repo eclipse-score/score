@@ -80,7 +80,9 @@ Generally all work products (specific and general documents) are subject to a do
 which always contains the latest version of the documents for each pull-request.
 Versioning of documents is done as for every work product with github means and is defined in the configuration management plan.
 
+
 .. _project_documents_list:
+
 
 The following tables lists all documents. The documentation is structured in several folders :ref:`platform_folder_structure`,
 each representing a specific aspect of the project. The following sections lists all documents that are available in each folder.
@@ -198,10 +200,11 @@ docs/modules
           results.append(need)
 
 
+.. _doc_platform_management_plan:
+
+
 docs/platform_management_plan
 #############################
-
-.. _documents_docs_platform_management_plan:
 
 .. needtable::
    :style: table
