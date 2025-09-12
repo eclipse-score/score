@@ -537,7 +537,7 @@
                   
   <section id="security-cryptography">
 <h1>Security &amp; Cryptography<a class="headerlink" href="#security-cryptography" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-9cdd3fad">
+<div class="need_container docutils container" id="SNCB-b87f0497">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__security_crypto_feat_reqs">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -592,7 +592,7 @@
 <section id="abstract">
 <h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
 <p>Embedded systems have general security goals like confidentiality, integrity, trust and
-availability. A security subsystem inside of S-CORE needs to provide several functionalities to
+availability. A security component inside of S-CORE needs to provide several functionalities to
 achieve these properties by using cryptographic algorithms.</p>
 </section>
 <section id="motivation">
@@ -606,13 +606,12 @@ hosted applications operate in a secure manner.</p>
 <h2>Rationale<a class="headerlink" href="#rationale" title="Link to this heading">#</a></h2>
 <p>The features presented in this proposal are derived from the above mentioned security goals.
 A single feature offering just ‘cryptographic algorithms’ is not enough to provide effective
-measures to ensure confidentiality, integrity, and trust. Therefore this proposal already considers
-this as a security &amp; crypto
-subsystem.</p>
+measures to ensure confidentiality, integrity, availability and trust.
+Therefore this proposal already considers this as a security &amp; crypto component.</p>
 </section>
 <section id="specification">
 <h2>Specification<a class="headerlink" href="#specification" title="Link to this heading">#</a></h2>
-<p>In order to achieve the above mentioned security goals, a security subsystem needs to provide the
+<p>In order to achieve the above mentioned security goals, a security component needs to provide the
 following functionalities.</p>
 <ul class="simple">
 <li><p>‘Symmetric encryption’ - with the same key known to both communication parties</p></li>
@@ -620,31 +619,31 @@ following functionalities.</p>
 private) for encryption and decryption.</p></li>
 <li><p>‘Signature functionality’ - to ensure that data is authentic and not tampered (integrity) if
 verified to be valid.
-Functionality is i) to create a signature and to ii) verify a signature.</p></li>
+Functionality is to create and verify a signature.</p></li>
 <li><p>‘Certificate management’ - to manage a set of signed and verified (trusted) certificates.</p></li>
 <li><p>‘Generation of entropy’ - to ensure algorithm can rely on true/sufficiently random numbers</p></li>
 <li><p>‘Ensure data integrity’ - achieved with a hash function.</p></li>
 </ul>
-<p>Additionally a cryptographic subsystem will typically as well offer</p>
+<p>Additionally a cryptographic component will typically as well offer</p>
 <ul class="simple">
 <li><p>key management: secure generation, import, storage, update and deletion of key material</p></li>
 <li><p>the usage of the above mentioned functionality (decrypt, encrypt) while not revealing the
 key material to users of the API</p></li>
 </ul>
-<p>The cryptographic subsystem should be aware that certain attacks will try to observe the overall
+<p>The cryptographic component should be aware that certain attacks will try to observe the overall
 system to analyze its inner workings to guess secrets (side channel/timing attacks) or to
 influence it to limit its availability for system critical tasks.</p>
 </section>
 <section id="backwards-compatibility-dependencies">
 <h2>Backwards Compatibility &amp; Dependencies<a class="headerlink" href="#backwards-compatibility-dependencies" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>The cryptographic subsystem typically needs to ‘rely on hardware acceleration’ to execute
+<li><p>The cryptographic component typically needs to ‘rely on hardware acceleration’ to execute
 operations efficiently or to access a TRNG (True random number generator) for entropy.
 Additionally, it MAY be a good idea to as well have a software-only solution.</p></li>
 <li><p>Will use system level means (co-processor, hardware security module, Trusted Execution
 Environment, …) to ensure it is protected (memory, CPU) from applications and the normal
 operating system while still offering its functionality to applications and middleware services.</p></li>
-<li><p>‘Time’ in the sense of real world wall clock is crucial for the cryptographic subsystem to ensure
+<li><p>‘Time’ in the sense of real world wall clock is crucial for the cryptographic component to ensure
 that for example a certificate or token is only used within its validity period.</p></li>
 </ul>
 <p>Architecture:</p>
@@ -662,7 +661,7 @@ that for example a certificate or token is only used within its validity period.
           <span class="o">|</span>
           <span class="o">|</span>
 <span class="o">|------------------------------|</span>      <span class="o">|&lt;-------</span> <span class="n">Real</span><span class="o">-</span><span class="n">world</span> <span class="n">trusted</span> <span class="n">time</span>
-<span class="o">|</span> <span class="n">Security</span><span class="o">-</span><span class="n">Subsystem</span>           <span class="o">|------|</span>
+<span class="o">|</span> <span class="n">Security</span><span class="o">-</span><span class="n">component</span>           <span class="o">|------|</span>
 <span class="o">|</span>                              <span class="o">|</span>      <span class="o">|</span> <span class="o">-------&gt;</span> <span class="n">HW</span><span class="o">-</span><span class="n">Accelerated</span> <span class="n">execution</span> <span class="ow">in</span> <span class="n">HSM</span> <span class="ow">or</span> <span class="n">SW</span><span class="o">-</span><span class="n">Emulation</span>
 <span class="o">|</span> <span class="o">---------------------</span>        <span class="o">|</span>
 <span class="o">|</span> <span class="o">|</span> <span class="n">Crypto</span><span class="o">-</span><span class="n">Algorithms</span> <span class="o">|</span>        <span class="o">|</span>
@@ -678,8 +677,9 @@ that for example a certificate or token is only used within its validity period.
 <section id="proposal-for-common-crypto-algorithms">
 <h3>Proposal for common crypto algorithms<a class="headerlink" href="#proposal-for-common-crypto-algorithms" title="Link to this heading">#</a></h3>
 <p>The following algorithms should match the above goals and shall be offered by the security
-subsystem. The selection of algorithms is a proposal and subject to joint discussion.
-Side note: The Eclipse Heimlig project directly supports these.</p>
+component. The selection of algorithms is a proposal and subject to joint discussion.
+Side note: The Eclipse Heimlig  project directly supports these.
+Link to project: <a class="github reference external" href="https://github.com/eclipse-heimlighttps://github.com/eclipse-heimlig">eclipse-heimlighttps:/</a></p>
 <ul class="simple">
 <li><p>Symmetric encryption and decryption (AES-CBC, AES-GCM, AES-CCM, Chacha20Poly1305 )</p></li>
 <li><p>RSA for a-sym, EDDSA, MLDSA, SLDSA</p></li>
@@ -715,23 +715,23 @@ regulations.</p>
 <h2>Additional thinking<a class="headerlink" href="#additional-thinking" title="Link to this heading">#</a></h2>
 <section id="security-concept">
 <h3>Security concept<a class="headerlink" href="#security-concept" title="Link to this heading">#</a></h3>
-<p>A security subsystem is a key component that should provide in itself limited surface for
-attacks. As the overall system the security subsystem should be based on a security concept
+<p>A security component is a key item that should provide in itself limited surface for
+attacks. As the overall system the security component should be based on a security concept
 including ‘security goals’, ‘plausible attacks’, ‘critical failures’, and ‘countermeasures’.
 Due to the nature of our overall system to be deployed for 10+ years in an embedded systems
 such a security plan needs to as well cover ‘software-update strategy’, ‘field observation’,
 ‘crypto algorithm updates’, ‘repair-ability’, and ‘withstand reverse engineering of secrets’.</p>
-<p>As the security subsystem of S-CORE will be open source, the plan needs to ensure that an attacker
-can analyze the security subsystem without gaining benefits from it with regards to compromising a
+<p>As the security component of S-CORE will be open source, the plan needs to ensure that an attacker
+can analyze the security component without gaining benefits from it with regards to compromising a
 system in which S-SCORE is deployed on the road. (Obvious: avoid security by obscurity)</p>
-<p>Finally the security subsystem needs to consider the production scenario where potentially several
+<p>Finally the security component needs to consider the production scenario where potentially several
 ‘initial production keys’ are brought into the system.</p>
 </section>
 <section id="memory-safe-language">
 <h3>Memory safe language<a class="headerlink" href="#memory-safe-language" title="Link to this heading">#</a></h3>
 <p>Following the white house cybersecurity plan and other industry voices to improve robustness of
 critical systems by using memory safe languages S-CORE decided to have Rust as a 1st class
-citizen. The security subsystem SHALL be developed entirely in Rust.</p>
+citizen. The security component MAY be developed entirely in Rust.</p>
 </section>
 </section>
 <section id="open-issues">
@@ -741,8 +741,7 @@ citizen. The security subsystem SHALL be developed entirely in Rust.</p>
 <li><p>Trusted computing environment / HSM</p></li>
 <li><p>Roles and capability rights management</p></li>
 <li><p>Connection to IDS / anomaly detection</p></li>
-<li><p>Zero trust - BS or where to use ?</p></li>
-<li><p>Critical subsystem states</p></li>
+<li><p>Critical component states</p></li>
 <li><p>Attack scenario by exceeding computation capabilities (DoS) with malicious messages that create
 exceptional load</p></li>
 </ul>

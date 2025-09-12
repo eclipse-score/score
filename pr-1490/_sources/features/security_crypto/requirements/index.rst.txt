@@ -28,7 +28,7 @@ Symmetric Encryption
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem shall provide functionality for symmetric encryption and decryption.
+   The security component shall provide functionality for symmetric encryption and decryption.
 
 .. feat_req:: AES-CBC Support
    :id: feat_req__sec_crypt__sym_symm_algo_aes_cbc
@@ -38,7 +38,7 @@ Symmetric Encryption
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem shall support the AES-CBC symmetric encryption algorithm.
+   The security component shall support the AES-CBC symmetric encryption algorithm.
 
 .. feat_req:: AES-GCM Support
    :id: feat_req__sec_crypt__sym_sym_algo_aes_gcm
@@ -48,7 +48,7 @@ Symmetric Encryption
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem shall support the AES-GCM symmetric encryption algorithm.
+   The security component shall support the AES-GCM symmetric encryption algorithm.
 
 .. feat_req:: AES-CCM Support
    :id: feat_req__sec_crypt__sym_sym_algo_aes_ccm
@@ -58,7 +58,7 @@ Symmetric Encryption
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem shall support the AES-CCM symmetric encryption algorithm.
+   The security component shall support the AES-CCM symmetric encryption algorithm.
 
 .. feat_req:: ChaCha20-Poly1305 Support
    :id: feat_req__sec_crypt__sym_algo_chacha20
@@ -68,7 +68,7 @@ Symmetric Encryption
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem shall support the ChaCha20-Poly1305 symmetric encryption algorithm.
+   The security component shall support the ChaCha20-Poly1305 symmetric encryption algorithm.
 
 Asymmetric Encryption
 ---------------------
@@ -81,7 +81,7 @@ Asymmetric Encryption
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem shall provide functionality for asymmetric encryption and decryption.
+   The security component shall provide functionality for asymmetric encryption and decryption.
 
 .. feat_req:: ECDH Support
    :id: feat_req__sec_crypt__asym_algo_ecdh
@@ -91,7 +91,8 @@ Asymmetric Encryption
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem shall support the ECDH algorithm for key exchange.
+   The security component shall support the ECDH algorithm for key exchange.
+
 
 Digital Signatures
 ------------------
@@ -104,7 +105,7 @@ Digital Signatures
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem shall provide functionality to create digital signatures.
+   The security component shall provide functionality to create digital signatures.
 
 .. feat_req:: Signature Verification
    :id: feat_req__sec_crypt__sig_verification
@@ -114,7 +115,7 @@ Digital Signatures
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem shall provide functionality to verify digital signatures.
+   The security component shall provide functionality to verify digital signatures.
 
 .. feat_req:: ECDSA Support
    :id: feat_req__sec_crypt__sig_algo_ecdsa
@@ -124,7 +125,7 @@ Digital Signatures
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem shall support the ECDSA algorithm for digital signatures.
+   The security component shall support the ECDSA algorithm for digital signatures.
 
 Message Authentication Code (MAC)
 ---------------------------------
@@ -137,7 +138,7 @@ Message Authentication Code (MAC)
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem shall provide functionality for Message Authentication Codes (MAC) to
+   The security component shall provide functionality for Message Authentication Codes (MAC) to
    ensure message integrity and authenticity.
 
 Hashing
@@ -151,7 +152,7 @@ Hashing
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem shall provide hashing functionality.
+   The security component shall provide hashing functionality.
 
 .. feat_req:: SHA-2 Support
    :id: feat_req__sec_crypt__hashing_algo_sha2
@@ -161,7 +162,7 @@ Hashing
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem shall support the SHA-2 hashing algorithm.
+   The security component shall support the SHA-2 hashing algorithm.
 
 .. feat_req:: SHA-3 Support
    :id: feat_req__sec_crypt__hashing_algo_sha3
@@ -171,7 +172,7 @@ Hashing
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem shall support the SHA-3 hashing algorithm.
+   The security component shall support the SHA-3 hashing algorithm.
 
 
 Key Derivation Functions (KDF)
@@ -185,7 +186,7 @@ Key Derivation Functions (KDF)
    :status: valid
    :satisfies: stkh_req__dependability__security_features
 
-   The security subsystem shall provide Key Derivation Functions (KDFs) to derive one or more
+   The security component shall provide Key Derivation Functions (KDFs) to derive one or more
    secret keys from a master key or password.
 
 Random Number Generation
@@ -199,7 +200,7 @@ Random Number Generation
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem shall provide a source of entropy for random number generation.
+   The security component shall provide a source of entropy for random number generation.
 
 .. feat_req:: ChaCha20Rng Support
    :id: feat_req__sec_crypt__rng_algo_chacha20rng
@@ -209,7 +210,7 @@ Random Number Generation
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem shall use the ChaCha20Rng algorithm for random number generation.
+   The security component shall use the ChaCha20Rng algorithm for random number generation.
 
 Certificate Management
 ----------------------
@@ -222,7 +223,7 @@ Certificate Management
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem shall provide functionality to manage a set of signed and verified
+   The security component shall provide functionality to manage a set of signed and verified
    (trusted) certificates.
 
 Key Management
@@ -236,7 +237,7 @@ Key Management
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem shall support the secure generation of key material.
+   The security component shall support the secure generation of key material.
 
 .. feat_req:: Secure Key Import
    :id: feat_req__sec_crypt__key_import
@@ -246,7 +247,7 @@ Key Management
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem shall support the secure import of key material.
+   The security component shall support the secure import of key material.
 
 .. feat_req:: Secure Key Storage
    :id: feat_req__sec_crypt__key_storage
@@ -256,17 +257,7 @@ Key Management
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem shall support the secure storage of key material.
-
-.. feat_req:: Secure Key Update
-   :id: feat_req__sec_crypt__key_update
-   :reqtype: Functional
-   :security: YES
-   :safety: QM
-   :satisfies: stkh_req__dependability__security_features
-   :status: valid
-
-   The security subsystem shall support the secure update of key material.
+   The security component shall support the secure storage of key material.
 
 .. feat_req:: Secure Key Deletion
    :id: feat_req__sec_crypt__key_deletion
@@ -276,7 +267,7 @@ Key Management
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem shall support the secure deletion of key material.
+   The security component shall support the secure deletion of key material.
 
 
 Non-Functional Requirements
@@ -290,7 +281,7 @@ Non-Functional Requirements
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The API of the security subsystem shall not reveal key material to its users.
+   The API of the security component shall not reveal key material to its users.
 
 .. feat_req:: Side-Channel Attack Mitigation
    :id: feat_req__sec_crypt__side_channel_mitigation
@@ -300,7 +291,7 @@ Non-Functional Requirements
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem shall be designed to mitigate side-channel and timing attacks.
+   The security component shall be designed to mitigate side-channel and timing attacks.
 
 
 .. feat_req:: Standardized Algorithm Naming
@@ -311,7 +302,7 @@ Non-Functional Requirements
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem shall use a uniform and unambiguous naming scheme for cryptographic
+   The security component shall use a uniform and unambiguous naming scheme for cryptographic
    algorithms.
 
 .. feat_req:: API Lifecycle Management
@@ -322,7 +313,7 @@ Non-Functional Requirements
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem API shall provide clear mechanisms for initialization, context management
+   The security component API shall provide clear mechanisms for initialization, context management
     (request, reuse, release), and de-initialization of cryptographic resources.
 
 .. feat_req:: Structured Error Handling
@@ -333,7 +324,7 @@ Non-Functional Requirements
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem shall provide a structured and consistent mechanism for error reporting
+   The security component shall provide a structured and consistent mechanism for error reporting
    and logging.
 
 .. feat_req:: Rust Implementation
@@ -344,38 +335,18 @@ Non-Functional Requirements
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem MAY be implemented in Rust.
+   The security component MAY be implemented in Rust.
 
-.. feat_req:: Security Plan
-   :id: feat_req__sec_crypt__security_plan
+.. feat_req:: Security Concept
+   :id: feat_req__sec_crypt__security_concept
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   A security plan shall be created for the security subsystem, including security goals, plausible
-   attacks, critical failures, and countermeasures.
-
-.. feat_req:: Software Update Strategy
-   :id: feat_req__sec_crypt__update_strategy
-   :reqtype: Non-Functional
-   :security: YES
-   :safety: QM
-   :satisfies: stkh_req__dependability__security_features
-   :status: valid
-
-   The security plan shall cover a software-update strategy for the security subsystem.
-
-.. feat_req:: Field Observation Strategy
-   :id: feat_req__sec_crypt__field_observation
-   :reqtype: Non-Functional
-   :security: YES
-   :safety: QM
-   :satisfies: stkh_req__dependability__security_features
-   :status: valid
-
-   The security plan shall cover a strategy for field observation of the security subsystem.
+   A security concept shall be created for the security component, including security goals,
+   plausible attacks, critical failures, and countermeasures.
 
 .. feat_req:: Crypto Algorithm Update Strategy
    :id: feat_req__sec_crypt__algo_updates
@@ -386,17 +357,7 @@ Non-Functional Requirements
    :status: valid
 
    The security plan shall cover a strategy for updating cryptographic algorithms in the security
-   subsystem.
-
-.. feat_req:: Repairability Strategy
-   :id: feat_req__sec_crypt__repairability
-   :reqtype: Non-Functional
-   :security: YES
-   :safety: QM
-   :satisfies: stkh_req__dependability__security_features
-   :status: valid
-
-   The security plan shall cover the repair-ability of the security subsystem.
+   component.
 
 .. feat_req:: Reverse Engineering Protection
    :id: feat_req__sec_crypt__reverse_eng_protection
@@ -406,7 +367,7 @@ Non-Functional Requirements
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security plan shall ensure the security subsystem can withstand reverse engineering of its
+   The security plan shall ensure the security component can withstand reverse engineering of its
    secrets.
 
 .. feat_req:: Initial Production Key Handling
@@ -417,7 +378,7 @@ Non-Functional Requirements
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem shall consider the production scenario where initial production keys are
+   The security component shall consider the production scenario where initial production keys are
    brought into the system.
 
 .. feat_req:: Post-Quantum Readiness
@@ -428,7 +389,7 @@ Non-Functional Requirements
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem shall be designed to be ready for post-quantum cryptography.
+   The security component shall be designed to be ready for post-quantum cryptography.
 
 .. feat_req:: Hardware Acceleration Support
    :id: feat_req__sec_crypt__hw_acceleration
@@ -438,7 +399,7 @@ Non-Functional Requirements
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem shall be able to rely on hardware acceleration for cryptographic
+   The security component shall be able to rely on hardware acceleration for cryptographic
    operations.
 
 .. feat_req:: Software Fallback
@@ -459,7 +420,7 @@ Non-Functional Requirements
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem shall have access to a trusted real-world wall clock.
+   The security component shall have access to a trusted real-world wall clock.
 
 .. feat_req:: OS-Level Protection
    :id: feat_req__sec_crypt__os_protection
@@ -469,7 +430,7 @@ Non-Functional Requirements
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem shall use system-level means (e.g., co-processor, HSM, TEE) to protect
+   The security component shall use system-level means (e.g., co-processor, HSM, TEE) to protect
    its memory and CPU from applications and the normal operating system.
 
 .. feat_req:: Access Control
@@ -480,7 +441,7 @@ Non-Functional Requirements
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem shall support roles and capability rights management to enforce access
+   The security component shall support roles and capability rights management to enforce access
    control to cryptographic functions and key material.
 
 .. feat_req:: Intrusion Detection System (IDS) Integration
@@ -491,7 +452,7 @@ Non-Functional Requirements
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem shall provide a mechanism to report potential security anomalies or
+   The security component shall provide a mechanism to report potential security anomalies or
    threats to an Intrusion Detection System (IDS).
 
 .. feat_req:: Denial-of-Service (DoS) Mitigation
@@ -502,8 +463,9 @@ Non-Functional Requirements
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem shall incorporate measures to mitigate the risk of Denial-of-Service
-   (DoS) attacks that could be caused by malicious messages creating exceptional computational load.
+   The security component shall incorporate measures to mitigate the risk of Denial-of-Service
+   (DoS) attacks that could be caused by malicious messages creating exceptional computational
+   load.
 
 Secure Communication Protocols
 ------------------------------
@@ -516,5 +478,5 @@ Secure Communication Protocols
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security subsystem shall support the Transport Layer Security (TLS) 1.3 protocol for secure
+   The security component shall support the Transport Layer Security (TLS) 1.3 protocol for secure
    communication over Ethernet.
