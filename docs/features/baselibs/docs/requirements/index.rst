@@ -94,3 +94,13 @@ Requirements
    :status: valid
 
    The base libraries shall provide error handling mechanisms that enable development without relying on C++ exceptions.
+
+.. feat_req:: Bit Manipulation Library
+   :id: feat_req__baselibs__bitmanipulation
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :satisfies: stkh_req__functional_req__base_libraries
+   :status: valid
+
+   The base libraries shall provide bit manipulation utilities for safe and efficient low-level operations on integral types.
