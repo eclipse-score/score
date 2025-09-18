@@ -16,7 +16,7 @@
    :id: doc__documentation_mgt_plan
    :status: valid
    :safety: ASIL_B
-   :security: NO
+   :security: YES
    :tags: platform_management
    :realizes: PROCESS_wp__document_mgt_plan
 
@@ -80,12 +80,13 @@ Generally all work products (specific and general documents) are subject to a do
 which always contains the latest version of the documents for each pull-request.
 Versioning of documents is done as for every work product with github means and is defined in the configuration management plan.
 
+The time schedule is not part of the documentation management plan. As described in the project management plan GitHub issues
+is used to plan and track the work.
+
 The following tables lists all documents. The documentation is structured in several folders :ref:`platform_folder_structure`,
 each representing a specific aspect of the project. The following sections lists all documents that are available in each folder.
 Afterwards an additional section is provided with the collected documents for the features, modules and components. Missing
 documents are listed as well, so that it is easy to identify missing documents.
-
-An additional section lists all documents in the template folder.
 
 
 .. _project_documents_list:
@@ -110,23 +111,6 @@ docs/contribute
        if need["docname"] is not None and "contribute/" in need["docname"]:
           results.append(need)
 
-docs/features
-#############
-
-.. _documents_docs_features:
-
-.. needtable::
-   :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
-   :sort: docname
-
-   results = []
-
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "features/" in need["docname"]:
-          results.append(need)
-
 
 docs/glossary
 #############
@@ -146,24 +130,6 @@ docs/glossary
           results.append(need)
 
 
-docs/introduction
-#################
-
-.. _documents_docs_introduction:
-
-.. needtable::
-   :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
-   :sort: docname
-
-   results = []
-
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "introduction/" in need["docname"]:
-          results.append(need)
-
-
 docs/manuals
 ############
 
@@ -179,24 +145,6 @@ docs/manuals
 
    for need in needs.filter_types(["document"]):
        if need["docname"] is not None and "manuals/" in need["docname"]:
-          results.append(need)
-
-
-docs/modules
-############
-
-.. _documents_docs_modules:
-
-.. needtable::
-   :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
-   :sort: docname
-
-   results = []
-
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "modules/" in need["docname"]:
           results.append(need)
 
 
@@ -244,14 +192,14 @@ docs/requirements
 
 .. needtable::
    :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
+   :columns: title;id;safety;status,docname
+   :colwidths: 30,50,10,10,10
    :sort: docname
 
    results = []
 
    for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "requirements/" in need["docname"]:
+       if need["docname"] is not None and "requirements/" in need["docname"] and not "features/" in need["docname"] and not "modules/" in need["docname"]:
           results.append(need)
 
 
@@ -304,7 +252,7 @@ docs/score_tools
 
    results = []
 
-   for need in needs.filter_types(["document"]):
+   for need in needs.filter_types(["doc_tool"]):
        if need["docname"] is not None and "score_tools/" in need["docname"]:
           results.append(need)
 
@@ -345,7 +293,7 @@ docs/verification_report
           results.append(need)
 
 
-docs/platform_integration_tests
+platform_integration_tests
 ###############################
 
 .. _documents_docs_platform_integration_tests:
@@ -360,24 +308,6 @@ docs/platform_integration_tests
 
    for need in needs.filter_types(["document"]):
        if need["docname"] is not None and "platform_integration_tests/" in need["docname"]:
-          results.append(need)
-
-
-docs/tools
-##########
-
-.. _documents_docs_tools:
-
-.. needtable::
-   :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
-   :sort: docname
-
-   results = []
-
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "tools/" in need["docname"]:
           results.append(need)
 
 
@@ -1528,24 +1458,3 @@ docs/modules/tracing/components
                          results.append(need)
 
              components.append(component_name)
-
-
-Template folder documentation
-+++++++++++++++++++++++++++++
-
-.. _documents_folder_template:
-
-All documents of the template folder are listed here.
-
-.. needtable::
-   :style: table
-   :columns: title;id;status
-   :colwidths: 25,25,25
-   :sort: id
-
-   results = []
-
-   for need in needs.filter_types(["document"]):
-       if "PROCESS" in need["id"]:
-          need["docname"] = " "
-          results.append(need)
