@@ -10,11 +10,6 @@ bazel-toolchains/
 │  ├─ cc_config.bzl             # cc_common.create_cc_toolchain_config_info helpers
 │  ├─ gcc_config.bzl            # GCC feature sets/action_configs by major
 │  └─ llvm_config.bzl           # Clang/LLVM feature sets/action_configs by major
-├─ platforms/
-│  ├─ constraints/              # custom constraint settings & values (libc/libstdc++)
-│  │  ├─ settings.bzl           # defines the settings
-│  │  └─ values.bzl             # defines the values
-│  └─ defs.bzl                  # (optional) ready-made platform()s for different versions of toolchains with custom constraint values
 ├─ overlays/
 │  ├─ linux/
 │  │  ├─ common.bzl             # linker, rpath, default sysroot resolution for Linux
