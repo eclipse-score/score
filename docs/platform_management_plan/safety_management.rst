@@ -70,7 +70,7 @@ Regarding the platform specifics:
 
 The SW platform functionality consists of features, which are based on a set of requirements and are developed in parallel.
 These features are developed into SW components contained in "modules", which are another set of SEooCs (initiated by a change request).
-A template exists to guide this: :need:`PROCESS_doc__module_name_safety_plan`.
+A template exists to guide this: :need:`PROCESS_gd_temp__module_safety_plan`.
 
 Tailoring
 ^^^^^^^^^
@@ -259,7 +259,7 @@ The application of ISO 26262 standards requirements is realized by defining proc
 
 Functional Safety Schedule
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-The schedule is defined in section "Platform Safety Plan" below, but also within each module safety plan. See linked issues below and in :need:`PROCESS_doc__module_name_safety_plan`.
+The schedule is defined in section "Platform Safety Plan" below, but also within each module safety plan. See linked issues below and in :need:`PROCESS_gd_temp__module_safety_plan`.
 
 Functional Safety Development
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -275,7 +275,7 @@ The platform management plan defines :doc:`tool_management`
 
 Functional Safety Work Products
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The work products relevant for a module development is defined within each module safety management plan. See :need:`PROCESS_doc__module_name_safety_plan`.
+The work products relevant for a module development is defined within each module safety management plan. See :need:`PROCESS_gd_temp__module_safety_plan`.
 Generic project wide work products are defined below.
 
 Functional Safety Quality Criteria
@@ -288,7 +288,183 @@ Platform Safety Plan
 Functional Safety Management SW Platform Work Products
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-All platform related work products are listed here :ref:`project_documents_list`
+.. list-table:: SW Platform work products
+    :header-rows: 1
+
+    * - work product Id
+      - Link to process
+      - Process status
+      - Link to issue
+      - Link to WP
+      - WP status
+
+    * - :need:`PROCESS_wp__policies`
+      - n/a (comes from outside the project)
+      - n/a
+      - n/a
+      - `Eclipse Foundation Project Handbook: <https://www.eclipse.org/projects/handbook/>`_
+      - RELEASED
+
+    * - :need:`PROCESS_wp__training_path`
+      - n/a
+      - n/a
+      - n/a
+      - not open sourced
+      - to be shown to assessor
+
+    * - :need:`PROCESS_wp__qms_plan`
+      - :need:`PROCESS_wf__platform_cr_mt_platform_mgmt_plan`
+      - :ndf:`copy('status', need_id='PROCESS_wf__platform_cr_mt_platform_mgmt_plan')`
+      - `#316 <https://github.com/eclipse-score/score/issues/316>`_
+      - :doc:`quality_management`
+      - not started
+
+    * - :need:`PROCESS_wp__issue_track_system`
+      - :doc:`index`
+      - :ndf:`copy('status', need_id='doc__platform_mgt_plan')`
+      - n/a
+      - `Project issues <https://github.com/eclipse-score/score/issues>`_
+      - established
+
+    * - :need:`PROCESS_wp__platform_mgmt`
+      - :need:`PROCESS_wf__platform_cr_mt_platform_mgmt_plan`
+      - :ndf:`copy('status', need_id='PROCESS_wf__platform_cr_mt_platform_mgmt_plan')`
+      - `#540 <https://github.com/eclipse-score/score/issues/540>`_
+      - :doc:`index`
+      - :ndf:`copy('status', need_id='doc__platform_mgt_plan')`
+
+    * - :need:`PROCESS_wp__process_definition`
+      - :need:`PROCESS_wf__def_app_process_definition`
+      - :ndf:`copy('status', need_id='PROCESS_wf__def_app_process_definition')`
+      - `Process community issues <https://github.com/orgs/eclipse-score/projects/7>`_
+      - `Process description <https://eclipse-score.github.io/process_description/main/index.html>`_
+      - <automated>
+
+    * - :need:`PROCESS_wp__process_impr_report`
+      - :need:`PROCESS_wf__mon_ctrl_process_definition`
+      - :ndf:`copy('status', need_id='PROCESS_wf__mon_ctrl_process_definition')`
+      - <Link to issue>
+      - <Link to WP>
+      - <automated>
+
+    * - :need:`PROCESS_wp__process_plan`
+      - :need:`PROCESS_wf__mon_ctrl_process_definition`
+      - :ndf:`copy('status', need_id='PROCESS_wf__mon_ctrl_process_definition')`
+      - `#232 <https://github.com/eclipse-score/score/issues/232>`_
+      - `Process community issues <https://github.com/orgs/eclipse-score/projects/7>`_
+      - <automated>
+
+    * - :need:`PROCESS_wp__platform_safety_plan`
+      - :need:`PROCESS_gd_guidl__saf_plan_definitions`
+      - :ndf:`copy('status', need_id='PROCESS_gd_guidl__saf_plan_definitions')`
+      - `#381 <https://github.com/eclipse-score/score/issues/381>`_
+      - this document
+      - see above
+
+    * - :need:`PROCESS_wp__platform_safety_package`
+      - :need:`PROCESS_gd_guidl__saf_package`
+      - :ndf:`copy('status', need_id='PROCESS_gd_guidl__saf_package')`
+      - <Link to issue>
+      - <Link to WP>
+      - <automated>
+
+    * - :need:`PROCESS_wp__fdr_reports` (platform Safety Plan)
+      - :need:`PROCESS_gd_chklst__safety_plan`
+      - :ndf:`copy('status', need_id='PROCESS_gd_chklst__safety_plan')`
+      - <Link to issue>
+      - <Link to WP>
+      - <automated>
+
+    * - :need:`PROCESS_wp__fdr_reports` (platform Safety Package)
+      - :need:`PROCESS_gd_chklst__safety_package`
+      - :ndf:`copy('status', need_id='PROCESS_gd_chklst__safety_package')`
+      - <Link to issue>
+      - <Link to WP>
+      - <automated>
+
+    * - :need:`PROCESS_wp__fdr_reports` (feature's Safety Analyses & DFA)
+      - Safety Analysis FDR tbd
+      - <automated>
+      - <Link to issue>
+      - <Link to WP>
+      - <automated>
+
+    * - :need:`PROCESS_wp__audit_report`
+      - performed by external experts
+      - n/a
+      - `#470 <https://github.com/eclipse-score/score/issues/470>`_
+      - <Link to WP>
+      - intermediate
+
+    * - :need:`PROCESS_wp__feature_dfa`
+      - <Link to process>
+      - <Process status>
+      - <Link to issue>
+      - <Link to WP>
+      - <automated>
+
+    * - :need:`PROCESS_wp__platform_sw_build_config`
+      - :need:`doc__software_development_plan`
+      - :ndf:`copy('status', need_id='doc__software_development_plan')`
+      - <Link to issue>
+      - <Link to WP>
+      - <automated>
+
+    * - :need:`PROCESS_wp__platform_safety_manual`
+      - :need:`PROCESS_gd_temp__safety_manual`
+      - :ndf:`copy('status', need_id='PROCESS_gd_temp__safety_manual')`
+      - <Link to issue>
+      - <Link to WP>
+      - <automated>
+
+    * - :need:`PROCESS_wp__platform_sw_release_note`
+      - :need:`PROCESS_gd_temp__rel_plat_rel_note`
+      - :ndf:`copy('status', need_id='PROCESS_gd_temp__rel_plat_rel_note')`
+      - <Link to issue>
+      - <Link to WP>
+      - <automated>
+
+    * - :need:`PROCESS_wp__verification_platform_ver_report`
+      - :need:`PROCESS_gd_temp__mod_ver_report`
+      - :ndf:`copy('status', need_id='PROCESS_gd_temp__mod_ver_report')`
+      - <Link to issue>
+      - <Link to WP>
+      - <automated>
+
+    * - :need:`PROCESS_wp__requirements_stkh`
+      - :need:`PROCESS_gd_temp__req_stkh_req`
+      - :ndf:`copy('status', need_id='PROCESS_gd_temp__req_stkh_req')`
+      - n/a (done already)
+      - :ref:`stakeholder_requirements`
+      - <automated>
+
+    * - :need:`PROCESS_wp__sw_development_plan`
+      - :need:`PROCESS_wf__platform_cr_mt_platform_mgmt_plan`
+      - :ndf:`copy('status', need_id='PROCESS_wf__platform_cr_mt_platform_mgmt_plan')`
+      - `#583 <https://github.com/eclipse-score/score/issues/583>`_
+      - :need:`doc__software_development_plan`
+      - :ndf:`copy('status', need_id='doc__software_development_plan')`
+
+    * - :need:`PROCESS_wp__verification_plan`
+      - :need:`PROCESS_wf__platform_cr_mt_platform_mgmt_plan`
+      - :ndf:`copy('status', need_id='PROCESS_wf__platform_cr_mt_platform_mgmt_plan')`
+      - `#611 <https://github.com/eclipse-score/score/issues/611>`_
+      - :need:`doc__verification_plan`
+      - :ndf:`copy('status', need_id='doc__verification_plan')`
+
+    * - :need:`PROCESS_wp__tool_verification_report`
+      - :need:`doc__platform_tool_management_plan`
+      - :ndf:`copy('status', need_id='doc__platform_tool_management_plan')`
+      - <Link to issue>
+      - <Link to WP>
+      - <automated>
+
+    * - :need:`PROCESS_wp__tailoring` (generic)
+      - :need:`PROCESS_gd_guidl__saf_plan_definitions`
+      - :ndf:`copy('status', need_id='PROCESS_gd_guidl__saf_plan_definitions')`
+      - `#307 <https://github.com/eclipse-score/score/issues/307>`_
+      - :need:`PROCESS_std_req__iso26262__management_5421` & :need:`doc__platform_safety_plan`
+      - valid
 
 
 Note: list of features for v0.5 according to `S-CORE Roadmap <https://github.com/orgs/eclipse-score/projects/17>`_
