@@ -180,8 +180,33 @@ Example
     Also-by: Some Bodyelse <somebodyelse@nowhere.com>
 
 ********************
- Correcting Mistakes
+ Tips and Tricks
 ********************
+
+Deal with Long-Living Feature Branches
+======================================
+
+Long-living feature branches are a common source of complicated merges.
+The root cause typically lies in planning issues:
+Overlapping changes are planned into parallel units of work. Examples are "developer
+B refactors module X" while "developer A adds a feature to module X". With documents
+as code, the same applies for requirements, design, architecture, and other artifacts.
+The larger the units of work, the longer the lifetime of branches, and the more likely
+it is that such overlaps occur and conflicts arise.
+
+So, there are three stategies to deal with this:
+
+1. Avoid long-living branches by splitting work into smaller units of work and merge
+   them frequently into the main branch.
+2. If long-living branches are unavoidable, perform the changes in a way that anticipate this
+   and make conflicts less likely. For example, in case of documentation changes write the new
+   content in a separate file until the work is done. Then, only in a last step integrate the
+   new content into the structure which exists in the main branch.
+3. Accept the fact that conflicts may arise and deal with them when they occur.
+
+
+Correcting Mistakes
+===================
 
 Sometimes it happens that mistakes are made in the commit history.
 This can usually be corrected.
