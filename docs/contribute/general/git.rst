@@ -218,6 +218,7 @@ Examples of problematic history include:
 -  Merges from the main branch into a feature branch.
    Instead, the feature branch should be rebased on top of the main branch.
    This preserves a linear history.
+   However, be careful with branches that are worked on by multiple persons.
 
 A strategy which can be used to correct the commit history of a branch is to use a feature of git called 'interactive rebase'.
 Afterwards, the (now cleaned-up) branch can be force-pushed to the remote repository.
