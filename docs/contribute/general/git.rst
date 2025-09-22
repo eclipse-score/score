@@ -214,7 +214,7 @@ This can usually be corrected.
 Examples of problematic history include:
 
 -  Multiple, consecutive commits by the same author, like "draft one", "after review", "forgotten in previous commit".
-   Such commits should be squashed into a single commit, with a well-written commit message.
+   In case the squash commit option is not used (see above), such commits should be squashed into a single commit, with a well-written commit message.
 -  Merges from the main branch into a feature branch.
    Instead, the feature branch should be rebased on top of the main branch.
    This preserves a linear history.
@@ -222,9 +222,13 @@ Examples of problematic history include:
 A strategy which can be used to correct the commit history of a branch is to use a feature of git called 'interactive rebase'.
 Afterwards, the (now cleaned-up) branch can be force-pushed to the remote repository.
 This works also if there is already a pull-request open for this branch.
-
 The Git Documentation contains `a well-written section <https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History>`_ about "rewriting history".
 However, to be fair, this is not simple when you do it for the first time.
-The most efficient approach is to do this together with someone experienced in Git.
-Such a pairing session can show you how to "think Git".
+
+Another strategy is to create a new branch from the main branch and cherry-pick the relevant commits from the old branch to the new branch.
+Then, push the new branch to the remote repository and create a new pull-request.
+This strategy is easier to understand, but has the downside that the discussion in the old pull-request is not automatically transferred to the new pull-request.
+
+The most efficient approach is to do either clean-up together with someone experienced in Git.
+Such a [pairing session](https://en.wikipedia.org/wiki/Pair_programming) can show you how to "think Git".
 However, be confident: as long as you have not force-pushed the branch to GitHub, all changes you did are local and can be undone easily.
