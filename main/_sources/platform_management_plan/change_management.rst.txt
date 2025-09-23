@@ -14,7 +14,7 @@
 
 .. document:: Change Management Plan
    :id: doc__platform_change_management_plan
-   :status: draft
+   :status: valid
    :safety: ASIL_B
    :security: YES
    :tags: platform_management
@@ -30,8 +30,9 @@ This document implements parts of the :need:`PROCESS_wp__platform_mgmt`.
 Purpose
 +++++++
 The purpose of the Change Management Plan is to guide the execution of the
-Change Requests of a project including their creation, analysis, approval, implementation,
-and verification.
+Change Requests of a project including their creation, analysis, implementation, closure and
+control. Where a change is defined as an introduction of a new feature/component or modification of
+an existing feature/component.
 
 
 Objectives and Scope
@@ -40,15 +41,12 @@ Objectives and Scope
 Change Management Goals
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-* Requests for Changes are recorded and identified.
-* Change Requests are analyzed, dependencies and relationships to work products or other Change
-  Requests are identified, and the impact is estimated.
-* Change Requests are approved before implementation and prioritized accordingly.
-* Bidirectional traceability is established between Change Requests and affected work products.
-* Implementation of Change Requests is confirmed.
-* Change Requests are tracked to closure and status of Change Requests is communicated to
-  affected parties.
-* Requests for Changes are properly documented.
+* Change Requests are recorded and identified.
+* Change Requests are analyzed, affected work products are identified, and the impact is estimated.
+* Change Requests are approved before implementation.
+* Change Requests are implemented and monitored.
+* Changes Requests are tracked until closure and and communicated to affected parties.
+* Change Requests and affected work products are bidirectionally traced.
 
 Approach
 ++++++++
@@ -59,27 +57,50 @@ Change Request Execution
 Contributions in general to the **S-CORE** project are described here
 (compare :need:`doc__contr_guideline`).
 
-A Change Request is a specific contribution, and
-it is the **ONLY** way to contribute new features/components or to modify the scope of existing
-features/components in the **S-CORE** project.
+A Change Request is a specific contribution, and it is the **ONLY** way to contribute new
+features/components or to modify the scope of existing features/components in the **S-CORE**
+project.
 
 Change Request Infrastructure and Types
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 :need:`GitHub Issues (ISSUE) <doc__issue_guideline>` are used for managing Change Requests.
-The tool is used to create, plan, control, and monitor Change Requests within **S-CORE**.
+The tool is used to create, analyze, implement and monitor Change Requests within **S-CORE**.
 
-:need:`GitHub Pull Requests (PR) <doc__pull_request_guideline>` are used for the implementation
-of Change Requests. The tool is used to implement and verify Change Requests within **S-CORE**.
+:need:`GitHub Pull Requests (PR) <doc__pull_request_guideline>` are used for the documentation and
+implementation of Change Requests. The tool is used to document, implement and verify Change
+Requests within **S-CORE**.
 
-The next figure gives an overview, how Change Requests are realized in **S-CORE**. An ISSUE is
-used to create a Change Request including required attributes as defined in
+The next figure gives an overview, how Change Requests are realized in **S-CORE**. An ISSUE and PR
+is used to create a Change Request including required attributes as defined in
 :need:`PROCESS_gd_req__change_attr_uid`.
-The ISSUE may be linked to other ISSUEs or SUB-ISSUEs, if required, to manage more complex Change
-Requests. The implementation of a Change Request requires at least one PR linked to the ISSUE created
-for the Change Request.
 
-.. figure:: _assets/score_change_request_overview.drawio.svg
+.. figure:: _assets/score_change_request_overview_simple.drawio.svg
+  :width: 100%
+  :align: center
+  :alt: Change Request Simple Overview
+
+  Change Request Simple Overview
+
+Therefore the Change Template :need:`PROCESS_gd_temp__change_feature_request` or
+:need:`PROCESS_gd_temp__change_component_request` shall be used.
+In addition  :need:`Impact Analysis Template <PROCESS_gd_temp__change_impact_analysis>` should be
+used, if applicable.
+
+.. note::
+  Parts of the template are automatically included in the ISSUE **Change Request**.
+  Use ISSUE **Change Request** to request a change in **S-CORE**.
+
+  .. figure:: _assets/score_change_request_change.drawio.svg
+    :width: 100%
+    :align: center
+    :alt: Change Request Change
+
+The ISSUE may be linked to other ISSUEs or SUB-ISSUEs, if required, to manage more complex Change
+Requests. The implementation of a Change Request requires at least one PR linked to the ISSUE
+created for the Change Request.
+
+.. figure:: _assets/score_change_request_overview_complex.drawio.svg
   :width: 100%
   :align: center
   :alt: Change Request Overview
@@ -119,27 +140,63 @@ Change Request Attributes
 
 :need:`[[title]] <PROCESS_gd_req__change_attr_uid>` is identical to the ISSUE number.
 
-:need:`[[title]] <PROCESS_gd_req__change_attr_status>` is defined by the combination of the ISSUE state
-and the states of the linked PRs.
+:need:`[[title]] <PROCESS_gd_req__change_attr_status>` is defined by the combination of the ISSUE
+state, the state in the Projects dashboard view and the PR status.
+
+.. list-table:: Change Status
+   :header-rows: 1
+   :widths: 15,85,15,15
+
+   * - Status
+     - Issue status
+     - Projects dashboard status
+     - Linked PR status
+   * - open
+     - ``Open``
+     - ``No Status``
+     - ``Draft`` or ``Open``
+   * - in review
+     - ``Open``
+     - ``Todo``
+     - ``Draft`` or ``Open``
+   * - in implementation
+     - ``Open``
+     - ``In Progress``
+     - ``Draft`` or ``Open``
+   * - closed
+     - ``Closed``
+     - ``Done``
+     - ``Merged``
+   * - rejected
+     - ``Closed as not planned``
+     - na
+     - na
 
 :need:`[[title]] <PROCESS_gd_req__change_attr_title>` is identical to the ISSUE title.
 
-:need:`[[title]] <PROCESS_gd_req__change_attr_impact_description>` is defined in the linked PR or part of the
-description.
+:need:`[[title]] <PROCESS_gd_req__change_attr_impact_description>` is initially provided in the
+Description and Impact analysis part of the ISSUE. Further detailed analysis results are part of
+the linked PR, provided as part of the feature/request templates.
 
-:need:`[[title]] <PROCESS_gd_req__change_attr_impact_safety>` is defined in the linked PR or part of the
-description.
+Further information about detailed implementation can be provided in the Realize part of the ISSUE.
 
-:need:`[[title]] <PROCESS_gd_req__change_attr_impact_security>` is defined in the linked PR or part of the
-description.
+:need:`[[title]] <PROCESS_gd_req__change_attr_impact_safety>`,
+:need:`[[title]] <PROCESS_gd_req__change_attr_impact_security>` are provided in the Safety or
+Security relevance part of the ISSUE.
 
-:need:`[[title]] <PROCESS_gd_req__change_attr_types>` is defined by label of a ISSUE and part of the
-description.
+Combinations of them are allowed. If nothing is selected, Quality is relevant by default.
 
-:need:`[[title]] <PROCESS_gd_req__change_attr_affected_wp>` is defined in the linked PR or part of the
-description.
+Use the ASIL classification part of the ISSUE to document the ASIL level concerned, e.g. ASIL_B.
 
-:need:`[[title]] <PROCESS_gd_req__change_attr_milestone>` is defined by the Milestone of a ISSUE.
+:need:`[[title]] <PROCESS_gd_req__change_attr_types>` is provided in the Change Request Type
+part of the ISSUE, further in the linked PR for feature or component request.
+
+:need:`[[title]] <PROCESS_gd_req__change_attr_affected_wp>` is initially provided in the
+Affected work products part of the ISSUE. Further detailed affected work products are part of the
+linked PR or other ISSUEs.
+
+:need:`[[title]] <PROCESS_gd_req__change_attr_milestone>` is provided in the Expected Implementation
+Version part of the ISSUE. Optionally the Milestone part of the ISSUE can be set.
 
 
 .. _change_mgmt_workflow:
@@ -147,45 +204,56 @@ description.
 Change Request Workflow
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-In General, every Change Request follows the following steps:
+In general, every Change Request follows the following steps:
 
-* 1. Create the Change Request
-* 2. Review the Change Request
-* 3. Approve the Change Request
+(color is referring to the following figure: Problem Resolution Simple Workflow Overview)
 
+* 1. Create the Change Request (grey color)
+* 2. Analyze the Change Request (blue color)
+* 3. Initiate the implementation of the Change Request and track it to closure (yellow color)
+* 4. Close Change Request (purple color)
+
+:need:`PROCESS_gd_guidl__change_change_request` can give additional help.
 
 **To 1. Create the Change Request:**
 
 An ISSUE is the **ONLY** way to create and manage a Change Request in **S-CORE**.
-A PR is the **ONLY** way to implement a Change Request in **S-CORE**,
+A PR is the **ONLY** way to document and implement a Change Request in **S-CORE**,
 thus an ISSUE must be linked at least to one or more PRs.
 
 The figure below shows the workflow for the simplest case of a Change Request.
 
-An ISSUE with the label according to the Change Request type is created in status ``OPEN``.
-The title of the ISSUE reflects the potential change. The description of the ISSUE may give a brief
-description of the requested change or modification. Further add here the
-:need:`Impact Analysis Template <PROCESS_gd_temp__change_impact_analysis>` and fill it out accordingly.
+An ISSUE with the with the type ``Enhancement`` is created in status ``Open``.
+The title of the ISSUE reflects the potential change. Further fill out the provided template
+content accordingly.
 
-The details are part of the Feature/Component Request work product. The Feature/Component Request
-is provided by a PR, which is linked to the ISSUE in status ``DRAFT``.
+The description of the ISSUE may give a brief description and impact analysis of the requested
+change. The details are part of the Feature/Component Request and Impact Analysis provided by a PR,
+which is linked  to the ISSUE in status ``Draft`` or ``Open``.
 
 For a new Feature/Component Request the provided templates :need:`Feature Request<PROCESS_gd_temp__change_feature_request>`,
-:need:`Component Request<PROCESS_gd_temp__change_component_request>` must be used. For a modification of an existing
-Feature/Component, update the existing work products.
+or :need:`Component Request<PROCESS_gd_temp__change_component_request>` must be used. For a
+modification of an existing Feature/Component, update the existing work products.
+Further add here the :need:`Impact Analysis Template <PROCESS_gd_temp__change_impact_analysis>`
+and fill it out accordingly, if applicable.
 
-The linked PR in status ``DRAFT``, which contains the Feature/Component Requests, may contain also
-other required affected and changed work products or implementation and verification proposals.
+The description of the ISSUE may give a brief description of the affected work products and also
+details about the intended realization for the change.
+The linked PR in status ``Draft``, which contains the Feature/Component Requests, may contain also
+more details about the affected work products or realization and verification proposals.
 
-Planning is done by setting the milestone of the ISSUE accordingly.
+Planning is done by setting the **Expected Implementation Version**. Optionally the Milestone of
+the ISSUE can be set.
 
-As long as the :need:`Contributor <PROCESS_rl__contributor>` wants to modify the content of the Change
-Request, the linked PR is kept in status ``DRAFT``.
+Change request status: ``open`` is implemented as ISSUE status ``Open`` and Projects status
+``No Status``. The linked PR status is either ``Draft`` or ``Open``.
 
-Change request status: ``draft`` is implemented as
-ISSUE status ``OPEN`` and PR status ``DRAFT``.
+To trigger the next step: Change request status: ``in review``
+keep the ISSUE status ``Open`` and set the Projects status ``Todo``.
 
-To trigger the next step the PR status is changed from ``DRAFT`` to ``OPEN``.
+To reject the change request: Change request status: ``rejected``
+set the ISSUE status to ``Closed as not planned``.
+
 
 .. figure:: _assets/score_change_request_workflow_simple.drawio.svg
   :width: 100%
@@ -195,99 +263,60 @@ To trigger the next step the PR status is changed from ``DRAFT`` to ``OPEN``.
   Change Request Simple Workflow Overview
 
 
-**To 2. Review the Change Request:**
+**To 2. Analyze the Change Request:**
 
-The Change Request is reviewed from the :need:`Committer <PROCESS_rl__committer>` and the
-review results are resolved by the :need:`Contributor <PROCESS_rl__contributor>`. The review results
-are documented in the PR. As long as the information is not sufficient, the related PR is kept in
-status ``OPEN``.
+The Change Request is reviewed and analyzed from the :need:`Committer <PROCESS_rl__committer>` and the
+review results are resolved by the :need:`Contributor <PROCESS_rl__contributor>`. The results
+are documented in the ISSUE and/or linked PR. As long as the information is not sufficient, the
+related ISSUE is kept in status ``Open`` and Projects status ``Todo``, means ``in review``.
+
+If the information is sufficient and it is decided to implement the change request, the
+ISSUE status is kept ``Open`` and the Projects status is set to ``In Progress``.
+
+The decision, if the change request is accepted or rejected must be documented. Safety/Security
+experts must confirm or disconfirm, if safety/security relevance is set correctly.
 
 :need:`PROCESS_gd_chklst__change_cr_review` can help to verify whether the information is complete.
 
+Otherwise, if the change requested is not accepted, the change request is rejected. To reject the
+Change Request: Change Request status: ``rejected`` set the ISSUE status to ``Closed as not planned``.
+
+
+**To 3. Initiate the implementation of the Change Request and track it to closure:**
+
+:need:`Contributor <PROCESS_rl__contributor>` starts all required activities to implement the
+change request. These may include further planning  activities by creating ISSUEs and required PRs.
+All additional ISSUEs or PRs created to implement are linked to the Change Request ISSUE to enable
+monitoring of the activities.
+
+All activities defined are tracked until closure, means that all linked ISSUEs or PRs are closed or
+merged, respectively.
+
+If all are closed or merged :need:`Contributor <PROCESS_rl__contributor>` sets Projects status to
+``Done`` to trigger the final review from the :need:`Committer <PROCESS_rl__committer>` to close
+the Change Request.
+
+The Change Request may also rejected in this phase, then the ISSUE status is set to
+``Closed as not planned``.
+
+
+**To 4. Close Change Request :**
+
+:need:`Committer <PROCESS_rl__committer>` checks finally if the change request is completely
+implemented. In this case all linked ISSUEs or PRs are closed or merged, respectively.
+
+Especially the verification measures must be checked for their effectiveness and the argumentation
+is convincing.
+
+:need:`PROCESS_gd_chklst__change_cr_review` can help to verify whether it can be closed.
 The realization parts of the Change Request are reviewed according the checklists of the affected
 work products. Verification of the realization parts must be successful.
-If the verification is not sufficient, the related PR is kept in status ``OPEN`` or may changed
-back to ``DRAFT`` (compare :need:`doc__issue_guideline`).
 
-Change request status: ``in review`` is implemented as
-ISSUE status ``OPEN`` and PR status ``OPEN``.
+If this is the case the ISSUE status is set to ``Closed``, otherwise the Projects status is set
+back to ``In Progress``.
 
-
-**To 3. Approve the Change Request:**
-:need:`Technical Lead <PROCESS_rl__technical_lead>` or  :need:`Module Lead <PROCESS_rl__module_lead>` decides finally,
-if the Change Request is accepted or rejected.
-
-:need:`Committer <PROCESS_rl__committer>` checks finally if the Change Request is completed and the
-required verification measures are executed and successfully passed.
-
-If ``approved``, the status of the concerned PRs change to ``MERGED``,
-otherwise, if rejected, PR status changes to ``CLOSED``.
-
-If ``approved`` the status of the ISSUE is ``CLOSED``. This is also the case for rejected Change
-Requests.
-
-
-The figure below shows the workflow for a complex case of a Change Request.
-
-The ISSUE is linked to SUB-ISSUES, and each SUB-ISSUE is linked to a PR. In principle the Change
-Request workflows applies for all SUB-ISSUEs independently. Finally the ISSUE must be closed
-manually.
-
-.. figure:: _assets/score_change_request_workflow_complex_1.drawio.svg
-  :width: 100%
-  :align: center
-  :alt: Change Request Complex Workflow Overview Case 1
-
-  Change Request Complex Workflow Overview Case 1
-
-The figure below shows the workflow for another complex case of a Change Request.
-
-Here the Change Request has an impact on work products in different repositories, e.g. the
-**S-CORE** repository, contains feature work products and a Module repository, contains
-Component work products.
-The ISSUE is linked to SUB-ISSUES in the **S-CORE** repository, and the SUB-ISSUE is linked to a PR.
-But in addition the ISSUE is now linked to another ISSUE in the Module repository, also linked
-to a PR. In principle the Change Request workflows applies for all SUB-ISSUEs, ISSUES in
-Module repository independently. Finally the ISSUE in the **S-CORE** repository must be closed
-manually.
-
-.. figure:: _assets/score_change_request_workflow_complex_2.drawio.svg
-  :width: 100%
-  :align: center
-  :alt: Change Request Complex Workflow Overview Case 2
-
-  Change Request Complex Workflow Overview Case 2
 
 Change Management SW Platform Work Products
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. list-table:: SW Platform work products
-    :header-rows: 1
-
-    * - work product Id
-      - Link to process
-      - Process status
-      - Link to issue
-      - Link to WP
-      - WP status
-
-    * - :need:`PROCESS_wp__issue_track_system`
-      - :doc:`index`
-      - :ndf:`copy('status', need_id='doc__platform_mgt_plan')`
-      - n/a
-      - `Project issues <https://github.com/eclipse-score/score/issues>`_
-      - established
-
-    * - :need:`PROCESS_wp__platform_mgmt`
-      - :need:`PROCESS_wf__platform_cr_mt_platform_mgmt_plan`
-      - :ndf:`copy('status', need_id='PROCESS_wf__platform_cr_mt_platform_mgmt_plan')`
-      - <Link to issue>
-      - :doc:`index`
-      - :ndf:`copy('status', need_id='doc__platform_mgt_plan')`
-
-    * - :need:`PROCESS_wp__process_definition`
-      - :need:`PROCESS_wf__def_app_process_definition`
-      - :ndf:`copy('status', need_id='PROCESS_wf__def_app_process_definition')`
-      - `Process community issues <https://github.com/orgs/eclipse-score/projects/7>`_
-      - `Process description <https://eclipse-score.github.io/process_description/main/index.html>`_
-      - <automated>
+not applicable
