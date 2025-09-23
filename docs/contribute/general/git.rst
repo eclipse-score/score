@@ -209,7 +209,7 @@ Correcting Mistakes
 ===================
 
 Sometimes it happens that mistakes are made in the commit history.
-This can usually be corrected.
+This can usually be corrected as long as they are not merged to main.
 
 Examples of problematic history include:
 
