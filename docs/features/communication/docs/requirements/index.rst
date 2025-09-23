@@ -404,7 +404,7 @@ Multi-binding support
 Cross-VM Extensions
 ^^^^^^^^^^^^^^^^^^^
 .. feat_req:: One-way data sharing into a VM
-   :id: feat_req__crossvm__one_way_sharing
+   :id: feat_req__com__one_way_sharing
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -414,7 +414,7 @@ Cross-VM Extensions
    The system shall support one-way data sharing into a Virtual Machine (VM) for vehicle state read-only for the VM (snapshot state).
 
 .. feat_req:: Read-only access for VM
-   :id: feat_req__crossvm__readonly_vm
+   :id: feat_req__com__readonly_vm
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -424,7 +424,7 @@ Cross-VM Extensions
    The consumer (VM) shall have read-only access to the shared data.
 
 .. feat_req:: Consistent data-sets
-   :id: feat_req__crossvm__consistent_data
+   :id: feat_req__com__consistent_data
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -434,7 +434,7 @@ Cross-VM Extensions
    The system shall support consistent data-sets, allowing the consumer to obtain a consistent version of related data items.
 
 .. feat_req:: Lock-free access
-   :id: feat_req__crossvm__lock_free_access
+   :id: feat_req__com__lock_free_access
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -444,7 +444,7 @@ Cross-VM Extensions
    Consistent access to data must be lock-free.
 
 .. feat_req:: Producer time stamps
-   :id: feat_req__crossvm__producer_timestamps
+   :id: feat_req__com__producer_timestamps
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -454,7 +454,7 @@ Cross-VM Extensions
    Producer time stamps shall be available for related data-sets.
 
 .. feat_req:: Streamed data based on shared queues
-   :id: feat_req__crossvm__streamed_data
+   :id: feat_req__com__streamed_data
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -464,7 +464,7 @@ Cross-VM Extensions
    The system shall support streamed data based on shared queues (stream of events or data).
 
 .. feat_req:: Configurable queues
-   :id: feat_req__crossvm__configurable_queues
+   :id: feat_req__com__configurable_queues
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -474,7 +474,7 @@ Cross-VM Extensions
    Queues shall be configurable by the client (VM), including the number of elements and buffer allocation.
 
 .. feat_req:: Lock-free queue access
-   :id: feat_req__crossvm__lock_free_queue
+   :id: feat_req__com__lock_free_queue
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -484,7 +484,7 @@ Cross-VM Extensions
    Queues shall support lock-free access to data elements.
 
 .. feat_req:: Bi-directional communication
-   :id: feat_req__crossvm__bi_directional_comm
+   :id: feat_req__com__bi_directional_comm
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -494,7 +494,7 @@ Cross-VM Extensions
    The system shall support bi-directional communication via writable data elements by the client.
 
 .. feat_req:: Asynchronous support
-   :id: feat_req__crossvm__async_support
+   :id: feat_req__com__async_support
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -504,7 +504,7 @@ Cross-VM Extensions
    The system shall provide asynchronous bi-directional support via multiple queues.
 
 .. feat_req:: Shared memory chunks
-   :id: feat_req__crossvm__shared_memory
+   :id: feat_req__com__shared_memory
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -514,7 +514,7 @@ Cross-VM Extensions
    The system shall support multiple chunks of shared memory to allow required access control.
 
 .. feat_req:: Data update notifications
-   :id: feat_req__crossvm__data_notifications
+   :id: feat_req__com__data_notifications
    :reqtype: Functional
    :security: NO
    :safety: QM
@@ -524,7 +524,7 @@ Cross-VM Extensions
    Notifications for data updates shall be available (virtual IRQs in a VM).
 
 .. feat_req:: Configurable notifications
-   :id: feat_req__crossvm__config_notifications
+   :id: feat_req__com__config_notifications
    :reqtype: Functional
    :security: NO
    :safety: QM
