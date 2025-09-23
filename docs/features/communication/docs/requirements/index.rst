@@ -408,7 +408,7 @@ Cross-VM Extensions
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__communication__vm
+   :satisfies: stkh_req__communication__inter_process
    :status: valid
 
    The system shall support one-way data sharing into a Virtual Machine (VM) for vehicle state read-only for the VM (snapshot state).
@@ -418,7 +418,7 @@ Cross-VM Extensions
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__communication__vm
+   :satisfies: stkh_req__communication__inter_process
    :status: valid
 
    The consumer (VM) shall have read-only access to the shared data.
@@ -428,7 +428,7 @@ Cross-VM Extensions
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__communication__vm
+   :satisfies: stkh_req__communication__inter_process
    :status: valid
 
    The system shall support consistent data-sets, allowing the consumer to obtain a consistent version of related data items.
@@ -438,7 +438,7 @@ Cross-VM Extensions
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__communication__vm
+   :satisfies: stkh_req__communication__inter_process
    :status: valid
 
    Consistent access to data must be lock-free.
@@ -448,7 +448,7 @@ Cross-VM Extensions
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__communication__vm
+   :satisfies: stkh_req__communication__inter_process
    :status: valid
 
    Producer time stamps shall be available for related data-sets.
@@ -458,7 +458,7 @@ Cross-VM Extensions
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__communication__vm
+   :satisfies: stkh_req__communication__inter_process
    :status: valid
 
    The system shall support streamed data based on shared queues (stream of events or data).
@@ -468,7 +468,7 @@ Cross-VM Extensions
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__communication__vm
+   :satisfies: stkh_req__communication__inter_process
    :status: valid
 
    Queues shall be configurable by the client (VM), including the number of elements and buffer allocation.
@@ -478,7 +478,7 @@ Cross-VM Extensions
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__communication__vm
+   :satisfies: stkh_req__communication__inter_process
    :status: valid
 
    Queues shall support lock-free access to data elements.
@@ -488,7 +488,7 @@ Cross-VM Extensions
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__communication__vm
+   :satisfies: stkh_req__communication__inter_process
    :status: valid
 
    The system shall support bi-directional communication via writable data elements by the client.
@@ -498,7 +498,7 @@ Cross-VM Extensions
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__communication__vm
+   :satisfies: stkh_req__communication__inter_process
    :status: valid
 
    The system shall provide asynchronous bi-directional support via multiple queues.
@@ -508,7 +508,7 @@ Cross-VM Extensions
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__communication__vm
+   :satisfies: stkh_req__communication__inter_process
    :status: valid
 
    The system shall support multiple chunks of shared memory to allow required access control.
@@ -518,7 +518,7 @@ Cross-VM Extensions
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__communication__vm
+   :satisfies: stkh_req__communication__inter_process
    :status: valid
 
    Notifications for data updates shall be available (virtual IRQs in a VM).
@@ -528,7 +528,7 @@ Cross-VM Extensions
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__communication__vm
+   :satisfies: stkh_req__communication__inter_process
    :status: valid
 
    Notifications shall be configurable by consumers of data (using flags or watermarks in shared memory from client to producer).
