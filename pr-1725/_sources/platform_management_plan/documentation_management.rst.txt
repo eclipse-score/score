@@ -95,22 +95,6 @@ documents are listed as well, so that it is easy to identify missing documents.
 Platform documentation
 ++++++++++++++++++++++
 
-docs/contribute
-###############
-
-.. _documents_docs_contribute:
-
-.. needtable::
-   :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
-
-   results = []
-
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "contribute/" in need["docname"]:
-          results.append(need)
-
 
 docs/glossary
 #############
@@ -130,21 +114,20 @@ docs/glossary
           results.append(need)
 
 
-docs/manuals
-############
+docs/contribute
+###############
 
-.. _documents_docs_manuals:
+.. _documents_docs_contribute:
 
 .. needtable::
    :style: table
    :columns: title;id;safety;status
    :colwidths: 30,50,10,10
-   :sort: docname
 
    results = []
 
    for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "manuals/" in need["docname"]:
+       if need["docname"] is not None and "contribute/" in need["docname"]:
           results.append(need)
 
 
@@ -167,24 +150,6 @@ docs/platform_management_plan
           results.append(need)
 
 
-docs/quality
-############
-
-.. _documents_docs_quality:
-
-.. needtable::
-   :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
-   :sort: docname
-
-   results = []
-
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "quality/" in need["docname"]:
-          results.append(need)
-
-
 docs/requirements
 #################
 
@@ -200,6 +165,24 @@ docs/requirements
 
    for need in needs.filter_types(["document"]):
        if need["docname"] is not None and "requirements/" in need["docname"] and not "features/" in need["docname"] and not "modules/" in need["docname"]:
+          results.append(need)
+
+
+docs/quality
+############
+
+.. _documents_docs_quality:
+
+.. needtable::
+   :style: table
+   :columns: title;id;safety;status
+   :colwidths: 30,50,10,10
+   :sort: docname
+
+   results = []
+
+   for need in needs.filter_types(["document"]):
+       if need["docname"] is not None and "quality/" in need["docname"]:
           results.append(need)
 
 
@@ -221,10 +204,10 @@ docs/safety
           results.append(need)
 
 
-docs/score_releases
-###################
+docs/security
+#############
 
-.. _documents_docs_score_releases:
+.. _documents_docs_security:
 
 .. needtable::
    :style: table
@@ -235,7 +218,7 @@ docs/score_releases
    results = []
 
    for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "score_releases/" in need["docname"]:
+       if need["docname"] is not None and "security/" in need["docname"]:
           results.append(need)
 
 
@@ -254,24 +237,6 @@ docs/score_tools
 
    for need in needs.filter_types(["doc_tool"]):
        if need["docname"] is not None and "score_tools/" in need["docname"]:
-          results.append(need)
-
-
-docs/security
-#############
-
-.. _documents_docs_security:
-
-.. needtable::
-   :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
-   :sort: docname
-
-   results = []
-
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "security/" in need["docname"]:
           results.append(need)
 
 
@@ -311,80 +276,117 @@ platform_integration_tests
           results.append(need)
 
 
+docs/manuals
+############
+
+.. _documents_docs_manuals:
+
+.. needtable::
+   :style: table
+   :columns: title;id;safety;status
+   :colwidths: 30,50,10,10
+   :sort: docname
+
+   results = []
+
+   for need in needs.filter_types(["document"]):
+       if need["docname"] is not None and "manuals/" in need["docname"]:
+          results.append(need)
+
+
+docs/score_releases
+###################
+
+.. _documents_docs_score_releases:
+
+.. needtable::
+   :style: table
+   :columns: title;id;safety;status
+   :colwidths: 30,50,10,10
+   :sort: docname
+
+   results = []
+
+   for need in needs.filter_types(["document"]):
+       if need["docname"] is not None and "score_releases/" in need["docname"]:
+          results.append(need)
+
+
 Feature documentation
 +++++++++++++++++++++
 
-In the following sections all documents of the features and related modules (components) are listed.
+In the following sections all documents of the features and related modules (components), that are
+planned for release v0.5, are listed.
 
-docs/features/ai_platform
-#########################
+.. docs/features/ai_platform
+.. #########################
 
-.. _documents_docs_features_ai_platform:
+.. .. _documents_docs_features_ai_platform:
 
-.. needtable::
-   :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
-   :sort: id
+.. .. needtable::
+..    :style: table
+..    :columns: title;id;safety;status
+..    :colwidths: 30,50,10,10
+..    :sort: id
 
-   results = []
-   name = "ai_platform"
+..    results = []
+..    name = "ai_platform"
 
-   # Generate list of all documents of the feature
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and name in need["docname"] and "features/" in need["docname"]:
-          results.append(need)
+..    # Generate list of all documents of the feature
+..    for need in needs.filter_types(["document"]):
+..        if need["docname"] is not None and name in need["docname"] and "features/" in need["docname"]:
+..           results.append(need)
 
-   # Check all documents in folder documents related to features against the found documents. If missing the template is add to the list
-   for need in needs.filter_types(["document"]):
-      if "template" in need["tags"] and "PROCESS" in need["id"] and "feature_name" in need["id"]:
+..    # Check all documents in folder documents related to features against the found documents. If missing the template is add to the list
+..    for need in needs.filter_types(["document"]):
+..       if "template" in need["tags"] and "PROCESS" in need["id"] and "feature_name" in need["id"]:
 
-         act_id = need["id"].replace("PROCESS_doc__feature_name", "")
+..          act_id = need["id"].replace("PROCESS_doc__feature_name", "")
 
-         i = 0
+..          i = 0
 
-         for x in results:
-             if act_id in x["id"]:
-                i = i+1
+..          for x in results:
+..              if act_id in x["id"]:
+..                 i = i+1
 
-         if i == 0:
-             need["title"] = need["title"]
-             results.append(need)
+..          if i == 0:
+..              need["title"] = need["title"]
+..              results.append(need)
 
-docs/features/analysis_infra
-############################
+.. docs/features/analysis_infra
+.. ############################
 
-.. _documents_docs_features_analysis_infra:
+.. .. _documents_docs_features_analysis_infra:
 
-.. needtable::
-   :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
-   :sort: id
+.. .. needtable::
+..    :style: table
+..    :columns: title;id;safety;status
+..    :colwidths: 30,50,10,10
+..    :sort: id
 
-   results = []
-   name = "analysis_infra"
+..    results = []
+..    name = "analysis_infra"
 
-   # Generate list of all documents of the feature
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and name in need["docname"] and "features/" in need["docname"]:
-          results.append(need)
+..    # Generate list of all documents of the feature
+..    for need in needs.filter_types(["document"]):
+..        if need["docname"] is not None and name in need["docname"] and "features/" in need["docname"]:
+..           results.append(need)
 
-   # Check all documents in folder documents related to features against the found documents. If missing the template is add to the list
-   for need in needs.filter_types(["document"]):
-      if "template" in need["tags"] and "PROCESS" in need["id"] and "feature_name" in need["id"]:
+..    # Check all documents in folder documents related to features against the found documents. If missing the template is add to the list
+..    for need in needs.filter_types(["document"]):
+..       if "template" in need["tags"] and "PROCESS" in need["id"] and "feature_name" in need["id"]:
 
-         act_id = need["id"].replace("PROCESS_doc__feature_name", "")
+..          act_id = need["id"].replace("PROCESS_doc__feature_name", "")
 
-         i = 0
+..          i = 0
 
-         for x in results:
-             if act_id in x["id"]:
-                i = i+1
+..          for x in results:
+..              if act_id in x["id"]:
+..                 i = i+1
 
-         if i == 0:
-             need["title"] = need["title"]
-             results.append(need)
+..          if i == 0:
+..              need["title"] = need["title"]
+..              results.append(need)
 
 docs/features/baselibs
 ######################
@@ -456,40 +458,40 @@ docs/features/communication
              need["title"] = need["title"]
              results.append(need)
 
-docs/features/diagnostics
-#########################
+.. docs/features/diagnostics
+.. #########################
 
-.. _documents_docs_features_diagnostics:
+.. .. _documents_docs_features_diagnostics:
 
-.. needtable::
-   :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
-   :sort: id
+.. .. needtable::
+..    :style: table
+..    :columns: title;id;safety;status
+..    :colwidths: 30,50,10,10
+..    :sort: id
 
-   results = []
-   name = "diagnostics"
+..    results = []
+..    name = "diagnostics"
 
-   # Generate list of all documents of the feature
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and name in need["docname"] and "features/" in need["docname"]:
-          results.append(need)
+..    # Generate list of all documents of the feature
+..    for need in needs.filter_types(["document"]):
+..        if need["docname"] is not None and name in need["docname"] and "features/" in need["docname"]:
+..           results.append(need)
 
-   # Check all documents in folder documents related to features against the found documents. If missing the template is add to the list
-   for need in needs.filter_types(["document"]):
-      if "template" in need["tags"] and "PROCESS" in need["id"] and "feature_name" in need["id"]:
+..    # Check all documents in folder documents related to features against the found documents. If missing the template is add to the list
+..    for need in needs.filter_types(["document"]):
+..       if "template" in need["tags"] and "PROCESS" in need["id"] and "feature_name" in need["id"]:
 
-         act_id = need["id"].replace("PROCESS_doc__feature_name", "")
+..          act_id = need["id"].replace("PROCESS_doc__feature_name", "")
 
-         i = 0
+..          i = 0
 
-         for x in results:
-             if act_id in x["id"]:
-                i = i+1
+..          for x in results:
+..              if act_id in x["id"]:
+..                 i = i+1
 
-         if i == 0:
-             need["title"] = need["title"]
-             results.append(need)
+..          if i == 0:
+..              need["title"] = need["title"]
+..              results.append(need)
 
 docs/features/frameworks
 ########################
@@ -526,110 +528,110 @@ docs/features/frameworks
              need["title"] = need["title"]
              results.append(need)
 
-docs/features/infrastructure
-############################
+.. docs/features/infrastructure
+.. ############################
 
-.. _documents_docs_features_infrastructure:
+.. .. _documents_docs_features_infrastructure:
 
-.. needtable::
-   :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
-   :sort: id
+.. .. needtable::
+..    :style: table
+..    :columns: title;id;safety;status
+..    :colwidths: 30,50,10,10
+..    :sort: id
 
-   results = []
-   name = "infrastructure"
+..    results = []
+..    name = "infrastructure"
 
-   # Generate list of all documents of the feature
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and name in need["docname"] and "features/" in need["docname"]:
-          results.append(need)
+..    # Generate list of all documents of the feature
+..    for need in needs.filter_types(["document"]):
+..        if need["docname"] is not None and name in need["docname"] and "features/" in need["docname"]:
+..           results.append(need)
 
-   # Check all documents in folder documents related to features against the found documents. If missing the template is add to the list
-   for need in needs.filter_types(["document"]):
-      if "template" in need["tags"] and "PROCESS" in need["id"] and "feature_name" in need["id"]:
+..    # Check all documents in folder documents related to features against the found documents. If missing the template is add to the list
+..    for need in needs.filter_types(["document"]):
+..       if "template" in need["tags"] and "PROCESS" in need["id"] and "feature_name" in need["id"]:
 
-         act_id = need["id"].replace("PROCESS_doc__feature_name", "")
+..          act_id = need["id"].replace("PROCESS_doc__feature_name", "")
 
-         i = 0
+..          i = 0
 
-         for x in results:
-             if act_id in x["id"]:
-                i = i+1
+..          for x in results:
+..              if act_id in x["id"]:
+..                 i = i+1
 
-         if i == 0:
-             need["title"] = need["title"]
-             results.append(need)
+..          if i == 0:
+..              need["title"] = need["title"]
+..              results.append(need)
 
-docs/features/integration
-#########################
+.. docs/features/integration
+.. #########################
 
-.. _documents_docs_features_integration:
+.. .. _documents_docs_features_integration:
 
-.. needtable::
-   :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
-   :sort: id
+.. .. needtable::
+..    :style: table
+..    :columns: title;id;safety;status
+..    :colwidths: 30,50,10,10
+..    :sort: id
 
-   results = []
-   name = "integration"
+..    results = []
+..    name = "integration"
 
-   # Generate list of all documents of the feature
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and name in need["docname"] and "features/" in need["docname"]:
-          results.append(need)
+..    # Generate list of all documents of the feature
+..    for need in needs.filter_types(["document"]):
+..        if need["docname"] is not None and name in need["docname"] and "features/" in need["docname"]:
+..           results.append(need)
 
-   # Check all documents in folder documents related to features against the found documents. If missing the template is add to the list
-   for need in needs.filter_types(["document"]):
-      if "template" in need["tags"] and "PROCESS" in need["id"] and "feature_name" in need["id"]:
+..    # Check all documents in folder documents related to features against the found documents. If missing the template is add to the list
+..    for need in needs.filter_types(["document"]):
+..       if "template" in need["tags"] and "PROCESS" in need["id"] and "feature_name" in need["id"]:
 
-         act_id = need["id"].replace("PROCESS_doc__feature_name", "")
+..          act_id = need["id"].replace("PROCESS_doc__feature_name", "")
 
-         i = 0
+..          i = 0
 
-         for x in results:
-             if act_id in x["id"]:
-                i = i+1
+..          for x in results:
+..              if act_id in x["id"]:
+..                 i = i+1
 
-         if i == 0:
-             need["title"] = need["title"]
-             results.append(need)
+..          if i == 0:
+..              need["title"] = need["title"]
+..              results.append(need)
 
-docs/features/lifecycle
-#######################
+.. docs/features/lifecycle
+.. #######################
 
-.. _documents_docs_features_lifecycle:
+.. .. _documents_docs_features_lifecycle:
 
-.. needtable::
-   :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
-   :sort: id
+.. .. needtable::
+..    :style: table
+..    :columns: title;id;safety;status
+..    :colwidths: 30,50,10,10
+..    :sort: id
 
-   results = []
-   name = "lifecycle"
+..    results = []
+..    name = "lifecycle"
 
-   # Generate list of all documents of the feature
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and name in need["docname"] and "features/" in need["docname"]:
-          results.append(need)
+..    # Generate list of all documents of the feature
+..    for need in needs.filter_types(["document"]):
+..        if need["docname"] is not None and name in need["docname"] and "features/" in need["docname"]:
+..           results.append(need)
 
-   # Check all documents in folder documents related to features against the found documents. If missing the template is add to the list
-   for need in needs.filter_types(["document"]):
-      if "template" in need["tags"] and "PROCESS" in need["id"] and "feature_name" in need["id"]:
+..    # Check all documents in folder documents related to features against the found documents. If missing the template is add to the list
+..    for need in needs.filter_types(["document"]):
+..       if "template" in need["tags"] and "PROCESS" in need["id"] and "feature_name" in need["id"]:
 
-         act_id = need["id"].replace("PROCESS_doc__feature_name", "")
+..          act_id = need["id"].replace("PROCESS_doc__feature_name", "")
 
-         i = 0
+..          i = 0
 
-         for x in results:
-             if act_id in x["id"]:
-                i = i+1
+..          for x in results:
+..              if act_id in x["id"]:
+..                 i = i+1
 
-         if i == 0:
-             need["title"] = need["title"]
-             results.append(need)
+..          if i == 0:
+..              need["title"] = need["title"]
+..              results.append(need)
 
 docs/features/orchestration
 ###########################
@@ -701,44 +703,44 @@ docs/features/persistency
              need["title"] = need["title"]
              results.append(need)
 
-docs/features/time
-##################
+.. docs/features/time
+.. ##################
 
-.. _documents_docs_features_time:
+.. .. _documents_docs_features_time:
 
-.. needtable::
-   :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
-   :sort: id
+.. .. needtable::
+..    :style: table
+..    :columns: title;id;safety;status
+..    :colwidths: 30,50,10,10
+..    :sort: id
 
-   results = []
-   name = "time"
+..    results = []
+..    name = "time"
 
-   # Generate list of all documents of the feature
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and name in need["docname"] and "features/" in need["docname"]:
-          results.append(need)
+..    # Generate list of all documents of the feature
+..    for need in needs.filter_types(["document"]):
+..        if need["docname"] is not None and name in need["docname"] and "features/" in need["docname"]:
+..           results.append(need)
 
-   # Check all documents in folder documents related to features against the found documents. If missing the template is add to the list
-   for need in needs.filter_types(["document"]):
-      if "template" in need["tags"] and "PROCESS" in need["id"] and "feature_name" in need["id"]:
+..    # Check all documents in folder documents related to features against the found documents. If missing the template is add to the list
+..    for need in needs.filter_types(["document"]):
+..       if "template" in need["tags"] and "PROCESS" in need["id"] and "feature_name" in need["id"]:
 
-         act_id = need["id"].replace("PROCESS_doc__feature_name", "")
+..          act_id = need["id"].replace("PROCESS_doc__feature_name", "")
 
-         i = 0
+..          i = 0
 
-         for x in results:
-             if act_id in x["id"]:
-                i = i+1
+..          for x in results:
+..              if act_id in x["id"]:
+..                 i = i+1
 
-         if i == 0:
-             need["title"] = need["title"]
-             results.append(need)
+..          if i == 0:
+..              need["title"] = need["title"]
+..              results.append(need)
 
 
-Modules and components documentation
-++++++++++++++++++++++++++++++++++++
+Modules documentation
++++++++++++++++++++++
 
 docs/modules/baselibs/docs
 ##########################
@@ -774,6 +776,262 @@ docs/modules/baselibs/docs
          if i == 0:
              need["title"] = need["title"]
              results.append(need)
+
+
+docs/modules/communication/docs
+###############################
+
+.. _documents_docs_modules_communication_docs:
+
+.. needtable::
+   :style: table
+   :columns: title;id;safety;status
+   :colwidths: 30,50,10,10
+   :sort: id
+
+   results = []
+   name = "communication"
+
+   # Generate list of all documents of the module
+   for need in needs.filter_types(["document"]):
+       if need["docname"] is not None and "modules/" + name + "/docs/" in need["docname"]:
+          results.append(need)
+
+   # Check all documents in folder documents related to modules against the found documents. If missing the template is add to the list
+   for need in needs.filter_types(["document"]):
+      if "template" in need["tags"] and "PROCESS" in need["id"] and "module_name" in need["id"]:
+
+         act_id = need["id"].replace("PROCESS_doc__module_name", "")
+
+         i = 0
+
+         for x in results:
+             if act_id in x["id"]:
+                i = i+1
+
+         if i == 0:
+             need["title"] = need["title"]
+             results.append(need)
+
+
+docs/modules/feo/docs
+#####################
+
+.. _documents_docs_modules_feo_docs:
+
+.. needtable::
+   :style: table
+   :columns: title;id;safety;status
+   :colwidths: 30,50,10,10
+   :sort: id
+
+   results = []
+   name = "feo"
+
+   # Generate list of all documents of the module
+   for need in needs.filter_types(["document"]):
+       if need["docname"] is not None and "modules/" + name + "/docs/" in need["docname"]:
+          results.append(need)
+
+   # Check all documents in folder documents related to modules against the found documents. If missing the template is add to the list
+   for need in needs.filter_types(["document"]):
+      if "template" in need["tags"] and "PROCESS" in need["id"] and "module_name" in need["id"]:
+
+         act_id = need["id"].replace("PROCESS_doc__module_name", "")
+
+         i = 0
+
+         for x in results:
+             if act_id in x["id"]:
+                i = i+1
+
+         if i == 0:
+             need["title"] = need["title"]
+             results.append(need)
+
+
+.. docs/modules/lifecycle/docs
+.. ###########################
+
+.. .. _documents_docs_modules_lifecycle_docs:
+
+.. .. needtable::
+..    :style: table
+..    :columns: title;id;safety;status
+..    :colwidths: 30,50,10,10
+..    :sort: id
+
+..    results = []
+..    name = "lifecycle"
+
+..    # Generate list of all documents of the module
+..    for need in needs.filter_types(["document"]):
+..        if need["docname"] is not None and "modules/" + name + "/docs/" in need["docname"]:
+..           results.append(need)
+
+..    # Check all documents in folder documents related to modules against the found documents. If missing the template is add to the list
+..    for need in needs.filter_types(["document"]):
+..       if "template" in need["tags"] and "PROCESS" in need["id"] and "module_name" in need["id"]:
+
+..          act_id = need["id"].replace("PROCESS_doc__module_name", "")
+
+..          i = 0
+
+..          for x in results:
+..              if act_id in x["id"]:
+..                 i = i+1
+
+..          if i == 0:
+..              need["title"] = need["title"]
+..              results.append(need)
+
+
+docs/modules/logging/docs
+#########################
+
+.. _documents_docs_modules_logging_docs:
+
+.. needtable::
+   :style: table
+   :columns: title;id;safety;status
+   :colwidths: 30,50,10,10
+   :sort: id
+
+   results = []
+   name = "logging"
+
+   # Generate list of all documents of the module
+   for need in needs.filter_types(["document"]):
+       if need["docname"] is not None and "modules/" + name + "/docs/" in need["docname"]:
+          results.append(need)
+
+   # Check all documents in folder documents related to modules against the found documents. If missing the template is add to the list
+   for need in needs.filter_types(["document"]):
+      if "template" in need["tags"] and "PROCESS" in need["id"] and "module_name" in need["id"]:
+
+         act_id = need["id"].replace("PROCESS_doc__module_name", "")
+
+         i = 0
+
+         for x in results:
+             if act_id in x["id"]:
+                i = i+1
+
+         if i == 0:
+             need["title"] = need["title"]
+             results.append(need)
+
+
+docs/modules/os/docs
+####################
+
+.. _documents_docs_modules_os_docs:
+
+.. needtable::
+   :style: table
+   :columns: title;id;safety;status
+   :colwidths: 30,50,10,10
+   :sort: id
+
+   results = []
+   name = "os"
+
+   # Generate list of all documents of the module
+   for need in needs.filter_types(["document"]):
+       if need["docname"] is not None and "modules/" + name + "/docs/" in need["docname"]:
+          results.append(need)
+
+   # Check all documents in folder documents related to modules against the found documents. If missing the template is add to the list
+   for need in needs.filter_types(["document"]):
+      if "template" in need["tags"] and "PROCESS" in need["id"] and "module_name" in need["id"]:
+
+         act_id = need["id"].replace("PROCESS_doc__module_name", "")
+
+         i = 0
+
+         for x in results:
+             if act_id in x["id"]:
+                i = i+1
+
+         if i == 0:
+             need["title"] = need["title"]
+             results.append(need)
+
+
+docs/modules/persistency/docs
+#############################
+
+.. _documents_docs_modules_persistency_docs:
+
+.. needtable::
+   :style: table
+   :columns: title;id;safety;status
+   :colwidths: 30,50,10,10
+   :sort: id
+
+   results = []
+   name = "persistency"
+
+   # Generate list of all documents of the module
+   for need in needs.filter_types(["document"]):
+       if need["docname"] is not None and "modules/" + name + "/docs/" in need["docname"]:
+          results.append(need)
+
+   # Check all documents in folder documents related to modules against the found documents. If missing the template is add to the list
+   for need in needs.filter_types(["document"]):
+      if "template" in need["tags"] and "PROCESS" in need["id"] and "module_name" in need["id"]:
+
+         act_id = need["id"].replace("PROCESS_doc__module_name", "")
+
+         i = 0
+
+         for x in results:
+             if act_id in x["id"]:
+                i = i+1
+
+         if i == 0:
+             need["title"] = need["title"]
+             results.append(need)
+
+
+docs/modules/tracing/docs
+#########################
+
+.. _documents_docs_modules_tracing_docs:
+
+.. needtable::
+   :style: table
+   :columns: title;id;safety;status
+   :colwidths: 30,50,10,10
+   :sort: id
+
+   results = []
+   name = "tracing"
+
+   # Generate list of all documents of the module
+   for need in needs.filter_types(["document"]):
+       if need["docname"] is not None and "modules/" + name + "/docs/" in need["docname"]:
+          results.append(need)
+
+   # Check all documents in folder documents related to modules against the found documents. If missing the template is add to the list
+   for need in needs.filter_types(["document"]):
+      if "template" in need["tags"] and "PROCESS" in need["id"] and "module_name" in need["id"]:
+
+         act_id = need["id"].replace("PROCESS_doc__module_name", "")
+
+         i = 0
+
+         for x in results:
+             if act_id in x["id"]:
+                i = i+1
+
+         if i == 0:
+             need["title"] = need["title"]
+             results.append(need)
+
+
+Components documentation
+++++++++++++++++++++++++
 
 
 docs/modules/baselibs/components
@@ -830,42 +1088,6 @@ docs/modules/baselibs/components
              components.append(component_name)
 
 
-docs/modules/communication/docs
-###############################
-
-.. _documents_docs_modules_communication_docs:
-
-.. needtable::
-   :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
-   :sort: id
-
-   results = []
-   name = "communication"
-
-   # Generate list of all documents of the module
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "modules/" + name + "/docs/" in need["docname"]:
-          results.append(need)
-
-   # Check all documents in folder documents related to modules against the found documents. If missing the template is add to the list
-   for need in needs.filter_types(["document"]):
-      if "template" in need["tags"] and "PROCESS" in need["id"] and "module_name" in need["id"]:
-
-         act_id = need["id"].replace("PROCESS_doc__module_name", "")
-
-         i = 0
-
-         for x in results:
-             if act_id in x["id"]:
-                i = i+1
-
-         if i == 0:
-             need["title"] = need["title"]
-             results.append(need)
-
-
 docs/modules/communication/components
 #####################################
 
@@ -918,42 +1140,6 @@ docs/modules/communication/components
                          results.append(need)
 
              components.append(component_name)
-
-
-docs/modules/feo/docs
-#####################
-
-.. _documents_docs_modules_feo_docs:
-
-.. needtable::
-   :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
-   :sort: id
-
-   results = []
-   name = "feo"
-
-   # Generate list of all documents of the module
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "modules/" + name + "/docs/" in need["docname"]:
-          results.append(need)
-
-   # Check all documents in folder documents related to modules against the found documents. If missing the template is add to the list
-   for need in needs.filter_types(["document"]):
-      if "template" in need["tags"] and "PROCESS" in need["id"] and "module_name" in need["id"]:
-
-         act_id = need["id"].replace("PROCESS_doc__module_name", "")
-
-         i = 0
-
-         for x in results:
-             if act_id in x["id"]:
-                i = i+1
-
-         if i == 0:
-             need["title"] = need["title"]
-             results.append(need)
 
 
 docs/modules/feo/components
@@ -1010,130 +1196,58 @@ docs/modules/feo/components
              components.append(component_name)
 
 
-docs/modules/lifecycle/docs
-###########################
+.. docs/modules/lifecycle/components
+.. #################################
 
-.. _documents_docs_modules_lifecycle_docs:
+.. .. _documents_docs_modules_lifecycle_components:
 
-.. needtable::
-   :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
-   :sort: id
+.. .. needtable::
+..    :style: table
+..    :columns: title;id;safety;status
+..    :colwidths: 30,50,10,10
+..    :sort: id
 
-   results = []
-   name = "lifecycle"
+..    results = []
+..    components = []
+..    name = "lifecycle"
 
-   # Generate list of all documents of the module
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "modules/" + name + "/docs/" in need["docname"]:
-          results.append(need)
+..    # Generate list of all documents of the component(s)
+..    for need in needs.filter_types(["document"]):
+..        if need["docname"] is not None and "modules/" + name in need["docname"]:
+..           if not "modules/" + name + "/docs/" in need["docname"]:
+..              results.append(need)
 
-   # Check all documents in folder documents related to modules against the found documents. If missing the template is add to the list
-   for need in needs.filter_types(["document"]):
-      if "template" in need["tags"] and "PROCESS" in need["id"] and "module_name" in need["id"]:
+..    # The folder(s) of the component(s) will be identified and added to a list. After that all documents in folder documents related to component checked against the found documents. If missing the template is add to the list
+..    for need in needs.filter_types(["document"]):
+..        if need["docname"] is not None and "modules/" + name in need["docname"]:
+..           if not "modules/" + name + "/docs/" in need["docname"]:
+..              component_name = need["docname"]
+..              component_name = component_name.split("/")[2]
 
-         act_id = need["id"].replace("PROCESS_doc__module_name", "")
+..              n = 0
+..              for x in components:
+..                 if component_name == x:
+..                    n = 1
 
-         i = 0
+..              if n == 0:
 
-         for x in results:
-             if act_id in x["id"]:
-                i = i+1
+..                 # List of all templates will be checked against the documents of the component if documents are missing or wrong named
+..                 for need in needs.filter_types(["document"]):
+..                    if "template" in need["tags"] and "PROCESS" in need["id"] and "component_name" in need["id"]:
 
-         if i == 0:
-             need["title"] = need["title"]
-             results.append(need)
+..                       act_id = need["id"].replace("PROCESS_doc__component_name", "")
 
+..                       i = 0
 
-docs/modules/lifecycle/components
-#################################
+..                       for x in results:
+..                          if act_id in x["id"] and component_name in x["id"]:
+..                             i = i+1
 
-.. _documents_docs_modules_lifecycle_components:
+..                       if i == 0:
+..                          need["title"] = need["title"]
+..                          results.append(need)
 
-.. needtable::
-   :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
-   :sort: id
-
-   results = []
-   components = []
-   name = "lifecycle"
-
-   # Generate list of all documents of the component(s)
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "modules/" + name in need["docname"]:
-          if not "modules/" + name + "/docs/" in need["docname"]:
-             results.append(need)
-
-   # The folder(s) of the component(s) will be identified and added to a list. After that all documents in folder documents related to component checked against the found documents. If missing the template is add to the list
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "modules/" + name in need["docname"]:
-          if not "modules/" + name + "/docs/" in need["docname"]:
-             component_name = need["docname"]
-             component_name = component_name.split("/")[2]
-
-             n = 0
-             for x in components:
-                if component_name == x:
-                   n = 1
-
-             if n == 0:
-
-                # List of all templates will be checked against the documents of the component if documents are missing or wrong named
-                for need in needs.filter_types(["document"]):
-                   if "template" in need["tags"] and "PROCESS" in need["id"] and "component_name" in need["id"]:
-
-                      act_id = need["id"].replace("PROCESS_doc__component_name", "")
-
-                      i = 0
-
-                      for x in results:
-                         if act_id in x["id"] and component_name in x["id"]:
-                            i = i+1
-
-                      if i == 0:
-                         need["title"] = need["title"]
-                         results.append(need)
-
-             components.append(component_name)
-
-
-docs/modules/logging/docs
-#########################
-
-.. _documents_docs_modules_logging_docs:
-
-.. needtable::
-   :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
-   :sort: id
-
-   results = []
-   name = "logging"
-
-   # Generate list of all documents of the module
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "modules/" + name + "/docs/" in need["docname"]:
-          results.append(need)
-
-   # Check all documents in folder documents related to modules against the found documents. If missing the template is add to the list
-   for need in needs.filter_types(["document"]):
-      if "template" in need["tags"] and "PROCESS" in need["id"] and "module_name" in need["id"]:
-
-         act_id = need["id"].replace("PROCESS_doc__module_name", "")
-
-         i = 0
-
-         for x in results:
-             if act_id in x["id"]:
-                i = i+1
-
-         if i == 0:
-             need["title"] = need["title"]
-             results.append(need)
+..              components.append(component_name)
 
 
 docs/modules/logging/components
@@ -1190,42 +1304,6 @@ docs/modules/logging/components
              components.append(component_name)
 
 
-docs/modules/os/docs
-####################
-
-.. _documents_docs_modules_os_docs:
-
-.. needtable::
-   :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
-   :sort: id
-
-   results = []
-   name = "os"
-
-   # Generate list of all documents of the module
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "modules/" + name + "/docs/" in need["docname"]:
-          results.append(need)
-
-   # Check all documents in folder documents related to modules against the found documents. If missing the template is add to the list
-   for need in needs.filter_types(["document"]):
-      if "template" in need["tags"] and "PROCESS" in need["id"] and "module_name" in need["id"]:
-
-         act_id = need["id"].replace("PROCESS_doc__module_name", "")
-
-         i = 0
-
-         for x in results:
-             if act_id in x["id"]:
-                i = i+1
-
-         if i == 0:
-             need["title"] = need["title"]
-             results.append(need)
-
-
 docs/modules/os/components
 ##########################
 
@@ -1280,42 +1358,6 @@ docs/modules/os/components
              components.append(component_name)
 
 
-docs/modules/persistency/docs
-#############################
-
-.. _documents_docs_modules_persistency_docs:
-
-.. needtable::
-   :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
-   :sort: id
-
-   results = []
-   name = "persistency"
-
-   # Generate list of all documents of the module
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "modules/" + name + "/docs/" in need["docname"]:
-          results.append(need)
-
-   # Check all documents in folder documents related to modules against the found documents. If missing the template is add to the list
-   for need in needs.filter_types(["document"]):
-      if "template" in need["tags"] and "PROCESS" in need["id"] and "module_name" in need["id"]:
-
-         act_id = need["id"].replace("PROCESS_doc__module_name", "")
-
-         i = 0
-
-         for x in results:
-             if act_id in x["id"]:
-                i = i+1
-
-         if i == 0:
-             need["title"] = need["title"]
-             results.append(need)
-
-
 docs/modules/persistency/components
 ###################################
 
@@ -1368,42 +1410,6 @@ docs/modules/persistency/components
                          results.append(need)
 
              components.append(component_name)
-
-
-docs/modules/tracing/docs
-#########################
-
-.. _documents_docs_modules_tracing_docs:
-
-.. needtable::
-   :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
-   :sort: id
-
-   results = []
-   name = "tracing"
-
-   # Generate list of all documents of the module
-   for need in needs.filter_types(["document"]):
-       if need["docname"] is not None and "modules/" + name + "/docs/" in need["docname"]:
-          results.append(need)
-
-   # Check all documents in folder documents related to modules against the found documents. If missing the template is add to the list
-   for need in needs.filter_types(["document"]):
-      if "template" in need["tags"] and "PROCESS" in need["id"] and "module_name" in need["id"]:
-
-         act_id = need["id"].replace("PROCESS_doc__module_name", "")
-
-         i = 0
-
-         for x in results:
-             if act_id in x["id"]:
-                i = i+1
-
-         if i == 0:
-             need["title"] = need["title"]
-             results.append(need)
 
 
 docs/modules/tracing/components
