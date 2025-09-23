@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>DR-001-Infra: Placeholder &#8212; S-CORE  documentation</title>
+    <title>DR-001-Infra: Integration Strategy for External Development Tools &#8212; S-CORE  documentation</title>
   
   
   
@@ -72,6 +72,7 @@
         </script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="DR-002-Infra: Integration Testing in a Distributed Monolith" href="DR-002-infra.html" />
     <link rel="prev" title="Decision Records" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -152,13 +153,6 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../introduction/index.html">
-    Introduction
-  </a>
-</li>
-
-
-<li class="nav-item ">
   <a class="nav-link nav-internal" href="../requirements/index.html">
     Requirements
   </a>
@@ -185,6 +179,13 @@
   </a>
 </li>
 
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
             <li class="nav-item dropdown">
                 <button class="btn dropdown-toggle nav-item" type="button"
                 data-bs-toggle="dropdown" aria-expanded="false"
@@ -193,13 +194,6 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../score_releases/index.html">
-    Releases
-  </a>
-</li>
-
-
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../score_tools/index.html">
     Tools
@@ -224,6 +218,13 @@
 <li class=" current active">
   <a class="nav-link dropdown-item nav-internal" href="index.html">
     Decision Records
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
   </a>
 </li>
 
@@ -340,13 +341,6 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../introduction/index.html">
-    Introduction
-  </a>
-</li>
-
-
-<li class="nav-item ">
   <a class="nav-link nav-internal" href="../requirements/index.html">
     Requirements
   </a>
@@ -405,6 +399,13 @@
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="index.html">
     Decision Records
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
   </a>
 </li>
 
@@ -472,7 +473,8 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">DR-001-Infra: Placeholder</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">DR-001-Infra: Integration Strategy for External Development Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-002-infra.html">DR-002-Infra: Integration Testing in a Distributed Monolith</a></li>
 </ul>
 </div>
 </nav></div>
@@ -516,7 +518,7 @@
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">Decision Records</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">DR-001-Infra: Placeholder</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">DR-001-Infra: Integration Strategy for External Development Tools</span></li>
   </ul>
 </nav>
 </div>
@@ -533,8 +535,202 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="dr-001-infra-placeholder">
-<h1>DR-001-Infra: Placeholder<a class="headerlink" href="#dr-001-infra-placeholder" title="Link to this heading">#</a></h1>
+  <!--
+Copyright (c) 2025 Contributors to the Eclipse Foundation
+
+See the NOTICE file(s) distributed with this work for additional
+information regarding copyright ownership.
+
+This program and the accompanying materials are made available under the
+terms of the Apache License Version 2.0 which is available at
+https://www.apache.org/licenses/LICENSE-2.0
+
+SPDX-License-Identifier: Apache-2.0
+-->
+<section id="dr-001-infra-integration-strategy-for-external-development-tools">
+<h1>DR-001-Infra: Integration Strategy for External Development Tools<a class="headerlink" href="#dr-001-infra-integration-strategy-for-external-development-tools" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><strong>Status:</strong> Agreed within Community</p></li>
+<li><p><strong>Owner:</strong> Infrastructure Community</p></li>
+<li><p><strong>Date:</strong> 2025-09-01</p></li>
+</ul>
+<hr class="docutils" />
+<section id="context-problem">
+<h2>1. Context / Problem<a class="headerlink" href="#context-problem" title="Link to this heading">#</a></h2>
+<p>We use a broad set of tools (formatters, linters, static analyzers, code generators, license/SBOM and security scanners, doc builders) across multiple repositories. Today, tools are invoked via Bazel, IDEs, and CI with varying levels of pinning and caching. We need a standard approach that runs <strong>identically</strong> in CI, local CLI, and IDE/editor integrations, and that fits ISO 26262/ASPICE constraints (version pinning, determinism, long-term retention, offline path).</p>
+</section>
+<section id="requirements">
+<h2>2. Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Version Pinning</strong>: Identical tool versions across CLI/CI/IDE; no hidden network during execution; artifacts hash-pinned.</p></li>
+<li><p><strong>Config Consistency</strong>: Central baseline config; explicit, reviewable local overrides with drift detection.</p></li>
+<li><p><strong>Performance</strong>: Fast full and incremental runs; leverage remote cache/execution for heavy, Bazel-config-dependent tools.</p></li>
+<li><p><strong>Offline &amp; Retention</strong>: Prefetch &amp; store artifacts for ≥10 years; fully offline execution path.</p></li>
+<li><p><strong>Platforms</strong>: Ubuntu x86_64 + additional to be defined, e.g. Alpine, arm64 etc.</p></li>
+<li><p><strong>Low Friction</strong>: Minimal per-repo boilerplate; single invocation pattern; easy upgrades.</p></li>
+<li><p><strong>Maintenance Effort</strong>: Keep the system simple; avoid bespoke per-tool frameworks.</p></li>
+</ol>
+<section id="assumptions">
+<h3>Assumptions<a class="headerlink" href="#assumptions" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>SCORE keeps the multirepo approach, therefore almost all tools only need to run on a single module at a time.</p></li>
+</ul>
+</section>
+</section>
+<section id="options-considered">
+<h2>3. Options Considered<a class="headerlink" href="#options-considered" title="Link to this heading">#</a></h2>
+<section id="bazel-aspects">
+<h3>3.1 Bazel Aspects<a class="headerlink" href="#bazel-aspects" title="Link to this heading">#</a></h3>
+<p>Graph-aware aspects perform analysis/formatting per target, running only on affected targets (others are cached).</p>
+<p><strong>Pros:</strong></p>
+<ul class="simple">
+<li><p>Efficient: Only runs on affected targets; remote execution possible.</p></li>
+<li><p>Config-aware: Linters run on correct configuration as selected via Bazel.</p></li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul class="simple">
+<li><p>Complexity: Limited know-how, higher maintenance.</p></li>
+<li><p>Performance: Slow in rare cases (large targets, per-target Python venvs, duplicate analysis).</p></li>
+<li><p>Coverage: Not all tools are packagable (e.g., <code class="docutils literal notranslate"><span class="pre">dot</span></code>, PlantUML); alternatives needed.</p></li>
+<li><p>IDE Integration: Aspects lack IDE/editor support; must be supplemented by other methods.</p></li>
+</ul>
+</section>
+<section id="bazel-multitool">
+<h3>3.2 Bazel Multitool<a class="headerlink" href="#bazel-multitool" title="Link to this heading">#</a></h3>
+<p>Centrally pinned binaries executed via <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">run</span></code>.</p>
+<p><strong>Pros:</strong></p>
+<ul class="simple">
+<li><p>Simple and compatible with IDE use cases.</p></li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul class="simple">
+<li><p>No centralized config sharing or caching for slow tools.</p></li>
+<li><p>Not all tools are packagable (e.g., <code class="docutils literal notranslate"><span class="pre">dot</span></code>).</p></li>
+<li><p>Requires pre-execution setup (environment, dependencies).</p></li>
+</ul>
+</section>
+<section id="bazel-rules-other-bazel-integrations">
+<h3>3.3 Bazel Rules &amp; Other Bazel Integrations<a class="headerlink" href="#bazel-rules-other-bazel-integrations" title="Link to this heading">#</a></h3>
+<p>Custom Bazel rules encapsulate tool invocations/configurations for deeper integration.</p>
+<p><strong>Pros:</strong></p>
+<ul class="simple">
+<li><p>Leverages Bazel caching and remote execution.</p></li>
+<li><p>Useful where aspects/multitool are unsuitable.</p></li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul class="simple">
+<li><p>Increased complexity in rule management.</p></li>
+<li><p>Typically not compatible with IDE usage.</p></li>
+</ul>
+</section>
+<section id="devcontainer">
+<h3>3.4 Devcontainer<a class="headerlink" href="#devcontainer" title="Link to this heading">#</a></h3>
+<p>Container image as authoritative tool distribution.</p>
+<p><strong>Pros:</strong></p>
+<ul class="simple">
+<li><p>Straightforward onboarding; well-known concept.</p></li>
+<li><p>IDE support out of the box.</p></li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul class="simple">
+<li><p>Large images can be slow on CI.</p></li>
+<li><p>Tools may implicitly use container content, not explicit dependencies.</p></li>
+</ul>
+</section>
+<section id="native-host-installs">
+<h3>3.5 Native Host Installs<a class="headerlink" href="#native-host-installs" title="Link to this heading">#</a></h3>
+<p>Rely on developer/CI host environment package managers.</p>
+<p><strong>Pros:</strong></p>
+<ul class="simple">
+<li><p>Fastest invocation; no wrapper overhead.</p></li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul class="simple">
+<li><p>No version pinning; unenforceable consistency and high drift.</p></li>
+<li><p>Requires native setup.</p></li>
+</ul>
+</section>
+</section>
+<section id="deep-dives">
+<h2>4. Deep Dives<a class="headerlink" href="#deep-dives" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3>4.1 Bazel Multitool<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>We’ve invested enough time and energy into a solution with multitool to state that it is
+a viable option. However, it requires significant effort and workarounds for tools that need
+to be called directly from the IDE (for example, the Python binary).</p>
+<p>We cannot set Bazel commands as executable paths; editor integrations usually expect a direct executable, so a small local wrapper script per repository is required. Examples: <code class="docutils literal notranslate"><span class="pre">python</span></code>, <code class="docutils literal notranslate"><span class="pre">ruff</span></code>, <code class="docutils literal notranslate"><span class="pre">starpls</span></code>, <code class="docutils literal notranslate"><span class="pre">spellcheck</span></code>, <code class="docutils literal notranslate"><span class="pre">yamlfmt</span></code>.</p>
+<p>As multitool does not handle tool configuration, an additional solution is required per tool, which adds complexity.</p>
+</section>
+<section id="tool-versioning">
+<h3>4.2 Tool Versioning<a class="headerlink" href="#tool-versioning" title="Link to this heading">#</a></h3>
+<p>For some tools keeping the version exactly the same is less important. Especially
+extensions within VS Code typically come with their own bundled binaries. As long as
+those are roughly the same version, slight inconsistencies between IDE and CI are
+quite acceptable.</p>
+<p>Especially in language servers which are only available within the IDE and are not
+strictly safety relevant, this is viable.</p>
+</section>
+<section id="native-tools-in-ci">
+<h3>4.3 Native Tools in CI<a class="headerlink" href="#native-tools-in-ci" title="Link to this heading">#</a></h3>
+<p>As using bazel and devcontainer introduces significant overhead, it seems natural to use certain tools natively in CI.
+e.g. using the same installation scripts in devcontainers and CI has proven viable in other projects. Or providing a smaller and more dedicated CI image. These approaches will be detailed in a follow-up DR.</p>
+<p>More interestingly there are cases where the exact version is less important (python) or
+is managed outside bazel anyway (python requirements.txt files). In such cases native
+installs have no disadvantages and are significantly easier (development) and faster (runtime).</p>
+</section>
+</section>
+<section id="conclusion">
+<h2>5. Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Devcontainer</strong> is the primary distribution for all tools, ensuring consistency and ease of onboarding.</p></li>
+<li><p>The same devcontainer (possibly stripped down) is used in CI for reproducibility.</p></li>
+<li><p><strong>Bazel aspects</strong> are used for tools that benefit from Bazel-config-dependent analysis or caching. Custom Bazel rules are possible but not actively pursued.</p></li>
+<li><p>For small/fast CI jobs, <strong>native installs</strong> are preferred due to speed, especially when version pinning is less critical (see Deep Dive 4.3).</p></li>
+<li><p><strong>Bazel multitool</strong> is a viable alternative for those not using devcontainer, but maintaining it requires significant effort and is not currently feasible for SCORE.</p></li>
+</ul>
+</section>
+<section id="appendix-tool-categories">
+<h2>Appendix: Tool Categories<a class="headerlink" href="#appendix-tool-categories" title="Link to this heading">#</a></h2>
+<p><strong>Bazel-config-dependent &amp; cacheable</strong>
+<em>Provided via Bazel aspects and devcontainer for IDE support</em></p>
+<ul class="simple">
+<li><p>Compilers (LLVM/Clang/GCC/… via toolchains)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">clang-tidy</span></code>, <code class="docutils literal notranslate"><span class="pre">clang-analyzer</span></code></p></li>
+</ul>
+<p><strong>Independent &amp; Fast Code Analysis</strong>
+<em>Provided via devcontainer (pre-commit, IDE, CI)</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ruff</span></code> (Python)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">basedpyright</span></code> (Python)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">actionlint</span></code> (GitHub Actions)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">yamlfmt</span></code> (YAML)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">spellcheck</span></code> (text)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">buildifier</span></code> (Bazel)</p></li>
+</ul>
+<p><strong>Independent Tools</strong>
+<em>Provided via devcontainer</em></p>
+<ul class="simple">
+<li><p>IDE language servers: <code class="docutils literal notranslate"><span class="pre">rust-analyzer</span></code>, <code class="docutils literal notranslate"><span class="pre">clangd</span></code>, <code class="docutils literal notranslate"><span class="pre">starpls</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">buildifier</span></code>, <code class="docutils literal notranslate"><span class="pre">bazel-compile-commands</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">curl</span></code>, <code class="docutils literal notranslate"><span class="pre">qemu-system-aarch64</span></code>, <code class="docutils literal notranslate"><span class="pre">sshpass</span></code> (??)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">protoc</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gcovr</span></code></p></li>
+</ul>
+<p><strong>Not Natively Cacheable in Bazel</strong>
+<em>Provided via devcontainer</em></p>
+<ul class="simple">
+<li><p>Sphinx (incl. <code class="docutils literal notranslate"><span class="pre">sphinx-needs</span></code>, <code class="docutils literal notranslate"><span class="pre">PlantUML</span></code>, <code class="docutils literal notranslate"><span class="pre">graphviz</span></code>, and many dependencies)</p></li>
+<li><p>GraphQL (static code analysis)</p></li>
+<li><p>Eclipse Dash (license analysis)</p></li>
+</ul>
+<p><strong>System Dependencies</strong>
+<em>Must be provided via devcontainer</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bazelisk</span></code> / <code class="docutils literal notranslate"><span class="pre">bazel</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dot</span></code></p></li>
+</ul>
+</section>
 </section>
 
 
@@ -556,6 +752,15 @@
         <p class="prev-next-title">Decision Records</p>
       </div>
     </a>
+    <a class="right-next"
+       href="DR-002-infra.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">DR-002-Infra: Integration Testing in a Distributed Monolith</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -568,10 +773,42 @@
 
 
   <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context-problem">1. Context / Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">2. Requirements</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions">Assumptions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#options-considered">3. Options Considered</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bazel-aspects">3.1 Bazel Aspects</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bazel-multitool">3.2 Bazel Multitool</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bazel-rules-other-bazel-integrations">3.3 Bazel Rules &amp; Other Bazel Integrations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#devcontainer">3.4 Devcontainer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#native-host-installs">3.5 Native Host Installs</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-dives">4. Deep Dives</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4.1 Bazel Multitool</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-versioning">4.2 Tool Versioning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#native-tools-in-ci">4.3 Native Tools in CI</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">5. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-tool-categories">Appendix: Tool Categories</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/design_decisions/DR-001-infra.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/design_decisions/DR-001-infra.md">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -587,7 +824,7 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/design_decisions/DR-001-infra.rst.txt"
+      <li><a href="../_sources/design_decisions/DR-001-infra.md.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div></div>
