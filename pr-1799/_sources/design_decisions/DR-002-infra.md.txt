@@ -33,12 +33,12 @@ The concept described here turns a collection of separate repositories into a sy
 
 ### Typical workflow
 
-* Within components PRs are created.
-  * component local verification is executed.
-  * integration testing (quick) is executed.
+* Component PRs are created.
+  * Run component local verification.
+  * Run integration testing (quick).
 * Post merge:
-  * integration test (full) is executed.
-* Only after successful integration testing (full) a release can be created
+  * Run integration test (full).
+* Only after successful integration testing (full) can a release be created.
 
 ### Benefits
 - Problems across repositories are caught early.
