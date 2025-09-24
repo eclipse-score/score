@@ -31,6 +31,15 @@ The concept described here turns a collection of separate repositories into a sy
   - and a **deeper validation** (heavier tests run after merges or on a schedule BEFORE release in any repository).
 - This setup guarantees that developers can trust the system as a whole to consistently work.
 
+### Typical workflow
+
+* Within components PRs are created.
+  * component local verification is executed.
+  * integration testing (quick) is executed.
+* Post merge:
+  * integration test (full) is executed.
+* Only after successful integration testing (full) a release can be created
+
 ### Benefits
 - Problems across repositories are caught early.
 - Developers spend less time coordinating merges (“merge after me” scenarios disappear).
