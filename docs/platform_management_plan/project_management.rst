@@ -250,34 +250,23 @@ repository but no *Bug* WP shall be created in the *child project* repository.
 
 * A *Story* *GitHub Issue* is the primary planning work package for development teams.
   *Story* work packages should be scoped in a way that allows them to be completed within
-  the defined *Iteration* length (e.g., 2, 3, or 4 weeks) of the S-CORE project.
+  the release cycle of the S-CORE project.
   While a *Story* work package can be implemented by multiple team members, it is recommended
   that one developer takes main responsibility for its completion. Quality assurance activities,
   such as code reviews, should be performed by other team members.
-  *Story* work packages are typically grouped under an *Epic* work package.
+  *Story* work packages are typically grouped under an *Product Increment* work package.
   However, a *Story* work package can also exist as a standalone work package if its outcome represents
-  a complete functional improvement, making a related *Epic* work package unnecessary.
+  a complete functional improvement, making a related *Product Increment* work package unnecessary.
 
-* An *Epic* *GitHub Issue* represents a complete, experienceable functional improvement whose
-  implementation cannot be completed within a single Iteration. Therefore, *Epic* work packages
-  consist of multiple *Story* work packages that collectively contribute to fulfilling the scope
-  of the *Epic* work package.
-  An *Epic* work package should be linked as a child to a *Milestone* work package to indicate
-  when the content of the *Epic* work package is expected to be delivered.
-  *Epic* work packages can also exist as standalone work packages without being linked as a child
-  to any *Milestone* work package but *Milestone* work packages should be the only method used
-  to group multiple *Epic* work packages together.
-
-* A *Milestone* *GitHub Issue* represents the highest level in the work package hierarchy and
-  cannot be linked as a child of another issue. If you need to group multiple *Milestone* work packages,
+* A *Product Increment* *GitHub Issue* represents the highest level in the work package hierarchy and
+  cannot be linked as a child of another issue. If you need to group multiple *Product Increment* work packages,
   this must be done using labels.
-  A *Milestone* work package can have multiple *Epic* work packages as child work packages.
-  In exceptional cases, a *Story* work package may also be linked as a child of a *Milestone* work package
+  A *Product Increment* work package can have multiple *Story* work packages as child work packages.
+  In exceptional cases, a *Story* work package may also be linked as a child of a *Product Increment* work package
   if its outcome represents a complete functional improvement.
 
 * A *Feature Request* *GitHub Issues* represents an independent work package used to describe and
-  track a high-level request for the project. Its content serves as input for the creation of
-  *Epic*, *Story* and *Milestone* work packages. *Feature Request* work packages can be linked to
+  track a high-level request for the project. *Feature Request* work packages can be linked to
   other work packages, but they must not be treated as parent work packages.
 
 * A *Bug* *GitHub Issue* is used to report any kind of problem or malfunction. It is considered
