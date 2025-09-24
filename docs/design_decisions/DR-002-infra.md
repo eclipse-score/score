@@ -47,8 +47,7 @@ The concept described here turns a collection of separate repositories into a sy
 
 Note: this concept is easily extendable to support multiple versions of S-CORE. But that's currently not required.
 
-See [continuous integration](https://martinfowler.com/articles/continuousIntegration.html)
-for a deeper dive into the topic.
+See Martin Fowler's [continuous integration](https://martinfowler.com/articles/continuousIntegration.html) article for a deeper dive into the topic.
 
 ---
 ## Introduction
