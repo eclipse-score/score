@@ -301,41 +301,6 @@ are related to the same topic, together.
     :alt: Sub issues overview
     :align: center
 
-Status of Work Packages
-^^^^^^^^^^^^^^^^^^^^^^^
-* **New**
-
-  The *New* status represents a newly created work package that has not yet been processed
-  for further evaluation. However, the content may be continuously updated by the author.
-
-* **Analyze**
-
-  The *Analyze* status indicates that evaluation activities are underway regarding the work package.
-  At this stage, no output is produced in a repository, but clarification of the content may be
-  in progress. Relevant teams might be estimating the effort, assessing feasibility, or
-  identifying potential risks. This status is primarily used during the planning phase before
-  the work package becomes part of committed work.
-
-* **In Progress**
-
-  The *In Progress* status is used when a person or team is actively working on the work package,
-  producing commits and pull requests related to its content. Parent work packages should also
-  be set to *In Progress* if any of their child work packages are in this status.
-
-* **Blocked**
-
-  The *Blocked* status indicates that an issue is preventing the work package from progressing.
-  Blocked packages require special attention, as they may impact entire milestone work packages or
-  even release deliveries.
-
-* **Done**
-
-  The *Done* status is set when a work package is completed. If the work package type is bound to a
-  specific Definition of Done (DoD), fulfillment of this DoD is an additional requirement
-  for marking the work package as *Done*.
-
-.. uml:: _assets/work_packages_workflow.puml
-
 Traceability
 ^^^^^^^^^^^^
 To achieve a better traceability it is highly recommended to link all *PRs* to the corresponding
