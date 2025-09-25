@@ -49,6 +49,36 @@ jobs:
         with:
           ref: ${{ github.head_ref || github.event.pull_request.head.ref || github.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
+      - name: Verify Doc-as-Code version
+        id: doc_version
+        run: |
+          if python3 .github/scripts/check_doc_tool_version.py \
+            --doc docs/score_tools/doc_as_code.rst \
+            --dac-module-name score_docs_as_code
+          then
+            echo "Doc-as-Code version matching. Everything is fine."
+            echo "mismatch=False" >> "$GITHUB_OUTPUT"
+          else
+            echo "mismatch=True" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Find Comment
+        uses: peter-evans/find-comment@v3
+        id: fc
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: Docs-as-Code version mismatch detected
+
+      - name: Warn in PR if docs-as-code version mismatch
+        if: ${{ github.event_name == 'pull_request_target' && steps.doc_version.outputs.mismatch == 'True' && steps.fc.outputs.comment-id == '' }}
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{github.event.pull_request.number}}
+          body: |
+            ⚠️ **Docs-as-Code version mismatch detected**
+            Please check the CI build logs for details and align the documentation version with the Bazel dependency.
+
       - name: Setup Bazel
         uses: bazel-contrib/setup-bazel@0.9.1
       - name: Install Graphviz
