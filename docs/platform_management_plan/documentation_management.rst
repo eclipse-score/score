@@ -103,8 +103,8 @@ docs/glossary
 
 .. needtable::
    :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
    :sort: docname
 
    results = []
@@ -121,8 +121,8 @@ docs/contribute
 
 .. needtable::
    :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
 
    results = []
 
@@ -139,8 +139,8 @@ docs/platform_management_plan
 
 .. needtable::
    :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
    :sort: docname
 
    results = []
@@ -157,8 +157,8 @@ docs/requirements
 
 .. needtable::
    :style: table
-   :columns: title;id;safety;status,docname
-   :colwidths: 30,50,10,10,10
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
    :sort: docname
 
    results = []
@@ -175,8 +175,8 @@ docs/quality
 
 .. needtable::
    :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
    :sort: docname
 
    results = []
@@ -193,8 +193,8 @@ docs/safety
 
 .. needtable::
    :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
    :sort: docname
 
    results = []
@@ -211,8 +211,8 @@ docs/security
 
 .. needtable::
    :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
    :sort: docname
 
    results = []
@@ -229,8 +229,8 @@ docs/score_tools
 
 .. needtable::
    :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
+   :columns: title;id;safety_affected;security_affected;status
+   :colwidths: 25,45,10,10,10
    :sort: docname
 
    results = []
@@ -247,8 +247,8 @@ docs/verification_report
 
 .. needtable::
    :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
    :sort: docname
 
    results = []
@@ -265,8 +265,8 @@ platform_integration_tests
 
 .. needtable::
    :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
    :sort: docname
 
    results = []
@@ -283,8 +283,8 @@ docs/manuals
 
 .. needtable::
    :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
    :sort: docname
 
    results = []
@@ -301,8 +301,8 @@ docs/score_releases
 
 .. needtable::
    :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
    :sort: docname
 
    results = []
@@ -325,8 +325,8 @@ planned for release v0.5, are listed.
 
 .. .. needtable::
 ..    :style: table
-..    :columns: title;id;safety;status
-..    :colwidths: 30,50,10,10
+..    :columns: title;id;safety;security;status
+..    :colwidths: 25,45,10,10,10
 ..    :sort: id
 
 ..    results = []
@@ -360,8 +360,8 @@ planned for release v0.5, are listed.
 
 .. .. needtable::
 ..    :style: table
-..    :columns: title;id;safety;status
-..    :colwidths: 30,50,10,10
+..    :columns: title;id;safety;security;status
+..    :colwidths: 25,45,10,10,10
 ..    :sort: id
 
 ..    results = []
@@ -395,8 +395,8 @@ docs/features/baselibs
 
 .. needtable::
    :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
    :sort: id
 
    results = []
@@ -430,8 +430,8 @@ docs/features/communication
 
 .. needtable::
    :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
    :sort: id
 
    results = []
@@ -465,8 +465,8 @@ docs/features/communication
 
 .. .. needtable::
 ..    :style: table
-..    :columns: title;id;safety;status
-..    :colwidths: 30,50,10,10
+..    :columns: title;id;safety;security;status
+..    :colwidths: 25,45,10,10,10
 ..    :sort: id
 
 ..    results = []
@@ -500,8 +500,8 @@ docs/features/frameworks
 
 .. needtable::
    :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
    :sort: id
 
    results = []
@@ -535,8 +535,8 @@ docs/features/frameworks
 
 .. .. needtable::
 ..    :style: table
-..    :columns: title;id;safety;status
-..    :colwidths: 30,50,10,10
+..    :columns: title;id;safety;security;status
+..    :colwidths: 25,45,10,10,10
 ..    :sort: id
 
 ..    results = []
@@ -570,8 +570,8 @@ docs/features/frameworks
 
 .. .. needtable::
 ..    :style: table
-..    :columns: title;id;safety;status
-..    :colwidths: 30,50,10,10
+..    :columns: title;id;safety;security;status
+..    :colwidths: 25,45,10,10,10
 ..    :sort: id
 
 ..    results = []
@@ -605,8 +605,8 @@ docs/features/frameworks
 
 .. .. needtable::
 ..    :style: table
-..    :columns: title;id;safety;status
-..    :colwidths: 30,50,10,10
+..    :columns: title;id;safety;security;status
+..    :colwidths: 25,45,10,10,10
 ..    :sort: id
 
 ..    results = []
@@ -640,8 +640,8 @@ docs/features/orchestration
 
 .. needtable::
    :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
    :sort: id
 
    results = []
@@ -675,8 +675,8 @@ docs/features/persistency
 
 .. needtable::
    :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
    :sort: id
 
    results = []
@@ -710,8 +710,8 @@ docs/features/persistency
 
 .. .. needtable::
 ..    :style: table
-..    :columns: title;id;safety;status
-..    :colwidths: 30,50,10,10
+..    :columns: title;id;safety;security;status
+..    :colwidths: 25,45,10,10,10
 ..    :sort: id
 
 ..    results = []
@@ -749,8 +749,8 @@ docs/modules/baselibs/docs
 
 .. needtable::
    :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
    :sort: id
 
    results = []
@@ -785,8 +785,8 @@ docs/modules/communication/docs
 
 .. needtable::
    :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
    :sort: id
 
    results = []
@@ -821,8 +821,8 @@ docs/modules/feo/docs
 
 .. needtable::
    :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
    :sort: id
 
    results = []
@@ -857,8 +857,8 @@ docs/modules/feo/docs
 
 .. .. needtable::
 ..    :style: table
-..    :columns: title;id;safety;status
-..    :colwidths: 30,50,10,10
+..    :columns: title;id;safety;security;status
+..    :colwidths: 25,45,10,10,10
 ..    :sort: id
 
 ..    results = []
@@ -893,8 +893,8 @@ docs/modules/logging/docs
 
 .. needtable::
    :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
    :sort: id
 
    results = []
@@ -929,8 +929,8 @@ docs/modules/os/docs
 
 .. needtable::
    :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
    :sort: id
 
    results = []
@@ -965,8 +965,8 @@ docs/modules/persistency/docs
 
 .. needtable::
    :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
    :sort: id
 
    results = []
@@ -1001,8 +1001,8 @@ docs/modules/tracing/docs
 
 .. needtable::
    :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
    :sort: id
 
    results = []
@@ -1041,8 +1041,8 @@ docs/modules/baselibs/components
 
 .. needtable::
    :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
    :sort: id
 
    results = []
@@ -1095,8 +1095,8 @@ docs/modules/communication/components
 
 .. needtable::
    :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
    :sort: id
 
    results = []
@@ -1149,8 +1149,8 @@ docs/modules/feo/components
 
 .. needtable::
    :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
    :sort: id
 
    results = []
@@ -1203,8 +1203,8 @@ docs/modules/feo/components
 
 .. .. needtable::
 ..    :style: table
-..    :columns: title;id;safety;status
-..    :colwidths: 30,50,10,10
+..    :columns: title;id;safety;security;status
+..    :colwidths: 25,45,10,10,10
 ..    :sort: id
 
 ..    results = []
@@ -1257,8 +1257,8 @@ docs/modules/logging/components
 
 .. needtable::
    :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
    :sort: id
 
    results = []
@@ -1311,8 +1311,8 @@ docs/modules/os/components
 
 .. needtable::
    :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
    :sort: id
 
    results = []
@@ -1365,8 +1365,8 @@ docs/modules/persistency/components
 
 .. needtable::
    :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
    :sort: id
 
    results = []
@@ -1419,8 +1419,8 @@ docs/modules/tracing/components
 
 .. needtable::
    :style: table
-   :columns: title;id;safety;status
-   :colwidths: 30,50,10,10
+   :columns: title;id;safety;security;status
+   :colwidths: 25,45,10,10,10
    :sort: id
 
    results = []
