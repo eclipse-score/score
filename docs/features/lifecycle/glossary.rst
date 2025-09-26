@@ -55,6 +55,9 @@ Glossary
       and are supervised by the software platform. If the health management system
       detects abnormal situation it can change the :term:`Run State`.
 
+    Component
+      A configurable unit in the Launch Manager that describes an executable and its runtime environment (sandbox). Components can be grouped together in Run Targets to define system operational states.
+
     Lifecycle Component
       Node of the dependency tree.
 
@@ -84,6 +87,11 @@ Glossary
 
     Recovery Action
       Actions taken by the Launch Manager when a process fails or terminates abnormally.
+
+    Ready Condition
+      A configurable condition that must be satisfied before a component is considered ready and operational. Ready conditions can include file system checks, network availability, or custom application-specific signals.
+      
+      Ready conditions can either be reported by the component itself through the Lifecycle Interface or determined via external state monitoring. External state examples include: process started, file is available, socket was opened, or that the process finished successfully.
 
     Liveliness
       The state indicating that a process is active and responding as expected.
