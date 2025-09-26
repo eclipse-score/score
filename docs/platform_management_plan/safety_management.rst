@@ -466,16 +466,6 @@ Functional Safety Management SW Platform Work Products
       - :need:`PROCESS_std_req__iso26262__management_5421` & :need:`doc__platform_safety_plan`
       - valid
 
-Functional Safety Management Feature Specific Work Products
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-See feature tree documents (created by using :need:`PROCESS_gd_temp__feature_safety_wp`):
-
-- Inter-process Communication: :ref:`safety_planning_ipc`
-- Common Libraries: <link>
-- Logging: <link>
-- Persistency: <link>
-- Fixed Execution Order (Framework): <link>
 
 Note: list of features for v0.5 according to `S-CORE Roadmap <https://github.com/orgs/eclipse-score/projects/17>`_
 and :ref:`releases`
@@ -483,14 +473,4 @@ and :ref:`releases`
 Platform Management Plan - Documents Status Chart
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. needtable::
-   :style: table
-   :columns: title;id;status;realizes
-   :colwidths: 25,25,25,25
-   :sort: title
-
-   results = []
-
-   for need in needs.filter_types(["document"]):
-      if need and "platform_management" in need["tags"]:
-                results.append(need)
+See :ref:`doc_platform_management_plan`
