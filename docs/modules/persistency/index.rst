@@ -12,8 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-KVS Module
-##########
+Persistency KVS Module
+######################
 
 .. toctree::
    :titlesonly:

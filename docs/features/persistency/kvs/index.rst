@@ -19,7 +19,9 @@ Key-Value-Storage
    :id: doc__persistency_kvs
    :status: valid
    :safety: ASIL_B
-   :tags: feature_request, persistency_kvs
+   :security: NO
+   :realizes: PROCESS_wp__feat_request
+   :tags: feature_request, persistency
 
 .. toctree::
    requirements/index.rst
