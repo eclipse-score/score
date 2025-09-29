@@ -22,7 +22,7 @@ General
    :id: feat_req__daal__time_based_arch
    :reqtype: Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :satisfies: stkh_req__app_architectures__support_time
    :status: valid
 
@@ -32,7 +32,7 @@ General
    :id: feat_req__daal__lifecycle
    :reqtype: Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :satisfies: stkh_req__overall_goals__reuse_of_app_soft,stkh_req__execution_model__processes,stkh_req__execution_model__low_power
    :status: valid
 
@@ -42,7 +42,7 @@ General
    :id: feat_req__daal__env
    :reqtype: Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :satisfies: stkh_req__functional_req__operating_system
    :status: valid
 
@@ -54,7 +54,7 @@ General
    :id: feat_req__daal__com
    :reqtype: Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :satisfies: stkh_req__app_architectures__support_data
    :status: valid
 
@@ -64,7 +64,7 @@ General
    :id: feat_req__daal__log
    :reqtype: Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :satisfies: stkh_req__functional_req__logging
    :status: valid
 
@@ -74,7 +74,7 @@ General
    :id: feat_req__daal__trigger
    :reqtype: Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :satisfies: stkh_req__execution_model__processes
    :status: valid
 
@@ -84,7 +84,7 @@ General
    :id: feat_req__daal__health_error
    :reqtype: Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :satisfies: stkh_req__execution_model__processes
    :status: valid
 
