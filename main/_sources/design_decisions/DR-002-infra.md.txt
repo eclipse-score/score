@@ -27,9 +27,18 @@ The concept described here turns a collection of separate repositories into a sy
 ### Proposed Approach
 - Every change in any repository is tested **in combination with the rest of the system**, not just in isolation.
 - There are **two testing layers**:
-  - a **fast feedback loop** (lightweight tests that run on every pull request),
-  - and a **deeper validation** (heavier tests run after merges or on a schedule).
+  - a **fast feedback loop** (lightweight tests that run on every pull request BEFORE merge in any repository),
+  - and a **deeper validation** (heavier tests run after merges or on a schedule BEFORE release in any repository).
 - This setup guarantees that developers can trust the system as a whole to consistently work.
+
+### Typical workflow
+
+* Component PRs are created.
+  * Run component local verification.
+  * Run integration testing (quick).
+* Post merge:
+  * Run integration test (full).
+* Only after successful integration testing (full) can a release be created.
 
 ### Benefits
 - Problems across repositories are caught early.
@@ -37,6 +46,8 @@ The concept described here turns a collection of separate repositories into a sy
 - The project always has a “known good” baseline to fall back on, enabling stability while still moving fast.
 
 Note: this concept is easily extendable to support multiple versions of S-CORE. But that's currently not required.
+
+See Martin Fowler's [continuous integration](https://martinfowler.com/articles/continuousIntegration.html) article for a deeper dive into the topic.
 
 ---
 ## Introduction
