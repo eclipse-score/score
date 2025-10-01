@@ -16,6 +16,7 @@
    :id: doc__platform_release_management_plan
    :status: draft
    :safety: ASIL_B
+   :security: NO
    :tags: platform_management
 
 Release management Plan
@@ -44,9 +45,9 @@ Approach
 Release Scope
 ^^^^^^^^^^^^^
 
-One release contains all the files of one repository. So there is a platform release and seperate releases for the modules.
+One release contains all the files of one repository. So there is a platform release and separate releases for the modules.
 It contains also all the verification reports (including their input e.g. test run logs) and documentation collaterals
-(e.g. the htmls for the S-CORE homepage) as created during the CI build based on the release tagged repository files.
+(e.g. the html's for the S-CORE homepage) as created during the CI build based on the release tagged repository files.
 It does not contain the binary produced in the CI build, as this is not a qualified work product of S-CORE and
 the user will need to re-build in the context of his system. Furthermore the binary build with Bazel
 is reproducible, so this can be re-created from source any time.
@@ -60,25 +61,25 @@ Release types are strongly associated with the release version numbering, which 
 S-CORE has two major kinds of releases: experimental and official. These correspond with the "feature flags"
 defined in :need:`doc__project_mgt_plan`.
 
-* **Experimental** means that the development artefacts needed for the safety package work products may be incomplete.
+* **Experimental** means that the development artifacts needed for the safety package work products may be incomplete.
   These releases are done during development phase to be able to sync between the module repositories.
 * **Official** means that the processes are fully executed to produce all work products and are documented
-  with a releae note as in :need:`PROCESS_gd_temp__rel__plat_rel_note` or :need:`PROCESS_gd_temp__rel__mod_rel_note`.
+  with a release note as in :need:`PROCESS_gd_temp__rel_plat_rel_note` or :need:`PROCESS_gd_temp__rel_mod_rel_note`.
   For an official release also consider `Eclipse Project Handbook - Releases <https://www.eclipse.org/projects/handbook/#release-releases>`_.
 
 
 Release Planning and Execution
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Generally release planning and execution is described in :need:`PROCESS_wf__rel__mod_rel_note` process.
+Generally release planning and execution is described in :need:`PROCESS_wf__rel_mod_rel_note` process.
 It is part of project planning and therefore also documented with the same means. Generally a Release
 is planned as an issue linked to a milestone in the `GitHub Milestone Planning <https://github.com/orgs/eclipse-score/projects/13>`_.
 And this issue is closed by merging a pull request which creates/updates a release note.
 
 Before every release there will be a phase in which, for the features to be released, no functional
 updates will be allowed but only bug fixes, addition of tests and quality improvements.
-This period will be planned by the technical leads in the mileston planning. There is no general
-timespan defined for this, but for the first releases a period of four weeks is recommended as good practice.
+This period will be planned by the technical leads in the milestone planning. There is no general
+time-span defined for this, but for the first releases a period of four weeks is recommended as good practice.
 With increasing maturity of the modules it is expected that this period can be reduced.
 
 As defined in the process, the releases on module and platform level need to be coordinated.

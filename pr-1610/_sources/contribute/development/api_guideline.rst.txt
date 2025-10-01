@@ -33,17 +33,6 @@ See this more as a starting point and feel free to add further aspects you think
 Naming conventions
 ------------------
 
-A user should program against interfaces.
-This reduces coupling of code and retains big projects maintainable.
-To advertise this, name your interfaces accordingly.
-
-This means:
-
-* Avoid prepending an `I` or appending `Interface`
-* Instead, append `Impl` to implementations to clearly mark them
-
-Finally, consider hiding implementations behind a factory to ease the instantiation effort of a user.
-
 Patterns and Idioms of the Programming Language
 -----------------------------------------------
 
@@ -55,8 +44,9 @@ Otherwise, it will feel foreign and requires a user to constantly doublecheck in
 An example from the C++ world is the named requirement `Container <https://en.cppreference.com/w/cpp/named_req/Container.html>`_.
 If an API is developed against this named requirement, it seamlessly fits into the expectations a C++ developer has for code.
 
-So, when designing an API, do not only consider the problem you are trying to solve, but also how a user would want to interact with you.
-This in turn means, that the same API is likely not a good fit for multiple programming languages.
+So, when designing an API, do not only consider the problem you are trying to solve, but also how a user would want to interact with your solution.
+Approaches like test-driven development can support you in taking the perspective of a user.
+Given that the interaction differs for multiple programming languages, that the same API is likely not a good fit for more than one programming language.
 
 Programming Language Infrastructure
 -----------------------------------
@@ -75,14 +65,10 @@ Should it be impossible to use the existing infrastructure, try to stay as close
 Error handling
 --------------
 
-Error handling in S-CORE is solved through the :ref:`baselibs_feature` feature.
-Avoid encoding errors in the returned value (e.g.: use -1 for a function that returns an integer).
-Instead, always use the :ref:`baselibs_feature` feature.
+Avoid encoding errors in the returned value (e.g.: do not use -1 for a function that returns an integer).
+Instead, follow the language-specific coding guidelines or the language specific features if no guidelines exist.
 
 Further, handle errors internally if feasible but bubble an error up if a user should know about it.
-
-Throwing exceptions should be avoided, as they normally come with heap allocation.
-In C++ exceptions are therefore hardwired to an abort.
 
 Consider aborts as a final resort, since they will reduce the availability of the S-CORE platform.
 Even if an error does not allow you to continue operation, providing this error to the user is still better than an abort.

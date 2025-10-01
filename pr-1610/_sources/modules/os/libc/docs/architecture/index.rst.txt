@@ -21,7 +21,7 @@ libc Component Architecture
    :safety: ASIL_B
    :status: valid
    :satisfies:
-   :implements: logic_arc_int__os__fcntl, logic_arc_int__os__stat, logic_arc_int__os__mmap
+   :implements: logic_arc_int__os__fcntl, logic_arc_int__os__stat, logic_arc_int__os__mmap, logic_arc_int__os__fork
 
    .. needarch::
       :scale: 50

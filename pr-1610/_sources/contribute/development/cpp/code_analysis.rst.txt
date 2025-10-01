@@ -16,7 +16,7 @@ Code Analysis C++
 #################
 
 .. document:: Static Code Analysis C++
-   :id: doc__cpp__code_analysis
+   :id: doc__cpp_code_analysis
    :status: valid
 
    Guideline for Static Code Analysis
@@ -25,7 +25,7 @@ Static Code Analysis
 ====================
 In order to fulfil the S-CORE related standard requirements a concept for *Static Code Analysis* needs to be established. Input for the analysis is based upon *MISRA* and *ISO26262* standards in accordance to the :need:`doc__cpp_coding_guidelines`.
 
-Checking those rules can partially be automated and implemented by a combination of different tools. Thus a mapping needs to be established which provides a linkage of all *MISRA* requirements to the respective tool requirements/rules. For *MISRA C++:2023* this mapping is established: :need:`here <doc__cpp__misra2023_rule_mapping>`
+Checking those rules can partially be automated and implemented by a combination of different tools. Thus a mapping needs to be established which provides a linkage of all *MISRA* requirements to the respective tool requirements/rules. For *MISRA C++:2023* this mapping is established: :need:`here <doc__cpp_misra2023_rule_mapping>`
 
 .. needuml::
 
