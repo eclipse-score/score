@@ -19,10 +19,12 @@ Requirements
 ############
 
 .. document:: Persistency KVS Feature Requirements
-   :id: doc__persistency_kvs_feat_reqs
+   :id: doc__persistency_requirements
    :status: valid
    :safety: ASIL_B
+   :security: NO
    :realizes: PROCESS_wp__requirements_feat
+   :tags: persistency
 
 .. feat_req:: C++ & Rust Interoperability
    :id: feat_req__persistency__cpp_rust_interop
