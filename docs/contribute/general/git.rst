@@ -41,7 +41,7 @@ the quality of the commits and their respective commit messages.
 ******************
 
 Authors name and e-mail address are part of the commit (and thus be part of the commit history).
-They must match the name and e-mail used for eclipse registration. They can be specified via the
+They must match the name and e-mail used for Eclipse registration. They can be specified via the
 .gitconfig file:
 
 .. code-block::
@@ -178,3 +178,58 @@ Example
     repositories.
 
     Also-by: Some Bodyelse <somebodyelse@nowhere.com>
+
+********************
+ Tips and Tricks
+********************
+
+Deal with Long-Living Feature Branches
+======================================
+
+Long-living feature branches are a common source of complicated merges.
+The root cause typically lies in planning issues:
+Overlapping changes are planned into parallel units of work. Examples are "developer
+B refactors module X" while "developer A adds a feature to module X". With documents
+as code, the same applies for requirements, design, architecture, and other artifacts.
+The larger the units of work, the longer the lifetime of branches, and the more likely
+it is that such overlaps occur and conflicts arise.
+
+So, there are three stategies to deal with this:
+
+1. Avoid long-living branches by splitting work into smaller units of work and merge
+   them frequently into the main branch.
+2. If long-living branches are unavoidable, perform the changes in a way that anticipate this
+   and make conflicts less likely. For example, in case of documentation changes write the new
+   content in a separate file until the work is done. Then, only in a last step integrate the
+   new content into the structure which exists in the main branch.
+3. Accept the fact that conflicts may arise and deal with them when they occur.
+
+
+Correcting Mistakes
+===================
+
+Sometimes it happens that mistakes are made in the commit history.
+This can usually be corrected as long as they are not merged to main.
+
+Examples of problematic history include:
+
+-  Multiple, consecutive commits by the same author, like "draft one", "after review", "forgotten in previous commit".
+   In case the squash commit option is not used (see above), such commits should be squashed into a single commit, with a well-written commit message.
+-  Merges from the main branch into a feature branch.
+   Instead, the feature branch should be rebased on top of the main branch.
+   This preserves a linear history.
+   However, be careful with branches that are worked on by multiple persons.
+
+A strategy which can be used to correct the commit history of a branch is to use a feature of git called 'interactive rebase'.
+Afterwards, the (now cleaned-up) branch can be force-pushed to the remote repository.
+This works also if there is already a pull-request open for this branch.
+The Git Documentation contains `a well-written section <https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History>`_ about "rewriting history".
+However, to be fair, this is not simple when you do it for the first time.
+
+Another strategy is to create a new branch from the main branch and cherry-pick the relevant commits from the old branch to the new branch.
+Then, push the new branch to the remote repository and create a new pull-request.
+This strategy is easier to understand, but has the downside that the discussion in the old pull-request is not automatically transferred to the new pull-request.
+
+The most efficient approach is to do either clean-up together with someone experienced in Git.
+Such a [pairing session](https://en.wikipedia.org/wiki/Pair_programming) can show you how to "think Git".
+However, be confident: as long as you have not force-pushed the branch to GitHub, all changes you did are local and can be undone easily.
