@@ -108,6 +108,22 @@ runs:
         folder: version_root
         clean: false
 
+    - name: Warn of gh-pages size
+      id: ghpages_size
+      if: ${{ github.event_name == 'pull_request_target' }}
+      shell: bash
+      run: |
+        git fetch --depth 1 origin gh-pages || true
+        size_mb=$(git ls-tree -r -l origin/gh-pages | awk '{sum+=$4} END{printf("%d\n", sum/1024/1024)}')
+
+        # Trigger a warning if the gh-pages branch is approximately 950MB or larger
+        if [ "$size_mb" -gt 950 ]; then
+          warn_text=":warning: The gh-pages branch is approximately '${size_mb}'MB. Published docs might look incorrect."
+        else
+          warn_text=""
+        fi
+        echo "warn_text=$warn_text" >> "$GITHUB_OUTPUT"
+
     - name: Find Comment
       if: ${{ github.event_name == 'pull_request_target' }}
       uses: peter-evans/find-comment@v3
@@ -124,4 +140,5 @@ runs:
         issue-number: ${{github.event.pull_request.number}}
         body: |
           The created documentation from the pull request is available at: [docu-html](https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/${{steps.calc.outputs.target_folder}}/)
+          ${{ steps.ghpages_size.outputs.warn_text }}
         reactions: rocket
