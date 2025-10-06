@@ -138,7 +138,7 @@ AoU Requirements
 
    The user shall provide a string as input which is not corrupted due to HW or QM SW errors.
 
-   Note: This could be achieved by using a safe read-only filesystem for json file storage or a CRC protection on the json file content.
+   Note: This could be achieved by using a safe read-only filesystem for JSON file storage or a CRC protection on the JSON file content.
 
 .. aou_req:: Access control
    :id: aou_req__json__access_control
@@ -147,4 +147,6 @@ AoU Requirements
    :safety: ASIL_B
    :status: valid
 
-   Access control and manipulation prevention (e.g. dm-verity) shall be ensured by the hosting process and system configuration.
+   The user shall ensure access control and manipulation prevention on the JSON files.
+
+   Note: This can be done by the hosting process and system configuration (e.g. by using dm-verity).
