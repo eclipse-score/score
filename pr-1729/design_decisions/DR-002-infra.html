@@ -32,17 +32,17 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/score.css?v=940e959b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score.css?v=6e51530f" />
     <link rel="stylesheet" type="text/css" href="../_static/css/score_needs.css?v=e97392eb" />
     <link rel="stylesheet" type="text/css" href="../_static/css/score_design.css?v=d9fd870c" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -573,11 +573,28 @@ SPDX-License-Identifier: Apache-2.0
 <li><p>Every change in any repository is tested <strong>in combination with the rest of the system</strong>, not just in isolation.</p></li>
 <li><p>There are <strong>two testing layers</strong>:</p>
 <ul>
-<li><p>a <strong>fast feedback loop</strong> (lightweight tests that run on every pull request),</p></li>
-<li><p>and a <strong>deeper validation</strong> (heavier tests run after merges or on a schedule).</p></li>
+<li><p>a <strong>fast feedback loop</strong> (lightweight tests that run on every pull request BEFORE merge in any repository),</p></li>
+<li><p>and a <strong>deeper validation</strong> (heavier tests run after merges or on a schedule BEFORE release in any repository).</p></li>
 </ul>
 </li>
 <li><p>This setup guarantees that developers can trust the system as a whole to consistently work.</p></li>
+</ul>
+</section>
+<section id="typical-workflow">
+<h3>Typical workflow<a class="headerlink" href="#typical-workflow" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Component PRs are created.</p>
+<ul>
+<li><p>Run component local verification.</p></li>
+<li><p>Run integration testing (quick).</p></li>
+</ul>
+</li>
+<li><p>Post merge:</p>
+<ul>
+<li><p>Run integration test (full).</p></li>
+</ul>
+</li>
+<li><p>Only after successful integration testing (full) can a release be created.</p></li>
 </ul>
 </section>
 <section id="benefits">
@@ -588,6 +605,7 @@ SPDX-License-Identifier: Apache-2.0
 <li><p>The project always has a “known good” baseline to fall back on, enabling stability while still moving fast.</p></li>
 </ul>
 <p>Note: this concept is easily extendable to support multiple versions of S-CORE. But that’s currently not required.</p>
+<p>See Martin Fowler’s <a class="reference external" href="https://martinfowler.com/articles/continuousIntegration.html">continuous integration</a> article for a deeper dive into the topic.</p>
 </section>
 </section>
 <hr class="docutils" />
@@ -969,6 +987,7 @@ Farley), trunk-based development resources.</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#executive-summary">Executive Summary</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-approach">Proposed Approach</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#typical-workflow">Typical workflow</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#benefits">Benefits</a></li>
 </ul>
 </li>

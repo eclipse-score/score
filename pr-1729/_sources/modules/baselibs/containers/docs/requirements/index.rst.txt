@@ -43,7 +43,7 @@ Functional Requirements
    :satisfies: feat_req__baselibs__core_utilities, feat_req__baselibs__containers_library, feat_req__baselibs__safety
    :status: valid
 
-   The Containers library shall provide an intrusive doubly-linked list data structure similar to the C++ standardization proposal P0406R1.
+   The Containers library shall provide an intrusive doubly-linked list based on the C++ standardization proposal P0406R1.
 
 .. comp_req:: Type Safety
    :id: comp_req__containers__type_safety
@@ -66,14 +66,4 @@ Non-Functional Requirements
    :satisfies: feat_req__baselibs__core_utilities, feat_req__baselibs__safety
    :status: valid
 
-   The Containers library shall provide deterministic behavior with no dynamic memory allocation unless explicitly requested.
-
-.. comp_req:: Exception-Free Operation
-   :id: comp_req__containers__exception_free
-   :reqtype: Non-Functional
-   :security: NO
-   :safety: ASIL_B
-   :satisfies: feat_req__baselibs__core_utilities, feat_req__baselibs__safety
-   :status: valid
-
-   The Containers library shall operate without throwing C++ exceptions.
+   The Containers library shall provide deterministic behavior with no dynamic memory allocation.
