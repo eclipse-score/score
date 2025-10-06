@@ -15,12 +15,14 @@
 JSON Component Architecture
 ***************************
 
-.. comp_arc_sta:: JSON
+.. comp_arc_sta:: JSON-Library
    :id: comp_arc_sta__baselibs__json
    :security: YES
    :safety:  ASIL_B
    :status: valid
    :implements: logic_arc_int__baselibs__json
+   :includes: comp_arc_sta__baselibs__json_wrapper, comp_arc_sta__baselibs__nlohman_json
+   :fulfils: comp_req__json__validation, comp_req__json__deserialization, comp_req__json__serialization, comp_req__json__user_format, comp_req__json__lang_idioms, comp_req__json__lang_infra, comp_req__json__type_compatibility, comp_req__json__full_testability, comp_req__json__asil
 
    .. needarch::
       :scale: 50
@@ -28,7 +30,7 @@ JSON Component Architecture
 
       {{ draw_component(need(), needs) }}
 
-.. logic_arc_int:: JSON Parser
+.. logic_arc_int:: IJson
    :id: logic_arc_int__baselibs__json
    :security: YES
    :safety:  ASIL_B
@@ -46,3 +48,32 @@ JSON Component Architecture
    :safety: ASIL_B
    :status: valid
    :included_by: logic_arc_int__baselibs__json
+
+.. logic_arc_int_op:: Check
+   :id: logic_arc_int_op__baselibs__validate
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__json
+
+.. logic_arc_int_op:: Dump
+   :id: logic_arc_int_op__baselibs__tofile
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__json
+
+.. comp_arc_sta:: JSON-Wrapper
+   :id: comp_arc_sta__baselibs__json_wrapper
+   :security: YES
+   :safety:  ASIL_B
+   :status: valid
+   :implements: logic_arc_int__baselibs__json
+   :fulfils: comp_req__json__user_format, comp_req__json__lang_idioms, comp_req__json__lang_infra, comp_req__json__type_compatibility, comp_req__json__full_testability, comp_req__json__asil
+
+.. comp_arc_sta:: nlohman-JSON
+   :id: comp_arc_sta__baselibs__nlohman_json
+   :security: YES
+   :safety:  ASIL_B
+   :status: valid
+   :fulfils: comp_req__json__validation, comp_req__json__deserialization, comp_req__json__serialization, comp_req__json__asil
