@@ -41,34 +41,6 @@ Welcome & Overview
 
 **Welcome to the Software documentation of the S-CORE project.**
 
-Introduction
-~~~~~~~~~~~~
-
-.. grid:: 1 1 3 3
-   :class-container: score-grid
-
-   .. grid-item-card::
-
-      Scope
-      ^^^
-      The project develops an open source core stack for Software Defined Vehicles (SDVs),
-      targeting embedded high-performance Electronic Control Units (ECUs).
-      Check our :ref:`Scope <introduction_scope>` for details.
-
-   .. grid-item-card::
-
-      Project Status
-      ^^^
-      Check out our roadmap to see the project's key milestones and features we have planned.
-      :ref:`Click here to explore! <introduction_roadmap>`
-
-   .. grid-item-card::
-
-      How to Contribute?
-      ^^^
-      The only way to influence Eclipse S-CORE is to contribute - S-CORE is open! Please check our
-      :ref:`Contribute <contribute>` guide for more information.
-
 
 Software artifacts
 ~~~~~~~~~~~~~~~~~~
@@ -129,7 +101,6 @@ Project structure and processes
    .. toctree::
       :maxdepth: 1
 
-      introduction/index
       requirements/index
       features/index
       modules/index
@@ -139,3 +110,9 @@ Project structure and processes
       PMP <platform_management_plan/index.rst>
       Eclipse <https://projects.eclipse.org/projects/automotive.score>
       design_decisions/index
+
+   .. toctree::
+      :maxdepth: 1
+      :hidden:
+
+      introduction/index
