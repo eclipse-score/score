@@ -29,7 +29,7 @@ Functional Requirements
 =======================
 
 .. comp_req:: Support for Bit Manipulation Utilities
-   :id: comp_req__bitmanip__utilities
+   :id: comp_req__bitmanipulation__utilities
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
@@ -39,7 +39,7 @@ Functional Requirements
    The bit manipulation component shall provide API for setting, clearing, toggling, and checking bits, as well as extracting bytes and manipulating half-bytes and bytes for any integral type up to 64 bits.
 
 .. comp_req:: Support for Bitmask Operators for Enum Classes
-   :id: comp_req__bitmanip__bitmask_operators
+   :id: comp_req__bitmanipulation__bitmask_operators
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
@@ -49,20 +49,20 @@ Functional Requirements
    The bit manipulation library shall provide type-safe bitmask operations for scoped enumeration types.
 
 .. comp_req:: Bounds and Safety Checks
-   :id: comp_req__bitmanip__bounds_safety
+   :id: comp_req__bitmanipulation__bounds_safety
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__bitmanipulation, feat_req__baselibs__safety
    :status: valid
 
-   All bit manipulation functions shall check bounds and prevent data loss.
+   All bit manipulation functions shall validate input parameters and prevent data corruption.
 
 Non-Functional Requirements
 ===========================
 
 .. comp_req:: Header-only API
-   :id: comp_req__bitmanip__header_only
+   :id: comp_req__bitmanipulation__header_only
    :reqtype: Non-Functional
    :security: NO
    :safety: ASIL_B
@@ -70,13 +70,3 @@ Non-Functional Requirements
    :status: valid
 
    The bit manipulation API shall be header-only and not require external dependencies.
-
-.. comp_req:: Exception-Free Operation
-   :id: comp_req__bitmanip__exception_free_operation
-   :reqtype: Non-Functional
-   :security: NO
-   :safety: ASIL_B
-   :satisfies: feat_req__baselibs__core_utilities, feat_req__baselibs__safety
-   :status: valid
-
-   The bit manipulation library shall operate without throwing C++ exceptions.
