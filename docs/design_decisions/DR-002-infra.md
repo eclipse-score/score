@@ -26,6 +26,7 @@ The concept described here turns a collection of separate repositories into a sy
 
 ### Proposed Approach
 - Every change in any repository is tested **in combination with the rest of the system**, not just in isolation.
+  - TODO: this is not reasonable to assume that we can run a complete integration test on every commit, this needs refinement.
 - There are **two testing layers**:
   - a **fast feedback loop** (lightweight tests that run on every pull request BEFORE merge in any repository),
   - and a **deeper validation** (heavier tests run after merges or on a schedule BEFORE release in any repository).
