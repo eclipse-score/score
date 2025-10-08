@@ -15,7 +15,7 @@
 Security & Cryptography
 #######################
 
-.. document:: Security Crpyto Feature Requirements
+.. document:: Security & Crpyto Feature Requirements
    :id: doc__security_crypto_feat_reqs
    :status: valid
    :safety: QM
@@ -40,18 +40,18 @@ To activate this feature, use the following feature flag:
 Abstract
 ========
 
-Embedded systems have general security goals like confidentiality, integrity, trust and
-availability. A security component inside of S-CORE needs to provide several functionalities to
+Embedded systems have general security goals like confidentiality, integrity, and availability
+(CIA). A security component inside of S-CORE needs to provide several functionalities to
 achieve these properties by using cryptographic algorithms.
 
 
 Motivation
 ==========
 
-S-CORE will be embedded in an automotive embedded SoC and interconnected via network interfaces
-with the overall vehicle network. It will process data fom various sources, provide data internally
-and outside of its own ECU. S-CORE as a framework will ensure that itself, processed data and its
-hosted applications operate in a secure manner.
+S-CORE will be embedded in an automotive embedded System-on-a-Chip (SoC) and interconnected via
+network interfaces with the overall vehicle network. It will process data fom various sources,
+provide data internally and outside of its own hosting chipset. S-CORE as a SW platform will ensure
+that itself, processed data and its hosted applications operate in a secure manner.
 
 
 Rationale
@@ -59,7 +59,7 @@ Rationale
 
 The features presented in this proposal are derived from the above mentioned security goals.
 A single feature offering just 'cryptographic algorithms' is not enough to provide effective
-measures to ensure confidentiality, integrity, availability and trust.
+measures to ensure confidentiality, integrity, and availability.
 Therefore this proposal already considers this as a security & crypto component.
 
 
@@ -73,11 +73,11 @@ following functionalities.
 * 'Asymmetric encryption' - to allow a trusted exchange of secrets with a pair of keys (public and
   private) for encryption and decryption.
 * 'Signature functionality' - to ensure that data is authentic and not tampered (integrity) if
-  verified to be valid.
-  Functionality is to create and verify a signature.
+  verified to be valid. Functionality is to create and verify a signature.
 * 'Certificate management' - to manage a set of signed and verified (trusted) certificates.
 * 'Generation of entropy' - to ensure algorithm can rely on true/sufficiently random numbers
 * 'Ensure data integrity' - achieved with a hash function.
+* 'Ensure data confidentially' - achieved with an encryption and decryption function.
 
 Additionally a cryptographic component will typically as well offer
 
@@ -109,7 +109,7 @@ Architecture::
            | --> Asymmetric crypto (encrypt, decrypt)
            | --> Key Management (generate, import, update, delete, check)
            | --> Certificate Management (add, update, verify)
-           | --> Hash (data)
+           | --> Hash (create / verify)
            |
   |------------------|
   | Crypto-API       |---------> used by Applications / Other middleware
@@ -137,7 +137,7 @@ Proposal for common crypto algorithms
 The following algorithms should match the above goals and shall be offered by the security
 component. The selection of algorithms is a proposal and subject to joint discussion.
 Side note: The Eclipse Heimlig project directly supports these.
-Link to project: https://github.com/eclipse-heimlighttps://github.com/eclipse-heimlig
+Link to project: `Eclipse Heimlig <https://github.com/eclipse-heimlig>`_
 
 
 * Symmetric encryption and decryption (AES-CBC, AES-GCM, AES-CCM, Chacha20Poly1305 )
@@ -151,13 +151,18 @@ Link to project: https://github.com/eclipse-heimlighttps://github.com/eclipse-he
 Security Impact
 ===============
 
-TBD
+As the security component is used for security purposes, it is security relevant.
+
+As the security component of S-CORE will be open source, it must be ensured that
+an attacker can analyze the security component without gaining benefits from it with regards to
+compromising a system in which S-SCORE is deployed on the road. (Obvious: avoid security by obscurity)
 
 
 Safety Impact
 =============
 
-TBD
+Depends on the usage of the security component. If it is used within safety relevant components,
+it may also be safety relevant. E.g. if safety communication should also be authentic.
 
 
 License Impact
@@ -170,7 +175,7 @@ regulations.
 How to Teach This
 =================
 
-TBD
+TBD, e.g. Training material, Demo use cases.
 
 
 Rejected Ideas
@@ -185,16 +190,17 @@ Additional thinking
 Security concept
 ----------------
 
-A security component is a key item that should provide in itself limited surface for
-attacks. As the overall system the security component should be based on a security concept
-including 'security goals', 'plausible attacks', 'critical failures', and 'countermeasures'.
-Due to the nature of our overall system to be deployed for 10+ years in an embedded systems
-such a security plan needs to as well cover 'software-update strategy', 'field observation',
-'crypto algorithm updates', 'repair-ability', and 'withstand reverse engineering of secrets'.
+A detailed security concept should be developed for the SW platform, including the security
+component. The SW platform and the security component itself should limit the surface for
+attacks.
 
-As the security component of S-CORE will be open source, the plan needs to ensure that an attacker
-can analyze the security component without gaining benefits from it with regards to compromising a
-system in which S-SCORE is deployed on the road. (Obvious: avoid security by obscurity)
+Further security concept should consider: 'security goals', 'plausible attacks',
+'critical failures', and 'countermeasures'.
+
+Due to the nature of our overall target system to be
+deployed  for 10+ years in an embedded systems the security concept needs to cover as well
+'software-update strategy', 'field observation', 'crypto algorithm updates', 'repair-ability',
+and 'withstand reverse engineering of secrets'.
 
 Finally the security component needs to consider the production scenario where potentially several
 'initial production keys' are brought into the system.
@@ -202,7 +208,7 @@ Finally the security component needs to consider the production scenario where p
 Memory safe language
 ---------------------
 
-Following the white house cybersecurity plan and other industry voices to improve robustness of
+Following the state-of-art technology and other industry voices to improve robustness of
 critical systems by using memory safe languages S-CORE decided to have Rust as a 1st class
 citizen. The security component MAY be developed entirely in Rust.
 

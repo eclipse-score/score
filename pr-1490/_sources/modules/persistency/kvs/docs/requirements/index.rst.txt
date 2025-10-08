@@ -19,7 +19,7 @@ Requirements
    :id: doc__persistency_kvs_mod_req
    :status: valid
    :safety: ASIL_B
-   :realizes: PROCESS_wp__requirements__comp
+   :realizes: PROCESS_wp__requirements_comp
 
 .. comp_req:: Key Naming
    :id: comp_req__persistency__key_naming

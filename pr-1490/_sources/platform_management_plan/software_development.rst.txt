@@ -20,6 +20,7 @@ Software Development
    :id: doc__software_development_plan
    :status: draft
    :safety: ASIL_B
+   :security: YES
    :realizes: PROCESS_wp__sw_development_plan
    :tags: platform_management
 
@@ -48,13 +49,13 @@ Design and programming language
 
 For specifying **Detailed Design** (like for the Architecture) a mixture of UML diagrams and natural language is used.
 Additionally for the Detailed Design linking to code, Doxygen style comments are used.
-This is described in :need:`PROCESS_doc_concept__imp__concept` and guided by :need:`PROCESS_gd_temp__detailed_design`
+This is described in :need:`PROCESS_doc_concept__imp_concept` and guided by :need:`PROCESS_gd_temp__detailed_design`
 
 As required in :need:`stkh_req__dev_experience__prog_languages`, S-CORE allows the use of two programming languages:
 
 **C++ with the language set of C++17** - in case additional elements from C++20 are needed this will be considered by
 :need:`PROCESS_rl__safety_manager`, :need:`PROCESS_rl__security_manager` and :need:`PROCESS_rl__quality_manager`
-and based on their analysis decided by the technical tead circle (:need:`PROCESS_rl__technical_lead`).
+and based on their analysis decided by the technical lead circle (:need:`PROCESS_rl__technical_lead`).
 
 **Rust - in "Edition" <tbd>** - selection of language edition has still to be done in the S-CORE project.
 For the Rust code of ASIL rated units the "safe subset" shall be used (which is checked by the compiler by configuration of #![forbid(unsafe_code)] in lib.rs)
@@ -64,7 +65,7 @@ C language is allowed in incubation phase, as long it is compilable be the selec
 Design guideline
 ^^^^^^^^^^^^^^^^
 
-The design guideline is defined in :need:`PROCESS_doc_concept__imp__concept` and :need:`PROCESS_gd_guidl__implementation`.
+The design guideline is defined in :need:`PROCESS_doc_concept__imp_concept` and :need:`PROCESS_gd_guidl__implementation`.
 
 API guideline
 ^^^^^^^^^^^^^
@@ -78,7 +79,7 @@ Coding guideline
 **C++** - see :need:`doc__cpp_coding_guidelines`
 
 **Rust** - state of the art open source Rust guidelines are currently developed by `Safety Critical Rust Consortium <https://github.com/rustfoundation/safety-critical-rust-consortium/>`_
-(which will be adopted by the S-CORE project). A summary of the current state of informations regarding Rust in safety critical applications can be found in :need:`doc__rust_coding_guidelines`.
+(which will be adopted by the S-CORE project). A summary of the current state of information regarding Rust in safety critical applications can be found in :need:`doc__rust_coding_guidelines`.
 
 SW configuration guideline
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -97,8 +98,8 @@ Additional tools for static and dynamic analysis (in addition to compilers and C
 .. rubric:: GitHub
 
 is used for hosting, versioning and contribution of the software. Within
-pull requests it's possible to contribute. For contribution a seperate process description is
-<Link to contribute> available. In the discussion section the informations regarding meeting
+pull requests it's possible to contribute. For contribution a separate process description is
+<Link to contribute> available. In the discussion section the information regarding meeting
 minutes and Working Sections were stored. Within issues can bugfixes, improvements, blank issues
 set up. It's also possible to report there Security vulnerabilities. GitHub Actions is used
 as a support for continuous integration.
@@ -125,12 +126,12 @@ e.g. in process or concept descriptions
 
 .. rubric:: Host Compiler C++
 
-GCC is usesd as host C++ compiler with its associated linker. It's used as a development (compilation and linking) and verification tool
+GCC is used as host C++ compiler with its associated linker. It's used as a development (compilation and linking) and verification tool
 as it generates compiler warnings and builds unit tests and binaries for SW integration testing.
 
 .. rubric:: Target Compiler C++
 
-QCC the qualifiable compiler/linker from Blackberry offered together with its Posix conform Operating System QNX is planned to be used for target compilation.
+QCC the qualify-able compiler/linker from Blackberry offered together with its Posix conform Operating System QNX is planned to be used for target compilation.
 
 .. rubric:: Clang-tidy
 
@@ -138,7 +139,7 @@ is used in conjunction with the Clang compiler to perform static analysis.
 
 .. rubric:: Host Compiler Rust
 
-There is currently no selection of a Rust compiler for S-CORE. Pick your own favourite.
+There is currently no selection of a Rust compiler for S-CORE. Pick your own favorite.
 
 .. rubric:: Target Compiler Rust
 

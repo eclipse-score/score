@@ -347,16 +347,6 @@ Non-Functional Requirements
    The security component shall provide a structured and consistent mechanism for error reporting
    and logging.
 
-.. feat_req:: Rust Implementation
-   :id: feat_req__sec_crypt__rust_implementation
-   :reqtype: Non-Functional
-   :security: YES
-   :safety: QM
-   :satisfies: stkh_req__dependability__security_features
-   :status: valid
-
-   The security component MAY be implemented in Rust.
-
 .. feat_req:: Security Concept
    :id: feat_req__sec_crypt__security_concept
    :reqtype: Non-Functional
@@ -376,8 +366,7 @@ Non-Functional Requirements
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security plan shall cover a strategy for updating cryptographic algorithms in the security
-   component.
+   The security component shall allow the updating of its cryptographic algorithms.
 
 .. feat_req:: Reverse Engineering Protection
    :id: feat_req__sec_crypt__reverse_eng_protection
@@ -387,8 +376,7 @@ Non-Functional Requirements
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The security plan shall ensure the security component can withstand reverse engineering of its
-   secrets.
+   The security component shall withstand reverse engineering of its secrets.
 
 .. feat_req:: Initial Production Key Handling
    :id: feat_req__sec_crypt__production_keys

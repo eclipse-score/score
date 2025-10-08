@@ -28,29 +28,29 @@ Feature Safety Planning
       - WP status
 
     * - :need:`PROCESS_wp__feat_request`
-      - :need:`PROCESS_gd_temp__change__feature_request`
-      - :ndf:`copy('status', need_id='PROCESS_gd_temp__change__feature_request')`
+      - :need:`PROCESS_gd_temp__change_feature_request`
+      - :ndf:`copy('status', need_id='PROCESS_gd_temp__change_feature_request')`
       - https://github.com/eclipse-score/score/issues/760
       - :need:`doc__persistency_kvs`
       - :ndf:`copy('status', need_id='doc__persistency_kvs')`
 
-    * - :need:`PROCESS_wp__requirements__feat`
-      - :need:`PROCESS_gd_temp__req__feat_req`
-      - :ndf:`copy('status', need_id='PROCESS_gd_temp__req__feat_req')`
+    * - :need:`PROCESS_wp__requirements_feat`
+      - :need:`PROCESS_gd_temp__req_feat_req`
+      - :ndf:`copy('status', need_id='PROCESS_gd_temp__req_feat_req')`
       - https://github.com/eclipse-score/score/issues/960
       - :ref:`feature_requirements_PersistencyKvs`
       - valid
 
-    * - :need:`PROCESS_wp__requirements__feat_aou`
-      - :need:`PROCESS_gd_temp__req__aou_req`
-      - :ndf:`copy('status', need_id='PROCESS_gd_temp__req__aou_req')`
+    * - :need:`PROCESS_wp__requirements_feat_aou`
+      - :need:`PROCESS_gd_temp__req_aou_req`
+      - :ndf:`copy('status', need_id='PROCESS_gd_temp__req_aou_req')`
       - https://github.com/eclipse-score/score/issues/960
       - :ref:`feature_requirements_PersistencyKvs`
       - valid
 
     * - :need:`PROCESS_wp__feature_arch`
-      - :need:`PROCESS_gd_temp__arch__feature`
-      - :ndf:`copy('status', need_id='PROCESS_gd_temp__arch__feature')`
+      - :need:`PROCESS_gd_temp__arch_feature`
+      - :ndf:`copy('status', need_id='PROCESS_gd_temp__arch_feature')`
       - https://github.com/eclipse-score/score/issues/1020
       - :ref:`feature_architecture_PersistencyKvs`
       - valid
@@ -69,21 +69,21 @@ Feature Safety Planning
       - :need:`doc__persistency_dfa`
       - valid
 
-    * - :need:`PROCESS_wp__requirements__inspect`
-      - :need:`PROCESS_gd_chklst__req__inspection`
-      - :ndf:`copy('status', need_id='PROCESS_gd_chklst__req__inspection')`
+    * - :need:`PROCESS_wp__requirements_inspect`
+      - :need:`PROCESS_gd_chklst__req_inspection`
+      - :ndf:`copy('status', need_id='PROCESS_gd_chklst__req_inspection')`
       - https://github.com/eclipse-score/score/issues/960
       - :need:`doc__req_inspection_persistency`
       - valid
 
     * - :need:`PROCESS_wp__sw_arch_verification`
-      - :need:`PROCESS_gd_chklst__arch__inspection_checklist`
-      - :ndf:`copy('status', need_id='PROCESS_gd_chklst__arch__inspection_checklist')`
+      - :need:`PROCESS_gd_chklst__arch_inspection_checklist`
+      - :ndf:`copy('status', need_id='PROCESS_gd_chklst__arch_inspection_checklist')`
       - https://github.com/eclipse-score/score/issues/1020
       - Checklist used in Pull Request Review
       - n/a
 
-    * - :need:`PROCESS_wp__verification__feat_int_test`
+    * - :need:`PROCESS_wp__verification_feat_int_test`
       - :need:`PROCESS_gd_guidl__verification_guide`
       - :ndf:`copy('status', need_id='PROCESS_gd_guidl__verification_guide')`
       - https://github.com/eclipse-score/score/issues/964

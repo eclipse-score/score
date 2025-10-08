@@ -18,4 +18,5 @@ result
 .. toctree::
    :hidden:
 
-   requirements
+   requirements.rst
+   architecture/index.rst

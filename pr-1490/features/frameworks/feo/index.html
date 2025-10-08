@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Fixed execution order framework (FEO) &#8212; S-CORE 0.1 documentation</title>
+    <title>Fixed execution order framework (FEO) &#8212; S-CORE  documentation</title>
   
   
   
@@ -32,17 +32,17 @@
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/score.css?v=940e959b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/score.css?v=6e51530f" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/score_needs.css?v=e97392eb" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/score_design.css?v=d9fd870c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -53,7 +53,7 @@
 
     <script src="../../../_static/jquery.js?v=5d32c60e"></script>
     <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../../../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
@@ -66,13 +66,13 @@
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
-        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Requirements" href="requirements/index.html" />
+    <link rel="next" title="FEO Feature Requirements" href="requirements/feature_req.html" />
     <link rel="prev" title="Frameworks" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -153,13 +153,6 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../introduction/index.html">
-    Introduction
-  </a>
-</li>
-
-
-<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../requirements/index.html">
     Requirements
   </a>
@@ -186,6 +179,13 @@
   </a>
 </li>
 
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
             <li class="nav-item dropdown">
                 <button class="btn dropdown-toggle nav-item" type="button"
                 data-bs-toggle="dropdown" aria-expanded="false"
@@ -194,13 +194,6 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../../score_releases/index.html">
-    Releases
-  </a>
-</li>
-
-
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../../score_tools/index.html">
     Tools
@@ -218,6 +211,20 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-external" href="https://projects.eclipse.org/projects/automotive.score">
     Eclipse
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../design_decisions/index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
   </a>
 </li>
 
@@ -334,13 +341,6 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../introduction/index.html">
-    Introduction
-  </a>
-</li>
-
-
-<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../requirements/index.html">
     Requirements
   </a>
@@ -392,6 +392,20 @@
 <li class="nav-item ">
   <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
     Eclipse
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../design_decisions/index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
   </a>
 </li>
 
@@ -467,8 +481,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../../diagnostics/index.html">Diagnostic and Fault Management</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Frameworks</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">Fixed execution order framework (FEO)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="requirements/index.html">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="architecture/feature_architecture.html">Feature Architecture: FEO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements/feature_req.html">FEO Feature Requirements</a></li>
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="requirements/aou_req.html">FEO Feature Assumption of Use Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements/chklst_req_inspection.html">FEO Feature Requirement Inspection Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture/feature_architecture.html">FEO Feature Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture/chklst_arch_inspection.html">FEO Feature Architecture Inspection Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="safety_planning/index.html">FEO Feature Safety Planning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="safety_analysis/feature_fmea.html">FEO Feature FMEA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="safety_analysis/feature_dfa.html">FEO Feature DFA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="safety_analysis/chklst_safety_analysis_inspection.html">FEO Feature Safety Analysis Checklist</a></li>
 </ul>
 </details></li>
 </ul>
@@ -479,6 +504,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../orchestration/index.html">Orchestration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../persistency/index.html">Persistency</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../security_crypto/index.html">Security &amp; Cryptography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time/index.html">Time</a></li>
 </ul>
 </div>
 </nav></div>
@@ -544,8 +570,8 @@
                   
   <section id="fixed-execution-order-framework-feo">
 <h1>Fixed execution order framework (FEO)<a class="headerlink" href="#fixed-execution-order-framework-feo" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-5a2c4024">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__feo">
+<div class="need_container docutils container" id="SNCB-87562b33">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__frameworks_feo">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
 <div class="line"><span><span class="needs_title"><span class="needs_data">Fixed execution order framework</span></span></span></div>
@@ -553,7 +579,7 @@
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
-<div class="line"><span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
 <div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
@@ -563,9 +589,7 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></div>
-<div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">feature_request</span></span></span></div>
-<div class="line"><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">feature_request</span><span class="needs_spacer">, </span><span class="needs_data">frameworks_feo</span></span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -575,7 +599,7 @@
 <tr class="content row-odd"><td class="content" colspan="6"></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
-<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__feo" title="doc__feo">doc__feo</a></span></span></div>
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__frameworks_feo" title="doc__frameworks_feo">doc__frameworks_feo</a></span></span></div>
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
@@ -588,8 +612,6 @@
 </table>
 </div>
 </div>
-<p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_guideline.html#gd_guidl__change__change_request">PROCESS_gd_guidl__change__change_request</a>
-and <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_feature_template.html#gd_temp__change__feature_request">PROCESS_gd_temp__change__feature_request</a>.</p>
 <div class="toctree-wrapper compound">
 </div>
 <section id="feature-flag">
@@ -665,7 +687,7 @@ see below)</p></li>
 <ul class="simple">
 <li><p>Application activities must only use APIs provided by the framework as defined above</p></li>
 <li><p>Application activities are single threaded, they can not run outside of their entry points,
-they must not spawn other threads or processs</p></li>
+they must not spawn other threads or process</p></li>
 <li><p>Activities can be implemented in C++ or Rust, mixed systems with both
 C++ and Rust activities shall be supported.</p></li>
 </ul>
@@ -706,7 +728,7 @@ the set of known communication topics and the assignment of which activity
 sends and receives to/from which topic is “runtime static”</p></li>
 <li><p>“runtime static” means “static after the startup phase”, i.e. during startup, the
 framework can configure or build up communication connections, but as soon as the
-run phase starts (where the activties’ step() functions are called), the connections
+run phase starts (where the activities’ step() functions are called), the connections
 are fixed and will not change any more.</p></li>
 <li><p>Communication relations are typically configured in configuration files</p></li>
 <li><p>Messages/topics are statically typed</p></li>
@@ -812,7 +834,7 @@ as can be seen below.</p>
 <li><p>shutdown phase</p></li>
 </ul>
 </li>
-<li><p>During startup phase, the primary proces connects with the secondary processes
+<li><p>During startup phase, the primary process connects with the secondary processes
 (if present), in order to:</p>
 <ul>
 <li><p>Build up connections for communication (e.g. find shared memory segments
@@ -853,7 +875,7 @@ invocation may happen in parallel or sequentially</p></li>
 <li><p>There is exactly one task chain per application</p></li>
 <li><p>The task chain describes the execution order of the activities in the run phase</p></li>
 <li><p>Task chains run cyclically, e.g. every 30ms</p></li>
-<li><p>Optional: task chains can be triggerd on event</p></li>
+<li><p>Optional: task chains can be triggered on event</p></li>
 <li><p>All activities are executed once per task chain run</p></li>
 <li><p>All activities finish within a single task chain run</p></li>
 <li><p>Running an activity means that the framework is calling its step() function
@@ -888,7 +910,7 @@ is finished and therefore has produced the results the first one needs)</p></li>
 <li><p>The coordinating entity in the primary process is the “executor”</p></li>
 <li><p>The executor coordinates the invocation of the activities in the
 order as described above</p></li>
-<li><p>As a central entity the executor is able to trace, record or monitor the
+<li><p>As a central entity, the executor is able to trace and monitor the
 system behavior as sequence of activity invocations (see below)</p></li>
 <li><p>The actual activity invocation is done by an “agent”</p></li>
 <li><p>The agent exists in each process belonging to an application</p></li>
@@ -897,8 +919,90 @@ system behavior as sequence of activity invocations (see below)</p></li>
 executes them in its local process on behalf of the executor</p></li>
 </ul>
 </section>
+<section id="tracing">
+<h2>Tracing<a class="headerlink" href="#tracing" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The framework can make use of the tracing API (feo::tracing) to trace
+the program flow, mainly for debugging purposes.</p></li>
+<li><p>The tracing events generated by the tracing API can be recorded for later
+inspection e.g. using a UI like Google Perfetto or Eclipse TraceCompass.</p></li>
+</ul>
+</section>
+<section id="performance">
+<h2>Performance<a class="headerlink" href="#performance" title="Link to this heading">#</a></h2>
+<p>The framework is designed to ensure deterministic execution order and
+timing of activities, supporting safety-critical applications
+in the automotive domain. In this domain the footprint of the framework is crucial especially
+w.r.t impact of computation load and latency.</p>
+</section>
+<section id="error-handling">
+<h2>Error Handling<a class="headerlink" href="#error-handling" title="Link to this heading">#</a></h2>
+<p>Possible error cases during the different FEO life cycle states shall be handled as follows. For now, the
+descriptions are focussed on the intended implementation for S-CORE v0.5. Potential adaptations for
+S-CORE v1.0 have been noted down in the next Section.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Independent of state</dt><dd><ul>
+<li><p>If the primary process dies, the external lifecycle management shall kill all dependent processes.</p></li>
+<li><p>If a secondary process dies, the lifecycle management shall send a termination signal to the primary process.
+The primary process shall call the shutdown function of all remaining activities in arbitrary sequence and
+terminate itself.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>State: Lifecycle Manager creates all processes (primary &amp; secondaries)</dt><dd><ul>
+<li><p>If not all secondaries connect to the primary in time, the primary will terminate itself.
+The startup functions shall not be triggered.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>State: Lifecycle Manager has created all processes (primary &amp; secondaries), all secondaries have connected to the primary</dt><dd><ul>
+<li><dl class="simple">
+<dt>If an error occurs during the execution of a startup function, the primary process shall abort calling startup functions</dt><dd><p>and terminate itself. For all of the activities whose startup functions have already been called successfully,
+the corresponding shutdown functions shall be executed in arbitrary sequence.</p>
+</dd>
+</dl>
+</li>
+<li><p>During initialization (i.e. in the startup function of an activity), activities shall check for resource allocation
+and report an error to the executor in case of failure.</p></li>
+<li><p>If a timeout occurs during startup, stepping or shutdown of an activity, the primary process shall shutdown
+all successfully started activities in arbitrary sequence and terminate itself.</p></li>
+<li><p>If not all activities reach their initialized state within a certain period of time (startup timeout),
+the primary process shall shutdown all successfully started activities in arbitrary sequence and terminate itself.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>State: Lifecycle Manager has created all processes  (primary &amp; secondaries), all secondaries have connected to the primary, all activities have been started up successfully</dt><dd><ul>
+<li><p>If an activity fails in the step function, the primary process shall call shutdown for all activities in
+arbitrary sequence and terminate itself.</p></li>
+<li><p>If activities do not meet their intermediate (time/memory/cpu-) budgets the issue shall be detected and handled
+outside of FEO. (Resource supervision and quotas will be defined in a separate feature request, if needed.)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>State: Shutdown of activities</dt><dd><ul>
+<li><p>If an activity fails in the shutdown function, the primary process shall shutdown all remaining activities
+and terminate itself.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="extended-features-for-s-core-v1-0">
+<h2>Extended features for S-CORE v1.0<a class="headerlink" href="#extended-features-for-s-core-v1-0" title="Link to this heading">#</a></h2>
+<p>The following features will not be implemented as part of S-CORE v0.5, but have been noted down as potential extensions
+for v1.0. They shall be considered as drafts only.</p>
 <section id="external-state">
-<h2>External state<a class="headerlink" href="#external-state" title="Link to this heading">#</a></h2>
+<h3>External state<a class="headerlink" href="#external-state" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Depending on the reprocessing scenario (see below) it might be necessary
 to put the activities into a well defined state. This can either be done
@@ -917,8 +1021,10 @@ store it back for the next task chain invocation</p></li>
 </ul>
 </section>
 <section id="recording">
-<h2>Recording<a class="headerlink" href="#recording" title="Link to this heading">#</a></h2>
+<h3>Recording<a class="headerlink" href="#recording" title="Link to this heading">#</a></h3>
 <ul class="simple">
+<li><p>As a central entity, the executor is able to record the system behavior as sequence
+of activity invocations.</p></li>
 <li><p>The framework can record all messages going over its communication topics</p></li>
 <li><p>For each message the recording includes:</p>
 <ul>
@@ -945,7 +1051,7 @@ store it back for the next task chain invocation</p></li>
 </ul>
 </section>
 <section id="reprocessing">
-<h2>Reprocessing<a class="headerlink" href="#reprocessing" title="Link to this heading">#</a></h2>
+<h3>Reprocessing<a class="headerlink" href="#reprocessing" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>There are multiple possible reprocessing scenarios, for example:</p>
 <ul>
@@ -956,7 +1062,7 @@ store it back for the next task chain invocation</p></li>
 <li><p>In a replay scenario, the framework is used to reproduce the communication messages
 and other API behavior (e.g. time, parameters, persistency) as was
 recorded in a previous run</p></li>
-<li><p>In case a whole task chain is reprocessed, the outputs of the input service activites
+<li><p>In case a whole task chain is reprocessed, the outputs of the input service activities
 will be reproduced</p></li>
 <li><p>In case only a single activity is reprocessed, the outputs of the predecessors
 in the task chain will be reproduced</p></li>
@@ -971,27 +1077,8 @@ freshly calculated by the activities running during the replay</p></li>
 </li>
 </ul>
 </section>
-<section id="tracing">
-<h2>Tracing<a class="headerlink" href="#tracing" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>The framework can make use of the tracing API (feo::tracing) to trace
-the program flow, mainly for debugging purposes.</p></li>
-<li><p>The tracing events generated by the tracing API can be recorded for later
-inspection e.g. using a UI like Google Perfetto or Eclipse TraceCompass.</p></li>
-</ul>
-</section>
-<section id="performance">
-<h2>Performance<a class="headerlink" href="#performance" title="Link to this heading">#</a></h2>
-<p>The framework is designed to ensure deterministic execution order and
-timing of activities, supporting safety-critical applications
-in the automotive domain. In this domain the footprint of the framework is curcial especially
-w.r.t impact of computation load and latency.</p>
-</section>
-<section id="error-handling-for-s-core-v0-5">
-<h2>Error Handling for S-CORE v0.5<a class="headerlink" href="#error-handling-for-s-core-v0-5" title="Link to this heading">#</a></h2>
-<p>Possible error cases during the different FEO life cycle states shall be handled as follows. For now, the
-descriptions are focussed on the intended implementation for S-CORE v0.5. Potential adaptations for
-S-CORE v1.0 have been noted down, but shall be considered as drafts only.</p>
+<section id="extended-error-handling">
+<h3>Extended Error Handling<a class="headerlink" href="#extended-error-handling" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><dl class="simple">
 <dt>Independent of state</dt><dd><ul>
@@ -1005,65 +1092,35 @@ terminate itself.</p></li>
 </li>
 <li><dl class="simple">
 <dt>State: Lifecycle Manager creates all processes (primary &amp; secondaries)</dt><dd><ul>
-<li><dl class="simple">
-<dt>If not all secondaries connect to the primary in time,</dt><dd><ul>
-<li><p>S-CORE v0.5: the primary will terminate itself. The startup functions shall not be triggered.</p></li>
-<li><p>S-CORE v1.0: the primary will not terminate, but report an error to the lifecycle/health management.
-The startup functions shall not be triggered.</p></li>
-</ul>
-</dd>
-</dl>
-</li>
+<li><p>If not all secondaries connect to the primary in time, the primary will not terminate, but report an error to the
+lifecycle/health management. The startup functions shall not be triggered.</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
 <dt>State: Lifecycle Manager has created all processes (primary &amp; secondaries), all secondaries have connected to the primary</dt><dd><ul>
-<li><dl class="simple">
-<dt>If an error occurs during the execution of a startup function,</dt><dd><ul>
-<li><p>S-CORE v0.5: the primary process shall abort calling startup functions
-and terminate itself. For all of the activities whose startup functions have already been called successfully,
-the corresponding shutdown functions shall be executed in arbitrary sequence.</p></li>
-<li><p>S-CORE v1.0: in addition, the primary process shall report the issue to health management.</p></li>
-</ul>
-</dd>
-</dl>
-</li>
+<li><p>If an error occurs during the execution of a startup function, the primary process shall abort calling startup
+functions and terminate itself. For all of the activities whose startup functions have already been called successfully,
+the corresponding shutdown functions shall be executed in arbitrary sequence.
+In addition, the primary process shall report the issue to health management.</p></li>
 <li><p>During initialization (i.e. in the startup function of an activity), activities shall check for resource allocation
 and report an error to the executor in case of failure.</p></li>
-<li><dl class="simple">
-<dt>If a timeout occurs during startup, stepping or shutdown of an activity,</dt><dd><ul>
-<li><p>S-CORE v0.5: the primary process shall shutdown all successfully started activities in arbitrary sequence
-and terminate itself.</p></li>
-<li><p>S-CORE v1.0: In addition, the primary process shall report the issue to health management.</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>If not all activities reach their initialized state within a certain period of time (startup timeout),</dt><dd><ul>
-<li><p>S-CORE v0.5: the primary process shall shutdown all successfully
-started activities in arbitrary sequence and terminate itself.</p></li>
-<li><p>S-CORE v1.0: In addition, the primary process shall report the issue to health management.</p></li>
-</ul>
-</dd>
-</dl>
-</li>
+<li><p>If a timeout occurs during startup, stepping or shutdown of an activity, the primary process shall shutdown all
+successfully started activities in arbitrary sequence and terminate itself.
+In addition, the primary process shall report the issue to health management.</p></li>
+<li><p>If not all activities reach their initialized state within a certain period of time (startup timeout), the
+primary process shall shutdown all successfully started activities in arbitrary sequence and terminate itself.
+In addition, the primary process shall report the issue to health management.</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
 <dt>State: Lifecycle Manager has created all processes  (primary &amp; secondaries), all secondaries have connected to the primary, all activities have been started up successfully</dt><dd><ul>
-<li><dl class="simple">
-<dt>If an activity fails in the step function,</dt><dd><ul>
-<li><p>S-CORE v0.5: the primary process shall call shutdown for all activities in arbitrary sequence and terminate itself.</p></li>
-<li><p>S-CORE v1.0: In addition, a logical waypoint error shall be reported to health management.</p></li>
-</ul>
-</dd>
-</dl>
-</li>
+<li><p>If an activity fails in the step function, the primary process shall call shutdown for all activities in
+arbitrary sequence and terminate itself.
+In addition, a logical waypoint error shall be reported to health management.</p></li>
 <li><p>If activities do not meet their intermediate (time/memory/cpu-) budgets the issue shall be detected and handled
 outside of FEO. (Resource supervision and quotas will be defined in a separate feature request, if needed.)</p></li>
 </ul>
@@ -1072,19 +1129,15 @@ outside of FEO. (Resource supervision and quotas will be defined in a separate f
 </li>
 <li><dl class="simple">
 <dt>State: Shutdown of activities</dt><dd><ul>
-<li><dl class="simple">
-<dt>If an activity fails in the shutdown function,</dt><dd><ul>
-<li><p>S-CORE v0.5: the primary process shall shutdown all remaining activities and terminate itself.</p></li>
-<li><p>S-CORE v1.0: In addition, a logical waypoint error shall be reported to health management.</p></li>
+<li><p>If an activity fails in the shutdown function, the primary process shall shutdown all remaining activities and
+terminate itself.
+In addition, a logical waypoint error shall be reported to health management.</p></li>
 </ul>
 </dd>
 </dl>
 </li>
 </ul>
-</dd>
-</dl>
-</li>
-</ul>
+</section>
 </section>
 </section>
 
@@ -1108,11 +1161,11 @@ outside of FEO. (Resource supervision and quotas will be defined in a separate f
       </div>
     </a>
     <a class="right-next"
-       href="requirements/index.html"
+       href="requirements/feature_req.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Requirements</p>
+        <p class="prev-next-title">FEO Feature Requirements</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1150,12 +1203,16 @@ outside of FEO. (Resource supervision and quotas will be defined in a separate f
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lifecycle">Lifecycle</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scheduling">Scheduling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#executor-and-agents">Executor and Agents</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#external-state">External state</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recording">Recording</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reprocessing">Reprocessing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tracing">Tracing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performance">Performance</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-handling-for-s-core-v0-5">Error Handling for S-CORE v0.5</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-handling">Error Handling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extended-features-for-s-core-v1-0">Extended features for S-CORE v1.0</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#external-state">External state</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recording">Recording</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reprocessing">Reprocessing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extended-error-handling">Extended Error Handling</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

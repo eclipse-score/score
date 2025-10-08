@@ -17,7 +17,7 @@ feo_tracing
 ###########
 
 This component will be replaced by or become a wrapper of the interface `mw::com` provided by the feature
-"Logging". In the latter case, it is planned to be integrated into the component feo (see :ref:`comp_doc_feo`).
+"Logging". In the latter case, it is planned to be integrated into the component feo (see :ref:`feo_module_documentation`).
 
 Component Documents
 ===================

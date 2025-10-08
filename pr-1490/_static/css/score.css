@@ -12,10 +12,27 @@ html {
 
     The base color is TEAL */
 
+/* Version Switcher Button */
+button.btn.version-switcher__button {
+    color: #FFF;
+}
+
+/* Version Switcher Menu */
+.version-switcher__menu a.list-group-item {
+    color: #FFF;
+}
 
 html[data-theme="light"] {
-    --pst-color-primary: #547980;
-    --pst-color-secondary: #45ADA8;
+    /* Search Box background color. */
+    --bs-btn-hover-bg: #a382c5;
+    /* Menu svg items */
+    --pst-color-muted: #FFF;
+    /* Text color within cards (same background as page header) */
+    --sd-color-card-text: #a382c5;
+    /* Link color + menu items on hover color */
+    --pst-color-primary: #7c4daa;
+    /* Page Header */
+    --pst-color-secondary: #2D1942;
     --pst-color-accent: #9DE0AD;
     --pst-color-target: #E5FCC2;
     --pst-color-on-surface: #594F4F;
@@ -26,8 +43,12 @@ html[data-theme="light"] {
 }
 
 html[data-theme="dark"] {
-    --pst-color-primary: #45ADA8;
-    --pst-color-secondary: #547980;
+    /* Link color */
+    --pst-color-primary: #FFFFFF;
+    /* Link color on hover */
+    --pst-color-link-hover: #FFFFFF;
+    /* Page Header */
+    --pst-color-secondary: #2D1942;
     --pst-color-accent: #9DE0AD;
     --pst-color-target: #E5FCC2;
     --pst-color-on-surface: #594F4F;
@@ -252,4 +273,3 @@ html[data-theme="dark"] #score-title {
     overflow-x: hidden;
     box-sizing: border-box;
 }
-
