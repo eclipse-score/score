@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -546,7 +546,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-fb9ca498">
+  <div class="need_container docutils container" id="SNCB-824a3184">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__project_mgt_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -657,7 +657,7 @@ and effectively work on processing of <em>GitHub Issues</em>.</p>
 <p>Every <em>Feature Team</em> should have at least one committer who can approve and merge the Pull Requests of the Contributors.</p>
 <p>Every <em>Feature Team</em> should also have a <em>Feature Team Lead</em>. The person with this role is responsible for
 organizing the meetings, writing meeting protocols and representing the current status of the <em>Feature Team</em>
-work in various management reporting calls. <em>Feature Team Lead</em> is nominated by <em>Technical Leads</em>.
+work in various management reporting or plannig calls. <em>Feature Team Lead</em> is nominated by <em>Technical Leads</em> by election.
 Normally, this is the owner of the original <em>Feature Request</em>.</p>
 </li>
 </ul>
@@ -686,7 +686,7 @@ of the main <em>S-CORE</em> project.</p>
 <li><p><strong>Adding a new Team to the main S-Core GitHub project</strong></p>
 <p>Every <em>Feature Team</em> should be added as a further select option of the “Team” field
 in the <a class="reference external" href="https://github.com/orgs/eclipse-score/projects/17/views/27">main S-Core project</a>, so that <em>Technical Leads</em>
-can assign Epics to the team and filter for the tickets of the new team.
+can assign tickets to the team and filter for the tickets of the new team.
 Additionally, every team is free to create its own GitHub project, but then the team tickets should be still
 visible in the main S-Core project.</p>
 </li>
@@ -710,7 +710,7 @@ software developers, whose review is mandatory for every PR in the repository an
 <section id="merge-rights-code-ownership">
 <h4>Merge rights &amp; code ownership<a class="headerlink" href="#merge-rights-code-ownership" title="Link to this heading">#</a></h4>
 <p>As already stated, every <em>Feature Team</em> has normally a dedicated repository. Before the creation of the new repository,
-<em>Technical Leads</em> should nominate initial codeowners, whose review is mandatory for merging PRs to the repository
+<em>Feature Team Lead</em> together with <em>Technical Leads</em> should nominate initial codeowners, whose review is mandatory for merging PRs to the repository
 and who is at the end allowed to merge PRs to the repository.</p>
 <p>In the S-CORE project, the configuration whose review is mandatory to merge a PR to the repository is done
 using <a class="reference external" href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners#codeowners-and-branch-protection">CODEOWNERS file and branch protection</a> .
@@ -725,7 +725,7 @@ to be able to be merged. The teams listed there are normally:</p>
 <p><strong>ToDo</strong>: can we have an ‘AND relationship’ for teams in CODEOWNERS file?</p>
 <p><em>Codeowner GitHub Team</em> for the corresponding <em>Feature Team</em> consists of the software developers, that understand how
 the particular feature works or should work. The members of this team should be selected and agreed
-during the creation of the <em>Feature Team</em> by the <em>Technical Leads</em>. The criteria for the selection should be the
+during the creation of the <em>Feature Team</em> by the <em>Technical Leads</em> and <em>Feature Team Lead</em>. The criteria for the selection should be the
 technical competence of the software developers, e.g. in case during the <a class="reference internal" href="../contribute/contribution_request/feature_request.html#id1"><span class="std std-ref">Feature Request process</span></a>
 it was decided to take over already existing source code, then persons who were actively participating in the
 development of that code are always good candidates to be part of <em>Codeowner GitHub team</em>.
