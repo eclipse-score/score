@@ -546,7 +546,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-a4035551">
+  <div class="need_container docutils container" id="SNCB-6f019ddd">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__project_mgt_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -647,12 +647,98 @@ in order to achieve milestones on time. All important architectural decisions
 should be reported to the project as <em>Feature Request</em> to get the final approvement from the <em>Technical lead circle</em>.</p>
 </li>
 <li><p><strong>Feature Teams</strong></p>
-<p><em>Feature Teams</em> have end-to-end responsibility for specific functionalities. This includes all aspects beginning with the architecture definition to the integration test. They are usually assigned to the <em>S-CORE</em> main integration project or to one particular software module. <em>Feature Teams</em> work independently of each other on <em>GitHub Issues</em> in the assigned software module. <em>Feature Teams</em> consist of the contributors, who can specify requirements, define architecture, develop source code and implement tests afterwards. <em>Project Leads</em> and <em>Committers</em> are also <em>Contributors</em> and effectively work on processing of <em>GitHub Issues</em>.</p>
-<p><em>Feature Team</em> usually consists of the following roles: Project Lead, Safety Manager, Quality Manager, Security Manager, Committers and Contributors. Every <em>Feature Team</em> has at least one committer who can approve and merge the Pull Requests of the Contributors.</p>
-<p>In case a <em>Feature Team</em> needs to request a new repository, this can be done be extending the <a class="reference external" href="https://github.com/eclipse-score/.eclipsefdn/blob/main/otterdog/eclipse-score.jsonnet">otterdog configuration file</a> and creating a new PR, that has to be approved by the <em>Eclipse Project Security Team</em>.</p>
-<p>The <em>GitHub Discussions</em> for feature teams can be found in the <a class="reference external" href="https://github.com/orgs/eclipse-score/discussions">Feature Teams section</a> of the main <em>S-CORE</em> project.</p>
+<p><em>Feature Teams</em> have end-to-end responsibility for specific functionalities. This includes all
+aspects beginning with the architecture definition to the integration test. They are usually assigned
+to the <em>S-CORE</em> main integration project or to one particular software module. <em>Feature Teams</em> work
+independently of each other on <em>GitHub Issues</em> in the assigned software module.
+<em>Feature Teams</em> consist mainly of the contributors, who can specify requirements, define architecture,
+develop source code and implement tests afterwards. <em>Project Leads</em> and <em>Committers</em> are also <em>Contributors</em>
+and effectively work on processing of <em>GitHub Issues</em>.</p>
+<p>Every <em>Feature Team</em> should have at least one committer who can approve and merge the Pull Requests of the Contributors.</p>
+<p>Every <em>Feature Team</em> should also have a <em>Feature Team Lead</em>. The person with this role is responsible for
+organizing the meetings, writing meeting protocols and representing the current status of the <em>Feature Team</em>
+work in various management reporting or plannig calls. <em>Feature Team Lead</em> is nominated by <em>Technical Leads</em> by election.
+Normally, this is the owner of the original <em>Feature Request</em>.</p>
 </li>
 </ul>
+<section id="creation-of-a-new-feature-team">
+<h4>Creation of a new Feature Team<a class="headerlink" href="#creation-of-a-new-feature-team" title="Link to this heading">#</a></h4>
+<p>Decision to create a new <em>Feature Team</em> is normally done in <em>Technical Lead Circle</em> in case a particular,
+already <em>accepted</em> <em>Feature Request</em> can not be assigned to any of already existing <em>Feature Teams</em>.</p>
+<p>As a first step, the decision to create a new Feature Team is protocolled in the <a class="reference external" href="https://github.com/orgs/eclipse-score/discussions/categories/technical-lead-circle">Tech Lead Circle meeeting minutes</a>.
+Afterwards a GitHub Issue is created in the <a class="reference external" href="https://github.com/orgs/eclipse-score/projects/3">Technical Lead Cirle LOP project</a>
+using the special <em>Feature Team Creation</em> GitHub Issue template and is assigned to one of the Technical Leads.</p>
+<p><strong>ToDo</strong>: create such a template.</p>
+<p>Usage of the special GitHub Issue template ensures, that all GitHub issues for creation of new <em>Feature
+Teams</em> follow the same rules, e.g. that the title always has the same format or
+that the description always contains the reasoning for the creation of a new <em>Feature Team</em>.</p>
+<p>Additionally, the GitHub Issue created from the template includes a <em>DoD list</em>, which serves as a checklist
+for the Technical Lead to ensure that all necessary activities and steps have been completed to establish a new <em>Feature Team</em>.
+Its current <em>DoD list</em> is always documented in the template. The most important activities are:</p>
+<ul>
+<li><p><strong>Creation of labels</strong></p>
+<p>Every <em>Feature Team</em> should have its own label for filtering of GitHub Issues, PRs or discussions.</p>
+</li>
+<li><p><strong>Creation of discussion</strong></p>
+<p>Every <em>Feature Team</em> should have its own discussion section in the <a class="reference external" href="https://github.com/orgs/eclipse-score/discussions">Feature Teams section</a>
+of the main <em>S-CORE</em> project.</p>
+</li>
+<li><p><strong>Adding a new Team to the main S-Core GitHub project</strong></p>
+<p>Every <em>Feature Team</em> should be added as a further select option of the “Team” field
+in the <a class="reference external" href="https://github.com/orgs/eclipse-score/projects/17/views/27">main S-Core project</a>, so that <em>Technical Leads</em>
+can assign tickets to the team and filter for the tickets of the new team.
+Additionally, every team is free to create its own GitHub project, but then the team tickets should be still
+visible in the main S-Core project.</p>
+</li>
+<li><p><strong>Creation of repository</strong></p>
+<p>Normally, every <em>Feature Team</em> should have a dedicated repository. Creation of new repository is done
+be extending the <a class="reference external" href="https://github.com/eclipse-score/.eclipsefdn/blob/main/otterdog/eclipse-score.jsonnet">otterdog configuration file</a>
+and creating a new PR, that has to be approved by the <em>Eclipse Project Security Team</em>. Creation of the
+repository is the responsibility of the <em>Feature Team Lead</em>.</p>
+</li>
+<li><p><strong>Developer GitHub Team</strong></p>
+<p>Every <em>Feature Team</em> should have a corresponding software developer GitHub team, e.g. <em>ipc_ft_dev</em>, that contains all
+developers, that are actively participating in this <em>Feature Team</em>. This GitHub group can be used e.g. to
+send notifications for upcoming meetings or discussions.</p>
+</li>
+<li><p><strong>Codeowner GitHub Team</strong></p>
+<p>Every <em>Feature Team</em> should have a corresponding codeowner GitHub team, e.g. <em>ipc_ft_co</em>, that contains all
+software developers, whose review is mandatory for every PR in the repository and who have rights to merge PRs to the repository.</p>
+</li>
+</ul>
+</section>
+<section id="merge-rights-code-ownership">
+<h4>Merge rights &amp; code ownership<a class="headerlink" href="#merge-rights-code-ownership" title="Link to this heading">#</a></h4>
+<p>As already stated, every <em>Feature Team</em> has normally a dedicated repository. Before the creation of the new repository,
+<em>Feature Team Lead</em> together with <em>Technical Leads</em> should nominate initial codeowners, whose review is mandatory for merging PRs to the repository
+and who is at the end allowed to merge PRs to the repository.</p>
+<p>In the S-CORE project, the configuration whose review is mandatory to merge a PR to the repository is done
+using <a class="reference external" href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners#codeowners-and-branch-protection">CODEOWNERS file and branch protection</a> .
+Every repository has a CODEOWNERS file, where one or multiple teams are specified, whose review is needed for the PR
+to be able to be merged. The teams listed there are normally:</p>
+<ul class="simple">
+<li><p><em>Codeowner GitHub Team</em> for this <em>Feature Team</em></p></li>
+<li><p>GitHub Team for security managers</p></li>
+<li><p>GitHub Team for quality managers</p></li>
+<li><p>GitHub Team for safety managers</p></li>
+</ul>
+<p><strong>ToDo</strong>: can we have an ‘AND relationship’ for teams in CODEOWNERS file?</p>
+<p><em>Codeowner GitHub Team</em> for the corresponding <em>Feature Team</em> consists of the software developers, that understand how
+the particular feature works or should work. The members of this team should be selected and agreed
+during the creation of the <em>Feature Team</em> by the <em>Technical Leads</em> and <em>Feature Team Lead</em>. The criteria for the selection should be the
+technical competence of the software developers, e.g. in case during the <a class="reference internal" href="../contribute/contribution_request/feature_request.html#id1"><span class="std std-ref">Feature Request process</span></a>
+it was decided to take over already existing source code, then persons who were actively participating in the
+development of that code are always good candidates to be part of <em>Codeowner GitHub team</em>.
+The decision who should be initially part of the <em>Codeowner GitHub team</em> and the reasoning for this
+should be protocolled in the GitHub Issue, that is used for creation of the <em>Feature Team</em>.</p>
+<p>In case further software developers should be added to the <em>Codeowener GitHub team</em> in the future,
+that decision and its reasoning should be protocolled in one of the <em>Feature Team</em> GitHub discussions.</p>
+<p>Members of the <em>Codeowner GitHub team</em> should also be authorized to merge pull requests (PRs) into the corresponding repository.
+Therefore, once the <em>Codeowner GitHub team</em> has been created, the Technical Lead assigned to the ticket for the <em>Feature
+Team</em> setup should initiate committer elections for all software developers in the <em>Codeowner GitHub team</em>.
+All other Technical Leads who are already committers in the S-CORE project are expected to support these
+elections by voting positively, provided there are no specific objections.</p>
+</section>
 </section>
 <section id="meeting-structure">
 <h3>Meeting Structure<a class="headerlink" href="#meeting-structure" title="Link to this heading">#</a></h3>
@@ -974,7 +1060,11 @@ is changed from “experimental” to “official”.</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-organization">Project organization</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steering-committees">Steering committees</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-committees">Technical committees</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-committees">Technical committees</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#creation-of-a-new-feature-team">Creation of a new Feature Team</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-rights-code-ownership">Merge rights &amp; code ownership</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meeting-structure">Meeting Structure</a></li>
 </ul>
 </li>
