@@ -333,23 +333,23 @@ Functional Safety Management SW Platform Work Products
       - :doc:`index`
       - :ndf:`copy('status', need_id='doc__platform_mgt_plan')`
 
-    * - :need:`PROCESS_wp__process_definition`
-      - :need:`PROCESS_wf__def_app_process_definition`
-      - :ndf:`copy('status', need_id='PROCESS_wf__def_app_process_definition')`
+    * - :need:`PROCESS_wp__process_description`
+      - :need:`PROCESS_wf__def_app_process_description`
+      - :ndf:`copy('status', need_id='PROCESS_wf__def_app_process_description')`
       - `Process community issues <https://github.com/orgs/eclipse-score/projects/7>`_
       - `Process description <https://eclipse-score.github.io/process_description/main/index.html>`_
       - <automated>
 
     * - :need:`PROCESS_wp__process_impr_report`
-      - :need:`PROCESS_wf__mon_ctrl_process_definition`
-      - :ndf:`copy('status', need_id='PROCESS_wf__mon_ctrl_process_definition')`
+      - :need:`PROCESS_wf__mon_imp_process_description`
+      - :ndf:`copy('status', need_id='PROCESS_wf__mon_imp_process_description')`
       - <Link to issue>
       - <Link to WP>
       - <automated>
 
-    * - :need:`PROCESS_wp__process_plan`
-      - :need:`PROCESS_wf__mon_ctrl_process_definition`
-      - :ndf:`copy('status', need_id='PROCESS_wf__mon_ctrl_process_definition')`
+    * - :need:`PROCESS_wp__process_strategy`
+      - :need:`PROCESS_wf__cr_mt_process_mgt_strategy`
+      - :ndf:`copy('status', need_id='PROCESS_wf__cr_mt_process_mgt_strategy')`
       - `#232 <https://github.com/eclipse-score/score/issues/232>`_
       - `Process community issues <https://github.com/orgs/eclipse-score/projects/7>`_
       - <automated>
