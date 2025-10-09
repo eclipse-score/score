@@ -94,7 +94,7 @@ User friendly API for information exchange
    :satisfies: feat_req__baselibs__json_library
    :status: valid
 
-   The public API shall enforce strict type compatibility. When a user requests a value, the API shall 
+   The public API shall enforce strict type compatibility. When a user requests a value, the API shall
    validate that the requested return type is compatible with the type and value of the stored JSON data.
 
    Note: This includes checking if the stored value exceeds the range of the expected type.
@@ -136,7 +136,9 @@ AoU Requirements
    :safety: ASIL_B
    :status: valid
 
-   The integrity of input JSON data shall be ensured by the user.
+   The user shall provide a string as input which is not corrupted due to HW or QM SW errors.
+
+   Note: This could be achieved by using a safe read-only filesystem for JSON file storage or a CRC protection on the JSON file content.
 
 .. aou_req:: Access control
    :id: aou_req__json__access_control
@@ -145,4 +147,6 @@ AoU Requirements
    :safety: ASIL_B
    :status: valid
 
-   Access control and manipulation prevention (e.g. dm-verity) shall be ensured by the hosting process and system configuration.
+   The user shall ensure access control and manipulation prevention on the JSON files.
+
+   Note: This can be done by the hosting process and system configuration (e.g. by using dm-verity).
