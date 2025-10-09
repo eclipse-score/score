@@ -7,7 +7,7 @@ class LaunchManager
 
 class LaunchConfiguration
 {
-  
+
 }
 
 LaunchManager "1" -- "1" LaunchConfiguration
@@ -46,22 +46,22 @@ class Dependency {
   + depency type
 }
 
-class ProcessConfig {
-+ UID 
-+ GID 
-+ supplementary groups 
-+ runmask 
-+ priority 
+class SandboxConfig {
++ UID
++ GID
++ supplementary groups
++ runmask
++ priority
 + ability
 + security
-+ cwd 
-+ environmental variables 
++ cwd
++ environmental variables
 + command
-+ arguments 
-+ stdin 
-+ stdout 
-+ stderr 
-+ aslr 
++ arguments
++ stdin
++ stdout
++ stderr
++ aslr
 + rlimits
 + time between sigterm and sigkill
 }
