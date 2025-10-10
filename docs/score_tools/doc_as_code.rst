@@ -154,18 +154,11 @@ Tool Qualification
 Based on method: validation of the software tool
 
 
-Requirements and testing aspects
---------------------------------
-Tool requirements are defined here:
+Requirements
+------------
 
-`Doc-as-Code Requirements <https://eclipse-score.github.io/docs-as-code/main/product/requirements.html#requirements>`_
-
-Test cases and tests are defined here:
-
-`Doc-as-Code Test cases and tests <https://github.com/eclipse-score/docs-as-code/tree/v0.4.2/src/extensions>`_
-
-The tests are part of the rules checker code sections.
-
-Requirements coverage is documented here:
-
-`Doc-as-Code Requirements <https://eclipse-score.github.io/docs-as-code/main/product/requirements.html#requirements>`_
+.. needtable::
+  :types: tool_req
+  :filter: id.startswith('DOCS_tool_req__docs_')
+  :columns: id;title;status;implemented
+  :colwidths: 1, 4, 1, 1
