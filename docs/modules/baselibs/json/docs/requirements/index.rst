@@ -15,18 +15,14 @@
 Requirements
 ############
 
+.. document:: JSON Requirements
+   :id: doc__json_requirements
+   :status: draft
+   :safety: ASIL_B
+   :realizes: PROCESS_wp__requirements_comp
+
 General Requirements
 ====================
-
-.. comp_req:: JSON Validation
-   :id: comp_req__json__validation
-   :reqtype: Functional
-   :security: NO
-   :safety: ASIL_B
-   :satisfies: feat_req__baselibs__json_library
-   :status: valid
-
-   The JSON-Library shall provide a service to check the well-formedness of JSON data.
 
 .. comp_req:: JSON Deserialization
    :id: comp_req__json__deserialization
@@ -36,7 +32,8 @@ General Requirements
    :satisfies: feat_req__baselibs__json_library
    :status: valid
 
-   The JSON-Library shall provide a service to parse JSON data according to RFC8259.
+   The JSON-Library shall provide a service to deserialize JSON data according to RFC8259, i.e.
+   parse and check for well-formedness.
 
 .. comp_req:: JSON Serialization
    :id: comp_req__json__serialization

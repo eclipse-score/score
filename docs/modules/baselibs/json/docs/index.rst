@@ -13,7 +13,7 @@
    # *******************************************************************************
 
 JSON-Library
-===========================
+============
 
 .. document:: JSON-Library
    :id: doc__json
@@ -27,6 +27,8 @@ JSON-Library
 
    requirements/index.rst
    architecture/index.rst
+   json_wrapper/index.rst
+   nlohman_json/index.rst
 
 
 Abstract
@@ -74,7 +76,6 @@ General considerations
 
 The JSON-Library should provide parsing, writing and data conversion capabilities:
 
-* :need:`comp_req__json__validation`
 * :need:`comp_req__json__deserialization`
 * :need:`comp_req__json__serialization`
 * :need:`comp_req__json__user_format`
