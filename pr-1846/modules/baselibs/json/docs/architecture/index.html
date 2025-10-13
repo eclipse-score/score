@@ -72,7 +72,7 @@
         </script>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
-    <link rel="next" title="memory_shared" href="../../../memory_shared/docs/index.html" />
+    <link rel="next" title="JSON Wrapper" href="../json_wrapper/index.html" />
     <link rel="prev" title="Requirements" href="../requirements/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -478,6 +478,8 @@
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">JSON-Library</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../requirements/index.html">Requirements</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">JSON Component Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../json_wrapper/index.html">JSON Wrapper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../nlohman_json/index.html">nlohman_json</a></li>
 </ul>
 </details></li>
 
@@ -569,11 +571,78 @@
                   
   <section id="json-component-architecture">
 <h1>JSON Component Architecture<a class="headerlink" href="#json-component-architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-cd5d5640">
+<div class="need_container docutils container" id="SNCB-e2632d45">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__json_architecture">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">JSON Architecture</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/architecture_workproducts.html#wp__component_arch">PROCESS_wp__component_arch</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__json_architecture" title="doc__json_architecture">doc__json_architecture</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Generic Document</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>The component JSON implements functionality for reading/parsing JSON data and also to write.
+It provides currently only a C++ API.</p>
+</section>
+<section id="requirements-linked-to-component-architecture">
+<h2>Requirements Linked to Component Architecture<a class="headerlink" href="#requirements-linked-to-component-architecture" title="Link to this heading">#</a></h2>
+<p>see the “fulfils” links in static and dynamic architecture below.</p>
+</section>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h2>
+<p>JSON provides an abstraction layer to unterlying implementations, in first iteration there is only one
+implementation provided. But generally there is a “Wrapper” and an “Implementation” lower-level component.</p>
+<p>Design Decisions:</p>
+<p>It was decided to use the nlohman_json OSS library (see <a class="reference external" href="https://github.com/nlohmann/json">nlohman/json</a>). This decision still has to be documented (TBD)</p>
+<p>Design Constraints:</p>
+<p>The feature description states that this component provides a “JSON abstraction layer that can switch between different parsers/serializers under the hood.”</p>
+<section id="rationale-behind-architecture-decomposition">
+<h3>Rationale Behind Architecture Decomposition<a class="headerlink" href="#rationale-behind-architecture-decomposition" title="Link to this heading">#</a></h3>
+<p>The decomposition in a wrapper and an implemetation component already comes from the feature definition,
+the main driver is to re-use existing implementation(s), enable switch of implementation but providing a stable API.</p>
+</section>
+</section>
+<section id="static-architecture">
+<h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
+<div class="need_container docutils container" id="SNCB-2e91e587">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__baselibs__json">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">JSON-Library</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">JSON</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -599,7 +668,7 @@
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-modules/baselibs/json/docs/architecture/index-0">
-<object data="../../../../../_images/plantuml-e079e70a38395b0ab2bdc60938b9fd9c0018cb56.svg" type="image/svg+xml" style="width:362px;height:262px;background:#FFFFFF;"></object></p>
+<object data="../../../../../_images/plantuml-3666be0313a25e0a909bec230a7c3cd6e9cea64a.svg" type="image/svg+xml" style="width:362px;height:262px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -616,7 +685,55 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-54c5a1c8">
+</section>
+<section id="dynamic-architecture">
+<h2>Dynamic Architecture<a class="headerlink" href="#dynamic-architecture" title="Link to this heading">#</a></h2>
+<div class="need_container docutils container" id="SNCB-204be1d0">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_dyn table" id="comp_arc_dyn__baselibs__json_dynamic_view">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">JSON dynamic arch</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">invalid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/index.html#comp_req__json__validation" title="comp_arc_dyn__baselibs__json_dynamic_view">comp_req__json__validation</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__deserialization" title="comp_arc_dyn__baselibs__json_dynamic_view">comp_req__json__deserialization</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__serialization" title="comp_arc_dyn__baselibs__json_dynamic_view">comp_req__json__serialization</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__user_format" title="comp_arc_dyn__baselibs__json_dynamic_view">comp_req__json__user_format</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__lang_idioms" title="comp_arc_dyn__baselibs__json_dynamic_view">comp_req__json__lang_idioms</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__lang_infra" title="comp_arc_dyn__baselibs__json_dynamic_view">comp_req__json__lang_infra</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__type_compatibility" title="comp_arc_dyn__baselibs__json_dynamic_view">comp_req__json__type_compatibility</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__full_testability" title="comp_arc_dyn__baselibs__json_dynamic_view">comp_req__json__full_testability</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__asil" title="comp_arc_dyn__baselibs__json_dynamic_view">comp_req__json__asil</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>put here a sequence diagram (TBD)</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#comp_arc_dyn__baselibs__json_dynamic_view" title="comp_arc_dyn__baselibs__json_dynamic_view">comp_arc_dyn__baselibs__json_dynamic_view</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component Sequence Diagram</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="interfaces">
+<h2>Interfaces<a class="headerlink" href="#interfaces" title="Link to this heading">#</a></h2>
+<div class="need_container docutils container" id="SNCB-73c79e85">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__baselibs__json">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -646,7 +763,7 @@
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-modules/baselibs/json/docs/architecture/index-1">
-<object data="../../../../../_images/plantuml-b204cd73c99b935e1b66e4be6831285d50911514.svg" type="image/svg+xml" style="width:105px;height:117px;background:#FFFFFF;"></object></p>
+<object data="../../../../../_images/plantuml-4f2de57fc7d5a99678741fbb08c8767ddbfda8ac.svg" type="image/svg+xml" style="width:105px;height:117px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -663,7 +780,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-8f21e3a0">
+<div class="need_container docutils container" id="SNCB-00b2d87d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__fromfile">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -705,7 +822,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b59637db">
+<div class="need_container docutils container" id="SNCB-beebb76a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__validate">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -747,11 +864,11 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-8a6709c7">
+<div class="need_container docutils container" id="SNCB-1c66ef01">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__tofile">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">Dump</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">Write</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -789,7 +906,10 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-705acdb6">
+</section>
+<section id="lower-level-components">
+<h2>Lower Level Components<a class="headerlink" href="#lower-level-components" title="Link to this heading">#</a></h2>
+<div class="need_container docutils container" id="SNCB-dbd3d0d6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__baselibs__json_wrapper">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -833,7 +953,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-bc614759">
+<div class="need_container docutils container" id="SNCB-6162599d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__baselibs__nlohman_json">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -877,6 +997,7 @@
 </div>
 </div>
 </section>
+</section>
 
 
                 </article>
@@ -898,11 +1019,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="../../../memory_shared/docs/index.html"
+       href="../json_wrapper/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">memory_shared</p>
+        <p class="prev-next-title">JSON Wrapper</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -916,6 +1037,27 @@
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements-linked-to-component-architecture">Requirements Linked to Component Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#description">Description</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale-behind-architecture-decomposition">Rationale Behind Architecture Decomposition</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#static-architecture">Static Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-architecture">Dynamic Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interfaces">Interfaces</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lower-level-components">Lower Level Components</a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
 
