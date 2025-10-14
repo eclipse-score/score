@@ -28,6 +28,7 @@ Base Libraries
    :hidden:
 
    docs/requirements/index.rst
+   docs/architecture/index.rst
 
 
 Feature flag
