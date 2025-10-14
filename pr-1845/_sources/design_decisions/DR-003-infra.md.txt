@@ -32,6 +32,7 @@ Additionally, we must ensure that devcontainers are usable both **locally** and 
 ## 2. Requirements
 
 1. **Performance**: Acceptable build/startup times and reasonable resource usage, both locally and in CI/CD.
+1a. **Startup Performance**: Fast container initialization for productive development workflows.
 2. **Maintainability**: Easy updates of dependencies and configurations.
 3. **Flexibility**: Support for different developer workflows (frontend, backend, infra).
 4. **Isolation**: Clear separation of dependencies between S-CORE modules.
@@ -72,32 +73,36 @@ Each S-CORE service (e.g. frontend, backend, infra) runs in its own devcontainer
 - Increased cognitive load for new developers.
 - IDE integration can be more challenging than with a single container.
 - Higher complexity to align CI/CD with local multi-container setups.
+- Performance overhead from container orchestration and inter-container communication.
 
-### 3.3 Hybrid Approach with Image Layering
+### 3.3 Hybrid Approach with Devcontainer Features
 
-A lightweight **base devcontainer** provides shared tooling (Bazel, git, linters). On top of it, optional **service-specific containers** are layered for richer local development.
+A comprehensive **base devcontainer** provides all tooling needed for both development and CI/CD (Bazel, git, linters, build tools). On top of it, optional **devcontainer features** can be added for specialized local development workflows without rebuilding the base image.
 
-Additionally, the base image can be reused in **CI/CD pipelines** as a minimal container (fast to build and run), while developers use extended local containers with additional tooling (debuggers, IDE integrations, documentation generators).
+The base image serves both **local development** and **CI/CD pipelines** to ensure consistency. Additional development tools (debuggers, IDE integrations, documentation generators) are added via devcontainer features only when needed locally.
 
 **Pros**:
-- Balanced size/performance between local and CI/CD use cases.
-- Maintains flexibility without overwhelming complexity.
-- Allows efficient CI/CD execution by running a minimal container.
-- Developers benefit from richer local tooling without slowing down CI pipelines.
-- Aligns with industry practices (see [GitHub Codespaces multi-container](https://docs.github.com/en/enterprise-cloud@latest/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#devcontainerjson)).
+- Perfect consistency between local and CI/CD environments (same base image).
+- Flexibility through devcontainer features without base image complexity.
+- Leverages existing devcontainer ecosystem and VS Code integration.
+- Avoids supply chain risks from multiple image layers and external dependencies.
+- Reduces maintenance overhead compared to multiple specialized images.
+- Fast container startup: All tools pre-installed, no runtime feature installation.
+- Predictable performance: No dependency on network speed or external service availability during container startup.
 
 **Cons**:
-- Requires upfront effort to design a clear layering strategy.
-- Slightly more complex CI/CD integration to manage both minimal and rich variants.
+- Base image may be larger than minimal CI requirements.
+- Devcontainer features add on-the-fly complexity, potential supply chain risks, and significant startup delays.
+- Need to carefully evaluate which tools justify separate features vs. inclusion in base image.
 
 ---
 
 ## 4. Decision
 
-We adopt the **Hybrid Approach with Image Layering**:
-- A **base devcontainer** as the foundation for both local and CI/CD environments.
-- **Service-specific extensions** for local development, adding richer tooling where needed.
-- **CI/CD pipelines** will primarily use the base container to optimize performance and avoid unnecessary dependencies.
+We adopt the **Hybrid Approach with Devcontainer Features**:
+- A **comprehensive base devcontainer** includes all tools needed for both development and CI/CD.
+- **Devcontainer features** add specialized tooling for local development when justified by significant size/complexity.
+- **Same base image** used in both local development and CI/CD pipelines for maximum consistency.
 
 ---
 
@@ -115,19 +120,22 @@ We adopt the **Hybrid Approach with Image Layering**:
 
 ## 6. Consequences & Challenges
 
-- **Image layering** must be carefully designed to avoid duplication and long build times.
-- **Documentation & onboarding** must explain when to use the base container versus extended service containers.
-- **CI/CD pipelines** must support both the lean base image and richer developer images.
-- Requires monitoring of build times and resource usage across both local and CI/CD workflows.
+- **Supply chain security**: Devcontainer features from external sources introduce potential security and availability risks.
+- **Feature evaluation**: Clear criteria needed for when tools justify separate features vs. base image inclusion.
+- **Base image size**: May be larger than minimal CI requirements, but ensures consistency.
+- **Feature maintenance**: Need to monitor and potentially archive critical external devcontainer features.
+- **Runtime performance**: Feature-based approaches may cause delays at first container startup due to on-the-fly installation.
+- **Network dependency**: Features require internet connectivity for initial installation, potentially limiting offline development workflows.
+- **Documentation**: Must explain when and how to use devcontainer features safely.
 
 ---
 
 ## 7. Next Steps
 
-1. Extend the existing [S-CORE central devcontainer](https://github.com/eclipse-score/devcontainer) to serve as the **base container** for both local and CI/CD usage.
-2. Define **lightweight CI/CD variants** derived from the base container to optimize build speed and runtime performance.
-3. Add **service-specific extensions** (backend, frontend, infra) on top of the base devcontainer for richer local development workflows.
-4. Provide Docker Compose orchestration templates to combine base + service containers where needed.
+1. Extend the existing [S-CORE central devcontainer](https://github.com/eclipse-score/devcontainer) to include **all tools needed for CI/CD** as the comprehensive base image.
+2. Evaluate and create **devcontainer features** only for tools that add significant size/complexity and are not needed in CI/CD.
+3. Establish **supply chain security guidelines** for evaluating, auditing, and potentially archiving external devcontainer features.
+4. Use the **same base image** for both local development and CI/CD pipelines to ensure consistency.
 5. Update contributor documentation to clarify:
    - when to use the base container,
    - when to use extensions,
