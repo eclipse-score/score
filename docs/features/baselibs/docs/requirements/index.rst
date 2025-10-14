@@ -94,3 +94,23 @@ Requirements
    :status: valid
 
    The base libraries shall provide error handling mechanisms that enable development without relying on C++ exceptions.
+
+.. feat_req:: Container Library
+   :id: feat_req__baselibs__containers_library
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :satisfies: stkh_req__functional_req__base_libraries
+   :status: valid
+
+   The base libraries shall provide a container library offering additional container types not present in the C++ standard library.
+
+.. feat_req:: Bit Manipulation Library
+   :id: feat_req__baselibs__bitmanipulation
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :satisfies: stkh_req__functional_req__base_libraries
+   :status: valid
+
+   The base libraries shall provide bit manipulation utilities for low-level operations on integral types.
