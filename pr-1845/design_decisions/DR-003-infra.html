@@ -569,7 +569,7 @@ SPDX-License-Identifier: Apache-2.0
 <li><p><strong>Performance</strong>: Acceptable build/startup times and reasonable resource usage, both locally and in CI/CD.
 1a. <strong>Startup Performance</strong>: Fast container initialization for productive development workflows.</p></li>
 <li><p><strong>Maintainability</strong>: Easy updates of dependencies and configurations.</p></li>
-<li><p><strong>Flexibility</strong>: Support for different developer workflows (frontend, backend, infra).</p></li>
+<li><p><strong>Flexibility</strong>: Support for different developer workflows (e.g. development of modules communication, lifecycle, persistency, etc.).</p></li>
 <li><p><strong>Isolation</strong>: Clear separation of dependencies between S-CORE modules.</p></li>
 <li><p><strong>Complexity</strong>: Avoid unnecessary overhead in setup and troubleshooting.</p></li>
 <li><p><strong>Integration</strong>: IDE support (e.g. <a class="reference external" href="https://code.visualstudio.com/docs/devcontainers/containers">VS Code Dev Containers</a>) and compatibility with Bazel/CI pipelines.</p></li>
@@ -598,11 +598,11 @@ SPDX-License-Identifier: Apache-2.0
 </section>
 <section id="multi-container-docker-compose">
 <h3>3.2 Multi-Container (Docker Compose)<a class="headerlink" href="#multi-container-docker-compose" title="Link to this heading">#</a></h3>
-<p>Each S-CORE service (e.g. frontend, backend, infra) runs in its own devcontainer, orchestrated with Docker Compose.</p>
+<p>Each S-CORE module (e.g. communication, lifecycle, persistency) runs in its own devcontainer, orchestrated with Docker Compose.</p>
 <p><strong>Pros</strong>:</p>
 <ul class="simple">
 <li><p>Isolation: clear boundaries between components.</p></li>
-<li><p>Flexibility: contributors can run only the services they need.</p></li>
+<li><p>Flexibility: contributors can run only the modules they need.</p></li>
 <li><p>Easier dependency upgrades per module.</p></li>
 </ul>
 <p><strong>Cons</strong>:</p>
@@ -652,7 +652,7 @@ SPDX-License-Identifier: Apache-2.0
 <ul class="simple">
 <li><p>Provides a <strong>consistent developer experience</strong> across environments while adapting to their needs.</p></li>
 <li><p>Avoids bloat of a single huge container while still keeping core tools unified.</p></li>
-<li><p>Developers can selectively enable only the services they need locally.</p></li>
+<li><p>Developers can selectively enable only the modules they need locally.</p></li>
 <li><p>Ensures <strong>performance in CI/CD</strong> by running lean containers.</p></li>
 <li><p>Ensures <strong>flexibility locally</strong> by providing richer environments.</p></li>
 <li><p>Aligns well with S-CORE’s modular multi-repo structure.</p></li>

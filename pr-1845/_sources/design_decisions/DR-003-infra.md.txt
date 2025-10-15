@@ -34,7 +34,7 @@ Additionally, we must ensure that devcontainers are usable both **locally** and 
 1. **Performance**: Acceptable build/startup times and reasonable resource usage, both locally and in CI/CD.
 1a. **Startup Performance**: Fast container initialization for productive development workflows.
 2. **Maintainability**: Easy updates of dependencies and configurations.
-3. **Flexibility**: Support for different developer workflows (frontend, backend, infra).
+3. **Flexibility**: Support for different developer workflows (e.g. development of modules communication, lifecycle, persistency, etc.).
 4. **Isolation**: Clear separation of dependencies between S-CORE modules.
 5. **Complexity**: Avoid unnecessary overhead in setup and troubleshooting.
 6. **Integration**: IDE support (e.g. [VS Code Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers)) and compatibility with Bazel/CI pipelines.
@@ -61,11 +61,11 @@ A single container image includes all tools, dependencies, and services needed a
 
 ### 3.2 Multi-Container (Docker Compose)
 
-Each S-CORE service (e.g. frontend, backend, infra) runs in its own devcontainer, orchestrated with Docker Compose.
+Each S-CORE module (e.g. communication, lifecycle, persistency) runs in its own devcontainer, orchestrated with Docker Compose.
 
 **Pros**:
 - Isolation: clear boundaries between components.
-- Flexibility: contributors can run only the services they need.
+- Flexibility: contributors can run only the modules they need.
 - Easier dependency upgrades per module.
 
 **Cons**:
@@ -110,7 +110,7 @@ We adopt the **Hybrid Approach with Devcontainer Features**:
 
 - Provides a **consistent developer experience** across environments while adapting to their needs.
 - Avoids bloat of a single huge container while still keeping core tools unified.
-- Developers can selectively enable only the services they need locally.
+- Developers can selectively enable only the modules they need locally.
 - Ensures **performance in CI/CD** by running lean containers.
 - Ensures **flexibility locally** by providing richer environments.
 - Aligns well with S-CORE’s modular multi-repo structure.
