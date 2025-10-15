@@ -29,7 +29,7 @@ Additionally, we must ensure that devcontainers are usable both **locally** and 
 
 ---
 
-## 2. Requirements
+## 2. Goals and Requirements
 
 1. **Performance**: Acceptable build/startup times and reasonable resource usage, both locally and in CI/CD.
 1a. **Startup Performance**: Fast container initialization for productive development workflows.
@@ -74,25 +74,24 @@ Each S-CORE module (e.g. communication, lifecycle, persistency) runs in its own 
 - IDE integration can be more challenging than with a single container.
 - Higher complexity to align CI/CD with local multi-container setups.
 - Performance overhead from container orchestration and inter-container communication.
+- Using different devcontainers can introduce friction for collaboration (e.g. "Works in my devcontainer")
 
 ### 3.3 Hybrid Approach with Devcontainer Features
 
 A comprehensive **base devcontainer** provides all tooling needed for both development and CI/CD (Bazel, git, linters, build tools). On top of it, optional **devcontainer features** can be added for specialized local development workflows without rebuilding the base image.
 
-The base image serves both **local development** and **CI/CD pipelines** to ensure consistency. Additional development tools (debuggers, IDE integrations, documentation generators) are added via devcontainer features only when needed locally.
+The base image serves both **local development** and **CI/CD pipelines** to ensure consistency. Additional development tools (debuggers, IDE integrations, documentation generators) are added via devcontainer features only when needed locally. Developers can customize locally by devcontainer.json (may cause issues since devcontainer.json is under version control - mitigation: code reviews).
 
 **Pros**:
 - Perfect consistency between local and CI/CD environments (same base image).
 - Flexibility through devcontainer features without base image complexity.
 - Leverages existing devcontainer ecosystem and VS Code integration.
-- Avoids supply chain risks from multiple image layers and external dependencies.
 - Reduces maintenance overhead compared to multiple specialized images.
 - Fast container startup: All tools pre-installed, no runtime feature installation.
 - Predictable performance: No dependency on network speed or external service availability during container startup.
 
 **Cons**:
 - Base image may be larger than minimal CI requirements.
-- Devcontainer features add on-the-fly complexity, potential supply chain risks, and significant startup delays.
 - Need to carefully evaluate which tools justify separate features vs. inclusion in base image.
 
 ---
@@ -108,13 +107,9 @@ We adopt the **Hybrid Approach with Devcontainer Features**:
 
 ## 5. Rationale
 
-- Provides a **consistent developer experience** across environments while adapting to their needs.
-- Avoids bloat of a single huge container while still keeping core tools unified.
-- Developers can selectively enable only the modules they need locally.
-- Ensures **performance in CI/CD** by running lean containers.
-- Ensures **flexibility locally** by providing richer environments.
-- Aligns well with S-CORE’s modular multi-repo structure.
-- Supports integration with [VS Code Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers) and CI/CD systems.
+Option 3.1 has been rejected because the probability that the container grows big is very high (with the growing necessity of features inside the container).
+Option 3.2 (multi repo approach) has been rejected because the container orchestration would not be trivial and would cause several problems (see cons). Additionally, the multi repo approach is a poor fit to the design of the Bazel integration.
+Option 3.3 is a compromise of 3.1 and 3.2 and has been selected therefore.
 
 ---
 
@@ -127,6 +122,7 @@ We adopt the **Hybrid Approach with Devcontainer Features**:
 - **Runtime performance**: Feature-based approaches may cause delays at first container startup due to on-the-fly installation.
 - **Network dependency**: Features require internet connectivity for initial installation, potentially limiting offline development workflows.
 - **Documentation**: Must explain when and how to use devcontainer features safely.
+- **Interim**: As long as we do not have hermetic builds in Bazel, the devontainer approach is a feasably interim step to ensure the right tools in the correct version are available (e.g. gcc_x.y.z, python_a.b.c, etc.)
 
 ---
 
