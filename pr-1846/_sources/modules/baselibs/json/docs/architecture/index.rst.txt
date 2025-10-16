@@ -61,7 +61,7 @@ Static Architecture
    :status: valid
    :implements: logic_arc_int__baselibs__json
    :includes: comp_arc_sta__baselibs__json_wrapper, comp_arc_sta__baselibs__nlohman_json
-   :fulfils: comp_req__json__validation, comp_req__json__deserialization, comp_req__json__serialization, comp_req__json__user_format, comp_req__json__lang_idioms, comp_req__json__lang_infra, comp_req__json__type_compatibility, comp_req__json__full_testability, comp_req__json__asil
+   :fulfils: comp_req__json__deserialization, comp_req__json__serialization, comp_req__json__user_format, comp_req__json__lang_idioms, comp_req__json__lang_infra, comp_req__json__type_compatibility, comp_req__json__full_testability, comp_req__json__asil
 
    .. needarch::
       :scale: 50
@@ -78,7 +78,7 @@ Dynamic Architecture
    :security: YES
    :safety: ASIL_B
    :status: invalid
-   :fulfils: comp_req__json__validation, comp_req__json__deserialization, comp_req__json__serialization, comp_req__json__user_format, comp_req__json__lang_idioms, comp_req__json__lang_infra, comp_req__json__type_compatibility, comp_req__json__full_testability, comp_req__json__asil
+   :fulfils: comp_req__json__deserialization, comp_req__json__serialization, comp_req__json__user_format, comp_req__json__lang_idioms, comp_req__json__lang_infra, comp_req__json__type_compatibility, comp_req__json__full_testability, comp_req__json__asil
 
    put here a sequence diagram (TBD)
 
@@ -100,13 +100,6 @@ Interfaces
 
 .. logic_arc_int_op:: Parse
    :id: logic_arc_int_op__baselibs__fromfile
-   :security: YES
-   :safety: ASIL_B
-   :status: valid
-   :included_by: logic_arc_int__baselibs__json
-
-.. logic_arc_int_op:: Check
-   :id: logic_arc_int_op__baselibs__validate
    :security: YES
    :safety: ASIL_B
    :status: valid
@@ -135,4 +128,4 @@ Lower Level Components
    :security: YES
    :safety:  ASIL_B
    :status: valid
-   :fulfils: comp_req__json__validation, comp_req__json__deserialization, comp_req__json__serialization, comp_req__json__asil
+   :fulfils: comp_req__json__deserialization, comp_req__json__serialization, comp_req__json__asil
