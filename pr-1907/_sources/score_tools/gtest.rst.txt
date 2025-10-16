@@ -68,7 +68,7 @@ Integrated in bazel.
 
 Environment
 ~~~~~~~~~~~
-Requires C++ compiler (gcc, qcc?) and bazel build environment.
+Requires C++ compiler and bazel build environment.
 
 Evaluation
 ----------
@@ -178,4 +178,9 @@ Based on method: validation of the software tool
 
 Requirements and testing aspects
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Tool requirements are defined derived from official documentation.
+Tool requirements are derived from official documentation.
+
+gtest is an open-source tool and does not provide formal, vendor-defined requirements.
+Therefore, the testing team is responsible for identifying the specific gtest functionality
+used in the project.  Based on this, requirements for the utilized features must be derived from
+the available documentation and gtest validated against defined requirements.
