@@ -470,7 +470,7 @@ None
           - <Link to WP>
           - <automated>
 
-        * - :need:`PROCESS_wp__process_definition`
+        * - :need:`PROCESS_wp__process_description`
           - n/a
           - draft
           - <Link to issue>
@@ -484,7 +484,7 @@ None
           - <Link to WP>
           - <automated>
 
-        * - :need:`PROCESS_wp__process_plan`
+        * - :need:`PROCESS_wp__process_strategy`
           - n/a
           - draft
           - <Link to issue>
