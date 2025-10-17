@@ -19,6 +19,7 @@ Component Classification
    :id: doc__persistency_component_classification
    :status: valid
    :safety: ASIL_B
+   :security: NO
    :realizes: PROCESS_wp__sw_component_class
    :tags: feature_persistency
 
