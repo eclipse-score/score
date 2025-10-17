@@ -20,4 +20,3 @@ Modules
    :glob:
 
    */docs/index
-   */*/docs/index

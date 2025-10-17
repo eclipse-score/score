@@ -17,7 +17,7 @@ Executor Module
 
 .. mod_view_sta:: Executor
    :id: mod_view_sta__orch__executor
-   :includes: comp_arc_sta__orch__runtime
+   :includes: comp_arc_sta__orch__executor
 
    .. needarch::
       :scale: 50
@@ -29,5 +29,7 @@ Module Documents
 ================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :titlesonly:
+
+   ../executor/docs/index

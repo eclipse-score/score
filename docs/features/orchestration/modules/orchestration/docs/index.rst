@@ -29,5 +29,7 @@ Module Documents
 ================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :titlesonly:
+
+   ../orchestrator/docs/index

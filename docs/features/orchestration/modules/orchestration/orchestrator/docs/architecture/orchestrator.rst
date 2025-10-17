@@ -13,8 +13,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Frontend Architecture
-*********************
+Orchestration Component Architecture
+************************************
 
 .. comp_arc_sta:: orchestration
    :id: comp_arc_sta__orch__orchestration
@@ -131,3 +131,7 @@ Frontend Architecture
    :safety: ASIL_B
    :status: valid
    :included_by: logic_arc_int__orchestration__deployment
+
+.. toctree::
+   :maxdepth: 1
+   :titlesonly:

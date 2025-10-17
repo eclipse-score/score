@@ -12,11 +12,14 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+Requirements
+============
+
 .. document:: Orchestration Requirements
    :id: doc__orch_requirements
    :status: valid
    :safety: ASIL_B
-   :realizes: wp__requirements_feat
+   :realizes: PROCESS_wp__requirements_feat
    :tags: feature_request
 
 .. evaluate following sth requirements:
@@ -40,8 +43,6 @@
 .. accelerators:
 .. stkh_req__functional_req__hardware_comput
 .. stkh_req__functional_req__comp_subsystem
-
-
 
 Executor
 ========

@@ -12,6 +12,9 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+Architecture
+============
+
 .. document:: Orchestration Architecture
    :id: doc__orch_architecture
    :status: valid
