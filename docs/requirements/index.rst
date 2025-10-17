@@ -20,3 +20,4 @@ Requirements
 .. toctree::
 
    stakeholder/index
+   platform_assumptions/index
