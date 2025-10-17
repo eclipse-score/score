@@ -15,36 +15,36 @@
 .. doc_tool:: gtest
    :id: doc_tool__gtest
    :status: draft
-   :version: v1.15.0
+   :version: 1.15.0
    :tcl: LOW
    :safety_affected: YES
    :security_affected: YES
    :realizes: PROCESS_wp__tool_verification_report
    :tags: tool_management
 
-Googletest (gtest) Verification Report
+GoogleTest (GTest) Verification Report
 ======================================
 
 Introduction
 ------------
 Scope and purpose
 ~~~~~~~~~~~~~~~~~
-GoogleTest (gtest) is a C++ testing framework developed by Google to support the creation
+GoogleTest (GTest) is a C++ testing framework developed by Google to support the creation
 of robust, maintainable, and portable tests. It is designed to help developers write tests
 by offering a rich set of assertions, test fixtures, and test discovery
-mechanisms. gtest supports compatible with various platforms.
+mechanisms. GTest is compatible with various platforms.
 
 Inputs and outputs
 ~~~~~~~~~~~~~~~~~~
-Inputs: Software sources (C++), Gtest-based test files (C++)
-Outputs: Test binary, Test report (txt, json, xml).
+| Inputs: Software sources (C++), GTest-based test files (C++)
+| Outputs: Test binary, Test report (txt, json, xml).
 
 .. figure:: _assets/gtest.drawio.svg
   :width: 100%
   :align: center
-  :alt: gtest overview
+  :alt: GTest overview
 
-  Gtest overview
+  GTest overview
 
 Available information
 ~~~~~~~~~~~~~~~~~~~~~
@@ -59,8 +59,14 @@ Installation and integration
 ----------------------------
 Installation
 ~~~~~~~~~~~~
-Provided as part of baselibs (https://github.com/eclipse-score/baselibs/blob/main/MODULE.bazel).
-Fetched from the Bazel Central Registry (BCR): https://registry.bazel.build/modules/googletest/1.15.0
+| Provided as part of baselibs (https://github.com/eclipse-score/baselibs/blob/main/MODULE.bazel).
+| Fetched from the Bazel Central Registry (BCR): https://registry.bazel.build/modules/googletest/1.15.0
+| To add the GTest Bazel dependency to your project or module, include the following line in your MODULE.bazel file:
+
+.. code-block:: Python
+
+  bazel_dep(name = "googletest", version = "1.15.0")
+
 
 Integration
 ~~~~~~~~~~~
@@ -72,10 +78,10 @@ Requires C++ compiler and bazel build environment.
 
 Evaluation
 ----------
-This section evaluates gtest for use in S-CORE project.
+This section evaluates GTest for use in S-CORE project.
 
 
-.. list-table:: gtest safety evaluation
+.. list-table:: GTest safety evaluation
    :header-rows: 1
    :widths: 1 2 8 2 6 4 2 2
 
@@ -88,70 +94,77 @@ This section evaluates gtest for use in S-CORE project.
      - Further additional safety measure required?
      - Confidence (automatic calculation)
    * - 1
-     - Run tests and generated test report
-     - Fails to load input files
-        gtest fails to load provided file even if file is present and accessible.
+     - Run tests and generate test report
+     - | Fails to load input files
+       |
+       | GTest fails to load provided file even if file is present and accessible.
      - yes
      - (implicit) Check test run status
      - yes
      - no
      - high
    * - 2
-     - Run tests and generated test report
-     - Fails to write result to file
-        gtest was not able to save results in file(s).
+     - Run tests and generate test report
+     - | Fails to write result to file
+       |
+       | GTest was not able to save results in file(s).
      - yes
      - (implicit) Check test run status
      - yes
      - no
      - high
    * - 3
-     - Run tests and generated test report
-     - Fails to collect results of the test(s)
-        gtest was not able to collect results of executed test.
+     - Run tests and generate test report
+     - | Fails to collect results of the test(s)
+       |
+       | GTest was not able to collect results of executed test.
      - yes
      - Verify the test plan and test report
      - yes
      - no
      - high
    * - 4
-     - Run tests and generated test report
+     - Run tests and generate test report
      - Fails to detect an existing error
-         gtest fails to detect the presence of existing errors.
+
+       GTest fails to detect the presence of existing errors.
      - yes
      - /
      - no
      - yes (qualification)
      - low
    * - 5
-     - Run tests and generated test report
-     - Fails to execute the test
-         gtest fails to execute specific test from the test plan
+     - Run tests and generate test report
+     - | Fails to execute the test
+       |
+       | GTest fails to execute specific test from the test plan
      - yes
      - Verify the test plan and test report
      - yes
      - no
      - high
    * - 6
-     - Run tests and generated test report
+     - Run tests and generate test report
      - Indicates presence of a non-existing error
-         gtest indicates the presence of errors that do not exist.
+
+       GTest indicates the presence of errors that do not exist.
      - no
      - /
      - n/a
      - no
      - high
    * - 7
-     - Run tests and generated test report
-     - Produces wrong test report
-         gtest fails to save correct test result in test report.
+     - Run tests and generate test report
+     - | Produces wrong test report
+       |
+       | GTest fails to save correct test result in test report.
      - yes
      - Review test report
      - yes
      - no
      - high
 
-.. list-table:: gtest security evaluation
+.. list-table:: GTest security evaluation
    :header-rows: 1
 
    * - Use case Identification
@@ -169,7 +182,7 @@ This section evaluates gtest for use in S-CORE project.
 
 Result
 ~~~~~~
-gtest requires qualification for use in safety-related software development according to ISO 26262.
+GTest requires qualification for use in safety-related software development according to ISO 26262.
 
 
 **Optional Section for Tool Qualification**
@@ -180,7 +193,7 @@ Requirements and testing aspects
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Tool requirements are derived from official documentation.
 
-gtest is an open-source tool and does not provide formal, vendor-defined requirements.
-Therefore, the testing team is responsible for identifying the specific gtest functionality
+GTest is an open-source tool and does not provide formal, vendor-defined requirements.
+Therefore, the testing team is responsible for identifying the specific GTest functionality
 used in the project.  Based on this, requirements for the utilized features must be derived from
-the available documentation and gtest validated against defined requirements.
+the available documentation and GTest validated against defined requirements.

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Googletest (gtest) Verification Report &#8212; S-CORE  documentation</title>
+    <title>GoogleTest (GTest) Verification Report &#8212; S-CORE  documentation</title>
   
   
   
@@ -474,7 +474,7 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="doc_as_code.html">Doc-as-Code Verification Report</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Googletest (gtest) Verification Report</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">GoogleTest (GTest) Verification Report</a></li>
 </ul>
 </div>
 </nav></div>
@@ -518,7 +518,7 @@
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">S-CORE Tools Overview</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Googletest (gtest) Verification Report</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">GoogleTest (GTest) Verification Report</span></li>
   </ul>
 </nav>
 </div>
@@ -535,7 +535,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-c86d9b39">
+  <div class="need_container docutils container" id="SNCB-8763a612">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_doc_tool table" id="doc_tool__gtest">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -558,7 +558,7 @@
 <div class="line"><span class="needs_safety_affected"><span class="needs_label">safety_affected: </span><span class="needs_data">YES</span></span></div>
 <div class="line"><span class="needs_security_affected"><span class="needs_label">security_affected: </span><span class="needs_data">YES</span></span></div>
 <div class="line"><span class="needs_tcl"><span class="needs_label">tcl: </span><span class="needs_data">LOW</span></span></div>
-<div class="line"><span class="needs_version"><span class="needs_label">version: </span><span class="needs_data">v1.15.0</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span><span class="needs_data">1.15.0</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/tool_management/tool_management_workproducts.html#wp__tool_verification_report">PROCESS_wp__tool_verification_report</a></span></span></div>
 </span></div>
@@ -583,25 +583,27 @@
 </div>
 </div>
 <section id="googletest-gtest-verification-report">
-<h1>Googletest (gtest) Verification Report<a class="headerlink" href="#googletest-gtest-verification-report" title="Link to this heading">#</a></h1>
+<h1>GoogleTest (GTest) Verification Report<a class="headerlink" href="#googletest-gtest-verification-report" title="Link to this heading">#</a></h1>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <section id="scope-and-purpose">
 <h3>Scope and purpose<a class="headerlink" href="#scope-and-purpose" title="Link to this heading">#</a></h3>
-<p>GoogleTest (gtest) is a C++ testing framework developed by Google to support the creation
+<p>GoogleTest (GTest) is a C++ testing framework developed by Google to support the creation
 of robust, maintainable, and portable tests. It is designed to help developers write tests
 by offering a rich set of assertions, test fixtures, and test discovery
-mechanisms. gtest supports compatible with various platforms.</p>
+mechanisms. GTest is compatible with various platforms.</p>
 </section>
 <section id="inputs-and-outputs">
 <h3>Inputs and outputs<a class="headerlink" href="#inputs-and-outputs" title="Link to this heading">#</a></h3>
-<p>Inputs: Software sources (C++), Gtest-based test files (C++)
-Outputs: Test binary, Test report (txt, json, xml).</p>
+<div class="line-block">
+<div class="line">Inputs: Software sources (C++), GTest-based test files (C++)</div>
+<div class="line">Outputs: Test binary, Test report (txt, json, xml).</div>
+</div>
 <figure class="align-center" id="id1">
-<a class="reference internal image-reference" href="../_images/gtest.drawio.svg"><img alt="gtest overview" src="../_images/gtest.drawio.svg" style="width: 100%;" />
+<a class="reference internal image-reference" href="../_images/gtest.drawio.svg"><img alt="GTest overview" src="../_images/gtest.drawio.svg" style="width: 100%;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Gtest overview</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">GTest overview</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -620,8 +622,14 @@ Outputs: Test binary, Test report (txt, json, xml).</p>
 <h2>Installation and integration<a class="headerlink" href="#installation-and-integration" title="Link to this heading">#</a></h2>
 <section id="installation">
 <h3>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h3>
-<p>Provided as part of baselibs (<a class="github reference external" href="https://github.com/eclipse-score/baselibs/blob/main/MODULE.bazel">eclipse-score/baselibs</a>).
-Fetched from the Bazel Central Registry (BCR): <a class="reference external" href="https://registry.bazel.build/modules/googletest/1.15.0">https://registry.bazel.build/modules/googletest/1.15.0</a></p>
+<div class="line-block">
+<div class="line">Provided as part of baselibs (<a class="github reference external" href="https://github.com/eclipse-score/baselibs/blob/main/MODULE.bazel">eclipse-score/baselibs</a>).</div>
+<div class="line">Fetched from the Bazel Central Registry (BCR): <a class="reference external" href="https://registry.bazel.build/modules/googletest/1.15.0">https://registry.bazel.build/modules/googletest/1.15.0</a></div>
+<div class="line">To add the GTest Bazel dependency to your project or module, include the following line in your MODULE.bazel file:</div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;googletest&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;1.15.0&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 <section id="integration">
 <h3>Integration<a class="headerlink" href="#integration" title="Link to this heading">#</a></h3>
@@ -634,9 +642,9 @@ Fetched from the Bazel Central Registry (BCR): <a class="reference external" hre
 </section>
 <section id="evaluation">
 <h2>Evaluation<a class="headerlink" href="#evaluation" title="Link to this heading">#</a></h2>
-<p>This section evaluates gtest for use in S-CORE project.</p>
+<p>This section evaluates GTest for use in S-CORE project.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id2">
-<caption><span class="caption-number">Table 34 </span><span class="caption-text">gtest safety evaluation</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 34 </span><span class="caption-text">GTest safety evaluation</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 3.7%" />
 <col style="width: 7.4%" />
@@ -660,11 +668,12 @@ Fetched from the Bazel Central Registry (BCR): <a class="reference external" hre
 </thead>
 <tbody>
 <tr class="row-even"><td><p>1</p></td>
-<td><p>Run tests and generated test report</p></td>
-<td><dl class="simple">
-<dt>Fails to load input files</dt><dd><p>gtest fails to load provided file even if file is present and accessible.</p>
-</dd>
-</dl>
+<td><p>Run tests and generate test report</p></td>
+<td><div class="line-block">
+<div class="line">Fails to load input files</div>
+<div class="line"><br /></div>
+<div class="line">GTest fails to load provided file even if file is present and accessible.</div>
+</div>
 </td>
 <td><p>yes</p></td>
 <td><p>(implicit) Check test run status</p></td>
@@ -673,11 +682,12 @@ Fetched from the Bazel Central Registry (BCR): <a class="reference external" hre
 <td><p>high</p></td>
 </tr>
 <tr class="row-odd"><td><p>2</p></td>
-<td><p>Run tests and generated test report</p></td>
-<td><dl class="simple">
-<dt>Fails to write result to file</dt><dd><p>gtest was not able to save results in file(s).</p>
-</dd>
-</dl>
+<td><p>Run tests and generate test report</p></td>
+<td><div class="line-block">
+<div class="line">Fails to write result to file</div>
+<div class="line"><br /></div>
+<div class="line">GTest was not able to save results in file(s).</div>
+</div>
 </td>
 <td><p>yes</p></td>
 <td><p>(implicit) Check test run status</p></td>
@@ -686,11 +696,12 @@ Fetched from the Bazel Central Registry (BCR): <a class="reference external" hre
 <td><p>high</p></td>
 </tr>
 <tr class="row-even"><td><p>3</p></td>
-<td><p>Run tests and generated test report</p></td>
-<td><dl class="simple">
-<dt>Fails to collect results of the test(s)</dt><dd><p>gtest was not able to collect results of executed test.</p>
-</dd>
-</dl>
+<td><p>Run tests and generate test report</p></td>
+<td><div class="line-block">
+<div class="line">Fails to collect results of the test(s)</div>
+<div class="line"><br /></div>
+<div class="line">GTest was not able to collect results of executed test.</div>
+</div>
 </td>
 <td><p>yes</p></td>
 <td><p>Verify the test plan and test report</p></td>
@@ -699,11 +710,9 @@ Fetched from the Bazel Central Registry (BCR): <a class="reference external" hre
 <td><p>high</p></td>
 </tr>
 <tr class="row-odd"><td><p>4</p></td>
-<td><p>Run tests and generated test report</p></td>
-<td><dl class="simple">
-<dt>Fails to detect an existing error</dt><dd><p>gtest fails to detect the presence of existing errors.</p>
-</dd>
-</dl>
+<td><p>Run tests and generate test report</p></td>
+<td><p>Fails to detect an existing error</p>
+<p>GTest fails to detect the presence of existing errors.</p>
 </td>
 <td><p>yes</p></td>
 <td><p>/</p></td>
@@ -712,11 +721,12 @@ Fetched from the Bazel Central Registry (BCR): <a class="reference external" hre
 <td><p>low</p></td>
 </tr>
 <tr class="row-even"><td><p>5</p></td>
-<td><p>Run tests and generated test report</p></td>
-<td><dl class="simple">
-<dt>Fails to execute the test</dt><dd><p>gtest fails to execute specific test from the test plan</p>
-</dd>
-</dl>
+<td><p>Run tests and generate test report</p></td>
+<td><div class="line-block">
+<div class="line">Fails to execute the test</div>
+<div class="line"><br /></div>
+<div class="line">GTest fails to execute specific test from the test plan</div>
+</div>
 </td>
 <td><p>yes</p></td>
 <td><p>Verify the test plan and test report</p></td>
@@ -725,11 +735,9 @@ Fetched from the Bazel Central Registry (BCR): <a class="reference external" hre
 <td><p>high</p></td>
 </tr>
 <tr class="row-odd"><td><p>6</p></td>
-<td><p>Run tests and generated test report</p></td>
-<td><dl class="simple">
-<dt>Indicates presence of a non-existing error</dt><dd><p>gtest indicates the presence of errors that do not exist.</p>
-</dd>
-</dl>
+<td><p>Run tests and generate test report</p></td>
+<td><p>Indicates presence of a non-existing error</p>
+<p>GTest indicates the presence of errors that do not exist.</p>
 </td>
 <td><p>no</p></td>
 <td><p>/</p></td>
@@ -738,11 +746,12 @@ Fetched from the Bazel Central Registry (BCR): <a class="reference external" hre
 <td><p>high</p></td>
 </tr>
 <tr class="row-even"><td><p>7</p></td>
-<td><p>Run tests and generated test report</p></td>
-<td><dl class="simple">
-<dt>Produces wrong test report</dt><dd><p>gtest fails to save correct test result in test report.</p>
-</dd>
-</dl>
+<td><p>Run tests and generate test report</p></td>
+<td><div class="line-block">
+<div class="line">Produces wrong test report</div>
+<div class="line"><br /></div>
+<div class="line">GTest fails to save correct test result in test report.</div>
+</div>
 </td>
 <td><p>yes</p></td>
 <td><p>Review test report</p></td>
@@ -754,7 +763,7 @@ Fetched from the Bazel Central Registry (BCR): <a class="reference external" hre
 </table>
 </div>
 <div class="pst-scrollable-table-container"><table class="table" id="id3">
-<caption><span class="caption-number">Table 35 </span><span class="caption-text">gtest security evaluation</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 35 </span><span class="caption-text">GTest security evaluation</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Use case Identification</p></th>
 <th class="head"><p>Use case Description</p></th>
@@ -777,7 +786,7 @@ Fetched from the Bazel Central Registry (BCR): <a class="reference external" hre
 </div>
 <section id="result">
 <h3>Result<a class="headerlink" href="#result" title="Link to this heading">#</a></h3>
-<p>gtest requires qualification for use in safety-related software development according to ISO 26262.</p>
+<p>GTest requires qualification for use in safety-related software development according to ISO 26262.</p>
 </section>
 </section>
 <section id="optional-section-for-tool-qualification">
@@ -786,10 +795,10 @@ Fetched from the Bazel Central Registry (BCR): <a class="reference external" hre
 <section id="requirements-and-testing-aspects">
 <h3>Requirements and testing aspects<a class="headerlink" href="#requirements-and-testing-aspects" title="Link to this heading">#</a></h3>
 <p>Tool requirements are derived from official documentation.</p>
-<p>gtest is an open-source tool and does not provide formal, vendor-defined requirements.
-Therefore, the testing team is responsible for identifying the specific gtest functionality
+<p>GTest is an open-source tool and does not provide formal, vendor-defined requirements.
+Therefore, the testing team is responsible for identifying the specific GTest functionality
 used in the project.  Based on this, requirements for the utilized features must be derived from
-the available documentation and gtest validated against defined requirements.</p>
+the available documentation and GTest validated against defined requirements.</p>
 </section>
 </section>
 </section>
