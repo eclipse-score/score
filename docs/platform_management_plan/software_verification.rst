@@ -100,7 +100,7 @@ The following types of integrations are applicable:
 #. **New software elements** get integrated according to the :need:`doc__contr_guideline`
 #. **Fixes of defects** get integrated based on their prioritization described by the
    :doc:`problem_resolution`.
-#. **Changes** get integrated based on the :need:`PROCESS_wf__change_cr_an_change_request` and will follow
+#. **Changes** get integrated based on the :need:`PROCESS_wf__change_create_cr` and will follow
    the :need:`doc__pull_request_guideline` as any other artifact.
 
 Levels of integration and verification
