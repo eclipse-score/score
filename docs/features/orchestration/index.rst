@@ -21,14 +21,19 @@ Orchestration
    :id: doc__orchestration
    :status: valid
    :safety: ASIL_B
-   :realizes:
+   :security: YES
+   :realizes: PROCESS_wp__feat_request
    :tags: feature_request, change_management, orchestration
 
 
 .. toctree::
    :hidden:
 
-   requirements.rst
+   requirements/index.rst
+   architecture/index.rst
+   safety_planning/index.rst
+   safety_analysis/fmea.rst
+   safety_analysis/dfa.rst
 
 
 Feature flag
