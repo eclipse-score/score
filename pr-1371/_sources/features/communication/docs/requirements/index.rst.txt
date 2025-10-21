@@ -294,6 +294,7 @@ Cross VM Communication
    :safety: ASIL_B
    :satisfies: stkh_req__communication__vm
    :status: valid
+   :valid_from: v1.0.0
 
    The communication framework shall allow to communicate between different VMs over shared memory
 
@@ -636,6 +637,3 @@ Safety Impact
 
 .. needextend:: docname is not None and "communication/ipc/requirements" in docname
    :+tags: ipc
-
-
-
