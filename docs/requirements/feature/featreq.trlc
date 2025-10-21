@@ -1,0 +1,17 @@
+package FeatReqs
+
+import ScoreReq
+import ScoreType
+import StkhReqs
+
+ScoreReq.FeatReq mailbox_communication {
+    title = "Mailbox Communication"
+    description = "The system needs to use mailbox to implement IPC"
+    status = ScoreType.Status.valid
+    reqtype = ScoreType.Reqtype.functional
+    safety = ScoreType.Asil.B
+    version = 1
+    security = ScoreType.Sec.yes
+    derived_from = [StkhReqs.interprocess_communication@1]
+    derived_asil = [ScoreType.Asil.B]
+}

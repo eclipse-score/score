@@ -61,6 +61,7 @@ tuple StkhReqId {
 type FeatReq extends ScoreRequirement {
 	security				ScoreType.Sec
     derived_from			StkhReqId[1 .. *]
+    derived_asil            ScoreType.Asil[1 .. *]
 }
 
 tuple FeatReqId {
@@ -72,6 +73,7 @@ tuple FeatReqId {
 type CompReq extends ScoreRequirement {
 	security				ScoreType.Sec
     derived_from		    ScoreReq.FeatReqId[1 .. *]
+    derived_asil            ScoreType.Asil[1 .. *]
 }
 
 tuple CompReqId {
@@ -106,4 +108,32 @@ checks StkhReq {
 
     rationale != null implies len(rationale) >= 5, "rationale too short"
 
+}
+
+checks FeatReq {
+    (forall derived in derived_asil =>
+        (
+            if derived == ScoreType.Asil.B then
+                safety == ScoreType.Asil.B or safety == ScoreType.Asil.D
+            elsif derived == ScoreType.Asil.D
+                then safety == ScoreType.Asil.D
+            else
+                true
+        )
+    ),
+    error "FeatReq own safety level mismatch"
+}
+
+checks CompReq {
+    (forall derived in derived_asil =>
+        (
+            if derived == ScoreType.Asil.B then
+                safety == ScoreType.Asil.B or safety == ScoreType.Asil.D
+            elsif derived == ScoreType.Asil.D
+                then safety == ScoreType.Asil.D
+            else
+                true
+        )
+    ),
+    error "CompReq own safety level mismatch"
 }
