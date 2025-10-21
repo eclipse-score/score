@@ -543,7 +543,7 @@
 i.e. by the elements outside of S-CORE, but used by S-CORE platform components. These include elements like
 the operating system, programming language libraries, hypervisor or processing hardware.</p>
 <p>To fulfill these assumptions is the responsibility of the integrator.</p>
-<div class="need_container docutils container" id="SNCB-646b4b7c">
+<div class="need_container docutils container" id="SNCB-b7df5d67">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__os_safety_features">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -590,10 +590,11 @@ the operating system, programming language libraries, hypervisor or processing h
 </section>
 <section id="assumptions-on-the-os-integration-community-level">
 <h2>Assumptions on the OS integration - Community Level<a class="headerlink" href="#assumptions-on-the-os-integration-community-level" title="Link to this heading">#</a></h2>
-<p>This is the lowest level of integraton, the higher levels will build on this.
+<p>This is the lowest level of integration, the higher levels will build on this.
 It also contains expectations towards an OS supplier which can be used as criteria for OS selection
-by the integrator.</p>
-<div class="need_container docutils container" id="SNCB-207dcd4b">
+by the integrator. Building and running of OS is enabled, but no pro-active support from S-CORE
+is provided for e.g. build or test problems. No guarantees that S-CORE builds or runs on the OS.</p>
+<div class="need_container docutils container" id="SNCB-b89bf6c0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__os_integration_assistance">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -603,7 +604,7 @@ by the integrator.</p>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
-<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
 </div>
 </td>
 <td class="head_right" colspan="2"><div class="needs_head_right line-block">
@@ -635,7 +636,7 @@ by the integrator.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-2d5a5590">
+<div class="need_container docutils container" id="SNCB-2d9ebd5b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__os_integration_manual">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -645,7 +646,7 @@ by the integrator.</p>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
-<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
 </div>
 </td>
 <td class="head_right" colspan="2"><div class="needs_head_right line-block">
@@ -677,7 +678,7 @@ by the integrator.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-0c0351b9">
+<div class="need_container docutils container" id="SNCB-035e34b4">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__os_bug_interface">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -687,7 +688,7 @@ by the integrator.</p>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
-<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
 </div>
 </td>
 <td class="head_right" colspan="2"><div class="needs_head_right line-block">
@@ -727,7 +728,7 @@ by the integrator.</p>
 <h2>Assumptions on the OS integration - Functional Level<a class="headerlink" href="#assumptions-on-the-os-integration-functional-level" title="Link to this heading">#</a></h2>
 <p>This is the middle level of integraton, the higher level will build on this.
 It is the level where the S-CORE SW platform will functionally “work” on the supplied OS.</p>
-<div class="need_container docutils container" id="SNCB-80f6cb19">
+<div class="need_container docutils container" id="SNCB-f37d4947">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__os_bazel_tooling">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -737,7 +738,7 @@ It is the level where the S-CORE SW platform will functionally “work” on the
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
-<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
 </div>
 </td>
 <td class="head_right" colspan="2"><div class="needs_head_right line-block">
@@ -753,7 +754,8 @@ It is the level where the S-CORE SW platform will functionally “work” on the
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The OS supplier shall provide tools for bazel to be able to build, run and test the S-CORE SW platform on the supplier OS.</p></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The OS supplier shall provide tools for Bazel to be able to build the S-CORE SW platform on the supplier OS
+and support the run and test of the S-CORE SW platform on the supplier OS.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#aou_req__platform__os_bazel_tooling" title="aou_req__platform__os_bazel_tooling">aou_req__platform__os_bazel_tooling</a></span></span></div>
@@ -769,7 +771,7 @@ It is the level where the S-CORE SW platform will functionally “work” on the
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-16814fb0">
+<div class="need_container docutils container" id="SNCB-4a3ff9e0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__os_bug_fixing">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -779,7 +781,7 @@ It is the level where the S-CORE SW platform will functionally “work” on the
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
-<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
 </div>
 </td>
 <td class="head_right" colspan="2"><div class="needs_head_right line-block">
@@ -818,7 +820,51 @@ It is the level where the S-CORE SW platform will functionally “work” on the
 <section id="assumptions-on-the-os-integration-certifiable-level">
 <h2>Assumptions on the OS integration - Certifiable Level<a class="headerlink" href="#assumptions-on-the-os-integration-certifiable-level" title="Link to this heading">#</a></h2>
 <p>This is the highest level of integraton. This is the level where the S-CORE SW platform will be certifiable on the supplied OS.</p>
-<div class="need_container docutils container" id="SNCB-801dc9c5">
+<div class="need_container docutils container" id="SNCB-aee74483">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__os_levels">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">OS integration levels</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+</span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The OS supplier shall provide all the levels AoUs in a safe way (i.e. the “safety” attribute will be raised to the level in this AoU).</p>
+<p>Note: This includes for example <a class="reference internal" href="#aou_req__platform__os_bazel_tooling" title="aou_req__platform__os_bazel_tooling"><em class="xref need">OS bazel tooling (aou_req__platform__os_bazel_tooling)</em></a>, <a class="reference internal" href="#aou_req__platform__os_bug_fixing" title="aou_req__platform__os_bug_fixing"><em class="xref need">OS bug fixing (aou_req__platform__os_bug_fixing)</em></a></p>
+</td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#aou_req__platform__os_levels" title="aou_req__platform__os_levels">aou_req__platform__os_levels</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Assumption of Use Requirement</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-25fd1848">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__os_safety_aou">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -860,7 +906,7 @@ It is the level where the S-CORE SW platform will functionally “work” on the
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4107af9f">
+<div class="need_container docutils container" id="SNCB-f8f7db5c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__os_safety_functions">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -902,7 +948,7 @@ It is the level where the S-CORE SW platform will functionally “work” on the
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a24a6416">
+<div class="need_container docutils container" id="SNCB-9e19e2fa">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__os_safety_anomaly">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -929,7 +975,7 @@ It is the level where the S-CORE SW platform will functionally “work” on the
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p>The OS supplier shall perform safety anomaly reporting.</p>
-<p>Note: This could be fulfilled by listimg per release version all known and user reported bugs which affect the safe OS functions.</p>
+<p>Note: This could be fulfilled by listing per release version all known and user reported bugs which affect the safe OS functions.</p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
