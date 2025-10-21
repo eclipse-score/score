@@ -38,6 +38,16 @@ General Requirements
 
    The JSON-Library shall provide a service to parse JSON data according to RFC8259.
 
+.. comp_req:: JSON Serialization
+   :id: comp_req__json__serialization
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :satisfies: feat_req__baselibs__json_library
+   :status: valid
+
+   The JSON-Library shall provide a service to serialize user format into JSON data according to RFC8259.
+
 .. comp_req:: Return data in user format
    :id: comp_req__json__user_format
    :reqtype: Functional
