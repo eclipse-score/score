@@ -1,0 +1,94 @@
+# *******************************************************************************
+# Copyright (c) 2025 Contributors to the Eclipse Foundation
+#
+# See the NOTICE file(s) distributed with this work for additional
+# information regarding copyright ownership.
+#
+# This program and the accompanying materials are made available under the
+# terms of the Apache License Version 2.0 which is available at
+# https://www.apache.org/licenses/LICENSE-2.0
+#
+# SPDX-License-Identifier: Apache-2.0
+# *******************************************************************************
+
+name: "Change Request"
+description: Issue to track a change
+title: "Change: Your Change Request title"
+labels: ["codeowner_review"]
+body:
+  - type: dropdown
+    attributes:
+      label: Change Request Type
+      options:
+        - Feature Request
+        - Feature Modification
+        - Component Request
+        - Component Modification
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Description of the Change Request
+      description: |
+        - Exact description of the Change Request
+        - Impact to users of the feature/component
+        - Use following template within a PR and link it to this issue
+          [Change Management Feature Request Template](https://eclipse-score.github.io/process_description/main/process_areas/change_management/guidance/change_management_feature_template.html) needs to be used
+          [Change Management Component Request Template](https://eclipse-score.github.io/process_description/main/process_areas/change_management/guidance/change_management_component_template.html) needs to be used
+          [For (Process) Improvements, Improvement Issue Template](https://github.com/eclipse-score/process_description/blob/main/.github/ISSUE_TEMPLATE/2-improvement.yml) needs to be used
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Estimates for realization
+      description: |
+        - Estimate the effort, resources, risk for the realization
+    validations:
+      required: true
+  - type: checkboxes
+    attributes:
+      label: Affects work products
+      options:
+        - label: Requirements
+        - label: Architecture
+        - label: Safety/Security Analysis
+        - label: Detailed Design
+          required: true
+  - type: textarea
+    attributes:
+      label: Impact analysis
+      description: |
+        - Details on the impacted work products
+        - Use the following template and/or run the impact analysis tool provided
+        If the following template is use within a PR, link it to this issue
+        [Change Management Impact Analysis Template](https://eclipse-score.github.io/process_description/main/process_areas/change_management/guidance/change_management_impact_analysis_template.html) needs to be used
+    validations:
+      required: true
+  - type: checkboxes
+    attributes:
+      label: Safety or Security relevance
+      options:
+        - label: none
+        - label: Safety relevant
+        - label: Security relevant
+    validations:
+      required: true
+  - type: dropdown
+    attributes:
+      label: ASIL classification
+      options:
+        - QM
+        - ASIL_B
+      default: 0
+    validations:
+      required: true
+  - type: dropdown
+    attributes:
+      label: Expected Implementation Version
+      options:
+        - 0.5
+        - 1.0
+      default: 0
+    validations:
+      required: false
