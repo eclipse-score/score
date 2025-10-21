@@ -1,0 +1,65 @@
+Overview of technologies
+===========================
+
+
+TODO: At least picture with V-Model would be good here.
+
+Bazel and repo structure
+-------------------------
+
+Before we start with technical details, it is important to understand, which main technologies and tools are used in S-Core project.
+
+We think, we would not lie if we would say, that the whole S-Core project is built up upon *bazel* build system. Bazel is at the very
+heart of the S-Core project. Every dependency and almost every automatization that we implement (except for CI) is done with bazel.
+Validation of requirements, generation of documentation, building source code, execution of unit- or integration tests. For everything
+there is a bazel target in S-Core. Not going into very technical details, bazel is a modern build system, that allows hermetical and 
+reproduciable builds, that are for special important for building safety systems, and additionally provides the possibility to extend
+its functionality for project related use-cases using bazel macros and bazel rules. 
+
+Additionally, we use a concept of bazel modules (link to bazel documentation). In general, S-Core project is build up of multiple repos, every repo implementing its
+own functionality. There were quite some discussions on whether we should have a mono repository or should we split our project in
+multiple repositores, as you can see here (link to decision record). At the end, the decision was taken to proceed with multiple repositories.
+The main reason for this, is that S-Core project should not only motivate software developers to work together on new solutions inside of S-Core
+project but also empower to reuse as much as possible from already existing projects and this is easier to do with an approach, where every functionality
+is encapsualted in its own repository. Such an approach has also disadvantages. First, the organizatorical approach of having so many teams working together.
+How this is done, is described here (link to PMP). Second, the technical approach of integration things together and managing the dependencies between different
+modules and components. Our approach for integration is desribed in here (link) in details. But in general, this is where bazel modules play a very important role,
+providing how to manage and handle dependencies between multiple modules and providing a mechanism, called *bazel registry*, for publishing official versions
+of modules.
+
+(Todo: Describe S-Core is an integration project)
+
+CI/CD pipeline
+---------------
+There is not much to say about this. As every modern project today, we strongly rely on GitHub infrastructure, e.g. by using GitHub actions for automatization
+and implementation of CI/CD check pipeline.
+
+
+Sphinx/Sphinx-needs and Documentation 
+--------------------------------------
+For documenting our project, for specifying requirements, assumptions of use, architecture, detailed design, tests 
+and further software process related artifacts we completely rely on sphinx and sphinx-needs technology. Additionally we extend sphinx-needs
+implementation with additional checks to ensure traciability and compliance to the S-Core metamodel. The S-Core metamodel & traciability concept
+are described here (link) and guidances how to use sphinx/sphinx-needs framework in S-Core can be found here (link).
+
+Programming languages
+------------------------
+We heavily use python for any automation.
+
+The target code is mainly implemented in C++. We think, that in the future C++ will be, at least partially, replaced by Rust, therefore
+we already try to do the steps in this direction and provide implementation of some of the components in Rust. But as Rust support and acceptance
+of the Rust programming language for the series production in the automotive world has not reached the decisive point yet, we mainly
+focus on the C/C++ implementation. 
+
+
+Testing
+--------
+In general, we differentiate between three testing levels: unit-testing, component testing and feature integration testing.
+
+Unit-test framework strongly depends on the used programming languages, in case of C++ we rely on gtest/gmock, in case of Rust on (???)
+
+For compontent testing framework we have currently two solutions, that can be used in parallel. Both are part of S-Core project and 
+are documented here: see (link/link)
+
+For feature integration testing we use a framework called ITF (Integration Testing Framework), that is part of S-Core project as well and
+is documented here (link).

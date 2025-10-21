@@ -1,0 +1,18 @@
+
+Sample application
+===================
+
+Let us imagine, you want to contribute to the S-Core project and provide a new platform module.
+Or you want to build an application on top of S-Core. In both cases you will need to set up a repository,
+to introduce a new bazel module and so on and so on. This tutorial will guide you through all necessary steps
+based on the use-case, that we want to create a simple small demo application, called *scrample*, that uses some of the S-Core
+platform modules to implement its functionality.
+
+.. toctree::
+   :maxdepth: 3
+   :glob:
+
+   first_module.rst
+   doc_generation.rst
+   cicd_workflows.rst
+..    */index
