@@ -571,7 +571,7 @@ Communication
    :safety: QM
    :rationale: Different VMs in a system involved. Sometimes they interact.
    :status: valid
-   :valid_from
+   :valid_from: v1.0.0
 
    The platform shall support not only IPC but also intra Virtual Machine (VM) communication.
 
