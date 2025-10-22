@@ -36,7 +36,7 @@ Context / Problem
 
 The S-CORE project adopted a multi-repo strategy.
 Since `S-CORE aims for compliance with regulations like ASPICE <https://eclipse-score.github.io/process_description/main/standards/index.html#standards>`_,
-bi-directional traceability is necessary (see :need:`gd_req__req_traceability`) and should be made convenient.
+bi-directional traceability is necessary (see ``gd_req__req_traceability``) and should be made convenient.
 How to provide this in S-CORE documentation?
 
 Previously, there was this unfinished
