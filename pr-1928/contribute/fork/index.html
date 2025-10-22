@@ -640,15 +640,11 @@
 <p>Workflow overview</p>
 <p>Just an example, obviously adapt to your needs.</p>
 <ul class="simple">
-<li><p>Development in <code class="docutils literal notranslate"><span class="pre">company-internal/feature_unverified</span></code> (branched of from <code class="docutils literal notranslate"><span class="pre">eclipse-score/main</span></code>)</p></li>
-<li><p>Pull request to <code class="docutils literal notranslate"><span class="pre">company-internal/feature_verified</span></code></p></li>
-<li><p>Internal review of the PR and automated checks (e.g. that no secrets are contained)</p></li>
-<li><p>If passed, merge to <code class="docutils literal notranslate"><span class="pre">company-internal/feature_verified</span></code></p></li>
-<li><p>Transfer to <code class="docutils literal notranslate"><span class="pre">company-contrib/feature</span></code> (manual or automated transformation)</p></li>
-<li><p>Open PR to <code class="docutils literal notranslate"><span class="pre">eclipse-score/main</span></code> (manual or automated)</p></li>
+<li><p>Development in <code class="docutils literal notranslate"><span class="pre">internal/feature_unverified</span></code></p></li>
+<li><p>Merge to <code class="docutils literal notranslate"><span class="pre">internal/feature_verified</span></code> after internal review</p></li>
+<li><p>Transfer to <code class="docutils literal notranslate"><span class="pre">public_fork/feature</span></code> (manual or automated transformation)</p></li>
+<li><p>Open PR to <code class="docutils literal notranslate"><span class="pre">eclipse-score/feature</span></code> (manual or automated)</p></li>
 </ul>
-<p>The following diagram illustrates this workflow and also highlights the boundaries between public (Internet) and (company) internal space.</p>
-<p><img alt="Internal contribution workflow" src="../../_images/internal-first-workflow.drawio.svg" /></p>
 <p>Use when</p>
 <ul class="simple">
 <li><p>Your organization mandates internal control and vetting before any public push.</p></li>
