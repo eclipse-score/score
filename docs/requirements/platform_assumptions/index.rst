@@ -81,7 +81,8 @@ is provided for e.g. build or test problems. No guarantees that S-CORE builds or
 
    Note: There is no guarantee provided to fix these bugs.
 
-TBD: AoUs on the S-CORE SW Platform integrator with respect to OS integration on this level.
+There are no AoUs on the S-CORE SW Platform integrator with respect to OS integration on this level,
+as this level is not expected sufficient for a product release, only for incubation/prototype.
 
 Assumptions on the OS integration - Functional Level
 ----------------------------------------------------
@@ -110,7 +111,25 @@ It is the level where the S-CORE SW platform will functionally "work" on the sup
 
    Note: For OSS community providing an OS this requirement could be covered by analyzing how bugs were treated in the past. For companies by the definition of a service level process.
 
-TBD: AoUs on the S-CORE SW Platform integrator with respect to OS integration on this level.
+.. aou_req:: SW platform OS testing
+   :id: aou_req__platform__os_testing
+   :reqtype: Non-Functional
+   :security: YES
+   :safety: QM
+   :status: valid
+
+   The integrator shall run the tests provided by S-CORE (platform, feature, component and Unit level for his selected S-CORE modules) on his selected OS.
+
+   Note: S-CORE will run these tests for a reference OS.
+
+.. aou_req:: SW platform integration bug reporting
+   :id: aou_req__platform__bug_report
+   :reqtype: Non-Functional
+   :security: YES
+   :safety: QM
+   :status: valid
+
+   The integrator shall report the bugs found during integration of the S-CORE SW Platform on his selected OS to the OS supplier and S-CORE for analysis.
 
 Assumptions on the OS integration - Certifiable Level
 -----------------------------------------------------
@@ -124,7 +143,7 @@ This is the highest level of integraton. This is the level where the S-CORE SW p
    :safety: ASIL_B
    :status: valid
 
-   The OS supplier shall provide all the levels AoUs in a safe way (i.e. the "safety" attribute will be raised to the level in this AoU).
+   The OS supplier and integrator shall provide all the levels AoUs in a safe way (i.e. the "safety" attribute will be raised to the level in this AoU).
 
    Note: This includes for example :need:`aou_req__platform__os_bazel_tooling`, :need:`aou_req__platform__os_bug_fixing`
 
@@ -136,6 +155,8 @@ This is the highest level of integraton. This is the level where the S-CORE SW p
    :status: valid
 
    The OS supplier shall provide Assumptions of (safe) Use.
+
+   Note: This may be part of an OS safety manual.
 
 .. aou_req:: OS safety functions
    :id: aou_req__platform__os_safety_functions
@@ -157,11 +178,44 @@ This is the highest level of integraton. This is the level where the S-CORE SW p
 
    Note: This could be fulfilled by listing per release version all known and user reported bugs which affect the safe OS functions.
 
-TBD: AoUs on the S-CORE SW Platform integrator with respect to OS integration on this level.
+.. aou_req:: OS safety integration
+   :id: aou_req__platform__os_safety_integration
+   :reqtype: Non-Functional
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+
+   The Integrator shall integrate the SW platform with an OS providing safety functions, if the system using the SW platform has safety goals.
+   This includes to make sure the OS safety functions S-CORE needs matches with the OS provided ones (as in :need:`aou_req__platform__os_safety_functions`)
+   and to make sure the AoUs relevant for these functions (as in :need:`aou_req__platform__os_safety_aou`) are fulfilled by the S-CORE SW platform.
+
+   Note1: A list of OS safety functions needed is compiled by the S-CORE project here (TBD).
+
+   Note2: The integrator can expect that for the reference OS this AoU is fulfilled by S-CORE SW Platform already.
+
+.. aou_req:: integrator safety anomaly reporting
+   :id: aou_req__platform__integration_safety_anomaly
+   :reqtype: Non-Functional
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+
+   The integrator shall perform safety anomaly reporting taking into account also the reporting of all the components (incl. the OS) he integrates.
 
 Assumptions of Use
 ------------------
 
 In this section assumptions are described which need to be fulfilled by the applications running on top of the SW platform.
 
-TBD
+.. aou_req:: integrator safety aou
+   :id: aou_req__platform__safety_aou
+   :reqtype: Non-Functional
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+
+   The integrator shall describe in his safety manual (or similar document) the AoUs which need to be covered by the user (applications) for all the components (incl. the OS)  he integrates.
+
+   Note: The integrator can expect that for the reference OS this AoU is fulfilled by S-CORE SW Platform already.
+
+TBD: more detailed functional AoUs
