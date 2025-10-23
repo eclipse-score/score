@@ -22,7 +22,7 @@ SW Platform Assumptions
    :status: draft
    :security: YES
    :safety: ASIL_B
-   :realizes: PROCESS_wp__requirements_stkh
+   :realizes: PROCESS_wp__platform_sw_aou
 
 Assumptions on Environment
 --------------------------
@@ -32,17 +32,6 @@ i.e. by the elements outside of S-CORE, but used by S-CORE platform components. 
 the operating system, programming language libraries, hypervisor or processing hardware.
 
 To fulfill these assumptions is the responsibility of the integrator.
-
-.. aou_req:: OS safety features
-   :id: aou_req__platform__os_safety_features
-   :reqtype: Non-Functional
-   :security: YES
-   :safety: ASIL_B
-   :status: valid
-
-   The Integrator shall integrate the SW platform with an OS providing safety functions, if the system using the SW platform has safety goals.
-
-   Note: A list of OS safety functions needed is compiled by the S-CORE project here (TBD).
 
 Assumptions on the OS integration - Community Level
 ---------------------------------------------------
@@ -191,9 +180,9 @@ This is the highest level of integraton. This is the level where the S-CORE SW p
 
    Note1: A list of OS safety functions needed is compiled by the S-CORE project here (TBD).
 
-   Note2: The integrator can expect that for the reference OS this AoU is fulfilled by S-CORE SW Platform already.
+   Note2: The integrator can expect that for the supported safety OS (see :need:`stkh_req__ai_platform__platform_portability`) this AoU is fulfilled by S-CORE SW Platform already.
 
-.. aou_req:: integrator safety anomaly reporting
+.. aou_req:: Integrator safety anomaly reporting
    :id: aou_req__platform__integration_safety_anomaly
    :reqtype: Non-Functional
    :security: YES
@@ -207,7 +196,7 @@ Assumptions of Use
 
 In this section assumptions are described which need to be fulfilled by the applications running on top of the SW platform.
 
-.. aou_req:: integrator safety aou
+.. aou_req:: Integrator safety aou
    :id: aou_req__platform__safety_aou
    :reqtype: Non-Functional
    :security: YES
@@ -216,6 +205,6 @@ In this section assumptions are described which need to be fulfilled by the appl
 
    The integrator shall describe in his safety manual (or similar document) the AoUs which need to be covered by the user (applications) for all the components (incl. the OS)  he integrates.
 
-   Note: The integrator can expect that for the reference OS this AoU is fulfilled by S-CORE SW Platform already.
+   Note: The integrator can expect that for the supported safety OS (see :need:`stkh_req__ai_platform__platform_portability`) this AoU is fulfilled by S-CORE SW Platform already.
 
 TBD: more detailed functional AoUs
