@@ -65,7 +65,7 @@ To understand how backlinks do not imply circular dependencies we must understan
 
 .. image:: img/DR-004-backlinking.png
 
-There is a additional module dependency to the Integration module.
+There is an additional module dependency to the Integration module.
 This is circular because Integration also uses the Baselibs module.
 This just makes all their targets visible to each other.
 
@@ -95,6 +95,11 @@ The docs-as-code repo must be refactored accordingly.
 
 Option M: Module documentation rebuilt
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Sphinx provides `intersphinx <https://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html>`_
+and Sphinx-Needs provides `needs-external-needs <https://sphinx-needs.readthedocs.io/en/stable/configuration.html#needs-external-needs>`_
+for linking between different documentations.
+By using them on both sides, bi-directional traceability can be achieved without circular dependencies.
 
 The documentation of a single module may be outdated with respect to external needs, i.e. backlinks.
 Just imagine a new module is created which uses Baselibs but Baselibs makes no changes, so the documentation is never rebuilt.
