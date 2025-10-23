@@ -539,7 +539,7 @@
                   
   <section id="dr-004-infra-bi-directional-traceability-in-docs">
 <h1>DR-004-Infra: Bi-directional traceability in docs<a class="headerlink" href="#dr-004-infra-bi-directional-traceability-in-docs" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-c7efee25">
+<div class="need_container docutils container" id="SNCB-c0781a2a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__traceable_docs">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -637,7 +637,7 @@ Baselibs does not care about backlinks because they assume everybody anyways.</p
 <p>To understand how backlinks do not imply circular dependencies we must understand the difference between module and target dependencies.</p>
 <p><em>If</em> Baselibs wants to see backlinks (i.e. COM references) in their documentation, they need to introduce the blue dependencies below:</p>
 <img alt="../_images/DR-004-backlinking.png" src="../_images/DR-004-backlinking.png" />
-<p>There is a additional module dependency to the Integration module.
+<p>There is an additional module dependency to the Integration module.
 This is circular because Integration also uses the Baselibs module.
 This just makes all their targets visible to each other.</p>
 <p>There is an additional target dependency from &#64;Baselibs:html to &#64;Integration:needs_json which contains <em>all</em> needs-elements of the S-CORE project.
@@ -660,6 +660,10 @@ The docs-as-code repo must be refactored accordingly.</p>
 </section>
 <section id="option-m-module-documentation-rebuilt">
 <h3>Option M: Module documentation rebuilt<a class="headerlink" href="#option-m-module-documentation-rebuilt" title="Link to this heading">#</a></h3>
+<p>Sphinx provides <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html">intersphinx</a>
+and Sphinx-Needs provides <a class="reference external" href="https://sphinx-needs.readthedocs.io/en/stable/configuration.html#needs-external-needs">needs-external-needs</a>
+for linking between different documentations.
+By using them on both sides, bi-directional traceability can be achieved without circular dependencies.</p>
 <p>The documentation of a single module may be outdated with respect to external needs, i.e. backlinks.
 Just imagine a new module is created which uses Baselibs but Baselibs makes no changes, so the documentation is never rebuilt.</p>
 <p>This implies that the integration module must build all documentation themselves for a release.
