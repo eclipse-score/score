@@ -72,8 +72,8 @@
         </script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="Modules" href="../../modules/index.html" />
-    <link rel="prev" title="Requirements" href="../../requirements.html" />
+    <link rel="next" title="Requirements" href="../requirements/index.html" />
+    <link rel="prev" title="Orchestration" href="../../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
@@ -484,14 +484,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../integration/index.html">Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../lifecycle/index.html">Lifecycle</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">Orchestration</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../requirements.html">Requirements</a></li>
-
-
-
-
-
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../modules/index.html">Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../requirements/index.html">Requirements</a></li>
+
+
+
+
+
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../persistency/index.html">Persistency</a></li>
@@ -561,7 +560,7 @@
                   
   <section id="architecture">
 <h1>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-a97dc46f">
+<div class="need_container docutils container" id="SNCB-d95755bb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__orch_architecture">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -582,7 +581,8 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">feature_request</span><span class="needs_spacer">, </span><span class="needs_data">orchestration</span></span></span></div>
 </span></span></div>
-<div class="line"><span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/architecture_workproducts.html#wp__feature_arch">PROCESS_wp__feature_arch</a></span></span></div>
+</span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
@@ -617,7 +617,7 @@
 <div><p>The overall architecture of the orchestration framework is layered. Orchestration uses the runtime component which abstracts execution
 specific details like threads.</p>
 </div></blockquote>
-<div class="need_container docutils container" id="SNCB-7b03fb21">
+<div class="need_container docutils container" id="SNCB-bdd176f7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_sta table" id="feat_arc_sta__orch__orchestration">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -645,7 +645,7 @@ specific details like threads.</p>
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-features/orchestration/docs/architecture/index-0">
-<object data="../../../../_images/plantuml-dc736e7f2eeebdc6c3b2b4a083b8420eda444fa3.svg" type="image/svg+xml" style="width:688px;height:725px;background:#FFFFFF;"></object></p>
+<object data="../../../../_images/plantuml-e454d25ac8df15834c3f85ab62bf8e705226dc6a.svg" type="image/svg+xml" style="width:688px;height:725px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -709,7 +709,7 @@ deployment, bridging the gap between the design phase and the deployment phase.<
 <section id="interface-description">
 <h3>Interface Description<a class="headerlink" href="#interface-description" title="Link to this heading">#</a></h3>
 <p>The public API for the frontend is defined as:</p>
-<div class="need_container docutils container" id="SNCB-8247c0b3">
+<div class="need_container docutils container" id="SNCB-f44b64a0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__orchestration__user">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -730,16 +730,16 @@ deployment, bridging the gap between the design phase and the deployment phase.<
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span></span></span></div>
 <div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../../../communication/docs/requirements/index.html#feat_req__com__interfaces" title="logic_arc_int__orchestration__user">feat_req__com__interfaces</a></span></span></div>
-<div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="../../modules/orchestration/orchestrator/docs/architecture/orchestrator.html#comp_arc_sta__orch__orchestration" title="logic_arc_int__orchestration__user">comp_arc_sta__orch__orchestration</a></span></span></div>
+<div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="../../../../modules/orchestration/orchestration/orchestrator/docs/architecture/orchestrator.html#comp_arc_sta__orch__orchestrator" title="logic_arc_int__orchestration__user">comp_arc_sta__orch__orchestrator</a></span></span></div>
 <div class="line">included by: <span class="includes"><span><a class="reference internal" href="#feat_arc_sta__orch__orchestration" title="logic_arc_int__orchestration__user">feat_arc_sta__orch__orchestration</a></span></span></div>
-<div class="line">includes: <span class="included_by"><span><a class="reference internal" href="../../modules/orchestration/orchestrator/docs/architecture/orchestrator.html#logic_arc_int_op__orch__add_design" title="logic_arc_int__orchestration__user">logic_arc_int_op__orch__add_design</a>, <a class="reference internal" href="../../modules/orchestration/orchestrator/docs/architecture/orchestrator.html#logic_arc_int_op__orch__desing_done" title="logic_arc_int__orchestration__user">logic_arc_int_op__orch__desing_done</a>, <a class="reference internal" href="../../modules/orchestration/orchestrator/docs/architecture/orchestrator.html#logic_arc_int_op__orch__get_deployment" title="logic_arc_int__orchestration__user">logic_arc_int_op__orch__get_deployment</a>, <a class="reference internal" href="../../modules/orchestration/orchestrator/docs/architecture/orchestrator.html#logic_arc_int_op__orch__use_config" title="logic_arc_int__orchestration__user">logic_arc_int_op__orch__use_config</a>, <a class="reference internal" href="../../modules/orchestration/orchestrator/docs/architecture/orchestrator.html#logic_arc_int_op__orch__create_programs" title="logic_arc_int__orchestration__user">logic_arc_int_op__orch__create_programs</a></span></span></div>
+<div class="line">includes: <span class="included_by"><span><a class="reference internal" href="../../../../modules/orchestration/orchestration/orchestrator/docs/architecture/orchestrator.html#logic_arc_int_op__orch__add_design" title="logic_arc_int__orchestration__user">logic_arc_int_op__orch__add_design</a>, <a class="reference internal" href="../../../../modules/orchestration/orchestration/orchestrator/docs/architecture/orchestrator.html#logic_arc_int_op__orch__desing_done" title="logic_arc_int__orchestration__user">logic_arc_int_op__orch__desing_done</a>, <a class="reference internal" href="../../../../modules/orchestration/orchestration/orchestrator/docs/architecture/orchestrator.html#logic_arc_int_op__orch__get_deployment" title="logic_arc_int__orchestration__user">logic_arc_int_op__orch__get_deployment</a>, <a class="reference internal" href="../../../../modules/orchestration/orchestration/orchestrator/docs/architecture/orchestrator.html#logic_arc_int_op__orch__use_config" title="logic_arc_int__orchestration__user">logic_arc_int_op__orch__use_config</a>, <a class="reference internal" href="../../../../modules/orchestration/orchestration/orchestrator/docs/architecture/orchestrator.html#logic_arc_int_op__orch__create_programs" title="logic_arc_int__orchestration__user">logic_arc_int_op__orch__create_programs</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-features/orchestration/docs/architecture/index-1">
-<object data="../../../../_images/plantuml-f391ac5d0ac9c93bbb95b028ad0ad60e87225c36.svg" type="image/svg+xml" style="width:216px;height:150px;background:#FFFFFF;"></object></p>
+<object data="../../../../_images/plantuml-af6a8a999f0fd9e3bf0ab9759494895f7b36bfad.svg" type="image/svg+xml" style="width:216px;height:150px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -756,7 +756,7 @@ deployment, bridging the gap between the design phase and the deployment phase.<
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-eb1f3cee">
+<div class="need_container docutils container" id="SNCB-4d3fab60">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__orchestration__design">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -776,16 +776,16 @@ deployment, bridging the gap between the design phase and the deployment phase.<
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span></span></span></div>
-<div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="../../modules/orchestration/orchestrator/docs/architecture/orchestrator.html#comp_arc_sta__orch__orchestration" title="logic_arc_int__orchestration__design">comp_arc_sta__orch__orchestration</a>, <a class="reference internal" href="../../modules/orchestration/orchestrator/docs/architecture/orchestrator.html#comp_arc_sta__orch__design_impl" title="logic_arc_int__orchestration__design">comp_arc_sta__orch__design_impl</a></span></span></div>
+<div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="../../../../modules/orchestration/orchestration/orchestrator/docs/architecture/orchestrator.html#comp_arc_sta__orch__orchestrator" title="logic_arc_int__orchestration__design">comp_arc_sta__orch__orchestrator</a>, <a class="reference internal" href="../../../../modules/orchestration/orchestration/orchestrator/docs/architecture/orchestrator.html#comp_arc_sta__orch__design_impl" title="logic_arc_int__orchestration__design">comp_arc_sta__orch__design_impl</a></span></span></div>
 <div class="line">included by: <span class="includes"><span><a class="reference internal" href="#feat_arc_sta__orch__orchestration" title="logic_arc_int__orchestration__design">feat_arc_sta__orch__orchestration</a></span></span></div>
-<div class="line">includes: <span class="included_by"><span><a class="reference internal" href="../../modules/orchestration/orchestrator/docs/architecture/orchestrator.html#logic_arc_int_op__orch__register_invoke_fn" title="logic_arc_int__orchestration__design">logic_arc_int_op__orch__register_invoke_fn</a>, <a class="reference internal" href="../../modules/orchestration/orchestrator/docs/architecture/orchestrator.html#logic_arc_int_op__orch__rim" title="logic_arc_int__orchestration__design">logic_arc_int_op__orch__rim</a>, <a class="reference internal" href="../../modules/orchestration/orchestrator/docs/architecture/orchestrator.html#logic_arc_int_op__orch__register_event1" title="logic_arc_int__orchestration__design">logic_arc_int_op__orch__register_event1</a>, <a class="reference internal" href="../../modules/orchestration/orchestrator/docs/architecture/orchestrator.html#logic_arc_int_op__orch__add_program1" title="logic_arc_int__orchestration__design">logic_arc_int_op__orch__add_program1</a></span></span></div>
+<div class="line">includes: <span class="included_by"><span><a class="reference internal" href="../../../../modules/orchestration/orchestration/orchestrator/docs/architecture/orchestrator.html#logic_arc_int_op__orch__register_invoke_fn" title="logic_arc_int__orchestration__design">logic_arc_int_op__orch__register_invoke_fn</a>, <a class="reference internal" href="../../../../modules/orchestration/orchestration/orchestrator/docs/architecture/orchestrator.html#logic_arc_int_op__orch__rim" title="logic_arc_int__orchestration__design">logic_arc_int_op__orch__rim</a>, <a class="reference internal" href="../../../../modules/orchestration/orchestration/orchestrator/docs/architecture/orchestrator.html#logic_arc_int_op__orch__register_event1" title="logic_arc_int__orchestration__design">logic_arc_int_op__orch__register_event1</a>, <a class="reference internal" href="../../../../modules/orchestration/orchestration/orchestrator/docs/architecture/orchestrator.html#logic_arc_int_op__orch__add_program1" title="logic_arc_int__orchestration__design">logic_arc_int_op__orch__add_program1</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-features/orchestration/docs/architecture/index-2">
-<object data="../../../../_images/plantuml-57380623ffbc64a353de6d57680daced5c51d28c.svg" type="image/svg+xml" style="width:231px;height:134px;background:#FFFFFF;"></object></p>
+<object data="../../../../_images/plantuml-c4e924206cefa86ed6001d4030fb206cfbfde693.svg" type="image/svg+xml" style="width:231px;height:134px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -802,7 +802,7 @@ deployment, bridging the gap between the design phase and the deployment phase.<
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f83b6e16">
+<div class="need_container docutils container" id="SNCB-0bc0f75b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__orchestration__deployment">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -822,16 +822,16 @@ deployment, bridging the gap between the design phase and the deployment phase.<
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span></span></span></div>
-<div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="../../modules/orchestration/orchestrator/docs/architecture/orchestrator.html#comp_arc_sta__orch__orchestration" title="logic_arc_int__orchestration__deployment">comp_arc_sta__orch__orchestration</a>, <a class="reference internal" href="../../modules/orchestration/orchestrator/docs/architecture/orchestrator.html#comp_arc_sta__orch__deployment_impl" title="logic_arc_int__orchestration__deployment">comp_arc_sta__orch__deployment_impl</a></span></span></div>
+<div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="../../../../modules/orchestration/orchestration/orchestrator/docs/architecture/orchestrator.html#comp_arc_sta__orch__orchestrator" title="logic_arc_int__orchestration__deployment">comp_arc_sta__orch__orchestrator</a>, <a class="reference internal" href="../../../../modules/orchestration/orchestration/orchestrator/docs/architecture/orchestrator.html#comp_arc_sta__orch__deployment_impl" title="logic_arc_int__orchestration__deployment">comp_arc_sta__orch__deployment_impl</a></span></span></div>
 <div class="line">included by: <span class="includes"><span><a class="reference internal" href="#feat_arc_sta__orch__orchestration" title="logic_arc_int__orchestration__deployment">feat_arc_sta__orch__orchestration</a></span></span></div>
-<div class="line">includes: <span class="included_by"><span><a class="reference internal" href="../../modules/orchestration/orchestrator/docs/architecture/orchestrator.html#logic_arc_int_op__orch__bind_events_as_global" title="logic_arc_int__orchestration__deployment">logic_arc_int_op__orch__bind_events_as_global</a>, <a class="reference internal" href="../../modules/orchestration/orchestrator/docs/architecture/orchestrator.html#logic_arc_int_op__orch__bind_shutdown_event" title="logic_arc_int__orchestration__deployment">logic_arc_int_op__orch__bind_shutdown_event</a></span></span></div>
+<div class="line">includes: <span class="included_by"><span><a class="reference internal" href="../../../../modules/orchestration/orchestration/orchestrator/docs/architecture/orchestrator.html#logic_arc_int_op__orch__bind_events_as_global" title="logic_arc_int__orchestration__deployment">logic_arc_int_op__orch__bind_events_as_global</a>, <a class="reference internal" href="../../../../modules/orchestration/orchestration/orchestrator/docs/architecture/orchestrator.html#logic_arc_int_op__orch__bind_shutdown_event" title="logic_arc_int__orchestration__deployment">logic_arc_int_op__orch__bind_shutdown_event</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-features/orchestration/docs/architecture/index-3">
-<object data="../../../../_images/plantuml-3460e824bfa199cf4e073ac30db9b80208c1485c.svg" type="image/svg+xml" style="width:219px;height:101px;background:#FFFFFF;"></object></p>
+<object data="../../../../_images/plantuml-a22e1ae1f73c165d3695db574e5c56dcaec71a0c.svg" type="image/svg+xml" style="width:219px;height:101px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -863,20 +863,20 @@ deployment, bridging the gap between the design phase and the deployment phase.<
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../../requirements.html"
+       href="../../index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Requirements</p>
+        <p class="prev-next-title">Orchestration</p>
       </div>
     </a>
     <a class="right-next"
-       href="../../modules/index.html"
+       href="../requirements/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Modules</p>
+        <p class="prev-next-title">Requirements</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

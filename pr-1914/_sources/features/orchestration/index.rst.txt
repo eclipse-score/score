@@ -21,14 +21,10 @@ Orchestration
 .. document:: Orchestration
    :id: doc__orchestration
    :status: valid
+   :security: YES
    :safety: ASIL_B
+   :realizes: PROCESS_wp__feat_request
    :tags: feature_request, change_management, orchestration
-
-
-.. toctree::
-   :hidden:
-
-   requirements.rst
 
 
 Feature flag
@@ -398,4 +394,3 @@ Footnotes
    :hidden:
 
    docs/**/index
-   modules/index
