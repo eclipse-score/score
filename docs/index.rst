@@ -105,6 +105,7 @@ Project structure and processes
       features/index
       modules/index
       contribute/index
+      how_tos/index
       Releases <score_releases/index.rst>
       Tools <score_tools/index.rst>
       PMP <platform_management_plan/index.rst>
