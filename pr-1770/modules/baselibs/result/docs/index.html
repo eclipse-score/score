@@ -32,7 +32,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/css/score.css?v=940e959b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/score.css?v=6e51530f" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/css/score_needs.css?v=e97392eb" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/css/score_design.css?v=d9fd870c" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
@@ -475,6 +475,8 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">Baselibs Module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../docs/index.html">Module Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../bitmanipulation/docs/index.html">bit manipulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../containers/docs/index.html">containers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../json/docs/index.html">JSON-Library</a></li>
 
 
@@ -489,8 +491,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../message_passing/docs/index.html">message_passing</a></li>
 <li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">result</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="requirements.html">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture/index.html">Result Component Architecture</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../utils/docs/index.html">utils</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../communication/index.html">Communication Module</a></li>
@@ -565,8 +569,79 @@
                   
   <section id="result">
 <h1>result<a class="headerlink" href="#result" title="Link to this heading">#</a></h1>
+<div class="need_container docutils container" id="SNCB-5f603276">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__result">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Result Library</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs_result</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/change_management_workproducts.html#wp__cmpt_request">PROCESS_wp__cmpt_request</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__result" title="doc__result">doc__result</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Generic Document</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div class="toctree-wrapper compound">
 </div>
+<section id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
+<p>This component request proposes the integration of a safe Result library for type-safe error handling and value propagation.</p>
+</section>
+<section id="motivation-and-rationale">
+<h2>Motivation and Rationale<a class="headerlink" href="#motivation-and-rationale" title="Link to this heading">#</a></h2>
+<p>The Result library shall provide a type-safe mechanism to represent and propagate either a successful value or an error.
+Result library will enable explicit error management and support the development of safety-critical features by providing clear value or error propagation paths.
+A Result library with type-safe error handling is needed in the S-CORE software platform due to functional dependencies of different features and the need for explicit, reliable error propagation.
+There are multiple use-case like logging error messages or comparing on expected error states to trigger other countermeasures.</p>
+</section>
+<section id="specification">
+<h2>Specification<a class="headerlink" href="#specification" title="Link to this heading">#</a></h2>
+<p>The following details and requirements describe the aspects of the current feature in the context of S-CORE.</p>
+<section id="general-considerations">
+<h3>General considerations<a class="headerlink" href="#general-considerations" title="Link to this heading">#</a></h3>
+<p>The Result library should provide value/error propagation and error handling capabilities:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="requirements.html#comp_req__result__error_handling" title="comp_req__result__error_handling"><em class="xref need">Result-Based Error Handling (comp_req__result__error_handling)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements.html#comp_req__result__domain_error_information" title="comp_req__result__domain_error_information"><em class="xref need">Domain-Specific Error Infor... (comp_req__result__domain_error_information)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements.html#comp_req__result__type_safety" title="comp_req__result__type_safety"><em class="xref need">Type-Safe Error Handling (comp_req__result__type_safety)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements.html#comp_req__result__std_integration" title="comp_req__result__std_integration"><em class="xref need">Standard Library Integration (comp_req__result__std_integration)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements.html#comp_req__result__deterministic_behavior" title="comp_req__result__deterministic_behavior"><em class="xref need">Deterministic Behavior (comp_req__result__deterministic_behavior)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements.html#comp_req__result__exception_free_operation" title="comp_req__result__exception_free_operation"><em class="xref need">Exception-Free Operation (comp_req__result__exception_free_operation)</em></a></p></li>
+</ul>
+<p>The component should be extensible in the future to support richer error information and integration with other platform components.</p>
+</section>
+</section>
 </section>
 
 
@@ -607,6 +682,23 @@
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-and-rationale">Motivation and Rationale</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specification">Specification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-considerations">General considerations</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
 

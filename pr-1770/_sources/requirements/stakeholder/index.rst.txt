@@ -28,7 +28,7 @@ Overall goals
    :rationale: This is a usability constraint needed for long maintenance support
    :status: valid
 
-   The platform shall enable the reuse of application software via a set of managed APIs.
+   The SW-platform shall enable the reuse of application software via a set of managed APIs.
    These APIs shall be developed via a well-defined life-cycle ensuring
    non-breaking changes.
 
@@ -41,7 +41,7 @@ Overall goals
     :rationale: To enable cooperation with other cooperation partners.
     :status: valid
 
-    The software platform shall where possible be based on existing standards (e.g. network protocols).
+    The SW-platform shall where possible be based on existing standards (e.g. network protocols).
 
 .. stkh_req:: Variant management
     :id: stkh_req__overall_goals__variant_management
@@ -51,7 +51,7 @@ Overall goals
     :rationale: tbd
     :status: valid
 
-    The software platform shall provide variant management support.
+    The SW-platform shall provide variant management support.
     Variant management support shall enable users to ensure the
     compatibility of application software across vehicle variants and vehicle
     software releases.
@@ -65,7 +65,7 @@ Overall goals
    :rationale: tbd
    :status: valid
 
-   The software platform shall support cooperation models, where partners do not
+   The SW-platform shall support cooperation models, where partners do not
    want to disclose their intellectual property of applications to all other
    partners.
 
@@ -82,7 +82,7 @@ Functional requirements
    :rationale: File based configuration allows changes without rebuilding the software.
    :status: valid
 
-   The platform shall support configuration of applications via files (e.g. yaml, json)
+   The SW-platform shall support configuration of applications via files (e.g. yaml, json)
 
 .. stkh_req:: Support of safe Key/Value store
    :id: stkh_req__functiona_req__support_of_store
@@ -91,9 +91,9 @@ Functional requirements
    :safety: ASIL_B
    :rationale: Key/Value storage is a standard way to structure file based non-volatile memory access.
    :status: valid
+   :tags: safety_mechanism
 
-   The software platform shall provide towards the applications a safe
-   (ISO26262-2018) key/value store.
+   The SW-platform shall provide towards the applications a safe key/value store.
 
    Note: This is part of 0.5 release and therefore can only support ASIL_B. Goal is ASIL_D.
 
@@ -104,8 +104,9 @@ Functional requirements
    :safety: ASIL_B
    :rationale: Configuration files may hold safety relevant information.
    :status: valid
+   :tags: safety_mechanism
 
-   The platform shall support safe configuration.
+   The SW-platform shall support safe configuration.
 
    Note: This is part of 0.5 release and therefore can only support ASIL_B. Goal is ASIL_D.
 
@@ -118,7 +119,7 @@ Functional requirements
    :rationale: Safe systems require computations to be done in safe environments.
    :status: valid
 
-   The platform shall support safe computation.
+   The SW-platform shall support safe computation.
 
    Note: This is part of 0.5 release and therefore can only support ASIL_B. Goal is ASIL_D.
 
@@ -131,7 +132,7 @@ Functional requirements
    :rationale: Common libraries reduce duplication, improve consistency and quality across components.
    :status: valid
 
-   The software platform shall provide a set of base libraries offering common functionality for platform components.
+   The SW-platform shall provide a set of base libraries offering common functionality for SW-platform components.
 
 
 .. stkh_req:: Hardware Accelerated Computation
@@ -142,7 +143,7 @@ Functional requirements
    :rationale: High computation loads typically need to be speed up hardware acceleration e.g. in ADAS applications
    :status: valid
 
-   The platform shall support computation accelerated by a Hardware accelerator.
+   The SW-platform shall support computation accelerated by a Hardware accelerator.
 
 
 .. stkh_req:: Data Persistency
@@ -153,7 +154,7 @@ Functional requirements
    :rationale: Applications typically need to store data across power cycles.
    :status: valid
 
-   The platform shall support to store data on non-volatile memory e.g. disks, flash, etc.
+   The SW-platform shall support to store data on non-volatile memory e.g. disks, flash, etc.
 
 
 .. stkh_req:: Operating System
@@ -161,10 +162,10 @@ Functional requirements
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :rationale: This allows portability of platform on POSIX compliant operating systems.
+   :rationale: This allows portability of SW-platform on POSIX compliant operating systems.
    :status: valid
 
-   The platform shall support operating systems compliant with IEEE Std 1003.1 (2004 Edition or newer)
+   The SW-platform shall support operating systems compliant with IEEE Std 1003.1 (2004 Edition or newer)
 
 .. stkh_req:: Video subsystem
    :id: stkh_req__functional_req__video_subsystem
@@ -174,7 +175,7 @@ Functional requirements
    :rationale: tbd
    :status: valid
 
-   The software platform shall provide an interface for pre-processing and
+   The SW-platform shall provide an interface for pre-processing and
    distribution of camera data via the following mechanisms
 
    * PCIe Graphic streams
@@ -193,7 +194,7 @@ Functional requirements
    :rationale: tbd
    :status: valid
 
-   The compute subsystem shall provide the following frameworks towards the
+   The SW-platform shall provide the following frameworks towards the
    applications:
 
    * Math library: Eigen Blaze like safety enhanced math front-end library
@@ -215,7 +216,7 @@ Functional requirements
    :rationale: tbd
    :status: valid
 
-   The software platform shall define protocols and concepts for the interaction with
+   The SW-platform shall define protocols and concepts for the interaction with
    external micro-controllers for
 
    * board management
@@ -233,10 +234,10 @@ Dependability
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :rationale: The platform shall be usable by safety relevant applications.
+   :rationale: The SW-platform shall be usable by safety relevant applications.
    :status: valid
 
-   The software platform shall support applications with an automotive safety
+   The SW-platform shall support applications with an automotive safety
    integrity level up to ASIL-B.
 
    Note: This is part of 0.5 release and therefore can only support ASIL_B. Goal is ASIL_D.
@@ -249,8 +250,9 @@ Dependability
    :safety: ASIL_B
    :rationale: tbd
    :status: valid
+   :tags: safety_mechanism
 
-   The following safety feature shall be supported by the software platform:
+   The SW-platform shall support the following safety feature:
 
    * Health Management (alive, deadline, logical supervision) for time and event based taskchains
    * E2E Protection for communication
@@ -275,7 +277,7 @@ Dependability
    :rationale: tbd
    :status: valid
 
-   The software platform shall support the development of highly available systems.
+   The SW-platform shall support the development of highly available systems.
    (see also `Availability <https://en.wikipedia.org/wiki/Availability>`_).
 
 
@@ -287,7 +289,7 @@ Dependability
    :rationale: tbd
    :status: valid
 
-   The following security features shall be supported by the platform
+   The SW-platform shall support the following security features:
 
    * Mandatory access control
    * Secure boot
@@ -342,8 +344,9 @@ interaction)** — each emphasize different operational priorities.
    :safety: ASIL_B
    :rationale: tbd - potentially above explanation
    :status: valid
+   :tags: safety_mechanism
 
-   The platform shall support a deterministic, time-based application execution model that triggers logic based on predefined schedules or
+   The SW-platform shall support a deterministic, time-based application execution model that triggers logic based on predefined schedules or
    polling intervals.
 
 
@@ -355,7 +358,7 @@ interaction)** — each emphasize different operational priorities.
    :rationale: tbd - potentially above explanation
    :status: valid
 
-   The platform shall support an event-driven, high-throughput application architecture where execution is triggered by data changes.
+   The SW-platform shall support an event-driven, high-throughput application architecture where execution is triggered by data changes.
 
 .. stkh_req:: Support for Request-driven Architecture
    :id: stkh_req__app_architectures__support_request
@@ -365,7 +368,7 @@ interaction)** — each emphasize different operational priorities.
    :rationale: tbd - potentially above explanation
    :status: valid
 
-   The platform shall support a request-driven, asynchronous application architecture that processes requests on-demand.
+   The SW-platform shall support a request-driven, asynchronous application architecture that processes requests on-demand.
 
 
 
@@ -380,7 +383,7 @@ Execution model
    :rationale: tbd
    :status: valid
 
-   The platform shall support the following scheduling strategies:
+   The SW-platform shall support the following scheduling strategies:
 
    * Process Management
 
@@ -403,8 +406,8 @@ Execution model
    :rationale: tbd
    :status: valid
 
-   Cycle times of less then 5 ms on application level shall by supported by the
-   platform assumed this is supported by the underlying hardware.
+   The SW-platform shall support cycle times of less then 5 ms on application level
+   if this is supported by the underlying hardware.
 
 .. stkh_req:: Realtime capabilities
    :id: stkh_req__execution_model__realtime_cap
@@ -414,7 +417,7 @@ Execution model
    :rationale: tbd
    :status: valid
 
-   The platform shall support the controlled reaction on events
+   The SW-platform shall support the controlled reaction on events
    (timing events, interrupts) within a defined timing interval.
 
 .. stkh_req:: Startup performance
@@ -425,7 +428,7 @@ Execution model
    :rationale: tbd
    :status: valid
 
-   The software platform shall support fast startup scenarios e.g. cold boot and
+   The SW-platform shall support fast startup scenarios e.g. cold boot and
    resume from hibernate mode.
 
 .. stkh_req:: Low power mode
@@ -436,7 +439,7 @@ Execution model
    :rationale: tbd
    :status: valid
 
-   The software platform shall support low power modes to safe energy.
+   The SW-platform shall support low power modes to safe energy.
 
 Communication
 -------------
@@ -449,7 +452,7 @@ Communication
    :rationale: Application software typically consists of multiple processes which need to interact.
    :status: valid
 
-   The platform shall support inter-process communication.
+   The SW-platform shall support inter-process communication.
 
 .. stkh_req:: ABI Compatible Data Types
    :id: stkh_req__communication__abi_compatible
@@ -459,7 +462,7 @@ Communication
    :rationale: ABI compatiblity ensures that the same memory location is correctly interpreted by different programming languages.
    :status: valid
 
-   The platform shall support ABI compatible data types for zero-copy communication between Rust and C++ applications.
+   The SW-platform shall support ABI compatible data types for zero-copy communication between Rust and C++ applications.
 
 .. stkh_req:: Intra-process Communication
    :id: stkh_req__communication__intra_process
@@ -469,7 +472,7 @@ Communication
    :rationale: Application software typically maps software building blocks into the same process.
    :status: valid
 
-   The platform shall support intra-process communication.
+   The SW-platform shall support intra-process communication.
 
 .. stkh_req:: Stable application interfaces
    :id: stkh_req__communication__stable_app_inter
@@ -479,7 +482,7 @@ Communication
    :rationale: In case of incompatible changes on external interface the portability effort shall be reduced.
    :status: valid
 
-   The platform shall provide a framework to mitigate incompatible changes on
+   The SW-platform shall provide a framework to mitigate incompatible changes on
    external interfaces to keep application interfaces stable.
 
 .. stkh_req:: Extensible External Communication
@@ -490,7 +493,7 @@ Communication
    :rationale: ECUs need to interact with each other. There are multiple protocols today and more to come in the future.
    :status: valid
 
-   The platform shall support external communication via well established protocols e.g. Zenoh, DDS.
+   The SW-platform shall support external communication via well established protocols e.g. Zenoh, DDS.
 
 
 .. stkh_req:: Safe Communication
@@ -500,8 +503,9 @@ Communication
    :safety: ASIL_B
    :rationale: Distributed safe systems often require communication to be safe.
    :status: valid
+   :tags: safety_mechanism
 
-   The platform shall support safe communication.
+   The SW-platform shall support safe communication.
 
    Note: This is part of 0.5 release and therefore can only support ASIL_B. Goal is ASIL_D.
 
@@ -514,7 +518,7 @@ Communication
    :rationale: Distributed secure systems often require secure communication.
    :status: valid
 
-   The platform shall support secure communication.
+   The SW-platform shall support secure communication.
 
 .. stkh_req:: Supported network protocols
    :id: stkh_req__communication__supported_net
@@ -524,7 +528,7 @@ Communication
    :rationale: tbd
    :status: valid
 
-   The software platform shall support the following automotive network
+   The SW-platform shall support the following automotive network
    protocols
 
    * SOME/IP
@@ -543,8 +547,8 @@ Communication
    :rationale: tbd
    :status: valid
 
-   The software platform shall provide a framework to ensure quality of service
-   of applications deployed on the platform. This includes but is not limited
+   The SW-platform shall provide a framework to ensure quality of service
+   of applications deployed on the SW-platform. This includes but is not limited
    to:
 
    * QOS for applications
@@ -560,7 +564,7 @@ Communication
    :rationale: tbd
    :status: valid
 
-   The following diagnostic protocols shall be supported
+   The SW-platform shall support the following diagnostic protocols
    * SOVD (ISO 17978)
    * UDS (ISO 14229) Diagnostics
    * Diagnostic trouble codes
@@ -577,7 +581,7 @@ Time
    :rationale: Enables the system to compare events chronologically.
    :status: valid
 
-   The software platform shall provide a time synchronization framework to synchronize its clock
+   The SW-platform shall provide a time synchronization framework to synchronize its clock
    to Time Master within the vehicle.
 
 .. stkh_req:: Vehicle Time base API
@@ -588,7 +592,7 @@ Time
    :rationale: Enables an application to correlate its data with a vehicle-internal time reference for event timestamp and chronological events comparison.
    :status: valid
 
-   The software platform shall provide access to synchronized vehicle time.
+   The SW-platform shall provide access to synchronized vehicle time.
 
 .. stkh_req:: Synchronize the HW clock with Vehicle Time
    :id: stkh_req__time__hw_clock_sync
@@ -598,7 +602,7 @@ Time
    :rationale: Enables the system to compare events from different ECUs chronologically, using the same time base for timestamping ingress and egress frames.
    :status: valid
 
-   The software platform shall synchronize the local HW clock to vehicle time.
+   The SW-platform shall synchronize the local HW clock to vehicle time.
 
 .. stkh_req:: Time Synchronization with external sources
    :id: stkh_req__time__absolute_time_sync
@@ -608,7 +612,7 @@ Time
    :rationale: Enables the system to validate a certificate or token with temporal validity conditions, adding a UTC-timestamp to a data set.
    :status: valid
 
-   The software platform shall provide a framework to synchronize the clock to external-to-vehicle absolute time base (UTC).
+   The SW-platform shall provide a framework to synchronize the clock to external-to-vehicle absolute time base (UTC).
 
 .. stkh_req:: Absolute time base API
    :id: stkh_req__time__absolute_time_api
@@ -618,7 +622,7 @@ Time
    :rationale: Enables an application to correlate its data with an absolute vehicle-external time reference for event timestamping and chronological events comparison.
    :status: valid
 
-   The software platform shall provide access to the absolute time base, synchronized with external time sources.
+   The SW-platform shall provide access to the absolute time base, synchronized with external time sources.
 
 .. stkh_req:: Local High precision Clock API
    :id: stkh_req__time__high_precision_clock_api
@@ -628,7 +632,7 @@ Time
    :rationale: Enables an application to get the current system time, which is essential for time-sensitive operations and event scheduling, via common, mockable and standardized API.
    :status: valid
 
-   The software platform shall provide access to the current high precision clock from the system time provider in nanoseconds.
+   The SW-platform shall provide access to the current high precision clock from the system time provider in nanoseconds.
 
    Note: to which clock the high precision clock is mapped, depends on the system design.
 
@@ -640,12 +644,12 @@ Time
    :rationale: Enables an application to get the current system time, which is essential for time-sensitive operations and event scheduling, via common, mockable and standardized API.
    :status: valid
 
-   The software platform shall provide access to the current monotonic clock from the system time provider.
+   The SW-platform shall provide access to the current monotonic clock from the system time provider.
 
    Note: to which clock the monotonic clock is mapped, depends on the system design.
 
-AI Platform
------------
+AI SW-platform
+--------------
 
 
 .. stkh_req:: On-board ML Workloads
@@ -655,8 +659,9 @@ AI Platform
    :safety: QM
    :rationale: Modern vehicles require the integration of ML capabilities to remain competitive and support customer expectations.
    :status: valid
+   :tags: artificial_intelligence
 
-   The platform shall support the execution of traditional ML workloads on-board.
+   The SW-platform shall support the execution of traditional ML workloads on-board.
 
 
 .. stkh_req:: Support for Safety-Critical ML
@@ -666,8 +671,9 @@ AI Platform
    :safety: ASIL_B
    :rationale: Some ML-based functionality is required to be certified up to ASIL-B.
    :status: valid
+   :tags: artificial_intelligence
 
-   The platform shall support safety-compliant (ASIL-B) deployment of AI/ML components, including inference backends and pipelines.
+   The SW-platform shall support safety-compliant (ASIL-B) deployment of AI/ML components, including inference backends and pipelines.
 
 
 .. stkh_req:: Runtime Efficiency for Edge Devices
@@ -677,8 +683,9 @@ AI Platform
    :safety: QM
    :rationale: Automotive platforms have limited compute and thermal budgets.
    :status: valid
+   :tags: artificial_intelligence
 
-   The AI platform shall be optimized for runtime performance and memory footprint on embedded hardware targets.
+   The SW-platform shall be optimized for runtime performance and memory footprint on embedded hardware targets.
 
 
 .. stkh_req:: Platform Portability (QNX + Linux)
@@ -688,8 +695,9 @@ AI Platform
    :safety: QM
    :rationale: AI/ML use cases span both safety and non-safety environments, requiring portability across operating systems.
    :status: valid
+   :tags: artificial_intelligence
 
-   The platform shall support both QNX (for safety) and Linux (for GenAI and flexibility) with reusable components.
+   The SW-platform shall support both QNX (for safety) and Linux (for GenAI and flexibility) with reusable components.
 
 
 .. stkh_req:: Secure Model Execution
@@ -699,8 +707,9 @@ AI Platform
    :safety: QM
    :rationale: AI model execution must be protected against tampering or abuse.
    :status: valid
+   :tags: artificial_intelligence
 
-   The platform shall ensure secure, verified, and integrity-checked model execution.
+   The SW-platform shall ensure secure, verified, and integrity-checked model execution.
 
 
 .. stkh_req:: Deterministic Execution Paths
@@ -710,8 +719,9 @@ AI Platform
    :safety: ASIL_B
    :rationale: Safety certification requires predictable and bounded system behavior.
    :status: valid
+   :tags: safety_mechanism, artificial_intelligence
 
-   The platform shall ensure deterministic behavior for AI components used in safety-relevant paths.
+   The SW-platform shall ensure deterministic behavior for AI components used in safety-relevant paths.
 
 
 .. stkh_req:: On-board GenAI Workloads
@@ -721,8 +731,9 @@ AI Platform
    :safety: QM
    :rationale: Modern vehicles require the integration of AI/ML capabilities to remain competitive and support customer expectations.
    :status: valid
+   :tags: artificial_intelligence
 
-   The platform shall support the execution of Generative AI workloads on-board.
+   The SW-platform shall support the execution of Generative AI workloads on-board.
 
 
 .. stkh_req:: GenAI User Interaction
@@ -732,8 +743,9 @@ AI Platform
    :safety: QM
    :rationale: HMIs are expected to support intelligent, natural interaction using LLM-based assistants.
    :status: valid
+   :tags: artificial_intelligence
 
-   The platform shall support on-device GenAI-based models with user interaction.
+   The SW-platform shall support on-device GenAI-based models with user interaction.
 
 
 .. stkh_req:: Action Safety and Governance
@@ -743,8 +755,9 @@ AI Platform
    :safety: ASIL_B
    :rationale: GenAI output may be unpredictable or unsafe and must be controlled before affecting vehicle behavior.
    :status: valid
+   :tags: safety_mechanism, artificial_intelligence
 
-   The platform shall validate all actions proposed by GenAI models against safety and policy rules prior to execution.
+   The SW-platform shall validate all actions proposed by GenAI models against safety and policy rules prior to execution.
 
 
 .. stkh_req:: Seamless Integration with Vehicle Systems
@@ -754,8 +767,9 @@ AI Platform
    :safety: ASIL_B
    :rationale: AI components must interact with vehicle state and control interfaces.
    :status: valid
+   :tags: artificial_intelligence
 
-   The platform shall expose structured APIs to access vehicle state and execute safe commands.
+   The SW-platform shall expose structured APIs to access vehicle state and execute safe commands.
 
 
 Diagnostics and Fault Management
@@ -769,7 +783,7 @@ Diagnostics and Fault Management
    :rationale: Enables modern, scalable diagnostics using a standard REST-based protocol to improve integration, interoperability, and maintainability.
    :status: valid
 
-   The system shall support vehicle diagnostics via the SOVD protocol as defined in ISO 17978, to allow scalable and secure diagnostic access.
+   The SW-platform shall support vehicle diagnostics via the SOVD protocol as defined in ISO 17978, to allow scalable and secure diagnostic access.
 
 .. stkh_req:: Fault Reporting Infrastructure
    :id: stkh_req__diagnostics__fault_reporting
@@ -779,7 +793,7 @@ Diagnostics and Fault Management
    :rationale: Enables applications and components to report faults in a structured, reusable, and system-wide accessible manner.
    :status: valid
 
-   The system shall support a reusable fault reporting infrastructure that enables applications and platform components to report, persist, and manage diagnostic fault information.
+   The SW-platform shall support a reusable fault reporting infrastructure that enables applications and SW-platform components to report, persist, and manage diagnostic fault information.
 
 .. stkh_req:: Readout DTCs via SOVD
    :id: stkh_req__diagnostics__dtc_read_sovd
@@ -789,7 +803,7 @@ Diagnostics and Fault Management
    :rationale: Enables reading of Diagnostic Trouble Codes (DTCs) from the ECU for various use-cases like production or maintenance.
    :status: valid
 
-   The system shall provide users the ability to retrieve current Diagnostic Trouble Codes (DTCs) from the ECU via the SOVD protocol.
+   The SW-platform shall provide users the ability to retrieve current Diagnostic Trouble Codes (DTCs) from the ECU via the SOVD protocol.
 
 .. stkh_req:: Extensibility of Diagnostic Services
    :id: stkh_req__diagnostics__custom_services
@@ -799,7 +813,7 @@ Diagnostics and Fault Management
    :rationale: Enables OEMs and developers to implement system-specific or project-specific routines for diagnostic control and testing.
    :status: valid
 
-   The diagnostic system shall support extensibility mechanisms that allow integration of custom diagnostic services and routines via the SOVD interface.
+   The SW-platform shall support extensibility mechanisms that allow integration of custom diagnostic services and routines via the SOVD interface.
 
 .. stkh_req:: Compatibility with UDS Testers
    :id: stkh_req__diagnostics__uds_tester_compat
@@ -809,7 +823,7 @@ Diagnostics and Fault Management
    :rationale: Ensures continued usability of existing test infrastructure, avoiding costly replacement of legacy tools and ensuring fulfillment of legal requirements.
    :status: valid
 
-   The diagnostic system shall provide compatibility with UDS-based testers by offering a proxy to translate UDS requests into SOVD-compatible actions.
+   The SW-platform shall provide compatibility with UDS-based testers by offering a proxy to translate UDS requests into SOVD-compatible actions.
 
 .. stkh_req:: Compatibility with UDS ECUs
    :id: stkh_req__diagnostics__uds_ecus
@@ -819,7 +833,7 @@ Diagnostics and Fault Management
    :rationale: Ensures continued operability of ECUs that are not SOVD-capable.
    :status: valid
 
-   The diagnostic system shall support integration with ECUs that use UDS by providing a compatibility adapter to translate SOVD requests to UDS commands.
+   The SW-platform shall support integration with ECUs that use UDS by providing a compatibility adapter to translate SOVD requests to UDS commands.
 
 .. stkh_req:: Support for Distributed and Multi-ECU Diagnostics
    :id: stkh_req__diagnostics__distributed_support
@@ -829,7 +843,7 @@ Diagnostics and Fault Management
    :rationale: Enables the system to operate in modern, distributed vehicle architectures where diagnostics span multiple ECUs and subsystems.
    :status: valid
 
-   The diagnostic system shall support distributed diagnostics across multiple ECUs and network segments, enabling routing and aggregation of diagnostic data.
+   The SW-platform shall support distributed diagnostics across multiple ECUs and network segments, enabling routing and aggregation of diagnostic data.
 
 .. stkh_req:: Secure Access to Diagnostic Interfaces
    :id: stkh_req__diagnostics__secure_access
@@ -839,7 +853,7 @@ Diagnostics and Fault Management
    :rationale: Diagnostic access allows deep system introspection and manipulation, which must be protected against unauthorized use.
    :status: valid
 
-   The diagnostic system shall enforce secure access control for all diagnostic interfaces, including authentication, encryption, and role-based access enforcement.
+   The SW-platform shall enforce secure access control for all diagnostic interfaces, including authentication, encryption, and role-based access enforcement.
 
 
 Hardware support
@@ -853,7 +867,7 @@ Hardware support
    :rationale: tbd
    :status: valid
 
-   The platform shall support arm64 and x64 architectures.
+   The SW-platform shall support arm64 and x64 architectures.
 
 
 .. stkh_req:: Virtualization support for debug and testing
@@ -864,7 +878,7 @@ Hardware support
    :rationale: tbd
    :status: valid
 
-   The software platform shall run on qemu to enable test and debug in virtualized
+   The SW-platform shall run on qemu to enable test and debug in virtualized
    environments.
 
 
@@ -876,7 +890,7 @@ Hardware support
    :rationale: tbd
    :status: valid
 
-   The software platform shall support deployment of self-contained application
+   The SW-platform shall support deployment of self-contained application
    bundles
 
    * Kernel Features: e.g. cgroup, secpol, namespaces as precondition for containerization
@@ -895,7 +909,7 @@ Developer experience
    :rationale: tbd
    :status: valid
 
-   The platform shall provide a human readable interface definition language
+   The SW-platform shall provide a human readable interface definition language
    with decentralized glue code generation.
 
 
@@ -907,7 +921,7 @@ Developer experience
    :rationale: tbd
    :status: valid
 
-   The platform shall support a state-of-the art developer experience for
+   The SW-platform shall support a state-of-the art developer experience for
    functional development and application development.
 
    Features:
@@ -926,7 +940,7 @@ Developer experience
    :rationale: tbd
    :status: valid
 
-   The software platform shall support performance analysis of platform and
+   The SW-platform shall support performance analysis of SW-platform and
    application software:
 
    * Flame-graph visualization for long termed CPU behavior
@@ -940,7 +954,7 @@ Developer experience
    :rationale: tbd
    :status: valid
 
-   The platform shall support the tracing of events (start, stop) of executable
+   The SW-platform shall support the tracing of events (start, stop) of executable
    entities and kernel threads on all computation units e.g.
 
    * CPU
@@ -957,7 +971,7 @@ Developer experience
    :rationale: tbd
    :status: valid
 
-   The platform shall support the tracing of communication events for internal
+   The SW-platform shall support the tracing of communication events for internal
    and external communication systems.
 
 .. stkh_req:: Tracing of memory access
@@ -968,7 +982,7 @@ Developer experience
    :rationale: tbd
    :status: valid
 
-   The platform shall support the tracing of memory events (allocation, copy,
+   The SW-platform shall support the tracing of memory events (allocation, copy,
    de-allocation) for different types of memory e.g.
 
    * CPU Memory
@@ -982,7 +996,7 @@ Developer experience
    :rationale: tbd
    :status: valid
 
-   The software platform shall support observation, assessment of
+   The SW-platform shall support observation, assessment of
    timing requirements with state-of-the-art analysis tools.
 
 .. stkh_req:: Debugging
@@ -993,7 +1007,7 @@ Developer experience
    :rationale: tbd
    :status: valid
 
-   The software platform shall provide a method and interface to enable
+   The SW-platform shall provide a method and interface to enable
    debugging of the software on target and in vehicle.
 
 .. stkh_req:: Mockup implementation for application testing
@@ -1001,10 +1015,10 @@ Developer experience
    :reqtype: Functional
    :security: NO
    :safety: QM
-   :rationale: Enables unit, component and integration testing for both platform related and non-platform related applications.
+   :rationale: Enables unit, component and integration testing for both SW-platform related and non-platform related applications.
    :status: valid
 
-   The software platform shall provide support for mocking its public interfaces,
+   The SW-platform shall provide support for mocking its public interfaces,
    enabling unit, component and integration testing of applications.
 
 .. stkh_req:: Programming languages for application development
@@ -1015,7 +1029,7 @@ Developer experience
    :rationale: tbd
    :status: valid
 
-   The platform shall support implementation of applications in the following
+   The SW-platform shall support implementation of applications in the following
    programming languages up to the highest ASIL level as defined in :need:`stkh_req__dependability__automotive_safety`:
 
    * C
@@ -1031,7 +1045,7 @@ Developer experience
    :rationale: tbd
    :status: valid
 
-   The platform shall support data-collection and injection of reprocessed data.
+   The SW-platform shall support data-collection and injection of reprocessed data.
 
 
 .. stkh_req:: Logging support
@@ -1042,7 +1056,7 @@ Developer experience
    :rationale: tbd
    :status: valid
 
-   The platform shall support the following logging setups:
+   The SW-platform shall support the following logging setups:
 
    * Logging to external disk via mounted filesystem on top of PCIe driver
    * Logging via second dedicated Ethernet Channel
@@ -1059,7 +1073,7 @@ Developer experience
    :rationale: tbd
    :status: valid
 
-   The platform shall support logging of data to memory which survives a reboot
+   The SW-platform shall support logging of data to memory which survives a reboot
    cycle.
 
 
@@ -1075,7 +1089,7 @@ Integration
    :rationale: Allow independent development of software modules
    :status: valid
 
-   Integration of multiple repositories shall be supported in a unified workflow.
+   The SW-platform infrastructure shall support integration of multiple repositories in a unified workflow.
 
 
 Quality
@@ -1089,7 +1103,7 @@ Quality
    :rationale: This is a usability constraint needed for long term maintenance support
    :status: valid
 
-   All assumptions and design decisions made shall be specified as requirements and agreed within the S-CORE community.
+   Contributors shall specify all assumptions and design decisions as requirements which are agreed within the S-CORE community.
 
 
 Requirements Engineering
@@ -1099,18 +1113,30 @@ Requirements Engineering
    :id: stkh_req__re_requirements__traceability
    :reqtype: Non-Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :rationale: This is a usability constraint needed for long term maintenance support
    :status: valid
 
-   All requirements shall be linked from lower to upper level, whereby the top-level are the stakeholder requirements.
+   he SW-platform infrastructure shall support linking all requirements from lower to upper level, whereby on the top-level are the stakeholder requirements.
 
 .. stkh_req:: Document requirements as code
    :id: stkh_req__requirements__as_code
    :reqtype: Non-Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :rationale: In this project no external tool or service is used. Therefore as-code is the selected option.
    :status: valid
 
-   Requirements shall be documented as code (Docs-as-code).
+   The SW-platform infrastructure shall support documenting all requirements as code (Docs-as-code).
+
+Safety Mechanisms
+-----------------
+
+The following stakeholder requirements are assumed to be fulfilled by a safety mechanism due to complexity of the realizing
+SW element(s) or due to dependency on HW. This is confirmed during safety analysis of the derived feature requirements and architecture.
+
+.. needtable:: Expected Safety Mechanisms
+   :filter: "safety_mechanism" in tags and type == "stkh_req" and is_external == False
+   :style: table
+   :columns: title; id; tags
+   :colwidths: 30,30,30

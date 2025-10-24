@@ -29,6 +29,9 @@ This Guideline is based on or references following documents:
 
 Creation of Feature Request
 ================================
+.. _feature_request_guideline:
+
+
 1. As the very first step, you will need to become an official contributor, as described in
 `Actions to Ensure Proper Contribution  <https://eclipse-score.github.io/score/main/contribute/general/contribution_attribution.html#contribution-attribution>`_
 
