@@ -312,6 +312,10 @@ docs/score_releases
           results.append(need)
 
 
+
+.. _documents_docs_features:
+
+
 Feature documentation
 +++++++++++++++++++++
 
@@ -739,6 +743,8 @@ docs/features/persistency
 ..              results.append(need)
 
 
+.. _documents_docs_modules:
+
 Modules documentation
 +++++++++++++++++++++
 
@@ -1028,6 +1034,9 @@ docs/modules/tracing/docs
          if i == 0:
              need["title"] = need["title"]
              results.append(need)
+
+
+.. _documents_docs_modules_components:
 
 
 Components documentation
