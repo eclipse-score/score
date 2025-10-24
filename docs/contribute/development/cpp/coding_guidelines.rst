@@ -45,7 +45,24 @@ Examples are:
 * function calls
 * initialization of variables.
 
-For this project an code style is not yet decided.
+For this project a coding style is not yet fully decided.
+
+Naming Conventions
+------------------
+
+Interfaces
+^^^^^^^^^^
+
+A user should program against interfaces.
+This reduces coupling of code and retains big projects maintainable.
+To advertise this, name your interfaces accordingly.
+
+This means:
+
+* Avoid prepending an `I` or appending `Interface`
+* Instead, append `Impl` to implementations to clearly mark them
+
+Finally, consider hiding implementations behind a factory to ease the instantiation effort of a user.
 
 C++ Version
 ===========
@@ -92,3 +109,18 @@ C++20
 * `Spans <https://en.cppreference.com/w/cpp/container/span>`_
 * `jthread <https://en.cppreference.com/w/cpp/thread/jthread>`_
 * `stop_token <https://en.cppreference.com/w/cpp/thread/stop_token>`_
+
+Error handling
+==============
+
+Error handling for C++ is solved through score::Result in the :ref:`baselibs_feature` feature.
+Avoid encoding errors in the returned value (e.g.: do not use -1 for a function that returns an integer).
+Instead, always use the :ref:`baselibs_feature` feature.
+Throwing exceptions should be avoided, as they normally come with heap allocation.
+Exceptions are therefore hardwired to an abort.
+
+Further, handle errors internally if feasible but bubble an error up if a user should know about it.
+
+Consider aborts as a final resort, since they will reduce the availability of the S-CORE platform.
+Even if an error does not allow you to continue operation, providing this error to the user is still better than an abort.
+The user may decide to abort himself, or he may continue in a degraded fashion without your library.
