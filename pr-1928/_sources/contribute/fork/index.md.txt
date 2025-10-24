@@ -95,10 +95,16 @@ Workflow overview
 
 Just an example, obviously adapt to your needs.
 
-- Development in `internal/feature_unverified`
-- Merge to `internal/feature_verified` after internal review
-- Transfer to `public_fork/feature` (manual or automated transformation)
-- Open PR to `eclipse-score/feature` (manual or automated)
+- Development in `company-internal/feature_unverified` (branched of from `eclipse-score/main`)
+- Pull request to `company-internal/feature_verified`
+- Internal review of the PR and automated checks (e.g. that no secrets are contained)
+- If passed, merge to `company-internal/feature_verified`
+- Transfer to `company-contrib/feature` (manual or automated transformation)
+- Open PR to `eclipse-score/main` (manual or automated)
+
+The following diagram illustrates this workflow and also highlights the boundaries between public (Internet) and (company) internal space.
+
+![Internal contribution workflow](assets/internal-first-workflow.drawio.svg)
 
 Use when
 
