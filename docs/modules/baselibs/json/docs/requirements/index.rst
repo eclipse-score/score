@@ -135,7 +135,7 @@ AoU Requirements
 
    The user shall provide a string as input which is not corrupted due to HW or QM SW errors.
 
-   Note: This could be achieved by using a safe read-only filesystem for JSON file storage or a CRC protection on the JSON file content.
+   Note: This could be achieved by using a safe read-only filesystem for JSON file storage or a checksum protection on the JSON file content.
 
 .. aou_req:: Access control
    :id: aou_req__json__access_control
