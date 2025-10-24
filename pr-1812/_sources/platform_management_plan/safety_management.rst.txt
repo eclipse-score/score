@@ -333,23 +333,23 @@ Functional Safety Management SW Platform Work Products
       - :doc:`index`
       - :ndf:`copy('status', need_id='doc__platform_mgt_plan')`
 
-    * - :need:`PROCESS_wp__process_definition`
-      - :need:`PROCESS_wf__def_app_process_definition`
-      - :ndf:`copy('status', need_id='PROCESS_wf__def_app_process_definition')`
+    * - :need:`PROCESS_wp__process_description`
+      - :need:`PROCESS_wf__def_app_process_description`
+      - :ndf:`copy('status', need_id='PROCESS_wf__def_app_process_description')`
       - `Process community issues <https://github.com/orgs/eclipse-score/projects/7>`_
       - `Process description <https://eclipse-score.github.io/process_description/main/index.html>`_
       - <automated>
 
     * - :need:`PROCESS_wp__process_impr_report`
-      - :need:`PROCESS_wf__mon_ctrl_process_definition`
-      - :ndf:`copy('status', need_id='PROCESS_wf__mon_ctrl_process_definition')`
+      - :need:`PROCESS_wf__mon_imp_process_description`
+      - :ndf:`copy('status', need_id='PROCESS_wf__mon_imp_process_description')`
       - <Link to issue>
       - <Link to WP>
       - <automated>
 
-    * - :need:`PROCESS_wp__process_plan`
-      - :need:`PROCESS_wf__mon_ctrl_process_definition`
-      - :ndf:`copy('status', need_id='PROCESS_wf__mon_ctrl_process_definition')`
+    * - :need:`PROCESS_wp__process_strategy`
+      - :need:`PROCESS_wf__cr_mt_process_mgt_strategy`
+      - :ndf:`copy('status', need_id='PROCESS_wf__cr_mt_process_mgt_strategy')`
       - `#232 <https://github.com/eclipse-score/score/issues/232>`_
       - `Process community issues <https://github.com/orgs/eclipse-score/projects/7>`_
       - <automated>
@@ -466,16 +466,6 @@ Functional Safety Management SW Platform Work Products
       - :need:`PROCESS_std_req__iso26262__management_5421` & :need:`doc__platform_safety_plan`
       - valid
 
-Functional Safety Management Feature Specific Work Products
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-See feature tree documents (created by using :need:`PROCESS_gd_temp__feature_safety_wp`):
-
-- Inter-process Communication: :ref:`safety_planning_ipc`
-- Common Libraries: <link>
-- Logging: <link>
-- Persistency: <link>
-- Fixed Execution Order (Framework): <link>
 
 Note: list of features for v0.5 according to `S-CORE Roadmap <https://github.com/orgs/eclipse-score/projects/17>`_
 and :ref:`releases`
@@ -483,14 +473,4 @@ and :ref:`releases`
 Platform Management Plan - Documents Status Chart
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. needtable::
-   :style: table
-   :columns: title;id;status;realizes
-   :colwidths: 25,25,25,25
-   :sort: title
-
-   results = []
-
-   for need in needs.filter_types(["document"]):
-      if need and "platform_management" in need["tags"]:
-                results.append(need)
+See :ref:`doc_platform_management_plan`

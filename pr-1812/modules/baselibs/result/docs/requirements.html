@@ -72,7 +72,7 @@
         </script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="Communication Module" href="../../../communication/index.html" />
+    <link rel="next" title="Result Component Architecture" href="architecture/index.html" />
     <link rel="prev" title="result" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -475,6 +475,8 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">Baselibs Module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../docs/index.html">Module Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../bitmanipulation/docs/index.html">bit manipulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../containers/docs/index.html">containers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../json/docs/index.html">JSON-Library</a></li>
 
 
@@ -489,8 +491,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../message_passing/docs/index.html">message_passing</a></li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">result</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture/index.html">Result Component Architecture</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../utils/docs/index.html">utils</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../communication/index.html">Communication Module</a></li>
@@ -568,7 +572,7 @@
                   
   <section id="requirements">
 <h1>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-fe8039fb">
+<div class="need_container docutils container" id="SNCB-0b33c033">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__result_lib_requirements">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -613,7 +617,7 @@
 </div>
 <section id="functional-requirements">
 <h2>Functional Requirements<a class="headerlink" href="#functional-requirements" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-c608006c">
+<div class="need_container docutils container" id="SNCB-95e1ba25">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__result__error_handling">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -656,7 +660,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f20e57b2">
+<div class="need_container docutils container" id="SNCB-1fd9920b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__result__domain_error_information">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -699,7 +703,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-25767e16">
+<div class="need_container docutils container" id="SNCB-6a3e31b4">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__result__type_safety">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -742,7 +746,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-759c28ec">
+<div class="need_container docutils container" id="SNCB-8e9998cf">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__result__std_integration">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -788,7 +792,7 @@
 </section>
 <section id="non-functional-requirements">
 <h2>Non-Functional Requirements<a class="headerlink" href="#non-functional-requirements" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-353681ec">
+<div class="need_container docutils container" id="SNCB-d9251c43">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__result__deterministic_behavior">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -831,7 +835,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-eed77bb5">
+<div class="need_container docutils container" id="SNCB-0de03758">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__result__exception_free_operation">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -877,7 +881,7 @@
 </section>
 <section id="assumptions-of-use-aou">
 <h2>Assumptions of Use (AoU)<a class="headerlink" href="#assumptions-of-use-aou" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-2dabdbe5">
+<div class="need_container docutils container" id="SNCB-a8641aab">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__result__error_domain_implementation">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -919,7 +923,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-afb2399c">
+<div class="need_container docutils container" id="SNCB-93c02c5b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__result__value_handling">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -961,7 +965,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6e234ea2">
+<div class="need_container docutils container" id="SNCB-9fa58ba6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__result__thread_safety">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1003,7 +1007,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-8d4097f8">
+<div class="need_container docutils container" id="SNCB-9634ef31">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__result__resource_lifetime">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1068,11 +1072,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="../../../communication/index.html"
+       href="architecture/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Communication Module</p>
+        <p class="prev-next-title">Result Component Architecture</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
