@@ -15,18 +15,14 @@
 Requirements
 ############
 
+.. document:: JSON Requirements
+   :id: doc__json_requirements
+   :status: draft
+   :safety: ASIL_B
+   :realizes: PROCESS_wp__requirements_comp
+
 General Requirements
 ====================
-
-.. comp_req:: JSON Validation
-   :id: comp_req__json__validation
-   :reqtype: Functional
-   :security: NO
-   :safety: ASIL_B
-   :satisfies: feat_req__baselibs__json_library
-   :status: valid
-
-   The JSON-Library shall provide a service to check the well-formedness of JSON data.
 
 .. comp_req:: JSON Deserialization
    :id: comp_req__json__deserialization
@@ -36,7 +32,8 @@ General Requirements
    :satisfies: feat_req__baselibs__json_library
    :status: valid
 
-   The JSON-Library shall provide a service to parse JSON data according to RFC8259.
+   The JSON-Library shall provide a service to deserialize JSON data according to RFC8259, i.e.
+   parse and check for well-formedness.
 
 .. comp_req:: JSON Serialization
    :id: comp_req__json__serialization
@@ -94,7 +91,7 @@ User friendly API for information exchange
    :satisfies: feat_req__baselibs__json_library
    :status: valid
 
-   The public API shall enforce strict type compatibility. When a user requests a value, the API shall 
+   The public API shall enforce strict type compatibility. When a user requests a value, the API shall
    validate that the requested return type is compatible with the type and value of the stored JSON data.
 
    Note: This includes checking if the stored value exceeds the range of the expected type.
@@ -136,7 +133,9 @@ AoU Requirements
    :safety: ASIL_B
    :status: valid
 
-   The integrity of input JSON data shall be ensured by the user.
+   The user shall provide a string as input which is not corrupted due to HW or QM SW errors.
+
+   Note: This could be achieved by using a safe read-only filesystem for JSON file storage or a checksum protection on the JSON file content.
 
 .. aou_req:: Access control
    :id: aou_req__json__access_control
@@ -145,4 +144,6 @@ AoU Requirements
    :safety: ASIL_B
    :status: valid
 
-   Access control and manipulation prevention (e.g. dm-verity) shall be ensured by the hosting process and system configuration.
+   The user shall ensure access control and manipulation prevention on the JSON files.
+
+   Note: This can be done by the hosting process and system configuration (e.g. by using dm-verity).

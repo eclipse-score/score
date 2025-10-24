@@ -17,7 +17,7 @@ Orchestrator Module
 
 .. mod_view_sta:: Orchestrator
    :id: mod_view_sta__orch__orchestrator
-   :includes: comp_arc_sta__orch__orchestrator
+   :includes: comp_arc_sta__orch__orchestrator, comp_arc_sta__orch__executor
 
    .. needarch::
       :scale: 50
