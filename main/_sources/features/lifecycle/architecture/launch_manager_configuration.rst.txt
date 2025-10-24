@@ -32,8 +32,6 @@ These parameters specify the arguments needed for spawning a process.
 - :need:`feat_req__lifecycle__aslr_support`
 - :need:`feat_req__lifecycle__process_rlimit_support`
 - :need:`feat_req__lifecycle__support_secpol_type`
-- command to be executed TODO
-- environmental variables TODO
 
 Dependency parameters
 =====================
