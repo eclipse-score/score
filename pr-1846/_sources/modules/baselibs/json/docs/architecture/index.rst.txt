@@ -29,17 +29,20 @@ It provides currently only a C++ API.
 Requirements Linked to Component Architecture
 ---------------------------------------------
 
-see the "fulfils" links in static and dynamic architecture below.
+See the "fulfils" links in static and dynamic architecture below.
 
 Description
 -----------
 
-JSON provides an abstraction layer to unterlying implementations, in first iteration there is only one
+JSON provides an abstraction layer to underlying implementations, in first iteration there is only one
 implementation provided. But generally there is a "Wrapper" and an "Implementation" lower-level component.
 
 Design Decisions:
 
-It was decided to use the nlohman_json OSS library (see `nlohman/json <https://github.com/nlohmann/json>`_). This decision still has to be documented (TBD)
+It was decided to use the nlohman_json OSS library (see `nlohman/json <https://github.com/nlohmann/json>`_). This decision still has to be documented (TBD).
+
+JSON writing functionality is implemented in the "Wrapper", i.e. the nlohman_json OSS library is not used for this.
+Reasoning is that this functionality is reused from an already qualified baselibs implementation.
 
 Design Constraints:
 
@@ -99,14 +102,14 @@ Interfaces
       {{ draw_interface(need(), needs) }}
 
 .. logic_arc_int_op:: Parse
-   :id: logic_arc_int_op__baselibs__fromfile
+   :id: logic_arc_int_op__baselibs__parse
    :security: YES
    :safety: ASIL_B
    :status: valid
    :included_by: logic_arc_int__baselibs__json
 
 .. logic_arc_int_op:: Write
-   :id: logic_arc_int_op__baselibs__tofile
+   :id: logic_arc_int_op__baselibs__write
    :security: YES
    :safety: ASIL_B
    :status: valid
@@ -121,11 +124,11 @@ Lower Level Components
    :safety:  ASIL_B
    :status: valid
    :implements: logic_arc_int__baselibs__json
-   :fulfils: comp_req__json__user_format, comp_req__json__lang_idioms, comp_req__json__lang_infra, comp_req__json__type_compatibility, comp_req__json__full_testability, comp_req__json__asil
+   :fulfils: comp_req__json__user_format, comp_req__json__lang_idioms, comp_req__json__lang_infra, comp_req__json__type_compatibility, comp_req__json__full_testability, comp_req__json__serialization, comp_req__json__asil
 
 .. comp_arc_sta:: nlohman-JSON
    :id: comp_arc_sta__baselibs__nlohman_json
    :security: YES
    :safety:  ASIL_B
    :status: valid
-   :fulfils: comp_req__json__deserialization, comp_req__json__serialization, comp_req__json__asil
+   :fulfils: comp_req__json__deserialization, comp_req__json__asil
