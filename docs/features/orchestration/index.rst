@@ -12,7 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _orchestration_feature:
+
+.. _orch_feature:
 
 Orchestration
 #############
@@ -20,15 +21,10 @@ Orchestration
 .. document:: Orchestration
    :id: doc__orchestration
    :status: valid
+   :security: YES
    :safety: ASIL_B
-   :realizes:
+   :realizes: PROCESS_wp__feat_request
    :tags: feature_request, change_management, orchestration
-
-
-.. toctree::
-   :hidden:
-
-   requirements.rst
 
 
 Feature flag
@@ -390,3 +386,11 @@ Footnotes
 =========
 
 .. [#s1] "Asynchronous Programming in Rust", https://rust-lang.github.io/async-book/
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+   :titlesonly:
+   :hidden:
+
+   docs/**/index
