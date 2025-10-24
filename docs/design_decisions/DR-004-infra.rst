@@ -17,19 +17,9 @@ DR-004-Infra: Bi-directional traceability in docs
    :id: dec_rec__infra__traceable_docs
    :status: accepted
    :context: Infrastructure
-   :decision: Single integration documentation
+   :decision: Single documentation build
 
-   .. csv-table::
-      :header: Criteria, Option S, Option M
-      :widths: 20, 10, 10
-
-      UX, 💚, 😡
-      Speed, 😡, 💚
-      Bureaucracy, 😡, 💚
-
-   Since UX is more important than speed and bureaucracy, option S is best.
-
-   Date: 2025-10-22
+   Date: 2025-10-24
 
 Context / Problem
 -----------------
@@ -51,10 +41,21 @@ Goals and Requirements
 ^^^^^^^^^^^^^^^^^^^^^^
 
 1. We want to enable each module to work independently and efficiently, i.e. build their own documentation quickly.
+   (Sphinx builds are annoyingly slow in any case but that is not the core point of this decision record.)
 2. We want a complete and consistent documention for a release, i.e. everything with backlinks.
+   Regulations only require that *eventually* though and during development slight inconsistencies are acceptable.
 3. Some modules want backlinks even if the slows down the doc build.
-   For example, platform wants backlinks for the feature requirements.
-   Baselibs does not care about backlinks because they assume everybody anyways.
+   For example, Platform wants backlinks for the feature requirements.
+   For contrast, Baselibs might not care about backlinks because they simply assume that everybody uses them.
+
+Non-Goals
+~~~~~~~~~
+
+* `#258 <https://github.com/eclipse-score/docs-as-code/issues/258>`_: The repository layout for documentation is not relevant here.
+* `#259 <https://github.com/eclipse-score/docs-as-code/issues/259>`_: Whether only certain rst files should contain needs element is not relevant here.
+* `#260 <https://github.com/eclipse-score/docs-as-code/issues/260>`_: Whether Bazel should handle the creation of some documentation artifacts is not relevant here.
+* `#261 <https://github.com/eclipse-score/docs-as-code/issues/261>`_: Whether Bazel should configure documentation variants is not relevant here.
+* Referencing Sphinx elements apart from Needs is not relevant here because such links are never bi-directional.
 
 Module vs Target dependencies
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -76,8 +77,8 @@ Bazel would show an error if you try.
 Options Considered
 ------------------
 
-Option S: Single integration documentation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Option S: Single documentation build
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Collect the documentation from all repositories and build a single huge html website.
 
@@ -88,8 +89,11 @@ This prefixed id does not exist in a mega-build which results in Sphinx warnings
 
 😡  Bureaucracy: Modules must not use prefixes for external needs because it breaks the integration build.
 The docs-as-code repo must be refactored accordingly.
+Since the id schemas already contain namespacing rules, there is barely any risk of id clashes.
 
-😡  Speed: This will result a long-running build step unsuitable for pull request in general.
+😡  Speed: This will result a long-running build step unsuitable for pull requests in general.
+This only affects the final integration build.
+Everybody else can independently chose their sweet spot between link consistency and build speed.
 
 💚  UX: While the integration documentation is huge, it has a unified configuration and navigation is consistent.
 
@@ -115,3 +119,16 @@ This is an additional reason for a rebuild.
 💚  Speed: This should build faster because we can rebuild modules in parallel.
 
 😡  UX: Navigating between modules may be confusing since the navigation and whatnot changes.
+
+Evaluation
+----------
+
+.. csv-table::
+   :header: Criteria, Option S, Option M
+   :widths: 20, 10, 10
+
+   UX, 💚, 😡
+   Bureaucracy, 😡, 💚
+   Speed, 😡, 💚
+
+Since UX is more important than speed and bureaucracy, option S is best.
