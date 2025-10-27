@@ -539,7 +539,7 @@
                   
   <section id="dr-004-infra-bi-directional-traceability-in-docs">
 <h1>DR-004-Infra: Bi-directional traceability in docs<a class="headerlink" href="#dr-004-infra-bi-directional-traceability-in-docs" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-6fa5914b">
+<div class="need_container docutils container" id="SNCB-1e49a7e2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__traceable_docs">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -603,10 +603,8 @@ Regulations only require that <em>eventually</em> though and during development 
 For example, Platform wants backlinks for the feature requirements.
 For contrast, Baselibs might not care about backlinks because they simply assume that everybody uses them.</p></li>
 </ol>
-</section>
-</section>
 <section id="non-goals">
-<h2>Non-Goals<a class="headerlink" href="#non-goals" title="Link to this heading">#</a></h2>
+<h4>Non-Goals<a class="headerlink" href="#non-goals" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/eclipse-score/docs-as-code/issues/258">#258</a>: The repository layout for documentation is not relevant here.</p></li>
 <li><p><a class="reference external" href="https://github.com/eclipse-score/docs-as-code/issues/259">#259</a>: Whether only certain rst files should contain needs element is not relevant here.</p></li>
@@ -614,6 +612,8 @@ For contrast, Baselibs might not care about backlinks because they simply assume
 <li><p><a class="reference external" href="https://github.com/eclipse-score/docs-as-code/issues/261">#261</a>: Whether Bazel should configure documentation variants is not relevant here.</p></li>
 <li><p>Referencing Sphinx elements apart from Needs is not relevant here because such links are never bi-directional.</p></li>
 </ul>
+</section>
+</section>
 <section id="module-vs-target-dependencies">
 <h3>Module vs Target dependencies<a class="headerlink" href="#module-vs-target-dependencies" title="Link to this heading">#</a></h3>
 <p>To understand how backlinks do not imply circular dependencies we must understand the difference between module and target dependencies.</p>
@@ -742,10 +742,10 @@ This is an additional reason for a rebuild.</p>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context-problem">Context / Problem</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-and-requirements">Goals and Requirements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-and-requirements">Goals and Requirements</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#non-goals">Non-Goals</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-goals">Non-Goals</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-vs-target-dependencies">Module vs Target dependencies</a></li>
 </ul>
 </li>
