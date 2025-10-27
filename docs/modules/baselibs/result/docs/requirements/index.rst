@@ -32,6 +32,7 @@ Functional Requirements
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__core_utilities, feat_req__baselibs__result_library, feat_req__baselibs__safety
    :status: valid
+   :tags: inspected
 
    The Result library shall provide an error handling mechanism that enables functions to return either successful values or error information without using C++ exceptions.
 
@@ -42,6 +43,7 @@ Functional Requirements
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__core_utilities, feat_req__baselibs__result_library, feat_req__baselibs__safety
    :status: valid
+   :tags: inspected
 
    The Result library shall support user-defined error domains and error codes.
 
@@ -52,6 +54,7 @@ Functional Requirements
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__consistent_apis, feat_req__baselibs__safety
    :status: valid
+   :tags: inspected
 
    The Result library shall enforce compile-time type safety for error handling operations.
 
@@ -62,6 +65,7 @@ Functional Requirements
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__consistent_apis, feat_req__baselibs__safety
    :status: valid
+   :tags: inspected
 
    The Result library shall provide conversion utilities to transform Result objects into standard library optional type, with enforced error handling.
 
@@ -75,6 +79,7 @@ Non-Functional Requirements
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__core_utilities, feat_req__baselibs__safety
    :status: valid
+   :tags: inspected
 
    The Result library shall provide deterministic behavior with no dynamic memory allocation.
 
@@ -85,6 +90,7 @@ Non-Functional Requirements
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__core_utilities, feat_req__baselibs__safety
    :status: valid
+   :tags: inspected
 
    The Result library shall operate without throwing C++ exceptions.
 
@@ -97,6 +103,7 @@ Assumptions of Use (AoU)
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :tags: inspected
 
    The user shall implement error domain classes and error code enumerations according to the library's interface specification.
 
@@ -106,6 +113,7 @@ Assumptions of Use (AoU)
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :tags: inspected
 
    The user shall check and handle both successful and error states of Result objects before accessing contained values to prevent undefined behavior.
 
@@ -115,6 +123,7 @@ Assumptions of Use (AoU)
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :tags: inspected
 
    The user shall ensure appropriate synchronization mechanisms when using Result objects in multi-threaded environments, as the library provides no internal thread safety guarantees.
 
@@ -124,9 +133,12 @@ Assumptions of Use (AoU)
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :tags: inspected
 
    The user shall ensure that error domain objects and referenced resources remain valid throughout the entire lifetime of any dependent Result or Error objects.
 
 
 .. needextend:: "__result__" in id
    :+tags: baselibs
+.. needextend:: "result" in id
+   :+tags: result_library
