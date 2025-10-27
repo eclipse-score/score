@@ -48,24 +48,24 @@ Inputs and outputs
 
 Available information
 ~~~~~~~~~~~~~~~~~~~~~
-- S-CORE baselibs: https://github.com/eclipse-score/baselibs/blob/main/MODULE.bazel
 - Version: 1.15.0
 - Official repository: https://github.com/google/googletest
 - Official documentation: https://google.github.io/googletest
 - API Reference: https://google.github.io/googletest/reference/testing.html
+- Example of GTest configuration in S-CORE module repository: https://github.com/eclipse-score/baselibs/blob/main/MODULE.bazel
 
 
 Installation and integration
 ----------------------------
 Installation
 ~~~~~~~~~~~~
-| Provided as part of baselibs (https://github.com/eclipse-score/baselibs/blob/main/MODULE.bazel).
-| Fetched from the Bazel Central Registry (BCR): https://registry.bazel.build/modules/googletest/1.15.0
 | To add the GTest Bazel dependency to your project or module, include the following line in your MODULE.bazel file:
 
 .. code-block:: Python
 
   bazel_dep(name = "googletest", version = "1.15.0")
+
+| Bazel will fetch from the Bazel Central Registry (BCR): https://registry.bazel.build/modules/googletest
 
 
 Integration
@@ -76,16 +76,16 @@ Environment
 ~~~~~~~~~~~
 Requires C++ compiler and bazel build environment.
 
-Evaluation
-----------
+Safety evaluation
+-----------------
 This section evaluates GTest for use in S-CORE project.
 
 
-.. list-table:: GTest safety evaluation
+.. list-table:: Safety evaluation
    :header-rows: 1
    :widths: 1 2 8 2 6 4 2 2
 
-   * - Use case Identification
+   * - Malfunction identification
      - Use case Description
      - Malfunctions
      - Impact on safety?
@@ -118,16 +118,16 @@ This section evaluates GTest for use in S-CORE project.
      - | Fails to collect results of the test(s)
        |
        | GTest was not able to collect results of executed test.
-     - yes
-     - Verify the test plan and test report
+     - no
+     - /
      - yes
      - no
      - high
    * - 4
      - Run tests and generate test report
-     - Fails to detect an existing error
-
-       GTest fails to detect the presence of existing errors.
+     - | Fails to detect an existing error
+       |
+       | GTest fails to detect the presence of existing errors.
      - yes
      - /
      - no
@@ -138,8 +138,8 @@ This section evaluates GTest for use in S-CORE project.
      - | Fails to execute the test
        |
        | GTest fails to execute specific test from the test plan
-     - yes
-     - Verify the test plan and test report
+     - no
+     - /
      - yes
      - no
      - high
@@ -164,7 +164,7 @@ This section evaluates GTest for use in S-CORE project.
      - no
      - high
 
-.. list-table:: GTest security evaluation
+.. list-table:: Security evaluation
    :header-rows: 1
 
    * - Use case Identification
@@ -185,15 +185,15 @@ Result
 GTest requires qualification for use in safety-related software development according to ISO 26262.
 
 
-**Optional Section for Tool Qualification**
+**Tool Qualification**
 -------------------------------------------
-Based on method: validation of the software tool
+Based on method: validation of the software tool.
 
 Requirements and testing aspects
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Tool requirements are derived from official documentation.
+Tool requirements are derived from official documentation: https://google.github.io/googletest
 
 GTest is an open-source tool and does not provide formal, vendor-defined requirements.
 Therefore, the testing team is responsible for identifying the specific GTest functionality
-used in the project.  Based on this, requirements for the utilized features must be derived from
+used in the project. Based on this, requirements for the utilized features must be derived from
 the available documentation and GTest validated against defined requirements.
