@@ -15,7 +15,7 @@
 .. doc_tool:: Bazel
    :id: doc_tool__bazel
    :status: draft
-   :version: v8.3.0
+   :version: 8.3.0
    :tcl: LOW
    :safety_affected: YES
    :security_affected: YES
@@ -37,15 +37,15 @@ It is used to automate the building and testing of software.
 Inputs and outputs
 ~~~~~~~~~~~~~~~~~~
 Inputs:
-- BUILD files and MODULE configuration
-- Source code and dependencies
-- Bazel rules and macros
+| - BUILD files and MODULE configuration
+| - Source code and dependencies
+| - Bazel rules and macros
 
 Outputs:
-- Build log
-- Call tree
-- Call tools via Call tree
-- Built output via Call tools
+| - Build log
+| - Call tree
+| - Call tools via Call tree
+| - Built output via Call tools
 
 .. figure:: _assets/bazel.drawio.svg
   :width: 100%
