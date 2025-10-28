@@ -100,16 +100,19 @@ It is the level where the S-CORE SW platform will functionally "work" on the sup
 
    Note: For OSS community providing an OS this requirement could be covered by analyzing how bugs were treated in the past. For companies by the definition of a service level process.
 
-.. aou_req:: SW platform OS testing
-   :id: aou_req__platform__os_testing
+.. aou_req:: SW platform testing
+   :id: aou_req__platform__testing
    :reqtype: Non-Functional
    :security: YES
    :safety: QM
    :status: valid
 
-   The integrator shall run the tests provided by S-CORE (platform, feature, component and Unit level for his selected S-CORE modules) on his selected OS.
+   The integrator shall run the tests provided by S-CORE (platform, feature, component and Unit level for his selected S-CORE modules) on his selected OS/Hypervisor/HW combination,
+   or provide equivalent argumentation.
 
-   Note: S-CORE will run these tests for a reference OS.
+   Note1: S-CORE will run these tests for one or more reference OS/Hypervisor/HW combination, if not all passing, remaining issues are documented in release notes. In case the selected combination is equal to a S-CORE reference, this AoU may be skipped.
+
+   Note2: Equivalent argumentation could be for example that the test environments for unit tests would be sufficiently equal in S-CORE project and at the integrator.
 
 .. aou_req:: SW platform integration bug reporting
    :id: aou_req__platform__bug_report
@@ -118,7 +121,7 @@ It is the level where the S-CORE SW platform will functionally "work" on the sup
    :safety: QM
    :status: valid
 
-   The integrator shall report the bugs found during integration of the S-CORE SW Platform on his selected OS to the OS supplier and S-CORE for analysis.
+   The integrator shall report the bugs found during integration of the S-CORE SW Platform on his selected OS/Hypervisor/HW combination to the OS supplier and S-CORE for analysis.
 
 Assumptions on the OS integration - Certifiable Level
 -----------------------------------------------------
@@ -167,6 +170,20 @@ This is the highest level of integraton. This is the level where the S-CORE SW p
 
    Note: This could be fulfilled by listing per release version all known and user reported bugs which affect the safe OS functions.
 
+.. aou_req:: OS safety matching
+   :id: aou_req__platform__os_safety_matching
+   :reqtype: Non-Functional
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+
+   The Integrator shall integrate the SW platform with an OS providing safety functions, if the system using the SW platform has safety goals.
+   This includes to make sure the OS safety functions S-CORE SW platform requires matches with the OS provided ones (as in :need:`aou_req__platform__os_safety_functions`).
+
+   Note1: A list of OS safety functions needed is compiled by the S-CORE project here (TBD).
+
+   Note2: The integrator can expect that for the safe S-CORE reference OS this AoU is fulfilled by S-CORE SW Platform already.
+
 .. aou_req:: OS safety integration
    :id: aou_req__platform__os_safety_integration
    :reqtype: Non-Functional
@@ -174,13 +191,11 @@ This is the highest level of integraton. This is the level where the S-CORE SW p
    :safety: ASIL_B
    :status: valid
 
-   The Integrator shall integrate the SW platform with an OS providing safety functions, if the system using the SW platform has safety goals.
-   This includes to make sure the OS safety functions S-CORE needs matches with the OS provided ones (as in :need:`aou_req__platform__os_safety_functions`)
-   and to make sure the AoUs relevant for these functions (as in :need:`aou_req__platform__os_safety_aou`) are fulfilled by the S-CORE SW platform.
+   The Integrator shall make sure that the AoUs relevant for OS safety functions (as in :need:`aou_req__platform__os_safety_aou`) are fulfilled by the S-CORE SW platform.
 
-   Note1: A list of OS safety functions needed is compiled by the S-CORE project here (TBD).
+   Note1: This could be done by contributing the required updates to the S-CORE project.
 
-   Note2: The integrator can expect that for the supported safety OS (see :need:`stkh_req__ai_platform__platform_portability`) this AoU is fulfilled by S-CORE SW Platform already.
+   Note2: The integrator can expect that for the safe S-CORE reference OS this AoU is fulfilled by S-CORE SW Platform already.
 
 .. aou_req:: Integrator safety anomaly reporting
    :id: aou_req__platform__integration_safety_anomaly
@@ -190,6 +205,8 @@ This is the highest level of integraton. This is the level where the S-CORE SW p
    :status: valid
 
    The integrator shall perform safety anomaly reporting taking into account also the reporting of all the components (incl. the OS) he integrates.
+
+   Note: S-CORE supports this, but can only be active triggered by the integrator or based on OS anomaly reports which are available Open Source.
 
 Assumptions of Use
 ------------------
@@ -205,6 +222,6 @@ In this section assumptions are described which need to be fulfilled by the appl
 
    The integrator shall describe in his safety manual (or similar document) the AoUs which need to be covered by the user (applications) for all the components (incl. the OS)  he integrates.
 
-   Note: The integrator can expect that for the supported safety OS (see :need:`stkh_req__ai_platform__platform_portability`) this AoU is fulfilled by S-CORE SW Platform already.
+   Note: For the safe S-CORE reference OS the integrator can take over AoUs from S-CORE safety manual (based on "assumed" need of safe OS functions).
 
 TBD: more detailed functional AoUs
