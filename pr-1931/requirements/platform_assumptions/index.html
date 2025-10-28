@@ -537,7 +537,7 @@
                   
   <section id="sw-platform-assumptions">
 <span id="platform-assumptions"></span><h1>SW Platform Assumptions<a class="headerlink" href="#sw-platform-assumptions" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-db76f0ff">
+<div class="need_container docutils container" id="SNCB-7053ac2c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__platform_assumptions">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -592,7 +592,7 @@ the operating system, programming language libraries, hypervisor or processing h
 It also contains expectations towards an OS supplier which can be used as criteria for OS selection
 by the integrator. Building and running of OS is enabled, but no pro-active support from S-CORE
 is provided for e.g. build or test problems. No guarantees that S-CORE builds or runs on the OS.</p>
-<div class="need_container docutils container" id="SNCB-feb0fc53">
+<div class="need_container docutils container" id="SNCB-4d4d4992">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__os_integration_assistance">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -634,7 +634,7 @@ is provided for e.g. build or test problems. No guarantees that S-CORE builds or
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-1423d573">
+<div class="need_container docutils container" id="SNCB-0f43e9f6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__os_integration_manual">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -676,7 +676,7 @@ is provided for e.g. build or test problems. No guarantees that S-CORE builds or
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9105080a">
+<div class="need_container docutils container" id="SNCB-ca84583c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__os_bug_interface">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -727,7 +727,7 @@ as this level is not expected sufficient for a product release, only for incubat
 <h2>Assumptions on the OS integration - Functional Level<a class="headerlink" href="#assumptions-on-the-os-integration-functional-level" title="Link to this heading">#</a></h2>
 <p>This is the middle level of integraton, the higher level will build on this.
 It is the level where the S-CORE SW platform will functionally “work” on the supplied OS.</p>
-<div class="need_container docutils container" id="SNCB-2a7858b3">
+<div class="need_container docutils container" id="SNCB-b8d323ef">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__os_bazel_tooling">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -770,7 +770,7 @@ and support the run and test of the S-CORE SW platform on the supplier OS.</p></
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d839a340">
+<div class="need_container docutils container" id="SNCB-17f346f8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__os_bug_fixing">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -814,11 +814,11 @@ and support the run and test of the S-CORE SW platform on the supplier OS.</p></
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-64f4628c">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__os_testing">
+<div class="need_container docutils container" id="SNCB-e2612355">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__testing">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">SW platform OS testing</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">SW platform testing</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -840,12 +840,17 @@ and support the run and test of the S-CORE SW platform on the supplier OS.</p></
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The integrator shall run the tests provided by S-CORE (platform, feature, component and Unit level for his selected S-CORE modules) on his selected OS.</p>
-<p>Note: S-CORE will run these tests for a reference OS.</p>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The integrator shall run the tests provided by S-CORE (platform, feature, component and Unit level for his selected S-CORE modules) on his selected OS/Hypervisor/HW combination,
+or provide equivalent argumentation.</p>
+<dl class="simple">
+<dt>Note1: S-CORE will run these tests for one or more reference OS/Hypervisor/HW combination, if not all passing, remaining issues are documented in release notes.</dt><dd><p>In case the selected combination is equal to a S-CORE reference, this AoU may be skipped.</p>
+</dd>
+</dl>
+<p>Note2: Equivalent argumentation could be for example that the test environments for unit tests would be sufficiently equal in S-CORE project and at the integrator.</p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
-<div class="line"><span><span class="needs-id"><a class="reference internal" href="#aou_req__platform__os_testing" title="aou_req__platform__os_testing">aou_req__platform__os_testing</a></span></span></div>
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#aou_req__platform__testing" title="aou_req__platform__testing">aou_req__platform__testing</a></span></span></div>
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
@@ -858,7 +863,7 @@ and support the run and test of the S-CORE SW platform on the supplier OS.</p></
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-076f2823">
+<div class="need_container docutils container" id="SNCB-a76c81e9">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__bug_report">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -884,7 +889,7 @@ and support the run and test of the S-CORE SW platform on the supplier OS.</p></
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The integrator shall report the bugs found during integration of the S-CORE SW Platform on his selected OS to the OS supplier and S-CORE for analysis.</p></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The integrator shall report the bugs found during integration of the S-CORE SW Platform on his selected OS/Hypervisor/HW combination to the OS supplier and S-CORE for analysis.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#aou_req__platform__bug_report" title="aou_req__platform__bug_report">aou_req__platform__bug_report</a></span></span></div>
@@ -904,7 +909,7 @@ and support the run and test of the S-CORE SW platform on the supplier OS.</p></
 <section id="assumptions-on-the-os-integration-certifiable-level">
 <h2>Assumptions on the OS integration - Certifiable Level<a class="headerlink" href="#assumptions-on-the-os-integration-certifiable-level" title="Link to this heading">#</a></h2>
 <p>This is the highest level of integraton. This is the level where the S-CORE SW platform will be certifiable on the supplied OS.</p>
-<div class="need_container docutils container" id="SNCB-ccc83eb2">
+<div class="need_container docutils container" id="SNCB-14d821a7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__os_levels">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -948,7 +953,7 @@ and support the run and test of the S-CORE SW platform on the supplier OS.</p></
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a0ab5f0d">
+<div class="need_container docutils container" id="SNCB-4c477d0c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__os_safety_aou">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -992,7 +997,7 @@ and support the run and test of the S-CORE SW platform on the supplier OS.</p></
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-0997f282">
+<div class="need_container docutils container" id="SNCB-11d6a2df">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__os_safety_functions">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1034,7 +1039,7 @@ and support the run and test of the S-CORE SW platform on the supplier OS.</p></
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-03deceb2">
+<div class="need_container docutils container" id="SNCB-e805bfe1">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__os_safety_anomaly">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1078,7 +1083,53 @@ and support the run and test of the S-CORE SW platform on the supplier OS.</p></
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-19fd7811">
+<div class="need_container docutils container" id="SNCB-f9f71103">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__os_safety_matching">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">OS safety matching</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+</span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The Integrator shall integrate the SW platform with an OS providing safety functions, if the system using the SW platform has safety goals.
+This includes to make sure the OS safety functions S-CORE SW platform requires matches with the OS provided ones (as in <a class="reference internal" href="#aou_req__platform__os_safety_functions" title="aou_req__platform__os_safety_functions"><em class="xref need">OS safety functions (aou_req__platform__os_safety_functions)</em></a>).</p>
+<p>Note1: A list of OS safety functions needed is compiled by the S-CORE project here (TBD).</p>
+<p>Note2: The integrator can expect that for the safe S-CORE reference OS this AoU is fulfilled by S-CORE SW Platform already.</p>
+</td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#aou_req__platform__os_safety_matching" title="aou_req__platform__os_safety_matching">aou_req__platform__os_safety_matching</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Assumption of Use Requirement</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-3c4ca96b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__os_safety_integration">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1104,11 +1155,9 @@ and support the run and test of the S-CORE SW platform on the supplier OS.</p></
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The Integrator shall integrate the SW platform with an OS providing safety functions, if the system using the SW platform has safety goals.
-This includes to make sure the OS safety functions S-CORE needs matches with the OS provided ones (as in <a class="reference internal" href="#aou_req__platform__os_safety_functions" title="aou_req__platform__os_safety_functions"><em class="xref need">OS safety functions (aou_req__platform__os_safety_functions)</em></a>)
-and to make sure the AoUs relevant for these functions (as in <a class="reference internal" href="#aou_req__platform__os_safety_aou" title="aou_req__platform__os_safety_aou"><em class="xref need">OS safety AoU (aou_req__platform__os_safety_aou)</em></a>) are fulfilled by the S-CORE SW platform.</p>
-<p>Note1: A list of OS safety functions needed is compiled by the S-CORE project here (TBD).</p>
-<p>Note2: The integrator can expect that for the supported safety OS (see <a class="reference internal" href="../stakeholder/index.html#stkh_req__ai_platform__platform_portability" title="stkh_req__ai_platform__platform_portability"><em class="xref need">Platform Portability (QNX +... (stkh_req__ai_platform__platform_portability)</em></a>) this AoU is fulfilled by S-CORE SW Platform already.</p>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The Integrator shall make sure that the AoUs relevant for OS safety functions (as in <a class="reference internal" href="#aou_req__platform__os_safety_aou" title="aou_req__platform__os_safety_aou"><em class="xref need">OS safety AoU (aou_req__platform__os_safety_aou)</em></a>) are fulfilled by the S-CORE SW platform.</p>
+<p>Note1: This could be done by contributing the required updates to the S-CORE project.</p>
+<p>Note2: The integrator can expect that for the safe S-CORE reference OS this AoU is fulfilled by S-CORE SW Platform already.</p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -1125,7 +1174,7 @@ and to make sure the AoUs relevant for these functions (as in <a class="referenc
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-18468c2f">
+<div class="need_container docutils container" id="SNCB-e5f285ae">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__integration_safety_anomaly">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1151,7 +1200,9 @@ and to make sure the AoUs relevant for these functions (as in <a class="referenc
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The integrator shall perform safety anomaly reporting taking into account also the reporting of all the components (incl. the OS) he integrates.</p></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The integrator shall perform safety anomaly reporting taking into account also the reporting of all the components (incl. the OS) he integrates.</p>
+<p>Note: S-CORE supports this, but can only be active triggered by the integrator or based on OS anomaly reports which are available Open Source.</p>
+</td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#aou_req__platform__integration_safety_anomaly" title="aou_req__platform__integration_safety_anomaly">aou_req__platform__integration_safety_anomaly</a></span></span></div>
@@ -1171,7 +1222,7 @@ and to make sure the AoUs relevant for these functions (as in <a class="referenc
 <section id="assumptions-of-use">
 <h2>Assumptions of Use<a class="headerlink" href="#assumptions-of-use" title="Link to this heading">#</a></h2>
 <p>In this section assumptions are described which need to be fulfilled by the applications running on top of the SW platform.</p>
-<div class="need_container docutils container" id="SNCB-c65e6b00">
+<div class="need_container docutils container" id="SNCB-906913c3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__platform__safety_aou">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1198,7 +1249,7 @@ and to make sure the AoUs relevant for these functions (as in <a class="referenc
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p>The integrator shall describe in his safety manual (or similar document) the AoUs which need to be covered by the user (applications) for all the components (incl. the OS)  he integrates.</p>
-<p>Note: The integrator can expect that for the supported safety OS (see <a class="reference internal" href="../stakeholder/index.html#stkh_req__ai_platform__platform_portability" title="stkh_req__ai_platform__platform_portability"><em class="xref need">Platform Portability (QNX +... (stkh_req__ai_platform__platform_portability)</em></a>) this AoU is fulfilled by S-CORE SW Platform already.</p>
+<p>Note: For the safe S-CORE reference OS the integrator can take over AoUs from S-CORE safety manual (based on “assumed” need of safe OS functions).</p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
