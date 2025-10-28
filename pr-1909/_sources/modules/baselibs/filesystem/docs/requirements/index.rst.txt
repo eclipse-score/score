@@ -30,7 +30,7 @@ Functional Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__baselibs__core_utilities, feat_req__baselibs__filesystem_library, feat_req__baselibs__safety
+   :satisfies: feat_req__baselibs__consistent_apis, feat_req__baselibs__filesystem_library
    :status: valid
 
    The Filesystem library shall provide filesystem API based on the C++ standardization.
@@ -40,7 +40,7 @@ Functional Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__baselibs__consistent_apis, feat_req__baselibs__safety
+   :satisfies: feat_req__baselibs__consistent_apis, feat_req__baselibs__filesystem_library
    :status: valid
 
    The Filesystem library shall provide type-safe utilities for path construction and manipulation.
@@ -89,20 +89,10 @@ Functional Requirements
 
 .. comp_req:: Mock and Fake Implementations
    :id: comp_req__filesystem__mock_fake
-   :reqtype: Functional
+   :reqtype: Non-Functional
    :security: NO
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__filesystem_library
    :status: valid
 
    The Filesystem library shall provide mock and fake implementations for unit testing and validation.
-
-.. comp_req:: Error Handling Without Exceptions
-   :id: comp_req__filesystem__error_handling
-   :reqtype: Functional
-   :security: NO
-   :safety: ASIL_B
-   :satisfies: feat_req__baselibs__core_utilities, feat_req__baselibs__filesystem_library, feat_req__baselibs__safety
-   :status: valid
-
-   The Filesystem library shall provide error handling mechanisms that do not rely on C++ exceptions.
