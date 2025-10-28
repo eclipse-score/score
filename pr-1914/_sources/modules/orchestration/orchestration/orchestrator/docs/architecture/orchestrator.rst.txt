@@ -55,8 +55,8 @@ Component Architecture
    :included_by: logic_arc_int__orchestration__user
 
 
-.. logic_arc_int_op:: get_deployment
-   :id: logic_arc_int_op__orch__get_deployment
+.. logic_arc_int_op:: get_deployment_mut
+   :id: logic_arc_int_op__orch__get_deployment_mut
    :security: YES
    :safety:  ASIL_B
    :status: valid
@@ -70,13 +70,26 @@ Component Architecture
    :status: valid
    :included_by: logic_arc_int__orchestration__user
 
-.. logic_arc_int_op:: create_programs
-   :id: logic_arc_int_op__orch__create_programs
+.. logic_arc_int_op:: into_program_manager
+   :id: logic_arc_int_op__orch__into_program_manager
    :security: YES
    :safety:  ASIL_B
    :status: valid
    :included_by: logic_arc_int__orchestration__user
 
+.. logic_arc_int_op:: get_programs
+   :id: logic_arc_int_op__orch__get_programs
+   :security: YES
+   :safety:  ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__orchestration__user
+
+.. logic_arc_int_op:: get_shutdown_notifier
+   :id: logic_arc_int_op__orch__get_shutdown_notifier
+   :security: YES
+   :safety:  ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__orchestration__user
 
 .. Subcomponents
 
@@ -118,6 +131,13 @@ Component Architecture
    :status: valid
    :included_by: logic_arc_int__orchestration__design
 
+.. logic_arc_int_op:: register_if_else_condition
+   :id: logic_arc_int_op__orch__register_if_else_cond
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__orchestration__design
+
 .. logic_arc_int_op:: add_program
    :id: logic_arc_int_op__orch__add_program1
    :security: YES
@@ -133,8 +153,36 @@ Component Architecture
    :status: valid
    :included_by: logic_arc_int__orchestration__deployment
 
-.. logic_arc_int_op:: bind_shutdown_event
-   :id: logic_arc_int_op__orch__bind_shutdown_event
+.. logic_arc_int_op:: bind_events_as_local
+   :id: logic_arc_int_op__orch__bind_events_as_local
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__orchestration__deployment
+
+.. logic_arc_int_op:: bind_events_as_timer
+   :id: logic_arc_int_op__orch__bind_events_as_timer
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__orchestration__deployment
+
+.. logic_arc_int_op:: bind_invoke_to_worker
+   :id: logic_arc_int_op__orch__bind_invoke_to_worker
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__orchestration__deployment
+
+.. logic_arc_int_op:: bind_shutdown_event_as_global
+   :id: logic_arc_int_op__orch__bind_shutdown_event_g
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__orchestration__deployment
+
+.. logic_arc_int_op:: bind_shutdown_event_as_local
+   :id: logic_arc_int_op__orch__bind_shutdown_event_l
    :security: YES
    :safety: ASIL_B
    :status: valid
