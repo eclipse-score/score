@@ -114,7 +114,7 @@ Let's define a software unit an entity that implements a specific
 input-output algorithmic function as part of a larger graph
 algorithm. This would be a ROS node or an ARA Application.
 
-We want to support both functional programming stylem or Object
+We want to support both functional programming style or Object
 Oriented programming style.  In object-oriented programming languages,
 such as C++, a software unit would be implemented as a trivially
 default-constructible class with public methods and no defined
@@ -201,7 +201,39 @@ by the Software Compute instance. A default parameter data structure
 is defined for the archetype. It can be re-configured for each
 instance of the Compute instance.
 
+Error Handling
+______________
 
+There shall be a error management framework defining error type,
+category of errors, mechanism for the propagation of error. In Rust or
+modern C++, monadic behavior would be recommended.  The recovery logic
+should be modelable in the Modeling Language.
+
+
+
+Static analysis of the system
+_____________________________
+
+The system would be modeled using a specific description language.
+The description language consists of three primary concepts:
+
+**Interface Lists** these are collections of data types of the data to
+ be exchanged. They are modeled similarly to common IDLs;
+
+**Software Compyte Unit Archetype Lists** these are collections of
+ metadata descriptions of human-written Software Compyte Unit
+ implementations. One can think of them as similar to application
+ manifests in Adaptive Autosar or the Android Framework.
+
+**Software Compyte Unit Instance Lists** these are used to describe
+ the deployment of (instantiate) Software Compyte Unit Archetypes in
+ an operating system context, including both standard and user-defined
+ configuration parameters.
+
+The above are parsed as files into an intermediate representation that
+represents the entire modeled system.  The intermediate representation
+open the doors to a static system analysis (resources analysis and
+checks, resource allocation, static schedling).
 
 Subchapter
 __________
@@ -209,6 +241,10 @@ __________
 .. example for image embedding
 .. .. image:: _assets/sample_image.svg
 ..    :alt: Name
+
+.. example for image embedding
+.. .. image:: _assets/architetcure_diagram_for_code_generation.svg
+..    :alt: Architecture Diagram
 
 
 uml example:
@@ -241,7 +277,7 @@ Security Impact
 Safety Impact
 =============
 
-Strict repeatible design pattern, extensive code re-usablility make it easy to certify.
+Strict repeatible design pattern, extensive code re-usablility, is easy to certify.
 
 License Impact
 ==============

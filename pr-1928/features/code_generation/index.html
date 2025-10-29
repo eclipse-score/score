@@ -552,7 +552,7 @@
                   
   <section id="code-generation">
 <span id="code-generation-feature"></span><h1>Code Generation<a class="headerlink" href="#code-generation" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-12da9a63">
+<div class="need_container docutils container" id="SNCB-7530aeff">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__code_generation">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -660,7 +660,7 @@ accelerator hardware/driver interfaces is beyond the current scope.</p>
 <p>Let’s define a software unit an entity that implements a specific
 input-output algorithmic function as part of a larger graph
 algorithm. This would be a ROS node or an ARA Application.</p>
-<p>We want to support both functional programming stylem or Object
+<p>We want to support both functional programming style or Object
 Oriented programming style.  In object-oriented programming languages,
 such as C++, a software unit would be implemented as a trivially
 default-constructible class with public methods and no defined
@@ -729,6 +729,34 @@ by the Software Compute instance. A default parameter data structure
 is defined for the archetype. It can be re-configured for each
 instance of the Compute instance.</p>
 </section>
+<section id="error-handling">
+<h3>Error Handling<a class="headerlink" href="#error-handling" title="Link to this heading">#</a></h3>
+<p>There shall be a error management framework defining error type,
+category of errors, mechanism for the propagation of error. In Rust or
+modern C++, monadic behavior would be recommended.  The recovery logic
+should be modelable in the Modeling Language.</p>
+</section>
+<section id="static-analysis-of-the-system">
+<h3>Static analysis of the system<a class="headerlink" href="#static-analysis-of-the-system" title="Link to this heading">#</a></h3>
+<p>The system would be modeled using a specific description language.
+The description language consists of three primary concepts:</p>
+<dl class="simple">
+<dt><strong>Interface Lists</strong> these are collections of data types of the data to</dt><dd><p>be exchanged. They are modeled similarly to common IDLs;</p>
+</dd>
+<dt><strong>Software Compyte Unit Archetype Lists</strong> these are collections of</dt><dd><p>metadata descriptions of human-written Software Compyte Unit
+implementations. One can think of them as similar to application
+manifests in Adaptive Autosar or the Android Framework.</p>
+</dd>
+<dt><strong>Software Compyte Unit Instance Lists</strong> these are used to describe</dt><dd><p>the deployment of (instantiate) Software Compyte Unit Archetypes in
+an operating system context, including both standard and user-defined
+configuration parameters.</p>
+</dd>
+</dl>
+<p>The above are parsed as files into an intermediate representation that
+represents the entire modeled system.  The intermediate representation
+open the doors to a static system analysis (resources analysis and
+checks, resource allocation, static schedling).</p>
+</section>
 <section id="subchapter">
 <h3>Subchapter<a class="headerlink" href="#subchapter" title="Link to this heading">#</a></h3>
 <p>uml example:</p>
@@ -748,7 +776,7 @@ instance of the Compute instance.</p>
 </section>
 <section id="safety-impact">
 <h2>Safety Impact<a class="headerlink" href="#safety-impact" title="Link to this heading">#</a></h2>
-<p>Strict repeatible design pattern, extensive code re-usablility make it easy to certify.</p>
+<p>Strict repeatible design pattern, extensive code re-usablility, is easy to certify.</p>
 </section>
 <section id="license-impact">
 <h2>License Impact<a class="headerlink" href="#license-impact" title="Link to this heading">#</a></h2>
@@ -827,6 +855,8 @@ instance of the Compute instance.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interface">Interface</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#internal-state">Internal State</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter">Parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-handling">Error Handling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#static-analysis-of-the-system">Static analysis of the system</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subchapter">Subchapter</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
 </ul>
