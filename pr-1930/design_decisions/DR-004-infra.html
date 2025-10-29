@@ -539,7 +539,7 @@
                   
   <section id="dr-004-infra-bi-directional-traceability-in-docs">
 <h1>DR-004-Infra: Bi-directional traceability in docs<a class="headerlink" href="#dr-004-infra-bi-directional-traceability-in-docs" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-1e49a7e2">
+<div class="need_container docutils container" id="SNCB-d0ba57cc">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__traceable_docs">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -595,11 +595,10 @@ How to provide this in S-CORE documentation?</p>
 <section id="goals-and-requirements">
 <h3>Goals and Requirements<a class="headerlink" href="#goals-and-requirements" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p>We want to enable each module to work independently and efficiently, i.e. build their own documentation quickly.
-(Sphinx builds are annoyingly slow in any case but that is not the core point of this decision record.)</p></li>
+<li><p>We want to enable each module to work independently and efficiently, i.e. build their own documentation quickly.</p></li>
 <li><p>We want a complete and consistent documention for a release, i.e. everything with backlinks.
 Regulations only require that <em>eventually</em> though and during development slight inconsistencies are acceptable.</p></li>
-<li><p>Some modules want backlinks even if the slows down the doc build.
+<li><p>Some modules want backlinks even if it slows down the doc build.
 For example, Platform wants backlinks for the feature requirements.
 For contrast, Baselibs might not care about backlinks because they simply assume that everybody uses them.</p></li>
 </ol>
@@ -640,7 +639,7 @@ The docs-as-code repo must be refactored accordingly.
 Since the id schemas already contain namespacing rules, there is barely any risk of id clashes.</p>
 <p>😡  Speed: This will result a long-running build step unsuitable for pull requests in general.
 This only affects the final integration build.
-Everybody else can independently chose their sweet spot between link consistency and build speed.</p>
+Everybody else can independently chose their sweet spot between bi-directional link convenience and build speed.</p>
 <p>💚  UX: While the integration documentation is huge, it has a unified configuration and navigation is consistent.</p>
 </section>
 <section id="option-m-module-documentation-rebuilt">

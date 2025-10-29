@@ -41,10 +41,9 @@ Goals and Requirements
 ^^^^^^^^^^^^^^^^^^^^^^
 
 1. We want to enable each module to work independently and efficiently, i.e. build their own documentation quickly.
-   (Sphinx builds are annoyingly slow in any case but that is not the core point of this decision record.)
 2. We want a complete and consistent documention for a release, i.e. everything with backlinks.
    Regulations only require that *eventually* though and during development slight inconsistencies are acceptable.
-3. Some modules want backlinks even if the slows down the doc build.
+3. Some modules want backlinks even if it slows down the doc build.
    For example, Platform wants backlinks for the feature requirements.
    For contrast, Baselibs might not care about backlinks because they simply assume that everybody uses them.
 
@@ -93,7 +92,7 @@ Since the id schemas already contain namespacing rules, there is barely any risk
 
 😡  Speed: This will result a long-running build step unsuitable for pull requests in general.
 This only affects the final integration build.
-Everybody else can independently chose their sweet spot between link consistency and build speed.
+Everybody else can independently chose their sweet spot between bi-directional link convenience and build speed.
 
 💚  UX: While the integration documentation is huge, it has a unified configuration and navigation is consistent.
 
