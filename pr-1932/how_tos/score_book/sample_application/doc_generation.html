@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>doc generation &#8212; S-CORE  documentation</title>
+    <title>Documentation generation &#8212; S-CORE  documentation</title>
   
   
   
@@ -495,7 +495,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../integration_process.html">Integration process</a></li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Sample application</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="first_score_module.html">First S-Core Module</a></li>
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">doc generation</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Documentation generation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="building_source_code.html">Building source code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="reference_integration.html">Reference integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="cicd_workflows.html">CI/CD Workflows</a></li>
@@ -553,7 +553,7 @@
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">Sample application</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">doc generation</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Documentation generation</span></li>
   </ul>
 </nav>
 </div>
@@ -570,30 +570,32 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="doc-generation">
-<h1>doc generation<a class="headerlink" href="#doc-generation" title="Link to this heading">#</a></h1>
+  <section id="documentation-generation">
+<h1>Documentation generation<a class="headerlink" href="#documentation-generation" title="Link to this heading">#</a></h1>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
-<p>As already explained in chapter First Module (TODO: link to the chapter) and chapter Technology OVerview (TODO: Link), we use
-sphinx and sphinx-needs toolchain to generate documentation out of rst files, elements of s-core metamodel are modelled as
+<p>As already explained in chapter <a class="reference internal" href="../technology_overview.html#technology-overview"><span class="std std-ref">Overview of technologies</span></a>, we use
+<em>sphinx</em> and <em>sphinx-needs</em> toolchain to generate documentation out of rst files, where elements of S-Core metamodel are modelled as
 sphinx-needs elements.</p>
-<p>Integration of the sphinx and sphinx-needs toolchain into bazel and s-core specific extensions are implemented in score_docs_as_code module.
-Following document (TODO: link) provide an exhaustive description, how the documentation in s-core can be created and built. Here, we will
+<p>Integration of the <em>sphinx</em> and <em>sphinx-needs</em> toolchain into bazel and S-Core specific extensions are implemented in
+<a class="github reference external" href="https://github.com/eclipse-score/docs-as-code/tree/main/docs">eclipse-score/docs-as-code</a> module.
+Following document (TODO: link) provide an exhaustive description, how the documentation in S-Core can be created and built. Here, we will
 focus on a simple example.</p>
 <p>First, we neede to define a target in bazel, so that we can generate html documentation from rst files. Such target is already provided
-in the main top level BUILD file of the repository:</p>
+in the main top level <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/BUILD">BUILD</a> file of the repository:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">docs</span><span class="p">(</span>
 <span class="linenos">2</span>    <span class="n">source_dir</span> <span class="o">=</span> <span class="s2">&quot;docs&quot;</span><span class="p">,</span>
 <span class="linenos">3</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The bazel rule docs needs source_dir as an input parameter. This directory will be given to the sphinx/sphinx-needs toolchain, which
+<p>The bazel rule <em>docs</em> needs <em>source_dir</em> as an input parameter. This directory will be given to the <em>sphinx/sphinx-needs</em> toolchain, which
 will use this directory as source directory and will generate the html documentation based on the files located in the soure directory.
-Sphinx toolchain will not rely here on any bazel dependencies, but will use its own mechanims to decide which files should be included or not
-for documentation generation, that is well described in its documentation (TODO: link).</p>
+<em>Sphinx</em> toolchain will not rely here on any bazel dependencies, but will use its own mechanims to decide which files should be included or not
+for documentation generation, that is well described in
+<a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-toctree">toctree</a> chapter of its documentation.</p>
 <p>In general, two files are especially important for sphinx doc generation:</p>
 <ul>
-<li><p>docs/conf.py provides configuration for sphinx-toolchain.</p>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/docs/conf.py">docs/conf.py</a> provides configuration for the <em>sphinx-toolchain</em>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">project</span> <span class="o">=</span> <span class="s2">&quot;Module Template Project&quot;</span>
 <span class="linenos"> 2</span><span class="n">project_url</span> <span class="o">=</span> <span class="s2">&quot;https://eclipse-score.github.io/module_template/&quot;</span>
 <span class="hll"><span class="linenos"> 3</span><span class="n">project_prefix</span> <span class="o">=</span> <span class="s2">&quot;SCRAMPLE_&quot;</span>
@@ -618,16 +620,17 @@ for documentation generation, that is well described in its documentation (TODO:
 </div>
 <p>As you can see, we use here special score configuration and score project extenstions.
 Important is among others the line number 3, where you need to set the prefix for your module.
-This prefix will be used, when others modules need to reference sphinx-needs elements from your module.</p>
+In our case it is <em>“SCRAMPLE_”</em>.
+This prefix will be used, when others modules need to reference sphinx-needs elements of your module
+from outside.</p>
 </li>
-<li><p>index.rst ist the main entry point, that includes all other rst files, that should be used for documentation
-generation</p>
-<p>You can try to build the documentation using following command:</p>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/docs/index.rst">index.rst</a> ist the main entry point,
+that includes all other rst files, that should be used for documentation generation</p></li>
+</ul>
+<p>We can try now to build the documentation using the following command:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="o">%</span> <span class="n">bazel</span> <span class="n">build</span> <span class="o">//</span><span class="p">:</span><span class="n">docs</span>
 </span></pre></div>
 </div>
-</li>
-</ul>
 <p>Do not be suprised, if the first time you run bazel command, it take a long time to execute it. The first time
 you call bazel, it downloads everything locally to its cache folder, also all toolchain tarballs, and this can take
 for a while. Next executions will be much faster.</p>
@@ -677,8 +680,8 @@ To do so, run following command:</p>
 </div></blockquote>
 <p>Now we have the generated html files, that we can copy somewhere and open them in a web browser.</p>
 <p>Normally, when you’re working on the documentation, you need a handy way to see the current status of your work in the web browser.
-For this, one of the options would be to use live preview feature. The bazel target for this is automatically imported when you import
-doc target into your BUILD file:</p>
+For this, one of the options would be to use <em>live preview</em> feature. The bazel target for this is automatically imported when you import
+<em>doc bazel rule</em> into your BUILD file, therefore it should work “out-of-the-box”.</p>
 <blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;@score_docs_as_code//:docs.bzl&quot;</span><span class="p">,</span> <span class="s2">&quot;docs&quot;</span><span class="p">)</span>
 </pre></div>
@@ -701,10 +704,11 @@ doc target into your BUILD file:</p>
 </div></blockquote>
 <p>As you can see, a local server is started on following port and address: <a class="reference external" href="http://127.0.0.1:8000">http://127.0.0.1:8000</a> .
 Open it in your web browser and you should be able to see the current version of the documentation.</p>
-<p>(TODO: screenshot).</p>
+<a class="reference internal image-reference" href="../../../_images/initial_module_rst_content.png"><img alt="Architecture overview" class="align-center" src="../../../_images/initial_module_rst_content.png" style="width: 400px;" />
+</a>
 <p>The live preview feature stays active and rebuilds and reacts on every change in your documentation,
 what makes work with the documentation very convenient. You can stop it by killing the bazel process
-in the terminal (Ctrl + C).</p>
+in the terminal (Ctrl+C).</p>
 <p>Now it is time to replace the dummy context of the index.rst with some meaningful text,
 as it is shown here (TODO: link to commit).</p>
 </section>
