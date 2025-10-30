@@ -561,49 +561,54 @@
                   
   <section id="module-structure-overview">
 <h1>Module Structure Overview<a class="headerlink" href="#module-structure-overview" title="Link to this heading">#</a></h1>
-<p>As it was already stated in the “Overview of the technologies” part, S-Core project consists of multiple
-bazel modules, normally located in separate repositories. Majority of S-Core modules are part of S-Core
-GitHub organization (<a class="github reference external" href="https://github.com/eclipse-score/">eclipse-score/</a>), but some of the modules can be also located
-externally, e.g. if we reference an existing module from another Eclipse project.</p>
+<p>As it was already stated in the <a class="reference internal" href="technology_overview.html#technology-overview"><span class="std std-ref">Technology Overview</span></a> chapter, S-Core project consists of multiple
+bazel modules, normally located in separate repositories. Majority of S-Core modules are part of
+<a class="reference external" href="https://github.com/eclipse-score">S-Core GitHub organization</a> , but some of the modules can be also located
+externally, e.g. if we reference an existing module from another eclipse project.</p>
 <p>Let us have a look at the most important bazel modules and repositories in S-Core GitHub organization.</p>
-<section id="s-core">
-<h2>s-core<a class="headerlink" href="#s-core" title="Link to this heading">#</a></h2>
+<img alt="module deps" class="align-center" src="../../_images/module_deps.svg" />
+<section id="score-platform">
+<h2>score_platform<a class="headerlink" href="#score-platform" title="Link to this heading">#</a></h2>
 <p>GitHub Link: <a class="github reference external" href="https://github.com/eclipse-score">eclipse-score</a></p>
-<p>S-Core module is the central part of the s-core project, where the software architecture is defined. Here you will find the list and explanation of the features,
+<p>S-Core module is the central part of the S-Core project, where the software architecture is defined. Here you will find the list and explanation of the features,
 that are provided by the S-Core platform, definition of the high level architecture, break down of the high level architecture to the modules
 and the definition of the functionality (logical interfaces) for every module.</p>
-<p>TODO: image here</p>
 </section>
 <section id="process-description">
 <h2>process_description<a class="headerlink" href="#process-description" title="Link to this heading">#</a></h2>
-<p>GitHub Link: <a class="github reference external" href="https://github.com/eclipse-score">eclipse-score</a></p>
+<p>GitHub Link: <a class="github reference external" href="https://github.com/eclipse-score/process_description">eclipse-score/process_description</a></p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>We automatically generate for every repository html documentation from rst files.
-You can easily open it as shown at the picture (TODO: Link)</p>
+You can easily open it as shown at the picture below.</p>
 </div>
-<p>The process repository defines the S-Core process. It defines both general concepts and ideas of the S-Core software development process approach and
-also gives a detailed description of every process area (TODO: here image with process areas). That’s definitely worth of checking, as description of process
-areas has concrete guidances e.g. for specyfiying of requirements and architecture.</p>
+<a class="reference internal image-reference" href="../../_images/generated_doc_in_score_github.png"><img alt="Generated Doc in GitHub" class="align-center" src="../../_images/generated_doc_in_score_github.png" style="width: 500px;" />
+</a>
+<p>The process repository describes the S-Core process. It defines both general concepts and ideas of the S-Core software development process approach and
+also gives a detailed description of every process area, as shown in the image below. That’s definitely worth of checking, as description of process
+areas has concrete guidances e.g. how to specify requirements or architecture.</p>
+<a class="reference internal image-reference" href="../../_images/process_areas.png"><img alt="Process areas" class="align-center" src="../../_images/process_areas.png" style="width: 500px;" />
+</a>
 </section>
 <section id="doc-as-code">
 <h2>doc-as-code<a class="headerlink" href="#doc-as-code" title="Link to this heading">#</a></h2>
 <p>GitHub Link: <a class="github reference external" href="https://github.com/eclipse-score/docs-as-code">eclipse-score/docs-as-code</a></p>
 <p>Doc-as-code repository implements the additional tooling around sphinx and spinx-needs framework including traceability, linkage of the tests, requirements and architecture.
-Additionally, doc-as-code repository implements all additional checks on the S-Core metamodel, that were defined in the process_description repository. The current status can
-be monitored here (Link/Life image <a class="reference external" href="https://eclipse-score.github.io/docs-as-code/main/requirements/requirements.html">https://eclipse-score.github.io/docs-as-code/main/requirements/requirements.html</a>)</p>
+Additionally, doc-as-code repository implements all additional checks on the S-Core metamodel, that were defined in the process_description repository.
+The current implementation status of tooling requirements can be checked in
+<a class="reference external" href="https://eclipse-score.github.io/docs-as-code/main/requirements/requirements.html">Tool Requirements Overview</a></p>
 </section>
 <section id="tooling">
-<h2>tooling<a class="headerlink" href="#tooling" title="Link to this heading">#</a></h2>
+<h2>Tooling<a class="headerlink" href="#tooling" title="Link to this heading">#</a></h2>
 <p>GitHub Link: <a class="github reference external" href="https://github.com/eclipse-score/tooling">eclipse-score/tooling</a></p>
 <p>Tooling repository collects all the supporting tools, that are needed in the s-core project, e.g. format_checker.</p>
 </section>
 <section id="toolchains-and-bazel-platform">
-<h2>toolchains and bazel platform<a class="headerlink" href="#toolchains-and-bazel-platform" title="Link to this heading">#</a></h2>
-<p>GitHub Link (for QNX): <a class="github reference external" href="https://github.com/eclipse-score/toolchains_qnx">eclipse-score/toolchains_qnx</a></p>
+<h2>Toolchains and bazel platform<a class="headerlink" href="#toolchains-and-bazel-platform" title="Link to this heading">#</a></h2>
+<p>GitHub Link: <a class="github reference external" href="https://github.com/eclipse-score/toolchains_qnx">eclipse-score/toolchains_qnx</a>, <a class="github reference external" href="https://github.com/eclipse-score/toolchains_gcc">eclipse-score/toolchains_gcc</a>, <a class="github reference external" href="https://github.com/eclipse-score/toolchains_rust">eclipse-score/toolchains_rust</a></p>
 <p>There are a number of repos, that are defining toolchains (gcc/qnx/rust) including compiper and linker flags, that are used to compile s-core software.
-Additionally, there is also a repository called bazel platforms (Link: <a class="github reference external" href="https://github.com/eclipse-score/bazel_platforms/blob/main/BUILD">eclipse-score/bazel_platforms</a>), that defines
-various platforms that are supported by s-core, e.g. arm64-qnx.</p>
+Additionally, there is also a repository called bazel platforms, that defines various platforms that are supported by S-Core, e.g. x86_64-qnx,
+as can be seen in the following <a class="reference external" href="https://github.com/eclipse-score/bazel_platforms/blob/main/BUILD">BUILD</a> file.</p>
 </section>
 <section id="bazel-registry">
 <h2>bazel_registry<a class="headerlink" href="#bazel-registry" title="Link to this heading">#</a></h2>
@@ -612,8 +617,8 @@ various platforms that are supported by s-core, e.g. arm64-qnx.</p>
 so that they can be referenced between each other.</p>
 </section>
 <section id="modules">
-<h2>modules<a class="headerlink" href="#modules" title="Link to this heading">#</a></h2>
-<p>GitHub Link (for baselibs): <a class="github reference external" href="https://github.com/eclipse-score/baselibs">eclipse-score/baselibs</a></p>
+<h2>Modules<a class="headerlink" href="#modules" title="Link to this heading">#</a></h2>
+<p>GitHub Link (e.g. for baselibs): <a class="github reference external" href="https://github.com/eclipse-score/baselibs">eclipse-score/baselibs</a></p>
 <p>As already described, every software module, a collection of software components, is also a bazel module located in a separate repository.
 Software module normally contains following information:</p>
 <ul class="simple">
@@ -624,16 +629,16 @@ Software module normally contains following information:</p>
 </ul>
 <p>Software module normally depends on other modules in the S-Core GitHub organization, espeicially on</p>
 <ul class="simple">
-<li><p><em>s-core</em> module to reference feature requirements and feature architecture in the component requirements and architecture</p></li>
-<li><p>doc-as-code module for sphinx/sphinx-needs framework and tooling around it</p></li>
-<li><p>toolchains_* modules for the compiler toolchains.</p></li>
+<li><p><a class="github reference external" href="https://github.com/eclipse-score">eclipse-score</a> module to reference feature requirements and feature architecture in the component requirements and architecture</p></li>
+<li><p><a class="github reference external" href="https://github.com/eclipse-score/docs-as-code">eclipse-score/docs-as-code</a> module for sphinx/sphinx-needs framework and tooling around it</p></li>
+<li><p><strong>toolchains</strong> modules for the compiler toolchains.</p></li>
 </ul>
 </section>
 <section id="reference-integration">
 <h2>reference integration<a class="headerlink" href="#reference-integration" title="Link to this heading">#</a></h2>
 <p>GitHub Link: <a class="github reference external" href="https://github.com/eclipse-score/reference_integration">eclipse-score/reference_integration</a></p>
-<p>Reference integration repository is one of the most important repositories in the s-core project, as this is the place,
-where all the things come together. Here we integrate all s-core modules together and ensure, that they match to each other.
+<p>Reference integration repository is one of the most important repositories in the S-Core project, as this is the place,
+where all the things come together. Here we integrate all S-Core modules together and ensure, that they match to each other.
 We do it by integrating all the software modules to an reference image(s), e.g. qnx x86 image, and executing multiple feature
 integration tests, that ensure consistency of the dependencies between the software modules and correct implementation of the
 feature requirements.</p>
@@ -687,13 +692,13 @@ feature requirements.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#s-core">s-core</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#score-platform">score_platform</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#process-description">process_description</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#doc-as-code">doc-as-code</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tooling">tooling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#toolchains-and-bazel-platform">toolchains and bazel platform</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tooling">Tooling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#toolchains-and-bazel-platform">Toolchains and bazel platform</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bazel-registry">bazel_registry</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modules">modules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modules">Modules</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-integration">reference integration</a></li>
 </ul>
   </nav></div>
