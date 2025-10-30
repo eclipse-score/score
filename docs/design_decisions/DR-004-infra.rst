@@ -41,17 +41,17 @@ Goals and Requirements
 ^^^^^^^^^^^^^^^^^^^^^^
 
 1. We want to enable each module to work independently and efficiently, i.e. build their own documentation quickly.
-2. We want a complete and consistent documention for a release, i.e. everything with backlinks.
+2. We want a complete and consistent documentation for a release, i.e. everything with backlinks.
    Regulations only require that *eventually* though and during development slight inconsistencies are acceptable.
 3. Some modules want backlinks even if it slows down the doc build.
    For example, Platform wants backlinks for the feature requirements.
-   For contrast, Baselibs might not care about backlinks because they simply assume that everybody uses them.
+   For contrast, Baselibs may not require backlinks because they simply assume that everybody uses them.
 
 Non-Goals
 ~~~~~~~~~
 
 * `#258 <https://github.com/eclipse-score/docs-as-code/issues/258>`_: The repository layout for documentation is not relevant here.
-* `#259 <https://github.com/eclipse-score/docs-as-code/issues/259>`_: Whether only certain rst files should contain needs element is not relevant here.
+* `#259 <https://github.com/eclipse-score/docs-as-code/issues/259>`_: Whether only certain rst files should contain needs elements is not relevant here.
 * `#260 <https://github.com/eclipse-score/docs-as-code/issues/260>`_: Whether Bazel should handle the creation of some documentation artifacts is not relevant here.
 * `#261 <https://github.com/eclipse-score/docs-as-code/issues/261>`_: Whether Bazel should configure documentation variants is not relevant here.
 * Referencing Sphinx elements apart from Needs is not relevant here because such links are never bi-directional.
@@ -86,6 +86,8 @@ A prototype is available in `a-zw/score_full-docs <https://github.com/a-zw/score
 Current implementation for external needs means modules reference external ids with a prefix.
 This prefixed id does not exist in a mega-build which results in Sphinx warnings.
 
+💚  Effort: Proof-of-concepts exist, so the basic implementation should be quick.
+
 😡  Bureaucracy: Modules must not use prefixes for external needs because it breaks the integration build.
 The docs-as-code repo must be refactored accordingly.
 Since the id schemas already contain namespacing rules, there is barely any risk of id clashes.
@@ -113,6 +115,8 @@ While it might seem redundant if we already have the independent module's docs, 
 Since modules might reference older versions of other modules, integration may be forced to override versions.
 This is an additional reason for a rebuild.
 
+😡  Effort: We have no proof-of-concept yet. Especially one which provides a live-preview with multiple modules.
+
 💚  Bureaucracy: Modules decide about prefixes for themselves.
 
 💚  Speed: This should build faster because we can rebuild modules in parallel.
@@ -126,8 +130,9 @@ Evaluation
    :header: Criteria, Option S, Option M
    :widths: 20, 10, 10
 
+   Effort, 💚, 😡
    UX, 💚, 😡
    Bureaucracy, 😡, 💚
    Speed, 😡, 💚
 
-Since UX is more important than speed and bureaucracy, option S is best.
+There is no particularly strong criterium, thus we pick option S because it can be done quickly.
