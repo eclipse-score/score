@@ -1,0 +1,168 @@
+Building source code
+=====================
+
+Now, as we've provided the documentation for our component, it is time to add some code as shown in the following commit (TODO: Link to commit).
+
+Let us go through the most important parts of it and start with bazel src/BUILD file (TODO: link).
+
+.. code-block:: python
+    :linenos:
+
+    cc_binary(
+        name = "scrample",
+        srcs = [
+            "assert_handler.cpp",
+            "assert_handler.h",
+            "main.cpp",
+        ],
+        visibility = ["//visibility:public"],
+        deps = [
+            ":sample_sender_receiver",
+            "@communication//score/mw/com",
+            "@boost.program_options",
+            "@score-baselibs//score/language/futurecpp",
+            "@score-baselibs//score/mw/log",
+        ],
+    )
+
+
+[cc_binary](https://bazel.build/reference/be/c-cpp#cc_binary) produces a cpp binary, by starting C/C++ compilation with the specified toolchain.
+We will talk about defining and specifying the toolchain later in this chapter. Let us now have a look at the content of the *cc_binary*.
+
+Its attributes are very well described in the bazel documentation. What we can see is, that it has three source files that needs to be compiled and
+that our *scrample* binary depends on *communication module* for the ipc functionality and on *baselibs* modules for cpp language extension and logging
+functionality. You can see, *cc_binary* for scrample has the "public" visibility. That's because we want to reference it in other modules.
+
+.. code-block:: python
+    :linenos:
+
+    cc_library(
+        name = "sample_sender_receiver",
+        srcs = [
+            "sample_sender_receiver.cpp",
+        ],
+        hdrs = [
+            "sample_sender_receiver.h",
+        ],
+        deps = [
+            ":datatype",
+            "@communication//score/mw/com",
+            "@score-baselibs//score/mw/log",
+        ],
+    )
+
+    cc_library(
+        name = "datatype",
+        srcs = [
+            "datatype.cpp",
+        ],
+        hdrs = [
+            "datatype.h",
+        ],
+        deps = [
+            "@communication//score/mw/com",
+            "@score-baselibs//score/language/futurecpp",
+        ],
+    )
+
+There is also a sender/receiver and a datatype [cc_library](https://bazel.build/reference/be/c-cpp#cc_library),
+separated in standalone libraries for a better testability. 
+
+Now, as we've defined the targets, it would be time to build the binary. For this, we need first to specify the toolchain,
+that should be used for building and that will call compiler and linker at the end. We aim to run our application in QNX qemu
+environment, therefore we should compile our application with qcc toolchain.
+
+Before we continue, it is important to mention two fundamental concepts in bazel,
+[bazel toolchains] (https://bazel.build/extending/toolchains) and [bazel platforms] (https://bazel.build/extending/platforms).
+Explanation of these concepts goes beyond this small tutorial. But to move further it is important to give a brief explanation
+of what the topics are.
+
+Bazel toolchain specify, at least in our case, which compiler toolchain we are using to compile and link our code. It could be
+qcc, gcc or llvm toolchain.
+
+Bazel platform specify for which cpu architecture the toolchain should build the binary, e.g. arm or x86.
+
+For our small scrample example we plan to build with qcc toolchain for x86_64 platform.
+
+To add qcc toolchain support to our module, we need first to extend our MODULE.bazel file with toolchain information.
+
+.. code-block:: python
+    :linenos:
+
+    # Configure the target toolchain.
+    bazel_dep(name = "score_toolchains_qnx", version = "0.0.2", dev_dependency=True)
+    qnx = use_extension("@score_toolchains_qnx//:extensions.bzl", "toolchains_qnx", dev_dependency=True)
+    qnx.sdp(
+        sha256 = "f2e0cb21c6baddbcb65f6a70610ce498e7685de8ea2e0f1648f01b327f6bac63",
+        strip_prefix = "installation",
+        url = "https://www.qnx.com/download/download/79858/installation.tgz",
+    )
+    use_repo(qnx, "toolchains_qnx_sdp")
+    use_repo(qnx, "toolchains_qnx_qcc")
+
+As you can see, we reference here the score_toolchains_qnx module, that as already explained in the technology_overview.rst (TODO: link here),
+configures qnx toolchain in s-core project.
+
+TODO: can Niko provide more description on what is happening here?
+
+.. tip::
+    CI/CD pipeline will use its own QNX license for building the code with qnx. If you want to build the source code with
+    qnx compiler locally, you will need to acquire a QNX 8.x "free for non commercial use" license and install QNX 8.x SDP
+    as described here (TODO: Link).
+
+As our application depends on baselibs and communication module, as described in the src/BUILD (TODO: Link) file, we need to add
+the dependencies to that modules into the MODULE.bazel file (TODO: link ) as well, as shown below:
+
+.. code-block:: python
+    :linenos:
+
+    bazel_dep(name = "score-baselibs", version = "0.1.1")
+
+    bazel_dep(name = "communication", version = "0.1.1")
+
+Till now we've just said, that our module depends on another bazel module, that defines qcc toolchain and that
+we want to use this toolchain in our module. Now we need to specify the platform and configure the usage of
+qcc toolchain in .bazelrc (TODO: link) file:
+
+.. code-block:: python
+    :linenos:
+    :emphasize-lines: 13
+
+    build:_bl_common --@score-baselibs//score/mw/log/detail/flags:KUse_Stub_Implementation_Only=False
+    build:_bl_common --@score-baselibs//score/mw/log/flags:KRemote_Logging=False
+    build:_bl_common --@score-baselibs//score/json:base_library=nlohmann
+    build:_bl_common --@score-baselibs//score/memory/shared/flags:use_typedshmd=False
+    build:_bl_common --@communication//score/mw/com/flags:tracing_library=stub
+    build:_bl_common --cxxopt=-Wno-error=mismatched-new-delete
+
+    build:x86_64-qnx --config=_bl_common
+    build:x86_64-qnx --noexperimental_merged_skyframe_analysis_execution
+    build:x86_64-qnx --action_env=BAZEL_DO_NOT_DETECT_CPP_TOOLCHAIN=1
+    build:x86_64-qnx --incompatible_enable_cc_toolchain_resolution
+    build:x86_64-qnx --incompatible_strict_action_env
+    build:x86_64-qnx --platforms=@score_toolchains_qnx//platforms:x86_64-qnx
+    build:x86_64-qnx --sandbox_writable_path=/var/tmp
+
+Here we define generall compiler and linker settings for our module, *build:_bl_common_stub*, that are then taken over by
+qnx configuration, *build:x86_64-qnx*. Here it is important to understand
+
+In line 16, we specify that we want to compile with qnx toolchain, that we previously
+referenced in the MODULE.bazel file, for the x86_64-qnx platform. This is important, as our qnx toolchain can provide support
+for multiple platforms, e.g. arm and x86.
+
+Finally, we can compile our code. It is important to specify which config should be used by the compilation, as shown in the example:
+
+.. code-block:: python
+    :linenos:
+
+    bazel build --config=x86_64-qnx  //src:scrample
+
+After the successfull compilation the binary can be normally found in the build folder:
+
+.. code-block:: python
+    :linenos:
+
+    Target //src:scrample up-to-date:
+        bazel-bin/src/scrample
+
+Now it is time to run the binary in the reference QNX QEMU image.

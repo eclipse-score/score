@@ -496,7 +496,10 @@
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Sample application</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">First Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="doc_generation.html">doc generation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="building_source_code.html">Building source code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference_integration.html">Reference integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="cicd_workflows.html">CI/CD Workflows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="extending_doc.html">extending doc</a></li>
 </ul>
 </details></li>
 </ul>
@@ -661,6 +664,12 @@ modules in one of this two locations.</p>
 <p>Here, we first declare our module, by giving it the name and its current version. Please be aware, that only after our module was published
 in the s-core central registry (TODO: link), other modules can access it.</p>
 <p>We need to give our module now a reasonable name, so let us replace <em>cpp_rust_template_repository</em> with <em>score-scrample</em>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">module</span><span class="p">(</span>
+<span class="linenos">2</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_scrample&quot;</span><span class="p">,</span>
+<span class="linenos">3</span>    <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+<span class="linenos">4</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;rules_python&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;1.4.1&quot;</span><span class="p">)</span>
 <span class="linenos"> 2</span>
 <span class="linenos"> 3</span><span class="n">PYTHON_VERSION</span> <span class="o">=</span> <span class="s2">&quot;3.12&quot;</span>

@@ -118,6 +118,16 @@ We need to give our module now a reasonable name, so let us replace *cpp_rust_te
 .. code-block:: python
     :linenos:
 
+    module(
+        name = "score_scrample",
+        version = "1.0",
+    )
+
+.. Please be aware, that there is a naming convention, that all modules names in s-core should be start with "score_" prefix.     
+
+.. code-block:: python
+    :linenos:
+
     bazel_dep(name = "rules_python", version = "1.4.1")
 
     PYTHON_VERSION = "3.12"
