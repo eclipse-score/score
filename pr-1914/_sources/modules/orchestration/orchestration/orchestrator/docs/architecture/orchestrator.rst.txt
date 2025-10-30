@@ -31,7 +31,7 @@ Component Architecture
    :status: valid
    :includes: comp_arc_sta__orch__design_impl, comp_arc_sta__orch__deployment_impl
    :implements: logic_arc_int__orchestration__user, logic_arc_int__orchestration__deployment, logic_arc_int__orchestration__design
-   :uses: logic_arc_int__logging__logging, logic_arc_int__tracing__tracing
+   :uses: logic_arc_int__logging__logging, logic_arc_int__tracing__tracing, logic_arc_int__communication__user
 
    .. needarch::
       :scale: 50
