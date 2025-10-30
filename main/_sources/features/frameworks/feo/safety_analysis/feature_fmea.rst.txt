@@ -12,7 +12,7 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. document:: FMEA
+.. document:: FEO Feature FMEA
    :id: doc__frameworks_feo_fmea
    :status: draft
    :security: NO
