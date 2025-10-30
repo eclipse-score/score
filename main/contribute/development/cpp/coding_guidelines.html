@@ -559,7 +559,7 @@
                   
   <section id="writing-c-code">
 <h1>Writing C++ Code<a class="headerlink" href="#writing-c-code" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-b528ae1d">
+<div class="need_container docutils container" id="SNCB-45a6a451">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__cpp_coding_guidelines">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -623,7 +623,22 @@
 <li><p>function calls</p></li>
 <li><p>initialization of variables.</p></li>
 </ul>
-<p>For this project an code style is not yet decided.</p>
+<p>For this project a coding style is not yet fully decided.</p>
+<section id="naming-conventions">
+<h3>Naming Conventions<a class="headerlink" href="#naming-conventions" title="Link to this heading">#</a></h3>
+<section id="interfaces">
+<h4>Interfaces<a class="headerlink" href="#interfaces" title="Link to this heading">#</a></h4>
+<p>A user should program against interfaces.
+This reduces coupling of code and retains big projects maintainable.
+To advertise this, name your interfaces accordingly.</p>
+<p>This means:</p>
+<ul class="simple">
+<li><p>Avoid prepending an <cite>I</cite> or appending <cite>Interface</cite></p></li>
+<li><p>Instead, append <cite>Impl</cite> to implementations to clearly mark them</p></li>
+</ul>
+<p>Finally, consider hiding implementations behind a factory to ease the instantiation effort of a user.</p>
+</section>
+</section>
 </section>
 <section id="c-version">
 <h2>C++ Version<a class="headerlink" href="#c-version" title="Link to this heading">#</a></h2>
@@ -667,6 +682,18 @@
 <li><p><a class="reference external" href="https://en.cppreference.com/w/cpp/thread/stop_token">stop_token</a></p></li>
 </ul>
 </section>
+</section>
+<section id="error-handling">
+<h2>Error handling<a class="headerlink" href="#error-handling" title="Link to this heading">#</a></h2>
+<p>Error handling for C++ is solved through score::Result in the <a class="reference internal" href="../../../features/baselibs/index.html#baselibs-feature"><span class="std std-ref">Base Libraries</span></a> feature.
+Avoid encoding errors in the returned value (e.g.: do not use -1 for a function that returns an integer).
+Instead, always use the <a class="reference internal" href="../../../features/baselibs/index.html#baselibs-feature"><span class="std std-ref">Base Libraries</span></a> feature.
+Throwing exceptions should be avoided, as they normally come with heap allocation.
+Exceptions are therefore hardwired to an abort.</p>
+<p>Further, handle errors internally if feasible but bubble an error up if a user should know about it.</p>
+<p>Consider aborts as a final resort, since they will reduce the availability of the S-CORE platform.
+Even if an error does not allow you to continue operation, providing this error to the user is still better than an abort.
+The user may decide to abort himself, or he may continue in a degraded fashion without your library.</p>
 </section>
 </section>
 
@@ -722,13 +749,20 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-format">Code Format</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-style">Code Style</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-style">Code Style</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naming-conventions">Naming Conventions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interfaces">Interfaces</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-version">C++ Version</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#language-features">Language features</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-17">C++17</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-20">C++20</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-handling">Error handling</a></li>
 </ul>
   </nav></div>
 
