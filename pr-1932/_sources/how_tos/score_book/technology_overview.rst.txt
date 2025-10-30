@@ -31,20 +31,32 @@ modules and components. Our approach for integration is desribed in :ref:`integr
 providing how to manage and handle dependencies between multiple modules and providing a mechanism, called `bazel registry <https://bazel.build/versions/6.1.0/build/bzlmod#registries>`_,
 for publishing official versions of modules.
 
-(Todo: Describe S-Core is an integration project)
+At then end, you can see S-Core as an integration project, where some of the modules are developed inside of the S-Core organization and some are integrated from another
+projects, where the main responsibility of S-Core as integration project is to ensure, that all modules work seamless together and result in a platform,
+that can be used as basis for safety qualifiable products. 
 
 CI/CD pipeline
 ---------------
-There is not much to say about this. As every modern project today, we strongly rely on GitHub infrastructure, e.g. by using GitHub actions for automatization
-and implementation of CI/CD check pipeline.
 
+There is not much to say about this. As every modern project today, we strongly rely on GitHub infrastructure, e.g. by using `GitHub actions <https://docs.github.com/de/actions>`_
+for automatization and implementation of CI/CD check pipeline.
+
+.. image:: _assets/release_verification.png
+   :alt: release_verification
+   :width: 400
+   :align: center
 
 Sphinx/Sphinx-needs and Documentation 
 --------------------------------------
 For documenting our project, for specifying requirements, assumptions of use, architecture, detailed design, tests 
 and further software process related artifacts we completely rely on sphinx and sphinx-needs technology. Additionally we extend sphinx-needs
-implementation with additional checks to ensure traciability and compliance to the S-Core metamodel. The S-Core metamodel & traciability concept
-are described here (link) and guidances how to use sphinx/sphinx-needs framework in S-Core can be found here (link).
+implementation with additional checks to ensure traciability and compliance to the S-Core metamodel. The S-Core metamodel & traceability concept
+are described in the `process description <https://eclipse-score.github.io/process_description/main/general_concepts/index.html>`_
+and guidances how to use sphinx/sphinx-needs framework in S-Core can be found in
+`docs-as-code how-to documentaion <https://eclipse-score.github.io/docs-as-code/main/how-to/index.html>`_.
+(ToDo: is there a better documetation)
+
+
 
 Programming languages
 ------------------------
@@ -60,10 +72,13 @@ Testing
 --------
 In general, we differentiate between three testing levels: unit-testing, component testing and feature integration testing.
 
-Unit-test framework strongly depends on the used programming languages, in case of C++ we rely on gtest/gmock, in case of Rust on (???)
+Unit-test framework strongly depends on the used programming languages, e.g. in case of C++ we rely on gtest/gmock.
 
-For compontent testing framework we have currently two solutions, that can be used in parallel. Both are part of S-Core project and 
-are documented here: see (link/link)
+Our solution for the compontent testing framework can be found in the `testing tools repo <https://github.com/eclipse-score/testing_tools>`_
 
-For feature integration testing we use a framework called ITF (Integration Testing Framework), that is part of S-Core project as well and
-is documented here (link).
+For feature integration testing we use a framework called ITF (Integration Testing Framework). It is part of the S-Core project as well,
+you can checkt its documentaion in the `README.md file <https://github.com/eclipse-score/itf>`_.
+
+For detailed overview, please check the documetation of our `verification concept <https://eclipse-score.github.io/process_description/main/process_areas/verification/index.html#>`_
+
+(ToDo: double check with Piotr)
