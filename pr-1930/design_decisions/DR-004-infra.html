@@ -539,7 +539,7 @@
                   
   <section id="dr-004-infra-bi-directional-traceability-in-docs">
 <h1>DR-004-Infra: Bi-directional traceability in docs<a class="headerlink" href="#dr-004-infra-bi-directional-traceability-in-docs" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-d0ba57cc">
+<div class="need_container docutils container" id="SNCB-86f2ee82">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__traceable_docs">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -596,17 +596,17 @@ How to provide this in S-CORE documentation?</p>
 <h3>Goals and Requirements<a class="headerlink" href="#goals-and-requirements" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>We want to enable each module to work independently and efficiently, i.e. build their own documentation quickly.</p></li>
-<li><p>We want a complete and consistent documention for a release, i.e. everything with backlinks.
+<li><p>We want a complete and consistent documentation for a release, i.e. everything with backlinks.
 Regulations only require that <em>eventually</em> though and during development slight inconsistencies are acceptable.</p></li>
 <li><p>Some modules want backlinks even if it slows down the doc build.
 For example, Platform wants backlinks for the feature requirements.
-For contrast, Baselibs might not care about backlinks because they simply assume that everybody uses them.</p></li>
+For contrast, Baselibs may not require backlinks because they simply assume that everybody uses them.</p></li>
 </ol>
 <section id="non-goals">
 <h4>Non-Goals<a class="headerlink" href="#non-goals" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/eclipse-score/docs-as-code/issues/258">#258</a>: The repository layout for documentation is not relevant here.</p></li>
-<li><p><a class="reference external" href="https://github.com/eclipse-score/docs-as-code/issues/259">#259</a>: Whether only certain rst files should contain needs element is not relevant here.</p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/docs-as-code/issues/259">#259</a>: Whether only certain rst files should contain needs elements is not relevant here.</p></li>
 <li><p><a class="reference external" href="https://github.com/eclipse-score/docs-as-code/issues/260">#260</a>: Whether Bazel should handle the creation of some documentation artifacts is not relevant here.</p></li>
 <li><p><a class="reference external" href="https://github.com/eclipse-score/docs-as-code/issues/261">#261</a>: Whether Bazel should configure documentation variants is not relevant here.</p></li>
 <li><p>Referencing Sphinx elements apart from Needs is not relevant here because such links are never bi-directional.</p></li>
@@ -634,6 +634,7 @@ Bazel would show an error if you try.</p>
 <p>A prototype is available in <a class="reference external" href="https://github.com/a-zw/score_full-docs/tree/61205c616a99e395e0f63fb995bd828271433b44">a-zw/score_full-docs</a>.</p>
 <p>Current implementation for external needs means modules reference external ids with a prefix.
 This prefixed id does not exist in a mega-build which results in Sphinx warnings.</p>
+<p>💚  Effort: Proof-of-concepts exist, so the basic implementation should be quick.</p>
 <p>😡  Bureaucracy: Modules must not use prefixes for external needs because it breaks the integration build.
 The docs-as-code repo must be refactored accordingly.
 Since the id schemas already contain namespacing rules, there is barely any risk of id clashes.</p>
@@ -654,6 +655,7 @@ Just imagine a new module is created which uses Baselibs but Baselibs makes no c
 While it might seem redundant if we already have the independent module’s docs, this is necessary to ensure consistency.</p>
 <p>Since modules might reference older versions of other modules, integration may be forced to override versions.
 This is an additional reason for a rebuild.</p>
+<p>😡  Effort: We have no proof-of-concept yet. Especially one which provides a live-preview with multiple modules.</p>
 <p>💚  Bureaucracy: Modules decide about prefixes for themselves.</p>
 <p>💚  Speed: This should build faster because we can rebuild modules in parallel.</p>
 <p>😡  UX: Navigating between modules may be confusing since the navigation and whatnot changes.</p>
@@ -674,22 +676,26 @@ This is an additional reason for a rebuild.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>UX</p></td>
+<tr class="row-even"><td><p>Effort</p></td>
 <td><p>💚</p></td>
 <td><p>😡</p></td>
 </tr>
-<tr class="row-odd"><td><p>Bureaucracy</p></td>
+<tr class="row-odd"><td><p>UX</p></td>
+<td><p>💚</p></td>
+<td><p>😡</p></td>
+</tr>
+<tr class="row-even"><td><p>Bureaucracy</p></td>
 <td><p>😡</p></td>
 <td><p>💚</p></td>
 </tr>
-<tr class="row-even"><td><p>Speed</p></td>
+<tr class="row-odd"><td><p>Speed</p></td>
 <td><p>😡</p></td>
 <td><p>💚</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>Since UX is more important than speed and bureaucracy, option S is best.</p>
+<p>There is no particularly strong criterium, thus we pick option S because it can be done quickly.</p>
 </section>
 </section>
 
