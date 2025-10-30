@@ -592,7 +592,7 @@
 <span class="linenos">16</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>[cc_binary](<a class="reference external" href="https://bazel.build/reference/be/c-cpp#cc_binary">https://bazel.build/reference/be/c-cpp#cc_binary</a>) produces a cpp binary, by starting C/C++ compilation with the specified toolchain.
+<p><a class="reference external" href="https://bazel.build/reference/be/c-cpp#cc_binary">cc_binary</a> produces a cpp binary, by starting C/C++ compilation with the specified toolchain.
 We will talk about defining and specifying the toolchain later in this chapter. Let us now have a look at the content of the <em>cc_binary</em>.</p>
 <p>Its attributes are very well described in the bazel documentation. What we can see is, that it has three source files that needs to be compiled and
 that our <em>scrample</em> binary depends on <em>communication module</em> for the ipc functionality and on <em>baselibs</em> modules for cpp language extension and logging
@@ -627,13 +627,13 @@ functionality. You can see, <em>cc_binary</em> for scrample has the “public”
 <span class="linenos">28</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>There is also a sender/receiver and a datatype [cc_library](<a class="reference external" href="https://bazel.build/reference/be/c-cpp#cc_library">https://bazel.build/reference/be/c-cpp#cc_library</a>),
+<p>There is also a sender/receiver and a datatype  <a class="reference external" href="https://bazel.build/reference/be/c-cpp#cc_library">cc_library</a>,
 separated in standalone libraries for a better testability.</p>
 <p>Now, as we’ve defined the targets, it would be time to build the binary. For this, we need first to specify the toolchain,
 that should be used for building and that will call compiler and linker at the end. We aim to run our application in QNX qemu
 environment, therefore we should compile our application with qcc toolchain.</p>
 <p>Before we continue, it is important to mention two fundamental concepts in bazel,
-[bazel toolchains] (<a class="reference external" href="https://bazel.build/extending/toolchains">https://bazel.build/extending/toolchains</a>) and [bazel platforms] (<a class="reference external" href="https://bazel.build/extending/platforms">https://bazel.build/extending/platforms</a>).
+<a class="reference external" href="https://bazel.build/extending/toolchains">bazel toolchains</a> and <a class="reference external" href="https://bazel.build/extending/platforms">bazel platforms</a>.
 Explanation of these concepts goes beyond this small tutorial. But to move further it is important to give a brief explanation
 of what the topics are.</p>
 <p>Bazel toolchain specify, at least in our case, which compiler toolchain we are using to compile and link our code. It could be

@@ -26,7 +26,7 @@ Let us go through the most important parts of it and start with bazel src/BUILD 
     )
 
 
-[cc_binary](https://bazel.build/reference/be/c-cpp#cc_binary) produces a cpp binary, by starting C/C++ compilation with the specified toolchain.
+`cc_binary  <https://bazel.build/reference/be/c-cpp#cc_binary>`_ produces a cpp binary, by starting C/C++ compilation with the specified toolchain.
 We will talk about defining and specifying the toolchain later in this chapter. Let us now have a look at the content of the *cc_binary*.
 
 Its attributes are very well described in the bazel documentation. What we can see is, that it has three source files that needs to be compiled and
@@ -65,7 +65,7 @@ functionality. You can see, *cc_binary* for scrample has the "public" visibility
         ],
     )
 
-There is also a sender/receiver and a datatype [cc_library](https://bazel.build/reference/be/c-cpp#cc_library),
+There is also a sender/receiver and a datatype  `cc_library  <https://bazel.build/reference/be/c-cpp#cc_library>`_,
 separated in standalone libraries for a better testability. 
 
 Now, as we've defined the targets, it would be time to build the binary. For this, we need first to specify the toolchain,
@@ -73,7 +73,7 @@ that should be used for building and that will call compiler and linker at the e
 environment, therefore we should compile our application with qcc toolchain.
 
 Before we continue, it is important to mention two fundamental concepts in bazel,
-[bazel toolchains] (https://bazel.build/extending/toolchains) and [bazel platforms] (https://bazel.build/extending/platforms).
+`bazel toolchains  <https://bazel.build/extending/toolchains>`_ and `bazel platforms  <https://bazel.build/extending/platforms>`_.
 Explanation of these concepts goes beyond this small tutorial. But to move further it is important to give a brief explanation
 of what the topics are.
 
