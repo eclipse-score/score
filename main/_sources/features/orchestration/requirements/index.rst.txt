@@ -23,13 +23,11 @@ Requirements
    :realizes: PROCESS_wp__requirements_feat
    :tags: orchestration
 
-
 Executor
 ========
 
 Task Management
 ---------------
-
 
 .. TODO: set invalid requirements to valid once bug regarding tracing ASIL and QM sth req is solved
 
