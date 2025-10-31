@@ -17,118 +17,113 @@
 Requirements
 ============
 
-.. feat_req:: Definition language should be a human-readible format
+Okay, I will rephrase the Sphinx requirements to fit the provided schema ("The component shall detect if a key-value pair got corrupted and set its status to INVALID during every restart of the SW platform").
+
+Here are the modified requirements:
+
+.. feat_req:: The system shall use a human-readable definition language.
    :id: feat_req__code_generation__definitionlanguage
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__ai_platform__enablement
+   :satisfies: stkh_req__dev_experience__idl_support
    :status: valid
 
-   In our case, the system is modeled in YAML-syntax files that use a
-   specific description language. A major advantage of YAML is that it
-   is easy to find parser for YAML either in Rust or C++. Advantage of
-   YAML over JSON is the easy syntax (no begin and end closure).
-   
-.. feat_req:: Software Compute Units should signal initialization failures by returning an Error indicating failure.
+   The system shall be modeled in YAML-syntax files. This means the system should
+   use YAML due to the availability of parsers in Rust and C++. The
+   system should prefer YAML over JSON due to its simpler syntax.
+
+.. feat_req:: Software Compute Units shall signal initialization failures by returning an Error indicating failure.
    :id: feat_req__code_generation__initialization
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__ai_platform__enablement
+   :satisfies: stkh_req__execution_model__processes
    :status: valid
 
-   Software Compute Unit Instances that fail to initialize are considered to have
-   failed permanently.
-   
-.. feat_req:: Software Compute Unit are responsible for correct deallocation of any dynamically allocated memory in the onShutdown function.
+   Software Compute Unit Instances shall be considered to have failed
+   permanently if they fail to initialize.
+
+.. feat_req:: Software Compute Units shall correctly deallocate any dynamically allocated memory in the onShutdown function.
    :id: feat_req__code_generation__deinitialization
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__ai_platform__enablement
+   :satisfies: stkh_req__execution_model__processes
    :status: valid
 
-   Developers can assume that onInit and onShutdown will only ever be called once during the lifecycle of a Software Compute Unit Instance.
-   
-.. feat_req:: Software Compute Units may not spawn a variable number of threads.
+   Software Compute Unit instances shall have onInit and onShutdown
+   called only once during their lifecycle.
+
+.. feat_req:: Software Compute Units shall not spawn a variable number of threads.
    :id: feat_req__code_generation__nomultithreading
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__ai_platform__enablement
+   :satisfies: stkh_req__execution_model__processes
    :status: valid
 
-   If Software Compute Units are to spawn any threads at all, which is
-   not recommended, Software Compute Units must have a predetermined
-   number of threads that are spawned. Software Compute Units may not dynamically
-   spawn and join or detach worker threads.
-   
-.. feat_req:: Software Compute Unit may not throw exceptions or "panic".
+   Software Compute Units shall have a predetermined number of threads
+   if they spawn any threads at all. Software Compute Units shall not
+   dynamically spawn and join or detach worker threads.
+
+.. feat_req:: Software Compute Units shall not throw exceptions or "panic".
    :id: feat_req__code_generation__error_handling1
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__ai_platform__enablement
+   :satisfies: stkh_req__execution_model__processes
    :status: valid
 
-   Any exceptions in e.g. dependency libraries must be handled
-   completely inside the standard interface functions of the
-   Software Compute Unit. The only allowed way for a Software Compute Unit to signal an error is
-   by returning an Error that contains an
-   ErrorCode other than Success. Any unhandled exceptions
-   will cause the Software Compute Unit to terminate
-   execution.
-   
-.. feat_req:: Software Compute Units should not attempt to trigger program termination.
+   Software Compute Units shall handle any exceptions in dependency
+   libraries completely inside the standard interface functions. Software Compute Units shall signal an error by returning an Error that contains an ErrorCode other than Success. Software Compute Units shall terminate execution if unhandled exceptions occur.
+
+.. feat_req:: Software Compute Units shall not attempt to trigger program termination.
    :id: feat_req__code_generation__error_handling2
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__ai_platform__enablement
+   :satisfies: stkh_req__execution_model__processes
    :status: valid
 
-   Software Compute Unit are not responsible for managing their own
-   lifecycle. The correct way to handle errors is to return an Error
-   with a suitable Errorcode and to follow the defined error
-   propagation mechanism.
-   
-.. feat_req:: Software Compute Units should not call their own standard interface methods.
+   Software Compute Units shall return an Error with a suitable
+   Errorcode and follow the defined error propagation mechanism to
+   handle errors. Software Compute Units shall not manage their own
+   lifecycle.
+
+.. feat_req:: Software Compute Units shall not call their own standard interface methods.
    :id: feat_req__code_generation__error_handling3
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__ai_platform__enablement
+   :satisfies: stkh_req__ai_platform__runtime_determinism
    :status: valid
 
-   Software Compute Units must not interfere with their external
+   Software Compute Units shall not interfere with their external
    lifecycle management by calling their own interface methods
-   (onInit, onUpdate, onReset, onShutdown) with the exception that
-   onShutdown() may call onReset() if this is required for avoiding
-   code duplication.
-   
-.. feat_req:: Software Compute Units should implement transient error recovery mechanisms in onReset.
+   (onInit, onUpdate, onReset, onShutdown). Software Compute Units may
+   call onReset() from onShutdown() if required for avoiding code
+   duplication.
+
+.. feat_req:: Software Compute Units shall implement transient error recovery mechanisms in onReset.
    :id: feat_req__code_generation__error_handling4
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__ai_platform__enablement
+   :satisfies: tkh_req__ai_platform__runtime_determinism
    :status: valid
 
-   Software Compute Units should signal transient errors as a failure of
-   onUpdate. The triggering of onReset to recovery from transient
-   errors should be done by the responsible Software Compute Unit based on logic modeled
-   for the Archetype. 
-   
-.. feat_req:: Software Compute Units should signal reset and recovery failures via the Error return value of onReset.
+   Software Compute Units shall signal transient errors as a failure of
+   onUpdate. The responsible Software Compute Unit shall trigger
+   onReset to recover from transient errors based on logic modeled for
+   the Archetype.
+
+.. feat_req:: Software Compute Units shall signal reset and recovery failures via the Error return value of onReset.
    :id: feat_req__code_generation__error_handling5
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__ai_platform__enablement
+   :satisfies: stkh_req__ai_platform__runtime_determinism
    :status: valid
 
-   Software Compute Units that return a failure on onReset are considered to have failed permanently.
-
-   
-   
+   Software Compute Units shall be considered to have failed permanently if they return a failure on onReset.
