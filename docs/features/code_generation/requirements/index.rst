@@ -17,10 +17,6 @@
 Requirements
 ============
 
-Okay, I will rephrase the Sphinx requirements to fit the provided schema ("The component shall detect if a key-value pair got corrupted and set its status to INVALID during every restart of the SW platform").
-
-Here are the modified requirements:
-
 .. feat_req:: The system shall use a human-readable definition language.
    :id: feat_req__code_generation__definitionlanguage
    :reqtype: Functional
