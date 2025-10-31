@@ -118,7 +118,7 @@ Result Library Requirement Inspection Checklist
         -
       * - REQ_08_01
         - Is the requirement *verifiable*?
-        - Expectation is that at the time of the inspection already tests are created for the requirement. This can be checked via traces, but also :need:`PROCESS_gd_req__req_attr_test_covered` shows this. In case the requirement is not mature enough at the time of inspection (i.e. missing test cases), a test expert should be invited to the Pull-Request review to explicitly check this item.
+        - If at the time of the inspection already tests are created for the requirement, the answer is yes. This can be checked via traces, but also :need:`PROCESS_gd_req__req_attr_test_covered` shows this. In case the requirement is not sufficiently traced to test cases already, a test expert is invited to the inspection to give his opinion whether the requirement is formulated in a way that supports test development and the available test infrastructure is sufficient to perform the test.
         -
         -
         -
@@ -135,12 +135,26 @@ Result Library Requirement Inspection Checklist
         -
         -
 
-The following (valid) requirements are in the scope of this inspection:
+Note: If a Review ID is not applicable for your requirement, then state ""n/a" in status and comment accordingly in remarks. For example "no stakeholder requirement (no rationale needed)"
+
+The following requirements in "valid" state and with "inspected" tag set are in the scope of this inspection:
 
 .. needtable::
    :filter: "result" in docname and "requirements" in docname and docname is not None
    :style: table
    :types: comp_req
+   :tags: result_library
+   :columns: id;status;tags
+   :colwidths: 25,25,25
+   :sort: title
+
+
+And also the following AoUs in "valid" state and with "inspected" tag set:
+
+.. needtable::
+   :filter: "result" in docname and "requirements" in docname and docname is not None
+   :style: table
+   :types: aou_req
    :tags: result_library
    :columns: id;status;tags
    :colwidths: 25,25,25
