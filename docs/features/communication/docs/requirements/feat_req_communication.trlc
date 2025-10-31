@@ -1,0 +1,31 @@
+/********************************************************************************
+ * Copyright (c) 2025 Contributors to the Eclipse Foundation
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Apache License Version 2.0 which is available at
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ ********************************************************************************/
+
+package Communication
+
+import ScoreType
+import ScoreReq
+
+import StkhReqs
+
+    ScoreReq.FeatReq time_based_arch {
+        title = "Support for Time-based Architecture"
+        description = "The communication framework shall provide API to support a time-based architecture."
+        status = ScoreType.Status.valid
+        security = ScoreType.Sec.yes
+        reqtype = ScoreType.Reqtype.functional
+        safety = ScoreType.Asil.B
+        derived_from = [ StkhReqs.interprocess_communication@2 ]
+        version = 1
+    }
+
