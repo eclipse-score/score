@@ -114,3 +114,13 @@ Requirements
    :status: valid
 
    The base libraries shall provide bit manipulation utilities for low-level operations on integral types.
+
+.. feat_req:: Filesystem-Library
+   :id: feat_req__baselibs__filesystem_library
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :satisfies: stkh_req__functional_req__base_libraries, stkh_req__dependability__automotive_safety
+   :status: valid
+
+   The base libraries shall provide a filesystem library with file and directory manipulation functionality.
