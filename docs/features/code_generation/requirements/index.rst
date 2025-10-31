@@ -106,7 +106,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: tkh_req__ai_platform__runtime_determinism
+   :satisfies: stkh_req__ai_platform__runtime_determinism
    :status: valid
 
    Software Compute Units shall signal transient errors as a failure of
