@@ -573,7 +573,8 @@
   <section id="building-source-code">
 <h1>Building source code<a class="headerlink" href="#building-source-code" title="Link to this heading">#</a></h1>
 <p>Now, as we’ve provided the documentation for our component, it is time to add some code as shown in the following commit (TODO: Link to commit).</p>
-<p>Let us go through the most important parts of it and start with bazel src/BUILD file (TODO: link).</p>
+<p>Let us go through the most important parts of it and start with bazel <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/src/BUILD">src/BUILD</a>
+file.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">cc_binary</span><span class="p">(</span>
 <span class="linenos"> 2</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;scrample&quot;</span><span class="p">,</span>
 <span class="linenos"> 3</span>    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span>
@@ -593,10 +594,12 @@
 </pre></div>
 </div>
 <p><a class="reference external" href="https://bazel.build/reference/be/c-cpp#cc_binary">cc_binary</a> produces a cpp binary, by starting C/C++ compilation with the specified toolchain.
-We will talk about defining and specifying the toolchain later in this chapter. Let us now have a look at the content of the <em>cc_binary</em>.</p>
-<p>Its attributes are very well described in the bazel documentation. What we can see is, that it has three source files that needs to be compiled and
-that our <em>scrample</em> binary depends on <em>communication module</em> for the ipc functionality and on <em>baselibs</em> modules for cpp language extension and logging
-functionality. You can see, <em>cc_binary</em> for scrample has the “public” visibility. That’s because we want to reference it in other modules.</p>
+We will talk about defining and specifying the toolchain later in this chapter. Let us first have a look at the content of the <em>cc_binary</em>.</p>
+<p><em>cc_binary</em> attributes are very well described in the bazel documentation and it is definitely makes sense to check them out.
+In our case, the rule has three source files that we want to compile. Additionally, our <em>scrample</em> binary depends on the <em>communication</em> module
+for the ipc functionality and on the <em>baselibs</em> module for cpp language extension and logging functionality.
+We can also see, that <em>cc_binary</em> for scrample has the “public” visibility.
+That’s because we want to use it later in the <em>reference integration</em> module.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">cc_library</span><span class="p">(</span>
 <span class="linenos"> 2</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;sample_sender_receiver&quot;</span><span class="p">,</span>
 <span class="linenos"> 3</span>    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span>
@@ -627,20 +630,21 @@ functionality. You can see, <em>cc_binary</em> for scrample has the “public”
 <span class="linenos">28</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>There is also a sender/receiver and a datatype  <a class="reference external" href="https://bazel.build/reference/be/c-cpp#cc_library">cc_library</a>,
-separated in standalone libraries for a better testability.</p>
+<p>Additionally, there is also a sender/receiver and a datatype  <a class="reference external" href="https://bazel.build/reference/be/c-cpp#cc_library">cc_library</a>,
+separated in standalone libraries for a better testability. Scrample <em>cc_binary</em> rule depends on them as well.</p>
 <p>Now, as we’ve defined the targets, it would be time to build the binary. For this, we need first to specify the toolchain,
-that should be used for building and that will call compiler and linker at the end. We aim to run our application in QNX qemu
+that should be used for building our binary and that will call compiler and linker at the end. We aim to run our application in QNX qemu
 environment, therefore we should compile our application with qcc toolchain.</p>
 <p>Before we continue, it is important to mention two fundamental concepts in bazel,
 <a class="reference external" href="https://bazel.build/extending/toolchains">bazel toolchains</a> and <a class="reference external" href="https://bazel.build/extending/platforms">bazel platforms</a>.
 Explanation of these concepts goes beyond this small tutorial. But to move further it is important to give a brief explanation
-of what the topics are.</p>
-<p>Bazel toolchain specify, at least in our case, which compiler toolchain we are using to compile and link our code. It could be
+of what these concepts are about.</p>
+<p><em>Bazel toolchain</em> specifies, at least in our case, which compiler toolchain we are using to compile and to link our code. It could be
 qcc, gcc or llvm toolchain.</p>
-<p>Bazel platform specify for which cpu architecture the toolchain should build the binary, e.g. arm or x86.</p>
+<p><em>Bazel platform</em> specifies for which cpu architecture the toolchain should build the binary, e.g. arm or x86.</p>
 <p>For our small scrample example we plan to build with qcc toolchain for x86_64 platform.</p>
-<p>To add qcc toolchain support to our module, we need first to extend our MODULE.bazel file with toolchain information.</p>
+<p>To add qcc toolchain support to our module, we need first to extend our
+<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/MODULE.bazel">MODULE.bazel</a> file with the toolchain information.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># Configure the target toolchain.</span>
 <span class="linenos"> 2</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_toolchains_qnx&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.0.2&quot;</span><span class="p">,</span> <span class="n">dev_dependency</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="linenos"> 3</span><span class="n">qnx</span> <span class="o">=</span> <span class="n">use_extension</span><span class="p">(</span><span class="s2">&quot;@score_toolchains_qnx//:extensions.bzl&quot;</span><span class="p">,</span> <span class="s2">&quot;toolchains_qnx&quot;</span><span class="p">,</span> <span class="n">dev_dependency</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -653,33 +657,35 @@ qcc, gcc or llvm toolchain.</p>
 <span class="linenos">10</span><span class="n">use_repo</span><span class="p">(</span><span class="n">qnx</span><span class="p">,</span> <span class="s2">&quot;toolchains_qnx_qcc&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>As you can see, we reference here the score_toolchains_qnx module, that as already explained in the technology_overview.rst (TODO: link here),
-configures qnx toolchain in s-core project.</p>
+<p>As you can see, we reference here the <em>score_toolchains_qnx</em> module, as dependency. It contains qnx toolchain including compiler, linker, image
+creation tools and their configuration for the s-core project.</p>
 <p>TODO: can Niko provide more description on what is happening here?</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>CI/CD pipeline will use its own QNX license for building the code with qnx. If you want to build the source code with
+<p>CI/CD pipeline uses its own QNX license for building the code with qnx. If you want to build the source code with
 qnx compiler locally, you will need to acquire a QNX 8.x “free for non commercial use” license and install QNX 8.x SDP
-as described here (TODO: Link).</p>
+as described in the <a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu">QNX &amp; QEMU set-up tutorial</a>.</p>
 </div>
-<p>As our application depends on baselibs and communication module, as described in the src/BUILD (TODO: Link) file, we need to add
-the dependencies to that modules into the MODULE.bazel file (TODO: link ) as well, as shown below:</p>
+<p>As our application depends on <em>baselibs</em> and <em>communication</em> module, as described in the
+<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/src/BUILD">src/BUILD</a> file, we need to add
+the dependencies to that modules into the <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/MODULE.bazel">MODULE.bazel</a> file
+as well, as shown below:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score-baselibs&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.1.1&quot;</span><span class="p">)</span>
 <span class="linenos">2</span>
 <span class="linenos">3</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;communication&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.1.1&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Till now we’ve just said, that our module depends on another bazel module, that defines qcc toolchain and that
-we want to use this toolchain in our module. Now we need to specify the platform and configure the usage of
-qcc toolchain in .bazelrc (TODO: link) file:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">build</span><span class="p">:</span><span class="n">_bl_common</span> <span class="o">--</span><span class="nd">@score</span><span class="o">-</span><span class="n">baselibs</span><span class="o">//</span><span class="n">score</span><span class="o">/</span><span class="n">mw</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">detail</span><span class="o">/</span><span class="n">flags</span><span class="p">:</span><span class="n">KUse_Stub_Implementation_Only</span><span class="o">=</span><span class="kc">False</span>
-<span class="linenos"> 2</span><span class="n">build</span><span class="p">:</span><span class="n">_bl_common</span> <span class="o">--</span><span class="nd">@score</span><span class="o">-</span><span class="n">baselibs</span><span class="o">//</span><span class="n">score</span><span class="o">/</span><span class="n">mw</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">flags</span><span class="p">:</span><span class="n">KRemote_Logging</span><span class="o">=</span><span class="kc">False</span>
-<span class="linenos"> 3</span><span class="n">build</span><span class="p">:</span><span class="n">_bl_common</span> <span class="o">--</span><span class="nd">@score</span><span class="o">-</span><span class="n">baselibs</span><span class="o">//</span><span class="n">score</span><span class="o">/</span><span class="n">json</span><span class="p">:</span><span class="n">base_library</span><span class="o">=</span><span class="n">nlohmann</span>
-<span class="linenos"> 4</span><span class="n">build</span><span class="p">:</span><span class="n">_bl_common</span> <span class="o">--</span><span class="nd">@score</span><span class="o">-</span><span class="n">baselibs</span><span class="o">//</span><span class="n">score</span><span class="o">/</span><span class="n">memory</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">flags</span><span class="p">:</span><span class="n">use_typedshmd</span><span class="o">=</span><span class="kc">False</span>
-<span class="linenos"> 5</span><span class="n">build</span><span class="p">:</span><span class="n">_bl_common</span> <span class="o">--</span><span class="nd">@communication</span><span class="o">//</span><span class="n">score</span><span class="o">/</span><span class="n">mw</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">flags</span><span class="p">:</span><span class="n">tracing_library</span><span class="o">=</span><span class="n">stub</span>
-<span class="linenos"> 6</span><span class="n">build</span><span class="p">:</span><span class="n">_bl_common</span> <span class="o">--</span><span class="n">cxxopt</span><span class="o">=-</span><span class="n">Wno</span><span class="o">-</span><span class="n">error</span><span class="o">=</span><span class="n">mismatched</span><span class="o">-</span><span class="n">new</span><span class="o">-</span><span class="n">delete</span>
+<p>Till now we’ve just said, that our module depends on another bazel module that defines qcc toolchain. Now
+we want to start using this toolchain in our module and therefore need to specify the platform and
+configure the usage of qcc toolchain in <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/.bazelrc">.bazelrc</a> file.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">build</span><span class="p">:</span><span class="n">_common</span> <span class="o">--</span><span class="nd">@score</span><span class="o">-</span><span class="n">baselibs</span><span class="o">//</span><span class="n">score</span><span class="o">/</span><span class="n">mw</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">detail</span><span class="o">/</span><span class="n">flags</span><span class="p">:</span><span class="n">KUse_Stub_Implementation_Only</span><span class="o">=</span><span class="kc">False</span>
+<span class="linenos"> 2</span><span class="n">build</span><span class="p">:</span><span class="n">_common</span> <span class="o">--</span><span class="nd">@score</span><span class="o">-</span><span class="n">baselibs</span><span class="o">//</span><span class="n">score</span><span class="o">/</span><span class="n">mw</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">flags</span><span class="p">:</span><span class="n">KRemote_Logging</span><span class="o">=</span><span class="kc">False</span>
+<span class="linenos"> 3</span><span class="n">build</span><span class="p">:</span><span class="n">_common</span> <span class="o">--</span><span class="nd">@score</span><span class="o">-</span><span class="n">baselibs</span><span class="o">//</span><span class="n">score</span><span class="o">/</span><span class="n">json</span><span class="p">:</span><span class="n">base_library</span><span class="o">=</span><span class="n">nlohmann</span>
+<span class="linenos"> 4</span><span class="n">build</span><span class="p">:</span><span class="n">_common</span> <span class="o">--</span><span class="nd">@score</span><span class="o">-</span><span class="n">baselibs</span><span class="o">//</span><span class="n">score</span><span class="o">/</span><span class="n">memory</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">flags</span><span class="p">:</span><span class="n">use_typedshmd</span><span class="o">=</span><span class="kc">False</span>
+<span class="linenos"> 5</span><span class="n">build</span><span class="p">:</span><span class="n">_common</span> <span class="o">--</span><span class="nd">@communication</span><span class="o">//</span><span class="n">score</span><span class="o">/</span><span class="n">mw</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">flags</span><span class="p">:</span><span class="n">tracing_library</span><span class="o">=</span><span class="n">stub</span>
+<span class="linenos"> 6</span><span class="n">build</span><span class="p">:</span><span class="n">_common</span> <span class="o">--</span><span class="n">cxxopt</span><span class="o">=-</span><span class="n">Wno</span><span class="o">-</span><span class="n">error</span><span class="o">=</span><span class="n">mismatched</span><span class="o">-</span><span class="n">new</span><span class="o">-</span><span class="n">delete</span>
 <span class="linenos"> 7</span>
-<span class="linenos"> 8</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">config</span><span class="o">=</span><span class="n">_bl_common</span>
+<span class="linenos"> 8</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">config</span><span class="o">=</span><span class="n">_common</span>
 <span class="linenos"> 9</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">noexperimental_merged_skyframe_analysis_execution</span>
 <span class="linenos">10</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">action_env</span><span class="o">=</span><span class="n">BAZEL_DO_NOT_DETECT_CPP_TOOLCHAIN</span><span class="o">=</span><span class="mi">1</span>
 <span class="linenos">11</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">incompatible_enable_cc_toolchain_resolution</span>
@@ -688,12 +694,18 @@ qcc toolchain in .bazelrc (TODO: link) file:</p>
 </span><span class="linenos">14</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">sandbox_writable_path</span><span class="o">=/</span><span class="n">var</span><span class="o">/</span><span class="n">tmp</span>
 </pre></div>
 </div>
-<p>Here we define generall compiler and linker settings for our module, <em>build:_bl_common_stub</em>, that are then taken over by
-qnx configuration, <em>build:x86_64-qnx</em>. Here it is important to understand</p>
-<p>In line 16, we specify that we want to compile with qnx toolchain, that we previously
-referenced in the MODULE.bazel file, for the x86_64-qnx platform. This is important, as our qnx toolchain can provide support
-for multiple platforms, e.g. arm and x86.</p>
-<p>Finally, we can compile our code. It is important to specify which config should be used by the compilation, as shown in the example:</p>
+<p>In lines 1-6 we define compiler options, that are related to the code itself, and therefore should be used
+during the compilation of our source code by all toolchains. It is important to understand, that bazel modules we
+depend on, get built in the context of our bazel module configuration, and therefore we also need to specify the compiler settings
+that are necessary to build bazel modules we depend on as well.</p>
+<p>Further in line 8 we say, that we take over the common configuration also for the qnx toolchain. Afterwards we specify
+compiler and linker flags, that are relevant for the qnx toolchain only.</p>
+<p>In line 13, that is also highlighted in the code snippet, we finally say, that we want to use <em>qnx toolchain</em>, that we’ve previously
+referenced in the <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/MODULE.bazel">MODULE.bazel</a> file
+and want to build our code for the <em>x86_64-qnx platform</em>. This is important, as our qnx toolchain provides support for multiple platforms,
+e.g. <em>arm</em> and <em>x86_64</em>.</p>
+<p>Finally, we can compile our code. We need to specify explicitly which config should be used during the compilation,
+as shown in the example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">bazel</span> <span class="n">build</span> <span class="o">--</span><span class="n">config</span><span class="o">=</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span>  <span class="o">//</span><span class="n">src</span><span class="p">:</span><span class="n">scrample</span>
 </pre></div>
 </div>
