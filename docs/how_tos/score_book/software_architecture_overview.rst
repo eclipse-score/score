@@ -1,7 +1,7 @@
 Software Architecture Overview
 ================================
 
-S-Core software architecture is not set in stone. The following is the overview of the software architecture according to the current
+Eclipse S-CORE software architecture is not set in stone. The following is the overview of the software architecture according to the current
 state of the discussion:
 
 .. image:: ../../modules/_assets/module_architecture.drawio.svg
@@ -11,7 +11,7 @@ state of the discussion:
 
 
 There is a `software architecture community <https://github.com/orgs/eclipse-score/discussions/categories/architecture-community>`_,
-that is responsible for defining S-Core software architecture.
+that is responsible for defining Eclipse S-CORE software architecture.
 
 You can always propose a change to an existing architecture or propose a new functionality by creating a feature request.
 

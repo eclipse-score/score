@@ -10,21 +10,21 @@ Overview of technologies
 Bazel and repo structure
 -------------------------
 
-Before we start with technical details, it is important to understand, which main technologies and tools are used in S-Core project.
+Before we start with technical details, it is important to understand, which main technologies and tools are used in Eclipse S-CORE project.
 
-We think, we would not lie if we would say, that the whole S-Core project is built up upon `bazel <https://bazel.build/>`_ build system.
-Bazel is at the very heart of the S-Core project. Every dependency and almost every automatization that we implement with exception to CI/CD
+We think, we would not lie if we would say, that the whole Eclipse S-CORE project is built up upon `bazel <https://bazel.build/>`_ build system.
+Bazel is at the very heart of the Eclipse S-CORE project. Every dependency and almost every automatization that we implement with exception to CI/CD
 pipeline is done via bazel.
 Validation of requirements, generation of documentation, building source code, execution of unit- or integration tests, for everything
-there is a bazel target in S-Core. Not going into very technical details, bazel is a modern build system, that allows hermetical and 
+there is a bazel target in Eclipse S-CORE. Not going into very technical details, bazel is a modern build system, that allows hermetical and
 reproduciable builds, that are for special importance for building safety systems, and additionally provides the possibility to extend
 its functionality for project related use-cases using `bazel macros <https://bazel.build/extending/macros>`_ and
 `bazel rules <https://bazel.build/extending/rules>`_. 
 
-Additionally, we use a concept of `bazel modules <https://bazel.build/external/module>`_. In general, S-Core project is built up of multiple repos, every repo implementing its
+Additionally, we use a concept of `bazel modules <https://bazel.build/external/module>`_. In general, Eclipse S-CORE project is built up of multiple repos, every repo implementing its
 own functionality. There were quite some discussions on whether we should have a mono repository or should we split our project in
 multiple repositores, as you can see here (TODO: link to decision record). At the end, the decision was taken to proceed with multiple repositories.
-The main reason for this, is that S-Core project should not only motivate software developers to work together on new solutions inside of S-Core
+The main reason for this, is that Eclipse S-CORE project should not only motivate software developers to work together on new solutions inside of Eclipse S-CORE
 project but also empower to reuse as much as possible from already existing projects and this is easier to do with an approach, where every functionality
 is encapsualted in its own repository. Such an approach has also disadvantages. First, the organizatorical approach of having so many teams working together.
 How this is done, is described the `project management plan <https://eclipse-score.github.io/score/main/platform_management_plan/project_management.html>`_.
@@ -33,8 +33,8 @@ modules and components. Our approach for integration is desribed in :ref:`integr
 providing how to manage and handle dependencies between multiple modules and providing a mechanism, called `bazel registry <https://bazel.build/versions/6.1.0/build/bzlmod#registries>`_,
 for publishing official versions of modules.
 
-At then end, you can see S-Core as an integration project, where some of the modules are developed inside of the S-Core organization and some are integrated from another
-projects, where the main responsibility of S-Core as integration project is to ensure, that all modules work seamless together and result in a platform,
+At then end, you can see Eclipse S-CORE as an integration project, where some of the modules are developed inside of the Eclipse S-CORE organization and some are integrated from another
+projects, where the main responsibility of Eclipse S-CORE as integration project is to ensure, that all modules work seamless together and result in a platform,
 that can be used as basis for safety qualifiable products. 
 
 CI/CD pipeline
@@ -52,9 +52,9 @@ Sphinx/Sphinx-needs and Documentation
 --------------------------------------
 For documenting our project, for specifying requirements, assumptions of use, architecture, detailed design, tests 
 and further software process related artifacts we completely rely on sphinx and sphinx-needs technology. Additionally we extend sphinx-needs
-implementation with additional checks to ensure traciability and compliance to the S-Core metamodel. The S-Core metamodel & traceability concept
+implementation with additional checks to ensure traciability and compliance to the Eclipse S-CORE metamodel. The Eclipse S-CORE metamodel & traceability concept
 are described in the `process description <https://eclipse-score.github.io/process_description/main/general_concepts/index.html>`_
-and guidances how to use sphinx/sphinx-needs framework in S-Core can be found in
+and guidances how to use sphinx/sphinx-needs framework in Eclipse S-CORE can be found in
 `docs-as-code how-to documentaion <https://eclipse-score.github.io/docs-as-code/main/how-to/index.html>`_.
 (ToDo: is there a better documetation)
 
@@ -78,7 +78,7 @@ Unit-test framework strongly depends on the used programming languages, e.g. in 
 
 Our solution for the compontent testing framework can be found in the `testing tools repo <https://github.com/eclipse-score/testing_tools>`_
 
-For feature integration testing we use a framework called ITF (Integration Testing Framework). It is part of the S-Core project as well,
+For feature integration testing we use a framework called ITF (Integration Testing Framework). It is part of the Eclipse S-CORE project as well,
 you can checkt its documentaion in the `README.md file <https://github.com/eclipse-score/itf>`_.
 
 For detailed overview, please check the documetation of our `verification concept <https://eclipse-score.github.io/process_description/main/process_areas/verification/index.html#>`_

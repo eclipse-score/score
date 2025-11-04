@@ -1,5 +1,5 @@
 
-S-Core Book
+Eclipse S-CORE Book
 =============
 
 

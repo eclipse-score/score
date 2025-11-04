@@ -105,7 +105,7 @@ To add qcc toolchain support to our module, we need first to extend our
     use_repo(qnx, "toolchains_qnx_qcc")
 
 As you can see, we reference here the *score_toolchains_qnx* module, as dependency. It contains qnx toolchain including compiler, linker, image
-creation tools and their configuration for the s-core project.
+creation tools and their configuration for the Eclipse S-CORE project.
 
 TODO: can Niko provide more description on what is happening here?
 

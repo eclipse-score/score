@@ -1,19 +1,19 @@
-First S-Core Module
+First Eclipse S-CORE Module
 =====================
 
 The very first step would be to create a repository, where the future application should be located. Before you can do this,
-you need to ensure that you are an official contributor in the S-Core project, otherwise you will not have any power in the project.
+you need to ensure that you are an official contributor in the Eclipse S-CORE project, otherwise you will not have any power in the project.
 How to do this is described in
-`Actions to ensure Proper Contribution Attribution in Eclipse S-Core <https://eclipse-score.github.io/score/main/contribute/general/contribution_attribution.html#>`_.
+`Actions to ensure Proper Contribution Attribution in Eclipse Eclipse S-CORE <https://eclipse-score.github.io/score/main/contribute/general/contribution_attribution.html#>`_.
 
 After you've created an Eclipse account, accepted Eclipse Contributor Agreement (ECA) and connected you GitHub
-account with your Eclipse Account, you should approach one of the S-Core Project Leads, that are listed at the official
+account with your Eclipse Account, you should approach one of the Eclipse S-CORE Project Leads, that are listed at the official
 `Eclipse SDV S-Core webpage <https://projects.eclipse.org/projects/automotive.score/who>`_ and ask them to add you
-to the list of the official contributors in the S-Core GitHub organization. The best way to approach S-Core
+to the list of the official contributors in the Eclipse S-CORE GitHub organization. The best way to approach Eclipse S-CORE
 project leads would be over the `eclipse sdv slack channel <https://sdv.eclipse.org/get-engaged/>`_.
 
-Once you are part of S-Core GitHub organization, you can request a repository for your application.
-In the S-Core project this is done according to the rules of the Eclipse organization.
+Once you are part of Eclipse S-CORE GitHub organization, you can request a repository for your application.
+In the Eclipse S-CORE project this is done according to the rules of the Eclipse organization.
 The majority of the configuration for the GitHub organization is done using `otterdog configuration <https://otterdog.readthedocs.io/en/latest/>`_
 in the following repository: https://github.com/eclipse-score/.eclipsefdn. Create a private fork of this repository and modify
 otterdog configuration in `otterdog/eclipse-score.jsonnet <https://github.com/eclipse-score/.eclipsefdn/blob/main/otterdog/eclipse-score.jsonnet>`_
@@ -33,7 +33,7 @@ file by adding a new repository, in our case we do it for scrample repository li
     },
 
 Afterwards create a PR in the original https://github.com/eclipse-score/.eclipsefdn repository and wait till it will be approved
-by S-Core project lead and eclipse security team.
+by Eclipse S-CORE project lead and eclipse security team.
 
 .. tip::
     To get your PR approved sooner, it is a good idea to make sure that score project leads and eclipse security team
@@ -47,15 +47,15 @@ by S-Core project lead and eclipse security team.
         Please approve.
 
 As soon as your PR is approved and merged (normally done by either security team or project lead),
-you will be able to find your repo in the S-Core GitHub organization repositories overview.
+you will be able to find your repo in the Eclipse S-CORE GitHub organization repositories overview.
 
 .. image:: ../_assets/repository_layout.png
    :alt: repository layout
    :width: 500
    :align: center
 
-If you will open the repository, you will see, that it is not empty. All repositories in S-Core are created based on
-`S-Core repository template <https://github.com/eclipse-score/module_template>`_.
+If you will open the repository, you will see, that it is not empty. All repositories in Eclipse S-CORE are created based on
+`Eclipse S-CORE repository template <https://github.com/eclipse-score/module_template>`_.
 The `README.md <https://github.com/eclipse-score/module_template/blob/main/README.md>`_ file of the repository already
 gives a good explanation regarding the structure of the repository, but let us have a
 more detailed look at some of the files and folders.
@@ -68,7 +68,7 @@ by every PR or as part of the integration gate :ref:`integration gate <integrati
 
 .vscode
 ------------------
-Provides S-Core recommended configuration for your VS Code setup including the code completion patterns for requirements and architecture 
+Provides Eclipse S-CORE recommended configuration for your VS Code setup including the code completion patterns for requirements and architecture
 in `.vscode/restructuredtext.code-snippets <https://github.com/eclipse-score/module_template/blob/main/.vscode/restructuredtext.code-snippets>`_.
 
 
@@ -110,7 +110,7 @@ in the upcoming chapters with e.g. toolchains configuration, but here we just wa
     common --registry=https://raw.githubusercontent.com/eclipse-score/bazel_registry/main/
     common --registry=https://bcr.bazel.build
 
-The line number 8 points to the S-Core https://github.com/eclipse-score/bazel_registry, where all official versions of S-Core modules are published.
+The line number 8 points to the Eclipse S-CORE https://github.com/eclipse-score/bazel_registry, where all official versions of Eclipse S-CORE modules are published.
 The line number 9 points to the common bazel registry, with common bazel modules are made available for everyone.
 
 That means, that when we will reference a module as a dependency to our scrample application, bazel will search for the
@@ -130,7 +130,7 @@ Let us check `MODULE.bazel <https://github.com/eclipse-score/scrample/blob/main/
     )
 
 Here, we first declare our module, by giving it the name and its current version. Please be aware, that only after our module was published
-in the S-Core bazel registry, other modules can access it.
+in the Eclipse S-CORE bazel registry, other modules can access it.
 
 We need to give our module now a reasonable name, so let us replace *cpp_rust_template_repository* with *score_scrample*.
 
@@ -142,7 +142,7 @@ We need to give our module now a reasonable name, so let us replace *cpp_rust_te
         version = "1.0",
     )
 
-Please be aware, that there is a naming convention, that all modules names in S-Core should start with *score\_* prefix.     
+Please be aware, that there is a naming convention, that all modules names in Eclipse S-CORE should start with *score\_* prefix.
 
 .. code-block:: python
     :linenos:
@@ -198,7 +198,7 @@ talk about these in more details later in the upcoming chapters.
     #docs-as-code
     bazel_dep(name = "score_docs_as_code", version = "1.1.0")
 
-Finally, we add dependency to S-Core native modules, *score_tooling* and *score_docs_as_code*, that enables us
+Finally, we add dependency to Eclipse S-CORE native modules, *score_tooling* and *score_docs_as_code*, that enables us
 building documentation and execute different kinds of checks, e.g. license checker.
 
 .. tip::
@@ -223,7 +223,7 @@ contains main bazel targets on the top level of the scrample project:
     load("@score_tooling//:defs.bzl", "copyright_checker", "dash_license_checker", "setup_starpls", "use_format_targets")
     load("//:project_config.bzl", "PROJECT_CONFIG")
 
-First of all, we load bazel rules and macros, implemented in S-Core context from the modules, that we've defined as dependencies
+First of all, we load bazel rules and macros, implemented in Eclipse S-CORE context from the modules, that we've defined as dependencies
 in the MODULE.bazel file, e.g. https://github.com/eclipse-score/docs-as-code.
 
 .. code-block:: python
