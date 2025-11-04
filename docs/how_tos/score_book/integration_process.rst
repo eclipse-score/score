@@ -17,7 +17,7 @@ integration process for Eclipse S-CORE.
    :align: center
 
 Compliance to Eclipse S-CORE software development process
---------------------------------------------------
+---------------------------------------------------------
    
 We do encourage every software module inside of the Eclipse S-CORE GitHub organization or also outside of it
 to follow the Eclipse S-CORE development process continiously and introduce it by including approtiated checks into
