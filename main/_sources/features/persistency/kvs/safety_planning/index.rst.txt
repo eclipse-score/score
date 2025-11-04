@@ -17,6 +17,15 @@
 Feature Safety Planning
 =======================
 
+.. document:: Persistency KVS Safety WPs
+   :id: doc__persistency_safety_wp
+   :status: valid
+   :safety: ASIL_B
+   :security: NO
+   :realizes: PROCESS_wp__platform_safety_plan
+   :tags: persistency
+
+
 .. list-table:: Feature persistency Workproducts
     :header-rows: 1
 

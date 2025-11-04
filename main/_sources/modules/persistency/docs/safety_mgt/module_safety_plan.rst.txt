@@ -19,6 +19,7 @@ Module Safety Plan
    :id: doc__persistency_safety_plan
    :status: valid
    :safety: ASIL_B
+   :security: NO
    :realizes: PROCESS_wp__module_safety_plan
    :tags: persistency
 
@@ -100,8 +101,8 @@ Module Workproducts List
           - :need:`PROCESS_gd_guidl__safety_analysis`
           - :ndf:`copy('status', need_id='PROCESS_gd_guidl__safety_analysis')`
           - https://github.com/eclipse-score/score/issues/952?issue=eclipse-score%7Cscore%7C965
-          - :need:`doc__kvs_fmea`
-          - :ndf:`copy('status', need_id='doc__kvs_fmea')`
+          - :need:`doc__persistency_kvs_fmea`
+          - :ndf:`copy('status', need_id='doc__persistency_kvs_fmea')`
 
         * - :need:`PROCESS_wp__audit_report`
           - performed by external experts
@@ -155,15 +156,15 @@ Component <name> Workproducts List
           - :need:`PROCESS_gd_temp__req_comp_req`
           - :ndf:`copy('status', need_id='PROCESS_gd_temp__req_comp_req')`
           - https://github.com/eclipse-score/score/issues/952?issue=eclipse-score%7Cscore%7C960
-          - :need:`doc__persistency_kvs_mod_req`
-          - :ndf:`copy('status', need_id='doc__persistency_kvs_mod_req')` & WP below
+          - :need:`doc__persistency_kvs_requirements`
+          - :ndf:`copy('status', need_id='doc__persistency_kvs_requirements')` & WP below
 
         * - :need:`PROCESS_wp__requirements_comp_aou`
           - :need:`PROCESS_gd_temp__req_aou_req`
           - :ndf:`copy('status', need_id='PROCESS_gd_temp__req_aou_req')`
           - https://github.com/eclipse-score/score/issues/952?issue=eclipse-score%7Cscore%7C960
-          - :need:`doc__persistency_kvs_mod_req`
-          - :ndf:`copy('status', need_id='doc__persistency_kvs_mod_req')` & WP below
+          - :need:`doc__persistency_kvs_requirements`
+          - :ndf:`copy('status', need_id='doc__persistency_kvs_requirements')` & WP below
 
         * - :need:`PROCESS_wp__requirements_inspect`
           - :need:`PROCESS_gd_chklst__req_inspection`
@@ -176,8 +177,8 @@ Component <name> Workproducts List
           - :need:`PROCESS_gd_temp__arch_comp`
           - :ndf:`copy('status', need_id='PROCESS_gd_temp__arch_comp')`
           - https://github.com/eclipse-score/score/issues/952?issue=eclipse-score%7Cscore%7C1020
-          - :need:`doc__persistency_kvs_mod_arch`
-          - :ndf:`copy('status', need_id='doc__persistency_kvs_mod_arch')` & WP below
+          - :need:`doc__persistency_kvs_architecture`
+          - :ndf:`copy('status', need_id='doc__persistency_kvs_architecture')` & WP below
 
         * - :need:`PROCESS_wp__sw_arch_verification`
           - :need:`PROCESS_gd_chklst__arch_inspection_checklist`
@@ -190,15 +191,15 @@ Component <name> Workproducts List
           - :need:`PROCESS_wp__sw_component_fmea`
           - :ndf:`copy('status', need_id='PROCESS_gd_guidl__safety_analysis')`
           - https://github.com/eclipse-score/score/issues/952?issue=eclipse-score%7Cscore%7C965
-          - :need:`doc__kvs_fmea`
-          - :ndf:`copy('status', need_id='doc__kvs_fmea')` & WP below
+          - :need:`doc__persistency_kvs_fmea`
+          - :ndf:`copy('status', need_id='doc__persistency_kvs_fmea')` & WP below
 
         * - :need:`PROCESS_wp__sw_component_dfa`
           - :need:`PROCESS_wp__sw_component_dfa`
           - :ndf:`copy('status', need_id='PROCESS_gd_guidl__safety_analysis')`
           - https://github.com/eclipse-score/score/issues/952?issue=eclipse-score%7Cscore%7C965
-          - :need:`doc__kvs_dfa`
-          - :ndf:`copy('status', need_id='doc__kvs_dfa')` & WP below
+          - :need:`doc__persistency_kvs_dfa`
+          - :ndf:`copy('status', need_id='doc__persistency_kvs_dfa')` & WP below
 
         * - :need:`PROCESS_wp__sw_implementation`
           - :need:`PROCESS_gd_guidl__implementation`
