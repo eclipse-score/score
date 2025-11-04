@@ -50,48 +50,48 @@ Checklist
         elements (e.g. component to interface) established according to the defined :need:`Relations between the architectural elements <PROCESS_doc_concept__arch_process>`?
       - automated
       - Trace should be checked by Sphinx. Will be removed from checklist once requirement is implemented.
-      -
-      -
-      -
+      - No
+      - Traceability not complete, template not followed
+      - `Issue for Findings <https://github.com/eclipse-score/score/issues/1888>`_
     * - ARC_01_02
       - If the architectural element is related to any supplier manuals (incl. safety and security)
         are the relevant parts covered?
       - manual
       - If the architecture makes use of supplied elements, their manuals (like safety) have to be considered (i.e. its provided functionality matches the expectation and assumptions are fulfilled). Note that in case of safety component this means that assumed Technical Safety Requirements and AoUs of the safety manual are covered.
-      -
-      -
+      - Yes
+      - Not applicable
       -
     * - ARC_01_03
       - Is the architectural element traceable to the lower level artifacts as defined by the workproduct traceability?
       - automated
       - Will be removed from checklist once requirement is implemented by automated tool check.
         Details of possible linking can be depicted from `Traceability Concept <https://eclipse-score.github.io/process_description/main/general_concepts/score_traceability_concept.html#general-concepts-traceability>`_
-      -
-      -
-      -
+      - No
+      - Traceability not complete, template not followed
+      - `Issue for Findings <https://github.com/eclipse-score/score/issues/1888>`_
     * - ARC_02_01
       - Is the software architecture design compliant with the (overall) feature architecture?
       - manual
       - On component level check against the feature architecture, on feature level check other features with common components used.
-      -
-      -
-      -
+      - No
+      - Lifecycle is mentioned, but meanwhile there is some entry, Launch-HealthManager, should be aligned now
+      - `Issue for Findings <https://github.com/eclipse-score/score/issues/1888>`_
     * - ARC_02_02
       - Is appropriate and comprehensible operation/interface naming present in the architectural design?
       - manual
       - Check :need:`PROCESS_gd_guidl__arch_design`
-      -
-      -
-      -
+      - No
+      - Are these interfaces names, any operations?
+      - `Issue for Findings <https://github.com/eclipse-score/score/issues/1888>`_
     * - ARC_02_03
       - Are correctness of data flow and control flow within the architectural elements considered?
       - manual
       - E.g. examine definitions, transformations, integrity, and interaction of data; check error handling, data
         exchange between elements, correct response to inputs and documented decision making.
         Note: consistency is ensured by the process/tooling, by defining each interface only once.
-      -
-      -
-      -
+      - No
+      - No proper diagrams found
+      - `Issue for Findings <https://github.com/eclipse-score/score/issues/1888>`_
     * - ARC_02_04
       - Are the interfaces between the software architectural element and other architectural elements well-defined?
       - manual
@@ -99,40 +99,40 @@ Checklist
         interfaces for inputs, outputs, error codes documented; is loose coupling considered and only limited exposure;
         can unit or integration test be written against the interface; data amount transferred; no sensitive data
         exposure;
-      -
-      -
+      - No
+      - `Issue for Findings <https://github.com/eclipse-score/score/issues/1888>`_
       -
     * - ARC_02_05
       - Does the software architectural element consider the timing constraints (from the parent requirement)?
       - manual
       - If there are hard requirements on the timing a programming time estimation should be performed and also
         deadline supervision considered.
-      -
-      -
-      -
+      - No
+      - No information found, but required
+      - `Issue for Findings <https://github.com/eclipse-score/score/issues/1888>`_
     * - ARC_02_06
       - Is the documentation of the software architectural element, including textual and graphical descriptions
         (e.g., UML diagrams), comprehensible and complete?
       - manual
       - Use of semi-formal notation is expected for architectural elements with an allocated ASIL level.
         Is the architecture template correctly filled?
-      -
-      -
+      - No
+      - `Issue for Findings <https://github.com/eclipse-score/score/issues/1888>`_
       -
     * - ARC_03_01
       - Is the architectural element modular and encapsulated?
       - manual
       - Check e.g. that only minimal interfaces are used. Design should be object oriented. Interfaces and interactions are clearly defined. Usage of access types (private, protected) properly set. Limited global variables.
-      -
-      -
-      -
+      - No
+      - Missing interfaces, not according required templates
+      - `Issue for Findings <https://github.com/eclipse-score/score/issues/1888>`_
     * - ARC_03_02
       - Is the suitability of the software architecture for future modifications and maintainability considered?
       - manual
       - Check for e.g. loose coupling, separation of concerns, high cohesion, versioning strategy for interfaces,
         decision records, use of established design patterns.
-      -
-      -
+      - Yes
+      - Not applicable on feature architecture level
       -
     * - ARC_03_03
       - Are simplicity and avoidance of unnecessary complexity present in the software architecture?
@@ -142,13 +142,13 @@ Checklist
         function parameters, global variables, complex types, limited comprehensibility.
 
         Note: If the "number" above exceeds "3" a design rationale is mandatory (for all types)
-      -
-      -
+      - Yes
+      - Not applicable on feature architecture level
       -
     * - ARC_03_04
       - Is the software architecture design following best practices and design principles?
       - manual
       - Refer to architectural guidelines and recommendations within the project documentation.
-      -
+      - Yes
       -
       -

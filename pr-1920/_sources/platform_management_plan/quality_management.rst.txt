@@ -295,9 +295,6 @@ None
         * - Workproduct Id
           - Link to WP
 
-        * - :need:`PROCESS_wp__audit_report`
-          - :ref:`project_documents_list`
-
         * - :need:`PROCESS_wp__chm_plan`
           - :ref:`project_documents_list`
 
@@ -358,20 +355,17 @@ None
         * - :need:`PROCESS_wp__platform_sw_release_plan`
           - :ref:`project_documents_list`
 
-        * - :need:`PROCESS_wp__policies`
-          - :ref:`project_documents_list`
-
         * - :need:`PROCESS_wp__prm_plan`
           - :ref:`project_documents_list`
 
         * - :need:`PROCESS_wp__process_description`
-          - n/a
+          - :need:`PROCESS_wp__process_description`
 
         * - :need:`PROCESS_wp__process_impr_report`
           - :ref:`project_documents_list`
 
         * - :need:`PROCESS_wp__process_strategy`
-          - n/a
+          - :need:`PROCESS_wp__process_strategy`
 
         * - :need:`PROCESS_wp__project_mgt`
           - :ref:`project_documents_list`
@@ -431,9 +425,6 @@ None
           - :ref:`project_documents_list`
 
         * - :need:`PROCESS_wp__tool_verification_report`
-          - :ref:`project_documents_list`
-
-        * - :need:`PROCESS_wp__training_path`
           - :ref:`project_documents_list`
 
         * - :need:`PROCESS_wp__verification_comp_int_test`

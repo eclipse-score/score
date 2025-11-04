@@ -467,7 +467,7 @@ of the submodule. The project leads and committers of the corresponding software
 circle or community will check the issue and in case they will accept it, they will
 take it over to one of their *GitHub Projects*. In case, the topic, that you raise in the issue has a big impact on the platform, you can be asked by the committers to raise a *Feature Request* and to do a POC in the `incubation repository <https://eclipse-score.github.io/score/features/integration/index.html#incubation-repositories>`_ .
 
-Contribution to the project is described in more details in `Contribution Guideline <https://eclipse-score.github.io/score/process/guidelines/contribution_request/index.html>`_.
+Contribution to the project is described in more details in `Contribution Guideline <https://eclipse-score.github.io/score/main/contribute/index.html>`_.
 In general, everyone who wants to provide something new to the project, e.g. a new feature
 or a tool, should provide an exhaustive description, requirements and in some cases
 also initial draft of the architecture as part of the *Feature Request*.

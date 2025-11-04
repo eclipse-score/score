@@ -493,6 +493,7 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../orchestration/index.html">Orchestration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../persistency/index.html">Persistency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security_crypto/index.html">Security &amp; Cryptography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../time/index.html">Time</a></li>
 </ul>
 </div>
@@ -559,7 +560,7 @@
                   
   <section id="glossary">
 <h1>Glossary<a class="headerlink" href="#glossary" title="Link to this heading">#</a></h1>
-<dl class="simple glossary">
+<dl class="glossary">
 <dt id="term-Launch-Manager">Launch Manager<a class="headerlink" href="#term-Launch-Manager" title="Link to this term">#</a></dt><dd><p>Component to start and stop processes on a POSIX like operating system.</p>
 </dd>
 <dt id="term-Health-Monitor">Health Monitor<a class="headerlink" href="#term-Health-Monitor" title="Link to this term">#</a></dt><dd><p>Provides process local monitoring functionalities such as deadline monitoring
@@ -588,6 +589,8 @@ time interval.</p>
 and are supervised by the software platform. If the health management system
 detects abnormal situation it can change the <a class="reference internal" href="#term-Run-State"><span class="xref std std-term">Run State</span></a>.</p>
 </dd>
+<dt id="term-Component">Component<a class="headerlink" href="#term-Component" title="Link to this term">#</a></dt><dd><p>A configurable unit in the Launch Manager that describes an executable and its runtime environment (sandbox). Components can be grouped together in Run Targets to define system operational states.</p>
+</dd>
 <dt id="term-Lifecycle-Component">Lifecycle Component<a class="headerlink" href="#term-Lifecycle-Component" title="Link to this term">#</a></dt><dd><p>Node of the dependency tree.</p>
 </dd>
 <dt id="term-Process">Process<a class="headerlink" href="#term-Process" title="Link to this term">#</a></dt><dd><p>Instantiation of an Executable programs running on the system that are managed by the Launch Manager.</p>
@@ -607,6 +610,9 @@ detects abnormal situation it can change the <a class="reference internal" href=
 <dt id="term-ASLR">ASLR<a class="headerlink" href="#term-ASLR" title="Link to this term">#</a></dt><dd><p>Address Space Layout Randomization - a security technique that randomizes the memory layout of processes.</p>
 </dd>
 <dt id="term-Recovery-Action">Recovery Action<a class="headerlink" href="#term-Recovery-Action" title="Link to this term">#</a></dt><dd><p>Actions taken by the Launch Manager when a process fails or terminates abnormally.</p>
+</dd>
+<dt id="term-Ready-Condition">Ready Condition<a class="headerlink" href="#term-Ready-Condition" title="Link to this term">#</a></dt><dd><p>A configurable condition that must be satisfied before a component is considered ready and operational. Ready conditions can include file system checks, network availability, or custom application-specific signals.</p>
+<p>Ready conditions can either be reported by the component itself through the Lifecycle Interface or determined via external state monitoring. External state examples include: process started, file is available, socket was opened, or that the process finished successfully.</p>
 </dd>
 <dt id="term-Liveliness">Liveliness<a class="headerlink" href="#term-Liveliness" title="Link to this term">#</a></dt><dd><p>The state indicating that a process is active and responding as expected.</p>
 </dd>
