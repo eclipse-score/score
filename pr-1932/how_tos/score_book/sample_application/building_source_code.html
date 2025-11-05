@@ -487,14 +487,14 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">S-Core Book</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Eclipse S-CORE Book</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../technology_overview.html">Overview of technologies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../software_architecture_overview.html">Software Architecture Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../module_structure_overview.html">Module Structure Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../integration_process.html">Integration process</a></li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Sample application</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="first_score_module.html">First S-Core Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="first_score_module.html">First Eclipse S-CORE Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="doc_generation.html">Documentation generation</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Building source code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="reference_integration.html">Reference integration</a></li>
@@ -548,7 +548,7 @@
     <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">How-Tos</a></li>
     
     
-    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">S-Core Book</a></li>
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Eclipse S-CORE Book</a></li>
     
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">Sample application</a></li>
@@ -585,10 +585,10 @@ file.</p>
 <span class="linenos"> 8</span>    <span class="n">visibility</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;//visibility:public&quot;</span><span class="p">],</span>
 <span class="linenos"> 9</span>    <span class="n">deps</span> <span class="o">=</span> <span class="p">[</span>
 <span class="linenos">10</span>        <span class="s2">&quot;:sample_sender_receiver&quot;</span><span class="p">,</span>
-<span class="linenos">11</span>        <span class="s2">&quot;@communication//score/mw/com&quot;</span><span class="p">,</span>
+<span class="linenos">11</span>        <span class="s2">&quot;@score_communication//score/mw/com&quot;</span><span class="p">,</span>
 <span class="linenos">12</span>        <span class="s2">&quot;@boost.program_options&quot;</span><span class="p">,</span>
-<span class="linenos">13</span>        <span class="s2">&quot;@score-baselibs//score/language/futurecpp&quot;</span><span class="p">,</span>
-<span class="linenos">14</span>        <span class="s2">&quot;@score-baselibs//score/mw/log&quot;</span><span class="p">,</span>
+<span class="linenos">13</span>        <span class="s2">&quot;@score_baselibs//score/language/futurecpp&quot;</span><span class="p">,</span>
+<span class="linenos">14</span>        <span class="s2">&quot;@score_baselibs//score/mw/log&quot;</span><span class="p">,</span>
 <span class="linenos">15</span>    <span class="p">],</span>
 <span class="linenos">16</span><span class="p">)</span>
 </pre></div>
@@ -610,8 +610,8 @@ That’s because we want to use it later in the <em>reference integration</em> m
 <span class="linenos"> 8</span>    <span class="p">],</span>
 <span class="linenos"> 9</span>    <span class="n">deps</span> <span class="o">=</span> <span class="p">[</span>
 <span class="linenos">10</span>        <span class="s2">&quot;:datatype&quot;</span><span class="p">,</span>
-<span class="linenos">11</span>        <span class="s2">&quot;@communication//score/mw/com&quot;</span><span class="p">,</span>
-<span class="linenos">12</span>        <span class="s2">&quot;@score-baselibs//score/mw/log&quot;</span><span class="p">,</span>
+<span class="linenos">11</span>        <span class="s2">&quot;@score_communication//score/mw/com&quot;</span><span class="p">,</span>
+<span class="linenos">12</span>        <span class="s2">&quot;@score_baselibs//score/mw/log&quot;</span><span class="p">,</span>
 <span class="linenos">13</span>    <span class="p">],</span>
 <span class="linenos">14</span><span class="p">)</span>
 <span class="linenos">15</span>
@@ -624,8 +624,8 @@ That’s because we want to use it later in the <em>reference integration</em> m
 <span class="linenos">22</span>        <span class="s2">&quot;datatype.h&quot;</span><span class="p">,</span>
 <span class="linenos">23</span>    <span class="p">],</span>
 <span class="linenos">24</span>    <span class="n">deps</span> <span class="o">=</span> <span class="p">[</span>
-<span class="linenos">25</span>        <span class="s2">&quot;@communication//score/mw/com&quot;</span><span class="p">,</span>
-<span class="linenos">26</span>        <span class="s2">&quot;@score-baselibs//score/language/futurecpp&quot;</span><span class="p">,</span>
+<span class="linenos">25</span>        <span class="s2">&quot;@score_communication//score/mw/com&quot;</span><span class="p">,</span>
+<span class="linenos">26</span>        <span class="s2">&quot;@score_baselibs//score/language/futurecpp&quot;</span><span class="p">,</span>
 <span class="linenos">27</span>    <span class="p">],</span>
 <span class="linenos">28</span><span class="p">)</span>
 </pre></div>
@@ -658,7 +658,7 @@ qcc, gcc or llvm toolchain.</p>
 </pre></div>
 </div>
 <p>As you can see, we reference here the <em>score_toolchains_qnx</em> module, as dependency. It contains qnx toolchain including compiler, linker, image
-creation tools and their configuration for the s-core project.</p>
+creation tools and their configuration for the Eclipse S-CORE project.</p>
 <p>TODO: can Niko provide more description on what is happening here?</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -675,23 +675,40 @@ as well, as shown below:</p>
 <span class="linenos">3</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;communication&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.1.1&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;platforms&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.0.11&quot;</span><span class="p">)</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_bazel_platforms&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.0.2&quot;</span><span class="p">)</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="c1"># TRLC dependency for requirements traceability</span>
+<span class="linenos"> 6</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;trlc&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.0.0&quot;</span><span class="p">)</span>
+<span class="linenos"> 7</span><span class="n">git_override</span><span class="p">(</span>
+<span class="linenos"> 8</span>    <span class="n">module_name</span> <span class="o">=</span> <span class="s2">&quot;trlc&quot;</span><span class="p">,</span>
+<span class="linenos"> 9</span>    <span class="n">commit</span> <span class="o">=</span> <span class="s2">&quot;ede35c4411d41abe42b8f19e78f8989ff79ad3d8&quot;</span><span class="p">,</span>
+<span class="linenos">10</span>    <span class="n">remote</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/bmw-software-engineering/trlc.git&quot;</span><span class="p">,</span>
+<span class="linenos">11</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Additionally, we needed to add some modules, as listed above. Scrample application doesn’t need these
+modules, but they are needed by the modules, that scrample application directly depends on.
+<em>platforms</em> and <em>score_bazel_platforms</em> is needed by <em>qnx_toolchain</em> module and <em>tlrc</em> by <em>communication</em> module.
+Bazel module doesn’t inherit dependencies of the module it depends on directly, so you always need
+to specify the whole list of module dependencies in the <em>MODULE.bazel</em> file.</p>
 <p>Till now we’ve just said, that our module depends on another bazel module that defines qcc toolchain. Now
 we want to start using this toolchain in our module and therefore need to specify the platform and
 configure the usage of qcc toolchain in <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/.bazelrc">.bazelrc</a> file.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">build</span><span class="p">:</span><span class="n">_common</span> <span class="o">--</span><span class="nd">@score</span><span class="o">-</span><span class="n">baselibs</span><span class="o">//</span><span class="n">score</span><span class="o">/</span><span class="n">mw</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">detail</span><span class="o">/</span><span class="n">flags</span><span class="p">:</span><span class="n">KUse_Stub_Implementation_Only</span><span class="o">=</span><span class="kc">False</span>
-<span class="linenos"> 2</span><span class="n">build</span><span class="p">:</span><span class="n">_common</span> <span class="o">--</span><span class="nd">@score</span><span class="o">-</span><span class="n">baselibs</span><span class="o">//</span><span class="n">score</span><span class="o">/</span><span class="n">mw</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">flags</span><span class="p">:</span><span class="n">KRemote_Logging</span><span class="o">=</span><span class="kc">False</span>
-<span class="linenos"> 3</span><span class="n">build</span><span class="p">:</span><span class="n">_common</span> <span class="o">--</span><span class="nd">@score</span><span class="o">-</span><span class="n">baselibs</span><span class="o">//</span><span class="n">score</span><span class="o">/</span><span class="n">json</span><span class="p">:</span><span class="n">base_library</span><span class="o">=</span><span class="n">nlohmann</span>
-<span class="linenos"> 4</span><span class="n">build</span><span class="p">:</span><span class="n">_common</span> <span class="o">--</span><span class="nd">@score</span><span class="o">-</span><span class="n">baselibs</span><span class="o">//</span><span class="n">score</span><span class="o">/</span><span class="n">memory</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">flags</span><span class="p">:</span><span class="n">use_typedshmd</span><span class="o">=</span><span class="kc">False</span>
-<span class="linenos"> 5</span><span class="n">build</span><span class="p">:</span><span class="n">_common</span> <span class="o">--</span><span class="nd">@communication</span><span class="o">//</span><span class="n">score</span><span class="o">/</span><span class="n">mw</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">flags</span><span class="p">:</span><span class="n">tracing_library</span><span class="o">=</span><span class="n">stub</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">build</span><span class="p">:</span><span class="n">_common</span> <span class="o">--</span><span class="nd">@score_baselibs</span><span class="o">//</span><span class="n">score</span><span class="o">/</span><span class="n">mw</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">detail</span><span class="o">/</span><span class="n">flags</span><span class="p">:</span><span class="n">KUse_Stub_Implementation_Only</span><span class="o">=</span><span class="kc">False</span>
+<span class="linenos"> 2</span><span class="n">build</span><span class="p">:</span><span class="n">_common</span> <span class="o">--</span><span class="nd">@score_baselibs</span><span class="o">//</span><span class="n">score</span><span class="o">/</span><span class="n">mw</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">flags</span><span class="p">:</span><span class="n">KRemote_Logging</span><span class="o">=</span><span class="kc">False</span>
+<span class="linenos"> 3</span><span class="n">build</span><span class="p">:</span><span class="n">_common</span> <span class="o">--</span><span class="nd">@score_baselibs</span><span class="o">//</span><span class="n">score</span><span class="o">/</span><span class="n">json</span><span class="p">:</span><span class="n">base_library</span><span class="o">=</span><span class="n">nlohmann</span>
+<span class="linenos"> 4</span><span class="n">build</span><span class="p">:</span><span class="n">_common</span> <span class="o">--</span><span class="nd">@score_baselibs</span><span class="o">//</span><span class="n">score</span><span class="o">/</span><span class="n">memory</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">flags</span><span class="p">:</span><span class="n">use_typedshmd</span><span class="o">=</span><span class="kc">False</span>
+<span class="linenos"> 5</span><span class="n">build</span><span class="p">:</span><span class="n">_common</span> <span class="o">--</span><span class="nd">@score_communication</span><span class="o">//</span><span class="n">score</span><span class="o">/</span><span class="n">mw</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">flags</span><span class="p">:</span><span class="n">tracing_library</span><span class="o">=</span><span class="n">stub</span>
 <span class="linenos"> 6</span><span class="n">build</span><span class="p">:</span><span class="n">_common</span> <span class="o">--</span><span class="n">cxxopt</span><span class="o">=-</span><span class="n">Wno</span><span class="o">-</span><span class="n">error</span><span class="o">=</span><span class="n">mismatched</span><span class="o">-</span><span class="n">new</span><span class="o">-</span><span class="n">delete</span>
 <span class="linenos"> 7</span>
 <span class="linenos"> 8</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">config</span><span class="o">=</span><span class="n">_common</span>
 <span class="linenos"> 9</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">noexperimental_merged_skyframe_analysis_execution</span>
-<span class="linenos">10</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">action_env</span><span class="o">=</span><span class="n">BAZEL_DO_NOT_DETECT_CPP_TOOLCHAIN</span><span class="o">=</span><span class="mi">1</span>
-<span class="linenos">11</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">incompatible_enable_cc_toolchain_resolution</span>
-<span class="linenos">12</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">incompatible_strict_action_env</span>
-<span class="hll"><span class="linenos">13</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">platforms</span><span class="o">=</span><span class="nd">@score_toolchains_qnx</span><span class="o">//</span><span class="n">platforms</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span>
-</span><span class="linenos">14</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">sandbox_writable_path</span><span class="o">=/</span><span class="n">var</span><span class="o">/</span><span class="n">tmp</span>
+<span class="linenos">10</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">incompatible_enable_cc_toolchain_resolution</span>
+<span class="linenos">11</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">incompatible_strict_action_env</span>
+<span class="hll"><span class="linenos">12</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">platforms</span><span class="o">=</span><span class="nd">@score_bazel_platforms</span><span class="o">//</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span>
+</span><span class="linenos">13</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">extra_toolchains</span><span class="o">=</span><span class="nd">@toolchains_qnx_qcc</span><span class="o">//</span><span class="p">:</span><span class="n">qcc_x86_64</span>
 </pre></div>
 </div>
 <p>In lines 1-6 we define compiler options, that are related to the code itself, and therefore should be used
@@ -700,7 +717,7 @@ depend on, get built in the context of our bazel module configuration, and there
 that are necessary to build bazel modules we depend on as well.</p>
 <p>Further in line 8 we say, that we take over the common configuration also for the qnx toolchain. Afterwards we specify
 compiler and linker flags, that are relevant for the qnx toolchain only.</p>
-<p>In line 13, that is also highlighted in the code snippet, we finally say, that we want to use <em>qnx toolchain</em>, that we’ve previously
+<p>In line 12-13, that are also highlighted in the code snippet, we finally say, that we want to use <em>qnx toolchain</em>, that we’ve previously
 referenced in the <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/MODULE.bazel">MODULE.bazel</a> file
 and want to build our code for the <em>x86_64-qnx platform</em>. This is important, as our qnx toolchain provides support for multiple platforms,
 e.g. <em>arm</em> and <em>x86_64</em>.</p>

@@ -487,7 +487,7 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">S-Core Book</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Eclipse S-CORE Book</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="technology_overview.html">Overview of technologies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="software_architecture_overview.html">Software Architecture Overview</a></li>
@@ -540,7 +540,7 @@
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">How-Tos</a></li>
     
     
-    <li class="breadcrumb-item"><a href="index.html" class="nav-link">S-Core Book</a></li>
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Eclipse S-CORE Book</a></li>
     
     <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Integration process</span></li>
   </ul>
@@ -561,40 +561,40 @@
                   
   <section id="integration-process">
 <h1>Integration process<a class="headerlink" href="#integration-process" title="Link to this heading">#</a></h1>
-<p id="id1">Integration process in S-Core project is not a trivial thing and as S-Core project is quite young,
+<p id="id1">Integration process in Eclipse S-CORE project is not a trivial thing and as Eclipse S-CORE project is quite young,
 we still gather our experience and adapt it to meet our needs.</p>
 <p>There are several discussions and concepts written to this topic, the most exhaustive description can be
 found in the following <a class="reference external" href="https://eclipse-score.github.io/score/main/design_decisions/DR-002-infra.html">decision record</a>.</p>
 <p>This chapter will not go to much into details and will try to give you the overall idea of the
-integration process for s-core.</p>
+integration process for Eclipse S-CORE.</p>
 <img alt="release_integration_concept" class="align-center" src="../../_images/release_integration_concept.drawio.svg" />
-<section id="compliance-to-s-core-software-development-process">
-<h2>Compliance to s-core software development process<a class="headerlink" href="#compliance-to-s-core-software-development-process" title="Link to this heading">#</a></h2>
-<p>We do encourage every software module inside of the S-Core GitHub organization or also outside of it
-to follow the S-Core development process continiously and introduce it by including approtiated checks into
-the CI/CD pipeline, so that compliance to the S-Core project is checked with every PR. But the fact is, that
+<section id="compliance-to-eclipse-s-core-software-development-process">
+<h2>Compliance to Eclipse S-CORE software development process<a class="headerlink" href="#compliance-to-eclipse-s-core-software-development-process" title="Link to this heading">#</a></h2>
+<p>We do encourage every software module inside of the Eclipse S-CORE GitHub organization or also outside of it
+to follow the Eclipse S-CORE development process continiously and introduce it by including approtiated checks into
+the CI/CD pipeline, so that compliance to the Eclipse S-CORE project is checked with every PR. But the fact is, that
 we can not enforce this, even inside of the GitHub organization. This has various reasons. One reason could be,
 that the software module already exists and is used in multiple other projecs. The other reason could be, that
 the software module was open sourced by another company that needs to follow another internal software development
-process and switching to the S-Core development process can not happen immediately. Therefore, it is possible
+process and switching to the Eclipse S-CORE development process can not happen immediately. Therefore, it is possible
 (but not encouraged), that every software module follows its own software development process inside of its repo.</p>
-<p>To announce a new version of your module and make it available inside of S-Core, you will need to add it to bazel registry.
-This is where our integration process comes in place. To be able to add your module to S-Core bazel registry you need to
+<p>To announce a new version of your module and make it available inside of Eclipse S-CORE, you will need to add it to bazel registry.
+This is where our integration process comes in place. To be able to add your module to Eclipse S-CORE bazel registry you need to
 fulfill two things:</p>
 <ul class="simple">
 <li><p>you need to fulfill our so called “integration gate”. This is a collection of checks and jobs that need to be fulfilled
-be every module in s-core. This automated jobs and checks ensure, that you are compliant with S-Core software development
+be every module in Eclipse S-CORE. This automated jobs and checks ensure, that you are compliant with Eclipse S-CORE software development
 process, e.g. code can be compiled with gcc/qcc compiler, unit tests are not failing, requirements and architecture are
 properly linked and so on.</p></li>
 <li><p>after your software module fulfills integration gate (changes to software module code and further artifacts can be necessary
-for this), you can create a PR to S-Core bazel registry repo. This is the point in time where your PR will be reviewed by
-safety, security and quality managers of the S-Core project. After all findings are fixed, the PR will be merged to the S-Core
-bazel registry and the software module will be officialy available to the S-Core community.</p></li>
+for this), you can create a PR to Eclipse S-CORE bazel registry repo. This is the point in time where your PR will be reviewed by
+safety, security and quality managers of the Eclipse S-CORE project. After all findings are fixed, the PR will be merged to the Eclipse S-CORE
+bazel registry and the software module will be officialy available to the Eclipse S-CORE community.</p></li>
 </ul>
 </section>
 <section id="reference-integration">
 <h2>Reference integration<a class="headerlink" href="#reference-integration" title="Link to this heading">#</a></h2>
-<p>The first step ensures, that the software module is compliant to the s-core development process. But it is not ensured
+<p>The first step ensures, that the software module is compliant to the Eclipse S-CORE development process. But it is not ensured
 yet, that the new version of the software module works together with other modules.
 This is where the reference integration comes into place.</p>
 <p>Reference integration repository contains reference image(s), that are used to execute feature integration tests, that ensure,
@@ -605,7 +605,7 @@ automatically the version 1.0 of the module A, independently of what is configur
 a consistent unique state of software module versions in the reference integration repository.</p>
 <p>It can happen that introducing a newer version of the software module into reference integration repository lead to problems, as other modules
 are not compatible with changes done in the newer version of the software module. In theory, such problems should be avoided using proper planning and concept
-of deprecated interfaces. In praxis, such situations can not be always avoided and in case they happen, S-Core integration team should
+of deprecated interfaces. In praxis, such situations can not be always avoided and in case they happen, Eclipse S-CORE integration team should
 take over solving of such kind of problems.</p>
 <p>Based on agreed timeline and in case all feature integration tests can be successfully executed and other S-Core project metrics are fulfilled,
 a release of reference integration repository, hereby an official S-Core release, can be done. It consists mainly of</p>
@@ -665,7 +665,7 @@ by the reference integration repo and therefore indicates all software modules, 
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compliance-to-s-core-software-development-process">Compliance to s-core software development process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compliance-to-eclipse-s-core-software-development-process">Compliance to Eclipse S-CORE software development process</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-integration">Reference integration</a></li>
 </ul>
   </nav></div>

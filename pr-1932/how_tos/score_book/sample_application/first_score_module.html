@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>First S-Core Module &#8212; S-CORE  documentation</title>
+    <title>First Eclipse S-CORE Module &#8212; S-CORE  documentation</title>
   
   
   
@@ -487,14 +487,14 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">S-Core Book</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Eclipse S-CORE Book</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../technology_overview.html">Overview of technologies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../software_architecture_overview.html">Software Architecture Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../module_structure_overview.html">Module Structure Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../integration_process.html">Integration process</a></li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Sample application</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">First S-Core Module</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">First Eclipse S-CORE Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="doc_generation.html">Documentation generation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="building_source_code.html">Building source code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="reference_integration.html">Reference integration</a></li>
@@ -548,12 +548,12 @@
     <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">How-Tos</a></li>
     
     
-    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">S-Core Book</a></li>
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Eclipse S-CORE Book</a></li>
     
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">Sample application</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">First S-Core Module</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">First Eclipse S-CORE Module</span></li>
   </ul>
 </nav>
 </div>
@@ -570,19 +570,19 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="first-s-core-module">
-<h1>First S-Core Module<a class="headerlink" href="#first-s-core-module" title="Link to this heading">#</a></h1>
+  <section id="first-eclipse-s-core-module">
+<h1>First Eclipse S-CORE Module<a class="headerlink" href="#first-eclipse-s-core-module" title="Link to this heading">#</a></h1>
 <p>The very first step would be to create a repository, where the future application should be located. Before you can do this,
-you need to ensure that you are an official contributor in the S-Core project, otherwise you will not have any power in the project.
+you need to ensure that you are an official contributor in the Eclipse S-CORE project, otherwise you will not have any power in the project.
 How to do this is described in
-<a class="reference external" href="https://eclipse-score.github.io/score/main/contribute/general/contribution_attribution.html#">Actions to ensure Proper Contribution Attribution in Eclipse S-Core</a>.</p>
+<a class="reference external" href="https://eclipse-score.github.io/score/main/contribute/general/contribution_attribution.html#">Actions to ensure Proper Contribution Attribution in Eclipse Eclipse S-CORE</a>.</p>
 <p>After you’ve created an Eclipse account, accepted Eclipse Contributor Agreement (ECA) and connected you GitHub
-account with your Eclipse Account, you should approach one of the S-Core Project Leads, that are listed at the official
+account with your Eclipse Account, you should approach one of the Eclipse S-CORE Project Leads, that are listed at the official
 <a class="reference external" href="https://projects.eclipse.org/projects/automotive.score/who">Eclipse SDV S-Core webpage</a> and ask them to add you
-to the list of the official contributors in the S-Core GitHub organization. The best way to approach S-Core
+to the list of the official contributors in the Eclipse S-CORE GitHub organization. The best way to approach Eclipse S-CORE
 project leads would be over the <a class="reference external" href="https://sdv.eclipse.org/get-engaged/">eclipse sdv slack channel</a>.</p>
-<p>Once you are part of S-Core GitHub organization, you can request a repository for your application.
-In the S-Core project this is done according to the rules of the Eclipse organization.
+<p>Once you are part of Eclipse S-CORE GitHub organization, you can request a repository for your application.
+In the Eclipse S-CORE project this is done according to the rules of the Eclipse organization.
 The majority of the configuration for the GitHub organization is done using <a class="reference external" href="https://otterdog.readthedocs.io/en/latest/">otterdog configuration</a>
 in the following repository: <a class="github reference external" href="https://github.com/eclipse-score/.eclipsefdn">eclipse-score/.eclipsefdn</a>. Create a private fork of this repository and modify
 otterdog configuration in <a class="reference external" href="https://github.com/eclipse-score/.eclipsefdn/blob/main/otterdog/eclipse-score.jsonnet">otterdog/eclipse-score.jsonnet</a>
@@ -599,7 +599,7 @@ file by adding a new repository, in our case we do it for scrample repository li
 </pre></div>
 </div>
 <p>Afterwards create a PR in the original <a class="github reference external" href="https://github.com/eclipse-score/.eclipsefdn">eclipse-score/.eclipsefdn</a> repository and wait till it will be approved
-by S-Core project lead and eclipse security team.</p>
+by Eclipse S-CORE project lead and eclipse security team.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>To get your PR approved sooner, it is a good idea to make sure that score project leads and eclipse security team
@@ -612,11 +612,11 @@ are aware of your PR, therefore you can put smth. like this into PR’s comment:
 </div>
 </div>
 <p>As soon as your PR is approved and merged (normally done by either security team or project lead),
-you will be able to find your repo in the S-Core GitHub organization repositories overview.</p>
+you will be able to find your repo in the Eclipse S-CORE GitHub organization repositories overview.</p>
 <a class="reference internal image-reference" href="../../../_images/repository_layout.png"><img alt="repository layout" class="align-center" src="../../../_images/repository_layout.png" style="width: 500px;" />
 </a>
-<p>If you will open the repository, you will see, that it is not empty. All repositories in S-Core are created based on
-<a class="reference external" href="https://github.com/eclipse-score/module_template">S-Core repository template</a>.
+<p>If you will open the repository, you will see, that it is not empty. All repositories in Eclipse S-CORE are created based on
+<a class="reference external" href="https://github.com/eclipse-score/module_template">Eclipse S-CORE repository template</a>.
 The <a class="reference external" href="https://github.com/eclipse-score/module_template/blob/main/README.md">README.md</a> file of the repository already
 gives a good explanation regarding the structure of the repository, but let us have a
 more detailed look at some of the files and folders.</p>
@@ -627,7 +627,7 @@ by every PR or as part of the integration gate <a class="reference internal" hre
 </section>
 <section id="vscode">
 <h2>.vscode<a class="headerlink" href="#vscode" title="Link to this heading">#</a></h2>
-<p>Provides S-Core recommended configuration for your VS Code setup including the code completion patterns for requirements and architecture
+<p>Provides Eclipse S-CORE recommended configuration for your VS Code setup including the code completion patterns for requirements and architecture
 in <a class="reference external" href="https://github.com/eclipse-score/module_template/blob/main/.vscode/restructuredtext.code-snippets">.vscode/restructuredtext.code-snippets</a>.</p>
 </section>
 <section id="docs">
@@ -663,7 +663,7 @@ in the upcoming chapters with e.g. toolchains configuration, but here we just wa
 </span><span class="hll"><span class="linenos">9</span><span class="n">common</span> <span class="o">--</span><span class="n">registry</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">bcr</span><span class="o">.</span><span class="n">bazel</span><span class="o">.</span><span class="n">build</span>
 </span></pre></div>
 </div>
-<p>The line number 8 points to the S-Core <a class="github reference external" href="https://github.com/eclipse-score/bazel_registry">eclipse-score/bazel_registry</a>, where all official versions of S-Core modules are published.
+<p>The line number 8 points to the Eclipse S-CORE <a class="github reference external" href="https://github.com/eclipse-score/bazel_registry">eclipse-score/bazel_registry</a>, where all official versions of Eclipse S-CORE modules are published.
 The line number 9 points to the common bazel registry, with common bazel modules are made available for everyone.</p>
 <p>That means, that when we will reference a module as a dependency to our scrample application, bazel will search for the
 modules in one of these two locations.</p>
@@ -679,7 +679,7 @@ Let us check <a class="reference external" href="https://github.com/eclipse-scor
 </pre></div>
 </div>
 <p>Here, we first declare our module, by giving it the name and its current version. Please be aware, that only after our module was published
-in the S-Core bazel registry, other modules can access it.</p>
+in the Eclipse S-CORE bazel registry, other modules can access it.</p>
 <p>We need to give our module now a reasonable name, so let us replace <em>cpp_rust_template_repository</em> with <em>score_scrample</em>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">module</span><span class="p">(</span>
 <span class="linenos">2</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_scrample&quot;</span><span class="p">,</span>
@@ -687,7 +687,7 @@ in the S-Core bazel registry, other modules can access it.</p>
 <span class="linenos">4</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Please be aware, that there is a naming convention, that all modules names in S-Core should start with <em>score_</em> prefix.</p>
+<p>Please be aware, that there is a naming convention, that all modules names in Eclipse S-CORE should start with <em>score_</em> prefix.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;rules_python&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;1.4.1&quot;</span><span class="p">)</span>
 <span class="linenos"> 2</span>
 <span class="linenos"> 3</span><span class="n">PYTHON_VERSION</span> <span class="o">=</span> <span class="s2">&quot;3.12&quot;</span>
@@ -734,7 +734,7 @@ talk about these in more details later in the upcoming chapters.</p>
 <span class="linenos">5</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_docs_as_code&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;1.1.0&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Finally, we add dependency to S-Core native modules, <em>score_tooling</em> and <em>score_docs_as_code</em>, that enables us
+<p>Finally, we add dependency to Eclipse S-CORE native modules, <em>score_tooling</em> and <em>score_docs_as_code</em>, that enables us
 building documentation and execute different kinds of checks, e.g. license checker.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -755,7 +755,7 @@ contains main bazel targets on the top level of the scrample project:</p>
 <span class="linenos">3</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;//:project_config.bzl&quot;</span><span class="p">,</span> <span class="s2">&quot;PROJECT_CONFIG&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>First of all, we load bazel rules and macros, implemented in S-Core context from the modules, that we’ve defined as dependencies
+<p>First of all, we load bazel rules and macros, implemented in Eclipse S-CORE context from the modules, that we’ve defined as dependencies
 in the MODULE.bazel file, e.g. <a class="github reference external" href="https://github.com/eclipse-score/docs-as-code">eclipse-score/docs-as-code</a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">copyright_checker</span><span class="p">(</span>
 <span class="linenos"> 2</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;copyright&quot;</span><span class="p">,</span>
