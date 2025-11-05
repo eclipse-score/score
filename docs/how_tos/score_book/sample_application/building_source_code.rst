@@ -19,10 +19,10 @@ file.
         visibility = ["//visibility:public"],
         deps = [
             ":sample_sender_receiver",
-            "@communication//score/mw/com",
+            "@score_communication//score/mw/com",
             "@boost.program_options",
-            "@score-baselibs//score/language/futurecpp",
-            "@score-baselibs//score/mw/log",
+            "@score_baselibs//score/language/futurecpp",
+            "@score_baselibs//score/mw/log",
         ],
     )
 
@@ -49,8 +49,8 @@ That's because we want to use it later in the *reference integration* module.
         ],
         deps = [
             ":datatype",
-            "@communication//score/mw/com",
-            "@score-baselibs//score/mw/log",
+            "@score_communication//score/mw/com",
+            "@score_baselibs//score/mw/log",
         ],
     )
 
@@ -63,8 +63,8 @@ That's because we want to use it later in the *reference integration* module.
             "datatype.h",
         ],
         deps = [
-            "@communication//score/mw/com",
-            "@score-baselibs//score/language/futurecpp",
+            "@score_communication//score/mw/com",
+            "@score_baselibs//score/language/futurecpp",
         ],
     )
 
@@ -126,28 +126,48 @@ as well, as shown below:
 
     bazel_dep(name = "communication", version = "0.1.1")
 
+.. code-block:: python
+    :linenos:
+    
+    bazel_dep(name = "platforms", version = "0.0.11")
+
+    bazel_dep(name = "score_bazel_platforms", version = "0.0.2")
+
+    # TRLC dependency for requirements traceability
+    bazel_dep(name = "trlc", version = "0.0.0")
+    git_override(
+        module_name = "trlc",
+        commit = "ede35c4411d41abe42b8f19e78f8989ff79ad3d8",
+        remote = "https://github.com/bmw-software-engineering/trlc.git",
+    )
+
+Additionally, we needed to add some modules, as listed above. Scrample application doesn't need these
+modules, but they are needed by the modules, that scrample application directly depends on.
+*platforms* and *score_bazel_platforms* is needed by *qnx_toolchain* module and *tlrc* by *communication* module.
+Bazel module doesn't inherit dependencies of the module it depends on directly, so you always need
+to specify the whole list of module dependencies in the *MODULE.bazel* file.
+
 Till now we've just said, that our module depends on another bazel module that defines qcc toolchain. Now
 we want to start using this toolchain in our module and therefore need to specify the platform and
 configure the usage of qcc toolchain in `.bazelrc <https://github.com/eclipse-score/scrample/blob/main/.bazelrc>`_ file.
 
 .. code-block:: python
     :linenos:
-    :emphasize-lines: 13
+    :emphasize-lines: 12
 
-    build:_common --@score-baselibs//score/mw/log/detail/flags:KUse_Stub_Implementation_Only=False
-    build:_common --@score-baselibs//score/mw/log/flags:KRemote_Logging=False
-    build:_common --@score-baselibs//score/json:base_library=nlohmann
-    build:_common --@score-baselibs//score/memory/shared/flags:use_typedshmd=False
-    build:_common --@communication//score/mw/com/flags:tracing_library=stub
+    build:_common --@score_baselibs//score/mw/log/detail/flags:KUse_Stub_Implementation_Only=False
+    build:_common --@score_baselibs//score/mw/log/flags:KRemote_Logging=False
+    build:_common --@score_baselibs//score/json:base_library=nlohmann
+    build:_common --@score_baselibs//score/memory/shared/flags:use_typedshmd=False
+    build:_common --@score_communication//score/mw/com/flags:tracing_library=stub
     build:_common --cxxopt=-Wno-error=mismatched-new-delete
 
     build:x86_64-qnx --config=_common
     build:x86_64-qnx --noexperimental_merged_skyframe_analysis_execution
-    build:x86_64-qnx --action_env=BAZEL_DO_NOT_DETECT_CPP_TOOLCHAIN=1
     build:x86_64-qnx --incompatible_enable_cc_toolchain_resolution
     build:x86_64-qnx --incompatible_strict_action_env
-    build:x86_64-qnx --platforms=@score_toolchains_qnx//platforms:x86_64-qnx
-    build:x86_64-qnx --sandbox_writable_path=/var/tmp
+    build:x86_64-qnx --platforms=@score_bazel_platforms//:x86_64-qnx
+    build:x86_64-qnx --extra_toolchains=@toolchains_qnx_qcc//:qcc_x86_64
 
 In lines 1-6 we define compiler options, that are related to the code itself, and therefore should be used
 during the compilation of our source code by all toolchains. It is important to understand, that bazel modules we
@@ -157,7 +177,7 @@ that are necessary to build bazel modules we depend on as well.
 Further in line 8 we say, that we take over the common configuration also for the qnx toolchain. Afterwards we specify
 compiler and linker flags, that are relevant for the qnx toolchain only.
 
-In line 13, that is also highlighted in the code snippet, we finally say, that we want to use *qnx toolchain*, that we've previously
+In line 12-13, that are also highlighted in the code snippet, we finally say, that we want to use *qnx toolchain*, that we've previously
 referenced in the `MODULE.bazel <https://github.com/eclipse-score/scrample/blob/main/MODULE.bazel>`_ file
 and want to build our code for the *x86_64-qnx platform*. This is important, as our qnx toolchain provides support for multiple platforms,
 e.g. *arm* and *x86_64*.
