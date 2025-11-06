@@ -48,7 +48,7 @@ Inputs and outputs
 
 Available information
 ~~~~~~~~~~~~~~~~~~~~~
-- Version: 1.15.0
+- Version: 1.15.0 [1]_
 - Official repository: https://github.com/google/googletest
 - Official documentation: https://google.github.io/googletest
 - API Reference: https://google.github.io/googletest/reference/testing.html
@@ -197,3 +197,7 @@ GTest is an open-source tool and does not provide formal, vendor-defined require
 Therefore, the testing team is responsible for identifying the specific GTest functionality
 used in the project. Based on this, requirements for the utilized features must be derived from
 the available documentation and GTest validated against defined requirements.
+
+
+.. [1] The tool version mentioned in this document is preliminary.
+       It is subject to change and will be updated in future.
