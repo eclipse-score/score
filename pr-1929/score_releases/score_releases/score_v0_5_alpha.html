@@ -475,8 +475,6 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">S-CORE Releases</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">S-Core v0.5-alpha release notes</a></li>
-
-
 </ul>
 </details></li>
 </ul>
@@ -544,7 +542,7 @@
                   
   <section id="s-core-v0-5-alpha-release-notes">
 <h1>S-Core v0.5-alpha release notes<a class="headerlink" href="#s-core-v0-5-alpha-release-notes" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-8dcf6e2e">
+<div class="need_container docutils container" id="SNCB-7c299375">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__score_v05_alpha_release_note">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -596,26 +594,29 @@
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
 <p>This document provides an overview of the changes, improvements, and bug fixes included in the software platform release version v0.5.0-alpha.
-This is the very first release of the S-Core platform. The software architectue and implemented modules are presented at the image below.</p>
+This is the very first release of the <strong>Eclipse S-Core platform</strong>. The software architectue and implemented modules are presented at the image below.</p>
 <a class="reference internal image-reference" href="../../_images/architecture.drawio.svg"><img alt="Architecture overview" class="align-center" src="../../_images/architecture.drawio.svg" style="width: 1000px;" />
 </a>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-</section>
-</section>
 <section id="timeline">
-<h1>Timeline<a class="headerlink" href="#timeline" title="Link to this heading">#</a></h1>
-<p>The current timeline for Eclipse S-Core releases is presented below</p>
+<h3>Timeline<a class="headerlink" href="#timeline" title="Link to this heading">#</a></h3>
+<p>The current timeline for Eclipse S-Core releases is shown below.</p>
 <a class="reference internal image-reference" href="../../_images/score_release_plan.drawio.svg"><img alt="Architecture overview" class="align-center" src="../../_images/score_release_plan.drawio.svg" style="width: 800px;" />
 </a>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
+<p>For more detailed planning overview please check our <a class="reference external" href="https://github.com/orgs/eclipse-score/projects/17/views/26">GitHub project</a>.</p>
 </section>
 <section id="s-core-book">
-<h1>S-Core book<a class="headerlink" href="#s-core-book" title="Link to this heading">#</a></h1>
-<p>First version of S-Core book, that can be used as “how-to” for all who wants to start with S-Core project, can be found here: TODO Link.</p>
+<h3>S-Core book<a class="headerlink" href="#s-core-book" title="Link to this heading">#</a></h3>
+<p>First version of <strong>Eclipse S-Core book</strong>, that can be used as “how-to” for all who wants to start with S-Core project, can be found here: TODO Link.
+This book provides explanation of general concepts of <strong>Eclipse S-Core project</strong> and contains a “step-by-step” guide for building a first application
+based on Eclipse S-Core platform modules.</p>
+</section>
+</section>
 <section id="new-features">
 <h2>New Features<a class="headerlink" href="#new-features" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -649,7 +650,28 @@ This is the very first release of the S-Core platform. The software architectue 
 <li><p><strong>Baselibs</strong>: (Version). Link to Software module release note.</p></li>
 <li><p><strong>OS</strong>: (Version). Link to Software module release note (external module).</p></li>
 <li><p><strong>Persistency</strong>: (Version). Link to Software module release note.</p></li>
-<li><p><strong>Reference integration</strong>: (Version). Link to Software module release note.</p></li>
+<li><p><strong>Reference integration</strong>: central place for integration of Eclipse S-Core modules</p>
+<ul>
+<li><p><strong>Link to release</strong>: tbd</p></li>
+<li><p><strong>Release notes</strong></p>
+<ul>
+<li><p>Provides reference QNX x86_64 qemu image, for usage see <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/README.md">reference integration README</a></p></li>
+<li><p>Provides integration of all 0.5 modules including <a class="reference external" href="https://github.com/eclipse-score/scrample">scrample demo application</a></p></li>
+<li><p>Provides <a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu/test/itf">basic itf tests</a>.
+Check following <a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu#build-commands">build commands</a> for running itf tests locally and for other important commands.</p></li>
+<li><p>Provide CI/CD workflows to ensure stability of the reference integration:</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_on_every_pr.yml">build and test on every pr</a> executes all itf tests in reference qnx image on every pr
+to ensure that the image is still functional</p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/release_verification.yml">release verification</a> does the same on every release</p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/test_integration.yml">test integration</a> for every pr and on every release builds all functional modules of Eclipse S-Core v0.5
+release and additionally executes component tests with <a class="github reference external" href="score-test-scenarioshttps://github.com/eclipse-score/testing_tools">eclipse-score/testing_tools</a> framework for some of components.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </section>
 <section id="associated-infrastructure-modules">
@@ -658,7 +680,22 @@ This is the very first release of the S-Core platform. The software architectue 
 <li><p><strong>process_description</strong>: (Version). Process description of S-CORE. Link to release note?</p></li>
 <li><p><strong>docs-as-code</strong>: (Version). Tooling for linking and generation of documentation. Link to release note?</p></li>
 <li><p><strong>tooling</strong>: (Version). Provided tooling for S-CORE development. Link to release note?</p></li>
-<li><p><strong>itf</strong>: (Version). Integration Test Framework. Link to release note?</p></li>
+<li><p><strong>ITF</strong>: Integration Testing Framework for execution of feature integration tests on the reference image</p>
+<ul>
+<li><p><strong>Link to release</strong>: <a class="reference external" href="https://github.com/eclipse-score/itf/releases/tag/0.1.0">itf v0.1.0</a></p></li>
+<li><p><strong>Release notes</strong></p>
+<ul>
+<li><p>Bazel setup for macro <em>py_itf_test</em></p></li>
+<li><p>Pinging target</p></li>
+<li><p>SSH and SPTP module</p></li>
+<li><p>DLT module</p></li>
+<li><p>Starting Qemu from <a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu">reference_integration</a> repository</p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/itf/blob/main/README.md">ITF readme</a></p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/README.md#build-commands">reference_integration readme</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </section>
 <section id="performed-verification">
@@ -666,7 +703,8 @@ This is the very first release of the S-Core platform. The software architectue 
 <p>Following tests were executed:</p>
 <ul class="simple">
 <li><p>every module has executed its unit-tests</p></li>
-<li><p>few basic integration tests were executed with reference integration qnx image in Qemu as can be seen here: TODO link.</p></li>
+<li><p>few basic integration tests were executed with reference integration qnx image in Qemu as can be seen e.g. in the following <a class="reference external" href="https://github.com/eclipse-score/reference_integration/actions/runs/19128779084/job/54664320615#step:7:689">Action Run</a>.</p></li>
+<li><p>for some of the modules (<strong>TODO</strong>), component tests with score-test-scenarios framework were executed</p></li>
 </ul>
 </section>
 <section id="known-issues">
@@ -734,12 +772,11 @@ This is the very first release of the S-Core platform. The software architectue 
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">S-Core v0.5-alpha release notes</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#timeline">Timeline</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#s-core-book">S-Core book</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#timeline">Timeline</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#s-core-book">S-Core book</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-features">New Features</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improvements">Improvements</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bug-fixes">Bug Fixes</a></li>
@@ -750,9 +787,6 @@ This is the very first release of the S-Core platform. The software architectue 
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upgrade-instructions">Upgrade Instructions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contact-information">Contact Information</a></li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
   <div class="sidebar-secondary-item">
