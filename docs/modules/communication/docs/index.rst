@@ -31,5 +31,18 @@ Module Documents
 ================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :titlesonly:
+   :glob:
+
+   manual/index.rst
+
+Requirements
+------------
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :glob:
+
+   ./requirements/aou_req.rst
