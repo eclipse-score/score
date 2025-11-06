@@ -57,7 +57,7 @@ S-Core book
 ------------
 First version of **Eclipse S-Core book**, that can be used as "how-to" for all who wants to start with S-Core project, can be found here: TODO Link.
 This book provides explanation of general concepts of **Eclipse S-Core project** and contains a "step-by-step" guide for building a first application
-based on Eclipse S-Core platform modules.  
+based on Eclipse S-Core platform modules.
 
 New Features
 ^^^^^^^^^^^^^
@@ -68,6 +68,7 @@ New Features
 - **Logging**
 - **Persistency Key-Value-Storage**
 - **Reference integration**
+- **Orchestration and Kyron async runtime for Rust**
 
 Improvements
 ^^^^^^^^^^^^^
@@ -82,13 +83,32 @@ Bug Fixes
 Integrated Software Modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- **Communication**: (Version). Link to Software module release note. 
-- **FEO**: (Version). Link to Software module release note. 
+- **Communication**: (Version). Link to Software module release note.
+- **FEO**: (Version). Link to Software module release note.
 - **Logging**: (Version). Link to Software module release note.
 - **Tracing**: (Version). Link to Software module release note.
 - **Baselibs**: (Version). Link to Software module release note.
 - **OS**: (Version). Link to Software module release note (external module).
-- **Persistency**: (Version). Link to Software module release note.
+- **Orchestrator**: Orchestration framework and safe async runtime called kyron for Rust
+
+  - **Link to release**: `orchestrator v0.0.3 <https://github.com/eclipse-score/orchestrator/releases/tag/v0.0.3>`_
+  - **Release notes**:
+
+    - Provides Kyron - async runtime for Rust. Kyron is a customizable, high-performance async/await runtime designed for advanced concurrent programming with focus on funcional safety.
+      It allows fine-grained control over scheduling, thread management, and workload isolation through configurable execution engines.
+
+      - `Read more on scope. <https://github.com/eclipse-score/orchestrator/blob/main/src/kyron/doc/features.md>`__
+      - `Check out the examples. <https://github.com/eclipse-score/orchestrator/tree/main/src/kyron/examples>`__
+
+    - Provides Orchestration - framework to build Task Chains with deterministic execution flow.
+      The Orchestrator framework provides a structured, declarative way to define cause-effect chains and timing requirements within software applications.
+      It enables developers to specify control flow, timing constraints, and error handling in a platform-independent manner.
+      The Orchestrator integrates seamlessly with the kyron, clearly separating application logic from deployment and resource management.
+
+      - `Read more on scope. <https://github.com/eclipse-score/orchestrator/blob/main/src/orchestration/doc/features.md>`__
+      - `Check out the examples. <https://github.com/eclipse-score/orchestrator/tree/main/src/orchestration/examples>`__
+
+
 - **Reference integration**: central place for integration of Eclipse S-Core modules
 
   - **Link to release**: tbd
@@ -97,14 +117,14 @@ Integrated Software Modules
     - Provides reference QNX x86_64 qemu image, for usage see `reference integration README <https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/README.md>`_
     - Provides integration of all 0.5 modules including `scrample demo application <https://github.com/eclipse-score/scrample>`_
     - Provides `basic itf tests <https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu/test/itf>`_.
-      Check following `build commands <https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu#build-commands>`_ for running itf tests locally and for other important commands.  
+      Check following `build commands <https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu#build-commands>`_ for running itf tests locally and for other important commands.
     - Provide CI/CD workflows to ensure stability of the reference integration:
-       
+
       - `build and test on every pr <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_on_every_pr.yml>`_ executes all itf tests in reference qnx image on every pr
         to ensure that the image is still functional
-      - `release verification <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/release_verification.yml>`_ does the same on every release    
+      - `release verification <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/release_verification.yml>`_ does the same on every release
       - `test integration <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/test_integration.yml>`_ for every pr and on every release builds all functional modules of Eclipse S-Core v0.5
-        release and additionally executes component tests with `<score-test-scenarios https://github.com/eclipse-score/testing_tools>`_ framework for some of components.     
+        release and additionally executes component tests with `<score-test-scenarios https://github.com/eclipse-score/testing_tools>`_ framework for some of components.
 
 
 Associated Infrastructure Modules
@@ -126,6 +146,16 @@ Associated Infrastructure Modules
     - `ITF readme <https://github.com/eclipse-score/itf/blob/main/README.md>`_
     - `reference_integration readme <https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/README.md#build-commands>`_
 
+- **Test Scenarios**: Testing framework providing a backend for testers to create parametrizable scenarios in Rust and C++ which can be used in common test case implementation validating parallel implementations.
+
+
+  - **Link to release**: `Test Scenarios v0.3.0  <https://github.com/eclipse-score/testing_tools/releases/tag/v0.3.0>`_
+  - **Release notes**
+
+    - Provides test_scenarios_cpp - C++ framework for defining, running, and managing test scenarios in a structured and extensible way.
+    - Provides test_scenarios_rust - equivalent implemented in Rust.
+    - Both frameworks share the same concepts and allow to define parametrizable test scenarios that can be used in common test case implementations.
+      They are designed to support automated testing, scenario grouping, and integration with CLI tools.
 
 Performed Verification
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -137,7 +167,7 @@ Following tests were executed:
 
 Known Issues
 ^^^^^^^^^^^^^^^^
-- see release notes of every module seperately 
+- see release notes of every module seperately
 
 Upgrade Instructions
 ^^^^^^^^^^^^^^^^^^^^^^^^
