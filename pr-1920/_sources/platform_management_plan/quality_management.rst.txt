@@ -231,10 +231,6 @@ his knowledge in quality SW development by:
 
 - by attending the project's ASPICE 4.0 SW management and development training.
 
-Additionally, the project repository shall be organized in a way that independent roles (to the technical solution)
-have to approve any pull request before it's merged. The persons who are able to approve need to be qualified
-according to the roles description :need:`PROCESS_rl__quality_manager`.
-
 The successful checking of the committers' skills and the independent roles is ensured by the :need:`PROCESS_rl__project_lead`
 and :need:`PROCESS_rl__quality_manager` who record/check this in the role assignment document.
 
@@ -276,12 +272,14 @@ The quality management status :need:`PROCESS_wp__qms_report` is reported as defi
 
 **Escalation**
 
-- :need:`PROCESS_rl__quality_manager` to steering committee documented in :need:`doc__project_mgt_plan`.
+If needed a escalation can be done in three steps. First :need:`PROCESS_rl__quality_manager` shall escalate to
+the :need:`PROCESS_rl__project_lead`. Then to the project steering committee, documented in :need:`doc__project_mgt_plan`.
+Finally to the Eclipse Foundation if the rules of the Eclipse handbook are not followed.
 
 **Examples for valid escalation causes are:**
 
 - Quality issues cannot be resolved on feature level or with the available resources.
-- There are conflicting points of view between the :need:`PROCESS_rl__project_lead`, :need:`PROCESS_rl__project_lead`, :need:`PROCESS_rl__safety_manager`, :need:`PROCESS_rl__security_manager` and the :need:`PROCESS_rl__quality_manager`.
+- There are conflicting points of view between the :need:`PROCESS_rl__project_lead`, :need:`PROCESS_rl__safety_manager`, :need:`PROCESS_rl__security_manager` and the :need:`PROCESS_rl__quality_manager`.
 
 4.3 Quality Management Specifics
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
