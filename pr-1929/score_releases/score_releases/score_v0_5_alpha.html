@@ -542,7 +542,7 @@
                   
   <section id="s-core-v0-5-alpha-release-notes">
 <h1>S-Core v0.5-alpha release notes<a class="headerlink" href="#s-core-v0-5-alpha-release-notes" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-23403d41">
+<div class="need_container docutils container" id="SNCB-4b07d663">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__score_v05_alpha_release_note">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -626,6 +626,7 @@ based on Eclipse S-Core platform modules.</p>
 <li><p><strong>Logging</strong></p></li>
 <li><p><strong>Persistency Key-Value-Storage</strong></p></li>
 <li><p><strong>Reference integration</strong></p></li>
+<li><p><strong>Orchestration and Kyron async runtime for Rust</strong></p></li>
 </ul>
 </section>
 <section id="improvements">
@@ -649,7 +650,31 @@ based on Eclipse S-Core platform modules.</p>
 <li><p><strong>Tracing</strong>: (Version). Link to Software module release note.</p></li>
 <li><p><strong>Baselibs</strong>: (Version). Link to Software module release note.</p></li>
 <li><p><strong>OS</strong>: (Version). Link to Software module release note (external module).</p></li>
-<li><p><strong>Persistency</strong>: (Version). Link to Software module release note.</p></li>
+<li><p><strong>Orchestrator</strong>: Orchestration framework and safe async runtime called kyron for Rust</p>
+<ul>
+<li><p><strong>Link to release</strong>: <a class="reference external" href="https://github.com/eclipse-score/orchestrator/releases/tag/v0.0.3">orchestrator v0.0.3</a></p></li>
+<li><p><strong>Release notes</strong>:</p>
+<ul>
+<li><p>Provides Kyron - async runtime for Rust. Kyron is a customizable, high-performance async/await runtime designed for advanced concurrent programming with focus on funcional safety.
+It allows fine-grained control over scheduling, thread management, and workload isolation through configurable execution engines.</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/orchestrator/blob/main/src/kyron/doc/features.md">Read more on scope.</a></p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/orchestrator/tree/main/src/kyron/examples">Check out the examples.</a></p></li>
+</ul>
+</li>
+<li><p>Provides Orchestration - framework to build Task Chains with deterministic execution flow.
+The Orchestrator framework provides a structured, declarative way to define cause-effect chains and timing requirements within software applications.
+It enables developers to specify control flow, timing constraints, and error handling in a platform-independent manner.
+The Orchestrator integrates seamlessly with the kyron, clearly separating application logic from deployment and resource management.</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/orchestrator/blob/main/src/orchestration/doc/features.md">Read more on scope.</a></p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/orchestrator/tree/main/src/orchestration/examples">Check out the examples.</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li><p><strong>Reference integration</strong>: central place for integration of Eclipse S-Core modules</p>
 <ul>
 <li><p><strong>Link to release</strong>: tbd</p></li>
@@ -692,6 +717,19 @@ release and additionally executes component tests with <a class="github referenc
 <li><p>Starting Qemu from <a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu">reference_integration</a> repository</p></li>
 <li><p><a class="reference external" href="https://github.com/eclipse-score/itf/blob/main/README.md">ITF readme</a></p></li>
 <li><p><a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/README.md#build-commands">reference_integration readme</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Test Scenarios</strong>: Testing framework providing a backend for testers to create parametrizable scenarios in Rust and C++ which can be used in common test case implementation validating parallel implementations.</p>
+<ul>
+<li><p><strong>Link to release</strong>: <a class="reference external" href="https://github.com/eclipse-score/testing_tools/releases/tag/v0.3.0">Test Scenarios v0.3.0</a></p></li>
+<li><p><strong>Release notes</strong></p>
+<ul>
+<li><p>Provides test_scenarios_cpp - C++ framework for defining, running, and managing test scenarios in a structured and extensible way.</p></li>
+<li><p>Provides test_scenarios_rust - equivalent implemented in Rust.</p></li>
+<li><p>Both frameworks share the same concepts and allow to define parametrizable test scenarios that can be used in common test case implementations.
+They are designed to support automated testing, scenario grouping, and integration with CLI tools.</p></li>
 </ul>
 </li>
 </ul>
