@@ -59,7 +59,7 @@ can be found in official documentation:
 
 - Official documentation: https://bazel.build
 - GitHub repository: https://github.com/bazelbuild/bazel
-- Version: 8.3.0 (https://github.com/eclipse-score/score/blob/main/.bazelversion)
+- Version: 8.3.0 [1]_
 
 
 Usage constraints:
@@ -74,12 +74,16 @@ Installation and integration
 Installation
 ~~~~~~~~~~~~
 
-Recommended way of bazel usage in S-CORE project is via devcontainers.
+Recommended way of bazel usage in S-Core project is via devcontainers.
 Corresponding devcontainers for each module and platform as all provided
 in corresponding repositories.
 
 E.g.
 https://github.com/eclipse-score/score/tree/main/.devcontainer
+
+The concrete version of bazel determined at runtime from .bazelversion file in project root folder.
+
+
 
 Integration
 ~~~~~~~~~~~
@@ -332,3 +336,6 @@ Tool Qualification Required
 Tool Qualification
 ------------------
 Based on method: Validation of the software tool
+
+.. [1] The tool version mentioned in this document is preliminary.
+       It is subject to change and will be updated in future.
