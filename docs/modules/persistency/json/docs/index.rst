@@ -24,8 +24,9 @@ Tiny JSON
 
 .. document:: Persistency JSON
    :id: doc__persistencyjson
-   :status: draft
+   :status: valid
    :safety: ASIL_B
+   :security: NO
    :realizes: PROCESS_wp__cmpt_request
    :tags: template
 

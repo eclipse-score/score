@@ -18,9 +18,10 @@ Architecture
 ============
 
 .. document:: Persistency KVS Module Architecture
-   :id: doc__persistency_kvs_mod_arch
-   :status: draft
+   :id: doc__persistency_kvs_architecture
+   :status: valid
    :safety: ASIL_B
+   :security: NO
    :realizes: PROCESS_wp__component_arch
 
 Overview
