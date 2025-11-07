@@ -17,7 +17,7 @@ Bazel is at the very heart of the Eclipse S-CORE project. Every dependency and a
 pipeline is done via bazel.
 Validation of requirements, generation of documentation, building source code, execution of unit- or integration tests, for everything
 there is a bazel target in Eclipse S-CORE. Not going into very technical details, bazel is a modern build system, that allows hermetical and
-reproduciable builds, that are for special importance for building safety systems, and additionally provides the possibility to extend
+reproducible builds, that are for special importance for building safety systems, and additionally provides the possibility to extend
 its functionality for project related use-cases using `bazel macros <https://bazel.build/extending/macros>`_ and
 `bazel rules <https://bazel.build/extending/rules>`_. 
 
@@ -26,7 +26,7 @@ own functionality. There were quite some discussions on whether we should have a
 multiple repositores, as you can see here (TODO: link to decision record). At the end, the decision was taken to proceed with multiple repositories.
 The main reason for this, is that Eclipse S-CORE project should not only motivate software developers to work together on new solutions inside of Eclipse S-CORE
 project but also empower to reuse as much as possible from already existing projects and this is easier to do with an approach, where every functionality
-is encapsualted in its own repository. Such an approach has also disadvantages. First, the organizatorical approach of having so many teams working together.
+is encapsulated in its own repository. Such an approach has also disadvantages. First, the organizatorical approach of having so many teams working together.
 How this is done, is described the `project management plan <https://eclipse-score.github.io/score/main/platform_management_plan/project_management.html>`_.
 Second, the technical approach of integrating things together and managing the dependencies between different
 modules and components. Our approach for integration is desribed in :ref:`integration process <integration_process>` in more details. But in general, this is where bazel modules play a very important role,
