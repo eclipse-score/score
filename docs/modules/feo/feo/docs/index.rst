@@ -13,7 +13,7 @@
    # *******************************************************************************
 
 .. document:: FEO Component
-   :id: doc__component_name
+   :id: doc__feo
    :status: draft
    :safety: ASIL_B
    :realizes: PROCESS_wp__cmpt_request
