@@ -8,7 +8,7 @@ Introduction
    :align: center
 
 
-Welcome to the Eclipse S-CORE project. As Eclipse S-CORE project is continiously developing, the decision was taken
+Welcome to the Eclipse S-CORE project. As Eclipse S-CORE project is continuously developing, the decision was taken
 to write a small tutorial, a **Eclipse S-CORE book**, that tries to explain how the Eclipse S-CORE project technically works.
 As neither the Eclipse S-CORE project nor this book are currently in the final state, everyone is kindly invited to contribute
 to the Eclipse S-CORE project and to extend this book.
@@ -43,7 +43,7 @@ the standartization, that we try to achieve with the Eclipse S-CORE project are 
 
 It is important to understand, that Eclipse S-CORE project is not a final product, that can be "out-of-the-box" integrated into the automotive series projects.
 This has multiple reasons. First of all, Eclipse S-CORE is an open-source project, meaning there is no any commercial company behind this project,
-that can be liable for anything. The strength of the Eclipse S-CORE project is that both its software development process and the corrensponding tooling
+that can be liable for anything. The strength of the Eclipse S-CORE project is that both its software development process and the corresponding tooling
 to ensure fulfillment of this process, e.g. automated checks and test execution in CI, are all open-source, so everyone can have a look and check, whether
 it is doing exactly the same what it is supposed to do. Furthermore it is a well maintained basis with clear communicated things that we do and
 that we do not (yet) do, that can be used by multiple automotive companies as basis for their commercial distribution. The maintainers of the Eclipse S-CORE project

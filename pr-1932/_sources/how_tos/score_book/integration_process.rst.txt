@@ -20,10 +20,10 @@ Compliance to Eclipse S-CORE software development process
 ---------------------------------------------------------
    
 We do encourage every software module inside of the Eclipse S-CORE GitHub organization or also outside of it
-to follow the Eclipse S-CORE development process continiously and introduce it by including approtiated checks into
+to follow the Eclipse S-CORE development process continiously and introduce it by including appropriate checks into
 the CI/CD pipeline, so that compliance to the Eclipse S-CORE project is checked with every PR. But the fact is, that
 we can not enforce this, even inside of the GitHub organization. This has various reasons. One reason could be,
-that the software module already exists and is used in multiple other projecs. The other reason could be, that
+that the software module already exists and is used in multiple other projects. The other reason could be, that
 the software module was open sourced by another company that needs to follow another internal software development
 process and switching to the Eclipse S-CORE development process can not happen immediately. Therefore, it is possible
 (but not encouraged), that every software module follows its own software development process inside of its repo.
