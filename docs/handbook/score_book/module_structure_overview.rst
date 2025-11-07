@@ -13,9 +13,9 @@ Let us have a look at the most important bazel modules and repositories in Eclip
    :alt: module deps
    :align: center
 
-score_platform
+score
 ---------------
-GitHub Link: https://github.com/eclipse-score
+GitHub Link: https://github.com/eclipse-score/score
 
 Eclipse S-CORE module is the central part of the Eclipse S-CORE project, where the software architecture is defined. Here you will find the list and explanation of the features,
 that are provided by the Eclipse S-CORE platform, definition of the high level architecture, break down of the high level architecture to the modules
@@ -36,7 +36,7 @@ GitHub Link: https://github.com/eclipse-score/process_description
 
 The process repository describes the Eclipse S-CORE process. It defines both general concepts and ideas of the Eclipse S-CORE software development process approach and
 also gives a detailed description of every process area, as shown in the image below. That's definitely worth of checking, as description of process
-areas has concrete guidances e.g. how to specify requirements or architecture.
+areas has concrete guidance's e.g. how to specify requirements or architecture.
 
 .. image:: _assets/process_areas.png
    :alt: Process areas
@@ -54,7 +54,7 @@ The current implementation status of tooling requirements can be checked in
 `Tool Requirements Overview <https://eclipse-score.github.io/docs-as-code/main/requirements/requirements.html>`_
 
 
-Tooling
+tooling
 -------
 GitHub Link: https://github.com/eclipse-score/tooling
 
@@ -89,7 +89,7 @@ Software module normally contains following information:
 - unit- and component tests
 - documentation
 
-Software module normally depends on other modules in the Eclipse S-CORE GitHub organization, espeicially on
+Software module normally depends on other modules in the Eclipse S-CORE GitHub organization, especially on
 
 - https://github.com/eclipse-score module to reference feature requirements and feature architecture in the component requirements and architecture
 - https://github.com/eclipse-score/docs-as-code module for sphinx/sphinx-needs framework and tooling around it

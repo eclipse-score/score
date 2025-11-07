@@ -14,7 +14,7 @@ https://github.com/eclipse-score/docs-as-code/tree/main/docs module.
 Following document (TODO: link) provide an exhaustive description, how the documentation in Eclipse S-CORE can be created and built. Here, we will
 focus on a simple example.
 
-First, we neede to define a target in bazel, so that we can generate html documentation from rst files. Such target is already provided
+First, we need to define a target in bazel, so that we can generate html documentation from rst files. Such target is already provided
 in the main top level `BUILD <https://github.com/eclipse-score/scrample/blob/main/BUILD>`_ file of the repository:
 
 .. code-block:: python
@@ -41,7 +41,7 @@ In general, two files are especially important for sphinx doc generation:
     project = "Module Template Project"
     project_url = "https://eclipse-score.github.io/module_template/"
     project_prefix = "SCRAMPLE_"
-    author = "S-CORE"
+    author = "Eclipse S-CORE"
     version = "0.1"
 
     # -- General configuration ---------------------------------------------------
@@ -75,7 +75,7 @@ We can try now to build the documentation using the following command:
 
   % bazel build //:docs
 
-Do not be suprised, if the first time you run bazel command, it take a long time to execute it. The first time
+Do not be surprised, if the first time you run bazel command, it take a long time to execute it. The first time
 you call bazel, it downloads everything locally to its cache folder, also all toolchain tarballs, and this can take
 for a while. Next executions will be much faster. 
 

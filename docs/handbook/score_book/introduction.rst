@@ -24,9 +24,9 @@ also have a platform for exchanging their problems and needs and that enables th
 
 Eclipse S-CORE project is not the first project that tries to solve these kinds of problems. In the past, such projects
 as `Autosar <https://www.autosar.org/>`_, tried to
-solve at least some of the problems through the standartization. Eclipse S-CORE project by no way contradicts to the ideas of Autosar. Furthermore
-it tries to make the next step based on the experience of autosar and comparable standartization projects. The main two goals besides
-the standartization, that we try to achieve with the Eclipse S-CORE project are the following:
+solve at least some of the problems through the standardization. Eclipse S-CORE project by no way contradicts to the ideas of Autosar. Furthermore
+it tries to make the next step based on the experience of autosar and comparable standardization projects. The main two goals besides
+the standardization, that we try to achieve with the Eclipse S-CORE project are the following:
 
 - Eclipse S-CORE project aims to provide not only the specification of the modules, but also the implementation. As we all know,
   a lot of problems become clear only during the integration of the software stack and not during its specification. Beside this,
@@ -34,10 +34,10 @@ the standartization, that we try to achieve with the Eclipse S-CORE project are 
   allows to fix the problems directly on the implementation level and to ensure, that they will not happen in the future by always
   reusing the same implementation.
 
-- Another important aspect that normally comes up by the integration of the software stack, espeicially in ASIL relevant systems, is its quality
+- Another important aspect that normally comes up by the integration of the software stack, especially in ASIL relevant systems, is its quality
   and the software development process according to which it was developed, including following aspects: code quality, requirements and architecture,
   test coverage and so on. Therefore one of the most important goals of the Eclipse S-CORE project is not only to provide an efficient, state of the art implementation
-  of the automotove software platform but also to define an ASIL conform software development process to ensure, that all implementations of
+  of the automotive software platform but also to define an ASIL conform software development process to ensure, that all implementations of
   Eclipse S-CORE modules follow this process, mainly by automated checks and in case not yet implemented, with help of manual reviews. The clear
   goal is to specify only those parts of software development process, that also can be validated with automated checks in the future.
 

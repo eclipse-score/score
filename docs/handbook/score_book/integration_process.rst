@@ -39,7 +39,7 @@ fulfill two things:
 - after your software module fulfills integration gate (changes to software module code and further artifacts can be necessary
   for this), you can create a PR to Eclipse S-CORE bazel registry repo. This is the point in time where your PR will be reviewed by
   safety, security and quality managers of the Eclipse S-CORE project. After all findings are fixed, the PR will be merged to the Eclipse S-CORE
-  bazel registry and the software module will be officialy available to the Eclipse S-CORE community.
+  bazel registry and the software module will be officially available to the Eclipse S-CORE community.
   
 Reference integration
 ---------------------

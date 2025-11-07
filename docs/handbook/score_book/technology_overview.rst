@@ -26,10 +26,10 @@ own functionality. There were quite some discussions on whether we should have a
 multiple repositores, as you can see here (TODO: link to decision record). At the end, the decision was taken to proceed with multiple repositories.
 The main reason for this, is that Eclipse S-CORE project should not only motivate software developers to work together on new solutions inside of Eclipse S-CORE
 project but also empower to reuse as much as possible from already existing projects and this is easier to do with an approach, where every functionality
-is encapsulated in its own repository. Such an approach has also disadvantages. First, the organizatorical approach of having so many teams working together.
+is encapsulated in its own repository. Such an approach has also disadvantages. First, the organizational approach of having so many teams working together.
 How this is done, is described the `project management plan <https://eclipse-score.github.io/score/main/platform_management_plan/project_management.html>`_.
 Second, the technical approach of integrating things together and managing the dependencies between different
-modules and components. Our approach for integration is desribed in :ref:`integration process <integration_process>` in more details. But in general, this is where bazel modules play a very important role,
+modules and components. Our approach for integration is described in :ref:`integration process <integration_process>` in more details. But in general, this is where bazel modules play a very important role,
 providing how to manage and handle dependencies between multiple modules and providing a mechanism, called `bazel registry <https://bazel.build/versions/6.1.0/build/bzlmod#registries>`_,
 for publishing official versions of modules.
 
@@ -52,11 +52,11 @@ Sphinx/Sphinx-needs and Documentation
 --------------------------------------
 For documenting our project, for specifying requirements, assumptions of use, architecture, detailed design, tests 
 and further software process related artifacts we completely rely on sphinx and sphinx-needs technology. Additionally we extend sphinx-needs
-implementation with additional checks to ensure traciability and compliance to the Eclipse S-CORE metamodel. The Eclipse S-CORE metamodel & traceability concept
+implementation with additional checks to ensure traceability and compliance to the Eclipse S-CORE metamodel. The Eclipse S-CORE metamodel & traceability concept
 are described in the `process description <https://eclipse-score.github.io/process_description/main/general_concepts/index.html>`_
-and guidances how to use sphinx/sphinx-needs framework in Eclipse S-CORE can be found in
-`docs-as-code how-to documentaion <https://eclipse-score.github.io/docs-as-code/main/how-to/index.html>`_.
-(ToDo: is there a better documetation)
+and guidance's how to use sphinx/sphinx-needs framework in Eclipse S-CORE can be found in
+`docs-as-code how-to documentation <https://eclipse-score.github.io/docs-as-code/main/how-to/index.html>`_.
+(ToDo: is there a better documentation)
 
 
 
@@ -76,11 +76,11 @@ In general, we differentiate between three testing levels: unit-testing, compone
 
 Unit-test framework strongly depends on the used programming languages, e.g. in case of C++ we rely on gtest/gmock.
 
-Our solution for the compontent testing framework can be found in the `testing tools repo <https://github.com/eclipse-score/testing_tools>`_
+Our solution for the component testing framework can be found in the `testing tools repo <https://github.com/eclipse-score/testing_tools>`_
 
 For feature integration testing we use a framework called ITF (Integration Testing Framework). It is part of the Eclipse S-CORE project as well,
-you can checkt its documentaion in the `README.md file <https://github.com/eclipse-score/itf>`_.
+you can checkt its documentation in the `README.md file <https://github.com/eclipse-score/itf>`_.
 
-For detailed overview, please check the documetation of our `verification concept <https://eclipse-score.github.io/process_description/main/process_areas/verification/index.html#>`_
+For detailed overview, please check the documentation of our `verification concept <https://eclipse-score.github.io/process_description/main/process_areas/verification/index.html#>`_
 
 (ToDo: double check with Piotr)
