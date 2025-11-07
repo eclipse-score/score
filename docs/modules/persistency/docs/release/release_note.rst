@@ -17,8 +17,9 @@ Release Note
 
 .. document:: Persistency Release Note
    :id: doc__persistency_release_note
-   :status: draft
+   :status: valid
    :safety: ASIL_B
+   :security: NO
    :realizes: PROCESS_wp__module_sw_release_note
    :tags: persistency
 

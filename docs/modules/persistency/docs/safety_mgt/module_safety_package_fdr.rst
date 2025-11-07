@@ -19,6 +19,7 @@ Safety Package Formal Review Report
    :id: doc__persistency_safety_package_fdr
    :status: valid
    :safety: ASIL_B
+   :security: NO
    :realizes: PROCESS_wp__fdr_reports
    :tags: persistency
 

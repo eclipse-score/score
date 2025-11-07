@@ -13,13 +13,14 @@
    # *******************************************************************************
 
 
-Safety Analysis : FMEA
+Safety Analysis: FMEA
 ======================
 
 .. document:: KVS FMEA
-   :id: doc__kvs_fmea
+   :id: doc__persistency_kvs_fmea
    :status: valid
    :safety: ASIL_B
+   :security: NO
    :realizes: PROCESS_wp__sw_component_fmea
    :tags: Persistency KVS
 
