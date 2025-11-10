@@ -72,7 +72,14 @@ Bug Fixes
 Integrated Software Modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- **Communication**: (Version). Link to Software module release note.
+- **Communication**:
+
+  - **Link to release**: `communication v0.1.1 <https://github.com/eclipse-score/communication/releases/tag/v0.1.1>`_
+  - **Release notes**:
+
+    - Zero-copy, shared-memory based inter-process communication for minimal latency intra-ECU messaging
+    - Find the full release note at: :need:`doc__communication_release_note`
+
 - **FEO**: (Version). Link to Software module release note.
 - **Logging**: (Version). Link to Software module release note.
 - **Tracing**: (Version). Link to Software module release note.
