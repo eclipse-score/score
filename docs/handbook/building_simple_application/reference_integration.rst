@@ -1,5 +1,24 @@
+..
+   # *******************************************************************************
+   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   #
+   # See the NOTICE file(s) distributed with this work for additional
+   # information regarding copyright ownership.
+   #
+   # This program and the accompanying materials are made available under the
+   # terms of the Apache License Version 2.0 which is available at
+   # https://www.apache.org/licenses/LICENSE-2.0
+   #
+   # SPDX-License-Identifier: Apache-2.0
+   # *******************************************************************************
+
 Reference integration
 =======================
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
 After we've build a scrample binary for qnx x86 image, as described in the previous chapter,
 let us now give it a try and run our binary in the reference qnx image for the x86 platform.
 

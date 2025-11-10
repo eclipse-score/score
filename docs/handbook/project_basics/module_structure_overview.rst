@@ -1,5 +1,23 @@
+..
+   # *******************************************************************************
+   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   #
+   # See the NOTICE file(s) distributed with this work for additional
+   # information regarding copyright ownership.
+   #
+   # This program and the accompanying materials are made available under the
+   # terms of the Apache License Version 2.0 which is available at
+   # https://www.apache.org/licenses/LICENSE-2.0
+   #
+   # SPDX-License-Identifier: Apache-2.0
+   # *******************************************************************************
+
 Module Structure Overview
 ==========================
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
 
 As it was already stated in the :ref:`Technology Overview <technology_overview>` chapter, Eclipse S-CORE project consists of multiple
 bazel modules, normally located in separate repositories. Majority of Eclipse S-CORE modules are part of
@@ -13,8 +31,8 @@ Let us have a look at the most important bazel modules and repositories in Eclip
    :alt: module deps
    :align: center
 
-score
----------------
+Eclipse S-CORE Platform
+-----------------------
 GitHub Link: https://github.com/eclipse-score/score
 
 Eclipse S-CORE module is the central part of the Eclipse S-CORE project, where the software architecture is defined. Here you will find the list and explanation of the 
@@ -22,8 +40,8 @@ stakeholder requirements, AoUs for the platforms for the potential users, featur
 definition of the high level architecture, break down of the high level architecture to the modules
 and the definition of the functionality (logical interfaces) for every module.
 
-process_description
----------------------
+Process Description
+--------------------
 GitHub Link: https://github.com/eclipse-score/process_description
 
 .. hint::
@@ -45,7 +63,7 @@ areas has concrete guidance's e.g. how to specify requirements or architecture.
    :align: center
 
 
-doc-as-code
+Doc-as-Code
 -----------
 GitHub Link: https://github.com/eclipse-score/docs-as-code
 
@@ -55,7 +73,7 @@ The current implementation status of tooling requirements can be checked in
 `Tool Requirements Overview <https://eclipse-score.github.io/docs-as-code/main/requirements/requirements.html>`_
 
 
-tooling
+Tooling
 -------
 GitHub Link: https://github.com/eclipse-score/tooling
 
@@ -71,14 +89,14 @@ Additionally, there is also a repository called bazel platforms, that defines va
 as can be seen in the following `BUILD  <https://github.com/eclipse-score/bazel_platforms/blob/main/BUILD>`_ file.
 
 
-bazel_registry
+Bazel Registry
 ---------------
 GitHub Link: https://github.com/eclipse-score/bazel_registry
 
 Bazel registry is one of the most important repositories. This is the place where official releases of all Eclipse S-CORE bazel modules are announced,
 so that they can be referenced between each other.
 
-Modules
+Software Modules
 -------
 GitHub Link (e.g. for baselibs): https://github.com/eclipse-score/baselibs
 
@@ -96,7 +114,7 @@ Software module normally depends on other modules in the Eclipse S-CORE GitHub o
 - https://github.com/eclipse-score/docs-as-code module for sphinx/sphinx-needs framework and tooling around it
 - **toolchains** modules for the compiler toolchains.
 
-reference integration
+Reference Integration
 ----------------------
 GitHub Link: https://github.com/eclipse-score/reference_integration
 

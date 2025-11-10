@@ -1,7 +1,24 @@
+..
+   # *******************************************************************************
+   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   #
+   # See the NOTICE file(s) distributed with this work for additional
+   # information regarding copyright ownership.
+   #
+   # This program and the accompanying materials are made available under the
+   # terms of the Apache License Version 2.0 which is available at
+   # https://www.apache.org/licenses/LICENSE-2.0
+   #
+   # SPDX-License-Identifier: Apache-2.0
+   # *******************************************************************************
+.. _integration_process:
+
 Integration process
 ====================
 
-.. _integration_process:
+.. toctree::
+   :maxdepth: 1
+   :glob:
 
 Integration process in Eclipse S-CORE project is not a trivial thing and as Eclipse S-CORE project is quite young,
 we still gather our experience and adapt it to meet our needs.
@@ -20,7 +37,7 @@ Compliance to Eclipse S-CORE software development process
 ---------------------------------------------------------
    
 We do encourage every software module inside of the Eclipse S-CORE GitHub organization or also outside of it
-to follow the Eclipse S-CORE development process continiously and introduce it by including appropriate checks into
+to follow the Eclipse S-CORE development process continuously and introduce it by including appropriate checks into
 the CI/CD pipeline, so that compliance to the Eclipse S-CORE project is checked with every PR. But the fact is, that
 we can not enforce this, even inside of the GitHub organization. This has various reasons. One reason could be,
 that the software module already exists and is used in multiple other projects. The other reason could be, that
@@ -41,7 +58,7 @@ fulfill two things:
   safety, security and quality managers of the Eclipse S-CORE project. After all findings are fixed, the PR will be merged to the Eclipse S-CORE
   bazel registry and the software module will be officially available to the Eclipse S-CORE community.
   
-Reference integration
+Reference Integration
 ---------------------
 
 The first step ensures, that the software module is compliant to the Eclipse S-CORE development process. But it is not ensured
@@ -61,8 +78,8 @@ are not compatible with changes done in the newer version of the software module
 of deprecated interfaces. In praxis, such situations can not be always avoided and in case they happen, Eclipse S-CORE integration team should
 take over solving of such kind of problems.
 
-Based on agreed timeline and in case all feature integration tests can be successfully executed and other S-Core project metrics are fulfilled,
-a release of reference integration repository, hereby an official S-Core release, can be done. It consists mainly of
+Based on agreed timeline and in case all feature integration tests can be successfully executed and other Eclipse S-CORE project metrics are fulfilled,
+a release of reference integration repository, hereby an official Eclipse S-CORE release, can be done. It consists mainly of
 
 - a release tag on the reference integration repository, that automatically also freezes specific version of every software module referenced
   by the reference integration repo and therefore indicates all software modules, that are officially part of the particular S-Core release.

@@ -1,10 +1,28 @@
+..
+   # *******************************************************************************
+   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   #
+   # See the NOTICE file(s) distributed with this work for additional
+   # information regarding copyright ownership.
+   #
+   # This program and the accompanying materials are made available under the
+   # terms of the Apache License Version 2.0 which is available at
+   # https://www.apache.org/licenses/LICENSE-2.0
+   #
+   # SPDX-License-Identifier: Apache-2.0
+   # *******************************************************************************
+
 Software Architecture Overview
 ================================
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
 
 Eclipse S-CORE software architecture is not set in stone. The following is the overview of the software architecture according to the current
 state of the discussion:
 
-.. image:: ../../../modules/_assets/module_architecture.drawio.svg
+.. image:: ../../modules/_assets/module_architecture.drawio.svg
    :width: 1000
    :alt: Architecture overview
    :align: center
