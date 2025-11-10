@@ -12,10 +12,10 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _contribute:
+.. _contribute_own_module:
 
-Contribute
-===========
+Contribute own module
+=====================
 
 Let us imagine, you want to contribute to the Eclipse S-CORE project and provide a new platform module.
 Based on the use-case, that we want to create a simple small demo application, called *scrample*, that uses some of the Eclipse S-CORE

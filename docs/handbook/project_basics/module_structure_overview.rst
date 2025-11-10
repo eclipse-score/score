@@ -97,7 +97,7 @@ Bazel registry is one of the most important repositories. This is the place wher
 so that they can be referenced between each other.
 
 Software Modules
--------
+----------------
 GitHub Link (e.g. for baselibs): https://github.com/eclipse-score/baselibs
 
 As already described, every software module, a collection of software components, is also a bazel module located in a separate repository.

@@ -11,7 +11,7 @@
    #
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
-.. _use:
+.. _use_own_application:
 
 .. toctree::
    :maxdepth: 1
