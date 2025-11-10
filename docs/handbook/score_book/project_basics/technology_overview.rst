@@ -3,7 +3,7 @@ Overview of technologies
 
 .. _technology_overview:
 
-.. image:: _assets/score_tooling.svg
+.. image:: ../_assets/score_tooling.svg
    :alt: Score tooling
    :align: center
 
@@ -23,7 +23,7 @@ its functionality for project related use-cases using `bazel macros <https://baz
 
 Additionally, we use a concept of `bazel modules <https://bazel.build/external/module>`_. In general, Eclipse S-CORE project is built up of multiple repos, every repo implementing its
 own functionality. There were quite some discussions on whether we should have a mono repository or should we split our project in
-multiple repositores, as you can see here (TODO: link to decision record). At the end, the decision was taken to proceed with multiple repositories.
+multiple repositores. At the end, the decision was taken to proceed with multiple repositories.
 The main reason for this, is that Eclipse S-CORE project should not only motivate software developers to work together on new solutions inside of Eclipse S-CORE
 project but also empower to reuse as much as possible from already existing projects and this is easier to do with an approach, where every functionality
 is encapsulated in its own repository. Such an approach has also disadvantages. First, the organizational approach of having so many teams working together.
@@ -43,7 +43,7 @@ CI/CD pipeline
 There is not much to say about this. As every modern project today, we strongly rely on GitHub infrastructure, e.g. by using `GitHub actions <https://docs.github.com/de/actions>`_
 for automatization and implementation of CI/CD check pipeline.
 
-.. image:: _assets/release_verification.png
+.. image:: ../_assets/release_verification.png
    :alt: release_verification
    :width: 400
    :align: center
@@ -56,7 +56,6 @@ implementation with additional checks to ensure traceability and compliance to t
 are described in the `process description <https://eclipse-score.github.io/process_description/main/general_concepts/index.html>`_
 and guidance's how to use sphinx/sphinx-needs framework in Eclipse S-CORE can be found in
 `docs-as-code how-to documentation <https://eclipse-score.github.io/docs-as-code/main/how-to/index.html>`_.
-(ToDo: is there a better documentation)
 
 
 

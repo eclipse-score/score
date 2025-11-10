@@ -1,9 +1,8 @@
 Documentation generation 
 ==========================
 
-
 Introduction
-------------
+---------------
 
 As already explained in chapter :ref:`Overview of technologies <technology_overview>`, we use
 *sphinx* and *sphinx-needs* toolchain to generate documentation out of rst files, where elements of Eclipse S-CORE metamodel are modelled as
@@ -11,7 +10,8 @@ sphinx-needs elements.
 
 Integration of the *sphinx* and *sphinx-needs* toolchain into bazel and Eclipse S-CORE specific extensions are implemented in
 https://github.com/eclipse-score/docs-as-code/tree/main/docs module.
-Following document (TODO: link) provide an exhaustive description, how the documentation in Eclipse S-CORE can be created and built. Here, we will
+Following `documentation <https://eclipse-score.github.io/docs-as-code/main/how-to/index.html>`_
+provide an exhaustive description, how the documentation in Eclipse S-CORE can be created and built. Here, we will
 focus on a simple example.
 
 First, we need to define a target in bazel, so that we can generate html documentation from rst files. Such target is already provided
@@ -163,4 +163,4 @@ what makes work with the documentation very convenient. You can stop it by killi
 in the terminal (Ctrl+C).
 
 Now it is time to replace the dummy context of the index.rst with some meaningful text,
-as it is shown here (TODO: link to commit).
+as it is shown in the follwing `commit <https://github.com/eclipse-score/scrample/commit/5179175823ecda51775e459ad73d7230cd4c880a>`_.

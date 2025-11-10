@@ -1,7 +1,10 @@
 Building source code
 =====================
 
-Now, as we've provided the documentation for our component, it is time to add some code as shown in the following commit (TODO: Link to commit).
+.. _building_source_code:
+
+Now, as we've provided the documentation for our component, it is time to add some code as shown in the following
+`commit <https://github.com/eclipse-score/scrample/commit/5179175823ecda51775e459ad73d7230cd4c880a>`_.
 
 Let us go through the most important parts of it and start with bazel `src/BUILD <https://github.com/eclipse-score/scrample/blob/main/src/BUILD>`_
 file.
@@ -106,8 +109,6 @@ To add qcc toolchain support to our module, we need first to extend our
 
 As you can see, we reference here the *score_toolchains_qnx* module, as dependency. It contains qnx toolchain including compiler, linker, image
 creation tools and their configuration for the Eclipse S-CORE project.
-
-TODO: can Niko provide more description on what is happening here?
 
 .. tip::
     CI/CD pipeline uses its own QNX license for building the code with qnx. If you want to build the source code with

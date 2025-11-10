@@ -4,7 +4,7 @@ Software Architecture Overview
 Eclipse S-CORE software architecture is not set in stone. The following is the overview of the software architecture according to the current
 state of the discussion:
 
-.. image:: ../../modules/_assets/module_architecture.drawio.svg
+.. image:: ../../../modules/_assets/module_architecture.drawio.svg
    :width: 1000
    :alt: Architecture overview
    :align: center

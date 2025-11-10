@@ -9,7 +9,7 @@ externally, e.g. if we reference an existing module from another eclipse project
 
 Let us have a look at the most important bazel modules and repositories in Eclipse S-CORE GitHub organization.
 
-.. image:: _assets/module_deps.svg
+.. image:: ../_assets/module_deps.svg
    :alt: module deps
    :align: center
 
@@ -17,8 +17,9 @@ score
 ---------------
 GitHub Link: https://github.com/eclipse-score/score
 
-Eclipse S-CORE module is the central part of the Eclipse S-CORE project, where the software architecture is defined. Here you will find the list and explanation of the features,
-that are provided by the Eclipse S-CORE platform, definition of the high level architecture, break down of the high level architecture to the modules
+Eclipse S-CORE module is the central part of the Eclipse S-CORE project, where the software architecture is defined. Here you will find the list and explanation of the 
+stakeholder requirements, AoUs for the platforms for the potential users, features, that are provided by the Eclipse S-CORE platform,
+definition of the high level architecture, break down of the high level architecture to the modules
 and the definition of the functionality (logical interfaces) for every module.
 
 process_description
@@ -29,7 +30,7 @@ GitHub Link: https://github.com/eclipse-score/process_description
     We automatically generate for every repository html documentation from rst files.
     You can easily open it as shown at the picture below.
 
-.. image:: _assets/generated_doc_in_score_github.png
+.. image:: ../_assets/generated_doc_in_score_github.png
    :alt: Generated Doc in GitHub
    :width: 500
    :align: center
@@ -38,7 +39,7 @@ The process repository describes the Eclipse S-CORE process. It defines both gen
 also gives a detailed description of every process area, as shown in the image below. That's definitely worth of checking, as description of process
 areas has concrete guidance's e.g. how to specify requirements or architecture.
 
-.. image:: _assets/process_areas.png
+.. image:: ../_assets/process_areas.png
    :alt: Process areas
    :width: 500
    :align: center

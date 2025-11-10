@@ -12,7 +12,7 @@ found in the following `decision record <https://eclipse-score.github.io/score/m
 This chapter will not go to much into details and will try to give you the overall idea of the
 integration process for Eclipse S-CORE.
 
-.. image:: _assets/release_integration_concept.drawio.svg
+.. image:: ../_assets/release_integration_concept.drawio.svg
    :alt: release_integration_concept
    :align: center
 

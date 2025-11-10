@@ -8,9 +8,6 @@ Eclipse S-CORE Book
    :glob:
 
    introduction.rst
-   technology_overview.rst
-   software_architecture_overview.rst
-   module_structure_overview.rst
-   integration_process.rst
-   sample_application/index.rst
+   project_basics/index.rst
+   building_simple_application/index.rst
 ..    */index

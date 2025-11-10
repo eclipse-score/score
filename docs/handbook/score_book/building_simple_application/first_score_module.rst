@@ -1,5 +1,5 @@
 First Eclipse S-CORE Module
-===========================
+=================================
 
 The very first step would be to create a repository, where the future application should be located. Before you can do this,
 you need to ensure that you are an official contributor in the Eclipse S-CORE project, otherwise you will not have any power in the project.
