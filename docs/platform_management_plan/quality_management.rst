@@ -20,7 +20,7 @@ Quality Management / Platform Quality Management Plan
    :status: valid
    :safety: ASIL_B
    :security: YES
-   :realizes: PROCESS_wp__qms_plan
+   :realizes: wp__qms_plan
    :tags: platform_management
 
 Purpose
@@ -37,9 +37,9 @@ of the workflows.
 Statement of Independence
 -------------------------
 
-The :need:`PROCESS_rl__quality_manager` provides support to the project by consulting on quality improvements
+The :need:`rl__quality_manager` provides support to the project by consulting on quality improvements
 for the project/platform product. The Quality Manager is independent of the product delivery process. The quality report
-is approved by the :need:`PROCESS_rl__project_lead`.
+is approved by the :need:`rl__project_lead`.
 
   .. image:: _assets/score_project_organisation.drawio.svg
      :width: 900
@@ -122,37 +122,37 @@ Objectives and scope
       - :need:`stkh_req__dependability__automotive_safety`, :doc:`../requirements/stakeholder/index`
       - 100% of the Platform process audit has be done for every release
       - Delta audit allowed to achieve 100%
-      - Ensured by the process quality management, :need:`PROCESS_wf__exe_pltprocess_audit` - Platform process audit is available
+      - Ensured by the process quality management, :need:`wf__exe_pltprocess_audit` - Platform process audit is available
     * - 2
       - One process conformance check for every feature release
       - :need:`stkh_req__dependability__automotive_safety`, :doc:`../requirements/stakeholder/index`
       - One process conformance check has been done for every stable feature release
       - Feature is released as experimental
-      - Ensured by the process quality and tool management, :need:`PROCESS_wp__qms_report` - Process conformance is available
+      - Ensured by the process quality and tool management, :need:`wp__qms_report` - Process conformance is available
     * - 3
       - Only quality-assured project/platform work products are delivered to the community
       - :need:`stkh_req__dependability__automotive_safety`, :doc:`../requirements/stakeholder/index`
       - 100% of project/platform work products are quality-assured
       - Feature is released as experimental
-      - Ensured by the process quality and tool management, :need:`PROCESS_wp__verification_platform_ver_report` - Work products contain the verification of the quality assurance
+      - Ensured by the process quality and tool management, :need:`wp__verification_platform_ver_report` - Work products contain the verification of the quality assurance
     * - 4
       - Only quality-assured project/platform releases are delivered to the community
       - :need:`stkh_req__dependability__automotive_safety`, :doc:`../requirements/stakeholder/index`
       - 100% of project/platform releases delivered to the community are quality-assured
       - Feature is released as experimental
-      - Ensured by the process release management, :need:`PROCESS_wp__platform_sw_release_note` contain the verification and approval of the quality-assurance
+      - Ensured by the process release management, :need:`wp__platform_sw_release_note` contain the verification and approval of the quality-assurance
     * - 5
-      - Only quality-trained personnel are part of the :need:`PROCESS_rl__committer`
+      - Only quality-trained personnel are part of the :need:`rl__committer`
       - :need:`stkh_req__dependability__automotive_safety`, :doc:`../requirements/stakeholder/index`
-      - 100% of personnel are trained as per committer role description in :need:`PROCESS_rl__committer`
+      - 100% of personnel are trained as per committer role description in :need:`rl__committer`
       - None
-      - Ensured by the process platform management, :need:`PROCESS_wp__training_path` contain the training material and evidences for conducted trainings
+      - Ensured by the process platform management, :need:`wp__training_path` contain the training material and evidences for conducted trainings
     * - 6
       - No overdue quality assurance closure activities
       - :need:`stkh_req__dependability__automotive_safety`, :doc:`../requirements/stakeholder/index`
       - 100% of the quality improvement, non-conformance issues are closed
       - None
-      - Ensured by the process quality management, :need:`PROCESS_wp__issue_track_system` contain improvements and non-conformance
+      - Ensured by the process quality management, :need:`wp__issue_track_system` contain improvements and non-conformance
 
 
 3.4 Work Product Quality Goals
@@ -221,7 +221,8 @@ The project roles are defined in the processes and are aligned to Eclipse roles.
 
 **Skills**
 
-The main quality related project roles are the :need:`PROCESS_rl__quality_manager` and the :need:`PROCESS_rl__project_lead`. These also have to have
+The main quality related project roles are the :need:`rl__quality_manager` and the :need:`rl__project_lead`. These also have to have
+
 the (Eclipse) committer role. As defined in `Committer Training <https://www.eclipse.org/projects/training/>`_ the
 committers are elected in a meritocratic manner, meaning those have to show their skills and understanding of the
 project processes in several previous pull requests.
@@ -231,18 +232,19 @@ his knowledge in quality SW development by:
 
 - by attending the project's ASPICE 4.0 SW management and development training.
 
-The successful checking of the committers' skills and the independent roles is ensured by the :need:`PROCESS_rl__project_lead`
-and :need:`PROCESS_rl__quality_manager` who record/check this in the role assignment document.
+The successful checking of the committers' skills and the independent roles is ensured by the :need:`rl__project_lead`
+and :need:`rl__quality_manager` who record/check this in the role assignment document.
 
-.. note:: The identity of the committer by applying the GitHub digital signature mechanism will be used to confirm the authenticity of the :need:`PROCESS_rl__quality_manager` role for the approvals
+.. note:: The identity of the committer by applying the GitHub digital signature mechanism will be used to confirm the authenticity of the :need:`rl__quality_manager` role for the approvals
 
 4 Quality Management Planning
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 4.1 Quality Resources
 """"""""""""""""""""""
-Dedicated :need:`PROCESS_rl__quality_manager` are elected, following a methodology as done for the committers, which means in a meritocratic manner on project level.
 
-The :need:`PROCESS_rl__quality_manager`, supported by the :need:`PROCESS_rl__project_lead`, and all other stakeholders,
+Dedicated :need:`rl__quality_manager` are elected, following a methodology as done for the committers, which means in a meritocratic manner on project level.
+
+The :need:`rl__quality_manager`, supported by the :need:`rl__project_lead`, and all other stakeholders,
 will ensure that quality activities are actively planned, developed, analyzed, verified, tested, and managed throughout the life cycle of the project.
 
 Resources and milestones are planned in Github Issues for all activities. Resource and
@@ -268,19 +270,19 @@ Ad-hoc quality related meetings are set up for clarification topics.
 
 **Reporting**
 
-The quality management status :need:`PROCESS_wp__qms_report` is reported as defined in the platform management plan.
+The quality management status :need:`wp__qms_report` is reported as defined in the platform management plan.
 
 **Escalation**
 
-If needed a escalation can be done in three steps. First :need:`PROCESS_rl__quality_manager` shall escalate to
-the :need:`PROCESS_rl__project_lead`. Then to the project lead circle, documented in :need:`doc__project_mgt_plan`.
+If needed a escalation can be done in three steps. First :need:`rl__quality_manager` shall escalate to
+the :need:`rl__project_lead`. Then to the project lead circle, documented in :need:`doc__project_mgt_plan`.
 Finally to the Eclipse Foundation if the rules of the Eclipse handbook are not followed.
 
 **Examples for valid escalation causes are:**
 
-- Conflict between :need:`PROCESS_rl__quality_manager` and :need:`PROCESS_rl__committer` regarding quality issues.
+- Conflict between :need:`rl__quality_manager` and :need:`rl__committer` regarding quality issues.
 - Quality issues cannot be resolved on feature level or with the available resources.
-- There are conflicting points of view between the :need:`PROCESS_rl__project_lead`, :need:`PROCESS_rl__safety_manager`, :need:`PROCESS_rl__security_manager` and the :need:`PROCESS_rl__quality_manager`.
+- There are conflicting points of view between the :need:`rl__project_lead`, :need:`rl__safety_manager`, :need:`rl__security_manager` and the :need:`rl__quality_manager`.
 
 4.3 Quality Management Specifics
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -294,155 +296,155 @@ None
         * - Workproduct Id
           - Link to WP
 
-        * - :need:`PROCESS_wp__chm_plan`
+        * - :need:`wp__chm_plan`
           - :ref:`project_documents_list`
 
-        * - :need:`PROCESS_wp__cmpt_request`
+        * - :need:`wp__cmpt_request`
           - :ref:`documents_docs_modules_components`
 
-        * - :need:`PROCESS_wp__component_arch`
+        * - :need:`wp__component_arch`
           - :ref:`documents_docs_modules_components`
 
-        * - :need:`PROCESS_wp__document_mgt_plan`
+        * - :need:`wp__document_mgt_plan`
           - :ref:`project_documents_list`
 
-        * - :need:`PROCESS_wp__fdr_reports`
+        * - :need:`wp__fdr_reports`
           - :ref:`documents_docs_modules`
 
-        * - :need:`PROCESS_wp__feat_request`
+        * - :need:`wp__feat_request`
           - :ref:`documents_docs_features`
 
-        * - :need:`PROCESS_wp__feature_arch`
+        * - :need:`wp__feature_arch`
           - :ref:`documents_docs_features`
 
-        * - :need:`PROCESS_wp__feature_dfa`
+        * - :need:`wp__feature_dfa`
           - :ref:`documents_docs_features`
 
-        * - :need:`PROCESS_wp__module_safety_manual`
+        * - :need:`wp__module_safety_manual`
           - :ref:`documents_docs_modules`
 
-        * - :need:`PROCESS_wp__module_safety_package`
+        * - :need:`wp__module_safety_package`
           - :ref:`documents_docs_modules`
 
-        * - :need:`PROCESS_wp__module_safety_plan`
+        * - :need:`wp__module_safety_plan`
           - :ref:`documents_docs_modules`
 
-        * - :need:`PROCESS_wp__module_sw_release_note`
+        * - :need:`wp__module_sw_release_note`
           - :ref:`documents_docs_modules`
 
-        * - :need:`PROCESS_wp__module_sw_release_plan`
+        * - :need:`wp__module_sw_release_plan`
           - :ref:`documents_docs_modules`
 
-        * - :need:`PROCESS_wp__platform_dfa`
+        * - :need:`wp__platform_dfa`
           - :ref:`project_documents_list`
 
-        * - :need:`PROCESS_wp__platform_safety_manual`
+        * - :need:`wp__platform_safety_manual`
           - :ref:`project_documents_list`
 
-        * - :need:`PROCESS_wp__platform_safety_plan`
+        * - :need:`wp__platform_safety_plan`
           - :ref:`project_documents_list`
 
-        * - :need:`PROCESS_wp__platform_safety_package`
+        * - :need:`wp__platform_safety_package`
           - :ref:`project_documents_list`
 
-        * - :need:`PROCESS_wp__platform_sw_build_config`
+        * - :need:`wp__platform_sw_build_config`
           - :ref:`project_documents_list`
 
-        * - :need:`PROCESS_wp__platform_sw_release_note`
+        * - :need:`wp__platform_sw_release_note`
           - :ref:`project_documents_list`
 
-        * - :need:`PROCESS_wp__platform_sw_release_plan`
+        * - :need:`wp__platform_sw_release_plan`
           - :ref:`project_documents_list`
 
-        * - :need:`PROCESS_wp__prm_plan`
+        * - :need:`wp__prm_plan`
           - :ref:`project_documents_list`
 
-        * - :need:`PROCESS_wp__process_description`
-          - :need:`PROCESS_wp__process_description`
+        * - :need:`wp__process_description`
+          - :need:`wp__process_description`
 
-        * - :need:`PROCESS_wp__process_impr_report`
+        * - :need:`wp__process_impr_report`
           - :ref:`project_documents_list`
 
-        * - :need:`PROCESS_wp__process_strategy`
-          - :need:`PROCESS_wp__process_strategy`
+        * - :need:`wp__process_strategy`
+          - :need:`wp__process_strategy`
 
-        * - :need:`PROCESS_wp__project_mgt`
+        * - :need:`wp__project_mgt`
           - :ref:`project_documents_list`
 
-        * - :need:`PROCESS_wp__qms_plan`
+        * - :need:`wp__qms_plan`
           - :ref:`project_documents_list`
 
-        * - :need:`PROCESS_wp__qms_report`
+        * - :need:`wp__qms_report`
           - :ref:`project_documents_list`
 
-        * - :need:`PROCESS_wp__requirements_comp`
+        * - :need:`wp__requirements_comp`
           - :ref:`documents_docs_modules_components`
 
-        * - :need:`PROCESS_wp__requirements_comp_aou`
+        * - :need:`wp__requirements_comp_aou`
           - :ref:`documents_docs_modules_components`
 
-        * - :need:`PROCESS_wp__requirements_feat`
+        * - :need:`wp__requirements_feat`
           - :ref:`documents_docs_features`
 
-        * - :need:`PROCESS_wp__requirements_feat_aou`
+        * - :need:`wp__requirements_feat_aou`
           - :ref:`documents_docs_features`
 
-        * - :need:`PROCESS_wp__requirements_inspect`
+        * - :need:`wp__requirements_inspect`
           - :ref:`project_documents_list`, :ref:`documents_docs_modules`
 
-        * - :need:`PROCESS_wp__requirements_stkh`
+        * - :need:`wp__requirements_stkh`
           - :ref:`project_documents_list`
 
-        * - :need:`PROCESS_wp__sw_arch_verification`
+        * - :need:`wp__sw_arch_verification`
           - :ref:`project_documents_list`, :ref:`documents_docs_modules`
 
-        * - :need:`PROCESS_wp__sw_component_class`
+        * - :need:`wp__sw_component_class`
           - :ref:`documents_docs_modules_components`
 
-        * - :need:`PROCESS_wp__sw_component_dfa`
+        * - :need:`wp__sw_component_dfa`
           - :ref:`documents_docs_modules_components`
 
-        * - :need:`PROCESS_wp__sw_component_fmea`
+        * - :need:`wp__sw_component_fmea`
           - :ref:`documents_docs_modules_components`
 
-        * - :need:`PROCESS_wp__sw_component_dfa`
+        * - :need:`wp__sw_component_dfa`
           - :ref:`documents_docs_modules_components`
 
-        * - :need:`PROCESS_wp__sw_development_plan`
+        * - :need:`wp__sw_development_plan`
           - :ref:`project_documents_list`
 
-        * - :need:`PROCESS_wp__sw_implementation`
+        * - :need:`wp__sw_implementation`
           - :ref:`documents_docs_modules_components`
 
-        * - :need:`PROCESS_wp__sw_implementation_inspection`
+        * - :need:`wp__sw_implementation_inspection`
           - :ref:`documents_docs_modules_components`
 
-        * - :need:`PROCESS_wp__tailoring`
+        * - :need:`wp__tailoring`
           - :ref:`project_documents_list`, :ref:`documents_docs_features`, :ref:`documents_docs_modules_components`
 
-        * - :need:`PROCESS_wp__tlm_plan`
+        * - :need:`wp__tlm_plan`
           - :ref:`project_documents_list`
 
-        * - :need:`PROCESS_wp__tool_verification_report`
+        * - :need:`wp__tool_verification_report`
           - :ref:`project_documents_list`
 
-        * - :need:`PROCESS_wp__verification_comp_int_test`
+        * - :need:`wp__verification_comp_int_test`
           - :ref:`documents_docs_modules_components`
 
-        * - :need:`PROCESS_wp__verification_feat_int_test`
+        * - :need:`wp__verification_feat_int_test`
           - :ref:`documents_docs_features`
 
-        * - :need:`PROCESS_wp__verification_module_ver_report`
+        * - :need:`wp__verification_module_ver_report`
           - :ref:`documents_docs_modules`
 
-        * - :need:`PROCESS_wp__verification_plan`
+        * - :need:`wp__verification_plan`
           - :ref:`project_documents_list`, :ref:`documents_docs_features`, :ref:`documents_docs_modules_components`
 
-        * - :need:`PROCESS_wp__verification_platform_test`
+        * - :need:`wp__verification_platform_test`
           - :ref:`project_documents_list`
 
-        * - :need:`PROCESS_wp__verification_platform_ver_report`
+        * - :need:`wp__verification_platform_ver_report`
           - :ref:`project_documents_list`
 
-        * - :need:`PROCESS_wp__verification_sw_unit_test`
+        * - :need:`wp__verification_sw_unit_test`
           - :ref:`documents_docs_modules_components`

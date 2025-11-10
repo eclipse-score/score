@@ -17,7 +17,7 @@
    :status: draft
    :security: NO
    :safety: ASIL_B
-   :realizes: PROCESS_wp__module_safety_manual
+   :realizes: wp__module_safety_manual
    :tags: module_feo
 
 

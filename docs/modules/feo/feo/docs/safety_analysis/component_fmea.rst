@@ -17,7 +17,7 @@
    :status: draft
    :security: NO
    :safety: ASIL_B
-   :realizes: PROCESS_wp__sw_component_fmea
+   :realizes: wp__sw_component_fmea
    :tags: component_feo
 
 

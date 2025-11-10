@@ -20,7 +20,7 @@ Release Note
    :status: valid
    :safety: ASIL_B
    :security: NO
-   :realizes: PROCESS_wp__module_sw_release_note
+   :realizes: wp__module_sw_release_note
    :tags: persistency
 
 | Module Name: Persistency

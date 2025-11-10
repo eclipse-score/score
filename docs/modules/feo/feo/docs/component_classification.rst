@@ -18,7 +18,7 @@
    :status: draft
    :security: NO
    :safety: ASIL_B
-   :realizes: PROCESS_wp__sw_component_class
+   :realizes: wp__sw_component_class
    :tags: component_feo
 
 Component Classification

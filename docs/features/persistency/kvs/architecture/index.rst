@@ -22,7 +22,7 @@ Architecture
    :status: valid
    :safety: ASIL_B
    :security: NO
-   :realizes: PROCESS_wp__feature_arch
+   :realizes: wp__feature_arch
    :tags: persistency
 
 Overview
