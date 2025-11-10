@@ -12,8 +12,6 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _requirement inspection checklist:
-
 Requirement Inspection Checklist Persistency KVS
 ================================================
 
