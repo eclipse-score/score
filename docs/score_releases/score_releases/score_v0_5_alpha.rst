@@ -55,7 +55,7 @@ For more detailed planning overview please check our `GitHub project <https://gi
 
 S-Core book
 ------------
-First version of **Eclipse S-Core book**, that can be used as "how-to" for all who wants to start with S-Core project, can be found here: TODO Link.
+First version of **Eclipse S-CORE book**, that can be used as "how-to" for all who wants to start with S-Core project, can be found here: TODO Link.
 This book provides explanation of general concepts of **Eclipse S-Core project** and contains a "step-by-step" guide for building a first application
 based on Eclipse S-Core platform modules.
 
@@ -72,23 +72,32 @@ Bug Fixes
 Integrated Software Modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- **Communication**:
+- **Communication**: zero-copy, shared-memory based inter-process communication for minimal latency intra-ECU messaging
 
   - **Link to release**: `communication v0.1.1 <https://github.com/eclipse-score/communication/releases/tag/v0.1.1>`_
   - **Release notes**:
 
-    - Zero-copy, shared-memory based inter-process communication for minimal latency intra-ECU messaging
     - Find the full release note at: :need:`doc__communication_release_note`
 
-- **Baselibs**:
+- **Baselibs**: provides a selection of basic C++ utility libraries for common use in the S-CORE project
 
   - **Link to release**: `baselibs v0.1.3 <https://github.com/eclipse-score/baselibs/releases/tag/v0.1.3>`_
   - **Release notes**:
 
-    - The baselibs module provides a selection of basic C++ utility libraries for common use in the S-CORE project
     - Check the full `baselibs release notes <https://github.com/eclipse-score/baselibs/releases/tag/v0.1.3>`_ for more information
 
-- **Orchestrator**: Orchestration framework and safe async runtime called kyron for Rust
+- **Persistency**: ensures the long-term storage and retrieval of data, provides a reliable mechanism for preserving information,
+  allowing the application to maintain its state and data integrity over time
+
+  - **Link to release**: `persistency v0.2.0 <https://github.com/eclipse-score/persistency/releases/tag/v0.2.0>`_
+  - **Release notes**:
+    
+    - **Please note**: `definition of feature requirements and architecture <https://eclipse-score.github.io/score/main/features/persistency/index.html>`_  and
+      `component requirements and architecture <https://eclipse-score.github.io/score/main/modules/persistency/index.html>`_ is partially out of date.
+      This will be fixed with next release.
+    - Check the full `persistency release notes <https://github.com/eclipse-score/persistency/releases/tag/v0.2.0>`_ for more information
+
+- **Orchestrator**: orchestration framework and safe async runtime called kyron for Rust
 
   - **Link to release**: `orchestrator v0.0.3 <https://github.com/eclipse-score/orchestrator/releases/tag/v0.0.3>`_
   - **Release notes**:
@@ -117,11 +126,12 @@ Integrated Software Modules
 
       - Provides integration of all 0.5 modules including `scrample demo application <https://github.com/eclipse-score/scrample>`_
       - Provide CI/CD workflows to ensure stability of the reference integration:
-         - `build and test on every pr <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_on_every_pr.yml>`_ and 
-           `test integration <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/test_integration.yml>`_ for every pr and on every release
-           build all functional modules of Eclipse S-Core v0.5 and execute multiple tests to ensure stability of the reference integration
-         - `release verification <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/release_verification.yml>`_ executes multiple integration tests
-           in reference qnx image during creation of releases to ensure that the image is fully functional
+  
+        - `build and test on every pr <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_on_every_pr.yml>`_ and 
+          `test integration <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/test_integration.yml>`_ 
+          build all functional modules of Eclipse S-Core v0.5 and execute multiple tests to ensure stability of the reference integration for every pr and on every release creation
+        - `release verification <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/release_verification.yml>`_ executes multiple integration tests
+          in reference qnx image during creation of releases to ensure that the reference image is fully functional
 
     - **reference qnx image**
 
@@ -129,27 +139,25 @@ Integrated Software Modules
       - Provides `basic itf tests <https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu/test/itf>`_.
         Check following `build commands <https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu#build-commands>`_ for running itf tests locally and for other important commands.
 
-    - **reference auto sd linux image** (Experimental)
+    - **reference autosd linux image** (Experimental)
 
-      - Provides reference linux based auto sd image, for usage see `auto sd README <https://github.com/eclipse-score/reference_integration/tree/main/autosd/build>`_
-      - integrates ipc tests (same functionality as scrample example) and executes them on top of auto sd image in a separate
+      - Provides reference linux based autosd image, for usage see `autosd README <https://github.com/eclipse-score/reference_integration/tree/main/autosd/build>`_
+      - integrates ipc tests (same functionality as scrample example) and executes them on top of autosd image in a separate
         `build_and_test_autosd <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_autosd.yml>`_ workflow
-      - **Please note**: the integration of auto sd linux image is experimental and do not follow S-CORE process, e.g. integration into bazel is missing. This will be
+      - **Please note**: the integration of autosd linux image is experimental and do not follow S-CORE process, e.g. integration into bazel is missing. This will be
         fixed in the upcoming releases.   
 
 
 Associated Infrastructure Modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- **process_description**:
+- **process_description**: provides a process model establishing organization rules for developing open source software
+  in the automotive industry, which can be used in safety and security context
 
   - **Link to release**: `process_description v0.1.3 <https://github.com/eclipse-score/process_description/releases/tag/v1.3.0>`_
   - **Release notes**
 
-    - The module process_description provides a process model establishing organization rules for developing open source software
-      in the automotive industry, which can be used in safety and security context.
-
-      The process model provides processes, which conform to state-of the art standards
+    - The process model provides processes, which conform to state-of the art standards
 
       - ASPICE 4.0
       - ISO 26262
@@ -160,7 +168,7 @@ Associated Infrastructure Modules
 
 - **docs-as-code**: (Version). Tooling for linking and generation of documentation. Link to release note?
 - **tooling**: (Version). Provided tooling for S-CORE development. Link to release note?
-- **ITF**: Integration Testing Framework for execution of feature integration tests on the reference image
+- **ITF**: integration Testing Framework for execution of feature integration tests on the reference image
 
   - **Link to release**: `itf v0.1.0  <https://github.com/eclipse-score/itf/releases/tag/0.1.0>`_
   - **Release notes**
@@ -173,7 +181,7 @@ Associated Infrastructure Modules
     - `ITF readme <https://github.com/eclipse-score/itf/blob/main/README.md>`_
     - `reference_integration readme <https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/README.md#build-commands>`_
 
-- **Test Scenarios**: Testing framework providing a backend for testers to create parametrizable scenarios in Rust and C++ which can be used in common test case implementation validating parallel implementations.
+- **Test Scenarios**: testing framework providing a backend for testers to create parametrizable scenarios in Rust and C++ which can be used in common test case implementation validating parallel implementations.
 
 
   - **Link to release**: `Test Scenarios v0.3.0  <https://github.com/eclipse-score/testing_tools/releases/tag/v0.3.0>`_
@@ -188,9 +196,11 @@ Performed Verification
 ^^^^^^^^^^^^^^^^^^^^^^^^
 Following tests were executed:
 
+- every C++ module was successfully built with gcc and qcc toolchain
+- every RUST module was successfully built with rust toolchain
 - every module has executed its unit-tests
 - few basic integration tests were executed with reference integration qnx image in Qemu as can be seen e.g. in the following `Action Run <https://github.com/eclipse-score/reference_integration/actions/runs/19128779084/job/54664320615#step:7:689>`_.
-- for some of the modules (**TODO**), component tests with score-test-scenarios framework were executed
+- for *persistency* and *orchestration* modules component tests with *score-test-scenarios* framework were executed
 
 Known Issues
 ^^^^^^^^^^^^^^^^
