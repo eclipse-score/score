@@ -72,8 +72,8 @@
         </script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Eclipse S-CORE Book" href="score_book/index.html" />
-    <link rel="prev" title="Enterprise Forking Guide for S-CORE Repositories" href="../contribute/fork/index.html" />
+    <link rel="next" title="Overview" href="project_basics/index.html" />
+    <link rel="prev" title="Documentation" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
@@ -152,9 +152,9 @@
 <nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../requirements/index.html">
-    Requirements
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Handbook
   </a>
 </li>
 
@@ -162,6 +162,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../features/index.html">
     Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../requirements/index.html">
+    Requirements
   </a>
 </li>
 
@@ -176,13 +183,6 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../contribute/index.html">
     Contribute
-  </a>
-</li>
-
-
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="#">
-    Handbook
   </a>
 </li>
 
@@ -347,9 +347,9 @@
 <nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../requirements/index.html">
-    Requirements
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Handbook
   </a>
 </li>
 
@@ -357,6 +357,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../features/index.html">
     Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../requirements/index.html">
+    Requirements
   </a>
 </li>
 
@@ -371,13 +378,6 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../contribute/index.html">
     Contribute
-  </a>
-</li>
-
-
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="#">
-    Handbook
   </a>
 </li>
 
@@ -487,7 +487,9 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="score_book/index.html">Eclipse S-CORE Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_basics/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="own_application/index.html">Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building_simple_application/index.html">Contribute own module</a></li>
 </ul>
 </div>
 </nav></div>
@@ -545,13 +547,53 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="handbook">
-<h1>Handbook<a class="headerlink" href="#handbook" title="Link to this heading">#</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="score_book/index.html">Eclipse S-CORE Book</a></li>
-</ul>
+  <div class="toctree-wrapper compound">
 </div>
+<section id="handbook">
+<h1>Handbook<a class="headerlink" href="#handbook" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<a class="reference internal image-reference" href="../_images/score_image.png"><img alt="Eclipse Score" class="align-center" src="../_images/score_image.png" style="width: 400px;" />
+</a>
+<p>Welcome to the Eclipse S-CORE project. As Eclipse S-CORE project is continuously developing, the decision was taken
+to write a small tutorial, a <strong>Eclipse S-CORE book</strong>, that tries to explain how the Eclipse S-CORE project technically works.
+As neither the Eclipse S-CORE project nor this book are currently in the final state, everyone is kindly invited to contribute
+to the Eclipse S-CORE project and to extend this book.</p>
+<p>Before we dive into the technical details, we think, that it is worthful to explain the background and the goals of
+the Eclipse S-CORE project. Eclipse S-CORE project was founded mainly by the companies from the automotive world, that were inspired
+by the open-source achievements in the last decades and that share the same vision, that a common open-source software platform
+for the automotive electronical control units will empower the automotive industry to do the next step. The main reason for this,
+is that software platforms need to provide more and more features with every new series of vehicles as the requirements are getting
+more and more complicated. Developing and maintaining such platforms by every company separately is not efficient and also very
+expensive. Therefore open source approach looks like a better alternative, where the automotive companies can share the effort and
+also have a platform for exchanging their problems and needs and that enables them to search for new solutions together.</p>
+<p>Eclipse S-CORE project is not the first project that tries to solve these kinds of problems. In the past, such projects
+as <a class="reference external" href="https://www.autosar.org/">Autosar</a>, tried to
+solve at least some of the problems through the standardization. Eclipse S-CORE project by no way contradicts to the ideas of Autosar. Furthermore
+it tries to make the next step based on the experience of autosar and comparable standardization projects. The main two goals besides
+the standardization, that we try to achieve with the Eclipse S-CORE project are the following:</p>
+<ul class="simple">
+<li><p>Eclipse S-CORE project aims to provide not only the specification of the modules, but also the implementation. As we all know,
+a lot of problems become clear only during the integration of the software stack and not during its specification. Beside this,
+some of the aspects of the implementation, e.g. performance, are hard to specify. Working on the same implementation in the open-source
+allows to fix the problems directly on the implementation level and to ensure, that they will not happen in the future by always
+reusing the same implementation.</p></li>
+<li><p>Another important aspect that normally comes up by the integration of the software stack, especially in safety and security relevant systems, is its quality
+and the software development process according to which it was developed, including following aspects: code quality, requirements and architecture,
+test coverage and so on. Therefore one of the most important goals of the Eclipse S-CORE project is not only to provide an efficient, state of the art implementation
+of the automotive software platform but also to define a safety and security conform software development process to ensure, that all implementations of
+Eclipse S-CORE modules follow this process, mainly by automated checks and in case not yet implemented, with help of manual reviews. The clear
+goal is to specify only those parts of software development process, that also can be validated with automated checks in the future.</p></li>
+</ul>
+<p>It is important to understand, that Eclipse S-CORE project is not a final product, that can be “out-of-the-box” integrated into the automotive series projects.
+This has multiple reasons. First of all, Eclipse S-CORE is an open-source project, meaning there is no any commercial company behind this project,
+that can be liable for anything. The strength of the Eclipse S-CORE project is that both its software development process and the corresponding tooling
+to ensure fulfillment of this process, e.g. automated checks and test execution in CI, are all open-source, so everyone can have a look and check, whether
+it is doing exactly the same what it is supposed to do. Furthermore it is a well maintained basis with clear communicated things that we do and
+that we do not (yet) do, that can be used by multiple automotive companies as basis for their commercial distribution. The maintainers of the Eclipse S-CORE project
+strongly believe, that at least after some time further automotive companies will understand the benefits of having an open-source standard for an
+automotive software platform and will start not only reusing but also actively contributing to the Eclipse S-CORE project.</p>
+</section>
 </section>
 
 
@@ -565,20 +607,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../contribute/fork/index.html"
+       href="../index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Enterprise Forking Guide for S-CORE Repositories</p>
+        <p class="prev-next-title">Documentation</p>
       </div>
     </a>
     <a class="right-next"
-       href="score_book/index.html"
+       href="project_basics/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Eclipse S-CORE Book</p>
+        <p class="prev-next-title">Overview</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -592,6 +634,18 @@
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
 
