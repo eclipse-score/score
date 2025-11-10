@@ -407,7 +407,7 @@ The following test level fall in the responsibility of the :need:`rl__testing_co
 
 * :need:`wp__verification_comp_int_test`
 * :need:`wp__verification_feat_int_test`
-* :need:`wp__verification_platform_test`
+* :need:`wp__verification_platform_int_test`
 
 Still a :need:`rl__contributor` of one function in a component doesn't prevent them from writing tests
 for other functions they do not own.

@@ -57,7 +57,7 @@ The following shows the folder structure of the platform repository (ordered alp
         verification_report/           -> Platform verification report (reporting all platform feature's verifications)
                                              [:need:`wp__verification_platform_ver_report`]
 
-    platform_integration_tests/        -> Integration tests on reference hardware verifying stakeholder requirements. [:need:`wp__verification_platform_test`]
+    platform_integration_tests/        -> Integration tests on reference hardware verifying stakeholder requirements. [:need:`wp__verification_platform_int_test`]
     tools/                             -> Platform tools (not covered in tool repositories)
 
     README.md                          -> Entrypoint of the repository

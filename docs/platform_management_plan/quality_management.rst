@@ -440,7 +440,7 @@ None
         * - :need:`wp__verification_plan`
           - :ref:`project_documents_list`, :ref:`documents_docs_features`, :ref:`documents_docs_modules_components`
 
-        * - :need:`wp__verification_platform_test`
+        * - :need:`wp__verification_platform_int_test`
           - :ref:`project_documents_list`
 
         * - :need:`wp__verification_platform_ver_report`
