@@ -98,11 +98,11 @@ Environment
 Evaluation
 ----------
 
-.. list-table:: Bazel safety evaluation
+.. list-table:: Safety evaluation
    :header-rows: 1
    :widths: 1 2 8 2 6 4 2 2
 
-   * - Use case Identification
+   * - Malfunction identification
      - Use case Description
      - Malfunctions
      - Impact on safety?
@@ -111,204 +111,124 @@ Evaluation
      - Further additional safety measure required?
      - Confidence (automatic calculation)
    * - 1
-     - Bazel calls other tools
-     - Bazel fails to interpreted attributes of the rule call the tool not as defined by rule.
+     - Dependency management
+     - | Incorrect dependency graph
+       |
+       | Bazel builds with wrong dependency order, causing missing or outdated binaries in the final executable
      - yes
-     - Check the parameters passed to the tool
-     - HIGH
+     - /
      - no
-     - high
+     - yes(qualification)
+     - low
    * - 2
-     - Bazel calls other tools
-     - Bazel fails to set correct (provided) tag string parameter. Tags may trigger certain actions. If tags were handled wrongly, this will lead to missing expected outputs.
+     - Dependency management
+     - | Cyclic dependency introduced
+       |
+       | Bazel fails to resolve dependencies and stops build, leaving safety-critical components unbuilt
      - yes
-     - Check the existence of the output
-     - HIGH
+     - /
      - no
-     - high
+     - yes(qualification)
+     - low
    * - 3
-     - Bazel calls other tools
-     - Bazel BwoB downloaded some output artifacts that are not relevant for current (re)build.
+     - Dependency management
+     - | Dependency not updated
+       |
+       | Bazel fails to update relevant dependency, keeping old code even though it should update it
+     - yes
+     - /
      - no
-     - N/A
-     - HIGH
-     - no
-     - high
+     - yes(qualification)
+     - low
    * - 4
-     - Bazel calls other tools
-     - Bazel BwoB download wrong output artifact, so build was (re)done for outdated or wrong outputs.
+     - Build caching
+     - | Missed rebuild due to wrong change detection
+       |
+       | Bazel incorrectly assumes no changes and skips rebuilding, leaving outdated code in safety-critical modules
      - yes
-     - Check results of remote cache fetching (BwtB)
-     - HIGH
+     - /
      - no
-     - high
+     - yes(qualification)
+     - low
    * - 5
-     - Bazel calls other tools
-     - Bazel BwoB fails to download relevant output artifacts.
+     - Build caching
+     - | Incorrect cache hit
+       |
+       | Bazel retrieves wrong cached artifact, compiling outdated or incorrect code
+     - yes
+     - /
      - no
-     - N/A
-     - HIGH
-     - no
-     - high
+     - yes(qualification)
+     - low
    * - 6
-     - Bazel calls other tools
-     - Relevant artifacts from remote cache was not downloaded at all.
+     - Build caching
+     - | Partial rebuild skips safety-critical module
+       |
+       | Bazel rebuilds only part of the system, omitting safety-critical components
+     - yes
+     - /
      - no
-     - N/A
-     - HIGH
-     - no
-     - high
+     - yes(qualification)
+     - low
    * - 7
-     - Bazel calls other tools
-     - Downloaded artifacts are corrupted.
+     - WORKSPACE / BUILD Config
+     - | Misconfigured flags
+       |
+       | Bazel applies wrong compiler flags, disabling safety mechanisms and introducing unsafe behavior
      - yes
-     - Check results of remote cache fetching (BwtB)
-     - HIGH
+     - /
      - no
-     - high
+     - yes(qualification)
+     - low
    * - 8
-     - Bazel calls other tools
-     - Call of build-in bazel function caused wrong call of tool. Covers scenarios like wrong configuration, wrong property, wrong transition.
+     - WORKSPACE / BUILD Config
+     - | Missing dependency
+       |
+       | Bazel fails to include required dependency, causing incomplete build and missing safety-critical functionality
      - yes
-     - Check parameters passed to the tool; Review target dependencies
-     - HIGH
+     - /
      - no
-     - high
+     - yes(qualification)
+     - low
    * - 9
-     - Bazel calls other tools
-     - Wrong list of items was used due to failure of glob function.
+     - WORKSPACE / BUILD Config
+     - | Wrong optimization level
+       |
+       | Bazel applies unsafe optimization level, breaking timing assumptions and potentially violating safety requirements
      - yes
-     - Qualification of Bazel
-     - LOW
+     - /
      - no
+     - yes(qualification)
      - low
    * - 10
-     - Bazel calls other tools
-     - Hashes from remote cache do not match workspace, although files are the same.
-     - no
-     - N/A
-     - HIGH
-     - no
-     - high
-   * - 11
-     - Bazel calls other tools
-     - Hashes match although files differ.
+     - Custom rules
+     - | Bug in custom rule
+       |
+       | Bazel executes incorrect build steps due to faulty custom rule, producing unsafe binaries
      - yes
-     - Qualification of Bazel
-     - LOW
+     - /
      - no
+     - yes(qualification)
+     - low
+   * - 11
+     - Custom rules
+     - | Unsafe script logic
+       |
+       | Bazel skips critical checks because of unsafe Starlark logic, leading to incomplete safety validation
+     - yes
+     - /
+     - no
+     - yes(qualification)
      - low
    * - 12
-     - Bazel calls other tools
-     - Genrule wrongly called or Bazel fails to determine rebuild need.
+     - Custom rules
+     - | Version incompatibility
+       |
+       | Bazel fails or produces incorrect output due to incompatible Starlark rule versions
      - yes
-     - Usage of genrule() is forbidden
-     - HIGH
-     - yes
-     - high
-   * - 13
-     - Bazel calls other tools
-     - Wrong configuration applied without explicit statement.
-     - yes
-     - Check parameters passed to the tool
-     - HIGH
+     - /
      - no
-     - high
-   * - 14
-     - Bazel calls other tools
-     - Correct context incorrectly interpreted by Bazel.
-     - yes
-     - Check parameters passed to the tool
-     - HIGH
-     - no
-     - high
-   * - 15
-     - Bazel calls other tools
-     - Command line options wrongly passed to the tool.
-     - yes
-     - Check parameters passed to the tool
-     - HIGH
-     - no
-     - high
-   * - 16
-     - Bazel calls other tools
-     - Bazel fails to pass parameter to the calling tool.
-     - yes
-     - Check parameters passed to the tool
-     - HIGH
-     - no
-     - high
-   * - 17
-     - Bazel calls other tools
-     - Build failed but Bazel reported success.
-     - yes
-     - Check output existence; Check parameters passed to the tool
-     - HIGH
-     - yes
-     - high
-   * - 18
-     - Bazel calls other tools
-     - Bazel fails to produce a build.
-     - yes
-     - Check output existence
-     - HIGH
-     - yes
-     - high
-   * - 19
-     - Bazel calls other tools
-     - Unnecessary steps triggered during build.
-     - no
-     - N/A
-     - HIGH
-     - no
-     - high
-   * - 20
-     - Bazel calls other tools
-     - Tool called more than once.
-     - no
-     - N/A
-     - HIGH
-     - no
-     - high
-   * - 21
-     - Bazel calls other tools
-     - Tool specified by build rule not called.
-     - yes
-     - Check if tool is called by Bazel
-     - HIGH
-     - yes
-     - high
-   * - 22
-     - Bazel calls other tools
-     - Wrong tool called (e.g. Python2 instead of Python3).
-     - yes
-     - Check that Bazel uses correct tools
-     - HIGH
-     - yes
-     - high
-   * - 23
-     - Bazel calls other tools
-     - Wrong version of tool invoked.
-     - yes
-     - Check version of tool invoked by Bazel
-     - HIGH
-     - yes
-     - high
-   * - 24
-     - Bazel calls other tools
-     - Input changed but Bazel did not trigger rebuild.
-     - yes
-     - Qualification of Bazel
-     - LOW
-     - yes
-     - low
-   * - 25
-     - Bazel calls other tools
-     - Internal cache hash incomplete.
-     - yes
-     - Qualification of Bazel
-     - LOW
-     - yes
+     - yes(qualification)
      - low
 
 
