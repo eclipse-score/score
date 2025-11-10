@@ -6,10 +6,10 @@ by the future changes. For this we should create a CI/CD workflow, that triggers
 `GitHub action <https://docs.github.com/en/actions>`_
 for building our scrample application every time a new PR is raised.
 
-To achieve this, first let us create a workflow file `build.yml <https://github.com/eclipse-score/scrample/blob/main/.github/workflows/build.yml>_`
+To achieve this, first let us create a workflow file `build.yml <https://github.com/eclipse-score/scrample/blob/main/.github/workflows/build.yml>`_
 in the .github folder.
 
-Next, we should fill the workflow with content as shown below:
+Next, we should fill the workflow file with content as shown below:
 
 .. code-block::
     :linenos:
@@ -46,10 +46,10 @@ Next, we should fill the workflow with content as shown below:
                 if: always()
                 run: rm -rf /opt/score_qnx
 
-First, as shown in the line 2, we need to define when the workflow should be executed. In our case, it we want to build the
+First, as shown in the line 2, we need to define when the workflow should be executed. In our case, we want to build the
 scrample application everytime the PR is *opened*, *created* or *synchronized*.
 
-Second, we need to define which jobs should be executed. For now, it is only one job, to build the scrample application, as shown
+Second, we need to define which jobs should be executed. For now, it is only one job that builds the scrample application, as shown
 in the line 8.
 
 Finally, we need to define steps of the build job:
@@ -57,10 +57,10 @@ Finally, we need to define steps of the build job:
 - in the line 11 we checkout the repository
 - in the line 13 we setup the bazel
 - in the line 15 we set up the QNX license, using CI lisense, that is stored in the secret storage
-  of the CI infrastructure.
+  of the CI infrastructure
 - finally, in the line 21 we define the step to build the scrample application. After setting the QNX variables
   we run the bazel command, that we also ran locally, to build the *scrample binary*
-- as last step, in the lin 28 we do a clean up and remove all unnecessary files from the remote build machine.
+- as last step, in the line 28 we do a clean up and remove all unnecessary files from the remote build machine.
 
 As soon, as the workflow is merged to the repository, every time someone creates a PR, we will see the execution
 of the build target in the `Actions sections <https://github.com/eclipse-score/reference_integration/actions>`_
