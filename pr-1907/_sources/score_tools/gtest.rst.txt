@@ -78,7 +78,7 @@ Requires C++ compiler and bazel build environment.
 
 Safety evaluation
 -----------------
-This section evaluates GTest for use in S-CORE project.
+This section outlines the safety evaluation of GTest for its use within the S-CORE project.
 
 
 .. list-table:: Safety evaluation
@@ -86,7 +86,7 @@ This section evaluates GTest for use in S-CORE project.
    :widths: 1 2 8 2 6 4 2 2
 
    * - Malfunction identification
-     - Use case Description
+     - Use case description
      - Malfunctions
      - Impact on safety?
      - Impact safety measures available?
@@ -119,7 +119,7 @@ This section evaluates GTest for use in S-CORE project.
        |
        | GTest was not able to collect results of executed test.
      - no
-     - /
+     - no
      - yes
      - no
      - high
@@ -129,7 +129,7 @@ This section evaluates GTest for use in S-CORE project.
        |
        | GTest fails to detect the presence of existing errors.
      - yes
-     - /
+     - no
      - no
      - yes (qualification)
      - low
@@ -139,7 +139,7 @@ This section evaluates GTest for use in S-CORE project.
        |
        | GTest fails to execute specific test from the test plan
      - no
-     - /
+     - no
      - yes
      - no
      - high
@@ -149,8 +149,8 @@ This section evaluates GTest for use in S-CORE project.
 
        GTest indicates the presence of errors that do not exist.
      - no
-     - /
-     - n/a
+     - no
+     - yes
      - no
      - high
    * - 7
@@ -164,11 +164,16 @@ This section evaluates GTest for use in S-CORE project.
      - no
      - high
 
+Security evaluation
+-------------------
+This section outlines the security evaluation of GTest for its use within the S-CORE project.
+
+
 .. list-table:: Security evaluation
    :header-rows: 1
 
-   * - Use case Identification
-     - Use case Description
+   * - Threat identification
+     - Use case description
      - Threats
      - Impact on security?
      - Impact security measures available?
