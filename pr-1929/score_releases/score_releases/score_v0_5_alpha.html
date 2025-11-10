@@ -542,7 +542,7 @@
                   
   <section id="s-core-v0-5-alpha-release-notes">
 <h1>S-Core v0.5-alpha release notes<a class="headerlink" href="#s-core-v0-5-alpha-release-notes" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-360d16dd">
+<div class="need_container docutils container" id="SNCB-4acfbd80">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__score_v05_alpha_release_note">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -643,11 +643,17 @@ based on Eclipse S-Core platform modules.</p>
 </li>
 </ul>
 </li>
-<li><p><strong>FEO</strong>: (Version). Link to Software module release note.</p></li>
-<li><p><strong>Logging</strong>: (Version). Link to Software module release note.</p></li>
-<li><p><strong>Tracing</strong>: (Version). Link to Software module release note.</p></li>
-<li><p><strong>Baselibs</strong>: (Version). Link to Software module release note.</p></li>
-<li><p><strong>OS</strong>: (Version). Link to Software module release note (external module).</p></li>
+<li><p><strong>Baselibs</strong>:</p>
+<ul>
+<li><p><strong>Link to release</strong>: <a class="reference external" href="https://github.com/eclipse-score/baselibs/releases/tag/v0.1.3">baselibs v0.1.3</a></p></li>
+<li><p><strong>Release notes</strong>:</p>
+<ul>
+<li><p>The baselibs module provides a selection of basic C++ utility libraries for common use in the S-CORE project</p></li>
+<li><p>Check the full <a class="reference external" href="https://github.com/eclipse-score/baselibs/releases/tag/v0.1.3">baselibs release notes</a> for more information</p></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><p><strong>Orchestrator</strong>: Orchestration framework and safe async runtime called kyron for Rust</p>
 <ul>
 <li><p><strong>Link to release</strong>: <a class="reference external" href="https://github.com/eclipse-score/orchestrator/releases/tag/v0.0.3">orchestrator v0.0.3</a></p></li>
@@ -678,17 +684,36 @@ The Orchestrator integrates seamlessly with the kyron, clearly separating applic
 <li><p><strong>Link to release</strong>: tbd</p></li>
 <li><p><strong>Release notes</strong></p>
 <ul>
-<li><p>Provides reference QNX x86_64 qemu image, for usage see <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/README.md">reference integration README</a></p></li>
+<li><p><strong>common</strong></p>
+<ul>
 <li><p>Provides integration of all 0.5 modules including <a class="reference external" href="https://github.com/eclipse-score/scrample">scrample demo application</a></p></li>
+<li><dl class="simple">
+<dt>Provide CI/CD workflows to ensure stability of the reference integration:</dt><dd><ul>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_on_every_pr.yml">build and test on every pr</a> and
+<a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/test_integration.yml">test integration</a> for every pr and on every release
+build all functional modules of Eclipse S-Core v0.5 and execute multiple tests to ensure stability of the reference integration</p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/release_verification.yml">release verification</a> executes multiple integration tests
+in reference qnx image during creation of releases to ensure that the image is fully functional</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</li>
+<li><p><strong>reference qnx image</strong></p>
+<ul>
+<li><p>Provides reference QNX x86_64 qemu image, for usage see <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/README.md">reference integration README</a></p></li>
 <li><p>Provides <a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu/test/itf">basic itf tests</a>.
 Check following <a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu#build-commands">build commands</a> for running itf tests locally and for other important commands.</p></li>
-<li><p>Provide CI/CD workflows to ensure stability of the reference integration:</p>
+</ul>
+</li>
+<li><p><strong>reference auto sd linux image</strong> (Experimental)</p>
 <ul>
-<li><p><a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_on_every_pr.yml">build and test on every pr</a> executes all itf tests in reference qnx image on every pr
-to ensure that the image is still functional</p></li>
-<li><p><a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/release_verification.yml">release verification</a> does the same on every release</p></li>
-<li><p><a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/test_integration.yml">test integration</a> for every pr and on every release builds all functional modules of Eclipse S-Core v0.5
-release and additionally executes component tests with <a class="github reference external" href="score-test-scenarioshttps://github.com/eclipse-score/testing_tools">eclipse-score/testing_tools</a> framework for some of components.</p></li>
+<li><p>Provides reference linux based auto sd image, for usage see <a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/autosd/build">auto sd README</a></p></li>
+<li><p>integrates ipc tests (same functionality as scrample example) and executes them on top of auto sd image in a separate
+<a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_autosd.yml">build_and_test_autosd</a> workflow</p></li>
+<li><p><strong>Please note</strong>: the integration of auto sd linux image is experimental and do not follow S-CORE process, e.g. integration into bazel is missing. This will be
+fixed in the upcoming releases.</p></li>
 </ul>
 </li>
 </ul>
@@ -699,12 +724,31 @@ release and additionally executes component tests with <a class="github referenc
 </section>
 <section id="associated-infrastructure-modules">
 <h2>Associated Infrastructure Modules<a class="headerlink" href="#associated-infrastructure-modules" title="Link to this heading">#</a></h2>
+<ul>
+<li><p><strong>process_description</strong>:</p>
+<ul>
+<li><p><strong>Link to release</strong>: <a class="reference external" href="https://github.com/eclipse-score/process_description/releases/tag/v1.3.0">process_description v0.1.3</a></p></li>
+<li><p><strong>Release notes</strong></p>
+<ul>
+<li><p>The module process_description provides a process model establishing organization rules for developing open source software
+in the automotive industry, which can be used in safety and security context.</p>
+<p>The process model provides processes, which conform to state-of the art standards</p>
 <ul class="simple">
-<li><p><strong>process_description</strong>: (Version). Process description of S-CORE. Link to release note?</p></li>
+<li><p>ASPICE 4.0</p></li>
+<li><p>ISO 26262</p></li>
+<li><p>ISO 21434</p></li>
+<li><p>ISO PAS 8926</p></li>
+</ul>
+</li>
+<li><p>Check the full <a class="reference external" href="https://github.com/eclipse-score/process_description/releases/tag/v1.3.0">process_description release notes</a> for more information</p></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><p><strong>docs-as-code</strong>: (Version). Tooling for linking and generation of documentation. Link to release note?</p></li>
 <li><p><strong>tooling</strong>: (Version). Provided tooling for S-CORE development. Link to release note?</p></li>
 <li><p><strong>ITF</strong>: Integration Testing Framework for execution of feature integration tests on the reference image</p>
-<ul>
+<ul class="simple">
 <li><p><strong>Link to release</strong>: <a class="reference external" href="https://github.com/eclipse-score/itf/releases/tag/0.1.0">itf v0.1.0</a></p></li>
 <li><p><strong>Release notes</strong></p>
 <ul>
@@ -720,7 +764,7 @@ release and additionally executes component tests with <a class="github referenc
 </ul>
 </li>
 <li><p><strong>Test Scenarios</strong>: Testing framework providing a backend for testers to create parametrizable scenarios in Rust and C++ which can be used in common test case implementation validating parallel implementations.</p>
-<ul>
+<ul class="simple">
 <li><p><strong>Link to release</strong>: <a class="reference external" href="https://github.com/eclipse-score/testing_tools/releases/tag/v0.3.0">Test Scenarios v0.3.0</a></p></li>
 <li><p><strong>Release notes</strong></p>
 <ul>

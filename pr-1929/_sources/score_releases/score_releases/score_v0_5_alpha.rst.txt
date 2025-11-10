@@ -80,11 +80,14 @@ Integrated Software Modules
     - Zero-copy, shared-memory based inter-process communication for minimal latency intra-ECU messaging
     - Find the full release note at: :need:`doc__communication_release_note`
 
-- **FEO**: (Version). Link to Software module release note.
-- **Logging**: (Version). Link to Software module release note.
-- **Tracing**: (Version). Link to Software module release note.
-- **Baselibs**: (Version). Link to Software module release note.
-- **OS**: (Version). Link to Software module release note (external module).
+- **Baselibs**:
+
+  - **Link to release**: `baselibs v0.1.3 <https://github.com/eclipse-score/baselibs/releases/tag/v0.1.3>`_
+  - **Release notes**:
+
+    - The baselibs module provides a selection of basic C++ utility libraries for common use in the S-CORE project
+    - Check the full `baselibs release notes <https://github.com/eclipse-score/baselibs/releases/tag/v0.1.3>`_ for more information
+
 - **Orchestrator**: Orchestration framework and safe async runtime called kyron for Rust
 
   - **Link to release**: `orchestrator v0.0.3 <https://github.com/eclipse-score/orchestrator/releases/tag/v0.0.3>`_
@@ -110,23 +113,51 @@ Integrated Software Modules
   - **Link to release**: tbd
   - **Release notes**
 
-    - Provides reference QNX x86_64 qemu image, for usage see `reference integration README <https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/README.md>`_
-    - Provides integration of all 0.5 modules including `scrample demo application <https://github.com/eclipse-score/scrample>`_
-    - Provides `basic itf tests <https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu/test/itf>`_.
-      Check following `build commands <https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu#build-commands>`_ for running itf tests locally and for other important commands.
-    - Provide CI/CD workflows to ensure stability of the reference integration:
+    - **common**
 
-      - `build and test on every pr <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_on_every_pr.yml>`_ executes all itf tests in reference qnx image on every pr
-        to ensure that the image is still functional
-      - `release verification <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/release_verification.yml>`_ does the same on every release
-      - `test integration <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/test_integration.yml>`_ for every pr and on every release builds all functional modules of Eclipse S-Core v0.5
-        release and additionally executes component tests with `<score-test-scenarios https://github.com/eclipse-score/testing_tools>`_ framework for some of components.
+      - Provides integration of all 0.5 modules including `scrample demo application <https://github.com/eclipse-score/scrample>`_
+      - Provide CI/CD workflows to ensure stability of the reference integration:
+         - `build and test on every pr <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_on_every_pr.yml>`_ and 
+           `test integration <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/test_integration.yml>`_ for every pr and on every release
+           build all functional modules of Eclipse S-Core v0.5 and execute multiple tests to ensure stability of the reference integration
+         - `release verification <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/release_verification.yml>`_ executes multiple integration tests
+           in reference qnx image during creation of releases to ensure that the image is fully functional
+
+    - **reference qnx image**
+
+      - Provides reference QNX x86_64 qemu image, for usage see `reference integration README <https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/README.md>`_
+      - Provides `basic itf tests <https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu/test/itf>`_.
+        Check following `build commands <https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu#build-commands>`_ for running itf tests locally and for other important commands.
+
+    - **reference auto sd linux image** (Experimental)
+
+      - Provides reference linux based auto sd image, for usage see `auto sd README <https://github.com/eclipse-score/reference_integration/tree/main/autosd/build>`_
+      - integrates ipc tests (same functionality as scrample example) and executes them on top of auto sd image in a separate
+        `build_and_test_autosd <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_autosd.yml>`_ workflow
+      - **Please note**: the integration of auto sd linux image is experimental and do not follow S-CORE process, e.g. integration into bazel is missing. This will be
+        fixed in the upcoming releases.   
 
 
 Associated Infrastructure Modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- **process_description**: (Version). Process description of S-CORE. Link to release note?
+- **process_description**:
+
+  - **Link to release**: `process_description v0.1.3 <https://github.com/eclipse-score/process_description/releases/tag/v1.3.0>`_
+  - **Release notes**
+
+    - The module process_description provides a process model establishing organization rules for developing open source software
+      in the automotive industry, which can be used in safety and security context.
+
+      The process model provides processes, which conform to state-of the art standards
+
+      - ASPICE 4.0
+      - ISO 26262
+      - ISO 21434
+      - ISO PAS 8926
+      
+    - Check the full `process_description release notes <https://github.com/eclipse-score/process_description/releases/tag/v1.3.0>`_ for more information
+
 - **docs-as-code**: (Version). Tooling for linking and generation of documentation. Link to release note?
 - **tooling**: (Version). Provided tooling for S-CORE development. Link to release note?
 - **ITF**: Integration Testing Framework for execution of feature integration tests on the reference image
