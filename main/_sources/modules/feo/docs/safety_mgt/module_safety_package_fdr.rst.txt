@@ -13,7 +13,7 @@
    # *******************************************************************************
 
 .. document:: FEO Module Safety Package Formal Review
-   :id: doc__module_name_safety_package_fdr
+   :id: doc__feo_safety_package_fdr
    :status: draft
    :security: NO
    :safety: ASIL_B

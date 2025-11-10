@@ -95,8 +95,8 @@ FEO Module Work Products List
           - :need:`PROCESS_gd_chklst__safety_package`
           - :ndf:`copy('status', need_id='PROCESS_gd_chklst__safety_package')`
           - https://github.com/eclipse-score/score/issues/1660
-          - :need:`doc__module_name_safety_package_fdr`
-          - :ndf:`copy('status', need_id='doc__module_name_safety_package_fdr')`
+          - :need:`doc__feo_safety_package_fdr`
+          - :ndf:`copy('status', need_id='doc__feo_safety_package_fdr')`
 
         * - :need:`PROCESS_wp__fdr_reports` (module's Safety Analyses & DFA)
           - :need:`PROCESS_gd_chklst__safety_analysis`
@@ -234,8 +234,8 @@ FEO Component Work Products List
           - :need:`PROCESS_gd_guidl__component_classification`
           - :ndf:`copy('status', need_id='PROCESS_gd_guidl__component_classification')`
           - https://github.com/eclipse-score/score/issues/1679
-          - :need:`doc__component_name_comp_class`
-          - :ndf:`copy('status', need_id='doc__component_name_comp_class')`
+          - :need:`doc__feo_comp_class`
+          - :ndf:`copy('status', need_id='doc__feo_comp_class')`
 
 Note: In case the component is a new development, :need:`PROCESS_wp__sw_component_class` shall be removed from the above list (and also from the folders).
 In case an OSS element is used in the module, part 6 has to be filled out, depending on the component classification results.
