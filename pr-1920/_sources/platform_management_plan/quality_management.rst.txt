@@ -240,7 +240,7 @@ and :need:`PROCESS_rl__quality_manager` who record/check this in the role assign
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 4.1 Quality Resources
 """"""""""""""""""""""
-Dedicated :need:`PROCESS_rl__quality_manager` are elected, as the committers, in a meritocratic manner for the platform.
+Dedicated :need:`PROCESS_rl__quality_manager` are elected, following a methodology as done for the committers, which means in a meritocratic manner on project level.
 
 The :need:`PROCESS_rl__quality_manager`, supported by the :need:`PROCESS_rl__project_lead`, and all other stakeholders,
 will ensure that quality activities are actively planned, developed, analyzed, verified, tested, and managed throughout the life cycle of the project.
@@ -273,11 +273,12 @@ The quality management status :need:`PROCESS_wp__qms_report` is reported as defi
 **Escalation**
 
 If needed a escalation can be done in three steps. First :need:`PROCESS_rl__quality_manager` shall escalate to
-the :need:`PROCESS_rl__project_lead`. Then to the project steering committee, documented in :need:`doc__project_mgt_plan`.
+the :need:`PROCESS_rl__project_lead`. Then to the project lead circle, documented in :need:`doc__project_mgt_plan`.
 Finally to the Eclipse Foundation if the rules of the Eclipse handbook are not followed.
 
 **Examples for valid escalation causes are:**
 
+- Conflict between :need:`PROCESS_rl__quality_manager` and :need:`PROCESS_rl__committer` regarding quality issues.
 - Quality issues cannot be resolved on feature level or with the available resources.
 - There are conflicting points of view between the :need:`PROCESS_rl__project_lead`, :need:`PROCESS_rl__safety_manager`, :need:`PROCESS_rl__security_manager` and the :need:`PROCESS_rl__quality_manager`.
 
