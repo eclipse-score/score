@@ -18,11 +18,11 @@
    :glob:
 
 Use
-====================
+====
 
-===========
+===============
 Getting Started
-===========
+===============
 
 This guide shows you how to set up and use the Communication module of Eclipse S-CORE.
 
@@ -43,9 +43,9 @@ https://github.com/eclipse-score/communication
 User Facing API
 https://github.com/eclipse-score/communication/blob/main/score/mw/com/doc/user_facing_API_examples.md
 
-^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1.1 Add this to your MODULE.bazel:
-^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. admonition:: MODULE.bazel
    :class: dropdown
@@ -92,9 +92,9 @@ Be aware that the versions change from time to time, so make sure you check the 
 https://github.com/eclipse-score/bazel_registry/tree/main/modules
 
 
-^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1.2 Insert this into your .bazelrc:
-^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. admonition:: .bazelrc
    :class: dropdown
@@ -111,9 +111,9 @@ https://github.com/eclipse-score/bazel_registry/tree/main/modules
       common --registry=https://raw.githubusercontent.com/eclipse-score/bazel_registry/refs/heads/main/
       common --registry=https://bcr.bazel.build
 
-^^^^^^^^^
+^^^^^^^^^^^^^
 1.3 Run Bazel
-^^^^^^^^^
+^^^^^^^^^^^^^
 
 If you start with a plain project, add an empty file called ``BUILD`` into your project folder.
 
@@ -121,23 +121,23 @@ Now you can build the project with the command ``bazel build //...`` (so far not
 
 You can now choose to continue in this guide to create a simple consumer-producer program or start on your own.
 
------------
+------------
 2. Use it :)
------------
+------------
 
 Now that you have set up your project so far, let's start to send and receive some messages.
 
-^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
 2.1 Basic Structure
-^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
 
 First, let's create a folder ``src`` in our root project directory.
 
 Inside ``src``, create the following folders: ``consumer``, ``producer``, and ``etc``.
 
-^^^^^^^^^
+^^^^^^^^^^^
 2.2 Message
-^^^^^^^^^
+^^^^^^^^^^^
 
 Before we start sending messages, we need to define what we will send.
 Therefore, create the file ``message_data.h`` in your ``src`` directory.
@@ -185,9 +185,9 @@ After defining the interface, we define:
 
 You can take a deeper look into this architecture here: `Eclipse S-Core Communication Doc <https://eclipse-score.github.io/score/main/features/communication/docs/architecture/index.html#frontend>`_.
 
-^^^^^^^^^
+^^^^^^^^^^^^
 2.3 Producer
-^^^^^^^^^
+^^^^^^^^^^^^
 
 The producer will (as its name suggests) produce/send the data.
 
@@ -276,7 +276,7 @@ If so, we start to send our messages in a loop.
 
 At the end, we need to stop offering the service.
 
-^^^^^^^^^^^
+^^^^^^^^^^^^
 2.4 Consumer
 ^^^^^^^^^^^^
 
@@ -286,7 +286,7 @@ Go inside the ``consumer`` directory and create a new file called ``consumer.h``
 
 ^^^^^^^^^^^^^^
 2.5 Next steps
-^^^^^^^^^^^^^
+^^^^^^^^^^^^^^
 
 If you want to take a deeper look into the code, feel free to check out the example folder
 
