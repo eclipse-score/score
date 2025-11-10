@@ -59,17 +59,6 @@ First version of **Eclipse S-Core book**, that can be used as "how-to" for all w
 This book provides explanation of general concepts of **Eclipse S-Core project** and contains a "step-by-step" guide for building a first application
 based on Eclipse S-Core platform modules.
 
-New Features
-^^^^^^^^^^^^^
-
-- **Inter-process Communication**
-- **Base libs**
-- **Fixed execution order framework**
-- **Logging**
-- **Persistency Key-Value-Storage**
-- **Reference integration**
-- **Orchestration and Kyron async runtime for Rust**
-
 Improvements
 ^^^^^^^^^^^^^
 
