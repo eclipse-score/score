@@ -20,7 +20,7 @@ utils
    :status: draft
    :safety: ASIL_B
    :tags: baselibs_utils
-   :realizes: PROCESS_wp__cmpt_request
+   :realizes: wp__cmpt_request
 
 .. toctree::
    :hidden:

@@ -18,7 +18,7 @@
    :safety: ASIL_B
    :security: YES
    :tags: platform_management
-   :realizes: PROCESS_wp__verification_plan
+   :realizes: wp__verification_plan
 
 Software verification
 *********************
@@ -31,8 +31,8 @@ an overview by linking to other relevant sources and provide further information
 activities.
 
 Main purpose of this document is to show the objectives, approaches, and strategies that are defined to contribute to
-the overall quality of the software project. The target groups of this document are mainly :need:`PROCESS_rl__contributor`
-and :need:`PROCESS_rl__committer`.
+the overall quality of the software project. The target groups of this document are mainly :need:`rl__contributor`
+and :need:`rl__committer`.
 
 Objectives and scope
 ====================
@@ -72,7 +72,7 @@ Schedules
 ---------
 
 The integration of software elements is driven by change requests and their respective
-:need:`PROCESS_doc_getstrt__change_process` model. The contribution of a feature itself implies that it gets fully
+:need:`doc_getstrt__change_process` model. The contribution of a feature itself implies that it gets fully
 verified.
 
 Approach
@@ -100,7 +100,7 @@ The following types of integrations are applicable:
 #. **New software elements** get integrated according to the :need:`doc__contr_guideline`
 #. **Fixes of defects** get integrated based on their prioritization described by the
    :doc:`problem_resolution`.
-#. **Changes** get integrated based on the :need:`PROCESS_wf__change_create_cr` and will follow
+#. **Changes** get integrated based on the :need:`wf__change_create_cr` and will follow
    the :need:`doc__pull_request_guideline` as any other artifact.
 
 Levels of integration and verification
@@ -128,7 +128,7 @@ There are the following different levels of integration and verification defined
   **Note:** These three levels translate to the levels of ISO 26262 part 6 clauses 9 to 11. The platform
   testing will be executed by the integrator. S-Core project only executes tests on reference hardware.
   These tests serve as an optional base for the integrator and will also be part of the
-  :need:`PROCESS_wp__verification_platform_ver_report`, but more on an informative character. The full scope
+  :need:`wp__verification_platform_ver_report`, but more on an informative character. The full scope
   of clause 11 is tailored out accordingly for S-Core. Practically, this means S-CORE will implement
   platform test of stakeholder requirements for demonstration, but these are not intended to completely
   covering all stakeholder requirements.
@@ -143,7 +143,7 @@ applicable level. Another column defines if a respective method is supposed to b
 QM or ASIL B relevant.
 
 Automated test cases should contain further information about which methods have been applied. The corresponding
-guidance is given here: :need:`PROCESS_gd_guidl__verification_guide`. The identifier of the respective
+guidance is given here: :need:`gd_guidl__verification_guide`. The identifier of the respective
 method is to be used as meta data (*TestType* and *DerivationTechnique*).
 
 .. list-table:: Software verification methods (TestType)
@@ -192,7 +192,7 @@ For QM software some of the methods may be executed with less rigor compared to 
 These may be interface testing or resource usage evaluation, in case there is an argument for
 sufficient freedom from interference with safety critical software parts.
 
-Static code analysis is part of the :need:`PROCESS_wp__sw_implementation`.
+Static code analysis is part of the :need:`wp__sw_implementation`.
 
 As an additional measure the resource usage evaluation ``resource-usage`` should also be considered
 for level 3 testing as this is the level executed also on reference hardware with the integrated
@@ -312,22 +312,22 @@ Further quality goals are defined in section :doc:`quality_management`.
 Coverage of detailed design
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Beside :need:`PROCESS_wp__verification_comp_int_test` and :need:`PROCESS_wp__verification_sw_unit_test` the
+Beside :need:`wp__verification_comp_int_test` and :need:`wp__verification_sw_unit_test` the
 following aspects define the coverage of detailed design.
 
 - Statement/Branch/Path coverage as defined by their specific thresholds
 - Static analysis and Linting
-- :need:`PROCESS_wp__sw_implementation_inspection` for safety-critical implementation
+- :need:`wp__sw_implementation_inspection` for safety-critical implementation
 
 Coverage of architectural design
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Beside :need:`PROCESS_wp__verification_comp_int_test` and :need:`PROCESS_wp__verification_feat_int_test` the
+Beside :need:`wp__verification_comp_int_test` and :need:`wp__verification_feat_int_test` the
 following aspects define the coverage of the architectural design.
 
-- :need:`PROCESS_wp__sw_arch_verification` - done by walkthrough (QM) or inspection (safety-critical parts)
-- :need:`PROCESS_wp__sw_component_fmea` and :need:`PROCESS_wp__sw_component_dfa` for safety-critical parts
-- :need:`PROCESS_wp__feature_fmea` and :need:`PROCESS_wp__feature_dfa` for safety-critical parts
+- :need:`wp__sw_arch_verification` - done by walkthrough (QM) or inspection (safety-critical parts)
+- :need:`wp__sw_component_fmea` and :need:`wp__sw_component_dfa` for safety-critical parts
+- :need:`wp__feature_fmea` and :need:`wp__feature_dfa` for safety-critical parts
 
 Each architectural element has at least one test case linked with attribute "fully verified" or
 multiple test cases with attribute "partially verified".
@@ -343,7 +343,7 @@ Test development
 
 The verification steps as well as the development of test cases is done along with the implementation
 of code. A full automation of tests should be achieved and the derived test cases should contain meta
-data that gives further information as defined in :need:`PROCESS_gd_req__verification_link_tests`. The list of
+data that gives further information as defined in :need:`gd_req__verification_link_tests`. The list of
 relevant work products is shown above (as part of the development of the product).
 
 The different environments that can be used for the test development are defined below.
@@ -351,9 +351,9 @@ The different environments that can be used for the test development are defined
 Pre-existing test cases
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-The recommendations according to the :need:`PROCESS_gd_guidl__verification_guide` for pre-existing test
+The recommendations according to the :need:`gd_guidl__verification_guide` for pre-existing test
 cases is followed. Any pre-existing test case (e.g. from OSS components) is reviewed and adopted
-to follow the :need:`PROCESS_gd_guidl__verification_specification` and :need:`PROCESS_gd_req__verification_link_tests`.
+to follow the :need:`gd_guidl__verification_specification` and :need:`gd_req__verification_link_tests`.
 
 Test execution and result analysis
 ----------------------------------
@@ -373,9 +373,9 @@ Work products and traceability
 
 The traceability between verification relevant work products is one of the defined objectives.
 An overall overview of the different work products and their relationship is given in project
-context - see :need:`PROCESS_wp__verification_plan`.
+context - see :need:`wp__verification_plan`.
 
-The work products are related to verification can be found in :need:`PROCESS_wp__verification_plan`.
+The work products are related to verification can be found in :need:`wp__verification_plan`.
 
 The link between a test specification and the respective requirement or design specification is given by the
 identifier of the reference annotated to the verification specification.
@@ -387,43 +387,43 @@ Roles
 -----
 
 In general, the different roles of this project are defined within the Process documentation:
-:need:`PROCESS_rl__project_lead`. The following roles are crucial to comply with the aspects defined in this
+:need:`rl__project_lead`. The following roles are crucial to comply with the aspects defined in this
 document:
 
-#. The :need:`PROCESS_rl__contributor` needs to make sure that the objectives of the software integration and verification are
+#. The :need:`rl__contributor` needs to make sure that the objectives of the software integration and verification are
    fulfilled when contributing to the project.
-#. The :need:`PROCESS_rl__committer` needs to verify that the contributor has fulfilled the expected objectives.
+#. The :need:`rl__committer` needs to verify that the contributor has fulfilled the expected objectives.
 
-In this way roles are followed as defined in :need:`PROCESS_doc_concept__verification_process`.
+In this way roles are followed as defined in :need:`doc_concept__verification_process`.
 
 Independence of verification
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-As there are no separated roles for a software developer and test developer with :need:`PROCESS_rl__contributor` and
-:need:`PROCESS_rl__committer` it is important to achieve independence. This is done by having different
+As there are no separated roles for a software developer and test developer with :need:`rl__contributor` and
+:need:`rl__committer` it is important to achieve independence. This is done by having different
 people responsible for the test implementation and the actual code which gets tested.
 
-The following test level fall in the responsibility of the :need:`PROCESS_rl__testing_community`:
+The following test level fall in the responsibility of the :need:`rl__testing_community`:
 
-* :need:`PROCESS_wp__verification_comp_int_test`
-* :need:`PROCESS_wp__verification_feat_int_test`
-* :need:`PROCESS_wp__verification_platform_test`
+* :need:`wp__verification_comp_int_test`
+* :need:`wp__verification_feat_int_test`
+* :need:`wp__verification_platform_int_test`
 
-Still a :need:`PROCESS_rl__contributor` of one function in a component doesn't prevent them from writing tests
+Still a :need:`rl__contributor` of one function in a component doesn't prevent them from writing tests
 for other functions they do not own.
-Independence is achieved by the establishment of :need:`PROCESS_rl__testing_community` performing reviews.
+Independence is achieved by the establishment of :need:`rl__testing_community` performing reviews.
 
-The following test level fall in the responsibility of the :need:`PROCESS_rl__contributor`:
+The following test level fall in the responsibility of the :need:`rl__contributor`:
 
-* :need:`PROCESS_wp__verification_sw_unit_test`
+* :need:`wp__verification_sw_unit_test`
 
-Unit tests can be the developed by the same :need:`PROCESS_rl__contributor` who also contributed the unit code.
-A level of independence is achieved as the review process demands to have a review by a :need:`PROCESS_rl__committer`
-different to the author of a Pull Request. This is also described in process requirement :need:`PROCESS_gd_req__verification_independence`.
+Unit tests can be the developed by the same :need:`rl__contributor` who also contributed the unit code.
+A level of independence is achieved as the review process demands to have a review by a :need:`rl__committer`
+different to the author of a Pull Request. This is also described in process requirement :need:`gd_req__verification_independence`.
 
-Note that, each :need:`PROCESS_rl__contributor` of the project acts in a publicly visible space where also
+Note that, each :need:`rl__contributor` of the project acts in a publicly visible space where also
 others see the contribution and have the possibility to perform additional reviews independent from
-the :need:`PROCESS_rl__committer` and :need:`PROCESS_rl__testing_community`.
+the :need:`rl__committer` and :need:`rl__testing_community`.
 
 Tools
 -----

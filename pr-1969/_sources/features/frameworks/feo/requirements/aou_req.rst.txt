@@ -17,7 +17,7 @@
    :status: draft
    :security: NO
    :safety: ASIL_B
-   :realizes: PROCESS_wp__requirements_feat_aou
+   :realizes: wp__requirements_feat_aou
 
 FEO Feature Assumption of Use Requirements
 ==========================================

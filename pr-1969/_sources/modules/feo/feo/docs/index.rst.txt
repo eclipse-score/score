@@ -13,10 +13,10 @@
    # *******************************************************************************
 
 .. document:: FEO Component
-   :id: doc__component_name
+   :id: doc__feo
    :status: draft
    :safety: ASIL_B
-   :realizes: PROCESS_wp__cmpt_request
+   :realizes: wp__cmpt_request
    :tags: component_feo
 
 FEO Component
@@ -59,7 +59,7 @@ Specification
 
    .. note::
       A CR shall specify the component requirements as part of our platform/project.
-      Thereby the :need:`PROCESS_rl__module_lead` will approve these requirements as part of accepting the CR (e.g. merging the PR with the CR).
+      Thereby the :need:`rl__module_lead` will approve these requirements as part of accepting the CR (e.g. merging the PR with the CR).
 
 
 
@@ -110,7 +110,7 @@ For new feature/component contributions:
 [What is the expected classification of the contribution?]
 
    .. note::
-      Use the component classification method here to classify your component, if it shall to be used in a safety context: :need:`PROCESS_gd_temp__component_classification`.
+      Use the component classification method here to classify your component, if it shall to be used in a safety context: :need:`gd_temp__component_classification`.
 
 License Impact
 ==============

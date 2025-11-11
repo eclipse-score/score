@@ -20,7 +20,7 @@ Security & Cryptography
    :status: valid
    :safety: QM
    :security: YES
-   :realizes: PROCESS_wp__feat_request
+   :realizes: wp__feat_request
 
 
 .. toctree::

@@ -20,7 +20,7 @@ Component Architecture
    :status: valid
    :safety: ASIL_B
    :security: YES
-   :realizes: PROCESS_wp__component_arch
+   :realizes: wp__component_arch
    :tags: orchestration, executor
 
 .. comp_arc_sta:: Executor

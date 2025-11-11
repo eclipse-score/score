@@ -17,7 +17,7 @@
    :status: draft
    :safety: ASIL_B
    :security: NO
-   :realizes: PROCESS_wp__platform_safety_plan,PROCESS_wp__tailoring
+   :realizes: wp__platform_safety_plan,wp__tailoring
    :tags: platform_management
 
 Safety management / Platform Safety Plan
@@ -70,7 +70,7 @@ Regarding the platform specifics:
 
 The SW platform functionality consists of features, which are based on a set of requirements and are developed in parallel.
 These features are developed into SW components contained in "modules", which are another set of SEooCs (initiated by a change request).
-A template exists to guide this: :need:`PROCESS_gd_temp__module_safety_plan`.
+A template exists to guide this: :need:`gd_temp__module_safety_plan`.
 
 Tailoring
 ^^^^^^^^^
@@ -83,13 +83,13 @@ Tailoring of safety activities:
 
 The following  ISO 26262 defined safety work products are not relevant for the S-CORE SW platform development:
 
-* Because these are in responsibility of the system integrator: :need:`PROCESS_std_wp__iso26262__management_751`,
-  :need:`PROCESS_std_wp__iso26262__system_652`, :need:`PROCESS_std_wp__iso26262__system_653`, :need:`PROCESS_std_wp__iso26262__system_654`,
-  :need:`PROCESS_std_wp__iso26262__system_655`, :need:`PROCESS_std_wp__iso26262__system_656`, :need:`PROCESS_std_wp__iso26262__system_657`,
-  :need:`PROCESS_std_wp__iso26262__system_751`, :need:`PROCESS_std_wp__iso26262__system_752`, :need:`PROCESS_std_wp__iso26262__system_851`,
-  :need:`PROCESS_std_wp__iso26262__system_852`
+* Because these are in responsibility of the system integrator: :need:`std_wp__iso26262__management_751`,
+  :need:`std_wp__iso26262__system_652`, :need:`std_wp__iso26262__system_653`, :need:`std_wp__iso26262__system_654`,
+  :need:`std_wp__iso26262__system_655`, :need:`std_wp__iso26262__system_656`, :need:`std_wp__iso26262__system_657`,
+  :need:`std_wp__iso26262__system_751`, :need:`std_wp__iso26262__system_752`, :need:`std_wp__iso26262__system_851`,
+  :need:`std_wp__iso26262__system_852`
 
-  Note that stakeholder requirements (:need:`PROCESS_std_wp__iso26262__system_651`) are in scope of the project,
+  Note that stakeholder requirements (:need:`std_wp__iso26262__system_651`) are in scope of the project,
   to be able to cover System and HW related failures which are usually covered by SW (e.g. end to end protection for ECU external communication).
   But those are the "Assumed Technical Safety Requirements" of the SW platform SEooC and do not need to be tested by SEooC supplier.
   I.e. the system testing is out of scope. Note that S-CORE will implement platform test of stakeholder requirements for demonstration,
@@ -99,36 +99,36 @@ The following  ISO 26262 defined safety work products are not relevant for the S
   But if these are sufficiently also covering the TSRs must be analyzed and decided by the user.
 
 * Also tailored out is the SW testing on the target, as the S-CORE project can only test on reference HW
-  (part of SW integration testing). So these are not relevant: :need:`PROCESS_std_wp__iso26262__software_1151`, :need:`PROCESS_std_wp__iso26262__software_1152`
+  (part of SW integration testing). So these are not relevant: :need:`std_wp__iso26262__software_1151`, :need:`std_wp__iso26262__software_1152`
 
-* Because there is no calibration used for the S-CORE SW platform components, only configuration: :need:`PROCESS_std_wp__iso26262__software_app_c_52`,
-  :need:`PROCESS_std_wp__iso26262__software_app_c_54`, :need:`PROCESS_std_wp__iso26262__software_app_c_57`
+* Because there is no calibration used for the S-CORE SW platform components, only configuration: :need:`std_wp__iso26262__software_app_c_52`,
+  :need:`std_wp__iso26262__software_app_c_54`, :need:`std_wp__iso26262__software_app_c_57`
 
 * Because distributed development is not how the project is organized. All contributors are seen as part of the project team.
-  When used, OSS components are qualified and external SEooCs are integrated in the project scope: :need:`PROCESS_std_wp__iso26262__support_551`,
-  :need:`PROCESS_std_wp__iso26262__support_552`, :need:`PROCESS_std_wp__iso26262__support_553`, :need:`PROCESS_std_wp__iso26262__support_554`, :need:`PROCESS_std_wp__iso26262__support_555`
+  When used, OSS components are qualified and external SEooCs are integrated in the project scope: :need:`std_wp__iso26262__support_551`,
+  :need:`std_wp__iso26262__support_552`, :need:`std_wp__iso26262__support_553`, :need:`std_wp__iso26262__support_554`, :need:`std_wp__iso26262__support_555`
 
-* Because in the S-CORE SW platform HW elements are out of scope: :need:`PROCESS_std_wp__iso26262__support_1351`, :need:`PROCESS_std_wp__iso26262__support_1352`, :need:`PROCESS_std_wp__iso26262__support_1353`
+* Because in the S-CORE SW platform HW elements are out of scope: :need:`std_wp__iso26262__support_1351`, :need:`std_wp__iso26262__support_1352`, :need:`std_wp__iso26262__support_1353`
 
-* Because in the S-CORE SW platform a proven in use argument will not be applied: :need:`PROCESS_std_wp__iso26262__support_1451`, :need:`PROCESS_std_wp__iso26262__support_1452`
+* Because in the S-CORE SW platform a proven in use argument will not be applied: :need:`std_wp__iso26262__support_1451`, :need:`std_wp__iso26262__support_1452`
 
-* Because in the S-CORE SW platform interfacing of out of scope of ISO 26262 applications is not planned: :need:`PROCESS_std_wp__iso26262__support_1551`
+* Because in the S-CORE SW platform interfacing of out of scope of ISO 26262 applications is not planned: :need:`std_wp__iso26262__support_1551`
 
-* Because in the S-CORE SW platform integration of safety-related systems not developed according to ISO 26262 is not planned: :need:`PROCESS_std_wp__iso26262__support_1651`
+* Because in the S-CORE SW platform integration of safety-related systems not developed according to ISO 26262 is not planned: :need:`std_wp__iso26262__support_1651`
 
-* Because in the S-CORE SW platform no ASIL decomposition is planned: :need:`PROCESS_std_wp__iso26262__analysis_551`, :need:`PROCESS_std_wp__iso26262__analysis_552`
+* Because in the S-CORE SW platform no ASIL decomposition is planned: :need:`std_wp__iso26262__analysis_551`, :need:`std_wp__iso26262__analysis_552`
 
 * Because HSI is coming from HW (and systems) engineering which are not part of S-CORE
   and the standard only asks for refinement during SW development. As the input is missing, there is nothing to refine.
   Expectations towards the HW/Environment are covered by AoUs. Additionally S-CORE only provides reference HW integration,
-  so every user of the platform would have to redo the effort anyway: :need:`PROCESS_std_wp__iso26262__software_652`
+  so every user of the platform would have to redo the effort anyway: :need:`std_wp__iso26262__software_652`
 
-* Because the SW platform is not an safety item but an element: :need:`PROCESS_std_wp__iso26262__management_651`
+* Because the SW platform is not an safety item but an element: :need:`std_wp__iso26262__management_651`
 
 But also some activities based on requirements defining what has to be done to create a workproduct which is in scope of the S-CORE platform are tailored:
 
-* Because those are not relevant for ASIL_B: :need:`PROCESS_std_req__iso26262__system_6423`,
-  :need:`PROCESS_std_req__iso26262__system_6424`, :need:`PROCESS_std_req__iso26262__system_6425`
+* Because those are not relevant for ASIL_B: :need:`std_req__iso26262__system_6423`,
+  :need:`std_req__iso26262__system_6424`, :need:`std_req__iso26262__system_6425`
 
 Approach
 ++++++++
@@ -195,9 +195,9 @@ One important aspect to this is, that we ensure the identity of the committer by
 Functional Safety Resources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A dedicated safety manager is elected by :need:`PROCESS_rl__project_lead` for all the S-CORE SEooCs development.
+A dedicated safety manager is elected by :need:`rl__project_lead` for all the S-CORE SEooCs development.
 
-The safety manager, supported by the project manager (i.e. the :need:`PROCESS_rl__technical_lead`),  will ensure that
+The safety manager, supported by the project manager (i.e. the :need:`rl__technical_lead`),  will ensure that
 safety activities are actively planned, developed, analyzed, verified and tested and managed throughout the life cycle of the project.
 As all the implementation of safety functions takes place within module development, there is a safety manager appointed in the module's safety plan.
 
@@ -227,15 +227,15 @@ To exchange general information and to clarify general topics the following comm
 The safety management status is reported in the Technical Lead Circle Meeting which is defined in :need:`doc__project_mgt_plan`.
 The status report is based on safety plans work product lists (see below) and verification reports on platform and module level:
 
-* :need:`PROCESS_wp__platform_safety_plan`
-* :need:`PROCESS_wp__module_safety_plan`
-* :need:`PROCESS_wp__verification_platform_ver_report`
-* :need:`PROCESS_wp__verification_module_ver_report`
+* :need:`wp__platform_safety_plan`
+* :need:`wp__module_safety_plan`
+* :need:`wp__verification_platform_ver_report`
+* :need:`wp__verification_module_ver_report`
 
 *Escalation*
 
-* :need:`PROCESS_rl__safety_manager` to :need:`PROCESS_rl__technical_lead`
-* :need:`PROCESS_rl__technical_lead` to :need:`PROCESS_rl__project_lead`
+* :need:`rl__safety_manager` to :need:`rl__technical_lead`
+* :need:`rl__technical_lead` to :need:`rl__project_lead`
 
 Examples for valid escalation causes are:
 
@@ -245,7 +245,7 @@ Examples for valid escalation causes are:
 Functional Safety Management Life Cycle
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The safety lifecycle of the S-CORE project is initiated at the project set-up and driven and maintained by the safety manager supported by the :need:`PROCESS_rl__process_community`.
+The safety lifecycle of the S-CORE project is initiated at the project set-up and driven and maintained by the safety manager supported by the :need:`rl__process_community`.
 Note that the Eclipse Foundation also defines `project phases <https://www.eclipse.org/projects/handbook/#starting-project-phases>`_.
 Eclipse definition is more about the process maturity for the whole project, if we are in Mature Phase, we latest will have the project lifecycle as defined in our process description.
 Nevertheless, Safety Development and even Safety Case release is independent from Mature and Incubation Phase as the completeness and appropriateness of the platform process and artifacts
@@ -255,11 +255,11 @@ Functional Safety Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Requirement Engineering is defined in the process description. See :need:`doc__project_mgt_plan`.
 
-The application of ISO 26262 standards requirements is realized by defining process guidances and matching those to the ISO 26262 requirements (see e.g. for example :need:`PROCESS_gd_req__safety_doc_status`).
+The application of ISO 26262 standards requirements is realized by defining process guidances and matching those to the ISO 26262 requirements (see e.g. for example :need:`gd_req__safety_doc_status`).
 
 Functional Safety Schedule
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-The schedule is defined in section "Platform Safety Plan" below, but also within each module safety plan. See linked issues below and in :need:`PROCESS_gd_temp__module_safety_plan`.
+The schedule is defined in section "Platform Safety Plan" below, but also within each module safety plan. See linked issues below and in :need:`gd_temp__module_safety_plan`.
 
 Functional Safety Development
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -275,7 +275,7 @@ The platform management plan defines :doc:`tool_management`
 
 Functional Safety Work Products
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The work products relevant for a module development is defined within each module safety management plan. See :need:`PROCESS_gd_temp__module_safety_plan`.
+The work products relevant for a module development is defined within each module safety management plan. See :need:`gd_temp__module_safety_plan`.
 Generic project wide work products are defined below.
 
 Functional Safety Quality Criteria
@@ -298,172 +298,172 @@ Functional Safety Management SW Platform Work Products
       - Link to WP
       - WP status
 
-    * - :need:`PROCESS_wp__policies`
+    * - :need:`wp__policies`
       - n/a (comes from outside the project)
       - n/a
       - n/a
       - `Eclipse Foundation Project Handbook: <https://www.eclipse.org/projects/handbook/>`_
       - RELEASED
 
-    * - :need:`PROCESS_wp__training_path`
+    * - :need:`wp__training_path`
       - n/a
       - n/a
       - n/a
       - not open sourced
       - to be shown to assessor
 
-    * - :need:`PROCESS_wp__qms_plan`
-      - :need:`PROCESS_wf__platform_cr_mt_platform_mgmt_plan`
-      - :ndf:`copy('status', need_id='PROCESS_wf__platform_cr_mt_platform_mgmt_plan')`
+    * - :need:`wp__qms_plan`
+      - :need:`wf__platform_cr_mt_platform_mgmt_plan`
+      - :ndf:`copy('status', need_id='wf__platform_cr_mt_platform_mgmt_plan')`
       - `#316 <https://github.com/eclipse-score/score/issues/316>`_
       - :doc:`quality_management`
       - not started
 
-    * - :need:`PROCESS_wp__issue_track_system`
+    * - :need:`wp__issue_track_system`
       - :doc:`index`
       - :ndf:`copy('status', need_id='doc__platform_mgt_plan')`
       - n/a
       - `Project issues <https://github.com/eclipse-score/score/issues>`_
       - established
 
-    * - :need:`PROCESS_wp__platform_mgmt`
-      - :need:`PROCESS_wf__platform_cr_mt_platform_mgmt_plan`
-      - :ndf:`copy('status', need_id='PROCESS_wf__platform_cr_mt_platform_mgmt_plan')`
+    * - :need:`wp__platform_mgmt`
+      - :need:`wf__platform_cr_mt_platform_mgmt_plan`
+      - :ndf:`copy('status', need_id='wf__platform_cr_mt_platform_mgmt_plan')`
       - `#540 <https://github.com/eclipse-score/score/issues/540>`_
       - :doc:`index`
       - :ndf:`copy('status', need_id='doc__platform_mgt_plan')`
 
-    * - :need:`PROCESS_wp__process_description`
-      - :need:`PROCESS_wf__def_app_process_description`
-      - :ndf:`copy('status', need_id='PROCESS_wf__def_app_process_description')`
+    * - :need:`wp__process_description`
+      - :need:`wf__def_app_process_description`
+      - :ndf:`copy('status', need_id='wf__def_app_process_description')`
       - `Process community issues <https://github.com/orgs/eclipse-score/projects/7>`_
       - `Process description <https://eclipse-score.github.io/process_description/main/index.html>`_
       - <automated>
 
-    * - :need:`PROCESS_wp__process_impr_report`
-      - :need:`PROCESS_wf__mon_imp_process_description`
-      - :ndf:`copy('status', need_id='PROCESS_wf__mon_imp_process_description')`
+    * - :need:`wp__process_impr_report`
+      - :need:`wf__mon_imp_process_description`
+      - :ndf:`copy('status', need_id='wf__mon_imp_process_description')`
       - <Link to issue>
       - <Link to WP>
       - <automated>
 
-    * - :need:`PROCESS_wp__process_strategy`
-      - :need:`PROCESS_wf__cr_mt_process_mgt_strategy`
-      - :ndf:`copy('status', need_id='PROCESS_wf__cr_mt_process_mgt_strategy')`
+    * - :need:`wp__process_strategy`
+      - :need:`wf__cr_mt_process_mgt_strategy`
+      - :ndf:`copy('status', need_id='wf__cr_mt_process_mgt_strategy')`
       - `#232 <https://github.com/eclipse-score/score/issues/232>`_
       - `Process community issues <https://github.com/orgs/eclipse-score/projects/7>`_
       - <automated>
 
-    * - :need:`PROCESS_wp__platform_safety_plan`
-      - :need:`PROCESS_gd_guidl__saf_plan_definitions`
-      - :ndf:`copy('status', need_id='PROCESS_gd_guidl__saf_plan_definitions')`
+    * - :need:`wp__platform_safety_plan`
+      - :need:`gd_guidl__saf_plan_definitions`
+      - :ndf:`copy('status', need_id='gd_guidl__saf_plan_definitions')`
       - `#381 <https://github.com/eclipse-score/score/issues/381>`_
       - this document
       - see above
 
-    * - :need:`PROCESS_wp__platform_safety_package`
-      - :need:`PROCESS_gd_guidl__saf_package`
-      - :ndf:`copy('status', need_id='PROCESS_gd_guidl__saf_package')`
+    * - :need:`wp__platform_safety_package`
+      - :need:`gd_guidl__saf_package`
+      - :ndf:`copy('status', need_id='gd_guidl__saf_package')`
       - <Link to issue>
       - <Link to WP>
       - <automated>
 
-    * - :need:`PROCESS_wp__fdr_reports` (platform Safety Plan)
-      - :need:`PROCESS_gd_chklst__safety_plan`
-      - :ndf:`copy('status', need_id='PROCESS_gd_chklst__safety_plan')`
+    * - :need:`wp__fdr_reports` (platform Safety Plan)
+      - :need:`gd_chklst__safety_plan`
+      - :ndf:`copy('status', need_id='gd_chklst__safety_plan')`
       - <Link to issue>
       - <Link to WP>
       - <automated>
 
-    * - :need:`PROCESS_wp__fdr_reports` (platform Safety Package)
-      - :need:`PROCESS_gd_chklst__safety_package`
-      - :ndf:`copy('status', need_id='PROCESS_gd_chklst__safety_package')`
+    * - :need:`wp__fdr_reports` (platform Safety Package)
+      - :need:`gd_chklst__safety_package`
+      - :ndf:`copy('status', need_id='gd_chklst__safety_package')`
       - <Link to issue>
       - <Link to WP>
       - <automated>
 
-    * - :need:`PROCESS_wp__fdr_reports` (feature's Safety Analyses & DFA)
+    * - :need:`wp__fdr_reports` (feature's Safety Analyses & DFA)
       - Safety Analysis FDR tbd
       - <automated>
       - <Link to issue>
       - <Link to WP>
       - <automated>
 
-    * - :need:`PROCESS_wp__audit_report`
+    * - :need:`wp__audit_report`
       - performed by external experts
       - n/a
       - `#470 <https://github.com/eclipse-score/score/issues/470>`_
       - <Link to WP>
       - intermediate
 
-    * - :need:`PROCESS_wp__feature_dfa`
+    * - :need:`wp__feature_dfa`
       - <Link to process>
       - <Process status>
       - <Link to issue>
       - <Link to WP>
       - <automated>
 
-    * - :need:`PROCESS_wp__platform_sw_build_config`
+    * - :need:`wp__platform_sw_build_config`
       - :need:`doc__software_development_plan`
       - :ndf:`copy('status', need_id='doc__software_development_plan')`
       - <Link to issue>
       - <Link to WP>
       - <automated>
 
-    * - :need:`PROCESS_wp__platform_safety_manual`
-      - :need:`PROCESS_gd_temp__safety_manual`
-      - :ndf:`copy('status', need_id='PROCESS_gd_temp__safety_manual')`
+    * - :need:`wp__platform_safety_manual`
+      - :need:`gd_temp__safety_manual`
+      - :ndf:`copy('status', need_id='gd_temp__safety_manual')`
       - <Link to issue>
       - <Link to WP>
       - <automated>
 
-    * - :need:`PROCESS_wp__platform_sw_release_note`
-      - :need:`PROCESS_gd_temp__rel_plat_rel_note`
-      - :ndf:`copy('status', need_id='PROCESS_gd_temp__rel_plat_rel_note')`
+    * - :need:`wp__platform_sw_release_note`
+      - :need:`gd_temp__rel_plat_rel_note`
+      - :ndf:`copy('status', need_id='gd_temp__rel_plat_rel_note')`
       - <Link to issue>
       - <Link to WP>
       - <automated>
 
-    * - :need:`PROCESS_wp__verification_platform_ver_report`
-      - :need:`PROCESS_gd_temp__mod_ver_report`
-      - :ndf:`copy('status', need_id='PROCESS_gd_temp__mod_ver_report')`
+    * - :need:`wp__verification_platform_ver_report`
+      - :need:`gd_temp__mod_ver_report`
+      - :ndf:`copy('status', need_id='gd_temp__mod_ver_report')`
       - <Link to issue>
       - <Link to WP>
       - <automated>
 
-    * - :need:`PROCESS_wp__requirements_stkh`
-      - :need:`PROCESS_gd_temp__req_stkh_req`
-      - :ndf:`copy('status', need_id='PROCESS_gd_temp__req_stkh_req')`
+    * - :need:`wp__requirements_stkh`
+      - :need:`gd_temp__req_stkh_req`
+      - :ndf:`copy('status', need_id='gd_temp__req_stkh_req')`
       - n/a (done already)
       - :ref:`stakeholder_requirements`
       - <automated>
 
-    * - :need:`PROCESS_wp__sw_development_plan`
-      - :need:`PROCESS_wf__platform_cr_mt_platform_mgmt_plan`
-      - :ndf:`copy('status', need_id='PROCESS_wf__platform_cr_mt_platform_mgmt_plan')`
+    * - :need:`wp__sw_development_plan`
+      - :need:`wf__platform_cr_mt_platform_mgmt_plan`
+      - :ndf:`copy('status', need_id='wf__platform_cr_mt_platform_mgmt_plan')`
       - `#583 <https://github.com/eclipse-score/score/issues/583>`_
       - :need:`doc__software_development_plan`
       - :ndf:`copy('status', need_id='doc__software_development_plan')`
 
-    * - :need:`PROCESS_wp__verification_plan`
-      - :need:`PROCESS_wf__platform_cr_mt_platform_mgmt_plan`
-      - :ndf:`copy('status', need_id='PROCESS_wf__platform_cr_mt_platform_mgmt_plan')`
+    * - :need:`wp__verification_plan`
+      - :need:`wf__platform_cr_mt_platform_mgmt_plan`
+      - :ndf:`copy('status', need_id='wf__platform_cr_mt_platform_mgmt_plan')`
       - `#611 <https://github.com/eclipse-score/score/issues/611>`_
       - :need:`doc__verification_plan`
       - :ndf:`copy('status', need_id='doc__verification_plan')`
 
-    * - :need:`PROCESS_wp__tool_verification_report`
+    * - :need:`wp__tool_verification_report`
       - :need:`doc__platform_tool_management_plan`
       - :ndf:`copy('status', need_id='doc__platform_tool_management_plan')`
       - <Link to issue>
       - <Link to WP>
       - <automated>
 
-    * - :need:`PROCESS_wp__tailoring` (generic)
-      - :need:`PROCESS_gd_guidl__saf_plan_definitions`
-      - :ndf:`copy('status', need_id='PROCESS_gd_guidl__saf_plan_definitions')`
+    * - :need:`wp__tailoring` (generic)
+      - :need:`gd_guidl__saf_plan_definitions`
+      - :ndf:`copy('status', need_id='gd_guidl__saf_plan_definitions')`
       - `#307 <https://github.com/eclipse-score/score/issues/307>`_
-      - :need:`PROCESS_std_req__iso26262__management_5421` & :need:`doc__platform_safety_plan`
+      - :need:`std_req__iso26262__management_5421` & :need:`doc__platform_safety_plan`
       - valid
 
 

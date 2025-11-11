@@ -20,7 +20,7 @@ containers
    :status: draft
    :safety: ASIL_B
    :tags: baselibs_containers
-   :realizes: PROCESS_wp__cmpt_request
+   :realizes: wp__cmpt_request
 
 .. toctree::
    :hidden:

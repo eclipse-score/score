@@ -45,13 +45,13 @@ FEO Feature Safety Analysis Checklist
         -
       * - REQ_01_02
         - Are the templates for DFA and/or FMEA used?
-        - See :need:`PROCESS_gd_temp__comp_saf_dfa` / :need:`PROCESS_gd_temp__comp_saf_fmea` and also :need:`PROCESS_gd_req__saf_structure`
+        - See :need:`gd_temp__comp_saf_dfa` / :need:`gd_temp__comp_saf_fmea` and also :need:`gd_req__saf_structure`
         - Templates are used to generate the DFA or / and FMEA.
         - <yes|no>
         -
       * - REQ_01_03
         - Were the failure initiators / fault models applied?
-        - See :need:`PROCESS_gd_guidl__dfa_failure_initiators` / :need:`PROCESS_gd_guidl__fault_models`
+        - See :need:`gd_guidl__dfa_failure_initiators` / :need:`gd_guidl__fault_models`
         - The applicable items of the failure initiators / fault models are used to ensure a structured analysis. For all not applicable items an argument shall be given in the content of the document.
         - <yes|no>
         -
@@ -76,6 +76,6 @@ FEO Feature Safety Analysis Checklist
       * - REQ_01_08
         - Is the overall result of the safety analysis described in the report?
         - It shall be shown in the report if the safety analysis are finished and if all artifacts are "valid" and "sufficient".
-        - The results of the safety analysis are described in the report. The report is available :need:`PROCESS_wp__verification_platform_ver_report`.
+        - The results of the safety analysis are described in the report. The report is available :need:`wp__verification_platform_ver_report`.
         - <yes|no>
         -

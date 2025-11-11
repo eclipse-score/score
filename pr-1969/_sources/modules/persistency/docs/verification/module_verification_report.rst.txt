@@ -17,9 +17,10 @@ Verification Report
 
 .. document:: Persistency Verification Report
    :id: doc__persistency_verification_report
-   :status: draft
+   :status: valid
    :safety: ASIL_B
-   :realizes: PROCESS_wp__verification_module_ver_report
+   :security: NO
+   :realizes: wp__verification_module_ver_report
    :tags: persistency
 
 
