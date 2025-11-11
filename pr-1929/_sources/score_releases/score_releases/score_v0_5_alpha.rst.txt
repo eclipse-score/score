@@ -86,6 +86,17 @@ Integrated Software Modules
 
     - Check the full `baselibs release notes <https://github.com/eclipse-score/baselibs/releases/tag/v0.1.3>`_ for more information
 
+- **Persistency**: ensures the long-term storage and retrieval of data, provides a reliable mechanism for preserving information,
+  allowing the application to maintain its state and data integrity over time
+
+  - **Link to release**: `persistency v0.2.0 <https://github.com/eclipse-score/persistency/releases/tag/v0.2.0>`_
+  - **Release notes**:
+    
+    - **Please note**: `definition of feature requirements and architecture <https://eclipse-score.github.io/score/main/features/persistency/index.html>`_  and
+      `component requirements and architecture <https://eclipse-score.github.io/score/main/modules/persistency/index.html>`_ is partially out of date.
+      This will be fixed with next release.
+    - Check the full `persistency release notes <https://github.com/eclipse-score/persistency/releases/tag/v0.2.0>`_ for more information
+
 - **Orchestrator**: Orchestration framework and safe async runtime called kyron for Rust
 
   - **Link to release**: `orchestrator v0.0.3 <https://github.com/eclipse-score/orchestrator/releases/tag/v0.0.3>`_
@@ -189,7 +200,7 @@ Following tests were executed:
 - every RUST module was successfully built with rust toolchain
 - every module has executed its unit-tests
 - few basic integration tests were executed with reference integration qnx image in Qemu as can be seen e.g. in the following `Action Run <https://github.com/eclipse-score/reference_integration/actions/runs/19128779084/job/54664320615#step:7:689>`_.
-- for *persistency* and *orchestration* modules component tests with score-test-scenarios framework were executed
+- for *persistency* and *orchestration* modules component tests with *score-test-scenarios* framework were executed
 
 Known Issues
 ^^^^^^^^^^^^^^^^
