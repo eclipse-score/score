@@ -22,7 +22,7 @@ SW Platform Assumptions
    :status: draft
    :security: YES
    :safety: ASIL_B
-   :realizes: PROCESS_wp__platform_sw_aou
+   :realizes: wp__requirements_sw_platform_aou
 
 Assumptions on Environment
 --------------------------

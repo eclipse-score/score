@@ -17,7 +17,7 @@
    :status: valid
    :security: NO
    :safety: ASIL_B
-   :realizes: PROCESS_wp__requirements_feat
+   :realizes: wp__requirements_feat
 
 FEO Feature Requirements
 ========================

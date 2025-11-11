@@ -18,12 +18,12 @@
    :safety: ASIL_B
    :security: YES
    :tags: platform_management
-   :realizes: PROCESS_wp__prm_plan
+   :realizes: wp__prm_plan
 
 Problem Resolution / Problem Resolution Plan
 --------------------------------------------
 
-This document implements parts of the :need:`PROCESS_wp__platform_mgmt`.
+This document implements parts of the :need:`wp__platform_mgmt`.
 
 Purpose
 +++++++
@@ -64,14 +64,14 @@ problem reported within **S-CORE**.
 
 The next figure gives an overview, how problems are created in **S-CORE**. An ISSUE is
 used to create a problem report including required attributes as defined in the
-:need:`Problem Process Requirements <PROCESS_gd_req__problem_attr_uid>`.
+:need:`Problem Process Requirements <gd_req__problem_attr_uid>`.
 
 .. figure:: _assets/score_problem_resolution_overview.drawio.svg
   :width: 100%
   :align: center
   :alt: Problem Resolution Overview
 
-Therefore the Problem Template :need:`PROCESS_gd_temp__problem_template` shall be used.
+Therefore the Problem Template :need:`gd_temp__problem_template` shall be used.
 
 .. note::
   The template is automatically included in the ISSUE **Problem Report**.
@@ -86,9 +86,9 @@ Problem Resolution Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The Problem Problem Resolution Process Requirements are implemented as follows:
 
-:need:`[[title]] <PROCESS_gd_req__problem_attr_uid>` is identical to the ISSUE number.
+:need:`[[title]] <gd_req__problem_attr_uid>` is identical to the ISSUE number.
 
-:need:`[[title]] <PROCESS_gd_req__problem_attr_status>` is defined by the combination of the ISSUE state
+:need:`[[title]] <gd_req__problem_attr_status>` is defined by the combination of the ISSUE state
 and the state in the Projects dashboard view. The PR status is also used, if applicable.
 
 .. list-table:: Problem Status
@@ -120,9 +120,9 @@ and the state in the Projects dashboard view. The PR status is also used, if app
      - na
      - na
 
-:need:`[[title]] <PROCESS_gd_req__problem_attr_title>` is identical to the ISSUE title.
+:need:`[[title]] <gd_req__problem_attr_title>` is identical to the ISSUE title.
 
-:need:`[[title]] <PROCESS_gd_req__problem_attr_impact_description>` is provided in the Description
+:need:`[[title]] <gd_req__problem_attr_impact_description>` is provided in the Description
 part of the ISSUE. Add here the root cause and impact of the problem. Optionally state, who
 has to be informed or notified, if applicable, e.g. Safety Manager of a feature.
 
@@ -135,15 +135,15 @@ part of the ISSUE.
 
 To provide solutions, use the Solution part of the ISSUE.
 
-:need:`[[title]] <PROCESS_gd_req__problem_attr_anaylsis_results>` is provided in the analysis
+:need:`[[title]] <gd_req__problem_attr_anaylsis_results>` is provided in the analysis
 results part of the ISSUE. State here, if the problem is accepted or rejected. Safety/Security
 experts must confirm or disconfirm, if safety/security is affected is set correctly
 
-:need:`[[title]] <PROCESS_gd_req__problem_attr_stakeholder>` are provided in the Assignees part of
+:need:`[[title]] <gd_req__problem_attr_stakeholder>` are provided in the Assignees part of
 the ISSUE. In addition you can use pre-defined labels for Communities or Feature Teams
 (Feature Owner) (under discussion, compare https://github.com/eclipse-score/score/issues/870).
 
-:need:`[[title]] <PROCESS_gd_req__problem_attr_classification>` is provided in the Classification
+:need:`[[title]] <gd_req__problem_attr_classification>` is provided in the Classification
 part of the ISSUE. Select one of provided identifiers:
 
 .. list-table:: Problem Classification
@@ -162,8 +162,8 @@ part of the ISSUE. Select one of provided identifiers:
      - ``blocker``
 
 
-:need:`[[title]] <PROCESS_gd_req__problem_attr_safety_affected>`,
-:need:`[[title]] <PROCESS_gd_req__problem_attr_security_affected>` are provided in the Category
+:need:`[[title]] <gd_req__problem_attr_safety_affected>`,
+:need:`[[title]] <gd_req__problem_attr_security_affected>` are provided in the Category
 part of the ISSUE.
 
 Combinations of them are allowed. If nothing is selected, Quality is affected by default.
@@ -171,7 +171,7 @@ Combinations of them are allowed. If nothing is selected, Quality is affected by
 Use the ASIL classification part of the ISSUE to document the ASIL level concerned, e.g. ASIL_B.
 
 
-:need:`[[title]] <PROCESS_gd_req__problem_attr_milestone>` is provided in the Expected Closure
+:need:`[[title]] <gd_req__problem_attr_milestone>` is provided in the Expected Closure
 Version part of the ISSUE. Optionally the Milestone part of the ISSUE can be set.
 
 
@@ -187,7 +187,7 @@ In general, every Problem Resolution follows the following steps:
 * 3. Initiate the implementation of the Problem Resolution and track it to closure (yellow color)
 * 3. Close Problem Resolution (purple color)
 
-:need:`PROCESS_gd_guidl__problem_problem` can give additional help.
+:need:`gd_guidl__problem_problem` can give additional help.
 
 **To 1. Create the Problem Report:**
 
@@ -221,8 +221,8 @@ set the ISSUE status to ``Closed as not planned``.
 
 **To 2. Analyze the Problem Report:**
 
-The Problem Report is reviewed and analyzed from the :need:`Committer <PROCESS_rl__committer>` and the
-review results are resolved by the :need:`Contributor <PROCESS_rl__contributor>`. The results
+The Problem Report is reviewed and analyzed from the :need:`Committer <rl__committer>` and the
+review results are resolved by the :need:`Contributor <rl__contributor>`. The results
 are documented in the ISSUE. As long as the information is not sufficient, the related ISSUE is
 kept in status ``Open`` and Projects status ``Todo``, means ``in review``.
 
@@ -232,10 +232,10 @@ ISSUE status is kept ``Open`` and the Projects status is set to ``In Progress``.
 The decision, if the problem is accepted or rejected must be documented. Safety/Security
 experts must confirm or disconfirm, if safety/security is affected is set correctly.
 
-:need:`PROCESS_gd_chklst__problem_cr_review` can help to verify whether the information is complete.
+:need:`gd_chklst__problem_cr_review` can help to verify whether the information is complete.
 
-In case affected parties need to be informed :need:`Technical Lead <PROCESS_rl__technical_lead>` or
-:need:`Module Lead <PROCESS_rl__module_lead>` will notify them, either updating the Assignees or
+In case affected parties need to be informed :need:`Technical Lead <rl__technical_lead>` or
+:need:`Module Lead <rl__module_lead>` will notify them, either updating the Assignees or
 adding labels for community or feature teams.
 
 Otherwise, if no Problem Resolution is planned, the problem is rejected. To reject the Problem
@@ -244,7 +244,7 @@ Report: Problem status: ``rejected`` set the ISSUE status to ``Closed as not pla
 
 **To 3. Initiate and Monitor the Problem Resolution:**
 
-:need:`Contributor <PROCESS_rl__contributor>` starts all required activities to resolve the problem.
+:need:`Contributor <rl__contributor>` starts all required activities to resolve the problem.
 These may include starting Change Requests or in general planning activities by creating ISSUEs and
 required PRs.
 
@@ -254,8 +254,8 @@ monitoring of the activities.
 All activities defined are tracked until closure, means that all linked ISSUEs or PRs are closed or
 merged, respectively.
 
-If all are closed or merged :need:`Contributor <PROCESS_rl__contributor>` sets Projects status to
-``Done`` to trigger the final review from the :need:`Committer <PROCESS_rl__committer>` to close
+If all are closed or merged :need:`Contributor <rl__contributor>` sets Projects status to
+``Done`` to trigger the final review from the :need:`Committer <rl__committer>` to close
 the Problem Resolution.
 
 The Problem Resolution may also rejected in this phase, then the ISSUE status is set to
@@ -263,13 +263,13 @@ The Problem Resolution may also rejected in this phase, then the ISSUE status is
 
 **To 4. Close the Problem Resolution:**
 
-:need:`Committer <PROCESS_rl__committer>` checks finally if the problem is completely resolved. In
+:need:`Committer <rl__committer>` checks finally if the problem is completely resolved. In
 this case all linked ISSUEs or PRs are closed or merged, respectively.
 
 Especially the solution measures must be checked for their effectiveness and the argumentation
 is convincing.
 
-:need:`PROCESS_gd_chklst__problem_cr_review` can help to verify whether it can be closed.
+:need:`gd_chklst__problem_cr_review` can help to verify whether it can be closed.
 
 If this is the case the ISSUE status is set to ``Closed``, otherwise the Projects status is set
 back to ``In Progress``.

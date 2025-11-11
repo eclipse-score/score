@@ -17,7 +17,7 @@
    :status: valid
    :security: NO
    :safety: ASIL_B
-   :realizes: PROCESS_wp__feature_arch
+   :realizes: wp__feature_arch
 
 
 FEO Feature Architecture

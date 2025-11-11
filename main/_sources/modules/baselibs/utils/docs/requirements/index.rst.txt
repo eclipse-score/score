@@ -19,7 +19,7 @@ Requirements
    :id: doc__utils_lib_requirements
    :status: draft
    :safety: ASIL_B
-   :realizes: PROCESS_wp__requirements_comp
+   :realizes: wp__requirements_comp
    :tags: requirements, utils_library
 
 Functional Requirements

@@ -17,7 +17,7 @@
    :status: draft
    :security: NO
    :safety: ASIL_B
-   :realizes: PROCESS_wp__component_arch
+   :realizes: wp__component_arch
    :tags: component_feo
 
 FEO Component Architecture

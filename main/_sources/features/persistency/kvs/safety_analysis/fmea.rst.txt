@@ -20,10 +20,10 @@ Persistency FMEA
    :status: valid
    :safety: ASIL_B
    :security: NO
-   :realizes: PROCESS_wp__feature_fmea
+   :realizes: wp__feature_fmea
    :tags: persistency
 
-For the FMEA analysis where the fault models :need:`PROCESS_gd_guidl__fault_models` are used.
+For the FMEA analysis where the fault models :need:`gd_guidl__fault_models` are used.
 The following fault models doesn't apply to the persistency feature:
 
 Fault models

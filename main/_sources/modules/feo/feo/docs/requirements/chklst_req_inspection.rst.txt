@@ -42,7 +42,7 @@ FEO Component Requirement Inspection Checklist
         - Issue link
       * - REQ_01_01
         - Is the requirement sentence template used?
-        - see :need:`PROCESS_gd_temp__req_formulation`, this includes the use of "shall".
+        - see :need:`gd_temp__req_formulation`, this includes the use of "shall".
         -
         -
         -
@@ -66,7 +66,7 @@ FEO Component Requirement Inspection Checklist
         -
       * - REQ_02_04
         - Is the requirement description *feasible* ?
-        - Expectation is that at the time of the inspection the requirement has already some implementation. This can be checked via traces, but also :need:`PROCESS_gd_req__req_attr_impl` shows this. In case the requirement is not mature enough at the time of inspection (i.e. not implemented at least as "proof-of-concept"), a development expert should be invited to the Pull-Request review to explicitly check this item.
+        - Expectation is that at the time of the inspection the requirement has already some implementation. This can be checked via traces, but also :need:`gd_req__req_attr_impl` shows this. In case the requirement is not mature enough at the time of inspection (i.e. not implemented at least as "proof-of-concept"), a development expert should be invited to the Pull-Request review to explicitly check this item.
         -
         -
         -
@@ -108,7 +108,7 @@ FEO Component Requirement Inspection Checklist
         -
       * - REQ_07_01
         - Is the *ASIL Attribute* set correctly?
-        - Derived requirements are checked automatically, see :need:`PROCESS_gd_req__req_linkage_safety`. But for the top level requirements this needs to be checked for correctness. Also AoU from external components need check for correct ASIL as those are the "origin" of safety requirements towards the SW platform.
+        - Derived requirements are checked automatically, see :need:`gd_req__req_linkage_safety`. But for the top level requirements this needs to be checked for correctness. Also AoU from external components need check for correct ASIL as those are the "origin" of safety requirements towards the SW platform.
         -
         -
         -
@@ -120,13 +120,13 @@ FEO Component Requirement Inspection Checklist
         -
       * - REQ_08_01
         - Is the requirement *verifiable*?
-        - Expectation is that at the time of the inspection already tests are created for the requirement. This can be checked via traces, but also :need:`PROCESS_gd_req__req_attr_test_covered` shows this. In case the requirement is not mature enough at the time of inspection (i.e. missing test cases), a test expert should be invited to the Pull-Request review to explicitly check this item.
+        - Expectation is that at the time of the inspection already tests are created for the requirement. This can be checked via traces, but also :need:`gd_req__req_attr_test_covered` shows this. In case the requirement is not mature enough at the time of inspection (i.e. missing test cases), a test expert should be invited to the Pull-Request review to explicitly check this item.
         -
         -
         -
       * - REQ_09_01
         - For stakeholder requirements: Do those cover assumed safety mechanisms needed by the hardware and system?
-        - Note that the feature/component requirements also cover safety mechanisms in case those are needed to mitigate failures found during :need:`PROCESS_gd_chklst__safety_analysis`
+        - Note that the feature/component requirements also cover safety mechanisms in case those are needed to mitigate failures found during :need:`gd_chklst__safety_analysis`
         -
         -
         -

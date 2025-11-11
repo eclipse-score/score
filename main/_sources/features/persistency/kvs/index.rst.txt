@@ -20,7 +20,7 @@ Key-Value-Storage
    :status: valid
    :safety: ASIL_B
    :security: NO
-   :realizes: PROCESS_wp__feat_request
+   :realizes: wp__feat_request
    :tags: feature_request, persistency
 
 .. toctree::

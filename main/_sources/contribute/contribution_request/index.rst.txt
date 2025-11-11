@@ -95,9 +95,9 @@ A Pull Request (**PR**) is the **ONLY** way to contribute **CODE** to the *S-COR
 
 The figure below shows a simplified workflow for a PR.
 
-* The contributor (:need:`Contributor <PROCESS_rl__contributor>`) starts by creating a PR:  `Creating a Pull Request (Github Docs) <https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request>`_.
+* The contributor (:need:`Contributor <rl__contributor>`) starts by creating a PR:  `Creating a Pull Request (Github Docs) <https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request>`_.
 * Required reviewers will be automatically assigned based on the contributed content (via CODEOWNERS).
-* If the content fullfils the review and acceptance criteria, a committer (:need:`Committer <PROCESS_rl__committer>`) will approve the *PR* and thus it can be merged.
+* If the content fullfils the review and acceptance criteria, a committer (:need:`Committer <rl__committer>`) will approve the *PR* and thus it can be merged.
 
 .. figure:: _assets/score_contribution_request_simple.drawio.svg
   :width: 600
@@ -108,7 +108,7 @@ The figure below shows a simplified workflow for a PR.
 
 Content in general may contain features, requirements, architectural designs, modules, components, detailed designs, implementations and source code, tests, process descriptions, any documentations, guidelines, tutorials, tools, or infrastructure topics and more of the *S-CORE* project. In case of doubt or for any other input we strongly encourage to open a *GitHub Issue* (:need:`doc__issue_guideline`) first.
 
-The *PR* should provide all required information of the new or changed content. Therefore the *S-CORE* project provides content specific templates, which the contributor (:need:`Contributor <PROCESS_rl__contributor>`) must use for his *PR* (ToDo link here to the templates overview). Templates may be *PR* templates, *GitHub Issue* templates and also additional document or work product templates.
+The *PR* should provide all required information of the new or changed content. Therefore the *S-CORE* project provides content specific templates, which the contributor (:need:`Contributor <rl__contributor>`) must use for his *PR* (ToDo link here to the templates overview). Templates may be *PR* templates, *GitHub Issue* templates and also additional document or work product templates.
 
 The content of any *PR* is the commit content and the description as well as the comments given in GitHub and is kept in a versioned repository, their revision history is the historical record of the PR.
 
@@ -132,23 +132,23 @@ The figure below gives an overview about all the possible steps for a *PR* until
 Create a PR
 -----------
 
-The contributor (:need:`Contributor <PROCESS_rl__contributor>`) creates a PR.
+The contributor (:need:`Contributor <rl__contributor>`) creates a PR.
 
-Reviewers will be automatically assigned (:need:`Committer <PROCESS_rl__committer>`) based on the contributed content (ruleset as defined by the committers). In addition several checks for the contributed content (ToDo: Link to the description of the checks) will be started.
+Reviewers will be automatically assigned (:need:`Committer <rl__committer>`) based on the contributed content (ruleset as defined by the committers). In addition several checks for the contributed content (ToDo: Link to the description of the checks) will be started.
 
 Review and merge a PR
 ---------------------
 
-A *PR* is reviewed with all content that adds/modifies it. As long as a *PR* requires further work by the contributor (:need:`Contributor <PROCESS_rl__contributor>`), the *PR* is not approved and thus not merged and further changes are requested. Once the contributor (:need:`Contributor <PROCESS_rl__contributor>`) considers all review comments as resolved, :need:`Contributor <PROCESS_rl__contributor>` can re-request a review. The committer (:need:`Committer <PROCESS_rl__committer>`) reviews the *PR* content according the *S-CORE* review and acceptance criteria (ToDo link here to the criteria).
-Further the contributor (:need:`Contributor <PROCESS_rl__contributor>`) must resolve found issues from the automated checks, if they do not pass.
+A *PR* is reviewed with all content that adds/modifies it. As long as a *PR* requires further work by the contributor (:need:`Contributor <rl__contributor>`), the *PR* is not approved and thus not merged and further changes are requested. Once the contributor (:need:`Contributor <rl__contributor>`) considers all review comments as resolved, :need:`Contributor <rl__contributor>` can re-request a review. The committer (:need:`Committer <rl__committer>`) reviews the *PR* content according the *S-CORE* review and acceptance criteria (ToDo link here to the criteria).
+Further the contributor (:need:`Contributor <rl__contributor>`) must resolve found issues from the automated checks, if they do not pass.
 
-As long as the *PR* does not meet the defined criteria and the checks does not pass, it will not be approved. If it does not follow the required templates, based on the provided content or the templates are not filled out properly, the committer as reviewer (:need:`Committer <PROCESS_rl__committer>`) will place the *PR* to the "Draft" state.
+As long as the *PR* does not meet the defined criteria and the checks does not pass, it will not be approved. If it does not follow the required templates, based on the provided content or the templates are not filled out properly, the committer as reviewer (:need:`Committer <rl__committer>`) will place the *PR* to the "Draft" state.
 
-It is then the responsibility of the contributor (:need:`Contributor <PROCESS_rl__contributor>`) to add the missing information and to re-start the contribution by placing the *PR* back for review.
+It is then the responsibility of the contributor (:need:`Contributor <rl__contributor>`) to add the missing information and to re-start the contribution by placing the *PR* back for review.
 
 To change from "Draft" to "Open" see `Changing the stage of a pull request (Github Docs) <https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request>`_.
 
-At any point the contributor (:need:`Contributor <PROCESS_rl__contributor>`) may decide not to continue with the PR, then the contributor (:need:`Contributor <PROCESS_rl__contributor>`) just closes the PR.
+At any point the contributor (:need:`Contributor <rl__contributor>`) may decide not to continue with the PR, then the contributor (:need:`Contributor <rl__contributor>`) just closes the PR.
 
 .. _what_is_a_github_issue:
 
