@@ -131,19 +131,17 @@ Vector
    .. code-block:: rust
 
       #[repr(C)]
-      pub struct AbiVec<T> {
+      pub struct AbiVec<T, const N: usize> {
          len: u32,
-         capacity: u32,
          elements: [T; N],
       }
 
    .. code-block:: cpp
 
-      template<typename T, std::size_t N>
+      template<typename T, std::uint32_t N>
       struct AbiVec {
       private:
          std::uint32_t len;
-         std::uint32_t capacity;
          T elements[N];
       };
 
@@ -165,7 +163,7 @@ Vector
    :satisfies: stkh_req__communication__abi_compatible
    :status: valid
 
-   The ``AbiVec`` API shall mirror ``std::vector`` / ``Vec<T>`` but shall not allocate or reallocate memory.
+   The ``AbiVec`` API shall mirror ``std::vector`` / ``Vec<T>``, but shall not allocate or reallocate memory.
 
 .. feat_req:: AbiVec overflow check
    :id: feat_req__abi_compatible_data_types__abv_ovf

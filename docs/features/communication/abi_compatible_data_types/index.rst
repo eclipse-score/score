@@ -160,7 +160,6 @@ Primitive Types
 
 These types are ABI-compatible when declared using fixed-size standard types:
 
-
 .. list-table:: Native Type Mapping
    :header-rows: 1
 
@@ -195,18 +194,20 @@ Structs and tuples are supported using standard layout rules:
   (no virtual functions, no virtual inheritance, and only one class in the hierarchy has non-static data members;
   `full specification <https://en.cppreference.com/w/cpp/language/classes.html#Standard-layout_class>`__)
 
+Field types must themselves be ABI compatible.
 Field ordering must be preserved and padding must be identical across compilers. Any alignment greater than the default must be explicitly declared.
 Empty structs and tuples are forbidden, because zero-sized types have different representations in C++ and Rust.
 
 Enums
 """""
 
-Only fieldless enums with a defined underlying integer type are supported. These must use:
+Fieldless enums with a defined underlying integer type are supported. These must use:
 
 * ``#[repr(u8)]``, ``#[repr(u16)]``, etc. in Rust
 * ``enum class MyEnum : std::uint8_t`` in C++
 
-*Note:* Enums with payloads ("variants" or "tagged unions") are optionally supported.
+Each entry in an enum must have well-defined representation.
+Enums with payloads ("variants" or "tagged unions") are optionally supported.
 
 Arrays
 """"""
@@ -216,36 +217,35 @@ Fixed-size arrays are naturally ABI-compatible and supported in both languages.
 * Rust: ``[T; N]``
 * C++: wrapper around ``T[N]`` to enforce bounds-checking for element access
 
+Element types must themselves be ABI compatible. No dynamic length information is allowed.
 Empty arrays (``N=0``) are forbidden, because zero-sized types have different representations in C++ and Rust.
 
 Vectors
-""""""""
+"""""""
 
 To provide bounded sequence types with familiar APIs, a custom vector implementation must be provided in both languages that matches the memory layout defined below.
 
 .. code-block:: rust
 
     #[repr(C)]
-    pub struct AbiVec<T> {
+    pub struct AbiVec<T, const N: usize> {
         len: u32,
-        capacity: u32,
         elements: [T; N],
     }
 
 .. code-block:: cpp
 
-    template<typename T, std::size_t N>
+    template<typename T, std::uint32_t N>
     struct AbiVec {
     private:
         std::uint32_t len;
-        std::uint32_t capacity;
         T elements[N];
     };
 
-* Capacity is fixed and equal to ``N`` at compile time.
+* Capacity is fixed and equal to ``N`` elements at compile time.
 * Overflow beyond capacity must be a checked error.
 * No heap allocation is permitted.
-* Internally, these are ABI-compatible with ``len``, ``capacity`` and ``elements`` accessible from both languages.
+* Internally, these are ABI-compatible with ``len`` and ``elements`` accessible from both languages.
 * The public API must match standard vector types in usability (e.g. ``push()``, ``pop()``).
 * Zero-capacity vectors (``N=0``) are forbidden, because zero-sized arrays have different representations in C++ and Rust.
 
@@ -362,7 +362,7 @@ Language Conformance Summary
      - Conforming
    * - Arrays
      - ✅ ``[T; N]``
-     - ✅ ``T[N]``
+     - ✅ ``std::array<T, N>``
      - Conforming
    * - Vector
      - ❌ ``Vec<T>``
