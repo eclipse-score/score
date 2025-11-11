@@ -237,44 +237,43 @@ String
 
 Option
 ^^^^^^
-.. TODO: Uncomment when issue with "some" in description is resolved
 
-.. .. feat_req:: Provide AbiOption<T>
-..    :id: feat_req__abi_compatible_data_types__prv_abo
-..    :reqtype: Functional
-..    :security: NO
-..    :safety: QM
-..    :satisfies: stkh_req__communication__abi_compatible
-..    :status: valid
+.. feat_req:: Provide AbiOption<T>
+   :id: feat_req__abi_compatible_data_types__prv_abo
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :satisfies: stkh_req__communication__abi_compatible
+   :status: valid
 
-..    An ABI-compatible ``AbiOption<T>`` type shall be provided in both C++ and Rust with the specified layout.
+   An ABI-compatible ``AbiOption<T>`` type shall be provided in both C++ and Rust with the specified layout.
 
-..    .. code-block:: rust
+   .. code-block:: rust
 
-..       #[repr(C)]
-..       pub struct AbiOption<T> {
-..          is_some: u8,
-..          value: T,
-..       }
+      #[repr(C)]
+      pub struct AbiOption<T> {
+         is_some: bool,
+         value: T,
+      }
 
-..    .. code-block:: cpp
+   .. code-block:: cpp
 
-..       template<typename T>
-..       struct AbiOption {
-..       private:
-..          std::uint8_t is_some;
-..          T value;
-..       };
+      template<typename T>
+      struct AbiOption {
+      private:
+         AbiBool is_some;
+         T value;
+      };
 
-.. .. feat_req:: AbiOption is_some flag
-..    :id: feat_req__abi_compatible_data_types__abo_flg
-..    :reqtype: Functional
-..    :security: NO
-..    :safety: QM
-..    :satisfies: stkh_req__communication__abi_compatible
-..    :status: valid
+.. feat_req:: AbiOption is_some flag
+   :id: feat_req__abi_compatible_data_types__abo_flg
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :satisfies: stkh_req__communication__abi_compatible
+   :status: valid
 
-..    ``AbiOption.is_some`` shall be ``0`` when empty and ``1`` when containing a value.
+   ``AbiOption.is_some`` shall be ``false`` when empty and ``true`` when containing a value.
 
 .. feat_req:: AbiOption API
    :id: feat_req__abi_compatible_data_types__abo_api
@@ -284,7 +283,7 @@ Option
    :satisfies: stkh_req__communication__abi_compatible
    :status: valid
 
-   The ``AbiOption`` API shall mirror ``std::optional``/``Option<T>`` without introducing extra fields or indirections.
+   The ``AbiOption`` API shall mirror ``std::optional`` / ``Option<T>`` without introducing extra fields or indirections.
 
 Result
 ^^^^^^
@@ -303,14 +302,14 @@ Result
 
       #[repr(C)]
       pub struct AbiResult<T, E> {
-         is_ok: u8,
+         is_err: bool,
          value: AbiResultUnion<T, E>,
       }
 
       #[repr(C)]
       union AbiResultUnion<T, E> {
-         ok: T,
-         err: E,
+         ok: ManuallyDrop<T>,
+         err: ManuallyDrop<E>,
       }
 
    .. code-block:: cpp
@@ -318,14 +317,14 @@ Result
       template<typename T, typename E>
       struct AbiResult {
       private:
-         std::uint8_t is_ok;
+         AbiBool is_err;
          union {
             T ok;
             E err;
          } value;
       };
 
-.. feat_req:: AbiResult is_ok flag
+.. feat_req:: AbiResult is_err flag
    :id: feat_req__abi_compatible_data_types__ari_flg
    :reqtype: Functional
    :security: NO
@@ -333,7 +332,7 @@ Result
    :satisfies: stkh_req__communication__abi_compatible
    :status: valid
 
-   ``AbiResult.is_ok`` shall be ``1`` if ``value.ok`` is valid, and ``0`` if ``value.err`` is valid.
+   ``AbiResult.is_err`` shall be ``false`` if ``value.ok`` is valid, and ``true`` if ``value.err`` is valid.
 
 .. feat_req:: AbiResult API
    :id: feat_req__abi_compatible_data_types__ari_api
@@ -343,4 +342,4 @@ Result
    :satisfies: stkh_req__communication__abi_compatible
    :status: valid
 
-   The ``AbiResult`` API shall mirror ``std::expected``/``Result<T, E>`` without hidden storage or pointers.
+   The ``AbiResult`` API shall mirror ``std::expected`` / ``Result<T, E>`` without hidden storage or pointers.

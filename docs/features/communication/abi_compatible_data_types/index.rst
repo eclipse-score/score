@@ -286,7 +286,7 @@ ABI-compatible optional types must be implemented manually using a one-byte tag 
 
     #[repr(C)]
     pub struct AbiOption<T> {
-        is_some: u8,
+        is_some: bool,
         value: T,
     }
 
@@ -295,13 +295,13 @@ ABI-compatible optional types must be implemented manually using a one-byte tag 
     template<typename T>
     struct AbiOption {
     private:
-        std::uint8_t is_some;
+        AbiBool is_some;
         T value;
     };
 
-* ``is_some == 0`` indicates absence; ``1`` indicates presence.
+* ``is_some == false`` indicates absence; ``true`` indicates presence.
 * The value field is always initialized and occupies memory regardless of state.
-* The public API must match standard optional types in usability.
+* The public API should match standard optional types in usability, as far as possible.
 
 Result Types
 """"""""""""
@@ -312,14 +312,14 @@ Result types represent tagged unions with two possible states.
 
     #[repr(C)]
     pub struct AbiResult<T, E> {
-        is_ok: u8,
+        is_err: bool,
         value: AbiResultUnion<T, E>,
     }
 
     #[repr(C)]
     union AbiResultUnion<T, E> {
-        ok: T,
-        err: E,
+        ok: ManuallyDrop<T>,
+        err: ManuallyDrop<E>,
     }
 
 .. code-block:: cpp
@@ -327,15 +327,15 @@ Result types represent tagged unions with two possible states.
     template<typename T, typename E>
     struct AbiResult {
     private:
-        std::uint8_t is_ok;
+        AbiBool is_err;
         union {
             T ok;
             E err;
         } value;
     };
 
-* ``is_ok == 1`` indicates ``ok`` field is valid
-* ``is_ok == 0`` indicates ``err`` field is valid
+* ``is_err == false`` indicates ``ok`` field is valid
+* ``is_err == true`` indicates ``err`` field is valid
 * The layout must guarantee correct union member interpretation based on the discriminant
 
 Language Conformance Summary
