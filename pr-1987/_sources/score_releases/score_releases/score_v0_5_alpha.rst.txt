@@ -146,6 +146,21 @@ Integrated Software Modules
       - **Please note**: the integration of autosd linux image is experimental and do not follow S-CORE process, e.g. integration into bazel is missing. This will be
         fixed in the upcoming releases.
 
+    - **reference ebclfsa linux image** (Experimental)
+
+      - Shows the integration of Eclipse S-CORE on Elektrobit corbos Linux for Safety Applications.
+        It integrates *scrample* application based on the Eclipse S-CORE communication framework as demo/test application.
+        This application is then integrated into the so-called "fast-dev" variant of EB corbos Linux for Safety Applications (EBcLfSA).
+        This is an `aarch64`-based, pre-built image, capable of demonstraing the execution of high integrity applications in regular Linux user-space.
+        The example can be executed using QEMU.
+        In the `related CI workflow <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_ebclfsa.yml>`_,
+        all these steps are performed, and the resulting log files are stored and made available for download.
+        See `ebclfsa README <https://github.com/eclipse-score/reference_integration/blob/main/ebclfsa/README.md>`_ for details.
+
+      - **Please note**: the integration of ebclfsa linux image is experimental. It already provides integration into bazel build system
+        however some of the integration code needs rework in the future releases.
+
+
 
 Associated Infrastructure Modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
