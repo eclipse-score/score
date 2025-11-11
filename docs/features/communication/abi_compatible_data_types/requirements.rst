@@ -30,7 +30,7 @@ Restrictions on Native Types
    :satisfies: stkh_req__communication__abi_compatible
    :status: valid
 
-   For ABI compatibility, the implementation shall restrict boolean types to one byte (``bool`` in Rust and C++).
+   For ABI compatibility, the implementation shall restrict boolean types to one byte (``bool`` in Rust) and to the bit patterns ``0x00`` and ``0x01``.
 
 .. feat_req:: Fixed-width integers
    :id: feat_req__abi_compatible_data_types__int_fix

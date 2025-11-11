@@ -76,6 +76,12 @@ The following data types shall be supported:
 * **Primitive Types**:
 
   * Boolean
+  * Integer (signed and unsigned, 8/16/32/64-bit)
+  * Floating-point:
+
+    * IEEE 754 binary 32/64-bit
+    * FP16/bfloat16 (*optional*)
+
   * Character (Unicode scalar value)
 
 * **Sequence Types**:
@@ -163,7 +169,7 @@ These types are ABI-compatible when declared using fixed-size standard types:
      - C++17
    * - Boolean
      - ``bool``
-     - ``bool`` (1 byte, with ``0x00`` and ``0x01`` as the only valid bit patterns)
+     - ``AbiBool`` (1 byte, with ``0x00`` representing ``false`` and ``0x01`` representing ``true`` as the only valid bit patterns)
    * - Integers (N = 8, 16, 32, 64)
      - ``uN``, ``iN``
      - ``std::uintN_t``, ``std::intN_t``
@@ -174,6 +180,7 @@ These types are ABI-compatible when declared using fixed-size standard types:
      - ``char``
      - ``AbiChar`` (32-bit unsigned integer, valid bit patterns ``0x0`` to ``0xD7FF`` and ``0xE000`` to ``0x10FFFF``)
 
+* Booleans can't be represented as native ``bool`` type in C++, because the language doesn't guarantee a size of 1 byte, and it doesn't guarantee that only the values ``0x00`` and ``0x01`` will be stored in memory.
 * Characters can't be represented as native ``uint32_t`` type in C++ without a wrapper, because it must be guaranteed that *surrogate code points* (``0xD800`` to ``0xDFFF``) and non-code points (values above ``0x10FFFF``) won't be stored in memory.
 
 Structs and Tuples
