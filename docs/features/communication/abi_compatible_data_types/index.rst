@@ -196,6 +196,7 @@ Structs and tuples are supported using standard layout rules:
   `full specification <https://en.cppreference.com/w/cpp/language/classes.html#Standard-layout_class>`__)
 
 Field ordering must be preserved and padding must be identical across compilers. Any alignment greater than the default must be explicitly declared.
+Empty structs and tuples are forbidden, because zero-sized types have different representations in C++ and Rust.
 
 Enums
 """""
@@ -215,7 +216,7 @@ Fixed-size arrays are naturally ABI-compatible and supported in both languages.
 * Rust: ``[T; N]``
 * C++: wrapper around ``T[N]`` to enforce bounds-checking for element access
 
-Element types must also conform to this specification. No dynamic length information is allowed.
+Empty arrays (``N=0``) are forbidden, because zero-sized types have different representations in C++ and Rust.
 
 Vectors
 """"""""
@@ -246,6 +247,7 @@ To provide bounded sequence types with familiar APIs, a custom vector implementa
 * No heap allocation is permitted.
 * Internally, these are ABI-compatible with ``len``, ``capacity`` and ``elements`` accessible from both languages.
 * The public API must match standard vector types in usability (e.g. ``push()``, ``pop()``).
+* Zero-capacity vectors (``N=0``) are forbidden, because zero-sized arrays have different representations in C++ and Rust.
 
 Strings
 """""""
