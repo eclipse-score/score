@@ -94,7 +94,7 @@ Static Architecture
 Logical Interfaces
 ------------------
 
-The Baselibs feature exposes the following logical interfaces defined in the :doc:`/modules/baselibs/index`:
+The Baselibs feature exposes the following logical interfaces:
 
 .. needtable::
    :style: table
