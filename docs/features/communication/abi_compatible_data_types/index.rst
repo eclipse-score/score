@@ -76,7 +76,7 @@ The following data types shall be supported:
 * **Primitive Types**:
 
   * Boolean
-  * Numeric (fixed-size integers 8-128 bits, signed and unsigned; IEEE 754 floating-point numbers)
+  * Character (Unicode scalar value)
 
 * **Sequence Types**:
 
@@ -92,6 +92,7 @@ The following data types shall be supported:
 * **Fixed-Size, Variable-Length Containers**:
 
   * Vector
+  * String (UTF-8 encoded)
   * Queue
   * Hash map (*optional*)
   * Hash set (*optional*)
@@ -169,8 +170,11 @@ These types are ABI-compatible when declared using fixed-size standard types:
    * - Floating point
      - ``f32``, ``f64``
      - ``float``, ``double`` (compliant with IEEE 754)
+   * - Character
+     - ``char``
+     - ``AbiChar`` (32-bit unsigned integer, valid bit patterns ``0x0`` to ``0xD7FF`` and ``0xE000`` to ``0x10FFFF``)
 
-All types must avoid trap representations and undefined padding.
+* Characters can't be represented as native ``uint32_t`` type in C++ without a wrapper, because it must be guaranteed that *surrogate code points* (``0xD800`` to ``0xDFFF``) and non-code points (values above ``0x10FFFF``) won't be stored in memory.
 
 Structs and Tuples
 """"""""""""""""""
@@ -235,6 +239,34 @@ To provide bounded sequence types with familiar APIs, a custom vector implementa
 * No heap allocation is permitted.
 * Internally, these are ABI-compatible with ``len``, ``capacity`` and ``elements`` accessible from both languages.
 * The public API must match standard vector types in usability (e.g. ``push()``, ``pop()``).
+
+Strings
+"""""""
+
+Strings have the same memory layout as ``AbiVec<u8>``, but additionally guarantee that their content is valid UTF-8.
+
+.. code-block:: rust
+
+    #[repr(C)]
+    pub struct AbiString<const N: usize> {
+        len: u32,
+        bytes: [u8; N],
+    }
+
+.. code-block:: cpp
+
+    template<std::uint32_t N>
+    struct AbiString {
+    private:
+        std::uint32_t len;
+        std::uint8_t bytes[N];
+    };
+
+* Capacity is fixed and equal to ``N`` bytes at compile time.
+* Overflow beyond capacity must be a checked error.
+* No heap allocation is permitted.
+* The public API must provide for a way to extend the string by a single character (Unicode scalar value) and by a string slice encoded as UTF-8.
+* Zero-capacity strings (``N=0``) are forbidden, because zero-sized array have different representations in C++ and Rust.
 
 Option Types
 """"""""""""
@@ -309,7 +341,7 @@ Language Conformance Summary
      - Specification Status
    * - Primitives
      - ✅ Native types
-     - ✅ Native types
+     - ⚠ Native and custom types
      - Conforming
    * - Structs
      - ✅ ``#[repr(C)]``
@@ -327,6 +359,10 @@ Language Conformance Summary
      - ❌ ``Vec<T>``
      - ❌ ``std::vector<T>``
      - ✅ ``AbiVec<T, N>`` required
+   * - String
+     - ❌ ``String``
+     - ❌ ``std::string``
+     - ✅ ``AbiString<N>`` required
    * - Option
      - ❌ ``Option<T>``
      - ❌ ``std::optional<T>``

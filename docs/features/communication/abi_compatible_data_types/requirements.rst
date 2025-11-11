@@ -52,6 +52,16 @@ Restrictions on Native Types
 
    For ABI compatibility, floating-point types shall be limited to 32-bit (``f32`` in Rust / ``float`` in C++) and 64-bit (``f64`` in Rust / ``double`` in C++); all floating-point representations shall be compliant with IEEE 754.
 
+.. feat_req:: Characters
+   :id: feat_req__abi_compatible_data_types__char
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :satisfies: stkh_req__communication__abi_compatible
+   :status: valid
+
+   For ABI compatibility, the Unicode character type shall use fixed-width definitions (``char`` in Rust; wrapper around ``std::uint32_t`` in C++), and shall restrict values to the ranges ``0x0`` to ``0xD7FF`` and ``0xE000`` to ``0x10FFFF``.
+
 .. feat_req:: Fixed-size arrays
    :id: feat_req__abi_compatible_data_types__arr_fix
    :reqtype: Functional
@@ -166,6 +176,66 @@ Vector
    :status: valid
 
    Any attempt to exceed ``AbiVec.capacity`` shall result in a checked runtime error.
+
+String
+^^^^^^
+
+.. feat_req:: Provide AbiString<N>
+   :id: feat_req__abi_compatible_data_types__prv_abs
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :satisfies: stkh_req__communication__abi_compatible
+   :status: valid
+
+   An ABI-compatible ``AbiString<N>`` type shall be provided in both C++ and Rust with the specified layout.
+
+   .. code-block:: rust
+
+      #[repr(C)]
+      pub struct AbiString<const N: usize> {
+         len: u32,
+         bytes: [u8; N],
+      }
+
+   .. code-block:: cpp
+
+      template<std::uint32_t N>
+      struct AbiString {
+      private:
+         std::uint32_t len;
+         std::uint8_t bytes[N];
+      };
+
+.. feat_req:: AbiString field semantics
+   :id: feat_req__abi_compatible_data_types__abs_fld
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :satisfies: stkh_req__communication__abi_compatible
+   :status: valid
+
+   ``AbiString.len`` shall report the current byte count; ``AbiString.capacity`` shall equal the compile-time size ``N``.
+
+.. feat_req:: AbiString API
+   :id: feat_req__abi_compatible_data_types__abs_noa
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :satisfies: stkh_req__communication__abi_compatible
+   :status: valid
+
+   The ``AbiString`` API shall mirror the applicable parts of ``std::basic_string`` / ``String``, but shall not allocate or reallocate memory.
+
+.. feat_req:: AbiString overflow check
+   :id: feat_req__abi_compatible_data_types__abs_ovf
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :satisfies: stkh_req__communication__abi_compatible
+   :status: valid
+
+   Any attempt to exceed ``AbiString.capacity`` shall result in a checked runtime error.
 
 Option
 ^^^^^^
