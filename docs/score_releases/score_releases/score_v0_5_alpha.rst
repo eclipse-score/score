@@ -91,7 +91,7 @@ Integrated Software Modules
 
   - **Link to release**: `persistency v0.2.0 <https://github.com/eclipse-score/persistency/releases/tag/v0.2.0>`_
   - **Release notes**:
-    
+
     - **Please note**: `definition of feature requirements and architecture <https://eclipse-score.github.io/score/main/features/persistency/index.html>`_  and
       `component requirements and architecture <https://eclipse-score.github.io/score/main/modules/persistency/index.html>`_ is partially out of date.
       This will be fixed with next release.
@@ -119,16 +119,16 @@ Integrated Software Modules
 
 - **Reference integration**: central place for integration of Eclipse S-Core modules
 
-  - **Link to release**: tbd
+  - **Link to release**: `reference integration v0.5.0-alpha <https://github.com/eclipse-score/reference_integration/releases/tag/v0.5.0-alpha>`_
   - **Release notes**
 
     - **common**
 
       - Provides integration of all 0.5 modules including `scrample demo application <https://github.com/eclipse-score/scrample>`_
       - Provide CI/CD workflows to ensure stability of the reference integration:
-  
-        - `build and test on every pr <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_on_every_pr.yml>`_ and 
-          `test integration <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/test_integration.yml>`_ 
+
+        - `build and test on every pr <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_on_every_pr.yml>`_ and
+          `test integration <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/test_integration.yml>`_
           build all functional modules of Eclipse S-Core v0.5 and execute multiple tests to ensure stability of the reference integration for every pr and on every release creation
         - `release verification <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/release_verification.yml>`_ executes multiple integration tests
           in reference qnx image during creation of releases to ensure that the reference image is fully functional
@@ -145,7 +145,7 @@ Integrated Software Modules
       - integrates ipc tests (same functionality as scrample example) and executes them on top of autosd image in a separate
         `build_and_test_autosd <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_autosd.yml>`_ workflow
       - **Please note**: the integration of autosd linux image is experimental and do not follow S-CORE process, e.g. integration into bazel is missing. This will be
-        fixed in the upcoming releases.   
+        fixed in the upcoming releases.
 
 
 Associated Infrastructure Modules
@@ -163,11 +163,11 @@ Associated Infrastructure Modules
       - ISO 26262
       - ISO 21434
       - ISO PAS 8926
-      
+
     - Check the full `process_description release notes <https://github.com/eclipse-score/process_description/releases/tag/v1.3.0>`_ for more information
 
-- **docs-as-code**: (Version). Tooling for linking and generation of documentation. Link to release note?
-- **tooling**: (Version). Provided tooling for S-CORE development. Link to release note?
+- **docs-as-code**: Tooling for linking and generation of documentation. `docs-as-code v2.0.1` <https://github.com/eclipse-score/docs-as-code/releases/tag/v2.0.1>_.
+- **tooling**: Tooling for S-CORE development. `tooling v1.0.2` <https://github.com/eclipse-score/tooling/releases/tag/v1.0.2>`_
 - **ITF**: integration Testing Framework for execution of feature integration tests on the reference image
 
   - **Link to release**: `itf v0.1.0  <https://github.com/eclipse-score/itf/releases/tag/0.1.0>`_
