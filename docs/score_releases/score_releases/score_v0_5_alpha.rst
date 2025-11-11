@@ -19,12 +19,11 @@ S-Core v0.5-alpha release notes
    :id: doc__score_v05_alpha_release_note
    :status: draft
    :safety: ASIL_B
-   :realizes: PROCESS_wp__platform_sw_release_note
+   :realizes: wp__platform_sw_release_note
 
 | **Platform Name**: S-CORE
 | **Release Tag**: v0.5.0-alpha
 | **Origin Release Tag**: none - first published release
-| **Release Commit Hash**: <add hash>
 | **Release Date**: 2025-11-11
 
 Overview
