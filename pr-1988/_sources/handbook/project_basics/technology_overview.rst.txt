@@ -28,37 +28,47 @@ Overview of technologies
 Bazel and repo structure
 -------------------------
 
-Before we start with technical details, it is important to understand, which main technologies and tools are used in Eclipse S-CORE project.
+Our open-source commitment goes far beyond code sharing on an open-source platform.
+The whole infrastructure and tooling of Eclipse S-CORE is based on open-source,
+in order to enable a smooth onboarding and collaboration among members from different backgrounds.
+In the next paragraphs, an overview will be given to the main technologies and tools,
+followed by deep dives for each and every tool and process step.
 
-We think, we would not lie if we would say, that the whole Eclipse S-CORE project is built up upon `bazel <https://bazel.build/>`_ build system.
-Bazel is at the very heart of the Eclipse S-CORE project. Every dependency and almost every automatization that we implement with exception to CI/CD
-pipeline is done via bazel.
-Validation of requirements, generation of documentation, building source code, execution of unit- or integration tests, for everything
-there is a bazel target in Eclipse S-CORE. Not going into very technical details, bazel is a modern build system, that allows hermetical and
-reproducible builds, that are for special importance for building safety systems, and additionally provides the possibility to extend
-its functionality for project related use-cases using `bazel macros <https://bazel.build/extending/macros>`_ and
-`bazel rules <https://bazel.build/extending/rules>`_. 
+The whole Eclipse S-CORE project is built upon the `bazel <https://bazel.build/>`_ build system.
+This includes every implemented dependency and almost every automatization.
+The only exception is the CI/CD pipeline (s. below). Validation of requirements, generation of documentation,
+building of source code, execution of unit, integration tests, etc., for each and every of these process steps,
+a bazel target is defined in Eclipse S-CORE. Bazel is a state-of-the-art build system, which allows hermetical and reproducible builds.
+These features have a significant importance for building systems in a safety-critical environment.
+Additionally, bazel provides the ability to extend its functionality for project related use-cases by using
+`bazel macros <https://bazel.build/extending/macros>`_ and `bazel rules <https://bazel.build/extending/rules>`_.
 
-Additionally, we use a concept of `bazel modules <https://bazel.build/external/module>`_. In general, Eclipse S-CORE project is built up of multiple repos, every repo implementing its
-own functionality. There were quite some discussions on whether we should have a mono repository or should we split our project in
-multiple repositores. At the end, the decision was taken to proceed with multiple repositories.
-The main reason for this, is that Eclipse S-CORE project should not only motivate software developers to work together on new solutions inside of Eclipse S-CORE
-project but also empower to reuse as much as possible from already existing projects and this is easier to do with an approach, where every functionality
-is encapsulated in its own repository. Such an approach has also disadvantages. First, the organizational approach of having so many teams working together.
-How this is done, is described the `project management plan <https://eclipse-score.github.io/score/main/platform_management_plan/project_management.html>`_.
-Second, the technical approach of integrating things together and managing the dependencies between different
-modules and components. Our approach for integration is described in :ref:`integration process <integration_process>` in more details. But in general, this is where bazel modules play a very important role,
-providing how to manage and handle dependencies between multiple modules and providing a mechanism, called `bazel registry <https://bazel.build/versions/6.1.0/build/bzlmod#registries>`_,
-for publishing official versions of modules.
 
-At then end, you can see Eclipse S-CORE as an integration project, where some of the modules are developed inside of the Eclipse S-CORE organization and some are integrated from another
-projects, where the main responsibility of Eclipse S-CORE as integration project is to ensure, that all modules work seamless together and result in a platform,
-that can be used as basis for safety qualifiable products. 
+`bazel modules <https://bazel.build/external/module>`_ is another handy feature which is commonly used in Eclipse S-CORE.
+Basically, the whole Eclipse S-CORE project consists of multiple repos, whereas every repo implements its own functionality.
+The main reason for the modular approach, is to encourage the reuse of already existing implementations.
+This is by far easier when every functionality is encapsulated in its own repository compared to a mono repository.
+Yet, the modular approach also has some challenges. One of them is the impact on organization.
+For every module there is a separate team, and with the number of teams the organizational challenges increase as well.
+Please have a look on the  `project management plan <https://eclipse-score.github.io/score/main/platform_management_plan/project_management.html>`_
+for more details regarding S-CORE´s organizational structure.
+Another challenge comes with the technical integration and dependency management of existing modules and components.
+Eclipse S-CORE´s approach for technical integration is described in the :ref:`integration process <integration_process>`.
+
+However, a basic support for handling dependencies among bazel modules is provided by the build system.
+For publishing of official modules versions, a mechanism called `bazel registry <https://bazel.build/versions/6.1.0/build/bzlmod#registries>`_
+is used.
+
+In a nutshell, you can perceive **Eclipse S-CORE as an integration project**, with **integrated modules** from other projects 
+and **new modules**, specifically developed for Eclipse S-CORE. The main responsibility of Eclipse S-CORE (as integration project) is to ensure,
+that all modules work seamlessly together. At the end of a day, a platform needs to be established, which can be used as basis for
+future safety qualifiable products.
+
 
 CI/CD pipeline
 ---------------
-
-There is not much to say about this. As every modern project today, we strongly rely on GitHub infrastructure, e.g. by using `GitHub actions <https://docs.github.com/de/actions>`_
+There is not much say here since our CI/CD pipeline is built as every state-of-the art project today.
+We strongly rely on the GitHub infrastructure, e.g., by using `GitHub actions <https://docs.github.com/de/actions>`_
 for automatization and implementation of CI/CD check pipeline.
 
 .. image:: ../_assets/release_verification.png
@@ -66,38 +76,37 @@ for automatization and implementation of CI/CD check pipeline.
    :width: 400
    :align: center
 
+
 Sphinx/Sphinx-needs and Documentation 
 --------------------------------------
-For documenting our project, for specifying requirements, assumptions of use, architecture, detailed design, tests 
-and further software process related artifacts we completely rely on sphinx and sphinx-needs technology. Additionally we extend sphinx-needs
-implementation with additional checks to ensure traceability and compliance to the Eclipse S-CORE metamodel. The Eclipse S-CORE metamodel & traceability concept
-are described in the `process description <https://eclipse-score.github.io/process_description/main/general_concepts/index.html>`_
-and guidance's how to use sphinx/sphinx-needs framework in Eclipse S-CORE can be found in
-`docs-as-code how-to documentation <https://eclipse-score.github.io/docs-as-code/main/how-to/index.html>`_.
-
+**The Sphinx tool and related sphinx-needs technology** are used in S-Core for processes such as **project documentation,
+requirement specification, assumptions of use, architecture design, detailed design, testing and other software process
+related artifacts**. Additionally, we´ve **extended** the sphinx-needs implementation with checks in order **to ensure traceability
+and compliance** to the Eclipse S-CORE metamodel. The Eclipse S-CORE metamodel and -traceability concept are described in the
+`process description <https://eclipse-score.github.io/process_description/main/general_concepts/index.html>`_,
+and a guidance how to use sphinx/sphinx-needs framework in Eclipse S-CORE can be found in
+`docs-as-code how-to documentation <https://eclipse-score.github.io/docs-as-code/main/how-to/index.html>`_ how-to documentation.
 
 
 Programming languages
 ------------------------
-We heavily use python for any automation.
+Depending on the specific use-case, following programming languages are used in Eclipse S-CORE.
 
-The target code is mainly implemented in C++. We think, that in the future C++ will be, at least partially, replaced by Rust, therefore
-we already try to do the steps in this direction and provide implementation of some of the components in Rust. But as Rust support and acceptance
-of the Rust programming language for the series production in the automotive world has not reached the decisive point yet, we mainly
-focus on the C/C++ implementation. 
+**python** is used for any kind of **automation**.
 
+**C++** is mainly used for development of the **target code**.
+We assume, in near future C++ will be (at least) **partially replaced by Rust**.
+We´re already making the first baby steps by implementing some components in Rust.
+However, since the support and acceptance of Rust in automotive series projects has not yet reached a decisive point,
+we still mainly rely on C/C++.
 
 Testing
 --------
-In general, we differentiate between three testing levels: unit-testing, component testing and feature integration testing.
+In general, we differentiate between **three levels of testing**: **“unit-testing”**, **“component testing”** and **“feature integration testing”**.
+The **Unit-test** framework strongly depends on used programming languages, e.g., in case of C++ we rely on **“gtest/gmock”**.
+Detailed description of our framework for **component testing** can be found in the `testing tools repo <https://github.com/eclipse-score/testing_tools>`_.
+For **feature integration testing** we use the framework **“ITF”** (Integration Testing Framework).
+ITF is also a part of the Eclipse S-CORE project, its documentation is in the `README.md file <https://github.com/eclipse-score/itf>`_.
 
-Unit-test framework strongly depends on the used programming languages, e.g. in case of C++ we rely on gtest/gmock.
-
-Our solution for the component testing framework can be found in the `testing tools repo <https://github.com/eclipse-score/testing_tools>`_
-
-For feature integration testing we use a framework called ITF (Integration Testing Framework). It is part of the Eclipse S-CORE project as well,
-you can checkt its documentation in the `README.md file <https://github.com/eclipse-score/itf>`_.
-
-For detailed overview, please check the documentation of our `verification concept <https://eclipse-score.github.io/process_description/main/process_areas/verification/index.html#>`_
-
-(ToDo: double check with Piotr)
+For more information about testing, please check the documentation of our
+`verification concept <https://eclipse-score.github.io/process_description/main/process_areas/verification/index.html#>`_.
