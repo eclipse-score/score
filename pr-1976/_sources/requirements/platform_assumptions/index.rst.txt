@@ -231,8 +231,8 @@ In this section assumptions are described which need to be fulfilled by the appl
 
    All applications using the SW-platform shall not handle exceptions.
 
-   Note: Exceptions create additional overhead which may be a safety risk. Therefore all exceptions are expected to lead directly to a terminate of the application.
-   This is supported by a library supplied by S-CORE.
+   Note: Exceptions create additional overhead which may be a safety risk. Therefore, all exceptions are expected to lead directly to a termination of the application causing the exception.
+   This is supported by the library safecpp/aborts_upon_exception supplied by S-CORE "base libraries" feature.
 
 .. aou_req:: Error Reaction
    :id: aou_req__platform__error_reaction
@@ -244,7 +244,7 @@ In this section assumptions are described which need to be fulfilled by the appl
    Safety applications using the SW-platform shall read error information from the requested S-CORE functions and perform an appropriate reaction.
 
    Note: For many errors detected by SW-platform elements there could be mitigation actions to be applied by the user application.
-   So the SW-platform attempts to report the errors and does not stop execution as a standard reaction.
+   So the SW-platform reports the errors to the user application and does not stop execution as a standard reaction. See :need:`stkh_req__dependability__safe_state`.
 
 .. aou_req:: No mixed ASIL
    :id: aou_req__platform__no_mixed_asil
@@ -265,7 +265,7 @@ In this section assumptions are described which need to be fulfilled by the appl
    Safety applications using the SW-platform shall use program flow monitoring to detect run time errors or explain in their safety concept why they do not need this.
 
    Note1: Reasons for not needing program flow monitoring could be an OS scheduler with timing and execution guarantees.
-   Or that the non/late execution of the application keeps the system in a safe state.
+   Or that in case of non/late execution of the application the safety integrity of the system is not affected.
 
    Note2: The SW-Platform supports this - see :need:`stkh_req__dependability__safety_features` "live, deadline, logical supervision"
 
