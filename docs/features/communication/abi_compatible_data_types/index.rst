@@ -43,9 +43,9 @@ To activate this feature, use the following feature flag:
 Abstract
 ========
 
-This feature request defines a set of ABI-compatible data types and a runtime type description format to support zero-copy inter-process communication between C++17 and Rust 1.8x processes using the same endianness. It ensures consistent type layouts across languages by requiring fixed-size, statically allocated types without absolute pointers or language-specific metadata.
+This feature request defines a set of ABI-compatible data types and a runtime type description format to support zero-copy inter-process communication between C++17 and Rust 1.88 processes using the same endianness. It ensures consistent type layouts across languages by requiring fixed-size, statically allocated types without absolute pointers or language-specific metadata.
 
-The specification covers primitive types, structs, enums, arrays, and introduces ABI-stable representations for vectors, options, and results. A runtime-readable type description enables processes to interpret shared memory without compile-time access to type definitions.
+The specification covers primitive types, structs, enums, arrays, and introduces ABI-stable representations for vectors, strings, options, and results. An optional runtime-readable type description enables processes to interpret shared memory without compile-time access to type definitions.
 
 
 Motivation
@@ -53,7 +53,7 @@ Motivation
 
 This feature request addresses specific challenges in achieving type compatibility within our inter-process communication (IPC) framework that leverages zero-copy shared memory mechanisms. Two essential scenarios are under evaluation:
 
-1. **ABI Compatibility**: Processes implemented in different programming languages (C++17 and Rust 1.8x) must interpret a shared memory location consistently as the same native type, provided both have compile-time access to the type definition. This scenario eliminates serialization overhead and allows direct memory access.
+1. **ABI Compatibility**: Processes implemented in different programming languages (C++17 and Rust 1.88) must interpret a shared memory location consistently as the same native type, provided both have compile-time access to the type definition. This scenario eliminates serialization overhead and allows direct memory access.
 
 2. **Type Description**: It should be possible to record arbitrary data streams, and convert or analyze them at a later time and/or on a different system, without having to recompile the conversion or analysis tools for that particular data format. A machine-readable description of the format, including any user-defined data types, should be available on request during runtime. In addition, this description could potentially be used by gateway processes to perform relatively simple but generic transformations between different data representations.
 
@@ -61,7 +61,7 @@ This feature request addresses specific challenges in achieving type compatibili
 ABI Compatibility
 -----------------
 
-Our communication feature relies on shared memory to transfer data between processes. For effective zero-copy data exchange, processes written in C++17 and Rust 1.8x must inherently understand the data at shared memory locations identically. Achieving this requires ensuring that data types have consistent, fixed-size memory layouts.
+Our communication feature relies on shared memory to transfer data between processes. For effective zero-copy data exchange, processes written in C++17 and Rust 1.88 must inherently understand the data at shared memory locations identically. Achieving this requires ensuring that data types have consistent, fixed-size memory layouts.
 
 This evaluation initially targets the following process configurations:
 
@@ -69,6 +69,7 @@ This evaluation initially targets the following process configurations:
 * Processes running on different operating systems but under the same hypervisor.
 
 Supporting different endianness between processes is explicitly out of scope, as it inherently demands bit manipulation, effectively requiring serialization.
+A mechanism to ensure that sender and receiver use the same endianness is out of scope as well.
 Different bit widths, however, are implicitly supported by specifying the width of all types and excluding word-size integers.
 
 The following data types shall be supported:
@@ -116,6 +117,9 @@ Type Description
 
 A critical scalability feature involves gateway processes, which subscribe to IPC endpoints and translate ABI-compatible data types into external serialization formats. These gateways require the ability to interpret data without compile-time access to type definitions. To address this, an explicit runtime-readable type description format is necessary. This description allows dynamic, runtime interpretation of data structures, enabling the addition of new IPC topics without recompiling gateway processes.
 
+Summary
+-------
+
 In summary, the motivation behind this feature request is to define and standardize ABI-compatible data types and a runtime-accessible type description mechanism to ensure interoperability and scalability in zero-copy IPC scenarios involving multiple languages and dynamic environments.
 
 
@@ -129,7 +133,7 @@ Specification
 ABI Compatibility
 -----------------
 
-This specification defines the set of rules and constraints for representing data types in shared memory such that they can be interpreted consistently across processes implemented in C++17 and Rust 1.8x. These types enable zero-copy inter-process communication by enforcing ABI compatibility at the memory layout level. The focus is on data exchange between processes using the same endianness.
+This specification defines the set of rules and constraints for representing data types in shared memory such that they can be interpreted consistently across processes implemented in C++17 and Rust 1.88. These types enable zero-copy inter-process communication by enforcing ABI compatibility at the memory layout level. The focus is on data exchange between processes using the same endianness.
 
 Assumptions
 ^^^^^^^^^^^
