@@ -17,9 +17,8 @@
 Contribute own module
 =====================
 
-Let us imagine, you want to contribute to the Eclipse S-CORE project and provide a new platform module.
-Based on the use-case, that we want to create a simple small demo application, called *scrample*, that uses some of the Eclipse S-CORE
-platform modules to implement its functionality.
+Let´s imagine, you want to contribute to the Eclipse S-CORE project and provide a new platform module.
+Here´s how to create a small demo application, called “*scrample*”, which uses some other Eclipse S-CORE platform modules to implement its functionality.
 
 .. toctree::
    :hidden:

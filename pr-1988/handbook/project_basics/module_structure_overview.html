@@ -565,19 +565,20 @@
 <h1>Module Structure Overview<a class="headerlink" href="#module-structure-overview" title="Link to this heading">#</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<p>As it was already stated in the <a class="reference internal" href="technology_overview.html#technology-overview"><span class="std std-ref">Technology Overview</span></a> chapter, Eclipse S-CORE project consists of multiple
-bazel modules, normally located in separate repositories. Majority of Eclipse S-CORE modules are part of
-<a class="reference external" href="https://github.com/eclipse-score">Eclipse S-CORE GitHub organization</a> , but some of the modules can be also located
-externally, e.g. if we reference an existing module from another eclipse project.</p>
-<p>Let us have a look at the most important bazel modules and repositories in Eclipse S-CORE GitHub organization.</p>
+<p>As already stated in chapter <a class="reference internal" href="technology_overview.html#technology-overview"><span class="std std-ref">Technology Overview</span></a>,
+Eclipse S-CORE project consists of multiple bazel modules, usually located in separate repositories.
+Vast majority of Eclipse S-CORE modules are part of <a class="reference external" href="https://github.com/eclipse-score">Eclipse S-CORE GitHub organization</a>,
+yet some are placed externally, e.g., reused modules from other eclipse projects.
+Here, we will have a closer look at most important bazel modules and repositories in Eclipse S-CORE GitHub organization.</p>
 <img alt="module deps" class="align-center" src="../../_images/module_deps.svg" />
 <section id="eclipse-s-core-platform">
 <h2>Eclipse S-CORE Platform<a class="headerlink" href="#eclipse-s-core-platform" title="Link to this heading">#</a></h2>
 <p>GitHub Link: <a class="github reference external" href="https://github.com/eclipse-score/score">eclipse-score/score</a></p>
-<p>Eclipse S-CORE module is the central part of the Eclipse S-CORE project, where the software architecture is defined. Here you will find the list and explanation of the
-stakeholder requirements, AoUs for the platforms for the potential users, features, that are provided by the Eclipse S-CORE platform,
-definition of the high level architecture, break down of the high level architecture to the modules
-and the definition of the functionality (logical interfaces) for every module.</p>
+<p>The Eclipse S-CORE module is the central part of the Eclipse S-CORE project,
+where the software architecture is defined. Here you will find the list and explanation of the stakeholder requirements,
+AoUs for the platforms for the potential users, features provided by the Eclipse S-CORE platform,
+definition of high-level architecture, breakdown of the high-level architecture to the modules as well as the definition
+of the functionality (logical interfaces) for every module.</p>
 </section>
 <section id="process-description">
 <h2>Process Description<a class="headerlink" href="#process-description" title="Link to this heading">#</a></h2>
@@ -589,50 +590,54 @@ You can easily open it as shown at the picture below.</p>
 </div>
 <a class="reference internal image-reference" href="../../_images/generated_doc_in_score_github.png"><img alt="Generated Doc in GitHub" class="align-center" src="../../_images/generated_doc_in_score_github.png" style="width: 500px;" />
 </a>
-<p>The process repository describes the Eclipse S-CORE process. It defines both general concepts and ideas of the Eclipse S-CORE software development process approach and
-also gives a detailed description of every process area, as shown in the image below. That’s definitely worth of checking, as description of process
-areas has concrete guidance’s e.g. how to specify requirements or architecture.</p>
+<p>The process repository describes the Eclipse S-CORE process. It defines both general concepts and ideas
+of the Eclipse S-CORE software development process approach and also gives a detailed description of every process area,
+as shown in the image below. It´s recommended to be familiar with this description, since it includes a comprehensible
+guidance how S-CORE´s work products are specified, requirements, and architecture for instance.</p>
 <a class="reference internal image-reference" href="../../_images/process_areas.png"><img alt="Process areas" class="align-center" src="../../_images/process_areas.png" style="width: 500px;" />
 </a>
 </section>
 <section id="doc-as-code">
 <h2>Doc-as-Code<a class="headerlink" href="#doc-as-code" title="Link to this heading">#</a></h2>
 <p>GitHub Link: <a class="github reference external" href="https://github.com/eclipse-score/docs-as-code">eclipse-score/docs-as-code</a></p>
-<p>Doc-as-code repository implements the additional tooling around sphinx and spinx-needs framework including traceability, linkage of the tests, requirements and architecture.
-Additionally, doc-as-code repository implements all additional checks on the Eclipse S-CORE metamodel, that were defined in the process_description repository.
-The current implementation status of tooling requirements can be checked in
-<a class="reference external" href="https://eclipse-score.github.io/docs-as-code/main/requirements/requirements.html">Tool Requirements Overview</a></p>
+<p>Doc-as-code repository implements the additional tooling around sphinx and sphinx-needs framework including
+traceability, linkage of the tests, requirements, and architecture.
+Additionally, doc-as-code repository implements all checks on the Eclipse S-CORE metamodel,
+which were defined in the process description repository. The current implementation status of tooling requirements
+can be checked in <a class="reference external" href="https://eclipse-score.github.io/docs-as-code/main/requirements/requirements.html">Tool Requirements Overview</a>.</p>
 </section>
 <section id="tooling">
 <h2>Tooling<a class="headerlink" href="#tooling" title="Link to this heading">#</a></h2>
 <p>GitHub Link: <a class="github reference external" href="https://github.com/eclipse-score/tooling">eclipse-score/tooling</a></p>
-<p>Tooling repository collects all the supporting tools, that are needed in the Eclipse S-CORE project, e.g. format_checker.</p>
+<p>Tooling repository collects all supporting tools, that are needed in the Eclipse S-CORE project, e.g., format_checker.</p>
 </section>
 <section id="toolchains-and-bazel-platform">
 <h2>Toolchains and bazel platform<a class="headerlink" href="#toolchains-and-bazel-platform" title="Link to this heading">#</a></h2>
 <p>GitHub Link: <a class="github reference external" href="https://github.com/eclipse-score/toolchains_qnx">eclipse-score/toolchains_qnx</a>, <a class="github reference external" href="https://github.com/eclipse-score/toolchains_gcc">eclipse-score/toolchains_gcc</a>, <a class="github reference external" href="https://github.com/eclipse-score/toolchains_rust">eclipse-score/toolchains_rust</a></p>
-<p>There are a number of repos, that are defining toolchains (gcc/qnx/rust) including compiper and linker flags, that are used to compile Eclipse S-CORE software.
-Additionally, there is also a repository called bazel platforms, that defines various platforms that are supported by Eclipse S-CORE, e.g. x86_64-qnx,
-as can be seen in the following <a class="reference external" href="https://github.com/eclipse-score/bazel_platforms/blob/main/BUILD">BUILD</a> file.</p>
+<p>There is a number of repos, which define toolchains (gcc/qnx/rust) including compiler and linker flags,
+which are used to compile Eclipse S-CORE software. Furthermore, there is also a repository called “bazel platforms”,
+which defines various platforms that are supported by Eclipse S-CORE,
+e.g., x86_64-qnx as can be seen in the following <a class="reference external" href="https://github.com/eclipse-score/bazel_platforms/blob/main/BUILD">BUILD</a> file.</p>
 </section>
 <section id="bazel-registry">
 <h2>Bazel Registry<a class="headerlink" href="#bazel-registry" title="Link to this heading">#</a></h2>
 <p>GitHub Link: <a class="github reference external" href="https://github.com/eclipse-score/bazel_registry">eclipse-score/bazel_registry</a></p>
-<p>Bazel registry is one of the most important repositories. This is the place where official releases of all Eclipse S-CORE bazel modules are announced,
-so that they can be referenced between each other.</p>
+<p>Bazel registry is one of the most important repositories.
+This is the place where official releases of all Eclipse S-CORE bazel modules are
+announced in order to enable mutual referencing among modules.</p>
 </section>
 <section id="software-modules">
 <h2>Software Modules<a class="headerlink" href="#software-modules" title="Link to this heading">#</a></h2>
 <p>GitHub Link (e.g. for baselibs): <a class="github reference external" href="https://github.com/eclipse-score/baselibs">eclipse-score/baselibs</a></p>
-<p>As already described, every software module, a collection of software components, is also a bazel module located in a separate repository.
-Software module normally contains following information:</p>
+<p>As already mentioned, every software module, a collection of software components,
+is also a bazel module located in a separate repository. Software modules usually contain following information:</p>
 <ul class="simple">
 <li><p>component requirements and architecture, detailed design</p></li>
 <li><p>implementation</p></li>
 <li><p>unit- and component tests</p></li>
 <li><p>documentation</p></li>
 </ul>
-<p>Software module normally depends on other modules in the Eclipse S-CORE GitHub organization, especially on</p>
+<p>Software modules usually depend on other modules in the Eclipse S-CORE GitHub organization, especially on</p>
 <ul class="simple">
 <li><p><a class="github reference external" href="https://github.com/eclipse-score">eclipse-score</a> module to reference feature requirements and feature architecture in the component requirements and architecture</p></li>
 <li><p><a class="github reference external" href="https://github.com/eclipse-score/docs-as-code">eclipse-score/docs-as-code</a> module for sphinx/sphinx-needs framework and tooling around it</p></li>
@@ -642,11 +647,12 @@ Software module normally contains following information:</p>
 <section id="reference-integration">
 <h2>Reference Integration<a class="headerlink" href="#reference-integration" title="Link to this heading">#</a></h2>
 <p>GitHub Link: <a class="github reference external" href="https://github.com/eclipse-score/reference_integration">eclipse-score/reference_integration</a></p>
-<p>Reference integration repository is one of the most important repositories in the Eclipse S-CORE project, as this is the place,
-where all the things come together. Here we integrate all Eclipse S-CORE modules together and ensure, that they match to each other.
-We do it by integrating all the software modules to an reference image(s), e.g. qnx x86 image, and executing multiple feature
-integration tests, that ensure consistency of the dependencies between the software modules and correct implementation of the
-feature requirements.</p>
+<p>Reference integration repository is one of the most important repositories in the Eclipse S-CORE project,
+since this is the location, where all things come together. Here we integrate all Eclipse S-CORE modules
+together and ensure, that they match to each other. We do this by integrating all software modules to a
+reference image(s), qnx x86 image for instance. On this image we are executing multiple feature integration tests,
+which ensure consistency of the dependencies between the software modules and correct implementation
+of the feature requirements.</p>
 </section>
 </section>
 

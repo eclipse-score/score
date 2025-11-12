@@ -64,22 +64,21 @@ Next, we should fill the workflow file with content as shown below:
                 if: always()
                 run: rm -rf /opt/score_qnx
 
-First, as shown in the line 2, we need to define when the workflow should be executed. In our case, we want to build the
-scrample application everytime the PR is *opened*, *created* or *synchronized*.
+First, as shown in the line 2- we need to define when the workflow should be executed.
+In our case, we want to build the scrample application everytime the PR is *opened*, *created* or *synchronized*.
 
-Second, we need to define which jobs should be executed. For now, it is only one job that builds the scrample application, as shown
-in the line 8.
+Second, we need to define which jobs should be executed. For now, it is only one job that builds the scrample application,
+as shown in the line 8.
 
 Finally, we need to define steps of the build job:
 
-- in the line 11 we checkout the repository
-- in the line 13 we setup the bazel
-- in the line 15 we set up the QNX license, using CI lisense, that is stored in the secret storage
-  of the CI infrastructure
-- finally, in the line 21 we define the step to build the scrample application. After setting the QNX variables
-  we run the bazel command, that we also ran locally, to build the *scrample binary*
-- as last step, in the line 28 we do a clean up and remove all unnecessary files from the remote build machine.
+- In line 11 we checkout the repository.
+- In line 13 we setup the bazel.
+- In line 15 we set up the QNX license, using CI license, that is stored in the secret storage of the CI infrastructure.
+- Finally, in line 21 we define the step to build the scrample application.
+  After setting the QNX variables, we run the bazel command that we also ran locally, to build the *scrample binary*.
+- In last step (line 28) we clean-up all unnecessary files from the remote build machine.
 
-As soon, as the workflow is merged to the repository, every time someone creates a PR, we will see the execution
-of the build target in the `Actions sections <https://github.com/eclipse-score/reference_integration/actions>`_
+As soon as the workflow is merged to the repository, every time someone creates a PR,
+we will see the execution of the build target in the `Actions sections <https://github.com/eclipse-score/reference_integration/actions>`_
 of the repository.

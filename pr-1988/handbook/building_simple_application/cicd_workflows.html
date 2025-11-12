@@ -605,22 +605,21 @@ in the .github folder.</p>
 <span class="linenos">30</span>            run: rm -rf /opt/score_qnx
 </pre></div>
 </div>
-<p>First, as shown in the line 2, we need to define when the workflow should be executed. In our case, we want to build the
-scrample application everytime the PR is <em>opened</em>, <em>created</em> or <em>synchronized</em>.</p>
-<p>Second, we need to define which jobs should be executed. For now, it is only one job that builds the scrample application, as shown
-in the line 8.</p>
+<p>First, as shown in the line 2- we need to define when the workflow should be executed.
+In our case, we want to build the scrample application everytime the PR is <em>opened</em>, <em>created</em> or <em>synchronized</em>.</p>
+<p>Second, we need to define which jobs should be executed. For now, it is only one job that builds the scrample application,
+as shown in the line 8.</p>
 <p>Finally, we need to define steps of the build job:</p>
 <ul class="simple">
-<li><p>in the line 11 we checkout the repository</p></li>
-<li><p>in the line 13 we setup the bazel</p></li>
-<li><p>in the line 15 we set up the QNX license, using CI lisense, that is stored in the secret storage
-of the CI infrastructure</p></li>
-<li><p>finally, in the line 21 we define the step to build the scrample application. After setting the QNX variables
-we run the bazel command, that we also ran locally, to build the <em>scrample binary</em></p></li>
-<li><p>as last step, in the line 28 we do a clean up and remove all unnecessary files from the remote build machine.</p></li>
+<li><p>In line 11 we checkout the repository.</p></li>
+<li><p>In line 13 we setup the bazel.</p></li>
+<li><p>In line 15 we set up the QNX license, using CI license, that is stored in the secret storage of the CI infrastructure.</p></li>
+<li><p>Finally, in line 21 we define the step to build the scrample application.
+After setting the QNX variables, we run the bazel command that we also ran locally, to build the <em>scrample binary</em>.</p></li>
+<li><p>In last step (line 28) we clean-up all unnecessary files from the remote build machine.</p></li>
 </ul>
-<p>As soon, as the workflow is merged to the repository, every time someone creates a PR, we will see the execution
-of the build target in the <a class="reference external" href="https://github.com/eclipse-score/reference_integration/actions">Actions sections</a>
+<p>As soon as the workflow is merged to the repository, every time someone creates a PR,
+we will see the execution of the build target in the <a class="reference external" href="https://github.com/eclipse-score/reference_integration/actions">Actions sections</a>
 of the repository.</p>
 </section>
 
