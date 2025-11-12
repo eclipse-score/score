@@ -124,12 +124,13 @@ Integrated Software Modules
     - **common**
 
       - Provides integration of all 0.5 modules including `scrample demo application <https://github.com/eclipse-score/scrample>`_
-      - Provide CI/CD workflows to ensure stability of the reference integration:
+      - Provides CI/CD workflows to ensure stability of the reference integration:
 
         - `build and test on every pr <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_on_every_pr.yml>`_ and
           `test integration <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/test_integration.yml>`_
           build all functional modules of Eclipse S-Core v0.5 and execute multiple tests to ensure stability of the reference integration for every pr and on every release creation
-
+      - Provides `complete documentation <https://eclipse-score.github.io/reference_integration/main/>`_ of all modules
+  
     - **reference qnx image**
 
       - Provides reference QNX x86_64 qemu image, for usage see `reference integration README <https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/README.md>`_

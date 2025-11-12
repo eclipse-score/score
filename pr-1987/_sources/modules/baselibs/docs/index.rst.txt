@@ -14,7 +14,7 @@
 
 .. mod_view_sta:: Baselibs
    :id: mod_view_sta__baselibs__baselibs
-   :includes: comp_arc_sta__baselibs__json, comp_arc_sta__baselibs__message_passing, comp_arc_sta__baselibs__memory_shared, comp_arc_sta__baselibs__result
+   :includes: comp_arc_sta__baselibs__json, comp_arc_sta__baselibs__message_passing, comp_arc_sta__baselibs__memory_shared, comp_arc_sta__baselibs__result, comp_arc_sta__baselibs__bit_manipulation
 
    .. needarch::
       :scale: 50
