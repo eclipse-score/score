@@ -121,44 +121,43 @@ Integrated Software Modules
   - **Link to release**: `reference integration v0.5.0-alpha <https://github.com/eclipse-score/reference_integration/releases/tag/v0.5.0-alpha>`_
   - **Release notes**
 
-    - **common**
+    - **Common**
 
       - Provides integration of all 0.5 modules including `scrample demo application <https://github.com/eclipse-score/scrample>`_
       - Provides CI/CD workflows to ensure stability of the reference integration:
 
         - `build and test on every pr <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_on_every_pr.yml>`_ and
           `test integration <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/test_integration.yml>`_
-          build all functional modules of Eclipse S-Core v0.5 and execute multiple tests to ensure stability of the reference integration for every pr and on every release creation
+          build all functional modules of Eclipse S-Core v0.5 and execute multiple tests to ensure stability of the reference integration for every pr and on every release creation.
       - Provides `complete documentation <https://eclipse-score.github.io/reference_integration/main/>`_ of all modules
-  
-    - **reference qnx image**
 
-      - Provides reference QNX x86_64 qemu image, for usage see `reference integration README <https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/README.md>`_
+    - **Reference QNX image**
+
+      - Provides reference QNX `x86_64` QEMU image; for usage see `reference integration README <https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/README.md>`_
       - `release verification <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/release_verification.yml>`_ executes multiple integration tests
-        in reference qnx image during creation of releases to ensure that the reference qnx image is fully functional
+        in reference QNX image during creation of releases to ensure that the reference QNX image is fully functional.
       - Provides `basic itf tests <https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu/test/itf>`_.
         Check following `build commands <https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu#build-commands>`_ for running itf tests locally and for other important commands.
 
-    - **reference autosd linux image** (Experimental)
+    - **Reference Red Hat AutoSD Linux image** (Experimental)
 
-      - Provides reference linux based autosd image, for usage see `autosd README <https://github.com/eclipse-score/reference_integration/tree/main/autosd/build>`_
-      - Integrates ipc tests (same functionality as scrample example) and executes them on top of autosd image in a separate
-        `build_and_test_autosd <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_autosd.yml>`_ workflow
-      - **Please note**: the integration of autosd linux image is experimental and do not follow S-CORE process, e.g. integration into bazel is missing. This will be
+      - Provides reference Linux-based AutoSD image, for usage see `AutoSD README <https://github.com/eclipse-score/reference_integration/tree/main/autosd/build>`_
+      - Integrates IPC tests (same functionality as scrample example) and executes them on top of AutoSD image in a separate
+        `build_and_test_autosd <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_autosd.yml>`_ workflow.
+      - **Please note**: the integration of the AutoSD Linux image is experimental and do not follow S-CORE process, e.g. integration into Bazel is missing. This will be
         fixed in the upcoming releases.
 
-    - **reference ebclfsa linux image** (Experimental)
+    - **Reference Elektrobit corbos Linux for Safety Applications Linux image** (Experimental)
 
-      - Shows the integration of Eclipse S-CORE on Elektrobit corbos Linux for Safety Applications.
-        It integrates *scrample* application based on the Eclipse S-CORE communication framework as demo/test application.
-        This application is then integrated into the so-called "fast-dev" variant of EB corbos Linux for Safety Applications (EBcLfSA).
-        This is an `aarch64`-based, pre-built image, capable of demonstraing the execution of high integrity applications in regular Linux user-space.
-        The example can be executed using QEMU.
+      - Shows the integration of Eclipse S-CORE on Elektrobit corbos Linux for Safety Applications (EBcLfSA).
+        It integrates the `scrample demo application <https://github.com/eclipse-score/scrample>`_ into the so-called "fast-dev" variant of EBcLfSA.
+        This variant is an `aarch64`-based, pre-built image, capable of demonstraing the execution of high integrity applications in regular Linux user-space.
+        The integration can be executed using QEMU.
         In the `related CI workflow <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_ebclfsa.yml>`_,
         all these steps are performed, and the resulting log files are stored and made available for download.
-        See `ebclfsa README <https://github.com/eclipse-score/reference_integration/blob/main/ebclfsa/README.md>`_ for details.
+        See `EBcLfSA README <https://github.com/eclipse-score/reference_integration/blob/main/ebclfsa/README.md>`_ for details.
 
-      - **Please note**: the integration of ebclfsa linux image is experimental. It already provides integration into bazel build system
+      - **Please note**: the integration of the EBcLfSA Linux image is experimental. It already provides an integration into Bazel build system;
         however some of the integration code needs rework in the future releases.
 
 
@@ -182,7 +181,7 @@ Associated Infrastructure Modules
     - Check the full `process_description release notes <https://github.com/eclipse-score/process_description/releases/tag/v1.3.0>`_ for more information
 
 - **docs-as-code**: tooling for linking and generation of documentation
-  
+
   - **Link to release**: `docs-as-code v2.0.1 <https://github.com/eclipse-score/docs-as-code/releases/tag/v2.0.1>`_
 
 - **tooling**: tooling for S-CORE development
