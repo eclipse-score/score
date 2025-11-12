@@ -251,6 +251,7 @@ Dependability
    :rationale: There are state-of-the-art safety mechanisms to check HW and SW errors. These are expected to be supported either by the SW-platform alone or by using HW or OS provided safety features.
    :status: valid
    :tags: safety_mechanism
+   :valid_from: v1.0.0
 
    The SW-platform shall support the following safety feature:
 
@@ -267,23 +268,41 @@ Dependability
    * Safe switch from engineering to field mode and back
 
 
-.. stkh_req:: Safe SW-platform state
-   :id: stkh_req__dependability__safe_state
+.. stkh_req:: SW-platform error reaction
+   :id: stkh_req__dependability__error_reaction
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :rationale: A safe state definition is expected by every safety standard.
+   :rationale: Safety relies on error reporting, e.g. to preserve a safe system state.
    :status: valid
    :tags: safety_mechanism
 
    The SW-platform shall react in the following way on errors:
 
-   - in case of an unrecoverable error (e.g. access violations), not reporting healty status to the external health monitor
-   - in all other cases, report the error (incl. details if available) to the calling user function
+   - report the error (incl. details if available) to the calling user function
 
-   Note1: So the "safe state" of the SW-platform can be described as "error reported".
+   Note: See also :need:`stkh_req__dependability__safe_state`
 
-   Note2: The healthy state needs an active SW-platform reaction (e.g. triggering an exteranl watchdog), but the unrecoverable error case not.
+
+.. stkh_req:: Safe SW-platform state
+   :id: stkh_req__dependability__safe_state
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :rationale: A safe state definition is a common expectation of safety integrity standards.
+   :status: valid
+   :tags: safety_mechanism
+   :valid_from: v1.0.0
+
+   The SW-platform shall react in the following way on errors:
+
+   - in case of an unrecoverable error (e.g. access violations), report the error to the external health monitor
+
+   Note1: Together with :need:`stkh_req__dependability__error_reaction` the "safe state" of the SW-platform can be described as "error reported".
+
+   Note2: The implementation of the reporting of an unrecoverable error must take into account that after such an error
+   the functions of the SW-platform may be corrupted (solution for this may be a cyclic triggering of an external watchdog in the healthy case
+   and stopping the triggering in the error case).
 
 
 .. stkh_req:: Error report timing
@@ -294,14 +313,15 @@ Dependability
    :rationale: It is assumed that there is a need to know how much time is allowed between the ocurrence of an error and the reporting, so we define a feasible time span.
    :status: valid
    :tags: safety_mechanism
+   :valid_from: v1.0.0
 
-   The SW-platform shall react on errors (as described in :need:`stkh_req__dependability__safe_state`) within 1 millisecond. If this is not feasible a special component AoU needs to be defined.
+   The SW-platform shall react on errors (as described in :need:`stkh_req__dependability__safe_state` and :need:`stkh_req__dependability__error_reaction`) within 1 millisecond. If this is not feasible a special component AoU needs to be defined.
 
    Note1: The time span mentioned is the SW reaction time and not the time between the error happening and the reporting.
    For example if there is a alive supervision configured with 10ms cycle time and 5ms allowed delay,
    the error could happen in the first millisecond but will be reported earliest after 10+5ms plus the SW reaction time.
 
-   If a user application calls a SW-platform function the (error) return is required latest after the reaction time, so there could be a timeout used by the application considering this.
+   Note2: If a user application calls a SW-platform function the (error) return is required latest after the reaction time, so there could be a timeout used by the application considering this.
 
 
 .. stkh_req:: No mixed ASIL
@@ -312,7 +332,7 @@ Dependability
    :rationale: It is assumed that POSIX processes as implemented by the OS provide isolation from memory and timing errors of other processes but not within.
    :status: valid
 
-   The SW-platform safety components running in one POSIX process shall implement the highest ASIL of their assigned requirements.
+   The SW-platform safety components running in one POSIX process shall implement the highest ASIL of their assigned functional requirements.
 
 
 .. stkh_req:: Program Flow Monitoring
@@ -322,6 +342,7 @@ Dependability
    :safety: ASIL_B
    :rationale: Not all POSIX operating systems provide protection of POSIX processes from timing errors (e.g. delayed execution, deadlocks)
    :status: valid
+   :valid_from: v1.0.0
 
    The SW-platform safety components shall use program flow monitoring to detect run time errors or explain in their safety concept why they do not need this.
 
