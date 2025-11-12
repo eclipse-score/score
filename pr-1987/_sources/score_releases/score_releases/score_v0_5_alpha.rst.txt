@@ -129,19 +129,19 @@ Integrated Software Modules
         - `build and test on every pr <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_on_every_pr.yml>`_ and
           `test integration <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/test_integration.yml>`_
           build all functional modules of Eclipse S-Core v0.5 and execute multiple tests to ensure stability of the reference integration for every pr and on every release creation
-        - `release verification <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/release_verification.yml>`_ executes multiple integration tests
-          in reference qnx image during creation of releases to ensure that the reference image is fully functional
 
     - **reference qnx image**
 
       - Provides reference QNX x86_64 qemu image, for usage see `reference integration README <https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/README.md>`_
+      - `release verification <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/release_verification.yml>`_ executes multiple integration tests
+        in reference qnx image during creation of releases to ensure that the reference qnx image is fully functional
       - Provides `basic itf tests <https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu/test/itf>`_.
         Check following `build commands <https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu#build-commands>`_ for running itf tests locally and for other important commands.
 
     - **reference autosd linux image** (Experimental)
 
       - Provides reference linux based autosd image, for usage see `autosd README <https://github.com/eclipse-score/reference_integration/tree/main/autosd/build>`_
-      - integrates ipc tests (same functionality as scrample example) and executes them on top of autosd image in a separate
+      - Integrates ipc tests (same functionality as scrample example) and executes them on top of autosd image in a separate
         `build_and_test_autosd <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_autosd.yml>`_ workflow
       - **Please note**: the integration of autosd linux image is experimental and do not follow S-CORE process, e.g. integration into bazel is missing. This will be
         fixed in the upcoming releases.
@@ -219,8 +219,12 @@ Following tests were executed:
 - every C++ module was successfully built with gcc and qcc toolchain
 - every RUST module was successfully built with rust toolchain
 - every module has executed its unit-tests
-- few basic integration tests were executed with reference integration qnx image in Qemu as can be seen e.g. in the following `Action Run <https://github.com/eclipse-score/reference_integration/actions/runs/19128779084/job/54664320615#step:7:689>`_.
-- for *persistency* and *orchestration* modules component tests with *score-test-scenarios* framework were executed
+- few basic integration tests were executed with reference integration qnx image in QEMU as it can be seen in the
+  `release verification workflow <https://github.com/eclipse-score/reference_integration/blob/37aa2fc1409f6907bf5d9f3c2643489bb937f90e/.github/workflows/release_verification.yml#L56>`_
+  CI/CD workflow
+- for *persistency* and *orchestration* modules, component and feature integration tests with *score-test-scenarios* framework were executed, see
+  `feature_showcase <https://github.com/eclipse-score/reference_integration/tree/main/feature_showcase>`_ and
+  `feature_integration_tests <https://github.com/eclipse-score/reference_integration/tree/main/feature_integration_tests>`_
 
 Known Issues
 ^^^^^^^^^^^^^^^^

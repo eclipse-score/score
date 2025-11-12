@@ -542,7 +542,7 @@
                   
   <section id="s-core-v0-5-alpha-release-notes">
 <h1>S-Core v0.5-alpha release notes<a class="headerlink" href="#s-core-v0-5-alpha-release-notes" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-027665ab">
+<div class="need_container docutils container" id="SNCB-2f16aca8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__score_v05_alpha_release_note">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -703,8 +703,6 @@ The Orchestrator integrates seamlessly with the kyron, clearly separating applic
 <li><p><a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_on_every_pr.yml">build and test on every pr</a> and
 <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/test_integration.yml">test integration</a>
 build all functional modules of Eclipse S-Core v0.5 and execute multiple tests to ensure stability of the reference integration for every pr and on every release creation</p></li>
-<li><p><a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/release_verification.yml">release verification</a> executes multiple integration tests
-in reference qnx image during creation of releases to ensure that the reference image is fully functional</p></li>
 </ul>
 </li>
 </ul>
@@ -712,6 +710,8 @@ in reference qnx image during creation of releases to ensure that the reference 
 <li><p><strong>reference qnx image</strong></p>
 <ul>
 <li><p>Provides reference QNX x86_64 qemu image, for usage see <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/README.md">reference integration README</a></p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/release_verification.yml">release verification</a> executes multiple integration tests
+in reference qnx image during creation of releases to ensure that the reference qnx image is fully functional</p></li>
 <li><p>Provides <a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu/test/itf">basic itf tests</a>.
 Check following <a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu#build-commands">build commands</a> for running itf tests locally and for other important commands.</p></li>
 </ul>
@@ -719,7 +719,7 @@ Check following <a class="reference external" href="https://github.com/eclipse-s
 <li><p><strong>reference autosd linux image</strong> (Experimental)</p>
 <ul>
 <li><p>Provides reference linux based autosd image, for usage see <a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/autosd/build">autosd README</a></p></li>
-<li><p>integrates ipc tests (same functionality as scrample example) and executes them on top of autosd image in a separate
+<li><p>Integrates ipc tests (same functionality as scrample example) and executes them on top of autosd image in a separate
 <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_autosd.yml">build_and_test_autosd</a> workflow</p></li>
 <li><p><strong>Please note</strong>: the integration of autosd linux image is experimental and do not follow S-CORE process, e.g. integration into bazel is missing. This will be
 fixed in the upcoming releases.</p></li>
@@ -815,8 +815,12 @@ They are designed to support automated testing, scenario grouping, and integrati
 <li><p>every C++ module was successfully built with gcc and qcc toolchain</p></li>
 <li><p>every RUST module was successfully built with rust toolchain</p></li>
 <li><p>every module has executed its unit-tests</p></li>
-<li><p>few basic integration tests were executed with reference integration qnx image in Qemu as can be seen e.g. in the following <a class="reference external" href="https://github.com/eclipse-score/reference_integration/actions/runs/19128779084/job/54664320615#step:7:689">Action Run</a>.</p></li>
-<li><p>for <em>persistency</em> and <em>orchestration</em> modules component tests with <em>score-test-scenarios</em> framework were executed</p></li>
+<li><p>few basic integration tests were executed with reference integration qnx image in QEMU as it can be seen in the
+<a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/37aa2fc1409f6907bf5d9f3c2643489bb937f90e/.github/workflows/release_verification.yml#L56">release verification workflow</a>
+CI/CD workflow</p></li>
+<li><p>for <em>persistency</em> and <em>orchestration</em> modules, component and feature integration tests with <em>score-test-scenarios</em> framework were executed, see
+<a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/feature_showcase">feature_showcase</a> and
+<a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/feature_integration_tests">feature_integration_tests</a></p></li>
 </ul>
 </section>
 <section id="known-issues">
