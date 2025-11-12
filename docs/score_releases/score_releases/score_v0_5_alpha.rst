@@ -141,8 +141,8 @@ Integrated Software Modules
 
     - **Reference Red Hat AutoSD Linux image** (Experimental)
 
-      - Provides reference Linux-based AutoSD image, for usage see `AutoSD README <https://github.com/eclipse-score/reference_integration/tree/main/autosd/build>`_
-      - Integrates IPC tests (same functionality as scrample example) and executes them on top of AutoSD image in a separate
+      - Provides reference Linux-based AutoSD image, which can be used with QEMU for both `x86_64` and `aarch64`; for usage see `AutoSD README <https://github.com/eclipse-score/reference_integration/tree/main/autosd/build>`_
+      - Integrates IPC tests (same functionality as scrample example) using its QM environment and executes them on top of AutoSD image in a separate
         `build_and_test_autosd <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_autosd.yml>`_ workflow.
       - **Please note**: the integration of the AutoSD Linux image is experimental and do not follow S-CORE process, e.g. integration into Bazel is missing. This will be
         fixed in the upcoming releases.
