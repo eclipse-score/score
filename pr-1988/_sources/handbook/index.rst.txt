@@ -83,7 +83,7 @@ The strength of the Eclipse S-CORE project is that both, the software developmen
 are open-source (e.g., automated checks and test execution in CI). So, every party involved can check, whether it does what it´s supposed to do.
 Therefore, if Eclipse S-CORE is used as basis in series projects, all work products can be reused.
 The open-source community is also committed to maintain the work products in future, but 
-the **responsibility for** assurance of **quality (ISO21434) and safety (ISO26262) of the target system remains within the series project**.
+the **responsibility for** assurance of **quality (ASPICE), security (ISO21434) and safety (ISO26262) of the target system remains within the series project**.
 
 The maintainers of the Eclipse S-CORE project strongly believe, that in near future further automotive companies will understand the benefits,
 will join the Eclipse S-CORE project and will use Eclipse S-CORE their in series projects.
