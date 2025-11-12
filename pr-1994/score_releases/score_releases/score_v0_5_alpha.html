@@ -542,7 +542,7 @@
                   
   <section id="s-core-v0-5-alpha-release-notes">
 <h1>S-Core v0.5-alpha release notes<a class="headerlink" href="#s-core-v0-5-alpha-release-notes" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-5a363ae6">
+<div class="need_container docutils container" id="SNCB-c97578f7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__score_v05_alpha_release_note">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -712,9 +712,9 @@ build all functional modules of Eclipse S-Core v0.5 and execute multiple tests t
 <ul>
 <li><p>Provides reference QNX <cite>x86_64</cite> QEMU image; for usage see <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/README.md">reference integration README</a></p></li>
 <li><p><a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/release_verification.yml">release verification</a> executes multiple integration tests
-in reference QNX image during creation of releases to ensure that the reference QNX image is fully functional.</p></li>
-<li><p>Provides <a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu/test/itf">basic itf tests</a>.
-Check following <a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu#build-commands">build commands</a> for running itf tests locally and for other important commands.</p></li>
+in the reference QNX image during creation of releases to ensure that the reference QNX image is fully functional.</p></li>
+<li><p>Provides <a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu/test/itf">basic ITF tests</a>.
+Check following <a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu#build-commands">build commands</a> for running ITF tests locally and for other important commands.</p></li>
 </ul>
 </li>
 <li><p><strong>Reference Red Hat AutoSD Linux image</strong> (Experimental)</p>
@@ -722,7 +722,7 @@ Check following <a class="reference external" href="https://github.com/eclipse-s
 <li><p>Provides reference Linux-based AutoSD image, which can be used with QEMU for both <cite>x86_64</cite> and <cite>aarch64</cite>; for usage see <a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/autosd/build">AutoSD README</a></p></li>
 <li><p>Integrates IPC tests (same functionality as scrample example) using its QM environment and executes them on top of AutoSD image in a separate
 <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_autosd.yml">build_and_test_autosd</a> workflow.</p></li>
-<li><p><strong>Please note</strong>: the integration of the AutoSD Linux image is experimental and do not follow S-CORE process, e.g. integration into Bazel is missing. This will be
+<li><p><strong>Please note</strong>: the integration of the AutoSD Linux image is experimental and does not follow S-CORE process, e.g. integration into Bazel is missing. This will be
 fixed in the upcoming releases.</p></li>
 </ul>
 </li>
@@ -730,12 +730,12 @@ fixed in the upcoming releases.</p></li>
 <ul>
 <li><p>Shows the integration of Eclipse S-CORE on Elektrobit corbos Linux for Safety Applications (EBcLfSA).
 It integrates the <a class="reference external" href="https://github.com/eclipse-score/scrample">scrample demo application</a> into the so-called “fast-dev” variant of EBcLfSA.
-This variant is an <cite>aarch64</cite>-based, pre-built image, capable of demonstraing the execution of high integrity applications in regular Linux user-space.
+This variant is an <cite>aarch64</cite>-based, pre-built image, capable of demonstrating the execution of high integrity applications in regular Linux user-space.
 The integration can be executed using QEMU.
 In the <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_ebclfsa.yml">related CI workflow</a>,
 all these steps are performed, and the resulting log files are stored and made available for download.
 See <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/ebclfsa/README.md">EBcLfSA README</a> for details.</p></li>
-<li><p><strong>Please note</strong>: the integration of the EBcLfSA Linux image is experimental. It already provides an integration into Bazel build system;
+<li><p><strong>Please note</strong>: the integration of the EBcLfSA Linux image is experimental. It already provides an integration into the Bazel build system;
 however some of the integration code needs rework in the future releases.</p></li>
 </ul>
 </li>
