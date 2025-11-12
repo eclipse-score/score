@@ -25,16 +25,6 @@ Requirements
 Functional Requirements
 =======================
 
-.. comp_req:: String Hash Utilities
-   :id: comp_req__utils__string_hash
-   :reqtype: Functional
-   :security: NO
-   :safety: ASIL_B
-   :satisfies: feat_req__baselibs__core_utilities, feat_req__baselibs__safety
-   :status: valid
-
-   The Utils library shall provide a function that accepts a string and returns its hash value.
-
 .. comp_req:: Base64 Encoding and Decoding
    :id: comp_req__utils__base64
    :reqtype: Functional
