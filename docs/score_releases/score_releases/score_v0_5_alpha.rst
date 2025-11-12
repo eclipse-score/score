@@ -135,29 +135,29 @@ Integrated Software Modules
 
       - Provides reference QNX `x86_64` QEMU image; for usage see `reference integration README <https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/README.md>`_
       - `release verification <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/release_verification.yml>`_ executes multiple integration tests
-        in reference QNX image during creation of releases to ensure that the reference QNX image is fully functional.
-      - Provides `basic itf tests <https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu/test/itf>`_.
-        Check following `build commands <https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu#build-commands>`_ for running itf tests locally and for other important commands.
+        in the reference QNX image during creation of releases to ensure that the reference QNX image is fully functional.
+      - Provides `basic ITF tests <https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu/test/itf>`_.
+        Check following `build commands <https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu#build-commands>`_ for running ITF tests locally and for other important commands.
 
     - **Reference Red Hat AutoSD Linux image** (Experimental)
 
       - Provides reference Linux-based AutoSD image, which can be used with QEMU for both `x86_64` and `aarch64`; for usage see `AutoSD README <https://github.com/eclipse-score/reference_integration/tree/main/autosd/build>`_
       - Integrates IPC tests (same functionality as scrample example) using its QM environment and executes them on top of AutoSD image in a separate
         `build_and_test_autosd <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_autosd.yml>`_ workflow.
-      - **Please note**: the integration of the AutoSD Linux image is experimental and do not follow S-CORE process, e.g. integration into Bazel is missing. This will be
+      - **Please note**: the integration of the AutoSD Linux image is experimental and does not follow S-CORE process, e.g. integration into Bazel is missing. This will be
         fixed in the upcoming releases.
 
     - **Reference Elektrobit corbos Linux for Safety Applications Linux image** (Experimental)
 
       - Shows the integration of Eclipse S-CORE on Elektrobit corbos Linux for Safety Applications (EBcLfSA).
         It integrates the `scrample demo application <https://github.com/eclipse-score/scrample>`_ into the so-called "fast-dev" variant of EBcLfSA.
-        This variant is an `aarch64`-based, pre-built image, capable of demonstraing the execution of high integrity applications in regular Linux user-space.
+        This variant is an `aarch64`-based, pre-built image, capable of demonstrating the execution of high integrity applications in regular Linux user-space.
         The integration can be executed using QEMU.
         In the `related CI workflow <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_ebclfsa.yml>`_,
         all these steps are performed, and the resulting log files are stored and made available for download.
         See `EBcLfSA README <https://github.com/eclipse-score/reference_integration/blob/main/ebclfsa/README.md>`_ for details.
 
-      - **Please note**: the integration of the EBcLfSA Linux image is experimental. It already provides an integration into Bazel build system;
+      - **Please note**: the integration of the EBcLfSA Linux image is experimental. It already provides an integration into the Bazel build system;
         however some of the integration code needs rework in the future releases.
 
 
