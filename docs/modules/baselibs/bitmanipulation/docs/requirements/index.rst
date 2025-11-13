@@ -70,3 +70,6 @@ Non-Functional Requirements
    :status: valid
 
    The bit manipulation API shall be header-only and not require external dependencies.
+
+.. needextend:: "__bitmaipulation__" in id
+   :+tags: baselibs

@@ -126,3 +126,7 @@ Assumptions of Use (AoU)
    :status: valid
 
    The user shall ensure that error domain objects and referenced resources remain valid throughout the entire lifetime of any dependent Result or Error objects.
+
+
+.. needextend:: "__result__" in id
+   :+tags: baselibs

@@ -12,26 +12,17 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. mod_view_sta:: Baselibs
-   :id: mod_view_sta__baselibs__baselibs
-   :includes: comp_arc_sta__baselibs__json, comp_arc_sta__baselibs__message_passing, comp_arc_sta__baselibs__memory_shared, comp_arc_sta__baselibs__result, comp_arc_sta__baselibs__bit_manipulation
+Release Note
+============
 
-   .. needarch::
-      :scale: 50
-      :align: center
+.. note:: Document header
 
-      {{ draw_module(need(), needs) }}
+.. document:: Baselibs Release Note
+   :id: doc__baselibs_release_note
+   :status: valid
+   :safety: ASIL_B
+   :realizes: wp__module_sw_release_note
 
-.. _baselibs_module_docs:
+The following releases notes are available for Baselibs module:
 
-Module Documents
-================
-
-.. toctree::
-   :maxdepth: 1
-   :glob:
-
-   manual/index.rst
-   safety_mgt/index.rst
-   verification/module_verification_report.rst
-   release/release_note.rst
+- v0.1.3 (as part of S-CORE 0.5 Alpha Release): <https://github.com/eclipse-score/baselibs/releases/tag/v0.1.3>`_
