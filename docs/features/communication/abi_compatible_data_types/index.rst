@@ -43,9 +43,9 @@ To activate this feature, use the following feature flag:
 Abstract
 ========
 
-This feature request defines a set of ABI-compatible data types and a runtime type description format to support zero-copy inter-process communication between C++17 and Rust 1.88 processes using the same endianness. It ensures consistent type layouts across languages by requiring fixed-size, statically allocated types without absolute pointers or language-specific metadata.
+This feature request defines a set of ABI-compatible data types and a runtime type metadata format to support zero-copy inter-process communication between C++17 and Rust 1.88 processes using the same endianness. It ensures consistent type layouts across languages by requiring fixed-size, statically allocated types without absolute pointers or language-specific metadata.
 
-The specification covers primitive types, structs, enums, arrays, and introduces ABI-stable representations for vectors, strings, options, and results. An optional runtime-readable type description enables processes to interpret shared memory without compile-time access to type definitions.
+The specification covers primitive types, structs, enums, arrays, and introduces ABI-stable representations for vectors, strings, options, and results. An optional runtime-readable type structure metadata enables processes to interpret shared memory without compile-time access to type definitions.
 
 
 Motivation
@@ -55,7 +55,7 @@ This feature request addresses specific challenges in achieving type compatibili
 
 1. **ABI Compatibility**: Processes implemented in different programming languages (C++17 and Rust 1.88) must interpret a shared memory location consistently as the same native type, provided both have compile-time access to the type definition. This scenario eliminates serialization overhead and allows direct memory access.
 
-2. **Type Description**: It should be possible to record arbitrary data streams, and convert or analyze them at a later time and/or on a different system, without having to recompile the conversion or analysis tools for that particular data format. A machine-readable description of the format, including any user-defined data types, should be available on request during runtime. In addition, this description could potentially be used by gateway processes to perform relatively simple but generic transformations between different data representations.
+2. **Type Structure Metadata**: It should be possible to record arbitrary data streams, and convert or analyze them at a later time and/or on a different system, without having to recompile the conversion or analysis tools for that particular data format. A machine-readable description of the format, including any user-defined data types, should be available on request during runtime. In addition, this structure description could potentially be used by gateway processes to perform relatively simple but generic transformations between different data representations.
 
 
 ABI Compatibility
@@ -390,14 +390,7 @@ Language Conformance Summary
 Type Description
 ----------------
 
-To address the scenarios outlined in the motivation, a clearly defined type description mechanism is required. The type description provides sufficient information during runtime, enabling a process without compile-time access to type definitions to correctly interpret a given memory location according to the previously established ABI rules.
-
-The goals are:
-
-* Enable interpretation of shared memory content without compile-time access to type definitions.
-* Support all ABI-compatible data types previously defined.
-* Include versioning to manage schema evolution and compatibility.
-* Allow easy generation and parsing by tooling in both C++ and Rust.
+To address the scenarios outlined in the motivation, a clearly defined type description mechanism is required.
 
 Workflows
 ^^^^^^^^^
@@ -410,10 +403,11 @@ Two potential workflows are considered for creating type descriptions:
 
 Both workflows are valid, and the final decision is deferred pending further feasibility analysis.
 
-Type Description Format
+Type Structure Metadata
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-The format of the type description shall explicitly support versioning to allow schema evolution and backward compatibility. It must accommodate all data types described earlier in the ABI compatibility section. It should be simple, human-readable, and easily machine-parsable.
+Precise information about the structure of the types is preserved for use during runtime, enabling a process without compile-time access to type definitions to correctly interpret a given memory location according to the previously established ABI rules.
+The format of the type metadata shall explicitly support versioning to allow schema evolution and backward compatibility. It must accommodate all data types described earlier in the ABI compatibility section. It should be simple, human-readable, and easily machine-parsable.
 
 The choice of serialization format is left open but may include RON, JSON5, or a custom DSL, based on readability, tooling support, and maintainability.
 
@@ -459,7 +453,7 @@ Reflection
 Reflection, in this context, is the ability to inspect data at runtime even if its structure is not or not fully known at compile time.
 Benefits of reflection include being able to translate recorded data into a human-readable format (e.g., JSON or CSV) without having to know the type definitions at compile time; this enables general-purpose data recording and transformation tools.
 
-This ability requires some form of *type description* being available at runtime, so that a sequence of bytes can be interpreted as a data structure.
+This ability requires some form of *type structure metadata* being available at runtime, so that a sequence of bytes can be interpreted as a data structure.
 There are two primary approaches to achieve this goal:
 
 * *inline type descriptions*, which precede each instance of every type, and
@@ -480,10 +474,10 @@ This approach, however, comes with significant downsides:
 Alternative Approach
 ^^^^^^^^^^^^^^^^^^^^
 
-Instead of inserting inline type descriptions into each instance of an ABI compatible type, the full type description can be made available to a consumer only once, either proactively or on request.
+Instead of inserting inline type descriptions into each instance of an ABI compatible type, the full type structure metadata can be made available to a consumer only once, either proactively or on request.
 The consumer decides if it uses or ignores this metadata.
 
-This type description can be used to dynamically translate between the compact, non-reflective ABI compatible data structures on one side, and a reflective, inline-describing format on the other side.
+This description of the type structure can be used to dynamically translate between the compact, non-reflective ABI compatible data structures on one side, and a reflective, inline-describing format on the other side.
 Although this incurs a copy and some minor processing, the overhead should be negligible compared to other computational tasks involving the payload.
 
 One method to efficiently translate a payload consisting of ABI compatible types to an inline-described reflective format is to convert the hierarchical type description to a flat list of *instructions* which can be executed by an interpreter.
@@ -525,7 +519,7 @@ Reflection will not be part of version 1.0 of this feature request.
   3. The specification for SOME/IP types is incompatible with the requirement of ABI vectors that can grow dynamically during construction, i.e., vectors which contain fewer valid elements than they take up space in memory.
   4. Inserting inline type descriptions on demand is expected to be a relatively cheap operation, which negates the main motivation for including them directly in ABI types in the first place.
 
-* External type descriptions will probably be included in a later version of this feature request.
+* External type structure descriptions will probably be included in a later version of this feature request.
   For now, they're postponed until we have a better understanding of the relevant use cases.
 
 
