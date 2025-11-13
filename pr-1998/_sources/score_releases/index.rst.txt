@@ -17,7 +17,7 @@
 S-CORE Releases
 ===============
 
-A **Release** is an officially distributed, versioned, and deployable collection of software. It relates to a feature- (set of available features) and system-release (a software package comprising a defined set of Features and the underlying S-Core platform software).
+A **Release** is an officially distributed, versioned, and deployable collection of the software platform. It relates to a feature- (set of available features) and software-release (a software package comprising a defined set of Features and the underlying S-Core platform software).
 
 S-CORE Releases Overview
 ========================
