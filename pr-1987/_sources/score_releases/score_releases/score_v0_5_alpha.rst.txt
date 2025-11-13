@@ -55,8 +55,8 @@ For more detailed planning overview please check our `GitHub project <https://gi
 S-Core book
 ------------
 First version of **Eclipse S-CORE book**, that can be used as "how-to" for all who wants to start with S-Core project, can be found here: TODO Link.
-This book provides explanation of general concepts of **Eclipse S-Core project** and contains a "step-by-step" guide for building a first application
-based on Eclipse S-Core platform modules.
+This book provides explanation of general concepts of **Eclipse S-Core project** and contains a "step-by-step" guide for building
+a first application called `scrample <https://github.com/eclipse-score/scrample>`_ based on Eclipse S-Core platform modules.
 
 Improvements
 ^^^^^^^^^^^^^
