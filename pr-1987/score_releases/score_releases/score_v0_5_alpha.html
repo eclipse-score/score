@@ -542,7 +542,7 @@
                   
   <section id="s-core-v0-5-alpha-release-notes">
 <h1>S-Core v0.5-alpha release notes<a class="headerlink" href="#s-core-v0-5-alpha-release-notes" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-1f734480">
+<div class="need_container docutils container" id="SNCB-5c1847e5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__score_v05_alpha_release_note">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -592,233 +592,250 @@
 </div>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
-<p>This document provides an overview of the changes, improvements, and bug fixes included in the software platform release version v0.5.0-alpha.
-This is the very first release of the <strong>Eclipse S-Core platform</strong>. The software architectue and implemented modules are presented at the image below.</p>
+<p>This is the first published release of the <strong>Eclipse S-CORE platform</strong> (v0.5.0-alpha). It brings
+together the initial set of core modules, reference integrations, and supporting infrastructure needed to
+build and run example applications such as the <a class="reference external" href="https://github.com/eclipse-score/scrample">scrample</a>
+demo on multiple target images. The software architecture and implemented modules are illustrated in the diagram below.</p>
 <a class="reference internal image-reference" href="../../_images/architecture.drawio.svg"><img alt="Architecture overview" class="align-center" src="../../_images/architecture.drawio.svg" style="width: 1000px;" />
 </a>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
+<section id="highlights">
+<h3>Highlights<a class="headerlink" href="#highlights" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>First public alpha of the Eclipse S-CORE platform.</p></li>
+<li><p>Reference integration including the <em>scrample</em> demo application.</p></li>
+<li><p>Initial set of communication, persistency, orchestration, and base utility modules.</p></li>
+<li><p>Experimental reference images for QNX, Red Hat AutoSD Linux, and EB corbos Linux for Safety Applications.</p></li>
+</ul>
+</section>
 <section id="timeline">
 <h3>Timeline<a class="headerlink" href="#timeline" title="Link to this heading">#</a></h3>
-<p>The current timeline for Eclipse S-Core releases is shown below.</p>
+<p>The current timeline for Eclipse S-CORE releases is shown below.</p>
 <a class="reference internal image-reference" href="../../_images/score_release_plan.drawio.svg"><img alt="Architecture overview" class="align-center" src="../../_images/score_release_plan.drawio.svg" style="width: 800px;" />
 </a>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>For more detailed planning overview please check our <a class="reference external" href="https://github.com/orgs/eclipse-score/projects/17/views/26">GitHub project</a>.</p>
+<p>For a detailed and always up-to-date planning view, see the <a class="reference external" href="https://github.com/orgs/eclipse-score/projects/17/views/26">GitHub project</a>.</p>
 </section>
 <section id="s-core-book">
 <h3>S-Core book<a class="headerlink" href="#s-core-book" title="Link to this heading">#</a></h3>
-<p>First version of <strong>Eclipse S-CORE book</strong>, that can be used as “how-to” for all who wants to start with S-Core project, can be found here: TODO Link.
-This book provides explanation of general concepts of <strong>Eclipse S-Core project</strong> and contains a “step-by-step” guide for building
-a first application called <a class="reference external" href="https://github.com/eclipse-score/scrample">scrample</a> based on Eclipse S-Core platform modules.</p>
+<p>The first version of the <strong>Eclipse S-CORE book</strong> is planned as a “how-to” guide for users getting
+started with the project. It will introduce the core concepts of Eclipse S-CORE and walk through building
+the <code class="docutils literal notranslate"><span class="pre">scrample</span></code> application step by step on top of the platform modules.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The link to the S-CORE book will be added once the first version of the book is published.</p>
+</div>
 </section>
 </section>
 <section id="improvements">
 <h2>Improvements<a class="headerlink" href="#improvements" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>please consider release notes of every module</p></li>
-</ul>
+<p>This release introduces the initial integrated platform with the modules listed below.
+For module-specific improvements, refer to the release notes in each module repository.</p>
 </section>
 <section id="bug-fixes">
 <h2>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Link to this heading">#</a></h2>
+<p>Bug fixes are tracked and documented per module. Please see the corresponding module
+release notes for details on fixed issues in this release.</p>
+<section id="integrated-software-modules">
+<h3>Integrated Software Modules<a class="headerlink" href="#integrated-software-modules" title="Link to this heading">#</a></h3>
+<section id="communication">
+<h4>Communication<a class="headerlink" href="#communication" title="Link to this heading">#</a></h4>
+<p>Zero-copy, shared-memory based inter-process communication for minimal-latency intra-ECU messaging.</p>
 <ul class="simple">
-<li><p>please consider release notes of every module</p></li>
+<li><p><strong>Version:</strong> <code class="docutils literal notranslate"><span class="pre">communication</span> <span class="pre">v0.1.1</span></code></p></li>
+<li><p><strong>Source / tag:</strong> <a class="reference external" href="https://github.com/eclipse-score/communication/archive/refs/tags/v0.1.1.tar.gz">Communication GitHub release</a></p></li>
+<li><p><strong>Release notes:</strong> <a class="reference internal" href="../../modules/communication/docs/release/release_note.html#doc__communication_release_note" title="doc__communication_release_note"><em class="xref need">Communication Release Note (doc__communication_release_note)</em></a></p></li>
 </ul>
 </section>
-<section id="integrated-software-modules">
-<h2>Integrated Software Modules<a class="headerlink" href="#integrated-software-modules" title="Link to this heading">#</a></h2>
+<section id="baselibs">
+<h4>Baselibs<a class="headerlink" href="#baselibs" title="Link to this heading">#</a></h4>
+<p>Selection of basic C++ utility libraries for common use in the S-CORE project</p>
 <ul class="simple">
-<li><p><strong>Communication</strong>: zero-copy, shared-memory based inter-process communication for minimal latency intra-ECU messaging</p>
+<li><p><strong>Version:</strong> <code class="docutils literal notranslate"><span class="pre">baselibs</span> <span class="pre">v0.1.3</span></code></p></li>
+<li><p><strong>Source / tag:</strong> <a class="reference external" href="https://github.com/eclipse-score/baselibs/archive/refs/tags/v0.1.3.tar.gz">Baselibs GitHub release</a></p></li>
+<li><p><strong>Release notes</strong>: <a class="reference external" href="https://github.com/eclipse-score/baselibs/releases/tag/v0.1.3">Baselibs release notes</a></p></li>
+</ul>
+</section>
+<section id="persistency">
+<h4>Persistency<a class="headerlink" href="#persistency" title="Link to this heading">#</a></h4>
+<p>Ensures long-term storage and retrieval of data and provides a reliable mechanism for
+preserving application state and data integrity over time.</p>
+<ul class="simple">
+<li><p><strong>Version:</strong> <code class="docutils literal notranslate"><span class="pre">persistency</span> <span class="pre">v0.2.1</span></code></p></li>
+<li><p><strong>Source / tag:</strong> <a class="reference external" href="https://github.com/eclipse-score/persistency/archive/refs/tags/v0.2.1.tar.gz">Persistency GitHub release</a></p></li>
+<li><p><strong>Notes</strong>:</p>
 <ul>
-<li><p><strong>Link to release</strong>: <a class="reference external" href="https://github.com/eclipse-score/communication/releases/tag/v0.1.1">communication v0.1.1</a></p></li>
-<li><p><strong>Release notes</strong>:</p>
-<ul>
-<li><p>Find the full release note at: <a class="reference internal" href="../../modules/communication/docs/release/release_note.html#doc__communication_release_note" title="doc__communication_release_note"><em class="xref need">Communication Release Note (doc__communication_release_note)</em></a></p></li>
+<li><p><a class="reference external" href="https://eclipse-score.github.io/score/main/features/persistency/index.html">The feature requirements and architecture</a>  and
+<a class="reference external" href="https://eclipse-score.github.io/score/main/modules/persistency/index.html">component requirements and architecture</a> documents are partially out of date
+and will be updated in the next release.</p></li>
+<li><p>See the full <a class="reference external" href="https://github.com/eclipse-score/persistency/releases/tag/v0.2.1">persistency release notes</a> for details</p></li>
 </ul>
 </li>
 </ul>
-</li>
-<li><p><strong>Baselibs</strong>: provides a selection of basic C++ utility libraries for common use in the S-CORE project</p>
+</section>
+<section id="orchestrator-kyron-and-orchestration-framework">
+<h4>Orchestrator (Kyron and orchestration framework)<a class="headerlink" href="#orchestrator-kyron-and-orchestration-framework" title="Link to this heading">#</a></h4>
+<p>Provides:</p>
+<ul class="simple">
+<li><p><strong>Kyron</strong> – an async runtime for Rust, designed for high-performance async/await execution
+with functional safety in mind. It offers fine-grained control over scheduling, thread management,
+and workload isolation via configurable execution engines.</p></li>
+<li><p><strong>Orchestrator</strong> – a framework to build task chains with deterministic execution flow.
+It lets developers describe cause–effect chains, timing constraints, and error handling in a
+platform-independent way while keeping application logic separate from deployment and
+resource management.</p></li>
+<li><p><strong>Version:</strong> <code class="docutils literal notranslate"><span class="pre">orchestrator</span> <span class="pre">v0.0.3</span></code></p></li>
+<li><p><strong>Source / tag:</strong> <a class="reference external" href="https://github.com/eclipse-score/orchestrator/archive/refs/tags/v0.0.3.tar.gz">Orchestrator GitHub release</a></p></li>
+<li><p><strong>Further reading</strong>:</p>
 <ul>
-<li><p><strong>Link to release</strong>: <a class="reference external" href="https://github.com/eclipse-score/baselibs/releases/tag/v0.1.3">baselibs v0.1.3</a></p></li>
-<li><p><strong>Release notes</strong>:</p>
-<ul>
-<li><p>Check the full <a class="reference external" href="https://github.com/eclipse-score/baselibs/releases/tag/v0.1.3">baselibs release notes</a> for more information</p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/orchestrator/blob/main/src/kyron/doc/features.md">Kyron scope and design</a></p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/orchestrator/tree/main/src/kyron/examples">Kyron examples</a></p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/orchestrator/blob/main/src/kyron/doc/features.md">Orchestrator scope and design</a></p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/orchestrator/tree/main/src/kyron/examples">Orchestrator examples</a></p></li>
 </ul>
 </li>
 </ul>
-</li>
-<li><p><strong>Persistency</strong>: ensures the long-term storage and retrieval of data, provides a reliable mechanism for preserving information,
-allowing the application to maintain its state and data integrity over time</p>
-<ul>
-<li><p><strong>Link to release</strong>: <a class="reference external" href="https://github.com/eclipse-score/persistency/releases/tag/v0.2.1">persistency v0.2.1</a></p></li>
-<li><p><strong>Release notes</strong>:</p>
-<ul>
-<li><p><strong>Please note</strong>: <a class="reference external" href="https://eclipse-score.github.io/score/main/features/persistency/index.html">definition of feature requirements and architecture</a>  and
-<a class="reference external" href="https://eclipse-score.github.io/score/main/modules/persistency/index.html">component requirements and architecture</a> is partially out of date.
-This will be fixed with next release.</p></li>
-<li><p>Check the full <a class="reference external" href="https://github.com/eclipse-score/persistency/releases/tag/v0.2.1">persistency release notes</a> for more information</p></li>
+</section>
+<section id="reference-integration">
+<h4>Reference integration<a class="headerlink" href="#reference-integration" title="Link to this heading">#</a></h4>
+<p>Central integration of Eclipse S-CORE modules</p>
+<ul class="simple">
+<li><p><strong>Version:</strong> <code class="docutils literal notranslate"><span class="pre">reference</span> <span class="pre">integration</span> <span class="pre">v0.5.0-alpha</span></code></p></li>
+<li><p><strong>Source / tag:</strong> TBD</p></li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p><strong>Orchestrator</strong>: orchestration framework and safe async runtime called kyron for Rust</p>
-<ul>
-<li><p><strong>Link to release</strong>: <a class="reference external" href="https://github.com/eclipse-score/orchestrator/releases/tag/v0.0.3">orchestrator v0.0.3</a></p></li>
-<li><p><strong>Release notes</strong>:</p>
-<ul>
-<li><p>Provides Kyron - async runtime for Rust. Kyron is a customizable, high-performance async/await runtime designed for advanced concurrent programming with focus on funcional safety.
-It allows fine-grained control over scheduling, thread management, and workload isolation through configurable execution engines.</p>
-<ul>
-<li><p><a class="reference external" href="https://github.com/eclipse-score/orchestrator/blob/main/src/kyron/doc/features.md">Read more on scope.</a></p></li>
-<li><p><a class="reference external" href="https://github.com/eclipse-score/orchestrator/tree/main/src/kyron/examples">Check out the examples.</a></p></li>
-</ul>
-</li>
-<li><p>Provides Orchestration - framework to build Task Chains with deterministic execution flow.
-The Orchestrator framework provides a structured, declarative way to define cause-effect chains and timing requirements within software applications.
-It enables developers to specify control flow, timing constraints, and error handling in a platform-independent manner.
-The Orchestrator integrates seamlessly with the kyron, clearly separating application logic from deployment and resource management.</p>
-<ul>
-<li><p><a class="reference external" href="https://github.com/eclipse-score/orchestrator/blob/main/src/orchestration/doc/features.md">Read more on scope.</a></p></li>
-<li><p><a class="reference external" href="https://github.com/eclipse-score/orchestrator/tree/main/src/orchestration/examples">Check out the examples.</a></p></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>Reference integration</strong>: central place for integration of Eclipse S-Core modules</p>
-<ul>
-<li><p><strong>Link to release</strong>: <a class="reference external" href="https://github.com/eclipse-score/reference_integration/releases/tag/v0.5.0-alpha">reference integration v0.5.0-alpha</a></p></li>
-<li><p><strong>Release notes</strong></p>
-<ul>
-<li><p><strong>Common</strong></p>
-<ul>
-<li><p>Provides integration of all 0.5 modules including <a class="reference external" href="https://github.com/eclipse-score/scrample">scrample demo application</a></p></li>
+<section id="common">
+<h5>Common<a class="headerlink" href="#common" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p>Integrates all v0.5 modules, including the <code class="docutils literal notranslate"><span class="pre">scrample</span></code> demo application.</p></li>
 <li><p>Provides CI/CD workflows to ensure stability of the reference integration:</p>
 <ul>
-<li><p><a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_on_every_pr.yml">build and test on every pr</a> and
-<a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/test_integration.yml">test integration</a>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_on_every_pr.yml">Build and test on every PR</a></p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/test_integration.yml">Test integration</a>
 build all functional modules of Eclipse S-Core v0.5 and execute multiple tests to ensure stability of the reference integration for every pr and on every release creation.</p></li>
-</ul>
-</li>
-<li><p>Provides <a class="reference external" href="https://eclipse-score.github.io/reference_integration/main/">complete documentation</a> of all modules</p></li>
-</ul>
-</li>
-<li><p><strong>Reference QNX image</strong></p>
-<ul>
-<li><p>Provides reference QNX <cite>x86_64</cite> QEMU image; for usage see <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/README.md">reference integration README</a></p></li>
-<li><p><a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/release_verification.yml">release verification</a> executes multiple integration tests
-in the reference QNX image during creation of releases to ensure that the reference QNX image is fully functional.</p></li>
-<li><p>Provides <a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu/test/itf">basic ITF tests</a>.
-Check following <a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu#build-commands">build commands</a> for running ITF tests locally and for other important commands.</p></li>
-</ul>
-</li>
-<li><p><strong>Reference Red Hat AutoSD Linux image</strong> (Experimental)</p>
-<ul>
-<li><p>Provides reference Linux-based AutoSD image, which can be used with QEMU for both <cite>x86_64</cite> and <cite>aarch64</cite>; for usage see <a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/autosd/build">AutoSD README</a></p></li>
-<li><p>Integrates IPC tests (same functionality as scrample example) using its QM environment and executes them on top of AutoSD image in a separate
-<a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_autosd.yml">build_and_test_autosd</a> workflow.</p></li>
-<li><p><strong>Please note</strong>: the integration of the AutoSD Linux image is experimental and does not follow S-CORE process, e.g. integration into Bazel is missing. This will be
-fixed in the upcoming releases.</p></li>
-</ul>
-</li>
-<li><p><strong>Reference Elektrobit corbos Linux for Safety Applications Linux image</strong> (Experimental)</p>
-<ul>
-<li><p>Shows the integration of Eclipse S-CORE on Elektrobit corbos Linux for Safety Applications (EBcLfSA).
-It integrates the <a class="reference external" href="https://github.com/eclipse-score/scrample">scrample demo application</a> into the so-called “fast-dev” variant of EBcLfSA.
-This variant is an <cite>aarch64</cite>-based, pre-built image, capable of demonstrating the execution of high integrity applications in regular Linux user-space.
-The integration can be executed using QEMU.
-In the <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_ebclfsa.yml">related CI workflow</a>,
-all these steps are performed, and the resulting log files are stored and made available for download.
-See <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/ebclfsa/README.md">EBcLfSA README</a> for details.</p></li>
-<li><p><strong>Please note</strong>: the integration of the EBcLfSA Linux image is experimental. It already provides an integration into the Bazel build system;
-however some of the integration code needs rework in the future releases.</p></li>
-</ul>
-</li>
-</ul>
-</li>
+<li><p>Offers <a class="reference external" href="https://eclipse-score.github.io/reference_integration/main/">complete documentation</a> of all modules.</p></li>
 </ul>
 </li>
 </ul>
 </section>
-<section id="associated-infrastructure-modules">
-<h2>Associated Infrastructure Modules<a class="headerlink" href="#associated-infrastructure-modules" title="Link to this heading">#</a></h2>
+<section id="reference-qnx-image">
+<h5>Reference QNX image<a class="headerlink" href="#reference-qnx-image" title="Link to this heading">#</a></h5>
 <ul class="simple">
-<li><p><strong>process_description</strong>: provides a process model establishing organization rules for developing open source software
-in the automotive industry, which can be used in safety and security context</p>
+<li><p>Provides a QNX <cite>x86_64</cite> QEMU image; see <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/README.md">reference integration README</a>
+for usage instructions.</p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/release_verification.yml">Release verification workflow</a> runs multiple integration tests
+on the QNX image during release creation.</p></li>
+<li><p>Provides <a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu/test/itf">basic ITF tests</a>.
+see the documented <a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu#build-commands">build commands</a> for running ITF tests locally.</p></li>
+</ul>
+</section>
+<section id="reference-red-hat-autosd-linux-image-experimental">
+<h5>Reference Red Hat AutoSD Linux image** (Experimental)<a class="headerlink" href="#reference-red-hat-autosd-linux-image-experimental" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p>Provides a Linux-based AutoSD image usable with QEMU for both <cite>x86_64</cite> and <cite>aarch64</cite>; for usage see <a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/autosd/build">AutoSD README</a></p></li>
+<li><p>Integrates IPC tests (equivalent functionality to the <code class="docutils literal notranslate"><span class="pre">scrample</span></code> example) using the QM environment.</p></li>
+<li><p>A dedicated <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_autosd.yml">build_and_test_autosd</a> execute these tests.</p></li>
+<li><p><strong>Note</strong>: The AutoSD Linux integration is experimental and does not yet follow the full S-CORE process. Bazel integration is still missing and will be
+addressed in upcoming releases.</p></li>
+</ul>
+</section>
+<section id="reference-elektrobit-corbos-linux-for-safety-applications-linux-image-experimental">
+<h5>Reference Elektrobit corbos Linux for Safety Applications Linux image (Experimental)<a class="headerlink" href="#reference-elektrobit-corbos-linux-for-safety-applications-linux-image-experimental" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p>Demonstrates Eclipse S-CORE running on Elektrobit corbos Linux for Safety Applications (EBcLfSA).</p></li>
+<li><p>Integrates the <code class="docutils literal notranslate"><span class="pre">scrample</span></code> demo application into the “fast-dev” EBcLfSA image (aarch64).</p></li>
+<li><p>In the <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_ebclfsa.yml">related CI workflow</a>,
+all these steps are performed, and the resulting log files are stored and made available for download.</p></li>
+<li><p>Integration can be executed via QEMU; see the <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/ebclfsa/README.md">EBcLfSA README</a> for details.</p></li>
+<li><p><strong>Note</strong>: The EBcLfSA integration is experimental. Bazel integration exists, but parts of the integration code will be reworked in future releases.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="associated-infrastructure-modules">
+<h3>Associated Infrastructure Modules<a class="headerlink" href="#associated-infrastructure-modules" title="Link to this heading">#</a></h3>
+<section id="process-description">
+<h4>process_description<a class="headerlink" href="#process-description" title="Link to this heading">#</a></h4>
+<p>Provides a process model establishing organisational rules for developing open source software
+in the automotive domain, suitable for safety and security contexts.</p>
 <ul>
-<li><p><strong>Link to release</strong>: <a class="reference external" href="https://github.com/eclipse-score/process_description/releases/tag/v1.3.0">process_description v0.1.3</a></p></li>
-<li><p><strong>Release notes</strong></p>
-<ul>
-<li><p>The process model provides processes, which conform to state-of the art standards</p>
-<ul>
+<li><p><strong>Version:</strong> <code class="docutils literal notranslate"><span class="pre">process</span> <span class="pre">description</span> <span class="pre">v0.1.3</span></code></p></li>
+<li><p><strong>Standards alignment:</strong></p>
+<blockquote>
+<div><ul class="simple">
 <li><p>ASPICE 4.0</p></li>
 <li><p>ISO 26262</p></li>
 <li><p>ISO 21434</p></li>
 <li><p>ISO PAS 8926</p></li>
 </ul>
+</div></blockquote>
 </li>
-<li><p>Check the full <a class="reference external" href="https://github.com/eclipse-score/process_description/releases/tag/v1.3.0">process_description release notes</a> for more information</p></li>
+<li><p><strong>Release notes</strong>: <a class="reference external" href="https://github.com/eclipse-score/process_description/releases/tag/v1.3.0">process_description release notes</a></p></li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p><strong>docs-as-code</strong>: tooling for linking and generation of documentation</p>
-<ul>
-<li><p><strong>Link to release</strong>: <a class="reference external" href="https://github.com/eclipse-score/docs-as-code/releases/tag/v2.0.1">docs-as-code v2.0.1</a></p></li>
-</ul>
-</li>
-<li><p><strong>tooling</strong>: tooling for S-CORE development</p>
-<ul>
-<li><p><strong>Link to release</strong>: <a class="reference external" href="https://github.com/eclipse-score/tooling/releases/tag/v1.0.2">tooling v1.0.2</a></p></li>
-</ul>
-</li>
-<li><p><strong>ITF</strong>: integration Testing Framework for execution of feature integration tests on the reference image</p>
-<ul>
-<li><p><strong>Link to release</strong>: <a class="reference external" href="https://github.com/eclipse-score/itf/releases/tag/0.1.0">itf v0.1.0</a></p></li>
-<li><p><strong>Release notes</strong></p>
-<ul>
-<li><p>Bazel setup for macro <em>py_itf_test</em></p></li>
+</section>
+<section id="docs-as-code">
+<h4>docs-as-code<a class="headerlink" href="#docs-as-code" title="Link to this heading">#</a></h4>
+<p>Tooling for linking and generation of documentation.
+- <strong>Version:</strong> <code class="docutils literal notranslate"><span class="pre">docs-as-code</span> <span class="pre">v2.0.2</span></code>
+- <strong>Source / tag:</strong> <a class="reference external" href="https://github.com/eclipse-score/docs-as-code/releases/tag/v2.0.1">docs-as-code GitHub release</a></p>
+</section>
+<section id="tooling">
+<h4>tooling<a class="headerlink" href="#tooling" title="Link to this heading">#</a></h4>
+<p>Tooling for S-CORE development.
+- <strong>Version:</strong> <code class="docutils literal notranslate"><span class="pre">tooling</span> <span class="pre">v1.0.2</span></code>
+- <strong>Source / tag:</strong> <a class="reference external" href="https://github.com/eclipse-score/tooling/releases/tag/v1.0.2">tooling GitHub release</a></p>
+</section>
+<section id="itf-integration-testing-framework">
+<h4>ITF (Integration Testing Framework)<a class="headerlink" href="#itf-integration-testing-framework" title="Link to this heading">#</a></h4>
+<p>Framework for executing feature integration tests on the reference image.</p>
+<ul class="simple">
+<li><p><strong>Version:</strong> <code class="docutils literal notranslate"><span class="pre">itf</span> <span class="pre">v0.1.0</span></code></p></li>
+<li><p><strong>Source / tag:</strong> <a class="reference external" href="https://github.com/eclipse-score/itf/archive/refs/tags/0.1.0.tar.gz">ITF GitHub release</a></p></li>
+<li><dl class="simple">
+<dt><strong>Capabilities:</strong></dt><dd><ul>
+<li><p>Bazel macro <em>py_itf_test</em></p></li>
 <li><p>Pinging target</p></li>
 <li><p>SSH and SPTP module</p></li>
 <li><p>DLT module</p></li>
-<li><p>Starting Qemu from <a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu">reference_integration</a> repository</p></li>
-<li><p><a class="reference external" href="https://github.com/eclipse-score/itf/blob/main/README.md">ITF readme</a></p></li>
-<li><p><a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/README.md#build-commands">reference_integration readme</a></p></li>
+<li><p>Starting Qemu from the <a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu">reference_integration</a> repository</p></li>
+<li><p><strong>Documentation:</strong>
+- <a class="reference external" href="https://github.com/eclipse-score/itf/blob/main/README.md">ITF README</a>
+- <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/README.md#build-commands">reference_integration README</a></p></li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p><strong>Test Scenarios</strong>: testing framework providing a backend for testers to create parametrizable scenarios in Rust and C++ which can be used in common test case implementation validating parallel implementations.</p>
-<ul>
-<li><p><strong>Link to release</strong>: <a class="reference external" href="https://github.com/eclipse-score/testing_tools/releases/tag/v0.3.0">Test Scenarios v0.3.0</a></p></li>
-<li><p><strong>Release notes</strong></p>
-<ul>
-<li><p>Provides test_scenarios_cpp - C++ framework for defining, running, and managing test scenarios in a structured and extensible way.</p></li>
-<li><p>Provides test_scenarios_rust - equivalent implemented in Rust.</p></li>
-<li><p>Both frameworks share the same concepts and allow to define parametrizable test scenarios that can be used in common test case implementations.
-They are designed to support automated testing, scenario grouping, and integration with CLI tools.</p></li>
-</ul>
-</li>
-</ul>
+</dd>
+</dl>
 </li>
 </ul>
 </section>
+<section id="test-scenarios">
+<h4>Test Scenarios<a class="headerlink" href="#test-scenarios" title="Link to this heading">#</a></h4>
+<p>Testing framework providing a backend for parametrizable scenarios in Rust and C++, usable in
+common test case implementations and parallel implementations.</p>
+<ul class="simple">
+<li><p><strong>Version:</strong> <code class="docutils literal notranslate"><span class="pre">test_scenarios</span> <span class="pre">v0.3.0</span></code></p></li>
+<li><p><strong>Source / tag:</strong> <a class="reference external" href="https://github.com/eclipse-score/testing_tools/archive/refs/tags/v0.3.0.tar.gz">Test Scenarios</a></p></li>
+<li><p><strong>Components:</strong>
+- <code class="docutils literal notranslate"><span class="pre">test_scenarios_cpp</span></code> – C++ framework for defining, running, and managing test scenarios.
+- <code class="docutils literal notranslate"><span class="pre">test_scenarios_rust</span></code>– equivalent implementation in Rust.</p></li>
+<li><p>Both frameworks share the same concepts and support automated testing, scenario grouping,
+and integration with CLI tools.</p></li>
+</ul>
+</section>
+</section>
+</section>
 <section id="performed-verification">
 <h2>Performed Verification<a class="headerlink" href="#performed-verification" title="Link to this heading">#</a></h2>
-<p>Following tests were executed:</p>
+<p>The following tests were executed as part of this release:</p>
 <ul class="simple">
-<li><p>every C++ module was successfully built with gcc and qcc toolchain</p></li>
-<li><p>every RUST module was successfully built with rust toolchain</p></li>
-<li><p>every module has executed its unit-tests</p></li>
-<li><p>few basic integration tests were executed with reference integration qnx image in QEMU as it can be seen in the
-<a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/37aa2fc1409f6907bf5d9f3c2643489bb937f90e/.github/workflows/release_verification.yml#L56">release verification workflow</a>
-CI/CD workflow</p></li>
-<li><p>for <em>persistency</em> and <em>orchestration</em> modules, component and feature integration tests with <em>score-test-scenarios</em> framework were executed, see
+<li><p>All C++ modules built successfully with GCC and QCC toolchains.</p></li>
+<li><p>All Rust modules built successfully with the Rust toolchain.</p></li>
+<li><p>Each module executed its unit tests.</p></li>
+<li><p>Basic integration tests were executed on the reference QNX image in QEMU via the
+<a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/37aa2fc1409f6907bf5d9f3c2643489bb937f90e/.github/workflows/release_verification.yml#L56">release verification</a> workflow</p></li>
+<li><p>for <strong>persistency</strong> and <strong>orchestration</strong> modules, component and feature integration tests were executed using the <code class="docutils literal notranslate"><span class="pre">score-test-scenarios</span></code> framework; see
 <a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/feature_showcase">feature_showcase</a> and
 <a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/feature_integration_tests">feature_integration_tests</a> for more details.</p></li>
 </ul>
@@ -889,14 +906,37 @@ CI/CD workflow</p></li>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#highlights">Highlights</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#timeline">Timeline</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#s-core-book">S-Core book</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improvements">Improvements</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bug-fixes">Bug Fixes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integrated-software-modules">Integrated Software Modules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#associated-infrastructure-modules">Associated Infrastructure Modules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bug-fixes">Bug Fixes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integrated-software-modules">Integrated Software Modules</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#communication">Communication</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#baselibs">Baselibs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#persistency">Persistency</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#orchestrator-kyron-and-orchestration-framework">Orchestrator (Kyron and orchestration framework)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-integration">Reference integration</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#common">Common</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-qnx-image">Reference QNX image</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-red-hat-autosd-linux-image-experimental">Reference Red Hat AutoSD Linux image** (Experimental)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-elektrobit-corbos-linux-for-safety-applications-linux-image-experimental">Reference Elektrobit corbos Linux for Safety Applications Linux image (Experimental)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#associated-infrastructure-modules">Associated Infrastructure Modules</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#process-description">process_description</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#docs-as-code">docs-as-code</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tooling">tooling</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#itf-integration-testing-framework">ITF (Integration Testing Framework)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#test-scenarios">Test Scenarios</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performed-verification">Performed Verification</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#known-issues">Known Issues</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upgrade-instructions">Upgrade Instructions</a></li>
