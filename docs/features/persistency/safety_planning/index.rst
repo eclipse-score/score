@@ -38,28 +38,28 @@ Feature Safety Planning
       - :need:`gd_temp__change_feature_request`
       - :ndf:`copy('status', need_id='gd_temp__change_feature_request')`
       - https://github.com/eclipse-score/score/issues/760
-      - :need:`doc__persistency_kvs`
-      - :ndf:`copy('status', need_id='doc__persistency_kvs')`
+      - :need:`doc__persistency`
+      - :ndf:`copy('status', need_id='doc__persistency')`
 
     * - :need:`wp__requirements_feat`
       - :need:`gd_temp__req_feat_req`
       - :ndf:`copy('status', need_id='gd_temp__req_feat_req')`
       - https://github.com/eclipse-score/score/issues/960
-      - :ref:`feature_requirements_PersistencyKvs`
+      - :ref:`feature_requirements_persistency`
       - valid
 
     * - :need:`wp__requirements_feat_aou`
       - :need:`gd_temp__req_aou_req`
       - :ndf:`copy('status', need_id='gd_temp__req_aou_req')`
       - https://github.com/eclipse-score/score/issues/960
-      - :ref:`feature_requirements_PersistencyKvs`
+      - :ref:`feature_requirements_persistency_aou`
       - valid
 
     * - :need:`wp__feature_arch`
       - :need:`gd_temp__arch_feature`
       - :ndf:`copy('status', need_id='gd_temp__arch_feature')`
       - https://github.com/eclipse-score/score/issues/1020
-      - :ref:`feature_architecture_PersistencyKvs`
+      - :ref:`feature_architecture_persistency`
       - valid
 
     * - :need:`wp__feature_fmea`
