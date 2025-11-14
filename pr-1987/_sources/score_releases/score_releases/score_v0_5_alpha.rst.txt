@@ -91,26 +91,29 @@ Zero-copy, shared-memory based inter-process communication for minimal-latency i
 - **Source / tag:** `Communication GitHub release <https://github.com/eclipse-score/communication/archive/refs/tags/v0.1.1.tar.gz>`_
 - **Release notes:** :need:`doc__communication_release_note`
 
-- **Fixed Execution Order Framework(FEO)**: Application Framework which is intended to support data-driven or time-driven applications.
+Fixed Execution Order Framework(FEO)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Application Framework which is intended to support data-driven or time-driven applications.
 
-  - **Link to release**: `feo v1.0.2 <https://github.com/eclipse-score/feo/releases/tag/v1.0.2>`_
-  - **Release notes**:
+- **Link to release**: ``feo v1.0.2``
+- **Source / tag:** `FEO GitHub release <https://github.com/eclipse-score/feo/releases/tag/v1.0.2>`_
+- **Release notes**:
 
-    - Provides Kyron - async runtime for Rust. Kyron is a customizable, high-performance async/await runtime designed for advanced concurrent programming with focus on funcional safety.
-      It allows fine-grained control over scheduling, thread management, and workload isolation through configurable execution engines.
+  - Provides Kyron - async runtime for Rust. Kyron is a customizable, high-performance async/await runtime designed for advanced concurrent programming with focus on funcional safety.
+    It allows fine-grained control over scheduling, thread management, and workload isolation through configurable execution engines.
 
-      - `Read more on scope. <https://github.com/eclipse-score/orchestrator/blob/main/src/kyron/doc/features.md>`__
-      - `Check out the examples. <https://github.com/eclipse-score/orchestrator/tree/main/src/kyron/examples>`__
+    - `Read more on scope. <https://github.com/eclipse-score/orchestrator/blob/main/src/kyron/doc/features.md>`__
+    - `Check out the examples. <https://github.com/eclipse-score/orchestrator/tree/main/src/kyron/examples>`__
 
-    - **New Features**
-    - **Key aspects of FEO framework are**:
-        - A framework for applications (not for platform services)
-        - For data-driven and time-driven applications (mainly in the ADAS domain)
-        - Support fixed execution order
-        - Supporting reprocessing
+  - **New Features**
+  - **Key aspects of FEO framework are**:
+      - A framework for applications (not for platform services)
+      - For data-driven and time-driven applications (mainly in the ADAS domain)
+      - Support fixed execution order
+      - Supporting reprocessing
 
-      - `Read more on scope. <https://eclipse-score.github.io/score/main/features/frameworks/feo/index.html>`__
-      - `Check out the examples. <https://github.com/eclipse-score/feo/tree/main/examples>`__
+    - `Read more on scope. <https://eclipse-score.github.io/score/main/features/frameworks/feo/index.html>`__
+    - `Check out the examples. <https://github.com/eclipse-score/feo/tree/main/examples>`__
 
 Baselibs
 ~~~~~~~~~~~~~
