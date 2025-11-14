@@ -542,7 +542,7 @@
                   
   <section id="s-core-v0-5-alpha-release-notes">
 <h1>S-Core v0.5-alpha release notes<a class="headerlink" href="#s-core-v0-5-alpha-release-notes" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-4421e745">
+<div class="need_container docutils container" id="SNCB-875acbab">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__score_v05_alpha_release_note">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -596,6 +596,8 @@
 together the initial set of core modules, reference integrations, and supporting infrastructure needed to
 build and run example applications such as the <a class="reference external" href="https://github.com/eclipse-score/scrample">scrample</a>
 demo on multiple target images. The software architecture and implemented modules are illustrated in the diagram below.</p>
+<p>This release of Eclipse S-CORE is an early alpha version intended solely for experimentation, test driving project processes, gaining experience in create releases and soliciting feedback.
+Please be aware, that features may be incomplete, the software may exhibit instability or unexpected behavior, and breaking changes and alterations in scope are likely as development progresses.</p>
 <a class="reference internal image-reference" href="../../_images/architecture.drawio.svg"><img alt="Architecture overview" class="align-center" src="../../_images/architecture.drawio.svg" style="width: 1000px;" />
 </a>
 <div class="line-block">
@@ -620,8 +622,8 @@ demo on multiple target images. The software architecture and implemented module
 </div>
 <p>For a detailed and always up-to-date planning view, see the <a class="reference external" href="https://github.com/orgs/eclipse-score/projects/17/views/26">GitHub project</a>.</p>
 </section>
-<section id="s-core-book">
-<h3>S-Core book<a class="headerlink" href="#s-core-book" title="Link to this heading">#</a></h3>
+<section id="eclipse-s-core-book">
+<h3>Eclipse S-CORE book<a class="headerlink" href="#eclipse-s-core-book" title="Link to this heading">#</a></h3>
 <p>The first version of the <a class="reference external" href="https://eclipse-score.github.io/score/main/handbook/index.html">Eclipse S-CORE book</a>
 is a “how-to” guide for users getting started with the project.
 It introduces the core concepts of Eclipse S-CORE and walks through building
@@ -651,34 +653,20 @@ release notes for details on fixed issues in this release.</p>
 <section id="fixed-execution-order-framework-feo">
 <h4>Fixed Execution Order Framework(FEO)<a class="headerlink" href="#fixed-execution-order-framework-feo" title="Link to this heading">#</a></h4>
 <p>Application Framework which is intended to support data-driven or time-driven applications.</p>
-<ul>
+<ul class="simple">
 <li><p><strong>Link to release</strong>: <code class="docutils literal notranslate"><span class="pre">feo</span> <span class="pre">v1.0.2</span></code></p></li>
 <li><p><strong>Source / tag:</strong> <a class="reference external" href="https://github.com/eclipse-score/feo/releases/tag/v1.0.2">FEO GitHub release</a></p></li>
-<li><p><strong>Release notes</strong>:</p>
-<ul>
-<li><p>Provides Kyron - async runtime for Rust. Kyron is a customizable, high-performance async/await runtime designed for advanced concurrent programming with focus on funcional safety.
-It allows fine-grained control over scheduling, thread management, and workload isolation through configurable execution engines.</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://github.com/eclipse-score/orchestrator/blob/main/src/kyron/doc/features.md">Read more on scope.</a></p></li>
-<li><p><a class="reference external" href="https://github.com/eclipse-score/orchestrator/tree/main/src/kyron/examples">Check out the examples.</a></p></li>
-</ul>
-</li>
-<li><p><strong>New Features</strong></p></li>
 <li><dl class="simple">
-<dt><strong>Key aspects of FEO framework are</strong>:</dt><dd><ul class="simple">
+<dt><strong>Release notes</strong>:</dt><dd><ul>
 <li><p>A framework for applications (not for platform services)</p></li>
 <li><p>For data-driven and time-driven applications (mainly in the ADAS domain)</p></li>
 <li><p>Support fixed execution order</p></li>
 <li><p>Supporting reprocessing</p></li>
-</ul>
-</dd>
-</dl>
-<ul class="simple">
 <li><p><a class="reference external" href="https://eclipse-score.github.io/score/main/features/frameworks/feo/index.html">Read more on scope.</a></p></li>
 <li><p><a class="reference external" href="https://github.com/eclipse-score/feo/tree/main/examples">Check out the examples.</a></p></li>
 </ul>
-</li>
-</ul>
+</dd>
+</dl>
 </li>
 </ul>
 </section>
@@ -948,7 +936,7 @@ and integration with CLI tools.</p></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#highlights">Highlights</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#timeline">Timeline</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#s-core-book">S-Core book</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eclipse-s-core-book">Eclipse S-CORE book</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improvements">Improvements</a></li>
