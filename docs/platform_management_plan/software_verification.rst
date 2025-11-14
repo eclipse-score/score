@@ -133,6 +133,24 @@ There are the following different levels of integration and verification defined
   platform test of stakeholder requirements for demonstration, but these are not intended to completely
   covering all stakeholder requirements.
 
+The following test levels and their relationships to the implementation are shown on a diagram below:
+
+* :need:`PROCESS_wp__verification_sw_unit_test`
+* :need:`PROCESS_wp__verification_comp_int_test`
+* :need:`PROCESS_wp__verification_feat_int_test`
+
+.. figure:: _assets/score_test_levels.svg
+  :width: 100%
+  :name: score_wp_test_levels
+  :align: center
+  :alt: High level testing overview for project work products
+
+The diagram illustrates an example of the different testing levels and their relationships.
+Component Integration Tests verify the integration of components within a single feature by using public interfaces
+of tested component. Feature Integration Tests verify the integration of multiple features together.
+Unit Tests verify the implementation of a single unit and they can use any internal classes and private methods to
+construct the test.
+
 Verification Methods
 --------------------
 
@@ -468,6 +486,10 @@ of test based on `pytest <https://pytest.org>`__.
 The platform developed in this project supports `Rust <https://www.rust-lang.org>`__ as a programming language. Its
 built-in test framework is used to test respective software components.
 
+.. rubric:: Test Scenario Framework
+
+Supports Component Integration Tests by providing scenarios in C++ and Rust that are tested with single Test Case implementation in Pytest.
+
 Verification setups and variants
 --------------------------------
 
@@ -477,6 +499,7 @@ section above). Driven by that the following test setups can be derived:
 #. GoogleTest
 #. Rust
 #. ITF
+#. Test Scenario Framework
 
 All defined setups are used to run automated tests within continuous integration pipelines.
 
