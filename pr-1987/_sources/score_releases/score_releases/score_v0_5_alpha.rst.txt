@@ -88,13 +88,13 @@ Integrated Software Modules
 - **Persistency**: ensures the long-term storage and retrieval of data, provides a reliable mechanism for preserving information,
   allowing the application to maintain its state and data integrity over time
 
-  - **Link to release**: `persistency v0.2.0 <https://github.com/eclipse-score/persistency/releases/tag/v0.2.0>`_
+  - **Link to release**: `persistency v0.2.1 <https://github.com/eclipse-score/persistency/releases/tag/v0.2.1>`_
   - **Release notes**:
 
     - **Please note**: `definition of feature requirements and architecture <https://eclipse-score.github.io/score/main/features/persistency/index.html>`_  and
       `component requirements and architecture <https://eclipse-score.github.io/score/main/modules/persistency/index.html>`_ is partially out of date.
       This will be fixed with next release.
-    - Check the full `persistency release notes <https://github.com/eclipse-score/persistency/releases/tag/v0.2.0>`_ for more information
+    - Check the full `persistency release notes <https://github.com/eclipse-score/persistency/releases/tag/v0.2.1>`_ for more information
 
 - **Orchestrator**: orchestration framework and safe async runtime called kyron for Rust
 
