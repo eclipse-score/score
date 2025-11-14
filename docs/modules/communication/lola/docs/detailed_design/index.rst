@@ -11,23 +11,21 @@
    #
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
-.. _communication_module_docs:
 
-Communication Module
-####################
+Detailed Design
+###############
 
-.. toctree::
-   :titlesonly:
-   :maxdepth: 2
+.. document:: LoLa Detailed Design
+   :id: doc__lola_detailed_design
+   :status: draft
+   :safety: ASIL_B
+   :security: YES
+   :realizes: wp__sw_implementation
 
-   ./docs/index
+Detailed Design for Component: LoLa
+===================================
 
-Components
-==========
+Description
+-----------
 
-.. toctree::
-   :titlesonly:
-   :maxdepth: 1
-   :glob:
-
-   ./*/docs/index
+Detailed Design is presented in `lola/design <https://github.com/eclipse-score/communication/blob/main/score/mw/com/design/README.md>`_

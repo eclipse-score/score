@@ -11,23 +11,19 @@
    #
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
-.. _communication_module_docs:
 
-Communication Module
-####################
 
-.. toctree::
-   :titlesonly:
-   :maxdepth: 2
+Component Architecture
+======================
 
-   ./docs/index
+.. document:: LoLa Architecture
+   :id: doc__lola_architecture
+   :status: draft
+   :safety: ASIL_B
+   :security: YES
+   :realizes: wp__component_arch
 
-Components
-==========
-
-.. toctree::
-   :titlesonly:
-   :maxdepth: 1
-   :glob:
-
-   ./*/docs/index
+Overview
+--------
+No sub-components currently identified, therefore no component architecture presented.
+Design is shown in :need:`doc__lola_detailed_design`

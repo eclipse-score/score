@@ -11,23 +11,25 @@
    #
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
-.. _communication_module_docs:
 
-Communication Module
-####################
+Requirements
+############
 
-.. toctree::
-   :titlesonly:
-   :maxdepth: 2
+.. document:: LoLa Requirements
+   :id: doc__lola_requirements
+   :status: draft
+   :safety: ASIL_B
+   :security: YES
+   :realizes: wp__requirements_comp
 
-   ./docs/index
 
-Components
-==========
+LoLa component requirements
+===========================
 
-.. toctree::
-   :titlesonly:
-   :maxdepth: 1
-   :glob:
+see `LoLa trlc <https://github.com/eclipse-score/communication/blob/main/score/mw/com/requirements/component_requirements/component_requirements_ipc.trlc>`_
 
-   ./*/docs/index
+LoLa component Assumptions of Use
+=================================
+
+.. needextend:: "lola" in id
+   :+tags: lola

@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2025 Contributors to the Eclipse Foundation
+   # Copyright (c) 2024 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -11,23 +11,13 @@
    #
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
-.. _communication_module_docs:
 
-Communication Module
-####################
-
-.. toctree::
-   :titlesonly:
-   :maxdepth: 2
-
-   ./docs/index
-
-Components
-==========
+Safety Management
+#################
 
 .. toctree::
    :titlesonly:
-   :maxdepth: 1
-   :glob:
 
-   ./*/docs/index
+   module_safety_plan
+   module_safety_plan_fdr
+   module_safety_package_fdr

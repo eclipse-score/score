@@ -11,23 +11,29 @@
    #
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
-.. _communication_module_docs:
 
-Communication Module
-####################
+
+LoLa
+####
+
+.. note:: Document header
+
+.. document:: LoLa
+   :id: doc__lola
+   :status: draft
+   :safety: ASIL_B
+   :security: YES
+   :realizes: wp__cmpt_request
+
+
+As the component implements the complete feature :need:`doc__com_ipc`, there is currently nothing to add here.
 
 .. toctree::
-   :titlesonly:
-   :maxdepth: 2
+   :hidden:
 
-   ./docs/index
-
-Components
-==========
-
-.. toctree::
-   :titlesonly:
-   :maxdepth: 1
-   :glob:
-
-   ./*/docs/index
+   requirements/index.rst
+   architecture/index.rst
+   detailed_design/index.rst
+   safety_analysis/fmea.rst
+   safety_analysis/dfa.rst
+   component_classification.rst
