@@ -41,9 +41,9 @@ To activate this feature, use the following feature flag:
 Abstract
 ========
 
-This feature request defines a set of ABI-compatible data types and a runtime type description format to support zero-copy inter-process communication between C++17 and Rust 1.8x processes using the same endianness. It ensures consistent type layouts across languages by requiring fixed-size, statically allocated types without absolute pointers or language-specific metadata.
+This feature request defines a set of ABI-compatible data types and a runtime type metadata format to support zero-copy inter-process communication between C++17 and Rust 1.88 processes using the same endianness. It ensures consistent type layouts across languages by requiring fixed-size, statically allocated types without absolute pointers or language-specific metadata.
 
-The specification covers primitive types, structs, enums, arrays, and introduces ABI-stable representations for vectors, options, and results. A runtime-readable type description enables processes to interpret shared memory without compile-time access to type definitions.
+The specification covers primitive types, structs, enums, arrays, and introduces ABI-stable representations for vectors, strings, options, and results. An optional runtime-readable type structure metadata enables processes to interpret shared memory without compile-time access to type definitions.
 
 
 Motivation
@@ -51,15 +51,15 @@ Motivation
 
 This feature request addresses specific challenges in achieving type compatibility within our inter-process communication (IPC) framework that leverages zero-copy shared memory mechanisms. Two essential scenarios are under evaluation:
 
-1. **ABI Compatibility**: Processes implemented in different programming languages (C++17 and Rust 1.8x) must interpret a shared memory location consistently as the same native type, provided both have compile-time access to the type definition. This scenario eliminates serialization overhead and allows direct memory access.
+1. **ABI Compatibility**: Processes implemented in different programming languages (C++17 and Rust 1.88) must interpret a shared memory location consistently as the same native type, provided both have compile-time access to the type definition. This scenario eliminates serialization overhead and allows direct memory access.
 
-2. **Type Description**: It should be possible to record arbitrary data streams, and convert or analyze them at a later time and/or on a different system, without having to recompile the conversion or analysis tools for that particular data format. A machine-readable description of the format, including any user-defined data types, should be available on request during runtime. In addition, this description could potentially be used by gateway processes to perform relatively simple but generic transformations between different data representations.
+2. **Type Structure Metadata**: It should be possible to record arbitrary data streams, and convert or analyze them at a later time and/or on a different system, without having to recompile the conversion or analysis tools for that particular data format. A machine-readable description of the format, including any user-defined data types, should be available on request during runtime. In addition, this structure description could potentially be used by gateway processes to perform relatively simple but generic transformations between different data representations.
 
 
 ABI Compatibility
 -----------------
 
-Our communication feature relies on shared memory to transfer data between processes. For effective zero-copy data exchange, processes written in C++17 and Rust 1.8x must inherently understand the data at shared memory locations identically. Achieving this requires ensuring that data types have consistent, fixed-size memory layouts.
+Our communication feature relies on shared memory to transfer data between processes. For effective zero-copy data exchange, processes written in C++17 and Rust 1.88 must inherently understand the data at shared memory locations identically. Achieving this requires ensuring that data types have consistent, fixed-size memory layouts.
 
 This evaluation initially targets the following process configurations:
 
@@ -67,6 +67,7 @@ This evaluation initially targets the following process configurations:
 * Processes running on different operating systems but under the same hypervisor.
 
 Supporting different endianness between processes is explicitly out of scope, as it inherently demands bit manipulation, effectively requiring serialization.
+A mechanism to ensure that sender and receiver use the same endianness is out of scope as well.
 Different bit widths, however, are implicitly supported by specifying the width of all types and excluding word-size integers.
 
 The following data types shall be supported:
@@ -74,7 +75,13 @@ The following data types shall be supported:
 * **Primitive Types**:
 
   * Boolean
-  * Numeric (fixed-size integers 8-128 bits, signed and unsigned; IEEE 754 floating-point numbers)
+  * Integer (signed and unsigned, 8/16/32/64-bit)
+  * Floating-point:
+
+    * IEEE 754 binary 32/64-bit
+    * FP16/bfloat16 (*optional*)
+
+  * Character (Unicode scalar value)
 
 * **Sequence Types**:
 
@@ -90,6 +97,7 @@ The following data types shall be supported:
 * **Fixed-Size, Variable-Length Containers**:
 
   * Vector
+  * String (UTF-8 encoded)
   * Queue
   * Hash map (*optional*)
   * Hash set (*optional*)
@@ -107,6 +115,9 @@ Type Description
 
 A critical scalability feature involves gateway processes, which subscribe to IPC endpoints and translate ABI-compatible data types into external serialization formats. These gateways require the ability to interpret data without compile-time access to type definitions. To address this, an explicit runtime-readable type description format is necessary. This description allows dynamic, runtime interpretation of data structures, enabling the addition of new IPC topics without recompiling gateway processes.
 
+Summary
+-------
+
 In summary, the motivation behind this feature request is to define and standardize ABI-compatible data types and a runtime-accessible type description mechanism to ensure interoperability and scalability in zero-copy IPC scenarios involving multiple languages and dynamic environments.
 
 
@@ -120,7 +131,7 @@ Specification
 ABI Compatibility
 -----------------
 
-This specification defines the set of rules and constraints for representing data types in shared memory such that they can be interpreted consistently across processes implemented in C++17 and Rust 1.8x. These types enable zero-copy inter-process communication by enforcing ABI compatibility at the memory layout level. The focus is on data exchange between processes using the same endianness.
+This specification defines the set of rules and constraints for representing data types in shared memory such that they can be interpreted consistently across processes implemented in C++17 and Rust 1.88. These types enable zero-copy inter-process communication by enforcing ABI compatibility at the memory layout level. The focus is on data exchange between processes using the same endianness.
 
 Assumptions
 ^^^^^^^^^^^
@@ -151,7 +162,6 @@ Primitive Types
 
 These types are ABI-compatible when declared using fixed-size standard types:
 
-
 .. list-table:: Native Type Mapping
    :header-rows: 1
 
@@ -160,15 +170,19 @@ These types are ABI-compatible when declared using fixed-size standard types:
      - C++17
    * - Boolean
      - ``bool``
-     - ``bool`` (1 byte, with ``0x00`` and ``0x01`` as the only valid bit patterns)
+     - ``AbiBool`` (1 byte, with ``0x00`` representing ``false`` and ``0x01`` representing ``true`` as the only valid bit patterns)
    * - Integers (N = 8, 16, 32, 64)
      - ``uN``, ``iN``
      - ``std::uintN_t``, ``std::intN_t``
    * - Floating point
      - ``f32``, ``f64``
      - ``float``, ``double`` (compliant with IEEE 754)
+   * - Character
+     - ``char``
+     - ``AbiChar`` (32-bit unsigned integer, valid bit patterns ``0x0`` to ``0xD7FF`` and ``0xE000`` to ``0x10FFFF``)
 
-All types must avoid trap representations and undefined padding.
+* Booleans can't be represented as native ``bool`` type in C++, because the language doesn't guarantee a size of 1 byte, and it doesn't guarantee that only the values ``0x00`` and ``0x01`` will be stored in memory.
+* Characters can't be represented as native ``uint32_t`` type in C++ without a wrapper, because it must be guaranteed that *surrogate code points* (``0xD800`` to ``0xDFFF``) and non-code points (values above ``0x10FFFF``) won't be stored in memory.
 
 Structs and Tuples
 """"""""""""""""""
@@ -182,17 +196,20 @@ Structs and tuples are supported using standard layout rules:
   (no virtual functions, no virtual inheritance, and only one class in the hierarchy has non-static data members;
   `full specification <https://en.cppreference.com/w/cpp/language/classes.html#Standard-layout_class>`__)
 
+Field types must themselves be ABI compatible.
 Field ordering must be preserved and padding must be identical across compilers. Any alignment greater than the default must be explicitly declared.
+Empty structs and tuples are forbidden, because zero-sized types have different representations in C++ and Rust.
 
 Enums
 """""
 
-Only fieldless enums with a defined underlying integer type are supported. These must use:
+Fieldless enums with a defined underlying integer type are supported. These must use:
 
 * ``#[repr(u8)]``, ``#[repr(u16)]``, etc. in Rust
 * ``enum class MyEnum : std::uint8_t`` in C++
 
-*Note:* Enums with payloads ("variants" or "tagged unions") are optionally supported.
+Each entry in an enum must have well-defined representation.
+Enums with payloads ("variants" or "tagged unions") are optionally supported.
 
 Arrays
 """"""
@@ -202,37 +219,65 @@ Fixed-size arrays are naturally ABI-compatible and supported in both languages.
 * Rust: ``[T; N]``
 * C++: wrapper around ``T[N]`` to enforce bounds-checking for element access
 
-Element types must also conform to this specification. No dynamic length information is allowed.
+Element types must themselves be ABI compatible. No dynamic length information is allowed.
+Empty arrays (``N=0``) are forbidden, because zero-sized types have different representations in C++ and Rust.
 
 Vectors
-""""""""
+"""""""
 
 To provide bounded sequence types with familiar APIs, a custom vector implementation must be provided in both languages that matches the memory layout defined below.
 
 .. code-block:: rust
 
     #[repr(C)]
-    pub struct AbiVec<T> {
+    pub struct AbiVec<T, const N: usize> {
         len: u32,
-        capacity: u32,
         elements: [T; N],
     }
 
 .. code-block:: cpp
 
-    template<typename T, std::size_t N>
+    template<typename T, std::uint32_t N>
     struct AbiVec {
     private:
         std::uint32_t len;
-        std::uint32_t capacity;
         T elements[N];
     };
 
-* Capacity is fixed and equal to ``N`` at compile time.
+* Capacity is fixed and equal to ``N`` elements at compile time.
 * Overflow beyond capacity must be a checked error.
 * No heap allocation is permitted.
-* Internally, these are ABI-compatible with ``len``, ``capacity`` and ``elements`` accessible from both languages.
+* Internally, these are ABI-compatible with ``len`` and ``elements`` accessible from both languages.
 * The public API must match standard vector types in usability (e.g. ``push()``, ``pop()``).
+* Zero-capacity vectors (``N=0``) are forbidden, because zero-sized arrays have different representations in C++ and Rust.
+
+Strings
+"""""""
+
+Strings have the same memory layout as ``AbiVec<u8>``, but additionally guarantee that their content is valid UTF-8.
+
+.. code-block:: rust
+
+    #[repr(C)]
+    pub struct AbiString<const N: usize> {
+        len: u32,
+        bytes: [u8; N],
+    }
+
+.. code-block:: cpp
+
+    template<std::uint32_t N>
+    struct AbiString {
+    private:
+        std::uint32_t len;
+        std::uint8_t bytes[N];
+    };
+
+* Capacity is fixed and equal to ``N`` bytes at compile time.
+* Overflow beyond capacity must be a checked error.
+* No heap allocation is permitted.
+* The public API must provide for a way to extend the string by a single character (Unicode scalar value) and by a string slice encoded as UTF-8.
+* Zero-capacity strings (``N=0``) are forbidden, because zero-sized array have different representations in C++ and Rust.
 
 Option Types
 """"""""""""
@@ -243,7 +288,7 @@ ABI-compatible optional types must be implemented manually using a one-byte tag 
 
     #[repr(C)]
     pub struct AbiOption<T> {
-        is_some: u8,
+        is_some: bool,
         value: T,
     }
 
@@ -252,13 +297,13 @@ ABI-compatible optional types must be implemented manually using a one-byte tag 
     template<typename T>
     struct AbiOption {
     private:
-        std::uint8_t is_some;
+        AbiBool is_some;
         T value;
     };
 
-* ``is_some == 0`` indicates absence; ``1`` indicates presence.
+* ``is_some == false`` indicates absence; ``true`` indicates presence.
 * The value field is always initialized and occupies memory regardless of state.
-* The public API must match standard optional types in usability.
+* The public API should match standard optional types in usability, as far as possible.
 
 Result Types
 """"""""""""
@@ -269,14 +314,14 @@ Result types represent tagged unions with two possible states.
 
     #[repr(C)]
     pub struct AbiResult<T, E> {
-        is_ok: u8,
+        is_err: bool,
         value: AbiResultUnion<T, E>,
     }
 
     #[repr(C)]
     union AbiResultUnion<T, E> {
-        ok: T,
-        err: E,
+        ok: ManuallyDrop<T>,
+        err: ManuallyDrop<E>,
     }
 
 .. code-block:: cpp
@@ -284,15 +329,15 @@ Result types represent tagged unions with two possible states.
     template<typename T, typename E>
     struct AbiResult {
     private:
-        std::uint8_t is_ok;
+        AbiBool is_err;
         union {
             T ok;
             E err;
         } value;
     };
 
-* ``is_ok == 1`` indicates ``ok`` field is valid
-* ``is_ok == 0`` indicates ``err`` field is valid
+* ``is_err == false`` indicates ``ok`` field is valid
+* ``is_err == true`` indicates ``err`` field is valid
 * The layout must guarantee correct union member interpretation based on the discriminant
 
 Language Conformance Summary
@@ -307,7 +352,7 @@ Language Conformance Summary
      - Specification Status
    * - Primitives
      - ✅ Native types
-     - ✅ Native types
+     - ⚠ Native and custom types
      - Conforming
    * - Structs
      - ✅ ``#[repr(C)]``
@@ -319,12 +364,16 @@ Language Conformance Summary
      - Conforming
    * - Arrays
      - ✅ ``[T; N]``
-     - ✅ ``T[N]``
+     - ✅ ``std::array<T, N>``
      - Conforming
    * - Vector
      - ❌ ``Vec<T>``
      - ❌ ``std::vector<T>``
      - ✅ ``AbiVec<T, N>`` required
+   * - String
+     - ❌ ``String``
+     - ❌ ``std::string``
+     - ✅ ``AbiString<N>`` required
    * - Option
      - ❌ ``Option<T>``
      - ❌ ``std::optional<T>``
@@ -339,14 +388,7 @@ Language Conformance Summary
 Type Description
 ----------------
 
-To address the scenarios outlined in the motivation, a clearly defined type description mechanism is required. The type description provides sufficient information during runtime, enabling a process without compile-time access to type definitions to correctly interpret a given memory location according to the previously established ABI rules.
-
-The goals are:
-
-* Enable interpretation of shared memory content without compile-time access to type definitions.
-* Support all ABI-compatible data types previously defined.
-* Include versioning to manage schema evolution and compatibility.
-* Allow easy generation and parsing by tooling in both C++ and Rust.
+To address the scenarios outlined in the motivation, a clearly defined type description mechanism is required.
 
 Workflows
 ^^^^^^^^^
@@ -359,10 +401,11 @@ Two potential workflows are considered for creating type descriptions:
 
 Both workflows are valid, and the final decision is deferred pending further feasibility analysis.
 
-Type Description Format
+Type Structure Metadata
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-The format of the type description shall explicitly support versioning to allow schema evolution and backward compatibility. It must accommodate all data types described earlier in the ABI compatibility section. It should be simple, human-readable, and easily machine-parsable.
+Precise information about the structure of the types is preserved for use during runtime, enabling a process without compile-time access to type definitions to correctly interpret a given memory location according to the previously established ABI rules.
+The format of the type metadata shall explicitly support versioning to allow schema evolution and backward compatibility. It must accommodate all data types described earlier in the ABI compatibility section. It should be simple, human-readable, and easily machine-parsable.
 
 The choice of serialization format is left open but may include RON, JSON5, or a custom DSL, based on readability, tooling support, and maintainability.
 
@@ -408,7 +451,7 @@ Reflection
 Reflection, in this context, is the ability to inspect data at runtime even if its structure is not or not fully known at compile time.
 Benefits of reflection include being able to translate recorded data into a human-readable format (e.g., JSON or CSV) without having to know the type definitions at compile time; this enables general-purpose data recording and transformation tools.
 
-This ability requires some form of *type description* being available at runtime, so that a sequence of bytes can be interpreted as a data structure.
+This ability requires some form of *type structure metadata* being available at runtime, so that a sequence of bytes can be interpreted as a data structure.
 There are two primary approaches to achieve this goal:
 
 * *inline type descriptions*, which precede each instance of every type, and
@@ -429,10 +472,10 @@ This approach, however, comes with significant downsides:
 Alternative Approach
 ^^^^^^^^^^^^^^^^^^^^
 
-Instead of inserting inline type descriptions into each instance of an ABI compatible type, the full type description can be made available to a consumer only once, either proactively or on request.
+Instead of inserting inline type descriptions into each instance of an ABI compatible type, the full type structure metadata can be made available to a consumer only once, either proactively or on request.
 The consumer decides if it uses or ignores this metadata.
 
-This type description can be used to dynamically translate between the compact, non-reflective ABI compatible data structures on one side, and a reflective, inline-describing format on the other side.
+This description of the type structure can be used to dynamically translate between the compact, non-reflective ABI compatible data structures on one side, and a reflective, inline-describing format on the other side.
 Although this incurs a copy and some minor processing, the overhead should be negligible compared to other computational tasks involving the payload.
 
 One method to efficiently translate a payload consisting of ABI compatible types to an inline-described reflective format is to convert the hierarchical type description to a flat list of *instructions* which can be executed by an interpreter.
@@ -474,7 +517,7 @@ Reflection will not be part of version 1.0 of this feature request.
   3. The specification for SOME/IP types is incompatible with the requirement of ABI vectors that can grow dynamically during construction, i.e., vectors which contain fewer valid elements than they take up space in memory.
   4. Inserting inline type descriptions on demand is expected to be a relatively cheap operation, which negates the main motivation for including them directly in ABI types in the first place.
 
-* External type descriptions will probably be included in a later version of this feature request.
+* External type structure descriptions will probably be included in a later version of this feature request.
   For now, they're postponed until we have a better understanding of the relevant use cases.
 
 
