@@ -1,0 +1,17 @@
+package CompReqs
+
+import ScoreReq
+import ScoreType
+import FeatReqs
+
+ScoreReq.CompReq block_size {
+    title = "Block Size"
+    description = "The mailbox block size needs to be set with 128 bytes"
+    status = ScoreType.Status.valid
+    reqtype = ScoreType.Reqtype.functional
+    safety = ScoreType.Asil.B
+    version = 1
+    security = ScoreType.Sec.yes
+    derived_from = [FeatReqs.mailbox_communication@1]
+    derived_asil = [ScoreType.Asil.B]
+}
