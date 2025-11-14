@@ -63,12 +63,11 @@ For a detailed and always up-to-date planning view, see the `GitHub project <htt
 
 S-Core book
 ------------
-The first version of the **Eclipse S-CORE book** is planned as a “how-to” guide for users getting
-started with the project. It will introduce the core concepts of Eclipse S-CORE and walk through building
+The first version of the `Eclipse S-CORE book** <https://eclipse-score.github.io/score/main/handbook/index.html>`_
+is planned as a “how-to” guide for users getting started with the project.
+It will introduce the core concepts of Eclipse S-CORE and walk through building
 the ``scrample`` application step by step on top of the platform modules.
 
-.. note::
-  The link to the S-CORE book will be added once the first version of the book is published.
 
 Improvements
 ^^^^^^^^^^^^^
@@ -166,8 +165,8 @@ Reference integration
 Central integration of Eclipse S-CORE modules
 
 - **Version:** ``reference integration v0.5.0-alpha``
-- **Source / tag:** TBD
-
+- **Source / tag:** `Reference Integration GitHub release <https://github.com/eclipse-score/reference_integration/releases/tag/v0.5.0-alpha>`_
+ 
 Common
 +++++++
 - Integrates all v0.5 modules, including the ``scrample`` demo application.
