@@ -33,7 +33,7 @@ together the initial set of core modules, reference integrations, and supporting
 build and run example applications such as the `scrample <https://github.com/eclipse-score/scrample>`_
 demo on multiple target images. The software architecture and implemented modules are illustrated in the diagram below.
 
-This release of Eclipse S-CORE is an early alpha version intended solely for experimentation, test driving project processes, gaining experience in create releases and soliciting feedback.
+This release of Eclipse S-CORE is an early alpha version intended solely for experimentation, test driving project processes, gaining experience in release creation and soliciting feedback.
 Please be aware, that features may be incomplete, the software may exhibit instability or unexpected behavior, and breaking changes and alterations in scope are likely as development progresses.
 
 
