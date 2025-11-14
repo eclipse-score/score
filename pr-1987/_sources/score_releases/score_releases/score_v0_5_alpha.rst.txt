@@ -131,7 +131,7 @@ preserving application state and data integrity over time.
 - **Version:** ``persistency v0.2.1``
 - **Source / tag:** `Persistency GitHub release <https://github.com/eclipse-score/persistency/archive/refs/tags/v0.2.1.tar.gz>`_
 - **Notes**:
-  
+
   - `The feature requirements and architecture <https://eclipse-score.github.io/score/main/features/persistency/index.html>`_  and
     `component requirements and architecture <https://eclipse-score.github.io/score/main/modules/persistency/index.html>`_ documents are partially out of date
     and will be updated in the next release.
@@ -153,9 +153,9 @@ Provides:
 - **Version:** ``orchestrator v0.0.3``
 - **Source / tag:** `Orchestrator GitHub release <https://github.com/eclipse-score/orchestrator/archive/refs/tags/v0.0.3.tar.gz>`_
 - **Further reading**:
-  
+
   - `Kyron scope and design <https://github.com/eclipse-score/orchestrator/blob/main/src/kyron/doc/features.md>`__
-  - `Kyron examples <https://github.com/eclipse-score/orchestrator/tree/main/src/kyron/examples>`__ 
+  - `Kyron examples <https://github.com/eclipse-score/orchestrator/tree/main/src/kyron/examples>`__
   - `Orchestrator scope and design <https://github.com/eclipse-score/orchestrator/blob/main/src/kyron/doc/features.md>`__
   - `Orchestrator examples <https://github.com/eclipse-score/orchestrator/tree/main/src/kyron/examples>`__
 
@@ -186,7 +186,7 @@ Reference QNX image
 - Provides `basic ITF tests <https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu/test/itf>`_.
   see the documented `build commands <https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu#build-commands>`_ for running ITF tests locally.
 
-Reference Red Hat AutoSD Linux image** (Experimental)
+Reference Red Hat AutoSD Linux image (Experimental)
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 - Provides a Linux-based AutoSD image usable with QEMU for both `x86_64` and `aarch64`; for usage see `AutoSD README <https://github.com/eclipse-score/reference_integration/tree/main/autosd/build>`_
 - Integrates IPC tests (equivalent functionality to the ``scrample`` example) using the QM environment.
@@ -197,7 +197,7 @@ Reference Red Hat AutoSD Linux image** (Experimental)
 Reference Elektrobit corbos Linux for Safety Applications Linux image (Experimental)
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 - Demonstrates Eclipse S-CORE running on Elektrobit corbos Linux for Safety Applications (EBcLfSA).
-- Integrates the ``scrample`` demo application into the "fast-dev" EBcLfSA image (aarch64). 
+- Integrates the ``scrample`` demo application into the "fast-dev" EBcLfSA image (aarch64).
 - In the `related CI workflow <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/build_and_test_ebclfsa.yml>`_,
   all these steps are performed, and the resulting log files are stored and made available for download.
 - Integration can be executed via QEMU; see the `EBcLfSA README <https://github.com/eclipse-score/reference_integration/blob/main/ebclfsa/README.md>`_ for details.
@@ -218,18 +218,20 @@ in the automotive domain, suitable for safety and security contexts.
     - ISO 26262
     - ISO 21434
     - ISO PAS 8926
-  
+
 - **Release notes**: `process_description release notes <https://github.com/eclipse-score/process_description/releases/tag/v1.3.0>`_
 
 docs-as-code
 ~~~~~~~~~~~~~~
 Tooling for linking and generation of documentation.
+
 - **Version:** ``docs-as-code v2.0.2``
 - **Source / tag:** `docs-as-code GitHub release <https://github.com/eclipse-score/docs-as-code/releases/tag/v2.0.1>`_
 
 tooling
 ~~~~~~~~~~~~~~
 Tooling for S-CORE development.
+
 - **Version:** ``tooling v1.0.2``
 - **Source / tag:** `tooling GitHub release <https://github.com/eclipse-score/tooling/releases/tag/v1.0.2>`_
 
@@ -246,8 +248,8 @@ Framework for executing feature integration tests on the reference image.
     - DLT module
     - Starting Qemu from the `reference_integration <https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu>`_ repository
     - **Documentation:**
-      - `ITF README <https://github.com/eclipse-score/itf/blob/main/README.md>`_
-      - `reference_integration README <https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/README.md#build-commands>`_
+        - `ITF README <https://github.com/eclipse-score/itf/blob/main/README.md>`_
+        - `reference_integration README <https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/README.md#build-commands>`_
 
 Test Scenarios
 ~~~~~~~~~~~~~~~
