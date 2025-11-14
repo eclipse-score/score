@@ -17,7 +17,7 @@
 Requirements
 ============
 
-Requirements are the formal descriptions of the requested capabilities or characteristics that the software platform or one of its components must fulfill.
+Requirements are the formal descriptions of the requested capabilities or characteristics that the software platform or its components must fulfill. The feature requirements are derived from standards like ISO 26262 Part-8 and ASPICE and additionally includes requirements of the different stakeholders. For further information see the `requirement concept <https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_concept.html>`_ in the process description.
 
 The following stakeholder functional and non-functional requirements and platform assumptions describe that for S-Core.
 
