@@ -32,20 +32,20 @@ Introduction
 Scope and purpose
 ~~~~~~~~~~~~~~~~~
 Bazel is a fast, scalable, multi-language build system developed by Google.
-It is used to automate the building and testing of software.
+It is used to automate the build, integration and testing of software.
 
 Inputs and outputs
 ~~~~~~~~~~~~~~~~~~
 Inputs:
-| - BUILD files and MODULE configuration
-| - Source code and dependencies
-| - Bazel rules and macros
+ | - BUILD files and MODULE configuration
+ | - Source code and dependencies
+ | - Bazel rules and macros
 
 Outputs:
-| - Build log
-| - Call tree
-| - Call tools via Call tree
-| - Built output via Call tools
+ | - Build log
+ | - Call tree
+ | - Call tools via Call tree
+ | - Built output via Call tools
 
 .. figure:: _assets/bazel.drawio.svg
   :width: 100%
@@ -74,29 +74,29 @@ Installation and integration
 Installation
 ~~~~~~~~~~~~
 
-Recommended way of bazel usage in S-Core project is via devcontainers.
-Corresponding devcontainers for each module and platform as all provided
-in corresponding repositories.
+The preferred way to use Bazel in the S-Core project is through Bazelisk and the .bazelversion file.
+The .bazelversion file is typically located in the project root directory.
+When you run any Bazel command, Bazelisk reads the Bazel version specified in .bazelversion and
+automatically uses that version for all calls.
 
-E.g.
+Example
 https://github.com/eclipse-score/score/tree/main/.devcontainer
-
-The concrete version of bazel determined at runtime from .bazelversion file in project root folder.
-
 
 
 Integration
 ~~~~~~~~~~~
-Bazel is orchestrator that works on upper level. Some additional configuration
-may require when using cache.
+Bazel acts as a high-level build orchestrator.
+When using caching mechanisms, additional configuration may be required.
 
 Environment
 ~~~~~~~~~~~
 - Linux
 - Windows
 
-Evaluation
-----------
+Safety evaluation
+-----------------
+
+This section outlines the safety evaluation of Bazel for its use within the S-CORE project.
 
 .. list-table:: Safety evaluation
    :header-rows: 1
@@ -112,131 +112,156 @@ Evaluation
      - Confidence (automatic calculation)
    * - 1
      - Dependency management
-     - | Incorrect dependency graph
+     - | Bazel fails to fetch external dependencies
        |
-       | Bazel builds with wrong dependency order, causing missing or outdated binaries in the final executable
+       | Bazel is unable to download or resolve required external dependencies during the build. This halts the build and prevents critical components from being compiled/integrated/tested/etc.
      - yes
-     - /
+     - | Check build output (implicit)
+       |
+       | This causes build failure and missing output which is detected by Bazel itself.
+     - yes
      - no
-     - yes(qualification)
-     - low
+     - high
    * - 2
      - Dependency management
-     - | Cyclic dependency introduced
+     - | Bazel fetched redundant external dependencies
        |
-       | Bazel fails to resolve dependencies and stops build, leaving safety-critical components unbuilt
-     - yes
-     - /
+       | Bazel downloads unnecessary external dependencies that are not referenced by any target. This increases build time and resource usage without contributing to the final output.
+     - | no
+       |
+       | This is a performance issue, not a safety issue.
      - no
-     - yes(qualification)
-     - low
+     - yes
+     - no
+     - high
    * - 3
      - Dependency management
-     - | Dependency not updated
+     - | Bazel fetched wrong external dependencies (wrong hit)
        |
-       | Bazel fails to update relevant dependency, keeping old code even though it should update it
+       | Bazel retrieves incorrect versions or mismatched external dependencies due to resolution errors. This can lead to inconsistent builds and potential incompatibility in safety-critical modules.
      - yes
-     - /
+     - no
      - no
      - yes(qualification)
      - low
    * - 4
-     - Build caching
-     - | Missed rebuild due to wrong change detection
+     - Dependency management
+     - | Bazel corrupts external dependencies while fetching
        |
-       | Bazel incorrectly assumes no changes and skips rebuilding, leaving outdated code in safety-critical modules
+       | During download or extraction, Bazel corrupts external dependency files, resulting in broken libraries or tools. This causes build failures.
      - yes
-     - /
+     - | Check build output (implicit)
+       |
+       | This causes build failure and missing output which is detected by Bazel itself.
+     - yes
      - no
-     - yes(qualification)
-     - low
+     - high
    * - 5
-     - Build caching
-     - | Incorrect cache hit
+     - Call tree computation
+     - | Bazel fails to build call tree
        |
-       | Bazel retrieves wrong cached artifact, compiling outdated or incorrect code
+       | Bazel cannot construct the dependency graph (call tree) for the build, leading to incomplete or aborted build processes.
      - yes
-     - /
+     - | Check build output
+       |
+       | This causes build failure and missing output which is detected by Bazel itself
+     - yes
      - no
-     - yes(qualification)
-     - low
+     - high
    * - 6
-     - Build caching
-     - | Partial rebuild skips safety-critical module
+     - Call tree computation
+     - | Bazel skips relevant target in call tree (missing caching hit or dependency miscalculation)
        |
-       | Bazel rebuilds only part of the system, omitting safety-critical components
+       | Bazel omits a required target from the build graph due to incorrect cache hits or dependency resolution errors. This results in missing artifacts and incomplete builds.
      - yes
-     - /
+     - no
      - no
      - yes(qualification)
      - low
    * - 7
-     - WORKSPACE / BUILD Config
-     - | Misconfigured flags
+     - Call tree computation
+     - | Bazel adds redundant target in call tree (wrong caching hit or dependency miscalculation)
        |
-       | Bazel applies wrong compiler flags, disabling safety mechanisms and introducing unsafe behavior
+       | Bazel includes unnecessary targets in the build graph, causing redundant compilation steps. This increases build time and resource consumption without affecting the final output.
+     - | no
+       |
+       | This is a performance issue, not a safety issue.
      - yes
-     - /
+     - yes
      - no
-     - yes(qualification)
-     - low
+     - high
    * - 8
-     - WORKSPACE / BUILD Config
-     - | Missing dependency
+     - Call tools
+     - | Bazel fails to call a tool
        |
-       | Bazel fails to include required dependency, causing incomplete build and missing safety-critical functionality
+       | Bazel does not invoke a required tool during the build process, leading to incomplete or invalid artifacts. This disrupts the expected workflow and may block downstream steps.
      - yes
-     - /
+     - | Check build output
+       |
+       | This causes build failure and missing output which is detected by Bazel itself.
+     - yes
      - no
-     - yes(qualification)
-     - low
+     - high
    * - 9
-     - WORKSPACE / BUILD Config
-     - | Wrong optimization level
+     - Call tools
+     - | Bazel calls wrong tool
        |
-       | Bazel applies unsafe optimization level, breaking timing assumptions and potentially violating safety requirements
+       | Bazel invokes an incorrect tool instead of the intended one, producing invalid outputs or causing build errors. This can compromise consistency and reliability of the build.
      - yes
-     - /
+     - no
      - no
      - yes(qualification)
      - low
    * - 10
-     - Custom rules
-     - | Bug in custom rule
+     - Call tools
+     - | Bazel fails to pass arguments to the tool
        |
-       | Bazel executes incorrect build steps due to faulty custom rule, producing unsafe binaries
+       | Bazel omits necessary arguments when invoking a tool, resulting in incorrect execution or failure of the tool. This impacts artifact generation and overall build correctness.
      - yes
-     - /
+     - no
      - no
      - yes(qualification)
      - low
    * - 11
-     - Custom rules
-     - | Unsafe script logic
+     - Call tools
+     - | Bazel passes wrong argument to the tool
        |
-       | Bazel skips critical checks because of unsafe Starlark logic, leading to incomplete safety validation
+       | Bazel provides incorrect arguments to a tool, causing misbehavior or invalid outputs. This can lead to corrupted artifacts or failed verification steps.
      - yes
-     - /
+     - no
      - no
      - yes(qualification)
      - low
    * - 12
-     - Custom rules
-     - | Version incompatibility
+     - Save output
+     - | Bazel corrupts final output artifact
        |
-       | Bazel fails or produces incorrect output due to incompatible Starlark rule versions
+       | Bazel produces a damaged or incomplete final artifact due to errors.
      - yes
-     - /
+     - no
+     - no
+     - yes(qualification)
+     - low
+   * - 13
+     - Save output
+     - | Bazel saves in wrong place
+       |
+       | Bazel stores the generated artifact in an incorrect location, breaking expected directory structures.
+     - yes
+     - no
      - no
      - yes(qualification)
      - low
 
+Security evaluation
+-------------------
+This section outlines the security evaluation of Bazel for its use within the S-CORE project.
 
-.. list-table:: Bazel security evaluation
+.. list-table:: Security evaluation
    :header-rows: 1
 
-   * - Use case Identification
-     - Use case Description
+   * - Threat identification
+     - Use case description
      - Threats
      - Impact on security?
      - Impact security measures available?
@@ -249,13 +274,22 @@ Evaluation
      - TBD
 
 Result
-~~~~~~
-Tool Qualification Required
+------
+Bazel requires qualification for use in safety-related software development according to ISO 26262.
 
 
-Tool Qualification
-------------------
-Based on method: Validation of the software tool
+**Tool Qualification**
+----------------------
+Based on method: validation of the software tool.
+
+Requirements and testing aspects
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Tool requirements are derived from official documentation: https://bazel.build/
+
+Bazel is an open-source tool and does not provide formal, vendor-defined requirements.
+Therefore, the tooling team is responsible for identifying the specific Bazel functionality
+used in the project. Based on this, requirements for the utilized features must be derived from
+the available documentation and Bazel validated against defined requirements.
 
 .. [1] The tool version mentioned in this document is preliminary.
        It is subject to change and will be updated in future.
