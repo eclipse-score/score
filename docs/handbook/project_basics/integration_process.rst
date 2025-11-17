@@ -20,74 +20,94 @@ Integration process
    :maxdepth: 1
    :glob:
 
-The integration process cannot be taken easily, and since Eclipse S-CORE project just recently started,
-we´re still gathering experience and adapting the process based on our needs.
-Several discussions and concepts were written to this topic.
-On of the most exhaustive description can be found in the following `decision record <https://eclipse-score.github.io/score/main/design_decisions/DR-002-infra.html>`_.
-In this chapter, we´ll not dive in into details yet will give you just the overall idea of the integration process of Eclipse S-CORE instead.
-
+The integration process is a core activity within Eclipse S-CORE and is still evolving as the project gathers experience.
+Several discussions and concepts have shaped the current approach.
+A detailed description is available in the following `decision record <https://eclipse-score.github.io/score/main/design_decisions/DR-002-infra.html>`_.
+This chapter provide a high-level overview of how integration works in Eclipse S-CORE.
 
 .. image:: ../_assets/release_integration_concept.drawio.svg
    :alt: release_integration_concept
    :align: center
 
 
-Compliance to Eclipse S-CORE software development process
----------------------------------------------------------
+Compliance with the Eclipse S-CORE software development process
+----------------------------------------------------------------
+All software modules - whether inside or outside the Eclipse S-CORE GitHub organization –
+are encouraged to follow the Eclipse S-CORE development process strictly and to enforce it through CI/CD checks.
+This ensures that compliance is validated with every pull request. 
 
-We encourage every software module -inside and outside the Eclipse S-CORE GitHub organization-
-to follow the Eclipse S-CORE development process strictly and to introduce it by including appropriate checks
-into the CI/CD pipeline. By doing so, the compliance to the Eclipse S-CORE project is validated with every pull request.
-But the truth is, due to various reasons we cannot even enforce this inside our GitHub organization.
+However, strict compliance cannot always be guaranteed. Reasons include: 
 
-One reason for this is, that most software modules are used by multiple other projects apart from S-CORE.
-Another reason is, that a software module is being open sourced by a company which follows other/ own software development process.
-In this case, an immediate switch to the Eclipse S-CORE development process is not possible.
+- Many modules are reused in other projects beyond S-CORE. 
+- Some modules originate from companies with their own established software development process.
+  An immediate migration to the Eclipse S-CORE development process is not feasible.
 
-Therefore, it is acceptable (but not recommended), that every software module follows its own software development process inside its repo.
-To announce a new version of a module and make it available inside Eclipse S-CORE, it needs to be added to the bazel registry first.
-This is where our integration process comes in place. Before adding a module to the Eclipse S-CORE bazel registry,
-following two conditions have to be fulfill:
+Therefore, it is acceptable (but not recommended) for software modules to follow their own
+software development process inside its repository. 
+To make a module available for Eclipse S-CORE, a new version must first be added to the bazel registry first.
 
-- **Requirements of the “integration gate”** need to be fulfilled.
-  This is a mandatory collection of checks and jobs which need to be passed by every module in Eclipse S-CORE.
-  Those ensure compliance with the Eclipse S-CORE software development process, e.g., “code can be compiled with gcc/qcc compiler”,
-  “unit tests are not failing”, “requirements and architecture are properly linked” and so on.
+This is where the S-CORE integration process applies. 
+Before adding a module to the Eclipse S-CORE bazel registry, two conditions must be met:
 
-- Once a software module meets integration gate´s requirements (code changes of the software modules or related artifacts might be needed),
-  a pull request to Eclipse S-CORE bazel registry repo can be created. Next, the pull request is being reviewed by safety,
-  security and quality managers. Once all findings were fixed, the pull request is being merged to the Eclipse S-CORE bazel registry.
-  Now the software module is officially available to the Eclipse S-CORE community.
+-  **Fulfillment of the “Integration Gate”**
+   
+   The integration gate is a mandatory set of checks that validates compliance with the Eclipse S-CORE software development process.
+   Examples include:
+
+   -	code compiles with gcc/qcc 
+   -	unit tests pass
+   -	requirements and architecture are properly linked according to the metamodel
+   
+   Module owners may need to update code or artefacts to meet these criteria. 
+- **Review and Approval**
   
+  After meeting integration gate requirements, a pull request to Eclipse S-CORE bazel registry repo can be created. 
+  This pull request is reviewed by safety, security and quality managers. Once all findings were resolved,
+  the pull request is merged to the Eclipse S-CORE bazel registry, and the software module becomes officially
+  available to the Eclipse S-CORE community.
+
+
 Reference Integration
 ---------------------
 
-The first step ensures, that the software module is compliant to the Eclipse S-CORE development process.
-But it is not ensured yet, that the new version of the software module works together with other modules.
-This is where the reference integration comes into place.
-Reference integration repository contains reference image(s), which are used to execute feature integration tests.
-Integration tests ensure that every feature, which was built by multiple modules, implements its feature requirements and can be used by the end-user.
+The first step, passing the integration gate, ensures Process compliance, but not compatibility with other modules. 
+This is the purpose of the reference integration. 
 
-**Reference integration overwrites all dependencies**, which were set by the software module itself.
-This means, if a reference integration depends on the software module “A” in version 1.0,
-then this is valid for all other software modules which are included in the same reference integration.
-In consequence, all modules will also be built by using the same version 1.0 of the module A, independently from their locally configured dependency.
-This ensures a consistent and unique state of all software module versions which are included in the same reference integration repository.
+The reference integration repository assembles all modules into reference images 
+and executes feature integration tests. These tests ensure: 
 
-Sometimes, the introduction of new versions of a software module into the reference integration repository can lead to problems.
-This is the case, when other modules are not compatible with changes included in the newer version.
-In theory, such problems can be avoided by using proper planning and concept of deprecated interfaces.
-Since in praxis such situations cannot be always avoided, the **Eclipse S-CORE integration team**
-is in charge for solving such problems once occurred.
+- correct implementation of feature requirements
+- compatibility between dependent modules
+- testability of features from an end-user perspective
 
-Based on agreed timeline -all feature integration tests are successfully executed/ other Eclipse S-CORE
-project metrics are fulfilled- a release of reference integration repository
-(official Eclipse S-CORE release) can be done. It consists mainly of:
+Unified Dependency Handling
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Within Reference integration, all module dependencies are overwriten by the versions defined in the reference integration configuration. 
 
-- A **release tag** on the reference integration repository, which automatically also freezes relevant version of every referenced software module.
-  Therefore, all software modules are indicated, which are officially part of the particular S-CORE release.
-- **Release Notes.**
-- **Further documents.**  
+For example: 
+If the reference integration specifies software module “A” in version 1.0,
+all software modules in that integration are built against “A” version 1.0 – regardless of their local dependency settings.
+This ensures a consistent and unique state of all software module versions which are included
+in the same reference integration repository.
 
+Handling of Incompatibilities
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Introducing  a new version into the reference integration repository can cause incompatibilities
+if other modules have not yet adapted to changes.
+Although proper planning and deprecation strategies help to avoid such issues, they cannot always be avoided.
+The **Eclipse S-CORE integration team** is in charge for solving such problems when they occurr
 
+Release of Reference Integration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Once: –
 
+- all feature integration tests have passed, and 
+- other Eclipse S-CORE project metrics for the release cycle are fulfilled
+
+a new release of the reference integration repository is created. An official S-CORE release typically consists of:
+
+- A **release tag** in the reference integration repository (freezing versions of all included software modules)
+- **Release Notes**
+- **Additional documents as required**
+
+This markst he complete and validated version of the Eclipse S-CORE platform for that release milestone. 

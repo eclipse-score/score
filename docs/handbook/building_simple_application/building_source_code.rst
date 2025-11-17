@@ -21,10 +21,10 @@ Building source code
 
 .. _building_source_code:
 
-Now, since we’ve provided the documentation for our component, it is time to add some code (as shown in the following 
+Now that we have added the documentation for our component, we can continue by adding some source code (as shown in the following 
 `commit <https://github.com/eclipse-score/scrample/commit/5179175823ecda51775e459ad73d7230cd4c880a>`_).
- 
-Let us go through the most important parts of it, and start with bazel
+
+Let’s begin with the most relevant parts of the implementation, starting with the bazel 
 `src/BUILD <https://github.com/eclipse-score/scrample/blob/main/src/BUILD>`_ file.
 
 .. code-block:: python
@@ -47,17 +47,17 @@ Let us go through the most important parts of it, and start with bazel
         ],
     )
 
-`cc_binary  <https://bazel.build/reference/be/c-cpp#cc_binary>`_ produces a cpp binary,
-by starting C/C++ compilation with the specified toolchain.
-We will talk about defining and specifying the toolchain later in this chapter.
-Let us first have a look at the content of the *cc_binary*.
+The `cc_binary  <https://bazel.build/reference/be/c-cpp#cc_binary>`_ produces a cpp binary,
+by starting C/C++ compilation with the specified toolchain. We will define the toolchain later in this chapter.
+Let’s first look at the content of the cc_binary.
 
-*cc_binary* attributes are very well described in the bazel documentation (it definitely makes sense to check it out).
-In our case, the rule has three source files that we want to compile.
-Additionally, our *scrample* binary depends on the *communication* module for the ipc functionality and on the *baselibs* module
-for cpp language extension and logging functionality.
-We can also see that *cc_binary* for scrample has the “public” visibility.
-That’s because we want to use it later in the *reference integration* module.
+The attributes of *cc_binary*  are documented in detail in the bazel documentation, and it is worth reviewing them. 
+In this example, the rule includes three source files. The *scrample* binary depends on: 
+
+- the *communication* module (IPC functionality) 
+- the *baselibs* module (cpp language extension and logging)
+
+The scrample target is marked with “public” visibility so that it can be used later in the *reference integration* module.
 
 .. code-block:: python
     :linenos:
@@ -91,26 +91,25 @@ That’s because we want to use it later in the *reference integration* module.
         ],
     )
 
-Additionally, there is also a sender/receiver and a datatype `cc_library  <https://bazel.build/reference/be/c-cpp#cc_library>`_,
-separated in standalone libraries for a better testability. Scrample *cc_binary* rule depends on them as well.
-Now, as we’ve defined the targets, it would be time to build the binary. For this, we need first to specify the toolchain,
-that should be used for building our binary and that will call compiler and linker at the end.
-We aim to run our application in QNX qemu environment, therefore we should compile our application with qcc toolchain.
+The sender/receiver logic and the datatype handling are implemented as separate
+`cc_library  <https://bazel.build/reference/be/c-cpp#cc_library>`_ targets to improve testability. 
 
-Before we continue, two fundamental concepts in bazel 
-(`bazel toolchains  <https://bazel.build/extending/toolchains>`_ and `bazel platforms  <https://bazel.build/extending/platforms>`_)
-are worth mentioning.
+The scrample cc_binary depends on both libraries. 
 
-A complete explanation of these concepts goes beyond this small tutorial. But in order to move forward,
-it is important to give at least a brief explanation, what these concepts are about.
+Now that the targets are defined, we can build the binary. 
 
-The *bazel toolchain* specifies -at least in our case- which compiler toolchain is used to compile and link the code.
-It could be qcc, gcc or llvm toolchain.
+To do so, we must first specify the toolchain that compile and link  the code.
+Since we want to run the application in QNX qemu environment, we will build it using the qcc toolchain.
+Before continuing, it is helpful to introduce two fundamental bazel concepts:bazel toolchains and bazel platforms.
 
-*bazel platform* specifies for which cpu architecture the toolchain should build the binary, e.g. arm or x86.
-For our small scrample example we plan to build with qcc toolchain for x86_64 platform.
-In order to add qcc toolchain support to our module, we first need to extend our 
-`MODULE.bazel <https://github.com/eclipse-score/scrample/blob/main/MODULE.bazel>`_  file with the toolchain information.
+A complete explanation is beyond the scope of this small tutorial, but the following brief overview is sufficient: 
+
+- A `bazel toolchains  <https://bazel.build/extending/toolchain>`_ specifies which compiler toolchain and linker are used (e.g., qcc, gcc or llvm).
+- A `bazel platforms  <https://bazel.build/extending/platform>`_ defines the target cpu architecture (e.g., arm or x86). 
+
+For the scrample example, we want to use the qcc toolchain for x86_64 platform.
+To add qcc toolchain support to our module, we extend the
+`MODULE.bazel <https://github.com/eclipse-score/scrample/blob/main/MODULE.bazel>`_ file with the corresponding toolchain configuration.
 
 .. code-block:: python
     :linenos:
@@ -126,17 +125,17 @@ In order to add qcc toolchain support to our module, we first need to extend our
     use_repo(qnx, "toolchains_qnx_sdp")
     use_repo(qnx, "toolchains_qnx_qcc")
 
-As you can see, we reference here the *score_toolchains_qnx* module, as dependency.
-It contains qnx toolchain including compiler, linker, image creation tools and their configuration for the Eclipse S-CORE project.
+The score_toolchains_qnx module is referenced here as a dependency.
+It contains qnx toolchain, including compiler, linker, image creation tools, and their configuration for the Eclipse S-CORE project.
 
 .. tip::
-    CI/CD pipeline uses its own QNX license for building the code with qnx. If you want to build the source code with
-    qnx compiler locally, you will need to acquire a QNX 8.x "free for non commercial use" license and install QNX 8.x SDP
+    CI/CD pipeline uses its own QNX license when building the code with qnx. If you want to build the source code with
+    qnx compiler locally, you must acquire a QNX 8.x "free for non commercial use" license and install QNX 8.x SDP
     as described in the `QNX & QEMU set-up tutorial <https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu>`_.
 
-As our application depends on baselibs and communication module (as described in the 
+Since our application depends on baselibs and communication module (as defined in the 
 `src/BUILD <https://github.com/eclipse-score/scrample/blob/main/src/BUILD>`_ file),
-we need to add the dependencies to these modules into the `MODULE.bazel <https://github.com/eclipse-score/scrample/blob/main/MODULE.bazel>`_
+we also need to add the dependencies to these modules into the `MODULE.bazel <https://github.com/eclipse-score/scrample/blob/main/MODULE.bazel>`_
 file as well, as shown below:
 
 .. code-block:: python
@@ -161,14 +160,17 @@ file as well, as shown below:
         remote = "https://github.com/bmw-software-engineering/trlc.git",
     )
 
-Additionally, we needed to add some modules, as listed above. Scrample application doesn’t need these modules,
-but they are needed by the modules, that scrample application directly depends on. *platforms* and *score_bazel_platforms*
-is needed by *qnx_toolchain* module and *tlrc* by *communication* module. Bazel module doesn’t inherit dependencies of the module,
-from which it depends on directly. This is why you always need to specify the whole list of module dependencies in the *MODULE.bazel* file.
+In addition to the previously mentioned modules, we also need to add some modules, as listed above. 
 
-Until now, we’ve assumed that there is a dependency between our module and another bazel module that defines qcc toolchain.
-Now we want to start using this toolchain in our module. Therefore we need to specify the platform and configure the usage of
-qcc toolchain in `.bazelrc <https://github.com/eclipse-score/scrample/blob/main/.bazelrc>`_ file.
+The scrample application does not use these modules directly, but the modules it depends on do. For example: 
+- *platforms* and *score_bazel_platforms* are required by the qnx_toolchain module 
+- *tlrc* is required by the *communication* module 
+
+Bazel modules don’t inherit transitive dependencies automatically.
+This means that you must always list all required module dependencies explicitly in your *MODULE.bazel* file.
+So far, we have assumed that our module depends on another bazel module providing the qcc toolchain. 
+To actually use this toolchain, we now need to specify the platform and configure the usage of qcc toolchain in
+`.bazelrc <https://github.com/eclipse-score/scrample/blob/main/.bazelrc>`_ file.
 
 .. code-block:: python
     :linenos:
@@ -188,20 +190,22 @@ qcc toolchain in `.bazelrc <https://github.com/eclipse-score/scrample/blob/main/
     build:x86_64-qnx --platforms=@score_bazel_platforms//:x86_64-qnx
     build:x86_64-qnx --extra_toolchains=@toolchains_qnx_qcc//:qcc_x86_64
 
-In lines 1-6, we define compiler options, that are related to the code itself.
-Therefore, they should be used during the compilation of our source code by all toolchains.
-It is important to understand, that bazel modules we depend on, are built in the context of our bazel module configuration.
-This is why we also need to specify the compiler settings, that are necessary to build depending bazel modules.
+Lines 1-6 define compiler options that apply to the source code itself.
 
-Further, in line 8 we take over the common configuration also for the qnx toolchain.
-Afterwards we specify compiler and linker flags, that are relevant for the qnx toolchain only.
- 
-In line 12-13 (highlighted in the code snippet) we define to use the *qnx toolchain*,
-that we’ve previously referenced in the `MODULE.bazel <https://github.com/eclipse-score/scrample/blob/main/MODULE.bazel>`_ file.
-Additionally, we want to build our code for the *x86_64-qnx platform*.
-This is important, since our qnx toolchain provides support for multiple platforms, e.g. *arm* and *x86_64*.
+These options must be used by all toolchains, because bazel builds not only your module,
+but also all dependent modules within the context of your bazel module’s configuration.
+For this reason, you must specify the compiler settings that are required to build your dependencies as well.
 
-Finally, we can compile our code. We need to specify explicitly which config should be used during the compilation, as shown in the example:
+In line 8, we apply the common configuration to the qnx toolchain.
+Afterwards, we specify additional compiler and linker flags that apply only to the qnx toolchain.
+
+Lines 12-13 (highlighted in the code snippet) configure bazel to use the *qnx toolchain* referenced earlier
+in the `MODULE.bazel <https://github.com/eclipse-score/scrample/blob/main/MODULE.bazel>`_ file.
+
+We also build our code for the *x86_64-qnx platform*. This is important, since our qnx toolchain supports multiple platforms
+(e.g., *arm* and *x86_64*).
+
+Finally, we can compile the code.  During the build, we must explicitly select the configuration to use, as shown in the example:
 
 .. code-block:: python
     :linenos:

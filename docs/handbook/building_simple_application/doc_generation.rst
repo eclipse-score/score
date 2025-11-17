@@ -21,18 +21,22 @@ Documentation generation
 
 Introduction
 ---------------
+As described in the :ref:`Overview of technologies <technology_overview>` chapter,
+Eclipse S-CORE uses the sphinx and sphinx-needs toolchain to generate documentation from rst files.
+Elements of Eclipse S-CORE metamodel are represented as sphinx-needs objects.
 
-As already explained in chapter :ref:`Overview of technologies <technology_overview>`, we use sphinx and sphinx-needs toolchain
-to generate documentation out of rst files, where elements of Eclipse S-CORE metamodel are modelled as sphinx-needs elements.
+The integration of sphinx, sphinx-needs, and the Eclipse S-CORE-specific extensions is implemented in the repository: 
 
-Integration of the sphinx and sphinx-needs toolchain into bazel and Eclipse S-CORE specific extensions are
-implemented in https://github.com/eclipse-score/docs-as-code/tree/main/docs module.
-Following `documentation <https://eclipse-score.github.io/docs-as-code/main/how-to/index.html>`_ provides an exhaustive description,
-how the documentation in Eclipse S-CORE can be created and built. Here, we will focus on a simple example.
+- https://github.com/eclipse-score/docs-as-code/tree/main/docs  
 
-First, we need to define a target in bazel, in order to generate html documentation from rst files.
-Such target is already provided in the main top level `BUILD <https://github.com/eclipse-score/scrample/blob/main/BUILD>`_
-file of the repository:
+The following `documentation <https://eclipse-score.github.io/docs-as-code/main/how-to/index.html>`_
+provides a description of how the documentation can be created and built. Here, we will focus on a simple example.
+
+
+Defining a Bazel Documentation Target
+-----------------------------------------
+To generate HTML documentation from *.rst* files, S-CORE provides a dedicated Bazel rule.
+In the top-level `BUILD <https://github.com/eclipse-score/scrample/blob/main/BUILD>`_ file of your module, you should already find:
 
 .. code-block:: python
     :linenos:
@@ -49,7 +53,10 @@ but will use its own mechanism to decide which files should be included for docu
 This is well described in `toctree <https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-toctree>`_
 chapter of its documentation.
 
-In general, two files are especially important for sphinx doc generation:
+
+Sphinx configuration
+-----------------------
+Two files are essential for documentation generation:
 
 - `docs/conf.py <https://github.com/eclipse-score/scrample/blob/main/docs/conf.py>`_ provides configuration for the *sphinx-toolchain*.
   
@@ -78,25 +85,28 @@ In general, two files are especially important for sphinx doc generation:
         "score_layout",
     ]
 
-  As you can see, we use here special score configuration and score project extensions.
-  The line number 3 is important, since here you have to set the prefix for your module.
-  In our case it is *“SCRAMPLE_”*. This prefix will be used, when other external modules are referencing sphinx-needs elements of your module.
+  Notes:
+  
+  - project_prefix (e.g., *“SCRAMPLE_”*) is important.
+    Other modules will use this prefix when referencing sphinx-needs elements from your module.
+  - S-CORE extensions (score_*) are automatically provided via *score_docs_as_code*.
 
-- `index.rst <https://github.com/eclipse-score/scrample/blob/main/docs/index.rst>`_ ist the main entry point,
-  that includes all other rst files, that should be used for documentation generation  
+- `index.rst <https://github.com/eclipse-score/scrample/blob/main/docs/index.rst>`_
+  is the main entry point for your documentation. It includes all other .rst files, that should be part of the documentation build. 
 
-We can try now to build the documentation using the following command:
+
+Building documentation
+-----------------------
+Run the following command to validate the documentation setup:
 
 .. code-block:: python
   :emphasize-lines: 1
 
   % bazel build //:docs
 
-Don´t be surprised, if the very first time running the bazel command takes a while to execute.
-The first time you call bazel, everything needs to be downloaded locally to its cache folder  (also all toolchain tarballs).
-This takes a while, but don’t worry, your next executions will be much faster.
-The command we’ve called will check the consistency of your documentation for errors,
-but will not generate any html files. To do so, run following command:
+The first execution running the bazel command may take longer, because bazel needs to download toolchains and dependencies.
+Subsequent runs will be much faster. The command we’ve called will check the consistency of your documentation for errors,
+but will not generate any html files. To do so, run following command
 
 .. code-block:: python
   :emphasize-lines: 1, 38
@@ -140,18 +150,17 @@ but will not generate any html files. To do so, run following command:
 
   The HTML pages are in ../../../../../../../../../../../_dev/scrample/_build.
 
-Now we have the generated html files, that we can copy somewhere and open in a web browser.
+After a successful build, the html files can be copied somewhere and opened in a web browser.
 
-Normally, when you’re working on the documentation, you need a handy way to see the current status of
-your work in the web browser. One option for this, is to use the *live preview* feature.
-The bazel target for this is automatically imported when you import *doc bazel rule* into your BUILD file (this should work “out-of-the-box”).
-
+When working on the documentation, it is helpful to see the current status directly in the web browser.
+One option is to use the *live preview* feature. The corresponding bazel target is automatically imported
+when you import *doc bazel rule* into your BUILD file.
 
 .. code-block:: python
   
   load("@score_docs_as_code//:docs.bzl", "docs")
 
-So now run following command:
+Run the following command:
 
 .. code-block:: python
   :emphasize-lines: 1, 9
@@ -168,16 +177,19 @@ So now run following command:
   [sphinx-autobuild] Waiting to detect changes...
  
 As you can see, a local server is started on following port and address: http://127.0.0.1:8000 .
-Open it in your web browser and you should be able to see the current version of the documentation.
+Open it in your web browser and you should be able to view the current version of the documentation.
 
 .. image:: ../_assets/initial_module_rst_content.png
    :width: 400
    :alt: Architecture overview
    :align: center
 
-The live preview feature stays active, rebuilds and reacts on every change in your documentation.
-This makes the work with the documentation quite convenient.
-You can stop it by killing the bazel process in the terminal (Ctrl+C).
+The live preview: 
 
-Now it´s time to replace the dummy context of the index.rst with some meaningful text,
-as shown in the following `commit <https://github.com/eclipse-score/scrample/commit/5179175823ecda51775e459ad73d7230cd4c880a>`_.
+- rebuilds automatically
+- updates on every file change 
+- stays active until you stop the bazel process (Ctrl+C).
+
+Now you can replace the placeholder content in index.rst with meaningful text, as shown in the following
+`commit <https://github.com/eclipse-score/scrample/commit/5179175823ecda51775e459ad73d7230cd4c880a>`_.
+
