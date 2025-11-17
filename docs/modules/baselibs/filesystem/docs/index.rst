@@ -55,6 +55,5 @@ The Filesystem Library should provide robust and safe APIs for filesystem operat
 * :need:`comp_req__filesystem__full_testability`
 * :need:`comp_req__filesystem__file_utils`
 * :need:`comp_req__filesystem__mock_fake`
-* :need:`comp_req__filesystem__mock_fake`
 
 The library should ensure that all filesystem operations are performed safely, with appropriate error handling and resource management to prevent leaks and ensure system stability.
