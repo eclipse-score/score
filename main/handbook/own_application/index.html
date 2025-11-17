@@ -556,17 +556,19 @@
 <h1>Use<a class="headerlink" href="#use" title="Link to this heading">#</a></h1>
 <section id="getting-started">
 <h2>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h2>
-<p>This guide shows you how to set up and use the Communication module of Eclipse S-CORE.</p>
-<p>To use the communication module in your project, you need to follow these steps:</p>
+<p>This guide explains how to set up and use the Communication module of Eclipse S-CORE.</p>
+<p>To integrate the communication module into your project, follow these steps:</p>
 <section id="setup">
 <h3>1. Setup<a class="headerlink" href="#setup" title="Link to this heading">#</a></h3>
-<p>Start by creating a new project in your preferred IDE (e.g., Visual Studio Code..).
-There is already a devcontainer setup under: <a class="github reference external" href="https://github.com/eclipse-score/devcontainer">eclipse-score/devcontainer</a></p>
-<p>You can find the communication module reference documentation under:</p>
-<p>Overview:
-<a class="github reference external" href="https://github.com/eclipse-score/communication">eclipse-score/communication</a></p>
-<p>User Facing API
-<a class="github reference external" href="https://github.com/eclipse-score/communication/blob/main/score/mw/com/doc/user_facing_API_examples.md">eclipse-score/communication</a></p>
+<p>Start by creating a new project in your preferred IDE (e.g., Visual Studio Code). A ready-to-use devcontainer is available under:</p>
+<ul class="simple">
+<li><p><a class="github reference external" href="https://github.com/eclipse-score/devcontainer">eclipse-score/devcontainer</a></p></li>
+</ul>
+<p>Reference documentation for the communication module:</p>
+<ul class="simple">
+<li><p>Overview: <a class="github reference external" href="https://github.com/eclipse-score/communication">eclipse-score/communication</a></p></li>
+<li><p>User Facing API: <a class="github reference external" href="https://github.com/eclipse-score/communication/blob/main/score/mw/com/doc/user_facing_API_examples.md">eclipse-score/communication</a></p></li>
+</ul>
 <section id="add-this-to-your-module-bazel">
 <h4>1.1 Add this to your MODULE.bazel:<a class="headerlink" href="#add-this-to-your-module-bazel" title="Link to this heading">#</a></h4>
 <div class="dropdown admonition">
@@ -608,8 +610,10 @@ There is already a devcontainer setup under: <a class="github reference external
 </pre></div>
 </div>
 </div>
-<p>Be aware that the versions change from time to time, so make sure you check the latest versions in the respective bazel registry</p>
-<p><a class="github reference external" href="https://github.com/eclipse-score/bazel_registry/tree/main/modules">eclipse-score/bazel_registry</a></p>
+<p>Be aware that the version numbers change over time. Always check the latest versions in the respective bazel registry</p>
+<ul class="simple">
+<li><p><a class="github reference external" href="https://github.com/eclipse-score/bazel_registry/tree/main/modules">eclipse-score/bazel_registry</a></p></li>
+</ul>
 </section>
 <section id="insert-this-into-your-bazelrc">
 <h4>1.2 Insert this into your .bazelrc:<a class="headerlink" href="#insert-this-into-your-bazelrc" title="Link to this heading">#</a></h4>
@@ -629,23 +633,29 @@ common --registry=https://bcr.bazel.build
 </section>
 <section id="run-bazel">
 <h4>1.3 Run Bazel<a class="headerlink" href="#run-bazel" title="Link to this heading">#</a></h4>
-<p>If you start with a plain project, add an empty file called <code class="docutils literal notranslate"><span class="pre">BUILD</span></code> into your project folder.</p>
-<p>Now you can build the project with the command <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">build</span> <span class="pre">//...</span></code> (so far nothing happens, because no targets were defined).</p>
-<p>You can now choose to continue in this guide to create a simple consumer-producer program or start on your own.</p>
+<p>If you start with an empty project, add an empty file named <code class="docutils literal notranslate"><span class="pre">BUILD</span></code> into your project root.
+Now you can now run build the project with the command bazel <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">build</span> <span class="pre">//...</span></code></p>
+<p>(At this point nothing happens yet, because no targets are defined).
+You can now either continue with this guide to create a minimal consumer-producer example or start coding your own application</p>
 </section>
 </section>
 <section id="use-it">
 <h3>2. Use it :)<a class="headerlink" href="#use-it" title="Link to this heading">#</a></h3>
-<p>Now that you have set up your project so far, let’s start to send and receive some messages.</p>
+<p>Once your project is set up, you can start sending and receiving messages.</p>
 <section id="basic-structure">
 <h4>2.1 Basic Structure<a class="headerlink" href="#basic-structure" title="Link to this heading">#</a></h4>
-<p>First, let’s create a folder <code class="docutils literal notranslate"><span class="pre">src</span></code> in our root project directory.</p>
-<p>Inside <code class="docutils literal notranslate"><span class="pre">src</span></code>, create the following folders: <code class="docutils literal notranslate"><span class="pre">consumer</span></code>, <code class="docutils literal notranslate"><span class="pre">producer</span></code>, and <code class="docutils literal notranslate"><span class="pre">etc</span></code>.</p>
+<p>Create a folder named <code class="docutils literal notranslate"><span class="pre">src</span></code> in your root project directory.
+Inside <code class="docutils literal notranslate"><span class="pre">src</span></code>, create the following folders:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">consumer</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">producer</span></code></p></li>
+</ul>
+<p>additional folders if needed.</p>
 </section>
 <section id="message">
 <h4>2.2 Message<a class="headerlink" href="#message" title="Link to this heading">#</a></h4>
-<p>Before we start sending messages, we need to define what we will send.
-Therefore, create the file <code class="docutils literal notranslate"><span class="pre">message_data.h</span></code> in your <code class="docutils literal notranslate"><span class="pre">src</span></code> directory.</p>
+<p>Before sending messages, define the data type to be exchanged.
+Create a file named <code class="docutils literal notranslate"><span class="pre">message_data.h</span></code> in your <code class="docutils literal notranslate"><span class="pre">src</span></code> directory.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef SCORE_MESSAGE_DATA_H</span>
 <span class="cp">#define SCORE_MESSAGE_DATA_H</span>
 
@@ -676,20 +686,23 @@ Therefore, create the file <code class="docutils literal notranslate"><span clas
 <span class="cp">#endif </span><span class="c1">//SCORE_MESSAGE_DATA_H</span>
 </pre></div>
 </div>
-<p>Let’s take a deeper look into that.
-We have the struct <code class="docutils literal notranslate"><span class="pre">Message</span></code> containing our <code class="docutils literal notranslate"><span class="pre">message</span></code> as a string.</p>
-<p>Then we have a more complex code snippet, where we define the <code class="docutils literal notranslate"><span class="pre">IPCInterface</span></code>. This interface is necessary so producer and consumer know what to send/receive.</p>
-<p>After defining the interface, we define:</p>
+<p><strong>What this code does:</strong></p>
+<ul class="simple">
+<li><p>struct <code class="docutils literal notranslate"><span class="pre">Message</span></code> defines the payload - here is a simple <code class="docutils literal notranslate"><span class="pre">message</span></code>  string.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IPCInterface</span></code> defines the communication interface used by producer and consumer.</p></li>
+</ul>
+<p>This interface is necessary so producer and consumer know what to send/receive.
+The interface provides two roles:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">IPCInterfaceProxy</span></code>: client-role</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">IPCInterfaceSkeleton</span></code>: server-role</p></li>
 </ul>
-<p>You can take a deeper look into this architecture here: <a class="reference external" href="https://eclipse-score.github.io/score/main/features/communication/docs/architecture/index.html#frontend">Eclipse S-Core Communication Doc</a>.</p>
+<p>More details are available in the <a class="reference external" href="https://eclipse-score.github.io/score/main/features/communication/docs/architecture/index.html#frontend">Eclipse S-Core Communication Doc</a>.</p>
 </section>
 <section id="producer">
 <h4>2.3 Producer<a class="headerlink" href="#producer" title="Link to this heading">#</a></h4>
-<p>The producer will (as its name suggests) produce/send the data.</p>
-<p>Go inside the <code class="docutils literal notranslate"><span class="pre">producer</span></code> directory and create a new file called <code class="docutils literal notranslate"><span class="pre">producer.h</span></code>.</p>
+<p>The producer sends data.
+Navigate to the <code class="docutils literal notranslate"><span class="pre">producer</span></code> directory and create a new file called <code class="docutils literal notranslate"><span class="pre">producer.h</span></code>.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef SCORE_PRODUCER_H</span>
 <span class="cp">#define SCORE_PRODUCER_H</span>
 
@@ -712,8 +725,8 @@ We have the struct <code class="docutils literal notranslate"><span class="pre">
 <span class="cp">#endif </span><span class="c1">//SCORE_PRODUCER_H</span>
 </pre></div>
 </div>
-<p>As you can see, the header is lightweight; we will only need to use the Constructor and <code class="docutils literal notranslate"><span class="pre">RunProducer</span></code> from outside.
-<code class="docutils literal notranslate"><span class="pre">create_result</span></code> is our <code class="docutils literal notranslate"><span class="pre">IPCInterfaceSkeleton</span></code> specified with the <code class="docutils literal notranslate"><span class="pre">instance_specifier</span></code> from our <code class="docutils literal notranslate"><span class="pre">score_mw_com.json</span></code>.</p>
+<p>As you can see, the header is lightweight; we will only need to use the Constructor and <code class="docutils literal notranslate"><span class="pre">RunProducer</span></code> from outside.</p>
+<p><code class="docutils literal notranslate"><span class="pre">create_result</span></code> is our <code class="docutils literal notranslate"><span class="pre">IPCInterfaceSkeleton</span></code> specified with the <code class="docutils literal notranslate"><span class="pre">instance_specifier</span></code> from our <code class="docutils literal notranslate"><span class="pre">score_mw_com.json</span></code>.</p>
 <p>After that, create the file <code class="docutils literal notranslate"><span class="pre">producer.cpp</span></code>.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;producer.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;src/message_data.h&quot;</span>
@@ -759,21 +772,24 @@ We have the struct <code class="docutils literal notranslate"><span class="pre">
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Here we have a bit more code.</p>
-<p>Let’s start with the constructor, which only initializes <code class="docutils literal notranslate"><span class="pre">create_result</span></code>.</p>
-<p>More complex is <code class="docutils literal notranslate"><span class="pre">RunProducer</span></code>, where we first check if the initialization of <code class="docutils literal notranslate"><span class="pre">create_result</span></code> was successful.
-Then we offer our service and also check if it was successful.
-If so, we start to send our messages in a loop.</p>
-<p>At the end, we need to stop offering the service.</p>
+<p><strong>What happens in the code:</strong></p>
+<p>The constructor initializes the communication skeleton <code class="docutils literal notranslate"><span class="pre">create_result</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">RunProducer</span></code>:</p>
+<ul class="simple">
+<li><p>checks if the initialization of <code class="docutils literal notranslate"><span class="pre">create_result</span></code> was successful</p></li>
+<li><p>offers service</p></li>
+<li><p>enters a loop and sends our messages</p></li>
+<li><p>stops offering the service at the end</p></li>
+</ul>
 </section>
 <section id="consumer">
 <h4>2.4 Consumer<a class="headerlink" href="#consumer" title="Link to this heading">#</a></h4>
 <p>On the other side, the consumer will consume/receive the data.</p>
-<p>Go inside the <code class="docutils literal notranslate"><span class="pre">consumer</span></code> directory and create a new file called <code class="docutils literal notranslate"><span class="pre">consumer.h</span></code>.</p>
+<p>Navigate to the <code class="docutils literal notranslate"><span class="pre">consumer</span></code> directory and create a new file called <code class="docutils literal notranslate"><span class="pre">consumer.h</span></code>.</p>
 </section>
 <section id="next-steps">
 <h4>2.5 Next steps<a class="headerlink" href="#next-steps" title="Link to this heading">#</a></h4>
-<p>If you want to take a deeper look into the code, feel free to check out the example folder</p>
+<p>For a complete example implementation, see the example folder</p>
 <p><a class="github reference external" href="https://github.com/eclipse-score/communication/tree/main/score/mw/com/example/ipc_bridge">eclipse-score/communication</a></p>
 </section>
 </section>

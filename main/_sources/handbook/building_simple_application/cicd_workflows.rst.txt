@@ -19,15 +19,15 @@ CI/CD Workflows
    :maxdepth: 1
    :glob:
 
-After we've managed to build our scrample binary, we need to ensure, that the build is not broken
-by the future changes. For this we should create a CI/CD workflow, that triggers a
-`GitHub action <https://docs.github.com/en/actions>`_
-for building our scrample application every time a new PR is raised.
+After successfully building the scrample binary, we need to ensure, that future changes do not breakt the build. 
 
-To achieve this, first let us create a workflow file `build.yml <https://github.com/eclipse-score/scrample/blob/main/.github/workflows/build.yml>`_
+To achieve this, we create a CI/CD workflow that triggers a `GitHub action <https://docs.github.com/en/actions>`_
+to build the scrample application whenever a new PR is opened.
+
+To achieve this, first create a workflow file named `build.yml <https://github.com/eclipse-score/scrample/blob/main/.github/workflows/build.yml>`_
 in the .github folder.
 
-Next, we should fill the workflow file with content as shown below:
+Then fill the workflow file with the following content:
 
 .. code-block::
     :linenos:
@@ -64,21 +64,18 @@ Next, we should fill the workflow file with content as shown below:
                 if: always()
                 run: rm -rf /opt/score_qnx
 
-First, as shown in the line 2- we need to define when the workflow should be executed.
-In our case, we want to build the scrample application everytime the PR is *opened*, *created* or *synchronized*.
 
-Second, we need to define which jobs should be executed. For now, it is only one job that builds the scrample application,
-as shown in the line 8.
+First, as shown in line 2 we define when the workflow should run.
+In this case, it is triggered whenever a PR is opened, created or synchronized.
 
-Finally, we need to define steps of the build job:
+Next, we specify the job to be executed. For now, there is a single job that builds the scrample application, as shown in the line 8.
+Finally, we need to define the steps of the build job:
 
-- In line 11 we checkout the repository.
-- In line 13 we setup the bazel.
-- In line 15 we set up the QNX license, using CI license, that is stored in the secret storage of the CI infrastructure.
-- Finally, in line 21 we define the step to build the scrample application.
-  After setting the QNX variables, we run the bazel command that we also ran locally, to build the *scrample binary*.
-- In last step (line 28) we clean-up all unnecessary files from the remote build machine.
+- Line 11: checkout the repository.
+- Line 13: set up bazel.
+- Line 15: set up the QNX license using the CI secrets stored in the CI infrastructure.
+- Line 21: uild the scrample binary using the same bazel command executed locally.
+- Line 28: clean-up temporary QNX files from the remote build machine.
 
-As soon as the workflow is merged to the repository, every time someone creates a PR,
-we will see the execution of the build target in the `Actions sections <https://github.com/eclipse-score/reference_integration/actions>`_
-of the repository.
+Once the workflow is merged into the repository, every new PR we will automatically trigger the build and its result in the
+`Actions sections <https://github.com/eclipse-score/reference_integration/actions>`_.

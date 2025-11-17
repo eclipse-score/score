@@ -568,15 +568,20 @@
 </div>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
-<p>As already explained in chapter <a class="reference internal" href="../project_basics/technology_overview.html#technology-overview"><span class="std std-ref">Overview of technologies</span></a>, we use sphinx and sphinx-needs toolchain
-to generate documentation out of rst files, where elements of Eclipse S-CORE metamodel are modelled as sphinx-needs elements.</p>
-<p>Integration of the sphinx and sphinx-needs toolchain into bazel and Eclipse S-CORE specific extensions are
-implemented in <a class="github reference external" href="https://github.com/eclipse-score/docs-as-code/tree/main/docs">eclipse-score/docs-as-code</a> module.
-Following <a class="reference external" href="https://eclipse-score.github.io/docs-as-code/main/how-to/index.html">documentation</a> provides an exhaustive description,
-how the documentation in Eclipse S-CORE can be created and built. Here, we will focus on a simple example.</p>
-<p>First, we need to define a target in bazel, in order to generate html documentation from rst files.
-Such target is already provided in the main top level <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/BUILD">BUILD</a>
-file of the repository:</p>
+<p>As described in the <a class="reference internal" href="../project_basics/technology_overview.html#technology-overview"><span class="std std-ref">Overview of technologies</span></a> chapter,
+Eclipse S-CORE uses the sphinx and sphinx-needs toolchain to generate documentation from rst files.
+Elements of Eclipse S-CORE metamodel are represented as sphinx-needs objects.</p>
+<p>The integration of sphinx, sphinx-needs, and the Eclipse S-CORE-specific extensions is implemented in the repository:</p>
+<ul class="simple">
+<li><p><a class="github reference external" href="https://github.com/eclipse-score/docs-as-code/tree/main/docs">eclipse-score/docs-as-code</a></p></li>
+</ul>
+<p>The following <a class="reference external" href="https://eclipse-score.github.io/docs-as-code/main/how-to/index.html">documentation</a>
+provides a description of how the documentation can be created and built. Here, we will focus on a simple example.</p>
+</section>
+<section id="defining-a-bazel-documentation-target">
+<h2>Defining a Bazel Documentation Target<a class="headerlink" href="#defining-a-bazel-documentation-target" title="Link to this heading">#</a></h2>
+<p>To generate HTML documentation from <em>.rst</em> files, S-CORE provides a dedicated Bazel rule.
+In the top-level <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/BUILD">BUILD</a> file of your module, you should already find:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">docs</span><span class="p">(</span>
 <span class="linenos">2</span>    <span class="n">source_dir</span> <span class="o">=</span> <span class="s2">&quot;docs&quot;</span><span class="p">,</span>
 <span class="linenos">3</span><span class="p">)</span>
@@ -588,7 +593,10 @@ source directory. Sphinx toolchain will not rely here on any bazel dependencies,
 but will use its own mechanism to decide which files should be included for documentation generation.
 This is well described in <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-toctree">toctree</a>
 chapter of its documentation.</p>
-<p>In general, two files are especially important for sphinx doc generation:</p>
+</section>
+<section id="sphinx-configuration">
+<h2>Sphinx configuration<a class="headerlink" href="#sphinx-configuration" title="Link to this heading">#</a></h2>
+<p>Two files are essential for documentation generation:</p>
 <ul>
 <li><p><a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/docs/conf.py">docs/conf.py</a> provides configuration for the <em>sphinx-toolchain</em>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">project</span> <span class="o">=</span> <span class="s2">&quot;Module Template Project&quot;</span>
@@ -613,22 +621,26 @@ chapter of its documentation.</p>
 <span class="linenos">20</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>As you can see, we use here special score configuration and score project extensions.
-The line number 3 is important, since here you have to set the prefix for your module.
-In our case it is <em>“SCRAMPLE_”</em>. This prefix will be used, when other external modules are referencing sphinx-needs elements of your module.</p>
-</li>
-<li><p><a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/docs/index.rst">index.rst</a> ist the main entry point,
-that includes all other rst files, that should be used for documentation generation</p></li>
+<p>Notes:</p>
+<ul class="simple">
+<li><p>project_prefix (e.g., <em>“SCRAMPLE_”</em>) is important.
+Other modules will use this prefix when referencing sphinx-needs elements from your module.</p></li>
+<li><p>S-CORE extensions (score_*) are automatically provided via <em>score_docs_as_code</em>.</p></li>
 </ul>
-<p>We can try now to build the documentation using the following command:</p>
+</li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/docs/index.rst">index.rst</a>
+is the main entry point for your documentation. It includes all other .rst files, that should be part of the documentation build.</p></li>
+</ul>
+</section>
+<section id="building-documentation">
+<h2>Building documentation<a class="headerlink" href="#building-documentation" title="Link to this heading">#</a></h2>
+<p>Run the following command to validate the documentation setup:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="o">%</span> <span class="n">bazel</span> <span class="n">build</span> <span class="o">//</span><span class="p">:</span><span class="n">docs</span>
 </span></pre></div>
 </div>
-<p>Don´t be surprised, if the very first time running the bazel command takes a while to execute.
-The first time you call bazel, everything needs to be downloaded locally to its cache folder  (also all toolchain tarballs).
-This takes a while, but don’t worry, your next executions will be much faster.
-The command we’ve called will check the consistency of your documentation for errors,
-but will not generate any html files. To do so, run following command:</p>
+<p>The first execution running the bazel command may take longer, because bazel needs to download toolchains and dependencies.
+Subsequent runs will be much faster. The command we’ve called will check the consistency of your documentation for errors,
+but will not generate any html files. To do so, run following command</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="o">%</span> <span class="n">bazel</span> <span class="n">run</span> <span class="o">//</span><span class="p">:</span><span class="n">docs</span>
 </span><span class="n">Running</span> <span class="n">Sphinx</span> <span class="n">v8</span><span class="mf">.2.3</span>
 <span class="n">loading</span> <span class="n">translations</span> <span class="p">[</span><span class="n">en</span><span class="p">]</span><span class="o">...</span> <span class="n">done</span>
@@ -669,14 +681,14 @@ but will not generate any html files. To do so, run following command:</p>
 <span class="hll"><span class="n">The</span> <span class="n">HTML</span> <span class="n">pages</span> <span class="n">are</span> <span class="ow">in</span> <span class="o">../../../../../../../../../../../</span><span class="n">_dev</span><span class="o">/</span><span class="n">scrample</span><span class="o">/</span><span class="n">_build</span><span class="o">.</span>
 </span></pre></div>
 </div>
-<p>Now we have the generated html files, that we can copy somewhere and open in a web browser.</p>
-<p>Normally, when you’re working on the documentation, you need a handy way to see the current status of
-your work in the web browser. One option for this, is to use the <em>live preview</em> feature.
-The bazel target for this is automatically imported when you import <em>doc bazel rule</em> into your BUILD file (this should work “out-of-the-box”).</p>
+<p>After a successful build, the html files can be copied somewhere and opened in a web browser.</p>
+<p>When working on the documentation, it is helpful to see the current status directly in the web browser.
+One option is to use the <em>live preview</em> feature. The corresponding bazel target is automatically imported
+when you import <em>doc bazel rule</em> into your BUILD file.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;@score_docs_as_code//:docs.bzl&quot;</span><span class="p">,</span> <span class="s2">&quot;docs&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>So now run following command:</p>
+<p>Run the following command:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="o">%</span> <span class="n">bazel</span> <span class="n">run</span> <span class="o">//</span><span class="p">:</span><span class="n">live_preview</span>
 </span>
 <span class="o">...</span>
@@ -690,14 +702,17 @@ The bazel target for this is automatically imported when you import <em>doc baze
 </pre></div>
 </div>
 <p>As you can see, a local server is started on following port and address: <a class="reference external" href="http://127.0.0.1:8000">http://127.0.0.1:8000</a> .
-Open it in your web browser and you should be able to see the current version of the documentation.</p>
+Open it in your web browser and you should be able to view the current version of the documentation.</p>
 <a class="reference internal image-reference" href="../../_images/initial_module_rst_content.png"><img alt="Architecture overview" class="align-center" src="../../_images/initial_module_rst_content.png" style="width: 400px;" />
 </a>
-<p>The live preview feature stays active, rebuilds and reacts on every change in your documentation.
-This makes the work with the documentation quite convenient.
-You can stop it by killing the bazel process in the terminal (Ctrl+C).</p>
-<p>Now it´s time to replace the dummy context of the index.rst with some meaningful text,
-as shown in the following <a class="reference external" href="https://github.com/eclipse-score/scrample/commit/5179175823ecda51775e459ad73d7230cd4c880a">commit</a>.</p>
+<p>The live preview:</p>
+<ul class="simple">
+<li><p>rebuilds automatically</p></li>
+<li><p>updates on every file change</p></li>
+<li><p>stays active until you stop the bazel process (Ctrl+C).</p></li>
+</ul>
+<p>Now you can replace the placeholder content in index.rst with meaningful text, as shown in the following
+<a class="reference external" href="https://github.com/eclipse-score/scrample/commit/5179175823ecda51775e459ad73d7230cd4c880a">commit</a>.</p>
 </section>
 </section>
 
@@ -749,6 +764,9 @@ as shown in the following <a class="reference external" href="https://github.com
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-a-bazel-documentation-target">Defining a Bazel Documentation Target</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sphinx-configuration">Sphinx configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-documentation">Building documentation</a></li>
 </ul>
   </nav></div>
 

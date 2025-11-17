@@ -566,13 +566,12 @@
 <h1>CI/CD Workflows<a class="headerlink" href="#ci-cd-workflows" title="Link to this heading">#</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<p>After we’ve managed to build our scrample binary, we need to ensure, that the build is not broken
-by the future changes. For this we should create a CI/CD workflow, that triggers a
-<a class="reference external" href="https://docs.github.com/en/actions">GitHub action</a>
-for building our scrample application every time a new PR is raised.</p>
-<p>To achieve this, first let us create a workflow file <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/.github/workflows/build.yml">build.yml</a>
+<p>After successfully building the scrample binary, we need to ensure, that future changes do not breakt the build.</p>
+<p>To achieve this, we create a CI/CD workflow that triggers a <a class="reference external" href="https://docs.github.com/en/actions">GitHub action</a>
+to build the scrample application whenever a new PR is opened.</p>
+<p>To achieve this, first create a workflow file named <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/.github/workflows/build.yml">build.yml</a>
 in the .github folder.</p>
-<p>Next, we should fill the workflow file with content as shown below:</p>
+<p>Then fill the workflow file with the following content:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>name: Scrample Build
 <span class="hll"><span class="linenos"> 2</span>on:
 </span><span class="linenos"> 3</span>    pull_request:
@@ -605,22 +604,19 @@ in the .github folder.</p>
 <span class="linenos">30</span>            run: rm -rf /opt/score_qnx
 </pre></div>
 </div>
-<p>First, as shown in the line 2- we need to define when the workflow should be executed.
-In our case, we want to build the scrample application everytime the PR is <em>opened</em>, <em>created</em> or <em>synchronized</em>.</p>
-<p>Second, we need to define which jobs should be executed. For now, it is only one job that builds the scrample application,
-as shown in the line 8.</p>
-<p>Finally, we need to define steps of the build job:</p>
+<p>First, as shown in line 2 we define when the workflow should run.
+In this case, it is triggered whenever a PR is opened, created or synchronized.</p>
+<p>Next, we specify the job to be executed. For now, there is a single job that builds the scrample application, as shown in the line 8.
+Finally, we need to define the steps of the build job:</p>
 <ul class="simple">
-<li><p>In line 11 we checkout the repository.</p></li>
-<li><p>In line 13 we setup the bazel.</p></li>
-<li><p>In line 15 we set up the QNX license, using CI license, that is stored in the secret storage of the CI infrastructure.</p></li>
-<li><p>Finally, in line 21 we define the step to build the scrample application.
-After setting the QNX variables, we run the bazel command that we also ran locally, to build the <em>scrample binary</em>.</p></li>
-<li><p>In last step (line 28) we clean-up all unnecessary files from the remote build machine.</p></li>
+<li><p>Line 11: checkout the repository.</p></li>
+<li><p>Line 13: set up bazel.</p></li>
+<li><p>Line 15: set up the QNX license using the CI secrets stored in the CI infrastructure.</p></li>
+<li><p>Line 21: uild the scrample binary using the same bazel command executed locally.</p></li>
+<li><p>Line 28: clean-up temporary QNX files from the remote build machine.</p></li>
 </ul>
-<p>As soon as the workflow is merged to the repository, every time someone creates a PR,
-we will see the execution of the build target in the <a class="reference external" href="https://github.com/eclipse-score/reference_integration/actions">Actions sections</a>
-of the repository.</p>
+<p>Once the workflow is merged into the repository, every new PR we will automatically trigger the build and its result in the
+<a class="reference external" href="https://github.com/eclipse-score/reference_integration/actions">Actions sections</a>.</p>
 </section>
 
 

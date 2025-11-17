@@ -566,21 +566,28 @@
 <h1>First Eclipse S-CORE Module<a class="headerlink" href="#first-eclipse-s-core-module" title="Link to this heading">#</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<p>Before starting, please make sure that you are an official contributor to the Eclipse S-CORE project,
-otherwise you will not have required permissions. An introduction how to do so, you can find in
+<p>Before starting, ensure you are an official contributor to the Eclipse S-CORE project.
+Otherwise, you will not have required permissions. Instructions can be found in
 <a class="reference external" href="https://eclipse-score.github.io/score/main/contribute/general/contribution_attribution.html#">Actions to ensure Proper Contribution Attribution in Eclipse Eclipse S-CORE</a>.</p>
-<p>Once you’ve created an Eclipse account/accepted Eclipse Contributor Agreement (ECA)/connected your GitHub account
-with your Eclipse Account, you should contact one of the Eclipse S-CORE Project Leads
-(listed at the official <a class="reference external" href="https://projects.eclipse.org/projects/automotive.score/who">Eclipse SDV S-Core webpage</a>  )
-to add you to the list of the official contributors of the Eclipse S-CORE GitHub organization.
-The best way to approach Eclipse S-CORE project leads would be via the <a class="reference external" href="https://sdv.eclipse.org/get-engaged/">eclipse sdv slack channel</a>.</p>
-<p>Now since you are a part of Eclipse S-CORE GitHub organization, you are able to create a repository for your application.
-In the Eclipse S-CORE project, this is done according to the rules of the Eclipse organization.
-A vast majority of configurations for the GitHub organization is done using <a class="reference external" href="https://otterdog.readthedocs.io/en/latest/">otterdog configuration</a>
-in the following repository: <a class="github reference external" href="https://github.com/eclipse-score/.eclipsefdn">eclipse-score/.eclipsefdn</a>.
-Create a private fork of this repository and modify otterdog configuration
-in <a class="reference external" href="https://github.com/eclipse-score/.eclipsefdn/blob/main/otterdog/eclipse-score.jsonnet">otterdog/eclipse-score.jsonnet</a> file,
-by adding a new repository. In our case it´s the scrample repository:</p>
+<p>Once you have created an Eclipse account,
+accepted Eclipse Contributor Agreement (ECA), and linked your GitHub account with your Eclipse Account,
+contact one of the Eclipse S-CORE Project Leads (listed at the official <a class="reference external" href="https://projects.eclipse.org/projects/automotive.score/who">Eclipse SDV S-Core webpage</a>).
+They will add you to the list of the official contributors of the Eclipse S-CORE GitHub organization.</p>
+<p>The recommended communication channel to approach Eclipse S-CORE project leads is the
+<a class="reference external" href="https://sdv.eclipse.org/get-engaged/">eclipse sdv slack channel</a>.</p>
+<section id="creating-a-repository-for-your-module">
+<h2>Creating a Repository for Your Module<a class="headerlink" href="#creating-a-repository-for-your-module" title="Link to this heading">#</a></h2>
+<p>After becoming part of Eclipse S-CORE GitHub organization, you can create a repository for your module.
+Repository creation follows Eclipse organizational rules.
+Most configuration is handled via <a class="reference external" href="https://otterdog.readthedocs.io/en/latest/">otterdog configuration</a> located in:</p>
+<ul class="simple">
+<li><p><a class="github reference external" href="https://github.com/eclipse-score/.eclipsefdn">eclipse-score/.eclipsefdn</a>.</p></li>
+</ul>
+<p>Create a private fork of this repository and modify the file:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/eclipse-score/.eclipsefdn/blob/main/otterdog/eclipse-score.jsonnet">otterdog/eclipse-score.jsonnet</a></p></li>
+</ul>
+<p>Add your repository definition, e.g.:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">newModuleRepo</span><span class="p">(</span><span class="s1">&#39;logging&#39;</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">description</span><span class="p">:</span> <span class="s2">&quot;Repository for logging framework&quot;</span><span class="p">,</span>
 <span class="p">},</span>
@@ -592,12 +599,14 @@ by adding a new repository. In our case it´s the scrample repository:</p>
 <span class="p">},</span>
 </pre></div>
 </div>
-<p>Then, create a PR in the original  <a class="github reference external" href="https://github.com/eclipse-score/.eclipsefdn">eclipse-score/.eclipsefdn</a> repository and wait for its approval
-by Eclipse S-CORE project lead and eclipse security team.</p>
+<p>Then, create a PR in the original <a class="github reference external" href="https://github.com/eclipse-score/.eclipsefdn">eclipse-score/.eclipsefdn</a> repository. The PR must be approved by:</p>
+<ul class="simple">
+<li><p>Eclipse S-CORE project lead</p></li>
+<li><p>Eclipse Foundation Security Team</p></li>
+</ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>To get your PR approved sooner, it is a good idea to make sure that score project leads and eclipse security team
-are aware of your PR, therefore you can put smth. like this into PR’s comment:</p>
+<p>To speed up approval, mention both groups in your PR comment:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@eclipse</span><span class="o">-</span><span class="n">score</span><span class="o">/</span><span class="n">automotive</span><span class="o">-</span><span class="n">score</span><span class="o">-</span><span class="n">project</span><span class="o">-</span><span class="n">leads</span>
 <span class="nd">@eclipse</span><span class="o">-</span><span class="n">score</span><span class="o">/</span><span class="n">eclipsefdn</span><span class="o">-</span><span class="n">security</span>
 
@@ -605,32 +614,33 @@ are aware of your PR, therefore you can put smth. like this into PR’s comment:
 </pre></div>
 </div>
 </div>
-<p>As soon as your PR is approved and merged (normally done by either security team or project lead),
-you will be able to find your repo in the Eclipse S-CORE GitHub organization repositories overview.</p>
+<section id="repository-layout">
+<h3>Repository Layout<a class="headerlink" href="#repository-layout" title="Link to this heading">#</a></h3>
+<p>Once merged, your new repository will appear in the Eclipse S-CORE GitHub organization repositories overview.</p>
 <a class="reference internal image-reference" href="../../_images/repository_layout.png"><img alt="repository layout" class="align-center" src="../../_images/repository_layout.png" style="width: 500px;" />
 </a>
-<p>By opening the repository, you will see, it´s not empty.
-All repositories in Eclipse S-CORE are created based on <cite>Eclipse S-CORE repository template &lt;https://github.com/eclipse-score/module_template&gt;</cite>.
-The <a class="reference external" href="https://github.com/eclipse-score/module_template/blob/main/README.md">README.md</a> file
-of the repository already gives a good explanation regarding the structure of the repository.
-However, let us have a more detailed look to some files and folders.</p>
+<p>All repositories are created using the <cite>Eclipse S-CORE repository template &lt;https://github.com/eclipse-score/module_template&gt;</cite>:</p>
+<ul class="simple">
+<li><p>&lt;<a class="github reference external" href="https://github.com/eclipse-score/module_template">eclipse-score/module_template</a>&gt;.</p></li>
+</ul>
+<p>The <a class="reference external" href="https://github.com/eclipse-score/module_template/blob/main/README.md">README.md</a> file already explains the basic structure.
+Below is an overview of the most relevant files and folders.</p>
+</section>
+</section>
 <section id="github-workflows">
 <h2>.github/workflows/<a class="headerlink" href="#github-workflows" title="Link to this heading">#</a></h2>
-<p>This is the place where we define various CI/CD workflows for the repository, e.g.
-building of the source code or execution of the unit-tests by every PR or as part of the integration gate
-<a class="reference internal" href="../project_basics/integration_process.html#integration-process"><span class="std std-ref">integration gate</span></a> during release tag creation.</p>
+<p>Contains CI/CD workflows (build, unit-tests,
+<a class="reference internal" href="../project_basics/integration_process.html#integration-process"><span class="std std-ref">integration gate</span></a> checks).</p>
 </section>
 <section id="vscode">
 <h2>.vscode<a class="headerlink" href="#vscode" title="Link to this heading">#</a></h2>
-<p>Provides Eclipse S-CORE recommended configuration for your VS Code setup,
-including the code completion patterns for requirements and architecture in
+<p>Provides Eclipse S-CORE recommended VS Code setup, including code completion patterns for requirements and architecture in
 <a class="reference external" href="https://github.com/eclipse-score/module_template/blob/main/.vscode/restructuredtext.code-snippets">.vscode/restructuredtext.code-snippets</a>.</p>
 </section>
 <section id="docs">
 <h2>docs<a class="headerlink" href="#docs" title="Link to this heading">#</a></h2>
-<p>This is the appropriate folder to put all documentation for your module in
-<a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html">rst format</a>.
-Later on. we will have an example how to do this.</p>
+<p>Place all module documentation here in <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html">rst format</a>.
+Examples follow later in this guide.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>We try to describe most <a class="reference external" href="https://eclipse-score.github.io/score/main/contribute/contribution_request/index.html#doc__contr_guideline">common workflows</a>
@@ -639,17 +649,16 @@ for developers. It is worth checking it.</p>
 </section>
 <section id="src">
 <h2>src<a class="headerlink" href="#src" title="Link to this heading">#</a></h2>
-<p>self explaining</p>
+<p>Self-explainatory: source code</p>
 </section>
 <section id="test">
 <h2>test<a class="headerlink" href="#test" title="Link to this heading">#</a></h2>
-<p>self explaining</p>
+<p>Self-explainatory: tests</p>
 </section>
 <section id="bazelrc">
 <h2>.bazelrc<a class="headerlink" href="#bazelrc" title="Link to this heading">#</a></h2>
-<p>With <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/.bazelrc">.bazelrc</a> file you can set-up the bazel configuration
-for your bazel module. We will further extend the .bazelrc file in the upcoming chapters, e.g., with toolchain configuration.
-Here, we just want to highlight following config items:</p>
+<p>Defines bazel configuration for your the module.
+Important entries in <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/.bazelrc">.bazelrc</a> file include:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">build</span> <span class="o">--</span><span class="n">java_language_version</span><span class="o">=</span><span class="mi">17</span>
 <span class="linenos">2</span><span class="n">build</span> <span class="o">--</span><span class="n">tool_java_language_version</span><span class="o">=</span><span class="mi">17</span>
 <span class="linenos">3</span><span class="n">build</span> <span class="o">--</span><span class="n">java_runtime_version</span><span class="o">=</span><span class="n">remotejdk_17</span>
@@ -661,16 +670,18 @@ Here, we just want to highlight following config items:</p>
 </span><span class="hll"><span class="linenos">9</span><span class="n">common</span> <span class="o">--</span><span class="n">registry</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">bcr</span><span class="o">.</span><span class="n">bazel</span><span class="o">.</span><span class="n">build</span>
 </span></pre></div>
 </div>
-<p>The line number 8 points to the Eclipse S-CORE <a class="github reference external" href="https://github.com/eclipse-score/bazel_registry">eclipse-score/bazel_registry</a>,
-where all official versions of Eclipse S-CORE modules are published.
-The line number 9 points to the common bazel registry, where common bazel modules are made available for everyone.
-This means, once we´re referencing a depending module with our scrample application,
+<ul class="simple">
+<li><p>Line number 8 points to the Eclipse S-CORE <a class="github reference external" href="https://github.com/eclipse-score/bazel_registry">eclipse-score/bazel_registry</a>,
+where all official versions of Eclipse S-CORE modules are published.</p></li>
+<li><p>Line number 9 points to the common bazel registry, where common bazel modules are made available for everyone.</p></li>
+</ul>
+<p>This means, once we´re referencing a depending module with our scrample application,
 bazel will start searching it in one of these two locations.</p>
 </section>
 <section id="module-bazel">
 <h2>MODULE.bazel<a class="headerlink" href="#module-bazel" title="Link to this heading">#</a></h2>
-<p>This is actually the file, that makes our repository to the bazel module.
-Let us check <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/MODULE.bazel">MODULE.bazel</a> initial content:</p>
+<p>This file turns your repository into a bazel module.</p>
+<p>Let us check <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/MODULE.bazel">MODULE.bazel</a> initial content:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">module</span><span class="p">(</span>
 <span class="linenos">2</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;cpp_rust_template_repository&quot;</span><span class="p">,</span>
 <span class="linenos">3</span>    <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
@@ -679,14 +690,14 @@ Let us check <a class="reference external" href="https://github.com/eclipse-scor
 </div>
 <p>Here, we´re making the first declaration of our module by defining a name and a version.
 Please be aware, that only after our module was published in the Eclipse S-CORE bazel registry, other modules can access it.</p>
-<p>Now we need to give a reasonable name to our module, so let us replace <em>cpp_rust_template_repository</em> with <em>score_scrample</em>.</p>
+<p>Rename the module and replace <em>cpp_rust_template_repository</em> by <em>score_scrample</em>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">module</span><span class="p">(</span>
 <span class="linenos">2</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_scrample&quot;</span><span class="p">,</span>
 <span class="linenos">3</span>    <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
 <span class="linenos">4</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Please be aware, based on Eclipse S-CORE´s naming convention all names must start with <em>score_</em> prefix.</p>
+<p>Please be aware, according to Eclipse S-CORE´s naming convention all module names must start with <em>score_</em> prefix.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;rules_python&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;1.4.1&quot;</span><span class="p">)</span>
 <span class="linenos"> 2</span>
 <span class="linenos"> 3</span><span class="n">PYTHON_VERSION</span> <span class="o">=</span> <span class="s2">&quot;3.12&quot;</span>
@@ -733,21 +744,22 @@ In upcoming chapters, we will talk about this in more detail.</p>
 <span class="linenos">5</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_docs_as_code&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;1.1.0&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Finally, we add a dependency to Eclipse S-CORE native modules “<em>score_tooling</em>” and “<em>score_docs_as_code</em>”,
-which will enable us to build documentation and execute different kinds of checks (e.g. license checker).</p>
+<p>Finally, we add a dependency to Eclipse S-CORE native modules “<em>score_tooling</em>” and “<em>score_docs_as_code</em>”.
+These enable documentation builds and tooling checks (e.g., license checker).</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Please be aware that working with multiple modules located in various repositories can be really challenging,
-especially if you need to do the changes in multiple modules in parallel. You can use the following approach
-to make your life a little bit easier:</p>
-<p>use <a class="reference external" href="https://bazel.build/rules/lib/globals/module#git_override">git_override()</a> if you want to use a version of another module, that is currently not officially availabe
-in the bazel registry.</p>
-<p>use <a class="reference external" href="https://bazel.build/rules/lib/globals/module#local_path_override">local_path_override()</a> if you want to use the local version of the module, e.g. during active development.</p>
+<p>Working across multiple modules and repositories can be challenging. Use the following approach during development:</p>
+<ul class="simple">
+<li><p>use <a class="reference external" href="https://bazel.build/rules/lib/globals/module#git_override">git_override()</a>
+if you want to use a version of another module, that is currently not officially availabe in the bazel registry.</p></li>
+<li><p>use <a class="reference external" href="https://bazel.build/rules/lib/globals/module#local_path_override">local_path_override()</a>
+if you want to use your local version of the module, e.g. during active development.</p></li>
+</ul>
 </div>
 </section>
 <section id="build">
 <h2>BUILD<a class="headerlink" href="#build" title="Link to this heading">#</a></h2>
-<p>Last but not least, the bazel <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/BUILD">BUILD</a> file
+<p>The bazel <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/BUILD">BUILD</a> file
 contains main bazel targets on the top level of the scrample project:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;@score_docs_as_code//:docs.bzl&quot;</span><span class="p">,</span> <span class="s2">&quot;docs&quot;</span><span class="p">)</span>
 <span class="linenos">2</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;@score_tooling//:defs.bzl&quot;</span><span class="p">,</span> <span class="s2">&quot;copyright_checker&quot;</span><span class="p">,</span> <span class="s2">&quot;dash_license_checker&quot;</span><span class="p">,</span> <span class="s2">&quot;setup_starpls&quot;</span><span class="p">,</span> <span class="s2">&quot;use_format_targets&quot;</span><span class="p">)</span>
@@ -784,7 +796,7 @@ based on bazel rules implemented and imported from <a class="github reference ex
 <span class="linenos">3</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Finally, we define the target to build all documentation in the rst format, which is located in the
+<p>Finally, the <em>docs</em> target builds all documentation in the .rst format, which is located in the
 <a class="reference external" href="https://github.com/eclipse-score/docs-as-code/tree/main/docs">docs</a> folder and all its subfolders.
 This functionality is implemented in <a class="github reference external" href="https://github.com/eclipse-score/docs-as-code">eclipse-score/docs-as-code</a> module.</p>
 </section>
@@ -837,6 +849,10 @@ This functionality is implemented in <a class="github reference external" href="
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-repository-for-your-module">Creating a Repository for Your Module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-layout">Repository Layout</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github-workflows">.github/workflows/</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vscode">.vscode</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docs">docs</a></li>

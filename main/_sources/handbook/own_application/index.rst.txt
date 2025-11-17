@@ -24,24 +24,24 @@ Use
 Getting Started
 ===============
 
-This guide shows you how to set up and use the Communication module of Eclipse S-CORE.
+This guide explains how to set up and use the Communication module of Eclipse S-CORE.
 
-To use the communication module in your project, you need to follow these steps:
+To integrate the communication module into your project, follow these steps:
+
 
 -----------
 1. Setup
 -----------
 
-Start by creating a new project in your preferred IDE (e.g., Visual Studio Code..).
-There is already a devcontainer setup under: https://github.com/eclipse-score/devcontainer
+Start by creating a new project in your preferred IDE (e.g., Visual Studio Code). A ready-to-use devcontainer is available under: 
 
-You can find the communication module reference documentation under:
+-	https://github.com/eclipse-score/devcontainer
 
-Overview:
-https://github.com/eclipse-score/communication
+Reference documentation for the communication module:
 
-User Facing API
-https://github.com/eclipse-score/communication/blob/main/score/mw/com/doc/user_facing_API_examples.md
+-	Overview: https://github.com/eclipse-score/communication
+-	User Facing API: https://github.com/eclipse-score/communication/blob/main/score/mw/com/doc/user_facing_API_examples.md
+
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1.1 Add this to your MODULE.bazel:
@@ -87,9 +87,9 @@ https://github.com/eclipse-score/communication/blob/main/score/mw/com/doc/user_f
       bazel_dep(name = "score-baselibs", version = "0.1.3")
       bazel_dep(name = "communication", version = "0.1.1")
 
-Be aware that the versions change from time to time, so make sure you check the latest versions in the respective bazel registry
+Be aware that the version numbers change over time. Always check the latest versions in the respective bazel registry
 
-https://github.com/eclipse-score/bazel_registry/tree/main/modules
+-	https://github.com/eclipse-score/bazel_registry/tree/main/modules
 
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -115,32 +115,37 @@ https://github.com/eclipse-score/bazel_registry/tree/main/modules
 1.3 Run Bazel
 ^^^^^^^^^^^^^
 
-If you start with a plain project, add an empty file called ``BUILD`` into your project folder.
+If you start with an empty project, add an empty file named ``BUILD`` into your project root.
+Now you can now run build the project with the command bazel ``bazel build //...`` 
 
-Now you can build the project with the command ``bazel build //...`` (so far nothing happens, because no targets were defined).
+(At this point nothing happens yet, because no targets are defined).
+You can now either continue with this guide to create a minimal consumer-producer example or start coding your own application
 
-You can now choose to continue in this guide to create a simple consumer-producer program or start on your own.
 
 ------------
 2. Use it :)
 ------------
 
-Now that you have set up your project so far, let's start to send and receive some messages.
+Once your project is set up, you can start sending and receiving messages.
 
 ^^^^^^^^^^^^^^^^^^^^
 2.1 Basic Structure
 ^^^^^^^^^^^^^^^^^^^^
 
-First, let's create a folder ``src`` in our root project directory.
+Create a folder named ``src`` in your root project directory.
+Inside ``src``, create the following folders: 
 
-Inside ``src``, create the following folders: ``consumer``, ``producer``, and ``etc``.
+-	``consumer`` 
+-	``producer``
+
+additional folders if needed.
+
 
 ^^^^^^^^^^^
 2.2 Message
 ^^^^^^^^^^^
-
-Before we start sending messages, we need to define what we will send.
-Therefore, create the file ``message_data.h`` in your ``src`` directory.
+Before sending messages, define the data type to be exchanged.
+Create a file named ``message_data.h`` in your ``src`` directory.
 
 .. code-block:: cpp
 
@@ -173,25 +178,26 @@ Therefore, create the file ``message_data.h`` in your ``src`` directory.
 
    #endif //SCORE_MESSAGE_DATA_H
 
-Let's take a deeper look into that.
-We have the struct ``Message`` containing our ``message`` as a string.
+**What this code does:**
 
-Then we have a more complex code snippet, where we define the ``IPCInterface``. This interface is necessary so producer and consumer know what to send/receive.
+-	struct ``Message`` defines the payload - here is a simple ``message``  string.
+-	``IPCInterface`` defines the communication interface used by producer and consumer.
 
-After defining the interface, we define:
+This interface is necessary so producer and consumer know what to send/receive.
+The interface provides two roles:
 
-*   ``IPCInterfaceProxy``: client-role
-*   ``IPCInterfaceSkeleton``: server-role
+-	``IPCInterfaceProxy``: client-role
+-	``IPCInterfaceSkeleton``: server-role
 
-You can take a deeper look into this architecture here: `Eclipse S-Core Communication Doc <https://eclipse-score.github.io/score/main/features/communication/docs/architecture/index.html#frontend>`_.
+More details are available in the `Eclipse S-Core Communication Doc <https://eclipse-score.github.io/score/main/features/communication/docs/architecture/index.html#frontend>`_.
+
 
 ^^^^^^^^^^^^
 2.3 Producer
 ^^^^^^^^^^^^
 
-The producer will (as its name suggests) produce/send the data.
-
-Go inside the ``producer`` directory and create a new file called ``producer.h``.
+The producer sends data.
+Navigate to the ``producer`` directory and create a new file called ``producer.h``.
 
 .. code-block:: cpp
 
@@ -217,9 +223,11 @@ Go inside the ``producer`` directory and create a new file called ``producer.h``
    #endif //SCORE_PRODUCER_H
 
 As you can see, the header is lightweight; we will only need to use the Constructor and ``RunProducer`` from outside.
+
 ``create_result`` is our ``IPCInterfaceSkeleton`` specified with the ``instance_specifier`` from our ``score_mw_com.json``.
 
 After that, create the file ``producer.cpp``.
+
 
 .. code-block:: cpp
 
@@ -266,28 +274,28 @@ After that, create the file ``producer.cpp``.
      return EXIT_SUCCESS;
    }
 
-Here we have a bit more code.
+**What happens in the code:**
 
-Let's start with the constructor, which only initializes ``create_result``.
+The constructor initializes the communication skeleton ``create_result``.
 
-More complex is ``RunProducer``, where we first check if the initialization of ``create_result`` was successful.
-Then we offer our service and also check if it was successful.
-If so, we start to send our messages in a loop.
+``RunProducer``: 
 
-At the end, we need to stop offering the service.
+-	checks if the initialization of ``create_result`` was successful
+-	offers service 
+-	enters a loop and sends our messages 
+-	stops offering the service at the end
+
 
 ^^^^^^^^^^^^
 2.4 Consumer
 ^^^^^^^^^^^^
-
 On the other side, the consumer will consume/receive the data.
 
-Go inside the ``consumer`` directory and create a new file called ``consumer.h``.
+Navigate to the ``consumer`` directory and create a new file called ``consumer.h``.
 
 ^^^^^^^^^^^^^^
 2.5 Next steps
 ^^^^^^^^^^^^^^
-
-If you want to take a deeper look into the code, feel free to check out the example folder
+For a complete example implementation, see the example folder
 
 https://github.com/eclipse-score/communication/tree/main/score/mw/com/example/ipc_bridge

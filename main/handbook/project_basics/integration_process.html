@@ -565,62 +565,88 @@
 <span id="id1"></span><h1>Integration process<a class="headerlink" href="#integration-process" title="Link to this heading">#</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<p>The integration process cannot be taken easily, and since Eclipse S-CORE project just recently started,
-we´re still gathering experience and adapting the process based on our needs.
-Several discussions and concepts were written to this topic.
-On of the most exhaustive description can be found in the following <a class="reference external" href="https://eclipse-score.github.io/score/main/design_decisions/DR-002-infra.html">decision record</a>.
-In this chapter, we´ll not dive in into details yet will give you just the overall idea of the integration process of Eclipse S-CORE instead.</p>
+<p>The integration process is a core activity within Eclipse S-CORE and is still evolving as the project gathers experience.
+Several discussions and concepts have shaped the current approach.
+A detailed description is available in the following <a class="reference external" href="https://eclipse-score.github.io/score/main/design_decisions/DR-002-infra.html">decision record</a>.
+This chapter provide a high-level overview of how integration works in Eclipse S-CORE.</p>
 <img alt="release_integration_concept" class="align-center" src="../../_images/release_integration_concept.drawio.svg" />
-<section id="compliance-to-eclipse-s-core-software-development-process">
-<h2>Compliance to Eclipse S-CORE software development process<a class="headerlink" href="#compliance-to-eclipse-s-core-software-development-process" title="Link to this heading">#</a></h2>
-<p>We encourage every software module -inside and outside the Eclipse S-CORE GitHub organization-
-to follow the Eclipse S-CORE development process strictly and to introduce it by including appropriate checks
-into the CI/CD pipeline. By doing so, the compliance to the Eclipse S-CORE project is validated with every pull request.
-But the truth is, due to various reasons we cannot even enforce this inside our GitHub organization.</p>
-<p>One reason for this is, that most software modules are used by multiple other projects apart from S-CORE.
-Another reason is, that a software module is being open sourced by a company which follows other/ own software development process.
-In this case, an immediate switch to the Eclipse S-CORE development process is not possible.</p>
-<p>Therefore, it is acceptable (but not recommended), that every software module follows its own software development process inside its repo.
-To announce a new version of a module and make it available inside Eclipse S-CORE, it needs to be added to the bazel registry first.
-This is where our integration process comes in place. Before adding a module to the Eclipse S-CORE bazel registry,
-following two conditions have to be fulfill:</p>
+<section id="compliance-with-the-eclipse-s-core-software-development-process">
+<h2>Compliance with the Eclipse S-CORE software development process<a class="headerlink" href="#compliance-with-the-eclipse-s-core-software-development-process" title="Link to this heading">#</a></h2>
+<p>All software modules - whether inside or outside the Eclipse S-CORE GitHub organization –
+are encouraged to follow the Eclipse S-CORE development process strictly and to enforce it through CI/CD checks.
+This ensures that compliance is validated with every pull request.</p>
+<p>However, strict compliance cannot always be guaranteed. Reasons include:</p>
 <ul class="simple">
-<li><p><strong>Requirements of the “integration gate”</strong> need to be fulfilled.
-This is a mandatory collection of checks and jobs which need to be passed by every module in Eclipse S-CORE.
-Those ensure compliance with the Eclipse S-CORE software development process, e.g., “code can be compiled with gcc/qcc compiler”,
-“unit tests are not failing”, “requirements and architecture are properly linked” and so on.</p></li>
-<li><p>Once a software module meets integration gate´s requirements (code changes of the software modules or related artifacts might be needed),
-a pull request to Eclipse S-CORE bazel registry repo can be created. Next, the pull request is being reviewed by safety,
-security and quality managers. Once all findings were fixed, the pull request is being merged to the Eclipse S-CORE bazel registry.
-Now the software module is officially available to the Eclipse S-CORE community.</p></li>
+<li><p>Many modules are reused in other projects beyond S-CORE.</p></li>
+<li><p>Some modules originate from companies with their own established software development process.
+An immediate migration to the Eclipse S-CORE development process is not feasible.</p></li>
+</ul>
+<p>Therefore, it is acceptable (but not recommended) for software modules to follow their own
+software development process inside its repository.
+To make a module available for Eclipse S-CORE, a new version must first be added to the bazel registry first.</p>
+<p>This is where the S-CORE integration process applies.
+Before adding a module to the Eclipse S-CORE bazel registry, two conditions must be met:</p>
+<ul>
+<li><p><strong>Fulfillment of the “Integration Gate”</strong></p>
+<p>The integration gate is a mandatory set of checks that validates compliance with the Eclipse S-CORE software development process.
+Examples include:</p>
+<ul class="simple">
+<li><p>code compiles with gcc/qcc</p></li>
+<li><p>unit tests pass</p></li>
+<li><p>requirements and architecture are properly linked according to the metamodel</p></li>
+</ul>
+<p>Module owners may need to update code or artefacts to meet these criteria.</p>
+</li>
+<li><p><strong>Review and Approval</strong></p>
+<p>After meeting integration gate requirements, a pull request to Eclipse S-CORE bazel registry repo can be created.
+This pull request is reviewed by safety, security and quality managers. Once all findings were resolved,
+the pull request is merged to the Eclipse S-CORE bazel registry, and the software module becomes officially
+available to the Eclipse S-CORE community.</p>
+</li>
 </ul>
 </section>
 <section id="reference-integration">
 <h2>Reference Integration<a class="headerlink" href="#reference-integration" title="Link to this heading">#</a></h2>
-<p>The first step ensures, that the software module is compliant to the Eclipse S-CORE development process.
-But it is not ensured yet, that the new version of the software module works together with other modules.
-This is where the reference integration comes into place.
-Reference integration repository contains reference image(s), which are used to execute feature integration tests.
-Integration tests ensure that every feature, which was built by multiple modules, implements its feature requirements and can be used by the end-user.</p>
-<p><strong>Reference integration overwrites all dependencies</strong>, which were set by the software module itself.
-This means, if a reference integration depends on the software module “A” in version 1.0,
-then this is valid for all other software modules which are included in the same reference integration.
-In consequence, all modules will also be built by using the same version 1.0 of the module A, independently from their locally configured dependency.
-This ensures a consistent and unique state of all software module versions which are included in the same reference integration repository.</p>
-<p>Sometimes, the introduction of new versions of a software module into the reference integration repository can lead to problems.
-This is the case, when other modules are not compatible with changes included in the newer version.
-In theory, such problems can be avoided by using proper planning and concept of deprecated interfaces.
-Since in praxis such situations cannot be always avoided, the <strong>Eclipse S-CORE integration team</strong>
-is in charge for solving such problems once occurred.</p>
-<p>Based on agreed timeline -all feature integration tests are successfully executed/ other Eclipse S-CORE
-project metrics are fulfilled- a release of reference integration repository
-(official Eclipse S-CORE release) can be done. It consists mainly of:</p>
+<p>The first step, passing the integration gate, ensures Process compliance, but not compatibility with other modules.
+This is the purpose of the reference integration.</p>
+<p>The reference integration repository assembles all modules into reference images
+and executes feature integration tests. These tests ensure:</p>
 <ul class="simple">
-<li><p>A <strong>release tag</strong> on the reference integration repository, which automatically also freezes relevant version of every referenced software module.
-Therefore, all software modules are indicated, which are officially part of the particular S-CORE release.</p></li>
-<li><p><strong>Release Notes.</strong></p></li>
-<li><p><strong>Further documents.</strong></p></li>
+<li><p>correct implementation of feature requirements</p></li>
+<li><p>compatibility between dependent modules</p></li>
+<li><p>testability of features from an end-user perspective</p></li>
 </ul>
+<section id="unified-dependency-handling">
+<h3>Unified Dependency Handling<a class="headerlink" href="#unified-dependency-handling" title="Link to this heading">#</a></h3>
+<p>Within Reference integration, all module dependencies are overwriten by the versions defined in the reference integration configuration.</p>
+<p>For example:
+If the reference integration specifies software module “A” in version 1.0,
+all software modules in that integration are built against “A” version 1.0 – regardless of their local dependency settings.
+This ensures a consistent and unique state of all software module versions which are included
+in the same reference integration repository.</p>
+</section>
+<section id="handling-of-incompatibilities">
+<h3>Handling of Incompatibilities<a class="headerlink" href="#handling-of-incompatibilities" title="Link to this heading">#</a></h3>
+<p>Introducing  a new version into the reference integration repository can cause incompatibilities
+if other modules have not yet adapted to changes.
+Although proper planning and deprecation strategies help to avoid such issues, they cannot always be avoided.
+The <strong>Eclipse S-CORE integration team</strong> is in charge for solving such problems when they occurr</p>
+</section>
+<section id="release-of-reference-integration">
+<h3>Release of Reference Integration<a class="headerlink" href="#release-of-reference-integration" title="Link to this heading">#</a></h3>
+<p>Once: –</p>
+<ul class="simple">
+<li><p>all feature integration tests have passed, and</p></li>
+<li><p>other Eclipse S-CORE project metrics for the release cycle are fulfilled</p></li>
+</ul>
+<p>a new release of the reference integration repository is created. An official S-CORE release typically consists of:</p>
+<ul class="simple">
+<li><p>A <strong>release tag</strong> in the reference integration repository (freezing versions of all included software modules)</p></li>
+<li><p><strong>Release Notes</strong></p></li>
+<li><p><strong>Additional documents as required</strong></p></li>
+</ul>
+<p>This markst he complete and validated version of the Eclipse S-CORE platform for that release milestone.</p>
+</section>
 </section>
 </section>
 
@@ -671,8 +697,13 @@ Therefore, all software modules are indicated, which are officially part of the 
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compliance-to-eclipse-s-core-software-development-process">Compliance to Eclipse S-CORE software development process</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-integration">Reference Integration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compliance-with-the-eclipse-s-core-software-development-process">Compliance with the Eclipse S-CORE software development process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-integration">Reference Integration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unified-dependency-handling">Unified Dependency Handling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-of-incompatibilities">Handling of Incompatibilities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#release-of-reference-integration">Release of Reference Integration</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

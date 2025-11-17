@@ -19,23 +19,32 @@ First Eclipse S-CORE Module
    :maxdepth: 1
    :glob:
 
-Before starting, please make sure that you are an official contributor to the Eclipse S-CORE project,
-otherwise you will not have required permissions. An introduction how to do so, you can find in
+Before starting, ensure you are an official contributor to the Eclipse S-CORE project.
+Otherwise, you will not have required permissions. Instructions can be found in 
 `Actions to ensure Proper Contribution Attribution in Eclipse Eclipse S-CORE <https://eclipse-score.github.io/score/main/contribute/general/contribution_attribution.html#>`_.
+
+Once you have created an Eclipse account,
+accepted Eclipse Contributor Agreement (ECA), and linked your GitHub account with your Eclipse Account,
+contact one of the Eclipse S-CORE Project Leads (listed at the official `Eclipse SDV S-Core webpage <https://projects.eclipse.org/projects/automotive.score/who>`_).
+They will add you to the list of the official contributors of the Eclipse S-CORE GitHub organization. 
+
+The recommended communication channel to approach Eclipse S-CORE project leads is the 
+`eclipse sdv slack channel <https://sdv.eclipse.org/get-engaged/>`_.
  
-Once you’ve created an Eclipse account/accepted Eclipse Contributor Agreement (ECA)/connected your GitHub account
-with your Eclipse Account, you should contact one of the Eclipse S-CORE Project Leads
-(listed at the official `Eclipse SDV S-Core webpage <https://projects.eclipse.org/projects/automotive.score/who>`_  )
-to add you to the list of the official contributors of the Eclipse S-CORE GitHub organization.
-The best way to approach Eclipse S-CORE project leads would be via the `eclipse sdv slack channel <https://sdv.eclipse.org/get-engaged/>`_.
- 
-Now since you are a part of Eclipse S-CORE GitHub organization, you are able to create a repository for your application.
-In the Eclipse S-CORE project, this is done according to the rules of the Eclipse organization.
-A vast majority of configurations for the GitHub organization is done using `otterdog configuration <https://otterdog.readthedocs.io/en/latest/>`_
-in the following repository: https://github.com/eclipse-score/.eclipsefdn.
-Create a private fork of this repository and modify otterdog configuration
-in `otterdog/eclipse-score.jsonnet <https://github.com/eclipse-score/.eclipsefdn/blob/main/otterdog/eclipse-score.jsonnet>`_ file,
-by adding a new repository. In our case it´s the scrample repository:
+
+Creating a Repository for Your Module
+------------------------------------------
+After becoming part of Eclipse S-CORE GitHub organization, you can create a repository for your module.
+Repository creation follows Eclipse organizational rules.
+Most configuration is handled via `otterdog configuration <https://otterdog.readthedocs.io/en/latest/>`_ located in: 
+
+- https://github.com/eclipse-score/.eclipsefdn. 
+
+Create a private fork of this repository and modify the file: 
+
+- `otterdog/eclipse-score.jsonnet <https://github.com/eclipse-score/.eclipsefdn/blob/main/otterdog/eclipse-score.jsonnet>`_ 
+
+Add your repository definition, e.g.: 
 
 .. code-block:: python
     :emphasize-lines: 4, 5, 6
@@ -50,13 +59,14 @@ by adding a new repository. In our case it´s the scrample repository:
         description: "Incubation repository for ABI compatible data types feature",
     },
 
-Then, create a PR in the original  https://github.com/eclipse-score/.eclipsefdn repository and wait for its approval
-by Eclipse S-CORE project lead and eclipse security team.
+Then, create a PR in the original https://github.com/eclipse-score/.eclipsefdn repository. The PR must be approved by:
 
+- Eclipse S-CORE project lead
+- Eclipse Foundation Security Team
 
 .. tip::
-    To get your PR approved sooner, it is a good idea to make sure that score project leads and eclipse security team
-    are aware of your PR, therefore you can put smth. like this into PR's comment:
+    
+    To speed up approval, mention both groups in your PR comment:    
     
     .. code-block:: python
         
@@ -65,41 +75,40 @@ by Eclipse S-CORE project lead and eclipse security team.
 
         Please approve.
 
-As soon as your PR is approved and merged (normally done by either security team or project lead),
-you will be able to find your repo in the Eclipse S-CORE GitHub organization repositories overview.
 
+Repository Layout
+^^^^^^^^^^^^^^^^^^
+Once merged, your new repository will appear in the Eclipse S-CORE GitHub organization repositories overview.
 
 .. image:: ../_assets/repository_layout.png
    :alt: repository layout
    :width: 500
    :align: center
 
-By opening the repository, you will see, it´s not empty.
-All repositories in Eclipse S-CORE are created based on `Eclipse S-CORE repository template <https://github.com/eclipse-score/module_template>`.
-The `README.md <https://github.com/eclipse-score/module_template/blob/main/README.md>`_ file
-of the repository already gives a good explanation regarding the structure of the repository.
-However, let us have a more detailed look to some files and folders.
+All repositories are created using the `Eclipse S-CORE repository template <https://github.com/eclipse-score/module_template>`:
+
+- <https://github.com/eclipse-score/module_template>. 
+
+The `README.md <https://github.com/eclipse-score/module_template/blob/main/README.md>`_ file already explains the basic structure.
+Below is an overview of the most relevant files and folders.
 
 
 .github/workflows/
 ------------------
-This is the place where we define various CI/CD workflows for the repository, e.g.
-building of the source code or execution of the unit-tests by every PR or as part of the integration gate
-:ref:`integration gate <integration_process>` during release tag creation.
+Contains CI/CD workflows (build, unit-tests, 
+:ref:`integration gate <integration_process>` checks).
 
 
 .vscode
 ------------------
-Provides Eclipse S-CORE recommended configuration for your VS Code setup,
-including the code completion patterns for requirements and architecture in
+Provides Eclipse S-CORE recommended VS Code setup, including code completion patterns for requirements and architecture in 
 `.vscode/restructuredtext.code-snippets <https://github.com/eclipse-score/module_template/blob/main/.vscode/restructuredtext.code-snippets>`_.
 
 
 docs
 -----
-This is the appropriate folder to put all documentation for your module in
-`rst format <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_.
-Later on. we will have an example how to do this.
+Place all module documentation here in `rst format <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_.
+Examples follow later in this guide.
 
 .. tip::
     We try to describe most `common workflows <https://eclipse-score.github.io/score/main/contribute/contribution_request/index.html#doc__contr_guideline>`_ 
@@ -107,19 +116,17 @@ Later on. we will have an example how to do this.
 
 src
 -----
-self explaining
-
+Self-explainatory: source code
 
 test
 -----
-self explaining
+Self-explainatory: tests
 
 
 .bazelrc 
 --------
-With `.bazelrc <https://github.com/eclipse-score/scrample/blob/main/.bazelrc>`_ file you can set-up the bazel configuration
-for your bazel module. We will further extend the .bazelrc file in the upcoming chapters, e.g., with toolchain configuration.
-Here, we just want to highlight following config items:
+Defines bazel configuration for your the module.
+Important entries in `.bazelrc <https://github.com/eclipse-score/scrample/blob/main/.bazelrc>`_ file include:
 
 .. code-block:: python
     :linenos:
@@ -135,16 +142,19 @@ Here, we just want to highlight following config items:
     common --registry=https://raw.githubusercontent.com/eclipse-score/bazel_registry/main/
     common --registry=https://bcr.bazel.build
 
-The line number 8 points to the Eclipse S-CORE https://github.com/eclipse-score/bazel_registry,
-where all official versions of Eclipse S-CORE modules are published.
-The line number 9 points to the common bazel registry, where common bazel modules are made available for everyone.
+- Line number 8 points to the Eclipse S-CORE https://github.com/eclipse-score/bazel_registry,
+  where all official versions of Eclipse S-CORE modules are published.
+
+- Line number 9 points to the common bazel registry, where common bazel modules are made available for everyone.
+
 This means, once we´re referencing a depending module with our scrample application,
 bazel will start searching it in one of these two locations.
 
 
 MODULE.bazel 
 -------------
-This is actually the file, that makes our repository to the bazel module.
+This file turns your repository into a bazel module. 
+
 Let us check `MODULE.bazel <https://github.com/eclipse-score/scrample/blob/main/MODULE.bazel>`_ initial content:
 
 .. code-block:: python
@@ -158,7 +168,7 @@ Let us check `MODULE.bazel <https://github.com/eclipse-score/scrample/blob/main/
 Here, we´re making the first declaration of our module by defining a name and a version.
 Please be aware, that only after our module was published in the Eclipse S-CORE bazel registry, other modules can access it.
 
-Now we need to give a reasonable name to our module, so let us replace *cpp_rust_template_repository* with *score_scrample*.
+Rename the module and replace *cpp_rust_template_repository* by *score_scrample*.
 
 .. code-block:: python
     :linenos:
@@ -168,7 +178,7 @@ Now we need to give a reasonable name to our module, so let us replace *cpp_rust
         version = "1.0",
     )
 
-Please be aware, based on Eclipse S-CORE´s naming convention all names must start with *score\_* prefix.
+Please be aware, according to Eclipse S-CORE´s naming convention all module names must start with *score\_* prefix.
  
 .. code-block:: python
     :linenos:
@@ -224,22 +234,22 @@ In upcoming chapters, we will talk about this in more detail.
     #docs-as-code
     bazel_dep(name = "score_docs_as_code", version = "1.1.0")
 
-Finally, we add a dependency to Eclipse S-CORE native modules “*score_tooling*” and “*score_docs_as_code*”,
-which will enable us to build documentation and execute different kinds of checks (e.g. license checker).
+Finally, we add a dependency to Eclipse S-CORE native modules “*score_tooling*” and “*score_docs_as_code*”.
+These enable documentation builds and tooling checks (e.g., license checker).
 
 .. tip::
-    Please be aware that working with multiple modules located in various repositories can be really challenging,
-    especially if you need to do the changes in multiple modules in parallel. You can use the following approach
-    to make your life a little bit easier:
+    Working across multiple modules and repositories can be challenging. Use the following approach during development:
+    
+    - use `git_override()  <https://bazel.build/rules/lib/globals/module#git_override>`_ 
+      if you want to use a version of another module, that is currently not officially availabe in the bazel registry.
 
-    use `git_override()  <https://bazel.build/rules/lib/globals/module#git_override>`_ if you want to use a version of another module, that is currently not officially availabe
-    in the bazel registry.
+    - use `local_path_override()  <https://bazel.build/rules/lib/globals/module#local_path_override>`_
+      if you want to use your local version of the module, e.g. during active development.    
 
-    use `local_path_override()  <https://bazel.build/rules/lib/globals/module#local_path_override>`_ if you want to use the local version of the module, e.g. during active development.    
 
 BUILD 
 -----
-Last but not least, the bazel `BUILD <https://github.com/eclipse-score/scrample/blob/main/BUILD>`_ file
+The bazel `BUILD <https://github.com/eclipse-score/scrample/blob/main/BUILD>`_ file
 contains main bazel targets on the top level of the scrample project:
 
 .. code-block:: python
@@ -285,6 +295,6 @@ based on bazel rules implemented and imported from https://github.com/eclipse-sc
         source_dir = "docs",
     )
 
-Finally, we define the target to build all documentation in the rst format, which is located in the 
+Finally, the *docs* target builds all documentation in the .rst format, which is located in the 
 `docs <https://github.com/eclipse-score/docs-as-code/tree/main/docs>`_ folder and all its subfolders.
 This functionality is implemented in https://github.com/eclipse-score/docs-as-code module.

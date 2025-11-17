@@ -566,15 +566,15 @@
 <h1>Reference integration<a class="headerlink" href="#reference-integration" title="Link to this heading">#</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<p>After we’ve build a scrample binary for qnx x86 image -as described in the previous chapter- let us
-now give it a try and run our binary in the reference qnx image for the x86 platform.</p>
-<p>Reference integration repository already provides a
-<a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu">reference qnx image</a>.
-The reference QNX image is currently really rudimentary, providing minimal set of tooling in the
-<a class="reference external" href="https://www.qnx.com/developers/docs/8.0/com.qnx.doc.neutrino.building/topic/intro/intro_ifs.html">IFS image</a>.
-If you are interested in more details of the qnx reference image in Eclipse S-CORE, please check the reference integration
-<a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/README.md">README.md</a>.
-To create an ifs image, qnx_ifs bazel rule in
+<p>After building the scrample binary for the qnx x86 image,
+we can now run it inside the reference qnx image for the x86 platform.</p>
+<p>The reference integration repository already provides a
+<a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu">reference qnx image</a>.</p>
+<p>This image is intentionally minimal and contains only the essential tooling in the
+<a class="reference external" href="https://www.qnx.com/developers/docs/8.0/com.qnx.doc.neutrino.building/topic/intro/intro_ifs.html">IFS image</a>.</p>
+<p>For more details of the qnx reference image in Eclipse S-CORE, refer to the reference integration
+<a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/README.md">README.md</a>.</p>
+<p>To create an ifs image, qnx_ifs bazel rule in
 <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/99618797cb518fe2fac0e5dc53b95718bc675911/qnx_qemu/build/BUILD#L45">qnx_qemu/build/BUILD</a>
 file is used:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">qnx_ifs</span><span class="p">(</span>
@@ -591,27 +591,26 @@ file is used:</p>
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>Here we can see the definition of the <em>ifs image</em> with the name <em>init</em>.
-The <em>build_file</em> attribute points to the <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/build/init.build">init.build</a> script,
-the entry point for the <em>ifs image</em>,
-where the content of the <em>ifs image</em> and first initialization steps are defined.
-For more details, please refer to the official <a class="reference external" href="https://www.qnx.com/developers/docs/8.0/com.qnx.doc.neutrino.building/topic/buildfiles/buildfile.html">QNX OS Image Build Files</a>
+<p>The snippet above defines an <em>ifs image</em> named <em>init</em>.</p>
+<p>The <em>build_file</em> attribute points to the <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/build/init.build">init.build</a>
+script, which acts as the entry point for the <em>ifs image</em>.
+It defines the image content and the initial start-up steps.</p>
+<p>For more information, refer to the official <a class="reference external" href="https://www.qnx.com/developers/docs/8.0/com.qnx.doc.neutrino.building/topic/buildfiles/buildfile.html">QNX OS Image Build Files</a>
 documentation.</p>
-<p>The <em>init.build</em> file also includes <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/build/system.build">system.build</a>
-file, that is used -among other things- to
-deploy local files to the <em>ifs image</em> as it can be seen in the example below for the <em>dhcp.conf</em></p>
+<p>The <em>init.build</em> file also includes <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/build/system.build">system.build</a> file,
+which is used - among other things - to deploy local files to the <em>ifs image</em>, as shown in the example below for the <em>dhcp.conf</em></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># DHCP client configuration</span>
 <span class="p">[</span><span class="n">perms</span><span class="o">=</span><span class="mi">644</span><span class="p">]</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">dhcpcd</span><span class="o">.</span><span class="n">conf</span> <span class="o">=</span> <span class="n">configs</span><span class="o">/</span><span class="n">dhcpcd</span><span class="o">.</span><span class="n">conf</span>                                     <span class="c1"># DHCP client configuration file</span>
 </pre></div>
 </div>
-<p>This is the place where we will need to add our scrample application binary and its runtime configuration.
-But before we can do this, we will need to add the scrample binary as a dependency to the <em>ifs image</em>.</p>
-<p>First step is to extend the <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/MODULE.bazel">MODULE.bazel</a>
-file with the dependency to scrample module and all modules it depends on.</p>
-<p>As next we will need to extend <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/.bazelrc">.bazelrc</a>
-file with the compiler settings needed to compile those modules.</p>
-<p>Both steps are very similar to the steps, that we’ve already explained in the <a class="reference internal" href="building_source_code.html#id1"><span class="std std-ref">Building source code</span></a> chapter.
-As soon as all dependencies are set up, we can add our scrample binary as dependency to the <em>ifs_image</em> in the
+<p>This is where we need to add our scrample application binary and its runtime configuration.
+Before doing so, we must first add the scrample binary as a dependency of the ifs image.</p>
+<p>The first step is to update the <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/MODULE.bazel">MODULE.bazel</a>
+file with the dependency to the scrample module and all modules it depends on.</p>
+<p>Next, we need to extend <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/.bazelrc">.bazelrc</a>
+file with the compiler settings needed to build these modules.</p>
+<p>Both steps follow the same pattern described earlier in the <a class="reference internal" href="building_source_code.html#id1"><span class="std std-ref">Building source code</span></a> chapter.
+Once all dependencies are set up, we can add our scrample binary as dependency of the <em>ifs_image</em> target in the
 <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/99618797cb518fe2fac0e5dc53b95718bc675911/qnx_qemu/build/BUILD#L45">qnx_qemu/build/BUILD</a>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">qnx_ifs</span><span class="p">(</span>
 <span class="linenos"> 2</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;init&quot;</span><span class="p">,</span>
@@ -632,32 +631,31 @@ As soon as all dependencies are set up, we can add our scrample binary as depend
 <span class="linenos">17</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>In line number 8 and 9, we add dependency to the <em>scrample binary</em> and <em>scrample runtime config</em>.
-As <em>scrample_binary</em> target is defined in the scrample bazel module,
-we need to make it explicit by using the scrample module name as prefix <em>&#64;score_scrample</em>.</p>
-<p>The <em>scrample runtime config</em> is located in <em>reference_integration</em> repo and consists
-of <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/scrample_integration/etc/mw_com_config.json">IPC services definition file</a>
+<p>In lines 8 and 9, we add the dependencies for the <em>scrample binary</em> and <em>scrample runtime config</em>.</p>
+<p>Because the <em>scrample_binary</em> target is defined in the scrample bazel module,
+we must reference it explicit using the scrample module prefix <em>&#64;score_scrample</em>.</p>
+<p>The <em>scrample runtime configuration</em> is located in <em>reference_integration</em> repository and includes
+the <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/scrample_integration/etc/mw_com_config.json">IPC services definition file</a>
 and <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/scrample_integration/etc/logging.json">logging config file</a>.</p>
 <p>As shown in the <em>scrample runtime config</em> <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/701e208bf943fe7ed7bf096f5e2e1c8575ec9b4a/qnx_qemu/scrample_integration/BUILD#L15">BUILD</a>
-file, we need to use the <em>bazel</em> function <a class="reference external" href="https://bazel.build/reference/be/functions#exports_files">export_files</a>
+file, we use the <em>bazel</em> function <a class="reference external" href="https://bazel.build/reference/be/functions#exports_files">export_files</a>
 to make files available to the external qnx tool <a class="reference external" href="https://www.qnx.com/developers/docs/8.0/com.qnx.doc.neutrino.utilities/topic/m/mkifs.html">mkifs</a>,
-that is started by <em>qnx_ifs()</em> in the background.</p>
-<p>For same reason, we declare in line 12 the location to the built <em>scrample binary</em>
-(remember, all targets from other modules we depend on, are built in context of our module from scratch)
-as the environment variable <em>SCRAMPLE_PATH</em>, so that we can reference to it during <em>mkifs</em> execution.</p>
-<p>Finally, we can add scrample artifact to the <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/build/system.build#L279">system.build file</a>,
-as shown below:</p>
+which is triggered by q*nx_ifs()* in the background.</p>
+<p>For the same reason, we declare in line 12 the path to the built <em>scrample binary</em> as the environment variable <em>SCRAMPLE_PATH</em>.
+(Remember: all targets from other modules are rebuilt in the context of the current module’s configuration.)
+This allows as to reference the binary during <em>mkifs</em> execution.
+Finally, we add the scrample artifact to the <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/build/system.build#L279">system.build file</a> file, as shown below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[perms=777] /etc/logging.json = scrample_integration/etc/logging.json
 [perms=777] /etc/mw_com_config.json = scrample_integration/etc/mw_com_config.json
 
 [perms=777] /scrample = ${SCRAMPLE_PATH}
 </pre></div>
 </div>
-<p>This copies the artifacts to the final location in the <em>ifs image</em> on the target.</p>
-<p>Now we are ready to build the <em>ifs image</em>, start qemu and to try out our application.</p>
-<p>First, let us run qemu, that will also build the ifs image in the background.</p>
-<p>According to the <a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu#3-build--run-the-qnx-image-on-qemu">QEMU tutorial</a>
-in the <em>reference integration</em> repo, we need to run the following command:</p>
+<p>This copies the artifacts to their final location in the <em>ifs image</em> on the target.
+Now we are ready to build the <em>ifs image</em>, start qemu and to test our application.
+First, we start qemu, which will also build the ifs image in the background.
+According to the <a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/qnx_qemu#3-build--run-the-qnx-image-on-qemu">QEMU tutorial</a>
+in the <em>reference integration</em> repository, run the following command:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bazel</span> <span class="n">run</span> <span class="o">--</span><span class="n">config</span><span class="o">=</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">//</span><span class="p">:</span><span class="n">run_qemu</span>
 </pre></div>
 </div>
@@ -670,15 +668,16 @@ in the <em>reference integration</em> repo, we need to run the following command
 <span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">QEMU</span><span class="p">]</span> <span class="o">---&gt;</span> <span class="n">adding</span> <span class="o">/</span><span class="n">tmp_discovery</span> <span class="n">folder</span>
 </pre></div>
 </div>
-<p>Now we can run our scrample binary. It supports two modes, one for sending and the other for receiving the data.
-Let us start two processes in two different modes to make them communicate with each other:</p>
+<p>Now we can run the scrample binary.
+It supports two modes: one for sending data and one for receiving it.
+Start two processes in different modes to let them communicate with each other</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">scrample</span> <span class="o">-</span><span class="n">n</span> <span class="mi">10</span> <span class="o">-</span><span class="n">t</span> <span class="mi">100</span> <span class="o">-</span><span class="n">m</span> <span class="n">send</span> <span class="o">&amp;</span> <span class="o">./</span><span class="n">scrample</span> <span class="o">-</span><span class="n">n</span> <span class="mi">5</span> <span class="o">-</span><span class="n">t</span> <span class="mi">100</span> <span class="o">-</span><span class="n">m</span> <span class="n">recv</span>
 </pre></div>
 </div>
-<p>You can check the meaning of the arguments in the scrample <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/aa8a49e9df6ffa8a0b50414eb81c0a82cb1eba04/src/main.cpp#L41">main.cpp</a>
-file.</p>
-<p>(Hopefully) Now you can see the output, that shows that two processes are communicating with each other.
-Your result should look similar to the following output:</p>
+<p>You can find the explanation of all command-line arguments in the scrample
+<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/aa8a49e9df6ffa8a0b50414eb81c0a82cb1eba04/src/main.cpp#L41">main.cpp</a> file.
+If everything works correctly, you should now see output indicating that the two processes are communicating with each other.
+It should look similar to the following:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">test_scrample</span><span class="p">]</span> <span class="mi">2025</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mi">10</span> <span class="mi">07</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mf">49.1229574</span> <span class="mi">145754</span> <span class="mi">000</span> <span class="n">ECU1</span> <span class="n">IPBR</span> <span class="n">lola</span> <span class="n">log</span> <span class="n">info</span> <span class="n">verbose</span> <span class="mi">2</span> <span class="n">No</span> <span class="n">explicit</span> <span class="n">applicationID</span> <span class="n">configured</span><span class="o">.</span> <span class="n">Falling</span> <span class="n">back</span> <span class="n">to</span> <span class="n">using</span> <span class="n">process</span> <span class="n">UID</span><span class="o">.</span>  <span class="n">Ensure</span> <span class="n">unique</span> <span class="n">UIDs</span> <span class="k">for</span> <span class="n">applications</span> <span class="n">using</span> <span class="n">mw</span><span class="p">::</span><span class="n">com</span><span class="o">.</span>
 <span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">test_scrample</span><span class="p">]</span> <span class="mi">2025</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mi">10</span> <span class="mi">07</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mf">49.1229574</span> <span class="mi">145754</span> <span class="mi">000</span> <span class="n">ECU1</span> <span class="n">IPBR</span> <span class="n">lola</span> <span class="n">log</span> <span class="n">info</span> <span class="n">verbose</span> <span class="mi">2</span> <span class="n">No</span> <span class="n">explicit</span> <span class="n">applicationID</span> <span class="n">configured</span><span class="o">.</span> <span class="n">Falling</span> <span class="n">back</span> <span class="n">to</span> <span class="n">using</span> <span class="n">process</span> <span class="n">UID</span><span class="o">.</span>  <span class="n">Ensure</span> <span class="n">unique</span> <span class="n">UIDs</span> <span class="k">for</span> <span class="n">applications</span> <span class="n">using</span> <span class="n">mw</span><span class="p">::</span><span class="n">com</span><span class="o">.</span>
 <span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">test_scrample</span><span class="p">]</span> <span class="mi">2025</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mi">10</span> <span class="mi">07</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mf">49.1229578</span> <span class="mi">145784</span> <span class="mi">000</span> <span class="n">ECU1</span> <span class="n">IPBR</span> <span class="n">lola</span> <span class="n">log</span> <span class="n">info</span> <span class="n">verbose</span> <span class="mi">10</span> <span class="n">Calculated</span> <span class="n">sizes</span> <span class="n">of</span> <span class="n">shm</span><span class="o">-</span><span class="n">objects</span> <span class="k">for</span> <span class="n">service_id</span><span class="p">:</span><span class="n">instance_id</span>  <span class="mi">6432</span> <span class="p">:</span> <span class="mi">1</span>  <span class="n">are</span> <span class="k">as</span> <span class="n">follows</span><span class="p">:</span>
@@ -701,8 +700,8 @@ Your result should look similar to the following output:</p>
 <span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">test_scrample</span><span class="p">]</span> <span class="n">score</span><span class="o">/</span><span class="n">MapApiLanesStamped</span><span class="p">:</span> <span class="n">Received</span> <span class="n">sample</span><span class="p">:</span> <span class="mi">8</span>
 </pre></div>
 </div>
-<p>By the way, same workflow is implemented as one of our <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/701e208bf943fe7ed7bf096f5e2e1c8575ec9b4a/qnx_qemu/test/itf/test_scrample.py#L28">integration tests</a>,
-which you can easily start by running following the command:</p>
+<p>By the way, the same workflow is implemented as one of our <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/701e208bf943fe7ed7bf096f5e2e1c8575ec9b4a/qnx_qemu/test/itf/test_scrample.py#L28">integration tests</a>,
+which you can run with the following command</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bazel</span> <span class="n">test</span> <span class="o">--</span><span class="n">config</span><span class="o">=</span><span class="n">qemu</span><span class="o">-</span><span class="n">integration</span> <span class="o">--</span><span class="n">test_output</span><span class="o">=</span><span class="n">streamed</span> <span class="o">//</span><span class="p">:</span><span class="n">test_scrample_qemu</span>
 </pre></div>
 </div>
