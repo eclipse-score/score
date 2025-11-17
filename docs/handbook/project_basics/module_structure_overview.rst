@@ -56,11 +56,12 @@ GitHub Link: https://github.com/eclipse-score/process_description
    :width: 500
    :align: center
 
-The process repository describes the Eclipse S-CORE software development process. It describes: 
+The process repository describes the Eclipse S-CORE software development process. It describes:
 
-- the general concepts and principles of the Eclipse S-CORE software development process 
-- all process areas in detail 
+- the general concepts and principles of the Eclipse S-CORE software development process
+- all process areas in detail
 - how work products such as requirements and architecture must be specified
+- PMP describes, how the processes are deployed within S-CORE `Project Management Plan <https://eclipse-score.github.io/score/main/platform_management_plan/index.html>`_
 
 .. image:: ../_assets/process_areas.png
    :alt: Process areas
@@ -72,11 +73,11 @@ Doc-as-Code
 -----------
 GitHub Link: https://github.com/eclipse-score/docs-as-code
 
-Doc-as-code repository provides the tooling around sphinx and sphinx-needs framework, including: 
+Doc-as-code repository provides the tooling around sphinx and sphinx-needs framework, including:
 
 - traceability between requirements, architecture, and tests
 - linking process artefacts
-- checks that validate the Eclipse S-CORE metamodel, as defined in the process description 
+- checks that validate the Eclipse S-CORE metamodel, as defined in the process description
 
 The implementation status of tooling requirements is available in the
 `Tool Requirements Overview <https://eclipse-score.github.io/docs-as-code/main/requirements/requirements.html>`_.
@@ -98,7 +99,7 @@ GitHub Link:
 - https://github.com/eclipse-score/toolchains_rust
 
 These repositories define toolchains (gcc/qnx/rust) including compiler and linker flags
-used to build the Eclipse S-CORE software. 
+used to build the Eclipse S-CORE software.
 The repository called “bazel platforms” defines the platforms supported by Eclipse S-CORE (e.g., x86_64-qnx),
 as shown in the following `BUILD  <https://github.com/eclipse-score/bazel_platforms/blob/main/BUILD>`_ file.
 
@@ -115,7 +116,7 @@ Software Modules
 ----------------
 GitHub Link (e.g. for baselibs): https://github.com/eclipse-score/baselibs
 
-Each software module is a bazel module stored in its own repository. Software modules typically include: 
+Each software module is a bazel module stored in its own repository. Software modules typically include:
 
 - component requirements and architecture
 - detailed design
@@ -137,11 +138,10 @@ GitHub Link: https://github.com/eclipse-score/reference_integration
 
 This repository is a key part of the Eclipse S-CORE project.
 All Eclipse S-CORE modules are integrated together to ensure, that they match to each other.
-It integrates all software modules into reference images (e.g., a qnx x86 image) to verify that: 
+It integrates all software modules into reference images (e.g., a qnx x86 image) to verify that:
 
 - all module dependencies are consistent
 - modules work correctly together
 - feature requirements are fulfilled
 
 Feature integration tests are executed on these reference images to validate the complete platform.
-

@@ -37,22 +37,22 @@ we are providing this tutorial to explain how the project works from a technical
 Because S-CORE follows an iterative, code-centric development model, this description is updated continuously
 and may not always reflect the latest state. Contributions from the community are therefore welcome.
 
- 
+
 Background of Eclipse S-CORE
 ------------------------------
 
-Before we look at the technical details, it is helpful to understand the origins and golas of Eclipse S-CORE.
-The project was founded in September 2023, inspired by the success of open-source developments in other industries in recent decades.
+Before we look at the technical details, it is helpful to understand the origins and goals of Eclipse S-CORE.
+The project was founded in September 2024, inspired by the success of open-source developments in other industries in recent decades.
 All founding members came from the automotive industry and shared the same vision: a code-first, open-source software platform
 for onboard electronic control units (ECUs) would benefit the entire industry and significantly accelerate progress.
 With every vehicle generation the volume and complexity of new functions grows.
 As a result, the underlying software platform becomes larger, more complex, and more expensive to maintain.
 Developing such platforms independently at each automotive company is inefficient and does not improve product quality.
-It also consumes significant effort and budget without generating direct customer value. 
+It also consumes significant effort and budget without generating direct customer value.
 
-An open-source approach offers an alternative: 
+An open-source approach offers an alternative:
 -	to improved quality through shared development,
--	reduced effort across the industry, and 
+-	reduced effort across the industry, and
 -	faster delivery of new vehicle functions.
 
 
@@ -68,18 +68,15 @@ However, Eclipse S-CORE goes beyond by pursuing additional goals:
   By providing an open-source reference implementation, S-CORE identifies and resolves many of these problems early.
   Using the same implementation across projects prevents known issues from reappearing later.
 
-- **Ensuring quality and a Functional-Safety-compliant development process:** 
+- **Ensuring quality and a Functional-Safety-compliant development process:**
   High code quality, clear requirements and architecture, and comprehensive test coverage are essential
-  for industrial use, especially in systems with Functional Safety relevance. 
-  S-CORE therefore: 
+  for industrial use, especially in systems with Functional Safety relevance.
+  S-CORE therefore:
 
-  1. Defines a process aligned with Functional Safety (ISO 26262), and 
-  2. ensures, that all module implementations follow this process. 
+  1. Defines a process aligned with Functional Safety (ISO 26262), and
+  2. ensures, that all module implementations follow this process.
      This makes Eclipse S-CORE unique among traditional open-source projects,
      which often focus primarily on code, not on automotive-grade processes.
-
-S-CORE defines only those parts of software development process that can be validated with automated checks.
-
 
 What Eclipse S-CORE does not provide
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -90,7 +87,7 @@ Key reasons include:
 - All Eclipse S-CORE **artefacts  are generic**,
   designed to serve **as a foundation for multiple commercial distributions** tailored to specific project needs.
 
-The strength of the Eclipse S-CORE project lies in its openness: 
+The strength of the Eclipse S-CORE project lies in its openness:
 
 the software development process, the tooling, and the automated checks used in CI
 are all transparent and open source. Any stakeholder can verify that the platform behaves as intended.
