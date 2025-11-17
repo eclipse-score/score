@@ -74,7 +74,7 @@ Installation and integration
 Installation
 ~~~~~~~~~~~~
 
-The preferred way to use Bazel in the S-Core project is through Bazelisk and the .bazelversion file.
+The preferred way to use Bazel in the S-CORE project is through Bazelisk and the .bazelversion file.
 The .bazelversion file is typically located in the project root directory.
 When you run any Bazel command, Bazelisk reads the Bazel version specified in .bazelversion and
 automatically uses that version for all calls.
