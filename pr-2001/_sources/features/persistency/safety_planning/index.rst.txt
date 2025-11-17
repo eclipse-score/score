@@ -45,14 +45,14 @@ Feature Safety Planning
       - :need:`gd_temp__req_feat_req`
       - :ndf:`copy('status', need_id='gd_temp__req_feat_req')`
       - https://github.com/eclipse-score/score/issues/960
-      - :ref:`feature_requirements_persistency`
+      - :ref:`feature_persistency_requirements`
       - valid
 
     * - :need:`wp__requirements_feat_aou`
       - :need:`gd_temp__req_aou_req`
       - :ndf:`copy('status', need_id='gd_temp__req_aou_req')`
       - https://github.com/eclipse-score/score/issues/960
-      - :ref:`feature_requirements_persistency_aou`
+      - :ref:`feature_persistency_requirements_aou`
       - valid
 
     * - :need:`wp__feature_arch`

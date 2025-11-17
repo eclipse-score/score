@@ -12,16 +12,16 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _feature_requirements_persistency:
+.. _feature_persistency_requirements:
 
 Requirements
 ############
 
-.. document:: Persistency Module Feature Requirements
-   :id: doc__persistency_requirements
+.. document:: Persistency Requirements
+   :id: doc__feature_persistency_requirements
    :status: valid
    :safety: ASIL_B
-   :security: NO
+   :security: YES
    :realizes: wp__feat_request
    :tags: persistency
 
@@ -33,17 +33,17 @@ Requirements
    :satisfies: stkh_req__dev_experience__prog_languages
    :status: valid
 
-   The Persistency Module shall provide native API support for both C++ and Rust programming languages.
+   The Persistency shall provide native API support for both C++ and Rust programming languages.
 
 .. feat_req:: Operating system agnostic implementation
    :id: feat_req__persistency__os_agnostic
    :reqtype: Non-Functional
    :security: NO
    :safety: QM
-   :satisfies: stkh_req__hardware_support__chipset_support
+   :satisfies: stkh_req__functional_req__operating_system
    :status: valid
 
-   The Persistency Module shall be operating system agnostic and only rely on the POSIX interface.
+   The Persistency shall be operating system agnostic.
 
 .. feat_req:: Variant management support
    :id: feat_req__persistency__variant_management
@@ -53,7 +53,7 @@ Requirements
    :satisfies: stkh_req__overall_goals__variant_management
    :status: valid
 
-   The Persistency Module shall ensure compatibility across different architectures and versions.
+   The Persistency shall ensure compatibility across different SW variants and SW versions.
 
 .. feat_req:: Dynamic memory allocation during runtime
    :id: feat_req__persistency__dynamic_memory_alloc
@@ -63,11 +63,11 @@ Requirements
    :satisfies: stkh_req__functional_req__support_of_store
    :status: valid
 
-   The Persistency Module shall not allocate dynamic memory during runtime. All required dynamic memory shall be allocated during initialization.
+   The Persistency shall not allocate dynamic memory during runtime. All required dynamic memory shall be allocated during initialization.
 
    .. note::
 
-      Dynamic memory allocation violates safety concepts as the `HEAP` is a shared resource, where freedom from interference cannot be guaranteed.
+      Dynamic memory allocation violates freedom from interference as the `HEAP` is a shared resource on OS process level.
       Additionally, fragmentation of the `HEAP` can lead to non-deterministic behavior of the application.
 
 .. feat_req:: Multiple KVS per application
@@ -78,7 +78,7 @@ Requirements
    :satisfies: stkh_req__functional_req__data_persistency
    :status: valid
 
-   The Persistency Module shall support multiple independent storages per application.
+   The Persistency shall support multiple independent storages per application.
 
 .. feat_req:: Access from multiple application
    :id: feat_req__persistency__multiple_app
@@ -88,24 +88,24 @@ Requirements
    :satisfies: stkh_req__functional_req__support_of_store
    :status: valid
 
-   The Persistency Module shall prevent access to a single KVS instance from multiple applications.
+   The Persistency shall prevent access to a single KVS instance from multiple OS processes.
 
    .. note::
-      Access from multiple applications violates freedom from interference, as applications can modify the same data concurrently.
+      Access from multiple OS processesviolates freedom from interference, as applications can modify the same data concurrently.
 
 .. feat_req:: Separate data stores
    :id: feat_req__persistency__access_control
    :reqtype: Functional
-   :security: NO
+   :security: YES
    :safety: ASIL_B
    :satisfies: stkh_req__dependability__security_features
    :status: valid
 
-   The Persistency Module shall ensure that only authorized applications can access individual data stores.
+   The Persistency shall ensure that only authorized applications can access individual data stores.
 
    .. note::
       Access control is essential to prevent unauthorized access and modification of sensitive data.
-      The Persistency Module shall implement mechanisms to enforce access control policies based on user roles and permissions.
+      The Persistency shall implement mechanisms to enforce access control policies based on user roles and permissions.
 
 .. feat_req:: Configuration
    :id: feat_req__persistency__cfg
@@ -116,7 +116,7 @@ Requirements
    :status: valid
    :tags: config
 
-   The Persistency Module shall support configuration via a configuration file.
+   The Persistency shall support configuration via a configuration file.
    The configuration shall include:
 
    - Global settings:
@@ -135,7 +135,7 @@ Requirements
    Configuration file shall be optional and all configuration attributes shall have sensible default values defined at compile time.
 
    .. note::
-      To improve the user experience during rapid prototyping, the Persistency Module shall also be able to operate without a configuration file.
+      To improve the user experience during rapid prototyping, the Persistency shall also be able to operate without a configuration file.
 
 .. feat_req:: Supported datatypes (Keys)
    :id: feat_req__persistency__support_datatype_keys
@@ -145,7 +145,7 @@ Requirements
    :satisfies: stkh_req__functional_req__support_of_store
    :status: valid
 
-   The Persistency Module shall support UTF-8 encoded strings as valid key types.
+   The Persistency shall support UTF-8 encoded strings as valid key types.
 
 .. feat_req:: Supported datatypes (Values)
    :id: feat_req__persistency__support_datatype_value
@@ -156,7 +156,7 @@ Requirements
    :status: valid
    :tags: persistency
 
-   The Persistency Module shall support storing both primitive and non-primitive (composite) datatypes as values.
+   The Persistency shall support storing both primitive and non-primitive (composite) datatypes as values.
 
 .. feat_req:: Default values
    :id: feat_req__persistency__default_values
@@ -166,7 +166,7 @@ Requirements
    :satisfies: stkh_req__functional_req__support_of_store
    :status: valid
 
-   The Persistency Module shall support predefined default values for keys.
+   The Persistency shall support predefined default values for keys.
 
 .. feat_req:: Provisioning of default values via external file
    :id: feat_req__persistency__default_value_file
@@ -176,7 +176,7 @@ Requirements
    :satisfies: stkh_req__functional_req__file_based
    :status: valid
 
-   The Persistency Module shall support import of default values using an external file.
+   The Persistency shall support import of default values using an external file.
 
    .. note::
       Default values are read-only and cannot be modified at runtime. This requirement addresses the provisioning of default values
@@ -190,7 +190,7 @@ Requirements
    :satisfies: stkh_req__functional_req__support_of_store
    :status: valid
 
-   The Persistency Module shall support retrieval of the default value associated with a key.
+   The Persistency shall support retrieval of the default value associated with a key.
 
 .. feat_req:: Reset to default values
    :id: feat_req__persistency__reset_to_default
@@ -200,7 +200,7 @@ Requirements
    :satisfies: stkh_req__functional_req__support_of_store
    :status: valid
 
-   The Persistency Module shall support reset of individual key or all keys to their default values.
+   The Persistency shall support reset of individual key or all keys to their default values.
 
 .. feat_req:: Store persistent data
    :id: feat_req__persistency__store_data
@@ -210,7 +210,7 @@ Requirements
    :satisfies: stkh_req__functional_req__data_persistency
    :status: valid
 
-   The Persistency Module shall support storing of key-value pairs to non-volatile storage.
+   The Persistency shall support storing of key-value pairs to non-volatile storage.
 
 .. feat_req:: Reset resistant storage
    :id: feat_req__persistency__reset_resistant
@@ -220,7 +220,7 @@ Requirements
    :satisfies: stkh_req__functional_req__support_of_store
    :status: valid
 
-   The Persistency Module shall ensure that write operations are reset resistant to prevent data corruption in case of expected or unexpected interruption.
+   The Persistency shall ensure that write operations are reset resistant to prevent data corruption in case of expected or unexpected interruption.
 
    .. note::
       As the constant power supply can not be guaranteed in embedded systems, it is essential to ensure that write operations are completed
@@ -234,10 +234,10 @@ Requirements
    :satisfies: stkh_req__functional_req__support_of_store
    :status: valid
 
-   The Persistency Module shall recover to a consistent state after reset.
+   The Persistency shall recover to a consistent state after reset.
 
    .. note::
-      After a reset, the Persistency Module shall ensure that all key-value pairs are in a consistent state, reflecting either the last successful write operation or the previous consistent state.
+      After a reset, the Persistency shall ensure that all key-value pairs are in a consistent state, reflecting either the last successful write operation or the previous consistent state.
 
 .. feat_req:: Atomic store operation
    :id: feat_req__persistency__atomic_store
@@ -247,7 +247,7 @@ Requirements
    :satisfies: stkh_req__functional_req__support_of_store
    :status: valid
 
-   The Persistency Module shall support atomic write operation for entire storage to ensure data consistency.
+   The Persistency shall support atomic write operation for entire storage to ensure data consistency.
 
    .. note::
 
@@ -262,7 +262,7 @@ Requirements
    :satisfies: stkh_req__app_architectures__support_data
    :status: valid
 
-   The Persistency Module shall minimize the write amplification during data storage operations to enhance performance and prolong the lifespan of the underlying storage medium.
+   The Persistency shall minimize the write amplification during data storage operations to enhance performance and prolong the lifespan of the underlying storage medium.
 
    .. note::
       Write amplification refers to the phenomenon where the amount of data written to the storage medium exceeds the amount of user data intended to be written.
@@ -276,7 +276,7 @@ Requirements
    :satisfies: stkh_req__functional_req__data_persistency
    :status: valid
 
-   The Persistency Module shall support loading of key-value pairs from persistent storage.
+   The Persistency shall support loading of key-value pairs from persistent storage.
 
 .. feat_req:: Cached access
    :id: feat_req__persistency__cached_access
@@ -286,7 +286,7 @@ Requirements
    :satisfies: stkh_req__functional_req__support_of_store
    :status: valid
 
-   The Persistency Module shall support caching mechanisms to improve access times for frequently accessed key-value pairs.
+   The Persistency shall support caching mechanisms to improve access times for frequently accessed key-value pairs.
 
 .. feat_req:: Direct access
    :id: feat_req__persistency__direct_access
@@ -296,7 +296,7 @@ Requirements
    :satisfies: stkh_req__dependability__availability
    :status: valid
 
-   The Persistency Module shall support direct access to key-value pairs without the necessity to load the entire storage to RAM in advance.
+   The Persistency shall support direct access to key-value pairs without the necessity to load the entire storage to RAM in advance.
 
    .. note::
       Direct access improves availability of data and reduces memory consumption for large data sets.
@@ -309,7 +309,7 @@ Requirements
    :satisfies: stkh_req__functional_req__support_of_store
    :status: valid
 
-   The Persistency Module shall detect and report data integrity issues.
+   The Persistency shall detect and report data integrity issues.
 
 .. feat_req:: Confidential storage
    :id: feat_req__persistency__confidential_storage
@@ -319,7 +319,7 @@ Requirements
    :satisfies: stkh_req__functional_req__data_persistency
    :status: valid
 
-   The Persistency Module shall support confidential storage of key-value pairs using encryption mechanisms.
+   The Persistency shall support confidential storage of key-value pairs using encryption mechanisms.
 
    .. note::
       Confidential storage is essential to protect sensitive data from unauthorized access, especially in scenarios where the storage medium may be exposed to potential threats.
@@ -332,7 +332,7 @@ Requirements
    :satisfies: stkh_req__functional_req__support_of_store
    :status: valid
 
-   The Persistency Module shall support multiple storage backends.
+   The Persistency shall support multiple storage backends.
    More than one storage backend of the same type shall be optionally supported for the sake of redundancy.
    The storage backends shall be compile time configurable for each KVS instance.
 
@@ -348,7 +348,7 @@ Requirements
    :satisfies: stkh_req__dependability__availability, stkh_req__app_architectures__support_request
    :status: valid
 
-   The Persistency Module shall provide an asynchronous API for time consuming operations like loading and storing of data.
+   The Persistency shall provide an asynchronous API for time consuming operations like loading and storing of data.
 
 .. feat_req:: Signalling completion of asynchronous operation
    :id: feat_req__persistency__async_completion
@@ -358,7 +358,7 @@ Requirements
    :satisfies: stkh_req__app_architectures__support_data
    :status: valid
 
-   The Persistency Module shall provide a mechanism to signal the completion of an asynchronous operations to the application.
+   The Persistency shall provide a mechanism to signal the completion of an asynchronous operations to the application.
 
 .. feat_req:: Snapshot create
    :id: feat_req__persistency__snapshot_create
@@ -368,7 +368,7 @@ Requirements
    :satisfies: stkh_req__functional_req__support_of_store
    :status: valid
 
-   The Persistency Module shall support explicit creation of snapshots. Snapshots are identified by unique IDs.
+   The Persistency shall support explicit creation of snapshots. Snapshots are identified by unique IDs.
    Snapshots shall also include the version of the data layout. See :need:`feat_req__persistency__versioning`.
 
    .. note::
@@ -383,7 +383,7 @@ Requirements
    :satisfies: stkh_req__functional_req__support_of_store
    :status: valid
 
-   The Persistency Module shall support explicit restoration of snapshots.
+   The Persistency shall support explicit restoration of snapshots.
 
 .. feat_req:: Snapshot remove
    :id: feat_req__persistency__snapshot_remove
@@ -393,7 +393,7 @@ Requirements
    :satisfies: stkh_req__functional_req__support_of_store
    :status: valid
 
-   The Persistency Module shall support explicit removal of snapshots.
+   The Persistency shall support explicit removal of snapshots.
 
 .. feat_req:: Intra-Process data access
    :id: feat_req__persistency__concurrency
@@ -403,7 +403,7 @@ Requirements
    :satisfies: stkh_req__communication__intra_process
    :status: valid
 
-   The Persistency Module shall support concurrent access to key-value pairs from multiple threads within the same process.
+   The Persistency shall support concurrent access to key-value pairs from multiple threads within the same process.
 
 .. feat_req:: Versioning
    :id: feat_req__persistency__versioning
@@ -413,11 +413,11 @@ Requirements
    :satisfies: stkh_req__functional_req__support_of_store
    :status: valid
 
-   The Persistency Module shall support versioning for different data representation of KVS.
+   The Persistency shall support versioning for different data representation of KVS.
    Version shall follow the semantic versioning scheme (MAJOR.MINOR.PATCH).
 
    .. note::
-      Versioning is essential to ensure compatibility between different versions of the Persistency Module and the stored data.
+      Versioning is essential to ensure compatibility between different versions of the Persistency and the stored data.
       Each version shall be uniquely identifiable and include information of the data layout and structure.
 
 .. feat_req:: Update Mechanism
@@ -425,10 +425,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__support_of_store
+   :satisfies: stkh_req__overall_goals__variant_management
    :status: valid
 
-   The Persistency Module shall implement mechanisms to upgrade from one version to another, including multi-version jumps.
+   The Persistency shall implement mechanisms to upgrade from one version to another, including multi-version jumps.
 
 .. feat_req:: Random access time
    :id: feat_req__persistency__fast_access
@@ -438,7 +438,7 @@ Requirements
    :satisfies: stkh_req__execution_model__short_app_cycles
    :status: valid
 
-   The Persistency Module shall ensure that random read access for key-value pair is completed with constant or logarithmic time complexity relative to the number of stored key-value pairs.
+   The Persistency shall ensure that random read access for key-value pair is completed with constant or logarithmic time complexity relative to the number of stored key-value pairs.
 
 .. feat_req:: Tooling
    :id: feat_req__persistency__tooling
@@ -448,7 +448,7 @@ Requirements
    :satisfies: stkh_req__functional_req__support_of_store
    :status: valid
 
-   The Persistency Module shall provide tooling support for:
+   The Persistency shall provide tooling support for:
 
    - viewing and modifying key-value pairs during development, testing and debugging
    - provisioning of default values via external file
@@ -461,24 +461,25 @@ Requirements
    :satisfies: stkh_req__dependability__safety_features
    :status: valid
 
-   The Persistency Module shall support the development mode.
+   The Persistency shall support the development mode.
    The development mode shall allow unrestricted data access and bypass security policies.
 
 .. feat_req:: Support production mode
    :id: feat_req__persistency__prod_mode
    :reqtype: Functional
-   :security: NO
+   :security: YES
    :safety: ASIL_B
    :satisfies: stkh_req__dependability__safety_features
    :status: valid
 
-   The Persistency Module shall support the production mode.
+   The Persistency shall support the production mode.
    The production mode should enforce the most restrictive data access controls feasible.
 
 .. needextend:: docname is not None and "persistency/requirements" in docname
    :+tags: persistency
 
-.. _feature_requirements_persistency_aou:
+
+.. _feature_persistency_requirements_aou:
 
 AoU Requirements
 ################
