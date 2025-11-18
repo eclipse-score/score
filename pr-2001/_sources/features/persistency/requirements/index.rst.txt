@@ -53,7 +53,7 @@ Requirements
    :satisfies: stkh_req__overall_goals__variant_management
    :status: valid
 
-   The Persistency shall ensure compatibility across different SW variants and SW versions.
+   The Persistency shall ensure compatibility across different SW versions.
 
 .. feat_req:: Dynamic memory allocation during runtime
    :id: feat_req__persistency__dynamic_memory_alloc
@@ -91,7 +91,7 @@ Requirements
    The Persistency shall prevent access to a single KVS instance from multiple OS processes.
 
    .. note::
-      Access from multiple OS processesviolates freedom from interference, as applications can modify the same data concurrently.
+      Access from multiple OS processes violates freedom from interference, as applications can modify the same data concurrently.
 
 .. feat_req:: Separate data stores
    :id: feat_req__persistency__access_control
