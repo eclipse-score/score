@@ -72,7 +72,7 @@
         </script>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
-    <link rel="next" title="Safety Analysis : FMEA" href="../safety_analysis/fmea.html" />
+    <link rel="next" title="Safety Analysis: FMEA" href="../safety_analysis/fmea.html" />
     <link rel="prev" title="Requirements" href="../requirements/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -153,8 +153,8 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../../requirements/index.html">
-    Requirements
+  <a class="nav-link nav-internal" href="../../../../../handbook/index.html">
+    Handbook
   </a>
 </li>
 
@@ -162,6 +162,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../../features/index.html">
     Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../requirements/index.html">
+    Requirements
   </a>
 </li>
 
@@ -179,13 +186,6 @@
   </a>
 </li>
 
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../../score_releases/index.html">
-    Releases
-  </a>
-</li>
-
             <li class="nav-item dropdown">
                 <button class="btn dropdown-toggle nav-item" type="button"
                 data-bs-toggle="dropdown" aria-expanded="false"
@@ -194,6 +194,13 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../../../../score_tools/index.html">
     Tools
@@ -341,8 +348,8 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../../requirements/index.html">
-    Requirements
+  <a class="nav-link nav-internal" href="../../../../../handbook/index.html">
+    Handbook
   </a>
 </li>
 
@@ -350,6 +357,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../../features/index.html">
     Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../requirements/index.html">
+    Requirements
   </a>
 </li>
 
@@ -478,15 +492,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../feo/index.html">FEO Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../lifecycle/index.html">Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../logging/index.html">Logging Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../orchestrator/index.html">Orchestrator Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../os/index.html">OS Module</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../index.html">KVS Module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../index.html">Persistency KVS Module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../../docs/index.html">Module Documents Persistency</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../json/docs/component_classification.html">Component Classification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../json/docs/index.html">Tiny JSON</a></li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">KVS (Key Value Store)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../requirements/index.html">Requirements</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Architecture</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../safety_analysis/fmea.html">Safety Analysis : FMEA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../safety_analysis/fmea.html">Safety Analysis: FMEA</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../safety_analysis/dfa.html">Dependent Failure Analysis</a></li>
 </ul>
 </details></li>
@@ -537,7 +552,7 @@
     <li class="breadcrumb-item"><a href="../../../../index.html" class="nav-link">Modules</a></li>
     
     
-    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">KVS Module</a></li>
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Persistency KVS Module</a></li>
     
     
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">KVS (Key Value Store)</a></li>
@@ -561,16 +576,16 @@
                   
   <section id="architecture">
 <span id="component-architecture-persistencykvs"></span><h1>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-87be7dc2">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__persistency_kvs_mod_arch">
+<div class="need_container docutils container" id="SNCB-98b538db">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__persistency_kvs_architecture">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
 <div class="line"><span><span class="needs_title"><span class="needs_data">Persistency KVS Module Architecture</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
-<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></span></div>
-<div class="line"><span></span></div>
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
 <div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
@@ -581,7 +596,7 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span></span></span></div>
-<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/architecture_workproducts.html#wp__component_arch">PROCESS_wp__component_arch</a></span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/architecture_workproducts.html#wp__component_arch">wp__component_arch</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -590,7 +605,7 @@
 <tr class="content row-odd"><td class="content" colspan="6"></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
-<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__persistency_kvs_mod_arch" title="doc__persistency_kvs_mod_arch">doc__persistency_kvs_mod_arch</a></span></span></div>
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__persistency_kvs_architecture" title="doc__persistency_kvs_architecture">doc__persistency_kvs_architecture</a></span></span></div>
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
@@ -635,7 +650,7 @@
 <h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
 <p>The components are designed to cover the expectations from the feature architecture
 (i.e. if already exists a definition it should be taken over and enriched).</p>
-<div class="need_container docutils container" id="SNCB-831a6fae">
+<div class="need_container docutils container" id="SNCB-7253e248">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__persistency__static_view">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -682,7 +697,7 @@
 </section>
 <section id="dynamic-architecture">
 <h2>Dynamic Architecture<a class="headerlink" href="#dynamic-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-6dc1d9f1">
+<div class="need_container docutils container" id="SNCB-5086ac51">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_dyn table" id="comp_arc_dyn__persistency__dynamic_view">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -737,7 +752,7 @@
 </section>
 <section id="lower-level-components">
 <h2>Lower Level Components<a class="headerlink" href="#lower-level-components" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-a078f9e0">
+<div class="need_container docutils container" id="SNCB-bf32403b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__persistency__2">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -787,7 +802,7 @@
 <p class="admonition-title">Attention</p>
 <p>The above directives must be updated according to your component architecture.</p>
 <ul class="simple">
-<li><p>Replace the example content by the real content (according to <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/guidance/architecture_guideline.html#gd_guidl__arch_design">PROCESS_gd_guidl__arch_design</a>)</p></li>
+<li><p>Replace the example content by the real content (according to <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/guidance/architecture_guideline.html#gd_guidl__arch_design">gd_guidl__arch_design</a>)</p></li>
 <li><p>Set the status to valid and start the review/merge process</p></li>
 </ul>
 </div>
@@ -818,7 +833,7 @@
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Safety Analysis : FMEA</p>
+        <p class="prev-next-title">Safety Analysis: FMEA</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

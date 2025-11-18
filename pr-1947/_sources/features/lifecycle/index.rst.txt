@@ -12,8 +12,6 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _chm_feature_templates:
-
 
 Lifecycle
 #########

@@ -13,18 +13,18 @@
    # *******************************************************************************
 
 
-.. document:: [Your Component Name] Component Classification
-   :id: doc__component_name_comp_class
+.. document:: FEO Component Classification
+   :id: doc__feo_comp_class
    :status: draft
    :security: NO
    :safety: ASIL_B
-   :realizes: PROCESS_wp__sw_component_class
-   :tags: commponent_feo
+   :realizes: wp__sw_component_class
+   :tags: component_feo
 
 Component Classification
 ========================
 
-| Classification of <component>
+| Classification of FEO Component
 |
 | <Link to OSS component source (e.g. in github) including the selected version>
 |

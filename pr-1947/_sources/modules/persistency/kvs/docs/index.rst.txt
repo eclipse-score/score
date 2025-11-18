@@ -19,9 +19,10 @@ KVS (Key Value Store)
 
 .. document:: Persistency KVS
    :id: doc__persistencykvs
-   :status: draft
+   :status: valid
    :safety: ASIL_B
-   :realizes: PROCESS_wp__cmpt_request
+   :security: NO
+   :realizes: wp__cmpt_request
    :tags: Persistency KVS
 
 Abstract
@@ -78,7 +79,7 @@ Specification
 
    .. note::
       A CR shall specify the component requirements as part of our platform/project.
-      Thereby the :need:`PROCESS_rl__module_lead` will approve these requirements as part of accepting the CR (e.g. merging the PR with the CR).
+      Thereby the :need:`rl__module_lead` will approve these requirements as part of accepting the CR (e.g. merging the PR with the CR).
 
 
 Backwards Compatibility

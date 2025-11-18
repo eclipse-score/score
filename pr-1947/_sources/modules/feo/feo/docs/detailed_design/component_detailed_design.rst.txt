@@ -17,7 +17,7 @@
    :status: draft
    :security: NO
    :safety: ASIL_B
-   :realizes: PROCESS_wp__sw_implementation
+   :realizes: wp__sw_implementation
    :tags: component_feo
 
 FEO Component Detailed Design
