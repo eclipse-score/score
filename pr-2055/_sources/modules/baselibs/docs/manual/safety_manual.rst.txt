@@ -39,9 +39,12 @@ Assumptions of Use
 Assumptions on the Environment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 | Generally the assumption of the project platform SEooC is that it is integrated in a safe system, i.e. the POSIX OS it runs on is qualified and also the HW related failures are taken into account by the system integrator, if not otherwise stated in the module's safety concept.
-| <List here all the OS calls the project platform expects to be safe.>
+| The platform-wide AoUs are collected in :need:`doc__platform_assumptions`
+|
+| To support :need:`aou_req__platform__safety_matching`:
+| <List here all the OS/libcxx calls the module expects to be safe.>
 
-List of AoUs expected from the environment the platform / module runs on:
+List of additional AoUs expected from the environment the module runs on:
 
 .. needtable::
    :style: table
@@ -52,8 +55,9 @@ List of AoUs expected from the environment the platform / module runs on:
    results = []
 
    for need in needs.filter_types(["aou_req"]):
-      if need and "environment" in need["tags"]:
+      if need and "environment" in need["tags"] and "baselibs" in need["tags"]:
                 results.append(need)
+
 
 Assumptions on the User
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -62,7 +66,7 @@ Assumptions on the User
 | 1. There are assumption which need to be fulfilled by all SW components, e.g. "every user of an IPC mechanism needs to make sure that he provides correct data (including appropriate ASIL level)" - in this case the AoU is marked as "platform".
 | 2. There are assumption which can be fulfilled by a safety mechanism realized by some other project platform component and are therefore not relevant for an user who uses the whole platform. But those are relevant if you chose to use the module SEooC stand-alone - in this case the AoU is marked as "module". An example would be the "JSON read" which requires "The user shall provide a string as input which is not corrupted due to HW or QM SW errors." - which is covered when using together with safe project platform persistency feature.
 
-List of AoUs on the user of the platform features or the module of this safety manual:
+List of AoUs on the user of the module of this safety manual:
 
 .. needtable::
    :style: table
@@ -73,7 +77,7 @@ List of AoUs on the user of the platform features or the module of this safety m
    results = []
 
    for need in needs.filter_types(["aou_req"]):
-      if need and "environment" not in need["tags"]:
+      if need and "environment" not in need["tags"] and "baselibs" in need["tags"]:
                 results.append(need)
 
 Safety concept of the SEooC

@@ -96,3 +96,6 @@ Functional Requirements
    :status: valid
 
    The Filesystem library shall provide mock and fake implementations for unit testing and validation.
+
+.. needextend:: "__filesystem__" in id
+   :+tags: baselibs
