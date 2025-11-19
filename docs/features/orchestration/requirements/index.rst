@@ -12,40 +12,22 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-
 Requirements
-#############
+############
 
-.. evaluate following sth requirements:
-.. com driven:
-.. stkh_req__app_architectures__support_time
-.. stkh_req__app_architectures__support_data
-.. stkh_req__app_architectures__support_request
-.. stkh_req__communication__service_quality
-
-.. compute driven:
-.. stkh_req__execution_model__processes
-.. stkh_req__dev_experience__tracing_of_exec
-
-.. safety:
-.. stkh_req__dependability__automotive_safety
-.. stkh_req__functional_req__safe_comput
-
-.. security:
-.. stkh_req__dependability__security_features
-
-.. accelerators:
-.. stkh_req__functional_req__hardware_comput
-.. stkh_req__functional_req__comp_subsystem
-
-
+.. document:: Orchestration Requirements
+   :id: doc__orchestration_requirements
+   :status: valid
+   :safety: ASIL_B
+   :security: YES
+   :realizes: wp__requirements_feat
+   :tags: orchestration
 
 Executor
 ========
 
 Task Management
 ---------------
-
 
 .. TODO: set invalid requirements to valid once bug regarding tracing ASIL and QM sth req is solved
 
@@ -381,3 +363,6 @@ General Constraints
    :status: invalid
 
    The system shall use the approved IPC feature exclusively for all inter-process synchronization.
+
+.. needextend:: docname is not None and "orchestration/requirements" in docname
+   :+tags: orchestration

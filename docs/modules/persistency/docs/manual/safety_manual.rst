@@ -17,9 +17,11 @@ Safety Manual
 
 .. document:: Persistency Safety Manual
    :id: doc__persistency_safety_manual
-   :status: draft
+   :status: valid
    :safety: ASIL_B
-   :tags: feature_persistency
+   :security: NO
+   :tags: persistency
+   :realizes: wp__module_safety_manual
 
 Introduction/Scope
 ------------------

@@ -18,7 +18,7 @@
    :safety: ASIL_B
    :security: YES
    :tags: platform_management
-   :realizes: PROCESS_wp__document_mgt_plan
+   :realizes: wp__document_mgt_plan
 
 Documentation Management Plan
 -----------------------------
@@ -312,6 +312,10 @@ docs/score_releases
           results.append(need)
 
 
+
+.. _documents_docs_features:
+
+
 Feature documentation
 +++++++++++++++++++++
 
@@ -341,7 +345,7 @@ planned for release v0.5, are listed.
 ..    for need in needs.filter_types(["document"]):
 ..       if "template" in need["tags"] and "PROCESS" in need["id"] and "feature_name" in need["id"]:
 
-..          act_id = need["id"].replace("PROCESS_doc__feature_name", "")
+..          act_id = need["id"].replace("doc__feature_name", "")
 
 ..          i = 0
 
@@ -376,7 +380,7 @@ planned for release v0.5, are listed.
 ..    for need in needs.filter_types(["document"]):
 ..       if "template" in need["tags"] and "PROCESS" in need["id"] and "feature_name" in need["id"]:
 
-..          act_id = need["id"].replace("PROCESS_doc__feature_name", "")
+..          act_id = need["id"].replace("doc__feature_name", "")
 
 ..          i = 0
 
@@ -411,7 +415,7 @@ docs/features/baselibs
    for need in needs.filter_types(["document"]):
       if "template" in need["tags"] and "PROCESS" in need["id"] and "feature_name" in need["id"]:
 
-         act_id = need["id"].replace("PROCESS_doc__feature_name", "")
+         act_id = need["id"].replace("doc__feature_name", "")
 
          i = 0
 
@@ -446,7 +450,7 @@ docs/features/communication
    for need in needs.filter_types(["document"]):
       if "template" in need["tags"] and "PROCESS" in need["id"] and "feature_name" in need["id"]:
 
-         act_id = need["id"].replace("PROCESS_doc__feature_name", "")
+         act_id = need["id"].replace("doc__feature_name", "")
 
          i = 0
 
@@ -481,7 +485,7 @@ docs/features/communication
 ..    for need in needs.filter_types(["document"]):
 ..       if "template" in need["tags"] and "PROCESS" in need["id"] and "feature_name" in need["id"]:
 
-..          act_id = need["id"].replace("PROCESS_doc__feature_name", "")
+..          act_id = need["id"].replace("doc__feature_name", "")
 
 ..          i = 0
 
@@ -516,7 +520,7 @@ docs/features/frameworks
    for need in needs.filter_types(["document"]):
       if "template" in need["tags"] and "PROCESS" in need["id"] and "feature_name" in need["id"]:
 
-         act_id = need["id"].replace("PROCESS_doc__feature_name", "")
+         act_id = need["id"].replace("doc__feature_name", "")
 
          i = 0
 
@@ -551,7 +555,7 @@ docs/features/frameworks
 ..    for need in needs.filter_types(["document"]):
 ..       if "template" in need["tags"] and "PROCESS" in need["id"] and "feature_name" in need["id"]:
 
-..          act_id = need["id"].replace("PROCESS_doc__feature_name", "")
+..          act_id = need["id"].replace("doc__feature_name", "")
 
 ..          i = 0
 
@@ -586,7 +590,7 @@ docs/features/frameworks
 ..    for need in needs.filter_types(["document"]):
 ..       if "template" in need["tags"] and "PROCESS" in need["id"] and "feature_name" in need["id"]:
 
-..          act_id = need["id"].replace("PROCESS_doc__feature_name", "")
+..          act_id = need["id"].replace("doc__feature_name", "")
 
 ..          i = 0
 
@@ -621,7 +625,7 @@ docs/features/frameworks
 ..    for need in needs.filter_types(["document"]):
 ..       if "template" in need["tags"] and "PROCESS" in need["id"] and "feature_name" in need["id"]:
 
-..          act_id = need["id"].replace("PROCESS_doc__feature_name", "")
+..          act_id = need["id"].replace("doc__feature_name", "")
 
 ..          i = 0
 
@@ -656,7 +660,7 @@ docs/features/orchestration
    for need in needs.filter_types(["document"]):
       if "template" in need["tags"] and "PROCESS" in need["id"] and "feature_name" in need["id"]:
 
-         act_id = need["id"].replace("PROCESS_doc__feature_name", "")
+         act_id = need["id"].replace("doc__feature_name", "")
 
          i = 0
 
@@ -691,7 +695,7 @@ docs/features/persistency
    for need in needs.filter_types(["document"]):
       if "template" in need["tags"] and "PROCESS" in need["id"] and "feature_name" in need["id"]:
 
-         act_id = need["id"].replace("PROCESS_doc__feature_name", "")
+         act_id = need["id"].replace("doc__feature_name", "")
 
          i = 0
 
@@ -726,7 +730,7 @@ docs/features/persistency
 ..    for need in needs.filter_types(["document"]):
 ..       if "template" in need["tags"] and "PROCESS" in need["id"] and "feature_name" in need["id"]:
 
-..          act_id = need["id"].replace("PROCESS_doc__feature_name", "")
+..          act_id = need["id"].replace("doc__feature_name", "")
 
 ..          i = 0
 
@@ -738,6 +742,8 @@ docs/features/persistency
 ..              need["title"] = need["title"]
 ..              results.append(need)
 
+
+.. _documents_docs_modules:
 
 Modules documentation
 +++++++++++++++++++++
@@ -765,7 +771,7 @@ docs/modules/baselibs/docs
    for need in needs.filter_types(["document"]):
       if "template" in need["tags"] and "PROCESS" in need["id"] and "module_name" in need["id"]:
 
-         act_id = need["id"].replace("PROCESS_doc__module_name", "")
+         act_id = need["id"].replace("doc__module_name", "")
 
          i = 0
 
@@ -801,7 +807,7 @@ docs/modules/communication/docs
    for need in needs.filter_types(["document"]):
       if "template" in need["tags"] and "PROCESS" in need["id"] and "module_name" in need["id"]:
 
-         act_id = need["id"].replace("PROCESS_doc__module_name", "")
+         act_id = need["id"].replace("doc__module_name", "")
 
          i = 0
 
@@ -837,7 +843,7 @@ docs/modules/feo/docs
    for need in needs.filter_types(["document"]):
       if "template" in need["tags"] and "PROCESS" in need["id"] and "module_name" in need["id"]:
 
-         act_id = need["id"].replace("PROCESS_doc__module_name", "")
+         act_id = need["id"].replace("doc__module_name", "")
 
          i = 0
 
@@ -873,7 +879,7 @@ docs/modules/feo/docs
 ..    for need in needs.filter_types(["document"]):
 ..       if "template" in need["tags"] and "PROCESS" in need["id"] and "module_name" in need["id"]:
 
-..          act_id = need["id"].replace("PROCESS_doc__module_name", "")
+..          act_id = need["id"].replace("doc__module_name", "")
 
 ..          i = 0
 
@@ -909,7 +915,7 @@ docs/modules/logging/docs
    for need in needs.filter_types(["document"]):
       if "template" in need["tags"] and "PROCESS" in need["id"] and "module_name" in need["id"]:
 
-         act_id = need["id"].replace("PROCESS_doc__module_name", "")
+         act_id = need["id"].replace("doc__module_name", "")
 
          i = 0
 
@@ -945,7 +951,7 @@ docs/modules/os/docs
    for need in needs.filter_types(["document"]):
       if "template" in need["tags"] and "PROCESS" in need["id"] and "module_name" in need["id"]:
 
-         act_id = need["id"].replace("PROCESS_doc__module_name", "")
+         act_id = need["id"].replace("doc__module_name", "")
 
          i = 0
 
@@ -981,7 +987,7 @@ docs/modules/persistency/docs
    for need in needs.filter_types(["document"]):
       if "template" in need["tags"] and "PROCESS" in need["id"] and "module_name" in need["id"]:
 
-         act_id = need["id"].replace("PROCESS_doc__module_name", "")
+         act_id = need["id"].replace("doc__module_name", "")
 
          i = 0
 
@@ -1017,7 +1023,7 @@ docs/modules/tracing/docs
    for need in needs.filter_types(["document"]):
       if "template" in need["tags"] and "PROCESS" in need["id"] and "module_name" in need["id"]:
 
-         act_id = need["id"].replace("PROCESS_doc__module_name", "")
+         act_id = need["id"].replace("doc__module_name", "")
 
          i = 0
 
@@ -1028,6 +1034,9 @@ docs/modules/tracing/docs
          if i == 0:
              need["title"] = need["title"]
              results.append(need)
+
+
+.. _documents_docs_modules_components:
 
 
 Components documentation
@@ -1073,7 +1082,7 @@ docs/modules/baselibs/components
                 for need in needs.filter_types(["document"]):
                    if "template" in need["tags"] and "PROCESS" in need["id"] and "component_name" in need["id"]:
 
-                      act_id = need["id"].replace("PROCESS_doc__component_name", "")
+                      act_id = need["id"].replace("doc__component_name", "")
 
                       i = 0
 
@@ -1127,7 +1136,7 @@ docs/modules/communication/components
                 for need in needs.filter_types(["document"]):
                    if "template" in need["tags"] and "PROCESS" in need["id"] and "component_name" in need["id"]:
 
-                      act_id = need["id"].replace("PROCESS_doc__component_name", "")
+                      act_id = need["id"].replace("doc__component_name", "")
 
                       i = 0
 
@@ -1181,7 +1190,7 @@ docs/modules/feo/components
                 for need in needs.filter_types(["document"]):
                    if "template" in need["tags"] and "PROCESS" in need["id"] and "component_name" in need["id"]:
 
-                      act_id = need["id"].replace("PROCESS_doc__component_name", "")
+                      act_id = need["id"].replace("doc__component_name", "")
 
                       i = 0
 
@@ -1235,7 +1244,7 @@ docs/modules/feo/components
 ..                 for need in needs.filter_types(["document"]):
 ..                    if "template" in need["tags"] and "PROCESS" in need["id"] and "component_name" in need["id"]:
 
-..                       act_id = need["id"].replace("PROCESS_doc__component_name", "")
+..                       act_id = need["id"].replace("doc__component_name", "")
 
 ..                       i = 0
 
@@ -1289,7 +1298,7 @@ docs/modules/logging/components
                 for need in needs.filter_types(["document"]):
                    if "template" in need["tags"] and "PROCESS" in need["id"] and "component_name" in need["id"]:
 
-                      act_id = need["id"].replace("PROCESS_doc__component_name", "")
+                      act_id = need["id"].replace("doc__component_name", "")
 
                       i = 0
 
@@ -1343,7 +1352,7 @@ docs/modules/os/components
                 for need in needs.filter_types(["document"]):
                    if "template" in need["tags"] and "PROCESS" in need["id"] and "component_name" in need["id"]:
 
-                      act_id = need["id"].replace("PROCESS_doc__component_name", "")
+                      act_id = need["id"].replace("doc__component_name", "")
 
                       i = 0
 
@@ -1397,7 +1406,7 @@ docs/modules/persistency/components
                 for need in needs.filter_types(["document"]):
                    if "template" in need["tags"] and "PROCESS" in need["id"] and "component_name" in need["id"]:
 
-                      act_id = need["id"].replace("PROCESS_doc__component_name", "")
+                      act_id = need["id"].replace("doc__component_name", "")
 
                       i = 0
 
@@ -1451,7 +1460,7 @@ docs/modules/tracing/components
                 for need in needs.filter_types(["document"]):
                    if "template" in need["tags"] and "PROCESS" in need["id"] and "component_name" in need["id"]:
 
-                      act_id = need["id"].replace("PROCESS_doc__component_name", "")
+                      act_id = need["id"].replace("doc__component_name", "")
 
                       i = 0
 

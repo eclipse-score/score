@@ -15,7 +15,6 @@
 
 project = "S-CORE"
 project_url = "https://eclipse-score.github.io/score"
-project_prefix = "S-CORE_"
 version = "0.1"
 
 extensions = [

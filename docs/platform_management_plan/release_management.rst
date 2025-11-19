@@ -22,7 +22,7 @@
 Release management Plan
 -----------------------
 
-This document implements parts of the :need:`PROCESS_wp__platform_mgmt`.
+This document implements parts of the :need:`wp__platform_mgmt`.
 
 Purpose
 +++++++
@@ -64,14 +64,14 @@ defined in :need:`doc__project_mgt_plan`.
 * **Experimental** means that the development artifacts needed for the safety package work products may be incomplete.
   These releases are done during development phase to be able to sync between the module repositories.
 * **Official** means that the processes are fully executed to produce all work products and are documented
-  with a release note as in :need:`PROCESS_gd_temp__rel_plat_rel_note` or :need:`PROCESS_gd_temp__rel_mod_rel_note`.
+  with a release note as in :need:`gd_temp__rel_plat_rel_note` or :need:`gd_temp__rel_mod_rel_note`.
   For an official release also consider `Eclipse Project Handbook - Releases <https://www.eclipse.org/projects/handbook/#release-releases>`_.
 
 
 Release Planning and Execution
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Generally release planning and execution is described in :need:`PROCESS_wf__rel_mod_rel_note` process.
+Generally release planning and execution is described in :need:`wf__rel_mod_rel_note` process.
 It is part of project planning and therefore also documented with the same means. Generally a Release
 is planned as an issue linked to a milestone in the `GitHub Milestone Planning <https://github.com/orgs/eclipse-score/projects/13>`_.
 And this issue is closed by merging a pull request which creates/updates a release note.

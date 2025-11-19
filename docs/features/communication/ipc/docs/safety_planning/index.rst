@@ -30,58 +30,58 @@ Inter-process Communication Safety Work Products
       - Link to WP
       - WP status
 
-    * - :need:`PROCESS_wp__feat_request`
-      - :need:`PROCESS_gd_temp__change_feature_request`
-      - :ndf:`copy('status', need_id='PROCESS_gd_temp__change_feature_request')`
+    * - :need:`wp__feat_request`
+      - :need:`gd_temp__change_feature_request`
+      - :ndf:`copy('status', need_id='gd_temp__change_feature_request')`
       - `#69 <https://github.com/eclipse-score/score/issues/69>`_
       - :need:`doc__com_ipc`
       - :ndf:`copy('status', need_id='doc__com_ipc')`
 
-    * - :need:`PROCESS_wp__requirements_feat`
-      - :need:`PROCESS_gd_temp__req_feat_req`
-      - :ndf:`copy('status', need_id='PROCESS_gd_temp__req_feat_req')`
+    * - :need:`wp__requirements_feat`
+      - :need:`gd_temp__req_feat_req`
+      - :ndf:`copy('status', need_id='gd_temp__req_feat_req')`
       - `#69 <https://github.com/eclipse-score/score/issues/69>`_
       - :doc:`../requirements/index`
       - see below
 
-    * - :need:`PROCESS_wp__requirements_feat_aou`
-      - :need:`PROCESS_gd_temp__req_aou_req`
-      - :ndf:`copy('status', need_id='PROCESS_gd_temp__req_aou_req')`
+    * - :need:`wp__requirements_feat_aou`
+      - :need:`gd_temp__req_aou_req`
+      - :ndf:`copy('status', need_id='gd_temp__req_aou_req')`
       - <link to issue>
       - :doc:`../requirements/index`
       - see below
 
-    * - :need:`PROCESS_wp__feature_arch`
-      - :need:`PROCESS_gd_temp__arch_feature`
-      - :ndf:`copy('status', need_id='PROCESS_gd_temp__arch_feature')`
+    * - :need:`wp__feature_arch`
+      - :need:`gd_temp__arch_feature`
+      - :ndf:`copy('status', need_id='gd_temp__arch_feature')`
       - `#388 <https://github.com/eclipse-score/score/issues/388>`_
       - :doc:`../architecture/index`
       - see below
 
-    * - :need:`PROCESS_wp__feature_fmea`, :need:`PROCESS_wp__feature_dfa`
+    * - :need:`wp__feature_fmea`, :need:`wp__feature_dfa`
       - <link to process>
       - <automated>
       - <link to issue>
       - <Link to WP>
       - <automated>
 
-    * - :need:`PROCESS_wp__requirements_inspect`
-      - :need:`PROCESS_gd_chklst__req_inspection`
-      - :ndf:`copy('status', need_id='PROCESS_gd_chklst__req_inspection')`
+    * - :need:`wp__requirements_inspect`
+      - :need:`gd_chklst__req_inspection`
+      - :ndf:`copy('status', need_id='gd_chklst__req_inspection')`
       - <link to issue>
       - <Link to WP>
       - <automated>
 
-    * - :need:`PROCESS_wp__sw_arch_verification`
-      - :need:`PROCESS_gd_chklst__arch_inspection_checklist`
-      - :ndf:`copy('status', need_id='PROCESS_gd_chklst__arch_inspection_checklist')`
+    * - :need:`wp__sw_arch_verification`
+      - :need:`gd_chklst__arch_inspection_checklist`
+      - :ndf:`copy('status', need_id='gd_chklst__arch_inspection_checklist')`
       - <link to issue>
       - <Link to WP>
       - <automated>
 
-    * - :need:`PROCESS_wp__verification_feat_int_test`
-      - :need:`PROCESS_gd_guidl__verification_guide`
-      - :ndf:`copy('status', need_id='PROCESS_gd_guidl__verification_guide')`
+    * - :need:`wp__verification_feat_int_test`
+      - :need:`gd_guidl__verification_guide`
+      - :ndf:`copy('status', need_id='gd_guidl__verification_guide')`
       - <link to issue>
       - <Link to WP>
       - <automated>

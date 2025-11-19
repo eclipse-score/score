@@ -16,10 +16,11 @@ Requirements
 ############
 
 .. document:: Persistency KVS Module Requirements
-   :id: doc__persistency_kvs_mod_req
+   :id: doc__persistency_kvs_requirements
    :status: valid
    :safety: ASIL_B
-   :realizes: PROCESS_wp__requirements_comp
+   :security: NO
+   :realizes: wp__requirements_comp
 
 .. comp_req:: Key Naming
    :id: comp_req__persistency__key_naming

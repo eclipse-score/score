@@ -14,8 +14,8 @@
 
 .. _com_feature:
 
-Communication
-#############
+Communication (v0.5 alpha)
+##########################
 
 .. document:: Communication
    :id: doc__com
