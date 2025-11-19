@@ -80,7 +80,7 @@ Requirements
 
    The Persistency shall support multiple independent storages per application.
 
-.. feat_req:: Access from multiple application
+.. feat_req:: Access from multiple applications
    :id: feat_req__persistency__multiple_app
    :reqtype: Functional
    :security: NO
@@ -131,6 +131,7 @@ Requirements
       - Maximum consumed storage size (Including all metadata and redundant data)
       - Security settings
       - Redundancy settings
+      - Backend specific settings
 
    Configuration file shall be optional and all configuration attributes shall have sensible default values defined at compile time.
 
@@ -201,6 +202,7 @@ Requirements
    :status: valid
 
    The Persistency shall support reset of individual key or all keys to their default values.
+   This is only applicable for existing keys that have a predefined default value.
 
 .. feat_req:: Store persistent data
    :id: feat_req__persistency__store_data
@@ -210,7 +212,7 @@ Requirements
    :satisfies: stkh_req__functional_req__data_persistency
    :status: valid
 
-   The Persistency shall support storing of key-value pairs to non-volatile storage.
+   The Persistency shall support storing of key-value pairs to persistent storage.
 
 .. feat_req:: Reset resistant storage
    :id: feat_req__persistency__reset_resistant

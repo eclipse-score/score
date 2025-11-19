@@ -15,7 +15,7 @@
 Feature Safety Planning
 =======================
 
-.. document:: Persistency KVS Safety WPs
+.. document:: Persistency Safety WPs
    :id: doc__persistency_safety_wp
    :status: valid
    :safety: ASIL_B
@@ -24,7 +24,7 @@ Feature Safety Planning
    :tags: persistency
 
 
-.. list-table:: Feature persistency Workproducts
+.. list-table:: Feature persistency workproducts
     :header-rows: 1
 
     * - Workproduct Id
@@ -80,7 +80,7 @@ Feature Safety Planning
       - :need:`gd_chklst__req_inspection`
       - :ndf:`copy('status', need_id='gd_chklst__req_inspection')`
       - https://github.com/eclipse-score/score/issues/960
-      - :need:`doc__req_inspection_persistency`
+      - :need:`doc__feature_persistency_requirements_chklst`
       - valid
 
     * - :need:`wp__sw_arch_verification`

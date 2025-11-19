@@ -72,7 +72,7 @@
         </script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Requirement Inspection Checklist Persistency KVS" href="../requirements/chklst_req_inspection.html" />
+    <link rel="next" title="Persistency Requirements Inspection Checklist" href="../requirements/chklst_req_inspection.html" />
     <link rel="prev" title="Requirements" href="../requirements/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -488,9 +488,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../requirements/index.html">Requirements</a></li>
 
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../requirements/chklst_req_inspection.html">Requirement Inspection Checklist Persistency KVS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../safety_analysis/fmea.html">Persistency FMEA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../safety_analysis/dfa.html">Persistency DFA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../requirements/chklst_req_inspection.html">Persistency Requirements Inspection Checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../safety_analysis/fmea.html">FMEA (Failure Modes and Effects Analysis)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../safety_analysis/dfa.html">DFA (Dependent Failure Analysis)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../safety_planning/index.html">Feature Safety Planning</a></li>
 </ul>
 </details></li>
@@ -561,7 +561,7 @@
                   
   <section id="architecture">
 <span id="feature-architecture-persistency"></span><h1>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-4c14eae7">
+<div class="need_container docutils container" id="SNCB-b63f6282">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__persistency_architecture">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -635,7 +635,7 @@ functionality call or receives a callback.</p></li>
 </section>
 <section id="static-architecture">
 <h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-62c2a05a">
+<div class="need_container docutils container" id="SNCB-fcd24b97">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_sta table" id="feat_arc_sta__persistency__static">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -684,7 +684,7 @@ functionality call or receives a callback.</p></li>
 </section>
 <section id="dynamic-architecture">
 <h2>Dynamic Architecture<a class="headerlink" href="#dynamic-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-b1495c5b">
+<div class="need_container docutils container" id="SNCB-c76b8d0a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__persistency__check_key_default">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -729,7 +729,7 @@ functionality call or receives a callback.</p></li>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-fd7282a0">
+<div class="need_container docutils container" id="SNCB-0d9470e2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__persistency__delete_key">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -774,7 +774,7 @@ functionality call or receives a callback.</p></li>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4c3f6189">
+<div class="need_container docutils container" id="SNCB-a912f3ae">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__persistency__flush">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -819,7 +819,7 @@ functionality call or receives a callback.</p></li>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5b92929d">
+<div class="need_container docutils container" id="SNCB-43791b88">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__persistency__read_key">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -864,7 +864,7 @@ functionality call or receives a callback.</p></li>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d1310510">
+<div class="need_container docutils container" id="SNCB-5f4c6e74">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__persistency__read_from_storage">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -909,7 +909,7 @@ functionality call or receives a callback.</p></li>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-38174b88">
+<div class="need_container docutils container" id="SNCB-46bffe1e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__persistency__write_key">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -954,7 +954,7 @@ functionality call or receives a callback.</p></li>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-56407e7b">
+<div class="need_container docutils container" id="SNCB-d3ea1210">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__persistency__snapshot_restore">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1002,7 +1002,7 @@ functionality call or receives a callback.</p></li>
 </section>
 <section id="logical-interfaces">
 <h2>Logical Interfaces<a class="headerlink" href="#logical-interfaces" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-be13d6e2">
+<div class="need_container docutils container" id="SNCB-9ac26f3e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__persistency__interface">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1074,7 +1074,7 @@ functionality call or receives a callback.</p></li>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Requirement Inspection Checklist Persistency KVS</p>
+        <p class="prev-next-title">Persistency Requirements Inspection Checklist</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
