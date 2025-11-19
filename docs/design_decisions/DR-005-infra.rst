@@ -22,7 +22,7 @@ DR-005-Infra: Hosting Strategy for Module Documentation
 Context / Problem
 -----------------
 
-We host site content for modules using GitHub Pages (per-repo webspaces).
+We currently host module documentation using GitHub Pages (per-repo webspaces).
 While GitHub *repos* can store up to 10GiB (size of ``.git`` folder),
 GitHub *Pages* only allows 1GiB of storage.
 While this works so far, the storage and site limits are becoming noticeable.
@@ -62,7 +62,7 @@ No limits for this hosting are known.
 Goals and Requirements
 ^^^^^^^^^^^^^^^^^^^^^^
 
-1. Provide sufficient storage and bandwidth for released documentation.
+1. Provide sufficient storage and bandwidth for documentation (releases and PR-previews).
 2. Keep a consistent site/URL structure and navigation across modules.
 3. Keep hosting and maintenance costs predictable and low.
 4. Dedicated space for releases?
@@ -75,13 +75,14 @@ Option G: Continue with per-repo GitHub Pages (status quo)
 
 Keep publishing module webspaces to GitHub Pages.
 Invest efforts to keep space needs low as we only have 1GiB per repository.
+e.g. by optimizing page size, or providing PR previews only on demand.
 
 😡 Effort: Increasing.
 
 Option P: Publish Action into "published" Repo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-As we alread have the "published" repository,
+As we alread have the "eclipse-score-website-published" repository,
 we can push more content in there.
 Up to the 10GiB repo limit.
 
@@ -102,6 +103,8 @@ Up to the 10GiB repo limit.
 
 😡 Speed: Updating a huge "published" repo will take time.
 
+```suggestion
+😡 Size: We risk running into size problems once again: ~500MB (see score repo measurement) * 20 modules (whatever the number is) = 10GB
 💚 Independence: No HelpDesk needed to potentially adapt configuration.
 
 Option E: Combine Website from multiple Repos
