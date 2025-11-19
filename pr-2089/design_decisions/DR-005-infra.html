@@ -554,7 +554,7 @@
                   
   <section id="dr-005-infra-hosting-strategy-for-module-documentation">
 <h1>DR-005-Infra: Hosting Strategy for Module Documentation<a class="headerlink" href="#dr-005-infra-hosting-strategy-for-module-documentation" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-8e09594e">
+<div class="need_container docutils container" id="SNCB-decf8792">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__webspace">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -597,15 +597,17 @@
 </table>
 </div>
 </div>
-<section id="context-problem">
-<h2>Context / Problem<a class="headerlink" href="#context-problem" title="Link to this heading">#</a></h2>
-<p>We host site content for modules using GitHub Pages (per-repo webspaces).
-While GitHub <em>repos</em> can store up to 10GiB (size of <code class="docutils literal notranslate"><span class="pre">.git</span></code> folder),
-GitHub <em>Pages</em> only allows 1GiB of storage.
+<section id="problem-description">
+<h2>Problem Description<a class="headerlink" href="#problem-description" title="Link to this heading">#</a></h2>
+<p>We currently host module documentation using GitHub Pages (per-repo webspaces).
+<strong>GitHub Pages only allows 1GiB of webspace</strong>.
 While this works so far, the storage and site limits are becoming noticeable.
+The score platform repository currently has 1GiB in gh-pages (460MiB <code class="docutils literal notranslate"><span class="pre">.git</span></code> repo size).
 More diagrams, pull-requests, and versions will exacerbate the problem.</p>
 <p class="plantuml">
-<object data="../_images/plantuml-59f382533b793022a7edf79e62c96297d62facfc.svg" type="image/svg+xml" style="width:595px;height:70px;background:#FFFFFF;"></object></p>
+<object data="../_images/plantuml-231fafb1ed2065e574be47542ad6e1f9700ff530.svg" type="image/svg+xml" style="width:568px;height:62px;background:#FFFFFF;"></object></p>
+<section id="context">
+<h3>Context<a class="headerlink" href="#context" title="Link to this heading">#</a></h3>
 <p>In addition to GitHub Pages, the project also has the website
 <a class="reference external" href="https://eclipse.dev/score/">https://eclipse.dev/score/</a> hosted via the Eclipse Foundation.
 The website is relatively small and there are plans to move most content elsewhere
@@ -618,14 +620,16 @@ and get deployed automatically using the GitHub Action
 <p class="plantuml">
 <object data="../_images/plantuml-3d214b5da296d62efe69c897cf46470fd512f022.svg" type="image/svg+xml" style="width:905px;height:69px;background:#FFFFFF;"></object></p>
 <p>No limits for this hosting are known.</p>
+</section>
 <section id="goals-and-requirements">
 <h3>Goals and Requirements<a class="headerlink" href="#goals-and-requirements" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p>Provide sufficient storage and bandwidth for released documentation.</p></li>
+<li><p>Provide sufficient storage and bandwidth for documentation (releases and PR-previews).</p></li>
 <li><p>Keep a consistent site/URL structure and navigation across modules.</p></li>
 <li><p>Keep hosting and maintenance costs predictable and low.</p></li>
 <li><p>Dedicated space for releases?</p></li>
 </ol>
+<p>⚠️ What about additional documentation artifacts from DoxyGen, RustDoc, …?</p>
 </section>
 </section>
 <section id="options-considered">
@@ -633,22 +637,30 @@ and get deployed automatically using the GitHub Action
 <section id="option-g-continue-with-per-repo-github-pages-status-quo">
 <h3>Option G: Continue with per-repo GitHub Pages (status quo)<a class="headerlink" href="#option-g-continue-with-per-repo-github-pages-status-quo" title="Link to this heading">#</a></h3>
 <p>Keep publishing module webspaces to GitHub Pages.
-Invest efforts to keep space needs low as we only have 1GiB per repository.</p>
+Invest efforts to keep space needs low as we only have 1GiB per repository.
+e.g. by optimizing page size, or providing PR previews only on demand.</p>
 <p>😡 Effort: Increasing.</p>
+<p>The effort is serious enough that we don’t consider the other criteria at all.</p>
 </section>
 <section id="option-p-publish-action-into-published-repo">
 <h3>Option P: Publish Action into “published” Repo<a class="headerlink" href="#option-p-publish-action-into-published-repo" title="Link to this heading">#</a></h3>
-<p>As we alread have the “published” repository,
+<p>As we alread have the “eclipse-score-website-published” repository,
 we can push more content in there.
 Up to the 10GiB repo limit.</p>
 <p class="plantuml">
-<object data="../_images/plantuml-4cf581fa36d2e252ff1a72eb4d626f3ff6975a10.svg" type="image/svg+xml" style="width:905px;height:192px;background:#FFFFFF;"></object></p>
+<object data="../_images/plantuml-b32b85059342c508083c92a4312e1186ddfc8cee.svg" type="image/svg+xml" style="width:905px;height:183px;background:#FFFFFF;"></object></p>
+<p>The limit is not 1GiB per repo anymore but 10GiB for all repos.
+That sounds worse at first, because with 20 repos, it would be 10GiB / 20.
+However, here the <em>average</em> size per repository matters.
+With option G above a single repo limit is already a problem.
+Still, this might not ease the problem sufficiently.</p>
 <p>💚 Effort: We must adapt our GitHub action’s deploy steps.</p>
 <p>😡 Speed: Updating a huge “published” repo will take time.</p>
+<p>😡 Size: 10GiB total limit.</p>
 <p>💚 Independence: No HelpDesk needed to potentially adapt configuration.</p>
 </section>
-<section id="option-e-combine-website-from-multiple-repos">
-<h3>Option E: Combine Website from multiple Repos<a class="headerlink" href="#option-e-combine-website-from-multiple-repos" title="Link to this heading">#</a></h3>
+<section id="option-c-combine-website-from-multiple-repos">
+<h3>Option C: Combine Website from multiple Repos<a class="headerlink" href="#option-c-combine-website-from-multiple-repos" title="Link to this heading">#</a></h3>
 <p>We let the eclipse.dev website pull content from multiple repositories.
 <a class="reference external" href="https://gitlab.eclipse.org/eclipsefdn/software-dev/frameworks-and-tools/hugo-eclipsefdn-website-boilerplate#update-pmi">The configuration is done by the Eclipse Foundation</a>:</p>
 <blockquote>
@@ -660,27 +672,43 @@ You can request an update to your website deployment metadata by opening a ticke
 <p>The configuration is visible as <code class="docutils literal notranslate"><span class="pre">website_repo</span></code> from
 <a class="reference external" href="https://projects.eclipse.org/api/projects/automotive.score">the Eclipse API of S-CORE</a>.</p>
 <p class="plantuml">
-<object data="../_images/plantuml-c3b366406d0fd9e7284bddf2118ae18446476c34.svg" type="image/svg+xml" style="width:905px;height:221px;background:#FFFFFF;"></object></p>
+<object data="../_images/plantuml-05bf61e3a769865323a907b1449d0fa23def27a3.svg" type="image/svg+xml" style="width:905px;height:202px;background:#FFFFFF;"></object></p>
 <p>💚 Effort: Request config change via Eclipse HelpDesk.</p>
 <p>💚 Speed: Faster than option P because many <em>small</em> repos.</p>
+<p>💚 Size: 10GiB per repo should suffice for a long time.</p>
 <p>😡 Independence: HelpDesk needed to adapt configuration. (Add repo, rename folder)</p>
+</section>
+<section id="option-d-direct-webspace-push">
+<h3>Option D: Direct Webspace Push<a class="headerlink" href="#option-d-direct-webspace-push" title="Link to this heading">#</a></h3>
+<p>Instead of using the foundation’s pulling mechanism,
+we could push directly to some webspace from each module’s GitHub Action.</p>
+<p>The eclipse.dev/score website is separate and not relevant for this option.</p>
+<p class="plantuml">
+<object data="../_images/plantuml-39d1565254406d3c61869988816549797fd1d334.svg" type="image/svg+xml" style="width:373px;height:65px;background:#FFFFFF;"></object></p>
+<p>😡 Effort: Requires custom setup for the publication?</p>
+<p>💚 Speed: Fast</p>
+<p>💚 Size: Independent of any GitHub limits.</p>
+<p>💚 Independence: Full control because custom.</p>
 </section>
 </section>
 <section id="evaluation">
 <h2>Evaluation<a class="headerlink" href="#evaluation" title="Link to this heading">#</a></h2>
 <p>All options have the same costs in terms of hosting fees.</p>
+<p>Criteria in order of importance (most important first):</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <colgroup>
-<col style="width: 40.0%" />
-<col style="width: 20.0%" />
-<col style="width: 20.0%" />
-<col style="width: 20.0%" />
+<col style="width: 33.3%" />
+<col style="width: 16.7%" />
+<col style="width: 16.7%" />
+<col style="width: 16.7%" />
+<col style="width: 16.7%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Criteria</p></th>
 <th class="head"><p>Option G</p></th>
 <th class="head"><p>Option P</p></th>
-<th class="head"><p>Option E</p></th>
+<th class="head"><p>Option C</p></th>
+<th class="head"><p>Option D</p></th>
 </tr>
 </thead>
 <tbody>
@@ -688,22 +716,33 @@ You can request an update to your website deployment metadata by opening a ticke
 <td><p>😡</p></td>
 <td><p>💚</p></td>
 <td><p>💚</p></td>
+<td><p>❓</p></td>
 </tr>
-<tr class="row-odd"><td><p>Speed</p></td>
-<td><p>–</p></td>
+<tr class="row-odd"><td><p>Size</p></td>
+<td><p>😡</p></td>
 <td><p>😡</p></td>
 <td><p>💚</p></td>
+<td><p>💚</p></td>
 </tr>
-<tr class="row-even"><td><p>Independence</p></td>
-<td><p>–</p></td>
+<tr class="row-even"><td><p>Speed</p></td>
+<td><p>❔</p></td>
+<td><p>😡</p></td>
+<td><p>💚</p></td>
+<td><p>💚</p></td>
+</tr>
+<tr class="row-odd"><td><p>Independence</p></td>
+<td><p>❔</p></td>
 <td><p>💚</p></td>
 <td><p>😡</p></td>
+<td><p>💚</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <p>Option G is not sustainable due to increasing effort.
+Option P still has risky size limits.
 Thus we pick option E because deployment speed is more important than independence.</p>
+<p>⚠️ evaluate option D properly</p>
 </section>
 </section>
 
@@ -754,14 +793,16 @@ Thus we pick option E because deployment speed is more important than independen
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context-problem">Context / Problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-description">Problem Description</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#context">Context</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-and-requirements">Goals and Requirements</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#options-considered">Options Considered</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-g-continue-with-per-repo-github-pages-status-quo">Option G: Continue with per-repo GitHub Pages (status quo)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-p-publish-action-into-published-repo">Option P: Publish Action into “published” Repo</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-e-combine-website-from-multiple-repos">Option E: Combine Website from multiple Repos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-c-combine-website-from-multiple-repos">Option C: Combine Website from multiple Repos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-d-direct-webspace-push">Option D: Direct Webspace Push</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a></li>
