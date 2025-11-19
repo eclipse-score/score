@@ -65,7 +65,7 @@ General
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: stkh_req__functional_req__logging
+   :satisfies: stkh_req__dev_experience__logging_support
    :status: valid
 
    Core Logging API should be used
