@@ -32,7 +32,7 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/score.css?v=940e959b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score.css?v=6e51530f" />
     <link rel="stylesheet" type="text/css" href="../_static/css/score_needs.css?v=e97392eb" />
     <link rel="stylesheet" type="text/css" href="../_static/css/score_design.css?v=d9fd870c" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
@@ -153,15 +153,8 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../introduction/index.html">
-    Introduction
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../requirements/index.html">
-    Requirements
+  <a class="nav-link nav-internal" href="../handbook/index.html">
+    Handbook
   </a>
 </li>
 
@@ -169,6 +162,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../features/index.html">
     Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../requirements/index.html">
+    Requirements
   </a>
 </li>
 
@@ -225,6 +225,13 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../design_decisions/index.html">
     Decision Records
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
   </a>
 </li>
 
@@ -341,15 +348,8 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../introduction/index.html">
-    Introduction
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../requirements/index.html">
-    Requirements
+  <a class="nav-link nav-internal" href="../handbook/index.html">
+    Handbook
   </a>
 </li>
 
@@ -357,6 +357,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../features/index.html">
     Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../requirements/index.html">
+    Requirements
   </a>
 </li>
 
@@ -406,6 +413,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../design_decisions/index.html">
     Decision Records
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
   </a>
 </li>
 
@@ -546,7 +560,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-61dbec31">
+  <div class="need_container docutils container" id="SNCB-ac3fb4c5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__project_mgt_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -567,7 +581,7 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">platform_management</span></span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/platform_management/platform_management_workproducts.html#wp__project_mgt">PROCESS_wp__project_mgt</a></span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/platform_management/platform_management_workproducts.html#wp__project_mgt">wp__project_mgt</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -647,12 +661,98 @@ in order to achieve milestones on time. All important architectural decisions
 should be reported to the project as <em>Feature Request</em> to get the final approvement from the <em>Technical lead circle</em>.</p>
 </li>
 <li><p><strong>Feature Teams</strong></p>
-<p><em>Feature Teams</em> have end-to-end responsibility for specific functionalities. This includes all aspects beginning with the architecture definition to the integration test. They are usually assigned to the <em>S-CORE</em> main integration project or to one particular software module. <em>Feature Teams</em> work independently of each other on <em>GitHub Issues</em> in the assigned software module. <em>Feature Teams</em> consist of the contributors, who can specify requirements, define architecture, develop source code and implement tests afterwards. <em>Project Leads</em> and <em>Committers</em> are also <em>Contributors</em> and effectively work on processing of <em>GitHub Issues</em>.</p>
-<p><em>Feature Team</em> usually consists of the following roles: Project Lead, Safety Manager, Quality Manager, Security Manager, Committers and Contributors. Every <em>Feature Team</em> has at least one committer who can approve and merge the Pull Requests of the Contributors.</p>
-<p>In case a <em>Feature Team</em> needs to request a new repository, this can be done be extending the <a class="reference external" href="https://github.com/eclipse-score/.eclipsefdn/blob/main/otterdog/eclipse-score.jsonnet">otterdog configuration file</a> and creating a new PR, that has to be approved by the <em>Eclipse Project Security Team</em>.</p>
-<p>The <em>GitHub Discussions</em> for feature teams can be found in the <a class="reference external" href="https://github.com/orgs/eclipse-score/discussions">Feature Teams section</a> of the main <em>S-CORE</em> project.</p>
+<p><em>Feature Teams</em> have end-to-end responsibility for specific functionalities. This includes all
+aspects beginning with the architecture definition to the integration test. They are usually assigned
+to the <em>S-CORE</em> main integration project or to one particular software module. <em>Feature Teams</em> work
+independently of each other on <em>GitHub Issues</em> in the assigned software module.
+<em>Feature Teams</em> consist mainly of the contributors, who can specify requirements, define architecture,
+develop source code and implement tests afterwards. <em>Project Leads</em> and <em>Committers</em> are also <em>Contributors</em>
+and effectively work on processing of <em>GitHub Issues</em>.</p>
+<p>Every <em>Feature Team</em> should have at least one committer who can approve and merge the Pull Requests of the Contributors.</p>
+<p>Every <em>Feature Team</em> should also have a <em>Feature Team Lead</em>. The person with this role is responsible for
+organizing the meetings, writing meeting protocols and representing the current status of the <em>Feature Team</em>
+work in various management reporting or plannig calls. <em>Feature Team Lead</em> is nominated by <em>Technical Leads</em> by election.
+Normally, this is the owner of the original <em>Feature Request</em>.</p>
 </li>
 </ul>
+<section id="creation-of-a-new-feature-team">
+<h4>Creation of a new Feature Team<a class="headerlink" href="#creation-of-a-new-feature-team" title="Link to this heading">#</a></h4>
+<p>Decision to create a new <em>Feature Team</em> is normally done in <em>Technical Lead Circle</em> in case a particular,
+already <em>accepted</em> <em>Feature Request</em> can not be assigned to any of already existing <em>Feature Teams</em>.</p>
+<p>As a first step, the decision to create a new Feature Team is protocolled in the <a class="reference external" href="https://github.com/orgs/eclipse-score/discussions/categories/technical-lead-circle">Tech Lead Circle meeeting minutes</a>.
+Afterwards a GitHub Issue is created in the <a class="reference external" href="https://github.com/orgs/eclipse-score/projects/3">Technical Lead Cirle LOP project</a>
+using the special <em>Feature Team Creation</em> GitHub Issue template and is assigned to one of the Technical Leads.</p>
+<p><strong>ToDo</strong>: create such a template.</p>
+<p>Usage of the special GitHub Issue template ensures, that all GitHub issues for creation of new <em>Feature
+Teams</em> follow the same rules, e.g. that the title always has the same format or
+that the description always contains the reasoning for the creation of a new <em>Feature Team</em>.</p>
+<p>Additionally, the GitHub Issue created from the template includes a <em>DoD list</em>, which serves as a checklist
+for the Technical Lead to ensure that all necessary activities and steps have been completed to establish a new <em>Feature Team</em>.
+Its current <em>DoD list</em> is always documented in the template. The most important activities are:</p>
+<ul>
+<li><p><strong>Creation of labels</strong></p>
+<p>Every <em>Feature Team</em> should have its own label for filtering of GitHub Issues, PRs or discussions.</p>
+</li>
+<li><p><strong>Creation of discussion</strong></p>
+<p>Every <em>Feature Team</em> should have its own discussion section in the <a class="reference external" href="https://github.com/orgs/eclipse-score/discussions">Feature Teams section</a>
+of the main <em>S-CORE</em> project.</p>
+</li>
+<li><p><strong>Adding a new Team to the main S-Core GitHub project</strong></p>
+<p>Every <em>Feature Team</em> should be added as a further select option of the “Team” field
+in the <a class="reference external" href="https://github.com/orgs/eclipse-score/projects/17/views/27">main S-Core project</a>, so that <em>Technical Leads</em>
+can assign tickets to the team and filter for the tickets of the new team.
+Additionally, every team is free to create its own GitHub project, but then the team tickets should be still
+visible in the main S-Core project.</p>
+</li>
+<li><p><strong>Creation of repository</strong></p>
+<p>Normally, every <em>Feature Team</em> should have a dedicated repository. Creation of new repository is done
+be extending the <a class="reference external" href="https://github.com/eclipse-score/.eclipsefdn/blob/main/otterdog/eclipse-score.jsonnet">otterdog configuration file</a>
+and creating a new PR, that has to be approved by the <em>Eclipse Project Security Team</em>. Creation of the
+repository is the responsibility of the <em>Feature Team Lead</em>.</p>
+</li>
+<li><p><strong>Developer GitHub Team</strong></p>
+<p>Every <em>Feature Team</em> should have a corresponding software developer GitHub team, e.g. <em>ipc_ft_dev</em>, that contains all
+developers, that are actively participating in this <em>Feature Team</em>. This GitHub group can be used e.g. to
+send notifications for upcoming meetings or discussions.</p>
+</li>
+<li><p><strong>Codeowner GitHub Team</strong></p>
+<p>Every <em>Feature Team</em> should have a corresponding codeowner GitHub team, e.g. <em>ipc_ft_co</em>, that contains all
+software developers, whose review is mandatory for every PR in the repository and who have rights to merge PRs to the repository.</p>
+</li>
+</ul>
+</section>
+<section id="merge-rights-code-ownership">
+<h4>Merge rights &amp; code ownership<a class="headerlink" href="#merge-rights-code-ownership" title="Link to this heading">#</a></h4>
+<p>As already stated, every <em>Feature Team</em> has normally a dedicated repository. Before the creation of the new repository,
+<em>Feature Team Lead</em> together with <em>Technical Leads</em> should nominate initial codeowners, whose review is mandatory for merging PRs to the repository
+and who is at the end allowed to merge PRs to the repository.</p>
+<p>In the S-CORE project, the configuration whose review is mandatory to merge a PR to the repository is done
+using <a class="reference external" href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners#codeowners-and-branch-protection">CODEOWNERS file and branch protection</a> .
+Every repository has a CODEOWNERS file, where one or multiple teams are specified, whose review is needed for the PR
+to be able to be merged. The teams listed there are normally:</p>
+<ul class="simple">
+<li><p><em>Codeowner GitHub Team</em> for this <em>Feature Team</em></p></li>
+<li><p>GitHub Team for security managers</p></li>
+<li><p>GitHub Team for quality managers</p></li>
+<li><p>GitHub Team for safety managers</p></li>
+</ul>
+<p><strong>ToDo</strong>: can we have an ‘AND relationship’ for teams in CODEOWNERS file?</p>
+<p><em>Codeowner GitHub Team</em> for the corresponding <em>Feature Team</em> consists of the software developers, that understand how
+the particular feature works or should work. The members of this team should be selected and agreed
+during the creation of the <em>Feature Team</em> by the <em>Technical Leads</em> and <em>Feature Team Lead</em>. The criteria for the selection should be the
+technical competence of the software developers, e.g. in case during the <a class="reference internal" href="../contribute/contribution_request/feature_request.html#id1"><span class="std std-ref">Feature Request process</span></a>
+it was decided to take over already existing source code, then persons who were actively participating in the
+development of that code are always good candidates to be part of <em>Codeowner GitHub team</em>.
+The decision who should be initially part of the <em>Codeowner GitHub team</em> and the reasoning for this
+should be protocolled in the GitHub Issue, that is used for creation of the <em>Feature Team</em>.</p>
+<p>In case further software developers should be added to the <em>Codeowener GitHub team</em> in the future,
+that decision and its reasoning should be protocolled in one of the <em>Feature Team</em> GitHub discussions.</p>
+<p>Members of the <em>Codeowner GitHub team</em> should also be authorized to merge pull requests (PRs) into the corresponding repository.
+Therefore, once the <em>Codeowner GitHub team</em> has been created, the Technical Lead assigned to the ticket for the <em>Feature
+Team</em> setup should initiate committer elections for all software developers in the <em>Codeowner GitHub team</em>.
+All other Technical Leads who are already committers in the S-CORE project are expected to support these
+elections by voting positively, provided there are no specific objections.</p>
+</section>
 </section>
 <section id="meeting-structure">
 <h3>Meeting Structure<a class="headerlink" href="#meeting-structure" title="Link to this heading">#</a></h3>
@@ -762,29 +862,50 @@ additionally its own labels. It is recommended to create labels at least
 for specific areas that may encompass multiple features.</p>
 </section>
 </section>
-<section id="types-of-tasks-and-structure">
-<h3>Types of tasks and structure<a class="headerlink" href="#types-of-tasks-and-structure" title="Link to this heading">#</a></h3>
+<section id="types-of-work-packages-and-structure">
+<h3>Types of work packages and structure<a class="headerlink" href="#types-of-work-packages-and-structure" title="Link to this heading">#</a></h3>
 <p>For better structuring of the tickets following <em>GitHub Issue</em> types are introduced
-in the main <em>S-CORE</em> repository. It is recommended for all <em>child projects</em> to
-introduce the same types.</p>
+in the main <em>S-CORE</em> repository. In order to create a consistent overview of all work packages (WPs),
+the WPs need to be maintained in one single project within the main <em>S-CORE</em> repository.
+Having separate WP backlogs within separate repositories will increase the complexity
+and reduce the transparency too much.</p>
+<p>All <em>child projects</em> are only allowed to have their separate list of issues. All other WP types
+shall not be available for them. The planning WPs of the main <em>S-CORE</em> repository therefore are used
+to link WPs to <em>GitHub issues</em> of <em>child projects</em>.
+For example a <em>Bug</em> WP within the main repository is linked to a <em>GitHub Issue</em> of the <em>communication</em>
+repository but no <em>Bug</em> WP shall be created in the <em>child project</em> repository.</p>
 <a class="reference internal image-reference" href="../_images/issue_types.png"><img alt="Issue types overview" class="align-center" src="../_images/issue_types.png" style="width: 600px;" />
 </a>
 <ul class="simple">
-<li><p><em>Saga</em> <em>GitHub Issue</em> of type <em>Saga</em> is the highest level hierarchy and can not
-be a sub-issue of another ticket. If you want to group <em>Sagas</em> together, you will
-need to use labels. <em>Saga</em> can have multiple <em>Epics</em> as sub-issues. In really
-exceptional cases, also a <em>Story</em> can be a direct sub-issue of a <em>Saga</em> as well.</p></li>
-<li><p><em>Epic</em> <em>GitHub Issue</em> of type <em>Epic</em> groups multiple <em>Stories</em> together and is sub-issue
-of exactly one <em>Saga</em>. <em>Epics</em> can be also standalone <em>GitHub Issues</em> without being
-a child of any <em>Saga</em>. <em>Saga</em> should be the only way for grouping <em>Epics</em> together.
-Grouping standalone <em>Epics</em> with labels is not something, what we encourage you to do.</p></li>
-<li><p><em>Story</em> <em>GitHub Issue</em> of type <em>Story</em> is the lowest planning granularity and represents
-concrete task, that should be done, e.g. by a developer. Normally <em>Stories</em> are
-grouped together in an Epic. In some cases a <em>Story</em> can exist as a standalone <em>GitHub issue</em>.
-Grouping standalone <em>Stories</em> with labels is not something, what we encourage you to do.</p></li>
-<li><p><em>Bug</em> <em>GitHub Issue</em> of type <em>Bug</em> is used to report any kind of problems. It can be
-a standalone <em>GitHub Issue</em> or can be a sub-issue of an <em>Epic</em> or a <em>Saga</em>.
-It is also ok to use labels to group multiple <em>Bugs</em> that are related to the same topic.</p></li>
+<li><p>A <em>Task</em> <em>GitHub Issue</em> represents the smallest unit of planning and typically corresponds
+to a concrete piece of work to be completed, such as by a developer. <em>Task</em> work packages are usually
+grouped under a <em>Story</em> work package.
+In certain cases, a <em>Task</em> may exist as a standalone <em>GitHub Issue</em>.
+However, standalone <em>Task</em> work packages must not be grouped using labels.
+If multiple <em>Task</em> work packages are related, a <em>Story</em> work package should be created instead,
+with all associated <em>Task</em> work packages added as child work packages under that <em>Story</em>.</p></li>
+<li><p>A <em>Story</em> <em>GitHub Issue</em> is the primary planning work package for development teams.
+<em>Story</em> work packages should be scoped in a way that allows them to be completed within
+the release cycle of the S-CORE project.
+While a <em>Story</em> work package can be implemented by multiple team members, it is recommended
+that one developer takes main responsibility for its completion. Quality assurance activities,
+such as code reviews, should be performed by other team members.
+<em>Story</em> work packages are typically grouped under an <em>Product Increment</em> work package.
+However, a <em>Story</em> work package can also exist as a standalone work package if its outcome represents
+a complete functional improvement, making a related <em>Product Increment</em> work package unnecessary.</p></li>
+<li><p>A <em>Product Increment</em> <em>GitHub Issue</em> represents the highest level in the work package hierarchy and
+cannot be linked as a child of another issue. If you need to group multiple <em>Product Increment</em> work packages,
+this must be done using labels.
+A <em>Product Increment</em> work package can have multiple <em>Story</em> work packages as child work packages.
+In exceptional cases, a <em>Story</em> work package may also be linked as a child of a <em>Product Increment</em> work package
+if its outcome represents a complete functional improvement.</p></li>
+<li><p>A <em>Feature Request</em> <em>GitHub Issues</em> represents an independent work package used to describe and
+track a high-level request for the project. <em>Feature Request</em> work packages can be linked to
+other work packages, but they must not be treated as parent work packages.</p></li>
+<li><p>A <em>Bug</em> <em>GitHub Issue</em> is used to report any kind of problem or malfunction. It is considered
+a special type of <em>Story</em> work package and follows the same rules as regular <em>Story</em> work packages,
+with the key difference that it focuses on fixing defects in existing functionality
+rather than creating or extending functionality.</p></li>
 </ul>
 <p>Main <em>S-CORE</em> project defines templates for every type of <em>GitHub Issues</em>
 to ensure, that every ticket has all necessary information.</p>
@@ -864,7 +985,7 @@ in the software modules you should create <em>GitHub Issues</em> directly in the
 of the submodule. The project leads and committers of the corresponding software module,
 circle or community will check the issue and in case they will accept it, they will
 take it over to one of their <em>GitHub Projects</em>. In case, the topic, that you raise in the issue has a big impact on the platform, you can be asked by the committers to raise a <em>Feature Request</em> and to do a POC in the <a class="reference external" href="https://eclipse-score.github.io/score/features/integration/index.html#incubation-repositories">incubation repository</a> .</p>
-<p>Contribution to the project is described in more details in <a class="reference external" href="https://eclipse-score.github.io/score/process/guidelines/contribution_request/index.html">Contribution Guideline</a>.
+<p>Contribution to the project is described in more details in <a class="reference external" href="https://eclipse-score.github.io/score/main/contribute/index.html">Contribution Guideline</a>.
 In general, everyone who wants to provide something new to the project, e.g. a new feature
 or a tool, should provide an exhaustive description, requirements and in some cases
 also initial draft of the architecture as part of the <em>Feature Request</em>.
@@ -953,7 +1074,11 @@ is changed from “experimental” to “official”.</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-organization">Project organization</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steering-committees">Steering committees</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-committees">Technical committees</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-committees">Technical committees</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#creation-of-a-new-feature-team">Creation of a new Feature Team</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-rights-code-ownership">Merge rights &amp; code ownership</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meeting-structure">Meeting Structure</a></li>
 </ul>
 </li>
@@ -964,7 +1089,7 @@ is changed from “experimental” to “official”.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#labels">Labels</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-tasks-and-structure">Types of tasks and structure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-work-packages-and-structure">Types of work packages and structure</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#traceability">Traceability</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#github-projects">GitHub Projects</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#releases-and-milestones">Releases and milestones</a></li>

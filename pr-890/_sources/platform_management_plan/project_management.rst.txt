@@ -17,7 +17,7 @@
    :status: draft
    :safety: ASIL_B
    :security: YES
-   :realizes: PROCESS_wp__project_mgt
+   :realizes: wp__project_mgt
    :tags: platform_management
 
 Project management plan
@@ -86,13 +86,112 @@ Technical committees
 
 * **Feature Teams**
 
-  *Feature Teams* have end-to-end responsibility for specific functionalities. This includes all aspects beginning with the architecture definition to the integration test. They are usually assigned to the *S-CORE* main integration project or to one particular software module. *Feature Teams* work independently of each other on *GitHub Issues* in the assigned software module. *Feature Teams* consist of the contributors, who can specify requirements, define architecture, develop source code and implement tests afterwards. *Project Leads* and *Committers* are also *Contributors* and effectively work on processing of *GitHub Issues*.
+  *Feature Teams* have end-to-end responsibility for specific functionalities. This includes all
+  aspects beginning with the architecture definition to the integration test. They are usually assigned
+  to the *S-CORE* main integration project or to one particular software module. *Feature Teams* work
+  independently of each other on *GitHub Issues* in the assigned software module.
+  *Feature Teams* consist mainly of the contributors, who can specify requirements, define architecture,
+  develop source code and implement tests afterwards. *Project Leads* and *Committers* are also *Contributors*
+  and effectively work on processing of *GitHub Issues*.
 
-  *Feature Team* usually consists of the following roles: Project Lead, Safety Manager, Quality Manager, Security Manager, Committers and Contributors. Every *Feature Team* has at least one committer who can approve and merge the Pull Requests of the Contributors.
+  Every *Feature Team* should have at least one committer who can approve and merge the Pull Requests of the Contributors.
 
-  In case a *Feature Team* needs to request a new repository, this can be done be extending the `otterdog configuration file <https://github.com/eclipse-score/.eclipsefdn/blob/main/otterdog/eclipse-score.jsonnet>`_ and creating a new PR, that has to be approved by the *Eclipse Project Security Team*.
+  Every *Feature Team* should also have a *Feature Team Lead*. The person with this role is responsible for
+  organizing the meetings, writing meeting protocols and representing the current status of the *Feature Team*
+  work in various management reporting or plannig calls. *Feature Team Lead* is nominated by *Technical Leads* by election.
+  Normally, this is the owner of the original *Feature Request*.
 
-  The *GitHub Discussions* for feature teams can be found in the `Feature Teams section <https://github.com/orgs/eclipse-score/discussions>`_ of the main *S-CORE* project.
+
+Creation of a new Feature Team
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Decision to create a new *Feature Team* is normally done in *Technical Lead Circle* in case a particular,
+already *accepted* *Feature Request* can not be assigned to any of already existing *Feature Teams*.
+
+As a first step, the decision to create a new Feature Team is protocolled in the `Tech Lead Circle meeeting minutes <https://github.com/orgs/eclipse-score/discussions/categories/technical-lead-circle>`_.
+Afterwards a GitHub Issue is created in the `Technical Lead Cirle LOP project <https://github.com/orgs/eclipse-score/projects/3>`_
+using the special *Feature Team Creation* GitHub Issue template and is assigned to one of the Technical Leads.
+
+**ToDo**: create such a template.
+
+Usage of the special GitHub Issue template ensures, that all GitHub issues for creation of new *Feature
+Teams* follow the same rules, e.g. that the title always has the same format or
+that the description always contains the reasoning for the creation of a new *Feature Team*.
+
+Additionally, the GitHub Issue created from the template includes a *DoD list*, which serves as a checklist
+for the Technical Lead to ensure that all necessary activities and steps have been completed to establish a new *Feature Team*.
+Its current *DoD list* is always documented in the template. The most important activities are:
+
+* **Creation of labels**
+
+  Every *Feature Team* should have its own label for filtering of GitHub Issues, PRs or discussions.
+
+* **Creation of discussion**
+
+  Every *Feature Team* should have its own discussion section in the `Feature Teams section <https://github.com/orgs/eclipse-score/discussions>`_
+  of the main *S-CORE* project.
+
+* **Adding a new Team to the main S-Core GitHub project**
+
+  Every *Feature Team* should be added as a further select option of the "Team" field
+  in the `main S-Core project <https://github.com/orgs/eclipse-score/projects/17/views/27>`_, so that *Technical Leads*
+  can assign tickets to the team and filter for the tickets of the new team.
+  Additionally, every team is free to create its own GitHub project, but then the team tickets should be still
+  visible in the main S-Core project.
+
+* **Creation of repository**
+
+  Normally, every *Feature Team* should have a dedicated repository. Creation of new repository is done
+  be extending the `otterdog configuration file <https://github.com/eclipse-score/.eclipsefdn/blob/main/otterdog/eclipse-score.jsonnet>`_
+  and creating a new PR, that has to be approved by the *Eclipse Project Security Team*. Creation of the
+  repository is the responsibility of the *Feature Team Lead*.
+
+* **Developer GitHub Team**
+
+  Every *Feature Team* should have a corresponding software developer GitHub team, e.g. *ipc_ft_dev*, that contains all
+  developers, that are actively participating in this *Feature Team*. This GitHub group can be used e.g. to
+  send notifications for upcoming meetings or discussions.
+
+* **Codeowner GitHub Team**
+
+  Every *Feature Team* should have a corresponding codeowner GitHub team, e.g. *ipc_ft_co*, that contains all
+  software developers, whose review is mandatory for every PR in the repository and who have rights to merge PRs to the repository.
+
+
+Merge rights & code ownership
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+As already stated, every *Feature Team* has normally a dedicated repository. Before the creation of the new repository,
+*Feature Team Lead* together with *Technical Leads* should nominate initial codeowners, whose review is mandatory for merging PRs to the repository
+and who is at the end allowed to merge PRs to the repository.
+
+In the S-CORE project, the configuration whose review is mandatory to merge a PR to the repository is done
+using `CODEOWNERS file and branch protection <https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners#codeowners-and-branch-protection>`_ .
+Every repository has a CODEOWNERS file, where one or multiple teams are specified, whose review is needed for the PR
+to be able to be merged. The teams listed there are normally:
+
+* *Codeowner GitHub Team* for this *Feature Team*
+* GitHub Team for security managers
+* GitHub Team for quality managers
+* GitHub Team for safety managers
+
+**ToDo**: can we have an 'AND relationship' for teams in CODEOWNERS file?
+
+*Codeowner GitHub Team* for the corresponding *Feature Team* consists of the software developers, that understand how
+the particular feature works or should work. The members of this team should be selected and agreed
+during the creation of the *Feature Team* by the *Technical Leads* and *Feature Team Lead*. The criteria for the selection should be the
+technical competence of the software developers, e.g. in case during the :ref:`Feature Request process <feature_request_guideline>`
+it was decided to take over already existing source code, then persons who were actively participating in the
+development of that code are always good candidates to be part of *Codeowner GitHub team*.
+The decision who should be initially part of the *Codeowner GitHub team* and the reasoning for this
+should be protocolled in the GitHub Issue, that is used for creation of the *Feature Team*.
+
+In case further software developers should be added to the *Codeowener GitHub team* in the future,
+that decision and its reasoning should be protocolled in one of the *Feature Team* GitHub discussions.
+
+Members of the *Codeowner GitHub team* should also be authorized to merge pull requests (PRs) into the corresponding repository.
+Therefore, once the *Codeowner GitHub team* has been created, the Technical Lead assigned to the ticket for the *Feature
+Team* setup should initiate committer elections for all software developers in the *Codeowner GitHub team*.
+All other Technical Leads who are already committers in the S-CORE project are expected to support these
+elections by voting positively, provided there are no specific objections.
 
 Meeting Structure
 -----------------
@@ -221,32 +320,58 @@ Every software module project, located in another repository, is free to define
 additionally its own labels. It is recommended to create labels at least
 for specific areas that may encompass multiple features.
 
-Types of tasks and structure
-------------------------------
+Types of work packages and structure
+------------------------------------
 For better structuring of the tickets following *GitHub Issue* types are introduced
-in the main *S-CORE* repository. It is recommended for all *child projects* to
-introduce the same types.
+in the main *S-CORE* repository. In order to create a consistent overview of all work packages (WPs),
+the WPs need to be maintained in one single project within the main *S-CORE* repository.
+Having separate WP backlogs within separate repositories will increase the complexity
+and reduce the transparency too much.
+
+All *child projects* are only allowed to have their separate list of issues. All other WP types
+shall not be available for them. The planning WPs of the main *S-CORE* repository therefore are used
+to link WPs to *GitHub issues* of *child projects*.
+For example a *Bug* WP within the main repository is linked to a *GitHub Issue* of the *communication*
+repository but no *Bug* WP shall be created in the *child project* repository.
 
 .. image:: _assets/issue_types.png
     :width: 600
     :alt: Issue types overview
     :align: center
 
-* *Saga* *GitHub Issue* of type *Saga* is the highest level hierarchy and can not
-  be a sub-issue of another ticket. If you want to group *Sagas* together, you will
-  need to use labels. *Saga* can have multiple *Epics* as sub-issues. In really
-  exceptional cases, also a *Story* can be a direct sub-issue of a *Saga* as well.
-* *Epic* *GitHub Issue* of type *Epic* groups multiple *Stories* together and is sub-issue
-  of exactly one *Saga*. *Epics* can be also standalone *GitHub Issues* without being
-  a child of any *Saga*. *Saga* should be the only way for grouping *Epics* together.
-  Grouping standalone *Epics* with labels is not something, what we encourage you to do.
-* *Story* *GitHub Issue* of type *Story* is the lowest planning granularity and represents
-  concrete task, that should be done, e.g. by a developer. Normally *Stories* are
-  grouped together in an Epic. In some cases a *Story* can exist as a standalone *GitHub issue*.
-  Grouping standalone *Stories* with labels is not something, what we encourage you to do.
-* *Bug* *GitHub Issue* of type *Bug* is used to report any kind of problems. It can be
-  a standalone *GitHub Issue* or can be a sub-issue of an *Epic* or a *Saga*.
-  It is also ok to use labels to group multiple *Bugs* that are related to the same topic.
+* A *Task* *GitHub Issue* represents the smallest unit of planning and typically corresponds
+  to a concrete piece of work to be completed, such as by a developer. *Task* work packages are usually
+  grouped under a *Story* work package.
+  In certain cases, a *Task* may exist as a standalone *GitHub Issue*.
+  However, standalone *Task* work packages must not be grouped using labels.
+  If multiple *Task* work packages are related, a *Story* work package should be created instead,
+  with all associated *Task* work packages added as child work packages under that *Story*.
+
+* A *Story* *GitHub Issue* is the primary planning work package for development teams.
+  *Story* work packages should be scoped in a way that allows them to be completed within
+  the release cycle of the S-CORE project.
+  While a *Story* work package can be implemented by multiple team members, it is recommended
+  that one developer takes main responsibility for its completion. Quality assurance activities,
+  such as code reviews, should be performed by other team members.
+  *Story* work packages are typically grouped under an *Product Increment* work package.
+  However, a *Story* work package can also exist as a standalone work package if its outcome represents
+  a complete functional improvement, making a related *Product Increment* work package unnecessary.
+
+* A *Product Increment* *GitHub Issue* represents the highest level in the work package hierarchy and
+  cannot be linked as a child of another issue. If you need to group multiple *Product Increment* work packages,
+  this must be done using labels.
+  A *Product Increment* work package can have multiple *Story* work packages as child work packages.
+  In exceptional cases, a *Story* work package may also be linked as a child of a *Product Increment* work package
+  if its outcome represents a complete functional improvement.
+
+* A *Feature Request* *GitHub Issues* represents an independent work package used to describe and
+  track a high-level request for the project. *Feature Request* work packages can be linked to
+  other work packages, but they must not be treated as parent work packages.
+
+* A *Bug* *GitHub Issue* is used to report any kind of problem or malfunction. It is considered
+  a special type of *Story* work package and follows the same rules as regular *Story* work packages,
+  with the key difference that it focuses on fixing defects in existing functionality
+  rather than creating or extending functionality.
 
 Main *S-CORE* project defines templates for every type of *GitHub Issues*
 to ensure, that every ticket has all necessary information.
@@ -262,7 +387,6 @@ are related to the same topic, together.
     :width: 600
     :alt: Sub issues overview
     :align: center
-
 
 Traceability
 ^^^^^^^^^^^^
@@ -343,7 +467,7 @@ of the submodule. The project leads and committers of the corresponding software
 circle or community will check the issue and in case they will accept it, they will
 take it over to one of their *GitHub Projects*. In case, the topic, that you raise in the issue has a big impact on the platform, you can be asked by the committers to raise a *Feature Request* and to do a POC in the `incubation repository <https://eclipse-score.github.io/score/features/integration/index.html#incubation-repositories>`_ .
 
-Contribution to the project is described in more details in `Contribution Guideline <https://eclipse-score.github.io/score/process/guidelines/contribution_request/index.html>`_.
+Contribution to the project is described in more details in `Contribution Guideline <https://eclipse-score.github.io/score/main/contribute/index.html>`_.
 In general, everyone who wants to provide something new to the project, e.g. a new feature
 or a tool, should provide an exhaustive description, requirements and in some cases
 also initial draft of the architecture as part of the *Feature Request*.
