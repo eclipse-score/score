@@ -19,23 +19,26 @@ DR-005-Infra: Hosting Strategy for Module Documentation
    :context: Infrastructure
    :decision: Combine Website from multiple Repos
 
-Context / Problem
------------------
+Problem Description
+-------------------
 
 We currently host module documentation using GitHub Pages (per-repo webspaces).
-While GitHub *repos* can store up to 10GiB (size of ``.git`` folder),
-GitHub *Pages* only allows 1GiB of storage.
+**GitHub Pages only allows 1GiB of webspace**.
 While this works so far, the storage and site limits are becoming noticeable.
+The score platform repository currently has 1GiB in gh-pages (460MiB ``.git`` repo size).
 More diagrams, pull-requests, and versions will exacerbate the problem.
 
 .. plantuml::
 
-   node "Module Repo" as ModuleRepo
-   node ".gh_pages branch" as gh_pages
+   collections "Module Repos" as ModuleRepo
+   collections ".gh_pages branches" as gh_pages
    cloud "GitHub Pages" as GitHubPages
 
    ModuleRepo -> gh_pages : "build"
    gh_pages -> GitHubPages : "publish"
+
+Context
+^^^^^^^
 
 In addition to GitHub Pages, the project also has the website
 https://eclipse.dev/score/ hosted via the Eclipse Foundation.
@@ -67,6 +70,8 @@ Goals and Requirements
 3. Keep hosting and maintenance costs predictable and low.
 4. Dedicated space for releases?
 
+⚠️ What about additional documentation artifacts from DoxyGen, RustDoc, ...?
+
 Options Considered
 ------------------
 
@@ -79,6 +84,8 @@ e.g. by optimizing page size, or providing PR previews only on demand.
 
 😡 Effort: Increasing.
 
+The effort is serious enough that we don't consider the other criteria at all.
+
 Option P: Publish Action into "published" Repo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -88,7 +95,7 @@ Up to the 10GiB repo limit.
 
 .. plantuml::
 
-   node "Module Repo" as ModuleRepo
+   collections "Module Repos" as ModuleRepo
    node "eclipse-score-website-published" as PublishedRepo
    node "eclipse-score-website" as WebsiteSrc
    cloud "eclipse.dev/score" as EclipseSite
@@ -98,16 +105,21 @@ Up to the 10GiB repo limit.
    PublishedRepo <. EclipseSite : "pull every 5min"
    ModuleRepo -[hidden]-> WebsiteSrc
 
+The limit is not 1GiB per repo anymore but 10GiB for all repos.
+That sounds worse at first, because with 20 repos, it would be 10GiB / 20.
+However, here the *average* size per repository matters.
+With option G above a single repo limit is already a problem.
+Still, this might not ease the problem sufficiently.
 
 💚 Effort: We must adapt our GitHub action's deploy steps.
 
 😡 Speed: Updating a huge "published" repo will take time.
 
-```suggestion
-😡 Size: We risk running into size problems once again: ~500MB (see score repo measurement) * 20 modules (whatever the number is) = 10GB
+😡 Size: 10GiB total limit.
+
 💚 Independence: No HelpDesk needed to potentially adapt configuration.
 
-Option E: Combine Website from multiple Repos
+Option C: Combine Website from multiple Repos
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We let the eclipse.dev website pull content from multiple repositories.
@@ -123,11 +135,11 @@ The configuration is visible as ``website_repo`` from
 
 .. plantuml::
 
-   node "Module Repo" as ModuleRepo
+   collections "Module Repos" as ModuleRepo
    node "eclipse-score-website-published" as PublishedRepo
    node "eclipse-score-website" as WebsiteSrc
    cloud "eclipse.dev/score" as EclipseSite
-   node ".gh_pages branch" as gh_pages
+   collections ".gh_pages branches" as gh_pages
 
    ModuleRepo -> gh_pages : "build"
    WebsiteSrc -> PublishedRepo : "Build & Archive"
@@ -139,20 +151,51 @@ The configuration is visible as ``website_repo`` from
 
 💚 Speed: Faster than option P because many *small* repos.
 
+💚 Size: 10GiB per repo should suffice for a long time.
+
 😡 Independence: HelpDesk needed to adapt configuration. (Add repo, rename folder)
+
+Option D: Direct Webspace Push
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Instead of using the foundation's pulling mechanism,
+we could push directly to some webspace from each module's GitHub Action.
+
+The eclipse.dev/score website is separate and not relevant for this option.
+
+.. plantuml::
+
+   collections "Module Repos" as ModuleRepo
+   cloud webspace
+
+   ModuleRepo -> webspace : "build & publish"
+
+😡 Effort: Requires custom setup for the publication?
+
+💚 Speed: Fast
+
+💚 Size: Independent of any GitHub limits.
+
+💚 Independence: Full control because custom.
 
 Evaluation
 ----------
 
 All options have the same costs in terms of hosting fees.
 
-.. csv-table::
-   :header: Criteria, Option G, Option P, Option E
-   :widths: 20, 10, 10, 10
+Criteria in order of importance (most important first):
 
-   Effort,      😡, 💚, 💚
-   Speed,        --, 😡, 💚
-   Independence, --, 💚, 😡
+.. csv-table::
+   :header: Criteria, Option G, Option P, Option C, Option D
+   :widths: 20, 10, 10, 10, 10
+
+   Effort,      😡, 💚, 💚, ❓
+   Size,        😡, 😡, 💚, 💚
+   Speed,        ❔, 😡, 💚, 💚
+   Independence, ❔, 💚, 😡, 💚
 
 Option G is not sustainable due to increasing effort.
+Option P still has risky size limits.
 Thus we pick option E because deployment speed is more important than independence.
+
+⚠️ evaluate option D properly
