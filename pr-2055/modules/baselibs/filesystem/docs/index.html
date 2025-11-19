@@ -153,8 +153,8 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../requirements/index.html">
-    Requirements
+  <a class="nav-link nav-internal" href="../../../../handbook/index.html">
+    Handbook
   </a>
 </li>
 
@@ -162,6 +162,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../features/index.html">
     Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../requirements/index.html">
+    Requirements
   </a>
 </li>
 
@@ -179,13 +186,6 @@
   </a>
 </li>
 
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../score_releases/index.html">
-    Releases
-  </a>
-</li>
-
             <li class="nav-item dropdown">
                 <button class="btn dropdown-toggle nav-item" type="button"
                 data-bs-toggle="dropdown" aria-expanded="false"
@@ -194,6 +194,13 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../../../score_tools/index.html">
     Tools
@@ -341,8 +348,8 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../requirements/index.html">
-    Requirements
+  <a class="nav-link nav-internal" href="../../../../handbook/index.html">
+    Handbook
   </a>
 </li>
 
@@ -350,6 +357,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../features/index.html">
     Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../requirements/index.html">
+    Requirements
   </a>
 </li>
 
@@ -573,7 +587,7 @@
                   
   <section id="filesystem">
 <h1>filesystem<a class="headerlink" href="#filesystem" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-c3235f43">
+<div class="need_container docutils container" id="SNCB-49705e11">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__filesystem">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -618,6 +632,33 @@
 </div>
 <div class="toctree-wrapper compound">
 </div>
+<section id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
+<p>The Filesystem Library provides a set of APIs for file and directory manipulation, including creation, deletion, and traversal of the filesystem. It aims to offer a consistent and safe interface for filesystem operations across different platforms.</p>
+</section>
+<section id="motivation-and-rationale">
+<h2>Motivation and Rationale<a class="headerlink" href="#motivation-and-rationale" title="Link to this heading">#</a></h2>
+<p>The Filesystem Library is essential for applications that require interaction with the underlying filesystem. It provides a standardized way to perform file operations, ensuring safety and reliability.
+The library is designed to handle various filesystem tasks while adhering to safety standards required for critical systems.</p>
+</section>
+<section id="specification">
+<h2>Specification<a class="headerlink" href="#specification" title="Link to this heading">#</a></h2>
+<p>The following details and requirements describe the aspects of the current feature in the context of S-CORE.</p>
+<section id="general-considerations">
+<h3>General considerations<a class="headerlink" href="#general-considerations" title="Link to this heading">#</a></h3>
+<p>The Filesystem Library should provide robust and safe APIs for filesystem operations:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="requirements/index.html#comp_req__filesystem__api_abstraction" title="comp_req__filesystem__api_abstraction"><em class="xref need">Standard Filesystem Abstrac... (comp_req__filesystem__api_abstraction)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements/index.html#comp_req__filesystem__path_utilities" title="comp_req__filesystem__path_utilities"><em class="xref need">Path Manipulation Utilities (comp_req__filesystem__path_utilities)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements/index.html#comp_req__filesystem__directory_iterators" title="comp_req__filesystem__directory_iterators"><em class="xref need">Directory Iterators (comp_req__filesystem__directory_iterators)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements/index.html#comp_req__filesystem__file_io" title="comp_req__filesystem__file_io"><em class="xref need">File I/O Operations (comp_req__filesystem__file_io)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements/index.html#comp_req__filesystem__full_testability" title="comp_req__filesystem__full_testability"><em class="xref need">Fully testable public API (comp_req__filesystem__full_testability)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements/index.html#comp_req__filesystem__file_utils" title="comp_req__filesystem__file_utils"><em class="xref need">File Utility Functions (comp_req__filesystem__file_utils)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements/index.html#comp_req__filesystem__mock_fake" title="comp_req__filesystem__mock_fake"><em class="xref need">Mock and Fake Implementations (comp_req__filesystem__mock_fake)</em></a></p></li>
+</ul>
+<p>The library should ensure that all filesystem operations are performed safely, with appropriate error handling and resource management to prevent leaks and ensure system stability.</p>
+</section>
+</section>
 </section>
 
 
@@ -658,6 +699,23 @@
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-and-rationale">Motivation and Rationale</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specification">Specification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-considerations">General considerations</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
 
