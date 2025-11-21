@@ -26,10 +26,10 @@ Glossary
       Framework is a structured and extensible foundation for developing specific types of functionality in this case, logging. It supplies a set of default behaviors and configurable options, allowing developers to tailor and extend its capabilities to meet their application and system need.
 
    platform
-      Platform is the execution environment on which S-Core runs. It includes, for example, hardware (HW), operating system (OS), ...
+      Platform is the execution environment on which S-CORE runs. It includes, for example, hardware (HW), operating system (OS), ...
 
    component
-      Component is a S-Core component
+      Component is a S-CORE component
 
    log level
       Log Level is the severity of a log message, necessary to categorize logs based on their importance e.g., FATAL, ERROR, WARN, INFO, DEBUG, VERBOSE such as in DLT

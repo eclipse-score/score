@@ -17,6 +17,10 @@
 Features
 ========
 
+A **Feature** is the highest-level logical entity, representing a set of interrelated components in respect of the S-CORE software platform. It is the primary unit of the management of these components and contains the belonging feature requirements and feature architecture for them. For further explanation see the `Building blocks concept <https://eclipse-score.github.io/process_description/main/general_concepts/score_building_blocks_concept.html>`_.
+
+The following features are defined:
+
 .. toctree::
    :maxdepth: 1
    :glob:
