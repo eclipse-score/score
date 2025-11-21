@@ -474,6 +474,17 @@ Communication
 
    The SW-platform shall support intra-process communication.
 
+.. stkh_req:: Cross-VM Communication
+   :id: stkh_req__communication__vm
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: Different VMs in a system involved. Sometimes they interact.
+   :status: valid
+   :valid_from: v1.0.0
+
+   The platform shall support not only IPC but also inter Virtual Machine (VM) communication.
+
 .. stkh_req:: Stable application interfaces
    :id: stkh_req__communication__stable_app_inter
    :reqtype: Functional
