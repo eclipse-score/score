@@ -12,10 +12,10 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Persistency FMEA
-################
+FMEA (Failure Modes and Effects Analysis)
+#########################################
 
-.. document:: FMEA
+.. document:: Persistency FMEA
    :id: doc__persistency_fmea
    :status: valid
    :safety: ASIL_B
