@@ -13,12 +13,12 @@
    # *******************************************************************************
 .. _sw_development:
 
-Software Development
---------------------
+Software Development Plan
+-------------------------
 
 .. document:: Software Development Plan
    :id: doc__software_development_plan
-   :status: draft
+   :status: valid
    :safety: ASIL_B
    :security: YES
    :realizes: wp__sw_development_plan
@@ -55,9 +55,9 @@ As required in :need:`stkh_req__dev_experience__prog_languages`, S-CORE allows t
 
 **C++ with the language set of C++17** - in case additional elements from C++20 are needed this will be considered by
 :need:`rl__safety_manager`, :need:`rl__security_manager` and :need:`rl__quality_manager`
-and based on their analysis decided by the technical lead circle (:need:`rl__technical_lead`).
+and based on their analysis decided by the project lead circle (:need:`rl__project_lead`).
 
-**Rust - in "Edition" <tbd>** - selection of language edition has still to be done in the S-CORE project.
+**Rust - in Edition 2021** - selection of language edition has still to be done in the S-CORE project.
 For the Rust code of ASIL rated units the "safe subset" shall be used (which is checked by the compiler by configuration of #![forbid(unsafe_code)] in lib.rs)
 
 C language is allowed in incubation phase, as long it is compilable be the selected compiler, but not for a S-CORE release.
@@ -67,29 +67,28 @@ Design guideline
 
 The design guideline is defined in :need:`doc_concept__imp_concept` and :need:`gd_guidl__implementation`.
 
-API guideline
-^^^^^^^^^^^^^
+API guidelines
+^^^^^^^^^^^^^^
 
-To provide the user with a consistent approach on the use of APIs, there is a guideline documented in :need:`doc__api_guidelines`,
-this defines for example the error handling concept or rules to improve user experience.
+To provide the user with a consistent approach on the use of APIs, there are guidelines documented in :need:`doc__api_guidelines`
+and :need:`doc__rust_api_design`, this defines for example the error handling concept or rules to improve user experience.
 
-Coding guideline
-^^^^^^^^^^^^^^^^
+Coding guidelines
+^^^^^^^^^^^^^^^^^
 
 **C++** - see :need:`doc__cpp_coding_guidelines`
 
-**Rust** - state of the art open source Rust guidelines are currently developed by `Safety Critical Rust Consortium <https://github.com/rustfoundation/safety-critical-rust-consortium/>`_
-(which will be adopted by the S-CORE project). A summary of the current state of information regarding Rust in safety critical applications can be found in :need:`doc__rust_coding_guidelines`.
+**Rust** - see :need:`doc__rust_coding_guidelines`
 
 SW configuration guideline
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-<tbd>
+The configuration of the software is done by the code. Which means that there are no external configuration files.
 
 SW development tools
 ^^^^^^^^^^^^^^^^^^^^
 
-This list will evolve into the complete "Tool List" for the S-CORE project used for
+This list will evolve into the complete "Tool List" :ref:`tools` for the S-CORE project used for
 tool evaluation and qualification. In the moment the :need:`doc__verification_plan`
 contains additional tools used in verification.
 
@@ -99,7 +98,7 @@ Additional tools for static and dynamic analysis (in addition to compilers and C
 
 is used for hosting, versioning and contribution of the software. Within
 pull requests it's possible to contribute. For contribution a separate process description is
-<Link to contribute> available. In the discussion section the information regarding meeting
+:need:`doc__contr_guideline` available. In the discussion section the information regarding meeting
 minutes and Working Sections were stored. Within issues can bugfixes, improvements, blank issues
 set up. It's also possible to report there Security vulnerabilities. GitHub Actions is used
 as a support for continuous integration.
@@ -110,7 +109,7 @@ is used for software documentation to generate html-sides from reStructuredText.
 
 .. rubric:: Sphinx-Needs
 
-is used for docs-as-code based documentation that is created
+is used for docs-as-code :need:`doc_tool__doc_as_code` based documentation that is created
 and managed by the sphinx documentation generator. With "needs" objects, created in rst-files,
 requirements, static architecture views and other Sw development documentation is generated. Sphinx-Needs is 100% compliant to
 Sphinx and reStructuredText.
