@@ -416,7 +416,6 @@ Requirements
    :status: valid
 
    The Persistency shall support versioning for different data representation of KVS.
-   Version shall follow the semantic versioning scheme (MAJOR.MINOR.PATCH).
 
    .. note::
       Versioning is essential to ensure compatibility between different versions of the Persistency and the stored data.
