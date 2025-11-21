@@ -72,8 +72,8 @@
         </script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="Communication (v0.5 alpha)" href="../../../communication/index.html" />
-    <link rel="prev" title="Requirements" href="../requirements/index.html" />
+    <link rel="next" title="Architecture Inspection Checklist" href="chklst_arc_inspection.html" />
+    <link rel="prev" title="Requirement Inspection Checklist" href="../requirements/chklst_req_inspection.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
@@ -491,7 +491,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../analysis-infra/index.html">Analysis Infrastructure</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">Base Libraries (v0.5 alpha)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../requirements/index.html">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../requirements/chklst_req_inspection.html">Requirement Inspection Checklist</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chklst_arc_inspection.html">Architecture Inspection Checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../safety_analysis/dfa.html">DFA (Dependent Failure Analysis)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../safety_analysis/fmea.html">FMEA (Failure Modes and Effects Analysis)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../safety_planning/index.html">Feature Safety Planning</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../communication/index.html">Communication (v0.5 alpha)</a></li>
@@ -570,6 +575,48 @@
                   
   <section id="architecture">
 <span id="baselibs-architecture"></span><h1>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h1>
+<div class="need_container docutils container" id="SNCB-0e1191a9">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__baselibs_architecture">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Baselibs Architecture</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/architecture_workproducts.html#wp__feature_arch">wp__feature_arch</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__baselibs_architecture" title="doc__baselibs_architecture">doc__baselibs_architecture</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Generic Document</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
 <p>A brief overview of Baselibs is described <a class="reference internal" href="../../index.html#baselibs-feature"><span class="std std-ref">Base Libraries (v0.5 alpha)</span></a>.</p>
@@ -623,7 +670,7 @@
 </section>
 <section id="static-architecture">
 <h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-4f661778">
+<div class="need_container docutils container" id="SNCB-08260725">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_sta table" id="feat_arc_sta__baselibs__static_view_arch">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -651,7 +698,7 @@
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-features/baselibs/docs/architecture/index-0">
-<object data="../../../../_images/plantuml-156ca809d393f899a4a3686b6b053248879b8956.svg" type="image/svg+xml" style="width:1135px;height:807px;background:#FFFFFF;"></object></p>
+<object data="../../../../_images/plantuml-1c6fe4eb85285afd4b62ae480e5258f6c8efaaee.svg" type="image/svg+xml" style="width:1039px;height:807px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -728,20 +775,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../requirements/index.html"
+       href="../requirements/chklst_req_inspection.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Requirements</p>
+        <p class="prev-next-title">Requirement Inspection Checklist</p>
       </div>
     </a>
     <a class="right-next"
-       href="../../../communication/index.html"
+       href="chklst_arc_inspection.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Communication (v0.5 alpha)</p>
+        <p class="prev-next-title">Architecture Inspection Checklist</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

@@ -16,6 +16,12 @@
 Architecture
 =====================
 
+.. document:: Baselibs Architecture
+   :id: doc__baselibs_architecture
+   :status: valid
+   :safety: ASIL_B
+   :realizes: wp__feature_arch
+
 Overview
 --------
 
