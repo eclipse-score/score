@@ -30,3 +30,4 @@ S-CORE Tools Overview
    :maxdepth: 2
 
    doc_as_code
+   gtest
