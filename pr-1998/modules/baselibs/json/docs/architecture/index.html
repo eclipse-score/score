@@ -153,8 +153,8 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../../requirements/index.html">
-    Requirements
+  <a class="nav-link nav-internal" href="../../../../../handbook/index.html">
+    Handbook
   </a>
 </li>
 
@@ -162,6 +162,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../../features/index.html">
     Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../requirements/index.html">
+    Requirements
   </a>
 </li>
 
@@ -179,13 +186,6 @@
   </a>
 </li>
 
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../../score_releases/index.html">
-    Releases
-  </a>
-</li>
-
             <li class="nav-item dropdown">
                 <button class="btn dropdown-toggle nav-item" type="button"
                 data-bs-toggle="dropdown" aria-expanded="false"
@@ -194,6 +194,13 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../../../../score_tools/index.html">
     Tools
@@ -341,8 +348,8 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../../../requirements/index.html">
-    Requirements
+  <a class="nav-link nav-internal" href="../../../../../handbook/index.html">
+    Handbook
   </a>
 </li>
 
@@ -350,6 +357,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../../features/index.html">
     Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../requirements/index.html">
+    Requirements
   </a>
 </li>
 
@@ -483,6 +497,8 @@
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">JSON Component Architecture</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../json_wrapper/index.html">JSON Wrapper</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../nlohman_json/index.html">nlohman_json</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../safety_analysis/fmea.html">FMEA (Failure Modes and Effects Analysis)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../safety_analysis/dfa.html">DFA (Dependent Failure Analysis)</a></li>
 </ul>
 </details></li>
 
@@ -496,6 +512,7 @@
 
 <li class="toctree-l2"><a class="reference internal" href="../../../memory_shared/docs/index.html">memory_shared</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../message_passing/docs/index.html">message_passing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../os/docs/index.html">os</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../result/docs/index.html">result</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../utils/docs/index.html">utils</a></li>
 </ul>
@@ -576,7 +593,7 @@
                   
   <section id="json-component-architecture">
 <h1>JSON Component Architecture<a class="headerlink" href="#json-component-architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-7da18692">
+<div class="need_container docutils container" id="SNCB-531c08b6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__json_architecture">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -645,7 +662,7 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 </section>
 <section id="static-architecture">
 <h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-3780758c">
+<div class="need_container docutils container" id="SNCB-0bc2d331">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__baselibs__json">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -695,7 +712,7 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 </section>
 <section id="dynamic-architecture">
 <h2>Dynamic Architecture<a class="headerlink" href="#dynamic-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-e4d42ed6">
+<div class="need_container docutils container" id="SNCB-b8dc3dbe">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_dyn table" id="comp_arc_dyn__baselibs__json_dynamic_view">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -740,7 +757,7 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 </section>
 <section id="interfaces">
 <h2>Interfaces<a class="headerlink" href="#interfaces" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-57319c47">
+<div class="need_container docutils container" id="SNCB-336e5ab7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__baselibs__json">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -787,7 +804,7 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d6eeaccf">
+<div class="need_container docutils container" id="SNCB-41343524">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__parse">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -829,7 +846,7 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f774b390">
+<div class="need_container docutils container" id="SNCB-20184ac3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__write">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -874,7 +891,7 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 </section>
 <section id="lower-level-components">
 <h2>Lower Level Components<a class="headerlink" href="#lower-level-components" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-402f1c73">
+<div class="need_container docutils container" id="SNCB-bbaee2bc">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__baselibs__json_wrapper">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -918,7 +935,7 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a9fa433b">
+<div class="need_container docutils container" id="SNCB-7229868a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__baselibs__nlohman_json">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">

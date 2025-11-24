@@ -29,6 +29,8 @@ JSON-Library
    architecture/index.rst
    json_wrapper/index.rst
    nlohman_json/index.rst
+   safety_analysis/fmea.rst
+   safety_analysis/dfa.rst
 
 
 Abstract

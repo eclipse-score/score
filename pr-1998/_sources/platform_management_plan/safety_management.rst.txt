@@ -92,7 +92,7 @@ The following  ISO 26262 defined safety work products are not relevant for the S
   Note that stakeholder requirements (:need:`std_wp__iso26262__system_651`) are in scope of the project,
   to be able to cover System and HW related failures which are usually covered by SW (e.g. end to end protection for ECU external communication).
   But those are the "Assumed Technical Safety Requirements" of the SW platform SEooC and do not need to be tested by SEooC supplier.
-  I.e. the system testing is out of scope. Note that S-CORE will implement platform test of stakeholder requirements for demonstration,
+  I.e. the system testing is out of scope. Note that S-CORE will implement Platform Integration Test of stakeholder requirements for demonstration,
   but these are not intended to be completely covering the stakeholder requirements.
   There will be SW integration tests of feature requirements, as required by ISO 26262 part 6-10.
   These may be reused by the users on their HW platform to cover Technical Safety Requirements towards the SW platform.

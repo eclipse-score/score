@@ -15,6 +15,12 @@
 Requirements
 ############
 
+.. document:: Baselibs Requirements
+   :id: doc__baselibs_requirements
+   :status: draft
+   :safety: ASIL_B
+   :realizes: wp__requirements_feat
+
 .. feat_req:: Core Software Utilities
    :id: feat_req__baselibs__core_utilities
    :reqtype: Functional

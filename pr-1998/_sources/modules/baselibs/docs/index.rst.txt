@@ -22,9 +22,16 @@
 
       {{ draw_module(need(), needs) }}
 
+.. _baselibs_module_docs:
+
 Module Documents
 ================
 
 .. toctree::
-   :maxdepth: 2
-   :titlesonly:
+   :maxdepth: 1
+   :glob:
+
+   manual/index.rst
+   safety_mgt/index.rst
+   verification/module_verification_report.rst
+   release/release_note.rst
