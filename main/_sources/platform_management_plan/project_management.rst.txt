@@ -130,13 +130,13 @@ Its current *DoD list* is always documented in the template. The most important 
   Every *Feature Team* should have its own discussion section in the `Feature Teams section <https://github.com/orgs/eclipse-score/discussions>`_
   of the main *S-CORE* project.
 
-* **Adding a new Team to the main S-Core GitHub project**
+* **Adding a new Team to the main S-CORE GitHub project**
 
   Every *Feature Team* should be added as a further select option of the "Team" field
-  in the `main S-Core project <https://github.com/orgs/eclipse-score/projects/17/views/27>`_, so that *Technical Leads*
+  in the `main S-CORE project <https://github.com/orgs/eclipse-score/projects/17/views/27>`_, so that *Technical Leads*
   can assign tickets to the team and filter for the tickets of the new team.
   Additionally, every team is free to create its own GitHub project, but then the team tickets should be still
-  visible in the main S-Core project.
+  visible in the main S-CORE project.
 
 * **Creation of repository**
 
