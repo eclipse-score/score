@@ -94,7 +94,7 @@ The following  ISO 26262 defined safety work products are not relevant for the S
   However, these are considered "Assumed Technical Safety Requirements" of the SW platform SEooC and do not require testing by the SEooC supplier.
   Thus, system-level testing is out of scope. S-CORE will implement platform tests of stakeholder requirements for demonstration purposes,
   but these are not intended to provide complete coverage of the stakeholder requirements.
-  There will be SW integration tests of feature requirements as specified in ISO 26262 part 4.
+  There will be SW integration tests of feature requirements as specified in ISO 26262 part 6-10.
   These tests may be reused by users on their HW platform to address Technical Safety Requirements for the SW platform.
   Whether these are sufficient to cover the TSRs must be analyzed and decided by the user.
 
