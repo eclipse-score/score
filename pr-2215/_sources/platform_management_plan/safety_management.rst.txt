@@ -152,13 +152,14 @@ While functional safety and cybersecurity have distinct objectives, their intera
 The project acknowledges the need to address cybersecurity risks that may impact safety. To this end, the following measures are implemented:
 
 * Regular collaboration between the safety and cybersecurity teams to identify and assess potential cyber threats that could affect safety functions.
-* Integration of cybersecurity considerations into safety analyses, including hazard and risk assessments, to ensure that cyber risks are systematically evaluated.
-* Alignment of safety and cybersecurity requirements in the development lifecycle, with traceability between safety goals and relevant cybersecurity controls.
+* Integration of cybersecurity considerations into safety analyses, including risk assessments, to ensure that cyber risks are systematically evaluated.
+* Alignment of safety and cybersecurity requirements in the development lifecycle, with traceability between stakeholder safety requirements and relevant cybersecurity controls.
 * Participation in cross-functional reviews and audits to ensure that both safety and cybersecurity requirements are met and that any conflicts are resolved.
-* Continuous monitoring of emerging cybersecurity threats and updating safety plans and processes accordingly.
+* Continuous monitoring of emerging cybersecurity threats and updating the security plan accordingly; update the safety plan only if safety-related impacts are identified.
 
 The project is committed to further strengthening the interface between safety and cybersecurity, and will regularly review and update its processes to reflect best practices and regulatory requirements.
 This approach ensures that cybersecurity is not treated in isolation, but as an integral part of the platform's safety culture and management system.
+The security management aspects are defined in the :doc:`security_management`.
 
 Functional Safety Management Organization
 -----------------------------------------
@@ -213,7 +214,7 @@ Functional Safety Resources
 
 A dedicated safety manager is elected by :need:`rl__project_lead` for all the S-CORE SEooCs development.
 
-The safety manager, supported by the project manager,  will ensure that
+The safety manager, supported by the project manager (:need:`rl__project_lead`) or the assigned Feature team lead, will ensure that
 safety activities are actively planned, developed, analyzed, verified and tested and managed throughout the life cycle of the project.
 As all the implementation of safety functions takes place within module development, there is a safety manager appointed in the module's safety plan.
 
