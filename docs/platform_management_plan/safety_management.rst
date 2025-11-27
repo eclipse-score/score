@@ -197,7 +197,7 @@ Functional Safety Resources
 
 A dedicated safety manager is elected by :need:`rl__project_lead` for all the S-CORE SEooCs development.
 
-The safety manager, supported by the project manager (i.e. the :need:`rl__technical_lead`),  will ensure that
+The safety manager, supported by the project manager (i.e. the :need:`rl__project_lead`),  will ensure that
 safety activities are actively planned, developed, analyzed, verified and tested and managed throughout the life cycle of the project.
 As all the implementation of safety functions takes place within module development, there is a safety manager appointed in the module's safety plan.
 
@@ -234,8 +234,7 @@ The status report is based on safety plans work product lists (see below) and ve
 
 *Escalation*
 
-* :need:`rl__safety_manager` to :need:`rl__technical_lead`
-* :need:`rl__technical_lead` to :need:`rl__project_lead`
+* :need:`rl__safety_manager` to :need:`rl__project_lead`
 
 Examples for valid escalation causes are:
 
