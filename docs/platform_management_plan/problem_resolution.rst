@@ -234,8 +234,8 @@ experts must confirm or disconfirm, if safety/security is affected is set correc
 
 :need:`gd_chklst__problem_cr_review` can help to verify whether the information is complete.
 
-In case affected parties need to be informed :need:`Technical Lead <rl__technical_lead>` or
-:need:`Module Lead <rl__module_lead>` will notify them, either updating the Assignees or
+In case affected parties need to be informed :need:`Project Lead <rl__project_lead>` or
+:need:`Module Lead <rl__committer>` will notify them, either updating the Assignees or
 adding labels for community or feature teams.
 
 Otherwise, if no Problem Resolution is planned, the problem is rejected. To reject the Problem
