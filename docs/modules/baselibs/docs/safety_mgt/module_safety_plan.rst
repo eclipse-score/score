@@ -38,11 +38,17 @@ The module consists of one or more SW components and will be qualified as a SEoo
 Functional Safety Management Roles
 ==================================
 
-+---------------------------+--------------------------------------------------------+
-| Safety Manager            | Alexander Schemmel                                     |
-+---------------------------+--------------------------------------------------------+
-| Project Manager           | Andrey Babanin                                         |
-+---------------------------+--------------------------------------------------------+
+.. list-table:: Module roles
+        :header-rows: 1
+
+        * - Role
+          - Assignee
+
+        * - Safety Manager
+          - see :need:`doc__baselibs_safety_manager`
+
+        * - Module Project Lead
+          - Andrey Babanin
 
 Tailoring
 =========
