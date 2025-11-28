@@ -12,65 +12,99 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Component Architecture
-======================
+Container Component Architecture
+********************************
 
-.. document:: Containers Architecture
+.. document:: Container Architecture
    :id: doc__containers_architecture
-   :status: draft
+   :status: valid
    :safety: ASIL_B
    :realizes: wp__component_arch
 
 Overview/Description
 --------------------
-see :need:`doc__containers`
+
+see :need:`doc__containers_architecture`
 
 Static Architecture
 -------------------
 
-The components are designed to cover the expectations from the feature architecture
-(i.e. if already exists a definition it should be taken over and enriched).
+.. comp_arc_sta:: Containers
+   :id: comp_arc_sta__baselibs__containers
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :tags: baselibs_containers
+   :implements: logic_arc_int__baselibs__dynamic_array, logic_arc_int__baselibs__intrusive_list
 
-.. code-block:: rst
 
-   .. comp_arc_sta:: Component Name (Static View)
-      :id: comp_arc_sta__component_name__static_view
-      :security: YES
-      :safety: ASIL_B
-      :status: invalid
-      :implements: logic_arc_int__feature_name__interface_name
-      :fulfils: comp_req__component_name__some_title
-      :includes: comp_arc_sta__component_name__2
+    .. needarch::
+      :scale: 50
+      :align: center
 
-      .. needarch::
-         :scale: 50
-         :align: center
-
-         {{ draw_component(need(), needs) }}
-
-Dynamic Architecture
---------------------
-
-.. code-block:: rst
-
-   .. comp_arc_dyn:: Dynamic View
-      :id: comp_arc_dyn__component_name__dynamic_view
-      :security: YES
-      :safety: ASIL_B
-      :status: invalid
-      :fulfils: comp_req__component_name__some_title
-
-      put here a sequence diagram
+      {{ draw_component(need(), needs) }}
 
 
 Interfaces
 ----------
 
-.. code-block:: rst
+.. logic_arc_int:: Dynamic Array
+   :id: logic_arc_int__baselibs__dynamic_array
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
 
-   .. real_arc_int:: <Title>
-      :id: real_arc_int__<component>__<Title>
-      :security: <YES|NO>
-      :safety: <QM|ASIL_B>
-      :fulfils: <link to component requirement id>
-      :language: cpp
+.. logic_arc_int_op:: Access
+   :id: logic_arc_int_op__containers__dynarray_access
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__dynamic_array
+
+.. logic_arc_int_op:: Iterate
+   :id: logic_arc_int_op__containers__dynarray_itrate
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__dynamic_array
+
+.. logic_arc_int_op:: Change
+   :id: logic_arc_int_op__containers__dynarray_change
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__dynamic_array
+
+.. logic_arc_int:: Intrusive List
+   :id: logic_arc_int__baselibs__intrusive_list
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+
+.. logic_arc_int_op:: Insert
+   :id: logic_arc_int_op__baselibs__intr_list_insert
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__intrusive_list
+
+.. logic_arc_int_op:: Remove
+   :id: logic_arc_int_op__baselibs__intr_list_remove
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__intrusive_list
+
+.. logic_arc_int_op:: Iterate
+   :id: logic_arc_int_op__baselibs__intr_list_iterate
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__intrusive_list
+
+.. logic_arc_int_op:: Access
+   :id: logic_arc_int_op__baselibs__intr_list_access
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__intrusive_list
