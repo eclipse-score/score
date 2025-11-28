@@ -17,8 +17,9 @@ Verification Report
 
 .. document:: Communication Verification Report
    :id: doc__communication_verification_report
-   :status: valid
+   :status: draft
    :safety: ASIL_B
+   :security: YES
    :realizes: wp__verification_module_ver_report
 
 
