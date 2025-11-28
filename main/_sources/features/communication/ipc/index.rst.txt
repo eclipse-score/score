@@ -30,6 +30,8 @@ Inter-process Communication
 
    docs/**/index
    docs/roadmap
+   docs/safety_analysis/dfa.rst
+   docs/safety_analysis/fmea.rst
 
 Feature flag
 ============

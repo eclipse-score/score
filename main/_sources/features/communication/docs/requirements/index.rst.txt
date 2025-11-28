@@ -17,6 +17,13 @@
 Requirements
 ============
 
+.. document:: Communication Requirements
+   :id: doc__communication_requirements
+   :status: valid
+   :safety: ASIL_B
+   :security: YES
+   :realizes: wp__requirements_feat
+
 .. feat_req:: Support for Time-based Architecture
    :id: feat_req__com__time_based_arch
    :reqtype: Functional
@@ -636,5 +643,5 @@ Safety Impact
 
    The communication framework shall support safe communication up to ASIL-B.
 
-.. needextend:: docname is not None and "communication/ipc/requirements" in docname
-   :+tags: ipc
+.. needextend:: "__com_" in id
+   :+tags: com

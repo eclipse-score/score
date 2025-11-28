@@ -17,6 +17,13 @@
 Requirements
 ============
 
+.. document:: IPC Requirements
+   :id: doc__ipc_requirements
+   :status: valid
+   :safety: ASIL_B
+   :security: YES
+   :realizes: wp__requirements_feat
+
 .. feat_req:: Zero-Copy Approach
    :id: feat_req__ipc__zero_copy
    :reqtype: Functional
@@ -57,3 +64,6 @@ Requirements
 
    The IPC binding shall ensure availability of its communication, so that the availability is independent per
    criticality level.
+
+.. needextend:: "__ipc" in id
+   :+tags: ipc
