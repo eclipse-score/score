@@ -25,6 +25,20 @@ Requirement Inspection Checklist Persistency KVS
 **Purpose**
 The purpose of this requirement inspection checklist is to collect the topics to be checked during requirements inspection.
 
+**Conduct**
+
+ As described in the concept :need:`doc_concept__wp_inspections` the following "inspection roles" are expected to be filled:
+
+    author: these are the persons who did the last commits on the requirements in scope (can be derived from version mgt tool)
+
+    reviewer: these are all persons committing into this inspection document or giving a pull request verdict on it (can be derived from version mgt tool)
+
+    moderator: only needed for conflict resolution between author and reviewers, is the safety manager, security manager or quality manager called in as a reviewer (can be derived from version mgt tool)
+
+    test expert: <one of the reviewers explicitly named here, to cover REQ_08_01 as described>
+
+
+
 **Checklist**
 
 .. list-table:: Requirement Inspection Checklist Persistency KVS
@@ -38,7 +52,7 @@ The purpose of this requirement inspection checklist is to collect the topics to
     - Remarks
     - Issue link
   * - REQ_01_01
-    - Is the requirement sentence template used?
+    - Is the requirement formulation template used?
     - see :need:`gd_temp__req_formulation`, this includes the use of "shall".
     - Yes
     - No remarks
@@ -63,7 +77,7 @@ The purpose of this requirement inspection checklist is to collect the topics to
     - https://github.com/eclipse-score/score/issues/960
   * - REQ_02_04
     - Is the requirement description *feasible* ?
-    - Expectation is that at the time of the inspection the requirement has already some implementation. This can be checked via traces, but also :need:`gd_req__req_attr_impl` shows this. In case the requirement is not mature enough at the time of inspection (i.e. not implemented at least as "proof-of-concept"), a development expert should be invited to the Pull-Request review to explicitly check this item.
+    - If at the time of the inspection the requirement has already some implementation, the answer is yes. This can be checked via traces, but also :need:`gd_req__req_attr_impl` shows this. In case the requirement has no implementation at the time of inspection (i.e. not implemented at least as "proof-of-concept"), a development expert should be invited to the Pull-Request review to explicitly check this item.
     - Yes
     - No remarks
     - https://github.com/eclipse-score/score/issues/960
@@ -92,8 +106,8 @@ The purpose of this requirement inspection checklist is to collect the topics to
     - No remarks
     - https://github.com/eclipse-score/score/issues/960
   * - REQ_05_01
-    - Do the software requirements consider *timing constraints of the parent requirement*?
-    - This bullet point encourages to think about timing constraints even if those are not explicitly mentioned in the parent requirement. If the reviewer of a requirement already knows or suspects that the implementation will be time consuming, one should think of the expectation of a "user".
+    - Do the software requirements consider *timing constraints*?
+    - This checkpoint encourages to think about timing constraints even if those are not explicitly mentioned in the parent requirement. If the reviewer of a requirement already knows or suspects that the code execution will be consuming a lot of time, one should think of the expectation of a "user".
     - Yes
     - No remarks
     - https://github.com/eclipse-score/score/issues/960
@@ -120,4 +134,16 @@ The purpose of this requirement inspection checklist is to collect the topics to
     - Expectation is that at the time of the inspection already tests are created for the requirement. This can be checked via traces, but also :need:`gd_req__req_attr_test_covered` shows this. In case the requirement is not mature enough at the time of inspection (i.e. missing test cases), a test expert should be invited to the Pull-Request review to explicitly check this item.
     - Yes
     - No remarks
+    - https://github.com/eclipse-score/score/issues/960
+  * - REQ_09_01
+    - For stakeholder requirements: Do those cover assumed safety mechanisms needed by the hardware and system?
+    - Note that stakeholder requirements covering safety mechanisms come from rationales, whereas feature/component requirements are covering safety mechanisms coming from :need:`gd_chklst__safety_analysis`
+    - YES
+    - N/A
+    - No stakeholder requirements for Persistency KVS needed.
+  * - REQ_09_02
+    - For feature/component requirements: Do the requirements defining a safety mechanism contain the error reaction leading to a safe state?
+    - Alternatively to the safe state there could also be "repair" mechanisms. Also do not forget to consider REQ_05_01 for these.
+    - YES
+    - Repair mechanisms are described. Persistency is developed as full deterministic. Potential failures are considered in safety analysis.
     - https://github.com/eclipse-score/score/issues/960
