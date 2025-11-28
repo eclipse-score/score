@@ -28,7 +28,12 @@ Base Libraries (v0.5 alpha)
    :hidden:
 
    docs/requirements/index.rst
+   docs/requirements/chklst_req_inspection.rst
    docs/architecture/index.rst
+   docs/architecture/chklst_arc_inspection.rst
+   docs/safety_analysis/dfa.rst
+   docs/safety_analysis/fmea.rst
+   docs/safety_planning/index.rst
 
 
 Feature flag

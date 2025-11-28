@@ -12,8 +12,22 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Bit Manipulation Component Architecture
-***************************************
+Bitmanipulation Component Architecture
+**************************************
+
+.. document:: bitmanipulation Architecture
+   :id: doc__bitmanipulation_architecture
+   :status: valid
+   :safety: ASIL_B
+   :realizes: wp__component_arch
+
+Overview/Description
+--------------------
+
+see :need:`doc__bitmanipulation`
+
+Static Architecture
+-------------------
 
 .. comp_arc_sta:: Bit Manipulation
    :id: comp_arc_sta__baselibs__bit_manipulation
@@ -29,6 +43,8 @@ Bit Manipulation Component Architecture
 
       {{ draw_component(need(), needs) }}
 
+Interfaces
+----------
 
 .. logic_arc_int:: Bit Manipulation
    :id: logic_arc_int__baselibs__bit_manipulation

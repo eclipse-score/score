@@ -67,3 +67,6 @@ Non-Functional Requirements
    :status: valid
 
    The Containers library shall provide deterministic behavior with no dynamic memory allocation.
+
+.. needextend:: "__containers__" in id
+   :+tags: baselibs

@@ -97,6 +97,13 @@ The following  ISO 26262 defined safety work products are not relevant for the S
   There will be SW integration tests of feature requirements as specified in ISO 26262 part 6-10.
   These tests may be reused by users on their HW platform to address Technical Safety Requirements for the SW platform.
   Whether these are sufficient to cover the TSRs must be analyzed and decided by the user.
+  to be able to cover System and HW related failures which are usually covered by SW (e.g. end to end protection for ECU external communication).
+  But those are the "Assumed Technical Safety Requirements" of the SW platform SEooC and do not need to be tested by SEooC supplier.
+  I.e. the system testing is out of scope. Note that S-CORE will implement Platform Integration Test of stakeholder requirements for demonstration,
+  but these are not intended to be completely covering the stakeholder requirements.
+  There will be SW integration tests of feature requirements, as required by ISO 26262 part 6-10.
+  These may be reused by the users on their HW platform to cover Technical Safety Requirements towards the SW platform.
+  But if these are sufficiently also covering the TSRs must be analyzed and decided by the user.
 
 * Also tailored out is the SW testing on the target, as the S-CORE project can only test on reference HW
   (part of SW integration testing). So these are not relevant: :need:`std_wp__iso26262__software_1151`, :need:`std_wp__iso26262__software_1152`
