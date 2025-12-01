@@ -23,7 +23,7 @@ Requirements
    :status: valid
    :safety: ASIL_B
    :security: NO
-   :realizes: PROCESS_wp__requirements_feat
+   :realizes: wp__requirements_feat
    :tags: persistency
 
 .. feat_req:: C++ & Rust Interoperability

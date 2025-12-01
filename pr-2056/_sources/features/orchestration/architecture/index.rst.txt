@@ -20,7 +20,7 @@ Feature Architecture
    :status: draft
    :safety: ASIL_B
    :security: YES
-   :realizes: PROCESS_wp__feature_arch
+   :realizes: wp__feature_arch
    :tags: orchestration
 
 

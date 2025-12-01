@@ -21,7 +21,7 @@ Dependent Failure Analysis
    :status: valid
    :safety: ASIL_B
    :security: NO
-   :realizes: PROCESS_wp__sw_component_dfa
+   :realizes: wp__sw_component_dfa
    :tags: Persistency KVS
 
 Because there is no sub-components in KVS, the results of the FMEA are the same as on feature level :need:`doc__persistency_dfa`.

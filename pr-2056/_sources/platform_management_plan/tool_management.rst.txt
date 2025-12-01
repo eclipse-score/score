@@ -18,13 +18,13 @@
    :safety: ASIL_B
    :security: YES
    :tags: platform_management
-   :realizes: PROCESS_wp__tlm_plan
+   :realizes: wp__tlm_plan
 
 
 Tool Management/ Tool Management Plan
 -------------------------------------
 
-This document implements parts of the :need:`PROCESS_wp__platform_mgmt`.
+This document implements parts of the :need:`wp__platform_mgmt`.
 
 Purpose
 +++++++
@@ -57,7 +57,7 @@ Approach
 
 Tool Management Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-:need:`PROCESS_gd_req__tool_attr_uid` are implemented as follows:
+:need:`gd_req__tool_attr_uid` are implemented as follows:
 
 
 Identification
@@ -70,21 +70,21 @@ The most important tools are stored in one GitHub repository,
 
 But in general Tool can be stored all over the place.
 
-For each Tool the :need:`PROCESS_gd_temp__tool_management_verif_rpt_template` shall be used to document
+For each Tool the :need:`gd_temp__tool_management_verif_rpt_template` shall be used to document
 the relevant information.
 
-:need:`PROCESS_gd_chklst__tool_cr_review` shall be used to check that all relevant information is considered.
+:need:`gd_chklst__tool_cr_review` shall be used to check that all relevant information is considered.
 
 The configuration of tools is part of the :need:`doc__config_mgt_plan`.
 
-The output after this stage is the :need:`PROCESS_wp__tool_verification_report` in status: `identified`.
+The output after this stage is the :need:`wp__tool_verification_report` in status: `identified`.
 
 
 Evaluation
 ^^^^^^^^^^
 
 The tool confidence level (TCL) must be determined as outlined in the
-:need:`PROCESS_doc_concept__tool_process`.
+:need:`doc_concept__tool_process`.
 
 Step-by-Step guide:
 
@@ -119,7 +119,7 @@ level is determined to "LOW", otherwise "HIGH".
 
 In case the tool confidence level is "LOW", tool qualification is required.
 
-The output after this stage is the :need:`PROCESS_wp__tool_verification_report` in status: `evaluated`.
+The output after this stage is the :need:`wp__tool_verification_report` in status: `evaluated`.
 
 Qualification
 ^^^^^^^^^^^^^
@@ -133,26 +133,26 @@ Specify test cases and tests to verify the requirements and generate a test repo
 Update the Tool Verification Report accordingly to document the outcomes.
 
 For the generation of requirements, verification and analyses the existing processes as defined
-in the :need:`PROCESS_wp__platform_mgmt` shall be used.
+in the :need:`wp__platform_mgmt` shall be used.
 
 In detail:
 
-* Use :need:`PROCESS_wf__req_comp_req` to create requirements for the software tool and :need:`PROCESS_wf__monitor_verify_requirements` for the verification
+* Use :need:`wf__req_comp_req` to create requirements for the software tool and :need:`wf__monitor_verify_requirements` for the verification
 
-* Use :need:`PROCESS_wf__verification_comp_int_test` to test the requirements for the software tool and :need:`PROCESS_wf__verification_mod_ver_report` to report
+* Use :need:`wf__verification_comp_int_test` to test the requirements for the software tool and :need:`wf__verification_mod_ver_report` to report
 
 * If applicable, use for the Analyses: (to be added, after Safety/Security Analyses have been merged)
 
-The output after this stage is the :need:`PROCESS_wp__tool_verification_report` in status: `qualified`.
+The output after this stage is the :need:`wp__tool_verification_report` in status: `qualified`.
 
 Approval
 ^^^^^^^^
 
 Finally the tool may accepted for the S-CORE project. Thus the Tool Verification Report after this
-stage is the :need:`PROCESS_wp__tool_verification_report` in status: `released`.
+stage is the :need:`wp__tool_verification_report` in status: `released`.
 
 If not, the tool is rejected, thus Tool Verification Report after this
-stage is the :need:`PROCESS_wp__tool_verification_report` in status: `rejected`.
+stage is the :need:`wp__tool_verification_report` in status: `rejected`.
 
 Tailoring
 ^^^^^^^^^
@@ -161,10 +161,10 @@ Tailoring of safety activities for confidence in the use of software tools:
 The following ISO 26262 defined safety requirements are not relevant for the S-CORE SW platform
 development, as they are not used:
 
-:need:`PROCESS_std_req__iso26262__support_11471`, :need:`PROCESS_std_req__iso26262__support_11472`,
-:need:`PROCESS_std_req__iso26262__support_11473`, :need:`PROCESS_std_req__iso26262__support_11474`,
-:need:`PROCESS_std_req__iso26262__support_11481`, :need:`PROCESS_std_req__iso26262__support_11482`,
-:need:`PROCESS_std_req__iso26262__support_11483`
+:need:`std_req__iso26262__support_11471`, :need:`std_req__iso26262__support_11472`,
+:need:`std_req__iso26262__support_11473`, :need:`std_req__iso26262__support_11474`,
+:need:`std_req__iso26262__support_11481`, :need:`std_req__iso26262__support_11482`,
+:need:`std_req__iso26262__support_11483`
 
 
 Tool List

@@ -21,7 +21,7 @@ Safety Manual
    :safety: ASIL_B
    :security: NO
    :tags: persistency
-   :realizes: PROCESS_wp__module_safety_manual
+   :realizes: wp__module_safety_manual
 
 Introduction/Scope
 ------------------

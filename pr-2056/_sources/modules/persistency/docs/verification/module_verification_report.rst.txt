@@ -20,7 +20,7 @@ Verification Report
    :status: valid
    :safety: ASIL_B
    :security: NO
-   :realizes: PROCESS_wp__verification_module_ver_report
+   :realizes: wp__verification_module_ver_report
    :tags: persistency
 
 
