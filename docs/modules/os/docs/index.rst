@@ -22,7 +22,7 @@
 
 .. mod_view_sta:: OS (external)
    :id: mod_view_sta__os__os
-   :includes: comp__os_libc, comp__os_message_passing, comp__os_libcpp
+   :includes: comp__os_libc, comp__os_message_passing, comp__os_libcpp, comp__os_autosd
    :belongs_to: mod__os
 
    The module "OS" is not a part of the S-CORE SW-Platform, but it is a crucial external SW element.
