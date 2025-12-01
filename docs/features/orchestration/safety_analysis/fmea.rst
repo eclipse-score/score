@@ -21,7 +21,7 @@ FMEA (Failure Modes and Effects Analysis)
    :status: draft
    :safety: ASIL_B
    :security: YES
-   :realizes: PROCESS_wp__feature_fmea
+   :realizes: wp__feature_fmea
    :tags: orchestration
 
 

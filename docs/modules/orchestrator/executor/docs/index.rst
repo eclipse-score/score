@@ -8,7 +8,7 @@ Executor
    :status: valid
    :safety: ASIL_B
    :security: YES
-   :realizes: PROCESS_wp__cmpt_request
+   :realizes: wp__cmpt_request
    :tags: orchestration, executor
 
 Component Documents

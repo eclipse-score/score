@@ -27,7 +27,7 @@ Tiny JSON
    :status: valid
    :safety: ASIL_B
    :security: NO
-   :realizes: PROCESS_wp__cmpt_request
+   :realizes: wp__cmpt_request
    :tags: template
 
 

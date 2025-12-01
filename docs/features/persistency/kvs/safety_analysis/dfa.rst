@@ -20,10 +20,10 @@ Persistency DFA
    :status: valid
    :safety: ASIL_B
    :security: NO
-   :realizes: PROCESS_wp__feature_dfa
+   :realizes: wp__feature_dfa
    :tags: persistency
 
-For the DFA analysis where the failure initiators :need:`PROCESS_gd_guidl__dfa_failure_initiators` are used. The analysis is done before the platform DFA is done.
+For the DFA analysis where the failure initiators :need:`gd_guidl__dfa_failure_initiators` are used. The analysis is done before the platform DFA is done.
 Safety mechanisms that are used by many features are not considered here, but at the platform DFA. The analysis is only done for the needs of the persistency feature.
 The components KVS and JSON will also be considered at the platform DFA. No additional violations within the persistency feature are expected.
 

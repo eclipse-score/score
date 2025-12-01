@@ -19,7 +19,7 @@ Requirements
    :id: doc__containers_lib_requirements
    :status: draft
    :safety: ASIL_B
-   :realizes: PROCESS_wp__requirements_comp
+   :realizes: wp__requirements_comp
    :tags: requirements, containers_library
 
 Functional Requirements
@@ -67,3 +67,6 @@ Non-Functional Requirements
    :status: valid
 
    The Containers library shall provide deterministic behavior with no dynamic memory allocation.
+
+.. needextend:: "__containers__" in id
+   :+tags: baselibs

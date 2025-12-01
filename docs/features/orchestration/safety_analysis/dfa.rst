@@ -21,7 +21,7 @@ DFA (Dependent Failure Analysis)
    :status: draft
    :safety: ASIL_B
    :security: YES
-   :realizes: PROCESS_wp__feature_dfa
+   :realizes: wp__feature_dfa
    :tags: orchestration
 
 

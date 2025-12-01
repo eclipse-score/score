@@ -20,7 +20,7 @@ Security & Cryptography
    :status: valid
    :safety: QM
    :security: YES
-   :realizes: PROCESS_wp__feat_request
+   :realizes: wp__feat_request
 
 
 .. toctree::
@@ -140,7 +140,7 @@ Side note: The Eclipse Heimlig project directly supports these.
 Link to project: `Eclipse Heimlig <https://github.com/eclipse-heimlig>`_
 
 
-* Symmetric encryption and decryption (AES-CBC, AES-GCM, AES-CCM, Chacha20Poly1305 )
+* Symmetric encryption and decryption (AES-CBC, AES-GCM, AES-CCM, Chacha20Poly1305)
 * RSA for asymmetric encryption (EDDSA, MLDSA, SLDSA)
 * Signing and verification (ECDSA)
 * Key exchange (ECDH)
@@ -235,3 +235,4 @@ quantum-encryption-standards>`:
 * https://csrc.nist.gov/pubs/fips/203/final
 * https://csrc.nist.gov/pubs/fips/204/final
 * https://csrc.nist.gov/pubs/fips/205/final.
+

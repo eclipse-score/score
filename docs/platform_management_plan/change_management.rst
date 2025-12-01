@@ -18,14 +18,14 @@
    :safety: ASIL_B
    :security: YES
    :tags: platform_management
-   :realizes: PROCESS_wp__chm_plan
+   :realizes: wp__chm_plan
 
 .. _change_mgmt_plan:
 
 Change Management / Change Management Plan
 ------------------------------------------
 
-This document implements parts of the :need:`PROCESS_wp__platform_mgmt`.
+This document implements parts of the :need:`wp__platform_mgmt`.
 
 Purpose
 +++++++
@@ -73,7 +73,7 @@ Requests within **S-CORE**.
 
 The next figure gives an overview, how Change Requests are realized in **S-CORE**. An ISSUE and PR
 is used to create a Change Request including required attributes as defined in
-:need:`PROCESS_gd_req__change_attr_uid`.
+:need:`gd_req__change_attr_uid`.
 
 .. figure:: _assets/score_change_request_overview_simple.drawio.svg
   :width: 100%
@@ -82,9 +82,9 @@ is used to create a Change Request including required attributes as defined in
 
   Change Request Simple Overview
 
-Therefore the Change Template :need:`PROCESS_gd_temp__change_feature_request` or
-:need:`PROCESS_gd_temp__change_component_request` shall be used.
-In addition  :need:`Impact Analysis Template <PROCESS_gd_temp__change_impact_analysis>` should be
+Therefore the Change Template :need:`gd_temp__change_feature_request` or
+:need:`gd_temp__change_component_request` shall be used.
+In addition  :need:`Impact Analysis Template <gd_temp__change_impact_analysis>` should be
 used, if applicable.
 
 .. note::
@@ -117,30 +117,30 @@ Changes are clustered in the following types:
      - Description
      - Infrastructure
    * - Feature
-     - Created by :need:`Contributor <PROCESS_rl__contributor>` to change requirements and work products, new feature
+     - Created by :need:`Contributor <rl__contributor>` to change requirements and work products, new feature
      - ISSUE with label ``feature_request``
    * - Feature Modification
-     - Created by :need:`Contributor <PROCESS_rl__contributor>` to change requirements and work products, scope change
+     - Created by :need:`Contributor <rl__contributor>` to change requirements and work products, scope change
      - ISSUE with label ``feature_modification``
    * - Component
-     - Created by :need:`Contributor <PROCESS_rl__contributor>` to change requirements and work products, new component
+     - Created by :need:`Contributor <rl__contributor>` to change requirements and work products, new component
      - ISSUE with label ``component_request``
    * - Component Modification
-     - Created by :need:`Contributor <PROCESS_rl__contributor>` to change requirements and work products, scope change
+     - Created by :need:`Contributor <rl__contributor>` to change requirements and work products, scope change
      - ISSUE with label ``component_modification``
 
 
 Change Request Traceability Impact Analysis requires the following tools:
 
-:need:`[[title]] <PROCESS_gd_req__change_tool_impact_analysis>`
+:need:`[[title]] <gd_req__change_tool_impact_analysis>`
 
 Change Request Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-:need:`PROCESS_gd_req__change_attr_uid` are implemented as follows:
+:need:`gd_req__change_attr_uid` are implemented as follows:
 
-:need:`[[title]] <PROCESS_gd_req__change_attr_uid>` is identical to the ISSUE number.
+:need:`[[title]] <gd_req__change_attr_uid>` is identical to the ISSUE number.
 
-:need:`[[title]] <PROCESS_gd_req__change_attr_status>` is defined by the combination of the ISSUE
+:need:`[[title]] <gd_req__change_attr_status>` is defined by the combination of the ISSUE
 state, the state in the Projects dashboard view and the PR status.
 
 .. list-table:: Change Status
@@ -172,30 +172,30 @@ state, the state in the Projects dashboard view and the PR status.
      - na
      - na
 
-:need:`[[title]] <PROCESS_gd_req__change_attr_title>` is identical to the ISSUE title.
+:need:`[[title]] <gd_req__change_attr_title>` is identical to the ISSUE title.
 
-:need:`[[title]] <PROCESS_gd_req__change_attr_impact_description>` is initially provided in the
+:need:`[[title]] <gd_req__change_attr_impact_description>` is initially provided in the
 Description and Impact analysis part of the ISSUE. Further detailed analysis results are part of
 the linked PR, provided as part of the feature/request templates.
 
 Further information about detailed implementation can be provided in the Realize part of the ISSUE.
 
-:need:`[[title]] <PROCESS_gd_req__change_attr_impact_safety>`,
-:need:`[[title]] <PROCESS_gd_req__change_attr_impact_security>` are provided in the Safety or
+:need:`[[title]] <gd_req__change_attr_impact_safety>`,
+:need:`[[title]] <gd_req__change_attr_impact_security>` are provided in the Safety or
 Security relevance part of the ISSUE.
 
 Combinations of them are allowed. If nothing is selected, Quality is relevant by default.
 
 Use the ASIL classification part of the ISSUE to document the ASIL level concerned, e.g. ASIL_B.
 
-:need:`[[title]] <PROCESS_gd_req__change_attr_types>` is provided in the Change Request Type
+:need:`[[title]] <gd_req__change_attr_types>` is provided in the Change Request Type
 part of the ISSUE, further in the linked PR for feature or component request.
 
-:need:`[[title]] <PROCESS_gd_req__change_attr_affected_wp>` is initially provided in the
+:need:`[[title]] <gd_req__change_attr_affected_wp>` is initially provided in the
 Affected work products part of the ISSUE. Further detailed affected work products are part of the
 linked PR or other ISSUEs.
 
-:need:`[[title]] <PROCESS_gd_req__change_attr_milestone>` is provided in the Expected Implementation
+:need:`[[title]] <gd_req__change_attr_milestone>` is provided in the Expected Implementation
 Version part of the ISSUE. Optionally the Milestone part of the ISSUE can be set.
 
 
@@ -213,7 +213,7 @@ In general, every Change Request follows the following steps:
 * 3. Initiate the implementation of the Change Request and track it to closure (yellow color)
 * 4. Close Change Request (purple color)
 
-:need:`PROCESS_gd_guidl__change_change_request` can give additional help.
+:need:`gd_guidl__change_change_request` can give additional help.
 
 **To 1. Create the Change Request:**
 
@@ -231,10 +231,10 @@ The description of the ISSUE may give a brief description and impact analysis of
 change. The details are part of the Feature/Component Request and Impact Analysis provided by a PR,
 which is linked  to the ISSUE in status ``Draft`` or ``Open``.
 
-For a new Feature/Component Request the provided templates :need:`Feature Request<PROCESS_gd_temp__change_feature_request>`,
-or :need:`Component Request<PROCESS_gd_temp__change_component_request>` must be used. For a
+For a new Feature/Component Request the provided templates :need:`Feature Request<gd_temp__change_feature_request>`,
+or :need:`Component Request<gd_temp__change_component_request>` must be used. For a
 modification of an existing Feature/Component, update the existing work products.
-Further add here the :need:`Impact Analysis Template <PROCESS_gd_temp__change_impact_analysis>`
+Further add here the :need:`Impact Analysis Template <gd_temp__change_impact_analysis>`
 and fill it out accordingly, if applicable.
 
 The description of the ISSUE may give a brief description of the affected work products and also
@@ -265,8 +265,8 @@ set the ISSUE status to ``Closed as not planned``.
 
 **To 2. Analyze the Change Request:**
 
-The Change Request is reviewed and analyzed from the :need:`Committer <PROCESS_rl__committer>` and the
-review results are resolved by the :need:`Contributor <PROCESS_rl__contributor>`. The results
+The Change Request is reviewed and analyzed from the :need:`Committer <rl__committer>` and the
+review results are resolved by the :need:`Contributor <rl__contributor>`. The results
 are documented in the ISSUE and/or linked PR. As long as the information is not sufficient, the
 related ISSUE is kept in status ``Open`` and Projects status ``Todo``, means ``in review``.
 
@@ -276,7 +276,7 @@ ISSUE status is kept ``Open`` and the Projects status is set to ``In Progress``.
 The decision, if the change request is accepted or rejected must be documented. Safety/Security
 experts must confirm or disconfirm, if safety/security relevance is set correctly.
 
-:need:`PROCESS_gd_chklst__change_cr_review` can help to verify whether the information is complete.
+:need:`gd_chklst__change_cr_review` can help to verify whether the information is complete.
 
 Otherwise, if the change requested is not accepted, the change request is rejected. To reject the
 Change Request: Change Request status: ``rejected`` set the ISSUE status to ``Closed as not planned``.
@@ -284,7 +284,7 @@ Change Request: Change Request status: ``rejected`` set the ISSUE status to ``Cl
 
 **To 3. Initiate the implementation of the Change Request and track it to closure:**
 
-:need:`Contributor <PROCESS_rl__contributor>` starts all required activities to implement the
+:need:`Contributor <rl__contributor>` starts all required activities to implement the
 change request. These may include further planning  activities by creating ISSUEs and required PRs.
 All additional ISSUEs or PRs created to implement are linked to the Change Request ISSUE to enable
 monitoring of the activities.
@@ -292,8 +292,8 @@ monitoring of the activities.
 All activities defined are tracked until closure, means that all linked ISSUEs or PRs are closed or
 merged, respectively.
 
-If all are closed or merged :need:`Contributor <PROCESS_rl__contributor>` sets Projects status to
-``Done`` to trigger the final review from the :need:`Committer <PROCESS_rl__committer>` to close
+If all are closed or merged :need:`Contributor <rl__contributor>` sets Projects status to
+``Done`` to trigger the final review from the :need:`Committer <rl__committer>` to close
 the Change Request.
 
 The Change Request may also rejected in this phase, then the ISSUE status is set to
@@ -302,13 +302,13 @@ The Change Request may also rejected in this phase, then the ISSUE status is set
 
 **To 4. Close Change Request :**
 
-:need:`Committer <PROCESS_rl__committer>` checks finally if the change request is completely
+:need:`Committer <rl__committer>` checks finally if the change request is completely
 implemented. In this case all linked ISSUEs or PRs are closed or merged, respectively.
 
 Especially the verification measures must be checked for their effectiveness and the argumentation
 is convincing.
 
-:need:`PROCESS_gd_chklst__change_cr_review` can help to verify whether it can be closed.
+:need:`gd_chklst__change_cr_review` can help to verify whether it can be closed.
 The realization parts of the Change Request are reviewed according the checklists of the affected
 work products. Verification of the realization parts must be successful.
 

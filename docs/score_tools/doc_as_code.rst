@@ -19,7 +19,7 @@
    :tcl: LOW
    :safety_affected: YES
    :security_affected: YES
-   :realizes: PROCESS_wp__tool_verification_report
+   :realizes: wp__tool_verification_report
    :tags: tool_management
 
 

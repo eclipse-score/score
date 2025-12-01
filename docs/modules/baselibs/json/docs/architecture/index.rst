@@ -19,7 +19,7 @@ JSON Component Architecture
    :id: doc__json_architecture
    :status: draft
    :safety: ASIL_B
-   :realizes: PROCESS_wp__component_arch
+   :realizes: wp__component_arch
 
 Overview
 --------
