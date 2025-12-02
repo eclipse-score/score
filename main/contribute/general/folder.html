@@ -577,9 +577,9 @@
            requirements/           -&gt; Feature requirements [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_feat">wp__requirements_feat</a>]
            safety_analysis/        -&gt; Safety analysis on feature level [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_analysis/safety_analysis_workproducts.html#wp__feature_fmea">wp__feature_fmea</a>], [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_analysis/safety_analysis_workproducts.html#wp__feature_dfa">wp__feature_dfa</a>]
            safety_planning/        -&gt; Feature specific safety workproducts planning
-           security_analysis/      -&gt; Security analysis on feature level [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/security_management/security_management_workproducts.html#wp__feature_security_analysis">wp__feature_security_analysis</a>]
+           security_analysis/      -&gt; Security analysis on feature level [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/security_analysis/security_analysis_workproducts.html#wp__feature_security_analysis">wp__feature_security_analysis</a>]
            verification/           -&gt; Feature verification, consisting of Architecture review [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/architecture_workproducts.html#wp__sw_arch_verification">wp__sw_arch_verification</a>],
-              integration_tests/   -&gt; Feature Integration tests [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/workproducts.html#wp__verification_feat_int_test">wp__verification_feat_int_test</a>]
+              integration_tests/   -&gt; Feature Integration tests [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_feat_int_test">wp__verification_feat_int_test</a>]
 
     glossary/                      -&gt; Glossary of abbreviations used in the platform context
     introduction/                  -&gt; Background, scope and high-level architecture of the platform features
@@ -600,9 +600,9 @@
     security/                      -&gt; Security documentation on platform level:
                                          [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/security_management/security_management_workproducts.html#wp__platform_security_manual">wp__platform_security_manual</a>], [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/security_management/security_management_workproducts.html#wp__platform_security_package">wp__platform_security_package</a>], [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/security_management/security_management_workproducts.html#wp__sw_platform_sbom">wp__sw_platform_sbom</a>]
     verification_report/           -&gt; Platform verification report (reporting all platform feature's verifications)
-                                         [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/workproducts.html#wp__verification_platform_ver_report">wp__verification_platform_ver_report</a>]
+                                         [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_platform_ver_report">wp__verification_platform_ver_report</a>]
 
-platform_integration_tests/        -&gt; Integration tests on reference hardware verifying stakeholder requirements. [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/workproducts.html#wp__verification_platform_int_test">wp__verification_platform_int_test</a>]
+platform_integration_tests/        -&gt; Integration tests on reference hardware verifying stakeholder requirements. [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_platform_int_test">wp__verification_platform_int_test</a>]
 tools/                             -&gt; Platform tools (not covered in tool repositories)
 
 README.md                          -&gt; Entrypoint of the repository</pre>
@@ -625,7 +625,7 @@ README.md                          -&gt; Entrypoint of the repository</pre>
                                           formal documents reviews [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/security_management/security_management_workproducts.html#wp__fdr_reports_security">wp__fdr_reports_security</a>],
                                           module SW bill of material [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/security_management/security_management_workproducts.html#wp__sw_module_sbom">wp__sw_module_sbom</a>]
       verification_report/          -&gt; Module verification report
-                                          components verifications [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/workproducts.html#wp__verification_module_ver_report">wp__verification_module_ver_report</a>],
+                                          components verifications [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_module_ver_report">wp__verification_module_ver_report</a>],
                                           safety analysis formal reviews [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/workproducts.html#wp__fdr_reports">wp__fdr_reports</a>]
 
    &lt;component_name&gt;/                -&gt; Components of the module.
@@ -634,7 +634,7 @@ README.md                          -&gt; Entrypoint of the repository</pre>
       src/                          -&gt; Source files of the component consisting of
                                           Include files
                                           Source Files
-                                          Unit tests [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/workproducts.html#wp__verification_sw_unit_test">wp__verification_sw_unit_test</a>]
+                                          Unit tests [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_sw_unit_test">wp__verification_sw_unit_test</a>]
                                           Test doubles
          &lt;lower_level_comp&gt;/        -&gt; lower level component following &lt;component_name&gt; folder structure
          details/                   -&gt; Private implementation details of the component following &lt;component_name&gt; folder structure
@@ -647,10 +647,10 @@ README.md                          -&gt; Entrypoint of the repository</pre>
          safety_analysis/           -&gt; Safety analysis on component level (only if component architecture exists)
                                           [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_analysis/safety_analysis_workproducts.html#wp__sw_component_fmea">wp__sw_component_fmea</a>], [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_analysis/safety_analysis_workproducts.html#wp__sw_component_dfa">wp__sw_component_dfa</a>]
          security_analysis/         -&gt; Security analysis on component level (only if component architecture exists)
-                                          [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/security_management/security_management_workproducts.html#wp__sw_component_security_analysis">wp__sw_component_security_analysis</a>]
+                                          [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/security_analysis/security_analysis_workproducts.html#wp__sw_component_security_analysis">wp__sw_component_security_analysis</a>]
          verification/              -&gt; Component verification, consisting of Architecture review [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/architecture_workproducts.html#wp__sw_arch_verification">wp__sw_arch_verification</a>],
                                        code inspection [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/implementation_workproducts.html#wp__sw_implementation_inspection">wp__sw_implementation_inspection</a>],
-            integration_tests/      -&gt; Component integration tests [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/workproducts.html#wp__verification_comp_int_test">wp__verification_comp_int_test</a>]
+            integration_tests/      -&gt; Component integration tests [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_comp_int_test">wp__verification_comp_int_test</a>]
          &lt;lower_level_comp&gt;/        -&gt; Lower level component following &lt;component_name&gt; folder structure</pre>
 </section>
 </section>
