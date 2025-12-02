@@ -19,7 +19,8 @@ Safety Plan Formal Review Report
    :id: doc__persistency_safety_plan_fdr
    :status: valid
    :safety: ASIL_B
-   :realizes: PROCESS_wp__fdr_reports
+   :security: NO
+   :realizes: wp__fdr_reports
    :tags: persistency
 
 **1. Purpose**

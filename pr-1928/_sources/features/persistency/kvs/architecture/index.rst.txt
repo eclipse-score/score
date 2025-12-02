@@ -18,10 +18,12 @@ Architecture
 ============
 
 .. document:: Persistency KVS Feature Architecture
-   :id: doc__persistency_kvs_feat_arch
+   :id: doc__persistency_architecture
    :status: valid
    :safety: ASIL_B
-   :realizes: PROCESS_wp__feature_arch
+   :security: NO
+   :realizes: wp__feature_arch
+   :tags: persistency
 
 Overview
 --------

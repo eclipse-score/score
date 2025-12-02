@@ -20,7 +20,7 @@ utils
    :status: draft
    :safety: ASIL_B
    :tags: baselibs_utils
-   :realizes: PROCESS_wp__cmpt_request
+   :realizes: wp__cmpt_request
 
 .. toctree::
    :hidden:
@@ -50,7 +50,6 @@ General considerations
 
 The Utils library should provide type-safe utility functions and efficient algorithms:
 
-* :need:`comp_req__utils__string_hash`
 * :need:`comp_req__utils__base64`
 * :need:`comp_req__utils__pimpl_ptr`
 * :need:`comp_req__utils__scoped_operation`

@@ -22,7 +22,7 @@ Requirements
    :id: doc__bitmanipulation_requirements
    :status: draft
    :safety: ASIL_B
-   :realizes: PROCESS_wp__requirements_comp
+   :realizes: wp__requirements_comp
    :tags: requirements, bitmanipulation
 
 Functional Requirements
@@ -70,3 +70,6 @@ Non-Functional Requirements
    :status: valid
 
    The bit manipulation API shall be header-only and not require external dependencies.
+
+.. needextend:: "__bitmaipulation__" in id
+   :+tags: baselibs

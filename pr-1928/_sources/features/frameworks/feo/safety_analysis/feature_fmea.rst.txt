@@ -18,7 +18,7 @@
    :security: NO
    :safety: ASIL_B
    :tags: frameworks_feo
-   :realizes: PROCESS_wp__feature_fmea
+   :realizes: wp__feature_fmea
 
 FEO Feature FMEA
 ================

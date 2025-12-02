@@ -20,12 +20,15 @@ bitmanipulation
    :status: draft
    :safety: ASIL_B
    :tags: baselibs_bitmanipulation
-   :realizes: PROCESS_wp__cmpt_request
+   :realizes: wp__cmpt_request
 
 .. toctree::
    :hidden:
 
    requirements/index.rst
+   architecture/index.rst
+   safety_analysis/fmea.rst
+   safety_analysis/dfa.rst
 
 
 Abstract

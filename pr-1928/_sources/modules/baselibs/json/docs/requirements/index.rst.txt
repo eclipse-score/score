@@ -19,7 +19,7 @@ Requirements
    :id: doc__json_requirements
    :status: draft
    :safety: ASIL_B
-   :realizes: PROCESS_wp__requirements_comp
+   :realizes: wp__requirements_comp
 
 General Requirements
 ====================
@@ -147,3 +147,7 @@ AoU Requirements
    The user shall ensure access control and manipulation prevention on the JSON files.
 
    Note: This can be done by the hosting process and system configuration (e.g. by using dm-verity).
+
+
+.. needextend:: "__json__" in id
+   :+tags: baselibs

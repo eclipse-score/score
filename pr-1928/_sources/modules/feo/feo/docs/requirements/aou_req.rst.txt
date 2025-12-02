@@ -17,7 +17,7 @@
    :status: valid
    :security: NO
    :safety: ASIL_B
-   :realizes: PROCESS_wp__requirements_comp_aou
+   :realizes: wp__requirements_comp_aou
    :tags: component_feo
 
 FEO Component Assumption of Use Requirements
