@@ -550,7 +550,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-e76f9afa">
+  <div class="need_container docutils container" id="SNCB-3ee8d157">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_doc_tool table" id="doc_tool__rustfmt">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -558,7 +558,7 @@
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
-<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></span></div>
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">evaluated</span></span></span></div>
 <div class="line"><span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -570,10 +570,10 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">tool_management</span></span></span></div>
-<div class="line"><span class="needs_safety_affected"><span class="needs_label">safety_affected: </span><span class="needs_data">NO</span></span></div>
-<div class="line"><span class="needs_security_affected"><span class="needs_label">security_affected: </span><span class="needs_data">NO</span></span></div>
+<div class="line"><span class="needs_safety_affected"><span class="needs_label">safety_affected: </span><span class="needs_data">YES</span></span></div>
+<div class="line"><span class="needs_security_affected"><span class="needs_label">security_affected: </span><span class="needs_data">YES</span></span></div>
 <div class="line"><span class="needs_tcl"><span class="needs_label">tcl: </span><span class="needs_data">HIGH</span></span></div>
-<div class="line"><span class="needs_version"><span class="needs_label">version: </span><span class="needs_data">rolling</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span><span class="needs_data">&gt;= 1.8.0</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/tool_management/tool_management_workproducts.html#wp__tool_verification_report">wp__tool_verification_report</a></span></span></div>
 </span></div>
@@ -626,7 +626,7 @@ IDEs and continuous integration pipelines, to enforce coding standards automatic
 <section id="available-information">
 <h3>Available information<a class="headerlink" href="#available-information" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Version: rolling</p></li>
+<li><p>Version: &gt;= 1.8.0</p></li>
 <li><p>Official repository: <a class="github reference external" href="https://github.com/rust-lang/rustfmt">rust-lang/rustfmt</a></p></li>
 <li><p>Official documentation: <a class="reference external" href="https://rust-lang.github.io/rustfmt">https://rust-lang.github.io/rustfmt</a></p></li>
 <li><p>Rustfmt configuration in S-CORE module repository: <a class="github reference external" href="https://github.com/eclipse-score/score/issues/2011">eclipse-score/score#2011</a></p></li>
@@ -692,6 +692,26 @@ IDEs and continuous integration pipelines, to enforce coding standards automatic
 <td><p>no</p></td>
 <td><p>high</p></td>
 </tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Run formatting on source files changes code unintentionally</p></td>
+<td><div class="line-block">
+<div class="line">The source code changes its logical structure or behavior due to incorrect formatting, potentially introducing bugs.</div>
+</div>
+</td>
+<td><p>yes</p></td>
+<td><div class="line-block">
+<div class="line">Likelihood: Low. Rustfmt is used in virtually every Rust project. This gives high confidence in its quality</div>
+<div class="line">Countermeasures:</div>
+</div>
+<ul class="simple">
+<li><p>The logic change can be detected by code reviews and automated testing.</p></li>
+<li><p>The compiler will catch syntax errors introduced by incorrect formatting.</p></li>
+</ul>
+</td>
+<td><p>yes</p></td>
+<td><p>no</p></td>
+<td><p>high</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -725,10 +745,6 @@ IDEs and continuous integration pipelines, to enforce coding standards automatic
 <h3>Result<a class="headerlink" href="#result" title="Link to this heading">#</a></h3>
 <p>Rustfmt does not require qualification for use in safety-related software development according to ISO 26262.</p>
 </section>
-</section>
-<section id="tool-qualification">
-<h2><strong>Tool Qualification</strong><a class="headerlink" href="#tool-qualification" title="Link to this heading">#</a></h2>
-<p>Based on method: validation of the software tool.</p>
 </section>
 </section>
 
@@ -796,7 +812,6 @@ IDEs and continuous integration pipelines, to enforce coding standards automatic
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#result">Result</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-qualification"><strong>Tool Qualification</strong></a></li>
 </ul>
   </nav></div>
 

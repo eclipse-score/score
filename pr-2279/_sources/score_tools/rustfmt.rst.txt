@@ -14,11 +14,11 @@
 
 .. doc_tool:: rustfmt
    :id: doc_tool__rustfmt
-   :status: draft
-   :version: rolling
+   :status: evaluated
+   :version: >= 1.8.0
    :tcl: HIGH
-   :safety_affected: NO
-   :security_affected: NO
+   :safety_affected: YES
+   :security_affected: YES
    :realizes: wp__tool_verification_report
    :tags: tool_management
 
@@ -49,7 +49,7 @@ Inputs and outputs
 
 Available information
 ~~~~~~~~~~~~~~~~~~~~~
-- Version: rolling
+- Version: >= 1.8.0
 - Official repository: https://github.com/rust-lang/rustfmt
 - Official documentation: https://rust-lang.github.io/rustfmt
 - Rustfmt configuration in S-CORE module repository: https://github.com/eclipse-score/score/issues/2011
@@ -99,6 +99,18 @@ This section outlines the safety evaluation of Rustfmt for its use within the S-
      - yes
      - no
      - high
+   * - 2
+     - Run formatting on source files changes code unintentionally
+     - | The source code changes its logical structure or behavior due to incorrect formatting, potentially introducing bugs.
+     - yes
+     - | Likelihood: Low. Rustfmt is used in virtually every Rust project. This gives high confidence in its quality
+       | Countermeasures:
+
+       - The logic change can be detected by code reviews and automated testing.
+       - The compiler will catch syntax errors introduced by incorrect formatting.
+     - yes
+     - no
+     - high
 
 Security evaluation
 -------------------
@@ -124,8 +136,3 @@ This section outlines the security evaluation of Rustfmt for its use within the 
 Result
 ~~~~~~
 Rustfmt does not require qualification for use in safety-related software development according to ISO 26262.
-
-
-**Tool Qualification**
--------------------------------------------
-Based on method: validation of the software tool.
