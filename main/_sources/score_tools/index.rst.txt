@@ -31,3 +31,4 @@ S-CORE Tools Overview
 
    doc_as_code
    gtest
+   bazel
