@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -13,10 +13,17 @@
    # *******************************************************************************
 
 
-Frameworks
-##########
+Component Architecture
+======================
 
-.. toctree::
+.. document:: LoLa Architecture
+   :id: doc__lola_architecture
+   :status: draft
+   :safety: ASIL_B
+   :security: YES
+   :realizes: wp__component_arch
 
-   feo/index.rst
-   daal/index.rst
+Overview
+--------
+No sub-components currently identified, therefore no component architecture presented.
+Design is shown in :need:`doc__lola_detailed_design`

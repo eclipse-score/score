@@ -12,11 +12,12 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-
-Frameworks
-##########
+Toolchain
+#########
 
 .. toctree::
+   :maxdepth: 1
 
-   feo/index.rst
-   daal/index.rst
+   compiler
+   libcore
+   libstd

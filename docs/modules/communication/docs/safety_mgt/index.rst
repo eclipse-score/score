@@ -12,11 +12,12 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-
-Frameworks
-##########
+Safety Management
+#################
 
 .. toctree::
+   :titlesonly:
 
-   feo/index.rst
-   daal/index.rst
+   module_safety_plan
+   module_safety_plan_fdr
+   module_safety_package_fdr

@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,11 +12,20 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+Detailed Design
+###############
 
-Frameworks
-##########
+.. document:: LoLa Detailed Design
+   :id: doc__lola_detailed_design
+   :status: draft
+   :safety: ASIL_B
+   :security: YES
+   :realizes: wp__sw_implementation
 
-.. toctree::
+Detailed Design for Component: LoLa
+===================================
 
-   feo/index.rst
-   daal/index.rst
+Description
+-----------
+
+Detailed Design is presented in `lola/design <https://github.com/eclipse-score/communication/blob/main/score/mw/com/design/README.md>`_

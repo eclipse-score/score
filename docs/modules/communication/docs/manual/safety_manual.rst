@@ -17,8 +17,9 @@ Safety Manual
 
 .. document:: Communication Safety Manual
    :id: doc__communication_safety_manual
-   :status: valid
+   :status: draft
    :safety: ASIL_B
+   :security: NO
    :realizes: wp__module_safety_manual
 
 Introduction/Scope

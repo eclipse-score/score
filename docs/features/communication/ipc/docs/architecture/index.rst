@@ -17,6 +17,13 @@
 Architecture
 ============
 
+.. document:: IPC Architecture
+   :id: doc__ipc_architecture
+   :status: valid
+   :safety: ASIL_B
+   :security: YES
+   :realizes: wp__feature_arch
+
 Overview
 --------
 

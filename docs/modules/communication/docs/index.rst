@@ -36,8 +36,9 @@ Module Documents
    :glob:
 
    manual/index.rst
-   verification/module_verification_report.rst
    release/release_note.rst
+   safety_mgt/index.rst
+   verification/module_verification_report.rst
 
 Requirements
 ------------
