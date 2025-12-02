@@ -63,7 +63,7 @@ Eclipse S-CORE is not the first project to address these challenges.
 However, Eclipse S-CORE goes beyond by pursuing additional goals:
 
 - **Providing a reference implementation of the software platform:**
-  Many issues appear for the very first time when the software stack is integrated.Some aspects
+  Many issues appear for the very first time when the software stack is integrated. Some aspects
   – such as performance – cannot be sufficiently defined through specifications alone.
   By providing an open-source reference implementation, S-CORE identifies and resolves many of these problems early.
   Using the same implementation across projects prevents known issues from reappearing later.
