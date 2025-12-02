@@ -475,7 +475,7 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">Baselibs Module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../docs/index.html">Module Documents</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../bitmanipulation/docs/index.html">bit manipulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../bitmanipulation/docs/index.html">bitmanipulation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../containers/docs/index.html">containers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../json/docs/index.html">JSON-Library</a></li>
 
@@ -500,6 +500,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../feo/index.html">FEO Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../lifecycle/index.html">Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../logging/index.html">Logging Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../orchestrator/index.html">Orchestrator Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../os/index.html">OS Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../persistency/index.html">KVS Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tracing/index.html">Tracing Module</a></li>
@@ -568,8 +569,78 @@
                   
   <section id="utils">
 <h1>utils<a class="headerlink" href="#utils" title="Link to this heading">#</a></h1>
+<div class="need_container docutils container" id="SNCB-0b7620e8">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__utils">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Utils Library</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs_utils</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/change_management_workproducts.html#wp__cmpt_request">PROCESS_wp__cmpt_request</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__utils" title="doc__utils">doc__utils</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Generic Document</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div class="toctree-wrapper compound">
 </div>
+<section id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
+<p>This component request proposes the integration of a safe Utils library for common utility functions and algorithms.</p>
+</section>
+<section id="motivation-and-rationale">
+<h2>Motivation and Rationale<a class="headerlink" href="#motivation-and-rationale" title="Link to this heading">#</a></h2>
+<p>The Utils library shall provide safe and efficient implementations of common utility functions and algorithms.
+The library shall enable developers to perform common tasks in a type-safe manner, reducing the risk of runtime errors and improving code quality.
+A Utils library with type-safe utility functions is needed in the S-CORE software platform due to the frequent use of such functions in various features and the need for reliable utility operations.
+There are multiple use-cases like calculating string hashes, embedding binary data in string format or managing resource lifetimes.</p>
+</section>
+<section id="specification">
+<h2>Specification<a class="headerlink" href="#specification" title="Link to this heading">#</a></h2>
+<p>The following details and requirements describe the aspects of the current feature in the context of S-CORE.</p>
+<section id="general-considerations">
+<h3>General considerations<a class="headerlink" href="#general-considerations" title="Link to this heading">#</a></h3>
+<p>The Utils library should provide type-safe utility functions and efficient algorithms:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="requirements/index.html#comp_req__utils__string_hash" title="comp_req__utils__string_hash"><em class="xref need">String Hash Utilities (comp_req__utils__string_hash)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements/index.html#comp_req__utils__base64" title="comp_req__utils__base64"><em class="xref need">Base64 Encoding and Decoding (comp_req__utils__base64)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements/index.html#comp_req__utils__pimpl_ptr" title="comp_req__utils__pimpl_ptr"><em class="xref need">PIMPL Pointer Implementation (comp_req__utils__pimpl_ptr)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements/index.html#comp_req__utils__scoped_operation" title="comp_req__utils__scoped_operation"><em class="xref need">Scoped Operation Management (comp_req__utils__scoped_operation)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements/index.html#comp_req__utils__deterministic_behavior" title="comp_req__utils__deterministic_behavior"><em class="xref need">Deterministic Behavior (comp_req__utils__deterministic_behavior)</em></a></p></li>
+</ul>
+<p>The component should be extensible in the future to support additional utility functions and algorithms as needed.</p>
+</section>
+</section>
 </section>
 
 
@@ -610,6 +681,23 @@
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-and-rationale">Motivation and Rationale</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specification">Specification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-considerations">General considerations</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
 

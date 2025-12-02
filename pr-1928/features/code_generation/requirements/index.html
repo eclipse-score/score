@@ -489,6 +489,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../lifecycle/index.html">Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../orchestration/index.html">Orchestration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../persistency/index.html">Persistency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security_crypto/index.html">Security &amp; Cryptography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../time/index.html">Time</a></li>
 </ul>
 </div>
@@ -555,11 +556,11 @@
                   
   <section id="requirements">
 <span id="codegen-requirements"></span><h1>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-4e5bc95e">
+<div class="need_container docutils container" id="SNCB-10445af2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__definitionlanguage">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">Definition language should be a human-readible format</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">The system uses a human-readable definition language.</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -576,16 +577,15 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__ai_platform__enablement" title="feat_req__code_generation__definitionlanguage">stkh_req__ai_platform__enablement</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__dev_experience__idl_support" title="feat_req__code_generation__definitionlanguage">stkh_req__dev_experience__idl_support</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>In our case, the system is modeled in YAML-syntax files that use a
-specific description language. A major advantage of YAML is that it
-is easy to find parser for YAML either in Rust or C++. Advantage of
-YAML over JSON is the easy syntax (no begin and end closure).</p></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The system shall be modeled in YAML-syntax files. This means the system should
+use YAML due to the availability of parsers in Rust and C++. The
+system should prefer YAML over JSON due to its simpler syntax.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__code_generation__definitionlanguage" title="feat_req__code_generation__definitionlanguage">feat_req__code_generation__definitionlanguage</a></span></span></div>
@@ -601,11 +601,11 @@ YAML over JSON is the easy syntax (no begin and end closure).</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-14b2f941">
+<div class="need_container docutils container" id="SNCB-47a0cff8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__initialization">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">Software Compute Units should signal initialization failures by returning an Error indicating failure.</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">Software Compute Units signal initialization failures by returning an Error indicating failure.</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -622,14 +622,14 @@ YAML over JSON is the easy syntax (no begin and end closure).</p></td>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__ai_platform__enablement" title="feat_req__code_generation__initialization">stkh_req__ai_platform__enablement</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__execution_model__processes" title="feat_req__code_generation__initialization">stkh_req__execution_model__processes</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>Software Compute Unit Instances that fail to initialize are considered to have
-failed permanently.</p></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>Software Compute Unit Instances shall be considered to have failed
+permanently if they fail to initialize.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__code_generation__initialization" title="feat_req__code_generation__initialization">feat_req__code_generation__initialization</a></span></span></div>
@@ -645,11 +645,11 @@ failed permanently.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-71833f9a">
+<div class="need_container docutils container" id="SNCB-f01d96ee">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__deinitialization">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">Software Compute Unit are responsible for correct deallocation of any dynamically allocated memory in the onShutdown function.</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">Software Compute Units correctly deallocate any dynamically allocated memory in the onShutdown function.</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -666,13 +666,14 @@ failed permanently.</p></td>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__ai_platform__enablement" title="feat_req__code_generation__deinitialization">stkh_req__ai_platform__enablement</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__execution_model__processes" title="feat_req__code_generation__deinitialization">stkh_req__execution_model__processes</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>Developers can assume that onInit and onShutdown will only ever be called once during the lifecycle of a Software Compute Unit Instance.</p></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>Software Compute Unit instances shall have onInit and onShutdown
+called only once during their lifecycle.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__code_generation__deinitialization" title="feat_req__code_generation__deinitialization">feat_req__code_generation__deinitialization</a></span></span></div>
@@ -688,11 +689,11 @@ failed permanently.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-ddc398b3">
+<div class="need_container docutils container" id="SNCB-8ddb6918">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__nomultithreading">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">Software Compute Units may not spawn a variable number of threads.</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">Software Compute Units do not spawn a variable number of threads.</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -709,16 +710,15 @@ failed permanently.</p></td>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__ai_platform__enablement" title="feat_req__code_generation__nomultithreading">stkh_req__ai_platform__enablement</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__execution_model__processes" title="feat_req__code_generation__nomultithreading">stkh_req__execution_model__processes</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>If Software Compute Units are to spawn any threads at all, which is
-not recommended, Software Compute Units must have a predetermined
-number of threads that are spawned. Software Compute Units may not dynamically
-spawn and join or detach worker threads.</p></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>Software Compute Units shall have a predetermined number of threads
+if they spawn any threads at all. Software Compute Units shall not
+dynamically spawn and join or detach worker threads.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__code_generation__nomultithreading" title="feat_req__code_generation__nomultithreading">feat_req__code_generation__nomultithreading</a></span></span></div>
@@ -734,11 +734,11 @@ spawn and join or detach worker threads.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f339bc7a">
+<div class="need_container docutils container" id="SNCB-02313faa">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__error_handling1">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">Software Compute Unit may not throw exceptions or &quot;panic&quot;.</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">Software Compute Units do not throw exceptions or &quot;panic&quot;.</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -755,19 +755,14 @@ spawn and join or detach worker threads.</p></td>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__ai_platform__enablement" title="feat_req__code_generation__error_handling1">stkh_req__ai_platform__enablement</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__execution_model__processes" title="feat_req__code_generation__error_handling1">stkh_req__execution_model__processes</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>Any exceptions in e.g. dependency libraries must be handled
-completely inside the standard interface functions of the
-Software Compute Unit. The only allowed way for a Software Compute Unit to signal an error is
-by returning an Error that contains an
-ErrorCode other than Success. Any unhandled exceptions
-will cause the Software Compute Unit to terminate
-execution.</p></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>Software Compute Units shall handle any exceptions in dependency
+libraries completely inside the standard interface functions. Software Compute Units shall signal an error by returning an Error that contains an ErrorCode other than Success. Software Compute Units shall terminate execution if unhandled exceptions occur.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__code_generation__error_handling1" title="feat_req__code_generation__error_handling1">feat_req__code_generation__error_handling1</a></span></span></div>
@@ -783,11 +778,11 @@ execution.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-097b4818">
+<div class="need_container docutils container" id="SNCB-7f5ce2e1">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__error_handling2">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">Software Compute Units should not attempt to trigger program termination.</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">Software Compute Units do not attempt to trigger program termination.</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -804,16 +799,16 @@ execution.</p></td>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__ai_platform__enablement" title="feat_req__code_generation__error_handling2">stkh_req__ai_platform__enablement</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__execution_model__processes" title="feat_req__code_generation__error_handling2">stkh_req__execution_model__processes</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>Software Compute Unit are not responsible for managing their own
-lifecycle. The correct way to handle errors is to return an Error
-with a suitable Errorcode and to follow the defined error
-propagation mechanism.</p></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>Software Compute Units shall return an Error with a suitable
+Errorcode and follow the defined error propagation mechanism to
+handle errors. Software Compute Units shall not manage their own
+lifecycle.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__code_generation__error_handling2" title="feat_req__code_generation__error_handling2">feat_req__code_generation__error_handling2</a></span></span></div>
@@ -829,11 +824,11 @@ propagation mechanism.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-bbb147a5">
+<div class="need_container docutils container" id="SNCB-ab9c3539">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__error_handling3">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">Software Compute Units should not call their own standard interface methods.</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">Software Compute Units do not call their own standard interface methods.</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -850,17 +845,17 @@ propagation mechanism.</p></td>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__ai_platform__enablement" title="feat_req__code_generation__error_handling3">stkh_req__ai_platform__enablement</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__ai_platform__runtime_determinism" title="feat_req__code_generation__error_handling3">stkh_req__ai_platform__runtime_determinism</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>Software Compute Units must not interfere with their external
+<tr class="content row-odd"><td class="content" colspan="6"><p>Software Compute Units shall not interfere with their external
 lifecycle management by calling their own interface methods
-(onInit, onUpdate, onReset, onShutdown) with the exception that
-onShutdown() may call onReset() if this is required for avoiding
-code duplication.</p></td>
+(onInit, onUpdate, onReset, onShutdown). Software Compute Units may
+call onReset() from onShutdown() if required for avoiding code
+duplication.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__code_generation__error_handling3" title="feat_req__code_generation__error_handling3">feat_req__code_generation__error_handling3</a></span></span></div>
@@ -876,11 +871,11 @@ code duplication.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-35fecdfd">
+<div class="need_container docutils container" id="SNCB-b798e583">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__error_handling4">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">Software Compute Units should implement transient error recovery mechanisms in onReset.</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">Software Compute Units implement transient error recovery mechanisms in onReset.</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -897,16 +892,16 @@ code duplication.</p></td>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__ai_platform__enablement" title="feat_req__code_generation__error_handling4">stkh_req__ai_platform__enablement</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__ai_platform__runtime_determinism" title="feat_req__code_generation__error_handling4">stkh_req__ai_platform__runtime_determinism</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>Software Compute Units should signal transient errors as a failure of
-onUpdate. The triggering of onReset to recovery from transient
-errors should be done by the responsible Software Compute Unit based on logic modeled
-for the Archetype.</p></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>Software Compute Units shall signal transient errors as a failure of
+onUpdate. The responsible Software Compute Unit shall trigger
+onReset to recover from transient errors based on logic modeled for
+the Archetype.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__code_generation__error_handling4" title="feat_req__code_generation__error_handling4">feat_req__code_generation__error_handling4</a></span></span></div>
@@ -922,11 +917,11 @@ for the Archetype.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6b31370c">
+<div class="need_container docutils container" id="SNCB-cb3a5929">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__error_handling5">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">Software Compute Units should signal reset and recovery failures via the Error return value of onReset.</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">Software Compute Units signal reset and recovery failures via the Error return value of onReset.</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -943,13 +938,13 @@ for the Archetype.</p></td>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__ai_platform__enablement" title="feat_req__code_generation__error_handling5">stkh_req__ai_platform__enablement</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__ai_platform__runtime_determinism" title="feat_req__code_generation__error_handling5">stkh_req__ai_platform__runtime_determinism</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>Software Compute Units that return a failure on onReset are considered to have failed permanently.</p></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>Software Compute Units shall be considered to have failed permanently if they return a failure on onReset.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__code_generation__error_handling5" title="feat_req__code_generation__error_handling5">feat_req__code_generation__error_handling5</a></span></span></div>

@@ -12,7 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _orchestration_feature:
+
+.. _orch_feature:
 
 Orchestration
 #############

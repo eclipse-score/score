@@ -14,7 +14,7 @@
 
 .. document:: FEO Assumptions of Use Requirements
    :id: doc__frameworks_feo_aou_reqs
-   :status: valid
+   :status: draft
    :security: NO
    :safety: ASIL_B
    :realizes: PROCESS_wp__requirements_feat_aou

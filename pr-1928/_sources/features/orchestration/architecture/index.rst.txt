@@ -26,122 +26,131 @@ Feature Architecture
 
 Overview
 --------
-Brief summary
+The orchestration feature provides frameworks for deterministic, scalable, and maintainable execution of mixed-criticality software applications. It introduces two main abstractions: the **Executor**, which offers cooperative user-space multitasking with configurable thread pools, and the **Orchestrator**, which enables declarative modeling of cause-effect chains, timing constraints, and fault handling logic. These frameworks are designed to improve integration, timing predictability, and validation of cross-component timing chains, supporting robust system integration in automotive and safety-critical environments.
 
 Description
 -----------
 
-General Description
-
-.. Design Decisions - For the documentation of the decision the :need:`PROCESS_gd_temp__change_decision_record` can be used.
-
-Design Constraints
-
-Requirements
-------------
-
-.. code-block:: none
-
-   .. needtable:: Overview of Feature Requirements
-      :style: table
-      :columns: title;id
-      :filter: search("feat_arch_sta__archdes$", "fulfils_back")
-      :colwidths: 70,30
+The orchestration framework is structured in layers, separating application logic from deployment and resource management. The **Executor** manages cooperative and preemptive tasks, dedicated threads for blocking operations, and provides observability hooks for system monitoring. The **Orchestrator** allows developers to define Programs as runtime-static execution graphs, specifying control flow, timing contracts, event-based synchronization, and fault handling. The API is code-first, enabling direct integration with application logic and improved debuggability. Observability is a key aspect, with tracing and metrics exposed at the Orchestrator, Executor, and kernel levels. The design enforces that inter-process communication and synchronization are exclusively handled via secure IPC mechanisms, ensuring safety and security in multi-process environments.
 
 
 Rationale Behind Architecture Decomposition
 *******************************************
-mandatory: a motivation for the decomposition
 
-.. note:: Common decisions across features / cross cutting concepts is at the high level.
+The decomposition of the orchestration architecture is driven by the need for modularity, scalability, and maintainability in complex, safety-critical systems. By separating concerns into distinct layers and abstractions, the architecture enables:
+
+- **Clear Separation of Responsibilities:** The division between the Executor and Orchestrator allows for independent evolution of scheduling mechanisms and high-level control logic. This separation ensures that timing, resource management, and application logic can be developed and validated independently.
+
+- **Determinism and Predictability:** Layered decomposition supports deterministic execution by isolating timing-sensitive components and providing explicit control over execution flows and resource allocation.
+
+- **Scalability and Reusability:** Modular components can be reused across different applications and deployment scenarios. This reduces duplication and enables the orchestration framework to scale from simple to highly complex systems.
+
+- **Testability and Observability:** Isolated modules with well-defined interfaces facilitate targeted testing and verification. The architecture’s observability hooks at multiple layers enable comprehensive tracing and diagnostics, which are essential for safety and reliability.
+
+- **Safety and Security:** By enforcing strict boundaries between application logic, resource management, and inter-process communication, the architecture minimizes the risk of unintended interactions and supports compliance with safety and security standards.
+
+- **Ease of Integration:** The decomposition allows for declarative modeling of execution graphs and timing contracts, simplifying the integration of new features and components while maintaining system integrity.
+
+This architectural approach is informed by best practices in automotive and safety-critical software engineering, ensuring that the system remains robust, adaptable, and maintainable as requirements evolve.
 
 Static Architecture
 -------------------
 
-.. .. feat_arc_sta:: Static View
-..    :id: feat_arc_sta__orchestration__static_view
-..    :security: YES
-..    :safety: ASIL_B
-..    :status: invalid
-..    :fulfils: feat_req__orchestration__some_title
-..    :includes: logic_arc_int__orchestration__interface_name
+.. feat_arc_sta:: Static View
+   :id: feat_arc_sta__orchestration__static_view
+   :security: YES
+   :safety: ASIL_B
+   :status: invalid
+   :fulfils: feat_req__orchestration__orch_static_graphs, feat_req__orchestration__exec_async_rt
+   :includes: logic_arc_int__orchestration__user, logic_arc_int__orchestration__design, logic_arc_int__orchestration__deployment
 
-..    .. needarch::
-..       :scale: 50
-..       :align: center
+   .. needarch::
+      :scale: 50
+      :align: center
 
-..       {{ draw_feature(need(), needs) }}
+      {{ draw_feature(need(), needs) }}
 
-Dynamic Architecture
---------------------
+API Components
+--------------
 
-.. .. feat_arc_dyn:: Dynamic View
-..    :id: feat_arc_dyn__orchestration__dynamic_view
-..    :security: YES
-..    :safety: ASIL_B
-..    :status: invalid
-..    :fulfils: feat_req__orchestration__some_title
+The API is split into three key components:
 
-..    put here a sequence diagram
+1. **Design**
 
-Logical Interfaces
-------------------
+   - Provides a way to register all application callables (functions, async functions, objects, etc.)
 
-.. .. logic_arc_int:: Interface Name
-..    :id: logic_arc_int__orchestration__interface_name
-..    :security: YES
-..    :safety: ASIL_B
-..    :status: invalid
+   - Allows the creation of an application task flow in the `config-by-code` case
 
-..    .. needarch::
-..       :scale: 50
-..       :align: center
+2. **Deployment**
 
-..       {{ draw_interface(need(), needs) }}
+   - Provides a way to bind specific application actions to concrete implementations in the current system:
 
-.. .. logic_arc_int_op:: Operation
-..    :id: logic_arc_int_op__orchestration__operation
-..    :security: YES
-..    :safety: ASIL_B
-..    :status: invalid
-..    :included_by: logic_arc_int__orchestration__interface_name
+      #. Binding events to Local/Remote/Timers
+      #. Configuring certain threads for callables
 
-Module Viewpoint
-----------------
+3. **Orchestration**
 
-The following modules are needed to be defined to be able to draw the static feature view.
-They will be replaced by linking the proper module definitions in the used module's repositories as soon as those exist.
+   - Acts as the central API for managing designs and transitioning them into a deployment-ready state
 
-.. .. mod_view_sta:: Module Name
-..    :id: mod_view_sta__orchestration__module_name
-..    :includes: comp_arc_sta__orchestration__component_name
+   - Handles the creation of programs and their orchestration
 
-..    .. needarch::
-..       :scale: 50
-..       :align: center
+Purpose of Orchestration, Design, and Deployment Split
+------------------------------------------------------
 
-..       {{ draw_module(need(), needs) }}
+The split between **Orchestration**, **Design**, and **Deployment** is intentional and reflects
+a separation of concerns in the orchestration process:
 
-Used Components
----------------
+- **Design**: Focuses on the **definition** of the system's components, encapsulating configuration
+  and metadata for specific parts of the system.
 
-The following components are needed to be defined to be able to draw the static feature view.
-They will be replaced by linking the proper SW component definitions in the used module's repositories as soon as those exist.
+- **Deployment**: Focuses on the **execution** of the designs, handling specific details of the
+  given system.
 
-.. .. comp_arc_sta:: Component Name
-..    :id: comp_arc_sta__orchestration__component_name
-..    :safety: ASIL_B
-..    :security: YES
-..    :status: invalid
-..    :implements: logic_arc_int__orchestration__interface_name
+- **Orchestration**: Acts as the **entry point** for managing designs and transitioning them into
+  deployment, bridging the gap between the design phase and the deployment phase.
 
-.. note::
-   Architecture can be split into multiple files, it is an High level architecture_design
-   which can be shown without actual c++/rust interfaces and data types
-   and there will be link to lower level architecture till code to get actual api descriptions.
+This separation ensures that each phase of the orchestration process is modular, testable, and maintainable.
 
-.. attention::
-    The above directives must be updated according to your feature architecture.
 
-    - Replace the example content by the real content (according to :need:`PROCESS_gd_guidl__arch_design`)
-    - Set the status to valid and start the review/merge process
+Interface Description
+---------------------
+
+The public API for the frontend is defined as:
+
+.. logic_arc_int:: Orchestration Interface
+   :id: logic_arc_int__orchestration__user
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :fulfils: feat_req__com__interfaces
+
+   .. needarch::
+      :scale: 50
+      :align: center
+
+      {{ draw_interface(need(), needs) }}
+
+.. logic_arc_int:: Design Interface
+   :id: logic_arc_int__orchestration__design
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+
+   .. needarch::
+      :scale: 50
+      :align: center
+
+      {{ draw_interface(need(), needs) }}
+
+.. logic_arc_int:: Deployment Interface
+   :id: logic_arc_int__orchestration__deployment
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+
+
+   .. needarch::
+      :scale: 50
+      :align: center
+
+      {{ draw_interface(need(), needs) }}

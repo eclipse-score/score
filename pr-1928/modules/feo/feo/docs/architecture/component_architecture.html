@@ -500,6 +500,7 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../lifecycle/index.html">Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../logging/index.html">Logging Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../orchestrator/index.html">Orchestrator Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../os/index.html">OS Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../persistency/index.html">KVS Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tracing/index.html">Tracing Module</a></li>
@@ -569,7 +570,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-40c811b4">
+  <div class="need_container docutils container" id="SNCB-f5df22df">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__component_feo_architecture">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -643,7 +644,7 @@ considerations and Rust compiler constraints. (Rust proc-macros must reside in t
 </section>
 <section id="static-architecture">
 <h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-50e884db">
+<div class="need_container docutils container" id="SNCB-e9b6a025">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__feo__main">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -665,7 +666,6 @@ considerations and Rust compiler constraints. (Rust proc-macros must reside in t
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">component_feo</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/component_requirements.html#comp_req__feo__application" title="comp_arc_sta__feo__main">comp_req__feo__application</a>, <a class="reference internal" href="../requirements/component_requirements.html#comp_req__feo__scheduler" title="comp_arc_sta__feo__main">comp_req__feo__scheduler</a>, <a class="reference internal" href="../requirements/component_requirements.html#comp_req__feo__task_chain" title="comp_arc_sta__feo__main">comp_req__feo__task_chain</a>, <a class="reference internal" href="../requirements/component_requirements.html#comp_req__feo__agent" title="comp_arc_sta__feo__main">comp_req__feo__agent</a>, <a class="reference internal" href="../requirements/component_requirements.html#comp_req__feo__comp_cfg" title="comp_arc_sta__feo__main">comp_req__feo__comp_cfg</a>, <a class="reference internal" href="../requirements/component_requirements.html#comp_req__feo__act_map_cfg" title="comp_arc_sta__feo__main">comp_req__feo__act_map_cfg</a></span></span></div>
-<div class="line">includes: <span class="includes"><span><a class="reference internal" href="#real_arc_int__feo__primary" title="comp_arc_sta__feo__main">real_arc_int__feo__primary</a>, <a class="reference internal" href="#real_arc_int__feo__primary_config" title="comp_arc_sta__feo__main">real_arc_int__feo__primary_config</a>, <a class="reference internal" href="#real_arc_int__feo__secondary" title="comp_arc_sta__feo__main">real_arc_int__feo__secondary</a>, <a class="reference internal" href="#real_arc_int__feo__secondary_config" title="comp_arc_sta__feo__main">real_arc_int__feo__secondary_config</a>, <a class="reference internal" href="#real_arc_int__feo__activity" title="comp_arc_sta__feo__main">real_arc_int__feo__activity</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -694,7 +694,7 @@ considerations and Rust compiler constraints. (Rust proc-macros must reside in t
 </section>
 <section id="dynamic-architecture">
 <h2>Dynamic Architecture<a class="headerlink" href="#dynamic-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-82be6c0b">
+<div class="need_container docutils container" id="SNCB-b0742795">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_dyn table" id="comp_arc_dyn__feo__main">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -750,7 +750,7 @@ As an example, we consider the simple task chain and process distribution depict
 </section>
 <section id="interfaces">
 <h2>Interfaces<a class="headerlink" href="#interfaces" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-4edd6970">
+<div class="need_container docutils container" id="SNCB-a1534320">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_real_arc_int table" id="real_arc_int__feo__primary_config">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -773,7 +773,6 @@ As an example, we consider the simple task chain and process distribution depict
 <div class="line"><span class="needs_language"><span class="needs_label">language: </span><span class="needs_data">rust</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/component_requirements.html#comp_req__feo__application" title="real_arc_int__feo__primary_config">comp_req__feo__application</a>, <a class="reference internal" href="../requirements/component_requirements.html#comp_req__feo__task_chain" title="real_arc_int__feo__primary_config">comp_req__feo__task_chain</a>, <a class="reference internal" href="../requirements/component_requirements.html#comp_req__feo__comp_cfg" title="real_arc_int__feo__primary_config">comp_req__feo__comp_cfg</a>, <a class="reference internal" href="../requirements/component_requirements.html#comp_req__feo__act_map_cfg" title="real_arc_int__feo__primary_config">comp_req__feo__act_map_cfg</a></span></span></div>
-<div class="line">included by: <span class="includes"><span><a class="reference internal" href="#comp_arc_sta__feo__main" title="real_arc_int__feo__primary_config">comp_arc_sta__feo__main</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -795,7 +794,7 @@ As an example, we consider the simple task chain and process distribution depict
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-ed24e754">
+<div class="need_container docutils container" id="SNCB-e0d53f6e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_real_arc_int table" id="real_arc_int__feo__primary">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -818,7 +817,6 @@ As an example, we consider the simple task chain and process distribution depict
 <div class="line"><span class="needs_language"><span class="needs_label">language: </span><span class="needs_data">rust</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/component_requirements.html#comp_req__feo__application" title="real_arc_int__feo__primary">comp_req__feo__application</a>, <a class="reference internal" href="../requirements/component_requirements.html#comp_req__feo__task_chain" title="real_arc_int__feo__primary">comp_req__feo__task_chain</a>, <a class="reference internal" href="../requirements/component_requirements.html#comp_req__feo__comp_cfg" title="real_arc_int__feo__primary">comp_req__feo__comp_cfg</a>, <a class="reference internal" href="../requirements/component_requirements.html#comp_req__feo__act_map_cfg" title="real_arc_int__feo__primary">comp_req__feo__act_map_cfg</a></span></span></div>
-<div class="line">included by: <span class="includes"><span><a class="reference internal" href="#comp_arc_sta__feo__main" title="real_arc_int__feo__primary">comp_arc_sta__feo__main</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -840,7 +838,7 @@ As an example, we consider the simple task chain and process distribution depict
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4ec1d804">
+<div class="need_container docutils container" id="SNCB-8c3619aa">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_real_arc_int table" id="real_arc_int__feo__secondary_config">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -863,7 +861,6 @@ As an example, we consider the simple task chain and process distribution depict
 <div class="line"><span class="needs_language"><span class="needs_label">language: </span><span class="needs_data">rust</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/component_requirements.html#comp_req__feo__application" title="real_arc_int__feo__secondary_config">comp_req__feo__application</a>, <a class="reference internal" href="../requirements/component_requirements.html#comp_req__feo__task_chain" title="real_arc_int__feo__secondary_config">comp_req__feo__task_chain</a>, <a class="reference internal" href="../requirements/component_requirements.html#comp_req__feo__comp_cfg" title="real_arc_int__feo__secondary_config">comp_req__feo__comp_cfg</a>, <a class="reference internal" href="../requirements/component_requirements.html#comp_req__feo__act_map_cfg" title="real_arc_int__feo__secondary_config">comp_req__feo__act_map_cfg</a></span></span></div>
-<div class="line">included by: <span class="includes"><span><a class="reference internal" href="#comp_arc_sta__feo__main" title="real_arc_int__feo__secondary_config">comp_arc_sta__feo__main</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -885,7 +882,7 @@ As an example, we consider the simple task chain and process distribution depict
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d67af6da">
+<div class="need_container docutils container" id="SNCB-55186ff9">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_real_arc_int table" id="real_arc_int__feo__secondary">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -908,7 +905,6 @@ As an example, we consider the simple task chain and process distribution depict
 <div class="line"><span class="needs_language"><span class="needs_label">language: </span><span class="needs_data">rust</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/component_requirements.html#comp_req__feo__application" title="real_arc_int__feo__secondary">comp_req__feo__application</a>, <a class="reference internal" href="../requirements/component_requirements.html#comp_req__feo__task_chain" title="real_arc_int__feo__secondary">comp_req__feo__task_chain</a>, <a class="reference internal" href="../requirements/component_requirements.html#comp_req__feo__comp_cfg" title="real_arc_int__feo__secondary">comp_req__feo__comp_cfg</a>, <a class="reference internal" href="../requirements/component_requirements.html#comp_req__feo__act_map_cfg" title="real_arc_int__feo__secondary">comp_req__feo__act_map_cfg</a></span></span></div>
-<div class="line">included by: <span class="includes"><span><a class="reference internal" href="#comp_arc_sta__feo__main" title="real_arc_int__feo__secondary">comp_arc_sta__feo__main</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -930,7 +926,7 @@ As an example, we consider the simple task chain and process distribution depict
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-2b5da0a2">
+<div class="need_container docutils container" id="SNCB-8a0cd3ec">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_real_arc_int table" id="real_arc_int__feo__activity">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -953,7 +949,6 @@ As an example, we consider the simple task chain and process distribution depict
 <div class="line"><span class="needs_language"><span class="needs_label">language: </span><span class="needs_data">rust</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/component_requirements.html#comp_req__feo__activity" title="real_arc_int__feo__activity">comp_req__feo__activity</a></span></span></div>
-<div class="line">included by: <span class="includes"><span><a class="reference internal" href="#comp_arc_sta__feo__main" title="real_arc_int__feo__activity">comp_arc_sta__feo__main</a></span></span></div>
 </span></div>
 </div>
 </td>
