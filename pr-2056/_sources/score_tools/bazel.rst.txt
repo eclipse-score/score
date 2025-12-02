@@ -224,6 +224,16 @@ This section outlines the safety evaluation of Bazel for its use within the S-CO
      - low
    * - 11
      - Call tools
+     - | Bazel wrongly interprets return code from tool
+       |
+       | Bazel misinterprets the return code from a tool, treating a failure as a success or vice versa. This can result in undetected build errors or invalid artifacts being accepted as correct.
+     - yes
+     - no
+     - no
+     - yes(qualification)
+     - low
+   * - 12
+     - Call tools
      - | Bazel passes wrong argument to the tool
        |
        | Bazel provides incorrect arguments to a tool, causing misbehavior or invalid outputs. This can lead to corrupted artifacts or failed verification steps.
@@ -232,7 +242,7 @@ This section outlines the safety evaluation of Bazel for its use within the S-CO
      - no
      - yes(qualification)
      - low
-   * - 12
+   * - 13
      - Save output
      - | Bazel corrupts final output artifact
        |
@@ -242,7 +252,7 @@ This section outlines the safety evaluation of Bazel for its use within the S-CO
      - no
      - yes(qualification)
      - low
-   * - 13
+   * - 14
      - Save output
      - | Bazel saves in wrong place
        |

@@ -550,7 +550,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-0802e39c">
+  <div class="need_container docutils container" id="SNCB-00a5f3ba">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_doc_tool table" id="doc_tool__bazel">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -868,6 +868,20 @@ When using caching mechanisms, additional configuration may be required.</p>
 <tr class="row-even"><td><p>11</p></td>
 <td><p>Call tools</p></td>
 <td><div class="line-block">
+<div class="line">Bazel wrongly interprets return code from tool</div>
+<div class="line"><br /></div>
+<div class="line">Bazel misinterprets the return code from a tool, treating a failure as a success or vice versa. This can result in undetected build errors or invalid artifacts being accepted as correct.</div>
+</div>
+</td>
+<td><p>yes</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+<td><p>yes(qualification)</p></td>
+<td><p>low</p></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+<td><p>Call tools</p></td>
+<td><div class="line-block">
 <div class="line">Bazel passes wrong argument to the tool</div>
 <div class="line"><br /></div>
 <div class="line">Bazel provides incorrect arguments to a tool, causing misbehavior or invalid outputs. This can lead to corrupted artifacts or failed verification steps.</div>
@@ -879,7 +893,7 @@ When using caching mechanisms, additional configuration may be required.</p>
 <td><p>yes(qualification)</p></td>
 <td><p>low</p></td>
 </tr>
-<tr class="row-odd"><td><p>12</p></td>
+<tr class="row-even"><td><p>13</p></td>
 <td><p>Save output</p></td>
 <td><div class="line-block">
 <div class="line">Bazel corrupts final output artifact</div>
@@ -893,7 +907,7 @@ When using caching mechanisms, additional configuration may be required.</p>
 <td><p>yes(qualification)</p></td>
 <td><p>low</p></td>
 </tr>
-<tr class="row-even"><td><p>13</p></td>
+<tr class="row-odd"><td><p>14</p></td>
 <td><p>Save output</p></td>
 <td><div class="line-block">
 <div class="line">Bazel saves in wrong place</div>
