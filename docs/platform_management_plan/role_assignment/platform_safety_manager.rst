@@ -46,11 +46,11 @@ Safety Management Experience: Safety Manager for Safe Posix SW Platform at OEM f
 
 Education and Skills:
 
-- University degrees
-- Safety related SW developemt and project management (in aerospace) > 10 years
-- Trainer for DO-178B SW safety standard
-- Process development CMMI
-- Safety trainings by Exida (Iso 26262)
+- University degree - certificate
+- Safety related SW developemt and project management (in aerospace) > 10 years - letters of recommendation from employers
+- Trainer for DO-178B SW safety standard - election certificate
+- Process development CMMI - letters of recommendation from employers
+- Safety trainings by Exida (Iso 26262) - part of Safety Case Safe Posix SW platform
 
 S-CORE Committs:
 
@@ -64,10 +64,9 @@ For the election the following Committers with similar skills are asked for appr
 - `<https://github.com/masc2023>`_
 - `<https://github.com/PandaeDo>`_
 - `<https://github.com/pahmann>`_
-- `<https://github.com/kroehnd>`_
 - `<https://github.com/PhilipPartsch>`_
 - `<https://github.com/aschemmel-tech>`_
 
 The election is performed by approving the pull request of this document.
-The nominee is elected if at least half of the above commiters in the list approved and nobody "request changes".
+The nominee is elected if more than half of the above commiters in the list approved and nobody "request changes".
 The nominee is not allowed to vote for himself.
