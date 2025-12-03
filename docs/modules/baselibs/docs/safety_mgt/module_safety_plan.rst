@@ -21,6 +21,7 @@ Module Safety Plan
    :id: doc__baselibs_safety_plan
    :status: draft
    :safety: ASIL_B
+   :security: NO
    :realizes: wp__module_safety_plan
 
 

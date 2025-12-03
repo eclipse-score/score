@@ -20,6 +20,7 @@ Architecture
    :id: doc__baselibs_architecture
    :status: valid
    :safety: ASIL_B
+   :security: YES
    :realizes: wp__feature_arch
 
 Overview

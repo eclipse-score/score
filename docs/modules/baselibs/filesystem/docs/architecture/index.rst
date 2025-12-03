@@ -19,6 +19,7 @@ Component Architecture
    :id: doc__filesystem_architecture
    :status: draft
    :safety: ASIL_B
+   :security: YES
    :realizes: wp__component_arch
 
 Overview/Description

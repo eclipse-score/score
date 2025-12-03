@@ -18,6 +18,7 @@
    :status: draft
    :security: NO
    :safety: ASIL_B
+   :security: YES
    :tags: component_feo
 
 
