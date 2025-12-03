@@ -15,7 +15,7 @@
 .. doc_tool:: rustfmt
    :id: doc_tool__rustfmt
    :status: evaluated
-   :version: >= 1.8.0
+   :version: 1.8.0 (exact version shall be derived from qualified Rust compiler)
    :tcl: HIGH
    :safety_affected: YES
    :security_affected: YES
@@ -103,11 +103,12 @@ This section outlines the safety evaluation of Rustfmt for its use within the S-
      - Run formatting on source files changes code unintentionally
      - | The source code changes its logical structure or behavior due to incorrect formatting, potentially introducing bugs.
      - yes
-     - | Likelihood: Low. Rustfmt is used in virtually every Rust project. This gives high confidence in its quality
+     - | Likelihood: Low. Rustfmt is used in virtually every Rust project. This gives high confidence in its quality.
+       | Also, auto formatting happens only before `commiter` commits it's changes, so **before** compilation (CI), testing(CI) and review.
        | Countermeasures:
 
-       - The logic change can be detected by code reviews and automated testing.
-       - The compiler will catch syntax errors introduced by incorrect formatting.
+       - The compiler will catch syntax errors introduced by incorrect formatting and fail to compile
+       - The logic change can be detected by code reviews and automated testing (CI).
      - yes
      - no
      - high

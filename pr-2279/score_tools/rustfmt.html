@@ -550,7 +550,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-3ee8d157">
+  <div class="need_container docutils container" id="SNCB-d0d83a9a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_doc_tool table" id="doc_tool__rustfmt">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -573,7 +573,7 @@
 <div class="line"><span class="needs_safety_affected"><span class="needs_label">safety_affected: </span><span class="needs_data">YES</span></span></div>
 <div class="line"><span class="needs_security_affected"><span class="needs_label">security_affected: </span><span class="needs_data">YES</span></span></div>
 <div class="line"><span class="needs_tcl"><span class="needs_label">tcl: </span><span class="needs_data">HIGH</span></span></div>
-<div class="line"><span class="needs_version"><span class="needs_label">version: </span><span class="needs_data">&gt;= 1.8.0</span></span></div>
+<div class="line"><span class="needs_version"><span class="needs_label">version: </span><span class="needs_data">1.8.0 (exact version shall be derived from qualified Rust compiler)</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/tool_management/tool_management_workproducts.html#wp__tool_verification_report">wp__tool_verification_report</a></span></span></div>
 </span></div>
@@ -700,12 +700,13 @@ IDEs and continuous integration pipelines, to enforce coding standards automatic
 </td>
 <td><p>yes</p></td>
 <td><div class="line-block">
-<div class="line">Likelihood: Low. Rustfmt is used in virtually every Rust project. This gives high confidence in its quality</div>
+<div class="line">Likelihood: Low. Rustfmt is used in virtually every Rust project. This gives high confidence in its quality.</div>
+<div class="line">Also, auto formatting happens only before <cite>commiter</cite> commits it’s changes, so <strong>before</strong> compilation (CI), testing(CI) and review.</div>
 <div class="line">Countermeasures:</div>
 </div>
 <ul class="simple">
-<li><p>The logic change can be detected by code reviews and automated testing.</p></li>
-<li><p>The compiler will catch syntax errors introduced by incorrect formatting.</p></li>
+<li><p>The compiler will catch syntax errors introduced by incorrect formatting and fail to compile</p></li>
+<li><p>The logic change can be detected by code reviews and automated testing (CI).</p></li>
 </ul>
 </td>
 <td><p>yes</p></td>
