@@ -165,7 +165,7 @@ Security Resources
 
 Security managers are elected by :need:`rl__project_lead` for all the S-CORE OoCs development.
 
-The security manager, supported by the project manager (i.e. the :need:`rl__technical_lead`),  will ensure that
+The security manager, supported by the project manager (i.e. the :need:`rl__project_lead`),  will ensure that
 security activities are actively planned, developed, analyzed, verified and tested and managed throughout the life cycle of the project.
 As all the implementation of security functions takes place within module development, there is a security manager appointed in the module's security plan.
 
@@ -205,12 +205,11 @@ The status report is based on security plans work product lists (see below) and 
 *Escalation*
 
 * Security Manager :need:`rl__security_manager` to steering committee documented in :need:`doc__project_mgt_plan`.
-* :need:`rl__technical_lead` to :need:`rl__project_lead`
 
 Examples for valid escalation causes are:
 
 * Security issues cannot be resolved on module level or with the available resources.
-* There are conflicting points of view between the Project Lead :need:`rl__project_lead`, Technical Lead :need:`rl__technical_lead`, Safety Manager :need:`rl__safety_manager`, Security Manager :need:`rl__security_manager` and the Quality Manager :need:`rl__quality_manager`
+* There are conflicting points of view between the Project Lead :need:`rl__project_lead`, Safety Manager :need:`rl__safety_manager`, Security Manager :need:`rl__security_manager` and the Quality Manager :need:`rl__quality_manager`
 
 Security Management Lifecycle
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
