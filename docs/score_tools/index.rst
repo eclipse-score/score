@@ -33,4 +33,8 @@ S-CORE Tools Overview
    gtest
    bazel
    rustfmt
+<<<<<<< HEAD
    clippy
+=======
+   itf
+>>>>>>> 1fc5c86 (ITF safety evaluation)
