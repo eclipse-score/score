@@ -85,7 +85,7 @@ Functional requirements
    The SW-platform shall support configuration of applications via files (e.g. yaml, json)
 
 .. stkh_req:: Support of safe Key/Value store
-   :id: stkh_req__functiona_req__support_of_store
+   :id: stkh_req__functional_req__support_of_store
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
@@ -246,7 +246,7 @@ Dependability
 .. stkh_req:: Safety features
    :id: stkh_req__dependability__safety_features
    :reqtype: Functional
-   :security: NO
+   :security: YES
    :safety: ASIL_B
    :rationale: There are state-of-the-art safety mechanisms to check HW and SW errors. These are expected to be supported either by the SW-platform alone or by using HW or OS provided safety features.
    :status: valid
