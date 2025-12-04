@@ -246,7 +246,7 @@ Dependability
 .. stkh_req:: Safety features
    :id: stkh_req__dependability__safety_features
    :reqtype: Functional
-   :security: NO
+   :security: YES
    :safety: ASIL_B
    :rationale: tbd
    :status: valid

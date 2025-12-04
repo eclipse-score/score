@@ -110,7 +110,7 @@ Requirements
 .. feat_req:: Configuration
    :id: feat_req__persistency__cfg
    :reqtype: Functional
-   :security: NO
+   :security: YES
    :safety: ASIL_B
    :satisfies: stkh_req__functional_req__file_based
    :status: valid
@@ -217,7 +217,7 @@ Requirements
 .. feat_req:: Reset resistant storage
    :id: feat_req__persistency__reset_resistant
    :reqtype: Functional
-   :security: NO
+   :security: YES
    :safety: ASIL_B
    :satisfies: stkh_req__functional_req__support_of_store
    :status: valid
@@ -457,7 +457,7 @@ Requirements
 .. feat_req:: Support development mode
    :id: feat_req__persistency__dev_mode
    :reqtype: Functional
-   :security: NO
+   :security: YES
    :safety: ASIL_B
    :satisfies: stkh_req__dependability__safety_features
    :status: valid
