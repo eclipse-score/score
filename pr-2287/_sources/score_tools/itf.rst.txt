@@ -64,7 +64,13 @@ Installation
 
   bazel_dep(name = "score_itf", version = "0.1.0")
 
-| Bazel will fetch from S-CORE Registry (BCR): https://raw.githubusercontent.com/eclipse-score/bazel_registry/main/
+| And verify that the `.bazelrc` configuration file contains the following directive to register the S-CORE module registry:
+
+.. code-block:: Python
+
+  common --registry=https://raw.githubusercontent.com/eclipse-score/bazel_registry/main/
+
+| The sources of bazel S-CORE ITF module configuration can be found at: https://github.com/eclipse-score/bazel_registry/tree/main/modules/score_itf
 
 
 Integration
