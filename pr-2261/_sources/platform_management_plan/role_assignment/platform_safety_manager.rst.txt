@@ -69,4 +69,4 @@ For the election the following Committers with similar skills are asked for appr
 
 The election is performed by approving the pull request of this document.
 The nominee is elected if more than half of the above commiters in the list approved and nobody "request changes".
-The nominee is not allowed to vote for himself.
+Nominees are not allowed to vote for themselves.
