@@ -47,7 +47,7 @@ Functional Safety Management Roles
         * - Safety Manager
           - tbd
 
-        * - Module Project Lead
+        * - Module Project Manager (= Feature team lead)
           - Andrey Babanin
 
 Tailoring

@@ -37,11 +37,17 @@ The module consists of one or more SW components and will be qualified as a SEoo
 Functional Safety Management Roles
 ==================================
 
-+---------------------------+--------------------------------------------------------+
-| Safety Manager            | Volker Häussler                                        |
-+---------------------------+--------------------------------------------------------+
-| Project Manager           | Lars Bauhofer                                          |
-+---------------------------+--------------------------------------------------------+
+.. list-table:: Module roles
+        :header-rows: 1
+
+        * - Role
+          - Assignee
+
+        * - Safety Manager
+          - tbd
+
+        * - Module Project Manager (= Feature team lead)
+          - Lars Bauhofer
 
 Tailoring
 =========
