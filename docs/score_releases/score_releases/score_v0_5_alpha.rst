@@ -17,7 +17,7 @@ S-Core v0.5-alpha release notes
 
 .. document:: S-Core v0.5-alpha release note
    :id: doc__score_v05_alpha_release_note
-   :status: draft
+   :status: valid
    :safety: ASIL_B
    :security: YES
    :realizes: wp__platform_sw_release_note
