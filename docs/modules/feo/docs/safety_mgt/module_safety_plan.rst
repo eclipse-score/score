@@ -45,7 +45,7 @@ Functional Safety Management Roles
           - Assignee
 
         * - Safety Manager
-          - tbd
+          - Markus Schu
 
         * - Module Project Manager (= Feature team lead)
           - Johannes Glamsch
