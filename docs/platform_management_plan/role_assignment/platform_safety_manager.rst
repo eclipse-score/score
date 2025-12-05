@@ -31,6 +31,7 @@ For the platform safety management a pool of safety managers is elected due to c
 
 `Markus Schu <https://github.com/masc2023>`_
 
+
 Election Reasoning
 ==================
 
