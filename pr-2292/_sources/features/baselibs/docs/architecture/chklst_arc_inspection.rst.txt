@@ -20,6 +20,7 @@ Architecture Inspection Checklist
    :id: doc__baselibs_arc_inspection
    :status: draft
    :safety: ASIL_B
+   :security: YES
    :realizes: wp__sw_arch_verification
 
 Purpose

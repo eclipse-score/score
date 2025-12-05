@@ -18,6 +18,9 @@ MISRA C++:2023 Rule Mapping
 .. document:: MISRA C++:2023 Rule Mapping
    :id: doc__cpp_misra2023_rule_mapping
    :status: draft
+   :safety: ASIL_B
+   :security: YES
+   :realizes: wp__sw_development_plan
 
 ..
     .. csv-table:: MISRA C++:2023 Rule Mapping

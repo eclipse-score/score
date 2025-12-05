@@ -17,6 +17,7 @@
    :id: doc__baselibs_req_inspection
    :status: draft
    :safety: ASIL_B
+   :security: YES
    :realizes: wp__requirements_inspect
 
 

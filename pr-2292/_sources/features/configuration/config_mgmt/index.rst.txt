@@ -21,7 +21,9 @@ Configuration Management
    :id: doc__config_mgmt
    :status: draft
    :safety: ASIL_B
+   :security: YES
    :tags: contribution_request, feature_request
+   :realizes: wp__feat_request
 
 
 .. toctree::

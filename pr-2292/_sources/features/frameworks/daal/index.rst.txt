@@ -19,7 +19,9 @@ Deterministic App Abstraction Layer
    :id: doc__daal
    :status: valid
    :safety: QM
+   :security: NO
    :tags: contribution_request, feature_request
+   :realizes: wp__feat_request
 
 .. toctree::
    :maxdepth: 2

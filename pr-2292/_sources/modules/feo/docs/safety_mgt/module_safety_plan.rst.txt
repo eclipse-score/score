@@ -38,11 +38,17 @@ The module consists of one or more SW components and will be qualified as a SEoo
 Functional Safety Management Roles
 ==================================
 
-+---------------------------+--------------------------------------------------------+
-| Safety Manager            | Markus Schu                                            |
-+---------------------------+--------------------------------------------------------+
-| Project Manager           | Johannes Glamsch                                       |
-+---------------------------+--------------------------------------------------------+
+.. list-table:: Module roles
+        :header-rows: 1
+
+        * - Role
+          - Assignee
+
+        * - Safety Manager
+          - tbd
+
+        * - Module Project Manager (= Feature team lead)
+          - Johannes Glamsch
 
 Tailoring
 =========

@@ -19,6 +19,7 @@ Bitmanipulation Component Architecture
    :id: doc__bitmanipulation_architecture
    :status: valid
    :safety: ASIL_B
+   :security: YES
    :realizes: wp__component_arch
 
 Overview/Description

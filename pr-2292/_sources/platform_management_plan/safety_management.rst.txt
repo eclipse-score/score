@@ -222,9 +222,9 @@ Functional Safety Resources
 
 A dedicated safety manager is elected for all the S-CORE SEooCs development - see :need:`doc__platform_safety_manager`.
 
-The safety manager, supported by the project manager (:need:`rl__project_lead`) or the assigned Feature team lead, will ensure that
+The safety manager, supported by the project manager (:need:`rl__project_lead`) or the assigned Feature team leads, will ensure that
 safety activities are actively planned, developed, analyzed, verified and tested and managed throughout the life cycle of the project.
-As all the implementation of safety functions takes place within module development, there is a safety manager appointed in the module's safety plan.
+As all the implementation of safety functions takes place within module development, there is a responsible safety manager documented in the module's safety plan.
 
 Resources and milestones are planned in Github Issues for all activities.
 There are issue templates for sagas (covering one feature development) and for epics (covering one development work product each).
@@ -249,7 +249,7 @@ To exchange general information and to clarify general topics the following comm
 
 *Reporting*
 
-The safety management status is reported in the Technical Lead Circle Meeting which is defined in :need:`doc__project_mgt_plan`.
+The safety management status is reported in the Project Lead Circle Meeting which is defined in :need:`doc__project_mgt_plan`.
 The status report is based on safety plans work product lists (see below) and verification reports on platform and module level:
 
 * :need:`wp__platform_safety_plan`
@@ -259,12 +259,16 @@ The status report is based on safety plans work product lists (see below) and ve
 
 *Escalation*
 
-* :need:`rl__safety_manager` to :need:`rl__project_lead`
+* :need:`rl__safety_manager` to :need:`rl__project_lead` (in the Project Lead Circle)
+
+The Project Lead Circle is the ultimate decision instance within the S-CORE project.
+But as in every Eclipse project the rules and committee decisions of Eclipse have to be followed.
 
 Examples for valid escalation causes are:
 
 * Safety issues cannot be resolved on module level or with the available resources.
-* There are conflicting points-of-view between the project manager and the safety manager
+* There are conflicting points-of-view between the module project manager (= Feature team lead) and any safety manager
+* Safety anomalies detected by the safety manager are not accepted by the module project manager
 
 Functional Safety Management Life Cycle
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

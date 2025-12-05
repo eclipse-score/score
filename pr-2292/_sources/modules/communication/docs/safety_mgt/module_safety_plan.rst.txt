@@ -47,9 +47,9 @@ Functional Safety Management Roles
           - Assignee
 
         * - Safety Manager
-          - Alexander Schemmel
+          - tbd
 
-        * - Module Project Lead
+        * - Module Project Manager (= Feature team lead)
           - Committers of feature team see `Communication FT <https://github.com/eclipse-score/communication/blob/main/.github/CODEOWNERS>`_
 
 Tailoring

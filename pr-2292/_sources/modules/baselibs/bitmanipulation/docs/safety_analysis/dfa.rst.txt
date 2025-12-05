@@ -20,6 +20,7 @@ DFA (Dependent Failure Analysis)
    :id: doc__bitmanipulation_dfa
    :status: draft
    :safety: ASIL_B
+   :security: YES
    :realizes: wp__sw_component_dfa
 
 .. note:: Use the content of the document to describe e.g. why a fault model is not applicable for the diagram.
