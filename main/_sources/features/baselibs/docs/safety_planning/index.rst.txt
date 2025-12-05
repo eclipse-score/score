@@ -20,6 +20,7 @@ Feature Safety Planning
    :id: doc__baselibs_safety_wp
    :status: draft
    :safety: ASIL_B
+   :security: YES
    :realizes: wp__platform_safety_plan
 
 

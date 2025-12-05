@@ -216,6 +216,9 @@ This is the highest level of integraton. This is the level where the S-CORE SW-p
 
    If the system using the SW-platform has safety goals, the system integrator shall perform safety anomaly reporting taking into account also the reporting of all the components he integrates.
 
+   Note: This includes all the modules of the S-CORE SW platform used by the system integrator.
+   The relevant safety critical bugs or safety anomalies are published by S-CORE as defined in the :need:`doc__platform_problem_resolution_plan`.
+
 
 Assumptions on Applications
 ---------------------------

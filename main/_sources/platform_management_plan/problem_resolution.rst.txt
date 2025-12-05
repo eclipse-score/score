@@ -278,4 +278,7 @@ back to ``In Progress``.
 Problem Resolution SW Platform Work Products
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-not applicable
+The Problem Reports are published in the :need:`wp__issue_track_system`.
+S-CORE and its modules use GitHub Issues with the same templates and in the same location per default.
+If deviating the module has to document this in an own Problem Resolution Plan.
+S-CORE platform repository issues (Problem Reports are tagged with the Label "Bug") see `here <https://github.com/eclipse-score/score/issues?q=is%3Aissue%20state%3Aopen%20label%3Abug>`_

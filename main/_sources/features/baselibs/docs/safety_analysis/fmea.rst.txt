@@ -20,6 +20,7 @@ FMEA (Failure Modes and Effects Analysis)
    :id: doc__baselibs_fmea
    :status: draft
    :safety: ASIL_B
+   :security: NO
    :realizes: wp__feature_fmea
 
 

@@ -21,6 +21,7 @@ containers
    :safety: ASIL_B
    :tags: baselibs_containers
    :realizes: wp__cmpt_request
+   :security: YES
 
 .. toctree::
    :hidden:

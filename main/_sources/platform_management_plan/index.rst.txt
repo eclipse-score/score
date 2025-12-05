@@ -16,6 +16,7 @@
    :id: doc__platform_mgt_plan
    :status: draft
    :safety: ASIL_B
+   :security: YES
    :realizes: wp__platform_mgmt
    :tags: platform_management
 
