@@ -109,7 +109,7 @@ FEO Requirements Status
 -----------------------
 
 .. needtable::
-   :filter: "feo" in docname and "requirements" in docname and docname is not None
+   :filter: docname is not None and "feo" in docname and "requirements" in docname
    :style: table
    :types: feat_req
    :tags: frameworks_feo
@@ -121,7 +121,7 @@ FEO AoU Status
 --------------
 
 .. needtable::
-   :filter: "feo" in docname and "requirements" in docname and docname is not None
+   :filter: docname is not None and "feo" in docname and "requirements" in docname
    :style: table
    :types: aou_req
    :tags: frameworks_feo
@@ -133,7 +133,7 @@ FEO Architecture Status
 -----------------------
 
 .. needtable::
-   :filter: "feo" in docname and "architecture" in docname and docname is not None
+   :filter: docname is not None and "feo" in docname and "architecture" in docname
    :style: table
    :types: feat_arc_sta; feat_arc_dyn
    :tags: frameworks_feo
