@@ -18,7 +18,7 @@
    :safety: ASIL_B
    :security: YES
    :tags: platform_management
-   :realizes: PROCESS_wp__config_mgt_plan
+   :realizes: wp__config_mgt_plan
 
 Config management / Configuration Management Plan
 -------------------------------------------------
@@ -46,7 +46,7 @@ Goal of this plan is to describe
 * how to backup and recover (including long term storage)
 * how to report the configuration status
 
-note: for definition of "configuration items" check :need:`PROCESS_doc_concept__configuration_process`
+note: for definition of "configuration items" check :need:`doc_concept__configuration_process`
 
 
 Approach
@@ -65,9 +65,9 @@ I.e. in Concept Phase, Development Phase and Maintenance.
 Identification and Properties
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Each work product is identified by its sphinx-needs Id, this includes documents identified as such (by the document header as defined in :need:`PROCESS_gd_temp__documentation`).
+Each work product is identified by its sphinx-needs Id, this includes documents identified as such (by the document header as defined in :need:`gd_temp__documentation`).
 The complete list of project documents is defined in the :need:`doc__documentation_mgt_plan`.
-Ids are checked for uniqueness, see :need:`PROCESS_gd_req__configuration_uid`.
+Ids are checked for uniqueness, see :need:`gd_req__configuration_uid`.
 sphinx-needs is also used to document the work products properties/attributes defined in the process area descriptions.
 The work products are stored in text or code files (these are identified by their filenames) within GitHub repositories.
 There is one `platform repository <https://GitHub.com/eclipse-score/score/>`_ and one repository for each module.
@@ -97,9 +97,9 @@ For other artifacts: these are pulled into S-CORE integration repository by fork
 Control and Modification
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Files or new work products contained in them are created in local branches by the :need:`Contributor <PROCESS_rl__contributor>`
+Files or new work products contained in them are created in local branches by the :need:`Contributor <rl__contributor>`
 and shared for review and incorporation into the main branch via GitHub pull-requests,
-which are after their acceptance merged by the :need:`Committer <PROCESS_rl__committer>`. The same applies for changes in existing configuration items.
+which are after their acceptance merged by the :need:`Committer <rl__committer>`. The same applies for changes in existing configuration items.
 All modifications (differences between before and after) are documented in the pull-requests and are the main input to the pull-request reviews.
 See also :need:`doc__platform_change_management_plan`.
 
@@ -115,7 +115,7 @@ Branches are used as a means of parallel development. In the S-CORE project the 
 * main branch - a "remote" branch (named "main") which contains all the latest file versions checked by CI, reviewed, accepted and merged.
 * release branch - a "remote" branch derived from main branch which is used to prepare a release,
   no functional code changes are allowed, only bug fixes and verification based improvements.
-  Only the technical lead is allowed to approve a merge into a release branch. The branch name is given as defined in :need:`PROCESS_doc_concept__rel_process`.
+  Only the technical lead is allowed to approve a merge into a release branch. The branch name is given as defined in :need:`doc_concept__rel_process`.
 
 The "remote" branch is not "local" to the developer but resides on the "remote" GitHub server.
 
@@ -139,7 +139,7 @@ Backup and Recovery
 ^^^^^^^^^^^^^^^^^^^
 
 Backup and recovery are covered by the Eclipse Foundation hosting the GitHub service for S-CORE.
-For the long term storage, additional measures are taken, see :need:`PROCESS_gd_req__config_workproducts_storage`
+For the long term storage, additional measures are taken, see :need:`gd_req__config_workproducts_storage`
 
 
 Status and Reporting
@@ -148,7 +148,7 @@ Status and Reporting
 Work products defined in our processes have "status" attributes. These are used to communicate to all the stakeholders.
 The main communication means is a document list containing all documents including their status.
 This list is part of the Documentation Management Plan :need:`doc__documentation_mgt_plan` as part of the Platform Management Plan,
-as defined in :need:`PROCESS_gd_guidl__documentation`.
+as defined in :need:`gd_guidl__documentation`.
 Completeness of the configuration items (within a baseline) is checked at least for every release
 against the list of planned documents, which is also part of the Documentation Management Plan.
 

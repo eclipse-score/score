@@ -17,7 +17,7 @@
    :status: draft
    :security: NO
    :safety: ASIL_B
-   :realizes: PROCESS_wp__fdr_reports
+   :realizes: wp__fdr_reports
    :tags: module_feo
 
 FEO Module Safety Plan Formal Review Report

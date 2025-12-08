@@ -18,6 +18,7 @@
    :security: NO
    :safety: ASIL_B
    :tags: component_feo
+   :realizes: wp__sw_implementation_inspection
 
 FEO Implementation Inspection Checklist
 =======================================
@@ -46,7 +47,7 @@ Checklist
      - Issue link
    * - IMPL_01_01
      - Is the design according to guidelines?
-     - see :need:`PROCESS_gd_temp__detailed_design` and :need:`PROCESS_doc_concept__imp_concept`
+     - see :need:`gd_temp__detailed_design` and :need:`doc_concept__imp_concept`
        (e.g. are the views done with the proposed UML diagrams)
      -
      -

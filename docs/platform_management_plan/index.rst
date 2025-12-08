@@ -16,7 +16,8 @@
    :id: doc__platform_mgt_plan
    :status: draft
    :safety: ASIL_B
-   :realizes: PROCESS_wp__platform_mgmt
+   :security: YES
+   :realizes: wp__platform_mgmt
    :tags: platform_management
 
 Platform Management Plan
@@ -25,7 +26,7 @@ Platform Management Plan
 .. _pmp:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Content
 
    project_management
@@ -40,3 +41,9 @@ Platform Management Plan
    software_verification
    documentation_management
    software_development
+
+.. toctree::
+   :titlesonly:
+   :caption: Role Assignments
+
+   role_assignment/platform_safety_manager

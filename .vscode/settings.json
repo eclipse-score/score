@@ -105,5 +105,8 @@
         "/``[^`]+``/", //ignore words between double backticks
         "/\\*?need[a-zA-Z0-9_()]*\\*?/i", // ignore *needSomeWord*
         "/\\b[A-Z]+(?:_[A-Z]+)*\\b/", //ignore all CAPS, also if includes underscore
-      ]
+    ],
+    "python.analysis.extraPaths": [
+        "./ubcode/lib/python3.12/site-packages"
+    ]
 }

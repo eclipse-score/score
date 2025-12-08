@@ -13,13 +13,15 @@
    # *******************************************************************************
 
 JSON-Library
-===========================
+============
 
 .. document:: JSON-Library
    :id: doc__json
    :status: valid
    :safety: ASIL_B
+   :security: YES
    :tags: component_request
+   :realizes: wp__cmpt_request
 
 
 .. toctree::
@@ -27,6 +29,10 @@ JSON-Library
 
    requirements/index.rst
    architecture/index.rst
+   json_wrapper/index.rst
+   nlohman_json/index.rst
+   safety_analysis/fmea.rst
+   safety_analysis/dfa.rst
 
 
 Abstract
@@ -74,10 +80,9 @@ General considerations
 
 The JSON-Library should provide parsing, writing and data conversion capabilities:
 
-:need:`comp_req__json__validation`
-:need:`comp_req__json__deserialization`
-:need:`comp_req__json__serialization`
-:need:`comp_req__json__user_format`
+* :need:`comp_req__json__deserialization`
+* :need:`comp_req__json__serialization`
+* :need:`comp_req__json__user_format`
 
 User friendly API
 -----------------
@@ -90,8 +95,9 @@ Further, a developer used to the programming language shall have no problems und
 It should feel natural to use.
 This includes error handling, which shall follow one of the error handling concepts of the programming language.
 
-1. :need:`comp_req__json__lang_idioms`
-2. :need:`comp_req__json__lang_infra`
+* :need:`comp_req__json__lang_idioms`
+* :need:`comp_req__json__lang_infra`
+* :need:`comp_req__json__type_compatibility`
 
 Full testability for the public API
 ----------------------------------------
@@ -99,7 +105,7 @@ Full testability for the public API
 Our users will be required to proof certain coverage metrics, like line coverage or branch coverage.
 For them to reach full coverage, they need to be easily able to mock or fake the public API of the JSON-Library in their unit tests.
 
-:need:`comp_req__json__full_testability`
+* :need:`comp_req__json__full_testability`
 
 Backwards Compatibility
 =======================
@@ -114,7 +120,9 @@ Security Impact
 Safety Impact
 =============
 
-Overall, the component shall support use cases up to ASIL-B.
+Overall, the component shall support use cases up to ASIL-B:
+
+* :need:`comp_req__json__asil`
 
 License Impact
 ==============

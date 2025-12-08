@@ -17,7 +17,7 @@
    :status: draft
    :security: NO
    :safety: ASIL_B
-   :realizes: PROCESS_wp__component_arch
+   :realizes: wp__component_arch
    :tags: component_feo
 
 FEO Component Architecture
@@ -64,7 +64,7 @@ Static Architecture
   :safety: ASIL_B
   :status: valid
   :fulfils: comp_req__feo__application, comp_req__feo__scheduler, comp_req__feo__task_chain, comp_req__feo__agent, comp_req__feo__comp_cfg, comp_req__feo__act_map_cfg
-  :includes: real_arc_int__feo__primary, real_arc_int__feo__primary_config, real_arc_int__feo__secondary, real_arc_int__feo__secondary_config, real_arc_int__feo__activity
+
 
   .. uml:: _assets/stat_arch.puml
      :scale: 50
