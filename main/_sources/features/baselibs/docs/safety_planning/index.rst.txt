@@ -103,7 +103,7 @@ Feature Requirements Status
 ---------------------------
 
 .. needtable::
-   :filter: "baselibs" in docname and "requirements" in docname and docname is not None
+   :filter: docname is not None and "baselibs" in docname and "requirements" in docname
    :style: table
    :types: feat_req
    :tags: baselibs
@@ -115,7 +115,7 @@ Feature AoU Status
 ------------------
 
 .. needtable::
-   :filter: "baselibs" in docname and "requirements" in docname and docname is not None
+   :filter: docname is not None and "baselibs" in docname and "requirements" in docname
    :style: table
    :types: aou_req
    :tags: baselibs
@@ -127,7 +127,7 @@ Feature Architecture Status
 ---------------------------
 
 .. needtable::
-   :filter: "baselibs" in docname and "requirements" in docname and docname is not None
+   :filter: docname is not None and "baselibs" in docname and "requirements" in docname
    :style: table
    :types: feat_arc_sta; feat_arc_dyn
    :tags: baselibs
