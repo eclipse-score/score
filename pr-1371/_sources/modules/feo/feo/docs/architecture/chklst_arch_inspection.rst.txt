@@ -18,6 +18,7 @@
    :security: NO
    :safety: ASIL_B
    :tags: component_feo
+   :realizes: wp__sw_arch_verification
 
 FEO Component Architecture Inspection Checklist
 ===============================================
@@ -47,7 +48,7 @@ Checklist
       - Issue link
     * - ARC_01_01
       - Is the traceability from software architectural elements to requirements, and other level architectural
-        elements (e.g. component to interface) established according to the defined :need:`Relations between the architectural elements <PROCESS_doc_concept__arch_process>`?
+        elements (e.g. component to interface) established according to the defined :need:`Relations between the architectural elements <doc_concept__arch_process>`?
       - automated
       - Trace should be checked by Sphinx. Will be removed from checklist once requirement is implemented.
       -
@@ -79,7 +80,7 @@ Checklist
     * - ARC_02_02
       - Is appropriate and comprehensible operation/interface naming present in the architectural design?
       - manual
-      - Check :need:`PROCESS_gd_guidl__arch_design`
+      - Check :need:`gd_guidl__arch_design`
       -
       -
       -

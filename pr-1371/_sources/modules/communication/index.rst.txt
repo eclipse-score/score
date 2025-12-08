@@ -11,6 +11,7 @@
    #
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
+.. _communication_module_docs:
 
 Communication Module
 ####################

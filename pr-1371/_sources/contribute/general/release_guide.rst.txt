@@ -143,7 +143,7 @@ This then will give you something similar to this:
    :alt: Generated Release Notes
 
 For an official release (note) you need to consider the :need:`doc__platform_release_management_plan`
-and follow the process as in :need:`PROCESS_gd_guidl__rel_management`.
+and follow the process as in :need:`gd_guidl__rel_management`.
 
 
 6. Set Pre-release Status (if applicable)

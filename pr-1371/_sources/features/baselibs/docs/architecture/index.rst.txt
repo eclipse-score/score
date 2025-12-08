@@ -16,6 +16,13 @@
 Architecture
 =====================
 
+.. document:: Baselibs Architecture
+   :id: doc__baselibs_architecture
+   :status: valid
+   :safety: ASIL_B
+   :security: YES
+   :realizes: wp__feature_arch
+
 Overview
 --------
 
@@ -83,7 +90,7 @@ Static Architecture
    :safety: ASIL_B
    :status: valid
    :fulfils: feat_req__baselibs__core_utilities
-   :includes: logic_arc_int__baselibs__json, logic_arc_int__baselibs__memory_shared, logic_arc_int__baselibs__message_passing, logic_arc_int__baselibs__result
+   :includes: logic_arc_int__baselibs__json, logic_arc_int__baselibs__memory_shared, logic_arc_int__baselibs__message_passing, logic_arc_int__baselibs__result, logic_arc_int__baselibs__bit_manipulation, logic_arc_int__baselibs__bit_mask_operator, logic_arc_int__baselibs__dynamic_array, logic_arc_int__baselibs__intrusive_list, logic_arc_int__baselibs__filesystem
 
    .. needarch::
       :scale: 50
@@ -94,10 +101,10 @@ Static Architecture
 Logical Interfaces
 ------------------
 
-The Baselibs feature exposes the following logical interfaces defined in the :doc:`/modules/baselibs/index`:
+The Baselibs feature exposes the following logical interfaces:
 
 .. needtable::
    :style: table
    :columns: title;id;status
    :sort: title
-   :filter: id in ['logic_arc_int__baselibs__json', 'logic_arc_int__baselibs__memory_shared', 'logic_arc_int__baselibs__message_passing' ,'logic_arc_int__baselibs__result']
+   :filter: id in ['logic_arc_int__baselibs__json', 'logic_arc_int__baselibs__memory_shared', 'logic_arc_int__baselibs__message_passing' ,'logic_arc_int__baselibs__result', 'logic_arc_int__baselibs__bit_manipulation', 'logic_arc_int__baselibs__bit_mask_operator', 'logic_arc_int__baselibs__dynamic_array', 'logic_arc_int__baselibs__intrusive_list', 'logic_arc_int__baselibs__filesystem']

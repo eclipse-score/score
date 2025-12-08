@@ -101,10 +101,12 @@ Project structure and processes
    .. toctree::
       :maxdepth: 1
 
-      requirements/index
+      handbook/index
       features/index
+      requirements/index
       modules/index
       contribute/index
+
       Releases <score_releases/index.rst>
       Tools <score_tools/index.rst>
       PMP <platform_management_plan/index.rst>

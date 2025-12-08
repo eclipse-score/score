@@ -12,8 +12,6 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _chm_feature_templates:
-
 
 Lifecycle
 #########
@@ -24,7 +22,9 @@ Lifecycle
    :id: doc__lifecycle
    :status: draft
    :safety: ASIL_B
+   :security: YES
    :tags: feature_request
+   :realizes: wp__feat_request
 
 
 Feature Flag

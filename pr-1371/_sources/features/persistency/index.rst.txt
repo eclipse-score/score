@@ -12,8 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Persistency
-###########
+Persistency (v0.5 alpha)
+########################
 
 .. toctree::
    :maxdepth: 1

@@ -16,7 +16,8 @@
    :id: doc__naming_conventions
    :status: valid
    :safety: ASIL_B
-   :realizes: PROCESS_wp__sw_development_plan
+   :security: YES
+   :realizes: wp__sw_development_plan
 
 Naming Conventions
 ==================

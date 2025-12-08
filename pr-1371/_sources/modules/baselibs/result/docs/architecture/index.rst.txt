@@ -15,6 +15,21 @@
 Result Component Architecture
 *****************************
 
+.. document:: Result Architecture
+   :id: doc__result_architecture
+   :status: valid
+   :safety: ASIL_B
+   :security: YES
+   :realizes: wp__component_arch
+
+Overview/Description
+--------------------
+
+see :need:`doc__result`
+
+Static Architecture
+-------------------
+
 .. comp_arc_sta:: Result
    :id: comp_arc_sta__baselibs__result
    :security: YES
@@ -29,6 +44,8 @@ Result Component Architecture
 
       {{ draw_component(need(), needs) }}
 
+Interfaces
+----------
 
 .. logic_arc_int:: Result
    :id: logic_arc_int__baselibs__result

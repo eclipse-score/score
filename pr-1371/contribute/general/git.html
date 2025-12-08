@@ -153,8 +153,8 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../requirements/index.html">
-    Requirements
+  <a class="nav-link nav-internal" href="../../handbook/index.html">
+    Handbook
   </a>
 </li>
 
@@ -162,6 +162,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../features/index.html">
     Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../requirements/index.html">
+    Requirements
   </a>
 </li>
 
@@ -179,13 +186,6 @@
   </a>
 </li>
 
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../score_releases/index.html">
-    Releases
-  </a>
-</li>
-
             <li class="nav-item dropdown">
                 <button class="btn dropdown-toggle nav-item" type="button"
                 data-bs-toggle="dropdown" aria-expanded="false"
@@ -194,6 +194,13 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../score_tools/index.html">
     Tools
@@ -341,8 +348,8 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../requirements/index.html">
-    Requirements
+  <a class="nav-link nav-internal" href="../../handbook/index.html">
+    Handbook
   </a>
 </li>
 
@@ -350,6 +357,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../features/index.html">
     Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../requirements/index.html">
+    Requirements
   </a>
 </li>
 
@@ -550,7 +564,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-adf83002">
+  <div class="need_container docutils container" id="SNCB-a815a778">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__git_coding_guidelines">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -559,7 +573,7 @@
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
-<div class="line"><span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
 <div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
@@ -570,7 +584,7 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span></span></span></div>
-<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/implementation_workproducts.html#wp__sw_development_plan">PROCESS_wp__sw_development_plan</a></span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/implementation_workproducts.html#wp__sw_development_plan">wp__sw_development_plan</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -607,7 +621,7 @@ the quality of the commits and their respective commit messages.</p>
 <section id="git-configuration">
 <h2>Git Configuration<a class="headerlink" href="#git-configuration" title="Link to this heading">#</a></h2>
 <p>Authors name and e-mail address are part of the commit (and thus be part of the commit history).
-They must match the name and e-mail used for eclipse registration. They can be specified via the
+They must match the name and e-mail used for Eclipse registration. They can be specified via the
 .gitconfig file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">user</span><span class="p">]</span>
 <span class="n">email</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">your</span><span class="o">-</span><span class="n">email</span><span class="o">-</span><span class="n">address</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="nb">max</span><span class="o">.</span><span class="n">mustermann</span><span class="nd">@something</span><span class="o">.</span><span class="n">com</span><span class="p">)</span>
@@ -737,6 +751,54 @@ in the following format:</p>
 </div>
 </section>
 </section>
+<section id="tips-and-tricks">
+<h2>Tips and Tricks<a class="headerlink" href="#tips-and-tricks" title="Link to this heading">#</a></h2>
+<section id="deal-with-long-living-feature-branches">
+<h3>Deal with Long-Living Feature Branches<a class="headerlink" href="#deal-with-long-living-feature-branches" title="Link to this heading">#</a></h3>
+<p>Long-living feature branches are a common source of complicated merges.
+The root cause typically lies in planning issues:
+Overlapping changes are planned into parallel units of work. Examples are “developer
+B refactors module X” while “developer A adds a feature to module X”. With documents
+as code, the same applies for requirements, design, architecture, and other artifacts.
+The larger the units of work, the longer the lifetime of branches, and the more likely
+it is that such overlaps occur and conflicts arise.</p>
+<p>So, there are three stategies to deal with this:</p>
+<ol class="arabic simple">
+<li><p>Avoid long-living branches by splitting work into smaller units of work and merge
+them frequently into the main branch.</p></li>
+<li><p>If long-living branches are unavoidable, perform the changes in a way that anticipate this
+and make conflicts less likely. For example, in case of documentation changes write the new
+content in a separate file until the work is done. Then, only in a last step integrate the
+new content into the structure which exists in the main branch.</p></li>
+<li><p>Accept the fact that conflicts may arise and deal with them when they occur.</p></li>
+</ol>
+</section>
+<section id="correcting-mistakes">
+<h3>Correcting Mistakes<a class="headerlink" href="#correcting-mistakes" title="Link to this heading">#</a></h3>
+<p>Sometimes it happens that mistakes are made in the commit history.
+This can usually be corrected as long as they are not merged to main.</p>
+<p>Examples of problematic history include:</p>
+<ul class="simple">
+<li><p>Multiple, consecutive commits by the same author, like “draft one”, “after review”, “forgotten in previous commit”.
+In case the squash commit option is not used (see above), such commits should be squashed into a single commit, with a well-written commit message.</p></li>
+<li><p>Merges from the main branch into a feature branch.
+Instead, the feature branch should be rebased on top of the main branch.
+This preserves a linear history.
+However, be careful with branches that are worked on by multiple persons.</p></li>
+</ul>
+<p>A strategy which can be used to correct the commit history of a branch is to use a feature of git called ‘interactive rebase’.
+Afterwards, the (now cleaned-up) branch can be force-pushed to the remote repository.
+This works also if there is already a pull-request open for this branch.
+The Git Documentation contains <a class="reference external" href="https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History">a well-written section</a> about “rewriting history”.
+However, to be fair, this is not simple when you do it for the first time.</p>
+<p>Another strategy is to create a new branch from the main branch and cherry-pick the relevant commits from the old branch to the new branch.
+Then, push the new branch to the remote repository and create a new pull-request.
+This strategy is easier to understand, but has the downside that the discussion in the old pull-request is not automatically transferred to the new pull-request.</p>
+<p>The most efficient approach is to do either clean-up together with someone experienced in Git.
+Such a [pairing session](<a class="reference external" href="https://en.wikipedia.org/wiki/Pair_programming">https://en.wikipedia.org/wiki/Pair_programming</a>) can show you how to “think Git”.
+However, be confident: as long as you have not force-pushed the branch to GitHub, all changes you did are local and can be undone easily.</p>
+</section>
+</section>
 </section>
 
 
@@ -798,6 +860,11 @@ in the following format:</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-and-tricks">Tips and Tricks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deal-with-long-living-feature-branches">Deal with Long-Living Feature Branches</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correcting-mistakes">Correcting Mistakes</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
@@ -805,7 +872,7 @@ in the following format:</p>
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/contribute/general/git.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/contribute/general/git.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
