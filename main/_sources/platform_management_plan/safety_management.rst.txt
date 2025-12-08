@@ -185,7 +185,7 @@ The project will be under the Eclipse Foundation and so the `Eclipse Foundation 
 *Project Roles*
 
 Roles are defined in every process and in a generic roles section. All those are matched to Eclipse roles.
-Project role assignment is done in every feature development Safety Plan.
+Project role assignment is documented in dedicated documents.
 
 *Critical dependencies*
 
@@ -199,22 +199,22 @@ Organization and management system has not a mature level yet.
 
 *Skills*
 
-The main safety related project roles are the project manager and the safety manager and these also have to have the (Eclipse) committer role.
+The main safety related project roles are the project manager, the safety manager and the safety engineer, these also have to have the (Eclipse) committer role.
 As defined in `Committer Training <https://www.eclipse.org/projects/training/>`_ the committers are elected in a meritocratic manner, meaning those have to show their skills and understanding of the project processes in several previous pull requests.
 
-As each project can adopt additional criteria for the committers election, we define the following:
+For the :need:`rl__project_lead`, the :need:`rl__safety_manager` and the :need:`rl__safety_engineer` the required skills and experience are described
+in these project role definitions. They are also elected in a meritocratic way and this election is documented including the evidences checked to prove the experience.
 
-each committer has to prove his knowledge in functional safety SW development by
+Committers in the S-CORE project can work on the development of safety related or non-safety related SW modules.
+If they work on safety related modules they have to prove (additionaly to their committer election, which already shows they are skilled developers):
 
-* an absolved training in ISO 26262 (or equivalent standard, at least 16h of SW development specific training by a trusted training provider) OR
-* by attending the projects's ISO 26262 SW development training (given by a safety team member)
+* two years practice of safety related SW development (or management) relevant for the section content (includes trainings in safety standards like ISO 26262)
+* training on the S-CORE processes
 
-Additionally the project repository is organized in "CODEOWNER" sections. These "CODEOWNERS" need to approve any pull request modifying a file in their area before it is merged.
+To ensure this, the platform and module repositories folders (and files) are protected by "CODEOWNER" sections.
+These "CODEOWNERS" need to approve any pull request modifying a file in their area before it is merged.
 
-In case of safety related "CODEOWNER" sections (e.g. a file containing feature requirements with an ASIL level) the persons having "CODEOWNER" rights need to have:
-* One year of professional practice of safety related SW development (or management) relevant for the section content
-
-The successful checking of committers and CODEOWNERS skills is ensured by the safety manager and documented in the role assignment document.
+The successful checking of CODEOWNERS experience is ensured by the safety manager and documented in the role assignment document.
 One important aspect to this is, that we ensure the identity of the committer by applying the GitHub digital signature mechanism.
 
 Functional Safety Resources
