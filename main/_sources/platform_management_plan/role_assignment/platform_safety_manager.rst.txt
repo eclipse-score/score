@@ -31,6 +31,8 @@ For the platform safety management a pool of safety managers is elected due to c
 
 `Markus Schu <https://github.com/masc2023>`_
 
+`Volker Häussler <https://github.com/PandaeDo>`_
+
 Election Reasoning
 ==================
 
@@ -55,6 +57,9 @@ Education and Skills:
 - Process development CMMI - letters of recommendation from employers
 - Safety trainings by Exida (Iso 26262) - part of Safety Case Safe Posix SW platform
 
+S-CORE Committs:
+
+- major committer in `process_description repository <https://github.com/eclipse-score/process_description>`_
 
 Evidences Markus Schu
 ---------------------
@@ -80,10 +85,35 @@ S-CORE Commits:
 - major committer in `process_description repository <https://github.com/eclipse-score/process_description>`_
 - major committer in `score repository <https://github.com/eclipse-score/score>`_
 
+Evidences Volker Häussler
+-------------------------
+
+`LinkedIn Profile <https://www.linkedin.com/in/volker-h%C3%A4ussler-58a840111/details/experience/>`_
+
+Safety Management Experience:
+
+- Project Safety Manager for ESP development at Tier1 from 2010 to 2011
+- Project Lead Functional Safety at OEM from 2013 to 2015
+- Teamlead / Safety Manager at Engineering Service Provider from 2015 to 2018
+- Department Head / Competence Manager Functional Safety & Cyber Security at Engineering Service Provider from 2018 to 2025
+- Compliance Manager / Safety Manager at Tier1 from 2025 to now
+
+Safety Engineer Experience:
+
+- Safety Engineer for ESP development at Tier1 from 2007 to 2010
+- Lead Safety Engineer at OEM from 2012 to 2013
+
+Education and Skills:
+
+- Dipl.-Ing. (FH) Electrical Engineering - certificate
+- Safety related development at system, software and hardware level > 10 years - letters of recommendation from employers
+- Safety trainings by TÜV SÜD (ISO 26262 and IEC 61508)
+
+
 Election
 ========
 
-For the election the following Committers already elected as safety managers are asked for approval:
+For the election the following Committers already elected as safety managers are asked:
 
 Elected safety manager:
 
@@ -91,7 +121,7 @@ Elected safety manager:
 
 For the election further Committers with similar skills are asked for approval:
 
-- `<https://github.com/PandaeDo>`_
+- `<https://github.com/aschemmel-tech>`_
 - `<https://github.com/pahmann>`_
 - `<https://github.com/PhilipPartsch>`_
 - `<https://github.com/masc2023>`_
