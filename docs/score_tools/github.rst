@@ -16,7 +16,7 @@
    :id: doc_tool__github
    :status: draft
    :version: cloud
-   :tcl: LOW
+   :tcl: HIGH
    :safety_affected: YES
    :security_affected: YES
    :realizes: wp__tool_verification_report
@@ -29,7 +29,9 @@ Introduction
 ------------
 Scope and purpose
 ~~~~~~~~~~~~~~~~~
-GitHub.com is a cloud-based platform for source code management, project management, and automation. It is used for hosting git repositories, managing issues and projects, code review, release planning, and running CI/CD workflows via GitHub Actions.
+GitHub.com is a cloud-based platform for source code management, project management, and automation.
+It is used for hosting git repositories, managing issues and projects, code review,
+release planning, and running CI/CD workflows via GitHub Actions.
 
 Inputs and outputs
 ~~~~~~~~~~~~~~~~~~
@@ -45,19 +47,14 @@ Outputs:
  | - CI/CD run results
  | - Release artifacts
 
-.. figure:: _assets/github.drawio.svg
-  :width: 100%
-  :align: center
-  :alt: GitHub overview
-
-  GitHub overview
 
 Available information
 ~~~~~~~~~~~~~~~~~~~~~
 - Platform: GitHub.com (cloud)
 - Official documentation: https://docs.github.com/
 - API reference: https://docs.github.com/en/rest
-- Example S-CORE integration: Bazel rules for CI/CD and code hosting
+- S-CORE GitHub organization: https://github.com/eclipse-score
+
 
 Usage constraints:
 - Requires internet access and GitHub account
@@ -100,132 +97,110 @@ This section outlines the safety evaluation of GitHub for its use within the S-C
      - Further additional safety measure required?
      - Confidence (automatic calculation)
    * - 1
-     - Repository access
-     - | GitHub is unavailable (outage)
-       |
-       | Source code, issues, or workflows cannot be accessed or updated.
-     - yes
-     - (implicit) Build/test fails due to missing code
+     - Issue/Project management
+     - | Issues, projects, or milestones are not updated or synced.
+       | Project status is out of date, leading to miscommunication.
+     - no
+     - | Manual status checks during regular meetings.
+       | All teams have regular sync points to verify project status. Sync happens on ticket basis.
+       | So when ticket is lost, it will be detected during these regular meetings.
      - yes
      - no
      - high
    * - 2
-     - Repository access
-     - | Data corruption or loss
-       |
-       | Commits, issues, or workflow data is lost or corrupted.
+     - Issue/Project management
+     - | Issue or project data is lost or corrupted.
+       | Loss of planning or tracking data, may impact traceability.
      - yes
-     - Backups, code review, branch protection
+     - | Manual status checks during regular meetings.
+       | All teams have regular sync points to verify project status. Sync happens on ticket basis.
+       | So when ticket is lost, it will be detected during these regular meetings.
      - yes
      - no
      - high
    * - 3
      - Repository access
-     - | Wrong repository/branch/tag checked out
-       |
-       | Build/test runs on incorrect code version due to misconfiguration or user error.
-     - yes
-     - Manual review, branch protection, CI checks
+     - | GitHub is unavailable.
+       | Source code, issues, or workflows cannot be accessed or updated.
+     - no
+     - no
      - yes
      - no
      - high
    * - 4
-     - Dependency management
-     - | Submodules or dependencies not fetched
-       |
-       | Build/test fails due to missing submodules or external dependencies.
+     - Repository access
+     - | Data corruption or loss.
+       | Commits, issues, or workflow data is lost or corrupted.
      - yes
-     - (implicit) Build/test fails
+     - | PR reviews.
+       | Code reviews and approvals help catch data issues before merging.
      - yes
      - no
      - high
    * - 5
-     - Dependency management
-     - | Wrong dependency version fetched
-       |
-       | Build/test runs with incorrect dependency version, causing incompatibility or test failures.
+     - Repository access
+     - | Wrong repository/branch/tag checked out.
+       | Build/test runs on incorrect code version due to misconfiguration or user error.
      - yes
-     - Pin versions, lock files, CI checks
+     - | PR reviews.
+       | Code reviews and approvals help catch data issues before merging.
      - yes
      - no
      - high
    * - 6
-     - Workflow execution (CI/CD)
-     - | Actions workflow fails to run (misconfiguration, runner unavailable)
-       |
+     - Workflows (CI/CD)
+     - | Actions workflow fails to run (misconfiguration, runner unavailable).
        | CI/CD jobs do not execute as expected, blocking releases or tests.
-     - yes
-     - (implicit) Build/test fails, manual rerun
+     - no
+     - no
      - yes
      - no
      - high
    * - 7
-     - Workflow execution (CI/CD)
-     - | Wrong workflow triggered (wrong event, branch, or path)
-       |
+     - Workflows (CI/CD)
+     - | Wrong workflow triggered (wrong event, branch, or path).
        | CI/CD jobs run on unintended code or skip required checks.
      - yes
-     - Manual review, branch protection, required checks
+     - | PR reviews
+       | Code reviews and approvals help catch data issues before merging.
      - yes
      - no
      - high
    * - 8
-     - Workflow execution (CI/CD)
-     - | Workflow passes with undetected errors (false positive)
-       |
+     - Workflows (CI/CD)
+     - | Workflow passes with undetected errors (false positive).
        | CI/CD reports success but actual build/test failed or was skipped.
      - yes
-     - Test coverage, manual review, required status checks
-     - no
-     - yes (qualification)
-     - low
-   * - 9
-     - Workflow execution (CI/CD)
-     - | Workflow fails due to external service outage (e.g., Actions runner, artifact storage)
-       |
-       | Build/test is blocked or incomplete due to third-party service unavailability.
+     - | Log analysis.
+       | Ensure that underlying build/test tools correctly return error code and have proper logging.
      - yes
-     - (implicit) Build/test fails, retry
+     - no
+     - high
+   * - 9
+     - Workflows (CI/CD)
+     - | Workflow fails due to external service outage (e.g., Actions runner, artifact storage).
+       | Build/test is blocked or incomplete due to third-party service unavailability.
+     - no
+     - no
      - yes
      - no
      - high
    * - 10
      - Artifact storage
-     - | Release artifacts not published or corrupted
-       |
+     - | Release artifacts not published or corrupted.
        | Release process is blocked or produces incomplete/corrupted results.
-     - yes
-     - Manual verification, checksums
+     - no
+     - no
      - yes
      - no
      - high
    * - 11
      - Artifact storage
-     - | Artifacts published to wrong location or with wrong version/tag
-       |
+     - | Artifacts published to wrong location or with wrong version/tag.
        | Downstream consumers use incorrect or outdated artifacts.
      - yes
-     - Manual review, release automation, version checks
-     - yes
-     - no
-     - high
-   * - 12
-     - Issue/project management
-     - | Issues, projects, or milestones are not updated or synced
-       |
-       | Project status is out of date, leading to miscommunication.
-     - no
-     - Manual review
-     - yes
-     - no
-     - high
-   * - 13
-     - Issue/project management
-     - | Issue or project data is lost or corrupted
-       |
-       | Loss of planning or tracking data, may impact traceability.
-     - yes
-     - Backups, audit logs
+     - | Manual review of release process and artifacts.
+       | Release process includes manual checks to verify artifact correctness.
      - yes
      - no
      - high
@@ -252,17 +227,10 @@ This section outlines the security evaluation of GitHub for its use within the S
 
 Result
 ------
-GitHub requires qualification for use in safety-related software development according to ISO 26262.
+GitHub does not require qualification for use in safety-related software development according to ISO 26262.
+Suggested safety and security measures should be applied to mitigate identified risks.
 
-**Tool Qualification**
-----------------------
-Based on method: validation of the software tool.
 
-Requirements and testing aspects
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Tool requirements are derived from official documentation: https://docs.github.com/
-
-GitHub is a cloud service and does not provide formal, vendor-defined requirements. The project team is responsible for identifying the specific GitHub features used. Based on this, requirements for the utilized features must be derived from the available documentation and GitHub validated against defined requirements.
 
 .. [1] The tool version mentioned in this document is preliminary.
        It is subject to change and will be updated in future.
