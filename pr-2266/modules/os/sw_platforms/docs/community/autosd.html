@@ -644,17 +644,43 @@ outputs/disk.qcow2
 </pre></div>
 </div>
 </section>
-<section id="module-lifecycle-management">
-<h4>Module: Lifecycle Management<a class="headerlink" href="#module-lifecycle-management" title="Link to this heading">#</a></h4>
-<p>TODO: add Systemd &amp; LM</p>
+<section id="mixed-critical-orchestration">
+<h4>Mixed Critical Orchestration<a class="headerlink" href="#mixed-critical-orchestration" title="Link to this heading">#</a></h4>
+<p>Upstream documentation: <a class="reference external" href="https://sigs.centos.org/automotive/features-and-concepts/con_mixed-criticality/">https://sigs.centos.org/automotive/features-and-concepts/con_mixed-criticality/</a></p>
+<p>Mixed Critical Orchestration, aka MCO, can be achieved with the following components:</p>
+<ul class="simple">
+<li><p>Systemd: the init system that is responsible for workload orchestration</p></li>
+<li><p>Eclise BlueChi: extends Systemd to enable multi-node and multi domain orchestration</p></li>
+<li><p>QM: Quality management environment that is composed of two sub-systems: a dedicated rootfs partition + container isolation</p></li>
+</ul>
+<p>ASIL and QM connectivity is done either via an IPC socket or shared memory (/dev/shm).</p>
+<img alt="../../../../../_images/autosd-mco.png" class="align-center" src="../../../../../_images/autosd-mco.png" />
 </section>
-<section id="module-orchestration">
-<h4>Module: Orchestration<a class="headerlink" href="#module-orchestration" title="Link to this heading">#</a></h4>
-<p>TODO: Add QM, Bluechi, Systemd and /dev/shm</p>
-</section>
-<section id="module-communication">
-<h4>Module: Communication<a class="headerlink" href="#module-communication" title="Link to this heading">#</a></h4>
-<p>TODO: add RPMs, Containers, Bazel toolchain</p>
+<section id="toolchain">
+<h4>Toolchain<a class="headerlink" href="#toolchain" title="Link to this heading">#</a></h4>
+<p>Upstream documentation: <a class="github reference external" href="https://github.com/eclipse-score/inc_os_autosd/tree/main/toolchain">eclipse-score/inc_os_autosd</a></p>
+<p>A Bazel toolchain defintion is provided for users to build their Bazel modules and components with AutoSD’s tooling (compilers, libraries, etc).</p>
+<p>Sample usage (MODULE.bazel file):</p>
+<div class="highlight-starlark notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use local path during development, or git_override for published versions</span>
+<span class="n">local_path_override</span><span class="p">(</span>
+    <span class="n">module_name</span> <span class="o">=</span> <span class="s2">&quot;os_autosd&quot;</span><span class="p">,</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/path/to/inc_os_autosd/&quot;</span>
+<span class="p">)</span>
+
+<span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;os_autosd&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;1.0.0&quot;</span><span class="p">)</span>
+
+<span class="c1"># Configure AutoSD 9 GCC toolchain</span>
+<span class="n">autosd_10_gcc</span> <span class="o">=</span> <span class="n">use_extension</span><span class="p">(</span><span class="s2">&quot;@os_autosd//toolchain/autosd_10_gcc:extensions.bzl&quot;</span><span class="p">,</span> <span class="s2">&quot;autosd_10_gcc_extension&quot;</span><span class="p">)</span>
+<span class="n">autosd_10_gcc</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span>
+    <span class="n">c_flags</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;-Wall&quot;</span><span class="p">,</span> <span class="s2">&quot;-Wno-error=deprecated-declarations&quot;</span><span class="p">,</span> <span class="s2">&quot;-Werror&quot;</span><span class="p">,</span> <span class="s2">&quot;-fPIC&quot;</span><span class="p">],</span>
+    <span class="n">cxx_flags</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;-Wall&quot;</span><span class="p">,</span> <span class="s2">&quot;-Wno-error=deprecated-declarations&quot;</span><span class="p">,</span> <span class="s2">&quot;-Werror&quot;</span><span class="p">,</span> <span class="s2">&quot;-fPIC&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="n">use_repo</span><span class="p">(</span><span class="n">autosd_10_gcc</span><span class="p">,</span> <span class="s2">&quot;autosd_10_gcc_repo&quot;</span><span class="p">)</span>
+<span class="n">register_toolchains</span><span class="p">(</span><span class="s2">&quot;@autosd_10_gcc_repo//:gcc_toolchain_linux_x86_64&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>NOTE:</strong> AutoSD’s tooling does not support cross compilation.</p>
 </section>
 </section>
 <section id="bug-interface">
@@ -734,9 +760,8 @@ outputs/disk.qcow2
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-assistance">Integration Assistance</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-manual">Integration Manual</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#building-an-image">Building an Image</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#module-lifecycle-management">Module: Lifecycle Management</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#module-orchestration">Module: Orchestration</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#module-communication">Module: Communication</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-critical-orchestration">Mixed Critical Orchestration</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#toolchain">Toolchain</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bug-interface">Bug Interface</a></li>

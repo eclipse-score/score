@@ -88,20 +88,52 @@ If using QEMU, you can run the image using the following command:
    -display none \
    -drive file=disk.qcow2,index=0,media=disk,format=qcow2,if=virtio,id=rootdisk,snapshot=off
 
-Module: Lifecycle Management
+Mixed Critical Orchestration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-TODO: add Systemd & LM
+Upstream documentation: https://sigs.centos.org/automotive/features-and-concepts/con_mixed-criticality/
 
-Module: Orchestration
-^^^^^^^^^^^^^^^^^^^^^
+Mixed Critical Orchestration, aka MCO, can be achieved with the following components:
 
-TODO: Add QM, Bluechi, Systemd and /dev/shm
+* Systemd: the init system that is responsible for workload orchestration
+* Eclise BlueChi: extends Systemd to enable multi-node and multi domain orchestration
+* QM: Quality management environment that is composed of two sub-systems: a dedicated rootfs partition + container isolation
 
-Module: Communication
-^^^^^^^^^^^^^^^^^^^^^
+ASIL and QM connectivity is done either via an IPC socket or shared memory (/dev/shm).
 
-TODO: add RPMs, Containers, Bazel toolchain
+.. image:: _assets/autosd-mco.png
+   :align: center
+
+Toolchain
+^^^^^^^^^
+
+Upstream documentation: https://github.com/eclipse-score/inc_os_autosd/tree/main/toolchain
+
+A Bazel toolchain defintion is provided for users to build their Bazel modules and components with AutoSD's tooling (compilers, libraries, etc).
+
+Sample usage (MODULE.bazel file):
+
+.. code:: starlark
+
+   # Use local path during development, or git_override for published versions
+   local_path_override(
+       module_name = "os_autosd",
+       path = "/path/to/inc_os_autosd/"
+   )
+   
+   bazel_dep(name = "os_autosd", version = "1.0.0")
+   
+   # Configure AutoSD 9 GCC toolchain
+   autosd_10_gcc = use_extension("@os_autosd//toolchain/autosd_10_gcc:extensions.bzl", "autosd_10_gcc_extension")
+   autosd_10_gcc.configure(
+       c_flags = ["-Wall", "-Wno-error=deprecated-declarations", "-Werror", "-fPIC"],
+       cxx_flags = ["-Wall", "-Wno-error=deprecated-declarations", "-Werror", "-fPIC"],
+   )
+   
+   use_repo(autosd_10_gcc, "autosd_10_gcc_repo")
+   register_toolchains("@autosd_10_gcc_repo//:gcc_toolchain_linux_x86_64")
+
+**NOTE:** AutoSD's tooling does not support cross compilation.
 
 Bug Interface
 ~~~~~~~~~~~~~
