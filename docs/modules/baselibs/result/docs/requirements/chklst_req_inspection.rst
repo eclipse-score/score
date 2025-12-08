@@ -129,9 +129,9 @@ Requirement Inspection Checklist
       * - REQ_08_01
         - Is the requirement *verifiable*?
         - If at the time of the inspection already tests are created for the requirement, the answer is yes. This can be checked via traces, but also :need:`gd_req__req_attr_test_covered` shows this. In case the requirement is not sufficiently traced to test cases already, a test expert is invited to the inspection to give his opinion whether the requirement is formulated in a way that supports test development and the available test infrastructure is sufficient to perform the test.
-        - TBD
-        -
-        -
+        - YES
+        - all requirements have test cases implemented
+        - none
       * - REQ_09_01
         - For stakeholder requirements: Do those cover assumed safety mechanisms needed by the hardware and system?
         - Note that stakeholder requirements covering safety mechanisms come from rationales, whereas feature/component requirements are covering safety mechanisms coming from :need:`gd_chklst__safety_analysis`
