@@ -29,6 +29,8 @@ For the platform safety management a pool of safety engineers is elected due to 
 
 `Volker Häussler <https://github.com/PandaeDo>`_
 
+`Markus Schu <https://github.com/masc2023>`_
+
 Election Reasoning
 ==================
 
@@ -62,6 +64,12 @@ Education and Skills:
 - Safety trainings by TÜV SÜD (ISO 26262 and IEC 61508)
 
 
+Evidences Markus Schu
+---------------------
+
+See :need:`doc__platform_safety_manager` for evidences of Markus Schu.
+
+
 Election
 ========
 
@@ -71,9 +79,11 @@ Elected safety manager:
 
 - `<https://github.com/aschemmel-tech>`_
 
-For the election further Committers with similar skills are asked for approval:
+For the election the following Committers already elected as safety engineers are asked:
 
-- `<https://github.com/masc2023>`_
+Elected safety engineer:
+
+- `<https://github.com/PandaeDo>`_
 
 The election is performed by approving the pull request of this document.
 The nominee is elected if more than half of the above committers in the list approved and nobody "request changes".
