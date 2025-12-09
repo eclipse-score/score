@@ -44,7 +44,7 @@ Functional Safety Management Roles
           - Assignee
 
         * - Safety Manager
-          - tbd
+          - Volker Häussler
 
         * - Module Project Manager (= Feature team lead)
           - Lars Bauhofer

@@ -46,7 +46,7 @@ Functional Safety Management Roles
           - Assignee
 
         * - Safety Manager
-          - tbd
+          - Alexander Schemmel
 
         * - Module Project Manager (= Feature team lead)
           - Andrey Babanin
