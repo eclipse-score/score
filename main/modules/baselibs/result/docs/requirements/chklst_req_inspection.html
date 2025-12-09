@@ -590,7 +590,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-a23ef6ee">
+  <div class="need_container docutils container" id="SNCB-d470be47">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__result_library_req_inspection">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -644,11 +644,11 @@ The purpose of this requirement inspection checklist is to collect the topics to
 <li><p>author: these are the persons who did the last commits on the requirements in scope (can be derived from version mgt tool)</p></li>
 <li><p>reviewer: these are all persons committing into this inspection document or giving a pull request verdict on it (can be derived from version mgt tool)</p></li>
 <li><p>moderator: only needed for conflict resolution between author and reviewers, is the safety manager, security manager or quality manager called in as a reviewer (can be derived from version mgt tool)</p></li>
-<li><p>test expert: &lt;one of the reviewers explicitly named here, to cover REQ_08_01 as described&gt;</p></li>
+<li><p>test expert: <a class="github reference external" href="https://github.com/rahulthakre29">rahulthakre29</a></p></li>
 </ul>
 <p><strong>Checklist</strong></p>
-<div class="pst-scrollable-table-container"><table class="table" id="id6">
-<caption><span class="caption-number">Table 26 </span><span class="caption-text">Component Requirement Inspection Checklist</span><a class="headerlink" href="#id6" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id5">
+<caption><span class="caption-number">Table 26 </span><span class="caption-text">Component Requirement Inspection Checklist</span><a class="headerlink" href="#id5" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 9.1%" />
 <col style="width: 27.3%" />
@@ -677,23 +677,23 @@ The purpose of this requirement inspection checklist is to collect the topics to
 <tr class="row-odd"><td><p>REQ_02_01</p></td>
 <td><p>Is the requirement description <em>comprehensible</em> ?</p></td>
 <td><p>If you think the requirement is hard to understand, comment here.</p></td>
-<td><p>NO</p></td>
-<td><p><a class="reference internal" href="index.html#comp_req__result__std_integration" title="comp_req__result__std_integration"><em class="xref need">Standard Library Integration (comp_req__result__std_integration)</em></a> : it is not clear what “standard library optional type, with enforced error handling” means.</p></td>
+<td><p>YES</p></td>
+<td><p>Fixed: <a class="reference internal" href="index.html#comp_req__result__std_integration" title="comp_req__result__std_integration"><em class="xref need">Standard Library Integration (comp_req__result__std_integration)</em></a> : it is not clear what “standard library optional type, with enforced error handling” means.</p></td>
 <td><p><a class="reference external" href="https://github.com/eclipse-score/score/issues/2229">#2229</a></p></td>
 </tr>
 <tr class="row-even"><td><p>REQ_02_02</p></td>
 <td><p>Is the requirement description <em>unambiguous</em> ?</p></td>
 <td><p>Especially search for “weak words” like “about”, “etc.”, “relevant” and others (see the internet documentation on this). This check shall be supported by tooling.</p></td>
-<td><p>NO</p></td>
-<td><p><a class="reference internal" href="index.html#aou_req__result__thread_safety" title="aou_req__result__thread_safety"><em class="xref need">Thread Safety (aou_req__result__thread_safety)</em></a> : uses “appropriate”</p></td>
+<td><p>YES</p></td>
+<td><p>Fixed: <a class="reference internal" href="index.html#aou_req__result__thread_safety" title="aou_req__result__thread_safety"><em class="xref need">Thread Safety (aou_req__result__thread_safety)</em></a> : uses “appropriate”</p></td>
 <td><p><a class="reference external" href="https://github.com/eclipse-score/score/issues/2229">#2229</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>REQ_02_03</p></td>
 <td><p>Is the requirement description <em>atomic</em> ?</p></td>
 <td><p>A good way to think about this is to consider if the requirement may be tested by one (positive) test case or needs more of these. The sentence template should also avoid being non-atomic already. Note that there are cases where also non-atomic requirements are the better ones, for example if those are better understandable.</p></td>
-<td><p>NO</p></td>
-<td><p><a class="reference internal" href="index.html#comp_req__result__error_handling" title="comp_req__result__error_handling"><em class="xref need">Result-Based Error Handling (comp_req__result__error_handling)</em></a> : “without using C++ exceptions” sound like a scond part of the requirement</p></td>
-<td><p><a class="reference external" href="https://github.com/eclipse-score/score/issues/2229">#2229</a></p></td>
+<td><p>YES</p></td>
+<td><p>(old) finding explained</p></td>
+<td><p>none</p></td>
 </tr>
 <tr class="row-even"><td><p>REQ_02_04</p></td>
 <td><p>Is the requirement description <em>feasible</em> ?</p></td>
@@ -740,8 +740,8 @@ The purpose of this requirement inspection checklist is to collect the topics to
 <tr class="row-even"><td><p>REQ_06_01</p></td>
 <td><p>Does the requirement set consider <em>external interfaces</em>?</p></td>
 <td><p>The SW platform’s external interfaces (to the user) are defined in the Feature Architecture, so the Feature and Component Requirements should determine the input data use and setting of output data for these interfaces. Are all output values defined?</p></td>
-<td><p>NO</p></td>
-<td><p>This could be improved by using the interfaces defined in <a class="reference internal" href="../architecture/index.html#comp_arc_sta__baselibs__result" title="comp_arc_sta__baselibs__result"><em class="xref need">Result (comp_arc_sta__baselibs__result)</em></a></p></td>
+<td><p>YES</p></td>
+<td><p>Fixed: This could be improved by using the interfaces defined in <a class="reference internal" href="../architecture/index.html#comp_arc_sta__baselibs__result" title="comp_arc_sta__baselibs__result"><em class="xref need">Result (comp_arc_sta__baselibs__result)</em></a></p></td>
 <td><p><a class="reference external" href="https://github.com/eclipse-score/score/issues/2229">#2229</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>REQ_07_01</p></td>
@@ -775,8 +775,8 @@ The purpose of this requirement inspection checklist is to collect the topics to
 <tr class="row-odd"><td><p>REQ_09_02</p></td>
 <td><p>For feature/component requirements: Do the requirements defining a safety mechanism contain the error reaction leading to a safe state?</p></td>
 <td><p>Alternatively to the safe state there could also be “repair” mechanisms. Also do not forget to consider REQ_05_01 for these.</p></td>
-<td><p>NO</p></td>
-<td><p>There should be an AoU covering this, <a class="reference internal" href="index.html#aou_req__result__value_handling" title="aou_req__result__value_handling"><em class="xref need">Result Value Handling (aou_req__result__value_handling)</em></a> is not.</p></td>
+<td><p>YES</p></td>
+<td><p>Fixed: There should be an AoU covering this, <a class="reference internal" href="index.html#aou_req__result__value_handling" title="aou_req__result__value_handling"><em class="xref need">Result Value Handling (aou_req__result__value_handling)</em></a> is not.</p></td>
 <td><p><a class="reference external" href="https://github.com/eclipse-score/score/issues/2229">#2229</a></p></td>
 </tr>
 </tbody>
