@@ -14,8 +14,15 @@
 
 .. _safety_planning_ipc:
 
-Safety Planning
-###############
+Feature Safety Planning
+#######################
+
+.. document:: Communication IPC Safety WPs
+   :id: doc__com_ipc_safety_wp
+   :status: draft
+   :safety: ASIL_B
+   :security: YES
+   :realizes: wp__platform_safety_plan
 
 Tailoring
 =========
