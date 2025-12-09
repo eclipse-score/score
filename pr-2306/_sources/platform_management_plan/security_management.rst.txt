@@ -254,13 +254,13 @@ The platform management plan defines :doc:`quality_management`
 Platform Security Plan
 ++++++++++++++++++++++
 
-Security Management SW Platform Work Products
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Functional Safety/Security Management SW Platform Work Products
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For the generic ones see :ref:`sw_platform_wp_list`
+see :ref:`sw_platform_wp_list`
 
-Functional Safety Specific SW Platform Work Products
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Security Specific SW Platform Work Products
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table:: SW Platform security work products
     :header-rows: 1
