@@ -22,7 +22,7 @@ Configuration Model
 .. document:: Configuration Model
    :id: doc__configuration_model
    :status: draft
-   :safety: ASIL_B
+   :safety: NO
    :security: NO
    :realizes: wp__feat_request
    :tags: template
@@ -51,7 +51,7 @@ Abstract
 
 [A short (~200 word) description of the contribution being addressed.]
 
-The configuration model describes the
+The configuration model describes the configuration options of an application or component (both user as well as S-CORE platform application).
 
 Motivation
 ==========
@@ -82,6 +82,7 @@ Rationale
       The rationale should provide evidence of consensus within the community and discuss important objections or concerns raised during discussion.
       For the documentation of the decision the :need:`gd_temp__change_decision_record` can be used.
 
+The common 
 
 Specification
 =============
