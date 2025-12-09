@@ -34,7 +34,7 @@ Requirement Inspection Checklist
    - author: these are the persons who did the last commits on the requirements in scope (can be derived from version mgt tool)
    - reviewer: these are all persons committing into this inspection document or giving a pull request verdict on it (can be derived from version mgt tool)
    - moderator: only needed for conflict resolution between author and reviewers, is the safety manager, security manager or quality manager called in as a reviewer (can be derived from version mgt tool)
-   - test expert: <one of the reviewers explicitly named here, to cover REQ_08_01 as described>
+   - test expert: `<https://github.com/rahulthakre29>`_
 
    **Checklist**
 
@@ -57,21 +57,21 @@ Requirement Inspection Checklist
       * - REQ_02_01
         - Is the requirement description *comprehensible* ?
         - If you think the requirement is hard to understand, comment here.
-        - NO
-        - :need:`comp_req__result__std_integration` : it is not clear what "standard library optional type, with enforced error handling" means.
+        - YES
+        - Fixed: :need:`comp_req__result__std_integration` : it is not clear what "standard library optional type, with enforced error handling" means.
         - `#2229 <https://github.com/eclipse-score/score/issues/2229>`_
       * - REQ_02_02
         - Is the requirement description *unambiguous* ?
         - Especially search for "weak words" like "about", "etc.", "relevant" and others (see the internet documentation on this). This check shall be supported by tooling.
-        - NO
-        - :need:`aou_req__result__thread_safety` : uses "appropriate"
+        - YES
+        - Fixed: :need:`aou_req__result__thread_safety` : uses "appropriate"
         - `#2229 <https://github.com/eclipse-score/score/issues/2229>`_
       * - REQ_02_03
         - Is the requirement description *atomic* ?
         - A good way to think about this is to consider if the requirement may be tested by one (positive) test case or needs more of these. The sentence template should also avoid being non-atomic already. Note that there are cases where also non-atomic requirements are the better ones, for example if those are better understandable.
-        - NO
-        - :need:`comp_req__result__error_handling` : "without using C++ exceptions" sound like a scond part of the requirement
-        - `#2229 <https://github.com/eclipse-score/score/issues/2229>`_
+        - YES
+        - (old) finding explained
+        - none
       * - REQ_02_04
         - Is the requirement description *feasible* ?
         - If at the time of the inspection the requirement has already some implementation, the answer is yes. This can be checked via traces, but also :need:`gd_req__req_attr_impl` shows this. In case the requirement has no implementationat the time of inspection (i.e. not implemented at least as "proof-of-concept"), a development expert shall be invited to the inspection to explicitly check this item.
@@ -111,8 +111,8 @@ Requirement Inspection Checklist
       * - REQ_06_01
         - Does the requirement set consider *external interfaces*?
         - The SW platform's external interfaces (to the user) are defined in the Feature Architecture, so the Feature and Component Requirements should determine the input data use and setting of output data for these interfaces. Are all output values defined?
-        - NO
-        - This could be improved by using the interfaces defined in :need:`comp_arc_sta__baselibs__result`
+        - YES
+        - Fixed: This could be improved by using the interfaces defined in :need:`comp_arc_sta__baselibs__result`
         - `#2229 <https://github.com/eclipse-score/score/issues/2229>`_
       * - REQ_07_01
         - Is the *safety* attribute set correctly?
@@ -141,8 +141,8 @@ Requirement Inspection Checklist
       * - REQ_09_02
         - For feature/component requirements: Do the requirements defining a safety mechanism contain the error reaction leading to a safe state?
         - Alternatively to the safe state there could also be "repair" mechanisms. Also do not forget to consider REQ_05_01 for these.
-        - NO
-        - There should be an AoU covering this, :need:`aou_req__result__value_handling` is not.
+        - YES
+        - Fixed: There should be an AoU covering this, :need:`aou_req__result__value_handling` is not.
         - `#2229 <https://github.com/eclipse-score/score/issues/2229>`_
 
 Note: If a Review ID is not applicable for your requirement, then state "n/a" in status and comment accordingly in remarks. For example "no stakeholder requirement (no rationale needed)"
