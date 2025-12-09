@@ -131,3 +131,6 @@ Requirements
    :status: valid
 
    The base libraries shall provide a filesystem library with file and directory manipulation functionality.
+
+.. needextend:: "__baselibs" in id
+   :+tags: baselibs
