@@ -17,6 +17,9 @@
 Community
 #########
 
+These are the community-supported Software Platforms for Eclipse S-CORE.
+See see :ref:`platform_assumptions` for the exact requirements for each Tier.
+
 .. toctree::
    :maxdepth: 3
    :titlesonly:
