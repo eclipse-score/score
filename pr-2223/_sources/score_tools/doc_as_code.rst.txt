@@ -15,7 +15,7 @@
 .. doc_tool:: Doc-as-Code
    :id: doc_tool__doc_as_code
    :status: evaluated
-   :version: v1.3.0
+   :version: v2.2.0
    :tcl: LOW
    :safety_affected: YES
    :security_affected: YES
@@ -58,7 +58,7 @@ This includes getting started or usage information and integration manual.
 
 The capabilities of the tool can be found here:
 
-`Doc-as-Code Project Capabilities <https://eclipse-score.github.io/docs-as-code/main/product/capabilities.html#capabilities>`_
+`Doc-as-Code Project Capabilities <https://eclipse-score.github.io/docs-as-code/main/internals/requirements/capabilities.html>`_
 
 
 Installation and integration
@@ -66,14 +66,15 @@ Installation and integration
 
 Tool location:
 
-`Release v0.4.4 <https://github.com/eclipse-score/docs-as-code/tree/v0.4.4>`_
+`Release v2.2.0 <https://github.com/eclipse-score/docs-as-code/tree/v2.2.0>`_
 
 How to integrate:
 
-`Doc-as-Code Integration <https://eclipse-score.github.io/docs-as-code/main/how-to-integrate/index.html>`_
+`Doc-as-Code Setup <https://eclipse-score.github.io/docs-as-code/main/how-to/setup.html>`_
 
-Environment: github, python, Version 3.y.z, sphinx, Version x.y.z, sphinx-needs, Version x.y.z
-Supported platforms: Windows, Linux
+Environment: Bazel
+
+Supported platforms: Linux
 
 
 Evaluation
@@ -158,14 +159,14 @@ Requirements and testing aspects
 --------------------------------
 Tool requirements are defined here:
 
-`Doc-as-Code Requirements <https://eclipse-score.github.io/docs-as-code/main/product/requirements.html#requirements>`_
+`Doc-as-Code Requirements <https://eclipse-score.github.io/docs-as-code/main/internals/requirements/requirements.html>`_
 
 Test cases and tests are defined here:
 
-`Doc-as-Code Test cases and tests <https://github.com/eclipse-score/docs-as-code/tree/v0.4.2/src/extensions>`_
+`Doc-as-Code Test cases and tests <https://github.com/eclipse-score/docs-as-code/tree/v2.2.0/src/extensions>`_
 
 The tests are part of the rules checker code sections.
 
 Requirements coverage is documented here:
 
-`Doc-as-Code Requirements <https://eclipse-score.github.io/docs-as-code/main/product/requirements.html#requirements>`_
+`Doc-as-Code Requirements <https://eclipse-score.github.io/docs-as-code/main/internals/requirements/requirements.html>`_

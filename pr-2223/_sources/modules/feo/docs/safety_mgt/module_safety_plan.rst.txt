@@ -38,11 +38,17 @@ The module consists of one or more SW components and will be qualified as a SEoo
 Functional Safety Management Roles
 ==================================
 
-+---------------------------+--------------------------------------------------------+
-| Safety Manager            | Markus Schu                                            |
-+---------------------------+--------------------------------------------------------+
-| Project Manager           | Johannes Glamsch                                       |
-+---------------------------+--------------------------------------------------------+
+.. list-table:: Module roles
+        :header-rows: 1
+
+        * - Role
+          - Assignee
+
+        * - Safety Manager
+          - Markus Schu
+
+        * - Module Project Manager (= Feature team lead)
+          - Johannes Glamsch
 
 Tailoring
 =========
@@ -307,7 +313,7 @@ Component Requirements Status
 -----------------------------
 
 .. needtable::
-   :filter: "feo" in docname and "requirements" in docname and docname is not None
+   :filter: docname is not None and "feo" in docname and "requirements" in docname
    :style: table
    :types: comp_req
    :tags: component_feo
@@ -319,7 +325,7 @@ Component AoU Status
 --------------------
 
 .. needtable::
-   :filter: "feo" in docname and "requirements" in docname and docname is not None
+   :filter: docname is not None and "feo" in docname and "requirements" in docname
    :style: table
    :types: aou_req
    :tags: component_feo
@@ -331,7 +337,7 @@ Component Architecture Status
 -----------------------------
 
 .. needtable::
-   :filter: "feo" in docname and "architecture" in docname and docname is not None
+   :filter: docname is not None and "feo" in docname and "architecture" in docname
    :style: table
    :types: comp_arc_sta; comp_arc_dyn
    :tags: component_feo

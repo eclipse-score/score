@@ -21,6 +21,7 @@ Release Note
    :id: doc__baselibs_release_note
    :status: valid
    :safety: ASIL_B
+   :security: YES
    :realizes: wp__module_sw_release_note
 
 The following releases notes are available for Baselibs module:

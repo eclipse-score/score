@@ -19,6 +19,7 @@ JSON Component Architecture
    :id: doc__json_architecture
    :status: draft
    :safety: ASIL_B
+   :security: YES
    :realizes: wp__component_arch
 
 Overview

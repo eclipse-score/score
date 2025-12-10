@@ -21,6 +21,7 @@ Requirement Inspection Checklist Persistency KVS
   :safety: ASIL_B
   :security: NO
   :tags: persistency
+  :realizes: wp__requirements_inspect
 
 **Purpose**
 The purpose of this requirement inspection checklist is to collect the topics to be checked during requirements inspection.

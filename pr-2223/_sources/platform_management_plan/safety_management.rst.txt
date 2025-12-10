@@ -90,9 +90,16 @@ The following  ISO 26262 defined safety work products are not relevant for the S
   :need:`std_wp__iso26262__system_852`
 
   Note that stakeholder requirements (:need:`std_wp__iso26262__system_651`) are in scope of the project,
+  to be able to address System and HW related failures which are typically mitigated by SW (e.g. end-to-end protection for ECU external communication).
+  However, these are considered "Assumed Technical Safety Requirements" of the SW platform SEooC and do not require testing by the SEooC supplier.
+  Thus, system-level testing is out of scope. S-CORE will implement platform tests of stakeholder requirements for demonstration purposes,
+  but these are not intended to provide complete coverage of the stakeholder requirements.
+  There will be SW integration tests of feature requirements as specified in ISO 26262 part 6-10.
+  These tests may be reused by users on their HW platform to address Technical Safety Requirements for the SW platform.
+  Whether these are sufficient to cover the TSRs must be analyzed and decided by the user.
   to be able to cover System and HW related failures which are usually covered by SW (e.g. end to end protection for ECU external communication).
   But those are the "Assumed Technical Safety Requirements" of the SW platform SEooC and do not need to be tested by SEooC supplier.
-  I.e. the system testing is out of scope. Note that S-CORE will implement platform test of stakeholder requirements for demonstration,
+  I.e. the system testing is out of scope. Note that S-CORE will implement Platform Integration Test of stakeholder requirements for demonstration,
   but these are not intended to be completely covering the stakeholder requirements.
   There will be SW integration tests of feature requirements, as required by ISO 26262 part 6-10.
   These may be reused by the users on their HW platform to cover Technical Safety Requirements towards the SW platform.
@@ -123,7 +130,7 @@ The following  ISO 26262 defined safety work products are not relevant for the S
   Expectations towards the HW/Environment are covered by AoUs. Additionally S-CORE only provides reference HW integration,
   so every user of the platform would have to redo the effort anyway: :need:`std_wp__iso26262__software_652`
 
-* Because the SW platform is not an safety item but an element: :need:`std_wp__iso26262__management_651`
+* Because the SW platform is not an safety item but an element: :need:`std_wp__iso26262__management_651`, hence impact analysis of the item level is tailored out
 
 But also some activities based on requirements defining what has to be done to create a workproduct which is in scope of the S-CORE platform are tailored:
 
@@ -144,6 +151,24 @@ Adherence is verified by automated checks and manual inspections.
 All the aspects of ISO 26262 are directly implemented in the development process to ensure a proper communication and high understanding of functional safety.
 With continuous improvements, an integral aspect in all processes, we want to achieve excellence.
 
+Cybersecurity Interface
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Cybersecurity is a critical aspect of the overall safety culture and is recognized as an essential element in the development and operation of the S-CORE platform.
+While functional safety and cybersecurity have distinct objectives, their interaction is managed through coordinated processes and shared responsibilities.
+
+The project acknowledges the need to address cybersecurity risks that may impact safety. To this end, the following measures are implemented:
+
+* Regular collaboration between the safety and cybersecurity teams to identify and assess potential cyber threats that could affect safety functions.
+* Integration of cybersecurity considerations into safety analyses, including risk assessments, to ensure that cyber risks are systematically evaluated.
+* Alignment of safety and cybersecurity requirements in the development lifecycle, with traceability between stakeholder safety requirements and relevant cybersecurity controls.
+* Participation in cross-functional reviews and audits to ensure that both safety and cybersecurity requirements are met and that any conflicts are resolved.
+* Continuous monitoring of emerging cybersecurity threats and updating the security plan accordingly; update the safety plan only if safety-related impacts are identified.
+
+The project is committed to further strengthening the interface between safety and cybersecurity, and will regularly review and update its processes to reflect best practices and regulatory requirements.
+This approach ensures that cybersecurity is not treated in isolation, but as an integral part of the platform's safety culture and management system.
+The security management aspects are defined in the :doc:`security_management`.
+
 Functional Safety Management Organization
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -160,7 +185,7 @@ The project will be under the Eclipse Foundation and so the `Eclipse Foundation 
 *Project Roles*
 
 Roles are defined in every process and in a generic roles section. All those are matched to Eclipse roles.
-Project role assignment is done in every feature development Safety Plan.
+Project role assignment is documented in dedicated documents.
 
 *Critical dependencies*
 
@@ -174,32 +199,32 @@ Organization and management system has not a mature level yet.
 
 *Skills*
 
-The main safety related project roles are the project manager and the safety manager and these also have to have the (Eclipse) committer role.
+The main safety related project roles are the project manager, the safety manager and the safety engineer, these also have to have the (Eclipse) committer role.
 As defined in `Committer Training <https://www.eclipse.org/projects/training/>`_ the committers are elected in a meritocratic manner, meaning those have to show their skills and understanding of the project processes in several previous pull requests.
 
-As each project can adopt additional criteria for the committers election, we define the following:
+For the :need:`rl__project_lead`, the :need:`rl__safety_manager` and the :need:`rl__safety_engineer` the required skills and experience are described
+in these project role definitions. They are also elected in a meritocratic way and this election is documented including the evidences checked to prove the experience.
 
-each committer has to prove his knowledge in functional safety SW development by
+Committers in the S-CORE project can work on the development of safety related or non-safety related SW modules.
+If they work on safety related modules they have to prove (additionaly to their committer election, which already shows they are skilled developers):
 
-* an absolved training in ISO 26262 (or equivalent standard, at least 16h of SW development specific training by a trusted training provider) OR
-* by attending the projects's ISO 26262 SW development training (given by a safety team member)
+* two years practice of safety related SW development (or management) relevant for the section content (includes trainings in safety standards like ISO 26262)
+* training on the S-CORE processes
 
-Additionally the project repository is organized in "CODEOWNER" sections. These "CODEOWNERS" need to approve any pull request modifying a file in their area before it is merged.
+To ensure this, the platform and module repositories folders (and files) are protected by "CODEOWNER" sections.
+These "CODEOWNERS" need to approve any pull request modifying a file in their area before it is merged.
 
-In case of safety related "CODEOWNER" sections (e.g. a file containing feature requirements with an ASIL level) the persons having "CODEOWNER" rights need to have:
-* One year of professional practice of safety related SW development (or management) relevant for the section content
-
-The successful checking of committers and CODEOWNERS skills is ensured by the safety manager and documented in the role assignment document.
+The successful checking of CODEOWNERS experience is ensured by the safety manager and documented in the role assignment document.
 One important aspect to this is, that we ensure the identity of the committer by applying the GitHub digital signature mechanism.
 
 Functional Safety Resources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A dedicated safety manager is elected by :need:`rl__project_lead` for all the S-CORE SEooCs development.
+A dedicated safety manager is elected for all the S-CORE SEooCs development - see :need:`doc__platform_safety_manager`.
 
-The safety manager, supported by the project manager (i.e. the :need:`rl__technical_lead`),  will ensure that
+The safety manager, supported by the project manager (:need:`rl__project_lead`) or the assigned Feature team leads, will ensure that
 safety activities are actively planned, developed, analyzed, verified and tested and managed throughout the life cycle of the project.
-As all the implementation of safety functions takes place within module development, there is a safety manager appointed in the module's safety plan.
+As all the implementation of safety functions takes place within module development, there is a responsible safety manager documented in the module's safety plan.
 
 Resources and milestones are planned in Github Issues for all activities.
 There are issue templates for sagas (covering one feature development) and for epics (covering one development work product each).
@@ -224,7 +249,7 @@ To exchange general information and to clarify general topics the following comm
 
 *Reporting*
 
-The safety management status is reported in the Technical Lead Circle Meeting which is defined in :need:`doc__project_mgt_plan`.
+The safety management status is reported in the Project Lead Circle Meeting which is defined in :need:`doc__project_mgt_plan`.
 The status report is based on safety plans work product lists (see below) and verification reports on platform and module level:
 
 * :need:`wp__platform_safety_plan`
@@ -234,13 +259,16 @@ The status report is based on safety plans work product lists (see below) and ve
 
 *Escalation*
 
-* :need:`rl__safety_manager` to :need:`rl__technical_lead`
-* :need:`rl__technical_lead` to :need:`rl__project_lead`
+* :need:`rl__safety_manager` to :need:`rl__project_lead` (in the Project Lead Circle)
+
+The Project Lead Circle is the ultimate decision instance within the S-CORE project.
+But as in every Eclipse project the rules and committee decisions of Eclipse have to be followed.
 
 Examples for valid escalation causes are:
 
 * Safety issues cannot be resolved on module level or with the available resources.
-* There are conflicting points-of-view between the project manager and the safety manager
+* There are conflicting points-of-view between the module project manager (= Feature team lead) and any safety manager
+* Safety anomalies detected by the safety manager are not accepted by the module project manager
 
 Functional Safety Management Life Cycle
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -250,9 +278,14 @@ Note that the Eclipse Foundation also defines `project phases <https://www.eclip
 Eclipse definition is more about the process maturity for the whole project, if we are in Mature Phase, we latest will have the project lifecycle as defined in our process description.
 Nevertheless, Safety Development and even Safety Case release is independent from Mature and Incubation Phase as the completeness and appropriateness of the platform process and artifacts
 is determined by Safety Audit and not be Eclipse project reviews.
+The S-CORE project implements a reduced ISO 26262 safety lifecycle, covering only those phases relevant to software SEooC development.
+All omitted phases (e.g., HARA, system/hardware development, calibration, proven-in-use) are justified and documented in the Tailoring section.
+All safety activities, planning, and evidence generation are tracked via the Platform Safety Plan, Module Safety Plans, and associated GitHub Issues.
+This approach ensures compliance with ISO 26262 for software SEooC, while avoiding unnecessary activities not applicable to the S-CORE context.
 
 Functional Safety Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Requirement Engineering is defined in the process description. See :need:`doc__project_mgt_plan`.
 
 The application of ISO 26262 standards requirements is realized by defining process guidances and matching those to the ISO 26262 requirements (see e.g. for example :need:`gd_req__safety_doc_status`).
@@ -285,190 +318,164 @@ The platform management plan defines :doc:`quality_management`
 Platform Safety Plan
 ++++++++++++++++++++
 
-Functional Safety Management SW Platform Work Products
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. _sw_platform_wp_list:
+
+Functional Safety/Security Management SW Platform Work Products
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table:: SW Platform work products
     :header-rows: 1
 
     * - work product Id
-      - Link to process
       - Process status
-      - Link to issue
       - Link to WP
       - WP status
 
     * - :need:`wp__policies`
       - n/a (comes from outside the project)
-      - n/a
-      - n/a
       - `Eclipse Foundation Project Handbook: <https://www.eclipse.org/projects/handbook/>`_
       - RELEASED
 
-    * - :need:`wp__training_path`
-      - n/a
-      - n/a
-      - n/a
-      - not open sourced
-      - to be shown to assessor
-
     * - :need:`wp__qms_plan`
-      - :need:`wf__platform_cr_mt_platform_mgmt_plan`
-      - :ndf:`copy('status', need_id='wf__platform_cr_mt_platform_mgmt_plan')`
-      - `#316 <https://github.com/eclipse-score/score/issues/316>`_
-      - :doc:`quality_management`
-      - not started
+      - :ndf:`copy('status', need_id='wf__cr_mt_qlm_plan')`
+      - :need:`doc__platform_quality_plan`
+      - :ndf:`copy('status', need_id='doc__platform_quality_plan')`
 
     * - :need:`wp__issue_track_system`
-      - :doc:`index`
-      - :ndf:`copy('status', need_id='doc__platform_mgt_plan')`
-      - n/a
+      - :ndf:`copy('status', need_id='wf__platform_mr_im_platform_mgmt_plan')`
       - `Project issues <https://github.com/eclipse-score/score/issues>`_
       - established
 
     * - :need:`wp__platform_mgmt`
-      - :need:`wf__platform_cr_mt_platform_mgmt_plan`
       - :ndf:`copy('status', need_id='wf__platform_cr_mt_platform_mgmt_plan')`
-      - `#540 <https://github.com/eclipse-score/score/issues/540>`_
       - :doc:`index`
       - :ndf:`copy('status', need_id='doc__platform_mgt_plan')`
 
     * - :need:`wp__process_description`
-      - :need:`wf__def_app_process_description`
       - :ndf:`copy('status', need_id='wf__def_app_process_description')`
-      - `Process community issues <https://github.com/orgs/eclipse-score/projects/7>`_
       - `Process description <https://eclipse-score.github.io/process_description/main/index.html>`_
-      - <automated>
+      - Maturity Level 1
 
     * - :need:`wp__process_impr_report`
-      - :need:`wf__mon_imp_process_description`
       - :ndf:`copy('status', need_id='wf__mon_imp_process_description')`
-      - <Link to issue>
+      - `Process issues <https://github.com/eclipse-score/process_description/issues>`_
+      - see issues
+
+    * - :need:`wp__process_strategy`
+      - :ndf:`copy('status', need_id='wf__cr_mt_process_mgt_strategy')`
+      - `Process community planning <https://github.com/orgs/eclipse-score/projects/21>`_
+      - see planning board
+
+    * - :need:`wp__platform_sw_build_config`
+      - <Process status>
       - <Link to WP>
       - <automated>
 
-    * - :need:`wp__process_strategy`
-      - :need:`wf__cr_mt_process_mgt_strategy`
-      - :ndf:`copy('status', need_id='wf__cr_mt_process_mgt_strategy')`
-      - `#232 <https://github.com/eclipse-score/score/issues/232>`_
-      - `Process community issues <https://github.com/orgs/eclipse-score/projects/7>`_
+    * - :need:`wp__platform_sw_release_note`
+      - :ndf:`copy('status', need_id='wf__rel_platform_rel_note')`
+      - :need:`doc__score_v05_alpha_release_note`
+      - :ndf:`copy('status', need_id='doc__score_v05_alpha_release_note')`
+
+    * - :need:`wp__verification_platform_ver_report`
+      - :ndf:`copy('status', need_id='wf__verification_platform_ver_report')`
+      - <Link to WP>
       - <automated>
 
+    * - :need:`wp__requirements_stkh`
+      - :ndf:`copy('status', need_id='wf__req_stkh_req')`
+      - :ref:`stakeholder_requirements`
+      - <automated>
+
+    * - :need:`wp__sw_development_plan`
+      - :ndf:`copy('status', need_id='wf__sw_development_plan')`
+      - :need:`doc__software_development_plan`
+      - :ndf:`copy('status', need_id='doc__software_development_plan')`
+
+    * - :need:`wp__verification_plan`
+      - :ndf:`copy('status', need_id='wf__verification_plan')`
+      - :need:`doc__verification_plan`
+      - :ndf:`copy('status', need_id='doc__verification_plan')`
+
+    * - :need:`wp__tool_verification_report`
+      - :ndf:`copy('status', need_id='wf__tool_create_tool_verification_report')`
+      - :ref:`tools`
+      - see WP link
+
+
+Functional Safety Specific SW Platform Work Products
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. list-table:: SW Platform safety work products
+    :header-rows: 1
+
+    * - work product Id
+      - Process status
+      - Link to WP
+      - WP status
+
     * - :need:`wp__platform_safety_plan`
-      - :need:`gd_guidl__saf_plan_definitions`
-      - :ndf:`copy('status', need_id='gd_guidl__saf_plan_definitions')`
-      - `#381 <https://github.com/eclipse-score/score/issues/381>`_
+      - :ndf:`copy('status', need_id='wf__cr_mt_safety_plan')`
       - this document
       - see above
 
     * - :need:`wp__platform_safety_package`
-      - :need:`gd_guidl__saf_package`
-      - :ndf:`copy('status', need_id='gd_guidl__saf_package')`
-      - <Link to issue>
+      - :ndf:`copy('status', need_id='wf__cr_mt_safety_package')`
       - <Link to WP>
       - <automated>
 
     * - :need:`wp__fdr_reports` (platform Safety Plan)
-      - :need:`gd_chklst__safety_plan`
-      - :ndf:`copy('status', need_id='gd_chklst__safety_plan')`
-      - <Link to issue>
+      - :ndf:`copy('status', need_id='wf__p_formal_rv')`
       - <Link to WP>
       - <automated>
 
     * - :need:`wp__fdr_reports` (platform Safety Package)
-      - :need:`gd_chklst__safety_package`
-      - :ndf:`copy('status', need_id='gd_chklst__safety_package')`
-      - <Link to issue>
+      - :ndf:`copy('status', need_id='wf__p_formal_rv')`
       - <Link to WP>
       - <automated>
 
     * - :need:`wp__fdr_reports` (feature's Safety Analyses & DFA)
-      - Safety Analysis FDR tbd
-      - <automated>
-      - <Link to issue>
+      - <Process status>
       - <Link to WP>
       - <automated>
 
     * - :need:`wp__audit_report`
       - performed by external experts
-      - n/a
-      - `#470 <https://github.com/eclipse-score/score/issues/470>`_
       - <Link to WP>
       - intermediate
 
     * - :need:`wp__feature_dfa`
-      - <Link to process>
       - <Process status>
-      - <Link to issue>
-      - <Link to WP>
-      - <automated>
-
-    * - :need:`wp__platform_sw_build_config`
-      - :need:`doc__software_development_plan`
-      - :ndf:`copy('status', need_id='doc__software_development_plan')`
-      - <Link to issue>
       - <Link to WP>
       - <automated>
 
     * - :need:`wp__platform_safety_manual`
-      - :need:`gd_temp__safety_manual`
-      - :ndf:`copy('status', need_id='gd_temp__safety_manual')`
-      - <Link to issue>
-      - <Link to WP>
-      - <automated>
-
-    * - :need:`wp__platform_sw_release_note`
-      - :need:`gd_temp__rel_plat_rel_note`
-      - :ndf:`copy('status', need_id='gd_temp__rel_plat_rel_note')`
-      - <Link to issue>
-      - <Link to WP>
-      - <automated>
-
-    * - :need:`wp__verification_platform_ver_report`
-      - :need:`gd_temp__mod_ver_report`
-      - :ndf:`copy('status', need_id='gd_temp__mod_ver_report')`
-      - <Link to issue>
-      - <Link to WP>
-      - <automated>
-
-    * - :need:`wp__requirements_stkh`
-      - :need:`gd_temp__req_stkh_req`
-      - :ndf:`copy('status', need_id='gd_temp__req_stkh_req')`
-      - n/a (done already)
-      - :ref:`stakeholder_requirements`
-      - <automated>
-
-    * - :need:`wp__sw_development_plan`
-      - :need:`wf__platform_cr_mt_platform_mgmt_plan`
-      - :ndf:`copy('status', need_id='wf__platform_cr_mt_platform_mgmt_plan')`
-      - `#583 <https://github.com/eclipse-score/score/issues/583>`_
-      - :need:`doc__software_development_plan`
-      - :ndf:`copy('status', need_id='doc__software_development_plan')`
-
-    * - :need:`wp__verification_plan`
-      - :need:`wf__platform_cr_mt_platform_mgmt_plan`
-      - :ndf:`copy('status', need_id='wf__platform_cr_mt_platform_mgmt_plan')`
-      - `#611 <https://github.com/eclipse-score/score/issues/611>`_
-      - :need:`doc__verification_plan`
-      - :ndf:`copy('status', need_id='doc__verification_plan')`
-
-    * - :need:`wp__tool_verification_report`
-      - :need:`doc__platform_tool_management_plan`
-      - :ndf:`copy('status', need_id='doc__platform_tool_management_plan')`
-      - <Link to issue>
+      - :ndf:`copy('status', need_id='wf__cr_mt_safety_manual')`
       - <Link to WP>
       - <automated>
 
     * - :need:`wp__tailoring` (generic)
-      - :need:`gd_guidl__saf_plan_definitions`
-      - :ndf:`copy('status', need_id='gd_guidl__saf_plan_definitions')`
-      - `#307 <https://github.com/eclipse-score/score/issues/307>`_
-      - :need:`std_req__iso26262__management_5421` & :need:`doc__platform_safety_plan`
+      - :ndf:`copy('status', need_id='wf__def_app_process_description')`
+      - :need:`wp__tailoring_work_products` & :need:`doc__platform_safety_plan`
       - valid
 
+Process status: Status of the workflow which "outputs" the work product, derived from the docs it "has" and guidances it "contains".
 
-Note: list of features for v0.5 according to `S-CORE Roadmap <https://github.com/orgs/eclipse-score/projects/17>`_
-and :ref:`releases`
+
+Platform Management Plan - Feature Work Product Lists
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+:need:`doc__baselibs_safety_wp`
+
+:need:`doc__com_ipc_safety_wp`
+
+:need:`doc__feo_safety_wp`
+
+:need:`doc__orchestration_safety_wp`
+
+:need:`doc__persistency_safety_wp`
+
+Note: list of features according to :ref:`releases`
+
 
 Platform Management Plan - Documents Status Chart
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

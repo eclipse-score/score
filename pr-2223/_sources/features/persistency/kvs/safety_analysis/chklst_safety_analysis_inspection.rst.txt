@@ -18,6 +18,7 @@
    :security: NO
    :safety: ASIL_B
    :tags: persistency
+   :realizes: wp__sw_arch_verification
 
 Persistency Feature Safety Analysis Checklist
 =============================================

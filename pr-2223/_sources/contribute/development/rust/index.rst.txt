@@ -18,5 +18,6 @@ Rust
 .. toctree::
    :maxdepth: 1
 
+   certification/index
    coding_guidelines
    rust_api_design

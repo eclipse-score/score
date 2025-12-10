@@ -1,6 +1,13 @@
 Assumptions of Use
 ##################
 
+.. document:: Communication Assumptions of Use
+   :id: doc__communication_aou
+   :status: valid
+   :safety: ASIL_B
+   :security: NO
+   :realizes: wp__requirements_comp
+
 .. aou_req:: Monotonic Semi-Dynamic Memory Allocation
    :id: aou_req__communication__1
    :reqtype: Non-Functional

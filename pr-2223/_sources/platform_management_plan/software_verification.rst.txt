@@ -126,11 +126,11 @@ There are the following different levels of integration and verification defined
 
 
   **Note:** These three levels translate to the levels of ISO 26262 part 6 clauses 9 to 11. The platform
-  testing will be executed by the integrator. S-Core project only executes tests on reference hardware.
+  testing will be executed by the integrator. S-CORE project only executes tests on reference hardware.
   These tests serve as an optional base for the integrator and will also be part of the
   :need:`wp__verification_platform_ver_report`, but more on an informative character. The full scope
-  of clause 11 is tailored out accordingly for S-Core. Practically, this means S-CORE will implement
-  platform test of stakeholder requirements for demonstration, but these are not intended to completely
+  of clause 11 is tailored out accordingly for S-CORE. Practically, this means S-CORE will implement
+  Platform Integration Test of stakeholder requirements for demonstration, but these are not intended to completely
   covering all stakeholder requirements.
 
 Verification Methods
