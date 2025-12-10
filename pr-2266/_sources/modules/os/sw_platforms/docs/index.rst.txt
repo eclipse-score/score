@@ -17,7 +17,14 @@
 Software Platforms
 ##################
 
-Software Platforms must meet requirements from: :ref:`platform_assumptions`.
+A Software Platform is an operating system environment on which Eclipse S-CORE is integrated and executed.
+It provides the foundational services and interfaces required for S-CORE modules to function.
+
+.. note::
+   Software Platforms are categorized into *Tiers* based on their stability, support level, and intended use cases.
+   Hence, they must meet requirements of their respective Tier.
+   For details on this approach, and the requirements for each Tier, see :ref:`platform_assumptions`.
+
 
 Component Documents
 ===================
