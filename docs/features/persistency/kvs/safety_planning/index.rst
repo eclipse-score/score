@@ -70,7 +70,7 @@ Feature Safety Work Products List
     * - :need:`wp__sw_arch_verification`
       - :need:`gd_chklst__arch_inspection_checklist`
       - :ndf:`copy('status', need_id='gd_chklst__arch_inspection_checklist')`
-      - :need:`doc__persistency_arc_inspection`
+      - :need:`doc__arch_inspection_persistency`
 
     * - :need:`wp__verification_feat_int_test`
       - :need:`gd_guidl__verification_guide`
