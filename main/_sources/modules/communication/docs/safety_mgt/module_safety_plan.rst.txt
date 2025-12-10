@@ -123,13 +123,6 @@ Module Work products List
           - <Link to WP>
           - <WP status (manual)>
 
-        * - :need:`wp__module_sw_build_config`
-          - :need:`gd_temp__software_development_plan`
-          - :ndf:`copy('status', need_id='gd_temp__software_development_plan')`
-          - n/a
-          - `com/BUILD <https://github.com/eclipse-score/communication/blob/main/score/mw/com/BUILD>`_
-          - valid
-
         * - :need:`wp__module_safety_manual`
           - :need:`gd_temp__safety_manual`
           - :ndf:`copy('status', need_id='gd_temp__safety_manual')`

@@ -117,13 +117,6 @@ Module Workproducts List
           - <Link to WP>
           - <WP status (manual)>
 
-        * - :need:`wp__module_sw_build_config`
-          - `gd_temp__software_development_plan`
-          - `copy('status', need_id='doc__software_development_plan')`
-          - <Link to issue>
-          - <Link to WP>
-          - <automated>
-
         * - :need:`wp__module_safety_manual`
           - :need:`gd_temp__safety_manual`
           - :ndf:`copy('status', need_id='gd_temp__safety_manual')`

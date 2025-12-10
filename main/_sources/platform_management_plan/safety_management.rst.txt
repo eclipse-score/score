@@ -13,11 +13,11 @@
    # *******************************************************************************
 
 .. document:: Platform Safety Plan
-   :id: doc__platform_safety_plan
+   :id: doc__score_platform_safety_plan
    :status: draft
    :safety: ASIL_B
    :security: NO
-   :realizes: wp__platform_safety_plan,wp__tailoring
+   :realizes: wp__platform_safety_plan, wp__tailoring
    :tags: platform_management
 
 Safety management / Platform Safety Plan
@@ -366,10 +366,10 @@ Functional Safety/Security Management SW Platform Work Products
       - `Process community planning <https://github.com/orgs/eclipse-score/projects/21>`_
       - see planning board
 
-    * - :need:`wp__platform_sw_build_config`
-      - <Process status>
-      - <Link to WP>
-      - <automated>
+    * - :need:`wp__platform_handbook`
+      - :ndf:`copy('status', need_id='wf__rel_platform_handbook')`
+      - :need:`doc__platform_handbook`
+      - :ndf:`copy('status', need_id='doc__platform_handbook')`
 
     * - :need:`wp__platform_sw_release_note`
       - :ndf:`copy('status', need_id='wf__rel_platform_rel_note')`

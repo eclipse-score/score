@@ -118,13 +118,6 @@ FEO Module Work Products List
           - <Link to WP>
           - <WP status (manual)>
 
-        * - :need:`wp__module_sw_build_config`
-          - :need:`gd_temp__software_development_plan`
-          - :ndf:`copy('status', need_id='gd_temp__software_development_plan')`
-          - https://github.com/eclipse-score/score/issues/1662
-          - <Link to WP>
-          - <automated>
-
         * - :need:`wp__module_safety_manual`
           - :need:`gd_temp__safety_manual`
           - :ndf:`copy('status', need_id='gd_temp__safety_manual')`

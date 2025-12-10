@@ -347,9 +347,6 @@ None
         * - :need:`wp__platform_safety_package`
           - :ref:`project_documents_list`
 
-        * - :need:`wp__platform_sw_build_config`
-          - :ref:`project_documents_list`
-
         * - :need:`wp__platform_sw_release_note`
           - :ref:`project_documents_list`
 
