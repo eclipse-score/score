@@ -19,7 +19,9 @@ JSON-Library
    :id: doc__json
    :status: valid
    :safety: ASIL_B
+   :security: YES
    :tags: component_request
+   :realizes: wp__cmpt_request
 
 
 .. toctree::
@@ -29,6 +31,8 @@ JSON-Library
    architecture/index.rst
    json_wrapper/index.rst
    nlohman_json/index.rst
+   safety_analysis/fmea.rst
+   safety_analysis/dfa.rst
 
 
 Abstract

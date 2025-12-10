@@ -15,6 +15,13 @@
 Requirements
 ############
 
+.. document:: Baselibs Requirements
+   :id: doc__baselibs_requirements
+   :status: draft
+   :safety: ASIL_B
+   :security: YES
+   :realizes: wp__requirements_feat
+
 .. feat_req:: Core Software Utilities
    :id: feat_req__baselibs__core_utilities
    :reqtype: Functional
@@ -124,3 +131,6 @@ Requirements
    :status: valid
 
    The base libraries shall provide a filesystem library with file and directory manipulation functionality.
+
+.. needextend:: "__baselibs" in id
+   :+tags: baselibs

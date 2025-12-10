@@ -21,7 +21,9 @@ Gen AI
    :id: doc__gen_ai
    :status: draft
    :safety: QM
+   :security: NO
    :tags: feature_request
+   :realizes: wp__feat_request
 
 .. toctree::
    :maxdepth: 1

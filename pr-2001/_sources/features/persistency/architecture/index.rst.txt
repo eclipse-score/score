@@ -144,3 +144,6 @@ Logical Interfaces
    :status: valid
 
    .. uml:: _assets/kvs_interface.puml
+
+.. needextend:: docname is not None and "persistency/kvs/architecture" in docname
+   :+tags: persistency

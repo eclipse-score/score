@@ -234,8 +234,8 @@ experts must confirm or disconfirm, if safety/security is affected is set correc
 
 :need:`gd_chklst__problem_cr_review` can help to verify whether the information is complete.
 
-In case affected parties need to be informed :need:`Technical Lead <rl__technical_lead>` or
-:need:`Module Lead <rl__module_lead>` will notify them, either updating the Assignees or
+In case affected parties need to be informed :need:`Project Lead <rl__project_lead>` or
+:need:`Module Lead <rl__committer>` will notify them, either updating the Assignees or
 adding labels for community or feature teams.
 
 Otherwise, if no Problem Resolution is planned, the problem is rejected. To reject the Problem
@@ -278,4 +278,7 @@ back to ``In Progress``.
 Problem Resolution SW Platform Work Products
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-not applicable
+The Problem Reports are published in the :need:`wp__issue_track_system`.
+S-CORE and its modules use GitHub Issues with the same templates and in the same location per default.
+If deviating the module has to document this in an own Problem Resolution Plan.
+S-CORE platform repository issues (Problem Reports are tagged with the Label "Bug") see `here <https://github.com/eclipse-score/score/issues?q=is%3Aissue%20state%3Aopen%20label%3Abug>`_

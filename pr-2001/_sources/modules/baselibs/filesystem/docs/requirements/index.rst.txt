@@ -19,6 +19,7 @@ Requirements
    :id: doc__filesystem_lib_requirements
    :status: draft
    :safety: ASIL_B
+   :security: YES
    :realizes: wp__requirements_comp
    :tags: requirements, filesystem_library
 
@@ -96,3 +97,6 @@ Functional Requirements
    :status: valid
 
    The Filesystem library shall provide mock and fake implementations for unit testing and validation.
+
+.. needextend:: "__filesystem__" in id
+   :+tags: baselibs

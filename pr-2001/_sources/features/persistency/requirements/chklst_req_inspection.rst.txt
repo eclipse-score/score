@@ -21,6 +21,7 @@ Persistency Requirements Inspection Checklist
   :safety: ASIL_B
   :security: NO
   :tags: persistency
+  :realizes: wp__requirements_inspect
 
 **Purpose**
 

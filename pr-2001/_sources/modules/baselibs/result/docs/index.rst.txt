@@ -19,14 +19,18 @@ result
    :id: doc__result
    :status: draft
    :safety: ASIL_B
+   :security: YES
    :tags: baselibs_result
    :realizes: wp__cmpt_request
 
 .. toctree::
    :hidden:
 
-   requirements.rst
+   requirements/index.rst
+   requirements/chklst_req_inspection.rst
    architecture/index.rst
+   safety_analysis/fmea.rst
+   safety_analysis/dfa.rst
 
 Abstract
 ========

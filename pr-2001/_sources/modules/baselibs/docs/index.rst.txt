@@ -14,7 +14,7 @@
 
 .. mod_view_sta:: Baselibs
    :id: mod_view_sta__baselibs__baselibs
-   :includes: comp_arc_sta__baselibs__json, comp_arc_sta__baselibs__message_passing, comp_arc_sta__baselibs__memory_shared, comp_arc_sta__baselibs__result, comp_arc_sta__baselibs__bit_manipulation
+   :includes: comp_arc_sta__baselibs__json, comp_arc_sta__baselibs__message_passing, comp_arc_sta__baselibs__memory_shared, comp_arc_sta__baselibs__result, comp_arc_sta__baselibs__bit_manipulation, comp_arc_sta__baselibs__containers, comp_arc_sta__baselibs__filesystem
 
    .. needarch::
       :scale: 50
@@ -22,9 +22,16 @@
 
       {{ draw_module(need(), needs) }}
 
+.. _baselibs_module_docs:
+
 Module Documents
 ================
 
 .. toctree::
-   :maxdepth: 2
-   :titlesonly:
+   :maxdepth: 1
+   :glob:
+
+   manual/index.rst
+   safety_mgt/index.rst
+   verification/module_verification_report.rst
+   release/release_note.rst

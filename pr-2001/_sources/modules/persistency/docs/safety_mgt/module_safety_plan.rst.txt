@@ -37,11 +37,17 @@ The module consists of one or more SW components and will be qualified as a SEoo
 Functional Safety Management Roles
 ==================================
 
-+---------------------------+--------------------------------------------------------+
-| Safety Manager            | Volker Häussler                                        |
-+---------------------------+--------------------------------------------------------+
-| Project Manager           | Lars Bauhofer                                          |
-+---------------------------+--------------------------------------------------------+
+.. list-table:: Module roles
+        :header-rows: 1
+
+        * - Role
+          - Assignee
+
+        * - Safety Manager
+          - Volker Häussler
+
+        * - Module Project Manager (= Feature team lead)
+          - Lars Bauhofer
 
 Tailoring
 =========
@@ -306,7 +312,7 @@ Component Requirements Status
 -----------------------------
 
 .. needtable::
-   :filter: "persistency" in docname and "requirements" in docname and docname is not None
+   :filter: docname is not None and "persistency" in docname and "requirements" in docname
    :style: table
    :types: comp_req
    :tags: persistencykvs
@@ -318,7 +324,7 @@ Component AoU Status
 --------------------
 
 .. needtable::
-   :filter: "persistency" in docname and "requirements" in docname and docname is not None
+   :filter: docname is not None and "persistency" in docname and "requirements" in docname
    :style: table
    :types: aou_req
    :tags: persistencykvs
@@ -330,7 +336,7 @@ Component Architecture Status
 -----------------------------
 
 .. needtable::
-   :filter: "persistency" in docname and "requirements" in docname and docname is not None
+   :filter: docname is not None and "persistency" in docname and "requirements" in docname
    :style: table
    :types: comp_arc_sta; comp_arc_dyn
    :tags: persistencykvs
