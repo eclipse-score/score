@@ -17,6 +17,8 @@
 Software Platforms
 ##################
 
+Software Platforms must meet requirements from: :ref:`platform_assumptions`.
+
 Component Documents
 ===================
 
