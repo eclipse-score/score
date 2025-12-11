@@ -56,9 +56,6 @@ Tailoring
 
 Additional to the tailoring in the SW platform project as defined in the :need:`doc__platform_safety_plan`  we define here the additional tailoring on module level.
 
-- Excluded for this module are additionally the following work products (and their related requirements):
-  - :need:`wp__module_sw_build_config` - Baselibs is a collection of libraries, so this work product is specific for every component.
-
 Functional Safety Module Work products
 ======================================
 
@@ -231,14 +228,6 @@ Component bitmanipulation Work products List
           - component integration not needed (no sub-components and units are independent)
           - n/a
 
-        * - :need:`wp__module_sw_build_config`
-          - :need:`gd_temp__software_development_plan`
-          - :ndf:`copy('status', need_id='gd_temp__software_development_plan')`
-          - n/a
-          - `BUILD <https://github.com/eclipse-score/baselibs/blob/main/score/bitmanipulation/BUILD>`_
-          - valid
-
-
 Component containers Work products List
 ---------------------------------------
 
@@ -328,14 +317,6 @@ Component containers Work products List
           - n/a
           - component integration not needed (no sub-components and units are independent)
           - n/a
-
-        * - :need:`wp__module_sw_build_config`
-          - :need:`gd_temp__software_development_plan`
-          - :ndf:`copy('status', need_id='gd_temp__software_development_plan')`
-          - n/a
-          - `containers/BUILD <https://github.com/eclipse-score/baselibs/blob/main/score/containers/BUILD>`_
-          - valid
-
 
 Component filesystem Work products List
 ---------------------------------------
@@ -427,14 +408,6 @@ Component filesystem Work products List
           - component integration not needed (no sub-components and units are independent)
           - n/a
 
-        * - :need:`wp__module_sw_build_config`
-          - :need:`gd_temp__software_development_plan`
-          - :ndf:`copy('status', need_id='gd_temp__software_development_plan')`
-          - n/a
-          - `filesystem/BUILD <https://github.com/eclipse-score/baselibs/blob/main/score/filesystem/BUILD>`_
-          - valid
-
-
 Component result Work products List
 ---------------------------------------
 
@@ -525,14 +498,6 @@ Component result Work products List
           - component integration not needed (no sub-components and units are independent)
           - n/a
 
-        * - :need:`wp__module_sw_build_config`
-          - :need:`gd_temp__software_development_plan`
-          - :ndf:`copy('status', need_id='gd_temp__software_development_plan')`
-          - n/a
-          - `result/BUILD <https://github.com/eclipse-score/baselibs/blob/main/score/result/BUILD>`_
-          - valid
-
-
 Component json Work products List
 ---------------------------------------
 
@@ -622,13 +587,6 @@ Component json Work products List
           - <Link to issue>
           - <Link to WP>
           - <automatic>
-
-        * - :need:`wp__module_sw_build_config`
-          - :need:`gd_temp__software_development_plan`
-          - :ndf:`copy('status', need_id='gd_temp__software_development_plan')`
-          - n/a
-          - `json/BUILD <https://github.com/eclipse-score/baselibs/blob/main/score/json/BUILD>`_
-          - valid
 
         * - :need:`wp__sw_component_class`
           - :need:`tsf__trust__trustable-software`

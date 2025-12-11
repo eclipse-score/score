@@ -19,6 +19,13 @@
    own_application/index.rst
    building_simple_application/index.rst
 
+.. document:: Handbook
+   :id: doc__platform_handbook
+   :status: valid
+   :safety: ASIL_B
+   :security: YES
+   :realizes: wp__platform_handbook
+
 Handbook
 ========
 
