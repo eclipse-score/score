@@ -102,9 +102,8 @@ The requirements from Communication generally apply to the SOME/IP Gateway.
 SOME/IP protocol implementation
 -------------------------------
 
-The protocol implementation shall be fully compatible and complying with the SOME/IP specification from AUTOSAR Adaptive. (:need:`feat_req__some_ip_gateway__someip_protocol`)
-Specifically the SOME/IP specification from AUTOSAR release R24-11 shall be supported by the SOME/IP Gateway. This shall guarantee that systems integrated with the SOME/IP gateway can be used in according
-automotive E/E-architectures.
+For reference purpose, the gateway shall use the `vsomeip <https://github.com/COVESA/vsomeip>`_ protocol
+implementation that is compatible and complying with the SOME/IP specification from `some-ip.com <https://some-ip.com/>`_. (:need:`feat_req__some_ip_gateway__someip_protocol`)
 Protocol implementations shall be wrapped in an abstraction API, that stays stable and allows implementations may be exchanged, potentially even by binary only libraries.
 
 The SOME/IP Gateway shall support SOME/IP Events, Fields and Methods and shall map these accordingly into IPC.
@@ -176,7 +175,7 @@ Access Control acts on OSI Layer 5-7. It shall fulfill the following:
 
 .. note::
   - Checking SOME/IP-SD messages with the ACL is optional because no functional data is transported.
-  - SOME/IP-SD messages are not protected as per AUTOSAR Adaptive specification.
+  - SOME/IP-SD messages are not protected as per specification.
 
 
 .. uml::
@@ -219,7 +218,7 @@ End-to-End (E2E) protection with CRC and counters
 Applications communicating over the network may have to protect data with end-to-end protection (E2E), which may involve
 CRC-protection and checks, and message counters.
 
-There are several E2E (= End-to-End) profiles, which utilize various CRC routines as part of AUTOSAR E2E Protocol Specification, that shall be supported with the SOME/IP Gateway.
+There are several E2E (= End-to-End) profiles, which utilize various CRC routines as part of E2E Protocol Specification, that shall be supported with the SOME/IP Gateway.
 
 Though the implementation of the SOME/IP protocol itself is likely not going to be ASIL-B compliant and have a safety consideration of QM rather,
 E2E-checks and protection need to happen in an ASIL-B context. The gateway may perform the CRC routines as a central service.
@@ -229,21 +228,18 @@ SOME/IP Events, Methods, and Fields need to be supported with E2E protection.
 
 Please refer to the SOME/IP Gateway architecture for further details.
 
-References
-
-- `AUTOSAR_FO_PRS_E2EProtocol <https://www.autosar.org/fileadmin/standards/R24-11/FO/AUTOSAR_FO_PRS_E2EProtocol.pdf>`_
-- `AUTOSAR_FO_RS_E2E <https://www.autosar.org/fileadmin/standards/R24-11/FO/AUTOSAR_FO_RS_E2E.pdf>`_
 
 License Impact
 ==============
 
 [How could the copyright impacted by the license of the new contribution?]
 
-Since SOME/IP is a protocol, including applied E2E protection and the according profile (polynom, etc.),
-defined by AUTOSAR and published under the license of AUTOSAR, the gateway implementation shall carefully distinguish between the SOME/IP communication stack,
-the E2E protection of data, and the integration into S-CORE mw::com. Breach of foreign licenses must be avoided.
+SOME/IP is a protocol, including applied E2E protection and the according profile (polynom, etc.),
+is defined by multiple organizations, here we refer to the us of `vsomeip <https://github.com/COVESA/vsomeip>`_ implementation that refers to `some-ip.com <https://some-ip.com/>`_.
+The gateway implementation shall carefully distinguish between the SOME/IP communication stack,
+the E2E protection of data, and the integration into S-CORE mw::com.
 
-Anybody using SOME/IP Gateway needs to make sure to follow the license conditions and rules of AUTOSAR.
+Anybody requiring specific SOME/IP versions needs to make sure to follow the license conditions and rules of the underlying standards or specifications.
 
 How to Teach This
 =================
