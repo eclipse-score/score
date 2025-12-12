@@ -27,13 +27,6 @@ Configuration Model
    :realizes: wp__feat_request
    :tags: template
 
-.. attention::
-    The above directive must be updated according to your Feature.
-
-    - Modify ``document`` to be your Feature Name
-    - Modify ``id`` to be your Feature Name in upper snake case preceded by ``doc__``
-    - Adjust ``status`` to be ``valid``
-    - Adjust ``safety`` and ``tags`` according to your needs
 
 Feature flag
 ============
@@ -42,154 +35,137 @@ To activate this feature, use the following feature flag:
 
 ``experimental_configuration_model``
 
-    .. note::
-     The feature flag must reflect the feature name in snake_case. Further, it is prepended with ``experimental_``, as
-     long as the feature is not yet stable.
 
 Abstract
 ========
 
-[A short (~200 word) description of the contribution being addressed.]
-
-The configuration model describes the configuration options of an application or component (both user as well as S-CORE platform application).
+This proposal introduces a unified approach to static module configuration in S-CORE by combining a Configuration Guideline and a Configuration Model. While the guideline defines how configurations should be structured—covering naming conventions, identifier usage, storage formats, and parameter organization—the model specifies what needs to be configured, focusing on common elements that must remain consistent across all modules. The dual approach ensures clarity, predictability, and maintainability, reducing integration complexity and improving user experience. By standardizing both the structure and the content of configurations, the solution enables faster onboarding of new modules, supports future extensions (e.g., JSON or FlatBuffers), and lays the foundation for automated compliance checks.
 
 Motivation
 ==========
 
-A common configuration model enables a consistent configuration of user applications using different SCORE features.
-This is particularly important for cross-cutting aspects such as references to application .
-Furthermore, it eases configuration through a defined structure and guidelines.
-
-The current configuration approach - using module wide configuration files - is not sufficient for complex user applications and systems.
-
-[Clearly explain why the existing platform/project solution is inadequate to address the topic that the CR solves.]
-
-    .. note::
-     The motivation is critical for CRs that want to change the existing features or infrastructure.
-     It should clearly explain why the existing solution is inadequate to address the topic that the CR solves.
-     Motivation may based on criteria as resource requirements, scheduling issues, risks, benefits, etc.
-     CRs submissions without sufficient motivation may be rejected.
-
+The current configuration landscape in S-CORE suffers from fragmentation: contributors define static configurations independently, leading to inconsistencies in identifiers, variable naming, and file storage. Beyond structural differences, there is no common understanding of what must be configured for each module (e.g. support for "multiple instances"). This results in missing or redundant parameters, unclear dependencies, and unpredictable integration behavior. Without a shared model, cross-module consistency can hardly be guaranteed, making maintenance and scaling difficult. Introducing both a guideline and a model addresses these gaps by ensuring uniformity in configuration structure and content, reducing errors, and improving overall system reliability.
 
 
 Rationale
 =========
 
-[Describe why particular design decisions were made.]
-
-
-   .. note::
-      The rationale should provide evidence of consensus within the community and discuss important objections or concerns raised during discussion.
-      For the documentation of the decision the :need:`gd_temp__change_decision_record` can be used.
-
-The common 
+Will be added during implementation.
 
 Specification
 =============
 
-[Describe the requirements, architecture of any new feature.] or
-[Describe the change to requirements, architecture, implementation, process, documentation, infrastructure of any change request.]
+Guideline and model definition is part of the pitch. They should cover at least the following aspects:
 
-   .. note::
-      A CR shall specify the stakeholder requirements as part of our platform/project.
-      Thereby the :need:`rl__project_lead` will approve these requirements as part of accepting the CR (e.g. merging the PR with the CR).
+Requirements
+------------
+
+* **Common Format**: Define a formal description language for the configuration model (e.g., JSON schema or FlatBuffers) to ensure machine-readable and validated configurations.
+* **Self-Contained Module Configuration**: Each module must be able to carry its own configuration for portability. This introduces a potential conflict with centralized consistency. Compromise: Implement consistency checks across modules rather than enforcing a single shared configuration file.
+* **Extensibility**: The model should be designed to accommodate future features and extensions without breaking existing configurations.
+* **Supported Features**:
+  * Configuration scope of current module configurations need to be considered
+  * Multiple instantiations of the same module with distinct configurations.
+  * Versioning of configuration schema for backward compatibility.
+  * further features to be defined.
+
+Architecture
+------------
+
+* **Configuration Schema Layer**: Defines the model in JSON schema or FlatBuffers.
+* **Validation Engine**: Performs consistency checks across modules and validates schema compliance.
+* **Integration Layer**: Ensures that module configurations can be loaded independently while maintaining global consistency rules.
+
+Changes Introduced
+------------------
+
+* **Requirements**: Add mandatory adherence to the guideline and model for all new modules.
+* **Architecture**: Introduce schema-based configuration and validation components.
+* **Implementation**: Provide reference templates and examples for contributors.
+* **Process**: Update module development workflow to include configuration compliance checks.
+* **Documentation**: Publish guideline and model specifications with examples.
+* **Infrastructure**: Add tooling for automated validation and integration testing.
 
 
 
 Backwards Compatibility
 =======================
 
-[Describe potential impact (especially including safety and security impacts) and severity on pre-existing platform/project elements.]
+**Impact Assessment**: Low to Medium
+
+The configuration model is designed with extensibility and versioning to maintain backward compatibility. However, some existing modules may require minor configuration adjustments to align with the new standardized model.
 
 
 Security Impact
 ===============
 
-[How could a malicious user take advantage of this new/modified feature?]
-
-   .. note::
-      If there are security concerns in relation to the CR, those concerns should be explicitly written out to make sure reviewers of the CR are aware of them.
-
-Which security requirements are affected or has to be changed?
-Could the new/modified feature enable new threat scenarios?
-Could the new/modified feature enable new attack paths?
-Could the new/modified feature impact functional safety?
-If applicable, which additional security measures must be implemented to mitigate the risk?
-
-    .. note::
-     Use Trust Boundary, Defense in Depth Analysis and/or Security Software Critically Analysis,
-     Vulnerability Analysis.
-     [Methods will be defined later in Process area Security Analysis]
-     These analyses may not be available at the time of creation of the feature (request) but content will be improved iteratively.
+none
 
 Safety Impact
 =============
 
-[How could the safety be impacted by the new/modified feature?]
-
-   .. note::
-      If there are safety concerns in relation to the CR, those concerns should be explicitly written out to make sure reviewers of the CR are aware of them.
-      Link here to the filled out :need:`Impact Analysis Template <gd_temp__change_impact_analysis>` or copy the template in this chapter.
-
-Which safety requirements are affected or has to be changed?
-Could the new/modified feature be a potential common cause or cascading failure initiator?
-If applicable, which additional safety measures must be implemented to mitigate the risk?
-
-    .. note::
-     Use Dependency Failure Analysis and/or Safety Software Critically Analysis.
-     [Methods will be defined later in Process area Safety Analysis]
-     These analyses may not be available at the time of creation of the feature (request) but content will be improved iteratively.
-
-For new feature contributions:
-
-[What is the expected ASIL level?]
-
+none
 
 License Impact
 ==============
 
-[How could the copyright impacted by the license of the new contribution?]
+none
 
 
 How to Teach This
 =================
 
-[How to teach users, new and experienced, how to apply the CR to their work.]
+**Implementation Roadmap**:
 
-   .. note::
-      For a CR that adds new functionality or changes behavior, it is helpful to include a section on how to teach users, new and experienced, how to apply the CR to their work.
+1. **Documentation Package**:
+   * Configuration guideline with naming conventions and structure rules
+   * Model specification with required and optional elements
+   * Migration guide for existing modules
+   * Best practices and common patterns
 
+2. **Developer Resources**:
+   * Updated module templates with configuration sections
+   * Validation tools and IDE integration
+   * Example configurations for common use cases
+   * Training workshops for development teams
+
+3. **Integration Support**:
+   * Automated compliance checking in CI/CD pipelines
+   * Configuration validation utilities
+   * Migration assistance for legacy modules
 
 
 Rejected Ideas
 ==============
 
-[Why certain ideas that were brought while discussing this CR were not ultimately pursued.]
+**Centralized Configuration File**: Would compromise module portability and independence
 
-   .. note::
-      Throughout the discussion of a CR, various ideas will be proposed which are not accepted.
-      Those rejected ideas should be recorded along with the reasoning as to why they were rejected.
-      This both helps record the thought process behind the final version of the CR as well as preventing people from bringing up the same rejected idea again in subsequent discussions.
-      In a way this section can be thought of as a breakout section of the Rationale section that is focused specifically on why certain ideas were not ultimately pursued.
+**Purely Structural Approach**: Fails to address content fragmentation issues
 
+**Hard-coded Standards**: Too inflexible for future extensions and diverse module needs
 
+**Runtime Configuration Only**: Misses static configuration requirements for build-time optimization
 
 Open Issues
 ===========
 
-[Any points that are still being decided/discussed.]
+1. **Schema Implementation Language**: Final decision between JSON Schema and FlatBuffers pending performance analysis
 
-   .. note::
-       While a CR is in draft, ideas can come up which warrant further discussion.
-       Those ideas should be recorded so people know that they are being thought about but do not have a concrete resolution.
-       This helps make sure all issues required for the CR to be ready for consideration are complete and reduces people duplicating prior discussion.
+2. **Migration Timeline**: Coordination with existing module development cycles
+
+3. **Validation Granularity**: Define scope of cross-module consistency checks vs. module autonomy
+
+4. **Tooling Integration**: Specify IDE and build system integration requirements
 
 
 
-Footnotes
-=========
+References
+==========
 
-[A collection of footnotes cited in the CR, and a place to list non-inline hyperlink targets.]
+* **JSON Schema**: https://json-schema.org/ - Specification for configuration validation
+* **FlatBuffers**: https://google.github.io/flatbuffers/ - Alternative serialization format
+* **Module Development Guide**: Internal project documentation
+* **Configuration Examples**: Available in project repository under `/examples/config/`
 
 
 .. toctree::
