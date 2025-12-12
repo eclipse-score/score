@@ -15,8 +15,6 @@
 Module Safety Plan
 ******************
 
-.. note:: Document header
-
 .. document:: Baselibs Safety Plan
    :id: doc__baselibs_safety_plan
    :status: draft

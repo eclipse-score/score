@@ -15,8 +15,6 @@
 Module Safety Plan
 ******************
 
-.. note:: Document header
-
 .. document:: Communication Safety Plan
    :id: doc__communication_safety_plan
    :status: draft
