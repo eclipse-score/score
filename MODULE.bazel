@@ -26,7 +26,7 @@ bazel_dep(name = "rules_python", version = "1.4.1")
 
 PYTHON_VERSION = "3.12"
 
-python = use_extension("@rules_python//python/extensions:python.bzl", "python")
+python = use_extension("@rules_python//python/extensions:python.bzl", "python", dev_dependency = True)
 python.toolchain(
     configure_coverage_tool = True,
     is_default = True,
@@ -36,7 +36,7 @@ use_repo(python)
 
 # Additional Python rules provided by aspect, e.g. an improved version of
 # `py_binary`. But more importantly, it provides `py_venv`.
-bazel_dep(name = "aspect_rules_py", version = "1.6.3")
+bazel_dep(name = "aspect_rules_py", version = "1.6.3", dev_dependency = True)
 
 ###############################################################################
 #
@@ -72,6 +72,6 @@ bazel_dep(name = "rules_java", version = "8.15.1")
 # Score custom modules loading
 #
 ###############################################################################
-bazel_dep(name = "score_tooling", version = "1.0.2")
+bazel_dep(name = "score_tooling", version = "1.0.4")
 bazel_dep(name = "score_docs_as_code", version = "2.2.0")
 bazel_dep(name = "score_process", version = "1.4.0")
