@@ -103,8 +103,20 @@ Associated Infrastructure Modules
 -----------------------------------
 
 process_description
-~~~~~~~~~~~~~~~~~~~~~~~
-TBD
+~~~~~~~~~~~~~~~~~~~
+Provides a process model establishing organizational rules for developing open source software
+in the automotive domain, suitable for safety and security contexts.
+
+- **Version:** ``process description v1.4.0``
+- **Standards alignment:**
+
+    - ASPICE 4.0
+    - ISO 26262
+    - ISO 21434
+    - ISO PAS 8926
+
+- **Release notes**: `process_description release notes <https://github.com/eclipse-score/process_description/releases/tag/v1.4.0>`_
+- **Process maturity**: `process_description maturity levels <https://eclipse-score.github.io/process_description/main/>`_
 
 docs-as-code
 ~~~~~~~~~~~~~~
