@@ -229,18 +229,14 @@ FEO Component Work Products List
           - <Link to WP>
           - <automated>
 
-        * - :need:`wp__sw_component_class`
-          - :need:`gd_guidl__component_classification`
-          - :ndf:`copy('status', need_id='gd_guidl__component_classification')`
-          - https://github.com/eclipse-score/score/issues/1679
-          - :need:`doc__feo_comp_class`
-          - :ndf:`copy('status', need_id='doc__feo_comp_class')`
 
-Note: In case the component is a new development, :need:`wp__sw_component_class` shall be removed from the above list (and also from the folders).
-In case an OSS element is used in the module, part 6 has to be filled out, depending on the component classification results.
+As feo is using score-crates as OSS component, the following section should be filled out
+accordingly.
+This section is currently only a placeholder and needs to be adapted based on the progress of the
+OSS qualification.
 
-OSS (sub-)component qualification plan
-======================================
+OSS score-crates component qualification plan
+=============================================
 
 For the selected OSS component the following work products will be implemented (and why):
 
@@ -257,27 +253,27 @@ If the OSS element is classified as a
 
         * - :need:`wp__requirements_comp`
           - <Link to issue>
-          - Always needed (for Q and QR classification) and also improves process Id 2
+          - Always needed (for Q and QR classification) and also improves process Id 2.
 
         * - :need:`wp__requirements_comp_aou`
           - <Link to issue>
-          - Always needed (for Q and QR classification) and also improves process Id 5
+          - Always needed (for Q and QR classification) and also improves process Id 5.
 
         * - :need:`wp__requirements_inspect`
           - n/a
-          - Checklist used in Pull Request Review
+          - Checklist used in Pull Request Review.
 
         * - :need:`wf__cr_mt_comparch`
           - <Link to issue>
-          - <Reasoning for tailoring, needed for example in case of deficits in process Id 3&4 and complexity Ids 1&4>
+          - <Reasoning for tailoring, needed for example in case of deficits in process Id 3&4 and complexity Ids 1&4>.
 
         * - :need:`wp__sw_component_fmea`
           - <Link to issue>
-          - <Reasoning for tailoring, could help arguing too high cyclomatic complexity covered by safety mechanisms>
+          - <Reasoning for tailoring, could help arguing too high cyclomatic complexity covered by safety mechanisms>.
 
         * - :need:`wp__sw_arch_verification`
           - <Link to issue>
-          - <Reasoning for tailoring, needed if also wf__cr_mt_comparch is required>
+          - <Reasoning for tailoring, needed if also wf__cr_mt_comparch is required>.
 
         * - :need:`wp__sw_implementation`
           - n/a
@@ -285,15 +281,15 @@ If the OSS element is classified as a
 
         * - :need:`wp__verification_sw_unit_test`
           - <Link to issue>
-          - <Reasoning for tailoring, can improve deficits in process Id 6 and complexity Id 3>
+          - <Reasoning for tailoring, can improve deficits in process Id 6 and complexity Id 3>.
 
         * - :need:`wp__sw_implementation_inspection`
           - <Link to issue>
-          - <Reasoning for tailoring, can improve deficits in process Id 6 and complexity Id 2>
+          - <Reasoning for tailoring, can improve deficits in process Id 6 and complexity Id 2>.
 
         * - :need:`wp__verification_comp_int_test`
           - <Link to issue>
-          - Always needed (for Q and QR classification)
+          - Always needed (for Q and QR classification).
 
         * - :need:`wp__sw_component_class`
           - <Link to issue>

@@ -584,7 +584,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-4410240d">
+  <div class="need_container docutils container" id="SNCB-4f7238a2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__feo_safety_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -744,7 +744,7 @@ The module consists of one or more SW components and will be qualified as a SEoo
 <td><p>valid</p></td>
 <td><p><a class="github reference external" href="https://github.com/eclipse-score/score/issues/1666">eclipse-score/score#1666</a></p></td>
 <td><p><a class="reference internal" href="../release/release_note.html#doc__feo_release_note" title="doc__feo_release_note"><em class="xref need">FEO Module Release Note (doc__feo_release_note)</em></a></p></td>
-<td><p>draft</p></td>
+<td><p>valid</p></td>
 </tr>
 </tbody>
 </table>
@@ -841,22 +841,17 @@ The module consists of one or more SW components and will be qualified as a SEoo
 <td><p>&lt;Link to WP&gt;</p></td>
 <td><p>&lt;automated&gt;</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__sw_component_class">wp__sw_component_class</a></p></td>
-<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/guidance/guideline_component_classification.html#gd_guidl__component_classification">gd_guidl__component_classification</a></p></td>
-<td><p>valid</p></td>
-<td><p><a class="github reference external" href="https://github.com/eclipse-score/score/issues/1679">eclipse-score/score#1679</a></p></td>
-<td><p><a class="reference internal" href="../../feo/docs/component_classification.html#doc__feo_comp_class" title="doc__feo_comp_class"><em class="xref need">FEO Component Classification (doc__feo_comp_class)</em></a></p></td>
-<td><p>draft</p></td>
-</tr>
 </tbody>
 </table>
 </div>
-<p>Note: In case the component is a new development, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__sw_component_class">wp__sw_component_class</a> shall be removed from the above list (and also from the folders).
-In case an OSS element is used in the module, part 6 has to be filled out, depending on the component classification results.</p>
+<p>As feo is using score-crates as OSS component, the following section should be filled out
+accordingly.
+This section is currently only a placeholder and needs to be adapted based on the progress of the
+OSS qualification.</p>
 </section>
 </section>
-<section id="oss-sub-component-qualification-plan">
-<h2>OSS (sub-)component qualification plan<a class="headerlink" href="#oss-sub-component-qualification-plan" title="Link to this heading">#</a></h2>
+<section id="oss-score-crates-component-qualification-plan">
+<h2>OSS score-crates component qualification plan<a class="headerlink" href="#oss-score-crates-component-qualification-plan" title="Link to this heading">#</a></h2>
 <p>For the selected OSS component the following work products will be implemented (and why):</p>
 <dl class="simple">
 <dt>If the OSS element is classified as a</dt><dd><ul class="simple">
@@ -876,27 +871,27 @@ In case an OSS element is used in the module, part 6 has to be filled out, depen
 <tbody>
 <tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_comp">wp__requirements_comp</a></p></td>
 <td><p>&lt;Link to issue&gt;</p></td>
-<td><p>Always needed (for Q and QR classification) and also improves process Id 2</p></td>
+<td><p>Always needed (for Q and QR classification) and also improves process Id 2.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_comp_aou">wp__requirements_comp_aou</a></p></td>
 <td><p>&lt;Link to issue&gt;</p></td>
-<td><p>Always needed (for Q and QR classification) and also improves process Id 5</p></td>
+<td><p>Always needed (for Q and QR classification) and also improves process Id 5.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_inspect">wp__requirements_inspect</a></p></td>
 <td><p>n/a</p></td>
-<td><p>Checklist used in Pull Request Review</p></td>
+<td><p>Checklist used in Pull Request Review.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/architecture_workflow.html#wf__cr_mt_comparch">wf__cr_mt_comparch</a></p></td>
 <td><p>&lt;Link to issue&gt;</p></td>
-<td><p>&lt;Reasoning for tailoring, needed for example in case of deficits in process Id 3&amp;4 and complexity Ids 1&amp;4&gt;</p></td>
+<td><p>&lt;Reasoning for tailoring, needed for example in case of deficits in process Id 3&amp;4 and complexity Ids 1&amp;4&gt;.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_analysis/safety_analysis_workproducts.html#wp__sw_component_fmea">wp__sw_component_fmea</a></p></td>
 <td><p>&lt;Link to issue&gt;</p></td>
-<td><p>&lt;Reasoning for tailoring, could help arguing too high cyclomatic complexity covered by safety mechanisms&gt;</p></td>
+<td><p>&lt;Reasoning for tailoring, could help arguing too high cyclomatic complexity covered by safety mechanisms&gt;.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/architecture_workproducts.html#wp__sw_arch_verification">wp__sw_arch_verification</a></p></td>
 <td><p>&lt;Link to issue&gt;</p></td>
-<td><p>&lt;Reasoning for tailoring, needed if also wf__cr_mt_comparch is required&gt;</p></td>
+<td><p>&lt;Reasoning for tailoring, needed if also wf__cr_mt_comparch is required&gt;.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/implementation_workproducts.html#wp__sw_implementation">wp__sw_implementation</a></p></td>
 <td><p>n/a</p></td>
@@ -904,15 +899,15 @@ In case an OSS element is used in the module, part 6 has to be filled out, depen
 </tr>
 <tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_sw_unit_test">wp__verification_sw_unit_test</a></p></td>
 <td><p>&lt;Link to issue&gt;</p></td>
-<td><p>&lt;Reasoning for tailoring, can improve deficits in process Id 6 and complexity Id 3&gt;</p></td>
+<td><p>&lt;Reasoning for tailoring, can improve deficits in process Id 6 and complexity Id 3&gt;.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/implementation_workproducts.html#wp__sw_implementation_inspection">wp__sw_implementation_inspection</a></p></td>
 <td><p>&lt;Link to issue&gt;</p></td>
-<td><p>&lt;Reasoning for tailoring, can improve deficits in process Id 6 and complexity Id 2&gt;</p></td>
+<td><p>&lt;Reasoning for tailoring, can improve deficits in process Id 6 and complexity Id 2&gt;.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_comp_int_test">wp__verification_comp_int_test</a></p></td>
 <td><p>&lt;Link to issue&gt;</p></td>
-<td><p>Always needed (for Q and QR classification)</p></td>
+<td><p>Always needed (for Q and QR classification).</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__sw_component_class">wp__sw_component_class</a></p></td>
 <td><p>&lt;Link to issue&gt;</p></td>
@@ -1162,7 +1157,7 @@ In case an OSS element is used in the module, part 6 has to be filled out, depen
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feo-component-work-products-list">FEO Component Work Products List</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oss-sub-component-qualification-plan">OSS (sub-)component qualification plan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oss-score-crates-component-qualification-plan">OSS score-crates component qualification plan</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#work-product-status-for-safety-package">Work Product Status (for Safety Package)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#component-requirements-status">Component Requirements Status</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#component-aou-status">Component AoU Status</a></li>
