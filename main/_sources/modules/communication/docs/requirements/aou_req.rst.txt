@@ -328,3 +328,6 @@ Assumptions of Use
 
    It shall be ensured that all safety relevant events/fields in the service type,
    are the same in all configurations.
+
+.. needextend:: "__communication_" in id
+   :+tags: communication

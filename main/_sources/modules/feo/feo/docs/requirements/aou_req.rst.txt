@@ -14,7 +14,7 @@
 
 .. document:: FEO Component Assumptions of Use Requirements
    :id: doc__component_feo_aou_reqs
-   :status: valid
+   :status: draft
    :security: NO
    :safety: ASIL_B
    :realizes: wp__requirements_comp_aou
@@ -29,7 +29,7 @@ FEO Component Assumption of Use Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :status: valid
+   :status: invalid
 
    Anything shall be done.
 

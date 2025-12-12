@@ -455,7 +455,7 @@ Functional Safety Specific SW Platform Work Products
 
     * - :need:`wp__tailoring` (generic)
       - :ndf:`copy('status', need_id='wf__def_app_process_description')`
-      - :need:`wp__tailoring_work_products` & :need:`doc__platform_safety_plan`
+      - :need:`wp__tailoring_work_products` & :need:`doc__score_platform_safety_plan`
       - valid
 
 Process status: Status of the workflow which "outputs" the work product, derived from the docs it "has" and guidances it "contains".
