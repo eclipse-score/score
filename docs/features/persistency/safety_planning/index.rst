@@ -12,10 +12,10 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Feature Safety Planning
-=======================
+Feature Safety Work Products List
+=================================
 
-.. document:: Persistency KVS Safety WPs
+.. document:: Persistency Safety WPs
    :id: doc__persistency_safety_wp
    :status: valid
    :safety: ASIL_B
@@ -24,85 +24,65 @@ Feature Safety Planning
    :tags: persistency
 
 
-.. list-table:: Feature persistency Workproducts
+.. list-table:: Feature persistency workproducts
     :header-rows: 1
 
     * - Workproduct Id
       - Link to process
       - Process status
-      - Link to issue
       - Link to WP
-      - WP status
 
     * - :need:`wp__feat_request`
       - :need:`gd_temp__change_feature_request`
       - :ndf:`copy('status', need_id='gd_temp__change_feature_request')`
-      - https://github.com/eclipse-score/score/issues/760
-      - :need:`doc__persistency_kvs`
-      - :ndf:`copy('status', need_id='doc__persistency_kvs')`
+      - :need:`doc__persistency`
 
     * - :need:`wp__requirements_feat`
       - :need:`gd_temp__req_feat_req`
       - :ndf:`copy('status', need_id='gd_temp__req_feat_req')`
-      - https://github.com/eclipse-score/score/issues/960
-      - :ref:`feature_requirements_PersistencyKvs`
-      - valid
+      - :need:`doc__feature_persistency_requirements`
 
     * - :need:`wp__requirements_feat_aou`
       - :need:`gd_temp__req_aou_req`
       - :ndf:`copy('status', need_id='gd_temp__req_aou_req')`
-      - https://github.com/eclipse-score/score/issues/960
-      - :ref:`feature_requirements_PersistencyKvs`
-      - valid
+      - :need:`doc__feature_persistency_requirements`
 
     * - :need:`wp__feature_arch`
       - :need:`gd_temp__arch_feature`
       - :ndf:`copy('status', need_id='gd_temp__arch_feature')`
-      - https://github.com/eclipse-score/score/issues/1020
-      - :ref:`feature_architecture_PersistencyKvs`
-      - valid
+      - :need:`doc__persistency_architecture`
 
     * - :need:`wp__feature_fmea`
       - :need:`gd_guidl__safety_analysis`
       - :ndf:`copy('status', need_id='gd_guidl__safety_analysis')`
-      - https://github.com/eclipse-score/score/issues/965
       - :need:`doc__persistency_fmea`
-      - valid
 
     * - :need:`wp__feature_dfa`
       - :need:`gd_guidl__safety_analysis`
       - :ndf:`copy('status', need_id='gd_guidl__safety_analysis')`
-      - https://github.com/eclipse-score/score/issues/965
       - :need:`doc__persistency_dfa`
-      - valid
 
     * - :need:`wp__requirements_inspect`
       - :need:`gd_chklst__req_inspection`
       - :ndf:`copy('status', need_id='gd_chklst__req_inspection')`
-      - https://github.com/eclipse-score/score/issues/960
-      - :need:`doc__req_inspection_persistency`
-      - valid
+      - :need:`doc__feature_persistency_requirements_chklst`
 
     * - :need:`wp__sw_arch_verification`
       - :need:`gd_chklst__arch_inspection_checklist`
       - :ndf:`copy('status', need_id='gd_chklst__arch_inspection_checklist')`
-      - https://github.com/eclipse-score/score/issues/1020
-      - Checklist used in Pull Request Review
-      - n/a
+      - :need:`doc__persistency_arc_inspection`
 
     * - :need:`wp__verification_feat_int_test`
       - :need:`gd_guidl__verification_guide`
       - :ndf:`copy('status', need_id='gd_guidl__verification_guide')`
-      - https://github.com/eclipse-score/score/issues/964
-      - Checklist used in Pull Request Review
-      - <automated>
+      - <WP Link>
 
 
 Feature Requirements Status
 ---------------------------
 
 .. needtable::
-   :filter: "persistency" in docname and "requirements" in docname and docname is not None
+   :filter: docname is not None and "persistency" in docname and "requirements" in docname
    :style: table
    :types: feat_req
    :tags: persistency
@@ -114,7 +94,7 @@ Feature AoU Status
 ------------------
 
 .. needtable::
-   :filter: "persistency" in docname and "requirements" in docname and docname is not None
+   :filter: docname is not None and "persistency" in docname and "requirements" in docname
    :style: table
    :types: aou_req
    :tags: persistency
@@ -126,7 +106,7 @@ Feature Architecture Status
 ---------------------------
 
 .. needtable::
-   :filter: "persistency" in docname and "requirements" in docname and docname is not None
+   :filter: docname is not None and "persistency" in docname and "architecture" in docname
    :style: table
    :types: feat_arc_sta; feat_arc_dyn
    :tags: persistency

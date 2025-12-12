@@ -14,8 +14,16 @@
 
 .. _safety_planning_ipc:
 
-Safety Planning
-###############
+Feature Safety Work Products List
+#################################
+
+.. document:: Communication IPC Safety WPs
+   :id: doc__com_ipc_safety_wp
+   :status: draft
+   :safety: ASIL_B
+   :security: YES
+   :realizes: wp__platform_safety_plan
+
 
 Tailoring
 =========
@@ -37,72 +45,66 @@ Inter-process Communication Safety Work Products
     * - Workproduct Id
       - Link to process
       - Process status
-      - Link to issue
       - Link to WP
-      - WP status
 
     * - :need:`wp__feat_request`
       - :need:`gd_temp__change_feature_request`
       - :ndf:`copy('status', need_id='gd_temp__change_feature_request')`
-      - `#69 <https://github.com/eclipse-score/score/issues/69>`_
       - :need:`doc__com_ipc`
-      - :ndf:`copy('status', need_id='doc__com_ipc')`
 
     * - :need:`wp__requirements_feat`
       - :need:`gd_temp__req_feat_req`
       - :ndf:`copy('status', need_id='gd_temp__req_feat_req')`
-      - `#69 <https://github.com/eclipse-score/score/issues/69>`_
       - :need:`doc__ipc_requirements`, :need:`doc__communication_requirements`
-      - :ndf:`copy('status', need_id='doc__ipc_requirements')`, :ndf:`copy('status', need_id='doc__communication_requirements')`
 
     * - :need:`wp__requirements_feat_aou`
       - :need:`gd_temp__req_aou_req`
       - :ndf:`copy('status', need_id='gd_temp__req_aou_req')`
-      - <link to issue>
       - :need:`doc__ipc_requirements`, :need:`doc__communication_requirements`
-      - :ndf:`copy('status', need_id='doc__ipc_requirements')`, :ndf:`copy('status', need_id='doc__communication_requirements')`
 
     * - :need:`wp__feature_arch`
       - :need:`gd_temp__arch_feature`
       - :ndf:`copy('status', need_id='gd_temp__arch_feature')`
-      - `#388 <https://github.com/eclipse-score/score/issues/388>`_
       - :need:`doc__ipc_architecture`
-      - :ndf:`copy('status', need_id='doc__ipc_architecture')`
 
     * - :need:`wp__feature_fmea`
       - :need:`gd_temp__feat_saf_fmea`
       - :ndf:`copy('status', need_id='gd_temp__feat_saf_fmea')`
-      - <link to issue>
       - :need:`doc__ipc_fmea`
-      - :ndf:`copy('status', need_id='doc__ipc_fmea')`
 
     * - :need:`wp__feature_dfa`
       - :need:`gd_temp__feat_saf_dfa`
       - :ndf:`copy('status', need_id='gd_temp__feat_saf_dfa')`
-      - <link to issue>
       - :need:`doc__ipc_dfa`
-      - :ndf:`copy('status', need_id='doc__ipc_dfa')`
 
     * - :need:`wp__requirements_inspect`
       - :need:`gd_chklst__req_inspection`
       - :ndf:`copy('status', need_id='gd_chklst__req_inspection')`
       - tailored
-      - n/a
-      - n/a
 
     * - :need:`wp__sw_arch_verification`
       - :need:`gd_chklst__arch_inspection_checklist`
       - :ndf:`copy('status', need_id='gd_chklst__arch_inspection_checklist')`
       - tailored
-      - n/a
-      - n/a
 
     * - :need:`wp__verification_feat_int_test`
       - :need:`gd_guidl__verification_guide`
       - :ndf:`copy('status', need_id='gd_guidl__verification_guide')`
-      - <link to issue>
       - <Link to WP>
-      - <automated>
+
+Feature Safety Package
+======================
+
+To create the safety package (according to :need:`gd_guidl__saf_package`) the following
+documents and work products status have to go to "valid" (after the relevant verification were performed).
+
+Feature Documents Status
+------------------------
+
+For all the work product documents the status can be seen by following the "Link to WP".
+A summary of the status is also documented in the project's documentation management plan.
+
+See :ref:`documents_docs_features_communication`
 
 Feature Requirements Status
 ---------------------------

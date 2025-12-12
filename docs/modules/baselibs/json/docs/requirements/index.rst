@@ -19,6 +19,7 @@ Requirements
    :id: doc__json_requirements
    :status: draft
    :safety: ASIL_B
+   :security: YES
    :realizes: wp__requirements_comp
 
 General Requirements

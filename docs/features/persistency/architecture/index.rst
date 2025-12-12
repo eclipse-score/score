@@ -12,7 +12,7 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _feature_architecture_PersistencyKvs:
+.. _feature_architecture_persistency:
 
 Architecture
 ============
@@ -62,7 +62,7 @@ Static Architecture
    :security: YES
    :safety: ASIL_B
    :includes: logic_arc_int__persistency__interface
-   :fulfils: feat_req__persistency__default_value_get,feat_req__persistency__default_values,feat_req__persistency__events,feat_req__persistency__integrity_check,feat_req__persistency__persist_data,feat_req__persistency__persistency,feat_req__persistency__snapshots,feat_req__persistency__support_datatype_keys,feat_req__persistency__support_datatype_value,feat_req__persistency__variant_management,feat_req__persistency__default_value_file,feat_req__persistency__config_file,feat_req__persistency__async_api,feat_req__persistency__access_control,feat_req__persistency__intra_process_comm
+   :fulfils: feat_req__persistency__default_value_get,feat_req__persistency__default_values,feat_req__persistency__async_completion,feat_req__persistency__integrity_check,feat_req__persistency__store_data,feat_req__persistency__load_data,feat_req__persistency__snapshot_create,feat_req__persistency__support_datatype_keys,feat_req__persistency__support_datatype_value,feat_req__persistency__variant_management,feat_req__persistency__default_value_file,feat_req__persistency__cfg,feat_req__persistency__async_api,feat_req__persistency__access_control,feat_req__persistency__concurrency
    :status: valid
 
    .. uml:: _assets/kvs_static_view.puml
@@ -82,7 +82,7 @@ Dynamic Architecture
    :id: feat_arc_dyn__persistency__delete_key
    :security: YES
    :safety: ASIL_B
-   :fulfils: feat_req__persistency__events
+   :fulfils: feat_req__persistency__support_datatype_keys,feat_req__persistency__support_datatype_value
    :status: valid
 
    .. uml:: _assets/kvs_dyn_delete_data_key.puml
@@ -91,7 +91,7 @@ Dynamic Architecture
    :id: feat_arc_dyn__persistency__flush
    :security: YES
    :safety: ASIL_B
-   :fulfils: feat_req__persistency__persist_data,feat_req__persistency__persistency,feat_req__persistency__snapshots,feat_req__persistency__integrity_check,feat_req__persistency__snapshots
+   :fulfils: feat_req__persistency__store_data,feat_req__persistency__snapshot_create,feat_req__persistency__integrity_check,feat_req__persistency__snapshot_restore
    :status: valid
 
    .. uml:: _assets/kvs_dyn_flush_local_repr_to_file.puml
@@ -109,7 +109,7 @@ Dynamic Architecture
    :id: feat_arc_dyn__persistency__read_from_storage
    :security: YES
    :safety: ASIL_B
-   :fulfils: feat_req__persistency__persist_data,feat_req__persistency__persistency,feat_req__persistency__integrity_check,feat_req__persistency__snapshots
+   :fulfils: feat_req__persistency__load_data,feat_req__persistency__integrity_check,feat_req__persistency__snapshot_restore
    :status: valid
 
    .. uml:: _assets/kvs_dyn_read_file_into_local_repr.puml
@@ -127,7 +127,7 @@ Dynamic Architecture
    :id: feat_arc_dyn__persistency__snapshot_restore
    :security: YES
    :safety: ASIL_B
-   :fulfils: feat_req__persistency__snapshots,feat_req__persistency__persist_data,feat_req__persistency__persistency
+   :fulfils: feat_req__persistency__snapshot_restore,feat_req__persistency__store_data
    :status: valid
 
    .. uml:: _assets/kvs_dyn_restore_snapshot.puml
@@ -144,3 +144,6 @@ Logical Interfaces
    :status: valid
 
    .. uml:: _assets/kvs_interface.puml
+
+.. needextend:: docname is not None and "persistency/kvs/architecture" in docname
+   :+tags: persistency

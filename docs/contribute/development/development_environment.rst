@@ -17,6 +17,7 @@
    :status: valid
    :safety: ASIL_B
    :realizes: wp__sw_development_plan
+   :security: YES
 
 .. _setting_up_dev_env:
 

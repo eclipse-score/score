@@ -49,7 +49,7 @@ Functional Safety Management Roles
         * - Safety Manager
           - Alexander Schemmel
 
-        * - Module Project Lead
+        * - Module Project Manager (= Feature team lead)
           - Committers of feature team see `Communication FT <https://github.com/eclipse-score/communication/blob/main/.github/CODEOWNERS>`_
 
 Tailoring
@@ -122,13 +122,6 @@ Module Work products List
           - `#77 <https://github.com/eclipse-score/process_description/issues/77>`_
           - <Link to WP>
           - <WP status (manual)>
-
-        * - :need:`wp__module_sw_build_config`
-          - :need:`gd_temp__software_development_plan`
-          - :ndf:`copy('status', need_id='gd_temp__software_development_plan')`
-          - n/a
-          - `com/BUILD <https://github.com/eclipse-score/communication/blob/main/score/mw/com/BUILD>`_
-          - valid
 
         * - :need:`wp__module_safety_manual`
           - :need:`gd_temp__safety_manual`
