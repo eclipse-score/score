@@ -19,7 +19,9 @@ Feature Request
    :id: doc__logging
    :status: draft
    :safety: ASIL_B
+   :security: YES
    :tags: feature_request
+   :realizes: wp__feat_request
 
 
 Feature flag

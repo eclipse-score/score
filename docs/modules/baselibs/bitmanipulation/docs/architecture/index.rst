@@ -19,6 +19,7 @@ Bitmanipulation Component Architecture
    :id: doc__bitmanipulation_architecture
    :status: valid
    :safety: ASIL_B
+   :security: YES
    :realizes: wp__component_arch
 
 Overview/Description
@@ -52,7 +53,7 @@ Interfaces
    :safety: ASIL_B
    :status: valid
 
-.. logic_arc_int:: Bit Mask Opearator
+.. logic_arc_int:: Bit Mask Operator
    :id: logic_arc_int__baselibs__bit_mask_operator
    :security: NO
    :safety: ASIL_B

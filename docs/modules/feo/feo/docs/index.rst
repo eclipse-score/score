@@ -16,6 +16,7 @@
    :id: doc__feo
    :status: draft
    :safety: ASIL_B
+   :security: YES
    :realizes: wp__cmpt_request
    :tags: component_feo
 
@@ -59,7 +60,7 @@ Specification
 
    .. note::
       A CR shall specify the component requirements as part of our platform/project.
-      Thereby the :need:`rl__module_lead` will approve these requirements as part of accepting the CR (e.g. merging the PR with the CR).
+      Thereby the :need:`Module Lead <rl__committer>` will approve these requirements as part of accepting the CR (e.g. merging the PR with the CR).
 
 
 

@@ -21,6 +21,7 @@ Fixed execution order framework (FEO)
    :security: NO
    :safety: ASIL_B
    :tags: feature_request, frameworks_feo
+   :realizes: wp__feat_request
 
 
 .. toctree::

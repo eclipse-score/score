@@ -18,6 +18,7 @@
    :security: NO
    :safety: ASIL_B
    :tags: component_feo
+   :realizes: wp__training_path
 
 FEO Feature Safety Analysis Checklist
 =====================================

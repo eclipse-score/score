@@ -19,6 +19,7 @@ filesystem
    :id: doc__filesystem
    :status: draft
    :safety: ASIL_B
+   :security: YES
    :tags: baselibs_filesystem
    :realizes: wp__cmpt_request
 

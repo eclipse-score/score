@@ -19,6 +19,7 @@ Requirements
    :id: doc__filesystem_lib_requirements
    :status: draft
    :safety: ASIL_B
+   :security: YES
    :realizes: wp__requirements_comp
    :tags: requirements, filesystem_library
 
