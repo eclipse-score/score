@@ -78,9 +78,37 @@ Persistency
 TBD
 
 
-Orchestrator (Kyron and orchestration framework)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-TBD
+Orchestrator
+~~~~~~~~~~~~~
+
+**Improvements**
+
+- Support `log` frontend exchange  to: `log`, `tracing` or `score-log` (not yet implemented in this release)
+- Increased CIT coverage and stability improvements
+- Split of kyron into separate repositories: `orchestrator` and `kyron`
+
+:Version: ``orchestrator v0.0.4``
+:Source / tag: `Orchestrator GitHub release <https://github.com/eclipse-score/orchestrator/releases/tag/v0.0.4>`__
+:Further reading: See below
+
+  - `Orchestrator scope and design <https://github.com/eclipse-score/orchestrator/blob/main/src/orchestration/doc/features.md>`__
+  - `Orchestrator examples <https://github.com/eclipse-score/orchestrator/tree/main/src/orchestration/examples>`__
+
+Kyron
+~~~~~~
+
+**Improvements**
+
+- Support `log` frontend exchange  to: `log`, `tracing` or `score-log` (not yet implemented in this release)
+- Increased CIT coverage and stability improvements
+- Split of kyron into separate repositories: `orchestrator` and `kyron`
+
+:Version: ``kyron v0.0.3``
+:Source / tag: `Kyron GitHub release <https://github.com/eclipse-score/kyron/releases/tag/v0.0.3>`__
+:Further reading: See below
+
+  - `Kyron scope and design <https://github.com/eclipse-score/kyron/blob/main/src/kyron/doc/features.md>`__
+  - `Kyron examples <https://github.com/eclipse-score/kyron/tree/main/src/kyron/examples>`__
 
 
 Reference integration
