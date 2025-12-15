@@ -17,8 +17,6 @@
 Configuration Model
 ###################
 
-.. note:: Document header
-
 .. document:: Configuration Model
    :id: doc__configuration_model
    :status: draft
@@ -44,7 +42,7 @@ This proposal introduces a unified approach to static module configuration in S-
 Motivation
 ==========
 
-The current configuration landscape in S-CORE suffers from fragmentation: contributors define static configurations independently, leading to inconsistencies in identifiers, variable naming, and file storage. Beyond structural differences, there is no common understanding of what must be configured for each module (e.g. support for "multiple instances"). This results in missing or redundant parameters, unclear dependencies, and unpredictable integration behavior. Without a shared model, cross-module consistency can hardly be guaranteed, making maintenance and scaling difficult. Introducing both a guideline and a model addresses these gaps by ensuring uniformity in configuration structure and content, reducing errors, and improving overall system reliability.
+The current configuration landscape in S-CORE suffers from fragmentation: contributors define static configurations independently, leading to inconsistencies in identifiers, variable naming, and file storage. Beyond structural differences, there is no common understanding of what must be configured for each module (e.g. how to support for "multiple instances"). This results in missing or redundant parameters, unclear dependencies, and unpredictable integration behavior. Without a shared model, cross-module consistency can hardly be guaranteed, making maintenance and scaling difficult. Introducing both a guideline and a model addresses these gaps by ensuring uniformity in configuration structure and content, reducing errors, and improving overall system reliability.
 
 
 Rationale
@@ -60,8 +58,8 @@ Guideline and model definition is part of the pitch. They should cover at least 
 Requirements
 ------------
 
-* **Common Format**: Define a formal description language for the configuration model (e.g., JSON schema or FlatBuffers) to ensure machine-readable and validated configurations.
-* **Self-Contained Module Configuration**: Each module must be able to carry its own configuration for portability. This introduces a potential conflict with centralized consistency. Compromise: Implement consistency checks across modules rather than enforcing a single shared configuration file.
+* **Common Format**: Define a formal description language for the configuration model (e.g., JSON schema) to ensure machine-readable and validated configurations.
+* **Self-Contained Module Configuration**: To provide a self-contained module, each module must be able to carry its own configuration. This introduces a potential conflict with centralized consistency. Potential compromise: Implement consistency checks across modules rather than enforcing a single shared configuration file.
 * **Extensibility**: The model should be designed to accommodate future features and extensions without breaking existing configurations.
 * **Supported Features**:
   * Configuration scope of current module configurations need to be considered
@@ -72,7 +70,7 @@ Requirements
 Architecture
 ------------
 
-* **Configuration Schema Layer**: Defines the model in JSON schema or FlatBuffers.
+* **Configuration Schema Layer**: Defines the model, e.g. in JSON schema.
 * **Validation Engine**: Performs consistency checks across modules and validates schema compliance.
 * **Integration Layer**: Ensures that module configurations can be loaded independently while maintaining global consistency rules.
 
@@ -144,7 +142,7 @@ Rejected Ideas
 
 **Hard-coded Standards**: Too inflexible for future extensions and diverse module needs
 
-**Runtime Configuration Only**: Misses static configuration requirements for build-time optimization
+**Runtime Configuration Only**: Will not meet runtime requirements like fast startup time
 
 Open Issues
 ===========
