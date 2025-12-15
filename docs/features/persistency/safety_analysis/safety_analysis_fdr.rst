@@ -47,7 +47,7 @@ The purpose of this Safety Analysis (DFA and FMEA) checklist template is to coll
         -
       * - REQ_01_02
         - Are the templates for DFA and/or FMEA used?
-        - See :ref:`dfa_templates` / :ref:`FMEA_templates` and also :ref:`process_requirements_safety_analysis`
+        - See :need:`gd_temp__plat_saf_dfa` / :need:`gd_temp__feat_saf_dfa` / :need:`gd_temp__comp_saf_dfa` and also :need:`gd_temp__feat_saf_fmea` / :need:`gd_temp__comp_saf_fmea`
         - Templates are used to generate the DFA or / and FMEA.
         - yes
         -
