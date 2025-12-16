@@ -82,7 +82,7 @@ Assumptions of Use (AoU)
    :safety: ASIL_B
    :status: valid
 
-   The user shall ensure that bit positions and bit ranges passed to bit manipulation functions are within valid bounds for the integral type being operated on. Bit positions must not exceed the type's bit width.
+   The bit manipulation API shall validate bit positions and ranges are within the integral type's bit width and prevent data corruption through bounds checking.
 
 .. aou_req:: Integral Type Constraints
    :id: aou_req__bitmanipulation__type_constraints
@@ -100,7 +100,7 @@ Assumptions of Use (AoU)
    :safety: ASIL_B
    :status: valid
 
-   The user shall use scoped enumeration types (enum class) when applying bitmask operators. Unscoped enumerations are not supported to maintain type safety and prevent implicit conversions. Additionally, enum elements must be set to power-of-two values (1, 2, 4, 8, 16, etc.), and no enum element shall have the value 0.
+   The user shall use scoped enumeration types (enum class) whose enumerators are defined as non-zero power-of-two values (1, 2, 4, 8, 16, etc.)
 
 .. aou_req:: No Side Effects on Concurrent Access
    :id: aou_req__bitmanipulation__concurrent_access

@@ -519,7 +519,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../feo/index.html">FEO Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../lifecycle/index.html">Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../logging/index.html">Logging Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../orchestrator/index.html">Orchestrator Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../orchestrator/index.html">Orchestrator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../os/index.html">OS Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../persistency/index.html">Persistency KVS Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tracing/index.html">Tracing Module</a></li>
@@ -591,7 +591,7 @@
                   
   <section id="requirements">
 <span id="bitmanipulation-requirements"></span><h1>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-5699ae1b">
+<div class="need_container docutils container" id="SNCB-fca83a01">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__bitmanipulation_requirements">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -636,7 +636,7 @@
 </div>
 <section id="functional-requirements">
 <h2>Functional Requirements<a class="headerlink" href="#functional-requirements" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-09fc1a25">
+<div class="need_container docutils container" id="SNCB-e0f317a6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__bitmanipulation__utilities">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -680,7 +680,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-2241eb32">
+<div class="need_container docutils container" id="SNCB-31173e7a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__bitmanipulation__bitmask_operators">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -724,7 +724,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-bf5d1079">
+<div class="need_container docutils container" id="SNCB-714e8de2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__bitmanipulation__bounds_safety">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -771,7 +771,7 @@
 </section>
 <section id="non-functional-requirements">
 <h2>Non-Functional Requirements<a class="headerlink" href="#non-functional-requirements" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-4745df81">
+<div class="need_container docutils container" id="SNCB-2f06945d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__bitmanipulation__header_only">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -818,7 +818,7 @@
 </section>
 <section id="assumptions-of-use-aou">
 <h2>Assumptions of Use (AoU)<a class="headerlink" href="#assumptions-of-use-aou" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-be61c537">
+<div class="need_container docutils container" id="SNCB-2f478fb8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__bitmanipulation__valid_bit_positions">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -845,7 +845,7 @@
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The user shall ensure that bit positions and bit ranges passed to bit manipulation functions are within valid bounds for the integral type being operated on. Bit positions must not exceed the type’s bit width.</p></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The bit manipulation API shall validate bit positions and ranges are within the integral type’s bit width and prevent data corruption through bounds checking.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#aou_req__bitmanipulation__valid_bit_positions" title="aou_req__bitmanipulation__valid_bit_positions">aou_req__bitmanipulation__valid_bit_positions</a></span></span></div>
@@ -861,7 +861,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-30a7b4ea">
+<div class="need_container docutils container" id="SNCB-5715f58c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__bitmanipulation__type_constraints">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -904,7 +904,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f4fb9303">
+<div class="need_container docutils container" id="SNCB-0efff578">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__bitmanipulation__enum_type_safety">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -931,7 +931,7 @@
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The user shall use scoped enumeration types (enum class) when applying bitmask operators. Unscoped enumerations are not supported to maintain type safety and prevent implicit conversions. Additionally, enum elements must be set to power-of-two values (1, 2, 4, 8, 16, etc.), and no enum element shall have the value 0.</p></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The user shall use scoped enumeration types (enum class) whose enumerators are defined as non-zero power-of-two values (1, 2, 4, 8, 16, etc.)</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#aou_req__bitmanipulation__enum_type_safety" title="aou_req__bitmanipulation__enum_type_safety">aou_req__bitmanipulation__enum_type_safety</a></span></span></div>
@@ -947,7 +947,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-cbe2ecfd">
+<div class="need_container docutils container" id="SNCB-94fe16f6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__bitmanipulation__concurrent_access">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -990,7 +990,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-15e57f7b">
+<div class="need_container docutils container" id="SNCB-ad2b6ec8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__bitmanipulation__bit_validation">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">

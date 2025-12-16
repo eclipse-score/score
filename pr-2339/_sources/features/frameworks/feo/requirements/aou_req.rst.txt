@@ -28,7 +28,7 @@ FEO Feature Assumption of Use Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :status: valid
+   :status: invalid
 
    Something shall be done.
 

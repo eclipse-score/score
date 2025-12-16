@@ -12,6 +12,21 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+Module Documents Orchestrator
+#############################
+
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   manual/index.rst
+   safety_mgt/index.rst
+   verification/module_verification_report.rst
+   release/release_note.rst
+
+
+
 .. mod_view_sta:: Orchestrator
    :id: mod_view_sta__orch__orchestrator
    :includes: comp_arc_sta__orch__orchestrator, comp_arc_sta__orch__executor
@@ -21,10 +36,3 @@
       :align: center
 
       {{ draw_module(need(), needs) }}
-
-Module Documents
-================
-
-.. toctree::
-   :maxdepth: 1
-   :titlesonly:

@@ -46,4 +46,5 @@ Platform Management Plan
    :titlesonly:
    :caption: Role Assignments
 
+   role_assignment/platform_safety_engineer
    role_assignment/platform_safety_manager

@@ -120,3 +120,6 @@ Lower Level Components
 
     - Replace the example content by the real content (according to :need:`gd_guidl__arch_design`)
     - Set the status to valid and start the review/merge process
+
+.. needextend:: docname is not None and "persistency/kvs/docs/architecture" in docname
+   :+tags: kvs
