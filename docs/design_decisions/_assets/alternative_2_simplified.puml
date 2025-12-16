@@ -1,0 +1,56 @@
+@startuml elemente
+
+package "S-Core Repo" {
+  class Platform {
+    + SEooC: bool
+    --
+    Objectives
+    Stakeholder Requirements
+    SW-Platform Assumptions of use
+    Platform Integration Tests
+  }
+}
+
+package "Feature Repo" {
+  class Feature {
+    + SEooC: bool
+    --
+    Feature Requirements
+    Feature Architecture
+    Feature Integration Tests
+    Feature Safety/Security Analysis
+    Feature Assumptions of use
+  }
+
+  class Component {
+    --
+    Component Requirements
+    Component Architecture
+    Component Integration Tests
+    Component Safety/Security Analysis
+    Component Assumption of use
+  }
+
+  class Unit {
+    --
+    Detailed Design
+    Source Code
+    Unit Test
+  }
+}
+
+package "Integration Repo" {
+}
+
+' Package Relationships
+"Integration Repo" ..> "S-Core Repo" : derives from
+"Integration Repo" ..> "Feature Repo" : uses
+"S-Core Repo" -[hidden]d- "Feature Repo"
+
+' Relationships
+Platform "1" *-- "n" Feature
+Feature "1" o-- "n" Component
+Component "1" o-- "n" Component : contains
+Component "1" o-d- "n" Unit
+
+@enduml
