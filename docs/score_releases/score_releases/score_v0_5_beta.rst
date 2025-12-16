@@ -160,7 +160,13 @@ TBD
 
 Test Scenarios
 ~~~~~~~~~~~~~~~
-TBD
+
+**Improvements**
+- Refactor tracing subscriber by externalizing it's initialization
+- Remove baselibs dependency from C++ scenarios in JSON parsing
+
+:Version: ``Test Scenarios v0.3.1``
+:Source / tag: `Test Scenarios GitHub release <https://github.com/eclipse-score/testing_tools/releases/tag/v0.3.1>`__
 
 Performed Verification
 ----------------------
