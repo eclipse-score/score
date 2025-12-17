@@ -21,6 +21,7 @@ Safety Package Formal Review Report
    :id: doc__baselibs_safety_package_fdr
    :status: draft
    :safety: ASIL_B
+   :security: NO
    :realizes: wp__fdr_reports
 
 

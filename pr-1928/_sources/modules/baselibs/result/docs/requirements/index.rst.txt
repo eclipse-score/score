@@ -19,6 +19,7 @@ Requirements
    :id: doc__result_lib_requirements
    :status: draft
    :safety: ASIL_B
+   :security: YES
    :realizes: wp__requirements_comp
    :tags: requirements, result_library
 
@@ -34,7 +35,18 @@ Functional Requirements
    :status: valid
    :tags: inspected
 
-   The Result library shall provide an error handling mechanism that enables functions to return either successful values or error information without using C++ exceptions.
+   The Result library shall provide an error handling mechanism that enables functions to return either successful values ("Get Value") or error information ("Get Error") without using C++ exceptions.
+
+.. comp_req:: Set Result
+   :id: comp_req__result__set_result
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :satisfies: feat_req__baselibs__result_library
+   :status: valid
+   :tags: inspected
+
+   The Result library shall provide a "Set Result" operation that accepts either a successful value of type T or an Error object.
 
 .. comp_req:: Domain-Specific Error Information
    :id: comp_req__result__domain_error_information
@@ -67,7 +79,7 @@ Functional Requirements
    :status: valid
    :tags: inspected
 
-   The Result library shall provide conversion utilities to transform Result objects into standard library optional type, with enforced error handling.
+   The Result library shall provide conversion utilities to transform Result objects into std::optional<T> types. The conversion shall require explicit handling of error cases before discarding error information, ensuring that errors cannot be silently ignored.
 
 Non-Functional Requirements
 ===========================
@@ -117,6 +129,16 @@ Assumptions of Use (AoU)
 
    The user shall check and handle both successful and error states of Result objects before accessing contained values to prevent undefined behavior.
 
+.. aou_req:: Error Reaction and Safe State
+   :id: aou_req__result__error_reaction
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :status: valid
+   :tags: inspected
+
+   The user shall implement error reaction mechanisms that transition the system to a safe state when error conditions are detected in Result objects.
+
 .. aou_req:: Thread Safety
    :id: aou_req__result__thread_safety
    :reqtype: Non-Functional
@@ -125,7 +147,7 @@ Assumptions of Use (AoU)
    :status: valid
    :tags: inspected
 
-   The user shall ensure appropriate synchronization mechanisms when using Result objects in multi-threaded environments, as the library provides no internal thread safety guarantees.
+   The user shall implement external synchronization mechanisms (e.g., mutexes, atomic operations, or locks) when accessing or modifying Result objects from multiple threads concurrently, as the library provides no internal thread safety guarantees.
 
 .. aou_req:: Resource Lifetime
    :id: aou_req__result__resource_lifetime

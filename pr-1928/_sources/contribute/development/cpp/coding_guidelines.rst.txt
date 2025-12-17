@@ -18,6 +18,9 @@ Writing C++ Code
 .. document:: Coding Guidelines C++
    :id: doc__cpp_coding_guidelines
    :status: valid
+   :safety: ASIL_B
+   :security: YES
+   :realizes: wp__sw_development_plan
 
 Coding Guidelines
 =================

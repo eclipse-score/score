@@ -21,6 +21,8 @@ How to Contribute?
    :id: doc__contr_guideline
    :status: valid
    :safety: QM
+   :security: NO
+   :realizes: wp__training_path
 
 How we Work
 ===========
@@ -90,6 +92,8 @@ What is a Pull Request (PR)?
    :id: doc__pull_request_guideline
    :status: valid
    :safety: QM
+   :security: NO
+   :realizes: wp__training_path
 
 A Pull Request (**PR**) is the **ONLY** way to contribute **CODE** to the *S-CORE* project.
 
@@ -159,6 +163,8 @@ What is a GitHub Issue?
    :id: doc__issue_guideline
    :status: valid
    :safety: QM
+   :security: NO
+   :realizes: wp__training_path
 
 A *GitHub Issue* is the way to report bugs or propose improvements without knowing the solution and to request features (incl. scope changes).
 

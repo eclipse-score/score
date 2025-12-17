@@ -21,6 +21,9 @@ Communication (v0.5 alpha)
    :id: doc__com
    :status: valid
    :tags: feature_request
+   :safety: ASIL_B
+   :security: YES
+   :realizes: wp__feat_request
 
 .. toctree::
    :maxdepth: 1

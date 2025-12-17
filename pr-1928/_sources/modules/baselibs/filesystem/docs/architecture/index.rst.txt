@@ -12,12 +12,13 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Component Architecture
-======================
+Filesystem Component Architecture
+**********************************
 
 .. document:: Filesystem Architecture
    :id: doc__filesystem_architecture
-   :status: draft
+   :status: valid
+   :security: YES
    :safety: ASIL_B
    :realizes: wp__component_arch
 
@@ -28,49 +29,186 @@ see :need:`doc__filesystem`
 Static Architecture
 -------------------
 
-The components are designed to cover the expectations from the feature architecture
-(i.e. if already exists a definition it should be taken over and enriched).
+.. comp_arc_sta:: Filesystem
+   :id: comp_arc_sta__baselibs__filesystem
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :tags: baselibs_filesystem
+   :implements: logic_arc_int__baselibs__filesystem
 
-.. code-block:: rst
+   .. needarch::
+      :scale: 50
+      :align: center
 
-   .. comp_arc_sta:: Component Name (Static View)
-      :id: comp_arc_sta__component_name__static_view
-      :security: YES
-      :safety: ASIL_B
-      :status: invalid
-      :implements: logic_arc_int__feature_name__interface_name
-      :fulfils: comp_req__component_name__some_title
-      :includes: comp_arc_sta__component_name__2
-
-      .. needarch::
-         :scale: 50
-         :align: center
-
-         {{ draw_component(need(), needs) }}
-
-Dynamic Architecture
---------------------
-
-.. code-block:: rst
-
-   .. comp_arc_dyn:: Dynamic View
-      :id: comp_arc_dyn__component_name__dynamic_view
-      :security: YES
-      :safety: ASIL_B
-      :status: invalid
-      :fulfils: comp_req__component_name__some_title
-
-      put here a sequence diagram
-
+      {{ draw_component(need(), needs) }}
 
 Interfaces
 ----------
 
-.. code-block:: rst
+.. logic_arc_int:: Filesystem
+   :id: logic_arc_int__baselibs__filesystem
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
 
-   .. real_arc_int:: <Title>
-      :id: real_arc_int__<component>__<Title>
-      :security: <YES|NO>
-      :safety: <QM|ASIL_B>
-      :fulfils: <link to component requirement id>
-      :language: cpp
+.. logic_arc_int_op:: Path Canonicalization
+   :id: logic_arc_int_op__baselibs__absolute
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__filesystem
+
+.. logic_arc_int_op:: File/Directory Existence Check
+   :id: logic_arc_int_op__baselibs__exists
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__filesystem
+
+.. logic_arc_int_op:: File Type Detection
+   :id: logic_arc_int_op__baselibs__file_type
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__filesystem
+
+.. logic_arc_int_op:: File Status Query
+   :id: logic_arc_int_op__baselibs__file_status
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__filesystem
+
+.. logic_arc_int_op:: Copy File
+   :id: logic_arc_int_op__baselibs__copy_file
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__filesystem
+
+.. logic_arc_int_op:: Remove File or Directory
+   :id: logic_arc_int_op__baselibs__remove
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__filesystem
+
+.. logic_arc_int_op:: Modify File Permissions
+   :id: logic_arc_int_op__baselibs__permissions
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__filesystem
+
+.. logic_arc_int_op:: Create Directory
+   :id: logic_arc_int_op__baselibs__create_directory
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__filesystem
+
+.. logic_arc_int_op:: Symlink Operations
+   :id: logic_arc_int_op__baselibs__symlink_ops
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__filesystem
+
+.. logic_arc_int_op:: Hard Link Operations
+   :id: logic_arc_int_op__baselibs__hardlink_ops
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__filesystem
+
+.. logic_arc_int_op:: Last Write Time
+   :id: logic_arc_int_op__baselibs__last_write_time
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__filesystem
+
+.. logic_arc_int_op:: Current Path
+   :id: logic_arc_int_op__baselibs__current_path
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__filesystem
+
+.. logic_arc_int_op:: Empty Check
+   :id: logic_arc_int_op__baselibs__is_empty
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__filesystem
+
+.. logic_arc_int_op:: Directory Creation with Permissions
+   :id: logic_arc_int_op__baselibs__create_dir_perms
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__filesystem
+
+.. logic_arc_int_op:: File Content Comparison
+   :id: logic_arc_int_op__baselibs__file_comparison
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__filesystem
+
+.. logic_arc_int_op:: Group Ownership Management
+   :id: logic_arc_int_op__baselibs__change_group
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__filesystem
+
+.. logic_arc_int_op:: Group Validation
+   :id: logic_arc_int_op__baselibs__validate_group
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__filesystem
+
+.. logic_arc_int_op:: Check Filesystem
+   :id: logic_arc_int_op__baselibs__check_filesystem
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__filesystem
+
+.. logic_arc_int_op:: Repair Filesystem
+   :id: logic_arc_int_op__baselibs__repair_filesystem
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__filesystem
+
+.. logic_arc_int_op:: Partition Formatting
+   :id: logic_arc_int_op__baselibs__format_partition
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__filesystem
+
+.. logic_arc_int_op:: QNX Compatibility Check
+   :id: logic_arc_int_op__baselibs__qnx_compatible
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__filesystem
+
+.. logic_arc_int_op:: Directory Synchronization
+   :id: logic_arc_int_op__baselibs__sync_directory
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__filesystem
+
+.. logic_arc_int_op:: Unique File Creation
+   :id: logic_arc_int_op__baselibs__open_unique_file
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__filesystem

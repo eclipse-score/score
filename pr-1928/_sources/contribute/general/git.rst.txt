@@ -16,6 +16,7 @@
    :id: doc__git_coding_guidelines
    :status: valid
    :safety: ASIL_B
+   :security: NO
    :realizes: wp__sw_development_plan
 
 .. _git_guidelines:

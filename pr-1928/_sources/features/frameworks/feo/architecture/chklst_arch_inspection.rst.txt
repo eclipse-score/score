@@ -18,6 +18,7 @@
    :security: NO
    :safety: ASIL_B
    :tags: frameworks_feo
+   :realizes: wp__sw_arch_verification
 
 FEO Feature Architecture Inspection Checklist
 =============================================

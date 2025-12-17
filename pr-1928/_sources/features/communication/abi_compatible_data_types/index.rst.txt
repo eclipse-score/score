@@ -22,6 +22,8 @@ ABI Compatible Data Types
    :status: valid
    :safety: ASIL_B
    :tags: feature_request, change_management, communication, abi_compatible_data_types
+   :security: YES
+   :realizes: wp__feat_request
 
 
 .. toctree::

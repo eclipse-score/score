@@ -18,6 +18,7 @@
    :safety: ASIL_B
    :security: NO
    :tags: platform_management
+   :realizes: wp__platform_sw_release_plan
 
 Release management Plan
 -----------------------

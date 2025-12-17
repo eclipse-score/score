@@ -21,6 +21,13 @@ Code Generation
    :id: doc__code_generation
    :status: draft
    :safety: ASIL_B
+   :security: NO
+   :tags: feature_request
+   :realizes: wp__code_generation
+
+.. workproduct:: Code Generation – Feature Description
+   :id: wp__code_generation
+   :status: draft
    :tags: feature_request
 
 .. toctree::

@@ -19,6 +19,7 @@
    :security: NO
    :safety: ASIL_B
    :tags: frameworks_feo
+   :realizes: wp__requirements_inspect
 
 
 FEO Feature Requirement Inspection Checklist

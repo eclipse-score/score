@@ -165,7 +165,7 @@ Security Resources
 
 Security managers are elected by :need:`rl__project_lead` for all the S-CORE OoCs development.
 
-The security manager, supported by the project manager (i.e. the :need:`rl__technical_lead`),  will ensure that
+The security manager, supported by the project manager (i.e. the :need:`rl__project_lead`),  will ensure that
 security activities are actively planned, developed, analyzed, verified and tested and managed throughout the life cycle of the project.
 As all the implementation of security functions takes place within module development, there is a security manager appointed in the module's security plan.
 
@@ -205,12 +205,11 @@ The status report is based on security plans work product lists (see below) and 
 *Escalation*
 
 * Security Manager :need:`rl__security_manager` to steering committee documented in :need:`doc__project_mgt_plan`.
-* :need:`rl__technical_lead` to :need:`rl__project_lead`
 
 Examples for valid escalation causes are:
 
 * Security issues cannot be resolved on module level or with the available resources.
-* There are conflicting points of view between the Project Lead :need:`rl__project_lead`, Technical Lead :need:`rl__technical_lead`, Safety Manager :need:`rl__safety_manager`, Security Manager :need:`rl__security_manager` and the Quality Manager :need:`rl__quality_manager`
+* There are conflicting points of view between the Project Lead :need:`rl__project_lead`, Safety Manager :need:`rl__safety_manager`, Security Manager :need:`rl__security_manager` and the Quality Manager :need:`rl__quality_manager`
 
 Security Management Lifecycle
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -255,179 +254,68 @@ The platform management plan defines :doc:`quality_management`
 Platform Security Plan
 ++++++++++++++++++++++
 
-Security Management SW Platform Work Products
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Functional Safety/Security Management SW Platform Work Products
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. list-table:: SW Platform work products
+see :ref:`sw_platform_wp_list`
+
+Security Specific SW Platform Work Products
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. list-table:: SW Platform security work products
     :header-rows: 1
 
     * - work product Id
-      - Link to process
       - Process status
-      - Link to issue
       - Link to WP
       - WP status
 
-    * - :need:`wp__training_path`
-      - n/a
-      - n/a
-      - n/a
-      - not open sourced
-      - to be shown to assessor
-
-    * - :need:`wp__platform_mgmt`
-      - :need:`wf__platform_cr_mt_platform_mgmt_plan`
-      - :ndf:`copy('status', need_id='wf__platform_cr_mt_platform_mgmt_plan')`
-      - `#540 <https://github.com/eclipse-score/score/issues/540>`_
-      - :doc:`index`
-      - :ndf:`copy('status', need_id='doc__platform_mgt_plan')`
-
-    * - :need:`wp__qms_plan`
-      - :need:`wf__platform_cr_mt_platform_mgmt_plan`
-      - :ndf:`copy('status', need_id='wf__platform_cr_mt_platform_mgmt_plan')`
-      - `#316 <https://github.com/eclipse-score/score/issues/316>`_
-      - :doc:`quality_management`
-      - not started
-
     * - :need:`wp__platform_security_plan`
-      - :need:`gd_guidl__security_plan_definitions`
-      - :ndf:`copy('status', need_id='gd_guidl__security_plan_definitions')`
-      - `#TBD <https://github.com/eclipse-score/score/issues/381>`_
+      - :ndf:`copy('status', need_id='wf__cr_mt_security_plan')`
       - this document
       - see above
 
     * - :need:`wp__platform_security_package`
-      - :need:`gd_guidl__security_package`
-      - :ndf:`copy('status', need_id='gd_guidl__security_package')`
-      - <Link to issue>
+      - :ndf:`copy('status', need_id='wf__cr_mt_security_package')`
       - <Link to WP>
-      - <automated>
-
-    * - :need:`wp__issue_track_system`
-      - :doc:`index`
-      - :ndf:`copy('status', need_id='doc__platform_mgt_plan')`
-      - n/a
-      - `Project issues <https://github.com/eclipse-score/score/issues>`_
-      - established
-
-    * - :need:`wp__process_description`
-      - :need:`wf__def_app_process_description`
-      - :ndf:`copy('status', need_id='wf__def_app_process_description')`
-      - `Process community issues <https://github.com/orgs/eclipse-score/projects/7>`_
-      - `REPLACE_process_description`
-      - <automated>
-
-    * - :need:`wp__process_impr_report`
-      - :need:`wf__mon_imp_process_description`
-      - :ndf:`copy('status', need_id='wf__mon_imp_process_description')`
-      - <Link to issue>
-      - <Link to WP>
-      - <automated>
-
-    * - :need:`wp__process_strategy`
-      - :need:`wf__cr_mt_process_mgt_strategy`
-      - :ndf:`copy('status', need_id='wf__cr_mt_process_mgt_strategy')`
-      - `#232 <https://github.com/eclipse-score/score/issues/232>`_
-      - `Process community issues <https://github.com/orgs/eclipse-score/projects/7>`_
       - <automated>
 
     * - :need:`wp__fdr_reports_security` (platform Security Plan)
-      - :need:`gd_chklst__security_plan`
-      - :ndf:`copy('status', need_id='gd_chklst__security_plan')`
-      - <Link to issue>
+      - :ndf:`copy('status', need_id='wf__p_formal_security_rv')`
       - <Link to WP>
       - <automated>
 
     * - :need:`wp__fdr_reports_security` (platform Security Package)
-      - :need:`gd_chklst__security_package`
-      - :ndf:`copy('status', need_id='gd_chklst__security_package')`
-      - <Link to issue>
+      - :ndf:`copy('status', need_id='wf__p_formal_security_rv')`
       - <Link to WP>
       - <automated>
 
     * - :need:`wp__fdr_reports_security` (feature's Security Analyses)
-      - Security Analysis FDR tbd
-      - <automated>
-      - <Link to issue>
+      - <Process Status>
       - <Link to WP>
       - <automated>
 
     * - :need:`wp__audit_report_security`
       - performed by external experts
       - n/a
-      - `#TBD1 <https://github.com/eclipse-score/score/issues/470>`_
-      - <Link to WP>
       - currently tailored out
 
-    * - :need:`wp__platform_sw_build_config`
-      - :need:`doc__software_development_plan`
-      - :ndf:`copy('status', need_id='doc__software_development_plan')`
-      - <Link to issue>
-      - <Link to WP>
-      - <automated>
-
     * - :need:`wp__platform_security_manual`
-      - :need:`gd_temp__security_manual`
-      - :ndf:`copy('status', need_id='gd_temp__security_manual')`
-      - <Link to issue>
-      - <Link to WP>
-      - <automated>
-
-    * - :need:`wp__platform_sw_release_note`
-      - :doc:`release_management`
-      - not started
-      - <Link to issue>
-      - <Link to WP>
-      - <automated>
-
-    * - :need:`wp__verification_platform_ver_report`
-      - :need:`gd_temp__mod_ver_report`
-      - :ndf:`copy('status', need_id='gd_temp__mod_ver_report')`
-      - <Link to issue>
-      - <Link to WP>
-      - <automated>
-
-    * - :need:`wp__requirements_stkh`
-      - :need:`gd_temp__req_stkh_req`
-      - :ndf:`copy('status', need_id='gd_temp__req_stkh_req')`
-      - n/a (done already)
-      - :ref:`stakeholder_requirements`
-      - <automated>
-
-    * - :need:`wp__sw_development_plan`
-      - :need:`wf__platform_cr_mt_platform_mgmt_plan`
-      - :ndf:`copy('status', need_id='wf__platform_cr_mt_platform_mgmt_plan')`
-      - <Link to issue>
-      - :doc:`software_development`
-      - not started
-
-    * - :need:`wp__verification_plan`
-      - :need:`wf__platform_cr_mt_platform_mgmt_plan`
-      - :ndf:`copy('status', need_id='wf__platform_cr_mt_platform_mgmt_plan')`
-      - <Link to issue>
-      - :doc:`software_verification`
-      - not started
-
-    * - :need:`wp__tool_verification_report`
-      - :doc:`tool_management`
-      - not started
-      - <Link to issue>
+      - :ndf:`copy('status', need_id='wf__cr_mt_security_manual')`
       - <Link to WP>
       - <automated>
 
     * - :need:`wp__tailoring` (generic)
-      - :need:`gd_guidl__security_plan_definitions`
-      - :ndf:`copy('status', need_id='gd_guidl__security_plan_definitions')`
-      - `#TBD2 <https://github.com/eclipse-score/score/issues/307>`_
-      - `REPLACEstandard_iso26262` & :need:`doc__platform_safety_plan`
-      - valid
+      - :ndf:`copy('status', need_id='wf__def_app_process_description')`
+      - :need:`doc__platform_security_plan`
+      - :ndf:`copy('status', need_id='doc__platform_security_plan')`
 
     * - :need:`wp__sw_platform_sbom`
-      - :need:`wf__cr_mt_security_sbom`
-      - not started
-      - <Link to issue>
+      - :ndf:`copy('status', need_id='wf__cr_mt_security_sbom')`
       - <Link to WP>
       - <automated>
+
+Process status: Status of the workflow which "outputs" the work product, derived from the docs it "has" and guidances it "contains".
 
 Security Management Feature Specific Work Products
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

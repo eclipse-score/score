@@ -24,6 +24,8 @@ SOME/IP-Gateway
    :status: valid
    :safety: ASIL_B
    :tags: contribution_request, feature_request
+   :security: YES
+   :realizes: wp__feat_request
 
 
 .. toctree::

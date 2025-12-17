@@ -20,6 +20,7 @@ FMEA (Failure Modes and Effects Analysis)
    :id: doc__json_fmea
    :status: draft
    :safety: ASIL_B
+   :security: NO
    :realizes: wp__sw_component_fmea
 
 .. note:: Use the content of the document to describe e.g. why a fault model is not applicable for the diagram.

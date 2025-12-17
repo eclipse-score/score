@@ -21,7 +21,9 @@ AI Platform
    :id: doc__ai_platform
    :status: draft
    :safety: ASIL_B
+   :security: NO
    :tags: feature_request
+   :realizes: wp__feat_request
 
 .. toctree::
    :maxdepth: 1

@@ -21,7 +21,9 @@ Time
    :id: doc__time
    :status: valid
    :safety: ASIL_B
+   :security: YES
    :tags: time, feature_request, change_management
+   :realizes: wp__feat_request
 
 
 .. toctree::

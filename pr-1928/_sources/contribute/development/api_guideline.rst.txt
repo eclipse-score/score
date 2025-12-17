@@ -18,6 +18,9 @@ Designing API
 .. document:: API Guidelines
    :id: doc__api_guidelines
    :status: draft
+   :safety: QM
+   :security: NO
+   :realizes: wp__training_path
 
 What makes a good API? A start is to create an API that feels natural to a user.
 There are multiple layers to "natural".

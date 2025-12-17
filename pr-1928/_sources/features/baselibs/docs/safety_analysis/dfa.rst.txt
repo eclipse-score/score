@@ -20,6 +20,7 @@ DFA (Dependent Failure Analysis)
    :id: doc__baselibs_dfa
    :status: draft
    :safety: ASIL_B
+   :security: NO
    :realizes: wp__feature_dfa
 
 

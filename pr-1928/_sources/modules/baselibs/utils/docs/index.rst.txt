@@ -19,6 +19,7 @@ utils
    :id: doc__utils
    :status: draft
    :safety: ASIL_B
+   :security: YES
    :tags: baselibs_utils
    :realizes: wp__cmpt_request
 

@@ -22,6 +22,8 @@ Base Libraries (v0.5 alpha)
    :status: valid
    :safety: ASIL_B
    :tags: feature_request
+   :security: YES
+   :realizes: wp__feat_request
 
 
 .. toctree::
