@@ -52,19 +52,6 @@ Highlights
 - Initial set of communication, persistency, orchestration, and base utility modules.
 - Experimental reference images for QNX, Red Hat AutoSD Linux, and EB corbos Linux for Safety Applications.
 
-Timeline
----------
-The current timeline for Eclipse S-CORE releases is shown below.
-
-.. image:: ../_assets/score_release_plan.drawio.svg
-   :width: 800
-   :alt: Architecture overview
-   :align: center
-
-|
-
-For a detailed and always up-to-date planning view, see the `GitHub project <https://github.com/orgs/eclipse-score/projects/17/views/26>`_.
-
 Eclipse S-CORE book
 -------------------
 The first version of the `Eclipse S-CORE book <https://eclipse-score.github.io/score/main/handbook/index.html>`_
