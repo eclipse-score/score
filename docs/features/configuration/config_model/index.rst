@@ -20,7 +20,7 @@ Configuration Model
 .. document:: Configuration Model
    :id: doc__configuration_model
    :status: draft
-   :safety: NO
+   :safety: QM
    :security: NO
    :realizes: wp__feat_request
    :tags: template
@@ -168,11 +168,3 @@ References
 
 .. toctree::
    :hidden:
-
-   architecture/index.rst
-   architecture/chklst_arc_inspection.rst
-   requirements/index.rst
-   requirements/chklst_req_inspection.rst
-   safety_analysis/fmea.rst
-   safety_analysis/dfa.rst
-   safety_planning/index.rst
