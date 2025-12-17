@@ -280,6 +280,7 @@ Safety Impact
 =============
 
 Strict repeatible design pattern, extensive code re-usablility, is easy to certify.
+Requires tool qualification for the code generator for ASIL relevant components.
 
 License Impact
 ==============
