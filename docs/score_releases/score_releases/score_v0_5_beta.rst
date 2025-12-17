@@ -29,7 +29,20 @@ S-Core v0.5-beta release notes
 
 Overview
 ^^^^^^^^^
-TBD
+This is the second milestone build of the **Eclipse S-CORE platform** (v0.5.0-beta). It brings
+together the initial set of core modules, reference integrations, and supporting infrastructure needed to
+build and run example applications such as the `scrample <https://github.com/eclipse-score/scrample>`_
+demo on multiple target images. The software architecture and implemented modules are illustrated in the diagram below.
+
+This release of Eclipse S-CORE is an early beta version intended solely for experimentation, test driving project processes, gaining experience in release creation and soliciting feedback.
+Please be aware, that features may be incomplete, the software may exhibit instability or unexpected behavior, and breaking changes and alterations in scope are likely as development progresses.
+
+
+.. image:: ../_assets/architecture.drawio.svg
+   :width: 1000
+   :alt: Architecture overview
+   :align: center
+
 
 |
 
@@ -39,7 +52,12 @@ TBD
 
 Timeline
 ---------
-TBD
+The current timeline for Eclipse S-CORE releases is shown below.
+
+.. image:: ../_assets/score_release_plan.drawio.svg
+   :width: 800
+   :alt: Architecture overview
+   :align: center
 
 |
 
@@ -47,11 +65,21 @@ For a detailed and always up-to-date planning view, see the `GitHub project <htt
 
 Eclipse S-CORE book
 -------------------
-TBD
+The `Eclipse S-CORE book <https://eclipse-score.github.io/score/main/handbook/index.html>`_
+is a “how-to” guide for users getting started with the project or who want to contribute new modules.
+It introduces the core concepts of Eclipse S-CORE and walks through building
+the ``scrample`` application step by step on top of the platform modules.
+It also includes a tutorial for the first application on top of the existing modules.
 
 Improvements
 ^^^^^^^^^^^^^
-TBD
+Main focus of this release is to improve the overall stability and performance of the platform, as well as to enhance the usability.
+This does include
+
+- Static code analysis and Execution of Unit testing  as part of the `Reference Integration https://github.com/eclipse-score/reference_integration`_.
+- A new combined build toolchain of qcc and gcc `bazel cpp toolchain https://github.com/eclipse-score/bazel_cpp_toolchains`_.
+- Improved doc-as-code and process description
+-
 
 Bug Fixes
 ^^^^^^^^^^^^
@@ -62,7 +90,11 @@ Integrated Software Modules
 
 Communication
 ~~~~~~~~~~~~~
-TBD
+Zero-copy, shared-memory based inter-process communication for minimal-latency intra-ECU messaging.
+
+- **Version:** ``communication v0.1.2``
+- **Source / tag:** `Communication GitHub release <https://github.com/eclipse-score/communication/archive/refs/tags/v0.1.2.tar.gz>`_
+- **Release notes:** :need:`doc__communication_release_note`
 
 Fixed Execution Order Framework(FEO)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

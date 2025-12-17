@@ -12,7 +12,7 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Persistency (v0.5 alpha)
+Persistency (v0.5 beta)
 ########################
 
 .. document:: Persistency
