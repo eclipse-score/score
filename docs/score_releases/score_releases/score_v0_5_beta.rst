@@ -48,7 +48,7 @@ Please be aware, that features may be incomplete, the software may exhibit insta
 
 Highlights
 -----------
-TBD
+
 
 Timeline
 ---------
@@ -76,14 +76,15 @@ Improvements
 Main focus of this release is to improve the overall stability and performance of the platform, as well as to enhance the usability.
 This does include
 
-- Static code analysis and Execution of Unit testing  as part of the `Reference Integration https://github.com/eclipse-score/reference_integration`_.
+- Static code analysis with CodeQL and Execution of Unit testing  as part of the `Reference Integration https://github.com/eclipse-score/reference_integration`_.
 - A new combined build toolchain of qcc and gcc `bazel cpp toolchain https://github.com/eclipse-score/bazel_cpp_toolchains`_.
 - Improved doc-as-code and process description
 -
 
-Bug Fixes
-^^^^^^^^^^^^
-TBD
+Bug Fixes Platform
+^^^^^^^^^^^^^^^^^^
+
+https://github.com/eclipse-score/score/issues?q=is%3Aissue%20state%3Aclosed%20type%3ABug
 
 Integrated Software Modules
 -----------------------------
@@ -98,7 +99,9 @@ Zero-copy, shared-memory based inter-process communication for minimal-latency i
 
 Fixed Execution Order Framework(FEO)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-TBD
+- **Version:** ``feo v0.1.2``
+- **Source / tag:** `Communication GitHub release <https://github.com/eclipse-score/communication/archive/refs/tags/v0.1.2.tar.gz>`_
+- **Stays at v0.5-alpha**
 
 Baselibs
 ~~~~~~~~~~~~~
@@ -107,8 +110,11 @@ TBD
 
 Persistency
 ~~~~~~~~~~~~~
-TBD
+Ensures long-term storage and retrieval of data and provides a reliable mechanism for
+preserving application state and data integrity over time.
 
+- **Version:** ``persistency v0.2.1``
+- **Source / tag:** `Persistency GitHub release <https://github.com/eclipse-score/persistency/archive/refs/tags/v0.2.1.tar.gz>`_
 
 Orchestrator
 ~~~~~~~~~~~~~
@@ -145,7 +151,11 @@ Kyron
 
 Reference integration
 ~~~~~~~~~~~~~~~~~~~~~~
-TBD
+Central integration of Eclipse S-CORE modules
+
+- **Version:** ``reference integration v0.5.0-beta``
+- **Source / tag:** `Reference Integration GitHub release <https://github.com/eclipse-score/reference_integration/releases/tag/v0.5.0-beta>`_
+
 
 Reference QNX image
 +++++++++++++++++++++
@@ -184,15 +194,25 @@ in the automotive domain, suitable for safety and security contexts.
 
 docs-as-code
 ~~~~~~~~~~~~~~
-TBD
+Tooling for linking and generation of documentation.
+
+- **Version:** ``docs-as-code v2.2.1``
+- **Source / tag:** `docs-as-code GitHub release <https://github.com/eclipse-score/docs-as-code/releases/tag/v2.2.1>`_
 
 tooling
 ~~~~~~~~~~~~~~
-TBD
+Tooling for S-CORE development.
+
+- **Version:** ``tooling v1.0.4``
+- **Source / tag:** `tooling GitHub release <https://github.com/eclipse-score/tooling/releases/tag/v1.0.4>`_
+
 
 ITF (Integration Testing Framework)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-TBD
+Framework for executing feature integration tests on the reference image.
+
+- **Version:** ``itf v0.1.0``
+- **Source / tag:** `ITF GitHub release <https://github.com/eclipse-score/itf/archive/refs/tags/0.1.0.tar.gz>`_
 
 Test Scenarios
 ~~~~~~~~~~~~~~~
@@ -206,15 +226,26 @@ Test Scenarios
 
 Performed Verification
 ----------------------
-TBD
+The following tests were executed as part of this release:
+
+- All C++ modules built successfully with GCC and QCC toolchains.
+- All Rust modules built successfully with the Rust toolchain.
+- Each module executed its unit tests.
+- Basic integration tests were executed on the reference QNX image in QEMU via the
+  `release verification <https://github.com/eclipse-score/reference_integration/blob/37aa2fc1409f6907bf5d9f3c2643489bb937f90e/.github/workflows/release_verification.yml#L56>`_ workflow
+- for **persistency** and **orchestration** modules, component and feature integration tests were executed using the ``score-test-scenarios`` framework; see
+  `feature_showcase <https://github.com/eclipse-score/reference_integration/tree/main/feature_showcase>`_ and
+  `feature_integration_tests <https://github.com/eclipse-score/reference_integration/tree/main/feature_integration_tests>`_ for more details.
+- Static code analysis of all dependencies with CodeQL MISRA C++2023 package. The results you can find here: https://github.com/eclipse-score/reference_integration/actions/workflows/codeql-multiple-repo-scan.yml
 
 Known Issues
 ----------------------
-- see release notes of every module seperately
+- see release notes of every module separately
 
 Upgrade Instructions
 ----------------------
-- TBD
+- Increase to newest bazel registry versions: https://github.com/eclipse-score/bazel_registry/tree/main/modules
+
 
 Contact Information
 ----------------------
