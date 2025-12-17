@@ -14,7 +14,7 @@
 
 .. _com_feature:
 
-Communication (v0.5 alpha)
+Communication (v0.5 beta)
 ##########################
 
 .. document:: Communication
