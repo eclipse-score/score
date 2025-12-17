@@ -15,8 +15,6 @@
 Module Safety Plan
 ******************
 
-.. note:: Document header
-
 .. document:: Baselibs Safety Plan
    :id: doc__baselibs_safety_plan
    :status: draft
@@ -28,7 +26,7 @@ Module Safety Plan
 Functional Safety Management Context
 ====================================
 
-This Safety Plan adds to the :need:`doc__platform_safety_plan` all the module development relevant work products needed for ISO 26262 conformity.
+This Safety Plan adds to the :need:`doc__score_platform_safety_plan` all the module development relevant work products needed for ISO 26262 conformity.
 
 Functional Safety Management Scope
 ==================================
@@ -54,7 +52,7 @@ Functional Safety Management Roles
 Tailoring
 =========
 
-Additional to the tailoring in the SW platform project as defined in the :need:`doc__platform_safety_plan`  we define here the additional tailoring on module level.
+Additional to the tailoring in the SW platform project as defined in the :need:`doc__score_platform_safety_plan`  we define here the additional tailoring on module level.
 
 Functional Safety Module Work products
 ======================================
@@ -70,72 +68,52 @@ Module Work products List
         * - Work product Id
           - Link to process
           - Process status
-          - Link to issue
           - Link to WP
-          - WP status
 
         * - :need:`wp__module_safety_plan`
           - :need:`gd_guidl__saf_plan_definitions`
           - :ndf:`copy('status', need_id='gd_guidl__saf_plan_definitions')`
-          - `#1255 <https://github.com/eclipse-score/score/issues/1255>`_
           - this document
-          - see above
 
         * - :need:`wp__module_safety_package`
           - :need:`gd_guidl__saf_package`
           - :ndf:`copy('status', need_id='gd_guidl__saf_package')`
-          - `#1255 <https://github.com/eclipse-score/score/issues/1255>`_
           - this document (including the linked documentation)
-          - see above (and below)
 
         * - :need:`wp__fdr_reports` (module Safety Plan)
           - :need:`gd_chklst__safety_plan`
           - :ndf:`copy('status', need_id='gd_chklst__safety_plan')`
-          - `#1255 <https://github.com/eclipse-score/score/issues/1255>`_
           - :need:`doc__baselibs_safety_plan_fdr`
-          - :ndf:`copy('status', need_id='doc__baselibs_safety_plan_fdr')`
 
         * - :need:`wp__fdr_reports` (module Safety Package)
           - :need:`gd_chklst__safety_package`
           - :ndf:`copy('status', need_id='gd_chklst__safety_package')`
-          - `#1255 <https://github.com/eclipse-score/score/issues/1255>`_
           - :need:`doc__baselibs_safety_package_fdr`
-          - :ndf:`copy('status', need_id='doc__baselibs_safety_package_fdr')`
 
         * - :need:`wp__fdr_reports` (module's Safety Analyses & DFA)
-          - Safety Analysis FDR tbd
-          - <automated>
-          - <Link to issue>
+          - :need:`gd_chklst__safety_analysis`
+          - :ndf:`copy('status', need_id='gd_chklst__safety_analysis')`
           - <Link to WP>
-          - <automated>
 
         * - :need:`wp__audit_report`
           - performed by external experts
           - n/a
-          - `#77 <https://github.com/eclipse-score/process_description/issues/77>`_
           - <Link to WP>
-          - <WP status (manual)>
 
         * - :need:`wp__module_safety_manual`
           - :need:`gd_temp__safety_manual`
           - :ndf:`copy('status', need_id='gd_temp__safety_manual')`
-          - `#1255 <https://github.com/eclipse-score/score/issues/1255>`_
           - :need:`doc__baselibs_safety_manual`
-          - :ndf:`copy('status', need_id='doc__baselibs_safety_manual')`
 
         * - :need:`wp__verification_module_ver_report`
           - :need:`gd_temp__mod_ver_report`
           - :ndf:`copy('status', need_id='gd_temp__mod_ver_report')`
-          - `#1255 <https://github.com/eclipse-score/score/issues/1255>`_
           - :need:`doc__baselibs_verification_report`
-          - :ndf:`copy('status', need_id='doc__baselibs_verification_report')`
 
         * - :need:`wp__module_sw_release_note`
           - :need:`gd_temp__rel_mod_rel_note`
           - :ndf:`copy('status', need_id='gd_temp__rel_mod_rel_note')`
-          - `#1255 <https://github.com/eclipse-score/score/issues/1255>`_
           - :need:`doc__baselibs_release_note`
-          - :ndf:`copy('status', need_id='doc__baselibs_release_note')`
 
 
 Component bitmanipulation Work products List
@@ -147,86 +125,62 @@ Component bitmanipulation Work products List
         * - Work product Id
           - Link to process
           - Process status
-          - Link to issue
           - Link to WP
-          - WP/doc status
 
         * - :need:`wp__requirements_comp`
           - :need:`gd_temp__req_comp_req`
           - :ndf:`copy('status', need_id='gd_temp__req_comp_req')`
-          - `#1719 <https://github.com/eclipse-score/score/issues/1719>`_
           - :need:`doc__bitmanipulation_requirements`
-          - :ndf:`copy('status', need_id='doc__bitmanipulation_requirements')`
 
         * - :need:`wp__requirements_comp_aou`
           - :need:`gd_temp__req_aou_req`
           - :ndf:`copy('status', need_id='gd_temp__req_aou_req')`
-          - <Link to issue>
           - :need:`doc__bitmanipulation_requirements`
-          - :ndf:`copy('status', need_id='doc__bitmanipulation_requirements')`
 
         * - :need:`wp__requirements_inspect`
           - :need:`gd_chklst__req_inspection`
           - :ndf:`copy('status', need_id='gd_chklst__req_inspection')`
-          - <Link to issue>
           - <Link to WP>
-          - <automated>
 
         * - :need:`wp__component_arch`
           - :need:`gd_temp__arch_comp`
           - :ndf:`copy('status', need_id='gd_temp__arch_comp')`
-          - `#1822 <https://github.com/eclipse-score/score/issues/1822>`_
           - :need:`doc__bitmanipulation_architecture`
-          - :ndf:`copy('status', need_id='doc__bitmanipulation_architecture')`
 
         * - :need:`wp__sw_arch_verification`
           - :need:`gd_chklst__arch_inspection_checklist`
           - :ndf:`copy('status', need_id='gd_chklst__arch_inspection_checklist')`
-          - <Link to issue>
           - <Link to WP>
-          - <automated>
 
         * - :need:`wp__sw_component_fmea`
           - :need:`gd_temp__comp_saf_fmea`
           - :ndf:`copy('status', need_id='gd_temp__comp_saf_fmea')`
-          - <Link to issue>
           - :need:`doc__bitmanipulation_fmea`
-          - :ndf:`copy('status', need_id='doc__bitmanipulation_fmea')`
 
         * - :need:`wp__sw_component_dfa`
           - :need:`gd_temp__comp_saf_dfa`
           - :ndf:`copy('status', need_id='gd_temp__comp_saf_dfa')`
-          - <Link to issue>
           - :need:`doc__bitmanipulation_dfa`
-          - :ndf:`copy('status', need_id='doc__bitmanipulation_dfa')`
 
         * - :need:`wp__sw_implementation`
           - :need:`gd_guidl__implementation`
           - :ndf:`copy('status', need_id='gd_guidl__implementation')`
-          - n/a
           - `.h/.cpp <https://github.com/eclipse-score/baselibs/tree/main/score/bitmanipulation>`_, `design <https://github.com/eclipse-score/baselibs/tree/main/score/bitmanipulation/design>`_
-          - valid
 
         * - :need:`wp__verification_sw_unit_test`
           - :need:`gd_guidl__verification_guide`
           - :ndf:`copy('status', need_id='gd_guidl__verification_guide')`
-          - n/a
           - `test.cpp <https://github.com/eclipse-score/baselibs/tree/main/score/bitmanipulation>`_
-          - valid
 
         * - :need:`wp__sw_implementation_inspection`
           - :need:`gd_chklst__impl_inspection_checklist`
           - :ndf:`copy('status', need_id='gd_chklst__impl_inspection_checklist')`
-          - <Link to issue>
           - <Link to WP>
-          - <manual>
 
         * - :need:`wp__verification_comp_int_test`
           - :need:`gd_guidl__verification_guide`
           - :ndf:`copy('status', need_id='gd_guidl__verification_guide')`
-          - n/a
           - component integration not needed (no sub-components and units are independent)
-          - n/a
 
 Component containers Work products List
 ---------------------------------------
@@ -237,86 +191,62 @@ Component containers Work products List
         * - Work product Id
           - Link to process
           - Process status
-          - Link to issue
           - Link to WP
-          - WP/doc status
 
         * - :need:`wp__requirements_comp`
           - :need:`gd_temp__req_comp_req`
           - :ndf:`copy('status', need_id='gd_temp__req_comp_req')`
-          - `#1718 <https://github.com/eclipse-score/score/issues/1718>`_
           - :need:`doc__containers_lib_requirements`
-          - :ndf:`copy('status', need_id='doc__containers_lib_requirements')`
 
         * - :need:`wp__requirements_comp_aou`
           - :need:`gd_temp__req_aou_req`
           - :ndf:`copy('status', need_id='gd_temp__req_aou_req')`
-          - <Link to issue>
           - :need:`doc__containers_lib_requirements`
-          - :ndf:`copy('status', need_id='doc__containers_lib_requirements')`
 
         * - :need:`wp__requirements_inspect`
           - :need:`gd_chklst__req_inspection`
           - :ndf:`copy('status', need_id='gd_chklst__req_inspection')`
-          - <Link to issue>
           - <Link to WP>
-          - <automated>
 
         * - :need:`wp__component_arch`
           - :need:`gd_temp__arch_comp`
           - :ndf:`copy('status', need_id='gd_temp__arch_comp')`
-          - `#1824 <https://github.com/eclipse-score/score/issues/1824>`_
           - :need:`doc__containers_architecture`
-          - :ndf:`copy('status', need_id='doc__containers_architecture')`
 
         * - :need:`wp__sw_arch_verification`
           - :need:`gd_chklst__arch_inspection_checklist`
           - :ndf:`copy('status', need_id='gd_chklst__arch_inspection_checklist')`
-          - <Link to issue>
           - <Link to WP>
-          - <automated>
 
         * - :need:`wp__sw_component_fmea`
           - :need:`gd_temp__comp_saf_fmea`
           - :ndf:`copy('status', need_id='gd_temp__comp_saf_fmea')`
-          - <Link to issue>
           - :need:`doc__containers_fmea`
-          - :ndf:`copy('status', need_id='doc__containers_fmea')`
 
         * - :need:`wp__sw_component_dfa`
           - :need:`gd_temp__comp_saf_dfa`
           - :ndf:`copy('status', need_id='gd_temp__comp_saf_dfa')`
-          - <Link to issue>
           - :need:`doc__containers_dfa`
-          - :ndf:`copy('status', need_id='doc__containers_dfa')`
 
         * - :need:`wp__sw_implementation`
           - :need:`gd_guidl__implementation`
           - :ndf:`copy('status', need_id='gd_guidl__implementation')`
-          - n/a
           - `containers .h/.cpp <https://github.com/eclipse-score/baselibs/tree/main/score/containers>`_, `containers/design <https://github.com/eclipse-score/baselibs/tree/main/score/containers/design>`_
-          - draft
 
         * - :need:`wp__verification_sw_unit_test`
           - :need:`gd_guidl__verification_guide`
           - :ndf:`copy('status', need_id='gd_guidl__verification_guide')`
-          - n/a
           - `containers/test.cpp <https://github.com/eclipse-score/baselibs/tree/main/score/containers>`_
-          - valid
 
         * - :need:`wp__sw_implementation_inspection`
           - :need:`gd_chklst__impl_inspection_checklist`
           - :ndf:`copy('status', need_id='gd_chklst__impl_inspection_checklist')`
-          - <Link to issue>
           - <Link to WP>
-          - <manual>
 
         * - :need:`wp__verification_comp_int_test`
           - :need:`gd_guidl__verification_guide`
           - :ndf:`copy('status', need_id='gd_guidl__verification_guide')`
-          - n/a
           - component integration not needed (no sub-components and units are independent)
-          - n/a
 
 Component filesystem Work products List
 ---------------------------------------
@@ -327,89 +257,65 @@ Component filesystem Work products List
         * - Work product Id
           - Link to process
           - Process status
-          - Link to issue
           - Link to WP
-          - WP/doc status
 
         * - :need:`wp__requirements_comp`
           - :need:`gd_temp__req_comp_req`
           - :ndf:`copy('status', need_id='gd_temp__req_comp_req')`
-          - `#1720 <https://github.com/eclipse-score/score/issues/1720>`_
           - :need:`doc__filesystem_lib_requirements`
-          - :ndf:`copy('status', need_id='doc__filesystem_lib_requirements')`
 
         * - :need:`wp__requirements_comp_aou`
           - :need:`gd_temp__req_aou_req`
           - :ndf:`copy('status', need_id='gd_temp__req_aou_req')`
-          - <Link to issue>
           - :need:`doc__filesystem_lib_requirements`
-          - :ndf:`copy('status', need_id='doc__filesystem_lib_requirements')`
 
         * - :need:`wp__requirements_inspect`
           - :need:`gd_chklst__req_inspection`
           - :ndf:`copy('status', need_id='gd_chklst__req_inspection')`
-          - <Link to issue>
           - <Link to WP>
-          - <automated>
 
         * - :need:`wp__component_arch`
           - :need:`gd_temp__arch_comp`
           - :ndf:`copy('status', need_id='gd_temp__arch_comp')`
-          - `#1823 <https://github.com/eclipse-score/score/issues/1823>`_
           - :need:`doc__filesystem_architecture`
-          - :ndf:`copy('status', need_id='doc__filesystem_architecture')`
 
         * - :need:`wp__sw_arch_verification`
           - :need:`gd_chklst__arch_inspection_checklist`
           - :ndf:`copy('status', need_id='gd_chklst__arch_inspection_checklist')`
-          - <Link to issue>
           - <Link to WP>
-          - <automated>
 
         * - :need:`wp__sw_component_fmea`
           - :need:`gd_temp__comp_saf_fmea`
           - :ndf:`copy('status', need_id='gd_temp__comp_saf_fmea')`
-          - <Link to issue>
           - :need:`doc__filesystem_fmea`
-          - :ndf:`copy('status', need_id='doc__filesystem_fmea')`
 
         * - :need:`wp__sw_component_dfa`
           - :need:`gd_temp__comp_saf_dfa`
           - :ndf:`copy('status', need_id='gd_temp__comp_saf_dfa')`
-          - <Link to issue>
           - :need:`doc__filesystem_dfa`
-          - :ndf:`copy('status', need_id='doc__filesystem_dfa')`
 
         * - :need:`wp__sw_implementation`
           - :need:`gd_guidl__implementation`
           - :ndf:`copy('status', need_id='gd_guidl__implementation')`
-          - n/a
           - `filesystem .h/.cpp <https://github.com/eclipse-score/baselibs/tree/main/score/filesystem>`_, `filesystem/design <https://github.com/eclipse-score/baselibs/tree/main/score/filesystem/design>`_
-          - valid
 
         * - :need:`wp__verification_sw_unit_test`
           - :need:`gd_guidl__verification_guide`
           - :ndf:`copy('status', need_id='gd_guidl__verification_guide')`
-          - n/a
           - `filesystem/test.cpp <https://github.com/eclipse-score/baselibs/tree/main/score/filesystem>`_
-          - valid
 
         * - :need:`wp__sw_implementation_inspection`
           - :need:`gd_chklst__impl_inspection_checklist`
           - :ndf:`copy('status', need_id='gd_chklst__impl_inspection_checklist')`
-          - <Link to issue>
           - <Link to WP>
-          - <manual>
 
         * - :need:`wp__verification_comp_int_test`
           - :need:`gd_guidl__verification_guide`
           - :ndf:`copy('status', need_id='gd_guidl__verification_guide')`
-          - n/a
           - component integration not needed (no sub-components and units are independent)
-          - n/a
 
 Component result Work products List
----------------------------------------
+-----------------------------------
 
 .. list-table:: Component result Work products
         :header-rows: 1
@@ -417,89 +323,65 @@ Component result Work products List
         * - Work product Id
           - Link to process
           - Process status
-          - Link to issue
           - Link to WP
-          - WP/doc status
 
         * - :need:`wp__requirements_comp`
           - :need:`gd_temp__req_comp_req`
           - :ndf:`copy('status', need_id='gd_temp__req_comp_req')`
-          - n/a
           - :need:`doc__result_lib_requirements`
-          - :ndf:`copy('status', need_id='doc__result_lib_requirements')`
 
         * - :need:`wp__requirements_comp_aou`
           - :need:`gd_temp__req_aou_req`
           - :ndf:`copy('status', need_id='gd_temp__req_aou_req')`
-          - <Link to issue>
           - :need:`doc__result_lib_requirements`
-          - :ndf:`copy('status', need_id='doc__result_lib_requirements')`
 
         * - :need:`wp__requirements_inspect`
           - :need:`gd_chklst__req_inspection`
           - :ndf:`copy('status', need_id='gd_chklst__req_inspection')`
-          - <Link to issue>
           - <Link to WP>
-          - <automated>
 
         * - :need:`wp__component_arch`
           - :need:`gd_temp__arch_comp`
           - :ndf:`copy('status', need_id='gd_temp__arch_comp')`
-          - `#1821 <https://github.com/eclipse-score/score/issues/1821>`_
           - :need:`doc__result_architecture`
-          - :ndf:`copy('status', need_id='doc__result_architecture')`
 
         * - :need:`wp__sw_arch_verification`
           - :need:`gd_chklst__arch_inspection_checklist`
           - :ndf:`copy('status', need_id='gd_chklst__arch_inspection_checklist')`
-          - <Link to issue>
           - <Link to WP>
-          - <automated>
 
         * - :need:`wp__sw_component_fmea`
           - :need:`gd_temp__comp_saf_fmea`
           - :ndf:`copy('status', need_id='gd_temp__comp_saf_fmea')`
-          - <Link to issue>
           - :need:`doc__result_fmea`
-          - :ndf:`copy('status', need_id='doc__result_fmea')`
 
         * - :need:`wp__sw_component_dfa`
           - :need:`gd_temp__comp_saf_dfa`
           - :ndf:`copy('status', need_id='gd_temp__comp_saf_dfa')`
-          - <Link to issue>
           - :need:`doc__result_dfa`
-          - :ndf:`copy('status', need_id='doc__result_dfa')`
 
         * - :need:`wp__sw_implementation`
           - :need:`gd_guidl__implementation`
           - :ndf:`copy('status', need_id='gd_guidl__implementation')`
-          - n/a
           - `result .h/.cpp <https://github.com/eclipse-score/baselibs/tree/main/score/result>`_, `result/design <https://github.com/eclipse-score/baselibs/tree/main/score/result/design>`_
-          - draft
 
         * - :need:`wp__verification_sw_unit_test`
           - :need:`gd_guidl__verification_guide`
           - :ndf:`copy('status', need_id='gd_guidl__verification_guide')`
-          - n/a
           - `result/test.cpp <https://github.com/eclipse-score/baselibs/tree/main/score/result>`_
-          - valid
 
         * - :need:`wp__sw_implementation_inspection`
           - :need:`gd_chklst__impl_inspection_checklist`
           - :ndf:`copy('status', need_id='gd_chklst__impl_inspection_checklist')`
-          - <Link to issue>
           - <Link to WP>
-          - <manual>
 
         * - :need:`wp__verification_comp_int_test`
           - :need:`gd_guidl__verification_guide`
           - :ndf:`copy('status', need_id='gd_guidl__verification_guide')`
-          - n/a
           - component integration not needed (no sub-components and units are independent)
-          - n/a
 
 Component json Work products List
----------------------------------------
+---------------------------------
 
 .. list-table:: Component json Work products
         :header-rows: 1
@@ -507,96 +389,128 @@ Component json Work products List
         * - Work product Id
           - Link to process
           - Process status
-          - Link to issue
           - Link to WP
-          - WP/doc status
 
         * - :need:`wp__requirements_comp`
           - :need:`gd_temp__req_comp_req`
           - :ndf:`copy('status', need_id='gd_temp__req_comp_req')`
-          - `#1432 <https://github.com/eclipse-score/score/issues/1432>`_
           - :need:`doc__json_requirements`
-          - :ndf:`copy('status', need_id='doc__json_requirements')`
 
         * - :need:`wp__requirements_comp_aou`
           - :need:`gd_temp__req_aou_req`
           - :ndf:`copy('status', need_id='gd_temp__req_aou_req')`
-          - <Link to issue>
           - :need:`doc__json_requirements`
-          - :ndf:`copy('status', need_id='doc__json_requirements')`
 
         * - :need:`wp__requirements_inspect`
           - :need:`gd_chklst__req_inspection`
           - :ndf:`copy('status', need_id='gd_chklst__req_inspection')`
-          - <Link to issue>
           - <Link to WP>
-          - <automated>
 
         * - :need:`wp__component_arch`
           - :need:`gd_temp__arch_comp`
           - :ndf:`copy('status', need_id='gd_temp__arch_comp')`
-          - n/a
           - :need:`doc__json_architecture`
-          - :ndf:`copy('status', need_id='doc__json_architecture')`
 
         * - :need:`wp__sw_arch_verification`
           - :need:`gd_chklst__arch_inspection_checklist`
           - :ndf:`copy('status', need_id='gd_chklst__arch_inspection_checklist')`
-          - <Link to issue>
           - <Link to WP>
-          - <automated>
 
         * - :need:`wp__sw_component_fmea`
           - :need:`gd_temp__comp_saf_fmea`
           - :ndf:`copy('status', need_id='gd_temp__comp_saf_fmea')`
-          - <Link to issue>
           - :need:`doc__json_fmea`
-          - :ndf:`copy('status', need_id='doc__json_fmea')`
 
         * - :need:`wp__sw_component_dfa`
           - :need:`gd_temp__comp_saf_dfa`
           - :ndf:`copy('status', need_id='gd_temp__comp_saf_dfa')`
-          - <Link to issue>
           - :need:`doc__json_dfa`
-          - :ndf:`copy('status', need_id='doc__json_dfa')`
 
         * - :need:`wp__sw_implementation`
           - :need:`gd_guidl__implementation`
           - :ndf:`copy('status', need_id='gd_guidl__implementation')`
-          - n/a
           - `json .h/.cpp <https://github.com/eclipse-score/baselibs/tree/main/score/json>`_, `json/design <https://github.com/eclipse-score/baselibs/tree/main/score/json/detailed_design>`_
-          - valid
 
         * - :need:`wp__verification_sw_unit_test`
           - :need:`gd_guidl__verification_guide`
           - :ndf:`copy('status', need_id='gd_guidl__verification_guide')`
-          - n/a
           - `json/test.cpp <https://github.com/eclipse-score/baselibs/tree/main/score/json>`_
-          - valid
 
         * - :need:`wp__sw_implementation_inspection`
           - :need:`gd_chklst__impl_inspection_checklist`
           - :ndf:`copy('status', need_id='gd_chklst__impl_inspection_checklist')`
-          - <Link to issue>
           - <Link to WP>
-          - <manual>
 
         * - :need:`wp__verification_comp_int_test`
           - :need:`gd_guidl__verification_guide`
           - :ndf:`copy('status', need_id='gd_guidl__verification_guide')`
-          - <Link to issue>
           - <Link to WP>
-          - <automatic>
 
         * - :need:`wp__sw_component_class`
           - :need:`tsf__trust__trustable-software`
           - :ndf:`copy('status', need_id='gd_guidl__component_classification')`
-          - `#1460 <https://github.com/eclipse-score/score/issues/1460>`_
           - `TSF Report on nlohman/json <https://eclipse-score.github.io/inc_nlohmann_json/main/report.html>`_
-          - draft
 
 All other components of the baselibs module as released in the :need:`doc__baselibs_release_note`
 are not planned to be qualifiable stand alone (as SEooC), but only in context, for example as they are used
 in other S-CORE modules (e.g. communication). To be qualifiable in context those come with unit tests,
 are implemented according to defined coding and detailed design guidelines, achieve the required structural coverage
 and fulfill the AoUs of the reference OS (e.g. don’t use banned functions).
+
+Module Safety Package
+=====================
+
+To create the safety package (according to :need:`gd_guidl__saf_package`) the following
+documents and work products status have to go to "valid" (after the relevant verification were performed).
+
+Module Documents Status
+-----------------------
+
+For all the work product documents the status can be seen by following the "Link to WP".
+A summary of the status is also documented in the project's documentation management plan.
+
+See :ref:`documents_docs_modules_baselibs_docs`
+
+Component Documents Status
+--------------------------
+
+For all the work product documents the status can be seen by following the "Link to WP".
+A summary of the status is also documented in the project's documentation management plan.
+
+See :ref:`documents_docs_modules_baselibs_components`
+
+Component Requirements Status
+-----------------------------
+
+.. needtable::
+   :filter: docname is not None and "baselibs" in docname and "requirements" in docname
+   :style: table
+   :types: comp_req
+   :tags: baselibs
+   :columns: id;status;tags
+   :colwidths: 25,25,25
+   :sort: title
+
+Component AoU Status
+--------------------
+
+.. needtable::
+   :filter: docname is not None and "baselibs" in docname and "requirements" in docname
+   :style: table
+   :types: aou_req
+   :tags: baselibs
+   :columns: id;status;tags
+   :colwidths: 25,25,25
+   :sort: title
+
+Component Architecture Status
+-----------------------------
+
+.. needtable::
+   :filter: docname is not None and "baselibs" in docname and "architecture" in docname
+   :style: table
+   :types: comp_arc_sta; comp_arc_dyn
+   :tags: baselibs
+   :columns: id;status;tags
+   :colwidths: 25,25,25
+   :sort: title

@@ -68,8 +68,8 @@ Technical committees
   is to do a breakdown of platform sagas to the concrete tasks (see `Planning`_) .
   Currently following *Communities* are defined in the *S-CORE* project:
 
-  * *Operational*: *community* for all kind of infra topics:
-    compiler, IDE, build toolchain and etc. See `GitHub Discussions/Operational Community  <https://github.com/orgs/eclipse-score/discussions/categories/operational-community>`_ for more.
+  * *Infrastructure*: *community* for all kind of infra topics:
+    compiler, IDE, build toolchain and etc. See `GitHub Discussions/Infrastructure Community  <https://github.com/orgs/eclipse-score/discussions/categories/infrastructure-community>`_ for more.
   * *Testing*: *community* to clarify questions and define testing strategy
     for the 'S-CORE' project. See `GitHub Discussions/Testing Community <https://github.com/orgs/eclipse-score/discussions/categories/testing-community>`_ for more.
   * *Software Architecture*: *community* for clarification of software architecture topics,
