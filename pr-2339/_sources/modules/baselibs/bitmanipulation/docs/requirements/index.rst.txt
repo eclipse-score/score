@@ -82,7 +82,7 @@ Assumptions of Use (AoU)
    :safety: ASIL_B
    :status: valid
 
-   The bit manipulation API shall validate bit positions and ranges are within the integral type's bit width and prevent data corruption through bounds checking.
+   The user shall assume that the API performs bound checking to validate bit positions and ranges provided to the bit manipulation functions.
 
 .. aou_req:: Integral Type Constraints
    :id: aou_req__bitmanipulation__type_constraints
