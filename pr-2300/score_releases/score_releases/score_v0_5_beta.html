@@ -557,7 +557,7 @@
                   
   <section id="s-core-v0-5-beta-release-notes">
 <h1>S-Core v0.5-beta release notes<a class="headerlink" href="#s-core-v0-5-beta-release-notes" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-c6d94fb3">
+<div class="need_container docutils container" id="SNCB-beb5e92e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__score_v05_beta_release_note">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -602,22 +602,30 @@
 <div class="line-block">
 <div class="line"><strong>Platform Name</strong>: S-CORE</div>
 <div class="line"><strong>Release Tag</strong>: v0.5.0-beta</div>
-<div class="line"><strong>Origin Release Tag</strong>: none - first published release</div>
+<div class="line"><strong>Origin Release Tag</strong>: v0.5.0-alpha</div>
 <div class="line"><strong>Release Date</strong>: 2025-12-18</div>
 </div>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
-<p>TBD</p>
+<p>This is the second milestone build of the <strong>Eclipse S-CORE platform</strong> (v0.5.0-beta). It brings
+together the initial set of core modules, reference integrations, and supporting infrastructure needed to
+build and run example applications such as the <a class="reference external" href="https://github.com/eclipse-score/scrample">scrample</a>
+demo on multiple target images. The software architecture and implemented modules are illustrated in the diagram below.</p>
+<p>This release of Eclipse S-CORE is an early beta version intended solely for experimentation, test driving project processes, gaining experience in release creation and soliciting feedback.
+Please be aware, that features may be incomplete, the software may exhibit instability or unexpected behavior, and breaking changes and alterations in scope are likely as development progresses.</p>
+<a class="reference internal image-reference" href="../../_images/architecture.drawio.svg"><img alt="Architecture overview" class="align-center" src="../../_images/architecture.drawio.svg" style="width: 1000px;" />
+</a>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <section id="highlights">
 <h3>Highlights<a class="headerlink" href="#highlights" title="Link to this heading">#</a></h3>
-<p>TBD</p>
 </section>
 <section id="timeline">
 <h3>Timeline<a class="headerlink" href="#timeline" title="Link to this heading">#</a></h3>
-<p>TBD</p>
+<p>The current timeline for Eclipse S-CORE releases is shown below.</p>
+<a class="reference internal image-reference" href="../../_images/score_release_plan.drawio.svg"><img alt="Architecture overview" class="align-center" src="../../_images/score_release_plan.drawio.svg" style="width: 800px;" />
+</a>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -625,25 +633,49 @@
 </section>
 <section id="eclipse-s-core-book">
 <h3>Eclipse S-CORE book<a class="headerlink" href="#eclipse-s-core-book" title="Link to this heading">#</a></h3>
-<p>TBD</p>
+<p>The <a class="reference external" href="https://eclipse-score.github.io/score/main/handbook/index.html">Eclipse S-CORE book</a>
+is a “how-to” guide for users getting started with the project or who want to contribute new modules.
+It introduces the core concepts of Eclipse S-CORE and walks through building
+the <code class="docutils literal notranslate"><span class="pre">scrample</span></code> application step by step on top of the platform modules.
+It also includes a tutorial for the first application on top of the existing modules.</p>
 </section>
 </section>
 <section id="improvements">
 <h2>Improvements<a class="headerlink" href="#improvements" title="Link to this heading">#</a></h2>
-<p>TBD</p>
+<p>Main focus of this release is to improve the overall stability and performance of the platform, as well as to enhance the usability.
+This does include</p>
+<ul class="simple">
+<li><p>Static code analysis with CodeQL and Execution of Unit testing  as part of the <a class="reference external" href="https://github.com/eclipse-score/reference_integration">Reference Integration</a>.</p></li>
+<li><p>A new combined build toolchain of qcc and gcc <a class="reference external" href="https://github.com/eclipse-score/bazel_cpp_toolchains">bazel cpp toolchain</a>.</p></li>
+<li><p>Improved doc-as-code and process description</p></li>
+</ul>
 </section>
-<section id="bug-fixes">
-<h2>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Link to this heading">#</a></h2>
-<p>TBD</p>
+<section id="s-core-platform">
+<h2>S-CORE Platform<a class="headerlink" href="#s-core-platform" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Version:</strong> <code class="docutils literal notranslate"><span class="pre">score</span> <span class="pre">v0.5.2</span></code></p></li>
+<li><p><strong>Source / tag:</strong> <a class="reference external" href="https://github.com/eclipse-score/score/archive/refs/tags/v0.5.2.tar.gz">S-CORE Platform GitHub release</a></p></li>
+<li><p><strong>Release notes</strong>: <a class="reference external" href="https://github.com/eclipse-score/score/releases/tag/v0.5.2">S-CORE Platform release notes</a></p></li>
+</ul>
+<p><a class="github reference external" href="https://github.com/eclipse-score/score/issues?q=is%3Aissue%20state%3Aclosed%20type%3ABug">eclipse-score/score#issues</a></p>
 <section id="integrated-software-modules">
 <h3>Integrated Software Modules<a class="headerlink" href="#integrated-software-modules" title="Link to this heading">#</a></h3>
 <section id="communication">
 <h4>Communication<a class="headerlink" href="#communication" title="Link to this heading">#</a></h4>
-<p>TBD</p>
+<p>Zero-copy, shared-memory based inter-process communication for minimal-latency intra-ECU messaging.</p>
+<ul class="simple">
+<li><p><strong>Version:</strong> <code class="docutils literal notranslate"><span class="pre">communication</span> <span class="pre">v0.1.2</span></code></p></li>
+<li><p><strong>Source / tag:</strong> <a class="reference external" href="https://github.com/eclipse-score/communication/archive/refs/tags/v0.1.2.tar.gz">Communication GitHub release</a></p></li>
+<li><p><strong>Release notes:</strong> <a class="reference internal" href="../../modules/communication/docs/release/release_note.html#doc__communication_release_note" title="doc__communication_release_note"><em class="xref need">Communication Release Note (doc__communication_release_note)</em></a></p></li>
+</ul>
 </section>
 <section id="fixed-execution-order-framework-feo">
 <h4>Fixed Execution Order Framework(FEO)<a class="headerlink" href="#fixed-execution-order-framework-feo" title="Link to this heading">#</a></h4>
-<p>TBD</p>
+<ul class="simple">
+<li><p><strong>Version:</strong> <code class="docutils literal notranslate"><span class="pre">feo</span> <span class="pre">v0.1.2</span></code></p></li>
+<li><p><strong>Source / tag:</strong> <a class="reference external" href="https://github.com/eclipse-score/communication/archive/refs/tags/v0.1.2.tar.gz">Communication GitHub release</a></p></li>
+<li><p><strong>Stays at v0.5-alpha</strong></p></li>
+</ul>
 </section>
 <section id="baselibs">
 <h4>Baselibs<a class="headerlink" href="#baselibs" title="Link to this heading">#</a></h4>
@@ -651,7 +683,12 @@
 </section>
 <section id="persistency">
 <h4>Persistency<a class="headerlink" href="#persistency" title="Link to this heading">#</a></h4>
-<p>TBD</p>
+<p>Ensures long-term storage and retrieval of data and provides a reliable mechanism for
+preserving application state and data integrity over time.</p>
+<ul class="simple">
+<li><p><strong>Version:</strong> <code class="docutils literal notranslate"><span class="pre">persistency</span> <span class="pre">v0.2.1</span></code></p></li>
+<li><p><strong>Source / tag:</strong> <a class="reference external" href="https://github.com/eclipse-score/persistency/archive/refs/tags/v0.2.1.tar.gz">Persistency GitHub release</a></p></li>
+</ul>
 </section>
 <section id="orchestrator">
 <h4>Orchestrator<a class="headerlink" href="#orchestrator" title="Link to this heading">#</a></h4>
@@ -701,9 +738,13 @@
 </dd>
 </dl>
 </section>
-<section id="reference-integration">
-<h4>Reference integration<a class="headerlink" href="#reference-integration" title="Link to this heading">#</a></h4>
-<p>TBD</p>
+<section id="id3">
+<h4>Reference integration<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
+<p>Central integration of Eclipse S-CORE modules</p>
+<ul class="simple">
+<li><p><strong>Version:</strong> <code class="docutils literal notranslate"><span class="pre">reference</span> <span class="pre">integration</span> <span class="pre">v0.5.0-beta</span></code></p></li>
+<li><p><strong>Source / tag:</strong> <a class="reference external" href="https://github.com/eclipse-score/reference_integration/releases/tag/v0.5.0-beta">Reference Integration GitHub release</a></p></li>
+</ul>
 <section id="reference-qnx-image">
 <h5>Reference QNX image<a class="headerlink" href="#reference-qnx-image" title="Link to this heading">#</a></h5>
 <p>TBD</p>
@@ -746,15 +787,27 @@ in the automotive domain, suitable for safety and security contexts.</p>
 </section>
 <section id="docs-as-code">
 <h4>docs-as-code<a class="headerlink" href="#docs-as-code" title="Link to this heading">#</a></h4>
-<p>TBD</p>
+<p>Tooling for linking and generation of documentation.</p>
+<ul class="simple">
+<li><p><strong>Version:</strong> <code class="docutils literal notranslate"><span class="pre">docs-as-code</span> <span class="pre">v2.2.1</span></code></p></li>
+<li><p><strong>Source / tag:</strong> <a class="reference external" href="https://github.com/eclipse-score/docs-as-code/releases/tag/v2.2.1">docs-as-code GitHub release</a></p></li>
+</ul>
 </section>
 <section id="tooling">
 <h4>tooling<a class="headerlink" href="#tooling" title="Link to this heading">#</a></h4>
-<p>TBD</p>
+<p>Tooling for S-CORE development.</p>
+<ul class="simple">
+<li><p><strong>Version:</strong> <code class="docutils literal notranslate"><span class="pre">tooling</span> <span class="pre">v1.0.4</span></code></p></li>
+<li><p><strong>Source / tag:</strong> <a class="reference external" href="https://github.com/eclipse-score/tooling/releases/tag/v1.0.4">tooling GitHub release</a></p></li>
+</ul>
 </section>
 <section id="itf-integration-testing-framework">
 <h4>ITF (Integration Testing Framework)<a class="headerlink" href="#itf-integration-testing-framework" title="Link to this heading">#</a></h4>
-<p>TBD</p>
+<p>Framework for executing feature integration tests on the reference image.</p>
+<ul class="simple">
+<li><p><strong>Version:</strong> <code class="docutils literal notranslate"><span class="pre">itf</span> <span class="pre">v0.1.0</span></code></p></li>
+<li><p><strong>Source / tag:</strong> <a class="reference external" href="https://github.com/eclipse-score/itf/archive/refs/tags/0.1.0.tar.gz">ITF GitHub release</a></p></li>
+</ul>
 </section>
 <section id="test-scenarios">
 <h4>Test Scenarios<a class="headerlink" href="#test-scenarios" title="Link to this heading">#</a></h4>
@@ -773,18 +826,29 @@ in the automotive domain, suitable for safety and security contexts.</p>
 </section>
 <section id="performed-verification">
 <h3>Performed Verification<a class="headerlink" href="#performed-verification" title="Link to this heading">#</a></h3>
-<p>TBD</p>
+<p>The following tests were executed as part of this release:</p>
+<ul class="simple">
+<li><p>All C++ modules built successfully with GCC and QCC toolchains.</p></li>
+<li><p>All Rust modules built successfully with the Rust toolchain.</p></li>
+<li><p>Each module executed its unit tests.</p></li>
+<li><p>Basic integration tests were executed on the reference QNX image in QEMU via the
+<a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/37aa2fc1409f6907bf5d9f3c2643489bb937f90e/.github/workflows/release_verification.yml#L56">release verification</a> workflow</p></li>
+<li><p>for <strong>persistency</strong> and <strong>orchestration</strong> modules, component and feature integration tests were executed using the <code class="docutils literal notranslate"><span class="pre">score-test-scenarios</span></code> framework; see
+<a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/feature_showcase">feature_showcase</a> and
+<a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/main/feature_integration_tests">feature_integration_tests</a> for more details.</p></li>
+<li><p>Static code analysis of all dependencies with CodeQL MISRA C++2023 package. The results you can find here: <a class="github reference external" href="https://github.com/eclipse-score/reference_integration/actions/workflows/codeql-multiple-repo-scan.yml">eclipse-score/reference_integration</a></p></li>
+</ul>
 </section>
 <section id="known-issues">
 <h3>Known Issues<a class="headerlink" href="#known-issues" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>see release notes of every module seperately</p></li>
+<li><p>see release notes of every module separately</p></li>
 </ul>
 </section>
 <section id="upgrade-instructions">
 <h3>Upgrade Instructions<a class="headerlink" href="#upgrade-instructions" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>TBD</p></li>
+<li><p>Increase to newest bazel registry versions: <a class="github reference external" href="https://github.com/eclipse-score/bazel_registry/tree/main/modules">eclipse-score/bazel_registry</a></p></li>
 </ul>
 </section>
 <section id="contact-information">
@@ -848,7 +912,7 @@ in the automotive domain, suitable for safety and security contexts.</p>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improvements">Improvements</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bug-fixes">Bug Fixes</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#s-core-platform">S-CORE Platform</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integrated-software-modules">Integrated Software Modules</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#communication">Communication</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fixed-execution-order-framework-feo">Fixed Execution Order Framework(FEO)</a></li>
@@ -856,7 +920,7 @@ in the automotive domain, suitable for safety and security contexts.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#persistency">Persistency</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#orchestrator">Orchestrator</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kyron">Kyron</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-integration">Reference integration</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Reference integration</a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-qnx-image">Reference QNX image</a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-red-hat-autosd-linux-image-experimental">Reference Red Hat AutoSD Linux image (Experimental)</a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-elektrobit-corbos-linux-for-safety-applications-linux-image-experimental">Reference Elektrobit corbos Linux for Safety Applications Linux image (Experimental)</a></li>

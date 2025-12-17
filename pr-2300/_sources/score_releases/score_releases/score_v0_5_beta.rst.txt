@@ -24,22 +24,40 @@ S-Core v0.5-beta release notes
 
 | **Platform Name**: S-CORE
 | **Release Tag**: v0.5.0-beta
-| **Origin Release Tag**: none - first published release
+| **Origin Release Tag**: v0.5.0-alpha
 | **Release Date**: 2025-12-18
 
 Overview
 ^^^^^^^^^
-TBD
+This is the second milestone build of the **Eclipse S-CORE platform** (v0.5.0-beta). It brings
+together the initial set of core modules, reference integrations, and supporting infrastructure needed to
+build and run example applications such as the `scrample <https://github.com/eclipse-score/scrample>`_
+demo on multiple target images. The software architecture and implemented modules are illustrated in the diagram below.
+
+This release of Eclipse S-CORE is an early beta version intended solely for experimentation, test driving project processes, gaining experience in release creation and soliciting feedback.
+Please be aware, that features may be incomplete, the software may exhibit instability or unexpected behavior, and breaking changes and alterations in scope are likely as development progresses.
+
+
+.. image:: ../_assets/architecture.drawio.svg
+   :width: 1000
+   :alt: Architecture overview
+   :align: center
+
 
 |
 
 Highlights
 -----------
-TBD
+
 
 Timeline
 ---------
-TBD
+The current timeline for Eclipse S-CORE releases is shown below.
+
+.. image:: ../_assets/score_release_plan.drawio.svg
+   :width: 800
+   :alt: Architecture overview
+   :align: center
 
 |
 
@@ -47,26 +65,48 @@ For a detailed and always up-to-date planning view, see the `GitHub project <htt
 
 Eclipse S-CORE book
 -------------------
-TBD
+The `Eclipse S-CORE book <https://eclipse-score.github.io/score/main/handbook/index.html>`_
+is a “how-to” guide for users getting started with the project or who want to contribute new modules.
+It introduces the core concepts of Eclipse S-CORE and walks through building
+the ``scrample`` application step by step on top of the platform modules.
+It also includes a tutorial for the first application on top of the existing modules.
 
 Improvements
 ^^^^^^^^^^^^^
-TBD
+Main focus of this release is to improve the overall stability and performance of the platform, as well as to enhance the usability.
+This does include
 
-Bug Fixes
-^^^^^^^^^^^^
-TBD
+- Static code analysis with CodeQL and Execution of Unit testing  as part of the `Reference Integration <https://github.com/eclipse-score/reference_integration>`_.
+- A new combined build toolchain of qcc and gcc `bazel cpp toolchain <https://github.com/eclipse-score/bazel_cpp_toolchains>`_.
+- Improved doc-as-code and process description
+
+
+S-CORE Platform
+^^^^^^^^^^^^^^^^^^
+
+- **Version:** ``score v0.5.2``
+- **Source / tag:** `S-CORE Platform GitHub release <https://github.com/eclipse-score/score/archive/refs/tags/v0.5.2.tar.gz>`_
+- **Release notes**: `S-CORE Platform release notes <https://github.com/eclipse-score/score/releases/tag/v0.5.2>`_
+
+
+https://github.com/eclipse-score/score/issues?q=is%3Aissue%20state%3Aclosed%20type%3ABug
 
 Integrated Software Modules
 -----------------------------
 
 Communication
 ~~~~~~~~~~~~~
-TBD
+Zero-copy, shared-memory based inter-process communication for minimal-latency intra-ECU messaging.
+
+- **Version:** ``communication v0.1.2``
+- **Source / tag:** `Communication GitHub release <https://github.com/eclipse-score/communication/archive/refs/tags/v0.1.2.tar.gz>`_
+- **Release notes:** :need:`doc__communication_release_note`
 
 Fixed Execution Order Framework(FEO)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-TBD
+- **Version:** ``feo v0.1.2``
+- **Source / tag:** `Communication GitHub release <https://github.com/eclipse-score/communication/archive/refs/tags/v0.1.2.tar.gz>`_
+- **Stays at v0.5-alpha**
 
 Baselibs
 ~~~~~~~~~~~~~
@@ -75,8 +115,11 @@ TBD
 
 Persistency
 ~~~~~~~~~~~~~
-TBD
+Ensures long-term storage and retrieval of data and provides a reliable mechanism for
+preserving application state and data integrity over time.
 
+- **Version:** ``persistency v0.2.1``
+- **Source / tag:** `Persistency GitHub release <https://github.com/eclipse-score/persistency/archive/refs/tags/v0.2.1.tar.gz>`_
 
 Orchestrator
 ~~~~~~~~~~~~~
@@ -113,7 +156,11 @@ Kyron
 
 Reference integration
 ~~~~~~~~~~~~~~~~~~~~~~
-TBD
+Central integration of Eclipse S-CORE modules
+
+- **Version:** ``reference integration v0.5.0-beta``
+- **Source / tag:** `Reference Integration GitHub release <https://github.com/eclipse-score/reference_integration/releases/tag/v0.5.0-beta>`_
+
 
 Reference QNX image
 +++++++++++++++++++++
@@ -152,15 +199,25 @@ in the automotive domain, suitable for safety and security contexts.
 
 docs-as-code
 ~~~~~~~~~~~~~~
-TBD
+Tooling for linking and generation of documentation.
+
+- **Version:** ``docs-as-code v2.2.1``
+- **Source / tag:** `docs-as-code GitHub release <https://github.com/eclipse-score/docs-as-code/releases/tag/v2.2.1>`_
 
 tooling
 ~~~~~~~~~~~~~~
-TBD
+Tooling for S-CORE development.
+
+- **Version:** ``tooling v1.0.4``
+- **Source / tag:** `tooling GitHub release <https://github.com/eclipse-score/tooling/releases/tag/v1.0.4>`_
+
 
 ITF (Integration Testing Framework)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-TBD
+Framework for executing feature integration tests on the reference image.
+
+- **Version:** ``itf v0.1.0``
+- **Source / tag:** `ITF GitHub release <https://github.com/eclipse-score/itf/archive/refs/tags/0.1.0.tar.gz>`_
 
 Test Scenarios
 ~~~~~~~~~~~~~~~
@@ -174,15 +231,26 @@ Test Scenarios
 
 Performed Verification
 ----------------------
-TBD
+The following tests were executed as part of this release:
+
+- All C++ modules built successfully with GCC and QCC toolchains.
+- All Rust modules built successfully with the Rust toolchain.
+- Each module executed its unit tests.
+- Basic integration tests were executed on the reference QNX image in QEMU via the
+  `release verification <https://github.com/eclipse-score/reference_integration/blob/37aa2fc1409f6907bf5d9f3c2643489bb937f90e/.github/workflows/release_verification.yml#L56>`_ workflow
+- for **persistency** and **orchestration** modules, component and feature integration tests were executed using the ``score-test-scenarios`` framework; see
+  `feature_showcase <https://github.com/eclipse-score/reference_integration/tree/main/feature_showcase>`_ and
+  `feature_integration_tests <https://github.com/eclipse-score/reference_integration/tree/main/feature_integration_tests>`_ for more details.
+- Static code analysis of all dependencies with CodeQL MISRA C++2023 package. The results you can find here: https://github.com/eclipse-score/reference_integration/actions/workflows/codeql-multiple-repo-scan.yml
 
 Known Issues
 ----------------------
-- see release notes of every module seperately
+- see release notes of every module separately
 
 Upgrade Instructions
 ----------------------
-- TBD
+- Increase to newest bazel registry versions: https://github.com/eclipse-score/bazel_registry/tree/main/modules
+
 
 Contact Information
 ----------------------
