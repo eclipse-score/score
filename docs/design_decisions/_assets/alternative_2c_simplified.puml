@@ -1,6 +1,6 @@
 @startuml elemente
 
-package "S-Core Repo" {
+package "S-CORE Repo" {
   class Platform {
     + SEooC: bool
     --
@@ -72,7 +72,7 @@ package "Integration Repo" {
 }
 
 ' Package Relationships
-"Integration Repo" ..> "S-Core Repo" : derives from
+"Integration Repo" ..> "S-CORE Repo" : derives from
 "Integration Repo" ..> "Feature Repo" : uses
 "Integration Repo" ..> FeatureImplRepo1 : uses
 "Integration Repo" ..> FeatureImplRepo2 : uses
