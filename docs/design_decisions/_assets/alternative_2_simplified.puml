@@ -6,12 +6,13 @@ package "S-Core Repo" {
     --
     Objectives
     Stakeholder Requirements
+    Platform Architecture
     SW-Platform Assumptions of use
     Platform Integration Tests
   }
 }
 
-package "Feature Repo" {
+package "SW-Module Repo" {
   class Feature {
     + SEooC: bool
     --
@@ -44,8 +45,8 @@ package "Integration Repo" {
 
 ' Package Relationships
 "Integration Repo" ..> "S-Core Repo" : derives from
-"Integration Repo" ..> "Feature Repo" : uses
-"S-Core Repo" -[hidden]d- "Feature Repo"
+"Integration Repo" ..> "SW-Module Repo" : uses
+"S-Core Repo" -[hidden]d- "SW-Module Repo"
 
 ' Relationships
 Platform "1" *-- "n" Feature

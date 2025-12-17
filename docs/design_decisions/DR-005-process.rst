@@ -28,66 +28,52 @@ DR-005-process: Feature as Independent Delivery Product
 Context
 -------
 
-**Current Industry Challenge**
+With S-CORE, we are jointly developing an open software platform with the goal of reducing complexity,
+promoting reuse, gaining speed and enabling scalable innovations.
 
-At present, it cannot be assumed that OEMs can replace their currently
-deployed middleware solutions with SCORE in a single step. Therefore, a
-gradual, step-by-step replacement of existing middleware elements with
-SCORE elements is necessary.
+From today's perspective, the S-CORE platform will not be able to replace the software platforms
+currently used in OEM projects in a single step. For this reason,
+S-CORE must support the replacement of parts of the currently used software platforms with S-CORE platform parts.
 
-The current SCORE process only provides for modules (containing one or
-more components) to be delivered as SEooC (see `Building Blocks
-Metamodel <https://eclipse-score.github.io/process_description/main/general_concepts/score_building_blocks_concept.html#building-blocks-meta-model>`_).
-However, it can be expected that the adoption of middleware functions
-will occur at the feature level rather than at the component level.
+Currently, there are two elements in S-CORE for the decomposition of the platform:
+  - Features
+  - Components
 
-This creates the necessity to provide features as independent SEooC
-units. Furthermore, the current repository structure does not allow
-features to be released independently from the platform repository.
+The platform consists of features. A feature is realized by a number of components.
 
-**Resulting Use Cases**
+Furthermore, S-CORE provides for two types of delivery products:
+  - Platform Release
+  - Software Module Release
 
-Based on this industry challenge, two primary use cases emerge for
-delivering SCORE software:
+These can be used by OEM projects.
+Both delivery types are also a Safety Element out of Context (SEooC), making them easier to integrate.
 
-1. **Platform Delivery Use Case**: The entire SCORE platform is
-   considered as a single, cohesive delivery unit. This use case is
-   already covered by the reference integration and supports complete
-   platform adoption.
+A software module is defined as a component or a set of components.
+A software module is contained in a repository.
 
-2. **Feature Delivery Use Case**: Individual features are considered as
-   independent delivery units. This use case is critical for gradual
-   middleware migration but is not adequately supported in the current
-   SCORE metamodel.
+Features and their artifacts are currently contained in the platform repository.
+As a result, they can only be delivered with the platform release.
 
-**Decision Problem**
+The goal is to be able to deliver features independently of the platform release.
+For this, the Decision Record proposes that the software module also contains the feature artifacts.
 
-The challenge is to enable features as independent delivery units that:
+The software module that contains the feature artifacts is responsible for fulfilling the feature requirements.
+Even though not all S-CORE components required for the feature are located in this SW module (repository).
 
-- Shall be delivered separately from the platform
-- Shall be described consistently and self-contained
-- Shall ensure compatibility with the SCORE platform
-- Shall support gradual middleware migration at feature level
+In section `Alternatives Considered`_, different alternatives are presented.
+the current solution is compared with the alternative and evaluated with respect to the following aspects:
 
-**Evaluation Approach**
-
-In the following sections, alternatives to the current approach are
-described and compared against each other. The evaluation criteria
-include:
-
-- Independence of Release / Topic Coherence
-- SEooC for Features
-- Reusability across Platforms
-- Maintainability
-- Number of Repositories
-- Traceability
+  - Independence of Release / Topic Coherence
+  - SEooC for Features
+  - Reusability across Platforms
+  - Maintainability
+  - Number of Repositories
+  - Traceability
 
 Decision
 --------
-<your text>
 
-Consequences
-------------
+Feature artifacts will be stored in the SW module repo.
 
 Comparing the alternatives based on the criteria in the decision table
 below (see `Justification for the Decision`_) shows that Alternative 2b
@@ -97,39 +83,52 @@ supports SEooC at the feature level, and promotes reusability across
 different platforms. Sub-features should be used very sparingly to avoid
 unnecessarily increasing complexity.
 
+Consequences
+------------
+
+- Process update
+- Moving the feature artifacts to feature repos
+- Adaptation of the traceability direction from "satisfies" to "satisfied by" between:
+   - Stakeholder Requirement and Feature Requirement
+   - Platform Architecture and Feature
+
 Alternatives Considered
 -----------------------
 
 Alternative 1: Status Quo - Platform-Centric Feature Management
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Feature descriptions reside in the respective SCORE platform repositories.
-Module repositories contain the component architectures. This represents
-the current state.
+The platform artifacts and the feature artifacts are contained in the S-CORE platform repository.
+The component artifacts are contained in the module repository.
+This is the current status.
 
 .. uml:: _assets/alternative_1_simplified.puml
    :caption: Alternative 1: Status Quo Architecture
 
 
-Alternative 2: Dedicated Feature Repository
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Alternative 2: Feature in SW Module Repository
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-All feature artifacts are consolidated into a dedicated feature
-repository. This repository contains all feature-level artifacts, such as
-feature requirements, feature architecture, and feature-level tests.
-Furthermore, it includes all component-level artifacts, such as component
-requirements, component architecture, component tests, as well as units
-with detailed design, source code, and unit tests. It provides the main
-functionality or the main safety case for the feature and describes
-dependencies to other functions. It is also possible to reference
-sub-feature repositories.
+The platform artifacts are located in the S-CORE platform repository.
+The feature artifacts are located in the SW module repository.
+
+Feature artifacts are all artifacts at the feature level, such as feature requirements,
+feature architecture, and feature tests.
+
+In addition, this SW module also contains the main components of the feature
+that are not to be reused independently of this feature context.
+A feature can reuse components from other SW modules, such as BaseLibs.
+
+Component artifacts are all artifacts at the component level, such as component requirements,
+component architecture, and component tests.
+They also include units with detailed design, source code, and unit tests.
 
 .. uml:: _assets/alternative_2_simplified.puml
    :caption: Alternative 2: Dedicated Feature Repository Architecture
 
 
-Alternative 2b: Dedicated Feature Repository with Sub-Features (System of Systems)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Alternative 2b: Feature in SW Module Repository with Sub-Features (System of Systems)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This variant of Alternative 2 extends the dedicated feature repository
 approach to support a System of Systems architecture. Features can be
@@ -138,21 +137,26 @@ enables hierarchical composition where complex features can integrate
 multiple sub-features, each maintaining its own complete set of artifacts
 (requirements, architecture, tests, components, and units).
 
-.. uml:: _assets/alternative_2_sos_simplified.puml
+.. uml:: _assets/alternative_2b_simplified.puml
    :caption: Alternative 2b: System of Systems Feature Repository Architecture
 
 
-Alternative 2c: Hierarchical Feature Repository
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Alternative 2c: Dedicated Feature Repository
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Alternative 2c corresponds to Alternative 2 with the key difference that
-there is an intermediate Feature Repository between the SCORE Repository
-and the Implementation Repositories. This Feature Repository contains
-feature-level artifacts such as feature requirements, feature architecture,
-and feature-level tests. Multiple implementation repositories can then
-reference these shared feature artifacts.
+Alternative 2c is similar to Alternative 2,
+with the key difference beingthat there is an intermediate feature repository between
+the S-CORE platform repository and the SW module repositories (implementation repositories).
+The feature artifacts are located in the feature repository.
 
-.. uml:: _assets/alternative_3_simplified.puml
+This is to address the use case where two implementations exist for the same feature
+and copies of the feature artifacts should be avoided.
+
+Alternative 2c represents a solution but should be avoided because it increases complexity,
+the number of repositories, and thus the maintenance effort.
+Furthermore, it increases the risk that the implementations for aspects that should be the same will diverge.
+
+.. uml:: _assets/alternative_2c_simplified.puml
    :caption: Alternative 2c: Hierarchical Feature Repository Architecture
 
 
@@ -188,9 +192,9 @@ Justification for the Decision
 
    * - Decision Criteria
      - Alternative 1: Status Quo
-     - Alternative 2: Dedicated Feature Repo
-     - Alternative 2b: SoS Feature Repo
-     - Alternative 2c: Hierarchical Feature Repo
+     - Alternative 2: Feature in SW Module Repository
+     - Alternative 2b: Feature in SW Module Repository with Sub-Features
+     - Alternative 2c: Dedicated Feature Repository
    * - Independence of Release / Topic Coherence (How independently can
        features be released and how well are related artifacts kept
        together?)
@@ -283,7 +287,6 @@ Justification for the Decision
        Different tracebility directions across repos
 
 
-
 Example for Architecture work on platform level
 -----------------------------------------------
 
@@ -291,8 +294,8 @@ Architecture work at the platform level means that decisions are made that
 are relevant to the entire system. These can include coding guidelines,
 safety concepts, structuring the platform or commonly used interfaces.
 
-An example of an overarching concept is the definition of APP_IDs. Each
-feature could define its own format, but this would result in an integrator
+An example of an overarching concept is the definition of a standardized identifier for an application (APP_ID).
+Each feature could define its own format, but this would result in an integrator
 having to configure different formats for one application. Therefore, the
 definition of APP_IDs should be done at the platform level and adopted by
 the features.

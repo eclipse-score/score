@@ -6,6 +6,7 @@ package "S-Core Repo" {
     --
     Objectives
     Stakeholder Requirements
+    Platform Architecture
     SW-Platform Assumptions of use
     Platform Integration Tests
   }
@@ -23,7 +24,7 @@ package "Feature Repo" {
   }
 }
 
-package "Feature Impl. Repo" as FeatureImplRepo1 {
+package "SW-Module Repo" as FeatureImplRepo1 {
   note as N1
     C++
   end note
@@ -45,7 +46,7 @@ package "Feature Impl. Repo" as FeatureImplRepo1 {
   }
 }
 
-package "Feature Impl. Repo" as FeatureImplRepo2 {
+package "SW-Module Repo" as FeatureImplRepo2 {
   note as N2
     Rust
   end note
@@ -72,11 +73,9 @@ package "Integration Repo" {
 
 ' Package Relationships
 "Integration Repo" ..> "S-Core Repo" : derives from
-' "Integration Repo" ..> FeatureImplRepo1 : uses
-' "Integration Repo" ..> FeatureImplRepo2 : uses
-' "Feature Repo" ..> FeatureImplRepo1 : implements
-' "Feature Repo" ..> FeatureImplRepo2 : implements
-' "S-Core Repo" -[hidden]d- FeatureImplRepo1
+"Integration Repo" ..> "Feature Repo" : uses
+"Integration Repo" ..> FeatureImplRepo1 : uses
+"Integration Repo" ..> FeatureImplRepo2 : uses
 
 ' Relationships
 Platform "1" *-- "n" Feature

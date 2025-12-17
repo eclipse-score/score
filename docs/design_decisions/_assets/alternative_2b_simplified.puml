@@ -6,12 +6,13 @@ package "S-Core Repo" {
     --
     Objectives
     Stakeholder Requirements
+    Platform Architecture
     SW-Platform Assumptions of use
     Platform Integration Tests
   }
 }
 
-package "Main Feature Repo" {
+package "SW-Module Repo (Main)" {
   class Feature {
     + SEooC: bool
     --
@@ -39,7 +40,7 @@ package "Main Feature Repo" {
   }
 }
 
-package "Sub-Feature Repo 1" {
+package "SW-Module Repo (Sub 1)" {
   class SubFeature1 {
     + SEooC: bool
     --
@@ -67,7 +68,7 @@ package "Sub-Feature Repo 1" {
   }
 }
 
-package "Sub-Feature Repo 2" {
+package "SW-Module Repo (Sub 2)" {
   class SubFeature2 {
     + SEooC: bool
     --
@@ -100,10 +101,10 @@ package "Integration Repo" {
 
 ' Package Relationships
 "Integration Repo" ..> "S-Core Repo" : derives from
-"Integration Repo" ..> "Main Feature Repo" : uses
-"Main Feature Repo" ..> "Sub-Feature Repo 1" : uses
-"Main Feature Repo" ..> "Sub-Feature Repo 2" : uses
-"S-Core Repo" -[hidden]d- "Main Feature Repo"
+"Integration Repo" ..> "SW-Module Repo (Main)" : uses
+"SW-Module Repo (Main)" ..> "SW-Module Repo (Sub 1)" : uses
+"SW-Module Repo (Main)" ..> "SW-Module Repo (Sub 2)" : uses
+"S-Core Repo" -[hidden]d- "SW-Module Repo (Main)"
 
 ' Main Feature Relationships
 Platform "1" *-- "n" Feature
