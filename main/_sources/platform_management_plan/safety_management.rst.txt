@@ -105,6 +105,8 @@ The following  ISO 26262 defined safety work products are not relevant for the S
   These may be reused by the users on their HW platform to cover Technical Safety Requirements towards the SW platform.
   But if these are sufficiently also covering the TSRs must be analyzed and decided by the user.
 
+  Therefore and as S-CORE only delivers source code, :need:`std_wp__iso26262__software_1052` is tailored out.
+
 * Also tailored out is the SW testing on the target, as the S-CORE project can only test on reference HW
   (part of SW integration testing). So these are not relevant: :need:`std_wp__iso26262__software_1151`, :need:`std_wp__iso26262__software_1152`
 
