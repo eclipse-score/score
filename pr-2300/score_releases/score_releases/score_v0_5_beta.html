@@ -557,7 +557,7 @@
                   
   <section id="s-core-v0-5-beta-release-notes">
 <h1>S-Core v0.5-beta release notes<a class="headerlink" href="#s-core-v0-5-beta-release-notes" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-4d1582c6">
+<div class="need_container docutils container" id="SNCB-858a3dad">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__score_v05_beta_release_note">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -621,16 +621,6 @@ Please be aware, that features may be incomplete, the software may exhibit insta
 <section id="highlights">
 <h3>Highlights<a class="headerlink" href="#highlights" title="Link to this heading">#</a></h3>
 </section>
-<section id="timeline">
-<h3>Timeline<a class="headerlink" href="#timeline" title="Link to this heading">#</a></h3>
-<p>The current timeline for Eclipse S-CORE releases is shown below.</p>
-<a class="reference internal image-reference" href="../../_images/score_release_plan.drawio.svg"><img alt="Architecture overview" class="align-center" src="../../_images/score_release_plan.drawio.svg" style="width: 800px;" />
-</a>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p>For a detailed and always up-to-date planning view, see the <a class="reference external" href="https://github.com/orgs/eclipse-score/projects/17/views/26">GitHub project</a>.</p>
-</section>
 <section id="eclipse-s-core-book">
 <h3>Eclipse S-CORE book<a class="headerlink" href="#eclipse-s-core-book" title="Link to this heading">#</a></h3>
 <p>The <a class="reference external" href="https://eclipse-score.github.io/score/main/handbook/index.html">Eclipse S-CORE book</a>
@@ -645,10 +635,25 @@ It also includes a tutorial for the first application on top of the existing mod
 <p>Main focus of this release is to improve the overall stability and performance of the platform, as well as to enhance the usability.
 This does include</p>
 <ul class="simple">
-<li><p>Static code analysis with CodeQL and Execution of Unit testing  as part of the <a class="reference external" href="https://github.com/eclipse-score/reference_integration">Reference Integration</a>.</p></li>
-<li><p>A new combined build toolchain of qcc and gcc <a class="reference external" href="https://github.com/eclipse-score/bazel_cpp_toolchains">bazel cpp toolchain</a>.</p></li>
+<li><p>Static code analysis with CodeQL: <strong>//TODO:</strong> add link to the results.</p></li>
+<li><p>Execution of Unit tests as part of the Reference Integration <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/test_integration.yml">test_integration workflow</a>.</p></li>
+<li><p>Unit-test coverage measurement results are now automatically part of Release Assests for every component: <strong>//TODO:</strong> link to an example.</p></li>
+<li><p>A new combined build toolchain of qcc and gcc, see <a class="reference external" href="#bazel-cpp-toolchain">bazel_cpp_toolchain</a>.</p></li>
 <li><p>Improved doc-as-code and process description</p></li>
 </ul>
+</section>
+<section id="software-development-process-status">
+<h2>Software Development Process status<a class="headerlink" href="#software-development-process-status" title="Link to this heading">#</a></h2>
+<p>The following image provides an overview of the current status of the software development process, the associated tooling,
+and the progress of its application to the software modules.</p>
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/eclipse-score/process_description/bec1931b56464543cb70385e75c15fcb1625f0d0/process/_assets/score_process_area_overview.drawio.svg"><img alt="Architecture overview" class="align-center" src="https://raw.githubusercontent.com/eclipse-score/process_description/bec1931b56464543cb70385e75c15fcb1625f0d0/process/_assets/score_process_area_overview.drawio.svg" style="width: 1000px;" />
+</a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>For more details please refer to
+<a class="reference external" href="https://eclipse-score.github.io/score/main/platform_management_plan/documentation_management.html">Documentation Management Plan</a>, that
+provides overview on the process workproduct level for every software module and process area.</p>
 </section>
 <section id="s-core-platform">
 <h2>S-CORE Platform<a class="headerlink" href="#s-core-platform" title="Link to this heading">#</a></h2>
@@ -660,6 +665,10 @@ This does include</p>
 <p><a class="github reference external" href="https://github.com/eclipse-score/score/issues?q=is%3Aissue%20state%3Aclosed%20type%3ABug">eclipse-score/score#issues</a></p>
 <section id="integrated-software-modules">
 <h3>Integrated Software Modules<a class="headerlink" href="#integrated-software-modules" title="Link to this heading">#</a></h3>
+<section id="baselibs">
+<h4>Baselibs<a class="headerlink" href="#baselibs" title="Link to this heading">#</a></h4>
+<p>TBD</p>
+</section>
 <section id="communication">
 <h4>Communication<a class="headerlink" href="#communication" title="Link to this heading">#</a></h4>
 <p>Zero-copy, shared-memory based inter-process communication for minimal-latency intra-ECU messaging.</p>
@@ -676,10 +685,6 @@ This does include</p>
 <li><p><strong>Source / tag:</strong> <a class="reference external" href="https://github.com/eclipse-score/communication/archive/refs/tags/v0.1.2.tar.gz">Communication GitHub release</a></p></li>
 <li><p><strong>Stays at v0.5-alpha</strong></p></li>
 </ul>
-</section>
-<section id="baselibs">
-<h4>Baselibs<a class="headerlink" href="#baselibs" title="Link to this heading">#</a></h4>
-<p>TBD</p>
 </section>
 <section id="persistency">
 <h4>Persistency<a class="headerlink" href="#persistency" title="Link to this heading">#</a></h4>
@@ -738,8 +743,8 @@ preserving application state and data integrity over time.</p>
 </dd>
 </dl>
 </section>
-<section id="id3">
-<h4>Reference integration<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
+<section id="reference-integration">
+<h4>Reference integration<a class="headerlink" href="#reference-integration" title="Link to this heading">#</a></h4>
 <p>Central integration of Eclipse S-CORE modules</p>
 <ul class="simple">
 <li><p><strong>Version:</strong> <code class="docutils literal notranslate"><span class="pre">reference</span> <span class="pre">integration</span> <span class="pre">v0.5.0-beta</span></code></p></li>
@@ -747,11 +752,15 @@ preserving application state and data integrity over time.</p>
 </ul>
 <section id="reference-qnx-image">
 <h5>Reference QNX image<a class="headerlink" href="#reference-qnx-image" title="Link to this heading">#</a></h5>
-<p>TBD</p>
+<ul class="simple">
+<li><p>No changes compared to the previous software version.</p></li>
+</ul>
 </section>
 <section id="reference-red-hat-autosd-linux-image-experimental">
 <h5>Reference Red Hat AutoSD Linux image (Experimental)<a class="headerlink" href="#reference-red-hat-autosd-linux-image-experimental" title="Link to this heading">#</a></h5>
-<p>TBD</p>
+<ul class="simple">
+<li><p>No changes compared to the previous software version.</p></li>
+</ul>
 </section>
 <section id="reference-elektrobit-corbos-linux-for-safety-applications-linux-image-experimental">
 <h5>Reference Elektrobit corbos Linux for Safety Applications Linux image (Experimental)<a class="headerlink" href="#reference-elektrobit-corbos-linux-for-safety-applications-linux-image-experimental" title="Link to this heading">#</a></h5>
@@ -769,17 +778,15 @@ preserving application state and data integrity over time.</p>
 <h4>process_description<a class="headerlink" href="#process-description" title="Link to this heading">#</a></h4>
 <p>Provides a process model establishing organizational rules for developing open source software
 in the automotive domain, suitable for safety and security contexts.</p>
-<ul>
+<ul class="simple">
 <li><p><strong>Version:</strong> <code class="docutils literal notranslate"><span class="pre">process</span> <span class="pre">description</span> <span class="pre">v1.4.0</span></code></p></li>
 <li><p><strong>Standards alignment:</strong></p>
-<blockquote>
-<div><ul class="simple">
+<ul>
 <li><p>ASPICE 4.0</p></li>
 <li><p>ISO 26262</p></li>
 <li><p>ISO 21434</p></li>
 <li><p>ISO PAS 8926</p></li>
 </ul>
-</div></blockquote>
 </li>
 <li><p><strong>Release notes</strong>: <a class="reference external" href="https://github.com/eclipse-score/process_description/releases/tag/v1.4.0">process_description release notes</a></p></li>
 <li><p><strong>Process maturity</strong>: <a class="reference external" href="https://eclipse-score.github.io/process_description/main/">process_description maturity levels</a></p></li>
@@ -803,25 +810,48 @@ in the automotive domain, suitable for safety and security contexts.</p>
 </section>
 <section id="itf-integration-testing-framework">
 <h4>ITF (Integration Testing Framework)<a class="headerlink" href="#itf-integration-testing-framework" title="Link to this heading">#</a></h4>
-<p>Framework for executing feature integration tests on the reference image.</p>
 <ul class="simple">
+<li><p><strong>Improvements</strong></p>
+<ul>
+<li><p>Improved ITF <a class="reference external" href="https://github.com/eclipse-score/itf/blob/main/README.md">user documentation</a></p></li>
+</ul>
+</li>
 <li><p><strong>Version:</strong> <code class="docutils literal notranslate"><span class="pre">itf</span> <span class="pre">v0.1.0</span></code></p></li>
 <li><p><strong>Source / tag:</strong> <a class="reference external" href="https://github.com/eclipse-score/itf/archive/refs/tags/0.1.0.tar.gz">ITF GitHub release</a></p></li>
 </ul>
 </section>
 <section id="test-scenarios">
 <h4>Test Scenarios<a class="headerlink" href="#test-scenarios" title="Link to this heading">#</a></h4>
-<p><strong>Improvements</strong>
-- Refactor tracing subscriber by externalizing it’s initialization
-- Remove baselibs dependency from C++ scenarios in JSON parsing</p>
-<dl class="field-list simple">
-<dt class="field-odd">Version<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Test</span> <span class="pre">Scenarios</span> <span class="pre">v0.3.1</span></code></p>
-</dd>
-<dt class="field-even">Source / tag<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://github.com/eclipse-score/testing_tools/releases/tag/v0.3.1">Test Scenarios GitHub release</a></p>
-</dd>
-</dl>
+<ul class="simple">
+<li><p><strong>Improvements</strong></p>
+<ul>
+<li><p>Refactor tracing subscriber by externalizing it’s initialization</p></li>
+<li><p>Remove baselibs dependency from C++ scenarios in JSON parsing</p></li>
+</ul>
+</li>
+<li><p><strong>Version:</strong> <code class="docutils literal notranslate"><span class="pre">Test</span> <span class="pre">Scenarios</span> <span class="pre">v0.3.1</span></code></p></li>
+<li><p><strong>Source / tag:</strong> <a class="reference external" href="https://github.com/eclipse-score/testing_tools/releases/tag/v0.3.1">Test Scenarios GitHub release</a></p></li>
+</ul>
+</section>
+<section id="id3">
+<h4>Bazel CPP Toolchain<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>What is in</strong></p>
+<ul>
+<li><p>support for following platform configurations: <em>x86_64_linux</em>, <em>x86_64_qnx</em>, <em>arm64_qnx</em></p></li>
+<li><p>complete feature flag set for the host toolchain (<em>x86_64_linux</em>): <em>minimal</em>, <em>strict</em>, <em>all_warnings</em></p></li>
+</ul>
+</li>
+<li><p><strong>What is not in</strong></p>
+<ul>
+<li><p>feature flag set for the target toolchain (infrastructure is already set-up)</p></li>
+<li><p>arm64_linux configuration is missing</p></li>
+</ul>
+</li>
+<li><p><strong>Version:</strong> <code class="docutils literal notranslate"><span class="pre">bazel_cpp_toolchains</span> <span class="pre">v0.1.0</span></code></p></li>
+<li><p><strong>Source / tag:</strong> <a class="reference external" href="https://github.com/eclipse-score/bazel_cpp_toolchains/archive/refs/tags/v0.1.0.tar.gz">Bazel CPP Toolchain release</a></p></li>
+<li><p><strong>Release notes</strong>: <a class="reference external" href="https://github.com/eclipse-score/bazel_cpp_toolchains/releases/tag/v0.1.0">Bazel CPP Toolchain release notes</a></p></li>
+</ul>
 </section>
 </section>
 <section id="performed-verification">
@@ -907,20 +937,20 @@ in the automotive domain, suitable for safety and security contexts.</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#highlights">Highlights</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#timeline">Timeline</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eclipse-s-core-book">Eclipse S-CORE book</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improvements">Improvements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-development-process-status">Software Development Process status</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#s-core-platform">S-CORE Platform</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integrated-software-modules">Integrated Software Modules</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#baselibs">Baselibs</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#communication">Communication</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fixed-execution-order-framework-feo">Fixed Execution Order Framework(FEO)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#baselibs">Baselibs</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#persistency">Persistency</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#orchestrator">Orchestrator</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kyron">Kyron</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Reference integration</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-integration">Reference integration</a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-qnx-image">Reference QNX image</a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-red-hat-autosd-linux-image-experimental">Reference Red Hat AutoSD Linux image (Experimental)</a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-elektrobit-corbos-linux-for-safety-applications-linux-image-experimental">Reference Elektrobit corbos Linux for Safety Applications Linux image (Experimental)</a></li>
@@ -934,6 +964,7 @@ in the automotive domain, suitable for safety and security contexts.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tooling">tooling</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#itf-integration-testing-framework">ITF (Integration Testing Framework)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#test-scenarios">Test Scenarios</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Bazel CPP Toolchain</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performed-verification">Performed Verification</a></li>

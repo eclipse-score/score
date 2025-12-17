@@ -49,20 +49,6 @@ Please be aware, that features may be incomplete, the software may exhibit insta
 Highlights
 -----------
 
-
-Timeline
----------
-The current timeline for Eclipse S-CORE releases is shown below.
-
-.. image:: ../_assets/score_release_plan.drawio.svg
-   :width: 800
-   :alt: Architecture overview
-   :align: center
-
-|
-
-For a detailed and always up-to-date planning view, see the `GitHub project <https://github.com/orgs/eclipse-score/projects/17/views/26>`_.
-
 Eclipse S-CORE book
 -------------------
 The `Eclipse S-CORE book <https://eclipse-score.github.io/score/main/handbook/index.html>`_
@@ -71,14 +57,35 @@ It introduces the core concepts of Eclipse S-CORE and walks through building
 the ``scrample`` application step by step on top of the platform modules.
 It also includes a tutorial for the first application on top of the existing modules.
 
+
 Improvements
 ^^^^^^^^^^^^^
 Main focus of this release is to improve the overall stability and performance of the platform, as well as to enhance the usability.
 This does include
 
-- Static code analysis with CodeQL and Execution of Unit testing  as part of the `Reference Integration <https://github.com/eclipse-score/reference_integration>`_.
-- A new combined build toolchain of qcc and gcc `bazel cpp toolchain <https://github.com/eclipse-score/bazel_cpp_toolchains>`_.
+- Static code analysis with CodeQL: **//TODO:** add link to the results.
+- Execution of Unit tests as part of the Reference Integration `test_integration workflow <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/test_integration.yml>`_.
+- Unit-test coverage measurement results are now automatically part of Release Assests for every component: **//TODO:** link to an example. 
+- A new combined build toolchain of qcc and gcc, see `bazel_cpp_toolchain <#bazel-cpp-toolchain>`_.
 - Improved doc-as-code and process description
+
+
+Software Development Process status 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The following image provides an overview of the current status of the software development process, the associated tooling,
+and the progress of its application to the software modules.
+
+.. image:: https://raw.githubusercontent.com/eclipse-score/process_description/bec1931b56464543cb70385e75c15fcb1625f0d0/process/_assets/score_process_area_overview.drawio.svg
+   :width: 1000
+   :alt: Architecture overview
+   :align: center
+
+
+|
+
+For more details please refer to 
+`Documentation Management Plan <https://eclipse-score.github.io/score/main/platform_management_plan/documentation_management.html>`_, that
+provides overview on the process workproduct level for every software module and process area.
 
 
 S-CORE Platform
@@ -94,6 +101,11 @@ https://github.com/eclipse-score/score/issues?q=is%3Aissue%20state%3Aclosed%20ty
 Integrated Software Modules
 -----------------------------
 
+
+Baselibs
+~~~~~~~~~~~~~
+TBD
+
 Communication
 ~~~~~~~~~~~~~
 Zero-copy, shared-memory based inter-process communication for minimal-latency intra-ECU messaging.
@@ -107,10 +119,6 @@ Fixed Execution Order Framework(FEO)
 - **Version:** ``feo v0.1.2``
 - **Source / tag:** `Communication GitHub release <https://github.com/eclipse-score/communication/archive/refs/tags/v0.1.2.tar.gz>`_
 - **Stays at v0.5-alpha**
-
-Baselibs
-~~~~~~~~~~~~~
-TBD
 
 
 Persistency
@@ -164,11 +172,11 @@ Central integration of Eclipse S-CORE modules
 
 Reference QNX image
 +++++++++++++++++++++
-TBD
+- No changes compared to the previous software version.
 
 Reference Red Hat AutoSD Linux image (Experimental)
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-TBD
+- No changes compared to the previous software version.
 
 Reference Elektrobit corbos Linux for Safety Applications Linux image (Experimental)
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -189,10 +197,10 @@ in the automotive domain, suitable for safety and security contexts.
 - **Version:** ``process description v1.4.0``
 - **Standards alignment:**
 
-    - ASPICE 4.0
-    - ISO 26262
-    - ISO 21434
-    - ISO PAS 8926
+  - ASPICE 4.0
+  - ISO 26262
+  - ISO 21434
+  - ISO PAS 8926
 
 - **Release notes**: `process_description release notes <https://github.com/eclipse-score/process_description/releases/tag/v1.4.0>`_
 - **Process maturity**: `process_description maturity levels <https://eclipse-score.github.io/process_description/main/>`_
@@ -214,20 +222,38 @@ Tooling for S-CORE development.
 
 ITF (Integration Testing Framework)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Framework for executing feature integration tests on the reference image.
+- **Improvements**
+
+  - Improved ITF `user documentation <https://github.com/eclipse-score/itf/blob/main/README.md>`_
 
 - **Version:** ``itf v0.1.0``
 - **Source / tag:** `ITF GitHub release <https://github.com/eclipse-score/itf/archive/refs/tags/0.1.0.tar.gz>`_
 
 Test Scenarios
 ~~~~~~~~~~~~~~~
+- **Improvements**
 
-**Improvements**
-- Refactor tracing subscriber by externalizing it's initialization
-- Remove baselibs dependency from C++ scenarios in JSON parsing
+  - Refactor tracing subscriber by externalizing it's initialization
+  - Remove baselibs dependency from C++ scenarios in JSON parsing
 
-:Version: ``Test Scenarios v0.3.1``
-:Source / tag: `Test Scenarios GitHub release <https://github.com/eclipse-score/testing_tools/releases/tag/v0.3.1>`__
+- **Version:** ``Test Scenarios v0.3.1``
+- **Source / tag:** `Test Scenarios GitHub release <https://github.com/eclipse-score/testing_tools/releases/tag/v0.3.1>`_
+
+Bazel CPP Toolchain
+~~~~~~~~~~~~~~~~~~~~
+- **What is in**
+
+  - support for following platform configurations: *x86_64_linux*, *x86_64_qnx*, *arm64_qnx*
+  - complete feature flag set for the host toolchain (*x86_64_linux*): *minimal*, *strict*, *all_warnings*
+
+- **What is not in**
+
+  - feature flag set for the target toolchain (infrastructure is already set-up)
+  - arm64_linux configuration is missing
+ 
+- **Version:** ``bazel_cpp_toolchains v0.1.0``
+- **Source / tag:** `Bazel CPP Toolchain release <https://github.com/eclipse-score/bazel_cpp_toolchains/archive/refs/tags/v0.1.0.tar.gz>`_
+- **Release notes**: `Bazel CPP Toolchain release notes <https://github.com/eclipse-score/bazel_cpp_toolchains/releases/tag/v0.1.0>`_
 
 Performed Verification
 ----------------------
