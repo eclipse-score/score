@@ -125,7 +125,11 @@ TBD
 
 Reference Elektrobit corbos Linux for Safety Applications Linux image (Experimental)
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-TBD
+
+**Improvements**
+
+- New ``fastdev`` base image snapshot and corresponding toolchain which include latest security patches and updates.
+- Updated packages avoid misleading errors during image start and shutdown, which could be confusing for users.
 
 Associated Infrastructure Modules
 -----------------------------------
