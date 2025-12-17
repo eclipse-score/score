@@ -133,3 +133,10 @@ Lower Level Components
    :safety:  ASIL_B
    :status: valid
    :fulfils: comp_req__json__deserialization, comp_req__json__asil
+
+   .. comp_arc_sta:: vajson
+   :id: comp_arc_sta__baselibs__vajson
+   :security: YES
+   :safety:  ASIL_B
+   :status: valid
+   :fulfils: comp_req__json__deserialization, comp_req__json__serialization, comp_req__json__user_format, comp_req__json__lang_idioms, comp_req__json__lang_infra, comp_req__json__type_compatibility, comp_req__json__asil, comp_req__vajson__validation, comp_req__vajson__deserialization_rfc_extensions, comp_req__vajson__event_callbacks, comp_req__vajson__unicode, comp_req__vajson__binary_content
