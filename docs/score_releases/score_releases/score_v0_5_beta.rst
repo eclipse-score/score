@@ -24,7 +24,7 @@ S-Core v0.5-beta release notes
 
 | **Platform Name**: S-CORE
 | **Release Tag**: v0.5.0-beta
-| **Origin Release Tag**: none - first published release
+| **Origin Release Tag**: v0.5.0-alpha
 | **Release Date**: 2025-12-18
 
 Overview
@@ -76,13 +76,18 @@ Improvements
 Main focus of this release is to improve the overall stability and performance of the platform, as well as to enhance the usability.
 This does include
 
-- Static code analysis with CodeQL and Execution of Unit testing  as part of the `Reference Integration https://github.com/eclipse-score/reference_integration`_.
-- A new combined build toolchain of qcc and gcc `bazel cpp toolchain https://github.com/eclipse-score/bazel_cpp_toolchains`_.
+- Static code analysis with CodeQL and Execution of Unit testing  as part of the `Reference Integration <https://github.com/eclipse-score/reference_integration>`_.
+- A new combined build toolchain of qcc and gcc `bazel cpp toolchain <https://github.com/eclipse-score/bazel_cpp_toolchains>`_.
 - Improved doc-as-code and process description
--
 
-Bug Fixes Platform
+
+S-CORE Platform
 ^^^^^^^^^^^^^^^^^^
+
+- **Version:** ``score v0.5.2``
+- **Source / tag:** `S-CORE Platform GitHub release <https://github.com/eclipse-score/score/archive/refs/tags/v0.5.2.tar.gz>`_
+- **Release notes**: `S-CORE Platform release notes <https://github.com/eclipse-score/score/releases/tag/v0.5.2>`_
+
 
 https://github.com/eclipse-score/score/issues?q=is%3Aissue%20state%3Aclosed%20type%3ABug
 
