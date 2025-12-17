@@ -15,7 +15,7 @@
 Requirements
 ============
 
-In addition to the common JSON requirements shared by the different backends (such as vajson and nlohmann_json), vajson offers extended capabilities.
+In addition to the common JSON requirements shared by the different backends (such as "vajson" and ""nlohmann_json"), "vajson" offers extended capabilities.
 These additional features are captured as requirements in the following section.
 
 .. feat_req:: JSON Validation
@@ -30,7 +30,6 @@ vaJson shall provide a service to check the well-formedness of JSON data.
 
    Errors shall be reported including the error reason and the location in the JSON document for malformed JSON and invalid schemata (user-defined errors).
 
-
 .. feat_req:: JSON Deserialization RFC extensions
 :id: comp_req__vajson__deserialization_rfc_extensions
 :reqtype: Functional
@@ -40,7 +39,6 @@ vaJson shall provide a service to check the well-formedness of JSON data.
 :status: valid
 
 vaJson shall provide a service to ignore trailing commas and accept hexadecimal integers.
-
 
 .. feat_req:: JSON Event Callbacks
 :id: comp_req__vajson__event_callbacks
@@ -52,7 +50,6 @@ vaJson shall provide a service to ignore trailing commas and accept hexadecimal 
 
 vaJson shall provide a service to listen to events for every parsed JSON item.
    The user shall be notified for every simple type directly, and for every complex type using start and end events.
-
 
 .. feat_req:: Unicode Support
 :id: comp_req__vajson__unicode
