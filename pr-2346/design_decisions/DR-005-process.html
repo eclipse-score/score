@@ -554,7 +554,7 @@
                   
   <section id="dr-005-process-feature-as-independent-delivery-product">
 <span id="decision-record-feature-as-independent-delivery"></span><h1>DR-005-process: Feature as Independent Delivery Product<a class="headerlink" href="#dr-005-process-feature-as-independent-delivery-product" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-a6f5b057">
+<div class="need_container docutils container" id="SNCB-0751f413">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__platform__feature_delivery">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -599,45 +599,40 @@
 </div>
 <section id="context">
 <h2>Context<a class="headerlink" href="#context" title="Link to this heading">#</a></h2>
-<p><strong>Current Industry Challenge</strong></p>
-<p>At present, it cannot be assumed that OEMs can replace their currently
-deployed middleware solutions with SCORE in a single step. Therefore, a
-gradual, step-by-step replacement of existing middleware elements with
-SCORE elements is necessary.</p>
-<p>The current SCORE process only provides for modules (containing one or
-more components) to be delivered as SEooC (see <a class="reference external" href="https://eclipse-score.github.io/process_description/main/general_concepts/score_building_blocks_concept.html#building-blocks-meta-model">Building Blocks
-Metamodel</a>).
-However, it can be expected that the adoption of middleware functions
-will occur at the feature level rather than at the component level.</p>
-<p>This creates the necessity to provide features as independent SEooC
-units. Furthermore, the current repository structure does not allow
-features to be released independently from the platform repository.</p>
-<p><strong>Resulting Use Cases</strong></p>
-<p>Based on this industry challenge, two primary use cases emerge for
-delivering SCORE software:</p>
-<ol class="arabic simple">
-<li><p><strong>Platform Delivery Use Case</strong>: The entire SCORE platform is
-considered as a single, cohesive delivery unit. This use case is
-already covered by the reference integration and supports complete
-platform adoption.</p></li>
-<li><p><strong>Feature Delivery Use Case</strong>: Individual features are considered as
-independent delivery units. This use case is critical for gradual
-middleware migration but is not adequately supported in the current
-SCORE metamodel.</p></li>
-</ol>
-<p><strong>Decision Problem</strong></p>
-<p>The challenge is to enable features as independent delivery units that:</p>
-<ul class="simple">
-<li><p>Shall be delivered separately from the platform</p></li>
-<li><p>Shall be described consistently and self-contained</p></li>
-<li><p>Shall ensure compatibility with the SCORE platform</p></li>
-<li><p>Shall support gradual middleware migration at feature level</p></li>
+<p>With S-CORE, we are jointly developing an open software platform with the goal of reducing complexity,
+promoting reuse, gaining speed and enabling scalable innovations.</p>
+<p>From today’s perspective, the S-CORE platform will not be able to replace the software platforms
+currently used in OEM projects in a single step. For this reason,
+S-CORE must support the replacement of parts of the currently used software platforms with S-CORE platform parts.</p>
+<dl class="simple">
+<dt>Currently, there are two elements in S-CORE for the decomposition of the platform:</dt><dd><ul class="simple">
+<li><p>Features</p></li>
+<li><p>Components</p></li>
 </ul>
-<p><strong>Evaluation Approach</strong></p>
-<p>In the following sections, alternatives to the current approach are
-described and compared against each other. The evaluation criteria
-include:</p>
-<ul class="simple">
+</dd>
+</dl>
+<p>The platform consists of features. A feature is realized by a number of components.</p>
+<dl class="simple">
+<dt>Furthermore, S-CORE provides for two types of delivery products:</dt><dd><ul class="simple">
+<li><p>Platform Release</p></li>
+<li><p>Software Module Release</p></li>
+</ul>
+</dd>
+</dl>
+<p>These can be used by OEM projects.
+Both delivery types are also a Safety Element out of Context (SEooC), making them easier to integrate.</p>
+<p>A software module is defined as a component or a set of components.
+A software module is contained in a repository.</p>
+<p>Features and their artifacts are currently contained in the platform repository.
+As a result, they can only be delivered with the platform release.</p>
+<p>The goal is to be able to deliver features independently of the platform release.
+For this, the Decision Record proposes that the software module also contains the feature artifacts.</p>
+<p>The software module that contains the feature artifacts is responsible for fulfilling the feature requirements.
+Even though not all S-CORE components required for the feature are located in this SW module (repository).</p>
+<p>In section <a class="reference internal" href="#alternatives-considered">Alternatives Considered</a>, different alternatives are presented.
+the current solution is compared with the alternative and evaluated with respect to the following aspects:</p>
+<blockquote>
+<div><ul class="simple">
 <li><p>Independence of Release / Topic Coherence</p></li>
 <li><p>SEooC for Features</p></li>
 <li><p>Reusability across Platforms</p></li>
@@ -645,13 +640,11 @@ include:</p>
 <li><p>Number of Repositories</p></li>
 <li><p>Traceability</p></li>
 </ul>
+</div></blockquote>
 </section>
 <section id="decision">
 <h2>Decision<a class="headerlink" href="#decision" title="Link to this heading">#</a></h2>
-<p>&lt;your text&gt;</p>
-</section>
-<section id="consequences">
-<h2>Consequences<a class="headerlink" href="#consequences" title="Link to this heading">#</a></h2>
+<p>Feature artifacts will be stored in the SW module repo.</p>
 <p>Comparing the alternatives based on the criteria in the decision table
 below (see <a class="reference internal" href="#justification-for-the-decision">Justification for the Decision</a>) shows that Alternative 2b
 (Dedicated Feature Repository with Sub-Features) offers the most advantages.
@@ -660,42 +653,58 @@ supports SEooC at the feature level, and promotes reusability across
 different platforms. Sub-features should be used very sparingly to avoid
 unnecessarily increasing complexity.</p>
 </section>
+<section id="consequences">
+<h2>Consequences<a class="headerlink" href="#consequences" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Process update</p></li>
+<li><p>Moving the feature artifacts to feature repos</p></li>
+<li><dl class="simple">
+<dt>Adaptation of the traceability direction from “satisfies” to “satisfied by” between:</dt><dd><ul>
+<li><p>Stakeholder Requirement and Feature Requirement</p></li>
+<li><p>Platform Architecture and Feature</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
 <section id="alternatives-considered">
 <h2>Alternatives Considered<a class="headerlink" href="#alternatives-considered" title="Link to this heading">#</a></h2>
 <section id="alternative-1-status-quo-platform-centric-feature-management">
 <h3>Alternative 1: Status Quo - Platform-Centric Feature Management<a class="headerlink" href="#alternative-1-status-quo-platform-centric-feature-management" title="Link to this heading">#</a></h3>
-<p>Feature descriptions reside in the respective SCORE platform repositories.
-Module repositories contain the component architectures. This represents
-the current state.</p>
+<p>The platform artifacts and the feature artifacts are contained in the S-CORE platform repository.
+The component artifacts are contained in the module repository.
+This is the current status.</p>
 <figure class="align-default" id="id1">
 <p class="plantuml">
-<object data="../_images/plantuml-f73462216f8904431c61942500a7dfad00e11444.svg" type="image/svg+xml" style="width:474px;height:959px;background:#FFFFFF;"></object></p>
+<object data="../_images/plantuml-20d5f999bab638b5dbe2f26b0eb9e873faad1dab.svg" type="image/svg+xml" style="width:476px;height:976px;background:#FFFFFF;"></object></p>
 <figcaption>
 <p><span class="caption-number">Fig. 23 </span><span class="caption-text">Alternative 1: Status Quo Architecture</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
-<section id="alternative-2-dedicated-feature-repository">
-<h3>Alternative 2: Dedicated Feature Repository<a class="headerlink" href="#alternative-2-dedicated-feature-repository" title="Link to this heading">#</a></h3>
-<p>All feature artifacts are consolidated into a dedicated feature
-repository. This repository contains all feature-level artifacts, such as
-feature requirements, feature architecture, and feature-level tests.
-Furthermore, it includes all component-level artifacts, such as component
-requirements, component architecture, component tests, as well as units
-with detailed design, source code, and unit tests. It provides the main
-functionality or the main safety case for the feature and describes
-dependencies to other functions. It is also possible to reference
-sub-feature repositories.</p>
+<section id="alternative-2-feature-in-sw-module-repository">
+<h3>Alternative 2: Feature in SW Module Repository<a class="headerlink" href="#alternative-2-feature-in-sw-module-repository" title="Link to this heading">#</a></h3>
+<p>The platform artifacts are located in the S-CORE platform repository.
+The feature artifacts are located in the SW module repository.</p>
+<p>Feature artifacts are all artifacts at the feature level, such as feature requirements,
+feature architecture, and feature tests.</p>
+<p>In addition, this SW module also contains the main components of the feature
+that are not to be reused independently of this feature context.
+A feature can reuse components from other SW modules, such as BaseLibs.</p>
+<p>Component artifacts are all artifacts at the component level, such as component requirements,
+component architecture, and component tests.
+They also include units with detailed design, source code, and unit tests.</p>
 <figure class="align-default" id="id2">
 <p class="plantuml">
-<object data="../_images/plantuml-83e0a9b95cda05de139a7dae833f621a7af7e7c2.svg" type="image/svg+xml" style="width:437px;height:943px;background:#FFFFFF;"></object></p>
+<object data="../_images/plantuml-8c26880c13ca52d87fe0286a723687d8b7deeaec.svg" type="image/svg+xml" style="width:437px;height:960px;background:#FFFFFF;"></object></p>
 <figcaption>
 <p><span class="caption-number">Fig. 24 </span><span class="caption-text">Alternative 2: Dedicated Feature Repository Architecture</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
-<section id="alternative-2b-dedicated-feature-repository-with-sub-features-system-of-systems">
-<h3>Alternative 2b: Dedicated Feature Repository with Sub-Features (System of Systems)<a class="headerlink" href="#alternative-2b-dedicated-feature-repository-with-sub-features-system-of-systems" title="Link to this heading">#</a></h3>
+<section id="alternative-2b-feature-in-sw-module-repository-with-sub-features-system-of-systems">
+<h3>Alternative 2b: Feature in SW Module Repository with Sub-Features (System of Systems)<a class="headerlink" href="#alternative-2b-feature-in-sw-module-repository-with-sub-features-system-of-systems" title="Link to this heading">#</a></h3>
 <p>This variant of Alternative 2 extends the dedicated feature repository
 approach to support a System of Systems architecture. Features can be
 composed of sub-features, each residing in their own repository. This
@@ -704,23 +713,26 @@ multiple sub-features, each maintaining its own complete set of artifacts
 (requirements, architecture, tests, components, and units).</p>
 <figure class="align-default" id="id3">
 <p class="plantuml">
-<object data="../_images/plantuml-291d194b4255dcdcc9129468e9fdde4ebb8a5622.svg" type="image/svg+xml" style="width:1320px;height:1205px;background:#FFFFFF;"></object></p>
+<object data="../_images/plantuml-a4c6b4e8622590008969fdc6d13dc323a7a513fe.svg" type="image/svg+xml" style="width:1320px;height:1222px;background:#FFFFFF;"></object></p>
 <figcaption>
 <p><span class="caption-number">Fig. 25 </span><span class="caption-text">Alternative 2b: System of Systems Feature Repository Architecture</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
-<section id="alternative-2c-hierarchical-feature-repository">
-<h3>Alternative 2c: Hierarchical Feature Repository<a class="headerlink" href="#alternative-2c-hierarchical-feature-repository" title="Link to this heading">#</a></h3>
-<p>Alternative 2c corresponds to Alternative 2 with the key difference that
-there is an intermediate Feature Repository between the SCORE Repository
-and the Implementation Repositories. This Feature Repository contains
-feature-level artifacts such as feature requirements, feature architecture,
-and feature-level tests. Multiple implementation repositories can then
-reference these shared feature artifacts.</p>
+<section id="alternative-2c-dedicated-feature-repository">
+<h3>Alternative 2c: Dedicated Feature Repository<a class="headerlink" href="#alternative-2c-dedicated-feature-repository" title="Link to this heading">#</a></h3>
+<p>Alternative 2c is similar to Alternative 2,
+with the key difference beingthat there is an intermediate feature repository between
+the S-CORE platform repository and the SW module repositories (implementation repositories).
+The feature artifacts are located in the feature repository.</p>
+<p>This is to address the use case where two implementations exist for the same feature
+and copies of the feature artifacts should be avoided.</p>
+<p>Alternative 2c represents a solution but should be avoided because it increases complexity,
+the number of repositories, and thus the maintenance effort.
+Furthermore, it increases the risk that the implementations for aspects that should be the same will diverge.</p>
 <figure class="align-default" id="id4">
 <p class="plantuml">
-<object data="../_images/plantuml-49c658d5bb3b9279d1022ebf707043cf0f067bb2.svg" type="image/svg+xml" style="width:979px;height:942px;background:#FFFFFF;"></object></p>
+<object data="../_images/plantuml-21e6bb420a78d197238f551eccb43d6ea5b1832b.svg" type="image/svg+xml" style="width:1069px;height:1031px;background:#FFFFFF;"></object></p>
 <figcaption>
 <p><span class="caption-number">Fig. 26 </span><span class="caption-text">Alternative 2c: Hierarchical Feature Repository Architecture</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
@@ -765,9 +777,9 @@ reference these shared feature artifacts.</p>
 <thead>
 <tr class="row-odd"><th class="head"><p>Decision Criteria</p></th>
 <th class="head"><p>Alternative 1: Status Quo</p></th>
-<th class="head"><p>Alternative 2: Dedicated Feature Repo</p></th>
-<th class="head"><p>Alternative 2b: SoS Feature Repo</p></th>
-<th class="head"><p>Alternative 2c: Hierarchical Feature Repo</p></th>
+<th class="head"><p>Alternative 2: Feature in SW Module Repository</p></th>
+<th class="head"><p>Alternative 2b: Feature in SW Module Repository with Sub-Features</p></th>
+<th class="head"><p>Alternative 2c: Dedicated Feature Repository</p></th>
 </tr>
 </thead>
 <tbody>
@@ -876,8 +888,8 @@ code be traced?)</p></td>
 <p>Architecture work at the platform level means that decisions are made that
 are relevant to the entire system. These can include coding guidelines,
 safety concepts, structuring the platform or commonly used interfaces.</p>
-<p>An example of an overarching concept is the definition of APP_IDs. Each
-feature could define its own format, but this would result in an integrator
+<p>An example of an overarching concept is the definition of a standardized identifier for an application (APP_ID).
+Each feature could define its own format, but this would result in an integrator
 having to configure different formats for one application. Therefore, the
 definition of APP_IDs should be done at the platform level and adopted by
 the features.</p>
@@ -936,9 +948,9 @@ the features.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consequences">Consequences</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alternatives-considered">Alternatives Considered</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-1-status-quo-platform-centric-feature-management">Alternative 1: Status Quo - Platform-Centric Feature Management</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-2-dedicated-feature-repository">Alternative 2: Dedicated Feature Repository</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-2b-dedicated-feature-repository-with-sub-features-system-of-systems">Alternative 2b: Dedicated Feature Repository with Sub-Features (System of Systems)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-2c-hierarchical-feature-repository">Alternative 2c: Hierarchical Feature Repository</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-2-feature-in-sw-module-repository">Alternative 2: Feature in SW Module Repository</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-2b-feature-in-sw-module-repository-with-sub-features-system-of-systems">Alternative 2b: Feature in SW Module Repository with Sub-Features (System of Systems)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-2c-dedicated-feature-repository">Alternative 2c: Dedicated Feature Repository</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-of-artifact-structure">Visualization of Artifact Structure</a></li>
 </ul>
 </li>
