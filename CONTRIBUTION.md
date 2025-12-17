@@ -3,7 +3,7 @@ The [Eclipse Safe Open Vehicle Core](https://projects.eclipse.org/projects/autom
 Please check the [documentation](https://eclipse-score.github.io/score/main/) for more information.
 The source code is hosted at [GitHub](https://github.com/eclipse-score).
 
-The communication mainly takes place via the [`score-dev` mailing list](https://accounts.eclipse.org/mailing-list/score-dev), [Discussions] (https://github.com/orgs/eclipse-score/discussions) and GitHub issues & pull requests (PR).
+The communication mainly takes place via the [`score-dev` mailing list](https://accounts.eclipse.org/mailing-list/score-dev), [Discussions](https://github.com/orgs/eclipse-score/discussions) and GitHub issues & pull requests (PR).
 We have a Slack channel for community discussions here [Eclipse S-CORE Slack Channel](https://sdvworkinggroup.slack.com/archives/C083Z4VL90B).
 
 
