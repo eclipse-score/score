@@ -15,7 +15,7 @@
 Requirements
 ############
 
-.. document:: Persistency KVS Module Requirements
+.. document:: Persistency KVS Requirements
    :id: doc__persistency_kvs_requirements
    :status: valid
    :safety: ASIL_B
@@ -390,5 +390,5 @@ Requirements
 
    The component shall provide an API for registering callbacks that are triggered by data change events.
 
-.. needextend:: docname is not None and "persistency/kvs/requirements" in docname
-   :+tags: persistencykvs
+.. needextend:: docname is not None and "persistency/kvs/docs/requirements" in docname
+   :+tags: kvs
