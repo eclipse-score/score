@@ -26,8 +26,7 @@ These additional features are captured as requirements in the following section.
    :satisfies: feat_req__baselibs__json_library
    :status: valid
 
-vaJson shall provide a service to check the well-formedness of JSON data.
-
+   vaJson shall provide a service to check the well-formedness of JSON data.
    Errors shall be reported including the error reason and the location in the JSON document for malformed JSON and invalid schemata (user-defined errors).
 
 .. comp_req:: JSON Deserialization RFC extensions
@@ -38,7 +37,7 @@ vaJson shall provide a service to check the well-formedness of JSON data.
    :satisfies: feat_req__baselibs__json_library
    :status: valid
 
-vaJson shall provide a service to ignore trailing commas and accept hexadecimal integers.
+   vaJson shall provide a service to ignore trailing commas and accept hexadecimal integers.
 
 .. comp_req:: JSON Event Callbacks
    :id: comp_req__vajson__event_callbacks
@@ -48,7 +47,7 @@ vaJson shall provide a service to ignore trailing commas and accept hexadecimal 
    :satisfies: feat_req__baselibs__json_library
    :status: valid
 
-vaJson shall provide a service to listen to events for every parsed JSON item.
+   vaJson shall provide a service to listen to events for every parsed JSON item.
    The user shall be notified for every simple type directly, and for every complex type using start and end events.
 
 .. comp_req:: Unicode Support
@@ -59,7 +58,7 @@ vaJson shall provide a service to listen to events for every parsed JSON item.
    :satisfies: feat_req__baselibs__json_library
    :status: valid
 
-vaJson shall provide support for UTF-8 encoded strings.
+   vaJson shall provide support for UTF-8 encoded strings.
    UTF-8 encoded strings shall be decoded and encoded by vaJson.
 
 .. comp_req:: Binary Content Support
@@ -70,5 +69,6 @@ vaJson shall provide support for UTF-8 encoded strings.
    :satisfies: feat_req__baselibs__json_library
    :status: valid
 
-vaJson shall allow for plain binary content and binary strings.
+   vaJson shall allow for plain binary content and binary strings.
    Both types are represented as JSON values and handled accordingly (i.e., they must follow the JSON specification for values).
+
