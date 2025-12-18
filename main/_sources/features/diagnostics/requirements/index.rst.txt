@@ -27,6 +27,7 @@ Diagnostic and Fault Management
    :safety: QM
    :satisfies: stkh_req__diagnostics__via_sovd
    :status: valid
+   :valid_from: v1.0.0
 
    The SOVD implementation shall conform to the SOVD standard as defined in ISO/DIS 17978 (or the latest available draft or final publication).
 
@@ -37,8 +38,9 @@ Diagnostic and Fault Management
    :safety: QM
    :satisfies: stkh_req__diagnostics__via_sovd, stkh_req__diagnostics__secure_access
    :status: valid
+   :valid_from: v1.0.0
 
-   The diagnostic system shall include a central SOVD server that exposes diagnostic functionality via a standard REST interface, dispatches incoming requests to backend services, and enforces authentication and access control.
+   The diagnostic system shall include a central SOVD server that exposes diagnostic functionality via a standard REST interface.
 
 .. feat_req:: SOVD Configuration
    :id: feat_req__diagnostics__sovd_config
@@ -47,6 +49,7 @@ Diagnostic and Fault Management
    :safety: QM
    :satisfies: stkh_req__diagnostics__via_sovd
    :status: valid
+   :valid_from: v1.5.0
 
    The system shall provide configuration management for SOVD components, including protocol parameters and security settings.
 
@@ -57,6 +60,7 @@ Diagnostic and Fault Management
    :safety: QM
    :satisfies: stkh_req__diagnostics__via_sovd
    :status: valid
+   :valid_from: v1.5.0
 
    The SOVD server shall integrate with the S-CORE Configuration Manager to support runtime access and modification of configuration data.
 
@@ -67,8 +71,9 @@ Diagnostic and Fault Management
    :safety: QM
    :satisfies: stkh_req__diagnostics__secure_access
    :status: valid
+   :valid_from: v1.5.0
 
-   The SOVD server shall integrate with the S-CORE Authentication Manager to enforce access control and validate client credentials.
+   The SOVD server shall enforce access control and validate client credentials.
 
 .. feat_req:: SOVD Gateway
    :id: feat_req__diagnostics__sovd_gateway
@@ -77,6 +82,7 @@ Diagnostic and Fault Management
    :safety: QM
    :satisfies: stkh_req__diagnostics__distributed_support
    :status: valid
+   :valid_from: v1.0.0
 
    The system shall include a SOVD gateway to route diagnostic requests between different network domains and protocols.
 
@@ -87,6 +93,7 @@ Diagnostic and Fault Management
    :safety: QM
    :satisfies: stkh_req__diagnostics__via_sovd, stkh_req__diagnostics__secure_access
    :status: valid
+   :valid_from: v1.0.0
 
    The system shall provide a SOVD client to allow external applications to communicate with the SOVD server.
 
@@ -97,6 +104,7 @@ Diagnostic and Fault Management
    :safety: QM
    :satisfies: stkh_req__diagnostics__via_sovd
    :status: valid
+   :valid_from: v1.0.0
 
    The SOVD client shall be designed as a reusable core component that can be deployed in off-board, on-board, or cloud environments.
 
@@ -107,8 +115,9 @@ Diagnostic and Fault Management
    :safety: QM
    :satisfies: stkh_req__diagnostics__custom_services
    :status: valid
+   :valid_from: v1.0.0
 
-   The diagnostic system shall include a base service application (AKA routine) that is triggered from the SOVD Server and used to derive custom service applications.
+   The diagnostic system shall include a base service application (AKA routine) that is triggered by the SOVD Server and used to derive custom service applications.
 
 .. feat_req:: OEM Diagnostic Plug In
    :id: feat_req__diagnostics__oem_plugin
@@ -117,6 +126,7 @@ Diagnostic and Fault Management
    :safety: QM
    :satisfies: stkh_req__diagnostics__custom_services
    :status: valid
+   :valid_from: v1.5.0
 
    The diagnostic system shall provide a plug-in mechanism to include OEM-specific features.
 
@@ -127,8 +137,20 @@ Diagnostic and Fault Management
    :safety: QM
    :satisfies: stkh_req__diagnostics__fault_reporting
    :status: valid
+   :valid_from: v1.0.0
 
-   The system shall include a fault reporting library that provides an IPC-based interface for applications and platform components to report diagnostic faults, including metadata.
+   The system shall include a fault reporting library that provides an interface for applications and platform components to report diagnostic faults including metadata.
+
+.. feat_req:: Fault Library Catalog
+   :id: feat_req__diagnostics__fault_lib_catalog
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :satisfies: stkh_req__diagnostics__fault_reporting
+   :status: valid
+   :valid_from: v1.0.0
+
+   The fault library shall provide the ability to define faults via a component fault catalog for the scope of the respective parent component.
 
 .. feat_req:: Fault Library Debouncing
    :id: feat_req__diagnostics__fault_lib_debounce
@@ -137,6 +159,7 @@ Diagnostic and Fault Management
    :safety: QM
    :satisfies: stkh_req__diagnostics__fault_reporting
    :status: valid
+   :valid_from: v1.5.0
 
    The fault library shall support configurable error debouncing.
 
@@ -147,8 +170,20 @@ Diagnostic and Fault Management
    :safety: QM
    :satisfies: stkh_req__diagnostics__fault_reporting, stkh_req__diagnostics__dtc_read_sovd
    :status: valid
+   :valid_from: v1.0.0
 
-   The system shall include a central diagnostic fault manager that aggregates data from fault libraries, provides fault status to the SOVD server, and interfaces with a persistent diagnostic database.
+   The system shall include a central diagnostic fault manager that aggregates data from fault libraries, provides DTC status to the SOVD server, and interfaces with a persistent diagnostic database.
+
+.. feat_req:: Fault Catalog Aggregation
+   :id: feat_req__diagnostics__fault_catalog_agg
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :satisfies: stkh_req__diagnostics__fault_reporting
+   :status: valid
+   :valid_from: v1.0.0
+
+   The Diagnostic Fault Manager shall be configureable via the aggregated fault catalog derived from all fault libraries in the system.
 
 .. feat_req:: Diagnostic Database
    :id: feat_req__diagnostics__db
@@ -157,8 +192,9 @@ Diagnostic and Fault Management
    :safety: QM
    :satisfies: stkh_req__diagnostics__fault_reporting, stkh_req__diagnostics__dtc_read_sovd
    :status: valid
+   :valid_from: v1.0.0
 
-   The system shall include a diagnostic database using the S-CORE::Persistency module to store DTCs, occurrence counts, and associated metadata for fault events.
+   The system shall include a diagnostic database to store DTCs, occurrence counts, and associated metadata for fault events.
 
 .. feat_req:: Diagnostic Database Persistence
    :id: feat_req__diagnostics__db_persistence
@@ -167,8 +203,9 @@ Diagnostic and Fault Management
    :safety: QM
    :satisfies: stkh_req__diagnostics__fault_reporting
    :status: valid
+   :valid_from: v1.0.0
 
-   The diagnostic database shall store all diagnostic data persistently using the S-CORE::Persistency infrastructure.
+   The diagnostic database shall store all diagnostic data persistently.
 
 .. feat_req:: Classic Diagnostic Adapter
    :id: feat_req__diagnostics__classic_adapter
@@ -177,6 +214,7 @@ Diagnostic and Fault Management
    :safety: QM
    :satisfies: stkh_req__diagnostics__uds_ecus
    :status: valid
+   :valid_from: v1.0.0
 
    The system shall include a classic diagnostic adapter to translate SOVD requests into UDS commands.
 
@@ -187,6 +225,7 @@ Diagnostic and Fault Management
    :safety: QM
    :satisfies: stkh_req__diagnostics__uds_ecus
    :status: valid
+   :valid_from: v1.0.0
 
    The classic diagnostic adapter shall support configuration via ODX files that describe the UDS command mappings and behavior per ECU.
 
@@ -197,6 +236,7 @@ Diagnostic and Fault Management
    :safety: QM
    :satisfies: stkh_req__diagnostics__uds_tester_compat
    :status: valid
+   :valid_from: v1.5.0
 
    The system shall include a proxy to translate UDS diagnostic requests to SOVD protocol requests.
 
@@ -207,6 +247,7 @@ Diagnostic and Fault Management
    :safety: QM
    :satisfies: stkh_req__diagnostics__uds_tester_compat
    :status: valid
+   :valid_from: v1.5.0
 
    The UDS2SOVD proxy shall support configuration via standardized ODX files to define which SOVD services are exposed via the UDS interface.
 
@@ -217,5 +258,6 @@ Diagnostic and Fault Management
    :safety: QM
    :satisfies: stkh_req__diagnostics__via_sovd, stkh_req__diagnostics__dtc_read_sovd
    :status: valid
+   :valid_from: v1.0.0
 
    All internal communication between diagnostic components that do not use UDS or SOVD protocols shall be implemented using the S-CORE::COM middleware.
