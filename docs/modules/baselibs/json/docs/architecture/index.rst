@@ -134,7 +134,7 @@ Lower Level Components
    :status: valid
    :fulfils: comp_req__json__deserialization, comp_req__json__asil
 
-   .. comp_arc_sta:: vajson
+.. comp_arc_sta:: vajson
    :id: comp_arc_sta__baselibs__vajson
    :security: YES
    :safety:  ASIL_B
