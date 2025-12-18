@@ -490,6 +490,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../ai_platform/index.html">AI Platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../analysis-infra/index.html">Analysis Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../baselibs/index.html">Base Libraries (v0.5 alpha)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code_generation/index.html">Code Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../communication/index.html">Communication (v0.5 alpha)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Diagnostic and Fault Management</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -566,7 +567,7 @@
                   
   <section id="diagnostic-and-fault-management">
 <span id="diagnostics-feature"></span><h1>Diagnostic and Fault Management<a class="headerlink" href="#diagnostic-and-fault-management" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-87099dc3">
+<div class="need_container docutils container" id="SNCB-6aa31fa0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__diagnostics">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -655,9 +656,9 @@ It provides a standardized and extensible interface that enables better interope
 <p>The next diagram shows the concept in a distributed view to highlight components that are unique per system or per device.</p>
 <img alt="Diagnostic stack component architecture" src="../../_images/score-diagnostics-distributed.drawio.svg" />
 </section>
-<section id="in-scope-components">
-<h3>In scope components<a class="headerlink" href="#in-scope-components" title="Link to this heading">#</a></h3>
-<p>The following components are considered in scope of this feature request.</p>
+<section id="in-scope-components-full-stack">
+<h3>In scope components (full stack)<a class="headerlink" href="#in-scope-components-full-stack" title="Link to this heading">#</a></h3>
+<p>The following components are considered in scope of this feature request for the long term implementation of the diagnostic system (beyond v1.0).</p>
 <p>Fault Library</p>
 <ul class="simple">
 <li><p>Provides a framework agnostic interface for apps or FEO activities to report faults - called “Fault API” in the S-CORE architecture.</p></li>
@@ -739,6 +740,24 @@ It provides a standardized and extensible interface that enables better interope
 <li><p>UDS transport layer (e.g. DoIP or other vendor specific transports) shared with Classic Diagnostic Adapter.</p></li>
 <li><p>Central component and unique per ECU (one per ECU or per System is possible).</p></li>
 </ul>
+</section>
+<section id="in-scope-components-v1-0">
+<h3>In scope components (v1.0)<a class="headerlink" href="#in-scope-components-v1-0" title="Link to this heading">#</a></h3>
+<p>The following use-cases are considered in scope of this feature request for S-CORE v1.0.</p>
+<ul class="simple">
+<li><p>Read DTCs through the SOVD API.</p></li>
+<li><p>Report new faults from platform and app components via the Fault API and handle them in the DFM.</p></li>
+<li><p>Clear DTCs over SOVD.</p></li>
+<li><p>Reach an UDS ECU through the Classic Diagnostic Adapter, at least for read/clear DTC paths.</p></li>
+<li><p>A sample Diagnostic service can be triggered via SOVD (Diagnostic service = a function which can be triggered via SOVD).</p></li>
+<li><p>OPTIONAL: Retrieve ECU- and app-level metadata (HW revision, SW version) via SOVD.</p></li>
+<li><p>OPTIONAL: Read/write component configuration through SOVD, backed by the S-CORE configuration service.</p></li>
+</ul>
+<p>The following components are considered in scope of this feature request for S-CORE v1.0.</p>
+<ul class="simple">
+<li><p>All componenets are in scope for v1.0 but with limited functionality to support the use-cases described above.</p></li>
+</ul>
+<p>Further information can be found here: <a class="github reference external" href="https://github.com/eclipse-opensovd/opensovd/blob/main/docs/design/mvp.md">eclipse-opensovd/opensovd</a></p>
 </section>
 <section id="out-of-scope-components">
 <h3>Out of scope components<a class="headerlink" href="#out-of-scope-components" title="Link to this heading">#</a></h3>
@@ -931,7 +950,8 @@ Because no FOSS SOVD stack exists currently, it presents an opportunity for S-CO
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale">Rationale</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specification">Specification</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-scope-components">In scope components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-scope-components-full-stack">In scope components (full stack)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-scope-components-v1-0">In scope components (v1.0)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#out-of-scope-components">Out of scope components</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
 </ul>

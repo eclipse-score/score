@@ -15,7 +15,7 @@
 Requirements
 ############
 
-.. document:: Persistency KVS Module Requirements
+.. document:: Persistency KVS Requirements
    :id: doc__persistency_kvs_requirements
    :status: valid
    :safety: ASIL_B
@@ -120,7 +120,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__persistency__default_values,feat_req__persistency__default_value_get,feat_req__persistency__default_value_reset,feat_req__persistency__default_value_file
+   :satisfies: feat_req__persistency__default_values,feat_req__persistency__default_value_get,feat_req__persistency__reset_to_default,feat_req__persistency__default_value_file
    :status: valid
 
    The component shall accept default values of only permitted value data
@@ -131,7 +131,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__persistency__default_values,feat_req__persistency__default_value_get,feat_req__persistency__default_value_reset,feat_req__persistency__default_value_file
+   :satisfies: feat_req__persistency__default_values,feat_req__persistency__default_value_get,feat_req__persistency__reset_to_default,feat_req__persistency__default_value_file
    :status: valid
 
    The component shall provide an API to retrieve default values.
@@ -141,7 +141,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__persistency__default_values,feat_req__persistency__default_value_get,feat_req__persistency__default_value_reset,feat_req__persistency__default_value_file
+   :satisfies: feat_req__persistency__default_values,feat_req__persistency__default_value_get,feat_req__persistency__reset_to_default,feat_req__persistency__default_value_file
    :status: valid
 
    The component shall allow configuration of default values in code or in a
@@ -152,7 +152,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__persistency__default_values,feat_req__persistency__default_value_get,feat_req__persistency__default_value_reset,feat_req__persistency__default_value_file
+   :satisfies: feat_req__persistency__default_values,feat_req__persistency__default_value_get,feat_req__persistency__reset_to_default,feat_req__persistency__default_value_file
    :status: valid
 
    The component shall secure the configuration file for default values with an
@@ -163,7 +163,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__persistency__config_file
+   :satisfies: feat_req__persistency__cfg
    :status: valid
 
    The component shall allow configuration of KVS constraints at compile-time
@@ -174,7 +174,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__persistency__intra_process_comm
+   :satisfies: feat_req__persistency__concurrency
    :status: valid
 
    The component shall implement thread-safe mechanisms to enable concurrent
@@ -197,7 +197,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__persistency__persistency,feat_req__persistency__integrity_check,feat_req__persistency__persist_data
+   :satisfies: feat_req__persistency__integrity_check,feat_req__persistency__store_data
    :status: valid
 
    The component shall use the file API and the JSON data format to persist data.
@@ -207,7 +207,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__persistency__persistency,feat_req__persistency__integrity_check,feat_req__persistency__persist_data
+   :satisfies: feat_req__persistency__integrity_check,feat_req__persistency__store_data
    :status: valid
 
    The component shall generate a checksum for each data file and shall store
@@ -218,7 +218,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__persistency__persistency,feat_req__persistency__integrity_check,feat_req__persistency__persist_data
+   :satisfies: feat_req__persistency__integrity_check,feat_req__persistency__load_data
    :status: valid
 
    The component shall verify the checksum when loading data.
@@ -228,7 +228,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__persistency__persistency,feat_req__persistency__integrity_check,feat_req__persistency__persist_data
+   :satisfies: feat_req__persistency__integrity_check,feat_req__persistency__store_data
    :status: valid
 
    The component shall use the file API to persist data.
@@ -238,7 +238,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__persistency__persistency,feat_req__persistency__integrity_check,feat_req__persistency__persist_data
+   :satisfies: feat_req__persistency__integrity_check,feat_req__persistency__store_data
    :status: valid
 
    The component shall use the JSON data format to persist data.
@@ -270,7 +270,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__persistency__snapshots
+   :satisfies: feat_req__persistency__snapshot_create
    :status: valid
 
    The component shall create a snapshot each time data is stored.
@@ -280,7 +280,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__persistency__snapshots
+   :satisfies: feat_req__persistency__cfg
    :status: valid
 
    The component shall maintain a configurable maximum number of snapshots.
@@ -290,7 +290,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__persistency__snapshots
+   :satisfies: feat_req__persistency__snapshot_create
    :status: valid
 
    The component shall assign the ID 1 to the newest snapshot and shall increment the IDs of older snapshots accordingly.
@@ -300,7 +300,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__persistency__snapshots
+   :satisfies: feat_req__persistency__snapshot_remove, feat_req__persistency__snapshot_restore
    :status: valid
 
    The component shall rotate and delete the oldest snapshot when the maximum number is reached.
@@ -310,7 +310,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__persistency__snapshots
+   :satisfies: feat_req__persistency__snapshot_restore
    :status: valid
 
    The component shall allow restoration of a snapshot by its ID.
@@ -320,7 +320,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__persistency__snapshots
+   :satisfies: feat_req__persistency__snapshot_remove
    :status: valid
 
    The component shall allow deletion of individual snapshots.
@@ -330,7 +330,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__persistency__eng_mode
+   :satisfies: feat_req__persistency__dev_mode
    :status: valid
 
    The component shall provide an engineering mode that can be enabled during
@@ -341,7 +341,7 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__persistency__field_mode
+   :satisfies: feat_req__persistency__prod_mode
    :status: valid
 
    The component shall provide a field mode that can be enabled during build
@@ -385,10 +385,10 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__persistency__events
+   :satisfies: feat_req__persistency__async_api, feat_req__persistency__async_completion
    :status: valid
 
    The component shall provide an API for registering callbacks that are triggered by data change events.
 
-.. needextend:: docname is not None and "persistency/kvs/requirements" in docname
-   :+tags: persistencykvs
+.. needextend:: docname is not None and "persistency/kvs/docs/requirements" in docname
+   :+tags: kvs
