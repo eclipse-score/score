@@ -108,10 +108,14 @@ https://github.com/eclipse-score/score/issues?q=is%3Aissue%20state%3Aclosed%20ty
 Integrated Software Modules
 -----------------------------
 
-
 Baselibs
 ~~~~~~~~~~~~~
-TBD
+Selection of basic C++ utility libraries for common use in the S-CORE project
+
+- **Version:** ``baselibs v0.2.2``
+- **Source / tag:** `Baselibs GitHub release <https://github.com/eclipse-score/baselibs/archive/refs/tags/v0.2.2.tar.gz>`_
+- **Release notes**: `Baselibs release notes <https://github.com/eclipse-score/baselibs/releases/tag/v0.2.2>`_
+
 
 Communication
 ~~~~~~~~~~~~~
@@ -158,8 +162,8 @@ Logging Daemon
 **Improvements**
 
 The Eclipse SCORE Logging module provides a comprehensive logging framework for automotive embedded systems,
-featuring remote DLT (Diagnostic Log and Trace) capabilities with high-performance, lock-free communication
-between applications and the datarouter daemon.
+featuring remote DLT (Diagnostic Log and Trace) capabilities with
+lock-free communication between applications and the datarouter daemon.
 
 This is the initial open-source release of the logging framework,
 consolidating the complete project structure with build system, dependencies,
