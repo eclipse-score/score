@@ -70,11 +70,11 @@ This does include
 - Improved doc-as-code and process description
 - `bazel_tools_cc <https://github.com/eclipse-score/bazel-tools-cc>`_ introduces a clang-tidy integration into S-CORE bazel infrasturture:
 
-  - Check exhaustive `bazel_tools_cc README <https://github.com/eclipse-score/bazel-tools-cc/blob/main/README.md>`_ and an 
+  - Check exhaustive `bazel_tools_cc README <https://github.com/eclipse-score/bazel-tools-cc/blob/main/README.md>`_ and an
     `example project <https://github.com/eclipse-score/bazel-tools-cc/tree/main/test>`_ for instructions how to set-up
     clang-tidy checks for your module
   - In the upcoming releases clang-tidy will be extended with custom S-CORE checks to meet necessary process requirements.
-- Platform functionality was extended with `logging daemon <#logging-daemon>`_. 
+- Platform functionality was extended with `logging daemon <#logging-daemon>`_.
 
 
 Software Development Process status
@@ -241,7 +241,12 @@ in the automotive domain, suitable for safety and security contexts.
   - ISO PAS 8926
 
 - **Release notes**: `process_description release notes <https://github.com/eclipse-score/process_description/releases/tag/v1.4.0>`_
-- **Process maturity**: `process_description maturity levels <https://eclipse-score.github.io/process_description/main/>`_
+- **Process maturity overview**:
+
+.. figure:: ../_assets/score_process_area_overview.drawio.svg
+  :width: 100%
+  :align: center
+  :alt: Process area overview for the **Project**
 
 docs-as-code
 ~~~~~~~~~~~~~~
