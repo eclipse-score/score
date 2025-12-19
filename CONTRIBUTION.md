@@ -42,7 +42,7 @@ Please refer to the [README.md](README.md) for further information.
 ### Getting involved
 
 #### Setup Phase
-This phase is part of the eclipse Incubation Phase and shall establish all the processes needed for a safe development of functions. Only after this phase it will be possible to contribute code to the project. As the development in this project is driven by requirements, the processes and needed infrastructure incl. tooling will be established based on }[Non-functional Stakeholder_Requirements](https://eclipse-score.github.io/score/main/requirements/stakeholder/index.html). During setup phase the contributions are Bug Fixes and Improvements (both on processes and infrastructure).
+This phase is part of the eclipse Incubation Phase and shall establish all the processes needed for a safe development of functions. Only after this phase it will be possible to contribute code to the project. As the development in this project is driven by requirements, the processes and needed infrastructure incl. tooling will be established based on [Non-functional Stakeholder_Requirements](https://eclipse-score.github.io/score/main/requirements/stakeholder/index.html). During setup phase the contributions are Bug Fixes and Improvements (both on processes and infrastructure).
 
 #### Bug Fixes and Improvements
 Improvements are adding/changing processes and infrastructure, bug fixes can be also on development work products like code.
