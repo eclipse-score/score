@@ -19,8 +19,8 @@ VaJson
 
 .. note:: Document header
 
-.. document:: VaJson
-   :id: doc__VaJson
+.. document:: vajson
+   :id: doc__vajson
    :status: valid
    :safety: ASIL_B
    :security: NO
