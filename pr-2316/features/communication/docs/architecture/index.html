@@ -490,7 +490,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../ai_platform/index.html">AI Platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../analysis-infra/index.html">Analysis Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../baselibs/index.html">Base Libraries (v0.5 alpha)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../code_generation/index.html">Code Generation</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">Communication (v0.5 alpha)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Architecture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../requirements/index.html">Requirements</a></li>
@@ -586,7 +585,7 @@
 <span id="com-static-architecture"></span><h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
 <p>As discussed in <a class="reference internal" href="../../index.html#com-rationale"><span class="std std-ref">Rationale</span></a>, the overall architecture of the communication framework must be layered. This is required, to separate the frontend from the underlying communication mechanisms (also called bindings).</p>
 <p>This ensures a stable public API, independent of the underlying binding(s). At the same time, the communication framework can support many different communication protocols in a flexible manner.</p>
-<div class="need_container docutils container" id="SNCB-f0187d5d">
+<div class="need_container docutils container" id="SNCB-45ecf17b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_sta table" id="feat_arc_sta__com__communication">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -615,7 +614,7 @@
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-features/communication/docs/architecture/index-0">
-<object data="../../../../_images/plantuml-1bd6dd568d26012421e4a73f8643895537480d01.svg" type="image/svg+xml" style="width:930px;height:1025px;background:#FFFFFF;"></object></p>
+<object data="../../../../_images/plantuml-dd260db9bbc449d30157fe1512ff9a8ac4f12034.svg" type="image/svg+xml" style="width:958px;height:1005px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -666,7 +665,7 @@ This is the case when:</p>
 <section id="interface-description">
 <h3>Interface Description<a class="headerlink" href="#interface-description" title="Link to this heading">#</a></h3>
 <p>The public API for the frontend is defined as:</p>
-<div class="need_container docutils container" id="SNCB-56c13c21">
+<div class="need_container docutils container" id="SNCB-2258a627">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__communication__user">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -685,8 +684,7 @@ This is the case when:</p>
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
-</span></span></div>
+<div class="line"><span><span></span></span></div>
 <div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/index.html#feat_req__com__interfaces" title="logic_arc_int__communication__user">feat_req__com__interfaces</a></span></span></div>
 <div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="../../../../modules/communication/frontent/docs/architecture/index.html#comp_arc_sta__com__frontend" title="logic_arc_int__communication__user">comp_arc_sta__com__frontend</a></span></span></div>
 <div class="line">used by: <span class="uses"><span><a class="reference internal" href="../../../../modules/orchestrator/orchestrator/docs/architecture/index.html#comp_arc_sta__orch__orchestrator" title="logic_arc_int__communication__user">comp_arc_sta__orch__orchestrator</a></span></span></div>

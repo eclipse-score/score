@@ -565,8 +565,8 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-3742e354">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__score_platform_safety_plan">
+  <div class="need_container docutils container" id="SNCB-67cca434">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__platform_safety_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
 <div class="line"><span><span class="needs_title"><span class="needs_data">Platform Safety Plan</span></span></span></div>
@@ -586,7 +586,7 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">platform_management</span></span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__platform_safety_plan">wp__platform_safety_plan</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__tailoring">wp__tailoring</a></span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/workproducts.html#wp__platform_safety_plan">wp__platform_safety_plan</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/workproducts.html#wp__tailoring">wp__tailoring</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -595,7 +595,7 @@
 <tr class="content row-odd"><td class="content" colspan="6"></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
-<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__score_platform_safety_plan" title="doc__score_platform_safety_plan">doc__score_platform_safety_plan</a></span></span></div>
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__platform_safety_plan" title="doc__platform_safety_plan">doc__platform_safety_plan</a></span></span></div>
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
@@ -655,7 +655,7 @@ Responsibilities for development, implementation, integration and verification a
 </ul>
 <p>The SW platform functionality consists of features, which are based on a set of requirements and are developed in parallel.
 These features are developed into SW components contained in “modules”, which are another set of SEooCs (initiated by a change request).
-A template exists to guide this: <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/guidance/templates_safety_plan.html#gd_temp__module_safety_plan">gd_temp__module_safety_plan</a>.</p>
+A template exists to guide this: <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/guidance/template_module_safety_plan.html#gd_temp__module_safety_plan">gd_temp__module_safety_plan</a>.</p>
 </section>
 <section id="tailoring">
 <h3>Tailoring<a class="headerlink" href="#tailoring" title="Link to this heading">#</a></h3>
@@ -688,7 +688,6 @@ but these are not intended to be completely covering the stakeholder requirement
 There will be SW integration tests of feature requirements, as required by ISO 26262 part 6-10.
 These may be reused by the users on their HW platform to cover Technical Safety Requirements towards the SW platform.
 But if these are sufficiently also covering the TSRs must be analyzed and decided by the user.</p>
-<p>Therefore and as S-CORE only delivers source code, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/standards/iso26262/iso26262.html#std_wp__iso26262__software_1052">std_wp__iso26262__software_1052</a> is tailored out.</p>
 </li>
 <li><p>Also tailored out is the SW testing on the target, as the S-CORE project can only test on reference HW
 (part of SW integration testing). So these are not relevant: <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/standards/iso26262/iso26262.html#std_wp__iso26262__software_1151">std_wp__iso26262__software_1151</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/standards/iso26262/iso26262.html#std_wp__iso26262__software_1152">std_wp__iso26262__software_1152</a></p></li>
@@ -701,8 +700,7 @@ When used, OSS components are qualified and external SEooCs are integrated in th
 <li><p>Because in the S-CORE SW platform a proven in use argument will not be applied: <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/standards/iso26262/iso26262.html#std_wp__iso26262__support_1451">std_wp__iso26262__support_1451</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/standards/iso26262/iso26262.html#std_wp__iso26262__support_1452">std_wp__iso26262__support_1452</a></p></li>
 <li><p>Because in the S-CORE SW platform interfacing of out of scope of ISO 26262 applications is not planned: <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/standards/iso26262/iso26262.html#std_wp__iso26262__support_1551">std_wp__iso26262__support_1551</a></p></li>
 <li><p>Because in the S-CORE SW platform integration of safety-related systems not developed according to ISO 26262 is not planned: <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/standards/iso26262/iso26262.html#std_wp__iso26262__support_1651">std_wp__iso26262__support_1651</a></p></li>
-<li><p>Because in the S-CORE SW platform no ASIL decomposition is planned: <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/standards/iso26262/iso26262.html#std_wp__iso26262__analysis_551">std_wp__iso26262__analysis_551</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/standards/iso26262/iso26262.html#std_wp__iso26262__analysis_552">std_wp__iso26262__analysis_552</a>.
-According to that also <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/standards/iso26262/iso26262.html#std_req__iso26262__analysis_641">std_req__iso26262__analysis_641</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/standards/iso26262/iso26262.html#std_req__iso26262__analysis_642">std_req__iso26262__analysis_642</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/standards/iso26262/iso26262.html#std_req__iso26262__analysis_643">std_req__iso26262__analysis_643</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/standards/iso26262/iso26262.html#std_req__iso26262__analysis_644">std_req__iso26262__analysis_644</a> are tailored out for safety analyses.</p></li>
+<li><p>Because in the S-CORE SW platform no ASIL decomposition is planned: <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/standards/iso26262/iso26262.html#std_wp__iso26262__analysis_551">std_wp__iso26262__analysis_551</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/standards/iso26262/iso26262.html#std_wp__iso26262__analysis_552">std_wp__iso26262__analysis_552</a></p></li>
 <li><p>Because HSI is coming from HW (and systems) engineering which are not part of S-CORE
 and the standard only asks for refinement during SW development. As the input is missing, there is nothing to refine.
 Expectations towards the HW/Environment are covered by AoUs. Additionally S-CORE only provides reference HW integration,
@@ -767,7 +765,7 @@ Continuous improvement is part to all processes. Improvements are handled in the
 <p><em>Skills</em></p>
 <p>The main safety related project roles are the project manager, the safety manager and the safety engineer, these also have to have the (Eclipse) committer role.
 As defined in <a class="reference external" href="https://www.eclipse.org/projects/training/">Committer Training</a> the committers are elected in a meritocratic manner, meaning those have to show their skills and understanding of the project processes in several previous pull requests.</p>
-<p>For the <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__project_lead">rl__project_lead</a>, the <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_roles.html#rl__safety_manager">rl__safety_manager</a> and the <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_analysis/safety_analysis_roles.html#rl__safety_engineer">rl__safety_engineer</a> the required skills and experience are described
+<p>For the <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__project_lead">rl__project_lead</a>, the <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/roles.html#rl__safety_manager">rl__safety_manager</a> and the <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_analysis/safety_analysis_roles.html#rl__safety_engineer">rl__safety_engineer</a> the required skills and experience are described
 in these project role definitions. They are also elected in a meritocratic way and this election is documented including the evidences checked to prove the experience.</p>
 <p>Committers in the S-CORE project can work on the development of safety related or non-safety related SW modules.
 If they work on safety related modules they have to prove (additionaly to their committer election, which already shows they are skilled developers):</p>
@@ -808,14 +806,14 @@ For safety relevant issues types a “safety” label is used.</p>
 <p>The safety management status is reported in the Project Lead Circle Meeting which is defined in <a class="reference internal" href="project_management.html#doc__project_mgt_plan" title="doc__project_mgt_plan"><em class="xref need">Project Management Plan (doc__project_mgt_plan)</em></a>.
 The status report is based on safety plans work product lists (see below) and verification reports on platform and module level:</p>
 <ul class="simple">
-<li><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__platform_safety_plan">wp__platform_safety_plan</a></p></li>
-<li><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__module_safety_plan">wp__module_safety_plan</a></p></li>
+<li><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/workproducts.html#wp__platform_safety_plan">wp__platform_safety_plan</a></p></li>
+<li><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/workproducts.html#wp__module_safety_plan">wp__module_safety_plan</a></p></li>
 <li><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_platform_ver_report">wp__verification_platform_ver_report</a></p></li>
 <li><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_module_ver_report">wp__verification_module_ver_report</a></p></li>
 </ul>
 <p><em>Escalation</em></p>
 <ul class="simple">
-<li><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_roles.html#rl__safety_manager">rl__safety_manager</a> to <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__project_lead">rl__project_lead</a> (in the Project Lead Circle)</p></li>
+<li><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/roles.html#rl__safety_manager">rl__safety_manager</a> to <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__project_lead">rl__project_lead</a> (in the Project Lead Circle)</p></li>
 </ul>
 <p>The Project Lead Circle is the ultimate decision instance within the S-CORE project.
 But as in every Eclipse project the rules and committee decisions of Eclipse have to be followed.</p>
@@ -845,7 +843,7 @@ This approach ensures compliance with ISO 26262 for software SEooC, while avoidi
 </section>
 <section id="functional-safety-schedule">
 <h3>Functional Safety Schedule<a class="headerlink" href="#functional-safety-schedule" title="Link to this heading">#</a></h3>
-<p>The schedule is defined in section “Platform Safety Plan” below, but also within each module safety plan. See linked issues below and in <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/guidance/templates_safety_plan.html#gd_temp__module_safety_plan">gd_temp__module_safety_plan</a>.</p>
+<p>The schedule is defined in section “Platform Safety Plan” below, but also within each module safety plan. See linked issues below and in <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/guidance/template_module_safety_plan.html#gd_temp__module_safety_plan">gd_temp__module_safety_plan</a>.</p>
 </section>
 <section id="functional-safety-development">
 <h3>Functional Safety Development<a class="headerlink" href="#functional-safety-development" title="Link to this heading">#</a></h3>
@@ -861,7 +859,7 @@ This approach ensures compliance with ISO 26262 for software SEooC, while avoidi
 </section>
 <section id="functional-safety-work-products">
 <h3>Functional Safety Work Products<a class="headerlink" href="#functional-safety-work-products" title="Link to this heading">#</a></h3>
-<p>The work products relevant for a module development is defined within each module safety management plan. See <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/guidance/templates_safety_plan.html#gd_temp__module_safety_plan">gd_temp__module_safety_plan</a>.
+<p>The work products relevant for a module development is defined within each module safety management plan. See <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/guidance/template_module_safety_plan.html#gd_temp__module_safety_plan">gd_temp__module_safety_plan</a>.
 Generic project wide work products are defined below.</p>
 </section>
 <section id="functional-safety-quality-criteria">
@@ -918,10 +916,10 @@ Generic project wide work products are defined below.</p>
 <td><p><a class="reference external" href="https://github.com/orgs/eclipse-score/projects/21">Process community planning</a></p></td>
 <td><p>see planning board</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/release_management/release_workproducts.html#wp__platform_handbook">wp__platform_handbook</a></p></td>
-<td><p>valid</p></td>
-<td><p><a class="reference internal" href="../handbook/index.html#doc__platform_handbook" title="doc__platform_handbook"><em class="xref need">Handbook (doc__platform_handbook)</em></a></p></td>
-<td><p>valid</p></td>
+<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/workproducts/index.html#wp__platform_sw_build_config">wp__platform_sw_build_config</a></p></td>
+<td><p>&lt;Process status&gt;</p></td>
+<td><p>&lt;Link to WP&gt;</p></td>
+<td><p>&lt;automated&gt;</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/release_management/release_workproducts.html#wp__platform_sw_release_note">wp__platform_sw_release_note</a></p></td>
 <td><p>valid</p></td>
@@ -969,32 +967,32 @@ Generic project wide work products are defined below.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__platform_safety_plan">wp__platform_safety_plan</a></p></td>
+<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/workproducts.html#wp__platform_safety_plan">wp__platform_safety_plan</a></p></td>
 <td><p>valid</p></td>
 <td><p>this document</p></td>
 <td><p>see above</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__platform_safety_package">wp__platform_safety_package</a></p></td>
+<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/workproducts.html#wp__platform_safety_package">wp__platform_safety_package</a></p></td>
 <td><p>valid</p></td>
 <td><p>&lt;Link to WP&gt;</p></td>
 <td><p>&lt;automated&gt;</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__fdr_reports">wp__fdr_reports</a> (platform Safety Plan)</p></td>
+<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/workproducts.html#wp__fdr_reports">wp__fdr_reports</a> (platform Safety Plan)</p></td>
 <td><p>valid</p></td>
 <td><p>&lt;Link to WP&gt;</p></td>
 <td><p>&lt;automated&gt;</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__fdr_reports">wp__fdr_reports</a> (platform Safety Package)</p></td>
+<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/workproducts.html#wp__fdr_reports">wp__fdr_reports</a> (platform Safety Package)</p></td>
 <td><p>valid</p></td>
 <td><p>&lt;Link to WP&gt;</p></td>
 <td><p>&lt;automated&gt;</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__fdr_reports">wp__fdr_reports</a> (feature’s Safety Analyses &amp; DFA)</p></td>
+<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/workproducts.html#wp__fdr_reports">wp__fdr_reports</a> (feature’s Safety Analyses &amp; DFA)</p></td>
 <td><p>&lt;Process status&gt;</p></td>
 <td><p>&lt;Link to WP&gt;</p></td>
 <td><p>&lt;automated&gt;</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__audit_report">wp__audit_report</a></p></td>
+<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/workproducts.html#wp__audit_report">wp__audit_report</a></p></td>
 <td><p>performed by external experts</p></td>
 <td><p>&lt;Link to WP&gt;</p></td>
 <td><p>intermediate</p></td>
@@ -1004,14 +1002,14 @@ Generic project wide work products are defined below.</p>
 <td><p>&lt;Link to WP&gt;</p></td>
 <td><p>&lt;automated&gt;</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__platform_safety_manual">wp__platform_safety_manual</a></p></td>
+<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/workproducts.html#wp__platform_safety_manual">wp__platform_safety_manual</a></p></td>
 <td><p>valid</p></td>
 <td><p>&lt;Link to WP&gt;</p></td>
 <td><p>&lt;automated&gt;</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__tailoring">wp__tailoring</a> (generic)</p></td>
+<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/workproducts.html#wp__tailoring">wp__tailoring</a> (generic)</p></td>
 <td><p>valid</p></td>
-<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__tailoring_work_products">wp__tailoring_work_products</a> &amp; <a class="reference internal" href="#doc__score_platform_safety_plan" title="doc__score_platform_safety_plan"><em class="xref need">Platform Safety Plan (doc__score_platform_safety_plan)</em></a></p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/workproducts.html#wp__tailoring_work_products">wp__tailoring_work_products</a> &amp; <a class="reference internal" href="#doc__platform_safety_plan" title="doc__platform_safety_plan"><em class="xref need">Platform Safety Plan (doc__platform_safety_plan)</em></a></p></td>
 <td><p>valid</p></td>
 </tr>
 </tbody>
@@ -1025,7 +1023,7 @@ Generic project wide work products are defined below.</p>
 <p><a class="reference internal" href="../features/communication/ipc/docs/safety_planning/index.html#doc__com_ipc_safety_wp" title="doc__com_ipc_safety_wp"><em class="xref need">Communication IPC Safety WPs (doc__com_ipc_safety_wp)</em></a></p>
 <p><a class="reference internal" href="../features/frameworks/feo/safety_planning/index.html#doc__feo_safety_wp" title="doc__feo_safety_wp"><em class="xref need">FEO Safety Work Products (doc__feo_safety_wp)</em></a></p>
 <p><a class="reference internal" href="../features/orchestration/safety_planning/index.html#doc__orchestration_safety_wp" title="doc__orchestration_safety_wp"><em class="xref need">Orchestration Safety WPs (doc__orchestration_safety_wp)</em></a></p>
-<p><a class="reference internal" href="../features/persistency/safety_planning/index.html#doc__persistency_safety_wp" title="doc__persistency_safety_wp"><em class="xref need">Persistency Safety WPs (doc__persistency_safety_wp)</em></a></p>
+<p><a class="reference internal" href="../features/persistency/kvs/safety_planning/index.html#doc__persistency_safety_wp" title="doc__persistency_safety_wp"><em class="xref need">Persistency KVS Safety WPs (doc__persistency_safety_wp)</em></a></p>
 <p>Note: list of features according to <a class="reference internal" href="../score_releases/index.html#releases"><span class="std std-ref">S-CORE Releases</span></a></p>
 </section>
 <section id="platform-management-plan-documents-status-chart">
