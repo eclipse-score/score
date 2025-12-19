@@ -116,7 +116,7 @@ Be aware that the version numbers change over time. Always check the latest vers
       common --@score-baselibs//score/json:base_library=nlohmann
       common --@communication//score/mw/com/flags:tracing_library=stub
 
-      common --registry=https://raw.githubusercontent.com/eclipse-score/bazel_registry/v0.5.0-alpha/
+      common --registry=https://raw.githubusercontent.com/eclipse-score/bazel_registry/v0.5.0-beta/
 
       common --registry=https://bcr.bazel.build
 
