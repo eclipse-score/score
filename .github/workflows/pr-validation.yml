@@ -27,7 +27,18 @@ jobs:
       pull-requests: write
       issues: write # Allow label creation
     steps:
-      - name: Verify Linked Issue
-        uses: hattan/verify-linked-issue-action@v1.1.5
+      - name: Get issues
+        id: get-issues
+        uses: mondeja/pr-linked-issues-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Print has linked issues
+        id: has-linked-issues
+        if: join(steps.get-issues.outputs.issues) != ''
+        run: echo "Has linked issues"
+      - name: Print has not linked issues
+        if: steps.has-linked-issues.conclusion == 'skipped'
+        run: |
+          echo "Error: No linked issues found for this Pull Request."
+          echo "Please ensure an issue is properly linked (e.g., using 'Fixes #123' in the description or via the GitHub UI)."
+          exit 1
