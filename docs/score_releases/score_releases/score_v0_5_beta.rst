@@ -68,6 +68,13 @@ This does include
 - Unit-test coverage measurement results are now automatically part of Release Assests for every component: **//TODO:** link to an example.
 - A new combined build toolchain of qcc and gcc, see `bazel_cpp_toolchain <#bazel-cpp-toolchain>`_.
 - Improved doc-as-code and process description
+- `bazel_tools_cc <https://github.com/eclipse-score/bazel-tools-cc>`_ introduces a clang-tidy integration into S-CORE bazel infrasturture:
+
+  - Check exhaustive `bazel_tools_cc README <https://github.com/eclipse-score/bazel-tools-cc/blob/main/README.md>`_ and an 
+    `example project <https://github.com/eclipse-score/bazel-tools-cc/tree/main/test>`_ for instructions how to set-up
+    clang-tidy checks for your module
+  - In the upcoming releases clang-tidy will be extended with custom S-CORE checks to meet necessary process requirements.
+- Platform functionality was extended with `logging daemon <#logging-daemon>`_. 
 
 
 Software Development Process status
@@ -145,8 +152,34 @@ Orchestrator
   - `Orchestrator scope and design <https://github.com/eclipse-score/orchestrator/blob/main/src/orchestration/doc/features.md>`__
   - `Orchestrator examples <https://github.com/eclipse-score/orchestrator/tree/main/src/orchestration/examples>`__
 
+Logging Daemon
+~~~~~~~~~~~~~~~~~~
+
+**Improvements**
+
+The Eclipse SCORE Logging module provides a comprehensive logging framework for automotive embedded systems,
+featuring remote DLT (Diagnostic Log and Trace) capabilities with high-performance, lock-free communication
+between applications and the datarouter daemon.
+
+This is the initial open-source release of the logging framework,
+consolidating the complete project structure with build system, dependencies,
+and tooling for integration into Eclipse SCORE projects.
+
+The module is designed for Bazel-based builds and provides both the middleware logging
+library (score/mw/log) that includes all supported recorders with respective backends and
+the datarouter daemon (score/datarouter). The shared memory implementation between the middleware
+library and datarouter daemon guarantees Freedom From Interference (FFI),
+enabling safe logging from real-time and safety-critical contexts.
+
+:Version: ``logging v0.0.3``
+:Source / tag: `logging release <https://github.com/eclipse-score/logging/archive/refs/tags/v0.0.3.tar.gz>`__
+:Further reading: See below
+
+  - `Logging release notes <https://github.com/eclipse-score/logging/releases/tag/v0.0.3>`__
+  - `Logging ReadMe <https://github.com/eclipse-score/logging/tree/main/score/datarouter>`__
+
 Kyron
-~~~~~~
+~~~~~~~~~~~~~~
 
 **Improvements**
 
