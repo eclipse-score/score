@@ -107,6 +107,11 @@ Zero-copy, shared-memory based inter-process communication for minimal-latency i
 - **Source / tag:** `Communication GitHub release <https://github.com/eclipse-score/communication/archive/refs/tags/v0.1.2.tar.gz>`_
 - **Release notes:** :need:`doc__communication_release_note`
 
+**Improvements**
+
+- Enabled various code quality tools
+- Extension of the Rust API (expect further extensive work on this API)
+- Support explicit setting of application id in configuration (with fallback to PID)
 
 Fixed Execution Order Framework(FEO)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
