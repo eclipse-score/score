@@ -205,12 +205,14 @@ Reference QNX image
 
 Reference Red Hat AutoSD Linux image (Experimental)
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-- Use sub-module structure
-- os_images does not need to be a sub-module since it does not use bazel
-- Use AutoSD tools to build RPMs (toolchain + bazelrc file)
-- Use built RPMs in os_images
-- Uses 0.5 modules, similar setup to upstream reference_instegration
-- e2e workflow defined in github actions
+- Uses AutoSD's toolchain to build and generate Lola RPMs
+- Deploy RPMs into an AutoSD Image
+
+Pull requests:
+
+https://github.com/eclipse-score/reference_integration/pull/56
+https://github.com/eclipse-score/inc_os_autosd/pull/16
+
 
 Reference Elektrobit corbos Linux for Safety Applications Linux image (Experimental)
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

@@ -557,7 +557,7 @@
                   
   <section id="s-core-v0-5-beta-release-notes">
 <h1>S-Core v0.5-beta release notes<a class="headerlink" href="#s-core-v0-5-beta-release-notes" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-c2a6ad3a">
+<div class="need_container docutils container" id="SNCB-3ff84497">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__score_v05_beta_release_note">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -791,13 +791,12 @@ enabling safe logging from real-time and safety-critical contexts.</p>
 <section id="reference-red-hat-autosd-linux-image-experimental">
 <h5>Reference Red Hat AutoSD Linux image (Experimental)<a class="headerlink" href="#reference-red-hat-autosd-linux-image-experimental" title="Link to this heading">#</a></h5>
 <ul class="simple">
-<li><p>Use sub-module structure</p></li>
-<li><p>os_images does not need to be a sub-module since it does not use bazel</p></li>
-<li><p>Use AutoSD tools to build RPMs (toolchain + bazelrc file)</p></li>
-<li><p>Use built RPMs in os_images</p></li>
-<li><p>Uses 0.5 modules, similar setup to upstream reference_instegration</p></li>
-<li><p>e2e workflow defined in github actions</p></li>
+<li><p>Uses AutoSD’s toolchain to build and generate Lola RPMs</p></li>
+<li><p>Deploy RPMs into an AutoSD Image</p></li>
 </ul>
+<p>Pull requests:</p>
+<p><a class="github reference external" href="https://github.com/eclipse-score/reference_integration/pull/56">eclipse-score/reference_integration#56</a>
+<a class="github reference external" href="https://github.com/eclipse-score/inc_os_autosd/pull/16">eclipse-score/inc_os_autosd#16</a></p>
 </section>
 <section id="reference-elektrobit-corbos-linux-for-safety-applications-linux-image-experimental">
 <h5>Reference Elektrobit corbos Linux for Safety Applications Linux image (Experimental)<a class="headerlink" href="#reference-elektrobit-corbos-linux-for-safety-applications-linux-image-experimental" title="Link to this heading">#</a></h5>
