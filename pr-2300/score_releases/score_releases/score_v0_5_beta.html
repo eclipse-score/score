@@ -557,7 +557,7 @@
                   
   <section id="s-core-v0-5-beta-release-notes">
 <h1>S-Core v0.5-beta release notes<a class="headerlink" href="#s-core-v0-5-beta-release-notes" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-8ed0e875">
+<div class="need_container docutils container" id="SNCB-91bebfb5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__score_v05_beta_release_note">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -638,7 +638,7 @@ This does include</p>
 <li><p>Static code analysis with CodeQL MISRA C++ 2023: <cite>release link &lt;https://github.com/eclipse-score/reference_integration/releases/tag/v0.5.0-beta&gt;</cite>.</p></li>
 <li><p>Execution of Unit tests as part of the Reference Integration <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/test_integration.yml">test_integration workflow</a>.</p></li>
 <li><p>Unit-test coverage measurement results are now automatically part of Release Assests for every component: <strong>//TODO:</strong> link to an example.</p></li>
-<li><p>A new combined build toolchain of qcc and gcc, see <a class="reference external" href="#bazel-cpp-toolchain">bazel_cpp_toolchain</a>.</p></li>
+<li><p>A new combined build toolchain of qcc and gcc, see <a class="reference internal" href="#bazel-cpp-toolchain"><span class="std std-ref">bazel-cpp-toolchain</span></a>.</p></li>
 <li><p>Improved doc-as-code and process description</p></li>
 <li><p><a class="reference external" href="https://github.com/eclipse-score/bazel-tools-cc">bazel_tools_cc</a> introduces a clang-tidy integration into S-CORE bazel infrasturture:</p>
 <ul>
@@ -648,21 +648,8 @@ clang-tidy checks for your module</p></li>
 <li><p>In the upcoming releases clang-tidy will be extended with custom S-CORE checks to meet necessary process requirements.</p></li>
 </ul>
 </li>
-<li><p>Platform functionality was extended with <a class="reference external" href="#logging-daemon">logging daemon</a>.</p></li>
+<li><p>Platform functionality was extended with <a class="reference internal" href="#logging-daemon"><span class="std std-ref">logging daemon</span></a>.</p></li>
 </ul>
-</section>
-<section id="software-development-process-status">
-<h2>Software Development Process status<a class="headerlink" href="#software-development-process-status" title="Link to this heading">#</a></h2>
-<p>The following image provides an overview of the current status of the software development process, the associated tooling,
-and the progress of its application to the software modules.</p>
-<a class="reference internal image-reference" href="https://raw.githubusercontent.com/eclipse-score/process_description/bec1931b56464543cb70385e75c15fcb1625f0d0/process/_assets/score_process_area_overview.drawio.svg"><img alt="Architecture overview" class="align-center" src="https://raw.githubusercontent.com/eclipse-score/process_description/bec1931b56464543cb70385e75c15fcb1625f0d0/process/_assets/score_process_area_overview.drawio.svg" style="width: 1000px;" />
-</a>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p>For more details please refer to
-<a class="reference external" href="https://eclipse-score.github.io/score/main/platform_management_plan/documentation_management.html">Documentation Management Plan</a>, that
-provides overview on the process workproduct level for every software module and process area.</p>
 </section>
 <section id="s-core-platform">
 <h2>S-CORE Platform<a class="headerlink" href="#s-core-platform" title="Link to this heading">#</a></h2>
@@ -709,6 +696,31 @@ preserving application state and data integrity over time.</p>
 <li><p><strong>Source / tag:</strong> <a class="reference external" href="https://github.com/eclipse-score/persistency/archive/refs/tags/v0.2.2.tar.gz">Persistency GitHub release</a></p></li>
 </ul>
 </section>
+<section id="logging-daemon">
+<span id="id3"></span><h4>Logging Daemon<a class="headerlink" href="#logging-daemon" title="Link to this heading">#</a></h4>
+<p><strong>Improvements</strong></p>
+<p>The Eclipse SCORE Logging module provides a comprehensive logging framework for automotive embedded systems,
+featuring remote DLT (Diagnostic Log and Trace) capabilities with
+lock-free communication between applications and the datarouter daemon.</p>
+<p>This is the initial open-source release of the logging framework,
+consolidating the complete project structure with build system, dependencies,
+and tooling for integration into Eclipse SCORE projects.</p>
+<p>The module is designed for Bazel-based builds and provides both the middleware logging
+library (score/mw/log) that includes all supported recorders with respective backends and
+the datarouter daemon (score/datarouter). The shared memory implementation between the middleware
+library and datarouter daemon guarantees Freedom From Interference (FFI),
+enabling safe logging from real-time and safety-critical contexts.</p>
+<ul class="simple">
+<li><p><strong>Version:</strong> <code class="docutils literal notranslate"><span class="pre">logging</span> <span class="pre">v0.0.3</span></code></p></li>
+<li><p><strong>VSource / tag:</strong>  <a class="reference external" href="https://github.com/eclipse-score/logging/archive/refs/tags/v0.0.3.tar.gz">logging release</a></p></li>
+<li><p><strong>Further reading:</strong>: See below</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/logging/releases/tag/v0.0.3">Logging release notes</a></p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/logging/tree/main/score/datarouter">Logging ReadMe</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
 <section id="orchestrator">
 <h4>Orchestrator<a class="headerlink" href="#orchestrator" title="Link to this heading">#</a></h4>
 <p><strong>Improvements</strong></p>
@@ -729,36 +741,6 @@ preserving application state and data integrity over time.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/eclipse-score/orchestrator/blob/main/src/orchestration/doc/features.md">Orchestrator scope and design</a></p></li>
 <li><p><a class="reference external" href="https://github.com/eclipse-score/orchestrator/tree/main/src/orchestration/examples">Orchestrator examples</a></p></li>
-</ul>
-</dd>
-</dl>
-</section>
-<section id="id3">
-<h4>Logging Daemon<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
-<p><strong>Improvements</strong></p>
-<p>The Eclipse SCORE Logging module provides a comprehensive logging framework for automotive embedded systems,
-featuring remote DLT (Diagnostic Log and Trace) capabilities with
-lock-free communication between applications and the datarouter daemon.</p>
-<p>This is the initial open-source release of the logging framework,
-consolidating the complete project structure with build system, dependencies,
-and tooling for integration into Eclipse SCORE projects.</p>
-<p>The module is designed for Bazel-based builds and provides both the middleware logging
-library (score/mw/log) that includes all supported recorders with respective backends and
-the datarouter daemon (score/datarouter). The shared memory implementation between the middleware
-library and datarouter daemon guarantees Freedom From Interference (FFI),
-enabling safe logging from real-time and safety-critical contexts.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Version<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">logging</span> <span class="pre">v0.0.3</span></code></p>
-</dd>
-<dt class="field-even">Source / tag<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://github.com/eclipse-score/logging/archive/refs/tags/v0.0.3.tar.gz">logging release</a></p>
-</dd>
-<dt class="field-odd">Further reading<span class="colon">:</span></dt>
-<dd class="field-odd"><p>See below</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://github.com/eclipse-score/logging/releases/tag/v0.0.3">Logging release notes</a></p></li>
-<li><p><a class="reference external" href="https://github.com/eclipse-score/logging/tree/main/score/datarouter">Logging ReadMe</a></p></li>
 </ul>
 </dd>
 </dl>
@@ -844,6 +826,9 @@ in the automotive domain, suitable for safety and security contexts.</p>
 <a class="reference internal image-reference" href="../../_images/score_process_area_overview.drawio.svg"><img alt="Process area overview for the **Project**" src="../../_images/score_process_area_overview.drawio.svg" style="width: 100%;" />
 </a>
 </figure>
+<p>For more details please refer to
+<a class="reference external" href="https://eclipse-score.github.io/score/main/platform_management_plan/documentation_management.html">Documentation Management Plan</a>, that
+provides process workproduct level overview for every software module and process area.</p>
 </section>
 <section id="docs-as-code">
 <h4>docs-as-code<a class="headerlink" href="#docs-as-code" title="Link to this heading">#</a></h4>
@@ -886,8 +871,8 @@ in the automotive domain, suitable for safety and security contexts.</p>
 <li><p><strong>Source / tag:</strong> <a class="reference external" href="https://github.com/eclipse-score/testing_tools/releases/tag/v0.3.1">Test Scenarios GitHub release</a></p></li>
 </ul>
 </section>
-<section id="id4">
-<h4>Bazel CPP Toolchain<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
+<section id="bazel-cpp-toolchain">
+<span id="id4"></span><h4>Bazel CPP Toolchain<a class="headerlink" href="#bazel-cpp-toolchain" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p><strong>What is in</strong></p>
 <ul>
@@ -994,15 +979,14 @@ in the automotive domain, suitable for safety and security contexts.</p>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improvements">Improvements</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-development-process-status">Software Development Process status</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#s-core-platform">S-CORE Platform</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integrated-software-modules">Integrated Software Modules</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#baselibs">Baselibs</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#communication">Communication</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fixed-execution-order-framework-feo">Fixed Execution Order Framework(FEO)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#persistency">Persistency</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#logging-daemon">Logging Daemon</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#orchestrator">Orchestrator</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Logging Daemon</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kyron">Kyron</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-integration">Reference integration</a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-qnx-image">Reference QNX image</a></li>
@@ -1018,7 +1002,7 @@ in the automotive domain, suitable for safety and security contexts.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tooling">tooling</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#itf-integration-testing-framework">ITF (Integration Testing Framework)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#test-scenarios">Test Scenarios</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Bazel CPP Toolchain</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bazel-cpp-toolchain">Bazel CPP Toolchain</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performed-verification">Performed Verification</a></li>
