@@ -565,7 +565,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-90d293a7">
+  <div class="need_container docutils container" id="SNCB-86e5f68c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__verification_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -685,7 +685,7 @@ the <a class="reference internal" href="../contribute/contribution_request/index
 <h3>Levels of integration and verification<a class="headerlink" href="#levels-of-integration-and-verification" title="Link to this heading">#</a></h3>
 <p>There are the following different levels of integration and verification defined:</p>
 <ol class="arabic simple">
-<li><p>Software unit (incl. detailed design) and component verification to verify the integration of
+<li><p><strong>Software unit verification</strong> (incl. detailed design) and component verification to verify the integration of
 units to a component and also the integration of smaller component(s) to a complex component based on</p>
 <ol class="arabic simple">
 <li><p>detailed design and</p></li>
@@ -693,21 +693,22 @@ units to a component and also the integration of smaller component(s) to a compl
 <li><p>component requirements</p></li>
 </ol>
 </li>
-<li><p>Software feature verification to verify the integration of components to a feature based on</p>
+<li><p><strong>Software integration verification</strong> on feature level to verify the integration of components to a feature based on</p>
 <ol class="arabic simple">
 <li><p>feature architecture and</p></li>
 <li><p>feature requirements</p></li>
 </ol>
 </li>
-<li><p>Platform testing (on reference hardware)</p>
+<li><p><strong>Software platform verification</strong> as Platform Integration Testing of the integrated software element (on reference hardware) based on</p>
 <ol class="arabic simple">
 <li><p>Stakeholder requirements</p></li>
 </ol>
 </li>
 </ol>
 <blockquote>
-<div><p><strong>Note:</strong> These three levels translate to the levels of ISO 26262 part 6 clauses 9 to 11. The platform
-testing will be executed by the integrator. S-CORE project only executes tests on reference hardware.
+<div><p><strong>Note:</strong> These three levels translate to the levels of ISO 26262 part 6 clauses 9 to 11, where compliant testing with full coverage is tailored out for the embedded software.
+The specific tailoring is described in the <a class="reference internal" href="safety_management.html#doc__score_platform_safety_plan" title="doc__score_platform_safety_plan"><em class="xref need">Platform Safety Plan (doc__score_platform_safety_plan)</em></a>.
+The full Platform Integration Testing will be executed by the integrator. S-CORE project only executes tests on reference hardware.
 These tests serve as an optional base for the integrator and will also be part of the
 <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_platform_ver_report">wp__verification_platform_ver_report</a>, but more on an informative character. The full scope
 of clause 11 is tailored out accordingly for S-CORE. Practically, this means S-CORE will implement
@@ -737,42 +738,42 @@ method is to be used as meta data (<em>TestType</em> and <em>DerivationTechnique
 <tbody>
 <tr class="row-even"><td><p>Static Code Analysis</p></td>
 <td><p>static-code-analysis</p></td>
-<td><p>1, -, -</p></td>
+<td><p>1 Unit/Component, -, -</p></td>
 <td><p>QM &amp; ASIL B</p></td>
 </tr>
 <tr class="row-odd"><td><p>Structural Statement Coverage (Code coverage)</p></td>
 <td><p>structural-statement-coverage</p></td>
-<td><p>1, -, -</p></td>
+<td><p>1 Unit/Component, -, -</p></td>
 <td><p>QM &amp; ASIL B</p></td>
 </tr>
 <tr class="row-even"><td><p>Structural Branch Coverage (Code coverage)</p></td>
 <td><p>structural-branch-coverage</p></td>
-<td><p>1, -, -</p></td>
+<td><p>1 Unit/Component, -, -</p></td>
 <td><p>QM &amp; ASIL B</p></td>
 </tr>
 <tr class="row-odd"><td><p>Walkthrough</p></td>
 <td><p>walkthrough</p></td>
-<td><p>1, 2, 3</p></td>
+<td><p>All level 1, 2, 3</p></td>
 <td><p>QM</p></td>
 </tr>
 <tr class="row-even"><td><p>Inspection</p></td>
 <td><p>inspection</p></td>
-<td><p>1, 2, 3</p></td>
+<td><p>1 Unit/Component, 2 Feature Integration, -</p></td>
 <td><p>ASIL B</p></td>
 </tr>
 <tr class="row-odd"><td><p>Interface Test</p></td>
 <td><p>interface-test</p></td>
-<td><p>1, 2, -</p></td>
+<td><p>1 Unit/Component, 2 Feature Integration, -</p></td>
 <td><p>QM &amp; ASIL B</p></td>
 </tr>
 <tr class="row-even"><td><p>Requirements-based Test</p></td>
 <td><p>requirements-based</p></td>
-<td><p>1,  2, -</p></td>
+<td><p>All level 1, 2, 3</p></td>
 <td><p>QM &amp; ASIL B</p></td>
 </tr>
 <tr class="row-odd"><td><p>Resource Usage Evaluation (only on reference environment)</p></td>
 <td><p>resource-usage</p></td>
-<td><p>-, 2, -</p></td>
+<td><p>-, 2 Feature Integration, -</p></td>
 <td><p>QM &amp; ASIL B</p></td>
 </tr>
 </tbody>
@@ -821,22 +822,22 @@ at higher levels:</p>
 <tbody>
 <tr class="row-even"><td><p>Analysis of Requirements</p></td>
 <td><p>requirements-analysis</p></td>
-<td><p>1, 2, 3</p></td>
+<td><p>All level 1, 2, 3</p></td>
 <td><p>QM, ASIL B</p></td>
 </tr>
 <tr class="row-odd"><td><p>Analysis of Boundary Values</p></td>
 <td><p>boundary-values</p></td>
-<td><p>1, 2, -</p></td>
+<td><p>1 Unit/Component, 2 Feature Integration, -</p></td>
 <td><p>ASIL B</p></td>
 </tr>
 <tr class="row-even"><td><p>Analysis of Equivalence Classes</p></td>
 <td><p>equivalence-classes</p></td>
-<td><p>1, 2, -</p></td>
+<td><p>All level 1, 2, 3</p></td>
 <td><p>ASIL B</p></td>
 </tr>
 <tr class="row-odd"><td><p>Fuzzy Testing (focus security)</p></td>
 <td><p>fuzz-testing</p></td>
-<td><p>1, 2, -</p></td>
+<td><p>1 Unit/Component, 2 Feature Integration, -</p></td>
 <td><p>QM, ASIL B</p></td>
 </tr>
 </tbody>
