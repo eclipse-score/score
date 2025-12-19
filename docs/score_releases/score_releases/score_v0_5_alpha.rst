@@ -17,7 +17,7 @@ S-Core v0.5-alpha release notes
 
 .. document:: S-Core v0.5-alpha release note
    :id: doc__score_v05_alpha_release_note
-   :status: draft
+   :status: valid
    :safety: ASIL_B
    :security: YES
    :realizes: wp__platform_sw_release_note
@@ -51,19 +51,6 @@ Highlights
 - Reference integration including the *scrample* demo application.
 - Initial set of communication, persistency, orchestration, and base utility modules.
 - Experimental reference images for QNX, Red Hat AutoSD Linux, and EB corbos Linux for Safety Applications.
-
-Timeline
----------
-The current timeline for Eclipse S-CORE releases is shown below.
-
-.. image:: ../_assets/score_release_plan.drawio.svg
-   :width: 800
-   :alt: Architecture overview
-   :align: center
-
-|
-
-For a detailed and always up-to-date planning view, see the `GitHub project <https://github.com/orgs/eclipse-score/projects/17/views/26>`_.
 
 Eclipse S-CORE book
 -------------------

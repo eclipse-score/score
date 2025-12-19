@@ -24,7 +24,23 @@ See also the project life cycle within the `Eclipse Development Process <https:/
 S-CORE Releases Overview
 ========================
 
+Timeline
+---------
+The current timeline for Eclipse S-CORE releases is shown below.
+
+.. image:: ./_assets/score_release_plan.drawio.svg
+   :width: 800
+   :alt: Architecture overview
+   :align: center
+
+|
+
+For a detailed and always up-to-date planning view, see the `GitHub project <https://github.com/orgs/eclipse-score/projects/17/views/26>`_.
+
+List of S-CORE released versions
+---------------------------------
+
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    score_releases/index.rst
