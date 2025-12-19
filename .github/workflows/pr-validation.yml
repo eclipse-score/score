@@ -14,13 +14,17 @@
 name: Pr Validation check
 on:
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [edited, synchronize, opened, reopened]
+  check_run:
+
 jobs:
-  lint-commits:
-    name: check-commit-messages
+  verify_linked_issue:
     runs-on: ubuntu-latest
+    name: Ensure Pull Request has a linked issue.
     steps:
       - name: Verify Linked Issue
         uses: hattan/verify-linked-issue-action@v1.1.5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          message: 'Error! No linked issue found'
