@@ -72,7 +72,7 @@
         </script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Communication (v0.5 alpha)" href="../../communication/index.html" />
+    <link rel="next" title="Communication (v0.5 beta)" href="../../communication/index.html" />
     <link rel="prev" title="Code Generation" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -489,20 +489,20 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../ai_platform/index.html">AI Platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../analysis-infra/index.html">Analysis Infrastructure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../baselibs/index.html">Base Libraries (v0.5 alpha)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../baselibs/index.html">Base Libraries (v0.5 beta)</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Code Generation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Requirements</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../../communication/index.html">Communication (v0.5 alpha)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../communication/index.html">Communication (v0.5 beta)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../diagnostics/index.html">Diagnostic and Fault Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../frameworks/index.html">Frameworks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../infrastructure/index.html">Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../integration/index.html">Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lifecycle/index.html">Lifecycle</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../orchestration/index.html">Orchestration (v0.5 alpha)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../persistency/index.html">Persistency (v0.5 alpha)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../orchestration/index.html">Orchestration (v0.5 beta)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../persistency/index.html">Persistency (v0.5 beta)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../security_crypto/index.html">Security &amp; Cryptography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../time/index.html">Time</a></li>
 </ul>
@@ -570,7 +570,7 @@
                   
   <section id="requirements">
 <span id="codegen-requirements"></span><h1>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-4f436e5e">
+<div class="need_container docutils container" id="SNCB-24b5ba3c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__definitionlanguage">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -615,7 +615,7 @@ system should prefer YAML over JSON due to its simpler syntax.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4fc8d764">
+<div class="need_container docutils container" id="SNCB-88fd156b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__initialization">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -659,7 +659,7 @@ permanently if they fail to initialize.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-73164583">
+<div class="need_container docutils container" id="SNCB-4092b3f0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__deinitialization">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -703,7 +703,7 @@ called only once during their lifecycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-67675feb">
+<div class="need_container docutils container" id="SNCB-3ffe3556">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__nomultithreading">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -748,7 +748,7 @@ dynamically spawn and join or detach worker threads.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-656dfb46">
+<div class="need_container docutils container" id="SNCB-8ac5436f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__error_handling1">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -792,7 +792,7 @@ libraries completely inside the standard interface functions. Software Compute U
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-43118947">
+<div class="need_container docutils container" id="SNCB-dc3f1c41">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__error_handling2">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -838,7 +838,7 @@ lifecycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-dce0f0f8">
+<div class="need_container docutils container" id="SNCB-60f3be87">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__error_handling3">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -885,7 +885,7 @@ duplication.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-1471435f">
+<div class="need_container docutils container" id="SNCB-8f556725">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__error_handling4">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -931,7 +931,7 @@ the Archetype.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a5e58ee9">
+<div class="need_container docutils container" id="SNCB-f33eb153">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__code_generation__error_handling5">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1000,7 +1000,7 @@ the Archetype.</p></td>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Communication (v0.5 alpha)</p>
+        <p class="prev-next-title">Communication (v0.5 beta)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

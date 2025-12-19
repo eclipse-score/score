@@ -33,7 +33,7 @@ To integrate the communication module into your project, follow these steps:
 1. Setup
 -----------
 
-Start by creating a new project in your preferred IDE (e.g., Visual Studio Code). A ready-to-use devcontainer is available under: 
+Start by creating a new project in your preferred IDE (e.g., Visual Studio Code). A ready-to-use devcontainer is available under:
 
 -	https://github.com/eclipse-score/devcontainer
 
@@ -54,7 +54,7 @@ Reference documentation for the communication module:
 
       module(name = "use_com_test")
 
-      bazel_dep(name = "score_toolchains_gcc", version = "0.4", dev_dependency=True)
+      bazel_dep(name = "score_toolchains_gcc", version = "0.5", dev_dependency=True)
 
       gcc = use_extension("@score_toolchains_gcc//extensions:gcc.bzl", "gcc", dev_dependency=True)
       gcc.toolchain(
@@ -84,8 +84,16 @@ Reference documentation for the communication module:
       )
 
       bazel_dep(name = "boost.program_options", version = "1.87.0")
-      bazel_dep(name = "score-baselibs", version = "0.1.3")
-      bazel_dep(name = "communication", version = "0.1.1")
+      bazel_dep(name = "score_baselibs", version = "0.1.3")
+      bazel_dep(name = "score_communication", version = "0.1.1")
+
+      # TRLC dependency for requirements traceability
+      bazel_dep(name = "trlc", version = "0.0.0")
+      git_override(
+        module_name = "trlc",
+        commit = "ede35c4411d41abe42b8f19e78f8989ff79ad3d8",
+        remote = "https://github.com/bmw-software-engineering/trlc.git",
+      )
 
 Be aware that the version numbers change over time. Always check the latest versions in the respective bazel registry
 
@@ -108,7 +116,8 @@ Be aware that the version numbers change over time. Always check the latest vers
       common --@score-baselibs//score/json:base_library=nlohmann
       common --@communication//score/mw/com/flags:tracing_library=stub
 
-      common --registry=https://raw.githubusercontent.com/eclipse-score/bazel_registry/refs/heads/main/
+      common --registry=https://raw.githubusercontent.com/eclipse-score/bazel_registry/v0.5.0-beta/
+
       common --registry=https://bcr.bazel.build
 
 ^^^^^^^^^^^^^
@@ -116,7 +125,7 @@ Be aware that the version numbers change over time. Always check the latest vers
 ^^^^^^^^^^^^^
 
 If you start with an empty project, add an empty file named ``BUILD`` into your project root.
-Now you can now run build the project with the command bazel ``bazel build //...`` 
+Now you can now run build the project with the command bazel ``bazel build //...``
 
 (At this point nothing happens yet, because no targets are defined).
 You can now either continue with this guide to create a minimal consumer-producer example or start coding your own application
@@ -133,9 +142,9 @@ Once your project is set up, you can start sending and receiving messages.
 ^^^^^^^^^^^^^^^^^^^^
 
 Create a folder named ``src`` in your root project directory.
-Inside ``src``, create the following folders: 
+Inside ``src``, create the following folders:
 
--	``consumer`` 
+-	``consumer``
 -	``producer``
 
 additional folders if needed.
@@ -278,11 +287,11 @@ After that, create the file ``producer.cpp``.
 
 The constructor initializes the communication skeleton ``create_result``.
 
-``RunProducer``: 
+``RunProducer``:
 
 -	checks if the initialization of ``create_result`` was successful
--	offers service 
--	enters a loop and sends our messages 
+-	offers service
+-	enters a loop and sends our messages
 -	stops offering the service at the end
 
 

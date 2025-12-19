@@ -15,7 +15,7 @@
 
 .. _orch_feature:
 
-Orchestration (v0.5 alpha)
+Orchestration (v0.5 beta)
 ##########################
 
 .. document:: Orchestration
