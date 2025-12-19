@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>vajson &#8212; S-CORE  documentation</title>
+    <title>VaJson &#8212; S-CORE  documentation</title>
   
   
   
@@ -497,7 +497,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../architecture/index.html">JSON Component Architecture</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../json_wrapper/index.html">JSON Wrapper</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../nlohman_json/index.html">nlohman_json</a></li>
-<li class="toctree-l3 current active has-children"><a class="current reference internal" href="#">vajson</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 current active has-children"><a class="current reference internal" href="#">VaJson</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l4"><a class="reference internal" href="requirements/index.html">Requirements</a></li>
 </ul>
 </details></li>
@@ -578,7 +578,7 @@
     
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">JSON-Library</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">vajson</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">VaJson</span></li>
   </ul>
 </nav>
 </div>
@@ -596,12 +596,198 @@
                 <article class="bd-article">
                   
   <section id="vajson">
-<h1>vajson<a class="headerlink" href="#vajson" title="Link to this heading">#</a></h1>
+<span id="component-template"></span><h1>VaJson<a class="headerlink" href="#vajson" title="Link to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Document header</p>
+</div>
+<div class="need_container docutils container" id="SNCB-cac7659e">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__vajson">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">vajson</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">contribution_request</span><span class="needs_spacer">, </span><span class="needs_data">feature_request</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/change_management_workproducts.html#wp__cmpt_request">wp__cmpt_request</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__vajson" title="doc__vajson">doc__vajson</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Generic Document</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<section id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
+<p>We propose adding support for JSON parsing via the automotive established parser VaJson within S-CORE.</p>
+<p>This component request describes a json parser to be used within applications of the Eclipse S-CORE project.</p>
+<p>This requests adds VaJson, a SAX-based JSON parser for Eclipse S-CORE applications that enables parsing of JSON data for configuration and data exchange.</p>
+</section>
+<section id="motivation">
+<h2>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h2>
+<p>VaJson provides a safety-qualified JSON parser designed for automotive environments. It has passed ASIL D compliance within Vector, offering safety artifacts that significantly reduce the effort required to adapt to S-CORE qualification processes. Its API follows automotive standards, ensuring easier integration, consistent practices, and lower risk compared to non-qualified alternatives.</p>
+<p>The VaJson source code successfully passed Vector’s internal ASIL D compliance process, demonstrating adherence to the highest automotive safety standards. Artifacts produced during this process—such as the safety manual, safety analysis, cybersecurity analysis, and detailed design—combined with ASIL-D qualified code, provide a strong foundation for simplifying adaptation to S-CORE’s internal qualification requirements.</p>
+</section>
+<section id="rationale">
+<h2>Rationale<a class="headerlink" href="#rationale" title="Link to this heading">#</a></h2>
+<p>VaJson was chosen because it is already ASIL D qualified (within Vector processes) and comes with complete safety and cybersecurity artifacts. This reduces the effort to meet S-CORE internal processes.</p>
+<p>The parser uses a SAX-based design, which is efficient for embedded systems and avoids high memory usage.</p>
+<p>Its API is familiar in automotive projects, making integration easier and reducing risk compared to introducing a new or generic parser.</p>
+</section>
+<section id="specification">
+<h2>Specification<a class="headerlink" href="#specification" title="Link to this heading">#</a></h2>
+<p>VVajson fully meets all generic requirements outlined in <a class="github reference external" href="https://github.com/eclipse-score/score/blob/main/docs/modules/baselibs/json/docs/requirements/index.rst">eclipse-score/score</a>.</p>
+<p>In addition, Vajson satisfies the extended requirements specified in <a class="github reference external" href="https://github.com/eclipse-score/score/pull/2358/files">eclipse-score/score#files</a> (docs/modules/baselibs/json/docs/vajson/requirements/index.rst).
+The extended requirements are also listed here below.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>JSON Validation</dt><dd><p>VaJson shall provide a service to check the well-formedness of JSON data. Errors must include the reason and location in the document for malformed JSON and invalid schemata.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>JSON Deserialization RFC extensions</dt><dd><p>VaJson shall parse JSON data according to RFC8259 from files and character buffers. The parser shall ignore trailing commas and accept hexadecimal integers.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>JSON Event Callbacks</dt><dd><p>VaJson shall support event-driven parsing, notifying the user for each simple type and providing start/end events for complex types.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Unicode Support</dt><dd><p>VaJson shall decode and encode UTF-8 strings.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Binary Content Support</dt><dd><p>VaJson shall allow plain binary content and binary strings represented as JSON values.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="backwards-compatibility">
+<h2>Backwards Compatibility<a class="headerlink" href="#backwards-compatibility" title="Link to this heading">#</a></h2>
+<p>VaJson will be integrated as an optional backend through the existing S-CORE JSON wrapper. Users can configure which JSON backend to use (e.g., VaJson or nlohmann), ensuring no breaking changes to existing functionality.</p>
+</section>
+<section id="security-impact">
+<h2>Security Impact<a class="headerlink" href="#security-impact" title="Link to this heading">#</a></h2>
+<p>Potential security concerns and mitigations for VaJson:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Malformed JSON Attacks</dt><dd><p>Threat: Supplying intentionally malformed or deeply nested JSON to cause excessive CPU or memory consumption.
+Mitigation: Handled by design within VaJson. VaJson uses a SAX-based streaming parser, which detects malformed JSON during parsing and prevents full processing of invalid input.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Schema Abuse</dt><dd><p>Threat: Using oversized keys/values or unexpected schema elements to bypass validation or trigger buffer overflows.
+Mitigation: Handled by design within VaJson. Input size and structure are validated during parsing.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="safety-impact">
+<h2>Safety Impact<a class="headerlink" href="#safety-impact" title="Link to this heading">#</a></h2>
+<p>A full safety analysis for VaJson exists in an external format and addresses all identified concerns with appropriate measures. Example:</p>
+<p>FM-VaJson-NumberConversion
+Details: Number conversion from textual JSON representation to a numerical value could change the value.
+Effect: Incorrect numerical values may violate safety requirements.
+Measure: Use only well-known standard library functions for number conversion, verified through unit testing.</p>
+<p>All concerns listed in the external safety analysis have been implemented and verified in the source code and tests.</p>
+<p><strong>Expected ASIL Level:</strong></p>
+<p>ASIL B.</p>
+<p><strong>Classification:</strong></p>
+<p>Safety-relevant component.</p>
+<p><strong>Safety Related Functionality Required From Other Components</strong></p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>This component requires common types/API functionality that is safe.</dt><dd><p>This includes base functionality like error handling, STL-functionality (eg. safe version of std::vector, std::span…) and aborts.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>This component requires general OS related functionality that is safe.</dt><dd><p>This includes functionality for converting integers between host and network and acquiring endianness of the system (For FEAT_REQ__vajson__binary_content).</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>This component requires conversions of primitive types to strings that is safe.</dt><dd><p>Note: It’s under investigation if this can be provided in the feature request.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="license-impact">
+<h2>License Impact<a class="headerlink" href="#license-impact" title="Link to this heading">#</a></h2>
+<p>[How could the copyright impacted by the license of the new contribution?]</p>
+</section>
+<section id="how-to-teach-this">
+<h2>How to Teach This<a class="headerlink" href="#how-to-teach-this" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Update baselibs/README.md</dt><dd><p>Clearly display configuration options for JSON parsing. The new component introduces multiple backend solutions, and users need visibility into available configurations.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Use the inc_json incubation repo</dt><dd><p>Add user documentation inside inc_json/README.md to explain usage, integration steps, and best practices for the new JSON parsing backend.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="rejected-ideas">
+<h2>Rejected Ideas<a class="headerlink" href="#rejected-ideas" title="Link to this heading">#</a></h2>
+<p>None.</p>
+</section>
+<section id="open-issues">
+<h2>Open Issues<a class="headerlink" href="#open-issues" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>S-CORE process compliance and Vectors role</dt><dd><p>The task of adapting the new component to be S-CORE process compliant is currently unassigned, and Vector will not create the required S-CORE process documentation (e.g., safety and security analysis).</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="footnotes">
+<h2>Footnotes<a class="headerlink" href="#footnotes" title="Link to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="requirements/index.html">Requirements</a></li>
 </ul>
 </div>
+</section>
 </section>
 
 
@@ -642,6 +828,29 @@
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale">Rationale</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specification">Specification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backwards-compatibility">Backwards Compatibility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#security-impact">Security Impact</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#safety-impact">Safety Impact</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#license-impact">License Impact</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-teach-this">How to Teach This</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rejected-ideas">Rejected Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-issues">Open Issues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#footnotes">Footnotes</a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
 
