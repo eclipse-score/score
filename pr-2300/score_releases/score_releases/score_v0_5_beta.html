@@ -557,7 +557,7 @@
                   
   <section id="s-core-v0-5-beta-release-notes">
 <h1>S-Core v0.5-beta release notes<a class="headerlink" href="#s-core-v0-5-beta-release-notes" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-858a3dad">
+<div class="need_container docutils container" id="SNCB-8592e339">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__score_v05_beta_release_note">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -603,7 +603,7 @@
 <div class="line"><strong>Platform Name</strong>: S-CORE</div>
 <div class="line"><strong>Release Tag</strong>: v0.5.0-beta</div>
 <div class="line"><strong>Origin Release Tag</strong>: v0.5.0-alpha</div>
-<div class="line"><strong>Release Date</strong>: 2025-12-18</div>
+<div class="line"><strong>Release Date</strong>: 2025-12-19</div>
 </div>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
@@ -635,7 +635,7 @@ It also includes a tutorial for the first application on top of the existing mod
 <p>Main focus of this release is to improve the overall stability and performance of the platform, as well as to enhance the usability.
 This does include</p>
 <ul class="simple">
-<li><p>Static code analysis with CodeQL: <strong>//TODO:</strong> add link to the results.</p></li>
+<li><p>Static code analysis with CodeQL MISRA C++ 2023: <cite>release link &lt;https://github.com/eclipse-score/reference_integration/releases/tag/v0.5.0-beta&gt;</cite>.</p></li>
 <li><p>Execution of Unit tests as part of the Reference Integration <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/test_integration.yml">test_integration workflow</a>.</p></li>
 <li><p>Unit-test coverage measurement results are now automatically part of Release Assests for every component: <strong>//TODO:</strong> link to an example.</p></li>
 <li><p>A new combined build toolchain of qcc and gcc, see <a class="reference external" href="#bazel-cpp-toolchain">bazel_cpp_toolchain</a>.</p></li>
@@ -691,8 +691,8 @@ provides overview on the process workproduct level for every software module and
 <p>Ensures long-term storage and retrieval of data and provides a reliable mechanism for
 preserving application state and data integrity over time.</p>
 <ul class="simple">
-<li><p><strong>Version:</strong> <code class="docutils literal notranslate"><span class="pre">persistency</span> <span class="pre">v0.2.1</span></code></p></li>
-<li><p><strong>Source / tag:</strong> <a class="reference external" href="https://github.com/eclipse-score/persistency/archive/refs/tags/v0.2.1.tar.gz">Persistency GitHub release</a></p></li>
+<li><p><strong>Version:</strong> <code class="docutils literal notranslate"><span class="pre">persistency</span> <span class="pre">v0.2.2</span></code></p></li>
+<li><p><strong>Source / tag:</strong> <a class="reference external" href="https://github.com/eclipse-score/persistency/archive/refs/tags/v0.2.2.tar.gz">Persistency GitHub release</a></p></li>
 </ul>
 </section>
 <section id="orchestrator">
@@ -759,7 +759,12 @@ preserving application state and data integrity over time.</p>
 <section id="reference-red-hat-autosd-linux-image-experimental">
 <h5>Reference Red Hat AutoSD Linux image (Experimental)<a class="headerlink" href="#reference-red-hat-autosd-linux-image-experimental" title="Link to this heading">#</a></h5>
 <ul class="simple">
-<li><p>No changes compared to the previous software version.</p></li>
+<li><p>Use sub-module structure</p></li>
+<li><p>os_images does not need to be a sub-module since it does not use bazel</p></li>
+<li><p>Use AutoSD tools to build RPMs (toolchain + bazelrc file)</p></li>
+<li><p>Use built RPMs in os_images</p></li>
+<li><p>Uses 0.5 modules, similar setup to upstream reference_instegration</p></li>
+<li><p>e2e workflow defined in github actions</p></li>
 </ul>
 </section>
 <section id="reference-elektrobit-corbos-linux-for-safety-applications-linux-image-experimental">
@@ -796,8 +801,8 @@ in the automotive domain, suitable for safety and security contexts.</p>
 <h4>docs-as-code<a class="headerlink" href="#docs-as-code" title="Link to this heading">#</a></h4>
 <p>Tooling for linking and generation of documentation.</p>
 <ul class="simple">
-<li><p><strong>Version:</strong> <code class="docutils literal notranslate"><span class="pre">docs-as-code</span> <span class="pre">v2.2.1</span></code></p></li>
-<li><p><strong>Source / tag:</strong> <a class="reference external" href="https://github.com/eclipse-score/docs-as-code/releases/tag/v2.2.1">docs-as-code GitHub release</a></p></li>
+<li><p><strong>Version:</strong> <code class="docutils literal notranslate"><span class="pre">docs-as-code</span> <span class="pre">v2.2.0</span></code></p></li>
+<li><p><strong>Source / tag:</strong> <a class="reference external" href="https://github.com/eclipse-score/docs-as-code/releases/tag/v2.2.0">docs-as-code GitHub release</a></p></li>
 </ul>
 </section>
 <section id="tooling">
