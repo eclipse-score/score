@@ -17,6 +17,10 @@ on:
     types: [edited, synchronize, opened, reopened]
   check_run:
 
+permissions:
+  issues: read
+  pull-requests: read
+
 jobs:
   verify_linked_issue:
     runs-on: ubuntu-latest
