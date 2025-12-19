@@ -66,7 +66,7 @@ This does include
 - Static code analysis with CodeQL MISRA C++ 2023: `release link <https://github.com/eclipse-score/reference_integration/releases/tag/v0.5.0-beta>`.
 - Execution of Unit tests as part of the Reference Integration `test_integration workflow <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/test_integration.yml>`_.
 - Unit-test coverage measurement results are now automatically part of Release Assests for every component: **//TODO:** link to an example.
-- A new combined build toolchain of qcc and gcc, see `bazel_cpp_toolchain <#bazel-cpp-toolchain>`_.
+- A new combined build toolchain of qcc and gcc, see :ref:`bazel-cpp-toolchain <bazel_cpp_toolchain>`.
 - Improved doc-as-code and process description
 - `bazel_tools_cc <https://github.com/eclipse-score/bazel-tools-cc>`_ introduces a clang-tidy integration into S-CORE bazel infrasturture:
 
@@ -74,25 +74,7 @@ This does include
     `example project <https://github.com/eclipse-score/bazel-tools-cc/tree/main/test>`_ for instructions how to set-up
     clang-tidy checks for your module
   - In the upcoming releases clang-tidy will be extended with custom S-CORE checks to meet necessary process requirements.
-- Platform functionality was extended with `logging daemon <#logging-daemon>`_.
-
-
-Software Development Process status
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The following image provides an overview of the current status of the software development process, the associated tooling,
-and the progress of its application to the software modules.
-
-.. image:: https://raw.githubusercontent.com/eclipse-score/process_description/bec1931b56464543cb70385e75c15fcb1625f0d0/process/_assets/score_process_area_overview.drawio.svg
-   :width: 1000
-   :alt: Architecture overview
-   :align: center
-
-
-|
-
-For more details please refer to
-`Documentation Management Plan <https://eclipse-score.github.io/score/main/platform_management_plan/documentation_management.html>`_, that
-provides overview on the process workproduct level for every software module and process area.
+- Platform functionality was extended with :ref:`logging daemon <logging_daemon>`.
 
 
 S-CORE Platform
@@ -125,6 +107,7 @@ Zero-copy, shared-memory based inter-process communication for minimal-latency i
 - **Source / tag:** `Communication GitHub release <https://github.com/eclipse-score/communication/archive/refs/tags/v0.1.2.tar.gz>`_
 - **Release notes:** :need:`doc__communication_release_note`
 
+
 Fixed Execution Order Framework(FEO)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - **Version:** ``feo v0.1.2``
@@ -140,21 +123,7 @@ preserving application state and data integrity over time.
 - **Version:** ``persistency v0.2.2``
 - **Source / tag:** `Persistency GitHub release <https://github.com/eclipse-score/persistency/archive/refs/tags/v0.2.2.tar.gz>`_
 
-Orchestrator
-~~~~~~~~~~~~~
-
-**Improvements**
-
-- Support `log` frontend exchange  to: `log`, `tracing` or `score-log` (not yet implemented in this release)
-- Increased CIT coverage and stability improvements
-- Split of kyron into separate repositories: `orchestrator` and `kyron`
-
-:Version: ``orchestrator v0.0.4``
-:Source / tag: `Orchestrator GitHub release <https://github.com/eclipse-score/orchestrator/releases/tag/v0.0.4>`__
-:Further reading: See below
-
-  - `Orchestrator scope and design <https://github.com/eclipse-score/orchestrator/blob/main/src/orchestration/doc/features.md>`__
-  - `Orchestrator examples <https://github.com/eclipse-score/orchestrator/tree/main/src/orchestration/examples>`__
+.. _logging_daemon:
 
 Logging Daemon
 ~~~~~~~~~~~~~~~~~~
@@ -175,12 +144,30 @@ the datarouter daemon (score/datarouter). The shared memory implementation betwe
 library and datarouter daemon guarantees Freedom From Interference (FFI),
 enabling safe logging from real-time and safety-critical contexts.
 
-:Version: ``logging v0.0.3``
-:Source / tag: `logging release <https://github.com/eclipse-score/logging/archive/refs/tags/v0.0.3.tar.gz>`__
-:Further reading: See below
+- **Version:** ``logging v0.0.3``
+- **VSource / tag:**  `logging release <https://github.com/eclipse-score/logging/archive/refs/tags/v0.0.3.tar.gz>`__
+- **Further reading:**: See below
 
   - `Logging release notes <https://github.com/eclipse-score/logging/releases/tag/v0.0.3>`__
   - `Logging ReadMe <https://github.com/eclipse-score/logging/tree/main/score/datarouter>`__
+
+
+Orchestrator
+~~~~~~~~~~~~~
+
+**Improvements**
+
+- Support `log` frontend exchange  to: `log`, `tracing` or `score-log` (not yet implemented in this release)
+- Increased CIT coverage and stability improvements
+- Split of kyron into separate repositories: `orchestrator` and `kyron`
+
+:Version: ``orchestrator v0.0.4``
+:Source / tag: `Orchestrator GitHub release <https://github.com/eclipse-score/orchestrator/releases/tag/v0.0.4>`__
+:Further reading: See below
+
+  - `Orchestrator scope and design <https://github.com/eclipse-score/orchestrator/blob/main/src/orchestration/doc/features.md>`__
+  - `Orchestrator examples <https://github.com/eclipse-score/orchestrator/tree/main/src/orchestration/examples>`__
+
 
 Kyron
 ~~~~~~~~~~~~~~
@@ -252,6 +239,11 @@ in the automotive domain, suitable for safety and security contexts.
   :align: center
   :alt: Process area overview for the **Project**
 
+For more details please refer to
+`Documentation Management Plan <https://eclipse-score.github.io/score/main/platform_management_plan/documentation_management.html>`_, that
+provides process workproduct level overview for every software module and process area.
+
+
 docs-as-code
 ~~~~~~~~~~~~~~
 Tooling for linking and generation of documentation.
@@ -285,6 +277,8 @@ Test Scenarios
 
 - **Version:** ``Test Scenarios v0.3.1``
 - **Source / tag:** `Test Scenarios GitHub release <https://github.com/eclipse-score/testing_tools/releases/tag/v0.3.1>`_
+
+.. _bazel_cpp_toolchain:
 
 Bazel CPP Toolchain
 ~~~~~~~~~~~~~~~~~~~~
