@@ -85,7 +85,6 @@ S-CORE Platform
 - **Release notes**: `S-CORE Platform release notes <https://github.com/eclipse-score/score/releases/tag/v0.5.2>`_
 
 
-https://github.com/eclipse-score/score/issues?q=is%3Aissue%20state%3Aclosed%20type%3ABug
 
 Integrated Software Modules
 -----------------------------
