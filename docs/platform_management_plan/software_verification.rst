@@ -362,6 +362,25 @@ Test execution and result analysis
 The execution of the tests is based on a full automation defined by build pipelines. The analysis of the test results
 needs to be performed by the :need:`rl__contributor`.
 
+Manual test execution
+^^^^^^^^^^^^^^^^^^^^^
+
+The automation rate for test case execution is expected to be above 99%.
+
+Automated tests can be executed locally by the contributor before pushing code to the repository.
+To support local test execution respective `bazel test ...` commands are provided as part of the module and feature documentation.
+
+When a manual test is considered to verify a requirement or architectural element, the respective links need to be established as for any other automated test case.
+The script for manual testing uses the same templates as any other automated test including the Record Properties.
+Therefore, these test cases require a script to be provided which describes how to execute the test case manually step by step.
+The script and its execution will be part of the test reporting and traceability and need to be reviewed in the PR as part of the verification activities.
+Within the review an approver confirms that automation is not feasible for the specific test case.
+
+In contrast to automated result comparison of an automated test case, the feedback from the test executor is logged for manual tests.
+The script will wait for the user input to proceed to the next step and describe the expected result after each step.
+The user input can be judged as confirmation that the expected result is achieved.
+The final result will be `PASSED` or `FAILED`, based on the test executors confirmation.
+
 Test selection and regression testing
 -------------------------------------
 
