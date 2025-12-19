@@ -63,14 +63,14 @@ Improvements
 Main focus of this release is to improve the overall stability and performance of the platform, as well as to enhance the usability.
 This does include
 
-- Static code analysis with CodeQL: **//TODO:** add link to the results.
+- Static code analysis with CodeQL MISRA C++ 2023: `release link <https://github.com/eclipse-score/reference_integration/releases/tag/v0.5.0-beta>`.
 - Execution of Unit tests as part of the Reference Integration `test_integration workflow <https://github.com/eclipse-score/reference_integration/blob/main/.github/workflows/test_integration.yml>`_.
-- Unit-test coverage measurement results are now automatically part of Release Assests for every component: **//TODO:** link to an example. 
+- Unit-test coverage measurement results are now automatically part of Release Assests for every component: **//TODO:** link to an example.
 - A new combined build toolchain of qcc and gcc, see `bazel_cpp_toolchain <#bazel-cpp-toolchain>`_.
 - Improved doc-as-code and process description
 
 
-Software Development Process status 
+Software Development Process status
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The following image provides an overview of the current status of the software development process, the associated tooling,
 and the progress of its application to the software modules.
@@ -83,7 +83,7 @@ and the progress of its application to the software modules.
 
 |
 
-For more details please refer to 
+For more details please refer to
 `Documentation Management Plan <https://eclipse-score.github.io/score/main/platform_management_plan/documentation_management.html>`_, that
 provides overview on the process workproduct level for every software module and process area.
 
@@ -126,8 +126,8 @@ Persistency
 Ensures long-term storage and retrieval of data and provides a reliable mechanism for
 preserving application state and data integrity over time.
 
-- **Version:** ``persistency v0.2.1``
-- **Source / tag:** `Persistency GitHub release <https://github.com/eclipse-score/persistency/archive/refs/tags/v0.2.1.tar.gz>`_
+- **Version:** ``persistency v0.2.2``
+- **Source / tag:** `Persistency GitHub release <https://github.com/eclipse-score/persistency/archive/refs/tags/v0.2.2.tar.gz>`_
 
 Orchestrator
 ~~~~~~~~~~~~~
@@ -176,7 +176,12 @@ Reference QNX image
 
 Reference Red Hat AutoSD Linux image (Experimental)
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-- No changes compared to the previous software version.
+- Use sub-module structure
+- os_images does not need to be a sub-module since it does not use bazel
+- Use AutoSD tools to build RPMs (toolchain + bazelrc file)
+- Use built RPMs in os_images
+- Uses 0.5 modules, similar setup to upstream reference_instegration
+- e2e workflow defined in github actions
 
 Reference Elektrobit corbos Linux for Safety Applications Linux image (Experimental)
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -209,8 +214,8 @@ docs-as-code
 ~~~~~~~~~~~~~~
 Tooling for linking and generation of documentation.
 
-- **Version:** ``docs-as-code v2.2.1``
-- **Source / tag:** `docs-as-code GitHub release <https://github.com/eclipse-score/docs-as-code/releases/tag/v2.2.1>`_
+- **Version:** ``docs-as-code v2.2.0``
+- **Source / tag:** `docs-as-code GitHub release <https://github.com/eclipse-score/docs-as-code/releases/tag/v2.2.0>`_
 
 tooling
 ~~~~~~~~~~~~~~
@@ -250,7 +255,7 @@ Bazel CPP Toolchain
 
   - feature flag set for the target toolchain (infrastructure is already set-up)
   - arm64_linux configuration is missing
- 
+
 - **Version:** ``bazel_cpp_toolchains v0.1.0``
 - **Source / tag:** `Bazel CPP Toolchain release <https://github.com/eclipse-score/bazel_cpp_toolchains/archive/refs/tags/v0.1.0.tar.gz>`_
 - **Release notes**: `Bazel CPP Toolchain release notes <https://github.com/eclipse-score/bazel_cpp_toolchains/releases/tag/v0.1.0>`_
