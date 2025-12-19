@@ -25,7 +25,7 @@ S-Core v0.5-beta release notes
 | **Platform Name**: S-CORE
 | **Release Tag**: v0.5.0-beta
 | **Origin Release Tag**: v0.5.0-alpha
-| **Release Date**: 2025-12-18
+| **Release Date**: 2025-12-19
 
 Overview
 ^^^^^^^^^
