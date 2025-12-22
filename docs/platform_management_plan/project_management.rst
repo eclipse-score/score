@@ -107,11 +107,15 @@ Technical Lead Circle (TLC)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The Technical Lead Circle will soon be merged with the Project Lead Circle: `#2381: Merge TLC into PLC <https://github.com/eclipse-score/score/issues/2381>`_
 
+<<<<<<< HEAD
 .. _TLC Members: https://github.com/orgs/eclipse-score/teams/automotive-score-TLC-team
 .. _TLC Speaker: https://github.com/orgs/eclipse-score/teams/automotive-score-TLC-lead
 .. _TLC Meeting Minutes: https://github.com/eclipse-score/score/wiki/TLCM
 .. _TLC Slack Channel: https://sdvworkinggroup.slack.com/archives/C085F44D2CS
 .. _TLC Open Point List: https://github.com/orgs/eclipse-score/projects/3
+=======
+  *Project lead circle* proposes and elects a *Project lead circle Assistant* and their deputy with bare majority, who is responsible for scheduling and announcing meetings, preparing and announcing agenda, writing meeting minutes and protocols. *Project lead circle* can reelect *Project lead circle Assistant* at any time. The *Project lead circle Assistant* and their deputy can resign anytime on their own will.
+>>>>>>> f9f5ae6 (Update language for gender neutrality in project management plan)
 
 - TLC Responsibilities:
    - Review and approval of contributions, e.g. *Feature Requests*, which add or modify S-CORE platform features.
@@ -134,7 +138,11 @@ Communities
 commonly used development & testing infrastructure, processes or final integration & release.
 Each *Community* has a *Community Lead* to organize the community`s work.
 
+<<<<<<< HEAD
 The following *Communities* are established:
+=======
+  *Technical lead circle* proposes and elects a *Technical lead circle Assistant* and their deputy with bare majority during *Technical Lead Circle meeting*, who is responsible for scheduling and announcing meetings, preparing and announcing agenda, writing meeting minutes and protocols. *Technical lead circle* can reelect *Technical lead circle Assistant* at any time. The *Technical lead circle Assistant* and their deputy can resign anytime on their own will.
+>>>>>>> f9f5ae6 (Update language for gender neutrality in project management plan)
 
 .. _pmp_pm_arc:
 
