@@ -330,8 +330,8 @@ following aspects define the coverage of the architectural design.
 - :need:`wp__sw_component_fmea` and :need:`wp__sw_component_dfa` for safety-critical parts
 - :need:`wp__feature_fmea` and :need:`wp__feature_dfa` for safety-critical parts
 
-Each architectural element has at least one test case linked with attribute "fully verified" or
-multiple test cases with attribute "partially verified".
+Each architectural element has at least one test case linked with attribute ``FullyVerified`` or
+multiple test cases with attribute ``PartiallyVerified``.
 
 Coverage of software requirements specifications
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -360,7 +360,7 @@ Test execution and result analysis
 ----------------------------------
 
 The execution of the tests is based on a full automation defined by build pipelines. The analysis of the test results
-needs to be performed by the contributor.
+needs to be performed by the :need:`rl__contributor`.
 
 Test selection and regression testing
 -------------------------------------
@@ -393,7 +393,7 @@ document:
 
 #. The :need:`rl__contributor` needs to make sure that the objectives of the software integration and verification are
    fulfilled when contributing to the project.
-#. The :need:`rl__committer` needs to verify that the contributor has fulfilled the expected objectives.
+#. The :need:`rl__committer` needs to verify that the :need:`rl__contributor` has fulfilled the expected objectives.
 
 In this way roles are followed as defined in :need:`doc_concept__verification_process`.
 
