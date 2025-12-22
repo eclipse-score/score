@@ -1,0 +1,87 @@
+/* ######################### */
+/* NEED TYPE specific config */
+/* ######################### */
+
+/* Stakeholder requirement */
+table.needs_type_stkh_req > tbody > tr.head > td {
+    border-bottom: 3px solid rgb(124, 0, 0) !important;
+}
+
+/* Tool requirement */
+table.needs_type_tool_req > tbody > tr.head > td {
+    border-bottom: 3px solid rgb(6, 70, 139) !important;
+}
+
+/* ######################### */
+/* Common NEED configs       */
+/* ######################### */
+
+/* All need table cells */
+table.need.need.need > tbody > tr > td {
+    padding: 0.7em 1.25em;
+}
+
+td.head_left,
+td.footer_left {
+    vertical-align: middle;
+    width: 70%;
+}
+
+td.head_center,
+td.footer {
+    width: 25%;
+    line-height: 100%;
+    vertical-align: middle;
+}
+
+td.head_right,
+td.footer_right {
+    width: 5%;
+    line-height: 100%;
+    vertical-align: middle;
+}
+
+/* left head -> title area */
+.needs_head_left {
+    font-size: 1.2em;
+    font-weight: 900;
+}
+
+/* center head -> status, security area */
+.needs_head {
+    font-size: 0.8em;
+}
+
+/* Common fixes for Need tables in pydata theme */
+/* .table tbody tr:nth-child(2n),
+.table tbody tr:nth-child(2n+1) {
+    background-color: var(--pst-color-table-row-zebra-low-bg);
+} */
+
+html[data-theme="dark"] {
+    --sn-color-need-bg-head: #20242b;
+}
+
+/* No hover effect (same color) for need objects */
+.table.need tbody tr:nth-child(2n+1):hover {
+    background-color: var(--pst-color-table-row-zebra-low-bg);
+}
+.table.need tbody tr:nth-child(2n):hover {
+    background-color: var(--pst-color-table-row-zebra-high-bg);
+}
+
+html[data-theme="dark"] {
+    --sn-color-need-bg-head: #20242b;
+    --sn-color-datatable-label: var(--pst-color-text-base)
+}
+
+
+html[data-theme="dark"] #logo_center_light {
+   display:none;
+}
+
+html[data-theme="light"] #logo_center_drk {
+    display:none;
+
+ }
+
