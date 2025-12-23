@@ -50,7 +50,7 @@ One release contains all the files of one repository. So there is a platform rel
 It contains also all the verification reports (including their input e.g. test run logs) and documentation collaterals
 (e.g. the html's for the S-CORE homepage) as created during the CI build based on the release tagged repository files.
 It does not contain the binary produced in the CI build, as this is not a qualified work product of S-CORE and
-the user will need to re-build in the context of his system. Furthermore the binary build with Bazel
+the user will need to re-build in the context of their system. Furthermore the binary build with Bazel
 is reproducible, so this can be re-created from source any time.
 
 Release Types

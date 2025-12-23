@@ -143,7 +143,7 @@ As defined in `Committer Training <https://www.eclipse.org/projects/training/>`_
 
 As each project can adopt additional criteria for the committers election, we define the following:
 
-each committer has to prove his knowledge in security SW development by
+each committer has to prove their knowledge in security SW development by
 
 * an absolved training in ISO SAE 21434 (or equivalent standard, at least 16h of SW development specific training by a trusted training provider) OR
 * by attending the projects's ISO SAE 21434 SW development training (given by a security team member)
