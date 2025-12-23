@@ -135,10 +135,7 @@ analyze the impact of the feature.
 :need:`doc__persistency_fmea`
 
 We use an iterative development process and apply results from the next steps
-back to the feature request. For TinyJSON we will perform a software component
-classification.
-
-:need:`doc__persistency_component_classification`
+back to the feature request.
 
 To ensure the freedom of interference the feature key-value storage should not
 be used within different processes.
