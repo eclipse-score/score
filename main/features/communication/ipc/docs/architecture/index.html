@@ -585,7 +585,7 @@
                   
   <section id="architecture">
 <span id="ipc-architecture"></span><h1>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-b8969fe4">
+<div class="need_container docutils container" id="SNCB-a8e97e22">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__ipc_architecture">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -723,7 +723,7 @@ wait-free algorithms to avoid such situations. Further, avoiding mutexes in our 
 <section id="synchronization-algorithm">
 <span id="ipc-synchronization-algorithm"></span><h3>Synchronization Algorithm<a class="headerlink" href="#synchronization-algorithm" title="Link to this heading">#</a></h3>
 <p>A slot shall contain all necessary meta-information in order to synchronize data access. This information most certainly needs to include a timestamp to indicate the order of produced data within the slots. Additionally, a use count is needed, indicating if a slot is currently in use by one process. The concrete data is implementation defined and must be covered by the detailed design.</p>
-<p>The main idea of the algorithm is that a producer shall always be able to store one new data sample. If he cannot find a respective slot, this indicates a contract violation, which indicates that a QM process misbehaved. In such a case, a producer should exclude any QM consumer from the communication.</p>
+<p>The main idea of the algorithm is that a producer shall always be able to store one new data sample. If it cannot find a respective slot, this indicates a contract violation, which indicates that a QM process misbehaved. In such a case, a producer should exclude any QM consumer from the communication.</p>
 <p>This whole idea builds up on the split of shared memory segments by ASIL levels. This way we can ensure that an QM process will not degrade the ASIL Level for a communication path. In another case, where we already have a QM producer, it is possible for an ASIL B consumer to consume the QM data. In this scenario, there is no separate control data for ASIL B, and they instead interact on the control data for ASIL QM. This is because, the data is QM and it is impossible for the middleware to apply additional checks to enhance the quality of data. This can only be done on application layer level. Hence, separating QM and ASIL consumers holds no benefit.</p>
 </section>
 <section id="service-discovery">
@@ -765,14 +765,14 @@ on transaction logs:</p>
 <li><p>Executing the activity in question.</p></li>
 <li><p>Writing a transaction end marker, which annotates, whether the activity in (2) was done or not.</p></li>
 </ol>
-<p>During the restart of a communication partner, he checks for existing transaction logs in shared memory, which it
+<p>During the restart of a communication partner, it checks for existing transaction logs in shared memory, which it
 created in an earlier run, so that it can roll them back.</p>
 <p>Two scenarios are possible:</p>
 <ul class="simple">
 <li><p>All transaction log entries are complete (transaction end marker is written).
 The communication partner can roll all transactions back and rejoin communication.</p></li>
 <li><p>A transaction log entry is incomplete (transaction end marker is missing).
-The communication partner is incapable of rolling back his actions fully.
+The communication partner is incapable of rolling back its actions fully.
 Rejoining the communication would impact other communication partners.
 The communication partner is barred from rejoining the communication.</p></li>
 </ul>
@@ -782,7 +782,7 @@ The communication partner is barred from rejoining the communication.</p></li>
 </section>
 <section id="dynamic-architecture">
 <span id="ipc-dyn-arch"></span><h2>Dynamic Architecture<a class="headerlink" href="#dynamic-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-42b84292">
+<div class="need_container docutils container" id="SNCB-fbb6162e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__communication__ipc">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
