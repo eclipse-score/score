@@ -1,0 +1,44 @@
+# *******************************************************************************
+# Copyright (c) 2024 Contributors to the Eclipse Foundation
+#
+# See the NOTICE file(s) distributed with this work for additional
+# information regarding copyright ownership.
+#
+# This program and the accompanying materials are made available under the
+# terms of the Apache License Version 2.0 which is available at
+# https://www.apache.org/licenses/LICENSE-2.0
+#
+# SPDX-License-Identifier: Apache-2.0
+# *******************************************************************************
+
+name: Pr Validation check
+on:
+  pull_request:
+    types: [edited, synchronize, opened, reopened]
+
+
+jobs:
+  verify_linked_issue:
+    runs-on: ubuntu-latest
+    name: Ensure Pull Request has a linked issue.
+    permissions:
+      pages: write
+      contents: write
+      pull-requests: write
+      issues: write # Allow label creation
+    steps:
+      - name: Get issues
+        id: get-issues
+        uses: mondeja/pr-linked-issues-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Print has linked issues
+        id: has-linked-issues
+        if: join(steps.get-issues.outputs.issues) != ''
+        run: echo "Has linked issues"
+      - name: Print has not linked issues
+        if: steps.has-linked-issues.conclusion == 'skipped'
+        run: |
+          echo "Error: No linked issues found for this Pull Request."
+          echo "Please ensure an issue is properly linked (e.g., using 'Fixes #123' in the description or via the GitHub UI)."
+          exit 1
