@@ -30,7 +30,7 @@ Restrictions on Native Types
    :satisfies: stkh_req__communication__abi_compatible
    :status: valid
 
-   For ABI compatibility, the implementation shall restrict boolean types to one byte (``bool`` in Rust and C++).
+   For ABI compatibility, the implementation shall restrict boolean types to one byte (``bool`` in Rust) and to the bit patterns ``0x00`` and ``0x01``.
 
 .. feat_req:: Fixed-width integers
    :id: feat_req__abi_compatible_data_types__int_fix
@@ -51,6 +51,16 @@ Restrictions on Native Types
    :status: valid
 
    For ABI compatibility, floating-point types shall be limited to 32-bit (``f32`` in Rust / ``float`` in C++) and 64-bit (``f64`` in Rust / ``double`` in C++); all floating-point representations shall be compliant with IEEE 754.
+
+.. feat_req:: Characters
+   :id: feat_req__abi_compatible_data_types__char
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :satisfies: stkh_req__communication__abi_compatible
+   :status: valid
+
+   For ABI compatibility, the Unicode character type shall use fixed-width definitions (``char`` in Rust; wrapper around ``std::uint32_t`` in C++), and shall restrict values to the ranges ``0x0`` to ``0xD7FF`` and ``0xE000`` to ``0x10FFFF``.
 
 .. feat_req:: Fixed-size arrays
    :id: feat_req__abi_compatible_data_types__arr_fix
@@ -121,19 +131,17 @@ Vector
    .. code-block:: rust
 
       #[repr(C)]
-      pub struct AbiVec<T> {
+      pub struct AbiVec<T, const N: usize> {
          len: u32,
-         capacity: u32,
          elements: [T; N],
       }
 
    .. code-block:: cpp
 
-      template<typename T, std::size_t N>
+      template<typename T, std::uint32_t N>
       struct AbiVec {
       private:
          std::uint32_t len;
-         std::uint32_t capacity;
          T elements[N];
       };
 
@@ -155,7 +163,7 @@ Vector
    :satisfies: stkh_req__communication__abi_compatible
    :status: valid
 
-   The ``AbiVec`` API shall mirror ``std::vector`` / ``Vec<T>`` but shall not allocate or reallocate memory.
+   The ``AbiVec`` API shall mirror ``std::vector`` / ``Vec<T>``, but shall not allocate or reallocate memory.
 
 .. feat_req:: AbiVec overflow check
    :id: feat_req__abi_compatible_data_types__abv_ovf
@@ -167,46 +175,105 @@ Vector
 
    Any attempt to exceed ``AbiVec.capacity`` shall result in a checked runtime error.
 
+String
+^^^^^^
+
+.. feat_req:: Provide AbiString<N>
+   :id: feat_req__abi_compatible_data_types__prv_abs
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :satisfies: stkh_req__communication__abi_compatible
+   :status: valid
+
+   An ABI-compatible ``AbiString<N>`` type shall be provided in both C++ and Rust with the specified layout.
+
+   .. code-block:: rust
+
+      #[repr(C)]
+      pub struct AbiString<const N: usize> {
+         len: u32,
+         bytes: [u8; N],
+      }
+
+   .. code-block:: cpp
+
+      template<std::uint32_t N>
+      struct AbiString {
+      private:
+         std::uint32_t len;
+         std::uint8_t bytes[N];
+      };
+
+.. feat_req:: AbiString field semantics
+   :id: feat_req__abi_compatible_data_types__abs_fld
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :satisfies: stkh_req__communication__abi_compatible
+   :status: valid
+
+   ``AbiString.len`` shall report the current byte count; ``AbiString.capacity`` shall equal the compile-time size ``N``.
+
+.. feat_req:: AbiString API
+   :id: feat_req__abi_compatible_data_types__abs_noa
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :satisfies: stkh_req__communication__abi_compatible
+   :status: valid
+
+   The ``AbiString`` API shall mirror the applicable parts of ``std::basic_string`` / ``String``, but shall not allocate or reallocate memory.
+
+.. feat_req:: AbiString overflow check
+   :id: feat_req__abi_compatible_data_types__abs_ovf
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :satisfies: stkh_req__communication__abi_compatible
+   :status: valid
+
+   Any attempt to exceed ``AbiString.capacity`` shall result in a checked runtime error.
+
 Option
 ^^^^^^
-.. TODO: Uncomment when issue with "some" in description is resolved
 
-.. .. feat_req:: Provide AbiOption<T>
-..    :id: feat_req__abi_compatible_data_types__prv_abo
-..    :reqtype: Functional
-..    :security: NO
-..    :safety: QM
-..    :satisfies: stkh_req__communication__abi_compatible
-..    :status: valid
+.. feat_req:: Provide AbiOption<T>
+   :id: feat_req__abi_compatible_data_types__prv_abo
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :satisfies: stkh_req__communication__abi_compatible
+   :status: valid
 
-..    An ABI-compatible ``AbiOption<T>`` type shall be provided in both C++ and Rust with the specified layout.
+   An ABI-compatible ``AbiOption<T>`` type shall be provided in both C++ and Rust with the specified layout.
 
-..    .. code-block:: rust
+   .. code-block:: rust
 
-..       #[repr(C)]
-..       pub struct AbiOption<T> {
-..          is_some: u8,
-..          value: T,
-..       }
+      #[repr(C)]
+      pub struct AbiOption<T> {
+         is_some: bool,
+         value: T,
+      }
 
-..    .. code-block:: cpp
+   .. code-block:: cpp
 
-..       template<typename T>
-..       struct AbiOption {
-..       private:
-..          std::uint8_t is_some;
-..          T value;
-..       };
+      template<typename T>
+      struct AbiOption {
+      private:
+         AbiBool is_some;
+         T value;
+      };
 
-.. .. feat_req:: AbiOption is_some flag
-..    :id: feat_req__abi_compatible_data_types__abo_flg
-..    :reqtype: Functional
-..    :security: NO
-..    :safety: QM
-..    :satisfies: stkh_req__communication__abi_compatible
-..    :status: valid
+.. feat_req:: AbiOption is_some flag
+   :id: feat_req__abi_compatible_data_types__abo_flg
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :satisfies: stkh_req__communication__abi_compatible
+   :status: valid
 
-..    ``AbiOption.is_some`` shall be ``0`` when empty and ``1`` when containing a value.
+   ``AbiOption.is_some`` shall be ``false`` when empty and ``true`` when containing a value.
 
 .. feat_req:: AbiOption API
    :id: feat_req__abi_compatible_data_types__abo_api
@@ -216,7 +283,7 @@ Option
    :satisfies: stkh_req__communication__abi_compatible
    :status: valid
 
-   The ``AbiOption`` API shall mirror ``std::optional``/``Option<T>`` without introducing extra fields or indirections.
+   The ``AbiOption`` API shall mirror ``std::optional`` / ``Option<T>`` without introducing extra fields or indirections.
 
 Result
 ^^^^^^
@@ -235,14 +302,14 @@ Result
 
       #[repr(C)]
       pub struct AbiResult<T, E> {
-         is_ok: u8,
+         is_err: bool,
          value: AbiResultUnion<T, E>,
       }
 
       #[repr(C)]
       union AbiResultUnion<T, E> {
-         ok: T,
-         err: E,
+         ok: ManuallyDrop<T>,
+         err: ManuallyDrop<E>,
       }
 
    .. code-block:: cpp
@@ -250,14 +317,14 @@ Result
       template<typename T, typename E>
       struct AbiResult {
       private:
-         std::uint8_t is_ok;
+         AbiBool is_err;
          union {
             T ok;
             E err;
          } value;
       };
 
-.. feat_req:: AbiResult is_ok flag
+.. feat_req:: AbiResult is_err flag
    :id: feat_req__abi_compatible_data_types__ari_flg
    :reqtype: Functional
    :security: NO
@@ -265,7 +332,7 @@ Result
    :satisfies: stkh_req__communication__abi_compatible
    :status: valid
 
-   ``AbiResult.is_ok`` shall be ``1`` if ``value.ok`` is valid, and ``0`` if ``value.err`` is valid.
+   ``AbiResult.is_err`` shall be ``false`` if ``value.ok`` is valid, and ``true`` if ``value.err`` is valid.
 
 .. feat_req:: AbiResult API
    :id: feat_req__abi_compatible_data_types__ari_api
@@ -275,4 +342,4 @@ Result
    :satisfies: stkh_req__communication__abi_compatible
    :status: valid
 
-   The ``AbiResult`` API shall mirror ``std::expected``/``Result<T, E>`` without hidden storage or pointers.
+   The ``AbiResult`` API shall mirror ``std::expected`` / ``Result<T, E>`` without hidden storage or pointers.
