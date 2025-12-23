@@ -565,7 +565,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-3437657e">
+  <div class="need_container docutils container" id="SNCB-79e2356c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__verification_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -959,6 +959,21 @@ to follow the <a class="external_link reference external" href="https://eclipse-
 <h3>Test execution and result analysis<a class="headerlink" href="#test-execution-and-result-analysis" title="Link to this heading">#</a></h3>
 <p>The execution of the tests is based on a full automation defined by build pipelines. The analysis of the test results
 needs to be performed by the <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__contributor">rl__contributor</a>.</p>
+<section id="manual-test-execution">
+<h4>Manual test execution<a class="headerlink" href="#manual-test-execution" title="Link to this heading">#</a></h4>
+<p>The automation rate for test case execution is expected to be above 99%.</p>
+<p>Automated tests can be executed locally by the contributor before pushing code to the repository.
+To support local test execution respective <cite>bazel test …</cite> commands are provided as part of the module and feature documentation.</p>
+<p>When a manual test is considered to verify a requirement or architectural element, the respective links need to be established as for any other automated test case.
+The script for manual testing uses the same templates as any other automated test including the Record Properties.
+Therefore, these test cases require a script to be provided which describes how to execute the test case manually step by step.
+The script and its execution will be part of the test reporting and traceability and need to be reviewed in the PR as part of the verification activities.
+Within the review an approver confirms that automation is not feasible for the specific test case.</p>
+<p>In contrast to automated result comparison of an automated test case, the feedback from the test executor is logged for manual tests.
+The script will wait for the user input to proceed to the next step and describe the expected result after each step.
+The user input can be judged as confirmation that the expected result is achieved.
+The final result will be <cite>PASSED</cite> or <cite>FAILED</cite>, based on the test executors confirmation.</p>
+</section>
 </section>
 <section id="test-selection-and-regression-testing">
 <h3>Test selection and regression testing<a class="headerlink" href="#test-selection-and-regression-testing" title="Link to this heading">#</a></h3>
@@ -1153,7 +1168,10 @@ This includes physical maintenance as well as virtual access.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-existing-test-cases">Pre-existing test cases</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-execution-and-result-analysis">Test execution and result analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-execution-and-result-analysis">Test execution and result analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-test-execution">Manual test execution</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-selection-and-regression-testing">Test selection and regression testing</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#work-products-and-traceability">Work products and traceability</a></li>
 </ul>
