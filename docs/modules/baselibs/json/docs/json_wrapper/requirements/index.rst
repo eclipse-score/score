@@ -23,9 +23,9 @@ Requirements
    :realizes: wp__requirements_comp
 
 Due to low complexity, the requirements of the JSON component were not split into the "sub" components
-"JSON Wrapper" and "nlohman_json". Reasoning is the low number of requirements (only about ten).
+"JSON Wrapper", "nlohman_json" and "vajson". Reasoning is the low number of requirements (only about ten).
 The component split was done nevertheless, because "JSON Wrapper" is implemented as part of the S-CORE project and
-"nlohman_json" is reused from open source.
+"nlohman_json" and "vajson" is reused from open source.
 
 So the requirements for "JSON Wrapper" are documented in :need:`doc__json_requirements`
 (all requirements which are "fulfilled_by" :need:`comp_arc_sta__baselibs__json_wrapper`)
