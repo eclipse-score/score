@@ -101,6 +101,6 @@ are all transparent and open source. Any stakeholder can verify that the platfor
 When used as a base in industrial projects, all work products can be reused.
 The open-source community also maintains these artefacts over time.
 However, the **responsibility for** assurance of **quality (ASPICE), cybersecurity (ISO21434)
-and Functional Safety (ISO26262) of the target always system remains with the series project**.
+and Functional Safety (ISO26262) of the target system always remains with the series project**.
 The maintainers of the Eclipse S-CORE project are convinced that more automotive companies will
 recognize these benefits, join the project, and apply Eclipse S-CORE in their future series projects.
