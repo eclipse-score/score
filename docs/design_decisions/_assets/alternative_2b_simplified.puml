@@ -1,0 +1,127 @@
+@startuml elemente
+
+package "S-CORE Repo" {
+  class Platform {
+    + SEooC: bool
+    --
+    Objectives
+    Stakeholder Requirements
+    Platform Architecture
+    SW-Platform Assumptions of use
+    Platform Integration Tests
+  }
+}
+
+package "SW-Module Repo (Main)" {
+  class Feature {
+    + SEooC: bool
+    --
+    Feature Requirements
+    Feature Architecture
+    Feature Integration Tests
+    Feature Safety/Security Analysis
+    Feature Assumptions of use
+  }
+
+  class Component {
+    --
+    Component Requirements
+    Component Architecture
+    Component Integration Tests
+    Component Safety/Security Analysis
+    Component Assumption of use
+  }
+
+  class Unit {
+    --
+    Detailed Design
+    Source Code
+    Unit Test
+  }
+}
+
+package "SW-Module Repo (Sub 1)" {
+  class SubFeature1 {
+    + SEooC: bool
+    --
+    Feature Requirements
+    Feature Architecture
+    Feature Integration Tests
+    Feature Safety/Security Analysis
+    Feature Assumptions of use
+  }
+
+  class SubComponent1 {
+    --
+    Component Requirements
+    Component Architecture
+    Component Integration Tests
+    Component Safety/Security Analysis
+    Component Assumption of use
+  }
+
+  class SubUnit1 {
+    --
+    Detailed Design
+    Source Code
+    Unit Test
+  }
+}
+
+package "SW-Module Repo (Sub 2)" {
+  class SubFeature2 {
+    + SEooC: bool
+    --
+    Feature Requirements
+    Feature Architecture
+    Feature Integration Tests
+    Feature Safety/Security Analysis
+    Feature Assumptions of use
+  }
+
+  class SubComponent2 {
+    --
+    Component Requirements
+    Component Architecture
+    Component Integration Tests
+    Component Safety/Security Analysis
+    Component Assumption of use
+  }
+
+  class SubUnit2 {
+    --
+    Detailed Design
+    Source Code
+    Unit Test
+  }
+}
+
+package "Integration Repo" {
+}
+
+' Package Relationships
+"Integration Repo" ..> "S-CORE Repo" : derives from
+"Integration Repo" ..> "SW-Module Repo (Main)" : uses
+"SW-Module Repo (Main)" ..> "SW-Module Repo (Sub 1)" : uses
+"SW-Module Repo (Main)" ..> "SW-Module Repo (Sub 2)" : uses
+"S-CORE Repo" -[hidden]d- "SW-Module Repo (Main)"
+
+' Main Feature Relationships
+Platform "1" *-- "n" Feature
+Feature "1" o-- "n" Component
+Component "1" o-- "n" Component : contains
+Component "1" o-d- "n" Unit
+
+' Sub-Feature 1 Relationships
+Feature "1" o-- "n" SubFeature1 : contains
+SubFeature1 "1" o-- "n" SubComponent1
+SubComponent1 "1" o-- "n" SubComponent1 : contains
+SubComponent1 "1" o-d- "n" SubUnit1
+
+' Sub-Feature 2 Relationships
+Feature "1" o-- "n" SubFeature2 : contains
+SubFeature2 "1" o-- "n" SubComponent2
+SubComponent2 "1" o-- "n" SubComponent2 : contains
+SubComponent2 "1" o-d- "n" SubUnit2
+
+@enduml
