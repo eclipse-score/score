@@ -27,8 +27,8 @@ data or to subscribe to data. As such it will need to know and understand the da
 the IPC network.
 
 It also is a participant in the SOME/IP network and provides services for the service oriented communication.
-This shall be possible by including SOME/IP stacks from `vsomeip <https://github.com/COVESA/vsomeip>`_ for reference, which can be replaced by other
-implementations, i.e. proprietary commercial stacks.
+This shall be possible by including the `vsomeip <https://github.com/COVESA/vsomeip>`_ SOME/IP stack for reference, 
+which can be replaced by other implementations, i.e. proprietary commercial stacks.
 
 There need to be some components between the two communication networks as data types and their according representations and
 transmission cadence can be different. Translation of data types could be handled in some translation module
