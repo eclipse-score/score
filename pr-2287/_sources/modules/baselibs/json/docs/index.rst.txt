@@ -19,7 +19,9 @@ JSON-Library
    :id: doc__json
    :status: valid
    :safety: ASIL_B
+   :security: YES
    :tags: component_request
+   :realizes: wp__cmpt_request
 
 
 .. toctree::

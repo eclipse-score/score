@@ -521,7 +521,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../feo/index.html">FEO Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../lifecycle/index.html">Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../logging/index.html">Logging Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../orchestrator/index.html">Orchestrator Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../orchestrator/index.html">Orchestrator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../os/index.html">OS Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../persistency/index.html">Persistency KVS Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tracing/index.html">Tracing Module</a></li>
@@ -593,7 +593,7 @@
                   
   <section id="json-component-architecture">
 <h1>JSON Component Architecture<a class="headerlink" href="#json-component-architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-9bef8083">
+<div class="need_container docutils container" id="SNCB-b3ca8f6f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__json_architecture">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -602,7 +602,7 @@
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></span></div>
-<div class="line"><span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
 <div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
@@ -662,7 +662,7 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 </section>
 <section id="static-architecture">
 <h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-511ab269">
+<div class="need_container docutils container" id="SNCB-87c0d167">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__baselibs__json">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -681,7 +681,8 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
+</span></span></div>
 <div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/index.html#comp_req__json__deserialization" title="comp_arc_sta__baselibs__json">comp_req__json__deserialization</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__serialization" title="comp_arc_sta__baselibs__json">comp_req__json__serialization</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__user_format" title="comp_arc_sta__baselibs__json">comp_req__json__user_format</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__lang_idioms" title="comp_arc_sta__baselibs__json">comp_req__json__lang_idioms</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__lang_infra" title="comp_arc_sta__baselibs__json">comp_req__json__lang_infra</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__type_compatibility" title="comp_arc_sta__baselibs__json">comp_req__json__type_compatibility</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__full_testability" title="comp_arc_sta__baselibs__json">comp_req__json__full_testability</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__asil" title="comp_arc_sta__baselibs__json">comp_req__json__asil</a></span></span></div>
 <div class="line">implements: <span class="implements"><span><a class="reference internal" href="#logic_arc_int__baselibs__json" title="comp_arc_sta__baselibs__json">logic_arc_int__baselibs__json</a></span></span></div>
 <div class="line">includes: <span class="includes"><span><a class="reference internal" href="#comp_arc_sta__baselibs__json_wrapper" title="comp_arc_sta__baselibs__json">comp_arc_sta__baselibs__json_wrapper</a>, <a class="reference internal" href="#comp_arc_sta__baselibs__nlohman_json" title="comp_arc_sta__baselibs__json">comp_arc_sta__baselibs__nlohman_json</a></span></span></div>
@@ -700,7 +701,7 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
-<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component &amp; Component Package Diagram</span></span></span></div>
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component Package Diagram</span></span></span></div>
 </div>
 </td>
 <td class="footer_right" colspan="2"></td>
@@ -712,7 +713,7 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 </section>
 <section id="dynamic-architecture">
 <h2>Dynamic Architecture<a class="headerlink" href="#dynamic-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-cb9eb65d">
+<div class="need_container docutils container" id="SNCB-51a2fa5b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_dyn table" id="comp_arc_dyn__baselibs__json_dynamic_view">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -731,7 +732,8 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
+</span></span></div>
 <div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/index.html#comp_req__json__deserialization" title="comp_arc_dyn__baselibs__json_dynamic_view">comp_req__json__deserialization</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__serialization" title="comp_arc_dyn__baselibs__json_dynamic_view">comp_req__json__serialization</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__user_format" title="comp_arc_dyn__baselibs__json_dynamic_view">comp_req__json__user_format</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__lang_idioms" title="comp_arc_dyn__baselibs__json_dynamic_view">comp_req__json__lang_idioms</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__lang_infra" title="comp_arc_dyn__baselibs__json_dynamic_view">comp_req__json__lang_infra</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__type_compatibility" title="comp_arc_dyn__baselibs__json_dynamic_view">comp_req__json__type_compatibility</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__full_testability" title="comp_arc_dyn__baselibs__json_dynamic_view">comp_req__json__full_testability</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__asil" title="comp_arc_dyn__baselibs__json_dynamic_view">comp_req__json__asil</a></span></span></div>
 </span></div>
 </div>
@@ -757,7 +759,7 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 </section>
 <section id="interfaces">
 <h2>Interfaces<a class="headerlink" href="#interfaces" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-6a28f8b7">
+<div class="need_container docutils container" id="SNCB-2e83ead3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__baselibs__json">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -776,7 +778,8 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
+</span></span></div>
 <div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="#comp_arc_sta__baselibs__json" title="logic_arc_int__baselibs__json">comp_arc_sta__baselibs__json</a>, <a class="reference internal" href="#comp_arc_sta__baselibs__json_wrapper" title="logic_arc_int__baselibs__json">comp_arc_sta__baselibs__json_wrapper</a></span></span></div>
 <div class="line">used by: <span class="uses"><span><a class="reference internal" href="../../../../lifecycle/index.html#comp_arc_sta__lifecycle__launch_manager" title="logic_arc_int__baselibs__json">comp_arc_sta__lifecycle__launch_manager</a>, <a class="reference internal" href="../../../../communication/ipc_binding/docs/architecture/index.html#comp_arc_sta__com__ipc_binding" title="logic_arc_int__baselibs__json">comp_arc_sta__com__ipc_binding</a></span></span></div>
 <div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat_arc_sta__baselibs__static_view_arch" title="logic_arc_int__baselibs__json">feat_arc_sta__baselibs__static_view_arch</a></span></span></div>
@@ -804,7 +807,7 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9fcefd85">
+<div class="need_container docutils container" id="SNCB-28469dd5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__parse">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -823,7 +826,8 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
+</span></span></div>
 <div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__baselibs__json" title="logic_arc_int_op__baselibs__parse">logic_arc_int__baselibs__json</a></span></span></div>
 </span></div>
 </div>
@@ -846,7 +850,7 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-c3c127f9">
+<div class="need_container docutils container" id="SNCB-e6eadbe3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__write">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -865,7 +869,8 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
+</span></span></div>
 <div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__baselibs__json" title="logic_arc_int_op__baselibs__write">logic_arc_int__baselibs__json</a></span></span></div>
 </span></div>
 </div>
@@ -891,7 +896,7 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 </section>
 <section id="lower-level-components">
 <h2>Lower Level Components<a class="headerlink" href="#lower-level-components" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-a3d1da46">
+<div class="need_container docutils container" id="SNCB-ad76db54">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__baselibs__json_wrapper">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -910,7 +915,8 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
+</span></span></div>
 <div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/index.html#comp_req__json__user_format" title="comp_arc_sta__baselibs__json_wrapper">comp_req__json__user_format</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__lang_idioms" title="comp_arc_sta__baselibs__json_wrapper">comp_req__json__lang_idioms</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__lang_infra" title="comp_arc_sta__baselibs__json_wrapper">comp_req__json__lang_infra</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__type_compatibility" title="comp_arc_sta__baselibs__json_wrapper">comp_req__json__type_compatibility</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__full_testability" title="comp_arc_sta__baselibs__json_wrapper">comp_req__json__full_testability</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__serialization" title="comp_arc_sta__baselibs__json_wrapper">comp_req__json__serialization</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__asil" title="comp_arc_sta__baselibs__json_wrapper">comp_req__json__asil</a></span></span></div>
 <div class="line">implements: <span class="implements"><span><a class="reference internal" href="#logic_arc_int__baselibs__json" title="comp_arc_sta__baselibs__json_wrapper">logic_arc_int__baselibs__json</a></span></span></div>
 <div class="line">included by: <span class="includes"><span><a class="reference internal" href="#comp_arc_sta__baselibs__json" title="comp_arc_sta__baselibs__json_wrapper">comp_arc_sta__baselibs__json</a></span></span></div>
@@ -926,7 +932,7 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
-<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component &amp; Component Package Diagram</span></span></span></div>
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component Package Diagram</span></span></span></div>
 </div>
 </td>
 <td class="footer_right" colspan="2"></td>
@@ -935,7 +941,7 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-653bdba5">
+<div class="need_container docutils container" id="SNCB-a842e755">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__baselibs__nlohman_json">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -954,7 +960,8 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
+</span></span></div>
 <div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/index.html#comp_req__json__deserialization" title="comp_arc_sta__baselibs__nlohman_json">comp_req__json__deserialization</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__asil" title="comp_arc_sta__baselibs__nlohman_json">comp_req__json__asil</a></span></span></div>
 <div class="line">included by: <span class="includes"><span><a class="reference internal" href="#comp_arc_sta__baselibs__json" title="comp_arc_sta__baselibs__nlohman_json">comp_arc_sta__baselibs__json</a></span></span></div>
 </span></div>
@@ -969,7 +976,7 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
-<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component &amp; Component Package Diagram</span></span></span></div>
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component Package Diagram</span></span></span></div>
 </div>
 </td>
 <td class="footer_right" colspan="2"></td>
@@ -1045,7 +1052,7 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/modules/baselibs/json/docs/architecture/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/modules/baselibs/json/docs/architecture/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       

@@ -34,3 +34,4 @@ S-CORE Tools Overview
    bazel
    rustfmt
    itf
+   clippy

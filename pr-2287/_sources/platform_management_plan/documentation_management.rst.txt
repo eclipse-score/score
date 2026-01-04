@@ -95,11 +95,10 @@ documents are listed as well, so that it is easy to identify missing documents.
 Platform documentation
 ++++++++++++++++++++++
 
+.. _documents_docs_glossary:
 
 docs/glossary
 #############
-
-.. _documents_docs_glossary:
 
 .. needtable::
    :style: table
@@ -113,11 +112,10 @@ docs/glossary
        if need["docname"] is not None and "glossary/" in need["docname"]:
           results.append(need)
 
+.. _documents_docs_contribute:
 
 docs/contribute
 ###############
-
-.. _documents_docs_contribute:
 
 .. needtable::
    :style: table
@@ -132,7 +130,6 @@ docs/contribute
 
 
 .. _doc_platform_management_plan:
-
 
 docs/platform_management_plan
 #############################
@@ -149,11 +146,10 @@ docs/platform_management_plan
        if need["docname"] is not None and "platform_management_plan/" in need["docname"]:
           results.append(need)
 
+.. _documents_docs_requirements:
 
 docs/requirements
 #################
-
-.. _documents_docs_requirements:
 
 .. needtable::
    :style: table
@@ -167,11 +163,10 @@ docs/requirements
        if need["docname"] is not None and "requirements/" in need["docname"] and not "features/" in need["docname"] and not "modules/" in need["docname"]:
           results.append(need)
 
+.. _documents_docs_quality:
 
 docs/quality
 ############
-
-.. _documents_docs_quality:
 
 .. needtable::
    :style: table
@@ -185,11 +180,10 @@ docs/quality
        if need["docname"] is not None and "quality/" in need["docname"]:
           results.append(need)
 
+.. _documents_docs_safety:
 
 docs/safety
 ###########
-
-.. _documents_docs_safety:
 
 .. needtable::
    :style: table
@@ -203,11 +197,10 @@ docs/safety
        if need["docname"] is not None and "safety/" in need["docname"]:
           results.append(need)
 
+.. _documents_docs_security:
 
 docs/security
 #############
-
-.. _documents_docs_security:
 
 .. needtable::
    :style: table
@@ -221,11 +214,10 @@ docs/security
        if need["docname"] is not None and "security/" in need["docname"]:
           results.append(need)
 
+.. _documents_docs_score_tools:
 
 docs/score_tools
 ################
-
-.. _documents_docs_score_tools:
 
 .. needtable::
    :style: table
@@ -239,11 +231,10 @@ docs/score_tools
        if need["docname"] is not None and "score_tools/" in need["docname"]:
           results.append(need)
 
+.. _documents_docs_verification_report:
 
 docs/verification_report
 ########################
-
-.. _documents_docs_verification_report:
 
 .. needtable::
    :style: table
@@ -257,11 +248,10 @@ docs/verification_report
        if need["docname"] is not None and "verification_report/" in need["docname"]:
           results.append(need)
 
+.. _documents_docs_platform_integration_tests:
 
 platform_integration_tests
 ###############################
-
-.. _documents_docs_platform_integration_tests:
 
 .. needtable::
    :style: table
@@ -275,11 +265,10 @@ platform_integration_tests
        if need["docname"] is not None and "platform_integration_tests/" in need["docname"]:
           results.append(need)
 
+.. _documents_docs_manuals:
 
 docs/manuals
 ############
-
-.. _documents_docs_manuals:
 
 .. needtable::
    :style: table
@@ -293,11 +282,10 @@ docs/manuals
        if need["docname"] is not None and "manuals/" in need["docname"]:
           results.append(need)
 
+.. _documents_docs_score_releases:
 
 docs/score_releases
 ###################
-
-.. _documents_docs_score_releases:
 
 .. needtable::
    :style: table
@@ -314,7 +302,6 @@ docs/score_releases
 
 
 .. _documents_docs_features:
-
 
 Feature documentation
 +++++++++++++++++++++
@@ -392,10 +379,10 @@ planned for release v0.5, are listed.
 ..              need["title"] = need["title"]
 ..              results.append(need)
 
+.. _documents_docs_features_baselibs:
+
 docs/features/baselibs
 ######################
-
-.. _documents_docs_features_baselibs:
 
 .. needtable::
    :style: table
@@ -427,10 +414,10 @@ docs/features/baselibs
              need["title"] = need["title"]
              results.append(need)
 
+.. _documents_docs_features_communication:
+
 docs/features/communication
 ###########################
-
-.. _documents_docs_features_communication:
 
 .. needtable::
    :style: table
@@ -497,10 +484,10 @@ docs/features/communication
 ..              need["title"] = need["title"]
 ..              results.append(need)
 
+.. _documents_docs_features_frameworks:
+
 docs/features/frameworks
 ########################
-
-.. _documents_docs_features_frameworks:
 
 .. needtable::
    :style: table
@@ -637,10 +624,10 @@ docs/features/frameworks
 ..              need["title"] = need["title"]
 ..              results.append(need)
 
+.. _documents_docs_features_orchestration:
+
 docs/features/orchestration
 ###########################
-
-.. _documents_docs_features_orchestration:
 
 .. needtable::
    :style: table
@@ -672,10 +659,10 @@ docs/features/orchestration
              need["title"] = need["title"]
              results.append(need)
 
+.. _documents_docs_features_persistency:
+
 docs/features/persistency
 #########################
-
-.. _documents_docs_features_persistency:
 
 .. needtable::
    :style: table
@@ -748,10 +735,10 @@ docs/features/persistency
 Modules documentation
 +++++++++++++++++++++
 
+.. _documents_docs_modules_baselibs_docs:
+
 docs/modules/baselibs/docs
 ##########################
-
-.. _documents_docs_modules_baselibs_docs:
 
 .. needtable::
    :style: table
@@ -783,11 +770,10 @@ docs/modules/baselibs/docs
              need["title"] = need["title"]
              results.append(need)
 
+.. _documents_docs_modules_communication_docs:
 
 docs/modules/communication/docs
 ###############################
-
-.. _documents_docs_modules_communication_docs:
 
 .. needtable::
    :style: table
@@ -819,11 +805,10 @@ docs/modules/communication/docs
              need["title"] = need["title"]
              results.append(need)
 
+.. _documents_docs_modules_feo_docs:
 
 docs/modules/feo/docs
 #####################
-
-.. _documents_docs_modules_feo_docs:
 
 .. needtable::
    :style: table
@@ -892,10 +877,10 @@ docs/modules/feo/docs
 ..              results.append(need)
 
 
+.. _documents_docs_modules_logging_docs:
+
 docs/modules/logging/docs
 #########################
-
-.. _documents_docs_modules_logging_docs:
 
 .. needtable::
    :style: table
@@ -927,11 +912,10 @@ docs/modules/logging/docs
              need["title"] = need["title"]
              results.append(need)
 
+.. _documents_docs_modules_os_docs:
 
 docs/modules/os/docs
 ####################
-
-.. _documents_docs_modules_os_docs:
 
 .. needtable::
    :style: table
@@ -963,11 +947,10 @@ docs/modules/os/docs
              need["title"] = need["title"]
              results.append(need)
 
+.. _documents_docs_modules_persistency_docs:
 
 docs/modules/persistency/docs
 #############################
-
-.. _documents_docs_modules_persistency_docs:
 
 .. needtable::
    :style: table
@@ -999,11 +982,10 @@ docs/modules/persistency/docs
              need["title"] = need["title"]
              results.append(need)
 
+.. _documents_docs_modules_tracing_docs:
 
 docs/modules/tracing/docs
 #########################
-
-.. _documents_docs_modules_tracing_docs:
 
 .. needtable::
    :style: table
@@ -1038,15 +1020,13 @@ docs/modules/tracing/docs
 
 .. _documents_docs_modules_components:
 
-
 Components documentation
 ++++++++++++++++++++++++
 
+.. _documents_docs_modules_baselibs_components:
 
 docs/modules/baselibs/components
 ################################
-
-.. _documents_docs_modules_baselibs_components:
 
 .. needtable::
    :style: table
@@ -1096,11 +1076,10 @@ docs/modules/baselibs/components
 
              components.append(component_name)
 
+.. _documents_docs_modules_communication_components:
 
 docs/modules/communication/components
 #####################################
-
-.. _documents_docs_modules_communication_components:
 
 .. needtable::
    :style: table
@@ -1150,11 +1129,10 @@ docs/modules/communication/components
 
              components.append(component_name)
 
+.. _documents_docs_modules_feo_components:
 
 docs/modules/feo/components
 ###########################
-
-.. _documents_docs_modules_feo_components:
 
 .. needtable::
    :style: table
@@ -1259,10 +1237,10 @@ docs/modules/feo/components
 ..              components.append(component_name)
 
 
+.. _documents_docs_modules_logging_components:
+
 docs/modules/logging/components
 ###############################
-
-.. _documents_docs_modules_logging_components:
 
 .. needtable::
    :style: table
@@ -1312,11 +1290,10 @@ docs/modules/logging/components
 
              components.append(component_name)
 
+.. _documents_docs_modules_os_components:
 
 docs/modules/os/components
 ##########################
-
-.. _documents_docs_modules_os_components:
 
 .. needtable::
    :style: table
@@ -1366,11 +1343,10 @@ docs/modules/os/components
 
              components.append(component_name)
 
+.. _documents_docs_modules_persistency_components:
 
 docs/modules/persistency/components
 ###################################
-
-.. _documents_docs_modules_persistency_components:
 
 .. needtable::
    :style: table
@@ -1420,11 +1396,10 @@ docs/modules/persistency/components
 
              components.append(component_name)
 
+.. _documents_docs_modules_tracing_components:
 
 docs/modules/tracing/components
 ###############################
-
-.. _documents_docs_modules_tracing_components:
 
 .. needtable::
    :style: table

@@ -12,8 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Fixed execution order framework (FEO)
-#####################################
+Fixed execution order framework (FEO) (v0.5 beta)
+#################################################
 
 .. document:: Fixed execution order framework
    :id: doc__frameworks_feo
@@ -21,6 +21,7 @@ Fixed execution order framework (FEO)
    :security: NO
    :safety: ASIL_B
    :tags: feature_request, frameworks_feo
+   :realizes: wp__feat_request
 
 
 .. toctree::

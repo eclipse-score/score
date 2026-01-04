@@ -14,7 +14,7 @@
 
 .. _baselibs_feature:
 
-Base Libraries (v0.5 alpha)
+Base Libraries (v0.5 beta)
 ###########################
 
 .. document:: Base Libraries
@@ -22,6 +22,8 @@ Base Libraries (v0.5 alpha)
    :status: valid
    :safety: ASIL_B
    :tags: feature_request
+   :security: YES
+   :realizes: wp__feat_request
 
 
 .. toctree::

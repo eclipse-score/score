@@ -19,6 +19,7 @@ Container Component Architecture
    :id: doc__containers_architecture
    :status: valid
    :safety: ASIL_B
+   :security: YES
    :realizes: wp__component_arch
 
 Overview/Description

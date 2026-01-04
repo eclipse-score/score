@@ -144,7 +144,7 @@ Synchronization Algorithm
 
 A slot shall contain all necessary meta-information in order to synchronize data access. This information most certainly needs to include a timestamp to indicate the order of produced data within the slots. Additionally, a use count is needed, indicating if a slot is currently in use by one process. The concrete data is implementation defined and must be covered by the detailed design.
 
-The main idea of the algorithm is that a producer shall always be able to store one new data sample. If he cannot find a respective slot, this indicates a contract violation, which indicates that a QM process misbehaved. In such a case, a producer should exclude any QM consumer from the communication.
+The main idea of the algorithm is that a producer shall always be able to store one new data sample. If it cannot find a respective slot, this indicates a contract violation, which indicates that a QM process misbehaved. In such a case, a producer should exclude any QM consumer from the communication.
 
 This whole idea builds up on the split of shared memory segments by ASIL levels. This way we can ensure that an QM process will not degrade the ASIL Level for a communication path. In another case, where we already have a QM producer, it is possible for an ASIL B consumer to consume the QM data. In this scenario, there is no separate control data for ASIL B, and they instead interact on the control data for ASIL QM. This is because, the data is QM and it is impossible for the middleware to apply additional checks to enhance the quality of data. This can only be done on application layer level. Hence, separating QM and ASIL consumers holds no benefit.
 
@@ -200,7 +200,7 @@ Each consumer and the producer owns a corresponding transaction log, which resid
 #. Executing the activity in question.
 #. Writing a transaction end marker, which annotates, whether the activity in (2) was done or not.
 
-During the restart of a communication partner, he checks for existing transaction logs in shared memory, which it
+During the restart of a communication partner, it checks for existing transaction logs in shared memory, which it
 created in an earlier run, so that it can roll them back.
 
 Two scenarios are possible:
@@ -208,7 +208,7 @@ Two scenarios are possible:
 - All transaction log entries are complete (transaction end marker is written).
   The communication partner can roll all transactions back and rejoin communication.
 - A transaction log entry is incomplete (transaction end marker is missing).
-  The communication partner is incapable of rolling back his actions fully.
+  The communication partner is incapable of rolling back its actions fully.
   Rejoining the communication would impact other communication partners.
   The communication partner is barred from rejoining the communication.
 

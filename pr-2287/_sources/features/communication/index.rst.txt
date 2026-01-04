@@ -14,13 +14,16 @@
 
 .. _com_feature:
 
-Communication (v0.5 alpha)
+Communication (v0.5 beta)
 ##########################
 
 .. document:: Communication
    :id: doc__com
    :status: valid
    :tags: feature_request
+   :safety: ASIL_B
+   :security: YES
+   :realizes: wp__feat_request
 
 .. toctree::
    :maxdepth: 1

@@ -18,6 +18,9 @@ Writing Rust Code
 .. document:: Coding Guidelines Rust
    :id: doc__rust_coding_guidelines
    :status: valid
+   :safety: ASIL_B
+   :security: YES
+   :realizes: wp__sw_development_plan
 
 
 Coding Guidelines

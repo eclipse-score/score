@@ -16,6 +16,7 @@
    :id: doc__feo
    :status: draft
    :safety: ASIL_B
+   :security: YES
    :realizes: wp__cmpt_request
    :tags: component_feo
 

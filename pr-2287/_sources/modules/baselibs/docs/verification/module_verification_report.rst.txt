@@ -21,6 +21,7 @@ Verification Report
    :id: doc__baselibs_verification_report
    :status: draft
    :safety: ASIL_B
+   :security: YES
    :realizes: wp__verification_module_ver_report
 
 

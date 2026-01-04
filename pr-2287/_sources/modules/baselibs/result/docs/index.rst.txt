@@ -19,6 +19,7 @@ result
    :id: doc__result
    :status: draft
    :safety: ASIL_B
+   :security: YES
    :tags: baselibs_result
    :realizes: wp__cmpt_request
 

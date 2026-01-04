@@ -108,25 +108,26 @@ Levels of integration and verification
 
 There are the following different levels of integration and verification defined:
 
-1. Software unit (incl. detailed design) and component verification to verify the integration of
+1. **Software unit verification** (incl. detailed design) and component verification to verify the integration of
    units to a component and also the integration of smaller component(s) to a complex component based on
 
    #. detailed design and
    #. component architecture and
    #. component requirements
 
-2. Software feature verification to verify the integration of components to a feature based on
+2. **Software integration verification** on feature level to verify the integration of components to a feature based on
 
    #. feature architecture and
    #. feature requirements
 
-3. Platform testing (on reference hardware)
+3. **Software platform verification** as Platform Integration Testing of the integrated software element (on reference hardware) based on
 
    #. Stakeholder requirements
 
 
-  **Note:** These three levels translate to the levels of ISO 26262 part 6 clauses 9 to 11. The platform
-  testing will be executed by the integrator. S-CORE project only executes tests on reference hardware.
+  **Note:** These three levels translate to the levels of ISO 26262 part 6 clauses 9 to 11, where compliant testing with full coverage is tailored out for the embedded software.
+  The specific tailoring is described in the :need:`doc__score_platform_safety_plan`.
+  The full Platform Integration Testing will be executed by the integrator. S-CORE project only executes tests on reference hardware.
   These tests serve as an optional base for the integrator and will also be part of the
   :need:`wp__verification_platform_ver_report`, but more on an informative character. The full scope
   of clause 11 is tailored out accordingly for S-CORE. Practically, this means S-CORE will implement
@@ -156,35 +157,35 @@ method is to be used as meta data (*TestType* and *DerivationTechnique*).
      - Applicable for QM / ASIL B
    * - Static Code Analysis
      - static-code-analysis
-     - 1, -, -
+     - 1 Unit/Component, -, -
      - QM & ASIL B
    * - Structural Statement Coverage (Code coverage)
      - structural-statement-coverage
-     - 1, -, -
+     - 1 Unit/Component, -, -
      - QM & ASIL B
    * - Structural Branch Coverage (Code coverage)
      - structural-branch-coverage
-     - 1, -, -
+     - 1 Unit/Component, -, -
      - QM & ASIL B
    * - Walkthrough
      - walkthrough
-     - 1, 2, 3
+     - All level 1, 2, 3
      - QM
    * - Inspection
      - inspection
-     - 1, 2, 3
+     - 1 Unit/Component, 2 Feature Integration, -
      - ASIL B
    * - Interface Test
      - interface-test
-     - 1, 2, -
+     - 1 Unit/Component, 2 Feature Integration, -
      - QM & ASIL B
    * - Requirements-based Test
      - requirements-based
-     - 1,  2, -
+     - All level 1, 2, 3
      - QM & ASIL B
    * - Resource Usage Evaluation (only on reference environment)
      - resource-usage
-     - -, 2, -
+     - -, 2 Feature Integration, -
      - QM & ASIL B
 
 
@@ -233,19 +234,19 @@ Test Derivation Methods
      - Applicable for QM / ASIL B
    * - Analysis of Requirements
      - requirements-analysis
-     - 1, 2, 3
+     - All level 1, 2, 3
      - QM, ASIL B
    * - Analysis of Boundary Values
      - boundary-values
-     - 1, 2, -
+     - 1 Unit/Component, 2 Feature Integration, -
      - ASIL B
    * - Analysis of Equivalence Classes
      - equivalence-classes
-     - 1, 2, -
+     - All level 1, 2, 3
      - ASIL B
    * - Fuzzy Testing (focus security)
      - fuzz-testing
-     - 1, 2, -
+     - 1 Unit/Component, 2 Feature Integration, -
      - QM, ASIL B
 
 The ``fuzz-testing`` should especially be taken into account to increase security of the software.
@@ -329,8 +330,8 @@ following aspects define the coverage of the architectural design.
 - :need:`wp__sw_component_fmea` and :need:`wp__sw_component_dfa` for safety-critical parts
 - :need:`wp__feature_fmea` and :need:`wp__feature_dfa` for safety-critical parts
 
-Each architectural element has at least one test case linked with attribute "fully verified" or
-multiple test cases with attribute "partially verified".
+Each architectural element has at least one test case linked with attribute ``FullyVerified`` or
+multiple test cases with attribute ``PartiallyVerified``.
 
 Coverage of software requirements specifications
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -359,7 +360,26 @@ Test execution and result analysis
 ----------------------------------
 
 The execution of the tests is based on a full automation defined by build pipelines. The analysis of the test results
-needs to be performed by the contributor.
+needs to be performed by the :need:`rl__contributor`.
+
+Manual test execution
+^^^^^^^^^^^^^^^^^^^^^
+
+The automation rate for test case execution is expected to be above 99%.
+
+Automated tests can be executed locally by the contributor before pushing code to the repository.
+To support local test execution respective `bazel test ...` commands are provided as part of the module and feature documentation.
+
+When a manual test is considered to verify a requirement or architectural element, the respective links need to be established as for any other automated test case.
+The script for manual testing uses the same templates as any other automated test including the Record Properties.
+Therefore, these test cases require a script to be provided which describes how to execute the test case manually step by step.
+The script and its execution will be part of the test reporting and traceability and need to be reviewed in the PR as part of the verification activities.
+Within the review an approver confirms that automation is not feasible for the specific test case.
+
+In contrast to automated result comparison of an automated test case, the feedback from the test executor is logged for manual tests.
+The script will wait for the user input to proceed to the next step and describe the expected result after each step.
+The user input can be judged as confirmation that the expected result is achieved.
+The final result will be `PASSED` or `FAILED`, based on the test executors confirmation.
 
 Test selection and regression testing
 -------------------------------------
@@ -392,7 +412,7 @@ document:
 
 #. The :need:`rl__contributor` needs to make sure that the objectives of the software integration and verification are
    fulfilled when contributing to the project.
-#. The :need:`rl__committer` needs to verify that the contributor has fulfilled the expected objectives.
+#. The :need:`rl__committer` needs to verify that the :need:`rl__contributor` has fulfilled the expected objectives.
 
 In this way roles are followed as defined in :need:`doc_concept__verification_process`.
 

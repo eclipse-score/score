@@ -17,6 +17,7 @@
    :id: doc__baselibs_req_inspection
    :status: draft
    :safety: ASIL_B
+   :security: YES
    :realizes: wp__requirements_inspect
 
 
@@ -128,7 +129,7 @@ Requirement Inspection Checklist
         -
       * - REQ_08_01
         - Is the requirement *verifiable*?
-        - If at the time of the inspection already tests are created for the requirement, the answer is yes. This can be checked via traces, but also :need:`gd_req__req_attr_test_covered` shows this. In case the requirement is not sufficiently traced to test cases already, a test expert is invited to the inspection to give his opinion whether the requirement is formulated in a way that supports test development and the available test infrastructure is sufficient to perform the test.
+        - If at the time of the inspection already tests are created for the requirement, the answer is yes. This can be checked via traces, but also :need:`gd_req__req_attr_test_covered` shows this. In case the requirement is not sufficiently traced to test cases already, a test expert is invited to the inspection to give their opinion whether the requirement is formulated in a way that supports test development and the available test infrastructure is sufficient to perform the test.
         -
         -
         -
@@ -151,7 +152,7 @@ Note: If a Review ID is not applicable for your requirement, then state ""n/a" i
 The following requirements in "valid" state and with "inspected" tag set are in the scope of this inspection:
 
 .. needtable::
-   :filter: "baselibs" in docname and "requirements" in docname and docname is not None and status == "valid"
+   :filter: docname is not None and "baselibs" in docname and "requirements" in docname and status == "valid"
    :style: table
    :types: feat_req
    :tags: baselibs
@@ -162,7 +163,7 @@ The following requirements in "valid" state and with "inspected" tag set are in 
 And also the following AoUs in "valid" state and with "inspected" tag set (for these please answer the questions above as if the AoUs are requirements, except questions REQ_03_01 and REQ_03_02):
 
 .. needtable::
-   :filter: "baselibs" in docname and "requirements" in docname and docname is not None and status == "valid"
+   :filter: docname is not None and "baselibs" in docname and "requirements" in docname and status == "valid"
    :style: table
    :types: aou_req
    :tags: baselibs

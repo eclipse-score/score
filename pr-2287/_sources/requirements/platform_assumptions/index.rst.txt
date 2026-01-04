@@ -33,7 +33,7 @@ the operating system, programming language libraries, hypervisor or processing h
 For "organizations" two roles are used in the AoU text:
 
 - Supplier: is the provider of an element the S-CORE SW-platform is using but which is developed and maintained externally.
-- System Integrator: uses the S-CORE SW-platform as a part of a system he provides to a customer. The system integrator can be for example a Tier1 providing an electronic control unit to a OEM or an OEM providing a car to his end-customer. S-CORE does not know which.
+- System Integrator: uses the S-CORE SW-platform as a part of a system they provide to a customer. The system integrator can be for example a Tier1 providing an electronic control unit to a OEM or an OEM providing a car to their end-customer. S-CORE does not know which.
 
 To fulfill these assumptions is the responsibility of the mentioned roles.
 
@@ -113,7 +113,7 @@ It is the level where the S-CORE SW-platform will functionally "work" with the e
    :safety: QM
    :status: valid
 
-   The system integrator shall run the tests provided by S-CORE (platform, feature, component and Unit level for his selected S-CORE modules) on his selected OS/Hypervisor/HW combination,
+   The system integrator shall run the tests provided by S-CORE (platform, feature, component and Unit level for their selected S-CORE modules) on their selected OS/Hypervisor/HW combination,
    or provide equivalent argumentation.
 
    Note1: S-CORE will run these tests for one or more reference OS/Hypervisor/HW combination, if not all passing, remaining issues are documented in release notes. In case the selected combination is equal to a S-CORE reference and the complete S-CORE SW-platform is used, this AoU may be skipped.
@@ -127,7 +127,7 @@ It is the level where the S-CORE SW-platform will functionally "work" with the e
    :safety: QM
    :status: valid
 
-   The system integrator shall report the bugs found during integration of the S-CORE SW-platform on his selected OS/Hypervisor/HW combination to the external SW element supplier and S-CORE for analysis.
+   The system integrator shall report the bugs found during integration of the S-CORE SW-platform on their selected OS/Hypervisor/HW combination to the external SW element supplier and S-CORE for analysis.
 
 Assumptions on the external SW element integration - Certifiable Level
 ----------------------------------------------------------------------
@@ -214,7 +214,10 @@ This is the highest level of integraton. This is the level where the S-CORE SW-p
    :safety: ASIL_B
    :status: valid
 
-   If the system using the SW-platform has safety goals, the system integrator shall perform safety anomaly reporting taking into account also the reporting of all the components he integrates.
+   If the system using the SW-platform has safety goals, the system integrator shall perform safety anomaly reporting taking into account also the reporting of all the components they integrate.
+
+   Note: This includes all the modules of the S-CORE SW platform used by the system integrator.
+   The relevant safety critical bugs or safety anomalies are published by S-CORE as defined in the :need:`doc__platform_problem_resolution_plan`.
 
 
 Assumptions on Applications
