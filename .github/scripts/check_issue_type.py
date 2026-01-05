@@ -128,7 +128,7 @@ def main():
 
                 if type_value == 'Bug':
                     found_bug_issue = True
-                elif type_value == 'Feature':
+                elif type_value == 'Feature Request':
                     found_feature_issue = True
                 elif type_value == 'Task':
                     found_task_issue = True
@@ -143,7 +143,7 @@ def main():
         except Exception as e:
             set_failed(f"An unexpected error occurred for issue #{issue_number}: {e}")
 
-    set_output('found_bug_issue', str(found_bug_issue).lower())
+    set_output('found_issue', str(found_bug_issue or found_feature_issue).lower())
     set_output('found_feature_issue', str(found_feature_issue).lower())
     set_output('found_task_issue', str(found_task_issue).lower())
     set_output('other_issue_types', json.dumps(other_issue_types))

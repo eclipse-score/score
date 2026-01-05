@@ -18,4 +18,4 @@
 
 closes [ISSUE-NUMBER] (bugfix ticket)
 
-<!-- PR_TEMPLATE: bug-fix.md -->
+<!-- PR_TEMPLATE-->

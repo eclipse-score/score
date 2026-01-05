@@ -33,7 +33,7 @@ jobs:
         run: |
           PR_BODY="${{ github.event.pull_request.body }}"
           # Check if the PR body contains the unique identifier from your bug-fix.md template
-          if [[ "$PR_BODY" == *"<!-- PR_TEMPLATE: bug-fix.md -->"* ]]; then
+          if [[ "$PR_BODY" == *"<!-- PR_TEMPLATE-->"* ]]; then
             echo "PR uses bug-fix.md template. Proceeding with workflow."
             echo "template_match=true" >> $GITHUB_OUTPUT
           else
@@ -72,8 +72,8 @@ jobs:
           GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
           GITHUB_REPOSITORY: ${{ github.repository }}
 
-      - name: Fail if no Bug issue found for bug-fix PR
-        if: steps.check_template.outputs.template_match == 'true' && steps.issue_type_check.outputs.found_bug_issue == 'false'
+      - name: Fail if no Bug or Feature Request issue found for PR
+        if: steps.check_template.outputs.template_match == 'true' && steps.issue_type_check.outputs.found_issue == 'false'
         run: |
-          echo "::error::This PR uses the bug-fix template, but no linked issue of type 'Bug' was found."
+          echo "::error::This PR uses the improvement or bug-fix template, but no linked issue of type 'Bug' or "Feature Request" was found."
           exit 1 # This will cause the workflow to fail
