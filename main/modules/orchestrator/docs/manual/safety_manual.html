@@ -581,7 +581,7 @@
                   
   <section id="safety-manual">
 <h1>Safety Manual<a class="headerlink" href="#safety-manual" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-47946133">
+<div class="need_container docutils container" id="SNCB-e69ca604">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__orchestrator_safety_manual">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -728,16 +728,24 @@
 <td class="needs_id"><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__bug_interface">aou_req__platform__bug_interface</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>Check for nullptr on Allocate()</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>Check Capacity</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../../baselibs/containers/docs/requirements/index.html#aou_req__containers__capacity_management">aou_req__containers__capacity_management</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>Check for nullptr on Allocate()</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../communication/docs/requirements/aou_req.html#aou_req__communication__14">aou_req__communication__14</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>Checking for possible message overflow</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>Checking for possible message overflow</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../communication/docs/requirements/aou_req.html#aou_req__communication__8">aou_req__communication__8</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>Config on a safe filesystem</p></td>
+<tr class="need row-even"><td class="needs_title"><p>Config on a safe filesystem</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../communication/docs/requirements/aou_req.html#aou_req__communication__10">aou_req__communication__10</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>Container State Verification</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../../baselibs/containers/docs/requirements/index.html#aou_req__containers__state_verification">aou_req__containers__state_verification</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
 <tr class="need row-even"><td class="needs_title"><p>Correctly configured ASIL Level</p></td>
@@ -758,6 +766,14 @@
 </tr>
 <tr class="need row-even"><td class="needs_title"><p>Different user for ASIL and QM processes</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../communication/docs/requirements/aou_req.html#aou_req__communication__9">aou_req__communication__9</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>Element Lifetime and Ownership</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../../baselibs/containers/docs/requirements/index.html#aou_req__containers__element_lifetime">aou_req__containers__element_lifetime</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>Element Type Requirements</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../../baselibs/containers/docs/requirements/index.html#aou_req__containers__ele_type_requirements">aou_req__containers__ele_type_requirements</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
 <tr class="need row-odd"><td class="needs_title"><p>Enum Class Type Safety</p></td>
@@ -796,24 +812,32 @@
 <td class="needs_id"><p><a class="reference internal" href="../../../feo/feo/docs/requirements/aou_req.html#aou_req__component_feo__anything">aou_req__component_feo__anything</a></p></td>
 <td class="needs_status"><p>invalid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>Integral Type Constraints</p></td>
+<tr class="need row-even"><td class="needs_title"><p>Index Bounds Checking</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../../baselibs/containers/docs/requirements/index.html#aou_req__containers__bounds_checking">aou_req__containers__bounds_checking</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>Integral Type Constraints</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../baselibs/bitmanipulation/docs/requirements/index.html#aou_req__bitmanipulation__type_constraints">aou_req__bitmanipulation__type_constraints</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>integration assistance</p></td>
+<tr class="need row-even"><td class="needs_title"><p>integration assistance</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__integration_assistance">aou_req__platform__integration_assistance</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>integration levels</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>integration levels</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__levels">aou_req__platform__levels</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>integration manual</p></td>
+<tr class="need row-even"><td class="needs_title"><p>integration manual</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__os_integration_manual">aou_req__platform__os_integration_manual</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>Integrator safety anomaly reporting</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>Integrator safety anomaly reporting</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__integration_safety_anomaly">aou_req__platform__integration_safety_anomaly</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>Iterator Validity</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../../baselibs/containers/docs/requirements/index.html#aou_req__containers__iterator_validity">aou_req__containers__iterator_validity</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
 <tr class="need row-odd"><td class="needs_title"><p>JSON data integrity</p></td>
@@ -828,148 +852,156 @@
 <td class="needs_id"><p><a class="reference internal" href="../../../communication/docs/requirements/aou_req.html#aou_req__communication__26">aou_req__communication__26</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>Monotonic Semi-Dynamic Memory Allocation</p></td>
+<tr class="need row-even"><td class="needs_title"><p>Memory Resource Management</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../../baselibs/containers/docs/requirements/index.html#aou_req__containers__memory_management">aou_req__containers__memory_management</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>Monotonic Semi-Dynamic Memory Allocation</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../communication/docs/requirements/aou_req.html#aou_req__communication__1">aou_req__communication__1</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>Next Title</p></td>
+<tr class="need row-even"><td class="needs_title"><p>Next Title</p></td>
 <td class="needs_id external_link"><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/folder_templates/modules/module_name/component_name/docs/requirements/index.html#aou_req__component_name__next_title">aou_req__component_name__next_title</a></p></td>
 <td class="needs_status"><p>invalid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>No APIs from Implementation Namespace</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>No APIs from Implementation Namespace</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../communication/docs/requirements/aou_req.html#aou_req__communication__6">aou_req__communication__6</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>No Copy-Send() while holding AllocateePtr.</p></td>
+<tr class="need row-even"><td class="needs_title"><p>No Copy-Send() while holding AllocateePtr.</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../communication/docs/requirements/aou_req.html#aou_req__communication__16">aou_req__communication__16</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>No guarantee in availability of services</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>No guarantee in availability of services</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../communication/docs/requirements/aou_req.html#aou_req__communication__12">aou_req__communication__12</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>No guarantee on execution time</p></td>
+<tr class="need row-even"><td class="needs_title"><p>No guarantee on execution time</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../communication/docs/requirements/aou_req.html#aou_req__communication__29">aou_req__communication__29</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>No guarantees for notifications</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>No guarantees for notifications</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../communication/docs/requirements/aou_req.html#aou_req__communication__7">aou_req__communication__7</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>No mixed ASIL</p></td>
+<tr class="need row-even"><td class="needs_title"><p>No mixed ASIL</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__no_mixed_asil">aou_req__platform__no_mixed_asil</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>No notification on termination of producer</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>No notification on termination of producer</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../communication/docs/requirements/aou_req.html#aou_req__communication__13">aou_req__communication__13</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>No shared memory allocation in namespace lola</p></td>
+<tr class="need row-even"><td class="needs_title"><p>No shared memory allocation in namespace lola</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../communication/docs/requirements/aou_req.html#aou_req__communication__25">aou_req__communication__25</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>No Side Effects on Concurrent Access</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>No Side Effects on Concurrent Access</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../baselibs/bitmanipulation/docs/requirements/index.html#aou_req__bitmanipulation__concurrent_access">aou_req__bitmanipulation__concurrent_access</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>No static context support</p></td>
+<tr class="need row-even"><td class="needs_title"><p>No static context support</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../communication/docs/requirements/aou_req.html#aou_req__communication__11">aou_req__communication__11</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>Non-Terminating callbacks</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>Non-Terminating callbacks</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../communication/docs/requirements/aou_req.html#aou_req__communication__20">aou_req__communication__20</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>None reentrant methods per event instance</p></td>
+<tr class="need row-even"><td class="needs_title"><p>None reentrant methods per event instance</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../communication/docs/requirements/aou_req.html#aou_req__communication__17">aou_req__communication__17</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>on_target_crates</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>on_target_crates</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../feo/docs/manual/safety_manual.html#aou_req__feo__on_target_crates">aou_req__feo__on_target_crates</a></p></td>
 <td class="needs_status"><p>invalid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>One producer only one AllocateePtr</p></td>
+<tr class="need row-even"><td class="needs_title"><p>One producer only one AllocateePtr</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../communication/docs/requirements/aou_req.html#aou_req__communication__15">aou_req__communication__15</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>Only LoLa supported types</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>Only LoLa supported types</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../communication/docs/requirements/aou_req.html#aou_req__communication__5">aou_req__communication__5</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>Process Isolation</p></td>
+<tr class="need row-even"><td class="needs_title"><p>Process Isolation</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__process_isolation">aou_req__platform__process_isolation</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>Program Flow Monitoring</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>Program Flow Monitoring</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__flow_monitoring">aou_req__platform__flow_monitoring</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>Quality of data is dependent on producer</p></td>
+<tr class="need row-even"><td class="needs_title"><p>Quality of data is dependent on producer</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../communication/docs/requirements/aou_req.html#aou_req__communication__22">aou_req__communication__22</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>Resource Lifetime</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>Resource Lifetime</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../baselibs/result/docs/requirements/index.html#aou_req__result__resource_lifetime">aou_req__result__resource_lifetime</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>Result Value Handling</p></td>
+<tr class="need row-even"><td class="needs_title"><p>Result Value Handling</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../baselibs/result/docs/requirements/index.html#aou_req__result__value_handling">aou_req__result__value_handling</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>rust_core_lib</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>rust_core_lib</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../feo/docs/manual/safety_manual.html#aou_req__feo__rust_core_lib">aou_req__feo__rust_core_lib</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>rust_std_lib_modules</p></td>
+<tr class="need row-even"><td class="needs_title"><p>rust_std_lib_modules</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../feo/docs/manual/safety_manual.html#aou_req__feo__rust_std_lib_modules">aou_req__feo__rust_std_lib_modules</a></p></td>
 <td class="needs_status"><p>invalid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>Safe HW platform</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>Safe HW platform</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__hardware_safety">aou_req__platform__hardware_safety</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>safety anomaly reporting</p></td>
+<tr class="need row-even"><td class="needs_title"><p>safety anomaly reporting</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__safety_anomaly">aou_req__platform__safety_anomaly</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>safety AoU</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>safety AoU</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__safety_aou">aou_req__platform__safety_aou</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>safety functions</p></td>
+<tr class="need row-even"><td class="needs_title"><p>safety functions</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__safety_functions">aou_req__platform__safety_functions</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>safety integration</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>safety integration</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__safety_integration">aou_req__platform__safety_integration</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>safety matching</p></td>
+<tr class="need row-even"><td class="needs_title"><p>safety matching</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__safety_matching">aou_req__platform__safety_matching</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>Same compiler settings for provider and consumer side</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>Same compiler settings for provider and consumer side</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../communication/docs/requirements/aou_req.html#aou_req__communication__31">aou_req__communication__31</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>Skeleton alive while its AllocateePtr being used</p></td>
+<tr class="need row-even"><td class="needs_title"><p>Skeleton alive while its AllocateePtr being used</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../communication/docs/requirements/aou_req.html#aou_req__communication__18">aou_req__communication__18</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>Some Other Title</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>Some Other Title</p></td>
 <td class="needs_id external_link"><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/folder_templates/features/feature_name/requirements/index.html#aou_req__feature_name__some_other_title">aou_req__feature_name__some_other_title</a></p></td>
 <td class="needs_status"><p>invalid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>SW-platform integration bug reporting</p></td>
+<tr class="need row-even"><td class="needs_title"><p>SW-platform integration bug reporting</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__bug_report">aou_req__platform__bug_report</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>SW-platform testing</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>SW-platform testing</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__testing">aou_req__platform__testing</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>Thread Safety</p></td>
+<tr class="need row-even"><td class="needs_title"><p>Thread Safety</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../../baselibs/result/docs/requirements/index.html#aou_req__result__thread_safety">aou_req__result__thread_safety</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>Thread Safety</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../../baselibs/containers/docs/requirements/index.html#aou_req__containers__thread_safety">aou_req__containers__thread_safety</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
 <tr class="need row-even"><td class="needs_title"><p>unsupported data-types</p></td>
