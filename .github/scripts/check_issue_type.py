@@ -27,6 +27,13 @@ def set_failed(message):
     print(f"::error::{message}")
     sys.exit(1)
 
+def set_output(name, value):
+    print(f"::set-output name={name}::{value}")
+
+def set_failed(message):
+    print(f"::error::{message}")
+    sys.exit(1)
+
 def main():
     linked_issue_numbers_str = os.environ.get('LINKED_ISSUES')
     github_token = os.environ.get('GITHUB_TOKEN')
@@ -36,6 +43,9 @@ def main():
     if not github_token:
         set_failed("GITHUB_TOKEN is not set. Ensure it's passed as an environment variable.")
 
+    # Initialize linked_issue_numbers as an empty list
+    linked_issue_numbers = []
+
     if not linked_issue_numbers_str:
         print("No issues linked in the PR description. Skipping type check.")
         set_output('found_bug_issue', 'false')
@@ -44,10 +54,22 @@ def main():
         set_output('other_issue_types', '[]')
         return
 
+    # --- UPDATED PARSING LOGIC FOR LINKED_ISSUES ---
     try:
-        linked_issue_numbers = json.loads(linked_issue_numbers_str)
+        parsed_data = json.loads(linked_issue_numbers_str)
+        if isinstance(parsed_data, int):
+            # If json.loads returns a single integer, wrap it in a list
+            linked_issue_numbers = [parsed_data]
+        elif isinstance(parsed_data, list):
+            # If json.loads returns a list, use it directly
+            linked_issue_numbers = parsed_data
+        else:
+            # Handle any other unexpected types from json.loads
+            set_failed(f"Unexpected format for LINKED_ISSUES: {linked_issue_numbers_str}. Expected a JSON array or single number.")
     except json.JSONDecodeError:
-        set_failed(f"Failed to parse LINKED_ISSUES: {linked_issue_numbers_str}. Ensure it's valid JSON.")
+        # This block would catch if the string was not valid JSON at all (e.g., "abc")
+        set_failed(f"Failed to parse LINKED_ISSUES as JSON: {linked_issue_numbers_str}.")
+    # --- END UPDATED PARSING LOGIC ---
 
     print(f"Linked issue numbers: {linked_issue_numbers}")
 
@@ -122,6 +144,11 @@ def main():
             set_failed(f"An unexpected error occurred for issue #{issue_number}: {e}")
 
     set_output('found_bug_issue', str(found_bug_issue).lower())
+    set_output('found_feature_issue', str(found_feature_issue).lower())
+    set_output('found_task_issue', str(found_task_issue).lower())
+    set_output('other_issue_types', json.dumps(other_issue_types))
+
+    # The workflow YAML will now handle the failure based on outputs.
 
 if __name__ == "__main__":
     main()
