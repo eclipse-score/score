@@ -52,7 +52,7 @@ jobs:
           python-version: '3.12'
       - name: Install dependencies
         if: steps.check_template.outputs.template_match == 'true'
-        run: pip install requests
+        run: pip install requests python-dotenv
 
       - name: Get issues
         if: steps.check_template.outputs.template_match == 'true'
