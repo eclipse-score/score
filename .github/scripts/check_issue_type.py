@@ -54,22 +54,18 @@ def main():
         set_output('other_issue_types', '[]')
         return
 
-    # --- UPDATED PARSING LOGIC FOR LINKED_ISSUES ---
+
     try:
         parsed_data = json.loads(linked_issue_numbers_str)
         if isinstance(parsed_data, int):
-            # If json.loads returns a single integer, wrap it in a list
             linked_issue_numbers = [parsed_data]
         elif isinstance(parsed_data, list):
-            # If json.loads returns a list, use it directly
             linked_issue_numbers = parsed_data
         else:
-            # Handle any other unexpected types from json.loads
             set_failed(f"Unexpected format for LINKED_ISSUES: {linked_issue_numbers_str}. Expected a JSON array or single number.")
     except json.JSONDecodeError:
-        # This block would catch if the string was not valid JSON at all (e.g., "abc")
         set_failed(f"Failed to parse LINKED_ISSUES as JSON: {linked_issue_numbers_str}.")
-    # --- END UPDATED PARSING LOGIC ---
+
 
     print(f"Linked issue numbers: {linked_issue_numbers}")
 
@@ -148,7 +144,6 @@ def main():
     set_output('found_task_issue', str(found_task_issue).lower())
     set_output('other_issue_types', json.dumps(other_issue_types))
 
-    # The workflow YAML will now handle the failure based on outputs.
 
 if __name__ == "__main__":
     main()
