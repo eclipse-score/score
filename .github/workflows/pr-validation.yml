@@ -11,14 +11,15 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 
-name: Pr Validation check
+name: Pr Validation check for bugs
 on:
   pull_request:
     types: [edited, synchronize, opened, reopened]
 
 
 jobs:
-  verify_linked_issue:
+
+  verify_linked_bug_issue:
     runs-on: ubuntu-latest
     name: Ensure Pull Request has a linked issue.
     permissions:
@@ -27,18 +28,52 @@ jobs:
       pull-requests: write
       issues: write # Allow label creation
     steps:
+      - name: Check PR Template
+        id: check_template
+        run: |
+          PR_BODY="${{ github.event.pull_request.body }}"
+          # Check if the PR body contains the unique identifier from your bug-fix.md template
+          if [[ "$PR_BODY" == *"<!-- PR_TEMPLATE: bug-fix.md -->"* ]]; then
+            echo "PR uses bug-fix.md template. Proceeding with workflow."
+            echo "template_match=true" >> $GITHUB_OUTPUT
+          else
+            echo "PR does NOT use bug-fix.md template. Skipping subsequent steps."
+            echo "template_match=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Checkout code
+        if: steps.check_template.outputs.template_match == 'true'
+        uses: actions/checkout@v4.2.2
+
+      - name: Set up Python
+        if: steps.check_template.outputs.template_match == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        if: steps.check_template.outputs.template_match == 'true'
+        run: pip install requests
+
       - name: Get issues
+        if: steps.check_template.outputs.template_match == 'true'
         id: get-issues
         uses: mondeja/pr-linked-issues-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Print has linked issues
-        id: has-linked-issues
-        if: join(steps.get-issues.outputs.issues) != ''
-        run: echo "Has linked issues"
-      - name: Print has not linked issues
-        if: steps.has-linked-issues.conclusion == 'skipped'
+
+      - name: Check type of each linked issue via GraphQL (Python)
+        if: steps.check_template.outputs.template_match == 'true'
+        id: issue_type_check
+        run: python ./.github/scripts/check_issue_type.py
+        env:
+          LINKED_ISSUES: ${{ steps.get-issues.outputs.issues }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # These are needed by the Python script to construct the GraphQL query variables
+          GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+
+      - name: Fail if no Bug issue found for bug-fix PR
+        if: steps.check_template.outputs.template_match == 'true' && steps.issue_type_check.outputs.found_bug_issue == 'false'
         run: |
-          echo "Error: No linked issues found for this Pull Request."
-          echo "Please ensure an issue is properly linked (e.g., using 'Fixes #123' in the description or via the GitHub UI)."
-          exit 1
+          echo "::error::This PR uses the bug-fix template, but no linked issue of type 'Bug' was found."
+          exit 1 # This will cause the workflow to fail

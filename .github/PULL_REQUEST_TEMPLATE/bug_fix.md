@@ -17,3 +17,5 @@
 > ticket yet, create one via [this issue template](../ISSUE_TEMPLATE/new?template=bug_fix.md).
 
 closes [ISSUE-NUMBER] (bugfix ticket)
+
+<!-- PR_TEMPLATE: bug-fix.md -->
