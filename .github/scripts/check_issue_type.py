@@ -122,12 +122,6 @@ def main():
             set_failed(f"An unexpected error occurred for issue #{issue_number}: {e}")
 
     set_output('found_bug_issue', str(found_bug_issue).lower())
-    set_output('found_feature_issue', str(found_feature_issue).lower())
-    set_output('found_task_issue', str(found_task_issue).lower())
-    set_output('other_issue_types', json.dumps(other_issue_types))
-
-    if linked_issue_numbers and not (found_bug_issue or found_feature_issue or found_task_issue):
-        set_failed(f"No linked issue found with a recognized built-in type of 'Bug', 'Feature', or 'Task'.")
 
 if __name__ == "__main__":
     main()
