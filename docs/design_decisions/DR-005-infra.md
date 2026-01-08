@@ -114,7 +114,7 @@ The solution is based on four core principles:
 3. **Two integration modes: tracking (continuous verification) and pinned (release/stabilization)**
 4. **Release stabilization via immutable tags (and an optional manifest release branch)**
 
-### 1. Module Versioning (SemVer)
+### 4.1 Module Versioning (SemVer)
 
 - Each module repository publishes releases following Semantic Versioning:
   - **PATCH**: backward-compatible bug fixes
@@ -131,7 +131,7 @@ The solution is based on four core principles:
 > **Explicitly out of scope:**
 > Module-internal development workflows (e.g. trunk-based development, feature branches, rebasing strategies) are intentionally not prescribed by this ADR.
 
-### 2. Manifest Repository
+### 4.2 Manifest Repository
 
 A dedicated **manifest (integration) repository** defines which exact module states form a product snapshot.
 
@@ -148,11 +148,11 @@ Responsibilities of the manifest repository:
 
 Any change to module references in the manifest repository is made via a pull request and reviewed as an integration change.
 
-### 3. Integration Modes
+### 4.3 Integration Modes
 
 The manifest repository operates in two distinct modes.
 
-#### 3.1 Tracking Mode (Continuous Verification)
+#### 4.3.1 Tracking Mode (Continuous Verification)
 
 - Used on manifest `main`.
 - The manifest may track module branches or “next release” branches by automatically updating pinned commit hashes.
@@ -162,7 +162,7 @@ The manifest repository operates in two distinct modes.
   - detect integration issues early.
 - Tracking references are **not considered release-ready** and are not used for formal release stages.
 
-#### 3.2 Pinned Mode (Release and Stabilization)
+#### 4.3.2 Pinned Mode (Release and Stabilization)
 
 - Used for release preparation and formal stages.
 - The manifest pins **immutable identifiers only**:
@@ -171,7 +171,7 @@ The manifest repository operates in two distinct modes.
 - Pinned mode guarantees full reproducibility and auditability.
 - All release stages and final releases must use pinned mode.
 
-### 4. Product Release Identification and Structure
+### 4.4 Product Release Identification and Structure
 
 Product releases are identified using **train-style tags**:
 
@@ -182,7 +182,7 @@ Product releases are identified using **train-style tags**:
 
 Product versions reuse SemVer-compatible notation for clarity and tooling compatibility, but they represent **integration snapshots**, not API stability guarantees for individual modules.
 
-### 5. Release Stabilization Line
+### 4.5 Release Stabilization Line
 
 To allow iteration without disturbing ongoing integration:
 
@@ -196,7 +196,7 @@ This allows:
 - continuous tracking on manifest `main`,
 - controlled stabilization for a given product release.
 
-### 6. Release Stages
+### 4.6 Release Stages
 
 #### Alpha
 - Goal: early system-level integration.
@@ -218,14 +218,14 @@ This allows:
 - Tag `vX.Y.0` marks the final release.
 - Optional product patch releases (`vX.Y.1`, `vX.Y.2`, …) follow the same rules.
 
-### 7. Backports
+### 4.7 Backports
 
 - Fixes are applied first on the appropriate module code line.
 - Compatible PATCH releases are created if required.
 - The manifest is updated to reference the new immutable version or commit.
 - A new stage or patch tag is created.
 
-### 8. Breaking Changes During Stabilization
+### 4.8 Breaking Changes During Stabilization
 
 - Breaking changes during stabilization are strongly discouraged.
 - If required (e.g. priority or organizational decisions), they must:
@@ -233,7 +233,7 @@ This allows:
   - include a documented mitigation strategy (compatibility layer, coordinated upgrades, scope reduction, or deferral),
   - and be recorded in the manifest repository.
 
-### 9. Module Release-Line Strategies (Non-Normative Examples)
+### 4.9 Module Release-Line Strategies (Non-Normative Examples)
 
 Modules may choose any internal strategy that preserves SemVer guarantees. Common compliant patterns include:
 
@@ -246,7 +246,7 @@ Modules may choose any internal strategy that preserves SemVer guarantees. Commo
 
 The choice is module-local and does not affect the integration model.
 
-### 10. Ownership and Governance
+### 4.10 Ownership and Governance
 
 - The manifest repository is owned by the infrastructure/integration team, as defined in DR-002.
 - As release stages progress (beta, rc), changes to the manifest require increasing scrutiny and justification.
