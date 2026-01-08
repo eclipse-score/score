@@ -116,10 +116,7 @@ The solution is based on four core principles:
 
 ### 4.1 Module Versioning (SemVer)
 
-- Each module repository publishes releases following Semantic Versioning:
-  - **PATCH**: backward-compatible bug fixes
-  - **MINOR**: backward-compatible feature additions
-  - **MAJOR**: backward-incompatible changes
+- Each module repository publishes releases following [Semantic Versioning 2.0.0](https://semver.org/).
 - Version numbers are **global, linear, and unique per module**.
 - Once a version is released, it is immutable and must never be reused.
 - There is no automatic or periodic major version bump tied to product releases.
