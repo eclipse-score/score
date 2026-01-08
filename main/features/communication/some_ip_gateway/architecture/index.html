@@ -592,7 +592,8 @@
 data or to subscribe to data. As such it will need to know and understand the data types that are used in
 the IPC network.</p>
 <p>It also is a participant in the SOME/IP network and provides services for the service oriented communication.
-This shall be possible by including SOME/IP stacks that are AUTOSAR compliant.</p>
+This shall be possible by including the <a class="reference external" href="https://github.com/COVESA/vsomeip">vsomeip</a> SOME/IP stack for reference,
+which can be replaced by other implementations, i.e. proprietary commercial stacks.</p>
 <p>There need to be some components between the two communication networks as data types and their according representations and
 transmission cadence can be different. Translation of data types could be handled in some translation module
 that might be independent of the rest of the gateway. But buffering / queuing of messages, events, signals
@@ -606,7 +607,7 @@ should be mostly freely programmable by integrators using the SOME/IP gateway.</
 </section>
 <section id="structural-view">
 <h2>Structural View<a class="headerlink" href="#structural-view" title="Link to this heading">#</a></h2>
-<p>SOME/IP stacks as supplied by AUTOSAR vendors mostly are available as QM only.
+<p>SOME/IP stacks as supplied by different vendors mostly are available as QM only.
 In the case that SOME/IP implementations are not developed under ASIL-B constraints, adequate measures need to be taken to
 separate this QM component from the otherwise ASIL-B compliant components. This may be achieved through separate processes,
 which again will require dedicated inter-process-communication between the SOME/IP-stack and the rest of the gateway.
@@ -704,7 +705,7 @@ This requires further discussion during implementation phase.</p>
 <p class="admonition-title">Note</p>
 <p>The proposed error enumeration is an abstraction. Deriving detailed errors
 based on the E2E metadata is task of the client.
-For reference, this is the error enumeration of the AUTOSAR specification (R24-11):</p>
+For reference, this is the typical error enumeration:</p>
 <ul class="simple">
 <li><p>OK</p></li>
 <li><p>ERROR</p></li>
@@ -719,7 +720,7 @@ For reference, this is the error enumeration of the AUTOSAR specification (R24-1
 </section>
 <section id="e2e-state-machine-considerations">
 <h3>E2E State Machine Considerations<a class="headerlink" href="#e2e-state-machine-considerations" title="Link to this heading">#</a></h3>
-<p>The E2E (End-to-End) state machine as defined within AUTOSAR E2E protocol provides a summarized result
+<p>The E2E (End-to-End) state machine provides a summarized result
 about the overall health and state of a communication channel. Unlike individual E2E Profile Check() functions,
 which assess data validity for a single communication cycle, the state machine aggregates results from multiple Check()
 function invocations over a period. This allows it to determine a more holistic and debounced status of the communication.</p>
