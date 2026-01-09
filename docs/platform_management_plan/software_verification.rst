@@ -103,6 +103,20 @@ The following types of integrations are applicable:
 #. **Changes** get integrated based on the :need:`wf__change_create_cr` and will follow
    the :need:`doc__pull_request_guideline` as any other artifact.
 
+The test methods and techniques shall be selected based on identified vulnerabilities and safety-related failure modes
+of the software element under test. This shall ensure proper testing from unit level to feature integration level.
+Specific recommendations for each test level are provided in the following sections of this verification plan.
+
+The following examples serve as illustration and inspiration for test selection:
+Resource Usage Evaluation is selected when a vulnerability is identified in the software element or when data
+corruption may occur. Interface Testing is applied when an external API is part of a potential attack path or
+when interface problems could cause safety failures. Boundary Value Analysis is used when buffer overflow is possible
+or when incorrect input values could compromise safety.
+
+These examples shall illustrate how test selection is driven by specific risks to ensure that threats and hazards
+are systematically addressed during verification. This list is not complete, and additional test may be selected
+based on the specific risks identified for each software element.
+
 Levels of integration and verification
 --------------------------------------
 
@@ -307,6 +321,14 @@ to be reached with every contribution.
      - Relative amount of failed tests
      - 0%
      - 0%
+   * - 8
+     - Open rule violations for static code analysis
+     - no major violation based on tool rating
+     - 0
+   * - 9
+     - Compiler warnings
+     - 0
+     - 0
 
 Further quality goals are defined in section :doc:`quality_management`.
 
