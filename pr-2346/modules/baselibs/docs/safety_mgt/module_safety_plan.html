@@ -527,7 +527,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../logging/index.html">Logging Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../orchestrator/index.html">Orchestrator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../os/index.html">OS Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../persistency/index.html">Persistency KVS Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tracing/index.html">Tracing Module</a></li>
 </ul>
 </div>
@@ -600,7 +599,7 @@
                   
   <section id="module-safety-plan">
 <h1>Module Safety Plan<a class="headerlink" href="#module-safety-plan" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-1dc42791">
+<div class="need_container docutils container" id="SNCB-51a975cb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__baselibs_safety_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1138,53 +1137,61 @@ A summary of the status is also documented in the project’s documentation mana
 </tr>
 </thead>
 <tbody>
-<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../result/docs/requirements/index.html#comp_req__result__deterministic_behavior">comp_req__result__deterministic_behavior</a></p></td>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../bitmanipulation/docs/requirements/index.html#comp_req__bitmanipulation__bounds_safety">comp_req__bitmanipulation__bounds_safety</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>baselibs</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../result/docs/requirements/index.html#comp_req__result__deterministic_behavior">comp_req__result__deterministic_behavior</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p>inspected<em>; </em>baselibs<em>; </em>result_library</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../containers/docs/requirements/index.html#comp_req__containers__deterministic_behavior">comp_req__containers__deterministic_behavior</a></p></td>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../containers/docs/requirements/index.html#comp_req__containers__deterministic_behavior">comp_req__containers__deterministic_behavior</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>baselibs<em>; </em>containers</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../filesystem/docs/requirements/index.html#comp_req__filesystem__directory_iterators">comp_req__filesystem__directory_iterators</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p>baselibs</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../filesystem/docs/requirements/index.html#comp_req__filesystem__directory_iterators">comp_req__filesystem__directory_iterators</a></p></td>
-<td class="needs_status"><p>valid</p></td>
-<td class="needs_tags"><p>baselibs</p></td>
-</tr>
-<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../result/docs/requirements/index.html#comp_req__result__domain_error_information">comp_req__result__domain_error_information</a></p></td>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../result/docs/requirements/index.html#comp_req__result__domain_error_information">comp_req__result__domain_error_information</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p>inspected<em>; </em>baselibs<em>; </em>result_library</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../containers/docs/requirements/index.html#comp_req__containers__dynamic_array">comp_req__containers__dynamic_array</a></p></td>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../containers/docs/requirements/index.html#comp_req__containers__dynamic_array">comp_req__containers__dynamic_array</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>baselibs<em>; </em>containers</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../json/docs/requirements/index.html#comp_req__json__type_compatibility">comp_req__json__type_compatibility</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p>baselibs</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../json/docs/requirements/index.html#comp_req__json__type_compatibility">comp_req__json__type_compatibility</a></p></td>
-<td class="needs_status"><p>valid</p></td>
-<td class="needs_tags"><p>baselibs</p></td>
-</tr>
-<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../result/docs/requirements/index.html#comp_req__result__exception_free_operation">comp_req__result__exception_free_operation</a></p></td>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../result/docs/requirements/index.html#comp_req__result__exception_free_operation">comp_req__result__exception_free_operation</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p>inspected<em>; </em>baselibs<em>; </em>result_library</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../filesystem/docs/requirements/index.html#comp_req__filesystem__file_io">comp_req__filesystem__file_io</a></p></td>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../filesystem/docs/requirements/index.html#comp_req__filesystem__file_io">comp_req__filesystem__file_io</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p>baselibs</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../filesystem/docs/requirements/index.html#comp_req__filesystem__file_utils">comp_req__filesystem__file_utils</a></p></td>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../filesystem/docs/requirements/index.html#comp_req__filesystem__file_utils">comp_req__filesystem__file_utils</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p>baselibs</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../json/docs/requirements/index.html#comp_req__json__full_testability">comp_req__json__full_testability</a></p></td>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../json/docs/requirements/index.html#comp_req__json__full_testability">comp_req__json__full_testability</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p>baselibs</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../filesystem/docs/requirements/index.html#comp_req__filesystem__full_testability">comp_req__filesystem__full_testability</a></p></td>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../filesystem/docs/requirements/index.html#comp_req__filesystem__full_testability">comp_req__filesystem__full_testability</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>baselibs</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../bitmanipulation/docs/requirements/index.html#comp_req__bitmanipulation__header_only">comp_req__bitmanipulation__header_only</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p>baselibs</p></td>
 </tr>
 <tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../containers/docs/requirements/index.html#comp_req__containers__intrusive_list">comp_req__containers__intrusive_list</a></p></td>
 <td class="needs_status"><p>valid</p></td>
-<td class="needs_tags"><p>baselibs</p></td>
+<td class="needs_tags"><p>baselibs<em>; </em>containers</p></td>
 </tr>
 <tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../json/docs/requirements/index.html#comp_req__json__deserialization">comp_req__json__deserialization</a></p></td>
 <td class="needs_status"><p>valid</p></td>
@@ -1204,7 +1211,7 @@ A summary of the status is also documented in the project’s documentation mana
 </tr>
 <tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../containers/docs/requirements/index.html#comp_req__containers__non_relocatable_vector">comp_req__containers__non_relocatable_vector</a></p></td>
 <td class="needs_status"><p>valid</p></td>
-<td class="needs_tags"><p>baselibs</p></td>
+<td class="needs_tags"><p>baselibs<em>; </em>containers</p></td>
 </tr>
 <tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../filesystem/docs/requirements/index.html#comp_req__filesystem__path_utilities">comp_req__filesystem__path_utilities</a></p></td>
 <td class="needs_status"><p>valid</p></td>
@@ -1230,13 +1237,21 @@ A summary of the status is also documented in the project’s documentation mana
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p>inspected<em>; </em>baselibs<em>; </em>result_library</p></td>
 </tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../bitmanipulation/docs/requirements/index.html#comp_req__bitmanipulation__utilities">comp_req__bitmanipulation__utilities</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>baselibs</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../bitmanipulation/docs/requirements/index.html#comp_req__bitmanipulation__bitmask_operators">comp_req__bitmanipulation__bitmask_operators</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>baselibs</p></td>
+</tr>
 <tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../json/docs/requirements/index.html#comp_req__json__lang_idioms">comp_req__json__lang_idioms</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p>baselibs</p></td>
 </tr>
 <tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../containers/docs/requirements/index.html#comp_req__containers__type_safety">comp_req__containers__type_safety</a></p></td>
 <td class="needs_status"><p>valid</p></td>
-<td class="needs_tags"><p>baselibs</p></td>
+<td class="needs_tags"><p>baselibs<em>; </em>containers</p></td>
 </tr>
 <tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../result/docs/requirements/index.html#comp_req__result__type_safety">comp_req__result__type_safety</a></p></td>
 <td class="needs_status"><p>valid</p></td>
@@ -1271,15 +1286,71 @@ A summary of the status is also documented in the project’s documentation mana
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p>baselibs</p></td>
 </tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../bitmanipulation/docs/requirements/index.html#aou_req__bitmanipulation__bit_validation">aou_req__bitmanipulation__bit_validation</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>baselibs</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../containers/docs/requirements/index.html#aou_req__containers__capacity_management">aou_req__containers__capacity_management</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>inspected<em>; </em>baselibs<em>; </em>containers</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../containers/docs/requirements/index.html#aou_req__containers__state_verification">aou_req__containers__state_verification</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>inspected<em>; </em>baselibs<em>; </em>containers</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../containers/docs/requirements/index.html#aou_req__containers__element_lifetime">aou_req__containers__element_lifetime</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>inspected<em>; </em>baselibs<em>; </em>containers</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../containers/docs/requirements/index.html#aou_req__containers__ele_type_requirements">aou_req__containers__ele_type_requirements</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>inspected<em>; </em>baselibs<em>; </em>containers</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../bitmanipulation/docs/requirements/index.html#aou_req__bitmanipulation__enum_type_safety">aou_req__bitmanipulation__enum_type_safety</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>baselibs</p></td>
+</tr>
 <tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../result/docs/requirements/index.html#aou_req__result__error_domain_implementation">aou_req__result__error_domain_implementation</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p>inspected<em>; </em>baselibs<em>; </em>result_library</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../result/docs/requirements/index.html#aou_req__result__error_reaction">aou_req__result__error_reaction</a></p></td>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../filesystem/docs/requirements/index.html#aou_req__filesystem__error_handling">aou_req__filesystem__error_handling</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>baselibs</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../result/docs/requirements/index.html#aou_req__result__error_reaction">aou_req__result__error_reaction</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p>inspected<em>; </em>baselibs<em>; </em>result_library</p></td>
 </tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../containers/docs/requirements/index.html#aou_req__containers__bounds_checking">aou_req__containers__bounds_checking</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>inspected<em>; </em>baselibs<em>; </em>containers</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../bitmanipulation/docs/requirements/index.html#aou_req__bitmanipulation__type_constraints">aou_req__bitmanipulation__type_constraints</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>baselibs</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../containers/docs/requirements/index.html#aou_req__containers__iterator_validity">aou_req__containers__iterator_validity</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>inspected<em>; </em>baselibs<em>; </em>containers</p></td>
+</tr>
 <tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../json/docs/requirements/index.html#aou_req__json__data_integrity">aou_req__json__data_integrity</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>baselibs</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../filesystem/docs/requirements/index.html#aou_req__filesystem__low_level_use_only">aou_req__filesystem__low_level_use_only</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>baselibs</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../containers/docs/requirements/index.html#aou_req__containers__memory_management">aou_req__containers__memory_management</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>inspected<em>; </em>baselibs<em>; </em>containers</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../bitmanipulation/docs/requirements/index.html#aou_req__bitmanipulation__concurrent_access">aou_req__bitmanipulation__concurrent_access</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>baselibs</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../filesystem/docs/requirements/index.html#aou_req__filesystem__performance">aou_req__filesystem__performance</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p>baselibs</p></td>
 </tr>
@@ -1291,9 +1362,25 @@ A summary of the status is also documented in the project’s documentation mana
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p>inspected<em>; </em>baselibs<em>; </em>result_library</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../result/docs/requirements/index.html#aou_req__result__thread_safety">aou_req__result__thread_safety</a></p></td>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../filesystem/docs/requirements/index.html#aou_req__filesystem__supported_path_formats">aou_req__filesystem__supported_path_formats</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>baselibs</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../result/docs/requirements/index.html#aou_req__result__thread_safety">aou_req__result__thread_safety</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p>inspected<em>; </em>baselibs<em>; </em>result_library</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../containers/docs/requirements/index.html#aou_req__containers__thread_safety">aou_req__containers__thread_safety</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>inspected<em>; </em>baselibs<em>; </em>containers</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../filesystem/docs/requirements/index.html#aou_req__filesystem__thread_safety">aou_req__filesystem__thread_safety</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>baselibs</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../bitmanipulation/docs/requirements/index.html#aou_req__bitmanipulation__valid_bit_positions">aou_req__bitmanipulation__valid_bit_positions</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>baselibs</p></td>
 </tr>
 </tbody>
 </table>
@@ -1322,7 +1409,7 @@ A summary of the status is also documented in the project’s documentation mana
 </tr>
 <tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../containers/docs/architecture/index.html#comp_arc_sta__baselibs__containers">comp_arc_sta__baselibs__containers</a></p></td>
 <td class="needs_status"><p>valid</p></td>
-<td class="needs_tags"><p>baselibs_containers<em>; </em>baselibs</p></td>
+<td class="needs_tags"><p>baselibs_containers<em>; </em>baselibs<em>; </em>containers</p></td>
 </tr>
 <tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../filesystem/docs/architecture/index.html#comp_arc_sta__baselibs__filesystem">comp_arc_sta__baselibs__filesystem</a></p></td>
 <td class="needs_status"><p>valid</p></td>

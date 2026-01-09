@@ -43,7 +43,7 @@ Steering of the project is done by two committees: *project lead circle* and *te
   * Election of Technical Leads.
   * Last instance of escalation path.
 
-  *Project lead circle* proposes and elects a *Project lead circle Assistant* and his deputy with bare majority, who is responsible for scheduling and announcing meetings, preparing and announcing agenda, writing meeting minutes and protocols. *Project lead circle* can reelect *Project lead circle Assistant* at any time. The *Project lead circle Assistant* and his deputy can resign anytime on their own will.
+  *Project lead circle* proposes and elects a *Project lead circle Assistant* and their deputy with bare majority, who is responsible for scheduling and announcing meetings, preparing and announcing agenda, writing meeting minutes and protocols. *Project lead circle* can reelect *Project lead circle Assistant* at any time. The *Project lead circle Assistant* and their deputy can resign anytime on their own will.
 
 * **Technical lead circle**
 
@@ -54,7 +54,7 @@ Steering of the project is done by two committees: *project lead circle* and *te
   * High-level project control and coordination between multiple software modules.
   * Escalation instance for software module project leads and committers.
 
-  *Technical lead circle* proposes and elects a *Technical lead circle Assistant* and his deputy with bare majority during *Technical Lead Circle meeting*, who is responsible for scheduling and announcing meetings, preparing and announcing agenda, writing meeting minutes and protocols. *Technical lead circle* can reelect *Technical lead circle Assistant* at any time. The *Technical lead circle Assistant* and his deputy can resign anytime on their own will.
+  *Technical lead circle* proposes and elects a *Technical lead circle Assistant* and their deputy with bare majority during *Technical Lead Circle meeting*, who is responsible for scheduling and announcing meetings, preparing and announcing agenda, writing meeting minutes and protocols. *Technical lead circle* can reelect *Technical lead circle Assistant* at any time. The *Technical lead circle Assistant* and their deputy can resign anytime on their own will.
 
 .. _pmp_pm_technical_committees:
 

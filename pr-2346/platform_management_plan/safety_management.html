@@ -565,7 +565,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-2602344d">
+  <div class="need_container docutils container" id="SNCB-f70311ee">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__score_platform_safety_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -688,6 +688,7 @@ but these are not intended to be completely covering the stakeholder requirement
 There will be SW integration tests of feature requirements, as required by ISO 26262 part 6-10.
 These may be reused by the users on their HW platform to cover Technical Safety Requirements towards the SW platform.
 But if these are sufficiently also covering the TSRs must be analyzed and decided by the user.</p>
+<p>Therefore and as S-CORE only delivers source code, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/standards/iso26262/iso26262.html#std_wp__iso26262__software_1052">std_wp__iso26262__software_1052</a> is tailored out.</p>
 </li>
 <li><p>Also tailored out is the SW testing on the target, as the S-CORE project can only test on reference HW
 (part of SW integration testing). So these are not relevant: <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/standards/iso26262/iso26262.html#std_wp__iso26262__software_1151">std_wp__iso26262__software_1151</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/standards/iso26262/iso26262.html#std_wp__iso26262__software_1152">std_wp__iso26262__software_1152</a></p></li>
@@ -700,7 +701,8 @@ When used, OSS components are qualified and external SEooCs are integrated in th
 <li><p>Because in the S-CORE SW platform a proven in use argument will not be applied: <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/standards/iso26262/iso26262.html#std_wp__iso26262__support_1451">std_wp__iso26262__support_1451</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/standards/iso26262/iso26262.html#std_wp__iso26262__support_1452">std_wp__iso26262__support_1452</a></p></li>
 <li><p>Because in the S-CORE SW platform interfacing of out of scope of ISO 26262 applications is not planned: <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/standards/iso26262/iso26262.html#std_wp__iso26262__support_1551">std_wp__iso26262__support_1551</a></p></li>
 <li><p>Because in the S-CORE SW platform integration of safety-related systems not developed according to ISO 26262 is not planned: <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/standards/iso26262/iso26262.html#std_wp__iso26262__support_1651">std_wp__iso26262__support_1651</a></p></li>
-<li><p>Because in the S-CORE SW platform no ASIL decomposition is planned: <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/standards/iso26262/iso26262.html#std_wp__iso26262__analysis_551">std_wp__iso26262__analysis_551</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/standards/iso26262/iso26262.html#std_wp__iso26262__analysis_552">std_wp__iso26262__analysis_552</a></p></li>
+<li><p>Because in the S-CORE SW platform no ASIL decomposition is planned: <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/standards/iso26262/iso26262.html#std_wp__iso26262__analysis_551">std_wp__iso26262__analysis_551</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/standards/iso26262/iso26262.html#std_wp__iso26262__analysis_552">std_wp__iso26262__analysis_552</a>.
+According to that also <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/standards/iso26262/iso26262.html#std_req__iso26262__analysis_641">std_req__iso26262__analysis_641</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/standards/iso26262/iso26262.html#std_req__iso26262__analysis_642">std_req__iso26262__analysis_642</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/standards/iso26262/iso26262.html#std_req__iso26262__analysis_643">std_req__iso26262__analysis_643</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/standards/iso26262/iso26262.html#std_req__iso26262__analysis_644">std_req__iso26262__analysis_644</a> are tailored out for safety analyses.</p></li>
 <li><p>Because HSI is coming from HW (and systems) engineering which are not part of S-CORE
 and the standard only asks for refinement during SW development. As the input is missing, there is nothing to refine.
 Expectations towards the HW/Environment are covered by AoUs. Additionally S-CORE only provides reference HW integration,
@@ -872,7 +874,7 @@ Generic project wide work products are defined below.</p>
 <section id="functional-safety-security-management-sw-platform-work-products">
 <span id="sw-platform-wp-list"></span><h3>Functional Safety/Security Management SW Platform Work Products<a class="headerlink" href="#functional-safety-security-management-sw-platform-work-products" title="Link to this heading">#</a></h3>
 <div class="pst-scrollable-table-container"><table class="table" id="id2">
-<caption><span class="caption-number">Table 75 </span><span class="caption-text">SW Platform work products</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 69 </span><span class="caption-text">SW Platform work products</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>work product Id</p></th>
 <th class="head"><p>Process status</p></th>
@@ -924,7 +926,7 @@ Generic project wide work products are defined below.</p>
 <tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/release_management/release_workproducts.html#wp__platform_sw_release_note">wp__platform_sw_release_note</a></p></td>
 <td><p>valid</p></td>
 <td><p><a class="reference internal" href="../score_releases/score_releases/score_v0_5_alpha.html#doc__score_v05_alpha_release_note" title="doc__score_v05_alpha_release_note"><em class="xref need">S-Core v0.5-alpha release note (doc__score_v05_alpha_release_note)</em></a></p></td>
-<td><p>draft</p></td>
+<td><p>valid</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_platform_ver_report">wp__verification_platform_ver_report</a></p></td>
 <td><p>valid</p></td>
@@ -958,7 +960,7 @@ Generic project wide work products are defined below.</p>
 <section id="functional-safety-specific-sw-platform-work-products">
 <h3>Functional Safety Specific SW Platform Work Products<a class="headerlink" href="#functional-safety-specific-sw-platform-work-products" title="Link to this heading">#</a></h3>
 <div class="pst-scrollable-table-container"><table class="table" id="id3">
-<caption><span class="caption-number">Table 76 </span><span class="caption-text">SW Platform safety work products</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 70 </span><span class="caption-text">SW Platform safety work products</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>work product Id</p></th>
 <th class="head"><p>Process status</p></th>

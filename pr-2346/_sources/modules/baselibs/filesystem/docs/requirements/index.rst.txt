@@ -98,5 +98,55 @@ Functional Requirements
 
    The Filesystem library shall provide mock and fake implementations for unit testing and validation.
 
+Assumptions of Use (AoU)
+========================
+
+.. aou_req:: Low-Level Use Only
+   :id: aou_req__filesystem__low_level_use_only
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :status: valid
+
+   Users shall use this library only when they need to manipulate files, directories, and paths at the operating system level beyond what higher-level storage abstractions provide, accepting reduced portability to other platforms.
+
+.. aou_req:: Supported Path Formats
+   :id: aou_req__filesystem__supported_path_formats
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :status: valid
+
+   Users shall not use Windows paths with this library.
+
+.. aou_req:: Error Handling
+   :id: aou_req__filesystem__error_handling
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :status: valid
+
+   Users shall handle all function return values and take appropriate action on errors.
+
+.. aou_req:: Thread Safety
+   :id: aou_req__filesystem__thread_safety
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: ASIL_B
+   :status: valid
+
+   Users shall implement appropriate synchronization mechanisms when accessing shared filesystem resources concurrently.
+
+.. aou_req:: Performance
+   :id: aou_req__filesystem__performance
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: ASIL_B
+   :status: valid
+
+   Users shall not assume any performance characteristics.
+
+   Note: Filesystem operations are subject to underlying OS and storage performance.
+
 .. needextend:: "__filesystem__" in id
    :+tags: baselibs

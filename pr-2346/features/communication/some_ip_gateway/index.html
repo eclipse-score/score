@@ -489,8 +489,9 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../ai_platform/index.html">AI Platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../analysis-infra/index.html">Analysis Infrastructure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../baselibs/index.html">Base Libraries (v0.5 alpha)</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Communication (v0.5 alpha)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../baselibs/index.html">Base Libraries (v0.5 beta)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../code_generation/index.html">Code Generation</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Communication (v0.5 beta)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../docs/architecture/index.html">Architecture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../docs/requirements/index.html">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ipc/index.html">Inter-process Communication</a></li>
@@ -509,8 +510,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../infrastructure/index.html">Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../integration/index.html">Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lifecycle/index.html">Lifecycle</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../orchestration/index.html">Orchestration (v0.5 alpha)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../persistency/index.html">Persistency (v0.5 alpha)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../orchestration/index.html">Orchestration (v0.5 beta)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../persistency/index.html">Persistency (v0.5 beta)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../security_crypto/index.html">Security &amp; Cryptography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../time/index.html">Time</a></li>
 </ul>
@@ -557,7 +558,7 @@
     <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Features</a></li>
     
     
-    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Communication (v0.5 alpha)</a></li>
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Communication (v0.5 beta)</a></li>
     
     <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">SOME/IP-Gateway</span></li>
   </ul>
@@ -578,7 +579,7 @@
                   
   <section id="some-ip-gateway">
 <span id="some-ip-gateway-feature"></span><h1>SOME/IP-Gateway<a class="headerlink" href="#some-ip-gateway" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-946f29a5">
+<div class="need_container docutils container" id="SNCB-06ef7037">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__some_ip_gateway">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -675,9 +676,8 @@ Between these two contexts developers shall be able to create signal or data map
 <p>The requirements from Communication generally apply to the SOME/IP Gateway.</p>
 <section id="some-ip-protocol-implementation">
 <h3>SOME/IP protocol implementation<a class="headerlink" href="#some-ip-protocol-implementation" title="Link to this heading">#</a></h3>
-<p>The protocol implementation shall be fully compatible and complying with the SOME/IP specification from AUTOSAR Adaptive. (<a class="reference internal" href="requirements/index.html#feat_req__some_ip_gateway__someip_protocol" title="feat_req__some_ip_gateway__someip_protocol"><em class="xref need">Compatibility with AUTOSAR ... (feat_req__some_ip_gateway__someip_protocol)</em></a>)
-Specifically the SOME/IP specification from AUTOSAR release R24-11 shall be supported by the SOME/IP Gateway. This shall guarantee that systems integrated with the SOME/IP gateway can be used in according
-automotive E/E-architectures.
+<p>For reference purpose, the gateway shall use the <a class="reference external" href="https://github.com/COVESA/vsomeip">vsomeip</a> protocol
+implementation that is compatible and complying with the SOME/IP specification from <a class="reference external" href="https://some-ip.com/">some-ip.com</a>. (<a class="reference internal" href="requirements/index.html#feat_req__some_ip_gateway__someip_protocol" title="feat_req__some_ip_gateway__someip_protocol"><em class="xref need">Compatibility with `some-ip... (feat_req__some_ip_gateway__someip_protocol)</em></a>)
 Protocol implementations shall be wrapped in an abstraction API, that stays stable and allows implementations may be exchanged, potentially even by binary only libraries.</p>
 <p>The SOME/IP Gateway shall support SOME/IP Events, Fields and Methods and shall map these accordingly into IPC.</p>
 <p>The SOME/IP Gateway shall support SOME/IP Service Discovery. Please refer to the Service Discovery page for detailed discussions on how SD shall be realized with IPC-Clients.</p>
@@ -737,7 +737,7 @@ Access Control acts on OSI Layer 5-7. It shall fulfill the following:</p>
 <p class="admonition-title">Note</p>
 <ul class="simple">
 <li><p>Checking SOME/IP-SD messages with the ACL is optional because no functional data is transported.</p></li>
-<li><p>SOME/IP-SD messages are not protected as per AUTOSAR Adaptive specification.</p></li>
+<li><p>SOME/IP-SD messages are not protected as per specification.</p></li>
 </ul>
 </div>
 <figure class="align-center" id="doc-acl-activity-diagram">
@@ -758,26 +758,22 @@ to be properly protected by E2E to maintain a safe communication via the grey SO
 <h3>End-to-End (E2E) protection with CRC and counters<a class="headerlink" href="#end-to-end-e2e-protection-with-crc-and-counters" title="Link to this heading">#</a></h3>
 <p>Applications communicating over the network may have to protect data with end-to-end protection (E2E), which may involve
 CRC-protection and checks, and message counters.</p>
-<p>There are several E2E (= End-to-End) profiles, which utilize various CRC routines as part of AUTOSAR E2E Protocol Specification, that shall be supported with the SOME/IP Gateway.</p>
+<p>There are several E2E (= End-to-End) profiles, which utilize various CRC routines as part of E2E Protocol Specification, that shall be supported with the SOME/IP Gateway.</p>
 <p>Though the implementation of the SOME/IP protocol itself is likely not going to be ASIL-B compliant and have a safety consideration of QM rather,
 E2E-checks and protection need to happen in an ASIL-B context. The gateway may perform the CRC routines as a central service.
 All communication channels (IPC) to this central service must be qualified for ASIL-B, and protected against data loss / loss of samples.</p>
 <p>SOME/IP Events, Methods, and Fields need to be supported with E2E protection.</p>
 <p>Please refer to the SOME/IP Gateway architecture for further details.</p>
-<p>References</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://www.autosar.org/fileadmin/standards/R24-11/FO/AUTOSAR_FO_PRS_E2EProtocol.pdf">AUTOSAR_FO_PRS_E2EProtocol</a></p></li>
-<li><p><a class="reference external" href="https://www.autosar.org/fileadmin/standards/R24-11/FO/AUTOSAR_FO_RS_E2E.pdf">AUTOSAR_FO_RS_E2E</a></p></li>
-</ul>
 </section>
 </section>
 <section id="license-impact">
 <h2>License Impact<a class="headerlink" href="#license-impact" title="Link to this heading">#</a></h2>
 <p>[How could the copyright impacted by the license of the new contribution?]</p>
-<p>Since SOME/IP is a protocol, including applied E2E protection and the according profile (polynom, etc.),
-defined by AUTOSAR and published under the license of AUTOSAR, the gateway implementation shall carefully distinguish between the SOME/IP communication stack,
-the E2E protection of data, and the integration into S-CORE mw::com. Breach of foreign licenses must be avoided.</p>
-<p>Anybody using SOME/IP Gateway needs to make sure to follow the license conditions and rules of AUTOSAR.</p>
+<p>SOME/IP is a protocol, including applied E2E protection and the according profile (polynom, etc.),
+is defined by multiple organizations, here we refer to the us of <a class="reference external" href="https://github.com/COVESA/vsomeip">vsomeip</a> implementation that refers to <a class="reference external" href="https://some-ip.com/">some-ip.com</a>.
+The gateway implementation shall carefully distinguish between the SOME/IP communication stack,
+the E2E protection of data, and the integration into S-CORE mw::com.</p>
+<p>Anybody requiring specific SOME/IP versions needs to make sure to follow the license conditions and rules of the underlying standards or specifications.</p>
 </section>
 <section id="how-to-teach-this">
 <h2>How to Teach This<a class="headerlink" href="#how-to-teach-this" title="Link to this heading">#</a></h2>

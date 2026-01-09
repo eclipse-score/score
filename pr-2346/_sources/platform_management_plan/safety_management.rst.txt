@@ -105,6 +105,8 @@ The following  ISO 26262 defined safety work products are not relevant for the S
   These may be reused by the users on their HW platform to cover Technical Safety Requirements towards the SW platform.
   But if these are sufficiently also covering the TSRs must be analyzed and decided by the user.
 
+  Therefore and as S-CORE only delivers source code, :need:`std_wp__iso26262__software_1052` is tailored out.
+
 * Also tailored out is the SW testing on the target, as the S-CORE project can only test on reference HW
   (part of SW integration testing). So these are not relevant: :need:`std_wp__iso26262__software_1151`, :need:`std_wp__iso26262__software_1152`
 
@@ -123,7 +125,8 @@ The following  ISO 26262 defined safety work products are not relevant for the S
 
 * Because in the S-CORE SW platform integration of safety-related systems not developed according to ISO 26262 is not planned: :need:`std_wp__iso26262__support_1651`
 
-* Because in the S-CORE SW platform no ASIL decomposition is planned: :need:`std_wp__iso26262__analysis_551`, :need:`std_wp__iso26262__analysis_552`
+* Because in the S-CORE SW platform no ASIL decomposition is planned: :need:`std_wp__iso26262__analysis_551`, :need:`std_wp__iso26262__analysis_552`.
+  According to that also :need:`std_req__iso26262__analysis_641`, :need:`std_req__iso26262__analysis_642`, :need:`std_req__iso26262__analysis_643`, :need:`std_req__iso26262__analysis_644` are tailored out for safety analyses.
 
 * Because HSI is coming from HW (and systems) engineering which are not part of S-CORE
   and the standard only asks for refinement during SW development. As the input is missing, there is nothing to refine.

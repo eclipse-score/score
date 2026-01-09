@@ -33,4 +33,5 @@ S-CORE Tools Overview
    gtest
    bazel
    rustfmt
+   itf
    clippy
