@@ -55,6 +55,16 @@ This ADR defines a release process explicitly designed for **polyrepo systems wi
 - Independent module lifecycles without blocking development
 - A process that scales across many repositories and teams
 
+**Out of scope**
+- This ADR does **not** prescribe:
+  - module-internal branching models,
+  - commit workflows,
+  - or team-specific development practices.
+- This ADR is **not Gitflow**:
+  - stabilization is centralized in the manifest repository,
+  - modules are not required to align release branches.
+- This ADR does **not** assume a monorepo or continuous deployment model.
+
 ---
 
 ## 3. Options Considered
@@ -264,26 +274,3 @@ Option 3.2 (Gitflow Across Repositories) has been rejected because it requires c
 Option 3.3 (SemVer-Based Polyrepo Release Process with Manifest Repository) has been selected as it provides a single source of truth for integration, supports both continuous verification and reproducible releases, and scales with module count and team autonomy.
 
 ---
-
-## 6. Consequences & Challenges
-
-### Positive
-- Reproducible, auditable product releases.
-- Continuous integration without blocking module development.
-- Clear separation between development, integration, and stabilization.
-- Scales with increasing module count and team autonomy.
-
-### Negative
-- Requires explicit integration governance.
-- Introduces additional coordination effort compared to single-repo workflows.
-- Relies on strict SemVer discipline in modules.
-
-## 7. Explicit Non-Goals
-- This ADR does **not** prescribe:
-  - module-internal branching models,
-  - commit workflows,
-  - or team-specific development practices.
-- This ADR is **not Gitflow**:
-  - stabilization is centralized in the manifest repository,
-  - modules are not required to align release branches.
-- This ADR does **not** assume a monorepo or continuous deployment model.
