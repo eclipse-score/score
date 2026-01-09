@@ -315,17 +315,17 @@ to be reached with every contribution.
      - 100%
      - 100%
    * - 7
-     - Relative amount of failed tests
-     - 0%
-     - 0%
+     - Relative amount of passed tests
+     - 100%
+     - 100%
    * - 8
-     - Open rule violations for static code analysis
-     - no major violation based on tool rating
-     - 0
+     - Compliance with rules for static code analysis
+     - only minor violation based on tool rating
+     - 100%
    * - 9
-     - Compiler warnings
-     - 0
-     - 0
+     - Freedom from compiler warnings & errors
+     - 100%
+     - 100%
 
 Further quality goals are defined in section :doc:`quality_management`.
 
