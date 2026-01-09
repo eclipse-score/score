@@ -11,7 +11,7 @@ https://www.apache.org/licenses/LICENSE-2.0
 SPDX-License-Identifier: Apache-2.0
 -->
 
-# DR-005-Infra: Polyrepo Release Process with SemVer, Manifest Repository, and Continuous Integration Tracking
+# DR-005-Infra: Development, Release and Bugfix workflows
 
 - **Status:** Proposed
 - **Owner:** Infrastructure Community
@@ -22,9 +22,8 @@ SPDX-License-Identifier: Apache-2.0
 ## 1. Context
 
 This project consists of multiple independently developed modules stored in separate repositories (polyrepo setup).
-Each module evolves independently and is versioned using Semantic Versioning (SemVer).
 
-This ADR **builds on DR-002 (Infrastructure Architecture)**, which establishes:
+This ADR builds on [DR-002 (Integration Testing in a Distributed Monolith)](./DR-002-infra.md), which establishes:
 - the polyrepo structure,
 - centralized responsibility for cross-repository integration,
 - and infrastructure-owned integration tooling and processes.
@@ -54,24 +53,19 @@ This ADR defines a release process explicitly designed for **polyrepo systems wi
 - Continuous integration before formal releases
 - Independent module lifecycles without blocking development
 - A process that scales across many repositories and teams
-
-**Out of scope**
-- This ADR does **not** prescribe:
-  - module-internal branching models,
-  - commit workflows,
-  - or team-specific development practices.
-- This ADR is **not Gitflow**:
-  - stabilization is centralized in the manifest repository,
-  - modules are not required to align release branches.
-- This ADR does **not** assume a monorepo or continuous deployment model.
+- Working on the main branch should be always possible
+- Working on a release branch should be always possible and not harm the development on the main branch (resp. Vice versa)
+- Working on a bugfix should always be possible (for any old release)
+- Module developers must know how to name their released versions
+- It must be clear how to do the integration, means what to reference (e.g. „extended“ semver as 1.2.3-etas-r1.0)
 
 ---
 
 ## 3. Options Considered
 
-### 3.1 Trunk-Based Development Only
+### 3.1 Trunk-Based Development with SemVer
 
-Assumes continuous deployment and does not define coordinated product releases.
+Assumes continuous deployment on a longlived branch, e.g. `main` and does not define coordinated product releases.
 
 **Pros**:
 - Simplifies development workflow.
@@ -81,6 +75,37 @@ Assumes continuous deployment and does not define coordinated product releases.
 - Does not address the need for coordinated product releases.
 - Lacks explicit stabilization phases.
 - Not suitable for polyrepo systems requiring integration snapshots.
+- SemVer is not capable to mimic tree structures (see the following diagram)
+
+```{mermaid}
+gitGraph
+    commit id: "1.2.3"
+
+    branch release
+    checkout release
+    commit id: "1.2.3-r1.0"
+
+    checkout main
+    branch bugfix
+    checkout main
+
+    commit
+    commit id: "1.2.4"
+    commit
+    commit id: "1.2.6"
+
+    checkout bugfix
+    commit id: "bugfix-work"
+
+    checkout release
+    merge bugfix
+    commit id: "1.2.5"
+
+    checkout main
+    merge bugfix
+```
+> *Explaination:* Using SemVer quickly reaches its limits.
+If branching off from a version e.g. 1.2.3 and needing a bugfix while the development on main goes on where other versions e.g. 1.2.4 are created, now on a release branch you would need to use the version 1.2.5. The development on main for the next version needs to use 1.2.6 although the logical predecessor is 1.2.4. This violates SemVer since backward compatibility in that case is (or could be) broken.
 
 ### 3.2 Gitflow Across Repositories
 
@@ -95,182 +120,39 @@ Introduces coordinated release branching across repositories but lacks a central
 - Lacks a single source of truth for integration state.
 - Does not scale well with increasing module count.
 
-### 3.3 SemVer-Based Polyrepo Release Process with Manifest Repository
+### 3.3 Polyrepo Release Process with Manifest Repository and relaxed version of SemVer
 
-A dedicated manifest repository defines integration state, with independent module versioning and two integration modes (tracking and pinned).
+As described in [DR-002 (Integration Testing in a Distributed Monolith)](./DR-002-infra.md) there is a dedicated manifest repository containing the "known goods sets". There is a known good set for the latest version, but also known good sets for release(d) versions. Because of the earlier described limitations of SemVer, the correct module versions should not be referenced in the `MODULE.bazel` (in the manifest repository) as e.g., `1.2.3` but either by referencing the git commit hash directly or using a relaxed SemVer string, e.g. as `1.2.3-v1.0` where the string after the hyphen represents the respective S-CORE release.
+
+With that approach releases are possible, e.g. by creating a release branch in the integration repository as well as in the affected module repositories. Also bugfixes of "old" releases are possible by checking out the repective release branch in the reference integration and if necessary to also created bugfixes in the affected modules.
 
 **Pros**:
 - Single source of truth for product integration.
-- Supports continuous verification via tracking mode.
-- Provides reproducible releases via pinned mode.
+- Supports continuous verification.
+- Provides reproducible releases.
 - Scales with module count and team autonomy.
 - Clear separation between development, integration, and stabilization.
 
 **Cons**:
 - Requires explicit integration governance.
 - Introduces additional coordination effort compared to single-repo workflows.
-- Relies on strict SemVer discipline in modules.
 
 ---
 
 ## 4. Decision
 
-We adopt a **SemVer-based polyrepo release process with a dedicated manifest repository, continuous integration tracking, and release trains identified by tags**.
+We decided for **Option 3.3**.
 
-The solution is based on four core principles:
-
-1. **Independent module versioning with strict SemVer guarantees**
-2. **A manifest repository as the single source of truth for integration**
-3. **Two integration modes: tracking (continuous verification) and pinned (release/stabilization)**
-4. **Release stabilization via immutable tags (and an optional manifest release branch)**
-
-### 4.1 Module Versioning (SemVer)
-
-- Each module repository publishes releases following [Semantic Versioning 2.0.0](https://semver.org/).
-- Version numbers are **global, linear, and unique per module**.
-- Once a version is released, it is immutable and must never be reused.
-- There is no automatic or periodic major version bump tied to product releases.
-
-**Compatibility rule:**
-- A PATCH release must be produced from a code line that is compatible with the previous release.
-- Modules must not include incompatible changes in PATCH releases.
-
-> **Explicitly out of scope:**
-> Module-internal development workflows (e.g. trunk-based development, feature branches, rebasing strategies) are intentionally not prescribed by this ADR.
-
-### 4.2 Manifest Repository
-
-A dedicated **manifest (integration) repository** defines which exact module states form a product snapshot.
-
-Responsibilities of the manifest repository:
-- Define the complete product composition.
-- Pin module states either as:
-  - released module versions, or
-  - explicit commit hashes (for tracking mode).
-- Contain integration-specific artifacts such as:
-  - end-to-end tests,
-  - integration configuration,
-  - packaging or distribution logic.
-- Act as the **single source of truth** for product integration.
-
-Any change to module references in the manifest repository is made via a pull request and reviewed as an integration change.
-
-### 4.3 Integration Modes
-
-The manifest repository operates in two distinct modes.
-
-#### 4.3.1 Tracking Mode (Continuous Verification)
-
-- Used on manifest `main`.
-- The manifest may track module branches or “next release” branches by automatically updating pinned commit hashes.
-- Goal:
-  - continuously verify that the *current development state* of modules can be integrated,
-  - reduce the gap between development and release,
-  - detect integration issues early.
-- Tracking references are **not considered release-ready** and are not used for formal release stages.
-
-#### 4.3.2 Pinned Mode (Release and Stabilization)
-
-- Used for release preparation and formal stages.
-- The manifest pins **immutable identifiers only**:
-  - released module versions, or
-  - fixed commit hashes.
-- Pinned mode guarantees full reproducibility and auditability.
-- All release stages and final releases must use pinned mode.
-
-### 4.4 Product Release Identification and Structure
-
-Product releases are identified using **train-style tags**:
-
-- `vX.Y.0-alpha.N`
-- `vX.Y.0-beta.N`
-- `vX.Y.0-rc.N`
-- `vX.Y.0` (final)
-
-Product versions reuse SemVer-compatible notation for clarity and tooling compatibility, but they represent **integration snapshots**, not API stability guarantees for individual modules.
-
-### 4.5 Release Stabilization Line
-
-To allow iteration without disturbing ongoing integration:
-
-- A stabilization line may be introduced **in the manifest repository only**, e.g.:
-  - an optional branch `release/vX.Y`, or
-  - an equivalent agreed stabilization mechanism.
-- Stabilization happens **only** in the manifest repository.
-- Module repositories are not required to coordinate release branches.
-
-This allows:
-- continuous tracking on manifest `main`,
-- controlled stabilization for a given product release.
-
-### 4.6 Release Stages
-
-#### Alpha
-- Goal: early system-level integration.
-- Allowed changes:
-  - compatible bug fixes (PATCH),
-  - compatible features (MINOR) if strictly required.
-
-#### Beta
-- Goal: feature freeze and stabilization.
-- Allowed changes:
-  - bug fixes only (PATCH).
-
-#### Release Candidate (RC)
-- Goal: final validation.
-- Allowed changes:
-  - critical bug or security fixes only (PATCH).
-
-#### Final
-- Tag `vX.Y.0` marks the final release.
-- Optional product patch releases (`vX.Y.1`, `vX.Y.2`, …) follow the same rules.
-
-### 4.7 Backports
-
-- Fixes are applied first on the appropriate module code line.
-- Compatible PATCH releases are created if required.
-- The manifest is updated to reference the new immutable version or commit.
-- A new stage or patch tag is created.
-
-### 4.8 Breaking Changes During Stabilization
-
-- Breaking changes during stabilization are strongly discouraged.
-- If required (e.g. priority or organizational decisions), they must:
-  - be explicitly declared,
-  - include a documented mitigation strategy (compatibility layer, coordinated upgrades, scope reduction, or deferral),
-  - and be recorded in the manifest repository.
-
-### 4.9 Module Release-Line Strategies (Non-Normative Examples)
-
-Modules may choose any internal strategy that preserves SemVer guarantees. Common compliant patterns include:
-
-1. **Disciplined mainline releases**
-   PATCH releases are cut before incompatible changes are merged.
-2. **Temporary release branches**
-   Short-lived branches cut from the last release tag to produce compatible PATCH releases.
-3. **Persistent release branches**
-   Long-lived branches for maintained version lines or LTS support.
-
-The choice is module-local and does not affect the integration model.
-
-### 4.10 Ownership and Governance
-
-- The manifest repository is owned by the infrastructure/integration team, as defined in DR-002.
-- As release stages progress (beta, rc), changes to the manifest require increasing scrutiny and justification.
-- Governance applies only to the manifest repository and does not constrain module-internal workflows.
-
----
-
-## 5. Rationale
+**Rationale**
 
 This approach reflects established industry practice for large-scale polyrepo systems using
 manifest-based integration and release trains (e.g. Android/AOSP, Chromium-style roll-ups),
-while remaining explicit, flexible, and compatible with Semantic Versioning.
+while remaining explicit, and flexible.
 
-Option 3.1 (Trunk-Based Development Only) has been rejected because it does not address the need for coordinated product releases or explicit stabilization phases.
+It provides a single source of truth for integration, supports both continuous verification and reproducible releases, and scales with module count and team autonomy.
+
+Option 3.1 (Trunk-Based Development Only) has been rejected because it does not address the need for coordinated product releases or explicit stabilization phases in a poly repo environment.
 
 Option 3.2 (Gitflow Across Repositories) has been rejected because it requires coordinating release branches across all repositories and lacks a central integration manifest, which does not scale well.
-
-Option 3.3 (SemVer-Based Polyrepo Release Process with Manifest Repository) has been selected as it provides a single source of truth for integration, supports both continuous verification and reproducible releases, and scales with module count and team autonomy.
 
 ---
