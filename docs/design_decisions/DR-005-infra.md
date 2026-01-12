@@ -65,17 +65,16 @@ This ADR defines a release process explicitly designed for **polyrepo systems wi
 
 ### 3.1 Trunk-Based Development with SemVer
 
-Assumes continuous deployment on a longlived branch, e.g. `main` and does not define coordinated product releases.
+Uses trunk-based development where modules develop on `main` branches and release with standard SemVer tags. The manifest repository (per DR-002) continuously tracks the latest module versions. When a product release is needed, release branches are created in the manifest and affected module repositories. Module bugfixes on release branches are tagged with standard SemVer, and the manifest's release branch references these versions.
 
 **Pros**:
 - Simplifies development workflow.
 - Encourages frequent integration.
+- Well-understood versioning convention.
 
 **Cons**:
-- Does not address the need for coordinated product releases.
-- Lacks explicit stabilization phases.
-- Not suitable for polyrepo systems requiring integration snapshots.
-- SemVer is not capable to mimic tree structures (see the following diagram)
+- Standard SemVer cannot represent parallel release streams. When a bugfix is needed on a release branch while `main` has advanced, version numbering becomes ambiguous (see diagram below).
+- Versioning conflicts arise when merging bugfixes back to `main`.
 
 ```{mermaid}
 gitGraph
@@ -104,20 +103,21 @@ gitGraph
     checkout main
     merge bugfix
 ```
-> *Explaination:* Using SemVer quickly reaches its limits.
-If branching off from a version e.g. 1.2.3 and needing a bugfix while the development on main goes on where other versions e.g. 1.2.4 are created, now on a release branch you would need to use the version 1.2.5. The development on main for the next version needs to use 1.2.6 although the logical predecessor is 1.2.4. This violates SemVer since backward compatibility in that case is (or could be) broken.
+> *Explanation:* Using SemVer quickly reaches its limits.
+If branching off from version 1.2.3 and needing a bugfix while development on `main` continues (creating 1.2.4), the release branch would need version 1.2.5 for the bugfix. The next version on `main` must then be 1.2.6, even though its logical predecessor is 1.2.4. This violates SemVer since backward compatibility could be broken.
 
 ### 3.2 Gitflow Across Repositories
 
-Introduces coordinated release branching across repositories but lacks a central integration manifest.
+The manifest repository creates release branches (e.g., `release/v1.0`), and each participating module repository creates corresponding release branches. Since Bazel requires either version tags or commit hashes in `MODULE.bazel`, the manifest must be updated manually each time a module's release branch is tagged or advanced. This creates a workflow where teams coordinate to stabilize their module release branches, tag them, and then update the manifest's release branch to reference those tags or commits.
 
 **Pros**:
 - Well-known branching model.
 - Provides release branches for stabilization.
 
 **Cons**:
-- Requires coordination of release branches across all repositories.
-- Lacks a single source of truth for integration state.
+- Requires manual updates to the manifest whenever module release branches are tagged or advanced.
+- Manual coordination across all module repositories to create, maintain, and tag release branches.
+- Frequent manual manifest updates during stabilization increase coordination overhead.
 - Does not scale well with increasing module count.
 
 ### 3.3 Polyrepo Release Process with Manifest Repository and relaxed version of SemVer
@@ -154,4 +154,3 @@ It provides a single source of truth for integration, supports both continuous v
 Option 3.1 (Trunk-Based Development Only) has been rejected because it does not address the need for coordinated product releases or explicit stabilization phases in a poly repo environment.
 
 Option 3.2 (Gitflow Across Repositories) has been rejected because it requires coordinating release branches across all repositories and lacks a central integration manifest, which does not scale well.
-
