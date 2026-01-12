@@ -1,0 +1,1025 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Change Management / Change Management Plan &#8212; S-CORE  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score.css?v=6e51530f" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score_needs.css?v=e97392eb" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score_design.css?v=d9fd870c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css?v=803738c0" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
+    <script src="../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
+    <script src="../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
+    <script src="../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
+    <script src="../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'platform_management_plan/change_management';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Software verification" href="software_verification.html" />
+    <link rel="prev" title="Problem Resolution / Problem Resolution Plan" href="problem_resolution.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Eclipse S-CORE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../handbook/index.html">
+    Handbook
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../features/index.html">
+    Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../requirements/index.html">
+    Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../modules/index.html">
+    Modules
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../design_decisions/index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../handbook/index.html">
+    Handbook
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../features/index.html">
+    Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../requirements/index.html">
+    Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../modules/index.html">
+    Modules
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../design_decisions/index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Content</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="project_management.html">Project management plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="safety_management.html">Safety management / Platform Safety Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security_management.html">Security management / Platform Security Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quality_management.html">Quality Management / Platform Quality Management Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config_management.html">Config management / Configuration Management Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool_management.html">Tool Management/ Tool Management Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_management.html">Release management Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problem_resolution.html">Problem Resolution / Problem Resolution Plan</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Change Management / Change Management Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software_verification.html">Software verification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documentation_management.html">Documentation Management Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software_development.html">Software Development Plan</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Role Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="role_assignment/platform_safety_engineer.html">Platform Safety Engineer Election</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role_assignment/platform_safety_manager.html">Platform Safety Manager Election</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Platform Management Plan</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Change Management / Change Management Plan</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="need_container docutils container" id="SNCB-b690965e">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__platform_change_management_plan">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Change Management Plan</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">platform_management</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/change_management_workproducts.html#wp__chm_plan">wp__chm_plan</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__platform_change_management_plan" title="doc__platform_change_management_plan">doc__platform_change_management_plan</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Generic Document</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<section id="change-management-change-management-plan">
+<span id="change-mgmt-plan"></span><h1>Change Management / Change Management Plan<a class="headerlink" href="#change-management-change-management-plan" title="Link to this heading">#</a></h1>
+<p>This document implements parts of the <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/platform_management/platform_management_workproducts.html#wp__platform_mgmt">wp__platform_mgmt</a>.</p>
+<section id="purpose">
+<h2>Purpose<a class="headerlink" href="#purpose" title="Link to this heading">#</a></h2>
+<p>The purpose of the Change Management Plan is to guide the execution of the
+Change Requests of a project including their creation, analysis, implementation, closure and
+control. Where a change is defined as an introduction of a new feature/component or modification of
+an existing feature/component.</p>
+</section>
+<section id="objectives-and-scope">
+<h2>Objectives and Scope<a class="headerlink" href="#objectives-and-scope" title="Link to this heading">#</a></h2>
+<section id="change-management-goals">
+<h3>Change Management Goals<a class="headerlink" href="#change-management-goals" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Change Requests are recorded and identified.</p></li>
+<li><p>Change Requests are analyzed, affected work products are identified, and the impact is estimated.</p></li>
+<li><p>Change Requests are approved before implementation.</p></li>
+<li><p>Change Requests are implemented and monitored.</p></li>
+<li><p>Changes Requests are tracked until closure and and communicated to affected parties.</p></li>
+<li><p>Change Requests and affected work products are bidirectionally traced.</p></li>
+</ul>
+</section>
+</section>
+<section id="approach">
+<h2>Approach<a class="headerlink" href="#approach" title="Link to this heading">#</a></h2>
+<section id="change-request-execution">
+<h3>Change Request Execution<a class="headerlink" href="#change-request-execution" title="Link to this heading">#</a></h3>
+<p>Contributions in general to the <strong>S-CORE</strong> project are described here
+(compare <a class="reference internal" href="../contribute/contribution_request/index.html#doc__contr_guideline" title="doc__contr_guideline"><em class="xref need">Contribution Guideline (doc__contr_guideline)</em></a>).</p>
+<p>A Change Request is a specific contribution, and it is the <strong>ONLY</strong> way to contribute new
+features/components or to modify the scope of existing features/components in the <strong>S-CORE</strong>
+project.</p>
+</section>
+<section id="change-request-infrastructure-and-types">
+<h3>Change Request Infrastructure and Types<a class="headerlink" href="#change-request-infrastructure-and-types" title="Link to this heading">#</a></h3>
+<p><a class="reference internal" href="../contribute/contribution_request/index.html#doc__issue_guideline" title="doc__issue_guideline"><em class="xref need">GitHub Issues (ISSUE) (doc__issue_guideline)</em></a> are used for managing Change Requests.
+The tool is used to create, analyze, implement and monitor Change Requests within <strong>S-CORE</strong>.</p>
+<p><a class="reference internal" href="../contribute/contribution_request/index.html#doc__pull_request_guideline" title="doc__pull_request_guideline"><em class="xref need">GitHub Pull Requests (PR) (doc__pull_request_guideline)</em></a> are used for the documentation and
+implementation of Change Requests. The tool is used to document, implement and verify Change
+Requests within <strong>S-CORE</strong>.</p>
+<p>The next figure gives an overview, how Change Requests are realized in <strong>S-CORE</strong>. An ISSUE and PR
+is used to create a Change Request including required attributes as defined in
+<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_reqs.html#gd_req__change_attr_uid">gd_req__change_attr_uid</a>.</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/score_change_request_overview_simple.drawio.svg"><img alt="Change Request Simple Overview" src="../_images/score_change_request_overview_simple.drawio.svg" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Change Request Simple Overview</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Therefore the Change Template <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_feature_template.html#gd_temp__change_feature_request">gd_temp__change_feature_request</a> or
+<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_component_template.html#gd_temp__change_component_request">gd_temp__change_component_request</a> shall be used.
+In addition  <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_impact_analysis_template.html#gd_temp__change_impact_analysis">gd_temp__change_impact_analysis</a> should be
+used, if applicable.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Parts of the template are automatically included in the ISSUE <strong>Change Request</strong>.
+Use ISSUE <strong>Change Request</strong> to request a change in <strong>S-CORE</strong>.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/score_change_request_change.drawio.svg"><img alt="Change Request Change" src="../_images/score_change_request_change.drawio.svg" style="width: 100%;" />
+</a>
+</figure>
+</div>
+<p>The ISSUE may be linked to other ISSUEs or SUB-ISSUEs, if required, to manage more complex Change
+Requests. The implementation of a Change Request requires at least one PR linked to the ISSUE
+created for the Change Request.</p>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/score_change_request_overview_complex.drawio.svg"><img alt="Change Request Overview" src="../_images/score_change_request_overview_complex.drawio.svg" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Change Request Overview</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Changes are clustered in the following types:</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id3">
+<caption><span class="caption-number">Table 78 </span><span class="caption-text">Change Request Types</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 13.0%" />
+<col style="width: 73.9%" />
+<col style="width: 13.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Infrastructure</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Feature</p></td>
+<td><p>Created by <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__contributor">rl__contributor</a> to change requirements and work products, new feature</p></td>
+<td><p>ISSUE with label <code class="docutils literal notranslate"><span class="pre">feature_request</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Feature Modification</p></td>
+<td><p>Created by <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__contributor">rl__contributor</a> to change requirements and work products, scope change</p></td>
+<td><p>ISSUE with label <code class="docutils literal notranslate"><span class="pre">feature_modification</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Component</p></td>
+<td><p>Created by <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__contributor">rl__contributor</a> to change requirements and work products, new component</p></td>
+<td><p>ISSUE with label <code class="docutils literal notranslate"><span class="pre">component_request</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Component Modification</p></td>
+<td><p>Created by <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__contributor">rl__contributor</a> to change requirements and work products, scope change</p></td>
+<td><p>ISSUE with label <code class="docutils literal notranslate"><span class="pre">component_modification</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Change Request Traceability Impact Analysis requires the following tools:</p>
+<p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_reqs.html#gd_req__change_tool_impact_analysis">gd_req__change_tool_impact_analysis</a></p>
+</section>
+<section id="change-request-attributes">
+<h3>Change Request Attributes<a class="headerlink" href="#change-request-attributes" title="Link to this heading">#</a></h3>
+<p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_reqs.html#gd_req__change_attr_uid">gd_req__change_attr_uid</a> are implemented as follows:</p>
+<p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_reqs.html#gd_req__change_attr_uid">gd_req__change_attr_uid</a> is identical to the ISSUE number.</p>
+<p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_reqs.html#gd_req__change_attr_status">gd_req__change_attr_status</a> is defined by the combination of the ISSUE
+state, the state in the Projects dashboard view and the PR status.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id4">
+<caption><span class="caption-number">Table 79 </span><span class="caption-text">Change Status</span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 11.5%" />
+<col style="width: 65.4%" />
+<col style="width: 11.5%" />
+<col style="width: 11.5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Status</p></th>
+<th class="head"><p>Issue status</p></th>
+<th class="head"><p>Projects dashboard status</p></th>
+<th class="head"><p>Linked PR status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>open</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Open</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">No</span> <span class="pre">Status</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Draft</span></code> or <code class="docutils literal notranslate"><span class="pre">Open</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>in review</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Open</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Todo</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Draft</span></code> or <code class="docutils literal notranslate"><span class="pre">Open</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>in implementation</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Open</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">Progress</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Draft</span></code> or <code class="docutils literal notranslate"><span class="pre">Open</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>closed</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Closed</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Done</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Merged</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>rejected</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Closed</span> <span class="pre">as</span> <span class="pre">not</span> <span class="pre">planned</span></code></p></td>
+<td><p>na</p></td>
+<td><p>na</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_reqs.html#gd_req__change_attr_title">gd_req__change_attr_title</a> is identical to the ISSUE title.</p>
+<p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_reqs.html#gd_req__change_attr_impact_description">gd_req__change_attr_impact_description</a> is initially provided in the
+Description and Impact analysis part of the ISSUE. Further detailed analysis results are part of
+the linked PR, provided as part of the feature/request templates.</p>
+<p>Further information about detailed implementation can be provided in the Realize part of the ISSUE.</p>
+<p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_reqs.html#gd_req__change_attr_impact_safety">gd_req__change_attr_impact_safety</a>,
+<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_reqs.html#gd_req__change_attr_impact_security">gd_req__change_attr_impact_security</a> are provided in the Safety or
+Security relevance part of the ISSUE.</p>
+<p>Combinations of them are allowed. If nothing is selected, Quality is relevant by default.</p>
+<p>Use the ASIL classification part of the ISSUE to document the ASIL level concerned, e.g. ASIL_B.</p>
+<p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_reqs.html#gd_req__change_attr_types">gd_req__change_attr_types</a> is provided in the Change Request Type
+part of the ISSUE, further in the linked PR for feature or component request.</p>
+<p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_reqs.html#gd_req__change_attr_affected_wp">gd_req__change_attr_affected_wp</a> is initially provided in the
+Affected work products part of the ISSUE. Further detailed affected work products are part of the
+linked PR or other ISSUEs.</p>
+<p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_reqs.html#gd_req__change_attr_milestone">gd_req__change_attr_milestone</a> is provided in the Expected Implementation
+Version part of the ISSUE. Optionally the Milestone part of the ISSUE can be set.</p>
+</section>
+<section id="change-request-workflow">
+<span id="change-mgmt-workflow"></span><h3>Change Request Workflow<a class="headerlink" href="#change-request-workflow" title="Link to this heading">#</a></h3>
+<p>In general, every Change Request follows the following steps:</p>
+<p>(color is referring to the following figure: Problem Resolution Simple Workflow Overview)</p>
+<ul class="simple">
+<li><ol class="arabic simple">
+<li><p>Create the Change Request (grey color)</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="2">
+<li><p>Analyze the Change Request (blue color)</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="3">
+<li><p>Initiate the implementation of the Change Request and track it to closure (yellow color)</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="4">
+<li><p>Close Change Request (purple color)</p></li>
+</ol>
+</li>
+</ul>
+<p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_guideline.html#gd_guidl__change_change_request">gd_guidl__change_change_request</a> can give additional help.</p>
+<p><strong>To 1. Create the Change Request:</strong></p>
+<p>An ISSUE is the <strong>ONLY</strong> way to create and manage a Change Request in <strong>S-CORE</strong>.
+A PR is the <strong>ONLY</strong> way to document and implement a Change Request in <strong>S-CORE</strong>,
+thus an ISSUE must be linked at least to one or more PRs.</p>
+<p>The figure below shows the workflow for the simplest case of a Change Request.</p>
+<p>An ISSUE with the with the type <code class="docutils literal notranslate"><span class="pre">Enhancement</span></code> is created in status <code class="docutils literal notranslate"><span class="pre">Open</span></code>.
+The title of the ISSUE reflects the potential change. Further fill out the provided template
+content accordingly.</p>
+<p>The description of the ISSUE may give a brief description and impact analysis of the requested
+change. The details are part of the Feature/Component Request and Impact Analysis provided by a PR,
+which is linked  to the ISSUE in status <code class="docutils literal notranslate"><span class="pre">Draft</span></code> or <code class="docutils literal notranslate"><span class="pre">Open</span></code>.</p>
+<p>For a new Feature/Component Request the provided templates <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_feature_template.html#gd_temp__change_feature_request">gd_temp__change_feature_request</a>,
+or <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_component_template.html#gd_temp__change_component_request">gd_temp__change_component_request</a> must be used. For a
+modification of an existing Feature/Component, update the existing work products.
+Further add here the <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_impact_analysis_template.html#gd_temp__change_impact_analysis">gd_temp__change_impact_analysis</a>
+and fill it out accordingly, if applicable.</p>
+<p>The description of the ISSUE may give a brief description of the affected work products and also
+details about the intended realization for the change.
+The linked PR in status <code class="docutils literal notranslate"><span class="pre">Draft</span></code>, which contains the Feature/Component Requests, may contain also
+more details about the affected work products or realization and verification proposals.</p>
+<p>Planning is done by setting the <strong>Expected Implementation Version</strong>. Optionally the Milestone of
+the ISSUE can be set.</p>
+<p>Change request status: <code class="docutils literal notranslate"><span class="pre">open</span></code> is implemented as ISSUE status <code class="docutils literal notranslate"><span class="pre">Open</span></code> and Projects status
+<code class="docutils literal notranslate"><span class="pre">No</span> <span class="pre">Status</span></code>. The linked PR status is either <code class="docutils literal notranslate"><span class="pre">Draft</span></code> or <code class="docutils literal notranslate"><span class="pre">Open</span></code>.</p>
+<p>To trigger the next step: Change request status: <code class="docutils literal notranslate"><span class="pre">in</span> <span class="pre">review</span></code>
+keep the ISSUE status <code class="docutils literal notranslate"><span class="pre">Open</span></code> and set the Projects status <code class="docutils literal notranslate"><span class="pre">Todo</span></code>.</p>
+<p>To reject the change request: Change request status: <code class="docutils literal notranslate"><span class="pre">rejected</span></code>
+set the ISSUE status to <code class="docutils literal notranslate"><span class="pre">Closed</span> <span class="pre">as</span> <span class="pre">not</span> <span class="pre">planned</span></code>.</p>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="../_images/score_change_request_workflow_simple.drawio.svg"><img alt="Change Request Simple Workflow Overview" src="../_images/score_change_request_workflow_simple.drawio.svg" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Change Request Simple Workflow Overview</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>To 2. Analyze the Change Request:</strong></p>
+<p>The Change Request is reviewed and analyzed from the <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__committer">rl__committer</a> and the
+review results are resolved by the <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__contributor">rl__contributor</a>. The results
+are documented in the ISSUE and/or linked PR. As long as the information is not sufficient, the
+related ISSUE is kept in status <code class="docutils literal notranslate"><span class="pre">Open</span></code> and Projects status <code class="docutils literal notranslate"><span class="pre">Todo</span></code>, means <code class="docutils literal notranslate"><span class="pre">in</span> <span class="pre">review</span></code>.</p>
+<p>If the information is sufficient and it is decided to implement the change request, the
+ISSUE status is kept <code class="docutils literal notranslate"><span class="pre">Open</span></code> and the Projects status is set to <code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">Progress</span></code>.</p>
+<p>The decision, if the change request is accepted or rejected must be documented. Safety/Security
+experts must confirm or disconfirm, if safety/security relevance is set correctly.</p>
+<p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_checklist.html#gd_chklst__change_cr_review">gd_chklst__change_cr_review</a> can help to verify whether the information is complete.</p>
+<p>Otherwise, if the change requested is not accepted, the change request is rejected. To reject the
+Change Request: Change Request status: <code class="docutils literal notranslate"><span class="pre">rejected</span></code> set the ISSUE status to <code class="docutils literal notranslate"><span class="pre">Closed</span> <span class="pre">as</span> <span class="pre">not</span> <span class="pre">planned</span></code>.</p>
+<p><strong>To 3. Initiate the implementation of the Change Request and track it to closure:</strong></p>
+<p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__contributor">rl__contributor</a> starts all required activities to implement the
+change request. These may include further planning  activities by creating ISSUEs and required PRs.
+All additional ISSUEs or PRs created to implement are linked to the Change Request ISSUE to enable
+monitoring of the activities.</p>
+<p>All activities defined are tracked until closure, means that all linked ISSUEs or PRs are closed or
+merged, respectively.</p>
+<p>If all are closed or merged <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__contributor">rl__contributor</a> sets Projects status to
+<code class="docutils literal notranslate"><span class="pre">Done</span></code> to trigger the final review from the <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__committer">rl__committer</a> to close
+the Change Request.</p>
+<p>The Change Request may also rejected in this phase, then the ISSUE status is set to
+<code class="docutils literal notranslate"><span class="pre">Closed</span> <span class="pre">as</span> <span class="pre">not</span> <span class="pre">planned</span></code>.</p>
+<p><strong>To 4. Close Change Request :</strong></p>
+<p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__committer">rl__committer</a> checks finally if the change request is completely
+implemented. In this case all linked ISSUEs or PRs are closed or merged, respectively.</p>
+<p>Especially the verification measures must be checked for their effectiveness and the argumentation
+is convincing.</p>
+<p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_checklist.html#gd_chklst__change_cr_review">gd_chklst__change_cr_review</a> can help to verify whether it can be closed.
+The realization parts of the Change Request are reviewed according the checklists of the affected
+work products. Verification of the realization parts must be successful.</p>
+<p>If this is the case the ISSUE status is set to <code class="docutils literal notranslate"><span class="pre">Closed</span></code>, otherwise the Projects status is set
+back to <code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">Progress</span></code>.</p>
+</section>
+<section id="change-management-sw-platform-work-products">
+<h3>Change Management SW Platform Work Products<a class="headerlink" href="#change-management-sw-platform-work-products" title="Link to this heading">#</a></h3>
+<p>not applicable</p>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="problem_resolution.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Problem Resolution / Problem Resolution Plan</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="software_verification.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Software verification</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose">Purpose</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives-and-scope">Objectives and Scope</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-management-goals">Change Management Goals</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approach">Approach</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-request-execution">Change Request Execution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-request-infrastructure-and-types">Change Request Infrastructure and Types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-request-attributes">Change Request Attributes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-request-workflow">Change Request Workflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-management-sw-platform-work-products">Change Management SW Platform Work Products</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/platform_management_plan/change_management.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/platform_management_plan/change_management.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
