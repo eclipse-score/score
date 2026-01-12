@@ -30,19 +30,11 @@ This ADR builds on [DR-002 (Integration Testing in a Distributed Monolith)](./DR
 
 Within that context, this ADR defines **how coordinated product releases are produced** from independently developed and versioned modules, while allowing continuous integration to reduce the gap between development and release.
 
-The project delivers a **coordinated product release** that integrates a specific, tested combination of module states. This requires:
-
-- reproducible and auditable release snapshots,
-- explicit stabilization phases,
-- continuous integration before formal releases,
-- independent module lifecycles without blocking development,
-- and a process that scales across many repositories and teams.
-
 Commonly referenced workflows do not fully address this problem space:
-- **Trunk-Based Development** assumes continuous deployment and does not define coordinated product releases.
-- **Gitflow** introduces coordinated release branching across repositories and lacks a central integration manifest.
+- **Trunk-Based Development** with standard SemVer cannot represent parallel release streams needed for supporting multiple product versions simultaneously.
+- **Gitflow** adds branching complexity without solving the versioning problem for parallel releases in a polyrepo setup.
 
-This ADR defines a release process explicitly designed for **polyrepo systems with coordinated integration releases and continuous verification**.
+This ADR evaluates branching and versioning strategies explicitly designed for **polyrepo systems with coordinated integration releases and continuous verification**.
 
 ---
 
@@ -57,7 +49,7 @@ Options that do not satisfy these requirements are not viable and will be reject
 - Working on a release branch should be always possible and not harm the development on the main branch (resp. Vice versa)
 - Working on a bugfix should always be possible (for any old release)
 - Module developers must know how to name their released versions
-- It must be clear how to do the integration, means what to reference (e.g. „extended" semver as 1.2.3-etas-r1.0)
+- The versioning scheme must clearly indicate which product release a module version belongs to, enabling parallel release streams
 
 ### 2.2 Optimization Goals
 
@@ -155,12 +147,12 @@ We decided for **Option 3.3**.
 
 **Rationale**
 
-This approach reflects established industry practice for large-scale polyrepo systems using
-manifest-based integration and release trains (e.g. Android/AOSP, Chromium-style roll-ups),
-while remaining explicit, and flexible.
+Options 3.1 and 3.2 both violate the requirement for a versioning scheme that clearly indicates which product release a module version belongs to. Standard SemVer cannot represent parallel release streams - when a bugfix is needed on a release branch while `main` has advanced, version numbering becomes ambiguous and conflicts arise (as demonstrated in the diagram in Option 3.1). This makes both options non-viable.
 
-It provides a single source of truth for integration, supports both continuous verification and reproducible releases, and scales with module count and team autonomy.
+Option 3.3 is the only viable option as it satisfies all requirements through relaxed SemVer (e.g., `1.2.3-v1.0`) where the suffix indicates the product release. Additionally, it optimizes for our goals by:
+- Providing a single source of truth for product integration
+- Supporting continuous verification through the manifest repository
+- Scaling with module count and team autonomy
+- Enabling clear separation between development, integration, and stabilization
 
-Option 3.1 (Trunk-Based Development Only) has been rejected because it does not address the need for coordinated product releases or explicit stabilization phases in a poly repo environment.
-
-Option 3.2 (Gitflow Across Repositories) has been rejected because it requires coordinating release branches across all repositories and lacks a central integration manifest, which does not scale well.
+This approach reflects established industry practice for large-scale polyrepo systems using manifest-based integration and release trains (e.g., Android/AOSP, Chromium-style roll-ups).
