@@ -108,16 +108,17 @@ If branching off from version 1.2.3 and needing a bugfix while development on `m
 
 ### 3.2 Gitflow Across Repositories
 
-The manifest repository creates release branches (e.g., `release/v1.0`), and each participating module repository creates corresponding release branches. Since Bazel requires either version tags or commit hashes in `MODULE.bazel`, the manifest must be updated manually each time a module's release branch is tagged or advanced. This creates a workflow where teams coordinate to stabilize their module release branches, tag them, and then update the manifest's release branch to reference those tags or commits.
+Uses the Gitflow branching model where modules maintain both `main` and `develop` branches, with release branches created for stabilization. The manifest repository (per DR-002) creates release branches (e.g., `release/v1.0`), and each participating module repository creates corresponding release branches. Modules tag bugfixes on release branches with standard SemVer, and the manifest's release branch references these versions.
 
 **Pros**:
 - Well-known branching model.
-- Provides release branches for stabilization.
+- Explicit `develop` branch separates ongoing work from release stabilization.
+- Release branches provide clear stabilization phases.
 
 **Cons**:
-- Requires manual updates to the manifest whenever module release branches are tagged or advanced.
-- Manual coordination across all module repositories to create, maintain, and tag release branches.
-- Frequent manual manifest updates during stabilization increase coordination overhead.
+- Standard SemVer suffers from the same parallel release stream problem as Option 3.1 (version numbering conflicts).
+- Additional overhead of maintaining separate `develop` branches across all repositories.
+- More complex branching model increases coordination complexity in a polyrepo setup.
 - Does not scale well with increasing module count.
 
 ### 3.3 Polyrepo Release Process with Manifest Repository and relaxed version of SemVer
