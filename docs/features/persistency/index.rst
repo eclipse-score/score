@@ -32,6 +32,8 @@ Persistency (v0.5 beta)
    safety_analysis/dfa.rst
    safety_analysis/safety_analysis_fdr.rst
    safety_planning/index.rst
+   security_planning/index.rst
+   security_analysis/stride.rst
 
 
 Feature flag
