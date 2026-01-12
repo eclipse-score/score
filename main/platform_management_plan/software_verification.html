@@ -565,7 +565,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-0f7f3344">
+  <div class="need_container docutils container" id="SNCB-b539179e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__verification_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -680,6 +680,15 @@ automated software build at any time.</p>
 <li><p><strong>Changes</strong> get integrated based on the <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/change_management_workflow.html#wf__change_create_cr">wf__change_create_cr</a> and will follow
 the <a class="reference internal" href="../contribute/contribution_request/index.html#doc__pull_request_guideline" title="doc__pull_request_guideline"><em class="xref need">Pull Request Guideline (doc__pull_request_guideline)</em></a> as any other artifact.</p></li>
 </ol>
+<p>The test methods and techniques shall be selected based on the characteristics and specified behavior
+of the software element under test. This shall ensure proper testing from unit level to feature integration level.
+Specific recommendations for each test level are provided in the following sections of this verification plan.</p>
+<p>The following examples serve as illustration and inspiration for test selection:
+Resource Usage Evaluation is selected when requirements address resource management or when data
+corruption may occur. Interface Testing is applied when requirements target external API behavior.
+Boundary Value Analysis is used for buffers where overflow is deemed possible or when requirements specify
+input ranges and boundaries covering incorrect input values. This list is not complete, and additional tests
+may be selected based on the specific requirements of each software element.</p>
 </section>
 <section id="levels-of-integration-and-verification">
 <h3>Levels of integration and verification<a class="headerlink" href="#levels-of-integration-and-verification" title="Link to this heading">#</a></h3>
@@ -906,9 +915,19 @@ to be reached with every contribution.</p>
 <td><p>100%</p></td>
 </tr>
 <tr class="row-even"><td><p>7</p></td>
-<td><p>Relative amount of failed tests</p></td>
-<td><p>0%</p></td>
-<td><p>0%</p></td>
+<td><p>Relative amount of passed tests</p></td>
+<td><p>100%</p></td>
+<td><p>100%</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>Compliance with rules for static code analysis</p></td>
+<td><p>only minor violation based on tool rating</p></td>
+<td><p>100%</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>Freedom from compiler warnings &amp; errors</p></td>
+<td><p>100%</p></td>
+<td><p>100%</p></td>
 </tr>
 </tbody>
 </table>
