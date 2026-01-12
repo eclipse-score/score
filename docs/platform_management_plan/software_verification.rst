@@ -103,6 +103,17 @@ The following types of integrations are applicable:
 #. **Changes** get integrated based on the :need:`wf__change_create_cr` and will follow
    the :need:`doc__pull_request_guideline` as any other artifact.
 
+The test methods and techniques shall be selected based on the characteristics and specified behavior
+of the software element under test. This shall ensure proper testing from unit level to feature integration level.
+Specific recommendations for each test level are provided in the following sections of this verification plan.
+
+The following examples serve as illustration and inspiration for test selection:
+Resource Usage Evaluation is selected when requirements address resource management or when data
+corruption may occur. Interface Testing is applied when requirements target external API behavior.
+Boundary Value Analysis is used for buffers where overflow is deemed possible or when requirements specify
+input ranges and boundaries covering incorrect input values. This list is not complete, and additional tests
+may be selected based on the specific requirements of each software element.
+
 Levels of integration and verification
 --------------------------------------
 
@@ -304,9 +315,17 @@ to be reached with every contribution.
      - 100%
      - 100%
    * - 7
-     - Relative amount of failed tests
-     - 0%
-     - 0%
+     - Relative amount of passed tests
+     - 100%
+     - 100%
+   * - 8
+     - Compliance with rules for static code analysis
+     - only minor violation based on tool rating
+     - 100%
+   * - 9
+     - Freedom from compiler warnings & errors
+     - 100%
+     - 100%
 
 Further quality goals are defined in section :doc:`quality_management`.
 
