@@ -53,11 +53,12 @@ This ADR defines a release process explicitly designed for **polyrepo systems wi
 - Continuous integration before formal releases
 - Independent module lifecycles without blocking development
 - A process that scales across many repositories and teams
+- Minimal integration governance to coordinate releases across repositories
 - Working on the main branch should be always possible
 - Working on a release branch should be always possible and not harm the development on the main branch (resp. Vice versa)
 - Working on a bugfix should always be possible (for any old release)
 - Module developers must know how to name their released versions
-- It must be clear how to do the integration, means what to reference (e.g. „extended“ semver as 1.2.3-etas-r1.0)
+- It must be clear how to do the integration, means what to reference (e.g. „extended" semver as 1.2.3-etas-r1.0)
 
 ---
 
@@ -135,7 +136,6 @@ With that approach releases are possible, e.g. by creating a release branch in t
 - Clear separation between development, integration, and stabilization.
 
 **Cons**:
-- Requires explicit integration governance.
 - Introduces additional coordination effort compared to single-repo workflows.
 
 ---
