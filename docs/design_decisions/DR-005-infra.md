@@ -155,4 +155,3 @@ Option 3.1 (Trunk-Based Development Only) has been rejected because it does not 
 
 Option 3.2 (Gitflow Across Repositories) has been rejected because it requires coordinating release branches across all repositories and lacks a central integration manifest, which does not scale well.
 
----
