@@ -46,19 +46,28 @@ This ADR defines a release process explicitly designed for **polyrepo systems wi
 
 ---
 
-## 2. Goals and Requirements
+## 2. Requirements and Goals
+
+### 2.1 Requirements
+
+Options that do not satisfy these requirements are not viable and will be rejected:
 
 - Reproducible and auditable release snapshots
-- Explicit stabilization phases
-- Continuous integration before formal releases
-- Independent module lifecycles without blocking development
-- A process that scales across many repositories and teams
-- Minimal integration governance to coordinate releases across repositories
 - Working on the main branch should be always possible
 - Working on a release branch should be always possible and not harm the development on the main branch (resp. Vice versa)
 - Working on a bugfix should always be possible (for any old release)
 - Module developers must know how to name their released versions
 - It must be clear how to do the integration, means what to reference (e.g. „extended" semver as 1.2.3-etas-r1.0)
+
+### 2.2 Optimization Goals
+
+Among viable options, we optimize for:
+
+- Explicit stabilization phases
+- Continuous integration before formal releases
+- Independent module lifecycles without blocking development
+- A process that scales across many repositories and teams
+- Minimal integration governance to coordinate releases across repositories
 
 ---
 
