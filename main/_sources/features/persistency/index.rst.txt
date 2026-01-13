@@ -30,6 +30,7 @@ Persistency (v0.5 beta)
    requirements/chklst_req_inspection.rst
    safety_analysis/fmea.rst
    safety_analysis/dfa.rst
+   safety_analysis/safety_analysis_fdr.rst
    safety_planning/index.rst
 
 

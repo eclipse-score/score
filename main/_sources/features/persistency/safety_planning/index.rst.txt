@@ -13,7 +13,7 @@
    # *******************************************************************************
 
 Feature Safety Work Products List
-=================================
+#################################
 
 .. document:: Persistency Safety WPs
    :id: doc__persistency_safety_wp
@@ -24,7 +24,19 @@ Feature Safety Work Products List
    :tags: persistency
 
 
-.. list-table:: Feature persistency workproducts
+Tailoring
+=========
+
+Additional to the tailoring in the SW platform project as defined in the project's :need:`wp__platform_safety_plan` we define here the additional tailoring on feature level.
+
+- Excluded for this feature are additionally the following work products (and their related requirements):
+
+  - no tailoring is used for the feature
+
+Safety Work products List
+=========================
+
+.. list-table:: Feature persistency Work products
     :header-rows: 1
 
     * - Workproduct Id
@@ -77,6 +89,19 @@ Feature Safety Work Products List
       - :ndf:`copy('status', need_id='gd_guidl__verification_guide')`
       - <WP Link>
 
+Feature Safety Package
+======================
+
+To create the safety package (according to :need:`gd_guidl__saf_package`) the following
+documents and work products status have to go to "valid" (after the relevant verification were performed).
+
+Feature Documents Status
+------------------------
+
+For all the work product documents the status can be seen by following the "Link to WP".
+A summary of the status is also documented in the project's documentation management plan.
+
+See :ref:`documents_docs_features_persistency`
 
 Feature Requirements Status
 ---------------------------
