@@ -36,16 +36,6 @@ Functional Requirements
 
    The Utils component shall provide functions for encoding data to Base64 format and decoding Base64 data back to its original form.
 
-.. comp_req:: PIMPL Pointer Implementation
-   :id: comp_req__utils__pimpl_ptr
-   :reqtype: Functional
-   :security: NO
-   :safety: ASIL_B
-   :satisfies: feat_req__baselibs__consistent_apis, feat_req__baselibs__safety
-   :status: valid
-
-   The Utils component shall provide a stack-based Pointer-to-Implementation Idiom implementation that avoids dynamic memory allocation by using fixed-size, aligned storage buffers.
-
 .. comp_req:: Scoped Operation Management
    :id: comp_req__utils__scoped_operation
    :reqtype: Functional
