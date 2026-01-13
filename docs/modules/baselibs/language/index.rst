@@ -12,22 +12,10 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Baselibs Module
-###############
+language
+########
 
 .. toctree::
-   :titlesonly:
-   :maxdepth: 2
+   :hidden:
 
-   ./docs/index
-   language/index
-
-Components
-==========
-
-.. toctree::
-   :titlesonly:
-   :maxdepth: 1
-   :glob:
-
-   ./*/docs/index
+   futurecpp/docs/index.rst
