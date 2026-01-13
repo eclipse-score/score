@@ -918,7 +918,7 @@ window.addEventListener("load", load);
                 <article class="bd-article">
                   
   <!--
-Copyright (c) 2025 Contributors to the Eclipse Foundation
+Copyright (c) 2026 Contributors to the Eclipse Foundation
 
 See the NOTICE file(s) distributed with this work for additional
 information regarding copyright ownership.
@@ -939,20 +939,28 @@ SPDX-License-Identifier: Apache-2.0
 <hr class="docutils" />
 <section id="context">
 <h2>1. Context<a class="headerlink" href="#context" title="Link to this heading">#</a></h2>
-<p>This project consists of multiple independently developed modules stored in separate repositories (polyrepo setup).</p>
-<p>This ADR builds on <a class="reference internal" href="DR-002-infra.html"><span class="std std-doc">DR-002 (Integration Testing in a Distributed Monolith)</span></a>, which establishes:</p>
+<p>This project consists of multiple independently developed modules stored in separate
+repositories (polyrepo setup).</p>
+<p>This ADR builds on
+<a class="reference internal" href="DR-002-infra.html"><span class="std std-doc">DR-002 (Integration Testing in a Distributed Monolith)</span></a>, which
+establishes:</p>
 <ul class="simple">
 <li><p>the polyrepo structure,</p></li>
 <li><p>centralized responsibility for cross-repository integration,</p></li>
 <li><p>and infrastructure-owned integration tooling and processes.</p></li>
 </ul>
-<p>Within that context, this ADR defines <strong>how coordinated product releases are produced</strong> from independently developed and versioned modules, while allowing continuous integration to reduce the gap between development and release.</p>
+<p>Within that context, this ADR defines <strong>how coordinated product releases are produced</strong>
+from independently developed and versioned modules, while allowing continuous
+integration to reduce the gap between development and release.</p>
 <p>Commonly referenced workflows do not fully address this problem space:</p>
 <ul class="simple">
-<li><p><strong>Trunk-Based Development</strong> with standard SemVer cannot represent parallel release streams needed for supporting multiple product versions simultaneously.</p></li>
-<li><p><strong>Gitflow</strong> adds branching complexity without solving the versioning problem for parallel releases in a polyrepo setup.</p></li>
+<li><p><strong>Trunk-Based Development</strong> with standard SemVer cannot represent parallel
+release streams needed for supporting multiple product versions simultaneously.</p></li>
+<li><p><strong>Gitflow</strong> adds branching complexity without solving the versioning problem
+for parallel releases in a polyrepo setup.</p></li>
 </ul>
-<p>This ADR evaluates branching and versioning strategies explicitly designed for <strong>polyrepo systems with coordinated integration releases and continuous verification</strong>.</p>
+<p>This ADR evaluates branching and versioning strategies explicitly designed for
+<strong>polyrepo systems with coordinated integration releases and continuous verification</strong>.</p>
 </section>
 <hr class="docutils" />
 <section id="requirements-and-goals">
@@ -962,19 +970,19 @@ SPDX-License-Identifier: Apache-2.0
 <p>Options that do not satisfy these requirements are not viable and will be rejected:</p>
 <ul class="simple">
 <li><p>Reproducible and auditable release snapshots</p></li>
-<li><p>Working on the main branch should be always possible</p></li>
-<li><p>Working on a release branch should be always possible and not harm the development on the main branch (resp. Vice versa)</p></li>
+<li><p>During working on a release, working on the main branch should still be possible</p></li>
+<li><p>Working on a release branch should be always possible and not harm the development on the main branch (resp. vice versa)</p></li>
 <li><p>Working on a bugfix should always be possible (for any old release)</p></li>
 <li><p>Module developers must know how to name their released versions</p></li>
-<li><p>The versioning scheme must clearly indicate which product release a module version belongs to, enabling parallel release streams</p></li>
+<li><p>The versioning scheme must clearly indicate which product release a module version belongs to, enabling parallel release, means essentially the ability to maintain old releases</p></li>
+<li><p>Explicit stabilization phases</p></li>
+<li><p>Continuous integration before formal releases</p></li>
 </ul>
 </section>
 <section id="optimization-goals">
 <h3>2.2 Optimization Goals<a class="headerlink" href="#optimization-goals" title="Link to this heading">#</a></h3>
 <p>Among viable options, we optimize for:</p>
 <ul class="simple">
-<li><p>Explicit stabilization phases</p></li>
-<li><p>Continuous integration before formal releases</p></li>
 <li><p>Independent module lifecycles without blocking development</p></li>
 <li><p>A process that scales across many repositories and teams</p></li>
 <li><p>Minimal integration governance to coordinate releases across repositories</p></li>
@@ -984,27 +992,43 @@ SPDX-License-Identifier: Apache-2.0
 <hr class="docutils" />
 <section id="options-considered">
 <h2>3. Options Considered<a class="headerlink" href="#options-considered" title="Link to this heading">#</a></h2>
-<section id="trunk-based-development-with-semver">
-<h3>3.1 Trunk-Based Development with SemVer<a class="headerlink" href="#trunk-based-development-with-semver" title="Link to this heading">#</a></h3>
-<p>Uses trunk-based development where modules develop on <code class="docutils literal notranslate"><span class="pre">main</span></code> branches and release with standard SemVer tags. The manifest repository (per DR-002) continuously tracks the latest module versions. When a product release is needed, release branches are created in the manifest and affected module repositories. Module bugfixes on release branches are tagged with standard SemVer, and the manifest’s release branch references these versions.</p>
+<section id="trunk-based-development">
+<h3>3.1 Trunk-Based Development<a class="headerlink" href="#trunk-based-development" title="Link to this heading">#</a></h3>
+<p>Trunk-based development is a branching model where all developers work on a single main
+branch (“trunk”), integrating changes frequently—ideally daily. Feature and bugfix
+development happens directly on the trunk or in very short-lived branches that are
+merged back quickly. Long-lived release branches and parallel release streams are
+explicitly avoided. Releases are created directly from the trunk, and if a release
+branch is needed for final stabilization or a hotfix, it is kept as short-lived
+as possible. Bugfixes are made on the trunk and only cherry-picked to a release
+branch in rare cases where a hotfix for an older release is required. Versioning
+is linear, and the model does not support parallel maintenance of multiple
+product versions.</p>
 <p><strong>Pros</strong>:</p>
 <ul class="simple">
-<li><p>Simplifies development workflow.</p></li>
-<li><p>Encourages frequent integration.</p></li>
-<li><p>Well-understood versioning convention.</p></li>
+<li><p>Very simple and lightweight branch structure.</p></li>
+<li><p>Maximizes integration and fast feedback through continuous integration.</p></li>
+<li><p>Minimizes merge conflicts and versioning issues.</p></li>
 </ul>
 <p><strong>Cons</strong>:</p>
 <ul class="simple">
-<li><p>Standard SemVer cannot represent parallel release streams. When a bugfix is needed on a release branch while <code class="docutils literal notranslate"><span class="pre">main</span></code> has advanced, version numbering becomes ambiguous (see diagram below).</p></li>
-<li><p>Versioning conflicts arise when merging bugfixes back to <code class="docutils literal notranslate"><span class="pre">main</span></code>.</p></li>
+<li><p>Parallel maintenance of multiple product versions (e.g., for long-term support) is
+not feasible.</p></li>
+<li><p>Not suitable for polyrepo setups that require parallel support of several releases,
+as parallel release streams are not supported by design.</p></li>
 </ul>
+<blockquote>
+<div><p>Note: The versioning and merge conflicts described in the diagram below typically
+arise when deviating from strict trunk-based development and introducing long-lived
+release branches. This is no longer considered state-of-the-art trunk-based development.</p>
+</div></blockquote>
 <pre  class="mermaid">
         gitGraph
     commit id: &quot;1.2.3&quot;
 
     branch release
     checkout release
-    commit id: &quot;1.2.3-r1.0&quot;
+    commit id: &quot;1.2.3-v1.0&quot;
 
     checkout main
     branch bugfix
@@ -1024,11 +1048,7 @@ SPDX-License-Identifier: Apache-2.0
 
     checkout main
     merge bugfix
-    </pre><blockquote>
-<div><p><em>Explanation:</em> Using SemVer quickly reaches its limits.
-If branching off from version 1.2.3 and needing a bugfix while development on <code class="docutils literal notranslate"><span class="pre">main</span></code> continues (creating 1.2.4), the release branch would need version 1.2.5 for the bugfix. The next version on <code class="docutils literal notranslate"><span class="pre">main</span></code> must then be 1.2.6, even though its logical predecessor is 1.2.4. This violates SemVer since backward compatibility could be broken.</p>
-</div></blockquote>
-</section>
+    </pre></section>
 <section id="gitflow-across-repositories">
 <h3>3.2 Gitflow Across Repositories<a class="headerlink" href="#gitflow-across-repositories" title="Link to this heading">#</a></h3>
 <p>Uses the Gitflow branching model where modules maintain both <code class="docutils literal notranslate"><span class="pre">main</span></code> and <code class="docutils literal notranslate"><span class="pre">develop</span></code> branches, with release branches created for stabilization. The manifest repository (per DR-002) creates release branches (e.g., <code class="docutils literal notranslate"><span class="pre">release/v1.0</span></code>), and each participating module repository creates corresponding release branches. Modules tag bugfixes on release branches with standard SemVer, and the manifest’s release branch references these versions.</p>
@@ -1048,8 +1068,8 @@ If branching off from version 1.2.3 and needing a bugfix while development on <c
 </section>
 <section id="polyrepo-release-process-with-manifest-repository-and-relaxed-version-of-semver">
 <h3>3.3 Polyrepo Release Process with Manifest Repository and relaxed version of SemVer<a class="headerlink" href="#polyrepo-release-process-with-manifest-repository-and-relaxed-version-of-semver" title="Link to this heading">#</a></h3>
-<p>As described in <a class="reference internal" href="DR-002-infra.html"><span class="std std-doc">DR-002 (Integration Testing in a Distributed Monolith)</span></a> there is a dedicated manifest repository containing the “known goods sets”. There is a known good set for the latest version, but also known good sets for release(d) versions. Because of the earlier described limitations of SemVer, the correct module versions should not be referenced in the <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code> (in the manifest repository) as e.g., <code class="docutils literal notranslate"><span class="pre">1.2.3</span></code> but either by referencing the git commit hash directly or using a relaxed SemVer string, e.g. as <code class="docutils literal notranslate"><span class="pre">1.2.3-v1.0</span></code> where the string after the hyphen represents the respective S-CORE release.</p>
-<p>With that approach releases are possible, e.g. by creating a release branch in the integration repository as well as in the affected module repositories. Also bugfixes of “old” releases are possible by checking out the repective release branch in the reference integration and if necessary to also created bugfixes in the affected modules.</p>
+<p>As described in <a class="reference internal" href="DR-002-infra.html"><span class="std std-doc">DR-002 (Integration Testing in a Distributed Monolith)</span></a> there is a dedicated manifest repository containing the “known goods sets”. There is a known good set for the latest version, but also known good sets for released versions. Because of the earlier described limitations of SemVer, the correct module versions should not be referenced in the <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code> (in the manifest repository) as e.g., <code class="docutils literal notranslate"><span class="pre">1.2.3</span></code> but either by referencing the git commit hash directly or using a relaxed SemVer string, e.g. as <code class="docutils literal notranslate"><span class="pre">1.2.3-v1.0</span></code> where the string after the hyphen represents the respective S-CORE release.</p>
+<p>With that approach releases are possible, e.g. by creating a release branch in the manifest repository as well as in the affected module repositories. Also bugfixes of “old” releases are possible by checking out the respective release branch in the reference integration and if necessary to also create bugfixes in the affected modules.</p>
 <p><strong>Pros</strong>:</p>
 <ul class="simple">
 <li><p>Single source of truth for product integration.</p></li>
@@ -1058,31 +1078,12 @@ If branching off from version 1.2.3 and needing a bugfix while development on <c
 <li><p>Scales with module count and team autonomy.</p></li>
 <li><p>Clear separation between development, integration, and stabilization.</p></li>
 </ul>
-<p><strong>Cons</strong>:
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+<p><strong>Cons</strong>:</p>
 <ul class="simple">
-<li><p>Introduces additional coordination effort compared to single-repo workflows.
-=======</p></li>
 <li><p>Requires explicit integration governance.</p></li>
 </ul>
-<blockquote>
-<div><blockquote>
-<div><blockquote>
-<div><blockquote>
-<div><blockquote>
-<div><blockquote>
-<div><blockquote>
-<div><p>0c4eb9ce124d24399681e0e04623e7fd1c43e345</p>
-</div></blockquote>
-</div></blockquote>
-</div></blockquote>
-</div></blockquote>
-</div></blockquote>
-</div></blockquote>
-</div></blockquote>
 </section>
 </section>
-<hr class="docutils" />
 <section id="decision">
 <h2>4. Decision<a class="headerlink" href="#decision" title="Link to this heading">#</a></h2>
 <p>We decided for <strong>Option 3.3</strong>.</p>
@@ -1153,7 +1154,7 @@ If branching off from version 1.2.3 and needing a bugfix while development on <c
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#options-considered">3. Options Considered</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trunk-based-development-with-semver">3.1 Trunk-Based Development with SemVer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trunk-based-development">3.1 Trunk-Based Development</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gitflow-across-repositories">3.2 Gitflow Across Repositories</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#polyrepo-release-process-with-manifest-repository-and-relaxed-version-of-semver">3.3 Polyrepo Release Process with Manifest Repository and relaxed version of SemVer</a></li>
 </ul>

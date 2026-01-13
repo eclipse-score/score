@@ -1,5 +1,5 @@
 <!--
-Copyright (c) 2025 Contributors to the Eclipse Foundation
+Copyright (c) 2026 Contributors to the Eclipse Foundation
 
 See the NOTICE file(s) distributed with this work for additional
 information regarding copyright ownership.
@@ -21,20 +21,28 @@ SPDX-License-Identifier: Apache-2.0
 
 ## 1. Context
 
-This project consists of multiple independently developed modules stored in separate repositories (polyrepo setup).
+This project consists of multiple independently developed modules stored in separate
+repositories (polyrepo setup).
 
-This ADR builds on [DR-002 (Integration Testing in a Distributed Monolith)](./DR-002-infra.md), which establishes:
+This ADR builds on
+[DR-002 (Integration Testing in a Distributed Monolith)](./DR-002-infra.md), which
+establishes:
 - the polyrepo structure,
 - centralized responsibility for cross-repository integration,
 - and infrastructure-owned integration tooling and processes.
 
-Within that context, this ADR defines **how coordinated product releases are produced** from independently developed and versioned modules, while allowing continuous integration to reduce the gap between development and release.
+Within that context, this ADR defines **how coordinated product releases are produced**
+from independently developed and versioned modules, while allowing continuous
+integration to reduce the gap between development and release.
 
 Commonly referenced workflows do not fully address this problem space:
-- **Trunk-Based Development** with standard SemVer cannot represent parallel release streams needed for supporting multiple product versions simultaneously.
-- **Gitflow** adds branching complexity without solving the versioning problem for parallel releases in a polyrepo setup.
+- **Trunk-Based Development** with standard SemVer cannot represent parallel
+release streams needed for supporting multiple product versions simultaneously.
+- **Gitflow** adds branching complexity without solving the versioning problem
+for parallel releases in a polyrepo setup.
 
-This ADR evaluates branching and versioning strategies explicitly designed for **polyrepo systems with coordinated integration releases and continuous verification**.
+This ADR evaluates branching and versioning strategies explicitly designed for
+**polyrepo systems with coordinated integration releases and continuous verification**.
 
 ---
 
@@ -45,18 +53,18 @@ This ADR evaluates branching and versioning strategies explicitly designed for *
 Options that do not satisfy these requirements are not viable and will be rejected:
 
 - Reproducible and auditable release snapshots
-- Working on the main branch should be always possible
-- Working on a release branch should be always possible and not harm the development on the main branch (resp. Vice versa)
+- During working on a release, working on the main branch should still be possible
+- Working on a release branch should be always possible and not harm the development on the main branch (resp. vice versa)
 - Working on a bugfix should always be possible (for any old release)
 - Module developers must know how to name their released versions
-- The versioning scheme must clearly indicate which product release a module version belongs to, enabling parallel release streams
+- The versioning scheme must clearly indicate which product release a module version belongs to, enabling parallel release, means essentially the ability to maintain old releases
+- Explicit stabilization phases
+- Continuous integration before formal releases
 
 ### 2.2 Optimization Goals
 
 Among viable options, we optimize for:
 
-- Explicit stabilization phases
-- Continuous integration before formal releases
 - Independent module lifecycles without blocking development
 - A process that scales across many repositories and teams
 - Minimal integration governance to coordinate releases across repositories
@@ -65,18 +73,33 @@ Among viable options, we optimize for:
 
 ## 3. Options Considered
 
-### 3.1 Trunk-Based Development with SemVer
+### 3.1 Trunk-Based Development
 
-Uses trunk-based development where modules develop on `main` branches and release with standard SemVer tags. The manifest repository (per DR-002) continuously tracks the latest module versions. When a product release is needed, release branches are created in the manifest and affected module repositories. Module bugfixes on release branches are tagged with standard SemVer, and the manifest's release branch references these versions.
+Trunk-based development is a branching model where all developers work on a single main
+branch ("trunk"), integrating changes frequently—ideally daily. Feature and bugfix
+development happens directly on the trunk or in very short-lived branches that are
+merged back quickly. Long-lived release branches and parallel release streams are
+explicitly avoided. Releases are created directly from the trunk, and if a release
+branch is needed for final stabilization or a hotfix, it is kept as short-lived
+as possible. Bugfixes are made on the trunk and only cherry-picked to a release
+branch in rare cases where a hotfix for an older release is required. Versioning
+is linear, and the model does not support parallel maintenance of multiple
+product versions.
 
 **Pros**:
-- Simplifies development workflow.
-- Encourages frequent integration.
-- Well-understood versioning convention.
+- Very simple and lightweight branch structure.
+- Maximizes integration and fast feedback through continuous integration.
+- Minimizes merge conflicts and versioning issues.
 
 **Cons**:
-- Standard SemVer cannot represent parallel release streams. When a bugfix is needed on a release branch while `main` has advanced, version numbering becomes ambiguous (see diagram below).
-- Versioning conflicts arise when merging bugfixes back to `main`.
+- Parallel maintenance of multiple product versions (e.g., for long-term support) is
+not feasible.
+- Not suitable for polyrepo setups that require parallel support of several releases,
+as parallel release streams are not supported by design.
+
+> Note: The versioning and merge conflicts described in the diagram below typically
+arise when deviating from strict trunk-based development and introducing long-lived
+release branches. This is no longer considered state-of-the-art trunk-based development.
 
 ```{mermaid}
 gitGraph
@@ -84,7 +107,7 @@ gitGraph
 
     branch release
     checkout release
-    commit id: "1.2.3-r1.0"
+    commit id: "1.2.3-v1.0"
 
     checkout main
     branch bugfix
@@ -105,8 +128,6 @@ gitGraph
     checkout main
     merge bugfix
 ```
-> *Explanation:* Using SemVer quickly reaches its limits.
-If branching off from version 1.2.3 and needing a bugfix while development on `main` continues (creating 1.2.4), the release branch would need version 1.2.5 for the bugfix. The next version on `main` must then be 1.2.6, even though its logical predecessor is 1.2.4. This violates SemVer since backward compatibility could be broken.
 
 ### 3.2 Gitflow Across Repositories
 
@@ -125,9 +146,9 @@ Uses the Gitflow branching model where modules maintain both `main` and `develop
 
 ### 3.3 Polyrepo Release Process with Manifest Repository and relaxed version of SemVer
 
-As described in [DR-002 (Integration Testing in a Distributed Monolith)](./DR-002-infra.md) there is a dedicated manifest repository containing the "known goods sets". There is a known good set for the latest version, but also known good sets for release(d) versions. Because of the earlier described limitations of SemVer, the correct module versions should not be referenced in the `MODULE.bazel` (in the manifest repository) as e.g., `1.2.3` but either by referencing the git commit hash directly or using a relaxed SemVer string, e.g. as `1.2.3-v1.0` where the string after the hyphen represents the respective S-CORE release.
+As described in [DR-002 (Integration Testing in a Distributed Monolith)](./DR-002-infra.md) there is a dedicated manifest repository containing the "known goods sets". There is a known good set for the latest version, but also known good sets for released versions. Because of the earlier described limitations of SemVer, the correct module versions should not be referenced in the `MODULE.bazel` (in the manifest repository) as e.g., `1.2.3` but either by referencing the git commit hash directly or using a relaxed SemVer string, e.g. as `1.2.3-v1.0` where the string after the hyphen represents the respective S-CORE release.
 
-With that approach releases are possible, e.g. by creating a release branch in the integration repository as well as in the affected module repositories. Also bugfixes of "old" releases are possible by checking out the repective release branch in the reference integration and if necessary to also created bugfixes in the affected modules.
+With that approach releases are possible, e.g. by creating a release branch in the manifest repository as well as in the affected module repositories. Also bugfixes of "old" releases are possible by checking out the respective release branch in the reference integration and if necessary to also create bugfixes in the affected modules.
 
 **Pros**:
 - Single source of truth for product integration.
@@ -137,13 +158,7 @@ With that approach releases are possible, e.g. by creating a release branch in t
 - Clear separation between development, integration, and stabilization.
 
 **Cons**:
-<<<<<<< HEAD
-- Introduces additional coordination effort compared to single-repo workflows.
-=======
 - Requires explicit integration governance.
->>>>>>> 0c4eb9ce124d24399681e0e04623e7fd1c43e345
-
----
 
 ## 4. Decision
 
