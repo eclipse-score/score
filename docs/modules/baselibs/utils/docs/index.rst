@@ -53,7 +53,6 @@ General considerations
 The Utils library should provide type-safe utility functions and efficient algorithms:
 
 * :need:`comp_req__utils__base64`
-* :need:`comp_req__utils__pimpl_ptr`
 * :need:`comp_req__utils__scoped_operation`
 * :need:`comp_req__utils__deterministic_behavior`
 
