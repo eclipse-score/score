@@ -57,7 +57,9 @@ Options that do not satisfy these requirements are not viable and will be reject
 - Working on a release branch should be always possible and not harm the development on the main branch (resp. vice versa)
 - Working on a bugfix should always be possible (for any old release)
 - Module developers must know how to name their released versions
-- The versioning scheme must clearly indicate which product release a module version belongs to, enabling parallel release, means essentially the ability to maintain old releases
+- The versioning scheme must clearly indicate which product release a module version
+belongs to, enabling parallel release, which essentially means the ability to
+maintain previous releases.
 - Explicit stabilization phases
 - Continuous integration before formal releases
 
@@ -148,7 +150,11 @@ Uses the Gitflow branching model where modules maintain both `main` and `develop
 
 As described in [DR-002 (Integration Testing in a Distributed Monolith)](./DR-002-infra.md) there is a dedicated manifest repository containing the "known goods sets". There is a known good set for the latest version, but also known good sets for released versions. Because of the earlier described limitations of SemVer, the correct module versions should not be referenced in the `MODULE.bazel` (in the manifest repository) as e.g., `1.2.3` but either by referencing the git commit hash directly or using a relaxed SemVer string, e.g. as `1.2.3-v1.0` where the string after the hyphen represents the respective S-CORE release.
 
-With that approach releases are possible, e.g. by creating a release branch in the manifest repository as well as in the affected module repositories. Also bugfixes of "old" releases are possible by checking out the respective release branch in the reference integration and if necessary to also create bugfixes in the affected modules.
+With that approach releases are possible, e.g. by creating a release branch in the
+manifest repository as well as in the affected module repositories. Bugfixes for
+previous releases are handled by checking out the corresponding release branch
+in the manifest and affected modules, applying the fix, and updating the manifest
+to reference the new module version.
 
 **Pros**:
 - Single source of truth for product integration.
