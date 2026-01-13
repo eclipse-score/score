@@ -974,7 +974,9 @@ for parallel releases in a polyrepo setup.</p></li>
 <li><p>Working on a release branch should be always possible and not harm the development on the main branch (resp. vice versa)</p></li>
 <li><p>Working on a bugfix should always be possible (for any old release)</p></li>
 <li><p>Module developers must know how to name their released versions</p></li>
-<li><p>The versioning scheme must clearly indicate which product release a module version belongs to, enabling parallel release, means essentially the ability to maintain old releases</p></li>
+<li><p>The versioning scheme must clearly indicate which product release a module version
+belongs to, enabling parallel release, which essentially means the ability to
+maintain previous releases.</p></li>
 <li><p>Explicit stabilization phases</p></li>
 <li><p>Continuous integration before formal releases</p></li>
 </ul>
@@ -1069,7 +1071,11 @@ release branches. This is no longer considered state-of-the-art trunk-based deve
 <section id="polyrepo-release-process-with-manifest-repository-and-relaxed-version-of-semver">
 <h3>3.3 Polyrepo Release Process with Manifest Repository and relaxed version of SemVer<a class="headerlink" href="#polyrepo-release-process-with-manifest-repository-and-relaxed-version-of-semver" title="Link to this heading">#</a></h3>
 <p>As described in <a class="reference internal" href="DR-002-infra.html"><span class="std std-doc">DR-002 (Integration Testing in a Distributed Monolith)</span></a> there is a dedicated manifest repository containing the “known goods sets”. There is a known good set for the latest version, but also known good sets for released versions. Because of the earlier described limitations of SemVer, the correct module versions should not be referenced in the <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code> (in the manifest repository) as e.g., <code class="docutils literal notranslate"><span class="pre">1.2.3</span></code> but either by referencing the git commit hash directly or using a relaxed SemVer string, e.g. as <code class="docutils literal notranslate"><span class="pre">1.2.3-v1.0</span></code> where the string after the hyphen represents the respective S-CORE release.</p>
-<p>With that approach releases are possible, e.g. by creating a release branch in the manifest repository as well as in the affected module repositories. Also bugfixes of “old” releases are possible by checking out the respective release branch in the reference integration and if necessary to also create bugfixes in the affected modules.</p>
+<p>With that approach releases are possible, e.g. by creating a release branch in the
+manifest repository as well as in the affected module repositories. Bugfixes for
+previous releases are handled by checking out the corresponding release branch
+in the manifest and affected modules, applying the fix, and updating the manifest
+to reference the new module version.</p>
 <p><strong>Pros</strong>:</p>
 <ul class="simple">
 <li><p>Single source of truth for product integration.</p></li>
