@@ -27,6 +27,7 @@ utils
    :hidden:
 
    requirements/index.rst
+   architecture/index.rst
 
 Abstract
 ========
