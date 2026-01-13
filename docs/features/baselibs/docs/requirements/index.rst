@@ -132,5 +132,15 @@ Requirements
 
    The base libraries shall provide a filesystem library with file and directory manipulation functionality.
 
+.. feat_req:: Memory Library
+   :id: feat_req__baselibs__memory_library
+   :reqtype: Functional
+   :security: YES
+   :safety: QM
+   :satisfies: stkh_req__functional_req__base_libraries
+   :status: valid
+
+   The baselibs shall provide a memory management library that includes utilities for shared memory operations, polymorphic memory resources, position-independent pointers, endianness conversion, and inter-process synchronization mechanisms.
+
 .. needextend:: "__baselibs" in id
    :+tags: baselibs
