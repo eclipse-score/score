@@ -21,3 +21,4 @@ memory_shared
    :hidden:
 
    architecture/index
+   requirements/index.rst
