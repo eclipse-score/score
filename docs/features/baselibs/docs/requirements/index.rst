@@ -136,7 +136,7 @@ Requirements
    :id: feat_req__baselibs__memory_library
    :reqtype: Functional
    :security: YES
-   :safety: QM
+   :safety: ASIL_B
    :satisfies: stkh_req__functional_req__base_libraries
    :status: valid
 

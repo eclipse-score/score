@@ -36,7 +36,7 @@ Functional Requirements
 
    The Memory library shall provide capabilities for creating, opening and managing shared memory.
 
-.. comp_req:: Position-Independent Pointers
+.. comp_req:: Polymorphic OffsetPtr Allocator
    :id: comp_req__memory__offset_ptr
    :reqtype: Functional
    :security: YES
@@ -44,7 +44,7 @@ Functional Requirements
    :satisfies: feat_req__baselibs__core_utilities, feat_req__baselibs__memory_library, feat_req__baselibs__safety
    :status: valid
 
-   The Memory library shall provide polymorphic memory resource allocators for controlled and deterministic memory allocation.
+   The Memory library shall provide polymorphic memory resource allocators using offset pointers instead of raw pointers to enable allocation in shared memory regions accessible across multiple processes. The standard library's std::pmr::polymorphic_allocator is not applicable as it uses raw pointers that are invalid when shared memory is mapped at different virtual addresses in different processes.
 
 .. comp_req:: Shared Memory Containers
    :id: comp_req__memory__shared_containers
