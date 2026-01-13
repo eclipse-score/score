@@ -509,6 +509,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../safety_analysis/dfa.html">DFA (Dependent Failure Analysis)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../safety_analysis/safety_analysis_fdr.html">Safety Analysis Checklist</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../safety_planning/index.html">Feature Safety Work Products List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../security_planning/index.html">Feature Security Planning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../security_analysis/stride.html">Persistency STRIDE</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../security_crypto/index.html">Security &amp; Cryptography</a></li>
@@ -578,7 +580,7 @@
                   
   <section id="architecture">
 <span id="feature-architecture-persistency"></span><h1>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-dfcc0408">
+<div class="need_container docutils container" id="SNCB-f31dbd0a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__persistency_architecture">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -652,7 +654,7 @@ functionality call or receives a callback.</p></li>
 </section>
 <section id="static-architecture">
 <h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-50fe9d42">
+<div class="need_container docutils container" id="SNCB-cefb2c5d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_sta table" id="feat_arc_sta__persistency__static">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -701,7 +703,7 @@ functionality call or receives a callback.</p></li>
 </section>
 <section id="dynamic-architecture">
 <h2>Dynamic Architecture<a class="headerlink" href="#dynamic-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-58a916e9">
+<div class="need_container docutils container" id="SNCB-726cb593">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__persistency__check_key_default">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -746,7 +748,7 @@ functionality call or receives a callback.</p></li>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6e285110">
+<div class="need_container docutils container" id="SNCB-a0b8ac86">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__persistency__delete_key">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -791,7 +793,7 @@ functionality call or receives a callback.</p></li>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-78881155">
+<div class="need_container docutils container" id="SNCB-a0016a81">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__persistency__flush">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -836,7 +838,7 @@ functionality call or receives a callback.</p></li>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-c0f00ebc">
+<div class="need_container docutils container" id="SNCB-cded0781">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__persistency__read_key">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -881,7 +883,7 @@ functionality call or receives a callback.</p></li>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-0ec90c17">
+<div class="need_container docutils container" id="SNCB-c16f8599">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__persistency__read_from_storage">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -926,7 +928,7 @@ functionality call or receives a callback.</p></li>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4eb8dcd8">
+<div class="need_container docutils container" id="SNCB-de8d46cc">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__persistency__write_key">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -971,7 +973,7 @@ functionality call or receives a callback.</p></li>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-ab46880f">
+<div class="need_container docutils container" id="SNCB-5413b05b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__persistency__snapshot_restore">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1019,7 +1021,7 @@ functionality call or receives a callback.</p></li>
 </section>
 <section id="logical-interfaces">
 <h2>Logical Interfaces<a class="headerlink" href="#logical-interfaces" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-d8e4135d">
+<div class="need_container docutils container" id="SNCB-4a8e3f8d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__persistency__interface">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
