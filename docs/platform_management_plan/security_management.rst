@@ -17,7 +17,7 @@
    :status: draft
    :safety: ASIL_B
    :security: YES
-   :realizes: wp__platform_security_plan, wp__tailoring
+   :realizes: wp__platform_security_plan, wp__tailoring_work_products
    :tags: platform_management
 
 Security management / Platform Security Plan
@@ -91,7 +91,7 @@ Because these are in responsibility of the system integrator: :need:`std_wp__iso
 :need:`std_wp__isosae21434__assessment_15331`, :need:`std_wp__isosae21434__assessment_15332`,
 :need:`std_wp__isosae21434__assessment_15431`, :need:`std_wp__isosae21434__assessment_15531`
 
-Summary: :need:`wp__tailoring` links to all the work products which are tailored out in the platform security plan,
+Summary: :need:`wp__tailoring_work_products` links to all the work products which are tailored out in the platform security plan,
 to be able to demonstrate completeness in `REPLACE_external_standards`
 
 
@@ -305,7 +305,7 @@ Security Specific SW Platform Work Products
       - <Link to WP>
       - <automated>
 
-    * - :need:`wp__tailoring` (generic)
+    * - :need:`wp__tailoring_work_products` (generic)
       - :ndf:`copy('status', need_id='wf__def_app_process_description')`
       - :need:`doc__platform_security_plan`
       - :ndf:`copy('status', need_id='doc__platform_security_plan')`

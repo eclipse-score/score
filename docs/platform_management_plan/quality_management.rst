@@ -416,7 +416,7 @@ None
         * - :need:`wp__sw_implementation_inspection`
           - :ref:`documents_docs_modules_components`
 
-        * - :need:`wp__tailoring`
+        * - :need:`wp__tailoring_work_products`
           - :ref:`project_documents_list`, :ref:`documents_docs_features`, :ref:`documents_docs_modules_components`
 
         * - :need:`wp__tlm_plan`

@@ -17,7 +17,7 @@
    :status: draft
    :safety: ASIL_B
    :security: NO
-   :realizes: wp__platform_safety_plan, wp__tailoring
+   :realizes: wp__platform_safety_plan, wp__safety_tailoring
    :tags: platform_management
 
 Safety management / Platform Safety Plan
@@ -449,7 +449,7 @@ Functional Safety Specific SW Platform Work Products
       - <Link to WP>
       - <automated>
 
-    * - :need:`wp__tailoring` (generic)
+    * - :need:`wp__safety_tailoring` (generic)
       - :ndf:`copy('status', need_id='wf__def_app_process_description')`
       - :need:`wp__tailoring_work_products` & :need:`doc__score_platform_safety_plan`
       - valid
