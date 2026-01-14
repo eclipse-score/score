@@ -524,8 +524,8 @@ Test execution environment and reference hardware
 -------------------------------------------------
 
 The platform is consisting solely on features that are considered as "middleware" as the layer
-above the hardware abstraction layer. The platform itself doe not require to be running on
-a specific hardware. It integrates with an Posix Operating System which is the first level of
+above the hardware abstraction layer. The platform itself does not require to be running on
+a specific hardware. It integrates with an POSIX Operating System which is the first level of
 abstraction to the physical hardware.
 
 The simulation environment will be based on x86 and arm64 architecture, to be close to later
