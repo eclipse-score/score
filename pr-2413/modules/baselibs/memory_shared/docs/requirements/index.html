@@ -489,7 +489,9 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../index.html">Baselibs Module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../../docs/index.html">Module Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../language/index.html">language</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../bitmanipulation/docs/index.html">bitmanipulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../concurrency/docs/index.html">concurrency</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../containers/docs/index.html">containers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../filesystem/docs/index.html">filesystem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../json/docs/index.html">JSON-Library</a></li>
@@ -588,7 +590,7 @@
                   
   <section id="requirements">
 <h1>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-faaa02e4">
+<div class="need_container docutils container" id="SNCB-5bd7d63d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__memory_lib_requirements">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -633,7 +635,7 @@
 </div>
 <section id="functional-requirements">
 <h2>Functional Requirements<a class="headerlink" href="#functional-requirements" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-c3980719">
+<div class="need_container docutils container" id="SNCB-6f364051">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__memory__shared_memory">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -676,11 +678,11 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6150a552">
+<div class="need_container docutils container" id="SNCB-16be4ee3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__memory__offset_ptr">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">Position-Independent Pointers</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">Polymorphic OffsetPtr Allocator</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -703,7 +705,7 @@
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The Memory library shall provide polymorphic memory resource allocators for controlled and deterministic memory allocation.</p></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The Memory library shall provide polymorphic memory resource allocators using offset pointers instead of raw pointers to enable allocation in shared memory regions accessible across multiple processes. The standard library’s std::pmr::polymorphic_allocator is not applicable as it uses raw pointers that are invalid when shared memory is mapped at different virtual addresses in different processes.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#comp_req__memory__offset_ptr" title="comp_req__memory__offset_ptr">comp_req__memory__offset_ptr</a></span></span></div>
@@ -719,7 +721,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-64daa8bf">
+<div class="need_container docutils container" id="SNCB-5ca185c5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__memory__shared_containers">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -763,7 +765,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b772c102">
+<div class="need_container docutils container" id="SNCB-bf072a6c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__memory__ipc_sync">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -807,7 +809,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-89f7d1dc">
+<div class="need_container docutils container" id="SNCB-25cf15ee">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__memory__bounds_check">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -850,7 +852,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-45869354">
+<div class="need_container docutils container" id="SNCB-7f643608">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__memory__endianness">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -893,7 +895,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e73d3f32">
+<div class="need_container docutils container" id="SNCB-fcffdd6d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__memory__sealed_shm">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -936,7 +938,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b69df7ab">
+<div class="need_container docutils container" id="SNCB-2802a04b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__memory__typed_shm">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -979,7 +981,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-29949d7d">
+<div class="need_container docutils container" id="SNCB-58a459ef">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__memory__resource_registry">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1022,7 +1024,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e50a04b6">
+<div class="need_container docutils container" id="SNCB-86f924c6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__memory__string_utils">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1065,7 +1067,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-25e551a6">
+<div class="need_container docutils container" id="SNCB-46224d3a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__memory__atomic_ops">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1111,7 +1113,7 @@
 </section>
 <section id="non-functional-requirements">
 <h2>Non-Functional Requirements<a class="headerlink" href="#non-functional-requirements" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-924a84b1">
+<div class="need_container docutils container" id="SNCB-064e3e1f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__memory__deterministic_alloc">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1154,7 +1156,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4eb3c070">
+<div class="need_container docutils container" id="SNCB-21cde318">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__memory__address_independence">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">

@@ -72,8 +72,8 @@
         </script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Security &amp; Cryptography" href="../../security_crypto/index.html" />
-    <link rel="prev" title="DFA (Dependent Failure Analysis)" href="../safety_analysis/dfa.html" />
+    <link rel="next" title="Feature Security Planning" href="../security_planning/index.html" />
+    <link rel="prev" title="Safety Analysis Checklist" href="../safety_analysis/safety_analysis_fdr.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
@@ -507,7 +507,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../requirements/chklst_req_inspection.html">Persistency Requirements Inspection Checklist</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../safety_analysis/fmea.html">FMEA (Failure Modes and Effects Analysis)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../safety_analysis/dfa.html">DFA (Dependent Failure Analysis)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../safety_analysis/safety_analysis_fdr.html">Safety Analysis Checklist</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Feature Safety Work Products List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../security_planning/index.html">Feature Security Planning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../security_analysis/stride.html">Persistency STRIDE</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../security_crypto/index.html">Security &amp; Cryptography</a></li>
@@ -577,7 +580,7 @@
                   
   <section id="feature-safety-work-products-list">
 <h1>Feature Safety Work Products List<a class="headerlink" href="#feature-safety-work-products-list" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-9c65a5e7">
+<div class="need_container docutils container" id="SNCB-fbaf1297">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__persistency_safety_wp">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -620,8 +623,21 @@
 </table>
 </div>
 </div>
+<section id="tailoring">
+<h2>Tailoring<a class="headerlink" href="#tailoring" title="Link to this heading">#</a></h2>
+<p>Additional to the tailoring in the SW platform project as defined in the project’s <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__platform_safety_plan">wp__platform_safety_plan</a> we define here the additional tailoring on feature level.</p>
+<ul class="simple">
+<li><p>Excluded for this feature are additionally the following work products (and their related requirements):</p>
+<ul>
+<li><p>no tailoring is used for the feature</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="safety-work-products-list">
+<h2>Safety Work products List<a class="headerlink" href="#safety-work-products-list" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table" id="id1">
-<caption><span class="caption-number">Table 16 </span><span class="caption-text">Feature persistency workproducts</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 17 </span><span class="caption-text">Feature persistency Work products</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Workproduct Id</p></th>
 <th class="head"><p>Link to process</p></th>
@@ -678,8 +694,19 @@
 </tbody>
 </table>
 </div>
+</section>
+<section id="feature-safety-package">
+<h2>Feature Safety Package<a class="headerlink" href="#feature-safety-package" title="Link to this heading">#</a></h2>
+<p>To create the safety package (according to <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/guidance/guideline_safety_management.html#gd_guidl__saf_package">gd_guidl__saf_package</a>) the following
+documents and work products status have to go to “valid” (after the relevant verification were performed).</p>
+<section id="feature-documents-status">
+<h3>Feature Documents Status<a class="headerlink" href="#feature-documents-status" title="Link to this heading">#</a></h3>
+<p>For all the work product documents the status can be seen by following the “Link to WP”.
+A summary of the status is also documented in the project’s documentation management plan.</p>
+<p>See <a class="reference internal" href="../../../platform_management_plan/documentation_management.html#documents-docs-features-persistency"><span class="std std-ref">docs/features/persistency</span></a></p>
+</section>
 <section id="feature-requirements-status">
-<h2>Feature Requirements Status<a class="headerlink" href="#feature-requirements-status" title="Link to this heading">#</a></h2>
+<h3>Feature Requirements Status<a class="headerlink" href="#feature-requirements-status" title="Link to this heading">#</a></h3>
 <div class="needstable_wrapper docutils container" id="needtable-features/persistency/safety_planning/index-0">
 <div class="pst-scrollable-table-container"><table class="NEEDS_TABLE table" id="needtable-features/persistency/safety_planning/index-0-table_node">
 <colgroup>
@@ -809,7 +836,7 @@
 </div>
 </section>
 <section id="feature-aou-status">
-<h2>Feature AoU Status<a class="headerlink" href="#feature-aou-status" title="Link to this heading">#</a></h2>
+<h3>Feature AoU Status<a class="headerlink" href="#feature-aou-status" title="Link to this heading">#</a></h3>
 <div class="needstable_wrapper docutils container" id="needtable-features/persistency/safety_planning/index-1">
 <div class="pst-scrollable-table-container"><table class="NEEDS_TABLE table" id="needtable-features/persistency/safety_planning/index-1-table_node">
 <colgroup>
@@ -837,8 +864,9 @@
 </div>
 </section>
 <section id="feature-architecture-status">
-<h2>Feature Architecture Status<a class="headerlink" href="#feature-architecture-status" title="Link to this heading">#</a></h2>
+<h3>Feature Architecture Status<a class="headerlink" href="#feature-architecture-status" title="Link to this heading">#</a></h3>
 <p class="needs_filter_warning" id="needtable-features/persistency/safety_planning/index-2">No needs passed the filters</p>
+</section>
 </section>
 </section>
 
@@ -853,20 +881,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../safety_analysis/dfa.html"
+       href="../safety_analysis/safety_analysis_fdr.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">DFA (Dependent Failure Analysis)</p>
+        <p class="prev-next-title">Safety Analysis Checklist</p>
       </div>
     </a>
     <a class="right-next"
-       href="../../security_crypto/index.html"
+       href="../security_planning/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Security &amp; Cryptography</p>
+        <p class="prev-next-title">Feature Security Planning</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -889,9 +917,15 @@
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-requirements-status">Feature Requirements Status</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-aou-status">Feature AoU Status</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-architecture-status">Feature Architecture Status</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tailoring">Tailoring</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#safety-work-products-list">Safety Work products List</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-safety-package">Feature Safety Package</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-documents-status">Feature Documents Status</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-requirements-status">Feature Requirements Status</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-aou-status">Feature AoU Status</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-architecture-status">Feature Architecture Status</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
