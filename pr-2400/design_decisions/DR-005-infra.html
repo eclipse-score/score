@@ -62,371 +62,6 @@
     <script src="../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
     <script src="../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
     <script src="../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.6.0/dist/mermaid.esm.min.mjs"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.2.0/dist/mermaid-layout-elk.esm.min.mjs"></script>
-    <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.6.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.2.0/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
-    <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
-    <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.6.0/dist/mermaid.esm.min.mjs";
-
-const defaultStyle = document.createElement('style');
-defaultStyle.textContent = `pre.mermaid {
-    /* Same as .mermaid-container > pre */
-    display: block;
-    width: 100%;
-}
-
-pre.mermaid > svg {
-    /* Same as .mermaid-container > pre > svg */
-    height: 500px;
-    width: 100%;
-    max-width: 100% !important;
-}
-`;
-document.head.appendChild(defaultStyle);
-
-const fullscreenStyle = document.createElement('style');
-fullscreenStyle.textContent = `.mermaid-container {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-}
-
-.mermaid-container > pre {
-    display: block;
-    width: 100%;
-}
-
-.mermaid-container > pre > svg {
-    height: 500px;
-    width: 100%;
-    max-width: 100% !important;
-}
-
-.mermaid-fullscreen-btn {
-    width: 28px;
-    height: 28px;
-    background: rgba(255, 255, 255, 0.95);
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    border-radius: 4px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    font-size: 14px;
-    line-height: 1;
-    padding: 0;
-    color: #333;
-}
-
-.mermaid-fullscreen-btn:hover {
-    opacity: 100% !important;
-    background: rgba(255, 255, 255, 1);
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-    transform: scale(1.1);
-}
-
-.mermaid-fullscreen-btn.dark-theme {
-    background: rgba(50, 50, 50, 0.95);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: #e0e0e0;
-}
-
-.mermaid-fullscreen-btn.dark-theme:hover {
-    background: rgba(60, 60, 60, 1);
-    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);
-}
-
-.mermaid-fullscreen-modal {
-    display: none;
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 95vw;
-    height: 100vh;
-    background: rgba(255, 255, 255, 0.98);
-    z-index: 9999;
-    padding: 20px;
-    overflow: auto;
-}
-
-.mermaid-fullscreen-modal.dark-theme {
-    background: rgba(0, 0, 0, 0.98);
-}
-
-.mermaid-fullscreen-modal.active {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.mermaid-container-fullscreen {
-    position: relative;
-    width: 95vw;
-    height: 90vh;
-    max-width: 95vw;
-    max-height: 90vh;
-    background: white;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-    overflow: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.mermaid-container-fullscreen.dark-theme {
-    background: #1a1a1a;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
-}
-
-.mermaid-container-fullscreen pre.mermaid {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.mermaid-container-fullscreen .mermaid svg {
-    height: 100% !important;
-    width: 100% !important;
-    cursor: grab;
-}
-
-.mermaid-fullscreen-close {
-    position: fixed !important;
-    top: 20px !important;
-    right: 20px !important;
-    width: 40px;
-    height: 40px;
-    background: rgba(255, 255, 255, 0.95);
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 10000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    transition: all 0.2s;
-    font-size: 24px;
-    line-height: 1;
-    color: #333;
-}
-
-.mermaid-fullscreen-close:hover {
-    background: white;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-    transform: scale(1.1);
-}
-
-.mermaid-fullscreen-close.dark-theme {
-    background: rgba(50, 50, 50, 0.95);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #e0e0e0;
-}
-
-.mermaid-fullscreen-close.dark-theme:hover {
-    background: rgba(60, 60, 60, 1);
-    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
-}
-
-.mermaid-fullscreen-modal .mermaid-fullscreen-btn {
-    display: none !important;
-}`;
-document.head.appendChild(fullscreenStyle);
-
-// Detect if page has dark background
-const isDarkTheme = () => {
-    const bgColor = window.getComputedStyle(document.body).backgroundColor;
-    const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)/);
-    if (match) {
-        const r = parseInt(match[1]);
-        const g = parseInt(match[2]);
-        const b = parseInt(match[3]);
-        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
-        return brightness < 128;
-    }
-    return false;
-};
-
-const load = async () => {
-    await mermaid.run();
-
-    const all_mermaids = document.querySelectorAll(".mermaid");
-    const mermaids_processed = document.querySelectorAll(".mermaid[data-processed='true']");
-
-    if ("False" === "True") {
-        const mermaids_to_add_zoom = -1 === -1 ? all_mermaids.length : -1;
-        if(mermaids_to_add_zoom > 0) {
-            var svgs = d3.selectAll("");
-            if(all_mermaids.length !== mermaids_processed.length) {
-                setTimeout(load, 200);
-                return;
-            } else if(svgs.size() !== mermaids_to_add_zoom) {
-                setTimeout(load, 200);
-                return;
-            } else {
-                svgs.each(function() {
-                    var svg = d3.select(this);
-                    svg.html("<g class='wrapper'>" + svg.html() + "</g>");
-                    var inner = svg.select("g");
-                    var zoom = d3.zoom().on("zoom", function(event) {
-                        inner.attr("transform", event.transform);
-                    });
-                    svg.call(zoom);
-                });
-            }
-        }
-    } else if(all_mermaids.length !== mermaids_processed.length) {
-        // Wait for mermaid to process all diagrams
-        setTimeout(load, 200);
-        return;
-    }
-
-    const darkTheme = isDarkTheme();
-
-    // Stop here if not adding fullscreen capability
-    if ("True" !== "True") return;
-
-    const modal = document.createElement('div');
-    modal.className = 'mermaid-fullscreen-modal' + (darkTheme ? ' dark-theme' : '');
-    modal.setAttribute('role', 'dialog');
-    modal.setAttribute('aria-modal', 'true');
-    modal.setAttribute('aria-label', 'Fullscreen diagram viewer');
-    modal.innerHTML = `
-        <button class="mermaid-fullscreen-close${darkTheme ? ' dark-theme' : ''}" aria-label="Close fullscreen">✕</button>
-        <div class="mermaid-container-fullscreen${darkTheme ? ' dark-theme' : ''}"></div>
-    `;
-    document.body.appendChild(modal);
-
-    const modalContent = modal.querySelector('.mermaid-container-fullscreen');
-    const closeBtn = modal.querySelector('.mermaid-fullscreen-close');
-
-    let previousScrollOffset = [window.scrollX, window.scrollY];
-
-    const closeModal = () => {
-        modal.classList.remove('active');
-        modalContent.innerHTML = '';
-        document.body.style.overflow = ''
-        window.scrollTo({left: previousScrollOffset[0], top: previousScrollOffset[1], behavior: 'instant'});
-    };
-
-    closeBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
-    });
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('active')) {
-            closeModal();
-        }
-    });
-
-    const allButtons = [];
-
-    document.querySelectorAll('.mermaid').forEach((mermaidDiv) => {
-        if (mermaidDiv.parentNode.classList.contains('mermaid-container') ||
-            mermaidDiv.closest('.mermaid-fullscreen-modal')) {
-            return;
-        }
-
-        const container = document.createElement('div');
-        container.className = 'mermaid-container';
-        mermaidDiv.parentNode.insertBefore(container, mermaidDiv);
-        container.appendChild(mermaidDiv);
-
-        const fullscreenBtn = document.createElement('button');
-        fullscreenBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
-        fullscreenBtn.setAttribute('aria-label', 'View diagram in fullscreen');
-        fullscreenBtn.textContent = '⛶';
-        fullscreenBtn.style.opacity = '50%';
-
-        // Calculate dynamic position based on diagram's margin and padding
-        const diagramStyle = window.getComputedStyle(mermaidDiv);
-        const marginTop = parseFloat(diagramStyle.marginTop) || 0;
-        const marginRight = parseFloat(diagramStyle.marginRight) || 0;
-        const paddingTop = parseFloat(diagramStyle.paddingTop) || 0;
-        const paddingRight = parseFloat(diagramStyle.paddingRight) || 0;
-        fullscreenBtn.style.top = `${marginTop + paddingTop + 4}px`;
-        fullscreenBtn.style.right = `${marginRight + paddingRight + 4}px`;
-
-        fullscreenBtn.addEventListener('click', () => {
-            previousScrollOffset = [window.scroll, window.scrollY];
-            const clone = mermaidDiv.cloneNode(true);
-            modalContent.innerHTML = '';
-            modalContent.appendChild(clone);
-
-            const svg = clone.querySelector('svg');
-            if (svg) {
-                svg.removeAttribute('width');
-                svg.removeAttribute('height');
-                svg.style.width = '100%';
-                svg.style.height = 'auto';
-                svg.style.maxWidth = '100%';
-                svg.style.sdisplay = 'block';
-
-                if ("False" === "True") {
-                    setTimeout(() => {
-                        const g = svg.querySelector('g');
-                        if (g) {
-                            var svgD3 = d3.select(svg);
-                            svgD3.html("<g class='wrapper'>" + svgD3.html() + "</g>");
-                            var inner = svgD3.select("g");
-                            var zoom = d3.zoom().on("zoom", function(event) {
-                                inner.attr("transform", event.transform);
-                            });
-                            svgD3.call(zoom);
-                        }
-                    }, 100);
-                }
-            }
-
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
-
-        container.appendChild(fullscreenBtn);
-        allButtons.push(fullscreenBtn);
-    });
-
-    // Update theme classes when theme changes
-    const updateTheme = () => {
-        const dark = isDarkTheme();
-        allButtons.forEach(btn => {
-            if (dark) {
-                btn.classList.add('dark-theme');
-            } else {
-                btn.classList.remove('dark-theme');
-            }
-        });
-        if (dark) {
-            modal.classList.add('dark-theme');
-            modalContent.classList.add('dark-theme');
-            closeBtn.classList.add('dark-theme');
-        } else {
-            modal.classList.remove('dark-theme');
-            modalContent.classList.remove('dark-theme');
-            closeBtn.classList.remove('dark-theme');
-        }
-    };
-
-    // Watch for theme changes
-    const observer = new MutationObserver(updateTheme);
-    observer.observe(document.documentElement, {
-        attributes: true,
-        attributeFilter: ['class', 'style', 'data-theme']
-    });
-    observer.observe(document.body, {
-        attributes: true,
-        attributeFilter: ['class', 'style']
-    });
-};
-
-window.addEventListener("load", load);
-</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'design_decisions/DR-005-infra';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
@@ -917,32 +552,57 @@ window.addEventListener("load", load);
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <!--
-Copyright (c) 2026 Contributors to the Eclipse Foundation
-
-See the NOTICE file(s) distributed with this work for additional
-information regarding copyright ownership.
-
-This program and the accompanying materials are made available under the
-terms of the Apache License Version 2.0 which is available at
-https://www.apache.org/licenses/LICENSE-2.0
-
-SPDX-License-Identifier: Apache-2.0
--->
-<section id="dr-005-infra-development-release-and-bugfix-workflows">
+  <section id="dr-005-infra-development-release-and-bugfix-workflows">
 <h1>DR-005-Infra: Development, Release and Bugfix workflows<a class="headerlink" href="#dr-005-infra-development-release-and-bugfix-workflows" title="Link to this heading">#</a></h1>
-<ul class="simple">
-<li><p><strong>Status:</strong> Proposed</p></li>
-<li><p><strong>Owner:</strong> Infrastructure Community</p></li>
-<li><p><strong>Date:</strong> 2026-01-08</p></li>
-</ul>
-<hr class="docutils" />
+<div class="need_container docutils container" id="SNCB-c8da1759">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__dev_release_bugfix">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Development, Release and Bugfix workflows</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">accepted</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_context"><span class="needs_label">context: </span><span class="needs_data">Infrastructure</span></span></div>
+<div class="line"><span class="needs_decision"><span class="needs_label">decision: </span><span class="needs_data">Polyrepo release process with manifest repository</span></span></div>
+</span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>Date: 2026-01-08</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#dec_rec__infra__dev_release_bugfix" title="dec_rec__infra__dev_release_bugfix">dec_rec__infra__dev_release_bugfix</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Decision Record</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <section id="context">
-<h2>1. Context<a class="headerlink" href="#context" title="Link to this heading">#</a></h2>
+<h2>Context<a class="headerlink" href="#context" title="Link to this heading">#</a></h2>
 <p>This project consists of multiple independently developed modules stored in separate
 repositories (polyrepo setup).</p>
 <p>This ADR builds on
-<a class="reference internal" href="DR-002-infra.html"><span class="std std-doc">DR-002 (Integration Testing in a Distributed Monolith)</span></a>, which
+<a class="reference external" href="./DR-002-infra.md">DR-002 (Integration Testing in a Distributed Monolith)</a>, which
 establishes:</p>
 <ul class="simple">
 <li><p>the polyrepo structure,</p></li>
@@ -954,19 +614,24 @@ from independently developed and versioned modules, while allowing continuous
 integration to reduce the gap between development and release.</p>
 <p>Commonly referenced workflows do not fully address this problem space:</p>
 <ul class="simple">
-<li><p><strong>Trunk-Based Development</strong> with standard SemVer cannot represent parallel
-release streams needed for supporting multiple product versions simultaneously.</p></li>
-<li><p><strong>Gitflow</strong> adds branching complexity without solving the versioning problem
-for parallel releases in a polyrepo setup.</p></li>
+<li><dl class="simple">
+<dt><strong>Trunk-Based Development</strong> with standard SemVer cannot represent parallel</dt><dd><p>release streams needed for supporting multiple product versions simultaneously.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Gitflow</strong> adds branching complexity without solving the versioning problem</dt><dd><p>for parallel releases in a polyrepo setup.</p>
+</dd>
+</dl>
+</li>
 </ul>
 <p>This ADR evaluates branching and versioning strategies explicitly designed for
 <strong>polyrepo systems with coordinated integration releases and continuous verification</strong>.</p>
 </section>
-<hr class="docutils" />
 <section id="requirements-and-goals">
-<h2>2. Requirements and Goals<a class="headerlink" href="#requirements-and-goals" title="Link to this heading">#</a></h2>
+<h2>Requirements and Goals<a class="headerlink" href="#requirements-and-goals" title="Link to this heading">#</a></h2>
 <section id="requirements">
-<h3>2.1 Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h3>
+<h3>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h3>
 <p>Options that do not satisfy these requirements are not viable and will be rejected:</p>
 <ul class="simple">
 <li><p>Reproducible and auditable release snapshots</p></li>
@@ -974,15 +639,18 @@ for parallel releases in a polyrepo setup.</p></li>
 <li><p>Working on a release branch should be always possible and not harm the development on the main branch (resp. vice versa)</p></li>
 <li><p>Working on a bugfix should always be possible (for any old release)</p></li>
 <li><p>Module developers must know how to name their released versions</p></li>
-<li><p>The versioning scheme must clearly indicate which product release a module version
-belongs to, enabling parallel release, which essentially means the ability to
-maintain previous releases.</p></li>
+<li><dl class="simple">
+<dt>The versioning scheme must clearly indicate which product release a module version</dt><dd><p>belongs to, enabling parallel release, which essentially means the ability to
+maintain previous releases.</p>
+</dd>
+</dl>
+</li>
 <li><p>Explicit stabilization phases</p></li>
 <li><p>Continuous integration before formal releases</p></li>
 </ul>
 </section>
 <section id="optimization-goals">
-<h3>2.2 Optimization Goals<a class="headerlink" href="#optimization-goals" title="Link to this heading">#</a></h3>
+<h3>Optimization Goals<a class="headerlink" href="#optimization-goals" title="Link to this heading">#</a></h3>
 <p>Among viable options, we optimize for:</p>
 <ul class="simple">
 <li><p>Independent module lifecycles without blocking development</p></li>
@@ -991,11 +659,10 @@ maintain previous releases.</p></li>
 </ul>
 </section>
 </section>
-<hr class="docutils" />
 <section id="options-considered">
-<h2>3. Options Considered<a class="headerlink" href="#options-considered" title="Link to this heading">#</a></h2>
-<section id="trunk-based-development">
-<h3>3.1 Trunk-Based Development<a class="headerlink" href="#trunk-based-development" title="Link to this heading">#</a></h3>
+<h2>Options Considered<a class="headerlink" href="#options-considered" title="Link to this heading">#</a></h2>
+<section id="option-3-1-trunk-based-development">
+<h3>Option 3.1: Trunk-Based Development<a class="headerlink" href="#option-3-1-trunk-based-development" title="Link to this heading">#</a></h3>
 <p>Trunk-based development is a branching model where all developers work on a single main
 branch (“trunk”), integrating changes frequently—ideally daily. Feature and bugfix
 development happens directly on the trunk or in very short-lived branches that are
@@ -1006,77 +673,98 @@ as possible. Bugfixes are made on the trunk and only cherry-picked to a release
 branch in rare cases where a hotfix for an older release is required. Versioning
 is linear, and the model does not support parallel maintenance of multiple
 product versions.</p>
-<p><strong>Pros</strong>:</p>
+<p><strong>Pros</strong></p>
 <ul class="simple">
 <li><p>Very simple and lightweight branch structure.</p></li>
 <li><p>Maximizes integration and fast feedback through continuous integration.</p></li>
 <li><p>Minimizes merge conflicts and versioning issues.</p></li>
 </ul>
-<p><strong>Cons</strong>:</p>
+<p><strong>Cons</strong></p>
 <ul class="simple">
-<li><p>Parallel maintenance of multiple product versions (e.g., for long-term support) is
-not feasible.</p></li>
-<li><p>Not suitable for polyrepo setups that require parallel support of several releases,
-as parallel release streams are not supported by design.</p></li>
+<li><dl class="simple">
+<dt>Parallel maintenance of multiple product versions (e.g., for long-term support) is</dt><dd><p>not feasible.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Not suitable for polyrepo setups that require parallel support of several releases,</dt><dd><p>as parallel release streams are not supported by design.</p>
+</dd>
+</dl>
+</li>
+<li><p>Requires explicit integration governance.</p></li>
 </ul>
-<blockquote>
-<div><p>Note: The versioning and merge conflicts described in the diagram below typically
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The versioning and merge conflicts described in the diagram below typically
 arise when deviating from strict trunk-based development and introducing long-lived
 release branches. This is no longer considered state-of-the-art trunk-based development.</p>
-</div></blockquote>
-<pre  class="mermaid">
-        gitGraph
-    commit id: &quot;1.2.3&quot;
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gitGraph
+        commit id: &quot;1.2.3&quot;
 
-    branch release
-    checkout release
-    commit id: &quot;1.2.3-v1.0&quot;
+        branch release
+        checkout release
+        commit id: &quot;1.2.3-v1.0&quot;
 
-    checkout main
-    branch bugfix
-    checkout main
+        checkout main
+        branch bugfix
+        checkout main
 
-    commit
-    commit id: &quot;1.2.4&quot;
-    commit
-    commit id: &quot;1.2.6&quot;
+        commit
+        commit id: &quot;1.2.4&quot;
+        commit
+        commit id: &quot;1.2.6&quot;
 
-    checkout bugfix
-    commit id: &quot;bugfix-work&quot;
+        checkout bugfix
+        commit id: &quot;bugfix-work&quot;
 
-    checkout release
-    merge bugfix
-    commit id: &quot;1.2.5&quot;
+        checkout release
+        merge bugfix
+        commit id: &quot;1.2.5&quot;
 
-    checkout main
-    merge bugfix
-    </pre></section>
-<section id="gitflow-across-repositories">
-<h3>3.2 Gitflow Across Repositories<a class="headerlink" href="#gitflow-across-repositories" title="Link to this heading">#</a></h3>
-<p>Uses the Gitflow branching model where modules maintain both <code class="docutils literal notranslate"><span class="pre">main</span></code> and <code class="docutils literal notranslate"><span class="pre">develop</span></code> branches, with release branches created for stabilization. The manifest repository (per DR-002) creates release branches (e.g., <code class="docutils literal notranslate"><span class="pre">release/v1.0</span></code>), and each participating module repository creates corresponding release branches. Modules tag bugfixes on release branches with standard SemVer, and the manifest’s release branch references these versions.</p>
-<p><strong>Pros</strong>:</p>
+        checkout main
+        merge bugfix
+</pre></div>
+</div>
+</section>
+<section id="option-3-2-gitflow-across-repositories">
+<h3>Option 3.2: Gitflow Across Repositories<a class="headerlink" href="#option-3-2-gitflow-across-repositories" title="Link to this heading">#</a></h3>
+<p>Uses the Gitflow branching model where modules maintain both <code class="docutils literal notranslate"><span class="pre">main</span></code> and <code class="docutils literal notranslate"><span class="pre">develop</span></code>
+branches, with release branches created for stabilization. The manifest
+repository (per DR-002) creates release branches (e.g., <code class="docutils literal notranslate"><span class="pre">release/v1.0</span></code>), and each
+participating module repository creates corresponding release branches.</p>
+<p><strong>Pros</strong></p>
 <ul class="simple">
 <li><p>Well-known branching model.</p></li>
 <li><p>Explicit <code class="docutils literal notranslate"><span class="pre">develop</span></code> branch separates ongoing work from release stabilization.</p></li>
 <li><p>Release branches provide clear stabilization phases.</p></li>
 </ul>
-<p><strong>Cons</strong>:</p>
+<p><strong>Cons</strong></p>
 <ul class="simple">
+<li><dl class="simple">
+<dt>Parallel maintenance of multiple product versions (e.g., for long-term support) is</dt><dd><p>not feasible.</p>
+</dd>
+</dl>
+</li>
 <li><p>Standard SemVer suffers from the same parallel release stream problem as Option 3.1 (version numbering conflicts).</p></li>
 <li><p>Additional overhead of maintaining separate <code class="docutils literal notranslate"><span class="pre">develop</span></code> branches across all repositories.</p></li>
 <li><p>More complex branching model increases coordination complexity in a polyrepo setup.</p></li>
 <li><p>Does not scale well with increasing module count.</p></li>
+<li><p>Requires explicit integration governance.</p></li>
 </ul>
 </section>
-<section id="polyrepo-release-process-with-manifest-repository-and-relaxed-version-of-semver">
-<h3>3.3 Polyrepo Release Process with Manifest Repository and relaxed version of SemVer<a class="headerlink" href="#polyrepo-release-process-with-manifest-repository-and-relaxed-version-of-semver" title="Link to this heading">#</a></h3>
-<p>As described in <a class="reference internal" href="DR-002-infra.html"><span class="std std-doc">DR-002 (Integration Testing in a Distributed Monolith)</span></a> there is a dedicated manifest repository containing the “known goods sets”. There is a known good set for the latest version, but also known good sets for released versions. Because of the earlier described limitations of SemVer, the correct module versions should not be referenced in the <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code> (in the manifest repository) as e.g., <code class="docutils literal notranslate"><span class="pre">1.2.3</span></code> but either by referencing the git commit hash directly or using a relaxed SemVer string, e.g. as <code class="docutils literal notranslate"><span class="pre">1.2.3-v1.0</span></code> where the string after the hyphen represents the respective S-CORE release.</p>
-<p>With that approach releases are possible, e.g. by creating a release branch in the
-manifest repository as well as in the affected module repositories. Bugfixes for
-previous releases are handled by checking out the corresponding release branch
-in the manifest and affected modules, applying the fix, and updating the manifest
-to reference the new module version.</p>
-<p><strong>Pros</strong>:</p>
+<section id="option-3-3-polyrepo-release-process-with-manifest-repository-and-relaxed-version-of-semver">
+<h3>Option 3.3: Polyrepo Release Process with Manifest Repository and relaxed version of SemVer<a class="headerlink" href="#option-3-3-polyrepo-release-process-with-manifest-repository-and-relaxed-version-of-semver" title="Link to this heading">#</a></h3>
+<p>As described in
+<a class="reference external" href="./DR-002-infra.md">DR-002 (Integration Testing in a Distributed Monolith)</a> there is
+a dedicated manifest repository containing the “known goods sets”. There is a known
+good set for the latest version, but also known good sets for released versions.
+The known good set specifies the exact version of each module. Additionally, we store
+the hash to ensure the integrity of the version.</p>
+<p>Bugfixes for previous releases are handled by checking out the corresponding commits
+in the manifest and the affected modules, applying the fix, and updating the
+manifest to reference the new module version.</p>
+<p><strong>Pros</strong></p>
 <ul class="simple">
 <li><p>Single source of truth for product integration.</p></li>
 <li><p>Supports continuous verification.</p></li>
@@ -1084,25 +772,21 @@ to reference the new module version.</p>
 <li><p>Scales with module count and team autonomy.</p></li>
 <li><p>Clear separation between development, integration, and stabilization.</p></li>
 </ul>
-<p><strong>Cons</strong>:</p>
+<p><strong>Cons</strong></p>
 <ul class="simple">
 <li><p>Requires explicit integration governance.</p></li>
 </ul>
 </section>
 </section>
 <section id="decision">
-<h2>4. Decision<a class="headerlink" href="#decision" title="Link to this heading">#</a></h2>
+<h2>Decision<a class="headerlink" href="#decision" title="Link to this heading">#</a></h2>
 <p>We decided for <strong>Option 3.3</strong>.</p>
-<p><strong>Rationale</strong></p>
-<p>Options 3.1 and 3.2 both violate the requirement for a versioning scheme that clearly indicates which product release a module version belongs to. Standard SemVer cannot represent parallel release streams - when a bugfix is needed on a release branch while <code class="docutils literal notranslate"><span class="pre">main</span></code> has advanced, version numbering becomes ambiguous and conflicts arise (as demonstrated in the diagram in Option 3.1). This makes both options non-viable.</p>
-<p>Option 3.3 is the only viable option as it satisfies all requirements through relaxed SemVer (e.g., <code class="docutils literal notranslate"><span class="pre">1.2.3-v1.0</span></code>) where the suffix indicates the product release. Additionally, it optimizes for our goals by:</p>
-<ul class="simple">
-<li><p>Providing a single source of truth for product integration</p></li>
-<li><p>Supporting continuous verification through the manifest repository</p></li>
-<li><p>Scaling with module count and team autonomy</p></li>
-<li><p>Enabling clear separation between development, integration, and stabilization</p></li>
-</ul>
-<p>This approach reflects established industry practice for large-scale polyrepo systems using manifest-based integration and release trains (e.g., Android/AOSP, Chromium-style roll-ups).</p>
+<section id="rationale">
+<h3>Rationale<a class="headerlink" href="#rationale" title="Link to this heading">#</a></h3>
+<p>Options 3.1 and 3.2 are not feasable for parallel maintenance of multiple product
+versions.</p>
+<p>Option 3.3 is the only viable option as it satisfies all requirements.</p>
+</section>
 </section>
 </section>
 
@@ -1153,19 +837,22 @@ to reference the new module version.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context">1. Context</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements-and-goals">2. Requirements and Goals</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">2.1 Requirements</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization-goals">2.2 Optimization Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context">Context</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements-and-goals">Requirements and Goals</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization-goals">Optimization Goals</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#options-considered">3. Options Considered</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trunk-based-development">3.1 Trunk-Based Development</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gitflow-across-repositories">3.2 Gitflow Across Repositories</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#polyrepo-release-process-with-manifest-repository-and-relaxed-version-of-semver">3.3 Polyrepo Release Process with Manifest Repository and relaxed version of SemVer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#options-considered">Options Considered</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-3-1-trunk-based-development">Option 3.1: Trunk-Based Development</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-3-2-gitflow-across-repositories">Option 3.2: Gitflow Across Repositories</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-3-3-polyrepo-release-process-with-manifest-repository-and-relaxed-version-of-semver">Option 3.3: Polyrepo Release Process with Manifest Repository and relaxed version of SemVer</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision">4. Decision</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision">Decision</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale">Rationale</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
@@ -1173,7 +860,7 @@ to reference the new module version.</p>
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/design_decisions/DR-005-infra.md">
+    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/design_decisions/DR-005-infra.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -1189,7 +876,7 @@ to reference the new module version.</p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/design_decisions/DR-005-infra.md.txt"
+      <li><a href="../_sources/design_decisions/DR-005-infra.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div></div>
