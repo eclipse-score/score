@@ -98,6 +98,7 @@ product versions.
 not feasible.
 - Not suitable for polyrepo setups that require parallel support of several releases,
 as parallel release streams are not supported by design.
+- Requires explicit integration governance.
 
 > Note: The versioning and merge conflicts described in the diagram below typically
 arise when deviating from strict trunk-based development and introducing long-lived
@@ -133,7 +134,10 @@ gitGraph
 
 ### 3.2 Gitflow Across Repositories
 
-Uses the Gitflow branching model where modules maintain both `main` and `develop` branches, with release branches created for stabilization. The manifest repository (per DR-002) creates release branches (e.g., `release/v1.0`), and each participating module repository creates corresponding release branches. Modules tag bugfixes on release branches with standard SemVer, and the manifest's release branch references these versions.
+Uses the Gitflow branching model where modules maintain both `main` and `develop`
+branches, with release branches created for stabilization. The manifest
+repository (per DR-002) creates release branches (e.g., `release/v1.0`), and each
+participating module repository creates corresponding release branches.
 
 **Pros**:
 - Well-known branching model.
@@ -141,20 +145,26 @@ Uses the Gitflow branching model where modules maintain both `main` and `develop
 - Release branches provide clear stabilization phases.
 
 **Cons**:
+- Parallel maintenance of multiple product versions (e.g., for long-term support) is
+not feasible.
 - Standard SemVer suffers from the same parallel release stream problem as Option 3.1 (version numbering conflicts).
 - Additional overhead of maintaining separate `develop` branches across all repositories.
 - More complex branching model increases coordination complexity in a polyrepo setup.
 - Does not scale well with increasing module count.
+- Requires explicit integration governance.
 
 ### 3.3 Polyrepo Release Process with Manifest Repository and relaxed version of SemVer
 
-As described in [DR-002 (Integration Testing in a Distributed Monolith)](./DR-002-infra.md) there is a dedicated manifest repository containing the "known goods sets". There is a known good set for the latest version, but also known good sets for released versions. Because of the earlier described limitations of SemVer, the correct module versions should not be referenced in the `MODULE.bazel` (in the manifest repository) as e.g., `1.2.3` but either by referencing the git commit hash directly or using a relaxed SemVer string, e.g. as `1.2.3-v1.0` where the string after the hyphen represents the respective S-CORE release.
+As described in
+[DR-002 (Integration Testing in a Distributed Monolith)](./DR-002-infra.md) there is
+a dedicated manifest repository containing the "known goods sets". There is a known
+good set for the latest version, but also known good sets for released versions.
+The known good set specifies the exact version of each module. Additionally, we store
+the hash to ensure the integrity of the version.
 
-With that approach releases are possible, e.g. by creating a release branch in the
-manifest repository as well as in the affected module repositories. Bugfixes for
-previous releases are handled by checking out the corresponding release branch
-in the manifest and affected modules, applying the fix, and updating the manifest
-to reference the new module version.
+Bugfixes for previous releases are handled by checking out the corresponding commits
+in the manifest and the affected modules, applying the fix, and updating the
+manifest to reference the new module version.
 
 **Pros**:
 - Single source of truth for product integration.
@@ -172,12 +182,7 @@ We decided for **Option 3.3**.
 
 **Rationale**
 
-Options 3.1 and 3.2 both violate the requirement for a versioning scheme that clearly indicates which product release a module version belongs to. Standard SemVer cannot represent parallel release streams - when a bugfix is needed on a release branch while `main` has advanced, version numbering becomes ambiguous and conflicts arise (as demonstrated in the diagram in Option 3.1). This makes both options non-viable.
+Options 3.1 and 3.2 are not feasable for parallel maintenance of multiple product
+versions.
 
-Option 3.3 is the only viable option as it satisfies all requirements through relaxed SemVer (e.g., `1.2.3-v1.0`) where the suffix indicates the product release. Additionally, it optimizes for our goals by:
-- Providing a single source of truth for product integration
-- Supporting continuous verification through the manifest repository
-- Scaling with module count and team autonomy
-- Enabling clear separation between development, integration, and stabilization
-
-This approach reflects established industry practice for large-scale polyrepo systems using manifest-based integration and release trains (e.g., Android/AOSP, Chromium-style roll-ups).
+Option 3.3 is the only viable option as it satisfies all requirements.
