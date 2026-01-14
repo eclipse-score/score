@@ -1,32 +1,38 @@
-<!--
-Copyright (c) 2026 Contributors to the Eclipse Foundation
+..
+     Copyright (c) 2026 Contributors to the Eclipse Foundation
 
-See the NOTICE file(s) distributed with this work for additional
-information regarding copyright ownership.
+     See the NOTICE file(s) distributed with this work for additional
+     information regarding copyright ownership.
 
-This program and the accompanying materials are made available under the
-terms of the Apache License Version 2.0 which is available at
-https://www.apache.org/licenses/LICENSE-2.0
+     This program and the accompanying materials are made available under the
+     terms of the Apache License Version 2.0 which is available at
+     https://www.apache.org/licenses/LICENSE-2.0
 
-SPDX-License-Identifier: Apache-2.0
--->
+     SPDX-License-Identifier: Apache-2.0
 
-# DR-005-Infra: Development, Release and Bugfix workflows
 
-- **Status:** Proposed
-- **Owner:** Infrastructure Community
-- **Date:** 2026-01-08
+DR-005-Infra: Development, Release and Bugfix workflows
+=======================================================
 
----
+.. dec_rec:: Development, Release and Bugfix workflows
+    :id: dec_rec__infra__dev_release_bugfix
+    :status: accepted
+    :context: Infrastructure
+    :decision: Polyrepo release process with manifest repository
 
-## 1. Context
+    Date: 2026-01-08
+
+
+Context
+-------
 
 This project consists of multiple independently developed modules stored in separate
 repositories (polyrepo setup).
 
 This ADR builds on
-[DR-002 (Integration Testing in a Distributed Monolith)](./DR-002-infra.md), which
+`DR-002 (Integration Testing in a Distributed Monolith) <./DR-002-infra.md>`_, which
 establishes:
+
 - the polyrepo structure,
 - centralized responsibility for cross-repository integration,
 - and infrastructure-owned integration tooling and processes.
@@ -36,19 +42,21 @@ from independently developed and versioned modules, while allowing continuous
 integration to reduce the gap between development and release.
 
 Commonly referenced workflows do not fully address this problem space:
+
 - **Trunk-Based Development** with standard SemVer cannot represent parallel
-release streams needed for supporting multiple product versions simultaneously.
+    release streams needed for supporting multiple product versions simultaneously.
 - **Gitflow** adds branching complexity without solving the versioning problem
-for parallel releases in a polyrepo setup.
+    for parallel releases in a polyrepo setup.
 
 This ADR evaluates branching and versioning strategies explicitly designed for
 **polyrepo systems with coordinated integration releases and continuous verification**.
 
----
 
-## 2. Requirements and Goals
+Requirements and Goals
+----------------------
 
-### 2.1 Requirements
+Requirements
+^^^^^^^^^^^^
 
 Options that do not satisfy these requirements are not viable and will be rejected:
 
@@ -58,12 +66,13 @@ Options that do not satisfy these requirements are not viable and will be reject
 - Working on a bugfix should always be possible (for any old release)
 - Module developers must know how to name their released versions
 - The versioning scheme must clearly indicate which product release a module version
-belongs to, enabling parallel release, which essentially means the ability to
-maintain previous releases.
+    belongs to, enabling parallel release, which essentially means the ability to
+    maintain previous releases.
 - Explicit stabilization phases
 - Continuous integration before formal releases
 
-### 2.2 Optimization Goals
+Optimization Goals
+^^^^^^^^^^^^^^^^^^
 
 Among viable options, we optimize for:
 
@@ -71,11 +80,12 @@ Among viable options, we optimize for:
 - A process that scales across many repositories and teams
 - Minimal integration governance to coordinate releases across repositories
 
----
 
-## 3. Options Considered
+Options Considered
+------------------
 
-### 3.1 Trunk-Based Development
+Option 3.1: Trunk-Based Development
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Trunk-based development is a branching model where all developers work on a single main
 branch ("trunk"), integrating changes frequently—ideally daily. Feature and bugfix
@@ -88,75 +98,84 @@ branch in rare cases where a hotfix for an older release is required. Versioning
 is linear, and the model does not support parallel maintenance of multiple
 product versions.
 
-**Pros**:
+**Pros**
+
 - Very simple and lightweight branch structure.
 - Maximizes integration and fast feedback through continuous integration.
 - Minimizes merge conflicts and versioning issues.
 
-**Cons**:
+**Cons**
+
 - Parallel maintenance of multiple product versions (e.g., for long-term support) is
-not feasible.
+    not feasible.
 - Not suitable for polyrepo setups that require parallel support of several releases,
-as parallel release streams are not supported by design.
+    as parallel release streams are not supported by design.
 - Requires explicit integration governance.
 
-> Note: The versioning and merge conflicts described in the diagram below typically
-arise when deviating from strict trunk-based development and introducing long-lived
-release branches. This is no longer considered state-of-the-art trunk-based development.
+.. note::
+     The versioning and merge conflicts described in the diagram below typically
+     arise when deviating from strict trunk-based development and introducing long-lived
+     release branches. This is no longer considered state-of-the-art trunk-based development.
 
-```{mermaid}
-gitGraph
-    commit id: "1.2.3"
+.. code-block:: none
 
-    branch release
-    checkout release
-    commit id: "1.2.3-v1.0"
+     gitGraph
+             commit id: "1.2.3"
 
-    checkout main
-    branch bugfix
-    checkout main
+             branch release
+             checkout release
+             commit id: "1.2.3-v1.0"
 
-    commit
-    commit id: "1.2.4"
-    commit
-    commit id: "1.2.6"
+             checkout main
+             branch bugfix
+             checkout main
 
-    checkout bugfix
-    commit id: "bugfix-work"
+             commit
+             commit id: "1.2.4"
+             commit
+             commit id: "1.2.6"
 
-    checkout release
-    merge bugfix
-    commit id: "1.2.5"
+             checkout bugfix
+             commit id: "bugfix-work"
 
-    checkout main
-    merge bugfix
-```
+             checkout release
+             merge bugfix
+             commit id: "1.2.5"
 
-### 3.2 Gitflow Across Repositories
+             checkout main
+             merge bugfix
 
-Uses the Gitflow branching model where modules maintain both `main` and `develop`
+
+Option 3.2: Gitflow Across Repositories
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Uses the Gitflow branching model where modules maintain both ``main`` and ``develop``
 branches, with release branches created for stabilization. The manifest
-repository (per DR-002) creates release branches (e.g., `release/v1.0`), and each
+repository (per DR-002) creates release branches (e.g., ``release/v1.0``), and each
 participating module repository creates corresponding release branches.
 
-**Pros**:
+**Pros**
+
 - Well-known branching model.
-- Explicit `develop` branch separates ongoing work from release stabilization.
+- Explicit ``develop`` branch separates ongoing work from release stabilization.
 - Release branches provide clear stabilization phases.
 
-**Cons**:
+**Cons**
+
 - Parallel maintenance of multiple product versions (e.g., for long-term support) is
-not feasible.
+    not feasible.
 - Standard SemVer suffers from the same parallel release stream problem as Option 3.1 (version numbering conflicts).
-- Additional overhead of maintaining separate `develop` branches across all repositories.
+- Additional overhead of maintaining separate ``develop`` branches across all repositories.
 - More complex branching model increases coordination complexity in a polyrepo setup.
 - Does not scale well with increasing module count.
 - Requires explicit integration governance.
 
-### 3.3 Polyrepo Release Process with Manifest Repository and relaxed version of SemVer
+
+Option 3.3: Polyrepo Release Process with Manifest Repository and relaxed version of SemVer
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 As described in
-[DR-002 (Integration Testing in a Distributed Monolith)](./DR-002-infra.md) there is
+`DR-002 (Integration Testing in a Distributed Monolith) <./DR-002-infra.md>`_ there is
 a dedicated manifest repository containing the "known goods sets". There is a known
 good set for the latest version, but also known good sets for released versions.
 The known good set specifies the exact version of each module. Additionally, we store
@@ -166,21 +185,26 @@ Bugfixes for previous releases are handled by checking out the corresponding com
 in the manifest and the affected modules, applying the fix, and updating the
 manifest to reference the new module version.
 
-**Pros**:
+**Pros**
+
 - Single source of truth for product integration.
 - Supports continuous verification.
 - Provides reproducible releases.
 - Scales with module count and team autonomy.
 - Clear separation between development, integration, and stabilization.
 
-**Cons**:
+**Cons**
+
 - Requires explicit integration governance.
 
-## 4. Decision
+
+Decision
+--------
 
 We decided for **Option 3.3**.
 
-**Rationale**
+Rationale
+^^^^^^^^^
 
 Options 3.1 and 3.2 are not feasable for parallel maintenance of multiple product
 versions.
