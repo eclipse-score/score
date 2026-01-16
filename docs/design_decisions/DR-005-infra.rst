@@ -117,7 +117,7 @@ product versions.
      arise when deviating from strict trunk-based development and introducing long-lived
      release branches. This is no longer considered state-of-the-art trunk-based development.
 
-.. code-block:: none
+.. mermaid::
 
      gitGraph
              commit id: "1.2.3"
