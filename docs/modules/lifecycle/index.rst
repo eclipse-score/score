@@ -33,8 +33,6 @@ Lifecycle
    :implements: logic_arc_int__lifecycle__controlif, logic_arc_int__lifecycle__alive_if
    :uses: logic_arc_int__logging__logging, logic_arc_int__baselibs__json, logic_arc_int__os__fork, logic_arc_int__lifecycle__lifecycle_if
    :security: NO
-   :includes:
-   :fulfils:
 
 
 .. comp_arc_sta:: Launch Manager Static View
@@ -43,7 +41,6 @@ Lifecycle
    :safety: ASIL_B
    :security: NO
    :includes: logic_arc_int__lifecycle__controlif, logic_arc_int__lifecycle__alive_if
-   :fulfils:
 
    .. needarch::
       :scale: 50
@@ -59,7 +56,6 @@ Lifecycle
    :implements: logic_arc_int__lifecycle__deadline_monitor_if,logic_arc_int__lifecycle__logical_monitor_if
    :uses: logic_arc_int__lifecycle__alive_if
    :security: NO
-   :includes:
 
 .. comp_arc_sta:: Health Monitor Static View
    :id: comp_arc_sta__lifecycle__healthmonitor
