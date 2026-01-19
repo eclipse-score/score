@@ -52,7 +52,7 @@ Lifecycle
    :id: comp__lifecycle_healthmonitor
    :status: valid
    :safety: ASIL_B
-   :security: YES
+   :security: NO
    :implements: logic_arc_int__lifecycle__deadline_monitor_if,logic_arc_int__lifecycle__logical_monitor_if
    :uses: logic_arc_int__lifecycle__alive_if
 
@@ -60,7 +60,7 @@ Lifecycle
    :id: comp_arc_sta__lifecycle__healthmonitor
    :status: valid
    :safety: ASIL_B
-   :security: YES
+   :security: NO
    :uses: logic_arc_int__lifecycle__alive_if
    :includes: logic_arc_int__lifecycle__deadline_monitor_if,logic_arc_int__lifecycle__logical_monitor_if
 
