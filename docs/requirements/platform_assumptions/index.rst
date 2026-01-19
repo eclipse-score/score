@@ -207,6 +207,18 @@ This is the highest level of integraton. This is the level where the S-CORE SW-p
 
    Note3: This applies also if the system integrator would replace a S-CORE SW-platform element with another SW element which is external to S-CORE.
 
+.. aou_req:: SW-platform test completion
+   :id: aou_req__platform__test_completion
+   :reqtype: Non-Functional
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+
+   If the system using the SW-platform has safety goals, the system integrator shall check for correctness and completeness of SW-platform testing and add verification where needed.
+
+   Note: The SW-platform integtion tests provided by S-CORE for :need:`aou_req__platform__testing` are for demonstration purpose only,
+   as described in the tailoring section of :need:`doc__score_platform_safety_plan` and thus do not claim correctness and completeness.
+
 .. aou_req:: Integrator safety anomaly reporting
    :id: aou_req__platform__integration_safety_anomaly
    :reqtype: Non-Functional
