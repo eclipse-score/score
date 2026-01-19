@@ -18,7 +18,7 @@ Lifecycle
 
 .. mod_view_sta:: Lifecycle
    :id: mod_view_sta__lifecycle__modules
-   :includes: comp_arc_sta__lifecycle__launch_manager, comp_arc_sta__lifecycle__healthmonitor
+   :includes: comp__lifecycle_launch_manager, comp__lifecycle_healthmonitor
 
    .. needarch::
       :scale: 50
@@ -26,8 +26,8 @@ Lifecycle
 
       {{ draw_module(need(), needs) }}
 
-.. comp_arc_sta:: Launch Manager
-   :id: comp_arc_sta__lifecycle__launch_manager
+.. comp:: Launch Manager
+   :id: comp__lifecycle_launch_manager
    :status: valid
    :safety: ASIL_B
    :implements: logic_arc_int__lifecycle__controlif, logic_arc_int__lifecycle__alive_if
@@ -36,20 +36,38 @@ Lifecycle
    :includes:
    :fulfils:
 
+
+.. comp_arc_sta:: Launch Manager Static View
+   :id: comp_arc_sta__lifecycle__launch_manager
+   :status: valid
+   :safety: ASIL_B
+   :security: NO
+   :includes: logic_arc_int__lifecycle__controlif, logic_arc_int__lifecycle__alive_if
+   :fulfils:
+
    .. needarch::
       :scale: 50
       :align: center
 
       {{ draw_component(need(), needs) }}
 
-.. comp_arc_sta:: Health Monitor
-   :id: comp_arc_sta__lifecycle__healthmonitor
+.. comp:: Health Monitor
+   :id: comp__lifecycle_healthmonitor
    :status: valid
    :safety: ASIL_B
    :implements: logic_arc_int__lifecycle__deadline_monitor_if,logic_arc_int__lifecycle__logical_monitor_if
    :uses: logic_arc_int__lifecycle__alive_if
    :security: NO
    :includes:
+   :fulfils:
+
+.. comp_arc_sta:: Health Monitor Static View
+   :id: comp_arc_sta__lifecycle__healthmonitor
+   :status: valid
+   :safety: ASIL_B
+   :uses: logic_arc_int__lifecycle__alive_if
+   :security: NO
+   :includes: logic_arc_int__lifecycle__deadline_monitor_if,logic_arc_int__lifecycle__logical_monitor_if
    :fulfils:
 
    .. needarch::
