@@ -17,6 +17,13 @@
 Stakeholder Requirements
 ========================
 
+.. document:: SW-platform stakeholder requirements
+   :id: doc__stakeholder_requirements
+   :status: draft
+   :security: YES
+   :safety: ASIL_B
+   :realizes: wp__requirements_stkh
+
 Overall goals
 -------------
 
@@ -1200,7 +1207,7 @@ Requirements Engineering
    :rationale: This is a usability constraint needed for long term maintenance support
    :status: valid
 
-   he SW-platform infrastructure shall support linking all requirements from lower to upper level, whereby on the top-level are the stakeholder requirements.
+   The SW-platform infrastructure shall support linking all requirements from lower to upper level, whereby on the top-level are the stakeholder requirements.
 
 .. stkh_req:: Document requirements as code
    :id: stkh_req__requirements__as_code

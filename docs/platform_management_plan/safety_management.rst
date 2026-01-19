@@ -311,8 +311,8 @@ Functional Safety Quality Criteria
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The platform management plan defines :doc:`quality_management`
 
-Platform Safety Plan
-++++++++++++++++++++
+Platform Safety Plan / Package
+++++++++++++++++++++++++++++++
 
 .. _sw_platform_wp_list:
 
@@ -379,8 +379,13 @@ Functional Safety/Security Management SW Platform Work Products
 
     * - :need:`wp__requirements_stkh`
       - :ndf:`copy('status', need_id='wf__req_stkh_req')`
-      - :ref:`stakeholder_requirements`
-      - <automated>
+      - :need:`doc__stakeholder_requirements`
+      - :ndf:`copy('status', need_id='doc__stakeholder_requirements')`
+
+    * - :need:`wp__requirements_sw_platform_aou`
+      - :ndf:`copy('status', need_id='wf__req_stkh_req')`
+      - :need:`doc__platform_assumptions`
+      - :ndf:`copy('status', need_id='doc__platform_assumptions')`
 
     * - :need:`wp__sw_development_plan`
       - :ndf:`copy('status', need_id='wf__sw_development_plan')`
@@ -416,8 +421,8 @@ Functional Safety Specific SW Platform Work Products
 
     * - :need:`wp__platform_safety_package`
       - :ndf:`copy('status', need_id='wf__cr_mt_safety_package')`
-      - <Link to WP>
-      - <automated>
+      - this document
+      - see above
 
     * - :need:`wp__fdr_reports` (platform Safety Plan)
       - :ndf:`copy('status', need_id='wf__p_formal_rv')`
@@ -430,7 +435,7 @@ Functional Safety Specific SW Platform Work Products
       - <automated>
 
     * - :need:`wp__fdr_reports` (feature's Safety Analyses & DFA)
-      - <Process status>
+      - :ndf:`copy('status', need_id='wf__p_formal_rv')`
       - <Link to WP>
       - <automated>
 
@@ -439,8 +444,8 @@ Functional Safety Specific SW Platform Work Products
       - <Link to WP>
       - intermediate
 
-    * - :need:`wp__feature_dfa`
-      - <Process status>
+    * - :need:`wp__platform_dfa`
+      - :ndf:`copy('status', need_id='wf__analyse_platform_featarch')`
       - <Link to WP>
       - <automated>
 
