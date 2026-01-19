@@ -13,9 +13,14 @@ SPDX-License-Identifier: Apache-2.0
 
 # DR-003-Infra: Devcontainer Strategy for S-CORE
 
-- **Status:** Proposed
-- **Owner:** Infrastructure Community
 - **Date:** 2025-10-06
+
+```{dec_rec} Devcontainer Strategy for S-CORE
+:id: dec_rec__infra__devcontainer
+:status: accepted
+:context: Infrastructure
+:decision: Hybrid Approach with Devcontainer Features
+```
 
 ---
 

@@ -13,13 +13,13 @@
 DR-004-Infra: Bi-directional traceability in docs
 =================================================
 
+- **Date:** 2025-10-24
+
 .. dec_rec:: Bi-directional traceability in docs
    :id: dec_rec__infra__traceable_docs
    :status: accepted
    :context: Infrastructure
    :decision: Single documentation build
-
-   Date: 2025-10-24
 
 Context / Problem
 -----------------

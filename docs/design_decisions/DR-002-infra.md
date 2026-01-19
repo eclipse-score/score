@@ -13,9 +13,14 @@ SPDX-License-Identifier: Apache-2.0
 
 # DR-002-Infra: Integration Testing in a Distributed Monolith
 
-* **Status:** Agreed within Community
-* **Owner:** Infrastructure Community
 * **Date:** 2025-09-01
+
+```{dec_rec} Integration Testing in a Distributed Monolith
+:id: dec_rec__infra__int_testing
+:status: accepted
+:context: Infrastructure
+:decision: two testing layers
+```
 
 ---
 ## Executive Summary
