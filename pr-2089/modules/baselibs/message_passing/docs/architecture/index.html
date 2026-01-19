@@ -53,7 +53,7 @@
 
     <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
     <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../../../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../../../_static/documentation_options.js?v=7f41d439"></script>
     <script src="../../../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../../_static/design-tabs.js?v=f930bc37"></script>
@@ -72,7 +72,7 @@
         </script>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
-    <link rel="next" title="result" href="../../../result/docs/index.html" />
+    <link rel="next" title="os" href="../../../os/docs/index.html" />
     <link rel="prev" title="message_passing" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -489,7 +489,9 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../index.html">Baselibs Module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../../docs/index.html">Module Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../language/index.html">language</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../bitmanipulation/docs/index.html">bitmanipulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../concurrency/docs/index.html">concurrency</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../containers/docs/index.html">containers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../filesystem/docs/index.html">filesystem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../json/docs/index.html">JSON-Library</a></li>
@@ -507,6 +509,7 @@
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Message Passing Component Architecture</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../os/docs/index.html">os</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../result/docs/index.html">result</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../utils/docs/index.html">utils</a></li>
 </ul>
@@ -515,9 +518,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../feo/index.html">FEO Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../lifecycle/index.html">Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../logging/index.html">Logging Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../orchestrator/index.html">Orchestrator Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../orchestrator/index.html">Orchestrator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../os/index.html">OS Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../persistency/index.html">Persistency KVS Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tracing/index.html">Tracing Module</a></li>
 </ul>
 </div>
@@ -587,7 +589,7 @@
                   
   <section id="message-passing-component-architecture">
 <h1>Message Passing Component Architecture<a class="headerlink" href="#message-passing-component-architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-75449579">
+<div class="need_container docutils container" id="SNCB-810910f0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__baselibs__message_passing">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -606,7 +608,8 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
+</span></span></div>
 <div class="line"><span><div class="line">implements: <span class="implements"><span><a class="reference internal" href="#logic_arc_int__baselibs__message_passing" title="comp_arc_sta__baselibs__message_passing">logic_arc_int__baselibs__message_passing</a></span></span></div>
 <div class="line">uses: <span class="uses"><span><a class="reference internal" href="../../../../os/message_passing/docs/architecture/index.html#logic_arc_int__os__message_passing" title="comp_arc_sta__baselibs__message_passing">logic_arc_int__os__message_passing</a></span></span></div>
 <div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../docs/index.html#mod_view_sta__baselibs__baselibs" title="comp_arc_sta__baselibs__message_passing">mod_view_sta__baselibs__baselibs</a></span></span></div>
@@ -616,7 +619,7 @@
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-modules/baselibs/message_passing/docs/architecture/index-0">
-<object data="../../../../../_images/plantuml-fd290b00c5dcfd7563dba9f276dfe6d70c68deee.svg" type="image/svg+xml" style="width:172px;height:192px;background:#FFFFFF;"></object></p>
+<object data="../../../../../_images/plantuml-249882ee9a85ea65906d3dbb753cc30de00b5d88.svg" type="image/svg+xml" style="width:172px;height:192px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -624,7 +627,7 @@
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
-<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component &amp; Component Package Diagram</span></span></span></div>
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component Package Diagram</span></span></span></div>
 </div>
 </td>
 <td class="footer_right" colspan="2"></td>
@@ -633,7 +636,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-462157b4">
+<div class="need_container docutils container" id="SNCB-d6e3a2da">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__baselibs__message_passing">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -652,7 +655,8 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
+</span></span></div>
 <div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="#comp_arc_sta__baselibs__message_passing" title="logic_arc_int__baselibs__message_passing">comp_arc_sta__baselibs__message_passing</a></span></span></div>
 <div class="line">used by: <span class="uses"><span><a class="reference internal" href="../../../../communication/ipc_binding/docs/architecture/index.html#comp_arc_sta__com__ipc_binding" title="logic_arc_int__baselibs__message_passing">comp_arc_sta__com__ipc_binding</a></span></span></div>
 <div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat_arc_sta__baselibs__static_view_arch" title="logic_arc_int__baselibs__message_passing">feat_arc_sta__baselibs__static_view_arch</a></span></span></div>
@@ -678,7 +682,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a468f89e">
+<div class="need_container docutils container" id="SNCB-ea2e571b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__mp_register">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -697,7 +701,8 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
+</span></span></div>
 <div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__baselibs__message_passing" title="logic_arc_int_op__baselibs__mp_register">logic_arc_int__baselibs__message_passing</a></span></span></div>
 </span></div>
 </div>
@@ -742,11 +747,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="../../../result/docs/index.html"
+       href="../../../os/docs/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">result</p>
+        <p class="prev-next-title">os</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -765,7 +770,7 @@
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/modules/baselibs/message_passing/docs/architecture/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/modules/baselibs/message_passing/docs/architecture/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -776,15 +781,6 @@
     </a>
   </div>
 </div>
-
-  <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../../../../../_sources/modules/baselibs/message_passing/docs/architecture/index.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
 
 </div></div>
               

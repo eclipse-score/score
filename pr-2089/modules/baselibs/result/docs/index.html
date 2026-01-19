@@ -53,7 +53,7 @@
 
     <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
     <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../../_static/documentation_options.js?v=7f41d439"></script>
     <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
@@ -72,8 +72,8 @@
         </script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="Requirements" href="requirements.html" />
-    <link rel="prev" title="Message Passing Component Architecture" href="../../message_passing/docs/architecture/index.html" />
+    <link rel="next" title="Requirements" href="requirements/index.html" />
+    <link rel="prev" title="os" href="../../os/docs/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
@@ -489,7 +489,9 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">Baselibs Module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../docs/index.html">Module Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../language/index.html">language</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../bitmanipulation/docs/index.html">bitmanipulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../concurrency/docs/index.html">concurrency</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../containers/docs/index.html">containers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../filesystem/docs/index.html">filesystem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../json/docs/index.html">JSON-Library</a></li>
@@ -504,9 +506,13 @@
 
 <li class="toctree-l2"><a class="reference internal" href="../../memory_shared/docs/index.html">memory_shared</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../message_passing/docs/index.html">message_passing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../os/docs/index.html">os</a></li>
 <li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">result</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="requirements.html">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements/index.html">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements/chklst_req_inspection.html">Requirement Inspection Checklist</a></li>
 <li class="toctree-l3"><a class="reference internal" href="architecture/index.html">Result Component Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="safety_analysis/fmea.html">FMEA (Failure Modes and Effects Analysis)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="safety_analysis/dfa.html">DFA (Dependent Failure Analysis)</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../../utils/docs/index.html">utils</a></li>
@@ -516,9 +522,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../feo/index.html">FEO Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../lifecycle/index.html">Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../logging/index.html">Logging Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../orchestrator/index.html">Orchestrator Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../orchestrator/index.html">Orchestrator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../os/index.html">OS Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../persistency/index.html">Persistency KVS Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tracing/index.html">Tracing Module</a></li>
 </ul>
 </div>
@@ -585,7 +590,7 @@
                   
   <section id="result">
 <h1>result<a class="headerlink" href="#result" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-80f05c83">
+<div class="need_container docutils container" id="SNCB-72aac076">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__result">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -594,7 +599,7 @@
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></span></div>
-<div class="line"><span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
 <div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
@@ -604,7 +609,7 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs_result</span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs_result</span><span class="needs_spacer">, </span><span class="needs_data">result_library</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/change_management_workproducts.html#wp__cmpt_request">wp__cmpt_request</a></span></span></div>
 </span></div>
@@ -648,12 +653,12 @@ There are multiple use-case like logging error messages or comparing on expected
 <h3>General considerations<a class="headerlink" href="#general-considerations" title="Link to this heading">#</a></h3>
 <p>The Result library should provide value/error propagation and error handling capabilities:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="requirements.html#comp_req__result__error_handling" title="comp_req__result__error_handling"><em class="xref need">Result-Based Error Handling (comp_req__result__error_handling)</em></a></p></li>
-<li><p><a class="reference internal" href="requirements.html#comp_req__result__domain_error_information" title="comp_req__result__domain_error_information"><em class="xref need">Domain-Specific Error Infor... (comp_req__result__domain_error_information)</em></a></p></li>
-<li><p><a class="reference internal" href="requirements.html#comp_req__result__type_safety" title="comp_req__result__type_safety"><em class="xref need">Type-Safe Error Handling (comp_req__result__type_safety)</em></a></p></li>
-<li><p><a class="reference internal" href="requirements.html#comp_req__result__std_integration" title="comp_req__result__std_integration"><em class="xref need">Standard Library Integration (comp_req__result__std_integration)</em></a></p></li>
-<li><p><a class="reference internal" href="requirements.html#comp_req__result__deterministic_behavior" title="comp_req__result__deterministic_behavior"><em class="xref need">Deterministic Behavior (comp_req__result__deterministic_behavior)</em></a></p></li>
-<li><p><a class="reference internal" href="requirements.html#comp_req__result__exception_free_operation" title="comp_req__result__exception_free_operation"><em class="xref need">Exception-Free Operation (comp_req__result__exception_free_operation)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements/index.html#comp_req__result__error_handling" title="comp_req__result__error_handling"><em class="xref need">Result-Based Error Handling (comp_req__result__error_handling)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements/index.html#comp_req__result__domain_error_information" title="comp_req__result__domain_error_information"><em class="xref need">Domain-Specific Error Infor... (comp_req__result__domain_error_information)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements/index.html#comp_req__result__type_safety" title="comp_req__result__type_safety"><em class="xref need">Type-Safe Error Handling (comp_req__result__type_safety)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements/index.html#comp_req__result__std_integration" title="comp_req__result__std_integration"><em class="xref need">Standard Library Integration (comp_req__result__std_integration)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements/index.html#comp_req__result__deterministic_behavior" title="comp_req__result__deterministic_behavior"><em class="xref need">Deterministic Behavior (comp_req__result__deterministic_behavior)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements/index.html#comp_req__result__exception_free_operation" title="comp_req__result__exception_free_operation"><em class="xref need">Exception-Free Operation (comp_req__result__exception_free_operation)</em></a></p></li>
 </ul>
 <p>The component should be extensible in the future to support richer error information and integration with other platform components.</p>
 </section>
@@ -671,16 +676,16 @@ There are multiple use-case like logging error messages or comparing on expected
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../../message_passing/docs/architecture/index.html"
+       href="../../os/docs/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Message Passing Component Architecture</p>
+        <p class="prev-next-title">os</p>
       </div>
     </a>
     <a class="right-next"
-       href="requirements.html"
+       href="requirements/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
@@ -720,7 +725,7 @@ There are multiple use-case like logging error messages or comparing on expected
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/modules/baselibs/result/docs/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/modules/baselibs/result/docs/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -731,15 +736,6 @@ There are multiple use-case like logging error messages or comparing on expected
     </a>
   </div>
 </div>
-
-  <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../../../../_sources/modules/baselibs/result/docs/index.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
 
 </div></div>
               

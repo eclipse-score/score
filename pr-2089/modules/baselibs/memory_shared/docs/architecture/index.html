@@ -53,7 +53,7 @@
 
     <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
     <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../../../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../../../_static/documentation_options.js?v=7f41d439"></script>
     <script src="../../../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../../_static/design-tabs.js?v=f930bc37"></script>
@@ -489,7 +489,9 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../index.html">Baselibs Module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../../docs/index.html">Module Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../language/index.html">language</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../bitmanipulation/docs/index.html">bitmanipulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../concurrency/docs/index.html">concurrency</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../containers/docs/index.html">containers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../filesystem/docs/index.html">filesystem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../json/docs/index.html">JSON-Library</a></li>
@@ -507,6 +509,7 @@
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../message_passing/docs/index.html">message_passing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../os/docs/index.html">os</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../result/docs/index.html">result</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../utils/docs/index.html">utils</a></li>
 </ul>
@@ -515,9 +518,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../feo/index.html">FEO Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../lifecycle/index.html">Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../logging/index.html">Logging Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../orchestrator/index.html">Orchestrator Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../orchestrator/index.html">Orchestrator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../os/index.html">OS Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../persistency/index.html">Persistency KVS Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tracing/index.html">Tracing Module</a></li>
 </ul>
 </div>
@@ -587,7 +589,7 @@
                   
   <section id="memory-shared-component-architecture">
 <h1>Memory Shared Component Architecture<a class="headerlink" href="#memory-shared-component-architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-83988c95">
+<div class="need_container docutils container" id="SNCB-e3cf23d7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__baselibs__memory_shared">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -606,7 +608,8 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
+</span></span></div>
 <div class="line"><span><div class="line">implements: <span class="implements"><span><a class="reference internal" href="#logic_arc_int__baselibs__memory_shared" title="comp_arc_sta__baselibs__memory_shared">logic_arc_int__baselibs__memory_shared</a></span></span></div>
 <div class="line">uses: <span class="uses"><span><a class="reference internal" href="../../../../os/libc/docs/architecture/index.html#logic_arc_int__os__fcntl" title="comp_arc_sta__baselibs__memory_shared">logic_arc_int__os__fcntl</a>, <a class="reference internal" href="../../../../os/libc/docs/architecture/index.html#logic_arc_int__os__stat" title="comp_arc_sta__baselibs__memory_shared">logic_arc_int__os__stat</a>, <a class="reference internal" href="../../../../os/libc/docs/architecture/index.html#logic_arc_int__os__mmap" title="comp_arc_sta__baselibs__memory_shared">logic_arc_int__os__mmap</a></span></span></div>
 <div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../docs/index.html#mod_view_sta__baselibs__baselibs" title="comp_arc_sta__baselibs__memory_shared">mod_view_sta__baselibs__baselibs</a></span></span></div>
@@ -616,7 +619,7 @@
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-modules/baselibs/memory_shared/docs/architecture/index-0">
-<object data="../../../../../_images/plantuml-93b77df0a9329c68b03674b82d401a1153a6c36c.svg" type="image/svg+xml" style="width:168px;height:241px;background:#FFFFFF;"></object></p>
+<object data="../../../../../_images/plantuml-ffd42e5b21f5c78633be1834aab7c83e6b6da66d.svg" type="image/svg+xml" style="width:168px;height:241px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -624,7 +627,7 @@
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
-<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component &amp; Component Package Diagram</span></span></span></div>
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component Package Diagram</span></span></span></div>
 </div>
 </td>
 <td class="footer_right" colspan="2"></td>
@@ -633,7 +636,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-fd916c11">
+<div class="need_container docutils container" id="SNCB-e7ecb36b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__baselibs__memory_shared">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -652,7 +655,8 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
+</span></span></div>
 <div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="#comp_arc_sta__baselibs__memory_shared" title="logic_arc_int__baselibs__memory_shared">comp_arc_sta__baselibs__memory_shared</a></span></span></div>
 <div class="line">used by: <span class="uses"><span><a class="reference internal" href="../../../../communication/ipc_binding/docs/architecture/index.html#comp_arc_sta__com__ipc_binding" title="logic_arc_int__baselibs__memory_shared">comp_arc_sta__com__ipc_binding</a></span></span></div>
 <div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat_arc_sta__baselibs__static_view_arch" title="logic_arc_int__baselibs__memory_shared">feat_arc_sta__baselibs__static_view_arch</a></span></span></div>
@@ -678,7 +682,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-3accd075">
+<div class="need_container docutils container" id="SNCB-c4a3b9ac">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__open">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -697,7 +701,8 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
+</span></span></div>
 <div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__baselibs__memory_shared" title="logic_arc_int_op__baselibs__open">logic_arc_int__baselibs__memory_shared</a></span></span></div>
 </span></div>
 </div>
@@ -720,7 +725,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-31d9335d">
+<div class="need_container docutils container" id="SNCB-16aac8a1">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__update">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -739,7 +744,8 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
+</span></span></div>
 <div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__baselibs__memory_shared" title="logic_arc_int_op__baselibs__update">logic_arc_int__baselibs__memory_shared</a></span></span></div>
 </span></div>
 </div>
@@ -762,7 +768,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f4490201">
+<div class="need_container docutils container" id="SNCB-4d60cf65">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__lock">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -781,7 +787,8 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
+</span></span></div>
 <div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__baselibs__memory_shared" title="logic_arc_int_op__baselibs__lock">logic_arc_int__baselibs__memory_shared</a></span></span></div>
 </span></div>
 </div>
@@ -804,7 +811,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-dfd0a0b6">
+<div class="need_container docutils container" id="SNCB-24e6729b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__set_perm">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -823,7 +830,8 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
+</span></span></div>
 <div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__baselibs__memory_shared" title="logic_arc_int_op__baselibs__set_perm">logic_arc_int__baselibs__memory_shared</a></span></span></div>
 </span></div>
 </div>
@@ -891,7 +899,7 @@
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/modules/baselibs/memory_shared/docs/architecture/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/modules/baselibs/memory_shared/docs/architecture/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -902,15 +910,6 @@
     </a>
   </div>
 </div>
-
-  <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../../../../../_sources/modules/baselibs/memory_shared/docs/architecture/index.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
 
 </div></div>
               

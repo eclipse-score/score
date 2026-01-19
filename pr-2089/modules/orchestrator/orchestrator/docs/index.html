@@ -53,7 +53,7 @@
 
     <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
     <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../../_static/documentation_options.js?v=7f41d439"></script>
     <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
@@ -72,8 +72,8 @@
         </script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="Component Architecture" href="architecture/orchestrator.html" />
-    <link rel="prev" title="Component Architecture" href="../../executor/docs/architecture/executor.html" />
+    <link rel="next" title="Component Architecture" href="architecture/index.html" />
+    <link rel="prev" title="DFA (Dependent Failure Analysis)" href="../../executor/docs/safety_analysis/dfa.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
@@ -492,17 +492,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../feo/index.html">FEO Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../lifecycle/index.html">Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../logging/index.html">Logging Module</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">Orchestrator Module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../docs/index.html">Module Documents</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">Orchestrator</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../docs/index.html">Module Documents Orchestrator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../executor/docs/index.html">Executor</a></li>
 <li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">Orchestrator</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="architecture/orchestrator.html">Component Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture/index.html">Component Architecture</a></li>
+
+<li class="toctree-l3"><a class="reference internal" href="architecture/chklst_arc_inspection.html">Architecture Inspection Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="detailed_design/index.html">Detailed Design</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements/index.html">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements/chklst_req_inspection.html">Requirement Inspection Checklist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="safety_analysis/fmea.html">FMEA (Failure Modes and Effects Analysis)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="safety_analysis/dfa.html">DFA (Dependent Failure Analysis)</a></li>
 </ul>
 </details></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../os/index.html">OS Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../persistency/index.html">Persistency KVS Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tracing/index.html">Tracing Module</a></li>
 </ul>
 </div>
@@ -548,7 +554,7 @@
     <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Modules</a></li>
     
     
-    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Orchestrator Module</a></li>
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Orchestrator</a></li>
     
     <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Orchestrator</span></li>
   </ul>
@@ -568,16 +574,16 @@
                 <article class="bd-article">
                   
   <section id="orchestrator">
-<span id="comp-doc-orchestrator"></span><h1>Orchestrator<a class="headerlink" href="#orchestrator" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-42cb4579">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__orchestrator">
+<h1>Orchestrator<a class="headerlink" href="#orchestrator" title="Link to this heading">#</a></h1>
+<div class="need_container docutils container" id="SNCB-279319e4">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__orchestrator_component">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
 <div class="line"><span><span class="needs_title"><span class="needs_data">Orchestrator</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
-<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></span></div>
 <div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
 <div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
@@ -588,7 +594,7 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">orchestration</span><span class="needs_spacer">, </span><span class="needs_data">orchestrator</span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">orchestrator</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/change_management_workproducts.html#wp__cmpt_request">wp__cmpt_request</a></span></span></div>
 </span></div>
@@ -599,7 +605,7 @@
 <tr class="content row-odd"><td class="content" colspan="6"></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
-<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__orchestrator" title="doc__orchestrator">doc__orchestrator</a></span></span></div>
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__orchestrator_component" title="doc__orchestrator_component">doc__orchestrator_component</a></span></span></div>
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
@@ -612,12 +618,144 @@
 </table>
 </div>
 </div>
-<section id="component-documents">
-<h2>Component Documents<a class="headerlink" href="#component-documents" title="Link to this heading">#</a></h2>
+<section id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
+<p>[A short (~200 word) description of the contribution being addressed.]</p>
+</section>
+<section id="motivation">
+<h2>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h2>
+<p>[Clearly explain why the existing platform/project solution is inadequate to address the topic that the CR solves.]</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The motivation is critical for CRs that want to change the existing components.
+It should clearly explain why the existing solution is inadequate to address the topic that the CR solves.
+Motivation may based on criteria as resource requirements, scheduling issues, risks, benefits, etc.
+CRs submissions without sufficient motivation may be rejected.</p>
+</div>
+</div></blockquote>
+</section>
+<section id="rationale">
+<h2>Rationale<a class="headerlink" href="#rationale" title="Link to this heading">#</a></h2>
+<p>[Describe why particular design decisions were made.]</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The rationale should provide evidence of consensus within the community and discuss important objections or concerns raised during discussion.
+For the documentation of the decision the <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/guidance/change_management_decision_record_template.html#gd_temp__change_decision_record">gd_temp__change_decision_record</a> can be used.</p>
+</div>
+</div></blockquote>
+</section>
+<section id="specification">
+<h2>Specification<a class="headerlink" href="#specification" title="Link to this heading">#</a></h2>
+<p>[Describe the requirements, architecture of any new component.] or
+[Describe the change to requirements, architecture, implementation, documentation of any change request.]</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A CR shall specify the component requirements as part of our platform/project.
+Thereby the <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__project_lead">rl__project_lead</a> will approve these requirements as part of accepting the CR (e.g. merging the PR with the CR).</p>
+</div>
+</div></blockquote>
+</section>
+<section id="backwards-compatibility">
+<h2>Backwards Compatibility<a class="headerlink" href="#backwards-compatibility" title="Link to this heading">#</a></h2>
+<p>[Describe potential impact (especially including safety and security impacts) and severity on pre-existing platform/project elements.]</p>
+</section>
+<section id="security-impact">
+<h2>Security Impact<a class="headerlink" href="#security-impact" title="Link to this heading">#</a></h2>
+<p>[How could a malicious user take advantage of this new/modified component?]</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If there are security concerns in relation to the CR, those concerns should be explicitly written out to make sure reviewers of the CR are aware of them.</p>
+</div>
+</div></blockquote>
+<p>Which security requirements are affected or has to be changed?
+Could the new/modified component enable new threat scenarios?
+Could the new/modified component enable new attack paths?
+Could the new/modified component impact functional safety?
+If applicable, which additional security measures must be implemented to mitigate the risk?</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use Security Software Critically Analysis, Vulnerability Analysis.
+[Methods will be defined later in Process area Security Analysis]</p>
+</div>
+</div></blockquote>
+</section>
+<section id="safety-impact">
+<h2>Safety Impact<a class="headerlink" href="#safety-impact" title="Link to this heading">#</a></h2>
+<p>[How could the safety be impacted by the new/modified component?]</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If there are safety concerns in relation to the CR, those concerns should be explicitly written out to make sure reviewers of the CR are aware of them.</p>
+</div>
+</div></blockquote>
+<p>Which safety requirements are affected or has to be changed?
+Could the new/modified component be a potential common cause or cascading failure initiator?
+If applicable, which additional safety measures must be implemented to mitigate the risk?</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use Dependency Failure Analysis and/or Safety Software Critically Analysis.
+[Methods will be defined later in Process area Safety Analysis]</p>
+</div>
+</div></blockquote>
+<p>For new feature/component contributions:</p>
+<p>[What is the expected ASIL level?]
+[What is the expected classification of the contribution?]</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use the component classification method here to classify your component, if it shall to be used in a safety context: <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/guidance/template_component_classification.html#gd_temp__component_classification">gd_temp__component_classification</a>.</p>
+</div>
+</div></blockquote>
+</section>
+<section id="license-impact">
+<h2>License Impact<a class="headerlink" href="#license-impact" title="Link to this heading">#</a></h2>
+<p>[How could the copyright impacted by the license of the new contribution?]</p>
+</section>
+<section id="how-to-teach-this">
+<h2>How to Teach This<a class="headerlink" href="#how-to-teach-this" title="Link to this heading">#</a></h2>
+<p>[How to teach users, new and experienced, how to apply the CR to their work.]</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For a CR that adds new functionality or changes behavior, it is helpful to include a section on how to teach users, new and experienced, how to apply the CR to their work.</p>
+</div>
+</div></blockquote>
+</section>
+<section id="rejected-ideas">
+<h2>Rejected Ideas<a class="headerlink" href="#rejected-ideas" title="Link to this heading">#</a></h2>
+<p>[Why certain ideas that were brought while discussing this CR were not ultimately pursued.]</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Throughout the discussion of a CR, various ideas will be proposed which are not accepted.
+Those rejected ideas should be recorded along with the reasoning as to why they were rejected.
+This both helps record the thought process behind the final version of the CR as well as preventing people from bringing up the same rejected idea again in subsequent discussions.
+In a way this section can be thought of as a breakout section of the Rationale section that is focused specifically on why certain ideas were not ultimately pursued.</p>
+</div>
+</div></blockquote>
+</section>
+<section id="open-issues">
+<h2>Open Issues<a class="headerlink" href="#open-issues" title="Link to this heading">#</a></h2>
+<p>[Any points that are still being decided/discussed.]</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>While a CR is in draft, ideas can come up which warrant further discussion.
+Those ideas should be recorded so people know that they are being thought about but do not have a concrete resolution.
+This helps make sure all issues required for the CR to be ready for consideration are complete and reduces people duplicating prior discussion.</p>
+</div>
+</div></blockquote>
+</section>
+<section id="footnotes">
+<h2>Footnotes<a class="headerlink" href="#footnotes" title="Link to this heading">#</a></h2>
+<p>[A collection of footnotes cited in the CR, and a place to list non-inline hyperlink targets.]</p>
 <div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="architecture/orchestrator.html">Component Architecture</a></li>
-</ul>
 </div>
 </section>
 </section>
@@ -633,16 +771,16 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../../executor/docs/architecture/executor.html"
+       href="../../executor/docs/safety_analysis/dfa.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Component Architecture</p>
+        <p class="prev-next-title">DFA (Dependent Failure Analysis)</p>
       </div>
     </a>
     <a class="right-next"
-       href="architecture/orchestrator.html"
+       href="architecture/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
@@ -669,7 +807,18 @@
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#component-documents">Component Documents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale">Rationale</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specification">Specification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backwards-compatibility">Backwards Compatibility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#security-impact">Security Impact</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#safety-impact">Safety Impact</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#license-impact">License Impact</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-teach-this">How to Teach This</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rejected-ideas">Rejected Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-issues">Open Issues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#footnotes">Footnotes</a></li>
 </ul>
   </nav></div>
 
@@ -677,7 +826,7 @@
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/modules/orchestrator/orchestrator/docs/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/modules/orchestrator/orchestrator/docs/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -688,15 +837,6 @@
     </a>
   </div>
 </div>
-
-  <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../../../../_sources/modules/orchestrator/orchestrator/docs/index.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
 
 </div></div>
               
