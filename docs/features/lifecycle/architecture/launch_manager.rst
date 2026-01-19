@@ -42,7 +42,7 @@ E.g. the configuration below consists of three :term:`Run Targets <Run Target>` 
    :scale: 50
    :align: center
 
-The :need:`comp_arc_sta__lifecycle__launch_manager` implements the following interfaces,for the selection of :term:`Run Target` s, starting and stopping of components and monitoring of the processes.
+The :need:`comp__lifecycle_launch_manager` implements the following interfaces,for the selection of :term:`Run Target` s, starting and stopping of components and monitoring of the processes.
 
 Switching between Run Targets
 -----------------------------

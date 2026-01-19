@@ -108,7 +108,7 @@ Specification
 
 .. mod_view_sta:: Feature architecture
    :id: mod_view_sta__lifecycle__overview
-   :includes: comp_arc_sta__lifecycle__launch_manager, comp_arc_sta__lifecycle__healthmonitor
+   :includes: comp__lifecycle_launch_manager, comp__lifecycle_healthmonitor
 
    .. needarch::
       :scale: 50
@@ -122,7 +122,7 @@ Specification
       LifecycleApplication --> logic_arc_int__lifecycle__deadline_monitor_if :use
       LifecycleApplication --> posix_signals : implements
       NativeApplication --> posix_signals : implements
-      comp_arc_sta__lifecycle__launch_manager --> posix_signals : use
+      comp__lifecycle_launch_manager --> posix_signals : use
 
 
 The overall functionality of the feature can be split into 2 subfeatures, which are
