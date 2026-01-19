@@ -117,11 +117,10 @@ This unified approach allows external state managers to request any run target a
 
 .. feat_arc_dyn:: Control interface dynamic architecture activate run target
    :id: feat_arc_dyn__lifecycle__control_if_activate
-   :security: YES
    :status: valid
    :safety: ASIL_B
+   :security: YES
    :fulfils: feat_req__lifecycle__control_commands, feat_req__lifecycle__request_run_target_start, feat_req__lifecycle__switch_run_targets
-   :includes:
 
    .. uml:: _assets/control_interface_start_sequence.puml
       :scale: 50
@@ -250,7 +249,6 @@ Dynamic Architecture
    :status: valid
    :safety: ASIL_B
    :fulfils: feat_req__lifecycle__control_commands, feat_req__lifecycle__request_run_target_start, feat_req__lifecycle__switch_run_targets
-   :includes:
 
    .. uml:: _assets/lifecycle_state_machine.puml
       :scale: 50

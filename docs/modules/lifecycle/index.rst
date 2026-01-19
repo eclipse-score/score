@@ -55,7 +55,6 @@ Lifecycle
    :security: YES
    :implements: logic_arc_int__lifecycle__deadline_monitor_if,logic_arc_int__lifecycle__logical_monitor_if
    :uses: logic_arc_int__lifecycle__alive_if
-   :security: NO
 
 .. comp_arc_sta:: Health Monitor Static View
    :id: comp_arc_sta__lifecycle__healthmonitor
@@ -63,7 +62,6 @@ Lifecycle
    :safety: ASIL_B
    :security: YES
    :uses: logic_arc_int__lifecycle__alive_if
-   :security: NO
    :includes: logic_arc_int__lifecycle__deadline_monitor_if,logic_arc_int__lifecycle__logical_monitor_if
 
    .. needarch::
