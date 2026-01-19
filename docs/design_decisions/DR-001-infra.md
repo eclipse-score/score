@@ -14,9 +14,14 @@ SPDX-License-Identifier: Apache-2.0
 
 # DR-001-Infra: Integration Strategy for External Development Tools
 
-* **Status:** Agreed within Community
-* **Owner:** Infrastructure Community
 * **Date:** 2025-09-01
+
+```{dec_rec} Integration Strategy for External Development Tools
+:id: dec_rec__infra__dev_tools
+:status: accepted
+:context: Infrastructure
+:decision: Devcontainer is the primary distribution for all tools
+```
 
 ---
 
