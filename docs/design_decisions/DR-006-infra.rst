@@ -10,7 +10,7 @@
 
    SPDX-License-Identifier: Apache-2.0
 
-DR-005-Infra: Hosting Strategy for Module Documentation
+DR-006-Infra: Hosting Strategy for Module Documentation
 =======================================================
 
 .. dec_rec:: Hosting strategy for module webspaces
