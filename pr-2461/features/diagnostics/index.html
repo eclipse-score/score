@@ -1,0 +1,1033 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Diagnostic and Fault Management &#8212; S-CORE  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score.css?v=6e51530f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score_needs.css?v=e97392eb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score_design.css?v=d9fd870c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=803738c0" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
+    <script src="../../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
+    <script src="../../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
+    <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
+    <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'features/diagnostics/index';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Requirements" href="requirements/index.html" />
+    <link rel="prev" title="Requirements" href="../configuration/config_mgmt/requirements/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Eclipse S-CORE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../handbook/index.html">
+    Handbook
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../requirements/index.html">
+    Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../modules/index.html">
+    Modules
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../design_decisions/index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../handbook/index.html">
+    Handbook
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../requirements/index.html">
+    Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../modules/index.html">
+    Modules
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../design_decisions/index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ai_platform/index.html">AI Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis-infra/index.html">Analysis Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../baselibs/index.html">Base Libraries (v0.5 beta)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code_generation/index.html">Code Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../communication/index.html">Communication (v0.5 beta)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Diagnostic and Fault Management</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="requirements/index.html">Requirements</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../frameworks/index.html">Frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../infrastructure/index.html">Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/index.html">Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lifecycle/index.html">Lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../orchestration/index.html">Orchestration (v0.5 beta)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../persistency/index.html">Persistency (v0.5 beta)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security_crypto/index.html">Security &amp; Cryptography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time/index.html">Time</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Features</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Diagnostic and Fault Management</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="diagnostic-and-fault-management">
+<span id="diagnostics-feature"></span><h1>Diagnostic and Fault Management<a class="headerlink" href="#diagnostic-and-fault-management" title="Link to this heading">#</a></h1>
+<div class="need_container docutils container" id="SNCB-57837faf">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__diagnostics">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Diagnostics</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">feature_request</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/change_management_workproducts.html#wp__feat_request">wp__feat_request</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__diagnostics" title="doc__diagnostics">doc__diagnostics</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Generic Document</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<section id="feature-flag">
+<h2>Feature flag<a class="headerlink" href="#feature-flag" title="Link to this heading">#</a></h2>
+<p>To activate this feature, use the following feature flag:</p>
+<p><code class="docutils literal notranslate"><span class="pre">experimental_diagnostics</span></code></p>
+</section>
+<section id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
+<p>We propose adding support for Vehicle Diagnostics via Service-Oriented Vehicle Diagnostics (SOVD) within S-CORE.
+SOVD offers a service-oriented, self-descriptive interface based on standardized RESTful APIs,
+eliminating the need for manually modeling diagnostic interfaces as required in UDS.
+This significantly reduces integration overhead and simplifies the onboarding of new ECUs.
+Additionally, SOVD enables scalable, secure, and cloud-ready diagnostics with real-time fault access and
+advanced data handling across platforms. Integrating SOVD into S-CORE will enhance developer efficiency,
+improve system maintainability, and support future-proof diagnostic workflows.</p>
+<p>The intent of this feature request is to define a high-level architecture for the diagnostic system.
+The components listed throughout this document require detailed feature requests in the future respectively.</p>
+</section>
+<section id="motivation">
+<h2>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h2>
+<p>Currently there is no solution for vehicle diagnostics in S-CORE.
+Diagnostic is a core capability of automotive platform stacks and is required for various use-cases
+such as field troubleshooting, quality assurance, after sales, production, development and more.</p>
+</section>
+<section id="rationale">
+<h2>Rationale<a class="headerlink" href="#rationale" title="Link to this heading">#</a></h2>
+<p>SOVD was chosen as the foundation for the diagnostic architecture because it offers a modern,
+service-oriented approach that aligns with the industry’s shift toward Ethernet-based communication and scalable software-defined vehicle platforms.
+It provides a standardized and extensible interface that enables better interoperability across ECUs, testers, and external tools.</p>
+</section>
+<section id="specification">
+<h2>Specification<a class="headerlink" href="#specification" title="Link to this heading">#</a></h2>
+<section id="architecture">
+<h3>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h3>
+<p>The proposed concept consists of three main parts:</p>
+<ol class="arabic simple">
+<li><p>A framework agnostic library to aggregate faults and integrate the diagnostic system into S-CORE</p></li>
+<li><p>A SOVD based diagnostic system</p></li>
+<li><p>Components to interface the diagnostic system with the outside – e.g. Tester or UDS based ECUs</p></li>
+</ol>
+<p>The diagram below shows the concept with the three subgroups connected.</p>
+<img alt="Diagnostic stack component architecture" src="../../_images/score-diagnostics.drawio.svg" />
+<p>The next diagram shows the concept in a distributed view to highlight components that are unique per system or per device.</p>
+<img alt="Diagnostic stack component architecture" src="../../_images/score-diagnostics-distributed.drawio.svg" />
+</section>
+<section id="in-scope-components-full-stack">
+<h3>In scope components (full stack)<a class="headerlink" href="#in-scope-components-full-stack" title="Link to this heading">#</a></h3>
+<p>The following components are considered in scope of this feature request for the long term implementation of the diagnostic system (beyond v1.0).</p>
+<p>Fault Library</p>
+<ul class="simple">
+<li><p>Provides a framework agnostic interface for apps or FEO activities to report faults - called “Fault API” in the S-CORE architecture.</p></li>
+<li><p>Relays faults via IPC to central Diagnostic Fault Manager.</p></li>
+<li><p>Enables domain-specific error logic (e.g. debouncing) by exposing a configuration interface</p></li>
+<li><p>Reporting of faults additionally results in a log entry.</p></li>
+<li><p>The interface needs to be specified further but will likely include: Fault ID (FID), time, ENUM fault type (like DLT ENUMs), optional meta data.</p></li>
+<li><p>Fault lib is the base for activity specific, custom fault handling.</p></li>
+<li><p>Can and should also be used by platform components to report faults.</p></li>
+<li><p>Potentially source of faults to be acted upon - e.g. by Health and Lifecycle Management.</p></li>
+<li><p>Also needs to enforce regulatory requirements for certain faults - e.g. emission relevant.</p></li>
+<li><p>Decentral component.</p></li>
+</ul>
+<p>Diagnostic Fault Manager</p>
+<ul class="simple">
+<li><p>Aggregates and manages diagnostic fault data from Fault libs across the system.</p></li>
+<li><p>Provides centralized fault status to the SOVD Server.</p></li>
+<li><p>Not part of SOVD specification directly but a stack specific diagnostic implementation.</p></li>
+<li><p>Interfaces with the Diagnostic DB (persistency) to store and retrieve data.</p></li>
+<li><p>Stores (persistently) central configuration (e.g. for debouncing thresholds) which can be loaded during startup by Fault libs.</p></li>
+<li><p>Implements the operation cycle concept (suppressing faults during phases where faults are to be expected).</p></li>
+<li><p>Central component.</p></li>
+</ul>
+<p>Diagnostic DB</p>
+<ul class="simple">
+<li><p>Potentially part of the Diagnostic Fault Manager process.</p></li>
+<li><p>Stores static and runtime diagnostic data.</p></li>
+<li><p>Is considered in scope due to the domain specific data format but internally uses S-CORE::Persistency.</p></li>
+<li><p>The data format needs to be specified further but will likely include:</p></li>
+<li><p>Diagnostic Trouble Code (DTC): OEM specific code, relevant for end-user.</p></li>
+<li><p>Fault ID (FID): ECU specific ID to uniquely identify every fault.</p></li>
+<li><p>Count: occurrence count of DTC/fault.</p></li>
+<li><p>Meta data: meta data related to fault occurrence.</p></li>
+<li><p>Central component.</p></li>
+</ul>
+<p>SOVD Server</p>
+<ul class="simple">
+<li><p>Central entry point for all diagnostic requests via SOVD.</p></li>
+<li><p>Implements the SOVD API and dispatches requests to services, DB, and fault manager.</p></li>
+<li><p>Manages authentication, configuration, and data access via IPC.</p></li>
+<li><p>SOVD communication via HTTP.</p></li>
+<li><p>Central component.</p></li>
+</ul>
+<p>Service App</p>
+<ul class="simple">
+<li><p>Is a base concept to extend the system with system-specific diagnostic services/routines (e.g. DTC clear, ECU reset, Flash Master).</p></li>
+<li><p>Interfaces with the SOVD Server via IPC.</p></li>
+<li><p>Base for all specific service app implementations.</p></li>
+<li><p>Central component derived from base service app.</p></li>
+</ul>
+<p>SOVD Gateway</p>
+<ul class="simple">
+<li><p>Forwards SOVD requests to appropriate backend targets (e.g. adapters, proxies, clients).</p></li>
+<li><p>Acts as a router between clients and distributed SOVD components.</p></li>
+<li><p>Supports multi-ECU SOVD communication.</p></li>
+<li><p>Central component and unique per system.</p></li>
+</ul>
+<p>SOVD Client</p>
+<ul class="simple">
+<li><p>Off-board, on-board or cloud client that initiates diagnostics via SOVD protocol.</p></li>
+<li><p>Can be used by developers, testers, ECUs or cloud services; should be deployment agnostic.</p></li>
+<li><p>Handles access control on the client side – e.g. by providing relevant certificates.</p></li>
+<li><p>Central component - but could be deployed mutliple times (e.g. one on-baord and one off-baord).</p></li>
+</ul>
+<p>Classic Diagnostic Adapter</p>
+<ul class="simple">
+<li><p>Translates SOVD service calls to UDS commands.</p></li>
+<li><p>Enables backward compatibility with legacy ECUs that only support UDS.</p></li>
+<li><p>Configured via ODX files describing ECU-specific UDS expectations.</p></li>
+<li><p>UDS transport layer (e.g. DoIP or other vendor specific transports) shared with UDS2SOVD Proxy.</p></li>
+<li><p>Central component and unique per system.</p></li>
+</ul>
+<p>UDS2SOVD Proxy</p>
+<ul class="simple">
+<li><p>Allows for the mapping of any UDS service to SOVD functionality in an arbitrary way for backward-compatible testers.</p></li>
+<li><p>Acts as a local translation layer between UDS clients and SOVD stack.</p></li>
+<li><p>Configured via ODX files to define what is exposed.</p></li>
+<li><p>Implements the UDS session handling concept.</p></li>
+<li><p>UDS transport layer (e.g. DoIP or other vendor specific transports) shared with Classic Diagnostic Adapter.</p></li>
+<li><p>Central component and unique per ECU (one per ECU or per System is possible).</p></li>
+</ul>
+</section>
+<section id="in-scope-components-v1-0">
+<h3>In scope components (v1.0)<a class="headerlink" href="#in-scope-components-v1-0" title="Link to this heading">#</a></h3>
+<p>The following use-cases are considered in scope of this feature request for S-CORE v1.0.</p>
+<ul class="simple">
+<li><p>Read DTCs through the SOVD API.</p></li>
+<li><p>Report new faults from platform and app components via the Fault API and handle them in the DFM.</p></li>
+<li><p>Clear DTCs over SOVD.</p></li>
+<li><p>Reach an UDS ECU through the Classic Diagnostic Adapter, at least for read/clear DTC paths.</p></li>
+<li><p>A sample Diagnostic service can be triggered via SOVD (Diagnostic service = a function which can be triggered via SOVD).</p></li>
+<li><p>OPTIONAL: Retrieve ECU- and app-level metadata (HW revision, SW version) via SOVD.</p></li>
+<li><p>OPTIONAL: Read/write component configuration through SOVD, backed by the S-CORE configuration service.</p></li>
+</ul>
+<p>The following components are considered in scope of this feature request for S-CORE v1.0.</p>
+<ul class="simple">
+<li><p>All componenets are in scope for v1.0 but with limited functionality to support the use-cases described above.</p></li>
+</ul>
+<p>Further information can be found here: <a class="github reference external" href="https://github.com/eclipse-opensovd/opensovd/blob/main/docs/design/mvp.md">eclipse-opensovd/opensovd</a></p>
+</section>
+<section id="out-of-scope-components">
+<h3>Out of scope components<a class="headerlink" href="#out-of-scope-components" title="Link to this heading">#</a></h3>
+<p>The following components are out of scope for this feature request but are included for context.
+Each one is briefly described to illustrate its role within the overall system architecture and
+to highlight any resulting requirements or constraints imposed by the diagnostic system design.</p>
+<p>Logging</p>
+<ul class="simple">
+<li><p>Enables the Fault Library to log fault events.</p></li>
+<li><p>All SOVD components can interact with logging.</p></li>
+</ul>
+<p>Configuration Manager</p>
+<ul class="simple">
+<li><p>Provides configuration data to the SOVD Server (e.g. ECU layout, variant, parameters).</p></li>
+<li><p>Enables parametrization of applications.</p></li>
+</ul>
+<p>Authentication Manager</p>
+<ul class="simple">
+<li><p>Manages authentication and authorization for incoming SOVD requests.</p></li>
+<li><p>Ensures only valid users or clients can access services.</p></li>
+</ul>
+<p>Crypto</p>
+<ul class="simple">
+<li><p>Provides cryptographic services – e.g. securely store and retrieve diagnostic certificates.</p></li>
+<li><p>Used by Authentication Manager.</p></li>
+</ul>
+<p>Persistency</p>
+<ul class="simple">
+<li><p>Provides persistent data storage.</p></li>
+</ul>
+<p>Flash Service App</p>
+<ul class="simple">
+<li><p>Specialized extension of the Service App to handle ECU flashing.</p></li>
+<li><p>Provides routines for software update/bootloader access via diagnostics.</p></li>
+</ul>
+<p>Rest of Vehicle UDS</p>
+<ul class="simple">
+<li><p>Represents legacy ECUs in the vehicle that only speak UDS.</p></li>
+<li><p>Interact via the Classic Diagnostic Adapter (SOVD2UDS).</p></li>
+</ul>
+<p>Rest of Vehicle SOVD</p>
+<ul class="simple">
+<li><p>Other ECUs in the vehicle that already support SOVD natively.</p></li>
+<li><p>Can communicate directly with the SOVD Gateway.</p></li>
+</ul>
+<p>UDS Tester</p>
+<ul class="simple">
+<li><p>Traditional diagnostics tester that uses UDS protocol.</p></li>
+<li><p>Communicates with the UDS2SOVD Proxy for limited diagnostics access.</p></li>
+</ul>
+</section>
+<section id="requirements">
+<h3>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h3>
+<p>The related requirements can be found in <a class="reference internal" href="requirements/index.html"><span class="doc">Requirements</span></a>.</p>
+</section>
+</section>
+<section id="backwards-compatibility">
+<h2>Backwards Compatibility<a class="headerlink" href="#backwards-compatibility" title="Link to this heading">#</a></h2>
+<p>UDS2SOVD Proxy and Classic Diagnostic Adapter (SOVD2UDS) ensure compatibility with legacy UDS systems.
+ODX as a standardized exchange format further ensures compatibility with proprietary diagnostic data models.</p>
+</section>
+<section id="security-impact">
+<h2>Security Impact<a class="headerlink" href="#security-impact" title="Link to this heading">#</a></h2>
+<p>The introduction of a SOVD based diagnostic stack has significant security implications due to its capabilities and network-based communication model.
+Diagnostics inherently allow access to system information, state manipulation, coding, and software updates - all of which pose risks if accessed by unauthorized actors.
+SOVD, based on REST, includes modern security features such as HTTPS and token-based authentication,
+but also introduces a broader attack surface compared to traditional UDS, which relies on more isolated, session-based access.
+If improperly secured, diagnostic interfaces could be exploited to trigger unauthorized routines or inject malicious software.
+This may enable new threat scenarios and attack paths, particularly over external or less trusted networks.
+To mitigate these risks, the diagnostic stack shall enforce secure communication via HTTPS,
+authenticate endpoints using certificates (see architecture diagram), and implement strict access control mechanisms.
+While diagnostics do not directly impact functional safety, a successful attack could indirectly influence safety-relevant functions
+- for example by setting the system into a different state.
+Therefore, the overall security architecture must be revisited in detail to assess and mitigate potential risks introduced by the SOVD integration.</p>
+<p>Since diagnostics is QM, even being able to breach into the SOVD stack must not violate safety guarantees.
+This implies that session/mode-sensitive operations must be treated by the implementing apps in a way that doesn’t impact safety.
+The client lib(s) need to be developed with the same quality standards as safe components to ensure that and also provide FFI guarantees.</p>
+</section>
+<section id="safety-impact">
+<h2>Safety Impact<a class="headerlink" href="#safety-impact" title="Link to this heading">#</a></h2>
+<p>At this point in time no direct safety impact is foreseen. The expected ASIL level is QM.
+Configuration Management could have a safety impact but is handled in another feature request and out of scope of this document.
+As pointed out in “Security Impact”, a breach in the diagnostic system could theoretically effect safety-relevant functions
+- for example by setting the system into a different state.
+The Fault Library could also have a safety impact if faults are propagated and act upon by other components
+- for example Health and Lifecycle Management.</p>
+</section>
+<section id="license-impact">
+<h2>License Impact<a class="headerlink" href="#license-impact" title="Link to this heading">#</a></h2>
+<p>There are no license restrictions preventing the implementation of an open-source SOVD stack at this time.
+While SOVD is currently in the ISO standardization process (ISO/DIS 17978) <a class="footnote-reference brackets" href="#s1" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, the relevant parts - especially Part 3,
+which defines the API - are already publicly available for purchase as Draft International Standards (DIS).
+These drafts are considered stable and are typically subject only to minor editorial changes before final publication.
+As such, referencing the current DIS versions is sufficient for implementation purposes, and does not pose any legal or license-related risk.
+Once the final ISO standard is published, the delta to the current drafts is expected to be minimal and can be easily addressed.</p>
+<p>The license impact regarding publication of XML schemata to handle/convert ODX files as per ISO 22901 needs to be evaluated.</p>
+</section>
+<section id="how-to-teach-this">
+<h2>How to Teach This<a class="headerlink" href="#how-to-teach-this" title="Link to this heading">#</a></h2>
+<p>A good starting point to get an overview of SOVD is the overview pages provided by ISO <a class="footnote-reference brackets" href="#s1" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> and ASAM <a class="footnote-reference brackets" href="#s2" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</p>
+</section>
+<section id="rejected-ideas">
+<h2>Rejected Ideas<a class="headerlink" href="#rejected-ideas" title="Link to this heading">#</a></h2>
+<p>An UDS first based diagnostic system was considered but rejected.
+The current market trend clearly indicates the move towards SOVD.
+Additionally, there a multiple well established proprietary UDS stacks and tools available.
+Because no FOSS SOVD stack exists currently, it presents an opportunity for S-CORE to provide value and increase adoption.</p>
+</section>
+<section id="open-issues">
+<h2>Open Issues<a class="headerlink" href="#open-issues" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Interfacing concept with Autosar Adaptive Diagnostic Stack for mixed stacks and/or a transitional phase</p></li>
+<li><p>Evaluate publication of XML schemata to handle/convert ODX files as per ISO 22901</p></li>
+<li><p>Provide sequence diagram for a use case</p></li>
+<li><p>Is the fault lib the source for faults to be acted upon by Health and Lifecycle Management?</p></li>
+<li><p>List regulatory requirements for certain faults/DTCs - e.g. emission relevant faults</p></li>
+<li><p>Provide recommended transition/migration scenario for UDS based components moving to SOVD</p></li>
+<li><p>Decide if SOVD communication inside the ECU uses IP based communication or an alternative such as UDS (Unix Domain Sockets)</p></li>
+<li><p>Decide on a common concept for Service Validation. How are Services Validated and where (Server vs. Service)?</p></li>
+<li><p>For Service Validation: How do Services access the state of the ECU and the state of certain apps?</p></li>
+<li><p>Add concept of how to interact with ECU State Management</p></li>
+</ul>
+</section>
+<section id="footnotes">
+<h2>Footnotes<a class="headerlink" href="#footnotes" title="Link to this heading">#</a></h2>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="s1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>)</span>
+<p>“SOVD Standard ISO/DIS 17978”, ISO, <a class="reference external" href="https://www.iso.org/standard/85133.html">https://www.iso.org/standard/85133.html</a>.</p>
+</aside>
+<aside class="footnote brackets" id="s2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
+<p>“ASAM SOVD Overview”, ASAM, <a class="reference external" href="https://www.asam.net/standards/detail/sovd">https://www.asam.net/standards/detail/sovd</a>.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../configuration/config_mgmt/requirements/index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Requirements</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="requirements/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Requirements</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-flag">Feature flag</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale">Rationale</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specification">Specification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-scope-components-full-stack">In scope components (full stack)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-scope-components-v1-0">In scope components (v1.0)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#out-of-scope-components">Out of scope components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backwards-compatibility">Backwards Compatibility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#security-impact">Security Impact</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#safety-impact">Safety Impact</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#license-impact">License Impact</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-teach-this">How to Teach This</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rejected-ideas">Rejected Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-issues">Open Issues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#footnotes">Footnotes</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/features/diagnostics/index.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
