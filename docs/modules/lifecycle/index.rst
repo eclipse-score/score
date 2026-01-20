@@ -40,7 +40,6 @@ Lifecycle
    :status: valid
    :safety: ASIL_B
    :security: NO
-   :includes: logic_arc_int__lifecycle__controlif, logic_arc_int__lifecycle__alive_if
 
    .. needarch::
       :scale: 50
@@ -62,7 +61,6 @@ Lifecycle
    :safety: ASIL_B
    :security: NO
    :uses: logic_arc_int__lifecycle__alive_if
-   :includes: logic_arc_int__lifecycle__deadline_monitor_if,logic_arc_int__lifecycle__logical_monitor_if
 
    .. needarch::
       :scale: 50
