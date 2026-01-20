@@ -90,7 +90,7 @@ Static Architecture
    :safety: ASIL_B
    :status: valid
    :fulfils: feat_req__baselibs__core_utilities
-   :includes: logic_arc_int__baselibs__json, logic_arc_int__baselibs__memory_shared, logic_arc_int__baselibs__message_passing, logic_arc_int__baselibs__result, logic_arc_int__baselibs__bit_manipulation, logic_arc_int__baselibs__bit_mask_operator, logic_arc_int__baselibs__dynamic_array, logic_arc_int__baselibs__intrusive_list, logic_arc_int__baselibs__filesystem, logic_arc_int__baselibs__utils_base64, logic_arc_int__baselibs__utils_scoped_op
+   :includes: logic_arc_int__baselibs__json, logic_arc_int__baselibs__memory_shared, logic_arc_int__baselibs__message_passing, logic_arc_int__baselibs__result, logic_arc_int__baselibs__bit_manipulation, logic_arc_int__baselibs__bit_mask_operator, logic_arc_int__baselibs__dynamic_array, logic_arc_int__baselibs__intrusive_list, logic_arc_int__baselibs__filesystem, logic_arc_int__baselibs__utils_base64, logic_arc_int__baselibs__utils_scoped_op, logic_arc_int__baselibs__promise, logic_arc_int__baselibs__future, logic_arc_int__baselibs__shared_future, logic_arc_int__baselibs__executor, logic_arc_int__baselibs__task, logic_arc_int__baselibs__task_result, logic_arc_int__baselibs__synchronized_queue, logic_arc_int__baselibs__condition_variable
 
    .. needarch::
       :scale: 50
@@ -107,4 +107,4 @@ The Baselibs feature exposes the following logical interfaces:
    :style: table
    :columns: title;id;status
    :sort: title
-   :filter: id in ['logic_arc_int__baselibs__json', 'logic_arc_int__baselibs__memory_shared', 'logic_arc_int__baselibs__message_passing' ,'logic_arc_int__baselibs__result', 'logic_arc_int__baselibs__bit_manipulation', 'logic_arc_int__baselibs__bit_mask_operator', 'logic_arc_int__baselibs__dynamic_array', 'logic_arc_int__baselibs__intrusive_list', 'logic_arc_int__baselibs__filesystem', 'logic_arc_int__baselibs__utils_base64', 'logic_arc_int__baselibs__utils_scoped_op']
+   :filter: id in ['logic_arc_int__baselibs__json', 'logic_arc_int__baselibs__memory_shared', 'logic_arc_int__baselibs__message_passing' ,'logic_arc_int__baselibs__result', 'logic_arc_int__baselibs__bit_manipulation', 'logic_arc_int__baselibs__bit_mask_operator', 'logic_arc_int__baselibs__dynamic_array', 'logic_arc_int__baselibs__intrusive_list', 'logic_arc_int__baselibs__filesystem', 'logic_arc_int__baselibs__utils_base64', 'logic_arc_int__baselibs__utils_scoped_op', 'logic_arc_int__baselibs__promise', 'logic_arc_int__baselibs__future', 'logic_arc_int__baselibs__shared_future', 'logic_arc_int__baselibs__executor', 'logic_arc_int__baselibs__task', 'logic_arc_int__baselibs__task_result', 'logic_arc_int__baselibs__synchronized_queue', 'logic_arc_int__baselibs__condition_variable']
