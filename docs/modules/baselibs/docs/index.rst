@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2025 Contributors to the Eclipse Foundation
+   # Copyright (c) 2026 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -14,7 +14,7 @@
 
 .. mod_view_sta:: Baselibs
    :id: mod_view_sta__baselibs__baselibs
-   :includes: comp_arc_sta__baselibs__json, comp_arc_sta__baselibs__message_passing, comp_arc_sta__baselibs__memory_shared, comp_arc_sta__baselibs__result, comp_arc_sta__baselibs__bit_manipulation, comp_arc_sta__baselibs__containers, comp_arc_sta__baselibs__filesystem, comp_arc_sta__baselibs__utils
+   :includes: comp_arc_sta__baselibs__json, comp_arc_sta__baselibs__message_passing, comp_arc_sta__baselibs__memory_shared, comp_arc_sta__baselibs__result, comp_arc_sta__baselibs__bit_manipulation, comp_arc_sta__baselibs__containers, comp_arc_sta__baselibs__filesystem, comp_arc_sta__baselibs__utils, comp_arc_sta__baselibs__concurrency
 
    .. needarch::
       :scale: 50
