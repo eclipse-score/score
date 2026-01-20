@@ -12,8 +12,6 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _component_template:
-
 VaJson
 #####################
 
@@ -25,7 +23,7 @@ VaJson
    :safety: ASIL_B
    :security: NO
    :realizes: wp__cmpt_request
-   :tags: contribution_request, feature_request
+   :tags: component_request
 
 
 Abstract
@@ -171,3 +169,4 @@ Footnotes
 .. toctree::
 
    requirements/index.rst
+
