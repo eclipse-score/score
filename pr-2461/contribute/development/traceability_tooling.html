@@ -564,7 +564,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-5b9a3ba5">
+  <div class="need_container docutils container" id="SNCB-01677d49">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__traceability_tooling">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -623,7 +623,7 @@ If there is multiple requirements that need to be linked to this place in the so
    <span class="o">...</span>
 </pre></div>
 </div>
-<p>An rendered example of a need where this is implemented can be seen in <a class="reference external" href="https://eclipse-score.github.io/docs-as-code/main/internals/requirements/requirements.html#tool_req__docs_common_attr_id">Rendered Example</a></p>
+<p><a class="reference external" href="https://eclipse-score.github.io/docs-as-code/main/internals/requirements/requirements.html#tool_req__docs_common_attr_id">A Rendered Example</a></p>
 <p>An Example of multiple requirements:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># req-Id: tool_req__docs_common_attr_title</span>
 <span class="c1"># req-Id: tool_req__docs_common_attr_status</span>
@@ -633,19 +633,15 @@ If there is multiple requirements that need to be linked to this place in the so
    <span class="o">...</span>
 </pre></div>
 </div>
-<p>The parser will look through most files but not those that fulfil any of these properties</p>
-<dl class="simple">
-<dt>Skips files with suffixes of:</dt><dd><ul class="simple">
-<li><p>.pyc</p></li>
-<li><p>.so</p></li>
-<li><p>.exe</p></li>
-<li><p>.bin</p></li>
-<li><p>.rst</p></li>
-<li><p>.md</p></li>
-</ul>
-</dd>
-</dl>
-<p>It also skips any file that starts with a ‘.’ or an ‘_’.</p>
+<p>The tool will look through any files except:</p>
+<p>Directories or files that start with ‘.’ or ‘_’
+It skips all files that end with one of the following:
+- .pyc
+- .so
+- .exe
+- .bin
+- .rst
+- .md</p>
 <p>The template string works regardless of the language.
 This means both following examples are valid and will work.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// # req-Id: comp_req__containers_rust__fixed_vector</span>
@@ -660,17 +656,35 @@ This means both following examples are valid and will work.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Find the rust example rendered here <a class="reference external" href="https://eclipse-score.github.io/baselibs_rust/pr-49/baselibs_rust/containers_rust/requirements/index.html#comp_req__containers_rust__fixed_vector">Rust Example Render</a></p>
+<p>Here is how this would look rendered:</p>
+<img alt="../../_images/example_rust_source_code_link.png" src="../../_images/example_rust_source_code_link.png" />
 </section>
 <section id="link-requirements-to-tests">
 <h2>Link Requirements to Tests<a class="headerlink" href="#link-requirements-to-tests" title="Link to this heading">#</a></h2>
-<p>There is a tool that has the ability to link requirements to your tests as well as provide virtual tests needs in order to make statistics etc. possible to be rendered.</p>
+<p>There is a tool that has the ability to link requirements to your tests as well as provide virtual tests sphinx-needs in order to make statistics etc. possible to be rendered.</p>
 <p>The implementation here differs based on your source code language though.
 So it is best if you read up in the language you want to develop in how to do this.</p>
 <p>In rough terms the data flow looks as follows.</p>
 <p>Your testing framework produces XML files with pre-defined properties.
-These XML files get read in and parsed. The test needs get build from the parsed data and linked to the requirements mentioned.</p>
-<p>You can now also do statistics on your tests. <a class="reference external" href="https://eclipse-score.github.io/docs-as-code/main/internals/requirements/test_overview.html">Docs as Code Test Statistics examples</a></p>
+These XML files are loaded and parsed. The test needs to get build details from the parsed data and link it to the requirements mentioned.</p>
+<p>You can now also do statistics on your tests.</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">needtable</span><span class="p">::</span> SUCCESSFUL TESTS
+   <span class="nc">:filter:</span> result == &quot;passed&quot;
+   <span class="nc">:tags:</span> TEST
+   <span class="nc">:columns:</span> name as &quot;testcase&quot;;result;fully_verifies;partially_verifies;test_type;derivation_technique;id as &quot;link&quot;
+
+
+<span class="p">..</span> <span class="ow">needpie</span><span class="p">::</span> Test Results
+   <span class="nc">:labels:</span> passed, failed, skipped
+   <span class="nc">:colors:</span> green, red, orange
+   <span class="nc">:legend:</span>
+
+   type == &#39;testcase&#39; and result == &#39;passed&#39;
+   type == &#39;testcase&#39; and result == &#39;failed&#39;
+   type == &#39;testcase&#39; and result == &#39;skipped&#39;
+</pre></div>
+</div>
+<p>Find the rendered examples here: <a class="reference external" href="https://eclipse-score.github.io/docs-as-code/main/internals/requirements/test_overview.html">Docs as Code Test Statistics examples</a></p>
 <section id="specific-language-implementations">
 <h3>Specific Language Implementations<a class="headerlink" href="#specific-language-implementations" title="Link to this heading">#</a></h3>
 <p><cite>Python implementation [NOT LINKED YET]</cite>
