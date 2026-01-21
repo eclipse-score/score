@@ -35,6 +35,8 @@ Its goal is to ensure **long-term reproducibility (≥10 years)**, **traceabilit
 **practical hermeticity**, despite changes in underlying infrastructure such as
 GitHub-hosted runners.
 
+It builds on [DR-001], which was concerned about the same topics, but was focused on tools only. This adds details where the original description was too fuzzy.
+
 The contract is intentionally **layered**, because different parts of the system control
 different capabilities and failure modes.
 
