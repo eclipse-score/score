@@ -12,6 +12,9 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+Project Management Plan
+#######################
+
 .. document:: Project Management Plan
    :id: doc__project_mgt_plan
    :status: draft
@@ -20,8 +23,7 @@
    :realizes: wp__project_mgt
    :tags: platform_management
 
-Project management plan
-#######################
+.. _pmp_pm_organization:
 
 Project organization
 ====================
