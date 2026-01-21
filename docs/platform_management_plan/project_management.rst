@@ -513,3 +513,12 @@ The *Technical lead circle* regularly monitors the status of the sagas with the 
 As soon as the saga is implemented and fulfills to 100% our software development process requirements, the decision is taken in the *Technical lead circle* whether the feature should be
 officially available and in case of the positive decision, the feature flag status
 is changed from "experimental" to "official".
+
+PMP Definition of Done
+======================
+- The **Definitions of Done** for all Platform Management Plans are fulfilled.
+- Project Organization: Org Chart and description is available and up to date.
+- Project Internal Communication: Team Overview with meeting structure is available and and Slack channels are established and maintained.
+- Scheduling: Meetings are scheduled in the Eclipse SDV calendar.
+- Milestones & Releases: Roadmap with Milestones and Releases are available and up to date.
+- General: All Reviews are performed according to their definitions, the respective templates are used.
