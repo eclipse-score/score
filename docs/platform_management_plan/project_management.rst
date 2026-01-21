@@ -508,6 +508,39 @@ All meetings are scheduled in the `Eclipse S-CORE Calendar <https://calendar.goo
 but mentioned team members are mandatory. Meeting minutes are public and stored in the project specific *GitHub Team Wikis*.
 
 
+.. _pmp_pm_repository_structure:
+
+Repository structure
+====================
+The Platform follows a multiple repositories approach. The root repository is
+
+.. _pmp_pm_root_repository:
+
+https://github.com/eclipse-score.
+
+It contains among others:
+
+- :ref:`stakeholder requirements <Stakeholder_Requirements>`
+- documentation of all :ref:`platform features <features>`, features flags,
+  feature requirements and architecture
+- build system including *S-CORE* specific *macros* and *rules*
+- integration rules for software modules.
+
+which are stored in the :ref:`Folder Structure of Platform Repository <platform_folder_structure>`.
+
+
+Every software module has its own repository, that contains among others:
+
+- multiple components
+- their requirements
+- architecture
+- implementation
+- tests
+
+within the following :ref:`Module Folder Structure <module_folder_structure>`.
+
+
+
 Usage of the special GitHub Issue template ensures, that all GitHub issues for creation of new *Feature
 Teams* follow the same rules, e.g. that the title always has the same format or
 that the description always contains the reasoning for the creation of a new *Feature Team*.
@@ -588,71 +621,7 @@ Team* setup should initiate committer elections for all software developers in t
 All other Technical Leads who are already committers in the S-CORE project are expected to support these
 elections by voting positively, provided there are no specific objections.
 
-Meeting Structure
------------------
 
-* **Project Lead Circle meeting**
-
-  Regular participants of *Project Lead Circle meeting* are the *Project Leads* and *Technical Leads* of the main *S-CORE* project. The main purpose of the meeting is the exchange between *Project Leads* and the reporting of the *Technical Lead Circle* to the *Project Lead Circle* and vice versa.
-
-  The *Project Lead Circle meetings* are announced via *score-dev@eclipse.org* mailing list and are open for everyone who is registered to this mailing list. All meetings are documented as *GitHub Discussions* in `Project Lead Circle section <https://github.com/orgs/eclipse-score/discussions/categories/project-lead-circle>`_ and can be read by everyone. Topics for the *Project lead circle meetings* can be proposed only by regular participants and will be prioritized by the *Project lead circle Assistant*. Proposals for agenda topics can be added as comment to the respective *GitHub Discussion* or sent to the *Project lead circle Assistant*.
-
-  Open points from the meetings will be handled by *GitHub Issues* in the *S-CORE* main repository and can be filtered via *project_lead_circle* label.
-
-  The *Project Lead Circle meeting* takes place usually once a week.
-
-
-* **Technical Lead Circle meeting**
-
-  Regular participants of the *Technical Lead Circle meeting* are the *Technical Leads* of the main *S-CORE* project. The main purpose of the meeting is the exchange between technical leads for fulfilling their responsibilities.
-
-  The *Technical Lead Circle meetings* are announced via *score-dev@eclipse.org* mailing list and are open for everyone who is registered to this mailing list. All meetings are documented as *GitHub Discussions* in `Technical Lead Circle section <https://github.com/orgs/eclipse-score/discussions/categories/technical-lead-circle>`_ and can be read by everyone. Topics for the *Technical lead circle meetings* can be proposed only by regular participants and will be prioritized by the *Technical lead circle Assistant*. Proposals for agenda topics can be added as comment to the respective *GitHub Discussion* or sent to the *Technical lead circle Assistant*.
-
-  Open points from the meetings will be handled by *GitHub Issues* in the *S-CORE* main repository and can be filtered via label *technical_lead_circle*.
-
-  The *Technical Lead Circle meeting* takes place usually once a week.
-
-* **Committer Circle Meeting**
-
-  Regular participants of the *Committer Circle meeting* are the *Committers* of the main *S-CORE* project and of all software modules/child projects. The *Committer Circle Meeting* is lead by the *Technical Leads*. The main purpose of the meeting are in-depth technical discussions and evaluation of contributions, e.g. *Feature Requests*, that could not be approved in the *Technical Lead Circle meeting* and demand more technical discussions.
-
-  The *Committer Circle meetings* are announced via *score-dev@eclipse.org* mailing list and are open for everyone who is registered to this mailing list. All meetings are documented as *GitHub Discussions* in `Committer Circle section <https://github.com/orgs/eclipse-score/discussions/categories/committer-circle>`_ and can be read by everyone. Topics for the *Committer circle meetings* can be proposed only by regular participants and will be prioritized by the *Technical lead circle*. Proposals for agenda topics can be added as comment to the respective *GitHub Discussion* or sent to the *Technical lead circle Assistant*.
-
-  The *Committer Circle meeting* takes place on demand. The decision for the scheduling of the *Committer Circle Meeting* is taken by the *Technical Lead Circle*.
-
-Platform structure
-==================
-Platform consists of multiple repositories. The main repository, *S-CORE*,
-is the integration repository, where everything comes together. It contains:
-
-* :ref:`stakeholder requirements <Stakeholder_Requirements>`
-* documentation of all :ref:`platform features <features>` and features flags,
-  feature requirements and architecture
-* build system including *S-CORE* specific *macros* and *rules*
-* integration rules for software modules.
-
-The main repository references multiple other repositories, mostly repositories, where
-software modules or toolchains are defined. This results in the following :ref:`Folder Structure of Platform Repository <platform_folder_structure>`. Every software module has its own repository, that contains multiple components, their requirements, architecture, implementation and tests.
-A software module and its repository can be part of the main S-CORE *Eclipse Project* and corresponding *GitHub organization* or can be moved to a standalone *Eclipse child project*, if necessary.
-
-  .. image:: _assets/project_organization.svg
-     :width: 900
-     :alt: Infrastructure overview
-     :align: center
-
-Platform organization
-=======================
-Also in case the software module repositories are not placed
-in standalone *Eclipse child projects*, we still consider all software modules
-to be standalone *Eclipse child projects*, having their own *Committers* and *Project Leads*
-as defined by the *Eclipse Foundation Project Handbook*. Software module committers
-and software module project leads are responsible for managing the software module as if it were
-a normal *Eclipse child project*. The election of the project leads and committers for software module projects should be done using the main integration *S-CORE* project mailing list, *score-dev@eclipse.org*. This means, that the decision who will be the project lead and committer of the new software module will be taken by the project leads and committers of the main *S-CORE* project respectively. The elected project leads or committers of the software modules are not automatically project leads and committers of the main integration *S-CORE* project. Typically, before becoming a project lead or a committer of the main integration *S-CORE* project, you need to build up a good reputation by contributing to the main integration *S-CORE* project and being project lead or committer for one of the software modules.
-
-Before introducing a new *Eclipse child project* for a software module, it should first reside as a repository in the main *S-CORE* project. If the software module later would be moved to a real standalone *Eclipse child project*, e.g., as there is a wish to use this software module independent of the *S-CORE* project, then the elected project leads and committers of the software module will be simply taken over as project leads and committers of the new *Eclipse child project* and their tasks will stay the same. Further in this document differentiation between a software module and  *Eclipse child project* will be done only if necessary. For the software module that resides in the separate repository of the main *S-CORE* project, the configuration and the control
-of who is committer and project lead is done using
-`CODEOWNER files <https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners>`_
-located in the subfolder of the corresponding repository of the software module.
 
 Main task of project leads is planning and prioritizing of activities, and together with the committers maintaining of the backlog and ensuring, that the software development is done according to process described in the main S-CORE project. The planning should be done as described in the `Planning`_ chapter. A more detailed description of PLs' and Committers' activities is given in *Eclipse Foundation Project Handbook*.
 
