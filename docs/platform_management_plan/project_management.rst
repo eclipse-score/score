@@ -554,104 +554,20 @@ Possible members are software developers, who
 
 The Codeownership has to be regularly updated and changes have to be documented.
 
+Planning & Tracking
+===================
 
+Cadence
+-------
 
+Iteration
+^^^^^^^^^
+Each iteration is two weeks long.
 
-Usage of the special GitHub Issue template ensures, that all GitHub issues for creation of new *Feature
-Teams* follow the same rules, e.g. that the title always has the same format or
-that the description always contains the reasoning for the creation of a new *Feature Team*.
+Release Frequence
+^^^^^^^^^^^^^^^^^
+After every 3rd iteration, the work is baselined into a Release.
 
-Additionally, the GitHub Issue created from the template includes a *DoD list*, which serves as a checklist
-for the Technical Lead to ensure that all necessary activities and steps have been completed to establish a new *Feature Team*.
-Its current *DoD list* is always documented in the template. The most important activities are:
-
-* **Creation of labels**
-
-  Every *Feature Team* should have its own label for filtering of GitHub Issues, PRs or discussions.
-
-* **Creation of discussion**
-
-  Every *Feature Team* should have its own discussion section in the `Feature Teams section <https://github.com/orgs/eclipse-score/discussions>`_
-  of the main *S-CORE* project.
-
-* **Adding a new Team to the main S-CORE GitHub project**
-
-  Every *Feature Team* should be added as a further select option of the "Team" field
-  in the `main S-CORE project <https://github.com/orgs/eclipse-score/projects/17/views/27>`_, so that *Technical Leads*
-  can assign tickets to the team and filter for the tickets of the new team.
-  Additionally, every team is free to create its own GitHub project, but then the team tickets should be still
-  visible in the main S-CORE project.
-
-* **Creation of repository**
-
-  Normally, every *Feature Team* should have a dedicated repository. Creation of new repository is done
-  be extending the `otterdog configuration file <https://github.com/eclipse-score/.eclipsefdn/blob/main/otterdog/eclipse-score.jsonnet>`_
-  and creating a new PR, that has to be approved by the *Eclipse Project Security Team*. Creation of the
-  repository is the responsibility of the *Feature Team Lead*.
-
-* **Developer GitHub Team**
-
-  Every *Feature Team* should have a corresponding software developer GitHub team, e.g. *ipc_ft_dev*, that contains all
-  developers, that are actively participating in this *Feature Team*. This GitHub group can be used e.g. to
-  send notifications for upcoming meetings or discussions.
-
-* **Codeowner GitHub Team**
-
-  Every *Feature Team* should have a corresponding codeowner GitHub team, e.g. *ipc_ft_co*, that contains all
-  software developers, whose review is mandatory for every PR in the repository and who have rights to merge PRs to the repository.
-
-
-Merge rights & code ownership
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-As already stated, every *Feature Team* has normally a dedicated repository. Before the creation of the new repository,
-*Feature Team Lead* together with *Technical Leads* should nominate initial codeowners, whose review is mandatory for merging PRs to the repository
-and who is at the end allowed to merge PRs to the repository.
-
-In the S-CORE project, the configuration whose review is mandatory to merge a PR to the repository is done
-using `CODEOWNERS file and branch protection <https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners#codeowners-and-branch-protection>`_ .
-Every repository has a CODEOWNERS file, where one or multiple teams are specified, whose review is needed for the PR
-to be able to be merged. The teams listed there are normally:
-
-* *Codeowner GitHub Team* for this *Feature Team*
-* GitHub Team for security managers
-* GitHub Team for quality managers
-* GitHub Team for safety managers
-
-**ToDo**: can we have an 'AND relationship' for teams in CODEOWNERS file?
-
-*Codeowner GitHub Team* for the corresponding *Feature Team* consists of the software developers, that understand how
-the particular feature works or should work. The members of this team should be selected and agreed
-during the creation of the *Feature Team* by the *Technical Leads* and *Feature Team Lead*. The criteria for the selection should be the
-technical competence of the software developers, e.g. in case during the :ref:`Feature Request process <feature_request_guideline>`
-it was decided to take over already existing source code, then persons who were actively participating in the
-development of that code are always good candidates to be part of *Codeowner GitHub team*.
-The decision who should be initially part of the *Codeowner GitHub team* and the reasoning for this
-should be protocolled in the GitHub Issue, that is used for creation of the *Feature Team*.
-
-In case further software developers should be added to the *Codeowener GitHub team* in the future,
-that decision and its reasoning should be protocolled in one of the *Feature Team* GitHub discussions.
-
-Members of the *Codeowner GitHub team* should also be authorized to merge pull requests (PRs) into the corresponding repository.
-Therefore, once the *Codeowner GitHub team* has been created, the Technical Lead assigned to the ticket for the *Feature
-Team* setup should initiate committer elections for all software developers in the *Codeowner GitHub team*.
-All other Technical Leads who are already committers in the S-CORE project are expected to support these
-elections by voting positively, provided there are no specific objections.
-
-
-
-Main task of project leads is planning and prioritizing of activities, and together with the committers maintaining of the backlog and ensuring, that the software development is done according to process described in the main S-CORE project. The planning should be done as described in the `Planning`_ chapter. A more detailed description of PLs' and Committers' activities is given in *Eclipse Foundation Project Handbook*.
-
-The main project *S-CORE* has certainly also project leaders and committers, but
-their roles are slightly different compared to the software module committers and
-project leads. The role of the *S-CORE* project as the central project is, as already
-described, to ensure proper integration of multiple software modules, provide common
-integration guidelines and mechanisms, e.g. build toolchain. Additionally *S-CORE* project
-takes care of all overarching topics, as e.g. roadmap and milestone planning or
-definition of cross-functional topics. Therefore there exist number of additional
-meetings, where such topics are discussed and decided, see `Steering committees`_ for further details.
-
-Planning
-========
 
 Planning infrastructure
 ------------------------
