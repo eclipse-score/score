@@ -584,7 +584,7 @@
 <h2>ABI Compatibility<a class="headerlink" href="#abi-compatibility" title="Link to this heading">#</a></h2>
 <section id="restrictions-on-native-types">
 <h3>Restrictions on Native Types<a class="headerlink" href="#restrictions-on-native-types" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-7b22221d">
+<div class="need_container docutils container" id="SNCB-3ac4f301">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__abi_compatible_data_types__bool_sz">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -611,7 +611,7 @@
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>For ABI compatibility, the implementation shall restrict boolean types to one byte (<code class="docutils literal notranslate"><span class="pre">bool</span></code> in Rust and C++).</p></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>For ABI compatibility, the implementation shall restrict boolean types to one byte (<code class="docutils literal notranslate"><span class="pre">bool</span></code> in Rust) and to the bit patterns <code class="docutils literal notranslate"><span class="pre">0x00</span></code> and <code class="docutils literal notranslate"><span class="pre">0x01</span></code>.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__abi_compatible_data_types__bool_sz" title="feat_req__abi_compatible_data_types__bool_sz">feat_req__abi_compatible_data_types__bool_sz</a></span></span></div>
@@ -627,7 +627,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-1775e259">
+<div class="need_container docutils container" id="SNCB-6fe07ffe">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__abi_compatible_data_types__int_fix">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -670,7 +670,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-3feca447">
+<div class="need_container docutils container" id="SNCB-9deb48c3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__abi_compatible_data_types__flt_sz">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -713,7 +713,50 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-358331b9">
+<div class="need_container docutils container" id="SNCB-8f869e53">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__abi_compatible_data_types__char">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Characters</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__abi_compatible" title="feat_req__abi_compatible_data_types__char">stkh_req__communication__abi_compatible</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>For ABI compatibility, the Unicode character type shall use fixed-width definitions (<code class="docutils literal notranslate"><span class="pre">char</span></code> in Rust; wrapper around <code class="docutils literal notranslate"><span class="pre">std::uint32_t</span></code> in C++), and shall restrict values to the ranges <code class="docutils literal notranslate"><span class="pre">0x0</span></code> to <code class="docutils literal notranslate"><span class="pre">0xD7FF</span></code> and <code class="docutils literal notranslate"><span class="pre">0xE000</span></code> to <code class="docutils literal notranslate"><span class="pre">0x10FFFF</span></code>.</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__abi_compatible_data_types__char" title="feat_req__abi_compatible_data_types__char">feat_req__abi_compatible_data_types__char</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Feature Requirement</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-0e81d11b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__abi_compatible_data_types__arr_fix">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -756,7 +799,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a8b32ca3">
+<div class="need_container docutils container" id="SNCB-8cc4be94">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__abi_compatible_data_types__st_tpl">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -799,7 +842,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-01107f6d">
+<div class="need_container docutils container" id="SNCB-6364bf67">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__abi_compatible_data_types__enum_udr">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -842,7 +885,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-026e6200">
+<div class="need_container docutils container" id="SNCB-138734f5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__abi_compatible_data_types__nop_mt">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -885,7 +928,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-3c89f60c">
+<div class="need_container docutils container" id="SNCB-1af535fb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__abi_compatible_data_types__compabi">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -933,7 +976,7 @@
 <h3>Custom Types<a class="headerlink" href="#custom-types" title="Link to this heading">#</a></h3>
 <section id="vector">
 <h4>Vector<a class="headerlink" href="#vector" title="Link to this heading">#</a></h4>
-<div class="need_container docutils container" id="SNCB-02bc2098">
+<div class="need_container docutils container" id="SNCB-f6ea3379">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__abi_compatible_data_types__prv_abv">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -962,18 +1005,16 @@
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p>An ABI-compatible <code class="docutils literal notranslate"><span class="pre">AbiVec&lt;T,</span> <span class="pre">N&gt;</span></code> type shall be provided in both C++ and Rust with the specified layout.</p>
 <div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="cp">#[repr(C)]</span>
-<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">AbiVec</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">AbiVec</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">N</span><span class="p">:</span><span class="w"> </span><span class="kt">usize</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">   </span><span class="n">len</span><span class="p">:</span><span class="w"> </span><span class="kt">u32</span><span class="p">,</span>
-<span class="w">   </span><span class="n">capacity</span><span class="p">:</span><span class="w"> </span><span class="kt">u32</span><span class="p">,</span>
 <span class="w">   </span><span class="n">elements</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">T</span><span class="p">;</span><span class="w"> </span><span class="n">N</span><span class="p">],</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">N</span><span class="o">&gt;</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">N</span><span class="o">&gt;</span>
 <span class="k">struct</span><span class="w"> </span><span class="nc">AbiVec</span><span class="w"> </span><span class="p">{</span>
 <span class="k">private</span><span class="o">:</span>
 <span class="w">   </span><span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">len</span><span class="p">;</span>
-<span class="w">   </span><span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">capacity</span><span class="p">;</span>
 <span class="w">   </span><span class="n">T</span><span class="w"> </span><span class="n">elements</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
 <span class="p">};</span>
 </pre></div>
@@ -994,7 +1035,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9a622386">
+<div class="need_container docutils container" id="SNCB-5fb83781">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__abi_compatible_data_types__abv_fld">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1037,7 +1078,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-0bd2249e">
+<div class="need_container docutils container" id="SNCB-d875a846">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__abi_compatible_data_types__abv_noa">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1064,7 +1105,7 @@
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The <code class="docutils literal notranslate"><span class="pre">AbiVec</span></code> API shall mirror <code class="docutils literal notranslate"><span class="pre">std::vector</span></code> / <code class="docutils literal notranslate"><span class="pre">Vec&lt;T&gt;</span></code> but shall not allocate or reallocate memory.</p></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The <code class="docutils literal notranslate"><span class="pre">AbiVec</span></code> API shall mirror <code class="docutils literal notranslate"><span class="pre">std::vector</span></code> / <code class="docutils literal notranslate"><span class="pre">Vec&lt;T&gt;</span></code>, but shall not allocate or reallocate memory.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__abi_compatible_data_types__abv_noa" title="feat_req__abi_compatible_data_types__abv_noa">feat_req__abi_compatible_data_types__abv_noa</a></span></span></div>
@@ -1080,7 +1121,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6072c739">
+<div class="need_container docutils container" id="SNCB-717e73e0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__abi_compatible_data_types__abv_ovf">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1124,9 +1165,302 @@
 </div>
 </div>
 </section>
+<section id="string">
+<h4>String<a class="headerlink" href="#string" title="Link to this heading">#</a></h4>
+<div class="need_container docutils container" id="SNCB-0a3ce419">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__abi_compatible_data_types__prv_abs">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Provide AbiString&lt;N&gt;</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__abi_compatible" title="feat_req__abi_compatible_data_types__prv_abs">stkh_req__communication__abi_compatible</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>An ABI-compatible <code class="docutils literal notranslate"><span class="pre">AbiString&lt;N&gt;</span></code> type shall be provided in both C++ and Rust with the specified layout.</p>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="cp">#[repr(C)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">AbiString</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="n">N</span><span class="p">:</span><span class="w"> </span><span class="kt">usize</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="n">len</span><span class="p">:</span><span class="w"> </span><span class="kt">u32</span><span class="p">,</span>
+<span class="w">   </span><span class="n">bytes</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="kt">u8</span><span class="p">;</span><span class="w"> </span><span class="n">N</span><span class="p">],</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">N</span><span class="o">&gt;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">AbiString</span><span class="w"> </span><span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">   </span><span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">len</span><span class="p">;</span>
+<span class="w">   </span><span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">bytes</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__abi_compatible_data_types__prv_abs" title="feat_req__abi_compatible_data_types__prv_abs">feat_req__abi_compatible_data_types__prv_abs</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Feature Requirement</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-96062043">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__abi_compatible_data_types__abs_fld">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">AbiString field semantics</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__abi_compatible" title="feat_req__abi_compatible_data_types__abs_fld">stkh_req__communication__abi_compatible</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p><code class="docutils literal notranslate"><span class="pre">AbiString.len</span></code> shall report the current byte count; <code class="docutils literal notranslate"><span class="pre">AbiString.capacity</span></code> shall equal the compile-time size <code class="docutils literal notranslate"><span class="pre">N</span></code>.</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__abi_compatible_data_types__abs_fld" title="feat_req__abi_compatible_data_types__abs_fld">feat_req__abi_compatible_data_types__abs_fld</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Feature Requirement</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-2e041a58">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__abi_compatible_data_types__abs_noa">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">AbiString API</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__abi_compatible" title="feat_req__abi_compatible_data_types__abs_noa">stkh_req__communication__abi_compatible</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The <code class="docutils literal notranslate"><span class="pre">AbiString</span></code> API shall mirror the applicable parts of <code class="docutils literal notranslate"><span class="pre">std::basic_string</span></code> / <code class="docutils literal notranslate"><span class="pre">String</span></code>, but shall not allocate or reallocate memory.</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__abi_compatible_data_types__abs_noa" title="feat_req__abi_compatible_data_types__abs_noa">feat_req__abi_compatible_data_types__abs_noa</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Feature Requirement</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-f7d10392">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__abi_compatible_data_types__abs_ovf">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">AbiString overflow check</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__abi_compatible" title="feat_req__abi_compatible_data_types__abs_ovf">stkh_req__communication__abi_compatible</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>Any attempt to exceed <code class="docutils literal notranslate"><span class="pre">AbiString.capacity</span></code> shall result in a checked runtime error.</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__abi_compatible_data_types__abs_ovf" title="feat_req__abi_compatible_data_types__abs_ovf">feat_req__abi_compatible_data_types__abs_ovf</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Feature Requirement</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
 <section id="option">
 <h4>Option<a class="headerlink" href="#option" title="Link to this heading">#</a></h4>
-<div class="need_container docutils container" id="SNCB-ffa2c4f4">
+<div class="need_container docutils container" id="SNCB-a11e1d41">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__abi_compatible_data_types__prv_abo">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Provide AbiOption&lt;T&gt;</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__abi_compatible" title="feat_req__abi_compatible_data_types__prv_abo">stkh_req__communication__abi_compatible</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>An ABI-compatible <code class="docutils literal notranslate"><span class="pre">AbiOption&lt;T&gt;</span></code> type shall be provided in both C++ and Rust with the specified layout.</p>
+<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="cp">#[repr(C)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">AbiOption</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="n">is_some</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span>
+<span class="w">   </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">AbiOption</span><span class="w"> </span><span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">   </span><span class="n">AbiBool</span><span class="w"> </span><span class="n">is_some</span><span class="p">;</span>
+<span class="w">   </span><span class="n">T</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__abi_compatible_data_types__prv_abo" title="feat_req__abi_compatible_data_types__prv_abo">feat_req__abi_compatible_data_types__prv_abo</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Feature Requirement</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-db7f60ac">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__abi_compatible_data_types__abo_flg">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">AbiOption is_some flag</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../requirements/stakeholder/index.html#stkh_req__communication__abi_compatible" title="feat_req__abi_compatible_data_types__abo_flg">stkh_req__communication__abi_compatible</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p><code class="docutils literal notranslate"><span class="pre">AbiOption.is_some</span></code> shall be <code class="docutils literal notranslate"><span class="pre">false</span></code> when empty and <code class="docutils literal notranslate"><span class="pre">true</span></code> when containing a value.</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__abi_compatible_data_types__abo_flg" title="feat_req__abi_compatible_data_types__abo_flg">feat_req__abi_compatible_data_types__abo_flg</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Feature Requirement</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-f4fc72d7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__abi_compatible_data_types__abo_api">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1153,7 +1487,7 @@
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The <code class="docutils literal notranslate"><span class="pre">AbiOption</span></code> API shall mirror <code class="docutils literal notranslate"><span class="pre">std::optional</span></code>/<code class="docutils literal notranslate"><span class="pre">Option&lt;T&gt;</span></code> without introducing extra fields or indirections.</p></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The <code class="docutils literal notranslate"><span class="pre">AbiOption</span></code> API shall mirror <code class="docutils literal notranslate"><span class="pre">std::optional</span></code> / <code class="docutils literal notranslate"><span class="pre">Option&lt;T&gt;</span></code> without introducing extra fields or indirections.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__abi_compatible_data_types__abo_api" title="feat_req__abi_compatible_data_types__abo_api">feat_req__abi_compatible_data_types__abo_api</a></span></span></div>
@@ -1172,7 +1506,7 @@
 </section>
 <section id="result">
 <h4>Result<a class="headerlink" href="#result" title="Link to this heading">#</a></h4>
-<div class="need_container docutils container" id="SNCB-f43aaa8b">
+<div class="need_container docutils container" id="SNCB-8da1a02a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__abi_compatible_data_types__prv_ari">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1202,21 +1536,21 @@
 <tr class="content row-odd"><td class="content" colspan="6"><p>An ABI-compatible <code class="docutils literal notranslate"><span class="pre">AbiResult&lt;T,</span> <span class="pre">E&gt;</span></code> type shall be provided in both C++ and Rust with the specified layout.</p>
 <div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="cp">#[repr(C)]</span>
 <span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">AbiResult</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">E</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">   </span><span class="n">is_ok</span><span class="p">:</span><span class="w"> </span><span class="kt">u8</span><span class="p">,</span>
+<span class="w">   </span><span class="n">is_err</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span>
 <span class="w">   </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="nc">AbiResultUnion</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">E</span><span class="o">&gt;</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="cp">#[repr(C)]</span>
 <span class="k">union</span><span class="w"> </span><span class="nc">AbiResultUnion</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">E</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">   </span><span class="n">ok</span><span class="p">:</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span>
-<span class="w">   </span><span class="n">err</span><span class="p">:</span><span class="w"> </span><span class="nc">E</span><span class="p">,</span>
+<span class="w">   </span><span class="n">ok</span><span class="p">:</span><span class="w"> </span><span class="nc">ManuallyDrop</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">   </span><span class="n">err</span><span class="p">:</span><span class="w"> </span><span class="nc">ManuallyDrop</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">E</span><span class="o">&gt;</span>
 <span class="k">struct</span><span class="w"> </span><span class="nc">AbiResult</span><span class="w"> </span><span class="p">{</span>
 <span class="k">private</span><span class="o">:</span>
-<span class="w">   </span><span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">is_ok</span><span class="p">;</span>
+<span class="w">   </span><span class="n">AbiBool</span><span class="w"> </span><span class="n">is_err</span><span class="p">;</span>
 <span class="w">   </span><span class="k">union</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="n">T</span><span class="w"> </span><span class="n">ok</span><span class="p">;</span>
 <span class="w">      </span><span class="n">E</span><span class="w"> </span><span class="n">err</span><span class="p">;</span>
@@ -1240,11 +1574,11 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-28fd6b1a">
+<div class="need_container docutils container" id="SNCB-9cc0c6f9">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__abi_compatible_data_types__ari_flg">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">AbiResult is_ok flag</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">AbiResult is_err flag</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -1267,7 +1601,7 @@
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p><code class="docutils literal notranslate"><span class="pre">AbiResult.is_ok</span></code> shall be <code class="docutils literal notranslate"><span class="pre">1</span></code> if <code class="docutils literal notranslate"><span class="pre">value.ok</span></code> is valid, and <code class="docutils literal notranslate"><span class="pre">0</span></code> if <code class="docutils literal notranslate"><span class="pre">value.err</span></code> is valid.</p></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p><code class="docutils literal notranslate"><span class="pre">AbiResult.is_err</span></code> shall be <code class="docutils literal notranslate"><span class="pre">false</span></code> if <code class="docutils literal notranslate"><span class="pre">value.ok</span></code> is valid, and <code class="docutils literal notranslate"><span class="pre">true</span></code> if <code class="docutils literal notranslate"><span class="pre">value.err</span></code> is valid.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__abi_compatible_data_types__ari_flg" title="feat_req__abi_compatible_data_types__ari_flg">feat_req__abi_compatible_data_types__ari_flg</a></span></span></div>
@@ -1283,7 +1617,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-fb6dc8ff">
+<div class="need_container docutils container" id="SNCB-c1b894af">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_req table" id="feat_req__abi_compatible_data_types__ari_api">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1310,7 +1644,7 @@
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The <code class="docutils literal notranslate"><span class="pre">AbiResult</span></code> API shall mirror <code class="docutils literal notranslate"><span class="pre">std::expected</span></code>/<code class="docutils literal notranslate"><span class="pre">Result&lt;T,</span> <span class="pre">E&gt;</span></code> without hidden storage or pointers.</p></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The <code class="docutils literal notranslate"><span class="pre">AbiResult</span></code> API shall mirror <code class="docutils literal notranslate"><span class="pre">std::expected</span></code> / <code class="docutils literal notranslate"><span class="pre">Result&lt;T,</span> <span class="pre">E&gt;</span></code> without hidden storage or pointers.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_req__abi_compatible_data_types__ari_api" title="feat_req__abi_compatible_data_types__ari_api">feat_req__abi_compatible_data_types__ari_api</a></span></span></div>
@@ -1382,6 +1716,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#restrictions-on-native-types">Restrictions on Native Types</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-types">Custom Types</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vector">Vector</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#string">String</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#option">Option</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#result">Result</a></li>
 </ul>
