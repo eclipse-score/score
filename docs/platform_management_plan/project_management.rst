@@ -719,77 +719,57 @@ Releases
 .. _pmp_pm_gh_labels:
 
 
+Labels
+------
+`GitHub Labels <https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels>`_ are used to organize Issues, Pull Requests etc. having same context. Although
+Labels are powerful, the definition of new Labels shall be wisely done and organization wide used.
+Therefore their management is limited to Organization owners.
 
+The following `Labels <https://github.com/eclipse-score/score/labels>`_ are defined.
 
-
-Traceability
-^^^^^^^^^^^^
-To achieve a better traceability it is highly recommended to link all *PRs* to the corresponding
-*GitHub Issues*. If done properly, you will be able to see for every *GitHub Issue*
-all relevant source code changes. Normally *PRs* reference *GitHub issues* of type *Story*
-or of type *Bug*. How to link *PRs* to *GitHub Issues* is described in more details in this
-`guide <https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue>`_.
-
-.. image:: _assets/traceability.png
-    :width: 300
-    :alt: Traceability overview
-    :align: center
+.. _pmp_pm_gh_projects:
 
 GitHub Projects
-^^^^^^^^^^^^^^^
-*GitHub Projects* is a very powerful tool that allows creation of various views on
-the status of the project, helps to plan the work and to monitor the current progress.
-In particular, *GitHub Project* allows to extend *GitHub Issues* with following information:
+---------------
+The `GitHub Project Feature <https://docs.github.com/en/issues/planning-and-tracking-with-projects>`_
+helps to plan the work and monitor its progress.
 
-* objective
-* dependencies on other activities or information
-* responsible person
-* resources
-* mapping to work product
-* start, end, duration, effort
+Multiple *GitHub Projects* are defined at https://github.com/orgs/eclipse-score/projects/.
 
-Note: The information on start, end, duration, and effort may sometimes be complicated
-to estimate in the execution in an open source environment. Nevertheless, tasks
-should be planned as part of releases, which sets already an implicit
-duration and end date.
+Beside one for each (committee, community, feature) Team, there is one for `Feature Requests <https://github.com/orgs/eclipse-score/projects/4>`_
+and one for the complete `S-CORE Roadmap <https://github.com/orgs/eclipse-score/projects/17>`_. Inside a GitHub Project, there is the possibility to generate different views
+for Table, Board and Roadmap supporting Backlogs, Open Point or Task Lists and other useful perspectives.
 
-Software module project leads shall also use *GitHub Project* for their planning. The overview of *GitHub Project* features can be found `here <https://docs.github.com/en/issues/planning-and-tracking-with-projects>`_.
-
-Multiple *GitHub projects* are defined in the main *S-CORE* project:
-
-* a separate project for every community
-* a project for technical lead circle
-* a (GitHub) *roadmap project* with the overview of all upcoming features & releases.
-
-  As *GitHub Projects* are not restricted to one repository but
-  can include information from multiple repositories of the same organization,
-  *roadmap project* gives an overview of all *Sagas*, that are relevant for the roadmap,
-  including those ones in the software modules. Prerequisite for this is that project
-  leads of all software modules always assign their sagas to the *roadmap project*.
-  All sagas in the *roadmap project* are extended with additional information
-  as e.g. start date and due date, to keep the status of the project always transparent.
-  Additionally, the main *S-CORE* repository defines project wide milestones & releases,
-  that are visible in the roadmap as well.
-
-.. image:: _assets/roadmap_example.png
-    :width: 600
-    :alt: Roadmap example
+.. image:: _assets/planning_overview.drawio.svg
+    :width: 900
+    :alt: Planning Overview
     :align: center
 
-Releases and milestones
-^^^^^^^^^^^^^^^^^^^^^^^^
-GitHub allows to define various milestones & releases for every repository. The definition of the milestones and releases is proposed by the *Technical Leads* and is approved by *Project Leads*.
 
-In the main *S-CORE* project we use milestones to mark important stages of the project and map sagas or in some cases also other *GitHub Issues* to them.
 
-*Releases* are used for structuring of the development activities. Exact scheme for the releases of the *S-CORE* will be provided here later.
+Kanban View
+^^^^^^^^^^^
+The `GitHub Board <https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/customizing-the-board-layout>`_ is supporting the Kanban View, enabling to set the Work In Progress Limits.
 
-You can find "up to date" overview of the release plan and milestones in the following section `S-CORE Releases <https://eclipse-score.github.io/score/score_releases/index.html>`_.
+.. image:: _assets/kanban.drawio.svg
+    :width: 900
+    :alt: Kanban View
+    :align: center
 
-The users of the S-CORE platform need to adapt their planning to the milestones defined in the S-CORE project,
-but they have always the possibility to takeover the development of a new feature, modifications and bugfixes
-in their own development branch / fork and merge these improvements in the next or later releases
-back into the S-CORE "main" line.
+
+Task List View
+^^^^^^^^^^^^^^
+The `GitHub Table <https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/customizing-the-table-layout>`_ is supporting the List View, enabling to adapt the priority by reordering the rows.
+
+Roadmap View
+^^^^^^^^^^^^
+The `GitHub Roadmap <https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/customizing-the-roadmap-layout>`_ is supporting the Road View, provididing a high-level visualization of your project across a configurable timespan.
+
+Traceability
+------------
+To achieve traceability all *Pull Requests* have to be `linked <https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue>`_
+to the corresponding *GitHub Issues*.
+
 
 Planning process
 ----------------
