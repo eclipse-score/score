@@ -540,6 +540,22 @@ Every software module has its own repository, that contains among others:
 within the following :ref:`Module Folder Structure <module_folder_structure>`.
 
 
+.. _pmp_pm_codeowners:
+
+Codeowners
+----------
+While creating a new repository, :ref:`Technical Leads <pmp_pm_tlc>` nominate initial `CODEOWNERS <https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners#codeowners-and-branch-protection>`_,
+whose review is mandatory for merging PRs to the repository and who are at the end allowed to merge PRs to the repository.
+
+Possible members are software developers, who
+
+- understand how the particular feature works or should work
+- are the initial authors of the software
+
+The Codeownership has to be regularly updated and changes have to be documented.
+
+
+
 
 Usage of the special GitHub Issue template ensures, that all GitHub issues for creation of new *Feature
 Teams* follow the same rules, e.g. that the title always has the same format or
