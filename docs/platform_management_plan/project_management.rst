@@ -569,121 +569,92 @@ Release Frequence
 After every 3rd iteration, the work is baselined into a Release.
 
 
-Planning infrastructure
-------------------------
-`GitHub issues <https://github.com/features/issues>`_ are used to plan and to track
-work. To be able to find issues faster and to filter for them more efficiently,
-we use labels.
+Planning & Tracking Infrastructure
+----------------------------------
+The planning and tracking of the work is done inside **GitHub**.
+GitHub **Issues** are used to document all necessary work packages.
 
-Labels
-^^^^^^
-To facilitate the organization and tracking of tickets related to the same feature
-or topic, labels are utilized for issues and pull requests. Labels are a powerful
-feature that allows you to search and filter tickets based on specific labels, and
-you can save these filters in a *GitHub Project* view. However, it is important
-to exercise caution when creating labels to avoid confusion and ensure easy tracking.
+Issues
+------
+The Issues are stored in the main repository: https://github.com/eclipse-score/score/issues.
 
-It's worth noting that labels are associated with a repository, not a *GitHub Project*.
-To create new labels in the repository requires special rights and only
-*project leads* and *committers* should have this capability.
+To organize the work :ref:`Github Types <pmp_pm_issue_types>`,  :ref:`GitHub Labels <pmp_pm_gh_labels>` and
+:ref:`GitHub Projects <pmp_pm_gh_projects>` are used.
+The Progress of the work is documented with help of the :ref:`Status of an Issue <pmp_pm_issue_status_flow>`.
 
-For the main *S-CORE* repository, there exist already some predefined labels:
 
-* *feature_request* label is used to identify *PRs* and *GitHub Issues* that are part
-  of a *Feature request process*
-* *project_lead_circle*  label is used to identify *PRs* and *GitHub Issues* that are relevant
-  for *Project lead circle*
-* *tech_lead_circle*  label is used to identify *PRs* and *GitHub Issues* that are relevant
-  for *Technical lead circle*
-* *infrastructure*  label is used to identify *PRs* and *GitHub Issues* that are relevant
-  for *Tooling/Infrastructure Community*
-* *testing*  label is used to identify *PRs* and *GitHub Issues* that are relevant for
-  *Testing Community*
-* *software_architecture*  label is used to identify *PRs* and *GitHub Issues* that are relevant
-  for *Software Architecture community*
-* *software_development_process*  label is used to identify *PRs* and *GitHub Issues* that are
-  relevant for *Software Development Process Community*
+.. _pmp_pm_issue_types:
 
-  .. image:: _assets/contribution_request_label.png
-     :width: 800
-     :alt: Infrastructure overview
-     :align: center
+Issues Types
+^^^^^^^^^^^^
 
-Additionally, in the main *S-CORE* repository there should exist a label for every
-software module.
+.. image:: _assets/issue_types.drawio.svg
+   :width: 900
+   :alt: Issue Types
+   :align: center
 
-Every software module project, located in another repository, is free to define
-additionally its own labels. It is recommended to create labels at least
-for specific areas that may encompass multiple features.
+.. _pmp_pm_feature_request:
 
-Types of work packages and structure
-------------------------------------
-For better structuring of the tickets following *GitHub Issue* types are introduced
-in the main *S-CORE* repository. In order to create a consistent overview of all work packages (WPs),
-the WPs need to be maintained in one single project within the main *S-CORE* repository.
-Having separate WP backlogs within separate repositories will increase the complexity
-and reduce the transparency too much.
+Feature Request
+"""""""""""""""
+A *Feature Request* represents an independent work package used to describe and
+track a high-level request for the project. *Feature Request* work packages can be linked to
+other work packages, but they must not be treated as parent work packages. They are in the responsibility of the
+:ref:`Architecture Community <pmp_pm_arc>` and are part of the :ref:`Root Repository <pmp_pm_root_repository>`.
 
-All *child projects* are only allowed to have their separate list of issues. All other WP types
-shall not be available for them. The planning WPs of the main *S-CORE* repository therefore are used
-to link WPs to *GitHub issues* of *child projects*.
-For example a *Bug* WP within the main repository is linked to a *GitHub Issue* of the *communication*
-repository but no *Bug* WP shall be created in the *child project* repository.
+.. _pmp_pm_product_increment:
 
-.. image:: _assets/issue_types.png
-    :width: 600
-    :alt: Issue types overview
-    :align: center
+Product Increment
+"""""""""""""""""
+A *Product Increment* represents the highest level in the work package hierarchy and
+cannot be linked as a child of another issue. If you need to group multiple *Product Increment* work packages,
+labels have to be used.
+A *Product Increment* can have multiple *Epic* work packages as children. *Product Increments* areowned by
+:ref:`Technical Lead Circle <pmp_pm_tlc>` and are part of the :ref:`Root Repository <pmp_pm_root_repository>`.
 
-* A *Task* *GitHub Issue* represents the smallest unit of planning and typically corresponds
-  to a concrete piece of work to be completed, such as by a developer. *Task* work packages are usually
-  grouped under a *Story* work package.
-  In certain cases, a *Task* may exist as a standalone *GitHub Issue*.
-  However, standalone *Task* work packages must not be grouped using labels.
-  If multiple *Task* work packages are related, a *Story* work package should be created instead,
-  with all associated *Task* work packages added as child work packages under that *Story*.
 
-* A *Story* *GitHub Issue* is the primary planning work package for development teams.
-  *Story* work packages should be scoped in a way that allows them to be completed within
-  the release cycle of the S-CORE project.
-  While a *Story* work package can be implemented by multiple team members, it is recommended
-  that one developer takes main responsibility for its completion. Quality assurance activities,
-  such as code reviews, should be performed by other team members.
-  *Story* work packages are typically grouped under an *Product Increment* work package.
-  However, a *Story* work package can also exist as a standalone work package if its outcome represents
-  a complete functional improvement, making a related *Product Increment* work package unnecessary.
+.. _pmp_pm_epic:
 
-* A *Product Increment* *GitHub Issue* represents the highest level in the work package hierarchy and
-  cannot be linked as a child of another issue. If you need to group multiple *Product Increment* work packages,
-  this must be done using labels.
-  A *Product Increment* work package can have multiple *Story* work packages as child work packages.
-  In exceptional cases, a *Story* work package may also be linked as a child of a *Product Increment* work package
-  if its outcome represents a complete functional improvement.
+Epic
+""""
+An *Epic* is the primary planning work package for development teams.
+*Epic* work packages should be scoped in a way that allows them to be completed within
+a release cycle of the S-CORE project.
+While an *Epic* can be implemented by multiple team members, it is recommended
+that one developer takes main responsibility for its completion. Quality assurance activities,
+such as code reviews, can be performed by other team members.
+*Epics* are typically grouped under an *Product Increment*. However, an *Epic* work package can also exist
+as a standalone work package if its outcome represents a complete functional improvement,
+making a related *Product Increment* work package unnecessary.
+Sometimes support of other teams might be necessary for the completion of the work, therefore an
+*Epic* can have team-internal and team-external *Task* child issues. *Epics* are owned by a Team and are part
+of the Team`s main repository.
 
-* A *Feature Request* *GitHub Issues* represents an independent work package used to describe and
-  track a high-level request for the project. *Feature Request* work packages can be linked to
-  other work packages, but they must not be treated as parent work packages.
 
-* A *Bug* *GitHub Issue* is used to report any kind of problem or malfunction. It is considered
-  a special type of *Story* work package and follows the same rules as regular *Story* work packages,
-  with the key difference that it focuses on fixing defects in existing functionality
-  rather than creating or extending functionality.
+.. _pmp_pm_task:
 
-Main *S-CORE* project defines templates for every type of *GitHub Issues*
-to ensure, that every ticket has all necessary information.
+Task
+""""
 
-For a better structuring of the *GitHub Issues*, we use a beta
-`sub-issue feature <https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/adding-sub-issues>`_,
-that should be officially released in the beginning of 2025.
-*Sub-issue feature* allows to create a "parent-child" relationship between *GitHub Issues*.
-That allows better structuring of the project and helps to keep *GitHub Issues*, that
-are related to the same topic, together.
+A *Task GitHub Issue* represents the smallest unit of planning and typically corresponds
+to a concrete piece of work to be completed, such as by a developer. *Task* work packages are usually
+grouped under an *Epic* work package.
+In certain cases, a *Task* may exist as a standalone *GitHub Issue*.
+However, standalone *Task* work packages must not be grouped using labels.
+If multiple *Task* work packages are related, a *Epic* work package should be created instead,
+with all associated *Task* work packages added as child work packages under that *Epic*. *Tasks* are owned by a Team and are part
+of any Team`s repository.
 
-.. image:: _assets/sub_issues.png
-    :width: 600
-    :alt: Sub issues overview
-    :align: center
+.. _pmp_pm_bug:
 
+Bug
+"""
+
+A *Bug GitHub Issue* is used to report any kind of problem or malfunction. It is considered
+a special type of *Story* work package and follows the same rules as regular *Epic* work packages,
+with the key difference that it focuses on fixing defects in existing functionality
+rather than creating or extending functionality. *Tasks* are owned by a Team and are part
+of any Team`s repository.
 Traceability
 ^^^^^^^^^^^^
 To achieve a better traceability it is highly recommended to link all *PRs* to the corresponding
