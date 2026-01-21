@@ -130,7 +130,7 @@ The Technical Lead Circle will soon be merged with the Project Lead Circle: `#23
 - TLC Repositories:
    - https://github.com/eclipse-score/score
 
-.. _pmp_pm_technical_communities:
+.. _pmp_pm_communities:
 
 Communities
 -----------
@@ -281,6 +281,8 @@ Marketing & Communication Community
    - https://github.com/eclipse-score/eclipse-score-website
    - https://github.com/eclipse-score/eclipse-score-website-preview
    - https://github.com/eclipse-score/eclipse-score-website-published
+
+.. _pmp_pm_feature_teams:
 
 Feature Teams
 -------------
