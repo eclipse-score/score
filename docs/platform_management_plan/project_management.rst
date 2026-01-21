@@ -274,22 +274,193 @@ Marketing & Communication Community
    - https://github.com/eclipse-score/eclipse-score-website-preview
    - https://github.com/eclipse-score/eclipse-score-website-published
 
-* **Feature Teams**
+Feature Teams
+-------------
+*Feature Teams* have end-to-end responsibility for providing specific functionalities. This includes all
+development aspects beginning with the architecture definition to the integration test.
+One *Team* may work independently of other *Teams* on the team-assigned *GitHub Issues*,
+and needs at least one :need:`Committer <rl__committer>` who can approve & merge the Pull Requests
+Each *Feature Team* has one *Lead* to organize the Team`s work.
 
-  *Feature Teams* have end-to-end responsibility for specific functionalities. This includes all
-  aspects beginning with the architecture definition to the integration test. They are usually assigned
-  to the *S-CORE* main integration project or to one particular software module. *Feature Teams* work
-  independently of each other on *GitHub Issues* in the assigned software module.
-  *Feature Teams* consist mainly of the contributors, who can specify requirements, define architecture,
-  develop source code and implement tests afterwards. *Project Leads* and *Committers* are also *Contributors*
-  and effectively work on processing of *GitHub Issues*.
+The following *Feature Teams* are defined in the *S-CORE* project:
 
-  Every *Feature Team* should have at least one committer who can approve and merge the Pull Requests of the Contributors.
+Baselibs Feature Team (BAS)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. _BAS Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-BAS-team
+.. _BAS Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-BAS-lead
+.. _BAS Meeting Minutes: https://github.com/eclipse-score/score/wiki/BASM
+.. _BAS Slack Channel: https://sdvworkinggroup.slack.com/archives/C090UKSL5L2
+.. _BAS Open Point List: https://github.com/orgs/eclipse-score/projects/24
 
-  Every *Feature Team* should also have a *Feature Team Lead*. The person with this role is responsible for
-  organizing the meetings, writing meeting protocols and representing the current status of the *Feature Team*
-  work in various management reporting or plannig calls. *Feature Team Lead* is nominated by *Technical Leads* by election.
-  Normally, this is the owner of the original *Feature Request*.
+- BAS Responsibilities
+   - development of the base libraries
+- `BAS Core Members`_
+- `BAS Lead`_
+- `BAS Meeting Minutes`_
+- `BAS Slack Channel`_
+- `BAS Open Point List`_
+- BAS Repositories:
+   - https://github.com/eclipse-score/baselibs
+   - https://github.com/eclipse-score/baselibs_rust
+
+.. _pmp_pm_com:
+
+Communication Feature Team (COM)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. _COM Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-COM-team
+.. _COM Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-COM-lead
+.. _COM Meeting Minutes: https://github.com/eclipse-score/score/wiki/COMM
+.. _COM Slack Channel: https://sdvworkinggroup.slack.com/archives/C08C0JATADP
+.. _COM Open Point List: https://github.com/orgs/eclipse-score/projects/19
+
+- COM Responsibilities
+   - development of the communication and protocols
+- `COM Core Members`_
+- `COM Lead`_
+- `COM Meeting Minutes`_
+- `COM Slack Channel`_
+- `COM Open Point List`_
+- COM Repositories:
+   - https://github.com/eclipse-score/communication
+   - https://github.com/eclipse-score/inc_mw_com
+   - https://github.com/eclipse-score/inc_someip_gateway
+
+.. _pmp_pm_cfg:
+
+Configuration Management Feature Team (CFG)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. _CFG Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-CFG-team
+.. _CFG Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-CFG-lead
+.. _CFG Meeting Minutes: https://github.com/eclipse-score/score/wiki/CFGM
+.. _CFG Slack Channel: https://sdvworkinggroup.slack.com/archives/CFG
+.. _CFG Open Point List: https://github.com/orgs/eclipse-score/projects/CFG
+
+- CFG Responsibilities
+   - development of configuration management
+- `CFG Core Members`_
+- `CFG Lead`_
+- `CFG Meeting Minutes`_
+- `CFG Slack Channel`_
+- `CFG Open Point List`_
+- CFG Repositories:
+   - https://github.com/eclipse-score/config_management
+   - https://github.com/eclipse-score/inc_config_management
+
+
+Fixed Execution Order Team (FEO)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. _FEO Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-FEO-team
+.. _FEO Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-FEO-lead
+.. _FEO Meeting Minutes: https://github.com/eclipse-score/score/wiki/FEOM
+.. _FEO Slack Channel: https://sdvworkinggroup.slack.com/archives/FEO
+.. _FEO Open Point List: https://github.com/orgs/eclipse-score/projects/9
+
+- FEO Responsibilities
+   - development of fixed execution order
+- `FEO Core Members`_
+- `FEO Lead`_
+- `FEO Meeting Minutes`_
+- `FEO Slack Channel`_
+- `FEO Open Point List`_
+- FEO Repositories:
+   - https://github.com/eclipse-score/feo
+   - https://github.com/eclipse-score/inc_feo
+
+
+Kyron Team (KYR)
+^^^^^^^^^^^^^^^^
+.. _KYR Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-KYR-team
+.. _KYR Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-KYR-lead
+.. _KYR Meeting Minutes: https://github.com/eclipse-score/score/wiki/KYRM
+.. _KYR Slack Channel: https://sdvworkinggroup.slack.com/archives/KYR
+.. _KYR Open Point List: https://github.com/orgs/eclipse-score/projects/38
+
+
+- KYR Responsibilities
+   - development of Kyron
+- `KYR Core Members`_
+- `KYR Lead`_
+- `KYR Meeting Minutes`_
+- `KYR Slack Channel`_
+- `KYR Open Point List`_
+- KYR Repositories:
+   - https://github.com/eclipse-score/kyron
+
+
+Logging Team (LOG)
+^^^^^^^^^^^^^^^^^^
+.. _LOG Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-LOG-team
+.. _LOG Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-LOG-lead
+.. _LOG Meeting Minutes: https://github.com/eclipse-score/score/wiki/LOGM
+.. _LOG Slack Channel: https://sdvworkinggroup.slack.com/archives/C089XP2PGQZ
+.. _LOG Open Point List: https://github.com/orgs/eclipse-score/projects/31
+
+- LOG Responsibilities
+   - development of Logging
+- `LOG Core Members`_
+- `LOG Lead`_
+- `LOG Meeting Minutes`_
+- `LOG Slack Channel`_
+-  `LOG Open Point List`_
+- LOG Repositories:
+   - https://github.com/eclipse-score/logging
+   - https://github.com/eclipse-score/inc_mw_log
+
+Lifecycle Management and Health Monitoring Team (LCM)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. _LCM Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-LCM-team
+.. _LCM Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-LCM-lead
+.. _LCM Meeting Minutes: https://github.com/eclipse-score/score/wiki/LCMM
+.. _LCM Slack Channel: https://sdvworkinggroup.slack.com/archives/C094Z3BN1K4
+.. _LCM Open Point List: https://github.com/orgs/eclipse-score/projects/33
+
+- LCM Responsibilities
+   - development of Lifecycle Management and Health Monitoring
+- `LCM Core Members`_
+- `LCM Lead`_
+- `LCM Meeting Minutes`_
+- `LCM Slack Channel`_
+- `LCM Open Point List`_
+- LCM Repositories:
+   - https://github.com/eclipse-score/lifecycle
+
+Orchstrator Team (ORC)
+^^^^^^^^^^^^^^^^^^^^^^^
+.. _ORC Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-ORC-team
+.. _ORC Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-ORC-lead
+.. _ORC Meeting Minutes: https://github.com/eclipse-score/score/wiki/ORCM
+.. _ORC Slack Channel: https://sdvworkinggroup.slack.com/archives/C099W80FU2C
+.. _ORC Open Point List: https://github.com/orgs/eclipse-score/projects/29
+
+-  Responsibilities
+   - development of Orchstrator
+- `ORC Core Members`_
+- `ORC Lead`_
+- `ORC Meeting Minutes`_
+- `ORC Slack Channel`_
+- `ORC Open Point List`_
+- ORC Repositories:
+   - https://github.com/eclipse-score/orchestrator
+
+.. _pmp_pm_per:
+
+Persistency Team (PER)
+^^^^^^^^^^^^^^^^^^^^^^
+.. _PER Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-PER-team
+.. _PER Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-PER-lead
+.. _PER Meeting Minutes: https://github.com/eclipse-score/score/wiki/PERM
+.. _PER Slack Channel: https://sdvworkinggroup.slack.com/archives/C08B339ETQU
+.. _PER Open Point List: https://github.com/orgs/eclipse-score/projects/20
+
+-  Responsibilities
+   - development of Persistency
+- `PER Core Members`_
+- `PER Lead`_
+- `PER Meeting Minutes`_
+- `PER Slack Channel`_
+- `PER Open Point List`_
+- PER Repositories:
+   - https://github.com/eclipse-score/persistency
 
 
 Creation of a new Feature Team
