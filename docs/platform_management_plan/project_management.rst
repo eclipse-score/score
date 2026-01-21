@@ -463,16 +463,36 @@ Persistency Team (PER)
    - https://github.com/eclipse-score/persistency
 
 
+Organization Management
+-----------------------
+Decision to adapt the *Project Organization* is done in the *Technical Lead Circle* / *Project Management Circle*, documented in the meeting minutes and planned with a *Task*:
+
+- creating of a new Team (*Community* or *Feature Team*)
+- setting an existing Team (*Community* or *Feature Team*) on hold
+- deleting an existing Team (*Community* or *Feature Team*)
+
 Creation of a new Feature Team
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Decision to create a new *Feature Team* is normally done in *Technical Lead Circle* in case a particular,
-already *accepted* *Feature Request* can not be assigned to any of already existing *Feature Teams*.
+In case a new Feature Team creation is necessary, the following steps have to be done:
 
-As a first step, the decision to create a new Feature Team is protocolled in the `Tech Lead Circle meeeting minutes <https://github.com/orgs/eclipse-score/discussions/categories/technical-lead-circle>`_.
-Afterwards a GitHub Issue is created in the `Technical Lead Cirle LOP project <https://github.com/orgs/eclipse-score/projects/3>`_
-using the special *Feature Team Creation* GitHub Issue template and is assigned to one of the Technical Leads.
+- `Adding a new Team to GitHub Teams <https://github.com/orgs/eclipse-score/teams>`_ and adding the Core Members by editing
+  `orgs.newTeam <https://github.com/eclipse-score/.eclipsefdn/blob/main/otterdog/eclipse-score.jsonnet>`_.
+- Adding a new Repository to GitHub by editing
+  `orgs.newRepo <https://github.com/eclipse-score/.eclipsefdn/blob/main/otterdog/eclipse-score.jsonnet>`_.
+- Definition of Repository specific :ref:`CODEOWNERS <pmp_pm_codeowners>`.
+- `Creation of a Team GitHub Project <https://github.com/orgs/eclipse-score/projects>`_ with a Kanban View and a Task View.
+- `Creation of a Team Meeting Wiki <https://github.com/eclipse-score/score/wiki>`_ for the meeting minutes
 
-**ToDo**: create such a template.
+- Creation of a Team Label
+    .. code::
+
+       committee:<Name of Committee>,
+       community:<Name of Community> or
+       ft:<Name of Feature Team>
+
+- Creation of a Slack Channel: https://sdvworkinggroup.slack.com
+- Adapting the PMP
+
 
 Usage of the special GitHub Issue template ensures, that all GitHub issues for creation of new *Feature
 Teams* follow the same rules, e.g. that the title always has the same format or
