@@ -25,66 +25,254 @@ Project Management Plan
 
 .. _pmp_pm_organization:
 
-Project organization
+Project Organization
 ====================
+
+.. code::
+
+   Team Documentation Structure in this Document:
+
+   - Responsibilities
+   - Members
+   - Speaker / Lead
+   - Meeting Minutes
+   - Slack channel
+   - Open Point List
+   - Repository Ownership
+
+
+..
+   Team Template
+
+   XYZ Team (XYZ)
+   ^^^^^^^^^^^^^^
+
+   .. _XYZ Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-XYZ-team
+   .. _XYZ Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-XYZ-lead
+   .. _XYZ Meeting Minutes: https://github.com/eclipse-score/score/wiki/XYZM
+   .. _XYZ Slack Channel: https://sdvworkinggroup.slack.com/archives/XYZ
+   ..  _XYZ Open Point List: https://github.com/orgs/eclipse-score/projects/XYZ
+
+
+   - XYZ Responsibilities
+     - tbd
+   - `XYZ Core Members`_
+   - `XYZ Lead`_
+   - `XYZ Meeting Minutes`_
+   - `XYZ Slack Channel <>`_
+   - `XYZ Open Point List <>`_
+   - XYZ Repositories:
+     - https://github.com/eclipse-score/tbd
+
+
+Org Chart and Main Platform Management Plan Responsibilities
+------------------------------------------------------------
+
+.. image:: _assets/organization_orgchart.drawio.svg
+   :width: 900
+   :alt: Infrastructure overview
+   :align: center
+
 
 .. _pmp_pm_steering_committees:
 
-Steering committees
+Steering Committees
 -------------------
-Steering of the project is done by two committees: *project lead circle* and *technical lead circle*.
+Steering of the project is done by two committees:
 
-* **Project lead circle**
+Project Lead Circle (PLC)
+^^^^^^^^^^^^^^^^^^^^^^^^^
+.. _PLC Members: https://github.com/orgs/eclipse-score/teams/automotive-score-PLC-team
+.. _PLC Speaker: https://github.com/orgs/eclipse-score/teams/automotive-score-PLC-lead
+.. _PLC Meeting Minutes: https://github.com/eclipse-score/score/wiki/PLCM
+.. _PLC Slack Channel: https://sdvworkinggroup.slack.com/archives/PLC
+.. _PLC Open Point List: https://github.com/orgs/eclipse-score/projects/PLC
 
-  Members of *Project lead circle* are the project leads of the *S-CORE* project. The election of project leads is done as described in the `Project Roles chapter <https://www.eclipse.org/projects/handbook/#roles-pl>`_ of *Eclipse Foundation Project Handbook*. In case of absence, a project lead can nominate a deputy.
+- Responsibilities
+   - Decisions about strategical topics
+   - Review and approval of contributions, e.g. Feature Requests, which add or modify features
+   - Project Management
+   - Planning and Approval of Releases
+   - Escalation instance
+- `PLC Members`_
+    - `PLC election <https://www.eclipse.org/projects/handbook/#roles-pl>`_
+- `PLC Speaker`_
+- `PLC Meeting Minutes`_
+- `PLC Slack channel`_
+- `PLC Open Point List`_
 
-  The main tasks of the *Project lead circle* are:
+.. _pmp_pm_tlc:
 
-  * Definition, discussion of and decisions about strategical topics (e.g. which associations to approach, confirmation of roadmap, representation in public).
-  * Decision on which new software modules should be added or removed from the project. The decision is done based on proposal from the *Technical lead circle*. In case of changes to the existing modules and no concordant decision in the *Technical Lead Circle*, the *Project Lead Circle* has to decide about the change.
-  * Election of Technical Leads.
-  * Last instance of escalation path.
+Technical Lead Circle (TLC)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The Technical Lead Circle will soon be merged with the Project Lead Circle: `#2381: Merge TLC into PLC <https://github.com/eclipse-score/score/issues/2381>`_
 
-  *Project lead circle* proposes and elects a *Project lead circle Assistant* and his deputy with bare majority, who is responsible for scheduling and announcing meetings, preparing and announcing agenda, writing meeting minutes and protocols. *Project lead circle* can reelect *Project lead circle Assistant* at any time. The *Project lead circle Assistant* and his deputy can resign anytime on their own will.
+.. _TLC Members: https://github.com/orgs/eclipse-score/teams/automotive-score-TLC-team
+.. _TLC Speaker: https://github.com/orgs/eclipse-score/teams/automotive-score-TLC-lead
+.. _TLC Meeting Minutes: https://github.com/eclipse-score/score/wiki/TLCM
+.. _TLC Slack Channel: https://sdvworkinggroup.slack.com/archives/C085F44D2CS
+.. _TLC Open Point List: https://github.com/orgs/eclipse-score/projects/3
 
-* **Technical lead circle**
+- TLC Responsibilities:
+   - Review and approval of contributions, e.g. *Feature Requests*, which add or modify S-CORE platform features.
+   - Project management of the platform development, e.g., creation of the roadmap.
+   - High-level project control and coordination between multiple software modules.
+   - Escalation instance for software module project leads and committers.
+- `TLC Members`_
+   - TLC Election: Each *Project Lead* is allowed to nominate one *Technical Lead*.
+- `TLC Meeting Minutes`_
+- `TLC Slack Channel`_
+- `TLC Open Point List`_
+- TLC Repositories:
+   - https://github.com/eclipse-score/score
 
-  Each *Project Lead* is allowed to nominate one *Technical Lead*. The *Technical Leads* form the "Technical Lead Circle". In case of absence, a technical lead can nominate a deputy. *Technical Leads* have the following responsibilities:
+.. _pmp_pm_communities:
 
-  * Review and approval of contributions, e.g. *Feature Requests*, which add or modify S-CORE platform features.
-  * Project management of the platform development, e.g., creation of the roadmap.
-  * High-level project control and coordination between multiple software modules.
-  * Escalation instance for software module project leads and committers.
+Communities
+-----------
+*Communities* are installed to work on cross functional topics, such as program level architectural decisions,
+commonly used development & testing infrastructure, processes or final integration & release.
+Each *Community* has a *Community Lead* to organize the community`s work.
 
-  *Technical lead circle* proposes and elects a *Technical lead circle Assistant* and his deputy with bare majority during *Technical Lead Circle meeting*, who is responsible for scheduling and announcing meetings, preparing and announcing agenda, writing meeting minutes and protocols. *Technical lead circle* can reelect *Technical lead circle Assistant* at any time. The *Technical lead circle Assistant* and his deputy can resign anytime on their own will.
+The following *Communities* are established:
 
-.. _pmp_pm_technical_committees:
+.. _pmp_pm_arc:
 
-Technical committees
---------------------
-* **Communities**
+Architecture Community (ARC)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. _ARC Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-ARC-team
+.. _ARC Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-ARC-lead
+.. _ARC Meeting Minutes: https://github.com/eclipse-score/score/wiki/ARCM
+.. _ARC Slack Channel: https://sdvworkinggroup.slack.com/archives/C08C1HG5AKY
+.. _ARC Open Point List: https://github.com/orgs/eclipse-score/projects/3
 
-  *Communities* allow committers and contributors to exchange their
-  opinions, take architectural decisions and implement the topics of some special
-  technical domain, e.g. testing tooling. One of the *Communities*' important activities
-  is to do a breakdown of platform sagas to the concrete tasks (see `Planning`_) .
-  Currently following *Communities* are defined in the *S-CORE* project:
+- ARC Responsibilities
+   - clarification of software architecture topics, e.g. discussion of new features or coding guidelines
+- `ARC Core Members`_
+- `ARC Lead`_
+- `ARC Meeting Minutes`_
+- `ARC Slack Channel`_
+- `ARC Open Point List`_
+- ARC Repositories:
+   - https://github.com/eclipse-score/score
 
-  * *Infrastructure*: *community* for all kind of infra topics:
-    compiler, IDE, build toolchain and etc. See `GitHub Discussions/Infrastructure Community  <https://github.com/orgs/eclipse-score/discussions/categories/infrastructure-community>`_ for more.
-  * *Testing*: *community* to clarify questions and define testing strategy
-    for the 'S-CORE' project. See `GitHub Discussions/Testing Community <https://github.com/orgs/eclipse-score/discussions/categories/testing-community>`_ for more.
-  * *Software Architecture*: *community* for clarification of software architecture topics,
-    e.g. discussion of new features or coding guidelines. See `GitHub Discussions/Architecture Community <https://github.com/orgs/eclipse-score/discussions/categories/architecture-community>`_ for more.
-  * *Software Development Process*: *community* for definition and maintaining
-    of safety, security and quality software development process. See `GitHub Discussions/SW Dev Process Community <https://github.com/orgs/eclipse-score/discussions/categories/sw-dev-process-community>`_ for more.
-  * *Marketing & Communication (MarCom)*: *community* for coordination of public relations, e.g. the maintenance of the website & organization of general events.
-    See `GitHub Discussions/MarCom Community <https://github.com/orgs/eclipse-score/discussions/categories/marcom-community>`_ for more.
+Process Community (PRC)
+^^^^^^^^^^^^^^^^^^^^^^^
+.. _PRC Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-PRC-team
+.. _PRC Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-PRC-lead
+.. _PRC Meeting Minutes: https://github.com/eclipse-score/score/wiki/PRCM
+.. _PRC Slack Channel: https://sdvworkinggroup.slack.com/archives/C0864L05332
+.. _PRC Open Point List: https://github.com/orgs/eclipse-score/projects/21
+.. _PIM Open Point List: https://github.com/orgs/eclipse-score/projects/7
 
-  The planning of the activities is done by every *Community* independent of other
-  teams. Each *Community* has a *Community Lead*, who is nominated by the *Technical lead circle*. The prioritization of some topics can be requested by the *Technical lead circle*
-  in order to achieve milestones on time. All important architectural decisions
-  should be reported to the project as *Feature Request* to get the final approvement from the *Technical lead circle*.
+- PRC Responsibilities
+   - defining and maintaining the software development process (incl. safety, security and quality)
+   - defining and maintaining the process implementation (PIM)
+- `PRC Core Members`_
+- `PRC Lead`_
+- `PRC Meeting Minutes`_
+- `PRC Slack Channel`_
+- `PRC Open Point List`_
+- `PIM Open Point List`_
+- PRC Repositories:
+   - https://github.com/eclipse-score/process_description
+   - https://github.com/eclipse-score/score
+
+
+Infrastructure Community (INF)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. _INF Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-INF-team
+.. _INF Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-INF-lead
+.. _INF Meeting Minutes: https://github.com/eclipse-score/score/wiki/INFM
+.. _INF Slack Channel: https://sdvworkinggroup.slack.com/archives/C0894QGRZDM
+.. _INF Open Point List: https://github.com/orgs/eclipse-score/projects/6
+
+- INF Responsibilities
+   - providing and maintaining the development infrastructure: Compiler, IDE, build toolchains
+- `INF Core Members`_
+- `INF Lead`_
+- `INF Meeting Minutes`_
+- `INF Slack Channel`_
+- `INF Open Point List`_
+- INF Toolchain Repositories:
+   - https://github.com/eclipse-score/bazel_platforms
+   - https://github.com/eclipse-score/toolchains_gcc
+   - https://github.com/eclipse-score/toolchains_gcc_packages
+   - https://github.com/eclipse-score/toolchains_qnx
+   - https://github.com/eclipse-score/toolchains_rust
+- INF Tooling Repositories:
+   - https://github.com/eclipse-score/devcontainer
+   - https://github.com/eclipse-score/docs-as-code
+   - https://github.com/eclipse-score/tooling
+- INF other Repositories:
+   - https://github.com/eclipse-score/apt-install
+   - https://github.com/eclipse-score/cicd-workflows
+   - https://github.com/eclipse-score/bazel_registry
+   - https://github.com/eclipse-score/bazel_registry_ui
+   - https://github.com/eclipse-score/.eclipsefdn
+   - https://github.com/eclipse-score/examples
+
+Testing Community (TST)
+^^^^^^^^^^^^^^^^^^^^^^^
+.. _TST Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-TST-team
+.. _TST Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-TST-lead
+.. _TST Meeting Minutes: https://github.com/eclipse-score/score/wiki/TSTM
+.. _TST Slack Channel: https://sdvworkinggroup.slack.com/archives/TSTC08B6C78EF3
+.. _TST Open Point List: https://github.com/orgs/eclipse-score/projects/5
+
+
+- TST Responsibilities
+   - defining and maintaining testing strategy and infrastructure
+- `TST Core Members`_
+- `TST Lead`_
+- `TST Meeting Minutes`_
+- `TST Slack Channel`_
+- `TST Open Point List`_
+- TST Repositories:
+   - https://github.com/eclipse-score/itf
+   - https://github.com/eclipse-score/testing_tools
+
+
+Integration and Release Community (INT)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. _INT Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-INT-team
+.. _INT Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-INT-lead
+.. _INT Meeting Minutes: https://github.com/eclipse-score/score/wiki/INTM
+.. _INT Slack Channel: https://sdvworkinggroup.slack.com/archives/INT
+.. _INT Open Point List: https://github.com/orgs/eclipse-score/projects/INT
+
+
+- INT Responsibilities
+   - integration of available modules to one or several reference integrations
+   - releasing
+- `INT Core Members`_
+- `INT Lead`_
+- `INT Meeting Minutes`_
+- `INT Slack Channel`_
+- `INT Open Point List`_
+- INT Repositories:
+   - https://github.com/eclipse-score/score
+
+Marketing & Communication Community
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. _MCM Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-MCM-team
+.. _MCM Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-MCM-lead
+.. _MCM Meeting Minutes: https://github.com/eclipse-score/score/wiki/MCMM
+.. _MCM Slack Channel: https://sdvworkinggroup.slack.com/archives/C032X75QGTT
+.. _MCM Open Point List: https://github.com/orgs/eclipse-score/projects/11
+
+- MCM Responsibilities
+   - coordination of public relations, e.g. the maintenance of the website & organization of general events
+- `MCM Core Members`_
+- `MCM Lead`_
+- `MCM Meeting Minutes`_
+- `MCM Slack Channel`_
+- `MCM Open Point List`_
+- MCM Repositories:
+   - https://github.com/eclipse-score/eclipse-score.github.io
+   - https://github.com/eclipse-score/eclipse-score-website
+   - https://github.com/eclipse-score/eclipse-score-website-preview
+   - https://github.com/eclipse-score/eclipse-score-website-published
 
 * **Feature Teams**
 
