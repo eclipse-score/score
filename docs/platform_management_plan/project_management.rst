@@ -576,8 +576,6 @@ GitHub **Issues** are used to document all necessary work packages.
 
 Issues
 ------
-The Issues are stored in the main repository: https://github.com/eclipse-score/score/issues.
-
 To organize the work :ref:`Github Types <pmp_pm_issue_types>`,  :ref:`GitHub Labels <pmp_pm_gh_labels>` and
 :ref:`GitHub Projects <pmp_pm_gh_projects>` are used.
 The Progress of the work is documented with help of the :ref:`Status of an Issue <pmp_pm_issue_status_flow>`.
