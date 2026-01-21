@@ -770,63 +770,27 @@ Traceability
 To achieve traceability all *Pull Requests* have to be `linked <https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue>`_
 to the corresponding *GitHub Issues*.
 
-
-Planning process
+Planning of Work
 ----------------
-Generally, every team is responsible for planning and managing of its backlog.
-For small improvements or clarifications, you can create *GitHub Issue* with a exhaustive
-description and map it to the topic using labels. For small improvements/bugs
-in the software modules you should create *GitHub Issues* directly in the repository
-of the submodule. The project leads and committers of the corresponding software module,
-circle or community will check the issue and in case they will accept it, they will
-take it over to one of their *GitHub Projects*. In case, the topic, that you raise in the issue has a big impact on the platform, you can be asked by the committers to raise a *Feature Request* and to do a POC in the `incubation repository <https://eclipse-score.github.io/score/features/integration/index.html#incubation-repositories>`_ .
 
-Contribution to the project is described in more details in `Contribution Guideline <https://eclipse-score.github.io/score/main/contribute/index.html>`_.
-In general, everyone who wants to provide something new to the project, e.g. a new feature
-or a tool, should provide an exhaustive description, requirements and in some cases
-also initial draft of the architecture as part of the *Feature Request*.
-*Feature Requests* are regularly reviewed in the *Technical lead circle*
-and then get either accepted or declined.
+Generally, every team is responsible for planning its work within its own plan with the help of its :ref:`GitHub Project <pmp_pm_gh_projects>` filled with :ref:`Epics <pmp_pm_epic>`, :ref:`Tasks <pmp_pm_task>` and :ref:`Bugs <pmp_pm_bug>`.
 
-After the *Feature Request* was accepted, then the *Pull Request* with the
-*Feature Request* gets merged. The corresponding *GitHub Issue* gets a reference to the
-newly defined saga which plans the implementation of the feature request and afterwards *GitHub Issue* for *Feature Request* gets closed. The saga is at the beginning in the state *"Draft"*. Please be aware, that "status" of the tickets is modelled in *GitHub Project* as *GitHub Issues* do not provide the possibility to define additional states.
+The planning of :ref:`Feature Requests <pmp_pm_feature_request>` is in the responsibility of the :ref:`Architects <pmp_pm_arc>`,
+whereas the overall top-down plan is in the responsibility of the :ref:`Technical Lead Circle <pmp_pm_tlc>` with the help of :ref:`Product Increments <pmp_pm_product_increment>`,
+:ref:`Milestones <pmp_pm_milestone>` and :ref:`Releases <pmp_pm_release>`.
 
-The *Technical lead circle* is responsible for maintenance of the backlog with sagas,
-their prioritization and creation of the roadmap. Together with software module
-project leads and community leads in the "Committer circle" they go through the backlog, decide when and which saga should be implemented in which order and update the roadmap accordingly.
+Tracking Progress
+-----------------
+The :ref:`Technical Lead Circle <pmp_pm_tlc>` regularly monitors the status of the work for upcoming Milestones and Releases in https://github.com/orgs/eclipse-score/projects/17 based on
+:ref:`Product Increments <pmp_pm_product_increment>`.
 
-As soon as the saga was planned for implementation, its state is changed to *"Open"*.
-As next step, a *GitHub Issue* of type *epic* is created as sub-issue of the saga
-and gets assigned to one of the *Communities* for refinement. The state of the saga changes from "Open" to "In Specification".
 
-.. image:: _assets/saga_status_workflow.svg
-    :width: 900
-    :alt: Planning workflow
-    :align: center
+Dashboards
+^^^^^^^^^^
 
-The members of the *Responsible Community* define or refine feature, process or tool requirements. They may also create feature architecture and high level component requirements for every involved software component. Depending on the feature scope, one of the feature team can be requested to make a POC in the `incubation repository <https://eclipse-score.github.io/score/features/integration/index.html#incubation-repositories>`_. Finally, *Responsible Community* does the break down of the corresponding *saga* to the tickets that can be assigned to the individual software modules or *communities*.
-As most of the software modules will have their own separate repository,
-then the detailed tracking of their work will also happen inside of that repository.
-However, the corresponding saga of the S-CORE repository will still have a sub-issue of type epic,
-that will describe the work, that should be done inside of the software module for better planning.
-In the epic description there should be a link to the software module repository ticket,
-where the detailed information and break down to the stories can be found.
-For those communities or modules, that are part of the main *S-CORE* repository,
-the break down to the stories should be done directly inside of the epic.
+GitHub offers mechanism in form of charts to track issues:
 
-As soon as the work on saga starts, its status is changed to "In Progress"
-and its sub-tickets get assigned to the project leads of the software modules
-or leads of the *communities*. During the development of the saga,
-we use "trunk based approach", it means, that we do not create any separate branches,
-but develop the software directly in the trunk/main using feature flag, that is marked as "experimental" at the beginning.
-
-The *Technical lead circle* regularly monitors the status of the sagas with the status
-"In Progress", resolves conflicts and updates the roadmap if necessary.
-
-As soon as the saga is implemented and fulfills to 100% our software development process requirements, the decision is taken in the *Technical lead circle* whether the feature should be
-officially available and in case of the positive decision, the feature flag status
-is changed from "experimental" to "official".
+- `Product Increments Open last 3 months <https://github.com/orgs/eclipse-score/projects/17/insights/4>`_
 
 PMP Definition of Done
 ======================
