@@ -30,8 +30,6 @@ the following committers are assigned to guard the Orchestrator repository:
 
 - `<https://github.com/vinodreddy-g>`_
 - `<https://github.com/qor-lb>`_
-- `<https://github.com/MaximilianSoerenPollak>`_
-
 
 Skill Check
 ===========
@@ -40,8 +38,8 @@ For the CODEOWNERS the required skills, knowledge and experience is defined in `
 
 The evidences are not published openly due to personal data confidentiality, but will be checked by the module safety manager.
 
-- `<https://github.com/vinodreddy-g>`_: SW developer and architect at Tier 1 > 10 years for safety related SW. Member of process community
-- `<https://github.com/qor-lb>`_: SW developer at Tier 1 > y           . Member of S-CORE process community and project lead
+- `<https://github.com/vinodreddy-g>`_: SW developer and architect at Tier 1 > 10 years for safety related SW. Contribution to process community.
+- `<https://github.com/qor-lb>`_: SW developer and architect at Tier 1 > 2 years for safety related SW. Project lead for safety related SW > 3 years. Lead of architecture community and member of S-CORE project lead circle.
 
 
 The S-CORE processes are trained on the job by the Orchestrator module safety manager to the CODEOWNERS.
