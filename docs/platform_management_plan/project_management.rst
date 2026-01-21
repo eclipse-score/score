@@ -655,6 +655,73 @@ a special type of *Story* work package and follows the same rules as regular *Ep
 with the key difference that it focuses on fixing defects in existing functionality
 rather than creating or extending functionality. *Tasks* are owned by a Team and are part
 of any Team`s repository.
+
+.. _pmp_pm_issue_status_flow:
+
+Issue Status
+^^^^^^^^^^^^
+Each *GitHub issue* has a **Status** depending on the :ref:`GitHub Project <pmp_pm_gh_projects>`,
+we use the following Standard Flow for all :ref:`Issue Types <pmp_pm_issue_types>`:
+
+.. image:: _assets/issue_status_flow.drawio.svg
+    :width: 300
+    :alt: Issue Status
+    :align: center
+
+Issue Attributes
+^^^^^^^^^^^^^^^^
+- Standard Attributes
+    - Assignees
+    - :ref:`Labels <pmp_pm_gh_labels>`
+    - :ref:`Type <pmp_pm_issue_types>`
+- Common Project Attributes
+    - :ref:`Status <pmp_pm_issue_status_flow>`
+    - Priority (High, Middle, Low)
+    - Size (S=hours,M=days,L=weeks, XL=months)
+    - (planned finishing) Iteration
+    - Team
+    - Category (e.g. Work stream)
+    - Release
+
+Issue Templates
+^^^^^^^^^^^^^^^
+Templates defined in *GitHub* ensure the availability of the type relevant information for all issues.
+
+- `Bug Template <https://github.com/eclipse-score/score/blob/main/.github/ISSUE_TEMPLATE/bug.yml>`_
+- `Feature Request Template <https://github.com/eclipse-score/score/blob/main/.github/ISSUE_TEMPLATE/feature_request.yml>`_
+- `Product Increment Template <https://github.com/eclipse-score/score/blob/main/.github/ISSUE_TEMPLATE/product_increment.yml>`_
+- `Epic Template <https://github.com/eclipse-score/score/blob/main/.github/ISSUE_TEMPLATE/epic.yml>`_
+- `Task Template <https://github.com/eclipse-score/score/blob/main/.github/ISSUE_TEMPLATE/task.yml>`_
+
+Hierarchies
+^^^^^^^^^^^
+Hierarchies are realized as parent-child relations with the `GitHub Sub-Issue Feature <https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/adding-sub-issues>`_.
+
+Dependencies
+^^^^^^^^^^^^
+Dependencies are realized with blocked by or blocking relations described in thè `GitHub Issue Dependency Feature <https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-issue-dependencies>`_.
+
+.. _pmp_pm_milestone:
+
+Milestone
+---------
+A milestone is indicating an important dedicated point in the schedule like
+a Release or a Quality (ASPICE, ASIL) Assessment.
+`GitHub Milestones <https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones>`_ offer to connect *Issues* and *Pull Requests* to the `S-CORE-defined Milestones <https://github.com/eclipse-score/score/milestones>`_
+
+.. _pmp_pm_release:
+
+Releases
+--------
+*Releases* are special milestones and used for baselining of the development activities.
+
+
+.. _pmp_pm_gh_labels:
+
+
+
+
+
 Traceability
 ^^^^^^^^^^^^
 To achieve a better traceability it is highly recommended to link all *PRs* to the corresponding
