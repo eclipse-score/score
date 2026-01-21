@@ -493,6 +493,20 @@ In case a new Feature Team creation is necessary, the following steps have to be
 - Creation of a Slack Channel: https://sdvworkinggroup.slack.com
 - Adapting the PMP
 
+Internal Communication
+======================
+
+The project internal communication is ensured with help of:
+
+- virtual and face-to-face meetings and their minutes
+- *GitHub issues* and *GitHub pull requests*
+- online communication using Slack
+
+Meetings
+--------
+All meetings are scheduled in the `Eclipse S-CORE Calendar <https://calendar.google.com/calendar/u/0/embed?src=c_2ampi2bmoka3qter4dceap1d5g@group.calendar.google.com&ctz=Europe/Berlin>`_ , are open for everyone
+but mentioned team members are mandatory. Meeting minutes are public and stored in the project specific *GitHub Team Wikis*.
+
 
 Usage of the special GitHub Issue template ensures, that all GitHub issues for creation of new *Feature
 Teams* follow the same rules, e.g. that the title always has the same format or
