@@ -33,7 +33,18 @@ The purpose of the Project Management Plan is to define
 - the project stakeholder and how to communicate with them.
 - how and where to create and maintain the project schedule.
 - how to track planned work.
-- how and where to escalation.
+- how and where to escalate.
+
+Objectives and Scope
+--------------------
+
+Project Management Goals
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+* The scope of the work is defined.
+* The stakeholders/stakeholder groups and organization are defined.
+* Communication and reporting paths are described.
+* Escalation paths are described.
 
 .. _pmp_pm_organization:
 
@@ -131,7 +142,7 @@ The Technical Lead Circle will soon be merged with the Project Lead Circle: `#23
 
 - TLC Responsibilities:
    - Review and approval of contributions, e.g. *Feature Requests*, which add or modify S-CORE platform features.
-   - Project management of the platform development, e.g., creation of the roadmap.
+   - Project management of the platform development, e.g. creation of the roadmap.
    - High-level project control and coordination between multiple software modules.
    - Escalation instance for software module project leads and committers.
 - `TLC Members`_
@@ -272,6 +283,8 @@ Integration and Release Community (INT)
 - `INT Open Point List`_
 - INT Repositories:
    - https://github.com/eclipse-score/score
+
+.. _pmp_pm_mcm:
 
 Marketing & Communication Community
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -515,9 +528,13 @@ In case a new Feature Team creation is necessary, the following steps have to be
 - Creation of a Slack Channel: https://sdvworkinggroup.slack.com
 - Adapting the PMP
 
+External Communication
+======================
+The external communication is done via GitHub, LinkedIn, etc. Publications by :ref:`Marketing and Communication Community <pmp_pm_mcm>`.
+
+
 Internal Communication
 ======================
-
 The project internal communication is ensured with help of:
 
 - virtual and face-to-face meetings and their minutes
