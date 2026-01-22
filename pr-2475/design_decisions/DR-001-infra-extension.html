@@ -569,7 +569,7 @@ SPDX-License-Identifier: Apache-2.0
 <ul class="simple">
 <li><p><strong>Date:</strong> 2026-01-20</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-526c3c99">
+<div class="need_container docutils container" id="SNCB-c0dc2c0c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__execution_contract">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -749,14 +749,24 @@ the build.</p>
 <section id="definition">
 <h4>Definition<a class="headerlink" href="#definition" title="Link to this heading">#</a></h4>
 <ul class="simple">
-<li><p>A <strong>versioned devcontainer image</strong> is the default execution context.</p></li>
+<li><p>A <strong>versioned devcontainer image</strong> is the default execution context for CI and local builds.</p></li>
 <li><p>The container image must be:</p>
 <ul>
-<li><p>built from a known OS baseline (Ubuntu LTS)</p></li>
-<li><p>referenced by immutable digest</p></li>
-<li><p>archived for long-term reproducibility</p></li>
+<li><p>built from a <strong>defined Ubuntu LTS baseline</strong></p></li>
+<li><p>compatible with common developer tooling (e.g. by following the <a class="reference external" href="https://containers.dev/">specification</a>)</p></li>
+<li><p>referenced by an <strong>immutable image digest</strong></p></li>
+<li><p>archived for <strong>long-term reproducibility</strong></p></li>
 </ul>
 </li>
+</ul>
+</section>
+<section id="baseline-preservation-and-reproducibility">
+<h4>Baseline Preservation and Reproducibility<a class="headerlink" href="#baseline-preservation-and-reproducibility" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Once a devcontainer image is used in CI, its image digest becomes part of the build provenance</p></li>
+<li><p>All such images must be archived and retrievable for <strong>at least 10 years</strong></p></li>
+<li><p>Reproducing historical builds may rely on legacy container runtimes or CLI-only execution,
+and does not require continued IDE support</p></li>
 </ul>
 </section>
 <section id="id2">
@@ -940,6 +950,7 @@ reproduce builds years into the future.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#layer-2-execution-context-contract-devcontainer">Layer 2 — Execution Context Contract (Devcontainer)</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Purpose</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">Definition</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#baseline-preservation-and-reproducibility">Baseline Preservation and Reproducibility</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Responsibilities</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#non-goals">Non-Goals</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Policy</a></li>
