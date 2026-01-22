@@ -43,8 +43,11 @@ Requirements
 * **Common Format**: Define a formal description language for the configuration model (e.g., JSON schema) to ensure machine-readable and validated configurations.
 * **Self-Contained Module Configuration**: To provide a self-contained module, each module must be able to carry its own configuration. This introduces a potential conflict with centralized consistency. Potential compromise: Implement consistency checks across modules rather than enforcing a single shared configuration file.
 * **Extensibility**: The model should be designed to accommodate future features and extensions without breaking existing configurations.
+* **Simplicity**: The guideline and model should be easy to understand and each configuration parameter should have a clear purpose.
 * **Supported Features**:
+
   * Configuration scope of current module configurations need to be considered
+  * Configuration of required and provided capabilities of the modules
   * Multiple instantiations of the same module with distinct configurations.
   * Versioning of configuration schema for backward compatibility.
   * further features to be defined.
