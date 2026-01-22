@@ -193,7 +193,7 @@ These constraints must be handled in Layer 1 and Layer 2.
 ### Rationale
 We explicitly do **not** support all historical `glibc` or kernel versions.
 Portability is achieved by choosing and documenting a baseline, not by unlimited
-backward compatibility.
+backward compatibility. Layer 2 can easily be virtualized as needed, for future reproducibility.
 
 ---
 
