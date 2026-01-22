@@ -134,11 +134,18 @@ This layer defines the **default user-space environment** in which builds are ex
 - Enable local reproduction of CI builds
 
 #### Definition
-- A **versioned devcontainer image** is the default execution context.
+- A **versioned devcontainer image** is the default execution context for CI and local builds.
 - The container image must be:
-  - built from a known OS baseline (Ubuntu LTS)
-  - referenced by immutable digest
-  - archived for long-term reproducibility
+  - built from a **defined Ubuntu LTS baseline**
+  - compatible with common developer tooling (e.g. by following the [specification](https://containers.dev/))
+  - referenced by an **immutable image digest**
+  - archived for **long-term reproducibility**
+
+#### Baseline Preservation and Reproducibility
+- Once a devcontainer image is used in CI, its image digest becomes part of the build provenance
+- All such images must be archived and retrievable for **at least 10 years**
+- Reproducing historical builds may rely on legacy container runtimes or CLI-only execution,
+  and does not require continued IDE support
 
 #### Responsibilities
 - User-space runtime libraries
