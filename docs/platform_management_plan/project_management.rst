@@ -804,7 +804,7 @@ PMP Definition of Done
 ======================
 - The **Definitions of Done** for all Platform Management Plans are fulfilled.
 - Project Organization: Org Chart and description is available and up to date.
-- Project Internal Communication: Team Overview with meeting structure is available and and Slack channels are established and maintained.
+- Project Internal Communication: Team Overview with meeting structure is available & Slack channels are established and maintained.
 - Scheduling: Meetings are scheduled in the Eclipse SDV calendar.
 - Milestones & Releases: Roadmap with Milestones and Releases are available and up to date.
 - General: All Reviews are performed according to their definitions, the respective templates are used.
