@@ -15,8 +15,8 @@
 Mock Binding Component Architecture
 ***********************************
 
-.. comp_arc_sta:: Mock binding
-   :id: comp_arc_sta__com__mock_binding
+.. comp:: Mock binding
+   :id: comp__com_mock_binding
    :security: YES
    :safety: ASIL_B
    :status: valid

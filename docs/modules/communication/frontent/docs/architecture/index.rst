@@ -15,6 +15,15 @@
 Frontend Component Architecture
 *******************************
 
+.. comp:: mw::com Frontend
+   :id: comp__com_frontend
+   :security: YES
+   :safety:  ASIL_B
+   :status: valid
+   :implements: logic_arc_int__communication__user
+   :uses: logic_arc_int__logging__logging, logic_arc_int__tracing__tracing
+
+
 .. comp_arc_sta:: mw::com Frontend
    :id: comp_arc_sta__com__frontend
    :security: YES
