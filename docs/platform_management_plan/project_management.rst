@@ -12,9 +12,6 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Project Management Plan
-#######################
-
 .. document:: Project Management Plan
    :id: doc__project_mgt_plan
    :status: draft
@@ -22,6 +19,21 @@ Project Management Plan
    :security: YES
    :realizes: wp__project_mgt
    :tags: platform_management
+
+.. _pmp_pm_plan:
+
+Project Management Plan
+#######################
+
+Purpose
+=======
+The purpose of the Project Management Plan is to define
+
+- how to manage, analyse and control changes of the work products during the project life cycle.
+- the project stakeholder and how to communicate with them.
+- how and where to create and maintain the project schedule.
+- how to track planned work.
+- how and where to escalation.
 
 .. _pmp_pm_organization:
 
