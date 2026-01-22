@@ -12,7 +12,7 @@ SPDX-License-Identifier: Apache-2.0
 -->
 
 
-# DR-001-Infra-Extension: S-CORE Build Execution Contract
+# DR-001-B-Infra-Extension: S-CORE Build Execution Contract
 
 
 * **Date:** 2026-01-20
@@ -168,7 +168,7 @@ This layer defines the **default user-space environment** in which builds are ex
 This layer defines **what Bazel controls and guarantees**.
 
 #### Bazel Versioning
-- Each repository must contain `.bazelversion`.
+- Each relevant repository must contain `.bazelversion`.
 - S-CORE uses a **single Bazel version** across repositories.
 - CI enforces version consistency.
 
