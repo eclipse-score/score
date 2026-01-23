@@ -1,0 +1,1192 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>FEO Module Safety Plan &#8212; S-CORE  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/score.css?v=6e51530f" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/score_needs.css?v=e97392eb" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/score_design.css?v=d9fd870c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/modern.css?v=803738c0" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../../../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../../../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
+    <script src="../../../../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
+    <script src="../../../../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
+    <script src="../../../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
+    <script src="../../../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'modules/feo/docs/safety_mgt/module_safety_plan';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="FEO Module Safety Plan Formal Review Report" href="module_safety_plan_fdr.html" />
+    <link rel="prev" title="FEO Module Safety Management" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Eclipse S-CORE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../handbook/index.html">
+    Handbook
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../features/index.html">
+    Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../requirements/index.html">
+    Requirements
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../index.html">
+    Modules
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../design_decisions/index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../handbook/index.html">
+    Handbook
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../features/index.html">
+    Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../requirements/index.html">
+    Requirements
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../index.html">
+    Modules
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../design_decisions/index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../baselibs/index.html">Baselibs Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../communication/index.html">Communication Module</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">FEO Module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">FEO Module Documents</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../manual/index.html">FEO Module Manuals</a></li>
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="index.html">FEO Module Safety Management</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l4 current active"><a class="current reference internal" href="#">FEO Module Safety Plan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="module_safety_plan_fdr.html">FEO Module Safety Plan Formal Review Report</a></li>
+<li class="toctree-l4"><a class="reference internal" href="module_safety_package_fdr.html">FEO Module Safety Package Formal Review Report</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../verification/module_verification_report.html">FEO Module Verification Report</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../release/release_note.html">FEO Module Release Note</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../feo/docs/index.html">FEO Component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../feo_com/docs/index.html">feo_com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../feo_log/docs/index.html">feo_log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../feo_time/docs/index.html">feo_time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../feo_tracing/docs/index.html">feo_tracing</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lifecycle/index.html">Lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../logging/index.html">Logging Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../orchestrator/index.html">Orchestrator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../os/index.html">OS Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tracing/index.html">Tracing Module</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Modules</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">FEO Module</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">FEO Module Documents</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">FEO Module Safety Management</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">FEO Module Safety Plan</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="need_container docutils container" id="SNCB-ceeef6a9">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__feo_safety_plan">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">FEO Module Safety Plan</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">module_feo</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__module_safety_plan">wp__module_safety_plan</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__feo_safety_plan" title="doc__feo_safety_plan">doc__feo_safety_plan</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Generic Document</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<section id="feo-module-safety-plan">
+<h1>FEO Module Safety Plan<a class="headerlink" href="#feo-module-safety-plan" title="Link to this heading">#</a></h1>
+<section id="functional-safety-management-context">
+<h2>Functional Safety Management Context<a class="headerlink" href="#functional-safety-management-context" title="Link to this heading">#</a></h2>
+<p>This Safety Plan adds to the <a class="reference internal" href="../../../../platform_management_plan/safety_management.html#doc__score_platform_safety_plan" title="doc__score_platform_safety_plan"><em class="xref need">Platform Safety Plan (doc__score_platform_safety_plan)</em></a> all the module development relevant work products needed for ISO 26262 conformity.</p>
+</section>
+<section id="functional-safety-management-scope">
+<h2>Functional Safety Management Scope<a class="headerlink" href="#functional-safety-management-scope" title="Link to this heading">#</a></h2>
+<p>This Safety Plan’s scope is a SW module <a class="reference internal" href="../index.html#feo-module-documentation"><span class="std std-ref">FEO Module Documents</span></a> of the SW platform.
+The module consists of one or more SW components and will be qualified as a SEooC.</p>
+</section>
+<section id="functional-safety-management-roles">
+<h2>Functional Safety Management Roles<a class="headerlink" href="#functional-safety-management-roles" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table" id="id1">
+<caption><span class="caption-number">Table 36 </span><span class="caption-text">Module roles</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Role</p></th>
+<th class="head"><p>Assignee</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Safety Manager</p></td>
+<td><p>Markus Schu</p></td>
+</tr>
+<tr class="row-odd"><td><p>Module Project Manager (= Feature team lead)</p></td>
+<td><p>Johannes Glamsch</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="tailoring">
+<h2>Tailoring<a class="headerlink" href="#tailoring" title="Link to this heading">#</a></h2>
+<p>Additional to the tailoring in the SW platform project as defined in the <a class="reference internal" href="../../../../platform_management_plan/safety_management.html#doc__score_platform_safety_plan" title="doc__score_platform_safety_plan"><em class="xref need">Platform Safety Plan (doc__score_platform_safety_plan)</em></a> we define here the additional tailoring on module level.</p>
+<ul class="simple">
+<li><p>Excluded for this module are additionally the following work products (and their related requirements):
+- No work products excluded</p></li>
+</ul>
+</section>
+<section id="functional-safety-module-work-products">
+<h2>Functional Safety Module Work Products<a class="headerlink" href="#functional-safety-module-work-products" title="Link to this heading">#</a></h2>
+<p>One set of work products for the module and one set for each component of the module:</p>
+<section id="feo-module-work-products-list">
+<h3>FEO Module Work Products List<a class="headerlink" href="#feo-module-work-products-list" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table" id="id2">
+<caption><span class="caption-number">Table 37 </span><span class="caption-text">Module Work products</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Work product Id</p></th>
+<th class="head"><p>Link to process</p></th>
+<th class="head"><p>Process status</p></th>
+<th class="head"><p>Link to WP</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__module_safety_plan">wp__module_safety_plan</a></p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/guidance/guideline_safety_management.html#gd_guidl__saf_plan_definitions">gd_guidl__saf_plan_definitions</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/guidance/templates_safety_plan.html#gd_temp__module_safety_plan">gd_temp__module_safety_plan</a></p></td>
+<td><p>valid</p></td>
+<td><p>this document</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__module_safety_package">wp__module_safety_package</a></p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/guidance/guideline_safety_management.html#gd_guidl__saf_package">gd_guidl__saf_package</a></p></td>
+<td><p>valid</p></td>
+<td><p>this document (including the linked documentation)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__fdr_reports">wp__fdr_reports</a> (module Safety Plan)</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/guidance/checklist_safety_plan.html#gd_chklst__safety_plan">gd_chklst__safety_plan</a></p></td>
+<td><p>valid</p></td>
+<td><p><a class="reference internal" href="module_safety_plan_fdr.html#doc__feo_safety_plan_fdr" title="doc__feo_safety_plan_fdr"><em class="xref need">FEO Module Safety Plan Form... (doc__feo_safety_plan_fdr)</em></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__fdr_reports">wp__fdr_reports</a> (module Safety Package)</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/guidance/checklist_safety_package.html#gd_chklst__safety_package">gd_chklst__safety_package</a></p></td>
+<td><p>valid</p></td>
+<td><p><a class="reference internal" href="module_safety_package_fdr.html#doc__feo_safety_package_fdr" title="doc__feo_safety_package_fdr"><em class="xref need">FEO Module Safety Package F... (doc__feo_safety_package_fdr)</em></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__fdr_reports">wp__fdr_reports</a> (module’s Safety Analyses &amp; DFA)</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_analysis/guidance/safety_analysis_checklist.html#gd_chklst__safety_analysis">gd_chklst__safety_analysis</a></p></td>
+<td><p>valid</p></td>
+<td><p><a class="reference internal" href="../../feo/docs/safety_analysis/chklst_safety_analysis_inspection.html#doc__safety_analysis_inspection_component_feo" title="doc__safety_analysis_inspection_component_feo"><em class="xref need">FEO Safety Analysis Inspect... (doc__safety_analysis_inspection_component_feo)</em></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__audit_report">wp__audit_report</a></p></td>
+<td><p>performed by external experts</p></td>
+<td><p>n/a</p></td>
+<td><p>&lt;Link to WP&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__module_safety_manual">wp__module_safety_manual</a></p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/guidance/template_safety_manual.html#gd_temp__safety_manual">gd_temp__safety_manual</a></p></td>
+<td><p>valid</p></td>
+<td><p><a class="reference internal" href="../manual/safety_manual.html#doc__feo_safety_manual" title="doc__feo_safety_manual"><em class="xref need">FEO Module Safety Manual (doc__feo_safety_manual)</em></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_module_ver_report">wp__verification_module_ver_report</a></p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/guidance/verification_report_template.html#gd_temp__mod_ver_report">gd_temp__mod_ver_report</a></p></td>
+<td><p>valid</p></td>
+<td><p><a class="reference internal" href="../verification/module_verification_report.html#doc__feo_verification_report" title="doc__feo_verification_report"><em class="xref need">FEO Module Verification Report (doc__feo_verification_report)</em></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/release_management/release_workproducts.html#wp__module_sw_release_note">wp__module_sw_release_note</a></p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/release_management/guidance/release_templates.html#gd_temp__rel_mod_rel_note">gd_temp__rel_mod_rel_note</a></p></td>
+<td><p>valid</p></td>
+<td><p><a class="reference internal" href="../release/release_note.html#doc__feo_release_note" title="doc__feo_release_note"><em class="xref need">FEO Module Release Note (doc__feo_release_note)</em></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="feo-component-work-products-list">
+<h3>FEO Component Work Products List<a class="headerlink" href="#feo-component-work-products-list" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table" id="id3">
+<caption><span class="caption-number">Table 38 </span><span class="caption-text">FEO Component Work Products List</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Work product Id</p></th>
+<th class="head"><p>Link to process</p></th>
+<th class="head"><p>Process status</p></th>
+<th class="head"><p>Link to WP</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_comp">wp__requirements_comp</a></p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_templates.html#gd_temp__req_comp_req">gd_temp__req_comp_req</a></p></td>
+<td><p>valid</p></td>
+<td><p><a class="reference internal" href="../../feo/docs/requirements/component_requirements.html#doc__component_feo_requirements" title="doc__component_feo_requirements"><em class="xref need">FEO Component Requirements (doc__component_feo_requirements)</em></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_comp_aou">wp__requirements_comp_aou</a></p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_templates.html#gd_temp__req_aou_req">gd_temp__req_aou_req</a></p></td>
+<td><p>valid</p></td>
+<td><p><a class="reference internal" href="../../feo/docs/requirements/aou_req.html#doc__component_feo_aou_reqs" title="doc__component_feo_aou_reqs"><em class="xref need">FEO Component Assumptions o... (doc__component_feo_aou_reqs)</em></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_inspect">wp__requirements_inspect</a></p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_inspection_checklist.html#gd_chklst__req_inspection">gd_chklst__req_inspection</a></p></td>
+<td><p>valid</p></td>
+<td><p><a class="reference internal" href="../../feo/docs/requirements/chklst_req_inspection.html#doc__req_inspection_component_feo" title="doc__req_inspection_component_feo"><em class="xref need">FEO Component Requirements ... (doc__req_inspection_component_feo)</em></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/architecture_workproducts.html#wp__component_arch">wp__component_arch</a></p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/guidance/component_architecture_template.html#gd_temp__arch_comp">gd_temp__arch_comp</a></p></td>
+<td><p>valid</p></td>
+<td><p><a class="reference internal" href="../../feo/docs/architecture/component_architecture.html#doc__component_feo_architecture" title="doc__component_feo_architecture"><em class="xref need">FEO Component Architecture (doc__component_feo_architecture)</em></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/architecture_workproducts.html#wp__sw_arch_verification">wp__sw_arch_verification</a></p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/guidance/architecture_inspection_checklist.html#gd_chklst__arch_inspection_checklist">gd_chklst__arch_inspection_checklist</a></p></td>
+<td><p>valid</p></td>
+<td><p><a class="reference internal" href="../../feo/docs/architecture/chklst_arch_inspection.html#doc__arch_inspection_component_feo" title="doc__arch_inspection_component_feo"><em class="xref need">FEO Component Architecture ... (doc__arch_inspection_component_feo)</em></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_analysis/safety_analysis_workproducts.html#wp__sw_component_fmea">wp__sw_component_fmea</a></p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_analysis/guidance/fmea_templates.html#gd_temp__comp_saf_fmea">gd_temp__comp_saf_fmea</a></p></td>
+<td><p>valid</p></td>
+<td><p><a class="reference internal" href="../../feo/docs/safety_analysis/component_fmea.html#doc__component_feo_fmea" title="doc__component_feo_fmea"><em class="xref need">FEO FMEA (doc__component_feo_fmea)</em></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_analysis/safety_analysis_workproducts.html#wp__sw_component_dfa">wp__sw_component_dfa</a></p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_analysis/guidance/fmea_templates.html#gd_temp__comp_saf_fmea">gd_temp__comp_saf_fmea</a></p></td>
+<td><p>valid</p></td>
+<td><p><a class="reference internal" href="../../feo/docs/safety_analysis/component_dfa.html#doc__component_feo_dfa" title="doc__component_feo_dfa"><em class="xref need">FEO Component DFA (doc__component_feo_dfa)</em></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/implementation_workproducts.html#wp__sw_implementation">wp__sw_implementation</a></p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/guidance/implementation_guideline.html#gd_guidl__implementation">gd_guidl__implementation</a></p></td>
+<td><p>valid</p></td>
+<td><p>&lt;Link to WP&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_sw_unit_test">wp__verification_sw_unit_test</a></p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/guidance/verification_guideline.html#gd_guidl__verification_guide">gd_guidl__verification_guide</a></p></td>
+<td><p>valid</p></td>
+<td><p>&lt;Link to WP&gt;</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/implementation_workproducts.html#wp__sw_implementation_inspection">wp__sw_implementation_inspection</a></p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/guidance/implementation_checklist.html#gd_chklst__impl_inspection_checklist">gd_chklst__impl_inspection_checklist</a></p></td>
+<td><p>valid</p></td>
+<td><p><a class="reference internal" href="../../feo/docs/detailed_design/chklst_dd_inspection.html#doc__impl_inspection_component_feo" title="doc__impl_inspection_component_feo"><em class="xref need">FEO Implementation Inspecti... (doc__impl_inspection_component_feo)</em></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_comp_int_test">wp__verification_comp_int_test</a></p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/guidance/verification_guideline.html#gd_guidl__verification_guide">gd_guidl__verification_guide</a></p></td>
+<td><p>valid</p></td>
+<td><p>&lt;Link to WP&gt;</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>As feo is using score-crates as OSS component, the following section should be filled out
+accordingly.
+This section is currently only a placeholder and needs to be adapted based on the progress of the
+OSS qualification.</p>
+</section>
+</section>
+<section id="oss-score-crates-component-qualification-plan">
+<h2>OSS score-crates component qualification plan<a class="headerlink" href="#oss-score-crates-component-qualification-plan" title="Link to this heading">#</a></h2>
+<p>For the selected OSS component the following work products will be implemented (and why):</p>
+<dl class="simple">
+<dt>If the OSS element is classified as a</dt><dd><ul class="simple">
+<li><p>component, then the below table shall match the above, adding the reasoning for tailoring of work products according to the OSS component classification.</p></li>
+<li><p>lower level component, then no work products additional to the component’s will be planned and activities below are part of the component’s issues.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="pst-scrollable-table-container"><table class="table" id="id4">
+<caption><span class="caption-number">Table 39 </span><span class="caption-text">OSS (sub-)component score-crates Work products</span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Work product Id</p></th>
+<th class="head"><p>Reasoning for tailoring</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_comp">wp__requirements_comp</a></p></td>
+<td><p>Always needed (for Q and QR classification) and also improves process Id 2</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_comp_aou">wp__requirements_comp_aou</a></p></td>
+<td><p>Always needed (for Q and QR classification) and also improves process Id 5</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_inspect">wp__requirements_inspect</a></p></td>
+<td><p>&lt;Reasoning for tailoring&gt;</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/architecture_workflow.html#wf__cr_mt_comparch">wf__cr_mt_comparch</a></p></td>
+<td><p>&lt;Reasoning for tailoring, needed for example in case of deficits in process Id 3&amp;4 and complexity Ids 1&amp;4&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_analysis/safety_analysis_workproducts.html#wp__sw_component_fmea">wp__sw_component_fmea</a></p></td>
+<td><p>&lt;Reasoning for tailoring, could help arguing too high cyclomatic complexity covered by safety mechanisms&gt;</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/architecture_workproducts.html#wp__sw_arch_verification">wp__sw_arch_verification</a></p></td>
+<td><p>&lt;Reasoning for tailoring, needed if also wf__cr_mt_comparch is required&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/implementation_workproducts.html#wp__sw_implementation">wp__sw_implementation</a></p></td>
+<td><p>Tailored - If source code is modified, this is not a OSS qualification any more.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_sw_unit_test">wp__verification_sw_unit_test</a></p></td>
+<td><p>&lt;Reasoning for tailoring, can improve deficits in process Id 6 and complexity Id 3&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/implementation_workproducts.html#wp__sw_implementation_inspection">wp__sw_implementation_inspection</a></p></td>
+<td><p>&lt;Reasoning for tailoring, can improve deficits in process Id 6 and complexity Id 2&gt;</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_comp_int_test">wp__verification_comp_int_test</a></p></td>
+<td><p>Always needed (for Q and QR classification)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__sw_component_class">wp__sw_component_class</a></p></td>
+<td><p>Always needed as basis for tailoring.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="module-safety-package">
+<h2>Module Safety Package<a class="headerlink" href="#module-safety-package" title="Link to this heading">#</a></h2>
+<p>To create the safety package (according to <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/guidance/guideline_safety_management.html#gd_guidl__saf_package">gd_guidl__saf_package</a>) the following
+documents and work products status have to go to “valid” (after the relevant verification were performed).</p>
+<section id="module-documents-status">
+<h3>Module Documents Status<a class="headerlink" href="#module-documents-status" title="Link to this heading">#</a></h3>
+<p>For all the work product documents the status can be seen by following the “Link to WP”.
+A summary of the status is also documented in the project’s documentation management plan.</p>
+<p>See <a class="reference internal" href="../../../../platform_management_plan/documentation_management.html#documents-docs-modules-feo-docs"><span class="std std-ref">docs/modules/feo/docs</span></a></p>
+</section>
+<section id="component-documents-status">
+<h3>Component Documents Status<a class="headerlink" href="#component-documents-status" title="Link to this heading">#</a></h3>
+<p>For all the work product documents the status can be seen by following the “Link to WP”.
+A summary of the status is also documented in the project’s documentation management plan.</p>
+<p>See <a class="reference internal" href="../../../../platform_management_plan/documentation_management.html#documents-docs-modules-feo-components"><span class="std std-ref">docs/modules/feo/components</span></a></p>
+</section>
+<section id="component-requirements-status">
+<h3>Component Requirements Status<a class="headerlink" href="#component-requirements-status" title="Link to this heading">#</a></h3>
+<div class="needstable_wrapper docutils container" id="needtable-modules/feo/docs/safety_mgt/module_safety_plan-0">
+<div class="pst-scrollable-table-container"><table class="NEEDS_TABLE table" id="needtable-modules/feo/docs/safety_mgt/module_safety_plan-0-table_node">
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ID</p></th>
+<th class="head"><p>Status</p></th>
+<th class="head"><p>Tags</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../feo/docs/requirements/component_requirements.html#comp_req__feo__activity">comp_req__feo__activity</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../feo/docs/requirements/component_requirements.html#comp_req__feo__act_map_cfg">comp_req__feo__act_map_cfg</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../feo/docs/requirements/component_requirements.html#comp_req__feo__act_alloc_error">comp_req__feo__act_alloc_error</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../feo/docs/requirements/component_requirements.html#comp_req__feo__act_shutdown_error">comp_req__feo__act_shutdown_error</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../feo/docs/requirements/component_requirements.html#comp_req__feo__act_startup_error">comp_req__feo__act_startup_error</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../feo/docs/requirements/component_requirements.html#comp_req__feo__act_stepping_error">comp_req__feo__act_stepping_error</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../feo/docs/requirements/component_requirements.html#comp_req__feo__act_timeout">comp_req__feo__act_timeout</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../feo/docs/requirements/component_requirements.html#comp_req__feo__agent">comp_req__feo__agent</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../feo/docs/requirements/component_requirements.html#comp_req__feo__alive_supervision">comp_req__feo__alive_supervision</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../feo/docs/requirements/component_requirements.html#comp_req__feo__application_lifecycle">comp_req__feo__application_lifecycle</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../feo/docs/requirements/component_requirements.html#comp_req__feo__application">comp_req__feo__application</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../feo/docs/requirements/component_requirements.html#comp_req__feo__comp_cfg">comp_req__feo__comp_cfg</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../feo/docs/requirements/component_requirements.html#comp_req__feo__comp_cfg_file">comp_req__feo__comp_cfg_file</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../feo/docs/requirements/component_requirements.html#comp_req__feo__activity_init">comp_req__feo__activity_init</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../feo/docs/requirements/component_requirements.html#comp_req__feo__activitiy_thread">comp_req__feo__activitiy_thread</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../feo/docs/requirements/component_requirements.html#comp_req__feo__response_term_request">comp_req__feo__response_term_request</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../feo/docs/requirements/component_requirements.html#comp_req__feo__scheduler">comp_req__feo__scheduler</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../feo/docs/requirements/component_requirements.html#comp_req__feo__secondary_conn_timeout">comp_req__feo__secondary_conn_timeout</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../feo/docs/requirements/component_requirements.html#comp_req__feo__service_activity">comp_req__feo__service_activity</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../feo/docs/requirements/component_requirements.html#comp_req__feo__activity_shutdown">comp_req__feo__activity_shutdown</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../feo/docs/requirements/component_requirements.html#comp_req__feo__startup_timeout">comp_req__feo__startup_timeout</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../feo/docs/requirements/component_requirements.html#comp_req__feo__activitiy_step">comp_req__feo__activitiy_step</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../feo/docs/requirements/component_requirements.html#comp_req__feo__deadline_supervision">comp_req__feo__deadline_supervision</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../feo/docs/requirements/component_requirements.html#comp_req__feo__logical_supervision">comp_req__feo__logical_supervision</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../feo/docs/requirements/component_requirements.html#comp_req__feo__task_chain">comp_req__feo__task_chain</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../feo/docs/requirements/component_requirements.html#comp_req__feo__trustable_computation">comp_req__feo__trustable_computation</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="component-aou-status">
+<h3>Component AoU Status<a class="headerlink" href="#component-aou-status" title="Link to this heading">#</a></h3>
+<div class="needstable_wrapper docutils container" id="needtable-modules/feo/docs/safety_mgt/module_safety_plan-1">
+<div class="pst-scrollable-table-container"><table class="NEEDS_TABLE table" id="needtable-modules/feo/docs/safety_mgt/module_safety_plan-1-table_node">
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ID</p></th>
+<th class="head"><p>Status</p></th>
+<th class="head"><p>Tags</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../feo/docs/requirements/aou_req.html#aou_req__component_feo__anything">aou_req__component_feo__anything</a></p></td>
+<td class="needs_status"><p>invalid</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="component-architecture-status">
+<h3>Component Architecture Status<a class="headerlink" href="#component-architecture-status" title="Link to this heading">#</a></h3>
+<div class="needstable_wrapper docutils container" id="needtable-modules/feo/docs/safety_mgt/module_safety_plan-2">
+<div class="pst-scrollable-table-container"><table class="NEEDS_TABLE table" id="needtable-modules/feo/docs/safety_mgt/module_safety_plan-2-table_node">
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ID</p></th>
+<th class="head"><p>Status</p></th>
+<th class="head"><p>Tags</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../../feo/docs/architecture/component_architecture.html#comp_arc_dyn__feo__main">comp_arc_dyn__feo__main</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../../feo/docs/architecture/component_architecture.html#comp_arc_sta__feo__main">comp_arc_sta__feo__main</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>component_feo</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">FEO Module Safety Management</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="module_safety_plan_fdr.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">FEO Module Safety Plan Formal Review Report</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functional-safety-management-context">Functional Safety Management Context</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functional-safety-management-scope">Functional Safety Management Scope</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functional-safety-management-roles">Functional Safety Management Roles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tailoring">Tailoring</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functional-safety-module-work-products">Functional Safety Module Work Products</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feo-module-work-products-list">FEO Module Work Products List</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feo-component-work-products-list">FEO Component Work Products List</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oss-score-crates-component-qualification-plan">OSS score-crates component qualification plan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-safety-package">Module Safety Package</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-documents-status">Module Documents Status</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#component-documents-status">Component Documents Status</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#component-requirements-status">Component Requirements Status</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#component-aou-status">Component AoU Status</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#component-architecture-status">Component Architecture Status</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/modules/feo/docs/safety_mgt/module_safety_plan.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
