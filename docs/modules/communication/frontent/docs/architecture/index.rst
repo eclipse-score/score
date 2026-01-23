@@ -24,7 +24,7 @@ Frontend Component Architecture
    :uses: logic_arc_int__logging__logging, logic_arc_int__tracing__tracing
 
 
-.. comp_arc_sta:: mw::com Frontend
+.. comp_arc_sta:: mw::com Frontend Architecture
    :id: comp_arc_sta__com__frontend
    :security: YES
    :safety:  ASIL_B
