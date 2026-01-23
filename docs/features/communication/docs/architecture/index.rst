@@ -36,7 +36,7 @@ As discussed in :ref:`com_rationale`, the overall architecture of the communicat
 
 This ensures a stable public API, independent of the underlying binding(s). At the same time, the communication framework can support many different communication protocols in a flexible manner.
 
-.. feat:: Feature Architecture Communication
+.. feat:: Communication Feature
    :id: feat__com_communication
    :security: YES
    :safety:  ASIL_B
