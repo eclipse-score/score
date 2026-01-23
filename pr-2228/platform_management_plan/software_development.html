@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Software Development &#8212; S-CORE  documentation</title>
+    <title>Software Development Plan &#8212; S-CORE  documentation</title>
   
   
   
@@ -53,7 +53,7 @@
 
     <script src="../_static/jquery.js?v=5d32c60e"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/documentation_options.js?v=7f41d439"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
@@ -72,7 +72,7 @@
         </script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Decision Records" href="../design_decisions/index.html" />
+    <link rel="next" title="Platform Safety Engineer Election" href="role_assignment/platform_safety_engineer.html" />
     <link rel="prev" title="Documentation Management Plan" href="documentation_management.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -499,7 +499,12 @@
 <li class="toctree-l1"><a class="reference internal" href="change_management.html">Change Management / Change Management Plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="software_verification.html">Software verification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="documentation_management.html">Documentation Management Plan</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Software Development</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Software Development Plan</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Role Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="role_assignment/platform_safety_engineer.html">Platform Safety Engineer Election</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role_assignment/platform_safety_manager.html">Platform Safety Manager Election</a></li>
 </ul>
 </div>
 </nav></div>
@@ -543,7 +548,7 @@
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">Platform Management Plan</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Software Development</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Software Development Plan</span></li>
   </ul>
 </nav>
 </div>
@@ -560,9 +565,9 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="software-development">
-<span id="sw-development"></span><h1>Software Development<a class="headerlink" href="#software-development" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-a0556a26">
+  <section id="software-development-plan">
+<span id="sw-development"></span><h1>Software Development Plan<a class="headerlink" href="#software-development-plan" title="Link to this heading">#</a></h1>
+<div class="need_container docutils container" id="SNCB-a5f41462">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__software_development_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -570,7 +575,7 @@
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
-<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></span></div>
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
 <div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
@@ -630,9 +635,9 @@ Additionally for the Detailed Design linking to code, Doxygen style comments are
 This is described in <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/implementation_concept.html#doc_concept__imp_concept">doc_concept__imp_concept</a> and guided by <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/guidance/detailed_design_template.html#gd_temp__detailed_design">gd_temp__detailed_design</a></p>
 <p>As required in <a class="reference internal" href="../requirements/stakeholder/index.html#stkh_req__dev_experience__prog_languages" title="stkh_req__dev_experience__prog_languages"><em class="xref need">Programming languages for a... (stkh_req__dev_experience__prog_languages)</em></a>, S-CORE allows the use of two programming languages:</p>
 <p><strong>C++ with the language set of C++17</strong> - in case additional elements from C++20 are needed this will be considered by
-<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/roles.html#rl__safety_manager">rl__safety_manager</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/security_management/security_management_roles.html#rl__security_manager">rl__security_manager</a> and <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/quality_management/quality_roles.html#rl__quality_manager">rl__quality_manager</a>
-and based on their analysis decided by the technical lead circle (<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/platform_management/platform_management_roles.html#rl__technical_lead">rl__technical_lead</a>).</p>
-<p><strong>Rust - in “Edition” &lt;tbd&gt;</strong> - selection of language edition has still to be done in the S-CORE project.
+<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_roles.html#rl__safety_manager">rl__safety_manager</a>, <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/security_management/security_management_roles.html#rl__security_manager">rl__security_manager</a> and <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/quality_management/quality_roles.html#rl__quality_manager">rl__quality_manager</a>
+and based on their analysis decided by the project lead circle (<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__project_lead">rl__project_lead</a>).</p>
+<p><strong>Rust - in Edition 2021</strong> - selection of language edition has still to be done in the S-CORE project.
 For the Rust code of ASIL rated units the “safe subset” shall be used (which is checked by the compiler by configuration of #![forbid(unsafe_code)] in lib.rs)</p>
 <p>C language is allowed in incubation phase, as long it is compilable be the selected compiler, but not for a S-CORE release.</p>
 </section>
@@ -640,38 +645,37 @@ For the Rust code of ASIL rated units the “safe subset” shall be used (which
 <h3>Design guideline<a class="headerlink" href="#design-guideline" title="Link to this heading">#</a></h3>
 <p>The design guideline is defined in <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/implementation_concept.html#doc_concept__imp_concept">doc_concept__imp_concept</a> and <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/guidance/implementation_guideline.html#gd_guidl__implementation">gd_guidl__implementation</a>.</p>
 </section>
-<section id="api-guideline">
-<h3>API guideline<a class="headerlink" href="#api-guideline" title="Link to this heading">#</a></h3>
-<p>To provide the user with a consistent approach on the use of APIs, there is a guideline documented in <a class="reference internal" href="../contribute/development/api_guideline.html#doc__api_guidelines" title="doc__api_guidelines"><em class="xref need">API Guidelines (doc__api_guidelines)</em></a>,
-this defines for example the error handling concept or rules to improve user experience.</p>
+<section id="api-guidelines">
+<h3>API guidelines<a class="headerlink" href="#api-guidelines" title="Link to this heading">#</a></h3>
+<p>To provide the user with a consistent approach on the use of APIs, there are guidelines documented in <a class="reference internal" href="../contribute/development/api_guideline.html#doc__api_guidelines" title="doc__api_guidelines"><em class="xref need">API Guidelines (doc__api_guidelines)</em></a>
+and <a class="reference internal" href="../contribute/development/rust/rust_api_design.html#doc__rust_api_design" title="doc__rust_api_design"><em class="xref need">Rust API design guidelines (doc__rust_api_design)</em></a>, this defines for example the error handling concept or rules to improve user experience.</p>
 </section>
-<section id="coding-guideline">
-<h3>Coding guideline<a class="headerlink" href="#coding-guideline" title="Link to this heading">#</a></h3>
+<section id="coding-guidelines">
+<h3>Coding guidelines<a class="headerlink" href="#coding-guidelines" title="Link to this heading">#</a></h3>
 <p><strong>C++</strong> - see <a class="reference internal" href="../contribute/development/cpp/coding_guidelines.html#doc__cpp_coding_guidelines" title="doc__cpp_coding_guidelines"><em class="xref need">Coding Guidelines C++ (doc__cpp_coding_guidelines)</em></a></p>
-<p><strong>Rust</strong> - state of the art open source Rust guidelines are currently developed by <a class="reference external" href="https://github.com/rustfoundation/safety-critical-rust-consortium/">Safety Critical Rust Consortium</a>
-(which will be adopted by the S-CORE project). A summary of the current state of information regarding Rust in safety critical applications can be found in <a class="reference internal" href="../contribute/development/rust/coding_guidelines.html#doc__rust_coding_guidelines" title="doc__rust_coding_guidelines"><em class="xref need">Coding Guidelines Rust (doc__rust_coding_guidelines)</em></a>.</p>
+<p><strong>Rust</strong> - see <a class="reference internal" href="../contribute/development/rust/coding_guidelines.html#doc__rust_coding_guidelines" title="doc__rust_coding_guidelines"><em class="xref need">Coding Guidelines Rust (doc__rust_coding_guidelines)</em></a></p>
 </section>
 <section id="sw-configuration-guideline">
 <h3>SW configuration guideline<a class="headerlink" href="#sw-configuration-guideline" title="Link to this heading">#</a></h3>
-<p>&lt;tbd&gt;</p>
+<p>The configuration of the software is done by the code. Which means that there are no external configuration files.</p>
 </section>
 <section id="sw-development-tools">
 <h3>SW development tools<a class="headerlink" href="#sw-development-tools" title="Link to this heading">#</a></h3>
-<p>This list will evolve into the complete “Tool List” for the S-CORE project used for
+<p>This list will evolve into the complete “Tool List” <a class="reference internal" href="../score_tools/index.html#tools"><span class="std std-ref">S-CORE Tools Overview</span></a> for the S-CORE project used for
 tool evaluation and qualification. In the moment the <a class="reference internal" href="software_verification.html#doc__verification_plan" title="doc__verification_plan"><em class="xref need">Software Verification Plan (doc__verification_plan)</em></a>
 contains additional tools used in verification.</p>
 <p>Additional tools for static and dynamic analysis (in addition to compilers and Clang-Tidy) are currently evaluated: <a class="reference external" href="https://github.com/eclipse-score/score/issues/244">#244</a></p>
 <p class="rubric">GitHub</p>
 <p>is used for hosting, versioning and contribution of the software. Within
 pull requests it’s possible to contribute. For contribution a separate process description is
-&lt;Link to contribute&gt; available. In the discussion section the information regarding meeting
+<a class="reference internal" href="../contribute/contribution_request/index.html#doc__contr_guideline" title="doc__contr_guideline"><em class="xref need">Contribution Guideline (doc__contr_guideline)</em></a> available. In the discussion section the information regarding meeting
 minutes and Working Sections were stored. Within issues can bugfixes, improvements, blank issues
 set up. It’s also possible to report there Security vulnerabilities. GitHub Actions is used
 as a support for continuous integration.</p>
 <p class="rubric">Sphinx</p>
 <p>is used for software documentation to generate html-sides from reStructuredText.</p>
 <p class="rubric">Sphinx-Needs</p>
-<p>is used for docs-as-code based documentation that is created
+<p>is used for docs-as-code <a class="reference internal" href="../score_tools/doc_as_code.html#doc_tool__doc_as_code" title="doc_tool__doc_as_code"><em class="xref need">Doc-as-Code (doc_tool__doc_as_code)</em></a> based documentation that is created
 and managed by the sphinx documentation generator. With “needs” objects, created in rst-files,
 requirements, static architecture views and other Sw development documentation is generated. Sphinx-Needs is 100% compliant to
 Sphinx and reStructuredText.</p>
@@ -718,11 +722,11 @@ components, documentation, and automated tests.</p>
       </div>
     </a>
     <a class="right-next"
-       href="../design_decisions/index.html"
+       href="role_assignment/platform_safety_engineer.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Decision Records</p>
+        <p class="prev-next-title">Platform Safety Engineer Election</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -750,8 +754,8 @@ components, documentation, and automated tests.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approach">Approach</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-and-programming-language">Design and programming language</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-guideline">Design guideline</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api-guideline">API guideline</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-guideline">Coding guideline</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api-guidelines">API guidelines</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-guidelines">Coding guidelines</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sw-configuration-guideline">SW configuration guideline</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sw-development-tools">SW development tools</a></li>
 </ul>
@@ -763,7 +767,7 @@ components, documentation, and automated tests.</p>
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/platform_management_plan/software_development.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/platform_management_plan/software_development.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -774,15 +778,6 @@ components, documentation, and automated tests.</p>
     </a>
   </div>
 </div>
-
-  <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/platform_management_plan/software_development.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
 
 </div></div>
               

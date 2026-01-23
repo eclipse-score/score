@@ -53,7 +53,7 @@
 
     <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
     <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../../../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../../../_static/documentation_options.js?v=7f41d439"></script>
     <script src="../../../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../../_static/design-tabs.js?v=f930bc37"></script>
@@ -489,7 +489,9 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../index.html">Baselibs Module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../../docs/index.html">Module Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../language/index.html">language</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../bitmanipulation/docs/index.html">bitmanipulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../concurrency/docs/index.html">concurrency</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../containers/docs/index.html">containers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../filesystem/docs/index.html">filesystem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../json/docs/index.html">JSON-Library</a></li>
@@ -520,9 +522,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../feo/index.html">FEO Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../lifecycle/index.html">Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../logging/index.html">Logging Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../orchestrator/index.html">Orchestrator Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../orchestrator/index.html">Orchestrator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../os/index.html">OS Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../persistency/index.html">Persistency KVS Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tracing/index.html">Tracing Module</a></li>
 </ul>
 </div>
@@ -590,7 +591,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-89c49ef3">
+  <div class="need_container docutils container" id="SNCB-170f5911">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__result_library_req_inspection">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -598,8 +599,8 @@
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
-<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></span></div>
-<div class="line"><span></span></div>
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
 <div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
@@ -641,14 +642,14 @@ The purpose of this requirement inspection checklist is to collect the topics to
 <p><strong>Conduct</strong></p>
 <p>As described in the concept <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/general_concepts/score_review_concept.html#doc_concept__wp_inspections">doc_concept__wp_inspections</a> the following “inspection roles” are expected to be filled:</p>
 <ul class="simple">
-<li><p>author: these are the persons who did the last commits on the requirements in scope (can be derived from version mgt tool)</p></li>
-<li><p>reviewer: these are all persons committing into this inspection document or giving a pull request verdict on it (can be derived from version mgt tool)</p></li>
+<li><p>author: <a class="github reference external" href="https://github.com/4og">4og</a></p></li>
+<li><p>reviewer: <a class="github reference external" href="https://github.com/aschemmel-tech">aschemmel-tech</a></p></li>
 <li><p>moderator: only needed for conflict resolution between author and reviewers, is the safety manager, security manager or quality manager called in as a reviewer (can be derived from version mgt tool)</p></li>
-<li><p>test expert: &lt;one of the reviewers explicitly named here, to cover REQ_08_01 as described&gt;</p></li>
+<li><p>test expert: <a class="github reference external" href="https://github.com/rahulthakre29">rahulthakre29</a></p></li>
 </ul>
 <p><strong>Checklist</strong></p>
-<div class="pst-scrollable-table-container"><table class="table" id="id1">
-<caption><span class="caption-number">Table 24 </span><span class="caption-text">Component Requirement Inspection Checklist</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id5">
+<caption><span class="caption-number">Table 28 </span><span class="caption-text">Component Requirement Inspection Checklist</span><a class="headerlink" href="#id5" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 9.1%" />
 <col style="width: 27.3%" />
@@ -677,113 +678,106 @@ The purpose of this requirement inspection checklist is to collect the topics to
 <tr class="row-odd"><td><p>REQ_02_01</p></td>
 <td><p>Is the requirement description <em>comprehensible</em> ?</p></td>
 <td><p>If you think the requirement is hard to understand, comment here.</p></td>
-<td><p>NO</p></td>
-<td><p><a class="reference internal" href="index.html#comp_req__result__std_integration" title="comp_req__result__std_integration"><em class="xref need">Standard Library Integration (comp_req__result__std_integration)</em></a> : it is not clear what “standard library optional type, with enforced error handling” means.</p></td>
-<td></td>
+<td><p>YES</p></td>
+<td><p>Fixed: <a class="reference internal" href="index.html#comp_req__result__std_integration" title="comp_req__result__std_integration"><em class="xref need">Standard Library Integration (comp_req__result__std_integration)</em></a> : it is not clear what “standard library optional type, with enforced error handling” means.</p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/issues/2229">#2229</a></p></td>
 </tr>
 <tr class="row-even"><td><p>REQ_02_02</p></td>
 <td><p>Is the requirement description <em>unambiguous</em> ?</p></td>
 <td><p>Especially search for “weak words” like “about”, “etc.”, “relevant” and others (see the internet documentation on this). This check shall be supported by tooling.</p></td>
-<td><p>NO</p></td>
-<td><p><a class="reference internal" href="index.html#aou_req__result__thread_safety" title="aou_req__result__thread_safety"><em class="xref need">Thread Safety (aou_req__result__thread_safety)</em></a> : uses “appropriate”</p></td>
-<td></td>
+<td><p>YES</p></td>
+<td><p>Fixed: <a class="reference internal" href="index.html#aou_req__result__thread_safety" title="aou_req__result__thread_safety"><em class="xref need">Thread Safety (aou_req__result__thread_safety)</em></a> : uses “appropriate”</p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/issues/2229">#2229</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>REQ_02_03</p></td>
 <td><p>Is the requirement description <em>atomic</em> ?</p></td>
 <td><p>A good way to think about this is to consider if the requirement may be tested by one (positive) test case or needs more of these. The sentence template should also avoid being non-atomic already. Note that there are cases where also non-atomic requirements are the better ones, for example if those are better understandable.</p></td>
-<td><p>NO</p></td>
-<td><p><a class="reference internal" href="index.html#comp_req__result__error_handling" title="comp_req__result__error_handling"><em class="xref need">Result-Based Error Handling (comp_req__result__error_handling)</em></a> : “without using C++ exceptions” sound like a scond part of the requirement</p></td>
-<td></td>
+<td><p>YES</p></td>
+<td><p>(old) finding explained</p></td>
+<td><p>none</p></td>
 </tr>
 <tr class="row-even"><td><p>REQ_02_04</p></td>
 <td><p>Is the requirement description <em>feasible</em> ?</p></td>
 <td><p>If at the time of the inspection the requirement has already some implementation, the answer is yes. This can be checked via traces, but also <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_attr_impl">gd_req__req_attr_impl</a> shows this. In case the requirement has no implementationat the time of inspection (i.e. not implemented at least as “proof-of-concept”), a development expert shall be invited to the inspection to explicitly check this item.</p></td>
 <td><p>YES</p></td>
 <td><p>existing implementation taken over by S-CORE baselibs</p></td>
-<td></td>
+<td><p>none</p></td>
 </tr>
 <tr class="row-odd"><td><p>REQ_02_05</p></td>
 <td><p>Is the requirement description <em>independent from implementation</em> ?</p></td>
 <td><p>This checkpoint should improve requirements definition in the sense that the “what” is described and not the “how” - the latter should be described in architecture/design derived from the requirement. But there can also be a good reason for this, for example we would require using a file format like JSON and even specify the formatting standard already on stakeholder requirement level because we want to be compatible. A finding in this checkpoint does not mean there is a safety problem in the requirement.</p></td>
 <td><p>YES</p></td>
 <td><p>This is appropriate for the component level. No use of exceptions and standard library relation is a S-CORE platform condition.</p></td>
-<td></td>
+<td><p>none</p></td>
 </tr>
 <tr class="row-even"><td><p>REQ_03_01</p></td>
-<td><p>For stakeholder requirements: Is the <em>rationale</em> correct?</p></td>
-<td><p>Rationales explain why the top level requirements were created. Do those cover the requirement?</p></td>
-<td><p>n/a</p></td>
-<td><p>no stakeholder requirements in scope</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>REQ_03_02</p></td>
-<td><p>For other requirements: Is the <em>linkage to the parent requirement</em> correct?</p></td>
+<td><p>Is the <em>linkage to the parent requirement</em> correct?</p></td>
 <td><p>Linkage to correct levels and ASIL attributes is checked automatically, but it needs checking if the child requirement implements (at least) a part of the parent requirement.</p></td>
 <td><p>YES</p></td>
 <td><p>linking is appropriate, that it exists is checked automatically</p></td>
-<td></td>
+<td><p>none</p></td>
 </tr>
-<tr class="row-even"><td><p>REQ_04_01</p></td>
+<tr class="row-odd"><td><p>REQ_04_01</p></td>
 <td><p>Is the requirement <em>internally and externally consistent</em>?</p></td>
 <td><p>Does the requirement contradict other requirements within the same or higher levels? One may restrict the search to the feature for component requirements, for features to other features using same components.</p></td>
 <td><p>YES</p></td>
 <td><p>no contradicting requirements or AoU found in the Result component requirements and the linked feature requirements.</p></td>
-<td></td>
+<td><p>none</p></td>
 </tr>
-<tr class="row-odd"><td><p>REQ_05_01</p></td>
+<tr class="row-even"><td><p>REQ_05_01</p></td>
 <td><p>Do the software requirements consider <em>timing constraints</em>?</p></td>
 <td><p>Think about timing constraints even if those are not explicitly mentioned in the parent requirement. If the reviewer of a requirement already knows or suspects that the code execution will be consuming a lot of time, one should think of the expectation of a “user”.</p></td>
 <td><p>YES</p></td>
 <td><p>No timing requirements found and also no timing problems expected</p></td>
-<td></td>
+<td><p>none</p></td>
 </tr>
-<tr class="row-even"><td><p>REQ_06_01</p></td>
-<td><p>Does the requirement set consider <em>external interfaces</em>?</p></td>
+<tr class="row-odd"><td><p>REQ_06_01</p></td>
+<td><p>Does the requirement consider <em>external interfaces</em>?</p></td>
 <td><p>The SW platform’s external interfaces (to the user) are defined in the Feature Architecture, so the Feature and Component Requirements should determine the input data use and setting of output data for these interfaces. Are all output values defined?</p></td>
-<td><p>NO</p></td>
-<td><p>This could be improved by using the interfaces defined in <a class="reference internal" href="../architecture/index.html#comp_arc_sta__baselibs__result" title="comp_arc_sta__baselibs__result"><em class="xref need">Result (comp_arc_sta__baselibs__result)</em></a></p></td>
-<td></td>
+<td><p>YES</p></td>
+<td><p>Fixed: This could be improved by using the interfaces defined in <a class="reference internal" href="../architecture/index.html#comp_arc_sta__baselibs__result" title="comp_arc_sta__baselibs__result"><em class="xref need">Result (comp_arc_sta__baselibs__result)</em></a></p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/issues/2229">#2229</a></p></td>
 </tr>
-<tr class="row-odd"><td><p>REQ_07_01</p></td>
+<tr class="row-even"><td><p>REQ_07_01</p></td>
 <td><p>Is the <em>safety</em> attribute set correctly?</p></td>
 <td><p>Derived requirements are checked automatically, see <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_linkage_safety">gd_req__req_linkage_safety</a>. But for the top level requirements (and also all AoU) this needs to be checked manually for correctness.</p></td>
 <td><p>YES</p></td>
 <td><p>all requirements are ASIL B as expected</p></td>
-<td></td>
+<td><p>none</p></td>
 </tr>
-<tr class="row-even"><td><p>REQ_07_02</p></td>
+<tr class="row-odd"><td><p>REQ_07_02</p></td>
 <td><p>Is the attribute <em>security</em> set correctly?</p></td>
-<td><p>Stakeholder requirements security attribute should be set based on Threat Analysis and Risk Assessment (TARA) (process is TBD). For feature/component requirements this checklist item is supported by automated check: “Every requirement which satisfies a requirement with security attribute set to YES inherits this”. But the feature/component requirements/architecture may additionally also be subject to a Software Security Criticality Analysis (process is TBD).</p></td>
+<td><p>For component requirements this checklist item is supported by automated check: “Every requirement which satisfies a feature requirement with security attribute set to YES inherits this”. But the component requirements/architecture may additionally also be subject to a <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/security_analysis/security_analysis_workproducts.html#wp__sw_component_security_analysis">wp__sw_component_security_analysis</a>.</p></td>
 <td><p>YES</p></td>
 <td><p>all requirements have no security implication as expected (no security impact analysis done)</p></td>
-<td></td>
+<td><p>none</p></td>
 </tr>
-<tr class="row-odd"><td><p>REQ_08_01</p></td>
+<tr class="row-even"><td><p>REQ_08_01</p></td>
 <td><p>Is the requirement <em>verifiable</em>?</p></td>
-<td><p>If at the time of the inspection already tests are created for the requirement, the answer is yes. This can be checked via traces, but also <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_attr_test_covered">gd_req__req_attr_test_covered</a> shows this. In case the requirement is not sufficiently traced to test cases already, a test expert is invited to the inspection to give his opinion whether the requirement is formulated in a way that supports test development and the available test infrastructure is sufficient to perform the test.</p></td>
-<td></td>
-<td></td>
-<td></td>
+<td><p>If at the time of the inspection already tests are created for the requirement, the answer is yes. This can be checked via traces, but also <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_process_reqs.html#gd_req__req_attr_test_covered">gd_req__req_attr_test_covered</a> shows this. In case the requirement is not sufficiently traced to test cases already, a test expert is invited to the inspection to give their opinion whether the requirement is formulated in a way that supports test development and the available test infrastructure is sufficient to perform the test.</p></td>
+<td><p>YES</p></td>
+<td><p>all requirements have test cases implemented</p></td>
+<td><p>none</p></td>
+</tr>
+<tr class="row-odd"><td><p>REQ_08_02</p></td>
+<td><p>Is the requirement verifiable by design or code review in case it is not feasibly testable?</p></td>
+<td><p>In very rare cases a requirement may not be verifiable by test cases, for example a specific non-functional requirement. In this case a requirement analysis verifies the requirement by design/code review. If such a requirement is in scope of this inspection, please check this here and link to the respective review record. A test expert is invited to the inspection to confirm their opinion that the requirement is not testable.</p></td>
+<td><p>n/a</p></td>
+<td><p>Requirement is testable (see REQ_08_01)</p></td>
+<td><p>none</p></td>
 </tr>
 <tr class="row-even"><td><p>REQ_09_01</p></td>
-<td><p>For stakeholder requirements: Do those cover assumed safety mechanisms needed by the hardware and system?</p></td>
-<td><p>Note that stakeholder requirements covering safety mechanisms come from rationales, whereas feature/component requirements are covering safety mechanisms coming from <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_analysis/guidance/safety_analysis_checklist.html#gd_chklst__safety_analysis">gd_chklst__safety_analysis</a></p></td>
-<td><p>n/a</p></td>
-<td><p>no stakeholder requirements in scope</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>REQ_09_02</p></td>
-<td><p>For feature/component requirements: Do the requirements defining a safety mechanism contain the error reaction leading to a safe state?</p></td>
+<td><p>Do the requirements defining a safety mechanism contain the error reaction leading to a safe state?</p></td>
 <td><p>Alternatively to the safe state there could also be “repair” mechanisms. Also do not forget to consider REQ_05_01 for these.</p></td>
-<td><p>NO</p></td>
-<td><p>There should be an AoU covering this, <a class="reference internal" href="index.html#aou_req__result__value_handling" title="aou_req__result__value_handling"><em class="xref need">Result Value Handling (aou_req__result__value_handling)</em></a> is not.</p></td>
-<td></td>
+<td><p>YES</p></td>
+<td><p>Fixed: There should be an AoU covering this, <a class="reference internal" href="index.html#aou_req__result__value_handling" title="aou_req__result__value_handling"><em class="xref need">Result Value Handling (aou_req__result__value_handling)</em></a> is not.</p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/issues/2229">#2229</a></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </div></blockquote>
-<p>Note: If a Review ID is not applicable for your requirement, then state “n/a” in status and comment accordingly in remarks. For example “no stakeholder requirement (no rationale needed)”</p>
+<p>Note: If a Review ID is not applicable for your requirement, then state “n/a” in status and comment accordingly in remarks.</p>
 <p>The following requirements in “valid” state and with “inspected” tag set are in the scope of this inspection:</p>
 <div class="needstable_wrapper docutils container" id="needtable-modules/baselibs/result/docs/requirements/chklst_req_inspection-0">
 <div class="pst-scrollable-table-container"><table class="NEEDS_TABLE table" id="needtable-modules/baselibs/result/docs/requirements/chklst_req_inspection-0-table_node">
@@ -815,11 +809,15 @@ The purpose of this requirement inspection checklist is to collect the topics to
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p>inspected<em>; </em>baselibs<em>; </em>result_library</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="index.html#comp_req__result__std_integration">comp_req__result__std_integration</a></p></td>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="index.html#comp_req__result__set_result">comp_req__result__set_result</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p>inspected<em>; </em>baselibs<em>; </em>result_library</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="index.html#comp_req__result__type_safety">comp_req__result__type_safety</a></p></td>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="index.html#comp_req__result__std_integration">comp_req__result__std_integration</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>inspected<em>; </em>baselibs<em>; </em>result_library</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="index.html#comp_req__result__type_safety">comp_req__result__type_safety</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p>inspected<em>; </em>baselibs<em>; </em>result_library</p></td>
 </tr>
@@ -847,15 +845,19 @@ the questions above as if the AoUs are requirements, except questions REQ_03_01 
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p>inspected<em>; </em>baselibs<em>; </em>result_library</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="index.html#aou_req__result__resource_lifetime">aou_req__result__resource_lifetime</a></p></td>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="index.html#aou_req__result__error_reaction">aou_req__result__error_reaction</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p>inspected<em>; </em>baselibs<em>; </em>result_library</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="index.html#aou_req__result__value_handling">aou_req__result__value_handling</a></p></td>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="index.html#aou_req__result__resource_lifetime">aou_req__result__resource_lifetime</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p>inspected<em>; </em>baselibs<em>; </em>result_library</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="index.html#aou_req__result__thread_safety">aou_req__result__thread_safety</a></p></td>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="index.html#aou_req__result__value_handling">aou_req__result__value_handling</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>inspected<em>; </em>baselibs<em>; </em>result_library</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="index.html#aou_req__result__thread_safety">aou_req__result__thread_safety</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p>inspected<em>; </em>baselibs<em>; </em>result_library</p></td>
 </tr>
@@ -908,7 +910,7 @@ the questions above as if the AoUs are requirements, except questions REQ_03_01 
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/modules/baselibs/result/docs/requirements/chklst_req_inspection.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/modules/baselibs/result/docs/requirements/chklst_req_inspection.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -919,15 +921,6 @@ the questions above as if the AoUs are requirements, except questions REQ_03_01 
     </a>
   </div>
 </div>
-
-  <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../../../../../_sources/modules/baselibs/result/docs/requirements/chklst_req_inspection.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
 
 </div></div>
               

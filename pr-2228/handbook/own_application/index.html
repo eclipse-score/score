@@ -53,7 +53,7 @@
 
     <script src="../../_static/jquery.js?v=5d32c60e"></script>
     <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/documentation_options.js?v=7f41d439"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -575,7 +575,7 @@
 <p class="admonition-title">MODULE.bazel</p>
 <div class="highlight-starlark notranslate"><div class="highlight"><pre><span></span><span class="n">module</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;use_com_test&quot;</span><span class="p">)</span>
 
-<span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_toolchains_gcc&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.4&quot;</span><span class="p">,</span> <span class="n">dev_dependency</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_toolchains_gcc&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.5&quot;</span><span class="p">,</span> <span class="n">dev_dependency</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">gcc</span> <span class="o">=</span> <span class="n">use_extension</span><span class="p">(</span><span class="s2">&quot;@score_toolchains_gcc//extensions:gcc.bzl&quot;</span><span class="p">,</span> <span class="s2">&quot;gcc&quot;</span><span class="p">,</span> <span class="n">dev_dependency</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">gcc</span><span class="o">.</span><span class="n">toolchain</span><span class="p">(</span>
@@ -605,8 +605,16 @@
 <span class="p">)</span>
 
 <span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;boost.program_options&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;1.87.0&quot;</span><span class="p">)</span>
-<span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score-baselibs&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.1.3&quot;</span><span class="p">)</span>
-<span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;communication&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.1.1&quot;</span><span class="p">)</span>
+<span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_baselibs&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.1.3&quot;</span><span class="p">)</span>
+<span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_communication&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.1.1&quot;</span><span class="p">)</span>
+
+<span class="c1"># TRLC dependency for requirements traceability</span>
+<span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;trlc&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.0.0&quot;</span><span class="p">)</span>
+<span class="n">git_override</span><span class="p">(</span>
+  <span class="n">module_name</span> <span class="o">=</span> <span class="s2">&quot;trlc&quot;</span><span class="p">,</span>
+  <span class="n">commit</span> <span class="o">=</span> <span class="s2">&quot;ede35c4411d41abe42b8f19e78f8989ff79ad3d8&quot;</span><span class="p">,</span>
+  <span class="n">remote</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/bmw-software-engineering/trlc.git&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -625,7 +633,8 @@ common --@score-baselibs//score/mw/log/flags:KRemote_Logging=False
 common --@score-baselibs//score/json:base_library=nlohmann
 common --@communication//score/mw/com/flags:tracing_library=stub
 
-common --registry=https://raw.githubusercontent.com/eclipse-score/bazel_registry/refs/heads/main/
+common --registry=https://raw.githubusercontent.com/eclipse-score/bazel_registry/v0.5.0-beta/
+
 common --registry=https://bcr.bazel.build
 </pre></div>
 </div>
@@ -867,7 +876,7 @@ Navigate to the <code class="docutils literal notranslate"><span class="pre">pro
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/handbook/own_application/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/handbook/own_application/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -878,15 +887,6 @@ Navigate to the <code class="docutils literal notranslate"><span class="pre">pro
     </a>
   </div>
 </div>
-
-  <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../../_sources/handbook/own_application/index.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
 
 </div></div>
               

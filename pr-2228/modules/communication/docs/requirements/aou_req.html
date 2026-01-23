@@ -53,7 +53,7 @@
 
     <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
     <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../../_static/documentation_options.js?v=7f41d439"></script>
     <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
@@ -73,7 +73,7 @@
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
     <link rel="next" title="configuration" href="../../configuration/docs/index.html" />
-    <link rel="prev" title="Release Note" href="../release/release_note.html" />
+    <link rel="prev" title="Verification Report" href="../verification/module_verification_report.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
@@ -490,24 +490,25 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../baselibs/index.html">Baselibs Module</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">Communication Module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">Module Documents</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../manual/index.html">Communication Module Manuals</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../verification/module_verification_report.html">Verification Report</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manual/index.html">Manuals</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../release/release_note.html">Release Note</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../safety_mgt/index.html">Safety Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../verification/module_verification_report.html">Verification Report</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Assumptions of Use</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../../configuration/docs/index.html">configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../frontent/docs/index.html">frontent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ipc_binding/docs/index.html">ipc_binding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lola/docs/index.html">LoLa</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../mock_binding/docs/index.html">mock_binding</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../feo/index.html">FEO Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../lifecycle/index.html">Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../logging/index.html">Logging Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../orchestrator/index.html">Orchestrator Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../orchestrator/index.html">Orchestrator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../os/index.html">OS Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../persistency/index.html">Persistency KVS Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tracing/index.html">Tracing Module</a></li>
 </ul>
 </div>
@@ -577,7 +578,50 @@
                   
   <section id="assumptions-of-use">
 <h1>Assumptions of Use<a class="headerlink" href="#assumptions-of-use" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-a842b358">
+<div class="need_container docutils container" id="SNCB-b766bd66">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__communication_aou">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Communication Assumptions of Use</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_comp">wp__requirements_comp</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__communication_aou" title="doc__communication_aou">doc__communication_aou</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Generic Document</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-82281883">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__1">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -596,7 +640,8 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -620,7 +665,7 @@ in order that LoLa can perform all necessary allocations (e.g. push-back on a Ve
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e62fdc01">
+<div class="need_container docutils container" id="SNCB-206aebd2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__2">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -639,7 +684,8 @@ in order that LoLa can perform all necessary allocations (e.g. push-back on a Ve
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -663,7 +709,7 @@ event for each service instance.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-be4d469b">
+<div class="need_container docutils container" id="SNCB-c5170d46">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__3">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -682,7 +728,8 @@ event for each service instance.</p></td>
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -709,7 +756,7 @@ configured for each event for each service instance.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7c4144c7">
+<div class="need_container docutils container" id="SNCB-62abab90">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__4">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -728,7 +775,8 @@ configured for each event for each service instance.</p>
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -755,7 +803,7 @@ Without a proper configured level, this cannot be ensured.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-500f9ee8">
+<div class="need_container docutils container" id="SNCB-495f1476">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__5">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -774,7 +822,8 @@ Without a proper configured level, this cannot be ensured.</p>
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -797,7 +846,7 @@ Without a proper configured level, this cannot be ensured.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-134d77d8">
+<div class="need_container docutils container" id="SNCB-3971b601">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__6">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -816,7 +865,8 @@ Without a proper configured level, this cannot be ensured.</p>
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -840,7 +890,7 @@ are directly invoked or types from within are directly used.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-1e816344">
+<div class="need_container docutils container" id="SNCB-0f412dab">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__7">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -859,7 +909,8 @@ are directly invoked or types from within are directly used.</p></td>
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -882,7 +933,7 @@ are directly invoked or types from within are directly used.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4b03d452">
+<div class="need_container docutils container" id="SNCB-7ad49f79">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__8">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -901,7 +952,8 @@ are directly invoked or types from within are directly used.</p></td>
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -925,7 +977,7 @@ If this is not possible, a check for message overflow and necessary actions need
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-88c4af38">
+<div class="need_container docutils container" id="SNCB-9e659d4c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__9">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -944,7 +996,8 @@ If this is not possible, a check for message overflow and necessary actions need
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -967,7 +1020,7 @@ If this is not possible, a check for message overflow and necessary actions need
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a168a2ed">
+<div class="need_container docutils container" id="SNCB-81a65efb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__10">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -986,7 +1039,8 @@ If this is not possible, a check for message overflow and necessary actions need
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -1010,7 +1064,7 @@ stored on a safety certified filesystem (according to the highest supported safe
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-406260a0">
+<div class="need_container docutils container" id="SNCB-65f59508">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__11">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1029,7 +1083,8 @@ stored on a safety certified filesystem (according to the highest supported safe
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -1052,7 +1107,7 @@ stored on a safety certified filesystem (according to the highest supported safe
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-72dc6353">
+<div class="need_container docutils container" id="SNCB-df8e342a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__12">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1071,7 +1126,8 @@ stored on a safety certified filesystem (according to the highest supported safe
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -1094,7 +1150,7 @@ stored on a safety certified filesystem (according to the highest supported safe
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d550a518">
+<div class="need_container docutils container" id="SNCB-a5b42729">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__13">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1113,7 +1169,8 @@ stored on a safety certified filesystem (according to the highest supported safe
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -1137,7 +1194,7 @@ of a producer will not lead to a violation of a safety goal.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-05eafeb9">
+<div class="need_container docutils container" id="SNCB-7e443873">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__14">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1156,7 +1213,8 @@ of a producer will not lead to a violation of a safety goal.</p></td>
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -1180,7 +1238,7 @@ the system shall transition to safe state.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-19ca14ba">
+<div class="need_container docutils container" id="SNCB-d62b1e5b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__15">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1199,7 +1257,8 @@ the system shall transition to safe state.</p></td>
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -1222,7 +1281,7 @@ the system shall transition to safe state.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-dc772722">
+<div class="need_container docutils container" id="SNCB-d191c8c6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__16">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1241,7 +1300,8 @@ the system shall transition to safe state.</p></td>
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -1264,7 +1324,7 @@ the system shall transition to safe state.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-8a7bc1af">
+<div class="need_container docutils container" id="SNCB-1b7fa5c7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__17">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1283,7 +1343,8 @@ the system shall transition to safe state.</p></td>
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -1310,7 +1371,7 @@ the system shall transition to safe state.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-c9f6ae7b">
+<div class="need_container docutils container" id="SNCB-212a8bac">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__18">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1329,7 +1390,8 @@ the system shall transition to safe state.</p></td>
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -1352,7 +1414,7 @@ the system shall transition to safe state.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d787ea14">
+<div class="need_container docutils container" id="SNCB-eadd3072">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__19">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1371,7 +1433,8 @@ the system shall transition to safe state.</p></td>
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -1395,7 +1458,7 @@ any SamplePtr provided by it, is still held.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-11635346">
+<div class="need_container docutils container" id="SNCB-525cd423">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__20">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1414,7 +1477,8 @@ any SamplePtr provided by it, is still held.</p></td>
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -1437,7 +1501,7 @@ any SamplePtr provided by it, is still held.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-bcfd3b1a">
+<div class="need_container docutils container" id="SNCB-cc85278e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__21">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1456,7 +1520,8 @@ any SamplePtr provided by it, is still held.</p></td>
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -1479,7 +1544,7 @@ any SamplePtr provided by it, is still held.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d029b7f6">
+<div class="need_container docutils container" id="SNCB-b7be631b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__22">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1498,7 +1563,8 @@ any SamplePtr provided by it, is still held.</p></td>
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -1521,7 +1587,7 @@ any SamplePtr provided by it, is still held.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-18ee148b">
+<div class="need_container docutils container" id="SNCB-d83e97cb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__23">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1540,7 +1606,8 @@ any SamplePtr provided by it, is still held.</p></td>
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -1564,7 +1631,7 @@ or AllocateePtr is used once the SamplePtr or AllocateePtr are invalid.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6b17bd4d">
+<div class="need_container docutils container" id="SNCB-f18e059a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__24">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1583,7 +1650,8 @@ or AllocateePtr is used once the SamplePtr or AllocateePtr are invalid.</p></td>
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -1606,7 +1674,7 @@ or AllocateePtr is used once the SamplePtr or AllocateePtr are invalid.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9c98e6d3">
+<div class="need_container docutils container" id="SNCB-a59e34b0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__25">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1625,7 +1693,8 @@ or AllocateePtr is used once the SamplePtr or AllocateePtr are invalid.</p></td>
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -1648,7 +1717,7 @@ or AllocateePtr is used once the SamplePtr or AllocateePtr are invalid.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-ffc52229">
+<div class="need_container docutils container" id="SNCB-084d8a26">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__26">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1667,7 +1736,8 @@ or AllocateePtr is used once the SamplePtr or AllocateePtr are invalid.</p></td>
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -1690,7 +1760,7 @@ or AllocateePtr is used once the SamplePtr or AllocateePtr are invalid.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-fe7e9d1f">
+<div class="need_container docutils container" id="SNCB-582b2614">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__27">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1709,7 +1779,8 @@ or AllocateePtr is used once the SamplePtr or AllocateePtr are invalid.</p></td>
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -1733,7 +1804,7 @@ shall be manually reviewed for its correctness.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-abbd9775">
+<div class="need_container docutils container" id="SNCB-3fb66b64">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__28">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1752,7 +1823,8 @@ shall be manually reviewed for its correctness.</p></td>
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -1775,7 +1847,7 @@ shall be manually reviewed for its correctness.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-fc932d38">
+<div class="need_container docutils container" id="SNCB-a9c09856">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__29">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1794,7 +1866,8 @@ shall be manually reviewed for its correctness.</p></td>
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -1817,7 +1890,7 @@ shall be manually reviewed for its correctness.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-fa29861f">
+<div class="need_container docutils container" id="SNCB-1eed0b27">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__30">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1836,7 +1909,8 @@ shall be manually reviewed for its correctness.</p></td>
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -1863,7 +1937,7 @@ affected by these actions.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7ad5b8ed">
+<div class="need_container docutils container" id="SNCB-311989f8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__31">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1882,7 +1956,8 @@ affected by these actions.</p></td>
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -1907,7 +1982,7 @@ code containing mw::com proxies and skeletons, which communicate.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-236c5de2">
+<div class="need_container docutils container" id="SNCB-ea764019">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__32">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1926,7 +2001,8 @@ code containing mw::com proxies and skeletons, which communicate.</p></td>
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -1952,7 +2028,7 @@ by GetSampleSize() will happen.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-206803eb">
+<div class="need_container docutils container" id="SNCB-f27883b2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__communication__34">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1971,7 +2047,8 @@ by GetSampleSize() will happen.</p></td>
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -2008,12 +2085,12 @@ are the same in all configurations.</p></td>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../release/release_note.html"
+       href="../verification/module_verification_report.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Release Note</p>
+        <p class="prev-next-title">Verification Report</p>
       </div>
     </a>
     <a class="right-next"
@@ -2040,7 +2117,7 @@ are the same in all configurations.</p></td>
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/modules/communication/docs/requirements/aou_req.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/modules/communication/docs/requirements/aou_req.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -2051,15 +2128,6 @@ are the same in all configurations.</p></td>
     </a>
   </div>
 </div>
-
-  <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../../../../_sources/modules/communication/docs/requirements/aou_req.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
 
 </div></div>
               
