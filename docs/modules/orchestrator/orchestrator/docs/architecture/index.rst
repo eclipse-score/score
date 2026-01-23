@@ -79,13 +79,28 @@ Static Architecture
 The components are designed to cover the expectations from the feature architecture
 (i.e. if already exists a definition it should be taken over and enriched).
 
+.. comp:: Orchestrator
+   :id: comp__orchestrator
+   :security: YES
+   :safety:  ASIL_B
+   :status: valid
+   :implements: logic_arc_int__orchestration__user, logic_arc_int__orchestration__deployment, logic_arc_int__orchestration__design
+   :uses: logic_arc_int__logging__logging, logic_arc_int__tracing__tracing, logic_arc_int__communication__user
+   :consists_of: comp__orch_design_impl, comp__orch_deployment_impl
+
+   .. needarch::
+      :scale: 50
+      :align: center
+
+      {{ draw_component(need(), needs) }}
+
+
 .. comp_arc_sta:: Orchestrator
    :id: comp_arc_sta__orch__orchestrator
    :security: YES
    :safety:  ASIL_B
    :status: valid
-   :includes: comp_arc_sta__orch__design_impl, comp_arc_sta__orch__deployment_impl
-   :implements: logic_arc_int__orchestration__user, logic_arc_int__orchestration__deployment, logic_arc_int__orchestration__design
+   :includes: comp__orch_design_impl, comp__orch_deployment_impl
    :uses: logic_arc_int__logging__logging, logic_arc_int__tracing__tracing, logic_arc_int__communication__user
 
    .. needarch::
@@ -165,22 +180,21 @@ Interfaces
 
 .. Subcomponents
 
-.. comp_arc_sta:: Design
-   :id: comp_arc_sta__orch__design_impl
+.. comp:: Design
+   :id: comp__orch_design_impl
    :status: valid
    :safety: ASIL_B
    :security: NO
    :implements: logic_arc_int__orchestration__design
 
-.. comp_arc_sta:: Deployment
-   :id: comp_arc_sta__orch__deployment_impl
+.. comp:: Deployment
+   :id: comp__orch_deployment_impl
    :status: valid
    :safety: ASIL_B
    :security: NO
    :implements: logic_arc_int__orchestration__deployment
 
 .. Operations
-
 
 .. logic_arc_int_op:: register_invoke_fn
    :id: logic_arc_int_op__orch__register_invoke_fn

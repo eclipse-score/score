@@ -61,6 +61,14 @@ Static Architecture
 The components are designed to cover the expectations from the feature architecture
 (i.e. if already exists a definition it should be taken over and enriched).
 
+.. comp:: Executor
+   :id: comp__orch_executor
+   :security: YES
+   :safety:  ASIL_B
+   :status: valid
+   :uses: logic_arc_int__logging__logging, logic_arc_int__tracing__tracing
+
+
 .. comp_arc_sta:: Executor
    :id: comp_arc_sta__orch__executor
    :security: YES
