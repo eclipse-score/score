@@ -109,6 +109,7 @@ The components are designed to cover the expectations from the feature architect
 
       {{ draw_component(need(), needs) }}
 
+
 Dynamic Architecture
 --------------------
 
