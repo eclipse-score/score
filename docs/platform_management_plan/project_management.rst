@@ -181,6 +181,55 @@ Each *Community* has a *Community Lead* to organize the community`s work.
 .. _PRCBKL: https://github.com/orgs/eclipse-score/projects/21
 .. _PIMBKL: https://github.com/orgs/eclipse-score/projects/7
 
+.. _TSTMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-TST-team
+.. _TSTLD: https://github.com/orgs/eclipse-score/teams/automotive-score-TST-lead
+.. _TSTMM: https://github.com/eclipse-score/score/wiki/TSTM
+.. _TSTSLC: https://sdvworkinggroup.slack.com/archives/TSTC08B6C78EF3
+.. _TSTBLK: https://github.com/orgs/eclipse-score/projects/5
+
+
+
+.. _INT Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-INT-team
+.. _INT Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-INT-lead
+.. _INT Meeting Minutes: https://github.com/eclipse-score/score/wiki/INTM
+.. _INT Slack Channel: https://sdvworkinggroup.slack.com/archives/INT
+.. _INT Open Point List: https://github.com/orgs/eclipse-score/projects/INT
+
+
+- INT Responsibilities
+   - integration of available modules to one or several reference integrations
+   - releasing
+- `INT Core Members`_
+- `INT Lead`_
+- `INT Meeting Minutes`_
+- `INT Slack Channel`_
+- `INT Open Point List`_
+- INT Repositories:
+   - https://github.com/eclipse-score/score
+
+.. _pmp_pm_mcm:
+
+Marketing & Communication Community
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. _MCM Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-MCM-team
+.. _MCM Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-MCM-lead
+.. _MCM Meeting Minutes: https://github.com/eclipse-score/score/wiki/MCMM
+.. _MCM Slack Channel: https://sdvworkinggroup.slack.com/archives/C032X75QGTT
+.. _MCM Open Point List: https://github.com/orgs/eclipse-score/projects/11
+
+- MCM Responsibilities
+   - coordination of public relations, e.g. the maintenance of the website & organization of general events
+- `MCM Core Members`_
+- `MCM Lead`_
+- `MCM Meeting Minutes`_
+- `MCM Slack Channel`_
+- `MCM Open Point List`_
+- MCM Repositories:
+   - https://github.com/eclipse-score/eclipse-score.github.io
+   - https://github.com/eclipse-score/eclipse-score-website
+   - https://github.com/eclipse-score/eclipse-score-website-preview
+   - https://github.com/eclipse-score/eclipse-score-website-published
+
 
 .. list-table:: Community
    :header-rows: 1
@@ -209,25 +258,6 @@ Each *Community* has a *Community Lead* to organize the community`s work.
      - `ARCSLC`_
      - `ARCBKL`_
      - https://github.com/eclipse-score/score
-   * - .. _pmp_pm_prc:
-
-       **PRC**
-     - **Process**
-     - **Community**
-     - **-----------**
-     - **-----------**
-     - **-----------**
-     - **-----------------------**
-   * - - defining and maintaining the software development process (incl. safety, security and quality)
-       - defining and maintaining the process implementation (PIM)
-     - `PRCMBRS`_
-     - `PRCLD`_
-     - `PRCMM`_
-     - `PRCSLC`_
-     - `PRCBKL`_
-       `PIMBKL`_
-     - https://github.com/eclipse-score/process_description
-       https://github.com/eclipse-score/score
    * - .. _pmp_pm_inf:
 
        **INF**
@@ -261,7 +291,43 @@ Each *Community* has a *Community Lead* to organize the community`s work.
           - https://github.com/eclipse-score/bazel_registry_ui
           - https://github.com/eclipse-score/.eclipsefdn
           - https://github.com/eclipse-score/examples
+   * - .. _pmp_pm_prc:
 
+       **PRC**
+     - **Process**
+     - **Community**
+     - **-----------**
+     - **-----------**
+     - **-----------**
+     - **-----------------------**
+   * - - defining and maintaining the software development process (incl. safety, security and quality)
+       - defining and maintaining the process implementation (PIM)
+     - `PRCMBRS`_
+     - `PRCLD`_
+     - `PRCMM`_
+     - `PRCSLC`_
+     - `PRCBKL`_
+       `PIMBKL`_
+     - https://github.com/eclipse-score/process_description
+       https://github.com/eclipse-score/score
+   * - .. _pmp_pm_tst:
+
+       **TST**
+     - **Testing**
+     - **Community**
+     - **-----------**
+     - **-----------**
+     - **-----------**
+     - **-----------------------**
+   * - - defining and maintaining testing strategy and infrastructure
+     - `TSTMBRS`_
+     - `TSTLD`_
+     - `TSTMM`_
+     - `TSTSLC`_
+     - `TSTBKL`_
+       `TSTBKL`_
+     - https://github.com/eclipse-score/itf
+       https://github.com/eclipse-score/testing_tools
 
 
 Feature Teams
@@ -305,69 +371,6 @@ The following *Communities* are established:
 
 
 
-Testing Community (TST)
-^^^^^^^^^^^^^^^^^^^^^^^
-.. _TST Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-TST-team
-.. _TST Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-TST-lead
-.. _TST Meeting Minutes: https://github.com/eclipse-score/score/wiki/TSTM
-.. _TST Slack Channel: https://sdvworkinggroup.slack.com/archives/TSTC08B6C78EF3
-.. _TST Open Point List: https://github.com/orgs/eclipse-score/projects/5
-
-
-- TST Responsibilities
-   - defining and maintaining testing strategy and infrastructure
-- `TST Core Members`_
-- `TST Lead`_
-- `TST Meeting Minutes`_
-- `TST Slack Channel`_
-- `TST Open Point List`_
-- TST Repositories:
-   - https://github.com/eclipse-score/itf
-   - https://github.com/eclipse-score/testing_tools
-
-
-Integration and Release Community (INT)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. _INT Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-INT-team
-.. _INT Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-INT-lead
-.. _INT Meeting Minutes: https://github.com/eclipse-score/score/wiki/INTM
-.. _INT Slack Channel: https://sdvworkinggroup.slack.com/archives/INT
-.. _INT Open Point List: https://github.com/orgs/eclipse-score/projects/INT
-
-
-- INT Responsibilities
-   - integration of available modules to one or several reference integrations
-   - releasing
-- `INT Core Members`_
-- `INT Lead`_
-- `INT Meeting Minutes`_
-- `INT Slack Channel`_
-- `INT Open Point List`_
-- INT Repositories:
-   - https://github.com/eclipse-score/score
-
-.. _pmp_pm_mcm:
-
-Marketing & Communication Community
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. _MCM Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-MCM-team
-.. _MCM Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-MCM-lead
-.. _MCM Meeting Minutes: https://github.com/eclipse-score/score/wiki/MCMM
-.. _MCM Slack Channel: https://sdvworkinggroup.slack.com/archives/C032X75QGTT
-.. _MCM Open Point List: https://github.com/orgs/eclipse-score/projects/11
-
-- MCM Responsibilities
-   - coordination of public relations, e.g. the maintenance of the website & organization of general events
-- `MCM Core Members`_
-- `MCM Lead`_
-- `MCM Meeting Minutes`_
-- `MCM Slack Channel`_
-- `MCM Open Point List`_
-- MCM Repositories:
-   - https://github.com/eclipse-score/eclipse-score.github.io
-   - https://github.com/eclipse-score/eclipse-score-website
-   - https://github.com/eclipse-score/eclipse-score-website-preview
-   - https://github.com/eclipse-score/eclipse-score-website-published
 
 
 The following *Feature Teams* are defined in the *S-CORE* project:
