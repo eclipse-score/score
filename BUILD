@@ -13,6 +13,25 @@
 
 load("@score_docs_as_code//:docs.bzl", "docs")
 load("@score_tooling//:defs.bzl", "cli_helper", "copyright_checker", "setup_starpls")
+load("@custom_extra_pip//:requirements.bzl", "all_requirements", "requirement")
+load("@rules_python//python:pip.bzl", "compile_pip_requirements")
+
+# In order to update the requirements, change the `custom_extra_requirements.in` file and run:
+# `bazel run //:requirements.update`.
+# This will update the `requirements.txt` file.
+# To upgrade all dependencies to their latest versions, run:
+# `bazel run //:requirements.update -- --upgrade`.
+compile_pip_requirements(
+    name = "requirements",
+    srcs = [
+        "custom_extra_requirements.in",
+        "@score_docs_as_code//src:requirements.txt",
+    ],
+    requirements_txt = "requirements.txt",
+    tags = [
+        "manual",
+    ],
+)
 
 test_suite(
     name = "format.check",
@@ -64,6 +83,9 @@ setup_starpls(
 docs(
     data = [
         "@score_process//:needs_json",
+    ],
+    deps = [
+        requirement("sphinxemoji"),
     ],
     source_dir = "docs",
 )
