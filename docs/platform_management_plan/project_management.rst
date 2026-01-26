@@ -99,17 +99,6 @@ Steering of the project is done with the help of *Committees*.
      - Owned Repository
    * - .. _pmp_pm_plc:
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-.. _TLC Members: https://github.com/orgs/eclipse-score/teams/automotive-score-TLC-team
-.. _TLC Speaker: https://github.com/orgs/eclipse-score/teams/automotive-score-TLC-lead
-.. _TLC Meeting Minutes: https://github.com/eclipse-score/score/wiki/TLCM
-.. _TLC Slack Channel: https://sdvworkinggroup.slack.com/archives/C085F44D2CS
-.. _TLC Open Point List: https://github.com/orgs/eclipse-score/projects/3
-=======
-  *Project lead circle* proposes and elects a *Project lead circle Assistant* and their deputy with bare majority, who is responsible for scheduling and announcing meetings, preparing and announcing agenda, writing meeting minutes and protocols. *Project lead circle* can reelect *Project lead circle Assistant* at any time. The *Project lead circle Assistant* and their deputy can resign anytime on their own will.
->>>>>>> f9f5ae6 (Update language for gender neutrality in project management plan)
-=======
        **PLC**
      - **Project**
      - **Lead**
@@ -117,7 +106,6 @@ Steering of the project is done with the help of *Committees*.
      - **-----------**
      - **-----------**
      - **-----------------------**
->>>>>>> 74b593b (team docu adapted)
 
    * - - Decisions about strategical topics
        - Review and approval of contributions, e.g. Feature Requests, which add or modify features
@@ -151,7 +139,7 @@ Steering of the project is done with the help of *Committees*.
      - - https://github.com/eclipse-score/score
 
 
-.. _pmp_pm_communities:
+.. _pmp_pm_technical_communities:
 
 Communities
 -----------
@@ -159,9 +147,6 @@ Communities
 commonly used development & testing infrastructure, processes or final integration & release.
 Each *Community* has a *Community Lead* to organize the community`s work.
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 .. _ARCMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-ARC-team
 .. _ARCLD: https://github.com/orgs/eclipse-score/teams/automotive-score-ARC-lead
 .. _ARCMM: https://github.com/eclipse-score/score/wiki/ARCM
@@ -181,14 +166,149 @@ Each *Community* has a *Community Lead* to organize the community`s work.
 .. _PRCBKL: https://github.com/orgs/eclipse-score/projects/21
 .. _PIMBKL: https://github.com/orgs/eclipse-score/projects/7
 
-.. _TSTMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-TST-team
-.. _TSTLD: https://github.com/orgs/eclipse-score/teams/automotive-score-TST-lead
-.. _TSTMM: https://github.com/eclipse-score/score/wiki/TSTM
-.. _TSTSLC: https://sdvworkinggroup.slack.com/archives/TSTC08B6C78EF3
-.. _TSTBLK: https://github.com/orgs/eclipse-score/projects/5
+
+.. list-table:: Community
+   :header-rows: 1
+   :widths: 22,7,7,7,7,7,24
+
+   * - Purpose
+     - Members
+     - Lead
+     - Meeting Minutes
+     - Slack Channel
+     - Backlog
+     - Owned Repository
+   * - .. _pmp_pm_arc:
+
+       **ARC**
+     - **Architecture**
+     - **Community**
+     - **-----------**
+     - **-----------**
+     - **-----------**
+     - **-----------------------**
+   * - - clarification of software architecture topics, e.g. discussion of new features or coding guidelines
+     - `ARCMBRS`_
+     - `ARCLD`_
+     - `ARCMM`_
+     - `ARCSLC`_
+     - `ARCBKL`_
+     - https://github.com/eclipse-score/score
+   * - .. _pmp_pm_prc:
+
+       **PRC**
+     - **Process**
+     - **Community**
+     - **-----------**
+     - **-----------**
+     - **-----------**
+     - **-----------------------**
+   * - - defining and maintaining the software development process (incl. safety, security and quality)
+       - defining and maintaining the process implementation (PIM)
+     - `PRCMBRS`_
+     - `PRCLD`_
+     - `PRCMM`_
+     - `PRCSLC`_
+     - `PRCBKL`_
+       `PIMBKL`_
+     - https://github.com/eclipse-score/process_description
+       https://github.com/eclipse-score/score
+   * - .. _pmp_pm_inf:
+
+       **INF**
+     - **Infrastructure**
+     - **Community**
+     - **-----------**
+     - **-----------**
+     - **-----------**
+     - **-----------------------**
+   * - - providing and maintaining the development infrastructure: Compiler, IDE, build toolchains
+     - `INFMBRS`_
+     - `INFLD`_
+     - `INFMM`_
+     - `INFSLC`_
+     - `INFBKL`_
+       `INFBKL`_
+     - - Toolchain Repositories:
+          - https://github.com/eclipse-score/bazel_platforms
+          - https://github.com/eclipse-score/toolchains_gcc
+          - https://github.com/eclipse-score/toolchains_gcc_packages
+          - https://github.com/eclipse-score/toolchains_qnx
+          - https://github.com/eclipse-score/toolchains_rust
+       - Tooling Repositories:
+          - https://github.com/eclipse-score/devcontainer
+          - https://github.com/eclipse-score/docs-as-code
+          - https://github.com/eclipse-score/tooling
+       - other Repositories:
+          - https://github.com/eclipse-score/apt-install
+          - https://github.com/eclipse-score/cicd-workflows
+          - https://github.com/eclipse-score/bazel_registry
+          - https://github.com/eclipse-score/bazel_registry_ui
+          - https://github.com/eclipse-score/.eclipsefdn
+          - https://github.com/eclipse-score/examples
 
 
 
+Feature Teams
+-------------
+:ref:`Feature Teams <pmp_pm_feature_teams>` have end-to-end responsibility for providing specific functionalities. This includes all
+development aspects beginning with the architecture definition to the integration test.
+One *Team* may work independently of other *Teams* on the team-assigned *GitHub Issues*,
+and needs at least one :need:`Committer <rl__committer>` who can approve & merge the Pull Requests
+Each *Feature Team* has one *Lead* to organize the Team`s work.
+
+
+.. list-table:: Team
+   :header-rows: 1
+   :widths: 10,22,7,7,7,7,7,24
+
+   * - Name
+     - Purpose
+     - Members
+     - Speaker / Lead
+     - Meeting Minutes
+     - Slack Channel
+     - Backlog
+     - Owned Repository
+
+   * - **------**
+     - .. _pmp_pm_feature_teams:
+
+       **Feature Teams**
+     - **-----------**
+     - **-----------**
+     - **-----------**
+     - **-----------**
+     - **-----------**
+     - **-----------------------**
+
+The following *Communities* are established:
+
+
+
+Testing Community (TST)
+^^^^^^^^^^^^^^^^^^^^^^^
+.. _TST Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-TST-team
+.. _TST Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-TST-lead
+.. _TST Meeting Minutes: https://github.com/eclipse-score/score/wiki/TSTM
+.. _TST Slack Channel: https://sdvworkinggroup.slack.com/archives/TSTC08B6C78EF3
+.. _TST Open Point List: https://github.com/orgs/eclipse-score/projects/5
+
+
+- TST Responsibilities
+   - defining and maintaining testing strategy and infrastructure
+- `TST Core Members`_
+- `TST Lead`_
+- `TST Meeting Minutes`_
+- `TST Slack Channel`_
+- `TST Open Point List`_
+- TST Repositories:
+   - https://github.com/eclipse-score/itf
+   - https://github.com/eclipse-score/testing_tools
+
+
+Integration and Release Community (INT)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. _INT Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-INT-team
 .. _INT Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-INT-lead
 .. _INT Meeting Minutes: https://github.com/eclipse-score/score/wiki/INTM
@@ -229,148 +349,6 @@ Marketing & Communication Community
    - https://github.com/eclipse-score/eclipse-score-website
    - https://github.com/eclipse-score/eclipse-score-website-preview
    - https://github.com/eclipse-score/eclipse-score-website-published
-
-
-.. list-table:: Community
-   :header-rows: 1
-   :widths: 22,7,7,7,7,7,24
-
-   * - Purpose
-     - Members
-     - Lead
-     - Meeting Minutes
-     - Slack Channel
-     - Backlog
-     - Owned Repository
-   * - .. _pmp_pm_arc:
-
-       **ARC**
-     - **Architecture**
-     - **Community**
-     - **-----------**
-     - **-----------**
-     - **-----------**
-     - **-----------------------**
-   * - - clarification of software architecture topics, e.g. discussion of new features or coding guidelines
-     - `ARCMBRS`_
-     - `ARCLD`_
-     - `ARCMM`_
-     - `ARCSLC`_
-     - `ARCBKL`_
-     - https://github.com/eclipse-score/score
-   * - .. _pmp_pm_inf:
-
-       **INF**
-     - **Infrastructure**
-     - **Community**
-     - **-----------**
-     - **-----------**
-     - **-----------**
-     - **-----------------------**
-   * - - providing and maintaining the development infrastructure: Compiler, IDE, build toolchains
-     - `INFMBRS`_
-     - `INFLD`_
-     - `INFMM`_
-     - `INFSLC`_
-     - `INFBKL`_
-       `INFBKL`_
-     - - Toolchain Repositories:
-          - https://github.com/eclipse-score/bazel_platforms
-          - https://github.com/eclipse-score/toolchains_gcc
-          - https://github.com/eclipse-score/toolchains_gcc_packages
-          - https://github.com/eclipse-score/toolchains_qnx
-          - https://github.com/eclipse-score/toolchains_rust
-       - Tooling Repositories:
-          - https://github.com/eclipse-score/devcontainer
-          - https://github.com/eclipse-score/docs-as-code
-          - https://github.com/eclipse-score/tooling
-       - other Repositories:
-          - https://github.com/eclipse-score/apt-install
-          - https://github.com/eclipse-score/cicd-workflows
-          - https://github.com/eclipse-score/bazel_registry
-          - https://github.com/eclipse-score/bazel_registry_ui
-          - https://github.com/eclipse-score/.eclipsefdn
-          - https://github.com/eclipse-score/examples
-   * - .. _pmp_pm_prc:
-
-       **PRC**
-     - **Process**
-     - **Community**
-     - **-----------**
-     - **-----------**
-     - **-----------**
-     - **-----------------------**
-   * - - defining and maintaining the software development process (incl. safety, security and quality)
-       - defining and maintaining the process implementation (PIM)
-     - `PRCMBRS`_
-     - `PRCLD`_
-     - `PRCMM`_
-     - `PRCSLC`_
-     - `PRCBKL`_
-       `PIMBKL`_
-     - https://github.com/eclipse-score/process_description
-       https://github.com/eclipse-score/score
-   * - .. _pmp_pm_tst:
-
-       **TST**
-     - **Testing**
-     - **Community**
-     - **-----------**
-     - **-----------**
-     - **-----------**
-     - **-----------------------**
-   * - - defining and maintaining testing strategy and infrastructure
-     - `TSTMBRS`_
-     - `TSTLD`_
-     - `TSTMM`_
-     - `TSTSLC`_
-     - `TSTBKL`_
-       `TSTBKL`_
-     - https://github.com/eclipse-score/itf
-       https://github.com/eclipse-score/testing_tools
-
-
-Feature Teams
--------------
-:ref:`Feature Teams <pmp_pm_feature_teams>` have end-to-end responsibility for providing specific functionalities. This includes all
-development aspects beginning with the architecture definition to the integration test.
-One *Team* may work independently of other *Teams* on the team-assigned *GitHub Issues*,
-and needs at least one :need:`Committer <rl__committer>` who can approve & merge the Pull Requests
-Each *Feature Team* has one *Lead* to organize the Team`s work.
-
-
-.. list-table:: Team
-   :header-rows: 1
-   :widths: 10,22,7,7,7,7,7,24
-
-   * - Name
-     - Purpose
-     - Members
-     - Speaker / Lead
-     - Meeting Minutes
-     - Slack Channel
-     - Backlog
-     - Owned Repository
-
-   * - **------**
-     - .. _pmp_pm_feature_teams:
-
-       **Feature Teams**
-     - **-----------**
-     - **-----------**
-     - **-----------**
-     - **-----------**
-     - **-----------**
-     - **-----------------------**
-
->>>>>>> 74b593b (team docu adapted)
-The following *Communities* are established:
-=======
-  *Technical lead circle* proposes and elects a *Technical lead circle Assistant* and their deputy with bare majority during *Technical Lead Circle meeting*, who is responsible for scheduling and announcing meetings, preparing and announcing agenda, writing meeting minutes and protocols. *Technical lead circle* can reelect *Technical lead circle Assistant* at any time. The *Technical lead circle Assistant* and their deputy can resign anytime on their own will.
->>>>>>> f9f5ae6 (Update language for gender neutrality in project management plan)
-
-
-
 
 
 The following *Feature Teams* are defined in the *S-CORE* project:
@@ -553,7 +531,6 @@ Persistency Team (PER)
 - PER Repositories:
    - https://github.com/eclipse-score/persistency
 
-
 Organization Management
 -----------------------
 Decision to adapt the *Project Organization* is done in the *Technical Lead Circle* / *Project Management Circle*, documented in the meeting minutes and planned with a *Task*:
@@ -573,13 +550,13 @@ In case a new Feature Team creation is necessary, the following steps have to be
 - Definition of Repository specific :ref:`CODEOWNERS <pmp_pm_codeowners>`.
 - `Creation of a Team GitHub Project <https://github.com/orgs/eclipse-score/projects>`_ with a Kanban View and a Task View.
 - `Creation of a Team Meeting Wiki <https://github.com/eclipse-score/score/wiki>`_ for the meeting minutes
-
 - Creation of a Team Label
-    .. code::
 
-       committee:<Name of Committee>,
-       community:<Name of Community> or
-       ft:<Name of Feature Team>
+.. code::
+
+    committee:<Name of Committee>,
+    community:<Name of Community> or
+    ft:<Name of Feature Team>
 
 - Creation of a Slack Channel: https://sdvworkinggroup.slack.com
 - Adapting the PMP
