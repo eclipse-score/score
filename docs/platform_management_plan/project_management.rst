@@ -40,20 +40,17 @@ Objectives and Scope
 
 Project Management Goals and Definition of Done
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Project Management Goals and Definition of Done
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *  The stakeholders/stakeholder groups and organization are defined:
     - Org Chart and structure description is available and up to date.
 * Communication and reporting paths are described:
     - Team Overview with meeting structure is available & Slack channels are established and maintained.
     - Meetings are scheduled in the Eclipse SDV calendar.
-*  The stakeholders/stakeholder groups and organization are defined:
-    - Org Chart and structure description is available and up to date.
-* Communication and reporting paths are described:
-    - Team Overview with meeting structure is available & Slack channels are established and maintained.
-    - Meetings are scheduled in the Eclipse SDV calendar.
 * The scope of the work is defined.
+    - S-CORE Handbook (:need:`doc__platform_handbook`) is available and up to date.
+    - :ref:`Features <features>` are described.
+* Project Plan is planned and followed:
+    - Roadmap with Milestones and Releases are available and up to date.
     - S-CORE Handbook (:need:`doc__platform_handbook`) is available and up to date.
     - :ref:`Features <features>` are described.
 * Project Plan is planned and followed:
@@ -84,6 +81,54 @@ Org Chart and Main Platform Management Plan Responsibilities
 .. _pmp_pm_steering_committees:
 
 Steering Committees
+-------------------
+Steering of the project is done by two committees:
+
+Project Lead Circle (PLC)
+^^^^^^^^^^^^^^^^^^^^^^^^^
+.. _PLC Members: https://github.com/orgs/eclipse-score/teams/automotive-score-PLC-team
+.. _PLC Speaker: https://github.com/orgs/eclipse-score/teams/automotive-score-PLC-lead
+.. _PLC Meeting Minutes: https://github.com/eclipse-score/score/wiki/PLCM
+.. _PLC Slack Channel: https://sdvworkinggroup.slack.com/archives/PLC
+.. _PLC Open Point List: https://github.com/orgs/eclipse-score/projects/PLC
+
+- Responsibilities
+   - Decisions about strategical topics
+   - Review and approval of contributions, e.g. Feature Requests, which add or modify features
+   - Project Management
+   - Planning and Approval of Releases
+   - Escalation instance
+- `PLC Members`_
+    - `PLC election <https://www.eclipse.org/projects/handbook/#roles-pl>`_
+- `PLC Speaker`_
+- `PLC Meeting Minutes`_
+- `PLC Slack channel`_
+- `PLC Open Point List`_
+
+.. _pmp_pm_tlc:
+
+Technical Lead Circle (TLC)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The Technical Lead Circle will soon be merged with the Project Lead Circle: `#2381: Merge TLC into PLC <https://github.com/eclipse-score/score/issues/2381>`_
+
+.. _TLC Members: https://github.com/orgs/eclipse-score/teams/automotive-score-TLC-team
+.. _TLC Speaker: https://github.com/orgs/eclipse-score/teams/automotive-score-TLC-lead
+.. _TLC Meeting Minutes: https://github.com/eclipse-score/score/wiki/TLCM
+.. _TLC Slack Channel: https://sdvworkinggroup.slack.com/archives/C085F44D2CS
+.. _TLC Open Point List: https://github.com/orgs/eclipse-score/projects/3
+
+- TLC Responsibilities:
+   - Review and approval of contributions, e.g. *Feature Requests*, which add or modify S-CORE platform features.
+   - Project management of the platform development, e.g. creation of the roadmap.
+   - High-level project control and coordination between multiple software modules.
+   - Escalation instance for software module project leads and committers.
+- `TLC Members`_
+   - TLC Election: Each *Project Lead* is allowed to nominate one *Technical Lead*.
+- `TLC Meeting Minutes`_
+- `TLC Slack Channel`_
+- `TLC Open Point List`_
+- TLC Repositories:
+   - https://github.com/eclipse-score/score
 ^^^^^^^^^^^^^^^^^^^
 Steering of the project is done with the help of *Committees*.
 
@@ -154,6 +199,7 @@ Steering of the project is done with the help of *Committees*.
 
 .. _pmp_pm_technical_communities:
 .. _pmp_pm_technical_communities:
+.. _pmp_pm_technical_communities:
 
 Communities
 ^^^^^^^^^^^
@@ -161,6 +207,17 @@ Communities
 commonly used development & testing infrastructure, processes or final integration & release.
 Each *Community* has a *Community Lead* to organize the community`s work.
 
+The following *Communities* are established:
+
+.. _pmp_pm_arc:
+
+Architecture Community (ARC)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. _ARC Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-ARC-team
+.. _ARC Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-ARC-lead
+.. _ARC Meeting Minutes: https://github.com/eclipse-score/score/wiki/ARCM
+.. _ARC Slack Channel: https://sdvworkinggroup.slack.com/archives/C08C1HG5AKY
+.. _ARC Open Point List: https://github.com/orgs/eclipse-score/projects/3
 .. _ARCMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-ARC-team
 .. _ARCLD: https://github.com/orgs/eclipse-score/teams/automotive-score-ARC-lead
 .. _ARCMM: https://github.com/eclipse-score/score/wiki/ARCM
@@ -260,6 +317,45 @@ Each *Community* has a *Community Lead* to organize the community`s work.
           - https://github.com/eclipse-score/bazel_registry_ui
           - https://github.com/eclipse-score/.eclipsefdn
           - https://github.com/eclipse-score/examples
+
+
+
+Feature Teams
+-------------
+:ref:`Feature Teams <pmp_pm_feature_teams>` have end-to-end responsibility for providing specific functionalities. This includes all
+development aspects beginning with the architecture definition to the integration test.
+One *Team* may work independently of other *Teams* on the team-assigned *GitHub Issues*,
+and needs at least one :need:`Committer <rl__committer>` who can approve & merge the Pull Requests
+Each *Feature Team* has one *Lead* to organize the Team`s work.
+
+
+.. list-table:: Team
+   :header-rows: 1
+   :widths: 10,22,7,7,7,7,7,24
+
+   * - Name
+     - Purpose
+     - Members
+     - Speaker / Lead
+     - Meeting Minutes
+     - Slack Channel
+     - Backlog
+     - Owned Repository
+
+   * - **------**
+     - .. _pmp_pm_feature_teams:
+
+       **Feature Teams**
+     - **-----------**
+     - **-----------**
+     - **-----------**
+     - **-----------**
+     - **-----------**
+     - **-----------------------**
+
+The following *Communities* are established:
+
+
 
 
 
@@ -674,6 +770,7 @@ Issues Types
 
 .. image:: _assets/score_project_management_issue_types.drawio.svg
 .. image:: _assets/score_project_management_issue_types.drawio.svg
+.. image:: _assets/score_project_management_issue_types.drawio.svg
    :width: 900
    :alt: Issue Types
    :align: center
@@ -747,6 +844,8 @@ Issue Status
 Each *GitHub issue* has a **Status** depending on the :ref:`GitHub Project <pmp_pm_gh_projects>`,
 we use the following Standard Flow for all :ref:`Issue Types <pmp_pm_issue_types>`:
 
+.. image:: _assets/score_project_management_issue_status_flow.drawio.svg
+    :width: 900
 .. image:: _assets/score_project_management_issue_status_flow.drawio.svg
     :width: 900
 .. image:: _assets/score_project_management_issue_status_flow.drawio.svg
@@ -828,6 +927,7 @@ for Table, Board and Roadmap supporting Backlogs, Open Point or Task Lists and o
 
 .. image:: _assets/score_project_management_planning_overview.drawio.svg
 .. image:: _assets/score_project_management_planning_overview.drawio.svg
+.. image:: _assets/score_project_management_planning_overview.drawio.svg
     :width: 900
     :alt: Planning Overview
     :align: center
@@ -838,6 +938,7 @@ Kanban View
 """""""""""
 The `GitHub Board <https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/customizing-the-board-layout>`_ is supporting the Kanban View, enabling to set the Work In Progress Limits.
 
+.. image:: _assets/score_project_management_kanban.drawio.svg
 .. image:: _assets/score_project_management_kanban.drawio.svg
 .. image:: _assets/score_project_management_kanban.drawio.svg
     :width: 900
@@ -868,6 +969,8 @@ whereas the overall top-down plan is in the responsibility of the :ref:`Technica
 :ref:`Milestones <pmp_pm_milestone>` and :ref:`Releases <pmp_pm_release>`.
 
 Tracking Progress
+-----------------
+The :ref:`Technical Lead Circle <pmp_pm_tlc>` regularly monitors the status of the work for upcoming Milestones and Releases in https://github.com/orgs/eclipse-score/projects/17/ based on
 ^^^^^^^^^^^^^^^^^
 The :ref:`Technical Lead Circle <pmp_pm_tlc>` regularly monitors the status of the work for upcoming Milestones and Releases in https://github.com/orgs/eclipse-score/projects/17/ based on
 :ref:`Product Increments <pmp_pm_product_increment>`.
