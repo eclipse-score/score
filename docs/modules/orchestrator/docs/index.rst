@@ -28,6 +28,9 @@ Module Documents Orchestrator
 .. mod:: Orchestrator
    :id: mod__orchestrator
    :includes: comp__orchestrator, comp__orch_executor
+   :status: valid
+   :safety: ASIL_B
+   :security: YES
 
 .. mod_view_sta:: Orchestrator
    :id: mod_view_sta__orch__orchestrator

@@ -40,5 +40,5 @@ Modules List
 .. needtable::
    :style: table
    :types: mod
-   :columns: id;comp;status
+   :columns: id;status
    :filter: id != "mod__example_feature_archex_module_1"
