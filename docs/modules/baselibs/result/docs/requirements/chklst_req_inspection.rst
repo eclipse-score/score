@@ -32,7 +32,7 @@ Requirement Inspection Checklist
    As described in the concept :need:`doc_concept__wp_inspections` the following "inspection roles" are expected to be filled:
 
    - author: `<https://github.com/4og>`_
-   - reviewer: these are all persons committing into this inspection document or giving a pull request verdict on it (can be derived from version mgt tool)
+   - reviewer: `<https://github.com/aschemmel-tech>`_
    - moderator: only needed for conflict resolution between author and reviewers, is the safety manager, security manager or quality manager called in as a reviewer (can be derived from version mgt tool)
    - test expert: `<https://github.com/rahulthakre29>`_
 
@@ -85,13 +85,7 @@ Requirement Inspection Checklist
         - This is appropriate for the component level. No use of exceptions and standard library relation is a S-CORE platform condition.
         - none
       * - REQ_03_01
-        - For stakeholder requirements: Is the *rationale* correct?
-        - Rationales explain why the top level requirements were created. Do those cover the requirement?
-        - n/a
-        - no stakeholder requirements in scope
-        - n/a
-      * - REQ_03_02
-        - For other requirements: Is the *linkage to the parent requirement* correct?
+        - Is the *linkage to the parent requirement* correct?
         - Linkage to correct levels and ASIL attributes is checked automatically, but it needs checking if the child requirement implements (at least) a part of the parent requirement.
         - YES
         - linking is appropriate, that it exists is checked automatically
@@ -109,7 +103,7 @@ Requirement Inspection Checklist
         - No timing requirements found and also no timing problems expected
         - none
       * - REQ_06_01
-        - Does the requirement set consider *external interfaces*?
+        - Does the requirement consider *external interfaces*?
         - The SW platform's external interfaces (to the user) are defined in the Feature Architecture, so the Feature and Component Requirements should determine the input data use and setting of output data for these interfaces. Are all output values defined?
         - YES
         - Fixed: This could be improved by using the interfaces defined in :need:`comp_arc_sta__baselibs__result`
@@ -122,7 +116,7 @@ Requirement Inspection Checklist
         - none
       * - REQ_07_02
         - Is the attribute *security* set correctly?
-        - Stakeholder requirements security attribute should be set based on Threat Analysis and Risk Assessment (TARA) (process is TBD). For feature/component requirements this checklist item is supported by automated check: "Every requirement which satisfies a requirement with security attribute set to YES inherits this". But the feature/component requirements/architecture may additionally also be subject to a Software Security Criticality Analysis (process is TBD).
+        - For component requirements this checklist item is supported by automated check: "Every requirement which satisfies a feature requirement with security attribute set to YES inherits this". But the component requirements/architecture may additionally also be subject to a :need:`wp__sw_component_security_analysis`.
         - YES
         - all requirements have no security implication as expected (no security impact analysis done)
         - none
@@ -132,20 +126,20 @@ Requirement Inspection Checklist
         - YES
         - all requirements have test cases implemented
         - none
+      * - REQ_08_02
+        - Is the requirement verifiable by design or code review in case it is not feasibly testable?
+        - In very rare cases a requirement may not be verifiable by test cases, for example a specific non-functional requirement. In this case a requirement analysis verifies the requirement by design/code review. If such a requirement is in scope of this inspection, please check this here and link to the respective review record. A test expert is invited to the inspection to confirm their opinion that the requirement is not testable.
+        - n/a
+        - Requirement is testable (see REQ_08_01)
+        - none
       * - REQ_09_01
-        - For stakeholder requirements: Do those cover assumed safety mechanisms needed by the hardware and system?
-        - Note that stakeholder requirements covering safety mechanisms come from rationales, whereas feature/component requirements are covering safety mechanisms coming from :need:`gd_chklst__safety_analysis`
-        - n/a
-        - no stakeholder requirements in scope
-        - n/a
-      * - REQ_09_02
-        - For feature/component requirements: Do the requirements defining a safety mechanism contain the error reaction leading to a safe state?
+        - Do the requirements defining a safety mechanism contain the error reaction leading to a safe state?
         - Alternatively to the safe state there could also be "repair" mechanisms. Also do not forget to consider REQ_05_01 for these.
         - YES
         - Fixed: There should be an AoU covering this, :need:`aou_req__result__value_handling` is not.
         - `#2229 <https://github.com/eclipse-score/score/issues/2229>`_
 
-Note: If a Review ID is not applicable for your requirement, then state "n/a" in status and comment accordingly in remarks. For example "no stakeholder requirement (no rationale needed)"
+Note: If a Review ID is not applicable for your requirement, then state "n/a" in status and comment accordingly in remarks.
 
 The following requirements in "valid" state and with "inspected" tag set are in the scope of this inspection:
 

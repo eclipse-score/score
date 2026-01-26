@@ -60,7 +60,7 @@ Functional Safety Management Scope
 There is no deviation from the scope presented in the `S-CORE project page <https://eclipse-score.github.io/>`_ .
 The platform and its components are developed, and integrated for an assumed technical system as Safety Element out of Context (SEooC).
 The development of the platform and its components follows the defined processes.
-Responsibilities for development, implementation, integration and verification are also defined int the processes.
+Responsibilities for development, implementation, integration and verification are also defined in the processes.
 
 Regarding the platform specifics:
 
@@ -202,7 +202,7 @@ For the :need:`rl__project_lead`, the :need:`rl__safety_manager` and the :need:`
 in these project role definitions. They are also elected in a meritocratic way and this election is documented including the evidences checked to prove the experience.
 
 Committers in the S-CORE project can work on the development of safety related or non-safety related SW modules.
-If they work on safety related modules they have to prove (additionaly to their committer election, which already shows they are skilled developers):
+If they work on safety related modules they have to prove (additionally to their committer election, which already shows they are skilled developers):
 
 * two years practice of safety related SW development (or management) relevant for the section content (includes trainings in safety standards like ISO 26262)
 * training on the S-CORE processes

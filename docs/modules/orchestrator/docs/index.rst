@@ -25,11 +25,16 @@ Module Documents Orchestrator
    verification/module_verification_report.rst
    release/release_note.rst
 
-
+.. mod:: Orchestrator
+   :id: mod__orchestrator
+   :includes: comp__orchestrator, comp__orch_executor
+   :status: valid
+   :safety: ASIL_B
+   :security: YES
 
 .. mod_view_sta:: Orchestrator
    :id: mod_view_sta__orch__orchestrator
-   :includes: comp_arc_sta__orch__orchestrator, comp_arc_sta__orch__executor
+   :includes: comp__orchestrator, comp__orch_executor
 
    .. needarch::
       :scale: 50

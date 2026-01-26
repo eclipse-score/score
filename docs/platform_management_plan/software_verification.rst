@@ -330,7 +330,7 @@ to be reached with every contribution.
 Further quality goals are defined in section :doc:`quality_management`.
 
 The confirmation or any deviation of the coverage percentage value is documented in this section.
-This shall also be part of the module documenation with a reasoning when percentage numbers deviate for an official release.
+This shall also be part of the module documentation with a reasoning when percentage numbers deviate for an official release.
 
 Coverage of detailed design
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^

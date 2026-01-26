@@ -20,7 +20,7 @@
    :tags: platform_management
    :realizes: wp__platform_sw_release_plan
 
-Release management Plan
+Release Management Plan
 -----------------------
 
 This document implements parts of the :need:`wp__platform_mgmt`.
@@ -73,7 +73,7 @@ Release Planning and Execution
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Generally release planning and execution is described in :need:`wf__rel_mod_rel_note` process.
-It is part of project planning and therefore also documented with the same means. Generally a Release
+It is part of project planning and therefore also documented with the same means. Generally a release
 is planned as an issue linked to a milestone in the `GitHub Milestone Planning <https://github.com/orgs/eclipse-score/projects/13>`_.
 And this issue is closed by merging a pull request which creates/updates a release note.
 

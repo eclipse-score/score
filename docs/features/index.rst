@@ -26,3 +26,12 @@ The following features are defined:
    :glob:
 
    */index
+
+Feature List
+------------
+
+.. needtable::
+   :style: table
+   :types: feat
+   :columns: id;Security;Safety;status
+   :filter:  id not in ["feat__example_feature", "feat__feature_name", "feat__feature_name_example"]

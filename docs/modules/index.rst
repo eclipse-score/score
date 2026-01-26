@@ -33,3 +33,12 @@ It is the physically compiled and packaged unit that results from the build proc
    :glob:
 
    ./*/index
+
+Modules List
+------------
+
+.. needtable::
+   :style: table
+   :types: mod
+   :columns: id;status
+   :filter: id != "mod__example_feature_archex_module_1"

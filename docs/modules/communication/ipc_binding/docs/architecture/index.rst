@@ -15,8 +15,8 @@
 IPC Binding Component Architecture
 **********************************
 
-.. comp_arc_sta:: IPC Binding
-   :id: comp_arc_sta__com__ipc_binding
+.. comp:: IPC Binding
+   :id: comp__com_ipc_binding
    :security: YES
    :safety:  ASIL_B
    :status: valid

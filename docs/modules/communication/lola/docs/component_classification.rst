@@ -62,7 +62,7 @@ Step 1: Determine (P): the uncertainty of the Processes applied
         * - 3
           - Are specifications for functionalities and properties available (architecture)?
           - HE
-          - Created using S-CORE process: :need:`mod_view_sta__com__communication`
+          - Created using S-CORE process: :need:`mod__com_communication`
 
         * - 4
           - Are design specifications available?

@@ -55,7 +55,7 @@ Education and Skills:
 - Safety related SW development and project management (in aerospace) > 10 years - letters of recommendation from employers
 - Trainer for DO-178B SW safety standard - election certificate
 - Process development CMMI - letters of recommendation from employers
-- Safety trainings by Exida (Iso 26262) - part of Safety Case Safe Posix SW platform
+- Safety trainings by Exida (ISO 26262) - part of Safety Case Safe Posix SW platform
 
 S-CORE Committs:
 

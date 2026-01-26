@@ -46,12 +46,12 @@ Others are modelled as general documents (e.g. the plans which are part of the p
 
 This plan deals with these documents, which have the following manually set attributes:
 
-* Title: the name of the document (mandatory)
+* Title: The name of the document (mandatory)
 * Unique Id: Id following the naming pattern of the document Title (mandatory)
-* Safety: which ASIL the document supports (mandatory)
+* Safety: Which ASIL the document supports (mandatory)
 * Author: Who is the main committer to the document (mandatory)
-* Status: describing where in the lifecycle of the document it currently is (mandatory)
-* Tags: can be used to group documents for subsequent filtering (optional)
+* Status: Describing where in the lifecycle of the document it currently is (mandatory)
+* Tags: Can be used to group documents for subsequent filtering (optional)
 
 Also the "Documentation Management" is a document, so an example for a correct document definition
 can be seen in the header section above, see :need:`doc__documentation_mgt_plan`.

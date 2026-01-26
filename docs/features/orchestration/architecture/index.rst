@@ -23,6 +23,14 @@ Feature Architecture
    :realizes: wp__feature_arch
    :tags: orchestration
 
+.. feat:: Orchestration
+   :id: feat__orchestration
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :includes: logic_arc_int__orchestration__user, logic_arc_int__orchestration__design, logic_arc_int__orchestration__deployment
+   :consists_of: comp__orchestrator
+
 
 Overview
 --------

@@ -274,7 +274,7 @@ If the information is sufficient and it is decided to implement the change reque
 ISSUE status is kept ``Open`` and the Projects status is set to ``In Progress``.
 
 The decision, if the change request is accepted or rejected must be documented. Safety/Security
-experts must confirm or disconfirm, if safety/security relevance is set correctly.
+experts must confirm or deny, if safety/security relevance is set correctly.
 
 :need:`gd_chklst__change_cr_review` can help to verify whether the information is complete.
 

@@ -182,11 +182,11 @@ The metric for the work products is ensured by the process that contains the wor
 
 3.5 Quality Management Scope
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-There is no deviation from the scope defined in the :need:`doc__project_mgt_plan`. The platform and its
+There is no deviation from the scope defined in the :need:`doc__project_mgt_plan`. The platform and it's
 components are developed, and integrated for an assumed technical system, for functional safety purposes as
 Safety Element out of Context (SEooC).
 
-The development of the platform and its components follows the defined processes. Responsibilities for management,
+The development of the platform and it's components follows the defined processes. Responsibilities for management,
 development, implementation, integration, and verification are also defined in the processes.
 
 The SW platform consists of features, which are based on a set of requirements and are developed in parallel.

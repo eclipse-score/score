@@ -137,7 +137,7 @@ To provide solutions, use the Solution part of the ISSUE.
 
 :need:`[[title]] <gd_req__problem_attr_anaylsis_results>` is provided in the analysis
 results part of the ISSUE. State here, if the problem is accepted or rejected. Safety/Security
-experts must confirm or disconfirm, if safety/security is affected is set correctly
+experts must confirm or deny, if safety/security is affected is set correctly
 
 :need:`[[title]] <gd_req__problem_attr_stakeholder>` are provided in the Assignees part of
 the ISSUE. In addition you can use pre-defined labels for Communities or Feature Teams
@@ -230,7 +230,7 @@ If the information is sufficient and it is decided to initiate the problem resol
 ISSUE status is kept ``Open`` and the Projects status is set to ``In Progress``.
 
 The decision, if the problem is accepted or rejected must be documented. Safety/Security
-experts must confirm or disconfirm, if safety/security is affected is set correctly.
+experts must confirm or deny, if safety/security is affected is set correctly.
 
 :need:`gd_chklst__problem_cr_review` can help to verify whether the information is complete.
 

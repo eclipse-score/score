@@ -67,6 +67,7 @@ Testing
   implementation details. Overly fine-grained tests lead to brittle code and high maintenance.
 - **Boundary conditions:** - Edge cases often break things. Think about invalid input, large data
   sets, empty cases, and concurrency issues.
+- **Enesure Traceability** - Make sure to use the pytest decorator where applicable to enable traceabillity throughout. More infos on how to use it `example here <https://eclipse-score.github.io/docs-as-code/main/how-to/test_to_doc_links.html>`_ and `more through documentation here <https://eclipse-score.github.io/docs-as-code/main/internals/extensions/source_code_linker.html>`_ 
 
 Documentation
 --------------------

@@ -15,8 +15,8 @@
 Configuration Component Architecture
 ************************************
 
-.. comp_arc_sta:: Lola Configuration
-   :id: comp_arc_sta__com__configuration
+.. comp:: Lola Configuration
+   :id: comp__com_configuration
    :security: YES
    :safety: ASIL_B
    :status: valid
