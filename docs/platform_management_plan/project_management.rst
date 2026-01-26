@@ -151,7 +151,7 @@ Steering of the project is done with the help of *Committees*.
      - - https://github.com/eclipse-score/score
 
 
-.. _pmp_pm_technical_communities:
+.. _pmp_pm_communities:
 
 Communities
 -----------
