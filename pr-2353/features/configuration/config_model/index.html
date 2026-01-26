@@ -572,7 +572,7 @@
                   
   <section id="configuration-model">
 <h1>Configuration Model<a class="headerlink" href="#configuration-model" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-056b9897">
+<div class="need_container docutils container" id="SNCB-0c1aab08">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__configuration_model">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -621,11 +621,12 @@
 </section>
 <section id="abstract">
 <h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
-<p>This proposal introduces a unified approach to static module configuration in S-CORE by combining a Configuration Guideline and a Configuration Model. While the guideline defines how configurations should be structured—covering naming conventions, identifier usage, storage formats, and parameter organization—the model specifies what needs to be configured, focusing on common elements that must remain consistent across all modules. The dual approach ensures clarity, predictability, and maintainability, reducing integration complexity and improving user experience. By standardizing both the structure and the content of configurations, the solution enables faster onboarding of new modules, supports future extensions (e.g., JSON or FlatBuffers), and lays the foundation for automated compliance checks.</p>
+<p>This proposal introduces a unified approach to static component configuration in S-CORE by combining a Configuration Guideline and a Configuration Model. It covers both platform and application components. While the guideline defines how configurations should be structured—covering naming conventions, identifier usage, storage formats, and parameter organization—the model specifies what needs to be configured, focusing on common elements that must remain consistent across all components. The dual approach ensures clarity, predictability, and maintainability, reducing integration complexity and improving user experience. By standardizing both the structure and the content of configurations, the solution enables faster onboarding of new components, supports future extensions (e.g., JSON or FlatBuffers), and lays the foundation for automated compliance checks.</p>
 </section>
 <section id="motivation">
 <h2>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h2>
-<p>The current configuration landscape in S-CORE suffers from fragmentation: contributors define static configurations independently, leading to inconsistencies in identifiers, variable naming, and file storage. Beyond structural differences, there is no common understanding of what must be configured for each module (e.g. how to support for “multiple instances”). This results in missing or redundant parameters, unclear dependencies, and unpredictable integration behavior. Without a shared model, cross-module consistency can hardly be guaranteed, making maintenance and scaling difficult. Introducing both a guideline and a model addresses these gaps by ensuring uniformity in configuration structure and content, reducing errors, and improving overall system reliability.</p>
+<p>The current configuration landscape in S-CORE suffers from fragmentation: contributors define static configurations independently, leading to inconsistencies in identifiers, variable naming, and file storage. Beyond structural differences, there is no common understanding of what must be configured for each component (e.g., support for “multiple instances”). This results in missing or redundant parameters, unclear dependencies, and unpredictable integration behavior. Without a shared model, cross-component consistency can hardly be guaranteed, making maintenance and scaling difficult. Introducing both a guideline and a model addresses these gaps by ensuring uniformity in configuration structure and content, reducing errors, and improving overall system reliability.</p>
+<p>Focus of this proposal is on static post compile time configurations of application and middleware components. Pre-compile time configurations like ‘feature_selection’ are out of scope.</p>
 </section>
 <section id="rationale">
 <h2>Rationale<a class="headerlink" href="#rationale" title="Link to this heading">#</a></h2>
@@ -638,14 +639,14 @@
 <h3>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Common Format</strong>: Define a formal description language for the configuration model (e.g., JSON schema) to ensure machine-readable and validated configurations.</p></li>
-<li><p><strong>Self-Contained Module Configuration</strong>: To provide a self-contained module, each module must be able to carry its own configuration. This introduces a potential conflict with centralized consistency. Potential compromise: Implement consistency checks across modules rather than enforcing a single shared configuration file.</p></li>
+<li><p><strong>Self-Contained Component Configuration</strong>: To provide a self-contained component, each component must be able to carry its own configuration. This introduces a potential conflict with centralized consistency. Potential compromise: Implement consistency checks across components rather than enforcing a single shared configuration file.</p></li>
 <li><p><strong>Extensibility</strong>: The model should be designed to accommodate future features and extensions without breaking existing configurations.</p></li>
 <li><p><strong>Simplicity</strong>: The guideline and model should be easy to understand and each configuration parameter should have a clear purpose.</p></li>
 <li><p><strong>Supported Features</strong>:</p>
 <ul>
-<li><p>Configuration scope of current module configurations need to be considered</p></li>
-<li><p>Configuration of required and provided capabilities of the modules</p></li>
-<li><p>Multiple instantiations of the same module with distinct configurations.</p></li>
+<li><p>Configuration scope of current component configurations need to be considered</p></li>
+<li><p>Configuration of required and provided capabilities of components.</p></li>
+<li><p>Multiple instantiations of the same component with distinct configurations.</p></li>
 <li><p>Versioning of configuration schema for backward compatibility.</p></li>
 <li><p>further features to be defined.</p></li>
 </ul>
@@ -656,17 +657,17 @@
 <h3>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Configuration Schema Layer</strong>: Defines the model, e.g. in JSON schema.</p></li>
-<li><p><strong>Validation Engine</strong>: Performs consistency checks across modules and validates schema compliance.</p></li>
-<li><p><strong>Integration Layer</strong>: Ensures that module configurations can be loaded independently while maintaining global consistency rules.</p></li>
+<li><p><strong>Validation Engine</strong>: Performs consistency checks across components and validates schema compliance.</p></li>
+<li><p><strong>Integration Layer</strong>: Ensures that component configurations can be loaded independently while maintaining global consistency rules.</p></li>
 </ul>
 </section>
 <section id="changes-introduced">
 <h3>Changes Introduced<a class="headerlink" href="#changes-introduced" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><strong>Requirements</strong>: Add mandatory adherence to the guideline and model for all new modules.</p></li>
+<li><p><strong>Requirements</strong>: Add mandatory adherence to the guideline and model for all new components.</p></li>
 <li><p><strong>Architecture</strong>: Introduce schema-based configuration and validation components.</p></li>
 <li><p><strong>Implementation</strong>: Provide reference templates and examples for contributors.</p></li>
-<li><p><strong>Process</strong>: Update module development workflow to include configuration compliance checks.</p></li>
+<li><p><strong>Process</strong>: Update component development workflow to include configuration compliance checks.</p></li>
 <li><p><strong>Documentation</strong>: Publish guideline and model specifications with examples.</p></li>
 <li><p><strong>Infrastructure</strong>: Add tooling for automated validation and integration testing.</p></li>
 </ul>
@@ -675,7 +676,7 @@
 <section id="backwards-compatibility">
 <h2>Backwards Compatibility<a class="headerlink" href="#backwards-compatibility" title="Link to this heading">#</a></h2>
 <p><strong>Impact Assessment</strong>: Low to Medium</p>
-<p>The configuration model is designed with extensibility and versioning to maintain backward compatibility. However, some existing modules may require minor configuration adjustments to align with the new standardized model.</p>
+<p>The configuration model is designed with extensibility and versioning to maintain backward compatibility. However, some existing components may require minor configuration adjustments to align with the new standardized model.</p>
 </section>
 <section id="security-impact">
 <h2>Security Impact<a class="headerlink" href="#security-impact" title="Link to this heading">#</a></h2>
@@ -696,32 +697,32 @@
 <li><p><strong>Documentation Package</strong>:
 * Configuration guideline with naming conventions and structure rules
 * Model specification with required and optional elements
-* Migration guide for existing modules
+* Migration guide for existing components
 * Best practices and common patterns</p></li>
 <li><p><strong>Developer Resources</strong>:
-* Updated module templates with configuration sections
+* Updated component templates with configuration sections
 * Validation tools and IDE integration
 * Example configurations for common use cases
 * Training workshops for development teams</p></li>
 <li><p><strong>Integration Support</strong>:
 * Automated compliance checking in CI/CD pipelines
 * Configuration validation utilities
-* Migration assistance for legacy modules</p></li>
+* Migration assistance for legacy components</p></li>
 </ol>
 </section>
 <section id="rejected-ideas">
 <h2>Rejected Ideas<a class="headerlink" href="#rejected-ideas" title="Link to this heading">#</a></h2>
-<p><strong>Centralized Configuration File</strong>: Would compromise module portability and independence</p>
+<p><strong>Centralized Configuration File</strong>: Would compromise component portability and independence</p>
 <p><strong>Purely Structural Approach</strong>: Fails to address content fragmentation issues</p>
-<p><strong>Hard-coded Standards</strong>: Too inflexible for future extensions and diverse module needs</p>
+<p><strong>Hard-coded Standards</strong>: Too inflexible for future extensions and diverse component needs</p>
 <p><strong>Runtime Configuration Only</strong>: Will not meet runtime requirements like fast startup time</p>
 </section>
 <section id="open-issues">
 <h2>Open Issues<a class="headerlink" href="#open-issues" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p><strong>Schema Implementation Language</strong>: Final decision between JSON Schema and FlatBuffers pending performance analysis</p></li>
-<li><p><strong>Migration Timeline</strong>: Coordination with existing module development cycles</p></li>
-<li><p><strong>Validation Granularity</strong>: Define scope of cross-module consistency checks vs. module autonomy</p></li>
+<li><p><strong>Migration Timeline</strong>: Coordination with existing component development cycles</p></li>
+<li><p><strong>Validation Granularity</strong>: Define scope of consistency checks between local (component specific) and global (cross component) configuration aspects, considering self-containment of component configuration vs. cross component consistency.</p></li>
 <li><p><strong>Tooling Integration</strong>: Specify IDE and build system integration requirements</p></li>
 </ol>
 </section>
