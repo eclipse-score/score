@@ -55,10 +55,6 @@ Project Management Goals and Definition of Done
     - :ref:`Features <features>` are described.
 * Project Plan is planned and followed:
     - Roadmap with Milestones and Releases are available and up to date.
-    - S-CORE Handbook (:need:`doc__platform_handbook`) is available and up to date.
-    - :ref:`Features <features>` are described.
-* Project Plan is planned and followed:
-    - Roadmap with Milestones and Releases are available and up to date.
 * Escalation paths are described.
 * All Reviews are performed according to their definitions, the respective templates are used.
 
@@ -173,6 +169,24 @@ Each *Community* has a *Community Lead* to organize the community`s work.
 .. _PRCBKL: https://github.com/orgs/eclipse-score/projects/21
 .. _PIMBKL: https://github.com/orgs/eclipse-score/projects/7
 
+.. _TSTMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-TST-team
+.. _TSTLD: https://github.com/orgs/eclipse-score/teams/automotive-score-TST-lead
+.. _TSTMM: https://github.com/eclipse-score/score/wiki/TSTM
+.. _TSTSLC: https://sdvworkinggroup.slack.com/archives/TSTC08B6C78EF3
+.. _TSTBKL: https://github.com/orgs/eclipse-score/projects/5
+
+.. _INTMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-INT-team
+.. _INTLD: https://github.com/orgs/eclipse-score/teams/automotive-score-INT-lead
+.. _INTMM: https://github.com/eclipse-score/score/wiki/INTM
+.. _INTSLC: https://sdvworkinggroup.slack.com/archives/INT
+.. _INTBKL: https://github.com/orgs/eclipse-score/projects/INT
+
+.. _MCMMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-MCM-team
+.. _MCMLD: https://github.com/orgs/eclipse-score/teams/automotive-score-MCM-lead
+.. _MCMMM: https://github.com/eclipse-score/score/wiki/MCMM
+.. _MCMSLC: https://sdvworkinggroup.slack.com/archives/C032X75QGTT
+.. _MCMBKL: https://github.com/orgs/eclipse-score/projects/11
+
 
 .. list-table:: Community
    :header-rows: 1
@@ -218,8 +232,8 @@ Each *Community* has a *Community Lead* to organize the community`s work.
      - `PRCSLC`_
      - `PRCBKL`_
        `PIMBKL`_
-     - https://github.com/eclipse-score/process_description
-       https://github.com/eclipse-score/score
+     - | https://github.com/eclipse-score/process_description
+       | https://github.com/eclipse-score/score
    * - .. _pmp_pm_inf:
 
        **INF**
@@ -235,25 +249,83 @@ Each *Community* has a *Community Lead* to organize the community`s work.
      - `INFMM`_
      - `INFSLC`_
      - `INFBKL`_
-       `INFBKL`_
-     - - Toolchain Repositories:
-          - https://github.com/eclipse-score/bazel_platforms
-          - https://github.com/eclipse-score/toolchains_gcc
-          - https://github.com/eclipse-score/toolchains_gcc_packages
-          - https://github.com/eclipse-score/toolchains_qnx
-          - https://github.com/eclipse-score/toolchains_rust
-       - Tooling Repositories:
-          - https://github.com/eclipse-score/devcontainer
-          - https://github.com/eclipse-score/docs-as-code
-          - https://github.com/eclipse-score/tooling
-       - other Repositories:
-          - https://github.com/eclipse-score/apt-install
-          - https://github.com/eclipse-score/cicd-workflows
-          - https://github.com/eclipse-score/bazel_registry
-          - https://github.com/eclipse-score/bazel_registry_ui
-          - https://github.com/eclipse-score/.eclipsefdn
-          - https://github.com/eclipse-score/examples
+     - | Toolchain Repositories:
 
+          | https://github.com/eclipse-score/bazel_platforms
+          | https://github.com/eclipse-score/toolchains_gcc
+          | https://github.com/eclipse-score/toolchains_gcc_packages
+          | https://github.com/eclipse-score/toolchains_qnx
+          | https://github.com/eclipse-score/toolchains_rust
+
+       | Tooling Repositories:
+
+          | https://github.com/eclipse-score/devcontainer
+          | https://github.com/eclipse-score/docs-as-code
+          | https://github.com/eclipse-score/tooling
+
+       | other Repositories:
+
+          | https://github.com/eclipse-score/apt-install
+          | https://github.com/eclipse-score/cicd-workflows
+          | https://github.com/eclipse-score/bazel_registry
+          | https://github.com/eclipse-score/bazel_registry_ui
+          | https://github.com/eclipse-score/.eclipsefdn
+          | https://github.com/eclipse-score/examples
+
+   * - .. _pmp_pm_tst:
+
+       **TST**
+     - **Testing**
+     - **Community**
+     - **-----------**
+     - **-----------**
+     - **-----------**
+     - **-----------------------**
+   * - defining and maintaining testing strategy and infrastructure
+     - `TSTMBRS`_
+     - `TSTLD`_
+     - `TSTMM`_
+     - `TSTSLC`_
+     - `TSTBKL`_
+     - | https://github.com/eclipse-score/itf
+       | https://github.com/eclipse-score/testing_tools
+   * - .. _pmp_pm_int:
+
+       **INT**
+     - **Integration &**
+     - **Release**
+     - **Community**
+     - **-----------**
+     - **-----------**
+     - **-----------------------**
+   * - - integration of available modules to one or several reference integrations
+       - releasing
+
+     - `INTMBRS`_
+     - `INTLD`_
+     - `INTMM`_
+     - `INTSLC`_
+     - `INTBKL`_
+     - | https://github.com/eclipse-score/score
+   * - .. _pmp_pm_mcm:
+
+       **MCM**
+     - **Integration &**
+     - **Release**
+     - **Community**
+     - **-----------**
+     - **-----------**
+     - **-----------------------**
+   * - - coordination of public relations, e.g. the maintenance of the website & organization of general events
+     - `MCMMBRS`_
+     - `MCMLD`_
+     - `MCMMM`_
+     - `MCMSLC`_
+     - `MCMBKL`_
+     - | https://github.com/eclipse-score/eclipse-score.github.io
+       | https://github.com/eclipse-score/eclipse-score-website
+       | https://github.com/eclipse-score/eclipse-score-website-preview
+       | https://github.com/eclipse-score/eclipse-score-website-published
 
 .. _pmp_pm_feature_teams:
 
@@ -265,279 +337,224 @@ One *Team* may work independently of other *Teams* on the team-assigned *GitHub 
 and needs at least one :need:`Committer <rl__committer>` who can approve & merge the Pull Requests
 Each *Feature Team* has one *Lead* to organize the Team`s work.
 
+.. _BASMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-BAS-team
+.. _BASLD: https://github.com/orgs/eclipse-score/teams/automotive-score-BAS-lead
+.. _BASMM: https://github.com/eclipse-score/score/wiki/BASM
+.. _BASSLC: https://sdvworkinggroup.slack.com/archives/C090UKSL5L2
+.. _BASBKL: https://github.com/orgs/eclipse-score/projects/24
 
-.. list-table:: Team
+.. _COMMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-COM-team
+.. _COMLD: https://github.com/orgs/eclipse-score/teams/automotive-score-COM-lead
+.. _COMMM: https://github.com/eclipse-score/score/wiki/COMM
+.. _COMSLC: https://sdvworkinggroup.slack.com/archives/C08C0JATADP
+.. _COMBKL: https://github.com/orgs/eclipse-score/projects/19
+
+.. _CFGMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-CFG-team
+.. _CFGLD: https://github.com/orgs/eclipse-score/teams/automotive-score-CFG-lead
+.. _CFGMM: https://github.com/eclipse-score/score/wiki/CFGM
+.. _CFGSLC: https://sdvworkinggroup.slack.com/archives/CFG
+.. _CFGBKL: https://github.com/orgs/eclipse-score/projects/CFG
+
+.. _FEOMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-FEO-team
+.. _FEOLD: https://github.com/orgs/eclipse-score/teams/automotive-score-FEO-lead
+.. _FEOMM: https://github.com/eclipse-score/score/wiki/FEOM
+.. _FEOSLC: https://sdvworkinggroup.slack.com/archives/FEO
+.. _FEOBKL: https://github.com/orgs/eclipse-score/projects/9
+
+.. _KYRMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-KYR-team
+.. _KYRLD: https://github.com/orgs/eclipse-score/teams/automotive-score-KYR-lead
+.. _KYRMM: https://github.com/eclipse-score/score/wiki/KYRM
+.. _KYRSLC: https://sdvworkinggroup.slack.com/archives/KYR
+.. _KYRBKL: https://github.com/orgs/eclipse-score/projects/38
+
+.. _LCMMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-LCM-team
+.. _LCMLD: https://github.com/orgs/eclipse-score/teams/automotive-score-LCM-lead
+.. _LCMMM: https://github.com/eclipse-score/score/wiki/LCMM
+.. _LCMSLC: https://sdvworkinggroup.slack.com/archives/C094Z3BN1K4
+.. _LCMBKL: https://github.com/orgs/eclipse-score/projects/33
+
+.. _LOGMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-LOG-team
+.. _LOGLD: https://github.com/orgs/eclipse-score/teams/automotive-score-LOG-lead
+.. _LOGMM: https://github.com/eclipse-score/score/wiki/LOGM
+.. _LOGSLC: https://sdvworkinggroup.slack.com/archives/C089XP2PGQZ
+.. _LOGBKL: https://github.com/orgs/eclipse-score/projects/31
+
+.. _ORCMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-ORC-team
+.. _ORCLD: https://github.com/orgs/eclipse-score/teams/automotive-score-ORC-lead
+.. _ORCMM: https://github.com/eclipse-score/score/wiki/ORCM
+.. _ORCSLC: https://sdvworkinggroup.slack.com/archives/C099W80FU2C
+.. _ORCBKL: https://github.com/orgs/eclipse-score/projects/29
+
+.. _PERMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-PER-team
+.. _PERLD: https://github.com/orgs/eclipse-score/teams/automotive-score-PER-lead
+.. _PERMM: https://github.com/eclipse-score/score/wiki/PERM
+.. _PERSLC: https://sdvworkinggroup.slack.com/archives/C08B339ETQU
+.. _PERBKL: https://github.com/orgs/eclipse-score/projects/20
+
+.. list-table:: Feature Teams
    :header-rows: 1
-   :widths: 10,22,7,7,7,7,7,24
+   :widths: 22,7,7,7,7,7,24
 
-   * - Name
-     - Purpose
+   * - Purpose
      - Members
-     - Speaker / Lead
+     - Lead
      - Meeting Minutes
      - Slack Channel
      - Backlog
      - Owned Repository
+   * - .. _pmp_pm_bas:
 
-   * - **------**
-     - .. _pmp_pm_feature_teams:
-
-       **Feature Teams**
-     - **-----------**
-     - **-----------**
-     - **-----------**
+       **BAS**
+     - **Baselibs**
+     - **Feature**
+     - **Team**
      - **-----------**
      - **-----------**
      - **-----------------------**
+   * - - development of the base libraries
+     - `BASMBRS`_
+     - `BASLD`_
+     - `BASMM`_
+     - `BASSLC`_
+     - `BASBKL`_
+     - | https://github.com/eclipse-score/baselibs
+       | https://github.com/eclipse-score/baselibs_rust
+   * - .. _pmp_pm_com:
 
-The following *Communities* are established:
+       **COM**
+     - **Communication**
+     - **Feature**
+     - **Team**
+     - **-----------**
+     - **-----------**
+     - **-----------------------**
+   * - - development of the communication and protocols
+     - `COMMBRS`_
+     - `COMLD`_
+     - `COMMM`_
+     - `COMSLC`_
+     - `COMBKL`_
+     - | https://github.com/eclipse-score/communication
+       | https://github.com/eclipse-score/inc_mw_com
+       | https://github.com/eclipse-score/inc_someip_gateway
+   * - .. _pmp_pm_cfg:
 
+       **CFG**
+     - **Configuration**
+     - **Management**
+     - **Feature**
+     - **Team**
+     - **-----------**
+     - **-----------------------**
+   * - - development of configuration management
+     - `CFGMBRS`_
+     - `CFGLD`_
+     - `CFGMM`_
+     - `CFGSLC`_
+     - `CFGBKL`_
+     - | https://github.com/eclipse-score/config_management
+       | https://github.com/eclipse-score/inc_config_management
+   * - .. _pmp_pm_feo:
 
+       **FEO**
+     - **Fixed**
+     - **Execution**
+     - **Order**
+     - **Feature**
+     - **Team**
+     - **-----------------------**
+   * - - development of fixed execution order
+     - `FEOMBRS`_
+     - `FEOLD`_
+     - `FEOMM`_
+     - `FEOSLC`_
+     - `FEOBKL`_
+     - | https://github.com/eclipse-score/feo
+       | https://github.com/eclipse-score/inc_feo
+   * - .. _pmp_pm_kyr:
 
-Testing Community (TST)
-^^^^^^^^^^^^^^^^^^^^^^^
-.. _TST Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-TST-team
-.. _TST Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-TST-lead
-.. _TST Meeting Minutes: https://github.com/eclipse-score/score/wiki/TSTM
-.. _TST Slack Channel: https://sdvworkinggroup.slack.com/archives/TSTC08B6C78EF3
-.. _TST Open Point List: https://github.com/orgs/eclipse-score/projects/5
+       **KYR**
+     - **Kyron**
+     - **Feature**
+     - **Team**
+     - **-----------**
+     - **-----------**
+     - **-----------------------**
+   * - - development of Kyron
+     - `KYRMBRS`_
+     - `KYRLD`_
+     - `KYRMM`_
+     - `KYRSLC`_
+     - `KYRBKL`_
+     - | https://github.com/eclipse-score/kyron
+   * - .. _pmp_pm_log:
 
+       **LOG**
+     - **Logging**
+     - **Feature**
+     - **Team**
+     - **-----------**
+     - **-----------**
+     - **-----------------------**
+   * - - development of Logging
+     - `LOGMBRS`_
+     - `LOGLD`_
+     - `LOGMM`_
+     - `LOGSLC`_
+     - `LOGBKL`_
+     - | https://github.com/eclipse-score/logging
+       | https://github.com/eclipse-score/inc_mw_log
 
-- TST Responsibilities
-   - defining and maintaining testing strategy and infrastructure
-- `TST Core Members`_
-- `TST Lead`_
-- `TST Meeting Minutes`_
-- `TST Slack Channel`_
-- `TST Open Point List`_
-- TST Repositories:
-   - https://github.com/eclipse-score/itf
-   - https://github.com/eclipse-score/testing_tools
+   * - .. _pmp_pm_lcm:
 
+       **LCM**
+     - **Lifecycle**
+     - **Management &**
+     - **Health Monitoring**
+     - **Feature**
+     - **Team**
+     - **-----------------------**
+   * - - development of Lifecycle Management and Health Monitoring
+     - `LCMMBRS`_
+     - `LCMLD`_
+     - `LCMMM`_
+     - `LCMSLC`_
+     - `LCMBKL`_
+     - | https://github.com/eclipse-score/lifecycle
 
-Integration and Release Community (INT)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. _INT Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-INT-team
-.. _INT Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-INT-lead
-.. _INT Meeting Minutes: https://github.com/eclipse-score/score/wiki/INTM
-.. _INT Slack Channel: https://sdvworkinggroup.slack.com/archives/INT
-.. _INT Open Point List: https://github.com/orgs/eclipse-score/projects/INT
+   * - .. _pmp_pm_ocr:
 
+       **OCR**
+     - **Orchestrator**
+     - **Feature**
+     - **Team**
+     - **-----------**
+     - **-----------**
+     - **-----------------------**
+   * - - development of Orchestrator
+     - `ORCMBRS`_
+     - `ORCLD`_
+     - `ORCMM`_
+     - `ORCSLC`_
+     - `ORCBKL`_
+     - | https://github.com/eclipse-score/orchestrator
 
-- INT Responsibilities
-   - integration of available modules to one or several reference integrations
-   - releasing
-- `INT Core Members`_
-- `INT Lead`_
-- `INT Meeting Minutes`_
-- `INT Slack Channel`_
-- `INT Open Point List`_
-- INT Repositories:
-   - https://github.com/eclipse-score/score
+   * - .. _pmp_pm_per:
 
-.. _pmp_pm_mcm:
-
-Marketing & Communication Community
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. _MCM Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-MCM-team
-.. _MCM Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-MCM-lead
-.. _MCM Meeting Minutes: https://github.com/eclipse-score/score/wiki/MCMM
-.. _MCM Slack Channel: https://sdvworkinggroup.slack.com/archives/C032X75QGTT
-.. _MCM Open Point List: https://github.com/orgs/eclipse-score/projects/11
-
-- MCM Responsibilities
-   - coordination of public relations, e.g. the maintenance of the website & organization of general events
-- `MCM Core Members`_
-- `MCM Lead`_
-- `MCM Meeting Minutes`_
-- `MCM Slack Channel`_
-- `MCM Open Point List`_
-- MCM Repositories:
-   - https://github.com/eclipse-score/eclipse-score.github.io
-   - https://github.com/eclipse-score/eclipse-score-website
-   - https://github.com/eclipse-score/eclipse-score-website-preview
-   - https://github.com/eclipse-score/eclipse-score-website-published
-
-
-The following *Feature Teams* are defined in the *S-CORE* project:
-
-Baselibs Feature Team (BAS)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. _BAS Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-BAS-team
-.. _BAS Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-BAS-lead
-.. _BAS Meeting Minutes: https://github.com/eclipse-score/score/wiki/BASM
-.. _BAS Slack Channel: https://sdvworkinggroup.slack.com/archives/C090UKSL5L2
-.. _BAS Open Point List: https://github.com/orgs/eclipse-score/projects/24
-
-- BAS Responsibilities
-   - development of the base libraries
-- `BAS Core Members`_
-- `BAS Lead`_
-- `BAS Meeting Minutes`_
-- `BAS Slack Channel`_
-- `BAS Open Point List`_
-- BAS Repositories:
-   - https://github.com/eclipse-score/baselibs
-   - https://github.com/eclipse-score/baselibs_rust
-
-.. _pmp_pm_com:
-
-Communication Feature Team (COM)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. _COM Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-COM-team
-.. _COM Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-COM-lead
-.. _COM Meeting Minutes: https://github.com/eclipse-score/score/wiki/COMM
-.. _COM Slack Channel: https://sdvworkinggroup.slack.com/archives/C08C0JATADP
-.. _COM Open Point List: https://github.com/orgs/eclipse-score/projects/19
-
-- COM Responsibilities
-   - development of the communication and protocols
-- `COM Core Members`_
-- `COM Lead`_
-- `COM Meeting Minutes`_
-- `COM Slack Channel`_
-- `COM Open Point List`_
-- COM Repositories:
-   - https://github.com/eclipse-score/communication
-   - https://github.com/eclipse-score/inc_mw_com
-   - https://github.com/eclipse-score/inc_someip_gateway
-
-.. _pmp_pm_cfg:
-
-Configuration Management Feature Team (CFG)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. _CFG Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-CFG-team
-.. _CFG Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-CFG-lead
-.. _CFG Meeting Minutes: https://github.com/eclipse-score/score/wiki/CFGM
-.. _CFG Slack Channel: https://sdvworkinggroup.slack.com/archives/CFG
-.. _CFG Open Point List: https://github.com/orgs/eclipse-score/projects/CFG
-
-- CFG Responsibilities
-   - development of configuration management
-- `CFG Core Members`_
-- `CFG Lead`_
-- `CFG Meeting Minutes`_
-- `CFG Slack Channel`_
-- `CFG Open Point List`_
-- CFG Repositories:
-   - https://github.com/eclipse-score/config_management
-   - https://github.com/eclipse-score/inc_config_management
-
-
-Fixed Execution Order Team (FEO)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. _FEO Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-FEO-team
-.. _FEO Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-FEO-lead
-.. _FEO Meeting Minutes: https://github.com/eclipse-score/score/wiki/FEOM
-.. _FEO Slack Channel: https://sdvworkinggroup.slack.com/archives/FEO
-.. _FEO Open Point List: https://github.com/orgs/eclipse-score/projects/9
-
-- FEO Responsibilities
-   - development of fixed execution order
-- `FEO Core Members`_
-- `FEO Lead`_
-- `FEO Meeting Minutes`_
-- `FEO Slack Channel`_
-- `FEO Open Point List`_
-- FEO Repositories:
-   - https://github.com/eclipse-score/feo
-   - https://github.com/eclipse-score/inc_feo
-
-
-Kyron Team (KYR)
-^^^^^^^^^^^^^^^^
-.. _KYR Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-KYR-team
-.. _KYR Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-KYR-lead
-.. _KYR Meeting Minutes: https://github.com/eclipse-score/score/wiki/KYRM
-.. _KYR Slack Channel: https://sdvworkinggroup.slack.com/archives/KYR
-.. _KYR Open Point List: https://github.com/orgs/eclipse-score/projects/38
-
-
-- KYR Responsibilities
-   - development of Kyron
-- `KYR Core Members`_
-- `KYR Lead`_
-- `KYR Meeting Minutes`_
-- `KYR Slack Channel`_
-- `KYR Open Point List`_
-- KYR Repositories:
-   - https://github.com/eclipse-score/kyron
-
-
-Logging Team (LOG)
-^^^^^^^^^^^^^^^^^^
-.. _LOG Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-LOG-team
-.. _LOG Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-LOG-lead
-.. _LOG Meeting Minutes: https://github.com/eclipse-score/score/wiki/LOGM
-.. _LOG Slack Channel: https://sdvworkinggroup.slack.com/archives/C089XP2PGQZ
-.. _LOG Open Point List: https://github.com/orgs/eclipse-score/projects/31
-
-- LOG Responsibilities
-   - development of Logging
-- `LOG Core Members`_
-- `LOG Lead`_
-- `LOG Meeting Minutes`_
-- `LOG Slack Channel`_
--  `LOG Open Point List`_
-- LOG Repositories:
-   - https://github.com/eclipse-score/logging
-   - https://github.com/eclipse-score/inc_mw_log
-
-Lifecycle Management and Health Monitoring Team (LCM)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. _LCM Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-LCM-team
-.. _LCM Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-LCM-lead
-.. _LCM Meeting Minutes: https://github.com/eclipse-score/score/wiki/LCMM
-.. _LCM Slack Channel: https://sdvworkinggroup.slack.com/archives/C094Z3BN1K4
-.. _LCM Open Point List: https://github.com/orgs/eclipse-score/projects/33
-
-- LCM Responsibilities
-   - development of Lifecycle Management and Health Monitoring
-- `LCM Core Members`_
-- `LCM Lead`_
-- `LCM Meeting Minutes`_
-- `LCM Slack Channel`_
-- `LCM Open Point List`_
-- LCM Repositories:
-   - https://github.com/eclipse-score/lifecycle
-
-Orchstrator Team (ORC)
-^^^^^^^^^^^^^^^^^^^^^^^
-.. _ORC Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-ORC-team
-.. _ORC Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-ORC-lead
-.. _ORC Meeting Minutes: https://github.com/eclipse-score/score/wiki/ORCM
-.. _ORC Slack Channel: https://sdvworkinggroup.slack.com/archives/C099W80FU2C
-.. _ORC Open Point List: https://github.com/orgs/eclipse-score/projects/29
-
--  Responsibilities
-   - development of Orchstrator
-- `ORC Core Members`_
-- `ORC Lead`_
-- `ORC Meeting Minutes`_
-- `ORC Slack Channel`_
-- `ORC Open Point List`_
-- ORC Repositories:
-   - https://github.com/eclipse-score/orchestrator
-
-.. _pmp_pm_per:
-
-Persistency Team (PER)
-^^^^^^^^^^^^^^^^^^^^^^
-.. _PER Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-PER-team
-.. _PER Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-PER-lead
-.. _PER Meeting Minutes: https://github.com/eclipse-score/score/wiki/PERM
-.. _PER Slack Channel: https://sdvworkinggroup.slack.com/archives/C08B339ETQU
-.. _PER Open Point List: https://github.com/orgs/eclipse-score/projects/20
-
--  Responsibilities
-   - development of Persistency
-- `PER Core Members`_
-- `PER Lead`_
-- `PER Meeting Minutes`_
-- `PER Slack Channel`_
-- `PER Open Point List`_
-- PER Repositories:
-   - https://github.com/eclipse-score/persistency
+       **PER**
+     - **Persistency**
+     - **Feature**
+     - **Team**
+     - **-----------**
+     - **-----------**
+     - **-----------------------**
+   * - - development of Persistency
+     - `PERMBRS`_
+     - `PERLD`_
+     - `PERMM`_
+     - `PERSLC`_
+     - `PERBKL`_
+     - | https://github.com/eclipse-score/persistency
 
 Organization Management
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -742,10 +759,6 @@ we use the following Standard Flow for all :ref:`Issue Types <pmp_pm_issue_types
 
 .. image:: _assets/score_project_management_issue_status_flow.drawio.svg
     :width: 900
-.. image:: _assets/score_project_management_issue_status_flow.drawio.svg
-    :width: 900
-.. image:: _assets/score_project_management_issue_status_flow.drawio.svg
-    :width: 900
     :alt: Issue Status
     :align: center
 
@@ -822,8 +835,6 @@ and one for the complete `S-CORE Roadmap <https://github.com/orgs/eclipse-score/
 for Table, Board and Roadmap supporting Backlogs, Open Point or Task Lists and other useful perspectives.
 
 .. image:: _assets/score_project_management_planning_overview.drawio.svg
-.. image:: _assets/score_project_management_planning_overview.drawio.svg
-.. image:: _assets/score_project_management_planning_overview.drawio.svg
     :width: 900
     :alt: Planning Overview
     :align: center
@@ -834,8 +845,6 @@ Kanban View
 """""""""""
 The `GitHub Board <https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/customizing-the-board-layout>`_ is supporting the Kanban View, enabling to set the Work In Progress Limits.
 
-.. image:: _assets/score_project_management_kanban.drawio.svg
-.. image:: _assets/score_project_management_kanban.drawio.svg
 .. image:: _assets/score_project_management_kanban.drawio.svg
     :width: 900
     :alt: Kanban View
@@ -865,8 +874,6 @@ whereas the overall top-down plan is in the responsibility of the :ref:`Technica
 :ref:`Milestones <pmp_pm_milestone>` and :ref:`Releases <pmp_pm_release>`.
 
 Tracking Progress
------------------
-The :ref:`Technical Lead Circle <pmp_pm_tlc>` regularly monitors the status of the work for upcoming Milestones and Releases in https://github.com/orgs/eclipse-score/projects/17/ based on
 ^^^^^^^^^^^^^^^^^
 The :ref:`Technical Lead Circle <pmp_pm_tlc>` regularly monitors the status of the work for upcoming Milestones and Releases in https://github.com/orgs/eclipse-score/projects/17/ based on
 :ref:`Product Increments <pmp_pm_product_increment>`.
