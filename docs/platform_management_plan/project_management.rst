@@ -61,7 +61,6 @@ Project Management Goals and Definition of Done
     - Roadmap with Milestones and Releases are available and up to date.
 * Escalation paths are described.
 * All Reviews are performed according to their definitions, the respective templates are used.
-* All Reviews are performed according to their definitions, the respective templates are used.
 
 .. _pmp_pm_organization:
 
@@ -73,7 +72,6 @@ Org Chart and Main Platform Management Plan Responsibilities
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: _assets/score_project_management_organization_orgchart.drawio.svg
-.. image:: _assets/score_project_management_organization_orgchart.drawio.svg
    :width: 900
    :alt: Infrastructure overview
    :align: center
@@ -81,54 +79,6 @@ Org Chart and Main Platform Management Plan Responsibilities
 .. _pmp_pm_steering_committees:
 
 Steering Committees
--------------------
-Steering of the project is done by two committees:
-
-Project Lead Circle (PLC)
-^^^^^^^^^^^^^^^^^^^^^^^^^
-.. _PLC Members: https://github.com/orgs/eclipse-score/teams/automotive-score-PLC-team
-.. _PLC Speaker: https://github.com/orgs/eclipse-score/teams/automotive-score-PLC-lead
-.. _PLC Meeting Minutes: https://github.com/eclipse-score/score/wiki/PLCM
-.. _PLC Slack Channel: https://sdvworkinggroup.slack.com/archives/PLC
-.. _PLC Open Point List: https://github.com/orgs/eclipse-score/projects/PLC
-
-- Responsibilities
-   - Decisions about strategical topics
-   - Review and approval of contributions, e.g. Feature Requests, which add or modify features
-   - Project Management
-   - Planning and Approval of Releases
-   - Escalation instance
-- `PLC Members`_
-    - `PLC election <https://www.eclipse.org/projects/handbook/#roles-pl>`_
-- `PLC Speaker`_
-- `PLC Meeting Minutes`_
-- `PLC Slack channel`_
-- `PLC Open Point List`_
-
-.. _pmp_pm_tlc:
-
-Technical Lead Circle (TLC)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The Technical Lead Circle will soon be merged with the Project Lead Circle: `#2381: Merge TLC into PLC <https://github.com/eclipse-score/score/issues/2381>`_
-
-.. _TLC Members: https://github.com/orgs/eclipse-score/teams/automotive-score-TLC-team
-.. _TLC Speaker: https://github.com/orgs/eclipse-score/teams/automotive-score-TLC-lead
-.. _TLC Meeting Minutes: https://github.com/eclipse-score/score/wiki/TLCM
-.. _TLC Slack Channel: https://sdvworkinggroup.slack.com/archives/C085F44D2CS
-.. _TLC Open Point List: https://github.com/orgs/eclipse-score/projects/3
-
-- TLC Responsibilities:
-   - Review and approval of contributions, e.g. *Feature Requests*, which add or modify S-CORE platform features.
-   - Project management of the platform development, e.g. creation of the roadmap.
-   - High-level project control and coordination between multiple software modules.
-   - Escalation instance for software module project leads and committers.
-- `TLC Members`_
-   - TLC Election: Each *Project Lead* is allowed to nominate one *Technical Lead*.
-- `TLC Meeting Minutes`_
-- `TLC Slack Channel`_
-- `TLC Open Point List`_
-- TLC Repositories:
-   - https://github.com/eclipse-score/score
 ^^^^^^^^^^^^^^^^^^^
 Steering of the project is done with the help of *Committees*.
 
@@ -196,10 +146,7 @@ Steering of the project is done with the help of *Committees*.
      - `TLCBKL`_
      - - https://github.com/eclipse-score/score
 
-
-.. _pmp_pm_technical_communities:
-.. _pmp_pm_technical_communities:
-.. _pmp_pm_technical_communities:
+.. _pmp_pm_communities:
 
 Communities
 ^^^^^^^^^^^
@@ -207,17 +154,6 @@ Communities
 commonly used development & testing infrastructure, processes or final integration & release.
 Each *Community* has a *Community Lead* to organize the community`s work.
 
-The following *Communities* are established:
-
-.. _pmp_pm_arc:
-
-Architecture Community (ARC)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. _ARC Core Members: https://github.com/orgs/eclipse-score/teams/automotive-score-ARC-team
-.. _ARC Lead: https://github.com/orgs/eclipse-score/teams/automotive-score-ARC-lead
-.. _ARC Meeting Minutes: https://github.com/eclipse-score/score/wiki/ARCM
-.. _ARC Slack Channel: https://sdvworkinggroup.slack.com/archives/C08C1HG5AKY
-.. _ARC Open Point List: https://github.com/orgs/eclipse-score/projects/3
 .. _ARCMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-ARC-team
 .. _ARCLD: https://github.com/orgs/eclipse-score/teams/automotive-score-ARC-lead
 .. _ARCMM: https://github.com/eclipse-score/score/wiki/ARCM
@@ -319,45 +255,7 @@ Architecture Community (ARC)
           - https://github.com/eclipse-score/examples
 
 
-
-Feature Teams
--------------
-:ref:`Feature Teams <pmp_pm_feature_teams>` have end-to-end responsibility for providing specific functionalities. This includes all
-development aspects beginning with the architecture definition to the integration test.
-One *Team* may work independently of other *Teams* on the team-assigned *GitHub Issues*,
-and needs at least one :need:`Committer <rl__committer>` who can approve & merge the Pull Requests
-Each *Feature Team* has one *Lead* to organize the Team`s work.
-
-
-.. list-table:: Team
-   :header-rows: 1
-   :widths: 10,22,7,7,7,7,7,24
-
-   * - Name
-     - Purpose
-     - Members
-     - Speaker / Lead
-     - Meeting Minutes
-     - Slack Channel
-     - Backlog
-     - Owned Repository
-
-   * - **------**
-     - .. _pmp_pm_feature_teams:
-
-       **Feature Teams**
-     - **-----------**
-     - **-----------**
-     - **-----------**
-     - **-----------**
-     - **-----------**
-     - **-----------------------**
-
-The following *Communities* are established:
-
-
-
-
+.. _pmp_pm_feature_teams:
 
 Feature Teams
 ^^^^^^^^^^^^^
@@ -769,15 +667,13 @@ Issues Types
 """"""""""""
 
 .. image:: _assets/score_project_management_issue_types.drawio.svg
-.. image:: _assets/score_project_management_issue_types.drawio.svg
-.. image:: _assets/score_project_management_issue_types.drawio.svg
    :width: 900
    :alt: Issue Types
    :align: center
 
-.. _pmp_pm_feature_request:
-
 |
+
+.. _pmp_pm_feature_request:
 
 **Feature Request**
 
