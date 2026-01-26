@@ -23,10 +23,10 @@
 .. _pmp_pm_plan:
 
 Project Management Plan
-#######################
+-----------------------
 
 Purpose
-=======
++++++++
 The purpose of the Project Management Plan is to define
 
 - how to manage, analyse and control changes of the work products during the project life cycle.
@@ -36,7 +36,7 @@ The purpose of the Project Management Plan is to define
 - how and where to escalate.
 
 Objectives and Scope
---------------------
+++++++++++++++++++++
 
 Project Management Goals and Definition of Done
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -57,11 +57,11 @@ Project Management Goals and Definition of Done
 .. _pmp_pm_organization:
 
 Project Organization
-====================
+++++++++++++++++++++
 
 
 Org Chart and Main Platform Management Plan Responsibilities
-------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: _assets/score_project_management_organization_orgchart.drawio.svg
    :width: 900
@@ -71,7 +71,7 @@ Org Chart and Main Platform Management Plan Responsibilities
 .. _pmp_pm_steering_committees:
 
 Steering Committees
--------------------
+^^^^^^^^^^^^^^^^^^^
 Steering of the project is done with the help of *Committees*.
 
 .. _PLCMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-PLC-team
@@ -142,7 +142,7 @@ Steering of the project is done with the help of *Committees*.
 .. _pmp_pm_technical_communities:
 
 Communities
------------
+^^^^^^^^^^^
 *Communities* are installed to work on cross functional topics, such as program level architectural decisions,
 commonly used development & testing infrastructure, processes or final integration & release.
 Each *Community* has a *Community Lead* to organize the community`s work.
@@ -250,8 +250,8 @@ Each *Community* has a *Community Lead* to organize the community`s work.
 
 
 Feature Teams
--------------
-:ref:`Feature Teams <pmp_pm_feature_teams>` have end-to-end responsibility for providing specific functionalities. This includes all
+^^^^^^^^^^^^^
+*Feature Teams*  have end-to-end responsibility for providing specific functionalities. This includes all
 development aspects beginning with the architecture definition to the integration test.
 One *Team* may work independently of other *Teams* on the team-assigned *GitHub Issues*,
 and needs at least one :need:`Committer <rl__committer>` who can approve & merge the Pull Requests
@@ -532,7 +532,7 @@ Persistency Team (PER)
    - https://github.com/eclipse-score/persistency
 
 Organization Management
------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 Decision to adapt the *Project Organization* is done in the *Technical Lead Circle* / *Project Management Circle*, documented in the meeting minutes and planned with a *Task*:
 
 - creating of a new Team (*Community* or *Feature Team*)
@@ -540,7 +540,7 @@ Decision to adapt the *Project Organization* is done in the *Technical Lead Circ
 - deleting an existing Team (*Community* or *Feature Team*)
 
 Creation of a new Feature Team
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""
 In case a new Feature Team creation is necessary, the following steps have to be done:
 
 - `Adding a new Team to GitHub Teams <https://github.com/orgs/eclipse-score/teams>`_ and adding the Core Members by editing
@@ -562,12 +562,12 @@ In case a new Feature Team creation is necessary, the following steps have to be
 - Adapting the PMP
 
 External Communication
-======================
+**********************
 The external communication is done via GitHub, LinkedIn, etc. Publications by :ref:`Marketing and Communication Community <pmp_pm_mcm>`.
 
 
 Internal Communication
-======================
+++++++++++++++++++++++
 The project internal communication is ensured with help of:
 
 - virtual and face-to-face meetings and their minutes
@@ -575,7 +575,7 @@ The project internal communication is ensured with help of:
 - online communication using Slack
 
 Meetings
---------
+^^^^^^^^
 All meetings are scheduled in the `Eclipse S-CORE Calendar <https://calendar.google.com/calendar/u/0/embed?src=c_2ampi2bmoka3qter4dceap1d5g@group.calendar.google.com&ctz=Europe/Berlin>`_ , are open for everyone
 but mentioned team members are mandatory. Meeting minutes are public and stored in the project specific *GitHub Team Wikis*.
 
@@ -583,7 +583,7 @@ but mentioned team members are mandatory. Meeting minutes are public and stored 
 .. _pmp_pm_repository_structure:
 
 Repository structure
-====================
+++++++++++++++++++++
 The Platform follows a multiple repositories approach. The root repository is
 
 .. _pmp_pm_root_repository:
@@ -615,7 +615,7 @@ within the following :ref:`Module Folder Structure <module_folder_structure>`.
 .. _pmp_pm_codeowners:
 
 Codeowners
-----------
+^^^^^^^^^^
 While creating a new repository, :ref:`Technical Leads <pmp_pm_tlc>` nominate initial `CODEOWNERS <https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners#codeowners-and-branch-protection>`_,
 whose review is mandatory for merging PRs to the repository and who are at the end allowed to merge PRs to the repository.
 
@@ -627,27 +627,27 @@ Possible members are software developers, who
 The Codeownership has to be regularly updated and changes have to be documented.
 
 Planning & Tracking
-===================
++++++++++++++++++++
 
 Cadence
--------
+^^^^^^^
 
 Iteration
-^^^^^^^^^
-Each iteration is two weeks long.
+"""""""""
+The Project calendar is devided into iterations. Each iteration is two weeks long.
 
 Release Frequence
-^^^^^^^^^^^^^^^^^
+"""""""""""""""""
 After every 3rd iteration, the work is baselined into a Release.
 
 
 Planning & Tracking Infrastructure
-----------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The planning and tracking of the work is done inside **GitHub**.
 GitHub **Issues** are used to document all necessary work packages.
 
 Issues
-------
+^^^^^^
 To organize the work :ref:`Github Types <pmp_pm_issue_types>`,  :ref:`GitHub Labels <pmp_pm_gh_labels>` and
 :ref:`GitHub Projects <pmp_pm_gh_projects>` are used.
 The Progress of the work is documented with help of the :ref:`Status of an Issue <pmp_pm_issue_status_flow>`.
@@ -656,7 +656,7 @@ The Progress of the work is documented with help of the :ref:`Status of an Issue
 .. _pmp_pm_issue_types:
 
 Issues Types
-^^^^^^^^^^^^
+""""""""""""
 
 .. image:: _assets/score_project_management_issue_types.drawio.svg
    :width: 900
@@ -665,8 +665,10 @@ Issues Types
 
 .. _pmp_pm_feature_request:
 
-Feature Request
-"""""""""""""""
+|
+
+**Feature Request**
+
 A *Feature Request* represents an independent work package used to describe and
 track a high-level request for the project. *Feature Request* work packages can be linked to
 other work packages, but they must not be treated as parent work packages. They are in the responsibility of the
@@ -674,19 +676,18 @@ other work packages, but they must not be treated as parent work packages. They 
 
 .. _pmp_pm_product_increment:
 
-Product Increment
-"""""""""""""""""
+**Product Increment**
+
 A *Product Increment* represents the highest level in the work package hierarchy and
 cannot be linked as a child of another issue. If you need to group multiple *Product Increment* work packages,
 labels have to be used.
 A *Product Increment* can have multiple *Epic* work packages as children. *Product Increments* areowned by
 :ref:`Technical Lead Circle <pmp_pm_tlc>` and are part of the :ref:`Root Repository <pmp_pm_root_repository>`.
 
-
 .. _pmp_pm_epic:
 
-Epic
-""""
+**Epic**
+
 An *Epic* is the primary planning work package for development teams.
 *Epic* work packages should be scoped in a way that allows them to be completed within
 a release cycle of the S-CORE project.
@@ -703,8 +704,7 @@ of the Team`s main repository.
 
 .. _pmp_pm_task:
 
-Task
-""""
+**Task**
 
 A *Task GitHub Issue* represents the smallest unit of planning and typically corresponds
 to a concrete piece of work to be completed, such as by a developer. *Task* work packages are usually
@@ -717,8 +717,7 @@ of any Team`s repository.
 
 .. _pmp_pm_bug:
 
-Bug
-"""
+**Bug**
 
 A *Bug GitHub Issue* is used to report any kind of problem or malfunction. It is considered
 a special type of *Story* work package and follows the same rules as regular *Epic* work packages,
@@ -729,7 +728,7 @@ of any Team`s repository.
 .. _pmp_pm_issue_status_flow:
 
 Issue Status
-^^^^^^^^^^^^
+""""""""""""
 Each *GitHub issue* has a **Status** depending on the :ref:`GitHub Project <pmp_pm_gh_projects>`,
 we use the following Standard Flow for all :ref:`Issue Types <pmp_pm_issue_types>`:
 
@@ -739,7 +738,7 @@ we use the following Standard Flow for all :ref:`Issue Types <pmp_pm_issue_types
     :align: center
 
 Issue Attributes
-^^^^^^^^^^^^^^^^
+""""""""""""""""
 - Standard Attributes
     - Assignees
     - :ref:`Labels <pmp_pm_gh_labels>`
@@ -754,7 +753,7 @@ Issue Attributes
     - Release
 
 Issue Templates
-^^^^^^^^^^^^^^^
+"""""""""""""""
 Templates defined in *GitHub* ensure the availability of the type relevant information for all issues.
 
 - `Bug Template <https://github.com/eclipse-score/score/blob/main/.github/ISSUE_TEMPLATE/bug.yml>`_
@@ -764,17 +763,17 @@ Templates defined in *GitHub* ensure the availability of the type relevant infor
 - `Task Template <https://github.com/eclipse-score/score/blob/main/.github/ISSUE_TEMPLATE/task.yml>`_
 
 Hierarchies
-^^^^^^^^^^^
+"""""""""""
 Hierarchies are realized as parent-child relations with the `GitHub Sub-Issue Feature <https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/adding-sub-issues>`_.
 
 Dependencies
-^^^^^^^^^^^^
+""""""""""""
 Dependencies are realized with blocked by or blocking relations described in thè `GitHub Issue Dependency Feature <https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-issue-dependencies>`_.
 
 .. _pmp_pm_milestone:
 
 Milestone
----------
+^^^^^^^^^
 A milestone is indicating an important dedicated point in the schedule like
 a Release or a Quality (ASPICE, ASIL) Assessment.
 `GitHub Milestones <https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones>`_ offer to connect *Issues* and *Pull Requests* to the `S-CORE-defined Milestones <https://github.com/eclipse-score/score/milestones>`_
@@ -782,7 +781,7 @@ a Release or a Quality (ASPICE, ASIL) Assessment.
 .. _pmp_pm_release:
 
 Releases
---------
+^^^^^^^^
 *Releases* are special milestones and used for baselining of the development activities.
 
 
@@ -790,7 +789,7 @@ Releases
 
 
 Labels
-------
+^^^^^^
 `GitHub Labels <https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels>`_ are used to organize Issues, Pull Requests etc. having same context. Although
 Labels are powerful, the definition of new Labels shall be wisely done and organization wide used.
 Therefore their management is limited to Organization owners.
@@ -800,7 +799,7 @@ The following `Labels <https://github.com/eclipse-score/score/labels>`_ are defi
 .. _pmp_pm_gh_projects:
 
 GitHub Projects
----------------
+^^^^^^^^^^^^^^^
 The `GitHub Project Feature <https://docs.github.com/en/issues/planning-and-tracking-with-projects>`_
 helps to plan the work and monitor its progress.
 
@@ -818,7 +817,7 @@ for Table, Board and Roadmap supporting Backlogs, Open Point or Task Lists and o
 
 
 Kanban View
-^^^^^^^^^^^
+"""""""""""
 The `GitHub Board <https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/customizing-the-board-layout>`_ is supporting the Kanban View, enabling to set the Work In Progress Limits.
 
 .. image:: _assets/score_project_management_kanban.drawio.svg
@@ -828,20 +827,20 @@ The `GitHub Board <https://docs.github.com/en/issues/planning-and-tracking-with-
 
 
 Task List View
-^^^^^^^^^^^^^^
+""""""""""""""
 The `GitHub Table <https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/customizing-the-table-layout>`_ is supporting the List View, enabling to adapt the priority by reordering the rows.
 
 Roadmap View
-^^^^^^^^^^^^
+""""""""""""
 The `GitHub Roadmap <https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/customizing-the-roadmap-layout>`_ is supporting the Road View, provididing a high-level visualization of your project across a configurable timespan.
 
 Traceability
-------------
+^^^^^^^^^^^^
 To achieve traceability all *Pull Requests* have to be `linked <https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue>`_
 to the corresponding *GitHub Issues*.
 
 Planning of Work
-----------------
+^^^^^^^^^^^^^^^^
 
 Generally, every team is responsible for planning its work within its own plan with the help of its :ref:`GitHub Project <pmp_pm_gh_projects>` filled with :ref:`Epics <pmp_pm_epic>`, :ref:`Tasks <pmp_pm_task>` and :ref:`Bugs <pmp_pm_bug>`.
 
@@ -850,13 +849,13 @@ whereas the overall top-down plan is in the responsibility of the :ref:`Technica
 :ref:`Milestones <pmp_pm_milestone>` and :ref:`Releases <pmp_pm_release>`.
 
 Tracking Progress
------------------
+^^^^^^^^^^^^^^^^^
 The :ref:`Technical Lead Circle <pmp_pm_tlc>` regularly monitors the status of the work for upcoming Milestones and Releases in https://github.com/orgs/eclipse-score/projects/17/ based on
 :ref:`Product Increments <pmp_pm_product_increment>`.
 
 
 Dashboards
-^^^^^^^^^^
+""""""""""
 
 GitHub offers mechanism in form of charts to track issues:
 
