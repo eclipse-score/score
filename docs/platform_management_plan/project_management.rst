@@ -40,7 +40,14 @@ Objectives and Scope
 
 Project Management Goals and Definition of Done
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Project Management Goals and Definition of Done
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+*  The stakeholders/stakeholder groups and organization are defined:
+    - Org Chart and structure description is available and up to date.
+* Communication and reporting paths are described:
+    - Team Overview with meeting structure is available & Slack channels are established and maintained.
+    - Meetings are scheduled in the Eclipse SDV calendar.
 *  The stakeholders/stakeholder groups and organization are defined:
     - Org Chart and structure description is available and up to date.
 * Communication and reporting paths are described:
@@ -51,7 +58,12 @@ Project Management Goals and Definition of Done
     - :ref:`Features <features>` are described.
 * Project Plan is planned and followed:
     - Roadmap with Milestones and Releases are available and up to date.
+    - S-CORE Handbook (:need:`doc__platform_handbook`) is available and up to date.
+    - :ref:`Features <features>` are described.
+* Project Plan is planned and followed:
+    - Roadmap with Milestones and Releases are available and up to date.
 * Escalation paths are described.
+* All Reviews are performed according to their definitions, the respective templates are used.
 * All Reviews are performed according to their definitions, the respective templates are used.
 
 .. _pmp_pm_organization:
@@ -63,6 +75,7 @@ Project Organization
 Org Chart and Main Platform Management Plan Responsibilities
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. image:: _assets/score_project_management_organization_orgchart.drawio.svg
 .. image:: _assets/score_project_management_organization_orgchart.drawio.svg
    :width: 900
    :alt: Infrastructure overview
@@ -139,6 +152,7 @@ Steering of the project is done with the help of *Committees*.
      - - https://github.com/eclipse-score/score
 
 
+.. _pmp_pm_technical_communities:
 .. _pmp_pm_technical_communities:
 
 Communities
@@ -659,6 +673,7 @@ Issues Types
 """"""""""""
 
 .. image:: _assets/score_project_management_issue_types.drawio.svg
+.. image:: _assets/score_project_management_issue_types.drawio.svg
    :width: 900
    :alt: Issue Types
    :align: center
@@ -732,6 +747,8 @@ Issue Status
 Each *GitHub issue* has a **Status** depending on the :ref:`GitHub Project <pmp_pm_gh_projects>`,
 we use the following Standard Flow for all :ref:`Issue Types <pmp_pm_issue_types>`:
 
+.. image:: _assets/score_project_management_issue_status_flow.drawio.svg
+    :width: 900
 .. image:: _assets/score_project_management_issue_status_flow.drawio.svg
     :width: 900
     :alt: Issue Status
@@ -810,6 +827,7 @@ and one for the complete `S-CORE Roadmap <https://github.com/orgs/eclipse-score/
 for Table, Board and Roadmap supporting Backlogs, Open Point or Task Lists and other useful perspectives.
 
 .. image:: _assets/score_project_management_planning_overview.drawio.svg
+.. image:: _assets/score_project_management_planning_overview.drawio.svg
     :width: 900
     :alt: Planning Overview
     :align: center
@@ -820,6 +838,7 @@ Kanban View
 """""""""""
 The `GitHub Board <https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/customizing-the-board-layout>`_ is supporting the Kanban View, enabling to set the Work In Progress Limits.
 
+.. image:: _assets/score_project_management_kanban.drawio.svg
 .. image:: _assets/score_project_management_kanban.drawio.svg
     :width: 900
     :alt: Kanban View
