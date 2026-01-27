@@ -53,6 +53,10 @@ Non-Goals
 Options Considered
 ------------------
 
+Option 0: No change
+^^^^^^^^^^^^^^^^^^^
+Keep the current repository structure and workflows as they are. Accept the cyclic dependency between the process description and docs-as-code repositories and manage it through careful coordination and communication between maintainers. Continue handling build errors manually when they occur.
+
 
 Option 1: Merge both repositories into one
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -95,29 +99,45 @@ Move all example Sphinx-Needs objects from the process repository to the docs-as
    :alt: Examples moved to docs-as-code repository
    :align: center
 
+Option 6: Change error handling from warnings as errors to warnings only
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Keep the current repository structure but change the Sphinx build configuration in the docs-as-code repository to treat warnings as warnings instead of errors. This would allow the build to succeed even when imported Sphinx-Needs objects from the process repository have inconsistencies with the meta model, effectively breaking the tight coupling that causes build failures. The cyclic dependency would remain, but its impact would be reduced and only real errors like type name changes would cause build failures. Please notice that missing mandatory links or fields, as well as additional links only generate warnings in this setup. Only unknown types would still cause errors.
 
 Evaluation
 ----------
 
-.. csv-table::
-   :header: Criteria, Option 1, Option 2, Option 3, Option 4, Option 5
-   :widths: 20, 10, 10, 10, 10, 10
+**Evaluation Criteria:**
 
-   Effort, 😡, 💚, 😡, 😡, 💚
-   UX, 💚, 💚, 😐, 😐, 💚
-   Bureaucracy, 😐, 💚, 😡, 😡, 💚
-   Speed, 😡, 💚, 😡, 😡, 💚
-   Flexibility, 💚, 💚, 😐, 💚, 💚
-   Independence, 😐, 💚, 💚, 💚, 💚
-   Maintainability, 💚, 💚, 😐, 💚, 💚
-   Scalability, 😐, 😐, 😡, 💚, 😐
+- **Effort**: Implementation work required (time, resources, migration complexity).
+- **UX**: User experience and ease of use for developers and maintainers.
+- **Bureaucracy**: Administrative overhead and coordination requirements between repositories.
+- **Speed**: How quickly the solution can be implemented and deployed.
+- **Flexibility**: Ability to adapt and evolve the solution over time.
+- **Independence**: Degree of decoupling between repositories and autonomous evolution.
+- **Maintainability**: Long-term ease of maintaining and updating the solution.
+- **Scalability**: Ability to handle growth in content, contributors, and complexity.
+
+.. csv-table::
+   :header: Criteria, Option 0, Option 1, Option 2, Option 3, Option 4, Option 5, Option 6
+   :widths: 20, 10, 10, 10, 10, 10, 10, 10
+
+   Effort, 💚, 😡, 😐, 😡, 😡, 💚, 💚
+   UX, 😡, 💚, 💚, 😐, 😐, 💚, 😡
+   Bureaucracy, 💚, 😐, 💚, 😡, 😡, 💚, 💚
+   Speed, 💚, 😡, 💚, 😡, 😡, 💚, 💚
+   Flexibility, 😡, 💚, 💚, 😐, 💚, 💚, 😐
+   Independence, 😡, 😐, 💚, 💚, 💚, 💚, 😡
+   Maintainability, 😡, 💚, 💚, 😐, 💚, 💚, 😡
+   Scalability, 😡, 😐, 😐, 😡, 💚, 😐, 😡
 
 **Rationale:**
 
+- **Option 0 (No change)**: No effort required, poor UX (frequent build failures), low bureaucracy (current process), immediate (no implementation needed), poor flexibility (locked into current structure), poor independence (cyclic dependency remains), poor maintainability (ongoing coordination burden), poor scalability (problem worsens as repos grow).
 - **Option 1 (Merge)**: High effort to merge repos, but excellent UX (single source), good maintainability (everything in one place), moderate scalability (single repo can become large).
 - **Option 2 (Meta model to process repo)**: Low effort, excellent UX (clear authority), low bureaucracy, fast implementation, good flexibility (centralized control), good independence (docs-as-code just consumes), good maintainability (clear ownership), moderate scalability (single authority may become bottleneck).
 - **Option 3 (Third repo for examples)**: High effort (new repo setup), moderate UX (more repos to navigate), high bureaucracy (three repos to coordinate), slow implementation, moderate flexibility (still dependencies), good independence (process repo becomes independent), moderate maintainability (three repos to maintain), poor scalability (complexity increases with more repos).
 - **Option 4 (Separate meta model repo)**: High effort (new repo setup and migration), moderate UX (clear separation but another repo), high bureaucracy (third repo to coordinate), slow implementation, good flexibility (dedicated meta model evolution), excellent independence (clear hierarchy), good maintainability (focused responsibility), excellent scalability (clean separation of concerns).
 - **Option 5 (Examples to docs-as-code)**: Low effort (moving examples only), excellent UX (examples with infrastructure), low bureaucracy (two repos), fast implementation, good flexibility (examples can evolve with infrastructure), good independence (process repo independent), good maintainability (examples maintained where used), moderate scalability (docs-as-code repo grows with examples), but no examples in the process description.
+- **Option 6 (Warnings only)**: Very low effort (config change only), poor UX (silent failures, inconsistencies not caught), low bureaucracy (no structural change), very fast implementation, moderate flexibility (doesn't address root cause), poor independence (cyclic dependency remains), poor maintainability (masks problems instead of solving them), poor scalability (technical debt accumulates).
 
 **Recommendation:** Option 2 (moving the meta model to the process repository) provides the best balance of low effort, fast implementation, and clear ownership. It directly breaks the cyclic dependency by making the process repo authoritative for both requirements and meta model, with the docs-as-code repo serving purely as infrastructure.
