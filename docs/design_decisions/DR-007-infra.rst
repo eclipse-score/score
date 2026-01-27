@@ -87,21 +87,30 @@ Create or use a dedicated meta model repository that contains only the Sphinx-Ne
    :alt: Meta model and examples in a separate repository
    :align: center
 
+Option 5: Move examples to docs-as-code repository
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Move all example Sphinx-Needs objects from the process repository to the docs-as-code repository. The process repository would define requirements for the meta model, while docs-as-code would provide infrastructure, the meta model and host the examples that demonstrate the meta model. This breaks the cycle by removing the import dependency from docs-as-code back to the process repository.
+
+.. image:: img/DR-007-issue_option_5.drawio.svg
+   :alt: Examples moved to docs-as-code repository
+   :align: center
+
+
 Evaluation
 ----------
 
 .. csv-table::
-   :header: Criteria, Option 1, Option 2, Option 3, Option 4
-   :widths: 20, 10, 10, 10, 10
+   :header: Criteria, Option 1, Option 2, Option 3, Option 4, Option 5
+   :widths: 20, 10, 10, 10, 10, 10
 
-   Effort, 😡, 💚, 😡, 😡
-   UX, 💚, 💚, 😐, 😐
-   Bureaucracy, 😐, 💚, 😡, 😡
-   Speed, 😡, 💚, 😡, 😡
-   Flexibility, 💚, 💚, 😐, 💚
-   Independence, 😐, 💚, 💚, 💚
-   Maintainability, 💚, 💚, 😐, 💚
-   Scalability, 😐, 😐, 😡, 💚
+   Effort, 😡, 💚, 😡, 😡, 💚
+   UX, 💚, 💚, 😐, 😐, 💚
+   Bureaucracy, 😐, 💚, 😡, 😡, 💚
+   Speed, 😡, 💚, 😡, 😡, 💚
+   Flexibility, 💚, 💚, 😐, 💚, 💚
+   Independence, 😐, 💚, 💚, 💚, 💚
+   Maintainability, 💚, 💚, 😐, 💚, 💚
+   Scalability, 😐, 😐, 😡, 💚, 😐
 
 **Rationale:**
 
@@ -109,5 +118,6 @@ Evaluation
 - **Option 2 (Meta model to process repo)**: Low effort, excellent UX (clear authority), low bureaucracy, fast implementation, good flexibility (centralized control), good independence (docs-as-code just consumes), good maintainability (clear ownership), moderate scalability (single authority may become bottleneck).
 - **Option 3 (Third repo for examples)**: High effort (new repo setup), moderate UX (more repos to navigate), high bureaucracy (three repos to coordinate), slow implementation, moderate flexibility (still dependencies), good independence (process repo becomes independent), moderate maintainability (three repos to maintain), poor scalability (complexity increases with more repos).
 - **Option 4 (Separate meta model repo)**: High effort (new repo setup and migration), moderate UX (clear separation but another repo), high bureaucracy (third repo to coordinate), slow implementation, good flexibility (dedicated meta model evolution), excellent independence (clear hierarchy), good maintainability (focused responsibility), excellent scalability (clean separation of concerns).
+- **Option 5 (Examples to docs-as-code)**: Low effort (moving examples only), excellent UX (examples with infrastructure), low bureaucracy (two repos), fast implementation, good flexibility (examples can evolve with infrastructure), good independence (process repo independent), good maintainability (examples maintained where used), moderate scalability (docs-as-code repo grows with examples), but no examples in the process description.
 
 **Recommendation:** Option 2 (moving the meta model to the process repository) provides the best balance of low effort, fast implementation, and clear ownership. It directly breaks the cyclic dependency by making the process repo authoritative for both requirements and meta model, with the docs-as-code repo serving purely as infrastructure.
