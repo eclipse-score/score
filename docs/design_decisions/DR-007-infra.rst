@@ -26,10 +26,10 @@ Context / Problem
 
 Currently, there are two repositories defining the docs-as-code principles with Sphinx and Sphinx-Needs:
 
-- The **process description repository** defines the requirements and the meta model for the Sphinx-Needs objects (requirements, architecture, processes, etc.). It includes also example Sphinx-Needs objects that illustrate the defined meta model.
+- The **process description repository** defines the process and the requirements for the meta model of the Sphinx-Needs objects (sphinx objects for requirements, architecture, processes, etc.). It includes also example Sphinx-Needs objects that illustrate the usage of the defined meta model.
 - The **docs-as-code repository** provides the base docs as code infrastructure and uses the process requirements to define the sphinx needs meta model and includes Sphinx-Needs objects from the process repository for testing.
 
-However, the process repository also uses the docs-as-code repository's as infrastructure for the rocess documentation and the meta model for Sphinx-Needs objects, creating a **cyclic dependency** between the two repositories. Any change in the process requirements (in the process repo) leads to a change in the docs-as-code meta model, but any change in the docs-as-code meta model can cause build errors in the process_description repo and this happens during the docs-as-code build as Sphinx-Needs objects from the process repo are imported. This tight coupling makes maintenance and evolution of both repositories difficult and error-prone.
+However, the process repository also uses the docs-as-code repository's as infrastructure for the process documentation and the meta model for Sphinx-Needs objects, creating a **cyclic dependency** between the two repositories. Any change in the process requirements (in the process repo) for the meta model possibly leads to a change in the docs-as-code meta model, but any change in the docs-as-code meta model can cause build errors in the process_description repo and this happens during the docs-as-code build as Sphinx-Needs objects from the process repo are imported. This tight coupling makes maintenance and evolution of both repositories difficult and error-prone.
 
 .. image:: img/DR-007-issue.drawio.svg
    :alt: Cyclic dependency between process and docs-as-code repositories
@@ -38,10 +38,10 @@ However, the process repository also uses the docs-as-code repository's as infra
 Goals and Requirements
 ^^^^^^^^^^^^^^^^^^^^^^
 
-- Avoid cyclic dependencies between repositories.
-- Enable independent evolution of process requirements and meta model definitions.
+- Avoid cyclic dependencies between repositories for the meta model and the examples for the meta model.
+- Enable independent evolution of process requirements for the meta model and the meta model definitions itself.
 - Ensure that example Sphinx-Needs objects and meta model definitions remain consistent and buildable.
-- Minimize build errors and maintenance overhead.
+- Minimize build errors and maintenance overhead in respekt to meta model.
 
 Non-Goals
 ~~~~~~~~~
@@ -108,12 +108,12 @@ Evaluation
 
 **Evaluation Criteria:**
 
-- **Effort**: Implementation work required (time, resources, migration complexity).
-- **UX**: User experience and ease of use for developers and maintainers.
-- **Bureaucracy**: Administrative overhead and coordination requirements between repositories.
+- **Effort**: Implementation work required (time, resources, migration complexity) for the change.
+- **UX**: User experience and ease of use for developers and maintainers while work on the meta model / examples.
+- **Bureaucracy**: Administrative overhead and coordination requirements between repositories for the meta model / examples.
 - **Speed**: How quickly the solution can be implemented and deployed.
-- **Flexibility**: Ability to adapt and evolve the solution over time.
-- **Independence**: Degree of decoupling between repositories and autonomous evolution.
+- **Flexibility**: Ability to adapt and evolve the solution in respect to meta model and examples over time.
+- **Independence**: Degree of decoupling between repositories and autonomous evolution in respect to the meta model and examples.
 - **Maintainability**: Long-term ease of maintaining and updating the solution.
 - **Scalability**: Ability to handle growth in content, contributors, and complexity.
 
