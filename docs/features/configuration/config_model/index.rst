@@ -7,6 +7,7 @@ Configuration Model
    :safety: QM
    :security: NO
    :tags: feature_request
+   :realizes: wp__feat_request
 
 Feature flag
 ============
