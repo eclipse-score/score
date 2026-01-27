@@ -160,25 +160,55 @@ Functional Requirements
 Non-Functional Requirements
 ===========================
 
-.. comp_req:: Resource Determinism
-   :id: comp_req__concurrency__resource_determinism
+.. comp_req:: Memory Usage Control
+   :id: comp_req__concurrency__memory_usage_control
    :reqtype: Non-Functional
    :security: NO
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__concurrency_library
    :status: valid
 
-   The concurrency module shall limit memory usage, allow reserving memory upfront for tasks, report the maximum number of concurrent threads, and use timeouts to prevent operations from waiting forever.
+   The concurrency module shall limit memory usage to prevent uncontrolled resource consumption.
 
-.. comp_req:: Exception Safety
-   :id: comp_req__concurrency__exception_safety
+.. comp_req:: Memory Reservation
+   :id: comp_req__concurrency__memory_reservation
    :reqtype: Non-Functional
    :security: NO
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__concurrency_library
    :status: valid
 
-   The concurrency module shall maintain strong exception safety guarantees where possible, propagate exceptions from tasks through futures, never leak resources in exception paths, and mark destructors as noexcept.
+   The concurrency module shall allow reserving memory upfront for tasks to ensure predictable resource allocation.
+
+.. comp_req:: Thread Count Reporting
+   :id: comp_req__concurrency__thread_count_reporting
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: ASIL_B
+   :satisfies: feat_req__baselibs__concurrency_library
+   :status: valid
+
+   The concurrency module shall report the maximum number of concurrent threads available for task execution.
+
+.. comp_req:: Operation Timeout Protection
+   :id: comp_req__concurrency__operation_timeout
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: ASIL_B
+   :satisfies: feat_req__baselibs__concurrency_library
+   :status: valid
+
+   The concurrency module shall use timeouts to prevent operations from waiting forever.
+
+.. comp_req:: Future Error Handling
+   :id: comp_req__concurrency__error_handling
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: ASIL_B
+   :satisfies: feat_req__baselibs__concurrency_library
+   :status: valid
+
+   The concurrency module shall use error codes instead of throwing exceptions.
 
 .. needextend:: "__concurrency" in id
    :+tags: concurrency
