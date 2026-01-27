@@ -29,6 +29,8 @@ For the platform quality management a pool of quality managers is elected due to
 
 `Markus Schu <https://github.com/masc2023>`_
 
+`Volker Häussler <https://github.com/PandaDo>`_
+
 
 Election Reasoning
 ==================
@@ -64,12 +66,34 @@ S-CORE Commits:
 - major committer in `score repository <https://github.com/eclipse-score/score>`_
 
 
+Evidences Volker Häussler
+-------------------------
+
+`LinkedIn Profile <https://www.linkedin.com/in/volker-h%C3%A4ussler-58a840111/details/experience/>`_
+
+Quality Management Experiences:
+
+- Head of Competence for Functional Safety from 2018 to 2024
+
+Experiences for Safety and Security Management can be found here:
+:need:`doc__platform_safety_manager` and :need:`doc__platform_safety_engineer`.
+
+Education and Skills:
+
+- Dipl.-Ing. (FH) Electrical Engineering - certificate
+- Safety related development at system, software and hardware level > 10 years - letters of recommendation from employers
+
+S-CORE Commits:
+
+- committer in `process_description repository <https://github.com/eclipse-score/process_description>`_
+- committer in `score repository <https://github.com/eclipse-score/score>`_
+
 Election
 ========
 
 For the election further Committers with similar skills are asked for approval:
 
-- `<https://github.com/PandaeDo>`_
+- `<https://github.com/masc2023>`_
 - `<https://github.com/pahmann>`_
 
 
