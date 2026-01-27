@@ -42,7 +42,7 @@ Project Management Goals and Definition of Done
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *  The stakeholders/stakeholder groups and organization are defined:
-    - Org Chart and structure description is available and up to date.
+    - :ref:`Org Chart and structure description <pmp_pm_organization>` is available and up to date.
 * Communication and reporting paths are described:
     - Team Overview with meeting structure is available & Slack channels are established and maintained.
     - Meetings are scheduled in the Eclipse SDV calendar.
@@ -50,7 +50,7 @@ Project Management Goals and Definition of Done
     - S-CORE Handbook (:need:`doc__platform_handbook`) is available and up to date.
     - :ref:`Features <features>` are described.
 * Project Plan is planned and followed:
-    - Roadmap with Milestones and Releases are available and up to date.
+    - Roadmap with :ref:`Milestones <pmp_pm_milestone>` and :ref:`Releases <pmp_pm_release>` are available and up to date.
     - S-CORE Handbook (:need:`doc__platform_handbook`) is available and up to date.
     - :ref:`Features <features>` are described.
 * Escalation paths are described.
