@@ -53,8 +53,6 @@ Project Management Goals and Definition of Done
     - Roadmap with Milestones and Releases are available and up to date.
     - S-CORE Handbook (:need:`doc__platform_handbook`) is available and up to date.
     - :ref:`Features <features>` are described.
-* Project Plan is planned and followed:
-    - Roadmap with Milestones and Releases are available and up to date.
 * Escalation paths are described.
 * All Reviews are performed according to their definitions, the respective templates are used.
 
