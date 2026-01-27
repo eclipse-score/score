@@ -1,0 +1,89 @@
+@startuml elemente
+
+package "S-CORE Repo" {
+  class Platform {
+    + SEooC: bool
+    --
+    Objectives
+    Stakeholder Requirements
+    Platform Architecture
+    SW-Platform Assumptions of use
+    Platform Integration Tests
+  }
+}
+
+package "Feature Repo" {
+  class Feature {
+    + SEooC: bool
+    --
+    Feature Requirements
+    Feature Architecture
+    Feature Integration Tests
+    Feature Safety/Security Analysis
+    Feature Assumptions of use
+  }
+}
+
+package "SW-Module Repo" as FeatureImplRepo1 {
+  note as N1
+    C++
+  end note
+
+  class "Component" as ComponentCpp {
+    --
+    Component Requirements
+    Component Architecture
+    Component Integration Tests
+    Component Safety/Security Analysis
+    Component Assumption of use
+  }
+
+  class "Unit" as UnitCpp {
+    --
+    Detailed Design
+    Source Code
+    Unit Test
+  }
+}
+
+package "SW-Module Repo" as FeatureImplRepo2 {
+  note as N2
+    Rust
+  end note
+
+  class "Component" as ComponentRust {
+    --
+    Component Requirements
+    Component Architecture
+    Component Integration Tests
+    Component Safety/Security Analysis
+    Component Assumption of use
+  }
+
+  class "Unit" as UnitRust {
+    --
+    Detailed Design
+    Source Code
+    Unit Test
+  }
+}
+
+package "Integration Repo" {
+}
+
+' Package Relationships
+"Integration Repo" ..> "S-CORE Repo" : derives from
+"Integration Repo" ..> "Feature Repo" : uses
+"Integration Repo" ..> FeatureImplRepo1 : uses
+"Integration Repo" ..> FeatureImplRepo2 : uses
+
+' Relationships
+Platform "1" *-- "n" Feature
+Feature "1" o-- "n" ComponentCpp
+Feature "1" o-- "n" ComponentRust
+ComponentCpp "1" o-- "n" ComponentCpp : contains
+ComponentRust "1" o-- "n" ComponentRust : contains
+ComponentCpp "1" o-d- "n" UnitCpp
+ComponentRust "1" o-d- "n" UnitRust
+
+@enduml
