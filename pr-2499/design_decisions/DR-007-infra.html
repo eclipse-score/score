@@ -557,7 +557,7 @@
 <ul class="simple">
 <li><p><strong>Date:</strong> 2026-01-26</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-1ddb51d9">
+<div class="need_container docutils container" id="SNCB-367a03c6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__dependency_docs_as_code">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -607,7 +607,7 @@
 <li><p>The <strong>process description repository</strong> defines the requirements and the meta model for the Sphinx-Needs objects (requirements, architecture, processes, etc.). It includes also example Sphinx-Needs objects that illustrate the defined meta model.</p></li>
 <li><p>The <strong>docs-as-code repository</strong> provides the base docs as code infrastructure and uses the process requirements to define the sphinx needs meta model and includes Sphinx-Needs objects from the process repository for testing.</p></li>
 </ul>
-<p>However, the process repository also uses the docs-as-code repository’s as infrastructure for the rocess documentation and the meta model for Sphinx-Needs objects, creating a <strong>cyclic dependency</strong> between the two repositories. Any change in the process requirements (in the process repo) leads to a change in the docs-as-code meta model, but any change in the meta model can cause build errors in the docs-as-code repo, since it imports Sphinx-Needs objects from the process repo as examples. This tight coupling makes maintenance and evolution of both repositories difficult and error-prone.</p>
+<p>However, the process repository also uses the docs-as-code repository’s as infrastructure for the rocess documentation and the meta model for Sphinx-Needs objects, creating a <strong>cyclic dependency</strong> between the two repositories. Any change in the process requirements (in the process repo) leads to a change in the docs-as-code meta model, but any change in the docs-as-code meta model can cause build errors in the process_description repo and this happens during the docs-as-code build as Sphinx-Needs objects from the process repo are imported. This tight coupling makes maintenance and evolution of both repositories difficult and error-prone.</p>
 <img alt="Cyclic dependency between process and docs-as-code repositories" class="align-center" src="../_images/DR-007-issue.drawio.svg" />
 <section id="goals-and-requirements">
 <h3>Goals and Requirements<a class="headerlink" href="#goals-and-requirements" title="Link to this heading">#</a></h3>
