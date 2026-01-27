@@ -27,6 +27,7 @@ concurrency
    :hidden:
 
    architecture/index.rst
+   requirements/index.rst
 
 Abstract
 ========
