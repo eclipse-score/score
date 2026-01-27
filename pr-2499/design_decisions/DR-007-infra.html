@@ -557,7 +557,7 @@
 <ul class="simple">
 <li><p><strong>Date:</strong> 2026-01-26</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-b58652d3">
+<div class="need_container docutils container" id="SNCB-baebb071">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__dependency_docs_as_code">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -604,18 +604,18 @@
 <h2>Context / Problem<a class="headerlink" href="#context-problem" title="Link to this heading">#</a></h2>
 <p>Currently, there are two repositories defining the docs-as-code principles with Sphinx and Sphinx-Needs:</p>
 <ul class="simple">
-<li><p>The <strong>process description repository</strong> defines the requirements and the meta model for the Sphinx-Needs objects (requirements, architecture, processes, etc.). It includes also example Sphinx-Needs objects that illustrate the defined meta model.</p></li>
+<li><p>The <strong>process description repository</strong> defines the process and the requirements for the meta model of the Sphinx-Needs objects (sphinx objects for requirements, architecture, processes, etc.). It includes also example Sphinx-Needs objects that illustrate the usage of the defined meta model.</p></li>
 <li><p>The <strong>docs-as-code repository</strong> provides the base docs as code infrastructure and uses the process requirements to define the sphinx needs meta model and includes Sphinx-Needs objects from the process repository for testing.</p></li>
 </ul>
-<p>However, the process repository also uses the docs-as-code repository’s as infrastructure for the rocess documentation and the meta model for Sphinx-Needs objects, creating a <strong>cyclic dependency</strong> between the two repositories. Any change in the process requirements (in the process repo) leads to a change in the docs-as-code meta model, but any change in the docs-as-code meta model can cause build errors in the process_description repo and this happens during the docs-as-code build as Sphinx-Needs objects from the process repo are imported. This tight coupling makes maintenance and evolution of both repositories difficult and error-prone.</p>
+<p>However, the process repository also uses the docs-as-code repository’s as infrastructure for the process documentation and the meta model for Sphinx-Needs objects, creating a <strong>cyclic dependency</strong> between the two repositories. Any change in the process requirements (in the process repo) for the meta model possibly leads to a change in the docs-as-code meta model, but any change in the docs-as-code meta model can cause build errors in the process_description repo and this happens during the docs-as-code build as Sphinx-Needs objects from the process repo are imported. This tight coupling makes maintenance and evolution of both repositories difficult and error-prone.</p>
 <img alt="Cyclic dependency between process and docs-as-code repositories" class="align-center" src="../_images/DR-007-issue.drawio.svg" />
 <section id="goals-and-requirements">
 <h3>Goals and Requirements<a class="headerlink" href="#goals-and-requirements" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Avoid cyclic dependencies between repositories.</p></li>
-<li><p>Enable independent evolution of process requirements and meta model definitions.</p></li>
+<li><p>Avoid cyclic dependencies between repositories for the meta model and the examples for the meta model.</p></li>
+<li><p>Enable independent evolution of process requirements for the meta model and the meta model definitions itself.</p></li>
 <li><p>Ensure that example Sphinx-Needs objects and meta model definitions remain consistent and buildable.</p></li>
-<li><p>Minimize build errors and maintenance overhead.</p></li>
+<li><p>Minimize build errors and maintenance overhead in respekt to meta model.</p></li>
 </ul>
 <section id="non-goals">
 <h4>Non-Goals<a class="headerlink" href="#non-goals" title="Link to this heading">#</a></h4>
@@ -666,12 +666,12 @@
 <h2>Evaluation<a class="headerlink" href="#evaluation" title="Link to this heading">#</a></h2>
 <p><strong>Evaluation Criteria:</strong></p>
 <ul class="simple">
-<li><p><strong>Effort</strong>: Implementation work required (time, resources, migration complexity).</p></li>
-<li><p><strong>UX</strong>: User experience and ease of use for developers and maintainers.</p></li>
-<li><p><strong>Bureaucracy</strong>: Administrative overhead and coordination requirements between repositories.</p></li>
+<li><p><strong>Effort</strong>: Implementation work required (time, resources, migration complexity) for the change.</p></li>
+<li><p><strong>UX</strong>: User experience and ease of use for developers and maintainers while work on the meta model / examples.</p></li>
+<li><p><strong>Bureaucracy</strong>: Administrative overhead and coordination requirements between repositories for the meta model / examples.</p></li>
 <li><p><strong>Speed</strong>: How quickly the solution can be implemented and deployed.</p></li>
-<li><p><strong>Flexibility</strong>: Ability to adapt and evolve the solution over time.</p></li>
-<li><p><strong>Independence</strong>: Degree of decoupling between repositories and autonomous evolution.</p></li>
+<li><p><strong>Flexibility</strong>: Ability to adapt and evolve the solution in respect to meta model and examples over time.</p></li>
+<li><p><strong>Independence</strong>: Degree of decoupling between repositories and autonomous evolution in respect to the meta model and examples.</p></li>
 <li><p><strong>Maintainability</strong>: Long-term ease of maintaining and updating the solution.</p></li>
 <li><p><strong>Scalability</strong>: Ability to handle growth in content, contributors, and complexity.</p></li>
 </ul>
