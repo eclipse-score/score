@@ -109,10 +109,10 @@ Evaluation
 **Evaluation Criteria:**
 
 - **Effort**: Implementation work required (time, resources, migration complexity) for the change.
+- **Speed**: How quickly the solution can be implemented and deployed (overall project).
 - **UX**: User experience and ease of use for developers and maintainers while work on the meta model / examples.
 - **Bureaucracy**: Administrative overhead and coordination requirements between repositories for the meta model / examples.
-- **Speed**: How quickly the solution can be implemented and deployed.
-- **Flexibility**: Ability to adapt and evolve the solution in respect to meta model and examples over time.
+- **Flexibility**: Ability to adapt and evolve the solution in respect to requirements of meta model and examples over time.
 - **Independence**: Degree of decoupling between repositories and autonomous evolution in respect to the meta model and examples.
 - **Maintainability**: Long-term ease of maintaining and updating the solution.
 - **Scalability**: Ability to handle growth in content, contributors, and complexity.
@@ -121,14 +121,14 @@ Evaluation
    :header: Criteria, Option 0, Option 1, Option 2, Option 3, Option 4, Option 5, Option 6
    :widths: 20, 10, 10, 10, 10, 10, 10, 10
 
-   Effort, 💚, 😡, 😐, 😡, 😡, 💚, 💚
-   UX, 😡, 💚, 💚, 😐, 😐, 💚, 😡
-   Bureaucracy, 💚, 😐, 💚, 😡, 😡, 💚, 💚
-   Speed, 💚, 😡, 💚, 😡, 😡, 💚, 💚
-   Flexibility, 😡, 💚, 💚, 😐, 💚, 💚, 😐
-   Independence, 😡, 😐, 💚, 💚, 💚, 💚, 😡
-   Maintainability, 😡, 💚, 💚, 😐, 💚, 💚, 😡
-   Scalability, 😡, 😐, 😐, 😡, 💚, 😐, 😡
+   Effort,Speed     💚, 😡, 😐, 😐, 😡, 💚, 💚
+   Speed,           💚, 😐, 😐, 😡, 😡, 💚, 💚
+   UX,              😡, 💚, 💚, 😡, 💚, 💚, 😐
+   Bureaucracy,     😐, 💚, 😐, 😡, 😡, 😐, 😐
+   Flexibility,     😡, 💚, 💚, 😐, 💚, 💚, 😐
+   Independence,    😐, 😐, 😐, 💚, 💚, 💚, 😐
+   Maintainability, 😡, 😐, 💚, 😐, 💚, 💚, 😡
+   Scalability,     😡, 😡, 😡, 😡, 💚, 😡, 😡
 
 **Rationale:**
 
