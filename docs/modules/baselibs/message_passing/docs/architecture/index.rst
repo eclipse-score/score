@@ -15,8 +15,8 @@
 Message Passing Component Architecture
 **************************************
 
-.. comp_arc_sta:: Message Passing
-   :id: comp_arc_sta__baselibs__message_passing
+.. comp:: Message Passing
+   :id: comp__baselibs_message_passing
    :security: YES
    :safety: ASIL_B
    :status: valid

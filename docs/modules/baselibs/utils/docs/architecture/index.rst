@@ -29,8 +29,8 @@ see :need:`doc__utils`
 Static Architecture
 -------------------
 
-.. comp_arc_sta:: Utils
-   :id: comp_arc_sta__baselibs__utils
+.. comp:: Utils
+   :id: comp__baselibs_utils
    :security: YES
    :safety: ASIL_B
    :status: valid

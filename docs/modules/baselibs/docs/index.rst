@@ -12,9 +12,16 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. mod_view_sta:: Baselibs
+.. mod:: Baselibs
+   :id: mod__baselibs
+   :includes: comp__baselibs_json, comp__baselibs_message_passing, comp__baselibs_memory_shared, comp__baselibs_result, comp__baselibs_bit_manipulation, comp__baselibs_containers, comp__baselibs_filesystem, comp__baselibs_utils, comp__baselibs_concurrency
+   :status: valid
+   :safety: ASIL_B
+   :security: YES
+
+.. mod_view_sta:: Baselibs Static View
    :id: mod_view_sta__baselibs__baselibs
-   :includes: comp_arc_sta__baselibs__json, comp_arc_sta__baselibs__message_passing, comp_arc_sta__baselibs__memory_shared, comp_arc_sta__baselibs__result, comp_arc_sta__baselibs__bit_manipulation, comp_arc_sta__baselibs__containers, comp_arc_sta__baselibs__filesystem, comp_arc_sta__baselibs__utils, comp_arc_sta__baselibs__concurrency
+   :includes: comp__baselibs_json, comp__baselibs_message_passing, comp__baselibs_memory_shared, comp__baselibs_result, comp__baselibs_bit_manipulation, comp__baselibs_containers, comp__baselibs_filesystem, comp__baselibs_utils, comp__baselibs_concurrency
 
    .. needarch::
       :scale: 50

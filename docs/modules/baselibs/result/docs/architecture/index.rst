@@ -30,8 +30,8 @@ see :need:`doc__result`
 Static Architecture
 -------------------
 
-.. comp_arc_sta:: Result
-   :id: comp_arc_sta__baselibs__result
+.. comp:: Result
+   :id: comp__baselibs_result
    :security: YES
    :safety: ASIL_B
    :status: valid

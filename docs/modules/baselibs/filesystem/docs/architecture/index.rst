@@ -29,8 +29,8 @@ see :need:`doc__filesystem`
 Static Architecture
 -------------------
 
-.. comp_arc_sta:: Filesystem
-   :id: comp_arc_sta__baselibs__filesystem
+.. comp:: Filesystem
+   :id: comp__baselibs_filesystem
    :security: YES
    :safety: ASIL_B
    :status: valid

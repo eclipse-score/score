@@ -28,4 +28,4 @@ The component split was done nevertheless, because "JSON Wrapper" is implemented
 "nlohman_json" is reused from open source.
 
 So the requirements for "JSON Wrapper" are documented in :need:`doc__json_requirements`
-(all requirements which are "fulfilled_by" :need:`comp_arc_sta__baselibs__json_wrapper`)
+(all requirements which are "fulfilled_by" :need:`comp__baselibs_json_wrapper`)

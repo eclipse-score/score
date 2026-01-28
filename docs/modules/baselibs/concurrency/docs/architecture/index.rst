@@ -30,8 +30,8 @@ see :need:`doc__concurrency`
 Static Architecture
 -------------------
 
-.. comp_arc_sta:: Concurrency
-   :id: comp_arc_sta__baselibs__concurrency
+.. comp:: Concurrency
+   :id: comp__baselibs_concurrency
    :security: YES
    :safety: ASIL_B
    :status: valid

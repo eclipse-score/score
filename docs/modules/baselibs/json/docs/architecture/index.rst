@@ -58,13 +58,21 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 Static Architecture
 -------------------
 
-.. comp_arc_sta:: JSON
-   :id: comp_arc_sta__baselibs__json
+.. comp:: JSON
+   :id: comp__baselibs_json
    :security: YES
    :safety:  ASIL_B
    :status: valid
    :implements: logic_arc_int__baselibs__json
-   :includes: comp_arc_sta__baselibs__json_wrapper, comp_arc_sta__baselibs__nlohman_json
+   :consists_of: comp__baselibs_json_wrapper, comp__baselibs_nlohman_json
+
+
+.. comp_arc_sta:: JSON Static view
+   :id: comp_arc_sta__baselibs__json
+   :security: YES
+   :safety:  ASIL_B
+   :status: valid
+   :includes: comp__baselibs_json_wrapper, comp__baselibs_nlohman_json
    :fulfils: comp_req__json__deserialization, comp_req__json__serialization, comp_req__json__user_format, comp_req__json__lang_idioms, comp_req__json__lang_infra, comp_req__json__type_compatibility, comp_req__json__full_testability, comp_req__json__asil
 
    .. needarch::
@@ -119,17 +127,16 @@ Interfaces
 Lower Level Components
 ----------------------
 
-.. comp_arc_sta:: JSON-Wrapper
-   :id: comp_arc_sta__baselibs__json_wrapper
+.. comp:: JSON-Wrapper
+   :id: comp__baselibs_json_wrapper
    :security: YES
    :safety:  ASIL_B
    :status: valid
    :implements: logic_arc_int__baselibs__json
-   :fulfils: comp_req__json__user_format, comp_req__json__lang_idioms, comp_req__json__lang_infra, comp_req__json__type_compatibility, comp_req__json__full_testability, comp_req__json__serialization, comp_req__json__asil
 
-.. comp_arc_sta:: nlohman-JSON
-   :id: comp_arc_sta__baselibs__nlohman_json
+
+.. comp:: nlohman-JSON
+   :id: comp__baselibs_nlohman_json
    :security: YES
    :safety:  ASIL_B
    :status: valid
-   :fulfils: comp_req__json__deserialization, comp_req__json__asil
