@@ -30,8 +30,8 @@ see :need:`doc__bitmanipulation`
 Static Architecture
 -------------------
 
-.. comp_arc_sta:: Bit Manipulation
-   :id: comp_arc_sta__baselibs__bit_manipulation
+.. comp:: Bit Manipulation
+   :id: comp__baselibs_bit_manipulation
    :security: NO
    :safety: ASIL_B
    :status: valid

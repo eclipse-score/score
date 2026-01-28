@@ -106,7 +106,7 @@ Requirement Inspection Checklist
         - Does the requirement consider *external interfaces*?
         - The SW platform's external interfaces (to the user) are defined in the Feature Architecture, so the Feature and Component Requirements should determine the input data use and setting of output data for these interfaces. Are all output values defined?
         - YES
-        - Fixed: This could be improved by using the interfaces defined in :need:`comp_arc_sta__baselibs__result`
+        - Fixed: This could be improved by using the interfaces defined in :need:`comp__baselibs_result`
         - `#2229 <https://github.com/eclipse-score/score/issues/2229>`_
       * - REQ_07_01
         - Is the *safety* attribute set correctly?

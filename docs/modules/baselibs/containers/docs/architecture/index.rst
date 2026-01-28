@@ -30,8 +30,8 @@ see :need:`doc__containers_architecture`
 Static Architecture
 -------------------
 
-.. comp_arc_sta:: Containers
-   :id: comp_arc_sta__baselibs__containers
+.. comp:: Containers
+   :id: comp__baselibs_containers
    :security: YES
    :safety: ASIL_B
    :status: valid

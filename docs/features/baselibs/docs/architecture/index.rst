@@ -84,7 +84,15 @@ The decomposition of Baselibs into modular libraries is motivated by the need fo
 Static Architecture
 -------------------
 
-.. feat_arc_sta:: Static View
+.. feat:: Baselibs
+   :id: feat__baselibs
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :includes: logic_arc_int__baselibs__json, logic_arc_int__baselibs__memory_shared, logic_arc_int__baselibs__message_passing, logic_arc_int__baselibs__result, logic_arc_int__baselibs__bit_manipulation, logic_arc_int__baselibs__bit_mask_operator, logic_arc_int__baselibs__dynamic_array, logic_arc_int__baselibs__intrusive_list, logic_arc_int__baselibs__filesystem, logic_arc_int__baselibs__utils_base64, logic_arc_int__baselibs__utils_scoped_op, logic_arc_int__baselibs__promise, logic_arc_int__baselibs__future, logic_arc_int__baselibs__shared_future, logic_arc_int__baselibs__executor, logic_arc_int__baselibs__task, logic_arc_int__baselibs__task_result, logic_arc_int__baselibs__synchronized_queue, logic_arc_int__baselibs__condition_variable
+   :consists_of: comp__com_configuration, comp__com_ipc_binding, comp__com_mock_binding, comp__com_frontend
+
+.. feat_arc_sta:: Baselibs Static View
    :id: feat_arc_sta__baselibs__static_view_arch
    :security: YES
    :safety: ASIL_B

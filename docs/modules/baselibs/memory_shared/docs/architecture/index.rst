@@ -15,8 +15,8 @@
 Memory Shared Component Architecture
 ************************************
 
-.. comp_arc_sta:: Memory Shared
-   :id: comp_arc_sta__baselibs__memory_shared
+.. comp:: Memory Shared
+   :id: comp__baselibs_memory_shared
    :security: YES
    :safety: ASIL_B
    :status: valid
