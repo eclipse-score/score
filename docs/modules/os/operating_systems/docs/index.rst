@@ -12,16 +12,16 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _comp_doc_os_sw_platforms:
+.. _comp_doc_os:
 
-Software Platforms
-==================
+Operating Systems
+=================
 
 .. toctree::
    :maxdepth: 2
    :hidden:
 
-   */index.rst
+   community/index
 
 A Software Platform is an operating system environment on which Eclipse S-CORE is integrated and executed.
 
@@ -31,11 +31,11 @@ reference platforms and document the practical usage for downstream users.
 
 Software Platforms are categorized into the following **levels**:
 
-* **Community**: integrated on a best-effort basis. S-CORE provides **no guarantees**
+* **Community Level**: integrated on a best-effort basis. S-CORE provides **no guarantees**
   that the platform builds or runs reliably.
-* **Functional**: S-CORE provides **functional guarantees** (build + tests for the
+* **Functional Level**: S-CORE provides **functional guarantees** (build + tests for the
   reference integration).
-* **Certifiable**: S-CORE provides **certifiability-oriented guarantees** for the
+* **Certifiable Level**: S-CORE provides **certifiability-oriented guarantees** for the
   reference integration and documents additional safety/security expectations.
 
 The concrete level requirements are defined in :ref:`platform_assumptions`.
@@ -43,7 +43,7 @@ The concrete level requirements are defined in :ref:`platform_assumptions`.
 Roles and responsibilities
 --------------------------
 
-Platform integrationsfollow the process requirements defined in:
+Platform integrations follow the process requirements defined in:
 :ref:`platform_assumptions`.
 
 Two roles from the process requirements are relevant:
@@ -60,4 +60,3 @@ In the S-CORE Software Platforms, these roles map to:
 * **S-CORE** (System Integrator role): resolves the *system integrator* requirements.
   Once S-CORE accepts a platform at **Functional** or **Certifiable** level, S-CORE
   must ensure that the accepted guarantees remain valid across all increments.
-

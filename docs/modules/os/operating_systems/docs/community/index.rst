@@ -12,16 +12,16 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _comp_doc_os_sw_platforms_community:
+.. _comp_doc_os_community:
 
-Community
-#########
-
-These are the community-supported Software Platforms for Eclipse S-CORE.
-See see :ref:`platform_assumptions` for the exact requirements for each Tier.
+Community Level
+###############
 
 .. toctree::
-   :maxdepth: 3
    :titlesonly:
 
    autosd.rst
+
+These are the community-supported Operating Systems for Eclipse S-CORE.
+
+See see :ref:`platform_assumptions` for the exact requirements for each level (Tier).

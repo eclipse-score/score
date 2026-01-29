@@ -12,7 +12,7 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _comp_doc_os_sw_platforms_community_autosd:
+.. _comp_doc_os_community_autosd:
 
 Red Hat AutoSD
 ##############
@@ -34,15 +34,7 @@ Requirements
 Integration Assistance
 ~~~~~~~~~~~~~~~~~~~~~~
 
-.. aou_req:: integration assistance
-   :id: aou_req__platform__ia_autosd
-   :reqtype: Non-Functional
-   :security: YES
-   :safety: QM
-   :status: valid
-
-   The supplier shall provide a contact point for integration assistance.
-
+The following fulfills :need:`aou_req__platform__integration_assistance`
 
 +----------------+-----------------------------+
 | .. centered:: Leonardo Rossetti              |
@@ -56,15 +48,7 @@ Integration Assistance
 Integration Manual
 ~~~~~~~~~~~~~~~~~~
 
-.. aou_req:: integration manual
-   :id: aou_req__platform__os_im_autosd
-   :reqtype: Non-Functional
-   :security: YES
-   :safety: QM
-   :status: valid
-
-   The supplier shall provide an integration manual.
-
+The following fulfills :need:`aou_req__platform__os_integration_manual`
 
 
 Building an Image
@@ -159,18 +143,7 @@ Sample usage (MODULE.bazel file):
 Bug Interface
 ~~~~~~~~~~~~~
 
-.. aou_req:: bug interface
-   :id: aou_req__platform__bi_autosd
-   :reqtype: Non-Functional
-   :security: YES
-   :safety: QM
-   :status: valid
-
-   The supplier shall provide a bug reporting interface.
-
-   Note: There is no guarantee provided to fix these bugs.
-
-
+The following fulfills :need:`aou_req__platform__bug_interface`
 
 +------------------------------------+---------------------------------------------------------------------------+
 |                                                                                                                |
