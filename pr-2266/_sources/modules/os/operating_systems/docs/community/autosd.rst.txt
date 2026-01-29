@@ -59,26 +59,38 @@ The following fulfills :need:`aou_req__platform__os_integration_manual`
 Build Instructions
 ^^^^^^^^^^^^^^^^^^
 
-Download the wrapper script which runs our automotive-image-builder inside a linux container:
+Building an AutoSD image can be done by using "aib": https://gitlab.com/CentOS/automotive/src/automotive-image-builder
+
+Sample usage:
 
 .. code:: bash
 
-    curl -o /tmp/auto-image-builder.sh "https://gitlab.com/CentOS/automotive/src/automotive-image-builder/-/raw/main/auto-image-builder.sh"
-    chmod +x /tmp/auto-image-builder.sh
+   export OCI_IMAGE=localhost/score:latest
+   export AIB_DISTRO=autosd10-sig 
 
-To build an AutoSD image:
+   aib build-builder --distro ${AIB_DISTRO}
+   aib build --target qemu --distro ${AIB_DISTRO} image.aib.yml ${OCI_IMAGE}
+   aib to-disk-image ${OCI_IMAGE} autosd-score.qcow2
+
+As an alternative, you can replace the bare metal "aib" usage with a bash script that runs the tool inside an OCI container:
 
 .. code:: bash
 
-   sudo bash ./scripts/container-build.sh build \
-   --define-file build/vars.yml \
-   --build-dir outputs/ \
-   --distro autosd9 \
-   --mode image \
-   --target qemu \
-   --export qcow2 \
-   build/image.aib.yml \
-   outputs/disk.qcow2
+    curl -o auto-image-builder.sh "https://gitlab.com/CentOS/automotive/src/automotive-image-builder/-/raw/main/auto-image-builder.sh"
+    chmod +x auto-image-builder.sh
+
+You can then replace the usage of "aib" with "auto-image-builder.sh" (requires sudo):
+
+.. code:: bash
+
+   export OCI_IMAGE=localhost/score:latest
+   export AIB_DISTRO=autosd10-sig 
+   # set the container storage to the local "_builder" directory to avoid permissions issues
+   export AIB_LOCAL_CONTAINER_STORAGE=$PWD/_build/containers-storage
+
+   sudo -E ./auto-image-builder.sh build-builder --distro ${AIB_DISTRO}
+   sudo -E ./auto-image-builder.sh build --target qemu --distro ${AIB_DISTRO} image.aib.yml ${OCI_IMAGE}
+   sudo -E ./auto-image-builder.sh to-disk-image ${OCI_IMAGE} autosd-score.qcow2
 
 If using QEMU, you can run the image using the following command:
 

@@ -616,21 +616,30 @@ such as an optimized automotive-specific kernel rather than CentOS Stream’s ke
 <p>The following fulfills <a class="reference internal" href="../../../../../requirements/platform_assumptions/index.html#aou_req__platform__os_integration_manual" title="aou_req__platform__os_integration_manual"><em class="xref need">integration manual (aou_req__platform__os_integration_manual)</em></a></p>
 <section id="build-instructions">
 <h3>Build Instructions<a class="headerlink" href="#build-instructions" title="Link to this heading">#</a></h3>
-<p>Download the wrapper script which runs our automotive-image-builder inside a linux container:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-o<span class="w"> </span>/tmp/auto-image-builder.sh<span class="w"> </span><span class="s2">&quot;https://gitlab.com/CentOS/automotive/src/automotive-image-builder/-/raw/main/auto-image-builder.sh&quot;</span>
-chmod<span class="w"> </span>+x<span class="w"> </span>/tmp/auto-image-builder.sh
+<p>Building an AutoSD image can be done by using “aib”: <a class="gitlab reference external" href="https://gitlab.com/CentOS/automotive/src/automotive-image-builder">CentOS/automotive/src/automotive-image-builder</a></p>
+<p>Sample usage:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">OCI_IMAGE</span><span class="o">=</span>localhost/score:latest
+<span class="nb">export</span><span class="w"> </span><span class="nv">AIB_DISTRO</span><span class="o">=</span>autosd10-sig
+
+aib<span class="w"> </span>build-builder<span class="w"> </span>--distro<span class="w"> </span><span class="si">${</span><span class="nv">AIB_DISTRO</span><span class="si">}</span>
+aib<span class="w"> </span>build<span class="w"> </span>--target<span class="w"> </span>qemu<span class="w"> </span>--distro<span class="w"> </span><span class="si">${</span><span class="nv">AIB_DISTRO</span><span class="si">}</span><span class="w"> </span>image.aib.yml<span class="w"> </span><span class="si">${</span><span class="nv">OCI_IMAGE</span><span class="si">}</span>
+aib<span class="w"> </span>to-disk-image<span class="w"> </span><span class="si">${</span><span class="nv">OCI_IMAGE</span><span class="si">}</span><span class="w"> </span>autosd-score.qcow2
 </pre></div>
 </div>
-<p>To build an AutoSD image:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>bash<span class="w"> </span>./scripts/container-build.sh<span class="w"> </span>build<span class="w"> </span><span class="se">\</span>
---define-file<span class="w"> </span>build/vars.yml<span class="w"> </span><span class="se">\</span>
---build-dir<span class="w"> </span>outputs/<span class="w"> </span><span class="se">\</span>
---distro<span class="w"> </span>autosd9<span class="w"> </span><span class="se">\</span>
---mode<span class="w"> </span>image<span class="w"> </span><span class="se">\</span>
---target<span class="w"> </span>qemu<span class="w"> </span><span class="se">\</span>
---export<span class="w"> </span>qcow2<span class="w"> </span><span class="se">\</span>
-build/image.aib.yml<span class="w"> </span><span class="se">\</span>
-outputs/disk.qcow2
+<p>As an alternative, you can replace the bare metal “aib” usage with a bash script that runs the tool inside an OCI container:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-o<span class="w"> </span>auto-image-builder.sh<span class="w"> </span><span class="s2">&quot;https://gitlab.com/CentOS/automotive/src/automotive-image-builder/-/raw/main/auto-image-builder.sh&quot;</span>
+chmod<span class="w"> </span>+x<span class="w"> </span>auto-image-builder.sh
+</pre></div>
+</div>
+<p>You can then replace the usage of “aib” with “auto-image-builder.sh” (requires sudo):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">OCI_IMAGE</span><span class="o">=</span>localhost/score:latest
+<span class="nb">export</span><span class="w"> </span><span class="nv">AIB_DISTRO</span><span class="o">=</span>autosd10-sig
+<span class="c1"># set the container storage to the local &quot;_builder&quot; directory to avoid permissions issues</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">AIB_LOCAL_CONTAINER_STORAGE</span><span class="o">=</span><span class="nv">$PWD</span>/_build/containers-storage
+
+sudo<span class="w"> </span>-E<span class="w"> </span>./auto-image-builder.sh<span class="w"> </span>build-builder<span class="w"> </span>--distro<span class="w"> </span><span class="si">${</span><span class="nv">AIB_DISTRO</span><span class="si">}</span>
+sudo<span class="w"> </span>-E<span class="w"> </span>./auto-image-builder.sh<span class="w"> </span>build<span class="w"> </span>--target<span class="w"> </span>qemu<span class="w"> </span>--distro<span class="w"> </span><span class="si">${</span><span class="nv">AIB_DISTRO</span><span class="si">}</span><span class="w"> </span>image.aib.yml<span class="w"> </span><span class="si">${</span><span class="nv">OCI_IMAGE</span><span class="si">}</span>
+sudo<span class="w"> </span>-E<span class="w"> </span>./auto-image-builder.sh<span class="w"> </span>to-disk-image<span class="w"> </span><span class="si">${</span><span class="nv">OCI_IMAGE</span><span class="si">}</span><span class="w"> </span>autosd-score.qcow2
 </pre></div>
 </div>
 <p>If using QEMU, you can run the image using the following command:</p>
