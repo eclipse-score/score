@@ -21,6 +21,7 @@ Operating Systems
    :maxdepth: 2
    :hidden:
 
+   onboarding
    community/index
    functional/index
    certifiable/index
@@ -62,9 +63,3 @@ In the S-CORE Software Platforms, these roles map to:
 * **S-CORE** (System Integrator role): resolves the *system integrator* requirements.
   Once S-CORE accepts a platform at **Functional** or **Certifiable** level, S-CORE
   must ensure that the accepted guarantees remain valid across all increments.
-
-Onboarding
-----------
-
-Use the :doc:`onboarding template document <onboarding>` as the starting point to add a new operating system to
-one of the levels, as described in the previou sections of this document.

@@ -17,6 +17,6 @@
 Functional Level
 ################
 
-These are the community-supported Operating Systems for Eclipse S-CORE.
+These are the functional-supported Operating Systems for Eclipse S-CORE.
 
 See see :ref:`platform_assumptions` for the exact requirements for each level (Tier).
