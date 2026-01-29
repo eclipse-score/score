@@ -22,6 +22,8 @@ Operating Systems
    :hidden:
 
    community/index
+   functional/index
+   certifiable/index
 
 A Software Platform is an operating system environment on which Eclipse S-CORE is integrated and executed.
 
