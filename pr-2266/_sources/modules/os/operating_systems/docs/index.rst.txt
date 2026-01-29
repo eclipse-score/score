@@ -25,13 +25,13 @@ Operating Systems
    functional/index
    certifiable/index
 
-A Software Platform is an operating system environment on which Eclipse S-CORE is integrated and executed.
+An operating system is an environment on which S-CORE is integrated and executed.
 
 In the context of the OS module, **S-CORE acts as the platform integrator**:
 S-CORE maintainers integrate and validate specific OS environments as S-CORE
 reference platforms and document the practical usage for downstream users.
 
-Software Platforms are categorized into the following **levels**:
+Operating Systems are categorized into the following **levels**:
 
 * **Community Level**: integrated on a best-effort basis. S-CORE provides **no guarantees**
   that the platform builds or runs reliably.
@@ -62,3 +62,9 @@ In the S-CORE Software Platforms, these roles map to:
 * **S-CORE** (System Integrator role): resolves the *system integrator* requirements.
   Once S-CORE accepts a platform at **Functional** or **Certifiable** level, S-CORE
   must ensure that the accepted guarantees remain valid across all increments.
+
+Onboarding
+----------
+
+Use the :doc:`onboarding template document <onboarding>` as the starting point to add a new operating system to
+one of the levels, as described in the previou sections of this document.

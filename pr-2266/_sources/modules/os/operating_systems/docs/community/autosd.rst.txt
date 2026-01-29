@@ -14,11 +14,13 @@
 
 .. _comp_doc_os_community_autosd:
 
+.. os: AutoSD
+   :id: os__autosd
+   :level: community
+   :maintainer: odra
+
 Red Hat AutoSD
 ##############
-
-Overview
---------
 
 AutoSD is the upstream binary distribution that serves as the public, in-development preview and functional precursor
 of the Red Hat In-Vehicle Operating System (OS).
@@ -28,11 +30,15 @@ such as an optimized automotive-specific kernel rather than CentOS Stream's kern
 
 Red Hat In-Vehicle OS is based on both AutoSD and RHEL, both of which are downstreams of CentOS Stream.
 
-Requirements
-------------
+Target maintainers/integration assistance
+-----------------------------------------
+
+GitHub Handles of the target maintainers.
+
+- Leonardo Rossetti - @odra
 
 Integration Assistance
-~~~~~~~~~~~~~~~~~~~~~~
+----------------------
 
 The following fulfills :need:`aou_req__platform__integration_assistance`
 
@@ -46,13 +52,12 @@ The following fulfills :need:`aou_req__platform__integration_assistance`
 
 
 Integration Manual
-~~~~~~~~~~~~~~~~~~
+------------------
 
 The following fulfills :need:`aou_req__platform__os_integration_manual`
 
-
-Building an Image
-^^^^^^^^^^^^^^^^^
+Build Instructions
+^^^^^^^^^^^^^^^^^^
 
 Download the wrapper script which runs our automotive-image-builder inside a linux container:
 
@@ -93,22 +98,6 @@ If using QEMU, you can run the image using the following command:
    -display none \
    -drive file=disk.qcow2,index=0,media=disk,format=qcow2,if=virtio,id=rootdisk,snapshot=off
 
-Mixed Critical Orchestration
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Upstream documentation: https://sigs.centos.org/automotive/features-and-concepts/con_mixed-criticality/
-
-Mixed Critical Orchestration, aka MCO, can be achieved with the following components:
-
-* Systemd: the init system that is responsible for workload orchestration
-* Eclise BlueChi: extends Systemd to enable multi-node and multi domain orchestration
-* QM: Quality management environment that is composed of two sub-systems: a dedicated rootfs partition + container isolation
-
-ASIL and QM connectivity is done either via an IPC socket or shared memory (/dev/shm).
-
-.. image:: _assets/autosd-mco.png
-   :align: center
-
 Toolchain
 ^^^^^^^^^
 
@@ -140,8 +129,26 @@ Sample usage (MODULE.bazel file):
 
 **NOTE:** AutoSD's tooling does not support cross compilation.
 
+
+
+Mixed Critical Orchestration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Upstream documentation: https://sigs.centos.org/automotive/features-and-concepts/con_mixed-criticality/
+
+Mixed Critical Orchestration, aka MCO, can be achieved with the following components:
+
+* Systemd: the init system that is responsible for workload orchestration
+* Eclise BlueChi: extends Systemd to enable multi-node and multi domain orchestration
+* QM: Quality management environment that is composed of two sub-systems: a dedicated rootfs partition + container isolation
+
+ASIL and QM connectivity is done either via an IPC socket or shared memory (/dev/shm).
+
+.. image:: _assets/autosd-mco.png
+   :align: center
+
 Bug Interface
-~~~~~~~~~~~~~
+-------------
 
 The following fulfills :need:`aou_req__platform__bug_interface`
 
