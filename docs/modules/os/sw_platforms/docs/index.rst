@@ -15,22 +15,49 @@
 .. _comp_doc_os_sw_platforms:
 
 Software Platforms
-##################
-
-A Software Platform is an operating system environment on which Eclipse S-CORE is integrated and executed.
-It provides the foundational services and interfaces required for S-CORE modules to function.
-
-.. note::
-   Software Platforms are categorized into *Tiers* based on their stability, support level, and intended use cases.
-   Hence, they must meet requirements of their respective Tier.
-   For details on this approach, and the requirements for each Tier, see :ref:`platform_assumptions`.
-
-
-Component Documents
-===================
+==================
 
 .. toctree::
    :maxdepth: 2
-   :titlesonly:
+   :hidden:
 
-   community/index.rst
+   */index.rst
+
+A Software Platform is an operating system environment on which Eclipse S-CORE is integrated and executed.
+
+In the context of the OS module, **S-CORE acts as the platform integrator**:
+S-CORE maintainers integrate and validate specific OS environments as S-CORE
+reference platforms and document the practical usage for downstream users.
+
+Software Platforms are categorized into the following **levels**:
+
+* **Community**: integrated on a best-effort basis. S-CORE provides **no guarantees**
+  that the platform builds or runs reliably.
+* **Functional**: S-CORE provides **functional guarantees** (build + tests for the
+  reference integration).
+* **Certifiable**: S-CORE provides **certifiability-oriented guarantees** for the
+  reference integration and documents additional safety/security expectations.
+
+The concrete level requirements are defined in :ref:`platform_assumptions`.
+
+Roles and responsibilities
+--------------------------
+
+Platform integrationsfollow the process requirements defined in:
+:ref:`platform_assumptions`.
+
+Two roles from the process requirements are relevant:
+
+* **Supplier**: provides an external SW element (e.g. OS / hypervisor) that S-CORE uses.
+* **System Integrator**: integrates the S-CORE SW-platform into a system.
+
+In the S-CORE Software Platforms, these roles map to:
+
+* **Platform Maintainer** (Supplier role): resolves the *supplier* requirements.
+  The platform maintainer provides the prerequisites so that the platform can be considered
+  for promotion to a level.
+
+* **S-CORE** (System Integrator role): resolves the *system integrator* requirements.
+  Once S-CORE accepts a platform at **Functional** or **Certifiable** level, S-CORE
+  must ensure that the accepted guarantees remain valid across all increments.
+
