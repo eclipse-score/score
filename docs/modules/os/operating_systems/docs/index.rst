@@ -21,7 +21,7 @@ Operating Systems
    :maxdepth: 2
    :hidden:
 
-   onboarding
+   onboarding/index
    community/index
    functional/index
    certifiable/index

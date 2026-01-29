@@ -17,6 +17,11 @@
 Onboarding and Promotion
 ========================
 
+.. toctree::
+   :titlesonly:
+
+   Template <os_onboard_template>
+
 This page describes how platforms are added and promoted.
 
 The process requirements are defined in :ref:`platform_assumptions`.
