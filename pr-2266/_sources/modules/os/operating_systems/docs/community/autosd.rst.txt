@@ -30,7 +30,7 @@ such as an optimized automotive-specific kernel rather than CentOS Stream's kern
 
 Red Hat In-Vehicle OS is based on both AutoSD and RHEL, both of which are downstreams of CentOS Stream.
 
-Target maintainers/integration assistance
+Target Maintainers/Integration Assistance
 -----------------------------------------
 
 GitHub Handles of the target maintainers.
