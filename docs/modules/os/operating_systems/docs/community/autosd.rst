@@ -171,7 +171,7 @@ The following fulfills :need:`aou_req__platform__bug_interface`
 +------------------------------------+---------------------------------------------------------------------------+
 | Gitlab Issue Tracker               | https://gitlab.com/CentOS/automotive/sig                                  |
 +------------------------------------+---------------------------------------------------------------------------+
-| CentOS SIG MAtrix Channel          | https://app.element.io/#/room/#centos-automotive-sig:fedoraproject.org    |
+| CentOS SIG Matrix Channel          | https://app.element.io/#/room/#centos-automotive-sig:fedoraproject.org    |
 +------------------------------------+---------------------------------------------------------------------------+
 | Eclipse SDV Slack Channel          | #autosd (https://sdvworkinggroup.slack.com/archives/C0986LJ9EJH)          |
 +------------------------------------+---------------------------------------------------------------------------+
