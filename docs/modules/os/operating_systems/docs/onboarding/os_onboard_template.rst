@@ -23,13 +23,13 @@ OS Name
 Short overview of the platform and why it is relevant for S-CORE.
 Keep this to 3-6 lines. Mention what the OS is and the intended usage context.
 
-Target maintainers/integration assistance
+Target Maintainers/Integration Assistance
 -----------------------------------------
 
 GitHub Handles of the target maintainers.
 
 
-Integration assistance
+Integration Assistance
 ----------------------
 
 The following fulfills :need:`aou_req__platform__integration_assistance`
@@ -38,7 +38,7 @@ The following fulfills :need:`aou_req__platform__integration_assistance`
 - Use bullet points for multiple contacts.
 
 
-Integration manual
+Integration Manual
 ------------------
 
 The following fulfills :need:`aou_req__platform__os_integration_manual`
@@ -47,7 +47,7 @@ The following fulfills :need:`aou_req__platform__os_integration_manual`
 - Link to external documentation if it exists.
 
 
-Build instructions
+Build Instructions
 ------------------
 
 Explain how to build an image of this platform and how to build Eclipse S-CORE for it.
@@ -68,7 +68,7 @@ Toolchain
 - Include a short example ``MODULE.bazel`` snippet.
 
 
-Bug interface
+Bug Interface
 -------------
 
 The following fulfills :need:`aou_req__platform__bug_interface`
