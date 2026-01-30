@@ -40,7 +40,7 @@ Promotion has two phases:
    If accepted at **Functional** or **Certifiable**, S-CORE commits to maintain the
    guarantees of the accepted level across all increments.
 
-Community level onboarding
+Community Level Onboarding
 --------------------------
 
 **What it means**
