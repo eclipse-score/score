@@ -116,4 +116,4 @@ Onboarding Template
 -------------------
 
 Use the :doc:`onboarding template document <os_onboard_template>` as the starting point to add a new operating system to
-one of the levels, as described in the previou sections of this document.
+one of the levels, as described in the previous sections of this document.
