@@ -768,12 +768,11 @@ Issue Attributes
     - :ref:`Type <pmp_pm_issue_types>`
 - Common Project Attributes
     - :ref:`Status <pmp_pm_issue_status_flow>`
-    - Priority (High, Middle, Low)
-    - Size (S=hours,M=days,L=weeks, XL=months)
+    - Priority (1 - High, 2 - Middle, 3 - Low)
+    - Size (S - Day, M - Week, L - Month, XL - Quarter)
     - (planned finishing) Iteration
-    - Team
-    - Category (e.g. Work stream)
-    - Release
+
+
 
 Issue Templates
 """""""""""""""
