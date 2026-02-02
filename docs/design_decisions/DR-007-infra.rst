@@ -76,7 +76,7 @@ Option 1: Merge both repositories into one
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Combine ``process_description`` and ``docs_as_code`` into a single repository.
-This eliminates the cyclic dependency by having a single source of truth for both the meta model and the Sphinx-Needs objects/examples.
+This eliminates the cyclic dependency by having a single source of truth for both the meta model and the Sphinx-Needs objects/examples, but process is repo is potentially large and complex and is implementation specific.
 
 .. image:: img/DR-007-issue_option_1.drawio.svg
    :alt: Merged repository eliminating cyclic dependency
@@ -95,16 +95,16 @@ Maintainability 💚: Good because everything is in one place.
 Option 2: Move meta model definition to process repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Define and maintain the Sphinx-Needs meta model solely in the process repository.
+Define and maintain the Sphinx-Needs meta model (.yaml non process part) solely in the process repository.
 The docs-as-code repository would then only provide the infrastructure for the meta model, not define or modify it.
 The process repository would be the authoritative source for the meta model.
-Also tests and examples would be maintained there.
+Also tests (scripts) and examples would be maintained there.
 
 .. image:: img/DR-007-issue_option_2.drawio.svg
    :alt: Meta model defined in process repository
    :align: center
 
-Effort 💚: Low effort.
+Effort 💛: Medium effort.
 
 Independence 💚: Good because ``docs_as_code`` just consumes.
 
@@ -205,4 +205,4 @@ Option 0 scores poorly with respect to independence, UX, and maintainability.
 Option 1 requires high effort.
 Option 6 compromises maintainability.
 
-**Decision:** Option 2
+**Decision:** Option 2 or Option 5 are the best options, both scoring well across all goals with low effort.
