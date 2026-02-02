@@ -95,7 +95,8 @@ Maintainability 💚: Good because everything is in one place.
 Option 2: Move meta model definition to process repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Define and maintain the Sphinx-Needs meta model (.yaml non process part) solely in the process repository.
+Define and maintain the `metamodel.yaml <https://github.com/eclipse-score/docs-as-code/blob/v2.3.3/src/extensions/score_metamodel/metamodel.yaml>`_
+solely in the process repository.
 The docs-as-code repository would then only provide the infrastructure for the meta model, not define or modify it.
 The process repository would be the authoritative source for the meta model.
 Also tests (scripts) and examples would be maintained there.
@@ -103,6 +104,12 @@ Also tests (scripts) and examples would be maintained there.
 .. image:: img/DR-007-issue_option_2.drawio.svg
    :alt: Meta model defined in process repository
    :align: center
+
+Implication:
+If the docs-as-code module would select the metamodel yaml version on its own,
+we would not have resolved the cyclic dependency issue.
+Thus, ``process_description`` would need to define which version of ``metamodel.yaml`` to use
+and ``docs_as_code`` provides a configuration option to specify it.
 
 Effort 💛: Medium effort.
 
