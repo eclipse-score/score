@@ -13,13 +13,13 @@
 DR-007-Infra: Solution for cyclic dependencies between docs-as-code and process description
 ===========================================================================================
 
-- **Date:** 2026-01-29
+- **Date:** 2026-02-02
 
-.. dec_rec:: Move meta model definition to process repository
+.. dec_rec:: Move examples to docs-as-code repository
    :id: dec_rec__infra__dependency_docs_as_code
    :status: accepted
    :context: Infrastructure
-   :decision: option 2
+   :decision: Option 5
 
 Context / Problem
 -----------------
@@ -205,4 +205,4 @@ Option 0 scores poorly with respect to independence, UX, and maintainability.
 Option 1 requires high effort.
 Option 6 compromises maintainability.
 
-**Decision:** Option 2 or Option 5 are the best options, both scoring well across all goals with low effort.
+**Decision:** Option 2 or Option 5 both provide the same benefits but Option 5 requires less effort, so we pick it.
