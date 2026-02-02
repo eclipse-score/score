@@ -555,13 +555,13 @@
   <section id="dr-007-infra-solution-for-cyclic-dependencies-between-docs-as-code-and-process-description">
 <h1>DR-007-Infra: Solution for cyclic dependencies between docs-as-code and process description<a class="headerlink" href="#dr-007-infra-solution-for-cyclic-dependencies-between-docs-as-code-and-process-description" title="Link to this heading">#</a></h1>
 <ul class="simple">
-<li><p><strong>Date:</strong> 2026-01-29</p></li>
+<li><p><strong>Date:</strong> 2026-02-02</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-5d271b57">
+<div class="need_container docutils container" id="SNCB-f4828d01">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__dependency_docs_as_code">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">Move meta model definition to process repository</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">Move examples to docs-as-code repository</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -577,7 +577,7 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_context"><span class="needs_label">context: </span><span class="needs_data">Infrastructure</span></span></div>
-<div class="line"><span class="needs_decision"><span class="needs_label">decision: </span><span class="needs_data">option 2</span></span></div>
+<div class="line"><span class="needs_decision"><span class="needs_label">decision: </span><span class="needs_data">Option 5</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -655,11 +655,17 @@ Dependencies across all S-CORE repos are necessary.</p>
 </section>
 <section id="option-2-move-meta-model-definition-to-process-repository">
 <h3>Option 2: Move meta model definition to process repository<a class="headerlink" href="#option-2-move-meta-model-definition-to-process-repository" title="Link to this heading">#</a></h3>
-<p>Define and maintain the Sphinx-Needs meta model (.yaml non process part) solely in the process repository.
+<p>Define and maintain the <a class="reference external" href="https://github.com/eclipse-score/docs-as-code/blob/v2.3.3/src/extensions/score_metamodel/metamodel.yaml">metamodel.yaml</a>
+solely in the process repository.
 The docs-as-code repository would then only provide the infrastructure for the meta model, not define or modify it.
 The process repository would be the authoritative source for the meta model.
 Also tests (scripts) and examples would be maintained there.</p>
 <img alt="Meta model defined in process repository" class="align-center" src="../_images/DR-007-issue_option_2.drawio.svg" />
+<p>Implication:
+If the docs-as-code module would select the metamodel yaml version on its own,
+we would not have resolved the cyclic dependency issue.
+Thus, <code class="docutils literal notranslate"><span class="pre">process_description</span></code> would need to define which version of <code class="docutils literal notranslate"><span class="pre">metamodel.yaml</span></code> to use
+and <code class="docutils literal notranslate"><span class="pre">docs_as_code</span></code> provides a configuration option to specify it.</p>
 <p>Effort 💛: Medium effort.</p>
 <p>Independence 💚: Good because <code class="docutils literal notranslate"><span class="pre">docs_as_code</span></code> just consumes.</p>
 <p>UX 💚: Excellent since authority is clear.</p>
@@ -769,7 +775,7 @@ Only unknown types would still cause errors.</p>
 <p>Option 0 scores poorly with respect to independence, UX, and maintainability.
 Option 1 requires high effort.
 Option 6 compromises maintainability.</p>
-<p><strong>Decision:</strong> Option 2 or Option 5 are the best options, both scoring well across all goals with low effort.</p>
+<p><strong>Decision:</strong> Option 2 or Option 5 both provide the same benefits but Option 5 requires less effort, so we pick it.</p>
 </section>
 </section>
 
