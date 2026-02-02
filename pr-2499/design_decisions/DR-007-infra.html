@@ -557,7 +557,7 @@
 <ul class="simple">
 <li><p><strong>Date:</strong> 2026-01-29</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-8ccfc2db">
+<div class="need_container docutils container" id="SNCB-ef1a8868">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__dependency_docs_as_code">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -644,7 +644,7 @@ Continue handling build errors manually when they occur.</p>
 <section id="option-1-merge-both-repositories-into-one">
 <h3>Option 1: Merge both repositories into one<a class="headerlink" href="#option-1-merge-both-repositories-into-one" title="Link to this heading">#</a></h3>
 <p>Combine <code class="docutils literal notranslate"><span class="pre">process_description</span></code> and <code class="docutils literal notranslate"><span class="pre">docs_as_code</span></code> into a single repository.
-This eliminates the cyclic dependency by having a single source of truth for both the meta model and the Sphinx-Needs objects/examples.</p>
+This eliminates the cyclic dependency by having a single source of truth for both the meta model and the Sphinx-Needs objects/examples, but process is repo is potentially large and complex and is implementation specific.</p>
 <img alt="Merged repository eliminating cyclic dependency" class="align-center" src="../_images/DR-007-issue_option_1.drawio.svg" />
 <p>Effort 😡: Disruptive effort to merge repos.
 Such changes conflict with practically all parallel pull requests.
@@ -655,12 +655,12 @@ Dependencies across all S-CORE repos are necessary.</p>
 </section>
 <section id="option-2-move-meta-model-definition-to-process-repository">
 <h3>Option 2: Move meta model definition to process repository<a class="headerlink" href="#option-2-move-meta-model-definition-to-process-repository" title="Link to this heading">#</a></h3>
-<p>Define and maintain the Sphinx-Needs meta model solely in the process repository.
+<p>Define and maintain the Sphinx-Needs meta model (.yaml non process part) solely in the process repository.
 The docs-as-code repository would then only provide the infrastructure for the meta model, not define or modify it.
 The process repository would be the authoritative source for the meta model.
-Also tests and examples would be maintained there.</p>
+Also tests (scripts) and examples would be maintained there.</p>
 <img alt="Meta model defined in process repository" class="align-center" src="../_images/DR-007-issue_option_2.drawio.svg" />
-<p>Effort 💚: Low effort.</p>
+<p>Effort 💛: Medium effort.</p>
 <p>Independence 💚: Good because <code class="docutils literal notranslate"><span class="pre">docs_as_code</span></code> just consumes.</p>
 <p>UX 💚: Excellent since authority is clear.</p>
 <p>Maintainability 💚: Good because of clear ownership.</p>
@@ -769,7 +769,7 @@ Only unknown types would still cause errors.</p>
 <p>Option 0 scores poorly with respect to independence, UX, and maintainability.
 Option 1 requires high effort.
 Option 6 compromises maintainability.</p>
-<p><strong>Decision:</strong> Option 2</p>
+<p><strong>Decision:</strong> Option 2 or Option 5 are the best options, both scoring well across all goals with low effort.</p>
 </section>
 </section>
 
