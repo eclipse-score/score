@@ -15,10 +15,12 @@
 OS Name
 =======
 
-.. os: <os_name>
-   :id: os__<os_name name snake case>
-   :level: <community/functional/certifiable>
-   :maintainer: <GitHub Handles>
+.. comp_arc_sta:: os_name
+   :id: comp_arc_sta__os__os_name
+   :security: YES
+   :safety: QM
+   :status: valid
+   :implements: aou_req__platform__integration_assistance, aou_req__platform__os_integration_manual, aou_req__platform__bug_interface
 
 Short overview of the platform and why it is relevant for S-CORE.
 Keep this to 3-6 lines. Mention what the OS is and the intended usage context.
