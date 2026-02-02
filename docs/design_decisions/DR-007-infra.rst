@@ -196,7 +196,7 @@ How well each option achieves the goals in order of goal importance:
    :header: Goals, Option 0, Option 1, Option 2, Option 5, Option 6
    :widths: 20, 15, 15, 15, 15, 15
 
-   Effort,          💚, 😡, 💚, 💚, 💚
+   Effort,          💚, 😡, 💛, 💚, 💚
    Independence,    😡, 💚, 💚, 💚, 💚
    UX,              😡, 💚, 💚, 💚, 💚
    Maintainability, 😡, 💚, 💚, 💚, 😡
