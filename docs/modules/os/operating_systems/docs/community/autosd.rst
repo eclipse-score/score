@@ -12,12 +12,13 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _comp_doc_os_community_autosd:
+.. comp_arc_sta:: Red Hat AutoSD
+   :id: comp_arc_sta__os__autosd
+   :security: YES
+   :safety: QM
+   :status: valid
+   :implements: aou_req__platform__integration_assistance, aou_req__platform__os_integration_manual, aou_req__platform__bug_interface
 
-.. os: AutoSD
-   :id: os__autosd
-   :level: community
-   :maintainer: odra
 
 Red Hat AutoSD
 ##############
