@@ -96,15 +96,15 @@ Functional Requirements
 
    The Memory library shall provide immutable shared memory segments that become read-only after initialization.
 
-.. comp_req:: Type-Safe Shared Memory
-   :id: comp_req__memory__typed_shm
+.. comp_req:: Typed Memory
+   :id: comp_req__memory__typed_memory
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies: feat_req__baselibs__consistent_apis, feat_req__baselibs__safety, feat_req__baselibs__memory_library
+   :satisfies: feat_req__baselibs__safety, feat_req__baselibs__memory_library
    :status: valid
 
-   The Memory library shall provide type-safe wrappers for typed shared memory objects with compile-time type checking.
+   The Memory library shall provide an interface to allocate shared memory from typed memory regions.
 
 .. comp_req:: Memory Resource Registry
    :id: comp_req__memory__resource_registry
