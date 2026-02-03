@@ -35,7 +35,7 @@ Functional Requirements
    :satisfies: feat_req__baselibs__concurrency_library, feat_req__baselibs__core_utilities, feat_req__baselibs__safety
    :status: valid
 
-   The concurrency module shall provide interface that wraps callable objects for asynchronous execution, accepting a stop_token for cooperative cancellation and supporting move semantics.
+   The concurrency module shall allow running tasks asynchronously and cancelling them when needed.
 
 .. comp_req:: Simple Task Implementation
    :id: comp_req__concurrency__simple_task
@@ -95,7 +95,7 @@ Functional Requirements
    :satisfies: feat_req__baselibs__concurrency_library, feat_req__baselibs__safety
    :status: valid
 
-   The concurrency module shall provide implementation that manages submitted tasks in FIFO order with thread-safe queue operations using condition variables for efficient worker thread wake-up.
+   The concurrency module shall provide implementation that manages submitted tasks in FIFO order.
 
 .. comp_req:: Interruptible Condition Variable
    :id: comp_req__concurrency__condition_variable
@@ -105,7 +105,7 @@ Functional Requirements
    :satisfies: feat_req__baselibs__concurrency_library, feat_req__baselibs__safety
    :status: valid
 
-   The concurrency module shall provide implementation that allocates a fixed number of threads at construction time and distributes tasks across worker threads with a dynamic task queue.
+   The concurrency module shall provide mechanism for threads to wait for conditions that can be interrupted when needed.
 
 .. comp_req:: Interruptible Wait Utilities
    :id: comp_req__concurrency__interruptible_wait
@@ -115,17 +115,7 @@ Functional Requirements
    :satisfies: feat_req__baselibs__concurrency_library, feat_req__baselibs__safety
    :status: valid
 
-   The concurrency module shall provide  utilities offering simplified APIs for sleep operations.
-
-.. comp_req:: Destruction Guard
-   :id: comp_req__concurrency__destruction_guard
-   :reqtype: Functional
-   :security: NO
-   :safety: ASIL_B
-   :satisfies: feat_req__baselibs__concurrency_library, feat_req__baselibs__safety
-   :status: valid
-
-   The concurrency module shall provide a mechanism to safely detect when an object has been destroyed to prevent accessing it from multiple threads.
+   The concurrency module shall provide utilities offering APIs for sleep operations allowing early cancellation.
 
 .. comp_req:: Notification Mechanism
    :id: comp_req__concurrency__notification
@@ -145,7 +135,7 @@ Functional Requirements
    :satisfies: feat_req__baselibs__concurrency_library, feat_req__baselibs__safety
    :status: valid
 
-   The concurrency module shall provide a thread-safe queue where multiple threads can add items and one thread can remove them, with a maximum size limit and optional waiting.
+   The concurrency module shall provide a thread-safe container facilitating FIFO transmission of data in a N:1 communication pattern.
 
 .. comp_req:: Long-Running Threads Container
    :id: comp_req__concurrency__long_running_threads
@@ -198,7 +188,7 @@ Non-Functional Requirements
    :satisfies: feat_req__baselibs__concurrency_library
    :status: valid
 
-   The concurrency module shall use timeouts to prevent operations from waiting forever.
+   The concurrency module shall avoid indefinitely blocking, unabortable operations.
 
 .. comp_req:: Future Error Handling
    :id: comp_req__concurrency__error_handling
