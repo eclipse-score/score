@@ -38,6 +38,15 @@ This tight coupling makes maintenance and evolution of both repositories difficu
    :alt: Cyclic dependency between process and docs-as-code repositories
    :align: center
 
+This means to roll out a change to the process looks like this:
+
+1. Change ``process_description`` but *not* the examples and folder templates.
+2. Change ``docs_as_code`` accordingly (potentially with constraints because ``@process_description//:needs_json`` includes old examples and folder templates)
+3. Change ``process_description`` a *second* time adapting the examples and folder templates.
+4. Change ``docs_as_code`` a *second* time removing constraints from step 2.
+
+Only two steps should be necessary.
+
 Goals and Requirements
 ^^^^^^^^^^^^^^^^^^^^^^
 
@@ -51,7 +60,7 @@ Non-Goals
 
 - Redesigning the entire docs-as-code or process description approach.
 - Removing Sphinx or Sphinx-Needs as documentation tools.
-
+- Avoid inconsistencies between process and tool implementation.
 
 Options Considered
 ------------------
@@ -111,9 +120,12 @@ we would not have resolved the cyclic dependency issue.
 Thus, ``process_description`` would need to define which version of ``metamodel.yaml`` to use
 and ``docs_as_code`` provides a configuration option to specify it.
 
+Moving only the ``metamodel.yaml`` file means that a few Python-implemented checks still remain in ``docs_as_code``.
+While the problem is not solved completely, it should fix most of the cases.
+
 Effort 💛: Medium effort.
 
-Independence 💚: Good because ``docs_as_code`` just consumes.
+Independence 💛: Rather good because ``docs_as_code`` mostly consumes except a few remaining checks.
 
 UX 💚: Excellent since authority is clear.
 
@@ -134,10 +146,10 @@ Effort 😡: High effort (new repo setup).
 
 Independence 💚: Good because process repo becomes independent.
 
-UX 😡: The number of pull requests might be as high as now.
+UX 😡😡: The number of pull requests is as high as it is now.
 Instead of multiple changes to the same repo, more repos must be changed.
 
-Maintainability 😡😡: More repos to maintain.
+Maintainability 😡: More repos to maintain.
 
 Option 4: Move meta model and examples into a separate repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -154,10 +166,10 @@ Effort 😡: High effort (new repo setup and migration).
 
 Independence 💚: Good because process repo becomes independent.
 
-UX 😡: The number of pull requests might be as high as now.
+UX 😡😡: The number of pull requests is as high as it is now.
 Instead of multiple changes to the same repo, more repos must be changed.
 
-Maintainability 😡😡: More repos to maintain.
+Maintainability 😡: More repos to maintain.
 
 Option 5: Move examples to docs-as-code repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -197,6 +209,9 @@ Maintainability 😡: Poor because warnings won't be fixed as quickly as errors.
 Evaluation
 ----------
 
+Options 3 and 4 have big downsides with respect to UX,
+so we don't even consider them in this evaluation.
+
 How well each option achieves the goals in order of goal importance:
 
 .. csv-table::
@@ -204,12 +219,13 @@ How well each option achieves the goals in order of goal importance:
    :widths: 20, 15, 15, 15, 15, 15
 
    Effort,          💚, 😡, 💛, 💚, 💚
-   Independence,    😡, 💚, 💚, 💚, 💚
+   Independence,    😡, 💚, 💛, 💚, 💚
    UX,              😡, 💚, 💚, 💚, 💚
    Maintainability, 😡, 💚, 💚, 💚, 😡
 
 Option 0 scores poorly with respect to independence, UX, and maintainability.
 Option 1 requires high effort.
+Option 2 has minor downsides for effort and independence.
 Option 6 compromises maintainability.
 
-**Decision:** Option 2 or Option 5 both provide the same benefits but Option 5 requires less effort, so we pick it.
+**Decision:** Option 5 is obviously the best choice.
