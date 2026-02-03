@@ -557,7 +557,7 @@
 <ul class="simple">
 <li><p><strong>Date:</strong> 2026-02-02</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-f4828d01">
+<div class="need_container docutils container" id="SNCB-0fd51b2c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__dependency_docs_as_code">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -612,6 +612,13 @@ It includes also example Sphinx-Needs objects that illustrate the usage of the d
 Any change in the process requirements (in <code class="docutils literal notranslate"><span class="pre">process_description</span></code>) for the meta model possibly leads to a change in the docs-as-code meta model, but any change in the docs-as-code meta model can cause build errors in the process_description repo and this happens during the docs-as-code build as Sphinx-Needs objects from the process repo are imported.
 This tight coupling makes maintenance and evolution of both repositories difficult and error-prone.</p>
 <img alt="Cyclic dependency between process and docs-as-code repositories" class="align-center" src="../_images/DR-007-issue.drawio.svg" />
+<p>This means to roll out a change to the process looks like this:</p>
+<ol class="arabic simple">
+<li><p>Change <code class="docutils literal notranslate"><span class="pre">process_description</span></code> but <em>not</em> the examples and folder templates.</p></li>
+<li><p>Adapt <code class="docutils literal notranslate"><span class="pre">docs_as_code</span></code> accordingly.</p></li>
+<li><p>Change <code class="docutils literal notranslate"><span class="pre">process_description</span></code> a <em>second</em> time adapting the examples and folder templates.</p></li>
+</ol>
+<p>We would rather step 3 could be done as part of step 1.</p>
 <section id="goals-and-requirements">
 <h3>Goals and Requirements<a class="headerlink" href="#goals-and-requirements" title="Link to this heading">#</a></h3>
 <ul class="simple">
@@ -625,6 +632,7 @@ This tight coupling makes maintenance and evolution of both repositories difficu
 <ul class="simple">
 <li><p>Redesigning the entire docs-as-code or process description approach.</p></li>
 <li><p>Removing Sphinx or Sphinx-Needs as documentation tools.</p></li>
+<li><p>Avoid inconsistencies between process and tool implementation.</p></li>
 </ul>
 </section>
 </section>
@@ -666,8 +674,10 @@ If the docs-as-code module would select the metamodel yaml version on its own,
 we would not have resolved the cyclic dependency issue.
 Thus, <code class="docutils literal notranslate"><span class="pre">process_description</span></code> would need to define which version of <code class="docutils literal notranslate"><span class="pre">metamodel.yaml</span></code> to use
 and <code class="docutils literal notranslate"><span class="pre">docs_as_code</span></code> provides a configuration option to specify it.</p>
+<p>Moving only the <code class="docutils literal notranslate"><span class="pre">metamodel.yaml</span></code> file means that a few Python-implemented checks still remain in <code class="docutils literal notranslate"><span class="pre">docs_as_code</span></code>.
+While the problem is not solved completely, it should fix most of the cases.</p>
 <p>Effort 💛: Medium effort.</p>
-<p>Independence 💚: Good because <code class="docutils literal notranslate"><span class="pre">docs_as_code</span></code> just consumes.</p>
+<p>Independence 💛: Rather good because <code class="docutils literal notranslate"><span class="pre">docs_as_code</span></code> mostly consumes except a few remaining checks.</p>
 <p>UX 💚: Excellent since authority is clear.</p>
 <p>Maintainability 💚: Good because of clear ownership.</p>
 </section>
@@ -679,9 +689,9 @@ But this adds complexity with an additional repository to maintain and still con
 <img alt="Examples moved to a third repository" class="align-center" src="../_images/DR-007-issue_option_3.drawio.svg" />
 <p>Effort 😡: High effort (new repo setup).</p>
 <p>Independence 💚: Good because process repo becomes independent.</p>
-<p>UX 😡: The number of pull requests might be as high as now.
+<p>UX 😡😡: The number of pull requests is as high as it is now.
 Instead of multiple changes to the same repo, more repos must be changed.</p>
-<p>Maintainability 😡😡: More repos to maintain.</p>
+<p>Maintainability 😡: More repos to maintain.</p>
 </section>
 <section id="option-4-move-meta-model-and-examples-into-a-separate-repository">
 <h3>Option 4: Move meta model and examples into a separate repository<a class="headerlink" href="#option-4-move-meta-model-and-examples-into-a-separate-repository" title="Link to this heading">#</a></h3>
@@ -691,9 +701,9 @@ This breaks the cycle by introducing a clear hierarchical dependency structure.<
 <img alt="Meta model and examples in a separate repository" class="align-center" src="../_images/DR-007-issue_option_4.drawio.svg" />
 <p>Effort 😡: High effort (new repo setup and migration).</p>
 <p>Independence 💚: Good because process repo becomes independent.</p>
-<p>UX 😡: The number of pull requests might be as high as now.
+<p>UX 😡😡: The number of pull requests is as high as it is now.
 Instead of multiple changes to the same repo, more repos must be changed.</p>
-<p>Maintainability 😡😡: More repos to maintain.</p>
+<p>Maintainability 😡: More repos to maintain.</p>
 </section>
 <section id="option-5-move-examples-to-docs-as-code-repository">
 <h3>Option 5: Move examples to docs-as-code repository<a class="headerlink" href="#option-5-move-examples-to-docs-as-code-repository" title="Link to this heading">#</a></h3>
@@ -721,6 +731,8 @@ Only unknown types would still cause errors.</p>
 </section>
 <section id="evaluation">
 <h2>Evaluation<a class="headerlink" href="#evaluation" title="Link to this heading">#</a></h2>
+<p>Options 3 and 4 have big downsides with respect to UX,
+so we don’t even consider them in this evaluation.</p>
 <p>How well each option achieves the goals in order of goal importance:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <colgroup>
@@ -751,7 +763,7 @@ Only unknown types would still cause errors.</p>
 <tr class="row-odd"><td><p>Independence</p></td>
 <td><p>😡</p></td>
 <td><p>💚</p></td>
-<td><p>💚</p></td>
+<td><p>💛</p></td>
 <td><p>💚</p></td>
 <td><p>💚</p></td>
 </tr>
@@ -774,8 +786,9 @@ Only unknown types would still cause errors.</p>
 </div>
 <p>Option 0 scores poorly with respect to independence, UX, and maintainability.
 Option 1 requires high effort.
+Option 2 has minor downsides for effort and independence.
 Option 6 compromises maintainability.</p>
-<p><strong>Decision:</strong> Option 2 or Option 5 both provide the same benefits but Option 5 requires less effort, so we pick it.</p>
+<p><strong>Decision:</strong> Option 5 is obviously the best choice.</p>
 </section>
 </section>
 
