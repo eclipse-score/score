@@ -557,7 +557,7 @@
 <ul class="simple">
 <li><p><strong>Date:</strong> 2026-02-02</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-0fd51b2c">
+<div class="need_container docutils container" id="SNCB-04759772">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__dependency_docs_as_code">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -615,10 +615,11 @@ This tight coupling makes maintenance and evolution of both repositories difficu
 <p>This means to roll out a change to the process looks like this:</p>
 <ol class="arabic simple">
 <li><p>Change <code class="docutils literal notranslate"><span class="pre">process_description</span></code> but <em>not</em> the examples and folder templates.</p></li>
-<li><p>Adapt <code class="docutils literal notranslate"><span class="pre">docs_as_code</span></code> accordingly.</p></li>
+<li><p>Change <code class="docutils literal notranslate"><span class="pre">docs_as_code</span></code> accordingly (potentially with constraints because <code class="docutils literal notranslate"><span class="pre">&#64;process_description//:needs_json</span></code> includes old examples and folder templates)</p></li>
 <li><p>Change <code class="docutils literal notranslate"><span class="pre">process_description</span></code> a <em>second</em> time adapting the examples and folder templates.</p></li>
+<li><p>Change <code class="docutils literal notranslate"><span class="pre">docs_as_code</span></code> a <em>second</em> time removing constraints from step 2.</p></li>
 </ol>
-<p>We would rather step 3 could be done as part of step 1.</p>
+<p>Only two steps should be necessary.</p>
 <section id="goals-and-requirements">
 <h3>Goals and Requirements<a class="headerlink" href="#goals-and-requirements" title="Link to this heading">#</a></h3>
 <ul class="simple">
