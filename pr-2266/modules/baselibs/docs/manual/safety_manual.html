@@ -53,7 +53,7 @@
 
     <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
     <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../../_static/documentation_options.js?v=7f41d439"></script>
     <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
@@ -498,7 +498,9 @@
 <li class="toctree-l3"><a class="reference internal" href="../release/release_note.html">Release Note</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../language/index.html">language</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../bitmanipulation/docs/index.html">bitmanipulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../concurrency/docs/index.html">concurrency</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../containers/docs/index.html">containers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../filesystem/docs/index.html">filesystem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../json/docs/index.html">JSON-Library</a></li>
@@ -515,6 +517,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../message_passing/docs/index.html">message_passing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../os/docs/index.html">os</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../result/docs/index.html">result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../static_reflection_with_serialization/docs/index.html">static_reflection_with_serialization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../utils/docs/index.html">utils</a></li>
 </ul>
 </details></li>
@@ -522,9 +525,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../feo/index.html">FEO Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../lifecycle/index.html">Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../logging/index.html">Logging Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../orchestrator/index.html">Orchestrator Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../orchestrator/index.html">Orchestrator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../os/index.html">OS Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../persistency/index.html">Persistency KVS Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tracing/index.html">Tracing Module</a></li>
 </ul>
 </div>
@@ -601,7 +603,7 @@
 <p class="admonition-title">Note</p>
 <p>Document header</p>
 </div>
-<div class="need_container docutils container" id="SNCB-87cce50f">
+<div class="need_container docutils container" id="SNCB-7cfae352">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__baselibs_safety_manual">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -610,7 +612,7 @@
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></span></div>
-<div class="line"><span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
 <div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
@@ -620,8 +622,9 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
-<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/workproducts.html#wp__module_safety_manual">wp__module_safety_manual</a></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__module_safety_manual">wp__module_safety_manual</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -697,24 +700,100 @@
 <td class="needs_id"><p><a class="reference internal" href="../../json/docs/requirements/index.html#aou_req__json__access_control">aou_req__json__access_control</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
+<tr class="need row-odd"><td class="needs_title"><p>Bit Extraction Index Validation</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../bitmanipulation/docs/requirements/index.html#aou_req__bitmanipulation__bit_validation">aou_req__bitmanipulation__bit_validation</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>Check Capacity</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../containers/docs/requirements/index.html#aou_req__containers__capacity_management">aou_req__containers__capacity_management</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>Container State Verification</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../containers/docs/requirements/index.html#aou_req__containers__state_verification">aou_req__containers__state_verification</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>Element Lifetime and Ownership</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../containers/docs/requirements/index.html#aou_req__containers__element_lifetime">aou_req__containers__element_lifetime</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>Element Type Requirements</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../containers/docs/requirements/index.html#aou_req__containers__ele_type_requirements">aou_req__containers__ele_type_requirements</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>Enum Class Type Safety</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../bitmanipulation/docs/requirements/index.html#aou_req__bitmanipulation__enum_type_safety">aou_req__bitmanipulation__enum_type_safety</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
 <tr class="need row-odd"><td class="needs_title"><p>Error Domain Implementation</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../result/docs/requirements/index.html#aou_req__result__error_domain_implementation">aou_req__result__error_domain_implementation</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>JSON data integrity</p></td>
+<tr class="need row-even"><td class="needs_title"><p>Error Handling</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../filesystem/docs/requirements/index.html#aou_req__filesystem__error_handling">aou_req__filesystem__error_handling</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>Error Reaction and Safe State</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../result/docs/requirements/index.html#aou_req__result__error_reaction">aou_req__result__error_reaction</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>Index Bounds Checking</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../containers/docs/requirements/index.html#aou_req__containers__bounds_checking">aou_req__containers__bounds_checking</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>Integral Type Constraints</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../bitmanipulation/docs/requirements/index.html#aou_req__bitmanipulation__type_constraints">aou_req__bitmanipulation__type_constraints</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>Iterator Validity</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../containers/docs/requirements/index.html#aou_req__containers__iterator_validity">aou_req__containers__iterator_validity</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>JSON data integrity</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../json/docs/requirements/index.html#aou_req__json__data_integrity">aou_req__json__data_integrity</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>Resource Lifetime</p></td>
+<tr class="need row-even"><td class="needs_title"><p>Low-Level Use Only</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../filesystem/docs/requirements/index.html#aou_req__filesystem__low_level_use_only">aou_req__filesystem__low_level_use_only</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>Memory Resource Management</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../containers/docs/requirements/index.html#aou_req__containers__memory_management">aou_req__containers__memory_management</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>No Side Effects on Concurrent Access</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../bitmanipulation/docs/requirements/index.html#aou_req__bitmanipulation__concurrent_access">aou_req__bitmanipulation__concurrent_access</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>Performance</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../filesystem/docs/requirements/index.html#aou_req__filesystem__performance">aou_req__filesystem__performance</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>Resource Lifetime</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../result/docs/requirements/index.html#aou_req__result__resource_lifetime">aou_req__result__resource_lifetime</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>Result Value Handling</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>Result Value Handling</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../result/docs/requirements/index.html#aou_req__result__value_handling">aou_req__result__value_handling</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
+<tr class="need row-even"><td class="needs_title"><p>Supported Path Formats</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../filesystem/docs/requirements/index.html#aou_req__filesystem__supported_path_formats">aou_req__filesystem__supported_path_formats</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
 <tr class="need row-odd"><td class="needs_title"><p>Thread Safety</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../filesystem/docs/requirements/index.html#aou_req__filesystem__thread_safety">aou_req__filesystem__thread_safety</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>Thread Safety</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../../result/docs/requirements/index.html#aou_req__result__thread_safety">aou_req__result__thread_safety</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>Thread Safety</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../containers/docs/requirements/index.html#aou_req__containers__thread_safety">aou_req__containers__thread_safety</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>Valid Bit Positions and Ranges</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../../bitmanipulation/docs/requirements/index.html#aou_req__bitmanipulation__valid_bit_positions">aou_req__bitmanipulation__valid_bit_positions</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
 </tbody>
@@ -808,7 +887,7 @@
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/modules/baselibs/docs/manual/safety_manual.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/modules/baselibs/docs/manual/safety_manual.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -819,15 +898,6 @@
     </a>
   </div>
 </div>
-
-  <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../../../../_sources/modules/baselibs/docs/manual/safety_manual.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
 
 </div></div>
               

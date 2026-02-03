@@ -53,7 +53,7 @@
 
     <script src="../_static/jquery.js?v=5d32c60e"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/documentation_options.js?v=7f41d439"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
@@ -73,7 +73,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Change Management / Change Management Plan" href="change_management.html" />
-    <link rel="prev" title="Release management Plan" href="release_management.html" />
+    <link rel="prev" title="Release Management Plan" href="release_management.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
@@ -490,27 +490,22 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="project_management.html">Project management plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="safety_management.html">Safety management / Platform Safety Plan</a></li>
-
-
-
-
-
-
-
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="security_management.html">Security management / Platform Security Plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quality_management.html">Quality Management / Platform Quality Management Plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="config_management.html">Config management / Configuration Management Plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tool_management.html">Tool Management/ Tool Management Plan</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release_management.html">Release management Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_management.html">Release Management Plan</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Problem Resolution / Problem Resolution Plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="change_management.html">Change Management / Change Management Plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="software_verification.html">Software verification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="documentation_management.html">Documentation Management Plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="software_development.html">Software Development Plan</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Role Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="role_assignment/platform_safety_engineer.html">Platform Safety Engineer Election</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role_assignment/platform_safety_manager.html">Platform Safety Manager Election</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role_assignment/platform_quality_manager.html">Platform Quality Manager Election</a></li>
 </ul>
 </div>
 </nav></div>
@@ -571,7 +566,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-40d23c01">
+  <div class="need_container docutils container" id="SNCB-fafc4958">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__platform_problem_resolution_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -674,7 +669,7 @@ Use ISSUE <strong>Problem Report</strong> to report a detected problem in <stron
 <p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/problem_resolution/guidance/problem_resolution_reqs.html#gd_req__problem_attr_status">gd_req__problem_attr_status</a> is defined by the combination of the ISSUE state
 and the state in the Projects dashboard view. The PR status is also used, if applicable.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id1">
-<caption><span class="caption-number">Table 65 </span><span class="caption-text">Problem Status</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 78 </span><span class="caption-text">Problem Status</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 11.5%" />
 <col style="width: 65.4%" />
@@ -729,14 +724,14 @@ part of the ISSUE.</p>
 <p>To provide solutions, use the Solution part of the ISSUE.</p>
 <p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/problem_resolution/guidance/problem_resolution_reqs.html#gd_req__problem_attr_anaylsis_results">gd_req__problem_attr_anaylsis_results</a> is provided in the analysis
 results part of the ISSUE. State here, if the problem is accepted or rejected. Safety/Security
-experts must confirm or disconfirm, if safety/security is affected is set correctly</p>
+experts must confirm or deny, if safety/security is affected is set correctly</p>
 <p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/problem_resolution/guidance/problem_resolution_reqs.html#gd_req__problem_attr_stakeholder">gd_req__problem_attr_stakeholder</a> are provided in the Assignees part of
 the ISSUE. In addition you can use pre-defined labels for Communities or Feature Teams
 (Feature Owner) (under discussion, compare <a class="github reference external" href="https://github.com/eclipse-score/score/issues/870">eclipse-score/score#870</a>).</p>
 <p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/problem_resolution/guidance/problem_resolution_reqs.html#gd_req__problem_attr_classification">gd_req__problem_attr_classification</a> is provided in the Classification
 part of the ISSUE. Select one of provided identifiers:</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id2">
-<caption><span class="caption-number">Table 66 </span><span class="caption-text">Problem Classification</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<caption><span class="caption-number">Table 79 </span><span class="caption-text">Problem Classification</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 50.0%" />
 <col style="width: 50.0%" />
@@ -811,7 +806,7 @@ set the ISSUE status to <code class="docutils literal notranslate"><span class="
 <a class="reference internal image-reference" href="../_images/score_problem_resolution_workflow_simple.drawio.svg"><img alt="Problem Resolution Simple Workflow Overview" src="../_images/score_problem_resolution_workflow_simple.drawio.svg" style="width: 100%;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Problem Resolution Simple Workflow Overview</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Problem Resolution Simple Workflow Overview</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>To 2. Analyze the Problem Report:</strong></p>
@@ -822,7 +817,7 @@ kept in status <code class="docutils literal notranslate"><span class="pre">Open
 <p>If the information is sufficient and it is decided to initiate the problem resolution, the
 ISSUE status is kept <code class="docutils literal notranslate"><span class="pre">Open</span></code> and the Projects status is set to <code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">Progress</span></code>.</p>
 <p>The decision, if the problem is accepted or rejected must be documented. Safety/Security
-experts must confirm or disconfirm, if safety/security is affected is set correctly.</p>
+experts must confirm or deny, if safety/security is affected is set correctly.</p>
 <p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/problem_resolution/guidance/problem_resolution_checklist.html#gd_chklst__problem_cr_review">gd_chklst__problem_cr_review</a> can help to verify whether the information is complete.</p>
 <p>In case affected parties need to be informed <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__project_lead">rl__project_lead</a> or
 <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__committer">rl__committer</a> will notify them, either updating the Assignees or
@@ -853,7 +848,10 @@ back to <code class="docutils literal notranslate"><span class="pre">In</span> <
 </section>
 <section id="problem-resolution-sw-platform-work-products">
 <h3>Problem Resolution SW Platform Work Products<a class="headerlink" href="#problem-resolution-sw-platform-work-products" title="Link to this heading">#</a></h3>
-<p>not applicable</p>
+<p>The Problem Reports are published in the <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/change_management_workproducts.html#wp__issue_track_system">wp__issue_track_system</a>.
+S-CORE and its modules use GitHub Issues with the same templates and in the same location per default.
+If deviating the module has to document this in an own Problem Resolution Plan.
+S-CORE platform repository issues (Problem Reports are tagged with the Label “Bug”) see <a class="reference external" href="https://github.com/eclipse-score/score/issues?q=is%3Aissue%20state%3Aopen%20label%3Abug">here</a></p>
 </section>
 </section>
 </section>
@@ -874,7 +872,7 @@ back to <code class="docutils literal notranslate"><span class="pre">In</span> <
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Release management Plan</p>
+        <p class="prev-next-title">Release Management Plan</p>
       </div>
     </a>
     <a class="right-next"
@@ -925,7 +923,7 @@ back to <code class="docutils literal notranslate"><span class="pre">In</span> <
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/platform_management_plan/problem_resolution.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/platform_management_plan/problem_resolution.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -936,15 +934,6 @@ back to <code class="docutils literal notranslate"><span class="pre">In</span> <
     </a>
   </div>
 </div>
-
-  <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/platform_management_plan/problem_resolution.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
 
 </div></div>
               

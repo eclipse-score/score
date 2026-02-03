@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Communication (v0.5 alpha) &#8212; S-CORE  documentation</title>
+    <title>Communication (v0.5 beta) &#8212; S-CORE  documentation</title>
   
   
   
@@ -53,7 +53,7 @@
 
     <script src="../../_static/jquery.js?v=5d32c60e"></script>
     <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/documentation_options.js?v=7f41d439"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -73,7 +73,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Architecture" href="docs/architecture/index.html" />
-    <link rel="prev" title="Feature Safety Planning" href="../baselibs/docs/safety_planning/index.html" />
+    <link rel="prev" title="Requirements" href="../code_generation/requirements/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
@@ -489,8 +489,9 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../ai_platform/index.html">AI Platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../analysis-infra/index.html">Analysis Infrastructure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../baselibs/index.html">Base Libraries (v0.5 alpha)</a></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Communication (v0.5 alpha)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1"><a class="reference internal" href="../baselibs/index.html">Base Libraries (v0.5 beta)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code_generation/index.html">Code Generation</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Communication (v0.5 beta)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="docs/architecture/index.html">Architecture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs/requirements/index.html">Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ipc/index.html">Inter-process Communication</a></li>
@@ -504,8 +505,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../infrastructure/index.html">Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../integration/index.html">Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lifecycle/index.html">Lifecycle</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../orchestration/index.html">Orchestration (v0.5 alpha)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../persistency/index.html">Persistency (v0.5 alpha)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../orchestration/index.html">Orchestration (v0.5 beta)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../persistency/index.html">Persistency (v0.5 beta)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../security_crypto/index.html">Security &amp; Cryptography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../time/index.html">Time</a></li>
 </ul>
@@ -551,7 +552,7 @@
     
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Features</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Communication (v0.5 alpha)</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Communication (v0.5 beta)</span></li>
   </ul>
 </nav>
 </div>
@@ -568,9 +569,9 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="communication-v0-5-alpha">
-<span id="com-feature"></span><h1>Communication (v0.5 alpha)<a class="headerlink" href="#communication-v0-5-alpha" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-b1ef283b">
+  <section id="communication-v0-5-beta">
+<span id="com-feature"></span><h1>Communication (v0.5 beta)<a class="headerlink" href="#communication-v0-5-beta" title="Link to this heading">#</a></h1>
+<div class="need_container docutils container" id="SNCB-392126d2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__com">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -579,8 +580,8 @@
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
-<div class="line"><span></span></div>
-<div class="line"><span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
 <td class="head_right" colspan="2"><div class="needs_head_right line-block">
@@ -591,7 +592,8 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">feature_request</span></span></span></div>
 </span></span></div>
-<div class="line"><span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/change_management_workproducts.html#wp__feat_request">wp__feat_request</a></span></span></div>
+</span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
@@ -839,12 +841,12 @@ options.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../baselibs/docs/safety_planning/index.html"
+       href="../code_generation/requirements/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Feature Safety Planning</p>
+        <p class="prev-next-title">Requirements</p>
       </div>
     </a>
     <a class="right-next"
@@ -904,7 +906,7 @@ options.</p>
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/features/communication/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/features/communication/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -915,15 +917,6 @@ options.</p>
     </a>
   </div>
 </div>
-
-  <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../../_sources/features/communication/index.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
 
 </div></div>
               

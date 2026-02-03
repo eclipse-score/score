@@ -53,7 +53,7 @@
 
     <script src="../../../_static/jquery.js?v=5d32c60e"></script>
     <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../_static/documentation_options.js?v=7f41d439"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
@@ -489,8 +489,9 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../ai_platform/index.html">AI Platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../analysis-infra/index.html">Analysis Infrastructure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../baselibs/index.html">Base Libraries (v0.5 alpha)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../communication/index.html">Communication (v0.5 alpha)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../baselibs/index.html">Base Libraries (v0.5 beta)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../code_generation/index.html">Code Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../communication/index.html">Communication (v0.5 beta)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../diagnostics/index.html">Diagnostic and Fault Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../frameworks/index.html">Frameworks</a></li>
@@ -505,8 +506,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../../orchestration/index.html">Orchestration (v0.5 alpha)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../persistency/index.html">Persistency (v0.5 alpha)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../orchestration/index.html">Orchestration (v0.5 beta)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../persistency/index.html">Persistency (v0.5 beta)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../security_crypto/index.html">Security &amp; Cryptography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../time/index.html">Time</a></li>
 </ul>
@@ -666,7 +667,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 <h2>Deadline Monitor API<a class="headerlink" href="#deadline-monitor-api" title="Link to this heading">#</a></h2>
 <section id="static-architecture">
 <h3>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-67e6508f">
+<div class="need_container docutils container" id="SNCB-8be9d18a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__deadline_monitor_if">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -687,7 +688,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span></span></span></div>
 <div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../../communication/docs/requirements/index.html#feat_req__com__interfaces" title="logic_arc_int__lifecycle__deadline_monitor_if">feat_req__com__interfaces</a></span></span></div>
-<div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="../../../modules/lifecycle/index.html#comp_arc_sta__lifecycle__healthmonitor" title="logic_arc_int__lifecycle__deadline_monitor_if">comp_arc_sta__lifecycle__healthmonitor</a></span></span></div>
+<div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="../../../modules/lifecycle/index.html#comp__lifecycle_healthmonitor" title="logic_arc_int__lifecycle__deadline_monitor_if">comp__lifecycle_healthmonitor</a></span></span></div>
 <div class="line">includes: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int_op__lifecycle__max_time" title="logic_arc_int__lifecycle__deadline_monitor_if">logic_arc_int_op__lifecycle__max_time</a>, <a class="reference internal" href="#logic_arc_int_op__lifecycle__link_cond_dl" title="logic_arc_int__lifecycle__deadline_monitor_if">logic_arc_int_op__lifecycle__link_cond_dl</a>, <a class="reference internal" href="#logic_arc_int_op__lifecycle__start" title="logic_arc_int__lifecycle__deadline_monitor_if">logic_arc_int_op__lifecycle__start</a>, <a class="reference internal" href="#logic_arc_int_op__lifecycle__end" title="logic_arc_int__lifecycle__deadline_monitor_if">logic_arc_int_op__lifecycle__end</a>, <a class="reference internal" href="#logic_arc_int_op__lifecycle__timer_expiry" title="logic_arc_int__lifecycle__deadline_monitor_if">logic_arc_int_op__lifecycle__timer_expiry</a>, <a class="reference internal" href="#logic_arc_int_op__lifecycle__enable_mon" title="logic_arc_int__lifecycle__deadline_monitor_if">logic_arc_int_op__lifecycle__enable_mon</a>, <a class="reference internal" href="#logic_arc_int_op__lifecycle__disable_mon" title="logic_arc_int__lifecycle__deadline_monitor_if">logic_arc_int_op__lifecycle__disable_mon</a>, <a class="reference internal" href="#logic_arc_int_op__lifecycle__check_cfg" title="logic_arc_int__lifecycle__deadline_monitor_if">logic_arc_int_op__lifecycle__check_cfg</a></span></span></div>
 </span></div>
 </div>
@@ -712,7 +713,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-497b488c">
+<div class="need_container docutils container" id="SNCB-43ab00ff">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__min_time">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -754,7 +755,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9a5367cf">
+<div class="need_container docutils container" id="SNCB-45005bfd">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__max_time">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -796,7 +797,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-23de28c7">
+<div class="need_container docutils container" id="SNCB-5ae5759e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__link_cond_dl">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -838,7 +839,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a88e9587">
+<div class="need_container docutils container" id="SNCB-1dfb650a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__start">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -880,7 +881,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-2445037a">
+<div class="need_container docutils container" id="SNCB-a8597e9a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__end">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -922,7 +923,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4471a4ee">
+<div class="need_container docutils container" id="SNCB-07085186">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__timer_expiry">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -964,7 +965,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-51572535">
+<div class="need_container docutils container" id="SNCB-f26e8329">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__enable_mon">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1006,7 +1007,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4d86d54a">
+<div class="need_container docutils container" id="SNCB-b301fabf">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__disable_mon">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1048,7 +1049,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-432f2b32">
+<div class="need_container docutils container" id="SNCB-178b47f0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__check_cfg">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1093,7 +1094,7 @@ worst case reaction time calculations must be made on the monitoring rules speci
 </section>
 <section id="dynamic-architecture">
 <h3>Dynamic Architecture<a class="headerlink" href="#dynamic-architecture" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-4f93fc3d">
+<div class="need_container docutils container" id="SNCB-7c9321b0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__lifecycle__app_health_moni">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1195,7 +1196,7 @@ how long grace period is given before failing to a missed (never received) alive
 <h2>Logical Monitor API<a class="headerlink" href="#logical-monitor-api" title="Link to this heading">#</a></h2>
 <section id="id1">
 <h3>Static Architecture<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-1e9ebb5b">
+<div class="need_container docutils container" id="SNCB-3ddb9532">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__lifecycle__logical_monitor_if">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1216,7 +1217,7 @@ how long grace period is given before failing to a missed (never received) alive
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span></span></span></div>
 <div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../../communication/docs/requirements/index.html#feat_req__com__interfaces" title="logic_arc_int__lifecycle__logical_monitor_if">feat_req__com__interfaces</a></span></span></div>
-<div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="../../../modules/lifecycle/index.html#comp_arc_sta__lifecycle__healthmonitor" title="logic_arc_int__lifecycle__logical_monitor_if">comp_arc_sta__lifecycle__healthmonitor</a></span></span></div>
+<div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="../../../modules/lifecycle/index.html#comp__lifecycle_healthmonitor" title="logic_arc_int__lifecycle__logical_monitor_if">comp__lifecycle_healthmonitor</a></span></span></div>
 <div class="line">includes: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int_op__lifecycle__entry_point" title="logic_arc_int__lifecycle__logical_monitor_if">logic_arc_int_op__lifecycle__entry_point</a>, <a class="reference internal" href="#logic_arc_int_op__lifecycle__exit_point" title="logic_arc_int__lifecycle__logical_monitor_if">logic_arc_int_op__lifecycle__exit_point</a>, <a class="reference internal" href="#logic_arc_int_op__lifecycle__allowed_trans" title="logic_arc_int__lifecycle__logical_monitor_if">logic_arc_int_op__lifecycle__allowed_trans</a>, <a class="reference internal" href="#logic_arc_int_op__lifecycle__link_cond_lg" title="logic_arc_int__lifecycle__logical_monitor_if">logic_arc_int_op__lifecycle__link_cond_lg</a>, <a class="reference internal" href="#logic_arc_int_op__lifecycle__rec_checkpoint" title="logic_arc_int__lifecycle__logical_monitor_if">logic_arc_int_op__lifecycle__rec_checkpoint</a>, <a class="reference internal" href="#logic_arc_int_op__lifecycle__enable" title="logic_arc_int__lifecycle__logical_monitor_if">logic_arc_int_op__lifecycle__enable</a>, <a class="reference internal" href="#logic_arc_int_op__lifecycle__disable" title="logic_arc_int__lifecycle__logical_monitor_if">logic_arc_int_op__lifecycle__disable</a>, <a class="reference internal" href="#logic_arc_int_op__lifecycle__verify" title="logic_arc_int__lifecycle__logical_monitor_if">logic_arc_int_op__lifecycle__verify</a></span></span></div>
 </span></div>
 </div>
@@ -1241,7 +1242,7 @@ how long grace period is given before failing to a missed (never received) alive
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-08758bce">
+<div class="need_container docutils container" id="SNCB-48ba5aa7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__entry_point">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1283,7 +1284,7 @@ how long grace period is given before failing to a missed (never received) alive
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-add464cc">
+<div class="need_container docutils container" id="SNCB-a5237b16">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__exit_point">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1325,7 +1326,7 @@ how long grace period is given before failing to a missed (never received) alive
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9e507eba">
+<div class="need_container docutils container" id="SNCB-6af57908">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__allowed_trans">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1367,7 +1368,7 @@ how long grace period is given before failing to a missed (never received) alive
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-fb6d16c7">
+<div class="need_container docutils container" id="SNCB-4c4f8f93">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__link_cond_lg">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1409,7 +1410,7 @@ how long grace period is given before failing to a missed (never received) alive
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-2e5ce677">
+<div class="need_container docutils container" id="SNCB-e65fd0f5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__rec_checkpoint">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1451,7 +1452,7 @@ how long grace period is given before failing to a missed (never received) alive
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-c5e9babe">
+<div class="need_container docutils container" id="SNCB-5e0bb252">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__enable">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1493,7 +1494,7 @@ how long grace period is given before failing to a missed (never received) alive
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d7ae3267">
+<div class="need_container docutils container" id="SNCB-af82b8c0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__disable">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1535,7 +1536,7 @@ how long grace period is given before failing to a missed (never received) alive
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5925f6c0">
+<div class="need_container docutils container" id="SNCB-60210450">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__lifecycle__verify">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1580,7 +1581,7 @@ how long grace period is given before failing to a missed (never received) alive
 </section>
 <section id="id2">
 <h3>Dynamic Architecture<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-49cd657c">
+<div class="need_container docutils container" id="SNCB-b5a45937">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__lifecycle__app_ctrl_flow_moni">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1700,7 +1701,7 @@ how long grace period is given before failing to a missed (never received) alive
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/features/lifecycle/architecture/health_monitor.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/features/lifecycle/architecture/health_monitor.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -1711,15 +1712,6 @@ how long grace period is given before failing to a missed (never received) alive
     </a>
   </div>
 </div>
-
-  <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../../../_sources/features/lifecycle/architecture/health_monitor.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
 
 </div></div>
               

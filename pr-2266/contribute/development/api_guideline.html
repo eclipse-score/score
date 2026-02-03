@@ -53,7 +53,7 @@
 
     <script src="../../_static/jquery.js?v=5d32c60e"></script>
     <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/documentation_options.js?v=7f41d439"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
@@ -73,7 +73,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="C++" href="cpp/index.html" />
-    <link rel="prev" title="CLion" href="ide/clion.html" />
+    <link rel="prev" title="Traceability Tooling" href="traceability_tooling.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
@@ -492,6 +492,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../documentation/index.html">Documentation</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Development</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="development_environment.html">Setting Up the Development Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="traceability_tooling.html">Traceability Tooling</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Designing API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cpp/index.html">C++</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rust/index.html">Rust</a></li>
@@ -565,7 +566,7 @@
                   
   <section id="designing-api">
 <h1>Designing API<a class="headerlink" href="#designing-api" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-57c30f56">
+<div class="need_container docutils container" id="SNCB-2734ccc6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__api_guidelines">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -574,8 +575,8 @@
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></span></div>
-<div class="line"><span></span></div>
-<div class="line"><span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
 </div>
 </td>
 <td class="head_right" colspan="2"><div class="needs_head_right line-block">
@@ -585,7 +586,8 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span></span></span></div>
-<div class="line"><span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/quality_management/quality_workproducts.html#wp__training_path">wp__training_path</a></span></span></div>
+</span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
@@ -669,12 +671,12 @@ This means, an API always needs to consider the additional usecase of testing.</
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="ide/clion.html"
+       href="traceability_tooling.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">CLion</p>
+        <p class="prev-next-title">Traceability Tooling</p>
       </div>
     </a>
     <a class="right-next"
@@ -717,7 +719,7 @@ This means, an API always needs to consider the additional usecase of testing.</
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/contribute/development/api_guideline.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/contribute/development/api_guideline.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -728,15 +730,6 @@ This means, an API always needs to consider the additional usecase of testing.</
     </a>
   </div>
 </div>
-
-  <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../../_sources/contribute/development/api_guideline.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
 
 </div></div>
               

@@ -53,7 +53,7 @@
 
     <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
     <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../../../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../../../_static/documentation_options.js?v=7f41d439"></script>
     <script src="../../../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../../_static/design-tabs.js?v=f930bc37"></script>
@@ -489,7 +489,9 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../../index.html">Baselibs Module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../../docs/index.html">Module Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../language/index.html">language</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../bitmanipulation/docs/index.html">bitmanipulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../concurrency/docs/index.html">concurrency</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../containers/docs/index.html">containers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../filesystem/docs/index.html">filesystem</a></li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">JSON-Library</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -514,6 +516,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../message_passing/docs/index.html">message_passing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../os/docs/index.html">os</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../result/docs/index.html">result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../static_reflection_with_serialization/docs/index.html">static_reflection_with_serialization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../utils/docs/index.html">utils</a></li>
 </ul>
 </details></li>
@@ -521,9 +524,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../feo/index.html">FEO Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../lifecycle/index.html">Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../logging/index.html">Logging Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../orchestrator/index.html">Orchestrator Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../orchestrator/index.html">Orchestrator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../os/index.html">OS Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../persistency/index.html">Persistency KVS Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tracing/index.html">Tracing Module</a></li>
 </ul>
 </div>
@@ -593,7 +595,7 @@
                   
   <section id="requirements">
 <h1>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-dd1e816d">
+<div class="need_container docutils container" id="SNCB-fc5624a7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__json_requirements">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -602,7 +604,7 @@
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
 <div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></span></div>
-<div class="line"><span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
 <div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
@@ -637,7 +639,7 @@
 </div>
 <section id="general-requirements">
 <h2>General Requirements<a class="headerlink" href="#general-requirements" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-a8bf12a5">
+<div class="need_container docutils container" id="SNCB-42656009">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__json__deserialization">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -660,7 +662,7 @@
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__json_library" title="comp_req__json__deserialization">feat_req__baselibs__json_library</a></span></span></div>
-<div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#comp_arc_sta__baselibs__json" title="comp_req__json__deserialization">comp_arc_sta__baselibs__json</a>, <a class="reference internal" href="../architecture/index.html#comp_arc_dyn__baselibs__json_dynamic_view" title="comp_req__json__deserialization">comp_arc_dyn__baselibs__json_dynamic_view</a>, <a class="reference internal" href="../architecture/index.html#comp_arc_sta__baselibs__nlohman_json" title="comp_req__json__deserialization">comp_arc_sta__baselibs__nlohman_json</a></span></span></div>
+<div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#comp_arc_sta__baselibs__json" title="comp_req__json__deserialization">comp_arc_sta__baselibs__json</a>, <a class="reference internal" href="../architecture/index.html#comp_arc_dyn__baselibs__json_dynamic_view" title="comp_req__json__deserialization">comp_arc_dyn__baselibs__json_dynamic_view</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -683,7 +685,7 @@ parse and check for well-formedness.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-2ef5826a">
+<div class="need_container docutils container" id="SNCB-4389d959">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__json__serialization">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -706,7 +708,7 @@ parse and check for well-formedness.</p></td>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__json_library" title="comp_req__json__serialization">feat_req__baselibs__json_library</a></span></span></div>
-<div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#comp_arc_sta__baselibs__json" title="comp_req__json__serialization">comp_arc_sta__baselibs__json</a>, <a class="reference internal" href="../architecture/index.html#comp_arc_dyn__baselibs__json_dynamic_view" title="comp_req__json__serialization">comp_arc_dyn__baselibs__json_dynamic_view</a>, <a class="reference internal" href="../architecture/index.html#comp_arc_sta__baselibs__json_wrapper" title="comp_req__json__serialization">comp_arc_sta__baselibs__json_wrapper</a></span></span></div>
+<div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#comp_arc_sta__baselibs__json" title="comp_req__json__serialization">comp_arc_sta__baselibs__json</a>, <a class="reference internal" href="../architecture/index.html#comp_arc_dyn__baselibs__json_dynamic_view" title="comp_req__json__serialization">comp_arc_dyn__baselibs__json_dynamic_view</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -728,7 +730,7 @@ parse and check for well-formedness.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b2d6efb7">
+<div class="need_container docutils container" id="SNCB-c9820795">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__json__user_format">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -751,7 +753,7 @@ parse and check for well-formedness.</p></td>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__json_library" title="comp_req__json__user_format">feat_req__baselibs__json_library</a></span></span></div>
-<div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#comp_arc_sta__baselibs__json" title="comp_req__json__user_format">comp_arc_sta__baselibs__json</a>, <a class="reference internal" href="../architecture/index.html#comp_arc_dyn__baselibs__json_dynamic_view" title="comp_req__json__user_format">comp_arc_dyn__baselibs__json_dynamic_view</a>, <a class="reference internal" href="../architecture/index.html#comp_arc_sta__baselibs__json_wrapper" title="comp_req__json__user_format">comp_arc_sta__baselibs__json_wrapper</a></span></span></div>
+<div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#comp_arc_sta__baselibs__json" title="comp_req__json__user_format">comp_arc_sta__baselibs__json</a>, <a class="reference internal" href="../architecture/index.html#comp_arc_dyn__baselibs__json_dynamic_view" title="comp_req__json__user_format">comp_arc_dyn__baselibs__json_dynamic_view</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -778,7 +780,7 @@ parse and check for well-formedness.</p></td>
 </section>
 <section id="user-friendly-api-for-information-exchange">
 <h2>User friendly API for information exchange<a class="headerlink" href="#user-friendly-api-for-information-exchange" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-9c600b89">
+<div class="need_container docutils container" id="SNCB-da958f6f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__json__lang_idioms">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -801,7 +803,7 @@ parse and check for well-formedness.</p></td>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__json_library" title="comp_req__json__lang_idioms">feat_req__baselibs__json_library</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__consistent_apis" title="comp_req__json__lang_idioms">feat_req__baselibs__consistent_apis</a></span></span></div>
-<div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#comp_arc_sta__baselibs__json" title="comp_req__json__lang_idioms">comp_arc_sta__baselibs__json</a>, <a class="reference internal" href="../architecture/index.html#comp_arc_dyn__baselibs__json_dynamic_view" title="comp_req__json__lang_idioms">comp_arc_dyn__baselibs__json_dynamic_view</a>, <a class="reference internal" href="../architecture/index.html#comp_arc_sta__baselibs__json_wrapper" title="comp_req__json__lang_idioms">comp_arc_sta__baselibs__json_wrapper</a></span></span></div>
+<div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#comp_arc_sta__baselibs__json" title="comp_req__json__lang_idioms">comp_arc_sta__baselibs__json</a>, <a class="reference internal" href="../architecture/index.html#comp_arc_dyn__baselibs__json_dynamic_view" title="comp_req__json__lang_idioms">comp_arc_dyn__baselibs__json_dynamic_view</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -823,7 +825,7 @@ parse and check for well-formedness.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-704c0260">
+<div class="need_container docutils container" id="SNCB-132282c2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__json__lang_infra">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -846,7 +848,7 @@ parse and check for well-formedness.</p></td>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__json_library" title="comp_req__json__lang_infra">feat_req__baselibs__json_library</a></span></span></div>
-<div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#comp_arc_sta__baselibs__json" title="comp_req__json__lang_infra">comp_arc_sta__baselibs__json</a>, <a class="reference internal" href="../architecture/index.html#comp_arc_dyn__baselibs__json_dynamic_view" title="comp_req__json__lang_infra">comp_arc_dyn__baselibs__json_dynamic_view</a>, <a class="reference internal" href="../architecture/index.html#comp_arc_sta__baselibs__json_wrapper" title="comp_req__json__lang_infra">comp_arc_sta__baselibs__json_wrapper</a></span></span></div>
+<div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#comp_arc_sta__baselibs__json" title="comp_req__json__lang_infra">comp_arc_sta__baselibs__json</a>, <a class="reference internal" href="../architecture/index.html#comp_arc_dyn__baselibs__json_dynamic_view" title="comp_req__json__lang_infra">comp_arc_dyn__baselibs__json_dynamic_view</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -871,7 +873,7 @@ whenever possible and meaningful.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-2a8880f5">
+<div class="need_container docutils container" id="SNCB-46a315dc">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__json__type_compatibility">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -894,7 +896,7 @@ whenever possible and meaningful.</p>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__json_library" title="comp_req__json__type_compatibility">feat_req__baselibs__json_library</a></span></span></div>
-<div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#comp_arc_sta__baselibs__json" title="comp_req__json__type_compatibility">comp_arc_sta__baselibs__json</a>, <a class="reference internal" href="../architecture/index.html#comp_arc_dyn__baselibs__json_dynamic_view" title="comp_req__json__type_compatibility">comp_arc_dyn__baselibs__json_dynamic_view</a>, <a class="reference internal" href="../architecture/index.html#comp_arc_sta__baselibs__json_wrapper" title="comp_req__json__type_compatibility">comp_arc_sta__baselibs__json_wrapper</a></span></span></div>
+<div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#comp_arc_sta__baselibs__json" title="comp_req__json__type_compatibility">comp_arc_sta__baselibs__json</a>, <a class="reference internal" href="../architecture/index.html#comp_arc_dyn__baselibs__json_dynamic_view" title="comp_req__json__type_compatibility">comp_arc_dyn__baselibs__json_dynamic_view</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -922,7 +924,7 @@ validate that the requested return type is compatible with the type and value of
 </section>
 <section id="full-testability-for-the-user-facing-api">
 <h2>Full testability for the user facing API<a class="headerlink" href="#full-testability-for-the-user-facing-api" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-1ae4a682">
+<div class="need_container docutils container" id="SNCB-233ae8f6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__json__full_testability">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -945,7 +947,7 @@ validate that the requested return type is compatible with the type and value of
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__json_library" title="comp_req__json__full_testability">feat_req__baselibs__json_library</a></span></span></div>
-<div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#comp_arc_sta__baselibs__json" title="comp_req__json__full_testability">comp_arc_sta__baselibs__json</a>, <a class="reference internal" href="../architecture/index.html#comp_arc_dyn__baselibs__json_dynamic_view" title="comp_req__json__full_testability">comp_arc_dyn__baselibs__json_dynamic_view</a>, <a class="reference internal" href="../architecture/index.html#comp_arc_sta__baselibs__json_wrapper" title="comp_req__json__full_testability">comp_arc_sta__baselibs__json_wrapper</a></span></span></div>
+<div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#comp_arc_sta__baselibs__json" title="comp_req__json__full_testability">comp_arc_sta__baselibs__json</a>, <a class="reference internal" href="../architecture/index.html#comp_arc_dyn__baselibs__json_dynamic_view" title="comp_req__json__full_testability">comp_arc_dyn__baselibs__json_dynamic_view</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -972,7 +974,7 @@ validate that the requested return type is compatible with the type and value of
 </section>
 <section id="safety-impact">
 <h2>Safety Impact<a class="headerlink" href="#safety-impact" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-8462df68">
+<div class="need_container docutils container" id="SNCB-80080c48">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__json__asil">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -995,7 +997,7 @@ validate that the requested return type is compatible with the type and value of
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__json_library" title="comp_req__json__asil">feat_req__baselibs__json_library</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__safety" title="comp_req__json__asil">feat_req__baselibs__safety</a></span></span></div>
-<div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#comp_arc_sta__baselibs__json" title="comp_req__json__asil">comp_arc_sta__baselibs__json</a>, <a class="reference internal" href="../architecture/index.html#comp_arc_dyn__baselibs__json_dynamic_view" title="comp_req__json__asil">comp_arc_dyn__baselibs__json_dynamic_view</a>, <a class="reference internal" href="../architecture/index.html#comp_arc_sta__baselibs__json_wrapper" title="comp_req__json__asil">comp_arc_sta__baselibs__json_wrapper</a>, <a class="reference internal" href="../architecture/index.html#comp_arc_sta__baselibs__nlohman_json" title="comp_req__json__asil">comp_arc_sta__baselibs__nlohman_json</a></span></span></div>
+<div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="../architecture/index.html#comp_arc_sta__baselibs__json" title="comp_req__json__asil">comp_arc_sta__baselibs__json</a>, <a class="reference internal" href="../architecture/index.html#comp_arc_dyn__baselibs__json_dynamic_view" title="comp_req__json__asil">comp_arc_dyn__baselibs__json_dynamic_view</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1020,7 +1022,7 @@ validate that the requested return type is compatible with the type and value of
 </section>
 <section id="aou-requirements">
 <h2>AoU Requirements<a class="headerlink" href="#aou-requirements" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-c02633e8">
+<div class="need_container docutils container" id="SNCB-bf715f57">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__json__data_integrity">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1065,7 +1067,7 @@ validate that the requested return type is compatible with the type and value of
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-46a13297">
+<div class="need_container docutils container" id="SNCB-85b39562">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__json__access_control">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1172,7 +1174,7 @@ validate that the requested return type is compatible with the type and value of
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/modules/baselibs/json/docs/requirements/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/modules/baselibs/json/docs/requirements/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -1183,15 +1185,6 @@ validate that the requested return type is compatible with the type and value of
     </a>
   </div>
 </div>
-
-  <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../../../../../_sources/modules/baselibs/json/docs/requirements/index.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
 
 </div></div>
               

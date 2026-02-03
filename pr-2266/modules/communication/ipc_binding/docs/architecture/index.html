@@ -53,7 +53,7 @@
 
     <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
     <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../../../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../../../_static/documentation_options.js?v=7f41d439"></script>
     <script src="../../../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../../_static/design-tabs.js?v=f930bc37"></script>
@@ -503,9 +503,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../feo/index.html">FEO Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../lifecycle/index.html">Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../logging/index.html">Logging Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../orchestrator/index.html">Orchestrator Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../orchestrator/index.html">Orchestrator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../os/index.html">OS Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../persistency/index.html">Persistency KVS Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tracing/index.html">Tracing Module</a></li>
 </ul>
 </div>
@@ -575,8 +574,8 @@
                   
   <section id="ipc-binding-component-architecture">
 <h1>IPC Binding Component Architecture<a class="headerlink" href="#ipc-binding-component-architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-a1b1db06">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__com__ipc_binding">
+<div class="need_container docutils container" id="SNCB-22445fa3">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp table" id="comp__com_ipc_binding">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
 <div class="line"><span><span class="needs_title"><span class="needs_data">IPC Binding</span></span></span></div>
@@ -594,25 +593,26 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span><span class="needs_spacer">, </span><span class="needs_data">ipc</span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">uses: <span class="uses"><span><a class="reference internal" href="../../../../logging/logging/docs/architecture/index.html#logic_arc_int__logging__logging" title="comp_arc_sta__com__ipc_binding">logic_arc_int__logging__logging</a>, <a class="reference internal" href="../../../../tracing/tracing/docs/architecture/index.html#logic_arc_int__tracing__tracing" title="comp_arc_sta__com__ipc_binding">logic_arc_int__tracing__tracing</a>, <a class="reference internal" href="../../../../baselibs/memory_shared/docs/architecture/index.html#logic_arc_int__baselibs__memory_shared" title="comp_arc_sta__com__ipc_binding">logic_arc_int__baselibs__memory_shared</a>, <a class="reference internal" href="../../../../baselibs/message_passing/docs/architecture/index.html#logic_arc_int__baselibs__message_passing" title="comp_arc_sta__com__ipc_binding">logic_arc_int__baselibs__message_passing</a>, <a class="reference internal" href="../../../../baselibs/json/docs/architecture/index.html#logic_arc_int__baselibs__json" title="comp_arc_sta__com__ipc_binding">logic_arc_int__baselibs__json</a></span></span></div>
-<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../docs/index.html#mod_view_sta__com__communication" title="comp_arc_sta__com__ipc_binding">mod_view_sta__com__communication</a></span></span></div>
+<div class="line"><span><div class="line">forms part of: <span class="consists_of"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat__baselibs" title="comp__com_ipc_binding">feat__baselibs</a>, <a class="reference internal" href="../../../../../features/communication/docs/architecture/index.html#feat__com_communication" title="comp__com_ipc_binding">feat__com_communication</a></span></span></div>
+<div class="line">uses: <span class="uses"><span><a class="reference internal" href="../../../../logging/logging/docs/architecture/index.html#logic_arc_int__logging__logging" title="comp__com_ipc_binding">logic_arc_int__logging__logging</a>, <a class="reference internal" href="../../../../tracing/tracing/docs/architecture/index.html#logic_arc_int__tracing__tracing" title="comp__com_ipc_binding">logic_arc_int__tracing__tracing</a>, <a class="reference internal" href="../../../../baselibs/memory_shared/docs/architecture/index.html#logic_arc_int__baselibs__memory_shared" title="comp__com_ipc_binding">logic_arc_int__baselibs__memory_shared</a>, <a class="reference internal" href="../../../../baselibs/message_passing/docs/architecture/index.html#logic_arc_int__baselibs__message_passing" title="comp__com_ipc_binding">logic_arc_int__baselibs__message_passing</a>, <a class="reference internal" href="../../../../baselibs/json/docs/architecture/index.html#logic_arc_int__baselibs__json" title="comp__com_ipc_binding">logic_arc_int__baselibs__json</a></span></span></div>
+<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../docs/index.html#mod__com_communication" title="comp__com_ipc_binding">mod__com_communication</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-modules/communication/ipc_binding/docs/architecture/index-0">
-<object data="../../../../../_images/plantuml-b0531c83fcb3379537ca4922cd5009c343659236.svg" type="image/svg+xml" style="width:132px;height:59px;background:#FFFFFF;"></object></p>
+<object data="../../../../../_images/plantuml-37785a991d9103d35d8442257e36ef1989141d73.svg" type="image/svg+xml" style="width:132px;height:59px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
-<div class="line"><span><span class="needs-id"><a class="reference internal" href="#comp_arc_sta__com__ipc_binding" title="comp_arc_sta__com__ipc_binding">comp_arc_sta__com__ipc_binding</a></span></span></div>
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#comp__com_ipc_binding" title="comp__com_ipc_binding">comp__com_ipc_binding</a></span></span></div>
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
-<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component &amp; Component Package Diagram</span></span></span></div>
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component</span></span></span></div>
 </div>
 </td>
 <td class="footer_right" colspan="2"></td>
@@ -666,7 +666,7 @@
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/modules/communication/ipc_binding/docs/architecture/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/modules/communication/ipc_binding/docs/architecture/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -677,15 +677,6 @@
     </a>
   </div>
 </div>
-
-  <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../../../../../_sources/modules/communication/ipc_binding/docs/architecture/index.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
 
 </div></div>
               

@@ -53,7 +53,7 @@
 
     <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
     <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../../_static/documentation_options.js?v=7f41d439"></script>
     <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
@@ -72,7 +72,7 @@
         </script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="Safety Plan Formal Review Report" href="module_safety_plan_fdr.html" />
+    <link rel="next" title="Module Codeowners Skill Check" href="module_codeowners.html" />
     <link rel="prev" title="Safety Management" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -494,6 +494,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../release/release_note.html">Release Note</a></li>
 <li class="toctree-l3 current active has-children"><a class="reference internal" href="index.html">Safety Management</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l4 current active"><a class="current reference internal" href="#">Module Safety Plan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="module_codeowners.html">Module Codeowners Skill Check</a></li>
 <li class="toctree-l4"><a class="reference internal" href="module_safety_plan_fdr.html">Safety Plan Formal Review Report</a></li>
 <li class="toctree-l4"><a class="reference internal" href="module_safety_package_fdr.html">Safety Package Formal Review Report</a></li>
 </ul>
@@ -512,9 +513,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../feo/index.html">FEO Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../lifecycle/index.html">Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../logging/index.html">Logging Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../orchestrator/index.html">Orchestrator Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../orchestrator/index.html">Orchestrator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../os/index.html">OS Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../persistency/index.html">Persistency KVS Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tracing/index.html">Tracing Module</a></li>
 </ul>
 </div>
@@ -587,11 +587,7 @@
                   
   <section id="module-safety-plan">
 <h1>Module Safety Plan<a class="headerlink" href="#module-safety-plan" title="Link to this heading">#</a></h1>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Document header</p>
-</div>
-<div class="need_container docutils container" id="SNCB-c181655c">
+<div class="need_container docutils container" id="SNCB-934bdb98">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__communication_safety_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -610,8 +606,9 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
-<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/workproducts.html#wp__module_safety_plan">wp__module_safety_plan</a></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__module_safety_plan">wp__module_safety_plan</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -635,7 +632,7 @@
 </div>
 <section id="functional-safety-management-context">
 <h2>Functional Safety Management Context<a class="headerlink" href="#functional-safety-management-context" title="Link to this heading">#</a></h2>
-<p>This Safety Plan adds to the <a class="reference internal" href="../../../../platform_management_plan/safety_management.html#doc__platform_safety_plan" title="doc__platform_safety_plan"><em class="xref need">Platform Safety Plan (doc__platform_safety_plan)</em></a> all the module development relevant work products needed for ISO 26262 conformity.</p>
+<p>This Safety Plan adds to the <a class="reference internal" href="../../../../platform_management_plan/safety_management.html#doc__score_platform_safety_plan" title="doc__score_platform_safety_plan"><em class="xref need">Platform Safety Plan (doc__score_platform_safety_plan)</em></a> all the module development relevant work products needed for ISO 26262 conformity.</p>
 </section>
 <section id="functional-safety-management-scope">
 <h2>Functional Safety Management Scope<a class="headerlink" href="#functional-safety-management-scope" title="Link to this heading">#</a></h2>
@@ -644,8 +641,8 @@ The module consists of one or more SW components and will be qualified as a SEoo
 </section>
 <section id="functional-safety-management-roles">
 <h2>Functional Safety Management Roles<a class="headerlink" href="#functional-safety-management-roles" title="Link to this heading">#</a></h2>
-<div class="pst-scrollable-table-container"><table class="table" id="id4">
-<caption><span class="caption-number">Table 25 </span><span class="caption-text">Module roles</span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id1">
+<caption><span class="caption-number">Table 29 </span><span class="caption-text">Module roles</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Role</p></th>
 <th class="head"><p>Assignee</p></th>
@@ -655,7 +652,7 @@ The module consists of one or more SW components and will be qualified as a SEoo
 <tr class="row-even"><td><p>Safety Manager</p></td>
 <td><p>Alexander Schemmel</p></td>
 </tr>
-<tr class="row-odd"><td><p>Module Project Lead</p></td>
+<tr class="row-odd"><td><p>Module Project Manager (= Feature team lead)</p></td>
 <td><p>Committers of feature team see <a class="reference external" href="https://github.com/eclipse-score/communication/blob/main/.github/CODEOWNERS">Communication FT</a></p></td>
 </tr>
 </tbody>
@@ -664,13 +661,13 @@ The module consists of one or more SW components and will be qualified as a SEoo
 </section>
 <section id="tailoring">
 <h2>Tailoring<a class="headerlink" href="#tailoring" title="Link to this heading">#</a></h2>
-<p>Additional to the tailoring in the SW platform project as defined in the <a class="reference internal" href="../../../../platform_management_plan/safety_management.html#doc__platform_safety_plan" title="doc__platform_safety_plan"><em class="xref need">Platform Safety Plan (doc__platform_safety_plan)</em></a> we define here the additional tailoring on module level.</p>
+<p>Additional to the tailoring in the SW platform project as defined in the <a class="reference internal" href="../../../../platform_management_plan/safety_management.html#doc__score_platform_safety_plan" title="doc__score_platform_safety_plan"><em class="xref need">Platform Safety Plan (doc__score_platform_safety_plan)</em></a> we define here the additional tailoring on module level.</p>
 <ul class="simple">
 <li><p>Excluded for this module are additionally the following work products (and their related requirements):</p>
 <ul>
 <li><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_inspect">wp__requirements_inspect</a>: in version 0.5 the inspections have to be done by the user</p></li>
 <li><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/architecture_workproducts.html#wp__sw_arch_verification">wp__sw_arch_verification</a>: in version 0.5 the inspections have to be done by the user</p></li>
-<li><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/workproducts.html#wp__fdr_reports">wp__fdr_reports</a> (module’s Safety Analyses &amp; DFA): in version 0.5 the reviews have to be done by the user</p></li>
+<li><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__fdr_reports">wp__fdr_reports</a> (module’s Safety Analyses &amp; DFA): in version 0.5 the reviews have to be done by the user</p></li>
 </ul>
 </li>
 </ul>
@@ -680,87 +677,60 @@ The module consists of one or more SW components and will be qualified as a SEoo
 <p>One set of work products for the module and one set for each component of the module:</p>
 <section id="module-work-products-list">
 <h3>Module Work products List<a class="headerlink" href="#module-work-products-list" title="Link to this heading">#</a></h3>
-<div class="pst-scrollable-table-container"><table class="table" id="id5">
-<caption><span class="caption-number">Table 26 </span><span class="caption-text">Module Work products</span><a class="headerlink" href="#id5" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id2">
+<caption><span class="caption-number">Table 30 </span><span class="caption-text">Module Work products</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Work product Id</p></th>
 <th class="head"><p>Link to process</p></th>
 <th class="head"><p>Process status</p></th>
-<th class="head"><p>Link to issue</p></th>
 <th class="head"><p>Link to WP</p></th>
-<th class="head"><p>WP status</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/workproducts.html#wp__module_safety_plan">wp__module_safety_plan</a></p></td>
+<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__module_safety_plan">wp__module_safety_plan</a></p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/guidance/guideline_safety_management.html#gd_guidl__saf_plan_definitions">gd_guidl__saf_plan_definitions</a></p></td>
 <td><p>valid</p></td>
-<td><p>n/a</p></td>
 <td><p>this document</p></td>
-<td><p>see above</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/workproducts.html#wp__module_safety_package">wp__module_safety_package</a></p></td>
+<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__module_safety_package">wp__module_safety_package</a></p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/guidance/guideline_safety_management.html#gd_guidl__saf_package">gd_guidl__saf_package</a></p></td>
 <td><p>valid</p></td>
-<td><p>n/a</p></td>
 <td><p>this document (including the linked documentation)</p></td>
-<td><p>see above (and below)</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/workproducts.html#wp__fdr_reports">wp__fdr_reports</a> (module Safety Plan)</p></td>
+<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__fdr_reports">wp__fdr_reports</a> (module Safety Plan)</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/guidance/checklist_safety_plan.html#gd_chklst__safety_plan">gd_chklst__safety_plan</a></p></td>
 <td><p>valid</p></td>
-<td><p>&lt;Link to issue&gt;</p></td>
 <td><p><a class="reference internal" href="module_safety_plan_fdr.html#doc__communication_safety_plan_fdr" title="doc__communication_safety_plan_fdr"><em class="xref need">Communication Safety Plan F... (doc__communication_safety_plan_fdr)</em></a></p></td>
-<td><p>draft</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/workproducts.html#wp__fdr_reports">wp__fdr_reports</a> (module Safety Package)</p></td>
+<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__fdr_reports">wp__fdr_reports</a> (module Safety Package)</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/guidance/checklist_safety_package.html#gd_chklst__safety_package">gd_chklst__safety_package</a></p></td>
 <td><p>valid</p></td>
-<td><p>&lt;Link to issue&gt;</p></td>
 <td><p><a class="reference internal" href="module_safety_package_fdr.html#doc__communication_safety_package_fdr" title="doc__communication_safety_package_fdr"><em class="xref need">Communication Safety Packag... (doc__communication_safety_package_fdr)</em></a></p></td>
-<td><p>draft</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/workproducts.html#wp__fdr_reports">wp__fdr_reports</a> (module’s Safety Analyses &amp; DFA)</p></td>
-<td><p>Safety Analysis FDR tbd</p></td>
-<td><p>&lt;automated&gt;</p></td>
+<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__fdr_reports">wp__fdr_reports</a> (module’s Safety Analyses &amp; DFA)</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_analysis/guidance/safety_analysis_checklist.html#gd_chklst__safety_analysis">gd_chklst__safety_analysis</a></p></td>
+<td><p>valid</p></td>
 <td><p>tailored</p></td>
-<td><p>n/a</p></td>
-<td><p>n/a</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/workproducts.html#wp__audit_report">wp__audit_report</a></p></td>
+<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__audit_report">wp__audit_report</a></p></td>
 <td><p>performed by external experts</p></td>
 <td><p>n/a</p></td>
-<td><p><a class="reference external" href="https://github.com/eclipse-score/process_description/issues/77">#77</a></p></td>
 <td><p>&lt;Link to WP&gt;</p></td>
-<td><p>&lt;WP status (manual)&gt;</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/workproducts/index.html#wp__module_sw_build_config">wp__module_sw_build_config</a></p></td>
-<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/guidance/software_development_template.html#gd_temp__software_development_plan">gd_temp__software_development_plan</a></p></td>
-<td><p>draft</p></td>
-<td><p>n/a</p></td>
-<td><p><a class="reference external" href="https://github.com/eclipse-score/communication/blob/main/score/mw/com/BUILD">com/BUILD</a></p></td>
-<td><p>valid</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/workproducts.html#wp__module_safety_manual">wp__module_safety_manual</a></p></td>
+<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__module_safety_manual">wp__module_safety_manual</a></p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/guidance/template_safety_manual.html#gd_temp__safety_manual">gd_temp__safety_manual</a></p></td>
 <td><p>valid</p></td>
-<td><p>&lt;Link to issue&gt;</p></td>
 <td><p><a class="reference internal" href="../manual/safety_manual.html#doc__communication_safety_manual" title="doc__communication_safety_manual"><em class="xref need">Communication Safety Manual (doc__communication_safety_manual)</em></a></p></td>
-<td><p>draft</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_module_ver_report">wp__verification_module_ver_report</a></p></td>
+<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_module_ver_report">wp__verification_module_ver_report</a></p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/guidance/verification_report_template.html#gd_temp__mod_ver_report">gd_temp__mod_ver_report</a></p></td>
 <td><p>valid</p></td>
-<td><p>&lt;Link to issue&gt;</p></td>
 <td><p><a class="reference internal" href="../verification/module_verification_report.html#doc__communication_verification_report" title="doc__communication_verification_report"><em class="xref need">Communication Verification ... (doc__communication_verification_report)</em></a></p></td>
-<td><p>draft</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/release_management/release_workproducts.html#wp__module_sw_release_note">wp__module_sw_release_note</a></p></td>
+<tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/release_management/release_workproducts.html#wp__module_sw_release_note">wp__module_sw_release_note</a></p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/release_management/guidance/release_templates.html#gd_temp__rel_mod_rel_note">gd_temp__rel_mod_rel_note</a></p></td>
 <td><p>valid</p></td>
-<td><p><a class="reference external" href="https://github.com/eclipse-score/score/issues/1925">#1925</a></p></td>
 <td><p><a class="reference internal" href="../release/release_note.html#doc__communication_release_note" title="doc__communication_release_note"><em class="xref need">Communication Release Note (doc__communication_release_note)</em></a></p></td>
-<td><p>valid</p></td>
 </tr>
 </tbody>
 </table>
@@ -768,105 +738,258 @@ The module consists of one or more SW components and will be qualified as a SEoo
 </section>
 <section id="component-lola-work-products-list">
 <h3>Component lola Work products List<a class="headerlink" href="#component-lola-work-products-list" title="Link to this heading">#</a></h3>
-<div class="pst-scrollable-table-container"><table class="table" id="id6">
-<caption><span class="caption-number">Table 27 </span><span class="caption-text">Component lola Work products</span><a class="headerlink" href="#id6" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id3">
+<caption><span class="caption-number">Table 31 </span><span class="caption-text">Component lola Work products</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Work product Id</p></th>
 <th class="head"><p>Link to process</p></th>
 <th class="head"><p>Process status</p></th>
-<th class="head"><p>Link to issue</p></th>
 <th class="head"><p>Link to WP</p></th>
-<th class="head"><p>WP/doc status</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_comp">wp__requirements_comp</a></p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_templates.html#gd_temp__req_comp_req">gd_temp__req_comp_req</a></p></td>
 <td><p>valid</p></td>
-<td><p>n/a</p></td>
-<td><p><a class="reference external" href="https://github.com/eclipse-score/communication/blob/main/score/mw/com/requirements/component_requirements/component_requirements_ipc.trlc">lola trlc</a></p></td>
-<td><p>valid</p></td>
+<td><p><a class="reference internal" href="../../lola/docs/requirements/index.html#doc__lola_requirements" title="doc__lola_requirements"><em class="xref need">LoLa Requirements (doc__lola_requirements)</em></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_comp_aou">wp__requirements_comp_aou</a></p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_templates.html#gd_temp__req_aou_req">gd_temp__req_aou_req</a></p></td>
 <td><p>valid</p></td>
-<td><p><a class="reference external" href="https://github.com/eclipse-score/score/pull/1987">#1987</a></p></td>
-<td><p><a class="reference external" href="https://github.com/eclipse-score/score/docs/modules/communication/docs/requirements/aou_req.rst">lola/aou</a></p></td>
-<td><p>in progress</p></td>
+<td><p><a class="reference internal" href="../requirements/aou_req.html#doc__communication_aou" title="doc__communication_aou"><em class="xref need">Communication Assumptions o... (doc__communication_aou)</em></a></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_inspect">wp__requirements_inspect</a></p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_inspection_checklist.html#gd_chklst__req_inspection">gd_chklst__req_inspection</a></p></td>
 <td><p>valid</p></td>
 <td><p>tailored</p></td>
-<td><p>n/a</p></td>
-<td><p>n/a</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/architecture_workproducts.html#wp__component_arch">wp__component_arch</a></p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/guidance/component_architecture_template.html#gd_temp__arch_comp">gd_temp__arch_comp</a></p></td>
 <td><p>valid</p></td>
-<td><p>n/a</p></td>
 <td><p><a class="reference internal" href="../../lola/docs/architecture/index.html#doc__lola_architecture" title="doc__lola_architecture"><em class="xref need">LoLa Architecture (doc__lola_architecture)</em></a></p></td>
-<td><p>draft</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/architecture_workproducts.html#wp__sw_arch_verification">wp__sw_arch_verification</a></p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/guidance/architecture_inspection_checklist.html#gd_chklst__arch_inspection_checklist">gd_chklst__arch_inspection_checklist</a></p></td>
 <td><p>valid</p></td>
 <td><p>tailored</p></td>
-<td><p>n/a</p></td>
-<td><p>n/a</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_analysis/safety_analysis_workproducts.html#wp__sw_component_fmea">wp__sw_component_fmea</a></p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_analysis/guidance/fmea_templates.html#gd_temp__comp_saf_fmea">gd_temp__comp_saf_fmea</a></p></td>
 <td><p>valid</p></td>
-<td><p>&lt;Link to issue&gt;</p></td>
 <td><p><a class="reference internal" href="../../lola/docs/safety_analysis/fmea.html#doc__lola_fmea" title="doc__lola_fmea"><em class="xref need">lola FMEA (doc__lola_fmea)</em></a></p></td>
-<td><p>draft</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_analysis/safety_analysis_workproducts.html#wp__sw_component_dfa">wp__sw_component_dfa</a></p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_analysis/guidance/dfa_templates.html#gd_temp__comp_saf_dfa">gd_temp__comp_saf_dfa</a></p></td>
 <td><p>valid</p></td>
-<td><p>&lt;Link to issue&gt;</p></td>
 <td><p><a class="reference internal" href="../../lola/docs/safety_analysis/dfa.html#doc__lola_dfa" title="doc__lola_dfa"><em class="xref need">lola DFA (doc__lola_dfa)</em></a></p></td>
-<td><p>draft</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/implementation_workproducts.html#wp__sw_implementation">wp__sw_implementation</a></p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/guidance/implementation_guideline.html#gd_guidl__implementation">gd_guidl__implementation</a></p></td>
 <td><p>valid</p></td>
-<td><p>n/a</p></td>
-<td><p><a class="reference external" href="https://github.com/eclipse-score/communication/blob/main/score/mw/com">lola/.h/.cpp</a>, <a class="reference external" href="https://github.com/eclipse-score/communication/blob/main/score/mw/com/design">lola/design</a></p></td>
-<td><p>valid</p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/communication/blob/main/score/mw/com">lola/.h/.cpp</a>, <a class="reference internal" href="../../lola/docs/detailed_design/index.html#doc__lola_detailed_design" title="doc__lola_detailed_design"><em class="xref need">LoLa Detailed Design (doc__lola_detailed_design)</em></a></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_sw_unit_test">wp__verification_sw_unit_test</a></p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/guidance/verification_guideline.html#gd_guidl__verification_guide">gd_guidl__verification_guide</a></p></td>
 <td><p>valid</p></td>
-<td><p>n/a</p></td>
 <td><p><a class="reference external" href="https://github.com/eclipse-score/communication/blob/main/score/mw/com">lola/test.cpp</a></p></td>
-<td><p>valid</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/implementation_workproducts.html#wp__sw_implementation_inspection">wp__sw_implementation_inspection</a></p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/guidance/implementation_checklist.html#gd_chklst__impl_inspection_checklist">gd_chklst__impl_inspection_checklist</a></p></td>
 <td><p>valid</p></td>
-<td><p>n/a</p></td>
 <td><p>External process</p></td>
-<td><p>n/a</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_comp_int_test">wp__verification_comp_int_test</a></p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/guidance/verification_guideline.html#gd_guidl__verification_guide">gd_guidl__verification_guide</a></p></td>
 <td><p>valid</p></td>
-<td><p>&lt;Link to issue&gt;</p></td>
 <td><p>&lt;Link to WP&gt;</p></td>
-<td><p>&lt;automated&gt;</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/workproducts.html#wp__sw_component_class">wp__sw_component_class</a></p></td>
+<tr class="row-odd"><td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/safety_management_workproducts.html#wp__sw_component_class">wp__sw_component_class</a></p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/guidance/guideline_component_classification.html#gd_guidl__component_classification">gd_guidl__component_classification</a></p></td>
 <td><p>valid</p></td>
-<td><p>n/a</p></td>
 <td><p><a class="reference internal" href="../../lola/docs/component_classification.html#doc__lola_comp_class" title="doc__lola_comp_class"><em class="xref need">lola Component Classification (doc__lola_comp_class)</em></a></p></td>
-<td><p>draft</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+</section>
+</section>
+<section id="module-safety-package">
+<h2>Module Safety Package<a class="headerlink" href="#module-safety-package" title="Link to this heading">#</a></h2>
+<p>To create the safety package (according to <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/safety_management/guidance/guideline_safety_management.html#gd_guidl__saf_package">gd_guidl__saf_package</a>) the following
+documents and work products status have to go to “valid” (after the relevant verification were performed).</p>
+<section id="module-documents-status">
+<h3>Module Documents Status<a class="headerlink" href="#module-documents-status" title="Link to this heading">#</a></h3>
+<p>For all the work product documents the status can be seen by following the “Link to WP”.
+A summary of the status is also documented in the project’s documentation management plan.</p>
+<p>See <a class="reference internal" href="../../../../platform_management_plan/documentation_management.html#documents-docs-modules-communication-docs"><span class="std std-ref">docs/modules/communication/docs</span></a></p>
+</section>
+<section id="component-documents-status">
+<h3>Component Documents Status<a class="headerlink" href="#component-documents-status" title="Link to this heading">#</a></h3>
+<p>For all the work product documents the status can be seen by following the “Link to WP”.
+A summary of the status is also documented in the project’s documentation management plan.</p>
+<p>See <a class="reference internal" href="../../../../platform_management_plan/documentation_management.html#documents-docs-modules-communication-components"><span class="std std-ref">docs/modules/communication/components</span></a></p>
+</section>
+<section id="component-requirements-status">
+<h3>Component Requirements Status<a class="headerlink" href="#component-requirements-status" title="Link to this heading">#</a></h3>
+<p>not documented as needs, <a class="reference external" href="https://github.com/eclipse-score/communication/blob/main/score/mw/com/requirements/component_requirements/component_requirements_ipc.trlc">lola trlc</a>
+shows no status attribute</p>
+</section>
+<section id="component-aou-status">
+<h3>Component AoU Status<a class="headerlink" href="#component-aou-status" title="Link to this heading">#</a></h3>
+<div class="needstable_wrapper docutils container" id="needtable-modules/communication/docs/safety_mgt/module_safety_plan-0">
+<div class="pst-scrollable-table-container"><table class="NEEDS_TABLE table" id="needtable-modules/communication/docs/safety_mgt/module_safety_plan-0-table_node">
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ID</p></th>
+<th class="head"><p>Status</p></th>
+<th class="head"><p>Tags</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../requirements/aou_req.html#aou_req__communication__27">aou_req__communication__27</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>communication</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../requirements/aou_req.html#aou_req__communication__14">aou_req__communication__14</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>communication</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../requirements/aou_req.html#aou_req__communication__8">aou_req__communication__8</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>communication</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../requirements/aou_req.html#aou_req__communication__10">aou_req__communication__10</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>communication</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../requirements/aou_req.html#aou_req__communication__4">aou_req__communication__4</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>communication</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../requirements/aou_req.html#aou_req__communication__34">aou_req__communication__34</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>communication</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../requirements/aou_req.html#aou_req__communication__3">aou_req__communication__3</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>communication</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../requirements/aou_req.html#aou_req__communication__2">aou_req__communication__2</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>communication</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../requirements/aou_req.html#aou_req__communication__9">aou_req__communication__9</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>communication</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../requirements/aou_req.html#aou_req__communication__32">aou_req__communication__32</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>communication</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../requirements/aou_req.html#aou_req__communication__19">aou_req__communication__19</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>communication</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../requirements/aou_req.html#aou_req__communication__24">aou_req__communication__24</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>communication</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../requirements/aou_req.html#aou_req__communication__26">aou_req__communication__26</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>communication</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../requirements/aou_req.html#aou_req__communication__1">aou_req__communication__1</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>communication</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../requirements/aou_req.html#aou_req__communication__6">aou_req__communication__6</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>communication</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../requirements/aou_req.html#aou_req__communication__16">aou_req__communication__16</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>communication</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../requirements/aou_req.html#aou_req__communication__12">aou_req__communication__12</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>communication</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../requirements/aou_req.html#aou_req__communication__29">aou_req__communication__29</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>communication</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../requirements/aou_req.html#aou_req__communication__7">aou_req__communication__7</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>communication</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../requirements/aou_req.html#aou_req__communication__13">aou_req__communication__13</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>communication</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../requirements/aou_req.html#aou_req__communication__25">aou_req__communication__25</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>communication</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../requirements/aou_req.html#aou_req__communication__11">aou_req__communication__11</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>communication</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../requirements/aou_req.html#aou_req__communication__20">aou_req__communication__20</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>communication</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../requirements/aou_req.html#aou_req__communication__17">aou_req__communication__17</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>communication</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../requirements/aou_req.html#aou_req__communication__15">aou_req__communication__15</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>communication</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../requirements/aou_req.html#aou_req__communication__5">aou_req__communication__5</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>communication</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../requirements/aou_req.html#aou_req__communication__22">aou_req__communication__22</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>communication</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../requirements/aou_req.html#aou_req__communication__31">aou_req__communication__31</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>communication</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../requirements/aou_req.html#aou_req__communication__18">aou_req__communication__18</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>communication</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../requirements/aou_req.html#aou_req__communication__28">aou_req__communication__28</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>communication</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../requirements/aou_req.html#aou_req__communication__30">aou_req__communication__30</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>communication</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="../requirements/aou_req.html#aou_req__communication__21">aou_req__communication__21</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>communication</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="../requirements/aou_req.html#aou_req__communication__23">aou_req__communication__23</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>communication</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="component-architecture-status">
+<h3>Component Architecture Status<a class="headerlink" href="#component-architecture-status" title="Link to this heading">#</a></h3>
+<p>see document link <a class="reference internal" href="../../lola/docs/architecture/index.html#doc__lola_architecture" title="doc__lola_architecture"><em class="xref need">LoLa Architecture (doc__lola_architecture)</em></a> (as above)</p>
 </section>
 </section>
 </section>
@@ -891,11 +1014,11 @@ The module consists of one or more SW components and will be qualified as a SEoo
       </div>
     </a>
     <a class="right-next"
-       href="module_safety_plan_fdr.html"
+       href="module_codeowners.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Safety Plan Formal Review Report</p>
+        <p class="prev-next-title">Module Codeowners Skill Check</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -927,6 +1050,14 @@ The module consists of one or more SW components and will be qualified as a SEoo
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#component-lola-work-products-list">Component lola Work products List</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-safety-package">Module Safety Package</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-documents-status">Module Documents Status</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#component-documents-status">Component Documents Status</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#component-requirements-status">Component Requirements Status</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#component-aou-status">Component AoU Status</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#component-architecture-status">Component Architecture Status</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
@@ -934,7 +1065,7 @@ The module consists of one or more SW components and will be qualified as a SEoo
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/docs/modules/communication/docs/safety_mgt/module_safety_plan.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/modules/communication/docs/safety_mgt/module_safety_plan.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -945,15 +1076,6 @@ The module consists of one or more SW components and will be qualified as a SEoo
     </a>
   </div>
 </div>
-
-  <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../../../../_sources/modules/communication/docs/safety_mgt/module_safety_plan.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
 
 </div></div>
               
