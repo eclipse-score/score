@@ -27,7 +27,7 @@ Requirements
 Functional Requirements
 =======================
 
-.. comp_req:: Task Abstraction Interface
+.. comp_req:: Asynchronous Task Execution
    :id: comp_req__concurrency__task_interface
    :reqtype: Functional
    :security: NO
@@ -35,7 +35,17 @@ Functional Requirements
    :satisfies: feat_req__baselibs__concurrency_library, feat_req__baselibs__core_utilities, feat_req__baselibs__safety
    :status: valid
 
-   The concurrency module shall allow running tasks asynchronously and cancelling them when needed.
+   The concurrency module shall allow running tasks asynchronously.
+
+.. comp_req:: Task Cancellation
+   :id: comp_req__concurrency__task_cancellation
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :satisfies: feat_req__baselibs__concurrency_library, feat_req__baselibs__core_utilities, feat_req__baselibs__safety
+   :status: valid
+
+   The concurrency module shall allow cancelling tasks when needed.
 
 .. comp_req:: Simple Task Implementation
    :id: comp_req__concurrency__simple_task
@@ -105,7 +115,7 @@ Functional Requirements
    :satisfies: feat_req__baselibs__concurrency_library, feat_req__baselibs__safety
    :status: valid
 
-   The concurrency module shall provide mechanism for threads to wait for conditions that can be interrupted when needed.
+   The concurrency module shall provide an abortable mechanism for threads to wait for conditions.
 
 .. comp_req:: Interruptible Wait Utilities
    :id: comp_req__concurrency__interruptible_wait
