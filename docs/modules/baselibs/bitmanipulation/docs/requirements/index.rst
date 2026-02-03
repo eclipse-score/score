@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2025 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025-2026 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -36,6 +36,7 @@ Functional Requirements
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__bitmanipulation, feat_req__baselibs__core_utilities
    :status: valid
+   :tags: inspected
 
    The bit manipulation component shall provide API for setting, clearing, toggling, and checking bits, as well as extracting bytes and manipulating half-bytes and bytes for any integral type up to 64 bits.
 
@@ -46,6 +47,7 @@ Functional Requirements
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__bitmanipulation, feat_req__baselibs__core_utilities
    :status: valid
+   :tags: inspected
 
    The bit manipulation library shall provide type-safe bitmask operations for scoped enumeration types.
 
@@ -56,6 +58,7 @@ Functional Requirements
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__bitmanipulation, feat_req__baselibs__safety
    :status: valid
+   :tags: inspected
 
    All bit manipulation functions shall validate input parameters and prevent data corruption.
 
@@ -69,6 +72,7 @@ Non-Functional Requirements
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__bitmanipulation
    :status: valid
+   :tags: inspected
 
    The bit manipulation API shall be header-only and not require external dependencies.
 
@@ -81,6 +85,7 @@ Assumptions of Use (AoU)
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :tags: inspected
 
    The user shall assume that the API performs bound checking to validate bit positions and ranges provided to the bit manipulation functions.
 
@@ -90,6 +95,7 @@ Assumptions of Use (AoU)
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :tags: inspected
 
    The user shall only use bit manipulation functions with integral types (integers, enumerations) as specified in the library's type constraints. Operations on floating-point or non-integral types are not supported.
 
@@ -99,6 +105,7 @@ Assumptions of Use (AoU)
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :tags: inspected
 
    The user shall use scoped enumeration types (enum class) whose enumerators are defined as non-zero power-of-two values (1, 2, 4, 8, 16, etc.)
 
@@ -108,6 +115,7 @@ Assumptions of Use (AoU)
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :tags: inspected
 
    The user shall implement external synchronization mechanisms (e.g., mutexes, atomic operations, or locks) when accessing or modifying the same integral value from multiple threads concurrently, as the library provides no internal thread safety guarantees.
 
@@ -117,8 +125,9 @@ Assumptions of Use (AoU)
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :tags: inspected
 
    The user shall validate byte and half-byte extraction indices to ensure they correspond to valid positions within the target integral type to prevent accessing invalid memory ranges.
 
 .. needextend:: "__bitmanipulation__" in id
-   :+tags: baselibs
+   :+tags: baselibs, bitmanipulation

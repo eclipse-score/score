@@ -161,6 +161,4 @@ Assumptions of Use (AoU)
 
 
 .. needextend:: "__result__" in id
-   :+tags: baselibs
-.. needextend:: "result" in id
-   :+tags: result_library
+   :+tags: baselibs, result_library
