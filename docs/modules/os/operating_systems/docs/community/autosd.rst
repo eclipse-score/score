@@ -12,8 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. comp_arc_sta:: Red Hat AutoSD
-   :id: comp_arc_sta__os__autosd
+.. comp:: Red Hat AutoSD
+   :id: comp__os_autosd
    :security: YES
    :safety: QM
    :status: valid

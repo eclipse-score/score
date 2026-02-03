@@ -15,8 +15,8 @@
 OS Name
 =======
 
-.. comp_arc_sta:: os_name
-   :id: comp_arc_sta__os__os_name
+.. comp:: os_name
+   :id: comp__os_osname
    :security: YES
    :safety: QM
    :status: valid
