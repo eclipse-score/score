@@ -15,13 +15,19 @@
 libc Component Architecture
 ***************************
 
-.. comp_arc_sta:: libc
+.. comp:: libc
+   :id: comp__os_libc
+   :status: valid
+   :safety: ASIL_B
+   :implements: logic_arc_int__os__fcntl, logic_arc_int__os__stat, logic_arc_int__os__mman, logic_arc_int__os__unistd
+   :security: NO
+
+.. comp_arc_sta:: libc Static View
    :id: comp_arc_sta__os__libc
    :security: YES
    :safety: ASIL_B
    :status: valid
    :satisfies:
-   :implements: logic_arc_int__os__fcntl, logic_arc_int__os__stat, logic_arc_int__os__mmap, logic_arc_int__os__fork
 
    .. needarch::
       :scale: 50
@@ -64,8 +70,8 @@ libc Component Architecture
    :status: valid
    :included_by: logic_arc_int__os__fcntl
 
-.. logic_arc_int:: mmap
-   :id: logic_arc_int__os__mmap
+.. logic_arc_int:: mman
+   :id: logic_arc_int__os__mman
    :security: YES
    :safety:  ASIL_B
    :status: valid
@@ -83,14 +89,14 @@ libc Component Architecture
    :security: YES
    :safety:  ASIL_B
    :status: valid
-   :included_by: logic_arc_int__os__mmap
+   :included_by: logic_arc_int__os__mman
 
 .. logic_arc_int_op:: SHM Unlink
    :id: logic_arc_int_op__os__shm_unlink
    :security: YES
    :safety:  ASIL_B
    :status: valid
-   :included_by: logic_arc_int__os__mmap
+   :included_by: logic_arc_int__os__mman
 
 .. logic_arc_int:: stat
    :id: logic_arc_int__os__stat
@@ -145,3 +151,22 @@ libc Component Architecture
    :safety:  ASIL_B
    :status: valid
    :included_by: logic_arc_int__os__stat
+
+.. logic_arc_int:: unistd
+   :id: logic_arc_int__os__unistd
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+
+   .. needarch::
+      :scale: 50
+      :align: center
+
+      {{ draw_interface(need(), needs) }}
+
+.. logic_arc_int_op:: fork
+   :id: logic_arc_int_op__os__fork
+   :security: YES
+   :safety:  ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__os__unistd

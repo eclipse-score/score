@@ -39,8 +39,22 @@ To fulfill these assumptions is the responsibility of the mentioned roles.
 
 Note that the "supplier" AoUs were created with an OS supplier in mind but are really general AoUs for any external SW element S-CORE uses.
 
-Assumptions on the external SW element integration - Community Level
---------------------------------------------------------------------
+.. aou_req:: POSIX Operating System
+   :id: aou_req__platform__posix_operating_system
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: QM
+   :status: valid
+
+   The system integrator shall use an operating system compliant with IEEE Std 1003.1 (2004 Edition or newer)
+
+.. _integration_assumptions:
+
+Assumptions on the external SW element integration
+--------------------------------------------------
+
+Community Level
++++++++++++++++
 
 This is the lowest level of integration, the higher levels will build on this.
 It also contains expectations towards an supplier which can be used as criteria for supplier selection
@@ -79,8 +93,8 @@ is provided for e.g. build or test problems. No guarantees that S-CORE builds or
 There are no AoUs on the system integrator on this level,
 as this level is not expected sufficient for a product release, only for incubation/prototype.
 
-Assumptions on the external SW element integration - Functional Level
----------------------------------------------------------------------
+Functional Level
+++++++++++++++++
 
 This is the middle level of integraton, the higher level will build on this.
 It is the level where the S-CORE SW-platform will functionally "work" with the external SW element.
@@ -129,8 +143,8 @@ It is the level where the S-CORE SW-platform will functionally "work" with the e
 
    The system integrator shall report the bugs found during integration of the S-CORE SW-platform on their selected OS/Hypervisor/HW combination to the external SW element supplier and S-CORE for analysis.
 
-Assumptions on the external SW element integration - Certifiable Level
-----------------------------------------------------------------------
+Certifiable Level
++++++++++++++++++
 
 This is the highest level of integraton. This is the level where the S-CORE SW-platform will be certifiable with an external SW element.
 
@@ -186,7 +200,7 @@ This is the highest level of integraton. This is the level where the S-CORE SW-p
    If the system using the SW-platform has safety goals, the system integrator shall integrate the SW-platform with external SW elements providing safety functions.
    This includes to make sure that the safety functions S-CORE SW-platform requires match with the ones provided by these external SW elements (as in :need:`aou_req__platform__safety_functions`).
 
-   Note1: A list of safety functions needed from external SW elements is compiled by the S-CORE project here (TBD).
+   Note1: A list of safety functions needed from external SW elements is compiled by the S-CORE project here (:need:`aou_req__platform__os_safety_functions`).
 
    Note2: The integrator can expect that for the safe S-CORE reference integration (incl. OS and other external SW elements) this AoU is fulfilled by S-CORE SW-platform already, but without guarantee.
 
@@ -322,3 +336,26 @@ In this section assumptions are described which need to be fulfilled by the syst
 
    If the system using the SW-platform has safety goals, the used operating system shall offer POSIX processes isolation.
    This shall cover memory isolation. Timing isolation may be covered.
+
+.. aou_req:: OS safety functions
+   :id: aou_req__platform__os_safety_functions
+   :reqtype: Functional
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+
+   If the system using the SW-platform has safety goals, the used os module shall offer the following functions in a safe way:
+
+   - configuration of HW safety mechanisms as in :need:`stkh_req__dependability__safety_features`
+   - startup of OS
+   - loading and starting of processes
+   - management and restriction of process privileges
+   - process execution (including starting and stopping threads/processes according to priorities, mangement of interrupts and exceptions)
+   - volatile memory management (including static, dynamic memory allocation and access)
+   - filesystem access (data integrity of read-only-memory)
+   - DMA
+   - IPC communication primitives (shared memory and message passing)
+   - C++ standard library (according to Iso 14882)
+   - C library
+   - math library
+   - time source

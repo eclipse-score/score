@@ -31,7 +31,7 @@ Lifecycle
    :status: valid
    :safety: ASIL_B
    :implements: logic_arc_int__lifecycle__controlif, logic_arc_int__lifecycle__alive_if
-   :uses: logic_arc_int__logging__logging, logic_arc_int__baselibs__json, logic_arc_int__os__fork, logic_arc_int__lifecycle__lifecycle_if
+   :uses: logic_arc_int__logging__logging, logic_arc_int__baselibs__json, logic_arc_int__os__unistd, logic_arc_int__lifecycle__lifecycle_if
    :security: NO
 
 

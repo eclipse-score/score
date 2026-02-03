@@ -21,7 +21,7 @@ Memory Shared Component Architecture
    :safety: ASIL_B
    :status: valid
    :implements: logic_arc_int__baselibs__memory_shared
-   :uses: logic_arc_int__os__fcntl, logic_arc_int__os__stat, logic_arc_int__os__mmap
+   :uses: logic_arc_int__os__fcntl, logic_arc_int__os__stat, logic_arc_int__os__mman
 
    .. needarch::
       :scale: 50
