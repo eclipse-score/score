@@ -229,8 +229,3 @@ Result
 ------
 GitHub does not require qualification for use in safety-related software development according to ISO 26262.
 Suggested safety and security measures should be applied to mitigate identified risks.
-
-
-
-.. [1] The tool version mentioned in this document is preliminary.
-       It is subject to change and will be updated in future.
