@@ -15,7 +15,7 @@
 .. doc_tool:: Doc-as-Code
    :id: doc_tool__doc_as_code
    :status: evaluated
-   :version: v2.2.0
+   :version: v2.3.0
    :tcl: LOW
    :safety_affected: YES
    :security_affected: YES
@@ -66,7 +66,7 @@ Installation and integration
 
 Tool location:
 
-`Release v2.2.0 <https://github.com/eclipse-score/docs-as-code/tree/v2.2.0>`_
+`Release v2.3.0 <https://github.com/eclipse-score/docs-as-code/tree/v2.3.0>`_
 
 How to integrate:
 
@@ -163,7 +163,7 @@ Tool requirements are defined here:
 
 Test cases and tests are defined here:
 
-`Doc-as-Code Test cases and tests <https://github.com/eclipse-score/docs-as-code/tree/v2.2.0/src/extensions>`_
+`Doc-as-Code Test cases and tests <https://github.com/eclipse-score/docs-as-code/tree/v2.3.0/src/extensions>`_
 
 The tests are part of the rules checker code sections.
 
