@@ -13,13 +13,13 @@
 DR-007-Infra: Solution for cyclic dependencies between docs-as-code and process description
 ===========================================================================================
 
-- **Date:** 2026-02-02
+- **Date:** 2026-02-04
 
-.. dec_rec:: Move examples to docs-as-code repository
+.. dec_rec:: Move examples to module_template repository
    :id: dec_rec__infra__dependency_docs_as_code
    :status: accepted
    :context: Infrastructure
-   :decision: Option 5
+   :decision: Option 3
 
 Context / Problem
 -----------------
@@ -34,9 +34,20 @@ However, the process repository also uses the ``docs_as_code`` repository's as i
 Any change in the process requirements (in ``process_description``) for the meta model possibly leads to a change in the docs-as-code meta model, but any change in the docs-as-code meta model can cause build errors in the process_description repo and this happens during the docs-as-code build as Sphinx-Needs objects from the process repo are imported.
 This tight coupling makes maintenance and evolution of both repositories difficult and error-prone.
 
-.. image:: img/DR-007-issue.drawio.svg
-   :alt: Cyclic dependency between process and docs-as-code repositories
+.. uml::
    :align: center
+   :caption: Cyclic dependency between process and docs-as-code repositories
+
+   left to right direction
+   database process_description {
+      artifact examples
+   }
+   database docs_as_code {
+      artifact metamodel.yaml as yaml
+   }
+
+   process_description --> docs_as_code : defines metamodel
+   docs_as_code --> process_description : checks metamodel
 
 This means to roll out a change to the process looks like this:
 
@@ -45,7 +56,11 @@ This means to roll out a change to the process looks like this:
 3. Change ``process_description`` a *second* time adapting the examples and folder templates.
 4. Change ``docs_as_code`` a *second* time removing constraints from step 2.
 
-Only two steps should be necessary.
+Currently the `module_template repo <https://github.com/eclipse-score/module_template>`_
+is not used and not up to date.
+However, the Process community intends to use it for the folder templates in the future.
+Thus, step 3 above will become a pull request to a third repository eventually.
+Still, there is no plan to move the examples to that repository.
 
 Goals and Requirements
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -53,6 +68,7 @@ Goals and Requirements
 - **Effort**: Don't spend much one-time effort to implement the change proposed here.
 - **Independence**: Enable independent evolution of process requirements for the meta model and the meta model verification implementation.
 - **UX**: Enable a process change rollout which does not require multiple pull requests in a single repository due to dependency cycles.
+- **Clear Ownership**: Each repository should have a clear responsibility and ownership of its contents.
 - **Maintainability**: Keep long-term maintenance effort low.
 
 Non-Goals
@@ -80,6 +96,8 @@ UX 😡: Poor due to the coupling some back and forth changes are necessary.
 
 Maintainability 😡: Poor (ongoing coordination burden).
 
+Clear Ownership 💚: Process community and docs-as-code are clearly separated.
+
 
 Option 1: Merge both repositories into one
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -87,11 +105,17 @@ Option 1: Merge both repositories into one
 Combine ``process_description`` and ``docs_as_code`` into a single repository.
 This eliminates the cyclic dependency by having a single source of truth for both the meta model and the Sphinx-Needs objects/examples, but process is repo is potentially large and complex and is implementation specific.
 
-.. image:: img/DR-007-issue_option_1.drawio.svg
-   :alt: Merged repository eliminating cyclic dependency
+.. uml::
    :align: center
+   :caption: Merge both repositories into one
 
-Effort 😡: Disruptive effort to merge repos.
+   left to right direction
+   database "process_description\n+ docs_as_code" {
+      artifact metamodel.yaml as yaml
+      artifact examples
+   }
+
+Effort 😡😡: Disruptive effort to merge repos.
 Such changes conflict with practically all parallel pull requests.
 Dependencies across all S-CORE repos are necessary.
 
@@ -110,9 +134,21 @@ The docs-as-code repository would then only provide the infrastructure for the m
 The process repository would be the authoritative source for the meta model.
 Also tests (scripts) and examples would be maintained there.
 
-.. image:: img/DR-007-issue_option_2.drawio.svg
-   :alt: Meta model defined in process repository
+.. uml::
    :align: center
+   :caption: Move meta model definition to process repository
+
+   left to right direction
+   database process_description {
+      artifact examples
+      artifact metamodel.yaml as yaml
+   }
+   database docs_as_code {
+   }
+
+   process_description --> docs_as_code : defines metamodel
+   yaml --> docs_as_code : as input
+   docs_as_code --> examples : checks metamodel
 
 Implication:
 If the docs-as-code module would select the metamodel yaml version on its own,
@@ -123,33 +159,49 @@ and ``docs_as_code`` provides a configuration option to specify it.
 Moving only the ``metamodel.yaml`` file means that a few Python-implemented checks still remain in ``docs_as_code``.
 While the problem is not solved completely, it should fix most of the cases.
 
-Effort 💛: Medium effort.
+Effort 😡: Medium effort.
 
-Independence 💛: Rather good because ``docs_as_code`` mostly consumes except a few remaining checks.
+Independence 😡: Rather good because ``docs_as_code`` mostly consumes except a few remaining checks.
 
 UX 💚: Excellent since authority is clear.
 
 Maintainability 💚: Good because of clear ownership.
 
+Clear Ownership 💚: Cleanly separated.
+
 Option 3: Move examples (Sphinx-Needs objects) to a third repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Extract all example Sphinx-Needs objects (currently imported into docs-as-code) into a separate third repository.
-The process repository will become independent and docs-as-code repositories would depend on this third repository for examples, breaking the cyclic dependency.
+Extract all example Sphinx-Needs objects (currently imported into docs-as-code) into ``module_template``.
+The process repository is independent and docs-as-code repositories would depend on this third repository for examples, breaking the cyclic dependency.
 But this adds complexity with an additional repository to maintain and still contains cyclic dependencies between all three repositories.
 
-.. image:: img/DR-007-issue_option_3.drawio.svg
-   :alt: Examples moved to a third repository
+.. uml::
    :align: center
+   :caption: Move examples (Sphinx-Needs objects) to a third repository
 
-Effort 😡: High effort (new repo setup).
+   left to right direction
+   database process_description {
+   }
+   database docs_as_code {
+      artifact metamodel.yaml as yaml
+   }
+   database module_template {
+      artifact examples
+   }
+
+   process_description --> docs_as_code : defines metamodel
+   docs_as_code --> module_template : checks metamodel
+
+Effort 💚: Low.
 
 Independence 💚: Good because process repo becomes independent.
 
-UX 😡😡: The number of pull requests is as high as it is now.
-Instead of multiple changes to the same repo, more repos must be changed.
+UX 💚: Excellent since authority is clear.
 
 Maintainability 😡: More repos to maintain.
+
+Clear Ownership 💚: Process community is responsible for ``process_description`` and ``module_template``.
 
 Option 4: Move meta model and examples into a separate repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -158,36 +210,63 @@ Create or use a dedicated meta model repository that contains only the Sphinx-Ne
 Both the process repository and docs-as-code repository would depend on this meta model repository (if necessary), making it the single source of truth.
 This breaks the cycle by introducing a clear hierarchical dependency structure.
 
-.. image:: img/DR-007-issue_option_4.drawio.svg
-   :alt: Meta model and examples in a separate repository
+.. uml::
    :align: center
+   :caption: Move meta model and examples into a separate repository
 
-Effort 😡: High effort (new repo setup and migration).
+   left to right direction
+   database process_description {
+   }
+   database docs_as_code {
+   }
+   database module_template {
+      artifact metamodel.yaml as yaml
+      artifact examples
+   }
+
+   process_description --> docs_as_code : defines metamodel
+   docs_as_code --> examples : checks metamodel
+   yaml --> docs_as_code : as input
+
+Effort 😡: High effort for the configurable ``metamodel.yaml``.
 
 Independence 💚: Good because process repo becomes independent.
 
-UX 😡😡: The number of pull requests is as high as it is now.
-Instead of multiple changes to the same repo, more repos must be changed.
+UX 😡: It is strange that same checks are implemented in ``docs_as_code`` and some in ``module_template``.
 
 Maintainability 😡: More repos to maintain.
 
+Clear Ownership 💚: Clearly, the Process community takes authority over ``metamodel.yaml``.
+
 Option 5: Move examples to docs-as-code repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Move all example Sphinx-Needs objects from the process repository to the docs-as-code repository.
+Move all example Sphinx-Needs objects from the ``process_description`` repository to the ``docs_as_code`` repository.
 The process repository would define requirements for the meta model, while docs-as-code would provide infrastructure, the meta model and host the examples that demonstrate the meta model.
 This breaks the cycle by removing the import dependency from docs-as-code back to the process repository.
 
-.. image:: img/DR-007-issue_option_5.drawio.svg
-   :alt: Examples moved to docs-as-code repository
+.. uml::
    :align: center
+   :caption: Move examples to docs-as-code repository
+
+   left to right direction
+   database process_description {
+   }
+   database docs_as_code {
+      artifact examples
+      artifact metamodel.yaml as yaml
+   }
+
+   process_description --> docs_as_code : defines metamodel
 
 Effort 💚: Low effort.
 
 Independence 💚: Good because ``process_description`` just consumes.
 
-UX 💚: Excellent since authority is clear.
+UX 💚: Fine.
 
 Maintainability 💚: Good because of clear ownership.
+
+Clear Ownership 😡: Process community wants control of examples but they are in the ``docs_as_code`` repo.
 
 Option 6: Change error handling from warnings as errors to warnings only
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -204,28 +283,29 @@ Independence 💚: Good because no errors are blocking anymore.
 
 UX 💚: Easy because problems can be ignored.
 
-Maintainability 😡: Poor because warnings won't be fixed as quickly as errors.
+Maintainability 😡😡: Poor because warnings won't be fixed as quickly as errors.
 
 Evaluation
 ----------
 
-Options 3 and 4 have big downsides with respect to UX,
-so we don't even consider them in this evaluation.
+The effort for Option 1 is prohibitively high, so we ignore it for the evaluation.
+Likewise we ignore Option 6 due to grave maintainability concerns.
 
-How well each option achieves the goals in order of goal importance:
+Here is the summary, how well each option achieves the goals in order of goal importance:
 
 .. csv-table::
-   :header: Goals, Option 0, Option 1, Option 2, Option 5, Option 6
-   :widths: 20, 15, 15, 15, 15, 15
+   :header: Goals, Option 0, Option 2, Option 3, Option 4, Option 5
+   :widths: 15, 10, 10, 10, 10, 10
 
-   Effort,          💚, 😡, 💛, 💚, 💚
-   Independence,    😡, 💚, 💛, 💚, 💚
-   UX,              😡, 💚, 💚, 💚, 💚
-   Maintainability, 😡, 💚, 💚, 💚, 😡
+   Effort,          💚, 😡, 💚, 😡, 💚
+   Independence,    😡, 😡, 💚, 💚, 💚
+   UX,              😡, 💚, 💚, 😡, 💚
+   Clear Ownership, 💚, 💚, 💚, 💚, 😡
+   Maintainability, 😡, 💚, 😡, 😡, 💚
 
-Option 0 scores poorly with respect to independence, UX, and maintainability.
-Option 1 requires high effort.
-Option 2 has minor downsides for effort and independence.
-Option 6 compromises maintainability.
+Due to our most important goal, effort, Options 2 and 4 are disqualified.
+Then Option 0 is disqualified due to independence concerns (among others).
+Option 5 is disqualified due to the ownership issue.
 
-**Decision:** Option 5 is obviously the best choice.
+**Decision:** Option 3 is the remaining best choice.
+We accept the maintainability tradeoff.
