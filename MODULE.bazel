@@ -75,13 +75,11 @@ bazel_dep(name = "rules_java", version = "8.15.1")
 bazel_dep(name = "score_tooling", version = "1.0.4")
 bazel_dep(name = "score_docs_as_code", version = "2.3.3")
 bazel_dep(name = "score_process", version = "1.4.2")
-
 git_override(
     module_name = "score_process",
     commit = "43b3a13eae17f2e539fb8cca2beedb69717b2e12",
     remote = "https://github.com/eclipse-score/process_description.git",
 )
-
 
 git_override(
     module_name = "score_docs_as_code",
