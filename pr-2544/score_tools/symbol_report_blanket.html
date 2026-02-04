@@ -554,7 +554,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-d745d93e">
+  <div class="need_container docutils container" id="SNCB-143cf73d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_doc_tool table" id="doc_tool__symbol_report_blanket">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -680,20 +680,20 @@ qualified and output of coverage data in <cite>.profraw</cite> format is correct
 </thead>
 <tbody>
 <tr class="row-even"><td><p>1</p></td>
-<td><p>False-positive: The function is reported as covered and increase coverage percentage, although it is not covered in reality (not included in <cite>profraw</cite> data)</p></td>
+<td><p><cite>profraw</cite> does not contain data, but the tool reports coverage for the function.</p></td>
 <td><div class="line-block">
-<div class="line">The reported covarge number is reported higher than the real coverage.</div>
+<div class="line">The reported coverage number is reported higher than the real coverage.</div>
 <div class="line">This may lead to false assumption that code is sufficiently covered by tests, although it is not.</div>
 </div>
 </td>
 <td><p>no</p></td>
-<td><p>no</p></td>
+<td><p>Likelihood of this malfunction is low</p></td>
 <td><p>yes</p></td>
 <td><p>no</p></td>
 <td><p>high</p></td>
 </tr>
 <tr class="row-odd"><td><p>2</p></td>
-<td><p>False-negative: The function is reported as not covered, although it is covered in reality (included in <cite>profraw</cite> data)</p></td>
+<td><p><cite>profraw</cite> does contain data, but the tool does not report coverage for the function.</p></td>
 <td><div class="line-block">
 <div class="line">The reported coverage number is reported lower than the real coverage.</div>
 <div class="line">This may lead to unnecessary additional testing effort (developer to prove it’s covered or provide explanation), although code is already sufficiently covered.</div>
@@ -710,6 +710,18 @@ qualified and output of coverage data in <cite>.profraw</cite> format is correct
 <td><div class="line-block">
 <div class="line">The reported coverage number is reported higher than the real coverage.</div>
 <div class="line">This may lead to false assumption that code is sufficiently covered by tests, although it is not.</div>
+</div>
+</td>
+<td><p>no</p></td>
+<td><p>Function will not be present in the report, so it will be visible that it is not covered.</p></td>
+<td><p>yes</p></td>
+<td><p>no</p></td>
+<td><p>high</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Calculations are wrong, so the reported coverage number is not correct.</p></td>
+<td><div class="line-block">
+<div class="line">The reported coverage is different than the coverage in <cite>profraw</cite> files.</div>
 </div>
 </td>
 <td><p>no</p></td>
