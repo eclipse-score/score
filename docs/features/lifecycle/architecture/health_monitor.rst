@@ -177,6 +177,7 @@ Dynamic Architecture
    :status: invalid
    :safety: ASIL_B
    :fulfils: feat_req__lifecycle__process_monitoring
+   :belongs_to: feat__lifecycle
 
    .. uml:: _assets/application_health_monitoring_dynamic.puml
       :scale: 50
@@ -299,6 +300,7 @@ Dynamic Architecture
    :status: invalid
    :safety: ASIL_B
    :fulfils: feat_req__lifecycle__process_monitoring
+   :belongs_to: feat__lifecycle
 
    .. uml:: _assets/logical_sup.puml
       :scale: 50

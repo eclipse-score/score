@@ -95,6 +95,14 @@ expected to be used directly in a productive system. They may become obsolete in
 Static Architecture
 -------------------
 
+.. feat:: Feature FEO
+    :id: feat__feo
+    :security: YES
+    :safety: ASIL_B
+    :status: valid
+    :includes: logic_arc_int__feo__activity, logic_arc_int__feo__prim_agent, logic_arc_int__feo__sec_agent, logic_arc_int__feo__lifecycle
+    :consists_of: comp__feo_main
+
 .. feat_arc_sta:: Static Architecture
   :id: feat_arc_sta__feo__main
   :security: YES
@@ -102,6 +110,7 @@ Static Architecture
   :status: valid
   :fulfils: feat_req__feo__application, feat_req__feo__activity, feat_req__feo__task_chain, feat_req__feo__agent
   :includes: logic_arc_int__feo__activity, logic_arc_int__feo__prim_agent, logic_arc_int__feo__sec_agent, logic_arc_int__feo__lifecycle
+  :belongs_to: feat__feo
 
   .. uml:: _assets/stat_arch.puml
      :scale: 50
@@ -117,6 +126,7 @@ Dynamic Architecture
   :safety: ASIL_B
   :fulfils: feat_req__feo__application, feat_req__feo__activity, feat_req__feo__task_chain, feat_req__feo__agent
   :status: valid
+  :belongs_to: feat__feo
 
   .. uml:: _assets/dyn_arch.puml
      :scale: 50

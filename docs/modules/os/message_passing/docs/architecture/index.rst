@@ -15,12 +15,21 @@
 Message Passing Component Architecture
 **************************************
 
-.. comp_arc_sta:: QNX::Message Passing
-   :id: comp_arc_sta__os__message_passing
+.. comp:: QNX::Message Passing
+   :id: comp__os_message_passing
    :security: YES
    :safety: ASIL_B
    :status: valid
    :implements: logic_arc_int__os__message_passing
+
+
+.. comp_arc_sta:: QNX::Message Passing Static View
+   :id: comp_arc_sta__os__message_passing
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :belongs_to: comp__os_message_passing
+   :fulfils: comp_req__component_name__some_title
 
    .. needarch::
       :scale: 50

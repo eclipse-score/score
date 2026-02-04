@@ -25,7 +25,24 @@ Architecture
    :realizes: wp__feature_arch
    :tags: persistency
 
-Overview
+
+.. feat:: Persistency
+   :id: feat__persistency
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :includes: logic_arc_int__persistency__interface
+   :consists_of: comp__persistency_kvs
+
+.. comp:: persistency::kvs
+   :id: comp__persistency_kvs
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :implements: logic_arc_int__persistency__interface
+
+
+
 --------
 
 The Key-Value-Storage (kvs) provides the capability to efficiently store,
@@ -64,6 +81,7 @@ Static Architecture
    :includes: logic_arc_int__persistency__interface
    :fulfils: feat_req__persistency__default_value_get,feat_req__persistency__default_values,feat_req__persistency__async_completion,feat_req__persistency__integrity_check,feat_req__persistency__store_data,feat_req__persistency__load_data,feat_req__persistency__snapshot_create,feat_req__persistency__support_datatype_keys,feat_req__persistency__support_datatype_value,feat_req__persistency__variant_management,feat_req__persistency__default_value_file,feat_req__persistency__cfg,feat_req__persistency__async_api,feat_req__persistency__access_control,feat_req__persistency__concurrency
    :status: valid
+   :belongs_to: feat__persistency
 
    .. uml:: _assets/kvs_static_view.puml
 
@@ -75,6 +93,7 @@ Dynamic Architecture
    :safety: ASIL_B
    :fulfils: feat_req__persistency__default_values,feat_req__persistency__default_value_get
    :status: valid
+   :belongs_to: feat__persistency
 
    .. uml:: _assets/kvs_dyn_check_value_default.puml
 
@@ -84,6 +103,7 @@ Dynamic Architecture
    :safety: ASIL_B
    :fulfils: feat_req__persistency__support_datatype_keys,feat_req__persistency__support_datatype_value
    :status: valid
+   :belongs_to: feat__persistency
 
    .. uml:: _assets/kvs_dyn_delete_data_key.puml
 
@@ -93,6 +113,7 @@ Dynamic Architecture
    :safety: ASIL_B
    :fulfils: feat_req__persistency__store_data,feat_req__persistency__snapshot_create,feat_req__persistency__integrity_check,feat_req__persistency__snapshot_restore
    :status: valid
+   :belongs_to: feat__persistency
 
    .. uml:: _assets/kvs_dyn_flush_local_repr_to_file.puml
 
@@ -102,6 +123,7 @@ Dynamic Architecture
    :safety: ASIL_B
    :fulfils: feat_req__persistency__support_datatype_keys,feat_req__persistency__support_datatype_value,feat_req__persistency__default_values,feat_req__persistency__default_value_get
    :status: valid
+   :belongs_to: feat__persistency
 
    .. uml:: _assets/kvs_dyn_read_data_key.puml
 
@@ -111,6 +133,7 @@ Dynamic Architecture
    :safety: ASIL_B
    :fulfils: feat_req__persistency__load_data,feat_req__persistency__integrity_check,feat_req__persistency__snapshot_restore
    :status: valid
+   :belongs_to: feat__persistency
 
    .. uml:: _assets/kvs_dyn_read_file_into_local_repr.puml
 
@@ -120,6 +143,7 @@ Dynamic Architecture
    :safety: ASIL_B
    :fulfils: feat_req__persistency__support_datatype_keys,feat_req__persistency__support_datatype_value
    :status: valid
+   :belongs_to: feat__persistency
 
    .. uml:: _assets/kvs_dyn_write_data_key.puml
 
@@ -129,6 +153,7 @@ Dynamic Architecture
    :safety: ASIL_B
    :fulfils: feat_req__persistency__snapshot_restore,feat_req__persistency__store_data
    :status: valid
+   :belongs_to: feat__persistency
 
    .. uml:: _assets/kvs_dyn_restore_snapshot.puml
 

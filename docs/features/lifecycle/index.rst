@@ -27,6 +27,14 @@ Lifecycle
    :realizes: wp__feat_request
 
 
+.. feat:: Lifecycle
+   :id: feat__lifecycle
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :includes: logic_arc_int__lifecycle__lifecycle_if, logic_arc_int__lifecycle__controlif, logic_arc_int__lifecycle__alive_if, logic_arc_int__lifecycle__logical_monitor_if, logic_arc_int__lifecycle__deadline_monitor_if
+   :consists_of: comp__lifecycle_launch_manager, comp__lifecycle_healthmonitor
+
 Feature Flag
 ============
 

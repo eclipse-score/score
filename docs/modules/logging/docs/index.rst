@@ -12,9 +12,17 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+.. mod:: Logging
+   :id: mod__logging
+   :status: valid
+   :safety: ASIL_B
+   :security: YES
+   :includes: comp__logging
+
 .. mod_view_sta:: Logging
    :id: mod_view_sta__logging__logging
-   :includes: comp_arc_sta__logging__logging
+   :includes: comp__logging
+   :belongs_to: mod__logging
 
    .. needarch::
       :scale: 50

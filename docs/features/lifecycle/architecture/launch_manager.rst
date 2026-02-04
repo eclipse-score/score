@@ -121,6 +121,7 @@ This unified approach allows external state managers to request any run target a
    :safety: ASIL_B
    :security: YES
    :fulfils: feat_req__lifecycle__control_commands, feat_req__lifecycle__request_run_target_start, feat_req__lifecycle__switch_run_targets
+   :belongs_to: feat__lifecycle
 
    .. uml:: _assets/control_interface_start_sequence.puml
       :scale: 50
@@ -249,6 +250,7 @@ Dynamic Architecture
    :status: valid
    :safety: ASIL_B
    :fulfils: feat_req__lifecycle__control_commands, feat_req__lifecycle__request_run_target_start, feat_req__lifecycle__switch_run_targets
+   :belongs_to: feat__lifecycle
 
    .. uml:: _assets/lifecycle_state_machine.puml
       :scale: 50
@@ -352,6 +354,7 @@ Dynamic architecture
    :safety: ASIL_B
    :fulfils: feat_req__lifecycle__monitoring_processes, feat_req__lifecycle__polling_interval,, feat_req__lifecycle__failure_detect
    :includes:
+   :belongs_to: feat__lifecycle
 
    .. uml:: _assets/alive_monitoring_dynamic.puml
       :scale: 50

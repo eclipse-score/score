@@ -15,13 +15,21 @@
 libc Component Architecture
 ***************************
 
+.. comp:: os::libc
+   :id: comp__os_libc
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :implements: logic_arc_int__os__fcntl, logic_arc_int__os__stat, logic_arc_int__os__mmap, logic_arc_int__os__fork
+
 .. comp_arc_sta:: libc
    :id: comp_arc_sta__os__libc
    :security: YES
    :safety: ASIL_B
    :status: valid
    :satisfies:
-   :implements: logic_arc_int__os__fcntl, logic_arc_int__os__stat, logic_arc_int__os__mmap, logic_arc_int__os__fork
+   :belongs_to: comp__os_libc
+   :fulfils: comp_req__component_name__some_title
 
    .. needarch::
       :scale: 50

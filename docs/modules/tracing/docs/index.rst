@@ -12,9 +12,17 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+.. mod:: Tracing
+   :id: mod__tracing
+   :status: valid
+   :safety: ASIL_B
+   :security: YES
+   :includes: comp__tracing
+
 .. mod_view_sta:: Tracing
    :id: mod_view_sta__tracing__tracing
-   :includes: comp_arc_sta__tracing__tracing
+   :includes: comp__tracing
+   :belongs_to: mod__tracing
 
    .. needarch::
       :scale: 50

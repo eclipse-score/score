@@ -33,6 +33,7 @@ Functional Requirements
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__core_utilities, feat_req__baselibs__safety
    :status: valid
+   :belongs_to: comp__baselibs_utils
 
    The Utils component shall provide functions for encoding data to Base64 format and decoding Base64 data back to its original form.
 
@@ -43,6 +44,7 @@ Functional Requirements
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__core_utilities, feat_req__baselibs__safety
    :status: valid
+   :belongs_to: comp__baselibs_utils
 
    The Utils component shall provide a functionality that stores a callback and executes it automatically when the class is destructed
 
@@ -56,5 +58,6 @@ Non-Functional Requirements
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__core_utilities, feat_req__baselibs__safety
    :status: valid
+   :belongs_to: comp__baselibs_utils
 
    The Utils component shall ensure that all operations complete in a predictable manner and without dynamic memory allocation.

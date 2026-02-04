@@ -14,13 +14,20 @@
 
 Component Architecture
 **********************
+.. comp:: Logging
+   :id: comp__logging
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :implements: logic_arc_int__logging__logging
 
 .. comp_arc_sta:: Logging
    :id: comp_arc_sta__logging__logging
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :implements: logic_arc_int__logging__logging
+   :belongs_to: comp__logging
+   :fulfils: comp_req__component_name__some_title
 
    .. needarch::
       :scale: 50

@@ -100,6 +100,7 @@ Static Architecture
    :fulfils: feat_req__baselibs__core_utilities
    :includes: logic_arc_int__baselibs__json, logic_arc_int__baselibs__memory_shared, logic_arc_int__baselibs__message_passing, logic_arc_int__baselibs__result, logic_arc_int__baselibs__bit_manipulation, logic_arc_int__baselibs__bit_mask_operator, logic_arc_int__baselibs__dynamic_array, logic_arc_int__baselibs__intrusive_list, logic_arc_int__baselibs__filesystem, logic_arc_int__baselibs__utils_base64, logic_arc_int__baselibs__utils_scoped_op, logic_arc_int__baselibs__promise, logic_arc_int__baselibs__future, logic_arc_int__baselibs__shared_future, logic_arc_int__baselibs__executor, logic_arc_int__baselibs__task, logic_arc_int__baselibs__task_result, logic_arc_int__baselibs__synchronized_queue, logic_arc_int__baselibs__condition_variable
    :tags: inspected
+   :belongs_to: feat__baselibs
 
    .. needarch::
       :scale: 50

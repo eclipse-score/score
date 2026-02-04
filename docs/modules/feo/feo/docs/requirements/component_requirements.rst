@@ -377,3 +377,6 @@ Error Handling for S-CORE v0.5
 
 .. needextend:: docname is not None and "feo/docs/requirements" in docname
    :+tags: component_feo
+
+.. needextend:: docname is not None and "feo/docs/requirements" in docname and type == "comp_req"
+   :+belongs_to: comp__feo_main

@@ -12,11 +12,17 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-
+.. mod:: OS
+   :id: mod__os
+   :status: valid
+   :safety: ASIL_B
+   :security: YES
+   :includes: comp__os_libc, comp__os_message_passing
 
 .. mod_view_sta:: OS
    :id: mod_view_sta__os__os
-   :includes: comp_arc_sta__os__libc, comp_arc_sta__os__message_passing
+   :includes: comp__os_libc, comp__os_message_passing
+   :belongs_to: mod__os
 
    .. needarch::
       :scale: 50

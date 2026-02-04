@@ -26,6 +26,18 @@ Lifecycle
 
       {{ draw_module(need(), needs) }}
 
+.. comp_req:: Lifecycle
+   :id: comp_req__lifecycle__launch
+   :reqtype: Functional
+   :status: invalid
+   :security: NO
+   :safety: ASIL_B
+   :tags: lifecycle
+   :satisfies: feat_req__lifecycle__launch_support
+   :belongs_to: comp__lifecycle_launch_manager
+
+   Dummy requirement
+
 .. comp:: Launch Manager
    :id: comp__lifecycle_launch_manager
    :status: valid
@@ -40,6 +52,8 @@ Lifecycle
    :status: valid
    :safety: ASIL_B
    :security: NO
+   :belongs_to: comp__lifecycle_launch_manager
+   :fulfils: comp_req__lifecycle__launch
 
    .. needarch::
       :scale: 50
@@ -61,6 +75,8 @@ Lifecycle
    :safety: ASIL_B
    :security: NO
    :uses: logic_arc_int__lifecycle__alive_if
+   :belongs_to: comp__lifecycle_healthmonitor
+   :fulfils: comp_req__lifecycle__launch
 
    .. needarch::
       :scale: 50

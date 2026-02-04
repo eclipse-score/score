@@ -51,6 +51,7 @@ This ensures a stable public API, independent of the underlying binding(s). At t
    :status: valid
    :fulfils: feat_req__com__interfaces
    :includes: logic_arc_int__communication__user
+   :belongs_to: feat__com_communication
 
    .. needarch::
       :scale: 50

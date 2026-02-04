@@ -58,12 +58,19 @@ considerations and Rust compiler constraints. (Rust proc-macros must reside in t
 Static Architecture
 -------------------
 
+.. comp:: FEO Main
+  :id: comp__feo_main
+  :security: YES
+  :safety: ASIL_B
+  :status: valid
+
 .. comp_arc_sta:: Static Architecture
   :id: comp_arc_sta__feo__main
   :security: YES
   :safety: ASIL_B
   :status: valid
-  :fulfils: comp_req__feo__application, comp_req__feo__scheduler, comp_req__feo__task_chain, comp_req__feo__agent, comp_req__feo__comp_cfg, comp_req__feo__act_map_cfg
+  :belongs_to: comp__feo_main
+  :fulfils: comp_req__feo__application
 
 
   .. uml:: _assets/stat_arch.puml
@@ -80,6 +87,7 @@ Dynamic Architecture
   :safety: ASIL_B
   :fulfils: comp_req__feo__application, comp_req__feo__application_lifecycle, comp_req__feo__scheduler, comp_req__feo__task_chain, comp_req__feo__agent, comp_req__feo__activity_init, comp_req__feo__activitiy_step, comp_req__feo__activity_shutdown
   :status: valid
+  :belongs_to: comp__feo_main
 
   The actual dynamic call sequence during the execution of a FEO application depends on the distribution
   of activities to processes as well as on the activity dependency graph defining the task chain.

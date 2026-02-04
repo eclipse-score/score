@@ -36,6 +36,7 @@ Functional Requirements
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__bitmanipulation, feat_req__baselibs__core_utilities
    :status: valid
+   :belongs_to: comp__baselibs_bit_manipulation
 
    The bit manipulation component shall provide API for setting, clearing, toggling, and checking bits, as well as extracting bytes and manipulating half-bytes and bytes for any integral type up to 64 bits.
 
@@ -46,6 +47,7 @@ Functional Requirements
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__bitmanipulation, feat_req__baselibs__core_utilities
    :status: valid
+   :belongs_to: comp__baselibs_bit_manipulation
 
    The bit manipulation library shall provide type-safe bitmask operations for scoped enumeration types.
 
@@ -56,6 +58,7 @@ Functional Requirements
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__bitmanipulation, feat_req__baselibs__safety
    :status: valid
+   :belongs_to: comp__baselibs_bit_manipulation
 
    All bit manipulation functions shall validate input parameters and prevent data corruption.
 
@@ -69,6 +72,7 @@ Non-Functional Requirements
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__bitmanipulation
    :status: valid
+   :belongs_to: comp__baselibs_bit_manipulation
 
    The bit manipulation API shall be header-only and not require external dependencies.
 

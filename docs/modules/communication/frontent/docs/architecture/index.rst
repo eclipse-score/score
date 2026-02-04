@@ -29,8 +29,9 @@ Frontend Component Architecture
    :security: YES
    :safety:  ASIL_B
    :status: valid
-   :implements: logic_arc_int__communication__user
    :uses: logic_arc_int__logging__logging, logic_arc_int__tracing__tracing
+   :belongs_to: comp__com_frontend
+   :fulfils: comp_req__component_name__some_title
 
    .. needarch::
       :scale: 50

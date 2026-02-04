@@ -100,8 +100,9 @@ The components are designed to cover the expectations from the feature architect
    :security: YES
    :safety:  ASIL_B
    :status: valid
-   :includes: comp__orch_design_impl, comp__orch_deployment_impl
    :uses: logic_arc_int__logging__logging, logic_arc_int__tracing__tracing, logic_arc_int__communication__user
+   :belongs_to: comp__orchestrator
+   :fulfils: comp_req__component_name__some_title
 
    .. needarch::
       :scale: 50

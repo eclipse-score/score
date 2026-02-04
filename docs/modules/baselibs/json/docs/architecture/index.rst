@@ -72,8 +72,8 @@ Static Architecture
    :security: YES
    :safety:  ASIL_B
    :status: valid
-   :includes: comp__baselibs_json_wrapper, comp__baselibs_nlohman_json
    :fulfils: comp_req__json__deserialization, comp_req__json__serialization, comp_req__json__user_format, comp_req__json__lang_idioms, comp_req__json__lang_infra, comp_req__json__type_compatibility, comp_req__json__full_testability, comp_req__json__asil
+   :belongs_to: comp__baselibs_json
 
    .. needarch::
       :scale: 50
@@ -91,6 +91,7 @@ Dynamic Architecture
    :safety: ASIL_B
    :status: invalid
    :fulfils: comp_req__json__deserialization, comp_req__json__serialization, comp_req__json__user_format, comp_req__json__lang_idioms, comp_req__json__lang_infra, comp_req__json__type_compatibility, comp_req__json__full_testability, comp_req__json__asil
+   :belongs_to: comp__baselibs_json
 
    put here a sequence diagram (TBD)
 

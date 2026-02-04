@@ -225,6 +225,7 @@ Dynamic Architecture
    :status: valid
    :safety: ASIL_B
    :fulfils: feat_req__com__depl_config_runtime
+   :belongs_to: feat__com_communication
 
    .. uml:: _assets/dyn_arch.puml
       :scale: 50

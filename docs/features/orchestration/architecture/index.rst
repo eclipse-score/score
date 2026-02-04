@@ -71,6 +71,7 @@ Static Architecture
    :status: invalid
    :fulfils: feat_req__orchestration__orch_static_graphs, feat_req__orchestration__exec_async_rt
    :includes: logic_arc_int__orchestration__user, logic_arc_int__orchestration__design, logic_arc_int__orchestration__deployment
+   :belongs_to: feat__orchestration
 
    .. needarch::
       :scale: 50
