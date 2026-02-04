@@ -85,17 +85,17 @@ qualified and output of coverage data in `.profraw` format is correct. Due to th
      - Further additional safety measure required?
      - Confidence (automatic calculation)
    * - 1
-     - False-positive: The function is reported as covered and increase coverage percentage, although it is not covered in reality (not included in `profraw` data)
-     - | The reported covarge number is reported higher than the real coverage.
+     - `profraw` does not contain data, but the tool reports coverage for the function.
+     - | The reported coverage number is reported higher than the real coverage.
        | This may lead to false assumption that code is sufficiently covered by tests, although it is not.
 
      - no
-     - no
+     - Likelihood of this malfunction is low
      - yes
      - no
      - high
    * - 2
-     - False-negative: The function is reported as not covered, although it is covered in reality (included in `profraw` data)
+     - `profraw` does contain data, but the tool does not report coverage for the function.
      - | The reported coverage number is reported lower than the real coverage.
        | This may lead to unnecessary additional testing effort (developer to prove it's covered or provide explanation), although code is already sufficiently covered.
      - no
@@ -107,6 +107,14 @@ qualified and output of coverage data in `.profraw` format is correct. Due to th
      - The function from source code is not included in the coverage report at all.
      - | The reported coverage number is reported higher than the real coverage.
        | This may lead to false assumption that code is sufficiently covered by tests, although it is not.
+     - no
+     - Function will not be present in the report, so it will be visible that it is not covered.
+     - yes
+     - no
+     - high
+   * - 4
+     - Calculations are wrong, so the reported coverage number is not correct.
+     - | The reported coverage is different than the coverage in `profraw` files.
      - no
      - no
      - yes
