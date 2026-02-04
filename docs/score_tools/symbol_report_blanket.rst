@@ -1,0 +1,120 @@
+..
+   # *******************************************************************************
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
+   #
+   # See the NOTICE file(s) distributed with this work for additional
+   # information regarding copyright ownership.
+   #
+   # This program and the accompanying materials are made available under the
+   # terms of the Apache License Version 2.0 which is available at
+   # https://www.apache.org/licenses/LICENSE-2.0
+   #
+   # SPDX-License-Identifier: Apache-2.0
+   # *******************************************************************************
+
+.. doc_tool:: symbol report and blanket
+   :id: doc_tool__symbol_report_blanket
+   :status: evaluated
+   :version: 1.90.0 (see [1])
+   :tcl: HIGH
+   :safety_affected: YES
+   :security_affected: NO
+   :realizes: wp__tool_verification_report
+   :tags: tool_management
+
+Symbol Report and Blanket Verification Report
+=============================================
+
+Introduction
+------------
+Scope and purpose
+~~~~~~~~~~~~~~~~~
+Symbol report and blanket are
+
+Inputs and outputs
+~~~~~~~~~~~~~~~~~~
+| Inputs: Software sources (Rust)
+| Outputs: Report with calculated coverage
+
+.. figure:: _assets/symbol_report.drawio.svg
+  :width: 100%
+  :align: center
+  :alt: Symbol report and blanket overview
+
+  Symbol report and blanket overview
+
+Available information
+~~~~~~~~~~~~~~~~~~~~~
+- Version: >= 1.90.0 [1]_
+- Official repository: https://github.com/ferrocene/ferrocene/tree/main/ferrocene/tools/blanket,  https://github.com/ferrocene/ferrocene/tree/main/ferrocene/tools/symbol-report
+- Additional information for usage in other safety projects: https://public-docs.ferrocene.dev/main/certification/core/safety-plan/tools.html#code-coverage
+
+
+Installation and integration
+----------------------------
+Installation
+~~~~~~~~~~~~
+| To add the Code coverage to your project or module follow guidelines in WIP
+
+Integration
+~~~~~~~~~~~
+Integrated in bazel.
+
+Environment
+~~~~~~~~~~~
+Requires Rust toolchain and Bazel build environment.
+
+Safety evaluation
+-----------------
+This section outlines the safety evaluation of symbol report and blanket for its use within the S-CORE project. This evaluation assumes that the Rust compiler is
+qualified and output of coverage data in `.profraw` format is correct. Due to that, we solely focus on post processing that is done by symbol report and blanket only.
+
+
+.. list-table:: Safety evaluation
+   :header-rows: 1
+   :widths: 1 2 8 2 6 4 2 2
+
+   * - Malfunction identification
+     - Use case description
+     - Malfunctions
+     - Impact on safety?
+     - Impact safety measures available?
+     - Impact safety detection sufficient?
+     - Further additional safety measure required?
+     - Confidence (automatic calculation)
+   * - 1
+     - False-positive: The function is reported as covered and increase coverage percentage, although it is not covered in reality (not included in `profraw` data)
+     - | The reported covarge number is reported higher than the real coverage.
+       | This may lead to false assumption that code is sufficiently covered by tests, although it is not.
+
+     - no
+     - no
+     - yes
+     - no
+     - high
+   * - 2
+     - False-negative: The function is reported as not covered, although it is covered in reality (included in `profraw` data)
+     - | The reported coverage number is reported lower than the real coverage.
+       | This may lead to unnecessary additional testing effort (developer to prove it's covered or provide explanation), although code is already sufficiently covered.
+     - no
+     - no
+     - yes
+     - no
+     - high
+   * - 3
+     - The function from source code is not included in the coverage report at all.
+     - | The reported coverage number is reported higher than the real coverage.
+       | This may lead to false assumption that code is sufficiently covered by tests, although it is not.
+     - no
+     - no
+     - yes
+     - no
+     - high
+
+
+Result
+~~~~~~
+Symbol report and blanket do not require qualification for use in safety-related software development according to ISO 26262.
+
+.. [1] The tool version mentioned in this document is preliminary.
+       Exact version shall be derived from qualified Rust compiler used in S-CORE project.

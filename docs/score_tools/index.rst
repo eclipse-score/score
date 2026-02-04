@@ -36,4 +36,5 @@ S-CORE Tools Overview
    tools_build_development/index
    tools_compiler/index
    tools_vc_cicd/index
+   symbol_report_blanket
    tools_license_security/index
