@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>memory_shared &#8212; S-CORE  documentation</title>
+    <title>memory &#8212; S-CORE  documentation</title>
   
   
   
@@ -504,7 +504,7 @@
 
 
 
-<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">memory_shared</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">memory</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="architecture/index.html">Memory Shared Component Architecture</a></li>
 <li class="toctree-l3"><a class="reference internal" href="requirements/index.html">Requirements</a></li>
 </ul>
@@ -569,7 +569,7 @@
     
     <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Baselibs Module</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">memory_shared</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">memory</span></li>
   </ul>
 </nav>
 </div>
@@ -586,10 +586,85 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="memory-shared">
-<span id="comp-doc-memory-shared"></span><h1>memory_shared<a class="headerlink" href="#memory-shared" title="Link to this heading">#</a></h1>
+  <section id="memory">
+<span id="comp-doc-memory-shared"></span><h1>memory<a class="headerlink" href="#memory" title="Link to this heading">#</a></h1>
+<div class="need_container docutils container" id="SNCB-3fd5f5a3">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__memory">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Memory Library</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs_memory</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/change_management_workproducts.html#wp__cmpt_request">wp__cmpt_request</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__memory" title="doc__memory">doc__memory</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Generic Document</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div class="toctree-wrapper compound">
 </div>
+<section id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
+<p>The Memory library provides APIs for memory management to facilitate inter-process communication (IPC) in the S-CORE software platform.</p>
+</section>
+<section id="motivation-and-rationale">
+<h2>Motivation and Rationale<a class="headerlink" href="#motivation-and-rationale" title="Link to this heading">#</a></h2>
+<p>The Memory library shall provide mechanisms for creating, accessing, and managing shared memory between different processes.
+It includes support for polymorphic memory resource allocators using offset pointers and additional utilities to deal with memory use-cases.</p>
+<p>The Memory library is needed in the S-CORE software platform because subsystems like Communication and Logging rely on shared memory for inter-process communication.</p>
+</section>
+<section id="specification">
+<h2>Specification<a class="headerlink" href="#specification" title="Link to this heading">#</a></h2>
+<p>The following details and requirements describe the aspects of the current feature in the context of S-CORE.</p>
+<section id="general-considerations">
+<h3>General considerations<a class="headerlink" href="#general-considerations" title="Link to this heading">#</a></h3>
+<p>The Memory Library should provide APIs for memory management:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="requirements/index.html#comp_req__memory__shared_memory" title="comp_req__memory__shared_memory"><em class="xref need">Shared Memory Management (comp_req__memory__shared_memory)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements/index.html#comp_req__memory__offset_ptr" title="comp_req__memory__offset_ptr"><em class="xref need">Polymorphic OffsetPtr Alloc... (comp_req__memory__offset_ptr)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements/index.html#comp_req__memory__shared_containers" title="comp_req__memory__shared_containers"><em class="xref need">Shared Memory Containers (comp_req__memory__shared_containers)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements/index.html#comp_req__memory__ipc_sync" title="comp_req__memory__ipc_sync"><em class="xref need">Inter-Process Synchronization (comp_req__memory__ipc_sync)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements/index.html#comp_req__memory__bounds_check" title="comp_req__memory__bounds_check"><em class="xref need">Memory Region Bounds Checking (comp_req__memory__bounds_check)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements/index.html#comp_req__memory__endianness" title="comp_req__memory__endianness"><em class="xref need">Endianness Conversion (comp_req__memory__endianness)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements/index.html#comp_req__memory__sealed_shm" title="comp_req__memory__sealed_shm"><em class="xref need">Sealed Shared Memory (comp_req__memory__sealed_shm)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements/index.html#comp_req__memory__typed_shm" title="comp_req__memory__typed_shm"><em class="xref need">Type-Safe Shared Memory (comp_req__memory__typed_shm)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements/index.html#comp_req__memory__resource_registry" title="comp_req__memory__resource_registry"><em class="xref need">Memory Resource Registry (comp_req__memory__resource_registry)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements/index.html#comp_req__memory__string_utils" title="comp_req__memory__string_utils"><em class="xref need">String Utilities (comp_req__memory__string_utils)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements/index.html#comp_req__memory__atomic_ops" title="comp_req__memory__atomic_ops"><em class="xref need">Atomic Operations in Shared... (comp_req__memory__atomic_ops)</em></a></p></li>
+</ul>
+<p>The library should ensure that all memory operations are performed safely, with appropriate bounds checking and synchronization mechanisms to prevent memory corruption.</p>
+</section>
+</section>
 </section>
 
 
@@ -630,6 +705,23 @@
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-and-rationale">Motivation and Rationale</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specification">Specification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-considerations">General considerations</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
 
