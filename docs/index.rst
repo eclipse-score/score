@@ -115,6 +115,7 @@ Project structure and processes
       score_technical_base/index
 
       Releases <score_releases/index.rst>
+      Tools <score_tools/index.rst>
       PMP <platform_management_plan/index.rst>
       Eclipse <https://projects.eclipse.org/projects/automotive.score>
       design_decisions/index
