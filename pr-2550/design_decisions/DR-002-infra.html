@@ -1,0 +1,1563 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>DR-002-Infra: Integration Testing in a Distributed Monolith &#8212; S-CORE  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score.css?v=6e51530f" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score_needs.css?v=e97392eb" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score_design.css?v=d9fd870c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css?v=803738c0" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
+    <script src="../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
+    <script src="../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
+    <script src="../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
+    <script src="../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+    <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.6.0/dist/mermaid.esm.min.mjs";
+
+
+
+
+
+const initStyles = () => {
+    const defaultStyle = document.createElement('style');
+    defaultStyle.textContent = `pre.mermaid {
+    /* Same as .mermaid-container > pre */
+    display: block;
+    width: 100%;
+}
+
+pre.mermaid > svg {
+    /* Same as .mermaid-container > pre > svg */
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}`;
+    document.head.appendChild(defaultStyle);
+
+    const fullscreenStyle = document.createElement('style');
+    fullscreenStyle.textContent = `.mermaid-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.mermaid-container > pre {
+    display: block;
+    width: 100%;
+}
+
+.mermaid-container > pre > svg {
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}
+
+.mermaid-fullscreen-btn {
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    line-height: 1;
+    padding: 0;
+    color: #333;
+}
+
+.mermaid-fullscreen-btn:hover {
+    opacity: 100% !important;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-btn.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-btn.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal {
+    display: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 95vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 9999;
+    padding: 20px;
+    overflow: auto;
+}
+
+.mermaid-fullscreen-modal.dark-theme {
+    background: rgba(0, 0, 0, 0.98);
+}
+
+.mermaid-fullscreen-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen {
+    position: relative;
+    width: 95vw;
+    height: 90vh;
+    max-width: 95vw;
+    max-height: 90vh;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen.dark-theme {
+    background: #1a1a1a;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.mermaid-container-fullscreen pre.mermaid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen .mermaid svg {
+    height: 100% !important;
+    width: 100% !important;
+    cursor: grab;
+}
+
+.mermaid-fullscreen-close {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s;
+    font-size: 24px;
+    line-height: 1;
+    color: #333;
+}
+
+.mermaid-fullscreen-close:hover {
+    background: white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-close.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-close.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal .mermaid-fullscreen-btn {
+    display: none !important;
+}`;
+    document.head.appendChild(fullscreenStyle);
+}
+
+// Detect if page has dark background
+const isDarkTheme = () => {
+    // We use a set of heuristics:
+    // 1. Check for common dark mode classes or attributes
+    // 2. Check computed background color brightness
+    if (document.documentElement.classList.contains('dark') ||
+        document.documentElement.getAttribute('data-theme') === 'dark' ||
+        document.body.classList.contains('dark') ||
+        document.body.getAttribute('data-theme') === 'dark') {
+        // console.log("Dark theme detected via class/attribute");
+        return true;
+    }
+    if (document.documentElement.classList.contains('light') ||
+        document.documentElement.getAttribute('data-theme') === 'light' ||
+        document.body.classList.contains('light') ||
+        document.body.getAttribute('data-theme') === 'light') {
+        // console.log("Light theme detected via class/attribute");
+        return false;
+    }
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // console.log("Dark theme detected via prefers-color-scheme");
+        return true;
+    }
+    const bgColor = window.getComputedStyle(document.body).backgroundColor;
+    const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)/);
+    if (match) {
+        const r = parseInt(match[1]);
+        const g = parseInt(match[2]);
+        const b = parseInt(match[3]);
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        // console.log("Background color brightness:", brightness);
+        return brightness < 128;
+    }
+    // console.log("No dark or light theme detected, defaulting to light theme");
+    return false;
+};
+
+let darkTheme = isDarkTheme();
+let modal = null;
+let modalContent = null;
+let previousScrollOffset = [window.scrollX, window.scrollY];
+
+const runMermaid = async (rerun) => {
+    console.log("Running mermaid diagrams, rerun =", rerun);
+    // clear all existing mermaid charts
+    let all_mermaids = document.querySelectorAll(".mermaid");
+
+    if (rerun) {
+        all_mermaids.forEach((el) => {
+            if(!el.hasAttribute("data-original-code")) {
+                // store original code
+                // console.log(`Storing original code for first run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+            if(el.getAttribute("data-processed") === "true") {
+                // remove and restore original
+                el.removeAttribute("data-processed");
+                // console.log(`Restoring original code for re-run: `, el.getAttribute('data-original-code'));
+                el.innerHTML = el.getAttribute('data-original-code');
+            } else {
+                // store original code
+                // console.log(`Storing original code for re-run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+        });
+        await mermaid.run();
+    }
+
+    all_mermaids = document.querySelectorAll(".mermaid");
+    const mermaids_processed = document.querySelectorAll(".mermaid[data-processed='true']");
+
+    if ("False" === "True") {
+        const mermaids_to_add_zoom = -1 === -1 ? all_mermaids.length : -1;
+        if(mermaids_to_add_zoom > 0) {
+            var svgs = d3.selectAll("");
+            if(all_mermaids.length !== mermaids_processed.length) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else if(svgs.size() !== mermaids_to_add_zoom) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else {
+                svgs.each(function() {
+                    var svg = d3.select(this);
+                    svg.html("<g class='wrapper'>" + svg.html() + "</g>");
+                    var inner = svg.select("g");
+                    var zoom = d3.zoom().on("zoom", function(event) {
+                        inner.attr("transform", event.transform);
+                    });
+                    svg.call(zoom);
+                });
+            }
+        }
+    } else if(all_mermaids.length !== mermaids_processed.length) {
+        // Wait for mermaid to process all diagrams
+        setTimeout(() => runMermaid(false), 200);
+        return;
+    }
+
+    // Stop here if not adding fullscreen capability
+    if ("True" !== "True") return;
+
+    if (modal !== null ) {
+        // Destroy existing modal
+        modal.remove();
+        modal = null;
+        modalContent = null;
+    }
+
+    modal = document.createElement('div');
+    modal.className = 'mermaid-fullscreen-modal' + (darkTheme ? ' dark-theme' : '');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Fullscreen diagram viewer');
+    modal.innerHTML = `
+        <button class="mermaid-fullscreen-close${darkTheme ? ' dark-theme' : ''}" aria-label="Close fullscreen">✕</button>
+        <div class="mermaid-container-fullscreen${darkTheme ? ' dark-theme' : ''}"></div>
+    `;
+    document.body.appendChild(modal);
+
+    modalContent = modal.querySelector('.mermaid-container-fullscreen');
+    const closeBtn = modal.querySelector('.mermaid-fullscreen-close');
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        modalContent.innerHTML = '';
+        document.body.style.overflow = ''
+        window.scrollTo({left: previousScrollOffset[0], top: previousScrollOffset[1], behavior: 'instant'});
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    document.querySelectorAll('.mermaid').forEach((mermaidDiv) => {
+        if (mermaidDiv.parentNode.classList.contains('mermaid-container') ||
+            mermaidDiv.closest('.mermaid-fullscreen-modal')) {
+            // Already processed, adjust button class if needed
+            const existingBtn = mermaidDiv.parentNode.querySelector('.mermaid-fullscreen-btn');
+            if (existingBtn) {
+                existingBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+            }
+            return;
+        }
+
+        const container = document.createElement('div');
+        container.className = 'mermaid-container';
+        mermaidDiv.parentNode.insertBefore(container, mermaidDiv);
+        container.appendChild(mermaidDiv);
+
+        const fullscreenBtn = document.createElement('button');
+        fullscreenBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+        fullscreenBtn.setAttribute('aria-label', 'View diagram in fullscreen');
+        fullscreenBtn.textContent = '⛶';
+        fullscreenBtn.style.opacity = '50%';
+
+        // Calculate dynamic position based on diagram's margin and padding
+        const diagramStyle = window.getComputedStyle(mermaidDiv);
+        const marginTop = parseFloat(diagramStyle.marginTop) || 0;
+        const marginRight = parseFloat(diagramStyle.marginRight) || 0;
+        const paddingTop = parseFloat(diagramStyle.paddingTop) || 0;
+        const paddingRight = parseFloat(diagramStyle.paddingRight) || 0;
+        fullscreenBtn.style.top = `${marginTop + paddingTop + 4}px`;
+        fullscreenBtn.style.right = `${marginRight + paddingRight + 4}px`;
+
+        fullscreenBtn.addEventListener('click', () => {
+            previousScrollOffset = [window.scroll, window.scrollY];
+            const clone = mermaidDiv.cloneNode(true);
+            modalContent.innerHTML = '';
+            modalContent.appendChild(clone);
+
+            const svg = clone.querySelector('svg');
+            if (svg) {
+                svg.removeAttribute('width');
+                svg.removeAttribute('height');
+                svg.style.width = '100%';
+                svg.style.height = 'auto';
+                svg.style.maxWidth = '100%';
+                svg.style.sdisplay = 'block';
+
+                if ("False" === "True") {
+                    setTimeout(() => {
+                        const g = svg.querySelector('g');
+                        if (g) {
+                            var svgD3 = d3.select(svg);
+                            svgD3.html("<g class='wrapper'>" + svgD3.html() + "</g>");
+                            var inner = svgD3.select("g");
+                            var zoom = d3.zoom().on("zoom", function(event) {
+                                inner.attr("transform", event.transform);
+                            });
+                            svgD3.call(zoom);
+                        }
+                    }, 100);
+                }
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        container.appendChild(fullscreenBtn);
+    });
+};
+
+const load = async () => {
+    initStyles();
+
+    await runMermaid(true);
+
+    const reRunIfThemeChanges = async () => {
+        const newDarkTheme = isDarkTheme();
+        if (newDarkTheme !== darkTheme) {
+            darkTheme = newDarkTheme;
+            console.log("Theme change detected, re-running mermaid with", darkTheme ? "dark" : "default", "theme");
+            await mermaid.initialize(
+                {...JSON.parse(
+                    `{"startOnLoad": false}`
+                ),
+                ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+                }
+            );
+            await runMermaid(true);
+        }
+    };
+
+    // Update theme classes when theme changes
+    const themeObserver = new MutationObserver(reRunIfThemeChanges);
+    themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+    themeObserver.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+};
+
+
+
+
+
+console.log("Initializing mermaid with", darkTheme ? "dark" : "default", "theme");
+mermaid.initialize(
+    {...JSON.parse(
+        `{"startOnLoad": false}`
+    ),
+    ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+    }
+);
+
+window.addEventListener("load", load);</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'design_decisions/DR-002-infra';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="DR-003-Infra: Devcontainer Strategy for S-CORE" href="DR-003-infra.html" />
+    <link rel="prev" title="DR-001-Infra: Integration Strategy for External Development Tools" href="DR-001-infra.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Eclipse S-CORE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../handbook/index.html">
+    Handbook
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../features/index.html">
+    Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../requirements/index.html">
+    Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../modules/index.html">
+    Modules
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../handbook/index.html">
+    Handbook
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../features/index.html">
+    Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../requirements/index.html">
+    Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../modules/index.html">
+    Modules
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DR-001-infra.html">DR-001-Infra: Integration Strategy for External Development Tools</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">DR-002-Infra: Integration Testing in a Distributed Monolith</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-003-infra.html">DR-003-Infra: Devcontainer Strategy for S-CORE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-004-infra.html">DR-004-Infra: Bi-directional traceability in docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-006-infra.html">DR-006-Infra: Clippy Integration via rules_lint</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Decision Records</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">DR-002-Infra: Integration Testing in a Distributed Monolith</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <!--
+Copyright (c) 2025 Contributors to the Eclipse Foundation
+
+See the NOTICE file(s) distributed with this work for additional
+information regarding copyright ownership.
+
+This program and the accompanying materials are made available under the
+terms of the Apache License Version 2.0 which is available at
+https://www.apache.org/licenses/LICENSE-2.0
+
+SPDX-License-Identifier: Apache-2.0
+-->
+<section id="dr-002-infra-integration-testing-in-a-distributed-monolith">
+<h1>DR-002-Infra: Integration Testing in a Distributed Monolith<a class="headerlink" href="#dr-002-infra-integration-testing-in-a-distributed-monolith" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><strong>Date:</strong> 2025-09-01</p></li>
+</ul>
+<div class="need_container docutils container" id="SNCB-a6890cd9">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__int_testing">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Integration Testing in a Distributed Monolith</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">accepted</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_context"><span class="needs_label">context: </span><span class="needs_data">Infrastructure</span></span></div>
+<div class="line"><span class="needs_decision"><span class="needs_label">decision: </span><span class="needs_data">two testing layers</span></span></div>
+</span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#dec_rec__infra__int_testing" title="dec_rec__infra__int_testing">dec_rec__infra__int_testing</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Decision Record</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<hr class="docutils" />
+<section id="executive-summary">
+<h2>Executive Summary<a class="headerlink" href="#executive-summary" title="Link to this heading">#</a></h2>
+<p>Large systems often span multiple repositories. Each repository can look “green” on its own, yet problems only show up when everything is combined. These late surprises slow down development and make debugging painful.</p>
+<p>The concept described here turns a collection of separate repositories into a system that behaves like a single, continuously tested whole — ensuring the main line is always integrable across all components.</p>
+<section id="proposed-approach">
+<h3>Proposed Approach<a class="headerlink" href="#proposed-approach" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Every change in any repository is tested <strong>in combination with the rest of the system</strong>, not just in isolation.</p></li>
+<li><p>There are <strong>two testing layers</strong>:</p>
+<ul>
+<li><p>a <strong>fast feedback loop</strong> (lightweight tests that run on every pull request BEFORE merge in any repository),</p></li>
+<li><p>and a <strong>deeper validation</strong> (heavier tests run after merges or on a schedule BEFORE release in any repository).</p></li>
+</ul>
+</li>
+<li><p>This setup guarantees that developers can trust the system as a whole to consistently work.</p></li>
+</ul>
+</section>
+<section id="typical-workflow">
+<h3>Typical workflow<a class="headerlink" href="#typical-workflow" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Component PRs are created.</p>
+<ul>
+<li><p>Run component local verification.</p></li>
+<li><p>Run integration testing (quick).</p></li>
+</ul>
+</li>
+<li><p>Post merge:</p>
+<ul>
+<li><p>Run integration test (full).</p></li>
+</ul>
+</li>
+<li><p>Only after successful integration testing (full) can a release be created.</p></li>
+</ul>
+</section>
+<section id="benefits">
+<h3>Benefits<a class="headerlink" href="#benefits" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Problems across repositories are caught early.</p></li>
+<li><p>Developers spend less time coordinating merges (“merge after me” scenarios disappear).</p></li>
+<li><p>The project always has a “known good” baseline to fall back on, enabling stability while still moving fast.</p></li>
+</ul>
+<p>Note: this concept is easily extendable to support multiple versions of S-CORE. But that’s currently not required.</p>
+<p>See Martin Fowler’s <a class="reference external" href="https://martinfowler.com/articles/continuousIntegration.html">continuous integration</a> article for a deeper dive into the topic.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>Teams often split what is functionally a single system across many repositories. Each
+repository can show a green build while the assembled system is already broken. This
+article looks at how to bring system-level feedback earlier when you work that way. This
+article does not argue for pull requests, trunk-based development, or continuous
+integration itself. Those are well covered elsewhere. It also does not look into any
+specific tools or implementations for achieving these practices - except for providing a
+GitHub based example.</p>
+<p>The context here assumes three things: you develop through pull requests with required
+checks; you have multiple interdependent repositories that ship together; and you either
+have or will create a central integration repository used only for orchestration. If any
+of those are absent you will need to establish them first; the rest of the discussion
+builds on them.</p>
+</section>
+<hr class="docutils" />
+<section id="motivation-where-problems-usually-appear">
+<h2>Motivation / Where Problems Usually Appear<a class="headerlink" href="#motivation-where-problems-usually-appear" title="Link to this heading">#</a></h2>
+<p>An interface change (for example a renamed field in a shared schema) is updated in two
+direct consumers. Their pull requests pass. Another consumer several repositories away
+still depends on the old interface and only fails once the whole set of changes reaches
+main and a later integration run executes. The defect was present early but only visible
+late. Investigation now needs cross-repo log hunting instead of a quick fix while the
+change was still in flight.</p>
+<p>Running full end-to-end environments on every pull request is rarely affordable.
+Coordinated multi-repository changes are then handled informally through ad-hoc
+ordering: “merge yours after mine”. Late detection raises cost and makes regression
+origins harder to locate.</p>
+</section>
+<hr class="docutils" />
+<section id="core-concepts">
+<h2>Core Concepts<a class="headerlink" href="#core-concepts" title="Link to this heading">#</a></h2>
+<p>We model the integrated system as an explicit set of (component, commit) pairs captured
+in a manifest. Manifests are derived deterministically from events: a single pull
+request, a coordinated group of pull requests, or a post-merge refresh. A curated fast
+subset of integration tests provides pre-merge feedback; a deeper suite runs after
+merge. Passing suites produce a recorded manifest (“known good”). Coordinated
+multi-repository change is treated as a first-class case—we validate the set as a unit
+rather than relying on merge ordering.</p>
+<p>Terminology (brief):</p>
+<ul class="simple">
+<li><p>Component - repository that participates in the assembled product (e.g. service API
+repo, shared library).</p></li>
+<li><p>Fast subset - curated integration tests finishing in single-digit minutes (protocol
+seams, migration boundaries, adapters).</p></li>
+<li><p>Tuple - mapping of component names to commit SHAs for one integrated build (e.g. {
+users: a1c3f9d, billing: 9e02b4c }).</p></li>
+<li><p>Known good - tuple + metadata (timestamp, suite, manifest hash) stored for later
+reproduction.</p></li>
+</ul>
+<p>History &amp; context: classic continuous integration assumed a single codebase; splitting
+one system across repositories reintroduces coordination issues CI was intended to
+remove. This adapts familiar CI principles (frequent integration, fast feedback,
+reproducibility) to a multi-repository boundary. The central integration repository is a
+neutral place to define participating components, build manifests, hold
+integration-specific helpers (overrides, fixtures, seam tests), and persist known-good
+records. It should not contain business logic; keeping it lean reduces accidental
+coupling and simplifies review.</p>
+</section>
+<hr class="docutils" />
+<section id="integration-workflows">
+<h2>Integration Workflows<a class="headerlink" href="#integration-workflows" title="Link to this heading">#</a></h2>
+<p>We use three recurring workflows: a single pull request, a coordinated subset when
+multiple pull requests must land together, and a post-merge fuller suite. Each produces
+a manifest, runs an appropriate depth of tests, and may record the tuple if successful.</p>
+<section id="visual-overview">
+<h3>Visual Overview<a class="headerlink" href="#visual-overview" title="Link to this heading">#</a></h3>
+<pre  class="mermaid">
+        flowchart TB
+  subgraph COMP[Component Repos]
+    pr[PR opened / updated&lt;br/&gt;&amp;lt;event&amp;gt;]:::event --&gt; comp_ci[Component tests]:::step
+
+    trigger1[Merge to main&lt;br/&gt;&amp;lt;event&amp;gt;]:::event
+  end
+
+  subgraph INT[Integration Repo]
+    comp_ci --&gt; |dispatch|detect_changeset[Detect multi repository PRs]:::step
+    knownGood[(Known good store)]:::artifact
+
+    %% PR
+    detect_changeset --&gt; buildMan[Build PR/PRs manifest using PR/PRs SHA + known good others]:::step
+    knownGood --&gt; buildMan
+    buildMan --&gt; runSubset[Run fast subset of integration tests]:::step
+    runSubset --&gt; prFeedback[Provide Feedback in PR / all PRs]:::step
+
+    %% Post-merge / scheduled full suite
+    trigger1 --&gt;|dispatch| fullMan[Build full manifest from latest mains of all repos]:::step
+    trigger2[schedule&lt;br/&gt;&amp;lt;event&amp;gt;]:::event --&gt; fullMan
+    fullMan --&gt; fullSuite[Run full integration test suite]:::step
+    fullSuite --&gt; fullPass{Full suite pass?}:::decision
+    fullPass --&gt;|Yes| knownGood
+    fullPass --&gt;|No| issue[&quot;Create Issue&lt;br&gt;(or a more clever automated bisect solution)&quot;]:::red
+  end
+    </pre><p><em>High-level flow of integration workflows. Known good store feeds manifest construction for single and coordinated paths; full test suite success updates the store.</em></p>
+</section>
+<section id="single-pull-request">
+<h3>Single Pull Request<a class="headerlink" href="#single-pull-request" title="Link to this heading">#</a></h3>
+<p>When a pull request opens or updates, its repository runs its normal fast tests. The
+integration repository is also triggered with the repository name, pull request number,
+and head SHA. It builds a manifest using that SHA for the changed component and the last
+known-good SHAs for others, then runs the curated fast subset. The result is reported
+back to the pull request. The manifest and logs are stored even when failing so a
+developer can reproduce locally.</p>
+<p>The subset is explicit rather than dynamically inferred. Tests in it should fail quickly
+when contracts or shared schemas drift. If the list grows until it is slow it will
+either be disabled or ignored; regular curation keeps it useful.</p>
+</section>
+<section id="coordinated-multi-repository-subset">
+<h3>Coordinated Multi-Repository Subset<a class="headerlink" href="#coordinated-multi-repository-subset" title="Link to this heading">#</a></h3>
+<p>Some changes require multiple repositories to move together (for example a schema
+evolution, a cross-cutting refactor, a protocol tightening). We mark related pull
+requests using a stable mechanism such as a common label (e.g. changeset:feature-x). The
+integration workflow discovers all open pull requests sharing the label, builds a
+manifest from their head SHAs, and runs the same fast subset. A unified status is posted
+back to each pull request. None merge until the coordinated set is green. This removes
+informal merge ordering as a coordination mechanism.</p>
+</section>
+<section id="post-merge-full-suite">
+<h3>Post-Merge Full Suite<a class="headerlink" href="#post-merge-full-suite" title="Link to this heading">#</a></h3>
+<p>After merges we run a deeper suite. Some teams trigger on every push to main; others run
+on a schedule (hourly seems to be a common practice). Per-merge runs localise failures
+but cost more; batched runs save resources but expand the search space when problems
+appear. When the suite fails, retaining the manifest lets you bisect between the last
+known-good tuple and the current manifest (using a scripted search across the changed
+SHAs if multiple components advanced). On success we append a record for the tuple with
+a manifest hash and timing data.</p>
+</section>
+<section id="manifests">
+<h3>Manifests<a class="headerlink" href="#manifests" title="Link to this heading">#</a></h3>
+<p>Manifests are minimal documents describing the composition. They allow reconstruction of
+the integrated system later.</p>
+<p>Single pull request example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pr</span><span class="p">:</span> <span class="mi">482</span>
+<span class="n">component_under_test</span><span class="p">:</span>
+  <span class="n">name</span><span class="p">:</span> <span class="n">docs</span><span class="o">-</span><span class="k">as</span><span class="o">-</span><span class="n">code</span>
+  <span class="n">repo</span><span class="p">:</span> <span class="n">eclipse</span><span class="o">-</span><span class="n">score</span><span class="o">/</span><span class="n">docs</span><span class="o">-</span><span class="k">as</span><span class="o">-</span><span class="n">code</span>
+  <span class="n">sha</span><span class="p">:</span> <span class="mi">6</span><span class="n">bc901f2</span>
+<span class="n">others</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">component</span><span class="o">-</span><span class="n">a</span>
+    <span class="n">repo</span><span class="p">:</span> <span class="n">eclipse</span><span class="o">-</span><span class="n">score</span><span class="o">/</span><span class="n">component</span><span class="o">-</span><span class="n">a</span>
+    <span class="n">ref</span><span class="p">:</span> <span class="mi">34985</span><span class="n">hf8</span> <span class="c1"># based on last known-good</span>
+  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">component</span><span class="o">-</span><span class="n">b</span>
+    <span class="n">repo</span><span class="p">:</span> <span class="n">eclipse</span><span class="o">-</span><span class="n">score</span><span class="o">/</span><span class="n">component</span><span class="o">-</span><span class="n">b</span>
+    <span class="n">ref</span><span class="p">:</span> <span class="n">a4fd56re</span> <span class="c1"># based on last known-good</span>
+<span class="n">subset</span><span class="p">:</span> <span class="n">pr_fast</span>
+<span class="n">timestamp</span><span class="p">:</span> <span class="mi">2025</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">13</span><span class="n">T12</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">03</span><span class="n">Z</span>
+</pre></div>
+</div>
+<p>Coordinated example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">components_under_test</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">users</span><span class="o">-</span><span class="n">service</span>
+    <span class="n">repo</span><span class="p">:</span> <span class="n">eclipse</span><span class="o">-</span><span class="n">score</span><span class="o">/</span><span class="n">users</span><span class="o">-</span><span class="n">service</span>
+    <span class="n">branch</span><span class="p">:</span> <span class="n">feature</span><span class="o">/</span><span class="n">new_email_index</span>
+    <span class="n">ref</span><span class="p">:</span> <span class="n">a57hrdfg</span>
+    <span class="n">pr</span><span class="p">:</span> <span class="mi">16</span>
+  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">auth</span><span class="o">-</span><span class="n">service</span>
+    <span class="n">repo</span><span class="p">:</span> <span class="n">eclipse</span><span class="o">-</span><span class="n">score</span><span class="o">/</span><span class="n">auth</span><span class="o">-</span><span class="n">service</span>
+    <span class="n">branch</span><span class="p">:</span> <span class="n">feature</span><span class="o">/</span><span class="n">lenient</span><span class="o">-</span><span class="n">token</span><span class="o">-</span><span class="n">parser</span>
+    <span class="n">ref</span><span class="p">:</span> <span class="n">q928d46b75</span>
+    <span class="n">pr</span><span class="p">:</span> <span class="mi">150</span>
+<span class="n">others</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">billing</span><span class="o">-</span><span class="n">service</span>
+    <span class="n">repo</span><span class="p">:</span> <span class="n">eclipse</span><span class="o">-</span><span class="n">score</span><span class="o">/</span><span class="n">billing</span><span class="o">-</span><span class="n">service</span>
+    <span class="n">ref</span><span class="p">:</span> <span class="n">a4fd56re</span> <span class="c1"># based on last known-good</span>
+<span class="n">subset</span><span class="p">:</span> <span class="n">pr_fast</span>
+<span class="n">changeset</span><span class="p">:</span> <span class="n">feature</span><span class="o">-</span><span class="n">x</span>
+</pre></div>
+</div>
+<p>Large configuration belongs elsewhere; manifests should stay readable and diffable.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="example-github-actions-conceptual">
+<h2>Example: GitHub Actions (Conceptual)<a class="headerlink" href="#example-github-actions-conceptual" title="Link to this heading">#</a></h2>
+<p><em>Conceptual outline; not yet implemented here.</em></p>
+<p>Trigger from a component repository:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>name: integration-pr
+on: [pull_request]
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch to integration repo
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.INTEGRATION_TRIGGER_TOKEN }}
+          repository: eclipse-score/reference_integration
+          event-type: pr-integration
+          client-payload: &gt;-
+            {&quot;repo&quot;:&quot;${{ github.repository }}&quot;,&quot;pr&quot;:&quot;${{ github.event.pull_request.number }}&quot;,&quot;sha&quot;:&quot;${{ github.sha }}&quot;}
+</pre></div>
+</div>
+<p>Integration repository receiver (subset):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>on:
+  repository_dispatch:
+    types: [pr-integration]
+jobs:
+  pr-fast-subset:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Parse payload
+        run: echo &#39;${{ toJson(github.event.client_payload) }}&#39; &gt; payload.json
+
+      - name: Materialize composition
+        run: gen_pr_manifest.py last_known_good.yaml payload.json &gt; manifest.pr.yaml
+
+      - name: Render MODULE overrides
+        run: render_overrides.py manifest.pr.yaml &gt; MODULE.override.bzl
+
+      - name: Bazel test (subset)
+        run: bazel test //integration/subset:pr_fast --override_module_files=MODULE.override.bzl
+
+      - name: Store manifest &amp; results
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr-subset-${{ github.run_id }}
+          path: |
+            manifest.pr.yaml
+            bazel-testlogs/**/test.log
+</pre></div>
+</div>
+<p>Post-merge full suite:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>on:
+  schedule: [{cron: &quot;15 * * * *&quot;}]
+  repository_dispatch:
+    types: [component-merged]
+jobs:
+  full-suite:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate new last_known_good.yaml
+        run: update_last_known_good.py last_known_good.yaml &gt; last_known_good.yaml
+
+      - name: Bazel test (full)
+        run: bazel test //integration/full:all --test_tag_filters=-flaky
+
+      - name: Persist known-good tuple (on success)
+        if: success()
+        run: |
+          git add last_known_good.yaml
+          git commit -m &quot;update known good&quot;
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: full-${{ github.run_id }}
+          path: |
+            bazel-testlogs/**/test.log
+</pre></div>
+</div>
+<section id="recording-known-good-tuples">
+<h3>Recording Known-Good Tuples<a class="headerlink" href="#recording-known-good-tuples" title="Link to this heading">#</a></h3>
+<p>Known-good records are stored append-only.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="s2">&quot;2025-08-13T12:55:10Z&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;tuple&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;docs-as-code&quot;</span><span class="p">:</span> <span class="s2">&quot;6bc901f2&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;component-a&quot;</span><span class="p">:</span> <span class="s2">&quot;91c0d4e1&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;component-b&quot;</span><span class="p">:</span> <span class="s2">&quot;a44f0cd9&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;manifest_sha256&quot;</span><span class="p">:</span> <span class="s2">&quot;4c9b7f...&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;suite&quot;</span><span class="p">:</span> <span class="s2">&quot;full&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;duration_s&quot;</span><span class="p">:</span> <span class="mi">742</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Persisting enables reproduction (attach manifest to a defect), audit (what exactly
+passed before a release), gating (choose any known-good tuple), and comparison (diff
+manifests to isolate drift) without relying on (rather fragile) links to unique runs in
+your CI system.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="operating-it">
+<h2>Operating It<a class="headerlink" href="#operating-it" title="Link to this heading">#</a></h2>
+<p><strong>Curating the fast subset:</strong> Tests should fail quickly when public seams change. Keep
+the list explicit (e.g. //integration/subset:pr_fast). Remove redundant tests and
+quarantine flaky ones; review periodically (monthly or after significant interface
+churn) to preserve signal.</p>
+<p><strong>Handling failures:</strong> For a failing pull request subset: inspect manifest + log;
+reproduce locally with a script consuming the manifest. For a failing coordinated set:
+treat all related pull requests as atomic. For a failing post-merge full suite: bisect
+between the last known-good tuple and current manifest (script permutations if multiple
+repositories changed) to narrow cause. Distinguish real regressions from test fragility.</p>
+<p><strong>Trade-offs and choices:</strong> Manifests + SHAs avoid tag noise and keep validation close
+to heads. Two tiers (subset + full) offer a clear mental model; add more only with
+evidence. A central orchestration repository centralises caching, secrets, and audit
+history.</p>
+<p><strong>Practical notes:</strong> Cache builds to stabilise subset runtime. Hash manifests (e.g.
+SHA-256) for concise references. Expose an endpoint or badge showing the latest known
+good. Generate overrides; do not hand-edit ephemeral files. Optionally lint the subset
+target for allowed directories.</p>
+<p><strong>Avoiding pitfalls:</strong> Diff-based dynamic test selection often misses schema or contract
+drift. Ad-hoc manual edits to integration config reduce reproducibility. Merge ordering
+as coordination defers detection to the last merge.</p>
+<p><strong>Signs it is working:</strong> Interface breakage is caught pre-merge. Coordinated change sets
+show unified status. Multi-repository regressions are localised rapidly using stored
+manifests.</p>
+</section>
+<hr class="docutils" />
+<section id="releases-and-bazel-registry">
+<h2>Releases and Bazel Registry<a class="headerlink" href="#releases-and-bazel-registry" title="Link to this heading">#</a></h2>
+<p>Bazel modules should be released only once they are verified, which in this setup is
+equivalent to being included in the known-good store. This does not imply that all
+verified versions need to end up in a release. That’s still up to the module
+maintainers.</p>
+<p>However in some cases pre-releases are even mandatory: when two modules are verified
+together (multi repo PR) and one depends on the other, the PR cannot be merged without
+internally releasing the dependent module, and setting the appropriate dependency in the
+other.</p>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>By expressing the integrated system as explicit manifests, curating a fast integration
+subset for pull requests, and running a deeper post-merge suite, you move discovery of
+cross-repository breakage earlier while keeping costs predictable. Each successful run
+leaves a reproducible record, making release selection and debugging straightforward.
+The approach lets a distributed codebase behave operationally like a single one.</p>
+<p><em>Further reading:</em> Continuous Integration (Fowler), Continuous Delivery (Humble &amp;
+Farley), trunk-based development resources.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="DR-001-infra.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">DR-001-Infra: Integration Strategy for External Development Tools</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="DR-003-infra.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">DR-003-Infra: Devcontainer Strategy for S-CORE</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#executive-summary">Executive Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-approach">Proposed Approach</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#typical-workflow">Typical workflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#benefits">Benefits</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-where-problems-usually-appear">Motivation / Where Problems Usually Appear</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-concepts">Core Concepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-workflows">Integration Workflows</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-overview">Visual Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-pull-request">Single Pull Request</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coordinated-multi-repository-subset">Coordinated Multi-Repository Subset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#post-merge-full-suite">Post-Merge Full Suite</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manifests">Manifests</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-github-actions-conceptual">Example: GitHub Actions (Conceptual)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recording-known-good-tuples">Recording Known-Good Tuples</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operating-it">Operating It</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#releases-and-bazel-registry">Releases and Bazel Registry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/design_decisions/DR-002-infra.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
