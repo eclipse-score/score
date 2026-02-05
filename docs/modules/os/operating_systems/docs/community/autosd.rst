@@ -113,7 +113,7 @@ If using QEMU, you can run the image using the following command:
 Toolchain
 ^^^^^^^^^
 
-Refer to the `upstream documentation <https://github.com/eclipse-score/inc_os_autosd/tree/main/toolchain>`_ for detailed instructions.
+Refer to the `upstream toolchiain repository <https://github.com/eclipse-score/inc_os_autosd/tree/main/toolchain>`_ for detailed instructions.
 
 A Bazel toolchain defintion is provided for users to build their Bazel modules and components with AutoSD's tooling (compilers, libraries, etc).
 
@@ -144,7 +144,7 @@ Sample usage (MODULE.bazel file):
 Mixed Critical Orchestration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Refer to the `upstream documentation <https://sigs.centos.org/automotive/features-and-concepts/con_mixed-criticality/>`_ for detailed information.
+Refer to the `upstream CentOS automotive documentation <https://sigs.centos.org/automotive/features-and-concepts/con_mixed-criticality/>`_ for detailed information.
 
 Mixed Critical Orchestration, aka MCO, can be achieved with the following components:
 
