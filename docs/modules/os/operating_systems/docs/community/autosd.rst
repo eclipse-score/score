@@ -12,16 +12,15 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. comp:: Red Hat AutoSD
+.. comp:: AutoSD
    :id: comp__os_autosd
    :security: YES
    :safety: QM
    :status: valid
    :implements: aou_req__platform__integration_assistance, aou_req__platform__os_integration_manual, aou_req__platform__bug_interface
 
-
-Red Hat AutoSD
-##############
+AutoSD
+######
 
 AutoSD is the upstream binary distribution that serves as the public, in-development preview and functional precursor
 of the Red Hat In-Vehicle Operating System (OS).
@@ -60,7 +59,7 @@ The following fulfills :need:`aou_req__platform__os_integration_manual`
 Build Instructions
 ^^^^^^^^^^^^^^^^^^
 
-Building an AutoSD image can be done by using "aib": https://gitlab.com/CentOS/automotive/src/automotive-image-builder
+Building an AutoSD image can be done by using `aib <https://gitlab.com/CentOS/automotive/src/automotive-image-builder>`_.
 
 Sample usage:
 
@@ -114,7 +113,7 @@ If using QEMU, you can run the image using the following command:
 Toolchain
 ^^^^^^^^^
 
-Upstream documentation: https://github.com/eclipse-score/inc_os_autosd/tree/main/toolchain
+Refer to the `upstream documentation <https://github.com/eclipse-score/inc_os_autosd/tree/main/toolchain>`_ for detailed instructions.
 
 A Bazel toolchain defintion is provided for users to build their Bazel modules and components with AutoSD's tooling (compilers, libraries, etc).
 
@@ -142,12 +141,10 @@ Sample usage (MODULE.bazel file):
 
 **NOTE:** AutoSD's tooling does not support cross compilation.
 
-
-
 Mixed Critical Orchestration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Upstream documentation: https://sigs.centos.org/automotive/features-and-concepts/con_mixed-criticality/
+Refer to the `upstream documentation <https://sigs.centos.org/automotive/features-and-concepts/con_mixed-criticality/>`_ for detailed information.
 
 Mixed Critical Orchestration, aka MCO, can be achieved with the following components:
 

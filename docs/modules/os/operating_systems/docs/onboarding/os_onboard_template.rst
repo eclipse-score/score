@@ -15,12 +15,24 @@
 OS Name
 =======
 
-.. comp:: os_name
-   :id: comp__os_osname
-   :security: YES
+.. document:: [OS Name]
+   :id: doc__os_onboarding
+   :status: draft
    :safety: QM
-   :status: valid
-   :implements: aou_req__platform__integration_assistance, aou_req__platform__os_integration_manual, aou_req__platform__bug_interface
+   :security: YES
+   :realizes: wp__feature_arch
+   :tags: template
+
+The following component needs to be defined at the top of the page (modify accordingly):
+
+.. code-block:: rst
+
+   .. comp:: [OS Name]
+     :id: comp__os_[os_name]
+     :security: [YES|NO]
+     :safety: [QM|ASIL_B]
+     :status: valid
+     :implements: aou_req__platform__integration_assistance, aou_req__platform__os_integration_manual, aou_req__platform__bug_interface
 
 Short overview of the platform and why it is relevant for S-CORE.
 Keep this to 3-6 lines. Mention what the OS is and the intended usage context.

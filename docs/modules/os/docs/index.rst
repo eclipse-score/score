@@ -21,7 +21,7 @@
 
 .. mod_view_sta:: OS
    :id: mod_view_sta__os__os
-   :includes: comp__os_libc, comp__os_message_passing
+   :includes: comp__os_libc, comp__os_message_passing, comp__os_autosd
    :belongs_to: mod__os
 
    .. needarch::
