@@ -557,7 +557,7 @@
 <ul class="simple">
 <li><p><strong>Date:</strong> 2026-02-04</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-3e00a0b5">
+<div class="need_container docutils container" id="SNCB-9e00059b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__dependency_docs_as_code">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -613,11 +613,19 @@ Any change in the process requirements (in <code class="docutils literal notrans
 This tight coupling makes maintenance and evolution of both repositories difficult and error-prone.</p>
 <figure class="align-center" id="id1">
 <p class="plantuml">
-<object data="../_images/plantuml-7efcad8b759ea85bd42bf2ce23f1e775706aac26.svg" type="image/svg+xml" style="width:567px;height:189px;background:#FFFFFF;"></object></p>
+<object data="../_images/plantuml-bc33e474c3c3f0ebc89f82566bf1cdf2e4b1b582.svg" type="image/svg+xml" style="width:567px;height:263px;background:#FFFFFF;"></object></p>
 <figcaption>
 <p><span class="caption-number">Fig. 24 </span><span class="caption-text">Cyclic dependency between process and docs-as-code repositories</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p>The artifacts within those repos are:</p>
+<ul class="simple">
+<li><p>“examples” are exemplary instances of the metamodel like <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/guidance/architecture_modeling_example.html#feat__example_feature">feat__example_feature</a>.</p></li>
+<li><p>“templates” (more precisely <a class="reference external" href="https://eclipse-score.github.io/process_description/main/folder_templates/index.html">folder templates</a>)
+are instances which can be copied when creating new modules
+like <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/folder_templates/features/feature_name/architecture/index.html#doc__feature_name_architecture">doc__feature_name_architecture</a>.</p></li>
+<li><p>“metamodel.yaml” is <a class="reference external" href="https://github.com/eclipse-score/docs-as-code/blob/v2.3.3/src/extensions/score_metamodel/metamodel.yaml">this file</a>.</p></li>
+</ul>
 <p>This means to roll out a change to the process looks like this:</p>
 <ol class="arabic simple">
 <li><p>Change <code class="docutils literal notranslate"><span class="pre">process_description</span></code> but <em>not</em> the examples and folder templates.</p></li>
@@ -668,7 +676,7 @@ Continue handling build errors manually when they occur.</p>
 This eliminates the cyclic dependency by having a single source of truth for both the meta model and the Sphinx-Needs objects/examples, but process is repo is potentially large and complex and is implementation specific.</p>
 <figure class="align-center" id="id2">
 <p class="plantuml">
-<object data="../_images/plantuml-75ae211d8c55462092e661a39e36b6ab65b1c863.svg" type="image/svg+xml" style="width:204px;height:219px;background:#FFFFFF;"></object></p>
+<object data="../_images/plantuml-f90748bcc1a8c62ad55730384339917cfa2c99cd.svg" type="image/svg+xml" style="width:364px;height:219px;background:#FFFFFF;"></object></p>
 <figcaption>
 <p><span class="caption-number">Fig. 25 </span><span class="caption-text">Merge both repositories into one</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
@@ -682,14 +690,14 @@ Dependencies across all S-CORE repos are necessary.</p>
 </section>
 <section id="option-2-move-meta-model-definition-to-process-repository">
 <h3>Option 2: Move meta model definition to process repository<a class="headerlink" href="#option-2-move-meta-model-definition-to-process-repository" title="Link to this heading">#</a></h3>
-<p>Define and maintain the <a class="reference external" href="https://github.com/eclipse-score/docs-as-code/blob/v2.3.3/src/extensions/score_metamodel/metamodel.yaml">metamodel.yaml</a>
+<p>Define and maintain the <code class="docutils literal notranslate"><span class="pre">metamodel.yaml</span></code>
 solely in the process repository.
 The docs-as-code repository would then only provide the infrastructure for the meta model, not define or modify it.
 The process repository would be the authoritative source for the meta model.
 Also tests (scripts) and examples would be maintained there.</p>
 <figure class="align-center" id="id3">
 <p class="plantuml">
-<object data="../_images/plantuml-60cd8595187fa1118e22d1693c4392bbe195a29b.svg" type="image/svg+xml" style="width:517px;height:238px;background:#FFFFFF;"></object></p>
+<object data="../_images/plantuml-49215671c658adc448b1307ea6ff3546e067a861.svg" type="image/svg+xml" style="width:517px;height:312px;background:#FFFFFF;"></object></p>
 <figcaption>
 <p><span class="caption-number">Fig. 26 </span><span class="caption-text">Move meta model definition to process repository</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
@@ -707,16 +715,16 @@ While the problem is not solved completely, it should fix most of the cases.</p>
 <p>Maintainability 💚: Good because of clear ownership.</p>
 <p>Clear Ownership 💚: Cleanly separated.</p>
 </section>
-<section id="option-3-move-examples-sphinx-needs-objects-to-a-third-repository">
-<h3>Option 3: Move examples (Sphinx-Needs objects) to a third repository<a class="headerlink" href="#option-3-move-examples-sphinx-needs-objects-to-a-third-repository" title="Link to this heading">#</a></h3>
-<p>Extract all example Sphinx-Needs objects (currently imported into docs-as-code) into <code class="docutils literal notranslate"><span class="pre">module_template</span></code>.
-The process repository is independent and docs-as-code repositories would depend on this third repository for examples, breaking the cyclic dependency.
-But this adds complexity with an additional repository to maintain and still contains cyclic dependencies between all three repositories.</p>
+<section id="option-3-move-examples-to-docs-as-code-and-templates-to-module-template">
+<h3>Option 3: Move examples to docs_as_code and templates to module_template<a class="headerlink" href="#option-3-move-examples-to-docs-as-code-and-templates-to-module-template" title="Link to this heading">#</a></h3>
+<p>Move all examples from <code class="docutils literal notranslate"><span class="pre">process_description</span></code> into <code class="docutils literal notranslate"><span class="pre">docs_as_code</span></code> repo
+and all templates from <code class="docutils literal notranslate"><span class="pre">process_description</span></code> into <code class="docutils literal notranslate"><span class="pre">module_template</span></code> repo.
+No relevant cyclic dependency remains.</p>
 <figure class="align-center" id="id4">
 <p class="plantuml">
-<object data="../_images/plantuml-02e123d82364f1f95dba189c34f9566a83c307ec.svg" type="image/svg+xml" style="width:885px;height:178px;background:#FFFFFF;"></object></p>
+<object data="../_images/plantuml-27a4ae28abbd3c51050a3855050af3e706429658.svg" type="image/svg+xml" style="width:885px;height:252px;background:#FFFFFF;"></object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Move examples (Sphinx-Needs objects) to a third repository</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Move examples to docs_as_code and templates to module_template</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Effort 💚: Low.</p>
@@ -732,7 +740,7 @@ Both the process repository and docs-as-code repository would depend on this met
 This breaks the cycle by introducing a clear hierarchical dependency structure.</p>
 <figure class="align-center" id="id5">
 <p class="plantuml">
-<object data="../_images/plantuml-9a061c289ef1215a33b88a5ec0c81b8c59dd6c22.svg" type="image/svg+xml" style="width:837px;height:203px;background:#FFFFFF;"></object></p>
+<object data="../_images/plantuml-13f24b60eb8bb23e7deefb462c3949f3fcd321a5.svg" type="image/svg+xml" style="width:861px;height:312px;background:#FFFFFF;"></object></p>
 <figcaption>
 <p><span class="caption-number">Fig. 28 </span><span class="caption-text">Move meta model and examples into a separate repository</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
@@ -743,14 +751,14 @@ This breaks the cycle by introducing a clear hierarchical dependency structure.<
 <p>Maintainability 😡: More repos to maintain.</p>
 <p>Clear Ownership 💚: Clearly, the Process community takes authority over <code class="docutils literal notranslate"><span class="pre">metamodel.yaml</span></code>.</p>
 </section>
-<section id="option-5-move-examples-to-docs-as-code-repository">
-<h3>Option 5: Move examples to docs-as-code repository<a class="headerlink" href="#option-5-move-examples-to-docs-as-code-repository" title="Link to this heading">#</a></h3>
+<section id="option-5-move-examples-and-templates-to-docs-as-code-repository">
+<h3>Option 5: Move examples and templates to docs-as-code repository<a class="headerlink" href="#option-5-move-examples-and-templates-to-docs-as-code-repository" title="Link to this heading">#</a></h3>
 <p>Move all example Sphinx-Needs objects from the <code class="docutils literal notranslate"><span class="pre">process_description</span></code> repository to the <code class="docutils literal notranslate"><span class="pre">docs_as_code</span></code> repository.
 The process repository would define requirements for the meta model, while docs-as-code would provide infrastructure, the meta model and host the examples that demonstrate the meta model.
 This breaks the cycle by removing the import dependency from docs-as-code back to the process repository.</p>
 <figure class="align-center" id="id6">
 <p class="plantuml">
-<object data="../_images/plantuml-4cab041bac04df52d2d20dcc59eb81198806dc65.svg" type="image/svg+xml" style="width:560px;height:252px;background:#FFFFFF;"></object></p>
+<object data="../_images/plantuml-a78d68900e8ec68df5c0b6b7621a785fe5b1b4ca.svg" type="image/svg+xml" style="width:721px;height:252px;background:#FFFFFF;"></object></p>
 <figcaption>
 <p><span class="caption-number">Fig. 29 </span><span class="caption-text">Move examples to docs-as-code repository</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
@@ -759,7 +767,7 @@ This breaks the cycle by removing the import dependency from docs-as-code back t
 <p>Independence 💚: Good because <code class="docutils literal notranslate"><span class="pre">process_description</span></code> just consumes.</p>
 <p>UX 💚: Fine.</p>
 <p>Maintainability 💚: Good because of clear ownership.</p>
-<p>Clear Ownership 😡: Process community wants control of examples but they are in the <code class="docutils literal notranslate"><span class="pre">docs_as_code</span></code> repo.</p>
+<p>Clear Ownership 😡: Process community wants control of the templates but they are in the <code class="docutils literal notranslate"><span class="pre">docs_as_code</span></code> repo.</p>
 </section>
 <section id="option-6-change-error-handling-from-warnings-as-errors-to-warnings-only">
 <h3>Option 6: Change error handling from warnings as errors to warnings only<a class="headerlink" href="#option-6-change-error-handling-from-warnings-as-errors-to-warnings-only" title="Link to this heading">#</a></h3>
@@ -902,9 +910,9 @@ We accept the maintainability tradeoff.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-0-no-change">Option 0: No change</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-1-merge-both-repositories-into-one">Option 1: Merge both repositories into one</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-2-move-meta-model-definition-to-process-repository">Option 2: Move meta model definition to process repository</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-3-move-examples-sphinx-needs-objects-to-a-third-repository">Option 3: Move examples (Sphinx-Needs objects) to a third repository</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-3-move-examples-to-docs-as-code-and-templates-to-module-template">Option 3: Move examples to docs_as_code and templates to module_template</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-4-move-meta-model-and-examples-into-a-separate-repository">Option 4: Move meta model and examples into a separate repository</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-5-move-examples-to-docs-as-code-repository">Option 5: Move examples to docs-as-code repository</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-5-move-examples-and-templates-to-docs-as-code-repository">Option 5: Move examples and templates to docs-as-code repository</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-6-change-error-handling-from-warnings-as-errors-to-warnings-only">Option 6: Change error handling from warnings as errors to warnings only</a></li>
 </ul>
 </li>
