@@ -106,6 +106,7 @@ Project structure and processes
       requirements/index
       modules/index
       contribute/index
+      score_technical_base/index
 
       Releases <score_releases/index.rst>
       Tools <score_tools/index.rst>
