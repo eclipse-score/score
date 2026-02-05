@@ -20,6 +20,9 @@
    :realizes: wp__platform_safety_plan, wp__safety_tailoring
    :tags: platform_management
 
+
+.. _score_platform_safety_plan:
+
 Safety management / Platform Safety Plan
 ----------------------------------------
 

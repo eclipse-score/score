@@ -92,7 +92,7 @@ Project structure and processes
       ^^^
       Read about our project and organization structure in the
       :ref:`Project Handbook <pmp>`.
-      And learn how we deal with :need:`doc__score_platform_safety_plan` or care about :need:`doc__verification_plan`.
+      And learn how we deal with :ref:`Platform Safety Plan <score_platform_safety_plan>` or care about :ref:`Software Verification Plan <software_verification_plan>`.
 
    .. grid-item-card::
 
