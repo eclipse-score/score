@@ -41,6 +41,7 @@ This tight coupling makes maintenance and evolution of both repositories difficu
    left to right direction
    database process_description {
       artifact examples
+      artifact templates
    }
    database docs_as_code {
       artifact metamodel.yaml as yaml
@@ -48,6 +49,14 @@ This tight coupling makes maintenance and evolution of both repositories difficu
 
    process_description --> docs_as_code : defines metamodel
    docs_as_code --> process_description : checks metamodel
+
+The artifacts within those repos are:
+
+* "examples" are exemplary instances of the metamodel like :need:`feat__example_feature`.
+* "templates" (more precisely `folder templates <https://eclipse-score.github.io/process_description/main/folder_templates/index.html>`_)
+  are instances which can be copied when creating new modules
+  like :need:`doc__feature_name_architecture`.
+* "metamodel.yaml" is `this file <https://github.com/eclipse-score/docs-as-code/blob/v2.3.3/src/extensions/score_metamodel/metamodel.yaml>`__.
 
 This means to roll out a change to the process looks like this:
 
@@ -113,6 +122,7 @@ This eliminates the cyclic dependency by having a single source of truth for bot
    database "process_description\n+ docs_as_code" {
       artifact metamodel.yaml as yaml
       artifact examples
+      artifact templates
    }
 
 Effort 😡😡: Disruptive effort to merge repos.
@@ -128,7 +138,7 @@ Maintainability 💚: Good because everything is in one place.
 Option 2: Move meta model definition to process repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Define and maintain the `metamodel.yaml <https://github.com/eclipse-score/docs-as-code/blob/v2.3.3/src/extensions/score_metamodel/metamodel.yaml>`_
+Define and maintain the ``metamodel.yaml``
 solely in the process repository.
 The docs-as-code repository would then only provide the infrastructure for the meta model, not define or modify it.
 The process repository would be the authoritative source for the meta model.
@@ -141,6 +151,7 @@ Also tests (scripts) and examples would be maintained there.
    left to right direction
    database process_description {
       artifact examples
+      artifact templates
       artifact metamodel.yaml as yaml
    }
    database docs_as_code {
@@ -148,7 +159,7 @@ Also tests (scripts) and examples would be maintained there.
 
    process_description --> docs_as_code : defines metamodel
    yaml --> docs_as_code : as input
-   docs_as_code --> examples : checks metamodel
+   docs_as_code --> process_description : checks metamodel
 
 Implication:
 If the docs-as-code module would select the metamodel yaml version on its own,
@@ -169,25 +180,26 @@ Maintainability 💚: Good because of clear ownership.
 
 Clear Ownership 💚: Cleanly separated.
 
-Option 3: Move examples (Sphinx-Needs objects) to a third repository
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Option 3: Move examples to docs_as_code and templates to module_template
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Extract all example Sphinx-Needs objects (currently imported into docs-as-code) into ``module_template``.
-The process repository is independent and docs-as-code repositories would depend on this third repository for examples, breaking the cyclic dependency.
-But this adds complexity with an additional repository to maintain and still contains cyclic dependencies between all three repositories.
+Move all examples from ``process_description`` into ``docs_as_code`` repo
+and all templates from ``process_description`` into ``module_template`` repo.
+No relevant cyclic dependency remains.
 
 .. uml::
    :align: center
-   :caption: Move examples (Sphinx-Needs objects) to a third repository
+   :caption: Move examples to docs_as_code and templates to module_template
 
    left to right direction
    database process_description {
    }
    database docs_as_code {
       artifact metamodel.yaml as yaml
+      artifact examples
    }
    database module_template {
-      artifact examples
+      artifact templates
    }
 
    process_description --> docs_as_code : defines metamodel
@@ -222,10 +234,11 @@ This breaks the cycle by introducing a clear hierarchical dependency structure.
    database module_template {
       artifact metamodel.yaml as yaml
       artifact examples
+      artifact templates
    }
 
    process_description --> docs_as_code : defines metamodel
-   docs_as_code --> examples : checks metamodel
+   docs_as_code --> module_template : checks metamodel
    yaml --> docs_as_code : as input
 
 Effort 😡: High effort for the configurable ``metamodel.yaml``.
@@ -238,8 +251,9 @@ Maintainability 😡: More repos to maintain.
 
 Clear Ownership 💚: Clearly, the Process community takes authority over ``metamodel.yaml``.
 
-Option 5: Move examples to docs-as-code repository
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Option 5: Move examples and templates to docs-as-code repository
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Move all example Sphinx-Needs objects from the ``process_description`` repository to the ``docs_as_code`` repository.
 The process repository would define requirements for the meta model, while docs-as-code would provide infrastructure, the meta model and host the examples that demonstrate the meta model.
 This breaks the cycle by removing the import dependency from docs-as-code back to the process repository.
@@ -253,6 +267,7 @@ This breaks the cycle by removing the import dependency from docs-as-code back t
    }
    database docs_as_code {
       artifact examples
+      artifact templates
       artifact metamodel.yaml as yaml
    }
 
@@ -266,7 +281,7 @@ UX 💚: Fine.
 
 Maintainability 💚: Good because of clear ownership.
 
-Clear Ownership 😡: Process community wants control of examples but they are in the ``docs_as_code`` repo.
+Clear Ownership 😡: Process community wants control of the templates but they are in the ``docs_as_code`` repo.
 
 Option 6: Change error handling from warnings as errors to warnings only
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
