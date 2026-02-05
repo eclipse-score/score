@@ -98,7 +98,7 @@ Project structure and processes
 
       Technical Base
       ^^^
-      Understand the internal details of :ref:`Infrastructure <infrastructure_feature>`
+      Understand the internal details of the S-CORE :ref:`Infrastructure <infrastructure_feature>`
       or :ref:`Integration <integration_features>`.
 
 
