@@ -22,7 +22,7 @@ module(
 # Python version
 #
 ###############################################################################
-bazel_dep(name = "rules_python", version = "1.4.1")
+bazel_dep(name = "rules_python", version = "1.8.3")
 
 PYTHON_VERSION = "3.12"
 
@@ -72,17 +72,6 @@ bazel_dep(name = "rules_java", version = "8.15.1")
 # Score custom modules loading
 #
 ###############################################################################
-bazel_dep(name = "score_tooling", version = "1.0.4")
-bazel_dep(name = "score_docs_as_code", version = "2.3.3")
-bazel_dep(name = "score_process", version = "1.4.2")
-git_override(
-    module_name = "score_process",
-    commit = "43b3a13eae17f2e539fb8cca2beedb69717b2e12",
-    remote = "https://github.com/eclipse-score/process_description.git",
-)
-
-git_override(
-    module_name = "score_docs_as_code",
-    commit = "4080e2ca6810a711e71c890ec529012d0789c256",
-    remote = "https://github.com/eclipse-score/docs-as-code.git",
-)
+bazel_dep(name = "score_tooling", version = "1.1.0")
+bazel_dep(name = "score_docs_as_code", version = "3.0.0")
+bazel_dep(name = "score_process", version = "1.4.3")
