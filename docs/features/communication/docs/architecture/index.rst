@@ -58,7 +58,7 @@ This ensures a stable public API, independent of the underlying binding(s). At t
       :align: center
 
       {{ draw_feature(need(), needs) }}
-      mod_view_sta__tracing__tracing -[hidden]-> mod_view_sta__baselibs__baselibs
+      mod__tracing -[hidden]-> mod__baselibs
 
 In the following sections we will look on the different architectural elements of the communication framework in more
 detail.
