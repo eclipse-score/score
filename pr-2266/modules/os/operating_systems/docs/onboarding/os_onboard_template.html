@@ -581,15 +581,15 @@
                   
   <section id="os-name">
 <h1>OS Name<a class="headerlink" href="#os-name" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-83db2d47">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp table" id="comp__os_osname">
+<div class="need_container docutils container" id="SNCB-3920a502">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__os_onboarding">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">os_name</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">[OS Name]</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
-<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></span></div>
 <div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
 <div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
 </div>
@@ -600,8 +600,9 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
-<div class="line"><span><div class="line">implements: <span class="implements"><span><a class="reference internal" href="../../../../../requirements/platform_assumptions/index.html#aou_req__platform__integration_assistance" title="comp__os_osname">aou_req__platform__integration_assistance</a>, <a class="reference internal" href="../../../../../requirements/platform_assumptions/index.html#aou_req__platform__os_integration_manual" title="comp__os_osname">aou_req__platform__os_integration_manual</a>, <a class="reference internal" href="../../../../../requirements/platform_assumptions/index.html#aou_req__platform__bug_interface" title="comp__os_osname">aou_req__platform__bug_interface</a></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">template</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/architecture_workproducts.html#wp__feature_arch">wp__feature_arch</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -610,11 +611,11 @@
 <tr class="content row-odd"><td class="content" colspan="6"></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
-<div class="line"><span><span class="needs-id"><a class="reference internal" href="#comp__os_osname" title="comp__os_osname">comp__os_osname</a></span></span></div>
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__os_onboarding" title="doc__os_onboarding">doc__os_onboarding</a></span></span></div>
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
-<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component</span></span></span></div>
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Generic Document</span></span></span></div>
 </div>
 </td>
 <td class="footer_right" colspan="2"></td>
@@ -622,6 +623,15 @@
 </tbody>
 </table>
 </div>
+</div>
+<p>The following component needs to be defined at the top of the page (modify accordingly):</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">comp</span><span class="p">::</span> [OS Name]
+  <span class="nc">:id:</span> comp__os_[os_name]
+  <span class="nc">:security:</span> [YES|NO]
+  <span class="nc">:safety:</span> [QM|ASIL_B]
+  <span class="nc">:status:</span> valid
+  <span class="nc">:implements:</span> aou_req__platform__integration_assistance, aou_req__platform__os_integration_manual, aou_req__platform__bug_interface
+</pre></div>
 </div>
 <p>Short overview of the platform and why it is relevant for S-CORE.
 Keep this to 3-6 lines. Mention what the OS is and the intended usage context.</p>
@@ -732,7 +742,7 @@ Keep this to 3-6 lines. Mention what the OS is and the intended usage context.</
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/modules/os/operating_systems/docs/onboarding/os_onboard_template.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/modules/os/operating_systems/docs/onboarding/os_onboard_template.rst">
       <i class="fa-solid fa-pencil"></i>
       
       

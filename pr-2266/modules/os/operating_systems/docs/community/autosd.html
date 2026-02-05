@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Red Hat AutoSD &#8212; S-CORE  documentation</title>
+    <title>AutoSD &#8212; S-CORE  documentation</title>
   
   
   
@@ -500,7 +500,7 @@
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">Operating Systems</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../onboarding/index.html">Onboarding and Promotion</a></li>
 <li class="toctree-l3 current active has-children"><a class="reference internal" href="index.html">Community Level</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l4 current active"><a class="current reference internal" href="#">Red Hat AutoSD</a></li>
+<li class="toctree-l4 current active"><a class="current reference internal" href="#">AutoSD</a></li>
 </ul>
 </details></li>
 <li class="toctree-l3"><a class="reference internal" href="../functional/index.html">Functional Level</a></li>
@@ -562,7 +562,7 @@
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">Community Level</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Red Hat AutoSD</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">AutoSD</span></li>
   </ul>
 </nav>
 </div>
@@ -579,11 +579,11 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-ed17e248">
+  <div class="need_container docutils container" id="SNCB-f3e797b1">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp table" id="comp__os_autosd">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">Red Hat AutoSD</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">AutoSD</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -600,6 +600,7 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span></span></span></div>
 <div class="line"><span><div class="line">implements: <span class="implements"><span><a class="reference internal" href="../../../../../requirements/platform_assumptions/index.html#aou_req__platform__integration_assistance" title="comp__os_autosd">aou_req__platform__integration_assistance</a>, <a class="reference internal" href="../../../../../requirements/platform_assumptions/index.html#aou_req__platform__os_integration_manual" title="comp__os_autosd">aou_req__platform__os_integration_manual</a>, <a class="reference internal" href="../../../../../requirements/platform_assumptions/index.html#aou_req__platform__bug_interface" title="comp__os_autosd">aou_req__platform__bug_interface</a></span></span></div>
+<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../docs/index.html#mod_view_sta__os__os" title="comp__os_autosd">mod_view_sta__os__os</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -621,8 +622,8 @@
 </table>
 </div>
 </div>
-<section id="red-hat-autosd">
-<h1>Red Hat AutoSD<a class="headerlink" href="#red-hat-autosd" title="Link to this heading">#</a></h1>
+<section id="autosd">
+<h1>AutoSD<a class="headerlink" href="#autosd" title="Link to this heading">#</a></h1>
 <p>AutoSD is the upstream binary distribution that serves as the public, in-development preview and functional precursor
 of the Red Hat In-Vehicle Operating System (OS).</p>
 <p>AutoSD is downstream of CentOS Stream, so it retains most of the CentOS Stream code with a few divergences,
@@ -658,7 +659,7 @@ such as an optimized automotive-specific kernel rather than CentOS Stream’s ke
 <p>The following fulfills <a class="reference internal" href="../../../../../requirements/platform_assumptions/index.html#aou_req__platform__os_integration_manual" title="aou_req__platform__os_integration_manual"><em class="xref need">integration manual (aou_req__platform__os_integration_manual)</em></a></p>
 <section id="build-instructions">
 <h3>Build Instructions<a class="headerlink" href="#build-instructions" title="Link to this heading">#</a></h3>
-<p>Building an AutoSD image can be done by using “aib”: <a class="gitlab reference external" href="https://gitlab.com/CentOS/automotive/src/automotive-image-builder">CentOS/automotive/src/automotive-image-builder</a></p>
+<p>Building an AutoSD image can be done by using <a class="reference external" href="https://gitlab.com/CentOS/automotive/src/automotive-image-builder">aib</a>.</p>
 <p>Sample usage:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">OCI_IMAGE</span><span class="o">=</span>localhost/score:latest
 <span class="nb">export</span><span class="w"> </span><span class="nv">AIB_DISTRO</span><span class="o">=</span>autosd10-sig
@@ -703,7 +704,7 @@ sudo<span class="w"> </span>-E<span class="w"> </span>./auto-image-builder.sh<sp
 </section>
 <section id="toolchain">
 <h3>Toolchain<a class="headerlink" href="#toolchain" title="Link to this heading">#</a></h3>
-<p>Upstream documentation: <a class="github reference external" href="https://github.com/eclipse-score/inc_os_autosd/tree/main/toolchain">eclipse-score/inc_os_autosd</a></p>
+<p>Refer to the <a class="reference external" href="https://github.com/eclipse-score/inc_os_autosd/tree/main/toolchain">upstream toolchiain repository</a> for detailed instructions.</p>
 <p>A Bazel toolchain defintion is provided for users to build their Bazel modules and components with AutoSD’s tooling (compilers, libraries, etc).</p>
 <p>Sample usage (MODULE.bazel file):</p>
 <div class="highlight-starlark notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use local path during development, or git_override for published versions</span>
@@ -729,7 +730,7 @@ sudo<span class="w"> </span>-E<span class="w"> </span>./auto-image-builder.sh<sp
 </section>
 <section id="mixed-critical-orchestration">
 <h3>Mixed Critical Orchestration<a class="headerlink" href="#mixed-critical-orchestration" title="Link to this heading">#</a></h3>
-<p>Upstream documentation: <a class="reference external" href="https://sigs.centos.org/automotive/features-and-concepts/con_mixed-criticality/">https://sigs.centos.org/automotive/features-and-concepts/con_mixed-criticality/</a></p>
+<p>Refer to the <a class="reference external" href="https://sigs.centos.org/automotive/features-and-concepts/con_mixed-criticality/">upstream CentOS automotive documentation</a> for detailed information.</p>
 <p>Mixed Critical Orchestration, aka MCO, can be achieved with the following components:</p>
 <ul class="simple">
 <li><p>Systemd: the init system that is responsible for workload orchestration</p></li>
@@ -828,7 +829,7 @@ sudo<span class="w"> </span>-E<span class="w"> </span>./auto-image-builder.sh<sp
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/modules/os/operating_systems/docs/community/autosd.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/modules/os/operating_systems/docs/community/autosd.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
