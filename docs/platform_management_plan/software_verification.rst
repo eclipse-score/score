@@ -381,6 +381,95 @@ The recommendations according to the :need:`gd_guidl__verification_guide` for pr
 cases is followed. Any pre-existing test case (e.g. from OSS components) is reviewed and adopted
 to follow the :need:`gd_guidl__verification_specification` and :need:`gd_req__verification_link_tests`.
 
+Test implementation best practices
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To achieve the **Maintainability** objective defined in this plan, contributors should follow these best practices
+when writing tests. Consistent test implementation across the codebase improves readability, simplifies maintenance,
+and helps existing test suites benefit from established patterns. These guidelines are recommendations and can be
+deviated from when there is a good reason, such as improved readability or reduced complexity for a specific case.
+
+**General Best Practices**
+
+The following practices apply to all test implementations regardless of the programming language:
+
+- Use descriptive test names following the "Given, When, Then" pattern
+  (see `GivenWhenThen <https://martinfowler.com/bliki/GivenWhenThen.html>`_)
+- One test file may contain all tests for a single unit as long as readability is maintained
+- When splitting tests into multiple files, split based on features/functionality of the unit under test
+- Have one Bazel test target per production code target to optimize build times
+- If the specific value of a constant is relevant to the test, define it within the test itself
+- If the value is not relevant (just needs to be valid), use a global constant or fixture member
+
+**C++ / GoogleTest Best Practices**
+
+Test names should use PascalCase style with the following naming conventions:
+
+- A ``TestSuiteName`` without a fixture should have the suffix ``Test``
+- A ``TestSuiteName`` with a fixture should have the suffix ``Fixture``
+- Tests containing ``EXPECT_DEATH`` should always have ``DeathTest`` at the end of ``TestSuiteName``
+  (see `Death Tests and Threads <https://github.com/google/googletest/blob/main/docs/advanced.md#death-tests-and-threads>`_)
+
+Example naming:
+
+.. code-block:: cpp
+
+   TEST(RuntimeWithInvalidTracingRuntimeTest, WhenCallingTraceThenAnErrorIsReturned)
+   TEST(SkeletonFieldPrepareOfferTest, WhenCallingPrepareOfferBeforeCallingUpdateThenAnErrorIsReturned)
+
+*EXPECT_CALL vs ON_CALL:* For C++ tests using GoogleMock
+(see `Setting Expectations <https://google.github.io/googletest/gmock_cook_book.html#setting-expectations>`_):
+
+- Use ``ON_CALL`` to set default actions that should occur unless specified otherwise. These typically
+  belong in the test fixture setup.
+- Use ``EXPECT_CALL`` when testing that a specific function is called on a mock object as the result
+  of the behavior being tested, or when injecting behavior that directly impacts the function under test.
+
+*Test Fixtures:*
+
+- Place fixtures immediately before the first test that uses them
+- Keep fixtures small; large fixtures may indicate poor architectural design of the unit under test
+- Avoid inheriting from other fixtures
+- Consider the builder pattern for configurable fixture setup (returning ``*this`` to allow method chaining)
+  (see `ServiceDiscoveryClientFixture <https://github.com/eclipse-score/communication/blob/main/score/mw/com/impl/bindings/lola/service_discovery/test/service_discovery_client_test_fixtures.h>`_
+  for an example)
+- Avoid global constant objects that use globals in their implementation to prevent
+  `Static Initialization Order Fiasco <https://en.cppreference.com/w/cpp/language/siof.html>`_
+
+*Testing Interfaces with unique_ptr:* When interfaces require ownership transfer via ``unique_ptr``:
+
+- Set expectations on the mock object before injecting it (GTest evaluates mocks on destruction)
+- Alternatively, use a mock facade pattern: a class inheriting from the interface that forwards calls
+  to a test-owned mock object (see `InotifyInstanceFacade <https://github.com/eclipse-score/baselibs/blob/main/score/os/utils/inotify/inotify_instance_facade.h>`_
+  for an example)
+- For complex assertions, consider using
+  `custom matchers <https://google.github.io/googletest/reference/matchers.html#defining-matchers>`_
+
+**Rust Best Practices**
+
+Test names should use snake_case style following Rust conventions:
+
+- Use the ``#[test]`` attribute for unit tests
+- Place unit tests in a ``tests`` submodule within the same file using ``#[cfg(test)]``
+- Use descriptive names: ``test_<function>_<scenario>_<expected_result>``
+
+Example naming:
+
+.. code-block:: rust
+
+   #[test]
+   fn test_parse_config_with_invalid_input_returns_error() { ... }
+
+   #[test]
+   fn test_connection_when_timeout_exceeded_then_fails() { ... }
+
+*Test Organization:*
+
+- Use ``#[cfg(test)]`` module for unit tests to keep them close to the implementation
+- Place integration tests in the ``tests/`` directory
+- Use ``#[should_panic]`` for tests that verify panic behavior
+- Leverage ``Result<(), Error>`` return types for tests that may fail with errors
+
 Test execution and result analysis
 ----------------------------------
 
