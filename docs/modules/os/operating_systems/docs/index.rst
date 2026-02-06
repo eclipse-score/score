@@ -43,7 +43,7 @@ Operating Systems are categorized into the following **levels**:
 
 The concrete level requirements are defined in :ref:`platform_assumptions`.
 
-Roles and responsibilities
+Roles and Responsibilities
 --------------------------
 
 Platform integrations follow the process requirements defined in:
