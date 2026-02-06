@@ -12,27 +12,11 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. mod:: OS
-   :id: mod__os
-   :status: valid
-   :safety: ASIL_B
-   :security: YES
-   :includes: comp__os_libc, comp__os_message_passing
+.. _comp_doc_os_functional:
 
-.. mod_view_sta:: OS
-   :id: mod_view_sta__os__os
-   :includes: comp__os_libc, comp__os_message_passing, comp__os_autosd
-   :belongs_to: mod__os
+Functional Level
+################
 
-   .. needarch::
-      :scale: 50
-      :align: center
+These are the functional-supported Operating Systems for Eclipse S-CORE.
 
-      {{ draw_module(need(), needs) }}
-
-Module Documents
-================
-
-.. toctree::
-   :maxdepth: 2
-   :titlesonly:
+See see :ref:`platform_assumptions` for the exact requirements for each level (Tier).

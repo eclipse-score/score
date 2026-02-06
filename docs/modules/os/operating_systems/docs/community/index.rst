@@ -12,27 +12,16 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. mod:: OS
-   :id: mod__os
-   :status: valid
-   :safety: ASIL_B
-   :security: YES
-   :includes: comp__os_libc, comp__os_message_passing
+.. _comp_doc_os_community:
 
-.. mod_view_sta:: OS
-   :id: mod_view_sta__os__os
-   :includes: comp__os_libc, comp__os_message_passing, comp__os_autosd
-   :belongs_to: mod__os
-
-   .. needarch::
-      :scale: 50
-      :align: center
-
-      {{ draw_module(need(), needs) }}
-
-Module Documents
-================
+Community Level
+###############
 
 .. toctree::
-   :maxdepth: 2
    :titlesonly:
+
+   autosd.rst
+
+These are the community-supported Operating Systems for Eclipse S-CORE.
+
+See see :ref:`platform_assumptions` for the exact requirements for each level (Tier).
