@@ -378,6 +378,75 @@ The recommendations according to the :need:`gd_guidl__verification_guide` for pr
 cases is followed. Any pre-existing test case (e.g. from OSS components) is reviewed and adopted
 to follow the :need:`gd_guidl__verification_specification` and :need:`gd_req__verification_link_tests`.
 
+Test implementation best practices
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The following best practices provide guidance for writing high-quality, maintainable tests. These guidelines
+are recommendations and can be deviated from when there is a good reason, such as improved readability or
+reduced complexity for a specific case.
+
+**Test Naming**
+
+Test names should be descriptive and use PascalCase style. The naming conventions are:
+
+- A ``TestSuiteName`` without a fixture should have the suffix ``Test``
+- A ``TestSuiteName`` with a fixture should have the suffix ``Fixture``
+- Tests containing ``EXPECT_DEATH`` should always have ``DeathTest`` at the end of ``TestSuiteName``
+  (see `Death Tests and Threads <https://github.com/google/googletest/blob/main/docs/advanced.md#death-tests-and-threads>`_)
+
+Example naming following "Given, When, Then" pattern
+(see `GivenWhenThen <https://martinfowler.com/bliki/GivenWhenThen.html>`_):
+
+.. code-block:: cpp
+
+   TEST(RuntimeWithInvalidTracingRuntimeTest, WhenCallingTraceThenAnErrorIsReturned)
+   TEST(SkeletonFieldPrepareOfferTest, WhenCallingPrepareOfferBeforeCallingUpdateThenAnErrorIsReturned)
+
+**EXPECT_CALL vs ON_CALL (C++ / GoogleTest)**
+
+For C++ tests using GoogleMock
+(see `Setting Expectations <https://google.github.io/googletest/gmock_cook_book.html#setting-expectations>`_):
+
+- Use ``ON_CALL`` to set default actions that should occur unless specified otherwise. These typically
+  belong in the test fixture setup.
+- Use ``EXPECT_CALL`` when testing that a specific function is called on a mock object as the result
+  of the behavior being tested, or when injecting behavior that directly impacts the function under test.
+
+**Test Constants**
+
+- If the specific value of a constant is relevant to the test, define it within the test itself
+- If the value is not relevant (just needs to be valid), use a global constant or fixture member
+- Avoid global constant objects that use globals in their implementation to prevent
+  `Static Initialization Order Fiasco <https://en.cppreference.com/w/cpp/language/siof.html>`_
+
+**Test Fixtures**
+
+- Place fixtures immediately before the first test that uses them
+- Keep fixtures small; large fixtures may indicate poor architectural design of the unit under test
+- Avoid inheriting from other fixtures
+- Consider the builder pattern for configurable fixture setup (returning ``*this`` to allow method chaining)
+  (see `ServiceDiscoveryClientFixture <https://github.com/eclipse-score/communication/blob/main/score/mw/com/impl/bindings/lola/service_discovery/test/service_discovery_client_test_fixtures.h>`_
+  for an example)
+
+**Test File Organization**
+
+- One test file may contain all tests for a single unit as long as readability is maintained
+- When splitting tests into multiple files, split based on features/functionality of the unit under test
+  (see `service_discovery/client <https://github.com/eclipse-score/communication/tree/main/score/mw/com/impl/bindings/lola/service_discovery/client>`_
+  for an example)
+- Have one Bazel test target per production code target to optimize build times
+
+**Testing Interfaces with unique_ptr**
+
+When interfaces require ownership transfer via ``unique_ptr``:
+
+- Set expectations on the mock object before injecting it (GTest evaluates mocks on destruction)
+- Alternatively, use a mock facade pattern: a class inheriting from the interface that forwards calls
+  to a test-owned mock object (see `InotifyInstanceFacade <https://github.com/eclipse-score/baselibs/blob/main/score/os/utils/inotify/inotify_instance_facade.h>`_
+  for an example)
+- For complex assertions, consider using
+  `custom matchers <https://google.github.io/googletest/reference/matchers.html#defining-matchers>`_
+
 Test execution and result analysis
 ----------------------------------
 
