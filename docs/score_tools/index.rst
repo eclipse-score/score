@@ -35,3 +35,4 @@ S-CORE Tools Overview
    rustfmt
    itf
    clippy
+   symbol_report_blanket
