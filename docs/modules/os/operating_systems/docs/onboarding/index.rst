@@ -48,7 +48,7 @@ Community Level Onboarding
   S-CORE provides no guarantees.
 
 **Eligibility requirements (Platform Maintainer / supplier requirements)**
-  The OS maintainer must fulfil the Community level supplier requirements as defined in:
+  The OS maintainer must fulfill the Community level supplier requirements as defined in:
   :ref:`platform_assumptions`.
 
 **Review and acceptance (S-CORE)**
