@@ -29,6 +29,7 @@ S-CORE Tools Overview
    :hidden:
    :maxdepth: 2
 
+   eclipse_score_tools_safety_evaluation_list
    doc_as_code
    gtest
    bazel
