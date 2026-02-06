@@ -20,6 +20,9 @@
    :tags: platform_management
    :realizes: wp__verification_plan
 
+
+.. _software_verification_plan:
+
 Software verification
 *********************
 

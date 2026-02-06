@@ -63,8 +63,6 @@ Software artifacts
       Features
       ^^^
       :ref:`Features <features>` are the heart of the S-CORE software.
-      Understand the internal details of :ref:`Infrastructure <infrastructure_feature>`
-      or :ref:`Integration <integration_features>` Features.
 
    .. grid-item-card::
 
@@ -77,7 +75,7 @@ Software artifacts
 Project structure and processes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. grid:: 1 1 2 2
+.. grid:: 1 1 3 3
    :class-container: score-grid
 
    .. grid-item-card::
@@ -94,7 +92,15 @@ Project structure and processes
       ^^^
       Read about our project and organization structure in the
       :ref:`Project Handbook <pmp>`.
-      And learn how we deal with :need:`doc__score_platform_safety_plan` or care about :need:`doc__verification_plan`.
+      And learn how we deal with :ref:`Platform Safety Plan <score_platform_safety_plan>` or care about :ref:`Software Verification Plan <software_verification_plan>`.
+
+   .. grid-item-card::
+
+      Technical Base
+      ^^^
+      Understand the internal details of the S-CORE :ref:`Infrastructure <infrastructure_feature>`
+      or :ref:`Integration <integration_features>`.
+
 
 .. dropdown:: Click to see the complete sitemap
 
@@ -106,6 +112,7 @@ Project structure and processes
       requirements/index
       modules/index
       contribute/index
+      score_technical_base/index
 
       Releases <score_releases/index.rst>
       Tools <score_tools/index.rst>
