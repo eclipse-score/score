@@ -24,3 +24,4 @@ Development
    cpp/index
    rust/index
    python/index
+   testing_guidelines
