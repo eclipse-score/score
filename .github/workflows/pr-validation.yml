@@ -1,0 +1,79 @@
+# *******************************************************************************
+# Copyright (c) 2024 Contributors to the Eclipse Foundation
+#
+# See the NOTICE file(s) distributed with this work for additional
+# information regarding copyright ownership.
+#
+# This program and the accompanying materials are made available under the
+# terms of the Apache License Version 2.0 which is available at
+# https://www.apache.org/licenses/LICENSE-2.0
+#
+# SPDX-License-Identifier: Apache-2.0
+# *******************************************************************************
+
+name: Pr Validation check for bugs
+on:
+  pull_request:
+    types: [edited, synchronize, opened, reopened]
+
+
+jobs:
+
+  verify_linked_bug_issue:
+    runs-on: ubuntu-latest
+    name: Ensure Pull Request has a linked issue.
+    permissions:
+      pages: write
+      contents: write
+      pull-requests: write
+      issues: write # Allow label creation
+    steps:
+      - name: Check PR Template
+        id: check_template
+        run: |
+          PR_BODY="${{ github.event.pull_request.body }}"
+          # Check if the PR body contains the unique identifier from your bug-fix.md template
+          if [[ "$PR_BODY" == *"<!-- PR_TEMPLATE-->"* ]]; then
+            echo "PR uses bug-fix.md template. Proceeding with workflow."
+            echo "template_match=true" >> $GITHUB_OUTPUT
+          else
+            echo "PR does NOT use bug-fix.md template. Skipping subsequent steps."
+            echo "template_match=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Checkout code
+        if: steps.check_template.outputs.template_match == 'true'
+        uses: actions/checkout@v4.2.2
+
+      - name: Set up Python
+        if: steps.check_template.outputs.template_match == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        if: steps.check_template.outputs.template_match == 'true'
+        run: pip install requests python-dotenv
+
+      - name: Get issues
+        if: steps.check_template.outputs.template_match == 'true'
+        id: get-issues
+        uses: mondeja/pr-linked-issues-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check type of each linked issue via GraphQL (Python)
+        if: steps.check_template.outputs.template_match == 'true'
+        id: issue_type_check
+        run: python ./.github/scripts/check_issue_type.py
+        env:
+          LINKED_ISSUES: ${{ steps.get-issues.outputs.issues }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # These are needed by the Python script to construct the GraphQL query variables
+          GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+
+      - name: Fail if no Bug or Feature Request issue found for PR
+        if: steps.check_template.outputs.template_match == 'true' && steps.issue_type_check.outputs.found_issue == 'false'
+        run: |
+          echo "::error::This PR uses the improvement or bug-fix template, but no linked issue of type 'Bug' or "Feature Request" was found."
+          exit 1 # This will cause the workflow to fail
