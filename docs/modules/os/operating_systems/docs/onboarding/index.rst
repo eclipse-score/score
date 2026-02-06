@@ -88,7 +88,7 @@ Promotion to Certifiable
   and maintains them across all increments.
 
 **Eligibility requirements (Platform Maintainer / supplier requirements)**
-  The platform maintainer must fulfil the Certifiable level supplier requirements as defined in:
+  The platform maintainer must fulfill the Certifiable level supplier requirements as defined in:
   :ref:`platform_assumptions`.
 
 **Additional acceptance requirements (S-CORE / system integrator requirements)**
