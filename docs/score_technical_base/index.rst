@@ -12,7 +12,7 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. _features:
+.. _technical_base:
 
 Score Project Technical Base and Infrastructure
 ===============================================
