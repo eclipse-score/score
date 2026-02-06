@@ -1,0 +1,56 @@
+@startuml sequence_provide_someip_service
+title "Sequence Provide SOME/IP service"
+hide footbox
+
+participant "<u>UpperLayer</u>" as UpperLayer
+participant "<u>NetworkDaemonAPI</u>" as NetworkDaemonAPI
+participant "<u>vsomeip_v3::application</u>" as Application
+
+activate UpperLayer
+UpperLayer -> NetworkDaemonAPI : message CreateSomeIPService
+
+activate Runtime
+activate ConfigParser
+
+opt user wants to specify non-default manifest path
+    Process -> Runtime : Initialize(int argc, char** argv)
+    activate Process
+    deactivate OS
+
+    group config creation
+        note over Runtime, ConfigParser: sequence see below
+    end group
+
+    Runtime --> Process : return: void
+end opt
+
+Process -> Runtime : getInstance()
+
+opt config creation if singleton instance not yet created
+    Runtime -> Runtime : Initialize() //with default manifest path
+    Runtime -> ConfigParser : parse(path, const serviceTypeRegistry*)
+    create Configuration
+    ConfigParser -> Configuration : create()
+
+    ConfigParser --> Runtime : return: Configuration
+    deactivate ConfigParser
+
+    create RuntimeInstance
+    Runtime -> RuntimeInstance : create(configuration)
+end opt
+
+Runtime --> Process : return: singleton instance
+deactivate Runtime
+
+Process -> RuntimeInstance : resolve(InstanceSpecifier)
+activate RuntimeInstance
+RuntimeInstance -> Configuration : serviceInstances_.find(InstanceSpecifier)
+activate Configuration
+Configuration --> RuntimeInstance : return: Iter
+deactivate Configuration
+
+RuntimeInstance --> Process : return: InstanceIdentifierContainer
+deactivate RuntimeInstance
+deactivate Process
+
+@enduml
