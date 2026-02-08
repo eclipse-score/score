@@ -577,7 +577,7 @@
                   
   <section id="architecture-inspection-checklist">
 <h1>Architecture Inspection Checklist<a class="headerlink" href="#architecture-inspection-checklist" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-67a67bd6">
+<div class="need_container docutils container" id="SNCB-7b669d82">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__baselibs_arc_inspection">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -585,7 +585,7 @@
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
-<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></span></div>
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
 <div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
@@ -629,14 +629,25 @@ practices.
 The checklist guides evaluation of the architecture design, identifies potential problems, and aids in
 communication and documentation of architectural decisions to stakeholders.</p>
 </section>
+<section id="conduct">
+<h2>Conduct<a class="headerlink" href="#conduct" title="Link to this heading">#</a></h2>
+<p>As described in the concept <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/general_concepts/score_review_concept.html#doc_concept__wp_inspections">doc_concept__wp_inspections</a> the following “inspection roles” are expected to be filled:</p>
+<ul class="simple">
+<li><p>content responsible (author): <a class="github reference external" href="https://github.com/4og">4og</a></p></li>
+<li><p>reviewer: <a class="github reference external" href="https://github.com/aschemmel-tech">aschemmel-tech</a></p></li>
+<li><p>moderator: only needed for conflict resolution between author and reviewers, is the safety manager, security manager or quality manager called in as a reviewer (can be derived from version mgt tool)</p></li>
+</ul>
+</section>
 <section id="checklist">
 <h2>Checklist<a class="headerlink" href="#checklist" title="Link to this heading">#</a></h2>
-<div class="pst-scrollable-table-container"><table class="table" id="id1">
-<caption><span class="caption-number">Table 2 </span><span class="caption-text">Architecture Design Review Checklist</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<p>It is mandatory to fill in the “passed” column with “yes” or “no” for each checklist item and additionally to add in the remarks why it is passed or not passed.
+In case of “no” an issue link to the issue tracking system has to be added in the last column (if not solved in the same issue).
+See also <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/general_concepts/score_review_concept.html#doc_concept__wp_inspections">doc_concept__wp_inspections</a> for further information about reviews in general and inspection in particular.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id5">
+<caption><span class="caption-number">Table 2 </span><span class="caption-text">Architecture Design Review Checklist</span><a class="headerlink" href="#id5" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Review Id</p></th>
 <th class="head"><p>Acceptance criteria</p></th>
-<th class="head"><p>Type</p></th>
 <th class="head"><p>Guidance</p></th>
 <th class="head"><p>passed</p></th>
 <th class="head"><p>Remarks</p></th>
@@ -647,126 +658,147 @@ communication and documentation of architectural decisions to stakeholders.</p>
 <tr class="row-even"><td><p>ARC_01_01</p></td>
 <td><p>Is the traceability from software architectural elements to requirements, and other level architectural
 elements (e.g. component to interface) established according to the “Relations between the architectural elements” as described in <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/architecture_concept.html#doc_concept__arch_process">doc_concept__arch_process</a>?</p></td>
-<td><p>automated</p></td>
-<td><p>Trace should be checked by Sphinx. Will be removed from checklist once requirement is implemented.</p></td>
-<td></td>
-<td></td>
-<td></td>
+<td><p>Trace should be checked automatically by tool support in the future. It will be removed from the checklist once the requirement (<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/guidance/architecture_process_reqs.html#gd_req__arch_build_blocks_corr">gd_req__arch_build_blocks_corr</a>) is implemented. Refer to <a class="reference external" href="https://eclipse-score.github.io/docs-as-code/main/internals/requirements/requirements.html">Tool Requirements</a> for the current status.</p></td>
+<td><p>NO</p></td>
+<td><p>Several functional feature requirements are not linked to the baselibs feature architecture.</p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/issues/2265">#2265</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>ARC_01_02</p></td>
 <td><p>If the architectural element is related to any supplier manuals (incl. safety and security)
 are the relevant parts covered?</p></td>
-<td><p>manual</p></td>
 <td><p>If the architecture makes use of supplied elements, their manuals (like safety) have to be considered (i.e. its provided functionality matches the expectation and assumptions are fulfilled). Note that in case of safety component this means that assumed Technical Safety Requirements and AoUs of the safety manual are covered.</p></td>
-<td></td>
-<td></td>
+<td><p>YES</p></td>
+<td><p>Baselibs uses OS. S-CORE’s reference OS safety manual was considered during development, but cannot be published in this open source project</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p>ARC_01_03</p></td>
 <td><p>Is the architectural element traceable to the lower level artifacts as defined by the workproduct traceability?</p></td>
-<td><p>automated</p></td>
-<td><p>Will be removed from checklist once requirement is implemented by automated tool check.
+<td><p>Will be removed from checklist once the requirement (<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/guidance/architecture_process_reqs.html#gd_req__arch_build_blocks_corr">gd_req__arch_build_blocks_corr</a>) is implemented by automated tool check. See <a class="reference external" href="https://eclipse-score.github.io/docs-as-code/main/internals/requirements/requirements.html">Tool Requirements</a>.
 Details of possible linking can be depicted from <a class="reference external" href="https://eclipse-score.github.io/process_description/main/general_concepts/score_traceability_concept.html">traceability concept</a></p></td>
-<td></td>
-<td></td>
+<td><p>YES</p></td>
+<td><p>Baselibs feature architecture includes logic interfaces, these can be used to link to components (see static view <a class="reference internal" href="index.html#feat_arc_sta__baselibs__static_view_arch" title="feat_arc_sta__baselibs__static_view_arch"><em class="xref need">Baselibs Static View (feat_arc_sta__baselibs__static_view_arch)</em></a>)</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>ARC_02_01</p></td>
 <td><p>Is the software architecture design compliant with the (overall) feature architecture?</p></td>
-<td><p>manual</p></td>
 <td><p>On component level check against the feature architecture, on feature level check other features with common components used.</p></td>
-<td></td>
-<td></td>
+<td><p>YES</p></td>
+<td><p>Shared module is the OS, which is designed to work with multiple components using it.</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p>ARC_02_02</p></td>
 <td><p>Is appropriate and comprehensible operation/interface naming present in the architectural design?</p></td>
-<td><p>manual</p></td>
 <td><p>Check <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/guidance/architecture_guideline.html#gd_guidl__arch_design">gd_guidl__arch_design</a></p></td>
-<td></td>
-<td></td>
+<td><p>YES</p></td>
+<td><p>Interfaces and operations names are abstract but sufficient for understanding.</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>ARC_02_03</p></td>
 <td><p>Are correctness of data flow and control flow within the architectural elements considered?</p></td>
-<td><p>manual</p></td>
 <td><p>E.g. examine definitions, transformations, integrity, and interaction of data; check error handling, data
 exchange between elements, correct response to inputs and documented decision making.
 Note: consistency is ensured by the process/tooling, by defining each interface only once.</p></td>
-<td></td>
-<td></td>
+<td><p>YES</p></td>
+<td><p>There is no control/data flow between baselibs components (each of it is stand-alone), so no sequence diagram needed.</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p>ARC_02_04</p></td>
 <td><p>Are the interfaces between the software architectural element and other architectural elements well-defined?</p></td>
-<td><p>manual</p></td>
 <td><p>Check if the interface reacts on non-defined behavior or errors; can established protocols be used; are the
 interfaces for inputs, outputs, error codes documented; is loose coupling considered and only limited exposure;
 can unit or integration test be written against the interface; data amount transferred; no sensitive data
 exposure;</p></td>
-<td></td>
-<td></td>
-<td></td>
+<td><p>NO</p></td>
+<td><p>Errors are generally managed by the “Result” component (ok)
+If an operation is an input or an output is not shown (nok)
+Libraries are split in logical way, enable testing, data amount and sensitivity is not an issue. Maybe with the exception of JSON - add a AoU here?</p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/issues/2265">#2265</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>ARC_02_05</p></td>
 <td><p>Does the software architectural element consider the timing constraints (from the parent requirement)?</p></td>
-<td><p>manual</p></td>
 <td><p>If there are hard requirements on the timing a programming time estimation should be performed and also
 deadline supervision considered.</p></td>
-<td></td>
-<td></td>
+<td><p>YES</p></td>
+<td><p>As the functionalities are quite small, timing should not be a problem. No requirements on timing for baselibs.</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p>ARC_02_06</p></td>
 <td><p>Is the documentation of the software architectural element, including textual and graphical descriptions
 (e.g., UML diagrams), comprehensible and complete?</p></td>
-<td><p>manual</p></td>
 <td><p>Use of semi-formal notation is expected for architectural elements with an allocated ASIL level.
 Is the architecture template correctly filled?</p></td>
-<td></td>
-<td></td>
-<td></td>
+<td><p>NO</p></td>
+<td><p>Architecture template: Requirements section missing, but this is covered by Static View linking, Module View not needed (same as Feature Static View) (ok)
+Semi-Formal Notation used (ok)
+Mismatch between libraries mentioned in “Description” and the ones depicted in Static View (this also does not match with the 0.5 planning/release note) and also not matching feature request <a class="reference external" href="https://eclipse-score.github.io/score/main/features/baselibs/index.html">https://eclipse-score.github.io/score/main/features/baselibs/index.html</a> (nok)</p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/issues/2265">#2265</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>ARC_03_01</p></td>
 <td><p>Is the architectural element modular and encapsulated?</p></td>
-<td><p>manual</p></td>
 <td><p>Check e.g. that only minimal interfaces are used. Design should be object oriented. Interfaces and interactions are clearly defined. Usage of access types (private, protected) properly set. Limited global variables.</p></td>
-<td></td>
-<td></td>
+<td><p>YES</p></td>
+<td><p>small functionality</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p>ARC_03_02</p></td>
 <td><p>Is the suitability of the software architecture for future modifications and maintainability considered?</p></td>
-<td><p>manual</p></td>
 <td><p>Check for e.g. loose coupling, separation of concerns, high cohesion, versioning strategy for interfaces,
 decision records, use of established design patterns.</p></td>
-<td></td>
-<td></td>
+<td><p>YES</p></td>
+<td><p>Nothing which can be seen in the architecture documentation speaks against this.</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>ARC_03_03</p></td>
 <td><p>Are simplicity and avoidance of unnecessary complexity present in the software architecture?</p></td>
-<td><p>manual</p></td>
 <td><p>Indicators for complexity are: number of use cases (corresponding to dynamic diagrams)
 allocated to single design element, number of interfaces and operations in an interface,
 function parameters, global variables, complex types, limited comprehensibility.</p>
 <p>Note: If the “number” above exceeds “3” a design rationale is mandatory (for all types)</p>
 </td>
-<td></td>
-<td></td>
+<td><p>YES</p></td>
+<td><p>Baselibs is just a big container for globally shared library functions - thus offers a lot of (unconnected) interfaces.</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p>ARC_03_04</p></td>
 <td><p>Is the software architecture design following best practices and design principles?</p></td>
-<td><p>manual</p></td>
 <td><p>Refer to architectural guidelines and recommendations within the project documentation.</p></td>
-<td></td>
-<td></td>
+<td><p>YES</p></td>
+<td><p>Guideline <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/guidance/architecture_guideline.html#gd_guidl__arch_design">gd_guidl__arch_design</a> is followed, template usage checked in ARC_02_06, some design principles already checked in ARC_03_02, no additional recommendations in the project’s PMP</p></td>
 <td></td>
 </tr>
 </tbody>
 </table>
 </div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>The above checklist entries must be filled according to your feature architecture in scope.</p>
+</div>
+<p>Note: If a Review ID is not applicable for your architecture, then state “”n/a” in status and comment accordingly in remarks.</p>
+<p>The following static views in “valid” state and with “inspected” tag set are in the scope of this inspection:</p>
+<div class="needstable_wrapper docutils container" id="needtable-features/baselibs/docs/architecture/chklst_arc_inspection-0">
+<div class="pst-scrollable-table-container"><table class="NEEDS_TABLE table" id="needtable-features/baselibs/docs/architecture/chklst_arc_inspection-0-table_node">
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ID</p></th>
+<th class="head"><p>Status</p></th>
+<th class="head"><p>Tags</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="index.html#feat_arc_sta__baselibs__static_view_arch">feat_arc_sta__baselibs__static_view_arch</a></p></td>
+<td class="needs_status"><p>valid</p></td>
+<td class="needs_tags"><p>inspected<em>; </em>baselibs</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>and the following dynamic views:</p>
+<p class="needs_filter_warning" id="needtable-features/baselibs/docs/architecture/chklst_arc_inspection-1">No needs passed the filters</p>
 </section>
 </section>
 
@@ -818,6 +850,7 @@ function parameters, global variables, complex types, limited comprehensibility.
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose">Purpose</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conduct">Conduct</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checklist">Checklist</a></li>
 </ul>
   </nav></div>
@@ -826,7 +859,7 @@ function parameters, global variables, complex types, limited comprehensibility.
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/features/baselibs/docs/architecture/chklst_arc_inspection.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/features/baselibs/docs/architecture/chklst_arc_inspection.rst">
       <i class="fa-solid fa-pencil"></i>
       
       

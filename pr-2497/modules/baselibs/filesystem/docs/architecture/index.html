@@ -510,10 +510,11 @@
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../../../memory_shared/docs/index.html">memory_shared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../memory_shared/docs/index.html">memory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../message_passing/docs/index.html">message_passing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../os/docs/index.html">os</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../result/docs/index.html">result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../static_reflection_with_serialization/docs/index.html">static_reflection_with_serialization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../utils/docs/index.html">utils</a></li>
 </ul>
 </details></li>
@@ -592,7 +593,7 @@
                   
   <section id="filesystem-component-architecture">
 <h1>Filesystem Component Architecture<a class="headerlink" href="#filesystem-component-architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-0c7762c2">
+<div class="need_container docutils container" id="SNCB-2d8a05da">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__filesystem_architecture">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -640,8 +641,8 @@
 </section>
 <section id="static-architecture">
 <h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-b4bea82c">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__baselibs__filesystem">
+<div class="need_container docutils container" id="SNCB-92ccb937">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp table" id="comp__baselibs_filesystem">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
 <div class="line"><span><span class="needs_title"><span class="needs_data">Filesystem</span></span></span></div>
@@ -661,23 +662,24 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs_filesystem</span><span class="needs_spacer">, </span><span class="needs_data">baselibs</span></span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">implements: <span class="implements"><span><a class="reference internal" href="#logic_arc_int__baselibs__filesystem" title="comp_arc_sta__baselibs__filesystem">logic_arc_int__baselibs__filesystem</a></span></span></div>
-<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../docs/index.html#mod_view_sta__baselibs__baselibs" title="comp_arc_sta__baselibs__filesystem">mod_view_sta__baselibs__baselibs</a></span></span></div>
+<div class="line"><span><div class="line">has: <span class="belongs_to"><span><a class="reference internal" href="../requirements/index.html#comp_req__filesystem__api_abstraction" title="comp__baselibs_filesystem">comp_req__filesystem__api_abstraction</a>, <a class="reference internal" href="../requirements/index.html#comp_req__filesystem__path_utilities" title="comp__baselibs_filesystem">comp_req__filesystem__path_utilities</a>, <a class="reference internal" href="../requirements/index.html#comp_req__filesystem__directory_iterators" title="comp__baselibs_filesystem">comp_req__filesystem__directory_iterators</a>, <a class="reference internal" href="../requirements/index.html#comp_req__filesystem__file_io" title="comp__baselibs_filesystem">comp_req__filesystem__file_io</a>, <a class="reference internal" href="../requirements/index.html#comp_req__filesystem__full_testability" title="comp__baselibs_filesystem">comp_req__filesystem__full_testability</a>, <a class="reference internal" href="../requirements/index.html#comp_req__filesystem__file_utils" title="comp__baselibs_filesystem">comp_req__filesystem__file_utils</a>, <a class="reference internal" href="../requirements/index.html#comp_req__filesystem__mock_fake" title="comp__baselibs_filesystem">comp_req__filesystem__mock_fake</a></span></span></div>
+<div class="line">implements: <span class="implements"><span><a class="reference internal" href="#logic_arc_int__baselibs__filesystem" title="comp__baselibs_filesystem">logic_arc_int__baselibs__filesystem</a></span></span></div>
+<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../docs/index.html#mod__baselibs" title="comp__baselibs_filesystem">mod__baselibs</a>, <a class="reference internal" href="../../../docs/index.html#mod_view_sta__baselibs__baselibs" title="comp__baselibs_filesystem">mod_view_sta__baselibs__baselibs</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-modules/baselibs/filesystem/docs/architecture/index-0">
-<object data="../../../../../_images/plantuml-2adec06aea1726522a9df4d73ec32a01b0c04ff8.svg" type="image/svg+xml" style="width:306px;height:551px;background:#FFFFFF;"></object></p>
+<object data="../../../../../_images/plantuml-f4fb2678094bf85b4ad4bde2f07380b32b74280b.svg" type="image/svg+xml" style="width:306px;height:551px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
-<div class="line"><span><span class="needs-id"><a class="reference internal" href="#comp_arc_sta__baselibs__filesystem" title="comp_arc_sta__baselibs__filesystem">comp_arc_sta__baselibs__filesystem</a></span></span></div>
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#comp__baselibs_filesystem" title="comp__baselibs_filesystem">comp__baselibs_filesystem</a></span></span></div>
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
-<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component Package Diagram</span></span></span></div>
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component</span></span></span></div>
 </div>
 </td>
 <td class="footer_right" colspan="2"></td>
@@ -689,7 +691,7 @@
 </section>
 <section id="interfaces">
 <h2>Interfaces<a class="headerlink" href="#interfaces" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-ae473c1f">
+<div class="need_container docutils container" id="SNCB-dcbb94b9">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__baselibs__filesystem">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -710,8 +712,8 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="#comp_arc_sta__baselibs__filesystem" title="logic_arc_int__baselibs__filesystem">comp_arc_sta__baselibs__filesystem</a></span></span></div>
-<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat_arc_sta__baselibs__static_view_arch" title="logic_arc_int__baselibs__filesystem">feat_arc_sta__baselibs__static_view_arch</a></span></span></div>
+<div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="#comp__baselibs_filesystem" title="logic_arc_int__baselibs__filesystem">comp__baselibs_filesystem</a></span></span></div>
+<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat__baselibs" title="logic_arc_int__baselibs__filesystem">feat__baselibs</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat_arc_sta__baselibs__static_view_arch" title="logic_arc_int__baselibs__filesystem">feat_arc_sta__baselibs__static_view_arch</a></span></span></div>
 <div class="line">includes: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int_op__baselibs__absolute" title="logic_arc_int__baselibs__filesystem">logic_arc_int_op__baselibs__absolute</a>, <a class="reference internal" href="#logic_arc_int_op__baselibs__exists" title="logic_arc_int__baselibs__filesystem">logic_arc_int_op__baselibs__exists</a>, <a class="reference internal" href="#logic_arc_int_op__baselibs__file_type" title="logic_arc_int__baselibs__filesystem">logic_arc_int_op__baselibs__file_type</a>, <a class="reference internal" href="#logic_arc_int_op__baselibs__file_status" title="logic_arc_int__baselibs__filesystem">logic_arc_int_op__baselibs__file_status</a>, <a class="reference internal" href="#logic_arc_int_op__baselibs__copy_file" title="logic_arc_int__baselibs__filesystem">logic_arc_int_op__baselibs__copy_file</a>, <a class="reference internal" href="#logic_arc_int_op__baselibs__remove" title="logic_arc_int__baselibs__filesystem">logic_arc_int_op__baselibs__remove</a>, <a class="reference internal" href="#logic_arc_int_op__baselibs__permissions" title="logic_arc_int__baselibs__filesystem">logic_arc_int_op__baselibs__permissions</a>, <a class="reference internal" href="#logic_arc_int_op__baselibs__create_directory" title="logic_arc_int__baselibs__filesystem">logic_arc_int_op__baselibs__create_directory</a>, <a class="reference internal" href="#logic_arc_int_op__baselibs__symlink_ops" title="logic_arc_int__baselibs__filesystem">logic_arc_int_op__baselibs__symlink_ops</a>, <a class="reference internal" href="#logic_arc_int_op__baselibs__hardlink_ops" title="logic_arc_int__baselibs__filesystem">logic_arc_int_op__baselibs__hardlink_ops</a>, <a class="reference internal" href="#logic_arc_int_op__baselibs__last_write_time" title="logic_arc_int__baselibs__filesystem">logic_arc_int_op__baselibs__last_write_time</a>, <a class="reference internal" href="#logic_arc_int_op__baselibs__current_path" title="logic_arc_int__baselibs__filesystem">logic_arc_int_op__baselibs__current_path</a>, <a class="reference internal" href="#logic_arc_int_op__baselibs__is_empty" title="logic_arc_int__baselibs__filesystem">logic_arc_int_op__baselibs__is_empty</a>, <a class="reference internal" href="#logic_arc_int_op__baselibs__create_dir_perms" title="logic_arc_int__baselibs__filesystem">logic_arc_int_op__baselibs__create_dir_perms</a>, <a class="reference internal" href="#logic_arc_int_op__baselibs__file_comparison" title="logic_arc_int__baselibs__filesystem">logic_arc_int_op__baselibs__file_comparison</a>, <a class="reference internal" href="#logic_arc_int_op__baselibs__change_group" title="logic_arc_int__baselibs__filesystem">logic_arc_int_op__baselibs__change_group</a>, <a class="reference internal" href="#logic_arc_int_op__baselibs__validate_group" title="logic_arc_int__baselibs__filesystem">logic_arc_int_op__baselibs__validate_group</a>, <a class="reference internal" href="#logic_arc_int_op__baselibs__check_filesystem" title="logic_arc_int__baselibs__filesystem">logic_arc_int_op__baselibs__check_filesystem</a>, <a class="reference internal" href="#logic_arc_int_op__baselibs__repair_filesystem" title="logic_arc_int__baselibs__filesystem">logic_arc_int_op__baselibs__repair_filesystem</a>, <a class="reference internal" href="#logic_arc_int_op__baselibs__format_partition" title="logic_arc_int__baselibs__filesystem">logic_arc_int_op__baselibs__format_partition</a>, <a class="reference internal" href="#logic_arc_int_op__baselibs__qnx_compatible" title="logic_arc_int__baselibs__filesystem">logic_arc_int_op__baselibs__qnx_compatible</a>, <a class="reference internal" href="#logic_arc_int_op__baselibs__sync_directory" title="logic_arc_int__baselibs__filesystem">logic_arc_int_op__baselibs__sync_directory</a>, <a class="reference internal" href="#logic_arc_int_op__baselibs__open_unique_file" title="logic_arc_int__baselibs__filesystem">logic_arc_int_op__baselibs__open_unique_file</a></span></span></div>
 </span></div>
 </div>
@@ -734,7 +736,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-127bf1c5">
+<div class="need_container docutils container" id="SNCB-eeee7913">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__absolute">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -777,7 +779,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-8c23e4ae">
+<div class="need_container docutils container" id="SNCB-bbe1fe85">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__exists">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -820,7 +822,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-ab93a365">
+<div class="need_container docutils container" id="SNCB-a9833d37">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__file_type">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -863,7 +865,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-06df2123">
+<div class="need_container docutils container" id="SNCB-b7e82166">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__file_status">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -906,7 +908,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-179435a5">
+<div class="need_container docutils container" id="SNCB-d8deb263">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__copy_file">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -949,7 +951,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5e200342">
+<div class="need_container docutils container" id="SNCB-c6462187">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__remove">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -992,7 +994,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b7f1130c">
+<div class="need_container docutils container" id="SNCB-76cfffa3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__permissions">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1035,7 +1037,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-35c2dee8">
+<div class="need_container docutils container" id="SNCB-a26d1551">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__create_directory">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1078,7 +1080,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a9812aab">
+<div class="need_container docutils container" id="SNCB-6eab8d8c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__symlink_ops">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1121,7 +1123,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-0bfc4c70">
+<div class="need_container docutils container" id="SNCB-031cd93e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__hardlink_ops">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1164,7 +1166,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a7b081e0">
+<div class="need_container docutils container" id="SNCB-88217ca0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__last_write_time">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1207,7 +1209,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-11997267">
+<div class="need_container docutils container" id="SNCB-c8071031">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__current_path">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1250,7 +1252,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4d55e6a5">
+<div class="need_container docutils container" id="SNCB-546383e5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__is_empty">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1293,7 +1295,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4ff9effb">
+<div class="need_container docutils container" id="SNCB-2ee1458e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__create_dir_perms">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1336,7 +1338,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-36d088c9">
+<div class="need_container docutils container" id="SNCB-24749817">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__file_comparison">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1379,7 +1381,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-2209d3e1">
+<div class="need_container docutils container" id="SNCB-377d639b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__change_group">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1422,7 +1424,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-98b0d0cf">
+<div class="need_container docutils container" id="SNCB-df31efb0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__validate_group">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1465,7 +1467,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-0a534661">
+<div class="need_container docutils container" id="SNCB-88a5d120">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__check_filesystem">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1508,7 +1510,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-76a1ee6f">
+<div class="need_container docutils container" id="SNCB-f3247620">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__repair_filesystem">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1551,7 +1553,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d73333de">
+<div class="need_container docutils container" id="SNCB-d63da83d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__format_partition">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1594,7 +1596,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e1e822bc">
+<div class="need_container docutils container" id="SNCB-20d5eeec">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__qnx_compatible">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1637,7 +1639,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-acb050b2">
+<div class="need_container docutils container" id="SNCB-1177ccae">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__sync_directory">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1680,7 +1682,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-30eb6e92">
+<div class="need_container docutils container" id="SNCB-32f2a800">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__open_unique_file">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1783,7 +1785,7 @@
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/modules/baselibs/filesystem/docs/architecture/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/modules/baselibs/filesystem/docs/architecture/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       

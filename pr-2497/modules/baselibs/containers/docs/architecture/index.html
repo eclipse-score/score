@@ -510,10 +510,11 @@
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../../../memory_shared/docs/index.html">memory_shared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../memory_shared/docs/index.html">memory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../message_passing/docs/index.html">message_passing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../os/docs/index.html">os</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../result/docs/index.html">result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../static_reflection_with_serialization/docs/index.html">static_reflection_with_serialization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../utils/docs/index.html">utils</a></li>
 </ul>
 </details></li>
@@ -592,7 +593,7 @@
                   
   <section id="container-component-architecture">
 <h1>Container Component Architecture<a class="headerlink" href="#container-component-architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-93d2f808">
+<div class="need_container docutils container" id="SNCB-3d5d47a3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__containers_architecture">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -641,8 +642,8 @@
 </section>
 <section id="static-architecture">
 <h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-9701cb79">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__baselibs__containers">
+<div class="need_container docutils container" id="SNCB-96e4ba0b">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp table" id="comp__baselibs_containers">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
 <div class="line"><span><span class="needs_title"><span class="needs_data">Containers</span></span></span></div>
@@ -662,8 +663,9 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs_containers</span><span class="needs_spacer">, </span><span class="needs_data">baselibs</span><span class="needs_spacer">, </span><span class="needs_data">containers</span></span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">implements: <span class="implements"><span><a class="reference internal" href="#logic_arc_int__baselibs__dynamic_array" title="comp_arc_sta__baselibs__containers">logic_arc_int__baselibs__dynamic_array</a>, <a class="reference internal" href="#logic_arc_int__baselibs__intrusive_list" title="comp_arc_sta__baselibs__containers">logic_arc_int__baselibs__intrusive_list</a></span></span></div>
-<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../docs/index.html#mod_view_sta__baselibs__baselibs" title="comp_arc_sta__baselibs__containers">mod_view_sta__baselibs__baselibs</a></span></span></div>
+<div class="line"><span><div class="line">has: <span class="belongs_to"><span><a class="reference internal" href="../requirements/index.html#comp_req__containers__dynamic_array" title="comp__baselibs_containers">comp_req__containers__dynamic_array</a>, <a class="reference internal" href="../requirements/index.html#comp_req__containers__intrusive_list" title="comp__baselibs_containers">comp_req__containers__intrusive_list</a>, <a class="reference internal" href="../requirements/index.html#comp_req__containers__type_safety" title="comp__baselibs_containers">comp_req__containers__type_safety</a>, <a class="reference internal" href="../requirements/index.html#comp_req__containers__non_relocatable_vector" title="comp__baselibs_containers">comp_req__containers__non_relocatable_vector</a>, <a class="reference internal" href="../requirements/index.html#comp_req__containers__deterministic_behavior" title="comp__baselibs_containers">comp_req__containers__deterministic_behavior</a></span></span></div>
+<div class="line">implements: <span class="implements"><span><a class="reference internal" href="#logic_arc_int__baselibs__dynamic_array" title="comp__baselibs_containers">logic_arc_int__baselibs__dynamic_array</a>, <a class="reference internal" href="#logic_arc_int__baselibs__intrusive_list" title="comp__baselibs_containers">logic_arc_int__baselibs__intrusive_list</a></span></span></div>
+<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../docs/index.html#mod__baselibs" title="comp__baselibs_containers">mod__baselibs</a>, <a class="reference internal" href="../../../docs/index.html#mod_view_sta__baselibs__baselibs" title="comp__baselibs_containers">mod_view_sta__baselibs__baselibs</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -671,16 +673,16 @@
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><blockquote>
 <div><p class="plantuml" id="needarch-modules/baselibs/containers/docs/architecture/index-0">
-<object data="../../../../../_images/plantuml-e6cffdb31c0423bdbf735311c3b47dadca117639.svg" type="image/svg+xml" style="width:307px;height:241px;background:#FFFFFF;"></object></p>
+<object data="../../../../../_images/plantuml-55fa0e99156eaf3d757a5653fc8941065ce7203d.svg" type="image/svg+xml" style="width:307px;height:241px;background:#FFFFFF;"></object></p>
 </div></blockquote>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
-<div class="line"><span><span class="needs-id"><a class="reference internal" href="#comp_arc_sta__baselibs__containers" title="comp_arc_sta__baselibs__containers">comp_arc_sta__baselibs__containers</a></span></span></div>
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#comp__baselibs_containers" title="comp__baselibs_containers">comp__baselibs_containers</a></span></span></div>
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
-<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component Package Diagram</span></span></span></div>
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component</span></span></span></div>
 </div>
 </td>
 <td class="footer_right" colspan="2"></td>
@@ -692,7 +694,7 @@
 </section>
 <section id="interfaces">
 <h2>Interfaces<a class="headerlink" href="#interfaces" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-fdd38262">
+<div class="need_container docutils container" id="SNCB-f97aa56c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__baselibs__dynamic_array">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -713,8 +715,8 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="#comp_arc_sta__baselibs__containers" title="logic_arc_int__baselibs__dynamic_array">comp_arc_sta__baselibs__containers</a></span></span></div>
-<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat_arc_sta__baselibs__static_view_arch" title="logic_arc_int__baselibs__dynamic_array">feat_arc_sta__baselibs__static_view_arch</a></span></span></div>
+<div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="#comp__baselibs_containers" title="logic_arc_int__baselibs__dynamic_array">comp__baselibs_containers</a></span></span></div>
+<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat__baselibs" title="logic_arc_int__baselibs__dynamic_array">feat__baselibs</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat_arc_sta__baselibs__static_view_arch" title="logic_arc_int__baselibs__dynamic_array">feat_arc_sta__baselibs__static_view_arch</a></span></span></div>
 <div class="line">includes: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int_op__containers__dynarray_access" title="logic_arc_int__baselibs__dynamic_array">logic_arc_int_op__containers__dynarray_access</a>, <a class="reference internal" href="#logic_arc_int_op__containers__dynarray_itrate" title="logic_arc_int__baselibs__dynamic_array">logic_arc_int_op__containers__dynarray_itrate</a>, <a class="reference internal" href="#logic_arc_int_op__containers__dynarray_change" title="logic_arc_int__baselibs__dynamic_array">logic_arc_int_op__containers__dynarray_change</a></span></span></div>
 </span></div>
 </div>
@@ -737,7 +739,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4304eafa">
+<div class="need_container docutils container" id="SNCB-b39c9534">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__containers__dynarray_access">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -780,7 +782,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-355ce519">
+<div class="need_container docutils container" id="SNCB-ad0d14d8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__containers__dynarray_itrate">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -823,7 +825,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d8dce80f">
+<div class="need_container docutils container" id="SNCB-252f7bb8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__containers__dynarray_change">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -866,7 +868,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d4722f33">
+<div class="need_container docutils container" id="SNCB-79241fd6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__baselibs__intrusive_list">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -887,8 +889,8 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="#comp_arc_sta__baselibs__containers" title="logic_arc_int__baselibs__intrusive_list">comp_arc_sta__baselibs__containers</a></span></span></div>
-<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat_arc_sta__baselibs__static_view_arch" title="logic_arc_int__baselibs__intrusive_list">feat_arc_sta__baselibs__static_view_arch</a></span></span></div>
+<div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="#comp__baselibs_containers" title="logic_arc_int__baselibs__intrusive_list">comp__baselibs_containers</a></span></span></div>
+<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat__baselibs" title="logic_arc_int__baselibs__intrusive_list">feat__baselibs</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat_arc_sta__baselibs__static_view_arch" title="logic_arc_int__baselibs__intrusive_list">feat_arc_sta__baselibs__static_view_arch</a></span></span></div>
 <div class="line">includes: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int_op__baselibs__intr_list_insert" title="logic_arc_int__baselibs__intrusive_list">logic_arc_int_op__baselibs__intr_list_insert</a>, <a class="reference internal" href="#logic_arc_int_op__baselibs__intr_list_remove" title="logic_arc_int__baselibs__intrusive_list">logic_arc_int_op__baselibs__intr_list_remove</a>, <a class="reference internal" href="#logic_arc_int_op__baselibs__intr_list_iterate" title="logic_arc_int__baselibs__intrusive_list">logic_arc_int_op__baselibs__intr_list_iterate</a>, <a class="reference internal" href="#logic_arc_int_op__baselibs__intr_list_access" title="logic_arc_int__baselibs__intrusive_list">logic_arc_int_op__baselibs__intr_list_access</a></span></span></div>
 </span></div>
 </div>
@@ -911,7 +913,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-8793195d">
+<div class="need_container docutils container" id="SNCB-c2e10065">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__intr_list_insert">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -954,7 +956,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-67973fce">
+<div class="need_container docutils container" id="SNCB-a2a866ab">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__intr_list_remove">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -997,7 +999,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-54d70fdc">
+<div class="need_container docutils container" id="SNCB-28ac4c78">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__intr_list_iterate">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1040,7 +1042,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-78d5e132">
+<div class="need_container docutils container" id="SNCB-d7eccb86">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__intr_list_access">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1143,7 +1145,7 @@
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/modules/baselibs/containers/docs/architecture/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/modules/baselibs/containers/docs/architecture/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
