@@ -304,7 +304,7 @@ Each *Community* has a *Community Lead* to organize the community`s work.
      - `INTMM`_
      - `INTSLC`_
      - `INTBKL`_
-     - | https://github.com/eclipse-score/score
+     - | https://github.com/eclipse-score/reference_integration
    * - .. _pmp_pm_mcm:
 
        **MCM**
@@ -695,7 +695,23 @@ Issues Types
 A *Feature Request* represents an independent work package used to describe and
 track a high-level request for the project. *Feature Request* work packages can be linked to
 other work packages, but they must not be treated as parent work packages. They are in the responsibility of the
-:ref:`Architecture Community <pmp_pm_arc>` and are part of the :ref:`Root Repository <pmp_pm_root_repository>`.
+:ref:`Architecture Community <pmp_pm_arc>` and the issues are part of the :ref:`Root Repository <pmp_pm_root_repository>`.
+
+`About Features <https://eclipse-score.github.io/score/main/features/index.html>`_
+
+`Feature Request issue template <https://github.com/eclipse-score/.github/.github/ISSUE_TEMPLATE/1a_FeatureRequest.yml>`_
+
+.. _pmp_pm_component_request:
+
+**Component Request**
+
+A *Component Request* represents an independent work package used to describe modifications inside a *Feature*.
+*Component Request* work packages can be linked to other work packages, but they must not be treated as parent work packages. They are in the responsibility of the
+:ref:`Architecture Community <pmp_pm_arc>` and the issues are part of the :ref:`Root Repository <pmp_pm_root_repository>`.
+
+`About Components <https://eclipse-score.github.io/score/main/features/index.html>`_
+
+`Component Request issue template <https://github.com/eclipse-score/.github/.github/ISSUE_TEMPLATE/1b_ComponentRequest.yml>`_
 
 .. _pmp_pm_product_increment:
 
@@ -703,9 +719,11 @@ other work packages, but they must not be treated as parent work packages. They 
 
 A *Product Increment* represents the highest level in the work package hierarchy and
 cannot be linked as a child of another issue. If you need to group multiple *Product Increment* work packages,
-labels have to be used.
-A *Product Increment* can have multiple *Epic* work packages as children. *Product Increments* areowned by
+labels have to be used. One *Product Increment* is the planning element for a version of a :ref:`Module <modules>`.
+A *Product Increment* can have multiple *Epic* work packages as children. *Product Increments* are owned by
 :ref:`Technical Lead Circle <pmp_pm_tlc>` and are part of the :ref:`Root Repository <pmp_pm_root_repository>`.
+
+`Product Increment issue template <https://github.com/eclipse-score/.github/.github/ISSUE_TEMPLATE/2_ProductIncrement.yml>`_
 
 .. _pmp_pm_epic:
 
@@ -724,6 +742,7 @@ Sometimes support of other teams might be necessary for the completion of the wo
 *Epic* can have team-internal and team-external *Task* child issues. *Epics* are owned by a Team and are part
 of the Team`s main repository.
 
+`Epic issue template <https://github.com/eclipse-score/.github/.github/ISSUE_TEMPLATE/3_ProductIncrement.yml>`_
 
 .. _pmp_pm_task:
 
@@ -738,6 +757,8 @@ If multiple *Task* work packages are related, a *Epic* work package should be cr
 with all associated *Task* work packages added as child work packages under that *Epic*. *Tasks* are owned by a Team and are part
 of any Team`s repository.
 
+`Task issue template <https://github.com/eclipse-score/.github/.github/ISSUE_TEMPLATE/4_Task.yml>`_
+
 .. _pmp_pm_bug:
 
 **Bug**
@@ -747,6 +768,8 @@ a special type of *Story* work package and follows the same rules as regular *Ep
 with the key difference that it focuses on fixing defects in existing functionality
 rather than creating or extending functionality. *Tasks* are owned by a Team and are part
 of any Team`s repository.
+
+`Bug issue template <https://github.com/eclipse-score/.github/.github/ISSUE_TEMPLATE/5_Bug.yml>`_
 
 .. _pmp_pm_issue_status_flow:
 
@@ -778,12 +801,6 @@ Issue Templates
 """""""""""""""
 Templates defined in *GitHub* ensure the availability of the type relevant information for all issues.
 
-- `Bug Template <https://github.com/eclipse-score/score/blob/main/.github/ISSUE_TEMPLATE/bug.yml>`_
-- `Feature Request Template <https://github.com/eclipse-score/score/blob/main/.github/ISSUE_TEMPLATE/feature_request.yml>`_
-- `Product Increment Template <https://github.com/eclipse-score/score/blob/main/.github/ISSUE_TEMPLATE/product_increment.yml>`_
-- `Epic Template <https://github.com/eclipse-score/score/blob/main/.github/ISSUE_TEMPLATE/epic.yml>`_
-- `Task Template <https://github.com/eclipse-score/score/blob/main/.github/ISSUE_TEMPLATE/task.yml>`_
-
 Hierarchies
 """""""""""
 Hierarchies are realized as parent-child relations with the `GitHub Sub-Issue Feature <https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/adding-sub-issues>`_.
@@ -805,6 +822,14 @@ a Release or a Quality (ASPICE, ASIL) Assessment.
 Releases
 ^^^^^^^^
 *Releases* are special milestones and used for baselining of the development activities.
+
+
+.. image:: _assets/score_project_management_issue_hierarchy.drawio.svg
+    :width: 900
+    :alt: Issue Status
+    :align: center
+
+
 
 
 .. _pmp_pm_gh_labels:
@@ -866,7 +891,7 @@ Planning of Work
 
 Generally, every team is responsible for planning its work within its own plan with the help of its :ref:`GitHub Project <pmp_pm_gh_projects>` filled with :ref:`Epics <pmp_pm_epic>`, :ref:`Tasks <pmp_pm_task>` and :ref:`Bugs <pmp_pm_bug>`.
 
-The planning of :ref:`Feature Requests <pmp_pm_feature_request>` is in the responsibility of the :ref:`Architects <pmp_pm_arc>`,
+The planning of :ref:`Feature Requests <pmp_pm_feature_request>` and :ref:`Component Requests <pmp_pm_component_request>` is in the responsibility of the :ref:`Architects <pmp_pm_arc>`,
 whereas the overall top-down plan is in the responsibility of the :ref:`Technical Lead Circle <pmp_pm_tlc>` with the help of :ref:`Product Increments <pmp_pm_product_increment>`,
 :ref:`Milestones <pmp_pm_milestone>` and :ref:`Releases <pmp_pm_release>`.
 
