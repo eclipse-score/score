@@ -566,7 +566,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-5caa984e">
+  <div class="need_container docutils container" id="SNCB-db168aaf">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__project_mgt_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -919,7 +919,7 @@ Each <em>Community</em> has a <em>Community Lead</em> to organize the community`
 <td><p><a class="reference external" href="https://sdvworkinggroup.slack.com/archives/INT">INTSLC</a></p></td>
 <td><p><a class="reference external" href="https://github.com/orgs/eclipse-score/projects/INT">INTBKL</a></p></td>
 <td><div class="line-block">
-<div class="line"><a class="github reference external" href="https://github.com/eclipse-score/score">eclipse-score/score</a></div>
+<div class="line"><a class="github reference external" href="https://github.com/eclipse-score/reference_integration">eclipse-score/reference_integration</a></div>
 </div>
 </td>
 </tr>
@@ -1318,13 +1318,22 @@ The Progress of the work is documented with help of the <a class="reference inte
 <p>A <em>Feature Request</em> represents an independent work package used to describe and
 track a high-level request for the project. <em>Feature Request</em> work packages can be linked to
 other work packages, but they must not be treated as parent work packages. They are in the responsibility of the
-<a class="reference internal" href="#pmp-pm-arc"><span class="std std-ref">Architecture Community</span></a> and are part of the <a class="reference internal" href="#pmp-pm-root-repository"><span class="std std-ref">Root Repository</span></a>.</p>
+<a class="reference internal" href="#pmp-pm-arc"><span class="std std-ref">Architecture Community</span></a> and the issues are part of the <a class="reference internal" href="#pmp-pm-root-repository"><span class="std std-ref">Root Repository</span></a>.</p>
+<p><a class="reference external" href="https://eclipse-score.github.io/score/main/features/index.html">About Features</a></p>
+<p><a class="reference external" href="https://github.com/eclipse-score/.github/.github/ISSUE_TEMPLATE/1a_FeatureRequest.yml">Feature Request issue template</a></p>
+<p id="pmp-pm-component-request"><strong>Component Request</strong></p>
+<p>A <em>Component Request</em> represents an independent work package used to describe modifications inside a <em>Feature</em>.
+<em>Component Request</em> work packages can be linked to other work packages, but they must not be treated as parent work packages. They are in the responsibility of the
+<a class="reference internal" href="#pmp-pm-arc"><span class="std std-ref">Architecture Community</span></a> and the issues are part of the <a class="reference internal" href="#pmp-pm-root-repository"><span class="std std-ref">Root Repository</span></a>.</p>
+<p><a class="reference external" href="https://eclipse-score.github.io/score/main/features/index.html">About Components</a></p>
+<p><a class="reference external" href="https://github.com/eclipse-score/.github/.github/ISSUE_TEMPLATE/1b_ComponentRequest.yml">Component Request issue template</a></p>
 <p id="pmp-pm-product-increment"><strong>Product Increment</strong></p>
 <p>A <em>Product Increment</em> represents the highest level in the work package hierarchy and
 cannot be linked as a child of another issue. If you need to group multiple <em>Product Increment</em> work packages,
-labels have to be used.
-A <em>Product Increment</em> can have multiple <em>Epic</em> work packages as children. <em>Product Increments</em> areowned by
+labels have to be used. One <em>Product Increment</em> is the planning element for a version of a <a class="reference internal" href="../modules/index.html#modules"><span class="std std-ref">Module</span></a>.
+A <em>Product Increment</em> can have multiple <em>Epic</em> work packages as children. <em>Product Increments</em> are owned by
 <a class="reference internal" href="#pmp-pm-tlc"><span class="std std-ref">Technical Lead Circle</span></a> and are part of the <a class="reference internal" href="#pmp-pm-root-repository"><span class="std std-ref">Root Repository</span></a>.</p>
+<p><a class="reference external" href="https://github.com/eclipse-score/.github/.github/ISSUE_TEMPLATE/2_ProductIncrement.yml">Product Increment issue template</a></p>
 <p id="pmp-pm-epic"><strong>Epic</strong></p>
 <p>An <em>Epic</em> is the primary planning work package for development teams.
 <em>Epic</em> work packages should be scoped in a way that allows them to be completed within
@@ -1338,6 +1347,7 @@ making a related <em>Product Increment</em> work package unnecessary.
 Sometimes support of other teams might be necessary for the completion of the work, therefore an
 <em>Epic</em> can have team-internal and team-external <em>Task</em> child issues. <em>Epics</em> are owned by a Team and are part
 of the Team`s main repository.</p>
+<p><a class="reference external" href="https://github.com/eclipse-score/.github/.github/ISSUE_TEMPLATE/3_ProductIncrement.yml">Epic issue template</a></p>
 <p id="pmp-pm-task"><strong>Task</strong></p>
 <p>A <em>Task GitHub Issue</em> represents the smallest unit of planning and typically corresponds
 to a concrete piece of work to be completed, such as by a developer. <em>Task</em> work packages are usually
@@ -1347,12 +1357,14 @@ However, standalone <em>Task</em> work packages must not be grouped using labels
 If multiple <em>Task</em> work packages are related, a <em>Epic</em> work package should be created instead,
 with all associated <em>Task</em> work packages added as child work packages under that <em>Epic</em>. <em>Tasks</em> are owned by a Team and are part
 of any Team`s repository.</p>
+<p><a class="reference external" href="https://github.com/eclipse-score/.github/.github/ISSUE_TEMPLATE/4_Task.yml">Task issue template</a></p>
 <p id="pmp-pm-bug"><strong>Bug</strong></p>
 <p>A <em>Bug GitHub Issue</em> is used to report any kind of problem or malfunction. It is considered
 a special type of <em>Story</em> work package and follows the same rules as regular <em>Epic</em> work packages,
 with the key difference that it focuses on fixing defects in existing functionality
 rather than creating or extending functionality. <em>Tasks</em> are owned by a Team and are part
 of any Team`s repository.</p>
+<p><a class="reference external" href="https://github.com/eclipse-score/.github/.github/ISSUE_TEMPLATE/5_Bug.yml">Bug issue template</a></p>
 </section>
 <section id="issue-status">
 <span id="pmp-pm-issue-status-flow"></span><h4>Issue Status<a class="headerlink" href="#issue-status" title="Link to this heading">#</a></h4>
@@ -1388,13 +1400,6 @@ we use the following Standard Flow for all <a class="reference internal" href="#
 <section id="issue-templates">
 <h4>Issue Templates<a class="headerlink" href="#issue-templates" title="Link to this heading">#</a></h4>
 <p>Templates defined in <em>GitHub</em> ensure the availability of the type relevant information for all issues.</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://github.com/eclipse-score/score/blob/main/.github/ISSUE_TEMPLATE/bug.yml">Bug Template</a></p></li>
-<li><p><a class="reference external" href="https://github.com/eclipse-score/score/blob/main/.github/ISSUE_TEMPLATE/feature_request.yml">Feature Request Template</a></p></li>
-<li><p><a class="reference external" href="https://github.com/eclipse-score/score/blob/main/.github/ISSUE_TEMPLATE/product_increment.yml">Product Increment Template</a></p></li>
-<li><p><a class="reference external" href="https://github.com/eclipse-score/score/blob/main/.github/ISSUE_TEMPLATE/epic.yml">Epic Template</a></p></li>
-<li><p><a class="reference external" href="https://github.com/eclipse-score/score/blob/main/.github/ISSUE_TEMPLATE/task.yml">Task Template</a></p></li>
-</ul>
 </section>
 <section id="hierarchies">
 <h4>Hierarchies<a class="headerlink" href="#hierarchies" title="Link to this heading">#</a></h4>
@@ -1414,6 +1419,8 @@ a Release or a Quality (ASPICE, ASIL) Assessment.
 <section id="releases">
 <span id="pmp-pm-release"></span><h3>Releases<a class="headerlink" href="#releases" title="Link to this heading">#</a></h3>
 <p><em>Releases</em> are special milestones and used for baselining of the development activities.</p>
+<a class="reference internal image-reference" href="../_images/score_project_management_issue_hierarchy.drawio.svg"><img alt="Issue Status" class="align-center" src="../_images/score_project_management_issue_hierarchy.drawio.svg" style="width: 900px;" />
+</a>
 </section>
 <section id="labels">
 <span id="pmp-pm-gh-labels"></span><h3>Labels<a class="headerlink" href="#labels" title="Link to this heading">#</a></h3>
@@ -1455,7 +1462,7 @@ to the corresponding <em>GitHub Issues</em>.</p>
 <section id="planning-of-work">
 <h3>Planning of Work<a class="headerlink" href="#planning-of-work" title="Link to this heading">#</a></h3>
 <p>Generally, every team is responsible for planning its work within its own plan with the help of its <a class="reference internal" href="#pmp-pm-gh-projects"><span class="std std-ref">GitHub Project</span></a> filled with <a class="reference internal" href="#pmp-pm-epic"><span class="std std-ref">Epics</span></a>, <a class="reference internal" href="#pmp-pm-task"><span class="std std-ref">Tasks</span></a> and <a class="reference internal" href="#pmp-pm-bug"><span class="std std-ref">Bugs</span></a>.</p>
-<p>The planning of <a class="reference internal" href="#pmp-pm-feature-request"><span class="std std-ref">Feature Requests</span></a> is in the responsibility of the <a class="reference internal" href="#pmp-pm-arc"><span class="std std-ref">Architects</span></a>,
+<p>The planning of <a class="reference internal" href="#pmp-pm-feature-request"><span class="std std-ref">Feature Requests</span></a> and <a class="reference internal" href="#pmp-pm-component-request"><span class="std std-ref">Component Requests</span></a> is in the responsibility of the <a class="reference internal" href="#pmp-pm-arc"><span class="std std-ref">Architects</span></a>,
 whereas the overall top-down plan is in the responsibility of the <a class="reference internal" href="#pmp-pm-tlc"><span class="std std-ref">Technical Lead Circle</span></a> with the help of <a class="reference internal" href="#pmp-pm-product-increment"><span class="std std-ref">Product Increments</span></a>,
 <a class="reference internal" href="#pmp-pm-milestone"><span class="std std-ref">Milestones</span></a> and <a class="reference internal" href="#pmp-pm-release"><span class="std std-ref">Releases</span></a>.</p>
 </section>
