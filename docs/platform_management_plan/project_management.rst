@@ -807,7 +807,7 @@ Hierarchies are realized as parent-child relations with the `GitHub Sub-Issue Fe
 
 Dependencies
 """"""""""""
-Dependencies are realized with blocked by or blocking relations described in thè `GitHub Issue Dependency Feature <https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-issue-dependencies>`_.
+Dependencies are realized with blocked by or blocking relations described in the `GitHub Issue Dependency Feature <https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-issue-dependencies>`_.
 
 .. _pmp_pm_milestone:
 
@@ -822,15 +822,6 @@ a Release or a Quality (ASPICE, ASIL) Assessment.
 Releases
 ^^^^^^^^
 *Releases* are special milestones and used for baselining of the development activities.
-
-
-.. image:: _assets/score_project_management_issue_hierarchy.drawio.svg
-    :width: 900
-    :alt: Issue Status
-    :align: center
-
-
-
 
 .. _pmp_pm_gh_labels:
 
@@ -852,8 +843,8 @@ helps to plan the work and monitor its progress.
 
 Multiple *GitHub Projects* are defined at https://github.com/orgs/eclipse-score/projects/.
 
-Beside one for each (committee, community, feature) Team, there is one for `Feature Requests <https://github.com/orgs/eclipse-score/projects/4>`_
-and one for the complete `S-CORE Roadmap <https://github.com/orgs/eclipse-score/projects/17>`_. Inside a GitHub Project, there is the possibility to generate different views
+Beside one for each (committee, community, feature) Team, there is one for `Feature / Component Requests <https://github.com/orgs/eclipse-score/projects/4>`_
+and one for the complete `Roadmap <https://github.com/orgs/eclipse-score/projects/17>`_. Inside a GitHub Project, there is the possibility to generate different views
 for Table, Board and Roadmap supporting Backlogs, Open Point or Task Lists and other useful perspectives.
 
 .. image:: _assets/score_project_management_planning_overview.drawio.svg
@@ -894,6 +885,14 @@ Generally, every team is responsible for planning its work within its own plan w
 The planning of :ref:`Feature Requests <pmp_pm_feature_request>` and :ref:`Component Requests <pmp_pm_component_request>` is in the responsibility of the :ref:`Architects <pmp_pm_arc>`,
 whereas the overall top-down plan is in the responsibility of the :ref:`Technical Lead Circle <pmp_pm_tlc>` with the help of :ref:`Product Increments <pmp_pm_product_increment>`,
 :ref:`Milestones <pmp_pm_milestone>` and :ref:`Releases <pmp_pm_release>`.
+
+.. image:: _assets/score_project_management_process_issue_overview.drawio.svg
+    :width: 600
+    :alt: Planning Overview
+    :align: center
+
+
+
 
 Tracking Progress
 ^^^^^^^^^^^^^^^^^
