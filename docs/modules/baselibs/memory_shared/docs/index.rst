@@ -61,7 +61,7 @@ The Memory Library should provide APIs for memory management:
 * :need:`comp_req__memory__bounds_check`
 * :need:`comp_req__memory__endianness`
 * :need:`comp_req__memory__sealed_shm`
-* :need:`comp_req__memory__typed_shm`
+* :need:`comp_req__memory__typed_memory`
 * :need:`comp_req__memory__resource_registry`
 * :need:`comp_req__memory__string_utils`
 * :need:`comp_req__memory__atomic_ops`
