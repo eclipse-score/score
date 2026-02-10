@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2025 Contributors to the Eclipse Foundation
+   # Copyright (c) 2026 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -18,7 +18,7 @@ Requirements
 .. feat_req:: One-way data sharing into a VM
    :id: feat_req__nonipc__one_way_sharing
    :reqtype: Functional
-   :security: NO
+   :security: YES
    :safety: QM
    :satisfies: stkh_req__communication__vm
    :status: valid
