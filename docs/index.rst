@@ -60,9 +60,9 @@ Software artifacts
 
    .. grid-item-card::
 
-      Features
+      Features & Modules
       ^^^
-      :ref:`Features <features>` are the heart of the S-CORE software.
+      :ref:`Features <features>` and :ref:`Modules <modules>` are the heart of the S-CORE software.
 
    .. grid-item-card::
 
