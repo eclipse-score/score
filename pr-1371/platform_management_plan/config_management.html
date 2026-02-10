@@ -53,7 +53,7 @@
 
     <script src="../_static/jquery.js?v=5d32c60e"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/documentation_options.js?v=7f41d439"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
@@ -494,7 +494,7 @@
 <li class="toctree-l1"><a class="reference internal" href="quality_management.html">Quality Management / Platform Quality Management Plan</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Config management / Configuration Management Plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tool_management.html">Tool Management/ Tool Management Plan</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release_management.html">Release management Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_management.html">Release Management Plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="problem_resolution.html">Problem Resolution / Problem Resolution Plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="change_management.html">Change Management / Change Management Plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="software_verification.html">Software verification</a></li>
@@ -503,7 +503,9 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Role Assignments</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="role_assignment/platform_safety_engineer.html">Platform Safety Engineer Election</a></li>
 <li class="toctree-l1"><a class="reference internal" href="role_assignment/platform_safety_manager.html">Platform Safety Manager Election</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role_assignment/platform_quality_manager.html">Platform Quality Manager Election</a></li>
 </ul>
 </div>
 </nav></div>
@@ -564,7 +566,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-0ba509a9">
+  <div class="need_container docutils container" id="SNCB-c0103952">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__config_mgt_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -646,7 +648,11 @@ The complete list of project documents is defined in the <a class="reference int
 Ids are checked for uniqueness, see <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/configuration_management/guidance/configuration_process_req.html#gd_req__configuration_uid">gd_req__configuration_uid</a>.
 sphinx-needs is also used to document the work products properties/attributes defined in the process area descriptions.
 The work products are stored in text or code files (these are identified by their filenames) within GitHub repositories.
-There is one <a class="reference external" href="https://GitHub.com/eclipse-score/score/">platform repository</a> and one repository for each module.</p>
+GitHub repositories are the realization of the Delivery Containers as described in <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/general_concepts/score_building_blocks_concept.html#doc_concept__general_building_blocks">doc_concept__general_building_blocks</a>.
+There is one <a class="reference external" href="https://GitHub.com/eclipse-score/score/">platform repository</a> and one repository for each set of Dependable elements
+one Delivery Team is responsibel for [TBD add link to role defintion].</p>
+<p>In S-CORE every repository shall have only one MODULE.bazel file which defines its version and dependencies.
+Exceptions from this may be needed for testing reasons only.</p>
 <p>For other artefacts these are either</p>
 <ul class="simple">
 <li><p>files - are identified by their path/filename (and configured also in GitHub)</p></li>
@@ -691,12 +697,13 @@ Only the technical lead is allowed to approve a merge into a release branch. The
 Baselines are created by using the GitHub “tag” function. The tag name shall correspond to
 the release branch name the tag is created, adding patch version and pre-release tag.
 See also <a class="reference internal" href="release_management.html#doc__platform_release_management_plan" title="doc__platform_release_management_plan"><em class="xref need">Release Management Plan (doc__platform_release_management_plan)</em></a>.</p>
-<p>As described in “Identification and Properties” above, there are several repositories for the modules and the platform integration.
+<p>As described in “Identification and Properties” above, there are several repositories.
 Baselines are created individually in these repositories, even a different version schema could be adopted.
 In case of dependent repositories, the repository dependent upon on has to be base-lined first, to be available
 to refer to this baseline when integrating it. That means that for example a platform baseline also
-documents the versions (baselines) of the modules the platform consists of. This can then also be seen in the platform release note.</p>
-<p>Every change in the release repository is also taken over into the main branch. The module development team
+documents the versions (baselines) of the delivery containers/repositories the platform consists of.
+This can then also be seen in the platform release note.</p>
+<p>Every change in the release branch is also taken over into the main branch. The Delivery Team
 can decide how to ensure this (e.g. by development in main and cherry-pick to release branch).</p>
 </section>
 <section id="backup-and-recovery">
@@ -804,7 +811,7 @@ The respective tools used in the project are:</p>
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/platform_management_plan/config_management.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/platform_management_plan/config_management.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -815,15 +822,6 @@ The respective tools used in the project are:</p>
     </a>
   </div>
 </div>
-
-  <div class="sidebar-secondary-item">
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/platform_management_plan/config_management.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div></div>
 
 </div></div>
               
