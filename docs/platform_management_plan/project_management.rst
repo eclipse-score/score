@@ -14,7 +14,7 @@
 
 .. document:: Project Management Plan
    :id: doc__project_mgt_plan
-   :status: draft
+   :status: valid
    :safety: ASIL_B
    :security: YES
    :realizes: wp__project_mgt
@@ -51,7 +51,6 @@ Project Management Goals and Definition of Done
     - :ref:`Features <features>` are described.
 * Project Plan is planned and followed:
     - Roadmap with :ref:`Milestones <pmp_pm_milestone>` and :ref:`Releases <pmp_pm_release>` are available and up to date.
-    - S-CORE Handbook (:need:`doc__platform_handbook`) is available and up to date.
     - :ref:`Features <features>` are described.
 * Escalation paths are described.
 * All Reviews are performed according to their definitions, the respective templates are used.
@@ -814,7 +813,7 @@ Dependencies are realized with blocked by or blocking relations described in the
 Milestone
 ^^^^^^^^^
 A milestone is indicating an important dedicated point in the schedule like
-a Release or a Quality (ASPICE, ASIL) Assessment.
+a Release or a Process Audit, etc.
 `GitHub Milestones <https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones>`_ offer to connect *Issues* and *Pull Requests* to the `S-CORE-defined Milestones <https://github.com/eclipse-score/score/milestones>`_
 
 .. _pmp_pm_release:
