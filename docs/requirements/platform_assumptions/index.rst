@@ -116,7 +116,7 @@ It is the level where the S-CORE SW-platform will functionally "work" with the e
    The system integrator shall run the tests provided by S-CORE (platform, feature, component and Unit level for their selected S-CORE modules) on their selected OS/Hypervisor/HW combination,
    or provide equivalent argumentation.
 
-   Note1: S-CORE will run these tests for one or more reference OS/Hypervisor/HW combination, if not all passing, remaining issues are documented in release notes. In case the selected combination is equal to a S-CORE reference and the complete S-CORE SW-platform is used, this AoU may be skipped.
+   Note1: S-CORE will run these tests for one or more reference OS/Hypervisor/HW combination, if not all passing, remaining issues are documented in release notes.
 
    Note2: Equivalent argumentation could be for example that the test environments for unit tests would be sufficiently equal in S-CORE project and at the integrator.
 
