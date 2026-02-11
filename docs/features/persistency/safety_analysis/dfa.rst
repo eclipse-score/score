@@ -79,7 +79,6 @@ Development failure initiators
    :failure_id: UI_01_06
    :failure_effect: Blocking of execution. This will lead to a unavailability of the persistency feature.
    :mitigated_by: aou_req__persistency__appl_exec
-   :mitigation_issue:
    :sufficient: yes
    :status: valid
 
