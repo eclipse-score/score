@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -572,7 +572,7 @@ SPDX-License-Identifier: Apache-2.0
 <ul class="simple">
 <li><p><strong>Date:</strong> 2026-02-07</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-a56684bf">
+<div class="need_container docutils container" id="SNCB-99265ccd">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__arch__consistent_stack_vs_reference">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -638,6 +638,12 @@ SPDX-License-Identifier: Apache-2.0
 <p>Modules created in the context of S-CORE exist to serve the stack. Their evolution is guided by stack-level use cases, not by module-local objectives in isolation.</p>
 <p>Existing independently managed open-source projects/modules may be integrated where appropriate. Their independence is accepted, but their integration into S-CORE is evaluated and justified exclusively in terms of stack-level goals.</p>
 <p>This decision is binding for the project. Any deviation requires a new, explicitly agreed Architecture Decision Record.</p>
+<section id="no-constraint-on-independent-module-delivery">
+<h3>No Constraint on Independent Module Delivery<a class="headerlink" href="#no-constraint-on-independent-module-delivery" title="Link to this heading">#</a></h3>
+<p>This decision concerns architectural alignment and change justification. It does not impose constraints on modularity, packaging, or delivery models of the modules within the stack.</p>
+<p>In particular, the consistent stack approach does not prevent modules or features from being independently buildable or releasable, nor from being used outside the S-CORE stack.</p>
+<p>The decision only establishes that, when modules are integrated into S-CORE, their evolution and changes must be justified in terms of stack-level objectives.</p>
+</section>
 </section>
 <section id="options-considered">
 <h2>Options Considered<a class="headerlink" href="#options-considered" title="Link to this heading">#</a></h2>
@@ -734,7 +740,10 @@ SPDX-License-Identifier: Apache-2.0
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">DR-001-Arch: Consistent Stack vs. Reference Integration</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#consistent-stack-vs-reference-integration">Consistent Stack vs. Reference Integration</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context">Context</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision">Decision</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision">Decision</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#no-constraint-on-independent-module-delivery">No Constraint on Independent Module Delivery</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#options-considered">Options Considered</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-1-reference-integration-of-independent-modules">Option 1: Reference Integration of Independent Modules</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-2-consistent-stack-as-leading-use-case">Option 2: Consistent Stack as Leading Use Case</a></li>
