@@ -554,7 +554,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-96206a95">
+  <div class="need_container docutils container" id="SNCB-5cd295a5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_doc_tool table" id="doc_tool__symbol_report_blanket">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -575,7 +575,7 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">tool_management</span></span></span></div>
 <div class="line"><span class="needs_safety_affected"><span class="needs_label">safety_affected: </span><span class="needs_data">YES</span></span></div>
-<div class="line"><span class="needs_security_affected"><span class="needs_label">security_affected: </span><span class="needs_data">NO</span></span></div>
+<div class="line"><span class="needs_security_affected"><span class="needs_label">security_affected: </span><span class="needs_data">YES</span></span></div>
 <div class="line"><span class="needs_tcl"><span class="needs_label">tcl: </span><span class="needs_data">HIGH</span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span><span class="needs_data">1.90.0 (see [1])</span></span></div>
 </span></span></div>
@@ -639,7 +639,7 @@ with calculated coverage.</p>
 <section id="installation">
 <h3>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h3>
 <div class="line-block">
-<div class="line">To add the Code coverage to your project or module follow guidelines in WIP</div>
+<div class="line">To add the Code coverage to your project or module follow guidelines in <a class="reference external" href="https://github.com/eclipse-score/tooling/blob/main/coverage/README.md">here</a>.</div>
 </div>
 </section>
 <section id="integration">
@@ -683,21 +683,17 @@ qualified and output of coverage data in <cite>.profraw</cite> format is correct
 <td><p>False-positive: A function is reported as covered, although it is not covered</p></td>
 <td><p>Overreporting, could result in testing gap.</p></td>
 <td><p>yes</p></td>
-<td><div class="line-block">
-<div class="line">Likelihood of such an error low due to wide usage of the tool (many S-CORE modules and other projects like ferrocene)</div>
-<div class="line">Additionally, every new tool release is tested by running tests in prepared integration testsuite to detect such errors. (PROPOSAL POINT)</div>
-</div>
-</td>
-<td><p>yes</p></td>
+<td><p><strong>No</strong>. However likelihood of such an error low due to wide usage of the tool (many S-CORE modules and other projects like ferrocene and their customers)</p></td>
 <td><p>no</p></td>
+<td><p><strong>Yes</strong>. Every new tool release is tested by running tests in prepared integration testsuite to detect such errors.</p></td>
 <td><p>high</p></td>
 </tr>
 <tr class="row-odd"><td><p>2</p></td>
 <td><p>False-negative: A function is reported as not covered, although it is covered</p></td>
 <td><p>Underreporting, will not result in testing gap.</p></td>
 <td><p>yes</p></td>
-<td><p>Since we want to achieve 90%+ branch coverage this would stand out and be manually investigated.</p></td>
-<td><p>yes</p></td>
+<td><p>Since we want to achieve 100% branch coverage (<a class="reference external" href="https://eclipse-score.github.io/score/main/platform_management_plan/software_verification.html#quality-criteria">check here</a>) this would stand out and be manually investigated.</p></td>
+<td><p>no</p></td>
 <td><p>no</p></td>
 <td><p>high</p></td>
 </tr>
@@ -705,13 +701,9 @@ qualified and output of coverage data in <cite>.profraw</cite> format is correct
 <td><p>Overcounting: Total number of functions is too low</p></td>
 <td><p>A function is not being considered, although it is part of the certified subset</p></td>
 <td><p>yes</p></td>
-<td><div class="line-block">
-<div class="line"><cite>symbol-report</cite> is developed to use exactly the same information as the compiler</div>
-<div class="line">Additionally, every new tool release is tested by running tests in prepared integration testsuite to detect such errors. (PROPOSAL POINT)</div>
-</div>
-</td>
+<td><p><cite>symbol-report</cite> is developed to use exactly the same information as the compiler</p></td>
 <td><p>yes</p></td>
-<td><p>no</p></td>
+<td><p><strong>Yes</strong>. Every new tool release is tested by running tests in prepared integration testsuite to detect such errors.</p></td>
 <td><p>high</p></td>
 </tr>
 <tr class="row-odd"><td><p>4</p></td>
@@ -727,26 +719,18 @@ qualified and output of coverage data in <cite>.profraw</cite> format is correct
 <td><p>Line that can be executed not being reported as executable</p></td>
 <td><p>Underreporting, code that should be tested may not being tested</p></td>
 <td><p>yes</p></td>
-<td><div class="line-block">
-<div class="line"><cite>blanket`</cite> warns if a function has no executable line</div>
-<div class="line">Additionally, every new tool release is tested by running tests in prepared integration testsuite to detect such errors. (PROPOSAL POINT)</div>
-</div>
-</td>
+<td><p><cite>blanket</cite> warns if a function has no executable line</p></td>
 <td><p>yes</p></td>
-<td><p>no</p></td>
+<td><p><strong>Yes</strong>. Additionally, every new tool release is tested by running tests in prepared integration testsuite to detect such errors.</p></td>
 <td><p>high</p></td>
 </tr>
 <tr class="row-odd"><td><p>6</p></td>
 <td><p>Coverage calculation errors: rounding, aggregation errors</p></td>
 <td><p>Overreporting or underreporting of coverage that can lead to testing gaps</p></td>
 <td><p>yes</p></td>
-<td><div class="line-block">
-<div class="line">Every new tool release is tested by running tests in prepared integration testsuite to detect such errors. (PROPOSAL POINT)</div>
-<div class="line">Since this would be systematic error, it would be detected during manual review of coverage reports (always rounded values, too big/low coverage even no tests are there, etc.).</div>
-</div>
-</td>
+<td><p>Since this would be systematic error, it would be detected during manual review of coverage reports (always rounded values, too big/low coverage even no tests are there, etc.).</p></td>
 <td><p>yes</p></td>
-<td><p>no</p></td>
+<td><p><strong>Yes</strong>. Every new tool release is tested by running tests in prepared integration testsuite to detect such errors.</p></td>
 <td><p>high</p></td>
 </tr>
 <tr class="row-even"><td><p>7</p></td>
@@ -764,9 +748,35 @@ qualified and output of coverage data in <cite>.profraw</cite> format is correct
 </tbody>
 </table>
 </div>
+</section>
+<section id="security-evaluation">
+<h2>Security evaluation<a class="headerlink" href="#security-evaluation" title="Link to this heading">#</a></h2>
+<p>This section outlines the security evaluation of Rustfmt for its use within the S-CORE project.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id5">
+<caption><span class="caption-number">Table 72 </span><span class="caption-text">Security evaluation</span><a class="headerlink" href="#id5" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Threat identification</p></th>
+<th class="head"><p>Use case description</p></th>
+<th class="head"><p>Threats</p></th>
+<th class="head"><p>Impact on security?</p></th>
+<th class="head"><p>Impact security measures available?</p></th>
+<th class="head"><p>Impact security detection sufficient?</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>TBD</p></td>
+<td><p>TBD</p></td>
+<td><p>TBD</p></td>
+<td><p>TBD</p></td>
+<td><p>TBD</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <section id="result">
 <h3>Result<a class="headerlink" href="#result" title="Link to this heading">#</a></h3>
-<p>Symbol report and blanket do not require qualification for use in safety-related software development according to ISO 26262.</p>
+<p>Considering evaluation and a <cite>Further additional safety measure ` the `symbol report</cite> and <cite>blanket</cite> do not require qualification for use in safety-related software development according to ISO 26262.</p>
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="id2" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
@@ -837,7 +847,8 @@ Exact version shall be derived from qualified Rust compiler used in S-CORE proje
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#environment">Environment</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#safety-evaluation">Safety evaluation</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#safety-evaluation">Safety evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#security-evaluation">Security evaluation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#result">Result</a></li>
 </ul>
 </li>
