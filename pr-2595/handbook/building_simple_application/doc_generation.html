@@ -1,0 +1,836 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Documentation generation &#8212; S-CORE  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score.css?v=6e51530f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score_needs.css?v=e97392eb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score_design.css?v=d9fd870c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=803738c0" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
+    <script src="../../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
+    <script src="../../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
+    <script src="../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
+    <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'handbook/building_simple_application/doc_generation';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Building source code" href="building_source_code.html" />
+    <link rel="prev" title="First Eclipse S-CORE Module" href="first_score_module.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Eclipse S-CORE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Handbook
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../features/index.html">
+    Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../requirements/index.html">
+    Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../modules/index.html">
+    Modules
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../design_decisions/index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Handbook
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../features/index.html">
+    Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../requirements/index.html">
+    Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../modules/index.html">
+    Modules
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../design_decisions/index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../project_basics/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../own_application/index.html">Use</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Contribute own module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="first_score_module.html">First Eclipse S-CORE Module</a></li>
+<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">Documentation generation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="building_source_code.html">Building source code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cicd_workflows.html">CI/CD Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference_integration.html">Reference integration</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Handbook</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Contribute own module</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Documentation generation</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="documentation-generation">
+<h1>Documentation generation<a class="headerlink" href="#documentation-generation" title="Link to this heading">#</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>As described in the <a class="reference internal" href="../project_basics/technology_overview.html#technology-overview"><span class="std std-ref">Overview of technologies</span></a> chapter,
+Eclipse S-CORE uses the sphinx and sphinx-needs toolchain to generate documentation from rst files.
+Elements of Eclipse S-CORE metamodel are represented as sphinx-needs objects.</p>
+<p>The integration of sphinx, sphinx-needs, and the Eclipse S-CORE-specific extensions is implemented in the repository:</p>
+<ul class="simple">
+<li><p><a class="github reference external" href="https://github.com/eclipse-score/docs-as-code/tree/main/docs">eclipse-score/docs-as-code</a></p></li>
+</ul>
+<p>The following <a class="reference external" href="https://eclipse-score.github.io/docs-as-code/main/how-to/index.html">documentation</a>
+provides a description of how the documentation can be created and built. Here, we will focus on a simple example.</p>
+</section>
+<section id="defining-a-bazel-documentation-target">
+<h2>Defining a Bazel Documentation Target<a class="headerlink" href="#defining-a-bazel-documentation-target" title="Link to this heading">#</a></h2>
+<p>To generate HTML documentation from <em>.rst</em> files, S-CORE provides a dedicated Bazel rule.
+In the top-level <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/BUILD">BUILD</a> file of your module, you should already find:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">docs</span><span class="p">(</span>
+<span class="linenos">2</span>    <span class="n">source_dir</span> <span class="o">=</span> <span class="s2">&quot;docs&quot;</span><span class="p">,</span>
+<span class="linenos">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The bazel rule docs needs source_dir as an input parameter. This directory will be given to the <em>sphinx/sphinx-needs</em> toolchain,
+which will use this directory as source directory and will generate the html documentation based on the files located in the
+source directory. Sphinx toolchain will not rely here on any bazel dependencies,
+but will use its own mechanism to decide which files should be included for documentation generation.
+This is well described in <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-toctree">toctree</a>
+chapter of its documentation.</p>
+</section>
+<section id="sphinx-configuration">
+<h2>Sphinx configuration<a class="headerlink" href="#sphinx-configuration" title="Link to this heading">#</a></h2>
+<p>Two files are essential for documentation generation:</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/docs/conf.py">docs/conf.py</a> provides configuration for the <em>sphinx-toolchain</em>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">project</span> <span class="o">=</span> <span class="s2">&quot;Module Template Project&quot;</span>
+<span class="linenos"> 2</span><span class="n">project_url</span> <span class="o">=</span> <span class="s2">&quot;https://eclipse-score.github.io/module_template/&quot;</span>
+<span class="hll"><span class="linenos"> 3</span><span class="n">project_prefix</span> <span class="o">=</span> <span class="s2">&quot;SCRAMPLE_&quot;</span>
+</span><span class="linenos"> 4</span><span class="n">author</span> <span class="o">=</span> <span class="s2">&quot;Eclipse S-CORE&quot;</span>
+<span class="linenos"> 5</span><span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.1&quot;</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="c1"># -- General configuration ---------------------------------------------------</span>
+<span class="linenos"> 8</span><span class="c1"># https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+<span class="linenos">12</span>    <span class="s2">&quot;sphinx_design&quot;</span><span class="p">,</span>
+<span class="linenos">13</span>    <span class="s2">&quot;sphinx_needs&quot;</span><span class="p">,</span>
+<span class="linenos">14</span>    <span class="s2">&quot;sphinxcontrib.plantuml&quot;</span><span class="p">,</span>
+<span class="linenos">15</span>    <span class="s2">&quot;score_plantuml&quot;</span><span class="p">,</span>
+<span class="linenos">16</span>    <span class="s2">&quot;score_metamodel&quot;</span><span class="p">,</span>
+<span class="linenos">17</span>    <span class="s2">&quot;score_draw_uml_funcs&quot;</span><span class="p">,</span>
+<span class="linenos">18</span>    <span class="s2">&quot;score_source_code_linker&quot;</span><span class="p">,</span>
+<span class="linenos">19</span>    <span class="s2">&quot;score_layout&quot;</span><span class="p">,</span>
+<span class="linenos">20</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Notes:</p>
+<ul class="simple">
+<li><p>project_prefix (e.g., <em>“SCRAMPLE_”</em>) is important.
+Other modules will use this prefix when referencing sphinx-needs elements from your module.</p></li>
+<li><p>S-CORE extensions (score_*) are automatically provided via <em>score_docs_as_code</em>.</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/docs/index.rst">index.rst</a>
+is the main entry point for your documentation. It includes all other .rst files, that should be part of the documentation build.</p></li>
+</ul>
+</section>
+<section id="building-documentation">
+<h2>Building documentation<a class="headerlink" href="#building-documentation" title="Link to this heading">#</a></h2>
+<p>Run the following command to validate the documentation setup:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="o">%</span> <span class="n">bazel</span> <span class="n">build</span> <span class="o">//</span><span class="p">:</span><span class="n">docs</span>
+</span></pre></div>
+</div>
+<p>The first execution running the bazel command may take longer, because bazel needs to download toolchains and dependencies.
+Subsequent runs will be much faster. The command we’ve called will check the consistency of your documentation for errors,
+but will not generate any html files. To do so, run following command</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="o">%</span> <span class="n">bazel</span> <span class="n">run</span> <span class="o">//</span><span class="p">:</span><span class="n">docs</span>
+</span><span class="n">Running</span> <span class="n">Sphinx</span> <span class="n">v8</span><span class="mf">.2.3</span>
+<span class="n">loading</span> <span class="n">translations</span> <span class="p">[</span><span class="n">en</span><span class="p">]</span><span class="o">...</span> <span class="n">done</span>
+<span class="n">DEBUG</span><span class="p">:</span> <span class="n">Found</span> <span class="mi">0</span> <span class="n">need</span> <span class="n">references</span> <span class="ow">in</span> <span class="mf">0.00</span> <span class="n">seconds</span>
+<span class="n">calculate</span> <span class="n">directory_hash</span> <span class="o">=</span> <span class="n">e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</span> <span class="n">within</span> <span class="mf">0.00019431114196777344</span> <span class="n">seconds</span><span class="o">.</span>
+<span class="n">loading</span> <span class="n">pickled</span> <span class="n">environment</span><span class="o">...</span> <span class="n">The</span> <span class="n">configuration</span> <span class="n">has</span> <span class="n">changed</span> <span class="p">(</span><span class="mi">7</span> <span class="n">options</span><span class="p">:</span> <span class="s1">&#39;html_permalinks_icon&#39;</span><span class="p">,</span> <span class="s1">&#39;html_static_path&#39;</span><span class="p">,</span> <span class="s1">&#39;needs_layouts&#39;</span><span class="p">,</span> <span class="s1">&#39;needs_types&#39;</span><span class="p">,</span> <span class="s1">&#39;plantuml&#39;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+<span class="n">done</span>
+<span class="n">building</span> <span class="p">[</span><span class="n">mo</span><span class="p">]:</span> <span class="n">targets</span> <span class="k">for</span> <span class="mi">0</span> <span class="n">po</span> <span class="n">files</span> <span class="n">that</span> <span class="n">are</span> <span class="n">out</span> <span class="n">of</span> <span class="n">date</span>
+<span class="n">writing</span> <span class="n">output</span><span class="o">...</span>
+<span class="n">building</span> <span class="p">[</span><span class="n">html</span><span class="p">]:</span> <span class="n">build_info</span> <span class="n">mismatch</span><span class="p">,</span> <span class="n">copying</span> <span class="o">.</span><span class="n">buildinfo</span> <span class="n">to</span> <span class="o">.</span><span class="n">buildinfo</span><span class="o">.</span><span class="n">bak</span>
+<span class="n">building</span> <span class="p">[</span><span class="n">html</span><span class="p">]:</span> <span class="n">targets</span> <span class="k">for</span> <span class="mi">1</span> <span class="n">source</span> <span class="n">files</span> <span class="n">that</span> <span class="n">are</span> <span class="n">out</span> <span class="n">of</span> <span class="n">date</span>
+<span class="n">updating</span> <span class="n">environment</span><span class="p">:</span> <span class="p">[</span><span class="n">config</span> <span class="n">changed</span> <span class="p">(</span><span class="s1">&#39;skip_rescanning_via_source_code_linker&#39;</span><span class="p">)]</span> <span class="mi">1</span> <span class="n">added</span><span class="p">,</span> <span class="mi">0</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">0</span> <span class="n">removed</span>
+<span class="n">reading</span> <span class="n">sources</span><span class="o">...</span> <span class="p">[</span><span class="mi">100</span><span class="o">%</span><span class="p">]</span> <span class="n">index</span>
+<span class="n">Copying</span> <span class="n">static</span> <span class="n">files</span> <span class="k">for</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">data</span><span class="o">-</span><span class="n">viewer</span> <span class="n">support</span>
+<span class="n">Copying</span> <span class="n">static</span> <span class="n">files</span> <span class="k">for</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">needs</span> <span class="n">datatables</span> <span class="n">support</span>
+<span class="n">Copying</span> <span class="n">static</span> <span class="n">style</span> <span class="n">files</span> <span class="k">for</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">needs</span>
+<span class="n">looking</span> <span class="k">for</span> <span class="n">now</span><span class="o">-</span><span class="n">outdated</span> <span class="n">files</span><span class="o">...</span> <span class="n">none</span> <span class="n">found</span>
+<span class="n">pickling</span> <span class="n">environment</span><span class="o">...</span> <span class="n">done</span>
+<span class="n">checking</span> <span class="n">consistency</span><span class="o">...</span> <span class="n">done</span>
+<span class="n">preparing</span> <span class="n">documents</span><span class="o">...</span> <span class="n">done</span>
+<span class="n">copying</span> <span class="n">assets</span><span class="o">...</span>
+<span class="n">copying</span> <span class="n">static</span> <span class="n">files</span><span class="o">...</span>
+<span class="n">Writing</span> <span class="n">evaluated</span> <span class="n">template</span> <span class="n">result</span> <span class="n">to</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">_dev</span><span class="o">/</span><span class="n">scrample</span><span class="o">/</span><span class="n">_build</span><span class="o">/</span><span class="n">_static</span><span class="o">/</span><span class="n">basic</span><span class="o">.</span><span class="n">css</span>
+<span class="n">Writing</span> <span class="n">evaluated</span> <span class="n">template</span> <span class="n">result</span> <span class="n">to</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">_dev</span><span class="o">/</span><span class="n">scrample</span><span class="o">/</span><span class="n">_build</span><span class="o">/</span><span class="n">_static</span><span class="o">/</span><span class="n">language_data</span><span class="o">.</span><span class="n">js</span>
+<span class="n">Writing</span> <span class="n">evaluated</span> <span class="n">template</span> <span class="n">result</span> <span class="n">to</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">_dev</span><span class="o">/</span><span class="n">scrample</span><span class="o">/</span><span class="n">_build</span><span class="o">/</span><span class="n">_static</span><span class="o">/</span><span class="n">documentation_options</span><span class="o">.</span><span class="n">js</span>
+<span class="n">copying</span> <span class="n">static</span> <span class="n">files</span><span class="p">:</span> <span class="n">done</span>
+<span class="n">copying</span> <span class="n">extra</span> <span class="n">files</span><span class="o">...</span>
+<span class="n">copying</span> <span class="n">extra</span> <span class="n">files</span><span class="p">:</span> <span class="n">done</span>
+<span class="n">copying</span> <span class="n">assets</span><span class="p">:</span> <span class="n">done</span>
+
+<span class="n">generating</span> <span class="n">indices</span><span class="o">...</span> <span class="n">genindex</span> <span class="n">done</span>
+<span class="n">writing</span> <span class="n">additional</span> <span class="n">pages</span><span class="o">...</span> <span class="n">search</span> <span class="n">done</span>
+<span class="n">dumping</span> <span class="n">search</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">English</span> <span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">en</span><span class="p">)</span><span class="o">...</span> <span class="n">done</span>
+<span class="n">dumping</span> <span class="nb">object</span> <span class="n">inventory</span><span class="o">...</span> <span class="n">done</span>
+<span class="n">Needs</span> <span class="n">successfully</span> <span class="n">exported</span>
+<span class="n">build</span> <span class="n">succeeded</span><span class="o">.</span>
+
+<span class="hll"><span class="n">The</span> <span class="n">HTML</span> <span class="n">pages</span> <span class="n">are</span> <span class="ow">in</span> <span class="o">../../../../../../../../../../../</span><span class="n">_dev</span><span class="o">/</span><span class="n">scrample</span><span class="o">/</span><span class="n">_build</span><span class="o">.</span>
+</span></pre></div>
+</div>
+<p>After a successful build, the html files can be copied somewhere and opened in a web browser.</p>
+<p>When working on the documentation, it is helpful to see the current status directly in the web browser.
+One option is to use the <em>live preview</em> feature. The corresponding bazel target is automatically imported
+when you import <em>doc bazel rule</em> into your BUILD file.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;@score_docs_as_code//:docs.bzl&quot;</span><span class="p">,</span> <span class="s2">&quot;docs&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Run the following command:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="o">%</span> <span class="n">bazel</span> <span class="n">run</span> <span class="o">//</span><span class="p">:</span><span class="n">live_preview</span>
+</span>
+<span class="o">...</span>
+
+<span class="n">Needs</span> <span class="n">successfully</span> <span class="n">exported</span>
+<span class="n">build</span> <span class="n">succeeded</span><span class="o">.</span>
+
+<span class="n">The</span> <span class="n">HTML</span> <span class="n">pages</span> <span class="n">are</span> <span class="ow">in</span> <span class="o">../../../../../../../../../../../</span><span class="n">_dev</span><span class="o">/</span><span class="n">playground_2</span><span class="o">/</span><span class="n">scrample</span><span class="o">/</span><span class="n">_build</span><span class="o">.</span>
+<span class="hll"><span class="p">[</span><span class="n">sphinx</span><span class="o">-</span><span class="n">autobuild</span><span class="p">]</span> <span class="n">Serving</span> <span class="n">on</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">8000</span>
+</span><span class="p">[</span><span class="n">sphinx</span><span class="o">-</span><span class="n">autobuild</span><span class="p">]</span> <span class="n">Waiting</span> <span class="n">to</span> <span class="n">detect</span> <span class="n">changes</span><span class="o">...</span>
+</pre></div>
+</div>
+<p>As you can see, a local server is started on following port and address: <a class="reference external" href="http://127.0.0.1:8000">http://127.0.0.1:8000</a> .
+Open it in your web browser and you should be able to view the current version of the documentation.</p>
+<a class="reference internal image-reference" href="../../_images/initial_module_rst_content.png"><img alt="Architecture overview" class="align-center" src="../../_images/initial_module_rst_content.png" style="width: 400px;" />
+</a>
+<p>The live preview:</p>
+<ul class="simple">
+<li><p>rebuilds automatically</p></li>
+<li><p>updates on every file change</p></li>
+<li><p>stays active until you stop the bazel process (Ctrl+C).</p></li>
+</ul>
+<p>Now you can replace the placeholder content in index.rst with meaningful text, as shown in the following
+<a class="reference external" href="https://github.com/eclipse-score/scrample/commit/5179175823ecda51775e459ad73d7230cd4c880a">commit</a>.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="first_score_module.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">First Eclipse S-CORE Module</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="building_source_code.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Building source code</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-a-bazel-documentation-target">Defining a Bazel Documentation Target</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sphinx-configuration">Sphinx configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-documentation">Building documentation</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/handbook/building_simple_application/doc_generation.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
