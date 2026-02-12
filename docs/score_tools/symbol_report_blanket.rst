@@ -18,7 +18,7 @@
    :version: 1.90.0 (see [1])
    :tcl: HIGH
    :safety_affected: YES
-   :security_affected: NO
+   :security_affected: YES
    :realizes: wp__tool_verification_report
    :tags: tool_management
 
@@ -56,7 +56,7 @@ Installation and integration
 ----------------------------
 Installation
 ~~~~~~~~~~~~
-| To add the Code coverage to your project or module follow guidelines in WIP
+| To add the Code coverage to your project or module follow guidelines in `here <https://github.com/eclipse-score/tooling/blob/main/coverage/README.md>`_.
 
 Integration
 ~~~~~~~~~~~
@@ -88,27 +88,25 @@ qualified and output of coverage data in `.profraw` format is correct. Due to th
      - False-positive: A function is reported as covered, although it is not covered
      - Overreporting, could result in testing gap.
      - yes
-     - | Likelihood of such an error low due to wide usage of the tool (many S-CORE modules and other projects like ferrocene)
-       | Additionally, every new tool release is tested by running tests in prepared integration testsuite to detect such errors. (PROPOSAL POINT)
-     - yes
+     - **No**. However likelihood of such an error low due to wide usage of the tool (many S-CORE modules and other projects like ferrocene and their customers)
      - no
+     - **Yes**. Every new tool release is tested by running tests in prepared integration testsuite to detect such errors.
      - high
    * - 2
      - False-negative: A function is reported as not covered, although it is covered
      - Underreporting, will not result in testing gap.
      - yes
-     - Since we want to achieve 90%+ branch coverage this would stand out and be manually investigated.
-     - yes
+     - Since we want to achieve 100% branch coverage (`check here <https://eclipse-score.github.io/score/main/platform_management_plan/software_verification.html#quality-criteria>`_) this would stand out and be manually investigated.
+     - no
      - no
      - high
    * - 3
      - Overcounting: Total number of functions is too low
      -  A function is not being considered, although it is part of the certified subset
      - yes
-     - | `symbol-report` is developed to use exactly the same information as the compiler
-       | Additionally, every new tool release is tested by running tests in prepared integration testsuite to detect such errors. (PROPOSAL POINT)
+     - `symbol-report` is developed to use exactly the same information as the compiler
      - yes
-     - no
+     - **Yes**. Every new tool release is tested by running tests in prepared integration testsuite to detect such errors.
      - high
    * - 4
      - Undercounting: Total number of functions is too high
@@ -122,19 +120,17 @@ qualified and output of coverage data in `.profraw` format is correct. Due to th
      - Line that can be executed not being reported as executable
      - Underreporting, code that should be tested may not being tested
      - yes
-     - | `blanket`` warns if a function has no executable line
-       | Additionally, every new tool release is tested by running tests in prepared integration testsuite to detect such errors. (PROPOSAL POINT)
+     - `blanket` warns if a function has no executable line
      - yes
-     - no
+     - **Yes**. Additionally, every new tool release is tested by running tests in prepared integration testsuite to detect such errors.
      - high
    * - 6
      - Coverage calculation errors: rounding, aggregation errors
      - Overreporting or underreporting of coverage that can lead to testing gaps
      - yes
-     - | Every new tool release is tested by running tests in prepared integration testsuite to detect such errors. (PROPOSAL POINT)
-       | Since this would be systematic error, it would be detected during manual review of coverage reports (always rounded values, too big/low coverage even no tests are there, etc.).
+     - Since this would be systematic error, it would be detected during manual review of coverage reports (always rounded values, too big/low coverage even no tests are there, etc.).
      - yes
-     - no
+     - **Yes**. Every new tool release is tested by running tests in prepared integration testsuite to detect such errors.
      - high
    * - 7
      - Coverage reported for another function
@@ -145,10 +141,30 @@ qualified and output of coverage data in `.profraw` format is correct. Due to th
      - no
      - high
 
+Security evaluation
+-------------------
+This section outlines the security evaluation of Rustfmt for its use within the S-CORE project.
+
+
+.. list-table:: Security evaluation
+   :header-rows: 1
+
+   * - Threat identification
+     - Use case description
+     - Threats
+     - Impact on security?
+     - Impact security measures available?
+     - Impact security detection sufficient?
+   * - 1
+     - TBD
+     - TBD
+     - TBD
+     - TBD
+     - TBD
 
 Result
 ~~~~~~
-Symbol report and blanket do not require qualification for use in safety-related software development according to ISO 26262.
+Considering evaluation and a `Further additional safety measure ` the `symbol report` and `blanket` do not require qualification for use in safety-related software development according to ISO 26262.
 
 .. [1] The tool version mentioned in this document is preliminary.
        Exact version shall be derived from qualified Rust compiler used in S-CORE project.
