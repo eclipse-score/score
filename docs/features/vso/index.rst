@@ -19,9 +19,10 @@ Vehicle Service Orchestrator
 .. document:: Vehicle Service Orchestrator
    :id: doc__vso
    :status: draft
-   :safety: ASIL-B
+   :safety: ASIL_B
+   :security: YES
    :tags: feature_request
-
+   :realizes: wp__feat_request
 
 .. toctree::
    :maxdepth: 1
@@ -184,16 +185,15 @@ The system follows a three-layer architecture specialized for in-vehicle environ
 - **Agent Layer:** NodeAgent handles execution on each node
 - **Runtime Layer:** Container engine performs actual container operations
 
-.. image:: _assets/vso-architecture.svg
+.. image:: _assets/VSO_architecture.png
    :alt: Vehicle Service Orchestrator Architecture
 
 Core Components
-^^^^^^^^^^^^^^^
-
-**APIServer
+---------------
+**APIServer**
   Interfaces with user to add or remove the manifest(scenarios)
 
-**Vehicle Data Filtergatewy
+**Vehicle Data Filtergateway**
  Services are automatically controlled based on changes in vehicle state.
 
 **ActionController**
@@ -210,7 +210,7 @@ Workload Lifecycle Management
 ------------------------------
 
 Standard Command Set
-^^^^^^^^^^^^^^^^^^^^
+--------------------
 
 Seven essential workload commands are supported:
 
@@ -225,7 +225,7 @@ Seven essential workload commands are supported:
 All commands are delivered via remote procedure calls and follow a standardized response format.
 
 Container State Model
-^^^^^^^^^^^^^^^^^^^^^^
+---------------------
 
 Containers are managed across five main states:
 
@@ -242,7 +242,7 @@ Scenario-Based Automation
 --------------------------
 
 Conditional Execution Engine
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------
 
 Services are automatically controlled based on changes in vehicle state.
 Scenario information is retrieved from a distributed key-value store, and corresponding actions are executed automatically when conditions are met.
@@ -253,13 +253,13 @@ Resource Management and Isolation
 ----------------------------------
 
 Container Security Isolation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------
 
 User identifiers, group permissions, and Linux capabilities are strictly controlled according to the principle of least privilege.
 Restricting privileged mode and applying security contexts strengthens system-level protection.
 
 Performance Optimization
-^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------
 
 Processor and memory usage are tracked in real time, allowing early detection of resource shortages.
 Parallel container creation, asynchronous processing, and automatic scaling optimize startup times and maximize efficiency.
@@ -269,7 +269,7 @@ Monitoring and Recovery
 ------------------------
 
 State Monitoring
-^^^^^^^^^^^^^^^^
+----------------
 
 Comprehensive health checks continuously monitor:
 
@@ -278,8 +278,8 @@ Comprehensive health checks continuously monitor:
 - Application-level health (Liveness Probe)
 - Timing constraints (Timing Probe)
  process status, port connectivity, and application-level health.Failure recovery is automated according to restart policies.
-Failed containers are automatically restarted, and state-based corrective actions minimize operational downtime.
-Customized recovery logic is applied depending on the error type.
+ Failed containers are automatically restarted, and state-based corrective actions minimize operational downtime.
+ Customized recovery logic is applied depending on the error type.
 
 
 Requirements
@@ -329,7 +329,7 @@ The orchestrator components themselves must be developed with safety-appropriate
 Safety Impact
 =============
 
-The Vehicle Service Orchestrator is classified as **ASIL-B** due to its role in managing safety-critical workloads.
+The Vehicle Service Orchestrator is classified as **ASIL_B** due to its role in managing safety-critical workloads.
 
 While the orchestrator does not directly implement safety functions (e.g., braking, steering),
 it provides the runtime environment and resource guarantees necessary for safety-critical applications to meet their timing and reliability requirements.
@@ -347,7 +347,7 @@ To address these risks:
 - The orchestrator enforces FFI (Freedom From Interference) between criticality levels
 - Health checks and monitoring detect failures immediately
 
-The core orchestrator components (ActionController, StateManager, NodeAgent) must be developed according to ASIL-B quality standards.
+The core orchestrator components (ActionController, StateManager, NodeAgent) must be developed according to ASIL_B quality standards.
 Safety analysis (FMEA, DFA) will be conducted to identify and mitigate potential failure modes.
 
 
@@ -377,7 +377,7 @@ For automotive engineers unfamiliar with containers, the following learning path
 
 1. **Container Basics:** Understand container images, isolation, and resource management
 2. **Declarative Configuration:** Learn Manifest-based deployment vs. imperative scripting
-3. **Mixed-Criticality Concepts:** Understand ASIL-based resource allocation and FFI
+3. **Mixed-Criticality Concepts:** Understand ASIL_Based resource allocation and FFI
 4. **Orchestration Patterns:** Learn automatic recovery, health checks, and state management
 5. **Vehicle-Specific Adaptations:** Understand timing probes, scenario-based automation, and constrained resource management
 
@@ -420,7 +420,7 @@ Open Issues
 - Define metrics collection format and integration with S-CORE monitoring
 - Specify integration points with existing S-CORE Lifecycle Management
 - Determine OTA update flow for containerized workloads
-- Define certification and qualification strategy for ASIL-B components
+- Define certification and qualification strategy for ASIL_B components
 - Specify testing strategy for mixed-criticality scenarios
 - Determine multi-ECU orchestration and cross-node communication patterns
 - Define failure mode analysis and safety case structure
@@ -430,7 +430,8 @@ Open Issues
 
 Footnotes
 =========
-
-.. [#v1] "Kubernetes Documentation", Kubernetes, https://kubernetes.io/docs/.
-.. [#v2] "ISO 26262 Road vehicles — Functional safety", ISO, https://www.iso.org/standard/68383.html.
-.. [#v3] "OCI Runtime Specification", Open Container Initiative, https://github.com/opencontainers/runtime-spec.
+# *******
+# .. [#v1] "Kubernetes Documentation", Kubernetes, https://kubernetes.io/docs/.
+# .. [#v2] "ISO 26262 Road vehicles — Functional safety", ISO, https://www.iso.org/standard/68383.html.
+# .. [#v3] "OCI Runtime Specification", Open Container Initiative, https://github.com/opencontainers/runtime-spec.
+# ********

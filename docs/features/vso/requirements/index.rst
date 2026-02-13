@@ -70,7 +70,7 @@ Resource Management and Isolation
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies: stkh_req__vso__resource_guarantees
+   :satisfies: stkh_req__dependability__security_features
    :status: valid
 
    Processor and memory usage are tracked in real time, allowing early detection of resource shortages. Parallel container creation, asynchronous processing, and automatic scaling optimize startup times and maximize efficiency.
@@ -83,7 +83,7 @@ Monitoring and Recovery
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies: stkh_req__dependability__automotive_safety,stkh_req__vso__failure_detection
+   :satisfies: stkh_req__dependability__automotive_safety
    :status: valid
 
    Comprehensive health checks continuously monitor process status, port connectivity, and application-level health. Changes in status are detected immediately, ensuring consistency across the entire system.

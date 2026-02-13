@@ -78,7 +78,7 @@ Overall goals
 
 
 
-Functional requirementshttps://github.com/eclipse-score/score.git
+Functional requirements
 -----------------------
 
 .. stkh_req:: File Based Configuration
@@ -1009,7 +1009,7 @@ VSO Resource Management
 
 
 VSO Security and Isolation
-------------------------
+--------------------------
 .. stkh_req:: Container Security Enforcement
    :id: stkh_req__vso__security_isolation
    :reqtype: Functional
@@ -1053,6 +1053,10 @@ VSO Security and Isolation
    :security: YES
    :safety: ASIL_B
    :rationale: Enable proactive problem detection and post-incident analysis through comprehensive system metrics
+   :status: valid
+   
+   The platform shall verify System Observability
+   
 
 Hardware support
 ----------------
