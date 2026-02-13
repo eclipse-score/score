@@ -23,7 +23,7 @@ Workload Lifecycle Management
    :id: feat_req__vso__standard_commands
    :reqtype: Functional
    :security: YES
-   :safety: ASIL-B
+   :safety: ASIL_B
    :satisfies: stkh_req__vso__workload_control
    :status: valid
 
@@ -33,7 +33,7 @@ Workload Lifecycle Management
    :id: feat_req__vso__state_model
    :reqtype: Functional
    :security: YES
-   :safety: ASIL-B
+   :safety: ASIL_B
    :satisfies: stkh_req__vso__workload_control
    :status: valid
 
@@ -46,7 +46,7 @@ Scenario-Based Automation
    :id: feat_req__vso__conditional_execution
    :reqtype: Functional
    :security: YES
-   :safety: ASIL-B
+   :safety: ASIL_B
    :satisfies: stkh_req__vso__vehicle_state_awareness
    :status: valid
 
@@ -59,7 +59,7 @@ Resource Management and Isolation
    :id: feat_req__vso__security_isolation
    :reqtype: Functional
    :security: YES
-   :safety: ASIL-B
+   :safety: ASIL_B
    :satisfies: stkh_req__dependability__security_features,stkh_req__vso__security_isolation
    :status: valid
 
@@ -69,7 +69,7 @@ Resource Management and Isolation
    :id: feat_req__vso__perf_optimization
    :reqtype: Functional
    :security: YES
-   :safety: ASIL-B
+   :safety: ASIL_B
    :satisfies: stkh_req__vso__resource_guarantees
    :status: valid
 
@@ -82,7 +82,7 @@ Monitoring and Recovery
    :id: feat_req__vso__state_monitoring
    :reqtype: Functional
    :security: YES
-   :safety: ASIL-B
+   :safety: ASIL_B
    :satisfies: stkh_req__dependability__automotive_safety,stkh_req__vso__failure_detection
    :status: valid
 
@@ -92,7 +92,7 @@ Monitoring and Recovery
    :id: feat_req__vso__auto_recovery
    :reqtype: Functional
    :security: YES
-   :safety: ASIL-B
+   :safety: ASIL_B
    :satisfies: stkh_req__dependability__automotive_safety,stkh_req__vso__fault_tolerance
    :status: valid
 

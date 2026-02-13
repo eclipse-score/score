@@ -965,7 +965,7 @@ VSO Workload Management
    :id: stkh_req__vso__workload_control
    :reqtype: Functional
    :security: YES
-   :safety: ASIL-B
+   :safety: ASIL_B
    :rationale: Provide standardized workload control mechanisms consistent with cloud-native practices while meeting automotive reliability requirements.
    :status: valid
 
@@ -976,7 +976,7 @@ VSO Workload Management
    :id: stkh_req__vso__vehicle_state_awareness
    :reqtype: Functional
    :security: YES
-   :safety: ASIL-B
+   :safety: ASIL_B
    :rationale: Enable dynamic workload management based on driving conditions to optimize resource utilization and ensure safety requirements are met.
    :status: valid
 
@@ -990,7 +990,7 @@ VSO Mixed-Criticality Support
    :id: stkh_req__vso__asil_qm_coexistence
    :reqtype: Functional
    :security: YES
-   :safety: ASIL-B
+   :safety: ASIL_B
    :rationale: Enable safe coexistence of safety-critical and quality-managed applications on shared hardware while preventing interference.
    :status: valid
 
@@ -1000,7 +1000,7 @@ VSO Resource Management
    :id: stkh_req__vso__workload_isolation
    :reqtype: Functional
    :security: YES
-   :safety: ASIL-B
+   :safety: ASIL_B
    :rationale: Prevent resource contention and timing violations between workloads of different criticality levels to maintain system safety.
    :status: valid
 
@@ -1014,7 +1014,7 @@ VSO Security and Isolation
    :id: stkh_req__vso__security_isolation
    :reqtype: Functional
    :security: YES
-   :safety: ASIL-B
+   :safety: ASIL_B
    :rationale: Protect the system from compromised or malicious containers through strict security controls and least-privilege enforcement.
    :status: valid
 
@@ -1029,7 +1029,7 @@ VSO Security and Isolation
    :id: stkh_req__vso__fault_tolerance
    :reqtype: Functional
    :security: YES
-   :safety: ASIL-B
+   :safety: ASIL_B
    :rationale: Maintain system availability and safety by automatically recovering from failures without human intervention.
    :status: valid
 
@@ -1040,7 +1040,7 @@ VSO Security and Isolation
    :id: stkh_req__vso__timing_guarantees
    :reqtype: Functional
    :security: YES
-   :safety: ASIL-B
+   :safety: ASIL_B
    :rationale: Ensure safety-critical applications meet their real-time timing requirements under all operating conditions.
    :status: valid
 
@@ -1051,7 +1051,7 @@ VSO Security and Isolation
    :id: stkh_req__vso__observability
    :reqtype: Functional
    :security: YES
-   :safety: ASIL-B
+   :safety: ASIL_B
    :rationale: Enable proactive problem detection and post-incident analysis through comprehensive system metrics
 
 Hardware support
