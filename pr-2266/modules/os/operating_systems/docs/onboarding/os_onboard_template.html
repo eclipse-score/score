@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -581,7 +581,7 @@
                   
   <section id="os-name">
 <h1>OS Name<a class="headerlink" href="#os-name" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-8c1a70ae">
+<div class="need_container docutils container" id="SNCB-9fa05893">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__os_onboarding">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -655,11 +655,11 @@ Keep this to 3-6 lines. Mention what the OS is and the intended usage context.</
 <li><p>Link to external documentation if it exists.</p></li>
 </ul>
 </section>
-<section id="build-instructions">
-<h2>Build Instructions<a class="headerlink" href="#build-instructions" title="Link to this heading">#</a></h2>
+<section id="supported-architectures">
+<h2>Supported Architectures<a class="headerlink" href="#supported-architectures" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <tbody>
-<tr class="row-odd"><td><p>Target Arch</p></td>
+<tr class="row-odd"><td><p>Target Architecture</p></td>
 <td><p>Comments</p></td>
 </tr>
 <tr class="row-even"><td><p>&lt;target_arch&gt;</p></td>
@@ -668,6 +668,9 @@ Keep this to 3-6 lines. Mention what the OS is and the intended usage context.</
 </tbody>
 </table>
 </div>
+</section>
+<section id="build-instructions">
+<h2>Build Instructions<a class="headerlink" href="#build-instructions" title="Link to this heading">#</a></h2>
 <p>Explain how to build an image (or how to retrieve a pre-built one) of this OS and how to build Eclipse S-CORE for it.</p>
 <p>Provide any architecture specific details based on the architecture table.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>example<span class="w"> </span>commands<span class="w"> </span>to<span class="w"> </span>build<span class="w"> </span>an<span class="w"> </span>image
@@ -677,25 +680,16 @@ Keep this to 3-6 lines. Mention what the OS is and the intended usage context.</
 </pre></div>
 </div>
 <p>Provide any additional context, such as how to boot or run the image (e.g. with QEMU), supported architectures, etc.</p>
+<p>Describe any additional distinctions that need to be made based on the “Supported Architectures” section.</p>
 </section>
 <section id="toolchain">
 <h2>Toolchain<a class="headerlink" href="#toolchain" title="Link to this heading">#</a></h2>
-<div class="pst-scrollable-table-container"><table class="table">
-<tbody>
-<tr class="row-odd"><td><p>Target Arch</p></td>
-<td><p>Comments</p></td>
-</tr>
-<tr class="row-even"><td><p>&lt;target_arch&gt;</p></td>
-<td><p>&lt;Native Only, Cross Compile&gt;</p></td>
-</tr>
-</tbody>
-</table>
-</div>
 <ul class="simple">
 <li><p>Any details worth mentioning</p></li>
 <li><p>Provide any architecture specific details based on the architecture table.</p></li>
 <li><p>Explain how to set up Bazel toolchains for this OS.</p></li>
 <li><p>Include a short example <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code> snippet.</p></li>
+<li><p>Describe any additional distinctions that need to be made based on the “Supported Architectures” section.</p></li>
 </ul>
 </section>
 <section id="bug-interface">
@@ -757,6 +751,7 @@ Keep this to 3-6 lines. Mention what the OS is and the intended usage context.</
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#target-maintainers-integration-assistance">Target Maintainers/Integration Assistance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-assistance">Integration Assistance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-manual">Integration Manual</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-architectures">Supported Architectures</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-instructions">Build Instructions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#toolchain">Toolchain</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bug-interface">Bug Interface</a></li>

@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -495,9 +495,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../diagnostics/index.html">Diagnostic and Fault Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../frameworks/index.html">Frameworks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../infrastructure/index.html">Infrastructure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../integration/index.html">Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lifecycle/index.html">Lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nonipc/index.html">NonIPC Communication</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Orchestration (v0.5 beta)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../requirements/index.html">Requirements</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Feature Architecture</a></li>
@@ -574,7 +573,7 @@
                   
   <section id="feature-architecture">
 <h1>Feature Architecture<a class="headerlink" href="#feature-architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-b173492f">
+<div class="need_container docutils container" id="SNCB-769d0f2c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__orchestration_architecture">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -617,7 +616,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-1583b04f">
+<div class="need_container docutils container" id="SNCB-dbe8604f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat table" id="feat__orchestration">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -684,7 +683,7 @@
 </section>
 <section id="static-architecture">
 <h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-a6fde635">
+<div class="need_container docutils container" id="SNCB-7f2a53d2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_sta table" id="feat_arc_sta__orchestration__static_view">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -713,7 +712,7 @@
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-features/orchestration/architecture/index-0">
-<object data="../../../_images/plantuml-93eeff5c4670da6b496315954305ed55eeecd719.svg" type="image/svg+xml" style="width:774px;height:872px;background:#FFFFFF;"></object></p>
+<object data="../../../_images/plantuml-5bdb445a61c4b33846d2347a68f37ac540a4b16d.svg" type="image/svg+xml" style="width:774px;height:872px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -778,7 +777,7 @@ deployment, bridging the gap between the design phase and the deployment phase.<
 <section id="interface-description">
 <h2>Interface Description<a class="headerlink" href="#interface-description" title="Link to this heading">#</a></h2>
 <p>The public API for the frontend is defined as:</p>
-<div class="need_container docutils container" id="SNCB-b7ca1917">
+<div class="need_container docutils container" id="SNCB-19a22d06">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__orchestration__user">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -825,7 +824,7 @@ deployment, bridging the gap between the design phase and the deployment phase.<
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5980d480">
+<div class="need_container docutils container" id="SNCB-7fa65d3b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__orchestration__design">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -871,7 +870,7 @@ deployment, bridging the gap between the design phase and the deployment phase.<
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-0bad2b5c">
+<div class="need_container docutils container" id="SNCB-a0a54470">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__orchestration__deployment">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">

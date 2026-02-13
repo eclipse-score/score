@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -579,7 +579,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-a29457d4">
+  <div class="need_container docutils container" id="SNCB-e964c727">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp table" id="comp__os_autosd">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -657,11 +657,11 @@ such as an optimized automotive-specific kernel rather than CentOS Stream’s ke
 <section id="integration-manual">
 <h2>Integration Manual<a class="headerlink" href="#integration-manual" title="Link to this heading">#</a></h2>
 <p>The following fulfills <a class="reference internal" href="../../../../../requirements/platform_assumptions/index.html#aou_req__platform__os_integration_manual" title="aou_req__platform__os_integration_manual"><em class="xref need">integration manual (aou_req__platform__os_integration_manual)</em></a></p>
-<section id="build-instructions">
-<h3>Build Instructions<a class="headerlink" href="#build-instructions" title="Link to this heading">#</a></h3>
+<section id="supported-architectures">
+<h3>Supported Architectures<a class="headerlink" href="#supported-architectures" title="Link to this heading">#</a></h3>
 <div class="pst-scrollable-table-container"><table class="table">
 <tbody>
-<tr class="row-odd"><td><p>Target Arch</p></td>
+<tr class="row-odd"><td><p>Target Architecture</p></td>
 <td><p>Comments</p></td>
 </tr>
 <tr class="row-even"><td><p>x86_64</p></td>
@@ -673,6 +673,9 @@ such as an optimized automotive-specific kernel rather than CentOS Stream’s ke
 </tbody>
 </table>
 </div>
+</section>
+<section id="build-instructions">
+<h3>Build Instructions<a class="headerlink" href="#build-instructions" title="Link to this heading">#</a></h3>
 <p>Building an AutoSD image can be done by using <a class="reference external" href="https://gitlab.com/CentOS/automotive/src/automotive-image-builder">aib</a>.</p>
 <p>Sample usage:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">OCI_IMAGE</span><span class="o">=</span>localhost/score:latest
@@ -718,20 +721,6 @@ sudo<span class="w"> </span>-E<span class="w"> </span>./auto-image-builder.sh<sp
 </section>
 <section id="toolchain">
 <h3>Toolchain<a class="headerlink" href="#toolchain" title="Link to this heading">#</a></h3>
-<div class="pst-scrollable-table-container"><table class="table">
-<tbody>
-<tr class="row-odd"><td><p>Target Arch</p></td>
-<td><p>Comments</p></td>
-</tr>
-<tr class="row-even"><td><p>x86_64</p></td>
-<td><p>Native Only</p></td>
-</tr>
-<tr class="row-odd"><td><p>aarch64</p></td>
-<td><p>Native Only</p></td>
-</tr>
-</tbody>
-</table>
-</div>
 <p>Refer to the <a class="reference external" href="https://github.com/eclipse-score/inc_os_autosd/tree/main/toolchain">upstream toolchiain repository</a> for detailed instructions.</p>
 <p>A Bazel toolchain defintion is provided for users to build their Bazel modules and components with AutoSD’s tooling (compilers, libraries, etc).</p>
 <p>Sample usage (MODULE.bazel file):</p>
@@ -844,6 +833,7 @@ sudo<span class="w"> </span>-E<span class="w"> </span>./auto-image-builder.sh<sp
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#os-maintainers-integration-assistance">OS Maintainers/Integration Assistance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-assistance">Integration Assistance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-manual">Integration Manual</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-architectures">Supported Architectures</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-instructions">Build Instructions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#toolchain">Toolchain</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-critical-orchestration">Mixed Critical Orchestration</a></li>
