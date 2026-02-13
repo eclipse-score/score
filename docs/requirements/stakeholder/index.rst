@@ -84,7 +84,7 @@ Functional requirements
 .. stkh_req:: File Based Configuration
    :id: stkh_req__functional_req__file_based
    :reqtype: Functional
-   :security: NOhttps://github.com/eclipse-score/score.git
+   :security: NO
    :safety: QM
    :rationale: File based configuration allows changes without rebuilding the software.
    :status: valid
