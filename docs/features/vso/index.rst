@@ -277,6 +277,7 @@ Comprehensive health checks continuously monitor:
 - Port connectivity
 - Application-level health (Liveness Probe)
 - Timing constraints (Timing Probe)
+
 process status, port connectivity, and application-level health.Failure recovery is automated according to restart policies.
 Failed containers are automatically restarted, and state-based corrective actions minimize operational downtime.
 Customized recovery logic is applied depending on the error type.
