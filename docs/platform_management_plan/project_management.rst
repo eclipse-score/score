@@ -687,6 +687,9 @@ Issues Types
 
 |
 
+Architectural Issues
+""""""""""""""""""""
+
 .. _pmp_pm_feature_request:
 
 **Feature Request**
@@ -711,6 +714,10 @@ A *Component Request* represents an independent work package used to describe mo
 `About Components <https://eclipse-score.github.io/score/main/features/index.html>`_
 
 `Component Request issue template <https://github.com/eclipse-score/.github/.github/ISSUE_TEMPLATE/1b_ComponentRequest.yml>`_
+
+
+Planning Issues
+"""""""""""""""
 
 .. _pmp_pm_product_increment:
 
