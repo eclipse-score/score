@@ -11,14 +11,14 @@ https://www.apache.org/licenses/LICENSE-2.0
 SPDX-License-Identifier: Apache-2.0
 -->
 
-# DR-001-Arch: Consistent Stack vs. Reference Integration
+# DR-001-Strat: Consistent Stack vs. Reference Integration
 
 - **Date:** 2026-02-07
 
 ```{dec_rec} Consistent Stack vs. Reference Integration
-:id: dec_rec__arch__consistent_stack_vs_reference
+:id: dec_rec__strat__consistent_stack_vs_reference
 :status: accepted
-:context: Architecture
+:context: Strategy
 :decision: S-CORE as consistent stack
 ```
 
@@ -51,8 +51,6 @@ Modules created in the context of S-CORE exist to serve the stack. Their evoluti
 
 Existing independently managed open-source projects/modules may be integrated where appropriate. Their independence is accepted, but their integration into S-CORE is evaluated and justified exclusively in terms of stack-level goals.
 
-This decision is binding for the project. Any deviation requires a new, explicitly agreed Architecture Decision Record.
-
 ### No Constraint on Independent Module Delivery
 
 This decision concerns architectural alignment and change justification. It does not impose constraints on modularity, packaging, or delivery models of the modules within the stack.
@@ -60,7 +58,6 @@ This decision concerns architectural alignment and change justification. It does
 In particular, the consistent stack approach does not prevent modules or features from being independently buildable or releasable, nor from being used outside the S-CORE stack.
 
 The decision only establishes that, when modules are integrated into S-CORE, their evolution and changes must be justified in terms of stack-level objectives.
-
 
 ## Options Considered
 
@@ -99,6 +96,19 @@ Planning and prioritization discussions must reference stack-level goals. Module
 This decision enables future decision records to define how architectural alignment is reviewed, how changes are discussed, and how conflicts between module and stack objectives are resolved.
 
 No specific governance structure or role model is defined by this record.
+
+### Handling of Breaking Changes and Integration Alignment
+
+This decision does not prescribe a fixed procedural outcome for cases where module evolution and stack integration timelines diverge, for example when a breaking change in a module cannot be integrated into the stack shortly before a planned S-CORE release.
+
+Both outcomes remain architecturally possible:
+
+- delaying integration to align the stack with the new module version, or
+- releasing the stack with a previously integrated module version.
+
+The decision record does not mandate either approach. Instead, it establishes that such trade-offs must be evaluated and justified in terms of stack-level objectives rather than module-local priorities alone.
+
+In particular, breaking changes in modules intended to be part of the S-CORE stack require explicit consideration of their impact on stack consistency and planned stack use cases.
 
 ## Explicit Non-Goals
 

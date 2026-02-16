@@ -23,5 +23,5 @@ Infrastructure
    :maxdepth: 1
    :glob:
 
+   DR-*-strat*
    DR-*-infra*
-   DR-*-arch*
