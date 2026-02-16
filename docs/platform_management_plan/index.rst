@@ -37,6 +37,7 @@ Platform Management Plan
    tool_management
    release_management
    problem_resolution
+   vulnerability_management
    change_management
    software_verification
    documentation_management
