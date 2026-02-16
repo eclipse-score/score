@@ -589,8 +589,8 @@
 <h2>Principle<a class="headerlink" href="#principle" title="Link to this heading">#</a></h2>
 <p>Promotion has two phases:</p>
 <ol class="arabic simple">
-<li><p><strong>Eligibility (Platform Maintainer)</strong>:
-The platform maintainer resolves the <strong>supplier</strong> requirements of the target level.
+<li><p><strong>Eligibility (OS Maintainer)</strong>:
+The operating system maintainer resolves the <strong>supplier</strong> requirements of the target level.
 Only if these requirements are fulfilled, the OS can be considered for promotion.</p></li>
 <li><p><strong>Acceptance + Lifecycle Guarantees (S-CORE)</strong>:
 S-CORE reviews the promotion request.
@@ -604,11 +604,11 @@ guarantees of the accepted level across all increments.</p></li>
 <dt><strong>What it means</strong></dt><dd><p>In-tree best-effort integration.
 S-CORE provides no guarantees.</p>
 </dd>
-<dt><strong>Eligibility requirements (Platform Maintainer / supplier requirements)</strong></dt><dd><p>The OS maintainer must fulfill the Community level supplier requirements as defined in:
+<dt><strong>Eligibility requirements (OS Maintainer / supplier requirements)</strong></dt><dd><p>The OS maintainer must fulfill the Community level supplier requirements as defined in:
 <a class="reference internal" href="../../../../../requirements/platform_assumptions/index.html#platform-assumptions"><span class="std std-ref">SW-platform Assumptions</span></a>.</p>
 </dd>
 <dt><strong>Review and acceptance (S-CORE)</strong></dt><dd><p>S-CORE reviews the documentation entry for completeness and consistency.
-Acceptance only means the platform is listed in-tree.
+Acceptance only means the operating system is listed in-tree.
 No infrastructure or lifecycle support is implied.</p>
 </dd>
 </dl>
@@ -619,15 +619,15 @@ No infrastructure or lifecycle support is implied.</p>
 <dt><strong>What it means</strong></dt><dd><p>S-CORE provides functional guarantees for the accepted reference integration and
 maintains them across all increments.</p>
 </dd>
-<dt><strong>Eligibility requirements (Platform Maintainer / supplier requirements)</strong></dt><dd><p>The platform maintainer must fulfil the Functional level supplier requirements as defined in:
+<dt><strong>Eligibility requirements (OS Maintainer / supplier requirements)</strong></dt><dd><p>The operating system maintainer must fulfil the Functional level supplier requirements as defined in:
 <a class="reference internal" href="../../../../../requirements/platform_assumptions/index.html#platform-assumptions"><span class="std std-ref">SW-platform Assumptions</span></a>.</p>
 </dd>
-<dt><strong>Additional acceptance requirements (S-CORE / system integrator requirements)</strong></dt><dd><p>From Functional level onwards, S-CORE must be able to continuously validate the platform.
+<dt><strong>Additional acceptance requirements (S-CORE / system integrator requirements)</strong></dt><dd><p>From Functional level onwards, S-CORE must be able to continuously validate the operating system.
 This requires infrastructure and test integration.</p>
 </dd>
 <dt><strong>Required approvals</strong></dt><dd><p>Promotion to Functional requires explicit approval by:</p>
 <ul class="simple">
-<li><p>Platform maintainers</p></li>
+<li><p>OS maintainers</p></li>
 <li><p>Architecture WG</p></li>
 <li><p>Infrastructure WG (CI / build &amp; test environment support)</p></li>
 <li><p>Testing WG</p></li>
@@ -642,7 +642,7 @@ This requires infrastructure and test integration.</p>
 <dt><strong>What it means</strong></dt><dd><p>S-CORE provides certifiability-oriented guarantees for the accepted reference integration
 and maintains them across all increments.</p>
 </dd>
-<dt><strong>Eligibility requirements (Platform Maintainer / supplier requirements)</strong></dt><dd><p>The platform maintainer must fulfill the Certifiable level supplier requirements as defined in:
+<dt><strong>Eligibility requirements (OS Maintainer / supplier requirements)</strong></dt><dd><p>The operating system maintainer must fulfill the Certifiable level supplier requirements as defined in:
 <a class="reference internal" href="../../../../../requirements/platform_assumptions/index.html#platform-assumptions"><span class="std std-ref">SW-platform Assumptions</span></a>.</p>
 </dd>
 <dt><strong>Additional acceptance requirements (S-CORE / system integrator requirements)</strong></dt><dd><p>Certifiable level implies additional safety/security expectations and evidence handling.</p>
@@ -662,8 +662,8 @@ and maintains them across all increments.</p>
 </section>
 <section id="demotion">
 <h2>Demotion<a class="headerlink" href="#demotion" title="Link to this heading">#</a></h2>
-<p>If the eligibility requirements or the S-CORE lifecycle guarantees of an accepted platform
-can no longer be maintained, the platform must be demoted to the highest level that can be
+<p>If the eligibility requirements or the S-CORE lifecycle guarantees of an accepted operating system
+can no longer be maintained, the operating system must be demoted to the highest level that can be
 sustained.</p>
 </section>
 <section id="onboarding-template">
