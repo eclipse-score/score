@@ -17,18 +17,18 @@ Platform DFA (Dependent Failure Analysis)
 =========================================
 
 .. document:: Platform DFA
-   :id: doc__platform_dfa
+   :id: doc__score_platform_dfa
    :status: draft
    :safety: ASIL_B
    :security: NO
    :realizes: wp__platform_dfa
-   :tags: template
+   :tags:
 
 .. note:: The platform DFA is only performed once at platform level to analyse the dependencies between the features of the platform.
           The results shall be used as an input for the safety analysis so that general safety mechanisms are only defined once and not in every single safety analysis.
 
 .. note:: Use the content of the document to describe e.g. why a fault model is not applicable for the diagram.
- 
+
 
 Dependent Failure Initiators
 ----------------------------

@@ -55,7 +55,7 @@ Please note that it is mandatory to fill in the "passed" column with "yes" or "n
         -
       * - REQ_01_02
         - Are the templates for DFA and/or FMEA used?
-        - See :ref:`dfa_templates` / :ref:`FMEA_templates` and also :ref:`process_requirements_safety_analysis`
+        - See :ref:`doc__platform_dfa` 
         - Templates are used to generate the DFA or / and FMEA.
         - <yes|no>
         -
