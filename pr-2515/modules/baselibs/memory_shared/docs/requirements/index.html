@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -504,7 +504,7 @@
 
 
 
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">memory_shared</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">memory</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../architecture/index.html">Memory Shared Component Architecture</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Requirements</a></li>
 </ul>
@@ -512,6 +512,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../message_passing/docs/index.html">message_passing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../os/docs/index.html">os</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../result/docs/index.html">result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../static_reflection_with_serialization/docs/index.html">static_reflection_with_serialization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../utils/docs/index.html">utils</a></li>
 </ul>
 </details></li>
@@ -569,7 +570,7 @@
     <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Baselibs Module</a></li>
     
     
-    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">memory_shared</a></li>
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">memory</a></li>
     
     <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Requirements</span></li>
   </ul>
@@ -590,7 +591,7 @@
                   
   <section id="requirements">
 <h1>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-187137fb">
+<div class="need_container docutils container" id="SNCB-a1539899">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__memory_lib_requirements">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -635,7 +636,7 @@
 </div>
 <section id="functional-requirements">
 <h2>Functional Requirements<a class="headerlink" href="#functional-requirements" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-292885c7">
+<div class="need_container docutils container" id="SNCB-c47d4d3d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__memory__shared_memory">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -657,6 +658,7 @@
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__core_utilities" title="comp_req__memory__shared_memory">feat_req__baselibs__core_utilities</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__memory_library" title="comp_req__memory__shared_memory">feat_req__baselibs__memory_library</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__safety" title="comp_req__memory__shared_memory">feat_req__baselibs__safety</a></span></span></div>
+<div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="../architecture/index.html#comp__baselibs_memory_shared" title="comp_req__memory__shared_memory">comp__baselibs_memory_shared</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -678,7 +680,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e86e75df">
+<div class="need_container docutils container" id="SNCB-574f8ab6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__memory__offset_ptr">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -700,6 +702,7 @@
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__core_utilities" title="comp_req__memory__offset_ptr">feat_req__baselibs__core_utilities</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__memory_library" title="comp_req__memory__offset_ptr">feat_req__baselibs__memory_library</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__safety" title="comp_req__memory__offset_ptr">feat_req__baselibs__safety</a></span></span></div>
+<div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="../architecture/index.html#comp__baselibs_memory_shared" title="comp_req__memory__offset_ptr">comp__baselibs_memory_shared</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -721,7 +724,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-cec775db">
+<div class="need_container docutils container" id="SNCB-9984fdd5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__memory__shared_containers">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -744,6 +747,7 @@
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__core_utilities" title="comp_req__memory__shared_containers">feat_req__baselibs__core_utilities</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__memory_library" title="comp_req__memory__shared_containers">feat_req__baselibs__memory_library</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__safety" title="comp_req__memory__shared_containers">feat_req__baselibs__safety</a></span></span></div>
+<div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="../architecture/index.html#comp__baselibs_memory_shared" title="comp_req__memory__shared_containers">comp__baselibs_memory_shared</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -765,7 +769,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-51d6605f">
+<div class="need_container docutils container" id="SNCB-d0838cc7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__memory__ipc_sync">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -788,6 +792,7 @@
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__core_utilities" title="comp_req__memory__ipc_sync">feat_req__baselibs__core_utilities</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__memory_library" title="comp_req__memory__ipc_sync">feat_req__baselibs__memory_library</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__safety" title="comp_req__memory__ipc_sync">feat_req__baselibs__safety</a></span></span></div>
+<div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="../architecture/index.html#comp__baselibs_memory_shared" title="comp_req__memory__ipc_sync">comp__baselibs_memory_shared</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -809,7 +814,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-c25ccfa5">
+<div class="need_container docutils container" id="SNCB-8d30b84c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__memory__bounds_check">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -831,6 +836,7 @@
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__safety" title="comp_req__memory__bounds_check">feat_req__baselibs__safety</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__memory_library" title="comp_req__memory__bounds_check">feat_req__baselibs__memory_library</a></span></span></div>
+<div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="../architecture/index.html#comp__baselibs_memory_shared" title="comp_req__memory__bounds_check">comp__baselibs_memory_shared</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -852,7 +858,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5f15e374">
+<div class="need_container docutils container" id="SNCB-2ab760f3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__memory__endianness">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -874,6 +880,7 @@
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__core_utilities" title="comp_req__memory__endianness">feat_req__baselibs__core_utilities</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__memory_library" title="comp_req__memory__endianness">feat_req__baselibs__memory_library</a></span></span></div>
+<div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="../architecture/index.html#comp__baselibs_memory_shared" title="comp_req__memory__endianness">comp__baselibs_memory_shared</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -895,7 +902,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b2e499d5">
+<div class="need_container docutils container" id="SNCB-f4e7094b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__memory__sealed_shm">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -917,6 +924,7 @@
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__safety" title="comp_req__memory__sealed_shm">feat_req__baselibs__safety</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__memory_library" title="comp_req__memory__sealed_shm">feat_req__baselibs__memory_library</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__security" title="comp_req__memory__sealed_shm">feat_req__baselibs__security</a></span></span></div>
+<div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="../architecture/index.html#comp__baselibs_memory_shared" title="comp_req__memory__sealed_shm">comp__baselibs_memory_shared</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -938,11 +946,11 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-eb57743b">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__memory__typed_shm">
+<div class="need_container docutils container" id="SNCB-433fabf6">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__memory__typed_memory">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">Type-Safe Shared Memory</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">Typed Memory</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -959,16 +967,17 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__consistent_apis" title="comp_req__memory__typed_shm">feat_req__baselibs__consistent_apis</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__safety" title="comp_req__memory__typed_shm">feat_req__baselibs__safety</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__memory_library" title="comp_req__memory__typed_shm">feat_req__baselibs__memory_library</a></span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__safety" title="comp_req__memory__typed_memory">feat_req__baselibs__safety</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__memory_library" title="comp_req__memory__typed_memory">feat_req__baselibs__memory_library</a></span></span></div>
+<div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="../architecture/index.html#comp__baselibs_memory_shared" title="comp_req__memory__typed_memory">comp__baselibs_memory_shared</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The Memory library shall provide type-safe wrappers for typed shared memory objects with compile-time type checking.</p></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The Memory library shall provide an interface to allocate shared memory from typed memory regions.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
-<div class="line"><span><span class="needs-id"><a class="reference internal" href="#comp_req__memory__typed_shm" title="comp_req__memory__typed_shm">comp_req__memory__typed_shm</a></span></span></div>
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#comp_req__memory__typed_memory" title="comp_req__memory__typed_memory">comp_req__memory__typed_memory</a></span></span></div>
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
@@ -981,7 +990,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4e03c713">
+<div class="need_container docutils container" id="SNCB-3c83786e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__memory__resource_registry">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1003,6 +1012,7 @@
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__core_utilities" title="comp_req__memory__resource_registry">feat_req__baselibs__core_utilities</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__memory_library" title="comp_req__memory__resource_registry">feat_req__baselibs__memory_library</a></span></span></div>
+<div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="../architecture/index.html#comp__baselibs_memory_shared" title="comp_req__memory__resource_registry">comp__baselibs_memory_shared</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1024,7 +1034,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5b515308">
+<div class="need_container docutils container" id="SNCB-e09848b9">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__memory__string_utils">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1046,6 +1056,7 @@
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__core_utilities" title="comp_req__memory__string_utils">feat_req__baselibs__core_utilities</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__memory_library" title="comp_req__memory__string_utils">feat_req__baselibs__memory_library</a></span></span></div>
+<div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="../architecture/index.html#comp__baselibs_memory_shared" title="comp_req__memory__string_utils">comp__baselibs_memory_shared</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1067,7 +1078,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9c75d9ff">
+<div class="need_container docutils container" id="SNCB-7167c1c0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__memory__atomic_ops">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1089,6 +1100,7 @@
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__memory_library" title="comp_req__memory__atomic_ops">feat_req__baselibs__memory_library</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__safety" title="comp_req__memory__atomic_ops">feat_req__baselibs__safety</a></span></span></div>
+<div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="../architecture/index.html#comp__baselibs_memory_shared" title="comp_req__memory__atomic_ops">comp__baselibs_memory_shared</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1113,7 +1125,7 @@
 </section>
 <section id="non-functional-requirements">
 <h2>Non-Functional Requirements<a class="headerlink" href="#non-functional-requirements" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-45dbd2d3">
+<div class="need_container docutils container" id="SNCB-0ddd767a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__memory__deterministic_alloc">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1135,6 +1147,7 @@
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__core_utilities" title="comp_req__memory__deterministic_alloc">feat_req__baselibs__core_utilities</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__safety" title="comp_req__memory__deterministic_alloc">feat_req__baselibs__safety</a></span></span></div>
+<div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="../architecture/index.html#comp__baselibs_memory_shared" title="comp_req__memory__deterministic_alloc">comp__baselibs_memory_shared</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1156,7 +1169,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a3b595c8">
+<div class="need_container docutils container" id="SNCB-b6135b53">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__memory__address_independence">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1178,6 +1191,7 @@
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__safety" title="comp_req__memory__address_independence">feat_req__baselibs__safety</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__memory_library" title="comp_req__memory__address_independence">feat_req__baselibs__memory_library</a></span></span></div>
+<div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="../architecture/index.html#comp__baselibs_memory_shared" title="comp_req__memory__address_independence">comp__baselibs_memory_shared</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1258,7 +1272,7 @@
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/modules/baselibs/memory_shared/docs/requirements/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/modules/baselibs/memory_shared/docs/requirements/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       

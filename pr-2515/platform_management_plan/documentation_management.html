@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -494,7 +494,7 @@
 <li class="toctree-l1"><a class="reference internal" href="quality_management.html">Quality Management / Platform Quality Management Plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="config_management.html">Config management / Configuration Management Plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tool_management.html">Tool Management/ Tool Management Plan</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release_management.html">Release management Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_management.html">Release Management Plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="problem_resolution.html">Problem Resolution / Problem Resolution Plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="change_management.html">Change Management / Change Management Plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="software_verification.html">Software verification</a></li>
@@ -505,6 +505,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="role_assignment/platform_safety_engineer.html">Platform Safety Engineer Election</a></li>
 <li class="toctree-l1"><a class="reference internal" href="role_assignment/platform_safety_manager.html">Platform Safety Manager Election</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role_assignment/platform_security_manager.html">Platform Security Manager Election</a></li>
 <li class="toctree-l1"><a class="reference internal" href="role_assignment/platform_quality_manager.html">Platform Quality Manager Election</a></li>
 </ul>
 </div>
@@ -566,7 +567,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-cf217e85">
+  <div class="need_container docutils container" id="SNCB-3a3fbec3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__documentation_mgt_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -631,12 +632,12 @@
 Others are modelled as general documents (e.g. the plans which are part of the program management plan or the verification reports).</p>
 <p>This plan deals with these documents, which have the following manually set attributes:</p>
 <ul class="simple">
-<li><p>Title: the name of the document (mandatory)</p></li>
+<li><p>Title: The name of the document (mandatory)</p></li>
 <li><p>Unique Id: Id following the naming pattern of the document Title (mandatory)</p></li>
-<li><p>Safety: which ASIL the document supports (mandatory)</p></li>
+<li><p>Safety: Which ASIL the document supports (mandatory)</p></li>
 <li><p>Author: Who is the main committer to the document (mandatory)</p></li>
-<li><p>Status: describing where in the lifecycle of the document it currently is (mandatory)</p></li>
-<li><p>Tags: can be used to group documents for subsequent filtering (optional)</p></li>
+<li><p>Status: Describing where in the lifecycle of the document it currently is (mandatory)</p></li>
+<li><p>Tags: Can be used to group documents for subsequent filtering (optional)</p></li>
 </ul>
 <p>Also the “Documentation Management” is a document, so an example for a correct document definition
 can be seen in the header section above, see <a class="reference internal" href="#doc__documentation_mgt_plan" title="doc__documentation_mgt_plan"><em class="xref need">Documentation Management Plan (doc__documentation_mgt_plan)</em></a>.</p>
@@ -880,31 +881,37 @@ documents are listed as well, so that it is easy to identify missing documents.<
 <td class="needs_security"><p>YES</p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>Platform Safety Plan</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>Platform Security Manager</p></td>
+<td class="needs_id"><p><a class="reference internal" href="role_assignment/platform_security_manager.html#doc__platform_security_manager">doc__platform_security_manager</a></p></td>
+<td class="needs_safety"><p>ASIL_B</p></td>
+<td class="needs_security"><p>YES</p></td>
+<td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>Platform Safety Plan</p></td>
 <td class="needs_id"><p><a class="reference internal" href="safety_management.html#doc__score_platform_safety_plan">doc__score_platform_safety_plan</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>NO</p></td>
 <td class="needs_status"><p>draft</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>Platform Security Plan</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>Platform Security Plan</p></td>
 <td class="needs_id"><p><a class="reference internal" href="security_management.html#doc__platform_security_plan">doc__platform_security_plan</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>YES</p></td>
 <td class="needs_status"><p>draft</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>Software Development Plan</p></td>
+<tr class="need row-even"><td class="needs_title"><p>Software Development Plan</p></td>
 <td class="needs_id"><p><a class="reference internal" href="software_development.html#doc__software_development_plan">doc__software_development_plan</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>YES</p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>Software Verification Plan</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>Software Verification Plan</p></td>
 <td class="needs_id"><p><a class="reference internal" href="software_verification.html#doc__verification_plan">doc__verification_plan</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>YES</p></td>
 <td class="needs_status"><p>draft</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>Tool Management Plan</p></td>
+<tr class="need row-even"><td class="needs_title"><p>Tool Management Plan</p></td>
 <td class="needs_id"><p><a class="reference internal" href="tool_management.html#doc__platform_tool_management_plan">doc__platform_tool_management_plan</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>YES</p></td>
@@ -1109,7 +1116,7 @@ planned for release v0.5, are listed.</p>
 <td class="needs_id"><p><a class="reference internal" href="../features/baselibs/docs/architecture/chklst_arc_inspection.html#doc__baselibs_arc_inspection">doc__baselibs_arc_inspection</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>YES</p></td>
-<td class="needs_status"><p>draft</p></td>
+<td class="needs_status"><p>valid</p></td>
 </tr>
 <tr class="need row-even"><td class="needs_title"><p>Baselibs Architecture</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../features/baselibs/docs/architecture/index.html#doc__baselibs_architecture">doc__baselibs_architecture</a></p></td>
@@ -1798,107 +1805,119 @@ planned for release v0.5, are listed.</p>
 <td class="needs_security"><p>YES</p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>Containers Library</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>Concurrency Requirements</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/concurrency/docs/requirements/index.html#doc__concurrency_requirements">doc__concurrency_requirements</a></p></td>
+<td class="needs_safety"><p>ASIL_B</p></td>
+<td class="needs_security"><p>YES</p></td>
+<td class="needs_status"><p>draft</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>Containers Library</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/containers/docs/index.html#doc__containers">doc__containers</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>YES</p></td>
 <td class="needs_status"><p>draft</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>Container Architecture</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>Container Architecture</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/containers/docs/architecture/index.html#doc__containers_architecture">doc__containers_architecture</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>YES</p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>containers DFA</p></td>
+<tr class="need row-even"><td class="needs_title"><p>containers DFA</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/containers/docs/safety_analysis/dfa.html#doc__containers_dfa">doc__containers_dfa</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>NO</p></td>
 <td class="needs_status"><p>draft</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>containers FMEA</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>containers FMEA</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/containers/docs/safety_analysis/fmea.html#doc__containers_fmea">doc__containers_fmea</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>NO</p></td>
 <td class="needs_status"><p>draft</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>Containers Library Requirements</p></td>
+<tr class="need row-even"><td class="needs_title"><p>Containers Library Requirements</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/containers/docs/requirements/index.html#doc__containers_lib_requirements">doc__containers_lib_requirements</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>YES</p></td>
 <td class="needs_status"><p>draft</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>Filesystem Library</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>Filesystem Library</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/filesystem/docs/index.html#doc__filesystem">doc__filesystem</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>YES</p></td>
 <td class="needs_status"><p>draft</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>Filesystem Architecture</p></td>
+<tr class="need row-even"><td class="needs_title"><p>Filesystem Architecture</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/filesystem/docs/architecture/index.html#doc__filesystem_architecture">doc__filesystem_architecture</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>YES</p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>filesystem DFA</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>filesystem DFA</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/filesystem/docs/safety_analysis/dfa.html#doc__filesystem_dfa">doc__filesystem_dfa</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>NO</p></td>
 <td class="needs_status"><p>draft</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>filesystem FMEA</p></td>
+<tr class="need row-even"><td class="needs_title"><p>filesystem FMEA</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/filesystem/docs/safety_analysis/fmea.html#doc__filesystem_fmea">doc__filesystem_fmea</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>NO</p></td>
 <td class="needs_status"><p>draft</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>Filesystem Library Requirements</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>Filesystem Library Requirements</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/filesystem/docs/requirements/index.html#doc__filesystem_lib_requirements">doc__filesystem_lib_requirements</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>YES</p></td>
 <td class="needs_status"><p>draft</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>FutureCPP Library</p></td>
+<tr class="need row-even"><td class="needs_title"><p>FutureCPP Library</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/language/futurecpp/docs/index.html#doc__futurecpp">doc__futurecpp</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>YES</p></td>
 <td class="needs_status"><p>draft</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>JSON-Library</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>JSON-Library</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/json/docs/index.html#doc__json">doc__json</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>YES</p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>JSON Architecture</p></td>
+<tr class="need row-even"><td class="needs_title"><p>JSON Architecture</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/json/docs/architecture/index.html#doc__json_architecture">doc__json_architecture</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>YES</p></td>
 <td class="needs_status"><p>draft</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>JSON DFA</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>JSON DFA</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/json/docs/safety_analysis/dfa.html#doc__json_dfa">doc__json_dfa</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>NO</p></td>
 <td class="needs_status"><p>draft</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>JSON FMEA</p></td>
+<tr class="need row-even"><td class="needs_title"><p>JSON FMEA</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/json/docs/safety_analysis/fmea.html#doc__json_fmea">doc__json_fmea</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>NO</p></td>
 <td class="needs_status"><p>draft</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>JSON Requirements</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>JSON Requirements</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/json/docs/requirements/index.html#doc__json_requirements">doc__json_requirements</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>YES</p></td>
 <td class="needs_status"><p>draft</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>JSON Wrapper Requirements</p></td>
+<tr class="need row-even"><td class="needs_title"><p>JSON Wrapper Requirements</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/json/docs/json_wrapper/requirements/index.html#doc__json_wrapper_requirements">doc__json_wrapper_requirements</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>YES</p></td>
 <td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>Memory Library</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/memory_shared/docs/index.html#doc__memory">doc__memory</a></p></td>
+<td class="needs_safety"><p>ASIL_B</p></td>
+<td class="needs_security"><p>YES</p></td>
+<td class="needs_status"><p>draft</p></td>
 </tr>
 <tr class="need row-even"><td class="needs_title"><p>Memory Library Requirements</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/memory_shared/docs/requirements/index.html#doc__memory_lib_requirements">doc__memory_lib_requirements</a></p></td>
@@ -1948,19 +1967,25 @@ planned for release v0.5, are listed.</p>
 <td class="needs_security"><p>YES</p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>Utils Library</p></td>
+<tr class="need row-even"><td class="needs_title"><p>Static Reflection With Serialization Library</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/static_reflection_with_serialization/docs/index.html#doc__static_reflection_with_serialization">doc__static_reflection_with_serialization</a></p></td>
+<td class="needs_safety"><p>ASIL_B</p></td>
+<td class="needs_security"><p>YES</p></td>
+<td class="needs_status"><p>draft</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>Utils Library</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/utils/docs/index.html#doc__utils">doc__utils</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>YES</p></td>
 <td class="needs_status"><p>draft</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>Utils Architecture</p></td>
+<tr class="need row-even"><td class="needs_title"><p>Utils Architecture</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/utils/docs/architecture/index.html#doc__utils_architecture">doc__utils_architecture</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>YES</p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>Utils Library Requirements</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>Utils Library Requirements</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/utils/docs/requirements/index.html#doc__utils_lib_requirements">doc__utils_lib_requirements</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>YES</p></td>
@@ -2254,7 +2279,7 @@ planned for release v0.5, are listed.</p>
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/platform_management_plan/documentation_management.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/platform_management_plan/documentation_management.rst">
       <i class="fa-solid fa-pencil"></i>
       
       

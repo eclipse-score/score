@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -510,10 +510,11 @@
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../../../memory_shared/docs/index.html">memory_shared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../memory_shared/docs/index.html">memory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../message_passing/docs/index.html">message_passing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../os/docs/index.html">os</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../result/docs/index.html">result</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../static_reflection_with_serialization/docs/index.html">static_reflection_with_serialization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../utils/docs/index.html">utils</a></li>
 </ul>
 </details></li>
@@ -592,7 +593,7 @@
                   
   <section id="requirements">
 <h1>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-0b951edf">
+<div class="need_container docutils container" id="SNCB-af11fb77">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__filesystem_lib_requirements">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -637,7 +638,7 @@
 </div>
 <section id="functional-requirements">
 <h2>Functional Requirements<a class="headerlink" href="#functional-requirements" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-a2039618">
+<div class="need_container docutils container" id="SNCB-643e1a19">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__filesystem__api_abstraction">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -660,6 +661,7 @@
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__consistent_apis" title="comp_req__filesystem__api_abstraction">feat_req__baselibs__consistent_apis</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__filesystem_library" title="comp_req__filesystem__api_abstraction">feat_req__baselibs__filesystem_library</a></span></span></div>
+<div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="../architecture/index.html#comp__baselibs_filesystem" title="comp_req__filesystem__api_abstraction">comp__baselibs_filesystem</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -681,7 +683,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-906aa5ed">
+<div class="need_container docutils container" id="SNCB-c5193893">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__filesystem__path_utilities">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -704,6 +706,7 @@
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__consistent_apis" title="comp_req__filesystem__path_utilities">feat_req__baselibs__consistent_apis</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__filesystem_library" title="comp_req__filesystem__path_utilities">feat_req__baselibs__filesystem_library</a></span></span></div>
+<div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="../architecture/index.html#comp__baselibs_filesystem" title="comp_req__filesystem__path_utilities">comp__baselibs_filesystem</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -725,7 +728,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6ec0c275">
+<div class="need_container docutils container" id="SNCB-c300d540">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__filesystem__directory_iterators">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -748,6 +751,7 @@
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__filesystem_library" title="comp_req__filesystem__directory_iterators">feat_req__baselibs__filesystem_library</a></span></span></div>
+<div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="../architecture/index.html#comp__baselibs_filesystem" title="comp_req__filesystem__directory_iterators">comp__baselibs_filesystem</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -769,7 +773,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b08ae80b">
+<div class="need_container docutils container" id="SNCB-7ff2aa2a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__filesystem__file_io">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -792,6 +796,7 @@
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__filesystem_library" title="comp_req__filesystem__file_io">feat_req__baselibs__filesystem_library</a></span></span></div>
+<div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="../architecture/index.html#comp__baselibs_filesystem" title="comp_req__filesystem__file_io">comp__baselibs_filesystem</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -813,7 +818,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-75d66f2e">
+<div class="need_container docutils container" id="SNCB-87158cac">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__filesystem__full_testability">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -836,6 +841,7 @@
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__filesystem_library" title="comp_req__filesystem__full_testability">feat_req__baselibs__filesystem_library</a></span></span></div>
+<div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="../architecture/index.html#comp__baselibs_filesystem" title="comp_req__filesystem__full_testability">comp__baselibs_filesystem</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -859,7 +865,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-979ffbea">
+<div class="need_container docutils container" id="SNCB-3ba08552">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__filesystem__file_utils">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -882,6 +888,7 @@
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__filesystem_library" title="comp_req__filesystem__file_utils">feat_req__baselibs__filesystem_library</a></span></span></div>
+<div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="../architecture/index.html#comp__baselibs_filesystem" title="comp_req__filesystem__file_utils">comp__baselibs_filesystem</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -903,7 +910,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-81d73691">
+<div class="need_container docutils container" id="SNCB-5fc3a322">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__filesystem__mock_fake">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -926,6 +933,7 @@
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Non-Functional</span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__filesystem_library" title="comp_req__filesystem__mock_fake">feat_req__baselibs__filesystem_library</a></span></span></div>
+<div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="../architecture/index.html#comp__baselibs_filesystem" title="comp_req__filesystem__mock_fake">comp__baselibs_filesystem</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -950,7 +958,7 @@
 </section>
 <section id="assumptions-of-use-aou">
 <h2>Assumptions of Use (AoU)<a class="headerlink" href="#assumptions-of-use-aou" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-49c85a8f">
+<div class="need_container docutils container" id="SNCB-20f2e39e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__filesystem__low_level_use_only">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -993,7 +1001,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-bddfacec">
+<div class="need_container docutils container" id="SNCB-057ed453">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__filesystem__supported_path_formats">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1036,7 +1044,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7eecc53b">
+<div class="need_container docutils container" id="SNCB-08c577d5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__filesystem__error_handling">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1079,7 +1087,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-0fdc2794">
+<div class="need_container docutils container" id="SNCB-cf70510b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__filesystem__thread_safety">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1122,7 +1130,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b6598927">
+<div class="need_container docutils container" id="SNCB-80497ce2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__filesystem__performance">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1226,7 +1234,7 @@
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/modules/baselibs/filesystem/docs/requirements/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/modules/baselibs/filesystem/docs/requirements/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
