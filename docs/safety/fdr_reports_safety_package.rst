@@ -38,7 +38,7 @@ As described in :need:`wf__p_formal_rv`, the formal document review is performed
 
 **Checklist**
 
-See also :need:`review_concept` for further information about reviews in general and inspection in particular.
+See also :need:`doc_concept__wp_inspections` for further information about reviews in general and inspection in particular.
 
 .. list-table:: Safety Package Checklist
         :header-rows: 1
