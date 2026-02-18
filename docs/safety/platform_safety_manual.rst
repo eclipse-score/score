@@ -23,7 +23,7 @@ Safety Manual
    :safety: ASIL_B
    :security: NO
    :realizes: wp__module_safety_manual
-   :tags: template
+   :tags:  
 
 
 Introduction/Scope

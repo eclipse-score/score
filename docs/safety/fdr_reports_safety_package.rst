@@ -23,7 +23,7 @@ Safety Package Formal Review Report
    :safety: ASIL_B
    :security: NO
    :realizes: wp__fdr_reports
-   :tags:
+   :tags: draft
 
 
 

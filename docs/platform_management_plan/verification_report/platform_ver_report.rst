@@ -23,7 +23,7 @@ Verification Report
    :safety: ASIL_B
    :security: NO
    :realizes: wp__verification_platform_ver_report
-   :tags: draft
+   :tags:  
 
 
 This verification report is based on the :need:`gd_temp__verification_plan`.

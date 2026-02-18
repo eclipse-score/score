@@ -22,7 +22,7 @@ Safety Analysis Checklist
    :safety: ASIL_B
    :security: YES
    :realizes: wp__fdr_reports
-   :tags: template
+   :tags:  
 
 
 **Purpose**
