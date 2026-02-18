@@ -331,59 +331,59 @@ Feature Teams
 *Feature Teams*  have end-to-end responsibility for providing specific functionalities. This includes all
 development aspects beginning with the architecture definition to the integration test.
 One *Team* may work independently of other *Teams* on the team-assigned *GitHub Issues*,
-and needs at least one :need:`Committer <rl__committer>` who can approve & merge the Pull Requests
+and needs at least one :need:`Committer <rl__committer>` who can approve & merge the Pull Requests.
 Each *Feature Team* has one *Lead* to organize the Team`s work.
 
-.. _BASMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-BAS-team
-.. _BASLD: https://github.com/orgs/eclipse-score/teams/automotive-score-BAS-lead
+.. _BASMBRS: https://github.com/eclipse-score/baselibs/blob/main/.github/CODEOWNERS
+.. _BASLD: https://github.com/eclipse-score/baselibs/blob/main/.github/CODEOWNERS
 .. _BASMM: https://github.com/eclipse-score/score/wiki/BASM
 .. _BASSLC: https://sdvworkinggroup.slack.com/archives/C090UKSL5L2
 .. _BASBKL: https://github.com/orgs/eclipse-score/projects/24
 
-.. _COMMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-COM-team
-.. _COMLD: https://github.com/orgs/eclipse-score/teams/automotive-score-COM-lead
+.. _COMMBRS: https://github.com/eclipse-score/communication/blob/main/.github/CODEOWNERS
+.. _COMLD: https://github.com/eclipse-score/communication/blob/main/.github/CODEOWNERS
 .. _COMMM: https://github.com/eclipse-score/score/wiki/COMM
 .. _COMSLC: https://sdvworkinggroup.slack.com/archives/C08C0JATADP
 .. _COMBKL: https://github.com/orgs/eclipse-score/projects/19
 
-.. _CFGMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-CFG-team
-.. _CFGLD: https://github.com/orgs/eclipse-score/teams/automotive-score-CFG-lead
+.. _CFGMBRS: https://github.com/eclipse-score/inc_config_management/blob/main/.github/CODEOWNERS
+.. _CFGLD: https://github.com/eclipse-score/inc_config_management/blob/main/.github/CODEOWNERS
 .. _CFGMM: https://github.com/eclipse-score/score/wiki/CFGM
 .. _CFGSLC: https://sdvworkinggroup.slack.com/archives/CFG
 .. _CFGBKL: https://github.com/orgs/eclipse-score/projects/CFG
 
-.. _FEOMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-FEO-team
-.. _FEOLD: https://github.com/orgs/eclipse-score/teams/automotive-score-FEO-lead
+.. _FEOMBRS: https://github.com/eclipse-score/feo/blob/main/.github/CODEOWNERS
+.. _FEOLD: https://github.com/eclipse-score/feo/blob/main/.github/CODEOWNERS
 .. _FEOMM: https://github.com/eclipse-score/score/wiki/FEOM
 .. _FEOSLC: https://sdvworkinggroup.slack.com/archives/FEO
 .. _FEOBKL: https://github.com/orgs/eclipse-score/projects/9
 
-.. _KYRMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-KYR-team
-.. _KYRLD: https://github.com/orgs/eclipse-score/teams/automotive-score-KYR-lead
+.. _KYRMBRS: https://github.com/eclipse-score/kyron/blob/main/.github/CODEOWNERS
+.. _KYRLD: https://github.com/eclipse-score/kyron/blob/main/.github/CODEOWNERS
 .. _KYRMM: https://github.com/eclipse-score/score/wiki/KYRM
 .. _KYRSLC: https://sdvworkinggroup.slack.com/archives/KYR
 .. _KYRBKL: https://github.com/orgs/eclipse-score/projects/38
 
-.. _LCMMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-LCM-team
-.. _LCMLD: https://github.com/orgs/eclipse-score/teams/automotive-score-LCM-lead
+.. _LCMMBRS: https://github.com/eclipse-score/lifecycle/blob/main/.github/CODEOWNERS
+.. _LCMLD: https://github.com/eclipse-score/lifecycle/blob/main/.github/CODEOWNERS
 .. _LCMMM: https://github.com/eclipse-score/score/wiki/LCMM
 .. _LCMSLC: https://sdvworkinggroup.slack.com/archives/C094Z3BN1K4
 .. _LCMBKL: https://github.com/orgs/eclipse-score/projects/33
 
-.. _LOGMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-LOG-team
-.. _LOGLD: https://github.com/orgs/eclipse-score/teams/automotive-score-LOG-lead
+.. _LOGMBRS: https://github.com/eclipse-score/logging/blob/main/.github/CODEOWNERS
+.. _LOGLD: https://github.com/eclipse-score/logging/blob/main/.github/CODEOWNERS
 .. _LOGMM: https://github.com/eclipse-score/score/wiki/LOGM
 .. _LOGSLC: https://sdvworkinggroup.slack.com/archives/C089XP2PGQZ
 .. _LOGBKL: https://github.com/orgs/eclipse-score/projects/31
 
-.. _ORCMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-ORC-team
-.. _ORCLD: https://github.com/orgs/eclipse-score/teams/automotive-score-ORC-lead
+.. _ORCMBRS: https://github.com/eclipse-score/orchestrator/blob/main/.github/CODEOWNERS
+.. _ORCLD: https://github.com/eclipse-score/orchestrator/blob/main/.github/CODEOWNERS
 .. _ORCMM: https://github.com/eclipse-score/score/wiki/ORCM
 .. _ORCSLC: https://sdvworkinggroup.slack.com/archives/C099W80FU2C
 .. _ORCBKL: https://github.com/orgs/eclipse-score/projects/29
 
-.. _PERMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-PER-team
-.. _PERLD: https://github.com/orgs/eclipse-score/teams/automotive-score-PER-lead
+.. _PERMBRS: https://github.com/eclipse-score/persistency/blob/main/.github/CODEOWNERS
+.. _PERLD: https://github.com/eclipse-score/persistency/blob/main/.github/CODEOWNERS
 .. _PERMM: https://github.com/eclipse-score/score/wiki/PERM
 .. _PERSLC: https://sdvworkinggroup.slack.com/archives/C08B339ETQU
 .. _PERBKL: https://github.com/orgs/eclipse-score/projects/20
