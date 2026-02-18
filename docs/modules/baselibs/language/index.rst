@@ -19,3 +19,4 @@ language
    :hidden:
 
    futurecpp/docs/index.rst
+   safecpp/docs/index.rst
