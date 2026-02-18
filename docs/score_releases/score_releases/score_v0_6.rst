@@ -82,6 +82,21 @@ Selection of basic C++ utility libraries for common use in the S-CORE project
 - **Source / tag:** `Baselibs GitHub release <>`_
 - **Release notes**: `Baselibs release notes <>`_
 
+Baselibs Rust
+~~~~~~~~~~~~~
+
+Selection of basic Rust utility libraries for common use in the S-CORE project
+
+- **Version:** ``baselibs_rust v0.1.0``
+- **Source / tag:** `Baselibs Rust GitHub release <https://github.com/eclipse-score/baselibs_rust/releases/tag/v0.1.0>`_
+- **Release notes**: `Baselibs Rust release notes <https://github.com/eclipse-score/baselibs_rust/releases/tag/v0.1.0>`_
+
+
+**Improvements**
+
+- `score_log` - logging frontend for S-CORE
+- `containers`- common containers with different allocation and layout techniques including ABI compatible versions for inter-process communication
+- `sync` - `std::sync` extensions utilities
 
 Communication
 ~~~~~~~~~~~~~
@@ -112,9 +127,8 @@ preserving application state and data integrity over time.
 - **Version:** ``persistency v0``
 - **Source / tag:** `Persistency GitHub release <>`_
 
-.. _logging_daemon:
 
-Logging Daemon
+Logging
 ~~~~~~~~~~~~~~~~~~
 
 **Improvements**
@@ -140,18 +154,24 @@ enabling safe logging from real-time and safety-critical contexts.
   - `Logging release notes <>`__
   - `Logging ReadMe <https://github.com/eclipse-score/logging/tree/main/score/datarouter>`__
 
+**Improvements**
+ - `score_log_bridge` - connecting Rust `score_log` frontend to C++ logging backend
+
 
 Orchestrator
 ~~~~~~~~~~~~~
+Orchestrator module provides a framework for defining and executing complex workflows and task sequences in a coordinated manner.
+
+- **Version:** ``orchestrator v0.1.0``
+- **Source / tag:** `Orchestrator GitHub release <https://github.com/eclipse-score/orchestrator/releases/tag/v0.1.0>`_
+- **Release notes**: `Orchestrator release notes <https://github.com/eclipse-score/orchestrator/releases/tag/v0.1.0>`_
 
 **Improvements**
 
-- Support `log` frontend exchange  to: `log`, `tracing` or `score-log` (not yet implemented in this release)
-- Increased CIT coverage and stability improvements
-- Split of kyron into separate repositories: `orchestrator` and `kyron`
+- Adapted toolchain to ferrocene for Rust
+- Support qnx-x86_64
+- Examples now run in reference integration repository images
 
-:Version: ``orchestrator v0.``
-:Source / tag: `Orchestrator GitHub release <>`__
 :Further reading: See below
 
   - `Orchestrator scope and design <https://github.com/eclipse-score/orchestrator/blob/main/src/orchestration/doc/features.md>`__
@@ -160,13 +180,29 @@ Orchestrator
 
 Kyron
 ~~~~~~~~~~~~~~
+Kyron is a customizable, high-performance async/await runtime designed for advanced concurrent programming with focus on functional safety.
+It allows fine-grained control over scheduling, thread management, and workload isolation through configurable execution engines.
+
+- **Version:** ``kyron v0.1.1``
+- **Source / tag:** `Kyron GitHub release <https://github.com/eclipse-score/kyron/releases/tag/v0.1.1>`_
+- **Release notes**: `Kyron release notes <https://github.com/eclipse-score/kyron/releases/tag/v0.1.1>`_
 
 **Improvements**
 
-- tbd
+- Adapted toolchain to ferrocene for Rust
+- Support qnx-x86_64
+- Integrated rust coverage reporting
+- Improved up to 8% runtime time with task scheduler fixes
+- Examples now run in reference integration repository images
 
-:Version: ``kyron v0.``
-:Source / tag: `Kyron GitHub release <>`__
+**Bugfix**
+
+- Minor bugfixes listed in github
+
+**Known issues**
+
+- Ongoing fixing of safety wakes `here <https://github.com/eclipse-score/kyron/pull/32>`_
+
 :Further reading: See below
 
   - `Kyron scope and design <https://github.com/eclipse-score/kyron/blob/main/src/kyron/doc/features.md>`__
@@ -192,8 +228,15 @@ Reference integration
 Central integration of Eclipse S-CORE modules
 
 - **Version:** ``reference integration v0.6.0``
-- **Source / tag:** `Reference Integration GitHub release <`_
+- **Source / tag:** `Reference Integration GitHub release <>`_
 
+**Improvements**
+- Unify handling of images in repository
+- Execute all images build and tests in CI
+- Execute UT, Coverage in CI and produce documentation with results
+- Provide `./score_starter` helper program to allow easily run given image without hassle
+- Provide interactive example selection menu on target image so user can choose examples to run and see the results
+- Remove separate bazel modules and use single bazel module with always aligned dependencies
 
 Reference QNX image
 +++++++++++++++++++++
