@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -72,7 +72,7 @@
         </script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Doc-as-Code Verification Report" href="doc_as_code.html" />
+    <link rel="next" title="S-CORE - Complete Tool List for Tool Evaluation" href="score_tools_evaluation_list.html" />
     <link rel="prev" title="S-Core v0.5-beta release notes" href="../score_releases/score_releases/score_v0_5_beta.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -487,12 +487,14 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="doc_as_code.html">Doc-as-Code Verification Report</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gtest.html">GoogleTest (GTest) Verification Report</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bazel.html">Bazel Verification Report</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rustfmt.html">Rustfmt Verification Report</a></li>
-<li class="toctree-l1"><a class="reference internal" href="itf.html">ITF (Integration Testing Framework) Verification Report</a></li>
-<li class="toctree-l1"><a class="reference internal" href="clippy.html">Clippy Verification Report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="score_tools_evaluation_list.html">S-CORE - Complete Tool List for Tool Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools_documentation/index.html">Documentation Tools Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools_static_analysis_code_quality/index.html">Static Analysis &amp; Code Quality Tools Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools_testing_frameworks/index.html">Testing Frameworks Tools Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools_build_development/index.html">Build &amp; Development Tools Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools_compiler/index.html">Compiler Tools Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools_vc_cicd/index.html">Version Control &amp; CI/CD Tools Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools_license_security/index.html">License &amp; Security</a></li>
 </ul>
 </div>
 </nav></div>
@@ -552,81 +554,6 @@
                   
   <section id="s-core-tools-overview">
 <span id="tools"></span><h1>S-CORE Tools Overview<a class="headerlink" href="#s-core-tools-overview" title="Link to this heading">#</a></h1>
-<div class="needstable_wrapper docutils container" id="needtable-score_tools/index-0">
-<div class="pst-scrollable-table-container"><table class="NEEDS_TABLE table" id="needtable-score_tools/index-0-table_node">
-<caption><span class="caption-text">Tools List</span><a class="headerlink" href="#needtable-score_tools/index-0-table_node" title="Link to this table">#</a></caption>
-<colgroup>
-<col style="width: 14.3%" />
-<col style="width: 14.3%" />
-<col style="width: 14.3%" />
-<col style="width: 14.3%" />
-<col style="width: 14.3%" />
-<col style="width: 14.3%" />
-<col style="width: 14.3%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>UID</p></th>
-<th class="head"><p>TITLE</p></th>
-<th class="head"><p>VERSION</p></th>
-<th class="head"><p>STATUS</p></th>
-<th class="head"><p>TCL</p></th>
-<th class="head"><p>SAFETY AFFECTED</p></th>
-<th class="head"><p>SECURITY AFFECTED</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="bazel.html#doc_tool__bazel">doc_tool__bazel</a></p></td>
-<td class="needs_title"><p>Bazel</p></td>
-<td class="needs_version"><p>8.3.0</p></td>
-<td class="needs_status"><p>draft</p></td>
-<td class="needs_tcl"><p>LOW</p></td>
-<td class="needs_safety_affected"><p>YES</p></td>
-<td class="needs_security_affected"><p>YES</p></td>
-</tr>
-<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="gtest.html#doc_tool__gtest">doc_tool__gtest</a></p></td>
-<td class="needs_title"><p>gtest</p></td>
-<td class="needs_version"><p>1.15.0</p></td>
-<td class="needs_status"><p>draft</p></td>
-<td class="needs_tcl"><p>LOW</p></td>
-<td class="needs_safety_affected"><p>YES</p></td>
-<td class="needs_security_affected"><p>YES</p></td>
-</tr>
-<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="itf.html#doc_tool__itf">doc_tool__itf</a></p></td>
-<td class="needs_title"><p>ITF</p></td>
-<td class="needs_version"><p>0.1.0</p></td>
-<td class="needs_status"><p>draft</p></td>
-<td class="needs_tcl"><p>LOW</p></td>
-<td class="needs_safety_affected"><p>YES</p></td>
-<td class="needs_security_affected"><p>YES</p></td>
-</tr>
-<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="clippy.html#doc_tool__clippy">doc_tool__clippy</a></p></td>
-<td class="needs_title"><p>clippy</p></td>
-<td class="needs_version"><p>1.90.0 (see [1])</p></td>
-<td class="needs_status"><p>evaluated</p></td>
-<td class="needs_tcl"><p>HIGH</p></td>
-<td class="needs_safety_affected"><p>YES</p></td>
-<td class="needs_security_affected"><p>YES</p></td>
-</tr>
-<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="doc_as_code.html#doc_tool__doc_as_code">doc_tool__doc_as_code</a></p></td>
-<td class="needs_title"><p>Doc-as-Code</p></td>
-<td class="needs_version"><p>v2.2.0</p></td>
-<td class="needs_status"><p>evaluated</p></td>
-<td class="needs_tcl"><p>LOW</p></td>
-<td class="needs_safety_affected"><p>YES</p></td>
-<td class="needs_security_affected"><p>YES</p></td>
-</tr>
-<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="rustfmt.html#doc_tool__rustfmt">doc_tool__rustfmt</a></p></td>
-<td class="needs_title"><p>rustfmt</p></td>
-<td class="needs_version"><p>1.8.0 (exact version shall be derived from qualified Rust compiler)</p></td>
-<td class="needs_status"><p>evaluated</p></td>
-<td class="needs_tcl"><p>HIGH</p></td>
-<td class="needs_safety_affected"><p>YES</p></td>
-<td class="needs_security_affected"><p>YES</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -651,11 +578,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="doc_as_code.html"
+       href="score_tools_evaluation_list.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Doc-as-Code Verification Report</p>
+        <p class="prev-next-title">S-CORE - Complete Tool List for Tool Evaluation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -674,7 +601,7 @@
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/score_tools/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/score_tools/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       

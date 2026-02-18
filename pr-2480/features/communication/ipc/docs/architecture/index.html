@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -510,9 +510,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../configuration/index.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../diagnostics/index.html">Diagnostic and Fault Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../frameworks/index.html">Frameworks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../infrastructure/index.html">Infrastructure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../integration/index.html">Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../lifecycle/index.html">Lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../nonipc/index.html">NonIPC Communication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../orchestration/index.html">Orchestration (v0.5 beta)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../persistency/index.html">Persistency (v0.5 beta)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../security_crypto/index.html">Security &amp; Cryptography</a></li>
@@ -585,7 +584,7 @@
                   
   <section id="architecture">
 <span id="ipc-architecture"></span><h1>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-293e2735">
+<div class="need_container docutils container" id="SNCB-ccccb903">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__ipc_architecture">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -782,7 +781,7 @@ The communication partner is barred from rejoining the communication.</p></li>
 </section>
 <section id="dynamic-architecture">
 <span id="ipc-dyn-arch"></span><h2>Dynamic Architecture<a class="headerlink" href="#dynamic-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-4e30619b">
+<div class="need_container docutils container" id="SNCB-cfc4dcb1">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__communication__ipc">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -803,7 +802,8 @@ The communication partner is barred from rejoining the communication.</p></li>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">ipc</span><span class="needs_spacer">, </span><span class="needs_data">communication</span></span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../../../docs/requirements/index.html#feat_req__com__depl_config_runtime" title="feat_arc_dyn__communication__ipc">feat_req__com__depl_config_runtime</a></span></span></div>
+<div class="line"><span><div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="../../../docs/architecture/index.html#feat__com_communication" title="feat_arc_dyn__communication__ipc">feat__com_communication</a></span></span></div>
+<div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../../../docs/requirements/index.html#feat_req__com__depl_config_runtime" title="feat_arc_dyn__communication__ipc">feat_req__com__depl_config_runtime</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -902,7 +902,7 @@ The communication partner is barred from rejoining the communication.</p></li>
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/features/communication/ipc/docs/architecture/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/features/communication/ipc/docs/architecture/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       

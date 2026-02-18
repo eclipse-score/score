@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -502,9 +502,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../configuration/index.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../diagnostics/index.html">Diagnostic and Fault Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../frameworks/index.html">Frameworks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../infrastructure/index.html">Infrastructure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../integration/index.html">Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../lifecycle/index.html">Lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../nonipc/index.html">NonIPC Communication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../orchestration/index.html">Orchestration (v0.5 beta)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../persistency/index.html">Persistency (v0.5 beta)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../security_crypto/index.html">Security &amp; Cryptography</a></li>
@@ -586,7 +585,52 @@
 <span id="com-static-architecture"></span><h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
 <p>As discussed in <a class="reference internal" href="../../index.html#com-rationale"><span class="std std-ref">Rationale</span></a>, the overall architecture of the communication framework must be layered. This is required, to separate the frontend from the underlying communication mechanisms (also called bindings).</p>
 <p>This ensures a stable public API, independent of the underlying binding(s). At the same time, the communication framework can support many different communication protocols in a flexible manner.</p>
-<div class="need_container docutils container" id="SNCB-f7ae9f6f">
+<div class="need_container docutils container" id="SNCB-8620675b">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat table" id="feat__com_communication">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Communication Feature</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">consists of: <span class="consists_of"><span><a class="reference internal" href="../../../../modules/communication/configuration/docs/architecture/index.html#comp__com_configuration" title="feat__com_communication">comp__com_configuration</a>, <a class="reference internal" href="../../../../modules/communication/ipc_binding/docs/architecture/index.html#comp__com_ipc_binding" title="feat__com_communication">comp__com_ipc_binding</a>, <a class="reference internal" href="../../../../modules/communication/mock_binding/docs/architecture/index.html#comp__com_mock_binding" title="feat__com_communication">comp__com_mock_binding</a>, <a class="reference internal" href="../../../../modules/communication/frontent/docs/architecture/index.html#comp__com_frontend" title="feat__com_communication">comp__com_frontend</a></span></span></div>
+<div class="line">has: <span class="belongs_to"><span><a class="reference internal" href="#feat_arc_sta__com__communication" title="feat__com_communication">feat_arc_sta__com__communication</a>, <a class="reference internal" href="../../ipc/docs/architecture/index.html#feat_arc_dyn__communication__ipc" title="feat__com_communication">feat_arc_dyn__communication__ipc</a></span></span></div>
+<div class="line">includes: <span class="includes"><span><a class="reference internal" href="#logic_arc_int__communication__user" title="feat__com_communication">logic_arc_int__communication__user</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat__com_communication" title="feat__com_communication">feat__com_communication</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Feature</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-10d6acd0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_sta table" id="feat_arc_sta__com__communication">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -607,7 +651,8 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">com</span></span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/index.html#feat_req__com__interfaces" title="feat_arc_sta__com__communication">feat_req__com__interfaces</a></span></span></div>
+<div class="line"><span><div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="#feat__com_communication" title="feat_arc_sta__com__communication">feat__com_communication</a></span></span></div>
+<div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/index.html#feat_req__com__interfaces" title="feat_arc_sta__com__communication">feat_req__com__interfaces</a></span></span></div>
 <div class="line">includes: <span class="includes"><span><a class="reference internal" href="#logic_arc_int__communication__user" title="feat_arc_sta__com__communication">logic_arc_int__communication__user</a></span></span></div>
 </span></div>
 </div>
@@ -615,7 +660,7 @@
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-features/communication/docs/architecture/index-0">
-<object data="../../../../_images/plantuml-33e9e9db3cd6b80782b42132a804f0db3d7b41ed.svg" type="image/svg+xml" style="width:1064px;height:1009px;background:#FFFFFF;"></object></p>
+<object data="../../../../_images/plantuml-67a82851ac0cf17194ef7c8beb04eee8f463de94.svg" type="image/svg+xml" style="width:1002px;height:1025px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -666,7 +711,7 @@ This is the case when:</p>
 <section id="interface-description">
 <h3>Interface Description<a class="headerlink" href="#interface-description" title="Link to this heading">#</a></h3>
 <p>The public API for the frontend is defined as:</p>
-<div class="need_container docutils container" id="SNCB-eaa7ed4b">
+<div class="need_container docutils container" id="SNCB-ffe1d15e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__communication__user">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -688,9 +733,9 @@ This is the case when:</p>
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/index.html#feat_req__com__interfaces" title="logic_arc_int__communication__user">feat_req__com__interfaces</a></span></span></div>
-<div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="../../../../modules/communication/frontent/docs/architecture/index.html#comp_arc_sta__com__frontend" title="logic_arc_int__communication__user">comp_arc_sta__com__frontend</a></span></span></div>
-<div class="line">used by: <span class="uses"><span><a class="reference internal" href="../../../../modules/orchestrator/orchestrator/docs/architecture/index.html#comp_arc_sta__orch__orchestrator" title="logic_arc_int__communication__user">comp_arc_sta__orch__orchestrator</a></span></span></div>
-<div class="line">included by: <span class="includes"><span><a class="reference internal" href="#feat_arc_sta__com__communication" title="logic_arc_int__communication__user">feat_arc_sta__com__communication</a></span></span></div>
+<div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="../../../../modules/communication/frontent/docs/architecture/index.html#comp__com_frontend" title="logic_arc_int__communication__user">comp__com_frontend</a></span></span></div>
+<div class="line">used by: <span class="uses"><span><a class="reference internal" href="../../../../modules/orchestrator/orchestrator/docs/architecture/index.html#comp__orchestrator" title="logic_arc_int__communication__user">comp__orchestrator</a>, <a class="reference internal" href="../../../../modules/orchestrator/orchestrator/docs/architecture/index.html#comp_arc_sta__orch__orchestrator" title="logic_arc_int__communication__user">comp_arc_sta__orch__orchestrator</a></span></span></div>
+<div class="line">included by: <span class="includes"><span><a class="reference internal" href="#feat__com_communication" title="logic_arc_int__communication__user">feat__com_communication</a>, <a class="reference internal" href="#feat_arc_sta__com__communication" title="logic_arc_int__communication__user">feat_arc_sta__com__communication</a></span></span></div>
 <div class="line">includes: <span class="included_by"><span><a class="reference internal" href="../../../../modules/communication/frontent/docs/architecture/index.html#logic_arc_int_op__com__initialize" title="logic_arc_int__communication__user">logic_arc_int_op__com__initialize</a>, <a class="reference internal" href="../../../../modules/communication/frontent/docs/architecture/index.html#logic_arc_int_op__com__offer_service" title="logic_arc_int__communication__user">logic_arc_int_op__com__offer_service</a>, <a class="reference internal" href="../../../../modules/communication/frontent/docs/architecture/index.html#logic_arc_int_op__com__update" title="logic_arc_int__communication__user">logic_arc_int_op__com__update</a>, <a class="reference internal" href="../../../../modules/communication/frontent/docs/architecture/index.html#logic_arc_int_op__com__send" title="logic_arc_int__communication__user">logic_arc_int_op__com__send</a>, <a class="reference internal" href="../../../../modules/communication/frontent/docs/architecture/index.html#logic_arc_int_op__com__startfindserv" title="logic_arc_int__communication__user">logic_arc_int_op__com__startfindserv</a>, <a class="reference internal" href="../../../../modules/communication/frontent/docs/architecture/index.html#logic_arc_int_op__com__createproxy" title="logic_arc_int__communication__user">logic_arc_int_op__com__createproxy</a>, <a class="reference internal" href="../../../../modules/communication/frontent/docs/architecture/index.html#logic_arc_int_op__com__subscribe" title="logic_arc_int__communication__user">logic_arc_int_op__com__subscribe</a>, <a class="reference internal" href="../../../../modules/communication/frontent/docs/architecture/index.html#logic_arc_int_op__com__getnewsamples" title="logic_arc_int__communication__user">logic_arc_int_op__com__getnewsamples</a></span></span></div>
 </span></div>
 </div>
@@ -791,7 +836,7 @@ Bindings reside beneath the frontend layer and accept the forwarded requests</p>
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/features/communication/docs/architecture/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/features/communication/docs/architecture/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       

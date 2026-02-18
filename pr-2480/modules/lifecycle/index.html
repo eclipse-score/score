@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -557,7 +557,7 @@
                   
   <section id="lifecycle">
 <h1>Lifecycle<a class="headerlink" href="#lifecycle" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-3cc96fef">
+<div class="need_container docutils container" id="SNCB-42e063d4">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_mod_view_sta table" id="mod_view_sta__lifecycle__modules">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -577,14 +577,14 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span></span></span></div>
-<div class="line"><span><div class="line">includes: <span class="includes"><span><a class="reference internal" href="#comp_arc_sta__lifecycle__launch_manager" title="mod_view_sta__lifecycle__modules">comp_arc_sta__lifecycle__launch_manager</a>, <a class="reference internal" href="#comp_arc_sta__lifecycle__healthmonitor" title="mod_view_sta__lifecycle__modules">comp_arc_sta__lifecycle__healthmonitor</a></span></span></div>
+<div class="line"><span><div class="line">includes: <span class="includes"><span><a class="reference internal" href="#comp__lifecycle_launch_manager" title="mod_view_sta__lifecycle__modules">comp__lifecycle_launch_manager</a>, <a class="reference internal" href="#comp__lifecycle_healthmonitor" title="mod_view_sta__lifecycle__modules">comp__lifecycle_healthmonitor</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-modules/lifecycle/index-0">
-<object data="../../_images/plantuml-a248db17a6506a86aff98dd82ae953310925c059.svg" type="image/svg+xml" style="width:946px;height:640px;background:#FFFFFF;"></object></p>
+<object data="../../_images/plantuml-e254c976cadc5e925186f485ac8e9aec336f7c00.svg" type="image/svg+xml" style="width:946px;height:640px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -601,8 +601,54 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e2a8fd5b">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__lifecycle__launch_manager">
+<div class="need_container docutils container" id="SNCB-d54e2da2">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__lifecycle__launch">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Lifecycle</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">invalid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">lifecycle</span></span></span></div>
+<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">satisfies: <span class="satisfies"><span><a class="reference internal" href="../../features/lifecycle/requirements/index.html#feat_req__lifecycle__launch_support" title="comp_req__lifecycle__launch">feat_req__lifecycle__launch_support</a></span></span></div>
+<div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="#comp__lifecycle_launch_manager" title="comp_req__lifecycle__launch">comp__lifecycle_launch_manager</a></span></span></div>
+<div class="line">fulfilled by: <span class="fulfils"><span><a class="reference internal" href="#comp_arc_sta__lifecycle__launch_manager" title="comp_req__lifecycle__launch">comp_arc_sta__lifecycle__launch_manager</a>, <a class="reference internal" href="#comp_arc_sta__lifecycle__healthmonitor" title="comp_req__lifecycle__launch">comp_arc_sta__lifecycle__healthmonitor</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>Dummy requirement</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#comp_req__lifecycle__launch" title="comp_req__lifecycle__launch">comp_req__lifecycle__launch</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component Requirement</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-fba14ea1">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp table" id="comp__lifecycle_launch_manager">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
 <div class="line"><span><span class="needs_title"><span class="needs_data">Launch Manager</span></span></span></div>
@@ -621,16 +667,61 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span></span></span></div>
-<div class="line"><span><div class="line">implements: <span class="implements"><span><a class="reference internal" href="../../features/lifecycle/architecture/launch_manager.html#logic_arc_int__lifecycle__controlif" title="comp_arc_sta__lifecycle__launch_manager">logic_arc_int__lifecycle__controlif</a>, <a class="reference internal" href="../../features/lifecycle/architecture/launch_manager.html#logic_arc_int__lifecycle__alive_if" title="comp_arc_sta__lifecycle__launch_manager">logic_arc_int__lifecycle__alive_if</a></span></span></div>
-<div class="line">uses: <span class="uses"><span><a class="reference internal" href="../logging/logging/docs/architecture/index.html#logic_arc_int__logging__logging" title="comp_arc_sta__lifecycle__launch_manager">logic_arc_int__logging__logging</a>, <a class="reference internal" href="../baselibs/json/docs/architecture/index.html#logic_arc_int__baselibs__json" title="comp_arc_sta__lifecycle__launch_manager">logic_arc_int__baselibs__json</a>, <a class="reference internal" href="../os/message_passing/docs/architecture/index.html#logic_arc_int__os__fork" title="comp_arc_sta__lifecycle__launch_manager">logic_arc_int__os__fork</a>, <a class="reference internal" href="../../features/lifecycle/architecture/launch_manager.html#logic_arc_int__lifecycle__lifecycle_if" title="comp_arc_sta__lifecycle__launch_manager">logic_arc_int__lifecycle__lifecycle_if</a></span></span></div>
-<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../features/lifecycle/index.html#mod_view_sta__lifecycle__overview" title="comp_arc_sta__lifecycle__launch_manager">mod_view_sta__lifecycle__overview</a>, <a class="reference internal" href="#mod_view_sta__lifecycle__modules" title="comp_arc_sta__lifecycle__launch_manager">mod_view_sta__lifecycle__modules</a></span></span></div>
+<div class="line"><span><div class="line">forms part of: <span class="consists_of"><span><a class="reference internal" href="../../features/lifecycle/index.html#feat__lifecycle" title="comp__lifecycle_launch_manager">feat__lifecycle</a></span></span></div>
+<div class="line">has: <span class="belongs_to"><span><a class="reference internal" href="#comp_req__lifecycle__launch" title="comp__lifecycle_launch_manager">comp_req__lifecycle__launch</a>, <a class="reference internal" href="#comp_arc_sta__lifecycle__launch_manager" title="comp__lifecycle_launch_manager">comp_arc_sta__lifecycle__launch_manager</a></span></span></div>
+<div class="line">implements: <span class="implements"><span><a class="reference internal" href="../../features/lifecycle/architecture/launch_manager.html#logic_arc_int__lifecycle__controlif" title="comp__lifecycle_launch_manager">logic_arc_int__lifecycle__controlif</a>, <a class="reference internal" href="../../features/lifecycle/architecture/launch_manager.html#logic_arc_int__lifecycle__alive_if" title="comp__lifecycle_launch_manager">logic_arc_int__lifecycle__alive_if</a></span></span></div>
+<div class="line">uses: <span class="uses"><span><a class="reference internal" href="../logging/logging/docs/architecture/index.html#logic_arc_int__logging__logging" title="comp__lifecycle_launch_manager">logic_arc_int__logging__logging</a>, <a class="reference internal" href="../baselibs/json/docs/architecture/index.html#logic_arc_int__baselibs__json" title="comp__lifecycle_launch_manager">logic_arc_int__baselibs__json</a>, <a class="reference internal" href="../os/message_passing/docs/architecture/index.html#logic_arc_int__os__fork" title="comp__lifecycle_launch_manager">logic_arc_int__os__fork</a>, <a class="reference internal" href="../../features/lifecycle/architecture/launch_manager.html#logic_arc_int__lifecycle__lifecycle_if" title="comp__lifecycle_launch_manager">logic_arc_int__lifecycle__lifecycle_if</a></span></span></div>
+<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../features/lifecycle/index.html#mod_view_sta__lifecycle__overview" title="comp__lifecycle_launch_manager">mod_view_sta__lifecycle__overview</a>, <a class="reference internal" href="#mod_view_sta__lifecycle__modules" title="comp__lifecycle_launch_manager">mod_view_sta__lifecycle__modules</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#comp__lifecycle_launch_manager" title="comp__lifecycle_launch_manager">comp__lifecycle_launch_manager</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-ae20b7c6">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__lifecycle__launch_manager">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Launch Manager Static View</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="#comp__lifecycle_launch_manager" title="comp_arc_sta__lifecycle__launch_manager">comp__lifecycle_launch_manager</a></span></span></div>
+<div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="#comp_req__lifecycle__launch" title="comp_arc_sta__lifecycle__launch_manager">comp_req__lifecycle__launch</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-modules/lifecycle/index-1">
-<object data="../../_images/plantuml-b1aac4b15f1ce4aa6ed4a71ea260c2b914e7f4ea.svg" type="image/svg+xml" style="width:450px;height:209px;background:#FFFFFF;"></object></p>
+<object data="../../_images/plantuml-7067673ad1f7a0e8e873e5be3c77e04486326524.svg" type="image/svg+xml" style="width:251px;height:59px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -647,8 +738,8 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f18c113b">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__lifecycle__healthmonitor">
+<div class="need_container docutils container" id="SNCB-5b156064">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp table" id="comp__lifecycle_healthmonitor">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
 <div class="line"><span><span class="needs_title"><span class="needs_data">Health Monitor</span></span></span></div>
@@ -667,16 +758,62 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span></span></span></div>
-<div class="line"><span><div class="line">implements: <span class="implements"><span><a class="reference internal" href="../../features/lifecycle/architecture/health_monitor.html#logic_arc_int__lifecycle__deadline_monitor_if" title="comp_arc_sta__lifecycle__healthmonitor">logic_arc_int__lifecycle__deadline_monitor_if</a>, <a class="reference internal" href="../../features/lifecycle/architecture/health_monitor.html#logic_arc_int__lifecycle__logical_monitor_if" title="comp_arc_sta__lifecycle__healthmonitor">logic_arc_int__lifecycle__logical_monitor_if</a></span></span></div>
+<div class="line"><span><div class="line">forms part of: <span class="consists_of"><span><a class="reference internal" href="../../features/lifecycle/index.html#feat__lifecycle" title="comp__lifecycle_healthmonitor">feat__lifecycle</a></span></span></div>
+<div class="line">has: <span class="belongs_to"><span><a class="reference internal" href="#comp_arc_sta__lifecycle__healthmonitor" title="comp__lifecycle_healthmonitor">comp_arc_sta__lifecycle__healthmonitor</a></span></span></div>
+<div class="line">implements: <span class="implements"><span><a class="reference internal" href="../../features/lifecycle/architecture/health_monitor.html#logic_arc_int__lifecycle__deadline_monitor_if" title="comp__lifecycle_healthmonitor">logic_arc_int__lifecycle__deadline_monitor_if</a>, <a class="reference internal" href="../../features/lifecycle/architecture/health_monitor.html#logic_arc_int__lifecycle__logical_monitor_if" title="comp__lifecycle_healthmonitor">logic_arc_int__lifecycle__logical_monitor_if</a></span></span></div>
+<div class="line">uses: <span class="uses"><span><a class="reference internal" href="../../features/lifecycle/architecture/launch_manager.html#logic_arc_int__lifecycle__alive_if" title="comp__lifecycle_healthmonitor">logic_arc_int__lifecycle__alive_if</a></span></span></div>
+<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../features/lifecycle/index.html#mod_view_sta__lifecycle__overview" title="comp__lifecycle_healthmonitor">mod_view_sta__lifecycle__overview</a>, <a class="reference internal" href="#mod_view_sta__lifecycle__modules" title="comp__lifecycle_healthmonitor">mod_view_sta__lifecycle__modules</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#comp__lifecycle_healthmonitor" title="comp__lifecycle_healthmonitor">comp__lifecycle_healthmonitor</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-18588799">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__lifecycle__healthmonitor">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Health Monitor Static View</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="#comp__lifecycle_healthmonitor" title="comp_arc_sta__lifecycle__healthmonitor">comp__lifecycle_healthmonitor</a></span></span></div>
+<div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="#comp_req__lifecycle__launch" title="comp_arc_sta__lifecycle__healthmonitor">comp_req__lifecycle__launch</a></span></span></div>
 <div class="line">uses: <span class="uses"><span><a class="reference internal" href="../../features/lifecycle/architecture/launch_manager.html#logic_arc_int__lifecycle__alive_if" title="comp_arc_sta__lifecycle__healthmonitor">logic_arc_int__lifecycle__alive_if</a></span></span></div>
-<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../features/lifecycle/index.html#mod_view_sta__lifecycle__overview" title="comp_arc_sta__lifecycle__healthmonitor">mod_view_sta__lifecycle__overview</a>, <a class="reference internal" href="#mod_view_sta__lifecycle__modules" title="comp_arc_sta__lifecycle__healthmonitor">mod_view_sta__lifecycle__modules</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-modules/lifecycle/index-2">
-<object data="../../_images/plantuml-5dcf7ed01d18aa360f06c310d388c141b734fb3e.svg" type="image/svg+xml" style="width:474px;height:306px;background:#FFFFFF;"></object></p>
+<object data="../../_images/plantuml-749ac660662ff999b74cc6ae7dd29072053488cb.svg" type="image/svg+xml" style="width:239px;height:59px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -738,7 +875,7 @@
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/modules/lifecycle/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/modules/lifecycle/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
