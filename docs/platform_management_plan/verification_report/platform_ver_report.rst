@@ -22,7 +22,7 @@ Verification Report
    :status: draft
    :safety: ASIL_B
    :security: NO
-   :realizes: wp__verification_module_ver_report
+   :realizes: wp__verification_platform_ver_report
    :tags: template
 
 
