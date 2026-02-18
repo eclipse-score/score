@@ -126,8 +126,8 @@ Requirement Inspection Checklist
       * - REQ_08_01
         - Is the requirement *verifiable*?
         - If at the time of the inspection already tests are created for the requirement, the answer is yes. This can be checked via traces, but also :need:`gd_req__req_attr_test_covered` shows this. In case the requirement is not sufficiently traced to test cases already, a test expert is invited to the inspection to give their opinion whether the requirement is formulated in a way that supports test development and the available test infrastructure is sufficient to perform the test.
-        -
-        -
+        - YES
+        - @rahulthakre29: all equirements have test cases implemented
         -
       * - REQ_08_02
         - Is the requirement verifiable by design or code review in case it is not feasibly testable?
