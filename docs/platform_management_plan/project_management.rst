@@ -75,14 +75,14 @@ Steering Committees
 ^^^^^^^^^^^^^^^^^^^
 Steering of the project is done with the help of *Committees*.
 
-.. _PLCMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-PLC-team
-.. _PLCSPK: https://github.com/orgs/eclipse-score/teams/automotive-score-PLC-lead
+.. _PLCMBRS: https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS
+.. _PLCSPK: https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS
 .. _PLCMM: https://github.com/eclipse-score/score/wiki/PLCM
 .. _PLCSLC: https://sdvworkinggroup.slack.com/archives/PLC
 .. _PLCBKL: https://github.com/orgs/eclipse-score/projects/PLC
 
-.. _TLCMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-TLC-team
-.. _TLCSPK: https://github.com/orgs/eclipse-score/teams/automotive-score-TLC-lead
+.. _TLCMBRS: https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS
+.. _TLCSPK: https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS
 .. _TLCMM: https://github.com/eclipse-score/score/wiki/TLCM
 .. _TLCSLC: https://sdvworkinggroup.slack.com/archives/C085F44D2CS
 .. _TLCBKL: https://github.com/orgs/eclipse-score/projects/3
@@ -147,33 +147,33 @@ Communities
 commonly used development & testing infrastructure, processes or final integration & release.
 Each *Community* has a *Community Lead* to organize the community`s work.
 
-.. _ARCMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-ARC-team
-.. _ARCLD: https://github.com/orgs/eclipse-score/teams/automotive-score-ARC-lead
+.. _ARCMBRS: https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS
+.. _ARCLD: https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS
 .. _ARCMM: https://github.com/eclipse-score/score/wiki/ARCM
 .. _ARCSLC: https://sdvworkinggroup.slack.com/archives/C08C1HG5AKY
 .. _ARCBKL: https://github.com/orgs/eclipse-score/projects/3
 
-.. _INFMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-INF-team
-.. _INFLD: https://github.com/orgs/eclipse-score/teams/automotive-score-INF-lead
+.. _INFMBRS: https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS
+.. _INFLD: https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS
 .. _INFMM: https://github.com/eclipse-score/score/wiki/INFM
 .. _INFSLC: https://sdvworkinggroup.slack.com/archives/C0894QGRZDM
 .. _INFBKL: https://github.com/orgs/eclipse-score/projects/6
 
-.. _PRCMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-PRC-team
-.. _PRCLD: https://github.com/orgs/eclipse-score/teams/automotive-score-PRC-lead
+.. _PRCMBRS: https://github.com/eclipse-score/process_description/blob/main/.github/CODEOWNERS
+.. _PRCLD: https://github.com/eclipse-score/process_description/blob/main/.github/CODEOWNERS
 .. _PRCMM: https://github.com/eclipse-score/score/wiki/PRCM
 .. _PRCSLC: https://sdvworkinggroup.slack.com/archives/C0864L05332
 .. _PRCBKL: https://github.com/orgs/eclipse-score/projects/21
 .. _PIMBKL: https://github.com/orgs/eclipse-score/projects/7
 
-.. _TSTMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-TST-team
-.. _TSTLD: https://github.com/orgs/eclipse-score/teams/automotive-score-TST-lead
+.. _TSTMBRS: https://github.com/eclipse-score/itf/blob/main/.github/CODEOWNERS
+.. _TSTLD: https://github.com/eclipse-score/itf/blob/main/.github/CODEOWNERS
 .. _TSTMM: https://github.com/eclipse-score/score/wiki/TSTM
 .. _TSTSLC: https://sdvworkinggroup.slack.com/archives/TSTC08B6C78EF3
 .. _TSTBKL: https://github.com/orgs/eclipse-score/projects/5
 
-.. _INTMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-INT-team
-.. _INTLD: https://github.com/orgs/eclipse-score/teams/automotive-score-INT-lead
+.. _INTMBRS: https://github.com/eclipse-score/reference_integration/blob/main/.github/CODEOWNERS
+.. _INTLD: https://github.com/eclipse-score/reference_integration/blob/main/.github/CODEOWNERS
 .. _INTMM: https://github.com/eclipse-score/score/wiki/INTM
 .. _INTSLC: https://sdvworkinggroup.slack.com/archives/INT
 .. _INTBKL: https://github.com/orgs/eclipse-score/projects/INT
