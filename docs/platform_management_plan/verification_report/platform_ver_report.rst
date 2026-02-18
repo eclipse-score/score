@@ -27,14 +27,15 @@ Verification Report
 
 
 
-In its final form, Platform Verification Report must contain:
+In its final form (status = valid), Platform Verification Report must contain:
 
    - List of requirements (stakeholder and feature) and architecture tested by which test
      (can be several levels), passed/failed and completeness verdict, including normal
      operation and failure reactions
    - The list of requirements may also contain other verification methods like "Analysis"
    - Formal evidence about the performed DFA
-   - Formal evidence about the performed Safety Analyses
+   - Formal evidence about the performed Safety Analyses (if planned)
+   - Summary reports ("all passed" or OPs, justifications, planned actions etc.) for the above safety analyses
    - Test result per test case from
      :need:`wp__verification_platform_int_test` and :need:`wp__verification_feat_int_test`
      with status passed/failed/not_run
