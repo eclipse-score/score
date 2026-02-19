@@ -15,7 +15,6 @@
 Safety Manual
 =============
 
-.. note:: Document header
 
 .. document:: Platform Safety Manual
    :id: doc__platform_safety_manual
@@ -23,7 +22,7 @@ Safety Manual
    :safety: ASIL_B
    :security: NO
    :realizes: wp__module_safety_manual
-   :tags:  
+   :tags:
 
 
 Introduction/Scope
@@ -33,7 +32,7 @@ Introduction/Scope
 Assumed Platform Safety Requirements
 ------------------------------------
 | For the S-CORE Platformhe following safety related stakeholder requirements are assumed to define the top level functionality (purpose) of the S-CORE Platform. I.e. from these all the feature and component requirements implemented are derived.
-| <List here all the stakeholder requirements, with safety not equal to QM, the module's components requirements are derived from.>
+| **<List here all the stakeholder requirements, with safety level not equal to QM, the module's components requirements are derived from.>**
 
 Assumptions of Use
 ------------------
@@ -41,7 +40,7 @@ Assumptions of Use
 Assumptions on the Environment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 | Generally the assumption of the project platform SEooC is that it is integrated in a safe system, i.e. the POSIX OS it runs on is qualified and also the HW related failures are taken into account by the system integrator, if not otherwise stated in the module's safety concept.
-| <List here all the OS calls the project platform expects to be safe.>
+| **<List here all the OS calls the project platform expects to be safe.>**
 
 List of AoUs expected from the environment the platform / module runs on:
 

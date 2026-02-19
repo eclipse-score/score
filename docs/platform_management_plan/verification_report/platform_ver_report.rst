@@ -15,7 +15,6 @@
 Verification Report
 ===================
 
-.. note:: Document header
 
 .. document:: Platform Verification Report
    :id: doc__platform_verification_report
@@ -33,7 +32,7 @@ In its final form (status = valid), Platform Verification Report must contain:
      (can be several levels), passed/failed and completeness verdict, including normal
      operation and failure reactions
    - The list of requirements may also contain other verification methods like "Analysis"
-   - Formal evidence about the performed DFA
+   - Formal evidence about the Platform DFA
    - Formal evidence about the performed Safety Analyses (if planned)
    - Summary reports ("all passed" or OPs, justifications, planned actions etc.) for the above safety analyses
    - Test result per test case from

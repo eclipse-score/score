@@ -20,7 +20,7 @@ Safety documentation
 Safety specific documentation for Platform is listed here
 
 .. toctree::
-
+   :maxdepth: 1
    fdr_reports_safety_analyses_DFA
    fdr_reports_safety_package
    fdr_reports_safety_platform_safety_plan

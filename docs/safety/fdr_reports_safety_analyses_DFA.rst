@@ -13,16 +13,16 @@
    # *******************************************************************************
 
 
-Safety Analysis Checklist
+ Safety Analysis Formal Review Report
 =========================
 
-.. document:: Platform Safety Analyses Checklist
+.. document:: Safety Analysis Formal Review Report
    :id: doc__platform_safety_analysis_fdr
    :status: draft
    :safety: ASIL_B
    :security: YES
    :realizes: wp__fdr_reports
-   :tags:  
+   :tags:
 
 
 **Purpose**
