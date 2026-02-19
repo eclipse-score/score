@@ -72,8 +72,8 @@
         </script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="S-CORE Releases" href="../score_releases/index.html" />
-    <link rel="prev" title="Platform DFA (Dependent Failure Analysis)" href="platform_dfa.html" />
+    <link rel="next" title="Platform Verification Report" href="platform_ver_report.html" />
+    <link rel="prev" title="Dependent Failure Initiators" href="platform_dfa.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
@@ -501,11 +501,12 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="fdr_reports_safety_analyses_DFA.html">Safety Analysis Checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fdr_reports_safety_analyses_DFA.html">Safety Analysis Formal Review Report</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fdr_reports_safety_package.html">Safety Package Formal Review Report</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fdr_reports_safety_platform_safety_plan.html">Safety Plan Formal Review Report</a></li>
-<li class="toctree-l1"><a class="reference internal" href="platform_dfa.html">Platform DFA (Dependent Failure Analysis)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="platform_dfa.html">Dependent Failure Initiators</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Safety Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="platform_ver_report.html">Platform Verification Report</a></li>
 </ul>
 </div>
 </nav></div>
@@ -568,11 +569,7 @@
                   
   <section id="safety-manual">
 <h1>Safety Manual<a class="headerlink" href="#safety-manual" title="Link to this heading">#</a></h1>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Document header</p>
-</div>
-<div class="need_container docutils container" id="SNCB-452f949f">
+<div class="need_container docutils container" id="SNCB-ffe21371">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__platform_safety_manual">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -624,7 +621,7 @@
 <h2>Assumed Platform Safety Requirements<a class="headerlink" href="#assumed-platform-safety-requirements" title="Link to this heading">#</a></h2>
 <div class="line-block">
 <div class="line">For the S-CORE Platformhe following safety related stakeholder requirements are assumed to define the top level functionality (purpose) of the S-CORE Platform. I.e. from these all the feature and component requirements implemented are derived.</div>
-<div class="line">&lt;List here all the stakeholder requirements, with safety not equal to QM, the module’s components requirements are derived from.&gt;</div>
+<div class="line"><strong>&lt;List here all the stakeholder requirements, with safety level not equal to QM, the module’s components requirements are derived from.&gt;</strong></div>
 </div>
 </section>
 <section id="assumptions-of-use">
@@ -633,7 +630,7 @@
 <h3>Assumptions on the Environment<a class="headerlink" href="#assumptions-on-the-environment" title="Link to this heading">#</a></h3>
 <div class="line-block">
 <div class="line">Generally the assumption of the project platform SEooC is that it is integrated in a safe system, i.e. the POSIX OS it runs on is qualified and also the HW related failures are taken into account by the system integrator, if not otherwise stated in the module’s safety concept.</div>
-<div class="line">&lt;List here all the OS calls the project platform expects to be safe.&gt;</div>
+<div class="line"><strong>&lt;List here all the OS calls the project platform expects to be safe.&gt;</strong></div>
 </div>
 <p>List of AoUs expected from the environment the platform / module runs on:</p>
 <div class="needstable_wrapper docutils container" id="needtable-safety/platform_safety_manual-0">
@@ -1085,15 +1082,15 @@
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Platform DFA (Dependent Failure Analysis)</p>
+        <p class="prev-next-title">Dependent Failure Initiators</p>
       </div>
     </a>
     <a class="right-next"
-       href="../score_releases/index.html"
+       href="platform_ver_report.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">S-CORE Releases</p>
+        <p class="prev-next-title">Platform Verification Report</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
