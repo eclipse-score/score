@@ -249,10 +249,8 @@ Reference Red Hat AutoSD Linux image (Experimental)
 Reference Elektrobit corbos Linux for Safety Applications Linux image (Experimental)
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-**Improvements**
-
-- New ``fastdev`` base image snapshot and corresponding toolchain which include latest security patches and updates.
-- Updated packages avoid misleading errors during image start and shutdown, which could be confusing for users.
+- Updates to follow the latest integration structure and dependencies.
+- No functional changes compared to the previous software version.
 
 Associated Infrastructure Modules
 -----------------------------------
