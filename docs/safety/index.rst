@@ -26,3 +26,5 @@ Safety specific documentation for Platform is listed here
    fdr_reports_safety_platform_safety_plan
    platform_dfa
    platform_safety_manual
+   platform_ver_report.rst
+   

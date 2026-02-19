@@ -15,7 +15,6 @@
 Safety Manual
 =============
 
-
 .. document:: Platform Safety Manual
    :id: doc__platform_safety_manual
    :status: draft

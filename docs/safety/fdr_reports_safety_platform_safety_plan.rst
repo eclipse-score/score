@@ -15,7 +15,6 @@
 Safety Plan Formal Review Report
 ================================
 
-
 .. document:: S-CORE Platform Safety Plan Formal Review
    :id: doc__platform_safety_plan_fdr
    :status: draft

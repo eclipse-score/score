@@ -15,7 +15,6 @@
 Safety Package Formal Review Report
 ===================================
 
-
 .. document:: Platform Safety Package Formal Review
    :id: doc__platform_safety_package_fdr
    :status: draft
