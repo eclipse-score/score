@@ -505,6 +505,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="role_assignment/platform_safety_engineer.html">Platform Safety Engineer Election</a></li>
 <li class="toctree-l1"><a class="reference internal" href="role_assignment/platform_safety_manager.html">Platform Safety Manager Election</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role_assignment/platform_security_manager.html">Platform Security Manager Election</a></li>
 <li class="toctree-l1"><a class="reference internal" href="role_assignment/platform_quality_manager.html">Platform Quality Manager Election</a></li>
 </ul>
 </div>
@@ -566,7 +567,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-12146fc7">
+  <div class="need_container docutils container" id="SNCB-12c8d5fe">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__config_mgt_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -648,7 +649,11 @@ The complete list of project documents is defined in the <a class="reference int
 Ids are checked for uniqueness, see <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/configuration_management/guidance/configuration_process_req.html#gd_req__configuration_uid">gd_req__configuration_uid</a>.
 sphinx-needs is also used to document the work products properties/attributes defined in the process area descriptions.
 The work products are stored in text or code files (these are identified by their filenames) within GitHub repositories.
-There is one <a class="reference external" href="https://GitHub.com/eclipse-score/score/">platform repository</a> and one repository for each module.</p>
+GitHub repositories are the realization of the Delivery Containers as described in <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/general_concepts/score_building_blocks_concept.html#doc_concept__general_building_blocks">doc_concept__general_building_blocks</a>.
+There is one <a class="reference external" href="https://GitHub.com/eclipse-score/score/">platform repository</a> and one repository for each set of Dependable elements
+one Delivery Team is responsibel for [TBD add link to role defintion].</p>
+<p>In S-CORE every repository shall have only one MODULE.bazel file which defines its version and dependencies.
+Exceptions from this may be needed for testing reasons only.</p>
 <p>For other artefacts these are either</p>
 <ul class="simple">
 <li><p>files - are identified by their path/filename (and configured also in GitHub)</p></li>
@@ -693,12 +698,13 @@ Only the technical lead is allowed to approve a merge into a release branch. The
 Baselines are created by using the GitHub “tag” function. The tag name shall correspond to
 the release branch name the tag is created, adding patch version and pre-release tag.
 See also <a class="reference internal" href="release_management.html#doc__platform_release_management_plan" title="doc__platform_release_management_plan"><em class="xref need">Release Management Plan (doc__platform_release_management_plan)</em></a>.</p>
-<p>As described in “Identification and Properties” above, there are several repositories for the modules and the platform integration.
+<p>As described in “Identification and Properties” above, there are several repositories.
 Baselines are created individually in these repositories, even a different version schema could be adopted.
 In case of dependent repositories, the repository dependent upon on has to be base-lined first, to be available
 to refer to this baseline when integrating it. That means that for example a platform baseline also
-documents the versions (baselines) of the modules the platform consists of. This can then also be seen in the platform release note.</p>
-<p>Every change in the release repository is also taken over into the main branch. The module development team
+documents the versions (baselines) of the delivery containers/repositories the platform consists of.
+This can then also be seen in the platform release note.</p>
+<p>Every change in the release branch is also taken over into the main branch. The Delivery Team
 can decide how to ensure this (e.g. by development in main and cherry-pick to release branch).</p>
 </section>
 <section id="backup-and-recovery">
@@ -806,7 +812,7 @@ The respective tools used in the project are:</p>
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/platform_management_plan/config_management.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/platform_management_plan/config_management.rst">
       <i class="fa-solid fa-pencil"></i>
       
       
