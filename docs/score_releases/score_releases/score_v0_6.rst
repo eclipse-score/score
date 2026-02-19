@@ -210,17 +210,17 @@ It allows fine-grained control over scheduling, thread management, and workload 
 
 
 Lifecycle & Health Management
-~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TBD
+
+- **Version:** ``lifecycle v0.1.0``
+- **Source / tag:** `Lifecycle GitHub release <https://github.com/eclipse-score/lifecycle/releases/tag/v0.1.0>`_
+- **Release notes**: `Lifecycle release notes <https://github.com/eclipse-score/lifecycle/releases/tag/v0.1.0>`_
 
 **Improvements**
 
-- tbd
-
-:Version: ``lifecycle v0.``
-:Source / tag: `Lifecycle GitHub release <>`__
-:Further reading: See below
-
-  - tbd
+ - Health Monitoring library for applications with Rust and C++ API
+  - Deadline Monitoring support
 
 
 Reference integration
