@@ -211,7 +211,7 @@ It allows fine-grained control over scheduling, thread management, and workload 
 
 Lifecycle & Health Management
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-TBD
+Lifecycle module provides a Launch Manager for process lifecycle management as well as a Health Monitoring library to support supervision of process behavior.
 
 - **Version:** ``lifecycle v0.1.0``
 - **Source / tag:** `Lifecycle GitHub release <https://github.com/eclipse-score/lifecycle/releases/tag/v0.1.0>`_
@@ -219,8 +219,11 @@ TBD
 
 **Improvements**
 
- - Health Monitoring library for applications with Rust and C++ API
+- Health Monitoring library for applications with Rust and C++ API
   - Deadline Monitoring support
+- Initial version of Launch Manager with mw::lifecycle API
+  - The previously separate daemon processes launch_manager and health_monitor are now merged into a single launch_manager daemon process
+- Working integration of Launch Manager and Health Monitoring library
 
 
 Reference integration
