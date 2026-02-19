@@ -238,8 +238,12 @@ Reference QNX image
 
 Reference Red Hat AutoSD Linux image (Experimental)
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-- Uses AutoSD's toolchain to build and generate Lola RPMs
-- Deploy RPMs into an AutoSD Image
+
+**Improvements**
+
+- Remove unused packages to reduce image size
+- Move AutoSD images to use Bootc (image mode)
+- Integrate AutoSD's Bazel toolchain to build reference integration showcases
 
 
 Reference Elektrobit corbos Linux for Safety Applications Linux image (Experimental)
