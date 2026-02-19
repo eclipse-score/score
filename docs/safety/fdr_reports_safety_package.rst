@@ -12,8 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
- Safety Package Formal Review Report
- ===================================
+Safety Package Formal Review Report
+===================================
 
 .. document:: Platform Safety Package Formal Review
    :id: doc__platform_safety_package_fdr
