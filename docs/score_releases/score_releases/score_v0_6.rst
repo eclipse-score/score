@@ -315,13 +315,13 @@ ITF (Integration Testing Framework)
 
 Test Scenarios
 ~~~~~~~~~~~~~~~
+Test scenarios provide a backend for defining C++ and Rust implemented test scenarios that allow parametrized execution of built scenario applications which are the input for test cases.
+
 - **Improvements**
+  - Adapted new toolchains for C++ and Rust
 
-  - Refactor tracing subscriber by externalizing it's initialization
-  - Remove baselibs dependency from C++ scenarios in JSON parsing
-
-- **Version:** ``Test Scenarios v0``
-- **Source / tag:** `Test Scenarios GitHub release <>`_
+- **Version:** ``Test Scenarios v0.4.0``
+- **Source / tag:** `Test Scenarios GitHub release <https://github.com/eclipse-score/testing_tools/releases/tag/v0.4.0>`_
 
 .. _bazel_cpp_toolchain:
 
