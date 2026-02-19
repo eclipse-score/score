@@ -13,8 +13,8 @@
    # *******************************************************************************
 
 
- Safety Analysis Formal Review Report
-=====================================
+Safety Analysis Formal Review Report
+====================================
 
 .. document:: Safety Analysis Formal Review Report
    :id: doc__platform_safety_analysis_fdr
