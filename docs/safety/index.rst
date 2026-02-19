@@ -21,10 +21,10 @@ Safety specific documentation for Platform is listed here
 
 .. toctree::
    :maxdepth: 1
+   
    fdr_reports_safety_analyses_DFA
    fdr_reports_safety_package
    fdr_reports_safety_platform_safety_plan
    platform_dfa
    platform_safety_manual
    platform_ver_report.rst
-   
