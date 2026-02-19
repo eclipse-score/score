@@ -50,9 +50,4 @@ Platform Management Plan
    role_assignment/platform_safety_manager
    role_assignment/platform_security_manager
    role_assignment/platform_quality_manager
-
-.. toctree::
-   :titlesonly:
-   :caption: Verification Report
-
-   verification_report/platform_ver_report
+ 
