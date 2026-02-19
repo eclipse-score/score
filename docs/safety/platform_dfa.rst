@@ -13,8 +13,8 @@
    # *******************************************************************************
 
 
- Platform DFA (Dependent Failure Analysis)
- =========================================
+Platform DFA (Dependent Failure Analysis)
+=========================================
 
 .. document:: Platform DFA
    :id: doc__score_platform_dfa

@@ -12,8 +12,9 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Safety Manual
-=============
+
+Platform Safety Manual
+======================
 
 .. document:: Platform Safety Manual
    :id: doc__platform_safety_manual
