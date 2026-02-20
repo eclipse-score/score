@@ -56,7 +56,7 @@ How is S-CORE organized
 
 Eclipse S-CORE is an open source project, so everyone is welcome to contribute. Since we are organized within the Eclipse Foundation, you must have an Eclipse Foundation account to participate - please see :ref:`contribution_attribution` for details.
 
-The project is structured into various :ref:`technical committees <pmp_pm_technical_committees>`, that include communities which focus on cross-cutting topics and feature teams responsible for the implementation of specific functionalities. Their meetings are public; feel free to join or review the minutes via our `GitHub Discussions <https://github.com/orgs/eclipse-score/discussions>`_.
+The project is structured into various :ref:`communities <pmp_pm_communities>`, which focus on cross-cutting topics and :ref:`feature teams <pmp_pm_feature_teams>` responsible for the implementation of specific functionalities. Their meetings are public; feel free to join or review the minutes via our `GitHub Discussions <https://github.com/orgs/eclipse-score/discussions>`_.
 
 Additionally, two :ref:`steering committees <pmp_pm_steering_committees>`, the Technical Lead Circle and the Project Lead Circle, oversee the overall steering and planning of S-CORE.
 

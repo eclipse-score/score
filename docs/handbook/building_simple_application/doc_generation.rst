@@ -25,9 +25,9 @@ As described in the :ref:`Overview of technologies <technology_overview>` chapte
 Eclipse S-CORE uses the sphinx and sphinx-needs toolchain to generate documentation from rst files.
 Elements of Eclipse S-CORE metamodel are represented as sphinx-needs objects.
 
-The integration of sphinx, sphinx-needs, and the Eclipse S-CORE-specific extensions is implemented in the repository: 
+The integration of sphinx, sphinx-needs, and the Eclipse S-CORE-specific extensions is implemented in the repository:
 
-- https://github.com/eclipse-score/docs-as-code/tree/main/docs  
+- https://github.com/eclipse-score/docs-as-code/tree/main/docs
 
 The following `documentation <https://eclipse-score.github.io/docs-as-code/main/how-to/index.html>`_
 provides a description of how the documentation can be created and built. Here, we will focus on a simple example.
@@ -59,7 +59,7 @@ Sphinx configuration
 Two files are essential for documentation generation:
 
 - `docs/conf.py <https://github.com/eclipse-score/scrample/blob/main/docs/conf.py>`_ provides configuration for the *sphinx-toolchain*.
-  
+
   .. code-block:: python
     :linenos:
     :emphasize-lines: 3
@@ -86,13 +86,13 @@ Two files are essential for documentation generation:
     ]
 
   Notes:
-  
+
   - project_prefix (e.g., *“SCRAMPLE_”*) is important.
     Other modules will use this prefix when referencing sphinx-needs elements from your module.
   - S-CORE extensions (score_*) are automatically provided via *score_docs_as_code*.
 
 - `index.rst <https://github.com/eclipse-score/scrample/blob/main/docs/index.rst>`_
-  is the main entry point for your documentation. It includes all other .rst files, that should be part of the documentation build. 
+  is the main entry point for your documentation. It includes all other .rst files, that should be part of the documentation build.
 
 
 Building documentation
@@ -119,7 +119,7 @@ but will not generate any html files. To do so, run following command
   loading pickled environment... The configuration has changed (7 options: 'html_permalinks_icon', 'html_static_path', 'needs_layouts', 'needs_types', 'plantuml', ...)
   done
   building [mo]: targets for 0 po files that are out of date
-  writing output... 
+  writing output...
   building [html]: build_info mismatch, copying .buildinfo to .buildinfo.bak
   building [html]: targets for 1 source files that are out of date
   updating environment: [config changed ('skip_rescanning_via_source_code_linker')] 1 added, 0 changed, 0 removed
@@ -131,13 +131,13 @@ but will not generate any html files. To do so, run following command
   pickling environment... done
   checking consistency... done
   preparing documents... done
-  copying assets... 
-  copying static files... 
+  copying assets...
+  copying static files...
   Writing evaluated template result to /home/_dev/scrample/_build/_static/basic.css
   Writing evaluated template result to /home/_dev/scrample/_build/_static/language_data.js
   Writing evaluated template result to /home/_dev/scrample/_build/_static/documentation_options.js
   copying static files: done
-  copying extra files... 
+  copying extra files...
   copying extra files: done
   copying assets: done
 
@@ -157,7 +157,7 @@ One option is to use the *live preview* feature. The corresponding bazel target 
 when you import *doc bazel rule* into your BUILD file.
 
 .. code-block:: python
-  
+
   load("@score_docs_as_code//:docs.bzl", "docs")
 
 Run the following command:
@@ -175,7 +175,7 @@ Run the following command:
   The HTML pages are in ../../../../../../../../../../../_dev/playground_2/scrample/_build.
   [sphinx-autobuild] Serving on http://127.0.0.1:8000
   [sphinx-autobuild] Waiting to detect changes...
- 
+
 As you can see, a local server is started on following port and address: http://127.0.0.1:8000 .
 Open it in your web browser and you should be able to view the current version of the documentation.
 
@@ -184,12 +184,11 @@ Open it in your web browser and you should be able to view the current version o
    :alt: Architecture overview
    :align: center
 
-The live preview: 
+The live preview:
 
 - rebuilds automatically
-- updates on every file change 
+- updates on every file change
 - stays active until you stop the bazel process (Ctrl+C).
 
 Now you can replace the placeholder content in index.rst with meaningful text, as shown in the following
 `commit <https://github.com/eclipse-score/scrample/commit/5179175823ecda51775e459ad73d7230cd4c880a>`_.
-
