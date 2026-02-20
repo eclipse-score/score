@@ -7,3 +7,4 @@ S-CORE Releases
 
    score_v0_5_alpha.rst
    score_v0_5_beta.rst
+   score_v0_6.rst
