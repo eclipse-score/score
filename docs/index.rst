@@ -89,7 +89,7 @@ Project structure and processes
    .. grid-item-card::
 
       Platform Management Plan (PMP)
-      ^^^
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
       Read about our project and organization structure in the
       :ref:`Project Handbook <pmp>`.
       And learn how we deal with :ref:`Platform Safety Plan <score_platform_safety_plan>` or care about :ref:`Software Verification Plan <software_verification_plan>`.
@@ -105,6 +105,7 @@ Project structure and processes
       requirements/index
       modules/index
       contribute/index
+      safety/index
 
       Releases <score_releases/index.rst>
       Tools <score_tools/index.rst>
