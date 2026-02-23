@@ -566,7 +566,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-47951ecc">
+  <div class="need_container docutils container" id="SNCB-a9f0013a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__verification_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -976,6 +976,69 @@ relevant work products is shown above (as part of the development of the product
 cases is followed. Any pre-existing test case (e.g. from OSS components) is reviewed and adopted
 to follow the <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/guidance/verification_specification.html#gd_guidl__verification_specification">gd_guidl__verification_specification</a> and <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/guidance/verification_process_reqs.html#gd_req__verification_link_tests">gd_req__verification_link_tests</a>.</p>
 </section>
+<section id="test-implementation-best-practices">
+<h4>Test implementation best practices<a class="headerlink" href="#test-implementation-best-practices" title="Link to this heading">#</a></h4>
+<p>The following best practices provide guidance for writing high-quality, maintainable tests. These guidelines
+are recommendations and can be deviated from when there is a good reason, such as improved readability or
+reduced complexity for a specific case.</p>
+<p><strong>Test Naming</strong></p>
+<p>Test names should be descriptive and use PascalCase style. The naming conventions are:</p>
+<ul class="simple">
+<li><p>A <code class="docutils literal notranslate"><span class="pre">TestSuiteName</span></code> without a fixture should have the suffix <code class="docutils literal notranslate"><span class="pre">Test</span></code></p></li>
+<li><p>A <code class="docutils literal notranslate"><span class="pre">TestSuiteName</span></code> with a fixture should have the suffix <code class="docutils literal notranslate"><span class="pre">Fixture</span></code></p></li>
+<li><p>Tests containing <code class="docutils literal notranslate"><span class="pre">EXPECT_DEATH</span></code> should always have <code class="docutils literal notranslate"><span class="pre">DeathTest</span></code> at the end of <code class="docutils literal notranslate"><span class="pre">TestSuiteName</span></code>
+(see <a class="reference external" href="https://github.com/google/googletest/blob/main/docs/advanced.md#death-tests-and-threads">Death Tests and Threads</a>)</p></li>
+</ul>
+<p>Example naming following “Given, When, Then” pattern
+(see <a class="reference external" href="https://martinfowler.com/bliki/GivenWhenThen.html">GivenWhenThen</a>):</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TEST</span><span class="p">(</span><span class="n">RuntimeWithInvalidTracingRuntimeTest</span><span class="p">,</span><span class="w"> </span><span class="n">WhenCallingTraceThenAnErrorIsReturned</span><span class="p">)</span>
+<span class="n">TEST</span><span class="p">(</span><span class="n">SkeletonFieldPrepareOfferTest</span><span class="p">,</span><span class="w"> </span><span class="n">WhenCallingPrepareOfferBeforeCallingUpdateThenAnErrorIsReturned</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>EXPECT_CALL vs ON_CALL (C++ / GoogleTest)</strong></p>
+<p>For C++ tests using GoogleMock
+(see <a class="reference external" href="https://google.github.io/googletest/gmock_cook_book.html#setting-expectations">Setting Expectations</a>):</p>
+<ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">ON_CALL</span></code> to set default actions that should occur unless specified otherwise. These typically
+belong in the test fixture setup.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">EXPECT_CALL</span></code> when testing that a specific function is called on a mock object as the result
+of the behavior being tested, or when injecting behavior that directly impacts the function under test.</p></li>
+</ul>
+<p><strong>Test Constants</strong></p>
+<ul class="simple">
+<li><p>If the specific value of a constant is relevant to the test, define it within the test itself</p></li>
+<li><p>If the value is not relevant (just needs to be valid), use a global constant or fixture member</p></li>
+<li><p>Avoid global constant objects that use globals in their implementation to prevent
+<a class="reference external" href="https://en.cppreference.com/w/cpp/language/siof.html">Static Initialization Order Fiasco</a></p></li>
+</ul>
+<p><strong>Test Fixtures</strong></p>
+<ul class="simple">
+<li><p>Place fixtures immediately before the first test that uses them</p></li>
+<li><p>Keep fixtures small; large fixtures may indicate poor architectural design of the unit under test</p></li>
+<li><p>Avoid inheriting from other fixtures</p></li>
+<li><p>Consider the builder pattern for configurable fixture setup (returning <code class="docutils literal notranslate"><span class="pre">*this</span></code> to allow method chaining)
+(see <a class="reference external" href="https://github.com/eclipse-score/communication/blob/main/score/mw/com/impl/bindings/lola/service_discovery/test/service_discovery_client_test_fixtures.h">ServiceDiscoveryClientFixture</a>
+for an example)</p></li>
+</ul>
+<p><strong>Test File Organization</strong></p>
+<ul class="simple">
+<li><p>One test file may contain all tests for a single unit as long as readability is maintained</p></li>
+<li><p>When splitting tests into multiple files, split based on features/functionality of the unit under test
+(see <a class="reference external" href="https://github.com/eclipse-score/communication/tree/main/score/mw/com/impl/bindings/lola/service_discovery/client">service_discovery/client</a>
+for an example)</p></li>
+<li><p>Have one Bazel test target per production code target to optimize build times</p></li>
+</ul>
+<p><strong>Testing Interfaces with unique_ptr</strong></p>
+<p>When interfaces require ownership transfer via <code class="docutils literal notranslate"><span class="pre">unique_ptr</span></code>:</p>
+<ul class="simple">
+<li><p>Set expectations on the mock object before injecting it (GTest evaluates mocks on destruction)</p></li>
+<li><p>Alternatively, use a mock facade pattern: a class inheriting from the interface that forwards calls
+to a test-owned mock object (see <a class="reference external" href="https://github.com/eclipse-score/baselibs/blob/main/score/os/utils/inotify/inotify_instance_facade.h">InotifyInstanceFacade</a>
+for an example)</p></li>
+<li><p>For complex assertions, consider using
+<a class="reference external" href="https://google.github.io/googletest/reference/matchers.html#defining-matchers">custom matchers</a></p></li>
+</ul>
+</section>
 </section>
 <section id="test-execution-and-result-analysis">
 <h3>Test execution and result analysis<a class="headerlink" href="#test-execution-and-result-analysis" title="Link to this heading">#</a></h3>
@@ -1188,6 +1251,7 @@ This includes physical maintenance as well as virtual access.</p>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-development">Test development</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-existing-test-cases">Pre-existing test cases</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#test-implementation-best-practices">Test implementation best practices</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-execution-and-result-analysis">Test execution and result analysis</a><ul class="nav section-nav flex-column">
