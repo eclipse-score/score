@@ -20,6 +20,8 @@ on:
       - main # docs are built only on push to main branch, for feature branches there are PR builds
   merge_group:
     types: [checks_requested]
+  release:
+    types: [created]
 
 jobs:
   docs-build:
