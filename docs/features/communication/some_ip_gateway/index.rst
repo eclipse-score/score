@@ -102,8 +102,11 @@ The requirements from Communication generally apply to the SOME/IP Gateway.
 SOME/IP protocol implementation
 -------------------------------
 
+
+
 For reference purpose, the gateway shall use the `vsomeip <https://github.com/COVESA/vsomeip>`_ protocol
-implementation that is compatible and complying with the SOME/IP specification from `some-ip.com <https://some-ip.com/>`_. (:need:`feat_req__some_ip_gateway__someip_protocol`)
+implementation that is compatible and complying with the SOME/IP specification from `Open SOME/IP <https://github.com/some-ip-com/open-someip-spec>`_ (:need:`feat_req__some_ip_gateway__someip_protocol`)
+
 Protocol implementations shall be wrapped in an abstraction API, that stays stable and allows implementations may be exchanged, potentially even by binary only libraries.
 
 The SOME/IP Gateway shall support SOME/IP Events, Fields and Methods and shall map these accordingly into IPC.
@@ -235,7 +238,8 @@ License Impact
 [How could the copyright impacted by the license of the new contribution?]
 
 SOME/IP is a protocol, including applied E2E protection and the according profile (polynom, etc.),
-is defined by multiple organizations, here we refer to the us of `vsomeip <https://github.com/COVESA/vsomeip>`_ implementation that refers to `some-ip.com <https://some-ip.com/>`_.
+which is defined by multiple organizations, here we refer to the use of `vsomeip <https://github.com/COVESA/vsomeip>`_ implementation that refers to `some-ip.com <https://some-ip.com/>`_ and
+the associated protocol specification of `Open SOME/IP <https://github.com/some-ip-com/open-someip-spec>`_.
 The gateway implementation shall carefully distinguish between the SOME/IP communication stack,
 the E2E protection of data, and the integration into S-CORE mw::com.
 

@@ -17,7 +17,7 @@
 SOME/IP Gateway Service Discovery
 #################################
 
-The implementation shall be fully compatible and complying with the SOME/IP Service Discovery Protocol specification from AUTOSAR Adaptive.
+The implementation shall be fully compatible and complying with the SOME/IP Service Discovery Protocol specification from `Open SOME/IP <https://github.com/some-ip-com/open-someip-spec>`_.
 Service discovery deals with discovery and connection setup of services.
 The basic summary of service discovery is as follows:
 

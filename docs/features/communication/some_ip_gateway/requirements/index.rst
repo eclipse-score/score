@@ -39,7 +39,7 @@ Functional Requirements
 
    The SOME/IP Gateway shall support an interface to plug-in a E2E protection service implementation.
 
-.. feat_req:: Compatibility with `some-ip.com <https://some-ip.com/>`_ Protocol Specification
+.. feat_req:: Compatibility with Open SOME/IP Protocol Specification
    :id: feat_req__some_ip_gateway__someip_protocol
    :reqtype: Functional
    :security: NO
@@ -47,9 +47,9 @@ Functional Requirements
    :satisfies: stkh_req__communication__supported_net
    :status: valid
 
-   The SOME/IP protocol implementation shall be fully compatible and complying with the SOME/IP protocol specification from `some-ip.com <https://some-ip.com/>`_.
+   The SOME/IP protocol implementation shall be fully compatible and complying with the SOME/IP protocol specification from `Open SOME/IP <https://github.com/some-ip-com/open-someip-spec>`_.
 
-.. feat_req:: Compatibility with `some-ip.com <https://some-ip.com/>`_ E2E Protocol Specification
+.. feat_req:: Compatibility with some-ip.com E2E Protocol Specification
    :id: feat_req__some_ip_gateway__e2e_specs
    :reqtype: Functional
    :security: NO
@@ -59,7 +59,7 @@ Functional Requirements
 
    The E2E protection implementation shall be fully compatible and complying with the E2E protocol specification from `some-ip.com <https://some-ip.com/>`_.
 
-.. feat_req:: Compatibility with `some-ip.com <https://some-ip.com/>`_ SOME/IP Service Discovery Protocol Specification
+.. feat_req:: Compatibility with Open SOME/IP Service Discovery Protocol Specification
    :id: feat_req__some_ip_gateway__someip_sd_protocol
    :reqtype: Functional
    :security: NO
@@ -67,4 +67,4 @@ Functional Requirements
    :satisfies: stkh_req__communication__supported_net
    :status: valid
 
-   The Service Discovery implementation shall be fully compatible and complying with the SOME/IP service discovery specification from `some-ip.com <https://some-ip.com/>`_.
+   The Service Discovery implementation shall be fully compatible and complying with the SOME/IP service discovery specification from `Open SOME/IP <https://github.com/some-ip-com/open-someip-spec>`_.
