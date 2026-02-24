@@ -40,6 +40,10 @@ For the role :need:`rl__quality_manager` the required skills, knowledge and expe
 The evidences are not published openly due to personal data confidentiality, but will be checked in a dedicated review meeting
 and confirmed by the first reviewer of this document's pull requests.
 
+For the election of Module Quality Managers, the pool of platform quality managers is considered.
+The election of Module Quality Managers is performed by the platform quality managers and is
+based on the required skills, knowledge and experience defined in :need:`rl__quality_manager`
+and the evidences provided by the nominees.
 
 Evidences Markus Schu
 ---------------------
