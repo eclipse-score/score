@@ -106,6 +106,7 @@ Project structure and processes
       modules/index
       contribute/index
       safety/index
+      release/index
 
       Releases <score_releases/index.rst>
       Tools <score_tools/index.rst>

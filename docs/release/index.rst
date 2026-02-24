@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2026 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -14,16 +14,12 @@
 
 ..
 
-Safety documentation
+Release documentation
 ====================
 
-Safety specific documentation for Platform is listed here
+Release specific documentation for Platform is listed here
 
 .. toctree::
    :maxdepth: 1
 
-   fdr_reports_safety_analyses_DFA
-   fdr_reports_safety_package
-   fdr_reports_safety_platform_safety_plan
-   platform_dfa
-   platform_safety_manual
+   platform_ver_report.rst
