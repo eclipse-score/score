@@ -36,8 +36,8 @@ Platform Verification Report
        - The list of requirements may also contain other verification methods like “Analysis”
 
 **2. Safety analyses**
-       - Formal evidence about the performed DFA
-       - Formal evidence about the performed Safety Analyses (this has to be compared against safety plan, i.e. needed only if FMEA actually planned on platform level)
+       - Formal evidence about the performed Platform DFA
+       - Formal evidence about the performed Platform Safety Analyses (this has to be compared against safety plan, i.e. needed only if FMEA actually planned on platform level)
        - Final statement resume (i.e. all passed, or are there open points, further actions needed, justifications etc.)
 
 **2. Integration test results**
