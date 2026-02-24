@@ -569,7 +569,7 @@
                   
   <section id="platform-verification-report">
 <h1>Platform Verification Report<a class="headerlink" href="#platform-verification-report" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-d083ead3">
+<div class="need_container docutils container" id="SNCB-94e5965d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__platform_verification_report">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -611,24 +611,37 @@
 </table>
 </div>
 </div>
-<p>In its final form (status = valid), Platform Verification Report must contain:</p>
+<p><strong>&lt;In its final form (status = valid), Platform Verification Report must contain:&gt;</strong></p>
+<p><strong>1. List of requirements and architecture tested</strong></p>
 <blockquote>
 <div><ul class="simple">
-<li><p>List of requirements (stakeholder and feature) and architecture tested by which test
-(can be several levels), passed/failed and completeness verdict, including normal
-operation and failure reactions</p></li>
+<li><p>List of requirements (stakeholder and feature) tested by which test</p></li>
+<li><p>List of architecture elements tested by which test (can be several levels)</p></li>
+<li><p>For all tests “passed/failed” shall be reported</p></li>
+<li><p>For all tests, completeness verdict shall be report, including normal operation and failure reactions</p></li>
 <li><p>The list of requirements may also contain other verification methods like “Analysis”</p></li>
-<li><p>Formal evidence about the performed DFA</p></li>
-<li><p>Formal evidence about the performed Safety Analyses (if planned)</p></li>
-<li><p>Summary reports (“all passed” or OPs, justifications, planned actions etc.) for the above safety analyses</p></li>
-<li><p>Test result per test case from
-<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_platform_int_test">wp__verification_platform_int_test</a> and <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_feat_int_test">wp__verification_feat_int_test</a>
-with status passed/failed/not_run</p></li>
-<li><p>Test log per test case from
-<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_platform_int_test">wp__verification_platform_int_test</a> and <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_feat_int_test">wp__verification_feat_int_test</a>
-with status passed/failed/not_run</p></li>
 </ul>
 </div></blockquote>
+<dl class="simple">
+<dt><strong>2. Safety analyses</strong></dt><dd><ul class="simple">
+<li><p>Formal evidence about the performed DFA</p></li>
+<li><p>Formal evidence about the performed Safety Analyses (this has to be compared against safety plan, i.e. needed only if FMEA actually planned on platform level)</p></li>
+<li><p>Final statement resume (i.e. all passed, or are there open points, further actions needed, justifications etc.)</p></li>
+</ul>
+</dd>
+<dt><strong>2. Integration test results</strong></dt><dd><ul class="simple">
+<li><p>Test results per test case from Platform Integration Test (<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_platform_int_test">wp__verification_platform_int_test</a>)</p></li>
+<li><p>Test results per test case from  Feature Integration test (<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_feat_int_test">wp__verification_feat_int_test</a>)</p></li>
+<li><p>All test results shall include status (“passed/failed/not_run”)</p></li>
+</ul>
+</dd>
+<dt><strong>3. Integration test logs</strong></dt><dd><ul class="simple">
+<li><p>Test log per test case from Platform Integration Test (<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_platform_int_test">wp__verification_platform_int_test</a>)</p></li>
+<li><p>Test log per test case from  Feature Integration test (<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_feat_int_test">wp__verification_feat_int_test</a>)</p></li>
+<li><p>All test results shall include status (“passed/failed/not_run”)</p></li>
+</ul>
+</dd>
+</dl>
 </section>
 
 
