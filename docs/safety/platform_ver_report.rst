@@ -25,18 +25,27 @@ Platform Verification Report
 
 
 
-In its final form (status = valid), Platform Verification Report must contain:
+**<In its final form (status = valid), Platform Verification Report must contain:>**
 
-   - List of requirements (stakeholder and feature) and architecture tested by which test
-     (can be several levels), passed/failed and completeness verdict, including normal
-     operation and failure reactions
-   - The list of requirements may also contain other verification methods like "Analysis"
-   - Formal evidence about the performed DFA
-   - Formal evidence about the performed Safety Analyses (if planned)
-   - Summary reports ("all passed" or OPs, justifications, planned actions etc.) for the above safety analyses
-   - Test result per test case from
-     :need:`wp__verification_platform_int_test` and :need:`wp__verification_feat_int_test`
-     with status passed/failed/not_run
-   - Test log per test case from
-     :need:`wp__verification_platform_int_test` and :need:`wp__verification_feat_int_test`
-     with status passed/failed/not_run
+**1. List of requirements and architecture tested**
+
+       - List of requirements (stakeholder and feature) tested by which test
+       - List of architecture elements tested by which test (can be several levels)
+       - For all tests "passed/failed" shall be reported
+       - For all tests, completeness verdict shall be report, including normal operation and failure reactions
+       - The list of requirements may also contain other verification methods like “Analysis”
+
+**2. Safety analyses**
+       - Formal evidence about the performed DFA
+       - Formal evidence about the performed Safety Analyses (this has to be compared against safety plan, i.e. needed only if FMEA actually planned on platform level)
+       - Final statement resume (i.e. all passed, or are there open points, further actions needed, justifications etc.)
+
+**2. Integration test results**
+       - Test results per test case from Platform Integration Test (:need:`wp__verification_platform_int_test`)
+       - Test results per test case from  Feature Integration test (:need:`wp__verification_feat_int_test`)
+       - All test results shall include status ("passed/failed/not_run")
+
+**3. Integration test logs**
+       - Test log per test case from Platform Integration Test (:need:`wp__verification_platform_int_test`)
+       - Test log per test case from  Feature Integration test (:need:`wp__verification_feat_int_test`)
+       - All test results shall include status ("passed/failed/not_run")
