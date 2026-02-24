@@ -79,7 +79,7 @@ List of AoUs on the user of the platform features or the module of this safety m
 
 Safety concept of the SEooC
 ---------------------------
-| <Describe here the safety concept incl. which faults are taken care of, reactions of the implemented functions under anomalous operating conditions ... if this is not already documented sufficiently in the feature documentation "safety impact" section of all the features the module is used in.>
+| **<Describe here the safety concept incl. which faults are taken care of, reactions of the implemented functions under anomalous operating conditions ... if this is not already documented sufficiently in the feature documentation "safety impact" section of all the features the module is used in.>**
 
 Safety Anomalies
 ----------------
@@ -87,5 +87,5 @@ Safety Anomalies
 
 References
 ----------
-| <link to the user manual>
-| <other links>
+| **<link to the user manual>**
+| **<other links>**
