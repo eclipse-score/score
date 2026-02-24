@@ -15,7 +15,7 @@
 ..
 
 Release documentation
-====================
+=====================
 
 Release specific documentation for Platform is listed here
 
