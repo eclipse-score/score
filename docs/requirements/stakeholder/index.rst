@@ -250,30 +250,149 @@ Dependability
    Note: This is part of 0.5 release and therefore can only support ASIL_B. Goal is ASIL_D.
 
 
-.. stkh_req:: Safety features
-   :id: stkh_req__dependability__safety_features
+.. stkh_req:: Health Management
+   :id: stkh_req__dependability__safety_features_1
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :rationale: There are state-of-the-art safety mechanisms to check HW and SW errors. These are expected to be supported either by the SW-platform alone or by using HW or OS provided safety features.
+   :rationale: Safety applications may have systematical errors which lead to violations in the control flow.
    :status: valid
    :tags: safety_mechanism
    :valid_from: v1.0.0
 
-   The SW-platform shall support the following safety feature:
+   The SW-platform shall implement Health Management (alive, deadline, logical supervision) for time and event based taskchains
 
-   * Health Management (alive, deadline, logical supervision) for time and event based taskchains
-   * E2E Protection for communication
-   * Built-in hardware self-tests
-   * Safe reset paths
-   * IO MMU protecting DMA accesses
-   * Memory Management Unit
-   * Memory Protection Unit for caches
-   * ECC Memory
-   * Software Lockstep
-   * Power management integrated circuit (PMIC), external watchdog and voltage monitoring
-   * Safe switch from engineering to field mode and back
+.. stkh_req:: E2E Protection
+   :id: stkh_req__dependability__safety_features_2
+   :reqtype: Functional
+   :security: YES
+   :safety: ASIL_B
+   :rationale: ECU external communication is using QM rated SW and HW which may currupt messages.
+   :status: valid
+   :tags: safety_mechanism
+   :valid_from: v1.0.0
 
+   The SW-platform shall implement E2E Protection for communication
+
+.. stkh_req:: HW Self-Test
+   :id: stkh_req__dependability__safety_features_3
+   :reqtype: Functional
+   :security: YES
+   :safety: ASIL_B
+   :rationale: The processing HW used by the SW platform may have errors affecting computing, data and control flow.
+   :status: valid
+   :tags: safety_mechanism
+   :valid_from: v1.0.0
+
+   The SW-platform shall support Built-in hardware self-tests
+
+   Note: Support means here that a functionality offered by external SW (e.g. an OS) or HW may need to be configured and used.
+
+.. stkh_req:: Safe Startup and Reset
+   :id: stkh_req__dependability__safety_features_4
+   :reqtype: Functional
+   :security: YES
+   :safety: ASIL_B
+   :rationale: During startup and shutdown specific errors may occurr (e.g. inintialization errors due to insufficient resources).
+   :status: valid
+   :tags: safety_mechanism
+   :valid_from: v1.0.0
+
+   The SW-platform shall implement Safe startup and reset paths
+
+.. stkh_req:: DMA Protection
+   :id: stkh_req__dependability__safety_features_5
+   :reqtype: Functional
+   :security: YES
+   :safety: ASIL_B
+   :rationale: DMA function usually grants also QM HW direct access to memory.
+   :status: valid
+   :tags: safety_mechanism
+   :valid_from: v1.0.0
+
+   The SW-platform shall support IO MMU protecting DMA accesses
+
+   Note: Support means here that a functionality offered by external SW (e.g. an OS) or HW may need to be configured and used.
+
+.. stkh_req:: Memory Protection
+   :id: stkh_req__dependability__safety_features_6
+   :reqtype: Functional
+   :security: YES
+   :safety: ASIL_B
+   :rationale: ASIL SW components memory may be corrupted by QM SW components if those are located on the the same physical memory.
+   :status: valid
+   :tags: safety_mechanism
+   :valid_from: v1.0.0
+
+   The SW-platform shall support Memory Management Unit
+
+   Note: Support means here that a functionality offered by external SW (e.g. an OS) or HW may need to be configured and used.
+
+.. stkh_req:: Cache Protection
+   :id: stkh_req__dependability__safety_features_7
+   :reqtype: Functional
+   :security: YES
+   :safety: ASIL_B
+   :rationale: ASIL SW components memory may be corrupted by QM SW components if those are located on the the same physical memory.
+   :status: valid
+   :tags: safety_mechanism
+   :valid_from: v1.0.0
+
+   The SW-platform shall support Memory Protection Unit for caches
+
+   Note: Support means here that a functionality offered by external SW (e.g. an OS) or HW may need to be configured and used.
+
+.. stkh_req:: Memory Error Correction
+   :id: stkh_req__dependability__safety_features_8
+   :reqtype: Functional
+   :security: YES
+   :safety: ASIL_B
+   :rationale: HW errors may occurr on the memory (e.g. bitflips caused by radiation)
+   :status: valid
+   :tags: safety_mechanism
+   :valid_from: v1.0.0
+
+   The SW-platform shall support ECC Memory
+
+   Note: Support means here that a functionality offered by external SW (e.g. an OS) or HW may need to be configured and used.
+
+.. stkh_req:: SW Lockstep
+   :id: stkh_req__dependability__safety_features_9
+   :reqtype: Functional
+   :security: YES
+   :safety: ASIL_B
+   :rationale: Computing HW may suffer from systematic or random HW errors.
+   :status: valid
+   :tags: safety_mechanism
+   :valid_from: v2.0.0
+
+   The SW-platform shall implement Software Lockstep
+
+.. stkh_req:: External Supervision
+   :id: stkh_req__dependability__safety_features_10
+   :reqtype: Functional
+   :security: YES
+   :safety: ASIL_B
+   :rationale: The SW platform may run on malfunctioning HW (e.g. by undervoltage) which prevents from own error detection and recovery.
+   :status: valid
+   :tags: safety_mechanism
+   :valid_from: v1.0.0
+
+   The SW-platform shall support Power management integrated circuit (PMIC), external watchdog and voltage monitoring
+
+   Note: Support means here that a functionality offered by external SW (e.g. an OS) or HW may need to be configured and used.
+
+.. stkh_req:: Safe Mode Switch
+   :id: stkh_req__dependability__safety_features_11
+   :reqtype: Functional
+   :security: YES
+   :safety: ASIL_B
+   :rationale: It is expected that the SW platform is used in systems in having engineering (development) modes and field (customer) modes, where engineering modes may allow functionality which is unsafe.
+   :status: valid
+   :tags: safety_mechanism
+   :valid_from: v1.0.0
+
+   The SW-platform shall implement Safe switch from engineering to field mode and back
 
 .. stkh_req:: SW-platform error reaction
    :id: stkh_req__dependability__error_reaction
@@ -356,7 +475,7 @@ Dependability
    Note1: Reasons for not needing program flow monitoring could be an OS scheduler with timing and execution guarantees.
    Or that the non/late execution of the application keeps the system in a safe state.
 
-   Note2: The SW-Platform supports this - see :need:`stkh_req__dependability__safety_features` "live, deadline, logical supervision"
+   Note2: The SW-Platform supports this - see :need:`stkh_req__dependability__safety_features_1` "live, deadline, logical supervision"
 
 
 .. stkh_req:: Availability
@@ -1232,7 +1351,7 @@ Requirements Engineering
 Safety Mechanisms
 -----------------
 
-The following stakeholder requirements are assumed to be fulfilled by a safety mechanism due to complexity of the realizing
+The following stakeholder requirements describe the assumed safety mechanisms which are needed due to complexity of the realizing
 SW element(s) or due to dependency on HW. This is confirmed during safety analysis of the derived feature requirements and architecture.
 
 .. needtable:: Expected Safety Mechanisms

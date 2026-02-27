@@ -459,7 +459,7 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies: stkh_req__dependability__safety_features
+   :satisfies: stkh_req__dependability__safety_features_11
    :status: valid
 
    The Persistency shall support the development mode.
@@ -470,7 +470,7 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :satisfies: stkh_req__dependability__safety_features
+   :satisfies: stkh_req__dependability__safety_features_11
    :status: valid
 
    The Persistency shall support the production mode.

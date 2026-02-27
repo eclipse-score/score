@@ -296,7 +296,7 @@ In this section assumptions are described which need to be fulfilled by the appl
    Note1: Reasons for not needing program flow monitoring could be an OS scheduler with timing and execution guarantees.
    Or that in case of non/late execution of the application the safety integrity of the system is not affected.
 
-   Note2: The SW-Platform supports this - see :need:`stkh_req__dependability__safety_features` "live, deadline, logical supervision"
+   Note2: The SW-Platform supports this - see :need:`stkh_req__dependability__safety_features_1`
 
 Assumptions on Safety System
 ----------------------------
@@ -310,9 +310,15 @@ In this section assumptions are described which need to be fulfilled by the syst
    :safety: ASIL_B
    :status: valid
 
-   If the system using the SW-platform has safety goals, the system shall provide state-of-the art hardware safety mechanisms.
+   If the system using the SW-platform has safety goals, the system shall provide state-of-the art hardware safety mechanisms, namely
 
-   Note1: A selection of hardware safety mechanisms is collected in :need:`stkh_req__dependability__safety_features`
+   - :need:`stkh_req__dependability__safety_features_3`
+   - :need:`stkh_req__dependability__safety_features_4`
+   - :need:`stkh_req__dependability__safety_features_5`
+   - :need:`stkh_req__dependability__safety_features_6`
+   - :need:`stkh_req__dependability__safety_features_7`
+   - :need:`stkh_req__dependability__safety_features_8`
+   - :need:`stkh_req__dependability__safety_features_10`
 
    Note2: These safety mechanisms are mostly OS/Hypervisor/HW specific, so the system integrator can only expect S-CORE support for the reference OS/Hypervisor/HW combination.
 
@@ -325,7 +331,7 @@ In this section assumptions are described which need to be fulfilled by the syst
 
    If the system using the SW-platform has safety goals, the system shall provide an external health management element which is able to initiate a safe system state.
 
-   Note: This can be an "External Hardware Watchdog"
+   Note: This can be an "External Hardware Watchdog" and/or "Voltage Moditoring" (see :need:`stkh_req__dependability__safety_features_10`)
 
 .. aou_req:: Process Isolation
    :id: aou_req__platform__process_isolation
@@ -346,7 +352,7 @@ In this section assumptions are described which need to be fulfilled by the syst
 
    If the system using the SW-platform has safety goals, the used os module shall offer the following safety related functions:
 
-   - configuration of HW safety mechanisms as in :need:`stkh_req__dependability__safety_features`
+   - configuration of HW safety mechanisms as in :need:`aou_req__platform__hardware_safety`
    - startup of OS
    - loading and starting of processes
    - management and restriction of process privileges
