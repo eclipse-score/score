@@ -137,7 +137,7 @@ qualified and output of coverage data in `.profraw` format is correct. Due to th
      - no
      - high
 
-.. [*] Expected that correctness of function calls are tested via mocking (e.g. gtest macro EXPECT_CALL()).
+.. [*] Expected that correctness of the function calls are verified via mocking functionality of corresponding testing framework.
 
 
 Security evaluation
