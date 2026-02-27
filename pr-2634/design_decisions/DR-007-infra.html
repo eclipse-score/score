@@ -1,0 +1,987 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>DR-007-Infra: Solution for cyclic dependencies between docs-as-code and process description &#8212; S-CORE  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score.css?v=6e51530f" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score_needs.css?v=e97392eb" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score_design.css?v=d9fd870c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css?v=803738c0" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
+    <script src="../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
+    <script src="../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
+    <script src="../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
+    <script src="../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'design_decisions/DR-007-infra';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Eclipse S-CORE (Eclipse Safe Open Vehicle Core)" href="../introduction/index.html" />
+    <link rel="prev" title="DR-006-Infra: Clippy Integration via rules_lint" href="DR-006-infra.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Eclipse S-CORE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../handbook/index.html">
+    Handbook
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../features/index.html">
+    Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../requirements/index.html">
+    Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../modules/index.html">
+    Modules
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../handbook/index.html">
+    Handbook
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../features/index.html">
+    Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../requirements/index.html">
+    Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../modules/index.html">
+    Modules
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DR-001-infra.html">DR-001-Infra: Integration Strategy for External Development Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-002-infra.html">DR-002-Infra: Integration Testing in a Distributed Monolith</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-003-infra.html">DR-003-Infra: Devcontainer Strategy for S-CORE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-004-infra.html">DR-004-Infra: Bi-directional traceability in docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-006-infra.html">DR-006-Infra: Clippy Integration via rules_lint</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">DR-007-Infra: Solution for cyclic dependencies between docs-as-code and process description</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Decision Records</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">DR-007-Infra: Solution for cyclic dependencies between docs-as-code and process description</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="dr-007-infra-solution-for-cyclic-dependencies-between-docs-as-code-and-process-description">
+<h1>DR-007-Infra: Solution for cyclic dependencies between docs-as-code and process description<a class="headerlink" href="#dr-007-infra-solution-for-cyclic-dependencies-between-docs-as-code-and-process-description" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><strong>Date:</strong> 2026-02-04</p></li>
+</ul>
+<div class="need_container docutils container" id="SNCB-c3aea1fa">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__dependency_docs_as_code">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Move examples to module_template repository</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">accepted</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_context"><span class="needs_label">context: </span><span class="needs_data">Infrastructure</span></span></div>
+<div class="line"><span class="needs_decision"><span class="needs_label">decision: </span><span class="needs_data">Option 3</span></span></div>
+</span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#dec_rec__infra__dependency_docs_as_code" title="dec_rec__infra__dependency_docs_as_code">dec_rec__infra__dependency_docs_as_code</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Decision Record</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<section id="context-problem">
+<h2>Context / Problem<a class="headerlink" href="#context-problem" title="Link to this heading">#</a></h2>
+<p>Currently, there are two repositories defining the docs-as-code principles with Sphinx and Sphinx-Needs:</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">eclipse_score/process_description</span></code> repository defines the process and the requirements for the meta model of the Sphinx-Needs objects (sphinx objects for requirements, architecture, processes, etc.).
+It includes also example Sphinx-Needs objects that illustrate the usage of the defined meta model.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">eclipse_score/docs_as_code</span></code> repository provides the base docs as code infrastructure and uses the process requirements to define the sphinx needs meta model and includes Sphinx-Needs objects from the process repository for testing.</p></li>
+</ul>
+<p>However, the process repository also uses the <code class="docutils literal notranslate"><span class="pre">docs_as_code</span></code> repository’s as infrastructure for the process documentation and the meta model for Sphinx-Needs objects, creating a <strong>cyclic dependency</strong> between the two repositories.
+Any change in the process requirements (in <code class="docutils literal notranslate"><span class="pre">process_description</span></code>) for the meta model possibly leads to a change in the docs-as-code meta model, but any change in the docs-as-code meta model can cause build errors in the process_description repo and this happens during the docs-as-code build as Sphinx-Needs objects from the process repo are imported.
+This tight coupling makes maintenance and evolution of both repositories difficult and error-prone.</p>
+<figure class="align-center" id="id1">
+<p class="plantuml">
+<object data="../_images/plantuml-bc33e474c3c3f0ebc89f82566bf1cdf2e4b1b582.svg" type="image/svg+xml" style="width:567px;height:263px;background:#FFFFFF;"></object></p>
+<figcaption>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Cyclic dependency between process and docs-as-code repositories</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The artifacts within those repos are:</p>
+<ul class="simple">
+<li><p>“examples” are exemplary instances of the metamodel like <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/guidance/architecture_modeling_example.html#feat__example_feature">feat__example_feature</a>.</p></li>
+<li><p>“templates” (more precisely <a class="reference external" href="https://eclipse-score.github.io/process_description/main/folder_templates/index.html">folder templates</a>)
+are instances which can be copied when creating new modules
+like <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/folder_templates/features/feature_name/architecture/index.html#doc__feature_name_architecture">doc__feature_name_architecture</a>.</p></li>
+<li><p>“metamodel.yaml” is <a class="reference external" href="https://github.com/eclipse-score/docs-as-code/blob/v2.3.3/src/extensions/score_metamodel/metamodel.yaml">this file</a>.</p></li>
+</ul>
+<p>This means to roll out a change to the process looks like this:</p>
+<ol class="arabic simple">
+<li><p>Change <code class="docutils literal notranslate"><span class="pre">process_description</span></code> but <em>not</em> the examples and folder templates.</p></li>
+<li><p>Change <code class="docutils literal notranslate"><span class="pre">docs_as_code</span></code> accordingly (potentially with constraints because <code class="docutils literal notranslate"><span class="pre">&#64;process_description//:needs_json</span></code> includes old examples and folder templates)</p></li>
+<li><p>Change <code class="docutils literal notranslate"><span class="pre">process_description</span></code> a <em>second</em> time adapting the examples and folder templates.</p></li>
+<li><p>Change <code class="docutils literal notranslate"><span class="pre">docs_as_code</span></code> a <em>second</em> time removing constraints from step 2.</p></li>
+</ol>
+<p>Currently the <a class="reference external" href="https://github.com/eclipse-score/module_template">module_template repo</a>
+is not used and not up to date.
+However, the Process community intends to use it for the folder templates in the future.
+Thus, step 3 above will become a pull request to a third repository eventually.
+Still, there is no plan to move the examples to that repository.</p>
+<section id="goals-and-requirements">
+<h3>Goals and Requirements<a class="headerlink" href="#goals-and-requirements" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Effort</strong>: Don’t spend much one-time effort to implement the change proposed here.</p></li>
+<li><p><strong>Independence</strong>: Enable independent evolution of process requirements for the meta model and the meta model verification implementation.</p></li>
+<li><p><strong>UX</strong>: Enable a process change rollout which does not require multiple pull requests in a single repository due to dependency cycles.</p></li>
+<li><p><strong>Clear Ownership</strong>: Each repository should have a clear responsibility and ownership of its contents.</p></li>
+<li><p><strong>Maintainability</strong>: Keep long-term maintenance effort low.</p></li>
+</ul>
+<section id="non-goals">
+<h4>Non-Goals<a class="headerlink" href="#non-goals" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Redesigning the entire docs-as-code or process description approach.</p></li>
+<li><p>Removing Sphinx or Sphinx-Needs as documentation tools.</p></li>
+<li><p>Avoid inconsistencies between process and tool implementation.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="options-considered">
+<h2>Options Considered<a class="headerlink" href="#options-considered" title="Link to this heading">#</a></h2>
+<section id="option-0-no-change">
+<h3>Option 0: No change<a class="headerlink" href="#option-0-no-change" title="Link to this heading">#</a></h3>
+<p>Keep the current repository structure and workflows as they are.
+Accept the cyclic dependency between <code class="docutils literal notranslate"><span class="pre">process_description</span></code> and <code class="docutils literal notranslate"><span class="pre">docs_as_code</span></code> and manage it through careful coordination and communication between maintainers.
+Continue handling build errors manually when they occur.</p>
+<p>Effort 💚: None.</p>
+<p>Independence 😡: The repos <code class="docutils literal notranslate"><span class="pre">process_description</span></code> and <code class="docutils literal notranslate"><span class="pre">docs_as_code</span></code> are coupled.</p>
+<p>UX 😡: Poor due to the coupling some back and forth changes are necessary.</p>
+<p>Maintainability 😡: Poor (ongoing coordination burden).</p>
+<p>Clear Ownership 💚: Process community and docs-as-code are clearly separated.</p>
+</section>
+<section id="option-1-merge-both-repositories-into-one">
+<h3>Option 1: Merge both repositories into one<a class="headerlink" href="#option-1-merge-both-repositories-into-one" title="Link to this heading">#</a></h3>
+<p>Combine <code class="docutils literal notranslate"><span class="pre">process_description</span></code> and <code class="docutils literal notranslate"><span class="pre">docs_as_code</span></code> into a single repository.
+This eliminates the cyclic dependency by having a single source of truth for both the meta model and the Sphinx-Needs objects/examples, but process is repo is potentially large and complex and is implementation specific.</p>
+<figure class="align-center" id="id2">
+<p class="plantuml">
+<object data="../_images/plantuml-f90748bcc1a8c62ad55730384339917cfa2c99cd.svg" type="image/svg+xml" style="width:364px;height:219px;background:#FFFFFF;"></object></p>
+<figcaption>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Merge both repositories into one</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Effort 😡😡: Disruptive effort to merge repos.
+Such changes conflict with practically all parallel pull requests.
+Dependencies across all S-CORE repos are necessary.</p>
+<p>Independence 💚: Coupling is tolerable because both can be changed as an atomic commit.</p>
+<p>UX 💚: Excellent as single source.</p>
+<p>Maintainability 💚: Good because everything is in one place.</p>
+</section>
+<section id="option-2-move-meta-model-definition-to-process-repository">
+<h3>Option 2: Move meta model definition to process repository<a class="headerlink" href="#option-2-move-meta-model-definition-to-process-repository" title="Link to this heading">#</a></h3>
+<p>Define and maintain the <code class="docutils literal notranslate"><span class="pre">metamodel.yaml</span></code>
+solely in the process repository.
+The docs-as-code repository would then only provide the infrastructure for the meta model, not define or modify it.
+The process repository would be the authoritative source for the meta model.
+Also tests (scripts) and examples would be maintained there.</p>
+<figure class="align-center" id="id3">
+<p class="plantuml">
+<object data="../_images/plantuml-49215671c658adc448b1307ea6ff3546e067a861.svg" type="image/svg+xml" style="width:517px;height:312px;background:#FFFFFF;"></object></p>
+<figcaption>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Move meta model definition to process repository</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Implication:
+If the docs-as-code module would select the metamodel yaml version on its own,
+we would not have resolved the cyclic dependency issue.
+Thus, <code class="docutils literal notranslate"><span class="pre">process_description</span></code> would need to define which version of <code class="docutils literal notranslate"><span class="pre">metamodel.yaml</span></code> to use
+and <code class="docutils literal notranslate"><span class="pre">docs_as_code</span></code> provides a configuration option to specify it.</p>
+<p>Moving only the <code class="docutils literal notranslate"><span class="pre">metamodel.yaml</span></code> file means that a few Python-implemented checks still remain in <code class="docutils literal notranslate"><span class="pre">docs_as_code</span></code>.
+While the problem is not solved completely, it should fix most of the cases.</p>
+<p>Effort 😡: Medium effort.</p>
+<p>Independence 😡: Rather good because <code class="docutils literal notranslate"><span class="pre">docs_as_code</span></code> mostly consumes except a few remaining checks.</p>
+<p>UX 💚: Excellent since authority is clear.</p>
+<p>Maintainability 💚: Good because of clear ownership.</p>
+<p>Clear Ownership 💚: Cleanly separated.</p>
+</section>
+<section id="option-3-move-examples-to-docs-as-code-and-templates-to-module-template">
+<h3>Option 3: Move examples to docs_as_code and templates to module_template<a class="headerlink" href="#option-3-move-examples-to-docs-as-code-and-templates-to-module-template" title="Link to this heading">#</a></h3>
+<p>Move all examples from <code class="docutils literal notranslate"><span class="pre">process_description</span></code> into <code class="docutils literal notranslate"><span class="pre">docs_as_code</span></code> repo
+and all templates from <code class="docutils literal notranslate"><span class="pre">process_description</span></code> into <code class="docutils literal notranslate"><span class="pre">module_template</span></code> repo.
+No relevant cyclic dependency remains.</p>
+<figure class="align-center" id="id4">
+<p class="plantuml">
+<object data="../_images/plantuml-27a4ae28abbd3c51050a3855050af3e706429658.svg" type="image/svg+xml" style="width:885px;height:252px;background:#FFFFFF;"></object></p>
+<figcaption>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Move examples to docs_as_code and templates to module_template</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Effort 💚: Low.</p>
+<p>Independence 💚: Good because process repo becomes independent.</p>
+<p>UX 💚: Excellent since authority is clear.</p>
+<p>Maintainability 😡: More repos to maintain.</p>
+<p>Clear Ownership 💚: Process community is responsible for <code class="docutils literal notranslate"><span class="pre">process_description</span></code> and <code class="docutils literal notranslate"><span class="pre">module_template</span></code>.</p>
+</section>
+<section id="option-4-move-meta-model-and-examples-into-a-separate-repository">
+<h3>Option 4: Move meta model and examples into a separate repository<a class="headerlink" href="#option-4-move-meta-model-and-examples-into-a-separate-repository" title="Link to this heading">#</a></h3>
+<p>Create or use a dedicated meta model repository that contains only the Sphinx-Needs meta model definitions and the examples.
+Both the process repository and docs-as-code repository would depend on this meta model repository (if necessary), making it the single source of truth.
+This breaks the cycle by introducing a clear hierarchical dependency structure.</p>
+<figure class="align-center" id="id5">
+<p class="plantuml">
+<object data="../_images/plantuml-13f24b60eb8bb23e7deefb462c3949f3fcd321a5.svg" type="image/svg+xml" style="width:861px;height:312px;background:#FFFFFF;"></object></p>
+<figcaption>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Move meta model and examples into a separate repository</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Effort 😡: High effort for the configurable <code class="docutils literal notranslate"><span class="pre">metamodel.yaml</span></code>.</p>
+<p>Independence 💚: Good because process repo becomes independent.</p>
+<p>UX 😡: It is strange that same checks are implemented in <code class="docutils literal notranslate"><span class="pre">docs_as_code</span></code> and some in <code class="docutils literal notranslate"><span class="pre">module_template</span></code>.</p>
+<p>Maintainability 😡: More repos to maintain.</p>
+<p>Clear Ownership 💚: Clearly, the Process community takes authority over <code class="docutils literal notranslate"><span class="pre">metamodel.yaml</span></code>.</p>
+</section>
+<section id="option-5-move-examples-and-templates-to-docs-as-code-repository">
+<h3>Option 5: Move examples and templates to docs-as-code repository<a class="headerlink" href="#option-5-move-examples-and-templates-to-docs-as-code-repository" title="Link to this heading">#</a></h3>
+<p>Move all example Sphinx-Needs objects from the <code class="docutils literal notranslate"><span class="pre">process_description</span></code> repository to the <code class="docutils literal notranslate"><span class="pre">docs_as_code</span></code> repository.
+The process repository would define requirements for the meta model, while docs-as-code would provide infrastructure, the meta model and host the examples that demonstrate the meta model.
+This breaks the cycle by removing the import dependency from docs-as-code back to the process repository.</p>
+<figure class="align-center" id="id6">
+<p class="plantuml">
+<object data="../_images/plantuml-a78d68900e8ec68df5c0b6b7621a785fe5b1b4ca.svg" type="image/svg+xml" style="width:721px;height:252px;background:#FFFFFF;"></object></p>
+<figcaption>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Move examples to docs-as-code repository</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Effort 💚: Low effort.</p>
+<p>Independence 💚: Good because <code class="docutils literal notranslate"><span class="pre">process_description</span></code> just consumes.</p>
+<p>UX 💚: Fine.</p>
+<p>Maintainability 💚: Good because of clear ownership.</p>
+<p>Clear Ownership 😡: Process community wants control of the templates but they are in the <code class="docutils literal notranslate"><span class="pre">docs_as_code</span></code> repo.</p>
+</section>
+<section id="option-6-change-error-handling-from-warnings-as-errors-to-warnings-only">
+<h3>Option 6: Change error handling from warnings as errors to warnings only<a class="headerlink" href="#option-6-change-error-handling-from-warnings-as-errors-to-warnings-only" title="Link to this heading">#</a></h3>
+<p>Keep the current repository structure but change the Sphinx build configuration in the docs-as-code repository to treat warnings as warnings instead of errors.
+This would allow the build to succeed even when imported Sphinx-Needs objects from the process repository have inconsistencies with the meta model, effectively breaking the tight coupling that causes build failures.
+The cyclic dependency would remain, but its impact would be reduced and only real errors like type name changes would cause build failures.
+Please notice that missing mandatory links or fields, as well as additional links only generate warnings in this setup.
+Only unknown types would still cause errors.</p>
+<p>Effort 💚: Low effort because only config and documentation needs to be changed.</p>
+<p>Independence 💚: Good because no errors are blocking anymore.</p>
+<p>UX 💚: Easy because problems can be ignored.</p>
+<p>Maintainability 😡😡: Poor because warnings won’t be fixed as quickly as errors.</p>
+</section>
+</section>
+<section id="evaluation">
+<h2>Evaluation<a class="headerlink" href="#evaluation" title="Link to this heading">#</a></h2>
+<p>The effort for Option 1 is prohibitively high, so we ignore it for the evaluation.
+Likewise we ignore Option 6 due to grave maintainability concerns.</p>
+<p>Here is the summary, how well each option achieves the goals in order of goal importance:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 23.1%" />
+<col style="width: 15.4%" />
+<col style="width: 15.4%" />
+<col style="width: 15.4%" />
+<col style="width: 15.4%" />
+<col style="width: 15.4%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Goals</p></th>
+<th class="head"><p>Option 0</p></th>
+<th class="head"><p>Option 2</p></th>
+<th class="head"><p>Option 3</p></th>
+<th class="head"><p>Option 4</p></th>
+<th class="head"><p>Option 5</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Effort</p></td>
+<td><p>💚</p></td>
+<td><p>😡</p></td>
+<td><p>💚</p></td>
+<td><p>😡</p></td>
+<td><p>💚</p></td>
+</tr>
+<tr class="row-odd"><td><p>Independence</p></td>
+<td><p>😡</p></td>
+<td><p>😡</p></td>
+<td><p>💚</p></td>
+<td><p>💚</p></td>
+<td><p>💚</p></td>
+</tr>
+<tr class="row-even"><td><p>UX</p></td>
+<td><p>😡</p></td>
+<td><p>💚</p></td>
+<td><p>💚</p></td>
+<td><p>😡</p></td>
+<td><p>💚</p></td>
+</tr>
+<tr class="row-odd"><td><p>Clear Ownership</p></td>
+<td><p>💚</p></td>
+<td><p>💚</p></td>
+<td><p>💚</p></td>
+<td><p>💚</p></td>
+<td><p>😡</p></td>
+</tr>
+<tr class="row-even"><td><p>Maintainability</p></td>
+<td><p>😡</p></td>
+<td><p>💚</p></td>
+<td><p>😡</p></td>
+<td><p>😡</p></td>
+<td><p>💚</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Due to our most important goal, effort, Options 2 and 4 are disqualified.
+Then Option 0 is disqualified due to independence concerns (among others).
+Option 5 is disqualified due to the ownership issue.</p>
+<p><strong>Decision:</strong> Option 3 is the remaining best choice.
+We accept the maintainability tradeoff.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="DR-006-infra.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">DR-006-Infra: Clippy Integration via rules_lint</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../introduction/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Eclipse S-CORE (Eclipse Safe Open Vehicle Core)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context-problem">Context / Problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-and-requirements">Goals and Requirements</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#non-goals">Non-Goals</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#options-considered">Options Considered</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-0-no-change">Option 0: No change</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-1-merge-both-repositories-into-one">Option 1: Merge both repositories into one</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-2-move-meta-model-definition-to-process-repository">Option 2: Move meta model definition to process repository</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-3-move-examples-to-docs-as-code-and-templates-to-module-template">Option 3: Move examples to docs_as_code and templates to module_template</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-4-move-meta-model-and-examples-into-a-separate-repository">Option 4: Move meta model and examples into a separate repository</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-5-move-examples-and-templates-to-docs-as-code-repository">Option 5: Move examples and templates to docs-as-code repository</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-6-change-error-handling-from-warnings-as-errors-to-warnings-only">Option 6: Change error handling from warnings as errors to warnings only</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/design_decisions/DR-007-infra.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
