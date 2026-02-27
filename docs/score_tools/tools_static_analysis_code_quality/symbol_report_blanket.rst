@@ -20,7 +20,7 @@
    :safety_affected: YES
    :security_affected: YES
    :realizes: wp__tool_verification_report
-   :tags: tool_management
+   :tags: tool_management, tools_static_analysis_code_quality
 
 Symbol Report and Blanket Verification Report
 =============================================
