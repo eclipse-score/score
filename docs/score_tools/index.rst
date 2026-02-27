@@ -31,6 +31,7 @@ S-CORE Tools Overview
 
    score_tools_evaluation_list
    tools_documentation/index
+   tools_requirements/index
    tools_static_analysis_code_quality/index
    tools_testing_frameworks/index
    tools_build_development/index
