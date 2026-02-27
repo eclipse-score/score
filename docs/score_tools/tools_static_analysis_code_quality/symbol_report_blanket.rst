@@ -16,7 +16,7 @@
    :id: doc_tool__symbol_report_blanket
    :status: evaluated
    :version: 1.90.0 (see [1])
-   :tcl: HIGH
+   :tcl: LOW
    :safety_affected: YES
    :security_affected: YES
    :realizes: wp__tool_verification_report
@@ -35,8 +35,8 @@ with calculated coverage.
 
 Inputs and outputs
 ~~~~~~~~~~~~~~~~~~
-| Inputs: Software sources (Rust)
-| Outputs: Report with calculated coverage
+| Inputs: Software sources (Rust), Coverage information (.profraw files)
+| Outputs: Coverage report with numbers
 
 .. figure:: _assets/symbol_report.drawio.svg
   :width: 100%
@@ -48,15 +48,15 @@ Inputs and outputs
 Available information
 ~~~~~~~~~~~~~~~~~~~~~
 - Version: >= 1.90.0 [1]_
-- Official repository: https://github.com/ferrocene/ferrocene/tree/main/ferrocene/tools/blanket,  https://github.com/ferrocene/ferrocene/tree/main/ferrocene/tools/symbol-report
-- Additional information for usage in other safety projects: https://public-docs.ferrocene.dev/main/certification/core/safety-plan/tools.html#code-coverage
+- Official repository: `ferrocene/blanket <https://github.com/ferrocene/ferrocene/tree/main/ferrocene/tools/blanket>`_, `ferrocene/symbol-report <https://github.com/ferrocene/ferrocene/tree/main/ferrocene/tools/symbol-report>`_
+- Additional information for usage in other safety projects: `ferrocene/code-coverage <https://public-docs.ferrocene.dev/main/certification/core/safety-plan/tools.html#code-coverage>`_
 
 
 Installation and integration
 ----------------------------
 Installation
 ~~~~~~~~~~~~
-| To add the Code coverage to your project or module follow guidelines in `here <https://github.com/eclipse-score/tooling/blob/main/coverage/README.md>`_.
+To add the Code coverage to your project or module follow guidelines in `here <https://github.com/eclipse-score/tooling/blob/main/coverage/README.md>`_.
 
 Integration
 ~~~~~~~~~~~
@@ -85,61 +85,60 @@ qualified and output of coverage data in `.profraw` format is correct. Due to th
      - Further additional safety measure required?
      - Confidence (automatic calculation)
    * - 1
-     - False-positive: A function is reported as covered, although it is not covered
-     - Overreporting, could result in testing gap.
+     - Report statement, branch and function coverage
+     - | Reported lower statement/branch coverage than in coverage data
+       |
+       | The tool outputs statement or branch coverage values that are less than those found in the raw coverage data.
      - yes
-     - **No**. However likelihood of such an error low due to wide usage of the tool (many S-CORE modules and other projects like ferrocene and their customers)
+     - | S-CORE project requires 100% code coverage for safety-related software development.
+       | If the tool underreports coverage, it will be investigated manually and in worst case may lead to unnecessary additional analysis and testing efforts.
+     - yes
      - no
-     - **Yes**. Every new tool release is tested by running tests in prepared integration testsuite to detect such errors.
      - high
    * - 2
-     - False-negative: A function is reported as not covered, although it is covered
-     - Underreporting, will not result in testing gap.
+     - Report statement, branch and function coverage
+     - | Reported higher statement/branch coverage than in coverage data
+       |
+       | The tool outputs statement or branch coverage values that are greater than those found in the raw coverage data.
      - yes
-     - Since we want to achieve 100% branch coverage (`check here <https://eclipse-score.github.io/score/main/platform_management_plan/software_verification.html#quality-criteria>`_) this would stand out and be manually investigated.
      - no
      - no
-     - high
+     - yes
+     - low
    * - 3
-     - Overcounting: Total number of functions is too low
-     -  A function is not being considered, although it is part of the certified subset
+     - Report statement, branch and function coverage
+     - | Number of function calls wrong
+       |
+       | The tool reports an incorrect number of function calls, either higher or lower than what is present in the coverage data.
      - yes
-     - `symbol-report` is developed to use exactly the same information as the compiler
+     - | S-CORE project requires 100% statement, branch and function coverage for safety-related software development.
+       | If the tool underreports number of function calls, this is not critical if branch and statement coverage of corresponding functions are correct and expected (100%) [*]_.
      - yes
-     - **Yes**. Every new tool release is tested by running tests in prepared integration testsuite to detect such errors.
+     - no
      - high
    * - 4
-     - Undercounting: Total number of functions is too high
-     - A function is being considered, although it is not part of the certified subset
-     - no
-     - no
+     - Report statement, branch and function coverage
+     - | File not reported
+       |
+       | The tool does not include one or more files in the generated coverage report, even though these files are present in the input data.
+     - yes
+     - Manual review of coverage report.
      - yes
      - no
      - high
    * - 5
-     - Line that can be executed not being reported as executable
-     - Underreporting, code that should be tested may not being tested
+     - Report statement, branch and function coverage
+     - | Report corrupted (e.g., unreadable, incomplete, or inconsistent data)
+       |
+       | The generated report is unreadable, incomplete, or contains inconsistent or mismatched data.
      - yes
-     - `blanket` warns if a function has no executable line
-     - yes
-     - **Yes**. Additionally, every new tool release is tested by running tests in prepared integration testsuite to detect such errors.
-     - high
-   * - 6
-     - Coverage calculation errors: rounding, aggregation errors
-     - Overreporting or underreporting of coverage that can lead to testing gaps
-     - yes
-     - Since this would be systematic error, it would be detected during manual review of coverage reports (always rounded values, too big/low coverage even no tests are there, etc.).
-     - yes
-     - **Yes**. Every new tool release is tested by running tests in prepared integration testsuite to detect such errors.
-     - high
-   * - 7
-     - Coverage reported for another function
-     - Wrong reporting view
-     - no
-     - | Manual review would disclose that coverage is reported for another function than tested one by developer.
+     - Manual review of coverage report.
      - yes
      - no
      - high
+
+.. [*] Expected that correctness of the function calls are verified via mocking functionality of corresponding testing framework.
+
 
 Security evaluation
 -------------------
@@ -164,7 +163,23 @@ This section outlines the security evaluation of Rustfmt for its use within the 
 
 Result
 ~~~~~~
-Considering evaluation and a `Further additional safety measure ` the `symbol report` and `blanket` do not require qualification for use in safety-related software development according to ISO 26262.
+
+Safety evaluation of rust coverage tools (`symbol report` and `blanket`) are availabele on the website of the tool provider `code-coverage <https://public-docs.ferrocene.dev/main/certification/core/safety-plan/tools.html#code-coverage>`_.
+However, in context of S-CORE project, we assume that the Rust coverage tools have low confidence level (compated to evaluation of tool provider).
+Thus, rust coverage tools (`symbol report` and `blanket`) require qualification for use in safety-related software development in context of S-CORE project according to ISO 26262.
+
+**Tool Qualification**
+-------------------------------------------
+Based on method: validation of the software tool.
+
+
+Requirements and testing aspects
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Requirements for testing and qualification should be derived from both the specific use cases
+of the project and the requirements or recommendations provided by the tool provider.
+Validation and qualification activities should then confirm that the tool meets these
+combined requirements in the project context.
+
 
 .. [1] The tool version mentioned in this document is preliminary.
        Exact version shall be derived from qualified Rust compiler used in S-CORE project.
