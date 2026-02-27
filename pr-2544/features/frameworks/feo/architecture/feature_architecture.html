@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -522,9 +522,8 @@
 
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../infrastructure/index.html">Infrastructure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../integration/index.html">Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../lifecycle/index.html">Lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../nonipc/index.html">NonIPC Communication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../orchestration/index.html">Orchestration (v0.5 beta)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../persistency/index.html">Persistency (v0.5 beta)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../security_crypto/index.html">Security &amp; Cryptography</a></li>
@@ -595,7 +594,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-0d6c7c2f">
+  <div class="need_container docutils container" id="SNCB-11035b02">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__frameworks_feo_feat_arch">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -700,7 +699,52 @@ expected to be used directly in a productive system. They may become obsolete in
 </section>
 <section id="static-architecture">
 <h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-bafc65ff">
+<div class="need_container docutils container" id="SNCB-ca9e5bad">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat table" id="feat__feo">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Feature FEO</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">frameworks_feo</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">consists of: <span class="consists_of"><span><a class="reference internal" href="../../../../modules/feo/feo/docs/architecture/component_architecture.html#comp__feo_main" title="feat__feo">comp__feo_main</a></span></span></div>
+<div class="line">has: <span class="belongs_to"><span><a class="reference internal" href="#feat_arc_sta__feo__main" title="feat__feo">feat_arc_sta__feo__main</a>, <a class="reference internal" href="#feat_arc_dyn__feo__main" title="feat__feo">feat_arc_dyn__feo__main</a></span></span></div>
+<div class="line">includes: <span class="includes"><span><a class="reference internal" href="#logic_arc_int__feo__activity" title="feat__feo">logic_arc_int__feo__activity</a>, <a class="reference internal" href="#logic_arc_int__feo__prim_agent" title="feat__feo">logic_arc_int__feo__prim_agent</a>, <a class="reference internal" href="#logic_arc_int__feo__sec_agent" title="feat__feo">logic_arc_int__feo__sec_agent</a>, <a class="reference internal" href="#logic_arc_int__feo__lifecycle" title="feat__feo">logic_arc_int__feo__lifecycle</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat__feo" title="feat__feo">feat__feo</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Feature</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-5eeb6a6d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_sta table" id="feat_arc_sta__feo__main">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -721,7 +765,8 @@ expected to be used directly in a productive system. They may become obsolete in
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">frameworks_feo</span></span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/feature_req.html#feat_req__feo__application" title="feat_arc_sta__feo__main">feat_req__feo__application</a>, <a class="reference internal" href="../requirements/feature_req.html#feat_req__feo__activity" title="feat_arc_sta__feo__main">feat_req__feo__activity</a>, <a class="reference internal" href="../requirements/feature_req.html#feat_req__feo__task_chain" title="feat_arc_sta__feo__main">feat_req__feo__task_chain</a>, <a class="reference internal" href="../requirements/feature_req.html#feat_req__feo__agent" title="feat_arc_sta__feo__main">feat_req__feo__agent</a></span></span></div>
+<div class="line"><span><div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="#feat__feo" title="feat_arc_sta__feo__main">feat__feo</a></span></span></div>
+<div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/feature_req.html#feat_req__feo__application" title="feat_arc_sta__feo__main">feat_req__feo__application</a>, <a class="reference internal" href="../requirements/feature_req.html#feat_req__feo__activity" title="feat_arc_sta__feo__main">feat_req__feo__activity</a>, <a class="reference internal" href="../requirements/feature_req.html#feat_req__feo__task_chain" title="feat_arc_sta__feo__main">feat_req__feo__task_chain</a>, <a class="reference internal" href="../requirements/feature_req.html#feat_req__feo__agent" title="feat_arc_sta__feo__main">feat_req__feo__agent</a></span></span></div>
 <div class="line">includes: <span class="includes"><span><a class="reference internal" href="#logic_arc_int__feo__activity" title="feat_arc_sta__feo__main">logic_arc_int__feo__activity</a>, <a class="reference internal" href="#logic_arc_int__feo__prim_agent" title="feat_arc_sta__feo__main">logic_arc_int__feo__prim_agent</a>, <a class="reference internal" href="#logic_arc_int__feo__sec_agent" title="feat_arc_sta__feo__main">logic_arc_int__feo__sec_agent</a>, <a class="reference internal" href="#logic_arc_int__feo__lifecycle" title="feat_arc_sta__feo__main">logic_arc_int__feo__lifecycle</a></span></span></div>
 </span></div>
 </div>
@@ -751,7 +796,7 @@ expected to be used directly in a productive system. They may become obsolete in
 </section>
 <section id="dynamic-architecture">
 <h2>Dynamic Architecture<a class="headerlink" href="#dynamic-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-f8210826">
+<div class="need_container docutils container" id="SNCB-872b8e20">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_dyn table" id="feat_arc_dyn__feo__main">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -772,7 +817,8 @@ expected to be used directly in a productive system. They may become obsolete in
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">frameworks_feo</span></span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/feature_req.html#feat_req__feo__application" title="feat_arc_dyn__feo__main">feat_req__feo__application</a>, <a class="reference internal" href="../requirements/feature_req.html#feat_req__feo__activity" title="feat_arc_dyn__feo__main">feat_req__feo__activity</a>, <a class="reference internal" href="../requirements/feature_req.html#feat_req__feo__task_chain" title="feat_arc_dyn__feo__main">feat_req__feo__task_chain</a>, <a class="reference internal" href="../requirements/feature_req.html#feat_req__feo__agent" title="feat_arc_dyn__feo__main">feat_req__feo__agent</a></span></span></div>
+<div class="line"><span><div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="#feat__feo" title="feat_arc_dyn__feo__main">feat__feo</a></span></span></div>
+<div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/feature_req.html#feat_req__feo__application" title="feat_arc_dyn__feo__main">feat_req__feo__application</a>, <a class="reference internal" href="../requirements/feature_req.html#feat_req__feo__activity" title="feat_arc_dyn__feo__main">feat_req__feo__activity</a>, <a class="reference internal" href="../requirements/feature_req.html#feat_req__feo__task_chain" title="feat_arc_dyn__feo__main">feat_req__feo__task_chain</a>, <a class="reference internal" href="../requirements/feature_req.html#feat_req__feo__agent" title="feat_arc_dyn__feo__main">feat_req__feo__agent</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -801,7 +847,7 @@ expected to be used directly in a productive system. They may become obsolete in
 </section>
 <section id="logical-interfaces">
 <h2>Logical Interfaces<a class="headerlink" href="#logical-interfaces" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-7f4187cf">
+<div class="need_container docutils container" id="SNCB-ac2f6db2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__feo__activity">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -823,7 +869,7 @@ expected to be used directly in a productive system. They may become obsolete in
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">frameworks_feo</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/feature_req.html#feat_req__feo__application" title="logic_arc_int__feo__activity">feat_req__feo__application</a>, <a class="reference internal" href="../requirements/feature_req.html#feat_req__feo__activity" title="logic_arc_int__feo__activity">feat_req__feo__activity</a></span></span></div>
-<div class="line">included by: <span class="includes"><span><a class="reference internal" href="#feat_arc_sta__feo__main" title="logic_arc_int__feo__activity">feat_arc_sta__feo__main</a></span></span></div>
+<div class="line">included by: <span class="includes"><span><a class="reference internal" href="#feat__feo" title="logic_arc_int__feo__activity">feat__feo</a>, <a class="reference internal" href="#feat_arc_sta__feo__main" title="logic_arc_int__feo__activity">feat_arc_sta__feo__main</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -845,7 +891,7 @@ expected to be used directly in a productive system. They may become obsolete in
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e2bfd295">
+<div class="need_container docutils container" id="SNCB-46ecf952">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__feo__prim_agent">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -867,7 +913,7 @@ expected to be used directly in a productive system. They may become obsolete in
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">frameworks_feo</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/feature_req.html#feat_req__feo__application" title="logic_arc_int__feo__prim_agent">feat_req__feo__application</a>, <a class="reference internal" href="../requirements/feature_req.html#feat_req__feo__activity" title="logic_arc_int__feo__prim_agent">feat_req__feo__activity</a>, <a class="reference internal" href="../requirements/feature_req.html#feat_req__feo__task_chain" title="logic_arc_int__feo__prim_agent">feat_req__feo__task_chain</a>, <a class="reference internal" href="../requirements/feature_req.html#feat_req__feo__agent" title="logic_arc_int__feo__prim_agent">feat_req__feo__agent</a></span></span></div>
-<div class="line">included by: <span class="includes"><span><a class="reference internal" href="#feat_arc_sta__feo__main" title="logic_arc_int__feo__prim_agent">feat_arc_sta__feo__main</a></span></span></div>
+<div class="line">included by: <span class="includes"><span><a class="reference internal" href="#feat__feo" title="logic_arc_int__feo__prim_agent">feat__feo</a>, <a class="reference internal" href="#feat_arc_sta__feo__main" title="logic_arc_int__feo__prim_agent">feat_arc_sta__feo__main</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -889,7 +935,7 @@ expected to be used directly in a productive system. They may become obsolete in
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-75d3c42a">
+<div class="need_container docutils container" id="SNCB-fce4237c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__feo__sec_agent">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -911,7 +957,7 @@ expected to be used directly in a productive system. They may become obsolete in
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">frameworks_feo</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/feature_req.html#feat_req__feo__application" title="logic_arc_int__feo__sec_agent">feat_req__feo__application</a>, <a class="reference internal" href="../requirements/feature_req.html#feat_req__feo__activity" title="logic_arc_int__feo__sec_agent">feat_req__feo__activity</a>, <a class="reference internal" href="../requirements/feature_req.html#feat_req__feo__task_chain" title="logic_arc_int__feo__sec_agent">feat_req__feo__task_chain</a>, <a class="reference internal" href="../requirements/feature_req.html#feat_req__feo__agent" title="logic_arc_int__feo__sec_agent">feat_req__feo__agent</a></span></span></div>
-<div class="line">included by: <span class="includes"><span><a class="reference internal" href="#feat_arc_sta__feo__main" title="logic_arc_int__feo__sec_agent">feat_arc_sta__feo__main</a></span></span></div>
+<div class="line">included by: <span class="includes"><span><a class="reference internal" href="#feat__feo" title="logic_arc_int__feo__sec_agent">feat__feo</a>, <a class="reference internal" href="#feat_arc_sta__feo__main" title="logic_arc_int__feo__sec_agent">feat_arc_sta__feo__main</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -933,7 +979,7 @@ expected to be used directly in a productive system. They may become obsolete in
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-1cb08d81">
+<div class="need_container docutils container" id="SNCB-662d9372">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__feo__lifecycle">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -955,7 +1001,7 @@ expected to be used directly in a productive system. They may become obsolete in
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">frameworks_feo</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/feature_req.html#feat_req__feo__application_lifecycle" title="logic_arc_int__feo__lifecycle">feat_req__feo__application_lifecycle</a></span></span></div>
-<div class="line">included by: <span class="includes"><span><a class="reference internal" href="#feat_arc_sta__feo__main" title="logic_arc_int__feo__lifecycle">feat_arc_sta__feo__main</a></span></span></div>
+<div class="line">included by: <span class="includes"><span><a class="reference internal" href="#feat__feo" title="logic_arc_int__feo__lifecycle">feat__feo</a>, <a class="reference internal" href="#feat_arc_sta__feo__main" title="logic_arc_int__feo__lifecycle">feat_arc_sta__feo__main</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1044,7 +1090,7 @@ expected to be used directly in a productive system. They may become obsolete in
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/features/frameworks/feo/architecture/feature_architecture.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/features/frameworks/feo/architecture/feature_architecture.rst">
       <i class="fa-solid fa-pencil"></i>
       
       

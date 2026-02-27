@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -72,7 +72,7 @@
         </script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="libc" href="../libc/docs/index.html" />
+    <link rel="next" title="Requirements" href="requirements/index.html" />
     <link rel="prev" title="OS Module" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -494,11 +494,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../../logging/index.html">Logging Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../orchestrator/index.html">Orchestrator</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">OS Module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">Module Documents</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">Module Documents</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="requirements/index.html">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements/aou_req.html">Assumptions of Use</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../libc/docs/index.html">libc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libcpp/docs/index.html">libcpp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../message_passing/docs/index.html">message_passing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operating_systems/docs/index.html">Operating Systems</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tracing/index.html">Tracing Module</a></li>
@@ -565,11 +569,55 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-51cd5b4f">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_mod_view_sta table" id="mod_view_sta__os__os">
+  <div class="need_container docutils container" id="SNCB-fc5782f1">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_mod table" id="mod__os">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
 <div class="line"><span><span class="needs_title"><span class="needs_data">OS</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">external</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">has: <span class="belongs_to"><span><a class="reference internal" href="#mod_view_sta__os__os" title="mod__os">mod_view_sta__os__os</a></span></span></div>
+<div class="line">includes: <span class="includes"><span><a class="reference internal" href="../libc/docs/architecture/index.html#comp__os_libc" title="mod__os">comp__os_libc</a>, <a class="reference internal" href="../message_passing/docs/architecture/index.html#comp__os_message_passing" title="mod__os">comp__os_message_passing</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#mod__os" title="mod__os">mod__os</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Module</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-f150436d">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_mod_view_sta table" id="mod_view_sta__os__os">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">OS (external)</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -584,15 +632,25 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
-<div class="line"><span><div class="line">includes: <span class="includes"><span><a class="reference internal" href="../libc/docs/architecture/index.html#comp_arc_sta__os__libc" title="mod_view_sta__os__os">comp_arc_sta__os__libc</a>, <a class="reference internal" href="../message_passing/docs/architecture/index.html#comp_arc_sta__os__message_passing" title="mod_view_sta__os__os">comp_arc_sta__os__message_passing</a></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">operating_system</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="#mod__os" title="mod_view_sta__os__os">mod__os</a></span></span></div>
+<div class="line">includes: <span class="includes"><span><a class="reference internal" href="../libc/docs/architecture/index.html#comp__os_libc" title="mod_view_sta__os__os">comp__os_libc</a>, <a class="reference internal" href="../message_passing/docs/architecture/index.html#comp__os_message_passing" title="mod_view_sta__os__os">comp__os_message_passing</a>, <a class="reference internal" href="../libcpp/docs/architecture/index.html#comp__os_libcpp" title="mod_view_sta__os__os">comp__os_libcpp</a>, <a class="reference internal" href="../operating_systems/docs/community/autosd.html#comp__os_autosd" title="mod_view_sta__os__os">comp__os_autosd</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-modules/os/docs/index-0">
-<object data="../../../_images/plantuml-f8699ad75384c6bc86ede74dd5f323f21ad04538.svg" type="image/svg+xml" style="width:588px;height:284px;background:#FFFFFF;"></object></p>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The module “OS” is not a part of the S-CORE SW-Platform, but it is a crucial external SW element.
+Its components are modelled in S-CORE to be able to describe dependencies of S-CORE features to this external component.
+As it is external to S-CORE, the (folder/file) structure of the documentation may be different from the other modules.
+Its main content is the operating system environment (sometimes also already called a “SW platform”).
+But also other SW components are modelled as a part of it as these are often provided by the “OS” supplier.
+One example of these “other” SW components are the C/C++ libs which may come from a processor manufacturer instead.
+S-CORE expects to support integration of more than one operating system, so these may be seen already in this module view,
+as different components. Requirements on this OS integration are documented in <a class="reference internal" href="requirements/index.html#doc__os_requirements" title="doc__os_requirements"><em class="xref need">Operating System Requirements (doc__os_requirements)</em></a>.</p>
+<p class="plantuml" id="needarch-modules/os/docs/index-0">
+<object data="../../../_images/plantuml-306a0d844145917555316cf3db74ba053c5e3da2.svg" type="image/svg+xml" style="width:1608px;height:312px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -612,6 +670,10 @@
 <section id="module-documents">
 <h1>Module Documents<a class="headerlink" href="#module-documents" title="Link to this heading">#</a></h1>
 <div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="requirements/index.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/aou_req.html">Assumptions of Use</a></li>
+</ul>
 </div>
 </section>
 
@@ -635,11 +697,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="../libc/docs/index.html"
+       href="requirements/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">libc</p>
+        <p class="prev-next-title">Requirements</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -658,7 +720,7 @@
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/eclipse-score/score/edit/main/'docs'/modules/os/docs/index.rst">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/modules/os/docs/index.rst">
       <i class="fa-solid fa-pencil"></i>
       
       

@@ -1,0 +1,1579 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>S-CORE - Complete Tool List for Tool Evaluation &#8212; S-CORE  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score.css?v=6e51530f" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score_needs.css?v=e97392eb" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score_design.css?v=d9fd870c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css?v=803738c0" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
+    <script src="../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
+    <script src="../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
+    <script src="../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
+    <script src="../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'score_tools/score_tools_evaluation_list';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Documentation Tools Overview" href="tools_documentation/index.html" />
+    <link rel="prev" title="S-CORE Tools Overview" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Eclipse S-CORE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../handbook/index.html">
+    Handbook
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../features/index.html">
+    Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../requirements/index.html">
+    Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../modules/index.html">
+    Modules
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../design_decisions/index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../handbook/index.html">
+    Handbook
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../features/index.html">
+    Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../requirements/index.html">
+    Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../modules/index.html">
+    Modules
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../design_decisions/index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">S-CORE - Complete Tool List for Tool Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools_documentation/index.html">Documentation Tools Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools_static_analysis_code_quality/index.html">Static Analysis &amp; Code Quality Tools Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools_testing_frameworks/index.html">Testing Frameworks Tools Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools_build_development/index.html">Build &amp; Development Tools Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools_compiler/index.html">Compiler Tools Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools_vc_cicd/index.html">Version Control &amp; CI/CD Tools Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools_license_security/index.html">License &amp; Security</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">S-CORE Tools Overview</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">S-CORE - Complete Tool List for Tool Evaluation</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="need_container docutils container" id="SNCB-6051f90a">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__tool_evaluation_list">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Tool Evaluation List</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">tool_management</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/tool_management/tool_management_workproducts.html#wp__tool_verification_report">wp__tool_verification_report</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__tool_evaluation_list" title="doc__tool_evaluation_list">doc__tool_evaluation_list</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Generic Document</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<nav class="contents local" id="table-of-contents" role="doc-toc">
+<p class="topic-title">Table of Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#s-core-complete-tool-list-for-tool-evaluation" id="id63">S-CORE - Complete Tool List for Tool Evaluation</a></p>
+<ul>
+<li><p><a class="reference internal" href="#overview" id="id64">Overview</a></p></li>
+<li><p><a class="reference internal" href="#documentation-tools" id="id65">1 Documentation Tools</a></p></li>
+<li><p><a class="reference internal" href="#static-analysis-code-quality" id="id66">2 Static Analysis &amp; Code Quality</a></p>
+<ul>
+<li><p><a class="reference internal" href="#a-c" id="id67">2a C++</a></p></li>
+<li><p><a class="reference internal" href="#b-rust" id="id68">2b Rust</a></p></li>
+<li><p><a class="reference internal" href="#c-python" id="id69">2c Python</a></p></li>
+<li><p><a class="reference internal" href="#d-other" id="id70">2d Other</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#testing-frameworks" id="id71">3 Testing Frameworks</a></p></li>
+<li><p><a class="reference internal" href="#build-development-tools" id="id72">4 Build &amp; Development Tools</a></p></li>
+<li><p><a class="reference internal" href="#compiler" id="id73">5 Compiler</a></p>
+<ul>
+<li><p><a class="reference internal" href="#a-c-compiler" id="id74">5a C++ Compiler</a></p></li>
+<li><p><a class="reference internal" href="#b-rust-compiler" id="id75">5b Rust Compiler</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#version-control-ci-cd" id="id76">6 Version Control &amp; CI/CD</a></p></li>
+<li><p><a class="reference internal" href="#license-security" id="id77">7 License &amp; Security</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="s-core-complete-tool-list-for-tool-evaluation">
+<h1><a class="toc-backref" href="#id63" role="doc-backlink">S-CORE - Complete Tool List for Tool Evaluation</a><a class="headerlink" href="#s-core-complete-tool-list-for-tool-evaluation" title="Link to this heading">#</a></h1>
+<section id="overview">
+<h2><a class="toc-backref" href="#id64" role="doc-backlink">Overview</a><a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>This document provides a comprehensive initial inventory of all tools used across the Eclipse
+S-CORE project.</p>
+<p>The list is categorized by tool type, e.g. documentation tools, static analysis tools, testing
+frameworks, build tools, etc.</p>
+<p>The list is intended to be used for the evaluation of tools for safety and security impact, as part
+of the tool management process defined in the S-CORE Tool Management Plan.</p>
+<p>In future iterations, the list will be completed and updated, and delivered with every platform
+release, as part of the Tool Verification Report.</p>
+</section>
+<section id="documentation-tools">
+<h2><a class="toc-backref" href="#id65" role="doc-backlink">1 Documentation Tools</a><a class="headerlink" href="#documentation-tools" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table" id="id52">
+<caption><span class="caption-number">Table 60 </span><span class="caption-text">Documentation Tools</span><a class="headerlink" href="#id52" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 3.4%" />
+<col style="width: 10.3%" />
+<col style="width: 10.3%" />
+<col style="width: 6.9%" />
+<col style="width: 6.9%" />
+<col style="width: 6.9%" />
+<col style="width: 27.6%" />
+<col style="width: 27.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ID</p></th>
+<th class="head"><p>Tool Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Version</p></th>
+<th class="head"><p>Relevant [YES|NO]</p></th>
+<th class="head"><p>Tool ownership</p></th>
+<th class="head"><p>Link to Verification Report (if relevant)</p></th>
+<th class="head"><p>Confirmation of Use [YES|NO] (if relevant)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1-1</p></td>
+<td><p>Doc-as-Code</p></td>
+<td><p>Documentation generation tool</p></td>
+<td><p>3.0.0 (see <a class="footnote-reference brackets" href="#id51" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>YES</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p><a class="reference internal" href="tools_documentation/doc_as_code.html#doc_tool__doc_as_code" title="doc_tool__doc_as_code"><em class="xref need">Doc-as-Code (doc_tool__doc_as_code)</em></a></p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-odd"><td><p>1-2</p></td>
+<td><p>Sphinx</p></td>
+<td><p>Python documentation generator (underlying Doc-as-Code)</p></td>
+<td><p>Latest (see <a class="footnote-reference brackets" href="#id51" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>NO</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-even"><td><p>1-3</p></td>
+<td><p>sphinx-needs</p></td>
+<td><p>Requirements tracking extension for Sphinx</p></td>
+<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>YES</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-odd"><td><p>1-4</p></td>
+<td><p>PlantUML</p></td>
+<td><p>UML diagram generation</p></td>
+<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>NO</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-even"><td><p>1-5</p></td>
+<td><p>Graphviz</p></td>
+<td><p>Graph visualization software</p></td>
+<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>NO</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-odd"><td><p>1-6</p></td>
+<td><p>sphinxcontrib.plantuml</p></td>
+<td><p>PlantUML integration for Sphinx</p></td>
+<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>NO</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-even"><td><p>1-7</p></td>
+<td><p>TRLC</p></td>
+<td><p>BMW Requirements Traceability Language and Compiler</p></td>
+<td><p>2.0.2 (see <a class="footnote-reference brackets" href="#id51" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>YES</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-odd"><td><p>1-8</p></td>
+<td><p>LOBSTER</p></td>
+<td><p>BMW Requirements traceability and documentation tool</p></td>
+<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>YES</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="static-analysis-code-quality">
+<h2><a class="toc-backref" href="#id66" role="doc-backlink">2 Static Analysis &amp; Code Quality</a><a class="headerlink" href="#static-analysis-code-quality" title="Link to this heading">#</a></h2>
+<section id="a-c">
+<h3><a class="toc-backref" href="#id67" role="doc-backlink">2a C++</a><a class="headerlink" href="#a-c" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table" id="id53">
+<caption><span class="caption-number">Table 61 </span><span class="caption-text">C++ Static Analysis &amp; Code Quality</span><a class="headerlink" href="#id53" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 3.4%" />
+<col style="width: 10.3%" />
+<col style="width: 10.3%" />
+<col style="width: 6.9%" />
+<col style="width: 6.9%" />
+<col style="width: 6.9%" />
+<col style="width: 27.6%" />
+<col style="width: 27.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ID</p></th>
+<th class="head"><p>Tool Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Version</p></th>
+<th class="head"><p>Relevant [YES|NO]</p></th>
+<th class="head"><p>Tool ownership</p></th>
+<th class="head"><p>Link to Verification Report (if relevant)</p></th>
+<th class="head"><p>Confirmation of Use [YES|NO] (if relevant)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2a-1</p></td>
+<td><p>clang-tidy</p></td>
+<td><p>Static analysis for C++, used with Clang compiler</p></td>
+<td><p>19.x (see <a class="footnote-reference brackets" href="#id51" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>YES</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-odd"><td><p>2a-2</p></td>
+<td><p>clang-analyzer</p></td>
+<td><p>Static analyzer from LLVM project</p></td>
+<td><p>19.x (see <a class="footnote-reference brackets" href="#id51" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>YES</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-even"><td><p>2a-3</p></td>
+<td><p>CodeQL</p></td>
+<td><p>CodeQL is a semantic code analysis engine used for security and code quality analysis.</p></td>
+<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>YES</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-odd"><td><p>2a-4</p></td>
+<td><p>gcovr</p></td>
+<td><p>Code coverage tool (uses gcov from GCC), part of GNU compiler collection</p></td>
+<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id12" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>YES</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="b-rust">
+<h3><a class="toc-backref" href="#id68" role="doc-backlink">2b Rust</a><a class="headerlink" href="#b-rust" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table" id="id54">
+<caption><span class="caption-number">Table 62 </span><span class="caption-text">Rust Static Analysis &amp; Code Quality</span><a class="headerlink" href="#id54" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 3.4%" />
+<col style="width: 10.3%" />
+<col style="width: 10.3%" />
+<col style="width: 6.9%" />
+<col style="width: 6.9%" />
+<col style="width: 6.9%" />
+<col style="width: 27.6%" />
+<col style="width: 27.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ID</p></th>
+<th class="head"><p>Tool Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Version</p></th>
+<th class="head"><p>Relevant [YES|NO]</p></th>
+<th class="head"><p>Tool ownership</p></th>
+<th class="head"><p>Link to Verification Report (if relevant)</p></th>
+<th class="head"><p>Confirmation of Use [YES|NO] (if relevant)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2b-1</p></td>
+<td><p>clippy</p></td>
+<td><p>Rust linter for static code analysis</p></td>
+<td><p>1.90.0 (see <a class="footnote-reference brackets" href="#id51" id="id13" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>YES</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p><a class="reference internal" href="tools_static_analysis_code_quality/clippy.html#doc_tool__clippy" title="doc_tool__clippy"><em class="xref need">clippy (doc_tool__clippy)</em></a></p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-odd"><td><p>2b-2</p></td>
+<td><p>rustfmt</p></td>
+<td><p>Rust code formatter</p></td>
+<td><p>1.8.0 (see <a class="footnote-reference brackets" href="#id51" id="id14" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>YES</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p><a class="reference internal" href="tools_static_analysis_code_quality/rustfmt.html#doc_tool__rustfmt" title="doc_tool__rustfmt"><em class="xref need">rustfmt (doc_tool__rustfmt)</em></a></p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-even"><td><p>2b-3</p></td>
+<td><p>rust-analyzer</p></td>
+<td><p>Rust language server for IDE support</p></td>
+<td><p>1.8.0 (see <a class="footnote-reference brackets" href="#id51" id="id15" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>NO</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="c-python">
+<h3><a class="toc-backref" href="#id69" role="doc-backlink">2c Python</a><a class="headerlink" href="#c-python" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table" id="id55">
+<caption><span class="caption-number">Table 63 </span><span class="caption-text">Python Static Analysis &amp; Code Quality</span><a class="headerlink" href="#id55" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 3.4%" />
+<col style="width: 10.3%" />
+<col style="width: 10.3%" />
+<col style="width: 6.9%" />
+<col style="width: 6.9%" />
+<col style="width: 6.9%" />
+<col style="width: 27.6%" />
+<col style="width: 27.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ID</p></th>
+<th class="head"><p>Tool Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Version</p></th>
+<th class="head"><p>Relevant [YES|NO]</p></th>
+<th class="head"><p>Tool ownership</p></th>
+<th class="head"><p>Link to Verification Report (if relevant)</p></th>
+<th class="head"><p>Confirmation of Use [YES|NO] (if relevant)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2c-1</p></td>
+<td><p>ruff</p></td>
+<td><p>Fast Python formatter and linter, replaces multiple tools</p></td>
+<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id16" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>NO</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-odd"><td><p>2c-2</p></td>
+<td><p>pyright</p></td>
+<td><p>Python static type checker</p></td>
+<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id17" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>NO</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-even"><td><p>2c-3</p></td>
+<td><p>pylint</p></td>
+<td><p>Python code quality analysis</p></td>
+<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id18" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>NO</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-odd"><td><p>2c-4</p></td>
+<td><p>pytest-cov</p></td>
+<td><p>Python test coverage reporting</p></td>
+<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id19" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>NO</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-even"><td><p>2c-5</p></td>
+<td><p>basedpyright</p></td>
+<td><p>Alternative Python type checker</p></td>
+<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id20" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>NO</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="d-other">
+<h3><a class="toc-backref" href="#id70" role="doc-backlink">2d Other</a><a class="headerlink" href="#d-other" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table" id="id56">
+<caption><span class="caption-number">Table 64 </span><span class="caption-text">Other Static Analysis &amp; Code Quality</span><a class="headerlink" href="#id56" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 3.4%" />
+<col style="width: 10.3%" />
+<col style="width: 10.3%" />
+<col style="width: 6.9%" />
+<col style="width: 6.9%" />
+<col style="width: 6.9%" />
+<col style="width: 27.6%" />
+<col style="width: 27.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ID</p></th>
+<th class="head"><p>Tool Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Version</p></th>
+<th class="head"><p>Relevant [YES|NO]</p></th>
+<th class="head"><p>Tool ownership</p></th>
+<th class="head"><p>Link to Verification Report (if relevant)</p></th>
+<th class="head"><p>Confirmation of Use [YES|NO] (if relevant)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2d-1</p></td>
+<td><p>yamlfmt</p></td>
+<td><p>YAML file formatter</p></td>
+<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id21" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>NO</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-odd"><td><p>2d-2</p></td>
+<td><p>actionlint</p></td>
+<td><p>GitHub Actions workflow linter</p></td>
+<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id22" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>NO</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-even"><td><p>2d-3</p></td>
+<td><p>starpls</p></td>
+<td><p>Starlark (Bazel) language server</p></td>
+<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id23" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>NO</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-odd"><td><p>2d-4</p></td>
+<td><p>score_tooling</p></td>
+<td><p>Copyright checker, CLI helper, license checker</p></td>
+<td><p>1.0.4 (see <a class="footnote-reference brackets" href="#id51" id="id24" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>NO</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-even"><td><p>2d-5</p></td>
+<td><p>bazel-tools-cc</p></td>
+<td><p>Clang-tidy based static code checker for Bazel</p></td>
+<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id25" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>NO</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-odd"><td><p>2d-6</p></td>
+<td><p>gitlint</p></td>
+<td><p>Commit message linting</p></td>
+<td><p>0.19.1 (see <a class="footnote-reference brackets" href="#id51" id="id26" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>NO</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="testing-frameworks">
+<h2><a class="toc-backref" href="#id71" role="doc-backlink">3 Testing Frameworks</a><a class="headerlink" href="#testing-frameworks" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table" id="id57">
+<caption><span class="caption-number">Table 65 </span><span class="caption-text">Testing Frameworks</span><a class="headerlink" href="#id57" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 3.4%" />
+<col style="width: 10.3%" />
+<col style="width: 10.3%" />
+<col style="width: 6.9%" />
+<col style="width: 6.9%" />
+<col style="width: 6.9%" />
+<col style="width: 27.6%" />
+<col style="width: 27.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ID</p></th>
+<th class="head"><p>Tool Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Version</p></th>
+<th class="head"><p>Relevant [YES|NO]</p></th>
+<th class="head"><p>Tool ownership</p></th>
+<th class="head"><p>Link to Verification Report (if relevant)</p></th>
+<th class="head"><p>Confirmation of Use [YES|NO] (if relevant)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>3-1</p></td>
+<td><p>gtest (GoogleTest)</p></td>
+<td><p>C++ testing framework</p></td>
+<td><p>1.15.0 (see <a class="footnote-reference brackets" href="#id51" id="id27" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>YES</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__testing_community">rl__testing_community</a></p></td>
+<td><p><a class="reference internal" href="tools_testing_frameworks/gtest.html#doc_tool__gtest" title="doc_tool__gtest"><em class="xref need">gtest (doc_tool__gtest)</em></a></p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-odd"><td><p>3-2</p></td>
+<td><p>ITF</p></td>
+<td><p>Integration Testing Framework, pytest-based</p></td>
+<td><p>0.1.0 (see <a class="footnote-reference brackets" href="#id51" id="id28" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>YES</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__testing_community">rl__testing_community</a></p></td>
+<td><p><a class="reference internal" href="tools_testing_frameworks/itf.html#doc_tool__itf" title="doc_tool__itf"><em class="xref need">ITF (doc_tool__itf)</em></a></p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-even"><td><p>3-3</p></td>
+<td><p>pytest</p></td>
+<td><p>Python testing framework</p></td>
+<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id29" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>YES</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__testing_community">rl__testing_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="build-development-tools">
+<h2><a class="toc-backref" href="#id72" role="doc-backlink">4 Build &amp; Development Tools</a><a class="headerlink" href="#build-development-tools" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table" id="id58">
+<caption><span class="caption-number">Table 66 </span><span class="caption-text">Build &amp; Development Tools</span><a class="headerlink" href="#id58" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 3.4%" />
+<col style="width: 10.3%" />
+<col style="width: 10.3%" />
+<col style="width: 6.9%" />
+<col style="width: 6.9%" />
+<col style="width: 6.9%" />
+<col style="width: 27.6%" />
+<col style="width: 27.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ID</p></th>
+<th class="head"><p>Tool Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Version</p></th>
+<th class="head"><p>Relevant [YES|NO]</p></th>
+<th class="head"><p>Tool ownership</p></th>
+<th class="head"><p>Link to Verification Report (if relevant)</p></th>
+<th class="head"><p>Confirmation of Use [YES|NO] (if relevant)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>4-1</p></td>
+<td><p>Bazel</p></td>
+<td><p>Main build system</p></td>
+<td><p>8.3.0 (see <a class="footnote-reference brackets" href="#id51" id="id30" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>YES</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p><a class="reference internal" href="tools_build_development/bazel.html#doc_tool__bazel" title="doc_tool__bazel"><em class="xref need">Bazel (doc_tool__bazel)</em></a></p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-odd"><td><p>4-2</p></td>
+<td><p>buildifier</p></td>
+<td><p>Bazel file formatter and linter</p></td>
+<td><p>8.2.0.2 (see <a class="footnote-reference brackets" href="#id51" id="id31" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>NO</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-even"><td><p>4-3</p></td>
+<td><p>rules_python</p></td>
+<td><p>Bazel Python build rules</p></td>
+<td><p>1.4.1 (see <a class="footnote-reference brackets" href="#id51" id="id32" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>NO</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-odd"><td><p>4-4</p></td>
+<td><p>aspect_rules_py</p></td>
+<td><p>Enhanced Python rules (provides py_venv)</p></td>
+<td><p>1.6.3 (see <a class="footnote-reference brackets" href="#id51" id="id33" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>NO</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-even"><td><p>4-5</p></td>
+<td><p>aspect_rules_lint</p></td>
+<td><p>Generic linting and formatting rules</p></td>
+<td><p>1.5.3 (see <a class="footnote-reference brackets" href="#id51" id="id34" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>NO</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-odd"><td><p>4-6</p></td>
+<td><p>rules_pkg</p></td>
+<td><p>Packaging dependencies</p></td>
+<td><p>1.1.0 (see <a class="footnote-reference brackets" href="#id51" id="id35" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>NO</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-even"><td><p>4-7</p></td>
+<td><p>rules_java</p></td>
+<td><p>Java build rules</p></td>
+<td><p>8.15.1 (see <a class="footnote-reference brackets" href="#id51" id="id36" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>NO</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-odd"><td><p>4-8</p></td>
+<td><p>rules_cc</p></td>
+<td><p>C/C++ build rules</p></td>
+<td><p>0.2.1 (see <a class="footnote-reference brackets" href="#id51" id="id37" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>NO</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-even"><td><p>4-9</p></td>
+<td><p>rules_rust</p></td>
+<td><p>Rust build rules for Bazel</p></td>
+<td><p>0.63.0 (see <a class="footnote-reference brackets" href="#id51" id="id38" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>NO</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-odd"><td><p>4-10</p></td>
+<td><p>score_toolchains_qnx</p></td>
+<td><p>QNX SDP toolchain including compiler, linker, image creation tools</p></td>
+<td><p>0.5 (see <a class="footnote-reference brackets" href="#id51" id="id39" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>NO</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-even"><td><p>4-11</p></td>
+<td><p>score_toolchains_gcc</p></td>
+<td><p>GCC toolchain packages for various targets</p></td>
+<td><p>0.5 (see <a class="footnote-reference brackets" href="#id51" id="id40" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>NO</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-odd"><td><p>4-11</p></td>
+<td><p>score_toolchains_rust</p></td>
+<td><p>Rust toolchains for SCORE project</p></td>
+<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id41" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>NO</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="compiler">
+<h2><a class="toc-backref" href="#id73" role="doc-backlink">5 Compiler</a><a class="headerlink" href="#compiler" title="Link to this heading">#</a></h2>
+<section id="a-c-compiler">
+<h3><a class="toc-backref" href="#id74" role="doc-backlink">5a C++ Compiler</a><a class="headerlink" href="#a-c-compiler" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table" id="id59">
+<caption><span class="caption-number">Table 67 </span><span class="caption-text">C++ Compiler</span><a class="headerlink" href="#id59" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 3.4%" />
+<col style="width: 10.3%" />
+<col style="width: 10.3%" />
+<col style="width: 6.9%" />
+<col style="width: 6.9%" />
+<col style="width: 6.9%" />
+<col style="width: 27.6%" />
+<col style="width: 27.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ID</p></th>
+<th class="head"><p>Tool Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Version</p></th>
+<th class="head"><p>Relevant [YES|NO]</p></th>
+<th class="head"><p>Tool ownership</p></th>
+<th class="head"><p>Link to Verification Report (if relevant)</p></th>
+<th class="head"><p>Confirmation of Use [YES|NO] (if relevant)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>5a-1</p></td>
+<td><p>GCC</p></td>
+<td><p>Host C++ compiler with linker, generates compiler warnings, builds unit tests and binaries for SW integration testing</p></td>
+<td><p>12+ (see <a class="footnote-reference brackets" href="#id51" id="id42" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>YES</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-odd"><td><p>5a-2</p></td>
+<td><p>QNX 8.x SDP</p></td>
+<td><p>Qualifiable compiler/linker from BlackBerry for QNX, used for target compilation</p></td>
+<td><p>12+ (see <a class="footnote-reference brackets" href="#id51" id="id43" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>YES</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p><a class="reference internal" href="tools_build_development/bazel.html#doc_tool__bazel" title="doc_tool__bazel"><em class="xref need">Bazel (doc_tool__bazel)</em></a></p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>5a-3</p></td>
+<td><p>LLVM/Clang</p></td>
+<td><p>Alternative C++ compiler toolchain</p></td>
+<td><p>19.1.0 (see <a class="footnote-reference brackets" href="#id51" id="id44" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>YES</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p><a class="reference internal" href="tools_build_development/bazel.html#doc_tool__bazel" title="doc_tool__bazel"><em class="xref need">Bazel (doc_tool__bazel)</em></a></p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>5a-4</p></td>
+<td><p>toolchains_llvm</p></td>
+<td><p>LLVM toolchain rules for Bazel (host configuration, C++17 standard)</p></td>
+<td><p>1.4.0 (see <a class="footnote-reference brackets" href="#id51" id="id45" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>YES</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p><a class="reference internal" href="tools_build_development/bazel.html#doc_tool__bazel" title="doc_tool__bazel"><em class="xref need">Bazel (doc_tool__bazel)</em></a></p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="b-rust-compiler">
+<h3><a class="toc-backref" href="#id75" role="doc-backlink">5b Rust Compiler</a><a class="headerlink" href="#b-rust-compiler" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table" id="id60">
+<caption><span class="caption-number">Table 68 </span><span class="caption-text">Rust Compiler</span><a class="headerlink" href="#id60" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 3.4%" />
+<col style="width: 10.3%" />
+<col style="width: 10.3%" />
+<col style="width: 6.9%" />
+<col style="width: 6.9%" />
+<col style="width: 6.9%" />
+<col style="width: 27.6%" />
+<col style="width: 27.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ID</p></th>
+<th class="head"><p>Tool Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Version</p></th>
+<th class="head"><p>Relevant [YES|NO]</p></th>
+<th class="head"><p>Tool ownership</p></th>
+<th class="head"><p>Link to Verification Report (if relevant)</p></th>
+<th class="head"><p>Confirmation of Use [YES|NO] (if relevant)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>5b-1</p></td>
+<td><p>Ferrocene</p></td>
+<td><p>Qualified Rust compiler (planned for target, safety-critical use), see <a class="github reference external" href="https://github.com/ferrocene">ferrocene</a></p></td>
+<td><p>1.90.0 (see <a class="footnote-reference brackets" href="#id51" id="id46" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>YES</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-odd"><td><p>5b-2</p></td>
+<td><p>Rust (standard)</p></td>
+<td><p>For host development, no current selection for S-CORE host compiler</p></td>
+<td><p>1.90.0 (see <a class="footnote-reference brackets" href="#id51" id="id47" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>YES</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>NO</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="version-control-ci-cd">
+<h2><a class="toc-backref" href="#id76" role="doc-backlink">6 Version Control &amp; CI/CD</a><a class="headerlink" href="#version-control-ci-cd" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table" id="id61">
+<caption><span class="caption-number">Table 69 </span><span class="caption-text">Version Control and CI/CD Tools</span><a class="headerlink" href="#id61" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 3.4%" />
+<col style="width: 10.3%" />
+<col style="width: 10.3%" />
+<col style="width: 6.9%" />
+<col style="width: 6.9%" />
+<col style="width: 6.9%" />
+<col style="width: 27.6%" />
+<col style="width: 27.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ID</p></th>
+<th class="head"><p>Tool Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Version</p></th>
+<th class="head"><p>Relevant [YES|NO]</p></th>
+<th class="head"><p>Tool ownership</p></th>
+<th class="head"><p>Link to Verification Report (if relevant)</p></th>
+<th class="head"><p>Confirmation of Use [YES|NO] (if relevant)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>6-1</p></td>
+<td><p>Git</p></td>
+<td><p>Version control system</p></td>
+<td><p>2.x (see <a class="footnote-reference brackets" href="#id51" id="id48" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>YES</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-odd"><td><p>6-2</p></td>
+<td><p>GitHub</p></td>
+<td><p>Code hosting and collaboration platform</p></td>
+<td><p>cloud</p></td>
+<td><p>YES</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p><a class="reference internal" href="tools_vc_cicd/github.html#doc_tool__github" title="doc_tool__github"><em class="xref need">github (doc_tool__github)</em></a></p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-even"><td><p>6-3</p></td>
+<td><p>GitHub Actions</p></td>
+<td><p>CI/CD automation platform</p></td>
+<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id49" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>YES</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="license-security">
+<h2><a class="toc-backref" href="#id77" role="doc-backlink">7 License &amp; Security</a><a class="headerlink" href="#license-security" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table" id="id62">
+<caption><span class="caption-number">Table 70 </span><span class="caption-text">License &amp; Security</span><a class="headerlink" href="#id62" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 3.4%" />
+<col style="width: 10.3%" />
+<col style="width: 10.3%" />
+<col style="width: 6.9%" />
+<col style="width: 6.9%" />
+<col style="width: 6.9%" />
+<col style="width: 27.6%" />
+<col style="width: 27.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ID</p></th>
+<th class="head"><p>Tool Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Version</p></th>
+<th class="head"><p>Relevant [YES|NO]</p></th>
+<th class="head"><p>Tool ownership</p></th>
+<th class="head"><p>Link to Verification Report (if relevant)</p></th>
+<th class="head"><p>Confirmation of Use [YES|NO] (if relevant)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>7-1</p></td>
+<td><p>Eclipse Dash</p></td>
+<td><p>License analysis tool</p></td>
+<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id50" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>YES</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id51" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>,<a role="doc-backlink" href="#id3">3</a>,<a role="doc-backlink" href="#id4">4</a>,<a role="doc-backlink" href="#id5">5</a>,<a role="doc-backlink" href="#id6">6</a>,<a role="doc-backlink" href="#id7">7</a>,<a role="doc-backlink" href="#id8">8</a>,<a role="doc-backlink" href="#id9">9</a>,<a role="doc-backlink" href="#id10">10</a>,<a role="doc-backlink" href="#id11">11</a>,<a role="doc-backlink" href="#id12">12</a>,<a role="doc-backlink" href="#id13">13</a>,<a role="doc-backlink" href="#id14">14</a>,<a role="doc-backlink" href="#id15">15</a>,<a role="doc-backlink" href="#id16">16</a>,<a role="doc-backlink" href="#id17">17</a>,<a role="doc-backlink" href="#id18">18</a>,<a role="doc-backlink" href="#id19">19</a>,<a role="doc-backlink" href="#id20">20</a>,<a role="doc-backlink" href="#id21">21</a>,<a role="doc-backlink" href="#id22">22</a>,<a role="doc-backlink" href="#id23">23</a>,<a role="doc-backlink" href="#id24">24</a>,<a role="doc-backlink" href="#id25">25</a>,<a role="doc-backlink" href="#id26">26</a>,<a role="doc-backlink" href="#id27">27</a>,<a role="doc-backlink" href="#id28">28</a>,<a role="doc-backlink" href="#id29">29</a>,<a role="doc-backlink" href="#id30">30</a>,<a role="doc-backlink" href="#id31">31</a>,<a role="doc-backlink" href="#id32">32</a>,<a role="doc-backlink" href="#id33">33</a>,<a role="doc-backlink" href="#id34">34</a>,<a role="doc-backlink" href="#id35">35</a>,<a role="doc-backlink" href="#id36">36</a>,<a role="doc-backlink" href="#id37">37</a>,<a role="doc-backlink" href="#id38">38</a>,<a role="doc-backlink" href="#id39">39</a>,<a role="doc-backlink" href="#id40">40</a>,<a role="doc-backlink" href="#id41">41</a>,<a role="doc-backlink" href="#id42">42</a>,<a role="doc-backlink" href="#id43">43</a>,<a role="doc-backlink" href="#id44">44</a>,<a role="doc-backlink" href="#id45">45</a>,<a role="doc-backlink" href="#id46">46</a>,<a role="doc-backlink" href="#id47">47</a>,<a role="doc-backlink" href="#id48">48</a>,<a role="doc-backlink" href="#id49">49</a>,<a role="doc-backlink" href="#id50">50</a>)</span>
+<p>The tool version mentioned in this document is preliminary.
+Exact version must be derived before every platform release.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">S-CORE Tools Overview</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="tools_documentation/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Documentation Tools Overview</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation-tools">1 Documentation Tools</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#static-analysis-code-quality">2 Static Analysis &amp; Code Quality</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-c">2a C++</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-rust">2b Rust</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-python">2c Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-other">2d Other</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-frameworks">3 Testing Frameworks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-development-tools">4 Build &amp; Development Tools</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compiler">5 Compiler</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-c-compiler">5a C++ Compiler</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-rust-compiler">5b Rust Compiler</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-control-ci-cd">6 Version Control &amp; CI/CD</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#license-security">7 License &amp; Security</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/score_tools/score_tools_evaluation_list.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
