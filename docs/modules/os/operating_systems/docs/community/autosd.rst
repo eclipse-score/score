@@ -17,7 +17,6 @@
    :security: YES
    :safety: QM
    :status: valid
-   :implements: aou_req__platform__integration_assistance, aou_req__platform__os_integration_manual, aou_req__platform__bug_interface
 
 AutoSD
 ######
@@ -79,7 +78,7 @@ Sample usage:
 .. code:: bash
 
    export OCI_IMAGE=localhost/score:latest
-   export AIB_DISTRO=autosd10-sig 
+   export AIB_DISTRO=autosd10-sig
 
    aib build-builder --distro ${AIB_DISTRO}
    aib build --target qemu --distro ${AIB_DISTRO} image.aib.yml ${OCI_IMAGE}
@@ -97,7 +96,7 @@ You can then replace the usage of "aib" with "auto-image-builder.sh" (requires s
 .. code:: bash
 
    export OCI_IMAGE=localhost/score:latest
-   export AIB_DISTRO=autosd10-sig 
+   export AIB_DISTRO=autosd10-sig
    # set the container storage to the local "_builder" directory to avoid permissions issues
    export AIB_LOCAL_CONTAINER_STORAGE=$PWD/_build/containers-storage
 
@@ -139,16 +138,16 @@ Sample usage (MODULE.bazel file):
        module_name = "os_autosd",
        path = "/path/to/inc_os_autosd/"
    )
-   
+
    bazel_dep(name = "os_autosd", version = "1.0.0")
-   
+
    # Configure AutoSD 9 GCC toolchain
    autosd_10_gcc = use_extension("@os_autosd//toolchain/autosd_10_gcc:extensions.bzl", "autosd_10_gcc_extension")
    autosd_10_gcc.configure(
        c_flags = ["-Wall", "-Wno-error=deprecated-declarations", "-Werror", "-fPIC"],
        cxx_flags = ["-Wall", "-Wno-error=deprecated-declarations", "-Werror", "-fPIC"],
    )
-   
+
    use_repo(autosd_10_gcc, "autosd_10_gcc_repo")
    register_toolchains("@autosd_10_gcc_repo//:gcc_toolchain_linux_x86_64")
 

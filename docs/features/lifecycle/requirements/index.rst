@@ -169,7 +169,7 @@ Launching Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__dependability__safety_features
+    :satisfies: stkh_req__dependability__safety_features_4
     :status: invalid
 
     The :term:`Launch Manager` shall provide support to be started with security
@@ -214,7 +214,7 @@ Launching Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__dependability__safety_features
+    :satisfies: stkh_req__dependability__safety_features_4
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for launching a process with a
@@ -259,7 +259,7 @@ Launching Processes
     :reqtype: Functional
     :security: NO
     :safety: ASIL_B
-    :satisfies: stkh_req__dependability__safety_features
+    :satisfies: stkh_req__dependability__security_features
     :status: invalid
 
     The :term:`Launch Manager` shall provide support for launching process with
