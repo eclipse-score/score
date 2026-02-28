@@ -73,19 +73,13 @@ Org Chart and Main Platform Management Plan Responsibilities
 
 Steering Committees
 ^^^^^^^^^^^^^^^^^^^
-Steering of the project is done with the help of *Committees*.
+Steering of the project is done with the help of *Lead Circles*.
 
-.. _PLCMBRS: https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS
-.. _PLCSPK: https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS
-.. _PLCMM: https://github.com/eclipse-score/score/wiki/PLCM
-.. _PLCSLC: https://sdvworkinggroup.slack.com/archives/PLC
-.. _PLCBKL: https://github.com/orgs/eclipse-score/projects/PLC
-
-.. _TLCMBRS: https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS
-.. _TLCSPK: https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS
-.. _TLCMM: https://github.com/eclipse-score/score/wiki/TLCM
-.. _TLCSLC: https://sdvworkinggroup.slack.com/archives/C085F44D2CS
-.. _TLCBKL: https://github.com/orgs/eclipse-score/projects/3
+.. _PLCTLCMBRS: https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS
+.. _PLCTLCSPK: https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS
+.. _PLCTLCMM: https://github.com/eclipse-score/score/wiki/TLCM
+.. _PLCTLCSLC: https://sdvworkinggroup.slack.com/archives/C085F44D2CS
+.. _PLCTLCBKL: https://github.com/orgs/eclipse-score/projects/3
 
 .. list-table:: Steering
    :header-rows: 1
@@ -98,45 +92,29 @@ Steering of the project is done with the help of *Committees*.
      - Slack Channel
      - Backlog
      - Owned Repository
-   * - .. _pmp_pm_plc:
 
-       **PLC**
-     - **Project**
+   * - .. _pmp_pm_plctlc:
+
+       **PLC/TLC**
+     - **Project/Technical**
      - **Lead**
      - **Circle**
      - **-----------**
      - **-----------**
      - **-----------------------**
-
    * - - Decisions about strategical topics
        - Review and approval of contributions, e.g. Feature Requests, which add or modify features
        - Project Management
+       - High-level project control and coordination between multiple software modules.
+       - Deciding of adding / removing Repositories
        - Planning and Approval of Releases
        - Escalation instance
-     - `PLCMBRS`_
-     - `PLCSPK`_
-     - `PLCMM`_
-     - `PLCSLC`_
-     - `PLCBKL`_
-     - n.a.
-   * - .. _pmp_pm_tlc:
 
-       **TLC**
-     - **Technical**
-     - **Lead**
-     - **Circle**
-     - **-----------**
-     - **-----------**
-     - **-----------------------**
-   * - - Review and approval of contributions, e.g. Feature Requests, which add or modify S-CORE platform features.
-       -  Project management of the platform development, e.g. creation of the roadmap.
-       - High-level project control and coordination between multiple software modules.
-       - Escalation instance for software module project leads and committers.
-     - `TLCMBRS`_
-     - `TLCSPK`_
-     - `TLCMM`_
-     - `TLCSLC`_
-     - `TLCBKL`_
+     - `PLCTLCMBRS`_
+     - `PLCTLCSPK`_
+     - `PLCTLCMM`_
+     - `PLCTLCSLC`_
+     - `PLCTLCBKL`_
      - - https://github.com/eclipse-score/score
 
 .. _pmp_pm_communities:
@@ -638,7 +616,7 @@ within the following :ref:`Module Folder Structure <module_folder_structure>`.
 
 Codeowners
 ^^^^^^^^^^
-While creating a new repository, :ref:`Technical Leads <pmp_pm_tlc>` nominate initial `CODEOWNERS <https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners#codeowners-and-branch-protection>`_,
+While creating a new repository, :ref:`Project / Technical Leads <pmp_pm_plctlc>` nominate initial `CODEOWNERS <https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners#codeowners-and-branch-protection>`_,
 whose review is mandatory for merging PRs to the repository and who are at the end allowed to merge PRs to the repository.
 
 Possible members are software developers, who
@@ -696,8 +674,8 @@ Architectural Issues
 
 A *Feature Request* represents an independent work package used to describe and
 track a high-level request for the project. *Feature Request* work packages can be linked to
-other work packages, but they must not be treated as parent work packages. They are in the responsibility of the
-:ref:`Architecture Community <pmp_pm_arc>` and the issues are part of the :ref:`Root Repository <pmp_pm_root_repository>`.
+other work packages, but they must not be treated as parent work packages. *Feature Request* covers new Features as well as significant modifications of existing Features.
+They are in the responsibility of the :ref:`Architecture Community <pmp_pm_arc>`, shall aligned with :ref:`Project / Technical Lead Circle <pmp_pm_plctlc>` and the issues are part of the :ref:`Root Repository <pmp_pm_root_repository>`.
 
 `About Features <https://eclipse-score.github.io/score/main/features/index.html>`_
 
@@ -707,8 +685,8 @@ other work packages, but they must not be treated as parent work packages. They 
 
 **Component Request**
 
-A *Component Request* represents an independent work package used to describe modifications inside a *Feature*.
-*Component Request* work packages can be linked to other work packages, but they must not be treated as parent work packages. They are in the responsibility of the
+A *Component Request* represents an independent work package used to describe modifications inside a *Feature*, either adding new components or modifying existing ones.
+*Component Request* work packages can be linked to other work packages, but they must not be treated as parent work packages. They shall be discussed with
 :ref:`Architecture Community <pmp_pm_arc>` and the issues are part of the :ref:`Root Repository <pmp_pm_root_repository>`.
 
 `About Components <https://eclipse-score.github.io/score/main/features/index.html>`_
@@ -727,7 +705,7 @@ A *Product Increment* represents the highest level in the work package hierarchy
 cannot be linked as a child of another issue. If you need to group multiple *Product Increment* work packages,
 labels have to be used. One *Product Increment* is the planning element for a version of a :ref:`Module <modules>`.
 A *Product Increment* can have multiple *Epic* work packages as children. *Product Increments* are owned by
-:ref:`Technical Lead Circle <pmp_pm_tlc>` and are part of the :ref:`Root Repository <pmp_pm_root_repository>`.
+:ref:`Project / Technical Lead Circle <pmp_pm_plctlc>` and are part of the :ref:`Root Repository <pmp_pm_root_repository>`.
 
 `Product Increment issue template <https://github.com/eclipse-score/.github/.github/ISSUE_TEMPLATE/2_ProductIncrement.yml>`_
 
@@ -889,7 +867,7 @@ Planning of Work
 Generally, every team is responsible for planning its work within its own plan with the help of its :ref:`GitHub Project <pmp_pm_gh_projects>` filled with :ref:`Epics <pmp_pm_epic>`, :ref:`Tasks <pmp_pm_task>` and :ref:`Bugs <pmp_pm_bug>`.
 
 The planning of :ref:`Feature Requests <pmp_pm_feature_request>` and :ref:`Component Requests <pmp_pm_component_request>` is in the responsibility of the :ref:`Architects <pmp_pm_arc>`,
-whereas the overall top-down plan is in the responsibility of the :ref:`Technical Lead Circle <pmp_pm_tlc>` with the help of :ref:`Product Increments <pmp_pm_product_increment>`,
+whereas the overall top-down plan is in the responsibility of the :ref:`Project / Technical Lead Circle <pmp_pm_plctlc>` with the help of :ref:`Product Increments <pmp_pm_product_increment>`,
 :ref:`Milestones <pmp_pm_milestone>` and :ref:`Releases <pmp_pm_release>`.
 
 .. image:: _assets/score_project_management_process_issue_overview.drawio.svg
@@ -902,7 +880,7 @@ whereas the overall top-down plan is in the responsibility of the :ref:`Technica
 
 Tracking Progress
 ^^^^^^^^^^^^^^^^^
-The :ref:`Technical Lead Circle <pmp_pm_tlc>` regularly monitors the status of the work for upcoming Milestones and Releases in https://github.com/orgs/eclipse-score/projects/17/ based on
+The :ref:`Project / Technical Lead Circle <pmp_pm_plctlc>` regularly monitors the status of the work for upcoming Milestones and Releases in https://github.com/orgs/eclipse-score/projects/17/ based on
 :ref:`Product Increments <pmp_pm_product_increment>`.
 
 
