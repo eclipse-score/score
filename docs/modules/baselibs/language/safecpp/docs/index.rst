@@ -12,7 +12,6 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-
 safecpp
 #######
 
@@ -27,6 +26,8 @@ safecpp
 
 .. toctree::
    :hidden:
+
+   architecture/index.rst
 
 Abstract
 ========
