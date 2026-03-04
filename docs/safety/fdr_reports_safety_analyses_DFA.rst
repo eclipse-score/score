@@ -20,13 +20,13 @@ Safety Analysis Formal Review Report
    :id: doc__platform_safety_analysis_fdr
    :status: draft
    :safety: ASIL_B
-   :security: YES
+   :security: NO
    :realizes: wp__fdr_reports
    :tags:
 
 
 **Purpose**
-The purpose of this Safety Analysis (DFA and FMEA) checklist template is to collect the topics to be checked during verification of the Platform Safety Analysis & DFA.
+The purpose of this Safety Analysis checklist template is to collect the topics to be checked during verification of the Platform Safety Analyses.
 
 **Conduct**
 As described in :need:`wf__p_formal_rv`, the formal document review is performed by an "external" safety manager:
@@ -54,9 +54,9 @@ Please note that it is mandatory to fill in the "passed" column with "yes" or "n
         - <yes|no>
         -
       * - REQ_01_02
-        - Are the templates for DFA and/or FMEA used?
+        - Are the templates for Safety Analysis used?
         - See :need:`doc__platform_dfa`
-        - Templates are used to generate the DFA or / and FMEA.
+        - Templates are used to generate the Safety Analysis.
         - <yes|no>
         -
       * - REQ_01_03

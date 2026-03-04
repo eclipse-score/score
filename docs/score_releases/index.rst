@@ -44,3 +44,11 @@ List of S-CORE released versions
    :maxdepth: 2
 
    score_releases/index.rst
+
+Platform verification report
+---------------------------------
+
+.. toctree::
+   :maxdepth: 2
+
+   verification/platform_ver_report.rst
