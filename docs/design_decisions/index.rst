@@ -34,3 +34,4 @@ Infrastructure
    :glob:
 
    DR-*-infra*
+   DR-*-process*
