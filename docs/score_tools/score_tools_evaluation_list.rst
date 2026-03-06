@@ -520,7 +520,7 @@ release, as part of the Tool Verification Report.
      - 12+ (see [1]_)
      - YES
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - :need:`doc_tool__gcc`
      - YES
    * - 5a-2
      - QNX 8.x SDP
