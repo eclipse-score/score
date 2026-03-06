@@ -12,8 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Writing Rust Code
-#################
+Writing Rust Code incl. Coding Guidelines
+#########################################
 
 .. document:: Coding Guidelines Rust
    :id: doc__rust_coding_guidelines
@@ -39,6 +39,8 @@ static analysis and code metrics tools. Some tools, such as MC/DC coverage
 reporting and code metrics generators, are still unavailable, and the
 consortium is evaluating what further tooling and support are necessary to
 enable certification and safe use of Rust in automotive applications.
+
+`Safety-Critical Coding Guidelines <https://github.com/rustfoundation/safety-critical-rust-coding-guidelines>`_
 
 `Safety-Critical Rust Consortium <https://rustfoundation.org/safety-critical-rust-consortium>`_
 
