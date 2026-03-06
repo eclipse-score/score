@@ -55,7 +55,6 @@ Motivation
 ==========
 
 For every ECU, handling of startup, shutdown, and monitoring of components is crucial to ensure the system operates correctly and efficiently. Additionally, we need to provide the means to set the system in different Run States, such as normal operation, engineering/debug mode, flash mode etc.
-started, stopped, and monitored effectively, providing a robust framework for managing the state of the system.
 
 Rationale
 =========
@@ -89,7 +88,7 @@ The Lifecycle feature addresses the following stakeholder requirements:
 
 • :need:`stkh_req__dependability__safety_features_1`: Implementation of monitoring safety mechanisms
 
-A second task of the lifecycle system is to supervise the aliveness of the processes, which are started and to initiate appropriate actions in case of a failure, which might result in many cases in a change of the operting mode.
+
 
 Support of containers
 ---------------------
