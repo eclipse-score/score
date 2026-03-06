@@ -27,6 +27,7 @@ bitmanipulation
    :hidden:
 
    requirements/index.rst
+   requirements/chklst_req_inspection.rst
    architecture/index.rst
    safety_analysis/fmea.rst
    safety_analysis/dfa.rst
