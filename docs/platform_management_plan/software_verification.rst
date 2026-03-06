@@ -298,7 +298,7 @@ to be reached with every contribution.
      - 85%
      - 100%
    * - 2
-     - Structural Condition Coverage
+     - Structural Decision Coverage
      - 85%
      - 100%
    * - 3
@@ -341,7 +341,7 @@ Coverage of detailed design
 Beside :need:`wp__verification_comp_int_test` and :need:`wp__verification_sw_unit_test` the
 following aspects define the coverage of detailed design.
 
-- Statement/Branch/Path coverage as defined by their specific thresholds
+- Statement/Branch coverage as defined by their specific thresholds
 - Static analysis and Linting
 - :need:`wp__sw_implementation_inspection` for safety-critical implementation
 
@@ -497,11 +497,6 @@ Note that gcov/gcovr supports several coverage metrics:
 
 - "statement" - used in S-CORE for the structural-statement-coverage method
 - "decision" - used in S-CORE for the structural-branch-coverage method
-- "branch" - used in S-CORE to support manual analysis of the code coverage if the "decision"
-  coverage is reported as "cannot be determined" by the tooling. As the "branch" coverage on target
-  is determined by the tool as object code coverage and as the compiler adds object branches for
-  fast evaluation of complex conditions in decisions, this is more than required by the
-  structural-branch-coverage method.
 
 .. rubric:: Integration Testing Framework (ITF)
 
