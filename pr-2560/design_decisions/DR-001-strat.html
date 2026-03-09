@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -488,7 +488,8 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">DR-001-Strat: Consistent Stack vs. Reference Integration</a></li>
-
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="DR-001-infra.html">DR-001-Infra: Integration Strategy for External Development Tools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DR-002-infra.html">DR-002-Infra: Integration Testing in a Distributed Monolith</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DR-003-infra.html">DR-003-Infra: Devcontainer Strategy for S-CORE</a></li>
@@ -572,7 +573,7 @@ SPDX-License-Identifier: Apache-2.0
 <ul class="simple">
 <li><p><strong>Date:</strong> 2026-02-07</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-16aa1515">
+<div class="need_container docutils container" id="SNCB-43853f00">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__strat__consistent_stack_vs_reference">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -615,12 +616,11 @@ SPDX-License-Identifier: Apache-2.0
 </table>
 </div>
 </div>
-</section>
 <hr class="docutils" />
 <section id="consistent-stack-vs-reference-integration">
-<h1>Consistent Stack vs. Reference Integration<a class="headerlink" href="#consistent-stack-vs-reference-integration" title="Link to this heading">#</a></h1>
+<h2>Consistent Stack vs. Reference Integration<a class="headerlink" href="#consistent-stack-vs-reference-integration" title="Link to this heading">#</a></h2>
 <section id="context">
-<h2>Context<a class="headerlink" href="#context" title="Link to this heading">#</a></h2>
+<h3>Context<a class="headerlink" href="#context" title="Link to this heading">#</a></h3>
 <p>The project was initiated with ambiguous architectural assumptions. In some project material, S-CORE is described as a reference integration of independently evolving projects/modules. In parallel, discussions and expectations emerged that treat S-CORE as a coherent, continuously working stack.</p>
 <p>This ambiguity creates friction in technical discussions, feature planning, and change justification. Contributors and committers currently lack a clear architectural baseline to decide whether modules, processes and tools are expected to optimize for individual evolution of modules or for the behavior of the overall stack.</p>
 <p>This decision record clarifies the intended architectural role of S-CORE and establishes a foundation for subsequent technical and procedural decisions.</p>
@@ -632,50 +632,61 @@ SPDX-License-Identifier: Apache-2.0
 </ol>
 </section>
 <section id="decision">
-<h2>Decision<a class="headerlink" href="#decision" title="Link to this heading">#</a></h2>
+<h3>Decision<a class="headerlink" href="#decision" title="Link to this heading">#</a></h3>
 <p>S-CORE is defined as a <strong>continuously consistent stack</strong>.</p>
 <p>The primary architectural goal of the project is the consistency and correctness of the full stack. All modules within S-CORE are expected to align with the objectives of the stack.</p>
 <p>Modules created in the context of S-CORE exist to serve the stack. Their evolution is guided by stack-level use cases, not by module-local objectives in isolation.</p>
 <p>Existing independently managed open-source projects/modules may be integrated where appropriate. Their independence is accepted, but their integration into S-CORE is evaluated and justified exclusively in terms of stack-level goals.</p>
 <section id="no-constraint-on-independent-module-delivery">
-<h3>No Constraint on Independent Module Delivery<a class="headerlink" href="#no-constraint-on-independent-module-delivery" title="Link to this heading">#</a></h3>
+<h4>No Constraint on Independent Module Delivery<a class="headerlink" href="#no-constraint-on-independent-module-delivery" title="Link to this heading">#</a></h4>
 <p>This decision concerns architectural alignment and change justification. It does not impose constraints on modularity, packaging, or delivery models of the modules within the stack.</p>
 <p>In particular, the consistent stack approach does not prevent modules or features from being independently buildable or releasable, nor from being used outside the S-CORE stack.</p>
 <p>The decision only establishes that, when modules are integrated into S-CORE, their evolution and changes must be justified in terms of stack-level objectives.</p>
 </section>
 </section>
 <section id="options-considered">
-<h2>Options Considered<a class="headerlink" href="#options-considered" title="Link to this heading">#</a></h2>
+<h3>Options Considered<a class="headerlink" href="#options-considered" title="Link to this heading">#</a></h3>
+<p>The central question separating these options is not whether the S-CORE reference integration will be adopted directly and without adaptation in a downstream product (e.g. a series product) - it will probably not. The question is where integration effort is managed: driven by individual downstream needs at the module level, or consolidated at the stack level to maintain a continuously stable and transparent baseline.</p>
 <section id="option-1-reference-integration-of-independent-modules">
-<h3>Option 1: Reference Integration of Independent Modules<a class="headerlink" href="#option-1-reference-integration-of-independent-modules" title="Link to this heading">#</a></h3>
+<h4>Option 1: Reference Integration of Independent Modules<a class="headerlink" href="#option-1-reference-integration-of-independent-modules" title="Link to this heading">#</a></h4>
 <p>Modules evolve independently, with their own roadmaps and priorities. Integration occurs late and primarily before releases. Coordination effort is concentrated at integration time. Modules effectively behave as separate projects that are assembled into a reference configuration.</p>
+<p>In this model, a downstream project (e.g. a series project) can drive module evolution directly. Modules are updated or extended to meet a specific downstream need first; the impact on S-CORE integration is resolved subsequently. This reduces short-term friction for that one downstream context but increases the integration cost for S-CORE and for other downstream projects, which must absorb the resulting divergence without having been part of the original justification.</p>
 <p>This option favors module autonomy and minimizes continuous coordination. It shifts complexity to late integration phases and accepts reduced guarantees about the state of the full stack during development.</p>
 </section>
 <section id="option-2-consistent-stack-as-leading-use-case">
-<h3>Option 2: Consistent Stack as Leading Use Case<a class="headerlink" href="#option-2-consistent-stack-as-leading-use-case" title="Link to this heading">#</a></h3>
+<h4>Option 2: Consistent Stack as Leading Use Case<a class="headerlink" href="#option-2-consistent-stack-as-leading-use-case" title="Link to this heading">#</a></h4>
 <p>The stack is the primary architectural artifact. Modules contribute to and are validated against the behavior of the full stack. Continuous integration is used to ensure the stack remains functional throughout development.</p>
-<p>This option increases coordination and change management overhead during development. In return, it establishes a clear architectural contract. Changes are evaluated based on their impact on the stack, and the reference stack is expected to remain usable.</p>
+<p>In this model, changes must be justified in terms of stack-level objectives before integration. This may require additional upstreaming effort for any individual downstream project compared to Option 1. However, it establishes a stable and transparent reference integration that all downstream projects and end users can build upon, without needing to absorb divergences introduced for another downstream context.</p>
+<p>The reference integration is not necessarily expected to be adopted without adaptation in downstream products. Its goal is to provide a continuously integrated, validated baseline - making downstream adaptation as straightforward as possible and providing a shared, openly visible justification platform for all downstream projects involved.</p>
+<p>This option also frames the reference integration as a continuous proof of integrability and quality, rather than a single downstream product delivery. In that framing, the reference integration is expected to:</p>
+<ul class="simple">
+<li><p>demonstrate continuous integrability of all S-CORE modules across functional, performance, safety, and security perspectives</p></li>
+<li><p>follow S-CORE process and quality expectations per module</p></li>
+<li><p>define clear expectations for externally managed modules (for example, OpenSOVD) regarding required artifacts and interfaces</p></li>
+<li><p>ensure gaps are addressed either by upstream artifacts or by explicit S-CORE maintenance responsibility</p></li>
+</ul>
+<p>This option increases coordination and change management overhead during development. In return, it establishes a clear architectural contract. Changes are evaluated based on their impact on the stack, and the reference stack is expected to remain usable throughout.</p>
 </section>
 </section>
 <section id="consequences">
-<h2>Consequences<a class="headerlink" href="#consequences" title="Link to this heading">#</a></h2>
+<h3>Consequences<a class="headerlink" href="#consequences" title="Link to this heading">#</a></h3>
 <p>The consistent stack model constrains module-level autonomy. Not all module-local use cases are valid by default. Changes, especially breaking changes, must be justified in terms of stack-level requirements.</p>
 <p>The cost is increased coordination effort and earlier discussion of cross-cutting impacts. The benefit is architectural clarity and a shared basis for decision-making across teams.</p>
 <p>Late integration risk is reduced. Architectural inconsistencies surface earlier, during development rather than at release time.</p>
 </section>
 <section id="impact-on-development-workflow">
-<h2>Impact on Development Workflow<a class="headerlink" href="#impact-on-development-workflow" title="Link to this heading">#</a></h2>
+<h3>Impact on Development Workflow<a class="headerlink" href="#impact-on-development-workflow" title="Link to this heading">#</a></h3>
 <p>For modules created within S-CORE, development is guided by stack objectives. Features and changes are expected to consider their impact on the overall stack from the start.</p>
 <p>Breaking changes in any module integrated into the stack require justification based on stack use cases. Module-specific arguments that do not align with stack objectives are insufficient.</p>
 <p>This decision does not define concrete workflows, tooling, or CI/CD mechanisms. It establishes the architectural expectation that such mechanisms must support continuous stack consistency.</p>
 </section>
 <section id="impact-on-governance-and-planning">
-<h2>Impact on Governance and Planning<a class="headerlink" href="#impact-on-governance-and-planning" title="Link to this heading">#</a></h2>
+<h3>Impact on Governance and Planning<a class="headerlink" href="#impact-on-governance-and-planning" title="Link to this heading">#</a></h3>
 <p>Planning and prioritization discussions must reference stack-level goals. Module roadmaps are not authoritative on their own when they affect the behavior of the stack.</p>
 <p>This decision enables future decision records to define how architectural alignment is reviewed, how changes are discussed, and how conflicts between module and stack objectives are resolved.</p>
 <p>No specific governance structure or role model is defined by this record.</p>
 <section id="handling-of-breaking-changes-and-integration-alignment">
-<h3>Handling of Breaking Changes and Integration Alignment<a class="headerlink" href="#handling-of-breaking-changes-and-integration-alignment" title="Link to this heading">#</a></h3>
+<h4>Handling of Breaking Changes and Integration Alignment<a class="headerlink" href="#handling-of-breaking-changes-and-integration-alignment" title="Link to this heading">#</a></h4>
 <p>This decision does not prescribe a fixed procedural outcome for cases where module evolution and stack integration timelines diverge, for example when a breaking change in a module cannot be integrated into the stack shortly before a planned S-CORE release.</p>
 <p>Both outcomes remain architecturally possible:</p>
 <ul class="simple">
@@ -687,7 +698,7 @@ SPDX-License-Identifier: Apache-2.0
 </section>
 </section>
 <section id="explicit-non-goals">
-<h2>Explicit Non-Goals<a class="headerlink" href="#explicit-non-goals" title="Link to this heading">#</a></h2>
+<h3>Explicit Non-Goals<a class="headerlink" href="#explicit-non-goals" title="Link to this heading">#</a></h3>
 <p>This decision record does not:</p>
 <ul class="simple">
 <li><p>Define concrete development processes or workflows.</p></li>
@@ -697,6 +708,7 @@ SPDX-License-Identifier: Apache-2.0
 <li><p>Specify how architectural discussions are conducted or moderated.</p></li>
 </ul>
 <p>These topics are expected to be addressed in follow-up decision records, using this decision as a shared architectural foundation.</p>
+</section>
 </section>
 </section>
 
@@ -747,29 +759,27 @@ SPDX-License-Identifier: Apache-2.0
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">DR-001-Strat: Consistent Stack vs. Reference Integration</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#consistent-stack-vs-reference-integration">Consistent Stack vs. Reference Integration</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context">Context</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision">Decision</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#no-constraint-on-independent-module-delivery">No Constraint on Independent Module Delivery</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consistent-stack-vs-reference-integration">Consistent Stack vs. Reference Integration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#context">Context</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision">Decision</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#no-constraint-on-independent-module-delivery">No Constraint on Independent Module Delivery</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#options-considered">Options Considered</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-1-reference-integration-of-independent-modules">Option 1: Reference Integration of Independent Modules</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-2-consistent-stack-as-leading-use-case">Option 2: Consistent Stack as Leading Use Case</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#options-considered">Options Considered</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#option-1-reference-integration-of-independent-modules">Option 1: Reference Integration of Independent Modules</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#option-2-consistent-stack-as-leading-use-case">Option 2: Consistent Stack as Leading Use Case</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consequences">Consequences</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impact-on-development-workflow">Impact on Development Workflow</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impact-on-governance-and-planning">Impact on Governance and Planning</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-of-breaking-changes-and-integration-alignment">Handling of Breaking Changes and Integration Alignment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#consequences">Consequences</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impact-on-development-workflow">Impact on Development Workflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impact-on-governance-and-planning">Impact on Governance and Planning</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-of-breaking-changes-and-integration-alignment">Handling of Breaking Changes and Integration Alignment</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-non-goals">Explicit Non-Goals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-non-goals">Explicit Non-Goals</a></li>
 </ul>
 </li>
 </ul>
-
   </nav></div>
 
   <div class="sidebar-secondary-item">
