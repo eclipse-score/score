@@ -72,7 +72,7 @@
         </script>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
-    <link rel="next" title="message_passing" href="../../../message_passing/docs/index.html" />
+    <link rel="next" title="libcpp" href="../../../libcpp/docs/index.html" />
     <link rel="prev" title="libc" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -211,6 +211,13 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../../../../platform_management_plan/index.html">
     PMP
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../../safety/index.html">
+    Safety
   </a>
 </li>
 
@@ -404,6 +411,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
     Eclipse
   </a>
@@ -499,7 +513,9 @@
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">libc Component Architecture</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../libcpp/docs/index.html">libcpp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../message_passing/docs/index.html">message_passing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../operating_systems/docs/index.html">Operating Systems</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../tracing/index.html">Tracing Module</a></li>
@@ -571,11 +587,11 @@
                   
   <section id="libc-component-architecture">
 <h1>libc Component Architecture<a class="headerlink" href="#libc-component-architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-779aecf3">
+<div class="need_container docutils container" id="SNCB-9ab81416">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp table" id="comp__os_libc">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">os::libc</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">libc</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -590,9 +606,10 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">operating_system</span></span></span></div>
+</span></span></div>
 <div class="line"><span><div class="line">has: <span class="belongs_to"><span><a class="reference internal" href="#comp_arc_sta__os__libc" title="comp__os_libc">comp_arc_sta__os__libc</a></span></span></div>
-<div class="line">implements: <span class="implements"><span><a class="reference internal" href="#logic_arc_int__os__fcntl" title="comp__os_libc">logic_arc_int__os__fcntl</a>, <a class="reference internal" href="#logic_arc_int__os__stat" title="comp__os_libc">logic_arc_int__os__stat</a>, <a class="reference internal" href="#logic_arc_int__os__mmap" title="comp__os_libc">logic_arc_int__os__mmap</a>, <a class="reference internal" href="../../../message_passing/docs/architecture/index.html#logic_arc_int__os__fork" title="comp__os_libc">logic_arc_int__os__fork</a></span></span></div>
+<div class="line">implements: <span class="implements"><span><a class="reference internal" href="#logic_arc_int__os__fcntl" title="comp__os_libc">logic_arc_int__os__fcntl</a>, <a class="reference internal" href="#logic_arc_int__os__stat" title="comp__os_libc">logic_arc_int__os__stat</a>, <a class="reference internal" href="#logic_arc_int__os__mman" title="comp__os_libc">logic_arc_int__os__mman</a>, <a class="reference internal" href="#logic_arc_int__os__unistd" title="comp__os_libc">logic_arc_int__os__unistd</a></span></span></div>
 <div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../docs/index.html#mod__os" title="comp__os_libc">mod__os</a>, <a class="reference internal" href="../../../docs/index.html#mod_view_sta__os__os" title="comp__os_libc">mod_view_sta__os__os</a></span></span></div>
 </span></div>
 </div>
@@ -615,7 +632,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e3c940d4">
+<div class="need_container docutils container" id="SNCB-b997eeaa">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__os__libc">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -634,7 +651,8 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">operating_system</span></span></span></div>
+</span></span></div>
 <div class="line"><span><div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="#comp__os_libc" title="comp_arc_sta__os__libc">comp__os_libc</a></span></span></div>
 <div class="line">fulfils: <span class="fulfils"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/folder_templates/modules/module_name/component_name/docs/requirements/index.html#comp_req__component_name__some_title">comp_req__component_name__some_title</a></span></span></div>
 </span></div>
@@ -660,7 +678,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-1f9249ac">
+<div class="need_container docutils container" id="SNCB-9b0b0043">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__os__fcntl">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -679,7 +697,8 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">operating_system</span></span></span></div>
+</span></span></div>
 <div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="#comp__os_libc" title="logic_arc_int__os__fcntl">comp__os_libc</a></span></span></div>
 <div class="line">used by: <span class="uses"><span><a class="reference internal" href="../../../../baselibs/memory_shared/docs/architecture/index.html#comp__baselibs_memory_shared" title="logic_arc_int__os__fcntl">comp__baselibs_memory_shared</a></span></span></div>
 <div class="line">includes: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int_op__os__open" title="logic_arc_int__os__fcntl">logic_arc_int_op__os__open</a>, <a class="reference internal" href="#logic_arc_int_op__os__fallocate" title="logic_arc_int__os__fcntl">logic_arc_int_op__os__fallocate</a>, <a class="reference internal" href="#logic_arc_int_op__os__flock" title="logic_arc_int__os__fcntl">logic_arc_int_op__os__flock</a></span></span></div>
@@ -707,7 +726,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-cb678fc5">
+<div class="need_container docutils container" id="SNCB-1f1e19c1">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__os__open">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -726,7 +745,8 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">operating_system</span></span></span></div>
+</span></span></div>
 <div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__os__fcntl" title="logic_arc_int_op__os__open">logic_arc_int__os__fcntl</a></span></span></div>
 </span></div>
 </div>
@@ -749,7 +769,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b112f46a">
+<div class="need_container docutils container" id="SNCB-8b872912">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__os__fallocate">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -768,7 +788,8 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">operating_system</span></span></span></div>
+</span></span></div>
 <div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__os__fcntl" title="logic_arc_int_op__os__fallocate">logic_arc_int__os__fcntl</a></span></span></div>
 </span></div>
 </div>
@@ -791,7 +812,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-cc0c7967">
+<div class="need_container docutils container" id="SNCB-f02c91ba">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__os__flock">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -810,7 +831,8 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">operating_system</span></span></span></div>
+</span></span></div>
 <div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__os__fcntl" title="logic_arc_int_op__os__flock">logic_arc_int__os__fcntl</a></span></span></div>
 </span></div>
 </div>
@@ -833,11 +855,11 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-8a29ce13">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__os__mmap">
+<div class="need_container docutils container" id="SNCB-8a7e67c5">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__os__mman">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">mmap</span></span></span></div>
+<div class="line"><span><span class="needs_title"><span class="needs_data">mman</span></span></span></div>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
@@ -852,10 +874,11 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
-<div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="#comp__os_libc" title="logic_arc_int__os__mmap">comp__os_libc</a></span></span></div>
-<div class="line">used by: <span class="uses"><span><a class="reference internal" href="../../../../baselibs/memory_shared/docs/architecture/index.html#comp__baselibs_memory_shared" title="logic_arc_int__os__mmap">comp__baselibs_memory_shared</a></span></span></div>
-<div class="line">includes: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int_op__os__shm_open" title="logic_arc_int__os__mmap">logic_arc_int_op__os__shm_open</a>, <a class="reference internal" href="#logic_arc_int_op__os__shm_unlink" title="logic_arc_int__os__mmap">logic_arc_int_op__os__shm_unlink</a></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">operating_system</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="#comp__os_libc" title="logic_arc_int__os__mman">comp__os_libc</a></span></span></div>
+<div class="line">used by: <span class="uses"><span><a class="reference internal" href="../../../../baselibs/memory_shared/docs/architecture/index.html#comp__baselibs_memory_shared" title="logic_arc_int__os__mman">comp__baselibs_memory_shared</a></span></span></div>
+<div class="line">includes: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int_op__os__shm_open" title="logic_arc_int__os__mman">logic_arc_int_op__os__shm_open</a>, <a class="reference internal" href="#logic_arc_int_op__os__shm_unlink" title="logic_arc_int__os__mman">logic_arc_int_op__os__shm_unlink</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -863,11 +886,11 @@
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p>Memory Mapping</p>
 <p class="plantuml" id="needarch-modules/os/libc/docs/architecture/index-2">
-<object data="../../../../../_images/plantuml-fc9b61714938e3e59abd57a61bb52ae9fecbd374.svg" type="image/svg+xml" style="width:142px;height:101px;background:#FFFFFF;"></object></p>
+<object data="../../../../../_images/plantuml-29ca9067adb9456df1305815912b373e66282386.svg" type="image/svg+xml" style="width:142px;height:101px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
-<div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int__os__mmap" title="logic_arc_int__os__mmap">logic_arc_int__os__mmap</a></span></span></div>
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int__os__mman" title="logic_arc_int__os__mman">logic_arc_int__os__mman</a></span></span></div>
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
@@ -880,7 +903,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d19fdf34">
+<div class="need_container docutils container" id="SNCB-b352a760">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__os__shm_open">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -899,8 +922,9 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
-<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__os__mmap" title="logic_arc_int_op__os__shm_open">logic_arc_int__os__mmap</a></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">operating_system</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__os__mman" title="logic_arc_int_op__os__shm_open">logic_arc_int__os__mman</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -922,7 +946,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-aa7d7ab6">
+<div class="need_container docutils container" id="SNCB-931f1096">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__os__shm_unlink">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -941,8 +965,9 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
-<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__os__mmap" title="logic_arc_int_op__os__shm_unlink">logic_arc_int__os__mmap</a></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">operating_system</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__os__mman" title="logic_arc_int_op__os__shm_unlink">logic_arc_int__os__mman</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -964,7 +989,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-57746e6a">
+<div class="need_container docutils container" id="SNCB-347d1130">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__os__stat">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -983,7 +1008,8 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">operating_system</span></span></span></div>
+</span></span></div>
 <div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="#comp__os_libc" title="logic_arc_int__os__stat">comp__os_libc</a></span></span></div>
 <div class="line">used by: <span class="uses"><span><a class="reference internal" href="../../../../baselibs/memory_shared/docs/architecture/index.html#comp__baselibs_memory_shared" title="logic_arc_int__os__stat">comp__baselibs_memory_shared</a></span></span></div>
 <div class="line">includes: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int_op__os__fstat" title="logic_arc_int__os__stat">logic_arc_int_op__os__fstat</a>, <a class="reference internal" href="#logic_arc_int_op__os__mkdir" title="logic_arc_int__os__stat">logic_arc_int_op__os__mkdir</a>, <a class="reference internal" href="#logic_arc_int_op__os__chmod" title="logic_arc_int__os__stat">logic_arc_int_op__os__chmod</a>, <a class="reference internal" href="#logic_arc_int_op__os__fchmod" title="logic_arc_int__os__stat">logic_arc_int_op__os__fchmod</a>, <a class="reference internal" href="#logic_arc_int_op__os__umask" title="logic_arc_int__os__stat">logic_arc_int_op__os__umask</a>, <a class="reference internal" href="#logic_arc_int_op__os__fcomask" title="logic_arc_int__os__stat">logic_arc_int_op__os__fcomask</a></span></span></div>
@@ -1010,7 +1036,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-0e851fca">
+<div class="need_container docutils container" id="SNCB-40c7bd61">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__os__fstat">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1029,7 +1055,8 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">operating_system</span></span></span></div>
+</span></span></div>
 <div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__os__stat" title="logic_arc_int_op__os__fstat">logic_arc_int__os__stat</a></span></span></div>
 </span></div>
 </div>
@@ -1052,7 +1079,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-c0d74446">
+<div class="need_container docutils container" id="SNCB-caa008c6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__os__mkdir">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1071,7 +1098,8 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">operating_system</span></span></span></div>
+</span></span></div>
 <div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__os__stat" title="logic_arc_int_op__os__mkdir">logic_arc_int__os__stat</a></span></span></div>
 </span></div>
 </div>
@@ -1094,7 +1122,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-c4c3f678">
+<div class="need_container docutils container" id="SNCB-bb139b93">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__os__chmod">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1113,7 +1141,8 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">operating_system</span></span></span></div>
+</span></span></div>
 <div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__os__stat" title="logic_arc_int_op__os__chmod">logic_arc_int__os__stat</a></span></span></div>
 </span></div>
 </div>
@@ -1136,7 +1165,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a8944883">
+<div class="need_container docutils container" id="SNCB-0797c9ad">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__os__fchmod">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1155,7 +1184,8 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">operating_system</span></span></span></div>
+</span></span></div>
 <div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__os__stat" title="logic_arc_int_op__os__fchmod">logic_arc_int__os__stat</a></span></span></div>
 </span></div>
 </div>
@@ -1178,7 +1208,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d5e6d82e">
+<div class="need_container docutils container" id="SNCB-7372ff13">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__os__umask">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1197,7 +1227,8 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">operating_system</span></span></span></div>
+</span></span></div>
 <div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__os__stat" title="logic_arc_int_op__os__umask">logic_arc_int__os__stat</a></span></span></div>
 </span></div>
 </div>
@@ -1220,7 +1251,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-8a541994">
+<div class="need_container docutils container" id="SNCB-ce164d0a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__os__fcomask">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1239,7 +1270,8 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">operating_system</span></span></span></div>
+</span></span></div>
 <div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__os__stat" title="logic_arc_int_op__os__fcomask">logic_arc_int__os__stat</a></span></span></div>
 </span></div>
 </div>
@@ -1250,6 +1282,96 @@
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int_op__os__fcomask" title="logic_arc_int_op__os__fcomask">logic_arc_int_op__os__fcomask</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Logical Interface Operation</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-a6549a3c">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__os__unistd">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">unistd</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">operating_system</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="#comp__os_libc" title="logic_arc_int__os__unistd">comp__os_libc</a></span></span></div>
+<div class="line">used by: <span class="uses"><span><a class="reference internal" href="../../../../lifecycle/index.html#comp__lifecycle_launch_manager" title="logic_arc_int__os__unistd">comp__lifecycle_launch_manager</a></span></span></div>
+<div class="line">includes: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int_op__os__fork" title="logic_arc_int__os__unistd">logic_arc_int_op__os__fork</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-modules/os/libc/docs/architecture/index-4">
+<object data="../../../../../_images/plantuml-4a1c627758c230af6091fef4c9b0624363efe329.svg" type="image/svg+xml" style="width:96px;height:85px;background:#FFFFFF;"></object></p>
+</td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int__os__unistd" title="logic_arc_int__os__unistd">logic_arc_int__os__unistd</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Logical Interface &amp; Feature Interface View</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-2b1db8e1">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__os__fork">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">fork</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">operating_system</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__os__unistd" title="logic_arc_int_op__os__fork">logic_arc_int__os__unistd</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#logic_arc_int_op__os__fork" title="logic_arc_int_op__os__fork">logic_arc_int_op__os__fork</a></span></span></div>
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
@@ -1284,11 +1406,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="../../../message_passing/docs/index.html"
+       href="../../../libcpp/docs/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">message_passing</p>
+        <p class="prev-next-title">libcpp</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

@@ -73,7 +73,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Launch manager" href="architecture/launch_manager.html" />
-    <link rel="prev" title="Integration" href="../integration/index.html" />
+    <link rel="prev" title="Requirements" href="../frameworks/daal/requirements/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
@@ -211,6 +211,13 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../platform_management_plan/index.html">
     PMP
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../safety/index.html">
+    Safety
   </a>
 </li>
 
@@ -404,6 +411,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
     Eclipse
   </a>
@@ -495,8 +509,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../diagnostics/index.html">Diagnostic and Fault Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../frameworks/index.html">Frameworks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../infrastructure/index.html">Infrastructure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../integration/index.html">Integration</a></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Lifecycle</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="architecture/launch_manager.html">Launch manager</a></li>
 <li class="toctree-l2"><a class="reference internal" href="architecture/launch_manager_configuration.html">Launch Manager Configuration</a></li>
@@ -506,6 +518,7 @@
 <li class="toctree-l2"><a class="reference internal" href="glossary.html">Glossary</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../nonipc/index.html">NonIPC Communication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../orchestration/index.html">Orchestration (v0.5 beta)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../persistency/index.html">Persistency (v0.5 beta)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../security_crypto/index.html">Security &amp; Cryptography</a></li>
@@ -576,7 +589,7 @@
 <p class="admonition-title">Note</p>
 <p>Document header</p>
 </div>
-<div class="need_container docutils container" id="SNCB-04e0a8d7">
+<div class="need_container docutils container" id="SNCB-e350f274">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__lifecycle">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -619,7 +632,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7f0497a0">
+<div class="need_container docutils container" id="SNCB-25f553bb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat table" id="feat__lifecycle">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -701,7 +714,7 @@ which are started and to initiate appropriate actions in case of a failure, whic
 <ul class="simple">
 <li><p><a class="reference internal" href="../../requirements/stakeholder/index.html#stkh_req__execution_model__processes" title="stkh_req__execution_model__processes"><em class="xref need">Processes and thread manage... (stkh_req__execution_model__processes)</em></a>: Comprehensive process lifecycle management including startup, shutdown, recovery, and cross-process synchronization of threads</p></li>
 <li><p><a class="reference internal" href="../../requirements/stakeholder/index.html#stkh_req__functional_req__file_based" title="stkh_req__functional_req__file_based"><em class="xref need">File Based Configuration (stkh_req__functional_req__file_based)</em></a>: Modular configuration file support allowing changes without rebuilding software, enabling flexible system setup and module management</p></li>
-<li><p><a class="reference internal" href="../../requirements/stakeholder/index.html#stkh_req__dependability__safety_features" title="stkh_req__dependability__safety_features"><em class="xref need">Safety features (stkh_req__dependability__safety_features)</em></a>: Implementation of monitoring safety mechanisms</p></li>
+<li><p><a class="reference internal" href="../../requirements/stakeholder/index.html#stkh_req__dependability__safety_features_1" title="stkh_req__dependability__safety_features_1"><em class="xref need">Health Management (stkh_req__dependability__safety_features_1)</em></a>: Implementation of monitoring safety mechanisms</p></li>
 </ul>
 <p>A second task of the lifecycle system is to supervise the aliveness of the processes, which are started and to initiate appropriate actions in case of a failure, which might result in many cases in a change of the operting mode.</p>
 <section id="support-of-containers">
@@ -724,7 +737,7 @@ user wants to achieve and the functional dependencies between the processes.</p>
 </section>
 <section id="specification">
 <h2>Specification<a class="headerlink" href="#specification" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-82b1af1e">
+<div class="need_container docutils container" id="SNCB-475434a8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_mod_view_sta table" id="mod_view_sta__lifecycle__overview">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -751,7 +764,7 @@ user wants to achieve and the functional dependencies between the processes.</p>
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-features/lifecycle/index-0">
-<object data="../../_images/plantuml-49e3d8f1e8c7dcfd6da83f3bda83d41758e1473b.svg" type="image/svg+xml" style="width:1196px;height:757px;background:#FFFFFF;"></object></p>
+<object data="../../_images/plantuml-6458b40f500983ff503372df5e1ee6bf7f4477fb.svg" type="image/svg+xml" style="width:1197px;height:757px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -874,12 +887,12 @@ safety reasons.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../integration/index.html"
+       href="../frameworks/daal/requirements/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Integration</p>
+        <p class="prev-next-title">Requirements</p>
       </div>
     </a>
     <a class="right-next"

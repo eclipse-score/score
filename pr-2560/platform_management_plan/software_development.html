@@ -216,6 +216,13 @@
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-external" href="https://projects.eclipse.org/projects/automotive.score">
     Eclipse
   </a>
@@ -404,6 +411,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
     Eclipse
   </a>
@@ -496,6 +510,7 @@
 <li class="toctree-l1"><a class="reference internal" href="tool_management.html">Tool Management/ Tool Management Plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release_management.html">Release Management Plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="problem_resolution.html">Problem Resolution / Problem Resolution Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vulnerability_management.html">Vulnerability Management / Platform Vulnerability Management Plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="change_management.html">Change Management / Change Management Plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="software_verification.html">Software verification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="documentation_management.html">Documentation Management Plan</a></li>
@@ -505,6 +520,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="role_assignment/platform_safety_engineer.html">Platform Safety Engineer Election</a></li>
 <li class="toctree-l1"><a class="reference internal" href="role_assignment/platform_safety_manager.html">Platform Safety Manager Election</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role_assignment/platform_security_manager.html">Platform Security Manager Election</a></li>
 <li class="toctree-l1"><a class="reference internal" href="role_assignment/platform_quality_manager.html">Platform Quality Manager Election</a></li>
 </ul>
 </div>
@@ -568,7 +584,7 @@
                   
   <section id="software-development-plan">
 <span id="sw-development"></span><h1>Software Development Plan<a class="headerlink" href="#software-development-plan" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-28ba5320">
+<div class="need_container docutils container" id="SNCB-4865d264">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__software_development_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -673,10 +689,13 @@ pull requests it’s possible to contribute. For contribution a separate process
 minutes and Working Sections were stored. Within issues can bugfixes, improvements, blank issues
 set up. It’s also possible to report there Security vulnerabilities. GitHub Actions is used
 as a support for continuous integration.</p>
+<p>The following GitHub features are activated to improve security <a class="reference internal" href="vulnerability_management.html#doc__platform_vulnerability_mgt_plan" title="doc__platform_vulnerability_mgt_plan"><em class="xref need">Platform Vulnerability Mana... (doc__platform_vulnerability_mgt_plan)</em></a> and quality for software development:
+* <strong>GitHub Dependabot</strong> - Automated dependency vulnerability detection and update pull requests
+* <strong>GitHub Advanced Security</strong> - Code scanning and secret scanning capabilities where available (CodeQL)</p>
 <p class="rubric">Sphinx</p>
 <p>is used for software documentation to generate html-sides from reStructuredText.</p>
 <p class="rubric">Sphinx-Needs</p>
-<p>is used for docs-as-code <a class="reference internal" href="../score_tools/doc_as_code.html#doc_tool__doc_as_code" title="doc_tool__doc_as_code"><em class="xref need">Doc-as-Code (doc_tool__doc_as_code)</em></a> based documentation that is created
+<p>is used for docs-as-code <a class="reference internal" href="../score_tools/tools_documentation/doc_as_code.html#doc_tool__doc_as_code" title="doc_tool__doc_as_code"><em class="xref need">Doc-as-Code (doc_tool__doc_as_code)</em></a> based documentation that is created
 and managed by the sphinx documentation generator. With “needs” objects, created in rst-files,
 requirements, static architecture views and other Sw development documentation is generated. Sphinx-Needs is 100% compliant to
 Sphinx and reStructuredText.</p>
@@ -693,7 +712,7 @@ as it generates compiler warnings and builds unit tests and binaries for SW inte
 <p class="rubric">Clang-tidy</p>
 <p>is used in conjunction with the Clang compiler to perform static analysis.</p>
 <p class="rubric">Host Compiler Rust</p>
-<p>There is currently no selection of a Rust compiler for S-CORE. Pick your own favorite.</p>
+<p>There is currently no selection of a Rust compiler for S-CORE. Pick your own favourite.</p>
 <p class="rubric">Target Compiler Rust</p>
 <p>The qualified <a class="reference external" href="https://github.com/ferrocene">Ferrocene</a> compiler is planned to be used.</p>
 <p class="rubric">Bazel</p>
