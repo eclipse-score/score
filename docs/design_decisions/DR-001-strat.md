@@ -24,9 +24,9 @@ SPDX-License-Identifier: Apache-2.0
 
 ---
 
-# Consistent Stack vs. Reference Integration
+## Consistent Stack vs. Reference Integration
 
-## Context
+### Context
 
 The project was initiated with ambiguous architectural assumptions. In some project material, S-CORE is described as a reference integration of independently evolving projects/modules. In parallel, discussions and expectations emerged that treat S-CORE as a coherent, continuously working stack.
 
@@ -41,7 +41,7 @@ Two categories of modules must be distinguished:
 1. Existing open-source projects/modules originating from other contexts and managed independently. These modules may be integrated into S-CORE if they are a good technical fit and align with S-CORE's functional goals. Their independent planning cadence and processes are explicitly acknowledged.
 2. Modules that do not yet exist and are created specifically to fulfill the purpose of S-CORE within the S-CORE GitHub organization. These modules are directly affected by this architectural decision.
 
-## Decision
+### Decision
 
 S-CORE is defined as a **continuously consistent stack**.
 
@@ -51,7 +51,7 @@ Modules created in the context of S-CORE exist to serve the stack. Their evoluti
 
 Existing independently managed open-source projects/modules may be integrated where appropriate. Their independence is accepted, but their integration into S-CORE is evaluated and justified exclusively in terms of stack-level goals.
 
-### No Constraint on Independent Module Delivery
+#### No Constraint on Independent Module Delivery
 
 This decision concerns architectural alignment and change justification. It does not impose constraints on modularity, packaging, or delivery models of the modules within the stack.
 
@@ -59,21 +59,36 @@ In particular, the consistent stack approach does not prevent modules or feature
 
 The decision only establishes that, when modules are integrated into S-CORE, their evolution and changes must be justified in terms of stack-level objectives.
 
-## Options Considered
+### Options Considered
 
-### Option 1: Reference Integration of Independent Modules
+The central question separating these options is not whether the S-CORE reference integration will be adopted directly and without adaptation in a downstream product (e.g. a series product) - it will probably not. The question is where integration effort is managed: driven by individual downstream needs at the module level, or consolidated at the stack level to maintain a continuously stable and transparent baseline.
+
+#### Option 1: Reference Integration of Independent Modules
 
 Modules evolve independently, with their own roadmaps and priorities. Integration occurs late and primarily before releases. Coordination effort is concentrated at integration time. Modules effectively behave as separate projects that are assembled into a reference configuration.
 
+In this model, a downstream project (e.g. a series project) can drive module evolution directly. Modules are updated or extended to meet a specific downstream need first; the impact on S-CORE integration is resolved subsequently. This reduces short-term friction for that one downstream context but increases the integration cost for S-CORE and for other downstream projects, which must absorb the resulting divergence without having been part of the original justification.
+
 This option favors module autonomy and minimizes continuous coordination. It shifts complexity to late integration phases and accepts reduced guarantees about the state of the full stack during development.
 
-### Option 2: Consistent Stack as Leading Use Case
+#### Option 2: Consistent Stack as Leading Use Case
 
 The stack is the primary architectural artifact. Modules contribute to and are validated against the behavior of the full stack. Continuous integration is used to ensure the stack remains functional throughout development.
 
-This option increases coordination and change management overhead during development. In return, it establishes a clear architectural contract. Changes are evaluated based on their impact on the stack, and the reference stack is expected to remain usable.
+In this model, changes must be justified in terms of stack-level objectives before integration. This may require additional upstreaming effort for any individual downstream project compared to Option 1. However, it establishes a stable and transparent reference integration that all downstream projects and end users can build upon, without needing to absorb divergences introduced for another downstream context.
 
-## Consequences
+The reference integration is not necessarily expected to be adopted without adaptation in downstream products. Its goal is to provide a continuously integrated, validated baseline - making downstream adaptation as straightforward as possible and providing a shared, openly visible justification platform for all downstream projects involved.
+
+This option also frames the reference integration as a continuous proof of integrability and quality, rather than a single downstream product delivery. In that framing, the reference integration is expected to:
+
+- demonstrate continuous integrability of all S-CORE modules across functional, performance, safety, and security perspectives
+- follow S-CORE process and quality expectations per module
+- define clear expectations for externally managed modules (for example, OpenSOVD) regarding required artifacts and interfaces
+- ensure gaps are addressed either by upstream artifacts or by explicit S-CORE maintenance responsibility
+
+This option increases coordination and change management overhead during development. In return, it establishes a clear architectural contract. Changes are evaluated based on their impact on the stack, and the reference stack is expected to remain usable throughout.
+
+### Consequences
 
 The consistent stack model constrains module-level autonomy. Not all module-local use cases are valid by default. Changes, especially breaking changes, must be justified in terms of stack-level requirements.
 
@@ -81,7 +96,7 @@ The cost is increased coordination effort and earlier discussion of cross-cuttin
 
 Late integration risk is reduced. Architectural inconsistencies surface earlier, during development rather than at release time.
 
-## Impact on Development Workflow
+### Impact on Development Workflow
 
 For modules created within S-CORE, development is guided by stack objectives. Features and changes are expected to consider their impact on the overall stack from the start.
 
@@ -89,7 +104,7 @@ Breaking changes in any module integrated into the stack require justification b
 
 This decision does not define concrete workflows, tooling, or CI/CD mechanisms. It establishes the architectural expectation that such mechanisms must support continuous stack consistency.
 
-## Impact on Governance and Planning
+### Impact on Governance and Planning
 
 Planning and prioritization discussions must reference stack-level goals. Module roadmaps are not authoritative on their own when they affect the behavior of the stack.
 
@@ -97,7 +112,7 @@ This decision enables future decision records to define how architectural alignm
 
 No specific governance structure or role model is defined by this record.
 
-### Handling of Breaking Changes and Integration Alignment
+#### Handling of Breaking Changes and Integration Alignment
 
 This decision does not prescribe a fixed procedural outcome for cases where module evolution and stack integration timelines diverge, for example when a breaking change in a module cannot be integrated into the stack shortly before a planned S-CORE release.
 
@@ -110,7 +125,7 @@ The decision record does not mandate either approach. Instead, it establishes th
 
 In particular, breaking changes in modules intended to be part of the S-CORE stack require explicit consideration of their impact on stack consistency and planned stack use cases.
 
-## Explicit Non-Goals
+### Explicit Non-Goals
 
 This decision record does not:
 
