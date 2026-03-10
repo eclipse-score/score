@@ -19,283 +19,249 @@ DR-005-process: Feature as Independent Delivery Product
 
 .. dec_rec:: Feature as Independent Delivery Product
    :id: dec_rec__platform__feature_delivery
-   :status: proposed
-   :Context: TBD
-   :Decision: TBD
+   :status: accepted
+   :Context: Feature artifacts are bound to the S-CORE platform repository and cannot be delivered independently of the platform release. The previous idea of moving all artifacts into the SW-Module repository leads to cyclic dependencies.
+   :Decision: Feature artifacts are split: feature requirements and platform architecture remain in the S-CORE repository. Feature architecture and component artifacts are moved to the SW-Module repository (feature repository). The dependency direction is unambiguous: SW-Module repositories depend on the S-CORE repository, not the other way around.
 
-   Consequences: TBD
+   :Consequences: Process update required. Feature architecture and component artifacts are moved to SW-Module repositories. Feature requirements and logical feature interfaces remain in the S-CORE repository. The dependency rule is mandatory.
+
 
 Context
 -------
 
-With S-CORE, we are jointly developing an open software platform with the goal of reducing complexity,
-promoting reuse, gaining speed and enabling scalable innovations.
+The intent of this decision record is to resolve the cyclic dependency problem present in the
+current solution and to make features more independent from the S-CORE platform.
+The original idea was to move all feature artifacts into the SW-Module repositories that
+also contain the feature code. This was intended to strengthen the following aspects:
 
-From today's perspective, the S-CORE platform will not be able to replace the software platforms
-currently used in OEM projects in a single step. For this reason,
-S-CORE must support the replacement of parts of the currently used software platforms with S-CORE platform parts.
+- Release independence
+- Topic cohesion
+- Reusability
 
-Currently, there are two elements in S-CORE for the decomposition of the platform:
-  - Features
-  - Components
-
-The platform consists of features. A feature is realized by a number of components.
-
-Furthermore, S-CORE provides for two types of delivery products:
-  - Platform Release
-  - Software Module Release
-
-These can be used by OEM projects.
-Both delivery types are also a Safety Element out of Context (SEooC), making them easier to integrate.
-
-A software module is defined as a component or a set of components.
-A software module is contained in a repository.
-
-Features and their artifacts are currently contained in the platform repository.
-As a result, they can only be delivered with the platform release.
-
-The goal is to be able to deliver features independently of the platform release.
-For this, the Decision Record proposes that the software module also contains the feature artifacts.
-
-The software module that contains the feature artifacts is responsible for fulfilling the feature requirements.
-Even though not all S-CORE components required for the feature are located in this SW module (repository).
-
-In section `Alternatives Considered`_, different alternatives are presented.
-the current solution is compared with the alternative and evaluated with respect to the following aspects:
-
-  - Independence of Release / Topic Coherence
-  - SEooC for Features
-  - Reusability across Platforms
-  - Maintainability
-  - Number of Repositories
-  - Traceability
+To validate the feasibility of this concept, an initial proof of concept (PoC) was built
+in which all feature artifacts were moved into the SW-Module repository.
+It turned out that this leads to cyclic dependencies.
+In addition, during the development of the PoC it became clear that the current solution
+already contains cyclic dependencies (see :ref:`fig-current-meta-model`).
+Therefore, neither the current concept nor the original PoC approach is a viable solution.
 
 Decision
 --------
 
-Feature artifacts will be stored in the SW module repo.
+The feature artifacts are split between the **S-CORE repository** and the
+**SW-Module repositories** to avoid cyclic dependencies:
 
-Comparing the alternatives based on the criteria in the decision table
-below (see `Justification for the Decision`_) shows that Alternative 2b
-(Dedicated Feature Repository with Sub-Features) offers the most advantages.
-This alternative enables a clear separation and independence of features,
-supports SEooC at the feature level, and promotes reusability across
-different platforms. Sub-features should be used very sparingly to avoid
-unnecessarily increasing complexity.
+- The S-CORE repository contains the stakeholder requirements and the platform architecture,
+  including the feature requirements (requirements at feature level).
+- The SW-Module repository contains the feature architecture, the component requirements,
+  and the detailed design of the components.
+
+The dependency direction is unambiguous: SW-Module repositories depend on the S-CORE repository,
+but not the other way around. The integration repository knows all repositories.
+This rule structurally excludes cyclic dependencies (see :ref:`fig-new-meta-model`).
 
 Consequences
 ------------
 
-- Process update
-- Moving the feature artifacts to feature repos
-- Adaptation of the traceability direction from "satisfies" to "satisfied by" between:
-   - Stakeholder Requirement and Feature Requirement
-   - Platform Architecture and Feature
+- Process update to reflect the new artifact distribution
+- Feature architecture and component artifacts are moved to the SW-Module repositories
+- Feature requirements remain in the S-CORE repository
+- Logical feature interfaces remain in the S-CORE repository
+- The dependency rule "SW-Module repositories → S-CORE repository" is mandatory
+- The integration repository takes the role of the only node with knowledge of all repositories
 
-Alternatives Considered
------------------------
-
-Alternative 1: Status Quo - Platform-Centric Feature Management
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The platform artifacts and the feature artifacts are contained in the S-CORE platform repository.
-The component artifacts are contained in the module repository.
-This is the current status.
-
-.. uml:: _assets/DR-005-alternative_1_simplified.puml
-   :caption: Alternative 1: Status Quo Architecture
-
-
-Alternative 2: Feature in SW Module Repository
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The platform artifacts are located in the S-CORE platform repository.
-The feature artifacts are located in the SW module repository.
-
-Feature artifacts are all artifacts at the feature level, such as feature requirements,
-feature architecture, and feature tests.
-
-In addition, this SW module also contains the main components of the feature
-that are not to be reused independently of this feature context.
-A feature can reuse components from other SW modules, such as BaseLibs.
-
-Component artifacts are all artifacts at the component level, such as component requirements,
-component architecture, and component tests.
-They also include units with detailed design, source code, and unit tests.
-
-.. uml:: _assets/DR-005-alternative_2_simplified.puml
-   :caption: Alternative 2: Dedicated Feature Repository Architecture
-
-
-Alternative 2b: Feature in SW Module Repository with Sub-Features (System of Systems)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This variant of Alternative 2 extends the dedicated feature repository
-approach to support a System of Systems architecture. Features can be
-composed of sub-features, each residing in their own repository. This
-enables hierarchical composition where complex features can integrate
-multiple sub-features, each maintaining its own complete set of artifacts
-(requirements, architecture, tests, components, and units).
-
-.. uml:: _assets/DR-005-alternative_2b_simplified.puml
-   :caption: Alternative 2b: System of Systems Feature Repository Architecture
-
-
-Alternative 2c: Dedicated Feature Repository
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Alternative 2c is similar to Alternative 2,
-with the key difference beingthat there is an intermediate feature repository between
-the S-CORE platform repository and the SW module repositories (implementation repositories).
-The feature artifacts are located in the feature repository.
-
-This is to address the use case where two implementations exist for the same feature
-and copies of the feature artifacts should be avoided.
-
-Alternative 2c represents a solution but should be avoided because it increases complexity,
-the number of repositories, and thus the maintenance effort.
-Furthermore, it increases the risk that the implementations for aspects that should be the same will diverge.
-
-.. uml:: _assets/DR-005-alternative_2c_simplified.puml
-   :caption: Alternative 2c: Hierarchical Feature Repository Architecture
-
-
-Visualization of Artifact Structure
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. figure:: _assets/DR-005-artefact_overview.drawio.svg
-   :align: center
-   :width: 50%
-
-   Artifact Overview - Standard Feature Structure
-
-.. figure:: _assets/DR-005-artefact_overview_sub_feature.drawio.svg
-   :align: center
-   :width: 100%
-
-   Artifact Overview - Feature with Sub-Features
-
-.. figure:: _assets/DR-005-artefact_overview_tracebility.drawio.svg
-   :align: center
-   :width: 50%
-
-   Artifact Overview - Traceability Between Artifacts
-
-
-
-Justification for the Decision
-------------------------------
-
-.. list-table:: Decision Criteria Comparison
-   :header-rows: 1
-   :widths: 25 18 18 18 21
-
-   * - Decision Criteria
-     - Alternative 1: Status Quo
-     - Alternative 2: Feature in SW Module Repository
-     - Alternative 2b: Feature in SW Module Repository with Sub-Features
-     - Alternative 2c: Dedicated Feature Repository
-   * - Independence of Release / Topic Coherence (How independently can
-       features be released and how well are related artifacts kept
-       together?)
-     - **(-)**
-
-       Features bound to platform release cycle, split between platform
-       and modules
-     - **(+)**
-
-       Complete independence, all artifacts self-contained in one place
-     - **(+)**
-
-       Full independence with modular sub-features, clear feature
-       boundaries
-     - **(o)**
-
-       Partial independence, requirements/architecture separated from
-       implementation
-   * - SEooC for Features (How well can features be delivered as Safety
-       Element out of Context?)
-     - **(-)**
-
-       Only modules can be SEooC, features are not independent units
-     - **(+)**
-
-       Complete SEooC at feature level with all artifacts
-     - **(+)**
-
-       Complete SEooC at feature level with all artifacts
-     - **(o)**
-
-       Complete SEooC at feature level with all artifacts
-   * - Reusability across Platforms (How well can the feature be reused
-       in different platforms?)
-     - **(-)**
-
-       Platform-specific feature descriptions
-     - **(+)**
-
-       Self-contained, portable across platforms
-     - **(+)**
-
-       Self-contained, portable across platforms + sub-feature reuse
-     - **(o)**
-
-       Self-contained, portable across platforms
-   * - Maintainability (How easy is it to maintain and update the
-       feature?)
-     - **(o)**
-
-       Distributed across platform and module repos
-     - **(+)**
-
-       All main artifacts in single location
-     - **(o)**
-
-       Multiple repos increase complexity
-     - **(-)**
-
-       Multiple repos increase complexity additional for feature
-       requirements/architecture
-   * - Number of Repositories (How many repositories are required to
-       manage?)
-     - **(+)**
-
-       Minimal: Platform + Module repos
-     - **(+)**
-
-       Minimal: Platform + Feature repo
-     - **(o)**
-
-       Multiple per feature (main + sub-features)
-     - **(-)**
-
-       Multiple per feature (additional for feature
-       requirements/architecture)
-   * - Traceability (How well can requirements, architecture, tests, and
-       code be traced?)
-     - **(+)**
-
-       Only one tracebility direction
-     - **(o)**
-
-       Different tracebility directions across repos
-     - **(o)**
-
-       Different tracebility directions across repos
-     - **(o)**
-
-       Different tracebility directions across repos
-
-
-Example for Architecture work on platform level
+New Solution (Alternative 3 – Split Artifacts)
 -----------------------------------------------
 
-Architecture work at the platform level means that decisions are made that
-are relevant to the entire system. These can include coding guidelines,
-safety concepts, structuring the platform or commonly used interfaces.
+The new solution without cyclic dependencies is shown in :ref:`fig-new-meta-model`.
+The new solution follows this approach:
 
-An example of an overarching concept is the definition of a standardized identifier for an application (APP_ID).
-Each feature could define its own format, but this would result in an integrator
-having to configure different formats for one application. Therefore, the
-definition of APP_IDs should be done at the platform level and adopted by
-the features.
+The **S-CORE repository** contains:
+
+1. The stakeholder requirements that the platform must fulfill
+   (black-box view of the platform).
+2. The platform architecture that breaks the platform down into features, and their
+   feature requirements (white-box view of the platform, black-box view of the features).
+
+A feature consists of components. A distinction is made between:
+
+- **Shared components** (e.g. BaseLibs): These are reused by multiple features
+  and reside in their own SW-Module repositories. A feature can reference such components
+  as a dependency.
+- **Feature-specific components**: These are developed exclusively for the realization of a
+  specific feature and are probably not intended for reuse.
+
+The feature-specific components are consolidated together with the feature artifacts in a single
+SW-Module repository. This repository can therefore also be referred to as a **feature repository**.
+
+The **SW-Module repository (feature repository)** contains:
+
+1. The feature architecture that breaks the feature down into components, and their
+   component requirements (white-box view of the feature, black-box view of the component).
+2. The component architecture and/or the detailed design of the feature-specific components
+   (white-box view of the component).
+
+:ref:`fig-breakdown` illustrates exemplarily the decomposition from the platform via features
+down to components, as well as the assignment of artifacts to the respective repositories.
+The dependency relationships between repositories run exclusively from the SW-Module repository to the
+S-CORE repository — never in the opposite direction.
+
+.. _fig-breakdown:
+
+.. figure:: _assets/DR-005-breakdown.drawio.svg
+   :align: center
+   :width: 75%
+
+   Breakdown of Artifacts
+
+A complete overview of all artifacts and their assignment to the repositories is shown in
+:ref:`fig-new-meta-model`.
+
+**Building blocks meta model with new repository mapping (Alternative 3 – Split Artifacts)**
+
+.. _fig-new-meta-model:
+
+.. figure:: _assets/DR-005-new_score_building_blocks_meta_model.drawio.svg
+   :align: center
+   :width: 75%
+
+   Building blocks meta model with new repository mapping
+
+**Building blocks meta model with current repository mapping (status quo)**
+
+.. _fig-current-meta-model:
+
+.. figure:: _assets/DR-005-current_score_building_blocks_meta_model.drawio.svg
+   :align: center
+   :width: 75%
+
+   Building blocks meta model with current repository mapping (status quo)
+
+
+Considered Alternatives
+-----------------------
+
+Four alternatives were examined:
+
+**Alternative 1 – Status Quo (platform-centric feature management)**
+  All platform and feature artifacts are located in the S-CORE platform repository.
+  Component artifacts are in the SW-Module repository. Features can only be delivered with
+  the platform release. Cyclic dependencies already exist today.
+  → *not chosen*
+
+**Alternative 2 – Feature in the SW-Module repository**
+  Platform artifacts remain in the S-CORE repository; all feature artifacts (requirements,
+  architecture, tests) and the associated components move into the SW-Module repository.
+  Enables independent feature releases, but leads to cyclic dependencies, since the
+  SW-Module repository depends on the S-CORE repository and vice versa.
+  → *not chosen, due to cyclic dependencies*
+
+**Alternative 3 – Split artifacts (chosen solution)**
+  Feature requirements and platform architecture remain in the S-CORE repository.
+  Feature architecture and component artifacts move to the SW-Module repository.
+  The dependency direction is unambiguous: SW-Module repositories → S-CORE repository.
+  Cyclic dependencies are structurally excluded.
+  → **chosen**
+
+**Alternative 4 – Dedicated feature repository**
+  A separate feature repository sits between the S-CORE repository and the SW-Module repositories.
+  Addresses the use case where two implementations exist for the same feature and
+  copies of feature artifacts are to be avoided.
+  Increases complexity, the number of repositories, and maintenance effort.
+  → *not chosen*
+
+
+Proof of Concept (PoC): Logging
+--------------------------------
+
+The **logging feature** was used as the PoC. The version shown here already implements
+the chosen solution (Alternative 3).
+
+The feature black-box view (feature requirements) is defined in the ``score`` repository.
+The feature architecture and the feature-specific component artifacts are located in the
+``logging`` SW-Module repository. The logging feature additionally depends on the
+``baselib`` repository and the ``baselib_rust`` repository, which are used as shared
+components by multiple features.
+The dependency direction runs exclusively from the ``logging`` SW-Module repository
+to the ``score`` repository — never the other way around.
+
+.. figure:: _assets/DR-005-PoC_logging.drawio.svg
+   :align: center
+   :width: 75%
+
+   Proof of Concept: Logging Feature
+
+Glossary
+--------
+
+.. glossary::
+
+   Artifact
+     Any document or result produced during the development process, e.g. requirements,
+     architecture descriptions, tests or source code.
+
+   Black-box view
+     Observation of a unit from the outside — only interfaces and behavior are visible,
+     not the internal structure.
+
+   Decision Record (DR)
+     A document that describes, justifies, and records the consequences of an architecture
+     or process decision.
+
+   Feature
+     A distinct unit of functionality of the S-CORE platform, realized by a set of components.
+
+   Feature architecture
+     The description of how a feature is broken down into components
+     (white-box view of the feature).
+
+   Feature repository
+     Designation for a SW-Module repository that contains, in addition to the
+     feature-specific source code, all associated feature artifacts (feature architecture,
+     component requirements, detailed design).
+
+   Feature requirements
+     Requirements at the feature level. They describe what a feature must do and are
+     derived from the stakeholder requirements.
+
+   Integration repository
+     Repository that knows all other repositories and is responsible for integrating the
+     overall platform.
+
+   Component architecture
+     The detailed structure of a component (white-box view of the component), also
+     referred to as detailed design.
+
+   Component requirements
+     Requirements at the component level, derived from the feature architecture.
+
+   Platform architecture
+     The decomposition of the S-CORE platform into features (white-box view of the platform).
+
+   S-CORE repository
+     The central platform repository containing stakeholder requirements, platform
+     architecture, and feature requirements.
+
+   SEooC (Safety Element out of Context)
+     A safety element that can be developed and delivered independently of a concrete
+     system context, to facilitate integration into various projects.
+
+   Shared components
+     Components reused by multiple features (e.g. BaseLibs) that reside in their own
+     SW-Module repositories. Features reference them as dependencies.
+
+   SW-Module repository (SW-Module repo)
+     Repository containing feature architecture, component requirements, detailed design,
+     and source code of a feature implementation.
+
+   Stakeholder requirements
+     Requirements placed on the S-CORE platform as a whole from the outside
+     (black-box view of the platform).
+
+   White-box view
+     Observation of a unit from the inside — the internal structure and decomposition
+     are visible.
+
+   Cyclic dependency
+     A dependency relationship in which two or more units depend on each other mutually,
+     leading to irresolvable build or versioning conflicts.
