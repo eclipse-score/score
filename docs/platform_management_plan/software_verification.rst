@@ -230,7 +230,7 @@ at higher levels:
    #. Fault Injection (``fault-injection``):
 
       Most beneficial for testing level 2.
-   #. Structural Function/Call Coverage (``struct-func-cov`` & ``struct-call-cov``)
+   #. Structural Function/Call Coverage (``structural-function-coverage`` & ``structural-call-coverage``)
 
       Most beneficial for testing level 2.
 
@@ -490,13 +490,17 @@ The software components of the project written in C++ are unit tested with the h
 
 .. rubric:: gcov/gcovr
 
-The structural coverage reached by unit testing in the project is evaluated by the gcov/gcovr tool chain
+For C++ code the structural coverage reached by unit testing in the project is evaluated by the gcov/gcovr tool chain
 `gcovr <https://github.com/gcovr/gcovr>`__ - gcov is part of the GNU compiler collection (gcc).
 
-Note that gcov/gcovr supports several coverage metrics:
+The C++ unit test tooling supports several coverage metrics:
 
-- "statement" - used in S-CORE for the structural-statement-coverage method
-- "decision" - used in S-CORE for the structural-branch-coverage method
+- "line" - used in S-CORE for the ``structural-statement-coverage`` method
+- "branch" - used in S-CORE for the ``structural-branch-coverage`` method
+- "function" - used in S-CORE for the ``structural-function-coverage`` as additional supporting coverage value for further analysis.
+
+Note gcov/gcovr are not applicable for Rust code. Here coverage values are created using the tooling provided by the Ferroscene.
+
 
 .. rubric:: Integration Testing Framework (ITF)
 
