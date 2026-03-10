@@ -54,93 +54,121 @@ Requirement Inspection Checklist
       * - REQ_01_01
         - Is the requirement formulation template used?
         - see :need:`gd_temp__req_formulation`, this includes the use of "shall".
-        -
-        -
-        -
+        - NO
+        - Following requirements failed to comply with the requirements formulation template:
+
+          - :need:`aou_req__bitmanipulation__type_constraints` - The second sentence does not use shall and is not marked with "Note". Suggestion - move it to the Note.
+          - :need:`aou_req__bitmanipulation__concurrent_access` - "…as the library provides no internal thread safety guarantees." is a justification and not a verifiable statement. Per the template, it should be separated and marked as Note.
+        - #2669
       * - REQ_02_01
         - Is the requirement description *comprehensible* ?
         - If you think the requirement is hard to understand, comment here.
-        -
-        -
-        -
+        - NO
+        - Following requirement is not clear considering it's an AoU:
+
+          - :need:`aou_req__bitmanipulation__valid_bit_positions` - This requirement seems like a functional one. It basically describes what the library guarantees, and might be a duplicate of :need:`comp_req__bitmanipulation__bounds_safety`. It should be clarified what is meant by this AoU requirement.
+
+          The remaining requirements are clear and easy to understand. However, some grammar mistakes are still present:
+
+          - :need:`comp_req__bitmanipulation__utilities` - "...shall provide API..." -> "...shall provide an API..."
+          - :need:`aou_req__bitmanipulation__type_constraints` - "...shall only use bit manipulation functions with integral types..." -> "...shall use bit manipulation functions only with integral types..."
+          - :need:`aou_req__bitmanipulation__enum_type_safety` - Missing period at the end
+        - #2669
       * - REQ_02_02
         - Is the requirement description *unambiguous* ?
         - Especially search for "weak words" like "about", "etc.", "relevant" and others (see the internet documentation on this). This check shall be supported by tooling.
-        -
-        -
-        -
+        - NO
+        - Following requirements have some ambiguities/weak words:
+
+          - :need:`comp_req__bitmanipulation__utilities` - "...manipulating half-bytes and bytes..." what is meant by manipulating? E.g. different implementers could have different ideas what should be done. This looks especially ambiguous related to the enumeration of all the bit-related operations in the first part of the requirement ("...setting, clearing, toggling, and checking bits...").
+          - :need:`comp_req__bitmanipulation__bounds_safety` - "...prevent data corruption" is too vague. Which data? What is meant by corruption?
+          - :need:`aou_req__bitmanipulation__enum_type_safety` - Usage of a "weak word" explicitly mentioned in the checklist: etc.
+        - #2669
       * - REQ_02_03
         - Is the requirement description *atomic* ?
         - A good way to think about this is to consider if the requirement may be tested by one (positive) test case or needs more of these. The requirement formulation template should also avoid being non-atomic already. Note that there are cases where also non-atomic requirements are the better ones, for example if those are better understandable.
-        -
-        -
-        -
+        - NO
+        - Following requirement is not atomic:
+
+          - :need:`comp_req__bitmanipulation__utilities` - This requirement bundles at least four distinct functional areas (1) setting/clearing/toggling/checking bits, (2) extracting bytes, (3) manipulating half-bytes, (4) manipulating bytes. Each area requires multiple independent test cases. For example, "set bit" and "extract byte" are entirely unrelated operations with different signatures, parameters, and edge cases. A single positive test case cannot cover all of them. Consider splitting into separate requirements per operation group.
+        - #2669
       * - REQ_02_04
         - Is the requirement description *feasible* ?
         - If at the time of the inspection the requirement has already some implementation, the answer is yes. This can be checked via traces, but also :need:`gd_req__req_attr_impl` shows this. In case the requirement has no implementation at the time of inspection (i.e. not implemented at least as "proof-of-concept"), a development expert should be invited to the Pull-Request review to explicitly check this item.
-        -
-        -
+        - YES
+        - All requirements are already implemented at the time of this inspection.
         -
       * - REQ_02_05
         - Is the requirement description *independent from implementation* ?
         - This checkpoint should improve requirements definition in the sense that the "what" is described and not the "how" - the latter should be described in architecture/design derived from the requirement. But there can also be a good reason for this, for example we would require using a file format like JSON and even specify the formatting standard already on stakeholder requirement level because we want to be compatible. A finding in this checkpoint does not mean there is a safety problem in the requirement.
-        -
-        -
+        - YES
+        - Note on :need:`comp_req__bitmanipulation__header_only` - It's describing an implementation constraint, so it is a "how". However, this is a justified architectural decision, and it's analogous to the "JSON format" example from the checklist.
         -
       * - REQ_03_01
         - Is the *linkage to the parent feature/component requirement* correct?
         - Linkage to correct levels and ASIL attributes is checked automatically, but it needs checking if the child requirement implements (at least) a part of the parent requirement.
-        -
-        -
+        - YES
+        - The linkage to parent requirements is correct for all the requirements.
         -
       * - REQ_04_01
         - Is the requirement *internally and externally consistent*?
         - Does the requirement contradict other requirements within the same or higher levels? One may restrict the search to the feature for component requirements, for features to other features using same components.
-        -
-        -
-        -
+        - YES
+        - All the requirements are mutually consistent. However, there are inconsistencies between some requirements' titles and their descriptions:
+
+          - :need:`aou_req__bitmanipulation__concurrent_access` - The title "No Side Effects on Concurrent Access" is misleading. It sounds like the library guarantees no side effects during concurrent access (i.e., it is thread-safe). The text says the opposite — the library has no thread safety, and the user must synchronize.
+          - :need:`aou_req__bitmanipulation__enum_type_safety` - "...Type Safety" is misleading — the requirement is about value constraints, not type safety.
+        - #2669
       * - REQ_05_01
         - Do the software requirements consider *timing constraints*?
         - This checkpoint encourages to think about timing constraints even if those are not explicitly mentioned in the parent requirement. If the reviewer of a requirement already knows or suspects that the code execution will be consuming a lot of time, one should think of the expectation of a "user".
-        -
-        -
+        - YES
+        - The overhead for bit manipulation operations is negligible.
         -
       * - REQ_06_01
         - Does the requirement consider *external interfaces*?
         - The SW platform's external interfaces (to the user) are defined in the Feature Architecture, so the Feature and Component Requirements should determine the input data use and setting of output data for these interfaces. Are all output values defined?
-        -
-        -
-        -
+        - NO
+        - For following requirements there is no description of the output:
+
+          - :need:`comp_req__bitmanipulation__utilities` - The requirement describes inputs but not outputs — no return types or return semantics specified.
+          - :need:`comp_req__bitmanipulation__bounds_safety` - Describes input validation but no output on failure. When an interface operation receives invalid input, what is returned? The error output path is undefined.
+
+          Additionally, following requirements show mismatch with the architecture:
+
+          - :need:`comp_req__bitmanipulation__utilities` - "extracting bytes and manipulating half-bytes" have no corresponding interface operations in the architecture.
+          - :need:`aou_req__bitmanipulation__bit_validation` - References "byte and half-byte extraction indices" which have no corresponding interface operations in the architecture.
+        - #2669
       * - REQ_07_01
         - Is the *safety* attribute set correctly?
         - Derived requirements are checked automatically, see :need:`gd_req__req_linkage_safety`. But for the top level requirements (and also all AoU) this needs to be checked manually for correctness.
-        -
-        -
+        - YES
+        - All safety attributes set correctly.
         -
       * - REQ_07_02
         - Is the attribute *security* set correctly?
         - For component requirements this checklist item is supported by automated check: "Every requirement which satisfies a feature requirement with security attribute set to YES inherits this". But the component requirements/architecture may additionally also be subject to a :need:`wp__sw_component_security_analysis`.
-        -
-        -
+        - YES
+        - All security attributes set correctly.
         -
       * - REQ_08_01
         - Is the requirement *verifiable*?
         - If at the time of the inspection already tests are created for the requirement, the answer is yes. This can be checked via traces, but also :need:`gd_req__req_attr_test_covered` shows this. In case the requirement is not sufficiently traced to test cases already, a test expert is invited to the inspection to give their opinion whether the requirement is formulated in a way that supports test development and the available test infrastructure is sufficient to perform the test.
         - YES
-        - @rahulthakre29: all equirements have test cases implemented
+        - @rahulthakre29: all requirements have test cases implemented
         -
       * - REQ_08_02
         - Is the requirement verifiable by design or code review in case it is not feasibly testable?
         - In very rare cases a requirement may not be verifiable by test cases, for example a specific non-functional requirement. In this case a requirement analysis verifies the requirement by design/code review. If such a requirement is in scope of this inspection, please check this here and link to the respective review record. A test expert is invited to the inspection to confirm their opinion that the requirement is not testable.
-        -
-        -
+        - YES
+        - Only one requirement is relevant for this inspection - :need:`comp_req__bitmanipulation__header_only` and it's very well verifiable by design/code review.
         -
       * - REQ_09_01
         - Do the requirements that define a safety mechanism specify the error reaction leading to a safe state?
         - Alternatively to the safe state there could also be "repair" mechanisms. Also do not forget to consider REQ_05_01 for these.
-        -
-        -
-        -
+        - NO
+        - There is only one requirement here that does define a safety mechanism - :need:`comp_req__bitmanipulation__bounds_safety`, but it fails to specify error reaction leading to a safe state (e.g. abort or return error indicator). Just "...prevent data corruption" is not enough.
+        - #2669
 
 
 .. attention::
