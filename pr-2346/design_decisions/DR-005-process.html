@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -554,7 +554,7 @@
                   
   <section id="dr-005-process-feature-as-independent-delivery-product">
 <span id="decision-record-feature-as-independent-delivery"></span><h1>DR-005-process: Feature as Independent Delivery Product<a class="headerlink" href="#dr-005-process-feature-as-independent-delivery-product" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-533497a6">
+<div class="need_container docutils container" id="SNCB-50c8210d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__platform__feature_delivery">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -562,7 +562,7 @@
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
-<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">proposed</span></span></span></div>
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">accepted</span></span></span></div>
 <div class="line"><span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -573,15 +573,20 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_context"><span class="needs_label">context: </span><span class="needs_data">TBD</span></span></div>
-<div class="line"><span class="needs_decision"><span class="needs_label">decision: </span><span class="needs_data">TBD</span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_context"><span class="needs_label">context: </span><span class="needs_data">Feature artifacts are bound to the S-CORE platform repository and cannot be delivered independently of the platform release. The previous idea of moving all artifacts into the SW-Module repository leads to cyclic dependencies.</span></span></div>
+<div class="line"><span class="needs_decision"><span class="needs_label">decision: </span><span class="needs_data">Feature artifacts are split: feature requirements and platform architecture remain in the S-CORE repository. Feature architecture and component artifacts are moved to the SW-Module repository (feature repository). The dependency direction is unambiguous: SW-Module repositories depend on the S-CORE repository, not the other way around.</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>Consequences: TBD</p></td>
+<tr class="content row-odd"><td class="content" colspan="6"><dl class="field-list simple">
+<dt class="field-odd">Consequences<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Process update required. Feature architecture and component artifacts are moved to SW-Module repositories. Feature requirements and logical feature interfaces remain in the S-CORE repository. The dependency rule is mandatory.</p>
+</dd>
+</dl>
+</td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#dec_rec__platform__feature_delivery" title="dec_rec__platform__feature_delivery">dec_rec__platform__feature_delivery</a></span></span></div>
@@ -599,300 +604,209 @@
 </div>
 <section id="context">
 <h2>Context<a class="headerlink" href="#context" title="Link to this heading">#</a></h2>
-<p>With S-CORE, we are jointly developing an open software platform with the goal of reducing complexity,
-promoting reuse, gaining speed and enabling scalable innovations.</p>
-<p>From today’s perspective, the S-CORE platform will not be able to replace the software platforms
-currently used in OEM projects in a single step. For this reason,
-S-CORE must support the replacement of parts of the currently used software platforms with S-CORE platform parts.</p>
-<dl class="simple">
-<dt>Currently, there are two elements in S-CORE for the decomposition of the platform:</dt><dd><ul class="simple">
-<li><p>Features</p></li>
-<li><p>Components</p></li>
+<p>The intent of this decision record is to resolve the cyclic dependency problem present in the
+current solution and to make features more independent from the S-CORE platform.
+The original idea was to move all feature artifacts into the SW-Module repositories that
+also contain the feature code. This was intended to strengthen the following aspects:</p>
+<ul class="simple">
+<li><p>Release independence</p></li>
+<li><p>Topic cohesion</p></li>
+<li><p>Reusability</p></li>
 </ul>
-</dd>
-</dl>
-<p>The platform consists of features. A feature is realized by a number of components.</p>
-<dl class="simple">
-<dt>Furthermore, S-CORE provides for two types of delivery products:</dt><dd><ul class="simple">
-<li><p>Platform Release</p></li>
-<li><p>Software Module Release</p></li>
-</ul>
-</dd>
-</dl>
-<p>These can be used by OEM projects.
-Both delivery types are also a Safety Element out of Context (SEooC), making them easier to integrate.</p>
-<p>A software module is defined as a component or a set of components.
-A software module is contained in a repository.</p>
-<p>Features and their artifacts are currently contained in the platform repository.
-As a result, they can only be delivered with the platform release.</p>
-<p>The goal is to be able to deliver features independently of the platform release.
-For this, the Decision Record proposes that the software module also contains the feature artifacts.</p>
-<p>The software module that contains the feature artifacts is responsible for fulfilling the feature requirements.
-Even though not all S-CORE components required for the feature are located in this SW module (repository).</p>
-<p>In section <a class="reference internal" href="#alternatives-considered">Alternatives Considered</a>, different alternatives are presented.
-the current solution is compared with the alternative and evaluated with respect to the following aspects:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>Independence of Release / Topic Coherence</p></li>
-<li><p>SEooC for Features</p></li>
-<li><p>Reusability across Platforms</p></li>
-<li><p>Maintainability</p></li>
-<li><p>Number of Repositories</p></li>
-<li><p>Traceability</p></li>
-</ul>
-</div></blockquote>
+<p>To validate the feasibility of this concept, an initial proof of concept (PoC) was built
+in which all feature artifacts were moved into the SW-Module repository.
+It turned out that this leads to cyclic dependencies.
+In addition, during the development of the PoC it became clear that the current solution
+already contains cyclic dependencies (see <a class="reference internal" href="#fig-current-meta-model"><span class="std std-ref">Building blocks meta model with current repository mapping (status quo)</span></a>).
+Therefore, neither the current concept nor the original PoC approach is a viable solution.</p>
 </section>
 <section id="decision">
 <h2>Decision<a class="headerlink" href="#decision" title="Link to this heading">#</a></h2>
-<p>Feature artifacts will be stored in the SW module repo.</p>
-<p>Comparing the alternatives based on the criteria in the decision table
-below (see <a class="reference internal" href="#justification-for-the-decision">Justification for the Decision</a>) shows that Alternative 2b
-(Dedicated Feature Repository with Sub-Features) offers the most advantages.
-This alternative enables a clear separation and independence of features,
-supports SEooC at the feature level, and promotes reusability across
-different platforms. Sub-features should be used very sparingly to avoid
-unnecessarily increasing complexity.</p>
+<p>The feature artifacts are split between the <strong>S-CORE repository</strong> and the
+<strong>SW-Module repositories</strong> to avoid cyclic dependencies:</p>
+<ul class="simple">
+<li><p>The S-CORE repository contains the stakeholder requirements and the platform architecture,
+including the feature requirements (requirements at feature level).</p></li>
+<li><p>The SW-Module repository contains the feature architecture, the component requirements,
+and the detailed design of the components.</p></li>
+</ul>
+<p>The dependency direction is unambiguous: SW-Module repositories depend on the S-CORE repository,
+but not the other way around. The integration repository knows all repositories.
+This rule structurally excludes cyclic dependencies (see <a class="reference internal" href="#fig-new-meta-model"><span class="std std-ref">Building blocks meta model with new repository mapping</span></a>).</p>
 </section>
 <section id="consequences">
 <h2>Consequences<a class="headerlink" href="#consequences" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Process update</p></li>
-<li><p>Moving the feature artifacts to feature repos</p></li>
-<li><dl class="simple">
-<dt>Adaptation of the traceability direction from “satisfies” to “satisfied by” between:</dt><dd><ul>
-<li><p>Stakeholder Requirement and Feature Requirement</p></li>
-<li><p>Platform Architecture and Feature</p></li>
+<li><p>Process update to reflect the new artifact distribution</p></li>
+<li><p>Feature architecture and component artifacts are moved to the SW-Module repositories</p></li>
+<li><p>Feature requirements remain in the S-CORE repository</p></li>
+<li><p>Logical feature interfaces remain in the S-CORE repository</p></li>
+<li><p>The dependency rule “SW-Module repositories → S-CORE repository” is mandatory</p></li>
+<li><p>The integration repository takes the role of the only node with knowledge of all repositories</p></li>
 </ul>
+</section>
+<section id="new-solution-alternative-3-split-artifacts">
+<h2>New Solution (Alternative 3 – Split Artifacts)<a class="headerlink" href="#new-solution-alternative-3-split-artifacts" title="Link to this heading">#</a></h2>
+<p>The new solution without cyclic dependencies is shown in <a class="reference internal" href="#fig-new-meta-model"><span class="std std-ref">Building blocks meta model with new repository mapping</span></a>.
+The new solution follows this approach:</p>
+<p>The <strong>S-CORE repository</strong> contains:</p>
+<ol class="arabic simple">
+<li><p>The stakeholder requirements that the platform must fulfill
+(black-box view of the platform).</p></li>
+<li><p>The platform architecture that breaks the platform down into features, and their
+feature requirements (white-box view of the platform, black-box view of the features).</p></li>
+</ol>
+<p>A feature consists of components. A distinction is made between:</p>
+<ul class="simple">
+<li><p><strong>Shared components</strong> (e.g. BaseLibs): These are reused by multiple features
+and reside in their own SW-Module repositories. A feature can reference such components
+as a dependency.</p></li>
+<li><p><strong>Feature-specific components</strong>: These are developed exclusively for the realization of a
+specific feature and are probably not intended for reuse.</p></li>
+</ul>
+<p>The feature-specific components are consolidated together with the feature artifacts in a single
+SW-Module repository. This repository can therefore also be referred to as a <strong>feature repository</strong>.</p>
+<p>The <strong>SW-Module repository (feature repository)</strong> contains:</p>
+<ol class="arabic simple">
+<li><p>The feature architecture that breaks the feature down into components, and their
+component requirements (white-box view of the feature, black-box view of the component).</p></li>
+<li><p>The component architecture and/or the detailed design of the feature-specific components
+(white-box view of the component).</p></li>
+</ol>
+<p><a class="reference internal" href="#fig-breakdown"><span class="std std-ref">Breakdown of Artifacts</span></a> illustrates exemplarily the decomposition from the platform via features
+down to components, as well as the assignment of artifacts to the respective repositories.
+The dependency relationships between repositories run exclusively from the SW-Module repository to the
+S-CORE repository — never in the opposite direction.</p>
+<figure class="align-center" id="id1">
+<span id="fig-breakdown"></span><a class="reference internal image-reference" href="../_images/DR-005-breakdown.drawio.svg"><img alt="../_images/DR-005-breakdown.drawio.svg" src="../_images/DR-005-breakdown.drawio.svg" style="width: 75%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Breakdown of Artifacts</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>A complete overview of all artifacts and their assignment to the repositories is shown in
+<a class="reference internal" href="#fig-new-meta-model"><span class="std std-ref">Building blocks meta model with new repository mapping</span></a>.</p>
+<p><strong>Building blocks meta model with new repository mapping (Alternative 3 – Split Artifacts)</strong></p>
+<figure class="align-center" id="id2">
+<span id="fig-new-meta-model"></span><a class="reference internal image-reference" href="../_images/DR-005-new_score_building_blocks_meta_model.drawio.svg"><img alt="../_images/DR-005-new_score_building_blocks_meta_model.drawio.svg" src="../_images/DR-005-new_score_building_blocks_meta_model.drawio.svg" style="width: 75%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Building blocks meta model with new repository mapping</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Building blocks meta model with current repository mapping (status quo)</strong></p>
+<figure class="align-center" id="id3">
+<span id="fig-current-meta-model"></span><a class="reference internal image-reference" href="../_images/DR-005-current_score_building_blocks_meta_model.drawio.svg"><img alt="../_images/DR-005-current_score_building_blocks_meta_model.drawio.svg" src="../_images/DR-005-current_score_building_blocks_meta_model.drawio.svg" style="width: 75%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Building blocks meta model with current repository mapping (status quo)</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="considered-alternatives">
+<h2>Considered Alternatives<a class="headerlink" href="#considered-alternatives" title="Link to this heading">#</a></h2>
+<p>Four alternatives were examined:</p>
+<dl class="simple">
+<dt><strong>Alternative 1 – Status Quo (platform-centric feature management)</strong></dt><dd><p>All platform and feature artifacts are located in the S-CORE platform repository.
+Component artifacts are in the SW-Module repository. Features can only be delivered with
+the platform release. Cyclic dependencies already exist today.
+→ <em>not chosen</em></p>
+</dd>
+<dt><strong>Alternative 2 – Feature in the SW-Module repository</strong></dt><dd><p>Platform artifacts remain in the S-CORE repository; all feature artifacts (requirements,
+architecture, tests) and the associated components move into the SW-Module repository.
+Enables independent feature releases, but leads to cyclic dependencies, since the
+SW-Module repository depends on the S-CORE repository and vice versa.
+→ <em>not chosen, due to cyclic dependencies</em></p>
+</dd>
+<dt><strong>Alternative 3 – Split artifacts (chosen solution)</strong></dt><dd><p>Feature requirements and platform architecture remain in the S-CORE repository.
+Feature architecture and component artifacts move to the SW-Module repository.
+The dependency direction is unambiguous: SW-Module repositories → S-CORE repository.
+Cyclic dependencies are structurally excluded.
+→ <strong>chosen</strong></p>
+</dd>
+<dt><strong>Alternative 4 – Dedicated feature repository</strong></dt><dd><p>A separate feature repository sits between the S-CORE repository and the SW-Module repositories.
+Addresses the use case where two implementations exist for the same feature and
+copies of feature artifacts are to be avoided.
+Increases complexity, the number of repositories, and maintenance effort.
+→ <em>not chosen</em></p>
 </dd>
 </dl>
-</li>
-</ul>
 </section>
-<section id="alternatives-considered">
-<h2>Alternatives Considered<a class="headerlink" href="#alternatives-considered" title="Link to this heading">#</a></h2>
-<section id="alternative-1-status-quo-platform-centric-feature-management">
-<h3>Alternative 1: Status Quo - Platform-Centric Feature Management<a class="headerlink" href="#alternative-1-status-quo-platform-centric-feature-management" title="Link to this heading">#</a></h3>
-<p>The platform artifacts and the feature artifacts are contained in the S-CORE platform repository.
-The component artifacts are contained in the module repository.
-This is the current status.</p>
-<figure class="align-default" id="id1">
-<p class="plantuml">
-<object data="../_images/plantuml-39515662318a279fa279f400f548c2c46da614e0.svg" type="image/svg+xml" style="width:476px;height:976px;background:#FFFFFF;"></object></p>
-<figcaption>
-<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Alternative 1: Status Quo Architecture</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="alternative-2-feature-in-sw-module-repository">
-<h3>Alternative 2: Feature in SW Module Repository<a class="headerlink" href="#alternative-2-feature-in-sw-module-repository" title="Link to this heading">#</a></h3>
-<p>The platform artifacts are located in the S-CORE platform repository.
-The feature artifacts are located in the SW module repository.</p>
-<p>Feature artifacts are all artifacts at the feature level, such as feature requirements,
-feature architecture, and feature tests.</p>
-<p>In addition, this SW module also contains the main components of the feature
-that are not to be reused independently of this feature context.
-A feature can reuse components from other SW modules, such as BaseLibs.</p>
-<p>Component artifacts are all artifacts at the component level, such as component requirements,
-component architecture, and component tests.
-They also include units with detailed design, source code, and unit tests.</p>
-<figure class="align-default" id="id2">
-<p class="plantuml">
-<object data="../_images/plantuml-be51aa2b59d7468dc0b0a6918cd8487d43ece157.svg" type="image/svg+xml" style="width:437px;height:960px;background:#FFFFFF;"></object></p>
-<figcaption>
-<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Alternative 2: Dedicated Feature Repository Architecture</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="alternative-2b-feature-in-sw-module-repository-with-sub-features-system-of-systems">
-<h3>Alternative 2b: Feature in SW Module Repository with Sub-Features (System of Systems)<a class="headerlink" href="#alternative-2b-feature-in-sw-module-repository-with-sub-features-system-of-systems" title="Link to this heading">#</a></h3>
-<p>This variant of Alternative 2 extends the dedicated feature repository
-approach to support a System of Systems architecture. Features can be
-composed of sub-features, each residing in their own repository. This
-enables hierarchical composition where complex features can integrate
-multiple sub-features, each maintaining its own complete set of artifacts
-(requirements, architecture, tests, components, and units).</p>
-<figure class="align-default" id="id3">
-<p class="plantuml">
-<object data="../_images/plantuml-f40cc95de3133a4ec508d14e305a59b2f9ed3b1b.svg" type="image/svg+xml" style="width:1320px;height:1222px;background:#FFFFFF;"></object></p>
-<figcaption>
-<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Alternative 2b: System of Systems Feature Repository Architecture</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="alternative-2c-dedicated-feature-repository">
-<h3>Alternative 2c: Dedicated Feature Repository<a class="headerlink" href="#alternative-2c-dedicated-feature-repository" title="Link to this heading">#</a></h3>
-<p>Alternative 2c is similar to Alternative 2,
-with the key difference beingthat there is an intermediate feature repository between
-the S-CORE platform repository and the SW module repositories (implementation repositories).
-The feature artifacts are located in the feature repository.</p>
-<p>This is to address the use case where two implementations exist for the same feature
-and copies of the feature artifacts should be avoided.</p>
-<p>Alternative 2c represents a solution but should be avoided because it increases complexity,
-the number of repositories, and thus the maintenance effort.
-Furthermore, it increases the risk that the implementations for aspects that should be the same will diverge.</p>
-<figure class="align-default" id="id4">
-<p class="plantuml">
-<object data="../_images/plantuml-e5c72b110788d76ae05e399509bde2b1ba59d6bb.svg" type="image/svg+xml" style="width:1069px;height:1031px;background:#FFFFFF;"></object></p>
-<figcaption>
-<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Alternative 2c: Hierarchical Feature Repository Architecture</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="visualization-of-artifact-structure">
-<h3>Visualization of Artifact Structure<a class="headerlink" href="#visualization-of-artifact-structure" title="Link to this heading">#</a></h3>
-<figure class="align-center" id="id5">
-<a class="reference internal image-reference" href="../_images/DR-005-artefact_overview.drawio.svg"><img alt="../_images/DR-005-artefact_overview.drawio.svg" src="../_images/DR-005-artefact_overview.drawio.svg" style="width: 50%;" />
+<section id="proof-of-concept-poc-logging">
+<h2>Proof of Concept (PoC): Logging<a class="headerlink" href="#proof-of-concept-poc-logging" title="Link to this heading">#</a></h2>
+<p>The <strong>logging feature</strong> was used as the PoC. The version shown here already implements
+the chosen solution (Alternative 3).</p>
+<p>The feature black-box view (feature requirements) is defined in the <code class="docutils literal notranslate"><span class="pre">score</span></code> repository.
+The feature architecture and the feature-specific component artifacts are located in the
+<code class="docutils literal notranslate"><span class="pre">logging</span></code> SW-Module repository. The logging feature additionally depends on the
+<code class="docutils literal notranslate"><span class="pre">baselib</span></code> repository and the <code class="docutils literal notranslate"><span class="pre">baselib_rust</span></code> repository, which are used as shared
+components by multiple features.
+The dependency direction runs exclusively from the <code class="docutils literal notranslate"><span class="pre">logging</span></code> SW-Module repository
+to the <code class="docutils literal notranslate"><span class="pre">score</span></code> repository — never the other way around.</p>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="../_images/DR-005-PoC_logging.drawio.svg"><img alt="../_images/DR-005-PoC_logging.drawio.svg" src="../_images/DR-005-PoC_logging.drawio.svg" style="width: 75%;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Artifact Overview - Standard Feature Structure</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id6">
-<a class="reference internal image-reference" href="../_images/DR-005-artefact_overview_sub_feature.drawio.svg"><img alt="../_images/DR-005-artefact_overview_sub_feature.drawio.svg" src="../_images/DR-005-artefact_overview_sub_feature.drawio.svg" style="width: 100%;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Artifact Overview - Feature with Sub-Features</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id7">
-<a class="reference internal image-reference" href="../_images/DR-005-artefact_overview_tracebility.drawio.svg"><img alt="../_images/DR-005-artefact_overview_tracebility.drawio.svg" src="../_images/DR-005-artefact_overview_tracebility.drawio.svg" style="width: 50%;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Artifact Overview - Traceability Between Artifacts</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Proof of Concept: Logging Feature</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
-</section>
-<section id="justification-for-the-decision">
-<h2>Justification for the Decision<a class="headerlink" href="#justification-for-the-decision" title="Link to this heading">#</a></h2>
-<div class="pst-scrollable-table-container"><table class="table" id="id8">
-<caption><span class="caption-number">Table 83 </span><span class="caption-text">Decision Criteria Comparison</span><a class="headerlink" href="#id8" title="Link to this table">#</a></caption>
-<colgroup>
-<col style="width: 25.0%" />
-<col style="width: 18.0%" />
-<col style="width: 18.0%" />
-<col style="width: 18.0%" />
-<col style="width: 21.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Decision Criteria</p></th>
-<th class="head"><p>Alternative 1: Status Quo</p></th>
-<th class="head"><p>Alternative 2: Feature in SW Module Repository</p></th>
-<th class="head"><p>Alternative 2b: Feature in SW Module Repository with Sub-Features</p></th>
-<th class="head"><p>Alternative 2c: Dedicated Feature Repository</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Independence of Release / Topic Coherence (How independently can
-features be released and how well are related artifacts kept
-together?)</p></td>
-<td><p><strong>(-)</strong></p>
-<p>Features bound to platform release cycle, split between platform
-and modules</p>
-</td>
-<td><p><strong>(+)</strong></p>
-<p>Complete independence, all artifacts self-contained in one place</p>
-</td>
-<td><p><strong>(+)</strong></p>
-<p>Full independence with modular sub-features, clear feature
-boundaries</p>
-</td>
-<td><p><strong>(o)</strong></p>
-<p>Partial independence, requirements/architecture separated from
-implementation</p>
-</td>
-</tr>
-<tr class="row-odd"><td><p>SEooC for Features (How well can features be delivered as Safety
-Element out of Context?)</p></td>
-<td><p><strong>(-)</strong></p>
-<p>Only modules can be SEooC, features are not independent units</p>
-</td>
-<td><p><strong>(+)</strong></p>
-<p>Complete SEooC at feature level with all artifacts</p>
-</td>
-<td><p><strong>(+)</strong></p>
-<p>Complete SEooC at feature level with all artifacts</p>
-</td>
-<td><p><strong>(o)</strong></p>
-<p>Complete SEooC at feature level with all artifacts</p>
-</td>
-</tr>
-<tr class="row-even"><td><p>Reusability across Platforms (How well can the feature be reused
-in different platforms?)</p></td>
-<td><p><strong>(-)</strong></p>
-<p>Platform-specific feature descriptions</p>
-</td>
-<td><p><strong>(+)</strong></p>
-<p>Self-contained, portable across platforms</p>
-</td>
-<td><p><strong>(+)</strong></p>
-<p>Self-contained, portable across platforms + sub-feature reuse</p>
-</td>
-<td><p><strong>(o)</strong></p>
-<p>Self-contained, portable across platforms</p>
-</td>
-</tr>
-<tr class="row-odd"><td><p>Maintainability (How easy is it to maintain and update the
-feature?)</p></td>
-<td><p><strong>(o)</strong></p>
-<p>Distributed across platform and module repos</p>
-</td>
-<td><p><strong>(+)</strong></p>
-<p>All main artifacts in single location</p>
-</td>
-<td><p><strong>(o)</strong></p>
-<p>Multiple repos increase complexity</p>
-</td>
-<td><p><strong>(-)</strong></p>
-<p>Multiple repos increase complexity additional for feature
-requirements/architecture</p>
-</td>
-</tr>
-<tr class="row-even"><td><p>Number of Repositories (How many repositories are required to
-manage?)</p></td>
-<td><p><strong>(+)</strong></p>
-<p>Minimal: Platform + Module repos</p>
-</td>
-<td><p><strong>(+)</strong></p>
-<p>Minimal: Platform + Feature repo</p>
-</td>
-<td><p><strong>(o)</strong></p>
-<p>Multiple per feature (main + sub-features)</p>
-</td>
-<td><p><strong>(-)</strong></p>
-<p>Multiple per feature (additional for feature
-requirements/architecture)</p>
-</td>
-</tr>
-<tr class="row-odd"><td><p>Traceability (How well can requirements, architecture, tests, and
-code be traced?)</p></td>
-<td><p><strong>(+)</strong></p>
-<p>Only one tracebility direction</p>
-</td>
-<td><p><strong>(o)</strong></p>
-<p>Different tracebility directions across repos</p>
-</td>
-<td><p><strong>(o)</strong></p>
-<p>Different tracebility directions across repos</p>
-</td>
-<td><p><strong>(o)</strong></p>
-<p>Different tracebility directions across repos</p>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="example-for-architecture-work-on-platform-level">
-<h2>Example for Architecture work on platform level<a class="headerlink" href="#example-for-architecture-work-on-platform-level" title="Link to this heading">#</a></h2>
-<p>Architecture work at the platform level means that decisions are made that
-are relevant to the entire system. These can include coding guidelines,
-safety concepts, structuring the platform or commonly used interfaces.</p>
-<p>An example of an overarching concept is the definition of a standardized identifier for an application (APP_ID).
-Each feature could define its own format, but this would result in an integrator
-having to configure different formats for one application. Therefore, the
-definition of APP_IDs should be done at the platform level and adopted by
-the features.</p>
+<section id="glossary">
+<h2>Glossary<a class="headerlink" href="#glossary" title="Link to this heading">#</a></h2>
+<dl class="simple glossary">
+<dt id="term-Artifact">Artifact<a class="headerlink" href="#term-Artifact" title="Link to this term">#</a></dt><dd><p>Any document or result produced during the development process, e.g. requirements,
+architecture descriptions, tests or source code.</p>
+</dd>
+<dt id="term-Black-box-view">Black-box view<a class="headerlink" href="#term-Black-box-view" title="Link to this term">#</a></dt><dd><p>Observation of a unit from the outside — only interfaces and behavior are visible,
+not the internal structure.</p>
+</dd>
+<dt id="term-Decision-Record-DR">Decision Record (DR)<a class="headerlink" href="#term-Decision-Record-DR" title="Link to this term">#</a></dt><dd><p>A document that describes, justifies, and records the consequences of an architecture
+or process decision.</p>
+</dd>
+<dt id="term-Feature">Feature<a class="headerlink" href="#term-Feature" title="Link to this term">#</a></dt><dd><p>A distinct unit of functionality of the S-CORE platform, realized by a set of components.</p>
+</dd>
+<dt id="term-Feature-architecture">Feature architecture<a class="headerlink" href="#term-Feature-architecture" title="Link to this term">#</a></dt><dd><p>The description of how a feature is broken down into components
+(white-box view of the feature).</p>
+</dd>
+<dt id="term-Feature-repository">Feature repository<a class="headerlink" href="#term-Feature-repository" title="Link to this term">#</a></dt><dd><p>Designation for a SW-Module repository that contains, in addition to the
+feature-specific source code, all associated feature artifacts (feature architecture,
+component requirements, detailed design).</p>
+</dd>
+<dt id="term-Feature-requirements">Feature requirements<a class="headerlink" href="#term-Feature-requirements" title="Link to this term">#</a></dt><dd><p>Requirements at the feature level. They describe what a feature must do and are
+derived from the stakeholder requirements.</p>
+</dd>
+<dt id="term-Integration-repository">Integration repository<a class="headerlink" href="#term-Integration-repository" title="Link to this term">#</a></dt><dd><p>Repository that knows all other repositories and is responsible for integrating the
+overall platform.</p>
+</dd>
+<dt id="term-Component-architecture">Component architecture<a class="headerlink" href="#term-Component-architecture" title="Link to this term">#</a></dt><dd><p>The detailed structure of a component (white-box view of the component), also
+referred to as detailed design.</p>
+</dd>
+<dt id="term-Component-requirements">Component requirements<a class="headerlink" href="#term-Component-requirements" title="Link to this term">#</a></dt><dd><p>Requirements at the component level, derived from the feature architecture.</p>
+</dd>
+<dt id="term-Platform-architecture">Platform architecture<a class="headerlink" href="#term-Platform-architecture" title="Link to this term">#</a></dt><dd><p>The decomposition of the S-CORE platform into features (white-box view of the platform).</p>
+</dd>
+<dt id="term-S-CORE-repository">S-CORE repository<a class="headerlink" href="#term-S-CORE-repository" title="Link to this term">#</a></dt><dd><p>The central platform repository containing stakeholder requirements, platform
+architecture, and feature requirements.</p>
+</dd>
+<dt id="term-SEooC-Safety-Element-out-of-Context">SEooC (Safety Element out of Context)<a class="headerlink" href="#term-SEooC-Safety-Element-out-of-Context" title="Link to this term">#</a></dt><dd><p>A safety element that can be developed and delivered independently of a concrete
+system context, to facilitate integration into various projects.</p>
+</dd>
+<dt id="term-Shared-components">Shared components<a class="headerlink" href="#term-Shared-components" title="Link to this term">#</a></dt><dd><p>Components reused by multiple features (e.g. BaseLibs) that reside in their own
+SW-Module repositories. Features reference them as dependencies.</p>
+</dd>
+<dt id="term-SW-Module-repository-SW-Module-repo">SW-Module repository (SW-Module repo)<a class="headerlink" href="#term-SW-Module-repository-SW-Module-repo" title="Link to this term">#</a></dt><dd><p>Repository containing feature architecture, component requirements, detailed design,
+and source code of a feature implementation.</p>
+</dd>
+<dt id="term-Stakeholder-requirements">Stakeholder requirements<a class="headerlink" href="#term-Stakeholder-requirements" title="Link to this term">#</a></dt><dd><p>Requirements placed on the S-CORE platform as a whole from the outside
+(black-box view of the platform).</p>
+</dd>
+<dt id="term-White-box-view">White-box view<a class="headerlink" href="#term-White-box-view" title="Link to this term">#</a></dt><dd><p>Observation of a unit from the inside — the internal structure and decomposition
+are visible.</p>
+</dd>
+<dt id="term-Cyclic-dependency">Cyclic dependency<a class="headerlink" href="#term-Cyclic-dependency" title="Link to this term">#</a></dt><dd><p>A dependency relationship in which two or more units depend on each other mutually,
+leading to irresolvable build or versioning conflicts.</p>
+</dd>
+</dl>
 </section>
 </section>
 
@@ -946,16 +860,10 @@ the features.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context">Context</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision">Decision</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consequences">Consequences</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alternatives-considered">Alternatives Considered</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-1-status-quo-platform-centric-feature-management">Alternative 1: Status Quo - Platform-Centric Feature Management</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-2-feature-in-sw-module-repository">Alternative 2: Feature in SW Module Repository</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-2b-feature-in-sw-module-repository-with-sub-features-system-of-systems">Alternative 2b: Feature in SW Module Repository with Sub-Features (System of Systems)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-2c-dedicated-feature-repository">Alternative 2c: Dedicated Feature Repository</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-of-artifact-structure">Visualization of Artifact Structure</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#justification-for-the-decision">Justification for the Decision</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-for-architecture-work-on-platform-level">Example for Architecture work on platform level</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-solution-alternative-3-split-artifacts">New Solution (Alternative 3 – Split Artifacts)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#considered-alternatives">Considered Alternatives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-of-concept-poc-logging">Proof of Concept (PoC): Logging</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glossary">Glossary</a></li>
 </ul>
   </nav></div>
 
