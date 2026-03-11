@@ -12,8 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Writing C++ Code incl. Coding Guidelines
-########################################
+Writing C++ Code
+################
 
 .. document:: Coding Guidelines C++
    :id: doc__cpp_coding_guidelines
