@@ -36,6 +36,7 @@ Platform Management Plan
    config_management
    tool_management
    release_management
+   release_process
    problem_resolution
    vulnerability_management
    change_management
@@ -45,10 +46,7 @@ Platform Management Plan
 
 .. toctree::
    :titlesonly:
+   :glob:
    :caption: Role Assignments
 
-   role_assignment/platform_safety_engineer
-   role_assignment/platform_safety_manager
-   role_assignment/platform_security_manager
-   role_assignment/platform_quality_manager
- 
+   role_assignment/*
