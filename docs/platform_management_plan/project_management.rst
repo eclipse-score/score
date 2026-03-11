@@ -687,9 +687,9 @@ They are in the responsibility of the :ref:`Architecture Community <pmp_pm_arc>`
 
 A *Component Request* represents an independent work package used to describe modifications inside a *Feature*, either adding new components or modifying existing ones.
 *Component Request* work packages can be linked to other work packages, but they must not be treated as parent work packages. They shall be discussed with
-:ref:`Architecture Community <pmp_pm_arc>` and the issues are part of the :ref:`Root Repository <pmp_pm_root_repository>`.
+:ref:`Architecture Community <pmp_pm_arc>` and the issues are owned by a Team and are part of the Team`s main repository..
 
-`About Components <https://eclipse-score.github.io/score/main/features/index.html>`_
+`About Components <https://eclipse-score.github.io/score/main/modules/index.html>`_
 
 `Component Request issue template <https://github.com/eclipse-score/.github/.github/ISSUE_TEMPLATE/1b_ComponentRequest.yml>`_
 
