@@ -617,12 +617,13 @@ within the following :ref:`Module Folder Structure <module_folder_structure>`.
 Codeowners
 ^^^^^^^^^^
 While creating a new repository, :ref:`Project / Technical Leads <pmp_pm_plctlc>` nominate initial `CODEOWNERS <https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners#codeowners-and-branch-protection>`_,
-whose review is mandatory for merging PRs to the repository and who are at the end allowed to merge PRs to the repository.
+whose review is mandatory for merging PRs to the repository and who are at the end allowed to merge PRs to the repository as well as maintaining it.
 
-Possible members are software developers, who
+Possible members are software developers , who
 
 - understand how the particular feature works or should work
 - are the initial authors of the software
+- and are :need:`Committers <rl__committer>`
 
 The Codeownership has to be regularly updated and changes have to be documented.
 
@@ -748,9 +749,9 @@ of any Team`s repository.
 **Bug**
 
 A *Bug GitHub Issue* is used to report any kind of problem or malfunction. It is considered
-a special type of *Story* work package and follows the same rules as regular *Epic* work packages,
+a special type of work package and follows the same rules as regular *Epic* work packages,
 with the key difference that it focuses on fixing defects in existing functionality
-rather than creating or extending functionality. *Tasks* are owned by a Team and are part
+rather than creating or extending functionality. *^Bugs* are owned by a Team and are part
 of any Team`s repository.
 
 `Bug issue template <https://github.com/eclipse-score/.github/.github/ISSUE_TEMPLATE/5_Bug.yml>`_
