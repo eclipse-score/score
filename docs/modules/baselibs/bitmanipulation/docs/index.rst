@@ -57,7 +57,8 @@ General considerations
 
 The Bit Manipulation library should provide bit operation and byte extraction capabilities:
 
-* :need:`comp_req__bitmanipulation__utilities`
+* :need:`comp_req__bitmanipulation__bit_operations`
+* :need:`comp_req__bitmanipulation__byte_operations`
 * :need:`comp_req__bitmanipulation__bitmask_operators`
 * :need:`comp_req__bitmanipulation__bounds_safety`
 * :need:`comp_req__bitmanipulation__header_only`
