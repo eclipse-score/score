@@ -36,7 +36,6 @@ Platform Management Plan
    config_management
    tool_management
    release_management
-   release_process
    problem_resolution
    vulnerability_management
    change_management
