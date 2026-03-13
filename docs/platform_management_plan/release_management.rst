@@ -149,7 +149,7 @@ Identification
 Continuous Release Planning and Execution
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Release interval (see :ref:`pmp_types_of_work_packages_and_structure`) between S-CORE Product Increments can be divided into two phases:
+Release interval (see :ref:`_pmp_pm_release`) between S-CORE Product Increments can be divided into two phases:
 
 **Development phase (6 weeks) :**
 
