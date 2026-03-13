@@ -499,7 +499,7 @@ The C++ unit test tooling supports several coverage metrics:
 - "branch" - used in S-CORE for the ``structural-branch-coverage`` method
 - "function" - used in S-CORE for the ``structural-function-coverage`` as additional supporting coverage value for further analysis.
 
-Note gcov/gcovr are not applicable for Rust code. Here coverage values are created using the tooling provided by the Ferroscene.
+Note gcov/gcovr are not applicable for Rust code. Here coverage values are created using the tooling provided by the Ferrocene.
 
 
 .. rubric:: Integration Testing Framework (ITF)
