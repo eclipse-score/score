@@ -72,7 +72,7 @@
         </script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="How to create a release of S-CORE" href="release_process.html" />
+    <link rel="next" title="Problem Resolution / Problem Resolution Plan" href="problem_resolution.html" />
     <link rel="prev" title="Tool Management/ Tool Management Plan" href="tool_management.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -509,7 +509,19 @@
 <li class="toctree-l1"><a class="reference internal" href="config_management.html">Config management / Configuration Management Plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tool_management.html">Tool Management/ Tool Management Plan</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Release Management Plan</a></li>
-<li class="toctree-l1"><a class="reference internal" href="release_process.html">How to create a release of S-CORE</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="problem_resolution.html">Problem Resolution / Problem Resolution Plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vulnerability_management.html">Vulnerability Management / Platform Vulnerability Management Plan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="change_management.html">Change Management / Change Management Plan</a></li>
@@ -583,7 +595,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-b69af0a7">
+  <div class="need_container docutils container" id="SNCB-f8b63bc8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__platform_release_management_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -631,7 +643,8 @@
 <p>This document implements parts of the <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/platform_management/platform_management_workproducts.html#wp__platform_mgmt">wp__platform_mgmt</a>.</p>
 <section id="purpose">
 <h2>Purpose<a class="headerlink" href="#purpose" title="Link to this heading">#</a></h2>
-<p>The release management plan describes how releases of the SW platform and modules are performed in the S-CORE project.</p>
+<p>The release management plan describes how releases of the SW platform and modules are performed in the S-CORE project. It
+starts with a general description of a release and its scope, then describes the continuous releases in an 8-week cycle.</p>
 </section>
 <section id="objectives-and-scope">
 <h2>Objectives and scope<a class="headerlink" href="#objectives-and-scope" title="Link to this heading">#</a></h2>
@@ -641,6 +654,7 @@
 <li><p>which types of releases exist</p></li>
 <li><p>how these are planned and executed</p></li>
 <li><p>how they are identified</p></li>
+<li><p>who is integrated and responsible</p></li>
 </ul>
 </section>
 <section id="approach">
@@ -668,8 +682,8 @@ with a release note as in <a class="external_link reference external" href="http
 For an official release also consider <a class="reference external" href="https://www.eclipse.org/projects/handbook/#release-releases">Eclipse Project Handbook - Releases</a>.</p></li>
 </ul>
 </section>
-<section id="release-planning-and-execution">
-<h3>Release Planning and Execution<a class="headerlink" href="#release-planning-and-execution" title="Link to this heading">#</a></h3>
+<section id="general-release-planning-and-execution">
+<h3>General Release Planning and Execution<a class="headerlink" href="#general-release-planning-and-execution" title="Link to this heading">#</a></h3>
 <p>Generally release planning and execution is described in <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/release_management/release_workflow.html#wf__rel_mod_rel_note">wf__rel_mod_rel_note</a> process.
 It is part of project planning and therefore also documented with the same means. Generally a release
 is planned as an issue linked to a milestone in the <a class="reference external" href="https://github.com/orgs/eclipse-score/projects/13">GitHub Milestone Planning</a>.
@@ -678,7 +692,8 @@ And this issue is closed by merging a pull request which creates/updates a relea
 updates will be allowed but only bug fixes, addition of tests and quality improvements.
 This period will be planned by the technical leads in the milestone planning. There is no general
 time-span defined for this, but for the first releases a period of four weeks is recommended as good practice.
-With increasing maturity of the modules it is expected that this period can be reduced.</p>
+The continuous release for S-CORE will be discussed in the next section. With increasing maturity of the modules
+it is expected that this period can be reduced. Also when they are not part of the continuous releases.</p>
 <p>As defined in the process, the releases on module and platform level need to be coordinated.
 Major version updates denote API incompatibility, so the modules in a platform release are expected to have the same
 major version.</p>
@@ -745,7 +760,184 @@ major version.</p>
 </li>
 </ol>
 </section>
+<section id="continuous-release-planning-and-execution">
+<h3>Continuous Release Planning and Execution<a class="headerlink" href="#continuous-release-planning-and-execution" title="Link to this heading">#</a></h3>
+<p>Release interval (see <a class="reference internal" href="project_management.html#pmp-types-of-work-packages-and-structure"><span class="std std-ref">Types of work packages and structure</span></a>) between S-CORE Product Increments can be divided into two phases:</p>
+<p><strong>Development phase (6 weeks) :</strong></p>
+<ol class="arabic simple">
+<li><p>Common release requirements definition</p></li>
+<li><p>Internal communication</p></li>
+<li><p>Features’ implementations and improvements</p></li>
+<li><p>Tooling release</p></li>
+<li><p>Code freeze</p></li>
+</ol>
+<p><strong>Integration phase (2 weeks) :</strong></p>
+<ol class="arabic simple">
+<li><p>Release branch creation</p></li>
+<li><p>Integration of the Modules</p></li>
+<li><p>Release notes</p></li>
+<li><p>Release candidate</p></li>
+<li><p>Release creation</p></li>
+</ol>
 </section>
+</section>
+</section>
+<section id="common-release-requirements-definition">
+<h1>Common release requirements definition<a class="headerlink" href="#common-release-requirements-definition" title="Link to this heading">#</a></h1>
+<p>At the beginning, the overall scope and general requirements for the Modules are discussed during
+Release Team Meeting and agreed upon within the S-CORE community, providing clear goals for what must be achieved.
+The scope should define minor requirements such as:</p>
+<ul class="simple">
+<li><p>Tooling versions</p></li>
+<li><p>Used toolchains</p></li>
+<li><p>Supported platforms</p></li>
+</ul>
+<p>rather than specific features’ implementation scopes.
+Full list of tools can be found in the <a class="reference internal" href="../score_tools/score_tools_evaluation_list.html#doc__tool_evaluation_list" title="doc__tool_evaluation_list"><em class="xref need">Tool Evaluation List (doc__tool_evaluation_list)</em></a>.
+The scope will be defined in Github issue with sub-issues for every participating Module to track progress.</p>
+<p>Based on the operating system definitions documented in the <a class="reference internal" href="../modules/os/operating_systems/docs/index.html#comp-doc-os"><span class="std std-ref">Operating Systems</span></a>
+the Reference Integration Team will only maintain functional/certifiable level OSs as part of the release,
+while community OSs will be prepared and maintained by the OS module Maintainers. <em>Code freeze</em> applies to OSs as well.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Performed by: Project Leads and S-CORE community</p>
+</div>
+</section>
+<section id="internal-communication">
+<h1>Internal Communication<a class="headerlink" href="#internal-communication" title="Link to this heading">#</a></h1>
+<p>Project Leads present scope during Tech Alignment call for final discussion and then send a communication
+via mailing list to inform about the scope of upcomming release.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Performed by: Project Leads</p>
+</div>
+</section>
+<section id="features-implementations-and-improvements">
+<h1>Features’ implementations and improvements<a class="headerlink" href="#features-implementations-and-improvements" title="Link to this heading">#</a></h1>
+<p>During the development phase, the community works on new features and improvements to the Modules.
+Changes are reviewed by Commiters and Module Maintainers.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Performed by: S-CORE community and Module Maintainers</p>
+</div>
+</section>
+<section id="tooling-release">
+<h1>Tooling release<a class="headerlink" href="#tooling-release" title="Link to this heading">#</a></h1>
+<p>S-CORE tools, toolchains and other dependencies which are listed in the following Bazel MODULE files
+located in reference integration repository:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bazel_common/score_gcc_toolchains.MODULE.bazel</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bazel_common/score_modules_tooling.MODULE.bazel</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bazel_common/score_qnx_toolchains.MODULE.bazel</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bazel_common/score_rust_toolchains.MODULE.bazel</span></code></p></li>
+</ul>
+<p>are released at the end of the development phase the latest.
+During the integration phase, no changes other than necessary bug fixes are allowed to give time to the Modules to rebase
+their dependencies and prepare their <em>code freeze</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Performed by: Module Maintainers</p>
+</div>
+</section>
+<section id="code-freeze">
+<h1>Code freeze<a class="headerlink" href="#code-freeze" title="Link to this heading">#</a></h1>
+<p>At the end of development phase, each Module must provide a hash of the commit that represents a <em>code freeze</em>
+and serves as a candidate for integration. The hash can be from the <strong>main</strong> or <strong>dedicated release</strong> branch.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Performed by: Module Maintainers</p>
+</div>
+</section>
+<section id="release-branch-creation">
+<h1>Release branch creation<a class="headerlink" href="#release-branch-creation" title="Link to this heading">#</a></h1>
+<p>The integration phase begins with the creation of a <strong>release branch</strong> in the <code class="docutils literal notranslate"><span class="pre">reference_integration</span></code> repository
+originating from current <strong>main</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Performed by: Reference Integration Team</p>
+</div>
+</section>
+<section id="integration-of-the-modules">
+<h1>Integration of the Modules<a class="headerlink" href="#integration-of-the-modules" title="Link to this heading">#</a></h1>
+<p>Module Maintainers prepare a Pull Request to that branch with updates to the <code class="docutils literal notranslate"><span class="pre">known_good.json</span></code> file,
+pointing to the hash of their <em>code freeze</em>. They may update other JSON fields for their Module as needed.
+Automated workflows will build and test to provide clear feedback directly in the PR.
+If there are any issues, Module Maintainers can either push fixes to their <strong>dedicated release</strong> branch
+and update the hash in the PR accordingly, or provide patches (see <a class="reference internal" href="#ref-int-patching-label"><span class="std std-ref">Patching Module</span></a>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Performed by: Module Maintainers</p>
+</div>
+</section>
+<section id="release-notes">
+<h1>Release notes<a class="headerlink" href="#release-notes" title="Link to this heading">#</a></h1>
+<p>Project Leads create a branch <code class="docutils literal notranslate"><span class="pre">release/version</span></code> with new release notes in <code class="docutils literal notranslate"><span class="pre">score_platform</span></code> repository following template: <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/folder_templates/platform/docs/release/release_note.html#doc__platform_release_note">doc__platform_release_note</a>.
+Module Maintainers create a Pull Request to that branch with updates to the release notes,
+describing the changes in their Module for the release.
+Once all Modules are updated Project Leads approve the release notes and create <code class="docutils literal notranslate"><span class="pre">score_platform</span></code> release.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Performed by: Module Maintainers and Project Leads</p>
+</div>
+</section>
+<section id="release-candidate">
+<h1>Release candidate<a class="headerlink" href="#release-candidate" title="Link to this heading">#</a></h1>
+<p>Once all Modules are merged with their <em>code freeze</em>, Module Maintainers create a tag on that exact hash following the S-CORE release process,
+and ensure that the new release is present in S-CORE’s <code class="docutils literal notranslate"><span class="pre">bazel_registry</span></code>.
+The Reference Integration Team prepares a final Pull Request and replaces all hashes with the dedicated release versions.</p>
+<p>This pull request has additional workflow checking that every Maintainer has approved the PR signing off their Module’s release candidate.
+The approval of the Project Lead is required and from the Quality Manager for the formal aspects as well.
+There is an additional <code class="docutils literal notranslate"><span class="pre">.rst</span></code> file listing every Module and GitHub ID of the Maintainer responsible.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Performed by: Reference Integration Team and Module Maintainers</p>
+</div>
+</section>
+<section id="release-creation">
+<h1>Release creation<a class="headerlink" href="#release-creation" title="Link to this heading">#</a></h1>
+<p>Once all previous steps are completed Reference Integration Team triggers the release creation workflow in <code class="docutils literal notranslate"><span class="pre">release_integration</span></code>.
+An automated verification process of the release begins which includes building, testing, deploying documentation and checking that
+every Module has been correctly signed-off by its Maintainer. If any issue is found, the release creation process is stopped.
+Once the process is aborted, the Reference Integration Team investigates the issue and works with the relevant Module Maintainer to fix it
+or if the issue is severe decides, together with the Project Leads, to postpone the release. If the issue is fixed, the release creation process can be triggered again.
+When successfully completed the release and its downloadable assets are ready for distribution.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Performed by: Reference Integration Team</p>
+</div>
+</section>
+<section id="opting-out-of-a-release">
+<h1>Opting out of a release<a class="headerlink" href="#opting-out-of-a-release" title="Link to this heading">#</a></h1>
+<p>Module Maintainers may decide that their Module will not be released with a new version for the S-CORE Product Increment.
+In that case currently integrated version can be used. However, they must still ensure that the Module remains compatible with
+the S-CORE release and does not fail any workflows.</p>
+<p>If Module Maintainers cannot adapt to the newest release requirements or any S-CORE community member discovers a showstopper
+for the upcoming release, they must communicate it promptly to the Project Leads and other community members.
+Following discussion and impact analysis, a decision is made regarding whether to postpone or skip the S-CORE release,
+and the planning is updated accordingly.</p>
+</section>
+<section id="patching-module">
+<span id="ref-int-patching-label"></span><h1>Patching Module<a class="headerlink" href="#patching-module" title="Link to this heading">#</a></h1>
+<p>Module Maintainers prepare <code class="docutils literal notranslate"><span class="pre">.patch</span></code> file(s) and place them in the <code class="docutils literal notranslate"><span class="pre">/patches/MODULE_NAME</span></code> directory.
+The patch filename must clearly indicate what it addresses.
+For multiple issues, it is preferred to create multiple patches rather than a single patch addressing all issues.</p>
+<p>A patch might be need to fix issues after the release of the module is allready in bazel registry and there is
+no time for another release. Or if its only minor and it’s decided to avoid therefore another release.</p>
+</section>
+<section id="target-releases-definition">
+<h1>Target releases definition<a class="headerlink" href="#target-releases-definition" title="Link to this heading">#</a></h1>
+<p>Based on the operating system definitions documented in the <a class="reference external" href="https://eclipse-score.github.io/score/main/modules/os/operating_systems/docs/index.html">OS module</a>,
+the Reference Integration Team defines which OSs will be maintained as part of the release:</p>
+<ul class="simple">
+<li><p><strong>Functional/Certifiable level OSs</strong> - maintained by the Reference Integration Team and included in the release</p></li>
+<li><p><strong>Community OSs</strong> - prepared and maintained by the OS module Maintainers during the integration phase</p></li>
+</ul>
+<p>Only changes to functional/certifiable level OSs are considered until the <em>code freeze</em>.
+Community OS updates can be prepared by the OS Maintainer during the release phase if needed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Performed by: Reference Integration Team and OS module Maintainers</p>
+</div>
 </section>
 
 
@@ -768,11 +960,11 @@ major version.</p>
       </div>
     </a>
     <a class="right-next"
-       href="release_process.html"
+       href="problem_resolution.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">How to create a release of S-CORE</p>
+        <p class="prev-next-title">Problem Resolution / Problem Resolution Plan</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -795,16 +987,34 @@ major version.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Release Management Plan</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose">Purpose</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives-and-scope">Objectives and scope</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approach">Approach</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#release-scope">Release Scope</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#release-types">Release Types</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#release-planning-and-execution">Release Planning and Execution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-release-planning-and-execution">General Release Planning and Execution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identification">Identification</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-release-planning-and-execution">Continuous Release Planning and Execution</a></li>
 </ul>
 </li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#common-release-requirements-definition">Common release requirements definition</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#internal-communication">Internal Communication</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#features-implementations-and-improvements">Features’ implementations and improvements</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tooling-release">Tooling release</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#code-freeze">Code freeze</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#release-branch-creation">Release branch creation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-of-the-modules">Integration of the Modules</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#release-notes">Release notes</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#release-candidate">Release candidate</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#release-creation">Release creation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#opting-out-of-a-release">Opting out of a release</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#patching-module">Patching Module</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#target-releases-definition">Target releases definition</a></li>
+</ul>
+
   </nav></div>
 
   <div class="sidebar-secondary-item">
