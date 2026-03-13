@@ -41,3 +41,12 @@ Infrastructure
    :glob:
 
    DR-*-infra*
+
+Process
+~~~~~~~
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   DR-*-proc*
