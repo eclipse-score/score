@@ -607,7 +607,7 @@
                   
   <section id="requirements">
 <span id="bitmanipulation-requirements"></span><h1>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-4a8ffdfe">
+<div class="need_container docutils container" id="SNCB-5cb18e99">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__bitmanipulation_requirements">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -652,7 +652,7 @@
 </div>
 <section id="functional-requirements">
 <h2>Functional Requirements<a class="headerlink" href="#functional-requirements" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-d9518e6f">
+<div class="need_container docutils container" id="SNCB-0c205374">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__bitmanipulation__bit_operations">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -681,7 +681,7 @@
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The bit manipulation component shall provide an API for setting, clearing, toggling, and checking individual bits for any integral type up to 64 bits.</p></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The bit manipulation component shall provide API for setting, clearing, toggling, and checking individual bits for any integral type up to 64 bits, returning boolean success status.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#comp_req__bitmanipulation__bit_operations" title="comp_req__bitmanipulation__bit_operations">comp_req__bitmanipulation__bit_operations</a></span></span></div>
@@ -697,7 +697,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-675cd12f">
+<div class="need_container docutils container" id="SNCB-5c4a97d6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__bitmanipulation__byte_operations">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -742,7 +742,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-16922737">
+<div class="need_container docutils container" id="SNCB-175be417">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__bitmanipulation__bitmask_operators">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -787,7 +787,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a3b52ee8">
+<div class="need_container docutils container" id="SNCB-3bd09cb2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__bitmanipulation__bounds_safety">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -816,7 +816,7 @@
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>All bit manipulation functions shall validate input parameters to ensure that bit positions, byte indices, and half-byte indices are within valid bounds for the target integral type.</p></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The bit manipulation functions shall validate input parameters against bounds and return false on out-of-bounds access to maintain a safe state.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#comp_req__bitmanipulation__bounds_safety" title="comp_req__bitmanipulation__bounds_safety">comp_req__bitmanipulation__bounds_safety</a></span></span></div>
@@ -835,7 +835,7 @@
 </section>
 <section id="non-functional-requirements">
 <h2>Non-Functional Requirements<a class="headerlink" href="#non-functional-requirements" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-8d21470a">
+<div class="need_container docutils container" id="SNCB-f34e964e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__bitmanipulation__header_only">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -883,7 +883,7 @@
 </section>
 <section id="assumptions-of-use-aou">
 <h2>Assumptions of Use (AoU)<a class="headerlink" href="#assumptions-of-use-aou" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-50d08971">
+<div class="need_container docutils container" id="SNCB-4d7e4a14">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__bitmanipulation__type_constraints">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -928,7 +928,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-0af83e3f">
+<div class="need_container docutils container" id="SNCB-7ef59ad7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__bitmanipulation__enum_type_safety">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -971,7 +971,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-ce0a1b27">
+<div class="need_container docutils container" id="SNCB-c357d224">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__bitmanipulation__concurrent_access">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1016,7 +1016,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-c61c7f43">
+<div class="need_container docutils container" id="SNCB-e3d35c22">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__bitmanipulation__bit_validation">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
