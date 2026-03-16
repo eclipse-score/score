@@ -93,8 +93,14 @@ A feature consists of components. A distinction is made between:
 - **Feature-specific components**: These are developed exclusively for the realization of a
   specific feature and are probably not intended for reuse.
 
-The feature-specific components are consolidated together with the feature artifacts in a single
+The feature-specific components are bundled together with the feature artifacts in a single
 SW-Module repository. This repository can therefore also be referred to as a **feature repository**.
+
+.. note::
+
+   A feature repository may also contain components witch are used from other features.
+   Unlike BaseLibs, these components are related to the feature and are not used by all S-CORE features.
+   A component that merely *implements* a Logical Architecture Interface *provided* by a feature is not considered shared; it remains specific to that feature.
 
 The **SW-Module repository (feature repository)** contains:
 
