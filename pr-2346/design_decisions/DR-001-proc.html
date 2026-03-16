@@ -556,7 +556,7 @@
                   
   <section id="dr-001-proc-feature-as-independent-delivery-product">
 <span id="decision-record-feature-as-independent-delivery"></span><h1>DR-001-Proc: Feature as Independent Delivery Product<a class="headerlink" href="#dr-001-proc-feature-as-independent-delivery-product" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-0e0bc114">
+<div class="need_container docutils container" id="SNCB-4d0af211">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__platform__feature_delivery">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -668,8 +668,14 @@ as a dependency.</p></li>
 <li><p><strong>Feature-specific components</strong>: These are developed exclusively for the realization of a
 specific feature and are probably not intended for reuse.</p></li>
 </ul>
-<p>The feature-specific components are consolidated together with the feature artifacts in a single
+<p>The feature-specific components are bundled together with the feature artifacts in a single
 SW-Module repository. This repository can therefore also be referred to as a <strong>feature repository</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A feature repository may also contain components witch are used from other features.
+Unlike BaseLibs, these components are related to the feature and are not used by all S-CORE features.
+A component that merely <em>implements</em> a Logical Architecture Interface <em>provided</em> by a feature is not considered shared; it remains specific to that feature.</p>
+</div>
 <p>The <strong>SW-Module repository (feature repository)</strong> contains:</p>
 <ol class="arabic simple">
 <li><p>The feature architecture that breaks the feature down into components, and their
