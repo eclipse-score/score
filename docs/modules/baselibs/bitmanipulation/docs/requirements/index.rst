@@ -49,7 +49,7 @@ Functional Requirements
    :status: valid
    :belongs_to: comp__baselibs_bit_manipulation
 
-   The bit manipulation component shall provide an API for extracting and setting bytes and half-bytes for any integral type up to 64 bits.
+   The bit manipulation component shall provide an API for extracting and setting bytes and half-bytes for any integral type up to 64 bits, returning boolean success status.
 
 .. comp_req:: Support for Bitmask Operators for Enum Classes
    :id: comp_req__bitmanipulation__bitmask_operators
@@ -101,8 +101,8 @@ Assumptions of Use (AoU)
 
    Note: Operations on floating-point or non-integral types are not supported.
 
-.. aou_req:: Enum Class Type Safety
-   :id: aou_req__bitmanipulation__enum_type_safety
+.. aou_req:: Bitmask Enum Value Constraints
+   :id: aou_req__bitmanipulation__enum_constraints
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
@@ -110,7 +110,7 @@ Assumptions of Use (AoU)
 
    The user shall use scoped enumeration types (enum class) whose enumerators are defined as non-zero power-of-two values.
 
-.. aou_req:: No Side Effects on Concurrent Access
+.. aou_req:: External Synchronization Required for Concurrent Access
    :id: aou_req__bitmanipulation__concurrent_access
    :reqtype: Non-Functional
    :security: NO
