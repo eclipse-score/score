@@ -595,7 +595,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-d60f04af">
+  <div class="need_container docutils container" id="SNCB-c24b3802">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__platform_release_management_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -749,20 +749,20 @@ major version.</p>
 <li><p>Pre-Release Versions</p>
 <ul class="simple">
 <li><p>Use pre-release versions for features or fixes that are not yet ready for production.</p></li>
-<li><p>Format: MAJOR.MINOR.PATCH-&lt;pre-release-tag&gt;, e.g., 1.0.0-alpha, 1.0.0-beta.</p></li>
+<li><p>Format: MAJOR.MINOR.PATCH-&lt;pre-release-tag&gt;, e.g., <code class="docutils literal notranslate"><span class="pre">1.0.0-alpha</span></code>, <code class="docutils literal notranslate"><span class="pre">1.0.0-beta</span></code>.</p></li>
 </ul>
 </li>
 <li><p>Tagging Releases</p>
 <ul class="simple">
 <li><p>Tag each release in the repository with the version number.</p></li>
-<li><p>Format: vMAJOR.MINOR.PATCH, e.g., v1.3.0.</p></li>
+<li><p>Format: vMAJOR.MINOR.PATCH, e.g., <code class="docutils literal notranslate"><span class="pre">v1.3.0</span></code>.</p></li>
 </ul>
 </li>
 </ol>
 </section>
 <section id="continuous-release-planning-and-execution">
 <h3>Continuous Release Planning and Execution<a class="headerlink" href="#continuous-release-planning-and-execution" title="Link to this heading">#</a></h3>
-<p>Release interval (see <a class="reference internal" href="project_management.html#pmp-pm-release"><span class="std std-ref">Releases</span></a>) between S-CORE Product Increments can be divided into two phases:</p>
+<p>Release interval (see <a class="reference internal" href="project_management.html#pmp-pm-release"><span class="std std-ref">Releases</span></a>) between S-CORE product increments can be divided into two phases:</p>
 <p><strong>Development phase (6 weeks) :</strong></p>
 <ol class="arabic simple">
 <li><p>Common release requirements definition</p></li>
@@ -774,7 +774,7 @@ major version.</p>
 <p><strong>Integration phase (2 weeks) :</strong></p>
 <ol class="arabic simple">
 <li><p>Release branch creation</p></li>
-<li><p>Integration of the Modules</p></li>
+<li><p>Integration of the modules</p></li>
 <li><p>Release notes</p></li>
 <li><p>Release candidate</p></li>
 <li><p>Release creation</p></li>
@@ -784,9 +784,9 @@ major version.</p>
 </section>
 <section id="common-release-requirements-definition">
 <h1>Common release requirements definition<a class="headerlink" href="#common-release-requirements-definition" title="Link to this heading">#</a></h1>
-<p>At the beginning, the overall scope and general requirements for the Modules are discussed during
-Release Team Meeting and agreed upon within the S-CORE community, providing clear goals for what must be achieved.
-The scope should define minor requirements such as:</p>
+<p>At the beginning, the overall scope and general requirements for the modules are discussed during
+release team meeting and agreed upon within the S-CORE community, providing clear goals for what must be achieved.
+The scope should define requirements such as:</p>
 <ul class="simple">
 <li><p>Tooling versions</p></li>
 <li><p>Used toolchains</p></li>
@@ -833,7 +833,7 @@ located in reference integration repository:</p>
 </ul>
 <p>are released at the end of the development phase the latest.
 During the integration phase, no changes other than necessary bug fixes are allowed to give time to the Modules to rebase
-their dependencies and prepare their <em>code freeze</em>.</p>
+their dependencies and prepare their <em>code freeze</em>. This implies that tools must prepare a release in-time before the integration phase.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Performed by: Module Maintainers</p>
@@ -842,7 +842,7 @@ their dependencies and prepare their <em>code freeze</em>.</p>
 <section id="code-freeze">
 <h1>Code freeze<a class="headerlink" href="#code-freeze" title="Link to this heading">#</a></h1>
 <p>At the end of development phase, each Module must provide a hash of the commit that represents a <em>code freeze</em>
-and serves as a candidate for integration. The hash can be from the <strong>main</strong> or <strong>dedicated release</strong> branch.</p>
+and serves as a candidate for release. The hash can be from the <strong>main</strong> or <strong>dedicated release</strong> branch.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Performed by: Module Maintainers</p>
