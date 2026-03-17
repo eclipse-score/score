@@ -49,6 +49,7 @@ Functional Requirements
    :satisfies: feat_req__baselibs__bitmanipulation, feat_req__baselibs__core_utilities
    :status: valid
    :belongs_to: comp__baselibs_bit_manipulation
+   :tags: inspected
 
    The bit manipulation component shall provide an API for extracting and setting bytes and half-bytes for any integral type up to 64 bits, returning boolean success status.
 

@@ -54,44 +54,40 @@ Requirement Inspection Checklist
       * - REQ_01_01
         - Is the requirement formulation template used?
         - see :need:`gd_temp__req_formulation`, this includes the use of "shall".
-        - NO
+        - YES
         - Following requirements failed to comply with the requirements formulation template:
 
           - :need:`aou_req__bitmanipulation__type_constraints` - The second sentence does not use shall and is not marked with "Note". Suggestion - move it to the Note.
           - :need:`aou_req__bitmanipulation__concurrent_access` - "…as the library provides no internal thread safety guarantees." is a justification and not a verifiable statement. Per the template, it should be separated and marked as Note.
-        - #2669
+        - fixed, PR-2677
       * - REQ_02_01
         - Is the requirement description *comprehensible* ?
         - If you think the requirement is hard to understand, comment here.
-        - NO
-        - Following requirement is not clear considering it's an AoU:
+        - YES
+        - The inspected requirements are clear and easy to understand. Some grammar mistakes were found:
 
-          - :need:`aou_req__bitmanipulation__valid_bit_positions` - This requirement seems like a functional one. It basically describes what the library guarantees, and might be a duplicate of :need:`comp_req__bitmanipulation__bounds_safety`. It should be clarified what is meant by this AoU requirement.
-
-          The remaining requirements are clear and easy to understand. However, some grammar mistakes are still present:
-
-          - :need:`comp_req__bitmanipulation__utilities` - "...shall provide API..." -> "...shall provide an API..."
+          - :need:`comp_req__bitmanipulation__bit_operations` - "...shall provide API..." -> "...shall provide an API..." (not fixed, minor)
           - :need:`aou_req__bitmanipulation__type_constraints` - "...shall only use bit manipulation functions with integral types..." -> "...shall use bit manipulation functions only with integral types..."
-          - :need:`aou_req__bitmanipulation__enum_type_safety` - Missing period at the end
-        - #2669
+          - :need:`aou_req__bitmanipulation__enum_constraints` - Missing period at the end
+        - fixed, PR-2677
       * - REQ_02_02
         - Is the requirement description *unambiguous* ?
         - Especially search for "weak words" like "about", "etc.", "relevant" and others (see the internet documentation on this). This check shall be supported by tooling.
-        - NO
+        - YES
         - Following requirements have some ambiguities/weak words:
 
-          - :need:`comp_req__bitmanipulation__utilities` - "...manipulating half-bytes and bytes..." what is meant by manipulating? E.g. different implementers could have different ideas what should be done. This looks especially ambiguous related to the enumeration of all the bit-related operations in the first part of the requirement ("...setting, clearing, toggling, and checking bits...").
+          - :need:`comp_req__bitmanipulation__bit_operations` - "...manipulating half-bytes and bytes..." what is meant by manipulating? E.g. different implementers could have different ideas what should be done. This looks especially ambiguous related to the enumeration of all the bit-related operations in the first part of the requirement ("...setting, clearing, toggling, and checking bits...").
           - :need:`comp_req__bitmanipulation__bounds_safety` - "...prevent data corruption" is too vague. Which data? What is meant by corruption?
-          - :need:`aou_req__bitmanipulation__enum_type_safety` - Usage of a "weak word" explicitly mentioned in the checklist: etc.
-        - #2669
+          - :need:`aou_req__bitmanipulation__enum_constraints` - Usage of a "weak word" explicitly mentioned in the checklist: etc.
+        - fixed, PR-2677
       * - REQ_02_03
         - Is the requirement description *atomic* ?
         - A good way to think about this is to consider if the requirement may be tested by one (positive) test case or needs more of these. The requirement formulation template should also avoid being non-atomic already. Note that there are cases where also non-atomic requirements are the better ones, for example if those are better understandable.
-        - NO
+        - YES
         - Following requirement is not atomic:
 
-          - :need:`comp_req__bitmanipulation__utilities` - This requirement bundles at least four distinct functional areas (1) setting/clearing/toggling/checking bits, (2) extracting bytes, (3) manipulating half-bytes, (4) manipulating bytes. Each area requires multiple independent test cases. For example, "set bit" and "extract byte" are entirely unrelated operations with different signatures, parameters, and edge cases. A single positive test case cannot cover all of them. Consider splitting into separate requirements per operation group.
-        - #2669
+          - `comp_req__bitmanipulation__utilities` - This requirement bundles at least four distinct functional areas (1) setting/clearing/toggling/checking bits, (2) extracting bytes, (3) manipulating half-bytes, (4) manipulating bytes. Each area requires multiple independent test cases. For example, "set bit" and "extract byte" are entirely unrelated operations with different signatures, parameters, and edge cases. A single positive test case cannot cover all of them. Consider splitting into separate requirements per operation group.
+        - split, PR-2677
       * - REQ_02_04
         - Is the requirement description *feasible* ?
         - If at the time of the inspection the requirement has already some implementation, the answer is yes. This can be checked via traces, but also :need:`gd_req__req_attr_impl` shows this. In case the requirement has no implementation at the time of inspection (i.e. not implemented at least as "proof-of-concept"), a development expert should be invited to the Pull-Request review to explicitly check this item.
@@ -117,8 +113,8 @@ Requirement Inspection Checklist
         - All the requirements are mutually consistent. However, there are inconsistencies between some requirements' titles and their descriptions:
 
           - :need:`aou_req__bitmanipulation__concurrent_access` - The title "No Side Effects on Concurrent Access" is misleading. It sounds like the library guarantees no side effects during concurrent access (i.e., it is thread-safe). The text says the opposite — the library has no thread safety, and the user must synchronize.
-          - :need:`aou_req__bitmanipulation__enum_type_safety` - "...Type Safety" is misleading — the requirement is about value constraints, not type safety.
-        - #2669
+          - :need:`aou_req__bitmanipulation__enum_constraints` - "...Type Safety" is misleading — the requirement is about value constraints, not type safety.
+        - fixed, PR-2677
       * - REQ_05_01
         - Do the software requirements consider *timing constraints*?
         - This checkpoint encourages to think about timing constraints even if those are not explicitly mentioned in the parent requirement. If the reviewer of a requirement already knows or suspects that the code execution will be consuming a lot of time, one should think of the expectation of a "user".
@@ -128,17 +124,17 @@ Requirement Inspection Checklist
       * - REQ_06_01
         - Does the requirement consider *external interfaces*?
         - The SW platform's external interfaces (to the user) are defined in the Feature Architecture, so the Feature and Component Requirements should determine the input data use and setting of output data for these interfaces. Are all output values defined?
-        - NO
+        - YES
         - For following requirements there is no description of the output:
 
-          - :need:`comp_req__bitmanipulation__utilities` - The requirement describes inputs but not outputs — no return types or return semantics specified.
+          - :need:`comp_req__bitmanipulation__bit_operations` - The requirement describes inputs but not outputs — no return types or return semantics specified.
           - :need:`comp_req__bitmanipulation__bounds_safety` - Describes input validation but no output on failure. When an interface operation receives invalid input, what is returned? The error output path is undefined.
 
           Additionally, following requirements show mismatch with the architecture:
 
-          - :need:`comp_req__bitmanipulation__utilities` - "extracting bytes and manipulating half-bytes" have no corresponding interface operations in the architecture.
+          - :need:`comp_req__bitmanipulation__byte_operations` - "extracting bytes and manipulating half-bytes" have no corresponding interface operations in the architecture.
           - :need:`aou_req__bitmanipulation__bit_validation` - References "byte and half-byte extraction indices" which have no corresponding interface operations in the architecture.
-        - #2669
+        - fixed reqs, PR-2677
       * - REQ_07_01
         - Is the *safety* attribute set correctly?
         - Derived requirements are checked automatically, see :need:`gd_req__req_linkage_safety`. But for the top level requirements (and also all AoU) this needs to be checked manually for correctness.
@@ -167,8 +163,8 @@ Requirement Inspection Checklist
         - Do the requirements that define a safety mechanism specify the error reaction leading to a safe state?
         - Alternatively to the safe state there could also be "repair" mechanisms. Also do not forget to consider REQ_05_01 for these.
         - NO
-        - There is only one requirement here that does define a safety mechanism - :need:`comp_req__bitmanipulation__bounds_safety`, but it fails to specify error reaction leading to a safe state (e.g. abort or return error indicator). Just "...prevent data corruption" is not enough.
-        - #2669
+        - There is only one requirement here that does define a safety mechanism - :need:`comp_req__bitmanipulation__bounds_safety`, but it fails to specify error reaction leading to a safe state (e.g. abort or return error indicator). Just "...prevent data corruption" is not enough. @aschemmel-tech - updated requirement text does not explain what is the action on the input bits (I expect these are not changed, but this should be explicitly specified). Also I recommend not refer "to maintain a safe state" as we do not know the safe state of the system. Not executing the bitmanipulation and returning false is enough. Is :need:`aou_req__bitmanipulation__bit_validation` really needed if this safety mechanism is implemented?
+        - still open: #2669
 
 
 .. attention::
