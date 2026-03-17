@@ -40,7 +40,7 @@ Goal of this plan is to describe
 * which types of releases exist
 * how these are planned and executed
 * how they are identified
-* who is integrated and responsible
+* what is integrated and who is responsible
 
 Approach
 ++++++++
