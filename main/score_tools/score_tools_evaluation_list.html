@@ -570,7 +570,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-19b024c8">
+  <div class="need_container docutils container" id="SNCB-a4c3abff">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__tool_evaluation_list">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -804,18 +804,27 @@ release, as part of the Tool Verification Report.</p>
 <td><p>YES</p></td>
 </tr>
 <tr class="row-even"><td><p>2a-3</p></td>
-<td><p>CodeQL</p></td>
-<td><p>CodeQL is a semantic code analysis engine used for security and code quality analysis.</p></td>
-<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>clang-format</p></td>
+<td><p>Code formatter (linter) from LLVM project</p></td>
+<td><p>19.x (see <a class="footnote-reference brackets" href="#id51" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
 <td><p>YES</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
 <td><p>N/A</p></td>
 <td><p>YES</p></td>
 </tr>
 <tr class="row-odd"><td><p>2a-4</p></td>
+<td><p>CodeQL</p></td>
+<td><p>CodeQL is a semantic code analysis engine used for security and code quality analysis.</p></td>
+<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id12" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>YES</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>YES</p></td>
+</tr>
+<tr class="row-even"><td><p>2a-5</p></td>
 <td><p>gcovr</p></td>
 <td><p>Code coverage tool (uses gcov from GCC), part of GNU compiler collection</p></td>
-<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id12" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id13" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
 <td><p>YES</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
 <td><p>N/A</p></td>
@@ -854,7 +863,7 @@ release, as part of the Tool Verification Report.</p>
 <tr class="row-even"><td><p>2b-1</p></td>
 <td><p>clippy</p></td>
 <td><p>Rust linter for static code analysis</p></td>
-<td><p>1.90.0 (see <a class="footnote-reference brackets" href="#id51" id="id13" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>1.90.0 (see <a class="footnote-reference brackets" href="#id51" id="id14" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
 <td><p>YES</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
 <td><p><a class="reference internal" href="tools_static_analysis_code_quality/clippy.html#doc_tool__clippy" title="doc_tool__clippy"><em class="xref need">clippy (doc_tool__clippy)</em></a></p></td>
@@ -863,7 +872,7 @@ release, as part of the Tool Verification Report.</p>
 <tr class="row-odd"><td><p>2b-2</p></td>
 <td><p>rustfmt</p></td>
 <td><p>Rust code formatter</p></td>
-<td><p>1.8.0 (see <a class="footnote-reference brackets" href="#id51" id="id14" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>1.8.0 (see <a class="footnote-reference brackets" href="#id51" id="id15" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
 <td><p>YES</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
 <td><p><a class="reference internal" href="tools_static_analysis_code_quality/rustfmt.html#doc_tool__rustfmt" title="doc_tool__rustfmt"><em class="xref need">rustfmt (doc_tool__rustfmt)</em></a></p></td>
@@ -872,7 +881,7 @@ release, as part of the Tool Verification Report.</p>
 <tr class="row-even"><td><p>2b-3</p></td>
 <td><p>rust-analyzer</p></td>
 <td><p>Rust language server for IDE support</p></td>
-<td><p>1.8.0 (see <a class="footnote-reference brackets" href="#id51" id="id15" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>1.8.0 (see <a class="footnote-reference brackets" href="#id51" id="id16" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
 <td><p>NO</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
 <td><p>N/A</p></td>
@@ -911,7 +920,7 @@ release, as part of the Tool Verification Report.</p>
 <tr class="row-even"><td><p>2c-1</p></td>
 <td><p>ruff</p></td>
 <td><p>Fast Python formatter and linter, replaces multiple tools</p></td>
-<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id16" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id17" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
 <td><p>NO</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
 <td><p>N/A</p></td>
@@ -920,7 +929,7 @@ release, as part of the Tool Verification Report.</p>
 <tr class="row-odd"><td><p>2c-2</p></td>
 <td><p>pyright</p></td>
 <td><p>Python static type checker</p></td>
-<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id17" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id18" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
 <td><p>NO</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
 <td><p>N/A</p></td>
@@ -929,7 +938,7 @@ release, as part of the Tool Verification Report.</p>
 <tr class="row-even"><td><p>2c-3</p></td>
 <td><p>pylint</p></td>
 <td><p>Python code quality analysis</p></td>
-<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id18" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id19" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
 <td><p>NO</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
 <td><p>N/A</p></td>
@@ -938,7 +947,7 @@ release, as part of the Tool Verification Report.</p>
 <tr class="row-odd"><td><p>2c-4</p></td>
 <td><p>pytest-cov</p></td>
 <td><p>Python test coverage reporting</p></td>
-<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id19" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id20" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
 <td><p>NO</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
 <td><p>N/A</p></td>
@@ -947,7 +956,7 @@ release, as part of the Tool Verification Report.</p>
 <tr class="row-even"><td><p>2c-5</p></td>
 <td><p>basedpyright</p></td>
 <td><p>Alternative Python type checker</p></td>
-<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id20" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id21" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
 <td><p>NO</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
 <td><p>N/A</p></td>
@@ -986,7 +995,7 @@ release, as part of the Tool Verification Report.</p>
 <tr class="row-even"><td><p>2d-1</p></td>
 <td><p>yamlfmt</p></td>
 <td><p>YAML file formatter</p></td>
-<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id21" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id22" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
 <td><p>NO</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
 <td><p>N/A</p></td>
@@ -995,7 +1004,7 @@ release, as part of the Tool Verification Report.</p>
 <tr class="row-odd"><td><p>2d-2</p></td>
 <td><p>actionlint</p></td>
 <td><p>GitHub Actions workflow linter</p></td>
-<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id22" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id23" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
 <td><p>NO</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
 <td><p>N/A</p></td>
@@ -1004,7 +1013,7 @@ release, as part of the Tool Verification Report.</p>
 <tr class="row-even"><td><p>2d-3</p></td>
 <td><p>starpls</p></td>
 <td><p>Starlark (Bazel) language server</p></td>
-<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id23" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id24" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
 <td><p>NO</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
 <td><p>N/A</p></td>
@@ -1013,7 +1022,7 @@ release, as part of the Tool Verification Report.</p>
 <tr class="row-odd"><td><p>2d-4</p></td>
 <td><p>score_tooling</p></td>
 <td><p>Copyright checker, CLI helper, license checker</p></td>
-<td><p>1.0.4 (see <a class="footnote-reference brackets" href="#id51" id="id24" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>1.0.4 (see <a class="footnote-reference brackets" href="#id51" id="id25" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
 <td><p>NO</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
 <td><p>N/A</p></td>
@@ -1022,7 +1031,7 @@ release, as part of the Tool Verification Report.</p>
 <tr class="row-even"><td><p>2d-5</p></td>
 <td><p>bazel-tools-cc</p></td>
 <td><p>Clang-tidy based static code checker for Bazel</p></td>
-<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id25" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id26" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
 <td><p>NO</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
 <td><p>N/A</p></td>
@@ -1031,7 +1040,7 @@ release, as part of the Tool Verification Report.</p>
 <tr class="row-odd"><td><p>2d-6</p></td>
 <td><p>gitlint</p></td>
 <td><p>Commit message linting</p></td>
-<td><p>0.19.1 (see <a class="footnote-reference brackets" href="#id51" id="id26" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>0.19.1 (see <a class="footnote-reference brackets" href="#id51" id="id27" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
 <td><p>NO</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
 <td><p>N/A</p></td>
@@ -1071,7 +1080,7 @@ release, as part of the Tool Verification Report.</p>
 <tr class="row-even"><td><p>3-1</p></td>
 <td><p>gtest (GoogleTest)</p></td>
 <td><p>C++ testing framework</p></td>
-<td><p>1.15.0 (see <a class="footnote-reference brackets" href="#id51" id="id27" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>1.15.0 (see <a class="footnote-reference brackets" href="#id51" id="id28" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
 <td><p>YES</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__testing_community">rl__testing_community</a></p></td>
 <td><p><a class="reference internal" href="tools_testing_frameworks/gtest.html#doc_tool__gtest" title="doc_tool__gtest"><em class="xref need">gtest (doc_tool__gtest)</em></a></p></td>
@@ -1080,7 +1089,7 @@ release, as part of the Tool Verification Report.</p>
 <tr class="row-odd"><td><p>3-2</p></td>
 <td><p>ITF</p></td>
 <td><p>Integration Testing Framework, pytest-based</p></td>
-<td><p>0.1.0 (see <a class="footnote-reference brackets" href="#id51" id="id28" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>0.1.0 (see <a class="footnote-reference brackets" href="#id51" id="id29" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
 <td><p>YES</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__testing_community">rl__testing_community</a></p></td>
 <td><p><a class="reference internal" href="tools_testing_frameworks/itf.html#doc_tool__itf" title="doc_tool__itf"><em class="xref need">ITF (doc_tool__itf)</em></a></p></td>
@@ -1089,7 +1098,7 @@ release, as part of the Tool Verification Report.</p>
 <tr class="row-even"><td><p>3-3</p></td>
 <td><p>pytest</p></td>
 <td><p>Python testing framework</p></td>
-<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id29" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id30" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
 <td><p>YES</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__testing_community">rl__testing_community</a></p></td>
 <td><p>N/A</p></td>
@@ -1128,7 +1137,7 @@ release, as part of the Tool Verification Report.</p>
 <tr class="row-even"><td><p>4-1</p></td>
 <td><p>Bazel</p></td>
 <td><p>Main build system</p></td>
-<td><p>8.3.0 (see <a class="footnote-reference brackets" href="#id51" id="id30" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>8.3.0 (see <a class="footnote-reference brackets" href="#id51" id="id31" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
 <td><p>YES</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
 <td><p><a class="reference internal" href="tools_build_development/bazel.html#doc_tool__bazel" title="doc_tool__bazel"><em class="xref need">Bazel (doc_tool__bazel)</em></a></p></td>
@@ -1137,7 +1146,7 @@ release, as part of the Tool Verification Report.</p>
 <tr class="row-odd"><td><p>4-2</p></td>
 <td><p>buildifier</p></td>
 <td><p>Bazel file formatter and linter</p></td>
-<td><p>8.2.0.2 (see <a class="footnote-reference brackets" href="#id51" id="id31" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>8.2.0.2 (see <a class="footnote-reference brackets" href="#id51" id="id32" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
 <td><p>NO</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
 <td><p>N/A</p></td>
@@ -1146,7 +1155,7 @@ release, as part of the Tool Verification Report.</p>
 <tr class="row-even"><td><p>4-3</p></td>
 <td><p>rules_python</p></td>
 <td><p>Bazel Python build rules</p></td>
-<td><p>1.4.1 (see <a class="footnote-reference brackets" href="#id51" id="id32" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>1.4.1 (see <a class="footnote-reference brackets" href="#id51" id="id33" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
 <td><p>NO</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
 <td><p>N/A</p></td>
@@ -1155,7 +1164,7 @@ release, as part of the Tool Verification Report.</p>
 <tr class="row-odd"><td><p>4-4</p></td>
 <td><p>aspect_rules_py</p></td>
 <td><p>Enhanced Python rules (provides py_venv)</p></td>
-<td><p>1.6.3 (see <a class="footnote-reference brackets" href="#id51" id="id33" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>1.6.3 (see <a class="footnote-reference brackets" href="#id51" id="id34" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
 <td><p>NO</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
 <td><p>N/A</p></td>
@@ -1164,7 +1173,7 @@ release, as part of the Tool Verification Report.</p>
 <tr class="row-even"><td><p>4-5</p></td>
 <td><p>aspect_rules_lint</p></td>
 <td><p>Generic linting and formatting rules</p></td>
-<td><p>1.5.3 (see <a class="footnote-reference brackets" href="#id51" id="id34" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>1.5.3 (see <a class="footnote-reference brackets" href="#id51" id="id35" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
 <td><p>NO</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
 <td><p>N/A</p></td>
@@ -1173,7 +1182,7 @@ release, as part of the Tool Verification Report.</p>
 <tr class="row-odd"><td><p>4-6</p></td>
 <td><p>rules_pkg</p></td>
 <td><p>Packaging dependencies</p></td>
-<td><p>1.1.0 (see <a class="footnote-reference brackets" href="#id51" id="id35" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>1.1.0 (see <a class="footnote-reference brackets" href="#id51" id="id36" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
 <td><p>NO</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
 <td><p>N/A</p></td>
@@ -1182,7 +1191,7 @@ release, as part of the Tool Verification Report.</p>
 <tr class="row-even"><td><p>4-7</p></td>
 <td><p>rules_java</p></td>
 <td><p>Java build rules</p></td>
-<td><p>8.15.1 (see <a class="footnote-reference brackets" href="#id51" id="id36" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>8.15.1 (see <a class="footnote-reference brackets" href="#id51" id="id37" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
 <td><p>NO</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
 <td><p>N/A</p></td>
@@ -1191,7 +1200,7 @@ release, as part of the Tool Verification Report.</p>
 <tr class="row-odd"><td><p>4-8</p></td>
 <td><p>rules_cc</p></td>
 <td><p>C/C++ build rules</p></td>
-<td><p>0.2.1 (see <a class="footnote-reference brackets" href="#id51" id="id37" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>0.2.1 (see <a class="footnote-reference brackets" href="#id51" id="id38" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
 <td><p>NO</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
 <td><p>N/A</p></td>
@@ -1200,7 +1209,7 @@ release, as part of the Tool Verification Report.</p>
 <tr class="row-even"><td><p>4-9</p></td>
 <td><p>rules_rust</p></td>
 <td><p>Rust build rules for Bazel</p></td>
-<td><p>0.63.0 (see <a class="footnote-reference brackets" href="#id51" id="id38" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>0.63.0 (see <a class="footnote-reference brackets" href="#id51" id="id39" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
 <td><p>NO</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
 <td><p>N/A</p></td>
@@ -1209,7 +1218,7 @@ release, as part of the Tool Verification Report.</p>
 <tr class="row-odd"><td><p>4-10</p></td>
 <td><p>score_toolchains_qnx</p></td>
 <td><p>QNX SDP toolchain including compiler, linker, image creation tools</p></td>
-<td><p>0.5 (see <a class="footnote-reference brackets" href="#id51" id="id39" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>0.5 (see <a class="footnote-reference brackets" href="#id51" id="id40" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
 <td><p>NO</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
 <td><p>N/A</p></td>
@@ -1218,16 +1227,25 @@ release, as part of the Tool Verification Report.</p>
 <tr class="row-even"><td><p>4-11</p></td>
 <td><p>score_toolchains_gcc</p></td>
 <td><p>GCC toolchain packages for various targets</p></td>
-<td><p>0.5 (see <a class="footnote-reference brackets" href="#id51" id="id40" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>0.5 (see <a class="footnote-reference brackets" href="#id51" id="id41" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
 <td><p>NO</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
 <td><p>N/A</p></td>
 <td><p>YES</p></td>
 </tr>
-<tr class="row-odd"><td><p>4-11</p></td>
+<tr class="row-odd"><td><p>4-12</p></td>
+<td><p>toolchains_llvm</p></td>
+<td><p>LLVM toolchain rules for Bazel (host configuration, C++17 standard)</p></td>
+<td><p>1.4.0 (see <a class="footnote-reference brackets" href="#id51" id="id42" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>YES</p></td>
+<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
+<td><p>N/A</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>4-13</p></td>
 <td><p>score_toolchains_rust</p></td>
 <td><p>Rust toolchains for SCORE project</p></td>
-<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id41" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>T.B.D. (see <a class="footnote-reference brackets" href="#id51" id="id43" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
 <td><p>NO</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
 <td><p>N/A</p></td>
@@ -1268,7 +1286,7 @@ release, as part of the Tool Verification Report.</p>
 <tr class="row-even"><td><p>5a-1</p></td>
 <td><p>GCC</p></td>
 <td><p>Host C++ compiler with linker, generates compiler warnings, builds unit tests and binaries for SW integration testing</p></td>
-<td><p>12+ (see <a class="footnote-reference brackets" href="#id51" id="id42" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>12+ (see <a class="footnote-reference brackets" href="#id51" id="id44" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
 <td><p>YES</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
 <td><p><a class="reference internal" href="tools_compiler/gcc.html#doc_tool__gcc" title="doc_tool__gcc"><em class="xref need">gcc (doc_tool__gcc)</em></a></p></td>
@@ -1276,29 +1294,11 @@ release, as part of the Tool Verification Report.</p>
 </tr>
 <tr class="row-odd"><td><p>5a-2</p></td>
 <td><p>QNX 8.x SDP</p></td>
-<td><p>Qualifiable compiler/linker from BlackBerry for QNX, used for target compilation</p></td>
-<td><p>12+ (see <a class="footnote-reference brackets" href="#id51" id="id43" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
+<td><p>Qualified compiler/linker from BlackBerry for QNX, used for target compilation</p></td>
+<td><p>12+ (see <a class="footnote-reference brackets" href="#id51" id="id45" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
 <td><p>YES</p></td>
 <td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
 <td><p><a class="reference internal" href="tools_compiler/qcc.html#doc_tool__qcc" title="doc_tool__qcc"><em class="xref need">qcc (doc_tool__qcc)</em></a></p></td>
-<td><p>N/A</p></td>
-</tr>
-<tr class="row-even"><td><p>5a-3</p></td>
-<td><p>LLVM/Clang</p></td>
-<td><p>Alternative C++ compiler toolchain</p></td>
-<td><p>19.1.0 (see <a class="footnote-reference brackets" href="#id51" id="id44" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
-<td><p>YES</p></td>
-<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
-<td><p><a class="reference internal" href="tools_build_development/bazel.html#doc_tool__bazel" title="doc_tool__bazel"><em class="xref need">Bazel (doc_tool__bazel)</em></a></p></td>
-<td><p>N/A</p></td>
-</tr>
-<tr class="row-odd"><td><p>5a-4</p></td>
-<td><p>toolchains_llvm</p></td>
-<td><p>LLVM toolchain rules for Bazel (host configuration, C++17 standard)</p></td>
-<td><p>1.4.0 (see <a class="footnote-reference brackets" href="#id51" id="id45" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</p></td>
-<td><p>YES</p></td>
-<td><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__infrastructure_tooling_community">rl__infrastructure_tooling_community</a></p></td>
-<td><p><a class="reference internal" href="tools_build_development/bazel.html#doc_tool__bazel" title="doc_tool__bazel"><em class="xref need">Bazel (doc_tool__bazel)</em></a></p></td>
 <td><p>N/A</p></td>
 </tr>
 </tbody>
