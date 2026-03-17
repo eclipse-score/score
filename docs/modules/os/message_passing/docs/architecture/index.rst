@@ -22,6 +22,7 @@ Message Passing Component Architecture
    :status: valid
    :implements: logic_arc_int__os__message_passing
    :satisfies:
+   :belongs_to: feat__os
 
 
 .. comp_arc_sta:: QNX::Message Passing Static View

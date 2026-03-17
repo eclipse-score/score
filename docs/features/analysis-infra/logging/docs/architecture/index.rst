@@ -12,45 +12,36 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Component Architecture
-**********************
-.. comp:: Logging
-   :id: comp__logging
+.. _logging_architecture:
+
+Logging Architecture
+====================
+
+.. feat:: Logging
+   :id: feat__logging
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :implements: logic_arc_int__logging__logging
-   :belongs_to: feat__logging
+   :provides: logic_arc_int__log_cpp__logging, logic_arc_int__log_rust__logging_rust
+   :uses: logic_arc_int__baselibs__json, logic_arc_int__baselibs__filesystem
 
-.. comp_arc_sta:: Logging
-   :id: comp_arc_sta__logging__logging
-   :security: YES
-   :safety: ASIL_B
-   :status: valid
-   :belongs_to: comp__logging
-   :fulfils: comp_req__component_name__some_title
-
-   .. needarch::
-      :scale: 50
-      :align: center
-
-      {{ draw_component(need(), needs) }}
 
 .. logic_arc_int:: Logging
-   :id: logic_arc_int__logging__logging
+   :id: logic_arc_int__log_cpp__logging
    :security: YES
-   :safety:  ASIL_B
+   :safety: ASIL_B
    :status: valid
 
-   .. needarch::
-      :scale: 50
-      :align: center
 
-      {{ draw_interface(need(), needs) }}
+.. logic_arc_int:: Logging Rust
+   :id: logic_arc_int__log_rust__logging_rust
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
 
 .. logic_arc_int_op:: Log
-   :id: logic_arc_int_op__logging__isenabled
+   :id: logic_arc_int_op__logging__log
    :security: YES
-   :safety: QM
+   :safety: ASIL_B
    :status: valid
-   :included_by: logic_arc_int__logging__logging
+   :included_by: logic_arc_int__log_cpp__logging

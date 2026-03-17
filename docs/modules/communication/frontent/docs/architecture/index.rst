@@ -22,7 +22,7 @@ Frontend Component Architecture
    :status: valid
    :implements: logic_arc_int__communication__user
    :uses: logic_arc_int__logging__logging, logic_arc_int__tracing__tracing
-
+   :belongs_to: feat__com_communication
 
 .. comp_arc_sta:: mw::com Frontend Architecture
    :id: comp_arc_sta__com__frontend

@@ -12,6 +12,14 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+.. feat:: Baselibs
+   :id: feat__os
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+
+   Placeholder for the external provided OS. It is expected that this feature will be used to document the requirements and dependencies of the S-CORE software platform to the operating system environment and other OS related SW components.
+
 .. mod:: OS
    :id: mod__os
    :status: valid

@@ -22,6 +22,7 @@ Memory Shared Component Architecture
    :status: valid
    :implements: logic_arc_int__baselibs__memory_shared
    :uses: logic_arc_int__os__fcntl, logic_arc_int__os__stat, logic_arc_int__os__mman
+   :belongs_to: feat__baselibs
 
    .. needarch::
       :scale: 50

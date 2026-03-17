@@ -37,7 +37,7 @@ Static Architecture
    :status: valid
    :tags: baselibs_containers
    :implements: logic_arc_int__baselibs__dynamic_array, logic_arc_int__baselibs__intrusive_list
-
+   :belongs_to: feat__baselibs
 
     .. needarch::
       :scale: 50

@@ -21,6 +21,7 @@ libc Component Architecture
    :safety: ASIL_B
    :status: valid
    :implements: logic_arc_int__os__fcntl, logic_arc_int__os__stat, logic_arc_int__os__mman, logic_arc_int__os__unistd
+   :belongs_to: feat__os
 
 .. comp_arc_sta:: libc
    :id: comp_arc_sta__os__libc

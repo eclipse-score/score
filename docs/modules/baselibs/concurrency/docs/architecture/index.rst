@@ -37,6 +37,7 @@ Static Architecture
    :status: valid
    :tags: baselibs_concurrency
    :implements: logic_arc_int__baselibs__promise, logic_arc_int__baselibs__future, logic_arc_int__baselibs__shared_future, logic_arc_int__baselibs__executor, logic_arc_int__baselibs__task, logic_arc_int__baselibs__task_result, logic_arc_int__baselibs__synchronized_queue, logic_arc_int__baselibs__condition_variable
+   :belongs_to: feat__baselibs
 
    .. needarch::
       :scale: 50

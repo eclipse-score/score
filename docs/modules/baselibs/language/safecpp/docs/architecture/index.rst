@@ -37,6 +37,7 @@ Static Architecture
    :status: valid
    :tags: baselibs_safecpp
    :implements: logic_arc_int__safecpp__aborts_upon_ex, logic_arc_int__safecpp__coverage_termination, logic_arc_int__baselibs__safemath, logic_arc_int__baselibs__safeatomics, logic_arc_int__baselibs__scoped_function, logic_arc_int__baselibs__string_view
+   :belongs_to: feat__baselibs
 
    .. needarch::
       :scale: 50

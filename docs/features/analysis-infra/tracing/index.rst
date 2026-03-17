@@ -17,3 +17,5 @@ Tracing
 
 .. toctree::
    :maxdepth: 1
+
+   ./docs/architecture/index.rst

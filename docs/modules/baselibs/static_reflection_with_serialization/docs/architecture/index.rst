@@ -37,6 +37,7 @@ Static Architecture
    :status: valid
    :tags: baselibs_static_reflection_serialization
    :implements: logic_arc_int__baselibs__static_reflection,logic_arc_int__baselibs__generic_serial,logic_arc_int__baselibs__log_serial
+   :belongs_to: feat__baselibs
 
    .. needarch::
       :scale: 50

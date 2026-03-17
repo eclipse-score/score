@@ -37,6 +37,7 @@ Static Architecture
    :status: valid
    :tags: baselibs_bit_manipulation
    :implements: logic_arc_int__baselibs__bit_manipulation,logic_arc_int__baselibs__bit_mask_operator
+   :belongs_to: feat__baselibs
 
    .. needarch::
       :scale: 50
