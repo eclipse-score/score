@@ -138,18 +138,18 @@ Identification
 4. Pre-Release Versions
 
    * Use pre-release versions for features or fixes that are not yet ready for production.
-   * Format: MAJOR.MINOR.PATCH-<pre-release-tag>, e.g., 1.0.0-alpha, 1.0.0-beta.
+   * Format: MAJOR.MINOR.PATCH-<pre-release-tag>, e.g., ``1.0.0-alpha``, ``1.0.0-beta``.
 
 5. Tagging Releases
 
    * Tag each release in the repository with the version number.
-   * Format: vMAJOR.MINOR.PATCH, e.g., v1.3.0.
+   * Format: vMAJOR.MINOR.PATCH, e.g., ``v1.3.0``.
 
 
 Continuous Release Planning and Execution
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Release interval (see :ref:`pmp_pm_release`) between S-CORE Product Increments can be divided into two phases:
+Release interval (see :ref:`pmp_pm_release`) between S-CORE product increments can be divided into two phases:
 
 **Development phase (6 weeks) :**
 
@@ -162,7 +162,7 @@ Release interval (see :ref:`pmp_pm_release`) between S-CORE Product Increments c
 **Integration phase (2 weeks) :**
 
 #. Release branch creation
-#. Integration of the Modules
+#. Integration of the modules
 #. Release notes
 #. Release candidate
 #. Release creation
@@ -170,9 +170,9 @@ Release interval (see :ref:`pmp_pm_release`) between S-CORE Product Increments c
 Common release requirements definition
 --------------------------------------
 
-At the beginning, the overall scope and general requirements for the Modules are discussed during
-Release Team Meeting and agreed upon within the S-CORE community, providing clear goals for what must be achieved.
-The scope should define minor requirements such as:
+At the beginning, the overall scope and general requirements for the modules are discussed during
+release team meeting and agreed upon within the S-CORE community, providing clear goals for what must be achieved.
+The scope should define requirements such as:
 
 * Tooling versions
 * Used toolchains
@@ -224,7 +224,7 @@ located in reference integration repository:
 
 are released at the end of the development phase the latest.
 During the integration phase, no changes other than necessary bug fixes are allowed to give time to the Modules to rebase
-their dependencies and prepare their *code freeze*.
+their dependencies and prepare their *code freeze*. This implies that tools must prepare a release in-time before the integration phase.
 
 .. note::
 
@@ -233,7 +233,7 @@ their dependencies and prepare their *code freeze*.
 Code freeze
 -----------
 At the end of development phase, each Module must provide a hash of the commit that represents a *code freeze*
-and serves as a candidate for integration. The hash can be from the **main** or **dedicated release** branch.
+and serves as a candidate for release. The hash can be from the **main** or **dedicated release** branch.
 
 .. note::
 
