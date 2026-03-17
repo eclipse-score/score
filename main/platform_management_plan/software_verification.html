@@ -582,7 +582,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-5b15b94f">
+  <div class="need_container docutils container" id="SNCB-1a2f0ec4">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__verification_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -829,7 +829,7 @@ at higher levels:</p>
 <li><p>Fault Injection (<code class="docutils literal notranslate"><span class="pre">fault-injection</span></code>):</p>
 <p>Most beneficial for testing level 2.</p>
 </li>
-<li><p>Structural Function/Call Coverage (<code class="docutils literal notranslate"><span class="pre">struct-func-cov</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">struct-call-cov</span></code>)</p>
+<li><p>Structural Function/Call Coverage (<code class="docutils literal notranslate"><span class="pre">structural-function-coverage</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">structural-call-coverage</span></code>)</p>
 <p>Most beneficial for testing level 2.</p>
 </li>
 </ol>
@@ -907,7 +907,7 @@ to be reached with every contribution.</p>
 <td><p>100%</p></td>
 </tr>
 <tr class="row-odd"><td><p>2</p></td>
-<td><p>Structural Condition Coverage</p></td>
+<td><p>Structural Decision Coverage</p></td>
 <td><p>85%</p></td>
 <td><p>100%</p></td>
 </tr>
@@ -957,7 +957,7 @@ This shall also be part of the module documentation with a reasoning when percen
 <p>Beside <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_comp_int_test">wp__verification_comp_int_test</a> and <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_sw_unit_test">wp__verification_sw_unit_test</a> the
 following aspects define the coverage of detailed design.</p>
 <ul class="simple">
-<li><p>Statement/Branch/Path coverage as defined by their specific thresholds</p></li>
+<li><p>Statement/Branch coverage as defined by their specific thresholds</p></li>
 <li><p>Static analysis and Linting</p></li>
 <li><p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/implementation_workproducts.html#wp__sw_implementation_inspection">wp__sw_implementation_inspection</a> for safety-critical implementation</p></li>
 </ul>
@@ -1081,18 +1081,15 @@ components, documentation, and automated tests.</p>
 <p>The software components of the project written in C++ are unit tested with the help of
 <a class="reference external" href="https://google.github.io/googletest/">GoogleTest</a>.</p>
 <p class="rubric">gcov/gcovr</p>
-<p>The structural coverage reached by unit testing in the project is evaluated by the gcov/gcovr tool chain
+<p>For C++ code the structural coverage reached by unit testing in the project is evaluated by the gcov/gcovr tool chain
 <a class="reference external" href="https://github.com/gcovr/gcovr">gcovr</a> - gcov is part of the GNU compiler collection (gcc).</p>
-<p>Note that gcov/gcovr supports several coverage metrics:</p>
+<p>The C++ unit test tooling supports several coverage metrics:</p>
 <ul class="simple">
-<li><p>“statement” - used in S-CORE for the structural-statement-coverage method</p></li>
-<li><p>“decision” - used in S-CORE for the structural-branch-coverage method</p></li>
-<li><p>“branch” - used in S-CORE to support manual analysis of the code coverage if the “decision”
-coverage is reported as “cannot be determined” by the tooling. As the “branch” coverage on target
-is determined by the tool as object code coverage and as the compiler adds object branches for
-fast evaluation of complex conditions in decisions, this is more than required by the
-structural-branch-coverage method.</p></li>
+<li><p>“line” - used in S-CORE for the <code class="docutils literal notranslate"><span class="pre">structural-statement-coverage</span></code> method</p></li>
+<li><p>“branch” - used in S-CORE for the <code class="docutils literal notranslate"><span class="pre">structural-branch-coverage</span></code> method</p></li>
+<li><p>“function” - used in S-CORE for the <code class="docutils literal notranslate"><span class="pre">structural-function-coverage</span></code> as additional supporting coverage value for further analysis.</p></li>
 </ul>
+<p>Note gcov/gcovr are not applicable for Rust code. Here coverage values are created using the tooling provided by the Ferrocene.</p>
 <p class="rubric">Integration Testing Framework (ITF)</p>
 <p>The integration of software components can be verified with the help of the ITF. It allows the definition and execution
 of test based on <a class="reference external" href="https://pytest.org">pytest</a>.</p>
