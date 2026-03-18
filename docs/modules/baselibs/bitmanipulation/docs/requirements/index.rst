@@ -71,7 +71,7 @@ Functional Requirements
    :status: valid
    :belongs_to: comp__baselibs_bit_manipulation
 
-   The bit manipulation functions shall validate input parameters against bounds and return false on out-of-bounds access to maintain a safe state.
+   The bit manipulation functions shall validate input parameters against bounds and, on out-of-bounds access, shall leave the target value unmodified and return false.
 
 Non-Functional Requirements
 ===========================
@@ -120,15 +120,6 @@ Assumptions of Use (AoU)
    The user shall implement external synchronization mechanisms (e.g., mutexes, atomic operations, or locks) when accessing or modifying the same integral value from multiple threads concurrently.
 
    Note: The library provides no internal thread safety guarantees.
-
-.. aou_req:: Bit Extraction Index Validation
-   :id: aou_req__bitmanipulation__bit_validation
-   :reqtype: Functional
-   :security: NO
-   :safety: ASIL_B
-   :status: valid
-
-   The user shall validate byte and half-byte extraction indices to ensure they correspond to valid positions within the target integral type to prevent accessing invalid memory ranges.
 
 .. needextend:: "__bitmanipulation__" in id
    :+tags: baselibs
