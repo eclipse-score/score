@@ -39,7 +39,7 @@ Functional Requirements
    :belongs_to: comp__baselibs_bit_manipulation
    :tags: inspected
 
-   The bit manipulation component shall provide API for setting, clearing, toggling, and checking individual bits for any integral type up to 64 bits, returning boolean success status.
+   The bit manipulation component shall provide an API for setting, clearing, toggling, and checking individual bits for any integral type up to 64 bits, returning boolean success status.
 
 .. comp_req:: Support for Byte and Half-Byte Operations
    :id: comp_req__bitmanipulation__byte_operations
