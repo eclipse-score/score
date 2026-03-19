@@ -606,7 +606,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-b5907a8c">
+  <div class="need_container docutils container" id="SNCB-b6b5dcb2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__bitmanipulation_req_inspection">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -784,7 +784,6 @@
 <p>Additionally, following requirements show mismatch with the architecture:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="index.html#comp_req__bitmanipulation__byte_operations" title="comp_req__bitmanipulation__byte_operations"><em class="xref need">Support for Byte and Half-B... (comp_req__bitmanipulation__byte_operations)</em></a> - “extracting bytes and manipulating half-bytes” have no corresponding interface operations in the architecture.</p></li>
-<li><p><a class="reference internal" href="index.html#aou_req__bitmanipulation__bit_validation" title="aou_req__bitmanipulation__bit_validation"><em class="xref need">Bit Extraction Index Valida... (aou_req__bitmanipulation__bit_validation)</em></a> - References “byte and half-byte extraction indices” which have no corresponding interface operations in the architecture.</p></li>
 </ul>
 </td>
 <td><p>fixed reqs, PR-2677</p></td>
@@ -820,9 +819,9 @@
 <tr class="row-even"><td><p>REQ_09_01</p></td>
 <td><p>Do the requirements that define a safety mechanism specify the error reaction leading to a safe state?</p></td>
 <td><p>Alternatively to the safe state there could also be “repair” mechanisms. Also do not forget to consider REQ_05_01 for these.</p></td>
-<td><p>NO</p></td>
-<td><p>There is only one requirement here that does define a safety mechanism - <a class="reference internal" href="index.html#comp_req__bitmanipulation__bounds_safety" title="comp_req__bitmanipulation__bounds_safety"><em class="xref need">Bounds and Safety Checks (comp_req__bitmanipulation__bounds_safety)</em></a>, but it fails to specify error reaction leading to a safe state (e.g. abort or return error indicator). Just “…prevent data corruption” is not enough. &#64;aschemmel-tech - updated requirement text does not explain what is the action on the input bits (I expect these are not changed, but this should be explicitly specified). Also I recommend not refer “to maintain a safe state” as we do not know the safe state of the system. Not executing the bitmanipulation and returning false is enough. Is <a class="reference internal" href="index.html#aou_req__bitmanipulation__bit_validation" title="aou_req__bitmanipulation__bit_validation"><em class="xref need">Bit Extraction Index Valida... (aou_req__bitmanipulation__bit_validation)</em></a> really needed if this safety mechanism is implemented?</p></td>
-<td><p>still open: #2669</p></td>
+<td><p>YES</p></td>
+<td><p>There is only one requirement here that does define a safety mechanism - <a class="reference internal" href="index.html#comp_req__bitmanipulation__bounds_safety" title="comp_req__bitmanipulation__bounds_safety"><em class="xref need">Bounds and Safety Checks (comp_req__bitmanipulation__bounds_safety)</em></a>, but it fails to specify error reaction leading to a safe state (e.g. abort or return error indicator). Just “…prevent data corruption” is not enough. &#64;aschemmel-tech - updated requirement text does not explain what is the action on the input bits (I expect these are not changed, but this should be explicitly specified). Also I recommend not refer “to maintain a safe state” as we do not know the safe state of the system. Not executing the bitmanipulation and returning false is enough. Is <cite>aou_req__bitmanipulation__bit_validation</cite> really needed if this safety mechanism is implemented?</p></td>
+<td><p>fixed, PR-2677</p></td>
 </tr>
 </tbody>
 </table>
@@ -888,19 +887,15 @@ It is mandatory to fill remarks also for checklist entries which are passed, to 
 </tr>
 </thead>
 <tbody>
-<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="index.html#aou_req__bitmanipulation__bit_validation">aou_req__bitmanipulation__bit_validation</a></p></td>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="index.html#aou_req__bitmanipulation__enum_constraints">aou_req__bitmanipulation__enum_constraints</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p>inspected<em>; </em>baselibs<em>; </em>bitmanipulation</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="index.html#aou_req__bitmanipulation__enum_constraints">aou_req__bitmanipulation__enum_constraints</a></p></td>
+<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="index.html#aou_req__bitmanipulation__concurrent_access">aou_req__bitmanipulation__concurrent_access</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p>inspected<em>; </em>baselibs<em>; </em>bitmanipulation</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="index.html#aou_req__bitmanipulation__concurrent_access">aou_req__bitmanipulation__concurrent_access</a></p></td>
-<td class="needs_status"><p>valid</p></td>
-<td class="needs_tags"><p>inspected<em>; </em>baselibs<em>; </em>bitmanipulation</p></td>
-</tr>
-<tr class="need row-odd"><td class="needs_id"><p><a class="reference internal" href="index.html#aou_req__bitmanipulation__type_constraints">aou_req__bitmanipulation__type_constraints</a></p></td>
+<tr class="need row-even"><td class="needs_id"><p><a class="reference internal" href="index.html#aou_req__bitmanipulation__type_constraints">aou_req__bitmanipulation__type_constraints</a></p></td>
 <td class="needs_status"><p>valid</p></td>
 <td class="needs_tags"><p>inspected<em>; </em>baselibs<em>; </em>bitmanipulation</p></td>
 </tr>
