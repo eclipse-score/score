@@ -49,3 +49,4 @@ Module Documents
 
    requirements/index.rst
    requirements/aou_req.rst
+   requirements/aou_req_qnx.rst
