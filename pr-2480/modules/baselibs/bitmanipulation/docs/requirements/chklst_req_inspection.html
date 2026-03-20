@@ -606,7 +606,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-b6b5dcb2">
+  <div class="need_container docutils container" id="SNCB-0f35c6ac">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__bitmanipulation_req_inspection">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -687,50 +687,51 @@
 <td><p>Is the requirement formulation template used?</p></td>
 <td><p>see <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/guidance/requirements_templates.html#gd_temp__req_formulation">gd_temp__req_formulation</a>, this includes the use of “shall”.</p></td>
 <td><p>YES</p></td>
-<td><p>Following requirements failed to comply with the requirements formulation template:</p>
+<td><p>Following requirements failed to comply with the requirements formulation template and were fixed in PR-2677:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="index.html#aou_req__bitmanipulation__type_constraints" title="aou_req__bitmanipulation__type_constraints"><em class="xref need">Integral Type Constraints (aou_req__bitmanipulation__type_constraints)</em></a> - The second sentence does not use shall and is not marked with “Note”. Suggestion - move it to the Note.</p></li>
-<li><p><a class="reference internal" href="index.html#aou_req__bitmanipulation__concurrent_access" title="aou_req__bitmanipulation__concurrent_access"><em class="xref need">External Synchronization Re... (aou_req__bitmanipulation__concurrent_access)</em></a> - “…as the library provides no internal thread safety guarantees.” is a justification and not a verifiable statement. Per the template, it should be separated and marked as Note.</p></li>
+<li><p><a class="reference internal" href="index.html#aou_req__bitmanipulation__type_constraints" title="aou_req__bitmanipulation__type_constraints"><em class="xref need">Integral Type Constraints (aou_req__bitmanipulation__type_constraints)</em></a></p></li>
+<li><p><a class="reference internal" href="index.html#aou_req__bitmanipulation__concurrent_access" title="aou_req__bitmanipulation__concurrent_access"><em class="xref need">External Synchronization Re... (aou_req__bitmanipulation__concurrent_access)</em></a></p></li>
 </ul>
 </td>
-<td><p>fixed, PR-2677</p></td>
+<td></td>
 </tr>
 <tr class="row-odd"><td><p>REQ_02_01</p></td>
 <td><p>Is the requirement description <em>comprehensible</em> ?</p></td>
 <td><p>If you think the requirement is hard to understand, comment here.</p></td>
 <td><p>YES</p></td>
-<td><p>The inspected requirements are clear and easy to understand. Some grammar mistakes were found:</p>
+<td><p>The inspected requirements are clear and easy to understand. Some grammar mistakes were found and were fixed in PR-2677 and PR-2480:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="index.html#comp_req__bitmanipulation__bit_operations" title="comp_req__bitmanipulation__bit_operations"><em class="xref need">Support for Bit Operations (comp_req__bitmanipulation__bit_operations)</em></a> - “…shall provide API…” -&gt; “…shall provide an API…” (not fixed, minor)</p></li>
-<li><p><a class="reference internal" href="index.html#aou_req__bitmanipulation__type_constraints" title="aou_req__bitmanipulation__type_constraints"><em class="xref need">Integral Type Constraints (aou_req__bitmanipulation__type_constraints)</em></a> - “…shall only use bit manipulation functions with integral types…” -&gt; “…shall use bit manipulation functions only with integral types…”</p></li>
-<li><p><a class="reference internal" href="index.html#aou_req__bitmanipulation__enum_constraints" title="aou_req__bitmanipulation__enum_constraints"><em class="xref need">Bitmask Enum Value Constraints (aou_req__bitmanipulation__enum_constraints)</em></a> - Missing period at the end</p></li>
+<li><p><a class="reference internal" href="index.html#comp_req__bitmanipulation__bit_operations" title="comp_req__bitmanipulation__bit_operations"><em class="xref need">Support for Bit Operations (comp_req__bitmanipulation__bit_operations)</em></a></p></li>
+<li><p><a class="reference internal" href="index.html#aou_req__bitmanipulation__type_constraints" title="aou_req__bitmanipulation__type_constraints"><em class="xref need">Integral Type Constraints (aou_req__bitmanipulation__type_constraints)</em></a></p></li>
+<li><p><a class="reference internal" href="index.html#aou_req__bitmanipulation__enum_constraints" title="aou_req__bitmanipulation__enum_constraints"><em class="xref need">Bitmask Enum Value Constraints (aou_req__bitmanipulation__enum_constraints)</em></a></p></li>
 </ul>
 </td>
-<td><p>fixed, PR-2677</p></td>
+<td></td>
 </tr>
 <tr class="row-even"><td><p>REQ_02_02</p></td>
 <td><p>Is the requirement description <em>unambiguous</em> ?</p></td>
 <td><p>Especially search for “weak words” like “about”, “etc.”, “relevant” and others (see the internet documentation on this). This check shall be supported by tooling.</p></td>
 <td><p>YES</p></td>
-<td><p>Following requirements have some ambiguities/weak words:</p>
+<td><p>Following requirements had some ambiguities/weak word and were fixed in PR-2677:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="index.html#comp_req__bitmanipulation__bit_operations" title="comp_req__bitmanipulation__bit_operations"><em class="xref need">Support for Bit Operations (comp_req__bitmanipulation__bit_operations)</em></a> - “…manipulating half-bytes and bytes…” what is meant by manipulating? E.g. different implementers could have different ideas what should be done. This looks especially ambiguous related to the enumeration of all the bit-related operations in the first part of the requirement (”…setting, clearing, toggling, and checking bits…”).</p></li>
-<li><p><a class="reference internal" href="index.html#comp_req__bitmanipulation__bounds_safety" title="comp_req__bitmanipulation__bounds_safety"><em class="xref need">Bounds and Safety Checks (comp_req__bitmanipulation__bounds_safety)</em></a> - “…prevent data corruption” is too vague. Which data? What is meant by corruption?</p></li>
-<li><p><a class="reference internal" href="index.html#aou_req__bitmanipulation__enum_constraints" title="aou_req__bitmanipulation__enum_constraints"><em class="xref need">Bitmask Enum Value Constraints (aou_req__bitmanipulation__enum_constraints)</em></a> - Usage of a “weak word” explicitly mentioned in the checklist: etc.</p></li>
+<li><p><a class="reference internal" href="index.html#comp_req__bitmanipulation__bit_operations" title="comp_req__bitmanipulation__bit_operations"><em class="xref need">Support for Bit Operations (comp_req__bitmanipulation__bit_operations)</em></a></p></li>
+<li><p><a class="reference internal" href="index.html#comp_req__bitmanipulation__bounds_safety" title="comp_req__bitmanipulation__bounds_safety"><em class="xref need">Bounds and Safety Checks (comp_req__bitmanipulation__bounds_safety)</em></a></p></li>
+<li><p><a class="reference internal" href="index.html#aou_req__bitmanipulation__enum_constraints" title="aou_req__bitmanipulation__enum_constraints"><em class="xref need">Bitmask Enum Value Constraints (aou_req__bitmanipulation__enum_constraints)</em></a></p></li>
 </ul>
 </td>
-<td><p>fixed, PR-2677</p></td>
+<td></td>
 </tr>
 <tr class="row-odd"><td><p>REQ_02_03</p></td>
 <td><p>Is the requirement description <em>atomic</em> ?</p></td>
 <td><p>A good way to think about this is to consider if the requirement may be tested by one (positive) test case or needs more of these. The requirement formulation template should also avoid being non-atomic already. Note that there are cases where also non-atomic requirements are the better ones, for example if those are better understandable.</p></td>
 <td><p>YES</p></td>
-<td><p>Following requirement is not atomic:</p>
+<td><p>One requirement was not atomic, this was fixed by splitting into these (PR-2677):</p>
 <ul class="simple">
-<li><p><cite>comp_req__bitmanipulation__utilities</cite> - This requirement bundles at least four distinct functional areas (1) setting/clearing/toggling/checking bits, (2) extracting bytes, (3) manipulating half-bytes, (4) manipulating bytes. Each area requires multiple independent test cases. For example, “set bit” and “extract byte” are entirely unrelated operations with different signatures, parameters, and edge cases. A single positive test case cannot cover all of them. Consider splitting into separate requirements per operation group.</p></li>
+<li><p><a class="reference internal" href="index.html#comp_req__bitmanipulation__bit_operations" title="comp_req__bitmanipulation__bit_operations"><em class="xref need">Support for Bit Operations (comp_req__bitmanipulation__bit_operations)</em></a></p></li>
+<li><p><a class="reference internal" href="index.html#comp_req__bitmanipulation__byte_operations" title="comp_req__bitmanipulation__byte_operations"><em class="xref need">Support for Byte and Half-B... (comp_req__bitmanipulation__byte_operations)</em></a></p></li>
 </ul>
 </td>
-<td><p>split, PR-2677</p></td>
+<td></td>
 </tr>
 <tr class="row-even"><td><p>REQ_02_04</p></td>
 <td><p>Is the requirement description <em>feasible</em> ?</p></td>
@@ -757,13 +758,13 @@
 <td><p>Is the requirement <em>internally and externally consistent</em>?</p></td>
 <td><p>Does the requirement contradict other requirements within the same or higher levels? One may restrict the search to the feature for component requirements, for features to other features using same components.</p></td>
 <td><p>YES</p></td>
-<td><p>All the requirements are mutually consistent. However, there are inconsistencies between some requirements’ titles and their descriptions:</p>
+<td><p>All the requirements are mutually consistent. However, there were inconsistencies between some requirements’ titles and their descriptions, fixed in PR-2677:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="index.html#aou_req__bitmanipulation__concurrent_access" title="aou_req__bitmanipulation__concurrent_access"><em class="xref need">External Synchronization Re... (aou_req__bitmanipulation__concurrent_access)</em></a> - The title “No Side Effects on Concurrent Access” is misleading. It sounds like the library guarantees no side effects during concurrent access (i.e., it is thread-safe). The text says the opposite — the library has no thread safety, and the user must synchronize.</p></li>
-<li><p><a class="reference internal" href="index.html#aou_req__bitmanipulation__enum_constraints" title="aou_req__bitmanipulation__enum_constraints"><em class="xref need">Bitmask Enum Value Constraints (aou_req__bitmanipulation__enum_constraints)</em></a> - “…Type Safety” is misleading — the requirement is about value constraints, not type safety.</p></li>
+<li><p><a class="reference internal" href="index.html#aou_req__bitmanipulation__concurrent_access" title="aou_req__bitmanipulation__concurrent_access"><em class="xref need">External Synchronization Re... (aou_req__bitmanipulation__concurrent_access)</em></a></p></li>
+<li><p><a class="reference internal" href="index.html#aou_req__bitmanipulation__enum_constraints" title="aou_req__bitmanipulation__enum_constraints"><em class="xref need">Bitmask Enum Value Constraints (aou_req__bitmanipulation__enum_constraints)</em></a></p></li>
 </ul>
 </td>
-<td><p>fixed, PR-2677</p></td>
+<td></td>
 </tr>
 <tr class="row-even"><td><p>REQ_05_01</p></td>
 <td><p>Do the software requirements consider <em>timing constraints</em>?</p></td>
@@ -776,17 +777,17 @@
 <td><p>Does the requirement consider <em>external interfaces</em>?</p></td>
 <td><p>The SW platform’s external interfaces (to the user) are defined in the Feature Architecture, so the Feature and Component Requirements should determine the input data use and setting of output data for these interfaces. Are all output values defined?</p></td>
 <td><p>YES</p></td>
-<td><p>For following requirements there is no description of the output:</p>
+<td><p>For following requirements there was no description of the output, fixed in PR-2677:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="index.html#comp_req__bitmanipulation__bit_operations" title="comp_req__bitmanipulation__bit_operations"><em class="xref need">Support for Bit Operations (comp_req__bitmanipulation__bit_operations)</em></a> - The requirement describes inputs but not outputs — no return types or return semantics specified.</p></li>
-<li><p><a class="reference internal" href="index.html#comp_req__bitmanipulation__bounds_safety" title="comp_req__bitmanipulation__bounds_safety"><em class="xref need">Bounds and Safety Checks (comp_req__bitmanipulation__bounds_safety)</em></a> - Describes input validation but no output on failure. When an interface operation receives invalid input, what is returned? The error output path is undefined.</p></li>
+<li><p><a class="reference internal" href="index.html#comp_req__bitmanipulation__bit_operations" title="comp_req__bitmanipulation__bit_operations"><em class="xref need">Support for Bit Operations (comp_req__bitmanipulation__bit_operations)</em></a></p></li>
+<li><p><a class="reference internal" href="index.html#comp_req__bitmanipulation__bounds_safety" title="comp_req__bitmanipulation__bounds_safety"><em class="xref need">Bounds and Safety Checks (comp_req__bitmanipulation__bounds_safety)</em></a></p></li>
 </ul>
-<p>Additionally, following requirements show mismatch with the architecture:</p>
+<p>Additionally, following requirement shows mismatch with the architecture, to be fixed by architecture update:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="index.html#comp_req__bitmanipulation__byte_operations" title="comp_req__bitmanipulation__byte_operations"><em class="xref need">Support for Byte and Half-B... (comp_req__bitmanipulation__byte_operations)</em></a> - “extracting bytes and manipulating half-bytes” have no corresponding interface operations in the architecture.</p></li>
 </ul>
 </td>
-<td><p>fixed reqs, PR-2677</p></td>
+<td><p>#2698</p></td>
 </tr>
 <tr class="row-even"><td><p>REQ_07_01</p></td>
 <td><p>Is the <em>safety</em> attribute set correctly?</p></td>
@@ -820,8 +821,8 @@
 <td><p>Do the requirements that define a safety mechanism specify the error reaction leading to a safe state?</p></td>
 <td><p>Alternatively to the safe state there could also be “repair” mechanisms. Also do not forget to consider REQ_05_01 for these.</p></td>
 <td><p>YES</p></td>
-<td><p>There is only one requirement here that does define a safety mechanism - <a class="reference internal" href="index.html#comp_req__bitmanipulation__bounds_safety" title="comp_req__bitmanipulation__bounds_safety"><em class="xref need">Bounds and Safety Checks (comp_req__bitmanipulation__bounds_safety)</em></a>, but it fails to specify error reaction leading to a safe state (e.g. abort or return error indicator). Just “…prevent data corruption” is not enough. &#64;aschemmel-tech - updated requirement text does not explain what is the action on the input bits (I expect these are not changed, but this should be explicitly specified). Also I recommend not refer “to maintain a safe state” as we do not know the safe state of the system. Not executing the bitmanipulation and returning false is enough. Is <cite>aou_req__bitmanipulation__bit_validation</cite> really needed if this safety mechanism is implemented?</p></td>
-<td><p>fixed, PR-2677</p></td>
+<td><p>There is only one requirement here that does define a safety mechanism - <a class="reference internal" href="index.html#comp_req__bitmanipulation__bounds_safety" title="comp_req__bitmanipulation__bounds_safety"><em class="xref need">Bounds and Safety Checks (comp_req__bitmanipulation__bounds_safety)</em></a>, findings on this were fixed in PR-2667 and PR-2696</p></td>
+<td></td>
 </tr>
 </tbody>
 </table>
