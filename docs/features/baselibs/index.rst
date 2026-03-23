@@ -36,7 +36,7 @@ Base Libraries (v0.5 beta)
    docs/safety_analysis/dfa.rst
    docs/safety_analysis/fmea.rst
    docs/safety_planning/index.rst
-
+   abi_compatible_data_types/index.rst
 
 Feature flag
 ============
