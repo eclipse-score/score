@@ -47,7 +47,7 @@ Maintenance Effort 🤔 unclear in relation to PoC.
 
 Ease of use 💚 No change for developers.
 
-Option M: Many Bazel targets
+Option M: Module API - Many Bazel targets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We drop the current approach and switch to the PoC approach.
