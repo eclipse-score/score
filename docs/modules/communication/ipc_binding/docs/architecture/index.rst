@@ -20,7 +20,7 @@ IPC Binding Component Architecture
    :security: YES
    :safety:  ASIL_B
    :status: valid
-   :uses: logic_arc_int__logging__logging, logic_arc_int__tracing__tracing, logic_arc_int__baselibs__memory_shared, logic_arc_int__baselibs__message_passing, logic_arc_int__baselibs__json
+   :uses: logic_arc_int__logging__logging, logic_arc_int__tracing__tracing, logic_arc_int__baselibs__memory_shared, logic_arc_int__com__message_passing, logic_arc_int__baselibs__json
 
    .. needarch::
       :scale: 50

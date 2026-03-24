@@ -16,11 +16,11 @@ Message Passing Component Architecture
 **************************************
 
 .. comp:: Message Passing
-   :id: comp__baselibs_message_passing
+   :id: comp__com_message_passing
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :implements: logic_arc_int__baselibs__message_passing
+   :implements: logic_arc_int__com__message_passing
    :uses: logic_arc_int__os__message_passing
 
    .. needarch::
@@ -31,14 +31,14 @@ Message Passing Component Architecture
 
 
 .. logic_arc_int:: Message Passing
-   :id: logic_arc_int__baselibs__message_passing
+   :id: logic_arc_int__com__message_passing
    :security: YES
    :safety: ASIL_B
    :status: valid
 
 .. logic_arc_int_op:: Send Message
-   :id: logic_arc_int_op__baselibs__mp_register
+   :id: logic_arc_int_op__com__mp_register
    :security: YES
    :safety:  ASIL_B
    :status: valid
-   :included_by: logic_arc_int__baselibs__message_passing
+   :included_by: logic_arc_int__com__message_passing
