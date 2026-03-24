@@ -76,43 +76,6 @@ or C++ and provide bindings to the other language to maximize maintainability an
 However, if there are strong technical reasons (such as language-specific performance or safety
 requirements), a library may be implemented separately in both Rust and C++.
 
-Specification
-=============
-
-The base libraries feature consists of the following libraries, all of which are currently implemented in C++:
-
-- **bitmanipulation**: Utilities for bit manipulation.
-- **concurrency**: Provides a generic interface to execute any C++ callable in a parallel context,
-  supporting various execution strategies (e.g., thread pool, timed execution), thread safety,
-  interruption handling, and periodic/delayed task execution.
-- **containers**: Offers a ``DynamicArray`` (fixed-size array with dynamic construction-time size)
-  and an intrusive linked list implementation conforming to the
-  `P0406R1 proposal <https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0406r1.html>`_.
-- **json**: JSON abstraction layer that can switch between different parsers/serializers under the hood.
-- **filesystem**: Filesystem manipulation library similar to ``std::filesystem``.
-- **futurecpp**: Extends the C++14 Standard Library with features from newer C++ standards up to C++26,
-  as well as selected proposals for the C++ Standard Library.
-- **safecpp/aborts_upon_exception**: Globally prevents creation of exception objects by calling ``std::abort()``
-  immediately.
-- **safecpp/coverage_termination_handler**: Helper library to enable collective code coverage information in
-  GTest death tests.
-- **safecpp/safe_math**: Provides safe implementations for arithmetic and related operations for
-  signed/unsigned integral types and floating point types.
-- **safecpp/scoped_function**: Allows developers to consciously limit when an enclosed callable
-  (function) can be invoked.
-- **memory**: Utility library for memory handling, including an abstraction layer for shared memory.
-- **os**: OS Abstraction Layer (OSAL) to interface with different POSIX-like operating systems such
-  as Linux and QNX.
-- **result**: Provides a unified approach to error handling without exceptions, conforming to C++23
-  ``std::expected``.
-- **static_reflection_with_serialization**: A header-only library for binary serialization,
-  deserialization, and compile-time type reflection of heterogenuous C++ data structures with focus
-  on compile-time safety and efficiency of serialization, as well as efficiency of filtering by
-  content during deserialization.
-- **mw::log**: Logging library.
-- **utils**: Provides a collection of small, reusable utilities that do not fit into the other
-  base libraries.
-
 Backwards Compatibility
 =======================
 
