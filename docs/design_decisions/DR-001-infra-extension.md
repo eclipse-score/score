@@ -107,7 +107,7 @@ the build.
   - privileged operations where required
 
 #### Requirements
-- Linux host OS (Ubuntu LTS for reference integration)
+- Linux host OS with **Ubuntu 24.04 LTS** as the minimum supported value (MSV)
 - Kernel must support:
   - unprivileged user namespaces
   - mount operations required by Bazel sandboxing
@@ -118,7 +118,9 @@ the build.
 - Containers **cannot** mitigate host-kernel restrictions
 
 #### Policy
-- A **Reference Integration Host Baseline** must be defined (e.g. Ubuntu 22.04).
+- The **Reference Integration Host Baseline** is **Ubuntu 24.04 LTS**.
+- Temporary use of older hosts due to infrastructure constraints does **not** change the
+  contract and must be treated as an explicit exception.
 - Deviations (e.g. privileged runners, sandbox disabled) must be explicit and isolated.
 
 ---
@@ -192,15 +194,26 @@ These constraints must be handled in Layer 1 and Layer 2.
 
 ## Minimum Supported Baselines
 
-### OS and Runtime Baseline
-- Minimum supported baseline: **Ubuntu 20.04 LTS** (subject to revision)
-- Toolchains must be built against this baseline
-- Older environments are **not supported**
+### Host Platform Baseline
+- Minimum supported value (MSV) for the host platform: **Ubuntu 24.04 LTS**
+- This applies to developer hosts, CI runners, and other environments that execute Bazel
+  actions directly on the host
+- Temporary execution on older hosts due to runner limitations or sandbox workarounds does
+  **not** redefine the supported baseline and must remain a documented exception
+
+### Toolchain Runtime Compatibility
+- Distributed toolchains must be runnable on the host MSV or be executed inside a versioned
+  execution context that provides the required runtime ABI
+- A temporary downgrade of a toolchain build baseline to accommodate current CI constraints
+  does **not** redefine the host platform contract
+- Older host environments are **not supported** unless explicitly documented as exceptions
 
 ### Rationale
 We explicitly do **not** support all historical `glibc` or kernel versions.
 Portability is achieved by choosing and documenting a baseline, not by unlimited
-backward compatibility. Layer 2 can easily be virtualized as needed, for future reproducibility.
+backward compatibility. The host platform contract must not be dictated by temporary
+workarounds in individual modules or CI pipelines. Layer 2 can be virtualized as needed
+for future reproducibility.
 
 ---
 
