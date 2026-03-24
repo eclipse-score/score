@@ -25,7 +25,8 @@ Context and Problem
 S-CORE aims to provide modules that can be smoothly integrated into safety-relevant
 ECU projects. To support this, S-CORE modules must provide their users with well-defined
 artifacts that clearly describe the content of a
-`dependable element <https://github.com/eclipse-score/process_description/blob/main/process/glossary/index.rst>`_.
+dependable element
+(`see process glossary <https://eclipse-score.github.io/process_description/main/glossary/index.html#terms>`_).
 The existing documentation build concept does not properly support this.
 
 A solution for overcoming these limitations is shown in
@@ -33,8 +34,34 @@ A solution for overcoming these limitations is shown in
 It improves the modularity of documentation and allows modules to be built
 hermetically by leveraging the features that Bazel provides as a build system.
 
+Goals
+-----
+
+- **Proper support of S-CORE adoption**: Enable teams to structure their documentation
+  according to the S-CORE process, with dedicated artifact types for requirements,
+  architectural design, safety analysis, and assumptions of use.
+- **Proper support of Bazel**: Ensure documentation builds adhere to Bazel's core
+  principles — hermeticity, reproducibility, and correct dependency tracking — enabling
+  action caching, remote caching, remote execution, and parallel builds.
+- **Implementation effort**: The one-time cost of migrating existing repositories from
+  the current ``docs()`` macro to the new rule-based approach, including BUILD file
+  changes and any necessary restructuring of documentation sources.
+- **Maintenance effort**: The ongoing cost of keeping the documentation build
+  infrastructure working, including dependency management, debugging build failures,
+  and adapting to changes in Bazel, Sphinx, or the S-CORE process.
+- **Ease of use**: How straightforward it is for developers to create, build, preview,
+  and update documentation as part of their normal development workflow.
+
+Options Considered
+------------------
+
+Option S: Single ``docs()`` Only
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+We keep the current ``docs()`` macro and do not adopt the module-based approach.
+
 Limitations of the Current Approach
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The current documentation build is driven by ``src/incremental.py`` — a single entry
 point shared by multiple ``py_binary`` targets. It deliberately escapes the Bazel
@@ -68,8 +95,25 @@ This compromises the following fundamental Bazel features:
   only in the workspace; Bazel's dependency graph is incomplete, so it cannot guarantee
   a correct topological execution order.
 
+Assessment
+~~~~~~~~~~
+
+- **Proper support of S-CORE adoption** 😡 No dedicated artifact types; teams must
+  manually structure documentation to match the S-CORE process.
+- **Proper support of Bazel** 😡 Sphinx builds escape the sandbox, breaking
+  hermeticity, action caching, remote execution, and parallel safety.
+- **Implementation effort** 💚 No additional effort.
+- **Maintenance effort** 💛 Known workarounds remain in place, but no new complexity
+  is introduced.
+- **Ease of use** 💚 No change for developers.
+
+Option M: Module API — Many Bazel Targets
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+We drop the current approach and switch to the module-based approach.
+
 How PR #95 Improves the Situation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. **Fully sandboxed Sphinx builds** —
    The PR introduces ``sphinx_wrapper.py``, a new Sphinx entry point that accepts
@@ -114,45 +158,8 @@ How PR #95 Improves the Situation
    build-action-produced JSON file, keeping each module's configuration self-contained
    and reproducible.
 
-Goals
------
-
-- **Proper support of S-CORE adoption**: Enable teams to structure their documentation
-  according to the S-CORE process, with dedicated artifact types for requirements,
-  architectural design, safety analysis, and assumptions of use.
-- **Proper support of Bazel**: Ensure documentation builds adhere to Bazel's core
-  principles — hermeticity, reproducibility, and correct dependency tracking — enabling
-  action caching, remote caching, remote execution, and parallel builds.
-- **Implementation effort**: The one-time cost of migrating existing repositories from
-  the current ``docs()`` macro to the new rule-based approach, including BUILD file
-  changes and any necessary restructuring of documentation sources.
-- **Maintenance effort**: The ongoing cost of keeping the documentation build
-  infrastructure working, including dependency management, debugging build failures,
-  and adapting to changes in Bazel, Sphinx, or the S-CORE process.
-- **Ease of use**: How straightforward it is for developers to create, build, preview,
-  and update documentation as part of their normal development workflow.
-
-Options Considered
-------------------
-
-Option S: Single ``docs()`` Only
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-We keep the current ``docs()`` macro and do not adopt the module-based approach.
-
-- **Proper support of S-CORE adoption** 😡 No dedicated artifact types; teams must
-  manually structure documentation to match the S-CORE process.
-- **Proper support of Bazel** 😡 Sphinx builds escape the sandbox, breaking
-  hermeticity, action caching, remote execution, and parallel safety.
-- **Implementation effort** 💚 No additional effort.
-- **Maintenance effort** 💛 Known workarounds remain in place, but no new complexity
-  is introduced.
-- **Ease of use** 💚 No change for developers.
-
-Option M: Module API — Many Bazel Targets
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-We drop the current approach and switch to the module-based approach.
+Assessment
+~~~~~~~~~~
 
 - **Proper support of S-CORE adoption** 💚 Purpose-built rules for each S-CORE
   artifact type (requirements, architectural design, safety analysis, etc.).
