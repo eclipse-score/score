@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -569,7 +569,7 @@ SPDX-License-Identifier: Apache-2.0
 <ul class="simple">
 <li><p><strong>Date:</strong> 2026-01-20</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-d3751543">
+<div class="need_container docutils container" id="SNCB-df98b4ba">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__execution_contract">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -708,7 +708,7 @@ the build.</p>
 <section id="requirements">
 <h4>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h4>
 <ul class="simple">
-<li><p>Linux host OS (Ubuntu LTS for reference integration)</p></li>
+<li><p>Linux host OS with <strong>Ubuntu 24.04 LTS</strong> as the minimum supported value (MSV)</p></li>
 <li><p>Kernel must support:</p>
 <ul>
 <li><p>unprivileged user namespaces</p></li>
@@ -728,7 +728,9 @@ the build.</p>
 <section id="policy">
 <h4>Policy<a class="headerlink" href="#policy" title="Link to this heading">#</a></h4>
 <ul class="simple">
-<li><p>A <strong>Reference Integration Host Baseline</strong> must be defined (e.g. Ubuntu 22.04).</p></li>
+<li><p>The <strong>Reference Integration Host Baseline</strong> is <strong>Ubuntu 24.04 LTS</strong>.</p></li>
+<li><p>Temporary use of older hosts due to infrastructure constraints does <strong>not</strong> change the
+contract and must be treated as an explicit exception.</p></li>
 <li><p>Deviations (e.g. privileged runners, sandbox disabled) must be explicit and isolated.</p></li>
 </ul>
 </section>
@@ -837,19 +839,33 @@ and does not require continued IDE support</p></li>
 <hr class="docutils" />
 <section id="minimum-supported-baselines">
 <h2>Minimum Supported Baselines<a class="headerlink" href="#minimum-supported-baselines" title="Link to this heading">#</a></h2>
-<section id="os-and-runtime-baseline">
-<h3>OS and Runtime Baseline<a class="headerlink" href="#os-and-runtime-baseline" title="Link to this heading">#</a></h3>
+<section id="host-platform-baseline">
+<h3>Host Platform Baseline<a class="headerlink" href="#host-platform-baseline" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Minimum supported baseline: <strong>Ubuntu 20.04 LTS</strong> (subject to revision)</p></li>
-<li><p>Toolchains must be built against this baseline</p></li>
-<li><p>Older environments are <strong>not supported</strong></p></li>
+<li><p>Minimum supported value (MSV) for the host platform: <strong>Ubuntu 24.04 LTS</strong></p></li>
+<li><p>This applies to developer hosts, CI runners, and other environments that execute Bazel
+actions directly on the host</p></li>
+<li><p>Temporary execution on older hosts due to runner limitations or sandbox workarounds does
+<strong>not</strong> redefine the supported baseline and must remain a documented exception</p></li>
+</ul>
+</section>
+<section id="toolchain-runtime-compatibility">
+<h3>Toolchain Runtime Compatibility<a class="headerlink" href="#toolchain-runtime-compatibility" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Distributed toolchains must be runnable on the host MSV or be executed inside a versioned
+execution context that provides the required runtime ABI</p></li>
+<li><p>A temporary downgrade of a toolchain build baseline to accommodate current CI constraints
+does <strong>not</strong> redefine the host platform contract</p></li>
+<li><p>Older host environments are <strong>not supported</strong> unless explicitly documented as exceptions</p></li>
 </ul>
 </section>
 <section id="rationale">
 <h3>Rationale<a class="headerlink" href="#rationale" title="Link to this heading">#</a></h3>
 <p>We explicitly do <strong>not</strong> support all historical <code class="docutils literal notranslate"><span class="pre">glibc</span></code> or kernel versions.
 Portability is achieved by choosing and documenting a baseline, not by unlimited
-backward compatibility. Layer 2 can easily be virtualized as needed, for future reproducibility.</p>
+backward compatibility. The host platform contract must not be dictated by temporary
+workarounds in individual modules or CI pipelines. Layer 2 can be virtualized as needed
+for future reproducibility.</p>
 </section>
 </section>
 <hr class="docutils" />
@@ -965,7 +981,8 @@ reproduce builds years into the future.</p>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-supported-baselines">Minimum Supported Baselines</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#os-and-runtime-baseline">OS and Runtime Baseline</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#host-platform-baseline">Host Platform Baseline</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#toolchain-runtime-compatibility">Toolchain Runtime Compatibility</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale">Rationale</a></li>
 </ul>
 </li>
