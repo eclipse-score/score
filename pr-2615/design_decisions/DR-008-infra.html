@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>DR-008-Infra: Docs Modularity &#8212; S-CORE  documentation</title>
+    <title>DR-008-Infra: Documentation Modularity &#8212; S-CORE  documentation</title>
   
   
   
@@ -493,7 +493,7 @@
 <li class="toctree-l1"><a class="reference internal" href="DR-004-infra.html">DR-004-Infra: Bi-directional traceability in docs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DR-006-infra.html">DR-006-Infra: Clippy Integration via rules_lint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DR-007-infra.html">DR-007-Infra: Solution for cyclic dependencies between docs-as-code and process description</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">DR-008-Infra: Docs Modularity</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">DR-008-Infra: Documentation Modularity</a></li>
 </ul>
 </div>
 </nav></div>
@@ -537,7 +537,7 @@
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">Decision Records</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">DR-008-Infra: Docs Modularity</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">DR-008-Infra: Documentation Modularity</span></li>
   </ul>
 </nav>
 </div>
@@ -554,9 +554,9 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="dr-008-infra-docs-modularity">
-<h1>DR-008-Infra: Docs Modularity<a class="headerlink" href="#dr-008-infra-docs-modularity" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-d1620b44">
+  <section id="dr-008-infra-documentation-modularity">
+<h1>DR-008-Infra: Documentation Modularity<a class="headerlink" href="#dr-008-infra-documentation-modularity" title="Link to this heading">#</a></h1>
+<div class="need_container docutils container" id="SNCB-bf78ee5e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__docs_modularity">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -599,70 +599,206 @@
 </table>
 </div>
 </div>
-<section id="context-problem">
-<h2>Context / Problem<a class="headerlink" href="#context-problem" title="Link to this heading">#</a></h2>
-<p>There is a proof-of-concept for an alternative documentation build concept introduced in
-<a class="reference external" href="https://github.com/eclipse-score/tooling/pull/95">tooling PR 95</a>.
-It improves the modularity of documentation but drops features of the existing documentation concept.</p>
-<section id="goals-and-requirements">
-<h3>Goals and Requirements<a class="headerlink" href="#goals-and-requirements" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong>Implementation Effort</strong>: Don’t spend much one-time effort to implement the change proposed here.</p></li>
-<li><p><strong>Maintenance Effort</strong>: Don’t spend much ongoing effort due to increased complexity.</p></li>
-<li><p><strong>Ease of use</strong>: Developers don’t like working on documentation, so we should make it easy on them.</p></li>
-</ul>
+<section id="context-and-problem">
+<h2>Context and Problem<a class="headerlink" href="#context-and-problem" title="Link to this heading">#</a></h2>
+<p>S-CORE aims to provide modules that can be smoothly integrated into safety-relevant
+ECU projects. To support this, S-CORE modules must provide their users with well-defined
+artifacts that clearly describe the content of a
+dependable element
+(<a class="reference external" href="https://eclipse-score.github.io/process_description/main/glossary/index.html#terms">see process glossary</a>).
+The existing documentation build concept does not properly support this.</p>
+<p>A solution for overcoming these limitations is shown in
+<a class="reference external" href="https://github.com/eclipse-score/tooling/pull/95">tooling PR #95</a>.
+It improves the modularity of documentation and allows modules to be built
+hermetically by leveraging the features that Bazel provides as a build system.</p>
 </section>
+<section id="goals">
+<h2>Goals<a class="headerlink" href="#goals" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Proper support of S-CORE adoption</strong>: Enable teams to structure their documentation
+according to the S-CORE process, with dedicated artifact types for requirements,
+architectural design, safety analysis, and assumptions of use.</p></li>
+<li><p><strong>Proper support of Bazel</strong>: Ensure documentation builds adhere to Bazel’s core
+principles — hermeticity, reproducibility, and correct dependency tracking — enabling
+action caching, remote caching, remote execution, and parallel builds.</p></li>
+<li><p><strong>Implementation effort</strong>: The one-time cost of migrating existing repositories from
+the current <code class="docutils literal notranslate"><span class="pre">docs()</span></code> macro to the new rule-based approach, including BUILD file
+changes and any necessary restructuring of documentation sources.</p></li>
+<li><p><strong>Maintenance effort</strong>: The ongoing cost of keeping the documentation build
+infrastructure working, including dependency management, debugging build failures,
+and adapting to changes in Bazel, Sphinx, or the S-CORE process.</p></li>
+<li><p><strong>Ease of use</strong>: How straightforward it is for developers to create, build, preview,
+and update documentation as part of their normal development workflow.</p></li>
+</ul>
 </section>
 <section id="options-considered">
 <h2>Options Considered<a class="headerlink" href="#options-considered" title="Link to this heading">#</a></h2>
 <section id="option-s-single-docs-only">
-<h3>Option S: Single docs() only<a class="headerlink" href="#option-s-single-docs-only" title="Link to this heading">#</a></h3>
-<p>We keep the current docs-as-code concept and drop the PoC proposal.</p>
-<p>Implementation Effort 💚 No additional effort.</p>
-<p>Maintenance Effort 🤔 unclear in relation to PoC.</p>
-<p>Ease of use 💚 No change for developers.</p>
+<h3>Option S: Single <code class="docutils literal notranslate"><span class="pre">docs()</span></code> Only<a class="headerlink" href="#option-s-single-docs-only" title="Link to this heading">#</a></h3>
+<p>We keep the current <code class="docutils literal notranslate"><span class="pre">docs()</span></code> macro and do not adopt the module-based approach.</p>
+<section id="limitations-of-the-current-approach">
+<h4>Limitations of the Current Approach<a class="headerlink" href="#limitations-of-the-current-approach" title="Link to this heading">#</a></h4>
+<p>The current documentation build is driven by <code class="docutils literal notranslate"><span class="pre">src/incremental.py</span></code> — a single entry
+point shared by multiple <code class="docutils literal notranslate"><span class="pre">py_binary</span></code> targets. It deliberately escapes the Bazel
+sandbox by reading <code class="docutils literal notranslate"><span class="pre">BUILD_WORKSPACE_DIRECTORY</span></code> and writing Sphinx output directly
+into the workspace’s <code class="docutils literal notranslate"><span class="pre">_build/</span></code> directory, including deleting a cache file
+(<code class="docutils literal notranslate"><span class="pre">score_source_code_linker_cache.json</span></code>) as a side effect. As a result, these targets
+only function via <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">run</span></code>, never <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">build</span></code>, and parallel invocations can
+race on shared workspace state.</p>
+<p>This compromises the following fundamental Bazel features:</p>
+<ul class="simple">
+<li><p><strong>Hermeticity</strong> — Actions can read and write arbitrary host filesystem state, so
+builds depend on the machine environment rather than only on declared inputs.</p></li>
+<li><p><strong>Reproducibility</strong> — Because outputs land in <code class="docutils literal notranslate"><span class="pre">_build/</span></code> (workspace-resident, not
+Bazel-tracked), two identical <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">run</span></code> invocations starting from different
+workspace states can produce different results.</p></li>
+<li><p><strong>Action caching</strong> — Bazel cannot cache or invalidate results it does not know
+about; outputs written outside the output tree are invisible to the cache, so
+incremental builds may silently serve stale artifacts.</p></li>
+<li><p><strong>Remote execution</strong> — Remote build systems require all inputs and outputs to be
+declared; workspace-relative reads and writes cannot be shipped to a remote worker.</p></li>
+<li><p><strong>Remote caching</strong> — Results cannot be shared across machines via a remote cache
+because the outputs are never stored in Bazel’s Content-Addressable Store (CAS).</p></li>
+<li><p><strong>Parallel safety</strong> — Bazel guarantees that sandboxed actions do not interfere with
+each other; deleting <code class="docutils literal notranslate"><span class="pre">_build/score_source_code_linker_cache.json</span></code> is an undeclared
+side effect that races with concurrent builds or actions.</p></li>
+<li><p><strong>bazel build compatibility</strong> — These targets are restricted to <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">run</span></code> only,
+since <code class="docutils literal notranslate"><span class="pre">BUILD_WORKSPACE_DIRECTORY</span></code> is not set during <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">build</span></code>, making them
+unusable in CI pipelines that rely on standard build commands.</p></li>
+<li><p><strong>Build graph correctness</strong> — Downstream targets cannot depend on outputs that exist
+only in the workspace; Bazel’s dependency graph is incomplete, so it cannot guarantee
+a correct topological execution order.</p></li>
+</ul>
+</section>
+<section id="assessment">
+<h4>Assessment<a class="headerlink" href="#assessment" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Proper support of S-CORE adoption</strong> 😡 No dedicated artifact types; teams must
+manually structure documentation to match the S-CORE process.</p></li>
+<li><p><strong>Proper support of Bazel</strong> 😡 Sphinx builds escape the sandbox, breaking
+hermeticity, action caching, remote execution, and parallel safety.</p></li>
+<li><p><strong>Implementation effort</strong> 💚 No additional effort.</p></li>
+<li><p><strong>Maintenance effort</strong> 💛 Known workarounds remain in place, but no new complexity
+is introduced.</p></li>
+<li><p><strong>Ease of use</strong> 💚 No change for developers.</p></li>
+</ul>
+</section>
 </section>
 <section id="option-m-module-api-many-bazel-targets">
-<h3>Option M: Module API - Many Bazel targets<a class="headerlink" href="#option-m-module-api-many-bazel-targets" title="Link to this heading">#</a></h3>
-<p>We drop the current approach and switch to the PoC approach.</p>
-<p>Implementation Effort 😡 Requires restructuring all documentation.</p>
-<p>Maintenance Effort 🤔 unclear</p>
-<p>Ease of use 😡 Requires developers to adapt to new workflow. No VSCode LSP integration.</p>
+<h3>Option M: Module API — Many Bazel Targets<a class="headerlink" href="#option-m-module-api-many-bazel-targets" title="Link to this heading">#</a></h3>
+<p>We drop the current approach and switch to the module-based approach.</p>
+<section id="how-pr-95-improves-the-situation">
+<h4>How PR #95 Improves the Situation<a class="headerlink" href="#how-pr-95-improves-the-situation" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p><strong>Fully sandboxed Sphinx builds</strong> —
+The PR introduces <code class="docutils literal notranslate"><span class="pre">sphinx_wrapper.py</span></code>, a new Sphinx entry point that accepts
+explicit command-line arguments (<code class="docutils literal notranslate"><span class="pre">--index_file</span></code>, <code class="docutils literal notranslate"><span class="pre">--output_dir</span></code>, <code class="docutils literal notranslate"><span class="pre">--config</span></code>,
+<code class="docutils literal notranslate"><span class="pre">--builder</span></code>) and is invoked through proper <code class="docutils literal notranslate"><span class="pre">ctx.actions.run()</span></code> calls inside
+dedicated Bazel rule implementations. All inputs and outputs are declared, so Sphinx
+runs entirely within the Bazel sandbox. This restores hermeticity, action caching,
+remote execution, remote caching, parallel safety, and full <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">build</span></code>
+compatibility.</p></li>
+<li><p><strong>Proper JSON serialization for external needs</strong> —
+Rather than embedding label lists as environment variable strings, the PR writes a
+well-formed <code class="docutils literal notranslate"><span class="pre">needs_external_needs.json</span></code> file using <code class="docutils literal notranslate"><span class="pre">ctx.actions.write()</span></code> with
+<code class="docutils literal notranslate"><span class="pre">json.encode_indent()</span></code>, and passes it as a declared build input. The generated
+<code class="docutils literal notranslate"><span class="pre">conf.py</span></code> reads this file directly with <code class="docutils literal notranslate"><span class="pre">json.load()</span></code>. This ensures correct
+JSON parsing and reliable cache invalidation when dependencies change.</p></li>
+<li><p><strong>Provider-based dependency tracking</strong> —
+The PR replaces string-based label manipulation with a set of typed Bazel
+providers — <code class="docutils literal notranslate"><span class="pre">SphinxSourcesInfo</span></code>, <code class="docutils literal notranslate"><span class="pre">SphinxModuleInfo</span></code>, <code class="docutils literal notranslate"><span class="pre">SphinxNeedsInfo</span></code>,
+<code class="docutils literal notranslate"><span class="pre">DependableElementInfo</span></code>, and others. Dependency information now flows through
+the build graph via properly typed provider fields and transitive <code class="docutils literal notranslate"><span class="pre">depset</span></code>
+collections, making cross-module references both robust and easy to reason about.</p></li>
+<li><p><strong>Composable, purpose-built rules</strong> —
+Instead of a single monolithic macro generating many targets at once, the PR offers
+a composable set of Bazel rules — <code class="docutils literal notranslate"><span class="pre">sphinx_module</span></code>, <code class="docutils literal notranslate"><span class="pre">dependable_element</span></code>,
+<code class="docutils literal notranslate"><span class="pre">feature_requirements</span></code>, <code class="docutils literal notranslate"><span class="pre">component_requirements</span></code>, <code class="docutils literal notranslate"><span class="pre">architectural_design</span></code>,
+<code class="docutils literal notranslate"><span class="pre">safety_analysis</span></code>, and more. Each is a proper Bazel rule with well-defined
+attributes, making builds more modular, testable, and easier to extend.</p></li>
+<li><p><strong>No workspace side effects</strong> —
+All build outputs are written to Bazel-managed directories. The PR includes a
+dedicated <code class="docutils literal notranslate"><span class="pre">sphinx_html_merge.py</span></code> tool that merges HTML from multiple modules
+using only declared inputs and outputs, ensuring that no files are created,
+modified, or deleted in the source tree during a build.</p></li>
+<li><p><strong>Template-driven per-module configuration</strong> —
+Rather than relying on a single shared <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>, the PR generates a tailored
+Sphinx configuration for each module from a <code class="docutils literal notranslate"><span class="pre">conf.template.py</span></code> template using
+<code class="docutils literal notranslate"><span class="pre">ctx.actions.expand_template()</span></code>. External needs are loaded from the
+build-action-produced JSON file, keeping each module’s configuration self-contained
+and reproducible.</p></li>
+</ol>
+</section>
+<section id="id1">
+<h4>Assessment<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Proper support of S-CORE adoption</strong> 💚 Purpose-built rules for each S-CORE
+artifact type (requirements, architectural design, safety analysis, etc.).</p></li>
+<li><p><strong>Proper support of Bazel</strong> 💚 Fully sandboxed builds with declared inputs and
+outputs, enabling caching, remote execution, and reproducibility.</p></li>
+<li><p><strong>Implementation effort</strong> 😡 Requires restructuring all existing documentation into
+per-module BUILD targets.</p></li>
+<li><p><strong>Maintenance effort</strong> 💚 Documentation builds are standard Bazel actions — no
+custom scripts or workspace-escaping workarounds to maintain.</p></li>
+<li><p><strong>Ease of use</strong> 😡 Requires developers to adapt to a new workflow. No VS Code LSP
+integration (Esbonio) available.</p></li>
+</ul>
+</section>
 </section>
 <section id="option-c-combine-the-best-of-both">
 <h3>Option C: Combine the Best of Both<a class="headerlink" href="#option-c-combine-the-best-of-both" title="Link to this heading">#</a></h3>
-<p>We integrated the advantages of the PoC into the existing solution maintaining all benefits.</p>
-<p>Implementation Effort 😡 Certainly the most effort</p>
-<p>Maintenance Effort 😡 Certainly the most effort</p>
-<p>Ease of use 💚 No mandatory change for developers at first but extensions?</p>
+<p>We integrate the module-based rules into the existing solution, maintaining the current
+developer experience while adding S-CORE structure and Bazel correctness where possible.</p>
+<ul class="simple">
+<li><p><strong>Proper support of S-CORE adoption</strong> 💛 Possible through gradual adoption, but both
+systems must be kept consistent.</p></li>
+<li><p><strong>Proper support of Bazel</strong> 💛 Module-based targets are fully sandboxed, but the
+<code class="docutils literal notranslate"><span class="pre">docs()</span></code> macro path retains its existing sandbox violations.</p></li>
+<li><p><strong>Implementation effort</strong> 😡 Highest effort — requires implementing and maintaining
+both approaches in parallel.</p></li>
+<li><p><strong>Maintenance effort</strong> 😡 Two parallel documentation build paths must be kept working
+and consistent.</p></li>
+<li><p><strong>Ease of use</strong> 💚 No mandatory change for developers initially; module-based rules
+available as an opt-in extension.</p></li>
+</ul>
 </section>
 </section>
 <section id="evaluation">
 <h2>Evaluation<a class="headerlink" href="#evaluation" title="Link to this heading">#</a></h2>
-<p>Here is the summary, how well each option achieves the goals in order of goal importance:</p>
+<p>Summary of how well each option achieves the goals, in order of importance:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <colgroup>
-<col style="width: 33.3%" />
-<col style="width: 22.2%" />
-<col style="width: 22.2%" />
-<col style="width: 22.2%" />
+<col style="width: 45.5%" />
+<col style="width: 18.2%" />
+<col style="width: 18.2%" />
+<col style="width: 18.2%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Goals</p></th>
+<tr class="row-odd"><th class="head"><p>Goal</p></th>
 <th class="head"><p>Option S</p></th>
 <th class="head"><p>Option M</p></th>
 <th class="head"><p>Option C</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Implementation Effort</p></td>
+<tr class="row-even"><td><p>Proper support of S-CORE adoption</p></td>
+<td><p>😡</p></td>
+<td><p>💚</p></td>
+<td><p>💛</p></td>
+</tr>
+<tr class="row-odd"><td><p>Proper support of Bazel</p></td>
+<td><p>😡</p></td>
+<td><p>💚</p></td>
+<td><p>💛</p></td>
+</tr>
+<tr class="row-even"><td><p>Implementation effort</p></td>
 <td><p>💚</p></td>
 <td><p>😡</p></td>
 <td><p>😡</p></td>
 </tr>
-<tr class="row-odd"><td><p>Maintenance Effort</p></td>
-<td><p>🤔</p></td>
-<td><p>🤔</p></td>
+<tr class="row-odd"><td><p>Maintenance effort</p></td>
+<td><p>💛</p></td>
+<td><p>💚</p></td>
 <td><p>😡</p></td>
 </tr>
 <tr class="row-even"><td><p>Ease of use</p></td>
@@ -673,7 +809,11 @@ It improves the modularity of documentation but drops features of the existing d
 </tbody>
 </table>
 </div>
-<p><strong>Decision:</strong> Option S has no downsides while the alternatives do.</p>
+</section>
+<section id="decision">
+<h2>Decision<a class="headerlink" href="#decision" title="Link to this heading">#</a></h2>
+<p>Option M — adopt the module-based approach and invest in VS Code LSP integration
+to restore the developer experience.</p>
 </section>
 </section>
 
@@ -724,17 +864,24 @@ It improves the modularity of documentation but drops features of the existing d
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context-problem">Context / Problem</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-and-requirements">Goals and Requirements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context-and-problem">Context and Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#options-considered">Options Considered</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-s-single-docs-only">Option S: Single <code class="docutils literal notranslate"><span class="pre">docs()</span></code> Only</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-of-the-current-approach">Limitations of the Current Approach</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#assessment">Assessment</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#options-considered">Options Considered</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-s-single-docs-only">Option S: Single docs() only</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-m-module-api-many-bazel-targets">Option M: Module API - Many Bazel targets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-m-module-api-many-bazel-targets">Option M: Module API — Many Bazel Targets</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#how-pr-95-improves-the-situation">How PR #95 Improves the Situation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Assessment</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-c-combine-the-best-of-both">Option C: Combine the Best of Both</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision">Decision</a></li>
 </ul>
   </nav></div>
 
