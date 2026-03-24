@@ -72,8 +72,8 @@
         </script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="DR-001-Infra: Integration Strategy for External Development Tools" href="DR-001-infra.html" />
-    <link rel="prev" title="Platform Quality Manager Election" href="../platform_management_plan/role_assignment/platform_quality_manager.html" />
+    <link rel="next" title="DR-001-Strat: Consistent Stack vs. Reference Integration" href="DR-001-strat.html" />
+    <link rel="prev" title="Platform Safety Manual" href="../safety/platform_safety_manual.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
@@ -211,6 +211,13 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../platform_management_plan/index.html">
     PMP
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../safety/index.html">
+    Safety
   </a>
 </li>
 
@@ -404,6 +411,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
     Eclipse
   </a>
@@ -487,6 +501,12 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DR-001-strat.html">DR-001-Strat: Consistent Stack vs. Reference Integration</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DR-001-arch.html">DR-001-Arch: Rust Readiness for Safety-Critical Components</a></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="DR-001-infra.html">DR-001-Infra: Integration Strategy for External Development Tools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DR-002-infra.html">DR-002-Infra: Integration Testing in a Distributed Monolith</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DR-003-infra.html">DR-003-Infra: Devcontainer Strategy for S-CORE</a></li>
@@ -494,6 +514,9 @@
 <li class="toctree-l1"><a class="reference internal" href="DR-006-infra.html">DR-006-Infra: Clippy Integration via rules_lint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DR-007-infra.html">DR-007-Infra: Solution for cyclic dependencies between docs-as-code and process description</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DR-008-infra.html">DR-008-Infra: Documentation Modularity</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DR-001-proc.html">DR-001-Proc: Feature as Independent Delivery Product</a></li>
 </ul>
 </div>
 </nav></div>
@@ -553,6 +576,22 @@
                   
   <section id="decision-records">
 <h1>Decision Records<a class="headerlink" href="#decision-records" title="Link to this heading">#</a></h1>
+<section id="strategy">
+<h2>Strategy<a class="headerlink" href="#strategy" title="Link to this heading">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="DR-001-strat.html">DR-001-Strat: Consistent Stack vs. Reference Integration</a></li>
+</ul>
+</div>
+</section>
+<section id="architecture">
+<h2>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="DR-001-arch.html">DR-001-Arch: Rust Readiness for Safety-Critical Components</a></li>
+</ul>
+</div>
+</section>
 <section id="infrastructure">
 <h2>Infrastructure<a class="headerlink" href="#infrastructure" title="Link to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
@@ -564,6 +603,14 @@
 <li class="toctree-l1"><a class="reference internal" href="DR-006-infra.html">DR-006-Infra: Clippy Integration via rules_lint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DR-007-infra.html">DR-007-Infra: Solution for cyclic dependencies between docs-as-code and process description</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DR-008-infra.html">DR-008-Infra: Documentation Modularity</a></li>
+</ul>
+</div>
+</section>
+<section id="process">
+<h2>Process<a class="headerlink" href="#process" title="Link to this heading">#</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="DR-001-proc.html">DR-001-Proc: Feature as Independent Delivery Product</a></li>
 </ul>
 </div>
 </section>
@@ -580,20 +627,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../platform_management_plan/role_assignment/platform_quality_manager.html"
+       href="../safety/platform_safety_manual.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Platform Quality Manager Election</p>
+        <p class="prev-next-title">Platform Safety Manual</p>
       </div>
     </a>
     <a class="right-next"
-       href="DR-001-infra.html"
+       href="DR-001-strat.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">DR-001-Infra: Integration Strategy for External Development Tools</p>
+        <p class="prev-next-title">DR-001-Strat: Consistent Stack vs. Reference Integration</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -616,7 +663,10 @@
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strategy">Strategy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#infrastructure">Infrastructure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#process">Process</a></li>
 </ul>
   </nav></div>
 

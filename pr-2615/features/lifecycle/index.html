@@ -216,6 +216,13 @@
 
 
 <li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class=" ">
   <a class="nav-link dropdown-item nav-external" href="https://projects.eclipse.org/projects/automotive.score">
     Eclipse
   </a>
@@ -404,6 +411,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
     Eclipse
   </a>
@@ -575,7 +589,7 @@
 <p class="admonition-title">Note</p>
 <p>Document header</p>
 </div>
-<div class="need_container docutils container" id="SNCB-f00114e3">
+<div class="need_container docutils container" id="SNCB-809be0cb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__lifecycle">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -618,7 +632,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-ae2f653d">
+<div class="need_container docutils container" id="SNCB-e2da0841">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat table" id="feat__lifecycle">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -676,8 +690,7 @@ managing the state of the system.</p>
 </section>
 <section id="motivation">
 <h2>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h2>
-<p>For every ECU, handling of startup, shutdown, and monitoring of components is crucial to ensure the system operates correctly and efficiently. Additionally, we need to provide the means to set the system in different Run States, such as normal operation, engineering/debug mode, flash mode etc.
-started, stopped, and monitored effectively, providing a robust framework for managing the state of the system.</p>
+<p>For every ECU, handling of startup, shutdown, and monitoring of components is crucial to ensure the system operates correctly and efficiently. Additionally, we need to provide the means to set the system in different Run States, such as normal operation, engineering/debug mode, flash mode etc.</p>
 </section>
 <section id="rationale">
 <h2>Rationale<a class="headerlink" href="#rationale" title="Link to this heading">#</a></h2>
@@ -700,9 +713,8 @@ which are started and to initiate appropriate actions in case of a failure, whic
 <ul class="simple">
 <li><p><a class="reference internal" href="../../requirements/stakeholder/index.html#stkh_req__execution_model__processes" title="stkh_req__execution_model__processes"><em class="xref need">Processes and thread manage... (stkh_req__execution_model__processes)</em></a>: Comprehensive process lifecycle management including startup, shutdown, recovery, and cross-process synchronization of threads</p></li>
 <li><p><a class="reference internal" href="../../requirements/stakeholder/index.html#stkh_req__functional_req__file_based" title="stkh_req__functional_req__file_based"><em class="xref need">File Based Configuration (stkh_req__functional_req__file_based)</em></a>: Modular configuration file support allowing changes without rebuilding software, enabling flexible system setup and module management</p></li>
-<li><p><a class="reference internal" href="../../requirements/stakeholder/index.html#stkh_req__dependability__safety_features" title="stkh_req__dependability__safety_features"><em class="xref need">Safety features (stkh_req__dependability__safety_features)</em></a>: Implementation of monitoring safety mechanisms</p></li>
+<li><p><a class="reference internal" href="../../requirements/stakeholder/index.html#stkh_req__dependability__safety_features_1" title="stkh_req__dependability__safety_features_1"><em class="xref need">Health Management (stkh_req__dependability__safety_features_1)</em></a>: Implementation of monitoring safety mechanisms</p></li>
 </ul>
-<p>A second task of the lifecycle system is to supervise the aliveness of the processes, which are started and to initiate appropriate actions in case of a failure, which might result in many cases in a change of the operting mode.</p>
 <section id="support-of-containers">
 <h3>Support of containers<a class="headerlink" href="#support-of-containers" title="Link to this heading">#</a></h3>
 <p>A <a class="reference internal" href="glossary.html#term-Sandbox"><span class="xref std std-term">Sandbox</span></a> can also be realized as a container, which is  a lightweight, standalone executable package that includes everything needed to run a piece of software, including the code, runtime, libraries, and system tools.
@@ -723,7 +735,7 @@ user wants to achieve and the functional dependencies between the processes.</p>
 </section>
 <section id="specification">
 <h2>Specification<a class="headerlink" href="#specification" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-07dc9837">
+<div class="need_container docutils container" id="SNCB-c58a7a94">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_mod_view_sta table" id="mod_view_sta__lifecycle__overview">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -750,7 +762,7 @@ user wants to achieve and the functional dependencies between the processes.</p>
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-features/lifecycle/index-0">
-<object data="../../_images/plantuml-00e37de66372b69bd7c7cefa0a32970670fee9d4.svg" type="image/svg+xml" style="width:1199px;height:757px;background:#FFFFFF;"></object></p>
+<object data="../../_images/plantuml-5337f7e05d2128ea495139d8aa0c39e3b774bf9c.svg" type="image/svg+xml" style="width:1193px;height:757px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
