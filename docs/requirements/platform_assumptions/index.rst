@@ -45,6 +45,7 @@ Note that the "supplier" AoUs were created with an OS supplier in mind but are r
    :security: NO
    :safety: QM
    :status: valid
+   :tags: environment
 
    The system integrator shall use an operating system compliant with IEEE Std 1003.1 (2004 Edition or newer)
 
@@ -61,7 +62,7 @@ It also contains expectations towards an supplier which can be used as criteria 
 by the system integrator. Building and running of external SW element is enabled, but no pro-active support from S-CORE
 is provided for e.g. build or test problems. No guarantees that S-CORE builds or runs with the external SW element.
 
-.. aou_req:: integration assistance
+.. aou_req:: Integration assistance
    :id: aou_req__platform__integration_assistance
    :reqtype: Non-Functional
    :security: YES
@@ -70,7 +71,7 @@ is provided for e.g. build or test problems. No guarantees that S-CORE builds or
 
    The supplier shall provide a contact point for integration assistance.
 
-.. aou_req:: integration manual
+.. aou_req:: Integration manual
    :id: aou_req__platform__os_integration_manual
    :reqtype: Non-Functional
    :security: YES
@@ -79,7 +80,7 @@ is provided for e.g. build or test problems. No guarantees that S-CORE builds or
 
    The supplier shall provide an integration manual.
 
-.. aou_req:: bug interface
+.. aou_req:: Bug interface
    :id: aou_req__platform__bug_interface
    :reqtype: Non-Functional
    :security: YES
@@ -99,7 +100,7 @@ Functional Level
 This is the middle level of integraton, the higher level will build on this.
 It is the level where the S-CORE SW-platform will functionally "work" with the external SW element.
 
-.. aou_req:: bazel tooling
+.. aou_req:: Bazel tooling
    :id: aou_req__platform__bazel_tooling
    :reqtype: Non-Functional
    :security: YES
@@ -109,7 +110,7 @@ It is the level where the S-CORE SW-platform will functionally "work" with the e
    The supplier shall provide tools for Bazel to be able to build the S-CORE SW-platform with the external SW element
    and support the run and test of the S-CORE SW-platform.
 
-.. aou_req:: bug fixing
+.. aou_req:: Bug fixing
    :id: aou_req__platform__bug_fixing
    :reqtype: Non-Functional
    :security: YES
@@ -126,6 +127,7 @@ It is the level where the S-CORE SW-platform will functionally "work" with the e
    :security: YES
    :safety: QM
    :status: valid
+   :tags: user
 
    The system integrator shall run the tests provided by S-CORE (platform, feature, component and Unit level for their selected S-CORE modules) on their selected OS/Hypervisor/HW combination,
    or provide equivalent argumentation.
@@ -140,6 +142,7 @@ It is the level where the S-CORE SW-platform will functionally "work" with the e
    :security: YES
    :safety: QM
    :status: valid
+   :tags: user
 
    The system integrator shall report the bugs found during integration of the S-CORE SW-platform on their selected OS/Hypervisor/HW combination to the external SW element supplier and S-CORE for analysis.
 
@@ -148,18 +151,19 @@ Certifiable Level
 
 This is the highest level of integraton. This is the level where the S-CORE SW-platform will be certifiable with an external SW element.
 
-.. aou_req:: integration levels
+.. aou_req:: Integration levels
    :id: aou_req__platform__levels
    :reqtype: Non-Functional
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :tags: user
 
    The supplier and system integrator shall fulfill all the levels AoUs in a safe way (i.e. the "safety" attribute will be raised to the level in this AoU).
 
    Note: This includes for example :need:`aou_req__platform__bazel_tooling`, :need:`aou_req__platform__bug_fixing`
 
-.. aou_req:: safety AoU
+.. aou_req:: Safety AoU
    :id: aou_req__platform__safety_aou
    :reqtype: Non-Functional
    :security: YES
@@ -170,7 +174,7 @@ This is the highest level of integraton. This is the level where the S-CORE SW-p
 
    Note: This may be part of an external SW element's safety manual.
 
-.. aou_req:: safety functions
+.. aou_req:: Safety functions
    :id: aou_req__platform__safety_functions
    :reqtype: Non-Functional
    :security: YES
@@ -179,7 +183,7 @@ This is the highest level of integraton. This is the level where the S-CORE SW-p
 
    The supplier shall provide a list of safe external SW element functions.
 
-.. aou_req:: safety anomaly reporting
+.. aou_req:: Safety anomaly reporting
    :id: aou_req__platform__safety_anomaly
    :reqtype: Non-Functional
    :security: YES
@@ -190,12 +194,13 @@ This is the highest level of integraton. This is the level where the S-CORE SW-p
 
    Note: This could be fulfilled by listing per release version all known and user reported bugs which affect the safe external SW element functions.
 
-.. aou_req:: safety matching
+.. aou_req:: Safety matching
    :id: aou_req__platform__safety_matching
    :reqtype: Non-Functional
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :tags: user
 
    If the system using the SW-platform has safety goals, the system integrator shall integrate the SW-platform with external SW elements providing safety functions.
    This includes to make sure that the safety functions S-CORE SW-platform requires match with the ones provided by these external SW elements (as in :need:`aou_req__platform__safety_functions`).
@@ -206,12 +211,13 @@ This is the highest level of integraton. This is the level where the S-CORE SW-p
 
    Note3: This applies also if the system integrator would replace a S-CORE SW-platform element with another SW element which is external to S-CORE.
 
-.. aou_req:: safety integration
+.. aou_req:: Safety integration
    :id: aou_req__platform__safety_integration
    :reqtype: Non-Functional
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :tags: user
 
    If the system using the SW-platform has safety goals, the system integrator shall make sure that the AoUs relevant for external SW element safety functions (as in :need:`aou_req__platform__safety_aou`) are fulfilled by the S-CORE SW-platform.
 
@@ -227,6 +233,7 @@ This is the highest level of integraton. This is the level where the S-CORE SW-p
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :tags: user
 
    If the system using the SW-platform has safety goals, the system integrator shall check for correctness and completeness of SW-platform testing and add verification where needed.
 
@@ -239,6 +246,7 @@ This is the highest level of integraton. This is the level where the S-CORE SW-p
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :tags: user
 
    If the system using the SW-platform has safety goals, the system integrator shall perform safety anomaly reporting taking into account also the reporting of all the components they integrate.
 
@@ -257,6 +265,7 @@ In this section assumptions are described which need to be fulfilled by the appl
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :tags: user
 
    All applications using the SW-platform shall not handle exceptions.
 
@@ -269,6 +278,7 @@ In this section assumptions are described which need to be fulfilled by the appl
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :tags: user
 
    Safety applications using the SW-platform shall read error information from the requested S-CORE functions and perform an appropriate reaction.
 
@@ -281,6 +291,7 @@ In this section assumptions are described which need to be fulfilled by the appl
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :tags: user
 
    Safety application components running in one POSIX process shall implement the highest ASIL of their assigned requirements.
 
@@ -290,6 +301,7 @@ In this section assumptions are described which need to be fulfilled by the appl
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :tags: user
 
    Safety applications using the SW-platform shall use program flow monitoring to detect run time errors or explain in their safety concept why they do not need this.
 
@@ -309,6 +321,7 @@ In this section assumptions are described which need to be fulfilled by the syst
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :tags: environment
 
    If the system using the SW-platform has safety goals, the system shall provide state-of-the art hardware safety mechanisms, namely
 
@@ -328,6 +341,7 @@ In this section assumptions are described which need to be fulfilled by the syst
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :tags: environment
 
    If the system using the SW-platform has safety goals, the system shall provide an external health management element which is able to initiate a safe system state.
 
@@ -339,6 +353,7 @@ In this section assumptions are described which need to be fulfilled by the syst
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :tags: environment
 
    If the system using the SW-platform has safety goals, the used operating system shall offer POSIX processes isolation.
    This shall cover memory isolation. Timing isolation may be covered.
@@ -349,6 +364,7 @@ In this section assumptions are described which need to be fulfilled by the syst
    :security: YES
    :safety: ASIL_B
    :status: valid
+   :tags: environment
 
    If the system using the SW-platform has safety goals, the used os module shall offer the following safety related functions:
 

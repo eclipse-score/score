@@ -357,7 +357,7 @@ Functional Safety/Security Management SW Platform Work Products
     * - :need:`wp__process_description`
       - :ndf:`copy('status', need_id='wf__def_app_process_description')`
       - `Process description <https://eclipse-score.github.io/process_description/main/index.html>`_
-      - Maturity Level 1
+      - Maturity Level 1-2
 
     * - :need:`wp__process_impr_report`
       - :ndf:`copy('status', need_id='wf__mon_imp_process_description')`
@@ -366,7 +366,7 @@ Functional Safety/Security Management SW Platform Work Products
 
     * - :need:`wp__process_strategy`
       - :ndf:`copy('status', need_id='wf__cr_mt_process_mgt_strategy')`
-      - `Process community planning <https://github.com/orgs/eclipse-score/projects/21>`_
+      - `Process development community planning <https://github.com/orgs/eclipse-score/projects/21>`_
       - see planning board
 
     * - :need:`wp__platform_handbook`
@@ -382,7 +382,7 @@ Functional Safety/Security Management SW Platform Work Products
     * - :need:`wp__verification_platform_ver_report`
       - :ndf:`copy('status', need_id='wf__verification_platform_ver_report')`
       - :need:`doc__score_platform_verification_report`
-      - draft
+      - :ndf:`copy('status', need_id='doc__score_platform_verification_report')`
 
     * - :need:`wp__requirements_stkh`
       - :ndf:`copy('status', need_id='wf__req_stkh_req')`
@@ -406,8 +406,8 @@ Functional Safety/Security Management SW Platform Work Products
 
     * - :need:`wp__tool_verification_report`
       - :ndf:`copy('status', need_id='wf__tool_create_tool_verification_report')`
-      - :ref:`tools`
-      - see WP link
+      - :need:`doc__tool_evaluation_list`
+      - :ndf:`copy('status', need_id='doc__tool_evaluation_list')`
 
 
 Functional Safety Specific SW Platform Work Products
@@ -434,40 +434,41 @@ Functional Safety Specific SW Platform Work Products
     * - :need:`wp__fdr_reports` (platform Safety Plan)
       - :ndf:`copy('status', need_id='wf__p_formal_rv')`
       - :need:`doc__score_platform_safety_plan_fdr`
-      - draft
+      - :ndf:`copy('status', need_id='doc__score_platform_safety_plan_fdr')`
 
     * - :need:`wp__fdr_reports` (platform Safety Package)
       - :ndf:`copy('status', need_id='wf__p_formal_rv')`
       - :need:`doc__score_platform_safety_package_fdr`
-      - draft
+      - :ndf:`copy('status', need_id='doc__score_platform_safety_package_fdr')`
 
     * - :need:`wp__fdr_reports` (feature's Safety Analyses & DFA)
       - :ndf:`copy('status', need_id='wf__p_formal_rv')`
       - :need:`doc__score_platform_safety_analysis_fdr`
-      - draft
+      - :ndf:`copy('status', need_id='doc__score_platform_safety_analysis_fdr')`
 
     * - :need:`wp__audit_report`
       - performed by external experts
-      - <Link to WP>
+      - `Audit findings <https://github.com/eclipse-score/process_description/issues/518>`_
       - intermediate
 
     * - :need:`wp__platform_dfa`
       - :ndf:`copy('status', need_id='wf__analyse_platform_featarch')`
       - :need:`doc__platform_dfa`
-      - draft
+      - :ndf:`copy('status', need_id='doc__platform_dfa')`
 
     * - :need:`wp__platform_safety_manual`
       - :ndf:`copy('status', need_id='wf__cr_mt_safety_manual')`
       - :need:`doc__score_platform_safety_manual`
-      - draft
+      - :ndf:`copy('status', need_id='doc__score_platform_safety_manual')`
 
     * - :need:`wp__safety_tailoring` (generic)
       - :ndf:`copy('status', need_id='wf__def_app_process_description')`
       - :need:`wp__tailoring_work_products` & :need:`doc__score_platform_safety_plan`
-      - valid
+      - :ndf:`copy('status', need_id='wp__tailoring_work_products')`
 
 Process status: Status of the workflow which "outputs" the work product, derived from the docs it "has" and guidances it "contains".
 
+Link to project planning: `Platform safety work product issue for V1.0 <https://github.com/eclipse-score/score/issues/2465>`_
 
 Platform Management Plan - Feature Work Product Lists
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
