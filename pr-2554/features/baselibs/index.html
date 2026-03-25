@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -211,6 +211,13 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../platform_management_plan/index.html">
     PMP
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../safety/index.html">
+    Safety
   </a>
 </li>
 
@@ -404,6 +411,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
     Eclipse
   </a>
@@ -498,6 +512,7 @@
 <li class="toctree-l2"><a class="reference internal" href="docs/safety_analysis/fmea.html">FMEA (Failure Modes and Effects Analysis)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docs/safety_planning/index.html">Feature Safety Work Products List</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="abi_compatible_data_types/index.html">ABI Compatible Data Types</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../code_generation/index.html">Code Generation</a></li>
@@ -505,9 +520,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../diagnostics/index.html">Diagnostic and Fault Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../frameworks/index.html">Frameworks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../infrastructure/index.html">Infrastructure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../integration/index.html">Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lifecycle/index.html">Lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nonipc/index.html">NonIPC Communication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../orchestration/index.html">Orchestration (v0.5 beta)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../persistency/index.html">Persistency (v0.5 beta)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../security_crypto/index.html">Security &amp; Cryptography</a></li>
@@ -574,7 +588,7 @@
                   
   <section id="base-libraries-v0-5-beta">
 <span id="baselibs-feature"></span><h1>Base Libraries (v0.5 beta)<a class="headerlink" href="#base-libraries-v0-5-beta" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-5484bd78">
+<div class="need_container docutils container" id="SNCB-71766f87">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__baselibs">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -649,43 +663,6 @@ the consuming components. When possible, a library should be implemented once in
 or C++ and provide bindings to the other language to maximize maintainability and consistency.
 However, if there are strong technical reasons (such as language-specific performance or safety
 requirements), a library may be implemented separately in both Rust and C++.</p>
-</section>
-<section id="specification">
-<h2>Specification<a class="headerlink" href="#specification" title="Link to this heading">#</a></h2>
-<p>The base libraries feature consists of the following libraries, all of which are currently implemented in C++:</p>
-<ul class="simple">
-<li><p><strong>bitmanipulation</strong>: Utilities for bit manipulation.</p></li>
-<li><p><strong>concurrency</strong>: Provides a generic interface to execute any C++ callable in a parallel context,
-supporting various execution strategies (e.g., thread pool, timed execution), thread safety,
-interruption handling, and periodic/delayed task execution.</p></li>
-<li><p><strong>containers</strong>: Offers a <code class="docutils literal notranslate"><span class="pre">DynamicArray</span></code> (fixed-size array with dynamic construction-time size)
-and an intrusive linked list implementation conforming to the
-<a class="reference external" href="https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0406r1.html">P0406R1 proposal</a>.</p></li>
-<li><p><strong>json</strong>: JSON abstraction layer that can switch between different parsers/serializers under the hood.</p></li>
-<li><p><strong>filesystem</strong>: Filesystem manipulation library similar to <code class="docutils literal notranslate"><span class="pre">std::filesystem</span></code>.</p></li>
-<li><p><strong>futurecpp</strong>: Extends the C++14 Standard Library with features from newer C++ standards up to C++26,
-as well as selected proposals for the C++ Standard Library.</p></li>
-<li><p><strong>safecpp/aborts_upon_exception</strong>: Globally prevents creation of exception objects by calling <code class="docutils literal notranslate"><span class="pre">std::abort()</span></code>
-immediately.</p></li>
-<li><p><strong>safecpp/coverage_termination_handler</strong>: Helper library to enable collective code coverage information in
-GTest death tests.</p></li>
-<li><p><strong>safecpp/safe_math</strong>: Provides safe implementations for arithmetic and related operations for
-signed/unsigned integral types and floating point types.</p></li>
-<li><p><strong>safecpp/scoped_function</strong>: Allows developers to consciously limit when an enclosed callable
-(function) can be invoked.</p></li>
-<li><p><strong>memory</strong>: Utility library for memory handling, including an abstraction layer for shared memory.</p></li>
-<li><p><strong>os</strong>: OS Abstraction Layer (OSAL) to interface with different POSIX-like operating systems such
-as Linux and QNX.</p></li>
-<li><p><strong>result</strong>: Provides a unified approach to error handling without exceptions, conforming to C++23
-<code class="docutils literal notranslate"><span class="pre">std::expected</span></code>.</p></li>
-<li><p><strong>static_reflection_with_serialization</strong>: A header-only library for binary serialization,
-deserialization, and compile-time type reflection of heterogenuous C++ data structures with focus
-on compile-time safety and efficiency of serialization, as well as efficiency of filtering by
-content during deserialization.</p></li>
-<li><p><strong>mw::log</strong>: Logging library.</p></li>
-<li><p><strong>utils</strong>: Provides a collection of small, reusable utilities that do not fit into the other
-base libraries.</p></li>
-</ul>
 </section>
 <section id="backwards-compatibility">
 <h2>Backwards Compatibility<a class="headerlink" href="#backwards-compatibility" title="Link to this heading">#</a></h2>
@@ -776,7 +753,6 @@ where necessary.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale">Rationale</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specification">Specification</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backwards-compatibility">Backwards Compatibility</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#security-impact">Security Impact</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#safety-impact">Safety Impact</a></li>
