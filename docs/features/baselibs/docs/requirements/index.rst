@@ -92,6 +92,16 @@ Requirements
 
    The base libraries shall provide a JSON-Library with parsing functionality.
 
+.. feat_req:: FlatBuffers-Library
+   :id: feat_req__baselibs__flatbuffers_library
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :satisfies: stkh_req__functional_req__base_libraries
+   :status: valid
+
+   The base libraries shall provide a FlatBuffers-Library with serialization, read access, and structural verification of FlatBuffers data.
+
 .. feat_req:: Exception-Free Development Support
    :id: feat_req__baselibs__result_library
    :reqtype: Functional
