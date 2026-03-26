@@ -29,7 +29,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__core_utilities, feat_req__baselibs__safety
-   :belongs_to: comp__baselibs_static_reflection_with_serial
+   :belongs_to: comp__baselibs_static_reflection
    :status: valid
    :tags: baselibs
 
@@ -41,7 +41,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__core_utilities, feat_req__baselibs__consistent_apis, feat_req__baselibs__safety
-   :belongs_to: comp__baselibs_static_reflection_with_serial
+   :belongs_to: comp__baselibs_static_reflection
    :status: valid
    :tags: baselibs
 
@@ -53,7 +53,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__core_utilities, feat_req__baselibs__safety
-   :belongs_to: comp__baselibs_static_reflection_with_serial
+   :belongs_to: comp__baselibs_static_reflection
    :status: valid
    :tags: baselibs
 
@@ -65,7 +65,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__core_utilities, feat_req__baselibs__safety
-   :belongs_to: comp__baselibs_static_reflection_with_serial
+   :belongs_to: comp__baselibs_static_reflection
    :status: valid
    :tags: baselibs
 
@@ -77,7 +77,7 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__core_utilities, feat_req__baselibs__safety
-   :belongs_to: comp__baselibs_static_reflection_with_serial
+   :belongs_to: comp__baselibs_static_reflection
    :status: valid
    :tags: baselibs
 
@@ -89,12 +89,11 @@ Requirements
    :security: NO
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__core_utilities, feat_req__baselibs__safety
-   :belongs_to: comp__baselibs_static_reflection_with_serial
+   :belongs_to: comp__baselibs_static_reflection
    :status: valid
    :tags: baselibs
 
    The library shall provide compile-time safety and efficiency of serialization operations with minimal runtime overhead.
 
 .. needextend:: "__static_reflect_serial__" in id
-   :+tags: baselibs
-
+   :+tags: static_reflect

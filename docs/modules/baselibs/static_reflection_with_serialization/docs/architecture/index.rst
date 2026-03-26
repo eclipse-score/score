@@ -31,12 +31,26 @@ Static Architecture
 -------------------
 
 .. comp:: Static Reflection with Serialization
-   :id: comp__baselibs_static_reflection_with_serial
+   :id: comp__baselibs_static_reflection
    :security: YES
    :safety: ASIL_B
    :status: valid
    :tags: baselibs_static_reflection_serialization
    :implements: logic_arc_int__baselibs__static_reflection,logic_arc_int__baselibs__generic_serial,logic_arc_int__baselibs__log_serial
+
+   .. needarch::
+      :scale: 50
+      :align: center
+
+      {{ draw_component(need(), needs) }}
+
+.. comp_arc_sta:: Static Reflection with Serialization Static view
+   :id: comp_arc_sta__baselibs__static_reflection
+   :security: YES
+   :safety:  ASIL_B
+   :status: valid
+   :fulfils: comp_req__static_reflect_serial__reflect, comp_req__static_reflect_serial__visitor, comp_req__static_reflect_serial__container, comp_req__static_reflect_serial__nested, comp_req__static_reflect_serial__header_only, comp_req__static_reflect_serial__compile_eff
+   :belongs_to: comp__baselibs_static_reflection
 
    .. needarch::
       :scale: 50

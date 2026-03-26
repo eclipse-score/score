@@ -266,6 +266,9 @@ Assumptions of Use (AoU)
    :status: valid
 
    Users shall implement appropriate synchronization mechanisms when sharing state between tasks, as the library only guarantees thread-safe task submission and execution scheduling.
-   
-.. needextend:: "__concurrency" in id
+
+.. needextend:: "__concurrency__" in id
+   :+tags: baselibs
+
+.. needextend:: "__concurrency__" in id
    :+tags: concurrency

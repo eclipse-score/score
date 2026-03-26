@@ -157,6 +157,8 @@ AoU Requirements
 
    Note: This can be done by the hosting process and system configuration (e.g. by using dm-verity).
 
-
 .. needextend:: "__json__" in id
    :+tags: baselibs
+
+.. needextend:: "__json__" in id
+   :+tags: json
