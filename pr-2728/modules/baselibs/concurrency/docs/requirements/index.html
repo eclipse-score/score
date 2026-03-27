@@ -72,7 +72,7 @@
         </script>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
-    <link rel="next" title="containers" href="../../../containers/docs/index.html" />
+    <link rel="next" title="FMEA (Failure Modes and Effects Analysis)" href="../safety_analysis/fmea.html" />
     <link rel="prev" title="Concurrency Component Architecture" href="../architecture/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -508,6 +508,8 @@
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">concurrency</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../architecture/index.html">Concurrency Component Architecture</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../safety_analysis/fmea.html">FMEA (Failure Modes and Effects Analysis)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../safety_analysis/dfa.html">DFA (Dependent Failure Analysis)</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../containers/docs/index.html">containers</a></li>
@@ -604,7 +606,7 @@
                   
   <section id="requirements">
 <h1>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-970242ff">
+<div class="need_container docutils container" id="SNCB-97d715d3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__concurrency_requirements">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -649,7 +651,7 @@
 </div>
 <section id="functional-requirements">
 <h2>Functional Requirements<a class="headerlink" href="#functional-requirements" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-34555931">
+<div class="need_container docutils container" id="SNCB-8e57a069">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__concurrency__task_interface">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -695,7 +697,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5ca56256">
+<div class="need_container docutils container" id="SNCB-9d0e9f42">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__concurrency__task_cancellation">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -741,7 +743,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-3d050eac">
+<div class="need_container docutils container" id="SNCB-0cd6e611">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__concurrency__simple_task">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -787,7 +789,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-05722ee2">
+<div class="need_container docutils container" id="SNCB-ec3ab90b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__concurrency__task_result">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -833,7 +835,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-29224a5b">
+<div class="need_container docutils container" id="SNCB-fd85fd41">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__concurrency__periodic_task">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -879,7 +881,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-cf087d8f">
+<div class="need_container docutils container" id="SNCB-22d101a2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__concurrency__delayed_task">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -925,7 +927,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-80985b79">
+<div class="need_container docutils container" id="SNCB-5bb7a4ab">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__concurrency__executor_interface">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -971,7 +973,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4715fc42">
+<div class="need_container docutils container" id="SNCB-9b7ffde7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__concurrency__thread_pool">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1017,7 +1019,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-3f655a93">
+<div class="need_container docutils container" id="SNCB-71c99589">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__concurrency__condition_variable">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1063,7 +1065,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-92882ef3">
+<div class="need_container docutils container" id="SNCB-cce8a8fa">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__concurrency__interruptible_wait">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1109,7 +1111,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-3ba7eaaa">
+<div class="need_container docutils container" id="SNCB-13271056">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__concurrency__notification">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1155,7 +1157,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-04136968">
+<div class="need_container docutils container" id="SNCB-6fb911aa">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__concurrency__synchronized_queue">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1201,7 +1203,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-153eb5d9">
+<div class="need_container docutils container" id="SNCB-a688ea77">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__concurrency__long_running_threads">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1250,7 +1252,7 @@
 </section>
 <section id="non-functional-requirements">
 <h2>Non-Functional Requirements<a class="headerlink" href="#non-functional-requirements" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-f75b092c">
+<div class="need_container docutils container" id="SNCB-883faec9">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__concurrency__memory_usage_control">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1296,7 +1298,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-75e1c290">
+<div class="need_container docutils container" id="SNCB-ab0206d2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__concurrency__memory_reservation">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1342,7 +1344,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a0c036db">
+<div class="need_container docutils container" id="SNCB-4731f1a1">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__concurrency__thread_count_reporting">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1388,7 +1390,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-3f656def">
+<div class="need_container docutils container" id="SNCB-bf2b6374">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__concurrency__operation_timeout">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1434,7 +1436,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-22bb3ec4">
+<div class="need_container docutils container" id="SNCB-d5e40e1b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__concurrency__error_handling">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1483,7 +1485,7 @@
 </section>
 <section id="assumptions-of-use-aou">
 <h2>Assumptions of Use (AoU)<a class="headerlink" href="#assumptions-of-use-aou" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-5cec91ce">
+<div class="need_container docutils container" id="SNCB-7585a247">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__concurrency__coop_cancellation">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1526,7 +1528,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-bfe03c58">
+<div class="need_container docutils container" id="SNCB-27c3c90f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__concurrency__memory_management">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1569,7 +1571,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e7725a01">
+<div class="need_container docutils container" id="SNCB-f3d39e94">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__concurrency__thread_pool_sizing">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1612,7 +1614,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-16a7de25">
+<div class="need_container docutils container" id="SNCB-e39af8a8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_aou_req table" id="aou_req__concurrency__thread_safety">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1678,11 +1680,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="../../../containers/docs/index.html"
+       href="../safety_analysis/fmea.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">containers</p>
+        <p class="prev-next-title">FMEA (Failure Modes and Effects Analysis)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

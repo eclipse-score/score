@@ -72,7 +72,7 @@
         </script>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
-    <link rel="next" title="Communication Module" href="../../../../communication/index.html" />
+    <link rel="next" title="FMEA (Failure Modes and Effects Analysis)" href="../safety_analysis/fmea.html" />
     <link rel="prev" title="Requirements" href="../requirements/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -525,6 +525,8 @@
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">utils</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../requirements/index.html">Requirements</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Utils Component Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../safety_analysis/fmea.html">FMEA (Failure Modes and Effects Analysis)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../safety_analysis/dfa.html">DFA (Dependent Failure Analysis)</a></li>
 </ul>
 </details></li>
 </ul>
@@ -604,7 +606,7 @@
                   
   <section id="utils-component-architecture">
 <h1>Utils Component Architecture<a class="headerlink" href="#utils-component-architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-cf06aef9">
+<div class="need_container docutils container" id="SNCB-b65d6c52">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__utils_architecture">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -652,7 +654,7 @@
 </section>
 <section id="static-architecture">
 <h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-72442b2a">
+<div class="need_container docutils container" id="SNCB-36d9188d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp table" id="comp__baselibs_utils">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -682,7 +684,7 @@
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-modules/baselibs/utils/docs/architecture/index-0">
-<object data="../../../../../_images/plantuml-952567ef68a43f9ce03abf801fbc46a154137f1d.svg" type="image/svg+xml" style="width:302px;height:209px;background:#FFFFFF;"></object></p>
+<object data="../../../../../_images/plantuml-bab54933b1585af165afa6e73782f64f4af3d14d.svg" type="image/svg+xml" style="width:302px;height:209px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -699,7 +701,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-919502e9">
+<div class="need_container docutils container" id="SNCB-25404944">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__baselibs__utils">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -748,7 +750,7 @@
 </section>
 <section id="interfaces">
 <h2>Interfaces<a class="headerlink" href="#interfaces" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-0ea880d6">
+<div class="need_container docutils container" id="SNCB-f770cf3a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__baselibs__utils_base64">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -793,7 +795,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-db96bf0e">
+<div class="need_container docutils container" id="SNCB-dd925b80">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__utils__base64_encode">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -836,7 +838,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-85e497ee">
+<div class="need_container docutils container" id="SNCB-711fe00e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__utils__base64_decode">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -879,7 +881,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-377fa41d">
+<div class="need_container docutils container" id="SNCB-83311666">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__baselibs__utils_scoped_op">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -924,7 +926,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4ee08cef">
+<div class="need_container docutils container" id="SNCB-5f16b05e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__utils__scoped_op_construct">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -967,7 +969,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-8072c79a">
+<div class="need_container docutils container" id="SNCB-7f25b6ec">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__utils__scoped_op_destruct">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1033,11 +1035,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="../../../../communication/index.html"
+       href="../safety_analysis/fmea.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Communication Module</p>
+        <p class="prev-next-title">FMEA (Failure Modes and Effects Analysis)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
