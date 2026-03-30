@@ -28,6 +28,8 @@ utils
 
    requirements/index.rst
    architecture/index.rst
+   safety_analysis/fmea.rst
+   safety_analysis/dfa.rst
 
 Abstract
 ========

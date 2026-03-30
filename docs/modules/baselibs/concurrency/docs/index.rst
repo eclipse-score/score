@@ -28,6 +28,8 @@ concurrency
 
    architecture/index.rst
    requirements/index.rst
+   safety_analysis/fmea.rst
+   safety_analysis/dfa.rst
 
 Abstract
 ========

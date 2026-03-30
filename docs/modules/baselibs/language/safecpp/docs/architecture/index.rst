@@ -45,6 +45,20 @@ Static Architecture
 
       {{ draw_component(need(), needs) }}
 
+.. comp_arc_sta:: Safecpp Static view
+   :id: comp_arc_sta__baselibs__safecpp
+   :security: YES
+   :safety:  ASIL_B
+   :status: valid
+   :fulfils: comp_req__safecpp__aborts_upon_exception, comp_req__safecpp__safe_math, comp_req__safecpp__scoped_guards, comp_req__safecpp__nullstring, comp_req__safecpp__safe_atomic, comp_req__safecpp__coverage_termination
+   :belongs_to: comp__baselibs_safecpp
+
+   .. needarch::
+      :scale: 50
+      :align: center
+
+      {{ draw_component(need(), needs) }}
+
 Interfaces
 ----------
 .. logic_arc_int:: Aborts Upon Exception

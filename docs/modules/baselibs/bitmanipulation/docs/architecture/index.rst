@@ -45,6 +45,20 @@ Static Architecture
 
       {{ draw_component(need(), needs) }}
 
+.. comp_arc_sta:: Bit Manipulation Static view
+   :id: comp_arc_sta__baselibs__bit_manipulation
+   :security: NO
+   :safety:  ASIL_B
+   :status: valid
+   :fulfils: comp_req__bitmanipulation__bit_operations,comp_req__bitmanipulation__byte_operations,comp_req__bitmanipulation__bitmask_operators,comp_req__bitmanipulation__bounds_safety,comp_req__bitmanipulation__header_only
+   :belongs_to: comp__baselibs_bit_manipulation
+
+   .. needarch::
+      :scale: 50
+      :align: center
+
+      {{ draw_component(need(), needs) }}
+
 Interfaces
 ----------
 

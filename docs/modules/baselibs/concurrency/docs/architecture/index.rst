@@ -45,6 +45,20 @@ Static Architecture
 
       {{ draw_component(need(), needs) }}
 
+.. comp_arc_sta:: Concurrency Static view
+   :id: comp_arc_sta__baselibs__concurrency
+   :security: YES
+   :safety:  ASIL_B
+   :status: valid
+   :fulfils: comp_req__concurrency__task_interface, comp_req__concurrency__task_cancellation, comp_req__concurrency__simple_task, comp_req__concurrency__task_result, comp_req__concurrency__periodic_task, comp_req__concurrency__delayed_task, comp_req__concurrency__executor_interface, comp_req__concurrency__thread_pool, comp_req__concurrency__condition_variable, comp_req__concurrency__interruptible_wait, comp_req__concurrency__notification, comp_req__concurrency__synchronized_queue, comp_req__concurrency__long_running_threads, comp_req__concurrency__memory_usage_control, comp_req__concurrency__memory_reservation, comp_req__concurrency__thread_count_reporting, comp_req__concurrency__operation_timeout, comp_req__concurrency__error_handling
+   :belongs_to: comp__baselibs_concurrency
+
+   .. needarch::
+      :scale: 50
+      :align: center
+
+      {{ draw_component(need(), needs) }}
+
 Interfaces
 ----------
 

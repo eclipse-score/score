@@ -156,4 +156,4 @@ Assumptions of Use (AoU)
    Note: Filesystem operations are subject to underlying OS and storage performance.
 
 .. needextend:: "__filesystem__" in id
-   :+tags: baselibs
+   :+tags: baselibs, filesystem
