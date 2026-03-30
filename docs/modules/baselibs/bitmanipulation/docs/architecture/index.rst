@@ -88,6 +88,20 @@ Interfaces
    :status: valid
    :included_by: logic_arc_int__baselibs__bit_manipulation
 
+.. logic_arc_int_op:: Set (Half)-Byte
+   :id: logic_arc_int_op__baselibs__set_byte
+   :security: NO
+   :safety:  ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__bit_manipulation
+
+.. logic_arc_int_op:: Extract (Half)-Byte
+   :id: logic_arc_int_op__baselibs__extract_byte
+   :security: NO
+   :safety:  ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__bit_manipulation
+
 .. logic_arc_int_op:: OR operator
    :id: logic_arc_int_op__baselibs__bitmask_or
    :security: NO

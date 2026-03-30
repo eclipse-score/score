@@ -228,5 +228,44 @@ Non-Functional Requirements
 
    The concurrency module shall use error codes instead of throwing exceptions.
 
+Assumptions of Use (AoU)
+========================
+
+.. aou_req:: Cooperative Cancellation Handling
+   :id: aou_req__concurrency__coop_cancellation
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :status: valid
+
+   Users shall implement cancellation logic in long-running tasks to respond to stop_token signals.
+
+.. aou_req:: Memory Management on Task Submission Failure
+   :id: aou_req__concurrency__memory_management
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :status: valid
+
+   Users shall handle task submission failures when the bounded memory resource is exhausted and implement appropriate backpressure mechanisms.
+
+.. aou_req:: Thread Pool Sizing
+   :id: aou_req__concurrency__thread_pool_sizing
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :status: valid
+
+   Users shall size ThreadPool according to task characteristics and avoid submitting blocking tasks that will starve the thread pool.
+
+.. aou_req:: Thread Safety
+   :id: aou_req__concurrency__thread_safety
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: ASIL_B
+   :status: valid
+
+   Users shall implement appropriate synchronization mechanisms when sharing state between tasks, as the library only guarantees thread-safe task submission and execution scheduling.
+   
 .. needextend:: "__concurrency" in id
    :+tags: concurrency

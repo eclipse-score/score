@@ -14,7 +14,7 @@
 
 .. mod:: Communication
    :id: mod__com_communication
-   :includes: comp__com_configuration, comp__com_ipc_binding, comp__com_mock_binding, comp__com_frontend
+   :includes: comp__com_configuration, comp__com_ipc_binding, comp__com_mock_binding, comp__com_frontend, comp__com_message_passing
 
    .. needarch::
       :scale: 50

@@ -298,7 +298,7 @@ Dependability
    :tags: safety_mechanism
    :valid_from: v1.0.0
 
-   The SW-platform shall implement Safe startup and reset paths
+   The SW-platform shall implement and support Safe startup and reset paths
 
 .. stkh_req:: DMA Protection
    :id: stkh_req__dependability__safety_features_5

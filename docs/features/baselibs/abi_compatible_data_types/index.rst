@@ -17,11 +17,11 @@
 ABI Compatible Data Types
 #########################
 
-.. document:: ABI Compatible Datatypes
+.. document:: ABI Compatible Data Types
    :id: doc__abi_compatible_data_types
    :status: valid
    :safety: ASIL_B
-   :tags: feature_request, change_management, communication, abi_compatible_data_types
+   :tags: feature_request, change_management, abi_compatible_data_types
    :security: YES
    :realizes: wp__feat_request
 

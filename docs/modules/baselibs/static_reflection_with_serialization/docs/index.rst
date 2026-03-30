@@ -27,7 +27,8 @@ static_reflection_with_serialization
    :hidden:
 
    architecture/index.rst
-   
+   requirements/index.rst
+
 Abstract
 =========
 

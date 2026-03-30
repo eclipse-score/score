@@ -42,6 +42,7 @@ This ensures a stable public API, independent of the underlying binding(s). At t
    :safety:  ASIL_B
    :status: valid
    :provides: logic_arc_int__communication__user
+   :consists_of: comp__com_configuration, comp__com_ipc_binding, comp__com_mock_binding, comp__com_frontend, comp__com_message_passing
 
 .. feat_arc_sta:: Feature Architecture Communication
    :id: feat_arc_sta__com__communication
