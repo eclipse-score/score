@@ -12,7 +12,7 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. feat:: OS
+.. feat:: Operating System
    :id: feat__os
    :security: YES
    :safety: ASIL_B
