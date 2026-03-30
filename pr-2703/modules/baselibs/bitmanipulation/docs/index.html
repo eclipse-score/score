@@ -73,7 +73,7 @@
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
     <link rel="next" title="Requirements" href="requirements/index.html" />
-    <link rel="prev" title="Safecpp Component Architecture" href="../../language/safecpp/docs/architecture/index.html" />
+    <link rel="prev" title="Requirements" href="../../language/safecpp/docs/requirements/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
@@ -506,6 +506,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../language/index.html">language</a></li>
 <li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">bitmanipulation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="requirements/index.html">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements/chklst_req_inspection.html">Requirement Inspection Checklist</a></li>
 <li class="toctree-l3"><a class="reference internal" href="architecture/index.html">Bitmanipulation Component Architecture</a></li>
 <li class="toctree-l3"><a class="reference internal" href="safety_analysis/fmea.html">FMEA (Failure Modes and Effects Analysis)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="safety_analysis/dfa.html">DFA (Dependent Failure Analysis)</a></li>
@@ -525,7 +526,6 @@
 
 
 <li class="toctree-l2"><a class="reference internal" href="../../memory_shared/docs/index.html">memory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../message_passing/docs/index.html">message_passing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../os/docs/index.html">os</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../result/docs/index.html">result</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../static_reflection_with_serialization/docs/index.html">static_reflection_with_serialization</a></li>
@@ -604,7 +604,7 @@
                   
   <section id="bitmanipulation">
 <h1>bitmanipulation<a class="headerlink" href="#bitmanipulation" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-25a84777">
+<div class="need_container docutils container" id="SNCB-abed25eb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__bitmanipulation">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -668,7 +668,8 @@ It integrates a type-safe Bitmask Operator library that extends enum class types
 <h3>General considerations<a class="headerlink" href="#general-considerations" title="Link to this heading">#</a></h3>
 <p>The Bit Manipulation library should provide bit operation and byte extraction capabilities:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="requirements/index.html#comp_req__bitmanipulation__utilities" title="comp_req__bitmanipulation__utilities"><em class="xref need">Support for Bit Manipulatio... (comp_req__bitmanipulation__utilities)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements/index.html#comp_req__bitmanipulation__bit_operations" title="comp_req__bitmanipulation__bit_operations"><em class="xref need">Support for Bit Operations (comp_req__bitmanipulation__bit_operations)</em></a></p></li>
+<li><p><a class="reference internal" href="requirements/index.html#comp_req__bitmanipulation__byte_operations" title="comp_req__bitmanipulation__byte_operations"><em class="xref need">Support for Byte and Half-B... (comp_req__bitmanipulation__byte_operations)</em></a></p></li>
 <li><p><a class="reference internal" href="requirements/index.html#comp_req__bitmanipulation__bitmask_operators" title="comp_req__bitmanipulation__bitmask_operators"><em class="xref need">Support for Bitmask Operato... (comp_req__bitmanipulation__bitmask_operators)</em></a></p></li>
 <li><p><a class="reference internal" href="requirements/index.html#comp_req__bitmanipulation__bounds_safety" title="comp_req__bitmanipulation__bounds_safety"><em class="xref need">Bounds and Safety Checks (comp_req__bitmanipulation__bounds_safety)</em></a></p></li>
 <li><p><a class="reference internal" href="requirements/index.html#comp_req__bitmanipulation__header_only" title="comp_req__bitmanipulation__header_only"><em class="xref need">Header-only API (comp_req__bitmanipulation__header_only)</em></a></p></li>
@@ -689,12 +690,12 @@ It integrates a type-safe Bitmask Operator library that extends enum class types
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../../language/safecpp/docs/architecture/index.html"
+       href="../../language/safecpp/docs/requirements/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Safecpp Component Architecture</p>
+        <p class="prev-next-title">Requirements</p>
       </div>
     </a>
     <a class="right-next"
