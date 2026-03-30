@@ -77,7 +77,7 @@ jobs:
 
       - name: Warn in PR if docs-as-code version mismatch
         if: ${{ github.event_name == 'pull_request_target' && steps.doc_version.outputs.mismatch == 'True' && steps.fc.outputs.comment-id == '' }}
-        uses: peter-evans/create-or-update-comment@v4
+        uses: peter-evans/create-or-update-comment@v5
         with:
           issue-number: ${{github.event.pull_request.number}}
           body: |
