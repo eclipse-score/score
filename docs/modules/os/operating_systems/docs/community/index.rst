@@ -21,6 +21,7 @@ Community Level
    :titlesonly:
 
    autosd.rst
+   ebclfsa.rst
 
 These are the community-supported Operating Systems for Eclipse S-CORE.
 
