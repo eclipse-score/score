@@ -519,7 +519,6 @@
 
 
 <li class="toctree-l2"><a class="reference internal" href="../../../memory_shared/docs/index.html">memory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../message_passing/docs/index.html">message_passing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../os/docs/index.html">os</a></li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">result</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../requirements/index.html">Requirements</a></li>
@@ -608,7 +607,7 @@
                   
   <section id="result-component-architecture">
 <h1>Result Component Architecture<a class="headerlink" href="#result-component-architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-0d20fb14">
+<div class="need_container docutils container" id="SNCB-a7f58701">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__result_architecture">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -656,7 +655,7 @@
 </section>
 <section id="static-architecture">
 <h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-8a670992">
+<div class="need_container docutils container" id="SNCB-99662974">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp table" id="comp__baselibs_result">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -677,7 +676,7 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs_result</span><span class="needs_spacer">, </span><span class="needs_data">baselibs</span></span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">has: <span class="belongs_to"><span><a class="reference internal" href="../requirements/index.html#comp_req__result__error_handling" title="comp__baselibs_result">comp_req__result__error_handling</a>, <a class="reference internal" href="../requirements/index.html#comp_req__result__set_result" title="comp__baselibs_result">comp_req__result__set_result</a>, <a class="reference internal" href="../requirements/index.html#comp_req__result__domain_error_information" title="comp__baselibs_result">comp_req__result__domain_error_information</a>, <a class="reference internal" href="../requirements/index.html#comp_req__result__type_safety" title="comp__baselibs_result">comp_req__result__type_safety</a>, <a class="reference internal" href="../requirements/index.html#comp_req__result__std_integration" title="comp__baselibs_result">comp_req__result__std_integration</a>, <a class="reference internal" href="../requirements/index.html#comp_req__result__deterministic_behavior" title="comp__baselibs_result">comp_req__result__deterministic_behavior</a>, <a class="reference internal" href="../requirements/index.html#comp_req__result__exception_free_operation" title="comp__baselibs_result">comp_req__result__exception_free_operation</a></span></span></div>
+<div class="line"><span><div class="line">has: <span class="belongs_to"><span><a class="reference internal" href="#comp_arc_sta__baselibs__result" title="comp__baselibs_result">comp_arc_sta__baselibs__result</a>, <a class="reference internal" href="../requirements/index.html#comp_req__result__error_handling" title="comp__baselibs_result">comp_req__result__error_handling</a>, <a class="reference internal" href="../requirements/index.html#comp_req__result__set_result" title="comp__baselibs_result">comp_req__result__set_result</a>, <a class="reference internal" href="../requirements/index.html#comp_req__result__domain_error_information" title="comp__baselibs_result">comp_req__result__domain_error_information</a>, <a class="reference internal" href="../requirements/index.html#comp_req__result__type_safety" title="comp__baselibs_result">comp_req__result__type_safety</a>, <a class="reference internal" href="../requirements/index.html#comp_req__result__std_integration" title="comp__baselibs_result">comp_req__result__std_integration</a>, <a class="reference internal" href="../requirements/index.html#comp_req__result__deterministic_behavior" title="comp__baselibs_result">comp_req__result__deterministic_behavior</a>, <a class="reference internal" href="../requirements/index.html#comp_req__result__exception_free_operation" title="comp__baselibs_result">comp_req__result__exception_free_operation</a></span></span></div>
 <div class="line">implements: <span class="implements"><span><a class="reference internal" href="#logic_arc_int__baselibs__result" title="comp__baselibs_result">logic_arc_int__baselibs__result</a></span></span></div>
 <div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../docs/index.html#mod__baselibs" title="comp__baselibs_result">mod__baselibs</a>, <a class="reference internal" href="../../../docs/index.html#mod_view_sta__baselibs__baselibs" title="comp__baselibs_result">mod_view_sta__baselibs__baselibs</a></span></span></div>
 </span></div>
@@ -703,10 +702,56 @@
 </table>
 </div>
 </div>
+<div class="need_container docutils container" id="SNCB-69d1a446">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__baselibs__result">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Result Static view</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="#comp__baselibs_result" title="comp_arc_sta__baselibs__result">comp__baselibs_result</a></span></span></div>
+<div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/index.html#comp_req__result__error_handling" title="comp_arc_sta__baselibs__result">comp_req__result__error_handling</a>, <a class="reference internal" href="../requirements/index.html#comp_req__result__set_result" title="comp_arc_sta__baselibs__result">comp_req__result__set_result</a>, <a class="reference internal" href="../requirements/index.html#comp_req__result__domain_error_information" title="comp_arc_sta__baselibs__result">comp_req__result__domain_error_information</a>, <a class="reference internal" href="../requirements/index.html#comp_req__result__type_safety" title="comp_arc_sta__baselibs__result">comp_req__result__type_safety</a>, <a class="reference internal" href="../requirements/index.html#comp_req__result__std_integration" title="comp_arc_sta__baselibs__result">comp_req__result__std_integration</a>, <a class="reference internal" href="../requirements/index.html#comp_req__result__deterministic_behavior" title="comp_arc_sta__baselibs__result">comp_req__result__deterministic_behavior</a>, <a class="reference internal" href="../requirements/index.html#comp_req__result__exception_free_operation" title="comp_arc_sta__baselibs__result">comp_req__result__exception_free_operation</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-modules/baselibs/result/docs/architecture/index-1">
+<object data="../../../../../_images/plantuml-d00753d7650e57d5a17f2a503f8cd35b75225a7f.svg" type="image/svg+xml" style="width:178px;height:59px;background:#FFFFFF;"></object></p>
+</td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#comp_arc_sta__baselibs__result" title="comp_arc_sta__baselibs__result">comp_arc_sta__baselibs__result</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component Package Diagram</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
 <section id="interfaces">
 <h2>Interfaces<a class="headerlink" href="#interfaces" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-9bddcedd">
+<div class="need_container docutils container" id="SNCB-0c82ed99">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__baselibs__result">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -751,7 +796,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-c9b6b5b1">
+<div class="need_container docutils container" id="SNCB-67a645e5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__set_result">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -794,7 +839,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-82390373">
+<div class="need_container docutils container" id="SNCB-f2bfe6dc">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__get_value">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -837,7 +882,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b49adcbe">
+<div class="need_container docutils container" id="SNCB-3217bd22">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__get_error">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
