@@ -25,7 +25,7 @@ EB corbos Linux for Safety Applications (also EBcLfSA and Linux for Safety Appli
 It allows to run HI Applications (High Integrity Applications) for safety-related functions on top of the Linux kernel.
 
 The full and qualified stack uses a hypervisor to separate HI Applications from other applications and from the Linux kernel.
-To ensure spatial isolation even from the Linux kernel, an HI Application may not execute very few system calls.
+To ensure spatial isolation even from the Linux kernel, an HI Application shall not execute very few system calls.
 These system calls let the Linux kernel perform unsupervised operations on the HI Application's memory.
 Linux for Safety Applications protects an HI Application from such operations and guarantees it execution integrity.
 
