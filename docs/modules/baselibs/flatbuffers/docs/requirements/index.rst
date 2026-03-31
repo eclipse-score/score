@@ -25,38 +25,33 @@ Requirements
 FlatBuffers Tooling Requirements
 ================================
 
-.. Clarification required how tooling requirements shall be handled, keep status invalid for now.
-
-.. comp_req:: FlatBuffers Code Generation for C++
-   :id: comp_req__flatbuffers__codegen_cpp
-   :reqtype: Functional
+.. tool_req:: FlatBuffers Code Generation for C++
+   :id: tool_req__flatbuffers_codegen_cpp
    :security: NO
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__flatbuffers_library, feat_req__baselibs__multi_language_apis
-   :status: invalid
-   :belongs_to: comp__baselibs_flatbuffers
+   :status: valid
+   :implemented: NO
 
    The FlatBuffers-Library tooling shall generate code for serialization and read access of FlatBuffers data for C++.
 
-.. comp_req:: FlatBuffers Code Generation for Rust
-   :id: comp_req__flatbuffers__codegen_rust
-   :reqtype: Functional
+.. tool_req:: FlatBuffers Code Generation for Rust
+   :id: tool_req__flatbuffers_codegen_rust
    :security: NO
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__flatbuffers_library, feat_req__baselibs__multi_language_apis
    :status: invalid
-   :belongs_to: comp__baselibs_flatbuffers
+   :implemented: NO
 
    The FlatBuffers-Library tooling shall generate code for serialization and read access of FlatBuffers data for Rust.
 
-.. comp_req:: FlatBuffers Code Generation for Python
-   :id: comp_req__flatbuffers__codegen_python
-   :reqtype: Functional
+.. tool_req:: FlatBuffers Code Generation for Python
+   :id: tool_req__flatbuffers_codegen_python
    :security: NO
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__flatbuffers_library
    :status: invalid
-   :belongs_to: comp__baselibs_flatbuffers
+   :implemented: NO
 
    The FlatBuffers-Library tooling shall generate code for serialization and read access of FlatBuffers data for Python.
 
@@ -64,26 +59,24 @@ FlatBuffers Tooling Requirements
       Python code generation is nice-to-have for benchmark testing (scale configurations).
       It is not intended for safety certification (meta model check requires safety level ASIL-B).
 
-.. comp_req:: FlatBuffers Binary Creation from JSON
-   :id: comp_req__flatbuffers__tooling_json_to_bin
-   :reqtype: Functional
+.. tool_req:: FlatBuffers Binary Creation from JSON
+   :id: tool_req__flatbuffers_tooling_json_to_bin
    :security: NO
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__flatbuffers_library
    :status: invalid
-   :belongs_to: comp__baselibs_flatbuffers
+   :implemented: NO
 
    The FlatBuffers-Library tooling shall support creation of FlatBuffers binary files from
    JSON-encoded files conforming to the corresponding FlatBuffers schema.
 
-.. comp_req:: FlatBuffers Data Constraint Validation
-   :id: comp_req__flatbuffers__tooling_data_validate
-   :reqtype: Functional
+.. tool_req:: FlatBuffers Data Constraint Validation
+   :id: tool_req__flatbuffers_tooling_data_validate
    :security: NO
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__flatbuffers_library
    :status: invalid
-   :belongs_to: comp__baselibs_flatbuffers
+   :implemented: NO
 
    The FlatBuffers-Library tooling shall provide a mechanism to validate FlatBuffers data against
    schema-defined semantic constraints such as value ranges, allowed values, and required field
@@ -92,14 +85,13 @@ FlatBuffers Tooling Requirements
    .. note::
       Support JSON Schema validation of the JSON-encoded files used as input for FlatBuffers serialization.
 
-.. comp_req:: FlatBuffers Schema Evolution Check
-   :id: comp_req__flatbuffers__tooling_evolution
-   :reqtype: Functional
+.. tool_req:: FlatBuffers Schema Evolution Check
+   :id: tool_req__flatbuffers_tooling_evolution
    :security: NO
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__flatbuffers_library
    :status: invalid
-   :belongs_to: comp__baselibs_flatbuffers
+   :implemented: NO
 
    The FlatBuffers-Library tooling shall provide a mechanism to check whether a new version of a
    FlatBuffers schema is backward compatible with a previous version.
