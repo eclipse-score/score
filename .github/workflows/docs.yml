@@ -47,7 +47,7 @@ jobs:
       # | github.event.pull_request.head.repo.full_name  | pull_request       | Forked repository (if PR is from a fork) |
       # | github.repository                              | push, merge_group  | Default repository (same repo PRs, merges, pushes) |
       - name: Checkout repository (Handle all events)
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v6
         with:
           ref: ${{ github.head_ref || github.event.pull_request.head.ref || github.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
@@ -125,7 +125,7 @@ jobs:
       # even when triggered by a pull request from a fork.
       # ------------------------------------------------------------------------------
       - name: Checkout repository
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v6
 
       - name: Download documentation artifact
         uses: actions/download-artifact@v8.0.1

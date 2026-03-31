@@ -72,7 +72,7 @@ jobs:
           close-pr-message: "Auto-closing: no activity for 30 days. If this is still relevant, reopen or create a fresh PR."
 
       - name: Checkout gh-pages branch
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: ${{ github.repository }}
           ref: gh-pages
