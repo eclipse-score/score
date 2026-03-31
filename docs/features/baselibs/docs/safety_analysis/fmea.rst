@@ -18,32 +18,27 @@ FMEA (Failure Modes and Effects Analysis)
 
 .. document:: Baselibs FMEA
    :id: doc__baselibs_fmea
-   :status: draft
+   :status: valid
    :safety: ASIL_B
    :security: NO
    :realizes: wp__feature_fmea
 
+The feature baselibs consists of multiple components which provide very different functionality.
+They are also low-complex (i.e. no component architecture is documented). In consequence the function's
+failure modes are discussed and documented in the components FMEA's for better readability.
+
+Below failure mode is just one example which is present in every baselibs components FMEA.
 
 Failure Mode List
 -----------------
 
-.. code-block:: rst
+.. feat_saf_fmea:: Baselibs Feature
+   :violates: feat_arc_dyn__baselibs__dynamic_view_arch
+   :id: feat_saf_fmea__baselibs__components
+   :fault_id: EX_01_04
+   :failure_effect: any of the baselibs components execution is lost due to systematic SW error
+   :mitigated_by: feat_req__baselibs__safety
+   :sufficient: yes
+   :status: valid
 
-
-    .. feat_saf_fmea:: <Title>
-       :violates: <Feature architecture>
-       :id: feat_saf_fmea__<Feature>__<Element descriptor>
-       :fault_id: <ID from fault model :need:`gd_guidl__fault_models`>
-       :failure_effect: "description of failure effect of the fault model on the element"
-       :mitigated_by: <ID from Feature Requirement | ID from AoU Feature Requirement>
-       :mitigation_issue: <ID from Issue Tracker>
-       :sufficient: <yes|no>
-       :status: <valid|invalid>
-
- .. note::   argument is inside the 'content'. Therefore content is mandatory
-
-.. attention::
-    The above directive must be updated according to your feature FMEA.
-
-    - The above "code-block" directive must be updated
-    - Fill in all the needed information in the <brackets>
+   SW development is required in ASIL_B quality and each individual baselibs component has low complexity.

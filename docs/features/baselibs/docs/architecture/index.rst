@@ -107,6 +107,16 @@ Static Architecture
 
       {{ draw_feature(need(), needs) }}
 
+.. feat_arc_dyn:: Baselibs Dynamic View
+   :id: feat_arc_dyn__baselibs__dynamic_view_arch
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :fulfils: feat_req__baselibs__core_utilities
+   :belongs_to: feat__baselibs
+
+   not needed, simple caller/callee sequence
+
 Logical Interfaces
 ------------------
 
