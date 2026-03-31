@@ -1,0 +1,967 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>DR-001-Proc: Feature as Independent Delivery Product &#8212; S-CORE  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score.css?v=6e51530f" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score_needs.css?v=e97392eb" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score_design.css?v=d9fd870c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css?v=803738c0" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
+    <script src="../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
+    <script src="../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
+    <script src="../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
+    <script src="../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'design_decisions/DR-001-proc';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Eclipse S-CORE (Eclipse Safe Open Vehicle Core)" href="../introduction/index.html" />
+    <link rel="prev" title="DR-007-Infra: Solution for cyclic dependencies between docs-as-code and process description" href="DR-007-infra.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Eclipse S-CORE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../handbook/index.html">
+    Handbook
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../features/index.html">
+    Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../requirements/index.html">
+    Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../modules/index.html">
+    Modules
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../handbook/index.html">
+    Handbook
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../features/index.html">
+    Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../requirements/index.html">
+    Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../modules/index.html">
+    Modules
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../platform_management_plan/index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DR-001-strat.html">DR-001-Strat: Consistent Stack vs. Reference Integration</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DR-001-arch.html">DR-001-Arch: Rust Readiness for Safety-Critical Components</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DR-001-infra.html">DR-001-Infra: Integration Strategy for External Development Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-002-infra.html">DR-002-Infra: Integration Testing in a Distributed Monolith</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-003-infra.html">DR-003-Infra: Devcontainer Strategy for S-CORE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-004-infra.html">DR-004-Infra: Bi-directional traceability in docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-006-infra.html">DR-006-Infra: Clippy Integration via rules_lint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-007-infra.html">DR-007-Infra: Solution for cyclic dependencies between docs-as-code and process description</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">DR-001-Proc: Feature as Independent Delivery Product</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Decision Records</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">DR-001-Proc: Feature as Independent Delivery Product</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="dr-001-proc-feature-as-independent-delivery-product">
+<span id="decision-record-feature-as-independent-delivery"></span><h1>DR-001-Proc: Feature as Independent Delivery Product<a class="headerlink" href="#dr-001-proc-feature-as-independent-delivery-product" title="Link to this heading">#</a></h1>
+<div class="need_container docutils container" id="SNCB-d221bf7e">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__platform__feature_delivery">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Feature as Independent Delivery Product</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">accepted</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_context"><span class="needs_label">context: </span><span class="needs_data">Feature artifacts are bound to the S-CORE platform repository and cannot be delivered independently of the platform release. The previous idea of moving all artifacts into the SW-Module repository leads to cyclic dependencies.</span></span></div>
+<div class="line"><span class="needs_decision"><span class="needs_label">decision: </span><span class="needs_data">Feature artifacts are split: feature requirements and platform architecture remain in the S-CORE repository. Feature architecture and component artifacts are moved to the SW-Module repository (feature repository). The dependency direction is unambiguous: SW-Module repositories depend on the S-CORE repository, not the other way around.</span></span></div>
+</span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><dl class="field-list simple">
+<dt class="field-odd">Consequences<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Process update required. Feature architecture and component artifacts are moved to SW-Module repositories. Feature requirements and logical feature interfaces remain in the S-CORE repository. The dependency rule is mandatory.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#dec_rec__platform__feature_delivery" title="dec_rec__platform__feature_delivery">dec_rec__platform__feature_delivery</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Decision Record</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<section id="context">
+<h2>Context<a class="headerlink" href="#context" title="Link to this heading">#</a></h2>
+<p>The intent of this decision record is to resolve the cyclic dependency problem present in the
+current solution and to make features more independent from the S-CORE platform.
+The original idea was to move all feature artifacts into the SW-Module repositories that
+also contain the feature code. This was intended to strengthen the following aspects:</p>
+<ul class="simple">
+<li><p>Release independence</p></li>
+<li><p>Topic cohesion</p></li>
+<li><p>Reusability</p></li>
+</ul>
+<p>To validate the feasibility of this concept, an initial proof of concept (PoC) was built
+in which all feature artifacts were moved into the SW-Module repository.
+It turned out that this leads to cyclic dependencies.
+In addition, during the development of the PoC it became clear that the current solution
+already contains cyclic dependencies (see <a class="reference internal" href="#fig-current-meta-model"><span class="std std-ref">Building blocks meta model with current repository mapping (status quo)</span></a>).
+Therefore, neither the current concept nor the original PoC approach is a viable solution.</p>
+</section>
+<section id="decision">
+<h2>Decision<a class="headerlink" href="#decision" title="Link to this heading">#</a></h2>
+<p>The feature artifacts are split between the <strong>S-CORE repository</strong> and the
+<strong>SW-Module repositories</strong> to avoid cyclic dependencies:</p>
+<ul class="simple">
+<li><p>The S-CORE repository contains the stakeholder requirements and the platform architecture,
+including the feature requirements (requirements at feature level).</p></li>
+<li><p>The SW-Module repository contains the feature architecture, the component requirements,
+and the detailed design of the components.</p></li>
+</ul>
+<p>The dependency direction is unambiguous: SW-Module repositories depend on the S-CORE repository,
+but not the other way around. The integration repository knows all repositories.
+This rule structurally excludes cyclic dependencies (see <a class="reference internal" href="#fig-new-meta-model"><span class="std std-ref">Building blocks meta model with new repository mapping</span></a>).</p>
+</section>
+<section id="consequences">
+<h2>Consequences<a class="headerlink" href="#consequences" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Process update to reflect the new artifact distribution</p></li>
+<li><p>Feature architecture and component artifacts are moved to the SW-Module repositories</p></li>
+<li><p>Feature requirements remain in the S-CORE repository</p></li>
+<li><p>Logical feature interfaces remain in the S-CORE repository</p></li>
+<li><p>The dependency rule “SW-Module repositories → S-CORE repository” is mandatory</p></li>
+<li><p>The integration repository takes the role of the only node with knowledge of all repositories</p></li>
+</ul>
+</section>
+<section id="new-solution-alternative-3-split-artifacts">
+<h2>New Solution (Alternative 3 – Split Artifacts)<a class="headerlink" href="#new-solution-alternative-3-split-artifacts" title="Link to this heading">#</a></h2>
+<p>The new solution without cyclic dependencies is shown in <a class="reference internal" href="#fig-new-meta-model"><span class="std std-ref">Building blocks meta model with new repository mapping</span></a>.
+The new solution follows this approach:</p>
+<p>The <strong>S-CORE repository</strong> contains:</p>
+<ol class="arabic simple">
+<li><p>The stakeholder requirements that the platform must fulfill
+(black-box view of the platform).</p></li>
+<li><p>The platform architecture that breaks the platform down into features, their
+feature requirements (white-box view of the platform, black-box view of the features),
+and their logical architecture interfaces.</p></li>
+<li><p>The platform safety/security analysis and platform assumptions of use.</p></li>
+</ol>
+<p>A feature consists of components. A distinction is made between:</p>
+<ul class="simple">
+<li><p><strong>Shared components</strong> (e.g. BaseLibs): These are reused by multiple features
+and reside in their own SW-Module repositories. A feature can reference such components
+as a dependency.</p></li>
+<li><p><strong>Feature-specific components</strong>: These are developed exclusively for the realization of a
+specific feature and are probably not intended for reuse.</p></li>
+</ul>
+<p>The feature-specific components are bundled together with the feature artifacts in a single
+SW-Module repository. This repository can therefore also be referred to as a <strong>feature repository</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A feature repository may also contain components witch are used from other features.
+Unlike BaseLibs, these components are related to the feature and are not used by all S-CORE features.
+A component that merely <em>implements</em> a Logical Architecture Interface <em>provided</em> by a feature is not considered shared; it remains specific to that feature.</p>
+</div>
+<p>The <strong>SW-Module repository (feature repository)</strong> contains:</p>
+<ol class="arabic simple">
+<li><p>The feature architecture that breaks the feature down into components, and their
+component requirements (white-box view of the feature, black-box view of the component).</p></li>
+<li><p>The component architecture and/or the detailed design of the feature-specific components
+(white-box view of the component).</p></li>
+<li><p>The feature safety/security analysis, component safety/security analysis, and module
+assumptions of use.</p></li>
+</ol>
+<p><a class="reference internal" href="#fig-breakdown"><span class="std std-ref">Breakdown of Artifacts</span></a> illustrates exemplarily the decomposition from the platform via features
+down to components, as well as the assignment of artifacts to the respective repositories.
+The dependency relationships between repositories run exclusively from the SW-Module repository to the
+S-CORE repository — never in the opposite direction.</p>
+<figure class="align-center" id="id1">
+<span id="fig-breakdown"></span><a class="reference internal image-reference" href="../_images/DR-001-proc-breakdown.drawio.svg"><img alt="../_images/DR-001-proc-breakdown.drawio.svg" src="../_images/DR-001-proc-breakdown.drawio.svg" style="width: 75%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 32 </span><span class="caption-text">Breakdown of Artifacts</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>A complete overview of all artifacts and their assignment to the repositories is shown in
+<a class="reference internal" href="#fig-new-meta-model"><span class="std std-ref">Building blocks meta model with new repository mapping</span></a>.</p>
+<p><strong>Building blocks meta model with new repository mapping (Alternative 3 – Split Artifacts)</strong></p>
+<figure class="align-center" id="id2">
+<span id="fig-new-meta-model"></span><a class="reference internal image-reference" href="../_images/DR-001-proc-new_score_building_blocks_meta_model.drawio.svg"><img alt="../_images/DR-001-proc-new_score_building_blocks_meta_model.drawio.svg" src="../_images/DR-001-proc-new_score_building_blocks_meta_model.drawio.svg" style="width: 75%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 33 </span><span class="caption-text">Building blocks meta model with new repository mapping</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Building blocks meta model with current repository mapping (status quo)</strong></p>
+<figure class="align-center" id="id3">
+<span id="fig-current-meta-model"></span><a class="reference internal image-reference" href="../_images/DR-001-proc-current_score_building_blocks_meta_model.drawio.svg"><img alt="../_images/DR-001-proc-current_score_building_blocks_meta_model.drawio.svg" src="../_images/DR-001-proc-current_score_building_blocks_meta_model.drawio.svg" style="width: 75%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 34 </span><span class="caption-text">Building blocks meta model with current repository mapping (status quo)</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="considered-alternatives">
+<h2>Considered Alternatives<a class="headerlink" href="#considered-alternatives" title="Link to this heading">#</a></h2>
+<p>Four alternatives were examined:</p>
+<dl class="simple">
+<dt><strong>Alternative 1 – Status Quo (platform-centric feature management)</strong></dt><dd><p>All platform and feature artifacts are located in the S-CORE platform repository.
+Component artifacts are in the SW-Module repository. Features can only be delivered with
+the platform release. Cyclic dependencies already exist today.
+→ <em>not chosen</em></p>
+</dd>
+<dt><strong>Alternative 2 – Feature in the SW-Module repository</strong></dt><dd><p>Platform artifacts remain in the S-CORE repository; all feature artifacts (requirements,
+architecture, tests) and the associated components move into the SW-Module repository.
+Enables independent feature releases, but leads to cyclic dependencies, since the
+SW-Module repository depends on the S-CORE repository and vice versa.
+→ <em>not chosen, due to cyclic dependencies</em></p>
+</dd>
+<dt><strong>Alternative 3 – Split artifacts (chosen solution)</strong></dt><dd><p>Feature requirements and platform architecture remain in the S-CORE repository.
+Feature architecture and component artifacts move to the SW-Module repository.
+The dependency direction is unambiguous: SW-Module repositories → S-CORE repository.
+Cyclic dependencies are structurally excluded.
+→ <strong>chosen</strong></p>
+</dd>
+<dt><strong>Alternative 4 – Dedicated feature repository</strong></dt><dd><p>A separate feature repository sits between the S-CORE repository and the SW-Module repositories.
+Addresses the use case where two implementations exist for the same feature and
+copies of feature artifacts are to be avoided.
+Increases complexity, the number of repositories, and maintenance effort.
+→ <em>not chosen</em></p>
+</dd>
+</dl>
+</section>
+<section id="proof-of-concept-poc-logging">
+<h2>Proof of Concept (PoC): Logging<a class="headerlink" href="#proof-of-concept-poc-logging" title="Link to this heading">#</a></h2>
+<p>The <strong>logging feature</strong> was used as the PoC. The version shown here already implements
+the chosen solution (Alternative 3).</p>
+<p>The feature black-box view (feature requirements) is defined in the <code class="docutils literal notranslate"><span class="pre">score</span></code> repository.
+The feature architecture and the feature-specific component artifacts are located in the
+<code class="docutils literal notranslate"><span class="pre">logging</span></code> SW-Module repository. The logging feature additionally depends on the
+<code class="docutils literal notranslate"><span class="pre">baselib</span></code> repository and the <code class="docutils literal notranslate"><span class="pre">baselib_rust</span></code> repository, which are used as shared
+components by multiple features.
+The dependency direction runs exclusively from the <code class="docutils literal notranslate"><span class="pre">logging</span></code> SW-Module repository
+to the <code class="docutils literal notranslate"><span class="pre">score</span></code> repository — never the other way around.</p>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="../_images/DR-001-proc-PoC_logging.drawio.svg"><img alt="../_images/DR-001-proc-PoC_logging.drawio.svg" src="../_images/DR-001-proc-PoC_logging.drawio.svg" style="width: 75%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 35 </span><span class="caption-text">Proof of Concept: Logging Feature</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="glossary">
+<h2>Glossary<a class="headerlink" href="#glossary" title="Link to this heading">#</a></h2>
+<dl class="simple glossary">
+<dt id="term-Artifact">Artifact<a class="headerlink" href="#term-Artifact" title="Link to this term">#</a></dt><dd><p>Any document or result produced during the development process, e.g. requirements,
+architecture descriptions, tests or source code.</p>
+</dd>
+<dt id="term-Black-box-view">Black-box view<a class="headerlink" href="#term-Black-box-view" title="Link to this term">#</a></dt><dd><p>Observation of a unit from the outside — only interfaces and behavior are visible,
+not the internal structure.</p>
+</dd>
+<dt id="term-Decision-Record-DR">Decision Record (DR)<a class="headerlink" href="#term-Decision-Record-DR" title="Link to this term">#</a></dt><dd><p>A document that describes, justifies, and records the consequences of an architecture
+or process decision.</p>
+</dd>
+<dt id="term-Feature">Feature<a class="headerlink" href="#term-Feature" title="Link to this term">#</a></dt><dd><p>A distinct unit of functionality of the S-CORE platform, realized by a set of components.</p>
+</dd>
+<dt id="term-Feature-architecture">Feature architecture<a class="headerlink" href="#term-Feature-architecture" title="Link to this term">#</a></dt><dd><p>The description of how a feature is broken down into components
+(white-box view of the feature).</p>
+</dd>
+<dt id="term-Feature-repository">Feature repository<a class="headerlink" href="#term-Feature-repository" title="Link to this term">#</a></dt><dd><p>Designation for a SW-Module repository that contains, in addition to the
+feature-specific source code, all associated feature artifacts (feature architecture,
+component requirements, detailed design).</p>
+</dd>
+<dt id="term-Feature-requirements">Feature requirements<a class="headerlink" href="#term-Feature-requirements" title="Link to this term">#</a></dt><dd><p>Requirements at the feature level. They describe what a feature must do and are
+derived from the stakeholder requirements.</p>
+</dd>
+<dt id="term-Integration-repository">Integration repository<a class="headerlink" href="#term-Integration-repository" title="Link to this term">#</a></dt><dd><p>Repository that knows all other repositories and is responsible for integrating the
+overall platform.</p>
+</dd>
+<dt id="term-Component-architecture">Component architecture<a class="headerlink" href="#term-Component-architecture" title="Link to this term">#</a></dt><dd><p>The detailed structure of a component (white-box view of the component), also
+referred to as detailed design.</p>
+</dd>
+<dt id="term-Component-requirements">Component requirements<a class="headerlink" href="#term-Component-requirements" title="Link to this term">#</a></dt><dd><p>Requirements at the component level, derived from the feature architecture.</p>
+</dd>
+<dt id="term-Platform-architecture">Platform architecture<a class="headerlink" href="#term-Platform-architecture" title="Link to this term">#</a></dt><dd><p>The decomposition of the S-CORE platform into features (white-box view of the platform).</p>
+</dd>
+<dt id="term-S-CORE-repository">S-CORE repository<a class="headerlink" href="#term-S-CORE-repository" title="Link to this term">#</a></dt><dd><p>The central platform repository containing stakeholder requirements, platform
+architecture, and feature requirements.</p>
+</dd>
+<dt id="term-SEooC-Safety-Element-out-of-Context">SEooC (Safety Element out of Context)<a class="headerlink" href="#term-SEooC-Safety-Element-out-of-Context" title="Link to this term">#</a></dt><dd><p>A safety element that can be developed and delivered independently of a concrete
+system context, to facilitate integration into various projects.</p>
+</dd>
+<dt id="term-Shared-components">Shared components<a class="headerlink" href="#term-Shared-components" title="Link to this term">#</a></dt><dd><p>Components reused by multiple features (e.g. BaseLibs) that reside in their own
+SW-Module repositories. Features reference them as dependencies.</p>
+</dd>
+<dt id="term-SW-Module-repository-SW-Module-repo">SW-Module repository (SW-Module repo)<a class="headerlink" href="#term-SW-Module-repository-SW-Module-repo" title="Link to this term">#</a></dt><dd><p>Repository containing feature architecture, component requirements, detailed design,
+and source code of a feature implementation.</p>
+</dd>
+<dt id="term-Stakeholder-requirements">Stakeholder requirements<a class="headerlink" href="#term-Stakeholder-requirements" title="Link to this term">#</a></dt><dd><p>Requirements placed on the S-CORE platform as a whole from the outside
+(black-box view of the platform).</p>
+</dd>
+<dt id="term-White-box-view">White-box view<a class="headerlink" href="#term-White-box-view" title="Link to this term">#</a></dt><dd><p>Observation of a unit from the inside — the internal structure and decomposition
+are visible.</p>
+</dd>
+<dt id="term-Cyclic-dependency">Cyclic dependency<a class="headerlink" href="#term-Cyclic-dependency" title="Link to this term">#</a></dt><dd><p>A dependency relationship in which two or more units depend on each other mutually,
+leading to irresolvable build or versioning conflicts.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="DR-007-infra.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">DR-007-Infra: Solution for cyclic dependencies between docs-as-code and process description</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../introduction/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Eclipse S-CORE (Eclipse Safe Open Vehicle Core)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context">Context</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision">Decision</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consequences">Consequences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-solution-alternative-3-split-artifacts">New Solution (Alternative 3 – Split Artifacts)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#considered-alternatives">Considered Alternatives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-of-concept-poc-logging">Proof of Concept (PoC): Logging</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glossary">Glossary</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/design_decisions/DR-001-proc.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
