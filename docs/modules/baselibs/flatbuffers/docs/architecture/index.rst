@@ -17,7 +17,7 @@ FlatBuffers Component Architecture
 
 .. To be created. Link from comp_req to comp is mandatory for score metamodel check.
 
-.. comp:: JSON
+.. comp:: FlatBuffers
    :id: comp__baselibs_flatbuffers
    :security: YES
    :safety:  ASIL_B
