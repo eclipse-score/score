@@ -387,7 +387,7 @@ release, as part of the Tool Verification Report.
      - T.B.D. (see [1]_)
      - YES
      - :need:`rl__testing_community`
-     - N/A
+     - :need:`doc_tool__pytest`
      - YES
 
 
