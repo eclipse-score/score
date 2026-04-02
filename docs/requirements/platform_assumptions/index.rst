@@ -272,6 +272,20 @@ In this section assumptions are described which need to be fulfilled by the appl
    Note: Exceptions create additional overhead which may be a safety risk. Therefore, all exceptions are expected to lead directly to a termination of the application causing the exception.
    This is supported by the library safecpp/aborts_upon_exception supplied by S-CORE "base libraries" feature.
 
+.. aou_req:: Avoidance of heap allocations after initialization
+   :id: aou_req__platform__no_heap_alloc_after_init
+   :reqtype: Functional
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :tags: user
+
+   All applications using the SW-platform should not perform heap allocations after initialization.
+
+   Note: Heap allocations have non-deterministic timing behavior and may cause memory fragmentation, which may be a safety risk.
+   Therefore, all heap allocations are expected to be performed during initialization of the application.
+   Any deviation from this expectation should be justified in the safety concept of the application.
+
 .. aou_req:: Error Reaction
    :id: aou_req__platform__error_reaction
    :reqtype: Functional
