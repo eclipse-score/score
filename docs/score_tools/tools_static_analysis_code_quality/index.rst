@@ -31,3 +31,4 @@ Static Analysis & Code Quality Tools Overview
 
    clippy
    rustfmt
+   symbol_report_blanket
