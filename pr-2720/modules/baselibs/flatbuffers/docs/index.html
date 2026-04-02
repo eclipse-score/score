@@ -525,7 +525,6 @@
 
 
 
-
 <li class="toctree-l2"><a class="reference internal" href="../../json/docs/index.html">JSON-Library</a></li>
 
 
@@ -615,7 +614,7 @@
                   
   <section id="flatbuffers-library">
 <h1>FlatBuffers-Library<a class="headerlink" href="#flatbuffers-library" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-302c3baa">
+<div class="need_container docutils container" id="SNCB-3602b216">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__flatbuffers">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -667,9 +666,9 @@
 serialization, zero-copy read access, and structural verification of FlatBuffers data, as well as code
 generation via the <code class="docutils literal notranslate"><span class="pre">flatc</span></code> compiler.</p>
 <p>Additionally, the library introduces FlatBuffers binary configuration format to replace JSON-based
-module configuration. FlatBuffers provides zero-copy access, schema validation, and access code
-generation for C++, Rust, and further languages. The approach eliminates the need for runtime
-parsing and accelerates module startup times. Safety certification covers <code class="docutils literal notranslate"><span class="pre">flatc</span></code> tool
+module configuration for runtime access. FlatBuffers provides zero-copy access, schema validation,
+and access code generation for C++, Rust, and further languages. The approach eliminates the need
+for runtime parsing and accelerates module startup times. Safety certification covers <code class="docutils literal notranslate"><span class="pre">flatc</span></code> tool
 qualification, runtime library verification, and module-level testing of generated code.</p>
 </section>
 <section id="motivation">
@@ -686,7 +685,6 @@ limit startup performance in time-critical applications.</p>
 </ul>
 </dd>
 </dl>
-<p>Given its cross-cutting nature, this architectural decision shall be done early in the project.</p>
 </section>
 <section id="rationale">
 <h1>Rationale<a class="headerlink" href="#rationale" title="Link to this heading">#</a></h1>
@@ -696,21 +694,21 @@ FlatBuffers is ideal as it allows zero-copy data access. The schema-driven code 
 accelerates development by providing type-safe access patterns, reducing both implementation effort
 and the potential for configuration-related runtime errors.</p>
 </section>
-<section id="basic-functionality">
-<h1>Basic Functionality<a class="headerlink" href="#basic-functionality" title="Link to this heading">#</a></h1>
+<section id="specification">
+<h1>Specification<a class="headerlink" href="#specification" title="Link to this heading">#</a></h1>
 <p>The <code class="docutils literal notranslate"><span class="pre">flatc</span></code> compiler shall generate code for serializing, accessing, and verifying
 FlatBuffers binary data. Code generation shall be provided for C++ and Rust at ASIL-B level
 and other languages as needed at QM level (e.g. Python).</p>
 <p>The FlatBuffers-Library shall provide services for serialization, zero-copy access of
 FlatBuffers binary data, and structural verification of buffers. The library shall also support
-loading FlatBuffers binary files and optionally provide common buffer identification and version
+loading FlatBuffers binary files and opt-in functionality for common buffer identification and version
 checking mechanisms.</p>
 <p>Note: FlatBuffers verification mechanism validates structural well-formedness only (e.g. offsets, vtables,
 field boundaries), not payload data integrity.</p>
 <p>Module configuration shall use FlatBuffers binary format for read-only configuration scenarios to
 achieve aggressive start-up time requirements.</p>
-<section id="implementation">
-<span id="flatbuffers-overview"></span><h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
+<section id="design">
+<span id="flatbuffers-overview"></span><h2>Design<a class="headerlink" href="#design" title="Link to this heading">#</a></h2>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../../../_images/flatbuffers_overview.drawio.svg"><img alt="FlatBuffers overview" src="../../../../_images/flatbuffers_overview.drawio.svg" style="width: 80%;" />
 </a>
@@ -801,9 +799,6 @@ The FlatBuffers-Library should provide examples for reference implementations.</
 <h1>Open Issues<a class="headerlink" href="#open-issues" title="Link to this heading">#</a></h1>
 <p>No open issues identified yet.</p>
 </section>
-<section id="future-extensions">
-<h1>Future Extensions<a class="headerlink" href="#future-extensions" title="Link to this heading">#</a></h1>
-</section>
 <section id="footnotes">
 <h1>Footnotes<a class="headerlink" href="#footnotes" title="Link to this heading">#</a></h1>
 <aside class="footnote-list brackets">
@@ -865,8 +860,8 @@ The FlatBuffers-Library should provide examples for reference implementations.</
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale">Rationale</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-functionality">Basic Functionality</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a><ul class="nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#specification">Specification</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#design">Design</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-evolution">Schema Evolution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-versioning">Schema Versioning</a></li>
 </ul>
@@ -882,7 +877,6 @@ The FlatBuffers-Library should provide examples for reference implementations.</
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-teach-this">How to Teach This</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rejected-ideas">Rejected Ideas</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#open-issues">Open Issues</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#future-extensions">Future Extensions</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#footnotes">Footnotes</a></li>
 </ul>
 
