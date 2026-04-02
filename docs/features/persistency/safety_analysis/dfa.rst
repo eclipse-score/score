@@ -23,55 +23,149 @@ DFA (Dependent Failure Analysis)
    :realizes: wp__feature_dfa
    :tags: persistency
 
-For the DFA analysis where the failure initiators :need:`gd_guidl__dfa_failure_initiators` are used. The analysis is done before the platform DFA is done.
-Safety mechanisms that are used by many features are not considered here, but at the platform DFA. The analysis is only done for the needs of the persistency feature.
-The components KVS and JSON will also be considered at the platform DFA. No additional violations within the persistency feature are expected.
 
-The following failure initiators doesn't apply to the persistency feature:
+The DFA for the feature Persistency is performed. To show evidence that all failure initiators are considered, the applicability has to be filled out in the
+following tables. For all applicable failure initiators, the DFA has to be performed.
 
-Shared resources
-   - SR_01_01: Reused software module: No reused software modules are used.
-   - SR_01_02: Library: The file system fs is a library. It will be considered at the platform DFA. Same argument is used for the JSON library.
-   - SR_01_04: Basic software: No basic software is used.
-   - SR_01_05: Operating system including scheduler: Might be considered at the platform DFA or is out of scope.
-   - SR_01_06: Any service stack, e.g. communication stack: No service stack is used.
-   - SR_01_09: Execution time: There is no timing impact at persistency, so no mitigation is needed.
-   - SR_01_10: Allocated memory: Will be considered at the platform DFA. JSON can effect it, but it should not be allowed.
+Dependent Failure Initiators
+----------------------------
 
-Communication between the two elements
-   - CO_01_01: Information passed via argument through a function call, or via writing/reading a variable being global to the two software functions (data flow): Failure initiator not applicable at persistency, so no mitigation is needed.
-   - CO_01_02: Data or message corruption / repetition / loss / delay / masquerading or incorrect addressing of information: Persistency is developed fully deterministic. So no corruption, repetition, loss, delay, masquerading or incorrect addressing of information is expected.
-   - CO_01_03: Insertion / sequence of information: Subset of CO_01_02.
-   - CO_01_04: Corruption of information, inconsistent data: Subset of CO_01_02.
-   - CO_01_05: Asymmetric information sent from a sender to multiple receivers, so that not all defined receivers have the same informations: Failure initiator not applicable at persistency, so no mitigation is needed.
-   - CO_01_06: Information from a sender received by only a subset of the receivers: Failure initiator not applicable at persistency, so no mitigation is needed.
-   - CO_01_07: Blocking access to a communication channel: Failure initiator not applicable at persistency, so no mitigation is needed.
+2.1 Shared resources
 
-Shared information inputs
-   - SI_01_02: Configuration data: Failure initiator not applicable at persistency, so no mitigation is needed.
-   - SI_01_03: Constants, or variables, being global to the two software functions: Failure initiator not applicable at persistency, so no mitigation is needed.
-   - SI_01_04: Basic software passes data (read from hardware register and converted into logical information) to two applications software functions: Failure initiator not applicable at persistency, so no mitigation is needed.
-   - SI_01_05: Data / function parameter arguments / messages delivered by software function to more than one other function: Failure initiator not applicable at persistency, so no mitigation is needed.
+| 2.2 Communication between the two elements:
+| Receiving function is affected by information that is false, lost, sent multiple times, or in the wrong order etc. from the sender.
 
-Unintended impact
-   - UI_01_01: Memory miss-allocation and leaks: Will be considered at the platform DFA.
-   - UI_01_02: Read/Write access to memory allocated to another software element: Will be considered at the platform DFA.
-   - UI_01_03: Stack/Buffer under-/overflow: Might happens but very unlikely in RUST. Will be considered at the platform DFA.
-   - UI_01_04: Deadlocks: Deadlocks are not caused by the KVS, but by the application.
-   - UI_01_05: Livelocks: Same consideration as done in UI_01_04.
-   - UI_01_07: Incorrect allocation of execution time: Failure initiator not applicable at persistency, so no mitigation is needed.
-   - UI_01_08: Incorrect execution flow: Failure initiator not applicable at persistency, so no mitigation is needed.
-   - UI_01_09: Incorrect synchronization between software elements: Failure initiator not applicable at persistency, so no mitigation is needed.
-   - UI_01_10: CPU time depletion: Failure initiator not applicable at persistency, so no mitigation is needed. Will be anylysed at the platform DFA.
-   - UI_01_11: Memory depletion: Failure initiator not applicable at persistency, so no mitigation is needed. Will be anylysed at the platform DFA.
-   - UI_01_12: Other HW unavailability: Failure initiator not applicable at persistency, so no mitigation is needed.
+.. list-table:: DFA communication between elements
+  :header-rows: 1
+  :widths: 10,20,10,20
 
-Development failure initiators
-   - SC_01_02: Same development approaches (e.g. IDE, programming and/or modelling language): Will be considered at feature platform DFA.
-   - SC_01_03: Same personal: Will be considered at feature platform DFA.
-   - SC_01_04: Same social-cultural context (even if different personnel): Will be considered at feature platform DFA.
-   - SC_01_05: Development fault (e.g. human error, insufficient qualification, insufficient methods): Will be considered at feature platform DFA.
+  * - ID
+    - Violation cause communication between elements
+    - Applicability
+    - Rationale
+  * - CO_01_01
+    - Information passed via argument through a function call, or via writing/reading a variable being global to the two software functions (data flow)
+    - no
+    - Failure initiator not applicable at persistency, so no mitigation is needed.
+  * - CO_01_02
+    - Data or message corruption / repetition / loss / delay / masquerading or incorrect addressing of information
+    - no
+    - Persistency is developed fully deterministic. So no corruption, repetition, loss, delay, masquerading or incorrect addressing of information is expected.
+  * - CO_01_03
+    - Insertion / sequence of information
+    - no
+    - Subset of CO_01_02.
+  * - CO_01_04
+    - Corruption of information, inconsistent data
+    - no
+    - Subset of CO_01_02.
+  * - CO_01_05
+    - Asymmetric information sent from a sender to multiple receivers, so that not all defined receivers have the same information
+    - no
+    - Failure initiator not applicable at persistency, so no mitigation is needed.
+  * - CO_01_06
+    - Information from a sender received by only a subset of the receivers
+    - no
+    - Failure initiator not applicable at persistency, so no mitigation is needed.
+  * - CO_01_07
+    - Blocking access to a communication channel
+    - no
+    - Failure initiator not applicable at persistency, so no mitigation is needed.
 
+
+| 2.3 Shared information inputs
+| Same information input used by multiple functions.
+
+.. list-table:: DFA shared information inputs
+  :header-rows: 1
+  :widths: 10,20,10,20
+
+  * - ID
+    - Violation cause shared information inputs
+    - Applicability
+    - Rationale
+  * - SI_01_02
+    - Configuration data
+    - no
+    - Failure initiator not applicable at persistency, so no mitigation is needed.
+  * - SI_01_03
+    - Constants, or variables, being global to the two software functions
+    - no
+    - Failure initiator not applicable at persistency, so no mitigation is needed.
+  * - SI_01_04
+    - Basic software passes data (read from hardware register and converted into logical information) to two applications software functions
+    - no
+    - Failure initiator not applicable at persistency, so no mitigation is needed.
+  * - SI_01_05
+    - Data / function parameter arguments / messages delivered by software function to more than one other function
+    - no
+    - Failure initiator not applicable at persistency, so no mitigation is needed.
+
+
+| 2.4 Unintended impact
+| Unintended impacts to function due to various failures.
+
+.. list-table:: DFA unintended impact
+  :header-rows: 1
+  :widths: 10,20,10,20
+
+  * - ID
+    - Violation cause unintended impact
+    - Applicability
+    - Rationale
+  * - UI_01_01
+    - Memory miss-allocation and leaks
+    - no
+    - Will be considered at the platform DFA.
+  * - UI_01_02
+    - Read/Write access to memory allocated to another software element
+    - no
+    - Will be considered at the platform DFA.
+  * - UI_01_03
+    - Stack/Buffer under-/overflow
+    - no
+    - Might happens but very unlikely in RUST. Will be considered at the platform DFA.
+  * - UI_01_04
+    - Deadlocks
+    - no
+    - Deadlocks are not caused by the KVS, but by the application.
+  * - UI_01_05
+    - Livelocks
+    - no
+    - Same consideration as done in UI_01_04.
+  * - UI_01_06
+    - Blocking of execution
+    - yes
+    - :need:`feat_saf_dfa__persistency__execution_blocking`
+  * - UI_01_07
+    - Incorrect allocation of execution time
+    - no
+    - Failure initiator not applicable at persistency, so no mitigation is needed.
+  * - UI_01_08
+    - Incorrect execution flow
+    - no
+    - Failure initiator not applicable at persistency, so no mitigation is needed.
+  * - UI_01_09
+    - Incorrect synchronization between software elements
+    - no
+    - Failure initiator not applicable at persistency, so no mitigation is needed.
+  * - UI_01_10
+    - CPU time depletion
+    - no
+    - Failure initiator not applicable at persistency, so no mitigation is needed. Will be anylysed at the platform DFA.
+  * - UI_01_11
+    - Memory depletion
+    - no
+    - Failure initiator not applicable at persistency, so no mitigation is needed. Will be anylysed at the platform DFA.
+  * - UI_01_12
+    - Other HW unavailability
+    - no
+    - Failure initiator not applicable at persistency, so no mitigation is needed.
+
+
+DFA
+---
+For all identified applicable failure initiators, the DFA is performed in the following section.
 
 .. feat_saf_dfa:: Persistency execution blocking
    :violates: feat_arc_sta__persistency__static
