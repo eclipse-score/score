@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2025 Contributors to the Eclipse Foundation
+   # Copyright (c) 2026 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -39,9 +39,9 @@ serialization, zero-copy read access, and structural verification of FlatBuffers
 generation via the ``flatc`` compiler.
 
 Additionally, the library introduces FlatBuffers binary configuration format to replace JSON-based
-module configuration. FlatBuffers provides zero-copy access, schema validation, and access code
-generation for C++, Rust, and further languages. The approach eliminates the need for runtime
-parsing and accelerates module startup times. Safety certification covers ``flatc`` tool
+module configuration for runtime access. FlatBuffers provides zero-copy access, schema validation,
+and access code generation for C++, Rust, and further languages. The approach eliminates the need
+for runtime parsing and accelerates module startup times. Safety certification covers ``flatc`` tool
 qualification, runtime library verification, and module-level testing of generated code.
 
 
@@ -58,8 +58,6 @@ The FlatBuffers binary configuration approach addresses these engineering challe
    - Reducing development effort through automated access code generation
    - Ensuring schema validation at build time
 
-Given its cross-cutting nature, this architectural decision shall be done early in the project.
-
 
 Rationale
 =========
@@ -71,8 +69,8 @@ accelerates development by providing type-safe access patterns, reducing both im
 and the potential for configuration-related runtime errors.
 
 
-Basic Functionality
-===================
+Specification
+=============
 
 The ``flatc`` compiler shall generate code for serializing, accessing, and verifying
 FlatBuffers binary data. Code generation shall be provided for C++ and Rust at ASIL-B level
@@ -80,7 +78,7 @@ and other languages as needed at QM level (e.g. Python).
 
 The FlatBuffers-Library shall provide services for serialization, zero-copy access of
 FlatBuffers binary data, and structural verification of buffers. The library shall also support
-loading FlatBuffers binary files and optionally provide common buffer identification and version
+loading FlatBuffers binary files and opt-in functionality for common buffer identification and version
 checking mechanisms.
 
 Note: FlatBuffers verification mechanism validates structural well-formedness only (e.g. offsets, vtables,
@@ -91,8 +89,8 @@ achieve aggressive start-up time requirements.
 
 .. _flatbuffers_overview:
 
-Implementation
---------------
+Design
+------
 
 .. figure:: _assets/flatbuffers_overview.drawio.svg
    :alt: FlatBuffers overview
@@ -186,10 +184,6 @@ Open Issues
 ===========
 
 No open issues identified yet.
-
-
-Future Extensions
-=================
 
 
 Footnotes

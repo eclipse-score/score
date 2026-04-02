@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2025 Contributors to the Eclipse Foundation
+   # Copyright (c) 2026 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -17,7 +17,7 @@ Requirements
 
 .. document:: FlatBuffers Requirements
    :id: doc__flatbuffers_requirements
-   :status: draft
+   :status: valid
    :safety: ASIL_B
    :security: YES
    :realizes: wp__requirements_comp
@@ -29,7 +29,7 @@ FlatBuffers Tooling Requirements
    :id: tool_req__flatbuffers_codegen_cpp
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__baselibs__flatbuffers_library, feat_req__baselibs__multi_language_apis
+   :satisfies: feat_req__baselibs__flatbuffers_library, feat_req__baselibs__safety, feat_req__baselibs__multi_language_apis
    :status: valid
    :implemented: NO
 
@@ -39,8 +39,8 @@ FlatBuffers Tooling Requirements
    :id: tool_req__flatbuffers_codegen_rust
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__baselibs__flatbuffers_library, feat_req__baselibs__multi_language_apis
-   :status: invalid
+   :satisfies: feat_req__baselibs__flatbuffers_library, feat_req__baselibs__safety, feat_req__baselibs__multi_language_apis
+   :status: valid
    :implemented: NO
 
    The FlatBuffers-Library tooling shall generate code for serialization and read access of FlatBuffers data for Rust.
@@ -48,9 +48,9 @@ FlatBuffers Tooling Requirements
 .. tool_req:: FlatBuffers Code Generation for Python
    :id: tool_req__flatbuffers_codegen_python
    :security: NO
-   :safety: ASIL_B
+   :safety: QM
    :satisfies: feat_req__baselibs__flatbuffers_library
-   :status: invalid
+   :status: valid
    :implemented: NO
 
    The FlatBuffers-Library tooling shall generate code for serialization and read access of FlatBuffers data for Python.
@@ -63,34 +63,39 @@ FlatBuffers Tooling Requirements
    :id: tool_req__flatbuffers_tooling_json_to_bin
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__baselibs__flatbuffers_library
-   :status: invalid
+   :satisfies: feat_req__baselibs__flatbuffers_library, feat_req__baselibs__safety
+   :status: valid
    :implemented: NO
 
    The FlatBuffers-Library tooling shall support creation of FlatBuffers binary files from
-   JSON-encoded files conforming to the corresponding FlatBuffers schema.
+   JSON-encoded files conforming to the provided FlatBuffers schema, in case of violation
+   of the FlatBuffers schema the tool shall fail with an appropriate error message.
 
 .. tool_req:: FlatBuffers Data Constraint Validation
    :id: tool_req__flatbuffers_tooling_data_validate
    :security: NO
-   :safety: ASIL_B
+   :safety: QM
    :satisfies: feat_req__baselibs__flatbuffers_library
-   :status: invalid
+   :status: valid
    :implemented: NO
 
-   The FlatBuffers-Library tooling shall provide a mechanism to validate FlatBuffers data against
-   schema-defined semantic constraints such as value ranges, allowed values, and required field
-   presence.
+   The FlatBuffers-Library tooling shall provide a mechanism to validate JSON-encoded files containing
+   FlatBuffers data against JSON-schema defined semantic constraints such as value ranges, allowed values
+   and required field presence, in case of violation of the JSON-schema the tool shall fail with an appropriate error message.
 
    .. note::
-      Support JSON Schema validation of the JSON-encoded files used as input for FlatBuffers serialization.
+      FlatBuffers schemas constrain values only via type bounds (e.g. uint8) or enum membership, arbitrary
+      constraints such as custom value ranges must be enforced externally.
+      Within FlatBuffers tables, scalar fields always carry a value (their default if not explicitly set)
+      and cannot be absent. Reference-type fields (strings, vectors, nested tables, unions) can be
+      marked with required to enforce their presence, otherwise they are optional.
 
 .. tool_req:: FlatBuffers Schema Evolution Check
    :id: tool_req__flatbuffers_tooling_evolution
    :security: NO
-   :safety: ASIL_B
+   :safety: QM
    :satisfies: feat_req__baselibs__flatbuffers_library
-   :status: invalid
+   :status: valid
    :implemented: NO
 
    The FlatBuffers-Library tooling shall provide a mechanism to check whether a new version of a
@@ -110,7 +115,7 @@ FlatBuffers Library Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__baselibs__flatbuffers_library
+   :satisfies: feat_req__baselibs__flatbuffers_library, feat_req__baselibs__safety
    :status: valid
    :belongs_to: comp__baselibs_flatbuffers
 
@@ -121,7 +126,7 @@ FlatBuffers Library Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__baselibs__flatbuffers_library
+   :satisfies: feat_req__baselibs__flatbuffers_library, feat_req__baselibs__safety
    :status: valid
    :belongs_to: comp__baselibs_flatbuffers
 
@@ -135,7 +140,7 @@ FlatBuffers Library Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__baselibs__flatbuffers_library
+   :satisfies: feat_req__baselibs__flatbuffers_library, feat_req__baselibs__safety
    :status: valid
    :belongs_to: comp__baselibs_flatbuffers
 
@@ -150,7 +155,7 @@ FlatBuffers Library Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__baselibs__flatbuffers_library
+   :satisfies: feat_req__baselibs__flatbuffers_library, feat_req__baselibs__safety
    :status: valid
    :belongs_to: comp__baselibs_flatbuffers
 
@@ -164,7 +169,7 @@ Buffer Identification and Versioning
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__baselibs__flatbuffers_library
+   :satisfies: feat_req__baselibs__flatbuffers_library, feat_req__baselibs__safety
    :status: valid
    :belongs_to: comp__baselibs_flatbuffers
 
@@ -176,7 +181,7 @@ Buffer Identification and Versioning
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__baselibs__flatbuffers_library
+   :satisfies: feat_req__baselibs__flatbuffers_library, feat_req__baselibs__safety
    :status: valid
    :belongs_to: comp__baselibs_flatbuffers
 
@@ -191,7 +196,7 @@ User friendly API for information exchange
    :reqtype: Non-Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__baselibs__flatbuffers_library, feat_req__baselibs__consistent_apis
+   :satisfies: feat_req__baselibs__flatbuffers_library, feat_req__baselibs__safety, feat_req__baselibs__consistent_apis
    :status: valid
    :belongs_to: comp__baselibs_flatbuffers
 
@@ -202,7 +207,7 @@ User friendly API for information exchange
    :reqtype: Non-Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__baselibs__flatbuffers_library
+   :satisfies: feat_req__baselibs__flatbuffers_library, feat_req__baselibs__safety
    :status: valid
    :belongs_to: comp__baselibs_flatbuffers
 
@@ -220,7 +225,7 @@ Full testability for the user facing API
    :reqtype: Non-Functional
    :security: NO
    :safety: ASIL_B
-   :satisfies: feat_req__baselibs__flatbuffers_library
+   :satisfies: feat_req__baselibs__flatbuffers_library, feat_req__baselibs__safety
    :status: valid
    :belongs_to: comp__baselibs_flatbuffers
 
@@ -264,7 +269,7 @@ AoU Requirements
 .. aou_req:: FlatBuffers access control
    :id: aou_req__flatbuffers__access_control
    :reqtype: Non-Functional
-   :security: NO
+   :security: YES
    :safety: ASIL_B
    :status: valid
 
@@ -273,31 +278,34 @@ AoU Requirements
    .. note::
       This can be done by the hosting process and system configuration (e.g. by using dm-verity).
 
-.. aou_req:: FlatBuffers schema consistency
-   :id: aou_req__flatbuffers__schema_consistency
+.. aou_req:: FlatBuffers buffer version check before access
+   :id: aou_req__flatbuffers__verify_version
    :reqtype: Non-Functional
    :security: NO
    :safety: ASIL_B
    :status: valid
 
-   The user shall ensure that the FlatBuffers schema used for code generation is consistent with the
-   schema used to produce the binary data being read.
+   The user shall apply the version check mechanism provided by :need:`comp_req__flatbuffers__version_check`
+   to a loaded buffer and confirm a successful result before accessing any data from that buffer.
+
+   .. note::
+      This provides early detection of schema or version mismatches before any further buffer data is
+      verified or accessed.
 
 .. aou_req:: FlatBuffers buffer verification before access
-   :id: aou_req__flatbuffers__verify_before_access
-   :reqtype: Functional
+   :id: aou_req__flatbuffers__verify_structure
+   :reqtype: Non-Functional
    :security: NO
    :safety: ASIL_B
    :status: valid
 
-   The user shall apply the FlatBuffers-Library verification mechanism to a loaded buffer and confirm
-   a successful result before accessing any data from that buffer.
+   The user shall apply the verification mechanism provided by :need:`comp_req__flatbuffers__verification`
+   to a loaded buffer and confirm a successful result before accessing any data from that buffer.
 
    .. note::
       Accessing data from an unverified or malformed buffer results in undefined behaviour.
-      The verification mechanism provided by :need:`comp_req__flatbuffers__verification` only checks
-      structural well-formedness; it does not replace data integrity measures required by
-      :need:`aou_req__flatbuffers__data_integrity`.
+      The verification mechanism only checks structural well-formedness; it does not replace
+      the data integrity measures required by :need:`aou_req__flatbuffers__data_integrity`.
 
 
 .. needextend:: "__flatbuffers__" in id

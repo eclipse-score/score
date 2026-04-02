@@ -96,11 +96,15 @@ Requirements
    :id: feat_req__baselibs__flatbuffers_library
    :reqtype: Functional
    :security: NO
-   :safety: ASIL_B
+   :safety: QM
    :satisfies: stkh_req__functional_req__base_libraries
    :status: valid
 
    The base libraries shall provide a FlatBuffers-Library with serialization, read access, and structural verification of FlatBuffers data.
+
+   .. note::
+      FlatBuffers-Library provides both ASIL-B and QM compliant functionality depending on the programming language,
+      the separation is done on component level.
 
 .. feat_req:: Exception-Free Development Support
    :id: feat_req__baselibs__result_library
