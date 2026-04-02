@@ -67,6 +67,7 @@ The components are designed to cover the expectations from the feature architect
    :safety:  ASIL_B
    :status: valid
    :uses: logic_arc_int__logging__logging, logic_arc_int__tracing__tracing
+   :belongs_to: feat__orchestration
 
 
 .. comp_arc_sta:: Executor

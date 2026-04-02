@@ -37,6 +37,7 @@ Static Architecture
    :status: valid
    :tags: baselibs_result
    :implements: logic_arc_int__baselibs__result
+   :belongs_to: feat__baselibs
 
    .. needarch::
       :scale: 50

@@ -37,6 +37,7 @@ Static Architecture
    :status: valid
    :tags: baselibs_containers
    :implements: logic_arc_int__baselibs__dynamic_array, logic_arc_int__baselibs__intrusive_list
+   :belongs_to: feat__baselibs
 
    .. needarch::
       :scale: 50
@@ -52,7 +53,7 @@ Static Architecture
    :fulfils: comp_req__containers__dynamic_array, comp_req__containers__intrusive_list, comp_req__containers__type_safety, comp_req__containers__non_relocatable_vector, comp_req__containers__deterministic_behavior
    :belongs_to: comp__baselibs_containers
 
-    .. needarch::
+   .. needarch::
       :scale: 50
       :align: center
 

@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2026 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,34 +12,21 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-libcpp Component Architecture
-*****************************
+.. _platform_architecture:
 
-.. comp:: libcpp
-   :id: comp__os_libcpp
-   :status: valid
-   :safety: ASIL_B
-   :implements: logic_arc_int__os__libcpp
+Tracing Architecture
+====================
+
+.. feat:: Tracing
+   :id: feat__tracing
    :security: YES
-   :belongs_to: feat__os
-
-.. comp_arc_sta:: C++ Std Library
-   :id: comp_arc_sta__os__libcpp
-   :security: YES
-   :safety: ASIL_B
+   :safety: QM
    :status: valid
-   :satisfies:
-   :belongs_to: comp__os_libcpp
-   :fulfils: comp_req__component_name__some_title
+   :provides: logic_arc_int__tracing__tracing
 
-   .. needarch::
-      :scale: 50
-      :align: center
 
-      {{ draw_component(need(), needs) }}
-
-.. logic_arc_int:: Library headers (C++17)
-   :id: logic_arc_int__os__libcpp
+.. logic_arc_int:: Tracing
+   :id: logic_arc_int__tracing__tracing
    :security: YES
    :safety: ASIL_B
    :status: valid
@@ -49,3 +36,10 @@ libcpp Component Architecture
       :align: center
 
       {{ draw_interface(need(), needs) }}
+
+.. logic_arc_int_op:: Trace
+   :id: logic_arc_int_op__tracing__trace
+   :security: YES
+   :safety:  ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__tracing__tracing

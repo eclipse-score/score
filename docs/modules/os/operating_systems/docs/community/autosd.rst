@@ -17,6 +17,7 @@
    :security: YES
    :safety: QM
    :status: valid
+   :belongs_to: feat__os
 
 AutoSD
 ######

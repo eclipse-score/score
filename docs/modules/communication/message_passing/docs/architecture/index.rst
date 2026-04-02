@@ -22,6 +22,7 @@ Message Passing Component Architecture
    :status: valid
    :implements: logic_arc_int__com__message_passing
    :uses: logic_arc_int__os__message_passing
+   :belongs_to: feat__baselibs
 
    .. needarch::
       :scale: 50

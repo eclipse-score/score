@@ -87,6 +87,7 @@ The components are designed to cover the expectations from the feature architect
    :implements: logic_arc_int__orchestration__user, logic_arc_int__orchestration__deployment, logic_arc_int__orchestration__design
    :uses: logic_arc_int__logging__logging, logic_arc_int__tracing__tracing, logic_arc_int__communication__user
    :consists_of: comp__orch_design_impl, comp__orch_deployment_impl
+   :belongs_to: feat__orchestration
 
    .. needarch::
       :scale: 50
@@ -188,6 +189,7 @@ Interfaces
    :safety: ASIL_B
    :security: NO
    :implements: logic_arc_int__orchestration__design
+   :belongs_to: feat__orchestration
 
 .. comp:: Deployment
    :id: comp__orch_deployment_impl
@@ -195,6 +197,7 @@ Interfaces
    :safety: ASIL_B
    :security: NO
    :implements: logic_arc_int__orchestration__deployment
+   :belongs_to: feat__orchestration
 
 .. Operations
 
