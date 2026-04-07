@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fmea>
+  <entry>
+    <id>feat_saf_fmea__persistency__message_nreived</id>
+    <violates>feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore</violates>
+    <fault_id>MF_01_01</fault_id>
+    <failure_effect>Message is not received so the feature persistency is not available.</failure_effect>
+    <mitigated_by>aou_req__persistency__error_handling</mitigated_by>
+    <sufficient>yes</sufficient>
+    <status>valid</status>
+    <safety_relevant>NA</safety_relevant>
+    <root_cause>NA</root_cause>
+    <content>User is not able to use the feature. Middleware cant be used. User is not able to use the feature. Middleware cant be used. Loss of execution can only be caused by the application, not by the persistency feature itself.
+Failure handling is addressed to the application by the aou_req__persistency__error_handling.</content>
+  </entry>
+
+  <entry>
+    <id>feat_saf_fmea__persistency__late_message</id>
+    <violates>feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore</violates>
+    <fault_id>MF_01_02</fault_id>
+    <failure_effect>message received too late.</failure_effect>
+    <mitigated_by>aou_req__persistency__error_handling</mitigated_by>
+    <sufficient>yes</sufficient>
+    <status>valid</status>
+    <safety_relevant>NA</safety_relevant>
+    <root_cause>NA</root_cause>
+    <content>Subset of MF_01_01 if the delay is to long.</content>
+  </entry>
+
+  <entry>
+    <id>feat_saf_fmea__persistency__corrupted_message</id>
+    <violates>feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore</violates>
+    <fault_id>MF_01_05</fault_id>
+    <failure_effect>message is corrupted so the feature persistency is not available.</failure_effect>
+    <mitigated_by>aou_req__persistency__error_handling</mitigated_by>
+    <sufficient>yes</sufficient>
+    <status>valid</status>
+    <safety_relevant>NA</safety_relevant>
+    <root_cause>NA</root_cause>
+    <content>Covered by MF_01_01</content>
+  </entry>
+
+  <entry>
+    <id>feat_saf_fmea__persistency__not_sent</id>
+    <violates>feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore</violates>
+    <fault_id>MF_01_06</fault_id>
+    <failure_effect>message is not sent so the feature persistency is not available.</failure_effect>
+    <mitigated_by>aou_req__persistency__error_handling</mitigated_by>
+    <sufficient>yes</sufficient>
+    <status>valid</status>
+    <safety_relevant>NA</safety_relevant>
+    <root_cause>NA</root_cause>
+    <content>Covered by MF_01_01 because the violation cause is the same.</content>
+  </entry>
+
+  <entry>
+    <id>feat_saf_fmea__persistency__err_handl</id>
+    <violates>feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore</violates>
+    <fault_id>EX_01_04</fault_id>
+    <failure_effect>loss of execution will lead to an unavailability of the persistency feature.</failure_effect>
+    <mitigated_by>aou_req__persistency__error_handling</mitigated_by>
+    <sufficient>yes</sufficient>
+    <status>valid</status>
+    <safety_relevant>NA</safety_relevant>
+    <root_cause>NA</root_cause>
+    <content>User is not able to use the feature. Middleware cant be used. Loss of execution can only be caused by the application, not by the persistency feature itself.
+Failure handling is addressed to the application by the aou_req__persistency__error_handling.</content>
+  </entry>
+</fmea>

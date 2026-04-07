@@ -13,6 +13,12 @@
 
 # Configuration file for the Sphinx documentation builder.
 
+import os
+import sys
+
+# Make local extensions importable
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "extensions"))
+
 project = "S-CORE"
 project_url = "https://eclipse-score.github.io/score"
 version = "0.1"
@@ -23,4 +29,5 @@ extensions = [
     # is updated with new sphinx-needs version
     "sphinxcontrib.plantuml",
     "score_sphinx_bundle",
+    "fmea_xml_table",
 ]
