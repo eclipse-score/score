@@ -582,7 +582,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-e814a149">
+  <div class="need_container docutils container" id="SNCB-994450c2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__platform_problem_resolution_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -739,8 +739,8 @@ for that in the ISSUE.</p>
 part of the ISSUE.</p>
 <p>To provide solutions, use the Solution part of the ISSUE.</p>
 <p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/problem_resolution/guidance/problem_resolution_reqs.html#gd_req__problem_attr_analysis_results">gd_req__problem_attr_analysis_results</a> is provided in the analysis
-results part of the ISSUE. State here, if the problem is accepted or rejected. Safety/Security
-experts must confirm or deny, if safety/security is affected is set correctly</p>
+results part of the ISSUE. State here, if the problem is accepted or rejected. (Platform and/or Module)
+Safety/Security Manager must confirm or deny, if safety/security is affected is set correctly</p>
 <p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/problem_resolution/guidance/problem_resolution_reqs.html#gd_req__problem_attr_stakeholder">gd_req__problem_attr_stakeholder</a> are provided in the Assignees part of
 the ISSUE. In addition you can use pre-defined labels for Communities or Feature Teams
 (Feature Owner) (under discussion, compare <a class="github reference external" href="https://github.com/eclipse-score/score/issues/870">eclipse-score/score#870</a>).</p>
@@ -832,12 +832,19 @@ are documented in the ISSUE. As long as the information is not sufficient, the r
 kept in status <code class="docutils literal notranslate"><span class="pre">Open</span></code> and Projects status <code class="docutils literal notranslate"><span class="pre">Todo</span></code>, means <code class="docutils literal notranslate"><span class="pre">in</span> <span class="pre">review</span></code>.</p>
 <p>If the information is sufficient and it is decided to initiate the problem resolution, the
 ISSUE status is kept <code class="docutils literal notranslate"><span class="pre">Open</span></code> and the Projects status is set to <code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">Progress</span></code>.</p>
-<p>The decision, if the problem is accepted or rejected must be documented. Safety/Security
-experts must confirm or deny, if safety/security is affected is set correctly.</p>
+<p>The decision, if the problem is accepted or rejected must be documented. (Platform and/or Module)
+Safety/Security Manager must confirm or deny, if safety/security is affected is set correctly.</p>
 <p><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/problem_resolution/guidance/problem_resolution_checklist.html#gd_chklst__problem_cr_review">gd_chklst__problem_cr_review</a> can help to verify whether the information is complete.</p>
 <p>In case affected parties need to be informed <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__project_lead">rl__project_lead</a> or
-<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__committer">rl__committer</a> will notify them, either updating the Assignees or
-adding labels for community or feature teams.</p>
+<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__delivery_team">rl__delivery_team</a> will notify them.</p>
+<p>On platform level, the Project Lead will be added to the assignees of the ISSUE as well as the
+Platform Safety Manager and/or Security Manager and/or Quality Manager, if applicable.</p>
+<p>Notifications will be done for Feature Teams (<a class="reference internal" href="project_management.html#pmp-pm-feature-teams"><span class="std std-ref">Feature Teams</span></a>) by</p>
+<ul class="simple">
+<li><p>adding the Feature Team Lead to the assignees of the ISSUE and by</p></li>
+<li><p>adding optionally the Module Safety Manager and/or Security Manager and/or Quality Manager, if applicable, to the assignees of the ISSUE and by</p></li>
+<li><p>adding the Feature Team label to the ISSUE</p></li>
+</ul>
 <p>Otherwise, if no Problem Resolution is planned, the problem is rejected. To reject the Problem
 Report: Problem status: <code class="docutils literal notranslate"><span class="pre">rejected</span></code> set the ISSUE status to <code class="docutils literal notranslate"><span class="pre">Closed</span> <span class="pre">as</span> <span class="pre">not</span> <span class="pre">planned</span></code>.</p>
 <p><strong>To 3. Initiate and Monitor the Problem Resolution:</strong></p>
