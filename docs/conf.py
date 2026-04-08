@@ -23,6 +23,14 @@ project = "S-CORE"
 project_url = "https://eclipse-score.github.io/score"
 version = "0.1"
 
+# Base URL of the fault models guideline page in the process_description build.
+# fault_id values in FMEA XML files (e.g. "MF_01_01") are linked as
+# {fmea_fault_model_base_url}#fmea_fault_model__mf_01_01
+fmea_fault_model_base_url = (
+    "https://eclipse-score.github.io/process_description/"
+    "process_areas/safety_analysis/guidance/fault_models_guideline.html"
+)
+
 extensions = [
     # TODO: remove plantuml here once
     # https://github.com/useblocks/sphinx-needs/pull/1508 is merged and docs-as-code
