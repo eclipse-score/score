@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -510,7 +510,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../diagnostics/index.html">Diagnostic and Fault Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../frameworks/index.html">Frameworks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lifecycle/index.html">Lifecycle</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../nonipc/index.html">NonIPC Communication</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Orchestration (v0.5 beta)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../requirements/index.html">Requirements</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Feature Architecture</a></li>
@@ -587,7 +586,7 @@
                   
   <section id="feature-architecture">
 <h1>Feature Architecture<a class="headerlink" href="#feature-architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-83e1e8df">
+<div class="need_container docutils container" id="SNCB-6f0a220e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__orchestration_architecture">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -630,7 +629,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9e3b12a5">
+<div class="need_container docutils container" id="SNCB-e4bfe6dd">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat table" id="feat__orchestration">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -650,7 +649,7 @@
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span></span></span></div>
-<div class="line"><span><div class="line">has: <span class="belongs_to"><span><a class="reference internal" href="#feat_arc_sta__orchestration__static_view" title="feat__orchestration">feat_arc_sta__orchestration__static_view</a>, <a class="reference internal" href="../../../modules/orchestrator/orchestrator/docs/architecture/index.html#comp__orchestrator" title="feat__orchestration">comp__orchestrator</a>, <a class="reference internal" href="../../../modules/orchestrator/orchestrator/docs/architecture/index.html#comp__orch_design_impl" title="feat__orchestration">comp__orch_design_impl</a>, <a class="reference internal" href="../../../modules/orchestrator/orchestrator/docs/architecture/index.html#comp__orch_deployment_impl" title="feat__orchestration">comp__orch_deployment_impl</a>, <a class="reference internal" href="../../../modules/orchestrator/executor/docs/architecture/index.html#comp__orch_executor" title="feat__orchestration">comp__orch_executor</a></span></span></div>
+<div class="line"><span><div class="line">has: <span class="belongs_to"><span><a class="reference internal" href="#feat_arc_sta__orchestration__static_view" title="feat__orchestration">feat_arc_sta__orchestration__static_view</a>, <a class="reference internal" href="../../../modules/orchestrator/executor/docs/architecture/index.html#comp__orch_executor" title="feat__orchestration">comp__orch_executor</a>, <a class="reference internal" href="../../../modules/orchestrator/orchestrator/docs/architecture/index.html#comp__orchestrator" title="feat__orchestration">comp__orchestrator</a>, <a class="reference internal" href="../../../modules/orchestrator/orchestrator/docs/architecture/index.html#comp__orch_design_impl" title="feat__orchestration">comp__orch_design_impl</a>, <a class="reference internal" href="../../../modules/orchestrator/orchestrator/docs/architecture/index.html#comp__orch_deployment_impl" title="feat__orchestration">comp__orch_deployment_impl</a></span></span></div>
 <div class="line">provides: <span class="provides"><span><a class="reference internal" href="#logic_arc_int__orchestration__user" title="feat__orchestration">logic_arc_int__orchestration__user</a>, <a class="reference internal" href="#logic_arc_int__orchestration__design" title="feat__orchestration">logic_arc_int__orchestration__design</a>, <a class="reference internal" href="#logic_arc_int__orchestration__deployment" title="feat__orchestration">logic_arc_int__orchestration__deployment</a></span></span></div>
 </span></div>
 </div>
@@ -696,7 +695,7 @@
 </section>
 <section id="static-architecture">
 <h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-2dd95405">
+<div class="need_container docutils container" id="SNCB-b281ebf7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_sta table" id="feat_arc_sta__orchestration__static_view">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -725,7 +724,7 @@
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-features/orchestration/architecture/index-0">
-<object data="../../../_images/plantuml-512cdebc662caf99d20f9af9102e3709cf54aaf5.svg" type="image/svg+xml" style="width:774px;height:872px;background:#FFFFFF;"></object></p>
+<object data="../../../_images/plantuml-a9aaeec29835b1104fe28a482bcba9d70976ba0e.svg" type="image/svg+xml" style="width:774px;height:872px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -790,7 +789,7 @@ deployment, bridging the gap between the design phase and the deployment phase.<
 <section id="interface-description">
 <h2>Interface Description<a class="headerlink" href="#interface-description" title="Link to this heading">#</a></h2>
 <p>The public API for the frontend is defined as:</p>
-<div class="need_container docutils container" id="SNCB-716ad6fd">
+<div class="need_container docutils container" id="SNCB-1acf90ba">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__orchestration__user">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -838,7 +837,7 @@ deployment, bridging the gap between the design phase and the deployment phase.<
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-aa2a0b4d">
+<div class="need_container docutils container" id="SNCB-1a75f74b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__orchestration__design">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -885,7 +884,7 @@ deployment, bridging the gap between the design phase and the deployment phase.<
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-768bf660">
+<div class="need_container docutils container" id="SNCB-92981c57">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__orchestration__deployment">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
