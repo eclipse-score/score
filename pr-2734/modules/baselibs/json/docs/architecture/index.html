@@ -33,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/css/score.css?v=6e51530f" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/css/score_needs.css?v=e97392eb" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/css/score_needs.css?v=1f5dae2a" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/css/score_design.css?v=d9fd870c" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
@@ -608,7 +608,7 @@
                   
   <section id="json-component-architecture">
 <h1>JSON Component Architecture<a class="headerlink" href="#json-component-architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-bcc95203">
+<div class="need_container docutils container" id="SNCB-60c9a978">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__json_architecture">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -677,7 +677,7 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 </section>
 <section id="static-architecture">
 <h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-f20499b3">
+<div class="need_container docutils container" id="SNCB-3c6c905b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp table" id="comp__baselibs_json">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -699,6 +699,7 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">consists of: <span class="consists_of"><span><a class="reference internal" href="#comp__baselibs_json_wrapper" title="comp__baselibs_json">comp__baselibs_json_wrapper</a>, <a class="reference internal" href="#comp__baselibs_nlohman_json" title="comp__baselibs_json">comp__baselibs_nlohman_json</a></span></span></div>
+<div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat__baselibs" title="comp__baselibs_json">feat__baselibs</a></span></span></div>
 <div class="line">has: <span class="belongs_to"><span><a class="reference internal" href="#comp_arc_sta__baselibs__json" title="comp__baselibs_json">comp_arc_sta__baselibs__json</a>, <a class="reference internal" href="#comp_arc_dyn__baselibs__json_dynamic_view" title="comp__baselibs_json">comp_arc_dyn__baselibs__json_dynamic_view</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__deserialization" title="comp__baselibs_json">comp_req__json__deserialization</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__serialization" title="comp__baselibs_json">comp_req__json__serialization</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__user_format" title="comp__baselibs_json">comp_req__json__user_format</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__lang_idioms" title="comp__baselibs_json">comp_req__json__lang_idioms</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__lang_infra" title="comp__baselibs_json">comp_req__json__lang_infra</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__type_compatibility" title="comp__baselibs_json">comp_req__json__type_compatibility</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__full_testability" title="comp__baselibs_json">comp_req__json__full_testability</a>, <a class="reference internal" href="../requirements/index.html#comp_req__json__asil" title="comp__baselibs_json">comp_req__json__asil</a></span></span></div>
 <div class="line">implements: <span class="implements"><span><a class="reference internal" href="#logic_arc_int__baselibs__json" title="comp__baselibs_json">logic_arc_int__baselibs__json</a></span></span></div>
 <div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../docs/index.html#mod__baselibs" title="comp__baselibs_json">mod__baselibs</a>, <a class="reference internal" href="../../../docs/index.html#mod_view_sta__baselibs__baselibs" title="comp__baselibs_json">mod_view_sta__baselibs__baselibs</a></span></span></div>
@@ -725,7 +726,7 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-886dbf6d">
+<div class="need_container docutils container" id="SNCB-bee37c5f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__baselibs__json">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -774,7 +775,7 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 </section>
 <section id="dynamic-architecture">
 <h2>Dynamic Architecture<a class="headerlink" href="#dynamic-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-e0177cf5">
+<div class="need_container docutils container" id="SNCB-6e7c3ee3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_dyn table" id="comp_arc_dyn__baselibs__json_dynamic_view">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -821,7 +822,7 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 </section>
 <section id="interfaces">
 <h2>Interfaces<a class="headerlink" href="#interfaces" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-26651907">
+<div class="need_container docutils container" id="SNCB-a4f74cb2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__baselibs__json">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -843,8 +844,9 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="#comp__baselibs_json" title="logic_arc_int__baselibs__json">comp__baselibs_json</a>, <a class="reference internal" href="#comp__baselibs_json_wrapper" title="logic_arc_int__baselibs__json">comp__baselibs_json_wrapper</a></span></span></div>
-<div class="line">used by: <span class="uses"><span><a class="reference internal" href="../../../../lifecycle/index.html#comp__lifecycle_launch_manager" title="logic_arc_int__baselibs__json">comp__lifecycle_launch_manager</a>, <a class="reference internal" href="../../../../communication/ipc_binding/docs/architecture/index.html#comp__com_ipc_binding" title="logic_arc_int__baselibs__json">comp__com_ipc_binding</a></span></span></div>
-<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat__baselibs" title="logic_arc_int__baselibs__json">feat__baselibs</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat_arc_sta__baselibs__static_view_arch" title="logic_arc_int__baselibs__json">feat_arc_sta__baselibs__static_view_arch</a></span></span></div>
+<div class="line">used by: <span class="uses"><span><a class="reference internal" href="../../../../../features/analysis-infra/logging/docs/architecture/index.html#feat__logging" title="logic_arc_int__baselibs__json">feat__logging</a>, <a class="reference internal" href="../../../../lifecycle/index.html#comp__lifecycle_launch_manager" title="logic_arc_int__baselibs__json">comp__lifecycle_launch_manager</a>, <a class="reference internal" href="../../../../communication/ipc_binding/docs/architecture/index.html#comp__com_ipc_binding" title="logic_arc_int__baselibs__json">comp__com_ipc_binding</a></span></span></div>
+<div class="line">provided by: <span class="provides"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat__baselibs" title="logic_arc_int__baselibs__json">feat__baselibs</a></span></span></div>
+<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat_arc_sta__baselibs__static_view_arch" title="logic_arc_int__baselibs__json">feat_arc_sta__baselibs__static_view_arch</a></span></span></div>
 <div class="line">includes: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int_op__baselibs__parse" title="logic_arc_int__baselibs__json">logic_arc_int_op__baselibs__parse</a>, <a class="reference internal" href="#logic_arc_int_op__baselibs__write" title="logic_arc_int__baselibs__json">logic_arc_int_op__baselibs__write</a></span></span></div>
 </span></div>
 </div>
@@ -869,7 +871,7 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-22987c99">
+<div class="need_container docutils container" id="SNCB-38276a03">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__parse">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -912,7 +914,7 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-166d03e9">
+<div class="need_container docutils container" id="SNCB-fff1f3ba">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__write">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -958,7 +960,7 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 </section>
 <section id="lower-level-components">
 <h2>Lower Level Components<a class="headerlink" href="#lower-level-components" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-e6f5f051">
+<div class="need_container docutils container" id="SNCB-c66eb34b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp table" id="comp__baselibs_json_wrapper">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -980,6 +982,7 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">forms part of: <span class="consists_of"><span><a class="reference internal" href="#comp__baselibs_json" title="comp__baselibs_json_wrapper">comp__baselibs_json</a></span></span></div>
+<div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat__baselibs" title="comp__baselibs_json_wrapper">feat__baselibs</a></span></span></div>
 <div class="line">implements: <span class="implements"><span><a class="reference internal" href="#logic_arc_int__baselibs__json" title="comp__baselibs_json_wrapper">logic_arc_int__baselibs__json</a></span></span></div>
 </span></div>
 </div>
@@ -1002,7 +1005,7 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-77da9e94">
+<div class="need_container docutils container" id="SNCB-7beef6f9">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp table" id="comp__baselibs_nlohman_json">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1024,6 +1027,7 @@ the main driver is to re-use existing implementation(s), enable switch of implem
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">forms part of: <span class="consists_of"><span><a class="reference internal" href="#comp__baselibs_json" title="comp__baselibs_nlohman_json">comp__baselibs_json</a></span></span></div>
+<div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat__baselibs" title="comp__baselibs_nlohman_json">feat__baselibs</a></span></span></div>
 </span></div>
 </div>
 </td>
