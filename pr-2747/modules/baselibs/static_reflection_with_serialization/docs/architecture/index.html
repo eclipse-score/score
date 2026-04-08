@@ -33,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/css/score.css?v=6e51530f" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/css/score_needs.css?v=e97392eb" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/css/score_needs.css?v=1f5dae2a" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/css/score_design.css?v=d9fd870c" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
@@ -524,6 +524,8 @@
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">static_reflection_with_serialization</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Static Reflection with Serialization Component Architecture</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../requirements/index.html">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../safety_analysis/fmea.html">FMEA (Failure Modes and Effects Analysis)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../safety_analysis/dfa.html">DFA (Dependent Failure Analysis)</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../utils/docs/index.html">utils</a></li>
@@ -604,7 +606,7 @@
                   
   <section id="static-reflection-with-serialization-component-architecture">
 <h1>Static Reflection with Serialization Component Architecture<a class="headerlink" href="#static-reflection-with-serialization-component-architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-b52a5b0a">
+<div class="need_container docutils container" id="SNCB-77d2edc2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__static_refl_with_serial_arch">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -652,8 +654,8 @@
 </section>
 <section id="static-architecture">
 <h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-a777a6ea">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp table" id="comp__baselibs_static_reflection_with_serial">
+<div class="need_container docutils container" id="SNCB-ca9d1f61">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp table" id="comp__baselibs_static_reflection">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
 <div class="line"><span><span class="needs_title"><span class="needs_data">Static Reflection with Serialization</span></span></span></div>
@@ -673,19 +675,20 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs_static_reflection_serialization</span><span class="needs_spacer">, </span><span class="needs_data">baselibs</span></span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">has: <span class="belongs_to"><span><a class="reference internal" href="../requirements/index.html#comp_req__static_reflect_serial__reflect" title="comp__baselibs_static_reflection_with_serial">comp_req__static_reflect_serial__reflect</a>, <a class="reference internal" href="../requirements/index.html#comp_req__static_reflect_serial__visitor" title="comp__baselibs_static_reflection_with_serial">comp_req__static_reflect_serial__visitor</a>, <a class="reference internal" href="../requirements/index.html#comp_req__static_reflect_serial__container" title="comp__baselibs_static_reflection_with_serial">comp_req__static_reflect_serial__container</a>, <a class="reference internal" href="../requirements/index.html#comp_req__static_reflect_serial__nested" title="comp__baselibs_static_reflection_with_serial">comp_req__static_reflect_serial__nested</a>, <a class="reference internal" href="../requirements/index.html#comp_req__static_reflect_serial__header_only" title="comp__baselibs_static_reflection_with_serial">comp_req__static_reflect_serial__header_only</a>, <a class="reference internal" href="../requirements/index.html#comp_req__static_reflect_serial__compile_eff" title="comp__baselibs_static_reflection_with_serial">comp_req__static_reflect_serial__compile_eff</a></span></span></div>
-<div class="line">implements: <span class="implements"><span><a class="reference internal" href="#logic_arc_int__baselibs__static_reflection" title="comp__baselibs_static_reflection_with_serial">logic_arc_int__baselibs__static_reflection</a>, <a class="reference internal" href="#logic_arc_int__baselibs__generic_serial" title="comp__baselibs_static_reflection_with_serial">logic_arc_int__baselibs__generic_serial</a>, <a class="reference internal" href="#logic_arc_int__baselibs__log_serial" title="comp__baselibs_static_reflection_with_serial">logic_arc_int__baselibs__log_serial</a></span></span></div>
+<div class="line"><span><div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat__baselibs" title="comp__baselibs_static_reflection">feat__baselibs</a></span></span></div>
+<div class="line">has: <span class="belongs_to"><span><a class="reference internal" href="../requirements/index.html#comp_req__static_reflect_serial__reflect" title="comp__baselibs_static_reflection">comp_req__static_reflect_serial__reflect</a>, <a class="reference internal" href="../requirements/index.html#comp_req__static_reflect_serial__visitor" title="comp__baselibs_static_reflection">comp_req__static_reflect_serial__visitor</a>, <a class="reference internal" href="../requirements/index.html#comp_req__static_reflect_serial__container" title="comp__baselibs_static_reflection">comp_req__static_reflect_serial__container</a>, <a class="reference internal" href="../requirements/index.html#comp_req__static_reflect_serial__nested" title="comp__baselibs_static_reflection">comp_req__static_reflect_serial__nested</a>, <a class="reference internal" href="../requirements/index.html#comp_req__static_reflect_serial__header_only" title="comp__baselibs_static_reflection">comp_req__static_reflect_serial__header_only</a>, <a class="reference internal" href="../requirements/index.html#comp_req__static_reflect_serial__compile_eff" title="comp__baselibs_static_reflection">comp_req__static_reflect_serial__compile_eff</a>, <a class="reference internal" href="#comp_arc_sta__baselibs__static_reflection" title="comp__baselibs_static_reflection">comp_arc_sta__baselibs__static_reflection</a></span></span></div>
+<div class="line">implements: <span class="implements"><span><a class="reference internal" href="#logic_arc_int__baselibs__static_reflection" title="comp__baselibs_static_reflection">logic_arc_int__baselibs__static_reflection</a>, <a class="reference internal" href="#logic_arc_int__baselibs__generic_serial" title="comp__baselibs_static_reflection">logic_arc_int__baselibs__generic_serial</a>, <a class="reference internal" href="#logic_arc_int__baselibs__log_serial" title="comp__baselibs_static_reflection">logic_arc_int__baselibs__log_serial</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-modules/baselibs/static_reflection_with_serialization/docs/architecture/index-0">
-<object data="../../../../../_images/plantuml-8023203a8e4f319a93e63bf281ed090cf0df6036.svg" type="image/svg+xml" style="width:645px;height:225px;background:#FFFFFF;"></object></p>
+<object data="../../../../../_images/plantuml-5be3a52e1ee55c0db898592e10e57bc2abc774ad.svg" type="image/svg+xml" style="width:645px;height:225px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
-<div class="line"><span><span class="needs-id"><a class="reference internal" href="#comp__baselibs_static_reflection_with_serial" title="comp__baselibs_static_reflection_with_serial">comp__baselibs_static_reflection_with_serial</a></span></span></div>
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#comp__baselibs_static_reflection" title="comp__baselibs_static_reflection">comp__baselibs_static_reflection</a></span></span></div>
 </div>
 </td>
 <td class="footer" colspan="2"><div class="needs_footer line-block">
@@ -698,10 +701,56 @@
 </table>
 </div>
 </div>
+<div class="need_container docutils container" id="SNCB-7713077b">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__baselibs__static_reflection">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Static Reflection with Serialization Static view</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="#comp__baselibs_static_reflection" title="comp_arc_sta__baselibs__static_reflection">comp__baselibs_static_reflection</a></span></span></div>
+<div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/index.html#comp_req__static_reflect_serial__reflect" title="comp_arc_sta__baselibs__static_reflection">comp_req__static_reflect_serial__reflect</a>, <a class="reference internal" href="../requirements/index.html#comp_req__static_reflect_serial__visitor" title="comp_arc_sta__baselibs__static_reflection">comp_req__static_reflect_serial__visitor</a>, <a class="reference internal" href="../requirements/index.html#comp_req__static_reflect_serial__container" title="comp_arc_sta__baselibs__static_reflection">comp_req__static_reflect_serial__container</a>, <a class="reference internal" href="../requirements/index.html#comp_req__static_reflect_serial__nested" title="comp_arc_sta__baselibs__static_reflection">comp_req__static_reflect_serial__nested</a>, <a class="reference internal" href="../requirements/index.html#comp_req__static_reflect_serial__header_only" title="comp_arc_sta__baselibs__static_reflection">comp_req__static_reflect_serial__header_only</a>, <a class="reference internal" href="../requirements/index.html#comp_req__static_reflect_serial__compile_eff" title="comp_arc_sta__baselibs__static_reflection">comp_req__static_reflect_serial__compile_eff</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-modules/baselibs/static_reflection_with_serialization/docs/architecture/index-1">
+<object data="../../../../../_images/plantuml-85f11691db3a6b71fd33cb9c8d62a23d8bafa588.svg" type="image/svg+xml" style="width:373px;height:59px;background:#FFFFFF;"></object></p>
+</td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#comp_arc_sta__baselibs__static_reflection" title="comp_arc_sta__baselibs__static_reflection">comp_arc_sta__baselibs__static_reflection</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component Package Diagram</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
 <section id="interfaces">
 <h2>Interfaces<a class="headerlink" href="#interfaces" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-e2594899">
+<div class="need_container docutils container" id="SNCB-dbd87265">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__baselibs__static_reflection">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -722,7 +771,7 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="#comp__baselibs_static_reflection_with_serial" title="logic_arc_int__baselibs__static_reflection">comp__baselibs_static_reflection_with_serial</a></span></span></div>
+<div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="#comp__baselibs_static_reflection" title="logic_arc_int__baselibs__static_reflection">comp__baselibs_static_reflection</a></span></span></div>
 <div class="line">includes: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int_op__baselibs__visit" title="logic_arc_int__baselibs__static_reflection">logic_arc_int_op__baselibs__visit</a>, <a class="reference internal" href="#logic_arc_int_op__baselibs__decl_struct_visit" title="logic_arc_int__baselibs__static_reflection">logic_arc_int_op__baselibs__decl_struct_visit</a>, <a class="reference internal" href="#logic_arc_int_op__baselibs__struct_intro" title="logic_arc_int__baselibs__static_reflection">logic_arc_int_op__baselibs__struct_intro</a></span></span></div>
 </span></div>
 </div>
@@ -745,7 +794,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-174a01b2">
+<div class="need_container docutils container" id="SNCB-773ae302">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__baselibs__generic_serial">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -766,7 +815,7 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="#comp__baselibs_static_reflection_with_serial" title="logic_arc_int__baselibs__generic_serial">comp__baselibs_static_reflection_with_serial</a></span></span></div>
+<div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="#comp__baselibs_static_reflection" title="logic_arc_int__baselibs__generic_serial">comp__baselibs_static_reflection</a></span></span></div>
 <div class="line">includes: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int_op__baselibs__serialize" title="logic_arc_int__baselibs__generic_serial">logic_arc_int_op__baselibs__serialize</a>, <a class="reference internal" href="#logic_arc_int_op__baselibs__deserialize" title="logic_arc_int__baselibs__generic_serial">logic_arc_int_op__baselibs__deserialize</a>, <a class="reference internal" href="#logic_arc_int_op__baselibs__get_serial_size" title="logic_arc_int__baselibs__generic_serial">logic_arc_int_op__baselibs__get_serial_size</a></span></span></div>
 </span></div>
 </div>
@@ -789,7 +838,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6433f039">
+<div class="need_container docutils container" id="SNCB-42f09613">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__baselibs__log_serial">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -810,7 +859,7 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="#comp__baselibs_static_reflection_with_serial" title="logic_arc_int__baselibs__log_serial">comp__baselibs_static_reflection_with_serial</a></span></span></div>
+<div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="#comp__baselibs_static_reflection" title="logic_arc_int__baselibs__log_serial">comp__baselibs_static_reflection</a></span></span></div>
 <div class="line">includes: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int_op__baselibs__log_ser" title="logic_arc_int__baselibs__log_serial">logic_arc_int_op__baselibs__log_ser</a>, <a class="reference internal" href="#logic_arc_int_op__baselibs__log_deser" title="logic_arc_int__baselibs__log_serial">logic_arc_int_op__baselibs__log_deser</a>, <a class="reference internal" href="#logic_arc_int_op__baselibs__get_log_ser_size" title="logic_arc_int__baselibs__log_serial">logic_arc_int_op__baselibs__get_log_ser_size</a></span></span></div>
 </span></div>
 </div>
@@ -835,7 +884,7 @@
 </div>
 <section id="static-reflection-operations">
 <h3>Static Reflection Operations<a class="headerlink" href="#static-reflection-operations" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-63bb586c">
+<div class="need_container docutils container" id="SNCB-343acedd">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__visit">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -878,7 +927,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-32cedad1">
+<div class="need_container docutils container" id="SNCB-d8add707">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__decl_struct_visit">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -921,7 +970,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-230e517e">
+<div class="need_container docutils container" id="SNCB-93ca3ce3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__struct_intro">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -967,7 +1016,7 @@
 </section>
 <section id="generic-serialization-operations">
 <h3>Generic Serialization Operations<a class="headerlink" href="#generic-serialization-operations" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-32feb973">
+<div class="need_container docutils container" id="SNCB-6f771b3f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__serialize">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1010,7 +1059,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-535cc4ca">
+<div class="need_container docutils container" id="SNCB-0616f058">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__deserialize">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1053,7 +1102,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-1c36634a">
+<div class="need_container docutils container" id="SNCB-75342d56">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__get_serial_size">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1099,7 +1148,7 @@
 </section>
 <section id="logging-serialization-operations">
 <h3>Logging Serialization Operations<a class="headerlink" href="#logging-serialization-operations" title="Link to this heading">#</a></h3>
-<div class="need_container docutils container" id="SNCB-1e494b08">
+<div class="need_container docutils container" id="SNCB-ffe00968">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__log_ser">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1142,7 +1191,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5b54048b">
+<div class="need_container docutils container" id="SNCB-a09abe61">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__log_deser">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1185,7 +1234,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-49f3dfeb">
+<div class="need_container docutils container" id="SNCB-03eb8347">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__baselibs__get_log_ser_size">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">

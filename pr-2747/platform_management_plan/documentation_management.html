@@ -33,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="../_static/css/score.css?v=6e51530f" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/score_needs.css?v=e97392eb" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score_needs.css?v=1f5dae2a" />
     <link rel="stylesheet" type="text/css" href="../_static/css/score_design.css?v=d9fd870c" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
@@ -582,7 +582,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-9d640c45">
+  <div class="need_container docutils container" id="SNCB-00aef47b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__documentation_mgt_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1071,8 +1071,8 @@ documents are listed as well, so that it is easy to identify missing documents.<
 </tr>
 <tr class="need row-odd"><td class="needs_title"><p>gcc</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../score_tools/tools_compiler/gcc.html#doc_tool__gcc">doc_tool__gcc</a></p></td>
-<td class="needs_safety_affected"><p>YES</p></td>
-<td class="needs_security_affected"><p>YES</p></td>
+<td class="needs_safety_affected"><p>NO</p></td>
+<td class="needs_security_affected"><p>NO</p></td>
 <td class="needs_status"><p>draft</p></td>
 </tr>
 <tr class="need row-even"><td class="needs_title"><p>qcc</p></td>
@@ -1624,31 +1624,37 @@ planned for release v0.5, are listed.</p>
 <td class="needs_security"><p>YES</p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>Baselibs Safety Manual</p></td>
+<tr class="need row-even"><td class="needs_title"><p>Baselibs Safety Analysis Checklist</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/docs/safety_mgt/module_safety_analysis_fdr.html#doc__baselibs_safety_analysis_fdr">doc__baselibs_safety_analysis_fdr</a></p></td>
+<td class="needs_safety"><p>ASIL_B</p></td>
+<td class="needs_security"><p>YES</p></td>
+<td class="needs_status"><p>draft</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>Baselibs Safety Manual</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/docs/manual/safety_manual.html#doc__baselibs_safety_manual">doc__baselibs_safety_manual</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>NO</p></td>
 <td class="needs_status"><p>draft</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>Baselibs Safety Package Formal Review</p></td>
+<tr class="need row-even"><td class="needs_title"><p>Baselibs Safety Package Formal Review</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/docs/safety_mgt/module_safety_package_fdr.html#doc__baselibs_safety_package_fdr">doc__baselibs_safety_package_fdr</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>NO</p></td>
 <td class="needs_status"><p>draft</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>Baselibs Safety Plan</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>Baselibs Safety Plan</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/docs/safety_mgt/module_safety_plan.html#doc__baselibs_safety_plan">doc__baselibs_safety_plan</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>NO</p></td>
 <td class="needs_status"><p>draft</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>Baselibs Safety Plan Formal Review</p></td>
+<tr class="need row-even"><td class="needs_title"><p>Baselibs Safety Plan Formal Review</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/docs/safety_mgt/module_safety_plan_fdr.html#doc__baselibs_safety_plan_fdr">doc__baselibs_safety_plan_fdr</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>NO</p></td>
 <td class="needs_status"><p>draft</p></td>
 </tr>
-<tr class="need row-even"><td class="needs_title"><p>Baselibs Verification Report</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>Baselibs Verification Report</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/docs/verification/module_verification_report.html#doc__baselibs_verification_report">doc__baselibs_verification_report</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>YES</p></td>
@@ -1823,7 +1829,13 @@ planned for release v0.5, are listed.</p>
 <td class="needs_security"><p>YES</p></td>
 <td class="needs_status"><p>draft</p></td>
 </tr>
-<tr class="need row-odd"><td class="needs_title"><p>Operating System Requirements</p></td>
+<tr class="need row-odd"><td class="needs_title"><p>QNX Assumptions of Use</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../modules/os/docs/requirements/aou_req_qnx.html#doc__os_aou_qnx">doc__os_aou_qnx</a></p></td>
+<td class="needs_safety"><p>ASIL_B</p></td>
+<td class="needs_security"><p>YES</p></td>
+<td class="needs_status"><p>draft</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>Operating System Requirements</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/os/docs/requirements/index.html#doc__os_requirements">doc__os_requirements</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>YES</p></td>
@@ -1912,6 +1924,18 @@ planned for release v0.5, are listed.</p>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>YES</p></td>
 <td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>concurrency DFA</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/concurrency/docs/safety_analysis/dfa.html#doc__concurrency_dfa">doc__concurrency_dfa</a></p></td>
+<td class="needs_safety"><p>ASIL_B</p></td>
+<td class="needs_security"><p>NO</p></td>
+<td class="needs_status"><p>draft</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>concurrency FMEA</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/concurrency/docs/safety_analysis/fmea.html#doc__concurrency_fmea">doc__concurrency_fmea</a></p></td>
+<td class="needs_safety"><p>ASIL_B</p></td>
+<td class="needs_security"><p>NO</p></td>
+<td class="needs_status"><p>draft</p></td>
 </tr>
 <tr class="need row-even"><td class="needs_title"><p>Concurrency Requirements</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/concurrency/docs/requirements/index.html#doc__concurrency_requirements">doc__concurrency_requirements</a></p></td>
@@ -2087,6 +2111,18 @@ planned for release v0.5, are listed.</p>
 <td class="needs_security"><p>YES</p></td>
 <td class="needs_status"><p>valid</p></td>
 </tr>
+<tr class="need row-odd"><td class="needs_title"><p>SafeCpp DFA</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/language/safecpp/docs/safety_analysis/dfa.html#doc__safecpp_dfa">doc__safecpp_dfa</a></p></td>
+<td class="needs_safety"><p>ASIL_B</p></td>
+<td class="needs_security"><p>NO</p></td>
+<td class="needs_status"><p>draft</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>SafeCpp FMEA</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/language/safecpp/docs/safety_analysis/fmea.html#doc__safecpp_fmea">doc__safecpp_fmea</a></p></td>
+<td class="needs_safety"><p>ASIL_B</p></td>
+<td class="needs_security"><p>NO</p></td>
+<td class="needs_status"><p>draft</p></td>
+</tr>
 <tr class="need row-odd"><td class="needs_title"><p>Safecpp Requirements</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/language/safecpp/docs/requirements/index.html#doc__safecpp_requirements">doc__safecpp_requirements</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
@@ -2103,6 +2139,18 @@ planned for release v0.5, are listed.</p>
 <td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/static_reflection_with_serialization/docs/requirements/index.html#doc__static_reflect_serial_lib_req">doc__static_reflect_serial_lib_req</a></p></td>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>YES</p></td>
+<td class="needs_status"><p>draft</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>Static Reflection DFA</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/static_reflection_with_serialization/docs/safety_analysis/dfa.html#doc__static_reflection_dfa">doc__static_reflection_dfa</a></p></td>
+<td class="needs_safety"><p>ASIL_B</p></td>
+<td class="needs_security"><p>NO</p></td>
+<td class="needs_status"><p>draft</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>Static Reflection FMEA</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/static_reflection_with_serialization/docs/safety_analysis/fmea.html#doc__static_reflection_fmea">doc__static_reflection_fmea</a></p></td>
+<td class="needs_safety"><p>ASIL_B</p></td>
+<td class="needs_security"><p>NO</p></td>
 <td class="needs_status"><p>draft</p></td>
 </tr>
 <tr class="need row-even"><td class="needs_title"><p>Static Reflection With Serialization Library</p></td>
@@ -2122,6 +2170,18 @@ planned for release v0.5, are listed.</p>
 <td class="needs_safety"><p>ASIL_B</p></td>
 <td class="needs_security"><p>YES</p></td>
 <td class="needs_status"><p>valid</p></td>
+</tr>
+<tr class="need row-odd"><td class="needs_title"><p>utils DFA</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/utils/docs/safety_analysis/dfa.html#doc__utils_dfa">doc__utils_dfa</a></p></td>
+<td class="needs_safety"><p>ASIL_B</p></td>
+<td class="needs_security"><p>NO</p></td>
+<td class="needs_status"><p>draft</p></td>
+</tr>
+<tr class="need row-even"><td class="needs_title"><p>utils FMEA</p></td>
+<td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/utils/docs/safety_analysis/fmea.html#doc__utils_fmea">doc__utils_fmea</a></p></td>
+<td class="needs_safety"><p>ASIL_B</p></td>
+<td class="needs_security"><p>NO</p></td>
+<td class="needs_status"><p>draft</p></td>
 </tr>
 <tr class="need row-odd"><td class="needs_title"><p>Utils Library Requirements</p></td>
 <td class="needs_id"><p><a class="reference internal" href="../modules/baselibs/utils/docs/requirements/index.html#doc__utils_lib_requirements">doc__utils_lib_requirements</a></p></td>
