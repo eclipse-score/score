@@ -33,16 +33,16 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/css/score.css?v=6e51530f" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/css/score_needs.css?v=e97392eb" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/score_needs.css?v=1f5dae2a" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/css/score_design.css?v=d9fd870c" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -72,7 +72,7 @@
         </script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
-    <link rel="next" title="Assumptions of Use" href="aou_req.html" />
+    <link rel="next" title="Generic Assumptions of Use" href="aou_req.html" />
     <link rel="prev" title="Module Documents" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -510,7 +510,8 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">OS Module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">Module Documents</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="aou_req.html">Assumptions of Use</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aou_req.html">Generic Assumptions of Use</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aou_req_qnx.html">Assumptions of Use - QNX</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../../libc/docs/index.html">libc</a></li>
@@ -588,7 +589,7 @@
                   
   <section id="requirements">
 <h1>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-0472ef70">
+<div class="need_container docutils container" id="SNCB-8d741f86">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__os_requirements">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -635,7 +636,7 @@
 defined in the SW-platform assumptions (and partly even in the Stakeholder requirements).</p>
 <p>The system integrator integrating S-CORE with the OS to provide a safe product has to make sure</p>
 <ul class="simple">
-<li><p>the functional requirements below are matching the OS used - see also <a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__safety_matching" title="aou_req__platform__safety_matching"><em class="xref need">safety matching (aou_req__platform__safety_matching)</em></a></p></li>
+<li><p>the functional requirements below are matching the OS used - see also <a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__safety_matching" title="aou_req__platform__safety_matching"><em class="xref need">Safety matching (aou_req__platform__safety_matching)</em></a></p></li>
 <li><p>the non-functional (integration) requirements below are fulfilled by the OS supplier - see also <a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#integration-assumptions"><span class="std std-ref">Assumptions on the external SW element integration</span></a></p></li>
 </ul>
 <section id="integration-requirements">
@@ -643,25 +644,25 @@ defined in the SW-platform assumptions (and partly even in the Stakeholder requi
 <section id="community-level">
 <h3>Community Level<a class="headerlink" href="#community-level" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__integration_assistance" title="aou_req__platform__integration_assistance"><em class="xref need">integration assistance (aou_req__platform__integration_assistance)</em></a></p></li>
-<li><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__os_integration_manual" title="aou_req__platform__os_integration_manual"><em class="xref need">integration manual (aou_req__platform__os_integration_manual)</em></a></p></li>
-<li><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__bug_interface" title="aou_req__platform__bug_interface"><em class="xref need">bug interface (aou_req__platform__bug_interface)</em></a></p></li>
+<li><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__integration_assistance" title="aou_req__platform__integration_assistance"><em class="xref need">Integration assistance (aou_req__platform__integration_assistance)</em></a></p></li>
+<li><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__os_integration_manual" title="aou_req__platform__os_integration_manual"><em class="xref need">Integration manual (aou_req__platform__os_integration_manual)</em></a></p></li>
+<li><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__bug_interface" title="aou_req__platform__bug_interface"><em class="xref need">Bug interface (aou_req__platform__bug_interface)</em></a></p></li>
 </ul>
 </section>
 <section id="functional-level">
 <h3>Functional Level<a class="headerlink" href="#functional-level" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__bazel_tooling" title="aou_req__platform__bazel_tooling"><em class="xref need">bazel tooling (aou_req__platform__bazel_tooling)</em></a></p></li>
-<li><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__bug_fixing" title="aou_req__platform__bug_fixing"><em class="xref need">bug fixing (aou_req__platform__bug_fixing)</em></a></p></li>
+<li><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__bazel_tooling" title="aou_req__platform__bazel_tooling"><em class="xref need">Bazel tooling (aou_req__platform__bazel_tooling)</em></a></p></li>
+<li><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__bug_fixing" title="aou_req__platform__bug_fixing"><em class="xref need">Bug fixing (aou_req__platform__bug_fixing)</em></a></p></li>
 </ul>
 </section>
 <section id="certifiable-level">
 <h3>Certifiable Level<a class="headerlink" href="#certifiable-level" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__levels" title="aou_req__platform__levels"><em class="xref need">integration levels (aou_req__platform__levels)</em></a></p></li>
-<li><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__safety_aou" title="aou_req__platform__safety_aou"><em class="xref need">safety AoU (aou_req__platform__safety_aou)</em></a></p></li>
-<li><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__safety_functions" title="aou_req__platform__safety_functions"><em class="xref need">safety functions (aou_req__platform__safety_functions)</em></a></p></li>
-<li><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__safety_anomaly" title="aou_req__platform__safety_anomaly"><em class="xref need">safety anomaly reporting (aou_req__platform__safety_anomaly)</em></a></p></li>
+<li><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__levels" title="aou_req__platform__levels"><em class="xref need">Integration levels (aou_req__platform__levels)</em></a></p></li>
+<li><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__safety_aou" title="aou_req__platform__safety_aou"><em class="xref need">Safety AoU (aou_req__platform__safety_aou)</em></a></p></li>
+<li><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__safety_functions" title="aou_req__platform__safety_functions"><em class="xref need">Safety functions (aou_req__platform__safety_functions)</em></a></p></li>
+<li><p><a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__safety_anomaly" title="aou_req__platform__safety_anomaly"><em class="xref need">Safety anomaly reporting (aou_req__platform__safety_anomaly)</em></a></p></li>
 </ul>
 </section>
 </section>
@@ -699,7 +700,7 @@ defined in the SW-platform assumptions (and partly even in the Stakeholder requi
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Assumptions of Use</p>
+        <p class="prev-next-title">Generic Assumptions of Use</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

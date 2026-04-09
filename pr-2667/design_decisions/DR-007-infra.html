@@ -33,16 +33,16 @@
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="../_static/css/score.css?v=6e51530f" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/score_needs.css?v=e97392eb" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score_needs.css?v=1f5dae2a" />
     <link rel="stylesheet" type="text/css" href="../_static/css/score_design.css?v=d9fd870c" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -72,7 +72,7 @@
         </script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Eclipse S-CORE (Eclipse Safe Open Vehicle Core)" href="../introduction/index.html" />
+    <link rel="next" title="DR-001-Proc: Feature as Independent Delivery Product" href="DR-001-proc.html" />
     <link rel="prev" title="DR-006-Infra: Clippy Integration via rules_lint" href="DR-006-infra.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -500,13 +500,22 @@
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DR-001-strat.html">DR-001-Strat: Consistent Stack vs. Reference Integration</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DR-001-arch.html">DR-001-Arch: Rust Readiness for Safety-Critical Components</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="DR-001-infra.html">DR-001-Infra: Integration Strategy for External Development Tools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DR-002-infra.html">DR-002-Infra: Integration Testing in a Distributed Monolith</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DR-003-infra.html">DR-003-Infra: Devcontainer Strategy for S-CORE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DR-004-infra.html">DR-004-Infra: Bi-directional traceability in docs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DR-006-infra.html">DR-006-Infra: Clippy Integration via rules_lint</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">DR-007-Infra: Solution for cyclic dependencies between docs-as-code and process description</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DR-001-proc.html">DR-001-Proc: Feature as Independent Delivery Product</a></li>
 </ul>
 </div>
 </nav></div>
@@ -572,7 +581,7 @@
 <ul class="simple">
 <li><p><strong>Date:</strong> 2026-02-04</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-5dbe6de2">
+<div class="need_container docutils container" id="SNCB-29c8e52f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__dependency_docs_as_code">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -630,7 +639,7 @@ This tight coupling makes maintenance and evolution of both repositories difficu
 <p class="plantuml">
 <object data="../_images/plantuml-bc33e474c3c3f0ebc89f82566bf1cdf2e4b1b582.svg" type="image/svg+xml" style="width:567px;height:263px;background:#FFFFFF;"></object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Cyclic dependency between process and docs-as-code repositories</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Cyclic dependency between process and docs-as-code repositories</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The artifacts within those repos are:</p>
@@ -693,7 +702,7 @@ This eliminates the cyclic dependency by having a single source of truth for bot
 <p class="plantuml">
 <object data="../_images/plantuml-f90748bcc1a8c62ad55730384339917cfa2c99cd.svg" type="image/svg+xml" style="width:364px;height:219px;background:#FFFFFF;"></object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Merge both repositories into one</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Merge both repositories into one</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Effort 😡😡: Disruptive effort to merge repos.
@@ -714,7 +723,7 @@ Also tests (scripts) and examples would be maintained there.</p>
 <p class="plantuml">
 <object data="../_images/plantuml-49215671c658adc448b1307ea6ff3546e067a861.svg" type="image/svg+xml" style="width:517px;height:312px;background:#FFFFFF;"></object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Move meta model definition to process repository</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Move meta model definition to process repository</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Implication:
@@ -739,7 +748,7 @@ No relevant cyclic dependency remains.</p>
 <p class="plantuml">
 <object data="../_images/plantuml-27a4ae28abbd3c51050a3855050af3e706429658.svg" type="image/svg+xml" style="width:885px;height:252px;background:#FFFFFF;"></object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Move examples to docs_as_code and templates to module_template</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Move examples to docs_as_code and templates to module_template</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Effort 💚: Low.</p>
@@ -757,7 +766,7 @@ This breaks the cycle by introducing a clear hierarchical dependency structure.<
 <p class="plantuml">
 <object data="../_images/plantuml-13f24b60eb8bb23e7deefb462c3949f3fcd321a5.svg" type="image/svg+xml" style="width:861px;height:312px;background:#FFFFFF;"></object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Move meta model and examples into a separate repository</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Move meta model and examples into a separate repository</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Effort 😡: High effort for the configurable <code class="docutils literal notranslate"><span class="pre">metamodel.yaml</span></code>.</p>
@@ -775,7 +784,7 @@ This breaks the cycle by removing the import dependency from docs-as-code back t
 <p class="plantuml">
 <object data="../_images/plantuml-a78d68900e8ec68df5c0b6b7621a785fe5b1b4ca.svg" type="image/svg+xml" style="width:721px;height:252px;background:#FFFFFF;"></object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Move examples to docs-as-code repository</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 31 </span><span class="caption-text">Move examples to docs-as-code repository</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Effort 💚: Low effort.</p>
@@ -887,11 +896,11 @@ We accept the maintainability tradeoff.</p>
       </div>
     </a>
     <a class="right-next"
-       href="../introduction/index.html"
+       href="DR-001-proc.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Eclipse S-CORE (Eclipse Safe Open Vehicle Core)</p>
+        <p class="prev-next-title">DR-001-Proc: Feature as Independent Delivery Product</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

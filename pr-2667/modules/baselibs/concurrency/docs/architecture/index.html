@@ -33,16 +33,16 @@
     <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/css/score.css?v=6e51530f" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/css/score_needs.css?v=e97392eb" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/css/score_needs.css?v=1f5dae2a" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/css/score_design.css?v=d9fd870c" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -508,6 +508,8 @@
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">concurrency</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Concurrency Component Architecture</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../requirements/index.html">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../safety_analysis/fmea.html">FMEA (Failure Modes and Effects Analysis)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../safety_analysis/dfa.html">DFA (Dependent Failure Analysis)</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../containers/docs/index.html">containers</a></li>
@@ -523,7 +525,6 @@
 
 
 <li class="toctree-l2"><a class="reference internal" href="../../../memory_shared/docs/index.html">memory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../message_passing/docs/index.html">message_passing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../os/docs/index.html">os</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../result/docs/index.html">result</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../static_reflection_with_serialization/docs/index.html">static_reflection_with_serialization</a></li>
@@ -605,7 +606,7 @@
                   
   <section id="concurrency-component-architecture">
 <h1>Concurrency Component Architecture<a class="headerlink" href="#concurrency-component-architecture" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-63a04c51">
+<div class="need_container docutils container" id="SNCB-dade4394">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__concurrency_architecture">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -624,8 +625,7 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">concurrency</span></span></span></div>
-</span></span></div>
+<div class="line"><span><span></span></span></div>
 <div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/architecture_workproducts.html#wp__component_arch">wp__component_arch</a></span></span></div>
 </span></div>
 </div>
@@ -654,7 +654,7 @@
 </section>
 <section id="static-architecture">
 <h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-df2c442e">
+<div class="need_container docutils container" id="SNCB-9e954639">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp table" id="comp__baselibs_concurrency">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -675,7 +675,8 @@
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs_concurrency</span><span class="needs_spacer">, </span><span class="needs_data">baselibs</span></span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">has: <span class="belongs_to"><span><a class="reference internal" href="../requirements/index.html#comp_req__concurrency__task_interface" title="comp__baselibs_concurrency">comp_req__concurrency__task_interface</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__task_cancellation" title="comp__baselibs_concurrency">comp_req__concurrency__task_cancellation</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__simple_task" title="comp__baselibs_concurrency">comp_req__concurrency__simple_task</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__task_result" title="comp__baselibs_concurrency">comp_req__concurrency__task_result</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__periodic_task" title="comp__baselibs_concurrency">comp_req__concurrency__periodic_task</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__delayed_task" title="comp__baselibs_concurrency">comp_req__concurrency__delayed_task</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__executor_interface" title="comp__baselibs_concurrency">comp_req__concurrency__executor_interface</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__thread_pool" title="comp__baselibs_concurrency">comp_req__concurrency__thread_pool</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__condition_variable" title="comp__baselibs_concurrency">comp_req__concurrency__condition_variable</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__interruptible_wait" title="comp__baselibs_concurrency">comp_req__concurrency__interruptible_wait</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__notification" title="comp__baselibs_concurrency">comp_req__concurrency__notification</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__synchronized_queue" title="comp__baselibs_concurrency">comp_req__concurrency__synchronized_queue</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__long_running_threads" title="comp__baselibs_concurrency">comp_req__concurrency__long_running_threads</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__memory_usage_control" title="comp__baselibs_concurrency">comp_req__concurrency__memory_usage_control</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__memory_reservation" title="comp__baselibs_concurrency">comp_req__concurrency__memory_reservation</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__thread_count_reporting" title="comp__baselibs_concurrency">comp_req__concurrency__thread_count_reporting</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__operation_timeout" title="comp__baselibs_concurrency">comp_req__concurrency__operation_timeout</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__error_handling" title="comp__baselibs_concurrency">comp_req__concurrency__error_handling</a></span></span></div>
+<div class="line"><span><div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat__baselibs" title="comp__baselibs_concurrency">feat__baselibs</a></span></span></div>
+<div class="line">has: <span class="belongs_to"><span><a class="reference internal" href="#comp_arc_sta__baselibs__concurrency" title="comp__baselibs_concurrency">comp_arc_sta__baselibs__concurrency</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__task_interface" title="comp__baselibs_concurrency">comp_req__concurrency__task_interface</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__task_cancellation" title="comp__baselibs_concurrency">comp_req__concurrency__task_cancellation</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__simple_task" title="comp__baselibs_concurrency">comp_req__concurrency__simple_task</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__task_result" title="comp__baselibs_concurrency">comp_req__concurrency__task_result</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__periodic_task" title="comp__baselibs_concurrency">comp_req__concurrency__periodic_task</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__delayed_task" title="comp__baselibs_concurrency">comp_req__concurrency__delayed_task</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__executor_interface" title="comp__baselibs_concurrency">comp_req__concurrency__executor_interface</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__thread_pool" title="comp__baselibs_concurrency">comp_req__concurrency__thread_pool</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__condition_variable" title="comp__baselibs_concurrency">comp_req__concurrency__condition_variable</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__interruptible_wait" title="comp__baselibs_concurrency">comp_req__concurrency__interruptible_wait</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__notification" title="comp__baselibs_concurrency">comp_req__concurrency__notification</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__synchronized_queue" title="comp__baselibs_concurrency">comp_req__concurrency__synchronized_queue</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__long_running_threads" title="comp__baselibs_concurrency">comp_req__concurrency__long_running_threads</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__memory_usage_control" title="comp__baselibs_concurrency">comp_req__concurrency__memory_usage_control</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__memory_reservation" title="comp__baselibs_concurrency">comp_req__concurrency__memory_reservation</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__thread_count_reporting" title="comp__baselibs_concurrency">comp_req__concurrency__thread_count_reporting</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__operation_timeout" title="comp__baselibs_concurrency">comp_req__concurrency__operation_timeout</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__error_handling" title="comp__baselibs_concurrency">comp_req__concurrency__error_handling</a></span></span></div>
 <div class="line">implements: <span class="implements"><span><a class="reference internal" href="#logic_arc_int__baselibs__promise" title="comp__baselibs_concurrency">logic_arc_int__baselibs__promise</a>, <a class="reference internal" href="#logic_arc_int__baselibs__future" title="comp__baselibs_concurrency">logic_arc_int__baselibs__future</a>, <a class="reference internal" href="#logic_arc_int__baselibs__shared_future" title="comp__baselibs_concurrency">logic_arc_int__baselibs__shared_future</a>, <a class="reference internal" href="#logic_arc_int__baselibs__executor" title="comp__baselibs_concurrency">logic_arc_int__baselibs__executor</a>, <a class="reference internal" href="#logic_arc_int__baselibs__task" title="comp__baselibs_concurrency">logic_arc_int__baselibs__task</a>, <a class="reference internal" href="#logic_arc_int__baselibs__task_result" title="comp__baselibs_concurrency">logic_arc_int__baselibs__task_result</a>, <a class="reference internal" href="#logic_arc_int__baselibs__synchronized_queue" title="comp__baselibs_concurrency">logic_arc_int__baselibs__synchronized_queue</a>, <a class="reference internal" href="#logic_arc_int__baselibs__condition_variable" title="comp__baselibs_concurrency">logic_arc_int__baselibs__condition_variable</a></span></span></div>
 <div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../docs/index.html#mod__baselibs" title="comp__baselibs_concurrency">mod__baselibs</a>, <a class="reference internal" href="../../../docs/index.html#mod_view_sta__baselibs__baselibs" title="comp__baselibs_concurrency">mod_view_sta__baselibs__baselibs</a></span></span></div>
 </span></div>
@@ -684,7 +685,7 @@
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-modules/baselibs/concurrency/docs/architecture/index-0">
-<object data="../../../../../_images/plantuml-3107e32b71a5e37a72ae9390bba7cf0ddf677929.svg" type="image/svg+xml" style="width:1430px;height:290px;background:#FFFFFF;"></object></p>
+<object data="../../../../../_images/plantuml-3021b1c82314511f78b5cc054f1913abcdcc6ec7.svg" type="image/svg+xml" style="width:1430px;height:290px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -701,10 +702,56 @@
 </table>
 </div>
 </div>
+<div class="need_container docutils container" id="SNCB-fe3efcaa">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_arc_sta table" id="comp_arc_sta__baselibs__concurrency">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Concurrency Static view</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">belongs to: <span class="belongs_to"><span><a class="reference internal" href="#comp__baselibs_concurrency" title="comp_arc_sta__baselibs__concurrency">comp__baselibs_concurrency</a></span></span></div>
+<div class="line">fulfils: <span class="fulfils"><span><a class="reference internal" href="../requirements/index.html#comp_req__concurrency__task_interface" title="comp_arc_sta__baselibs__concurrency">comp_req__concurrency__task_interface</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__task_cancellation" title="comp_arc_sta__baselibs__concurrency">comp_req__concurrency__task_cancellation</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__simple_task" title="comp_arc_sta__baselibs__concurrency">comp_req__concurrency__simple_task</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__task_result" title="comp_arc_sta__baselibs__concurrency">comp_req__concurrency__task_result</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__periodic_task" title="comp_arc_sta__baselibs__concurrency">comp_req__concurrency__periodic_task</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__delayed_task" title="comp_arc_sta__baselibs__concurrency">comp_req__concurrency__delayed_task</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__executor_interface" title="comp_arc_sta__baselibs__concurrency">comp_req__concurrency__executor_interface</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__thread_pool" title="comp_arc_sta__baselibs__concurrency">comp_req__concurrency__thread_pool</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__condition_variable" title="comp_arc_sta__baselibs__concurrency">comp_req__concurrency__condition_variable</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__interruptible_wait" title="comp_arc_sta__baselibs__concurrency">comp_req__concurrency__interruptible_wait</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__notification" title="comp_arc_sta__baselibs__concurrency">comp_req__concurrency__notification</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__synchronized_queue" title="comp_arc_sta__baselibs__concurrency">comp_req__concurrency__synchronized_queue</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__long_running_threads" title="comp_arc_sta__baselibs__concurrency">comp_req__concurrency__long_running_threads</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__memory_usage_control" title="comp_arc_sta__baselibs__concurrency">comp_req__concurrency__memory_usage_control</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__memory_reservation" title="comp_arc_sta__baselibs__concurrency">comp_req__concurrency__memory_reservation</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__thread_count_reporting" title="comp_arc_sta__baselibs__concurrency">comp_req__concurrency__thread_count_reporting</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__operation_timeout" title="comp_arc_sta__baselibs__concurrency">comp_req__concurrency__operation_timeout</a>, <a class="reference internal" href="../requirements/index.html#comp_req__concurrency__error_handling" title="comp_arc_sta__baselibs__concurrency">comp_req__concurrency__error_handling</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-modules/baselibs/concurrency/docs/architecture/index-1">
+<object data="../../../../../_images/plantuml-efbaa3765287b6f5c6c116fc5f0fde8c3ed63769.svg" type="image/svg+xml" style="width:222px;height:59px;background:#FFFFFF;"></object></p>
+</td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#comp_arc_sta__baselibs__concurrency" title="comp_arc_sta__baselibs__concurrency">comp_arc_sta__baselibs__concurrency</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component Package Diagram</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
 <section id="interfaces">
 <h2>Interfaces<a class="headerlink" href="#interfaces" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-1e57bb19">
+<div class="need_container docutils container" id="SNCB-8c6d17a9">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__baselibs__promise">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -726,7 +773,8 @@
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="#comp__baselibs_concurrency" title="logic_arc_int__baselibs__promise">comp__baselibs_concurrency</a></span></span></div>
-<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat__baselibs" title="logic_arc_int__baselibs__promise">feat__baselibs</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat_arc_sta__baselibs__static_view_arch" title="logic_arc_int__baselibs__promise">feat_arc_sta__baselibs__static_view_arch</a></span></span></div>
+<div class="line">provided by: <span class="provides"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat__baselibs" title="logic_arc_int__baselibs__promise">feat__baselibs</a></span></span></div>
+<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat_arc_sta__baselibs__static_view_arch" title="logic_arc_int__baselibs__promise">feat_arc_sta__baselibs__static_view_arch</a></span></span></div>
 <div class="line">includes: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int_op__conc__promise_setval" title="logic_arc_int__baselibs__promise">logic_arc_int_op__conc__promise_setval</a>, <a class="reference internal" href="#logic_arc_int_op__conc__promise_set_error" title="logic_arc_int__baselibs__promise">logic_arc_int_op__conc__promise_set_error</a>, <a class="reference internal" href="#logic_arc_int_op__conc__promise_get_future" title="logic_arc_int__baselibs__promise">logic_arc_int_op__conc__promise_get_future</a>, <a class="reference internal" href="#logic_arc_int_op__conc__promise_on_abort" title="logic_arc_int__baselibs__promise">logic_arc_int_op__conc__promise_on_abort</a></span></span></div>
 </span></div>
 </div>
@@ -749,7 +797,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-75d0682c">
+<div class="need_container docutils container" id="SNCB-0568ad3f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__conc__promise_setval">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -791,7 +839,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-01a4e04d">
+<div class="need_container docutils container" id="SNCB-a1051831">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__conc__promise_set_error">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -833,7 +881,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-90c0b3ae">
+<div class="need_container docutils container" id="SNCB-8ef96fbc">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__conc__promise_get_future">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -875,7 +923,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4461370d">
+<div class="need_container docutils container" id="SNCB-87579b53">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__conc__promise_on_abort">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -917,7 +965,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-15a71be0">
+<div class="need_container docutils container" id="SNCB-05fb3981">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__baselibs__future">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -939,7 +987,8 @@
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="#comp__baselibs_concurrency" title="logic_arc_int__baselibs__future">comp__baselibs_concurrency</a></span></span></div>
-<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat__baselibs" title="logic_arc_int__baselibs__future">feat__baselibs</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat_arc_sta__baselibs__static_view_arch" title="logic_arc_int__baselibs__future">feat_arc_sta__baselibs__static_view_arch</a></span></span></div>
+<div class="line">provided by: <span class="provides"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat__baselibs" title="logic_arc_int__baselibs__future">feat__baselibs</a></span></span></div>
+<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat_arc_sta__baselibs__static_view_arch" title="logic_arc_int__baselibs__future">feat_arc_sta__baselibs__static_view_arch</a></span></span></div>
 <div class="line">includes: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int_op__conc__future_get" title="logic_arc_int__baselibs__future">logic_arc_int_op__conc__future_get</a>, <a class="reference internal" href="#logic_arc_int_op__conc__future_wait" title="logic_arc_int__baselibs__future">logic_arc_int_op__conc__future_wait</a>, <a class="reference internal" href="#logic_arc_int_op__conc__future_wait_for" title="logic_arc_int__baselibs__future">logic_arc_int_op__conc__future_wait_for</a>, <a class="reference internal" href="#logic_arc_int_op__conc__future_wait_until" title="logic_arc_int__baselibs__future">logic_arc_int_op__conc__future_wait_until</a>, <a class="reference internal" href="#logic_arc_int_op__conc__future_valid" title="logic_arc_int__baselibs__future">logic_arc_int_op__conc__future_valid</a>, <a class="reference internal" href="#logic_arc_int_op__conc__future_share" title="logic_arc_int__baselibs__future">logic_arc_int_op__conc__future_share</a>, <a class="reference internal" href="#logic_arc_int_op__conc__future_then" title="logic_arc_int__baselibs__future">logic_arc_int_op__conc__future_then</a></span></span></div>
 </span></div>
 </div>
@@ -962,7 +1011,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-aac7257e">
+<div class="need_container docutils container" id="SNCB-73dc9a44">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__conc__future_get">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1004,7 +1053,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-2762b1dc">
+<div class="need_container docutils container" id="SNCB-14f40ddf">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__conc__future_wait">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1046,7 +1095,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-80d0f107">
+<div class="need_container docutils container" id="SNCB-1dd35dea">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__conc__future_wait_for">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1088,7 +1137,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-1ae71b59">
+<div class="need_container docutils container" id="SNCB-88c4ac72">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__conc__future_wait_until">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1130,7 +1179,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-292b1aeb">
+<div class="need_container docutils container" id="SNCB-0a1fd01e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__conc__future_valid">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1172,7 +1221,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-96317c8c">
+<div class="need_container docutils container" id="SNCB-565fc579">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__conc__future_share">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1214,7 +1263,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-cd2f379b">
+<div class="need_container docutils container" id="SNCB-e49800c2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__conc__future_then">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1256,7 +1305,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-25f7fb24">
+<div class="need_container docutils container" id="SNCB-80bf9c0f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__baselibs__shared_future">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1278,7 +1327,8 @@
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="#comp__baselibs_concurrency" title="logic_arc_int__baselibs__shared_future">comp__baselibs_concurrency</a></span></span></div>
-<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat__baselibs" title="logic_arc_int__baselibs__shared_future">feat__baselibs</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat_arc_sta__baselibs__static_view_arch" title="logic_arc_int__baselibs__shared_future">feat_arc_sta__baselibs__static_view_arch</a></span></span></div>
+<div class="line">provided by: <span class="provides"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat__baselibs" title="logic_arc_int__baselibs__shared_future">feat__baselibs</a></span></span></div>
+<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat_arc_sta__baselibs__static_view_arch" title="logic_arc_int__baselibs__shared_future">feat_arc_sta__baselibs__static_view_arch</a></span></span></div>
 <div class="line">includes: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int_op__conc__shared_future_get" title="logic_arc_int__baselibs__shared_future">logic_arc_int_op__conc__shared_future_get</a>, <a class="reference internal" href="#logic_arc_int_op__conc__shared_future_copy" title="logic_arc_int__baselibs__shared_future">logic_arc_int_op__conc__shared_future_copy</a></span></span></div>
 </span></div>
 </div>
@@ -1301,7 +1351,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9348605f">
+<div class="need_container docutils container" id="SNCB-21bbd2d8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__conc__shared_future_get">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1343,7 +1393,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-fb4df0d6">
+<div class="need_container docutils container" id="SNCB-2e39b896">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__conc__shared_future_copy">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1385,7 +1435,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4e707827">
+<div class="need_container docutils container" id="SNCB-42bd0ca1">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__baselibs__executor">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1407,7 +1457,8 @@
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="#comp__baselibs_concurrency" title="logic_arc_int__baselibs__executor">comp__baselibs_concurrency</a></span></span></div>
-<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat__baselibs" title="logic_arc_int__baselibs__executor">feat__baselibs</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat_arc_sta__baselibs__static_view_arch" title="logic_arc_int__baselibs__executor">feat_arc_sta__baselibs__static_view_arch</a></span></span></div>
+<div class="line">provided by: <span class="provides"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat__baselibs" title="logic_arc_int__baselibs__executor">feat__baselibs</a></span></span></div>
+<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat_arc_sta__baselibs__static_view_arch" title="logic_arc_int__baselibs__executor">feat_arc_sta__baselibs__static_view_arch</a></span></span></div>
 <div class="line">includes: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int_op__conc__executor_enqueue" title="logic_arc_int__baselibs__executor">logic_arc_int_op__conc__executor_enqueue</a>, <a class="reference internal" href="#logic_arc_int_op__conc__executor_post" title="logic_arc_int__baselibs__executor">logic_arc_int_op__conc__executor_post</a>, <a class="reference internal" href="#logic_arc_int_op__conc__executor_submit" title="logic_arc_int__baselibs__executor">logic_arc_int_op__conc__executor_submit</a>, <a class="reference internal" href="#logic_arc_int_op__conc__executor_shutdown" title="logic_arc_int__baselibs__executor">logic_arc_int_op__conc__executor_shutdown</a>, <a class="reference internal" href="#logic_arc_int_op__conc__executor_max_conc" title="logic_arc_int__baselibs__executor">logic_arc_int_op__conc__executor_max_conc</a></span></span></div>
 </span></div>
 </div>
@@ -1430,7 +1481,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-81927e95">
+<div class="need_container docutils container" id="SNCB-690d0bb8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__conc__executor_enqueue">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1472,7 +1523,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-44502495">
+<div class="need_container docutils container" id="SNCB-6b213cbd">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__conc__executor_post">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1514,7 +1565,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-0288657a">
+<div class="need_container docutils container" id="SNCB-63e9bc7a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__conc__executor_submit">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1556,7 +1607,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-8fdce3aa">
+<div class="need_container docutils container" id="SNCB-df2ce7ca">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__conc__executor_shutdown">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1598,7 +1649,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b1bf7d11">
+<div class="need_container docutils container" id="SNCB-d1e5e33e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__conc__executor_max_conc">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1640,7 +1691,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-482b5a1e">
+<div class="need_container docutils container" id="SNCB-feed8eb9">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__baselibs__task">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1662,7 +1713,8 @@
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="#comp__baselibs_concurrency" title="logic_arc_int__baselibs__task">comp__baselibs_concurrency</a></span></span></div>
-<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat__baselibs" title="logic_arc_int__baselibs__task">feat__baselibs</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat_arc_sta__baselibs__static_view_arch" title="logic_arc_int__baselibs__task">feat_arc_sta__baselibs__static_view_arch</a></span></span></div>
+<div class="line">provided by: <span class="provides"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat__baselibs" title="logic_arc_int__baselibs__task">feat__baselibs</a></span></span></div>
+<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat_arc_sta__baselibs__static_view_arch" title="logic_arc_int__baselibs__task">feat_arc_sta__baselibs__static_view_arch</a></span></span></div>
 <div class="line">includes: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int_op__conc__task_execute" title="logic_arc_int__baselibs__task">logic_arc_int_op__conc__task_execute</a>, <a class="reference internal" href="#logic_arc_int_op__conc__task_get_stop_source" title="logic_arc_int__baselibs__task">logic_arc_int_op__conc__task_get_stop_source</a></span></span></div>
 </span></div>
 </div>
@@ -1685,7 +1737,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7d229022">
+<div class="need_container docutils container" id="SNCB-bd07a848">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__conc__task_execute">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1727,7 +1779,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5964c7ac">
+<div class="need_container docutils container" id="SNCB-1abdaf54">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__conc__task_get_stop_source">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1769,7 +1821,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9b408278">
+<div class="need_container docutils container" id="SNCB-61ea4281">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__baselibs__task_result">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1788,10 +1840,11 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span><span class="needs_spacer">, </span><span class="needs_data">result_library</span></span></span></div>
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="#comp__baselibs_concurrency" title="logic_arc_int__baselibs__task_result">comp__baselibs_concurrency</a></span></span></div>
-<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat__baselibs" title="logic_arc_int__baselibs__task_result">feat__baselibs</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat_arc_sta__baselibs__static_view_arch" title="logic_arc_int__baselibs__task_result">feat_arc_sta__baselibs__static_view_arch</a></span></span></div>
+<div class="line">provided by: <span class="provides"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat__baselibs" title="logic_arc_int__baselibs__task_result">feat__baselibs</a></span></span></div>
+<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat_arc_sta__baselibs__static_view_arch" title="logic_arc_int__baselibs__task_result">feat_arc_sta__baselibs__static_view_arch</a></span></span></div>
 <div class="line">includes: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int_op__conc__task_result_abort" title="logic_arc_int__baselibs__task_result">logic_arc_int_op__conc__task_result_abort</a>, <a class="reference internal" href="#logic_arc_int_op__conc__task_result_aborted" title="logic_arc_int__baselibs__task_result">logic_arc_int_op__conc__task_result_aborted</a>, <a class="reference internal" href="#logic_arc_int_op__conc__task_result_get" title="logic_arc_int__baselibs__task_result">logic_arc_int_op__conc__task_result_get</a></span></span></div>
 </span></div>
 </div>
@@ -1814,7 +1867,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b27db796">
+<div class="need_container docutils container" id="SNCB-b5dca0ad">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__conc__task_result_abort">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1833,8 +1886,7 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">result_library</span></span></span></div>
-</span></span></div>
+<div class="line"><span><span></span></span></div>
 <div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__baselibs__task_result" title="logic_arc_int_op__conc__task_result_abort">logic_arc_int__baselibs__task_result</a></span></span></div>
 </span></div>
 </div>
@@ -1857,7 +1909,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e7a454a5">
+<div class="need_container docutils container" id="SNCB-da66d771">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__conc__task_result_aborted">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1876,8 +1928,7 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">result_library</span></span></span></div>
-</span></span></div>
+<div class="line"><span><span></span></span></div>
 <div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__baselibs__task_result" title="logic_arc_int_op__conc__task_result_aborted">logic_arc_int__baselibs__task_result</a></span></span></div>
 </span></div>
 </div>
@@ -1900,7 +1951,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-46499ca6">
+<div class="need_container docutils container" id="SNCB-d830d8ad">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__conc__task_result_get">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1919,8 +1970,7 @@
 </td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">result_library</span></span></span></div>
-</span></span></div>
+<div class="line"><span><span></span></span></div>
 <div class="line"><span><div class="line">included by: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int__baselibs__task_result" title="logic_arc_int_op__conc__task_result_get">logic_arc_int__baselibs__task_result</a></span></span></div>
 </span></div>
 </div>
@@ -1943,7 +1993,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9005eed3">
+<div class="need_container docutils container" id="SNCB-14c3f298">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__baselibs__synchronized_queue">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1965,7 +2015,8 @@
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="#comp__baselibs_concurrency" title="logic_arc_int__baselibs__synchronized_queue">comp__baselibs_concurrency</a></span></span></div>
-<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat__baselibs" title="logic_arc_int__baselibs__synchronized_queue">feat__baselibs</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat_arc_sta__baselibs__static_view_arch" title="logic_arc_int__baselibs__synchronized_queue">feat_arc_sta__baselibs__static_view_arch</a></span></span></div>
+<div class="line">provided by: <span class="provides"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat__baselibs" title="logic_arc_int__baselibs__synchronized_queue">feat__baselibs</a></span></span></div>
+<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat_arc_sta__baselibs__static_view_arch" title="logic_arc_int__baselibs__synchronized_queue">feat_arc_sta__baselibs__static_view_arch</a></span></span></div>
 <div class="line">includes: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int_op__conc__sync_queue_push" title="logic_arc_int__baselibs__synchronized_queue">logic_arc_int_op__conc__sync_queue_push</a>, <a class="reference internal" href="#logic_arc_int_op__conc__sync_queue_pop" title="logic_arc_int__baselibs__synchronized_queue">logic_arc_int_op__conc__sync_queue_pop</a>, <a class="reference internal" href="#logic_arc_int_op__conc__sync_queue_try_push" title="logic_arc_int__baselibs__synchronized_queue">logic_arc_int_op__conc__sync_queue_try_push</a>, <a class="reference internal" href="#logic_arc_int_op__conc__sync_queue_try_pop" title="logic_arc_int__baselibs__synchronized_queue">logic_arc_int_op__conc__sync_queue_try_pop</a></span></span></div>
 </span></div>
 </div>
@@ -1988,7 +2039,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-3a2dc869">
+<div class="need_container docutils container" id="SNCB-d5add345">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__conc__sync_queue_push">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2030,7 +2081,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9bbd371e">
+<div class="need_container docutils container" id="SNCB-6e9f7056">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__conc__sync_queue_pop">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2072,7 +2123,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4cc7d7eb">
+<div class="need_container docutils container" id="SNCB-631e7d3b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__conc__sync_queue_try_push">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2114,7 +2165,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-c8511942">
+<div class="need_container docutils container" id="SNCB-0bdd6de5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__conc__sync_queue_try_pop">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2156,7 +2207,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-ee20ab01">
+<div class="need_container docutils container" id="SNCB-c009fb3a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__baselibs__condition_variable">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2178,7 +2229,8 @@
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
 </span></span></div>
 <div class="line"><span><div class="line">implemented by: <span class="implements"><span><a class="reference internal" href="#comp__baselibs_concurrency" title="logic_arc_int__baselibs__condition_variable">comp__baselibs_concurrency</a></span></span></div>
-<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat__baselibs" title="logic_arc_int__baselibs__condition_variable">feat__baselibs</a>, <a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat_arc_sta__baselibs__static_view_arch" title="logic_arc_int__baselibs__condition_variable">feat_arc_sta__baselibs__static_view_arch</a></span></span></div>
+<div class="line">provided by: <span class="provides"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat__baselibs" title="logic_arc_int__baselibs__condition_variable">feat__baselibs</a></span></span></div>
+<div class="line">included by: <span class="includes"><span><a class="reference internal" href="../../../../../features/baselibs/docs/architecture/index.html#feat_arc_sta__baselibs__static_view_arch" title="logic_arc_int__baselibs__condition_variable">feat_arc_sta__baselibs__static_view_arch</a></span></span></div>
 <div class="line">includes: <span class="included_by"><span><a class="reference internal" href="#logic_arc_int_op__conc__cv_wait" title="logic_arc_int__baselibs__condition_variable">logic_arc_int_op__conc__cv_wait</a>, <a class="reference internal" href="#logic_arc_int_op__conc__cv_wait_for" title="logic_arc_int__baselibs__condition_variable">logic_arc_int_op__conc__cv_wait_for</a>, <a class="reference internal" href="#logic_arc_int_op__conc__cv_notify_one" title="logic_arc_int__baselibs__condition_variable">logic_arc_int_op__conc__cv_notify_one</a>, <a class="reference internal" href="#logic_arc_int_op__conc__cv_notify_all" title="logic_arc_int__baselibs__condition_variable">logic_arc_int_op__conc__cv_notify_all</a></span></span></div>
 </span></div>
 </div>
@@ -2201,7 +2253,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e870ebed">
+<div class="need_container docutils container" id="SNCB-fb6a30a8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__conc__cv_wait">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2243,7 +2295,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f87734ea">
+<div class="need_container docutils container" id="SNCB-5340b1ba">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__conc__cv_wait_for">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2285,7 +2337,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-79bf74a8">
+<div class="need_container docutils container" id="SNCB-0afaa57d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__conc__cv_notify_one">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2327,7 +2379,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-65c13c82">
+<div class="need_container docutils container" id="SNCB-e221d980">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int_op table" id="logic_arc_int_op__conc__cv_notify_all">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">

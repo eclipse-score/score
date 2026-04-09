@@ -33,16 +33,16 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/score.css?v=6e51530f" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/score_needs.css?v=e97392eb" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/score_needs.css?v=1f5dae2a" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/score_design.css?v=d9fd870c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -510,7 +510,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../diagnostics/index.html">Diagnostic and Fault Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../frameworks/index.html">Frameworks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lifecycle/index.html">Lifecycle</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../nonipc/index.html">NonIPC Communication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../orchestration/index.html">Orchestration (v0.5 beta)</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Persistency (v0.5 beta)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
@@ -593,7 +592,7 @@
                   
   <section id="dfa-dependent-failure-analysis">
 <h1>DFA (Dependent Failure Analysis)<a class="headerlink" href="#dfa-dependent-failure-analysis" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-9c60ae46">
+<div class="need_container docutils container" id="SNCB-0dca1f03">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__persistency_dfa">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -640,11 +639,13 @@
 following tables. For all applicable failure initiators, the DFA has to be performed.</p>
 <section id="dependent-failure-initiators">
 <h2>Dependent Failure Initiators<a class="headerlink" href="#dependent-failure-initiators" title="Link to this heading">#</a></h2>
-<p>2.1 Shared resources</p>
-<div class="line-block">
-<div class="line">2.2 Communication between the two elements:</div>
-<div class="line">Receiving function is affected by information that is false, lost, sent multiple times, or in the wrong order etc. from the sender.</div>
-</div>
+<section id="shared-resources">
+<h3>Shared resources<a class="headerlink" href="#shared-resources" title="Link to this heading">#</a></h3>
+<p>The dependent failure initiators related to shared resources are not applicable for the features. The shared resources will be considered in the platform DFA.</p>
+</section>
+<section id="communication-between-the-two-elements">
+<h3>Communication between the two elements<a class="headerlink" href="#communication-between-the-two-elements" title="Link to this heading">#</a></h3>
+<p>Receiving function is affected by information that is false, lost, sent multiple times, or in the wrong order etc. from the sender.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id1">
 <caption><span class="caption-number">Table 17 </span><span class="caption-text">DFA communication between elements</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
 <colgroup>
@@ -699,10 +700,10 @@ following tables. For all applicable failure initiators, the DFA has to be perfo
 </tbody>
 </table>
 </div>
-<div class="line-block">
-<div class="line">2.3 Shared information inputs</div>
-<div class="line">Same information input used by multiple functions.</div>
-</div>
+</section>
+<section id="shared-information-inputs">
+<h3>Shared information inputs<a class="headerlink" href="#shared-information-inputs" title="Link to this heading">#</a></h3>
+<p>Same information input used by multiple functions.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id2">
 <caption><span class="caption-number">Table 18 </span><span class="caption-text">DFA shared information inputs</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
 <colgroup>
@@ -742,10 +743,10 @@ following tables. For all applicable failure initiators, the DFA has to be perfo
 </tbody>
 </table>
 </div>
-<div class="line-block">
-<div class="line">2.4 Unintended impact</div>
-<div class="line">Unintended impacts to function due to various failures.</div>
-</div>
+</section>
+<section id="unintended-impact">
+<h3>Unintended impact<a class="headerlink" href="#unintended-impact" title="Link to this heading">#</a></h3>
+<p>Unintended impacts to function due to various failures.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="id3">
 <caption><span class="caption-number">Table 19 </span><span class="caption-text">DFA unintended impact</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
 <colgroup>
@@ -789,8 +790,8 @@ following tables. For all applicable failure initiators, the DFA has to be perfo
 </tr>
 <tr class="row-odd"><td><p>UI_01_06</p></td>
 <td><p>Blocking of execution</p></td>
-<td><p>yes</p></td>
-<td><p><a class="reference internal" href="#feat_saf_dfa__persistency__execution_blocking" title="feat_saf_dfa__persistency__execution_blocking"><em class="xref need">Persistency execution blocking (feat_saf_dfa__persistency__execution_blocking)</em></a></p></td>
+<td><p>no</p></td>
+<td><p>Failure initiator not applicable at persistency, so no mitigation is needed.</p></td>
 </tr>
 <tr class="row-even"><td><p>UI_01_07</p></td>
 <td><p>Incorrect allocation of execution time</p></td>
@@ -826,55 +827,12 @@ following tables. For all applicable failure initiators, the DFA has to be perfo
 </table>
 </div>
 </section>
+</section>
 <section id="dfa">
 <h2>DFA<a class="headerlink" href="#dfa" title="Link to this heading">#</a></h2>
 <p>For all identified applicable failure initiators, the DFA is performed in the following section.</p>
-<div class="need_container docutils container" id="SNCB-76925589">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_saf_dfa table" id="feat_saf_dfa__persistency__execution_blocking">
-<tbody>
-<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">Persistency execution blocking</span></span></span></div>
-</div>
-</td>
-<td class="head_center" colspan="2"><div class="needs_head line-block">
-<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
-<div class="line"><span></span></div>
-<div class="line"><span></span></div>
-</div>
-</td>
-<td class="head_right" colspan="2"><div class="needs_head_right line-block">
-<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
-</div>
-</td>
-</tr>
-<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_failure_effect"><span class="needs_label">failure_effect: </span><span class="needs_data">Blocking of execution. This will lead to a unavailability of the persistency feature.</span></span></div>
-<div class="line"><span class="needs_failure_id"><span class="needs_label">failure_id: </span><span class="needs_data">UI_01_06</span></span></div>
-<div class="line"><span class="needs_sufficient"><span class="needs_label">sufficient: </span><span class="needs_data">yes</span></span></div>
-</span></span></div>
-<div class="line"><span><div class="line">mitigated_by: <span class="mitigated_by"><span><a class="reference internal" href="../requirements/index.html#aou_req__persistency__appl_exec" title="feat_saf_dfa__persistency__execution_blocking">aou_req__persistency__appl_exec</a></span></span></div>
-<div class="line">violates: <span class="violates"><span><a class="reference internal" href="../architecture/index.html#feat_arc_sta__persistency__static" title="feat_saf_dfa__persistency__execution_blocking">feat_arc_sta__persistency__static</a></span></span></div>
-</span></div>
-</div>
-</td>
-<td class="meta" colspan="3"></td>
-</tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>Execution blocking will make persistency not available.</p></td>
-</tr>
-<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
-<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_saf_dfa__persistency__execution_blocking" title="feat_saf_dfa__persistency__execution_blocking">feat_saf_dfa__persistency__execution_blocking</a></span></span></div>
-</div>
-</td>
-<td class="footer" colspan="2"><div class="needs_footer line-block">
-<div class="line"><span><span class="needs_type_name"><span class="needs_data">Feature DFA (Dependent Failure Analysis)</span></span></span></div>
-</div>
-</td>
-<td class="footer_right" colspan="2"></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<p>Due to to analysis of the failure initiators, no applicable failure initiator is identified. Therefore, no DFA is needed for
+the feature persistency.</p>
 </section>
 </section>
 
@@ -925,7 +883,13 @@ following tables. For all applicable failure initiators, the DFA has to be perfo
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependent-failure-initiators">Dependent Failure Initiators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependent-failure-initiators">Dependent Failure Initiators</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shared-resources">Shared resources</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#communication-between-the-two-elements">Communication between the two elements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shared-information-inputs">Shared information inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unintended-impact">Unintended impact</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dfa">DFA</a></li>
 </ul>
   </nav></div>

@@ -33,16 +33,16 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/score.css?v=6e51530f" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/score_needs.css?v=e97392eb" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/score_needs.css?v=1f5dae2a" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/score_design.css?v=d9fd870c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -510,7 +510,8 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">OS Module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">Module Documents</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="requirements/index.html">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="requirements/aou_req.html">Assumptions of Use</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements/aou_req.html">Generic Assumptions of Use</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements/aou_req_qnx.html">Assumptions of Use - QNX</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../libc/docs/index.html">libc</a></li>
@@ -583,7 +584,49 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-0b614016">
+  <div class="need_container docutils container" id="SNCB-347ffa4e">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat table" id="feat__os">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Operating System</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span></span></span></div>
+<div class="line"><span><div class="line">has: <span class="belongs_to"><span><a class="reference internal" href="../libc/docs/architecture/index.html#comp__os_libc" title="feat__os">comp__os_libc</a>, <a class="reference internal" href="../libcpp/docs/architecture/index.html#comp__os_libcpp" title="feat__os">comp__os_libcpp</a>, <a class="reference internal" href="../message_passing/docs/architecture/index.html#comp__os_message_passing" title="feat__os">comp__os_message_passing</a>, <a class="reference internal" href="../operating_systems/docs/community/autosd.html#comp__os_autosd" title="feat__os">comp__os_autosd</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>Placeholder for the external provided OS. It is expected that this feature will be used to document the requirements and dependencies of the S-CORE software platform to the operating system environment and other OS related SW components.</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat__os" title="feat__os">feat__os</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Feature</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-54fa4e45">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_mod table" id="mod__os">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -627,7 +670,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-144955e6">
+<div class="need_container docutils container" id="SNCB-661ab7b6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_mod_view_sta table" id="mod_view_sta__os__os">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -664,7 +707,7 @@ One example of these “other” SW components are the C/C++ libs which may come
 S-CORE expects to support integration of more than one operating system, so these may be seen already in this module view,
 as different components. Requirements on this OS integration are documented in <a class="reference internal" href="requirements/index.html#doc__os_requirements" title="doc__os_requirements"><em class="xref need">Operating System Requirements (doc__os_requirements)</em></a>.</p>
 <p class="plantuml" id="needarch-modules/os/docs/index-0">
-<object data="../../../_images/plantuml-3cae6d6bf35233086e8ca24f7b034820a18c2d0d.svg" type="image/svg+xml" style="width:1023px;height:312px;background:#FFFFFF;"></object></p>
+<object data="../../../_images/plantuml-1bccea0f9f6d01f9dd9d8e1b6f5fb438bb57d553.svg" type="image/svg+xml" style="width:1023px;height:312px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -686,7 +729,8 @@ as different components. Requirements on this OS integration are documented in <
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="requirements/index.html">Requirements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="requirements/aou_req.html">Assumptions of Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/aou_req.html">Generic Assumptions of Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements/aou_req_qnx.html">Assumptions of Use - QNX</a></li>
 </ul>
 </div>
 </section>
