@@ -135,6 +135,17 @@ Assumptions of Use (AoU)
 
    Users shall handle all function return values and take appropriate action on errors.
 
+.. aou_req:: Path Validation
+   :id: aou_req__filesystem__path_validation
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :status: valid
+
+   User shall ensure that all paths passed to the filesystem library are valid and originate from trusted sources.
+
+   Note: The library does not perform any path sanitization or validation.
+
 .. aou_req:: Thread Safety
    :id: aou_req__filesystem__thread_safety
    :reqtype: Non-Functional
