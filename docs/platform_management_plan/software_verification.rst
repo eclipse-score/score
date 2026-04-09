@@ -223,16 +223,16 @@ at higher levels:
 
    #. Control Flow Analysis (``control-flow-analysis``):
 
-      Most beneficial for testing level 1 and 2.
+      Most beneficial for testing level "1 Unit/Component" and "2 Feature Integration".
    #. Data Flow Analysis (``data-flow-analysis``):
 
-      Most beneficial for testing level 1 and 2.
+      Most beneficial for testing level "1 Unit/Component" and "2 Feature Integration".
    #. Fault Injection (``fault-injection``):
 
-      Most beneficial for testing level 2.
+      Most beneficial for testing level "2 Feature Integration".
    #. Structural Function/Call Coverage (``structural-function-coverage`` & ``structural-call-coverage``)
 
-      Most beneficial for testing level 2.
+      Most beneficial for testing level "2 Feature Integration".
 
 
 Test Derivation Methods
