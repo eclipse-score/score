@@ -323,9 +323,9 @@ to be reached with every contribution.
      - 100%
      - 100%
    * - 8
-     - Compliance with rules for static code analysis
+     - Freedom from static code analysis violations (critical and high severity)
      - 100% (no remaining critical findings)
-     - 100% (no remaining class or high severity findings)
+     - 100% (no remaining critical or high severity findings)
    * - 9
      - Freedom from compiler warnings & errors
      - 100%
@@ -397,12 +397,17 @@ The goal is to have all tests with linked ``valid`` requirements executed and pa
 Static code analysis
 ^^^^^^^^^^^^^^^^^^^^
 Static code analysis is performed to ensure compliance with coding standards and to identify potential issues early in the development process.
-The respective tools used for static analysis are mentioned in the :need:`doc__software_development_plan`.
+The respective tools  (e.g. GitHub CodeQL) used for static analysis are mentioned in the :need:`doc__software_development_plan`.
 
 Violation identified by the static code analysis tools are categorized based on their severity.
-For QM software no remaining critical severity findings mark a 100% coverage.
-For safety-critical software no remaining critical and high severity findings mark a 100% coverage.
-Medium severity findings require a rationale why they are an acceptable risk.
+
+For QM software, the objective is a 100% closure rate of any Critical severity finding prior to release.
+For safety‑critical software, the objective is a 100% closure rate of any Critical and High severity finding prior to release.
+
+In other words, for QM software, the quality target is zero open findings classified as Critical at release.
+For safety‑critical software, the quality target is zero open findings classified as Critical or High.
+
+Remaining Medium severity findings are reviewed and justified by documented risk acceptance.
 
 Where no severity rating is provided the violation is part of the coverage calculation and needs to be resolved to reach the defined goals.
 
