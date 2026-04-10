@@ -207,7 +207,8 @@ For QM software some of the methods may be executed with less rigor compared to 
 These may be interface testing or resource usage evaluation, in case there is an argument for
 sufficient freedom from interference with safety critical software parts.
 
-Static code analysis is part of the :need:`wp__sw_implementation`.
+Static code analysis is part of the :need:`wp__sw_implementation`. It is supported by tooling as mentioned in
+the :need:`doc__software_development_plan`
 
 As an additional measure the resource usage evaluation ``resource-usage`` should also be considered
 for level 3 testing as this is the level executed also on reference hardware with the integrated
@@ -294,19 +295,19 @@ to be reached with every contribution.
      - Goal for QM
      - Goal for Safety
    * - 1
-     - Structural Statement Coverage
+     - Structural Statement Coverage (represented by Line Coverage)
      - 85%
      - 100%
    * - 2
-     - Structural Decision Coverage
+     - Structural Branch Coverage
      - 85%
      - 100%
    * - 3
-     - Verification coverage of software detailed design (test coverage)
-     - 100%
+     - Coverage of software detailed design
+     - n/a
      - 100%
    * - 4
-     - Verification coverage of software architecture design (test coverage)
+     - Coverage of software architecture design
      - 100%
      - 100%
    * - 5
@@ -323,8 +324,8 @@ to be reached with every contribution.
      - 100%
    * - 8
      - Compliance with rules for static code analysis
-     - only minor violation based on tool rating
-     - 100%
+     - 100% (no remaining critical findings)
+     - 100% (no remaining class or high severity findings)
    * - 9
      - Freedom from compiler warnings & errors
      - 100%
@@ -332,36 +333,81 @@ to be reached with every contribution.
 
 Further quality goals are defined in section :doc:`quality_management`.
 
+
+Structural coverage
+^^^^^^^^^^^^^^^^^^^
+The percentage values for structural statement and branch coverage as defined in above table are represented by the
+reported Line and Branch Coverage values based on the unit test tooling.
+
 The confirmation or any deviation of the coverage percentage value is documented in this section.
 This shall also be part of the module documentation with a reasoning when percentage numbers deviate for an official release.
 
 Coverage of detailed design
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Beside :need:`wp__verification_comp_int_test` and :need:`wp__verification_sw_unit_test` the
-following aspects define the coverage of detailed design.
+Coverage of the detailed design for safety-critical software is defined by the following aspects:
 
-- Statement/Branch coverage as defined by their specific thresholds
-- Static analysis and Linting
 - :need:`wp__sw_implementation_inspection` for safety-critical implementation
+
+Evidence of the inspection is given by the respective work product and its review.
+The inspection needs to cover the implementation of the detailed design.
+
+Additionally, the following measures are taken to support the coverage of the detailed design:
+
+- Structural coverage as defined by their specific thresholds
+- Static analysis and Linting
+
+These measures are not counting in the coverage percentage of this goal, as they have their own defined goals.
+
+For QM rated software no further coverage calculation is expected on the detailed design level,
+but the respective work products are expected to be created and reviewed.
 
 Coverage of architectural design
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Beside :need:`wp__verification_comp_int_test` and :need:`wp__verification_feat_int_test` the
-following aspects define the coverage of the architectural design.
+To achieve the coverage of the architectural design the completeness against the following work products is verified:
 
 - :need:`wp__sw_arch_verification` - done by walkthrough (QM) or inspection (safety-critical parts)
 - :need:`wp__sw_component_fmea` and :need:`wp__sw_component_dfa` for safety-critical parts
 - :need:`wp__feature_fmea` and :need:`wp__feature_dfa` for safety-critical parts
 
-Each architectural element has at least one test case linked with attribute ``FullyVerified`` or
-multiple test cases with attribute ``PartiallyVerified``.
+Each architectural element has to be reviewed against the availability of the above artifacts.
 
 Coverage of software requirements specifications
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For a release all ``valid`` requirements need to have a complete test coverage of linked test cases.
+For a release the ``valid`` requirements need to have a complete test coverage of linked test cases.
+
+Tests which are suitable for the coverage are:
+
+- :need:`wp__verification_comp_int_test`
+- :need:`wp__verification_feat_int_test`
+- :need:`wp__verification_platform_int_test`
+- :need:`wp__verification_sw_unit_test`
+
+A requirements with a safety attribute which misses a ``FullyVerified`` link to a test case or misses the the attribute ``complete test coverage`` is not judged as not covered.
+For QM software parts, it is not necessary to have the requirements attribute ``complete test coverage`` but each requirement needs to have at least one linked test case.
+
+Relative amount of executed and passed tests
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The goal is to have all tests with linked ``valid`` requirements executed and passed for a release.
+
+
+Static code analysis
+^^^^^^^^^^^^^^^^^^^^
+Static code analysis is performed to ensure compliance with coding standards and to identify potential issues early in the development process.
+The respective tools used for static analysis are mentioned in the :need:`doc__software_development_plan`.
+
+Violation identified by the static code analysis tools are categorized based on their severity.
+For QM software no remaining critical severity findings mark a 100% coverage.
+For safety-critical software no remaining critical and high severity findings mark a 100% coverage.
+Medium severity findings require a rationale why they are an acceptable risk.
+
+Where no severity rating is provided the violation is part of the coverage calculation and needs to be resolved to reach the defined goals.
+
+Any deviation of the coverage percentage value is documented as part of the module documentation.
+A rationale for the deviation need to be provided for an official release.
 
 
 Test development
