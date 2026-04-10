@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -614,7 +614,7 @@
                   
   <section id="flatbuffers-library">
 <h1>FlatBuffers-Library<a class="headerlink" href="#flatbuffers-library" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-3602b216">
+<div class="need_container docutils container" id="SNCB-c6e11a94">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__flatbuffers">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -665,15 +665,18 @@
 <p>This component request proposes the integration of Google FlatBuffers <a class="footnote-reference brackets" href="#flatbuffers" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> providing
 serialization, zero-copy read access, and structural verification of FlatBuffers data, as well as code
 generation via the <code class="docutils literal notranslate"><span class="pre">flatc</span></code> compiler.</p>
-<p>Additionally, the library introduces FlatBuffers binary configuration format to replace JSON-based
-module configuration for runtime access. FlatBuffers provides zero-copy access, schema validation,
-and access code generation for C++, Rust, and further languages. The approach eliminates the need
-for runtime parsing and accelerates module startup times. Safety certification covers <code class="docutils literal notranslate"><span class="pre">flatc</span></code> tool
-qualification, runtime library verification, and module-level testing of generated code.</p>
+<p>FlatBuffers provides zero-copy access, schema validation, and access code generation for C++, Rust,
+and further languages. Safety certification covers <code class="docutils literal notranslate"><span class="pre">flatc</span></code> tool qualification, runtime library verification,
+and module-level testing of generated code.</p>
+<p>The introduction is proposed for the following use case:</p>
+<ul class="simple">
+<li><p>Module configuration: FlatBuffers binary format for read-only configuration scenarios to achieve
+aggressive start-up time requirements, as it eliminates the need for runtime parsing.</p></li>
+</ul>
 </section>
 <section id="motivation">
 <h1>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h1>
-<p>Module specific configuration is a cross-cutting concern that impacts system startup time and
+<p>Module-specific configuration is a cross-cutting concern that impacts system startup time and
 development efficiency. For read-only configuration scenarios, runtime parsing approaches can
 limit startup performance in time-critical applications.</p>
 <dl class="simple">
@@ -696,34 +699,18 @@ and the potential for configuration-related runtime errors.</p>
 </section>
 <section id="specification">
 <h1>Specification<a class="headerlink" href="#specification" title="Link to this heading">#</a></h1>
-<p>The <code class="docutils literal notranslate"><span class="pre">flatc</span></code> compiler shall generate code for serializing, accessing, and verifying
-FlatBuffers binary data. Code generation shall be provided for C++ and Rust at ASIL-B level
-and other languages as needed at QM level (e.g. Python).</p>
-<p>The FlatBuffers-Library shall provide services for serialization, zero-copy access of
-FlatBuffers binary data, and structural verification of buffers. The library shall also support
-loading FlatBuffers binary files and opt-in functionality for common buffer identification and version
-checking mechanisms.</p>
-<p>Note: FlatBuffers verification mechanism validates structural well-formedness only (e.g. offsets, vtables,
-field boundaries), not payload data integrity.</p>
-<p>Module configuration shall use FlatBuffers binary format for read-only configuration scenarios to
-achieve aggressive start-up time requirements.</p>
-<section id="design">
-<span id="flatbuffers-overview"></span><h2>Design<a class="headerlink" href="#design" title="Link to this heading">#</a></h2>
-<figure class="align-center">
-<a class="reference internal image-reference" href="../../../../_images/flatbuffers_overview.drawio.svg"><img alt="FlatBuffers overview" src="../../../../_images/flatbuffers_overview.drawio.svg" style="width: 80%;" />
-</a>
-</figure>
-<div class="line-block">
-<div class="line">FlatBuffers schema files (<code class="docutils literal notranslate"><span class="pre">config.fbs</span></code>) define configuration structure using Interface Definition Language (IDL).</div>
-<div class="line">The <code class="docutils literal notranslate"><span class="pre">flatc</span></code> compiler generates C++ or Rust access code from these schemas (<code class="docutils literal notranslate"><span class="pre">config.fbs</span></code>).</div>
-<div class="line">The <code class="docutils literal notranslate"><span class="pre">flatc</span></code> compiler generates cross-platform data binary from schema (<code class="docutils literal notranslate"><span class="pre">config.fbs</span></code>) and JSON (<code class="docutils literal notranslate"><span class="pre">config.json</span></code>) input.</div>
-<div class="line">Runtime access operates directly on binary config data (<code class="docutils literal notranslate"><span class="pre">config.bin</span></code>) without parsing (lazy loading).</div>
-<div class="line">The <code class="docutils literal notranslate"><span class="pre">flatc</span></code> compiler can convert binary config data (<code class="docutils literal notranslate"><span class="pre">config.bin</span></code>) back to JSON using the schema (<code class="docutils literal notranslate"><span class="pre">config.fbs</span></code>) for debugging purposes.</div>
-</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">flatc</span></code> compiler of FlatBuffers <a class="footnote-reference brackets" href="#flatbuffers" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> generates code for serializing, accessing, and verifying
+FlatBuffers binary data.</p>
+<p>The FlatBuffers-Library provides features defined in <a class="reference internal" href="../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__flatbuffers_library" title="feat_req__baselibs__flatbuffers_library"><em class="xref need">FlatBuffers-Library (feat_req__baselibs__flatbuffers_library)</em></a>.
+Note: The FlatBuffers verification mechanism validates structural well-formedness only (e.g. offsets, vtables,
+field boundaries), not payload data integrity. Therefore, <a class="reference internal" href="requirements/index.html#aou_req__flatbuffers__data_integrity" title="aou_req__flatbuffers__data_integrity"><em class="xref need">FlatBuffers data integrity (aou_req__flatbuffers__data_integrity)</em></a> needs
+to be ensured by the user.</p>
+<p>In addition, opt-in common buffer identification functionality is provided to allow identification of a buffer
+without further schema information. For details, refer to <a class="reference internal" href="requirements/index.html#comp_req__flatbuffers__buffer_identification" title="comp_req__flatbuffers__buffer_identification"><em class="xref need">Common Buffer Identification (comp_req__flatbuffers__buffer_identification)</em></a>.</p>
 <section id="schema-evolution">
-<h3>Schema Evolution<a class="headerlink" href="#schema-evolution" title="Link to this heading">#</a></h3>
+<h2>Schema Evolution<a class="headerlink" href="#schema-evolution" title="Link to this heading">#</a></h2>
 <dl class="simple">
-<dt>Backward compatibility through:</dt><dd><ul class="simple">
+<dt>Backward compatibility is maintained through:</dt><dd><ul class="simple">
 <li><p>Optional fields for new parameters</p></li>
 <li><p>Default values for missing fields</p></li>
 <li><p>Controlled field deprecation</p></li>
@@ -731,8 +718,33 @@ achieve aggressive start-up time requirements.</p>
 </dd>
 </dl>
 </section>
-<section id="schema-versioning">
-<h3>Schema Versioning<a class="headerlink" href="#schema-versioning" title="Link to this heading">#</a></h3>
+<section id="build-integration">
+<h2>Build Integration<a class="headerlink" href="#build-integration" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>Build system integration provides reusable rules for:</dt><dd><ul class="simple">
+<li><p>Buffer serialization from module-specific schema and provided JSON data</p></li>
+<li><p>Reverse conversion from binary to JSON for debugging purposes</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="supported-use-cases">
+<h2>Supported use cases<a class="headerlink" href="#supported-use-cases" title="Link to this heading">#</a></h2>
+<section id="module-configuration">
+<h3>Module configuration<a class="headerlink" href="#module-configuration" title="Link to this heading">#</a></h3>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../../_images/config_use_case_overview.drawio.svg"><img alt="Configuration use case overview" src="../../../../_images/config_use_case_overview.drawio.svg" style="width: 70%;" />
+</a>
+</figure>
+<div class="line-block">
+<div class="line">FlatBuffers schema files (<code class="docutils literal notranslate"><span class="pre">config.fbs</span></code>) define the configuration structure using Interface Definition Language (IDL).</div>
+<div class="line">The <code class="docutils literal notranslate"><span class="pre">flatc</span></code> compiler generates C++ or Rust access code from these schemas (<code class="docutils literal notranslate"><span class="pre">config.fbs</span></code>).</div>
+<div class="line">The <code class="docutils literal notranslate"><span class="pre">flatc</span></code> compiler generates a cross-platform data binary from the schema (<code class="docutils literal notranslate"><span class="pre">config.fbs</span></code>) and JSON (<code class="docutils literal notranslate"><span class="pre">config.json</span></code>) input.</div>
+<div class="line">Runtime access operates directly on the binary config data loaded from <code class="docutils literal notranslate"><span class="pre">config.bin</span></code> without parsing.</div>
+<div class="line">The <code class="docutils literal notranslate"><span class="pre">flatc</span></code> compiler can convert binary config data (<code class="docutils literal notranslate"><span class="pre">config.bin</span></code>) back to JSON using the schema (<code class="docutils literal notranslate"><span class="pre">config.fbs</span></code>) for debugging purposes.</div>
+</div>
+<section id="identification-and-versioning">
+<h4>Identification and Versioning<a class="headerlink" href="#identification-and-versioning" title="Link to this heading">#</a></h4>
 <dl class="simple">
 <dt>FlatBuffers binary files do not contain embedded schema information. Schema identification requires:</dt><dd><ul class="simple">
 <li><p>Embedded version fields in the schema root table</p></li>
@@ -742,33 +754,62 @@ achieve aggressive start-up time requirements.</p>
 </dl>
 </section>
 </section>
-<section id="build-integration">
-<h2>Build Integration<a class="headerlink" href="#build-integration" title="Link to this heading">#</a></h2>
-<dl class="simple">
-<dt>Build system integration shall provide reusable rules for:</dt><dd><ul class="simple">
-<li><p>Binary configuration file generation from module specific schema and user-provided JSON data</p></li>
-<li><p>Reverse conversion from binary to JSON for debugging purposes</p></li>
-</ul>
-</dd>
-</dl>
 </section>
-<section id="binary-config-loading">
-<h2>Binary Config Loading<a class="headerlink" href="#binary-config-loading" title="Link to this heading">#</a></h2>
-<p>The FlatBuffers-Library provides a unified interface for binary data file loading
-(see <a class="reference internal" href="#flatbuffers-overview"><span class="std std-ref">FlatBuffers overview</span></a>).</p>
+<section id="future-use-cases">
+<h2>Future use cases<a class="headerlink" href="#future-use-cases" title="Link to this heading">#</a></h2>
+<p>Future use cases are not yet in scope and may require extension of the existing module requirements
+and assumptions of use.</p>
+<section id="storage-format-read-write-modify">
+<h3>Storage format (read/write/modify)<a class="headerlink" href="#storage-format-read-write-modify" title="Link to this heading">#</a></h3>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../../_images/storage_format_use_case_overview.drawio.svg"><img alt="Storage format use case overview" src="../../../../_images/storage_format_use_case_overview.drawio.svg" style="width: 70%;" />
+</a>
+</figure>
+<div class="line-block">
+<div class="line">FlatBuffers schema files (<code class="docutils literal notranslate"><span class="pre">storage.fbs</span></code>) define the storage structure using Interface Definition Language (IDL).</div>
+<div class="line">The <code class="docutils literal notranslate"><span class="pre">flatc</span></code> compiler generates C++ or Rust access code from these schemas (<code class="docutils literal notranslate"><span class="pre">storage.fbs</span></code>).</div>
+<div class="line">Runtime access/modify* operates directly on binary data loaded from the binary data file (<code class="docutils literal notranslate"><span class="pre">data.bin</span></code>).</div>
+<div class="line">Runtime write serializes a new buffer that can be stored as a binary data file (<code class="docutils literal notranslate"><span class="pre">data.bin</span></code>).</div>
+</div>
+<p>FlatBuffers is applicable as a storage format when reads significantly outnumber writes and write
+latency is not time-critical. Serialization rewrites the entire buffer, making it unsuitable for
+high-frequency write scenarios. Long-lived storage further benefits from schema evolution,
+allowing stored files to remain compatible across software updates without requiring a format migration step.</p>
+</section>
+<section id="payload-format-communication">
+<h3>Payload format (communication)<a class="headerlink" href="#payload-format-communication" title="Link to this heading">#</a></h3>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../../_images/payload_format_use_case_overview.drawio.svg"><img alt="Payload format use case overview" src="../../../../_images/payload_format_use_case_overview.drawio.svg" style="width: 50%;" />
+</a>
+</figure>
+<div class="line-block">
+<div class="line">FlatBuffers schema files (<code class="docutils literal notranslate"><span class="pre">payload.fbs</span></code>) define the payload structure using Interface Definition Language (IDL).</div>
+<div class="line">The <code class="docutils literal notranslate"><span class="pre">flatc</span></code> compiler generates C++ or Rust access code from these schemas (<code class="docutils literal notranslate"><span class="pre">payload.fbs</span></code>).</div>
+<div class="line">Runtime sender serializes data into a FlatBuffers buffer (<code class="docutils literal notranslate"><span class="pre">payload</span></code>) and transmits it.</div>
+<div class="line">Runtime receiver accesses data directly from the received buffer (<code class="docutils literal notranslate"><span class="pre">payload</span></code>).</div>
+</div>
+<p>FlatBuffers is applicable as a payload format when message content is variable or sparse. Unlike
+fixed-size binary structs, FlatBuffers supports optional fields and unions, making it suitable for
+heterogeneous or extensible message types where not every field is present in every message.
+Schema evolution allows sender and receiver to evolve independently across software versions
+without requiring coordinated redeployment, which is relevant for interfaces with long maintenance
+lifetimes.</p>
+<p>However, each message transmission comes at the cost of serialization, which adds overhead to
+communication on the sender side.</p>
+</section>
 </section>
 </section>
 <section id="backwards-compatibility">
 <h1>Backwards Compatibility<a class="headerlink" href="#backwards-compatibility" title="Link to this heading">#</a></h1>
-<p>Switching from JSON to FlatBuffers for module configuration is not backwards compatible.</p>
+<p>Module configuration: Switching from JSON to FlatBuffers for module configuration is not backwards compatible.</p>
 </section>
 <section id="security-impact">
 <h1>Security Impact<a class="headerlink" href="#security-impact" title="Link to this heading">#</a></h1>
-<p>No change expected when compared to JSON based configuration approach.</p>
+<p>Module configuration: No change expected when compared to the JSON-based configuration approach.</p>
 </section>
 <section id="safety-impact">
 <h1>Safety Impact<a class="headerlink" href="#safety-impact" title="Link to this heading">#</a></h1>
-<p><strong>Tool Qualification</strong>: <code class="docutils literal notranslate"><span class="pre">flatc</span></code> compiler qualification shall be limited to buffer serialization use case.
+<p><strong>Tool Qualification</strong>: <code class="docutils literal notranslate"><span class="pre">flatc</span></code> compiler qualification is limited to the buffer serialization use case.
 Brief qualification is supplemented by module-specific validation.</p>
 <dl class="simple">
 <dt><strong>Verification Runtime Library</strong>: Footprint when excluding verifier/builder classes</dt><dd><ul class="simple">
@@ -803,7 +844,8 @@ The FlatBuffers-Library should provide examples for reference implementations.</
 <h1>Footnotes<a class="headerlink" href="#footnotes" title="Link to this heading">#</a></h1>
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="flatbuffers" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>)</span>
 <p><a class="reference external" href="https://google.github.io/flatbuffers/">https://google.github.io/flatbuffers/</a></p>
 </aside>
 </aside>
@@ -861,13 +903,20 @@ The FlatBuffers-Library should provide examples for reference implementations.</
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale">Rationale</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#specification">Specification</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#design">Design</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-evolution">Schema Evolution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-versioning">Schema Versioning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-evolution">Schema Evolution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-integration">Build Integration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-use-cases">Supported use cases</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-configuration">Module configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#identification-and-versioning">Identification and Versioning</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-integration">Build Integration</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-config-loading">Binary Config Loading</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#future-use-cases">Future use cases</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#storage-format-read-write-modify">Storage format (read/write/modify)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#payload-format-communication">Payload format (communication)</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#backwards-compatibility">Backwards Compatibility</a></li>
