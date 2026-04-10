@@ -38,17 +38,20 @@ This component request proposes the integration of Google FlatBuffers [#flatbuff
 serialization, zero-copy read access, and structural verification of FlatBuffers data, as well as code
 generation via the ``flatc`` compiler.
 
-Additionally, the library introduces FlatBuffers binary configuration format to replace JSON-based
-module configuration for runtime access. FlatBuffers provides zero-copy access, schema validation,
-and access code generation for C++, Rust, and further languages. The approach eliminates the need
-for runtime parsing and accelerates module startup times. Safety certification covers ``flatc`` tool
-qualification, runtime library verification, and module-level testing of generated code.
+FlatBuffers provides zero-copy access, schema validation, and access code generation for C++, Rust,
+and further languages. Safety certification covers ``flatc`` tool qualification, runtime library verification,
+and module-level testing of generated code.
+
+The introduction is proposed for the following use case:
+
+- Module configuration: FlatBuffers binary format for read-only configuration scenarios to achieve
+  aggressive start-up time requirements, as it eliminates the need for runtime parsing.
 
 
 Motivation
 ==========
 
-Module specific configuration is a cross-cutting concern that impacts system startup time and
+Module-specific configuration is a cross-cutting concern that impacts system startup time and
 development efficiency. For read-only configuration scenarios, runtime parsing approaches can
 limit startup performance in time-critical applications.
 
@@ -72,82 +75,121 @@ and the potential for configuration-related runtime errors.
 Specification
 =============
 
-The ``flatc`` compiler shall generate code for serializing, accessing, and verifying
-FlatBuffers binary data. Code generation shall be provided for C++ and Rust at ASIL-B level
-and other languages as needed at QM level (e.g. Python).
+The ``flatc`` compiler of FlatBuffers [#flatbuffers]_ generates code for serializing, accessing, and verifying
+FlatBuffers binary data.
 
-The FlatBuffers-Library shall provide services for serialization, zero-copy access of
-FlatBuffers binary data, and structural verification of buffers. The library shall also support
-loading FlatBuffers binary files and opt-in functionality for common buffer identification and version
-checking mechanisms.
+The FlatBuffers-Library provides features defined in :need:`feat_req__baselibs__flatbuffers_library`.
+Note: The FlatBuffers verification mechanism validates structural well-formedness only (e.g. offsets, vtables,
+field boundaries), not payload data integrity. Therefore, :need:`aou_req__flatbuffers__data_integrity` needs
+to be ensured by the user.
 
-Note: FlatBuffers verification mechanism validates structural well-formedness only (e.g. offsets, vtables,
-field boundaries), not payload data integrity.
-
-Module configuration shall use FlatBuffers binary format for read-only configuration scenarios to
-achieve aggressive start-up time requirements.
-
-.. _flatbuffers_overview:
-
-Design
-------
-
-.. figure:: _assets/flatbuffers_overview.drawio.svg
-   :alt: FlatBuffers overview
-   :align: center
-   :width: 80%
-
-| FlatBuffers schema files (``config.fbs``) define configuration structure using Interface Definition Language (IDL).
-| The ``flatc`` compiler generates C++ or Rust access code from these schemas (``config.fbs``).
-| The ``flatc`` compiler generates cross-platform data binary from schema (``config.fbs``) and JSON (``config.json``) input.
-| Runtime access operates directly on binary config data (``config.bin``) without parsing (lazy loading).
-| The ``flatc`` compiler can convert binary config data (``config.bin``) back to JSON using the schema (``config.fbs``) for debugging purposes.
+In addition, opt-in common buffer identification functionality is provided to allow identification of a buffer
+without further schema information. For details, refer to :need:`comp_req__flatbuffers__buffer_identification`.
 
 Schema Evolution
-^^^^^^^^^^^^^^^^
+----------------
 
-Backward compatibility through:
+Backward compatibility is maintained through:
    - Optional fields for new parameters
    - Default values for missing fields
    - Controlled field deprecation
 
-Schema Versioning
-^^^^^^^^^^^^^^^^^
+Build Integration
+-----------------
+
+Build system integration provides reusable rules for:
+   - Buffer serialization from module-specific schema and provided JSON data
+   - Reverse conversion from binary to JSON for debugging purposes
+
+Supported use cases
+-------------------
+
+Module configuration
+^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: _assets/config_use_case_overview.drawio.svg
+   :alt: Configuration use case overview
+   :align: center
+   :width: 70%
+
+| FlatBuffers schema files (``config.fbs``) define the configuration structure using Interface Definition Language (IDL).
+| The ``flatc`` compiler generates C++ or Rust access code from these schemas (``config.fbs``).
+| The ``flatc`` compiler generates a cross-platform data binary from the schema (``config.fbs``) and JSON (``config.json``) input.
+| Runtime access operates directly on the binary config data loaded from ``config.bin`` without parsing.
+| The ``flatc`` compiler can convert binary config data (``config.bin``) back to JSON using the schema (``config.fbs``) for debugging purposes.
+
+
+Identification and Versioning
+"""""""""""""""""""""""""""""
 
 FlatBuffers binary files do not contain embedded schema information. Schema identification requires:
    - Embedded version fields in the schema root table
    - File naming conventions (e.g., config_v1.2.bin)
 
-Build Integration
------------------
+Future use cases
+----------------
 
-Build system integration shall provide reusable rules for:
-   - Binary configuration file generation from module specific schema and user-provided JSON data
-   - Reverse conversion from binary to JSON for debugging purposes
+Future use cases are not yet in scope and may require extension of the existing module requirements
+and assumptions of use.
 
-Binary Config Loading
----------------------
+Storage format (read/write/modify)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The FlatBuffers-Library provides a unified interface for binary data file loading
-(see :ref:`FlatBuffers overview <flatbuffers_overview>`).
+.. figure:: _assets/storage_format_use_case_overview.drawio.svg
+   :alt: Storage format use case overview
+   :align: center
+   :width: 70%
+
+| FlatBuffers schema files (``storage.fbs``) define the storage structure using Interface Definition Language (IDL).
+| The ``flatc`` compiler generates C++ or Rust access code from these schemas (``storage.fbs``).
+| Runtime access/modify* operates directly on binary data loaded from the binary data file (``data.bin``).
+| Runtime write serializes a new buffer that can be stored as a binary data file (``data.bin``).
+
+FlatBuffers is applicable as a storage format when reads significantly outnumber writes and write
+latency is not time-critical. Serialization rewrites the entire buffer, making it unsuitable for
+high-frequency write scenarios. Long-lived storage further benefits from schema evolution,
+allowing stored files to remain compatible across software updates without requiring a format migration step.
+
+Payload format (communication)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: _assets/payload_format_use_case_overview.drawio.svg
+   :alt: Payload format use case overview
+   :align: center
+   :width: 50%
+
+| FlatBuffers schema files (``payload.fbs``) define the payload structure using Interface Definition Language (IDL).
+| The ``flatc`` compiler generates C++ or Rust access code from these schemas (``payload.fbs``).
+| Runtime sender serializes data into a FlatBuffers buffer (``payload``) and transmits it.
+| Runtime receiver accesses data directly from the received buffer (``payload``).
+
+FlatBuffers is applicable as a payload format when message content is variable or sparse. Unlike
+fixed-size binary structs, FlatBuffers supports optional fields and unions, making it suitable for
+heterogeneous or extensible message types where not every field is present in every message.
+Schema evolution allows sender and receiver to evolve independently across software versions
+without requiring coordinated redeployment, which is relevant for interfaces with long maintenance
+lifetimes.
+
+However, each message transmission comes at the cost of serialization, which adds overhead to
+communication on the sender side.
 
 
 Backwards Compatibility
 =======================
 
-Switching from JSON to FlatBuffers for module configuration is not backwards compatible.
+Module configuration: Switching from JSON to FlatBuffers for module configuration is not backwards compatible.
 
 
 Security Impact
 ===============
 
-No change expected when compared to JSON based configuration approach.
+Module configuration: No change expected when compared to the JSON-based configuration approach.
 
 
 Safety Impact
 =============
 
-**Tool Qualification**: ``flatc`` compiler qualification shall be limited to buffer serialization use case.
+**Tool Qualification**: ``flatc`` compiler qualification is limited to the buffer serialization use case.
 Brief qualification is supplemented by module-specific validation.
 
 **Verification Runtime Library**: Footprint when excluding verifier/builder classes

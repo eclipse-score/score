@@ -57,7 +57,6 @@ FlatBuffers Tooling Requirements
 
    .. note::
       Python code generation is nice-to-have for benchmark testing (scale configurations).
-      It is not intended for safety certification (meta model check requires safety level ASIL-B).
 
 .. tool_req:: FlatBuffers Binary Creation from JSON
    :id: tool_req__flatbuffers_tooling_json_to_bin
@@ -121,6 +120,10 @@ FlatBuffers Library Requirements
 
    The FlatBuffers-Library shall provide functionality to serialize data into the FlatBuffers binary format.
 
+   .. note::
+      Although this is only required for future use cases and not for the module configuration, it is already
+      included, as excluding it would require extensive patching of ``flatc`` functionality.
+
 .. comp_req:: FlatBuffers Access
    :id: comp_req__flatbuffers__access
    :reqtype: Functional
@@ -150,17 +153,6 @@ FlatBuffers Library Requirements
       Verification only validates the buffer structure (e.g. offsets, vtables, field boundaries),
       not the correctness or integrity of the payload data.
 
-.. comp_req:: Load FlatBuffers Binary File
-   :id: comp_req__flatbuffers__load_binary
-   :reqtype: Functional
-   :security: NO
-   :safety: ASIL_B
-   :satisfies: feat_req__baselibs__flatbuffers_library, feat_req__baselibs__safety
-   :status: valid
-   :belongs_to: comp__baselibs_flatbuffers
-
-   The FlatBuffers-Library shall provide functionality to load FlatBuffers binary files from the filesystem.
-
 Buffer Identification and Versioning
 =====================================
 
@@ -187,52 +179,6 @@ Buffer Identification and Versioning
 
    The FlatBuffers-Library shall provide a common opt-in version check mechanism that validates
    the major version, minor version, and 4-character identifier of a FlatBuffers buffer.
-
-User friendly API for information exchange
-==========================================
-
-.. comp_req:: Support for programming language idioms
-   :id: comp_req__flatbuffers__lang_idioms
-   :reqtype: Non-Functional
-   :security: NO
-   :safety: ASIL_B
-   :satisfies: feat_req__baselibs__flatbuffers_library, feat_req__baselibs__safety, feat_req__baselibs__consistent_apis
-   :status: valid
-   :belongs_to: comp__baselibs_flatbuffers
-
-   The public API shall support the idioms of the programming language it is written in.
-
-.. comp_req:: Use programming language infrastructure
-   :id: comp_req__flatbuffers__lang_infra
-   :reqtype: Non-Functional
-   :security: NO
-   :safety: ASIL_B
-   :satisfies: feat_req__baselibs__flatbuffers_library, feat_req__baselibs__safety
-   :status: valid
-   :belongs_to: comp__baselibs_flatbuffers
-
-   The public API shall use core infrastructure of its programming language and accompanying standard libraries,
-   whenever possible and meaningful.
-
-   .. note::
-      This includes error handling.
-
-Full testability for the user facing API
-========================================
-
-.. comp_req:: Fully testable public API
-   :id: comp_req__flatbuffers__full_testability
-   :reqtype: Non-Functional
-   :security: NO
-   :safety: ASIL_B
-   :satisfies: feat_req__baselibs__flatbuffers_library, feat_req__baselibs__safety
-   :status: valid
-   :belongs_to: comp__baselibs_flatbuffers
-
-   The public API of the library shall support dependency injection with test doubles.
-
-   .. note::
-       This enables full testability of the user code.
 
 Safety Impact
 =============
