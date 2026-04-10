@@ -67,12 +67,6 @@ Static Architecture
    :consists_of: comp__baselibs_json_wrapper, comp__baselibs_nlohman_json
    :belongs_to: feat__baselibs
 
-   .. needarch::
-      :scale: 50
-      :align: center
-
-      {{ draw_component(need(), needs) }}
-
 .. comp_arc_sta:: JSON Static view
    :id: comp_arc_sta__baselibs__json
    :security: YES
