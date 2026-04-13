@@ -610,16 +610,15 @@ above the hardware abstraction layer. The platform itself does not require to be
 a specific hardware. It integrates with an POSIX Operating System which is the first level of
 abstraction to the physical hardware.
 
-The simulation environment will be based on x86 and arm64 architecture, to be close to later
-target hardware.
+This POSIX OS based simulation environment will operate on aarch64 and x86_64 architecture with QNX and Linux
+flavours as Operating System, to be close to later target hardware OS and architectures.
+
+To also ease the reuse and execution of unit tests on various type of hardware the unit tests are executed
+matching OS and HW architectures (aarch64 and x86_64) which are e.g. build by the reference integration. 
 
 The integration of the platform on a target device and the respective verification and validation
 should be considered by the distributor of the platform. On target integration tests that are
 running on a reference hardware in context of this project can be taken as a starting point.
-
-To also ease the reuse and execution of unit tests on various type of hardware the unit tests are executed
-matching the targeted Operating Systems (QNX & Linux) and HW architectures (aarch64 % x86_64) which are 
-e.g. build by the reference integration. This serves as base for proper testing of the target environment.
 
 See also the respective AoU: :need:`aou_req__platform__testing`.
 
