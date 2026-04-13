@@ -1,16 +1,16 @@
-# *******************************************************************************
-# Copyright (c) 2024 Contributors to the Eclipse Foundation
-#
-# See the NOTICE file(s) distributed with this work for additional
-# information regarding copyright ownership.
-#
-# This program and the accompanying materials are made available under the
-# terms of the Apache License Version 2.0 which is available at
-# https://www.apache.org/licenses/LICENSE-2.0
-#
-# SPDX-License-Identifier: Apache-2.0
-# *******************************************************************************
-
+..
+   # *******************************************************************************
+   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   #
+   # See the NOTICE file(s) distributed with this work for additional
+   # information regarding copyright ownership.
+   #
+   # This program and the accompanying materials are made available under the
+   # terms of the Apache License Version 2.0 which is available at
+   # https://www.apache.org/licenses/LICENSE-2.0
+   #
+   # SPDX-License-Identifier: Apache-2.0
+   # *******************************************************************************
 
 DDS Gateway
 ===========
@@ -18,13 +18,9 @@ DDS Gateway
 Overview
 --------
 
-The DDS Gateway introduces a communication bridge within the S-CORE
-communication stack.
-
-It enables controlled and configurable data exchange between ``mw::com (LoLa)``
-(intra-ECU communication via IPC binding) and DDS-based systems (inter-ECU
-communication), allowing integration with distributed DDS environments without
-requiring modifications to existing applications.
+The DDS Gateway introduces a communication bridge within the S-CORE communication stack.
+It enables controlled and configurable data exchange between ``mw::com (LoLa)`` (intra-ECU communication via IPC binding) and DDS-based systems (inter-ECU
+communication), allowing integration with distributed DDS environments without requiring changes to existing application implementations.
 
 Scope
 -----
@@ -39,7 +35,7 @@ The DDS Gateway provides:
 
 - Configurable routing:
 
-  - Mapping between ``mw::com`` events and DDS topics
+  - Mapping between ``mw::com`` events(TBD for fields and methods) and DDS topics
   - Support for DDS domain-based routing
 
 - Dynamic Type handling:
@@ -48,7 +44,7 @@ The DDS Gateway provides:
   - No dependency on DDS IDL generation
   - Enables data translation and consistent serialization across middleware boundaries
 
-- Optional End-to-End (E2E) protection:
+- End-to-End (E2E) protection:
 
   - Centralized handling of Counter, CRC, and DataID
   - Validation and protection configurable per route
@@ -98,4 +94,4 @@ Reference
 The detailed Feature Request, including full design description, configuration
 model, and implementation considerations, is available here:
 
-- DDS Gateway Feature Request:
+- DDS Gateway Feature Request:https://github.com/eclipse-score/score/issues/2726
