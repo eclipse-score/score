@@ -590,6 +590,7 @@ target hardware.
 The integration of the platform on a target device and the respective verification and validation
 should be considered by the distributor of the platform. On target integration tests that are
 running on a reference hardware in context of this project can be taken as a starting point.
+See also the respective AoU: :need:`aou_req__platform__testing`.
 
 The reference hardware is not yet decided.
 
