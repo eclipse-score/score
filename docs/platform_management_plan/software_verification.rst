@@ -563,10 +563,36 @@ of test based on `pytest <https://pytest.org>`__.
 The platform developed in this project supports `Rust <https://www.rust-lang.org>`__ as a programming language. Its
 built-in test framework is used to test respective software components.
 
+.. rubric:: GitHub CodeQL
+
+For Static Code Analysis, `CodeQL <https://codeql.github.com/>`__ is used to identify potential vulnerabilities, weaknesses, and code quality issues in the software components of the project.
+It is integrated into the CI pipeline to ensure that any new code changes are automatically analyzed for potential issues.
+
+Core features of CodeQL include:
+
+- **Vulnerability Detection**: CodeQL can identify known vulnerabilities in the codebase by comparing it against a database of known issues.
+- **Custom Queries**: Developers can write custom queries to identify specific patterns or issues in the codebase that are relevant to the project's security and quality standards.
+- **Integration with CI**: CodeQL can be integrated into the CI pipeline to automatically analyze code changes and provide feedback on potential issues before they are merged into the main codebase.
+- **Reporting**: CodeQL provides detailed reports on identified issues, including severity levels and recommendations for remediation.
+- **Support for Multiple Languages**: CodeQL supports multiple programming languages, including C++, Rust, and others used in the project.
+
+CodeQL has the capability to identify a wide range of issues, including security vulnerabilities, code quality problems, and potential bugs.
+
+Examples of capabilities include:
+- unsafe data flows and control flow (e.g., tainted data flows, unreachable code, missing checks before sensitive calls)
+- potential runtime errors (e.g., null pointer dereferences, buffer overflows)
+- code quality issues (e.g., dead code, unused variables)
+- incorrect use of APIs (e.g., misuse of cryptographic functions, incorrect error handling)
+- compliance with coding standards (e.g., naming conventions, code complexity)
+- violations of project-specific coding guidelines (e.g., use of certain libraries, adherence to architectural patterns)
+
+Custom queries can be developed to identify specific patterns or issues that are relevant to the project's security and quality standards.
+This allows for a tailored approach to static code analysis that aligns with the project's specific requirements and goals.
+
 Verification setups and variants
 --------------------------------
 
-Different test frameworks get used to verify software components and their integration into the platform (see Tools
+Different test frameworks are used to verify software components and their integration into the platform (see Tools
 section above). Driven by that the following test setups can be derived:
 
 #. GoogleTest
