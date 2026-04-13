@@ -73,16 +73,9 @@ bazel_dep(name = "rules_java", version = "8.15.1")
 #
 ###############################################################################
 bazel_dep(name = "score_tooling", version = "1.2.0")
-bazel_dep(name = "score_docs_as_code")
-git_override(
+bazel_dep(name = "score_docs_as_code", version = "4.0.0")
+single_version_override(
     module_name = "score_docs_as_code",
-    commit = "ac7b065dee7c414e98903ebfa2e5883ff30bb8c5",
-    remote = "https://github.com/eclipse-score/docs-as-code.git",
+    version = "4.0.0",
 )
-
-bazel_dep(name = "score_process")
-git_override(
-    module_name = "score_process",
-    commit = "5205f7bf4a8919a2280989ef5d12e826065e55cd",
-    remote = "https://github.com/eclipse-score/process_description.git",
-)
+bazel_dep(name = "score_process", version = "1.5.2")
