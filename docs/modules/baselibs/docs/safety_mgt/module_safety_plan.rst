@@ -794,3 +794,13 @@ Component Architecture Status
    :columns: id;status;tags
    :colwidths: 25,25,25
    :sort: title
+
+Deviations from Module Safety Plan
+----------------------------------
+
+The following deviations from the module safety plan are present in the module safety package.
+These are deviations from planned processes execution and/or work product results,
+safety anomalies in the sense of known bugs in the software are reported in the release notes.
+
+<Describe here the deviations, whether they have an impact on module's safety functions,
+how these can be mitigated or argued and if and when a resolution is planned.>
