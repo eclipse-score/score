@@ -616,9 +616,14 @@ target hardware.
 The integration of the platform on a target device and the respective verification and validation
 should be considered by the distributor of the platform. On target integration tests that are
 running on a reference hardware in context of this project can be taken as a starting point.
+
+To also ease the reuse and execution of unit tests on various type of hardware the unit tests are executed
+matching the targeted Operating Systems (QNX & Linux) and HW architectures (aarch64 % x86_64) which are 
+e.g. build by the reference integration. This serves as base for proper testing of the target environment.
+
 See also the respective AoU: :need:`aou_req__platform__testing`.
 
-The reference hardware is not yet decided.
+**The reference hardware is not yet decided.**
 
 Reference hardware interaction with infrastructure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
