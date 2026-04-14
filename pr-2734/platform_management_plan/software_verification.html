@@ -594,7 +594,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-74a24353">
+  <div class="need_container docutils container" id="SNCB-4c96a3c7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__verification_plan">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1146,10 +1146,31 @@ of test based on <a class="reference external" href="https://pytest.org">pytest<
 <p class="rubric">Rust</p>
 <p>The platform developed in this project supports <a class="reference external" href="https://www.rust-lang.org">Rust</a> as a programming language. Its
 built-in test framework is used to test respective software components.</p>
+<p class="rubric">GitHub CodeQL</p>
+<p>For Static Code Analysis, <a class="reference external" href="https://codeql.github.com/">CodeQL</a> is used to identify potential vulnerabilities, weaknesses, and code quality issues in the software components of the project.
+It is integrated into the CI pipeline to ensure that any new code changes are automatically analyzed for potential issues.</p>
+<p>Core features of CodeQL include:</p>
+<ul class="simple">
+<li><p><strong>Vulnerability Detection</strong>: CodeQL can identify known vulnerabilities in the codebase by comparing it against a database of known issues.</p></li>
+<li><p><strong>Custom Queries</strong>: Developers can write custom queries to identify specific patterns or issues in the codebase that are relevant to the project’s security and quality standards.</p></li>
+<li><p><strong>Integration with CI</strong>: CodeQL can be integrated into the CI pipeline to automatically analyze code changes and provide feedback on potential issues before they are merged into the main codebase.</p></li>
+<li><p><strong>Reporting</strong>: CodeQL provides detailed reports on identified issues, including severity levels and recommendations for remediation.</p></li>
+<li><p><strong>Support for Multiple Languages</strong>: CodeQL supports multiple programming languages, including C++, Rust, and others used in the project.</p></li>
+</ul>
+<p>CodeQL has the capability to identify a wide range of issues, including security vulnerabilities, code quality problems, and potential bugs.</p>
+<p>Examples of capabilities include:
+- unsafe data flows and control flow (e.g., tainted data flows, unreachable code, missing checks before sensitive calls)
+- potential runtime errors (e.g., null pointer dereferences, buffer overflows)
+- code quality issues (e.g., dead code, unused variables)
+- incorrect use of APIs (e.g., misuse of cryptographic functions, incorrect error handling)
+- compliance with coding standards (e.g., naming conventions, code complexity)
+- violations of project-specific coding guidelines (e.g., use of certain libraries, adherence to architectural patterns)</p>
+<p>Custom queries can be developed to identify specific patterns or issues that are relevant to the project’s security and quality standards.
+This allows for a tailored approach to static code analysis that aligns with the project’s specific requirements and goals.</p>
 </section>
 <section id="verification-setups-and-variants">
 <h3>Verification setups and variants<a class="headerlink" href="#verification-setups-and-variants" title="Link to this heading">#</a></h3>
-<p>Different test frameworks get used to verify software components and their integration into the platform (see Tools
+<p>Different test frameworks are used to verify software components and their integration into the platform (see Tools
 section above). Driven by that the following test setups can be derived:</p>
 <ol class="arabic simple">
 <li><p>GoogleTest</p></li>
@@ -1164,12 +1185,15 @@ section above). Driven by that the following test setups can be derived:</p>
 above the hardware abstraction layer. The platform itself does not require to be running on
 a specific hardware. It integrates with an POSIX Operating System which is the first level of
 abstraction to the physical hardware.</p>
-<p>The simulation environment will be based on x86 and arm64 architecture, to be close to later
-target hardware.</p>
+<p>This POSIX OS based simulation environment will operate on aarch64 and x86_64 architecture with QNX and Linux
+flavours as Operating System, to be close to later target hardware OS and architectures.</p>
+<p>To also ease the reuse and execution of unit tests on various type of hardware the unit tests are executed
+matching OS and HW architectures (aarch64 and x86_64) which are e.g. build by the reference integration.</p>
 <p>The integration of the platform on a target device and the respective verification and validation
 should be considered by the distributor of the platform. On target integration tests that are
 running on a reference hardware in context of this project can be taken as a starting point.</p>
-<p>The reference hardware is not yet decided.</p>
+<p>See also the respective AoU: <a class="reference internal" href="../requirements/platform_assumptions/index.html#aou_req__platform__testing" title="aou_req__platform__testing"><em class="xref need">SW-platform testing (aou_req__platform__testing)</em></a> and <a class="reference internal" href="../requirements/platform_assumptions/index.html#aou_req__platform__test_completion" title="aou_req__platform__test_completion"><em class="xref need">SW-platform test completion (aou_req__platform__test_completion)</em></a>.</p>
+<p><strong>The reference hardware is not yet decided.</strong></p>
 <section id="reference-hardware-interaction-with-infrastructure">
 <h4>Reference hardware interaction with infrastructure<a class="headerlink" href="#reference-hardware-interaction-with-infrastructure" title="Link to this heading">#</a></h4>
 <p>Once the reference hardware is decided, this section will inform about the location of the
