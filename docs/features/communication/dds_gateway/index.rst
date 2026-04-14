@@ -64,6 +64,7 @@ Each DDS Gateway instance connects to:
 - A DDS domain for inter-ECU communication
 
 The gateway is responsible for:
+
 - Translating data in both directions between ``mw::com`` and DDS representations  
 - Routing data across DDS domains
 - configure QOS on DDS for each route 
@@ -75,11 +76,9 @@ Scope
 The DDS Gateway provides:
 
 - Bridging between ``mw::com (LoLa)`` and DDS via the gateway:
-
-- ``mw::com (LoLa)`` → DDS → ``mw::com (LoLa)`` (inter-ECU communication via DDS)
-- ``mw::com (LoLa)`` → DDS → DDS applications
-- DDS applications → DDS → ``mw::com (LoLa)``
-
+   - ``mw::com (LoLa)`` → DDS → ``mw::com (LoLa)`` (inter-ECU communication via DDS)
+   - ``mw::com (LoLa)`` → DDS → DDS applications
+   - DDS applications → DDS → ``mw::com (LoLa)``
 
 - Configurable routing:
 
@@ -102,6 +101,7 @@ The DDS Gateway provides:
   - Pluggable DDS implementations via defined interfaces
 
 - Execution and performance model:
+
   - Asynchronous processing using internal worker queues  
   - Support for configurable priority-based routing  
   - High-priority routes can be processed with dedicated queues and worker pools to achieve low-latency data delivery  
@@ -160,7 +160,6 @@ Key Value
 Reference
 ---------
 
-The detailed Feature Request, including full design description, configuration
-model, and implementation considerations, is available here:
+The detailed Feature Request is available here:
 
 - DDS Gateway Feature Request:https://github.com/eclipse-score/score/issues/2726
