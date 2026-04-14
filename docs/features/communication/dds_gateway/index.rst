@@ -120,7 +120,8 @@ Motivation
 ----------
 
 S-CORE currently focuses on local communication via ``mw::com (LoLa)`` but does
-not provide a standardized mechanism to integrate DDS-based communication systems.
+not provide a standardized mechanism for inter-ECU communication using DDS-based
+systems.
 
 In mixed middleware environments:
 
@@ -128,8 +129,7 @@ In mixed middleware environments:
 - Applications may need to embed DDS logic, reducing abstraction  
 - Communication with native DDS applications is not standardized  
 - Inter-ECU communication between ``mw::com`` participants via DDS is not standardized  
-- Multi-domain DDS setups are difficult to manage consistently  
-- E2E protection across middleware boundaries is duplicated  
+- Multi-domain DDS setups are difficult to manage consistently    
 
 
 The DDS Gateway addresses these challenges by introducing a centralized,
