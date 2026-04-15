@@ -39,3 +39,7 @@ extensions = [
     "score_sphinx_bundle",
     "fmea_xml_table",
 ]
+
+# Extra options added for the feat_saf_fmea need type used by fmea_xml_table.
+# These extend the base metamodel defined in score_sphinx_bundle.
+needs_extra_options = ["safety_relevant", "root_cause"]
