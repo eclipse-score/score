@@ -30,8 +30,8 @@ import xml.etree.ElementTree as ET
 from collections.abc import Sequence
 
 from docutils import nodes
-from sphinx.util.nodes import make_refnode
 from sphinx.util.docutils import SphinxDirective
+from sphinx.util.nodes import make_refnode
 from sphinx_needs.api import add_external_need
 from sphinx_needs.data import SphinxNeedsData
 
@@ -50,7 +50,13 @@ FMEA_COLUMNS = [
 
 # Fields passed to add_need (must match metamodel's feat_saf_fmea definition).
 # safety_relevant and root_cause are now in the metamodel.
-_NEED_EXTRA_KWARGS = {"fault_id", "failure_effect", "sufficient", "safety_relevant", "root_cause"}
+_NEED_EXTRA_KWARGS = {
+    "fault_id",
+    "failure_effect",
+    "sufficient",
+    "safety_relevant",
+    "root_cause",
+}
 _NEED_LINK_KWARGS = {"violates", "mitigated_by"}
 
 # fault_id values (e.g. "MF_01_01") map to needs in the process_description build
@@ -116,14 +122,18 @@ class FmeaXmlTable(SphinxDirective):
         return result_nodes
 
 
-def _append_fault_id_link(paragraph: nodes.paragraph, value: str, base_url: str) -> None:
+def _append_fault_id_link(
+    paragraph: nodes.paragraph, value: str, base_url: str
+) -> None:
     """Render a fault_id value as a link to the fault models guideline page."""
     full_need_id = f"{_FAULT_ID_NEED_PREFIX}{value.lower()}"
     ref = nodes.reference(value, value, refuri=f"{base_url}#{full_need_id}")
     paragraph += ref
 
 
-def _append_need_links(paragraph: nodes.paragraph, value: str, directive: SphinxDirective) -> None:
+def _append_need_links(
+    paragraph: nodes.paragraph, value: str, directive: SphinxDirective
+) -> None:
     """Render a need-link field value as clickable references."""
     need_ids = [token.strip() for token in re.split(r"[,|]", value) if token.strip()]
     if not need_ids:
@@ -147,7 +157,11 @@ def _resolve_fmea_need_refs(app, doctree: nodes.document, fromdocname: str) -> N
         need_id = str(node.get("reftarget", ""))
         target_need = needs_view.get(need_id)
 
-        if target_need and target_need.get("docname") and not target_need.get("is_external"):
+        if (
+            target_need
+            and target_need.get("docname")
+            and not target_need.get("is_external")
+        ):
             node.replace_self(
                 make_refnode(
                     app.builder,
@@ -172,7 +186,9 @@ def _resolve_fmea_need_refs(app, doctree: nodes.document, fromdocname: str) -> N
         node.replace_self(nodes.Text(need_id))
 
 
-def _build_table(entries: list[dict[str, str]], directive: SphinxDirective) -> nodes.table:
+def _build_table(
+    entries: list[dict[str, str]], directive: SphinxDirective
+) -> nodes.table:
     table = nodes.table()
     tgroup = nodes.tgroup(cols=len(FMEA_COLUMNS))
     table += tgroup
