@@ -102,7 +102,7 @@ jobs:
         # | github.sha                                    | push, merge_group      | Current commit SHA (used for main branch)    |
         # ------------------------------------------------------------------------------
       - name: Upload artifact for job analysis
-        uses: actions/upload-artifact@v7.0.0
+        uses: actions/upload-artifact@v7.0.1
         with:
           name: github-pages-${{ github.event.pull_request.head.sha || github.sha }}
           path: github-pages.tar
