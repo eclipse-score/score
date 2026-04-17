@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2025 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025-2026 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -17,7 +17,7 @@ Requirements
 
 .. document:: Baselibs Requirements
    :id: doc__baselibs_requirements
-   :status: draft
+   :status: valid
    :safety: ASIL_B
    :security: YES
    :realizes: wp__requirements_feat
@@ -29,6 +29,7 @@ Requirements
    :safety: QM
    :satisfies: stkh_req__functional_req__base_libraries
    :status: valid
+   :tags: inspected
 
    The base libraries shall include core software utilities and common infrastructure components needed by multiple platform modules.
 
@@ -39,6 +40,7 @@ Requirements
    :safety: ASIL_B
    :satisfies: stkh_req__functional_req__base_libraries, stkh_req__dependability__automotive_safety
    :status: valid
+   :tags: inspected
 
    The base libraries shall implement functionality necessary to support safety-relevant platform components up to ASIL-B for selected functionalities.
 
@@ -49,6 +51,7 @@ Requirements
    :safety: ASIL_B
    :satisfies: stkh_req__functional_req__base_libraries, stkh_req__dev_experience__prog_languages, stkh_req__dependability__automotive_safety
    :status: valid
+   :tags: inspected
 
    The base libraries shall provide APIs for C++, Rust, or both, depending on the requirements of consuming platform components.
 
@@ -89,6 +92,7 @@ Requirements
    :safety: ASIL_B
    :satisfies: stkh_req__functional_req__base_libraries
    :status: valid
+   :tags: inspected
 
    The base libraries shall provide a JSON-Library with parsing functionality.
 
@@ -99,6 +103,7 @@ Requirements
    :safety: QM
    :satisfies: stkh_req__functional_req__base_libraries
    :status: valid
+   :valid_from: v1.0.0
 
    The base libraries shall provide a FlatBuffers-Library with serialization, read access, and structural verification of FlatBuffers data.
 
@@ -113,6 +118,7 @@ Requirements
    :safety: ASIL_B
    :satisfies: stkh_req__functional_req__base_libraries
    :status: valid
+   :tags: inspected
 
    The base libraries shall provide error handling mechanisms that enable development without relying on C++ exceptions.
 
@@ -123,6 +129,7 @@ Requirements
    :safety: ASIL_B
    :satisfies: stkh_req__functional_req__base_libraries
    :status: valid
+   :tags: inspected
 
    The base libraries shall provide a container library offering additional container types not present in the C++ standard library.
 
@@ -133,6 +140,7 @@ Requirements
    :safety: ASIL_B
    :satisfies: stkh_req__functional_req__base_libraries
    :status: valid
+   :tags: inspected
 
    The base libraries shall provide bit manipulation utilities for low-level operations on integral types.
 
@@ -143,6 +151,7 @@ Requirements
    :safety: ASIL_B
    :satisfies: stkh_req__functional_req__base_libraries, stkh_req__dependability__automotive_safety
    :status: valid
+   :tags: inspected
 
    The base libraries shall provide a filesystem library with file and directory manipulation functionality.
 
@@ -163,6 +172,7 @@ Requirements
    :safety: ASIL_B
    :satisfies: stkh_req__functional_req__base_libraries
    :status: valid
+   :tags: inspected
 
    The base libraries shall provide a library for parallel execution of C++ callables with thread pool management.
 
