@@ -32,7 +32,7 @@ from collections.abc import Sequence
 from docutils import nodes
 from sphinx.util.docutils import SphinxDirective
 from sphinx.util.nodes import make_refnode
-from sphinx_needs.api import add_external_need
+from sphinx_needs.api import add_need
 from sphinx_needs.data import SphinxNeedsData
 
 FMEA_COLUMNS = [
@@ -101,21 +101,27 @@ class FmeaXmlTable(SphinxDirective):
             violates_str = row["violates"]
             mitigated_str = row["mitigated_by"]
 
-            add_external_need(
+            add_need(
                 app=self.env.app,
+                state=self.state,
+                docname=self.env.docname,
+                lineno=self.lineno,
                 need_type="feat_saf_fmea",
                 title=row["id"],
                 id=row["id"],
-                external_url="",
                 content=row["content"],
                 status=row["status"],
+                hide=True,
                 fault_id=row["fault_id"],
                 failure_effect=row["failure_effect"],
                 sufficient=row["sufficient"],
-                safety_relevant=row["safety_relevant"],
-                root_cause=row["root_cause"],
                 violates=violates_str,
                 mitigated_by=mitigated_str,
+            )
+            # Provide an anchor so cross-document links (e.g. from requirements
+            # pages) can resolve to this ID without rendering a visible need box.
+            result_nodes.append(
+                nodes.target("", "", ids=[row["id"]], refid=row["id"])
             )
 
         result_nodes.append(_build_table(entries, self))
