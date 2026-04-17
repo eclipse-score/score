@@ -120,9 +120,7 @@ class FmeaXmlTable(SphinxDirective):
             )
             # Provide an anchor so cross-document links (e.g. from requirements
             # pages) can resolve to this ID without rendering a visible need box.
-            result_nodes.append(
-                nodes.target("", "", ids=[row["id"]], refid=row["id"])
-            )
+            result_nodes.append(nodes.target("", "", ids=[row["id"]], refid=row["id"]))
 
         result_nodes.append(_build_table(entries, self))
         return result_nodes
