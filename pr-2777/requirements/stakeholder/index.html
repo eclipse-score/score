@@ -27,13 +27,13 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/score.css?v=6e51530f" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/score_needs.css?v=e97392eb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score_needs.css?v=1f5dae2a" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/score_design.css?v=d9fd870c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
@@ -46,16 +46,16 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2" />
 
     <script src="../../_static/jquery.js?v=5d32c60e"></script>
     <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
     <script src="../../_static/documentation_options.js?v=7f41d439"></script>
-    <script src="../../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
     <script src="../../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
     <script src="../../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
@@ -64,12 +64,13 @@
     <script src="../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'requirements/stakeholder/index';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.0';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="SW-platform Assumptions" href="../platform_assumptions/index.html" />
@@ -77,14 +78,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
@@ -116,7 +121,7 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
   <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
@@ -496,7 +501,14 @@
   </div>
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
         <div class="sidebar-primary-item">
+
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
@@ -565,7 +577,7 @@
                   
   <section id="stakeholder-requirements">
 <span id="id1"></span><h1>Stakeholder Requirements<a class="headerlink" href="#stakeholder-requirements" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-b73ee32e">
+<div class="need_container docutils container" id="SNCB-5b040f2e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__stakeholder_requirements">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -609,7 +621,7 @@
 </div>
 <section id="overall-goals">
 <h2>Overall goals<a class="headerlink" href="#overall-goals" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-0b9b2265">
+<div class="need_container docutils container" id="SNCB-d28964af">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__overall_goals__reuse_of_app_soft">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -655,7 +667,7 @@ non-breaking changes.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b8662ca3">
+<div class="need_container docutils container" id="SNCB-72377dfc">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__overall_goals__enable_cooperation">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -699,7 +711,7 @@ non-breaking changes.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4e070349">
+<div class="need_container docutils container" id="SNCB-786847ea">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__overall_goals__variant_management">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -746,7 +758,7 @@ software releases.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-0e0ba2a6">
+<div class="need_container docutils container" id="SNCB-da951eb5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__overall_goals__ip_protection">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -794,7 +806,7 @@ partners.</p></td>
 </section>
 <section id="functional-requirements">
 <h2>Functional requirements<a class="headerlink" href="#functional-requirements" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-329f3c37">
+<div class="need_container docutils container" id="SNCB-579d6e29">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__functional_req__file_based">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -838,7 +850,7 @@ partners.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f721defd">
+<div class="need_container docutils container" id="SNCB-09181b0f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__functional_req__support_of_store">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -885,7 +897,7 @@ partners.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-73977bf1">
+<div class="need_container docutils container" id="SNCB-8fb7fc56">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__functional_req__safe_config">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -932,7 +944,7 @@ partners.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-ce10993c">
+<div class="need_container docutils container" id="SNCB-74cddefe">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__functional_req__safe_comput">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -978,7 +990,7 @@ partners.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-742d7e37">
+<div class="need_container docutils container" id="SNCB-872be191">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__functional_req__base_libraries">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1000,7 +1012,7 @@ partners.</p></td>
 <div class="line"><span><span><div class="line"><span class="needs_rationale"><span class="needs_label">rationale: </span><span class="needs_data">Common libraries reduce duplication, improve consistency and quality across components.</span></span></div>
 <div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__core_utilities" title="stkh_req__functional_req__base_libraries">feat_req__baselibs__core_utilities</a>, <a class="reference internal" href="../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__safety" title="stkh_req__functional_req__base_libraries">feat_req__baselibs__safety</a>, <a class="reference internal" href="../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__multi_language_apis" title="stkh_req__functional_req__base_libraries">feat_req__baselibs__multi_language_apis</a>, <a class="reference internal" href="../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__consistent_apis" title="stkh_req__functional_req__base_libraries">feat_req__baselibs__consistent_apis</a>, <a class="reference internal" href="../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__maintainable_design" title="stkh_req__functional_req__base_libraries">feat_req__baselibs__maintainable_design</a>, <a class="reference internal" href="../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__security" title="stkh_req__functional_req__base_libraries">feat_req__baselibs__security</a>, <a class="reference internal" href="../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__json_library" title="stkh_req__functional_req__base_libraries">feat_req__baselibs__json_library</a>, <a class="reference internal" href="../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__result_library" title="stkh_req__functional_req__base_libraries">feat_req__baselibs__result_library</a>, <a class="reference internal" href="../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__containers_library" title="stkh_req__functional_req__base_libraries">feat_req__baselibs__containers_library</a>, <a class="reference internal" href="../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__bitmanipulation" title="stkh_req__functional_req__base_libraries">feat_req__baselibs__bitmanipulation</a>, <a class="reference internal" href="../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__filesystem_library" title="stkh_req__functional_req__base_libraries">feat_req__baselibs__filesystem_library</a>, <a class="reference internal" href="../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__memory_library" title="stkh_req__functional_req__base_libraries">feat_req__baselibs__memory_library</a>, <a class="reference internal" href="../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__concurrency_library" title="stkh_req__functional_req__base_libraries">feat_req__baselibs__concurrency_library</a></span></span></div>
+<div class="line"><span><div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__core_utilities" title="stkh_req__functional_req__base_libraries">feat_req__baselibs__core_utilities</a>, <a class="reference internal" href="../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__safety" title="stkh_req__functional_req__base_libraries">feat_req__baselibs__safety</a>, <a class="reference internal" href="../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__multi_language_apis" title="stkh_req__functional_req__base_libraries">feat_req__baselibs__multi_language_apis</a>, <a class="reference internal" href="../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__consistent_apis" title="stkh_req__functional_req__base_libraries">feat_req__baselibs__consistent_apis</a>, <a class="reference internal" href="../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__maintainable_design" title="stkh_req__functional_req__base_libraries">feat_req__baselibs__maintainable_design</a>, <a class="reference internal" href="../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__security" title="stkh_req__functional_req__base_libraries">feat_req__baselibs__security</a>, <a class="reference internal" href="../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__json_library" title="stkh_req__functional_req__base_libraries">feat_req__baselibs__json_library</a>, <a class="reference internal" href="../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__flatbuffers_library" title="stkh_req__functional_req__base_libraries">feat_req__baselibs__flatbuffers_library</a>, <a class="reference internal" href="../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__result_library" title="stkh_req__functional_req__base_libraries">feat_req__baselibs__result_library</a>, <a class="reference internal" href="../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__containers_library" title="stkh_req__functional_req__base_libraries">feat_req__baselibs__containers_library</a>, <a class="reference internal" href="../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__bitmanipulation" title="stkh_req__functional_req__base_libraries">feat_req__baselibs__bitmanipulation</a>, <a class="reference internal" href="../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__filesystem_library" title="stkh_req__functional_req__base_libraries">feat_req__baselibs__filesystem_library</a>, <a class="reference internal" href="../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__memory_library" title="stkh_req__functional_req__base_libraries">feat_req__baselibs__memory_library</a>, <a class="reference internal" href="../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__concurrency_library" title="stkh_req__functional_req__base_libraries">feat_req__baselibs__concurrency_library</a></span></span></div>
 </span></div>
 </div>
 </td>
@@ -1022,7 +1034,7 @@ partners.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-8f421a69">
+<div class="need_container docutils container" id="SNCB-5a30eaf2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__functional_req__hardware_comput">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1065,7 +1077,7 @@ partners.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-2c6c9e14">
+<div class="need_container docutils container" id="SNCB-063228c8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__functional_req__data_persistency">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1109,7 +1121,7 @@ partners.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-61c874cd">
+<div class="need_container docutils container" id="SNCB-444745eb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__functional_req__operating_system">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1153,7 +1165,7 @@ partners.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-24af40fa">
+<div class="need_container docutils container" id="SNCB-2629193e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__functional_req__video_subsystem">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1206,7 +1218,7 @@ distribution of camera data via the following mechanisms</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e4d8c538">
+<div class="need_container docutils container" id="SNCB-8ac1d971">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__functional_req__comp_subsystem">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1265,7 +1277,7 @@ applications:</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6f3065e1">
+<div class="need_container docutils container" id="SNCB-7a976342">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__functional_req__comm_with_control">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1320,7 +1332,7 @@ external micro-controllers for</p>
 </section>
 <section id="dependability">
 <h2>Dependability<a class="headerlink" href="#dependability" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-6c9570a2">
+<div class="need_container docutils container" id="SNCB-7793c1bb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__dependability__automotive_safety">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1367,7 +1379,7 @@ integrity level up to ASIL-B.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5eeef46f">
+<div class="need_container docutils container" id="SNCB-fe4809f3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__dependability__safety_features_1">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1413,7 +1425,7 @@ integrity level up to ASIL-B.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-fce04aa4">
+<div class="need_container docutils container" id="SNCB-c15877a9">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__dependability__safety_features_2">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1458,7 +1470,7 @@ integrity level up to ASIL-B.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-3114a4cb">
+<div class="need_container docutils container" id="SNCB-5be4d49d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__dependability__safety_features_3">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1505,7 +1517,7 @@ integrity level up to ASIL-B.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4f2d0798">
+<div class="need_container docutils container" id="SNCB-204ff464">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__dependability__safety_features_4">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1551,7 +1563,7 @@ integrity level up to ASIL-B.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-28bc30c8">
+<div class="need_container docutils container" id="SNCB-30f19a94">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__dependability__safety_features_5">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1598,7 +1610,7 @@ integrity level up to ASIL-B.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-06c7ea1d">
+<div class="need_container docutils container" id="SNCB-5c8f8afe">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__dependability__safety_features_6">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1645,7 +1657,7 @@ integrity level up to ASIL-B.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-c02e8605">
+<div class="need_container docutils container" id="SNCB-5fa97a7d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__dependability__safety_features_7">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1692,7 +1704,7 @@ integrity level up to ASIL-B.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-c7abd0f9">
+<div class="need_container docutils container" id="SNCB-a776dc9c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__dependability__safety_features_8">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1739,7 +1751,7 @@ integrity level up to ASIL-B.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-3468b3ca">
+<div class="need_container docutils container" id="SNCB-73dd39b8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__dependability__safety_features_9">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1784,7 +1796,7 @@ integrity level up to ASIL-B.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-0e87cc55">
+<div class="need_container docutils container" id="SNCB-dc0f6073">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__dependability__safety_features_10">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1831,7 +1843,7 @@ integrity level up to ASIL-B.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7266c08e">
+<div class="need_container docutils container" id="SNCB-ffa46ff9">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__dependability__safety_features_11">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1877,7 +1889,7 @@ integrity level up to ASIL-B.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-32ee362d">
+<div class="need_container docutils container" id="SNCB-da28a26e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__dependability__error_reaction">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1926,7 +1938,7 @@ integrity level up to ASIL-B.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-96f153ee">
+<div class="need_container docutils container" id="SNCB-ea4413de">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__dependability__safe_state">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1979,7 +1991,7 @@ and stopping the triggering in the error case).</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-8f96565f">
+<div class="need_container docutils container" id="SNCB-ac803100">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__dependability__error_report_timing">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2029,7 +2041,7 @@ the error could happen in the first millisecond but will be reported earliest af
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-1aad5645">
+<div class="need_container docutils container" id="SNCB-3f341840">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__dependability__no_mixed_asil">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2072,7 +2084,7 @@ the error could happen in the first millisecond but will be reported earliest af
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-63d5949b">
+<div class="need_container docutils container" id="SNCB-23e4dfcd">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__dependability__flow_monitoring">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2120,7 +2132,7 @@ Or that the non/late execution of the application keeps the system in a safe sta
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4c421d28">
+<div class="need_container docutils container" id="SNCB-17b89dd6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__dependability__availability">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2165,7 +2177,7 @@ Or that the non/late execution of the application keeps the system in a safe sta
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d05b94bf">
+<div class="need_container docutils container" id="SNCB-b39ec91b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__dependability__security_features">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2253,7 +2265,7 @@ requests and responses flowing between client and server. Discovery is service-i
 of specific server instances, especially for stateful systems where session continuity or state preservation is
 crucial.</p></li>
 </ol>
-<div class="need_container docutils container" id="SNCB-d7a57d0e">
+<div class="need_container docutils container" id="SNCB-58a161d2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__app_architectures__support_time">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2299,7 +2311,7 @@ polling intervals.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5187c4bf">
+<div class="need_container docutils container" id="SNCB-40813734">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__app_architectures__support_data">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2343,7 +2355,7 @@ polling intervals.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-1d4d8bf0">
+<div class="need_container docutils container" id="SNCB-ef402228">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__app_architectures__support_request">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2390,7 +2402,7 @@ polling intervals.</p></td>
 </section>
 <section id="execution-model">
 <h2>Execution model<a class="headerlink" href="#execution-model" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-5af3b0d1">
+<div class="need_container docutils container" id="SNCB-bf03ced4">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__execution_model__processes">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2452,7 +2464,7 @@ polling intervals.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-2e7482c6">
+<div class="need_container docutils container" id="SNCB-d21cf4ef">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__execution_model__short_app_cycles">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2497,7 +2509,7 @@ if this is supported by the underlying hardware.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9a0a53b4">
+<div class="need_container docutils container" id="SNCB-627b82da">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__execution_model__realtime_cap">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2541,7 +2553,7 @@ if this is supported by the underlying hardware.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-634ee8a1">
+<div class="need_container docutils container" id="SNCB-70ea0572">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__execution_model__startup_perf">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2585,7 +2597,7 @@ resume from hibernate mode.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-000e4989">
+<div class="need_container docutils container" id="SNCB-5309672d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__execution_model__low_power">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2632,7 +2644,7 @@ resume from hibernate mode.</p></td>
 </section>
 <section id="communication">
 <h2>Communication<a class="headerlink" href="#communication" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-85d968c0">
+<div class="need_container docutils container" id="SNCB-061cf06d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__communication__inter_process">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2677,7 +2689,7 @@ resume from hibernate mode.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-c908d165">
+<div class="need_container docutils container" id="SNCB-0fb87ce6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__communication__abi_compatible">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2722,7 +2734,7 @@ resume from hibernate mode.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-728d26b8">
+<div class="need_container docutils container" id="SNCB-112e9636">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__communication__intra_process">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2767,52 +2779,7 @@ resume from hibernate mode.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-bcd5bbdd">
-<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__communication__vm">
-<tbody>
-<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
-<div class="line"><span><span class="needs_title"><span class="needs_data">Non-Intra-process Communication</span></span></span></div>
-</div>
-</td>
-<td class="head_center" colspan="2"><div class="needs_head line-block">
-<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
-<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
-<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">QM</span></span></span></div>
-</div>
-</td>
-<td class="head_right" colspan="2"><div class="needs_head_right line-block">
-<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
-</div>
-</td>
-</tr>
-<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
-<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">communication</span></span></span></div>
-<div class="line"><span class="needs_rationale"><span class="needs_label">rationale: </span><span class="needs_data">Application software typically maps software building blocks into the same process.</span></span></div>
-<div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-</span></span></div>
-<div class="line"><span><div class="line">satisfied by: <span class="satisfies"><span><a class="reference internal" href="../../features/nonipc/requirements/index.html#feat_req__nonipc__one_way_sharing" title="stkh_req__communication__vm">feat_req__nonipc__one_way_sharing</a>, <a class="reference internal" href="../../features/nonipc/requirements/index.html#feat_req__nonipc__readonly_vm" title="stkh_req__communication__vm">feat_req__nonipc__readonly_vm</a>, <a class="reference internal" href="../../features/nonipc/requirements/index.html#feat_req__nonipc__consistent_data" title="stkh_req__communication__vm">feat_req__nonipc__consistent_data</a>, <a class="reference internal" href="../../features/nonipc/requirements/index.html#feat_req__nonipc__lock_free_access" title="stkh_req__communication__vm">feat_req__nonipc__lock_free_access</a>, <a class="reference internal" href="../../features/nonipc/requirements/index.html#feat_req__nonipc__producer_timestamps" title="stkh_req__communication__vm">feat_req__nonipc__producer_timestamps</a>, <a class="reference internal" href="../../features/nonipc/requirements/index.html#feat_req__nonipc__streamed_data" title="stkh_req__communication__vm">feat_req__nonipc__streamed_data</a>, <a class="reference internal" href="../../features/nonipc/requirements/index.html#feat_req__nonipc__configurable_queues" title="stkh_req__communication__vm">feat_req__nonipc__configurable_queues</a>, <a class="reference internal" href="../../features/nonipc/requirements/index.html#feat_req__nonipc__lock_free_queue" title="stkh_req__communication__vm">feat_req__nonipc__lock_free_queue</a>, <a class="reference internal" href="../../features/nonipc/requirements/index.html#feat_req__nonipc__bi_directional_comm" title="stkh_req__communication__vm">feat_req__nonipc__bi_directional_comm</a>, <a class="reference internal" href="../../features/nonipc/requirements/index.html#feat_req__nonipc__async_support" title="stkh_req__communication__vm">feat_req__nonipc__async_support</a>, <a class="reference internal" href="../../features/nonipc/requirements/index.html#feat_req__nonipc__shared_memory" title="stkh_req__communication__vm">feat_req__nonipc__shared_memory</a>, <a class="reference internal" href="../../features/nonipc/requirements/index.html#feat_req__nonipc__data_notifications" title="stkh_req__communication__vm">feat_req__nonipc__data_notifications</a>, <a class="reference internal" href="../../features/nonipc/requirements/index.html#feat_req__nonipc__config_notifications" title="stkh_req__communication__vm">feat_req__nonipc__config_notifications</a></span></span></div>
-</span></div>
-</div>
-</td>
-<td class="meta" colspan="3"></td>
-</tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>The platform shall support not only IPC but also intra VM communication.</p></td>
-</tr>
-<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
-<div class="line"><span><span class="needs-id"><a class="reference internal" href="#stkh_req__communication__vm" title="stkh_req__communication__vm">stkh_req__communication__vm</a></span></span></div>
-</div>
-</td>
-<td class="footer" colspan="2"><div class="needs_footer line-block">
-<div class="line"><span><span class="needs_type_name"><span class="needs_data">Stakeholder Requirement</span></span></span></div>
-</div>
-</td>
-<td class="footer_right" colspan="2"></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="need_container docutils container" id="SNCB-6316601a">
+<div class="need_container docutils container" id="SNCB-59f93857">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__communication__stable_app_inter">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2857,7 +2824,7 @@ external interfaces to keep application interfaces stable.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b76f7f2d">
+<div class="need_container docutils container" id="SNCB-454f4c1b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__communication__extensible_external">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2902,7 +2869,7 @@ external interfaces to keep application interfaces stable.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-8f253af1">
+<div class="need_container docutils container" id="SNCB-2b8113fd">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__communication__safe">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2949,7 +2916,7 @@ external interfaces to keep application interfaces stable.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-acd02d34">
+<div class="need_container docutils container" id="SNCB-0d35c17d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__communication__secure">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2993,7 +2960,7 @@ external interfaces to keep application interfaces stable.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f62cf1fc">
+<div class="need_container docutils container" id="SNCB-961918da">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__communication__supported_net">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3048,7 +3015,7 @@ protocols</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-cfa2b416">
+<div class="need_container docutils container" id="SNCB-28305036">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__communication__service_quality">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3100,7 +3067,7 @@ to:</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f39b344f">
+<div class="need_container docutils container" id="SNCB-dbcad7a7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__communication__auto_diagnostics">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3151,7 +3118,7 @@ to:</p>
 </section>
 <section id="time">
 <h2>Time<a class="headerlink" href="#time" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-6572eb76">
+<div class="need_container docutils container" id="SNCB-f476703e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__time__vehicle_time_sync">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3196,7 +3163,7 @@ to Time Master within the vehicle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-3eb79143">
+<div class="need_container docutils container" id="SNCB-8f7c5b2b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__time__vehicle_time_api">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3240,7 +3207,7 @@ to Time Master within the vehicle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-74967275">
+<div class="need_container docutils container" id="SNCB-e65db821">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__time__hw_clock_sync">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3283,7 +3250,7 @@ to Time Master within the vehicle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d0f507e6">
+<div class="need_container docutils container" id="SNCB-3ea647fa">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__time__absolute_time_sync">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3327,7 +3294,7 @@ to Time Master within the vehicle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-98f462c6">
+<div class="need_container docutils container" id="SNCB-8276da64">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__time__absolute_time_api">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3371,7 +3338,7 @@ to Time Master within the vehicle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-ec237799">
+<div class="need_container docutils container" id="SNCB-96140b32">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__time__high_precision_clock_api">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3417,7 +3384,7 @@ to Time Master within the vehicle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-08916cf2">
+<div class="need_container docutils container" id="SNCB-d2315a39">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__time__monotonic_clock_api">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3466,7 +3433,7 @@ to Time Master within the vehicle.</p></td>
 </section>
 <section id="ai-sw-platform">
 <h2>AI SW-platform<a class="headerlink" href="#ai-sw-platform" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-4dca58ab">
+<div class="need_container docutils container" id="SNCB-3905de80">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__ai_platform__enablement">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3511,7 +3478,7 @@ to Time Master within the vehicle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-efbb374b">
+<div class="need_container docutils container" id="SNCB-f3b1ebd6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__ai_platform__safety_critical">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3556,7 +3523,7 @@ to Time Master within the vehicle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b58ed734">
+<div class="need_container docutils container" id="SNCB-c434549b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__ai_platform__runtime_efficiency">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3601,7 +3568,7 @@ to Time Master within the vehicle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-14949990">
+<div class="need_container docutils container" id="SNCB-57accf76">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__ai_platform__platform_portability">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3646,7 +3613,7 @@ to Time Master within the vehicle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7826e66e">
+<div class="need_container docutils container" id="SNCB-deb24428">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__ai_platform__model_security">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3691,7 +3658,7 @@ to Time Master within the vehicle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-ae05a906">
+<div class="need_container docutils container" id="SNCB-94e38353">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__ai_platform__runtime_determinism">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3736,7 +3703,7 @@ to Time Master within the vehicle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-55bc5e4b">
+<div class="need_container docutils container" id="SNCB-994a29c0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__gen_ai__enablement">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3781,7 +3748,7 @@ to Time Master within the vehicle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-45a64806">
+<div class="need_container docutils container" id="SNCB-4b85dcba">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__gen_ai__interaction">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3826,7 +3793,7 @@ to Time Master within the vehicle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e45a5267">
+<div class="need_container docutils container" id="SNCB-5d953cbb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__gen_ai__safety_filter">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3871,7 +3838,7 @@ to Time Master within the vehicle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-58e4b111">
+<div class="need_container docutils container" id="SNCB-7b34fd47">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__gen_ai__vehicle_com">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3919,7 +3886,7 @@ to Time Master within the vehicle.</p></td>
 </section>
 <section id="diagnostics-and-fault-management">
 <h2>Diagnostics and Fault Management<a class="headerlink" href="#diagnostics-and-fault-management" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-bfaf2f31">
+<div class="need_container docutils container" id="SNCB-f9fd1845">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__diagnostics__via_sovd">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3963,7 +3930,7 @@ to Time Master within the vehicle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d905e5e1">
+<div class="need_container docutils container" id="SNCB-989a5646">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__diagnostics__fault_reporting">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -4007,7 +3974,7 @@ to Time Master within the vehicle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f8d5997d">
+<div class="need_container docutils container" id="SNCB-1490cbdf">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__diagnostics__dtc_read_sovd">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -4051,7 +4018,7 @@ to Time Master within the vehicle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b1781f75">
+<div class="need_container docutils container" id="SNCB-baa5e77d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__diagnostics__custom_services">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -4095,7 +4062,7 @@ to Time Master within the vehicle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d9b7c5f2">
+<div class="need_container docutils container" id="SNCB-25f174ab">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__diagnostics__uds_tester_compat">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -4139,7 +4106,7 @@ to Time Master within the vehicle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-79b13b36">
+<div class="need_container docutils container" id="SNCB-518ba66d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__diagnostics__uds_ecus">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -4183,7 +4150,7 @@ to Time Master within the vehicle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5038ff39">
+<div class="need_container docutils container" id="SNCB-a7dec457">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__diagnostics__distributed_support">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -4227,7 +4194,7 @@ to Time Master within the vehicle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-049889b8">
+<div class="need_container docutils container" id="SNCB-a92cb8fe">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__diagnostics__secure_access">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -4274,7 +4241,7 @@ to Time Master within the vehicle.</p></td>
 </section>
 <section id="hardware-support">
 <h2>Hardware support<a class="headerlink" href="#hardware-support" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-229662af">
+<div class="need_container docutils container" id="SNCB-e781120c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__hardware_support__chipset_support">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -4317,7 +4284,7 @@ to Time Master within the vehicle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6f805061">
+<div class="need_container docutils container" id="SNCB-68d4714a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__hardware_support__debug_and_test">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -4361,7 +4328,7 @@ environments.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-cfc5a7b2">
+<div class="need_container docutils container" id="SNCB-83fdb5d9">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__hardware_support__container_tech">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -4413,7 +4380,7 @@ bundles</p>
 </section>
 <section id="developer-experience">
 <h2>Developer experience<a class="headerlink" href="#developer-experience" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-99a7ce44">
+<div class="need_container docutils container" id="SNCB-ca600a60">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__dev_experience__idl_support">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -4458,7 +4425,7 @@ with decentralized glue code generation.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-52aa882a">
+<div class="need_container docutils container" id="SNCB-e3456e2d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__dev_experience__dev_toolchain">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -4510,7 +4477,7 @@ functional development and application development.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-cac9d334">
+<div class="need_container docutils container" id="SNCB-d422f40b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__dev_experience__perf_analysis">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -4559,7 +4526,7 @@ application software:</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4b893b09">
+<div class="need_container docutils container" id="SNCB-f1174331">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__dev_experience__tracing_of_exec">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -4612,7 +4579,7 @@ entities and kernel threads on all computation units e.g.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e49e8fe2">
+<div class="need_container docutils container" id="SNCB-68e2a3de">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__dev_experience__tracing_of_comm">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -4657,7 +4624,7 @@ and external communication systems.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-217a2bf7">
+<div class="need_container docutils container" id="SNCB-b2442e2c">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__dev_experience__tracing_of_memory">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -4706,7 +4673,7 @@ de-allocation) for different types of memory e.g.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-881132c4">
+<div class="need_container docutils container" id="SNCB-11aec30b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__dev_experience__timing_analysis">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -4750,7 +4717,7 @@ timing requirements with state-of-the-art analysis tools.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-836d84c6">
+<div class="need_container docutils container" id="SNCB-ea9701f8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__dev_experience__debugging">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -4795,7 +4762,7 @@ debugging of the software on target and in vehicle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9ebc28e7">
+<div class="need_container docutils container" id="SNCB-648087cc">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__dev_experience__mockup_public_apis">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -4840,7 +4807,7 @@ enabling unit, component and integration testing of applications.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b342e4d0">
+<div class="need_container docutils container" id="SNCB-d4c844b8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__dev_experience__prog_languages">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -4891,7 +4858,7 @@ programming languages up to the highest ASIL level as defined in <a class="refer
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b48cd68e">
+<div class="need_container docutils container" id="SNCB-44cfcee9">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__dev_experience__reprocessing">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -4934,7 +4901,7 @@ programming languages up to the highest ASIL level as defined in <a class="refer
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a5f17710">
+<div class="need_container docutils container" id="SNCB-d6636eb6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__dev_experience__logging_support">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -4987,7 +4954,7 @@ programming languages up to the highest ASIL level as defined in <a class="refer
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b50d80ec">
+<div class="need_container docutils container" id="SNCB-d57015eb">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__dev_experience__boot_logging">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -5035,7 +5002,7 @@ cycle.</p></td>
 </section>
 <section id="integration">
 <h2>Integration<a class="headerlink" href="#integration" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-1ace9fba">
+<div class="need_container docutils container" id="SNCB-d23c0eb9">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__integration__multi_repo">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -5081,7 +5048,7 @@ cycle.</p></td>
 </section>
 <section id="quality">
 <h2>Quality<a class="headerlink" href="#quality" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-432968b8">
+<div class="need_container docutils container" id="SNCB-b57520de">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__quality__assumptions_and_dd">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -5127,7 +5094,7 @@ cycle.</p></td>
 </section>
 <section id="requirements-engineering">
 <h2>Requirements Engineering<a class="headerlink" href="#requirements-engineering" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-6e2e9039">
+<div class="need_container docutils container" id="SNCB-11a0c452">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__re_requirements__traceability">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -5170,7 +5137,7 @@ cycle.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-c5095ca5">
+<div class="need_container docutils container" id="SNCB-ff27d87d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_stkh_req table" id="stkh_req__requirements__as_code">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -5365,8 +5332,8 @@ SW element(s) or due to dependency on HW. This is confirmed during safety analys
     class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> On this page
   </div>
-  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-goals">Overall goals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functional-requirements">Functional requirements</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependability">Dependability</a></li>
@@ -5414,8 +5381,8 @@ SW element(s) or due to dependency on HW. This is confirmed during safety analys
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -5425,7 +5392,7 @@ SW element(s) or due to dependency on HW. This is confirmed during safety analys
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     <br/>
   </p>
 </div>
@@ -5439,7 +5406,7 @@ SW element(s) or due to dependency on HW. This is confirmed during safety analys
         <div class="footer-item">
 <p class="theme-version">
   <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.0.
 </p></div>
       
     </div>
