@@ -18,9 +18,9 @@ DFA (Dependent Failure Analysis)
 
 .. document:: Baselibs DFA
    :id: doc__baselibs_dfa
-   :status: draft
+   :status: valid
    :safety: ASIL_B
-   :security: NO
+   :security: YES
    :realizes: wp__feature_dfa
 
 
@@ -131,7 +131,7 @@ Unintended impacts to function due to various failures.
   * - UI_01_02
     - Read/Write access to memory allocated to another software element
     - yes
-    - As baselibs are in context of a application, they may access their memory, link to need
+    - As baselibs are in context of a application, they may access their memory, :need:`feat_saf_dfa__baselibs__memory_access`
   * - UI_01_03
     - Stack/Buffer under-/overflow
     - no
@@ -139,7 +139,7 @@ Unintended impacts to function due to various failures.
   * - UI_01_04
     - Deadlocks
     - yes
-    - shared memory or file access may lead to deadlock, link to need
+    - shared memory or file access may lead to deadlock, :need:`feat_saf_dfa__baselibs__locked_ressource`
   * - UI_01_05
     - Livelocks
     - no
@@ -147,7 +147,7 @@ Unintended impacts to function due to various failures.
   * - UI_01_06
     - Blocking of execution
     - yes
-    - As baselibs are in context of a application, they may block execution, link to need
+    - As baselibs are in context of a application, they may block execution, :need:`feat_saf_dfa__baselibs__blocked_execution`
   * - UI_01_07
     - Incorrect allocation of execution time
     - no
@@ -163,7 +163,7 @@ Unintended impacts to function due to various failures.
   * - UI_01_10
     - CPU time depletion
     - yes
-    - Baselibs may deplete or suffer from depletion, link to need
+    - Baselibs may deplete or suffer from depletion, :need:`feat_saf_dfa__baselibs__cpu_starvation`
   * - UI_01_11
     - Memory depletion
     - no
@@ -186,7 +186,7 @@ For all identified applicable failure initiators, the DFA is performed in the fo
    :failure_effect: memory of using component may be corrupted leading to safety requirement violation
    :mitigation_issue: https://github.com/eclipse-score/score/issues/2816
    :sufficient: no
-   :status: invalid
+   :status: valid
 
    All the baselibs components have to be developed to ASIL_B standard to maintain Freedom From Interference,
    out of bounds access should be detected by unit testing/sanitizers.
@@ -210,7 +210,7 @@ For all identified applicable failure initiators, the DFA is performed in the fo
    :failure_effect: Using application is blocked from execution and thus cannot fulfill its safety function
    :mitigation_issue: https://github.com/eclipse-score/score/issues/2816
    :sufficient: no
-   :status: invalid
+   :status: valid
 
    All the baselibs components have to be developed to ASIL_B standard to maintain Freedom From Interference,
    all blocks should be detected by unit testing.

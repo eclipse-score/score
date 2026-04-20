@@ -20,25 +20,14 @@ FMEA (Failure Modes and Effects Analysis)
    :id: doc__baselibs_fmea
    :status: valid
    :safety: ASIL_B
-   :security: NO
+   :security: YES
    :realizes: wp__feature_fmea
 
 The feature baselibs consists of multiple components which provide very different functionality.
-They are also low-complex (i.e. no component architecture is documented). In consequence the function's
-failure modes are discussed and documented in the components FMEA's for better readability.
+They are also low-complex (i.e. no component architecture is documented, so that the feature architecture is the only one to analyze,
+with one exception which is the Json component).
 
-Below failure mode is just one example which is present in every baselibs components FMEA.
+For a better usability and readability the FMEA will be documented on component level and for every
+component individually, but using the feature architecture views (plus additional component architecture if any decompositon was done).
 
-Failure Mode List
------------------
-
-.. feat_saf_fmea:: Baselibs Feature
-   :violates: feat_arc_dyn__baselibs__dynamic_view_arch
-   :id: feat_saf_fmea__baselibs__components
-   :fault_id: EX_01_04
-   :failure_effect: any of the baselibs components execution is lost due to systematic SW error
-   :mitigated_by: feat_req__baselibs__safety
-   :sufficient: yes
-   :status: valid
-
-   SW development is required in ASIL_B quality and each individual baselibs component has low complexity.
+Consequently there is no AoU detected and documented on feature level.
