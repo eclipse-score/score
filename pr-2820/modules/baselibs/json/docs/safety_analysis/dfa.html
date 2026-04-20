@@ -637,7 +637,7 @@
                   
   <section id="dfa-dependent-failure-analysis">
 <h1>DFA (Dependent Failure Analysis)<a class="headerlink" href="#dfa-dependent-failure-analysis" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-f5bacfa1">
+<div class="need_container docutils container" id="SNCB-a7aeb9ca">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__json_dfa">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -820,7 +820,7 @@ will be considered in the platform DFA.</p>
 <tr class="row-odd"><td><p>UI_01_02</p></td>
 <td><p>Read/Write access to memory allocated to another software element</p></td>
 <td><p>yes</p></td>
-<td><p>nlohman-JSON and JSON-Wrapper are in same memory space</p></td>
+<td><p>nlohman-JSON and JSON-Wrapper are in same memory space, <a class="reference internal" href="#comp_saf_dfa__json__ffi" title="comp_saf_dfa__json__ffi"><em class="xref need">Json component FFI (comp_saf_dfa__json__ffi)</em></a></p></td>
 </tr>
 <tr class="row-even"><td><p>UI_01_03</p></td>
 <td><p>Stack/Buffer under-/overflow</p></td>
@@ -830,7 +830,7 @@ will be considered in the platform DFA.</p>
 <tr class="row-odd"><td><p>UI_01_04</p></td>
 <td><p>Deadlocks</p></td>
 <td><p>yes</p></td>
-<td><p>Filesystem access may be blocking.</p></td>
+<td><p>Filesystem access may be blocking, <a class="reference internal" href="#comp_saf_dfa__json__blocking_access" title="comp_saf_dfa__json__blocking_access"><em class="xref need">Json blocking access (comp_saf_dfa__json__blocking_access)</em></a></p></td>
 </tr>
 <tr class="row-even"><td><p>UI_01_05</p></td>
 <td><p>Livelocks</p></td>
@@ -839,8 +839,8 @@ will be considered in the platform DFA.</p>
 </tr>
 <tr class="row-odd"><td><p>UI_01_06</p></td>
 <td><p>Blocking of execution</p></td>
-<td><p>no</p></td>
-<td><p>nlohman-JSON and JSON-Wrapper block each other.</p></td>
+<td><p>yes</p></td>
+<td><p>nlohman-JSON and JSON-Wrapper may block each other, <a class="reference internal" href="#comp_saf_dfa__json__ffi" title="comp_saf_dfa__json__ffi"><em class="xref need">Json component FFI (comp_saf_dfa__json__ffi)</em></a></p></td>
 </tr>
 <tr class="row-even"><td><p>UI_01_07</p></td>
 <td><p>Incorrect allocation of execution time</p></td>
@@ -860,7 +860,7 @@ will be considered in the platform DFA.</p>
 <tr class="row-odd"><td><p>UI_01_10</p></td>
 <td><p>CPU time depletion</p></td>
 <td><p>yes</p></td>
-<td><p>nlohman-JSON and JSON-Wrapper deplete each other’s CPU time.</p></td>
+<td><p>nlohman-JSON and JSON-Wrapper may deplete each other’s CPU time, <a class="reference internal" href="#comp_saf_dfa__json__ffi" title="comp_saf_dfa__json__ffi"><em class="xref need">Json component FFI (comp_saf_dfa__json__ffi)</em></a></p></td>
 </tr>
 <tr class="row-even"><td><p>UI_01_11</p></td>
 <td><p>Memory depletion</p></td>
@@ -881,7 +881,7 @@ will be considered in the platform DFA.</p>
 <section id="dfa">
 <h1>DFA<a class="headerlink" href="#dfa" title="Link to this heading">#</a></h1>
 <p>For all identified applicable failure initiators, the DFA is performed in the following section.</p>
-<div class="need_container docutils container" id="SNCB-e6e5071f">
+<div class="need_container docutils container" id="SNCB-391ad932">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_saf_dfa table" id="comp_saf_dfa__json__ffi">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -928,7 +928,7 @@ will be considered in the platform DFA.</p>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a10f3660">
+<div class="need_container docutils container" id="SNCB-d5f1c01d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_saf_dfa table" id="comp_saf_dfa__json__blocking_access">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
