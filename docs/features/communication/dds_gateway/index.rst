@@ -79,9 +79,9 @@ Scope
 The DDS Gateway provides:
 
 - Bridging between ``mw::com (LoLa)`` and DDS via the gateway:
-   - ``mw::com (LoLa)`` → DDS → ``mw::com (LoLa)`` (inter-ECU communication via DDS)
-   - ``mw::com (LoLa)`` → DDS → DDS applications
-   - DDS applications → DDS → ``mw::com (LoLa)``
+   - ``mw::com (LoLa)`` → DDS GW → ``mw::com (LoLa)`` (inter-ECU communication via DDS)
+   - ``mw::com (LoLa)`` → DDS GW → DDS applications
+   - DDS applications → DDS GW → ``mw::com (LoLa)``
 
 - Configurable routing:
 
@@ -93,6 +93,7 @@ The DDS Gateway provides:
   - Runtime type definition via configuration or via dynamic library
   - No dependency on DDS IDL generation
   - Enables data translation and consistent serialization across middleware boundaries
+  - Supports DDS standard encodings (e.g., XCDR1 and XCDR2) for interoperability
 
 - End-to-End (E2E) protection:
 
