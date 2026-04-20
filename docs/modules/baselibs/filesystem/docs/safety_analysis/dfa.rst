@@ -18,9 +18,9 @@ DFA (Dependent Failure Analysis)
 
 .. document:: filesystem DFA
    :id: doc__filesystem_dfa
-   :status: draft
+   :status: valid
    :safety: ASIL_B
-   :security: NO
+   :security: YES
    :realizes: wp__sw_component_dfa
 
 .. note:: Use the content of the document to describe e.g. why a fault model is not applicable for the diagram.
@@ -29,22 +29,5 @@ DFA (Dependent Failure Analysis)
 Dependent Failure Initiators
 ----------------------------
 
-.. code-block:: rst
-
-    .. comp_saf_dfa:: <Title>
-       :violates: <Component architecture>
-       :id: comp_saf_dfa__<Component>__<Element descriptor>
-       :failure_id: <ID from DFA failure initiators :need:`gd_guidl__dfa_failure_initiators`>
-       :failure_effect: "description of failure effect of the failure initiator on the element"
-       :mitigated_by: <ID from Component Requirement | ID from AoU Component Requirement>
-       :mitigation_issue: <ID from Issue Tracker>
-       :sufficient: <yes|no>
-       :status: <valid|invalid>
-
-.. note::   argument is inside the 'content'. Therefore content is mandatory
-
-.. attention::
-    The above directive must be updated according to your component DFA.
-
-    - The above "code-block" directive must be updated
-    - Fill in all the needed information in the <brackets>
+As the component's archtitecture does not have a decomposition into further components,
+there are no failures additional to the ones analyzed on feature level.
