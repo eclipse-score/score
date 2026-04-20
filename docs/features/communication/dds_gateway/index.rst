@@ -15,7 +15,14 @@
 DDS Gateway
 ===========
 
-.. toctree::
+.. document:: DDS-Gateway
+   :id: doc__dds_gateway
+   :status: valid
+   :safety: ASIL_B
+   :tags: contribution_request, feature_request
+   :security: YES
+   :realizes: wp__feat_request
+
 
 Overview
 --------
