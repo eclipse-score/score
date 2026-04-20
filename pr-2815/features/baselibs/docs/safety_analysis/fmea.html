@@ -521,6 +521,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../architecture/chklst_arc_inspection.html">Architecture Inspection Checklist</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dfa.html">DFA (Dependent Failure Analysis)</a></li>
+
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">FMEA (Failure Modes and Effects Analysis)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../safety_planning/index.html">Feature Safety Work Products List</a></li>
 
@@ -602,7 +603,7 @@
                   
   <section id="fmea-failure-modes-and-effects-analysis">
 <h1>FMEA (Failure Modes and Effects Analysis)<a class="headerlink" href="#fmea-failure-modes-and-effects-analysis" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-d30891f8">
+<div class="need_container docutils container" id="SNCB-02d5762e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__baselibs_fmea">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -610,8 +611,8 @@
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
-<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></span></div>
-<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
 <div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
@@ -645,30 +646,12 @@
 </table>
 </div>
 </div>
-<section id="failure-mode-list">
-<h2>Failure Mode List<a class="headerlink" href="#failure-mode-list" title="Link to this heading">#</a></h2>
-<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">   ..</span> <span class="ow">feat_saf_fmea</span><span class="p">::</span> <span class="nt">&lt;Title&gt;</span>
-      <span class="nc">:violates:</span> <span class="nt">&lt;Feature architecture&gt;</span>
-      <span class="nc">:id:</span> feat_saf_fmea__&lt;Feature&gt;__&lt;Element descriptor&gt;
-      <span class="nc">:fault_id:</span> <span class="nt">&lt;ID from fault model :need:`gd_guidl__fault_models`&gt;</span>
-      <span class="nc">:failure_effect:</span> &quot;description of failure effect of the fault model on the element&quot;
-      <span class="nc">:mitigated_by:</span> <span class="nt">&lt;ID from Feature Requirement | ID from AoU Feature Requirement&gt;</span>
-      <span class="nc">:mitigation_issue:</span> <span class="nt">&lt;ID from Issue Tracker&gt;</span>
-      <span class="nc">:sufficient:</span> <span class="nt">&lt;yes|no&gt;</span>
-      <span class="nc">:status:</span> <span class="nt">&lt;valid|invalid&gt;</span>
-
-<span class="p">..</span> <span class="ow">note</span><span class="p">::</span>   argument is inside the &#39;content&#39;. Therefore content is mandatory
-</pre></div>
-</div>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>The above directive must be updated according to your feature FMEA.</p>
-<ul class="simple">
-<li><p>The above “code-block” directive must be updated</p></li>
-<li><p>Fill in all the needed information in the &lt;brackets&gt;</p></li>
-</ul>
-</div>
-</section>
+<p>The feature baselibs consists of multiple components which provide very different functionality.
+They are also low-complex (i.e. no component architecture is documented, so that the feature architecture is the only one to analyze,
+with one exception which is the Json component).</p>
+<p>For a better usability and readability the FMEA will be documented on component level and for every
+component individually, but using the feature architecture views (plus additional component architecture if any decompositon was done).</p>
+<p>Consequently there is no AoU detected and documented on feature level.</p>
 </section>
 
 
@@ -709,18 +692,6 @@
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
-
-  <div class="sidebar-secondary-item">
-<div
-    id="pst-page-navigation-heading-2"
-    class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> On this page
-  </div>
-  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#failure-mode-list">Failure Mode List</a></li>
-</ul>
-  </nav></div>
 
   <div class="sidebar-secondary-item">
 
