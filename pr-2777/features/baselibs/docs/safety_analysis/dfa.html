@@ -603,7 +603,7 @@
                   
   <section id="dfa-dependent-failure-analysis">
 <h1>DFA (Dependent Failure Analysis)<a class="headerlink" href="#dfa-dependent-failure-analysis" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-11ac0ee8">
+<div class="need_container docutils container" id="SNCB-72374f17">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__baselibs_dfa">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -611,8 +611,8 @@
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
-<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></span></div>
-<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
 <div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
 </td>
@@ -786,7 +786,7 @@ will be considered in the platform DFA.</p>
 <tr class="row-odd"><td><p>UI_01_02</p></td>
 <td><p>Read/Write access to memory allocated to another software element</p></td>
 <td><p>yes</p></td>
-<td><p>As baselibs are in context of a application, they may access their memory, link to need</p></td>
+<td><p>As baselibs are in context of a application, they may access their memory, <a class="reference internal" href="#feat_saf_dfa__baselibs__memory_access" title="feat_saf_dfa__baselibs__memory_access"><em class="xref need">memory access (feat_saf_dfa__baselibs__memory_access)</em></a></p></td>
 </tr>
 <tr class="row-even"><td><p>UI_01_03</p></td>
 <td><p>Stack/Buffer under-/overflow</p></td>
@@ -796,7 +796,7 @@ will be considered in the platform DFA.</p>
 <tr class="row-odd"><td><p>UI_01_04</p></td>
 <td><p>Deadlocks</p></td>
 <td><p>yes</p></td>
-<td><p>shared memory or file access may lead to deadlock, link to need</p></td>
+<td><p>shared memory or file access may lead to deadlock, <a class="reference internal" href="#feat_saf_dfa__baselibs__locked_ressource" title="feat_saf_dfa__baselibs__locked_ressource"><em class="xref need">locked ressource (feat_saf_dfa__baselibs__locked_ressource)</em></a></p></td>
 </tr>
 <tr class="row-even"><td><p>UI_01_05</p></td>
 <td><p>Livelocks</p></td>
@@ -806,7 +806,7 @@ will be considered in the platform DFA.</p>
 <tr class="row-odd"><td><p>UI_01_06</p></td>
 <td><p>Blocking of execution</p></td>
 <td><p>yes</p></td>
-<td><p>As baselibs are in context of a application, they may block execution, link to need</p></td>
+<td><p>As baselibs are in context of a application, they may block execution, <a class="reference internal" href="#feat_saf_dfa__baselibs__blocked_execution" title="feat_saf_dfa__baselibs__blocked_execution"><em class="xref need">blocked execution (feat_saf_dfa__baselibs__blocked_execution)</em></a></p></td>
 </tr>
 <tr class="row-even"><td><p>UI_01_07</p></td>
 <td><p>Incorrect allocation of execution time</p></td>
@@ -826,7 +826,7 @@ will be considered in the platform DFA.</p>
 <tr class="row-odd"><td><p>UI_01_10</p></td>
 <td><p>CPU time depletion</p></td>
 <td><p>yes</p></td>
-<td><p>Baselibs may deplete or suffer from depletion, link to need</p></td>
+<td><p>Baselibs may deplete or suffer from depletion, <a class="reference internal" href="#feat_saf_dfa__baselibs__cpu_starvation" title="feat_saf_dfa__baselibs__cpu_starvation"><em class="xref need">CPU starvation (feat_saf_dfa__baselibs__cpu_starvation)</em></a></p></td>
 </tr>
 <tr class="row-even"><td><p>UI_01_11</p></td>
 <td><p>Memory depletion</p></td>
@@ -847,7 +847,7 @@ will be considered in the platform DFA.</p>
 <section id="dfa">
 <h1>DFA<a class="headerlink" href="#dfa" title="Link to this heading">#</a></h1>
 <p>For all identified applicable failure initiators, the DFA is performed in the following section.</p>
-<div class="need_container docutils container" id="SNCB-87bb0356">
+<div class="need_container docutils container" id="SNCB-878d3fe1">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_saf_dfa table" id="feat_saf_dfa__baselibs__memory_access">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -855,7 +855,7 @@ will be considered in the platform DFA.</p>
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
-<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">invalid</span></span></span></div>
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -895,7 +895,7 @@ out of bounds access should be detected by unit testing/sanitizers.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-dd79c0fa">
+<div class="need_container docutils container" id="SNCB-d613d29e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_saf_dfa table" id="feat_saf_dfa__baselibs__locked_ressource">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -943,7 +943,7 @@ above linked AoU and <a class="reference internal" href="../../../../modules/bas
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5b59a143">
+<div class="need_container docutils container" id="SNCB-c95cf7b0">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_saf_dfa table" id="feat_saf_dfa__baselibs__blocked_execution">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -951,7 +951,7 @@ above linked AoU and <a class="reference internal" href="../../../../modules/bas
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
-<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">invalid</span></span></span></div>
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -991,7 +991,7 @@ all blocks should be detected by unit testing.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-59169388">
+<div class="need_container docutils container" id="SNCB-f43267d6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_saf_dfa table" id="feat_saf_dfa__baselibs__cpu_starvation">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
