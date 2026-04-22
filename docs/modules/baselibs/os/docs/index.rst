@@ -26,6 +26,9 @@ os
 .. toctree::
    :hidden:
 
+   requirements/index.rst
+   architecture/index.rst
+
 Abstract
 ========
 
