@@ -28,14 +28,7 @@ The following shows the folder structure of the platform repository (ordered alp
         contribute/                    -> Description on how to contribute
         features/                      -> All features of the platform
             <feature_name>/            -> Features including sub-folders and feature (change) request [:need:`wp__feat_request`]
-               architecture/           -> Feature architecture [:need:`wp__feature_arch`]
                requirements/           -> Feature requirements [:need:`wp__requirements_feat`]
-               safety_analysis/        -> Safety analysis on feature level [:need:`wp__feature_fmea`], [:need:`wp__feature_dfa`]
-               safety_planning/        -> Feature specific safety workproducts planning
-               security_analysis/      -> Security analysis on feature level [:need:`wp__feature_security_analysis`]
-               verification/           -> Feature verification, consisting of Architecture review [:need:`wp__sw_arch_verification`],
-                  integration_tests/   -> Feature Integration tests [:need:`wp__verification_feat_int_test`]
-
         glossary/                      -> Glossary of abbreviations used in the platform context
         introduction/                  -> Background, scope and high-level architecture of the platform features
         manuals/                       -> User and integration manual(s)
@@ -73,6 +66,14 @@ The modules and components shall follow the folder structure which was presented
 
    <module_name>/                      -> Folder containing all artifacts corresponding to one module.
       docs/                            -> Documentation of the module
+        features/                      -> All features of the platform
+            <feature_name>/            -> Features including sub-folders and feature (change) request [:need:`wp__feat_request`]
+               architecture/           -> Feature architecture [:need:`wp__feature_arch`]
+               safety_analysis/        -> Safety analysis on feature level [:need:`wp__feature_fmea`], [:need:`wp__feature_dfa`]
+               safety_planning/        -> Feature specific safety workproducts planning
+               security_analysis/      -> Security analysis on feature level [:need:`wp__feature_security_analysis`]
+               verification/           -> Feature verification, consisting of Architecture review [:need:`wp__sw_arch_verification`],
+                  integration_tests/   -> Feature Integration tests [:need:`wp__verification_feat_int_test`]
          manual/                       -> Module manual, e.g. integration manual, assumptions of use,
                                              safety manual [:need:`wp__requirements_comp_aou`],
                                              [:need:`wp__module_safety_manual`],
@@ -99,7 +100,8 @@ The modules and components shall follow the folder structure which was presented
                                              Test doubles
             <lower_level_comp>/        -> lower level component following <component_name> folder structure
             details/                   -> Private implementation details of the component following <component_name> folder structure
-
+            tests/                     -> Component-level tests (e.g., unit tests) [wp__verification_sw_unit_test]
+         tests/                        -> Module-level tests (e.g., feature integration tests, system tests) [wp__verification_comp_int_test]
          docs/                         -> Documentation of the component
             architecture/              -> Component architecture (only if lower level components exist)
                                              [:need:`wp__component_arch`].
