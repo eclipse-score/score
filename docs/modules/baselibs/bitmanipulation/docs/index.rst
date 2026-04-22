@@ -27,9 +27,12 @@ bitmanipulation
    :hidden:
 
    requirements/index.rst
+   requirements/chklst_req_inspection.rst
    architecture/index.rst
+   architecture/chklst_arc_inspection.rst
    safety_analysis/fmea.rst
    safety_analysis/dfa.rst
+   detailed_design/chklst_impl_inspection.rst
 
 
 Abstract
@@ -57,7 +60,8 @@ General considerations
 
 The Bit Manipulation library should provide bit operation and byte extraction capabilities:
 
-* :need:`comp_req__bitmanipulation__utilities`
+* :need:`comp_req__bitmanipulation__bit_operations`
+* :need:`comp_req__bitmanipulation__byte_operations`
 * :need:`comp_req__bitmanipulation__bitmask_operators`
 * :need:`comp_req__bitmanipulation__bounds_safety`
 * :need:`comp_req__bitmanipulation__header_only`

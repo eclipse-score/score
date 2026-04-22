@@ -162,6 +162,14 @@ release, as part of the Tool Verification Report.
      - N/A
      - YES
    * - 2a-3
+     - clang-format
+     - Code formatter (linter) from LLVM project
+     - 19.x (see [1]_)
+     - YES
+     - :need:`rl__infrastructure_tooling_community`
+     - N/A
+     - YES
+   * - 2a-4
      - CodeQL
      - CodeQL is a semantic code analysis engine used for security and code quality analysis.
      - T.B.D. (see [1]_)
@@ -169,7 +177,7 @@ release, as part of the Tool Verification Report.
      - :need:`rl__infrastructure_tooling_community`
      - N/A
      - YES
-   * - 2a-4
+   * - 2a-5
      - gcovr
      - Code coverage tool (uses gcov from GCC), part of GNU compiler collection
      - T.B.D. (see [1]_)
@@ -487,7 +495,15 @@ release, as part of the Tool Verification Report.
      - :need:`rl__infrastructure_tooling_community`
      - N/A
      - YES
-   * - 4-11
+   * - 4-12
+     - toolchains_llvm
+     - LLVM toolchain rules for Bazel (host configuration, C++17 standard)
+     - 1.4.0 (see [1]_)
+     - YES
+     - :need:`rl__infrastructure_tooling_community`
+     - N/A
+     - N/A
+   * - 4-13
      - score_toolchains_rust
      - Rust toolchains for SCORE project
      - T.B.D. (see [1]_)
@@ -524,27 +540,11 @@ release, as part of the Tool Verification Report.
      - YES
    * - 5a-2
      - QNX 8.x SDP
-     - Qualifiable compiler/linker from BlackBerry for QNX, used for target compilation
+     - Qualified compiler/linker from BlackBerry for QNX, used for target compilation
      - 12+ (see [1]_)
      - YES
      - :need:`rl__infrastructure_tooling_community`
      - :need:`doc_tool__qcc`
-     - N/A
-   * - 5a-3
-     - LLVM/Clang
-     - Alternative C++ compiler toolchain
-     - 19.1.0 (see [1]_)
-     - YES
-     - :need:`rl__infrastructure_tooling_community`
-     - :need:`doc_tool__bazel`
-     - N/A
-   * - 5a-4
-     - toolchains_llvm
-     - LLVM toolchain rules for Bazel (host configuration, C++17 standard)
-     - 1.4.0 (see [1]_)
-     - YES
-     - :need:`rl__infrastructure_tooling_community`
-     - :need:`doc_tool__bazel`
      - N/A
 
 

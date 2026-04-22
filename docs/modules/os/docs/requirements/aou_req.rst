@@ -12,8 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Assumptions of Use
-##################
+Generic Assumptions of Use
+##########################
 
 .. document:: Operating System Assumptions of Use
    :id: doc__os_aou

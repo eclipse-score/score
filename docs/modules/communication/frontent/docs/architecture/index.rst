@@ -22,7 +22,7 @@ Frontend Component Architecture
    :status: valid
    :implements: logic_arc_int__communication__user
    :uses: logic_arc_int__logging__logging, logic_arc_int__tracing__tracing
-
+   :belongs_to: feat__com_communication
 
 .. comp_arc_sta:: mw::com Frontend Architecture
    :id: comp_arc_sta__com__frontend
@@ -31,7 +31,7 @@ Frontend Component Architecture
    :status: valid
    :uses: logic_arc_int__logging__logging, logic_arc_int__tracing__tracing
    :belongs_to: comp__com_frontend
-   :fulfils: comp_req__component_name__some_title
+   :fulfils: comp_req__communication__logging
 
    .. needarch::
       :scale: 50
@@ -94,3 +94,18 @@ Frontend Component Architecture
    :safety:  ASIL_B
    :status: valid
    :included_by: logic_arc_int__communication__user
+
+
+Functional Requirements
+=======================
+
+.. comp_req:: Error logging
+   :id: comp_req__communication__logging
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :satisfies: feat_req__com__event_type
+   :status: valid
+   :belongs_to: comp__com_frontend
+
+   In case, that there is no related Event Type Info source provided in shared memory for a given Event enlisted in the deployment for the proxy, an ERROR message shall be logged.

@@ -37,6 +37,21 @@ Static Architecture
    :status: valid
    :tags: baselibs_bit_manipulation
    :implements: logic_arc_int__baselibs__bit_manipulation,logic_arc_int__baselibs__bit_mask_operator
+   :belongs_to: feat__baselibs
+
+   .. needarch::
+      :scale: 50
+      :align: center
+
+      {{ draw_component(need(), needs) }}
+
+.. comp_arc_sta:: Bit Manipulation Static view
+   :id: comp_arc_sta__baselibs__bit_manipulation
+   :security: NO
+   :safety:  ASIL_B
+   :status: valid
+   :fulfils: comp_req__bitmanipulation__bit_operations,comp_req__bitmanipulation__byte_operations,comp_req__bitmanipulation__bitmask_operators,comp_req__bitmanipulation__bounds_safety,comp_req__bitmanipulation__header_only
+   :belongs_to: comp__baselibs_bit_manipulation
 
    .. needarch::
       :scale: 50
@@ -82,6 +97,20 @@ Interfaces
 
 .. logic_arc_int_op:: Test Bit
    :id: logic_arc_int_op__baselibs__test_bit
+   :security: NO
+   :safety:  ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__bit_manipulation
+
+.. logic_arc_int_op:: Set (Half)-Byte
+   :id: logic_arc_int_op__baselibs__set_byte
+   :security: NO
+   :safety:  ASIL_B
+   :status: valid
+   :included_by: logic_arc_int__baselibs__bit_manipulation
+
+.. logic_arc_int_op:: Extract (Half)-Byte
+   :id: logic_arc_int_op__baselibs__extract_byte
    :security: NO
    :safety:  ASIL_B
    :status: valid

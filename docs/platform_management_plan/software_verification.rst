@@ -207,7 +207,8 @@ For QM software some of the methods may be executed with less rigor compared to 
 These may be interface testing or resource usage evaluation, in case there is an argument for
 sufficient freedom from interference with safety critical software parts.
 
-Static code analysis is part of the :need:`wp__sw_implementation`.
+Static code analysis is part of the :need:`wp__sw_implementation`. It is supported by tooling as mentioned in
+the :need:`doc__software_development_plan`
 
 As an additional measure the resource usage evaluation ``resource-usage`` should also be considered
 for level 3 testing as this is the level executed also on reference hardware with the integrated
@@ -223,16 +224,16 @@ at higher levels:
 
    #. Control Flow Analysis (``control-flow-analysis``):
 
-      Most beneficial for testing level 1 and 2.
+      Most beneficial for testing level "1 Unit/Component" and "2 Feature Integration".
    #. Data Flow Analysis (``data-flow-analysis``):
 
-      Most beneficial for testing level 1 and 2.
+      Most beneficial for testing level "1 Unit/Component" and "2 Feature Integration".
    #. Fault Injection (``fault-injection``):
 
-      Most beneficial for testing level 2.
+      Most beneficial for testing level "2 Feature Integration".
    #. Structural Function/Call Coverage (``structural-function-coverage`` & ``structural-call-coverage``)
 
-      Most beneficial for testing level 2.
+      Most beneficial for testing level "2 Feature Integration".
 
 
 Test Derivation Methods
@@ -294,19 +295,19 @@ to be reached with every contribution.
      - Goal for QM
      - Goal for Safety
    * - 1
-     - Structural Statement Coverage
+     - Structural Statement Coverage (represented by Line Coverage)
      - 85%
      - 100%
    * - 2
-     - Structural Decision Coverage
+     - Structural Branch Coverage
      - 85%
      - 100%
    * - 3
-     - Verification coverage of software detailed design (test coverage)
-     - 100%
+     - Coverage of software detailed design
+     - n/a
      - 100%
    * - 4
-     - Verification coverage of software architecture design (test coverage)
+     - Coverage of software architecture design
      - 100%
      - 100%
    * - 5
@@ -322,9 +323,9 @@ to be reached with every contribution.
      - 100%
      - 100%
    * - 8
-     - Compliance with rules for static code analysis
-     - only minor violation based on tool rating
-     - 100%
+     - Freedom from static code analysis violations (critical and high severity)
+     - 100% (no remaining critical findings)
+     - 100% (no remaining critical or high severity findings)
    * - 9
      - Freedom from compiler warnings & errors
      - 100%
@@ -332,36 +333,86 @@ to be reached with every contribution.
 
 Further quality goals are defined in section :doc:`quality_management`.
 
+
+Structural coverage
+^^^^^^^^^^^^^^^^^^^
+The percentage values for structural statement and branch coverage as defined in above table are represented by the
+reported Line and Branch Coverage values based on the unit test tooling.
+
 The confirmation or any deviation of the coverage percentage value is documented in this section.
 This shall also be part of the module documentation with a reasoning when percentage numbers deviate for an official release.
 
 Coverage of detailed design
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Beside :need:`wp__verification_comp_int_test` and :need:`wp__verification_sw_unit_test` the
-following aspects define the coverage of detailed design.
+Coverage of the detailed design for safety-critical software is defined by the following aspects:
 
-- Statement/Branch coverage as defined by their specific thresholds
-- Static analysis and Linting
 - :need:`wp__sw_implementation_inspection` for safety-critical implementation
+
+Evidence of the inspection is given by the respective work product and its review.
+The inspection needs to cover the implementation of the detailed design.
+
+Additionally, the following measures are taken to support the coverage of the detailed design:
+
+- Structural coverage as defined by their specific thresholds
+- Static analysis and Linting
+
+These measures are not counting in the coverage percentage of this goal, as they have their own defined goals.
+
+For QM rated software no further coverage calculation is expected on the detailed design level,
+but the respective work products are expected to be created and reviewed.
 
 Coverage of architectural design
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Beside :need:`wp__verification_comp_int_test` and :need:`wp__verification_feat_int_test` the
-following aspects define the coverage of the architectural design.
+To achieve the coverage of the architectural design the completeness against the following work products is verified:
 
 - :need:`wp__sw_arch_verification` - done by walkthrough (QM) or inspection (safety-critical parts)
 - :need:`wp__sw_component_fmea` and :need:`wp__sw_component_dfa` for safety-critical parts
 - :need:`wp__feature_fmea` and :need:`wp__feature_dfa` for safety-critical parts
 
-Each architectural element has at least one test case linked with attribute ``FullyVerified`` or
-multiple test cases with attribute ``PartiallyVerified``.
+Each architectural element has to be reviewed against the availability of the above artifacts.
 
 Coverage of software requirements specifications
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For a release all ``valid`` requirements need to have a complete test coverage of linked test cases.
+For a release the ``valid`` requirements need to have a complete test coverage of linked test cases.
+
+Tests which are suitable for the coverage are:
+
+- :need:`wp__verification_comp_int_test`
+- :need:`wp__verification_feat_int_test`
+- :need:`wp__verification_platform_int_test`
+- :need:`wp__verification_sw_unit_test`
+
+A requirements with a safety attribute which misses a ``FullyVerified`` link to a test case or misses the the attribute ``complete test coverage`` is not judged as not covered.
+For QM software parts, it is not necessary to have the requirements attribute ``complete test coverage`` but each requirement needs to have at least one linked test case.
+
+Relative amount of executed and passed tests
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The goal is to have all tests with linked ``valid`` requirements executed and passed for a release.
+
+
+Static code analysis
+^^^^^^^^^^^^^^^^^^^^
+Static code analysis is performed to ensure compliance with coding standards and to identify potential issues early in the development process.
+The respective tools  (e.g. GitHub CodeQL) used for static analysis are mentioned in the :need:`doc__software_development_plan`.
+
+Violation identified by the static code analysis tools are categorized based on their severity.
+
+For QM software, the objective is a 100% closure rate of any Critical severity finding prior to release.
+For safety‑critical software, the objective is a 100% closure rate of any Critical and High severity finding prior to release.
+
+In other words, for QM software, the quality target is zero open findings classified as Critical at release.
+For safety‑critical software, the quality target is zero open findings classified as Critical or High.
+
+Remaining Medium severity findings are reviewed and justified by documented risk acceptance.
+
+Where no severity rating is provided the violation is part of the coverage calculation and needs to be resolved to reach the defined goals.
+
+Any deviation of the coverage percentage value is documented as part of the module documentation.
+A rationale for the deviation need to be provided for an official release.
 
 
 Test development
@@ -512,10 +563,36 @@ of test based on `pytest <https://pytest.org>`__.
 The platform developed in this project supports `Rust <https://www.rust-lang.org>`__ as a programming language. Its
 built-in test framework is used to test respective software components.
 
+.. rubric:: GitHub CodeQL
+
+For Static Code Analysis, `CodeQL <https://codeql.github.com/>`__ is used to identify potential vulnerabilities, weaknesses, and code quality issues in the software components of the project.
+It is integrated into the CI pipeline to ensure that any new code changes are automatically analyzed for potential issues.
+
+Core features of CodeQL include:
+
+- **Vulnerability Detection**: CodeQL can identify known vulnerabilities in the codebase by comparing it against a database of known issues.
+- **Custom Queries**: Developers can write custom queries to identify specific patterns or issues in the codebase that are relevant to the project's security and quality standards.
+- **Integration with CI**: CodeQL can be integrated into the CI pipeline to automatically analyze code changes and provide feedback on potential issues before they are merged into the main codebase.
+- **Reporting**: CodeQL provides detailed reports on identified issues, including severity levels and recommendations for remediation.
+- **Support for Multiple Languages**: CodeQL supports multiple programming languages, including C++, Rust, and others used in the project.
+
+CodeQL has the capability to identify a wide range of issues, including security vulnerabilities, code quality problems, and potential bugs.
+
+Examples of capabilities include:
+- unsafe data flows and control flow (e.g., tainted data flows, unreachable code, missing checks before sensitive calls)
+- potential runtime errors (e.g., null pointer dereferences, buffer overflows)
+- code quality issues (e.g., dead code, unused variables)
+- incorrect use of APIs (e.g., misuse of cryptographic functions, incorrect error handling)
+- compliance with coding standards (e.g., naming conventions, code complexity)
+- violations of project-specific coding guidelines (e.g., use of certain libraries, adherence to architectural patterns)
+
+Custom queries can be developed to identify specific patterns or issues that are relevant to the project's security and quality standards.
+This allows for a tailored approach to static code analysis that aligns with the project's specific requirements and goals.
+
 Verification setups and variants
 --------------------------------
 
-Different test frameworks get used to verify software components and their integration into the platform (see Tools
+Different test frameworks are used to verify software components and their integration into the platform (see Tools
 section above). Driven by that the following test setups can be derived:
 
 #. GoogleTest
@@ -533,14 +610,19 @@ above the hardware abstraction layer. The platform itself does not require to be
 a specific hardware. It integrates with an POSIX Operating System which is the first level of
 abstraction to the physical hardware.
 
-The simulation environment will be based on x86 and arm64 architecture, to be close to later
-target hardware.
+This POSIX OS based simulation environment will operate on aarch64 and x86_64 architecture with QNX and Linux
+flavours as Operating System, to be close to later target hardware OS and architectures.
+
+To also ease the reuse and execution of unit tests on various type of hardware the unit tests are executed
+matching OS and HW architectures (aarch64 and x86_64) which are e.g. build by the reference integration. 
 
 The integration of the platform on a target device and the respective verification and validation
 should be considered by the distributor of the platform. On target integration tests that are
 running on a reference hardware in context of this project can be taken as a starting point.
 
-The reference hardware is not yet decided.
+See also the respective AoU: :need:`aou_req__platform__testing` and :need:`aou_req__platform__test_completion`.
+
+**The reference hardware is not yet decided.**
 
 Reference hardware interaction with infrastructure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

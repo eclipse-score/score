@@ -17,7 +17,7 @@ Module Safety Plan
 
 .. document:: Baselibs Safety Plan
    :id: doc__baselibs_safety_plan
-   :status: draft
+   :status: valid
    :safety: ASIL_B
    :security: NO
    :realizes: wp__module_safety_plan
@@ -93,12 +93,12 @@ Module Work products List
         * - :need:`wp__fdr_reports` (module's Safety Analyses & DFA)
           - :need:`gd_chklst__safety_analysis`
           - :ndf:`copy('status', need_id='gd_chklst__safety_analysis')`
-          - <Link to WP>
+          - :need:`doc__baselibs_safety_analysis_fdr`
 
         * - :need:`wp__audit_report`
           - performed by external experts
           - n/a
-          - <Link to WP>
+          - see platform safety plan
 
         * - :need:`wp__module_safety_manual`
           - :need:`gd_temp__safety_manual`
@@ -140,7 +140,7 @@ Component bitmanipulation Work products List
         * - :need:`wp__requirements_inspect`
           - :need:`gd_chklst__req_inspection`
           - :ndf:`copy('status', need_id='gd_chklst__req_inspection')`
-          - <Link to WP>
+          - :need:`doc__bitmanipulation_req_inspection`
 
         * - :need:`wp__component_arch`
           - :need:`gd_temp__arch_comp`
@@ -150,7 +150,7 @@ Component bitmanipulation Work products List
         * - :need:`wp__sw_arch_verification`
           - :need:`gd_chklst__arch_inspection_checklist`
           - :ndf:`copy('status', need_id='gd_chklst__arch_inspection_checklist')`
-          - <Link to WP>
+          - :need:`doc__bitmanipulation_arc_inspection`
 
         * - :need:`wp__sw_component_fmea`
           - :need:`gd_temp__comp_saf_fmea`
@@ -175,7 +175,73 @@ Component bitmanipulation Work products List
         * - :need:`wp__sw_implementation_inspection`
           - :need:`gd_chklst__impl_inspection_checklist`
           - :ndf:`copy('status', need_id='gd_chklst__impl_inspection_checklist')`
-          - <Link to WP>
+          - :need:`doc__bitmanipulation_impl_inspection`
+
+        * - :need:`wp__verification_comp_int_test`
+          - :need:`gd_guidl__verification_guide`
+          - :ndf:`copy('status', need_id='gd_guidl__verification_guide')`
+          - component integration not needed (no sub-components and units are independent)
+
+Component concurrency Work products List
+----------------------------------------
+
+.. list-table:: Component concurrency Work products
+        :header-rows: 1
+
+        * - Work product Id
+          - Link to process
+          - Process status
+          - Link to WP
+
+        * - :need:`wp__requirements_comp`
+          - :need:`gd_temp__req_comp_req`
+          - :ndf:`copy('status', need_id='gd_temp__req_comp_req')`
+          - :need:`doc__concurrency_requirements`
+
+        * - :need:`wp__requirements_comp_aou`
+          - :need:`gd_temp__req_aou_req`
+          - :ndf:`copy('status', need_id='gd_temp__req_aou_req')`
+          - :need:`doc__concurrency_requirements`
+
+        * - :need:`wp__requirements_inspect`
+          - :need:`gd_chklst__req_inspection`
+          - :ndf:`copy('status', need_id='gd_chklst__req_inspection')`
+          - :need:`doc__concurrency_req_inspection`
+
+        * - :need:`wp__component_arch`
+          - :need:`gd_temp__arch_comp`
+          - :ndf:`copy('status', need_id='gd_temp__arch_comp')`
+          - :need:`doc__concurrency_architecture`
+
+        * - :need:`wp__sw_arch_verification`
+          - :need:`gd_chklst__arch_inspection_checklist`
+          - :ndf:`copy('status', need_id='gd_chklst__arch_inspection_checklist')`
+          - :need:`doc__concurrency_arc_inspection`
+
+        * - :need:`wp__sw_component_fmea`
+          - :need:`gd_temp__comp_saf_fmea`
+          - :ndf:`copy('status', need_id='gd_temp__comp_saf_fmea')`
+          - :need:`doc__concurrency_fmea`
+
+        * - :need:`wp__sw_component_dfa`
+          - :need:`gd_temp__comp_saf_dfa`
+          - :ndf:`copy('status', need_id='gd_temp__comp_saf_dfa')`
+          - :need:`doc__concurrency_dfa`
+
+        * - :need:`wp__sw_implementation`
+          - :need:`gd_guidl__implementation`
+          - :ndf:`copy('status', need_id='gd_guidl__implementation')`
+          - `concurrency .h/.cpp <https://github.com/eclipse-score/baselibs/tree/main/score/concurrency>`_, `concurrency/design <https://github.com/eclipse-score/baselibs/tree/main/score/concurrency/design>`_
+
+        * - :need:`wp__verification_sw_unit_test`
+          - :need:`gd_guidl__verification_guide`
+          - :ndf:`copy('status', need_id='gd_guidl__verification_guide')`
+          - `concurency/test.cpp <https://github.com/eclipse-score/baselibs/tree/main/score/concurrency>`_
+
+        * - :need:`wp__sw_implementation_inspection`
+          - :need:`gd_chklst__impl_inspection_checklist`
+          - :ndf:`copy('status', need_id='gd_chklst__impl_inspection_checklist')`
+          - :need:`doc__concurrency_impl_inspection`
 
         * - :need:`wp__verification_comp_int_test`
           - :need:`gd_guidl__verification_guide`
@@ -206,7 +272,7 @@ Component containers Work products List
         * - :need:`wp__requirements_inspect`
           - :need:`gd_chklst__req_inspection`
           - :ndf:`copy('status', need_id='gd_chklst__req_inspection')`
-          - <Link to WP>
+          - :need:`doc__containers_req_inspection`
 
         * - :need:`wp__component_arch`
           - :need:`gd_temp__arch_comp`
@@ -216,7 +282,7 @@ Component containers Work products List
         * - :need:`wp__sw_arch_verification`
           - :need:`gd_chklst__arch_inspection_checklist`
           - :ndf:`copy('status', need_id='gd_chklst__arch_inspection_checklist')`
-          - <Link to WP>
+          - :need:`doc__containers_arc_inspection`
 
         * - :need:`wp__sw_component_fmea`
           - :need:`gd_temp__comp_saf_fmea`
@@ -241,7 +307,7 @@ Component containers Work products List
         * - :need:`wp__sw_implementation_inspection`
           - :need:`gd_chklst__impl_inspection_checklist`
           - :ndf:`copy('status', need_id='gd_chklst__impl_inspection_checklist')`
-          - <Link to WP>
+          - :need:`doc__containers_impl_inspection`
 
         * - :need:`wp__verification_comp_int_test`
           - :need:`gd_guidl__verification_guide`
@@ -272,7 +338,7 @@ Component filesystem Work products List
         * - :need:`wp__requirements_inspect`
           - :need:`gd_chklst__req_inspection`
           - :ndf:`copy('status', need_id='gd_chklst__req_inspection')`
-          - <Link to WP>
+          - :need:`doc__filesystem_req_inspection`
 
         * - :need:`wp__component_arch`
           - :need:`gd_temp__arch_comp`
@@ -282,7 +348,7 @@ Component filesystem Work products List
         * - :need:`wp__sw_arch_verification`
           - :need:`gd_chklst__arch_inspection_checklist`
           - :ndf:`copy('status', need_id='gd_chklst__arch_inspection_checklist')`
-          - <Link to WP>
+          - :need:`doc__filesystem_arc_inspection`
 
         * - :need:`wp__sw_component_fmea`
           - :need:`gd_temp__comp_saf_fmea`
@@ -307,7 +373,7 @@ Component filesystem Work products List
         * - :need:`wp__sw_implementation_inspection`
           - :need:`gd_chklst__impl_inspection_checklist`
           - :ndf:`copy('status', need_id='gd_chklst__impl_inspection_checklist')`
-          - <Link to WP>
+          - :need:`doc__filesystem_impl_inspection`
 
         * - :need:`wp__verification_comp_int_test`
           - :need:`gd_guidl__verification_guide`
@@ -338,7 +404,7 @@ Component result Work products List
         * - :need:`wp__requirements_inspect`
           - :need:`gd_chklst__req_inspection`
           - :ndf:`copy('status', need_id='gd_chklst__req_inspection')`
-          - <Link to WP>
+          - :need:`doc__result_library_req_inspection`
 
         * - :need:`wp__component_arch`
           - :need:`gd_temp__arch_comp`
@@ -348,7 +414,7 @@ Component result Work products List
         * - :need:`wp__sw_arch_verification`
           - :need:`gd_chklst__arch_inspection_checklist`
           - :ndf:`copy('status', need_id='gd_chklst__arch_inspection_checklist')`
-          - <Link to WP>
+          - :need:`doc__result_lib_arc_inspection`
 
         * - :need:`wp__sw_component_fmea`
           - :need:`gd_temp__comp_saf_fmea`
@@ -373,7 +439,205 @@ Component result Work products List
         * - :need:`wp__sw_implementation_inspection`
           - :need:`gd_chklst__impl_inspection_checklist`
           - :ndf:`copy('status', need_id='gd_chklst__impl_inspection_checklist')`
-          - <Link to WP>
+          - :need:`doc__result_lib_impl_inspection`
+
+        * - :need:`wp__verification_comp_int_test`
+          - :need:`gd_guidl__verification_guide`
+          - :ndf:`copy('status', need_id='gd_guidl__verification_guide')`
+          - component integration not needed (no sub-components and units are independent)
+
+Component SafeCpp Work products List
+------------------------------------
+
+.. list-table:: Component SafeCpp Work products
+        :header-rows: 1
+
+        * - Work product Id
+          - Link to process
+          - Process status
+          - Link to WP
+
+        * - :need:`wp__requirements_comp`
+          - :need:`gd_temp__req_comp_req`
+          - :ndf:`copy('status', need_id='gd_temp__req_comp_req')`
+          - :need:`doc__safecpp_requirements`
+
+        * - :need:`wp__requirements_comp_aou`
+          - :need:`gd_temp__req_aou_req`
+          - :ndf:`copy('status', need_id='gd_temp__req_aou_req')`
+          - :need:`doc__safecpp_requirements`
+
+        * - :need:`wp__requirements_inspect`
+          - :need:`gd_chklst__req_inspection`
+          - :ndf:`copy('status', need_id='gd_chklst__req_inspection')`
+          - :need:`doc__safecpp_req_inspection`
+
+        * - :need:`wp__component_arch`
+          - :need:`gd_temp__arch_comp`
+          - :ndf:`copy('status', need_id='gd_temp__arch_comp')`
+          - :need:`doc__safecpp_architecture`
+
+        * - :need:`wp__sw_arch_verification`
+          - :need:`gd_chklst__arch_inspection_checklist`
+          - :ndf:`copy('status', need_id='gd_chklst__arch_inspection_checklist')`
+          - :need:`doc__safecpp_arc_inspection`
+
+        * - :need:`wp__sw_component_fmea`
+          - :need:`gd_temp__comp_saf_fmea`
+          - :ndf:`copy('status', need_id='gd_temp__comp_saf_fmea')`
+          - :need:`doc__safecpp_fmea`
+
+        * - :need:`wp__sw_component_dfa`
+          - :need:`gd_temp__comp_saf_dfa`
+          - :ndf:`copy('status', need_id='gd_temp__comp_saf_dfa')`
+          - :need:`doc__safecpp_dfa`
+
+        * - :need:`wp__sw_implementation`
+          - :need:`gd_guidl__implementation`
+          - :ndf:`copy('status', need_id='gd_guidl__implementation')`
+          - `safecpp .h/.cpp <https://github.com/eclipse-score/baselibs/blob/main/score/language/safecpp>`_, `safecpp/design <https://github.com/eclipse-score/baselibs/blob/main/score/language/safecpp/Readme.md>`_
+
+        * - :need:`wp__verification_sw_unit_test`
+          - :need:`gd_guidl__verification_guide`
+          - :ndf:`copy('status', need_id='gd_guidl__verification_guide')`
+          - `safecpp/test.cpp <https://github.com/eclipse-score/baselibs/blob/main/score/language/safecpp/Readme.md>`_
+
+        * - :need:`wp__sw_implementation_inspection`
+          - :need:`gd_chklst__impl_inspection_checklist`
+          - :ndf:`copy('status', need_id='gd_chklst__impl_inspection_checklist')`
+          - :need:`doc__safecpp_arc_inspection`
+
+        * - :need:`wp__verification_comp_int_test`
+          - :need:`gd_guidl__verification_guide`
+          - :ndf:`copy('status', need_id='gd_guidl__verification_guide')`
+          - component integration not needed (no sub-components and units are independent)
+
+Component Static Reflection Work products List
+----------------------------------------------
+
+.. list-table:: Component Static Reflection Work products
+        :header-rows: 1
+
+        * - Work product Id
+          - Link to process
+          - Process status
+          - Link to WP
+
+        * - :need:`wp__requirements_comp`
+          - :need:`gd_temp__req_comp_req`
+          - :ndf:`copy('status', need_id='gd_temp__req_comp_req')`
+          - :need:`doc__static_reflect_serial_lib_req`
+
+        * - :need:`wp__requirements_comp_aou`
+          - :need:`gd_temp__req_aou_req`
+          - :ndf:`copy('status', need_id='gd_temp__req_aou_req')`
+          - :need:`doc__static_reflect_serial_lib_req`
+
+        * - :need:`wp__requirements_inspect`
+          - :need:`gd_chklst__req_inspection`
+          - :ndf:`copy('status', need_id='gd_chklst__req_inspection')`
+          - :need:`doc__static_reflection_req_inspection`
+
+        * - :need:`wp__component_arch`
+          - :need:`gd_temp__arch_comp`
+          - :ndf:`copy('status', need_id='gd_temp__arch_comp')`
+          - :need:`doc__static_refl_with_serial_arch`
+
+        * - :need:`wp__sw_arch_verification`
+          - :need:`gd_chklst__arch_inspection_checklist`
+          - :ndf:`copy('status', need_id='gd_chklst__arch_inspection_checklist')`
+          - :need:`doc__static_reflection_arc_inspection`
+
+        * - :need:`wp__sw_component_fmea`
+          - :need:`gd_temp__comp_saf_fmea`
+          - :ndf:`copy('status', need_id='gd_temp__comp_saf_fmea')`
+          - :need:`doc__static_reflection_fmea`
+
+        * - :need:`wp__sw_component_dfa`
+          - :need:`gd_temp__comp_saf_dfa`
+          - :ndf:`copy('status', need_id='gd_temp__comp_saf_dfa')`
+          - :need:`doc__static_reflection_dfa`
+
+        * - :need:`wp__sw_implementation`
+          - :need:`gd_guidl__implementation`
+          - :ndf:`copy('status', need_id='gd_guidl__implementation')`
+          - `static_reflection .h/.cpp <https://github.com/eclipse-score/baselibs/tree/main/score/static_reflection_with_serialization>`_, `static_reflection/design <https://github.com/eclipse-score/baselibs/blob/main/score/static_reflection_with_serialization/serialization/ser_dser_lib.md>`_
+
+        * - :need:`wp__verification_sw_unit_test`
+          - :need:`gd_guidl__verification_guide`
+          - :ndf:`copy('status', need_id='gd_guidl__verification_guide')`
+          - `static_reflection/test.cpp <https://github.com/eclipse-score/baselibs/tree/main/score/static_reflection_with_serialization>`_
+
+        * - :need:`wp__sw_implementation_inspection`
+          - :need:`gd_chklst__impl_inspection_checklist`
+          - :ndf:`copy('status', need_id='gd_chklst__impl_inspection_checklist')`
+          - :need:`doc__static_reflection_impl_inspection`
+
+        * - :need:`wp__verification_comp_int_test`
+          - :need:`gd_guidl__verification_guide`
+          - :ndf:`copy('status', need_id='gd_guidl__verification_guide')`
+          - component integration not needed (no sub-components and units are independent)
+
+Component utils Work products List
+----------------------------------
+
+.. list-table:: Component utils Work products
+        :header-rows: 1
+
+        * - Work product Id
+          - Link to process
+          - Process status
+          - Link to WP
+
+        * - :need:`wp__requirements_comp`
+          - :need:`gd_temp__req_comp_req`
+          - :ndf:`copy('status', need_id='gd_temp__req_comp_req')`
+          - :need:`doc__utils_lib_requirements`
+
+        * - :need:`wp__requirements_comp_aou`
+          - :need:`gd_temp__req_aou_req`
+          - :ndf:`copy('status', need_id='gd_temp__req_aou_req')`
+          - :need:`doc__utils_lib_requirements`
+
+        * - :need:`wp__requirements_inspect`
+          - :need:`gd_chklst__req_inspection`
+          - :ndf:`copy('status', need_id='gd_chklst__req_inspection')`
+          - :need:`doc__utils_req_inspection`
+
+        * - :need:`wp__component_arch`
+          - :need:`gd_temp__arch_comp`
+          - :ndf:`copy('status', need_id='gd_temp__arch_comp')`
+          - :need:`doc__utils_architecture`
+
+        * - :need:`wp__sw_arch_verification`
+          - :need:`gd_chklst__arch_inspection_checklist`
+          - :ndf:`copy('status', need_id='gd_chklst__arch_inspection_checklist')`
+          - :need:`doc__utils_arc_inspection`
+
+        * - :need:`wp__sw_component_fmea`
+          - :need:`gd_temp__comp_saf_fmea`
+          - :ndf:`copy('status', need_id='gd_temp__comp_saf_fmea')`
+          - :need:`doc__utils_fmea`
+
+        * - :need:`wp__sw_component_dfa`
+          - :need:`gd_temp__comp_saf_dfa`
+          - :ndf:`copy('status', need_id='gd_temp__comp_saf_dfa')`
+          - :need:`doc__utils_dfa`
+
+        * - :need:`wp__sw_implementation`
+          - :need:`gd_guidl__implementation`
+          - :ndf:`copy('status', need_id='gd_guidl__implementation')`
+          - `utils .h/.cpp <https://github.com/eclipse-score/baselibs/tree/main/score/utils>`_, `utils/design <https://github.com/eclipse-score/baselibs/tree/main/score/utils/design>`_
+
+        * - :need:`wp__verification_sw_unit_test`
+          - :need:`gd_guidl__verification_guide`
+          - :ndf:`copy('status', need_id='gd_guidl__verification_guide')`
+          - `utils/test.cpp <https://github.com/eclipse-score/baselibs/tree/main/score/utils>`_
+
+        * - :need:`wp__sw_implementation_inspection`
+          - :need:`gd_chklst__impl_inspection_checklist`
+          - :ndf:`copy('status', need_id='gd_chklst__impl_inspection_checklist')`
+          - :need:`doc__utils_impl_inspection`
 
         * - :need:`wp__verification_comp_int_test`
           - :need:`gd_guidl__verification_guide`
@@ -404,7 +668,7 @@ Component json Work products List
         * - :need:`wp__requirements_inspect`
           - :need:`gd_chklst__req_inspection`
           - :ndf:`copy('status', need_id='gd_chklst__req_inspection')`
-          - <Link to WP>
+          - :need:`doc__json_req_inspection`
 
         * - :need:`wp__component_arch`
           - :need:`gd_temp__arch_comp`
@@ -414,7 +678,7 @@ Component json Work products List
         * - :need:`wp__sw_arch_verification`
           - :need:`gd_chklst__arch_inspection_checklist`
           - :ndf:`copy('status', need_id='gd_chklst__arch_inspection_checklist')`
-          - <Link to WP>
+          - :need:`doc__json_arc_inspection`
 
         * - :need:`wp__sw_component_fmea`
           - :need:`gd_temp__comp_saf_fmea`
@@ -439,7 +703,7 @@ Component json Work products List
         * - :need:`wp__sw_implementation_inspection`
           - :need:`gd_chklst__impl_inspection_checklist`
           - :ndf:`copy('status', need_id='gd_chklst__impl_inspection_checklist')`
-          - <Link to WP>
+          - :need:`doc__json_impl_inspection`
 
         * - :need:`wp__verification_comp_int_test`
           - :need:`gd_guidl__verification_guide`
@@ -456,6 +720,11 @@ are not planned to be qualifiable stand alone (as SEooC), but only in context, f
 in other S-CORE modules (e.g. communication). To be qualifiable in context those come with unit tests,
 are implemented according to defined coding and detailed design guidelines, achieve the required structural coverage
 and fulfill the AoUs of the reference OS (e.g. don’t use banned functions).
+
+Link to project planning
+------------------------
+
+see epic `Baselibs safety work product issue for V1.0 <https://github.com/eclipse-score/baselibs/issues/148>`_
 
 Module Safety Package
 =====================
@@ -487,9 +756,17 @@ Component Requirements Status
    :style: table
    :types: comp_req
    :tags: baselibs
-   :columns: id;status;tags
-   :colwidths: 25,25,25
-   :sort: title
+   :columns: id;status;tags;fulfilled by
+   :colwidths: 25,5,20,25
+   :sort: tags
+
+.. needpie:: Requirement Status
+   :labels: invalid, valid, inspected
+   :colors: red, yellow, green
+
+   type == 'comp_req' and 'baselibs' in tags and status == 'invalid'
+   type == 'comp_req' and 'baselibs' in tags and status == 'valid' and 'inspected' not in tags
+   type == 'comp_req' and 'baselibs' in tags and status == 'valid' and 'inspected' in tags
 
 Component AoU Status
 --------------------
@@ -501,16 +778,34 @@ Component AoU Status
    :tags: baselibs
    :columns: id;status;tags
    :colwidths: 25,25,25
-   :sort: title
+   :sort: tags
+
+.. needpie:: AoU Status
+   :labels: invalid, valid, inspected
+   :colors: red, yellow, green
+
+   type == 'aou_req' and 'baselibs' in tags and status == 'invalid'
+   type == 'aou_req' and 'baselibs' in tags and status == 'valid' and 'inspected' not in tags
+   type == 'aou_req' and 'baselibs' in tags and status == 'valid' and 'inspected' in tags
+
 
 Component Architecture Status
 -----------------------------
 
 .. needtable::
-   :filter: docname is not None and "baselibs" in docname and "architecture" in docname
+   :filter: docname is not None and "baselibs" in docname
    :style: table
    :types: comp_arc_sta; comp_arc_dyn
-   :tags: baselibs
    :columns: id;status;tags
    :colwidths: 25,25,25
    :sort: title
+
+Deviations from Module Safety Plan
+----------------------------------
+
+The following deviations from the module safety plan are present in the module safety package.
+These are deviations from planned processes execution and/or work product results,
+safety anomalies in the sense of known bugs in the software are reported in the release notes.
+
+<Describe here the deviations, whether they have an impact on module's safety functions,
+how these can be mitigated or argued and if and when a resolution is planned.>

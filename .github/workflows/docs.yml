@@ -47,7 +47,7 @@ jobs:
       # | github.event.pull_request.head.repo.full_name  | pull_request       | Forked repository (if PR is from a fork) |
       # | github.repository                              | push, merge_group  | Default repository (same repo PRs, merges, pushes) |
       - name: Checkout repository (Handle all events)
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v6
         with:
           ref: ${{ github.head_ref || github.event.pull_request.head.ref || github.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
@@ -68,7 +68,7 @@ jobs:
 
       - name: Find Comment
         if: ${{ github.event_name == 'pull_request_target' }}
-        uses: peter-evans/find-comment@v3
+        uses: peter-evans/find-comment@v4
         id: fc
         with:
           issue-number: ${{ github.event.pull_request.number }}
@@ -77,7 +77,7 @@ jobs:
 
       - name: Warn in PR if docs-as-code version mismatch
         if: ${{ github.event_name == 'pull_request_target' && steps.doc_version.outputs.mismatch == 'True' && steps.fc.outputs.comment-id == '' }}
-        uses: peter-evans/create-or-update-comment@v4
+        uses: peter-evans/create-or-update-comment@v5
         with:
           issue-number: ${{github.event.pull_request.number}}
           body: |
@@ -85,7 +85,7 @@ jobs:
             Please check the CI build logs for details and align the documentation version with the Bazel dependency.
 
       - name: Setup Bazel
-        uses: bazel-contrib/setup-bazel@0.9.1
+        uses: bazel-contrib/setup-bazel@0.19.0
       - name: Install Graphviz
         run: sudo apt update && sudo apt install -y graphviz
       - name: Build documentation
@@ -102,7 +102,7 @@ jobs:
         # | github.sha                                    | push, merge_group      | Current commit SHA (used for main branch)    |
         # ------------------------------------------------------------------------------
       - name: Upload artifact for job analysis
-        uses: actions/upload-artifact@v4.4.0
+        uses: actions/upload-artifact@v7.0.1
         with:
           name: github-pages-${{ github.event.pull_request.head.sha || github.sha }}
           path: github-pages.tar
@@ -125,10 +125,10 @@ jobs:
       # even when triggered by a pull request from a fork.
       # ------------------------------------------------------------------------------
       - name: Checkout repository
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v6
 
       - name: Download documentation artifact
-        uses: actions/download-artifact@v4.1.8
+        uses: actions/download-artifact@v8.0.1
         # ------------------------------------------------------------------------------
         # Generate a unique artifact name to ensure proper tracking in all scenarios
         # ------------------------------------------------------------------------------

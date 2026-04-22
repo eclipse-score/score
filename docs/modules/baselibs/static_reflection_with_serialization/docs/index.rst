@@ -27,7 +27,13 @@ static_reflection_with_serialization
    :hidden:
 
    architecture/index.rst
-   
+   architecture/chklst_arc_inspection.rst
+   requirements/index.rst
+   requirements/chklst_req_inspection.rst
+   safety_analysis/fmea.rst
+   safety_analysis/dfa.rst
+   detailed_design/chklst_impl_inspection.rst
+
 Abstract
 =========
 
