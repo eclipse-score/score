@@ -594,7 +594,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-2d16ec67">
+  <div class="need_container docutils container" id="SNCB-5ee31e3d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__develop_environment">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -671,8 +671,9 @@ Reopen in Container”.</p></li>
 <li><p>Install the required dependencies for your operating system. This includes:</p>
 <ul class="simple">
 <li><p>Bazelisk</p></li>
-<li><p>Python 3.x</p></li>
-<li><p>Graphviz/Dot (for generating diagrams)</p></li>
+<li><p>Python 3.x (due to bugs in Bazel, which requires Python to be present on the system)</p></li>
+<li><p>Graphviz/Dot (for generating diagrams, as it cannot be provided via Bazel)</p></li>
+<li><p>C++ compiler like gcc (due to bugs in Bazel’s Python rules, which require a C++ compiler to be present on the system)</p></li>
 </ul>
 <p>Check <a class="reference external" href="https://github.com/eclipse-score/devcontainer/tree/main/src/s-core-devcontainer/.devcontainer">Dockerfile</a> for
 an accurate list and exemplary instructions.</p>
