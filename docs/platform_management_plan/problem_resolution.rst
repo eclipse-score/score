@@ -136,8 +136,8 @@ part of the ISSUE.
 To provide solutions, use the Solution part of the ISSUE.
 
 :need:`[[title]] <gd_req__problem_attr_analysis_results>` is provided in the analysis
-results part of the ISSUE. State here, if the problem is accepted or rejected. Safety/Security
-experts must confirm or deny, if safety/security is affected is set correctly
+results part of the ISSUE. State here, if the problem is accepted or rejected. (Platform and/or Module)
+Safety/Security Manager must confirm or deny, if safety/security is affected is set correctly
 
 :need:`[[title]] <gd_req__problem_attr_stakeholder>` are provided in the Assignees part of
 the ISSUE. In addition you can use pre-defined labels for Communities or Feature Teams
@@ -229,14 +229,22 @@ kept in status ``Open`` and Projects status ``Todo``, means ``in review``.
 If the information is sufficient and it is decided to initiate the problem resolution, the
 ISSUE status is kept ``Open`` and the Projects status is set to ``In Progress``.
 
-The decision, if the problem is accepted or rejected must be documented. Safety/Security
-experts must confirm or deny, if safety/security is affected is set correctly.
+The decision, if the problem is accepted or rejected must be documented. (Platform and/or Module)
+Safety/Security Manager must confirm or deny, if safety/security is affected is set correctly.
 
 :need:`gd_chklst__problem_cr_review` can help to verify whether the information is complete.
 
 In case affected parties need to be informed :need:`Project Lead <rl__project_lead>` or
-:need:`Module Lead <rl__committer>` will notify them, either updating the Assignees or
-adding labels for community or feature teams.
+:need:`Feature Team Lead <rl__delivery_team>` will notify them.
+
+On platform level, the Project Lead will be added to the assignees of the ISSUE as well as the
+Platform Safety Manager and/or Security Manager and/or Quality Manager, if applicable.
+
+Notifications will be done for Feature Teams (:ref:`pmp_pm_feature_teams`) by
+
+- adding the Feature Team Lead to the assignees of the ISSUE and by
+- adding optionally the Module Safety Manager and/or Security Manager and/or Quality Manager, if applicable, to the assignees of the ISSUE and by
+- adding the Feature Team label to the ISSUE
 
 Otherwise, if no Problem Resolution is planned, the problem is rejected. To reject the Problem
 Report: Problem status: ``rejected`` set the ISSUE status to ``Closed as not planned``.

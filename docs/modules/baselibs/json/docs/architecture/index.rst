@@ -65,7 +65,7 @@ Static Architecture
    :status: valid
    :implements: logic_arc_int__baselibs__json
    :consists_of: comp__baselibs_json_wrapper, comp__baselibs_nlohman_json
-
+   :belongs_to: feat__baselibs
 
 .. comp_arc_sta:: JSON Static view
    :id: comp_arc_sta__baselibs__json
@@ -134,10 +134,11 @@ Lower Level Components
    :safety:  ASIL_B
    :status: valid
    :implements: logic_arc_int__baselibs__json
-
+   :belongs_to: feat__baselibs
 
 .. comp:: nlohman-JSON
    :id: comp__baselibs_nlohman_json
    :security: YES
    :safety:  ASIL_B
    :status: valid
+   :belongs_to: feat__baselibs

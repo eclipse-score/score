@@ -15,21 +15,13 @@
 libcpp Component Architecture
 *****************************
 
-.. comp:: libcpp
+.. comp:: libcpp (C++ Std Library)
    :id: comp__os_libcpp
    :status: valid
    :safety: ASIL_B
    :implements: logic_arc_int__os__libcpp
    :security: YES
-
-.. comp_arc_sta:: C++ Std Library
-   :id: comp_arc_sta__os__libcpp
-   :security: YES
-   :safety: ASIL_B
-   :status: valid
-   :satisfies:
-   :belongs_to: comp__os_libcpp
-   :fulfils: comp_req__component_name__some_title
+   :belongs_to: feat__os
 
    .. needarch::
       :scale: 50

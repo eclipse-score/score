@@ -298,7 +298,7 @@ Dependability
    :tags: safety_mechanism
    :valid_from: v1.0.0
 
-   The SW-platform shall implement Safe startup and reset paths
+   The SW-platform shall implement and support Safe startup and reset paths
 
 .. stkh_req:: DMA Protection
    :id: stkh_req__dependability__safety_features_5
@@ -682,16 +682,6 @@ Communication
    :status: valid
 
    The SW-platform shall support intra-process communication.
-
-.. stkh_req:: Non-Intra-process Communication
-   :id: stkh_req__communication__vm
-   :reqtype: Functional
-   :security: NO
-   :safety: QM
-   :rationale: Application software typically maps software building blocks into the same process.
-   :status: valid
-
-   The platform shall support not only IPC but also intra VM communication.
 
 .. stkh_req:: Stable application interfaces
    :id: stkh_req__communication__stable_app_inter

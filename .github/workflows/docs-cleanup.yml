@@ -28,7 +28,7 @@ jobs:
       issues: write # Allow label creation
     steps:
       - name: Close abandoned feature-request PRs
-        uses: actions/stale@v9
+        uses: actions/stale@v10
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           only-pr-labels: feature_request
@@ -43,7 +43,7 @@ jobs:
           close-pr-message: "Auto-closing: no activity for 90 days. If this is still relevant, reopen or create a fresh PR."
 
       - name: Close abandoned PRs
-        uses: actions/stale@v9
+        uses: actions/stale@v10
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           exempt-pr-labels: feature_request
@@ -72,7 +72,7 @@ jobs:
           close-pr-message: "Auto-closing: no activity for 30 days. If this is still relevant, reopen or create a fresh PR."
 
       - name: Checkout gh-pages branch
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: ${{ github.repository }}
           ref: gh-pages

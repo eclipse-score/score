@@ -16,8 +16,8 @@
 
    <div style="visibility: hidden;height:0px;">
 
-Documentation
-=============
+S-CORE Platform Documentation
+=============================
 
 .. raw:: html
 

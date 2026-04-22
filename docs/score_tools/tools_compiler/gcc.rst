@@ -16,9 +16,9 @@
    :id: doc_tool__gcc
    :status: draft
    :version: 12.x
-   :tcl: LOW
-   :safety_affected: YES
-   :security_affected: YES
+   :tcl: HIGH
+   :safety_affected: NO
+   :security_affected: NO
    :realizes: wp__tool_verification_report
    :tags: tool_management, tools_compiler
 
@@ -29,12 +29,17 @@ Introduction
 ------------
 Scope and purpose
 ~~~~~~~~~~~~~~~~~
-GCC is open-source C/C++ compiler. Used for both safety-related and non-safety-related software in the S-CORE project.
+GCC is open-source C/C++ compiler. It is widely used in the software development industry for compiling C and C++ code.
+
+In the context of the S-CORE project, GCC is used as a development tool to compile software components during the development phase. However, it is not used for production builds of safety-related software components.
+
+Therefore, the safety and security impact of GCC is "NO".
+
 
 Inputs and outputs
 ~~~~~~~~~~~~~~~~~~
 | Inputs: Software sources (C++), configuration files, dependencies
-| Outputs: Object files, binaries, build logs
+| Outputs: Object files, binaries, build logs, coverage data
 
 .. figure:: _assets/gcc.drawio.svg
   :width: 80%
@@ -87,7 +92,8 @@ Detailed instructions for setting up and tuning of GCC toolchain can be found in
 
 Integration
 ~~~~~~~~~~~
-GCC is invoked by Bazel as the C/C++ compiler for host builds, unit tests and integration testing.
+GCC is invoked by Bazel as the C/C++ compiler for cc_* targets.
+The specific compiler flags and configurations are defined in the Bazel build files and can be customized as needed for different build configurations (e.g., debug, release, with instrumentation).
 
 Environment
 ~~~~~~~~~~~
@@ -96,6 +102,7 @@ Requires Linux and Bazel build environment.
 Safety evaluation
 -----------------
 This section outlines the safety evaluation of GCC for its use within the S-CORE project.
+
 
 .. list-table:: GCC safety evaluation
    :header-rows: 1
@@ -113,17 +120,17 @@ This section outlines the safety evaluation of GCC for its use within the S-CORE
      - GCC compile
      - | Semantically wrong binary object file
        | GCC built syntactically correct but semantically wrong object file.
+     - no
+     - no
      - yes
      - no
-     - no
-     - yes (qualification)
-     - low
+     - high
    * - 2
      - GCC compile
      - | Syntactically wrong object code file
        | GCC built syntactically wrong object file.
-     - yes
-     - (implicit) Linker will fail due to invalid object file
+     - no
+     - no
      - yes
      - no
      - high
@@ -131,17 +138,17 @@ This section outlines the safety evaluation of GCC for its use within the S-CORE
      - GCC link
      - | Semantically wrong binary
        | GCC built syntactically correct but semantically wrong binary.
-     - yes
+     - no
      - no
      - yes
-     - yes (qualification)
-     - low
+     - no
+     - high
    * - 4
      - GCC link
      - | Syntactically wrong binary
        | GCC built syntactically wrong binary.
      - no
-     - (implicit) Binary will crash during start
+     - no
      - yes
      - no
      - high
@@ -149,22 +156,20 @@ This section outlines the safety evaluation of GCC for its use within the S-CORE
      - Instrumentation / code coverage
      - | Coverage data too high
        | compiler with instrumentation reports higher coverage than actual, masking untested code.
+     - no
+     - no
      - yes
      - no
-     - no
-     - yes (qualification)
-     - low
+     - high
    * - 6
      - Instrumentation / code coverage
      - | Coverage data too low
        | Instrumentation reports lower coverage than actual, leading to unnecessary rework.
      - no
-     - | (implicit) Manual review or redundant testing
-       | Required coverage goals are defined for software components. If reported coverage is lower than the goal, the required coverage objective is not achieved.
-       | Any coverage gaps identified must be addressed through manual review.
+     - no
      - yes
      - no
-     - low
+     - high
 
 Security evaluation
 -------------------
@@ -190,19 +195,8 @@ This section outlines the security evaluation of GCC for its use within the S-CO
 
 Result
 ------
-GCC requires qualification for use in safety-related software development according to ISO 26262.
+GCC is not used for production builds nor during software verification phases.
+The tool is used for development purposes only to support early-stage issue identification and resolution.
 
-
-**Tool Qualification**
-----------------------
-Based on method: validation of the software tool.
-
-Requirements and testing aspects
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-GCC is an open-source tool and does not provide formal, vendor-defined requirements.
-Therefore, the tooling team is responsible for qualification of GCC used for the the project.
-The requirements for testing must be derived from tool version, configuration (compiler flags, etc.)
-and environment.
 
 .. [1] The tool version mentioned in this document is preliminary. It is subject to change and will be updated in future.

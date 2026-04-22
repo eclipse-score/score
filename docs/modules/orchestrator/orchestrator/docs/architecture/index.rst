@@ -56,22 +56,8 @@ Mandatory: a motivation for the decomposition or reason for not further splittin
 .. note:: Common decisions across components / cross cutting concepts is at the higher level.
 
 
-
-
-
 Component Architecture
 =======================
-
-
-
-
-
-
-
-
-
-
-
 
 Static Architecture
 -------------------
@@ -87,6 +73,7 @@ The components are designed to cover the expectations from the feature architect
    :implements: logic_arc_int__orchestration__user, logic_arc_int__orchestration__deployment, logic_arc_int__orchestration__design
    :uses: logic_arc_int__logging__logging, logic_arc_int__tracing__tracing, logic_arc_int__communication__user
    :consists_of: comp__orch_design_impl, comp__orch_deployment_impl
+   :belongs_to: feat__orchestration
 
    .. needarch::
       :scale: 50
@@ -102,7 +89,7 @@ The components are designed to cover the expectations from the feature architect
    :status: valid
    :uses: logic_arc_int__logging__logging, logic_arc_int__tracing__tracing, logic_arc_int__communication__user
    :belongs_to: comp__orchestrator
-   :fulfils: comp_req__component_name__some_title
+   :fulfils: comp_req__orchestrator__deploy
 
    .. needarch::
       :scale: 50
@@ -188,6 +175,7 @@ Interfaces
    :safety: ASIL_B
    :security: NO
    :implements: logic_arc_int__orchestration__design
+   :belongs_to: feat__orchestration
 
 .. comp:: Deployment
    :id: comp__orch_deployment_impl
@@ -195,6 +183,7 @@ Interfaces
    :safety: ASIL_B
    :security: NO
    :implements: logic_arc_int__orchestration__deployment
+   :belongs_to: feat__orchestration
 
 .. Operations
 
@@ -284,6 +273,34 @@ Interfaces
 ..       :safety: <QM|ASIL_B>
 ..       :fulfils: <link to component requirement id>
 ..       :language: cpp
+
+
+Functional Requirements
+=======================
+
+.. comp_req:: Error logging
+   :id: comp_req__orchestrator__logging
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :satisfies: feat_req__orchestration__obsv_trace_corr
+   :status: valid
+   :belongs_to: comp__orchestrator
+
+   In case, that there is an fault in the orchestration an ERROR message shall be logged.
+
+
+.. comp_req:: Error logging
+   :id: comp_req__orchestrator__deploy
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :satisfies: feat_req__orchestration__orch_single_deploy
+   :status: valid
+   :belongs_to: comp__orchestrator
+
+   The orchestrator shall provide an design interface.
+
 
 Lower Level Components
 ----------------------
