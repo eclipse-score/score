@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -1030,7 +1030,7 @@ window.runMermaid = runMermaid;</script>
 <ul class="simple">
 <li><p><strong>Date:</strong> 2026-04-23</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-b20d3537">
+<div class="need_container docutils container" id="SNCB-4e07e8ff">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__docs_src_dir">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1083,7 +1083,7 @@ Three build paths coexist:</p>
 <li><p><strong>Bazel sandbox</strong> — <code class="docutils literal notranslate"><span class="pre">needs_json</span></code> and similar targets run Sphinx in a hermetic sandbox.</p></li>
 </ol>
 <p>We have no generic solution for generating parts of the documentation source directory via Bazel.
-See <a class="reference external" href="https://github.com/eclipse-score/docs-as-code/issues/423">issue 423</a> for an open feature request
+See <a class="reference external" href="https://github.com/eclipse-score/docs-as-code/issues/423">docs-as-code issue #423</a> for an open feature request
 to implement “Extra docs pages from artifacts”.</p>
 <p>Workarounds we already have in place are:</p>
 <ul class="simple">
@@ -1101,6 +1101,10 @@ Since we don’t rely on Bazel sandbox for docs building, Bazel cannot help with
 We need incremental builds locally and determinism with caching in CI.
 See <a class="reference external" href="https://rules-python.readthedocs.io/en/latest/sphinxdocs+/docs/#optimization">rules_python sphinxdocs</a>
 how an idea how to achieve this using Bazel.</p>
+<p>The “Module API” proposal
+(somewhat implemented in <a class="reference external" href="https://github.com/eclipse-score/tooling/pull/95">tooling PR 95</a>)
+fully relies on Bazel.
+It is not compatible with the docs-as-code live preview as of now.</p>
 <section id="goals">
 <h3>Goals<a class="headerlink" href="#goals" title="Link to this heading">#</a></h3>
 <ul class="simple">
@@ -1186,7 +1190,7 @@ and may contain generated files.</p>
 </tbody>
 </table>
 </div>
-<p><strong>Decision:</strong> Option B because Option B loses wrt flexibility</p>
+<p><strong>Decision:</strong> Option B because Option N loses wrt flexibility</p>
 </section>
 <section id="appendix-any-folder-experiment">
 <h2>Appendix: any_folder experiment<a class="headerlink" href="#appendix-any-folder-experiment" title="Link to this heading">#</a></h2>
