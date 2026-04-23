@@ -27,7 +27,7 @@ The following shows the folder structure of the platform repository (ordered alp
     docs/                              -> Global documentation of the platform
         contribute/                    -> Description on how to contribute
         features/                      -> All features of the platform
-            <feature_name>/            -> Features including sub-folders and feature (change) request [:need:`wp__feat_request`]
+            <feature_name>/            -> Features including feature id, logical interfaces and feature (change) request [:need:`wp__feat_request`] and belonging sub-folders
                requirements/           -> Feature requirements [:need:`wp__requirements_feat`]
         glossary/                      -> Glossary of abbreviations used in the platform context
         introduction/                  -> Background, scope and high-level architecture of the platform features
@@ -62,19 +62,19 @@ Module Folder Structure
 
 The modules and components shall follow the folder structure which was presented. However if there are good reasons the structure can be adapted.
 
+See also `module template repository <https://github.com/eclipse-score/module_template>`_ for more details on the folder structure of a module.
+
 .. parsed-literal::
 
    <module_name>/                      -> Folder containing all artifacts corresponding to one module.
       docs/                            -> Documentation of the module
         features/                      -> All features of the platform
             <feature_name>/            -> Features including sub-folders and feature (change) request [:need:`wp__feat_request`]
-               architecture/           -> Feature architecture [:need:`wp__feature_arch`]
+               architecture/           -> Feature architecture [:need:`wp__feature_arch`], [:need:`wp__sw_arch_verification`]
                safety_analysis/        -> Safety analysis on feature level [:need:`wp__feature_fmea`], [:need:`wp__feature_dfa`]
                safety_planning/        -> Feature specific safety workproducts planning
                security_analysis/      -> Security analysis on feature level [:need:`wp__feature_security_analysis`]
-               verification/           -> Feature verification, consisting of Architecture review [:need:`wp__sw_arch_verification`],
-                  integration_tests/   -> Feature Integration tests [:need:`wp__verification_feat_int_test`]
-         manual/                       -> Module manual, e.g. integration manual, assumptions of use,
+         manuals/                      -> Module manual, e.g. integration manual, assumptions of use,
                                              safety manual [:need:`wp__requirements_comp_aou`],
                                              [:need:`wp__module_safety_manual`],
                                              security_manual [:need:`wp__module_security_manual`].
@@ -82,36 +82,33 @@ The modules and components shall follow the folder structure which was presented
          safety_mgt/                   -> Module safety plan [:need:`wp__module_safety_plan`],
                                              module safety package [:need:`wp__module_safety_package`],
                                              formal documents reviews [:need:`wp__fdr_reports`]
+                                             safety analysis formal reviews [:need:`wp__fdr_reports`]
          security_mgt/                 -> Module security plan [:need:`wp__module_security_plan`],
                                              module securty package [:need:`wp__module_security_package`],
                                              formal documents reviews [:need:`wp__fdr_reports_security`],
                                              module SW bill of material [:need:`wp__sw_module_sbom`]
          verification_report/          -> Module verification report
-                                             components verifications [:need:`wp__verification_module_ver_report`],
-                                             safety analysis formal reviews [:need:`wp__fdr_reports`]
+                                             module verifications [:need:`wp__verification_module_ver_report`],
 
+   score/                              -> Folder containing all source code artifacts corresponding to the module.
       <component_name>/                -> Components of the module.
                                              Folder containing all artifacts corresponding to one component.
-
          src/                          -> Source files of the component consisting of
                                              Include files
                                              Source Files
                                              Unit tests [:need:`wp__verification_sw_unit_test`]
                                              Test doubles
             <lower_level_comp>/        -> lower level component following <component_name> folder structure
-            details/                   -> Private implementation details of the component following <component_name> folder structure
             tests/                     -> Component-level tests (e.g., unit tests) [wp__verification_sw_unit_test]
          tests/                        -> Module-level tests (e.g., feature integration tests, system tests) [wp__verification_comp_int_test]
+                                       -> Feature Integration tests [:need:`wp__verification_feat_int_test`]
          docs/                         -> Documentation of the component
             architecture/              -> Component architecture (only if lower level components exist)
                                              [:need:`wp__component_arch`].
             detailed_design/           -> Detailed Design [:need:`wp__sw_implementation`]
+                                          code inspection [:need:`wp__sw_implementation_inspection`],
             requirements/              -> Component requirements [:need:`wp__requirements_comp`]
             safety_analysis/           -> Safety analysis on component level (only if component architecture exists)
                                              [:need:`wp__sw_component_fmea`], [:need:`wp__sw_component_dfa`]
             security_analysis/         -> Security analysis on component level (only if component architecture exists)
-                                             [:need:`wp__sw_component_security_analysis`]
-            verification/              -> Component verification, consisting of Architecture review [:need:`wp__sw_arch_verification`],
-                                          code inspection [:need:`wp__sw_implementation_inspection`],
-               integration_tests/      -> Component integration tests [:need:`wp__verification_comp_int_test`]
-            <lower_level_comp>/        -> Lower level component following <component_name> folder structure
+            manuals/                   -> User documentation (of a single component, e.g., user manual of a library component, optional)
