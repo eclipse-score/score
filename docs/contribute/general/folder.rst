@@ -26,16 +26,24 @@ The following shows the folder structure of the platform repository (ordered alp
 
     docs/                              -> Global documentation of the platform
         contribute/                    -> Description on how to contribute
+        design_decision/               -> Design decisions on platform level
         features/                      -> All features of the platform
-            <feature_name>/            -> Features including feature id, logical interfaces and feature (change) request [:need:`wp__feat_request`] and belonging sub-folders
+            <feature_name>/            -> Features including feature id, logical interfaces and feature
+                                       -> (change) request [:need:`wp__feat_request`] and belonging sub-folders
+               architecture/           -> Feature architecture [:need:`wp__feature_arch`]
+                                             only feature id and logical interface definition
+                                             (static and dynamic architecture only if the feature is not yet
+                                             implemented by one module, otherwise the static and dynamic
+                                             architecture is defined in the module repository)
                requirements/           -> Feature requirements [:need:`wp__requirements_feat`]
         glossary/                      -> Glossary of abbreviations used in the platform context
-        introduction/                  -> Background, scope and high-level architecture of the platform features
+        handbook/                      -> Background, scope, high-level architecture of the platform features
+                                             and handbook for the platform
+                                             (e.g., onboarding, development guidelines, etc.)
         manuals/                       -> User and integration manual(s)
         modules/                       -> Modules of the SW platform.
         platform_management_plan/      -> Overall Platform Management Plan [:need:`wp__platform_mgmt`]
-        quality/                       -> Quality documentation on platform level:
-                                             [:need:`wp__qms_report`]
+        quality/                       -> Quality documentation on platform level: [:need:`wp__qms_report`]
         requirements/                  -> Requirements on platform level
             stakeholder/               -> Stakeholder requirements [:need:`wp__requirements_stkh`]
             tool/                      -> Tool requirements (not covered in tool repositories)
@@ -46,13 +54,13 @@ The following shows the folder structure of the platform repository (ordered alp
         score_releases/                -> [:need:`wp__platform_sw_release_note`]
         score_tools/                   -> Tool list and [:need:`wp__tool_verification_report`]
         security/                      -> Security documentation on platform level:
-                                             [:need:`wp__platform_security_manual`], [:need:`wp__platform_security_package`], [:need:`wp__sw_platform_sbom`]
+                                             [:need:`wp__platform_security_manual`], [:need:`wp__platform_security_package`],
+                                             [:need:`wp__sw_platform_sbom`]
         verification_report/           -> Platform verification report (reporting all platform feature's verifications)
                                              [:need:`wp__verification_platform_ver_report`]
-
-    platform_integration_tests/        -> Integration tests on reference hardware verifying stakeholder requirements. [:need:`wp__verification_platform_int_test`]
+    platform_integration_tests/        -> Integration tests on reference hardware verifying stakeholder requirements.
+                                             [:need:`wp__verification_platform_int_test`]
     tools/                             -> Platform tools (not covered in tool repositories)
-
     README.md                          -> Entrypoint of the repository
 
 .. _module_folder_structure:
@@ -105,7 +113,7 @@ See also `module template repository <https://github.com/eclipse-score/module_te
          docs/                         -> Documentation of the component
             architecture/              -> Component architecture (only if lower level components exist)
                                              [:need:`wp__component_arch`].
-            detailed_design/           -> Detailed Design [:need:`wp__sw_implementation`]
+            detailed_design/           -> Detailed Design [:need:`wp__sw_implementation`] and
                                           code inspection [:need:`wp__sw_implementation_inspection`],
             requirements/              -> Component requirements [:need:`wp__requirements_comp`]
             safety_analysis/           -> Safety analysis on component level (only if component architecture exists)
