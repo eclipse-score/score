@@ -597,16 +597,24 @@
 <p>The following shows the folder structure of the platform repository (ordered alphabetically). The ordering of the documentation in the rendered documentation can be in a different order.</p>
 <pre class="literal-block">docs/                              -&gt; Global documentation of the platform
     contribute/                    -&gt; Description on how to contribute
+    design_decision/               -&gt; Design decisions on platform level
     features/                      -&gt; All features of the platform
-        &lt;feature_name&gt;/            -&gt; Features including feature id, logical interfaces and feature (change) request [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/change_management_workproducts.html#wp__feat_request">wp__feat_request</a>] and belonging sub-folders
+        &lt;feature_name&gt;/            -&gt; Features including feature id, logical interfaces and feature
+                                   -&gt; (change) request [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/change_management/change_management_workproducts.html#wp__feat_request">wp__feat_request</a>] and belonging sub-folders
+           architecture/           -&gt; Feature architecture [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/architecture_workproducts.html#wp__feature_arch">wp__feature_arch</a>]
+                                         only feature id and logical interface definition
+                                         (static and dynamic architecture only if the feature is not yet
+                                         implemented by one module, otherwise the static and dynamic
+                                         architecture is defined in the module repository)
            requirements/           -&gt; Feature requirements [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_feat">wp__requirements_feat</a>]
     glossary/                      -&gt; Glossary of abbreviations used in the platform context
-    introduction/                  -&gt; Background, scope and high-level architecture of the platform features
+    handbook/                      -&gt; Background, scope, high-level architecture of the platform features
+                                         and handbook for the platform
+                                         (e.g., onboarding, development guidelines, etc.)
     manuals/                       -&gt; User and integration manual(s)
     modules/                       -&gt; Modules of the SW platform.
     platform_management_plan/      -&gt; Overall Platform Management Plan [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/platform_management/platform_management_workproducts.html#wp__platform_mgmt">wp__platform_mgmt</a>]
-    quality/                       -&gt; Quality documentation on platform level:
-                                         [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/quality_management/quality_workproducts.html#wp__qms_report">wp__qms_report</a>]
+    quality/                       -&gt; Quality documentation on platform level: [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/quality_management/quality_workproducts.html#wp__qms_report">wp__qms_report</a>]
     requirements/                  -&gt; Requirements on platform level
         stakeholder/               -&gt; Stakeholder requirements [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_stkh">wp__requirements_stkh</a>]
         tool/                      -&gt; Tool requirements (not covered in tool repositories)
@@ -617,13 +625,13 @@
     score_releases/                -&gt; [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/release_management/release_workproducts.html#wp__platform_sw_release_note">wp__platform_sw_release_note</a>]
     score_tools/                   -&gt; Tool list and [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/tool_management/tool_management_workproducts.html#wp__tool_verification_report">wp__tool_verification_report</a>]
     security/                      -&gt; Security documentation on platform level:
-                                         [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/security_management/security_management_workproducts.html#wp__platform_security_manual">wp__platform_security_manual</a>], [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/security_management/security_management_workproducts.html#wp__platform_security_package">wp__platform_security_package</a>], [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/security_management/security_management_workproducts.html#wp__sw_platform_sbom">wp__sw_platform_sbom</a>]
+                                         [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/security_management/security_management_workproducts.html#wp__platform_security_manual">wp__platform_security_manual</a>], [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/security_management/security_management_workproducts.html#wp__platform_security_package">wp__platform_security_package</a>],
+                                         [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/security_management/security_management_workproducts.html#wp__sw_platform_sbom">wp__sw_platform_sbom</a>]
     verification_report/           -&gt; Platform verification report (reporting all platform feature's verifications)
                                          [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_platform_ver_report">wp__verification_platform_ver_report</a>]
-
-platform_integration_tests/        -&gt; Integration tests on reference hardware verifying stakeholder requirements. [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_platform_int_test">wp__verification_platform_int_test</a>]
+platform_integration_tests/        -&gt; Integration tests on reference hardware verifying stakeholder requirements.
+                                         [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_platform_int_test">wp__verification_platform_int_test</a>]
 tools/                             -&gt; Platform tools (not covered in tool repositories)
-
 README.md                          -&gt; Entrypoint of the repository</pre>
 </section>
 <section id="module-folder-structure">
@@ -669,7 +677,7 @@ score/                              -&gt; Folder containing all source code arti
       docs/                         -&gt; Documentation of the component
          architecture/              -&gt; Component architecture (only if lower level components exist)
                                           [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/architecture_workproducts.html#wp__component_arch">wp__component_arch</a>].
-         detailed_design/           -&gt; Detailed Design [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/implementation_workproducts.html#wp__sw_implementation">wp__sw_implementation</a>]
+         detailed_design/           -&gt; Detailed Design [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/implementation_workproducts.html#wp__sw_implementation">wp__sw_implementation</a>] and
                                        code inspection [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/implementation_workproducts.html#wp__sw_implementation_inspection">wp__sw_implementation_inspection</a>],
          requirements/              -&gt; Component requirements [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/requirements_engineering/requirements_workproducts.html#wp__requirements_comp">wp__requirements_comp</a>]
          safety_analysis/           -&gt; Safety analysis on component level (only if component architecture exists)
