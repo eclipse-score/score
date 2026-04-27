@@ -50,7 +50,7 @@ The following shows the folder structure of the platform repository (ordered alp
         safety/                        -> Safety documentation on platform level (SEooC):
                                              [:need:`wp__platform_dfa`], [:need:`wp__platform_safety_manual`],
                                              [:need:`wp__platform_safety_package`], [:need:`wp__fdr_reports`],
-                                             [:need:`wp__audit_report`]
+                                             [:need:`wp__audit_report`], [:need:`wp__requirements_sw_platform_aou`]
         score_releases/                -> [:need:`wp__platform_sw_release_note`]
         score_tools/                   -> Tool list and [:need:`wp__tool_verification_report`]
         security/                      -> Security documentation on platform level:
