@@ -104,6 +104,12 @@ Option B: Introduce ``:docs_src_dir`` Bazel target
 Add a new ``:docs_src_dir`` target that composes the documentation source
 directory inside Bazel using symlinks, generated files, and so on.
 
+We can add an ``extra_docs`` attribute to the ``docs()`` macro which accepts a list of labels.
+When extra_docs is non-empty, we create a `sphinx_docs_library <https://rules-python.readthedocs.io/en/1.0.0/api/sphinxdocs/sphinxdocs/sphinx_docs_library.html#sphinx_docs_library>`_
+target and pass it to ``:needs_json`` via deps.
+sphinx_docs already knows how to merge deps entries into its source tree using each entry's strip_prefix/prefix metadata — no custom code needed.
+
+
 .. mermaid::
 
    graph LR
@@ -118,7 +124,12 @@ Thus, there is no ``:live_preview`` target but a ``live_preview`` script.
 We cannot rely on watching file system changes to trigger rebuilds because the source directory is composed by Bazel
 and may contain generated files.
 
-Effort 😡: Significant implementation effort.
+The ``score_sync_toml`` extension writes a ``ubproject.toml`` file to the source directory
+but Bazel sandboxing makes this fail.
+As a workaround, ``needscfg_outpath`` can be used to redirect it somewhere else.
+Alternatively, ``remove score_sync_toml`` and ``needs_config_writer`` extensions and create the ubproject.toml file in a different way?
+
+Effort 😡: Some implementation effort.
 
 Flexibility 💚: Generic solution for all build paths and future extensions.
 
