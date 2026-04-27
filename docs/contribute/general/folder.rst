@@ -119,7 +119,6 @@ See also `module template repository <https://github.com/eclipse-score/module_te
                                              module SW bill of material [:need:`wp__sw_module_sbom`]
          verification_report/          -> Module verification report
                                              module verifications [:need:`wp__verification_module_ver_report`],
-
    score/                              -> Folder containing all source code artifacts corresponding to the module.
       <component_name>/                -> Components of the module.
                                              Folder containing all artifacts corresponding to one component.
@@ -129,8 +128,8 @@ See also `module template repository <https://github.com/eclipse-score/module_te
                                              Unit tests [:need:`wp__verification_sw_unit_test`]
                                              Test doubles
             <lower_level_comp>/        -> lower level component following <component_name> folder structure
-            tests/                     -> Component-level tests (e.g., unit tests) [wp__verification_sw_unit_test]
-         tests/                        -> Module-level tests (e.g., feature integration tests, system tests) [wp__verification_comp_int_test]
+            tests/                     -> Component-level tests (e.g., unit tests) [:need:`wp__verification_sw_unit_test`]
+         tests/                        -> Module-level tests (e.g., feature integration tests, system tests) [:need:`wp__verification_comp_int_test`]
                                        -> Feature Integration tests [:need:`wp__verification_feat_int_test`]
          docs/                         -> Documentation of the component
             architecture/              -> Component architecture (only if lower level components exist)
