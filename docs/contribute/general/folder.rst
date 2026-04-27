@@ -60,8 +60,8 @@ The following shows the folder structure of the platform repository (ordered alp
         requirements/                  -> Requirements on platform level
             stakeholder/               -> Stakeholder requirements [:need:`wp__requirements_stkh`]
             tool/                      -> Tool requirements (not covered in tool repositories)
-            platform_assumptions/      -> Assumptions of use on platform level [:need:`wp__requirements_sw_platform_aou`]
                                              [:need:`wp__requirements_proc_tool`]
+            platform_assumptions/      -> Assumptions of use on platform level [:need:`wp__requirements_sw_platform_aou`]
         safety/                        -> Safety documentation on platform level (SEooC):
                                              [:need:`wp__platform_dfa`], [:need:`wp__platform_safety_manual`],
                                              [:need:`wp__platform_safety_package`], [:need:`wp__fdr_reports`],
