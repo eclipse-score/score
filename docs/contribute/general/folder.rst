@@ -119,7 +119,7 @@ See also `module template repository <https://github.com/eclipse-score/module_te
                                              module SW bill of material [:need:`wp__sw_module_sbom`]
          verification_report/          -> Module verification report
                                              module verifications [:need:`wp__verification_module_ver_report`],
-   score/                              -> Folder containing all source code artifacts corresponding to the module.
+   score/                              -> Folder containing all artifacts corresponding to all components of the module.
       <component_name>/                -> Components of the module.
                                              Folder containing all artifacts corresponding to one component.
          src/                          -> Source files of the component consisting of
