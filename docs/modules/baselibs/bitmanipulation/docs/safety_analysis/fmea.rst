@@ -18,33 +18,132 @@ FMEA (Failure Modes and Effects Analysis)
 
 .. document:: bitmanipulation FMEA
    :id: doc__bitmanipulation_fmea
-   :status: draft
+   :status: valid
    :safety: ASIL_B
    :security: NO
    :realizes: wp__sw_component_fmea
 
-.. note:: Use the content of the document to describe e.g. why a fault model is not applicable for the diagram.
-
-
 Failure Mode List
 -----------------
 
-.. code-block:: rst
+Fault Models for sequence diagrams
+  .. list-table:: Fault Models for sequence diagrams
+     :header-rows: 1
+     :widths: 10,20,10,20
 
-    .. comp_saf_fmea:: <Title>
-       :violates: <Component architecture>
-       :id: comp_saf_fmea__<Component>__<Element descriptor>
-       :fault_id: <ID from fault model :need:`gd_guidl__fault_models`>
-       :failure_effect: "description of failure effect of the fault model on the element"
-       :mitigated_by: <ID from Component Requirement | ID from AoU Component Requirement>
-       :mitigation_issue: <ID from Issue Tracker>
-       :sufficient: <yes|no>
-       :status: <valid|invalid>
+    * - ID
+      - Failure Mode
+      - Applicability
+      - Rationale
+    * - MF_01_01
+      - message is not received (is a subset/more precise description of MF_01_05)
+      - yes
+      - If a bit manipulation request is not received there is also no return "ok", this should be covered by the user. See :need:`comp_saf_fmea__bitmanipulation__no_return`
+    * - MF_01_02
+      - message received too late (only relevant if delay is a realistic fault)
+      - yes
+      - If a bit manipulation request is received too late, also the return is too late, this should be covered by the user. See :need:`comp_saf_fmea__bitmanipulation__late_return`
+    * - MF_01_03
+      - message received too early (usually not a problem)
+      - no
+      - Do not see where this is a problem.
+    * - MF_01_04
+      - message not received correctly by all recipients (different messages or messages partly lost). Only relevant if the same message goes to multiple recipients.
+      - no
+      - No multiple recipients, one library per user.
+    * - MF_01_05
+      - message is corrupted
+      - no
+      - No corruption in a library function call expected.
+    * - MF_01_06
+      - message is not sent
+      - yes
+      - If bitmanipulation does not return a success status, this should be observed by the user. See :need:`comp_saf_fmea__bitmanipulation__no_return`
+    * - MF_01_07
+      - message is unintended sent
+      - yes
+      - Success is returned when there is no action done. :need:`comp_saf_fmea__bitmanipulation__wrong_result`
+    * - CO_01_01
+      - minimum constraint boundary is violated.
+      - yes
+      - :need:`comp_saf_fmea__bitmanipulation__constraints`
+    * - CO_01_02
+      - maximum constraint boundary is violated,
+      - yes
+      - :need:`comp_saf_fmea__bitmanipulation__constraints`
+    * - EX_01_01
+      - Process calculates wrong result(s) (is a subset/more precise description of MF_01_05 or MF_01_04). This failure mode is related to the analysis if e.g. internal safety mechanisms are required (level 2 function, plausibility check of the output, …) because of the size / complexity of the feature.
+      - yes
+      - :need:`comp_saf_fmea__bitmanipulation__wrong_result`
+    * - EX_01_02
+      - processing too slow (only relevant if timing is considered)
+      - no
+      - Bitmanipulation is not expected to be slow due to low functional content.
+    * - EX_01_03
+      - processing too fast (only relevant if timing is considered)
+      - no
+      - No problem seen.
+    * - EX_01_04
+      - loss of execution
+      - yes
+      - If bitmanipulation execution is lost, it does not return, this should be observed by the user. See :need:`comp_saf_fmea__bitmanipulation__no_return`
+    * - EX_01_05
+      - processing changes to arbitrary process
+      - no
+      - Not a bitmanipulation problem as it is a library and not a process.
+    * - EX_01_06
+      - processing is not complete (infinite loop)
+      - yes
+      - If bitmanipulation stalls, also the user process may stall, so this should be covered by external safety mechanism. See :need:`comp_saf_fmea__bitmanipulation__late_return`
 
-.. note::   argument is inside the 'content'. Therefore content is mandatory
+FMEA
+----
+For all identified applicable failure initiators, the FMEA is performed in the following section.
 
-.. attention::
-    The above directive must be updated according to your component FMEA.
+.. comp_saf_fmea:: Bitmanipulation No Return
+   :violates: comp_arc_dyn__baselibs__bit_manipulation
+   :id: comp_saf_fmea__bitmanipulation__no_return
+   :fault_id: MF_01_01,MF_01_06,EX_01_04
+   :failure_effect: Bitmanipulation is not executed, if safety function relies on this there may be violation of the safety requirements.
+   :mitigated_by: aou_req__platform__error_reaction
+   :mitigation_issue: https://github.com/eclipse-score/score/issues/2837
+   :sufficient: no
+   :status: valid
 
-    - The above "code-block" directive must be updated
-    - Fill in all the needed information in the <brackets>
+   There is already an aou on platform level which states that a user has to use the return values,
+   so the error mode of no return should be covered, but there is no explicit mention that a "success"
+   return is needed.
+
+.. comp_saf_fmea:: Bitmanipulation Late Return
+   :violates: comp_arc_dyn__baselibs__bit_manipulation
+   :id: comp_saf_fmea__bitmanipulation__late_return
+   :fault_id: MF_01_02,EX_01_06
+   :failure_effect: Bitmanipulation is executed too late or stalls, so there may be violation of its safety requirements.
+   :mitigated_by: aou_req__platform__flow_monitoring
+   :sufficient: yes
+   :status: valid
+
+   There is already an aou on platform level which states that a user has to use program flow monitoring.
+
+.. comp_saf_fmea:: Bitmanipulation Wrong Result
+   :violates: comp_arc_dyn__baselibs__bit_manipulation
+   :id: comp_saf_fmea__bitmanipulation__wrong_result
+   :fault_id: MF_01_07,EX_01_01
+   :failure_effect: Bitmanipulation returns wrong results, so there may be violation of users safety requirements.
+   :mitigated_by: comp_req__bitmanipulation__header_only
+   :sufficient: yes
+   :status: valid
+
+   Bitmanipulation is low-complex so failure mode should be prevented by ASIL B development rigour.
+
+
+.. comp_saf_fmea:: Bitmanipulation Constraints
+   :violates: comp_arc_dyn__baselibs__bit_manipulation
+   :id: comp_saf_fmea__bitmanipulation__constraints
+   :fault_id: CO_01_01,CO_01_02
+   :failure_effect: If constraints are violated there may be out-of bounds memory corruption.
+   :mitigated_by: comp_req__bitmanipulation__bounds_safety
+   :sufficient: yes
+   :status: valid
+
+   Constraints are checked, see mitigation requirement.
