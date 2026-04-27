@@ -26,8 +26,10 @@ The following shows the folder structure of the platform repository (ordered alp
 
     docs/                              -> Global documentation of the platform
         contribute/                    -> Description on how to contribute
+                                          [:need:`wp__sw_development_plan`],
+                                          [:need:`wp__training_path`]
         design_decision/               -> Design decisions on platform level
-        features/                      -> All features of the platform
+        features/                      -> All features of the platform. [:need:`wp__platform_arch`]
             <feature_name>/            -> Features including feature id, logical interfaces and feature
                                        -> (change) request [:need:`wp__feat_request`] and belonging sub-folders
                architecture/           -> Feature architecture [:need:`wp__feature_arch`]
@@ -38,24 +40,38 @@ The following shows the folder structure of the platform repository (ordered alp
                requirements/           -> Feature requirements [:need:`wp__requirements_feat`]
         glossary/                      -> Glossary of abbreviations used in the platform context
         handbook/                      -> Background, scope, high-level architecture of the platform features
-                                             and handbook for the platform
+                                             and handbook for the platform [:need:`wp__platform_handbook`],
                                              (e.g., onboarding, development guidelines, etc.)
         manuals/                       -> User and integration manual(s)
-        modules/                       -> Modules of the SW platform.
+        modules/                       -> Modules of the SW platform. [:need:`wp__platform_arch`]
         platform_management_plan/      -> Overall Platform Management Plan [:need:`wp__platform_mgmt`]
-        quality/                       -> Quality documentation on platform level: [:need:`wp__qms_report`]
+                                             containing: [:need:`wp__project_mgt`], [:need:`wp__platform_safety_plan`],
+                                             [:need:`wp__platform_security_plan`], [:need:`wp__qms_plan`],
+                                             [:need:`wp__config_mgt_plan`], [:need:`wp__tlm_plan`],
+                                             [:need:`wp__platform_sw_release_plan`], [:need:`wp__prm_plan`],
+                                             [:need:`wp__chm_plan`],
+                                             [:need:`wp__verification_plan`], [:need:`wp__document_mgt_plan`],
+                                             [:need:`wp__issue_track_system`] (mentioned),
+                                             [:need:`wp__policies`], [:need:`wp__tailoring_work_products`]
+                                             [:need:`wp__safety_tailoring`]
+                                             also mention [:need:`wp__process_description`] and [:need:`wp__process_strategy`] (own repository)
+        quality/                       -> Quality documentation on platform level: [:need:`wp__qms_report`],
+                                             [:need:`wp__process_impr_report`]
         requirements/                  -> Requirements on platform level
             stakeholder/               -> Stakeholder requirements [:need:`wp__requirements_stkh`]
             tool/                      -> Tool requirements (not covered in tool repositories)
+            platform_assumptions/      -> Assumptions of use on platform level [:need:`wp__requirements_sw_platform_aou`]
+                                             [:need:`wp__requirements_proc_tool`]
         safety/                        -> Safety documentation on platform level (SEooC):
                                              [:need:`wp__platform_dfa`], [:need:`wp__platform_safety_manual`],
                                              [:need:`wp__platform_safety_package`], [:need:`wp__fdr_reports`],
-                                             [:need:`wp__audit_report`], [:need:`wp__requirements_sw_platform_aou`]
+                                             [:need:`wp__audit_report`]
         score_releases/                -> [:need:`wp__platform_sw_release_note`]
         score_tools/                   -> Tool list and [:need:`wp__tool_verification_report`]
         security/                      -> Security documentation on platform level:
                                              [:need:`wp__platform_security_manual`], [:need:`wp__platform_security_package`],
-                                             [:need:`wp__sw_platform_sbom`]
+                                             [:need:`wp__sw_platform_sbom`], [:need:`wp__platform_security_analysis`],
+                                             [:need:`wp__audit_report_security`]
         verification_report/           -> Platform verification report (reporting all platform feature's verifications)
                                              [:need:`wp__verification_platform_ver_report`]
     platform_integration_tests/        -> Integration tests on reference hardware verifying stakeholder requirements.
@@ -77,22 +93,28 @@ See also `module template repository <https://github.com/eclipse-score/module_te
    <module_name>/                      -> Folder containing all artifacts corresponding to one module.
       docs/                            -> Documentation of the module
         features/                      -> All features of the platform
-            <feature_name>/            -> Features including sub-folders and feature (change) request [:need:`wp__feat_request`]
+            <feature_name>/            -> Features including sub-folders and feature/component (change) request
+                                             [:need:`wp__feat_request`], [:need:`wp__cmpt_request`]
                architecture/           -> Feature architecture [:need:`wp__feature_arch`], [:need:`wp__sw_arch_verification`]
                safety_analysis/        -> Safety analysis on feature level [:need:`wp__feature_fmea`], [:need:`wp__feature_dfa`]
-               safety_planning/        -> Feature specific safety workproducts planning
+               safety_planning/        -> Feature specific safety workproducts planning  [:need:`wp__platform_safety_plan`]
                security_analysis/      -> Security analysis on feature level [:need:`wp__feature_security_analysis`]
+               security_planning/      -> Feature specific security workproducts planning  [:need:`wp__platform_security_plan`]
          manuals/                      -> Module manual, e.g. integration manual, assumptions of use,
                                              safety manual [:need:`wp__requirements_comp_aou`],
+                                             [:need:`wp__requirements_feat_aou`],
                                              [:need:`wp__module_safety_manual`],
                                              security_manual [:need:`wp__module_security_manual`].
          release/                      -> Module release note [:need:`wp__module_sw_release_note`],
+                                             module release plan [:need:`wp__module_sw_release_plan`],
          safety_mgt/                   -> Module safety plan [:need:`wp__module_safety_plan`],
                                              module safety package [:need:`wp__module_safety_package`],
-                                             formal documents reviews [:need:`wp__fdr_reports`]
-                                             safety analysis formal reviews [:need:`wp__fdr_reports`]
+                                             formal documents reviews [:need:`wp__fdr_reports`],
+                                             safety analysis formal reviews [:need:`wp__fdr_reports`],
+                                             safety tailoring [:need:`wp__safety_tailoring`]
+                                             safety component classification [:need:`wp__sw_component_class`]
          security_mgt/                 -> Module security plan [:need:`wp__module_security_plan`],
-                                             module securty package [:need:`wp__module_security_package`],
+                                             module security package [:need:`wp__module_security_package`],
                                              formal documents reviews [:need:`wp__fdr_reports_security`],
                                              module SW bill of material [:need:`wp__sw_module_sbom`]
          verification_report/          -> Module verification report
@@ -115,7 +137,8 @@ See also `module template repository <https://github.com/eclipse-score/module_te
                                              [:need:`wp__component_arch`].
             detailed_design/           -> Detailed Design [:need:`wp__sw_implementation`] and
                                           code inspection [:need:`wp__sw_implementation_inspection`],
-            requirements/              -> Component requirements [:need:`wp__requirements_comp`]
+            requirements/              -> Component requirements [:need:`wp__requirements_comp`],
+                                             requirements inspection [:need:`wp__requirements_inspect`]
             safety_analysis/           -> Safety analysis on component level (only if component architecture exists)
                                              [:need:`wp__sw_component_fmea`], [:need:`wp__sw_component_dfa`]
             security_analysis/         -> Security analysis on component level (only if component architecture exists)
