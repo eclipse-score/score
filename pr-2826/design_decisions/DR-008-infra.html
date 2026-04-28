@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -1030,7 +1030,7 @@ window.runMermaid = runMermaid;</script>
 <ul class="simple">
 <li><p><strong>Date:</strong> 2026-04-23</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-4e07e8ff">
+<div class="need_container docutils container" id="SNCB-ccd7caa5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__docs_src_dir">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1143,6 +1143,10 @@ documentation sources directly from that directory on the workspace filesystem.<
 <h3>Option B: Introduce <code class="docutils literal notranslate"><span class="pre">:docs_src_dir</span></code> Bazel target<a class="headerlink" href="#option-b-introduce-docs-src-dir-bazel-target" title="Link to this heading">#</a></h3>
 <p>Add a new <code class="docutils literal notranslate"><span class="pre">:docs_src_dir</span></code> target that composes the documentation source
 directory inside Bazel using symlinks, generated files, and so on.</p>
+<p>We can add an <code class="docutils literal notranslate"><span class="pre">extra_docs</span></code> attribute to the <code class="docutils literal notranslate"><span class="pre">docs()</span></code> macro which accepts a list of labels.
+When extra_docs is non-empty, we create a <a class="reference external" href="https://rules-python.readthedocs.io/en/1.0.0/api/sphinxdocs/sphinxdocs/sphinx_docs_library.html#sphinx_docs_library">sphinx_docs_library</a>
+target and pass it to <code class="docutils literal notranslate"><span class="pre">:needs_json</span></code> via deps.
+sphinx_docs already knows how to merge deps entries into its source tree using each entry’s strip_prefix/prefix metadata — no custom code needed.</p>
 <pre  class="mermaid">
         graph LR
     docs&#64;{ shape: docs, label: &quot;docs/&quot; }
@@ -1154,7 +1158,11 @@ This live preview cannot be executed via <code class="docutils literal notransla
 Thus, there is no <code class="docutils literal notranslate"><span class="pre">:live_preview</span></code> target but a <code class="docutils literal notranslate"><span class="pre">live_preview</span></code> script.
 We cannot rely on watching file system changes to trigger rebuilds because the source directory is composed by Bazel
 and may contain generated files.</p>
-<p>Effort 😡: Significant implementation effort.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">score_sync_toml</span></code> extension writes a <code class="docutils literal notranslate"><span class="pre">ubproject.toml</span></code> file to the source directory
+but Bazel sandboxing makes this fail.
+As a workaround, <code class="docutils literal notranslate"><span class="pre">needscfg_outpath</span></code> can be used to redirect it somewhere else.
+Alternatively, <code class="docutils literal notranslate"><span class="pre">remove</span> <span class="pre">score_sync_toml</span></code> and <code class="docutils literal notranslate"><span class="pre">needs_config_writer</span></code> extensions and create the ubproject.toml file in a different way?</p>
+<p>Effort 😡: Some implementation effort.</p>
 <p>Flexibility 💚: Generic solution for all build paths and future extensions.</p>
 <p>Speed: unclear</p>
 </section>
