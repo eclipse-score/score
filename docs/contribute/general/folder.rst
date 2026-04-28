@@ -135,7 +135,7 @@ See also `module template repository <https://github.com/eclipse-score/module_te
             architecture/              -> Component architecture (only if lower level components exist)
                                              [:need:`wp__component_arch`].
             detailed_design/           -> Detailed Design [:need:`wp__sw_implementation`] and
-                                          Detail design inspection [:need:`wp__sw_implementation_inspection`],
+                                          Detail design + code inspection [:need:`wp__sw_implementation_inspection`],
             requirements/              -> Component requirements [:need:`wp__requirements_comp`],
                                              requirements inspection [:need:`wp__requirements_inspect`]
             safety_analysis/           -> Safety analysis on component level (only if component architecture exists)
