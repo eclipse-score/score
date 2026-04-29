@@ -36,8 +36,46 @@ Dependent Failure Initiators
 Shared resources
 ^^^^^^^^^^^^^^^^
 
-The dependent failure initiators related to shared resources are not applicable for the features. The shared resources
-will be considered in the platform DFA.
+.. list-table:: DFA shared resources (used for Platform DFA)
+  :header-rows: 1
+  :widths: 10,20,10,20
+
+  * - ID
+    - Violation cause shared resources
+    - Applicability
+    - Rationale
+  * - SR_01_01
+    - Reused software modules
+    - no
+    - Baselibs only uses libraries and not other executable modules.
+  * - SR_01_02
+    - Libraries
+    - yes
+    - Baselibs filesystem component may suffer from concurrent access to a file, :need:`feat_saf_dfa__baselibs__conc_file_access`
+  * - SR_01_04
+    - Basic software
+    - no
+    - Not a baselibs specific topic, covered on platform level.
+  * - SR_01_05
+    - Operating system including scheduler
+    - no
+    - Not a baselibs specific topic, covered on platform level.
+  * - SR_01_06
+    - Any service stack, e.g. communication stack
+    - no
+    - Not a baselibs specific topic, covered on platform level.
+  * - SR_01_07
+    - Configuration data
+    - no
+    - No shared configuration data for baselibs.
+  * - SR_01_09
+    - Execution time
+    - no
+    - Not a baselibs specific topic, covered on platform level.
+  * - SR_01_10
+    - Allocated memory
+    - yes
+    - Bitmanipulation component may operate on the same memory, :need:`feat_saf_dfa__baselibs__conc_memory_access`
 
 Communication between the two elements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -196,12 +234,35 @@ For all identified applicable failure initiators, the DFA is performed in the fo
    :id: feat_saf_dfa__baselibs__locked_ressource
    :failure_id: UI_01_04
    :failure_effect: Deadlock/Livelock leads to stalling of the execution
-   :mitigated_by: aou_req__filesystem__thread_safety,feat_req__baselibs__memory_library
+   :mitigated_by: feat_req__baselibs__memory_library,aou_req__platform__flow_monitoring
    :sufficient: yes
    :status: valid
 
-   Only components "filesystem" and "memory_shared" should have the problem. These care for this by
-   above linked AoU and :need:`comp_req__memory__atomic_ops`.
+   Only components "filesystem" and "memory_shared" should have the problem ("bitmanipulation" should not be affected due to shortness of execution)
+   "memory_shared" cares for this by above linked feature requirement and :need:`comp_req__memory__atomic_ops`.
+   "filesystem" component may fail on this but this is covered by common platform aou linked above.
+
+.. feat_saf_dfa:: concurrent file access
+   :violates: feat_arc_sta__baselibs__static_view_arch
+   :id: feat_saf_dfa__baselibs__conc_file_access
+   :failure_id: SR_01_02
+   :failure_effect: Concurrent file access may lead to corruption of the file
+   :mitigated_by: aou_req__filesystem__thread_safety
+   :sufficient: yes
+   :status: valid
+
+   The user has to care for concurrent file access. This is not covered by the filesytem library.
+
+.. feat_saf_dfa:: concurrent memory access
+   :violates: feat_arc_sta__baselibs__static_view_arch
+   :id: feat_saf_dfa__baselibs__conc_memory_access
+   :failure_id: SR_01_10
+   :failure_effect: Concurrent memory access may lead to corruption of the memory
+   :mitigated_by: aou_req__bitmanipulation__concurrent_access
+   :sufficient: yes
+   :status: valid
+
+   The user has to care for concurrent memory access. This is not covered by the bitmanipulation library.
 
 .. feat_saf_dfa:: blocked execution
    :violates: feat_arc_sta__baselibs__static_view_arch
