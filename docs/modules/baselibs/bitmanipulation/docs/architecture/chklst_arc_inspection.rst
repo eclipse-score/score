@@ -29,7 +29,7 @@ feature architecture :need:`doc__baselibs_architecture` and this is to be inspec
 The following static views in "valid" state and with "inspected" tag set are in the scope of this inspection:
 
 .. needtable::
-   :filter: "bitmanipulation" in docname and "architecture" in docname and docname is not None and status == "valid"
+   :filter: docname is not None and "bitmanipulation" in docname and "architecture" in docname and status == "valid"
    :style: table
    :types: comp_arc_sta
    :columns: id;status;tags
