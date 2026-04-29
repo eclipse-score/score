@@ -579,6 +579,7 @@ Core features of CodeQL include:
 CodeQL has the capability to identify a wide range of issues, including security vulnerabilities, code quality problems, and potential bugs.
 
 Examples of capabilities include:
+
 - unsafe data flows and control flow (e.g., tainted data flows, unreachable code, missing checks before sensitive calls)
 - potential runtime errors (e.g., null pointer dereferences, buffer overflows)
 - code quality issues (e.g., dead code, unused variables)
@@ -614,7 +615,7 @@ This POSIX OS based simulation environment will operate on aarch64 and x86_64 ar
 flavours as Operating System, to be close to later target hardware OS and architectures.
 
 To also ease the reuse and execution of unit tests on various type of hardware the unit tests are executed
-matching OS and HW architectures (aarch64 and x86_64) which are e.g. build by the reference integration. 
+matching OS and HW architectures (aarch64 and x86_64) which are e.g. build by the reference integration.
 
 The integration of the platform on a target device and the respective verification and validation
 should be considered by the distributor of the platform. On target integration tests that are
