@@ -1,0 +1,1672 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Project Management Plan &#8212; S-CORE  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=7f76b32a3354e82990f2" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score.css?v=6e51530f" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score_needs.css?v=1f5dae2a" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/score_design.css?v=d9fd870c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css?v=803738c0" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2" />
+
+    <script src="../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
+    <script src="../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
+    <script src="../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
+    <script src="../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
+    <script src="../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'platform_management_plan/project_management';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.17.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://eclipse-score.github.io/score/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Safety management / Platform Safety Plan" href="safety_management.html" />
+    <link rel="prev" title="Platform Management Plan" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Eclipse S-CORE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../handbook/index.html">
+    Handbook
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../features/index.html">
+    Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../requirements/index.html">
+    Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../modules/index.html">
+    Modules
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../design_decisions/index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../handbook/index.html">
+    Handbook
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../features/index.html">
+    Features
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../requirements/index.html">
+    Requirements
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../modules/index.html">
+    Modules
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contribute/index.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../score_releases/index.html">
+    Releases
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../score_tools/index.html">
+    Tools
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    PMP
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../safety/index.html">
+    Safety
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../design_decisions/index.html">
+    Decision Records
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../introduction/index.html">
+    Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Content</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Project Management Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="safety_management.html">Safety management / Platform Safety Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security_management.html">Security management / Platform Security Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quality_management.html">Quality Management / Platform Quality Management Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config_management.html">Config management / Configuration Management Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool_management.html">Tool Management/ Tool Management Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_management.html">Release Management Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problem_resolution.html">Problem Resolution / Problem Resolution Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vulnerability_management.html">Vulnerability Management / Platform Vulnerability Management Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change_management.html">Change Management / Change Management Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software_verification.html">Software verification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documentation_management.html">Documentation Management Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software_development.html">Software Development Plan</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Role Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="role_assignment/platform_safety_engineer.html">Platform Safety Engineer Election</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role_assignment/platform_safety_manager.html">Platform Safety Manager Election</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role_assignment/platform_security_manager.html">Platform Security Manager Election</a></li>
+<li class="toctree-l1"><a class="reference internal" href="role_assignment/platform_quality_manager.html">Platform Quality Manager Election</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Platform Management Plan</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Project Management Plan</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="need_container docutils container" id="SNCB-20ca5c39">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__project_mgt_plan">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Project Management Plan</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">YES</span></span></span></div>
+<div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">platform_management</span></span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">realizes: <span class="realizes"><span><a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/platform_management/platform_management_workproducts.html#wp__project_mgt">wp__project_mgt</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#doc__project_mgt_plan" title="doc__project_mgt_plan">doc__project_mgt_plan</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Generic Document</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<section id="project-management-plan">
+<span id="pmp-pm-plan"></span><h1>Project Management Plan<a class="headerlink" href="#project-management-plan" title="Link to this heading">#</a></h1>
+<section id="purpose">
+<h2>Purpose<a class="headerlink" href="#purpose" title="Link to this heading">#</a></h2>
+<p>The purpose of the Project Management Plan is to define</p>
+<ul class="simple">
+<li><p>how to manage, analyse and control changes of the work products during the project life cycle.</p></li>
+<li><p>the project stakeholder and how to communicate with them.</p></li>
+<li><p>how and where to create and maintain the project schedule.</p></li>
+<li><p>how to track planned work.</p></li>
+<li><p>how and where to escalate.</p></li>
+</ul>
+</section>
+<section id="objectives-and-scope">
+<h2>Objectives and Scope<a class="headerlink" href="#objectives-and-scope" title="Link to this heading">#</a></h2>
+<section id="project-management-goals-and-definition-of-done">
+<h3>Project Management Goals and Definition of Done<a class="headerlink" href="#project-management-goals-and-definition-of-done" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt>The stakeholders/stakeholder groups and organization are defined:</dt><dd><ul>
+<li><p><a class="reference internal" href="#pmp-pm-organization"><span class="std std-ref">Org Chart and structure description</span></a> is available and up to date.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Communication and reporting paths are described:</dt><dd><ul>
+<li><p>Team Overview with meeting structure is available &amp; Slack channels are established and maintained.</p></li>
+<li><p>Meetings are scheduled in the Eclipse SDV calendar.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>The scope of the work is defined.</dt><dd><ul>
+<li><p>S-CORE Handbook (<a class="reference internal" href="../handbook/index.html#doc__platform_handbook" title="doc__platform_handbook"><em class="xref need">Handbook (doc__platform_handbook)</em></a>) is available and up to date.</p></li>
+<li><p><a class="reference internal" href="../features/index.html#features"><span class="std std-ref">Features</span></a> are described.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Project Plan is planned and followed:</dt><dd><ul>
+<li><p>Roadmap with <a class="reference internal" href="#pmp-pm-milestone"><span class="std std-ref">Milestones</span></a> and <a class="reference internal" href="#pmp-pm-release"><span class="std std-ref">Releases</span></a> are available and up to date.</p></li>
+<li><p><a class="reference internal" href="../features/index.html#features"><span class="std std-ref">Features</span></a> are described.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Escalation paths are described.</p></li>
+<li><p>All Reviews are performed according to their definitions, the respective templates are used.</p></li>
+</ul>
+</section>
+</section>
+<section id="project-organization">
+<span id="pmp-pm-organization"></span><h2>Project Organization<a class="headerlink" href="#project-organization" title="Link to this heading">#</a></h2>
+<section id="org-chart-and-main-platform-management-plan-responsibilities">
+<h3>Org Chart and Main Platform Management Plan Responsibilities<a class="headerlink" href="#org-chart-and-main-platform-management-plan-responsibilities" title="Link to this heading">#</a></h3>
+<a class="reference internal image-reference" href="../_images/score_project_management_organization_orgchart.drawio.svg"><img alt="Infrastructure overview" class="align-center" src="../_images/score_project_management_organization_orgchart.drawio.svg" width="900" />
+</a>
+</section>
+<section id="steering-committees">
+<span id="pmp-pm-steering-committees"></span><h3>Steering Committees<a class="headerlink" href="#steering-committees" title="Link to this heading">#</a></h3>
+<p>Steering of the project is done with the help of <em>Lead Circles</em>.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id3">
+<caption><span class="caption-number">Table 115 </span><span class="caption-text">Steering</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 27.2%" />
+<col style="width: 8.6%" />
+<col style="width: 8.6%" />
+<col style="width: 8.6%" />
+<col style="width: 8.6%" />
+<col style="width: 8.6%" />
+<col style="width: 29.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Purpose</p></th>
+<th class="head"><p>Members</p></th>
+<th class="head"><p>Speaker</p></th>
+<th class="head"><p>Meeting Minutes</p></th>
+<th class="head"><p>Slack Channel</p></th>
+<th class="head"><p>Backlog</p></th>
+<th class="head"><p>Owned Repository</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p id="pmp-pm-plctlc"><strong>PLC/TLC</strong></p>
+</td>
+<td><p><strong>Project/Technical</strong></p></td>
+<td><p><strong>Lead</strong></p></td>
+<td><p><strong>Circle</strong></p></td>
+<td><p><strong>———–</strong></p></td>
+<td><p><strong>———–</strong></p></td>
+<td><p><strong>———————–</strong></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>Decisions about strategical topics</p></li>
+<li><p>Review and approval of contributions, e.g. Feature Requests, which add or modify features</p></li>
+<li><p>Project Management</p></li>
+<li><p>High-level project control and coordination between multiple software modules.</p></li>
+<li><p>Deciding of adding / removing Repositories</p></li>
+<li><p>Planning and Approval of Releases</p></li>
+<li><p>Escalation instance</p></li>
+</ul>
+</td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS">PLCTLCMBRS</a></p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS">PLCTLCSPK</a></p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/wiki/TLCM">PLCTLCMM</a></p></td>
+<td><p><a class="reference external" href="https://sdvworkinggroup.slack.com/archives/C085F44D2CS">PLCTLCSLC</a></p></td>
+<td><p><a class="reference external" href="https://github.com/orgs/eclipse-score/projects/3">PLCTLCBKL</a></p></td>
+<td><ul class="simple">
+<li><p><a class="reference external" href="https://github.com/eclipse-score/score">https://github.com/eclipse-score/score</a></p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="communities">
+<span id="pmp-pm-communities"></span><h3>Communities<a class="headerlink" href="#communities" title="Link to this heading">#</a></h3>
+<p><em>Communities</em> are installed to work on cross functional topics, such as program level architectural decisions,
+commonly used development &amp; testing infrastructure, processes or final integration &amp; release.
+Each <em>Community</em> has a <em>Community Lead</em> to organize the community`s work.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id4">
+<caption><span class="caption-number">Table 116 </span><span class="caption-text">Community</span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 27.2%" />
+<col style="width: 8.6%" />
+<col style="width: 8.6%" />
+<col style="width: 8.6%" />
+<col style="width: 8.6%" />
+<col style="width: 8.6%" />
+<col style="width: 29.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Purpose</p></th>
+<th class="head"><p>Members</p></th>
+<th class="head"><p>Lead</p></th>
+<th class="head"><p>Meeting Minutes</p></th>
+<th class="head"><p>Slack Channel</p></th>
+<th class="head"><p>Backlog</p></th>
+<th class="head"><p>Owned Repository</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p id="pmp-pm-arc"><strong>ARC</strong></p>
+</td>
+<td><p><strong>Architecture</strong></p></td>
+<td><p><strong>Community</strong></p></td>
+<td><p><strong>———–</strong></p></td>
+<td><p><strong>———–</strong></p></td>
+<td><p><strong>———–</strong></p></td>
+<td><p><strong>———————–</strong></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>clarification of software architecture topics, e.g. discussion of new features or coding guidelines</p></li>
+</ul>
+</td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS">ARCMBRS</a></p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS">ARCLD</a></p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/wiki/ARCM">ARCMM</a></p></td>
+<td><p><a class="reference external" href="https://sdvworkinggroup.slack.com/archives/C08C1HG5AKY">ARCSLC</a></p></td>
+<td><p><a class="reference external" href="https://github.com/orgs/eclipse-score/projects/3">ARCBKL</a></p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score">https://github.com/eclipse-score/score</a></p></td>
+</tr>
+<tr class="row-even"><td><p id="pmp-pm-prc"><strong>PRC</strong></p>
+</td>
+<td><p><strong>Process</strong></p></td>
+<td><p><strong>Community</strong></p></td>
+<td><p><strong>———–</strong></p></td>
+<td><p><strong>———–</strong></p></td>
+<td><p><strong>———–</strong></p></td>
+<td><p><strong>———————–</strong></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>defining and maintaining the software development process (incl. safety, security and quality)</p></li>
+<li><p>defining and maintaining the process implementation (PIM)</p></li>
+</ul>
+</td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/process_description/blob/main/.github/CODEOWNERS">PRCMBRS</a></p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/process_description/blob/main/.github/CODEOWNERS">PRCLD</a></p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/wiki/PRCM">PRCMM</a></p></td>
+<td><p><a class="reference external" href="https://sdvworkinggroup.slack.com/archives/C0864L05332">PRCSLC</a></p></td>
+<td><p><a class="reference external" href="https://github.com/orgs/eclipse-score/projects/21">PRCBKL</a>
+<a class="reference external" href="https://github.com/orgs/eclipse-score/projects/7">PIMBKL</a></p></td>
+<td><div class="line-block">
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/process_description">https://github.com/eclipse-score/process_description</a></div>
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/score">https://github.com/eclipse-score/score</a></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p id="pmp-pm-inf"><strong>INF</strong></p>
+</td>
+<td><p><strong>Infrastructure</strong></p></td>
+<td><p><strong>Community</strong></p></td>
+<td><p><strong>———–</strong></p></td>
+<td><p><strong>———–</strong></p></td>
+<td><p><strong>———–</strong></p></td>
+<td><p><strong>———————–</strong></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>providing and maintaining the development infrastructure: Compiler, IDE, build toolchains</p></li>
+</ul>
+</td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS">INFMBRS</a></p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS">INFLD</a></p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/wiki/INFM">INFMM</a></p></td>
+<td><p><a class="reference external" href="https://sdvworkinggroup.slack.com/archives/C0894QGRZDM">INFSLC</a></p></td>
+<td><p><a class="reference external" href="https://github.com/orgs/eclipse-score/projects/6">INFBKL</a></p></td>
+<td><div class="line-block">
+<div class="line">Toolchain Repositories:</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/bazel_platforms">https://github.com/eclipse-score/bazel_platforms</a></div>
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/toolchains_gcc">https://github.com/eclipse-score/toolchains_gcc</a></div>
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/toolchains_gcc_packages">https://github.com/eclipse-score/toolchains_gcc_packages</a></div>
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/toolchains_qnx">https://github.com/eclipse-score/toolchains_qnx</a></div>
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/toolchains_rust">https://github.com/eclipse-score/toolchains_rust</a></div>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Tooling Repositories:</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/devcontainer">https://github.com/eclipse-score/devcontainer</a></div>
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/docs-as-code">https://github.com/eclipse-score/docs-as-code</a></div>
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/tooling">https://github.com/eclipse-score/tooling</a></div>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line">other Repositories:</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/apt-install">https://github.com/eclipse-score/apt-install</a></div>
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/cicd-workflows">https://github.com/eclipse-score/cicd-workflows</a></div>
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/bazel_registry">https://github.com/eclipse-score/bazel_registry</a></div>
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/bazel_registry_ui">https://github.com/eclipse-score/bazel_registry_ui</a></div>
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/.eclipsefdn">https://github.com/eclipse-score/.eclipsefdn</a></div>
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/examples">https://github.com/eclipse-score/examples</a></div>
+</div>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><p id="pmp-pm-tst"><strong>TST</strong></p>
+</td>
+<td><p><strong>Testing</strong></p></td>
+<td><p><strong>Community</strong></p></td>
+<td><p><strong>———–</strong></p></td>
+<td><p><strong>———–</strong></p></td>
+<td><p><strong>———–</strong></p></td>
+<td><p><strong>———————–</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>defining and maintaining testing strategy and infrastructure</p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/itf/blob/main/.github/CODEOWNERS">TSTMBRS</a></p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/itf/blob/main/.github/CODEOWNERS">TSTLD</a></p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/wiki/TSTM">TSTMM</a></p></td>
+<td><p><a class="reference external" href="https://sdvworkinggroup.slack.com/archives/TSTC08B6C78EF3">TSTSLC</a></p></td>
+<td><p><a class="reference external" href="https://github.com/orgs/eclipse-score/projects/5">TSTBKL</a></p></td>
+<td><div class="line-block">
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/itf">https://github.com/eclipse-score/itf</a></div>
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/testing_tools">https://github.com/eclipse-score/testing_tools</a></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p id="pmp-pm-int"><strong>INT</strong></p>
+</td>
+<td><p><strong>Integration &amp;</strong></p></td>
+<td><p><strong>Release</strong></p></td>
+<td><p><strong>Community</strong></p></td>
+<td><p><strong>———–</strong></p></td>
+<td><p><strong>———–</strong></p></td>
+<td><p><strong>———————–</strong></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>integration of available modules to one or several reference integrations</p></li>
+<li><p>releasing</p></li>
+</ul>
+</td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/CODEOWNERS">INTMBRS</a></p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/.github/CODEOWNERS">INTLD</a></p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/wiki/INTM">INTMM</a></p></td>
+<td><p><a class="reference external" href="https://sdvworkinggroup.slack.com/archives/INT">INTSLC</a></p></td>
+<td><p><a class="reference external" href="https://github.com/orgs/eclipse-score/projects/INT">INTBKL</a></p></td>
+<td><div class="line-block">
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/reference_integration">https://github.com/eclipse-score/reference_integration</a></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p id="pmp-pm-mcm"><strong>MCM</strong></p>
+</td>
+<td><p><strong>Integration &amp;</strong></p></td>
+<td><p><strong>Release</strong></p></td>
+<td><p><strong>Community</strong></p></td>
+<td><p><strong>———–</strong></p></td>
+<td><p><strong>———–</strong></p></td>
+<td><p><strong>———————–</strong></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>coordination of public relations, e.g. the maintenance of the website &amp; organization of general events</p></li>
+</ul>
+</td>
+<td><p><a class="reference external" href="https://github.com/orgs/eclipse-score/teams/automotive-score-MCM-team">MCMMBRS</a></p></td>
+<td><p><a class="reference external" href="https://github.com/orgs/eclipse-score/teams/automotive-score-MCM-lead">MCMLD</a></p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/wiki/MCMM">MCMMM</a></p></td>
+<td><p><a class="reference external" href="https://sdvworkinggroup.slack.com/archives/C032X75QGTT">MCMSLC</a></p></td>
+<td><p><a class="reference external" href="https://github.com/orgs/eclipse-score/projects/11">MCMBKL</a></p></td>
+<td><div class="line-block">
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/eclipse-score.github.io">https://github.com/eclipse-score/eclipse-score.github.io</a></div>
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/eclipse-score-website">https://github.com/eclipse-score/eclipse-score-website</a></div>
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/eclipse-score-website-preview">https://github.com/eclipse-score/eclipse-score-website-preview</a></div>
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/eclipse-score-website-published">https://github.com/eclipse-score/eclipse-score-website-published</a></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="feature-teams">
+<span id="pmp-pm-feature-teams"></span><h3>Feature Teams<a class="headerlink" href="#feature-teams" title="Link to this heading">#</a></h3>
+<p><em>Feature Teams</em>  have end-to-end responsibility for providing specific functionalities. This includes all
+development aspects beginning with the architecture definition to the integration test.
+One <em>Team</em> may work independently of other <em>Teams</em> on the team-assigned <em>GitHub Issues</em>,
+and needs at least one <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__committer">rl__committer</a> who can approve &amp; merge the Pull Requests.
+Each <em>Feature Team</em> has one <em>Lead</em> to organize the Team`s work.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id5">
+<caption><span class="caption-number">Table 117 </span><span class="caption-text">Feature Teams</span><a class="headerlink" href="#id5" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 27.2%" />
+<col style="width: 8.6%" />
+<col style="width: 8.6%" />
+<col style="width: 8.6%" />
+<col style="width: 8.6%" />
+<col style="width: 8.6%" />
+<col style="width: 29.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Purpose</p></th>
+<th class="head"><p>Members</p></th>
+<th class="head"><p>Lead</p></th>
+<th class="head"><p>Meeting Minutes</p></th>
+<th class="head"><p>Slack Channel</p></th>
+<th class="head"><p>Backlog</p></th>
+<th class="head"><p>Owned Repository</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p id="pmp-pm-bas"><strong>BAS</strong></p>
+</td>
+<td><p><strong>Baselibs</strong></p></td>
+<td><p><strong>Feature</strong></p></td>
+<td><p><strong>Team</strong></p></td>
+<td><p><strong>———–</strong></p></td>
+<td><p><strong>———–</strong></p></td>
+<td><p><strong>———————–</strong></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>development of the base libraries</p></li>
+</ul>
+</td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/baselibs/blob/main/.github/CODEOWNERS">BASMBRS</a></p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/baselibs/blob/main/.github/CODEOWNERS">BASLD</a></p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/wiki/BASM">BASMM</a></p></td>
+<td><p><a class="reference external" href="https://sdvworkinggroup.slack.com/archives/C090UKSL5L2">BASSLC</a></p></td>
+<td><p><a class="reference external" href="https://github.com/orgs/eclipse-score/projects/24">BASBKL</a></p></td>
+<td><div class="line-block">
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/baselibs">https://github.com/eclipse-score/baselibs</a></div>
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/baselibs_rust">https://github.com/eclipse-score/baselibs_rust</a></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p id="pmp-pm-com"><strong>COM</strong></p>
+</td>
+<td><p><strong>Communication</strong></p></td>
+<td><p><strong>Feature</strong></p></td>
+<td><p><strong>Team</strong></p></td>
+<td><p><strong>———–</strong></p></td>
+<td><p><strong>———–</strong></p></td>
+<td><p><strong>———————–</strong></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>development of the communication and protocols</p></li>
+</ul>
+</td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/communication/blob/main/.github/CODEOWNERS">COMMBRS</a></p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/communication/blob/main/.github/CODEOWNERS">COMLD</a></p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/wiki/COMM">COMMM</a></p></td>
+<td><p><a class="reference external" href="https://sdvworkinggroup.slack.com/archives/C08C0JATADP">COMSLC</a></p></td>
+<td><p><a class="reference external" href="https://github.com/orgs/eclipse-score/projects/19">COMBKL</a></p></td>
+<td><div class="line-block">
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/communication">https://github.com/eclipse-score/communication</a></div>
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/inc_mw_com">https://github.com/eclipse-score/inc_mw_com</a></div>
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/inc_someip_gateway">https://github.com/eclipse-score/inc_someip_gateway</a></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p id="pmp-pm-cfg"><strong>CFG</strong></p>
+</td>
+<td><p><strong>Configuration</strong></p></td>
+<td><p><strong>Management</strong></p></td>
+<td><p><strong>Feature</strong></p></td>
+<td><p><strong>Team</strong></p></td>
+<td><p><strong>———–</strong></p></td>
+<td><p><strong>———————–</strong></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>development of configuration management</p></li>
+</ul>
+</td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/inc_config_management/blob/main/.github/CODEOWNERS">CFGMBRS</a></p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/inc_config_management/blob/main/.github/CODEOWNERS">CFGLD</a></p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/wiki/CFGM">CFGMM</a></p></td>
+<td><p><a class="reference external" href="https://sdvworkinggroup.slack.com/archives/CFG">CFGSLC</a></p></td>
+<td><p><a class="reference external" href="https://github.com/orgs/eclipse-score/projects/CFG">CFGBKL</a></p></td>
+<td><div class="line-block">
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/config_management">https://github.com/eclipse-score/config_management</a></div>
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/inc_config_management">https://github.com/eclipse-score/inc_config_management</a></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p id="pmp-pm-feo"><strong>FEO</strong></p>
+</td>
+<td><p><strong>Fixed</strong></p></td>
+<td><p><strong>Execution</strong></p></td>
+<td><p><strong>Order</strong></p></td>
+<td><p><strong>Feature</strong></p></td>
+<td><p><strong>Team</strong></p></td>
+<td><p><strong>———————–</strong></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>development of fixed execution order</p></li>
+</ul>
+</td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/feo/blob/main/.github/CODEOWNERS">FEOMBRS</a></p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/feo/blob/main/.github/CODEOWNERS">FEOLD</a></p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/wiki/FEOM">FEOMM</a></p></td>
+<td><p><a class="reference external" href="https://sdvworkinggroup.slack.com/archives/FEO">FEOSLC</a></p></td>
+<td><p><a class="reference external" href="https://github.com/orgs/eclipse-score/projects/9">FEOBKL</a></p></td>
+<td><div class="line-block">
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/feo">https://github.com/eclipse-score/feo</a></div>
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/inc_feo">https://github.com/eclipse-score/inc_feo</a></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p id="pmp-pm-kyr"><strong>KYR</strong></p>
+</td>
+<td><p><strong>Kyron</strong></p></td>
+<td><p><strong>Feature</strong></p></td>
+<td><p><strong>Team</strong></p></td>
+<td><p><strong>———–</strong></p></td>
+<td><p><strong>———–</strong></p></td>
+<td><p><strong>———————–</strong></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>development of Kyron</p></li>
+</ul>
+</td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/kyron/blob/main/.github/CODEOWNERS">KYRMBRS</a></p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/kyron/blob/main/.github/CODEOWNERS">KYRLD</a></p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/wiki/KYRM">KYRMM</a></p></td>
+<td><p><a class="reference external" href="https://sdvworkinggroup.slack.com/archives/KYR">KYRSLC</a></p></td>
+<td><p><a class="reference external" href="https://github.com/orgs/eclipse-score/projects/38">KYRBKL</a></p></td>
+<td><div class="line-block">
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/kyron">https://github.com/eclipse-score/kyron</a></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p id="pmp-pm-log"><strong>LOG</strong></p>
+</td>
+<td><p><strong>Logging</strong></p></td>
+<td><p><strong>Feature</strong></p></td>
+<td><p><strong>Team</strong></p></td>
+<td><p><strong>———–</strong></p></td>
+<td><p><strong>———–</strong></p></td>
+<td><p><strong>———————–</strong></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>development of Logging</p></li>
+</ul>
+</td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/logging/blob/main/.github/CODEOWNERS">LOGMBRS</a></p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/logging/blob/main/.github/CODEOWNERS">LOGLD</a></p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/wiki/LOGM">LOGMM</a></p></td>
+<td><p><a class="reference external" href="https://sdvworkinggroup.slack.com/archives/C089XP2PGQZ">LOGSLC</a></p></td>
+<td><p><a class="reference external" href="https://github.com/orgs/eclipse-score/projects/31">LOGBKL</a></p></td>
+<td><div class="line-block">
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/logging">https://github.com/eclipse-score/logging</a></div>
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/inc_mw_log">https://github.com/eclipse-score/inc_mw_log</a></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p id="pmp-pm-lcm"><strong>LCM</strong></p>
+</td>
+<td><p><strong>Lifecycle</strong></p></td>
+<td><p><strong>Management &amp;</strong></p></td>
+<td><p><strong>Health Monitoring</strong></p></td>
+<td><p><strong>Feature</strong></p></td>
+<td><p><strong>Team</strong></p></td>
+<td><p><strong>———————–</strong></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>development of Lifecycle Management and Health Monitoring</p></li>
+</ul>
+</td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/lifecycle/blob/main/.github/CODEOWNERS">LCMMBRS</a></p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/lifecycle/blob/main/.github/CODEOWNERS">LCMLD</a></p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/wiki/LCMM">LCMMM</a></p></td>
+<td><p><a class="reference external" href="https://sdvworkinggroup.slack.com/archives/C094Z3BN1K4">LCMSLC</a></p></td>
+<td><p><a class="reference external" href="https://github.com/orgs/eclipse-score/projects/33">LCMBKL</a></p></td>
+<td><div class="line-block">
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/lifecycle">https://github.com/eclipse-score/lifecycle</a></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p id="pmp-pm-ocr"><strong>OCR</strong></p>
+</td>
+<td><p><strong>Orchestrator</strong></p></td>
+<td><p><strong>Feature</strong></p></td>
+<td><p><strong>Team</strong></p></td>
+<td><p><strong>———–</strong></p></td>
+<td><p><strong>———–</strong></p></td>
+<td><p><strong>———————–</strong></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>development of Orchestrator</p></li>
+</ul>
+</td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/orchestrator/blob/main/.github/CODEOWNERS">ORCMBRS</a></p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/orchestrator/blob/main/.github/CODEOWNERS">ORCLD</a></p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/wiki/ORCM">ORCMM</a></p></td>
+<td><p><a class="reference external" href="https://sdvworkinggroup.slack.com/archives/C099W80FU2C">ORCSLC</a></p></td>
+<td><p><a class="reference external" href="https://github.com/orgs/eclipse-score/projects/29">ORCBKL</a></p></td>
+<td><div class="line-block">
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/orchestrator">https://github.com/eclipse-score/orchestrator</a></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p id="pmp-pm-per"><strong>PER</strong></p>
+</td>
+<td><p><strong>Persistency</strong></p></td>
+<td><p><strong>Feature</strong></p></td>
+<td><p><strong>Team</strong></p></td>
+<td><p><strong>———–</strong></p></td>
+<td><p><strong>———–</strong></p></td>
+<td><p><strong>———————–</strong></p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>development of Persistency</p></li>
+</ul>
+</td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/persistency/blob/main/.github/CODEOWNERS">PERMBRS</a></p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/persistency/blob/main/.github/CODEOWNERS">PERLD</a></p></td>
+<td><p><a class="reference external" href="https://github.com/eclipse-score/score/wiki/PERM">PERMM</a></p></td>
+<td><p><a class="reference external" href="https://sdvworkinggroup.slack.com/archives/C08B339ETQU">PERSLC</a></p></td>
+<td><p><a class="reference external" href="https://github.com/orgs/eclipse-score/projects/20">PERBKL</a></p></td>
+<td><div class="line-block">
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/persistency">https://github.com/eclipse-score/persistency</a></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="organization-management">
+<h3>Organization Management<a class="headerlink" href="#organization-management" title="Link to this heading">#</a></h3>
+<p>Decision to adapt the <em>Project Organization</em> is done in the <em>Technical Lead Circle</em> / <em>Project Management Circle</em>, documented in the meeting minutes and planned with a <em>Task</em>:</p>
+<ul class="simple">
+<li><p>creating of a new Team (<em>Community</em> or <em>Feature Team</em>)</p></li>
+<li><p>setting an existing Team (<em>Community</em> or <em>Feature Team</em>) on hold</p></li>
+<li><p>deleting an existing Team (<em>Community</em> or <em>Feature Team</em>)</p></li>
+</ul>
+<section id="creation-of-a-new-feature-team">
+<h4>Creation of a new Feature Team<a class="headerlink" href="#creation-of-a-new-feature-team" title="Link to this heading">#</a></h4>
+<p>In case a new Feature Team creation is necessary, the following steps have to be done:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/orgs/eclipse-score/teams">Adding a new Team to GitHub Teams</a> and adding the Core Members by editing
+<a class="reference external" href="https://github.com/eclipse-score/.eclipsefdn/blob/main/otterdog/eclipse-score.jsonnet">orgs.newTeam</a>.</p></li>
+<li><p>Adding a new Repository to GitHub by editing
+<a class="reference external" href="https://github.com/eclipse-score/.eclipsefdn/blob/main/otterdog/eclipse-score.jsonnet">orgs.newRepo</a>.</p></li>
+<li><p>Definition of Repository specific <a class="reference internal" href="#pmp-pm-codeowners"><span class="std std-ref">CODEOWNERS</span></a>.</p></li>
+<li><p><a class="reference external" href="https://github.com/orgs/eclipse-score/projects">Creation of a Team GitHub Project</a> with a Kanban View and a Task View.</p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/score/wiki">Creation of a Team Meeting Wiki</a> for the meeting minutes</p></li>
+<li><p>Creation of a Team Label</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">committee</span><span class="p">:</span><span class="o">&lt;</span><span class="n">Name</span> <span class="n">of</span> <span class="n">Committee</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="n">community</span><span class="p">:</span><span class="o">&lt;</span><span class="n">Name</span> <span class="n">of</span> <span class="n">Community</span><span class="o">&gt;</span> <span class="ow">or</span>
+<span class="n">ft</span><span class="p">:</span><span class="o">&lt;</span><span class="n">Name</span> <span class="n">of</span> <span class="n">Feature</span> <span class="n">Team</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Creation of a Slack Channel: <a class="reference external" href="https://sdvworkinggroup.slack.com">https://sdvworkinggroup.slack.com</a></p></li>
+<li><p>Adapting the PMP</p></li>
+</ul>
+<section id="external-communication">
+<h5>External Communication<a class="headerlink" href="#external-communication" title="Link to this heading">#</a></h5>
+<p>The external communication is done via GitHub, LinkedIn, etc. Publications by <a class="reference internal" href="#pmp-pm-mcm"><span class="std std-ref">Marketing and Communication Community</span></a>.</p>
+</section>
+</section>
+</section>
+</section>
+<section id="internal-communication">
+<h2>Internal Communication<a class="headerlink" href="#internal-communication" title="Link to this heading">#</a></h2>
+<p>The project internal communication is ensured with help of:</p>
+<ul class="simple">
+<li><p>virtual and face-to-face meetings and their minutes</p></li>
+<li><p><em>GitHub issues</em> and <em>GitHub pull requests</em></p></li>
+<li><p>online communication using Slack</p></li>
+</ul>
+<section id="meetings">
+<h3>Meetings<a class="headerlink" href="#meetings" title="Link to this heading">#</a></h3>
+<p>All meetings are scheduled in the <a class="reference external" href="https://calendar.google.com/calendar/u/0/embed?src=c_2ampi2bmoka3qter4dceap1d5g&#64;group.calendar.google.com&amp;ctz=Europe/Berlin">Eclipse S-CORE Calendar</a> , are open for everyone
+but mentioned team members are mandatory. Meeting minutes are public and stored in the project specific <em>GitHub Team Wikis</em>.</p>
+</section>
+</section>
+<section id="repository-structure">
+<span id="pmp-pm-repository-structure"></span><h2>Repository structure<a class="headerlink" href="#repository-structure" title="Link to this heading">#</a></h2>
+<p>The Platform follows a multiple repositories approach. The root repository is</p>
+<p id="pmp-pm-root-repository"><a class="reference external" href="https://github.com/eclipse-score">https://github.com/eclipse-score</a>.</p>
+<p>It contains among others:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../requirements/stakeholder/index.html#stakeholder-requirements"><span class="std std-ref">stakeholder requirements</span></a></p></li>
+<li><p>documentation of all <a class="reference internal" href="../features/index.html#features"><span class="std std-ref">platform features</span></a>, features flags,
+feature requirements and architecture</p></li>
+<li><p>build system including <em>S-CORE</em> specific <em>macros</em> and <em>rules</em></p></li>
+<li><p>integration rules for software modules.</p></li>
+</ul>
+<p>which are stored in the <a class="reference internal" href="../contribute/general/folder.html#platform-folder-structure"><span class="std std-ref">Folder Structure of Platform Repository</span></a>.</p>
+<p>Every software module has its own repository, that contains among others:</p>
+<ul class="simple">
+<li><p>multiple components</p></li>
+<li><p>their requirements</p></li>
+<li><p>architecture</p></li>
+<li><p>implementation</p></li>
+<li><p>tests</p></li>
+</ul>
+<p>within the following <a class="reference internal" href="../contribute/general/folder.html#module-folder-structure"><span class="std std-ref">Module Folder Structure</span></a>.</p>
+<section id="codeowners">
+<span id="pmp-pm-codeowners"></span><h3>Codeowners<a class="headerlink" href="#codeowners" title="Link to this heading">#</a></h3>
+<p>While creating a new repository, <a class="reference internal" href="#pmp-pm-plctlc"><span class="std std-ref">Project / Technical Leads</span></a> nominate initial <a class="reference external" href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners#codeowners-and-branch-protection">CODEOWNERS</a>,
+whose review is mandatory for merging PRs to the repository and who are at the end allowed to merge PRs to the repository as well as maintaining it.</p>
+<p>Possible members are software developers , who</p>
+<ul class="simple">
+<li><p>understand how the particular feature works or should work</p></li>
+<li><p>are the initial authors of the software</p></li>
+<li><p>and are <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/roles/index.html#rl__committer">rl__committer</a></p></li>
+</ul>
+<p>The Codeownership has to be regularly updated and changes have to be documented.</p>
+</section>
+</section>
+<section id="planning-tracking">
+<h2>Planning &amp; Tracking<a class="headerlink" href="#planning-tracking" title="Link to this heading">#</a></h2>
+<section id="cadence">
+<h3>Cadence<a class="headerlink" href="#cadence" title="Link to this heading">#</a></h3>
+<section id="iteration">
+<h4>Iteration<a class="headerlink" href="#iteration" title="Link to this heading">#</a></h4>
+<p>The Project calendar is devided into iterations. Each iteration is two weeks long.</p>
+</section>
+<section id="release-frequence">
+<h4>Release Frequence<a class="headerlink" href="#release-frequence" title="Link to this heading">#</a></h4>
+<p>After every 3rd iteration, the work is baselined into a Release.</p>
+</section>
+</section>
+<section id="planning-tracking-infrastructure">
+<h3>Planning &amp; Tracking Infrastructure<a class="headerlink" href="#planning-tracking-infrastructure" title="Link to this heading">#</a></h3>
+<p>The planning and tracking of the work is done inside <strong>GitHub</strong>.
+GitHub <strong>Issues</strong> are used to document all necessary work packages.</p>
+</section>
+<section id="issues">
+<h3>Issues<a class="headerlink" href="#issues" title="Link to this heading">#</a></h3>
+<p>To organize the work <a class="reference internal" href="#pmp-pm-issue-types"><span class="std std-ref">Github Types</span></a>,  <a class="reference internal" href="#pmp-pm-gh-labels"><span class="std std-ref">GitHub Labels</span></a> and
+<a class="reference internal" href="#pmp-pm-gh-projects"><span class="std std-ref">GitHub Projects</span></a> are used.
+The Progress of the work is documented with help of the <a class="reference internal" href="#pmp-pm-issue-status-flow"><span class="std std-ref">Status of an Issue</span></a>.</p>
+<section id="issues-types">
+<span id="pmp-pm-issue-types"></span><h4>Issues Types<a class="headerlink" href="#issues-types" title="Link to this heading">#</a></h4>
+<a class="reference internal image-reference" href="../_images/score_project_management_issue_types.drawio.svg"><img alt="Issue Types" class="align-center" src="../_images/score_project_management_issue_types.drawio.svg" width="900" />
+</a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="architectural-issues">
+<h4>Architectural Issues<a class="headerlink" href="#architectural-issues" title="Link to this heading">#</a></h4>
+<p id="pmp-pm-feature-request"><strong>Feature Request</strong></p>
+<p>A <em>Feature Request</em> represents an independent work package used to describe and
+track a high-level request for the project. <em>Feature Request</em> work packages can be linked to
+other work packages, but they must not be treated as parent work packages. <em>Feature Request</em> covers new Features as well as significant modifications of existing Features.
+They are in the responsibility of the <a class="reference internal" href="#pmp-pm-arc"><span class="std std-ref">Architecture Community</span></a>, shall aligned with <a class="reference internal" href="#pmp-pm-plctlc"><span class="std std-ref">Project / Technical Lead Circle</span></a> and the issues are part of the <a class="reference internal" href="#pmp-pm-root-repository"><span class="std std-ref">Root Repository</span></a>.</p>
+<p><a class="reference external" href="https://eclipse-score.github.io/score/main/features/index.html">About Features</a></p>
+<p><a class="reference external" href="https://github.com/eclipse-score/.github/.github/ISSUE_TEMPLATE/1a_FeatureRequest.yml">Feature Request issue template</a></p>
+<p id="pmp-pm-component-request"><strong>Component Request</strong></p>
+<p>A <em>Component Request</em> represents an independent work package used to describe modifications inside a <em>Feature</em>, either adding new components or modifying existing ones.
+<em>Component Request</em> work packages can be linked to other work packages, but they must not be treated as parent work packages. They shall be discussed with
+<a class="reference internal" href="#pmp-pm-arc"><span class="std std-ref">Architecture Community</span></a> and the issues are owned by a Team and are part of the Team`s main repository..</p>
+<p><a class="reference external" href="https://eclipse-score.github.io/score/main/modules/index.html">About Components</a></p>
+<p><a class="reference external" href="https://github.com/eclipse-score/.github/.github/ISSUE_TEMPLATE/1b_ComponentRequest.yml">Component Request issue template</a></p>
+</section>
+<section id="planning-issues">
+<h4>Planning Issues<a class="headerlink" href="#planning-issues" title="Link to this heading">#</a></h4>
+<p id="pmp-pm-product-increment"><strong>Product Increment</strong></p>
+<p>A <em>Product Increment</em> represents the highest level in the work package hierarchy and
+cannot be linked as a child of another issue. If you need to group multiple <em>Product Increment</em> work packages,
+labels have to be used. One <em>Product Increment</em> is the planning element for a version of a <a class="reference internal" href="../modules/index.html#modules"><span class="std std-ref">Module</span></a>.
+A <em>Product Increment</em> can have multiple <em>Epic</em> work packages as children. <em>Product Increments</em> are owned by
+<a class="reference internal" href="#pmp-pm-plctlc"><span class="std std-ref">Project / Technical Lead Circle</span></a> and are part of the <a class="reference internal" href="#pmp-pm-root-repository"><span class="std std-ref">Root Repository</span></a>.</p>
+<p><a class="reference external" href="https://github.com/eclipse-score/.github/.github/ISSUE_TEMPLATE/2_ProductIncrement.yml">Product Increment issue template</a></p>
+<p id="pmp-pm-epic"><strong>Epic</strong></p>
+<p>An <em>Epic</em> is the primary planning work package for development teams.
+<em>Epic</em> work packages should be scoped in a way that allows them to be completed within
+a release cycle of the S-CORE project.
+While an <em>Epic</em> can be implemented by multiple team members, it is recommended
+that one developer takes main responsibility for its completion. Quality assurance activities,
+such as code reviews, can be performed by other team members.
+<em>Epics</em> are typically grouped under an <em>Product Increment</em>. However, an <em>Epic</em> work package can also exist
+as a standalone work package if its outcome represents a complete functional improvement,
+making a related <em>Product Increment</em> work package unnecessary.
+Sometimes support of other teams might be necessary for the completion of the work, therefore an
+<em>Epic</em> can have team-internal and team-external <em>Task</em> child issues. <em>Epics</em> are owned by a Team and are part
+of the Team`s main repository.</p>
+<p><a class="reference external" href="https://github.com/eclipse-score/.github/.github/ISSUE_TEMPLATE/3_ProductIncrement.yml">Epic issue template</a></p>
+<p id="pmp-pm-task"><strong>Task</strong></p>
+<p>A <em>Task GitHub Issue</em> represents the smallest unit of planning and typically corresponds
+to a concrete piece of work to be completed, such as by a developer. <em>Task</em> work packages are usually
+grouped under an <em>Epic</em> work package.
+In certain cases, a <em>Task</em> may exist as a standalone <em>GitHub Issue</em>.
+However, standalone <em>Task</em> work packages must not be grouped using labels.
+If multiple <em>Task</em> work packages are related, a <em>Epic</em> work package should be created instead,
+with all associated <em>Task</em> work packages added as child work packages under that <em>Epic</em>. <em>Tasks</em> are owned by a Team and are part
+of any Team`s repository.</p>
+<p><a class="reference external" href="https://github.com/eclipse-score/.github/.github/ISSUE_TEMPLATE/4_Task.yml">Task issue template</a></p>
+<p id="pmp-pm-bug"><strong>Bug</strong></p>
+<p>A <em>Bug GitHub Issue</em> is used to report any kind of problem or malfunction. It is considered
+a special type of work package and follows the same rules as regular <em>Epic</em> work packages,
+with the key difference that it focuses on fixing defects in existing functionality
+rather than creating or extending functionality. <em>^Bugs</em> are owned by a Team and are part
+of any Team`s repository.</p>
+<p><a class="reference external" href="https://github.com/eclipse-score/.github/.github/ISSUE_TEMPLATE/5_Bug.yml">Bug issue template</a></p>
+</section>
+<section id="issue-status">
+<span id="pmp-pm-issue-status-flow"></span><h4>Issue Status<a class="headerlink" href="#issue-status" title="Link to this heading">#</a></h4>
+<p>Each <em>GitHub issue</em> has a <strong>Status</strong> depending on the <a class="reference internal" href="#pmp-pm-gh-projects"><span class="std std-ref">GitHub Project</span></a>,
+we use the following Standard Flow for all <a class="reference internal" href="#pmp-pm-issue-types"><span class="std std-ref">Issue Types</span></a>:</p>
+<a class="reference internal image-reference" href="../_images/score_project_management_issue_status_flow.drawio.svg"><img alt="Issue Status" class="align-center" src="../_images/score_project_management_issue_status_flow.drawio.svg" width="900" />
+</a>
+</section>
+<section id="issue-attributes">
+<h4>Issue Attributes<a class="headerlink" href="#issue-attributes" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Standard Attributes</dt><dd><ul>
+<li><p>Assignees</p></li>
+<li><p><a class="reference internal" href="#pmp-pm-gh-labels"><span class="std std-ref">Labels</span></a></p></li>
+<li><p><a class="reference internal" href="#pmp-pm-issue-types"><span class="std std-ref">Type</span></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Common Project Attributes</dt><dd><ul>
+<li><p><a class="reference internal" href="#pmp-pm-issue-status-flow"><span class="std std-ref">Status</span></a></p></li>
+<li><p>Priority (1 - High, 2 - Middle, 3 - Low)</p></li>
+<li><p>Size (S - Day, M - Week, L - Month, XL - Quarter)</p></li>
+<li><p>(planned finishing) Iteration</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="issue-templates">
+<h4>Issue Templates<a class="headerlink" href="#issue-templates" title="Link to this heading">#</a></h4>
+<p>Templates defined in <em>GitHub</em> ensure the availability of the type relevant information for all issues.</p>
+</section>
+<section id="hierarchies">
+<h4>Hierarchies<a class="headerlink" href="#hierarchies" title="Link to this heading">#</a></h4>
+<p>Hierarchies are realized as parent-child relations with the <a class="reference external" href="https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/adding-sub-issues">GitHub Sub-Issue Feature</a>.</p>
+</section>
+<section id="dependencies">
+<h4>Dependencies<a class="headerlink" href="#dependencies" title="Link to this heading">#</a></h4>
+<p>Dependencies are realized with blocked by or blocking relations described in the <a class="reference external" href="https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-issue-dependencies">GitHub Issue Dependency Feature</a>.</p>
+</section>
+</section>
+<section id="milestone">
+<span id="pmp-pm-milestone"></span><h3>Milestone<a class="headerlink" href="#milestone" title="Link to this heading">#</a></h3>
+<p>A milestone is indicating an important dedicated point in the schedule like
+a Release or a Process Audit, etc.
+<a class="reference external" href="https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones">GitHub Milestones</a> offer to connect <em>Issues</em> and <em>Pull Requests</em> to the <a class="reference external" href="https://github.com/eclipse-score/score/milestones">S-CORE-defined Milestones</a></p>
+</section>
+<section id="releases">
+<span id="pmp-pm-release"></span><h3>Releases<a class="headerlink" href="#releases" title="Link to this heading">#</a></h3>
+<p><em>Releases</em> are special milestones and used for baselining of the development activities.</p>
+</section>
+<section id="labels">
+<span id="pmp-pm-gh-labels"></span><h3>Labels<a class="headerlink" href="#labels" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels">GitHub Labels</a> are used to organize Issues, Pull Requests etc. having same context. Although
+Labels are powerful, the definition of new Labels shall be wisely done and organization wide used.
+Therefore their management is limited to Organization owners.</p>
+<p>The following <a class="reference external" href="https://github.com/eclipse-score/score/labels">Labels</a> are defined.</p>
+</section>
+<section id="github-projects">
+<span id="pmp-pm-gh-projects"></span><h3>GitHub Projects<a class="headerlink" href="#github-projects" title="Link to this heading">#</a></h3>
+<p>The <a class="reference external" href="https://docs.github.com/en/issues/planning-and-tracking-with-projects">GitHub Project Feature</a>
+helps to plan the work and monitor its progress.</p>
+<p>Multiple <em>GitHub Projects</em> are defined at <a class="reference external" href="https://github.com/orgs/eclipse-score/projects/">https://github.com/orgs/eclipse-score/projects/</a>.</p>
+<p>Beside one for each (committee, community, feature) Team, there is one for <a class="reference external" href="https://github.com/orgs/eclipse-score/projects/4">Feature / Component Requests</a>
+and one for the complete <a class="reference external" href="https://github.com/orgs/eclipse-score/projects/17">Roadmap</a>. Inside a GitHub Project, there is the possibility to generate different views
+for Table, Board and Roadmap supporting Backlogs, Open Point or Task Lists and other useful perspectives.</p>
+<a class="reference internal image-reference" href="../_images/score_project_management_planning_overview.drawio.svg"><img alt="Planning Overview" class="align-center" src="../_images/score_project_management_planning_overview.drawio.svg" width="900" />
+</a>
+<section id="kanban-view">
+<h4>Kanban View<a class="headerlink" href="#kanban-view" title="Link to this heading">#</a></h4>
+<p>The <a class="reference external" href="https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/customizing-the-board-layout">GitHub Board</a> is supporting the Kanban View, enabling to set the Work In Progress Limits.</p>
+<a class="reference internal image-reference" href="../_images/score_project_management_kanban.drawio.svg"><img alt="Kanban View" class="align-center" src="../_images/score_project_management_kanban.drawio.svg" width="900" />
+</a>
+</section>
+<section id="task-list-view">
+<h4>Task List View<a class="headerlink" href="#task-list-view" title="Link to this heading">#</a></h4>
+<p>The <a class="reference external" href="https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/customizing-the-table-layout">GitHub Table</a> is supporting the List View, enabling to adapt the priority by reordering the rows.</p>
+</section>
+<section id="roadmap-view">
+<h4>Roadmap View<a class="headerlink" href="#roadmap-view" title="Link to this heading">#</a></h4>
+<p>The <a class="reference external" href="https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/customizing-the-roadmap-layout">GitHub Roadmap</a> is supporting the Road View, provididing a high-level visualization of your project across a configurable timespan.</p>
+</section>
+</section>
+<section id="traceability">
+<h3>Traceability<a class="headerlink" href="#traceability" title="Link to this heading">#</a></h3>
+<p>To achieve traceability all <em>Pull Requests</em> have to be <a class="reference external" href="https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue">linked</a>
+to the corresponding <em>GitHub Issues</em>.</p>
+</section>
+<section id="planning-of-work">
+<h3>Planning of Work<a class="headerlink" href="#planning-of-work" title="Link to this heading">#</a></h3>
+<p>Generally, every team is responsible for planning its work within its own plan with the help of its <a class="reference internal" href="#pmp-pm-gh-projects"><span class="std std-ref">GitHub Project</span></a> filled with <a class="reference internal" href="#pmp-pm-epic"><span class="std std-ref">Epics</span></a>, <a class="reference internal" href="#pmp-pm-task"><span class="std std-ref">Tasks</span></a> and <a class="reference internal" href="#pmp-pm-bug"><span class="std std-ref">Bugs</span></a>.</p>
+<p>The planning of <a class="reference internal" href="#pmp-pm-feature-request"><span class="std std-ref">Feature Requests</span></a> and <a class="reference internal" href="#pmp-pm-component-request"><span class="std std-ref">Component Requests</span></a> is in the responsibility of the <a class="reference internal" href="#pmp-pm-arc"><span class="std std-ref">Architects</span></a>,
+whereas the overall top-down plan is in the responsibility of the <a class="reference internal" href="#pmp-pm-plctlc"><span class="std std-ref">Project / Technical Lead Circle</span></a> with the help of <a class="reference internal" href="#pmp-pm-product-increment"><span class="std std-ref">Product Increments</span></a>,
+<a class="reference internal" href="#pmp-pm-milestone"><span class="std std-ref">Milestones</span></a> and <a class="reference internal" href="#pmp-pm-release"><span class="std std-ref">Releases</span></a>.</p>
+<a class="reference internal image-reference" href="../_images/score_project_management_process_issue_overview.drawio.svg"><img alt="Planning Overview" class="align-center" src="../_images/score_project_management_process_issue_overview.drawio.svg" width="600" />
+</a>
+</section>
+<section id="tracking-progress">
+<h3>Tracking Progress<a class="headerlink" href="#tracking-progress" title="Link to this heading">#</a></h3>
+<p>The <a class="reference internal" href="#pmp-pm-plctlc"><span class="std std-ref">Project / Technical Lead Circle</span></a> regularly monitors the status of the work for upcoming Milestones and Releases in <a class="reference external" href="https://github.com/orgs/eclipse-score/projects/17/">https://github.com/orgs/eclipse-score/projects/17/</a> based on
+<a class="reference internal" href="#pmp-pm-product-increment"><span class="std std-ref">Product Increments</span></a>.</p>
+<section id="dashboards">
+<h4>Dashboards<a class="headerlink" href="#dashboards" title="Link to this heading">#</a></h4>
+<p>GitHub offers mechanism in form of charts to track issues:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/orgs/eclipse-score/projects/17/insights/4">Product Increments Open last 3 months</a></p></li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Platform Management Plan</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="safety_management.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Safety management / Platform Safety Plan</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose">Purpose</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives-and-scope">Objectives and Scope</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#project-management-goals-and-definition-of-done">Project Management Goals and Definition of Done</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-organization">Project Organization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#org-chart-and-main-platform-management-plan-responsibilities">Org Chart and Main Platform Management Plan Responsibilities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steering-committees">Steering Committees</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#communities">Communities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-teams">Feature Teams</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#organization-management">Organization Management</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#creation-of-a-new-feature-team">Creation of a new Feature Team</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#external-communication">External Communication</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#internal-communication">Internal Communication</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meetings">Meetings</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-structure">Repository structure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codeowners">Codeowners</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#planning-tracking">Planning &amp; Tracking</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cadence">Cadence</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#iteration">Iteration</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#release-frequence">Release Frequence</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#planning-tracking-infrastructure">Planning &amp; Tracking Infrastructure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#issues">Issues</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#issues-types">Issues Types</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#architectural-issues">Architectural Issues</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#planning-issues">Planning Issues</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#issue-status">Issue Status</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#issue-attributes">Issue Attributes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#issue-templates">Issue Templates</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hierarchies">Hierarchies</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#milestone">Milestone</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#releases">Releases</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#labels">Labels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#github-projects">GitHub Projects</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kanban-view">Kanban View</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#task-list-view">Task List View</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#roadmap-view">Roadmap View</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#traceability">Traceability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#planning-of-work">Planning of Work</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-progress">Tracking Progress</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dashboards">Dashboards</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/eclipse-score/score/edit/main/docs/platform_management_plan/project_management.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=7f76b32a3354e82990f2"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=7f76b32a3354e82990f2"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
