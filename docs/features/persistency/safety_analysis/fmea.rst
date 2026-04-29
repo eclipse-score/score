@@ -43,4 +43,9 @@ Fault models
 Failure Mode List
 -----------------
 
-.. fmea_xml_table:: fmea.xml
+.. needimport:: fmea.json
+   :hide:
+
+.. needtable::
+   :types: feat_saf_fmea
+   :columns: id;violates;fault_id;failure_effect;mitigated_by;sufficient;status;content
