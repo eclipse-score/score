@@ -603,7 +603,7 @@
                   
   <section id="dfa-dependent-failure-analysis">
 <h1>DFA (Dependent Failure Analysis)<a class="headerlink" href="#dfa-dependent-failure-analysis" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-7cef8e5e">
+<div class="need_container docutils container" id="SNCB-01c4e746">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__baselibs_dfa">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -655,14 +655,71 @@ following tables. For all applicable failure initiators, the DFA has to be perfo
 <h2>Dependent Failure Initiators<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <section id="shared-resources">
 <h3>Shared resources<a class="headerlink" href="#shared-resources" title="Link to this heading">#</a></h3>
-<p>The dependent failure initiators related to shared resources are not applicable for the features. The shared resources
-will be considered in the platform DFA.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id2">
+<caption><span class="caption-number">Table 3 </span><span class="caption-text">DFA shared resources (used for Platform DFA)</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 16.7%" />
+<col style="width: 33.3%" />
+<col style="width: 16.7%" />
+<col style="width: 33.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ID</p></th>
+<th class="head"><p>Violation cause shared resources</p></th>
+<th class="head"><p>Applicability</p></th>
+<th class="head"><p>Rationale</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SR_01_01</p></td>
+<td><p>Reused software modules</p></td>
+<td><p>no</p></td>
+<td><p>Baselibs only uses libraries and not other executable modules.</p></td>
+</tr>
+<tr class="row-odd"><td><p>SR_01_02</p></td>
+<td><p>Libraries</p></td>
+<td><p>yes</p></td>
+<td><p>Baselibs filesystem component may suffer from concurrent access to a file, <a class="reference internal" href="#feat_saf_dfa__baselibs__conc_file_access" title="feat_saf_dfa__baselibs__conc_file_access"><em class="xref need">concurrent file access (feat_saf_dfa__baselibs__conc_file_access)</em></a></p></td>
+</tr>
+<tr class="row-even"><td><p>SR_01_04</p></td>
+<td><p>Basic software</p></td>
+<td><p>no</p></td>
+<td><p>Not a baselibs specific topic, covered on platform level.</p></td>
+</tr>
+<tr class="row-odd"><td><p>SR_01_05</p></td>
+<td><p>Operating system including scheduler</p></td>
+<td><p>no</p></td>
+<td><p>Not a baselibs specific topic, covered on platform level.</p></td>
+</tr>
+<tr class="row-even"><td><p>SR_01_06</p></td>
+<td><p>Any service stack, e.g. communication stack</p></td>
+<td><p>no</p></td>
+<td><p>Not a baselibs specific topic, covered on platform level.</p></td>
+</tr>
+<tr class="row-odd"><td><p>SR_01_07</p></td>
+<td><p>Configuration data</p></td>
+<td><p>no</p></td>
+<td><p>No shared configuration data for baselibs.</p></td>
+</tr>
+<tr class="row-even"><td><p>SR_01_09</p></td>
+<td><p>Execution time</p></td>
+<td><p>no</p></td>
+<td><p>Not a baselibs specific topic, covered on platform level.</p></td>
+</tr>
+<tr class="row-odd"><td><p>SR_01_10</p></td>
+<td><p>Allocated memory</p></td>
+<td><p>yes</p></td>
+<td><p>Bitmanipulation component may operate on the same memory, <a class="reference internal" href="#feat_saf_dfa__baselibs__conc_memory_access" title="feat_saf_dfa__baselibs__conc_memory_access"><em class="xref need">concurrent memory access (feat_saf_dfa__baselibs__conc_memory_access)</em></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="communication-between-the-two-elements">
 <h3>Communication between the two elements<a class="headerlink" href="#communication-between-the-two-elements" title="Link to this heading">#</a></h3>
 <p>Receiving function is affected by information that is false, lost, sent multiple times, or in the wrong order etc. from the sender.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id2">
-<caption><span class="caption-number">Table 3 </span><span class="caption-text">DFA communication between elements</span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id3">
+<caption><span class="caption-number">Table 4 </span><span class="caption-text">DFA communication between elements</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 16.7%" />
 <col style="width: 33.3%" />
@@ -719,8 +776,8 @@ will be considered in the platform DFA.</p>
 <section id="shared-information-inputs">
 <h3>Shared information inputs<a class="headerlink" href="#shared-information-inputs" title="Link to this heading">#</a></h3>
 <p>Same information input used by multiple functions.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id3">
-<caption><span class="caption-number">Table 4 </span><span class="caption-text">DFA shared information inputs</span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id4">
+<caption><span class="caption-number">Table 5 </span><span class="caption-text">DFA shared information inputs</span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 16.7%" />
 <col style="width: 33.3%" />
@@ -762,8 +819,8 @@ will be considered in the platform DFA.</p>
 <section id="unintended-impact">
 <h3>Unintended impact<a class="headerlink" href="#unintended-impact" title="Link to this heading">#</a></h3>
 <p>Unintended impacts to function due to various failures.</p>
-<div class="pst-scrollable-table-container"><table class="table" id="id4">
-<caption><span class="caption-number">Table 5 </span><span class="caption-text">DFA unintended impact</span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id5">
+<caption><span class="caption-number">Table 6 </span><span class="caption-text">DFA unintended impact</span><a class="headerlink" href="#id5" title="Link to this table">#</a></caption>
 <colgroup>
 <col style="width: 16.7%" />
 <col style="width: 33.3%" />
@@ -847,7 +904,7 @@ will be considered in the platform DFA.</p>
 <section id="dfa">
 <h1>DFA<a class="headerlink" href="#dfa" title="Link to this heading">#</a></h1>
 <p>For all identified applicable failure initiators, the DFA is performed in the following section.</p>
-<div class="need_container docutils container" id="SNCB-2a58bb0a">
+<div class="need_container docutils container" id="SNCB-ce55377a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_saf_dfa table" id="feat_saf_dfa__baselibs__memory_access">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -895,7 +952,7 @@ out of bounds access should be detected by unit testing/sanitizers.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-bf7ab999">
+<div class="need_container docutils container" id="SNCB-26610fd5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_saf_dfa table" id="feat_saf_dfa__baselibs__locked_ressource">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -919,15 +976,16 @@ out of bounds access should be detected by unit testing/sanitizers.</p></td>
 <div class="line"><span class="needs_failure_id"><span class="needs_label">failure_id: </span><span class="needs_data">UI_01_04</span></span></div>
 <div class="line"><span class="needs_sufficient"><span class="needs_label">sufficient: </span><span class="needs_data">yes</span></span></div>
 </span></span></div>
-<div class="line"><span><div class="line">mitigated_by: <span class="mitigated_by"><span><a class="reference internal" href="../../../../modules/baselibs/filesystem/docs/requirements/index.html#aou_req__filesystem__thread_safety" title="feat_saf_dfa__baselibs__locked_ressource">aou_req__filesystem__thread_safety</a>, <a class="reference internal" href="../requirements/index.html#feat_req__baselibs__memory_library" title="feat_saf_dfa__baselibs__locked_ressource">feat_req__baselibs__memory_library</a></span></span></div>
+<div class="line"><span><div class="line">mitigated_by: <span class="mitigated_by"><span><a class="reference internal" href="../requirements/index.html#feat_req__baselibs__memory_library" title="feat_saf_dfa__baselibs__locked_ressource">feat_req__baselibs__memory_library</a>, <a class="reference internal" href="../../../../requirements/platform_assumptions/index.html#aou_req__platform__flow_monitoring" title="feat_saf_dfa__baselibs__locked_ressource">aou_req__platform__flow_monitoring</a></span></span></div>
 <div class="line">violates: <span class="violates"><span><a class="reference internal" href="../architecture/index.html#feat_arc_sta__baselibs__static_view_arch" title="feat_saf_dfa__baselibs__locked_ressource">feat_arc_sta__baselibs__static_view_arch</a></span></span></div>
 </span></div>
 </div>
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>Only components “filesystem” and “memory_shared” should have the problem. These care for this by
-above linked AoU and <a class="reference internal" href="../../../../modules/baselibs/memory_shared/docs/requirements/index.html#comp_req__memory__atomic_ops" title="comp_req__memory__atomic_ops"><em class="xref need">Atomic Operations in Shared... (comp_req__memory__atomic_ops)</em></a>.</p></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>Only components “filesystem” and “memory_shared” should have the problem (“bitmanipulation” should not be affected due to shortness of execution)
+“memory_shared” cares for this by above linked feature requirement and <a class="reference internal" href="../../../../modules/baselibs/memory_shared/docs/requirements/index.html#comp_req__memory__atomic_ops" title="comp_req__memory__atomic_ops"><em class="xref need">Atomic Operations in Shared... (comp_req__memory__atomic_ops)</em></a>.
+“filesystem” component may fail on this but this is covered by common platform aou linked above.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_saf_dfa__baselibs__locked_ressource" title="feat_saf_dfa__baselibs__locked_ressource">feat_saf_dfa__baselibs__locked_ressource</a></span></span></div>
@@ -943,7 +1001,101 @@ above linked AoU and <a class="reference internal" href="../../../../modules/bas
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5229a68d">
+<div class="need_container docutils container" id="SNCB-cbfd6620">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_saf_dfa table" id="feat_saf_dfa__baselibs__conc_file_access">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">concurrent file access</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
+<div class="line"><span class="needs_failure_effect"><span class="needs_label">failure_effect: </span><span class="needs_data">Concurrent file access may lead to corruption of the file</span></span></div>
+<div class="line"><span class="needs_failure_id"><span class="needs_label">failure_id: </span><span class="needs_data">SR_01_02</span></span></div>
+<div class="line"><span class="needs_sufficient"><span class="needs_label">sufficient: </span><span class="needs_data">yes</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">mitigated_by: <span class="mitigated_by"><span><a class="reference internal" href="../../../../modules/baselibs/filesystem/docs/requirements/index.html#aou_req__filesystem__thread_safety" title="feat_saf_dfa__baselibs__conc_file_access">aou_req__filesystem__thread_safety</a></span></span></div>
+<div class="line">violates: <span class="violates"><span><a class="reference internal" href="../architecture/index.html#feat_arc_sta__baselibs__static_view_arch" title="feat_saf_dfa__baselibs__conc_file_access">feat_arc_sta__baselibs__static_view_arch</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The user has to care for concurrent file access. This is not covered by the filesytem library.</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_saf_dfa__baselibs__conc_file_access" title="feat_saf_dfa__baselibs__conc_file_access">feat_saf_dfa__baselibs__conc_file_access</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Feature DFA (Dependent Failure Analysis)</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-d46ceb85">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_saf_dfa table" id="feat_saf_dfa__baselibs__conc_memory_access">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">concurrent memory access</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span></span></span></div>
+<div class="line"><span class="needs_failure_effect"><span class="needs_label">failure_effect: </span><span class="needs_data">Concurrent memory access may lead to corruption of the memory</span></span></div>
+<div class="line"><span class="needs_failure_id"><span class="needs_label">failure_id: </span><span class="needs_data">SR_01_10</span></span></div>
+<div class="line"><span class="needs_sufficient"><span class="needs_label">sufficient: </span><span class="needs_data">yes</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">mitigated_by: <span class="mitigated_by"><span><a class="reference internal" href="../../../../modules/baselibs/bitmanipulation/docs/requirements/index.html#aou_req__bitmanipulation__concurrent_access" title="feat_saf_dfa__baselibs__conc_memory_access">aou_req__bitmanipulation__concurrent_access</a></span></span></div>
+<div class="line">violates: <span class="violates"><span><a class="reference internal" href="../architecture/index.html#feat_arc_sta__baselibs__static_view_arch" title="feat_saf_dfa__baselibs__conc_memory_access">feat_arc_sta__baselibs__static_view_arch</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The user has to care for concurrent memory access. This is not covered by the bitmanipulation library.</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#feat_saf_dfa__baselibs__conc_memory_access" title="feat_saf_dfa__baselibs__conc_memory_access">feat_saf_dfa__baselibs__conc_memory_access</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Feature DFA (Dependent Failure Analysis)</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-00f235fc">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_saf_dfa table" id="feat_saf_dfa__baselibs__blocked_execution">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -991,7 +1143,7 @@ all blocks should be detected by unit testing.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-757c7c3d">
+<div class="need_container docutils container" id="SNCB-85a33b56">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_saf_dfa table" id="feat_saf_dfa__baselibs__cpu_starvation">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
