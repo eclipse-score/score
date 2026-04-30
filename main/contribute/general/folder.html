@@ -645,9 +645,38 @@
                                          [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/security_management/security_management_workproducts.html#wp__audit_report_security">wp__audit_report_security</a>]
     verification_report/           -&gt; Platform verification report (reporting all platform feature's verifications)
                                          [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_platform_ver_report">wp__verification_platform_ver_report</a>]
-platform_integration_tests/        -&gt; Integration tests on reference hardware verifying stakeholder requirements.
-                                         [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_platform_int_test">wp__verification_platform_int_test</a>]
 tools/                             -&gt; Platform tools (not covered in tool repositories)
+    decision_records/              -&gt; Design decision records for tools on platform level
+README.md                          -&gt; Entrypoint of the repository</pre>
+</section>
+<section id="reference-integration-repository-folder-structure">
+<span id="reference-integration-folder-structure"></span><h2>Reference Integration Repository Folder Structure<a class="headerlink" href="#reference-integration-repository-folder-structure" title="Link to this heading">#</a></h2>
+<p>The reference integration repository (see <a class="reference external" href="https://github.com/eclipse-score/reference_integration">reference_integration</a>)
+integrates multiple Eclipse S-CORE modules into a single Bazel build environment to validate
+cross-repository builds and detect integration issues early in the development cycle.</p>
+<pre class="literal-block">bazel_common/                      -&gt; Common Bazel functionalities shared across images:
+                                         toolchain setups, common tooling deps,
+                                         common S-CORE module deps, common .bzl extensions
+ci/                                -&gt; CI configuration and scripts
+docs/                              -&gt; Documentation of the reference integration
+feature_integration_tests/         -&gt; Feature integration tests verifying stakeholder requirements.
+                                         [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_platform_int_test">wp__verification_platform_int_test</a>]
+images/                            -&gt; Concrete images for each target platform as Bazel modules.
+                                         Each platform has its own folder named <code class="docutils literal notranslate"><span class="pre">{platform}_{arch}</span></code>,
+                                         e.g. <code class="docutils literal notranslate"><span class="pre">qnx_aarch64</span></code>, <code class="docutils literal notranslate"><span class="pre">autosd_x86_64</span></code>, <code class="docutils literal notranslate"><span class="pre">ebclfsa_aarch64</span></code>,
+                                         <code class="docutils literal notranslate"><span class="pre">linux_x86_64</span></code>. Each image deploys all showcases and
+                                         contains platform-specific code.
+patches/                           -&gt; Patches applied during the build
+runners/                           -&gt; Thin logic to reuse runners (e.g. docker runner) between images
+rust_coverage/                     -&gt; Rust coverage configuration
+scripts/                           -&gt; Internal tooling scripts (known_good management,
+                                         workspace metadata generation, etc.)
+    tooling/                       -&gt; Single point of interaction with all tooling artifacts
+showcases/                         -&gt; S-CORE wide showcases deployed into images
+    cli/                           -&gt; CLI tool running on the target to guide users through examples
+MODULE.bazel                       -&gt; Bazel module definition
+known_good.json                    -&gt; Pinned versions of all integrated S-CORE modules
+score_starter                      -&gt; Launcher script to select and run an integration scenario
 README.md                          -&gt; Entrypoint of the repository</pre>
 </section>
 <section id="module-folder-structure">
@@ -758,6 +787,7 @@ README.md                          -&gt; Entrypoint of the repository</pre>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#platform-folder-structure">Platform Folder Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-integration-repository-folder-structure">Reference Integration Repository Folder Structure</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-folder-structure">Module Folder Structure</a></li>
 </ul>
   </nav></div>
