@@ -74,9 +74,44 @@ The following shows the folder structure of the platform repository (ordered alp
                                              [:need:`wp__audit_report_security`]
         verification_report/           -> Platform verification report (reporting all platform feature's verifications)
                                              [:need:`wp__verification_platform_ver_report`]
-    platform_integration_tests/        -> Integration tests on reference hardware verifying stakeholder requirements.
-                                             [:need:`wp__verification_platform_int_test`]
     tools/                             -> Platform tools (not covered in tool repositories)
+        decision_records/              -> Design decision records for tools on platform level
+    README.md                          -> Entrypoint of the repository
+
+.. _reference_integration_folder_structure:
+
+Reference Integration Repository Folder Structure
+-------------------------------------------------
+
+The reference integration repository (see `reference_integration <https://github.com/eclipse-score/reference_integration>`_)
+integrates multiple Eclipse S-CORE modules into a single Bazel build environment to validate
+cross-repository builds and detect integration issues early in the development cycle.
+
+.. parsed-literal::
+
+    bazel_common/                      -> Common Bazel functionalities shared across images:
+                                             toolchain setups, common tooling deps,
+                                             common S-CORE module deps, common .bzl extensions
+    ci/                                -> CI configuration and scripts
+    docs/                              -> Documentation of the reference integration
+    feature_integration_tests/         -> Feature integration tests verifying stakeholder requirements.
+                                             [:need:`wp__verification_platform_int_test`]
+    images/                            -> Concrete images for each target platform as Bazel modules.
+                                             Each platform has its own folder named ``{platform}_{arch}``,
+                                             e.g. ``qnx_aarch64``, ``autosd_x86_64``, ``ebclfsa_aarch64``,
+                                             ``linux_x86_64``. Each image deploys all showcases and
+                                             contains platform-specific code.
+    patches/                           -> Patches applied during the build
+    runners/                           -> Thin logic to reuse runners (e.g. docker runner) between images
+    rust_coverage/                     -> Rust coverage configuration
+    scripts/                           -> Internal tooling scripts (known_good management,
+                                             workspace metadata generation, etc.)
+        tooling/                       -> Single point of interaction with all tooling artifacts
+    showcases/                         -> S-CORE wide showcases deployed into images
+        cli/                           -> CLI tool running on the target to guide users through examples
+    MODULE.bazel                       -> Bazel module definition
+    known_good.json                    -> Pinned versions of all integrated S-CORE modules
+    score_starter                      -> Launcher script to select and run an integration scenario
     README.md                          -> Entrypoint of the repository
 
 .. _module_folder_structure:
