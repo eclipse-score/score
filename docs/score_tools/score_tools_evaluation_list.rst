@@ -384,10 +384,10 @@ release, as part of the Tool Verification Report.
    * - 3-3
      - pytest
      - Python testing framework
-     - T.B.D. (see [1]_)
+     - 9.0.1. (see [1]_)
      - YES
      - :need:`rl__testing_community`
-     - N/A
+     - :need:`doc_tool__pytest`
      - YES
 
 
