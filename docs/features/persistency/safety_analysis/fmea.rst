@@ -40,59 +40,12 @@ Fault models
     - EX_01_06: Processing is not complete (infinite loop): Failure initiator not applicable at persistency, so no mitigation is needed. The feature is developed fully deterministic, so no infinite loop is expected caused by persistency.
 
 
-.. feat_saf_fmea:: Persistency
-    :violates: feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore
-    :id: feat_saf_fmea__persistency__message_nreived
-    :fault_id: MF_01_01
-    :failure_effect: Message is not received so the feature persistency is not available.
-    :mitigated_by: aou_req__persistency__error_handling
-    :sufficient: yes
-    :status: valid
+Failure Mode List
+-----------------
 
-    User is not able to use the feature. Middleware cant be used. User is not able to use the feature. Middleware cant be used. Loss of execution can only be caused by the application, not by the persistency feature itself.
-    Failure handling is addressed to the application by the aou_req__persistency__error_handling.
+.. needimport:: fmea.json
+   :hide:
 
-.. feat_saf_fmea:: Persistency
-    :violates: feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore
-    :id: feat_saf_fmea__persistency__late_message
-    :fault_id: MF_01_02
-    :failure_effect: message received too late.
-    :mitigated_by: aou_req__persistency__error_handling
-    :sufficient: yes
-    :status: valid
-
-    Subset of MF_01_01 if the delay is to long.
-
-.. feat_saf_fmea:: Persistency
-    :violates: feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore
-    :id: feat_saf_fmea__persistency__corrupted_message
-    :fault_id: MF_01_05
-    :failure_effect: message is corrupted so the feature persistency is not available.
-    :mitigated_by: aou_req__persistency__error_handling
-    :sufficient: yes
-    :status: valid
-
-    Covered by MF_01_01
-
-.. feat_saf_fmea:: Persistency
-    :violates: feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore
-    :id: feat_saf_fmea__persistency__not_sent
-    :fault_id: MF_01_06
-    :failure_effect: message is not sent so the feature persistency is not available.
-    :mitigated_by: aou_req__persistency__error_handling
-    :sufficient: yes
-    :status: valid
-
-    Covered by MF_01_01 because the violation cause is the same.
-
-.. feat_saf_fmea:: Persistency
-    :violates: feat_arc_dyn__persistency__check_key_default, feat_arc_dyn__persistency__delete_key, feat_arc_dyn__persistency__flush, feat_arc_dyn__persistency__read_key, feat_arc_dyn__persistency__read_from_storage, feat_arc_dyn__persistency__write_key, feat_arc_dyn__persistency__snapshot_restore
-    :id: feat_saf_fmea__persistency__err_handl
-    :fault_id: EX_01_04
-    :failure_effect: loss of execution will lead to an unavailability of the persistency feature.
-    :mitigated_by: aou_req__persistency__error_handling
-    :sufficient: yes
-    :status: valid
-
-    User is not able to use the feature. Middleware cant be used. Loss of execution can only be caused by the application, not by the persistency feature itself.
-    Failure handling is addressed to the application by the aou_req__persistency__error_handling.
+.. needtable::
+   :types: feat_saf_fmea
+   :columns: id;violates;fault_id;failure_effect;mitigated_by;sufficient;status;content
