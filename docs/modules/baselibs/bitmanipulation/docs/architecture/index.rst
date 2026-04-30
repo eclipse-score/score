@@ -59,6 +59,16 @@ Static Architecture
 
       {{ draw_component(need(), needs) }}
 
+.. comp_arc_dyn:: Bit Manipulation Dynamic view
+   :id: comp_arc_dyn__baselibs__bit_manipulation
+   :security: NO
+   :safety:  ASIL_B
+   :status: valid
+   :fulfils: comp_req__bitmanipulation__bit_operations,comp_req__bitmanipulation__byte_operations,comp_req__bitmanipulation__bitmask_operators,comp_req__bitmanipulation__bounds_safety,comp_req__bitmanipulation__header_only
+   :belongs_to: comp__baselibs_bit_manipulation
+
+   No view needed, simple caller/callee flow.
+
 Interfaces
 ----------
 
