@@ -15,10 +15,6 @@
 Reference integration
 =======================
 
-.. toctree::
-   :maxdepth: 1
-   :glob:
-
 After building the scrample binary for the qnx x86 image,
 we can now run it inside the reference qnx image for the x86 platform.
 

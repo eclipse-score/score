@@ -15,10 +15,6 @@
 Software Architecture Overview
 ================================
 
-.. toctree::
-   :maxdepth: 1
-   :glob:
-
 Please note that the Eclipse S-CORE´s software architecture is continuously refined and will evolve in future releases.
 
 .. image:: ../../modules/_assets/module_architecture.drawio.svg

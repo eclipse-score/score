@@ -24,3 +24,22 @@ extensions = [
     "sphinxcontrib.plantuml",
     "score_sphinx_bundle",
 ]
+
+# Hide both sidebars on the handbook landing page (left: html_sidebars, right: secondary_sidebar_items)
+html_sidebars = {
+    "handbook/index": [],
+}
+
+html_theme_options = {
+    "secondary_sidebar_items": {
+        "handbook/index": [],
+        "**": ["page-toc", "edit-this-page", "sourcelink"],
+    },
+}
+
+# Make _assets available as Sphinx static files root
+html_static_path = ["_assets"]
+
+
+def setup(app):
+    app.add_css_file("css/score.css", priority=600)

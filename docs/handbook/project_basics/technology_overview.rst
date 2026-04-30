@@ -12,14 +12,10 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+.. _technology_overview:
+
 Overview of technologies
 ===========================
-
-.. toctree::
-   :maxdepth: 1
-   :glob:
-
-.. _technology_overview:
 
 S-CORE Tooling
 ----------------

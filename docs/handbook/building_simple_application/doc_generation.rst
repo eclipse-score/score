@@ -15,10 +15,6 @@
 Documentation generation
 ==========================
 
-.. toctree::
-   :maxdepth: 1
-   :glob:
-
 Introduction
 ---------------
 As described in the :ref:`Overview of technologies <technology_overview>` chapter,
@@ -27,7 +23,7 @@ Elements of Eclipse S-CORE metamodel are represented as sphinx-needs objects.
 
 The integration of sphinx, sphinx-needs, and the Eclipse S-CORE-specific extensions is implemented in the repository:
 
-- https://github.com/eclipse-score/docs-as-code/tree/main/docs
+- `eclipse-score/docs-as-code <https://github.com/eclipse-score/docs-as-code/tree/main/docs>`_
 
 The following `documentation <https://eclipse-score.github.io/docs-as-code/main/how-to/index.html>`_
 provides a description of how the documentation can be created and built. Here, we will focus on a simple example.

@@ -1,0 +1,44 @@
+/* *******************************************************************************
+ * Copyright (c) 2024 Contributors to the Eclipse Foundation
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Apache License Version 2.0 which is available at
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ * *******************************************************************************
+ *
+ * Overrides the default purple S-CORE secondary color (#2D1942).
+ */
+
+html[data-theme="light"],
+html[data-theme="dark"] {
+    --pst-color-secondary: #2D1942;
+}
+
+/* Card body — dark background with white text */
+.score-grid .sd-card-body {
+    background-color: var(--pst-color-secondary);
+    text-align: justify;
+    --pst-color-text-base: #ffffff;
+    --pst-color-link: #ffffff;
+    --pst-color-link-hover: #ffffff;
+    color: #ffffff !important;
+}
+
+html body .score-grid .sd-card .sd-card-body,
+html body .score-grid .sd-card .sd-card-body p,
+html body .score-grid .sd-card .sd-card-body a,
+html body .score-grid .sd-card .sd-card-body a:hover,
+html body .score-grid .sd-card .sd-card-body a:visited,
+html body .score-grid .sd-card .sd-card-body * {
+    color: #ffffff !important;
+}
+
+/* Hide the right sidebar container when it has no items */
+.bd-sidebar-secondary:has(.sidebar-secondary__inner:empty) {
+    display: none;
+}

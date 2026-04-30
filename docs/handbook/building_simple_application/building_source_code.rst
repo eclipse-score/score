@@ -12,14 +12,10 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+.. _building_source_code:
+
 Building source code
 =====================
-
-.. toctree::
-   :maxdepth: 1
-   :glob:
-
-.. _building_source_code:
 
 Now that we have added the documentation for our component, we can continue by adding some source code (as shown in the following 
 `commit <https://github.com/eclipse-score/scrample/commit/5179175823ecda51775e459ad73d7230cd4c880a>`_).
@@ -141,9 +137,9 @@ file as well, as shown below:
 .. code-block:: python
     :linenos:
 
-    bazel_dep(name = "score-baselibs", version = "0.1.1")
+    bazel_dep(name = "score_baselibs", version = "0.1.3")
 
-    bazel_dep(name = "communication", version = "0.1.1")
+    bazel_dep(name = "score_communication", version = "0.1.0")
 
 .. code-block:: python
     :linenos:
@@ -152,19 +148,11 @@ file as well, as shown below:
 
     bazel_dep(name = "score_bazel_platforms", version = "0.0.2")
 
-    # TRLC dependency for requirements traceability
-    bazel_dep(name = "trlc", version = "0.0.0")
-    git_override(
-        module_name = "trlc",
-        commit = "ede35c4411d41abe42b8f19e78f8989ff79ad3d8",
-        remote = "https://github.com/bmw-software-engineering/trlc.git",
-    )
+In addition to the previously mentioned modules, we also need to add some transitive dependencies. 
 
-In addition to the previously mentioned modules, we also need to add some modules, as listed above. 
+The scrample application does not use these modules directly, but the modules it depends on do. For example:
 
-The scrample application does not use these modules directly, but the modules it depends on do. For example: 
-- *platforms* and *score_bazel_platforms* are required by the qnx_toolchain module 
-- *tlrc* is required by the *communication* module 
+- *platforms* and *score_bazel_platforms* are required by the qnx toolchain module
 
 Bazel modules don’t inherit transitive dependencies automatically.
 This means that you must always list all required module dependencies explicitly in your *MODULE.bazel* file.
