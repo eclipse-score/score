@@ -666,7 +666,10 @@ images/                            -&gt; Concrete images for each target platfor
                                          e.g. <code class="docutils literal notranslate"><span class="pre">qnx_aarch64</span></code>, <code class="docutils literal notranslate"><span class="pre">autosd_x86_64</span></code>, <code class="docutils literal notranslate"><span class="pre">ebclfsa_aarch64</span></code>,
                                          <code class="docutils literal notranslate"><span class="pre">linux_x86_64</span></code>. Each image deploys all showcases and
                                          contains platform-specific code.
+known_good.json                    -&gt; Pinned versions of all integrated S-CORE modules
 patches/                           -&gt; Patches applied during the build
+platform_integration_tests/        -&gt; Integration tests on reference hardware verifying stakeholder requirements.
+                                         [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_platform_int_test">wp__verification_platform_int_test</a>]
 runners/                           -&gt; Thin logic to reuse runners (e.g. docker runner) between images
 rust_coverage/                     -&gt; Rust coverage configuration
 scripts/                           -&gt; Internal tooling scripts (known_good management,
@@ -674,9 +677,8 @@ scripts/                           -&gt; Internal tooling scripts (known_good ma
     tooling/                       -&gt; Single point of interaction with all tooling artifacts
 showcases/                         -&gt; S-CORE wide showcases deployed into images
     cli/                           -&gt; CLI tool running on the target to guide users through examples
-MODULE.bazel                       -&gt; Bazel module definition
-known_good.json                    -&gt; Pinned versions of all integrated S-CORE modules
 score_starter                      -&gt; Launcher script to select and run an integration scenario
+MODULE.bazel                       -&gt; Bazel module definition
 README.md                          -&gt; Entrypoint of the repository</pre>
 </section>
 <section id="module-folder-structure">
