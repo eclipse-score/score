@@ -1030,7 +1030,7 @@ window.runMermaid = runMermaid;</script>
 <ul class="simple">
 <li><p><strong>Date:</strong> 2026-04-23</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-f8c45acb">
+<div class="need_container docutils container" id="SNCB-d35af547">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__docs_src_dir">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1161,6 +1161,9 @@ This live preview cannot be executed via <code class="docutils literal notransla
 Thus, there is no <code class="docutils literal notranslate"><span class="pre">:live_preview</span></code> target but a <code class="docutils literal notranslate"><span class="pre">live_preview</span></code> script.
 We cannot rely on watching file system changes to trigger rebuilds because the source directory is composed by Bazel
 and may contain generated files.</p>
+<p>For the implementation we can rely on <a class="reference external" href="https://github.com/bazelbuild/bazel-watcher">ibazel / bazel-watcher</a>
+to trigger rebuilds of the <code class="docutils literal notranslate"><span class="pre">:docs_src_dir</span></code> target and then still use sphinx-autobuild for the browser auto-reload.
+As a side-effect, ibazel is a new tool in S-CORE which could be reused for other auto-rebuild use cases like unit tests.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">score_sync_toml</span></code> extension writes a <code class="docutils literal notranslate"><span class="pre">ubproject.toml</span></code> file to the source directory
 but Bazel sandboxing makes this fail.
 As a workaround, <code class="docutils literal notranslate"><span class="pre">needscfg_outpath</span></code> can be used to redirect it somewhere else.
