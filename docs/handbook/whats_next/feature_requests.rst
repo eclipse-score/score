@@ -11,22 +11,12 @@
    #
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
+.. _feat_requests:
 
-.. _contribute_own_module:
-
-Contribute own module
-=====================
-Let´s assume you want to contribute to the Eclipse S-CORE project by providing a new platform module. 
-In this example, you will create a small demo application called *“scrample”*.
-The application demonstrates how to use existing Eclipse S-CORE platform modules to implement new functionality.
-
+Feature Requests
+=================
 .. toctree::
    :maxdepth: 1
    :glob:
 
-   first_score_module.rst
-   doc_generation.rst
-   building_source_code.rst
-   cicd_workflows.rst
-   reference_integration.rst
-
+Learn existing feature requests or create a new one if you have a new idea.

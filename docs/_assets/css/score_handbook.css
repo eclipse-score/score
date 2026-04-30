@@ -1,0 +1,48 @@
+/* *******************************************************************************
+ * Copyright (c) 2024 Contributors to the Eclipse Foundation
+ *
+ * See the NOTICE file(s) distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Apache License Version 2.0 which is available at
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ * *******************************************************************************
+ *
+ * Overrides the default purple S-CORE secondary color (#2D1942) with dark grey.
+ * --pst-color-secondary is used for the page header, card headers, table hover, etc.
+ */
+
+html[data-theme="light"],
+html[data-theme="dark"] {
+    --pst-color-secondary: #2C3E91;
+}
+
+/* Card body — dark grey background with white text */
+.score-grid .sd-card-body {
+    background-color: var(--pst-color-secondary);
+    text-align: justify;
+}
+
+.score-grid .sd-card-body p,
+.score-grid .sd-card-body {
+    color: #ffffff !important;
+}
+
+/* Hide the right sidebar container when it has no items (e.g. handbook landing page) */
+.bd-sidebar-secondary:has(.sidebar-secondary__inner:empty) {
+    display: none;
+}
+
+/* =====================================================================
+   LEFT SIDEBAR — collapse toggle spacing
+   The actual arrows are injected by toc_collapse.js
+   ===================================================================== */
+
+/* All nav entries: relative positioning for arrow placement */
+.bd-sidebar-primary .bd-links li a {
+    position: relative;
+    display: block;
+}

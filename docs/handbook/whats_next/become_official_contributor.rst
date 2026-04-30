@@ -11,22 +11,21 @@
    #
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
+.. _become_official_contributor:
 
-.. _contribute_own_module:
+Become official contributor
+============================
 
-Contribute own module
-=====================
-Let´s assume you want to contribute to the Eclipse S-CORE project by providing a new platform module. 
-In this example, you will create a small demo application called *“scrample”*.
-The application demonstrates how to use existing Eclipse S-CORE platform modules to implement new functionality.
+Useful Links:
+
+- https://eclipse-score.github.io/score/main/contribute/index.html
+- https://eclipse-score.github.io/score/main/contribute/general/git.html
+- https://eclipse-score.github.io/score/main/contribute/general/contribution_attribution.html
+- https://eclipse-score.github.io/score/main/contribute/development/index.html
+- https://eclipse-score.github.io/score/main/design_decisions/index.html
+- 
 
 .. toctree::
    :maxdepth: 1
    :glob:
-
-   first_score_module.rst
-   doc_generation.rst
-   building_source_code.rst
-   cicd_workflows.rst
-   reference_integration.rst
 
