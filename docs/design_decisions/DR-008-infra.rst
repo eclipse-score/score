@@ -57,6 +57,8 @@ The "Module API" proposal
 (somewhat implemented in `tooling PR 95 <https://github.com/eclipse-score/tooling/pull/95>`_)
 fully relies on Bazel.
 It is not compatible with the docs-as-code live preview as of now.
+`Another exploration by Useblocks <https://github.com/useblocks/bazel-drives-sphinx/tree/main>`_
+is available but does not cover live preview either.
 
 Goals
 ^^^^^
@@ -144,21 +146,37 @@ Speed ?: unclear
 UX 😡: Live-preview requires a setup step to generate the script.
 
 
+Option D: Dual-path — keep ``:live_preview``, add hermetic ``:docs`` build
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Keep the existing ``bazel run :live_preview`` target unchanged (sphinx-autobuild watching ``docs/`` on the workspace filesystem).
+In parallel, introduce a separate hermetic ``bazel build :docs`` target
+that materialises a composed source directory inside the Bazel sandbox before invoking Sphinx.
+
+Effort 😡: By definition requires nearly the effort for option N and B combined.
+
+Flexibility 😡: Still requires all the workarounds of option N.
+
+Speed 💚: No slowdown.
+
+UX 😡: Live-preview UX is unchanged, but risk of downstream breaks.
+
+
 Evaluation
 ----------
 
 In order of importance, most important first.
 
 .. csv-table::
-   :header: Goals, Option N, Option B
-   :widths: 2, 1, 1
+   :header: Goals, Option N, Option B, Option D
+   :widths: 2, 1, 1, 1
 
-   Flexibility, 😡, 💚
-   Effort,   💚, 😡
-   Speed,    💚, ?
-   UX,   💚, 😡
+   Flexibility, 😡, 💚, 😡
+   Effort,      💚, 😡, 😡
+   Speed,       💚, ?,  💚
+   UX,          💚, 😡, 😡
 
-**Decision:** Option B because Option N loses wrt flexibility
+**Decision: Option B** because Option N loses wrt flexibility. Option D has no advantage over B.
 
 Appendix: any_folder experiment
 -------------------------------
