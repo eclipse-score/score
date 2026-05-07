@@ -634,7 +634,7 @@
                   
   <section id="fmea-failure-modes-and-effects-analysis">
 <h1>FMEA (Failure Modes and Effects Analysis)<a class="headerlink" href="#fmea-failure-modes-and-effects-analysis" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-17e35198">
+<div class="need_container docutils container" id="SNCB-d1405394">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__result_fmea">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -642,7 +642,7 @@
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
-<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></span></div>
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
 <div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
@@ -691,48 +691,48 @@
 </tr>
 <tr class="row-even"><td><p>MF_01_01</p></td>
 <td><p>message is not received (is a subset/more precise description of MF_01_05)</p></td>
-<td><p>&lt;yes | no&gt;</p></td>
-<td><p>&lt;Rationale if not applicable, otherwise link to filled out FMEA&gt;</p></td>
+<td><p>no</p></td>
+<td><p>If set result was not received before the get value/error are called, this will lead to an exception/terminate. In case of the get value user defined defaults are provided.</p></td>
 </tr>
 <tr class="row-odd"><td><p>MF_01_02</p></td>
 <td><p>message received too late (only relevant if delay is a realistic fault)</p></td>
-<td><p>&lt;yes | no&gt;</p></td>
-<td><p>&lt;Rationale if not applicable, otherwise link to filled out FMEA&gt;</p></td>
+<td><p>no</p></td>
+<td><p>Do not see this as a problem for result lib, would lead to the same consideration as in MF_01_01</p></td>
 </tr>
 <tr class="row-even"><td><p>MF_01_03</p></td>
 <td><p>message received too early (usually not a problem)</p></td>
-<td><p>&lt;yes | no&gt;</p></td>
-<td><p>&lt;Rationale if not applicable, otherwise link to filled out FMEA&gt;</p></td>
+<td><p>no</p></td>
+<td><p>No problem for result lib</p></td>
 </tr>
 <tr class="row-odd"><td><p>MF_01_04</p></td>
 <td><p>message not received correctly by all recipients (different messages or messages partly lost). Only relevant if the same message goes to multiple recipients.</p></td>
-<td><p>&lt;yes | no&gt;</p></td>
-<td><p>&lt;Rationale if not applicable, otherwise link to filled out FMEA&gt;</p></td>
+<td><p>no</p></td>
+<td><p>No multiple recipients (maybe from different threads?)</p></td>
 </tr>
 <tr class="row-even"><td><p>MF_01_05</p></td>
 <td><p>message is corrupted</p></td>
-<td><p>&lt;yes | no&gt;</p></td>
-<td><p>&lt;Rationale if not applicable, otherwise link to filled out FMEA&gt;</p></td>
+<td><p>no</p></td>
+<td><p>no “message corruption” for result as a lib (see also EX_01_01)</p></td>
 </tr>
 <tr class="row-odd"><td><p>MF_01_06</p></td>
 <td><p>message is not sent</p></td>
-<td><p>&lt;yes | no&gt;</p></td>
-<td><p>&lt;Rationale if not applicable, otherwise link to filled out FMEA&gt;</p></td>
+<td><p>yes</p></td>
+<td><p>add link to failure need</p></td>
 </tr>
 <tr class="row-even"><td><p>MF_01_07</p></td>
 <td><p>message is unintended sent</p></td>
-<td><p>&lt;yes | no&gt;</p></td>
-<td><p>&lt;Rationale if not applicable, otherwise link to filled out FMEA&gt;</p></td>
+<td><p>no</p></td>
+<td><p>not applicable for a library</p></td>
 </tr>
 <tr class="row-odd"><td><p>CO_01_01</p></td>
 <td><p>minimum constraint boundary is violated</p></td>
-<td><p>&lt;yes | no&gt;</p></td>
-<td><p>&lt;Rationale if not applicable, otherwise link to filled out FMEA&gt;</p></td>
+<td><p>yes</p></td>
+<td><p>Input type safety (checking) may be an issue. TBD related to existing comp req</p></td>
 </tr>
 <tr class="row-even"><td><p>CO_01_02</p></td>
 <td><p>maximum constraint boundary is violated</p></td>
-<td><p>&lt;yes | no&gt;</p></td>
-<td><p>&lt;Rationale if not applicable, otherwise link to filled out FMEA&gt;</p></td>
+<td><p>yes</p></td>
+<td><p>same as above</p></td>
 </tr>
 <tr class="row-odd"><td><p>EX_01_01</p></td>
 <td><p>Process calculates wrong result(s) (is a subset/more precise description of MF_01_05 or MF_01_04). This failure mode is related to the analysis if e.g. internal safety mechanisms are required (level 2 function, plausibility check of the output, …) because of the size / complexity of the feature.</p></td>
