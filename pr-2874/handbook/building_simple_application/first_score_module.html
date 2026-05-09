@@ -44,6 +44,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=803738c0" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score.css?v=6e51530f" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
@@ -515,9 +516,7 @@
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../project_basics/index.html">Overview</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Contribute own module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">First Eclipse S-CORE Module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
-</ul>
-</details></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">First Eclipse S-CORE Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="doc_generation.html">Documentation generation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="building_source_code.html">Building source code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cicd_workflows.html">CI/CD Workflows</a></li>
@@ -591,11 +590,9 @@
                   
   <section id="first-eclipse-s-core-module">
 <h1>First Eclipse S-CORE Module<a class="headerlink" href="#first-eclipse-s-core-module" title="Link to this heading">#</a></h1>
-<div class="toctree-wrapper compound">
-</div>
 <p>Before starting, ensure you are an official contributor to the Eclipse S-CORE project.
 Otherwise, you will not have required permissions. Instructions can be found in
-<a class="reference external" href="https://eclipse-score.github.io/score/main/contribute/general/contribution_attribution.html#">Actions to ensure Proper Contribution Attribution in Eclipse Eclipse S-CORE</a>.</p>
+<a class="reference external" href="https://eclipse-score.github.io/score/main/contribute/general/contribution_attribution.html#">Actions to ensure Proper Contribution Attribution in Eclipse S-CORE</a>.</p>
 <p>Once you have created an Eclipse account,
 accepted Eclipse Contributor Agreement (ECA), and linked your GitHub account with your Eclipse Account,
 contact one of the Eclipse S-CORE Project Leads (listed at the official <a class="reference external" href="https://projects.eclipse.org/projects/automotive.score/who">Eclipse SDV S-Core webpage</a>).
@@ -608,7 +605,7 @@ They will add you to the list of the official contributors of the Eclipse S-CORE
 Repository creation follows Eclipse organizational rules.
 Most configuration is handled via <a class="reference external" href="https://otterdog.readthedocs.io/en/latest/">otterdog configuration</a> located in:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/eclipse-score/.eclipsefdn">https://github.com/eclipse-score/.eclipsefdn</a>.</p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/.eclipsefdn">eclipse-score/.eclipsefdn</a></p></li>
 </ul>
 <p>Create a private fork of this repository and modify the file:</p>
 <ul class="simple">
@@ -626,7 +623,7 @@ Most configuration is handled via <a class="reference external" href="https://ot
 <span class="p">},</span>
 </pre></div>
 </div>
-<p>Then, create a PR in the original <a class="reference external" href="https://github.com/eclipse-score/.eclipsefdn">https://github.com/eclipse-score/.eclipsefdn</a> repository. The PR must be approved by:</p>
+<p>Then, create a PR in the <a class="reference external" href="https://github.com/eclipse-score/.eclipsefdn">eclipse-score/.eclipsefdn</a> repository. The PR must be approved by:</p>
 <ul class="simple">
 <li><p>Eclipse S-CORE project lead</p></li>
 <li><p>Eclipse Foundation Security Team</p></li>
@@ -646,10 +643,7 @@ Most configuration is handled via <a class="reference external" href="https://ot
 <p>Once merged, your new repository will appear in the Eclipse S-CORE GitHub organization repositories overview.</p>
 <a class="reference internal image-reference" href="../../_images/repository_layout.png"><img alt="repository layout" class="align-center" src="../../_images/repository_layout.png" width="500" />
 </a>
-<p>All repositories are created using the <cite>Eclipse S-CORE repository template &lt;https://github.com/eclipse-score/module_template&gt;</cite>:</p>
-<ul class="simple">
-<li><p>&lt;<a class="reference external" href="https://github.com/eclipse-score/module_template">https://github.com/eclipse-score/module_template</a>&gt;.</p></li>
-</ul>
+<p>All repositories are created using the <a class="reference external" href="https://github.com/eclipse-score/module_template">Eclipse S-CORE module template</a>.</p>
 <p>The <a class="reference external" href="https://github.com/eclipse-score/module_template/blob/main/README.md">README.md</a> file already explains the basic structure.
 Below is an overview of the most relevant files and folders.</p>
 </section>
@@ -663,6 +657,15 @@ Below is an overview of the most relevant files and folders.</p>
 <h2>.vscode<a class="headerlink" href="#vscode" title="Link to this heading">#</a></h2>
 <p>Provides Eclipse S-CORE recommended VS Code setup, including code completion patterns for requirements and architecture in
 <a class="reference external" href="https://github.com/eclipse-score/module_template/blob/main/.vscode/restructuredtext.code-snippets">.vscode/restructuredtext.code-snippets</a>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The Eclipse S-CORE project provides a ready-to-use
+<a class="reference external" href="https://github.com/eclipse-score/devcontainer">Dev Container</a>
+with all required tools pre-installed.
+Open any module repository with the
+<a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers">VS Code Dev Containers extension</a>
+to skip manual toolchain setup entirely.</p>
+</div>
 </section>
 <section id="docs">
 <h2>docs<a class="headerlink" href="#docs" title="Link to this heading">#</a></h2>
@@ -674,13 +677,15 @@ Examples follow later in this guide.</p>
 for developers. It is worth checking it.</p>
 </div>
 </section>
-<section id="src">
-<h2>src<a class="headerlink" href="#src" title="Link to this heading">#</a></h2>
-<p>Self-explainatory: source code</p>
+<section id="score">
+<h2>score/<a class="headerlink" href="#score" title="Link to this heading">#</a></h2>
+<p>Source files and unit tests for the module.
+Follows the naming convention <code class="docutils literal notranslate"><span class="pre">score/&lt;module_name&gt;/</span></code>.</p>
 </section>
-<section id="test">
-<h2>test<a class="headerlink" href="#test" title="Link to this heading">#</a></h2>
-<p>Self-explainatory: tests</p>
+<section id="tests">
+<h2>tests/<a class="headerlink" href="#tests" title="Link to this heading">#</a></h2>
+<p>Component Integration Tests (CIT) and Feature Integration Tests (FIT).
+See the <a class="reference internal" href="../project_basics/technology_overview.html#technology-overview"><span class="std std-ref">Technology Overview</span></a> for details on test levels.</p>
 </section>
 <section id="bazelrc">
 <h2>.bazelrc<a class="headerlink" href="#bazelrc" title="Link to this heading">#</a></h2>
@@ -717,10 +722,11 @@ bazel will start searching it in one of these two locations.</p>
 </div>
 <p>Here, we´re making the first declaration of our module by defining a name and a version.
 Please be aware, that only after our module was published in the Eclipse S-CORE bazel registry, other modules can access it.</p>
-<p>Rename the module and replace <em>cpp_rust_template_repository</em> by <em>score_scrample</em>.</p>
+<p>Rename the module and replace <em>cpp_rust_template_repository</em> by <em>score_scrample</em>.
+Use <a class="reference external" href="https://semver.org/">semantic versioning</a> for the module version, starting at <code class="docutils literal notranslate"><span class="pre">0.1.0</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">module</span><span class="p">(</span>
 <span class="linenos">2</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_scrample&quot;</span><span class="p">,</span>
-<span class="linenos">3</span>    <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+<span class="linenos">3</span>    <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.1.0&quot;</span><span class="p">,</span>
 <span class="linenos">4</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -734,7 +740,7 @@ Please be aware, that only after our module was published in the Eclipse S-CORE 
 <span class="linenos"> 7</span>    <span class="n">is_default</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 <span class="linenos"> 8</span>    <span class="n">python_version</span> <span class="o">=</span> <span class="n">PYTHON_VERSION</span><span class="p">,</span>
 <span class="linenos"> 9</span><span class="p">)</span>
-<span class="linenos">10</span><span class="n">use_repo</span><span class="p">(</span><span class="n">python</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">use_repo</span><span class="p">(</span><span class="n">python</span><span class="p">,</span> <span class="s2">&quot;python_versions&quot;</span><span class="p">)</span>
 <span class="linenos">11</span>
 <span class="linenos">12</span><span class="c1"># Add GoogleTest dependency</span>
 <span class="linenos">13</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;googletest&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;1.17.0&quot;</span><span class="p">)</span>
@@ -765,14 +771,22 @@ for unit test execution with gtest.</p>
 <p>Here we add a llvm toolchain and register its usage in our module, so that we can build our source code.
 In upcoming chapters, we will talk about this in more detail.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># tooling</span>
-<span class="linenos">2</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_tooling&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;1.0.1&quot;</span><span class="p">)</span>
+<span class="linenos">2</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_tooling&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;1.0.5&quot;</span><span class="p">)</span>
 <span class="linenos">3</span>
-<span class="linenos">4</span><span class="c1">#docs-as-code</span>
-<span class="linenos">5</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_docs_as_code&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;1.1.0&quot;</span><span class="p">)</span>
+<span class="linenos">4</span><span class="c1"># docs-as-code</span>
+<span class="linenos">5</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_docs_as_code&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;2.3.3&quot;</span><span class="p">)</span>
+<span class="linenos">6</span>
+<span class="linenos">7</span><span class="c1"># Rust linting and formatting policies</span>
+<span class="linenos">8</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_rust_policies&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.0.3&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Finally, we add a dependency to Eclipse S-CORE native modules “<em>score_tooling</em>” and “<em>score_docs_as_code</em>”.
-These enable documentation builds and tooling checks (e.g., license checker).</p>
+<p>Finally, we add dependencies to Eclipse S-CORE native modules:</p>
+<ul class="simple">
+<li><p><strong>score_tooling</strong>: enables tooling checks such as copyright and license verification.</p></li>
+<li><p><strong>score_docs_as_code</strong>: enables documentation builds with Sphinx and sphinx-needs.</p></li>
+<li><p><strong>score_rust_policies</strong>: provides centralised Rust linting (clippy) and formatting (rustfmt) policies.
+For C++ projects, use <code class="docutils literal notranslate"><span class="pre">score_cpp_policies</span></code> instead.</p></li>
+</ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Working across multiple modules and repositories can be challenging. Use the following approach during development:</p>
@@ -825,7 +839,27 @@ based on bazel rules implemented and imported from <a class="reference external"
 </div>
 <p>Finally, the <em>docs</em> target builds all documentation in the .rst format, which is located in the
 <a class="reference external" href="https://github.com/eclipse-score/docs-as-code/tree/main/docs">docs</a> folder and all its subfolders.
-This functionality is implemented in <a class="reference external" href="https://github.com/eclipse-score/docs-as-code">https://github.com/eclipse-score/docs-as-code</a> module.</p>
+This functionality is implemented in <a class="reference external" href="https://github.com/eclipse-score/docs-as-code">eclipse-score/docs-as-code</a>.</p>
+</section>
+<section id="project-config-bzl">
+<h2>project_config.bzl<a class="headerlink" href="#project-config-bzl" title="Link to this heading">#</a></h2>
+<p>Every Eclipse S-CORE module must provide a <code class="docutils literal notranslate"><span class="pre">project_config.bzl</span></code> file in its root directory.
+This file declares project-level metadata that is consumed by shared Bazel macros such as <code class="docutils literal notranslate"><span class="pre">dash_license_checker</span></code>.</p>
+<p>A minimal example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">PROJECT_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos">2</span>    <span class="s2">&quot;asil_level&quot;</span><span class="p">:</span> <span class="s2">&quot;QM&quot;</span><span class="p">,</span>        <span class="c1"># Safety level: &quot;QM&quot;, &quot;ASIL-A&quot;, &quot;ASIL-B&quot;, &quot;ASIL-C&quot;, &quot;ASIL-D&quot;</span>
+<span class="linenos">3</span>    <span class="s2">&quot;source_code&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;cpp&quot;</span><span class="p">],</span>    <span class="c1"># Languages used: &quot;cpp&quot;, &quot;rust&quot;, or both</span>
+<span class="linenos">4</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">asil_level</span></code> is used by tooling to apply the appropriate quality and compliance checks.
+The <code class="docutils literal notranslate"><span class="pre">source_code</span></code> list determines which license file types are scanned by <code class="docutils literal notranslate"><span class="pre">dash_license_checker</span></code>
+(e.g., <code class="docutils literal notranslate"><span class="pre">Cargo.lock</span></code> for Rust, <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> for Python).</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Start with <code class="docutils literal notranslate"><span class="pre">&quot;asil_level&quot;:</span> <span class="pre">&quot;QM&quot;</span></code> during initial development.
+The level can be raised once the module’s safety concept is established.</p>
+</div>
 </section>
 </section>
 
@@ -883,11 +917,12 @@ This functionality is implemented in <a class="reference external" href="https:/
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github-workflows">.github/workflows/</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vscode">.vscode</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docs">docs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#src">src</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test">test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#score">score/</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tests">tests/</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bazelrc">.bazelrc</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-bazel">MODULE.bazel</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build">BUILD</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-config-bzl">project_config.bzl</a></li>
 </ul>
   </nav></div>
 

@@ -44,6 +44,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=803738c0" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score.css?v=6e51530f" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
@@ -518,9 +519,7 @@
 <li class="toctree-l2"><a class="reference internal" href="first_score_module.html">First Eclipse S-CORE Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="doc_generation.html">Documentation generation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="building_source_code.html">Building source code</a></li>
-<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">CI/CD Workflows</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
-</ul>
-</details></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">CI/CD Workflows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference_integration.html">Reference integration</a></li>
 </ul>
 </details></li>
@@ -591,13 +590,11 @@
                   
   <section id="ci-cd-workflows">
 <h1>CI/CD Workflows<a class="headerlink" href="#ci-cd-workflows" title="Link to this heading">#</a></h1>
-<div class="toctree-wrapper compound">
-</div>
-<p>After successfully building the scrample binary, we need to ensure, that future changes do not breakt the build.</p>
-<p>To achieve this, we create a CI/CD workflow that triggers a <a class="reference external" href="https://docs.github.com/en/actions">GitHub action</a>
-to build the scrample application whenever a new PR is opened.</p>
-<p>To achieve this, first create a workflow file named <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/.github/workflows/build.yml">build.yml</a>
-in the .github folder.</p>
+<p>After successfully building the scrample binary, we need to ensure that future changes do not break the build.</p>
+<p>To achieve this, create a CI/CD workflow that triggers a <a class="reference external" href="https://docs.github.com/en/actions">GitHub action</a>
+to build the scrample application whenever a new PR is opened. Start by creating a workflow file named
+<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/.github/workflows/build.yml">build.yml</a>
+in the <code class="docutils literal notranslate"><span class="pre">.github/workflows/</span></code> folder.</p>
 <p>Then fill the workflow file with the following content:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>name: Scrample Build
 <span class="hll"><span class="linenos"> 2</span>on:

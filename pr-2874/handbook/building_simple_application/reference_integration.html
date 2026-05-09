@@ -44,6 +44,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-needs/modern.css?v=803738c0" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/score.css?v=6e51530f" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
@@ -519,9 +520,7 @@
 <li class="toctree-l2"><a class="reference internal" href="doc_generation.html">Documentation generation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="building_source_code.html">Building source code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cicd_workflows.html">CI/CD Workflows</a></li>
-<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">Reference integration</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
-</ul>
-</details></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Reference integration</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../whats_next/index.html">What’s Next?</a></li>
@@ -591,8 +590,6 @@
                   
   <section id="reference-integration">
 <h1>Reference integration<a class="headerlink" href="#reference-integration" title="Link to this heading">#</a></h1>
-<div class="toctree-wrapper compound">
-</div>
 <p>After building the scrample binary for the qnx x86 image,
 we can now run it inside the reference qnx image for the x86 platform.</p>
 <p>The reference integration repository already provides a
@@ -636,7 +633,7 @@ Before doing so, we must first add the scrample binary as a dependency of the if
 file with the dependency to the scrample module and all modules it depends on.</p>
 <p>Next, we need to extend <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/qnx_qemu/.bazelrc">.bazelrc</a>
 file with the compiler settings needed to build these modules.</p>
-<p>Both steps follow the same pattern described earlier in the <a class="reference internal" href="building_source_code.html#id1"><span class="std std-ref">Building source code</span></a> chapter.
+<p>Both steps follow the same pattern described earlier in the <a class="reference internal" href="building_source_code.html#building-source-code"><span class="std std-ref">Building source code</span></a> chapter.
 Once all dependencies are set up, we can add our scrample binary as dependency of the <em>ifs_image</em> target in the
 <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/99618797cb518fe2fac0e5dc53b95718bc675911/qnx_qemu/build/BUILD#L45">qnx_qemu/build/BUILD</a>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">qnx_ifs</span><span class="p">(</span>
