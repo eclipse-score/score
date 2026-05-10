@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2026 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -16,9 +16,18 @@
 
 Contribute own module
 =====================
-Let´s assume you want to contribute to the Eclipse S-CORE project by providing a new platform module. 
-In this example, you will create a small demo application called *"scrample"*.
-The application demonstrates how to use existing Eclipse S-CORE platform modules to implement new functionality.
+
+This guide walks you through contributing a new platform module to Eclipse S-CORE end-to-end.
+As a running example you will build a small demo application called *"scrample"*, which shows how
+to compose existing S-CORE platform modules into new functionality.
+
+By the end of this section you will have:
+
+- Created a properly structured S-CORE module from scratch.
+- Generated documentation from source and integrated it into the platform docs.
+- Built the module with Bazel and verified it compiles cleanly.
+- Wired up CI/CD workflows so every change is automatically validated.
+- Plugged the module into the reference integration so it becomes part of the platform.
 
 .. toctree::
    :maxdepth: 1

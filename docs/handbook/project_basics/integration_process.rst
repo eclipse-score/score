@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2026 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -21,7 +21,7 @@ Several discussions and concepts have shaped the current approach.
 A detailed description is available in the following `decision record <https://eclipse-score.github.io/score/main/design_decisions/DR-002-infra.html>`_.
 This chapter provide a high-level overview of how integration works in Eclipse S-CORE.
 
-.. image:: ../_assets/release_integration_concept.svg
+.. image:: ../_assets/release_integration_concept.drawio.svg
    :alt: release_integration_concept
    :align: center
 

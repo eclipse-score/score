@@ -14,49 +14,53 @@
 .. _whats_next:
 
 What's Next?
-======================
-Now after you are all set and have understood the basics of the S-Core project, next step would be
-to make a first real contribution. There are different ways how you can productively contribute to the
-S-Core project, as described in the sub-chapters below.
+============
+
+Congratulations — you have worked through the S-CORE handbook and have a solid understanding of the
+platform! The next step is to turn that knowledge into a real contribution.
+
+There is no single path: you can fix a small bug, implement a requested feature, or simply start a
+conversation with the community. The sections below describe the most common entry points.
 
 
 Good first issue
--------------------------
-S-Core project consists of many `repositories <https://github.com/orgs/eclipse-score/repositories>`_.
+----------------
 
-These repositories are maintained by corresponding *Feature Teams* or *Communities*. Every of these Communities or Feature Teams has
-a dedicated `Discusssion/Discussion section <https://github.com/orgs/eclipse-score/discussions>`_.
+S-CORE consists of many `repositories <https://github.com/orgs/eclipse-score/repositories>`_, each
+maintained by a dedicated *Feature Team* or *Community*. Every team has a
+`Discussion section <https://github.com/orgs/eclipse-score/discussions>`_ on GitHub and most have
+a pinned post with contact information, such as the Feature Team lead and the corresponding Slack
+channel — see this `example discussion <https://github.com/orgs/eclipse-score/discussions/1223>`_.
 
-Normally, every repository has a README file, explaining the content of the repository and every
-Discussion section of every Feature Team or every Community should have a pinned discussion,
-containing a general information e.g. name of the Feature Team lead or corresponding slack channel,
-e.g. as in this `example <https://github.com/orgs/eclipse-score/discussions/1223>`_.
+A great first step is to browse issues labelled **"good first issue"** in any module repository,
+like `this example issue <https://github.com/eclipse-score/score/issues/2774>`_. Before picking
+one up, it is always worth dropping a message in the team's Slack channel so the community knows
+you are working on it and can point you in the right direction.
 
-You can always browse currently open issues in the module repository, labeled as "good first issue",
-as for example this `issue <https://github.com/eclipse-score/score/issues/2774>`_. However it is never a bad
-idea to reach out to the community in the slack channel and inform e.g. Feature Team lead or other committers, that
-you want to help and ask for a ticket.
+You can also join any Feature Team or Community online meeting — all meetings are publicly listed in
+the `Eclipse community calendar <https://calendar.google.com/calendar/u/0/embed?src=c_2ampi2bmoka3qter4dceap1d5g@group.calendar.google.com&ctz=Europe/Berlin>`_.
 
-Additionally, you can always join Community or Feature Team online meeting, that are publically available
-for everyone in the
-`eclipse commnunity calender <https://calendar.google.com/calendar/u/0/embed?src=c_2ampi2bmoka3qter4dceap1d5g@group.calendar.google.com&ctz=Europe/Berlin>`_.
 
 Explore Feature Requests
 -------------------------
-S-Core projects maintains a list of feature requests in the GitHub Project
+
+S-CORE maintains a public backlog of accepted feature requests in the GitHub Project
 `Feature Requests/Modifications <https://github.com/orgs/eclipse-score/projects/4>`_.
 
-In case you want to propose a new feature to the project or take over the responsibility for an already agreed feature,
-please reach out to the S-Core project leads in the `slack channel <https://app.slack.com/client/T02MS1M89UH/C085F44D2CS>`_.
+If you want to **propose a new feature** or **take ownership of an already approved one**, reach
+out to the project leads via the
+`Slack channel <https://app.slack.com/client/T02MS1M89UH/C085F44D2CS>`_.
+They will guide you through the process of scoping the work and getting started.
 
 
 Reach out to Project Leads
 ---------------------------
-If you want to contribute to the S-Core project, but still do not know how to do the first step, feel free to reach out to the
-S-Core Project Leads. They will put your topic to the agenda of the *Project Lead Circle*, that takes place every Monday,
-or will propose an alternative time slot.
 
-You can contact the project leads through the following channels:
+Not sure where to begin? Feel free to contact the S-CORE Project Leads directly. They will either
+add your topic to the agenda of the *Project Lead Circle* (held every Monday) or suggest an
+alternative time slot.
+
+Reach them through:
 
 - `Slack channel <https://app.slack.com/client/T02MS1M89UH/C085F44D2CS>`_ — for quick questions and informal discussions
 - `Developer Mailing List <mailto:score-dev@eclipse.org>`_ (score-dev@eclipse.org) — for more formal inquiries and reaching a broader audience

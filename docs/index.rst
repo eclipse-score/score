@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2026 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -62,7 +62,7 @@ Responsibility for ASPICE, ISO 21434 (cybersecurity), and ISO 26262 (functional 
 
 
 Get started with S-CORE
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
 .. grid:: 3
    :gutter: 3
@@ -104,7 +104,7 @@ Get started with S-CORE
       Check how you can start being productive immediately
 
 Software artifacts
-~~~~~~~~~~~~~~~~~~
+------------------
 
 .. grid:: 1 1 3 3
    :class-container: score-grid
@@ -135,12 +135,12 @@ Software artifacts
 
       Releases
       ^^^
-      Check out our `latest release <https://eclipse-score.github.io/reference_integration/main/_collections/score_platform/docs/score_releases/score_releases/score_v0_6.html>`_
+      Check out our `latest release <https://eclipse-score.github.io/reference_integration/main/>`_
       or explore our `release roadmap <https://eclipse-score.github.io/reference_integration/main/_collections/score_platform/docs/score_releases/index.html>`_.
 
 
 Project structure and processes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------------
 
 .. grid:: 1 1 3 3
    :class-container: score-grid
@@ -177,7 +177,9 @@ Project structure and processes
       Explore the S-CORE reference integration — a continuously built and tested
       assembly of all platform modules, serving as the authoritative integration baseline.
 
-----
+.. raw:: html
+
+   <div style="border-top:2px solid #888;margin:2.5rem 0 2rem 0;"></div>
 
 .. grid:: 1 1 3 3
    :class-container: score-sitemap
