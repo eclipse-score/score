@@ -62,6 +62,7 @@ Requirements
    :safety: QM
    :satisfies: stkh_req__functional_req__base_libraries, stkh_req__dev_experience__prog_languages, stkh_req__overall_goals__reuse_of_app_soft
    :status: valid
+   :tags: inspected
 
    The base libraries shall provide consistent APIs while respecting language-specific idioms.
 
@@ -72,6 +73,7 @@ Requirements
    :safety: QM
    :satisfies: stkh_req__functional_req__base_libraries, stkh_req__overall_goals__reuse_of_app_soft
    :status: valid
+   :tags: inspected
 
    The base libraries shall be designed for maintainability and code reuse.
 
@@ -82,6 +84,7 @@ Requirements
    :safety: QM
    :satisfies: stkh_req__functional_req__base_libraries
    :status: valid
+   :tags: inspected
 
    The base libraries shall adhere to secure coding standards to prevent vulnerabilities across platform components.
 
@@ -104,6 +107,7 @@ Requirements
    :satisfies: stkh_req__functional_req__base_libraries
    :status: valid
    :valid_from: v1.0.0
+   :tags: inspected
 
    The base libraries shall provide a FlatBuffers-Library with serialization, read access, and structural verification of FlatBuffers data.
 
@@ -162,6 +166,7 @@ Requirements
    :safety: ASIL_B
    :satisfies: stkh_req__functional_req__base_libraries
    :status: valid
+   :tags: inspected
 
    The baselibs shall provide a memory management library that includes utilities for shared memory operations, polymorphic memory resources, position-independent pointers, endianness conversion, and inter-process synchronization mechanisms.
 
