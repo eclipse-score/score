@@ -13,7 +13,7 @@
 DR-008-Infra: Generating documentation sources via Bazel
 ========================================================
 
-- **Date:** 2026-04-23
+- **Date:** 2026-05-11
 
 .. dec_rec:: Generating documentation sources via Bazel
    :id: dec_rec__infra__docs_src_dir
@@ -108,7 +108,9 @@ Option B: Introduce ``:docs_src_dir`` Bazel target
 We add an ``extra_docs`` attribute to the ``docs()`` macro
 for additional sources specified via `sphinx_docs_library <https://rules-python.readthedocs.io/en/1.0.0/api/sphinxdocs/sphinxdocs/sphinx_docs_library.html#sphinx_docs_library>`_,
 which allows to adapt path prefixes.
-The we materialize a composed folder for the actual sphinx-build.
+The source tree is materialized using hardlinks (``ln``) inside a Bazel ``declare_directory`` action.
+Symlinks fail Bazel's output tree validation (dangling link detection),
+while copies are unnecessarily expensive for large doc sets.
 
 .. mermaid::
 
@@ -128,22 +130,26 @@ Thus, there is no ``:live_preview`` target but a ``live_preview`` script.
 We cannot rely on watching file system changes to trigger rebuilds because the source directory is composed by Bazel
 and may contain generated files.
 
-For the implementation we can rely on `ibazel / bazel-watcher <https://github.com/bazelbuild/bazel-watcher>`_
-to trigger rebuilds of the ``:docs_src_dir`` target and then still use sphinx-autobuild for the browser auto-reload.
-As a side-effect, ibazel is a new tool in S-CORE which could be reused for other auto-rebuild use cases like unit tests.
+The ``live_preview`` script runs two concurrent processes:
+
+1. ``ibazel build :docs_src_dir`` — watches workspace sources and re-materializes the tree on change.
+2. ``sphinx-autobuild`` — watches the materialized tree and serves HTML with websocket-based browser reload.
 
 The ``score_sync_toml`` extension writes a ``ubproject.toml`` file to the source directory
 but Bazel sandboxing makes this fail.
-As a workaround, ``needscfg_outpath`` can be used to redirect it somewhere else.
-Alternatively, ``remove score_sync_toml`` and ``needs_config_writer`` extensions and create the ubproject.toml file in a different way?
+The ``score_sync_toml`` extension's write to the source directory is redirected via
+``--define=needscfg_outpath=<workspace>/docs/ubproject.toml``,
+which works without modifications to the extension itself.
 
 Effort 😡: Some implementation effort.
 
 Flexibility 💚: Generic solution for all build paths and future extensions.
 
-Speed ?: unclear
+Speed 💛: Overall latency is comparable to the status quo for edit-preview cycles, but the initial cold start is a little slower due to the extra Bazel invocation.
 
-UX 😡: Live-preview requires a setup step to generate the script.
+UX 😡: Requires a two-step setup: ``bazel run //:ide_support`` (venv) then
+``bazel run //:gen_live_preview`` (script).
+The generated script is workspace-specific and should be gitignored.
 
 
 Option D: Dual-path — keep ``:live_preview``, add hermetic ``:docs`` build
@@ -173,7 +179,7 @@ In order of importance, most important first.
 
    Flexibility, 😡, 💚, 😡
    Effort,      💚, 😡, 😡
-   Speed,       💚, ?,  💚
+   Speed,       💚, 💛, 💚
    UX,          💚, 😡, 😡
 
 **Decision: Option B** because Option N loses wrt flexibility. Option D has no advantage over B.
