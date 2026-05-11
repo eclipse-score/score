@@ -1030,7 +1030,7 @@ window.runMermaid = runMermaid;</script>
 <ul class="simple">
 <li><p><strong>Date:</strong> 2026-04-23</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-7ad07972">
+<div class="need_container docutils container" id="SNCB-9d59bbb8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__docs_src_dir">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1147,7 +1147,9 @@ documentation sources directly from that directory on the workspace filesystem.<
 <p>We add an <code class="docutils literal notranslate"><span class="pre">extra_docs</span></code> attribute to the <code class="docutils literal notranslate"><span class="pre">docs()</span></code> macro
 for additional sources specified via <a class="reference external" href="https://rules-python.readthedocs.io/en/1.0.0/api/sphinxdocs/sphinxdocs/sphinx_docs_library.html#sphinx_docs_library">sphinx_docs_library</a>,
 which allows to adapt path prefixes.
-The we materialize a composed folder for the actual sphinx-build.</p>
+The source tree is materialized using hardlinks (<code class="docutils literal notranslate"><span class="pre">ln</span></code>) inside a Bazel <code class="docutils literal notranslate"><span class="pre">declare_directory</span></code> action.
+Symlinks fail Bazel’s output tree validation (dangling link detection),
+while copies are unnecessarily expensive for large doc sets.</p>
 <pre  class="mermaid">
         graph LR
     docs&#64;{ shape: docs, label: &quot;docs/&quot; }
@@ -1163,17 +1165,22 @@ This live preview cannot be executed via <code class="docutils literal notransla
 Thus, there is no <code class="docutils literal notranslate"><span class="pre">:live_preview</span></code> target but a <code class="docutils literal notranslate"><span class="pre">live_preview</span></code> script.
 We cannot rely on watching file system changes to trigger rebuilds because the source directory is composed by Bazel
 and may contain generated files.</p>
-<p>For the implementation we can rely on <a class="reference external" href="https://github.com/bazelbuild/bazel-watcher">ibazel / bazel-watcher</a>
-to trigger rebuilds of the <code class="docutils literal notranslate"><span class="pre">:docs_src_dir</span></code> target and then still use sphinx-autobuild for the browser auto-reload.
-As a side-effect, ibazel is a new tool in S-CORE which could be reused for other auto-rebuild use cases like unit tests.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">live_preview</span></code> script runs two concurrent processes:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ibazel</span> <span class="pre">build</span> <span class="pre">:docs_src_dir</span></code> — watches workspace sources and re-materializes the tree on change.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sphinx-autobuild</span></code> — watches the materialized tree and serves HTML with websocket-based browser reload.</p></li>
+</ol>
 <p>The <code class="docutils literal notranslate"><span class="pre">score_sync_toml</span></code> extension writes a <code class="docutils literal notranslate"><span class="pre">ubproject.toml</span></code> file to the source directory
 but Bazel sandboxing makes this fail.
-As a workaround, <code class="docutils literal notranslate"><span class="pre">needscfg_outpath</span></code> can be used to redirect it somewhere else.
-Alternatively, <code class="docutils literal notranslate"><span class="pre">remove</span> <span class="pre">score_sync_toml</span></code> and <code class="docutils literal notranslate"><span class="pre">needs_config_writer</span></code> extensions and create the ubproject.toml file in a different way?</p>
+The <code class="docutils literal notranslate"><span class="pre">score_sync_toml</span></code> extension’s write to the source directory is redirected via
+<code class="docutils literal notranslate"><span class="pre">--define=needscfg_outpath=&lt;workspace&gt;/docs/ubproject.toml</span></code>,
+which works without modifications to the extension itself.</p>
 <p>Effort 😡: Some implementation effort.</p>
 <p>Flexibility 💚: Generic solution for all build paths and future extensions.</p>
-<p>Speed ?: unclear</p>
-<p>UX 😡: Live-preview requires a setup step to generate the script.</p>
+<p>Speed 💛: Overall latency is comparable to the status quo for edit-preview cycles, but the initial cold start is a little slower due to the extra Bazel invocation.</p>
+<p>UX 😡: Requires a two-step setup: <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">run</span> <span class="pre">//:ide_support</span></code> (venv) then
+<code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">run</span> <span class="pre">//:gen_live_preview</span></code> (script).
+The generated script is workspace-specific and should be gitignored.</p>
 </section>
 <section id="option-d-dual-path-keep-live-preview-add-hermetic-docs-build">
 <h3>Option D: Dual-path — keep <code class="docutils literal notranslate"><span class="pre">:live_preview</span></code>, add hermetic <code class="docutils literal notranslate"><span class="pre">:docs</span></code> build<a class="headerlink" href="#option-d-dual-path-keep-live-preview-add-hermetic-docs-build" title="Link to this heading">#</a></h3>
@@ -1216,7 +1223,7 @@ that materialises a composed source directory inside the Bazel sandbox before in
 </tr>
 <tr class="row-even"><td><p>Speed</p></td>
 <td><p>💚</p></td>
-<td><p>?</p></td>
+<td><p>💛</p></td>
 <td><p>💚</p></td>
 </tr>
 <tr class="row-odd"><td><p>UX</p></td>
