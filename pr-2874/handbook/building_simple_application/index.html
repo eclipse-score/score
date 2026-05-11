@@ -587,9 +587,17 @@
                   
   <section id="contribute-own-module">
 <span id="id1"></span><h1>Contribute own module<a class="headerlink" href="#contribute-own-module" title="Link to this heading">#</a></h1>
-<p>Let´s assume you want to contribute to the Eclipse S-CORE project by providing a new platform module.
-In this example, you will create a small demo application called <em>“scrample”</em>.
-The application demonstrates how to use existing Eclipse S-CORE platform modules to implement new functionality.</p>
+<p>This guide walks you through contributing a new platform module to Eclipse S-CORE end-to-end.
+As a running example you will build a small demo application called <em>“scrample”</em>, which shows how
+to compose existing S-CORE platform modules into new functionality.</p>
+<p>By the end of this section you will have:</p>
+<ul class="simple">
+<li><p>Created a properly structured S-CORE module from scratch.</p></li>
+<li><p>Generated documentation from source and integrated it into the platform docs.</p></li>
+<li><p>Built the module with Bazel and verified it compiles cleanly.</p></li>
+<li><p>Wired up CI/CD workflows so every change is automatically validated.</p></li>
+<li><p>Plugged the module into the reference integration so it becomes part of the platform.</p></li>
+</ul>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="first_score_module.html">First Eclipse S-CORE Module</a></li>
