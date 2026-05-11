@@ -79,4 +79,7 @@ bazel_dep(name = "score_process", version = "1.5.4")
 #    → score_process@1.5.3 (discovered, not selected)
 #      → score_tooling@1.2.0   ← this requirement sticks, although neither
 #                                the old docs-as-code nor the old process module is selected.
-single_version_override(module_name = "score_tooling", version = "1.1.2")
+single_version_override(
+    module_name = "score_tooling",
+    version = "1.1.2",
+)
