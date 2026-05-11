@@ -54,11 +54,11 @@ Fault Models for sequence diagrams
     * - MF_01_05
       - message is corrupted
       - yes
-      - Error message string is destroyed before accessing it by the user - see :need:`comp_saf_fmea__result__error_message_unavail`
+      - The error message carried within the error object does not own the underlying data. If the data source is destroyed before the error message is accessed by the user, the message reference becomes invalid (see :need:`comp_saf_fmea__result__error_message_life`).
     * - MF_01_06
       - message is not sent
       - yes
-      - Value or error are not returned - see :need:`comp_saf_fmea__result__no_return`
+      - Value or error are not returned - see :need:`comp_saf_fmea__result__unchecked`
     * - MF_01_07
       - message is unintended sent
       - no
@@ -66,7 +66,7 @@ Fault Models for sequence diagrams
     * - CO_01_01
       - minimum constraint boundary is violated
       - yes
-      - Used enum types may not match - see :need:`comp_saf_fmea__result__enum_type_mismatch`
+      - The error code returned is not bound to a specific error domain at the type level. A user may interpret the code against the wrong domain, violating the constraint that error codes are only meaningful within their originating domain (see :need:`comp_saf_fmea__result__error_code`).
     * - CO_01_02
       - maximum constraint boundary is violated
       - yes
@@ -90,59 +90,65 @@ Fault Models for sequence diagrams
     * - EX_01_05
       - processing changes to arbitrary process
       - no
-      - Not a problem of result lib as this is a libray and not a process
+      - Not a problem of result lib as this is a library and not a process
     * - EX_01_06
       - processing is not complete (infinite loop)
       - yes
-      - User gives back a function as return which induces stop of user execution - see :need:`comp_saf_fmea__result__stop_user`
+      - The Result library accepts user-provided operations for value and error transformation. If such an operation does not complete, the calling execution is halted (see :need:`comp_saf_fmea__result__stop_user`).
 
 FMEA
 ----
 For all identified applicable failure initiators, the FMEA is performed in the following section.
 
-.. comp_saf_fmea:: Result Enum Type Mismatch
+.. comp_saf_fmea:: Result Error Code Cross-Domain Misinterpretation
    :violates: comp_arc_dyn__baselibs__result
-   :id: comp_saf_fmea__result__enum_type_mismatch
+   :id: comp_saf_fmea__result__error_code
    :fault_id: CO_01_01
-   :failure_effect: User would understand a wrong error type (based on different error domains)
+   :failure_effect: When retrieving error information, the error code is returned as a domain-agnostic integer. If the user interprets this code under a different error domain than the one that produced it, the error is misidentified, potentially leading to incorrect error reaction.
    :mitigation_issue: https://github.com/eclipse-score/score/issues/2880
    :sufficient: no
    :status: valid
 
-   Only if the user would use the error information not only for debug reasons but for selecting the
-   type of error reaction this error may have an error impact. We need to make the user aware of this.
+   If the user relies on the error code not only for diagnostic purposes but for selecting an error reaction path,
+   misinterpreting the code under a wrong domain could lead to an incorrect safety-relevant decision.
+   An Assumption of Use shall ensure the user verifies the error domain before interpreting the error code.
 
-.. comp_saf_fmea:: Result Error Message Unavailability
+.. comp_saf_fmea:: Result Error Message Lifetime Violation
    :violates: comp_arc_dyn__baselibs__result
-   :id: comp_saf_fmea__result__error_message_unavail
+   :id: comp_saf_fmea__result__error_message_life
    :fault_id: MF_01_05
-   :failure_effect: Accessing error message could result in undefined behaviour
+   :failure_effect: The error message provided during error construction is stored as a non-owning reference. If the referenced data is no longer valid when the user retrieves the error message, accessing it results in undefined behavior.
    :mitigated_by: aou_req__result__resource_lifetime
    :mitigation_issue: https://github.com/eclipse-score/score/issues/2880
    :sufficient: no
    :status: valid
 
-   The linked AoU cares about unavailability of other return objects, but also the error message may be unavailable.
+   The existing Assumption of Use for resource lifetime addresses the validity of error domain objects
+   and referenced resources. However, it does not explicitly cover the user-provided error message,
+   which is equally subject to lifetime constraints. The AoU should be extended to explicitly include the error message data,
+   or a separate AoU should be established for it.
 
-.. comp_saf_fmea:: Result No Return
+.. comp_saf_fmea:: Result Unchecked Value or Error Access
    :violates: comp_arc_dyn__baselibs__result
-   :id: comp_saf_fmea__result__no_return
+   :id: comp_saf_fmea__result__unchecked
    :fault_id: MF_01_06
-   :failure_effect: Accessing value object could result in undefined behaviour (e.g. usage of wrong value)
+   :failure_effect: If the user calls value without the result containing a value, or calls error without the result containing an error, the program will terminate. This may occur when the user does not check the state of the result before accessing it.
    :mitigated_by: aou_req__result__value_handling, aou_req__result__error_reaction
    :sufficient: yes
    :status: valid
 
-   If a value or a error is not returned this will be noticed by the user and reacted upon. This is ensured
-   additionally by the provided AoU.
+   If the user accesses the value or the error without first verifying the state of the result,
+   the program will deterministically terminate. The provided Assumptions of Use require the user to check and handle both states before access.
 
 .. comp_saf_fmea:: Result Stop User
    :violates: comp_arc_dyn__baselibs__result
    :id: comp_saf_fmea__result__stop_user
    :fault_id: EX_01_06
-   :failure_effect: User could be stopped by a function provided as a result from another user
+   :failure_effect: The user provides a transformation or error handling operation to the Result library. If this operation does not terminate (e.g., infinite loop), the calling execution is blocked indefinitely.
    :mitigated_by: aou_req__platform__flow_monitoring
    :sufficient: yes
    :status: valid
 
-   Stopping its own execution has to be managed by the user via program flow monitoring, see AoU.
+   The Result library invokes user-provided operations synchronously during transformation of values or errors.
+   Ensuring these operations terminate is outside the scope of the library and is the responsibility of the user via program flow monitoring,
+   as covered by the referenced platform-level Assumption of Use.
