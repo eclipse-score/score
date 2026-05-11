@@ -141,7 +141,7 @@ The ``score_sync_toml`` extension's write to the source directory is redirected 
 ``--define=needscfg_outpath=<workspace>/docs/ubproject.toml``,
 which works without modifications to the extension itself.
 
-Effort 😡: Some implementation effort.
+Effort 💛: Some implementation effort but prototype already works.
 
 Flexibility 💚: Generic solution for all build paths and future extensions.
 
@@ -178,7 +178,7 @@ In order of importance, most important first.
    :widths: 2, 1, 1, 1
 
    Flexibility, 😡, 💚, 😡
-   Effort,      💚, 😡, 😡
+   Effort,      💚, 💛, 😡
    Speed,       💚, 💛, 💚
    UX,          💚, 😡, 😡
 
