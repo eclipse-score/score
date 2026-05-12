@@ -634,7 +634,7 @@
                   
   <section id="fmea-failure-modes-and-effects-analysis">
 <h1>FMEA (Failure Modes and Effects Analysis)<a class="headerlink" href="#fmea-failure-modes-and-effects-analysis" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-056ddb05">
+<div class="need_container docutils container" id="SNCB-a046fae8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__result_fmea">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -762,7 +762,7 @@
 <tr class="row-even"><td><p>EX_01_06</p></td>
 <td><p>processing is not complete (infinite loop)</p></td>
 <td><p>yes</p></td>
-<td><p>User gives back a function as return which induces stop of user execution - see <a class="reference internal" href="#comp_saf_fmea__result__stop_user" title="comp_saf_fmea__result__stop_user"><em class="xref need">Result Stop User (comp_saf_fmea__result__stop_user)</em></a></p></td>
+<td><p>The Result library accepts user-provided operations for value and error transformation. If such an operation does not complete, the calling execution is halted (see <a class="reference internal" href="#comp_saf_fmea__result__stop_user" title="comp_saf_fmea__result__stop_user"><em class="xref need">Result Stop User (comp_saf_fmea__result__stop_user)</em></a>).</p></td>
 </tr>
 </tbody>
 </table>
@@ -773,7 +773,7 @@
 <section id="fmea">
 <h2>FMEA<a class="headerlink" href="#fmea" title="Link to this heading">#</a></h2>
 <p>For all identified applicable failure initiators, the FMEA is performed in the following section.</p>
-<div class="need_container docutils container" id="SNCB-9a7a447c">
+<div class="need_container docutils container" id="SNCB-b9d30a78">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_saf_fmea table" id="comp_saf_fmea__result__error_code">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -822,7 +822,7 @@ An Assumption of Use shall ensure the user verifies the error domain before inte
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a87fa2dd">
+<div class="need_container docutils container" id="SNCB-32b26fd6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_saf_fmea table" id="comp_saf_fmea__result__error_message_life">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -873,7 +873,7 @@ or a separate AoU should be established for it.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-ea87d00a">
+<div class="need_container docutils container" id="SNCB-1e90d45b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_saf_fmea table" id="comp_saf_fmea__result__unchecked">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -921,7 +921,7 @@ the program will deterministically terminate. The provided Assumptions of Use re
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-c0c84305">
+<div class="need_container docutils container" id="SNCB-734d9194">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_saf_fmea table" id="comp_saf_fmea__result__stop_user">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -941,7 +941,7 @@ the program will deterministically terminate. The provided Assumptions of Use re
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span><span class="needs_spacer">, </span><span class="needs_data">result_lib</span></span></span></div>
-<div class="line"><span class="needs_failure_effect"><span class="needs_label">failure_effect: </span><span class="needs_data">User could be stopped by a function provided as a result from another user</span></span></div>
+<div class="line"><span class="needs_failure_effect"><span class="needs_label">failure_effect: </span><span class="needs_data">The user provides a transformation or error handling operation to the Result library. If this operation does not terminate (e.g., infinite loop), the calling execution is blocked indefinitely.</span></span></div>
 <div class="line"><span class="needs_fault_id"><span class="needs_label">fault_id: </span><span class="needs_data">EX_01_06</span></span></div>
 <div class="line"><span class="needs_sufficient"><span class="needs_label">sufficient: </span><span class="needs_data">yes</span></span></div>
 </span></span></div>
@@ -952,7 +952,9 @@ the program will deterministically terminate. The provided Assumptions of Use re
 </td>
 <td class="meta" colspan="3"></td>
 </tr>
-<tr class="content row-odd"><td class="content" colspan="6"><p>Stopping its own execution has to be managed by the user via program flow monitoring, see AoU.</p></td>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The Result library invokes user-provided operations synchronously during transformation of values or errors.
+Ensuring these operations terminate is outside the scope of the library and is the responsibility of the user via program flow monitoring,
+as covered by the referenced platform-level Assumption of Use.</p></td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
 <div class="line"><span><span class="needs-id"><a class="reference internal" href="#comp_saf_fmea__result__stop_user" title="comp_saf_fmea__result__stop_user">comp_saf_fmea__result__stop_user</a></span></span></div>
