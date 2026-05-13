@@ -657,6 +657,9 @@ cross-repository builds and detect integration issues early in the development c
 ci/                                -&gt; CI configuration and scripts
 cli/                               -&gt; CLI tool running on the target to guide users through examples
 docs/                              -&gt; Documentation of the reference integration
+├── score_releases/                -&gt; [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/release_management/release_workproducts.html#wp__platform_sw_release_note">wp__platform_sw_release_note</a>]
+└── verification_report/           -&gt; Platform verification report (reporting all platform feature's verifications)
+                                      [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_platform_ver_report">wp__verification_platform_ver_report</a>]
 images/                            -&gt; Concrete images for each target platform as Bazel modules.
                                       Each platform has its own folder named <code class="docutils literal notranslate"><span class="pre">platform_arch</span></code>,
                                       e.g. <code class="docutils literal notranslate"><span class="pre">qnx_aarch64</span></code>, <code class="docutils literal notranslate"><span class="pre">autosd_x86_64</span></code>, <code class="docutils literal notranslate"><span class="pre">ebclfsa_aarch64</span></code>,
@@ -670,10 +673,7 @@ runners/                           -&gt; Thin logic to reuse runners (e.g. docke
 rust_coverage/                     -&gt; Rust coverage configuration
 scripts/                           -&gt; Internal tooling scripts (known_good management,
                                       workspace metadata generation, etc.)
-score_releases/                    -&gt; [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/release_management/release_workproducts.html#wp__platform_sw_release_note">wp__platform_sw_release_note</a>]
 showcases/                         -&gt; S-CORE wide showcases deployed into images
-verification_report/               -&gt; Platform verification report (reporting all platform feature's verifications)
-                                      [<a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/verification/verification_workproducts.html#wp__verification_platform_ver_report">wp__verification_platform_ver_report</a>]
 score_starter                      -&gt; Launcher script to select and run an integration scenario
 tooling/                           -&gt; Single point of interaction with all tooling artifacts
 MODULE.bazel                       -&gt; Bazel module definition
