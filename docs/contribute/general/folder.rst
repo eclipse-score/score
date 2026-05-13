@@ -92,6 +92,9 @@ cross-repository builds and detect integration issues early in the development c
     ci/                                -> CI configuration and scripts
     cli/                               -> CLI tool running on the target to guide users through examples
     docs/                              -> Documentation of the reference integration
+    ├── score_releases/                -> [:need:`wp__platform_sw_release_note`]
+    └── verification_report/           -> Platform verification report (reporting all platform feature's verifications)
+                                          [:need:`wp__verification_platform_ver_report`]
     images/                            -> Concrete images for each target platform as Bazel modules.
                                           Each platform has its own folder named ``platform_arch``,
                                           e.g. ``qnx_aarch64``, ``autosd_x86_64``, ``ebclfsa_aarch64``,
@@ -105,10 +108,7 @@ cross-repository builds and detect integration issues early in the development c
     rust_coverage/                     -> Rust coverage configuration
     scripts/                           -> Internal tooling scripts (known_good management,
                                           workspace metadata generation, etc.)
-    score_releases/                    -> [:need:`wp__platform_sw_release_note`]
     showcases/                         -> S-CORE wide showcases deployed into images
-    verification_report/               -> Platform verification report (reporting all platform feature's verifications)
-                                          [:need:`wp__verification_platform_ver_report`]
     score_starter                      -> Launcher script to select and run an integration scenario
     tooling/                           -> Single point of interaction with all tooling artifacts
     MODULE.bazel                       -> Bazel module definition
