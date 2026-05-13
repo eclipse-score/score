@@ -13,11 +13,11 @@
 DR-008-Infra: Generating documentation sources via Bazel
 ========================================================
 
-- **Date:** 2026-05-11
+- **Date:** 2026-05-13
 
 .. dec_rec:: Generating documentation sources via Bazel
    :id: dec_rec__infra__docs_src_dir
-   :status: proposed
+   :status: accepted
    :context: Infrastructure
    :decision: Option B because Option N loses wrt flexibility
 
@@ -45,7 +45,8 @@ Workarounds we already have in place are:
   It allows no control over the folder hierarchy
   and symlinks in the git workspace can be confusing.
 
-We look for a solution which is simpler and easier to maintain.
+We look for a solution which is simpler and easier to maintain,
+so we don't have to keep adding more and more workarounds for each new use case.
 
 Additionally, we repeatedly has issues with caching.
 Since we don't rely on Bazel sandbox for docs building, Bazel cannot help with hermeticity and determinism.
@@ -78,7 +79,7 @@ Options Considered
 ------------------
 
 Option N: No change (status quo)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Keep the current architecture.
 The ``docs()`` macro in ``docs.bzl`` accepts a ``source_dir`` parameter and reads
@@ -101,9 +102,16 @@ Speed 💚: Fast but only covers source updates (not test result updates, for ex
 
 UX 💚: Status quo
 
+While ``sphinx-autobuild --pre-build`` is available to trigger some build steps before each rebuild,
+this does not work with Bazel:
+If you ``bazel run :live_preview`` and do a ``bazel build`` inside,
+that build will wait for the run to finish, thus deadlock.
 
 Option B: Introduce ``:docs_src_dir`` Bazel target
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In short: sphinx-autobuild from a Bazel target that re-materializes the sources continuously via
+`ibazel / bazel-watcher <https://github.com/bazelbuild/bazel-watcher>`_.
 
 We add an ``extra_docs`` attribute to the ``docs()`` macro
 for additional sources specified via `sphinx_docs_library <https://rules-python.readthedocs.io/en/1.0.0/api/sphinxdocs/sphinxdocs/sphinx_docs_library.html#sphinx_docs_library>`_,
@@ -151,6 +159,15 @@ UX 😡: Requires a two-step setup: ``bazel run //:ide_support`` (venv) then
 ``bazel run //:gen_live_preview`` (script).
 The generated script is workspace-specific and should be gitignored.
 
+The generally idea is also described in `the rules_python documentation <https://github.com/bazel-contrib/rules_python/blob/5511aaf1e95fbf6b3eeca64ad503b26d712f50aa/docs/README.md#generating-docs-for-development>`_:
+
+.. code-block:: bash
+
+   bazel run //docs:docs.serve  # Run in separate terminal
+   ibazel build //docs:docs  # Automatically rebuilds docs
+
+This ``docs.serve`` target implemented in `rules_python` does not have
+auto-refresh in the browser though.
 
 Option D: Dual-path — keep ``:live_preview``, add hermetic ``:docs`` build
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
