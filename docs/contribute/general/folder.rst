@@ -66,14 +66,11 @@ The following shows the folder structure of the platform repository (ordered alp
     │                                     [:need:`wp__platform_dfa`], [:need:`wp__platform_safety_manual`],
     │                                     [:need:`wp__platform_safety_package`], [:need:`wp__fdr_reports`],
     │                                     [:need:`wp__audit_report`]
-    ├── score_releases/                -> [:need:`wp__platform_sw_release_note`]
     ├── score_tools/                   -> Tool list and [:need:`wp__tool_verification_report`]
     ├── security/                      -> Security documentation on platform level:
     │                                     [:need:`wp__platform_security_manual`], [:need:`wp__platform_security_package`],
     │                                     [:need:`wp__sw_platform_sbom`], [:need:`wp__platform_security_analysis`],
     │                                     [:need:`wp__audit_report_security`]
-    ├── verification_report/           -> Platform verification report (reporting all platform feature's verifications)
-    │                                     [:need:`wp__verification_platform_ver_report`]
     └── tools/                         -> Platform tools (not covered in tool repositories)
         └── decision_records/          -> Design decision records for tools on platform level
     README.md                          -> Entrypoint of the repository
@@ -108,7 +105,10 @@ cross-repository builds and detect integration issues early in the development c
     rust_coverage/                     -> Rust coverage configuration
     scripts/                           -> Internal tooling scripts (known_good management,
                                           workspace metadata generation, etc.)
+    score_releases/                    -> [:need:`wp__platform_sw_release_note`]
     showcases/                         -> S-CORE wide showcases deployed into images
+    verification_report/               -> Platform verification report (reporting all platform feature's verifications)
+                                          [:need:`wp__verification_platform_ver_report`]
     score_starter                      -> Launcher script to select and run an integration scenario
     tooling/                           -> Single point of interaction with all tooling artifacts
     MODULE.bazel                       -> Bazel module definition
