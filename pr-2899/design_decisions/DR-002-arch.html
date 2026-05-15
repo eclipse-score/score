@@ -606,7 +606,7 @@ SPDX-License-Identifier: Apache-2.0
 <ul class="simple">
 <li><p><strong>Date:</strong> 2026-05-15</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-c086e99d">
+<div class="need_container docutils container" id="SNCB-3dacaa81">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__arch__library_delivery_model">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -666,8 +666,8 @@ SPDX-License-Identifier: Apache-2.0
 <p>The update granularity question is therefore not merely a convenience concern but a <strong>deployment architecture decision</strong> that affects field serviceability, security response time, and total cost of ownership for OEMs.</p>
 </section>
 </section>
-<section id="options-considered">
-<h2>Options Considered<a class="headerlink" href="#options-considered" title="Link to this heading">#</a></h2>
+<section id="considerations">
+<h2>Considerations<a class="headerlink" href="#considerations" title="Link to this heading">#</a></h2>
 <section id="architectural-note-internal-composition-of-shared-libraries">
 <h3>Architectural Note: Internal Composition of Shared Libraries<a class="headerlink" href="#architectural-note-internal-composition-of-shared-libraries" title="Link to this heading">#</a></h3>
 <p>When a module (feature) is delivered as a shared library, this does <strong>not</strong> imply that every internal component of that module is itself a separate <code class="docutils literal notranslate"><span class="pre">.so</span></code>. The standard and recommended pattern is:</p>
@@ -1531,7 +1531,10 @@ Deployed: score_serialization.so v2.1
 </ul>
 </section>
 </section>
+</section>
 <hr class="docutils" />
+<section id="options-considered">
+<h2>Options Considered<a class="headerlink" href="#options-considered" title="Link to this heading">#</a></h2>
 <section id="option-1-static-libraries-only">
 <h3>Option 1: Static Libraries Only<a class="headerlink" href="#option-1-static-libraries-only" title="Link to this heading">#</a></h3>
 <p>All platform modules and features are delivered exclusively as static libraries (<code class="docutils literal notranslate"><span class="pre">.a</span></code> / <code class="docutils literal notranslate"><span class="pre">.rlib</span></code>). Consumers link all dependencies at build time into a single binary.</p>
@@ -2174,7 +2177,7 @@ Application B ─┬─→ score_comm ──────→ baselibs (containers
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#middleware-deployment-context">Middleware Deployment Context</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#options-considered">Options Considered</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#considerations">Considerations</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#architectural-note-internal-composition-of-shared-libraries">Architectural Note: Internal Composition of Shared Libraries</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#api-encapsulation-shared-library-vs-merged-static-library">API Encapsulation: Shared Library vs. Merged Static Library</a></li>
 </ul>
@@ -2214,6 +2217,9 @@ Application B ─┬─→ score_comm ──────→ baselibs (containers
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bazel-integration-for-multi-repo">Bazel Integration for Multi-Repo</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#options-considered">Options Considered</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-1-static-libraries-only">Option 1: Static Libraries Only</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages">Advantages</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#disadvantages">Disadvantages</a></li>
