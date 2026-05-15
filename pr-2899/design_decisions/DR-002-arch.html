@@ -606,7 +606,7 @@ SPDX-License-Identifier: Apache-2.0
 <ul class="simple">
 <li><p><strong>Date:</strong> 2026-05-15</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-eb15ae39">
+<div class="need_container docutils container" id="SNCB-c086e99d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__arch__library_delivery_model">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -658,7 +658,7 @@ SPDX-License-Identifier: Apache-2.0
 <h3>Middleware Deployment Context<a class="headerlink" href="#middleware-deployment-context" title="Link to this heading">#</a></h3>
 <p>S-CORE is a middleware platform. In a typical deployment, S-CORE serves as the shared foundation layer upon which <strong>multiple customer applications</strong> run on the same target hardware (ECU / high-performance compute unit). This has critical implications for the library delivery model:</p>
 <ul class="simple">
-<li><p><strong>Multiple consumers per target:</strong> A single ECU may host 5–20+ application binaries that all depend on S-CORE modules (e.g., communication, diagnostics, logging, execution management). The linking model determines whether each application carries its own copy of S-CORE code or shares a single instance.</p></li>
+<li><p><strong>Multiple consumers per target:</strong> A single ECU may host 5–20+ application binaries that all depend on S-CORE modules (e.g., communication, diagnostics, logging, execution management). The exact number is a downstream deployment decision outside S-CORE’s control, but the linking model determines whether each application carries its own copy of S-CORE code or shares a single instance.</p></li>
 <li><p><strong>Independent lifecycles:</strong> The middleware and the applications above it typically follow different release cadences. A security patch in S-CORE’s communication stack should ideally not require rebuilding and re-deploying all customer applications.</p></li>
 <li><p><strong>OTA update cost:</strong> In automotive deployments, OTA update bandwidth is constrained and update windows are limited. The ability to update the middleware layer independently of applications — or vice versa — directly affects update size, duration, and rollback complexity.</p></li>
 <li><p><strong>Variant management:</strong> Different vehicle lines or ECU configurations may use different subsets of S-CORE modules. The linking model affects how efficiently variants can be managed and updated.</p></li>
@@ -1974,15 +1974,107 @@ Deployed: score_serialization.so v2.1
 </section>
 <section id="criteria-for-opting-in-to-dynamic-delivery">
 <h3>Criteria for Opting In to Dynamic Delivery<a class="headerlink" href="#criteria-for-opting-in-to-dynamic-delivery" title="Link to this heading">#</a></h3>
-<p>A module should opt in to additionally provide a shared library if <strong>at least one</strong> of the following applies:</p>
+<p>The opt-in decision involves two distinct perspectives:</p>
+<section id="platform-perspective-s-core-decides">
+<h4>Platform Perspective (S-CORE decides)<a class="headerlink" href="#platform-perspective-s-core-decides" title="Link to this heading">#</a></h4>
+<p>As a platform provider, S-CORE does <strong>not</strong> know how many applications will consume a given module in any specific downstream deployment. The number of consumers (5, 10, 20+) is a deployment decision made by the OEM/integrator. Therefore, S-CORE’s opt-in criteria must be based on properties <strong>intrinsic to the module</strong>, not on assumed deployment topology:</p>
+<p>A module should opt in to <strong>additionally provide</strong> a shared library variant if <strong>at least one</strong> of the following applies:</p>
 <ul class="simple">
-<li><p>The module is used by 3+ application binaries on the same target and is large enough that RAM/flash duplication is significant.</p></li>
-<li><p>The module requires independent updateability (e.g., frequent security patches, regulatory-driven updates).</p></li>
-<li><p>The module is consumed cross-language (Rust ↔ C++) and benefits from runtime encapsulation of its language runtime.</p></li>
-<li><p>The module has LGPL-licensed transitive dependencies.</p></li>
-<li><p>The module implements a plugin or extension interface that requires runtime loading.</p></li>
+<li><p>The module is <strong>large in code size</strong> (e.g., communication stacks, serialization frameworks, crypto libraries) and is architecturally expected to be shared across applications — making RAM/flash duplication costly in typical middleware deployments.</p></li>
+<li><p>The module requires <strong>independent updateability</strong> (e.g., frequent security patches, regulatory-driven updates, rapid CVE response).</p></li>
+<li><p>The module is consumed <strong>cross-language</strong> (Rust ↔ C++) and benefits from runtime encapsulation of its language runtime.</p></li>
+<li><p>The module has <strong>LGPL-licensed transitive dependencies</strong>.</p></li>
+<li><p>The module implements a <strong>plugin or extension interface</strong> that requires runtime loading.</p></li>
 </ul>
 <p>The decision to opt in must be documented in the module’s architecture documentation and approved as part of the module’s design review.</p>
+</section>
+<section id="integrator-perspective-oem-customer-decides">
+<h4>Integrator Perspective (OEM/customer decides)<a class="headerlink" href="#integrator-perspective-oem-customer-decides" title="Link to this heading">#</a></h4>
+<p>The downstream integrator knows their actual deployment topology — how many applications run on the target, which modules they consume, and what their update and certification strategy is. For opted-in modules that provide both variants, the <strong>integrator decides which variant to use</strong> based on their specific deployment:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Integrator scenario</p></th>
+<th class="head text-center"><p>Recommended variant</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Single application on ECU</p></td>
+<td class="text-center"><p>Static — no sharing benefit, simpler safety case</p></td>
+</tr>
+<tr class="row-odd"><td><p>2–5 applications sharing the module</p></td>
+<td class="text-center"><p>Dynamic may be beneficial — evaluate RAM/flash savings vs. ABI management cost</p></td>
+</tr>
+<tr class="row-even"><td><p>5–20+ applications sharing the module</p></td>
+<td class="text-center"><p>Dynamic strongly recommended — significant memory/flash/update benefits</p></td>
+</tr>
+<tr class="row-odd"><td><p>Hard real-time single-purpose controller</p></td>
+<td class="text-center"><p>Static — maximum determinism, no dynamic linking overhead</p></td>
+</tr>
+<tr class="row-even"><td><p>High-performance compute with OTA requirements</p></td>
+<td class="text-center"><p>Dynamic — update granularity and memory sharing outweigh the overhead</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>S-CORE provides both variants for opted-in modules. The integrator’s deployment configuration (which variant to link) is outside S-CORE’s scope but should be documented in S-CORE’s integration guide with guidance for typical scenarios.</p>
+</section>
+</section>
+<section id="special-case-infrastructure-libraries-baselibs">
+<h3>Special Case: Infrastructure Libraries (baselibs)<a class="headerlink" href="#special-case-infrastructure-libraries-baselibs" title="Link to this heading">#</a></h3>
+<p>The S-CORE <a class="reference external" href="https://github.com/eclipse-score/baselibs">baselibs</a> module deserves special consideration. It provides foundational utilities (concurrency, containers, filesystem, serialization, OS abstraction, memory handling, error handling, etc.) that are consumed by <strong>virtually every other S-CORE module</strong> as well as by downstream applications. This creates a unique situation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Application A ─┬─→ score_comm ──────→ baselibs (containers, serialization, os)
+               ├─→ score_logging ───→ baselibs (json, filesystem)
+               └─→ score_diag ─────→ baselibs (result, utils)
+
+Application B ─┬─→ score_comm ──────→ baselibs (containers, serialization, os)
+               └─→ score_lifecycle ─→ baselibs (json)
+</pre></div>
+</div>
+<section id="the-decision-should-baselibs-be-delivered-as-a-shared-library">
+<h4>The Decision: Should baselibs Be Delivered as a Shared Library?<a class="headerlink" href="#the-decision-should-baselibs-be-delivered-as-a-shared-library" title="Link to this heading">#</a></h4>
+<p>This is <strong>not</strong> a straightforward opt-in case. The arguments differ from typical application-facing modules:</p>
+<p><strong>Arguments for delivering baselibs as shared library:</strong></p>
+<ul class="simple">
+<li><p><strong>Maximum deduplication:</strong> baselibs code appears in every module and every application. If all modules are static, baselibs code is duplicated N×M times (N applications × M modules). As a single <code class="docutils literal notranslate"><span class="pre">.so</span></code>, it exists once in RAM and flash.</p></li>
+<li><p><strong>Single point of update:</strong> A bug fix in <code class="docutils literal notranslate"><span class="pre">baselibs::containers</span></code> or a security patch in <code class="docutils literal notranslate"><span class="pre">baselibs::os</span></code> would be deployed once, effective for all modules and applications immediately.</p></li>
+</ul>
+<p><strong>Arguments against delivering baselibs as a shared library:</strong></p>
+<ul class="simple">
+<li><p><strong>Massive ABI surface:</strong> baselibs exposes many fine-grained utilities (containers, result types, language extensions). Stabilizing the ABI across all of these is extremely difficult — much harder than for a focused API like a communication stack.</p></li>
+<li><p><strong>Template-heavy / header-only code:</strong> Many baselibs components (containers, result types, <code class="docutils literal notranslate"><span class="pre">safecpp</span></code> language extensions) are likely template-heavy or header-only. These are compiled <strong>into the consumer</strong> at build time and cannot be shared via <code class="docutils literal notranslate"><span class="pre">.so</span></code> — they will be duplicated regardless of the linking model.</p></li>
+<li><p><strong>Tight coupling:</strong> Modules use baselibs types in their own APIs (e.g., returning <code class="docutils literal notranslate"><span class="pre">score::Result&lt;T&gt;</span></code>, accepting <code class="docutils literal notranslate"><span class="pre">score::DynamicArray&lt;T&gt;</span></code>). If baselibs were a separate <code class="docutils literal notranslate"><span class="pre">.so</span></code>, its types would cross library boundaries — requiring ABI stability for every type, not just for function signatures.</p></li>
+<li><p><strong>Fragile base class / type problem:</strong> A layout change in <code class="docutils literal notranslate"><span class="pre">score::DynamicArray</span></code> would break the ABI of <strong>every module</strong> that uses it in its interface. This makes the ABI contract transitively fragile.</p></li>
+</ul>
+</section>
+<section id="recommended-approach-for-baselibs">
+<h4>Recommended Approach for baselibs<a class="headerlink" href="#recommended-approach-for-baselibs" title="Link to this heading">#</a></h4>
+<p>Given the above analysis, baselibs should follow a <strong>differentiated strategy:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>baselibs component type</p></th>
+<th class="head text-center"><p>Delivery model</p></th>
+<th class="head"><p>Rationale</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Template / header-only</strong> (containers, result, language extensions, safecpp)</p></td>
+<td class="text-center"><p><strong>Static only</strong></p></td>
+<td><p>Cannot be shared via <code class="docutils literal notranslate"><span class="pre">.so</span></code> — templates are instantiated in the consumer. No benefit from dynamic linking.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Compiled utilities with stable C ABI</strong> (OS abstraction, filesystem, shared memory)</p></td>
+<td class="text-center"><p><strong>Opt-in for <code class="docutils literal notranslate"><span class="pre">.so</span></code></strong></p></td>
+<td><p>These have well-defined function-call APIs that can be stabilized. OS-level abstractions are natural candidates for shared delivery.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Serialization (flatbuffers, JSON)</strong></p></td>
+<td class="text-center"><p><strong>Case-by-case</strong></p></td>
+<td><p>If the API is C-ABI-friendly (opaque handles, C function calls), it can be shared. If the API exposes C++ templates or types, it must remain static.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Key insight:</strong> For a utility library like baselibs, the decision is not “the whole module is static or dynamic” but rather <strong>which sub-components can technically and practically be delivered as shared libraries.</strong> The architectural note on internal composition (see above) applies here: even if some baselibs components are delivered as <code class="docutils literal notranslate"><span class="pre">.so</span></code>, others will necessarily remain header-only/static and be compiled into each consumer.</p>
+<p><strong>Implication for other modules:</strong> When a module like <code class="docutils literal notranslate"><span class="pre">score_comm</span></code> is delivered as a <code class="docutils literal notranslate"><span class="pre">.so</span></code>, it <strong>statically links</strong> the baselibs components it uses internally. The baselibs types that appear in <code class="docutils literal notranslate"><span class="pre">score_comm</span></code>’s <strong>public API</strong> must be part of the ABI contract. This is another reason to minimize the use of complex baselibs types (templates, containers) in public module APIs and prefer simple C-ABI-compatible types at the shared library boundary.</p>
+</section>
 </section>
 <section id="mandatory-requirements-for-opted-in-modules">
 <h3>Mandatory Requirements for Opted-In Modules<a class="headerlink" href="#mandatory-requirements-for-opted-in-modules" title="Link to this heading">#</a></h3>
@@ -2159,7 +2251,16 @@ Deployed: score_serialization.so v2.1
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-proposal">Decision Proposal</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale">Rationale</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#criteria-for-opting-in-to-dynamic-delivery">Criteria for Opting In to Dynamic Delivery</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#criteria-for-opting-in-to-dynamic-delivery">Criteria for Opting In to Dynamic Delivery</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#platform-perspective-s-core-decides">Platform Perspective (S-CORE decides)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integrator-perspective-oem-customer-decides">Integrator Perspective (OEM/customer decides)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#special-case-infrastructure-libraries-baselibs">Special Case: Infrastructure Libraries (baselibs)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-decision-should-baselibs-be-delivered-as-a-shared-library">The Decision: Should baselibs Be Delivered as a Shared Library?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-approach-for-baselibs">Recommended Approach for baselibs</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mandatory-requirements-for-opted-in-modules">Mandatory Requirements for Opted-In Modules</a></li>
 </ul>
 </li>
