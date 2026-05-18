@@ -13,7 +13,7 @@
 DR-008-Infra: Generating documentation sources via Bazel
 ========================================================
 
-- **Date:** 2026-05-13
+- **Date:** 2026-05-18
 
 .. dec_rec:: Generating documentation sources via Bazel
    :id: dec_rec__infra__docs_src_dir
@@ -61,11 +61,14 @@ It is not compatible with the docs-as-code live preview as of now.
 `Another exploration by Useblocks <https://github.com/useblocks/bazel-drives-sphinx/tree/main>`_
 is available but does not cover live preview either.
 
+We want dashboards generated automatically to be included in the documentation.
+See `infrastructure discussion 2026-05-18 <https://github.com/orgs/eclipse-score/discussions/236#discussioncomment-16906461>`_.
+
 Goals
 ^^^^^
 
-- **Effort**: Minimise one-time implementation and ongoing maintenance cost.
 - **Flexibility**: Minimise the effort for potential future extensions.
+- **Effort**: Minimise one-time implementation and ongoing maintenance cost.
 - **Speed**: Minimise the build time for documentation builds, especially for live preview.
 - **UX**: Minimize efforts necessary to documentation work.
 
