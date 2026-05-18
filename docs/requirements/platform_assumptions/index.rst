@@ -299,6 +299,19 @@ In this section assumptions are described which need to be fulfilled by the appl
    Note: For many errors detected by SW-platform elements there could be mitigation actions to be applied by the user application.
    So the SW-platform reports the errors to the user application and does not stop execution as a standard reaction. See :need:`stkh_req__dependability__safe_state`.
 
+.. aou_req:: Success Expected
+   :id: aou_req__platform__success_expected
+   :reqtype: Functional
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+   :tags: user
+
+   Safety applications using the SW-platform shall read the return from the S-CORE functions (if those provide such return)
+   and perform an appropriate error reaction if the return does not indicate a "success".
+
+   Note: See also similar requirement :need:`aou_req__platform__error_reaction`
+
 .. aou_req:: No mixed ASIL
    :id: aou_req__platform__no_mixed_asil
    :reqtype: Functional
