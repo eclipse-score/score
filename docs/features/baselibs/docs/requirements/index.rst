@@ -166,5 +166,15 @@ Requirements
 
    The base libraries shall provide a library for parallel execution of C++ callables with thread pool management.
 
+.. feat_req:: OS Abstraction Library
+   :id: feat_req__baselibs__os_library
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :satisfies: stkh_req__functional_req__base_libraries
+   :status: valid
+
+   The base libraries shall provide an operating system abstraction library that offers idiomatic interfaces for operating system functionality across supported platforms.
+
 .. needextend:: "__baselibs" in id
    :+tags: baselibs
