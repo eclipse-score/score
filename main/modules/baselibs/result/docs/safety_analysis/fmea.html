@@ -634,7 +634,7 @@
                   
   <section id="fmea-failure-modes-and-effects-analysis">
 <h1>FMEA (Failure Modes and Effects Analysis)<a class="headerlink" href="#fmea-failure-modes-and-effects-analysis" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-4183d8db">
+<div class="need_container docutils container" id="SNCB-2c144cf2">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__result_fmea">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -642,7 +642,7 @@
 </div>
 </td>
 <td class="head_center" colspan="2"><div class="needs_head line-block">
-<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">draft</span></span></span></div>
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
 <div class="line"><span><span class="needs_security"><span class="needs_label">security: </span><span class="needs_data">NO</span></span></span></div>
 <div class="line"><span><span class="needs_safety"><span class="needs_label">safety: </span><span class="needs_data">ASIL_B</span></span></span></div>
 </div>
@@ -676,34 +676,299 @@
 </table>
 </div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Use the content of the document to describe e.g. why a fault model is not applicable for the diagram.</p>
-</div>
 <section id="failure-mode-list">
 <h2>Failure Mode List<a class="headerlink" href="#failure-mode-list" title="Link to this heading">#</a></h2>
-<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">comp_saf_fmea</span><span class="p">::</span> <span class="nt">&lt;Title&gt;</span>
-   <span class="nc">:violates:</span> <span class="nt">&lt;Component architecture&gt;</span>
-   <span class="nc">:id:</span> comp_saf_fmea__&lt;Component&gt;__&lt;Element descriptor&gt;
-   <span class="nc">:fault_id:</span> <span class="nt">&lt;ID from fault model :need:`gd_guidl__fault_models`&gt;</span>
-   <span class="nc">:failure_effect:</span> &quot;description of failure effect of the fault model on the element&quot;
-   <span class="nc">:mitigated_by:</span> <span class="nt">&lt;ID from Component Requirement | ID from AoU Component Requirement&gt;</span>
-   <span class="nc">:mitigation_issue:</span> <span class="nt">&lt;ID from Issue Tracker&gt;</span>
-   <span class="nc">:sufficient:</span> <span class="nt">&lt;yes|no&gt;</span>
-   <span class="nc">:status:</span> <span class="nt">&lt;valid|invalid&gt;</span>
-</pre></div>
+<dl>
+<dt>Fault Models for sequence diagrams</dt><dd><div class="pst-scrollable-table-container"><table class="table" id="id1">
+<caption><span class="caption-number">Table 55 </span><span class="caption-text">Fault Models for sequence diagrams
+ :header-rows: 1
+ :widths: 10,20,10,20</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>ID</p></td>
+<td><p>Failure Mode</p></td>
+<td><p>Applicability</p></td>
+<td><p>Rationale</p></td>
+</tr>
+<tr class="row-even"><td><p>MF_01_01</p></td>
+<td><p>message is not received (is a subset/more precise description of MF_01_05)</p></td>
+<td><p>no</p></td>
+<td><p>If set result was not received before the get value/error are called, this will lead to an exception/terminate. In case of the get value user defined defaults are provided.</p></td>
+</tr>
+<tr class="row-odd"><td><p>MF_01_02</p></td>
+<td><p>message received too late (only relevant if delay is a realistic fault)</p></td>
+<td><p>no</p></td>
+<td><p>Do not see this as a problem for result lib, would lead to the same consideration as in MF_01_01</p></td>
+</tr>
+<tr class="row-even"><td><p>MF_01_03</p></td>
+<td><p>message received too early (usually not a problem)</p></td>
+<td><p>no</p></td>
+<td><p>No problem for result lib</p></td>
+</tr>
+<tr class="row-odd"><td><p>MF_01_04</p></td>
+<td><p>message not received correctly by all recipients (different messages or messages partly lost). Only relevant if the same message goes to multiple recipients.</p></td>
+<td><p>no</p></td>
+<td><p>No multiple recipients (maybe from different threads?)</p></td>
+</tr>
+<tr class="row-even"><td><p>MF_01_05</p></td>
+<td><p>message is corrupted</p></td>
+<td><p>yes</p></td>
+<td><p>The error message carried within the error object does not own the underlying data. If the data source is destroyed before the error message is accessed by the user, the message reference becomes invalid (see <a class="reference internal" href="#comp_saf_fmea__result__error_message_life" title="comp_saf_fmea__result__error_message_life"><em class="xref need">Result Error Message Lifeti... (comp_saf_fmea__result__error_message_life)</em></a>).</p></td>
+</tr>
+<tr class="row-odd"><td><p>MF_01_06</p></td>
+<td><p>message is not sent</p></td>
+<td><p>yes</p></td>
+<td><p>Value or error are not returned - see <a class="reference internal" href="#comp_saf_fmea__result__unchecked" title="comp_saf_fmea__result__unchecked"><em class="xref need">Result Unchecked Value or E... (comp_saf_fmea__result__unchecked)</em></a></p></td>
+</tr>
+<tr class="row-even"><td><p>MF_01_07</p></td>
+<td><p>message is unintended sent</p></td>
+<td><p>no</p></td>
+<td><p>not applicable for a library</p></td>
+</tr>
+<tr class="row-odd"><td><p>CO_01_01</p></td>
+<td><p>minimum constraint boundary is violated</p></td>
+<td><p>yes</p></td>
+<td><p>The error code returned is not bound to a specific error domain at the type level. A user may interpret the code against the wrong domain, violating the constraint that error codes are only meaningful within their originating domain (see <a class="reference internal" href="#comp_saf_fmea__result__error_code" title="comp_saf_fmea__result__error_code"><em class="xref need">Result Error Code Cross-Dom... (comp_saf_fmea__result__error_code)</em></a>).</p></td>
+</tr>
+<tr class="row-even"><td><p>CO_01_02</p></td>
+<td><p>maximum constraint boundary is violated</p></td>
+<td><p>yes</p></td>
+<td><p>same as above</p></td>
+</tr>
+<tr class="row-odd"><td><p>EX_01_01</p></td>
+<td><p>Process calculates wrong result(s) (is a subset/more precise description of MF_01_05 or MF_01_04). This failure mode is related to the analysis if e.g. internal safety mechanisms are required (level 2 function, plausibility check of the output, …) because of the size / complexity of the feature.</p></td>
+<td><p>no</p></td>
+<td><p>Due to low complexity of the component this error is completely eliminated by testing. Low complex architecture according to criteria in <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/architecture_design/guidance/architecture_inspection_checklist.html#gd_chklst__arch_inspection_checklist">gd_chklst__arch_inspection_checklist</a> ARC_03_03 and design complexity below numbers as in <a class="external_link reference external" href="https://eclipse-score.github.io/process_description//main/process_areas/implementation/guidance/implementation_process_reqs.html#gd_req__impl_complexity_analysis">gd_req__impl_complexity_analysis</a></p></td>
+</tr>
+<tr class="row-even"><td><p>EX_01_02</p></td>
+<td><p>processing too slow (only relevant if timing is considered)</p></td>
+<td><p>no</p></td>
+<td><p>Due to the small functionality, being too slow is no likely issue.</p></td>
+</tr>
+<tr class="row-odd"><td><p>EX_01_03</p></td>
+<td><p>processing too fast (only relevant if timing is considered)</p></td>
+<td><p>no</p></td>
+<td><p>Get functions only deliver data when called, no “too fast” is possible.</p></td>
+</tr>
+<tr class="row-even"><td><p>EX_01_04</p></td>
+<td><p>loss of execution</p></td>
+<td><p>yes</p></td>
+<td><p>Loss of execution leads to the same error as MF_01_06</p></td>
+</tr>
+<tr class="row-odd"><td><p>EX_01_05</p></td>
+<td><p>processing changes to arbitrary process</p></td>
+<td><p>no</p></td>
+<td><p>Not a problem of result lib as this is a library and not a process</p></td>
+</tr>
+<tr class="row-even"><td><p>EX_01_06</p></td>
+<td><p>processing is not complete (infinite loop)</p></td>
+<td><p>yes</p></td>
+<td><p>The Result library accepts user-provided operations for value and error transformation. If such an operation does not complete, the calling execution is halted (see <a class="reference internal" href="#comp_saf_fmea__result__stop_user" title="comp_saf_fmea__result__stop_user"><em class="xref need">Result Stop User (comp_saf_fmea__result__stop_user)</em></a>).</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>argument is inside the ‘content’. Therefore content is mandatory</p>
+</dd>
+</dl>
+</section>
+<section id="fmea">
+<h2>FMEA<a class="headerlink" href="#fmea" title="Link to this heading">#</a></h2>
+<p>For all identified applicable failure initiators, the FMEA is performed in the following section.</p>
+<div class="need_container docutils container" id="SNCB-ded1e26e">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_saf_fmea table" id="comp_saf_fmea__result__error_code">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Result Error Code Cross-Domain Misinterpretation</span></span></span></div>
 </div>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>The above directive must be updated according to your component FMEA.</p>
-<ul class="simple">
-<li><p>The above “code-block” directive must be updated</p></li>
-<li><p>Fill in all the needed information in the &lt;brackets&gt;</p></li>
-</ul>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span><span class="needs_spacer">, </span><span class="needs_data">result_lib</span></span></span></div>
+<div class="line"><span class="needs_failure_effect"><span class="needs_label">failure_effect: </span><span class="needs_data">When retrieving error information, the error code is returned as a domain-agnostic integer. If the user interprets this code under a different error domain than the one that produced it, the error is misidentified, potentially leading to incorrect error reaction.</span></span></div>
+<div class="line"><span class="needs_fault_id"><span class="needs_label">fault_id: </span><span class="needs_data">CO_01_01</span></span></div>
+<div class="line"><span class="needs_mitigation_issue"><span class="needs_label">mitigation_issue: </span><span class="needs_data">https://github.com/eclipse-score/score/issues/2880</span></span></div>
+<div class="line"><span class="needs_sufficient"><span class="needs_label">sufficient: </span><span class="needs_data">no</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">violates: <span class="violates"><span><a class="reference internal" href="../architecture/index.html#comp_arc_dyn__baselibs__result" title="comp_saf_fmea__result__error_code">comp_arc_dyn__baselibs__result</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>If the user relies on the error code not only for diagnostic purposes but for selecting an error reaction path,
+misinterpreting the code under a wrong domain could lead to an incorrect safety-relevant decision.
+An Assumption of Use shall ensure the user verifies the error domain before interpreting the error code.</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#comp_saf_fmea__result__error_code" title="comp_saf_fmea__result__error_code">comp_saf_fmea__result__error_code</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component FMEA (Failure Mode and Effects Analysis)</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-e1945128">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_saf_fmea table" id="comp_saf_fmea__result__error_message_life">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Result Error Message Lifetime Violation</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span><span class="needs_spacer">, </span><span class="needs_data">result_lib</span></span></span></div>
+<div class="line"><span class="needs_failure_effect"><span class="needs_label">failure_effect: </span><span class="needs_data">The error message provided during error construction is stored as a non-owning reference. If the referenced data is no longer valid when the user retrieves the error message, accessing it results in undefined behavior.</span></span></div>
+<div class="line"><span class="needs_fault_id"><span class="needs_label">fault_id: </span><span class="needs_data">MF_01_05</span></span></div>
+<div class="line"><span class="needs_mitigation_issue"><span class="needs_label">mitigation_issue: </span><span class="needs_data">https://github.com/eclipse-score/score/issues/2880</span></span></div>
+<div class="line"><span class="needs_sufficient"><span class="needs_label">sufficient: </span><span class="needs_data">no</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">mitigated_by: <span class="mitigated_by"><span><a class="reference internal" href="../requirements/index.html#aou_req__result__resource_lifetime" title="comp_saf_fmea__result__error_message_life">aou_req__result__resource_lifetime</a></span></span></div>
+<div class="line">violates: <span class="violates"><span><a class="reference internal" href="../architecture/index.html#comp_arc_dyn__baselibs__result" title="comp_saf_fmea__result__error_message_life">comp_arc_dyn__baselibs__result</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The existing Assumption of Use for resource lifetime addresses the validity of error domain objects
+and referenced resources. However, it does not explicitly cover the user-provided error message,
+which is equally subject to lifetime constraints. The AoU should be extended to explicitly include the error message data,
+or a separate AoU should be established for it.</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#comp_saf_fmea__result__error_message_life" title="comp_saf_fmea__result__error_message_life">comp_saf_fmea__result__error_message_life</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component FMEA (Failure Mode and Effects Analysis)</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-63f31680">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_saf_fmea table" id="comp_saf_fmea__result__unchecked">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Result Unchecked Value or Error Access</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span><span class="needs_spacer">, </span><span class="needs_data">result_lib</span></span></span></div>
+<div class="line"><span class="needs_failure_effect"><span class="needs_label">failure_effect: </span><span class="needs_data">If the user calls value without the result containing a value, or calls error without the result containing an error, the program will terminate. This may occur when the user does not check the state of the result before accessing it.</span></span></div>
+<div class="line"><span class="needs_fault_id"><span class="needs_label">fault_id: </span><span class="needs_data">MF_01_06</span></span></div>
+<div class="line"><span class="needs_sufficient"><span class="needs_label">sufficient: </span><span class="needs_data">yes</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">mitigated_by: <span class="mitigated_by"><span><a class="reference internal" href="../requirements/index.html#aou_req__result__value_handling" title="comp_saf_fmea__result__unchecked">aou_req__result__value_handling</a>, <a class="reference internal" href="../requirements/index.html#aou_req__result__error_reaction" title="comp_saf_fmea__result__unchecked">aou_req__result__error_reaction</a></span></span></div>
+<div class="line">violates: <span class="violates"><span><a class="reference internal" href="../architecture/index.html#comp_arc_dyn__baselibs__result" title="comp_saf_fmea__result__unchecked">comp_arc_dyn__baselibs__result</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>If the user accesses the value or the error without first verifying the state of the result,
+the program will deterministically terminate. The provided Assumptions of Use require the user to check and handle both states before access.</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#comp_saf_fmea__result__unchecked" title="comp_saf_fmea__result__unchecked">comp_saf_fmea__result__unchecked</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component FMEA (Failure Mode and Effects Analysis)</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="need_container docutils container" id="SNCB-510b9ea5">
+<div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_saf_fmea table" id="comp_saf_fmea__result__stop_user">
+<tbody>
+<tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
+<div class="line"><span><span class="needs_title"><span class="needs_data">Result Stop User</span></span></span></div>
+</div>
+</td>
+<td class="head_center" colspan="2"><div class="needs_head line-block">
+<div class="line"><span><span class="needs_status"><span class="needs_label">status: </span><span class="needs_data">valid</span></span></span></div>
+<div class="line"><span></span></div>
+<div class="line"><span></span></div>
+</div>
+</td>
+<td class="head_right" colspan="2"><div class="needs_head_right line-block">
+<div class="line"><span><span class="needs needs_collapse" id="target__show__meta"><span class="needs collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="8 12 12 16 16 12"></polyline><line x1="12" y1="8" x2="12" y2="16"></line></svg></span><span class="needs visible collapse_is_hidden"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg></span></span></span></div>
+</div>
+</td>
+</tr>
+<tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
+<div class="line"><span><span><div class="line"><span class="needs_tags"><span class="needs_label">tags: </span><span class="needs_data_container"><span class="needs_data">baselibs</span><span class="needs_spacer">, </span><span class="needs_data">result_lib</span></span></span></div>
+<div class="line"><span class="needs_failure_effect"><span class="needs_label">failure_effect: </span><span class="needs_data">The user provides a transformation or error handling operation to the Result library. If this operation does not terminate (e.g., infinite loop), the calling execution is blocked indefinitely.</span></span></div>
+<div class="line"><span class="needs_fault_id"><span class="needs_label">fault_id: </span><span class="needs_data">EX_01_06</span></span></div>
+<div class="line"><span class="needs_sufficient"><span class="needs_label">sufficient: </span><span class="needs_data">yes</span></span></div>
+</span></span></div>
+<div class="line"><span><div class="line">mitigated_by: <span class="mitigated_by"><span><a class="reference internal" href="../../../../../requirements/platform_assumptions/index.html#aou_req__platform__flow_monitoring" title="comp_saf_fmea__result__stop_user">aou_req__platform__flow_monitoring</a></span></span></div>
+<div class="line">violates: <span class="violates"><span><a class="reference internal" href="../architecture/index.html#comp_arc_dyn__baselibs__result" title="comp_saf_fmea__result__stop_user">comp_arc_dyn__baselibs__result</a></span></span></div>
+</span></div>
+</div>
+</td>
+<td class="meta" colspan="3"></td>
+</tr>
+<tr class="content row-odd"><td class="content" colspan="6"><p>The Result library invokes user-provided operations synchronously during transformation of values or errors.
+Ensuring these operations terminate is outside the scope of the library and is the responsibility of the user via program flow monitoring,
+as covered by the referenced platform-level Assumption of Use.</p></td>
+</tr>
+<tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
+<div class="line"><span><span class="needs-id"><a class="reference internal" href="#comp_saf_fmea__result__stop_user" title="comp_saf_fmea__result__stop_user">comp_saf_fmea__result__stop_user</a></span></span></div>
+</div>
+</td>
+<td class="footer" colspan="2"><div class="needs_footer line-block">
+<div class="line"><span><span class="needs_type_name"><span class="needs_data">Component FMEA (Failure Mode and Effects Analysis)</span></span></span></div>
+</div>
+</td>
+<td class="footer_right" colspan="2"></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </section>
 </section>
@@ -756,6 +1021,7 @@
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#failure-mode-list">Failure Mode List</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fmea">FMEA</a></li>
 </ul>
   </nav></div>
 
