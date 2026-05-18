@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2026 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -12,14 +12,10 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
+.. _technology_overview:
+
 Overview of technologies
 ===========================
-
-.. toctree::
-   :maxdepth: 1
-   :glob:
-
-.. _technology_overview:
 
 S-CORE Tooling
 ----------------
@@ -28,7 +24,7 @@ experience and enables efficient collaboration across contributors with differen
 The following sections give an overview of the key technologies, followed by detailed explanations
 of each tool and process step.
 
-.. image:: ../_assets/score_tooling.svg
+.. image:: ../_assets/score_tooling.drawio.svg
    :alt: Score tooling
    :align: center
 
@@ -38,7 +34,7 @@ Bazel and repo structure
 The whole Eclipse S-CORE project is built on the `bazel <https://bazel.build/>`_ build system.
 Almost all automated steps – such as requirement validation, documentation generation,
 sourcecode compilation, unit execution, and integration tests – are executed through Bazel targets.
-The CI/CD pipeline is the only major exception. 
+The CI/CD pipeline is the only major exception.
 
 Bazel provides **hermetic** and **reproducible** builds,
 which are important for software developed for Functional Safety.
@@ -49,13 +45,13 @@ Bazel can be extended using
 S-CORE also makes strong use of `bazel modules <https://bazel.build/external/module>`_.
 The project consists of multiple repositories,
 each implementing a specific piece of functionality. The modular approach improves reuse because
-independent modules can be integrated into different projects more easily than a single monolithic repository. 
+independent modules can be integrated into different projects more easily than a single monolithic repository.
 
-However, modularity introduces organizational and technical challenges: 
+However, modularity introduces organizational and technical challenges:
 
 - Each module is maintained by a dedicated team, which increases coordination needs.
   Please have a look on the `project management plan <https://eclipse-score.github.io/score/main/platform_management_plan/project_management.html>`_
-  for more details regarding S-CORE´s organizational structure. 
+  for more details regarding S-CORE´s organizational structure.
 
 Technical integration and dependency management require clear processes.
 Eclipse S-CORE´s approach for technical integration is described in the :ref:`integration process <integration_process>`.
@@ -82,7 +78,7 @@ for automation and for executing all CI/CD checks.
    :align: center
 
 
-Sphinx/Sphinx-needs and Documentation 
+Sphinx/Sphinx-needs and Documentation
 --------------------------------------
 Eclipse S-CORE uses **Sphinx** and **sphinx-needs** for documentation, including:
 
@@ -119,20 +115,20 @@ C/C++ remain the main languages due to their current maturity and industry accep
 Testing
 --------
 S-CORE distinguishes between **three test levels: “unit-testing”,
-“component testing”** and **“feature integration testing”**. 
+“component testing”** and **“feature integration testing”**.
 
 1. **Unit testing**
- 
-   - Depends on used programming languages, e.g., in case of C++ we rely on **“gtest/gmock”**. 
+
+   - Depends on used programming languages, e.g., in case of C++ we rely on **“gtest/gmock”**.
 
 2. **Component testing**
- 
-   - Framework and documentation are available in the `testing tools repo <https://github.com/eclipse-score/testing_tools>`_. 
 
-3. **Feature integration testing** 
+   - Framework and documentation are available in the `testing tools repo <https://github.com/eclipse-score/testing_tools>`_.
+
+3. **Feature integration testing**
 
    - Conducted using the framework **“ITF”** (Integration Testing Framework),
-     which is part of the Eclipse S-CORE project. 
+     which is part of the Eclipse S-CORE project.
    - Documentation is available in the `README.md file <https://github.com/eclipse-score/itf>`_.
 
 For more details, refer to our `verification concept <https://eclipse-score.github.io/process_description/main/process_areas/verification/index.html#>`_.

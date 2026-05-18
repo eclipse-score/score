@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2026 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -14,10 +14,6 @@
 
 Software Architecture Overview
 ================================
-
-.. toctree::
-   :maxdepth: 1
-   :glob:
 
 Please note that the Eclipse S-CORE´s software architecture is continuously refined and will evolve in future releases.
 
