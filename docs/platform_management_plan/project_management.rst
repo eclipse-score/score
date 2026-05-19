@@ -99,6 +99,7 @@ Each *Community* has a *Community Lead* to organize the community`s work.
 
 - `MCM - Marketing and Communication Community <https://github.com/orgs/eclipse-score/discussions/106>`_
 
+.. _pmp_pm_feature_teams:
 
 Feature Teams
 ^^^^^^^^^^^^^
@@ -226,9 +227,9 @@ Iteration
 """""""""
 The Project calendar is divided into iterations. Each iteration is two weeks long.
 
-Release Frequence
+Release Frequency
 """""""""""""""""
-After every 4th iteration, the work is baselined into a Release.
+After every 4th iteration, the work is released and baseline is created.
 
 
 Planning & Tracking Infrastructure
@@ -395,7 +396,7 @@ a Release or a Process Audit, etc.
 
 Releases
 ^^^^^^^^
-*Releases* are special milestones and used for baselining of the development activities.
+*Releases* are special milestones and used to baseline the development activities.
 
 .. _pmp_pm_gh_labels:
 
@@ -444,7 +445,7 @@ The `GitHub Table <https://docs.github.com/en/issues/planning-and-tracking-with-
 
 Roadmap View
 """"""""""""
-The `GitHub Roadmap <https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/customizing-the-roadmap-layout>`_ is supporting the Road View, provididing a high-level visualization of your project across a configurable timespan.
+The `GitHub Roadmap <https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/customizing-the-roadmap-layout>`_ is supporting the Road View, providing a high-level visualization of your project across a configurable time span.
 
 Traceability
 ^^^^^^^^^^^^
