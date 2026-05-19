@@ -148,10 +148,10 @@ release, as part of the Tool Verification Report.
    * - 2a-1
      - clang-tidy
      - Static analysis for C++, used with Clang compiler
-     - 19.x (see [1]_)
+     - 19.1.1 (see [1]_)
      - YES
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - :need:`doc_tool__clang_tidy`
      - YES
    * - 2a-2
      - clang-analyzer
