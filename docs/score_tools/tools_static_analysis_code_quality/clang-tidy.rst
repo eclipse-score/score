@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2025 Contributors to the Eclipse Foundation
+   # Copyright (c) 2026 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -35,8 +35,7 @@ Therefore, the safety and security impact of Clang-Tidy is "NO".
 
 Inputs and outputs
 ~~~~~~~~~~~~~~~~~~
-
-| Inputs: Software sources (C/C++), Configuration files (e.g., .clang-tidy-*)
+| Inputs: Software sources (C/C++), Configuration files (e.g., .clang-tidy-\*)
 | Outputs: Analysis report, Logs
 
 .. figure:: _assets/clang-tidy.drawio.svg
@@ -51,9 +50,9 @@ Available information
 
 - Version: 19.1.1 [1]_
 - Official repository: https://github.com/llvm/llvm-project
-- Official documentation: https://clang.llvm.org/extra/clang-tidy/
+- Official documentation: https://clang.llvm.org/extra/clang-tidy
 - Bazel Aspect Rules Lint: https://github.com/aspect-build/rules_lint
-- LLVM Releases: https://releases.llvm.org/
+- LLVM Releases: https://releases.llvm.org
 
 Installation and integration
 ----------------------------
