@@ -97,7 +97,7 @@ Each *Community* has a *Community Lead* to organize the community`s work.
 
 .. _pmp_pm_mcm:
 
-- `MCM - Marketing and Communication Community <https://github.com/orgs/eclipse-score/discussions/106>`_
+- `MCM - Marketing and Communication Community <https://github.com/orgs/eclipse-score/discussions/429>`_
 
 .. _pmp_pm_feature_teams:
 
