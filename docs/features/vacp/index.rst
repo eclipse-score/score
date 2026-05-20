@@ -134,7 +134,7 @@ Context must be timestamped and validated to ensure consistency across collabora
 Requirements
 ____________
 
-See :ref:`vacp_requirements` for the list of feature requirements derived from this specification.
+See :doc:`requirements/index` for the list of feature requirements derived from this specification.
 
 
 Backwards Compatibility
