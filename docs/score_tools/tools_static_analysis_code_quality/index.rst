@@ -31,3 +31,5 @@ Static Analysis & Code Quality Tools Overview
 
    clippy
    rustfmt
+
+   clang-format

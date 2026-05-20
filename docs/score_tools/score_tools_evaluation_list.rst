@@ -164,10 +164,10 @@ release, as part of the Tool Verification Report.
    * - 2a-3
      - clang-format
      - Code formatter (linter) from LLVM project
-     - 19.x (see [1]_)
+     - 19.1.1 (see [1]_)
      - YES
      - :need:`rl__infrastructure_tooling_community`
-     - N/A
+     - :need:`doc_tool__clang_format`
      - YES
    * - 2a-4
      - CodeQL
