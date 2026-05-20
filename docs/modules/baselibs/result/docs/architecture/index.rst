@@ -59,6 +59,19 @@ Static Architecture
 
       {{ draw_component(need(), needs) }}
 
+Dynamic Architecture
+--------------------
+
+.. comp_arc_dyn:: Result Dynamic view
+   :id: comp_arc_dyn__baselibs__result
+   :security: YES
+   :safety:  ASIL_B
+   :status: valid
+   :fulfils: comp_req__result__error_handling, comp_req__result__set_result, comp_req__result__domain_error_information, comp_req__result__type_safety, comp_req__result__std_integration, comp_req__result__deterministic_behavior, comp_req__result__exception_free_operation
+   :belongs_to: comp__baselibs_result
+
+   No need for sequence diagram. Simple caller callee flow.
+
 Interfaces
 ----------
 
