@@ -45,6 +45,7 @@
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/modern.css?v=803738c0" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/css/score.css?v=6e51530f" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/score_local.css" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../../../../_static/scripts/fontawesome.js?digest=7f76b32a3354e82990f2"></script>
@@ -244,7 +245,7 @@
 
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../../../handbook/index.html">
-    Handbook
+    User’s Guide
   </a>
 </li>
 
@@ -439,7 +440,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../../handbook/index.html">
-    Handbook
+    User’s Guide
   </a>
 </li>
 
@@ -610,7 +611,7 @@
 <span id="com-static-architecture"></span><h2>Static Architecture<a class="headerlink" href="#static-architecture" title="Link to this heading">#</a></h2>
 <p>As discussed in <a class="reference internal" href="../../index.html#com-rationale"><span class="std std-ref">Rationale</span></a>, the overall architecture of the communication framework must be layered. This is required, to separate the frontend from the underlying communication mechanisms (also called bindings).</p>
 <p>This ensures a stable public API, independent of the underlying binding(s). At the same time, the communication framework can support many different communication protocols in a flexible manner.</p>
-<div class="need_container docutils container" id="SNCB-15390825">
+<div class="need_container docutils container" id="SNCB-f474c0d1">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat table" id="feat__com_communication">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -654,7 +655,7 @@
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-cafb1e8b">
+<div class="need_container docutils container" id="SNCB-f226880f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_feat_arc_sta table" id="feat_arc_sta__com__communication">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -684,7 +685,7 @@
 <td class="meta" colspan="3"></td>
 </tr>
 <tr class="content row-odd"><td class="content" colspan="6"><p class="plantuml" id="needarch-features/communication/docs/architecture/index-0">
-<object data="../../../../_images/plantuml-756161c73801366b8141e08c78244f552b35bb88.svg" type="image/svg+xml" style="width:1079px;height:1009px;background:#FFFFFF;"></object></p>
+<object data="../../../../_images/plantuml-c8cdb2a5ea43365d78e78892d055e2d27c9b5a69.svg" type="image/svg+xml" style="width:1110px;height:1009px;background:#FFFFFF;"></object></p>
 </td>
 </tr>
 <tr class="footer row-even"><td class="footer_left" colspan="2"><div class="needs_footer_left line-block">
@@ -735,7 +736,7 @@ This is the case when:</p>
 <section id="interface-description">
 <h3>Interface Description<a class="headerlink" href="#interface-description" title="Link to this heading">#</a></h3>
 <p>The public API for the frontend is defined as:</p>
-<div class="need_container docutils container" id="SNCB-c67557a5">
+<div class="need_container docutils container" id="SNCB-036166a8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_logic_arc_int table" id="logic_arc_int__communication__user">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
