@@ -22,7 +22,8 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :status: draft
+   :satisfies: stkh_req__overall_goals__enable_cooperation
+   :status: valid
 
    The platform shall provide a mechanism to establish an unambiguous, self-contained, and verifiable
    user intention, supporting various input modalities including natural language, deterministic UI
@@ -33,7 +34,8 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :status: draft
+   :satisfies: stkh_req__overall_goals__enable_cooperation
+   :status: valid
 
    The Vehicle Coordination Agent (VCA) shall create a fulfillment plan for an established intention,
    defining the sequence and assignment of actions across collaborating agents, including fallback
@@ -45,7 +47,8 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :status: draft
+   :satisfies: stkh_req__overall_goals__enable_cooperation
+   :status: valid
 
    The platform shall provide a transport-agnostic mechanism for the VCA to discover capabilities
    offered by vehicle on-board and infrastructure-based agents, supporting broadcast, registry-based,
@@ -56,7 +59,8 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :status: draft
+   :satisfies: stkh_req__overall_goals__enable_cooperation
+   :status: valid
 
    The platform shall allow agents to respond to capability requests with offers describing functional
    and non-functional attributes, and shall enable the VCA to evaluate offers based on availability,
@@ -67,7 +71,8 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :status: draft
+   :satisfies: stkh_req__overall_goals__enable_cooperation
+   :status: valid
 
    The VCA shall coordinate execution of the fulfillment plan across the assigned agents, monitor
    execution progress, detect faults or deviations, and trigger contingency plans as required.
@@ -77,7 +82,8 @@ Requirements
    :reqtype: Non-Functional
    :security: NO
    :safety: ASIL_B
-   :status: draft
+   :satisfies: stkh_req__ai_platform__runtime_determinism
+   :status: valid
 
    Fulfillment plans designated as safety-relevant shall be executable in a deterministic and
    reproducible manner to support safety analysis.
@@ -87,7 +93,8 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :status: draft
+   :satisfies: stkh_req__dependability__safe_state
+   :status: valid
 
    The protocol shall provide approval and intervention checkpoints that require explicit human
    confirmation for safety-critical actions, and shall allow humans to override or abort an
@@ -98,7 +105,8 @@ Requirements
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
-   :status: draft
+   :satisfies: stkh_req__dependability__error_reaction
+   :status: valid
 
    The protocol shall handle agent failures, communication losses, and plan deviations gracefully
    without compromising the safety of the overall system.
@@ -108,7 +116,8 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :status: draft
+   :satisfies: stkh_req__dependability__security_features
+   :status: valid
 
    All agents participating in a VACP collaboration session shall be authenticated prior to
    participation, using credentials that can be verified and revoked at runtime.
@@ -118,7 +127,8 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :status: draft
+   :satisfies: stkh_req__communication__secure
+   :status: valid
 
    All VACP protocol messages shall be integrity-protected to prevent tampering and replay attacks.
 
@@ -127,7 +137,8 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :status: draft
+   :satisfies: stkh_req__dependability__security_features
+   :status: valid
 
    The protocol shall support explicit establishment, continuous validation, revocation, and
    re-establishment of trust relationships between collaborating agents at runtime, including the
@@ -138,7 +149,8 @@ Requirements
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
-   :status: draft
+   :satisfies: stkh_req__overall_goals__enable_cooperation
+   :status: valid
 
    Agents shall maintain and share contextual information relevant to the collaboration, such as
    environmental conditions, vehicle state, and infrastructure status. Shared context shall be
@@ -149,7 +161,8 @@ Requirements
    :reqtype: Non-Functional
    :security: NO
    :safety: ASIL_B
-   :status: draft
+   :satisfies: stkh_req__communication__extensible_external
+   :status: valid
 
    The protocol shall be transport-agnostic and capable of operating over diverse underlying
    communication channels without imposing constraints on the underlying infrastructure.
@@ -159,7 +172,8 @@ Requirements
    :reqtype: Non-Functional
    :security: NO
    :safety: ASIL_B
-   :status: draft
+   :satisfies: stkh_req__communication__extensible_external
+   :status: valid
 
    The protocol shall be extensible to accommodate new agent capabilities, message types, and
    collaboration patterns without breaking backward compatibility with existing agents.
