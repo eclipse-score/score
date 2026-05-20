@@ -25,14 +25,6 @@ VACP
    :tags: feature_request
    :realizes: wp__feat_request
 
-.. toctree::
-   :maxdepth: 1
-   :glob:
-   :titlesonly:
-   :hidden:
-
-   */index
-
 Feature flag
 ============
 
