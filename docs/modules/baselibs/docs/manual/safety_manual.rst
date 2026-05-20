@@ -27,12 +27,30 @@ Safety Manual
 
 Introduction/Scope
 ------------------
-| <Describe here which module (or the platform) is covered by this manual.>
+
+This is the safety manual for baselibs module which is a collection of several utilities of common use.
 
 Assumed Platform Safety Requirements
 ------------------------------------
-| For the <Project platform / module name> the following safety related stakeholder requirements are assumed to define the top level functionality (purpose) of the <Project platform / module name>. I.e. from these all the feature and component requirements implemented are derived.
-| <List here all the stakeholder requirements, with safety not equal to QM, the module's components requirements are derived from.>
+
+For the Baselibs module the following safety related stakeholder requirements are assumed to define the top level functionality (purpose) of the module. I.e. from these all the feature and component requirements implemented are derived.
+
+- :need:`stkh_req__functional_req__base_libraries` - is QM, but some of the libraries combine this with the next requirement
+- :need:`stkh_req__dependability__automotive_safety`
+- :need:`stkh_req__dev_experience__prog_languages` - is QM, but some of the libraries combine this with the previous requirement
+
+This means that not all baselibs libraries and language API are provided in ASIL B.
+So for Baselibs the definition of the assumed safety requirement(s) of each of the ASIL B libraries are defined in the following feature requirements:
+
+- bitmanipulation library: :need:`feat_req__baselibs__bitmanipulation`
+- concurrency library: :need:`feat_req__baselibs__concurrency_library`
+- containers library: :need:`feat_req__baselibs__containers_library`
+- filesystem library: :need:`feat_req__baselibs__filesystem_library`
+- flatbuffers library: :need:`feat_req__baselibs__flatbuffers_library`
+- json library: :need:`feat_req__baselibs__json_library`
+- memory library: :need:`feat_req__baselibs__memory_library`
+- result library: :need:`feat_req__baselibs__result_library`
+- safecpp, static_reflection_with_serialization, utils :need:`feat_req__baselibs__core_utilities`
 
 Assumptions of Use
 ------------------
