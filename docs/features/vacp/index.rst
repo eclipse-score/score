@@ -54,7 +54,7 @@ mechanisms between distributed intelligent agents. Today’s systems remain larg
 
 * vehicles operate independently with limited coordination,
 * infrastructure provides static or reactive services,
-and cross-domain orchestration is minimal or proprietary.
+* cross-domain orchestration is minimal or proprietary.
 
 This limits the realization of advanced scenarios such as: dynamically coordinated traffic systems, autonomous valet and parking ecosystems,
 and collaborative safety response across vehicles and road infrastructure. VACP addresses this gap by enabling intent-driven, cross-entity
