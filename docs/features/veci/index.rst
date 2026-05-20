@@ -311,9 +311,7 @@ Backward-compatible extensions are preferred; breaking changes require explicit 
 Requirements
 ____________
 
-.. note::
-
-   Requirements for this feature are under development.
+See :ref:`veci_requirements` for the list of feature requirements derived from this specification.
 
 
 Open Topics
