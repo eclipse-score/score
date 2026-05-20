@@ -146,7 +146,7 @@ The interface is structured around desired state exchange and reconciliation saf
 A vehicle-side coordination component is responsible for mediating all external interactions.
 
 Interaction Model
-_________________
+-----------------
 
 VECI follows a state-oriented interaction pattern:
 
@@ -162,7 +162,7 @@ This flow ensures external intent can be expressed as target state while preserv
 admission, reconciliation strategy, and execution boundaries.
 
 State Exposure and Observability
-________________________________
+--------------------------------
 
 The vehicle publishes selected runtime state, configuration status, and health indicators in a structured model.
 State publication supports both pull and event-driven update patterns.
@@ -171,7 +171,7 @@ Only explicitly exposed signals and metadata are made available to external syst
 State data is versioned and timestamped to support consistency checks, traceability, and replay-safe processing.
 
 Desired State Interface
-_______________________
+-----------------------
 
 VECI provides standardized desired state endpoints for platform components and applications.
 Desired state updates represent target conditions instead of direct low-level actuation commands.
@@ -184,7 +184,7 @@ Each state domain defines:
 - convergence acknowledgement and completion semantics.
 
 Policy and Constraint Injection
-_______________________________
+-------------------------------
 
 External systems may submit desired constraints or policy inputs, such as execution limits, feature activation constraints,
 or operating envelopes.
@@ -194,7 +194,7 @@ Policy priority and conflict resolution rules are defined by the vehicle-side ru
 Policy activation supports explicit validity windows and scoped applicability to avoid unintended global side effects.
 
 Validation and Enforcement Pipeline
-___________________________________
+-----------------------------------
 
 Every desired state update passes through authentication, authorization, schema validation, semantic validation,
 and policy compliance checks before reconciliation.
@@ -204,7 +204,7 @@ Rejected updates produce explicit status codes and diagnostic context.
 Validation outcomes are recorded to support post-event analysis and compliance evidence.
 
 Execution and Monitoring
-________________________
+------------------------
 
 Accepted desired state updates are realized through existing lifecycle and orchestration mechanisms.
 VECI provides reconciliation status, progress, and converged/failed outcomes for observability.
@@ -220,7 +220,7 @@ Continuous reconciliation is optional and can be switched on or off by vehicle-s
 Execution must remain deterministic for predefined operating scenarios and degrade gracefully in error conditions.
 
 Security and Trust
-__________________
+------------------
 
 All interactions must be authenticated and integrity-protected.
 Trust relationships with external systems are managed through verifiable identities and revocable credentials.
@@ -229,7 +229,7 @@ The interface supports runtime revocation and trust re-establishment without req
 Security-relevant actions must be auditable end-to-end, including requester identity, policy context, and decision outcome.
 
 State Reconciliation Semantics
-______________________________
+------------------------------
 
 VECI defines explicit semantics for state reconciliation:
 
@@ -242,7 +242,7 @@ VECI defines explicit semantics for state reconciliation:
 The reconciliation strategy is local to the vehicle runtime and is not controlled by the external orchestrator.
 
 Reconciliation Paradigms and Application Scenarios
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+__________________________________________________
 
 VECI supports the following reconciliation paradigms. The selected paradigm can be configured per vehicle,
 per state domain, or per deployment profile.
@@ -282,7 +282,7 @@ In all paradigms, final admission and execution remain vehicle-side decisions su
 and policy checks.
 
 Integration Boundaries
-______________________
+----------------------
 
 VECI augments existing S-CORE modules through well-defined integration points, including lifecycle management,
 communication/IPC abstractions, and platform security services.
@@ -290,7 +290,7 @@ The interface does not define any external orchestration backend and does not ma
 
 
 Deployment Profiles
-___________________
+-------------------
 
 The VECI model supports multiple deployment profiles:
 
@@ -302,14 +302,14 @@ The protocol-level behavior remains consistent across profiles; only transport a
 
 
 Versioning and Compatibility
-____________________________
+----------------------------
 
 Interface contracts and data models are versioned to support incremental evolution.
 Backward-compatible extensions are preferred; breaking changes require explicit version transitions.
 
 
 Requirements
-____________
+------------
 
 See :ref:`veci_requirements` for the list of feature requirements derived from this specification.
 
