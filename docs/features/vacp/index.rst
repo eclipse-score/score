@@ -25,6 +25,14 @@ VACP
    :tags: feature_request
    :realizes: wp__feat_request
 
+.. toctree::
+   :maxdepth: 1
+   :glob:
+   :titlesonly:
+   :hidden:
+
+   */index
+
 Feature flag
 ============
 
@@ -126,9 +134,7 @@ Context must be timestamped and validated to ensure consistency across collabora
 Requirements
 ____________
 
-.. note::
-
-   Requirements for this feature are under development.
+See :ref:`vacp_requirements` for the list of feature requirements derived from this specification.
 
 
 Backwards Compatibility
