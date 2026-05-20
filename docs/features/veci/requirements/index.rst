@@ -92,7 +92,7 @@ Requirements
    :id: feat_req__veci__vehicle_authority
    :reqtype: Functional
    :security: YES
-   :safety: QM
+   :safety: ASIL_B
    :satisfies: stkh_req__dependability__safe_state
    :status: valid
 
@@ -149,7 +149,7 @@ Requirements
    :id: feat_req__veci__deterministic_execution
    :reqtype: Non-Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :satisfies: stkh_req__ai_platform__runtime_determinism
    :status: valid
 
@@ -160,7 +160,7 @@ Requirements
    :id: feat_req__veci__bounded_failure_handling
    :reqtype: Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :satisfies: stkh_req__dependability__error_reaction
    :status: valid
 
@@ -172,7 +172,7 @@ Requirements
    :id: feat_req__veci__safe_state_protection
    :reqtype: Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :satisfies: stkh_req__dependability__safe_state
    :status: valid
 
