@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2026 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -15,17 +15,12 @@
 CI/CD Workflows
 ================
 
-.. toctree::
-   :maxdepth: 1
-   :glob:
+After successfully building the scrample binary, we need to ensure that future changes do not break the build.
 
-After successfully building the scrample binary, we need to ensure, that future changes do not breakt the build. 
-
-To achieve this, we create a CI/CD workflow that triggers a `GitHub action <https://docs.github.com/en/actions>`_
-to build the scrample application whenever a new PR is opened.
-
-To achieve this, first create a workflow file named `build.yml <https://github.com/eclipse-score/scrample/blob/main/.github/workflows/build.yml>`_
-in the .github folder.
+To achieve this, create a CI/CD workflow that triggers a `GitHub action <https://docs.github.com/en/actions>`_
+to build the scrample application whenever a new PR is opened. Start by creating a workflow file named
+`build.yml <https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/.github/workflows/build.yml>`_
+in the ``.github/workflows/`` folder.
 
 Then fill the workflow file with the following content:
 

@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2024 Contributors to the Eclipse Foundation
+   # Copyright (c) 2026 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -15,10 +15,6 @@
 Documentation generation
 ==========================
 
-.. toctree::
-   :maxdepth: 1
-   :glob:
-
 Introduction
 ---------------
 As described in the :ref:`Overview of technologies <technology_overview>` chapter,
@@ -27,7 +23,7 @@ Elements of Eclipse S-CORE metamodel are represented as sphinx-needs objects.
 
 The integration of sphinx, sphinx-needs, and the Eclipse S-CORE-specific extensions is implemented in the repository:
 
-- https://github.com/eclipse-score/docs-as-code/tree/main/docs
+- `eclipse-score/docs-as-code <https://github.com/eclipse-score/docs-as-code/tree/main/docs>`_
 
 The following `documentation <https://eclipse-score.github.io/docs-as-code/main/how-to/index.html>`_
 provides a description of how the documentation can be created and built. Here, we will focus on a simple example.
@@ -36,7 +32,7 @@ provides a description of how the documentation can be created and built. Here, 
 Defining a Bazel Documentation Target
 -----------------------------------------
 To generate HTML documentation from *.rst* files, S-CORE provides a dedicated Bazel rule.
-In the top-level `BUILD <https://github.com/eclipse-score/scrample/blob/main/BUILD>`_ file of your module, you should already find:
+In the top-level `BUILD <https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/BUILD>`_ file of your module, you should already find:
 
 .. code-block:: python
     :linenos:
@@ -58,7 +54,7 @@ Sphinx configuration
 -----------------------
 Two files are essential for documentation generation:
 
-- `docs/conf.py <https://github.com/eclipse-score/scrample/blob/main/docs/conf.py>`_ provides configuration for the *sphinx-toolchain*.
+- `docs/conf.py <https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/docs/conf.py>`_ provides configuration for the *sphinx-toolchain*.
 
   .. code-block:: python
     :linenos:
@@ -91,7 +87,7 @@ Two files are essential for documentation generation:
     Other modules will use this prefix when referencing sphinx-needs elements from your module.
   - S-CORE extensions (score_*) are automatically provided via *score_docs_as_code*.
 
-- `index.rst <https://github.com/eclipse-score/scrample/blob/main/docs/index.rst>`_
+- `index.rst <https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/docs/index.rst>`_
   is the main entry point for your documentation. It includes all other .rst files, that should be part of the documentation build.
 
 
@@ -191,4 +187,4 @@ The live preview:
 - stays active until you stop the bazel process (Ctrl+C).
 
 Now you can replace the placeholder content in index.rst with meaningful text, as shown in the following
-`commit <https://github.com/eclipse-score/scrample/commit/5179175823ecda51775e459ad73d7230cd4c880a>`_.
+`commit <https://github.com/eclipse-score/scrample/tree/v0.1.2-simple-app>`_.

@@ -1,5 +1,5 @@
 # *******************************************************************************
-# Copyright (c) 2024 Contributors to the Eclipse Foundation
+# Copyright (c) 2026 Contributors to the Eclipse Foundation
 #
 # See the NOTICE file(s) distributed with this work for additional
 # information regarding copyright ownership.
@@ -24,3 +24,15 @@ extensions = [
     "sphinxcontrib.plantuml",
     "score_sphinx_bundle",
 ]
+
+# Hide both sidebars on the users_guide landing page (left: html_sidebars, right: secondary_sidebar_items)
+html_sidebars = {
+    "users_guide/index": [],
+}
+
+html_theme_options = {
+    "secondary_sidebar_items": {
+        "users_guide/index": [],
+        "**": ["page-toc", "edit-this-page", "sourcelink"],
+    },
+}
