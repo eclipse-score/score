@@ -376,13 +376,13 @@ Functional Safety/Security Management SW Platform Work Products
 
     * - :need:`wp__platform_sw_release_note`
       - :ndf:`copy('status', need_id='wf__rel_platform_rel_note')`
-      - :need:`doc__score_v05_alpha_release_note`
-      - :ndf:`copy('status', need_id='doc__score_v05_alpha_release_note')`
+      - `Release Note <https://eclipse-score.github.io/reference_integration/main>`_
+      - see reference integration
 
     * - :need:`wp__verification_platform_ver_report`
       - :ndf:`copy('status', need_id='wf__verification_platform_ver_report')`
-      - :need:`doc__score_platform_verification_report`
-      - :ndf:`copy('status', need_id='doc__score_platform_verification_report')`
+      - `Verification Report <https://eclipse-score.github.io/reference_integration/main>`_
+      - see reference integration
 
     * - :need:`wp__requirements_stkh`
       - :ndf:`copy('status', need_id='wf__req_stkh_req')`
