@@ -13,7 +13,7 @@
 DR-008-Infra: Generating documentation sources via Bazel
 ========================================================
 
-- **Date:** 2026-05-18
+- **Date:** 2026-05-21
 
 .. dec_rec:: Generating documentation sources via Bazel
    :id: dec_rec__infra__docs_src_dir
@@ -39,8 +39,12 @@ Workarounds we already have in place are:
 
 * Use ``.`` as source directory to place sources anywhere.
   This implies a careful maintenance of include/exclude patterns in ``conf.py``.
-* Generate json files for special inputs like source links or test reports.
+* Generate json files for special inputs like source links.
   This is limiting because we cannot generate whole pages or directories with this approach.
+* Implicitly read files from bazel folders.
+  TestLinks in documentation appear if a ``test.xml`` file exists under ``bazel-testlogs/``.
+* Reference integration overwrites documentation sources in a workflow.
+  `See 'Publish build summary' step <https://github.com/eclipse-score/reference_integration/blob/07e75c498545b2eef8116f1aff3f006646f90f93/.github/workflows/test_and_docs.yml#L74>`_.
 * The ``:docs_combo`` does compose a sources directory via `sphinx-collections <https://sphinx-collections.readthedocs.io/>`_.
   It allows no control over the folder hierarchy
   and symlinks in the git workspace can be confusing.
@@ -172,12 +176,14 @@ The generally idea is also described in `the rules_python documentation <https:/
 This ``docs.serve`` target implemented in `rules_python` does not have
 auto-refresh in the browser though.
 
-Option D: Dual-path — keep ``:live_preview``, add hermetic ``:docs`` build
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Option D: Dual-path — keep ``:live_preview``, add ``:docs_src_dir``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Keep the existing ``bazel run :live_preview`` target unchanged (sphinx-autobuild watching ``docs/`` on the workspace filesystem).
-In parallel, introduce a separate hermetic ``bazel build :docs`` target
+In parallel, introduce a separate hermetic ``bazel build :docs_src_dir`` target
 that materialises a composed source directory inside the Bazel sandbox before invoking Sphinx.
+
+The obvious risk here is that the two paths do not produce the same output.
 
 Effort 😡: By definition requires nearly the effort for option N and B combined.
 
