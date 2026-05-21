@@ -641,7 +641,7 @@
 <p class="admonition-title">Note</p>
 <p>Document header</p>
 </div>
-<div class="need_container docutils container" id="SNCB-21eb9e0d">
+<div class="need_container docutils container" id="SNCB-0ec5e4c6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__baselibs_safety_manual">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -686,16 +686,29 @@
 </div>
 <section id="introduction-scope">
 <h2>Introduction/Scope<a class="headerlink" href="#introduction-scope" title="Link to this heading">#</a></h2>
-<div class="line-block">
-<div class="line">&lt;Describe here which module (or the platform) is covered by this manual.&gt;</div>
-</div>
+<p>This is the safety manual for baselibs module which is a collection of several utilities of common use.</p>
 </section>
 <section id="assumed-platform-safety-requirements">
 <h2>Assumed Platform Safety Requirements<a class="headerlink" href="#assumed-platform-safety-requirements" title="Link to this heading">#</a></h2>
-<div class="line-block">
-<div class="line">For the &lt;Project platform / module name&gt; the following safety related stakeholder requirements are assumed to define the top level functionality (purpose) of the &lt;Project platform / module name&gt;. I.e. from these all the feature and component requirements implemented are derived.</div>
-<div class="line">&lt;List here all the stakeholder requirements, with safety not equal to QM, the module’s components requirements are derived from.&gt;</div>
-</div>
+<p>For the Baselibs module the following safety related stakeholder requirements are assumed to define the top level functionality (purpose) of the module. I.e. from these all the feature and component requirements implemented are derived.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__functional_req__base_libraries" title="stkh_req__functional_req__base_libraries"><em class="xref need">Base Libraries (stkh_req__functional_req__base_libraries)</em></a> - is QM, but some of the libraries combine this with the next requirement</p></li>
+<li><p><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dependability__automotive_safety" title="stkh_req__dependability__automotive_safety"><em class="xref need">Automotive Safety Integrity... (stkh_req__dependability__automotive_safety)</em></a></p></li>
+<li><p><a class="reference internal" href="../../../../requirements/stakeholder/index.html#stkh_req__dev_experience__prog_languages" title="stkh_req__dev_experience__prog_languages"><em class="xref need">Programming languages for a... (stkh_req__dev_experience__prog_languages)</em></a> - is QM, but some of the libraries combine this with the previous requirement</p></li>
+</ul>
+<p>This means that not all baselibs libraries and language API are provided in ASIL B.
+So for Baselibs the definition of the assumed safety requirement(s) of each of the ASIL B libraries are defined in the following feature requirements:</p>
+<ul class="simple">
+<li><p>bitmanipulation library: <a class="reference internal" href="../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__bitmanipulation" title="feat_req__baselibs__bitmanipulation"><em class="xref need">Bit Manipulation Library (feat_req__baselibs__bitmanipulation)</em></a></p></li>
+<li><p>concurrency library: <a class="reference internal" href="../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__concurrency_library" title="feat_req__baselibs__concurrency_library"><em class="xref need">Concurrency Library (feat_req__baselibs__concurrency_library)</em></a></p></li>
+<li><p>containers library: <a class="reference internal" href="../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__containers_library" title="feat_req__baselibs__containers_library"><em class="xref need">Container Library (feat_req__baselibs__containers_library)</em></a></p></li>
+<li><p>filesystem library: <a class="reference internal" href="../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__filesystem_library" title="feat_req__baselibs__filesystem_library"><em class="xref need">Filesystem-Library (feat_req__baselibs__filesystem_library)</em></a></p></li>
+<li><p>flatbuffers library: <a class="reference internal" href="../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__flatbuffers_library" title="feat_req__baselibs__flatbuffers_library"><em class="xref need">FlatBuffers-Library (feat_req__baselibs__flatbuffers_library)</em></a></p></li>
+<li><p>json library: <a class="reference internal" href="../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__json_library" title="feat_req__baselibs__json_library"><em class="xref need">JSON-Library (feat_req__baselibs__json_library)</em></a></p></li>
+<li><p>memory library: <a class="reference internal" href="../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__memory_library" title="feat_req__baselibs__memory_library"><em class="xref need">Memory Library (feat_req__baselibs__memory_library)</em></a></p></li>
+<li><p>result library: <a class="reference internal" href="../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__result_library" title="feat_req__baselibs__result_library"><em class="xref need">Exception-Free Development ... (feat_req__baselibs__result_library)</em></a></p></li>
+<li><p>safecpp, static_reflection_with_serialization, utils <a class="reference internal" href="../../../../features/baselibs/docs/requirements/index.html#feat_req__baselibs__core_utilities" title="feat_req__baselibs__core_utilities"><em class="xref need">Core Software Utilities (feat_req__baselibs__core_utilities)</em></a></p></li>
+</ul>
 </section>
 <section id="assumptions-of-use">
 <h2>Assumptions of Use<a class="headerlink" href="#assumptions-of-use" title="Link to this heading">#</a></h2>
