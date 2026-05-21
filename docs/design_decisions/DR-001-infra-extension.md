@@ -56,6 +56,10 @@ This must remain possible even if:
 - upstream toolchains are no longer available
 - external services are unavailable
 
+For release-grade reproducibility, the required artifacts should be recoverable without
+depending on live internet access, for example via archived execution contexts, mirrors,
+or pre-populated artifact stores.
+
 ---
 
 ### R2 — Traceability
@@ -75,10 +79,16 @@ outputs.
 Build actions must not depend on **undeclared inputs**.
 
 In practice:
-- Tools affecting build outputs must either be:
+- A tool is **output-affecting** if changing its version or behavior can change:
+  - build artifacts or generated source code
+  - metadata consumed by downstream actions
+  - CI gating results such as test, lint, or coverage outcomes
+- Output-affecting tools must be:
   - managed by Bazel, or
   - explicitly injected as Bazel action inputs, or
-  - reflected in cache partitioning
+  - represented by a declared version or fingerprint that participates in cache keys
+- Documentation improves traceability, but documentation alone is not sufficient for
+  hermeticity or long-term reproducibility.
 - Reliance on host state must be minimized and documented where unavoidable.
 
 Perfect hermeticity is not required, but **undeclared variability is not acceptable**.
@@ -99,6 +109,7 @@ the build.
 
 #### Responsibilities
 - Linux kernel version and configuration
+- Host CPU architecture compatibility for distributed binaries (e.g. `x86_64`, `arm64`)
 - Security mechanisms (AppArmor / LSM)
 - Filesystems, networking, namespaces
 - Support for:
@@ -125,15 +136,25 @@ the build.
 
 ---
 
-### Layer 2 — Execution Context Contract (Devcontainer)
+### Layer 2 — Execution Context Contract (Default: Devcontainer)
 
-This layer defines the **default user-space environment** in which builds are executed.
+This layer defines the **user-space environment** in which builds are executed.
+The default execution context is a versioned devcontainer image, but a compatible native
+environment may also satisfy this layer.
 
 #### Purpose
 - Provide consistent runtime ABI (`glibc`, `libstdc++`)
 - Ensure tool binaries (e.g. rustc) can execute reliably
 - Eliminate “works on my machine” discrepancies
 - Enable local reproduction of CI builds
+- Define which user-space properties must be equivalent between CI and local execution
+
+#### Compatibility Requirements
+- A compatible execution context does not need to be byte-identical, but it must provide
+  the same build-relevant properties:
+  - runtime ABI relevant for executing distributed binaries
+  - declared tool and toolchain versions, or equivalent pinned artifacts
+  - environment settings intentionally relied upon by the build or test actions
 
 #### Definition
 - A **versioned devcontainer image** is the default execution context for CI and local builds.
@@ -141,11 +162,11 @@ This layer defines the **default user-space environment** in which builds are ex
   - built from a **defined Ubuntu LTS baseline**
   - compatible with common developer tooling (e.g. by following the [specification](https://containers.dev/))
   - referenced by an **immutable image digest**
-  - archived for **long-term reproducibility**
+  - managed in a way that supports archival for **long-term reproducibility**
 
 #### Baseline Preservation and Reproducibility
 - Once a devcontainer image is used in CI, its image digest becomes part of the build provenance
-- All such images must be archived and retrievable for **at least 10 years**
+- All such images must be designed to be archived and retrievable for **at least 10 years**
 - Reproducing historical builds may rely on legacy container runtimes or CLI-only execution,
   and does not require continued IDE support
 
@@ -153,14 +174,22 @@ This layer defines the **default user-space environment** in which builds are ex
 - User-space runtime libraries
 - Bootstrap tooling (git, bash, coreutils, python, etc.)
 - Bazel entrypoint (preferably Bazelisk)
+- If Bazelisk is used, the referenced Bazel binaries must be pinned and available from a
+  source that can be mirrored or archived
 - Development UX tooling (optional)
+- Environment settings intentionally exposed as part of the build contract
 
 #### Non-Goals
 - The devcontainer must **not silently override** repository-declared Bazel versions.
+- Build-relevant versions and dependency selections must remain reviewable in
+  repository-controlled metadata (e.g. `.bazelversion`, module lockfiles, pinned
+  toolchain definitions).
 - The devcontainer must **not be the only place** where critical tool versions are defined.
 
 #### Policy
 - The devcontainer defines the **default** environment, not the **only** supported one.
+- A compatible native environment is acceptable if it satisfies the same build-relevant
+  contract.
 - Builds should still be possible on compatible bare-metal hosts.
 
 ---
@@ -170,16 +199,27 @@ This layer defines the **default user-space environment** in which builds are ex
 This layer defines **what Bazel controls and guarantees**.
 
 #### Bazel Versioning
-- Each relevant repository must contain `.bazelversion`.
-- S-CORE uses a **single Bazel version** across repositories.
-- CI enforces version consistency.
+- Each Bazel-based repository relevant to this contract must declare the Bazel version it
+  expects in repository-controlled metadata, preferably via `.bazelversion`.
+- S-CORE should align on a **single Bazel version** across repositories that participate in
+  the shared build environment.
+- CI should enforce version consistency where that alignment is required.
 
 #### Toolchains and Tools
 - Toolchains (e.g. Rust/Ferrocene, C/C++) must be:
   - versioned
   - immutable
   - built against a documented baseline
-- Tools affecting outputs must be known to Bazel or reflected in action inputs.
+- Tools that can change build artifacts, generated metadata, or CI gating results must be
+  known to Bazel or reflected in declared action inputs.
+- Module overrides and external artifact references must be pinned to immutable revisions
+  or checksums when they are part of the reproducibility story.
+- Externally fetched build inputs must be pinned and suitable for mirroring or archival
+  when long-term reproducibility depends on them.
+- Bazel management improves traceability and cache correctness, but does **not** by itself
+  guarantee long-term reproducibility.
+- Long-term reproducibility also requires pinning, checksums, archival or mirroring, and
+  periodic offline verification for release-grade builds.
 
 #### Hermeticity Guarantees
 - Bazel sandboxing provides reproducibility **given runnable tools**.
