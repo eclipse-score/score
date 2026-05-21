@@ -39,4 +39,4 @@ For a detailed and always up-to-date planning view, see the `GitHub project <htt
 List of S-CORE released versions
 ---------------------------------
 
-See https://eclipse-score.github.io/reference_integration/main for the list of released versions of S-CORE reference integrations, which are the main deliverables of S-CORE releases. The list includes the release version, release date, and links to the release notes, test reports, and documentation.
+See `reference integration <https://eclipse-score.github.io/reference_integration/main>`_ for the list of released versions of S-CORE reference integrations, which are the main deliverables of S-CORE releases. The list includes the release version, release date, and links to the release notes, test reports, and documentation.
