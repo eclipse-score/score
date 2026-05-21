@@ -109,4 +109,6 @@ References
 
 `FEO Safety Manual <https://eclipse-score.github.io/score/main/modules/feo/docs/manual/safety_manual.html>`_
 
-`KVS Safety Manual <https://eclipse-score.github.io/persistency/main/persistency/manual/safety_manual.html>`_
+`KVS Safety Manual <https://eclipse-score.github.io/persistency/main/docs/manual/safety_manual.html>`_
+
+`Orchestrator Safety Manual <https://eclipse-score.github.io/score/main/modules/orchestrator/docs/manual/safety_manual.html>`_

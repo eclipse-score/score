@@ -32,3 +32,4 @@ Static Analysis & Code Quality Tools Overview
    clippy
    rustfmt
    clang-tidy
+   clang-format
