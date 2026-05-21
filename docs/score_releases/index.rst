@@ -33,22 +33,10 @@ The current timeline for Eclipse S-CORE releases is shown below.
    :alt: Architecture overview
    :align: center
 
-|
 
 For a detailed and always up-to-date planning view, see the `GitHub project <https://github.com/orgs/eclipse-score/projects/17/views/26>`_.
 
 List of S-CORE released versions
 ---------------------------------
 
-.. toctree::
-   :maxdepth: 2
-
-   score_releases/index.rst
-
-Platform verification report
----------------------------------
-
-.. toctree::
-   :maxdepth: 2
-
-   verification/platform_ver_report.rst
+See https://eclipse-score.github.io/reference_integration/main for the list of released versions of S-CORE reference integrations, which are the main deliverables of S-CORE releases. The list includes the release version, release date, and links to the release notes, test reports, and documentation.
