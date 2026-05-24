@@ -689,7 +689,7 @@ See the <a class="reference internal" href="../project_basics/technology_overvie
 <section id="bazelrc">
 <h2>.bazelrc<a class="headerlink" href="#bazelrc" title="Link to this heading">#</a></h2>
 <p>Defines bazel configuration for your the module.
-Important entries in <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/.bazelrc">.bazelrc</a> file include:</p>
+Important entries in <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.0/.bazelrc">.bazelrc</a> file include:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">build</span> <span class="o">--</span><span class="n">java_language_version</span><span class="o">=</span><span class="mi">17</span>
 <span class="linenos">2</span><span class="n">build</span> <span class="o">--</span><span class="n">tool_java_language_version</span><span class="o">=</span><span class="mi">17</span>
 <span class="linenos">3</span><span class="n">build</span> <span class="o">--</span><span class="n">java_runtime_version</span><span class="o">=</span><span class="n">remotejdk_17</span>
@@ -712,7 +712,7 @@ bazel will start searching it in one of these two locations.</p>
 <section id="module-bazel">
 <h2>MODULE.bazel<a class="headerlink" href="#module-bazel" title="Link to this heading">#</a></h2>
 <p>This file turns your repository into a bazel module.</p>
-<p>Let us check <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/MODULE.bazel">MODULE.bazel</a> initial content:</p>
+<p>Let us check <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.0/MODULE.bazel">MODULE.bazel</a> initial content:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">module</span><span class="p">(</span>
 <span class="linenos">2</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;cpp_rust_template_repository&quot;</span><span class="p">,</span>
 <span class="linenos">3</span>    <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
@@ -799,7 +799,7 @@ if you want to use your local version of the module, e.g. during active developm
 </section>
 <section id="build">
 <h2>BUILD<a class="headerlink" href="#build" title="Link to this heading">#</a></h2>
-<p>The bazel <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/BUILD">BUILD</a> file
+<p>The bazel <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.0/BUILD">BUILD</a> file
 contains main bazel targets on the top level of the scrample project:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;@score_docs_as_code//:docs.bzl&quot;</span><span class="p">,</span> <span class="s2">&quot;docs&quot;</span><span class="p">)</span>
 <span class="linenos">2</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;@score_tooling//:defs.bzl&quot;</span><span class="p">,</span> <span class="s2">&quot;copyright_checker&quot;</span><span class="p">,</span> <span class="s2">&quot;dash_license_checker&quot;</span><span class="p">,</span> <span class="s2">&quot;setup_starpls&quot;</span><span class="p">,</span> <span class="s2">&quot;use_format_targets&quot;</span><span class="p">)</span>

@@ -592,7 +592,7 @@
 <p>Now that we have added the documentation for our component, we can continue by adding some source code (as shown in the following
 <a class="reference external" href="https://github.com/eclipse-score/scrample/commit/5179175823ecda51775e459ad73d7230cd4c880a">commit</a>).</p>
 <p>Let’s begin with the most relevant parts of the implementation, starting with the bazel
-<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/src/BUILD">src/BUILD</a> file.</p>
+<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.0/src/BUILD">src/BUILD</a> file.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">cc_binary</span><span class="p">(</span>
 <span class="linenos"> 2</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;scrample&quot;</span><span class="p">,</span>
 <span class="linenos"> 3</span>    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span>
@@ -665,7 +665,7 @@ Before continuing, it is helpful to introduce two fundamental bazel concepts:baz
 </ul>
 <p>For the scrample example, we want to use the qcc toolchain for x86_64 platform.
 To add qcc toolchain support to our module, we extend the
-<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/MODULE.bazel">MODULE.bazel</a> file with the corresponding toolchain configuration.</p>
+<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.0/MODULE.bazel">MODULE.bazel</a> file with the corresponding toolchain configuration.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># Configure the target toolchain.</span>
 <span class="linenos"> 2</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_toolchains_qnx&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.0.2&quot;</span><span class="p">,</span> <span class="n">dev_dependency</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="linenos"> 3</span><span class="n">qnx</span> <span class="o">=</span> <span class="n">use_extension</span><span class="p">(</span><span class="s2">&quot;@score_toolchains_qnx//:extensions.bzl&quot;</span><span class="p">,</span> <span class="s2">&quot;toolchains_qnx&quot;</span><span class="p">,</span> <span class="n">dev_dependency</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -684,11 +684,11 @@ It contains qnx toolchain, including compiler, linker, image creation tools, and
 <p class="admonition-title">Tip</p>
 <p>CI/CD pipeline uses its own QNX license when building the code with qnx. If you want to build the source code with
 qnx compiler locally, you must acquire a QNX 8.x “free for non commercial use” license and install QNX 8.x SDP
-as described in the <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/main/runners/qemu_x86_64/README.md">QNX &amp; QEMU set-up tutorial</a>.</p>
+as described in the <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/v0.5.0-alpha/runners/qemu_x86_64/README.md">QNX &amp; QEMU set-up tutorial</a>.</p>
 </div>
 <p>Since our application depends on baselibs and communication module (as defined in the
-<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/src/BUILD">src/BUILD</a> file),
-we also need to add the dependencies to these modules into the <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/MODULE.bazel">MODULE.bazel</a>
+<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.0/src/BUILD">src/BUILD</a> file),
+we also need to add the dependencies to these modules into the <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.0/MODULE.bazel">MODULE.bazel</a>
 file as well, as shown below:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_baselibs&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.1.3&quot;</span><span class="p">)</span>
 <span class="linenos">2</span>
@@ -709,7 +709,7 @@ file as well, as shown below:</p>
 This means that you must always list all required module dependencies explicitly in your <em>MODULE.bazel</em> file.
 So far, we have assumed that our module depends on another bazel module providing the qcc toolchain.
 To actually use this toolchain, we now need to specify the platform and configure the usage of qcc toolchain in
-<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/.bazelrc">.bazelrc</a> file.</p>
+<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.0/.bazelrc">.bazelrc</a> file.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">build</span><span class="p">:</span><span class="n">_common</span> <span class="o">--</span><span class="nd">@score_baselibs</span><span class="o">//</span><span class="n">score</span><span class="o">/</span><span class="n">mw</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">detail</span><span class="o">/</span><span class="n">flags</span><span class="p">:</span><span class="n">KUse_Stub_Implementation_Only</span><span class="o">=</span><span class="kc">False</span>
 <span class="linenos"> 2</span><span class="n">build</span><span class="p">:</span><span class="n">_common</span> <span class="o">--</span><span class="nd">@score_baselibs</span><span class="o">//</span><span class="n">score</span><span class="o">/</span><span class="n">mw</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">flags</span><span class="p">:</span><span class="n">KRemote_Logging</span><span class="o">=</span><span class="kc">False</span>
 <span class="linenos"> 3</span><span class="n">build</span><span class="p">:</span><span class="n">_common</span> <span class="o">--</span><span class="nd">@score_baselibs</span><span class="o">//</span><span class="n">score</span><span class="o">/</span><span class="n">json</span><span class="p">:</span><span class="n">base_library</span><span class="o">=</span><span class="n">nlohmann</span>
@@ -732,7 +732,7 @@ For this reason, you must specify the compiler settings that are required to bui
 <p>In line 8, we apply the common configuration to the qnx toolchain.
 Afterwards, we specify additional compiler and linker flags that apply only to the qnx toolchain.</p>
 <p>Lines 12-13 (highlighted in the code snippet) configure bazel to use the <em>qnx toolchain</em> referenced earlier
-in the <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/main/MODULE.bazel">MODULE.bazel</a> file.</p>
+in the <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.0/MODULE.bazel">MODULE.bazel</a> file.</p>
 <p>We also build our code for the <em>x86_64-qnx platform</em>. This is important, since our qnx toolchain supports multiple platforms
 (e.g., <em>arm</em> and <em>x86_64</em>).</p>
 <p>Finally, we can compile the code.  During the build, we must explicitly select the configuration to use, as shown in the example:</p>
