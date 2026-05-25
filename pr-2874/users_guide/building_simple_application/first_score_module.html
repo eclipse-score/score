@@ -519,7 +519,7 @@
 <li class="toctree-l2"><a class="reference internal" href="doc_generation.html">Documentation generation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="building_source_code.html">Building source code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cicd_workflows.html">CI/CD Workflows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference_integration.html">Reference integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference_integration.html">How to Integrate a New Module into the Reference Integration</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../whats_next/index.html">What’s Next?</a></li>
@@ -689,7 +689,7 @@ See the <a class="reference internal" href="../project_basics/technology_overvie
 <section id="bazelrc">
 <h2>.bazelrc<a class="headerlink" href="#bazelrc" title="Link to this heading">#</a></h2>
 <p>Defines bazel configuration for your the module.
-Important entries in <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.0/.bazelrc">.bazelrc</a> file include:</p>
+Important entries in <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/.bazelrc">.bazelrc</a> file include:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">build</span> <span class="o">--</span><span class="n">java_language_version</span><span class="o">=</span><span class="mi">17</span>
 <span class="linenos">2</span><span class="n">build</span> <span class="o">--</span><span class="n">tool_java_language_version</span><span class="o">=</span><span class="mi">17</span>
 <span class="linenos">3</span><span class="n">build</span> <span class="o">--</span><span class="n">java_runtime_version</span><span class="o">=</span><span class="n">remotejdk_17</span>
@@ -712,7 +712,7 @@ bazel will start searching it in one of these two locations.</p>
 <section id="module-bazel">
 <h2>MODULE.bazel<a class="headerlink" href="#module-bazel" title="Link to this heading">#</a></h2>
 <p>This file turns your repository into a bazel module.</p>
-<p>Let us check <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.0/MODULE.bazel">MODULE.bazel</a> initial content:</p>
+<p>Let us check <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/MODULE.bazel">MODULE.bazel</a> initial content:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">module</span><span class="p">(</span>
 <span class="linenos">2</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;cpp_rust_template_repository&quot;</span><span class="p">,</span>
 <span class="linenos">3</span>    <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
@@ -753,27 +753,44 @@ Use <a class="reference external" href="https://semver.org/">semantic versioning
 </div>
 <p>In the code snippet above, we declare dependencies to modules, that are publicly available in common bazel registry, e.g.
 for unit test execution with gtest.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># LLVM Toolchains Rules - host configuration</span>
-<span class="linenos"> 2</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;toolchains_llvm&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;1.4.0&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># C++ and QNX toolchains (same setup as score_baselibs / score_baselibs_rust)</span>
+<span class="linenos"> 2</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_bazel_cpp_toolchains&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.5.1&quot;</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 <span class="linenos"> 3</span>
-<span class="linenos"> 4</span><span class="n">llvm</span> <span class="o">=</span> <span class="n">use_extension</span><span class="p">(</span><span class="s2">&quot;@toolchains_llvm//toolchain/extensions:llvm.bzl&quot;</span><span class="p">,</span> <span class="s2">&quot;llvm&quot;</span><span class="p">)</span>
-<span class="linenos"> 5</span><span class="n">llvm</span><span class="o">.</span><span class="n">toolchain</span><span class="p">(</span>
-<span class="linenos"> 6</span>    <span class="n">cxx_standard</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;&quot;</span><span class="p">:</span> <span class="s2">&quot;c++17&quot;</span><span class="p">},</span>
-<span class="linenos"> 7</span>    <span class="n">llvm_version</span> <span class="o">=</span> <span class="s2">&quot;19.1.0&quot;</span><span class="p">,</span>
-<span class="linenos"> 8</span><span class="p">)</span>
-<span class="linenos"> 9</span><span class="n">use_repo</span><span class="p">(</span><span class="n">llvm</span><span class="p">,</span> <span class="s2">&quot;llvm_toolchain&quot;</span><span class="p">)</span>
-<span class="linenos">10</span><span class="n">use_repo</span><span class="p">(</span><span class="n">llvm</span><span class="p">,</span> <span class="s2">&quot;llvm_toolchain_llvm&quot;</span><span class="p">)</span>
-<span class="linenos">11</span>
-<span class="linenos">12</span><span class="n">register_toolchains</span><span class="p">(</span><span class="s2">&quot;@llvm_toolchain//:all&quot;</span><span class="p">)</span>
+<span class="linenos"> 4</span><span class="n">gcc</span> <span class="o">=</span> <span class="n">use_extension</span><span class="p">(</span><span class="s2">&quot;@score_bazel_cpp_toolchains//extensions:gcc.bzl&quot;</span><span class="p">,</span> <span class="s2">&quot;gcc&quot;</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="linenos"> 5</span><span class="n">gcc</span><span class="o">.</span><span class="n">toolchain</span><span class="p">(</span>
+<span class="linenos"> 6</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_gcc_x86_64_toolchain&quot;</span><span class="p">,</span>
+<span class="linenos"> 7</span>    <span class="n">target_cpu</span> <span class="o">=</span> <span class="s2">&quot;x86_64&quot;</span><span class="p">,</span>
+<span class="linenos"> 8</span>    <span class="n">target_os</span> <span class="o">=</span> <span class="s2">&quot;linux&quot;</span><span class="p">,</span>
+<span class="linenos"> 9</span>    <span class="n">use_default_package</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="linenos">10</span>    <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;12.2.0&quot;</span><span class="p">,</span>
+<span class="linenos">11</span><span class="p">)</span>
+<span class="linenos">12</span><span class="n">gcc</span><span class="o">.</span><span class="n">toolchain</span><span class="p">(</span>
+<span class="linenos">13</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_qcc_x86_64_toolchain&quot;</span><span class="p">,</span>
+<span class="linenos">14</span>    <span class="n">sdp_version</span> <span class="o">=</span> <span class="s2">&quot;8.0.0&quot;</span><span class="p">,</span>
+<span class="linenos">15</span>    <span class="n">target_cpu</span> <span class="o">=</span> <span class="s2">&quot;x86_64&quot;</span><span class="p">,</span>
+<span class="linenos">16</span>    <span class="n">target_os</span> <span class="o">=</span> <span class="s2">&quot;qnx&quot;</span><span class="p">,</span>
+<span class="linenos">17</span>    <span class="n">use_default_package</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="linenos">18</span>    <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;12.2.0&quot;</span><span class="p">,</span>
+<span class="linenos">19</span><span class="p">)</span>
+<span class="linenos">20</span><span class="n">use_repo</span><span class="p">(</span>
+<span class="linenos">21</span>    <span class="n">gcc</span><span class="p">,</span>
+<span class="linenos">22</span>    <span class="s2">&quot;score_gcc_x86_64_toolchain&quot;</span><span class="p">,</span>
+<span class="linenos">23</span>    <span class="s2">&quot;score_qcc_x86_64_toolchain&quot;</span><span class="p">,</span>
+<span class="linenos">24</span><span class="p">)</span>
+<span class="linenos">25</span>
+<span class="linenos">26</span><span class="c1"># Ferrocene Rust toolchains (QNX cross-compilation support)</span>
+<span class="linenos">27</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_toolchains_rust&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.9.1&quot;</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Here we add a llvm toolchain and register its usage in our module, so that we can build our source code.
+<p>Here we add C++ and Rust toolchains using <code class="docutils literal notranslate"><span class="pre">score_bazel_cpp_toolchains</span></code> and <code class="docutils literal notranslate"><span class="pre">score_toolchains_rust</span></code>.
+These provide GCC 12.2.0 for Linux host builds, QCC (QNX SDP 8.0.0) for QNX cross-compilation,
+and Ferrocene toolchains for Rust (including QNX support).
 In upcoming chapters, we will talk about this in more detail.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># tooling</span>
-<span class="linenos">2</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_tooling&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;1.0.5&quot;</span><span class="p">)</span>
+<span class="linenos">2</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_tooling&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;1.1.2&quot;</span><span class="p">)</span>
 <span class="linenos">3</span>
 <span class="linenos">4</span><span class="c1"># docs-as-code</span>
-<span class="linenos">5</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_docs_as_code&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;2.3.3&quot;</span><span class="p">)</span>
+<span class="linenos">5</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_docs_as_code&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;4.0.3&quot;</span><span class="p">)</span>
 <span class="linenos">6</span>
 <span class="linenos">7</span><span class="c1"># Rust linting and formatting policies</span>
 <span class="linenos">8</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_rust_policies&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.0.3&quot;</span><span class="p">)</span>
@@ -799,7 +816,7 @@ if you want to use your local version of the module, e.g. during active developm
 </section>
 <section id="build">
 <h2>BUILD<a class="headerlink" href="#build" title="Link to this heading">#</a></h2>
-<p>The bazel <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.0/BUILD">BUILD</a> file
+<p>The bazel <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/BUILD">BUILD</a> file
 contains main bazel targets on the top level of the scrample project:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;@score_docs_as_code//:docs.bzl&quot;</span><span class="p">,</span> <span class="s2">&quot;docs&quot;</span><span class="p">)</span>
 <span class="linenos">2</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;@score_tooling//:defs.bzl&quot;</span><span class="p">,</span> <span class="s2">&quot;copyright_checker&quot;</span><span class="p">,</span> <span class="s2">&quot;dash_license_checker&quot;</span><span class="p">,</span> <span class="s2">&quot;setup_starpls&quot;</span><span class="p">,</span> <span class="s2">&quot;use_format_targets&quot;</span><span class="p">)</span>
@@ -811,7 +828,7 @@ that we’ve defined as dependencies in the MODULE.bazel file, e.g. <a class="re
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">copyright_checker</span><span class="p">(</span>
 <span class="linenos"> 2</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;copyright&quot;</span><span class="p">,</span>
 <span class="linenos"> 3</span>    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span>
-<span class="linenos"> 4</span>        <span class="s2">&quot;src&quot;</span><span class="p">,</span>
+<span class="linenos"> 4</span>        <span class="s2">&quot;src_cpp&quot;</span><span class="p">,</span>
 <span class="linenos"> 5</span>        <span class="s2">&quot;tests&quot;</span><span class="p">,</span>
 <span class="linenos"> 6</span>        <span class="s2">&quot;//:BUILD&quot;</span><span class="p">,</span>
 <span class="linenos"> 7</span>        <span class="s2">&quot;//:MODULE.bazel&quot;</span><span class="p">,</span>

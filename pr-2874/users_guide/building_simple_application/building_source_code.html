@@ -519,7 +519,7 @@
 <li class="toctree-l2"><a class="reference internal" href="doc_generation.html">Documentation generation</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Building source code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cicd_workflows.html">CI/CD Workflows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference_integration.html">Reference integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference_integration.html">How to Integrate a New Module into the Reference Integration</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../whats_next/index.html">What’s Next?</a></li>
@@ -589,162 +589,189 @@
                   
   <section id="building-source-code">
 <span id="id1"></span><h1>Building source code<a class="headerlink" href="#building-source-code" title="Link to this heading">#</a></h1>
-<p>Now that we have added the documentation for our component, we can continue by adding some source code (as shown in the following
-<a class="reference external" href="https://github.com/eclipse-score/scrample/commit/5179175823ecda51775e459ad73d7230cd4c880a">commit</a>).</p>
-<p>Let’s begin with the most relevant parts of the implementation, starting with the bazel
-<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.0/src/BUILD">src/BUILD</a> file.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">cc_binary</span><span class="p">(</span>
-<span class="linenos"> 2</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;scrample&quot;</span><span class="p">,</span>
-<span class="linenos"> 3</span>    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span>
-<span class="linenos"> 4</span>        <span class="s2">&quot;assert_handler.cpp&quot;</span><span class="p">,</span>
-<span class="linenos"> 5</span>        <span class="s2">&quot;assert_handler.h&quot;</span><span class="p">,</span>
-<span class="linenos"> 6</span>        <span class="s2">&quot;main.cpp&quot;</span><span class="p">,</span>
-<span class="linenos"> 7</span>    <span class="p">],</span>
-<span class="linenos"> 8</span>    <span class="n">visibility</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;//visibility:public&quot;</span><span class="p">],</span>
-<span class="linenos"> 9</span>    <span class="n">deps</span> <span class="o">=</span> <span class="p">[</span>
-<span class="linenos">10</span>        <span class="s2">&quot;:sample_sender_receiver&quot;</span><span class="p">,</span>
-<span class="linenos">11</span>        <span class="s2">&quot;@score_communication//score/mw/com&quot;</span><span class="p">,</span>
-<span class="linenos">12</span>        <span class="s2">&quot;@boost.program_options&quot;</span><span class="p">,</span>
-<span class="linenos">13</span>        <span class="s2">&quot;@score_baselibs//score/language/futurecpp&quot;</span><span class="p">,</span>
-<span class="linenos">14</span>        <span class="s2">&quot;@score_baselibs//score/mw/log&quot;</span><span class="p">,</span>
-<span class="linenos">15</span>    <span class="p">],</span>
-<span class="linenos">16</span><span class="p">)</span>
+<p>SCRAMPLE provides two minimal “Hello World” applications — one in C++ and one in Rust — that
+both use the S-CORE <code class="docutils literal notranslate"><span class="pre">mw::log</span></code> logging library.</p>
+<section id="c-application-src-cpp-build">
+<h2>C++ Application (<code class="docutils literal notranslate"><span class="pre">src_cpp/BUILD</span></code>)<a class="headerlink" href="#c-application-src-cpp-build" title="Link to this heading">#</a></h2>
+<p>Let’s begin with the C++ application, starting with the bazel
+<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/src_cpp/BUILD">src_cpp/BUILD</a> file.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">cc_binary</span><span class="p">(</span>
+<span class="linenos">2</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;scrample_cpp&quot;</span><span class="p">,</span>
+<span class="linenos">3</span>    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;main.cpp&quot;</span><span class="p">],</span>
+<span class="linenos">4</span>    <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;//config:logging.json&quot;</span><span class="p">],</span>
+<span class="linenos">5</span>    <span class="n">visibility</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;//visibility:public&quot;</span><span class="p">],</span>
+<span class="linenos">6</span>    <span class="n">deps</span> <span class="o">=</span> <span class="p">[</span>
+<span class="linenos">7</span>        <span class="s2">&quot;@score_logging//score/mw/log&quot;</span><span class="p">,</span>
+<span class="linenos">8</span>    <span class="p">],</span>
+<span class="linenos">9</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The <a class="reference external" href="https://bazel.build/reference/be/c-cpp#cc_binary">cc_binary</a> produces a cpp binary,
-by starting C/C++ compilation with the specified toolchain. We will define the toolchain later in this chapter.
-Let’s first look at the content of the cc_binary.</p>
-<p>The attributes of <em>cc_binary</em>  are documented in detail in the bazel documentation, and it is worth reviewing them.
-In this example, the rule includes three source files. The <em>scrample</em> binary depends on:</p>
+<p>The <a class="reference external" href="https://bazel.build/reference/be/c-cpp#cc_binary">cc_binary</a> produces a C++ binary.
+The attributes of <em>cc_binary</em> are documented in detail in the Bazel documentation.
+The <em>scrample_cpp</em> binary depends on:</p>
 <ul class="simple">
-<li><p>the <em>communication</em> module (IPC functionality)</p></li>
-<li><p>the <em>baselibs</em> module (cpp language extension and logging)</p></li>
+<li><p>the <em>score_logging</em> module (<code class="docutils literal notranslate"><span class="pre">mw::log</span></code> logging library)</p></li>
 </ul>
-<p>The scrample target is marked with “public” visibility so that it can be used later in the <em>reference integration</em> module.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">cc_library</span><span class="p">(</span>
-<span class="linenos"> 2</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;sample_sender_receiver&quot;</span><span class="p">,</span>
-<span class="linenos"> 3</span>    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span>
-<span class="linenos"> 4</span>        <span class="s2">&quot;sample_sender_receiver.cpp&quot;</span><span class="p">,</span>
-<span class="linenos"> 5</span>    <span class="p">],</span>
-<span class="linenos"> 6</span>    <span class="n">hdrs</span> <span class="o">=</span> <span class="p">[</span>
-<span class="linenos"> 7</span>        <span class="s2">&quot;sample_sender_receiver.h&quot;</span><span class="p">,</span>
-<span class="linenos"> 8</span>    <span class="p">],</span>
-<span class="linenos"> 9</span>    <span class="n">deps</span> <span class="o">=</span> <span class="p">[</span>
-<span class="linenos">10</span>        <span class="s2">&quot;:datatype&quot;</span><span class="p">,</span>
-<span class="linenos">11</span>        <span class="s2">&quot;@score_communication//score/mw/com&quot;</span><span class="p">,</span>
-<span class="linenos">12</span>        <span class="s2">&quot;@score_baselibs//score/mw/log&quot;</span><span class="p">,</span>
-<span class="linenos">13</span>    <span class="p">],</span>
-<span class="linenos">14</span><span class="p">)</span>
-<span class="linenos">15</span>
-<span class="linenos">16</span><span class="n">cc_library</span><span class="p">(</span>
-<span class="linenos">17</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;datatype&quot;</span><span class="p">,</span>
-<span class="linenos">18</span>    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span>
-<span class="linenos">19</span>        <span class="s2">&quot;datatype.cpp&quot;</span><span class="p">,</span>
-<span class="linenos">20</span>    <span class="p">],</span>
-<span class="linenos">21</span>    <span class="n">hdrs</span> <span class="o">=</span> <span class="p">[</span>
-<span class="linenos">22</span>        <span class="s2">&quot;datatype.h&quot;</span><span class="p">,</span>
-<span class="linenos">23</span>    <span class="p">],</span>
-<span class="linenos">24</span>    <span class="n">deps</span> <span class="o">=</span> <span class="p">[</span>
-<span class="linenos">25</span>        <span class="s2">&quot;@score_communication//score/mw/com&quot;</span><span class="p">,</span>
-<span class="linenos">26</span>        <span class="s2">&quot;@score_baselibs//score/language/futurecpp&quot;</span><span class="p">,</span>
-<span class="linenos">27</span>    <span class="p">],</span>
-<span class="linenos">28</span><span class="p">)</span>
+<p>The logging configuration is provided via <code class="docutils literal notranslate"><span class="pre">//config:logging.json</span></code>, which is made available
+at runtime through Bazel’s runfiles mechanism.</p>
+</section>
+<section id="rust-application-src-rust-build">
+<h2>Rust Application (<code class="docutils literal notranslate"><span class="pre">src_rust/BUILD</span></code>)<a class="headerlink" href="#rust-application-src-rust-build" title="Link to this heading">#</a></h2>
+<p>The Rust application is defined in
+<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/src_rust/BUILD">src_rust/BUILD</a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;@rules_rust//rust:defs.bzl&quot;</span><span class="p">,</span> <span class="s2">&quot;rust_binary&quot;</span><span class="p">)</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="n">RUSTC_FLAGS</span> <span class="o">=</span> <span class="n">select</span><span class="p">({</span>
+<span class="linenos"> 4</span>    <span class="s2">&quot;@platforms//os:qnx&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="linenos"> 5</span>        <span class="s2">&quot;-Clink-arg=-lc++&quot;</span><span class="p">,</span>
+<span class="linenos"> 6</span>        <span class="s2">&quot;-Clink-arg=-lm&quot;</span><span class="p">,</span>
+<span class="linenos"> 7</span>    <span class="p">],</span>
+<span class="linenos"> 8</span>    <span class="s2">&quot;//conditions:default&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="linenos"> 9</span>        <span class="s2">&quot;-Clink-arg=-lstdc++&quot;</span><span class="p">,</span>
+<span class="linenos">10</span>        <span class="s2">&quot;-Clink-arg=-lm&quot;</span><span class="p">,</span>
+<span class="linenos">11</span>        <span class="s2">&quot;-Clink-arg=-lc&quot;</span><span class="p">,</span>
+<span class="linenos">12</span>    <span class="p">],</span>
+<span class="linenos">13</span><span class="p">})</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="n">rust_binary</span><span class="p">(</span>
+<span class="linenos">16</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;scrample_rust&quot;</span><span class="p">,</span>
+<span class="linenos">17</span>    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;main.rs&quot;</span><span class="p">],</span>
+<span class="linenos">18</span>    <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;//config:logging.json&quot;</span><span class="p">],</span>
+<span class="linenos">19</span>    <span class="n">edition</span> <span class="o">=</span> <span class="s2">&quot;2021&quot;</span><span class="p">,</span>
+<span class="linenos">20</span>    <span class="n">rustc_flags</span> <span class="o">=</span> <span class="n">RUSTC_FLAGS</span><span class="p">,</span>
+<span class="linenos">21</span>    <span class="n">visibility</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;//visibility:public&quot;</span><span class="p">],</span>
+<span class="linenos">22</span>    <span class="n">deps</span> <span class="o">=</span> <span class="p">[</span>
+<span class="linenos">23</span>        <span class="s2">&quot;@score_baselibs_rust//src/log/score_log&quot;</span><span class="p">,</span>
+<span class="linenos">24</span>        <span class="s2">&quot;@score_logging//score/mw/log/rust/score_log_bridge&quot;</span><span class="p">,</span>
+<span class="linenos">25</span>    <span class="p">],</span>
+<span class="linenos">26</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The sender/receiver logic and the datatype handling are implemented as separate
-<a class="reference external" href="https://bazel.build/reference/be/c-cpp#cc_library">cc_library</a> targets to improve testability.</p>
-<p>The scrample cc_binary depends on both libraries.</p>
-<p>Now that the targets are defined, we can build the binary.</p>
-<p>To do so, we must first specify the toolchain that compile and link  the code.
-Since we want to run the application in QNX qemu environment, we will build it using the qcc toolchain.
-Before continuing, it is helpful to introduce two fundamental bazel concepts:bazel toolchains and bazel platforms.</p>
+<p>The Rust binary uses:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">score_log</span></code> from the <em>score_baselibs_rust</em> module as a Rust logging facade</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">score_log_bridge</span></code> from the <em>score_logging</em> module to bridge Rust logging to the <code class="docutils literal notranslate"><span class="pre">mw::log</span></code> C++ backend</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">RUSTC_FLAGS</span></code> select expression ensures correct C++ standard library linking on both Linux and QNX targets.</p>
+<p>Now that the targets are defined, we can build the binaries.</p>
+<p>Before continuing, it is helpful to introduce two fundamental Bazel concepts: toolchains and platforms.</p>
 <p>A complete explanation is beyond the scope of this small tutorial, but the following brief overview is sufficient:</p>
 <ul class="simple">
-<li><p>A <a class="reference external" href="https://bazel.build/extending/toolchain">bazel toolchains</a> specifies which compiler toolchain and linker are used (e.g., qcc, gcc or llvm).</p></li>
-<li><p>A <a class="reference external" href="https://bazel.build/extending/platform">bazel platforms</a> defines the target cpu architecture (e.g., arm or x86).</p></li>
+<li><p>A <a class="reference external" href="https://bazel.build/extending/toolchain">Bazel toolchain</a> specifies which compiler and linker are used (e.g., GCC, Ferrocene).</p></li>
+<li><p>A <a class="reference external" href="https://bazel.build/extending/platform">Bazel platform</a> defines the target CPU architecture and OS (e.g., x86_64 Linux or x86_64 QNX).</p></li>
 </ul>
-<p>For the scrample example, we want to use the qcc toolchain for x86_64 platform.
-To add qcc toolchain support to our module, we extend the
-<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.0/MODULE.bazel">MODULE.bazel</a> file with the corresponding toolchain configuration.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># Configure the target toolchain.</span>
-<span class="linenos"> 2</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_toolchains_qnx&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.0.2&quot;</span><span class="p">,</span> <span class="n">dev_dependency</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="linenos"> 3</span><span class="n">qnx</span> <span class="o">=</span> <span class="n">use_extension</span><span class="p">(</span><span class="s2">&quot;@score_toolchains_qnx//:extensions.bzl&quot;</span><span class="p">,</span> <span class="s2">&quot;toolchains_qnx&quot;</span><span class="p">,</span> <span class="n">dev_dependency</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="linenos"> 4</span><span class="n">qnx</span><span class="o">.</span><span class="n">sdp</span><span class="p">(</span>
-<span class="linenos"> 5</span>    <span class="n">sha256</span> <span class="o">=</span> <span class="s2">&quot;f2e0cb21c6baddbcb65f6a70610ce498e7685de8ea2e0f1648f01b327f6bac63&quot;</span><span class="p">,</span>
-<span class="linenos"> 6</span>    <span class="n">strip_prefix</span> <span class="o">=</span> <span class="s2">&quot;installation&quot;</span><span class="p">,</span>
-<span class="linenos"> 7</span>    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://www.qnx.com/download/download/79858/installation.tgz&quot;</span><span class="p">,</span>
-<span class="linenos"> 8</span><span class="p">)</span>
-<span class="linenos"> 9</span><span class="n">use_repo</span><span class="p">(</span><span class="n">qnx</span><span class="p">,</span> <span class="s2">&quot;toolchains_qnx_sdp&quot;</span><span class="p">)</span>
-<span class="linenos">10</span><span class="n">use_repo</span><span class="p">(</span><span class="n">qnx</span><span class="p">,</span> <span class="s2">&quot;toolchains_qnx_qcc&quot;</span><span class="p">)</span>
+<p>SCRAMPLE uses the same toolchain setup as the other S-CORE modules, provided by
+<a class="reference external" href="https://github.com/eclipse-score/bazel_cpp_toolchains">score_bazel_cpp_toolchains</a>.
+To add these toolchains to our module, we extend the
+<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/MODULE.bazel">MODULE.bazel</a>
+file with the corresponding configuration:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># C++ and QNX toolchains (same setup as score_baselibs / score_baselibs_rust)</span>
+<span class="linenos"> 2</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_bazel_cpp_toolchains&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.5.1&quot;</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="n">gcc</span> <span class="o">=</span> <span class="n">use_extension</span><span class="p">(</span><span class="s2">&quot;@score_bazel_cpp_toolchains//extensions:gcc.bzl&quot;</span><span class="p">,</span> <span class="s2">&quot;gcc&quot;</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="linenos"> 5</span><span class="n">gcc</span><span class="o">.</span><span class="n">toolchain</span><span class="p">(</span>
+<span class="linenos"> 6</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_gcc_x86_64_toolchain&quot;</span><span class="p">,</span>
+<span class="linenos"> 7</span>    <span class="n">target_cpu</span> <span class="o">=</span> <span class="s2">&quot;x86_64&quot;</span><span class="p">,</span>
+<span class="linenos"> 8</span>    <span class="n">target_os</span> <span class="o">=</span> <span class="s2">&quot;linux&quot;</span><span class="p">,</span>
+<span class="linenos"> 9</span>    <span class="n">use_default_package</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="linenos">10</span>    <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;12.2.0&quot;</span><span class="p">,</span>
+<span class="linenos">11</span><span class="p">)</span>
+<span class="linenos">12</span><span class="n">gcc</span><span class="o">.</span><span class="n">toolchain</span><span class="p">(</span>
+<span class="linenos">13</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_qcc_x86_64_toolchain&quot;</span><span class="p">,</span>
+<span class="linenos">14</span>    <span class="n">sdp_version</span> <span class="o">=</span> <span class="s2">&quot;8.0.0&quot;</span><span class="p">,</span>
+<span class="linenos">15</span>    <span class="n">target_cpu</span> <span class="o">=</span> <span class="s2">&quot;x86_64&quot;</span><span class="p">,</span>
+<span class="linenos">16</span>    <span class="n">target_os</span> <span class="o">=</span> <span class="s2">&quot;qnx&quot;</span><span class="p">,</span>
+<span class="linenos">17</span>    <span class="n">use_default_package</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="linenos">18</span>    <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;12.2.0&quot;</span><span class="p">,</span>
+<span class="linenos">19</span><span class="p">)</span>
+<span class="linenos">20</span><span class="n">use_repo</span><span class="p">(</span>
+<span class="linenos">21</span>    <span class="n">gcc</span><span class="p">,</span>
+<span class="linenos">22</span>    <span class="s2">&quot;score_gcc_x86_64_toolchain&quot;</span><span class="p">,</span>
+<span class="linenos">23</span>    <span class="s2">&quot;score_qcc_x86_64_toolchain&quot;</span><span class="p">,</span>
+<span class="linenos">24</span><span class="p">)</span>
+<span class="linenos">25</span>
+<span class="linenos">26</span><span class="c1"># Ferrocene Rust toolchains (QNX cross-compilation support)</span>
+<span class="linenos">27</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_toolchains_rust&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.9.1&quot;</span><span class="p">,</span> <span class="n">dev_dependency</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The score_toolchains_qnx module is referenced here as a dependency.
-It contains qnx toolchain, including compiler, linker, image creation tools, and their configuration for the Eclipse S-CORE project.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">score_bazel_cpp_toolchains</span></code> module provides GCC 12.2.0 for both Linux host builds and
+QNX SDP 8.0.0 cross-compilation. The <code class="docutils literal notranslate"><span class="pre">score_toolchains_rust</span></code> module provides pre-built
+<a class="reference external" href="https://ferrous-systems.com/ferrocene/">Ferrocene</a> toolchains for Rust.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>CI/CD pipeline uses its own QNX license when building the code with qnx. If you want to build the source code with
-qnx compiler locally, you must acquire a QNX 8.x “free for non commercial use” license and install QNX 8.x SDP
+<p>CI/CD pipeline uses its own QNX license when building the code with QNX. If you want to build the source code with
+the QNX compiler locally, you must acquire a QNX 8.x “free for non commercial use” license and install QNX 8.x SDP
 as described in the <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/v0.5.0-alpha/runners/qemu_x86_64/README.md">QNX &amp; QEMU set-up tutorial</a>.</p>
 </div>
-<p>Since our application depends on baselibs and communication module (as defined in the
-<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.0/src/BUILD">src/BUILD</a> file),
-we also need to add the dependencies to these modules into the <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.0/MODULE.bazel">MODULE.bazel</a>
-file as well, as shown below:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_baselibs&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.1.3&quot;</span><span class="p">)</span>
-<span class="linenos">2</span>
-<span class="linenos">3</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_communication&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.1.0&quot;</span><span class="p">)</span>
+<p>Since our applications depend on the logging and base libraries (as defined in the
+<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/src_cpp/BUILD">src_cpp/BUILD</a> and
+<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/src_rust/BUILD">src_rust/BUILD</a> files),
+we also need to add the dependencies to these modules into the
+<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/MODULE.bazel">MODULE.bazel</a> file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_baselibs&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.2.7&quot;</span><span class="p">)</span>
+<span class="linenos">2</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_baselibs_rust&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.1.2&quot;</span><span class="p">)</span>
+<span class="linenos">3</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_logging&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.2.1&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;platforms&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.0.11&quot;</span><span class="p">)</span>
-<span class="linenos">2</span>
-<span class="linenos">3</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_bazel_platforms&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.0.2&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;platforms&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;1.0.0&quot;</span><span class="p">)</span>
+<span class="linenos">2</span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_bazel_platforms&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.1.2&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>In addition to the previously mentioned modules, we also need to add some transitive dependencies.</p>
-<p>The scrample application does not use these modules directly, but the modules it depends on do. For example:</p>
-<ul class="simple">
-<li><p><em>platforms</em> and <em>score_bazel_platforms</em> are required by the qnx toolchain module</p></li>
-</ul>
 <p>Bazel modules don’t inherit transitive dependencies automatically.
-This means that you must always list all required module dependencies explicitly in your <em>MODULE.bazel</em> file.
-So far, we have assumed that our module depends on another bazel module providing the qcc toolchain.
-To actually use this toolchain, we now need to specify the platform and configure the usage of qcc toolchain in
-<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.0/.bazelrc">.bazelrc</a> file.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">build</span><span class="p">:</span><span class="n">_common</span> <span class="o">--</span><span class="nd">@score_baselibs</span><span class="o">//</span><span class="n">score</span><span class="o">/</span><span class="n">mw</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">detail</span><span class="o">/</span><span class="n">flags</span><span class="p">:</span><span class="n">KUse_Stub_Implementation_Only</span><span class="o">=</span><span class="kc">False</span>
-<span class="linenos"> 2</span><span class="n">build</span><span class="p">:</span><span class="n">_common</span> <span class="o">--</span><span class="nd">@score_baselibs</span><span class="o">//</span><span class="n">score</span><span class="o">/</span><span class="n">mw</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">flags</span><span class="p">:</span><span class="n">KRemote_Logging</span><span class="o">=</span><span class="kc">False</span>
-<span class="linenos"> 3</span><span class="n">build</span><span class="p">:</span><span class="n">_common</span> <span class="o">--</span><span class="nd">@score_baselibs</span><span class="o">//</span><span class="n">score</span><span class="o">/</span><span class="n">json</span><span class="p">:</span><span class="n">base_library</span><span class="o">=</span><span class="n">nlohmann</span>
-<span class="linenos"> 4</span><span class="n">build</span><span class="p">:</span><span class="n">_common</span> <span class="o">--</span><span class="nd">@score_baselibs</span><span class="o">//</span><span class="n">score</span><span class="o">/</span><span class="n">memory</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">flags</span><span class="p">:</span><span class="n">use_typedshmd</span><span class="o">=</span><span class="kc">False</span>
-<span class="linenos"> 5</span><span class="n">build</span><span class="p">:</span><span class="n">_common</span> <span class="o">--</span><span class="nd">@score_communication</span><span class="o">//</span><span class="n">score</span><span class="o">/</span><span class="n">mw</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">flags</span><span class="p">:</span><span class="n">tracing_library</span><span class="o">=</span><span class="n">stub</span>
-<span class="linenos"> 6</span><span class="n">build</span><span class="p">:</span><span class="n">_common</span> <span class="o">--</span><span class="n">cxxopt</span><span class="o">=-</span><span class="n">Wno</span><span class="o">-</span><span class="n">error</span><span class="o">=</span><span class="n">mismatched</span><span class="o">-</span><span class="n">new</span><span class="o">-</span><span class="n">delete</span>
-<span class="linenos"> 7</span>
-<span class="linenos"> 8</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">config</span><span class="o">=</span><span class="n">_common</span>
-<span class="linenos"> 9</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">noexperimental_merged_skyframe_analysis_execution</span>
-<span class="linenos">10</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">incompatible_enable_cc_toolchain_resolution</span>
-<span class="linenos">11</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">incompatible_strict_action_env</span>
-<span class="hll"><span class="linenos">12</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">platforms</span><span class="o">=</span><span class="nd">@score_bazel_platforms</span><span class="o">//</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span>
-</span><span class="linenos">13</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">extra_toolchains</span><span class="o">=</span><span class="nd">@toolchains_qnx_qcc</span><span class="o">//</span><span class="p">:</span><span class="n">qcc_x86_64</span>
+This means that you must always list all required module dependencies explicitly in your <em>MODULE.bazel</em> file.</p>
+<p>To actually use the registered toolchains, we also need to configure them in the
+<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/.bazelrc">.bazelrc</a> file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos"> 1</span><span class="n">common</span> <span class="o">--</span><span class="n">extra_toolchains</span><span class="o">=</span><span class="nd">@score_gcc_x86_64_toolchain</span><span class="o">//</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gcc_12</span><span class="mf">.2.0</span>
+</span><span class="hll"><span class="linenos"> 2</span><span class="n">common</span> <span class="o">--</span><span class="n">extra_toolchains</span><span class="o">=</span><span class="nd">@score_toolchains_rust</span><span class="o">//</span><span class="n">toolchains</span><span class="o">/</span><span class="n">ferrocene</span><span class="p">:</span><span class="n">ferrocene_x86_64_unknown_linux_gnu</span>
+</span><span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="n">common</span> <span class="o">--</span><span class="nd">@score_baselibs</span><span class="o">//</span><span class="n">score</span><span class="o">/</span><span class="n">memory</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">flags</span><span class="p">:</span><span class="n">use_typedshmd</span><span class="o">=</span><span class="kc">False</span>
+<span class="linenos"> 5</span><span class="n">common</span> <span class="o">--</span><span class="nd">@score_baselibs</span><span class="o">//</span><span class="n">score</span><span class="o">/</span><span class="n">mw</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">flags</span><span class="p">:</span><span class="n">KRemote_Logging</span><span class="o">=</span><span class="kc">False</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="n">build</span><span class="p">:</span><span class="n">_common</span> <span class="o">--</span><span class="nd">@score_baselibs</span><span class="o">//</span><span class="n">score</span><span class="o">/</span><span class="n">json</span><span class="p">:</span><span class="n">base_library</span><span class="o">=</span><span class="n">nlohmann</span>
+<span class="linenos"> 8</span><span class="n">build</span><span class="p">:</span><span class="n">_common</span> <span class="o">--</span><span class="n">cxxopt</span><span class="o">=-</span><span class="n">Wno</span><span class="o">-</span><span class="n">error</span><span class="o">=</span><span class="n">mismatched</span><span class="o">-</span><span class="n">new</span><span class="o">-</span><span class="n">delete</span>
+<span class="linenos"> 9</span><span class="n">build</span><span class="p">:</span><span class="n">_common</span> <span class="o">--</span><span class="n">cxxopt</span><span class="o">=-</span><span class="n">Wno</span><span class="o">-</span><span class="n">error</span><span class="o">=</span><span class="n">deprecated</span><span class="o">-</span><span class="n">declarations</span>
+<span class="linenos">10</span>
+<span class="hll"><span class="linenos">11</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">config</span><span class="o">=</span><span class="n">_common</span>
+</span><span class="hll"><span class="linenos">12</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">noexperimental_merged_skyframe_analysis_execution</span>
+</span><span class="linenos">13</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">incompatible_enable_cc_toolchain_resolution</span>
+<span class="linenos">14</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">incompatible_strict_action_env</span>
+<span class="linenos">15</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">platforms</span><span class="o">=</span><span class="nd">@score_bazel_platforms</span><span class="o">//</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span><span class="o">-</span><span class="n">sdp_8</span><span class="mf">.0.0</span><span class="o">-</span><span class="n">posix</span>
+<span class="linenos">16</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">extra_toolchains</span><span class="o">=</span><span class="nd">@score_qcc_x86_64_toolchain</span><span class="o">//</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span><span class="o">-</span><span class="n">sdp_8</span><span class="mf">.0.0</span>
+<span class="linenos">17</span><span class="n">build</span><span class="p">:</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">--</span><span class="n">extra_toolchains</span><span class="o">=</span><span class="nd">@score_toolchains_rust</span><span class="o">//</span><span class="n">toolchains</span><span class="o">/</span><span class="n">ferrocene</span><span class="p">:</span><span class="n">ferrocene_x86_64_pc_nto_qnx800</span>
 </pre></div>
 </div>
-<p>Lines 1-6 define compiler options that apply to the source code itself.</p>
-<p>These options must be used by all toolchains, because bazel builds not only your module,
-but also all dependent modules within the context of your bazel module’s configuration.
-For this reason, you must specify the compiler settings that are required to build your dependencies as well.</p>
-<p>In line 8, we apply the common configuration to the qnx toolchain.
-Afterwards, we specify additional compiler and linker flags that apply only to the qnx toolchain.</p>
-<p>Lines 12-13 (highlighted in the code snippet) configure bazel to use the <em>qnx toolchain</em> referenced earlier
-in the <a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.0/MODULE.bazel">MODULE.bazel</a> file.</p>
-<p>We also build our code for the <em>x86_64-qnx platform</em>. This is important, since our qnx toolchain supports multiple platforms
-(e.g., <em>arm</em> and <em>x86_64</em>).</p>
-<p>Finally, we can compile the code.  During the build, we must explicitly select the configuration to use, as shown in the example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">bazel</span> <span class="n">build</span> <span class="o">--</span><span class="n">config</span><span class="o">=</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span>  <span class="o">//</span><span class="n">src</span><span class="p">:</span><span class="n">scrample</span>
+<p>Lines 1-2 (highlighted) register the GCC and Ferrocene toolchains for all builds.
+The Ferrocene Linux toolchain is registered as a <code class="docutils literal notranslate"><span class="pre">common</span></code> toolchain so that proc macro crates
+(compiled on the host) and QNX target crates share the same compiler metadata format,
+which is required for cross-compilation compatibility.</p>
+<p>Lines 4-5 set feature flags required by <code class="docutils literal notranslate"><span class="pre">score_baselibs</span></code> that are not applicable in
+this demo (proprietary shared memory driver and remote logging backend).
+These options must be set globally because Bazel builds all dependent modules within
+the context of your module’s configuration.</p>
+<p>Lines 11-17 (highlighted) configure Bazel to target the QNX SDP 8.0.0 platform and
+select the appropriate QNX and Ferrocene toolchains.</p>
+<p>Finally, we can compile the code. Always use an explicit build configuration:</p>
+<p><strong>Host build (Linux x86_64):</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>bazel<span class="w"> </span>build<span class="w"> </span>--config<span class="o">=</span>host<span class="w"> </span>//src_cpp:scrample_cpp
+<span class="linenos">2</span>bazel<span class="w"> </span>build<span class="w"> </span>--config<span class="o">=</span>host<span class="w"> </span>//src_rust:scrample_rust
 </pre></div>
 </div>
-<p>After the successfull compilation the binary can be normally found in the build folder:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">Target</span> <span class="o">//</span><span class="n">src</span><span class="p">:</span><span class="n">scrample</span> <span class="n">up</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">date</span><span class="p">:</span>
-<span class="linenos">2</span>    <span class="n">bazel</span><span class="o">-</span><span class="nb">bin</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">scrample</span>
+<p><strong>QNX cross-compilation:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>bazel<span class="w"> </span>build<span class="w"> </span>--config<span class="o">=</span>x86_64-qnx<span class="w"> </span>//src_cpp:scrample_cpp
+<span class="linenos">2</span>bazel<span class="w"> </span>build<span class="w"> </span>--config<span class="o">=</span>x86_64-qnx<span class="w"> </span>//src_rust:scrample_rust
+</pre></div>
+</div>
+<p>After a successful host build, the binaries can be found in the build folder:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>bazel-bin/src_cpp/scrample_cpp
+<span class="linenos">2</span>bazel-bin/src_rust/scrample_rust
+</pre></div>
+</div>
+<p>Both apps produce the same log output to the console:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>2026/05/22 12:00:00.0000000 00000000 000 ECU1 SCRM scra log info verbose 1 Hello from SCRAMPLE!
 </pre></div>
 </div>
 <p>Now it is time to run the binary in the reference QNX QEMU image.</p>
+</section>
 </section>
 
 
@@ -785,6 +812,19 @@ in the <a class="reference external" href="https://github.com/eclipse-score/scra
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-application-src-cpp-build">C++ Application (<code class="docutils literal notranslate"><span class="pre">src_cpp/BUILD</span></code>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rust-application-src-rust-build">Rust Application (<code class="docutils literal notranslate"><span class="pre">src_rust/BUILD</span></code>)</a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
 

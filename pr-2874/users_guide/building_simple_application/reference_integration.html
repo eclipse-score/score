@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Reference integration &#8212; S-CORE  documentation</title>
+    <title>How to Integrate a New Module into the Reference Integration &#8212; S-CORE  documentation</title>
   
   
   
@@ -519,7 +519,7 @@
 <li class="toctree-l2"><a class="reference internal" href="doc_generation.html">Documentation generation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="building_source_code.html">Building source code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cicd_workflows.html">CI/CD Workflows</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Reference integration</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">How to Integrate a New Module into the Reference Integration</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../whats_next/index.html">What’s Next?</a></li>
@@ -570,7 +570,7 @@
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">Contribute own module</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Reference integration</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">How to Integrate a New Module into the Reference Integration</span></li>
   </ul>
 </nav>
 </div>
@@ -587,147 +587,336 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="reference-integration">
-<h1>Reference integration<a class="headerlink" href="#reference-integration" title="Link to this heading">#</a></h1>
-<p>After building the scrample binary for the qnx x86 image,
-we can now run it inside the reference qnx image for the x86 platform.</p>
-<p>The reference integration repository already provides a
-<a class="reference external" href="https://github.com/eclipse-score/reference_integration/tree/v0.5.0-alpha/images/qnx_x86_64">reference qnx image</a>.</p>
-<p>This image is intentionally minimal and contains only the essential tooling in the
-<a class="reference external" href="https://www.qnx.com/developers/docs/8.0/com.qnx.doc.neutrino.building/topic/intro/intro_ifs.html">IFS image</a>.</p>
-<p>For more details of the qnx reference image in Eclipse S-CORE, refer to the reference integration
-<a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/v0.5.0-alpha/README.md">README.md</a>.</p>
-<p>To create an ifs image, qnx_ifs bazel rule in
-<a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/v0.5.0-alpha/qnx_qemu/build/BUILD#L45">images/qnx_x86_64/build/BUILD</a>
-file is used:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">qnx_ifs</span><span class="p">(</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;init&quot;</span><span class="p">,</span>
-    <span class="n">build_file</span> <span class="o">=</span> <span class="s2">&quot;init.build&quot;</span><span class="p">,</span>
-    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s2">&quot;system.build&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;:scripts&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;:configs&quot;</span><span class="p">,</span>
-    <span class="p">],</span>
-    <span class="n">visibility</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s2">&quot;//:__pkg__&quot;</span>
-    <span class="p">],</span>
+  <section id="how-to-integrate-a-new-module-into-the-reference-integration">
+<h1>How to Integrate a New Module into the Reference Integration<a class="headerlink" href="#how-to-integrate-a-new-module-into-the-reference-integration" title="Link to this heading">#</a></h1>
+<p>This guide explains how to add a new S-CORE module to the
+<a class="reference external" href="https://github.com/eclipse-score/reference_integration">reference_integration</a> repository,
+using <a class="reference external" href="https://github.com/eclipse-score/scrample/tree/v0.1.2-simple-app">scrample</a> as a concrete example.
+Scrample is a minimal “Hello World” logging application with both a C++ and a Rust implementation,
+demonstrating <code class="docutils literal notranslate"><span class="pre">mw::log</span></code> integration across both languages.</p>
+<section id="background-why-known-good-json">
+<h2>Background: Why <code class="docutils literal notranslate"><span class="pre">known_good.json</span></code>?<a class="headerlink" href="#background-why-known-good-json" title="Link to this heading">#</a></h2>
+<p>Each S-CORE module lives in its own Git repository and evolves independently.
+The reference integration continuously validates that a specific combination of
+module versions builds and tests successfully together – the so-called
+<em>known-good</em> state.</p>
+<p>Keeping this state in a dedicated JSON file instead of directly in Bazel’s
+<code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code> serves several purposes:</p>
+<ul class="simple">
+<li><p><strong>Single source of truth.</strong> All version pins, repository URLs, and
+integration metadata (test exclusions, language info, Bazel patches) are
+in one place and machine-readable. Tooling such as CI pipelines, workspace
+generators, and the Bazel module generator all consume the same data.</p></li>
+<li><p><strong>Separation of concerns.</strong> <code class="docutils literal notranslate"><span class="pre">known_good.json</span></code> is the <em>what</em> (which commit
+of which module), while the generated <code class="docutils literal notranslate"><span class="pre">.MODULE.bazel</span></code> file is the <em>how</em>
+(the Bazel-specific syntax). Keeping them separate avoids manual errors
+in Bazel syntax and keeps the intent readable without Bazel knowledge.</p></li>
+<li><p><strong>Tooling support.</strong> Because the version data is structured JSON, it can be
+consumed by additional scripts:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">scripts/known_good/override_known_good_repo.py</span></code> – pins individual
+modules to a different commit (e.g. for testing a PR) without touching
+the canonical file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scripts/known_good/known_good_to_workspace_metadata.py</span></code> – generates
+the workspace manager file (<code class="docutils literal notranslate"><span class="pre">.gita-workspace.csv</span></code>) used to clone all
+module repositories locally.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scripts/known_good/update_module_from_known_good.py</span></code> – regenerates
+the Bazel <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code> files.</p></li>
+</ul>
+</li>
+<li><p><strong>Reproducibility.</strong> Every entry is pinned to a full SHA-1 commit hash,
+making the integrated state fully reproducible regardless of branch
+tip movements.</p></li>
+</ul>
+</section>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>There are two files that together define which modules are integrated:</p>
+<ul class="simple">
+<li><p><strong>``known_good.json``</strong> – the single source of truth for all module versions
+(Git hashes, repository URLs, and metadata such as test configuration).
+This file is edited manually.</p></li>
+<li><p><strong>``bazel_common/score_modules_&lt;category&gt;.MODULE.bazel``</strong> – generated from
+<code class="docutils literal notranslate"><span class="pre">known_good.json</span></code> by a script. <strong>Do not edit this file manually.</strong></p></li>
+</ul>
+<p>The general workflow is:</p>
+<ol class="arabic simple">
+<li><p>Add the new module entry to <code class="docutils literal notranslate"><span class="pre">known_good.json</span></code>.</p></li>
+<li><p>Run the generation script to update the <code class="docutils literal notranslate"><span class="pre">.MODULE.bazel</span></code> file.</p></li>
+<li><p>Optionally add a standalone showcase so the module appears in the S-CORE CLI.</p></li>
+</ol>
+</section>
+<section id="step-1-add-the-module-to-known-good-json">
+<h2>Step 1 – Add the module to <code class="docutils literal notranslate"><span class="pre">known_good.json</span></code><a class="headerlink" href="#step-1-add-the-module-to-known-good-json" title="Link to this heading">#</a></h2>
+<p>Open <code class="docutils literal notranslate"><span class="pre">known_good.json</span></code> and add your module under the appropriate category.
+There are currently two categories:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">target_sw</span></code> – modules that are part of the target software stack
+(deployed on the target platform, e.g. C++ / Rust runtime components).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tooling</span></code> – build and development tooling modules.</p></li>
+</ul>
+<p>Scrample is a <code class="docutils literal notranslate"><span class="pre">target_sw</span></code> module, so its entry goes under that key.
+The <code class="docutils literal notranslate"><span class="pre">hash</span></code> is the full SHA-1 commit of the version to integrate – in this case
+the head commit of <a class="reference external" href="https://github.com/eclipse-score/scrample/pull/31">PR #31</a>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;score_scrample&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;repo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/eclipse-score/scrample.git&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;hash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;32abf22969081a7c4a97733cf6d1b88b9e0c9d55&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;code_root_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;//src_rust/...&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;langs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;cpp&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;rust&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">code_root_path</span></code> points to the Bazel target pattern used for test
+discovery. For scrample the Rust sources live under <code class="docutils literal notranslate"><span class="pre">src_rust/</span></code>, so
+that is specified explicitly instead of the default <code class="docutils literal notranslate"><span class="pre">//score/...</span></code>.</p>
+</div>
+<section id="metadata-fields-explained">
+<h3>Metadata fields explained<a class="headerlink" href="#metadata-fields-explained" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 15.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">repo</span></code></p></td>
+<td><p>yes</p></td>
+<td><p>HTTPS URL to the Git repository (ending in <code class="docutils literal notranslate"><span class="pre">.git</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hash</span></code></p></td>
+<td><p>yes</p></td>
+<td><p>Full SHA-1 commit hash of the version to integrate.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bazel_patches</span></code></p></td>
+<td><p>no</p></td>
+<td><p>List of Bazel label paths to <code class="docutils literal notranslate"><span class="pre">.patch</span></code> files that are applied to the
+module source before building (<code class="docutils literal notranslate"><span class="pre">patch_strip</span> <span class="pre">=</span> <span class="pre">1</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">metadata.code_root_path</span></code></p></td>
+<td><p>no</p></td>
+<td><p>Bazel target pattern for the module’s source root.
+Defaults to <code class="docutils literal notranslate"><span class="pre">//score/...</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">metadata.langs</span></code></p></td>
+<td><p>no</p></td>
+<td><p>Languages present in the module: <code class="docutils literal notranslate"><span class="pre">&quot;cpp&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;rust&quot;</span></code>, or both.
+Defaults to <code class="docutils literal notranslate"><span class="pre">[&quot;cpp&quot;,</span> <span class="pre">&quot;rust&quot;]</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">metadata.extra_test_config</span></code></p></td>
+<td><p>no</p></td>
+<td><p>Additional flag values passed to test runs.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">metadata.exclude_test_targets</span></code></p></td>
+<td><p>no</p></td>
+<td><p>Bazel target patterns excluded from CI test runs
+(e.g. known-failing or platform-specific tests).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">metadata.rust_coverage_config</span></code></p></td>
+<td><p>no</p></td>
+<td><p>Rust coverage profile name. Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;ferrocene-coverage&quot;</span></code>.
+Set to <code class="docutils literal notranslate"><span class="pre">null</span></code> to disable Rust coverage for this module.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="step-2-regenerate-the-module-bazel-file">
+<h2>Step 2 – Regenerate the <code class="docutils literal notranslate"><span class="pre">.MODULE.bazel</span></code> file<a class="headerlink" href="#step-2-regenerate-the-module-bazel-file" title="Link to this heading">#</a></h2>
+<p>After editing <code class="docutils literal notranslate"><span class="pre">known_good.json</span></code>, run the generation script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>scripts/known_good/update_module_from_known_good.py<span class="w"> </span>--override-type<span class="w"> </span>git
+</pre></div>
+</div>
+<p>This regenerates <code class="docutils literal notranslate"><span class="pre">bazel_common/score_modules_target_sw.MODULE.bazel</span></code>
+with the correct <code class="docutils literal notranslate"><span class="pre">bazel_dep</span></code> and <code class="docutils literal notranslate"><span class="pre">git_override</span></code> blocks for every module
+listed in <code class="docutils literal notranslate"><span class="pre">known_good.json</span></code>. For scrample the result looks like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_scrample&quot;</span><span class="p">)</span>
+<span class="n">git_override</span><span class="p">(</span>
+    <span class="n">module_name</span> <span class="o">=</span> <span class="s2">&quot;score_scrample&quot;</span><span class="p">,</span>
+    <span class="n">commit</span> <span class="o">=</span> <span class="s2">&quot;32abf22969081a7c4a97733cf6d1b88b9e0c9d55&quot;</span><span class="p">,</span>
+    <span class="n">remote</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/eclipse-score/scrample.git&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>The snippet above defines an <em>ifs image</em> named <em>init</em>.</p>
-<p>The <em>build_file</em> attribute points to the <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/v0.5.0-alpha/images/qnx_x86_64/build/init.build">init.build</a>
-script, which acts as the entry point for the <em>ifs image</em>.
-It defines the image content and the initial start-up steps.</p>
-<p>For more information, refer to the official <a class="reference external" href="https://www.qnx.com/developers/docs/8.0/com.qnx.doc.neutrino.building/topic/buildfiles/buildfile.html">QNX OS Image Build Files</a>
-documentation.</p>
-<p>The <em>init.build</em> file also includes <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/v0.5.0-alpha/images/qnx_x86_64/build/system.build">system.build</a> file,
-which is used - among other things - to deploy local files to the <em>ifs image</em>, as shown in the example below for the <em>dhcp.conf</em></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># DHCP client configuration</span>
-<span class="p">[</span><span class="n">perms</span><span class="o">=</span><span class="mi">644</span><span class="p">]</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">dhcpcd</span><span class="o">.</span><span class="n">conf</span> <span class="o">=</span> <span class="n">configs</span><span class="o">/</span><span class="n">dhcpcd</span><span class="o">.</span><span class="n">conf</span>                                     <span class="c1"># DHCP client configuration file</span>
+<p>Alternatively, use the VS Code task:</p>
+<ul class="simple">
+<li><p><strong>Terminal -&gt; Run Task… -&gt; “Switch Bazel modules to git_overrides”</strong></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For local cross-module development, use <code class="docutils literal notranslate"><span class="pre">--override-type</span> <span class="pre">local_path</span></code>
+so Bazel picks up a local checkout instead of downloading from Git.
+See the repository README for the full workspace setup procedure.</p>
+</div>
+</section>
+<section id="step-3-add-a-standalone-showcase-optional">
+<h2>Step 3 – Add a standalone showcase (optional)<a class="headerlink" href="#step-3-add-a-standalone-showcase-optional" title="Link to this heading">#</a></h2>
+<p>If the module provides runnable example binaries, expose them to the
+S-CORE CLI by adding files under <code class="docutils literal notranslate"><span class="pre">showcases/standalone/</span></code>.</p>
+<p><strong>``showcases/standalone/scrample.score.json``</strong> – describes the examples
+shown in the interactive CLI menu. Scrample ships both a C++ and a Rust binary,
+so both are listed as separate entries:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Scrample C++ Hello World&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Hello World logging example using score::mw::log in C++&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;apps&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/showcases/bin/scrample_cpp&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">                </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Scrample Rust Hello World&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Hello World logging example using score_log in Rust&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;apps&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/showcases/bin/scrample_rust&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">                </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">]</span>
 </pre></div>
 </div>
-<p>This is where we need to add our scrample application binary and its runtime configuration.
-Before doing so, we must first add the scrample binary as a dependency of the ifs image.</p>
-<p>The first step is to update the <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/v0.5.0-alpha/MODULE.bazel">MODULE.bazel</a>
-file with the dependency to the scrample module and all modules it depends on.</p>
-<p>Next, we need to extend <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/v0.5.0-alpha/.bazelrc">.bazelrc</a>
-file with the compiler settings needed to build these modules.</p>
-<p>Both steps follow the same pattern described earlier in the <a class="reference internal" href="building_source_code.html#building-source-code"><span class="std std-ref">Building source code</span></a> chapter.
-Once all dependencies are set up, we can add our scrample binary as dependency of the <em>ifs_image</em> target in the
-<a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/v0.5.0-alpha/qnx_qemu/build/BUILD#L45">images/qnx_x86_64/build/BUILD</a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">qnx_ifs</span><span class="p">(</span>
-<span class="linenos"> 2</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;init&quot;</span><span class="p">,</span>
-<span class="linenos"> 3</span>    <span class="n">build_file</span> <span class="o">=</span> <span class="s2">&quot;init.build&quot;</span><span class="p">,</span>
-<span class="linenos"> 4</span>    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span>
-<span class="linenos"> 5</span>        <span class="s2">&quot;system.build&quot;</span><span class="p">,</span>
-<span class="linenos"> 6</span>        <span class="s2">&quot;:scripts&quot;</span><span class="p">,</span>
-<span class="linenos"> 7</span>        <span class="s2">&quot;:configs&quot;</span><span class="p">,</span>
-<span class="hll"><span class="linenos"> 8</span>        <span class="s2">&quot;@score_scrample//src:scrample&quot;</span><span class="p">,</span>
-</span><span class="hll"><span class="linenos"> 9</span>        <span class="s2">&quot;//scrample_integration:etc_configs&quot;</span><span class="p">,</span>
-</span><span class="linenos">10</span>    <span class="p">],</span>
-<span class="linenos">11</span>    <span class="n">ext_repo_maping</span> <span class="o">=</span> <span class="p">{</span>
-<span class="hll"><span class="linenos">12</span>        <span class="s2">&quot;SCRAMPLE_PATH&quot;</span><span class="p">:</span> <span class="s2">&quot;$(location @score_scrample//src:scrample)&quot;</span><span class="p">,</span>
-</span><span class="linenos">13</span>    <span class="p">},</span>
-<span class="linenos">14</span>    <span class="n">visibility</span> <span class="o">=</span> <span class="p">[</span>
-<span class="linenos">15</span>        <span class="s2">&quot;//:__pkg__&quot;</span>
-<span class="linenos">16</span>    <span class="p">],</span>
-<span class="linenos">17</span><span class="p">)</span>
+<p><strong>``showcases/standalone/BUILD``</strong> – add a <code class="docutils literal notranslate"><span class="pre">score_pkg_bundle</span></code> entry that
+bundles both binaries and the JSON config file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">score_pkg_bundle</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;scrample&quot;</span><span class="p">,</span>
+    <span class="n">bins</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;@score_scrample//src_cpp:scrample_cpp&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;@score_scrample//src_rust:scrample_rust&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="n">config_data</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;//showcases/standalone:scrample.score.json&quot;</span><span class="p">],</span>
+    <span class="n">package_dir</span> <span class="o">=</span> <span class="s2">&quot;standalone&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
-<p>In lines 8 and 9, we add the dependencies for the <em>scrample binary</em> and <em>scrample runtime config</em>.</p>
-<p>Because the <em>scrample_binary</em> target is defined in the scrample bazel module,
-we must reference it explicit using the scrample module prefix <em>&#64;score_scrample</em>.</p>
-<p>The <em>scrample runtime configuration</em> is located in <em>reference_integration</em> repository and includes
-the <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/v0.5.0-alpha/feature_integration_tests/configs/etc/mw_com_config.json">IPC services definition file</a>
-and <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/v0.5.0-alpha/feature_integration_tests/configs/etc/logging.json">logging config file</a>.</p>
-<p>As shown in the <em>scrample runtime config</em> <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/v0.5.0-alpha/qnx_qemu/scrample_integration/BUILD#L15">BUILD</a>
-file, we use the <em>bazel</em> function <a class="reference external" href="https://bazel.build/reference/be/functions#exports_files">export_files</a>
-to make files available to the external qnx tool <a class="reference external" href="https://www.qnx.com/developers/docs/8.0/com.qnx.doc.neutrino.utilities/topic/m/mkifs.html">mkifs</a>,
-which is triggered by q*nx_ifs()* in the background.</p>
-<p>For the same reason, we declare in line 12 the path to the built <em>scrample binary</em> as the environment variable <em>SCRAMPLE_PATH</em>.
-(Remember: all targets from other modules are rebuilt in the context of the current module’s configuration.)
-This allows as to reference the binary during <em>mkifs</em> execution.
-Finally, we add the scrample artifact to the <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/v0.5.0-alpha/images/qnx_x86_64/build/system.build#L279">system.build file</a> file, as shown below:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[perms=777] /etc/logging.json = scrample_integration/etc/logging.json
-[perms=777] /etc/mw_com_config.json = scrample_integration/etc/mw_com_config.json
+<p><strong>``showcases/BUILD``</strong> – reference the new <code class="docutils literal notranslate"><span class="pre">_pkg_files</span></code> target in the
+top-level <code class="docutils literal notranslate"><span class="pre">showcases</span></code> bundle so it ends up in every image:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">score_pkg_bundle</span><span class="p">(</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;showcases&quot;</span><span class="p">,</span>
+    <span class="n">bins</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;//showcases/cli&quot;</span><span class="p">],</span>
+    <span class="n">other_package_files</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;//showcases/standalone:comm_pkg_files&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;//showcases/standalone:kyron_pkg_files&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;//showcases/standalone:scrample_pkg_files&quot;</span><span class="p">,</span>   <span class="c1"># added</span>
+        <span class="s2">&quot;//showcases/orchestration_persistency:orch_per_pkg_files&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;//showcases/simple_lifecycle:simple_lifecycle_pkg_files&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="n">package_dir</span> <span class="o">=</span> <span class="s2">&quot;showcases&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The CLI auto-detects all <code class="docutils literal notranslate"><span class="pre">*.score.json</span></code> files at runtime, so no further
+registration is needed.</p>
+</section>
+<section id="step-4-verify-the-integration">
+<h2>Step 4 – Verify the integration<a class="headerlink" href="#step-4-verify-the-integration" title="Link to this heading">#</a></h2>
+<p>Run a Bazel build for the new module to confirm the integration is working:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bazel<span class="w"> </span>build<span class="w"> </span>@score_scrample//src_cpp:scrample_cpp<span class="w"> </span>@score_scrample//src_rust:scrample_rust
+</pre></div>
+</div>
+</section>
+<section id="optional-add-bazel-patches">
+<h2>Optional – Add Bazel patches<a class="headerlink" href="#optional-add-bazel-patches" title="Link to this heading">#</a></h2>
+<p>If the module’s upstream <code class="docutils literal notranslate"><span class="pre">BUILD</span></code> files need adjustments (e.g. to expose
+internal targets for integration testing), add patch files under
+<code class="docutils literal notranslate"><span class="pre">patches/&lt;module_name&gt;/</span></code> and reference them in the <code class="docutils literal notranslate"><span class="pre">bazel_patches</span></code> list
+in <code class="docutils literal notranslate"><span class="pre">known_good.json</span></code>.</p>
+<p>Patches must be in unified diff format and are applied with <code class="docutils literal notranslate"><span class="pre">patch</span> <span class="pre">-p1</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>diff<span class="w"> </span>HEAD<span class="w"> </span>&gt;<span class="w"> </span>patches/scrample/001-fix-visibility.patch
+</pre></div>
+</div>
+<p>Add a <code class="docutils literal notranslate"><span class="pre">BUILD</span></code> file in <code class="docutils literal notranslate"><span class="pre">patches/scrample/</span></code> that exports the patch files:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># patches/scrample/BUILD</span>
+<span class="n">exports_files</span><span class="p">(</span><span class="n">glob</span><span class="p">([</span><span class="s2">&quot;*.patch&quot;</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>Then reference them in <code class="docutils literal notranslate"><span class="pre">known_good.json</span></code>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;score_scrample&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;repo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/eclipse-score/scrample.git&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;hash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;32abf22969081a7c4a97733cf6d1b88b9e0c9d55&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;bazel_patches&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;//patches/scrample:001-fix-visibility.patch&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;code_root_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;//src_rust/...&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;langs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;cpp&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;rust&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="testing-the-integration-end-to-end-with-score-starter">
+<h2>Testing the integration end-to-end with <code class="docutils literal notranslate"><span class="pre">score_starter</span></code><a class="headerlink" href="#testing-the-integration-end-to-end-with-score-starter" title="Link to this heading">#</a></h2>
+<p>Once the module is integrated and the showcase configured, the full
+end-to-end test is done via the interactive launcher <code class="docutils literal notranslate"><span class="pre">score_starter</span></code>
+included in the repository root.</p>
+<ol class="arabic">
+<li><p><strong>Start the launcher</strong> from the repository root:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./score_starter
+</pre></div>
+</div>
+<p>A text menu appears listing all available image targets:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Use up/down arrows to navigate, Enter to run, q to quit
 
-[perms=777] /scrample = ${SCRAMPLE_PATH}
+  Run QNX x86_64 QEMU
+&gt; Run Linux x86_64 Docker
+  Run Elektrobit corbos Linux for Safety Applications aarch64 QEMU
+  Run Autosd x86_64 QEMU
+  Exit
 </pre></div>
 </div>
-<p>This copies the artifacts to their final location in the <em>ifs image</em> on the target.
-Now we are ready to build the <em>ifs image</em>, start qemu and to test our application.
-First, we start qemu, which will also build the ifs image in the background.
-According to the <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/v0.5.0-alpha/README.md">QEMU tutorial</a>
-in the <em>reference integration</em> repository, run the following command:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bazel</span> <span class="n">run</span> <span class="o">--</span><span class="n">config</span><span class="o">=</span><span class="n">x86_64</span><span class="o">-</span><span class="n">qnx</span> <span class="o">//</span><span class="p">:</span><span class="n">run_qemu</span>
+</li>
+<li><p><strong>Select the target image</strong> with the arrow keys and press <code class="docutils literal notranslate"><span class="pre">Enter</span></code>.
+For a quick local check, choose <strong>“Run Linux x86_64 Docker”</strong>.
+Bazel will build the full image (first run may take several minutes)
+and launch a Docker container with the S-CORE CLI.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Linux image requires Docker to be running on the host.
+For QNX or AutoSD, additional toolchain licenses and QEMU
+networking setup are required – see the respective README files
+under <code class="docutils literal notranslate"><span class="pre">images/</span></code> and <code class="docutils literal notranslate"><span class="pre">runners/</span></code>.</p>
+</div>
+</li>
+<li><p><strong>The S-CORE CLI starts automatically</strong> inside the container.
+It scans all <code class="docutils literal notranslate"><span class="pre">*.score.json</span></code> files and presents a multi-select menu
+of all available examples. Both scrample entries appear automatically:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Select examples to run:
+  [ ] Communication Sender Receiver Example
+  [ ] Kyron basic example
+  [ ] Kyron select example
+  [ ] Kyron safety task example
+  [ ] Scrample C++ Hello World      &lt;- scrample entries
+  [ ] Scrample Rust Hello World     &lt;- scrample entries
+  [ ] ...
 </pre></div>
 </div>
-<p>If everything was successfull, you should see following output:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">QEMU</span><span class="p">]</span> <span class="n">IP</span> <span class="n">address</span> <span class="nb">set</span> <span class="n">to</span><span class="p">:</span> <span class="mf">169.254.158.190</span>
-<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">QEMU</span><span class="p">]</span> <span class="o">---&gt;</span> <span class="n">DHCP</span> <span class="n">configuration</span> <span class="n">completed</span> <span class="n">successfully</span>
-<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">QEMU</span><span class="p">]</span> <span class="o">---&gt;</span> <span class="n">Network</span> <span class="n">configuration</span> <span class="n">completed</span>
-<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">QEMU</span><span class="p">]</span> <span class="o">---&gt;</span> <span class="n">Setting</span> <span class="n">hostname</span>
-<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">QEMU</span><span class="p">]</span> <span class="n">Hostname</span> <span class="nb">set</span> <span class="n">to</span><span class="p">:</span> <span class="n">Qnx_S</span><span class="o">-</span><span class="n">core</span>
-<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">QEMU</span><span class="p">]</span> <span class="o">---&gt;</span> <span class="n">adding</span> <span class="o">/</span><span class="n">tmp_discovery</span> <span class="n">folder</span>
+</li>
+<li><p><strong>Select the example</strong> with <code class="docutils literal notranslate"><span class="pre">Space</span></code>, confirm with <code class="docutils literal notranslate"><span class="pre">Enter</span></code>.
+The CLI launches the selected binary and streams its output to the terminal.
+For scrample the expected output is:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>2026/05/22 12:00:00.0000000 00000000 000 ECU1 SCRM scra log info verbose 1 Hello from SCRAMPLE!
 </pre></div>
 </div>
-<p>Now we can run the scrample binary.
-It supports two modes: one for sending data and one for receiving it.
-Start two processes in different modes to let them communicate with each other</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">scrample</span> <span class="o">-</span><span class="n">n</span> <span class="mi">10</span> <span class="o">-</span><span class="n">t</span> <span class="mi">100</span> <span class="o">-</span><span class="n">m</span> <span class="n">send</span> <span class="o">&amp;</span> <span class="o">./</span><span class="n">scrample</span> <span class="o">-</span><span class="n">n</span> <span class="mi">5</span> <span class="o">-</span><span class="n">t</span> <span class="mi">100</span> <span class="o">-</span><span class="n">m</span> <span class="n">recv</span>
-</pre></div>
-</div>
-<p>You can find the explanation of all command-line arguments in the scrample
-<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.0/src/main.cpp#L41">main.cpp</a> file.
-If everything works correctly, you should now see output indicating that the two processes are communicating with each other.
-It should look similar to the following:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">test_scrample</span><span class="p">]</span> <span class="mi">2025</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mi">10</span> <span class="mi">07</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mf">49.1229574</span> <span class="mi">145754</span> <span class="mi">000</span> <span class="n">ECU1</span> <span class="n">IPBR</span> <span class="n">lola</span> <span class="n">log</span> <span class="n">info</span> <span class="n">verbose</span> <span class="mi">2</span> <span class="n">No</span> <span class="n">explicit</span> <span class="n">applicationID</span> <span class="n">configured</span><span class="o">.</span> <span class="n">Falling</span> <span class="n">back</span> <span class="n">to</span> <span class="n">using</span> <span class="n">process</span> <span class="n">UID</span><span class="o">.</span>  <span class="n">Ensure</span> <span class="n">unique</span> <span class="n">UIDs</span> <span class="k">for</span> <span class="n">applications</span> <span class="n">using</span> <span class="n">mw</span><span class="p">::</span><span class="n">com</span><span class="o">.</span>
-<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">test_scrample</span><span class="p">]</span> <span class="mi">2025</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mi">10</span> <span class="mi">07</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mf">49.1229574</span> <span class="mi">145754</span> <span class="mi">000</span> <span class="n">ECU1</span> <span class="n">IPBR</span> <span class="n">lola</span> <span class="n">log</span> <span class="n">info</span> <span class="n">verbose</span> <span class="mi">2</span> <span class="n">No</span> <span class="n">explicit</span> <span class="n">applicationID</span> <span class="n">configured</span><span class="o">.</span> <span class="n">Falling</span> <span class="n">back</span> <span class="n">to</span> <span class="n">using</span> <span class="n">process</span> <span class="n">UID</span><span class="o">.</span>  <span class="n">Ensure</span> <span class="n">unique</span> <span class="n">UIDs</span> <span class="k">for</span> <span class="n">applications</span> <span class="n">using</span> <span class="n">mw</span><span class="p">::</span><span class="n">com</span><span class="o">.</span>
-<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">test_scrample</span><span class="p">]</span> <span class="mi">2025</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mi">10</span> <span class="mi">07</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mf">49.1229578</span> <span class="mi">145784</span> <span class="mi">000</span> <span class="n">ECU1</span> <span class="n">IPBR</span> <span class="n">lola</span> <span class="n">log</span> <span class="n">info</span> <span class="n">verbose</span> <span class="mi">10</span> <span class="n">Calculated</span> <span class="n">sizes</span> <span class="n">of</span> <span class="n">shm</span><span class="o">-</span><span class="n">objects</span> <span class="k">for</span> <span class="n">service_id</span><span class="p">:</span><span class="n">instance_id</span>  <span class="mi">6432</span> <span class="p">:</span> <span class="mi">1</span>  <span class="n">are</span> <span class="k">as</span> <span class="n">follows</span><span class="p">:</span>
-<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">test_scrample</span><span class="p">]</span> <span class="n">QM</span><span class="o">-</span><span class="n">Ctrl</span><span class="p">:</span>  <span class="mi">1736</span> <span class="p">,</span> <span class="n">ASIL_B</span><span class="o">-</span><span class="n">Ctrl</span><span class="p">:</span>  <span class="mi">0</span> <span class="p">,</span> <span class="n">Data</span><span class="p">:</span>  <span class="mi">109984</span>
-<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">test_scrample</span><span class="p">]</span> <span class="mi">2025</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mi">10</span> <span class="mi">07</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mf">49.1229580</span> <span class="mi">145811</span> <span class="mi">000</span> <span class="n">ECU1</span> <span class="n">IPBR</span> <span class="n">lola</span> <span class="n">log</span> <span class="n">info</span> <span class="n">verbose</span> <span class="mi">2</span> <span class="n">Successfully</span> <span class="n">created</span> <span class="n">offer</span> <span class="n">path</span> <span class="o">/</span><span class="n">tmp_discovery</span><span class="o">/</span><span class="n">mw_com_lola</span><span class="o">/</span><span class="n">service_discovery</span><span class="o">/</span><span class="mi">6432</span><span class="o">/</span><span class="mi">1</span>
-<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">test_scrample</span><span class="p">]</span> <span class="mi">2025</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mi">10</span> <span class="mi">07</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mf">50.1230079</span> <span class="mi">150796</span> <span class="mi">000</span> <span class="n">ECU1</span> <span class="n">IPBR</span> <span class="n">lola</span> <span class="n">log</span> <span class="n">info</span> <span class="n">verbose</span> <span class="mi">2</span> <span class="n">Successfully</span> <span class="n">created</span> <span class="n">offer</span> <span class="n">path</span> <span class="o">/</span><span class="n">tmp_discovery</span><span class="o">/</span><span class="n">mw_com_lola</span><span class="o">/</span><span class="n">service_discovery</span><span class="o">/</span><span class="mi">6432</span><span class="o">/</span><span class="mi">1</span>
-<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">test_scrample</span><span class="p">]</span> <span class="n">score</span><span class="o">/</span><span class="n">MapApiLanesStamped</span><span class="p">:</span> <span class="n">Running</span> <span class="k">as</span> <span class="n">proxy</span><span class="p">,</span> <span class="n">looking</span> <span class="k">for</span> <span class="n">services</span>
-<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">test_scrample</span><span class="p">]</span> <span class="n">score</span><span class="o">/</span><span class="n">MapApiLanesStamped</span><span class="p">:</span> <span class="n">Found</span> <span class="n">service</span><span class="p">,</span> <span class="n">instantiating</span> <span class="n">proxy</span>
-<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">test_scrample</span><span class="p">]</span> <span class="n">score</span><span class="o">/</span><span class="n">MapApiLanesStamped</span><span class="p">:</span> <span class="n">Subscribing</span> <span class="n">to</span> <span class="n">service</span>
-<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">test_scrample</span><span class="p">]</span> <span class="n">score</span><span class="o">/</span><span class="n">MapApiLanesStamped</span><span class="p">:</span> <span class="n">Received</span> <span class="n">sample</span><span class="p">:</span> <span class="mi">4</span>
-<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">test_scrample</span><span class="p">]</span> <span class="n">score</span><span class="o">/</span><span class="n">MapApiLanesStamped</span><span class="p">:</span> <span class="n">Received</span> <span class="n">sample</span><span class="p">:</span> <span class="mi">5</span>
-<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">test_scrample</span><span class="p">]</span> <span class="n">score</span><span class="o">/</span><span class="n">MapApiLanesStamped</span><span class="p">:</span> <span class="n">Proxy</span> <span class="n">received</span> <span class="n">valid</span> <span class="n">data</span>
-<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">test_scrample</span><span class="p">]</span> <span class="n">score</span><span class="o">/</span><span class="n">MapApiLanesStamped</span><span class="p">:</span> <span class="n">Cycle</span> <span class="n">duration</span> <span class="mi">100</span><span class="n">ms</span>
-<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">test_scrample</span><span class="p">]</span> <span class="n">score</span><span class="o">/</span><span class="n">MapApiLanesStamped</span><span class="p">:</span> <span class="n">Received</span> <span class="n">sample</span><span class="p">:</span> <span class="mi">6</span>
-<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">test_scrample</span><span class="p">]</span> <span class="n">score</span><span class="o">/</span><span class="n">MapApiLanesStamped</span><span class="p">:</span> <span class="n">Proxy</span> <span class="n">received</span> <span class="n">valid</span> <span class="n">data</span>
-<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">test_scrample</span><span class="p">]</span> <span class="n">score</span><span class="o">/</span><span class="n">MapApiLanesStamped</span><span class="p">:</span> <span class="n">Cycle</span> <span class="n">duration</span> <span class="mi">100</span><span class="n">ms</span>
-<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">test_scrample</span><span class="p">]</span> <span class="n">score</span><span class="o">/</span><span class="n">MapApiLanesStamped</span><span class="p">:</span> <span class="n">Received</span> <span class="n">sample</span><span class="p">:</span> <span class="mi">7</span>
-<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">test_scrample</span><span class="p">]</span> <span class="n">score</span><span class="o">/</span><span class="n">MapApiLanesStamped</span><span class="p">:</span> <span class="n">Proxy</span> <span class="n">received</span> <span class="n">valid</span> <span class="n">data</span>
-<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">test_scrample</span><span class="p">]</span> <span class="n">score</span><span class="o">/</span><span class="n">MapApiLanesStamped</span><span class="p">:</span> <span class="n">Cycle</span> <span class="n">duration</span> <span class="mi">100</span><span class="n">ms</span>
-<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="n">test_scrample</span><span class="p">]</span> <span class="n">score</span><span class="o">/</span><span class="n">MapApiLanesStamped</span><span class="p">:</span> <span class="n">Received</span> <span class="n">sample</span><span class="p">:</span> <span class="mi">8</span>
-</pre></div>
-</div>
-<p>By the way, the same workflow is implemented as one of our <a class="reference external" href="https://github.com/eclipse-score/reference_integration/blob/v0.5.0-alpha/qnx_qemu/test/itf/test_scrample.py#L28">integration tests</a>,
-which you can run with the following command</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bazel</span> <span class="n">test</span> <span class="o">--</span><span class="n">config</span><span class="o">=</span><span class="n">qemu</span><span class="o">-</span><span class="n">integration</span> <span class="o">--</span><span class="n">test_output</span><span class="o">=</span><span class="n">streamed</span> <span class="o">//</span><span class="p">:</span><span class="n">test_scrample_qemu</span>
-</pre></div>
-</div>
+</li>
+</ol>
+</section>
 </section>
 
 
@@ -768,6 +957,28 @@ which you can run with the following command</p>
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background-why-known-good-json">Background: Why <code class="docutils literal notranslate"><span class="pre">known_good.json</span></code>?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-add-the-module-to-known-good-json">Step 1 – Add the module to <code class="docutils literal notranslate"><span class="pre">known_good.json</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata-fields-explained">Metadata fields explained</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-regenerate-the-module-bazel-file">Step 2 – Regenerate the <code class="docutils literal notranslate"><span class="pre">.MODULE.bazel</span></code> file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-add-a-standalone-showcase-optional">Step 3 – Add a standalone showcase (optional)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-verify-the-integration">Step 4 – Verify the integration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-add-bazel-patches">Optional – Add Bazel patches</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-the-integration-end-to-end-with-score-starter">Testing the integration end-to-end with <code class="docutils literal notranslate"><span class="pre">score_starter</span></code></a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
 

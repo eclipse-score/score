@@ -672,14 +672,18 @@ the shared rules without project-lead approval.</p>
 <h2>Toolchains and bazel platform<a class="headerlink" href="#toolchains-and-bazel-platform" title="Link to this heading">#</a></h2>
 <p><strong>Repositories:</strong></p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/eclipse-score/toolchains_qnx">eclipse-score/toolchains_qnx</a></p></li>
-<li><p><a class="reference external" href="https://github.com/eclipse-score/toolchains_gcc">eclipse-score/toolchains_gcc</a></p></li>
+<li><p><a class="reference external" href="https://github.com/eclipse-score/bazel_cpp_toolchains">eclipse-score/bazel_cpp_toolchains</a></p></li>
 <li><p><a class="reference external" href="https://github.com/eclipse-score/toolchains_rust">eclipse-score/toolchains_rust</a></p></li>
 </ul>
-<p>These repositories define toolchains (gcc/qnx/rust) including compiler and linker flags
-used to build the Eclipse S-CORE software.
-The repository called “bazel platforms” defines the platforms supported by Eclipse S-CORE (e.g., x86_64-qnx),
-as shown in the following <a class="reference external" href="https://github.com/eclipse-score/bazel_platforms/blob/main/BUILD">BUILD</a> file.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">score_bazel_cpp_toolchains</span></code> repository provides GCC-based C++ toolchains for all supported
+targets, including Linux host builds (GCC 12.2.0) and QNX SDP 8.0.0 cross-compilation, replacing
+the former separate <code class="docutils literal notranslate"><span class="pre">toolchains_gcc</span></code> and <code class="docutils literal notranslate"><span class="pre">toolchains_qnx</span></code> modules.
+The <code class="docutils literal notranslate"><span class="pre">score_toolchains_rust</span></code> repository provides pre-built
+<a class="reference external" href="https://ferrous-systems.com/ferrocene/">Ferrocene</a> toolchains for Rust, covering both Linux
+host and QNX cross-compilation targets.
+The <code class="docutils literal notranslate"><span class="pre">score_bazel_platforms</span></code> repository defines the platforms supported by Eclipse S-CORE
+(e.g., <code class="docutils literal notranslate"><span class="pre">x86_64-qnx-sdp_8.0.0-posix</span></code>), as shown in the following
+<a class="reference external" href="https://github.com/eclipse-score/bazel_platforms/blob/main/BUILD">BUILD</a> file.</p>
 </section>
 <section id="ci-cd-automation">
 <h2>CI/CD Automation<a class="headerlink" href="#ci-cd-automation" title="Link to this heading">#</a></h2>

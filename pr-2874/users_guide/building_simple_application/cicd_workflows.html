@@ -73,7 +73,7 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Reference integration" href="reference_integration.html" />
+    <link rel="next" title="How to Integrate a New Module into the Reference Integration" href="reference_integration.html" />
     <link rel="prev" title="Building source code" href="building_source_code.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -519,7 +519,7 @@
 <li class="toctree-l2"><a class="reference internal" href="doc_generation.html">Documentation generation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="building_source_code.html">Building source code</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">CI/CD Workflows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference_integration.html">Reference integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference_integration.html">How to Integrate a New Module into the Reference Integration</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../whats_next/index.html">What’s Next?</a></li>
@@ -592,7 +592,7 @@
 <p>After successfully building the scrample binary, we need to ensure that future changes do not break the build.</p>
 <p>To achieve this, create a CI/CD workflow that triggers a <a class="reference external" href="https://docs.github.com/en/actions">GitHub action</a>
 to build the scrample application whenever a new PR is opened. Start by creating a workflow file named
-<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.0/.github/workflows/build.yml">build.yml</a>
+<a class="reference external" href="https://github.com/eclipse-score/scrample/blob/v0.1.2-simple-app/.github/workflows/build.yml">build.yml</a>
 in the <code class="docutils literal notranslate"><span class="pre">.github/workflows/</span></code> folder.</p>
 <p>Then fill the workflow file with the following content:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>name: Scrample Build
@@ -666,7 +666,7 @@ Finally, we need to define the steps of the build job:</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Reference integration</p>
+        <p class="prev-next-title">How to Integrate a New Module into the Reference Integration</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
