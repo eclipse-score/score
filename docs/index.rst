@@ -216,6 +216,7 @@ Project structure and processes
    :maxdepth: 1
    :hidden:
 
+   users_guide/index
    features/index
    requirements/index
    modules/index
