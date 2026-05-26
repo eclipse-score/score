@@ -30,29 +30,41 @@ on top of S-CORE, and points you to further resources for deeper involvement.
    useful_links.rst
 
 .. grid:: 2
+   :gutter: 3
+   :class-container: score-grid
 
-   .. grid-item-card:: Project Basics
+   .. grid-item-card::
       :link: project_basics/index
       :link-type: doc
 
+      Project Basics
+      ^^^^^^^^^^^^^^
       Learn about the S-CORE module structure, repositories, and key concepts.
 
-   .. grid-item-card:: Building a Simple Application
+   .. grid-item-card::
       :link: building_simple_application/index
       :link-type: doc
 
+      Building a Simple Application
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
       Step-by-step guide to building and integrating your first application with S-CORE.
 
 .. grid:: 2
+   :gutter: 3
+   :class-container: score-grid
 
-   .. grid-item-card:: What's Next?
+   .. grid-item-card::
       :link: whats_next/index
       :link-type: doc
 
+      What's Next?
+      ^^^^^^^^^^^^
       Ideas and pointers for your next steps after the initial setup.
 
-   .. grid-item-card:: Useful Links
+   .. grid-item-card::
       :link: useful_links
       :link-type: doc
 
+      Useful Links
+      ^^^^^^^^^^^^
       A curated collection of important references, tools, and documentation.
