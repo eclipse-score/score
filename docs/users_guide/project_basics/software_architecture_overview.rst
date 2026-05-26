@@ -17,7 +17,7 @@ Software Architecture Overview
 
 Please note that the Eclipse S-CORE´s software architecture is continuously refined and will evolve in future releases.
 
-.. image:: ../../score_releases/_assets/architecture_0_6.drawio.svg
+.. image:: ../_assets/architecture_0_6.drawio.svg
    :width: 1000
    :alt: Architecture overview
    :align: center
