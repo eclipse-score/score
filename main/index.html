@@ -73,7 +73,7 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Handbook" href="handbook/index.html" />
+    <link rel="next" title="Features" href="features/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
@@ -157,13 +157,6 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="handbook/index.html">
-    Handbook
-  </a>
-</li>
-
-
-<li class="nav-item ">
   <a class="nav-link nav-internal" href="features/index.html">
     Features
   </a>
@@ -190,6 +183,13 @@
   </a>
 </li>
 
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="score_releases/index.html">
+    Releases
+  </a>
+</li>
+
             <li class="nav-item dropdown">
                 <button class="btn dropdown-toggle nav-item" type="button"
                 data-bs-toggle="dropdown" aria-expanded="false"
@@ -198,13 +198,6 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="score_releases/index.html">
-    Releases
-  </a>
-</li>
-
-
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="score_tools/index.html">
     Tools
@@ -243,6 +236,13 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="introduction/index.html">
     Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="users_guide/index.html">
+    User’s Guide
   </a>
 </li>
 
@@ -361,13 +361,6 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="handbook/index.html">
-    Handbook
-  </a>
-</li>
-
-
-<li class="nav-item ">
   <a class="nav-link nav-internal" href="features/index.html">
     Features
   </a>
@@ -440,6 +433,13 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="introduction/index.html">
     Eclipse S-CORE (Eclipse Safe Open Vehicle Core)
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="users_guide/index.html">
+    User’s Guide
   </a>
 </li>
 
@@ -539,16 +539,70 @@
             <img id="logo_center_drk" class="logo" src="_static/S-CORE_Logo_white.svg" width="600px"/>-->
       </div>
    </div>
-</div><section id="welcome-overview">
-<h2>Welcome &amp; Overview<a class="headerlink" href="#welcome-overview" title="Link to this heading">#</a></h2>
-<p><strong>Welcome to the Software documentation of the S-CORE project.</strong></p>
+</div><section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>Eclipse S-CORE was founded in September 2024 by automotive industry members with a shared goal:
+a code-first, open-source software platform for onboard ECUs that the whole industry can build on.</p>
+<p>Rather than each company independently developing and maintaining a software platform — at high cost
+and without direct customer value — S-CORE provides a common foundation with:</p>
+<ul class="simple">
+<li><p><strong>A reference implementation</strong> that catches integration issues early and prevents known bugs from reappearing across projects.</p></li>
+<li><p><strong>A Functional-Safety-compliant process</strong> (ISO 26262) applied to all modules, making S-CORE unique among open-source automotive projects.</p></li>
+<li><p><strong>Full transparency</strong>: process, tooling, and CI checks are open source — any stakeholder can verify the results.</p></li>
+</ul>
+<p><strong>Note:</strong> S-CORE is not a ready-to-integrate series product. It is a generic foundation for commercial distributions.
+Responsibility for ASPICE, ISO 21434 (cybersecurity), and ISO 26262 (functional safety) compliance of the final system always remains with the series project.</p>
+</section>
+<section id="get-started-with-s-core">
+<h2>Get started with S-CORE<a class="headerlink" href="#get-started-with-s-core" title="Link to this heading">#</a></h2>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 score-grid docutils">
+<div class="sd-row sd-row-cols-3 sd-row-cols-xs-3 sd-row-cols-sm-3 sd-row-cols-md-3 sd-row-cols-lg-3 sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover sd-text-center docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><svg version="1.1" width="3.0em" height="3.0em" class="sd-octicon sd-octicon-book" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 3.75A.75.75 0 0 1 .75 3h7.497c1.566 0 2.945.8 3.751 2.014A4.495 4.495 0 0 1 15.75 3h7.5a.75.75 0 0 1 .75.75v15.063a.752.752 0 0 1-.755.75l-7.682-.052a3 3 0 0 0-2.142.878l-.89.891a.75.75 0 0 1-1.061 0l-.902-.901a2.996 2.996 0 0 0-2.121-.879H.75a.75.75 0 0 1-.75-.75Zm12.75 15.232a4.503 4.503 0 0 1 2.823-.971l6.927.047V4.5h-6.75a3 3 0 0 0-3 3ZM11.247 7.497a3 3 0 0 0-3-2.997H1.5V18h6.947c1.018 0 2.006.346 2.803.98Z"></path></svg></p>
+<p class="sd-card-text">Overview</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Explore the S-CORE platform structure, technology stack and software
+architecture. Understand the core concepts before you start building.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="users_guide/project_basics/index.html"><span class="doc">Overview</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover sd-text-center docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><svg version="1.1" width="3.0em" height="3.0em" class="sd-octicon sd-octicon-code-square" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.3 8.24a.75.75 0 0 1-.04 1.06L7.352 12l2.908 2.7a.75.75 0 1 1-1.02 1.1l-3.5-3.25a.75.75 0 0 1 0-1.1l3.5-3.25a.75.75 0 0 1 1.06.04Zm3.44 1.06a.75.75 0 1 1 1.02-1.1l3.5 3.25a.75.75 0 0 1 0 1.1l-3.5 3.25a.75.75 0 1 1-1.02-1.1l2.908-2.7-2.908-2.7Z"></path><path d="M2 3.75C2 2.784 2.784 2 3.75 2h16.5c.966 0 1.75.784 1.75 1.75v16.5A1.75 1.75 0 0 1 20.25 22H3.75A1.75 1.75 0 0 1 2 20.25Zm1.75-.25a.25.25 0 0 0-.25.25v16.5c0 .138.112.25.25.25h16.5a.25.25 0 0 0 .25-.25V3.75a.25.25 0 0 0-.25-.25Z"></path></svg></p>
+<p class="sd-card-text">Contribute own module</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Follow a step-by-step guide to build and integrate your first S-CORE
+module — from source code to CI/CD and doc</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="users_guide/building_simple_application/index.html"><span class="doc">Contribute own module</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover sd-text-center docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><svg version="1.1" width="3.0em" height="3.0em" class="sd-octicon sd-octicon-rocket" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.322.75h1.176a1.75 1.75 0 0 1 1.75 1.749v1.177a10.75 10.75 0 0 1-2.925 7.374l-1.228 1.304a23.699 23.699 0 0 1-1.596 1.542v5.038c0 .615-.323 1.184-.85 1.5l-4.514 2.709a.75.75 0 0 1-1.12-.488l-.963-4.572a1.305 1.305 0 0 1-.14-.129L8.04 15.96l-1.994-1.873a1.305 1.305 0 0 1-.129-.14l-4.571-.963a.75.75 0 0 1-.49-1.12l2.71-4.514c.316-.527.885-.85 1.5-.85h5.037a23.668 23.668 0 0 1 1.542-1.594l1.304-1.23A10.753 10.753 0 0 1 20.321.75Zm-6.344 4.018v-.001l-1.304 1.23a22.275 22.275 0 0 0-3.255 3.851l-2.193 3.29 1.859 1.744a.545.545 0 0 1 .034.034l1.743 1.858 3.288-2.192a22.263 22.263 0 0 0 3.854-3.257l1.228-1.303a9.251 9.251 0 0 0 2.517-6.346V2.5a.25.25 0 0 0-.25-.25h-1.177a9.252 9.252 0 0 0-6.344 2.518ZM6.5 21c-1.209 1.209-3.901 1.445-4.743 1.49a.236.236 0 0 1-.18-.067.236.236 0 0 1-.067-.18c.045-.842.281-3.534 1.49-4.743.9-.9 2.6-.9 3.5 0 .9.9.9 2.6 0 3.5Zm-.592-8.588L8.17 9.017c.23-.346.47-.685.717-1.017H5.066a.25.25 0 0 0-.214.121l-2.167 3.612ZM16 15.112c-.333.248-.672.487-1.018.718l-3.393 2.262.678 3.223 3.612-2.167a.25.25 0 0 0 .121-.214ZM17.5 8a1.5 1.5 0 1 1-3.001-.001A1.5 1.5 0 0 1 17.5 8Z"></path></svg></p>
+<p class="sd-card-text">What’s next?</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Check how you can start being productive immediately</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="users_guide/whats_next/index.html"><span class="doc">What’s Next?</span></a></div>
+</div>
+</div>
+</div>
+</section>
 <section id="software-artifacts">
-<h3>Software artifacts<a class="headerlink" href="#software-artifacts" title="Link to this heading">#</a></h3>
+<h2>Software artifacts<a class="headerlink" href="#software-artifacts" title="Link to this heading">#</a></h2>
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 score-grid docutils">
 <div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-3 sd-row-cols-lg-3 docutils">
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
 <div class="sd-card-header docutils">
+<p class="sd-card-text"><svg version="1.1" width="3.0em" height="3.0em" class="sd-octicon sd-octicon-checklist" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 3.75a.25.25 0 0 1 .25-.25h13.5a.25.25 0 0 1 .25.25v10a.75.75 0 0 0 1.5 0v-10A1.75 1.75 0 0 0 17.25 2H3.75A1.75 1.75 0 0 0 2 3.75v16.5c0 .966.784 1.75 1.75 1.75h7a.75.75 0 0 0 0-1.5h-7a.25.25 0 0 1-.25-.25V3.75Z"></path><path d="M6.25 7a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5h-8.5Zm-.75 4.75a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1-.75-.75Zm16.28 4.53a.75.75 0 1 0-1.06-1.06l-4.97 4.97-1.97-1.97a.75.75 0 1 0-1.06 1.06l2.5 2.5a.75.75 0 0 0 1.06 0l5.5-5.5Z"></path></svg></p>
 <p class="sd-card-text">Requirements</p>
 </div>
 <div class="sd-card-body docutils">
@@ -561,6 +615,7 @@ Or get the complete picture on the <a class="reference internal" href="requireme
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
 <div class="sd-card-header docutils">
+<p class="sd-card-text"><svg version="1.1" width="3.0em" height="3.0em" class="sd-octicon sd-octicon-package" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.876.64V.639l8.25 4.763c.541.313.875.89.875 1.515v9.525a1.75 1.75 0 0 1-.875 1.516l-8.25 4.762a1.748 1.748 0 0 1-1.75 0l-8.25-4.763a1.75 1.75 0 0 1-.875-1.515V6.917c0-.625.334-1.202.875-1.515L11.126.64a1.748 1.748 0 0 1 1.75 0Zm-1 1.298L4.251 6.34l7.75 4.474 7.75-4.474-7.625-4.402a.248.248 0 0 0-.25 0Zm.875 19.123 7.625-4.402a.25.25 0 0 0 .125-.216V7.639l-7.75 4.474ZM3.501 7.64v8.803c0 .09.048.172.125.216l7.625 4.402v-8.947Z"></path></svg></p>
 <p class="sd-card-text">Features &amp; Modules</p>
 </div>
 <div class="sd-card-body docutils">
@@ -571,11 +626,12 @@ Or get the complete picture on the <a class="reference internal" href="requireme
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
 <div class="sd-card-header docutils">
+<p class="sd-card-text"><svg version="1.1" width="3.0em" height="3.0em" class="sd-octicon sd-octicon-tag" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.75 6.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5Z"></path><path d="M2.5 1h8.44a1.5 1.5 0 0 1 1.06.44l10.25 10.25a1.5 1.5 0 0 1 0 2.12l-8.44 8.44a1.5 1.5 0 0 1-2.12 0L1.44 12A1.497 1.497 0 0 1 1 10.94V2.5A1.5 1.5 0 0 1 2.5 1Zm0 1.5v8.44l10.25 10.25 8.44-8.44L10.94 2.5Z"></path></svg></p>
 <p class="sd-card-text">Releases</p>
 </div>
 <div class="sd-card-body docutils">
-<p class="sd-card-text">Our release roadmap can be found under <a class="reference internal" href="score_releases/index.html#releases"><span class="std std-ref">S-CORE Releases</span></a>.
-Including an overview about integrated software modules and their repository location.</p>
+<p class="sd-card-text">Check out our <a class="reference external" href="https://eclipse-score.github.io/reference_integration/main/">latest release</a>
+or explore our <a class="reference external" href="https://eclipse-score.github.io/reference_integration/main/_collections/score_platform/docs/score_releases/index.html">release roadmap</a>.</p>
 </div>
 </div>
 </div>
@@ -583,12 +639,13 @@ Including an overview about integrated software modules and their repository loc
 </div>
 </section>
 <section id="project-structure-and-processes">
-<h3>Project structure and processes<a class="headerlink" href="#project-structure-and-processes" title="Link to this heading">#</a></h3>
+<h2>Project structure and processes<a class="headerlink" href="#project-structure-and-processes" title="Link to this heading">#</a></h2>
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 score-grid docutils">
-<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-3 sd-row-cols-lg-3 docutils">
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
 <div class="sd-card-header docutils">
+<p class="sd-card-text"><svg version="1.1" width="3.0em" height="3.0em" class="sd-octicon sd-octicon-workflow" viewBox="0 0 24 24" aria-hidden="true"><path d="M1 3a2 2 0 0 1 2-2h6.5a2 2 0 0 1 2 2v6.5a2 2 0 0 1-2 2H7v4.063C7 16.355 7.644 17 8.438 17H12.5v-2.5a2 2 0 0 1 2-2H21a2 2 0 0 1 2 2V21a2 2 0 0 1-2 2h-6.5a2 2 0 0 1-2-2v-2.5H8.437A2.939 2.939 0 0 1 5.5 15.562V11.5H3a2 2 0 0 1-2-2Zm2-.5a.5.5 0 0 0-.5.5v6.5a.5.5 0 0 0 .5.5h6.5a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5ZM14.5 14a.5.5 0 0 0-.5.5V21a.5.5 0 0 0 .5.5H21a.5.5 0 0 0 .5-.5v-6.5a.5.5 0 0 0-.5-.5Z"></path></svg></p>
 <p class="sd-card-text">Process</p>
 </div>
 <div class="sd-card-body docutils">
@@ -601,6 +658,7 @@ And receive tips &amp; tricks for our used tool stack by reading the
 <div class="sd-col sd-d-flex-row docutils">
 <div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
 <div class="sd-card-header docutils">
+<p class="sd-card-text"><svg version="1.1" width="3.0em" height="3.0em" class="sd-octicon sd-octicon-organization" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.25 12a.75.75 0 0 0 0 1.5h.5a.75.75 0 0 0 0-1.5h-.5ZM5.5 9.25a.75.75 0 0 1 .75-.75h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1-.75-.75ZM6.25 5a.75.75 0 0 0 0 1.5h.5a.75.75 0 0 0 0-1.5h-.5ZM9 12.75a.75.75 0 0 1 .75-.75h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1-.75-.75Zm.75-4.25a.75.75 0 0 0 0 1.5h.5a.75.75 0 0 0 0-1.5h-.5ZM9 5.75A.75.75 0 0 1 9.75 5h.5a.75.75 0 0 1 0 1.5h-.5A.75.75 0 0 1 9 5.75ZM13.25 12a.75.75 0 0 0 0 1.5h.5a.75.75 0 0 0 0-1.5h-.5Zm-.75-2.75a.75.75 0 0 1 .75-.75h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1-.75-.75ZM13.25 5a.75.75 0 0 0 0 1.5h.5a.75.75 0 0 0 0-1.5h-.5Z"></path><path d="M2 20V3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v17c0 .173-.022.34-.063.5H20a.5.5 0 0 0 .5-.5v-8a.5.5 0 0 0-.2-.4l-.5-.375a.75.75 0 0 1 .9-1.2l.5.375c.504.378.8.97.8 1.6v8a2 2 0 0 1-2 2h-3.562a.767.767 0 0 1-.166-.018c-.089.012-.18.018-.272.018h-3.75a.75.75 0 0 1-.75-.75V19h-3v2.25a.75.75 0 0 1-.75.75H4a2 2 0 0 1-2-2Zm2 .5h3v-2.25a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 .75.75v2.25h3a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5H4a.5.5 0 0 0-.5.5v17a.5.5 0 0 0 .5.5Z"></path></svg></p>
 <p class="sd-card-text">Platform Management Plan (PMP)</p>
 </div>
 <div class="sd-card-body docutils">
@@ -610,32 +668,57 @@ And learn how we deal with <a class="reference internal" href="platform_manageme
 </div>
 </div>
 </div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover sd-text-center docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><svg version="1.1" width="3.0em" height="3.0em" class="sd-octicon sd-octicon-repo" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 2.75A2.75 2.75 0 0 1 5.75 0h14.5a.75.75 0 0 1 .75.75v20.5a.75.75 0 0 1-.75.75h-6a.75.75 0 0 1 0-1.5h5.25v-4H6A1.5 1.5 0 0 0 4.5 18v.75c0 .716.43 1.334 1.05 1.605a.75.75 0 0 1-.6 1.374A3.251 3.251 0 0 1 3 18.75ZM19.5 1.5H5.75c-.69 0-1.25.56-1.25 1.25v12.651A2.989 2.989 0 0 1 6 15h13.5Z"></path><path d="M7 18.25a.25.25 0 0 1 .25-.25h5a.25.25 0 0 1 .25.25v5.01a.25.25 0 0 1-.397.201l-2.206-1.604a.25.25 0 0 0-.294 0L7.397 23.46a.25.25 0 0 1-.397-.2v-5.01Z"></path></svg></p>
+<p class="sd-card-text">Reference Integration</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Explore the S-CORE reference integration — a continuously built and tested
+assembly of all platform modules, serving as the authoritative integration baseline.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="https://github.com/eclipse-score/reference_integration"><span>https://github.com/eclipse-score/reference_integration</span></a></div>
 </div>
 </div>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Click to see the complete sitemap</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+</div>
+<div style="border-top:2px solid #888;margin:2.5rem 0 2rem 0;"></div><div class="sd-container-fluid sd-sphinx-override sd-mb-4 score-sitemap docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-3 sd-row-cols-lg-3 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<p><strong>Documentation</strong></p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="features/index.html"><span class="doc">Features</span></a></div>
+<div class="line"><a class="reference internal" href="requirements/index.html"><span class="doc">Requirements</span></a></div>
+<div class="line"><a class="reference internal" href="modules/index.html"><span class="doc">Modules</span></a></div>
+<div class="line"><a class="reference internal" href="score_releases/index.html"><span class="doc">S-CORE Releases</span></a></div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<p><strong>Project</strong></p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="score_tools/index.html"><span class="doc">S-CORE Tools Overview</span></a></div>
+<div class="line"><a class="reference internal" href="safety/index.html"><span class="doc">Safety documentation</span></a></div>
+<div class="line"><a class="reference internal" href="design_decisions/index.html"><span class="doc">Decision Records</span></a></div>
+<div class="line"><a class="reference internal" href="platform_management_plan/index.html"><span class="doc">Platform Management Plan</span></a></div>
+<div class="line"><a class="reference external" href="https://github.com/orgs/eclipse-score/projects/4">Feature Requests</a></div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<p><strong>Community</strong></p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="contribute/index.html"><span class="doc">Contribute</span></a></div>
+<div class="line"><a class="reference external" href="https://projects.eclipse.org/projects/automotive.score">Eclipse Project</a></div>
+<div class="line"><a class="reference external" href="https://github.com/eclipse-score/score">GitHub</a></div>
+<div class="line"><a class="reference external" href="https://accounts.eclipse.org/mailing-list/score-dev">Mailing List</a></div>
+</div>
+</div>
+</div>
+</div>
 <div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="handbook/index.html">Handbook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="features/index.html">Features</a></li>
-<li class="toctree-l1"><a class="reference internal" href="requirements/index.html">Requirements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modules/index.html">Modules</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute/index.html">Contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="score_releases/index.html">S-CORE Releases</a></li>
-<li class="toctree-l1"><a class="reference internal" href="score_releases/index.html#s-core-releases-overview">S-CORE Releases Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="score_tools/index.html">Tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="platform_management_plan/index.html">PMP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="safety/index.html">Safety</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://projects.eclipse.org/projects/automotive.score">Eclipse</a></li>
-<li class="toctree-l1"><a class="reference internal" href="design_decisions/index.html">Decision Records</a></li>
-</ul>
 </div>
 <div class="toctree-wrapper compound">
 </div>
-</div>
-</details></section>
-</section>
+<style>.prev-next-footer { display: none !important; }</style></section>
 </section>
 
 
@@ -649,11 +732,11 @@ And learn how we deal with <a class="reference internal" href="platform_manageme
                   
 <div class="prev-next-area">
     <a class="right-next"
-       href="handbook/index.html"
+       href="features/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Handbook</p>
+        <p class="prev-next-title">Features</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -676,11 +759,10 @@ And learn how we deal with <a class="reference internal" href="platform_manageme
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#welcome-overview">Welcome &amp; Overview</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#software-artifacts">Software artifacts</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#project-structure-and-processes">Project structure and processes</a><ul class="nav section-nav flex-column">
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-started-with-s-core">Get started with S-CORE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-artifacts">Software artifacts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-structure-and-processes">Project structure and processes</a><ul class="nav section-nav flex-column">
 </ul>
 </li>
 </ul>
