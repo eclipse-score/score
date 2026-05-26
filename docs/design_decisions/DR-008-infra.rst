@@ -68,6 +68,8 @@ is available but does not cover live preview either.
 We want dashboards generated automatically to be included in the documentation.
 See `infrastructure discussion 2026-05-18 <https://github.com/orgs/eclipse-score/discussions/236#discussioncomment-16906461>`_.
 
+Cross-repository composed builds via ``:docs_combo`` must keep working for integrator repositories.
+
 Goals
 ^^^^^
 
@@ -193,6 +195,53 @@ Speed 💚: No slowdown.
 
 UX 😡: Live-preview UX is unchanged, but risk of downstream breaks.
 
+Option M: Mount external source bundles via ``sphinx-mounts``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In short: keep source files where they are and mount them into the Sphinx project
+using ``[[mounts]]`` entries written to ``ubproject.toml``.
+
+This option has been explored as a proof of concept in
+`docs-as-code PR #554 <https://github.com/eclipse-score/docs-as-code/pull/554>`_.
+It uses the external `sphinx-mounts <https://sphinx-mounts.useblocks.com/>`_ extension.
+The PoC adds a ``mounts`` attribute to ``docs()``
+and wires it through all relevant paths,
+including ``:docs_combo`` / ``:docs_sources`` and sandboxed builds.
+
+TODO:
+Apparently ``:docs_combo`` composes external ``:docs_sources`` trees,
+but does not define a clear cross-repository aggregation mechanism for mount metadata declared by upstream repositories.
+Therefore, Option M does not satisfy all requirements and is not a valid option at this time.
+
+.. mermaid::
+
+   graph LR
+       docs@{ shape: docs, label: "docs/" }
+       bundle@{ shape: docs, label: "src/docs/ or generated dir" }
+       mounts@{ label: "[[mounts]]" }
+       docs --> :docs
+       bundle --> mounts --> :docs
+
+The approach avoids copying/symlinking documentation trees into ``docs/``
+and aims to keep IDE tooling aligned by reading the same ``ubproject.toml`` as Sphinx.
+
+Known constraints from the PoC:
+
+* Each mount currently expects a directory-shaped Bazel output
+  (e.g. via a helper like ``files_to_dir``).
+* Per-bundle ``ubproject.toml`` generation is workspace-only (``bazel run``),
+  while sandboxed ``bazel build`` skips those workspace writes by design.
+* Nested mounts are not supported.
+
+Effort 💛: Similar order of magnitude as Option B prototype work.
+
+Flexibility 😡: Fails strict cross-repository ``:docs_combo`` requirement in current form.
+Also, using this immature external dependency is risky.
+
+Speed 💛: Comparable iterative speed; initial setup and mount resolution add some overhead.
+
+UX 😡: Not acceptable while strict cross-repository composition behavior remains unclear/unmet.
+
 
 Evaluation
 ----------
@@ -200,13 +249,13 @@ Evaluation
 In order of importance, most important first.
 
 .. csv-table::
-   :header: Goals, Option N, Option B, Option D
-   :widths: 2, 1, 1, 1
+  :header: Goals, Option N, Option B, Option D, Option M
+  :widths: 2, 1, 1, 1, 1
 
-   Flexibility, 😡, 💚, 😡
-   Effort,      💚, 💛, 😡
-   Speed,       💚, 💛, 💚
-   UX,          💚, 😡, 😡
+  Flexibility, 😡, 💚, 😡, 😡
+  Effort,      💚, 💛, 😡, 💛
+  Speed,       💚, 💛, 💚, 💛
+  UX,          💚, 😡, 😡, 😡
 
 **Decision: Option B** because Option N loses wrt flexibility. Option D has no advantage over B.
 
