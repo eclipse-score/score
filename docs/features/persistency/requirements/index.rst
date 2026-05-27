@@ -49,7 +49,7 @@ Requirements
    :id: feat_req__persistency__variant_management
    :reqtype: Non-Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :satisfies: stkh_req__overall_goals__variant_management
    :status: valid
 
