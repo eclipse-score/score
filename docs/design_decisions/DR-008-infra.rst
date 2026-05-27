@@ -204,6 +204,8 @@ using ``[[mounts]]`` entries written to ``ubproject.toml``.
 This option has been explored as a proof of concept in
 `docs-as-code PR #554 <https://github.com/eclipse-score/docs-as-code/pull/554>`_.
 It uses the external `sphinx-mounts <https://sphinx-mounts.useblocks.com/>`_ extension.
+`The extension modifies Sphinx internal data structures <https://github.com/useblocks/sphinx-mounts/blob/294526a010dfd8c3be022d154cc8974defd7c7c7/src/sphinx_mounts/mounter.py#L13>`_
+to integrate files outside of the source directory.
 The PoC adds a ``mounts`` attribute to ``docs()``
 and wires it through all relevant paths,
 including ``:docs_combo`` / ``:docs_sources`` and sandboxed builds.
@@ -266,3 +268,5 @@ For a brief moment, we had an ``any_folder`` extension but removed it before the
 It breaks when using such documentation in ``:docs_combo``:
 It relied on configuration in ``conf.py`` but with ``:docs_combo``
 the modules' ``conf.py`` is ignored and only the root ``conf.py`` is used.
+
+More information can be found in `PR #450 <https://github.com/eclipse-score/docs-as-code/pull/450>`_.
