@@ -13,7 +13,7 @@
 DR-008-Infra: Generating documentation sources via Bazel
 ========================================================
 
-- **Date:** 2026-05-21
+- **Date:** 2026-05-28
 
 .. dec_rec:: Generating documentation sources via Bazel
    :id: dec_rec__infra__docs_src_dir
@@ -71,8 +71,22 @@ See `infrastructure discussion 2026-05-18 <https://github.com/orgs/eclipse-score
 
 Cross-repository composed builds via ``:docs_combo`` must keep working for integrator repositories.
 
-Goals
-^^^^^
+When composing doc sources from multiple places with the same repository,
+we need tracking such that errors and warnings point to the original source files.
+However, there is no need to provide that for generated or transformed files
+(as is common for Javascript or CSS assets in web development with
+`source maps <https://developer.mozilla.org/en-US/docs/Glossary/Source_map>`_).
+
+Requirements (all options satisfy these)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Allow to generate parts of the documentation via Bazel (including whole pages or directories).
+- Live preview with fast edit-preview cycles.
+- Errors and warnings point to the original source files if they are in the repo.
+- Combo build can include full sources from multiple repositories.
+
+Goals (optimize these with this decision)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - **Flexibility**: Minimise the effort for potential future extensions.
 - **Effort**: Minimise one-time implementation and ongoing maintenance cost.
