@@ -38,11 +38,11 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-needs/modern.css?v=803738c0" />
   
   <!-- So that users can add custom icons -->
@@ -1030,7 +1030,7 @@ window.runMermaid = runMermaid;</script>
 <ul class="simple">
 <li><p><strong>Date:</strong> 2026-05-21</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-0c88285b">
+<div class="need_container docutils container" id="SNCB-e1dcc373">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__docs_src_dir">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1088,7 +1088,8 @@ to implement “Extra docs pages from artifacts”.</p>
 <p>Workarounds we already have in place are:</p>
 <ul class="simple">
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">.</span></code> as source directory to place sources anywhere.
-This implies a careful maintenance of include/exclude patterns in <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>.</p></li>
+This implies a careful maintenance of include/exclude patterns in <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>.
+It is limited because a rule in the root <code class="docutils literal notranslate"><span class="pre">BUILD</span></code> file cannot cover files in subdirectories with another <code class="docutils literal notranslate"><span class="pre">BUILD</span></code> file.</p></li>
 <li><p>Generate json files for special inputs like source links.
 This is limiting because we cannot generate whole pages or directories with this approach.</p></li>
 <li><p>Implicitly read files from bazel folders.
@@ -1220,10 +1221,13 @@ that materialises a composed source directory inside the Bazel sandbox before in
 using <code class="docutils literal notranslate"><span class="pre">[[mounts]]</span></code> entries written to <code class="docutils literal notranslate"><span class="pre">ubproject.toml</span></code>.</p>
 <p>This option has been explored as a proof of concept in
 <a class="reference external" href="https://github.com/eclipse-score/docs-as-code/pull/554">docs-as-code PR #554</a>.
-It uses the external <a class="reference external" href="https://sphinx-mounts.useblocks.com/">sphinx-mounts</a> extension.
 The PoC adds a <code class="docutils literal notranslate"><span class="pre">mounts</span></code> attribute to <code class="docutils literal notranslate"><span class="pre">docs()</span></code>
 and wires it through all relevant paths,
 including <code class="docutils literal notranslate"><span class="pre">:docs_combo</span></code> / <code class="docutils literal notranslate"><span class="pre">:docs_sources</span></code> and sandboxed builds.</p>
+<p>In contrast to option B, the source files are not re-materialized.
+This uses the external <a class="reference external" href="https://sphinx-mounts.useblocks.com/">sphinx-mounts</a> extension.
+<a class="reference external" href="https://github.com/useblocks/sphinx-mounts/blob/294526a010dfd8c3be022d154cc8974defd7c7c7/src/sphinx_mounts/mounter.py#L13">The extension modifies Sphinx internal data structures</a>
+to integrate files outside of the source directory.</p>
 <p>TODO:
 Apparently <code class="docutils literal notranslate"><span class="pre">:docs_combo</span></code> composes external <code class="docutils literal notranslate"><span class="pre">:docs_sources</span></code> trees,
 but does not define a clear cross-repository aggregation mechanism for mount metadata declared by upstream repositories.
@@ -1307,6 +1311,7 @@ Also, using this immature external dependency is risky.</p>
 It breaks when using such documentation in <code class="docutils literal notranslate"><span class="pre">:docs_combo</span></code>:
 It relied on configuration in <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> but with <code class="docutils literal notranslate"><span class="pre">:docs_combo</span></code>
 the modules’ <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> is ignored and only the root <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> is used.</p>
+<p>More information can be found in <a class="reference external" href="https://github.com/eclipse-score/docs-as-code/pull/450">PR #450</a>.</p>
 </section>
 </section>
 
