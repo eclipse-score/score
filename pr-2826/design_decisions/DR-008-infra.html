@@ -1028,9 +1028,9 @@ window.runMermaid = runMermaid;</script>
   <section id="dr-008-infra-generating-documentation-sources-via-bazel">
 <h1>DR-008-Infra: Generating documentation sources via Bazel<a class="headerlink" href="#dr-008-infra-generating-documentation-sources-via-bazel" title="Link to this heading">#</a></h1>
 <ul class="simple">
-<li><p><strong>Date:</strong> 2026-05-21</p></li>
+<li><p><strong>Date:</strong> 2026-05-28</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-e1dcc373">
+<div class="need_container docutils container" id="SNCB-4e64cad6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__docs_src_dir">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1116,8 +1116,22 @@ is available but does not cover live preview either.</p>
 <p>We want dashboards generated automatically to be included in the documentation.
 See <a class="reference external" href="https://github.com/orgs/eclipse-score/discussions/236#discussioncomment-16906461">infrastructure discussion 2026-05-18</a>.</p>
 <p>Cross-repository composed builds via <code class="docutils literal notranslate"><span class="pre">:docs_combo</span></code> must keep working for integrator repositories.</p>
-<section id="goals">
-<h3>Goals<a class="headerlink" href="#goals" title="Link to this heading">#</a></h3>
+<p>When composing doc sources from multiple places with the same repository,
+we need tracking such that errors and warnings point to the original source files.
+However, there is no need to provide that for generated or transformed files
+(as is common for Javascript or CSS assets in web development with
+<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Glossary/Source_map">source maps</a>).</p>
+<section id="requirements-all-options-satisfy-these">
+<h3>Requirements (all options satisfy these)<a class="headerlink" href="#requirements-all-options-satisfy-these" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Allow to generate parts of the documentation via Bazel (including whole pages or directories).</p></li>
+<li><p>Live preview with fast edit-preview cycles.</p></li>
+<li><p>Errors and warnings point to the original source files if they are in the repo.</p></li>
+<li><p>Combo build can include full sources from multiple repositories.</p></li>
+</ul>
+</section>
+<section id="goals-optimize-these-with-this-decision">
+<h3>Goals (optimize these with this decision)<a class="headerlink" href="#goals-optimize-these-with-this-decision" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Flexibility</strong>: Minimise the effort for potential future extensions.</p></li>
 <li><p><strong>Effort</strong>: Minimise one-time implementation and ongoing maintenance cost.</p></li>
@@ -1363,7 +1377,8 @@ the modules’ <code class="docutils literal notranslate"><span class="pre">conf
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context-problem">Context / Problem</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">Goals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements-all-options-satisfy-these">Requirements (all options satisfy these)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-optimize-these-with-this-decision">Goals (optimize these with this decision)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-goals">Non-Goals</a></li>
 </ul>
 </li>
