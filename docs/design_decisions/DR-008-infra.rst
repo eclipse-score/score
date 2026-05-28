@@ -39,6 +39,7 @@ Workarounds we already have in place are:
 
 * Use ``.`` as source directory to place sources anywhere.
   This implies a careful maintenance of include/exclude patterns in ``conf.py``.
+  It is limited because a rule in the root ``BUILD`` file cannot cover files in subdirectories with another ``BUILD`` file.
 * Generate json files for special inputs like source links.
   This is limiting because we cannot generate whole pages or directories with this approach.
 * Implicitly read files from bazel folders.
@@ -203,12 +204,14 @@ using ``[[mounts]]`` entries written to ``ubproject.toml``.
 
 This option has been explored as a proof of concept in
 `docs-as-code PR #554 <https://github.com/eclipse-score/docs-as-code/pull/554>`_.
-It uses the external `sphinx-mounts <https://sphinx-mounts.useblocks.com/>`_ extension.
-`The extension modifies Sphinx internal data structures <https://github.com/useblocks/sphinx-mounts/blob/294526a010dfd8c3be022d154cc8974defd7c7c7/src/sphinx_mounts/mounter.py#L13>`_
-to integrate files outside of the source directory.
 The PoC adds a ``mounts`` attribute to ``docs()``
 and wires it through all relevant paths,
 including ``:docs_combo`` / ``:docs_sources`` and sandboxed builds.
+
+In contrast to option B, the source files are not re-materialized.
+This uses the external `sphinx-mounts <https://sphinx-mounts.useblocks.com/>`_ extension.
+`The extension modifies Sphinx internal data structures <https://github.com/useblocks/sphinx-mounts/blob/294526a010dfd8c3be022d154cc8974defd7c7c7/src/sphinx_mounts/mounter.py#L13>`_
+to integrate files outside of the source directory.
 
 TODO:
 Apparently ``:docs_combo`` composes external ``:docs_sources`` trees,
