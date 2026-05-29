@@ -23,107 +23,174 @@ Architecture
    :security: YES
    :realizes: wp__feature_arch
 
-Overview
---------
-
-A brief overview of Baselibs is described :ref:`baselibs_feature`.
-
-Description
------------
-
-A detailed description of the Baselibs module requirements is located :need:`feat_req__baselibs__core_utilities`.
-
-The Baselibs module provides foundational software utilities, safety mechanisms and robust infrastructure components. It comprises essential libraries organized into functional categories:
-
-**Core Utility Libraries**
-
-- **bitmanipulation**: Utilities for bit manipulation operations
-- **containers**: Specialized container implementations including ``DynamicArray`` and intrusive linked lists
-- **utils**: Reusable utilities including type traits, mathematical utilities and string manipulation helpers
-
-**Threading and Concurrency**
-
-- **concurrency**: Interface for parallel execution of C++ callables with thread pool management
-
-**Data Processing and Serialization**
-
-- **json**: JSON abstraction layer with pluggable backend support
-- **static_reflection_with_serialization**: Binary serialization/deserialization with compile-time type reflection
-
-**File System and I/O Operations**
-
-- **filesystem**: Filesystem manipulation library similar to ``std::filesystem``
-
-**Memory Management**
-
-- **memory**: Memory handling utilities for safety-critical applications with shared memory support
-
-**Operating System Abstraction**
-
-- **os**: OS Abstraction Layer (OSAL) for POSIX-like systems including Linux and QNX
-
-**Error Handling and Safety**
-
-- **result**: Error handling without exceptions, conforming to C++23 ``std::expected`` specification
-- **safecpp**: Safety framework including exception prevention and overflow-safe implementations
-
-**Modern C++ Extensions and Logging**
-
-- **futurecpp**: C++14 Standard Library extensions with backported components
-- **mw::log**: Logging library for automotive systems with structured logging and multiple backends
-
-These libraries form an integrated ecosystem designed for code reuse, consistency and safety throughout the platform.
-
-
-
-Rationale Behind Architecture Decomposition
-*******************************************
-
-The decomposition of Baselibs into modular libraries is motivated by the need for code reuse, maintainability and consistent APIs across the platform. This approach enables platform modules to leverage common infrastructure, reduces duplication and supports safety and security requirements.
-
-Static Architecture
--------------------
-
 .. feat:: Baselibs
    :id: feat__baselibs
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :provides: logic_arc_int__baselibs__json, logic_arc_int__baselibs__memory_shared, logic_arc_int__com__message_passing, logic_arc_int__baselibs__result, logic_arc_int__baselibs__bit_manipulation, logic_arc_int__baselibs__bit_mask_operator, logic_arc_int__baselibs__dynamic_array, logic_arc_int__baselibs__intrusive_list, logic_arc_int__baselibs__filesystem, logic_arc_int__baselibs__utils_base64, logic_arc_int__baselibs__utils_scoped_op, logic_arc_int__baselibs__promise, logic_arc_int__baselibs__future, logic_arc_int__baselibs__shared_future, logic_arc_int__baselibs__executor, logic_arc_int__baselibs__task, logic_arc_int__baselibs__task_result, logic_arc_int__baselibs__synchronized_queue, logic_arc_int__baselibs__condition_variable, logic_arc_int__safecpp__aborts_upon_ex, logic_arc_int__safecpp__coverage_termination, logic_arc_int__baselibs__safemath, logic_arc_int__baselibs__safeatomics, logic_arc_int__baselibs__scoped_function, logic_arc_int__baselibs__string_view
+   :provides: logic_arc_int__baselibs__json, logic_arc_int__baselibs__memory_shared, logic_arc_int__com__message_passing, logic_arc_int__baselibs__result, logic_arc_int__baselibs__bit_manipulation, logic_arc_int__baselibs__bit_mask_operator, logic_arc_int__baselibs__dynamic_array, logic_arc_int__baselibs__intrusive_list, logic_arc_int__baselibs__filesystem, logic_arc_int__baselibs__utils_base64, logic_arc_int__baselibs__utils_scoped_op, logic_arc_int__baselibs__promise, logic_arc_int__baselibs__future, logic_arc_int__baselibs__shared_future, logic_arc_int__baselibs__executor, logic_arc_int__baselibs__task, logic_arc_int__baselibs__task_result, logic_arc_int__baselibs__synchronized_queue, logic_arc_int__baselibs__condition_variable, logic_arc_int__baselibs__aborts_upon_ex, logic_arc_int__baselibs__coverage_termination, logic_arc_int__baselibs__safemath, logic_arc_int__baselibs__safeatomics, logic_arc_int__baselibs__scoped_function, logic_arc_int__baselibs__string_view, logic_arc_int__baselibs__static_reflection, logic_arc_int__baselibs__generic_serial, logic_arc_int__baselibs__log_serial
 
-.. feat_arc_sta:: Baselibs Static View
-   :id: feat_arc_sta__baselibs__static_view_arch
+Interfaces
+----------
+
+.. logic_arc_int:: Bit Manipulation
+   :id: logic_arc_int__baselibs__bit_manipulation
+   :security: NO
+   :safety: ASIL_B
+   :status: valid
+
+.. logic_arc_int:: Bit Mask Operator
+   :id: logic_arc_int__baselibs__bit_mask_operator
+   :security: NO
+   :safety: ASIL_B
+   :status: valid
+
+.. logic_arc_int:: IJson
+   :id: logic_arc_int__baselibs__json
+   :security: YES
+   :safety:  ASIL_B
+   :status: valid
+
+.. logic_arc_int:: Memory Shared
+   :id: logic_arc_int__baselibs__memory_shared
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :fulfils: feat_req__baselibs__core_utilities
-   :includes: logic_arc_int__baselibs__json, logic_arc_int__baselibs__memory_shared, logic_arc_int__baselibs__result, logic_arc_int__baselibs__bit_manipulation, logic_arc_int__baselibs__bit_mask_operator, logic_arc_int__baselibs__dynamic_array, logic_arc_int__baselibs__intrusive_list, logic_arc_int__baselibs__filesystem, logic_arc_int__baselibs__utils_base64, logic_arc_int__baselibs__utils_scoped_op, logic_arc_int__baselibs__promise, logic_arc_int__baselibs__future, logic_arc_int__baselibs__shared_future, logic_arc_int__baselibs__executor, logic_arc_int__baselibs__task, logic_arc_int__baselibs__task_result, logic_arc_int__baselibs__synchronized_queue, logic_arc_int__baselibs__condition_variable, logic_arc_int__safecpp__aborts_upon_ex, logic_arc_int__safecpp__coverage_termination, logic_arc_int__baselibs__safemath, logic_arc_int__baselibs__safeatomics, logic_arc_int__baselibs__scoped_function, logic_arc_int__baselibs__string_view
-   :tags: inspected
-   :belongs_to: feat__baselibs
 
-   .. needarch::
-      :scale: 50
-      :align: center
-
-      {{ draw_feature(need(), needs) }}
-
-.. feat_arc_dyn:: Baselibs Dynamic View
-   :id: feat_arc_dyn__baselibs__dynamic_view_arch
+.. logic_arc_int:: Result
+   :id: logic_arc_int__baselibs__result
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :fulfils: feat_req__baselibs__core_utilities
-   :belongs_to: feat__baselibs
 
-   not needed, simple caller/callee sequence
+.. logic_arc_int:: Dynamic Array
+   :id: logic_arc_int__baselibs__dynamic_array
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
 
-Logical Interfaces
-------------------
+.. logic_arc_int:: Intrusive List
+   :id: logic_arc_int__baselibs__intrusive_list
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
 
-The Baselibs feature exposes the following logical interfaces:
+.. logic_arc_int:: Filesystem
+   :id: logic_arc_int__baselibs__filesystem
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
 
-.. needtable::
-   :style: table
-   :columns: title;id;status
-   :sort: title
-   :filter: id in ['logic_arc_int__baselibs__json', 'logic_arc_int__baselibs__memory_shared', 'logic_arc_int__baselibs__result', 'logic_arc_int__baselibs__bit_manipulation', 'logic_arc_int__baselibs__bit_mask_operator', 'logic_arc_int__baselibs__dynamic_array', 'logic_arc_int__baselibs__intrusive_list', 'logic_arc_int__baselibs__filesystem', 'logic_arc_int__baselibs__utils_base64', 'logic_arc_int__baselibs__utils_scoped_op', 'logic_arc_int__baselibs__promise', 'logic_arc_int__baselibs__future', 'logic_arc_int__baselibs__shared_future', 'logic_arc_int__baselibs__executor', 'logic_arc_int__baselibs__task', 'logic_arc_int__baselibs__task_result', 'logic_arc_int__baselibs__synchronized_queue', 'logic_arc_int__baselibs__condition_variable', 'logic_arc_int__safecpp__aborts_upon_ex', 'logic_arc_int__safecpp__coverage_termination', 'logic_arc_int__baselibs__safemath', 'logic_arc_int__baselibs__safeatomics', 'logic_arc_int__baselibs__scoped_function', 'logic_arc_int__baselibs__string_view']
+.. logic_arc_int:: Base64
+   :id: logic_arc_int__baselibs__utils_base64
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+
+.. logic_arc_int:: Scoped Operation
+   :id: logic_arc_int__baselibs__utils_scoped_op
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+
+.. logic_arc_int:: Promise
+   :id: logic_arc_int__baselibs__promise
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+
+.. logic_arc_int:: Future
+   :id: logic_arc_int__baselibs__future
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+
+.. logic_arc_int:: Shared Future
+   :id: logic_arc_int__baselibs__shared_future
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+
+.. logic_arc_int:: Executor
+   :id: logic_arc_int__baselibs__executor
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+
+.. logic_arc_int:: Task
+   :id: logic_arc_int__baselibs__task
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+
+.. logic_arc_int:: Task Result
+   :id: logic_arc_int__baselibs__task_result
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+
+.. logic_arc_int:: Synchronized Queue
+   :id: logic_arc_int__baselibs__synchronized_queue
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+
+.. logic_arc_int:: Condition Variable
+   :id: logic_arc_int__baselibs__condition_variable
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+
+.. logic_arc_int:: Aborts Upon Exception
+   :id: logic_arc_int__baselibs__aborts_upon_ex
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+
+.. logic_arc_int:: Coverage Termination Handler
+   :id: logic_arc_int__baselibs__coverage_termination
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+
+.. logic_arc_int:: Safe Math
+   :id: logic_arc_int__baselibs__safemath
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+
+.. logic_arc_int:: Safe Atomics
+   :id: logic_arc_int__baselibs__safeatomics
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+
+.. logic_arc_int:: Scoped Function
+   :id: logic_arc_int__baselibs__scoped_function
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+
+.. logic_arc_int:: String View
+   :id: logic_arc_int__baselibs__string_view
+   :security: YES
+   :safety: ASIL_B
+   :status: valid
+
+.. logic_arc_int:: Static Reflection
+   :id: logic_arc_int__baselibs__static_reflection
+   :security: NO
+   :safety: ASIL_B
+   :status: valid
+
+.. logic_arc_int:: Generic Serialization
+   :id: logic_arc_int__baselibs__generic_serial
+   :security: NO
+   :safety: ASIL_B
+   :status: valid
+
+.. logic_arc_int:: Logging Serialization
+   :id: logic_arc_int__baselibs__log_serial
+   :security: YES
+   :safety: ASIL_B
+   :status: valid

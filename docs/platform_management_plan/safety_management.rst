@@ -473,7 +473,7 @@ Link to project planning: `Platform safety work product issue for V1.0 <https://
 Platform Management Plan - Feature Work Product Lists
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-:need:`doc__baselibs_safety_wp`
+.. :need:`doc__baselibs_safety_wp`
 
 :need:`doc__com_ipc_safety_wp`
 
