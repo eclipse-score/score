@@ -143,6 +143,13 @@ blockquote {
     color: var(--pst-color-text-base);
 }
 
+/* Override text-muted for content-area elements that need readable text on light backgrounds.
+   --pst-color-text-muted is set to #FFF for the dark header, but these sit on the page body. */
+html[data-theme="light"] table caption,
+html[data-theme="light"] figure figcaption {
+    color: var(--pst-color-text-base);
+}
+
 .admonition, div.admonition {
     background-color: rgba(0,0,0,0.1);
 }
