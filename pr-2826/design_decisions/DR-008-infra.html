@@ -1030,7 +1030,7 @@ window.runMermaid = runMermaid;</script>
 <ul class="simple">
 <li><p><strong>Date:</strong> 2026-05-28</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-5351c3d1">
+<div class="need_container docutils container" id="SNCB-29ce00a5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__docs_src_dir">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1050,7 +1050,7 @@ window.runMermaid = runMermaid;</script>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_context"><span class="needs_label">context: </span><span class="needs_data">Infrastructure</span></span></div>
-<div class="line"><span class="needs_decision"><span class="needs_label">decision: </span><span class="needs_data">Option B because Option N loses wrt flexibility</span></span></div>
+<div class="line"><span class="needs_decision"><span class="needs_label">decision: </span><span class="needs_data">Option B because Option N loses wrt Maintainability</span></span></div>
 </span></span></div>
 <div class="line"><span></span></div>
 </div>
@@ -1125,15 +1125,17 @@ However, there is no need to provide that for generated or transformed files
 <h3>Requirements (all options satisfy these)<a class="headerlink" href="#requirements-all-options-satisfy-these" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Allow to generate parts of the documentation via Bazel (including whole pages or directories).</p></li>
+<li><p>Access file from anywhere in the workspace (e.g. cpp sources in <code class="docutils literal notranslate"><span class="pre">src/</span></code>).</p></li>
 <li><p>Live preview with fast edit-preview cycles.</p></li>
 <li><p>Errors and warnings point to the original source files if they are in the repo.</p></li>
 <li><p>Combo build can include full sources from multiple repositories.</p></li>
+<li><p>Intentionally separate test execution from docs generation.</p></li>
 </ul>
 </section>
 <section id="goals-optimize-these-with-this-decision">
 <h3>Goals (optimize these with this decision)<a class="headerlink" href="#goals-optimize-these-with-this-decision" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><strong>Flexibility</strong>: Minimise the effort for potential future extensions.</p></li>
+<li><p><strong>Maintainability</strong>: Minimise the effort for potential future extensions.</p></li>
 <li><p><strong>Effort</strong>: Minimise one-time implementation and ongoing maintenance cost.</p></li>
 <li><p><strong>Speed</strong>: Minimise the build time for documentation builds, especially for live preview.</p></li>
 <li><p><strong>UX</strong>: Minimize efforts necessary to documentation work.</p></li>
@@ -1151,6 +1153,7 @@ However, there is no need to provide that for generated or transformed files
 <h2>Options Considered<a class="headerlink" href="#options-considered" title="Link to this heading">#</a></h2>
 <section id="option-n-no-change-status-quo">
 <h3>Option N: No change (status quo)<a class="headerlink" href="#option-n-no-change-status-quo" title="Link to this heading">#</a></h3>
+<p>TODO Option N is the problem, not a solution. Move it up.</p>
 <p>Keep the current architecture.
 The <code class="docutils literal notranslate"><span class="pre">docs()</span></code> macro in <code class="docutils literal notranslate"><span class="pre">docs.bzl</span></code> accepts a <code class="docutils literal notranslate"><span class="pre">source_dir</span></code> parameter and reads
 documentation sources directly from that directory on the workspace filesystem.</p>
@@ -1161,7 +1164,7 @@ documentation sources directly from that directory on the workspace filesystem.<
     docs --&gt; :live_preview
     :live_preview -- watch --&gt; docs
     </pre><p>Effort 💚: No implementation work required.</p>
-<p>Flexibility 😡: More workarounds instead of generic solution.</p>
+<p>Maintainability 😡: More workarounds instead of generic solution.</p>
 <p>Speed 💚: Fast but only covers source updates (not test result updates, for example).</p>
 <p>UX 💚: Status quo</p>
 <p>While <code class="docutils literal notranslate"><span class="pre">sphinx-autobuild</span> <span class="pre">--pre-build</span></code> is available to trigger some build steps before each rebuild,
@@ -1219,7 +1222,7 @@ The extension is a no-op when no sidecar is present
 The sidecar travels with the materialized tree, so path rewriting works inside
 the Bazel sandbox (<code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">build</span></code>) as well as under <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">run</span></code> and <code class="docutils literal notranslate"><span class="pre">live_preview</span></code>.</p>
 <p>Effort 💛: Some implementation effort but prototype already works.</p>
-<p>Flexibility 💚: Generic solution for all build paths and future extensions.</p>
+<p>Maintainability 💚: Generic solution for all build paths and future extensions.</p>
 <p>Speed 💛: Overall latency is comparable to the status quo for edit-preview cycles, but the initial cold start is a little slower due to the extra Bazel invocation.</p>
 <p>UX 😡: Requires a two-step setup: <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">run</span> <span class="pre">//:ide_support</span></code> (venv) then
 <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">run</span> <span class="pre">//:gen_live_preview</span></code> (script).
@@ -1234,12 +1237,13 @@ auto-refresh in the browser though.</p>
 </section>
 <section id="option-d-dual-path-keep-live-preview-add-docs-src-dir">
 <h3>Option D: Dual-path — keep <code class="docutils literal notranslate"><span class="pre">:live_preview</span></code>, add <code class="docutils literal notranslate"><span class="pre">:docs_src_dir</span></code><a class="headerlink" href="#option-d-dual-path-keep-live-preview-add-docs-src-dir" title="Link to this heading">#</a></h3>
+<p>TODO remove this option</p>
 <p>Keep the existing <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">run</span> <span class="pre">:live_preview</span></code> target unchanged (sphinx-autobuild watching <code class="docutils literal notranslate"><span class="pre">docs/</span></code> on the workspace filesystem).
 In parallel, introduce a separate hermetic <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">build</span> <span class="pre">:docs_src_dir</span></code> target
 that materialises a composed source directory inside the Bazel sandbox before invoking Sphinx.</p>
 <p>The obvious risk here is that the two paths do not produce the same output.</p>
 <p>Effort 😡: By definition requires nearly the effort for option N and B combined.</p>
-<p>Flexibility 😡: Still requires all the workarounds of option N.</p>
+<p>Maintainability 😡: Still requires all the workarounds of option N.</p>
 <p>Speed 💚: No slowdown.</p>
 <p>UX 😡: Live-preview UX is unchanged, but risk of downstream breaks.</p>
 </section>
@@ -1287,10 +1291,15 @@ This violates the hard requirement “errors and warnings point to the original
 source files if they are in the repo”.</p></li>
 </ul>
 <p>Effort 💛: Similar order of magnitude as Option B prototype work.</p>
-<p>Flexibility 😡: Fails strict cross-repository <code class="docutils literal notranslate"><span class="pre">:docs_combo</span></code> requirement in current form.
+<p>Maintainability 😡: Fails strict cross-repository <code class="docutils literal notranslate"><span class="pre">:docs_combo</span></code> requirement in current form.
 Also, using this immature external dependency is risky.</p>
 <p>Speed 💛: Comparable iterative speed; initial setup and mount resolution add some overhead.</p>
 <p>UX 😡: Not acceptable while strict cross-repository composition behavior remains unclear/unmet.</p>
+</section>
+<section id="option-t-two-paths">
+<h3>Option T: Two Paths<a class="headerlink" href="#option-t-two-paths" title="Link to this heading">#</a></h3>
+<p>Mix of option B and M.</p>
+<p>TODO</p>
 </section>
 </section>
 <section id="evaluation">
@@ -1313,11 +1322,11 @@ Also, using this immature external dependency is risky.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Flexibility</p></td>
+<tr class="row-even"><td><p>Maintainability</p></td>
 <td><p>😡</p></td>
 <td><p>💚</p></td>
 <td><p>😡</p></td>
-<td><p>😡</p></td>
+<td><p>💚</p></td>
 </tr>
 <tr class="row-odd"><td><p>Effort</p></td>
 <td><p>💚</p></td>
@@ -1340,7 +1349,7 @@ Also, using this immature external dependency is risky.</p>
 </tbody>
 </table>
 </div>
-<p><strong>Decision: Option B</strong> because Option N loses wrt flexibility. Option D has no advantage over B.</p>
+<p><strong>Decision: Option B</strong> because Option N loses wrt Maintainability. Option D has no advantage over B.</p>
 </section>
 <section id="appendix-any-folder-experiment">
 <h2>Appendix: any_folder experiment<a class="headerlink" href="#appendix-any-folder-experiment" title="Link to this heading">#</a></h2>
@@ -1410,6 +1419,7 @@ the modules’ <code class="docutils literal notranslate"><span class="pre">conf
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-b-introduce-docs-src-dir-bazel-target">Option B: Introduce <code class="docutils literal notranslate"><span class="pre">:docs_src_dir</span></code> Bazel target</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-d-dual-path-keep-live-preview-add-docs-src-dir">Option D: Dual-path — keep <code class="docutils literal notranslate"><span class="pre">:live_preview</span></code>, add <code class="docutils literal notranslate"><span class="pre">:docs_src_dir</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-m-mount-external-source-bundles-via-sphinx-mounts">Option M: Mount external source bundles via <code class="docutils literal notranslate"><span class="pre">sphinx-mounts</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-t-two-paths">Option T: Two Paths</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a></li>
