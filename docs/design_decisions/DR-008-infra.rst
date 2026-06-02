@@ -173,6 +173,21 @@ The ``score_sync_toml`` extension's write to the source directory is redirected 
 ``--define=needscfg_outpath=<workspace>/docs/ubproject.toml``,
 which works without modifications to the extension itself.
 
+Because Sphinx sees the materialized tree rather than the original workspace files,
+warnings would normally cite ``bazel-out/…`` paths.
+In the PoC, this is addressed by a ``_sourcemap.json`` sidecar emitted by the ``docs_src_dir``
+Bazel action alongside the declared directory.
+The sidecar maps each materialized path back to its original workspace-relative path.
+A ``score_sourcemap`` Sphinx extension reads the sidecar on ``builder-inited``,
+then installs a ``logging.Filter`` on every Sphinx log handler that rewrites
+materialized paths in warning/error records before they are emitted.
+The filter runs after Sphinx's own ``WarningLogRecordTranslator``, which has already
+converted ``(docname, lineno)`` tuples to strings, so the rewrite is purely textual.
+The extension is a no-op when no sidecar is present
+(direct Sphinx invocations via ``esbonio`` or ``.venv_docs`` are unaffected).
+The sidecar travels with the materialized tree, so path rewriting works inside
+the Bazel sandbox (``bazel build``) as well as under ``bazel run`` and ``live_preview``.
+
 Effort 💛: Some implementation effort but prototype already works.
 
 Flexibility 💚: Generic solution for all build paths and future extensions.
@@ -251,6 +266,15 @@ Known constraints from the PoC:
 * Per-bundle ``ubproject.toml`` generation is workspace-only (``bazel run``),
   while sandboxed ``bazel build`` skips those workspace writes by design.
 * Nested mounts are not supported.
+* Sphinx warnings and errors point to the ``bazel-bin`` copy of each file,
+  not to the original source.
+  ``sphinx-mounts`` registers the absolute path of the materialised directory
+  (resolved from Bazel runfiles) in ``sphinx.project.Project._docname_to_path``,
+  so that is what Sphinx embeds in its diagnostic output.
+  The ``src_root`` mechanism only generates a ``ubproject.toml`` for IDE use;
+  it does not change the path seen by Sphinx.
+  This violates the hard requirement "errors and warnings point to the original
+  source files if they are in the repo".
 
 Effort 💛: Similar order of magnitude as Option B prototype work.
 
