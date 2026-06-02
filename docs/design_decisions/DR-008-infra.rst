@@ -178,9 +178,9 @@ The extension is a no-op when no sidecar is present
 The sidecar travels with the materialized tree, so path rewriting works inside
 the Bazel sandbox (``bazel build``) as well as under ``bazel run`` and ``live_preview``.
 
-Effort 💛: Some implementation effort but prototype already works.
-
 Maintainability 💚: Generic solution for all build paths and future extensions.
+
+Effort 💛: Some implementation effort but prototype already works.
 
 Speed 💛: Overall latency is comparable to the status quo for edit-preview cycles, but the initial cold start is a little slower due to the extra Bazel invocation.
 
@@ -197,25 +197,6 @@ The generally idea is also described in `the rules_python documentation <https:/
 
 This ``docs.serve`` target implemented in `rules_python` does not have
 auto-refresh in the browser though.
-
-Option D: Dual-path — keep ``:live_preview``, add ``:docs_src_dir``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-TODO remove this option
-
-Keep the existing ``bazel run :live_preview`` target unchanged (sphinx-autobuild watching ``docs/`` on the workspace filesystem).
-In parallel, introduce a separate hermetic ``bazel build :docs_src_dir`` target
-that materialises a composed source directory inside the Bazel sandbox before invoking Sphinx.
-
-The obvious risk here is that the two paths do not produce the same output.
-
-Effort 😡: By definition requires nearly the effort for option N and B combined.
-
-Maintainability 😡: Still requires all the workarounds of option N.
-
-Speed 💚: No slowdown.
-
-UX 😡: Live-preview UX is unchanged, but risk of downstream breaks.
 
 Option M: Mount external source bundles via ``sphinx-mounts``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -268,12 +249,12 @@ Known constraints from the PoC:
   This violates the hard requirement "errors and warnings point to the original
   source files if they are in the repo".
 
-Effort 💛: Similar order of magnitude as Option B prototype work.
-
-Maintainability 😡: Fails strict cross-repository ``:docs_combo`` requirement in current form.
+Maintainability 💚?: Fails strict cross-repository ``:docs_combo`` requirement in current form.
 Also, using this immature external dependency is risky.
 
-Speed 💛: Comparable iterative speed; initial setup and mount resolution add some overhead.
+Effort 💛: Similar order of magnitude as Option B prototype work.
+
+Speed 💛?: Comparable iterative speed; initial setup and mount resolution add some overhead.
 
 UX 😡: Not acceptable while strict cross-repository composition behavior remains unclear/unmet.
 
@@ -290,15 +271,15 @@ Evaluation
 In order of importance, most important first.
 
 .. csv-table::
-  :header: Goals, Option B, Option D, Option M
+  :header: Goals, Option B, Option M, Option T
   :widths: 2, 1, 1, 1
 
-  Maintainability, 💚, 😡, 💚
-  Effort,          💛, 😡, 💛
-  Speed,           💛, 💚, 💛
-  UX,              😡, 😡, 😡
+  Maintainability, 💚, 💚?, ?
+  Effort,          💛, 💛,  ?
+  Speed,           💛, 💛?, ?
+  UX,              😡, 😡,  ?
 
-**Decision: Option B** because Option N loses wrt Maintainability. Option D has no advantage over B.
+**Decision: Option B** because it does not matter.
 
 Appendix: any_folder experiment
 -------------------------------
