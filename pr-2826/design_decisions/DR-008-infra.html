@@ -1030,7 +1030,7 @@ window.runMermaid = runMermaid;</script>
 <ul class="simple">
 <li><p><strong>Date:</strong> 2026-05-28</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-29ce00a5">
+<div class="need_container docutils container" id="SNCB-4aaa3c99">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__docs_src_dir">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1121,6 +1121,19 @@ we need tracking such that errors and warnings point to the original source file
 However, there is no need to provide that for generated or transformed files
 (as is common for Javascript or CSS assets in web development with
 <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Glossary/Source_map">source maps</a>).</p>
+<section id="status-quo">
+<h3>Status quo<a class="headerlink" href="#status-quo" title="Link to this heading">#</a></h3>
+<pre  class="mermaid">
+        graph LR
+    docs&#64;{ shape: docs, label: &quot;docs/&quot; }
+    docs --&gt; :docs
+    docs --&gt; :live_preview
+    :live_preview -- watch --&gt; docs
+    </pre><p>While <code class="docutils literal notranslate"><span class="pre">sphinx-autobuild</span> <span class="pre">--pre-build</span></code> is available to trigger some build steps before each rebuild,
+this does not work with Bazel:
+If you <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">run</span> <span class="pre">:live_preview</span></code> and do a <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">build</span></code> inside,
+that build will wait for the run to finish, thus deadlock.</p>
+</section>
 <section id="requirements-all-options-satisfy-these">
 <h3>Requirements (all options satisfy these)<a class="headerlink" href="#requirements-all-options-satisfy-these" title="Link to this heading">#</a></h3>
 <ul class="simple">
@@ -1151,27 +1164,6 @@ However, there is no need to provide that for generated or transformed files
 </section>
 <section id="options-considered">
 <h2>Options Considered<a class="headerlink" href="#options-considered" title="Link to this heading">#</a></h2>
-<section id="option-n-no-change-status-quo">
-<h3>Option N: No change (status quo)<a class="headerlink" href="#option-n-no-change-status-quo" title="Link to this heading">#</a></h3>
-<p>TODO Option N is the problem, not a solution. Move it up.</p>
-<p>Keep the current architecture.
-The <code class="docutils literal notranslate"><span class="pre">docs()</span></code> macro in <code class="docutils literal notranslate"><span class="pre">docs.bzl</span></code> accepts a <code class="docutils literal notranslate"><span class="pre">source_dir</span></code> parameter and reads
-documentation sources directly from that directory on the workspace filesystem.</p>
-<pre  class="mermaid">
-        graph LR
-    docs&#64;{ shape: docs, label: &quot;docs/&quot; }
-    docs --&gt; :docs
-    docs --&gt; :live_preview
-    :live_preview -- watch --&gt; docs
-    </pre><p>Effort 💚: No implementation work required.</p>
-<p>Maintainability 😡: More workarounds instead of generic solution.</p>
-<p>Speed 💚: Fast but only covers source updates (not test result updates, for example).</p>
-<p>UX 💚: Status quo</p>
-<p>While <code class="docutils literal notranslate"><span class="pre">sphinx-autobuild</span> <span class="pre">--pre-build</span></code> is available to trigger some build steps before each rebuild,
-this does not work with Bazel:
-If you <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">run</span> <span class="pre">:live_preview</span></code> and do a <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">build</span></code> inside,
-that build will wait for the run to finish, thus deadlock.</p>
-</section>
 <section id="option-b-introduce-docs-src-dir-bazel-target">
 <h3>Option B: Introduce <code class="docutils literal notranslate"><span class="pre">:docs_src_dir</span></code> Bazel target<a class="headerlink" href="#option-b-introduce-docs-src-dir-bazel-target" title="Link to this heading">#</a></h3>
 <p>In short: sphinx-autobuild from a Bazel target that re-materializes the sources continuously via
@@ -1221,8 +1213,8 @@ The extension is a no-op when no sidecar is present
 (direct Sphinx invocations via <code class="docutils literal notranslate"><span class="pre">esbonio</span></code> or <code class="docutils literal notranslate"><span class="pre">.venv_docs</span></code> are unaffected).
 The sidecar travels with the materialized tree, so path rewriting works inside
 the Bazel sandbox (<code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">build</span></code>) as well as under <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">run</span></code> and <code class="docutils literal notranslate"><span class="pre">live_preview</span></code>.</p>
-<p>Effort 💛: Some implementation effort but prototype already works.</p>
 <p>Maintainability 💚: Generic solution for all build paths and future extensions.</p>
+<p>Effort 💛: Some implementation effort but prototype already works.</p>
 <p>Speed 💛: Overall latency is comparable to the status quo for edit-preview cycles, but the initial cold start is a little slower due to the extra Bazel invocation.</p>
 <p>UX 😡: Requires a two-step setup: <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">run</span> <span class="pre">//:ide_support</span></code> (venv) then
 <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">run</span> <span class="pre">//:gen_live_preview</span></code> (script).
@@ -1234,18 +1226,6 @@ ibazel<span class="w"> </span>build<span class="w"> </span>//docs:docs<span clas
 </div>
 <p>This <code class="docutils literal notranslate"><span class="pre">docs.serve</span></code> target implemented in <cite>rules_python</cite> does not have
 auto-refresh in the browser though.</p>
-</section>
-<section id="option-d-dual-path-keep-live-preview-add-docs-src-dir">
-<h3>Option D: Dual-path — keep <code class="docutils literal notranslate"><span class="pre">:live_preview</span></code>, add <code class="docutils literal notranslate"><span class="pre">:docs_src_dir</span></code><a class="headerlink" href="#option-d-dual-path-keep-live-preview-add-docs-src-dir" title="Link to this heading">#</a></h3>
-<p>TODO remove this option</p>
-<p>Keep the existing <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">run</span> <span class="pre">:live_preview</span></code> target unchanged (sphinx-autobuild watching <code class="docutils literal notranslate"><span class="pre">docs/</span></code> on the workspace filesystem).
-In parallel, introduce a separate hermetic <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">build</span> <span class="pre">:docs_src_dir</span></code> target
-that materialises a composed source directory inside the Bazel sandbox before invoking Sphinx.</p>
-<p>The obvious risk here is that the two paths do not produce the same output.</p>
-<p>Effort 😡: By definition requires nearly the effort for option N and B combined.</p>
-<p>Maintainability 😡: Still requires all the workarounds of option N.</p>
-<p>Speed 💚: No slowdown.</p>
-<p>UX 😡: Live-preview UX is unchanged, but risk of downstream breaks.</p>
 </section>
 <section id="option-m-mount-external-source-bundles-via-sphinx-mounts">
 <h3>Option M: Mount external source bundles via <code class="docutils literal notranslate"><span class="pre">sphinx-mounts</span></code><a class="headerlink" href="#option-m-mount-external-source-bundles-via-sphinx-mounts" title="Link to this heading">#</a></h3>
@@ -1290,10 +1270,10 @@ it does not change the path seen by Sphinx.
 This violates the hard requirement “errors and warnings point to the original
 source files if they are in the repo”.</p></li>
 </ul>
-<p>Effort 💛: Similar order of magnitude as Option B prototype work.</p>
-<p>Maintainability 😡: Fails strict cross-repository <code class="docutils literal notranslate"><span class="pre">:docs_combo</span></code> requirement in current form.
+<p>Maintainability 💚?: Fails strict cross-repository <code class="docutils literal notranslate"><span class="pre">:docs_combo</span></code> requirement in current form.
 Also, using this immature external dependency is risky.</p>
-<p>Speed 💛: Comparable iterative speed; initial setup and mount resolution add some overhead.</p>
+<p>Effort 💛: Similar order of magnitude as Option B prototype work.</p>
+<p>Speed 💛?: Comparable iterative speed; initial setup and mount resolution add some overhead.</p>
 <p>UX 😡: Not acceptable while strict cross-repository composition behavior remains unclear/unmet.</p>
 </section>
 <section id="option-t-two-paths">
@@ -1307,49 +1287,43 @@ Also, using this immature external dependency is risky.</p>
 <p>In order of importance, most important first.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <colgroup>
-<col style="width: 33.3%" />
-<col style="width: 16.7%" />
-<col style="width: 16.7%" />
-<col style="width: 16.7%" />
-<col style="width: 16.7%" />
+<col style="width: 40.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Goals</p></th>
-<th class="head"><p>Option N</p></th>
 <th class="head"><p>Option B</p></th>
-<th class="head"><p>Option D</p></th>
 <th class="head"><p>Option M</p></th>
+<th class="head"><p>Option T</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Maintainability</p></td>
-<td><p>😡</p></td>
 <td><p>💚</p></td>
-<td><p>😡</p></td>
-<td><p>💚</p></td>
+<td><p>💚?</p></td>
+<td><p>?</p></td>
 </tr>
 <tr class="row-odd"><td><p>Effort</p></td>
-<td><p>💚</p></td>
 <td><p>💛</p></td>
-<td><p>😡</p></td>
 <td><p>💛</p></td>
+<td><p>?</p></td>
 </tr>
 <tr class="row-even"><td><p>Speed</p></td>
-<td><p>💚</p></td>
 <td><p>💛</p></td>
-<td><p>💚</p></td>
-<td><p>💛</p></td>
+<td><p>💛?</p></td>
+<td><p>?</p></td>
 </tr>
 <tr class="row-odd"><td><p>UX</p></td>
-<td><p>💚</p></td>
 <td><p>😡</p></td>
 <td><p>😡</p></td>
-<td><p>😡</p></td>
+<td><p>?</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p><strong>Decision: Option B</strong> because Option N loses wrt Maintainability. Option D has no advantage over B.</p>
+<p><strong>Decision: Option B</strong> because it does not matter.</p>
 </section>
 <section id="appendix-any-folder-experiment">
 <h2>Appendix: any_folder experiment<a class="headerlink" href="#appendix-any-folder-experiment" title="Link to this heading">#</a></h2>
@@ -1409,15 +1383,14 @@ the modules’ <code class="docutils literal notranslate"><span class="pre">conf
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context-problem">Context / Problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#status-quo">Status quo</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements-all-options-satisfy-these">Requirements (all options satisfy these)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-optimize-these-with-this-decision">Goals (optimize these with this decision)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-goals">Non-Goals</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#options-considered">Options Considered</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-n-no-change-status-quo">Option N: No change (status quo)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-b-introduce-docs-src-dir-bazel-target">Option B: Introduce <code class="docutils literal notranslate"><span class="pre">:docs_src_dir</span></code> Bazel target</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-d-dual-path-keep-live-preview-add-docs-src-dir">Option D: Dual-path — keep <code class="docutils literal notranslate"><span class="pre">:live_preview</span></code>, add <code class="docutils literal notranslate"><span class="pre">:docs_src_dir</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-m-mount-external-source-bundles-via-sphinx-mounts">Option M: Mount external source bundles via <code class="docutils literal notranslate"><span class="pre">sphinx-mounts</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-t-two-paths">Option T: Two Paths</a></li>
 </ul>
