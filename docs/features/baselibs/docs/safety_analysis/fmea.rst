@@ -18,32 +18,16 @@ FMEA (Failure Modes and Effects Analysis)
 
 .. document:: Baselibs FMEA
    :id: doc__baselibs_fmea
-   :status: draft
+   :status: valid
    :safety: ASIL_B
-   :security: NO
+   :security: YES
    :realizes: wp__feature_fmea
 
+The feature baselibs consists of multiple components which provide very different functionality.
+They are also low-complex (i.e. no component architecture is documented, so that the feature architecture is the only one to analyze,
+with one exception which is the Json component).
 
-Failure Mode List
------------------
+For a better usability and readability the FMEA will be documented on component level and for every
+component individually, but using the feature architecture views (plus additional component architecture if any decompositon was done).
 
-.. code-block:: rst
-
-
-    .. feat_saf_fmea:: <Title>
-       :violates: <Feature architecture>
-       :id: feat_saf_fmea__<Feature>__<Element descriptor>
-       :fault_id: <ID from fault model :need:`gd_guidl__fault_models`>
-       :failure_effect: "description of failure effect of the fault model on the element"
-       :mitigated_by: <ID from Feature Requirement | ID from AoU Feature Requirement>
-       :mitigation_issue: <ID from Issue Tracker>
-       :sufficient: <yes|no>
-       :status: <valid|invalid>
-
- .. note::   argument is inside the 'content'. Therefore content is mandatory
-
-.. attention::
-    The above directive must be updated according to your feature FMEA.
-
-    - The above "code-block" directive must be updated
-    - Fill in all the needed information in the <brackets>
+Consequently there is no AoU detected and documented on feature level.

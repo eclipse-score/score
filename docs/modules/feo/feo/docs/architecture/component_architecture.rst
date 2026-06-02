@@ -63,6 +63,7 @@ Static Architecture
   :security: YES
   :safety: ASIL_B
   :status: valid
+  :belongs_to: feat__feo
 
 .. comp_arc_sta:: Static Architecture
   :id: comp_arc_sta__feo__main

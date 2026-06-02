@@ -26,12 +26,17 @@ Safety Manual
 
 Introduction/Scope
 ------------------
-| <Describe here which module (or the platform) is covered by this manual.>
+This safety manual covers the orchestrator module.
 
 Assumed Platform Safety Requirements
 ------------------------------------
-| For the <Project platform / module name> the following safety related stakeholder requirements are assumed to define the top level functionality (purpose) of the <Project platform / module name>. I.e. from these all the feature and component requirements implemented are derived.
-| <List here all the stakeholder requirements, with safety not equal to QM, the module's components requirements are derived from.>
+For the orchestrator module name the following safety related stakeholder requirements are assumed to define the top level functionality (purpose) of the module. I.e. from these all the feature and component requirements implemented are derived.
+
+- :need:`stkh_req__execution_model__processes` - this requirement is QM and not fully covered as ASIL, only combined with the following requirements
+- :need:`stkh_req__dependability__automotive_safety`
+- :need:`stkh_req__app_architectures__support_time`
+
+The user needs to check orchestration feature level requirements to see which functionalities are provided as ASIL B.
 
 Assumptions of Use
 ------------------

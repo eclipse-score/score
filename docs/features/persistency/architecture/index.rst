@@ -31,8 +31,7 @@ Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :includes: logic_arc_int__persistency__interface
-   :consists_of: comp__persistency_kvs
+   :provides: logic_arc_int__persistency__interface
 
 .. comp:: persistency::kvs
    :id: comp__persistency_kvs
@@ -40,6 +39,7 @@ Architecture
    :safety: ASIL_B
    :status: valid
    :implements: logic_arc_int__persistency__interface
+   :belongs_to: feat__persistency
 
 
 

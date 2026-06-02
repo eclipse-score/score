@@ -94,7 +94,6 @@ Assumptions of Use (AoU)
    :security: NO
    :safety: ASIL_B
    :status: valid
-   :tags: inspected
 
    The user shall verify sufficient capacity or handle allocation failures before insertion operations to prevent exceeding container limits and undefined behavior.
 
@@ -104,7 +103,6 @@ Assumptions of Use (AoU)
    :security: NO
    :safety: ASIL_B
    :status: valid
-   :tags: inspected
 
    The user shall ensure that iterators are not used after operations that invalidate them and refresh iterators after modifying operations.
 
@@ -114,7 +112,6 @@ Assumptions of Use (AoU)
    :security: NO
    :safety: ASIL_B
    :status: valid
-   :tags: inspected
 
    The user shall ensure that elements stored in containers remain valid throughout their lifetime in the container, and for intrusive containers, that element objects are not destroyed or moved while contained within the container.
 
@@ -124,7 +121,6 @@ Assumptions of Use (AoU)
    :security: NO
    :safety: ASIL_B
    :status: valid
-   :tags: inspected
 
    The user shall implement external synchronization mechanisms when accessing or modifying container objects from multiple threads concurrently, as the library provides no internal thread safety guarantees.
 
@@ -134,7 +130,6 @@ Assumptions of Use (AoU)
    :security: NO
    :safety: ASIL_B
    :status: valid
-   :tags: inspected
 
    The user shall ensure that all index-based access operations use valid indices within the container's current size range to prevent out-of-bounds access and undefined behavior.
 
@@ -144,7 +139,6 @@ Assumptions of Use (AoU)
    :security: NO
    :safety: ASIL_B
    :status: valid
-   :tags: inspected
 
    The user shall verify container state before performing operations that depend on specific states, such as checking if a container is non-empty before accessing elements.
 
@@ -154,7 +148,6 @@ Assumptions of Use (AoU)
    :security: NO
    :safety: ASIL_B
    :status: valid
-   :tags: inspected
 
    The user shall provide sufficient memory resources for all container operations.
 
@@ -164,12 +157,11 @@ Assumptions of Use (AoU)
    :security: NO
    :safety: ASIL_B
    :status: valid
-   :tags: inspected
 
    The user shall ensure that element types are copy constructible, move constructible and destructible, and additionally for intrusive containers that they provide the required intrusive node members.
 
 .. needextend:: "__containers__" in id
    :+tags: baselibs
 
-.. needextend:: "containers" in id
+.. needextend:: "__containers__" in id
    :+tags: containers

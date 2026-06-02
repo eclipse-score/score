@@ -111,11 +111,11 @@ The following  ISO 26262 defined safety work products are not relevant for the S
 
 * Because distributed development is not how the project is organized. All contributors are seen as part of the project team.
   When used, OSS components are qualified and external SEooCs are integrated in the project scope: :need:`std_wp__iso26262__support_551`,
-  :need:`std_wp__iso26262__support_552`, :need:`std_wp__iso26262__support_553`, :need:`std_wp__iso26262__support_554`, :need:`std_wp__iso26262__support_555`
+  :need:`std_wp__iso26262__support_552`, :need:`std_wp__iso26262__support_553`, :need:`std_wp__iso26262__support_554`, :need:`std_wp__iso26262__support_555`, :need:`std_req__iso26262__management_64610`
 
-* Because in the S-CORE SW platform HW elements are out of scope: :need:`std_wp__iso26262__support_1351`, :need:`std_wp__iso26262__support_1352`, :need:`std_wp__iso26262__support_1353`
+* Because in the S-CORE SW platform HW elements are out of scope: :need:`std_wp__iso26262__support_1351`, :need:`std_wp__iso26262__support_1352`, :need:`std_wp__iso26262__support_1353`, :need:`std_req__iso26262__management_6454`
 
-* Because in the S-CORE SW platform a proven in use argument will not be applied: :need:`std_wp__iso26262__support_1451`, :need:`std_wp__iso26262__support_1452`
+* Because in the S-CORE SW platform a proven in use argument will not be applied: :need:`std_wp__iso26262__support_1451`, :need:`std_wp__iso26262__support_1452`, :need:`std_req__iso26262__management_6453`
 
 * Because in the S-CORE SW platform interfacing of out of scope of ISO 26262 applications is not planned: :need:`std_wp__iso26262__support_1551`
 
@@ -135,6 +135,10 @@ But also some activities based on requirements defining what has to be done to c
 
 * Because those are not relevant for ASIL_B: :need:`std_req__iso26262__system_6423`,
   :need:`std_req__iso26262__system_6424`, :need:`std_req__iso26262__system_6425`
+
+* Because S-CORE is not planning to do a safety assessment: :need:`std_req__iso26262__management_64121`, :need:`std_req__iso26262__management_64122`, :need:`std_req__iso26262__management_64123`,
+  :need:`std_req__iso26262__management_64124`, :need:`std_req__iso26262__management_64125`, :need:`std_req__iso26262__management_64126`, :need:`std_req__iso26262__management_64127`, :need:`std_req__iso26262__management_64128`,
+  :need:`std_req__iso26262__management_64129`, :need:`std_req__iso26262__management_641210`, :need:`std_req__iso26262__management_641211`, :need:`std_req__iso26262__management_641212`, :need:`std_req__iso26262__management_641213`
 
 Approach
 ++++++++
@@ -353,7 +357,7 @@ Functional Safety/Security Management SW Platform Work Products
     * - :need:`wp__process_description`
       - :ndf:`copy('status', need_id='wf__def_app_process_description')`
       - `Process description <https://eclipse-score.github.io/process_description/main/index.html>`_
-      - Maturity Level 1
+      - Maturity Level 1-2
 
     * - :need:`wp__process_impr_report`
       - :ndf:`copy('status', need_id='wf__mon_imp_process_description')`
@@ -362,7 +366,7 @@ Functional Safety/Security Management SW Platform Work Products
 
     * - :need:`wp__process_strategy`
       - :ndf:`copy('status', need_id='wf__cr_mt_process_mgt_strategy')`
-      - `Process community planning <https://github.com/orgs/eclipse-score/projects/21>`_
+      - `Process development community planning <https://github.com/orgs/eclipse-score/projects/21>`_
       - see planning board
 
     * - :need:`wp__platform_handbook`
@@ -372,13 +376,13 @@ Functional Safety/Security Management SW Platform Work Products
 
     * - :need:`wp__platform_sw_release_note`
       - :ndf:`copy('status', need_id='wf__rel_platform_rel_note')`
-      - :need:`doc__score_v05_alpha_release_note`
-      - :ndf:`copy('status', need_id='doc__score_v05_alpha_release_note')`
+      - `Release Note <https://eclipse-score.github.io/reference_integration/main>`_
+      - see reference integration
 
     * - :need:`wp__verification_platform_ver_report`
       - :ndf:`copy('status', need_id='wf__verification_platform_ver_report')`
-      - <Link to WP>
-      - <automated>
+      - `Verification Report <https://eclipse-score.github.io/reference_integration/main>`_
+      - see reference integration
 
     * - :need:`wp__requirements_stkh`
       - :ndf:`copy('status', need_id='wf__req_stkh_req')`
@@ -402,8 +406,8 @@ Functional Safety/Security Management SW Platform Work Products
 
     * - :need:`wp__tool_verification_report`
       - :ndf:`copy('status', need_id='wf__tool_create_tool_verification_report')`
-      - :ref:`tools`
-      - see WP link
+      - :need:`doc__tool_evaluation_list`
+      - :ndf:`copy('status', need_id='doc__tool_evaluation_list')`
 
 
 Functional Safety Specific SW Platform Work Products
@@ -429,41 +433,42 @@ Functional Safety Specific SW Platform Work Products
 
     * - :need:`wp__fdr_reports` (platform Safety Plan)
       - :ndf:`copy('status', need_id='wf__p_formal_rv')`
-      - <Link to WP>
-      - <automated>
+      - :need:`doc__score_platform_safety_plan_fdr`
+      - :ndf:`copy('status', need_id='doc__score_platform_safety_plan_fdr')`
 
     * - :need:`wp__fdr_reports` (platform Safety Package)
       - :ndf:`copy('status', need_id='wf__p_formal_rv')`
-      - <Link to WP>
-      - <automated>
+      - :need:`doc__score_platform_safety_package_fdr`
+      - :ndf:`copy('status', need_id='doc__score_platform_safety_package_fdr')`
 
     * - :need:`wp__fdr_reports` (feature's Safety Analyses & DFA)
       - :ndf:`copy('status', need_id='wf__p_formal_rv')`
-      - <Link to WP>
-      - <automated>
+      - :need:`doc__score_platform_safety_analysis_fdr`
+      - :ndf:`copy('status', need_id='doc__score_platform_safety_analysis_fdr')`
 
     * - :need:`wp__audit_report`
       - performed by external experts
-      - <Link to WP>
+      - `Audit findings <https://github.com/eclipse-score/process_description/issues/518>`_
       - intermediate
 
     * - :need:`wp__platform_dfa`
       - :ndf:`copy('status', need_id='wf__analyse_platform_featarch')`
-      - <Link to WP>
-      - <automated>
+      - :need:`doc__platform_dfa`
+      - :ndf:`copy('status', need_id='doc__platform_dfa')`
 
     * - :need:`wp__platform_safety_manual`
       - :ndf:`copy('status', need_id='wf__cr_mt_safety_manual')`
-      - <Link to WP>
-      - <automated>
+      - :need:`doc__score_platform_safety_manual`
+      - :ndf:`copy('status', need_id='doc__score_platform_safety_manual')`
 
     * - :need:`wp__safety_tailoring` (generic)
       - :ndf:`copy('status', need_id='wf__def_app_process_description')`
       - :need:`wp__tailoring_work_products` & :need:`doc__score_platform_safety_plan`
-      - valid
+      - :ndf:`copy('status', need_id='wp__tailoring_work_products')`
 
 Process status: Status of the workflow which "outputs" the work product, derived from the docs it "has" and guidances it "contains".
 
+Link to project planning: `Platform safety work product issue for V1.0 <https://github.com/eclipse-score/score/issues/2465>`_
 
 Platform Management Plan - Feature Work Product Lists
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -485,3 +490,13 @@ Platform Management Plan - Documents Status Chart
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 See :ref:`doc_platform_management_plan`
+
+Deviations from Platform Safety Plan
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The following deviations from the platform safety plan are present in the platform safety package.
+These are deviations from planned processes execution and/or work product results,
+safety anomalies in the sense of known bugs in the software are reported in the release notes (of the platform's modules).
+
+<Describe here the deviations, whether they have an impact on platform safety functions,
+how these can be mitigated or argued and if and when a resolution is planned.>

@@ -12,6 +12,13 @@
 # *******************************************************************************
 
 name: Documentation
+
+permissions:
+  contents: write
+  pages: write
+  pull-requests: write
+  id-token: write
+
 on:
   pull_request_target:
     types: [opened, reopened, synchronize] # Handles forked PRs
@@ -20,130 +27,17 @@ on:
       - main # docs are built only on push to main branch, for feature branches there are PR builds
   merge_group:
     types: [checks_requested]
+  release:
+    types: [created]
 
 jobs:
   docs-build:
-    name: Build documentation
-    runs-on: ubuntu-latest
+    uses: eclipse-score/cicd-workflows/.github/workflows/docs.yml@829b3e11ccbf924a5782f7bfed647cb1619fdf78 # v0.0.1
     permissions:
-      pull-requests: write
-    steps:
-      # ------------------------------------------------------------------------------
-      # Checkout the correct branch safely in all scenarios (PRs, forks, merges)
-      # ------------------------------------------------------------------------------
-      # | Condition                              | Event Type         | Checked Out Branch    |
-      # |----------------------------------------|--------------------|-----------------------|
-      # | github.head_ref                        | pull_request_target | PR branch (source branch) |
-      # | github.event.pull_request.head.ref     | pull_request        | PR branch (source branch) |
-      # | github.ref                             | push, merge_group   | The branch being pushed/merged |
-      # ------------------------------------------------------------------------------
-      # ------------------------------------------------------------------------------
-      # Checkout the correct repository safely in all scenarios (PRs, forks, merges)
-      # ------------------------------------------------------------------------------
-      # | Condition                                      | Event Type         | Checked Out Repository           |
-      # |------------------------------------------------|--------------------|----------------------------------|
-      # | github.event.pull_request.head.repo.full_name  | pull_request       | Forked repository (if PR is from a fork) |
-      # | github.repository                              | push, merge_group  | Default repository (same repo PRs, merges, pushes) |
-      - name: Checkout repository (Handle all events)
-        uses: actions/checkout@v4.2.2
-        with:
-          ref: ${{ github.head_ref || github.event.pull_request.head.ref || github.ref }}
-          repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
-
-      - name: Verify Doc-as-Code version
-        if: ${{ github.event_name == 'pull_request_target' }}
-        id: doc_version
-        run: |
-          if python3 .github/scripts/check_doc_tool_version.py \
-            --doc docs/score_tools/doc_as_code.rst \
-            --dac-module-name score_docs_as_code
-          then
-            echo "Doc-as-Code version matching. Everything is fine."
-            echo "mismatch=False" >> "$GITHUB_OUTPUT"
-          else
-            echo "mismatch=True" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Find Comment
-        if: ${{ github.event_name == 'pull_request_target' }}
-        uses: peter-evans/find-comment@v3
-        id: fc
-        with:
-          issue-number: ${{ github.event.pull_request.number }}
-          comment-author: 'github-actions[bot]'
-          body-includes: Docs-as-Code version mismatch detected
-
-      - name: Warn in PR if docs-as-code version mismatch
-        if: ${{ github.event_name == 'pull_request_target' && steps.doc_version.outputs.mismatch == 'True' && steps.fc.outputs.comment-id == '' }}
-        uses: peter-evans/create-or-update-comment@v4
-        with:
-          issue-number: ${{github.event.pull_request.number}}
-          body: |
-            ⚠️ **Docs-as-Code version mismatch detected**
-            Please check the CI build logs for details and align the documentation version with the Bazel dependency.
-
-      - name: Setup Bazel
-        uses: bazel-contrib/setup-bazel@0.9.1
-      - name: Install Graphviz
-        run: sudo apt update && sudo apt install -y graphviz
-      - name: Build documentation
-        run: |
-          bazel run //:docs -- --github_user=${{ github.repository_owner }} --github_repo=${{ github.event.repository.name }}
-          tar -cf github-pages.tar _build
-        # ------------------------------------------------------------------------------
-        # Generate a unique artifact name to ensure proper tracking in all scenarios
-        # ------------------------------------------------------------------------------
-        # | Condition                                     | Event Type             | Artifact Name Value                          |
-        # |-----------------------------------------------|------------------------|----------------------------------------------|
-        # | github.event.pull_request.head.sha            | pull_request           | PR commit SHA (ensures uniqueness per PR)    |
-        # | github.event.pull_request.head.sha            | pull_request_target    | PR commit SHA (ensures uniqueness per PR)    |
-        # | github.sha                                    | push, merge_group      | Current commit SHA (used for main branch)    |
-        # ------------------------------------------------------------------------------
-      - name: Upload artifact for job analysis
-        uses: actions/upload-artifact@v4.4.0
-        with:
-          name: github-pages-${{ github.event.pull_request.head.sha || github.sha }}
-          path: github-pages.tar
-          retention-days: 1
-          if-no-files-found: error
-
-  docs-deploy:
-    name: Deploy documentation to GitHub Pages
-    permissions:
-      pages: write
-      id-token: write
       contents: write
+      pages: write
       pull-requests: write
-    runs-on: ubuntu-latest
-    needs: docs-build
-    steps:
-      # ------------------------------------------------------------------------------
-      # Always checks out the BASE repository since pull_request_target is used.
-      # This ensures that the workflow runs with trusted code from the base repo,
-      # even when triggered by a pull request from a fork.
-      # ------------------------------------------------------------------------------
-      - name: Checkout repository
-        uses: actions/checkout@v4.2.2
-
-      - name: Download documentation artifact
-        uses: actions/download-artifact@v4.1.8
-        # ------------------------------------------------------------------------------
-        # Generate a unique artifact name to ensure proper tracking in all scenarios
-        # ------------------------------------------------------------------------------
-        # | Condition                                     | Event Type             | Artifact Name Value                          |
-        # |-----------------------------------------------|------------------------|----------------------------------------------|
-        # | github.event.pull_request.head.sha            | pull_request           | PR commit SHA (ensures uniqueness per PR)    |
-        # | github.event.pull_request.head.sha            | pull_request_target    | PR commit SHA (ensures uniqueness per PR)    |
-        # | github.sha                                    | push, merge_group      | Current commit SHA (used for main branch)    |
-        # ------------------------------------------------------------------------------
-        with:
-          name: github-pages-${{ github.event.pull_request.head.sha || github.sha }}
-
-      - name: Untar documentation artifact
-        run: mkdir -p extracted_docs && tar -xf github-pages.tar -C extracted_docs
-
-      - name: Deploy 🚀
-        id: pages-deployment
-        uses: ./.github/actions/deploy-versioned-pages
-        with:
-          source_folder: extracted_docs/_build
+      id-token: write
+    with:
+      bazel-target: "//:docs -- --github_user=${{ github.repository_owner }} --github_repo=${{ github.event.repository.name }}"
+      retention-days: 3

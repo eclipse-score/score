@@ -33,6 +33,12 @@ For the platform safety management a pool of safety managers is elected due to c
 
 `Volker Häussler <https://github.com/PandaeDo>`_
 
+
+For the election of Module Safety Managers, the pool of platform safety managers is considered.
+The election of Module Safety Managers is performed by the platform safety managers and is
+based on the required skills, knowledge and experience defined in :need:`rl__safety_manager`
+and the evidences provided by the nominees.
+
 Election Reasoning
 ==================
 

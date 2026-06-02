@@ -48,8 +48,8 @@ Functional Requirements
 
    The Memory library shall provide polymorphic memory resource allocators using offset pointers instead of raw pointers to enable allocation in shared memory regions accessible across multiple processes. The standard library's std::pmr::polymorphic_allocator is not applicable as it uses raw pointers that are invalid when shared memory is mapped at different virtual addresses in different processes.
 
-.. comp_req:: Shared Memory Containers
-   :id: comp_req__memory__shared_containers
+.. comp_req:: Shared Memory Container
+   :id: comp_req__memory__shared_container
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
@@ -60,7 +60,7 @@ Functional Requirements
    The Memory library shall provide type aliases for STL containers (vector, map, string) that use offset pointers for shared memory storage.
 
 .. comp_req:: Inter-Process Synchronization
-   :id: comp_req__memory__ipc_sync
+   :id: comp_req__memory__inter_process_sync
    :reqtype: Functional
    :security: YES
    :safety: ASIL_B
@@ -172,3 +172,9 @@ Non-Functional Requirements
    :belongs_to: comp__baselibs_memory_shared
 
    The Memory library shall ensure shared memory data structures remain valid regardless of process virtual address space mappings.
+
+.. needextend:: "__memory__" in id
+   :+tags: baselibs
+
+.. needextend:: "__memory__" in id
+   :+tags: memory

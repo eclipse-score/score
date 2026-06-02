@@ -11,11 +11,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 
-module(
-    name = "score_platform",
-    version = "0.0.0",
-    compatibility_level = 0,
-)
+module(name = "score_platform")
 
 ###############################################################################
 #
@@ -58,7 +54,7 @@ bazel_dep(name = "buildifier_prebuilt", version = "8.2.0.2")
 # Generic linting and formatting rules
 #
 ###############################################################################
-bazel_dep(name = "aspect_rules_lint", version = "1.5.3")
+bazel_dep(name = "aspect_rules_lint", version = "1.5.3", dev_dependency = True)
 
 ###############################################################################
 #
@@ -72,6 +68,18 @@ bazel_dep(name = "rules_java", version = "8.15.1")
 # Score custom modules loading
 #
 ###############################################################################
-bazel_dep(name = "score_tooling", version = "1.1.0")
-bazel_dep(name = "score_docs_as_code", version = "3.0.0")
-bazel_dep(name = "score_process", version = "1.4.3")
+bazel_dep(name = "score_tooling", version = "1.1.2")
+bazel_dep(name = "score_docs_as_code", version = "4.2.0")
+bazel_dep(name = "score_process", version = "1.5.4")
+
+# Due to bazels resolution strategy, the following dependency graph is created:
+# score_docs_as_code@4.0.3 (selected)
+# score_process@1.5.4 (selected)
+#  → score_docs_as_code@4.0.1 (discovered, not selected)
+#    → score_process@1.5.3 (discovered, not selected)
+#      → score_tooling@1.2.0   ← this requirement sticks, although neither
+#                                the old docs-as-code nor the old process module is selected.
+single_version_override(
+    module_name = "score_tooling",
+    version = "1.1.2",
+)

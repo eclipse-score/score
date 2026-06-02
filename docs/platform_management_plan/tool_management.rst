@@ -159,12 +159,12 @@ Tailoring
 Tailoring of safety activities for confidence in the use of software tools:
 
 The following ISO 26262 defined safety requirements are not relevant for the S-CORE SW platform
-development, as they are not used:
+development, as the respective methods are not used:
 
 :need:`std_req__iso26262__support_11471`, :need:`std_req__iso26262__support_11472`,
 :need:`std_req__iso26262__support_11473`, :need:`std_req__iso26262__support_11474`,
 :need:`std_req__iso26262__support_11481`, :need:`std_req__iso26262__support_11482`,
-:need:`std_req__iso26262__support_11483`
+:need:`std_req__iso26262__support_11483`, :need:`std_req__iso26262__management_6456`
 
 
 Tool List

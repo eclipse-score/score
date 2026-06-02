@@ -44,14 +44,40 @@ Scope is the complete SW platform and the development parts of the process.
 Approach
 ++++++++
 
-Design and programming language
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Selection of design and programming language
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For specifying **Detailed Design** (like for the Architecture) a mixture of UML diagrams and natural language is used.
-Additionally for the Detailed Design linking to code, Doxygen style comments are used.
-This is described in :need:`doc_concept__imp_concept` and guided by :need:`gd_temp__detailed_design`
+For the selection of design and programming language a stakeholder requirement is defined in :need:`stkh_req__dev_experience__prog_languages`,
+which is based on experience. The criteria for selection are based on the following aspects:
 
-As required in :need:`stkh_req__dev_experience__prog_languages`, S-CORE allows the use of two programming languages:
+* Unambiguous definition of syntax and semantics
+* Suitability for specifying and managing for safety related requirements and design
+* Support of modularity, abstraction and encapsulation
+* Support of the use of structured constructs
+
+The selected languages form the stakeholder requirements were analysed in the following table:
+
+.. list-table:: Selection of design and programming language
+   :header-rows: 1
+   :widths: 33,33,33
+
+   * - Criteria
+     - C++
+     - Rust
+   * - Unambiguous definition of syntax and semantics
+     - Standardized, strict syntax, strong tooling
+     - Strict syntax, single compiler, strong tooling
+   * - Suitability for safety related programming
+     - Certified tools, MISRA, static analysis, traceability
+     - Compiler-enforced safety, strong type system, documentation, emerging safety support, certified tools
+   * - Support of modularity, abstraction and encapsulation
+     - Classes, templates, modules, access control
+     - Modules, crates, traits, strong visibility control
+   * - Support of the use of structured constructs
+     - Full support for structured programming
+     - Full support, enforced by language design
+
+S-CORE allows the use of two programming languages:
 
 **C++ with the language set of C++17** - in case additional elements from C++20 are needed this will be considered by
 :need:`rl__safety_manager`, :need:`rl__security_manager` and :need:`rl__quality_manager`
@@ -61,6 +87,10 @@ and based on their analysis decided by the project lead circle (:need:`rl__proje
 For the Rust code of ASIL rated units the "safe subset" shall be used (which is checked by the compiler by configuration of #![forbid(unsafe_code)] in lib.rs)
 
 C language is allowed in incubation phase, as long it is compilable be the selected compiler, but not for a S-CORE release.
+
+For specifying **Detailed Design** (like for the Architecture) a mixture of UML diagrams and natural language is used.
+Additionally for the Detailed Design linking to code, Doxygen style comments are used.
+This is described in :need:`doc_concept__imp_concept` and guided by :need:`gd_temp__detailed_design`
 
 Design guideline
 ^^^^^^^^^^^^^^^^
@@ -103,6 +133,10 @@ minutes and Working Sections were stored. Within issues can bugfixes, improvemen
 set up. It's also possible to report there Security vulnerabilities. GitHub Actions is used
 as a support for continuous integration.
 
+The following GitHub features are activated to improve security :need:`doc__platform_vulnerability_mgt_plan` and quality for software development:
+* **GitHub Dependabot** - Automated dependency vulnerability detection and update pull requests
+* **GitHub Advanced Security** - Code scanning and secret scanning capabilities where available (CodeQL)
+
 .. rubric:: Sphinx
 
 is used for software documentation to generate html-sides from reStructuredText.
@@ -138,7 +172,7 @@ is used in conjunction with the Clang compiler to perform static analysis.
 
 .. rubric:: Host Compiler Rust
 
-There is currently no selection of a Rust compiler for S-CORE. Pick your own favorite.
+There is currently no selection of a Rust compiler for S-CORE. Pick your own favourite.
 
 .. rubric:: Target Compiler Rust
 

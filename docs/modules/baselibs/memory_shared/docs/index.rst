@@ -56,8 +56,8 @@ The Memory Library should provide APIs for memory management:
 
 * :need:`comp_req__memory__shared_memory`
 * :need:`comp_req__memory__offset_ptr`
-* :need:`comp_req__memory__shared_containers`
-* :need:`comp_req__memory__ipc_sync`
+* :need:`comp_req__memory__shared_container`
+* :need:`comp_req__memory__inter_process_sync`
 * :need:`comp_req__memory__bounds_check`
 * :need:`comp_req__memory__endianness`
 * :need:`comp_req__memory__sealed_shm`

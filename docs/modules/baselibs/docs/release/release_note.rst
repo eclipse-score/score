@@ -24,6 +24,4 @@ Release Note
    :security: YES
    :realizes: wp__module_sw_release_note
 
-The following releases notes are available for Baselibs module:
-
-- v0.1.3 (as part of S-CORE 0.5 Alpha Release): <https://github.com/eclipse-score/baselibs/releases/tag/v0.1.3>`_
+For the release notes, see the `Baselibs releases <https://github.com/eclipse-score/baselibs/releases>`_ on GitHub.

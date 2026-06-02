@@ -21,15 +21,8 @@ Message Passing Component Architecture
    :safety: ASIL_B
    :status: valid
    :implements: logic_arc_int__os__message_passing
-
-
-.. comp_arc_sta:: QNX::Message Passing Static View
-   :id: comp_arc_sta__os__message_passing
-   :security: YES
-   :safety: ASIL_B
-   :status: valid
-   :belongs_to: comp__os_message_passing
-   :fulfils: comp_req__component_name__some_title
+   :satisfies:
+   :belongs_to: feat__os
 
    .. needarch::
       :scale: 50
@@ -39,18 +32,6 @@ Message Passing Component Architecture
 
 .. logic_arc_int:: OS::Message Passing
    :id: logic_arc_int__os__message_passing
-   :security: YES
-   :safety: ASIL_B
-   :status: valid
-
-   .. needarch::
-      :scale: 50
-      :align: center
-
-      {{ draw_interface(need(), needs) }}
-
-.. logic_arc_int:: OS::fork
-   :id: logic_arc_int__os__fork
    :security: YES
    :safety: ASIL_B
    :status: valid

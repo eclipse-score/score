@@ -15,6 +15,23 @@
 Decision Records
 ================
 
+Strategy
+~~~~~~~~
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   DR-*-strat*
+
+Architecture
+~~~~~~~~~~~~
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   DR-*-arch*
 
 Infrastructure
 ~~~~~~~~~~~~~~
@@ -24,3 +41,12 @@ Infrastructure
    :glob:
 
    DR-*-infra*
+
+Process
+~~~~~~~
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   DR-*-proc*

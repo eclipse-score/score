@@ -36,6 +36,21 @@ Static Architecture
    :status: valid
    :tags: baselibs_filesystem
    :implements: logic_arc_int__baselibs__filesystem
+   :belongs_to: feat__baselibs
+
+   .. needarch::
+      :scale: 50
+      :align: center
+
+      {{ draw_component(need(), needs) }}
+
+.. comp_arc_sta:: Filesystem Static view
+   :id: comp_arc_sta__baselibs__filesystem
+   :security: YES
+   :safety:  ASIL_B
+   :status: valid
+   :fulfils: comp_req__filesystem__api_abstraction, comp_req__filesystem__path_utilities, comp_req__filesystem__directory_iterators, comp_req__filesystem__file_io, comp_req__filesystem__full_testability, comp_req__filesystem__file_utils, comp_req__filesystem__mock_fake
+   :belongs_to: comp__baselibs_filesystem
 
    .. needarch::
       :scale: 50

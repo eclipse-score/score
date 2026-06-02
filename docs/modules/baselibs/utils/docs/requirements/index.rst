@@ -61,3 +61,6 @@ Non-Functional Requirements
    :belongs_to: comp__baselibs_utils
 
    The Utils component shall ensure that all operations complete in a predictable manner and without dynamic memory allocation.
+
+.. needextend:: "__utils__" in id
+   :+tags: baselibs, utils

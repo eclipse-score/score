@@ -31,6 +31,12 @@ For the platform security management a pool of security managers is elected due 
 
 `Volker Häussler <https://github.com/PandaDo>`_
 
+
+For the election of Module Security Managers, the pool of platform security managers is considered.
+The election of Module Security Managers is performed by the platform security managers and is
+based on the required skills, knowledge and experience defined in :need:`rl__security_manager`
+and the evidences provided by the nominees.
+
 Election Reasoning
 ==================
 

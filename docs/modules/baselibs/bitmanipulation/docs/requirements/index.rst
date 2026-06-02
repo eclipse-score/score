@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2025 Contributors to the Eclipse Foundation
+   # Copyright (c) 2025-2026 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -29,16 +29,29 @@ Requirements
 Functional Requirements
 =======================
 
-.. comp_req:: Support for Bit Manipulation Utilities
-   :id: comp_req__bitmanipulation__utilities
+.. comp_req:: Support for Bit Operations
+   :id: comp_req__bitmanipulation__bit_operations
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
    :satisfies: feat_req__baselibs__bitmanipulation, feat_req__baselibs__core_utilities
    :status: valid
    :belongs_to: comp__baselibs_bit_manipulation
+   :tags: inspected
 
-   The bit manipulation component shall provide API for setting, clearing, toggling, and checking bits, as well as extracting bytes and manipulating half-bytes and bytes for any integral type up to 64 bits.
+   The bit manipulation component shall provide an API for setting, clearing, toggling, and checking individual bits for any integral type up to 64 bits, returning boolean success status.
+
+.. comp_req:: Support for Byte and Half-Byte Operations
+   :id: comp_req__bitmanipulation__byte_operations
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :satisfies: feat_req__baselibs__bitmanipulation, feat_req__baselibs__core_utilities
+   :status: valid
+   :belongs_to: comp__baselibs_bit_manipulation
+   :tags: inspected
+
+   The bit manipulation component shall provide an API for extracting and setting bytes and half-bytes for any integral type up to 64 bits, returning boolean success status.
 
 .. comp_req:: Support for Bitmask Operators for Enum Classes
    :id: comp_req__bitmanipulation__bitmask_operators
@@ -48,6 +61,7 @@ Functional Requirements
    :satisfies: feat_req__baselibs__bitmanipulation, feat_req__baselibs__core_utilities
    :status: valid
    :belongs_to: comp__baselibs_bit_manipulation
+   :tags: inspected
 
    The bit manipulation library shall provide type-safe bitmask operations for scoped enumeration types.
 
@@ -59,8 +73,9 @@ Functional Requirements
    :satisfies: feat_req__baselibs__bitmanipulation, feat_req__baselibs__safety
    :status: valid
    :belongs_to: comp__baselibs_bit_manipulation
+   :tags: inspected
 
-   All bit manipulation functions shall validate input parameters and prevent data corruption.
+   The bit manipulation functions shall validate input parameters against bounds and, on out-of-bounds access, shall leave the target value unmodified and return false.
 
 Non-Functional Requirements
 ===========================
@@ -73,20 +88,12 @@ Non-Functional Requirements
    :satisfies: feat_req__baselibs__bitmanipulation
    :status: valid
    :belongs_to: comp__baselibs_bit_manipulation
+   :tags: inspected
 
    The bit manipulation API shall be header-only and not require external dependencies.
 
 Assumptions of Use (AoU)
 ========================
-
-.. aou_req:: Valid Bit Positions and Ranges
-   :id: aou_req__bitmanipulation__valid_bit_positions
-   :reqtype: Functional
-   :security: NO
-   :safety: ASIL_B
-   :status: valid
-
-   The user shall assume that the API performs bound checking to validate bit positions and ranges provided to the bit manipulation functions.
 
 .. aou_req:: Integral Type Constraints
    :id: aou_req__bitmanipulation__type_constraints
@@ -94,35 +101,33 @@ Assumptions of Use (AoU)
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :tags: inspected
 
-   The user shall only use bit manipulation functions with integral types (integers, enumerations) as specified in the library's type constraints. Operations on floating-point or non-integral types are not supported.
+   The user shall use bit manipulation functions only with integral types (integers, enumerations) as specified in the library's type constraints.
 
-.. aou_req:: Enum Class Type Safety
-   :id: aou_req__bitmanipulation__enum_type_safety
+   Note: Operations on floating-point or non-integral types are not supported.
+
+.. aou_req:: Bitmask Enum Value Constraints
+   :id: aou_req__bitmanipulation__enum_constraints
    :reqtype: Functional
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :tags: inspected
 
-   The user shall use scoped enumeration types (enum class) whose enumerators are defined as non-zero power-of-two values (1, 2, 4, 8, 16, etc.)
+   The user shall use scoped enumeration types (enum class) whose enumerators are defined as non-zero power-of-two values.
 
-.. aou_req:: No Side Effects on Concurrent Access
+.. aou_req:: External Synchronization Required for Concurrent Access
    :id: aou_req__bitmanipulation__concurrent_access
    :reqtype: Non-Functional
    :security: NO
    :safety: ASIL_B
    :status: valid
+   :tags: inspected
 
-   The user shall implement external synchronization mechanisms (e.g., mutexes, atomic operations, or locks) when accessing or modifying the same integral value from multiple threads concurrently, as the library provides no internal thread safety guarantees.
+   The user shall implement external synchronization mechanisms (e.g., mutexes, atomic operations, or locks) when accessing or modifying the same integral value from multiple threads concurrently.
 
-.. aou_req:: Bit Extraction Index Validation
-   :id: aou_req__bitmanipulation__bit_validation
-   :reqtype: Functional
-   :security: NO
-   :safety: ASIL_B
-   :status: valid
-
-   The user shall validate byte and half-byte extraction indices to ensure they correspond to valid positions within the target integral type to prevent accessing invalid memory ranges.
+   Note: The library provides no internal thread safety guarantees.
 
 .. needextend:: "__bitmanipulation__" in id
-   :+tags: baselibs
+   :+tags: baselibs, bitmanipulation

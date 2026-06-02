@@ -32,8 +32,7 @@ Lifecycle
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :includes: logic_arc_int__lifecycle__lifecycle_if, logic_arc_int__lifecycle__controlif, logic_arc_int__lifecycle__alive_if, logic_arc_int__lifecycle__logical_monitor_if, logic_arc_int__lifecycle__deadline_monitor_if
-   :consists_of: comp__lifecycle_launch_manager, comp__lifecycle_healthmonitor
+   :provides: logic_arc_int__lifecycle__lifecycle_if, logic_arc_int__lifecycle__controlif, logic_arc_int__lifecycle__alive_if, logic_arc_int__lifecycle__logical_monitor_if, logic_arc_int__lifecycle__deadline_monitor_if
 
 Feature Flag
 ============
@@ -55,7 +54,6 @@ Motivation
 ==========
 
 For every ECU, handling of startup, shutdown, and monitoring of components is crucial to ensure the system operates correctly and efficiently. Additionally, we need to provide the means to set the system in different Run States, such as normal operation, engineering/debug mode, flash mode etc.
-started, stopped, and monitored effectively, providing a robust framework for managing the state of the system.
 
 Rationale
 =========
@@ -87,9 +85,9 @@ The Lifecycle feature addresses the following stakeholder requirements:
 
 • :need:`stkh_req__functional_req__file_based`: Modular configuration file support allowing changes without rebuilding software, enabling flexible system setup and module management
 
-• :need:`stkh_req__dependability__safety_features`: Implementation of monitoring safety mechanisms
+• :need:`stkh_req__dependability__safety_features_1`: Implementation of monitoring safety mechanisms
 
-A second task of the lifecycle system is to supervise the aliveness of the processes, which are started and to initiate appropriate actions in case of a failure, which might result in many cases in a change of the operting mode.
+
 
 Support of containers
 ---------------------

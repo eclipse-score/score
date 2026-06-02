@@ -36,6 +36,21 @@ Static Architecture
    :status: valid
    :tags: baselibs_utils
    :implements: logic_arc_int__baselibs__utils_base64,logic_arc_int__baselibs__utils_scoped_op
+   :belongs_to: feat__baselibs
+
+   .. needarch::
+      :scale: 50
+      :align: center
+
+      {{ draw_component(need(), needs) }}
+
+.. comp_arc_sta:: Utils Static view
+   :id: comp_arc_sta__baselibs__utils
+   :security: YES
+   :safety:  ASIL_B
+   :status: valid
+   :fulfils: comp_req__utils__base64, comp_req__utils__scoped_operation, comp_req__utils__deterministic_behavior
+   :belongs_to: comp__baselibs_utils
 
    .. needarch::
       :scale: 50

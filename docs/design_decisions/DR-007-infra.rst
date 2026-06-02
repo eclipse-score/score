@@ -52,7 +52,7 @@ This tight coupling makes maintenance and evolution of both repositories difficu
 
 The artifacts within those repos are:
 
-* "examples" are exemplary instances of the metamodel like :need:`feat__example_feature`.
+* "examples" are exemplary instances of the metamodel like `feat__example_feature` in the process description.
 * "templates" (more precisely `folder templates <https://eclipse-score.github.io/process_description/main/folder_templates/index.html>`_)
   are instances which can be copied when creating new modules
   like :need:`doc__feature_name_architecture`.

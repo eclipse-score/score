@@ -99,20 +99,20 @@ Feature Requirements Status
    :style: table
    :types: feat_req
    :tags: baselibs
-   :columns: id;status
-   :colwidths: 25,25
+   :columns: id;status;tags
+   :colwidths: 25,25,25
    :sort: title
 
 Feature AoU Status
 ------------------
 
 .. needtable::
-   :filter: docname is not None and "baselibs" in docname and "requirements" in docname
+   :filter: docname is not None and "baselibs" in docname and "requirements" and "features" in docname
    :style: table
    :types: aou_req
    :tags: baselibs
-   :columns: id;status
-   :colwidths: 25,25
+   :columns: id;status;tags
+   :colwidths: 25,25,25
    :sort: title
 
 Feature Architecture Status
@@ -123,6 +123,6 @@ Feature Architecture Status
    :style: table
    :types: feat_arc_sta; feat_arc_dyn
    :tags: baselibs
-   :columns: id;status
-   :colwidths: 25,25
+   :columns: id;status;tags
+   :colwidths: 25,25,25
    :sort: title

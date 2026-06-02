@@ -21,37 +21,10 @@ Tracing Component Architecture
    :safety: ASIL_B
    :status: valid
    :implements: logic_arc_int__tracing__tracing
-
-
-.. comp_arc_sta:: Tracing
-   :id: comp_arc_sta__tracing__tracing
-   :security: YES
-   :safety: ASIL_B
-   :status: valid
-   :belongs_to: comp__tracing
-   :fulfils: comp_req__component_name__some_title
+   :belongs_to: feat__tracing
 
    .. needarch::
       :scale: 50
       :align: center
 
       {{ draw_component(need(), needs) }}
-
-.. logic_arc_int:: Tracing
-   :id: logic_arc_int__tracing__tracing
-   :security: YES
-   :safety: ASIL_B
-   :status: valid
-
-   .. needarch::
-      :scale: 50
-      :align: center
-
-      {{ draw_interface(need(), needs) }}
-
-.. logic_arc_int_op:: Trace
-   :id: logic_arc_int_op__tracing__trace
-   :security: YES
-   :safety:  ASIL_B
-   :status: valid
-   :included_by: logic_arc_int__tracing__tracing

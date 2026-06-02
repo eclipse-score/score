@@ -13,7 +13,7 @@
    # *******************************************************************************
 
 .. document:: Platform Security Plan
-   :id: doc__platform_security_plan
+   :id: doc__score_platform_security_plan
    :status: draft
    :safety: ASIL_B
    :security: YES
@@ -320,7 +320,7 @@ Process status: Status of the workflow which "outputs" the work product, derived
 Security Management Feature Specific Work Products
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-See feature tree documents (created by using :need:`gd_temp__feature_security_wp`):
+See feature tree documents (created by using :need:`doc__feature_name_security_wp`):
 
 <link to document for every feature>
 

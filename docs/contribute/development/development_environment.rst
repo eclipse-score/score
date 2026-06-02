@@ -61,8 +61,9 @@ General Setup
 * Install the required dependencies for your operating system. This includes:
 
   * Bazelisk
-  * Python 3.x
-  * Graphviz/Dot (for generating diagrams)
+  * Python 3.x (due to bugs in Bazel, which requires Python to be present on the system)
+  * Graphviz/Dot (for generating diagrams, as it cannot be provided via Bazel)
+  * C++ compiler like gcc (due to bugs in Bazel's Python rules, which require a C++ compiler to be present on the system)
 
   Check `Dockerfile <https://github.com/eclipse-score/devcontainer/tree/main/src/s-core-devcontainer/.devcontainer>`_ for
   an accurate list and exemplary instructions.

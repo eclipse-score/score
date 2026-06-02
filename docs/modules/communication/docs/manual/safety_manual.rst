@@ -28,11 +28,19 @@ This safety manual covers the communication module.
 
 Assumed Platform Safety Requirements
 ------------------------------------
-| For the communication module the following safety related stakeholder requirements are assumed to define the top level functionality (purpose) of the communication module. I.e. from these all the feature and component requirements implemented are derived.
-| <List here all the stakeholder requirements, with safety not equal to QM, the module's components requirements are derived from.>
 
-.. attention::
-   This section is currently missing.
+For the communication module the following safety related stakeholder requirements are assumed to define the top level functionality (purpose) of the communication module. I.e. from these all the feature and component requirements implemented are derived.
+
+- :need:`stkh_req__communication__inter_process` - is QM, but is always compined with the next requirement
+- :need:`stkh_req__communication__safe`
+- :need:`stkh_req__app_architectures__support_time`
+
+The safe IPC communication interfaces supported are defined as:
+
+- event: :need:`feat_req__com__event_type`
+- method: :need:`feat_req__com__method`
+
+Currently there is no safe inter-ECU communication supported.
 
 Assumptions of Use
 ------------------

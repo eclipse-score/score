@@ -100,8 +100,7 @@ Static Architecture
     :security: YES
     :safety: ASIL_B
     :status: valid
-    :includes: logic_arc_int__feo__activity, logic_arc_int__feo__prim_agent, logic_arc_int__feo__sec_agent, logic_arc_int__feo__lifecycle
-    :consists_of: comp__feo_main
+    :provides: logic_arc_int__feo__activity, logic_arc_int__feo__prim_agent, logic_arc_int__feo__sec_agent, logic_arc_int__feo__lifecycle
 
 .. feat_arc_sta:: Static Architecture
   :id: feat_arc_sta__feo__main

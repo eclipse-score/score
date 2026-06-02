@@ -62,5 +62,5 @@ Requirements
     - Set the status to valid and start the review/merge process
     - Add other needed requirements for your feature
 
-.. needextend:: "component_name" in id
+.. needextend:: "component_name" in id and is_external == False
    :+tags: component_name

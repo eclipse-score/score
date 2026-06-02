@@ -21,6 +21,7 @@ Configuration Component Architecture
    :safety: ASIL_B
    :status: valid
    :uses: logic_arc_int__logging__logging
+   :belongs_to: feat__com_communication
 
    .. needarch::
       :scale: 50

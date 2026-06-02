@@ -12,8 +12,8 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Writing Rust Code
-#################
+Writing Rust Code incl. Coding Guidelines
+#########################################
 
 .. document:: Coding Guidelines Rust
    :id: doc__rust_coding_guidelines
@@ -39,6 +39,10 @@ static analysis and code metrics tools. Some tools, such as MC/DC coverage
 reporting and code metrics generators, are still unavailable, and the
 consortium is evaluating what further tooling and support are necessary to
 enable certification and safe use of Rust in automotive applications.
+
+`Safety-Critical Coding Guidelines <https://github.com/rustfoundation/safety-critical-rust-coding-guidelines>`_
+
+`Deployed version of Safety-Critical Coding Guidelines <https://coding-guidelines.arewesafetycriticalyet.org/>`_
 
 `Safety-Critical Rust Consortium <https://rustfoundation.org/safety-critical-rust-consortium>`_
 
@@ -95,6 +99,10 @@ that hinder adoption and developer productivity.
 
 `MISRA vs Cert <https://github.com/rustfoundation/safety-critical-rust-coding-guidelines/issues/75/>`_
 
+In 2026 the Coding Guidelines Subcommittee of the SCRC are aiming to have MISRA C and CERT C mapped to Rust, with
+
+- a bulk of the coding guidelines written
+- a bulk of the Clippy lints necessary written to check the guidelines
 
 Link to Clippy
 ##############
@@ -126,7 +134,9 @@ be used to detect undefined behaviors. Also the code should compile with zero wa
 Additional guidelines by the Rust Community, the Rust Foundation and the Safety-Critical
 Rust Consortium are applied where applicable but not enforced. If possible the usage
 of `unsafe` is avoided. To keep the code `panic`-free only APIs with a proper return value
-should be used.
+should be used. The goal is to have coding guidelines for Rust suitable for safety-critial
+systems by Safety-Critical Rust Consortium by the end of 2026. Until that, please also use
+Slack score-rust-community channel for discussions and participation in the SCRC.
 
 The adaption of these guidelines will be documented in the S-CORE project
 documentation.
