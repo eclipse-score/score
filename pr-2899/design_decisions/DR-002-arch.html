@@ -73,7 +73,7 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="DR-001-Infra: Integration Strategy for External Development Tools" href="DR-001-infra.html" />
+    <link rel="next" title="DR-002-Arch: Considerations" href="DR-002-arch/considerations.html" />
     <link rel="prev" title="DR-001-Arch: Rust Readiness for Safety-Critical Components" href="DR-001-arch.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -517,7 +517,11 @@
 </ul>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="DR-001-arch.html">DR-001-Arch: Rust Readiness for Safety-Critical Components</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">DR-002-Arch: Library Delivery Model (Static vs. Dynamic)</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">DR-002-Arch: Library Delivery Model (Static vs. Dynamic)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="DR-002-arch/considerations.html">DR-002-Arch: Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DR-002-arch/detailed_assessments.html">DR-002-Arch: Detailed Assessments</a></li>
+</ul>
+</details></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="DR-001-infra.html">DR-001-Infra: Integration Strategy for External Development Tools</a></li>
@@ -606,7 +610,7 @@ SPDX-License-Identifier: Apache-2.0
 <ul class="simple">
 <li><p><strong>Date:</strong> 2026-05-15</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-5df79f35">
+<div class="need_container docutils container" id="SNCB-58c7ec37">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__arch__library_delivery_model">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -668,872 +672,27 @@ SPDX-License-Identifier: Apache-2.0
 </section>
 <section id="considerations">
 <h2>Considerations<a class="headerlink" href="#considerations" title="Link to this heading">#</a></h2>
-<section id="architectural-note-internal-composition-of-shared-libraries">
-<h3>Architectural Note: Internal Composition of Shared Libraries<a class="headerlink" href="#architectural-note-internal-composition-of-shared-libraries" title="Link to this heading">#</a></h3>
-<p>When a module (feature) is delivered as a shared library, this does <strong>not</strong> imply that every internal component of that module is itself a separate <code class="docutils literal notranslate"><span class="pre">.so</span></code>. The standard and recommended pattern is:</p>
-<ul class="simple">
-<li><p>The module (feature) exposes a <strong>single shared library</strong> (or a reasonable number of shared libraries) with a well-defined public API (exported symbols).</p></li>
-<li><p>Internally, the module is composed of multiple static libraries (internal components, helpers, data structures) that are <strong>statically linked into the shared library</strong> at build time.</p></li>
-<li><p>Only the explicitly exported API surface is visible to consumers; all internal symbols remain hidden (<code class="docutils literal notranslate"><span class="pre">-fvisibility=hidden</span></code> / <code class="docutils literal notranslate"><span class="pre">#[doc(hidden)]</span></code>).</p></li>
-</ul>
-<p>This pattern has several important consequences:</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Aspect</p></th>
-<th class="head"><p>Implication</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>ABI surface</strong></p></td>
-<td><p>Minimized — only the public API constitutes the ABI contract. Internal refactoring does not break consumers.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>LTO within the library</strong></p></td>
-<td><p>The compiler can apply full link-time optimization across all internal static libraries within the shared library boundary. Cross-module inlining and dead code elimination work as expected inside the <code class="docutils literal notranslate"><span class="pre">.so</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Security</strong></p></td>
-<td><p>Hidden internal symbols cannot be interposed or called externally. The attack surface is limited to exported functions.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Safety</strong></p></td>
-<td><p>The certification boundary is the shared library as a unit. Internal decomposition is an implementation detail that does not affect the external safety interface.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Bazel build graph</strong></p></td>
-<td><p>Internal components are regular <code class="docutils literal notranslate"><span class="pre">cc_library</span></code> / <code class="docutils literal notranslate"><span class="pre">rust_library</span></code> targets. The final <code class="docutils literal notranslate"><span class="pre">cc_shared_library</span></code> target aggregates them. Visibility rules ensure internal targets are not directly depended upon by external consumers.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example Bazel structure for a module delivered as shared library</span>
-<span class="n">cc_library</span><span class="p">(</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;internal_serialization&quot;</span><span class="p">,</span>
-    <span class="n">visibility</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;//visibility:private&quot;</span><span class="p">],</span>
-    <span class="o">...</span>
-<span class="p">)</span>
-
-<span class="n">cc_library</span><span class="p">(</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;internal_transport&quot;</span><span class="p">,</span>
-    <span class="n">visibility</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;//visibility:private&quot;</span><span class="p">],</span>
-    <span class="n">deps</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;:internal_serialization&quot;</span><span class="p">],</span>
-    <span class="o">...</span>
-<span class="p">)</span>
-
-<span class="n">cc_shared_library</span><span class="p">(</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_comm&quot;</span><span class="p">,</span>
-    <span class="n">deps</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;:internal_transport&quot;</span><span class="p">],</span>
-    <span class="n">exports_filter</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;//comm:public_api&quot;</span><span class="p">],</span>
-    <span class="o">...</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-<section id="api-encapsulation-shared-library-vs-merged-static-library">
-<h4>API Encapsulation: Shared Library vs. Merged Static Library<a class="headerlink" href="#api-encapsulation-shared-library-vs-merged-static-library" title="Link to this heading">#</a></h4>
-<p>A shared library with <code class="docutils literal notranslate"><span class="pre">-fvisibility=hidden</span></code> and explicit exports provides <strong>hard API encapsulation</strong>: internal symbols are physically absent from the dynamic symbol table. Applications cannot accidentally (or intentionally) call internal functions — the linker will reject such references.</p>
-<p>Could the same encapsulation be achieved by merging smaller static libraries into a single larger static archive (<code class="docutils literal notranslate"><span class="pre">.a</span></code>) before delivery? <strong>No — a static library offers no symbol hiding:</strong></p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Delivery form</p></th>
-<th class="head text-center"><p>Internal symbols visible to consumers?</p></th>
-<th class="head text-center"><p>Accidental use preventable?</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Shared library (<code class="docutils literal notranslate"><span class="pre">-fvisibility=hidden</span></code>)</p></td>
-<td class="text-center"><p>No — not in dynamic symbol table</p></td>
-<td class="text-center"><p>Yes — linker rejects unknown symbols</p></td>
-</tr>
-<tr class="row-odd"><td><p>Merged static archive (<code class="docutils literal notranslate"><span class="pre">.a</span></code>)</p></td>
-<td class="text-center"><p><strong>Yes</strong> — all <code class="docutils literal notranslate"><span class="pre">.o</span></code> symbols remain linkable</p></td>
-<td class="text-center"><p><strong>No</strong> — linker can resolve any symbol from the archive</p></td>
-</tr>
-<tr class="row-even"><td><p>Partial link (<code class="docutils literal notranslate"><span class="pre">ld</span> <span class="pre">-r</span></code>) + symbol localization</p></td>
-<td class="text-center"><p>Partially — requires manual version scripts or <code class="docutils literal notranslate"><span class="pre">objcopy</span> <span class="pre">--localize</span></code></p></td>
-<td class="text-center"><p>Complex workaround, fragile to maintain</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>A static archive is simply a collection of object files. Merging multiple <code class="docutils literal notranslate"><span class="pre">.a</span></code> into one still exposes every symbol from every <code class="docutils literal notranslate"><span class="pre">.o</span></code> to the consuming linker. There is no standard mechanism in the archive format to mark symbols as “internal”. Workarounds exist (partial linking with <code class="docutils literal notranslate"><span class="pre">ld</span> <span class="pre">-r</span></code> followed by <code class="docutils literal notranslate"><span class="pre">objcopy</span> <span class="pre">--localize-hidden</span></code> or linker version scripts), but these are fragile, non-portable, and not natively supported by Bazel.</p>
-<p><strong>Conclusion:</strong> The shared library model provides a natural and robust API boundary that physically prevents accidental use of internal interfaces. This is an additional architectural advantage of delivering modules as shared libraries beyond the commonly cited memory/update benefits.</p>
-<p>This composition model applies to all options below that involve shared libraries (Options 2, 3, and 4). The term “shared library” in this document always refers to such a composed unit with a controlled export surface, not to individually shared internal components.</p>
-</section>
-</section>
-<section id="cross-language-interoperability-c-rust">
-<h3>Cross-Language Interoperability (C++ ↔ Rust)<a class="headerlink" href="#cross-language-interoperability-c-rust" title="Link to this heading">#</a></h3>
-<p>S-CORE uses both C++ and Rust (see <a class="reference internal" href="DR-001-arch.html"><span class="std std-doc">DR-001-Arch</span></a>). Modules written in one language may need to be consumed by applications or other modules written in the other. The library delivery model affects cross-language interoperability (FFI):</p>
-<section id="the-common-denominator-c-abi">
-<h4>The Common Denominator: C ABI<a class="headerlink" href="#the-common-denominator-c-abi" title="Link to this heading">#</a></h4>
-<p>Neither C++ nor Rust has a stable, cross-language ABI of its own. Cross-language calls require an intermediate <strong>C ABI</strong> (<code class="docutils literal notranslate"><span class="pre">extern</span> <span class="pre">&quot;C&quot;</span></code> in both languages). This applies equally to static and dynamic linking:</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Aspect</p></th>
-<th class="head text-center"><p>Static library</p></th>
-<th class="head text-center"><p>Shared library</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>C ABI functions callable cross-language?</p></td>
-<td class="text-center"><p>Yes</p></td>
-<td class="text-center"><p>Yes</p></td>
-</tr>
-<tr class="row-odd"><td><p>Native C++ classes/templates usable from Rust?</p></td>
-<td class="text-center"><p>No (no stable C++ ABI)</p></td>
-<td class="text-center"><p>No (same limitation)</p></td>
-</tr>
-<tr class="row-even"><td><p>Native Rust types usable from C++?</p></td>
-<td class="text-center"><p>No (no stable Rust ABI)</p></td>
-<td class="text-center"><p>No (same limitation)</p></td>
-</tr>
-<tr class="row-odd"><td><p>Requires wrapper/binding layer?</p></td>
-<td class="text-center"><p>Yes</p></td>
-<td class="text-center"><p>Yes</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="how-the-linking-model-affects-ffi-in-practice">
-<h4>How the Linking Model Affects FFI in Practice<a class="headerlink" href="#how-the-linking-model-affects-ffi-in-practice" title="Link to this heading">#</a></h4>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Concern</p></th>
-<th class="head text-center"><p>Static Linking</p></th>
-<th class="head text-center"><p>Dynamic Linking</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Symbol resolution</strong></p></td>
-<td class="text-center"><p>Resolved at build time — link errors caught early</p></td>
-<td class="text-center"><p>Resolved at load time — missing symbols may cause runtime failures</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>ABI stability requirement</strong></p></td>
-<td class="text-center"><p>None — caller and callee are compiled together</p></td>
-<td class="text-center"><p>C ABI must remain stable across independent builds/releases</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Tooling (bindgen, cxx, cbindgen)</strong></p></td>
-<td class="text-center"><p>Generated bindings compiled directly into the binary</p></td>
-<td class="text-center"><p>Same bindings, but ABI compatibility must be maintained across versions</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Language runtime coupling</strong></p></td>
-<td class="text-center"><p>Both runtimes (C++ stdlib, Rust libstd) linked into one binary — potential conflicts (e.g., dual allocators, duplicate panic handlers)</p></td>
-<td class="text-center"><p>Each <code class="docutils literal notranslate"><span class="pre">.so</span></code> can encapsulate its own runtime internally; only C ABI is exposed across the boundary</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Versioning</strong></p></td>
-<td class="text-center"><p>No versioning concern — single build</p></td>
-<td class="text-center"><p>ABI version of the C interface must be tracked; breaking changes require soname bumps</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="practical-approaches-for-s-core">
-<h4>Practical Approaches for S-CORE<a class="headerlink" href="#practical-approaches-for-s-core" title="Link to this heading">#</a></h4>
-<ol class="arabic simple">
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">extern</span> <span class="pre">&quot;C&quot;</span></code> wrappers:</strong> Each module exposes a C-ABI header regardless of implementation language. This works identically for static and dynamic linking.</p></li>
-<li><p><strong>Binding generators (cxx, bindgen, cbindgen):</strong></p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">cxx</span></code> generates safe Rust↔C++ bridges with compile-time checks. Works best with static linking (caller and callee built together).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">bindgen</span></code>/<code class="docutils literal notranslate"><span class="pre">cbindgen</span></code> generate raw C FFI bindings. Work with both static and dynamic, but dynamic requires ABI discipline.</p></li>
-</ul>
-</li>
-<li><p><strong>Shared library as language isolation boundary:</strong> A shared library is particularly well-suited for cross-language delivery because:</p>
-<ul class="simple">
-<li><p>The <code class="docutils literal notranslate"><span class="pre">.so</span></code> fully encapsulates the implementation language and its runtime.</p></li>
-<li><p>Consumers see only the C ABI surface — they need not know (or link against) the implementation language’s standard library.</p></li>
-<li><p>A Rust <code class="docutils literal notranslate"><span class="pre">.so</span></code> can be consumed by a C++ application without the C++ build system needing any Rust toolchain.</p></li>
-<li><p>A C++ <code class="docutils literal notranslate"><span class="pre">.so</span></code> can be consumed by a Rust application without pulling in libstdc++/libc++ into the Rust binary’s static link.</p></li>
-</ul>
-</li>
-<li><p><strong>Static library cross-language challenges:</strong></p>
-<ul class="simple">
-<li><p>A Rust <code class="docutils literal notranslate"><span class="pre">.rlib</span></code> cannot be directly linked into a C++ binary — it requires the Rust runtime (libstd, allocator, panic infrastructure).</p></li>
-<li><p>A C++ <code class="docutils literal notranslate"><span class="pre">.a</span></code> can be linked into a Rust binary via <code class="docutils literal notranslate"><span class="pre">cc</span></code> crate / <code class="docutils literal notranslate"><span class="pre">build.rs</span></code>, but the C++ standard library must be explicitly linked.</p></li>
-<li><p>When both languages coexist in one binary, care must be taken to avoid conflicting allocators, exception/panic mechanisms, and thread-local storage.</p></li>
-</ul>
-</li>
-</ol>
-</section>
-<section id="bazel-integration-for-cross-language-ffi">
-<h4>Bazel Integration for Cross-Language FFI<a class="headerlink" href="#bazel-integration-for-cross-language-ffi" title="Link to this heading">#</a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Rust module exposing C ABI for C++ consumers</span>
-<span class="n">rust_shared_library</span><span class="p">(</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_crypto_ffi&quot;</span><span class="p">,</span>
-    <span class="n">crate_name</span> <span class="o">=</span> <span class="s2">&quot;score_crypto_ffi&quot;</span><span class="p">,</span>
-    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;src/ffi.rs&quot;</span><span class="p">],</span>
-    <span class="n">deps</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;:score_crypto_internal&quot;</span><span class="p">],</span>
-<span class="p">)</span>
-
-<span class="c1"># C++ application consuming the Rust shared library</span>
-<span class="n">cc_binary</span><span class="p">(</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;app&quot;</span><span class="p">,</span>
-    <span class="n">srcs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;main.cpp&quot;</span><span class="p">],</span>
-    <span class="n">deps</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;:score_crypto_ffi&quot;</span><span class="p">],</span>  <span class="c1"># links against the .so</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Conclusion for this decision:</strong> Shared libraries provide a cleaner cross-language boundary because they fully encapsulate the implementation language’s runtime and expose only a C ABI contract. Static linking requires the consumer’s build system to understand and manage the foreign language’s runtime dependencies, increasing coupling and build complexity. This is an additional argument favoring dynamic delivery for modules that are consumed cross-language.</p>
-</section>
-</section>
-<section id="debugging-considerations">
-<h3>Debugging Considerations<a class="headerlink" href="#debugging-considerations" title="Link to this heading">#</a></h3>
-<p>The library delivery model has practical implications for debugging during development and for post-mortem analysis of field issues.</p>
-<section id="comparison">
-<h4>Comparison<a class="headerlink" href="#comparison" title="Link to this heading">#</a></h4>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Aspect</p></th>
-<th class="head text-center"><p>Static Libraries</p></th>
-<th class="head text-center"><p>Shared Libraries</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Symbol availability in debugger</strong></p></td>
-<td class="text-center"><p>All symbols in one binary — single symbol table, all addresses known at load</p></td>
-<td class="text-center"><p>Debugger must discover <code class="docutils literal notranslate"><span class="pre">.so</span></code> files at runtime; symbols loaded per library as each <code class="docutils literal notranslate"><span class="pre">.so</span></code> is mapped</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Breakpoints</strong></p></td>
-<td class="text-center"><p>Straightforward — all code addresses fixed at link time</p></td>
-<td class="text-center"><p>Works, but lazy-bound PLT entries may require <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">breakpoint</span> <span class="pre">pending</span> <span class="pre">on</span></code> or break on the resolved target</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Source-level stepping</strong></p></td>
-<td class="text-center"><p>Seamless if debug info (<code class="docutils literal notranslate"><span class="pre">-g</span></code>) is included</p></td>
-<td class="text-center"><p>Seamless if debug info is available per <code class="docutils literal notranslate"><span class="pre">.so</span></code> — identical experience once symbols are loaded</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Core dump analysis</strong></p></td>
-<td class="text-center"><p>Self-contained — the single binary plus the core file is sufficient to reconstruct the full state</p></td>
-<td class="text-center"><p>Requires the <strong>exact matching <code class="docutils literal notranslate"><span class="pre">.so</span></code> versions</strong> alongside the core file. If <code class="docutils literal notranslate"><span class="pre">.so</span></code> files have been updated since the crash, stack traces may be incorrect</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Stripped production binaries</strong></p></td>
-<td class="text-center"><p>External debug info (<code class="docutils literal notranslate"><span class="pre">.debug</span></code> file) must match the deployed binary</p></td>
-<td class="text-center"><p>External debug info must match <strong>per <code class="docutils literal notranslate"><span class="pre">.so</span></code></strong> — requires tracking debug symbols for each library version independently</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Hot code reload during development</strong></p></td>
-<td class="text-center"><p>Not possible — must relink and restart the entire binary</p></td>
-<td class="text-center"><p>Possible in principle (<code class="docutils literal notranslate"><span class="pre">dlclose</span></code> / <code class="docutils literal notranslate"><span class="pre">dlopen</span></code>) — useful for rapid iteration on a single module without full restart. <strong>Warning:</strong> <code class="docutils literal notranslate"><span class="pre">dlclose()</span></code> must never be used when objects from the <code class="docutils literal notranslate"><span class="pre">.so</span></code> are still alive — for C++ shared libraries with virtual interfaces, <code class="docutils literal notranslate"><span class="pre">dlclose</span></code> unmaps code pages and any live objects with vtable pointers into that <code class="docutils literal notranslate"><span class="pre">.so</span></code> become use-after-free; subsequent virtual calls jump to unmapped memory.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Address Space Layout Randomization (ASLR)</strong></p></td>
-<td class="text-center"><p>Single base address randomized; relative offsets stable</p></td>
-<td class="text-center"><p>Each <code class="docutils literal notranslate"><span class="pre">.so</span></code> is independently randomized — debugger handles this transparently, but manual address calculations are more complex</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Debug build size</strong></p></td>
-<td class="text-center"><p>One large binary with all debug info embedded</p></td>
-<td class="text-center"><p>Smaller per-library debug files; total may be similar but more manageable for partial debugging</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="practical-impact-for-s-core">
-<h4>Practical Impact for S-CORE<a class="headerlink" href="#practical-impact-for-s-core" title="Link to this heading">#</a></h4>
-<ol class="arabic simple">
-<li><p><strong>Development debugging:</strong> Both models provide equivalent source-level debugging experience with modern toolchains (GDB, LLDB). No practical disadvantage for either approach during active development.</p></li>
-<li><p><strong>Field issue analysis (core dumps):</strong> This is where the models diverge significantly:</p>
-<ul class="simple">
-<li><p><strong>Static:</strong> A core dump + the binary = full debuggability. Simple to collect, simple to analyze. No dependency on matching library versions.</p></li>
-<li><p><strong>Dynamic:</strong> A core dump requires the exact set of <code class="docutils literal notranslate"><span class="pre">.so</span></code> files (at the correct versions) that were loaded at crash time. In a middleware deployment with independent update cadences, this means:</p>
+<p>Detailed considerations covering all relevant aspects of this decision are documented in a separate page:</p>
+<div class="toctree-wrapper compound">
 <ul>
-<li><p>The OEM must archive every deployed <code class="docutils literal notranslate"><span class="pre">.so</span></code> version with its corresponding debug symbols.</p></li>
-<li><p>Core dump analysis tooling must resolve the correct <code class="docutils literal notranslate"><span class="pre">.so</span></code> set based on build-ID or version metadata embedded in the core.</p></li>
-<li><p>If a middleware update was applied between the crash and the analysis, the wrong <code class="docutils literal notranslate"><span class="pre">.so</span></code> versions may be used, producing misleading stack traces.</p></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-002-arch/considerations.html">DR-002-Arch: Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DR-002-arch/detailed_assessments.html">DR-002-Arch: Detailed Assessments</a></li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p><strong>Bazel integration for debug symbols:</strong></p>
+</div>
+<p>The considerations cover:</p>
 <ul class="simple">
-<li><p>Static: Bazel produces a single binary; <code class="docutils literal notranslate"><span class="pre">--strip=never</span></code> or <code class="docutils literal notranslate"><span class="pre">--fission</span></code> controls debug info.</p></li>
-<li><p>Dynamic: Each <code class="docutils literal notranslate"><span class="pre">cc_shared_library</span></code> produces a separate <code class="docutils literal notranslate"><span class="pre">.so</span></code> + optional <code class="docutils literal notranslate"><span class="pre">.debug</span></code> file. Debug symbol archives must be maintained per target per version.</p></li>
+<li><p>Internal composition of shared libraries and API encapsulation</p></li>
+<li><p>Cross-language interoperability (C++ ↔ Rust)</p></li>
+<li><p>Debugging considerations</p></li>
+<li><p>Operating system support (Linux and QNX)</p></li>
+<li><p>License and FOSS compliance</p></li>
+<li><p>ABI stability and versioning</p></li>
+<li><p>Testing strategy</p></li>
+<li><p>Build reproducibility and deployment hermeticity</p></li>
+<li><p>Library initialization order</p></li>
+<li><p>Thread safety and lazy binding</p></li>
+<li><p>Multi-repository architecture</p></li>
 </ul>
-</li>
-<li><p><strong>Safety implications of debugging:</strong> For certified components, the ability to reproduce and analyze failures deterministically is a safety requirement. Static linking simplifies this because the deployed binary is fully self-contained. Dynamic linking requires a robust configuration management process to ensure that the exact library combination of a field deployment can be reconstructed for analysis.</p></li>
-</ol>
-<p><strong>Conclusion:</strong> Static linking has a clear advantage for <strong>post-mortem debugging and field issue analysis</strong> due to its self-contained nature. Dynamic linking adds operational complexity for maintaining debug symbol archives and matching <code class="docutils literal notranslate"><span class="pre">.so</span></code> versions to core dumps. For development-time debugging, both models are equivalent. This is an additional argument for the opt-in model (Option 4): frequently updated modules benefit from dynamic delivery, but the debugging complexity is limited to those opted-in modules rather than the entire stack.</p>
-</section>
-</section>
-<section id="operating-system-support-linux-and-qnx">
-<h3>Operating System Support (Linux and QNX)<a class="headerlink" href="#operating-system-support-linux-and-qnx" title="Link to this heading">#</a></h3>
-<p>S-CORE targets both Linux and QNX as deployment platforms. Both operating systems support static and dynamic linking, but with differences in maturity, tooling, and behavior that are relevant to this decision.</p>
-<section id="feature-comparison">
-<h4>Feature Comparison<a class="headerlink" href="#feature-comparison" title="Link to this heading">#</a></h4>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Capability</p></th>
-<th class="head text-center"><p>Linux (glibc / musl)</p></th>
-<th class="head text-center"><p>QNX (Neutrino RTOS)</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Static linking</p></td>
-<td class="text-center"><p>Fully supported</p></td>
-<td class="text-center"><p>Fully supported</p></td>
-</tr>
-<tr class="row-odd"><td><p>Shared libraries (<code class="docutils literal notranslate"><span class="pre">.so</span></code>)</p></td>
-<td class="text-center"><p>Fully supported (ELF, <code class="docutils literal notranslate"><span class="pre">ld-linux.so</span></code>)</p></td>
-<td class="text-center"><p>Fully supported (ELF, <code class="docutils literal notranslate"><span class="pre">ldqnx.so</span></code>)</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dlopen</span></code> / <code class="docutils literal notranslate"><span class="pre">dlclose</span></code> (runtime loading)</p></td>
-<td class="text-center"><p>Fully supported</p></td>
-<td class="text-center"><p>Supported</p></td>
-</tr>
-<tr class="row-odd"><td><p>Page sharing of <code class="docutils literal notranslate"><span class="pre">.text</span></code> across processes</p></td>
-<td class="text-center"><p>Yes (kernel maps shared <code class="docutils literal notranslate"><span class="pre">.so</span></code> pages)</p></td>
-<td class="text-center"><p>Yes (procnto shares mapped pages)</p></td>
-</tr>
-<tr class="row-even"><td><p>Position-Independent Code (PIC) required for <code class="docutils literal notranslate"><span class="pre">.so</span></code></p></td>
-<td class="text-center"><p>Yes</p></td>
-<td class="text-center"><p>Yes</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">LD_PRELOAD</span></code> / library interposition</p></td>
-<td class="text-center"><p>Yes — potential security concern</p></td>
-<td class="text-center"><p>Limited — QNX restricts in secure configurations</p></td>
-</tr>
-<tr class="row-even"><td><p>Full RELRO hardening</p></td>
-<td class="text-center"><p>Supported (<code class="docutils literal notranslate"><span class="pre">-Wl,-z,relro,-z,now</span></code>)</p></td>
-<td class="text-center"><p>Supported</p></td>
-</tr>
-<tr class="row-odd"><td><p>Symbol versioning (ELF version scripts)</p></td>
-<td class="text-center"><p>Fully supported</p></td>
-<td class="text-center"><p>Supported (limited ecosystem tooling)</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DT_RUNPATH</span></code> / <code class="docutils literal notranslate"><span class="pre">DT_RPATH</span></code></p></td>
-<td class="text-center"><p>Fully supported</p></td>
-<td class="text-center"><p>Supported</p></td>
-</tr>
-<tr class="row-odd"><td><p>Core dump with <code class="docutils literal notranslate"><span class="pre">.so</span></code> build-IDs</p></td>
-<td class="text-center"><p>Yes (well-supported by GDB, coredumpctl)</p></td>
-<td class="text-center"><p>Supported (QNX crash dump system)</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="linux-specific-considerations">
-<h4>Linux-Specific Considerations<a class="headerlink" href="#linux-specific-considerations" title="Link to this heading">#</a></h4>
-<ul class="simple">
-<li><p><strong>Mature ecosystem:</strong> Dynamic linking is the dominant model on Linux. The toolchain (GCC, LLVM, ld, ldd, ldconfig) is highly optimized for shared libraries. Package managers, distribution models, and most middleware on Linux assume dynamic linking.</p></li>
-<li><p><strong>musl libc and static linking:</strong> For fully static binaries on Linux, <code class="docutils literal notranslate"><span class="pre">musl</span></code> (as alternative to glibc) provides clean static linking without hidden dynamic dependencies. Bazel supports musl-based static toolchains. This can simplify deployment on embedded Linux targets.</p></li>
-<li><p><strong>glibc and <code class="docutils literal notranslate"><span class="pre">dlopen</span></code> within static binaries:</strong> glibc uses <code class="docutils literal notranslate"><span class="pre">dlopen</span></code> internally (e.g., for NSS, iconv). Fully static binaries with glibc may behave unexpectedly. This is a known limitation — not a concern for QNX.</p></li>
-<li><p><strong>ASLR:</strong> Both PIE (static) and PIC (shared) binaries support full ASLR on Linux. No security difference between the models regarding address randomization.</p></li>
-</ul>
-</section>
-<section id="qnx-specific-considerations">
-<h4>QNX-Specific Considerations<a class="headerlink" href="#qnx-specific-considerations" title="Link to this heading">#</a></h4>
-<ul class="simple">
-<li><p><strong>Microkernel + process model:</strong> QNX’s microkernel architecture results in many small processes (resource managers, drivers). Shared libraries are particularly beneficial here because many processes share common infrastructure code (libc, libsocket, etc.). S-CORE middleware modules fit naturally into this pattern.</p></li>
-<li><p><strong>Startup behavior:</strong> QNX’s <code class="docutils literal notranslate"><span class="pre">ldqnx.so</span></code> dynamic linker is leaner than Linux’s, with lower symbol resolution overhead. Startup cost of dynamic linking is generally lower on QNX than on comparable Linux deployments.</p></li>
-<li><p><strong>Filesystem considerations:</strong> QNX targets often use read-only filesystems (IFS / image filesystem). Shared libraries in the image are XIP-capable (execute-in-place) on some flash configurations — reducing RAM usage further.</p></li>
-<li><p><strong>Safety-certified configuration:</strong> For ASIL-qualified QNX deployments, the OS vendor (BlackBerry QNX) provides guidance on certified library configurations. Static linking simplifies the certified configuration (fewer deployment artifacts), but QNX’s safety documentation also covers dynamically linked configurations.</p></li>
-<li><p><strong>Toolchain:</strong> QNX SDP provides both static and shared library support via its GCC/LLVM toolchain. Bazel cross-compilation for QNX requires a custom toolchain definition; both <code class="docutils literal notranslate"><span class="pre">cc_library</span></code> and <code class="docutils literal notranslate"><span class="pre">cc_shared_library</span></code> work with the QNX toolchain.</p></li>
-<li><p><strong>Secure execution policies:</strong> QNX supports <code class="docutils literal notranslate"><span class="pre">procnto</span></code> security policies that restrict library loading to specific paths, mitigating <code class="docutils literal notranslate"><span class="pre">LD_PRELOAD</span></code>-style attacks. This partially addresses the security concerns of dynamic linking.</p></li>
-</ul>
-</section>
-<section id="cross-platform-implications-for-s-core">
-<h4>Cross-Platform Implications for S-CORE<a class="headerlink" href="#cross-platform-implications-for-s-core" title="Link to this heading">#</a></h4>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Decision factor</p></th>
-<th class="head text-center"><p>Linux</p></th>
-<th class="head text-center"><p>QNX</p></th>
-<th class="head text-center"><p>Impact on linking choice</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Dynamic linking ecosystem maturity</p></td>
-<td class="text-center"><p>Excellent</p></td>
-<td class="text-center"><p>Good</p></td>
-<td class="text-center"><p>Both platforms fully support shared libraries</p></td>
-</tr>
-<tr class="row-odd"><td><p>Static linking cleanness</p></td>
-<td class="text-center"><p>Good (musl) / Problematic (glibc)</p></td>
-<td class="text-center"><p>Clean</p></td>
-<td class="text-center"><p>Static is simpler on QNX than on glibc-Linux</p></td>
-</tr>
-<tr class="row-even"><td><p>Security hardening for <code class="docutils literal notranslate"><span class="pre">.so</span></code></p></td>
-<td class="text-center"><p>RELRO + ASLR + seccomp</p></td>
-<td class="text-center"><p>RELRO + ASLR + procnto policies</p></td>
-<td class="text-center"><p>Both can harden shared libraries adequately</p></td>
-</tr>
-<tr class="row-odd"><td><p>Page sharing benefit</p></td>
-<td class="text-center"><p>High (many userspace processes)</p></td>
-<td class="text-center"><p>Very high (microkernel = many small processes)</p></td>
-<td class="text-center"><p>Shared libraries more beneficial on QNX</p></td>
-</tr>
-<tr class="row-even"><td><p>Safety certification documentation</p></td>
-<td class="text-center"><p>N/A (Linux not safety-certified)</p></td>
-<td class="text-center"><p>Available from QNX vendor</p></td>
-<td class="text-center"><p>Static simplifies, but dynamic is certifiable</p></td>
-</tr>
-<tr class="row-odd"><td><p>XIP (execute-in-place) support</p></td>
-<td class="text-center"><p>Limited</p></td>
-<td class="text-center"><p>Available on some flash configurations</p></td>
-<td class="text-center"><p>Additional memory advantage for <code class="docutils literal notranslate"><span class="pre">.so</span></code> on QNX</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>Conclusion:</strong> Both Linux and QNX fully support static and dynamic linking. Neither OS forces a specific model. However:</p>
-<ul class="simple">
-<li><p>On <strong>QNX</strong>, the microkernel architecture with many small processes makes shared libraries particularly attractive for memory efficiency, and the OS vendor provides safety-certified configurations for both models.</p></li>
-<li><p>On <strong>Linux</strong>, dynamic linking is the ecosystem default with excellent tooling, while clean fully-static linking requires a musl-based toolchain (glibc is problematic for fully static binaries).</p></li>
-<li><p>The decision between static and dynamic linking is <strong>not constrained by OS capabilities</strong> on either platform. Both options are viable, and the choice should be driven by the architectural criteria discussed in this document (update granularity, safety, security, performance) rather than OS limitations.</p></li>
-</ul>
-</section>
-</section>
-<section id="license-and-foss-compliance">
-<h3>License and FOSS Compliance<a class="headerlink" href="#license-and-foss-compliance" title="Link to this heading">#</a></h3>
-<p>The linking model has direct implications for open-source license compliance, particularly for copyleft licenses:</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>License type</p></th>
-<th class="head text-center"><p>Static linking</p></th>
-<th class="head text-center"><p>Dynamic linking</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Apache-2.0, MIT, BSD</strong> (permissive)</p></td>
-<td class="text-center"><p>No restriction</p></td>
-<td class="text-center"><p>No restriction</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>LGPL-2.1 / LGPL-3.0</strong></p></td>
-<td class="text-center"><p>Problematic — the resulting binary may be considered a “combined work” requiring release of the entire binary’s source or providing re-linking capability</p></td>
-<td class="text-center"><p>Compliant — the application uses the library “as a shared library”, satisfying LGPL requirements</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>GPL</strong> (without linking exception)</p></td>
-<td class="text-center"><p>Copyleft applies to entire binary</p></td>
-<td class="text-center"><p>Copyleft applies to entire binary (linking model irrelevant for GPL)</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>Relevance for S-CORE:</strong></p>
-<ul class="simple">
-<li><p>S-CORE itself is Apache-2.0 licensed — no restriction on either model for S-CORE’s own code.</p></li>
-<li><p>However, S-CORE depends on <strong>third-party libraries</strong> that may be LGPL-licensed (e.g., system libraries, codec libraries, protocol implementations). If such a dependency is statically linked into S-CORE’s delivery artifacts, downstream consumers inherit the LGPL obligation — they must be able to re-link against a modified version of the LGPL library.</p></li>
-<li><p>The <strong>safest compliance strategy</strong> for LGPL dependencies is to deliver them as shared libraries (or to deliver S-CORE modules that use LGPL code as shared libraries), ensuring clear separation between the LGPL component and the proprietary application code.</p></li>
-<li><p>For the opt-in model (Option 4), any module with LGPL transitive dependencies should be a strong candidate for dynamic delivery.</p></li>
-</ul>
-</section>
-<section id="abi-stability-and-versioning">
-<h3>ABI Stability and Versioning<a class="headerlink" href="#abi-stability-and-versioning" title="Link to this heading">#</a></h3>
-<p>Shared libraries introduce an explicit <strong>ABI contract</strong> between the library provider (S-CORE) and its consumers (applications). This contract must be managed:</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Concern</p></th>
-<th class="head text-center"><p>Static (no ABI contract)</p></th>
-<th class="head text-center"><p>Dynamic (ABI contract required)</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Breaking API change</p></td>
-<td class="text-center"><p>Consumer recompiles — detected at build time</p></td>
-<td class="text-center"><p>Consumer may crash at runtime if <code class="docutils literal notranslate"><span class="pre">.so</span></code> is updated without recompile</p></td>
-</tr>
-<tr class="row-odd"><td><p>ABI versioning</p></td>
-<td class="text-center"><p>Not applicable</p></td>
-<td class="text-center"><p>Soname versioning required (e.g., <code class="docutils literal notranslate"><span class="pre">libscore_comm.so.1</span></code> → <code class="docutils literal notranslate"><span class="pre">.so.2</span></code>)</p></td>
-</tr>
-<tr class="row-even"><td><p>Backward compatibility</p></td>
-<td class="text-center"><p>Not required</p></td>
-<td class="text-center"><p>Must be maintained within a major version</p></td>
-</tr>
-<tr class="row-odd"><td><p>Support lifetime</p></td>
-<td class="text-center"><p>Per release</p></td>
-<td class="text-center"><p>Per ABI version — may span multiple releases</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>Key questions for S-CORE:</strong></p>
-<ol class="arabic simple">
-<li><p><strong>How long is an ABI version supported?</strong> If S-CORE guarantees ABI stability for 2 years, consumers can update middleware <code class="docutils literal notranslate"><span class="pre">.so</span></code> files without rebuilding. If ABI stability is not guaranteed, the benefit of independent updateability is reduced.</p></li>
-<li><p><strong>How are breaking changes communicated?</strong> Soname bumps signal ABI breaks. Consumers linking against <code class="docutils literal notranslate"><span class="pre">libscore_comm.so.1</span></code> will not accidentally load <code class="docutils literal notranslate"><span class="pre">libscore_comm.so.2</span></code> — the dynamic linker rejects the mismatch.</p></li>
-<li><p><strong>Tooling:</strong> ABI compliance checking tools (<code class="docutils literal notranslate"><span class="pre">abidiff</span></code>, <code class="docutils literal notranslate"><span class="pre">abi-compliance-checker</span></code>) can be integrated into CI to detect unintentional ABI breaks before release. Bazel can be configured to run these checks as part of the build.</p></li>
-<li><p><strong>Semantic versioning:</strong> S-CORE should align Soname major versions with semantic versioning major versions. Minor/patch updates preserve ABI.</p></li>
-<li><p><strong>C++ interfaces:</strong> ABI compliance is only ensured for C interfaces. If a library exposes a C++ interface, the C++ ABI is not standardized across compilers (GCC, Clang) or compiler versions. Therefore, either the library must provide a pure C interface at the <code class="docutils literal notranslate"><span class="pre">.so</span></code> boundary, or the build infrastructure must guarantee that the entire product (all <code class="docutils literal notranslate"><span class="pre">.so</span></code> files and their consumers) is built with the identical toolchain (same compiler, same version, same standard library).</p></li>
-</ol>
-<p><strong>For static-only delivery</strong>, this entire concern disappears — the consumer always builds against the exact source/headers they received. But the tradeoff is the loss of independent updateability.</p>
-</section>
-<section id="testing-strategy">
-<h3>Testing Strategy<a class="headerlink" href="#testing-strategy" title="Link to this heading">#</a></h3>
-<p>The linking model affects what constitutes a “tested configuration” and who is responsible for testing which combinations:</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Aspect</p></th>
-<th class="head text-center"><p>Static</p></th>
-<th class="head text-center"><p>Dynamic</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Unit/module test artifact</strong></p></td>
-<td class="text-center"><p>Static library tested in isolation (test binary links statically)</p></td>
-<td class="text-center"><p>Same — module tests are independent of delivery form</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Integration test artifact</strong></p></td>
-<td class="text-center"><p>The final linked binary = test subject</p></td>
-<td class="text-center"><p>The <code class="docutils literal notranslate"><span class="pre">.so</span></code> + a test harness binary = test subject</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Deployment configuration tested</strong></p></td>
-<td class="text-center"><p>Binary is self-contained — no deployment variability</p></td>
-<td class="text-center"><p>Specific combination of <code class="docutils literal notranslate"><span class="pre">.so</span></code> versions must be tested together</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Combinatorial explosion</strong></p></td>
-<td class="text-center"><p>Each consumer binary is one test configuration</p></td>
-<td class="text-center"><p>Each combination of consumer × <code class="docutils literal notranslate"><span class="pre">.so</span></code> versions is a configuration</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Who tests?</strong></p></td>
-<td class="text-center"><p>Consumer is responsible for their binary</p></td>
-<td class="text-center"><p>Middleware provider tests the <code class="docutils literal notranslate"><span class="pre">.so</span></code> in reference configurations; consumer tests their specific integration</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>Implications for S-CORE:</strong></p>
-<ul class="simple">
-<li><p><strong>Static:</strong> S-CORE delivers tested library code, but each consumer must test their final linked binary. S-CORE cannot guarantee system behavior because the final binary is consumer-specific.</p></li>
-<li><p><strong>Dynamic:</strong> S-CORE can deliver a <strong>tested <code class="docutils literal notranslate"><span class="pre">.so</span></code> set</strong> that represents a validated middleware configuration. Consumers test only the integration of their application with the validated <code class="docutils literal notranslate"><span class="pre">.so</span></code> set. This can reduce redundant testing effort across multiple consumer teams — if S-CORE certifies <code class="docutils literal notranslate"><span class="pre">libscore_comm.so</span> <span class="pre">v2.3.1</span></code>, all consumers benefit from that certification without re-testing the communication stack.</p></li>
-<li><p><strong>Safety testing:</strong> For ISO 26262, the “software unit” under test must correspond to the deployed artifact. With shared libraries, the <code class="docutils literal notranslate"><span class="pre">.so</span></code> itself can be the qualified unit — reusable across multiple consumer products without re-qualification (assuming no configuration changes).</p></li>
-</ul>
-</section>
-<section id="build-reproducibility-and-deployment-hermeticity">
-<h3>Build Reproducibility and Deployment Hermeticity<a class="headerlink" href="#build-reproducibility-and-deployment-hermeticity" title="Link to this heading">#</a></h3>
-<p>Bazel provides hermetic, reproducible builds. However, build-time hermeticity does not automatically ensure deployment-time hermeticity:</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Concern</p></th>
-<th class="head text-center"><p>Static</p></th>
-<th class="head text-center"><p>Dynamic</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Build reproducibility</strong></p></td>
-<td class="text-center"><p>Bazel guarantees identical binary for identical inputs</p></td>
-<td class="text-center"><p>Bazel guarantees identical <code class="docutils literal notranslate"><span class="pre">.so</span></code> for identical inputs</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Deployment reproducibility</strong></p></td>
-<td class="text-center"><p>Binary = deployment artifact. Fully determined at build time.</p></td>
-<td class="text-center"><p>Deployment = binary + set of <code class="docutils literal notranslate"><span class="pre">.so</span></code> files. The <strong>combination</strong> must be documented and reproducible.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Configuration drift</strong></p></td>
-<td class="text-center"><p>Impossible — binary is immutable</p></td>
-<td class="text-center"><p>Possible — a <code class="docutils literal notranslate"><span class="pre">.so</span></code> may be updated independently, creating a combination that was never built or tested together</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Lock file / manifest</strong></p></td>
-<td class="text-center"><p>Not needed</p></td>
-<td class="text-center"><p>Required — a deployment manifest must record the exact versions of all <code class="docutils literal notranslate"><span class="pre">.so</span></code> files comprising a valid configuration</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>Mitigation for dynamic linking:</strong></p>
-<ul class="simple">
-<li><p>Introduce a <strong>deployment manifest</strong> (e.g., a JSON/TOML file) that records the exact <code class="docutils literal notranslate"><span class="pre">.so</span></code> versions, checksums, and build-IDs for a validated configuration.</p></li>
-<li><p>Bazel can generate this manifest as a build output alongside the <code class="docutils literal notranslate"><span class="pre">.so</span></code> artifacts.</p></li>
-<li><p>Runtime verification: On system startup, a component can validate that all loaded <code class="docutils literal notranslate"><span class="pre">.so</span></code> files match the expected manifest (build-ID comparison). This provides determinism guarantees approaching those of static linking.</p></li>
-</ul>
-</section>
-<section id="library-initialization-order">
-<h3>Library Initialization Order<a class="headerlink" href="#library-initialization-order" title="Link to this heading">#</a></h3>
-<p>Shared libraries may contain initialization code (<code class="docutils literal notranslate"><span class="pre">__attribute__((constructor))</span></code> in C/C++, <code class="docutils literal notranslate"><span class="pre">#[ctor]</span></code> in Rust) that runs when the library is loaded. The execution order of these constructors is <strong>not fully deterministic:</strong></p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Behavior</p></th>
-<th class="head text-center"><p>Static</p></th>
-<th class="head text-center"><p>Dynamic</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Initialization order</p></td>
-<td class="text-center"><p>Determined by link order — well-defined within one binary</p></td>
-<td class="text-center"><p>Determined by dependency graph + load order — may vary across runs or platform versions</p></td>
-</tr>
-<tr class="row-odd"><td><p>Circular dependencies</p></td>
-<td class="text-center"><p>Detected at link time (error)</p></td>
-<td class="text-center"><p>May cause undefined initialization order or <code class="docutils literal notranslate"><span class="pre">dlopen</span></code> failures</p></td>
-</tr>
-<tr class="row-even"><td><p>Global state in constructors</p></td>
-<td class="text-center"><p>Executes once in binary startup — predictable</p></td>
-<td class="text-center"><p>May execute at different times relative to other libraries</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>Risks:</strong></p>
-<ul class="simple">
-<li><p>If S-CORE module A’s constructor depends on module B being initialized first, the dynamic linker must respect this dependency order. ELF <code class="docutils literal notranslate"><span class="pre">DT_NEEDED</span></code> entries establish this, but complex graphs may lead to surprising behavior.</p></li>
-<li><p>Constructor-heavy designs are fragile with dynamic linking. Best practice: minimize constructor logic, use explicit initialization functions called by the application.</p></li>
-</ul>
-<p><strong>Recommendation for S-CORE:</strong></p>
-<ul class="simple">
-<li><p>Avoid reliance on <code class="docutils literal notranslate"><span class="pre">__attribute__((constructor))</span></code> for critical initialization.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">.so</span></code> constructors must not call into the host module, must not modify global process state, and must not spawn threads.</p></li>
-<li><p>Provide explicit <code class="docutils literal notranslate"><span class="pre">score_&lt;module&gt;_init()</span></code> functions that applications call in a defined order.</p></li>
-<li><p>Document initialization dependencies between modules.</p></li>
-</ul>
-</section>
-<section id="thread-safety-and-lazy-binding">
-<h3>Thread Safety and Lazy Binding<a class="headerlink" href="#thread-safety-and-lazy-binding" title="Link to this heading">#</a></h3>
-<p>The default ELF dynamic linker behavior uses <strong>lazy binding</strong>: symbols are resolved on first call rather than at load time. This interacts with multi-threading:</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Scenario</p></th>
-<th class="head"><p>Behavior</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Single-threaded first call</p></td>
-<td><p>Lazy resolution triggers linker code → safe</p></td>
-</tr>
-<tr class="row-odd"><td><p>Multi-threaded first call to same symbol</p></td>
-<td><p>Multiple threads may trigger resolution simultaneously → implementation-dependent</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">LD_BIND_NOW</span></code> / <code class="docutils literal notranslate"><span class="pre">-Wl,-z,now</span></code> (eager binding)</p></td>
-<td><p>All symbols resolved at load time before any application thread runs → fully deterministic</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>To open a shared library at runtime, <code class="docutils literal notranslate"><span class="pre">dlopen()</span></code> can be used instead of <code class="docutils literal notranslate"><span class="pre">LD_BIND_NOW</span></code> (which resolves all symbols at program start). This is useful for plugin systems where libraries are loaded on demand. In such cases, the combination <code class="docutils literal notranslate"><span class="pre">RTLD_NOW</span> <span class="pre">|</span> <span class="pre">RTLD_LOCAL</span></code> shall be used — <code class="docutils literal notranslate"><span class="pre">RTLD_NOW</span></code> ensures all symbols are resolved immediately (no deferred failures), and <code class="docutils literal notranslate"><span class="pre">RTLD_LOCAL</span></code> prevents the loaded library’s symbols from polluting the global namespace. However, <code class="docutils literal notranslate"><span class="pre">dlopen()</span></code> with these flags is not 100% thread-safe in all scenarios: if <code class="docutils literal notranslate"><span class="pre">dlopen()</span></code> is called from library constructors executing in parallel, or if combined with <code class="docutils literal notranslate"><span class="pre">fork()</span></code>, deadlocks or undefined behavior can occur.</p>
-<p><strong>Linux:</strong> glibc’s dynamic linker is thread-safe for lazy binding (uses internal locks). The concern is largely historical but adds latency jitter — the first call to a symbol has unpredictable latency.</p>
-<p><strong>QNX:</strong> <code class="docutils literal notranslate"><span class="pre">ldqnx.so</span></code> is thread-safe for lazy binding. Same jitter concern applies.</p>
-<p><strong>Impact on real-time systems:</strong></p>
-<ul class="simple">
-<li><p>Lazy binding introduces <strong>latency non-determinism</strong> — the first call to each function through the PLT may take microseconds longer than subsequent calls. For hard real-time applications (e.g., safety-critical control loops), this jitter is unacceptable.</p></li>
-<li><p><strong>Mitigation:</strong> Use <code class="docutils literal notranslate"><span class="pre">LD_BIND_NOW</span></code> (or <code class="docutils literal notranslate"><span class="pre">-Wl,-z,now</span></code> at link time) to force eager binding. All symbols are resolved at startup, eliminating runtime jitter. Tradeoff: slightly increased startup time.</p></li>
-<li><p>For S-CORE, <code class="docutils literal notranslate"><span class="pre">LD_BIND_NOW</span></code> should be the <strong>mandatory default</strong> for any dynamically linked deployment in automotive/safety-critical contexts. This eliminates the thread-safety and latency-jitter concern entirely.</p></li>
-</ul>
-<p><strong>Bazel integration:</strong> The linker flag <code class="docutils literal notranslate"><span class="pre">-Wl,-z,now</span></code> can be added to the shared library’s <code class="docutils literal notranslate"><span class="pre">linkopts</span></code> or to the consumer’s link options to enforce eager binding. Bazel toolchain configuration can make this the default for all targets.</p>
-</section>
-<section id="multi-repository-architecture">
-<h3>Multi-Repository Architecture<a class="headerlink" href="#multi-repository-architecture" title="Link to this heading">#</a></h3>
-<p>S-CORE follows a multi-repository approach: each module (or group of related modules) lives in its own Git repository and is developed independently. These modules are integrated into the <strong>reference integration repository</strong> (<code class="docutils literal notranslate"><span class="pre">score_platform</span></code>) which composes them into a coherent platform. This architecture has significant implications for the linking model.</p>
-<section id="repository-structure">
-<h4>Repository Structure<a class="headerlink" href="#repository-structure" title="Link to this heading">#</a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>score_platform (reference integration repo)
-├── MODULE.bazel          # bzlmod: declares dependencies on module repos
-├── module_comm/          # or: fetched via bazel_dep()
-├── module_diag/
-├── module_logging/
-└── ...
-
-score_comm (separate repo)     ← independent development, own CI
-score_diag (separate repo)     ← independent development, own CI
-score_logging (separate repo)  ← independent development, own CI
-</pre></div>
-</div>
-<p>Bazel’s module system (<code class="docutils literal notranslate"><span class="pre">bzlmod</span></code>) resolves inter-repository dependencies at build time. Each module declares its dependencies in its own <code class="docutils literal notranslate"><span class="pre">MODULE.bazel</span></code>, and the integration repo pins the compatible versions.</p>
-</section>
-<section id="impact-on-static-linking">
-<h4>Impact on Static Linking<a class="headerlink" href="#impact-on-static-linking" title="Link to this heading">#</a></h4>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Concern</p></th>
-<th class="head"><p>Assessment</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Cross-repo dependency resolution</strong></p></td>
-<td><p>Bazel handles this transparently — <code class="docutils literal notranslate"><span class="pre">bazel_dep()</span></code> fetches the source, and all code is compiled together in one build graph. Static linking works across repo boundaries as if the code were in a single repo.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Diamond dependencies</strong></p></td>
-<td><p>Bazel resolves to exactly one version of each dependency (MVS — Minimum Version Selection). No duplication in the final binary.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Build reproducibility</strong></p></td>
-<td><p>Fully hermetic — the <code class="docutils literal notranslate"><span class="pre">MODULE.bazel.lock</span></code> pins all transitive versions. The same build graph produces the same binary regardless of when it is built.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Module independence</strong></p></td>
-<td><p>Limited — a module’s CI can build and test its own static library, but cannot produce a deployable artifact without the consumer. The module repo delivers source or <code class="docutils literal notranslate"><span class="pre">.a</span></code> files; the integration repo produces the final binary.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>Consequence:</strong> Static linking is <strong>well-suited</strong> for a multi-repo approach with Bazel. The integration repo builds everything from source (or from cached artifacts), and Bazel’s dependency resolution eliminates version conflicts at build time.</p>
-</section>
-<section id="integration-challenges-apply-to-both-models">
-<h4>Integration Challenges Apply to Both Models<a class="headerlink" href="#integration-challenges-apply-to-both-models" title="Link to this heading">#</a></h4>
-<p>It is important to note that <strong>independent module development without integration testing causes problems regardless of the linking model.</strong> If modules are developed in separate repos and only integrated late, incompatibilities will arise in both cases:</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Type of incompatibility</p></th>
-<th class="head text-center"><p>Static linking</p></th>
-<th class="head text-center"><p>Dynamic linking (built from source)</p></th>
-<th class="head text-center"><p>Dynamic linking (pre-built <code class="docutils literal notranslate"><span class="pre">.so</span></code>)</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>API change (function signature, header)</p></td>
-<td class="text-center"><p><strong>Compile error</strong> in integration repo — caught immediately</p></td>
-<td class="text-center"><p><strong>Compile error</strong> in integration repo — same as static</p></td>
-<td class="text-center"><p><strong>Runtime crash</strong> — <code class="docutils literal notranslate"><span class="pre">.so</span></code> was built against old headers</p></td>
-</tr>
-<tr class="row-odd"><td><p>Semantic change (same API, different behavior)</p></td>
-<td class="text-center"><p>Silent — not caught by compiler</p></td>
-<td class="text-center"><p>Silent — not caught by compiler</p></td>
-<td class="text-center"><p>Silent — not caught by compiler</p></td>
-</tr>
-<tr class="row-even"><td><p>Dependency version mismatch</p></td>
-<td class="text-center"><p>Bazel resolves at build time — one version</p></td>
-<td class="text-center"><p>Bazel resolves at build time — same as static</p></td>
-<td class="text-center"><p>May produce conflicting versions at deploy time</p></td>
-</tr>
-<tr class="row-odd"><td><p>ABI change (struct layout, enum values)</p></td>
-<td class="text-center"><p>Recompiled together — no ABI concept</p></td>
-<td class="text-center"><p>Recompiled together — no ABI concept</p></td>
-<td class="text-center"><p><strong>Silent data corruption</strong> — binary layout mismatch not detectable by linker</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>Key insight:</strong> The difference is <strong>not</strong> that dynamic linking creates more integration problems. The problems (API drift, semantic changes, version mismatches) are identical. The difference is <strong>when incompatibilities are detected:</strong></p>
-<ol class="arabic simple">
-<li><p><strong>Static linking</strong> and <strong>dynamic linking built from source</strong> both detect API/signature breaks at <strong>compile time</strong> in the integration repo. Bazel’s build graph forces recompilation of all dependents when a dependency changes.</p></li>
-<li><p><strong>Pre-built <code class="docutils literal notranslate"><span class="pre">.so</span></code> artifacts</strong> shift some error detection from <strong>compile time to runtime</strong> — specifically, ABI-level breaks that the compiler would catch if it saw the updated headers are invisible when linking against a pre-built binary.</p></li>
-<li><p><strong>Semantic incompatibilities</strong> (same API, changed behavior) are undetectable by either model and require integration tests regardless.</p></li>
-</ol>
-<p><strong>Therefore:</strong> The real risk factor is not “static vs. dynamic” but <strong>“build from source vs. consume pre-built artifacts.”</strong> If the integration repo always builds all shared libraries from source, the compile-time safety guarantees are identical to static linking.</p>
-<p>The <strong>additional risk unique to dynamic linking</strong> arises only <strong>after deployment:</strong> the ability to update a single <code class="docutils literal notranslate"><span class="pre">.so</span></code> in the field without rebuilding its consumers introduces a runtime compatibility dimension that does not exist with statically linked binaries. This is simultaneously the greatest advantage (independent updateability) and the greatest risk (unvalidated combinations) of dynamic linking.</p>
-</section>
-<section id="impact-on-dynamic-linking">
-<h4>Impact on Dynamic Linking<a class="headerlink" href="#impact-on-dynamic-linking" title="Link to this heading">#</a></h4>
-<p>Given the above distinction, the dynamic linking assessment differentiates between two consumption modes:</p>
-<p><strong>Mode A — Integration repo builds <code class="docutils literal notranslate"><span class="pre">.so</span></code> from source (via Bazel):</strong></p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Concern</p></th>
-<th class="head"><p>Assessment</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Compile-time safety</strong></p></td>
-<td><p>Identical to static linking — Bazel recompiles all targets when a dependency changes.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Diamond dependencies</strong></p></td>
-<td><p>Resolved by Bazel at build time — same as static.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Independent release cadences</strong></p></td>
-<td><p>Not achieved — all modules are still built together. The <code class="docutils literal notranslate"><span class="pre">.so</span></code> boundary exists at runtime but not at build time.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Benefit over static</strong></p></td>
-<td><p>Runtime benefits (page sharing, update granularity) are preserved. Build-time safety is not sacrificed.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>Mode B — Module repos publish pre-built <code class="docutils literal notranslate"><span class="pre">.so</span></code> artifacts:</strong></p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Concern</p></th>
-<th class="head"><p>Assessment</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Compile-time safety</strong></p></td>
-<td><p>Reduced — the integration repo links against pre-built <code class="docutils literal notranslate"><span class="pre">.so</span></code> files. ABI compatibility is not verified by the compiler.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>ABI compatibility across repos</strong></p></td>
-<td><p>Must be guaranteed by convention and tooling (<code class="docutils literal notranslate"><span class="pre">abidiff</span></code>, ABI compliance checks in CI).</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Diamond dependencies</strong></p></td>
-<td><p>Real risk — modules built independently against different versions of a shared dependency may be incompatible.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Independent release cadences</strong></p></td>
-<td><p>Achieved — modules can publish <code class="docutils literal notranslate"><span class="pre">.so</span></code> artifacts on their own schedule.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Benefit over static</strong></p></td>
-<td><p>Full independence, but requires disciplined ABI management.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>Recommendation:</strong> For S-CORE, <strong>Mode A</strong> (build from source in the integration repo) should be the default. This preserves compile-time safety while gaining the runtime benefits of shared libraries. <strong>Mode B</strong> (pre-built <code class="docutils literal notranslate"><span class="pre">.so</span></code>) should only be used for modules where true release independence is required, and only with strict ABI versioning, Soname management, and CI-integrated ABI compliance checking.</p>
-</section>
-<section id="diamond-dependency-problem-detailed-example">
-<h4>Diamond Dependency Problem — Detailed Example<a class="headerlink" href="#diamond-dependency-problem-detailed-example" title="Link to this heading">#</a></h4>
-<p>This problem is specific to <strong>Mode B</strong> (pre-built <code class="docutils literal notranslate"><span class="pre">.so</span></code> artifacts) and does not apply when building from source:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Application
-├── links: score_comm.so (pre-built in score_comm repo)
-│   └── was built against: score_serialization v2.0 headers
-└── links: score_diag.so (pre-built in score_diag repo)
-    └── was built against: score_serialization v2.1 headers
-
-Deployed: score_serialization.so v2.1
-→ score_comm.so may be incompatible if ABI changed between v2.0 and v2.1
-</pre></div>
-</div>
-<ul class="simple">
-<li><p><strong>Static linking (integration repo builds all from source):</strong> Bazel resolves <code class="docutils literal notranslate"><span class="pre">score_serialization</span></code> to one version (e.g., 2.1) and compiles everything together. Incompatibilities are caught at compile time.</p></li>
-<li><p><strong>Dynamic linking from source (Mode A):</strong> Same as static — Bazel resolves one version and builds all <code class="docutils literal notranslate"><span class="pre">.so</span></code> files in one graph. No diamond problem.</p></li>
-<li><p><strong>Dynamic linking pre-built (Mode B):</strong> <code class="docutils literal notranslate"><span class="pre">score_comm.so</span></code> was built against v2.0 headers. If the deployed <code class="docutils literal notranslate"><span class="pre">score_serialization.so</span></code> is v2.1 and the ABI changed, <code class="docutils literal notranslate"><span class="pre">score_comm.so</span></code> may crash or silently corrupt data at runtime. The linker cannot detect this.</p></li>
-<li><p>Mitigation (for Mode B only): The integration repo must define a <strong>compatible version set</strong> and either:</p>
-<ul>
-<li><p>Rebuild all <code class="docutils literal notranslate"><span class="pre">.so</span></code> files from source in one build (losing the independent release advantage), or</p></li>
-<li><p>Enforce strict ABI compatibility rules and Soname versioning across repos, or</p></li>
-<li><p>Use the opt-in model (Option 4): only modules at the “API boundary” are shared libraries; internal transitive dependencies are statically linked into each <code class="docutils literal notranslate"><span class="pre">.so</span></code>, eliminating the diamond problem for internal code.</p></li>
-</ul>
-</li>
-</ul>
-</section>
-<section id="multi-repo-and-the-opt-in-model-option-4">
-<h4>Multi-Repo and the Opt-In Model (Option 4)<a class="headerlink" href="#multi-repo-and-the-opt-in-model-option-4" title="Link to this heading">#</a></h4>
-<p>The opt-in model interacts favorably with the multi-repository approach:</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Pattern</p></th>
-<th class="head"><p>How it works</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Module repo delivers static library</strong> (default)</p></td>
-<td><p>The module publishes a Bazel module (<code class="docutils literal notranslate"><span class="pre">bazel_dep</span></code>) that exposes <code class="docutils literal notranslate"><span class="pre">cc_library</span></code> targets. The integration repo links everything statically. Simple, no ABI concerns across repos.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Module repo delivers shared library</strong> (opt-in)</p></td>
-<td><p>The module additionally publishes a pre-built <code class="docutils literal notranslate"><span class="pre">.so</span></code> with a stable C ABI and Soname versioning. The module’s CI tests the <code class="docutils literal notranslate"><span class="pre">.so</span></code> independently. The integration repo can consume either the source (for static) or the <code class="docutils literal notranslate"><span class="pre">.so</span></code> (for dynamic).</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Internal dependencies within a <code class="docutils literal notranslate"><span class="pre">.so</span></code></strong></p></td>
-<td><p>When a module opts into <code class="docutils literal notranslate"><span class="pre">.so</span></code> delivery, its transitive in-repo dependencies are statically linked into the <code class="docutils literal notranslate"><span class="pre">.so</span></code>. Only the public API is exposed. This eliminates cross-repo diamond dependency problems for internal code.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Shared infrastructure libraries</strong></p></td>
-<td><p>Widely-used infrastructure (e.g., serialization, logging) can be delivered as <code class="docutils literal notranslate"><span class="pre">.so</span></code> with strict ABI guarantees. These require the most rigorous versioning and compatibility testing across repos.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="bazel-integration-for-multi-repo">
-<h4>Bazel Integration for Multi-Repo<a class="headerlink" href="#bazel-integration-for-multi-repo" title="Link to this heading">#</a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># In the integration repo&#39;s MODULE.bazel:</span>
-<span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_comm&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;2.4.0&quot;</span><span class="p">)</span>
-<span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_diag&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;1.7.0&quot;</span><span class="p">)</span>
-<span class="n">bazel_dep</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;score_logging&quot;</span><span class="p">,</span> <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;1.5.0&quot;</span><span class="p">)</span>
-
-<span class="c1"># Static integration (default): all built from source</span>
-<span class="n">cc_binary</span><span class="p">(</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;app&quot;</span><span class="p">,</span>
-    <span class="n">deps</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s2">&quot;@score_comm//:comm&quot;</span><span class="p">,</span>       <span class="c1"># cc_library → static</span>
-        <span class="s2">&quot;@score_diag//:diag&quot;</span><span class="p">,</span>       <span class="c1"># cc_library → static</span>
-        <span class="s2">&quot;@score_logging//:logging&quot;</span><span class="p">,</span> <span class="c1"># cc_library → static</span>
-    <span class="p">],</span>
-<span class="p">)</span>
-
-<span class="c1"># Dynamic integration (opt-in modules):</span>
-<span class="c1"># score_comm publishes a cc_shared_library target</span>
-<span class="n">cc_binary</span><span class="p">(</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;app_dynamic&quot;</span><span class="p">,</span>
-    <span class="n">deps</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s2">&quot;@score_comm//:comm_so&quot;</span><span class="p">,</span>    <span class="c1"># cc_shared_library → .so</span>
-        <span class="s2">&quot;@score_diag//:diag&quot;</span><span class="p">,</span>       <span class="c1"># cc_library → static</span>
-        <span class="s2">&quot;@score_logging//:logging_so&quot;</span><span class="p">,</span> <span class="c1"># cc_shared_library → .so</span>
-    <span class="p">],</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Conclusion:</strong> The multi-repository architecture is compatible with both linking models. The integration challenges of independent module development (API drift, semantic changes) are <strong>identical</strong> for both models and require integration testing regardless. The key differences are:</p>
-<ul class="simple">
-<li><p><strong>Static linking</strong> and <strong>dynamic linking built from source</strong> (Mode A) provide the same compile-time safety guarantees. Multi-repo is transparent thanks to Bazel’s dependency resolution.</p></li>
-<li><p><strong>Pre-built <code class="docutils literal notranslate"><span class="pre">.so</span></code> artifacts</strong> (Mode B) introduce cross-repo ABI coordination as a new concern. This is the price for true independent release cadences.</p></li>
-<li><p>The <strong>additional risk unique to dynamic linking</strong> exists only at deployment time: the possibility of updating a <code class="docutils literal notranslate"><span class="pre">.so</span></code> independently creates combinations that were never built or tested together. This risk does not exist with static linking.</p></li>
-<li><p>The <strong>opt-in model (Option 4)</strong> is the best fit for multi-repo: static by default (simple cross-repo integration), with <code class="docutils literal notranslate"><span class="pre">.so</span></code> delivery (preferably Mode A, Mode B only where justified) for modules where independent updateability is worth the additional ABI management overhead. Internal dependencies are statically linked into the <code class="docutils literal notranslate"><span class="pre">.so</span></code>, isolating the ABI surface to the module’s public API.</p></li>
-</ul>
-</section>
-</section>
 </section>
 <hr class="docutils" />
 <section id="options-considered">
@@ -1544,36 +703,21 @@ Deployed: score_serialization.so v2.1
 <section id="advantages">
 <h4>Advantages<a class="headerlink" href="#advantages" title="Link to this heading">#</a></h4>
 <ul class="simple">
-<li><p><strong>Performance:</strong> No dynamic linking overhead at startup or runtime. Function calls are direct, enabling full link-time optimization (LTO) across the entire binary. For a <strong>single application in isolation</strong>, this is the fastest option with optimal per-call performance (no PLT/GOT indirection). Note: In multi-application deployments, this advantage is partially offset by increased startup I/O (see Disadvantages).</p></li>
-<li><p><strong>Determinism:</strong> The resulting binary is fully self-contained. No runtime dependency resolution, no version conflicts, no missing <code class="docutils literal notranslate"><span class="pre">.so</span></code> files at deployment.</p></li>
-<li><p><strong>Safety:</strong> The binary under certification is exactly the binary that was tested and verified. No risk of library substitution at runtime. Simplifies the safety case and traceability from source to deployed artifact.</p></li>
-<li><p><strong>Security:</strong> Reduced attack surface — no <code class="docutils literal notranslate"><span class="pre">LD_PRELOAD</span></code> injection, no symbol interposition, no writable GOT/PLT entries. The binary can be fully hardened with RELRO and stripped of dynamic linking infrastructure.</p></li>
-<li><p><strong>Bazel integration:</strong> Static linking is the natural default in Bazel’s <code class="docutils literal notranslate"><span class="pre">cc_library</span></code> / <code class="docutils literal notranslate"><span class="pre">rust_library</span></code> rules. No need for <code class="docutils literal notranslate"><span class="pre">linkshared</span></code> attributes or <code class="docutils literal notranslate"><span class="pre">cc_shared_library</span></code> targets. Dependency resolution is fully handled at analysis time.</p></li>
+<li><p><strong>Performance:</strong> No dynamic linking overhead at startup or runtime. Full link-time optimization (LTO) across the entire binary.</p></li>
+<li><p><strong>Determinism:</strong> The resulting binary is fully self-contained. No runtime dependency resolution, no version conflicts.</p></li>
+<li><p><strong>Safety:</strong> The binary under certification is exactly the binary that was tested and verified. No risk of library substitution at runtime.</p></li>
+<li><p><strong>Security:</strong> Reduced attack surface — no <code class="docutils literal notranslate"><span class="pre">LD_PRELOAD</span></code> injection, no symbol interposition, no writable GOT/PLT entries.</p></li>
+<li><p><strong>Bazel integration:</strong> Static linking is the natural default in Bazel’s <code class="docutils literal notranslate"><span class="pre">cc_library</span></code> / <code class="docutils literal notranslate"><span class="pre">rust_library</span></code> rules.</p></li>
 </ul>
 </section>
 <section id="disadvantages">
 <h4>Disadvantages<a class="headerlink" href="#disadvantages" title="Link to this heading">#</a></h4>
 <ul class="simple">
-<li><p><strong>Code size:</strong> Each binary includes its own copy of all library code. If multiple binaries on the same target share modules, total flash/storage consumption increases significantly. In a middleware scenario with 10+ applications sharing S-CORE, this means 10+ copies of each module in flash.</p></li>
-<li><p><strong>Memory consumption:</strong> Each process loads its own copy of all statically linked library code into RAM. The <code class="docutils literal notranslate"><span class="pre">.text</span></code> segments cannot be shared across processes by the OS kernel. In a deployment with N applications using S-CORE, the middleware code occupies N × (library size) in physical RAM rather than 1 × (library size). On memory-constrained ECUs, this can be a critical limitation.</p></li>
-<li><p><strong>Startup performance in multi-app deployments:</strong> While per-call performance is optimal, the system-wide startup cost increases in middleware scenarios with many applications:</p>
-<ul>
-<li><p>Each of the N applications must independently load its own copy of the middleware code from flash — there is no sharing of already-resident pages across processes.</p></li>
-<li><p>N applications each trigger cold page faults for the same library code (at different virtual addresses within their respective binaries).</p></li>
-<li><p>Total flash I/O for loading middleware code scales linearly with the number of applications (N × library size read from flash), whereas with shared libraries the code is read once and reused from page cache.</p></li>
-<li><p>The cumulative system startup time (all applications) can exceed the dynamic linking alternative, where only the first application pays the full I/O cost.</p></li>
-</ul>
-</li>
-<li><p><strong>Update granularity:</strong> Any change in any S-CORE module requires re-linking and re-deploying <strong>every application binary</strong> that uses it. A single bug fix in the middleware forces a full rebuild and OTA update of all dependent applications. In a typical deployment with many consumer applications, this means:</p>
-<ul>
-<li><p>OTA update packages grow to include all application binaries, not just the changed middleware component.</p></li>
-<li><p>Update duration and bandwidth consumption scale with the number of applications, not with the size of the change.</p></li>
-<li><p>Rollback becomes an all-or-nothing operation across the entire software stack.</p></li>
-<li><p>Security patches cannot be deployed to the middleware independently — the OEM must coordinate a synchronized release of all applications.</p></li>
-<li><p>Time-to-field for critical fixes is extended by the rebuild and re-test cycle of all consumer applications.</p></li>
-</ul>
-</li>
-<li><p><strong>Re-certification:</strong> A change in one module may require re-testing the entire linked binary, depending on the safety argumentation strategy (impact analysis vs. full re-test). With multiple applications, this effort multiplies per binary.</p></li>
+<li><p><strong>Code size:</strong> Each binary includes its own copy of all library code. With 10+ applications sharing S-CORE, this means 10+ copies of each module in flash.</p></li>
+<li><p><strong>Memory consumption:</strong> Each process loads its own copy of all statically linked library code into RAM. The <code class="docutils literal notranslate"><span class="pre">.text</span></code> segments cannot be shared across processes by the OS kernel.</p></li>
+<li><p><strong>Startup performance in multi-app deployments:</strong> Total flash I/O for loading middleware code scales linearly with the number of applications.</p></li>
+<li><p><strong>Update granularity:</strong> Any change in any S-CORE module requires re-linking and re-deploying <strong>every application binary</strong> that uses it. Security patches cannot be deployed to the middleware independently.</p></li>
+<li><p><strong>Re-certification:</strong> A change in one module may require re-testing the entire linked binary.</p></li>
 </ul>
 </section>
 </section>
@@ -1584,65 +728,20 @@ Deployed: score_serialization.so v2.1
 <section id="id1">
 <h4>Advantages<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
 <ul class="simple">
-<li><p><strong>Code size:</strong> Shared libraries are stored once on flash regardless of how many binaries use them. Reduced flash/storage footprint in the middleware scenario — a single copy of each S-CORE <code class="docutils literal notranslate"><span class="pre">.so</span></code> serves all applications on the ECU.</p></li>
-<li><p><strong>Memory consumption:</strong> The OS kernel maps shared library <code class="docutils literal notranslate"><span class="pre">.text</span></code> segments into physical RAM exactly once and shares them across all processes via virtual memory. If 10 applications use <code class="docutils literal notranslate"><span class="pre">libscore_comm.so</span></code>, the code pages exist only once in physical RAM. This can reduce total RAM usage by an order of magnitude for the middleware portion. Additionally, shared pages that are already loaded for one application incur zero additional page-fault cost when another application starts.</p></li>
-<li><p><strong>Update granularity:</strong> This is the strongest advantage of dynamic linking in a middleware context:</p>
-<ul>
-<li><p>A bug fix or security patch in an S-CORE module can be deployed as a single <code class="docutils literal notranslate"><span class="pre">.so</span></code> replacement without touching any application binary.</p></li>
-<li><p>OTA update size is proportional to the actual change, not to the number of consumers.</p></li>
-<li><p>Applications and middleware can follow independent release cadences — the OEM can update customer applications without waiting for a new S-CORE release, and vice versa.</p></li>
-<li><p>Rollback granularity improves: a faulty middleware update can be reverted independently of application state.</p></li>
-<li><p>Security response time is minimized: a CVE in a shared module can be patched once, deployed once, and immediately effective for all applications.</p></li>
+<li><p><strong>Code size:</strong> Shared libraries are stored once on flash regardless of how many binaries use them.</p></li>
+<li><p><strong>Memory consumption:</strong> The OS kernel maps shared library <code class="docutils literal notranslate"><span class="pre">.text</span></code> segments into physical RAM exactly once and shares them across all processes.</p></li>
+<li><p><strong>Update granularity:</strong> A bug fix or security patch can be deployed as a single <code class="docutils literal notranslate"><span class="pre">.so</span></code> replacement without touching any application binary. Applications and middleware can follow independent release cadences.</p></li>
+<li><p><strong>Decoupled build and deployment:</strong> Modules can be built, versioned, and deployed independently of their consumers.</p></li>
 </ul>
-</li>
-<li><p><strong>Decoupled build and deployment:</strong> Modules can be built, versioned, and deployed independently of their consumers. This is particularly valuable when S-CORE is delivered by a different organization than the applications consuming it.</p></li>
-</ul>
-</section>
-<section id="performance-first-load-vs-subsequent-use">
-<h4>Performance: First Load vs. Subsequent Use<a class="headerlink" href="#performance-first-load-vs-subsequent-use" title="Link to this heading">#</a></h4>
-<p>The runtime performance of a shared library differs significantly depending on whether it is loaded for the first time or is already resident in memory:</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Aspect</p></th>
-<th class="head"><p>First application (cold)</p></th>
-<th class="head"><p>Subsequent applications (warm)</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>File mapping</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">.so</span></code> must be read from flash/disk and mapped into page cache</p></td>
-<td><p>Kernel reuses existing page cache — no flash I/O</p></td>
-</tr>
-<tr class="row-odd"><td><p>Page faults</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">.text</span></code> pages are demand-paged on first access (cold page faults)</p></td>
-<td><p>Pages already in physical RAM — zero page faults for code</p></td>
-</tr>
-<tr class="row-even"><td><p>Symbol resolution</p></td>
-<td><p>Dynamic linker resolves all symbols, fills GOT/PLT (per-process)</p></td>
-<td><p>Still required per-process — same cost</p></td>
-</tr>
-<tr class="row-odd"><td><p>Library constructors</p></td>
-<td><p>Run once in first process</p></td>
-<td><p>Run again in each subsequent process</p></td>
-</tr>
-<tr class="row-even"><td><p>Steady-state call overhead</p></td>
-<td><p>PLT/GOT indirection per call (same for all)</p></td>
-<td><p>Identical — no improvement after initial resolution</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>Summary:</strong> The first application to load a shared library pays a startup penalty (flash I/O + page faults + relocation). All subsequent applications benefit from the fact that the library’s code pages are already in the kernel page cache and physical RAM. In a middleware deployment where S-CORE libraries are loaded by many applications, the cold-start cost is paid only once (typically by the first application to start), and all later consumers start faster. However, the per-call PLT/GOT indirection remains constant regardless of how many consumers exist — it is inherent to the dynamic linking mechanism and does not amortize with use.</p>
-<p>This warm-cache behavior further strengthens the case for dynamic linking in multi-application middleware scenarios: the performance penalty is highest for a single consumer and decreases (in relative terms) as the number of consumers sharing the library grows.</p>
 </section>
 <section id="id2">
 <h4>Disadvantages<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
 <ul class="simple">
-<li><p><strong>Performance:</strong> Dynamic linking introduces a per-call overhead (PLT/GOT indirection) that is constant regardless of the number of consumers. Additionally, the first load of a library incurs flash I/O and page fault costs (see above). LTO cannot optimize across library boundaries, potentially leaving cross-module call patterns and inlining opportunities unexploited.</p></li>
-<li><p><strong>Determinism:</strong> Runtime behavior depends on which <code class="docutils literal notranslate"><span class="pre">.so</span></code> versions are present on the target. ABI compatibility must be maintained or explicitly managed. Risk of version mismatches.</p></li>
-<li><p><strong>Safety:</strong> The certified binary configuration includes the combination of consumer + all shared libraries at specific versions. Runtime substitution of libraries must be prevented or explicitly controlled. Symbol resolution is a runtime-variable process, complicating traceability. Safety standards (ISO 26262) require demonstrating that the tested configuration matches the deployed configuration — dynamic linking adds complexity to this argument.</p></li>
-<li><p><strong>Security:</strong> Expanded attack surface — <code class="docutils literal notranslate"><span class="pre">LD_PRELOAD</span></code> injection, symbol interposition, writable GOT/PLT (unless full RELRO), potential for loading malicious <code class="docutils literal notranslate"><span class="pre">.so</span></code> files if library paths are not locked down.</p></li>
-<li><p><strong>Bazel integration:</strong> Requires explicit <code class="docutils literal notranslate"><span class="pre">cc_shared_library</span></code> targets or <code class="docutils literal notranslate"><span class="pre">linkshared</span> <span class="pre">=</span> <span class="pre">True</span></code>. Shared library versioning (sonames) must be managed manually. Bazel’s default dependency model assumes static linking; shared library boundaries must be explicitly designed and maintained.</p></li>
+<li><p><strong>Performance:</strong> Dynamic linking introduces per-call overhead (PLT/GOT indirection). LTO cannot optimize across library boundaries.</p></li>
+<li><p><strong>Determinism:</strong> Runtime behavior depends on which <code class="docutils literal notranslate"><span class="pre">.so</span></code> versions are present on the target.</p></li>
+<li><p><strong>Safety:</strong> Runtime substitution of libraries must be prevented or explicitly controlled. Complicates traceability.</p></li>
+<li><p><strong>Security:</strong> Expanded attack surface — <code class="docutils literal notranslate"><span class="pre">LD_PRELOAD</span></code> injection, symbol interposition, writable GOT/PLT (unless full RELRO).</p></li>
+<li><p><strong>Bazel integration:</strong> Requires explicit <code class="docutils literal notranslate"><span class="pre">cc_shared_library</span></code> targets. Shared library versioning must be managed manually.</p></li>
 </ul>
 </section>
 </section>
@@ -1653,19 +752,16 @@ Deployed: score_serialization.so v2.1
 <section id="id3">
 <h4>Advantages<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
 <ul class="simple">
-<li><p><strong>Flexibility:</strong> Downstream projects can choose the linking model that fits their deployment scenario (e.g., static for deeply embedded ECUs, dynamic for high-performance compute platforms).</p></li>
+<li><p><strong>Flexibility:</strong> Downstream projects can choose the linking model that fits their deployment scenario.</p></li>
 <li><p><strong>Broad compatibility:</strong> Supports diverse integration targets without constraining the platform delivery.</p></li>
-<li><p><strong>Memory / code size optimization:</strong> Customers on memory-constrained hardware with many applications can use the dynamic variant to share code pages in RAM. Customers with single-binary deployments can use the static variant to avoid dynamic linking overhead.</p></li>
-<li><p><strong>Update granularity:</strong> Customers deploying S-CORE as shared middleware for many applications can use the dynamic variant and benefit from independent updateability. Customers with single-binary deployments can use the static variant for maximum performance.</p></li>
 </ul>
 </section>
 <section id="id4">
 <h4>Disadvantages<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
 <ul class="simple">
-<li><p><strong>Build complexity:</strong> Every module must be built twice. CI/CD pipelines, testing, and release processes double in scope for library artifacts.</p></li>
-<li><p><strong>Safety / Certification:</strong> Both delivery forms must be tested and qualified separately. The safety case must cover both linking scenarios, increasing documentation and verification effort.</p></li>
-<li><p><strong>Security:</strong> Both forms must be independently hardened and analyzed.</p></li>
-<li><p><strong>Bazel integration:</strong> Requires maintaining parallel build targets (<code class="docutils literal notranslate"><span class="pre">cc_library</span></code> + <code class="docutils literal notranslate"><span class="pre">cc_shared_library</span></code>) for each module. Increases BUILD file complexity and the risk of configuration drift between the two variants.</p></li>
+<li><p><strong>Build complexity:</strong> Every module must be built twice. CI/CD pipelines, testing, and release processes double in scope.</p></li>
+<li><p><strong>Safety / Certification:</strong> Both delivery forms must be tested and qualified separately.</p></li>
+<li><p><strong>Bazel integration:</strong> Requires maintaining parallel build targets for each module.</p></li>
 <li><p><strong>Maintenance cost:</strong> Any API change must be verified for both static and dynamic ABI compatibility.</p></li>
 </ul>
 </section>
@@ -1678,21 +774,20 @@ Deployed: score_serialization.so v2.1
 <h4>Advantages<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p><strong>Pragmatic default:</strong> Static linking provides the best safety, security, and performance properties by default.</p></li>
-<li><p><strong>Targeted flexibility:</strong> Modules with genuine dynamic linking requirements (e.g., plugin architectures, large shared codebases, independently updatable components) can provide a shared variant without forcing the overhead on all modules.</p></li>
-<li><p><strong>Memory efficiency where it matters:</strong> Large modules used by many applications (e.g., communication stack, serialization framework) can opt into dynamic delivery to enable RAM sharing across processes. Smaller utility modules remain static with negligible memory impact.</p></li>
-<li><p><strong>Controlled complexity:</strong> Build system complexity only increases for modules that explicitly opt in. The default case remains simple.</p></li>
-<li><p><strong>Update granularity:</strong> Modules that are most critical for independent updateability in the middleware scenario (e.g., communication stacks, security-relevant components, frequently patched modules) can opt into dynamic delivery. This enables targeted partial OTA updates for the components that benefit most, while keeping the simpler static model for stable, rarely-changed modules. The middleware can define a “shared core” set of modules delivered as <code class="docutils literal notranslate"><span class="pre">.so</span></code> for update efficiency, while less critical or rarely-changing modules remain static.</p></li>
-<li><p><strong>Safety:</strong> The default safety argument remains simple (static binary = tested binary). Modules opting into dynamic delivery explicitly take responsibility for the additional safety argumentation (ABI stability, version control, deployment configuration management).</p></li>
-<li><p><strong>Security:</strong> The default case has the smallest attack surface. Dynamic variants are individually assessed. Security-critical modules that require rapid patching can opt into dynamic delivery to minimize time-to-field.</p></li>
-<li><p><strong>Bazel integration:</strong> The default <code class="docutils literal notranslate"><span class="pre">cc_library</span></code> / <code class="docutils literal notranslate"><span class="pre">rust_library</span></code> pattern works without modification. Modules opting in add a <code class="docutils literal notranslate"><span class="pre">cc_shared_library</span></code> target alongside their static target. Bazel’s visibility and dependency mechanisms can enforce that only approved modules provide shared libraries.</p></li>
+<li><p><strong>Targeted flexibility:</strong> Modules with genuine dynamic linking requirements can provide a shared variant without forcing the overhead on all modules.</p></li>
+<li><p><strong>Memory efficiency where it matters:</strong> Large modules used by many applications can opt into dynamic delivery to enable RAM sharing across processes.</p></li>
+<li><p><strong>Controlled complexity:</strong> Build system complexity only increases for modules that explicitly opt in.</p></li>
+<li><p><strong>Update granularity:</strong> Modules most critical for independent updateability can opt into dynamic delivery, enabling targeted partial OTA updates.</p></li>
+<li><p><strong>Safety:</strong> The default safety argument remains simple. Modules opting into dynamic delivery explicitly take responsibility for the additional safety argumentation.</p></li>
+<li><p><strong>Security:</strong> The default case has the smallest attack surface. Security-critical modules that require rapid patching can opt into dynamic delivery.</p></li>
 </ul>
 </section>
 <section id="id6">
 <h4>Disadvantages<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
 <ul class="simple">
-<li><p><strong>Inconsistency:</strong> Not all modules are delivered in the same way. Downstream integrators must understand which modules offer which variants.</p></li>
-<li><p><strong>Governance overhead:</strong> Requires a decision process for when a module qualifies for dynamic delivery. Criteria must be defined and maintained.</p></li>
-<li><p><strong>Partial duplication:</strong> Opted-in modules still face the dual-build and dual-test cost from Option 3, albeit only for a subset.</p></li>
+<li><p><strong>Inconsistency:</strong> Not all modules are delivered in the same way.</p></li>
+<li><p><strong>Governance overhead:</strong> Requires a decision process for when a module qualifies for dynamic delivery.</p></li>
+<li><p><strong>Partial duplication:</strong> Opted-in modules still face the dual-build and dual-test cost, albeit only for a subset.</p></li>
 </ul>
 </section>
 </section>
@@ -1732,7 +827,7 @@ Deployed: score_serialization.so v2.1
 <td class="text-center"><p>–</p></td>
 <td class="text-center"><p>++</p></td>
 <td class="text-center"><p>++</p></td>
-<td class="text-center"><p>+</p></td>
+<td class="text-center"><p>+/-</p></td>
 </tr>
 <tr class="row-even"><td><p>OTA update size</p></td>
 <td class="text-center"><p>–</p></td>
@@ -1762,7 +857,7 @@ Deployed: score_serialization.so v2.1
 <td class="text-center"><p>++</p></td>
 <td class="text-center"><p>+</p></td>
 <td class="text-center"><p>–</p></td>
-<td class="text-center"><p>+</p></td>
+<td class="text-center"><p>+/-</p></td>
 </tr>
 <tr class="row-odd"><td><p>Downstream flexibility</p></td>
 <td class="text-center"><p>-</p></td>
@@ -1770,7 +865,13 @@ Deployed: score_serialization.so v2.1
 <td class="text-center"><p>++</p></td>
 <td class="text-center"><p>+</p></td>
 </tr>
-<tr class="row-even"><td><p>Maintenance effort</p></td>
+<tr class="row-even"><td><p>Integrator usability</p></td>
+<td class="text-center"><p>+</p></td>
+<td class="text-center"><p>+</p></td>
+<td class="text-center"><p>++</p></td>
+<td class="text-center"><p>+</p></td>
+</tr>
+<tr class="row-odd"><td><p>Maintenance effort</p></td>
 <td class="text-center"><p>++</p></td>
 <td class="text-center"><p>+</p></td>
 <td class="text-center"><p>–</p></td>
@@ -1779,199 +880,21 @@ Deployed: score_serialization.so v2.1
 </tbody>
 </table>
 </div>
-<section id="update-granularity-detailed-assessment">
-<h3>Update Granularity — Detailed Assessment<a class="headerlink" href="#update-granularity-detailed-assessment" title="Link to this heading">#</a></h3>
-<p>Given S-CORE’s role as middleware shared by multiple applications, update granularity is a decisive evaluation criterion:</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Scenario</p></th>
-<th class="head text-center"><p>Static Only</p></th>
-<th class="head text-center"><p>Dynamic Only</p></th>
-<th class="head text-center"><p>Opt-In per Module</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Security patch in comm module</p></td>
-<td class="text-center"><p>Rebuild + redeploy all apps</p></td>
-<td class="text-center"><p>Replace one <code class="docutils literal notranslate"><span class="pre">.so</span></code></p></td>
-<td class="text-center"><p>Replace one <code class="docutils literal notranslate"><span class="pre">.so</span></code> (if opted in)</p></td>
-</tr>
-<tr class="row-odd"><td><p>Bug fix in logging module</p></td>
-<td class="text-center"><p>Rebuild + redeploy all apps</p></td>
-<td class="text-center"><p>Replace one <code class="docutils literal notranslate"><span class="pre">.so</span></code></p></td>
-<td class="text-center"><p>Static rebuild (if not opted in)</p></td>
-</tr>
-<tr class="row-even"><td><p>New middleware release</p></td>
-<td class="text-center"><p>Rebuild + redeploy all apps</p></td>
-<td class="text-center"><p>Replace middleware <code class="docutils literal notranslate"><span class="pre">.so</span></code> set</p></td>
-<td class="text-center"><p>Replace opted-in <code class="docutils literal notranslate"><span class="pre">.so</span></code>s + rebuild static consumers</p></td>
-</tr>
-<tr class="row-odd"><td><p>Application-only update</p></td>
-<td class="text-center"><p>Rebuild app binary</p></td>
-<td class="text-center"><p>Replace app binary only</p></td>
-<td class="text-center"><p>Replace app binary only</p></td>
-</tr>
-<tr class="row-even"><td><p>Rollback middleware change</p></td>
-<td class="text-center"><p>Rollback all app binaries</p></td>
-<td class="text-center"><p>Rollback middleware <code class="docutils literal notranslate"><span class="pre">.so</span></code>s</p></td>
-<td class="text-center"><p>Partial rollback possible</p></td>
-</tr>
-<tr class="row-odd"><td><p>Typical OTA size (middleware patch)</p></td>
-<td class="text-center"><p>~All app binaries (tens of MB)</p></td>
-<td class="text-center"><p>~Changed <code class="docutils literal notranslate"><span class="pre">.so</span></code> only (KB–MB)</p></td>
-<td class="text-center"><p>~Changed opted-in <code class="docutils literal notranslate"><span class="pre">.so</span></code> (KB–MB)</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>For deployments where S-CORE serves as the shared foundation for many applications, the <strong>inability to update the middleware independently</strong> (static-only model) represents a significant operational constraint that increases OTA costs, extends security patch timelines, and complicates release coordination between middleware provider and application teams.</p>
-</section>
-<section id="performance-differences-indicative-values-and-hardware-dependencies">
-<h3>Performance Differences — Indicative Values and Hardware Dependencies<a class="headerlink" href="#performance-differences-indicative-values-and-hardware-dependencies" title="Link to this heading">#</a></h3>
-<p>Precise performance numbers cannot be stated universally because they depend heavily on target hardware characteristics (CPU microarchitecture, cache hierarchy, flash/storage type, MMU capabilities). However, published research and industry experience provide <strong>order-of-magnitude orientation:</strong></p>
-<section id="per-call-overhead-plt-got-indirection">
-<h4>Per-Call Overhead (PLT/GOT Indirection)<a class="headerlink" href="#per-call-overhead-plt-got-indirection" title="Link to this heading">#</a></h4>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Hardware class</p></th>
-<th class="head text-center"><p>Overhead per cross-library call</p></th>
-<th class="head"><p>Notes</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>ARM Cortex-A (with branch predictor)</p></td>
-<td class="text-center"><p>~1–5 ns</p></td>
-<td><p>Branch prediction mitigates most of the indirect jump cost. GOT entry is typically in L1 cache for hot paths.</p></td>
-</tr>
-<tr class="row-odd"><td><p>ARM Cortex-R (no/simple branch predictor)</p></td>
-<td class="text-center"><p>~5–20 ns</p></td>
-<td><p>Indirect jumps are more expensive without speculative execution. Relevant for safety-critical real-time controllers.</p></td>
-</tr>
-<tr class="row-even"><td><p>x86-64 (modern)</p></td>
-<td class="text-center"><p>~1–3 ns</p></td>
-<td><p>Highly optimized branch prediction. Negligible for most workloads.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>Context:</strong> For a middleware API that is called at kHz rates (e.g., logging, diagnostics polling), this overhead is immeasurable. For APIs called at MHz rates in tight loops (e.g., serialization of high-frequency sensor data), the cumulative cost can reach low single-digit percent — typically dominated by the inability to inline across the library boundary rather than the PLT jump itself.</p>
-</section>
-<section id="link-time-optimization-lto-benefit-lost">
-<h4>Link-Time Optimization (LTO) Benefit Lost<a class="headerlink" href="#link-time-optimization-lto-benefit-lost" title="Link to this heading">#</a></h4>
-<p>LTO across the entire binary (static case) vs. LTO only within each <code class="docutils literal notranslate"><span class="pre">.so</span></code> (dynamic case) can yield:</p>
-<ul class="simple">
-<li><p><strong>Typical improvement from full-binary LTO:</strong> 5–20% for compute-bound code (published GCC/LLVM benchmarks).</p></li>
-<li><p><strong>For I/O-bound or event-driven middleware code:</strong> Often &lt;5%, as performance is dominated by system calls, IPC, and data copying rather than instruction efficiency.</p></li>
-<li><p><strong>S-CORE relevance:</strong> Most middleware APIs are I/O-bound or event-driven (communication, diagnostics, logging). The LTO benefit of static linking is likely in the <strong>low single-digit percent range</strong> for typical middleware call patterns. Compute-intensive modules (e.g., cryptographic operations, data serialization) may see larger benefits.</p></li>
-</ul>
-</section>
-<section id="startup-time-symbol-resolution">
-<h4>Startup Time (Symbol Resolution)<a class="headerlink" href="#startup-time-symbol-resolution" title="Link to this heading">#</a></h4>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Factor</p></th>
-<th class="head text-center"><p>Typical impact</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Per-symbol resolution (ELF hash lookup)</p></td>
-<td class="text-center"><p>~0.5–2 µs per symbol (ARM Cortex-A)</p></td>
-</tr>
-<tr class="row-odd"><td><p>Library with ~500 exported symbols</p></td>
-<td class="text-center"><p>~0.5–1 ms relocation time</p></td>
-</tr>
-<tr class="row-even"><td><p>Library with ~5000 exported symbols</p></td>
-<td class="text-center"><p>~5–10 ms relocation time</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">LD_BIND_NOW</span></code> (full eager binding)</p></td>
-<td class="text-center"><p>Paid once at startup, zero cost afterwards</p></td>
-</tr>
-<tr class="row-even"><td><p>Lazy binding (default)</p></td>
-<td class="text-center"><p>Startup faster, first call to each symbol slower</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>Context:</strong> For a middleware with a well-designed API surface (hundreds, not thousands of exported symbols per <code class="docutils literal notranslate"><span class="pre">.so</span></code>), the startup overhead of dynamic linking is typically in the <strong>low millisecond range per library</strong> — negligible for most automotive boot sequences.</p>
-</section>
-<section id="system-wide-startup-multi-app-flash-i-o">
-<h4>System-Wide Startup (Multi-App, Flash I/O)<a class="headerlink" href="#system-wide-startup-multi-app-flash-i-o" title="Link to this heading">#</a></h4>
-<p>This is the most hardware-dependent factor:</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Storage type</p></th>
-<th class="head text-center"><p>Sequential read speed</p></th>
-<th class="head text-center"><p>Impact of N×static vs. 1×shared</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>eMMC (typical automotive)</p></td>
-<td class="text-center"><p>100–300 MB/s</p></td>
-<td class="text-center"><p>Significant: 10 apps × 5 MB middleware = 50 MB vs. 5 MB</p></td>
-</tr>
-<tr class="row-odd"><td><p>NOR flash (direct-execute)</p></td>
-<td class="text-center"><p>50–100 MB/s</p></td>
-<td class="text-center"><p>Most significant: I/O is the bottleneck</p></td>
-</tr>
-<tr class="row-even"><td><p>NVMe / UFS 3.x</p></td>
-<td class="text-center"><p>1–3 GB/s</p></td>
-<td class="text-center"><p>Less significant: I/O cost is amortized by high bandwidth</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="summary">
-<h4>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h4>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Performance aspect</p></th>
-<th class="head text-center"><p>Magnitude of impact</p></th>
-<th class="head text-center"><p>Hardware-dependent?</p></th>
-<th class="head text-center"><p>Measurable in S-CORE context?</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>PLT/GOT per-call overhead</p></td>
-<td class="text-center"><p>Low (ns)</p></td>
-<td class="text-center"><p>Moderate</p></td>
-<td class="text-center"><p>Yes, via micro-benchmarks</p></td>
-</tr>
-<tr class="row-odd"><td><p>LTO benefit lost</p></td>
-<td class="text-center"><p>Low–moderate (%)</p></td>
-<td class="text-center"><p>Low</p></td>
-<td class="text-center"><p>Yes, via A/B benchmarks</p></td>
-</tr>
-<tr class="row-even"><td><p>Startup symbol resolution</p></td>
-<td class="text-center"><p>Low (ms)</p></td>
-<td class="text-center"><p>Moderate</p></td>
-<td class="text-center"><p>Yes, via profiling</p></td>
-</tr>
-<tr class="row-odd"><td><p>Multi-app flash I/O savings</p></td>
-<td class="text-center"><p>Moderate–high (ms–s)</p></td>
-<td class="text-center"><p><strong>High</strong></p></td>
-<td class="text-center"><p>Requires target hardware</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>Recommendation:</strong> The performance difference between static and dynamic linking is <strong>not the dominant decision criterion</strong> for a middleware platform. In most deployment scenarios, the per-call overhead is negligible for middleware APIs, and the startup difference depends on hardware that varies across targets. Code size, RAM sharing, update granularity, safety, and security should weigh more heavily in this decision. Projects with hard real-time requirements on specific hot paths can address those through targeted design (e.g., header-only interfaces, inlined critical paths) regardless of the general linking strategy.</p>
-</section>
-</section>
+<p>For detailed update granularity and performance assessments, see <a class="reference internal" href="DR-002-arch/detailed_assessments.html"><span class="std std-doc">Detailed Assessments</span></a>.</p>
 </section>
 <section id="decision-proposal">
 <h2>Decision Proposal<a class="headerlink" href="#decision-proposal" title="Link to this heading">#</a></h2>
 <p><strong>Option 4: Opt-In Per Module</strong> — Static libraries as the default delivery model, with individual modules opting in to additionally provide shared library variants where justified.</p>
 <section id="rationale">
 <h3>Rationale<a class="headerlink" href="#rationale" title="Link to this heading">#</a></h3>
-<p>The analysis of all relevant criteria — performance, code size, RAM consumption, update granularity, safety, security, licensing, debugging, cross-language interoperability, OS support, multi-repository integration, ABI management, and build system complexity — consistently points to Option 4 as the best balance for S-CORE’s middleware role:</p>
+<p>The analysis of all relevant criteria consistently points to Option 4 as the best balance for S-CORE’s middleware role:</p>
 <ol class="arabic simple">
 <li><p><strong>Static by default</strong> provides the strongest guarantees for safety (tested binary = deployed binary), security (no dynamic attack surface), and build simplicity (Bazel’s natural model). For modules that are stable, rarely patched, and used by few consumers, static linking is optimal.</p></li>
 <li><p><strong>Dynamic opt-in</strong> addresses the real-world needs of a middleware platform serving multiple applications on the same hardware:</p>
 <ul class="simple">
-<li><p><strong>Update granularity:</strong> Security patches and bug fixes in frequently-updated modules can be deployed without rebuilding all consumer applications.</p></li>
-<li><p><strong>Memory efficiency:</strong> Large modules shared by many applications benefit from kernel-level page sharing (RAM) and single-copy storage (flash).</p></li>
-<li><p><strong>Cross-language delivery:</strong> Modules consumed across language boundaries (C++ ↔ Rust) benefit from the clean encapsulation of a shared library.</p></li>
+<li><p><strong>Update granularity:</strong> Security patches and bug fixes can be deployed without rebuilding all consumer applications.</p></li>
+<li><p><strong>Memory efficiency:</strong> Large modules shared by many applications benefit from kernel-level page sharing.</p></li>
+<li><p><strong>Cross-language delivery:</strong> Modules consumed across language boundaries benefit from shared library encapsulation.</p></li>
 <li><p><strong>License compliance:</strong> Modules with LGPL transitive dependencies can satisfy license requirements through shared library delivery.</p></li>
 </ul>
 </li>
@@ -1983,10 +906,9 @@ Deployed: score_serialization.so v2.1
 <p>The opt-in decision involves two distinct perspectives:</p>
 <section id="platform-perspective-s-core-decides">
 <h4>Platform Perspective (S-CORE decides)<a class="headerlink" href="#platform-perspective-s-core-decides" title="Link to this heading">#</a></h4>
-<p>As a platform provider, S-CORE does <strong>not</strong> know how many applications will consume a given module in any specific downstream deployment. The number of consumers (5, 10, 20+) is a deployment decision made by the OEM/integrator. Therefore, S-CORE’s opt-in criteria must be based on properties <strong>intrinsic to the module</strong>, not on assumed deployment topology:</p>
 <p>A module should opt in to <strong>additionally provide</strong> a shared library variant if <strong>at least one</strong> of the following applies:</p>
 <ul class="simple">
-<li><p>The module is <strong>large in code size</strong> (e.g., communication stacks, serialization frameworks, crypto libraries) and is architecturally expected to be shared across applications — making RAM/flash duplication costly in typical middleware deployments.</p></li>
+<li><p>The module is <strong>large in code size</strong> (e.g., communication stacks, serialization frameworks, crypto libraries) and is architecturally expected to be shared across applications.</p></li>
 <li><p>The module requires <strong>independent updateability</strong> (e.g., frequent security patches, regulatory-driven updates, rapid CVE response).</p></li>
 <li><p>The module is consumed <strong>cross-language</strong> (Rust ↔ C++) and benefits from runtime encapsulation of its language runtime.</p></li>
 <li><p>The module has <strong>LGPL-licensed transitive dependencies</strong>.</p></li>
@@ -1996,7 +918,7 @@ Deployed: score_serialization.so v2.1
 </section>
 <section id="integrator-perspective-oem-customer-decides">
 <h4>Integrator Perspective (OEM/customer decides)<a class="headerlink" href="#integrator-perspective-oem-customer-decides" title="Link to this heading">#</a></h4>
-<p>The downstream integrator knows their actual deployment topology — how many applications run on the target, which modules they consume, and what their update and certification strategy is. For opted-in modules that provide both variants, the <strong>integrator decides which variant to use</strong> based on their specific deployment:</p>
+<p>For opted-in modules that provide both variants, the <strong>integrator decides which variant to use</strong> based on their specific deployment:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Integrator scenario</p></th>
@@ -2022,39 +944,11 @@ Deployed: score_serialization.so v2.1
 </tbody>
 </table>
 </div>
-<p>S-CORE provides both variants for opted-in modules. The integrator’s deployment configuration (which variant to link) is outside S-CORE’s scope but should be documented in S-CORE’s integration guide with guidance for typical scenarios.</p>
 </section>
 </section>
 <section id="special-case-infrastructure-libraries-baselibs">
 <h3>Special Case: Infrastructure Libraries (baselibs)<a class="headerlink" href="#special-case-infrastructure-libraries-baselibs" title="Link to this heading">#</a></h3>
-<p>The S-CORE <a class="reference external" href="https://github.com/eclipse-score/baselibs">baselibs</a> module deserves special consideration. It provides foundational utilities (concurrency, containers, filesystem, serialization, OS abstraction, memory handling, error handling, etc.) that are consumed by <strong>virtually every other S-CORE module</strong> as well as by downstream applications. This creates a unique situation:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Application A ─┬─→ score_comm ──────→ baselibs (containers, serialization, os)
-               ├─→ score_logging ───→ baselibs (json, filesystem)
-               └─→ score_diag ─────→ baselibs (result, utils)
-
-Application B ─┬─→ score_comm ──────→ baselibs (containers, serialization, os)
-               └─→ score_lifecycle ─→ baselibs (json)
-</pre></div>
-</div>
-<section id="the-decision-should-baselibs-be-delivered-as-a-shared-library">
-<h4>The Decision: Should baselibs Be Delivered as a Shared Library?<a class="headerlink" href="#the-decision-should-baselibs-be-delivered-as-a-shared-library" title="Link to this heading">#</a></h4>
-<p>This is <strong>not</strong> a straightforward opt-in case. The arguments differ from typical application-facing modules:</p>
-<p><strong>Arguments for delivering baselibs as shared library:</strong></p>
-<ul class="simple">
-<li><p><strong>Maximum deduplication:</strong> baselibs code appears in every module and every application. If all modules are static, baselibs code is duplicated N×M times (N applications × M modules). As a single <code class="docutils literal notranslate"><span class="pre">.so</span></code>, it exists once in RAM and flash.</p></li>
-<li><p><strong>Single point of update:</strong> A bug fix in <code class="docutils literal notranslate"><span class="pre">baselibs::containers</span></code> or a security patch in <code class="docutils literal notranslate"><span class="pre">baselibs::os</span></code> would be deployed once, effective for all modules and applications immediately.</p></li>
-</ul>
-<p><strong>Arguments against delivering baselibs as a shared library:</strong></p>
-<ul class="simple">
-<li><p><strong>Massive ABI surface:</strong> baselibs exposes many fine-grained utilities (containers, result types, language extensions). Stabilizing the ABI across all of these is extremely difficult — much harder than for a focused API like a communication stack.</p></li>
-<li><p><strong>Template-heavy / header-only code:</strong> Many baselibs components (containers, result types, <code class="docutils literal notranslate"><span class="pre">safecpp</span></code> language extensions) are likely template-heavy or header-only. These are compiled <strong>into the consumer</strong> at build time and cannot be shared via <code class="docutils literal notranslate"><span class="pre">.so</span></code> — they will be duplicated regardless of the linking model.</p></li>
-<li><p><strong>Tight coupling:</strong> Modules use baselibs types in their own APIs (e.g., returning <code class="docutils literal notranslate"><span class="pre">score::Result&lt;T&gt;</span></code>, accepting <code class="docutils literal notranslate"><span class="pre">score::DynamicArray&lt;T&gt;</span></code>). If baselibs were a separate <code class="docutils literal notranslate"><span class="pre">.so</span></code>, its types would cross library boundaries — requiring ABI stability for every type, not just for function signatures.</p></li>
-<li><p><strong>Fragile base class / type problem:</strong> A layout change in <code class="docutils literal notranslate"><span class="pre">score::DynamicArray</span></code> would break the ABI of <strong>every module</strong> that uses it in its interface. This makes the ABI contract transitively fragile.</p></li>
-</ul>
-</section>
-<section id="recommended-approach-for-baselibs">
-<h4>Recommended Approach for baselibs<a class="headerlink" href="#recommended-approach-for-baselibs" title="Link to this heading">#</a></h4>
-<p>Given the above analysis, baselibs should follow a <strong>differentiated strategy:</strong></p>
+<p>The S-CORE <a class="reference external" href="https://github.com/eclipse-score/baselibs">baselibs</a> module provides foundational utilities consumed by <strong>virtually every other S-CORE module</strong>. Given its nature, baselibs should follow a <strong>differentiated strategy:</strong></p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>baselibs component type</p></th>
@@ -2065,22 +959,20 @@ Application B ─┬─→ score_comm ──────→ baselibs (containers
 <tbody>
 <tr class="row-even"><td><p><strong>Template / header-only</strong> (containers, result, language extensions, safecpp)</p></td>
 <td class="text-center"><p><strong>Static only</strong></p></td>
-<td><p>Cannot be shared via <code class="docutils literal notranslate"><span class="pre">.so</span></code> — templates are instantiated in the consumer. No benefit from dynamic linking.</p></td>
+<td><p>Cannot be shared via <code class="docutils literal notranslate"><span class="pre">.so</span></code> — templates are instantiated in the consumer.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Compiled utilities with stable C ABI</strong> (OS abstraction, filesystem, shared memory)</p></td>
 <td class="text-center"><p><strong>Opt-in for <code class="docutils literal notranslate"><span class="pre">.so</span></code></strong></p></td>
-<td><p>These have well-defined function-call APIs that can be stabilized. OS-level abstractions are natural candidates for shared delivery.</p></td>
+<td><p>Well-defined function-call APIs that can be stabilized.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Serialization (flatbuffers, JSON)</strong></p></td>
 <td class="text-center"><p><strong>Case-by-case</strong></p></td>
-<td><p>If the API is C-ABI-friendly (opaque handles, C function calls), it can be shared. If the API exposes C++ templates or types, it must remain static.</p></td>
+<td><p>If the API is C-ABI-friendly, it can be shared. If it exposes C++ templates, it must remain static.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p><strong>Key insight:</strong> For a utility library like baselibs, the decision is not “the whole module is static or dynamic” but rather <strong>which sub-components can technically and practically be delivered as shared libraries.</strong> The architectural note on internal composition (see above) applies here: even if some baselibs components are delivered as <code class="docutils literal notranslate"><span class="pre">.so</span></code>, others will necessarily remain header-only/static and be compiled into each consumer.</p>
-<p><strong>Implication for other modules:</strong> When a module like <code class="docutils literal notranslate"><span class="pre">score_comm</span></code> is delivered as a <code class="docutils literal notranslate"><span class="pre">.so</span></code>, it <strong>statically links</strong> the baselibs components it uses internally. The baselibs types that appear in <code class="docutils literal notranslate"><span class="pre">score_comm</span></code>’s <strong>public API</strong> must be part of the ABI contract. This is another reason to minimize the use of complex baselibs types (templates, containers) in public module APIs and prefer simple C-ABI-compatible types at the shared library boundary.</p>
-</section>
+<p><strong>Key insight:</strong> For a utility library like baselibs, the decision is not “the whole module is static or dynamic” but rather <strong>which sub-components can technically and practically be delivered as shared libraries.</strong></p>
 </section>
 <section id="mandatory-requirements-for-opted-in-modules">
 <h3>Mandatory Requirements for Opted-In Modules<a class="headerlink" href="#mandatory-requirements-for-opted-in-modules" title="Link to this heading">#</a></h3>
@@ -2090,13 +982,13 @@ Application B ─┬─→ score_comm ──────→ baselibs (containers
 <li><p>Use <strong><code class="docutils literal notranslate"><span class="pre">-Wl,-z,now</span></code> (eager binding)</strong> as mandatory linker flag.</p></li>
 <li><p>Provide <strong>explicit initialization functions</strong> (<code class="docutils literal notranslate"><span class="pre">score_&lt;module&gt;_init()</span></code>) rather than relying on <code class="docutils literal notranslate"><span class="pre">__attribute__((constructor))</span></code>.</p></li>
 <li><p>Include <strong>ABI compliance checks</strong> (<code class="docutils literal notranslate"><span class="pre">abidiff</span></code> or equivalent) in the module’s CI pipeline.</p></li>
-<li><p>Enforce a <strong>toolchain identity CI gate</strong>: verify that all shared libraries and their consumers are built with the same compiler and compiler version. For C++ types crossing the <code class="docutils literal notranslate"><span class="pre">.so</span></code> boundary, ABI compatibility is only guaranteed within the same toolchain (GCC/Clang version, libstdc++/libc++ version). The CI gate must reject combinations built with mismatched toolchains.</p></li>
-<li><p>Use <strong><code class="docutils literal notranslate"><span class="pre">RPATH</span></code></strong> (not <code class="docutils literal notranslate"><span class="pre">RUNPATH</span></code>) for library search paths. <code class="docutils literal notranslate"><span class="pre">RUNPATH</span></code> can be overridden by <code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH</span></code>, which allows an attacker or misconfiguration to substitute libraries at runtime. <code class="docutils literal notranslate"><span class="pre">RPATH</span></code> takes precedence over <code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH</span></code> and provides a hardened, deterministic library resolution order. Set via <code class="docutils literal notranslate"><span class="pre">-Wl,--disable-new-dtags</span></code> to ensure the linker emits <code class="docutils literal notranslate"><span class="pre">DT_RPATH</span></code> rather than <code class="docutils literal notranslate"><span class="pre">DT_RUNPATH</span></code>.</p></li>
+<li><p>Enforce a <strong>toolchain identity CI gate</strong>: verify that all shared libraries and their consumers are built with the same compiler and compiler version.</p></li>
+<li><p>Use <strong><code class="docutils literal notranslate"><span class="pre">RPATH</span></code></strong> (not <code class="docutils literal notranslate"><span class="pre">RUNPATH</span></code>) for library search paths. Set via <code class="docutils literal notranslate"><span class="pre">-Wl,--disable-new-dtags</span></code>.</p></li>
 <li><p>Apply <strong>security hardening flags</strong> for all shared library builds:</p>
 <ul>
-<li><p>Full RELRO: <code class="docutils literal notranslate"><span class="pre">-Wl,-z,relro,-z,now</span></code> (makes GOT read-only after relocation)</p></li>
+<li><p>Full RELRO: <code class="docutils literal notranslate"><span class="pre">-Wl,-z,relro,-z,now</span></code></p></li>
 <li><p>Stack protection: <code class="docutils literal notranslate"><span class="pre">-fstack-protector-strong</span></code></p></li>
-<li><p>Position-Independent Code: <code class="docutils literal notranslate"><span class="pre">-fPIC</span></code> (mandatory for <code class="docutils literal notranslate"><span class="pre">.so</span></code>, also enables full ASLR)</p></li>
+<li><p>Position-Independent Code: <code class="docutils literal notranslate"><span class="pre">-fPIC</span></code></p></li>
 <li><p>Fortify source: <code class="docutils literal notranslate"><span class="pre">-D_FORTIFY_SOURCE=2</span></code></p></li>
 <li><p>No executable stack: <code class="docutils literal notranslate"><span class="pre">-Wl,-z,noexecstack</span></code></p></li>
 <li><p>Restrict library search paths to platform-controlled directories only</p></li>
@@ -2161,11 +1053,11 @@ Application B ─┬─→ score_comm ──────→ baselibs (containers
       </div>
     </a>
     <a class="right-next"
-       href="DR-001-infra.html"
+       href="DR-002-arch/considerations.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">DR-001-Infra: Integration Strategy for External Development Tools</p>
+        <p class="prev-next-title">DR-002-Arch: Considerations</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2192,48 +1084,7 @@ Application B ─┬─→ score_comm ──────→ baselibs (containers
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#middleware-deployment-context">Middleware Deployment Context</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#considerations">Considerations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#architectural-note-internal-composition-of-shared-libraries">Architectural Note: Internal Composition of Shared Libraries</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#api-encapsulation-shared-library-vs-merged-static-library">API Encapsulation: Shared Library vs. Merged Static Library</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-language-interoperability-c-rust">Cross-Language Interoperability (C++ ↔ Rust)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-common-denominator-c-abi">The Common Denominator: C ABI</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#how-the-linking-model-affects-ffi-in-practice">How the Linking Model Affects FFI in Practice</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-approaches-for-s-core">Practical Approaches for S-CORE</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bazel-integration-for-cross-language-ffi">Bazel Integration for Cross-Language FFI</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#debugging-considerations">Debugging Considerations</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison">Comparison</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-impact-for-s-core">Practical Impact for S-CORE</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operating-system-support-linux-and-qnx">Operating System Support (Linux and QNX)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-comparison">Feature Comparison</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-specific-considerations">Linux-Specific Considerations</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qnx-specific-considerations">QNX-Specific Considerations</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-platform-implications-for-s-core">Cross-Platform Implications for S-CORE</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#license-and-foss-compliance">License and FOSS Compliance</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#abi-stability-and-versioning">ABI Stability and Versioning</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-strategy">Testing Strategy</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-reproducibility-and-deployment-hermeticity">Build Reproducibility and Deployment Hermeticity</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#library-initialization-order">Library Initialization Order</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thread-safety-and-lazy-binding">Thread Safety and Lazy Binding</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-repository-architecture">Multi-Repository Architecture</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-structure">Repository Structure</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#impact-on-static-linking">Impact on Static Linking</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-challenges-apply-to-both-models">Integration Challenges Apply to Both Models</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#impact-on-dynamic-linking">Impact on Dynamic Linking</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#diamond-dependency-problem-detailed-example">Diamond Dependency Problem — Detailed Example</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-repo-and-the-opt-in-model-option-4">Multi-Repo and the Opt-In Model (Option 4)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bazel-integration-for-multi-repo">Bazel Integration for Multi-Repo</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#considerations">Considerations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#options-considered">Options Considered</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-1-static-libraries-only">Option 1: Static Libraries Only</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages">Advantages</a></li>
@@ -2242,7 +1093,6 @@ Application B ─┬─→ score_comm ──────→ baselibs (containers
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-2-dynamic-shared-libraries-only">Option 2: Dynamic/Shared Libraries Only</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Advantages</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-first-load-vs-subsequent-use">Performance: First Load vs. Subsequent Use</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Disadvantages</a></li>
 </ul>
 </li>
@@ -2258,18 +1108,7 @@ Application B ─┬─→ score_comm ──────→ baselibs (containers
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-criteria">Evaluation Criteria</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update-granularity-detailed-assessment">Update Granularity — Detailed Assessment</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-differences-indicative-values-and-hardware-dependencies">Performance Differences — Indicative Values and Hardware Dependencies</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#per-call-overhead-plt-got-indirection">Per-Call Overhead (PLT/GOT Indirection)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#link-time-optimization-lto-benefit-lost">Link-Time Optimization (LTO) Benefit Lost</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#startup-time-symbol-resolution">Startup Time (Symbol Resolution)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#system-wide-startup-multi-app-flash-i-o">System-Wide Startup (Multi-App, Flash I/O)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-criteria">Evaluation Criteria</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-proposal">Decision Proposal</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale">Rationale</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#criteria-for-opting-in-to-dynamic-delivery">Criteria for Opting In to Dynamic Delivery</a><ul class="nav section-nav flex-column">
@@ -2277,11 +1116,7 @@ Application B ─┬─→ score_comm ──────→ baselibs (containers
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integrator-perspective-oem-customer-decides">Integrator Perspective (OEM/customer decides)</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#special-case-infrastructure-libraries-baselibs">Special Case: Infrastructure Libraries (baselibs)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-decision-should-baselibs-be-delivered-as-a-shared-library">The Decision: Should baselibs Be Delivered as a Shared Library?</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-approach-for-baselibs">Recommended Approach for baselibs</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#special-case-infrastructure-libraries-baselibs">Special Case: Infrastructure Libraries (baselibs)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mandatory-requirements-for-opted-in-modules">Mandatory Requirements for Opted-In Modules</a></li>
 </ul>
 </li>
