@@ -1,6 +1,6 @@
 ..
    # *******************************************************************************
-   # Copyright (c) 2025 Contributors to the Eclipse Foundation
+   # Copyright (c) 2026 Contributors to the Eclipse Foundation
    #
    # See the NOTICE file(s) distributed with this work for additional
    # information regarding copyright ownership.
@@ -186,7 +186,7 @@ The system follows a three-layer architecture specialized for in-vehicle environ
 - **Agent Layer:** NodeAgent handles execution on each node
 - **Runtime Layer:** Container engine performs actual container operations
 
-.. image:: _assets/VSO_architecture.png
+.. image:: _assets/VSO_architecture.svg
    :alt: Vehicle Service Orchestrator Architecture
 
 Core Components
