@@ -1030,7 +1030,7 @@ window.runMermaid = runMermaid;</script>
 <ul class="simple">
 <li><p><strong>Date:</strong> 2026-05-28</p></li>
 </ul>
-<div class="need_container docutils container" id="SNCB-4e64cad6">
+<div class="need_container docutils container" id="SNCB-33453753">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_dec_rec table" id="dec_rec__infra__docs_src_dir">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1204,6 +1204,20 @@ but Bazel sandboxing makes this fail.
 The <code class="docutils literal notranslate"><span class="pre">score_sync_toml</span></code> extension’s write to the source directory is redirected via
 <code class="docutils literal notranslate"><span class="pre">--define=needscfg_outpath=&lt;workspace&gt;/docs/ubproject.toml</span></code>,
 which works without modifications to the extension itself.</p>
+<p>Because Sphinx sees the materialized tree rather than the original workspace files,
+warnings would normally cite <code class="docutils literal notranslate"><span class="pre">bazel-out/…</span></code> paths.
+In the PoC, this is addressed by a <code class="docutils literal notranslate"><span class="pre">_sourcemap.json</span></code> sidecar emitted by the <code class="docutils literal notranslate"><span class="pre">docs_src_dir</span></code>
+Bazel action alongside the declared directory.
+The sidecar maps each materialized path back to its original workspace-relative path.
+A <code class="docutils literal notranslate"><span class="pre">score_sourcemap</span></code> Sphinx extension reads the sidecar on <code class="docutils literal notranslate"><span class="pre">builder-inited</span></code>,
+then installs a <code class="docutils literal notranslate"><span class="pre">logging.Filter</span></code> on every Sphinx log handler that rewrites
+materialized paths in warning/error records before they are emitted.
+The filter runs after Sphinx’s own <code class="docutils literal notranslate"><span class="pre">WarningLogRecordTranslator</span></code>, which has already
+converted <code class="docutils literal notranslate"><span class="pre">(docname,</span> <span class="pre">lineno)</span></code> tuples to strings, so the rewrite is purely textual.
+The extension is a no-op when no sidecar is present
+(direct Sphinx invocations via <code class="docutils literal notranslate"><span class="pre">esbonio</span></code> or <code class="docutils literal notranslate"><span class="pre">.venv_docs</span></code> are unaffected).
+The sidecar travels with the materialized tree, so path rewriting works inside
+the Bazel sandbox (<code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">build</span></code>) as well as under <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">run</span></code> and <code class="docutils literal notranslate"><span class="pre">live_preview</span></code>.</p>
 <p>Effort 💛: Some implementation effort but prototype already works.</p>
 <p>Flexibility 💚: Generic solution for all build paths and future extensions.</p>
 <p>Speed 💛: Overall latency is comparable to the status quo for edit-preview cycles, but the initial cold start is a little slower due to the extra Bazel invocation.</p>
@@ -1262,6 +1276,15 @@ and aims to keep IDE tooling aligned by reading the same <code class="docutils l
 <li><p>Per-bundle <code class="docutils literal notranslate"><span class="pre">ubproject.toml</span></code> generation is workspace-only (<code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">run</span></code>),
 while sandboxed <code class="docutils literal notranslate"><span class="pre">bazel</span> <span class="pre">build</span></code> skips those workspace writes by design.</p></li>
 <li><p>Nested mounts are not supported.</p></li>
+<li><p>Sphinx warnings and errors point to the <code class="docutils literal notranslate"><span class="pre">bazel-bin</span></code> copy of each file,
+not to the original source.
+<code class="docutils literal notranslate"><span class="pre">sphinx-mounts</span></code> registers the absolute path of the materialised directory
+(resolved from Bazel runfiles) in <code class="docutils literal notranslate"><span class="pre">sphinx.project.Project._docname_to_path</span></code>,
+so that is what Sphinx embeds in its diagnostic output.
+The <code class="docutils literal notranslate"><span class="pre">src_root</span></code> mechanism only generates a <code class="docutils literal notranslate"><span class="pre">ubproject.toml</span></code> for IDE use;
+it does not change the path seen by Sphinx.
+This violates the hard requirement “errors and warnings point to the original
+source files if they are in the repo”.</p></li>
 </ul>
 <p>Effort 💛: Similar order of magnitude as Option B prototype work.</p>
 <p>Flexibility 😡: Fails strict cross-repository <code class="docutils literal notranslate"><span class="pre">:docs_combo</span></code> requirement in current form.
