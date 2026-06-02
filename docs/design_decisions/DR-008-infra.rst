@@ -19,7 +19,7 @@ DR-008-Infra: Generating documentation sources via Bazel
    :id: dec_rec__infra__docs_src_dir
    :status: accepted
    :context: Infrastructure
-   :decision: Option B because Option N loses wrt flexibility
+   :decision: Option B because Option N loses wrt Maintainability
 
 Context / Problem
 -----------------
@@ -81,14 +81,16 @@ Requirements (all options satisfy these)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - Allow to generate parts of the documentation via Bazel (including whole pages or directories).
+- Access file from anywhere in the workspace (e.g. cpp sources in ``src/``).
 - Live preview with fast edit-preview cycles.
 - Errors and warnings point to the original source files if they are in the repo.
 - Combo build can include full sources from multiple repositories.
+- Intentionally separate test execution from docs generation.
 
 Goals (optimize these with this decision)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- **Flexibility**: Minimise the effort for potential future extensions.
+- **Maintainability**: Minimise the effort for potential future extensions.
 - **Effort**: Minimise one-time implementation and ongoing maintenance cost.
 - **Speed**: Minimise the build time for documentation builds, especially for live preview.
 - **UX**: Minimize efforts necessary to documentation work.
@@ -105,6 +107,8 @@ Options Considered
 Option N: No change (status quo)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+TODO Option N is the problem, not a solution. Move it up.
+
 Keep the current architecture.
 The ``docs()`` macro in ``docs.bzl`` accepts a ``source_dir`` parameter and reads
 documentation sources directly from that directory on the workspace filesystem.
@@ -120,7 +124,7 @@ documentation sources directly from that directory on the workspace filesystem.
 
 Effort 💚: No implementation work required.
 
-Flexibility 😡: More workarounds instead of generic solution.
+Maintainability 😡: More workarounds instead of generic solution.
 
 Speed 💚: Fast but only covers source updates (not test result updates, for example).
 
@@ -190,7 +194,7 @@ the Bazel sandbox (``bazel build``) as well as under ``bazel run`` and ``live_pr
 
 Effort 💛: Some implementation effort but prototype already works.
 
-Flexibility 💚: Generic solution for all build paths and future extensions.
+Maintainability 💚: Generic solution for all build paths and future extensions.
 
 Speed 💛: Overall latency is comparable to the status quo for edit-preview cycles, but the initial cold start is a little slower due to the extra Bazel invocation.
 
@@ -211,6 +215,8 @@ auto-refresh in the browser though.
 Option D: Dual-path — keep ``:live_preview``, add ``:docs_src_dir``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+TODO remove this option
+
 Keep the existing ``bazel run :live_preview`` target unchanged (sphinx-autobuild watching ``docs/`` on the workspace filesystem).
 In parallel, introduce a separate hermetic ``bazel build :docs_src_dir`` target
 that materialises a composed source directory inside the Bazel sandbox before invoking Sphinx.
@@ -219,7 +225,7 @@ The obvious risk here is that the two paths do not produce the same output.
 
 Effort 😡: By definition requires nearly the effort for option N and B combined.
 
-Flexibility 😡: Still requires all the workarounds of option N.
+Maintainability 😡: Still requires all the workarounds of option N.
 
 Speed 💚: No slowdown.
 
@@ -278,13 +284,19 @@ Known constraints from the PoC:
 
 Effort 💛: Similar order of magnitude as Option B prototype work.
 
-Flexibility 😡: Fails strict cross-repository ``:docs_combo`` requirement in current form.
+Maintainability 😡: Fails strict cross-repository ``:docs_combo`` requirement in current form.
 Also, using this immature external dependency is risky.
 
 Speed 💛: Comparable iterative speed; initial setup and mount resolution add some overhead.
 
 UX 😡: Not acceptable while strict cross-repository composition behavior remains unclear/unmet.
 
+Option T: Two Paths
+^^^^^^^^^^^^^^^^^^^
+
+Mix of option B and M.
+
+TODO
 
 Evaluation
 ----------
@@ -295,12 +307,12 @@ In order of importance, most important first.
   :header: Goals, Option N, Option B, Option D, Option M
   :widths: 2, 1, 1, 1, 1
 
-  Flexibility, 😡, 💚, 😡, 😡
-  Effort,      💚, 💛, 😡, 💛
-  Speed,       💚, 💛, 💚, 💛
-  UX,          💚, 😡, 😡, 😡
+  Maintainability, 😡, 💚, 😡, 💚
+  Effort,          💚, 💛, 😡, 💛
+  Speed,           💚, 💛, 💚, 💛
+  UX,              💚, 😡, 😡, 😡
 
-**Decision: Option B** because Option N loses wrt flexibility. Option D has no advantage over B.
+**Decision: Option B** because Option N loses wrt Maintainability. Option D has no advantage over B.
 
 Appendix: any_folder experiment
 -------------------------------
