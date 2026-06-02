@@ -77,6 +77,22 @@ However, there is no need to provide that for generated or transformed files
 (as is common for Javascript or CSS assets in web development with
 `source maps <https://developer.mozilla.org/en-US/docs/Glossary/Source_map>`_).
 
+Status quo
+^^^^^^^^^^
+
+.. mermaid::
+
+   graph LR
+       docs@{ shape: docs, label: "docs/" }
+       docs --> :docs
+       docs --> :live_preview
+       :live_preview -- watch --> docs
+
+While ``sphinx-autobuild --pre-build`` is available to trigger some build steps before each rebuild,
+this does not work with Bazel:
+If you ``bazel run :live_preview`` and do a ``bazel build`` inside,
+that build will wait for the run to finish, thus deadlock.
+
 Requirements (all options satisfy these)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -104,36 +120,6 @@ Non-Goals
 Options Considered
 ------------------
 
-Option N: No change (status quo)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-TODO Option N is the problem, not a solution. Move it up.
-
-Keep the current architecture.
-The ``docs()`` macro in ``docs.bzl`` accepts a ``source_dir`` parameter and reads
-documentation sources directly from that directory on the workspace filesystem.
-
-.. mermaid::
-
-   graph LR
-       docs@{ shape: docs, label: "docs/" }
-       docs --> :docs
-       docs --> :live_preview
-       :live_preview -- watch --> docs
-
-
-Effort 💚: No implementation work required.
-
-Maintainability 😡: More workarounds instead of generic solution.
-
-Speed 💚: Fast but only covers source updates (not test result updates, for example).
-
-UX 💚: Status quo
-
-While ``sphinx-autobuild --pre-build`` is available to trigger some build steps before each rebuild,
-this does not work with Bazel:
-If you ``bazel run :live_preview`` and do a ``bazel build`` inside,
-that build will wait for the run to finish, thus deadlock.
 
 Option B: Introduce ``:docs_src_dir`` Bazel target
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -304,13 +290,13 @@ Evaluation
 In order of importance, most important first.
 
 .. csv-table::
-  :header: Goals, Option N, Option B, Option D, Option M
-  :widths: 2, 1, 1, 1, 1
+  :header: Goals, Option B, Option D, Option M
+  :widths: 2, 1, 1, 1
 
-  Maintainability, 😡, 💚, 😡, 💚
-  Effort,          💚, 💛, 😡, 💛
-  Speed,           💚, 💛, 💚, 💛
-  UX,              💚, 😡, 😡, 😡
+  Maintainability, 💚, 😡, 💚
+  Effort,          💛, 😡, 💛
+  Speed,           💛, 💚, 💛
+  UX,              😡, 😡, 😡
 
 **Decision: Option B** because Option N loses wrt Maintainability. Option D has no advantage over B.
 
