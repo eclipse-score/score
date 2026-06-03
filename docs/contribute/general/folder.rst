@@ -185,3 +185,75 @@ See also `module template repository <https://github.com/eclipse-score/module_te
        └── tests/                       -> Module-level tests (e.g., feature integration tests, system tests)
                                            [:need:`wp__verification_comp_int_test`]
                                            Feature Integration tests [:need:`wp__verification_feat_int_test`]
+
+.. note::
+
+    The feature-specific subfolder under ``docs/features/<feature_name>/`` is only necessary
+    if more than one feature is implemented in the module.
+
+Module Folder Structure (Single-Feature Variant)
+------------------------------------------------
+
+The following variant keeps the same structure but removes the additional
+feature-name nesting under ``docs/features/``. In this case, the ``features/``
+subfolder is optional and omitted.
+
+.. parsed-literal::
+
+    <module_name>/                       -> Folder containing all artifacts corresponding to one module.
+    │                                       As folder optional if the repository only contains a single module.
+    ├── docs/                            -> Documentation of the module
+    │   ├── architecture/                -> Feature architecture
+    │   │                                   [:need:`wp__feature_arch`], [:need:`wp__sw_arch_verification`]
+    │   ├── safety_analysis/             -> Safety analysis on feature level
+    │   │                                   [:need:`wp__feature_fmea`], [:need:`wp__feature_dfa`]
+    │   ├── safety_planning/             -> Feature specific safety workproducts planning
+    │   │                                   [:need:`wp__platform_safety_plan`]
+    │   ├── security_analysis/           -> Security analysis on feature level
+    │   │                                   [:need:`wp__feature_security_analysis`]
+    │   ├── security_planning/           -> Feature specific security workproducts planning
+    │   │                                   [:need:`wp__platform_security_plan`]
+    │   ├── manuals/                     -> Module manual, e.g. integration manual, assumptions of use,
+    │   │                                   safety manual [:need:`wp__requirements_comp_aou`],
+    │   │                                   [:need:`wp__requirements_feat_aou`],
+    │   │                                   [:need:`wp__module_safety_manual`],
+    │   │                                   security_manual [:need:`wp__module_security_manual`].
+    │   ├── release/                     -> Module release note [:need:`wp__module_sw_release_note`],
+    │   │                                   module release plan [:need:`wp__module_sw_release_plan`],
+    │   ├── safety_mgt/                  -> Module safety plan [:need:`wp__module_safety_plan`],
+    │   │                                   module safety package [:need:`wp__module_safety_package`],
+    │   │                                   formal documents reviews [:need:`wp__fdr_reports`],
+    │   │                                   safety analysis formal reviews [:need:`wp__fdr_reports`],
+    │   │                                   safety tailoring [:need:`wp__safety_tailoring`]
+    │   │                                   safety component classification [:need:`wp__sw_component_class`]
+    │   ├── security_mgt/                -> Module security plan [:need:`wp__module_security_plan`],
+    │   │                                   module security package [:need:`wp__module_security_package`],
+    │   │                                   formal documents reviews [:need:`wp__fdr_reports_security`],
+    │   │                                   module SW bill of material [:need:`wp__sw_module_sbom`]
+    │   └── verification_report/         -> Module verification report
+    │                                       module verifications [:need:`wp__verification_module_ver_report`],
+    └── score/                           -> Folder containing all artifacts corresponding to the components of the module.
+        ├── <component_name>/            -> Components of the module.
+        │   │                               Folder containing all artifacts corresponding to one component.
+        │   ├── docs/                    -> Documentation of the component
+        │   │   ├── architecture/        -> Component architecture (only if lower level components exist)
+        │   │   │                           [:need:`wp__component_arch`].
+        │   │   ├── detailed_design/     -> Detailed Design [:need:`wp__sw_implementation`] and
+        │   │   │                           Detail design + code inspection [:need:`wp__sw_implementation_inspection`],
+        │   │   ├── manuals/             -> User documentation of a single component
+        │   │   │                           (e.g., user manual of a library, optional)
+        │   │   ├── requirements/        -> Component requirements [:need:`wp__requirements_comp`],
+        │   │   │                           requirements inspection [:need:`wp__requirements_inspect`]
+        │   │   ├── safety_analysis/     -> Safety analysis on component level (only if component architecture exists)
+        │   │   │                           [:need:`wp__sw_component_fmea`], [:need:`wp__sw_component_dfa`]
+        │   │   └── security_analysis/   -> Security analysis on component level (only if component architecture exists)
+        │   └── src/                     -> Source files of the component consisting of
+        │       │                           Include and source Files [:need:`wp__sw_implementation`]
+        │       │                           Test doubles
+        │       │                           Unit tests [:need:`wp__verification_sw_unit_test`]
+        │       ├── <lower_level_comp>/  -> lower level component following <component_name> folder structure
+        │       └── tests/               -> Component-level tests (e.g., unit tests)
+        │                                   [:need:`wp__verification_sw_unit_test`]
+        └── tests/                       -> Module-level tests (e.g., feature integration tests, system tests)
+                                            [:need:`wp__verification_comp_int_test`]
+                                            Feature Integration tests [:need:`wp__verification_feat_int_test`]
