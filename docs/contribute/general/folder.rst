@@ -179,11 +179,10 @@ See also `module template repository <https://github.com/eclipse-score/module_te
        │   |   │                           Include and source Files [:need:`wp__sw_implementation`]
        │   |   │                           Unit tests [:need:`wp__verification_sw_unit_test`]
        │   |   └── <lower_level_comp>/  -> lower level component following <component_name> folder structure
-       │   └── tests/                   -> Component-level tests (e.g., unit tests)
-       │                                   [:need:`wp__verification_sw_unit_test`]
+       │   └── tests/                   -> Component-level tests (e.g., integration tests)
+       │                                   [:need:`wp__verification_comp_int_test`]
        └── tests/                       -> Module-level tests (e.g., feature integration tests, system tests)
-                                           [:need:`wp__verification_comp_int_test`]
-                                           Feature Integration tests [:need:`wp__verification_feat_int_test`]
+                                           [:need:`wp__verification_feat_int_test`]
 
 .. note::
 
@@ -250,9 +249,8 @@ For identification of the single feature, the repository name or module name sho
         │   ├── src/                     -> Source files of the component consisting of
         │   |   │                           Include and source Files [:need:`wp__sw_implementation`]
         │   |   │                           Unit tests [:need:`wp__verification_sw_unit_test`]
-        │   |   └─ <lower_level_comp>/  -> lower level component following <component_name> folder structure
-        │   └── tests/                   -> Component-level tests (e.g., unit tests)
+        │   |   └── <lower_level_comp>/  -> lower level component following <component_name> folder structure
+        │   └── tests/                   -> Component-level tests (e.g., integration tests)
         │                                   [:need:`wp__verification_comp_int_test`]
         └── tests/                       -> Module-level tests (e.g., feature integration tests, system tests)
                                             [:need:`wp__verification_feat_int_test`]
-                                            Feature Integration tests [:need:`wp__verification_feat_int_test`]
