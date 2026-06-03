@@ -196,7 +196,8 @@ Module Folder Structure (Single-Feature Variant)
 
 The following variant keeps the same structure but removes the additional
 feature-name nesting under ``docs/features/``. In this case, the ``features/``
-subfolder is optional and omitted.
+subfolder is optional and omitted. This variant is intended for modules that only implement a single feature, to avoid unnecessary nesting.
+For identification of the single feature, the repository name or module name should be replicate the feature name.
 
 .. parsed-literal::
 
