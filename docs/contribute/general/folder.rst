@@ -178,7 +178,7 @@ See also `module template repository <https://github.com/eclipse-score/module_te
        │   ├── src/                     -> Source files of the component consisting of
        │   |   │                           Include and source Files [:need:`wp__sw_implementation`]
        │   |   │                           Unit tests [:need:`wp__verification_sw_unit_test`]
-       │   |   ├── <lower_level_comp>/  -> lower level component following <component_name> folder structure
+       │   |   └── <lower_level_comp>/  -> lower level component following <component_name> folder structure
        │   └── tests/                   -> Component-level tests (e.g., unit tests)
        │                                   [:need:`wp__verification_sw_unit_test`]
        └── tests/                       -> Module-level tests (e.g., feature integration tests, system tests)
@@ -250,7 +250,7 @@ For identification of the single feature, the repository name or module name sho
         │   ├── src/                     -> Source files of the component consisting of
         │   |   │                           Include and source Files [:need:`wp__sw_implementation`]
         │   |   │                           Unit tests [:need:`wp__verification_sw_unit_test`]
-        │   |   ├── <lower_level_comp>/  -> lower level component following <component_name> folder structure
+        │   |   └─ <lower_level_comp>/  -> lower level component following <component_name> folder structure
         │   └── tests/                   -> Component-level tests (e.g., unit tests)
         │                                   [:need:`wp__verification_comp_int_test`]
         └── tests/                       -> Module-level tests (e.g., feature integration tests, system tests)
