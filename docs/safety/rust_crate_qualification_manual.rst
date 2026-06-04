@@ -24,88 +24,100 @@ or libraries.
 Process Overview
 ----------------
 
-.. code-block:: text
+.. uml::
 
-    ┌─────────────────────────┐
-    │  1. Crate Assessment &  │
-    │     Classification      │
-    └────────────┬────────────┘
-                 │  PR to score-crates
-                 ▼
-    ┌─────────────────────────┐
-    │  2. Classification      │
-    │     Review              │
-    └────────────┬────────────┘
-                 │  Q / QR → proceed   NQ → stop
-                 ▼
-    ┌─────────────────────────┐
-    │  3. Address Findings    │
-    │  (coverage, docs, reqs, │
-    │   design, traceability) │
-    └────────────┬────────────┘
-                 │  updated PR
-                 ▼
-    ┌─────────────────────────┐
-    │  4. Final Review &      │
-    │     Certification       │
-    └─────────────────────────┘
+   @startuml
+   skinparam defaultTextAlignment center
+   skinparam ArrowColor #555555
+   skinparam ActivityBorderColor #555555
+
+   start
+
+   :Step 1 — Crate Assessment & Classification
+   Submit PR to score-crates;
+
+   :Step 2 — Classification Review;
+
+   if (Classification outcome?) then (Q or QR)
+     :Step 3 — Address Findings
+     <i>coverage · docs · requirements · design · traceability</i>;
+
+     :Step 4 — Final Review & Certification;
+     stop
+   else (NQ)
+     :Crate cannot be used\nin the safety-critical codebase;
+     stop
+   endif
+
+   @enduml
 
 
 Step 1: Crate Assessment & Classification
 -----------------------------------------
 
+Before starting the classification report, record the qualification target for the crate:
+
+- crate name and version
+- source repository and revision (tag or commit)
+- enabled features and relevant configuration
+- supported target platforms
+- dependency baseline (crate version) used for the assessment
+
 Evaluate the crate across the following dimensions:
 
 - Size of the crate: lines of code (excluding comments), number of dependencies.
-- External dependencies: are they already qualified? If not, they must also go through this process or change to a qualified alternative.
-- Documentation: quality and completeness of README and crate-level docs.
-- Test coverage: coverage level and quality of the existing test suite.
-- CI setup: whether the CI pipeline effectively catches regressions and enforces standards.
-- Maintenance: update frequency and responsiveness to issues.
-- Security history: known vulnerabilities and how quickly they were resolved.
-- Unsafe code: any usage of ``unsafe`` and its justification.
-- Requirements & design: availability of functional and design documentation.
 - Code quality: style, readability, and maintainability.
+- External dependencies: are they already qualified? If not, they must also go through this process or be replaced with a qualified alternative.
+- Documentation: quality and completeness of the crate-level documentation and API docs.
+- Test coverage: coverage level and quality of the existing test suite, including unit, integration tests.
+- CI setup: whether the CI pipeline effectively catches regressions and enforces standards, all the required checks are available or not (e.g., coverage, clippy, miri, etc).
+- Maintenance: update frequency and responsiveness to issues and release management, because if the crate is unmaintained then it may not be up to date with latest Rust versions and may have unresolved security vulnerabilities.
+- Security history: known vulnerabilities and how quickly they were resolved.
+- Unsafe code: any usage of ``unsafe`` and its justification, Safety comments and documentation.
+- Requirements & design: availability of functional and design documentation.
 
-Based on this evaluation, create a **Component Classification Report** using the S-CORE template:
-
-  https://eclipse-score.github.io/process_description/main/folder_templates/modules/module_name/component_name/docs/component_classification.html
+Based on this evaluation, create a **Component Classification Report** using the
+`S-CORE Component Classification template <https://eclipse-score.github.io/module_template/main/score/component_example/docs/component_classification.html>`_.
 
 The report contains three tables:
 
-.. code-block:: text
+.. list-table::
+   :header-rows: 1
+   :widths: 30 40 30
 
-    ┌────────────────────────────────────────────────────────────────┐
-    │  Table 1 – Process (P)                                         │
-    │  Evaluate: requirements, specs, design, verification, CI       │
-    │  Outcome per indicator: HE | PE | NE                           │
-    ├────────────────────────────────────────────────────────────────┤
-    │  Table 2 – Complexity (C)                                      │
-    │  Evaluate: LoC, unsafe code, test coverage, public interfaces  │
-    │  Outcome per indicator: NH | HM | NM                           │
-    ├────────────────────────────────────────────────────────────────┤
-    │  Table 3 – Classification Outcome (CLAS_OUT)                   │
-    │  Derived from (P) and (C):  Q | QR | NQ                        │
-    └────────────────────────────────────────────────────────────────┘
+   * - Table
+     - Evaluates
+     - Possible Outcomes
+   * - **Table 1 - Process (P)**
+     - Requirements, specs, design, verification, CI
+     - | ``HE`` - High Evidence
+       | ``PE`` - Partial Evidence
+       | ``NE`` - No Evidence
+   * - **Table 2 - Complexity (C)**
+     - LoC, unsafe code, test coverage, public interfaces
+     - | ``NH`` - Not High
+       | ``HM`` - High but Manageable
+       | ``NM`` - Not Manageable
+   * - **Table 3 - Classification (CLAS_OUT)**
+     - Derived from (P) and (C)
+     - | ``Q``  - Qualified
+       | ``QR`` - Qualified with Restrictions
+       | ``NQ`` - Not Qualified
 
 Fill in the justification, references, and all relevant details for each indicator.
-See the pastey crate as a concrete example:
-
-  https://github.com/eclipse-score/score-crates/blob/main/docs/pastey/docs/component_classification.rst
+See the `pastey component classification report <https://github.com/eclipse-score/score-crates/blob/main/docs/pastey/docs/component_classification.rst>`_
+as a concrete example.
 
 .. note::
 
-   The classification outcome (Q / QR / NQ) in Table 3 is your initial proposal.
-   It is not final and may change following review by the SCORE Safety team.
-
+   - The classification outcome (Q / QR / NQ) in Table 3 is your initial proposal.
+     It is not final and may change after review by the SCORE Safety team.
    - **Q** or **QR**: the crate is eligible for use in the safety-critical codebase and
      must proceed through the remaining qualification steps.
    - **NQ**: the crate cannot be used in the safety-critical codebase.
 
-Since all crates reside in external repositories, submit the report as a pull request to
-the ``score-crates`` repository:
-
-  https://github.com/eclipse-score/score-crates/
+Because qualified crates typically reside in external repositories, submit the report as a pull request to
+the `score-crates repository <https://github.com/eclipse-score/score-crates/>`_.
 
 
 Step 2: Classification Review
@@ -127,7 +139,7 @@ The following categories of findings are common:
 
 - Achieve 100 % line and branch coverage for the crate.
 - If the upstream CI does not have a coverage job, add one.
-- Add tests for any uncovered code paths.
+- Add tests for any uncovered code paths in the upstream repository whenever possible.
 
 .. note::
 
@@ -138,46 +150,50 @@ The following categories of findings are common:
 
 - Verify that the README or crate-level documentation is sufficient for safety-critical use,
   covering design decisions, safety considerations, and usage guidelines.
-- Extend the upstream documentation if necessary.
+- Extend the upstream documentation if it does not affect the rust `crate-docs <https://docs.rs/pastey/latest/pastey/>`_.
 
 **Requirements**
 
 Requirements must be written in TRLC format and follow the three-level hierarchy below.
 Because upstream repositories are typically not suitable for hosting safety artifacts,
 create the requirement files in the ``score-crates`` repository and link them in the report.
+Follow the same crate-specific directory layout as the pastey example, for example
+``docs/<crate>/docs/requirement/``.
 
-.. code-block:: text
+.. uml::
 
-    Assumed System Requirement (ASR)          ← one shared file in score-crates
-              │
-              ▼
-    Feature Requirement (FEAT)                ← add one entry per crate
-              │
-              ▼
-    Component Requirement (REQ_COMP_*)        ← new file per crate
+   @startuml
+   skinparam defaultTextAlignment center
+   skinparam ArrowColor #555555
+   skinparam ComponentBorderColor #555555
+   skinparam ComponentBackgroundColor #f8f8f8
 
-- **Assumed System Requirement** – a single shared file already exists in ``score-crates``:
+   component "Assumed System Requirement (ASR)\none shared file in score-crates" as ASR
+   component "Feature Requirement (FEAT)\none entry per crate" as FEAT
+   component "Component Requirement (REQ_COMP_*)\nnew file per crate" as COMP
 
-    https://github.com/eclipse-score/score-crates/blob/main/docs/pastey/docs/requirement/assumed_system_requirements.trlc
+   ASR -down-> FEAT
+   FEAT -down-> COMP
 
-- **Feature Requirement** – add one feature requirement for the crate to the shared feature
+   @enduml
+
+- **Assumed System Requirement** - a single shared file already exists in ``score-crates``:
+  `assumed_system_requirements.trlc <https://github.com/eclipse-score/score-crates/blob/main/docs/pastey/docs/requirement/assumed_system_requirements.trlc>`_
+
+- **Feature Requirement** - add one feature requirement for the crate to the shared feature
   requirements file, linked to the assumed system requirement:
+  `feature_requirements.trlc <https://github.com/eclipse-score/score-crates/blob/main/docs/pastey/docs/requirement/feature_requirements.trlc>`_
 
-    https://github.com/eclipse-score/score-crates/blob/main/docs/pastey/docs/requirement/feature_requirements.trlc
-
-- **Component Requirements** – create a new file for the crate with detailed component
+- **Component Requirements** - create a new file for the crate with detailed component
   requirements, each linked to the feature requirement:
-
-    https://github.com/eclipse-score/score-crates/blob/main/docs/pastey/docs/requirement/component_requirements.trlc
+  `component_requirements.trlc <https://github.com/eclipse-score/score-crates/blob/main/docs/pastey/docs/requirement/component_requirements.trlc>`_
 
 In addition, provide the following safety artifacts required for traceability:
 
-- **Assumptions of Use (AoU)** – preconditions that the integrator must satisfy.
-- **Failure Modes** – identified failure modes with effect, cause, and guideword.
+- **Assumptions of Use (AoU)** - preconditions that the integrator must satisfy.
+- **Failure Modes** - identified failure modes with effect and cause.
 
-See the pastey safety analysis as an example:
-
-  https://github.com/eclipse-score/score-crates/tree/main/docs/pastey/docs/safety_analysis
+See the `pastey safety analysis <https://github.com/eclipse-score/score-crates/tree/main/docs/pastey/docs/safety_analysis>`_ as an example.
 
 **Design**
 
@@ -185,23 +201,22 @@ See the pastey safety analysis as an example:
   applicable) and host it in the ``score-crates`` repository.
 - Link the design artifacts in the classification report and the traceability report.
 
-See the pastey design documentation as an example:
-
-  https://github.com/eclipse-score/score-crates/tree/main/docs/pastey/docs/design
+See the `pastey design documentation <https://github.com/eclipse-score/score-crates/tree/main/docs/pastey/docs/design>`_ as an example.
 
 **Traceability**
 
-- Create test cases in the ``score-crates`` repository and trace them to the component
-  requirements.
+- Create the requirement-traced test cases and related LOBSTER inputs in the ``score-crates``
+  repository and trace them to the component requirements.
 - Use the **LOBSTER** tool from S-CORE tooling to generate the traceability report.
 
 .. note::
 
    For test additions and coverage improvements, prefer merging changes into the upstream
-   repository when possible. Requirements, design, safety analysis, and traceability
-   artefacts are maintained in ``score-crates``.
+   repository when possible. Requirements, design, safety analysis, requirement-traced test
+   cases, and traceability artefacts are maintained in ``score-crates`` so the LOBSTER report
+   can be generated there.
 
-   See an example PR: https://github.com/eclipse-score/score-crates/pull/39
+   See `score-crates PR #39 <https://github.com/eclipse-score/score-crates/pull/39>`_ as an example.
 
 
 Step 4: Final Review & Certification
