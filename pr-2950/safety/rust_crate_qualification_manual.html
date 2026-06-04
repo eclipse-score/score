@@ -606,10 +606,18 @@ or libraries.</p>
 </section>
 <section id="step-1-crate-assessment-classification">
 <h2>Step 1: Crate Assessment &amp; Classification<a class="headerlink" href="#step-1-crate-assessment-classification" title="Link to this heading">#</a></h2>
+<p>Before starting the classification report, record the qualification target for the crate:</p>
+<ul class="simple">
+<li><p>crate name and version</p></li>
+<li><p>source repository and revision (tag or commit)</p></li>
+<li><p>enabled features and relevant configuration</p></li>
+<li><p>supported target platforms</p></li>
+<li><p>dependency baseline (crate version) used for the assessment</p></li>
+</ul>
 <p>Evaluate the crate across the following dimensions:</p>
 <ul class="simple">
 <li><p>Size of the crate: lines of code (excluding comments), number of dependencies.</p></li>
-<li><p>External dependencies: are they already qualified? If not, they must also go through this process or change to a qualified alternative.</p></li>
+<li><p>External dependencies: are they already qualified? If not, they must also go through this process or be replaced with a qualified alternative.</p></li>
 <li><p>Documentation: quality and completeness of README and crate-level docs.</p></li>
 <li><p>Test coverage: coverage level and quality of the existing test suite.</p></li>
 <li><p>CI setup: whether the CI pipeline effectively catches regressions and enforces standards.</p></li>
@@ -635,30 +643,30 @@ or libraries.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>Table 1 – Process (P)</strong></p></td>
+<tr class="row-even"><td><p><strong>Table 1 - Process (P)</strong></p></td>
 <td><p>Requirements, specs, design, verification, CI</p></td>
 <td><div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">HE</span></code> – High Evidence</div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">PE</span></code> – Partly Evidence</div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">NE</span></code> – No Evidence</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">HE</span></code> - High Evidence</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">PE</span></code> - Partial Evidence</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">NE</span></code> - No Evidence</div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><strong>Table 2 – Complexity (C)</strong></p></td>
+<tr class="row-odd"><td><p><strong>Table 2 - Complexity (C)</strong></p></td>
 <td><p>LoC, unsafe code, test coverage, public interfaces</p></td>
 <td><div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">NH</span></code> – Not High</div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">HM</span></code> – High but Manageable</div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">NM</span></code> – Not Manageable</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">NH</span></code> - Not High</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">HM</span></code> - High but Manageable</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">NM</span></code> - Not Manageable</div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><strong>Table 3 – Classification (CLAS_OUT)</strong></p></td>
+<tr class="row-even"><td><p><strong>Table 3 - Classification (CLAS_OUT)</strong></p></td>
 <td><p>Derived from (P) and (C)</p></td>
 <td><div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">Q</span></code>  – Qualified</div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">QR</span></code> – Qualified with Restrictions</div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">NQ</span></code> – Not Qualified</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">Q</span></code>  - Qualified</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">QR</span></code> - Qualified with Restrictions</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">NQ</span></code> - Not Qualified</div>
 </div>
 </td>
 </tr>
@@ -670,15 +678,15 @@ See the <a class="reference external" href="https://github.com/eclipse-score/sco
 as a concrete example.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The classification outcome (Q / QR / NQ) in Table 3 is your initial proposal.
-It is not final and may change following review by the SCORE Safety team.</p>
 <ul class="simple">
+<li><p>The classification outcome (Q / QR / NQ) in Table 3 is your initial proposal.
+It is not final and may change after review by the SCORE Safety team.</p></li>
 <li><p><strong>Q</strong> or <strong>QR</strong>: the crate is eligible for use in the safety-critical codebase and
 must proceed through the remaining qualification steps.</p></li>
 <li><p><strong>NQ</strong>: the crate cannot be used in the safety-critical codebase.</p></li>
 </ul>
 </div>
-<p>Since all crates reside in external repositories, submit the report as a pull request to
+<p>Because qualified crates typically reside in external repositories, submit the report as a pull request to
 the <a class="reference external" href="https://github.com/eclipse-score/score-crates/">score-crates repository</a>.</p>
 </section>
 <section id="step-2-classification-review">
@@ -695,7 +703,7 @@ The following categories of findings are common:</p>
 <ul class="simple">
 <li><p>Achieve 100 % line and branch coverage for the crate.</p></li>
 <li><p>If the upstream CI does not have a coverage job, add one.</p></li>
-<li><p>Add tests for any uncovered code paths.</p></li>
+<li><p>Add tests for any uncovered code paths in the upstream repository whenever possible.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -711,23 +719,25 @@ covering design decisions, safety considerations, and usage guidelines.</p></li>
 <p><strong>Requirements</strong></p>
 <p>Requirements must be written in TRLC format and follow the three-level hierarchy below.
 Because upstream repositories are typically not suitable for hosting safety artifacts,
-create the requirement files in the <code class="docutils literal notranslate"><span class="pre">score-crates</span></code> repository and link them in the report.</p>
+create the requirement files in the <code class="docutils literal notranslate"><span class="pre">score-crates</span></code> repository and link them in the report.
+Follow the same crate-specific directory layout as the pastey example, for example
+<code class="docutils literal notranslate"><span class="pre">docs/&lt;crate&gt;/docs/requirement/</span></code>.</p>
 <p class="plantuml">
 <object data="../_images/plantuml-25bc933456dc745dd2ecd1c1f569cc09aa36c3c5.svg" type="image/svg+xml" style="width:336px;height:321px;background:#FFFFFF;"></object></p>
 <ul class="simple">
-<li><p><strong>Assumed System Requirement</strong> – a single shared file already exists in <code class="docutils literal notranslate"><span class="pre">score-crates</span></code>:
+<li><p><strong>Assumed System Requirement</strong> - a single shared file already exists in <code class="docutils literal notranslate"><span class="pre">score-crates</span></code>:
 <a class="reference external" href="https://github.com/eclipse-score/score-crates/blob/main/docs/pastey/docs/requirement/assumed_system_requirements.trlc">assumed_system_requirements.trlc</a></p></li>
-<li><p><strong>Feature Requirement</strong> – add one feature requirement for the crate to the shared feature
+<li><p><strong>Feature Requirement</strong> - add one feature requirement for the crate to the shared feature
 requirements file, linked to the assumed system requirement:
 <a class="reference external" href="https://github.com/eclipse-score/score-crates/blob/main/docs/pastey/docs/requirement/feature_requirements.trlc">feature_requirements.trlc</a></p></li>
-<li><p><strong>Component Requirements</strong> – create a new file for the crate with detailed component
+<li><p><strong>Component Requirements</strong> - create a new file for the crate with detailed component
 requirements, each linked to the feature requirement:
 <a class="reference external" href="https://github.com/eclipse-score/score-crates/blob/main/docs/pastey/docs/requirement/component_requirements.trlc">component_requirements.trlc</a></p></li>
 </ul>
 <p>In addition, provide the following safety artifacts required for traceability:</p>
 <ul class="simple">
-<li><p><strong>Assumptions of Use (AoU)</strong> – preconditions that the integrator must satisfy.</p></li>
-<li><p><strong>Failure Modes</strong> – identified failure modes with effect, cause, and guideword.</p></li>
+<li><p><strong>Assumptions of Use (AoU)</strong> - preconditions that the integrator must satisfy.</p></li>
+<li><p><strong>Failure Modes</strong> - identified failure modes with effect, cause, and guideword.</p></li>
 </ul>
 <p>See the <a class="reference external" href="https://github.com/eclipse-score/score-crates/tree/main/docs/pastey/docs/safety_analysis">pastey safety analysis</a> as an example.</p>
 <p><strong>Design</strong></p>
@@ -739,15 +749,16 @@ applicable) and host it in the <code class="docutils literal notranslate"><span 
 <p>See the <a class="reference external" href="https://github.com/eclipse-score/score-crates/tree/main/docs/pastey/docs/design">pastey design documentation</a> as an example.</p>
 <p><strong>Traceability</strong></p>
 <ul class="simple">
-<li><p>Create test cases in the <code class="docutils literal notranslate"><span class="pre">score-crates</span></code> repository and trace them to the component
-requirements.</p></li>
+<li><p>Create the requirement-traced test cases and related LOBSTER inputs in the <code class="docutils literal notranslate"><span class="pre">score-crates</span></code>
+repository and trace them to the component requirements.</p></li>
 <li><p>Use the <strong>LOBSTER</strong> tool from S-CORE tooling to generate the traceability report.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>For test additions and coverage improvements, prefer merging changes into the upstream
-repository when possible. Requirements, design, safety analysis, and traceability
-artefacts are maintained in <code class="docutils literal notranslate"><span class="pre">score-crates</span></code>.</p>
+repository when possible. Requirements, design, safety analysis, requirement-traced test
+cases, and traceability artefacts are maintained in <code class="docutils literal notranslate"><span class="pre">score-crates</span></code> so the LOBSTER report
+can be generated there.</p>
 <p>See <a class="reference external" href="https://github.com/eclipse-score/score-crates/pull/39">score-crates PR #39</a> as an example.</p>
 </div>
 </section>
