@@ -619,10 +619,8 @@ or libraries.</p>
 <li><p>Requirements &amp; design: availability of functional and design documentation.</p></li>
 <li><p>Code quality: style, readability, and maintainability.</p></li>
 </ul>
-<p>Based on this evaluation, create a <strong>Component Classification Report</strong> using the S-CORE template:</p>
-<blockquote>
-<div><p><a class="reference external" href="https://eclipse-score.github.io/process_description/main/folder_templates/modules/module_name/component_name/docs/component_classification.html">https://eclipse-score.github.io/process_description/main/folder_templates/modules/module_name/component_name/docs/component_classification.html</a></p>
-</div></blockquote>
+<p>Based on this evaluation, create a <strong>Component Classification Report</strong> using the
+<a class="reference external" href="https://eclipse-score.github.io/module_template/main/score/component_example/docs/component_classification.html">S-CORE Component Classification template</a>.</p>
 <p>The report contains three tables:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <colgroup>
@@ -668,10 +666,8 @@ or libraries.</p>
 </table>
 </div>
 <p>Fill in the justification, references, and all relevant details for each indicator.
-See the pastey crate as a concrete example:</p>
-<blockquote>
-<div><p><a class="reference external" href="https://github.com/eclipse-score/score-crates/blob/main/docs/pastey/docs/component_classification.rst">https://github.com/eclipse-score/score-crates/blob/main/docs/pastey/docs/component_classification.rst</a></p>
-</div></blockquote>
+See the <a class="reference external" href="https://github.com/eclipse-score/score-crates/blob/main/docs/pastey/docs/component_classification.rst">pastey component classification report</a>
+as a concrete example.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The classification outcome (Q / QR / NQ) in Table 3 is your initial proposal.
@@ -683,10 +679,7 @@ must proceed through the remaining qualification steps.</p></li>
 </ul>
 </div>
 <p>Since all crates reside in external repositories, submit the report as a pull request to
-the <code class="docutils literal notranslate"><span class="pre">score-crates</span></code> repository:</p>
-<blockquote>
-<div><p><a class="reference external" href="https://github.com/eclipse-score/score-crates/">https://github.com/eclipse-score/score-crates/</a></p>
-</div></blockquote>
+the <a class="reference external" href="https://github.com/eclipse-score/score-crates/">score-crates repository</a>.</p>
 </section>
 <section id="step-2-classification-review">
 <h2>Step 2: Classification Review<a class="headerlink" href="#step-2-classification-review" title="Link to this heading">#</a></h2>
@@ -721,44 +714,29 @@ Because upstream repositories are typically not suitable for hosting safety arti
 create the requirement files in the <code class="docutils literal notranslate"><span class="pre">score-crates</span></code> repository and link them in the report.</p>
 <p class="plantuml">
 <object data="../_images/plantuml-25bc933456dc745dd2ecd1c1f569cc09aa36c3c5.svg" type="image/svg+xml" style="width:336px;height:321px;background:#FFFFFF;"></object></p>
-<ul>
-<li><p><strong>Assumed System Requirement</strong> – a single shared file already exists in <code class="docutils literal notranslate"><span class="pre">score-crates</span></code>:</p>
-<blockquote>
-<div><p><a class="reference external" href="https://github.com/eclipse-score/score-crates/blob/main/docs/pastey/docs/requirement/assumed_system_requirements.trlc">https://github.com/eclipse-score/score-crates/blob/main/docs/pastey/docs/requirement/assumed_system_requirements.trlc</a></p>
-</div></blockquote>
-</li>
+<ul class="simple">
+<li><p><strong>Assumed System Requirement</strong> – a single shared file already exists in <code class="docutils literal notranslate"><span class="pre">score-crates</span></code>:
+<a class="reference external" href="https://github.com/eclipse-score/score-crates/blob/main/docs/pastey/docs/requirement/assumed_system_requirements.trlc">assumed_system_requirements.trlc</a></p></li>
 <li><p><strong>Feature Requirement</strong> – add one feature requirement for the crate to the shared feature
-requirements file, linked to the assumed system requirement:</p>
-<blockquote>
-<div><p><a class="reference external" href="https://github.com/eclipse-score/score-crates/blob/main/docs/pastey/docs/requirement/feature_requirements.trlc">https://github.com/eclipse-score/score-crates/blob/main/docs/pastey/docs/requirement/feature_requirements.trlc</a></p>
-</div></blockquote>
-</li>
+requirements file, linked to the assumed system requirement:
+<a class="reference external" href="https://github.com/eclipse-score/score-crates/blob/main/docs/pastey/docs/requirement/feature_requirements.trlc">feature_requirements.trlc</a></p></li>
 <li><p><strong>Component Requirements</strong> – create a new file for the crate with detailed component
-requirements, each linked to the feature requirement:</p>
-<blockquote>
-<div><p><a class="reference external" href="https://github.com/eclipse-score/score-crates/blob/main/docs/pastey/docs/requirement/component_requirements.trlc">https://github.com/eclipse-score/score-crates/blob/main/docs/pastey/docs/requirement/component_requirements.trlc</a></p>
-</div></blockquote>
-</li>
+requirements, each linked to the feature requirement:
+<a class="reference external" href="https://github.com/eclipse-score/score-crates/blob/main/docs/pastey/docs/requirement/component_requirements.trlc">component_requirements.trlc</a></p></li>
 </ul>
 <p>In addition, provide the following safety artifacts required for traceability:</p>
 <ul class="simple">
 <li><p><strong>Assumptions of Use (AoU)</strong> – preconditions that the integrator must satisfy.</p></li>
 <li><p><strong>Failure Modes</strong> – identified failure modes with effect, cause, and guideword.</p></li>
 </ul>
-<p>See the pastey safety analysis as an example:</p>
-<blockquote>
-<div><p><a class="reference external" href="https://github.com/eclipse-score/score-crates/tree/main/docs/pastey/docs/safety_analysis">https://github.com/eclipse-score/score-crates/tree/main/docs/pastey/docs/safety_analysis</a></p>
-</div></blockquote>
+<p>See the <a class="reference external" href="https://github.com/eclipse-score/score-crates/tree/main/docs/pastey/docs/safety_analysis">pastey safety analysis</a> as an example.</p>
 <p><strong>Design</strong></p>
 <ul class="simple">
 <li><p>Create architectural and static design documentation for the crate (UML diagrams where
 applicable) and host it in the <code class="docutils literal notranslate"><span class="pre">score-crates</span></code> repository.</p></li>
 <li><p>Link the design artifacts in the classification report and the traceability report.</p></li>
 </ul>
-<p>See the pastey design documentation as an example:</p>
-<blockquote>
-<div><p><a class="reference external" href="https://github.com/eclipse-score/score-crates/tree/main/docs/pastey/docs/design">https://github.com/eclipse-score/score-crates/tree/main/docs/pastey/docs/design</a></p>
-</div></blockquote>
+<p>See the <a class="reference external" href="https://github.com/eclipse-score/score-crates/tree/main/docs/pastey/docs/design">pastey design documentation</a> as an example.</p>
 <p><strong>Traceability</strong></p>
 <ul class="simple">
 <li><p>Create test cases in the <code class="docutils literal notranslate"><span class="pre">score-crates</span></code> repository and trace them to the component
@@ -770,7 +748,7 @@ requirements.</p></li>
 <p>For test additions and coverage improvements, prefer merging changes into the upstream
 repository when possible. Requirements, design, safety analysis, and traceability
 artefacts are maintained in <code class="docutils literal notranslate"><span class="pre">score-crates</span></code>.</p>
-<p>See an example PR: <a class="reference external" href="https://github.com/eclipse-score/score-crates/pull/39">https://github.com/eclipse-score/score-crates/pull/39</a></p>
+<p>See <a class="reference external" href="https://github.com/eclipse-score/score-crates/pull/39">score-crates PR #39</a> as an example.</p>
 </div>
 </section>
 <section id="step-4-final-review-certification">
