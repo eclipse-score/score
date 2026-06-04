@@ -601,31 +601,8 @@ the required safety and quality standards before it is used in safety-critical a
 or libraries.</p>
 <section id="process-overview">
 <h2>Process Overview<a class="headerlink" href="#process-overview" title="Link to this heading">#</a></h2>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────┐
-│  1. Crate Assessment &amp;  │
-│     Classification      │
-└────────────┬────────────┘
-             │  PR to score-crates
-             ▼
-┌─────────────────────────┐
-│  2. Classification      │
-│     Review              │
-└────────────┬────────────┘
-             │  Q / QR → proceed   NQ → stop
-             ▼
-┌─────────────────────────┐
-│  3. Address Findings    │
-│  (coverage, docs, reqs, │
-│   design, traceability) │
-└────────────┬────────────┘
-             │  updated PR
-             ▼
-┌─────────────────────────┐
-│  4. Final Review &amp;      │
-│     Certification       │
-└─────────────────────────┘
-</pre></div>
-</div>
+<p class="plantuml">
+<object data="../_images/plantuml-caab2bdbb3984a9ebebd6424497270267234a556.svg" type="image/svg+xml" style="width:580px;height:360px;background:#FFFFFF;"></object></p>
 </section>
 <section id="step-1-crate-assessment-classification">
 <h2>Step 1: Crate Assessment &amp; Classification<a class="headerlink" href="#step-1-crate-assessment-classification" title="Link to this heading">#</a></h2>
@@ -647,19 +624,48 @@ or libraries.</p>
 <div><p><a class="reference external" href="https://eclipse-score.github.io/process_description/main/folder_templates/modules/module_name/component_name/docs/component_classification.html">https://eclipse-score.github.io/process_description/main/folder_templates/modules/module_name/component_name/docs/component_classification.html</a></p>
 </div></blockquote>
 <p>The report contains three tables:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>┌────────────────────────────────────────────────────────────────┐
-│  Table 1 – Process (P)                                         │
-│  Evaluate: requirements, specs, design, verification, CI       │
-│  Outcome per indicator: HE | PE | NE                           │
-├────────────────────────────────────────────────────────────────┤
-│  Table 2 – Complexity (C)                                      │
-│  Evaluate: LoC, unsafe code, test coverage, public interfaces  │
-│  Outcome per indicator: NH | HM | NM                           │
-├────────────────────────────────────────────────────────────────┤
-│  Table 3 – Classification Outcome (CLAS_OUT)                   │
-│  Derived from (P) and (C):  Q | QR | NQ                        │
-└────────────────────────────────────────────────────────────────┘
-</pre></div>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 40.0%" />
+<col style="width: 30.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Table</p></th>
+<th class="head"><p>Evaluates</p></th>
+<th class="head"><p>Possible Outcomes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Table 1 – Process (P)</strong></p></td>
+<td><p>Requirements, specs, design, verification, CI</p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">HE</span></code> – High Evidence</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">PE</span></code> – Partly Evidence</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">NE</span></code> – No Evidence</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Table 2 – Complexity (C)</strong></p></td>
+<td><p>LoC, unsafe code, test coverage, public interfaces</p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">NH</span></code> – Not High</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">HM</span></code> – High but Manageable</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">NM</span></code> – Not Manageable</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Table 3 – Classification (CLAS_OUT)</strong></p></td>
+<td><p>Derived from (P) and (C)</p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">Q</span></code>  – Qualified</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">QR</span></code> – Qualified with Restrictions</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">NQ</span></code> – Not Qualified</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 <p>Fill in the justification, references, and all relevant details for each indicator.
 See the pastey crate as a concrete example:</p>
@@ -713,15 +719,8 @@ covering design decisions, safety considerations, and usage guidelines.</p></li>
 <p>Requirements must be written in TRLC format and follow the three-level hierarchy below.
 Because upstream repositories are typically not suitable for hosting safety artifacts,
 create the requirement files in the <code class="docutils literal notranslate"><span class="pre">score-crates</span></code> repository and link them in the report.</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Assumed System Requirement (ASR)          ← one shared file in score-crates
-          │
-          ▼
-Feature Requirement (FEAT)                ← add one entry per crate
-          │
-          ▼
-Component Requirement (REQ_COMP_*)        ← new file per crate
-</pre></div>
-</div>
+<p class="plantuml">
+<object data="../_images/plantuml-25bc933456dc745dd2ecd1c1f569cc09aa36c3c5.svg" type="image/svg+xml" style="width:336px;height:321px;background:#FFFFFF;"></object></p>
 <ul>
 <li><p><strong>Assumed System Requirement</strong> – a single shared file already exists in <code class="docutils literal notranslate"><span class="pre">score-crates</span></code>:</p>
 <blockquote>
