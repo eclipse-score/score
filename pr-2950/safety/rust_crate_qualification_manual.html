@@ -617,15 +617,15 @@ or libraries.</p>
 <p>Evaluate the crate across the following dimensions:</p>
 <ul class="simple">
 <li><p>Size of the crate: lines of code (excluding comments), number of dependencies.</p></li>
-<li><p>External dependencies: are they already qualified? If not, they must also go through this process or be replaced with a qualified alternative.</p></li>
-<li><p>Documentation: quality and completeness of README and crate-level docs.</p></li>
-<li><p>Test coverage: coverage level and quality of the existing test suite.</p></li>
-<li><p>CI setup: whether the CI pipeline effectively catches regressions and enforces standards.</p></li>
-<li><p>Maintenance: update frequency and responsiveness to issues.</p></li>
-<li><p>Security history: known vulnerabilities and how quickly they were resolved.</p></li>
-<li><p>Unsafe code: any usage of <code class="docutils literal notranslate"><span class="pre">unsafe</span></code> and its justification.</p></li>
-<li><p>Requirements &amp; design: availability of functional and design documentation.</p></li>
 <li><p>Code quality: style, readability, and maintainability.</p></li>
+<li><p>External dependencies: are they already qualified? If not, they must also go through this process or be replaced with a qualified alternative.</p></li>
+<li><p>Documentation: quality and completeness of the crate-level documentation and API docs.</p></li>
+<li><p>Test coverage: coverage level and quality of the existing test suite, including unit, integration tests.</p></li>
+<li><p>CI setup: whether the CI pipeline effectively catches regressions and enforces standards, all the required checks are available or not (e.g., coverage, clippy, miri, etc).</p></li>
+<li><p>Maintenance: update frequency and responsiveness to issues and release management, because if the crate is unmaintained then it may not be up to date with latest Rust versions and may have unresolved security vulnerabilities.</p></li>
+<li><p>Security history: known vulnerabilities and how quickly they were resolved.</p></li>
+<li><p>Unsafe code: any usage of <code class="docutils literal notranslate"><span class="pre">unsafe</span></code> and its justification, Safety comments and documentation.</p></li>
+<li><p>Requirements &amp; design: availability of functional and design documentation.</p></li>
 </ul>
 <p>Based on this evaluation, create a <strong>Component Classification Report</strong> using the
 <a class="reference external" href="https://eclipse-score.github.io/module_template/main/score/component_example/docs/component_classification.html">S-CORE Component Classification template</a>.</p>
