@@ -166,5 +166,5 @@ Requirements
 
    The base libraries shall provide a library for parallel execution of C++ callables with thread pool management.
 
-.. needextend:: "__baselibs" in id
+.. needextend:: docname is not None and "__baselibs" in id 
    :+tags: baselibs
