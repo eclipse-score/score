@@ -32,5 +32,5 @@ FEO Feature Assumption of Use Requirements
 
    Something shall be done.
 
-.. needextend:: docname is not None and "frameworks/feo/requirements" in docname
+.. needextend:: is_external == False and "frameworks/feo/requirements" in docname
    :+tags: frameworks_feo

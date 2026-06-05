@@ -476,7 +476,7 @@ Requirements
    The Persistency shall support the production mode.
    The production mode should enforce the most restrictive data access controls feasible.
 
-.. needextend:: docname is not None and "persistency/requirements" in docname
+.. needextend:: is_external == False and "persistency/requirements" in docname
    :+tags: persistency
 
 

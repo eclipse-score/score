@@ -170,5 +170,5 @@ Logical Interfaces
 
    .. uml:: _assets/kvs_interface.puml
 
-.. needextend:: docname is not None and "persistency/kvs/architecture" in docname
+.. needextend:: is_external == False and "persistency/kvs/architecture" in docname
    :+tags: persistency

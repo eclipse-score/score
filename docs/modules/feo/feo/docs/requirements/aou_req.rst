@@ -33,5 +33,5 @@ FEO Component Assumption of Use Requirements
 
    Anything shall be done.
 
-.. needextend:: docname is not None and "feo/docs/requirements" in docname
+.. needextend:: is_external == False and "feo/docs/requirements" in docname
    :+tags: component_feo

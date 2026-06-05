@@ -31,5 +31,5 @@ see `LoLa trlc <https://github.com/eclipse-score/communication/blob/main/score/m
 LoLa component Assumptions of Use
 =================================
 
-.. needextend:: docname is not None and "lola" in id
+.. needextend:: is_external == False and "lola" in id
    :+tags: lola
