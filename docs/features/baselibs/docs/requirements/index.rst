@@ -26,7 +26,7 @@ Requirements
    :id: feat_req__baselibs__core_utilities
    :reqtype: Functional
    :security: NO
-   :safety: QM
+   :safety: ASIL_B
    :satisfies: stkh_req__functional_req__base_libraries
    :status: valid
 
