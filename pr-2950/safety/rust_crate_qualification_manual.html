@@ -714,7 +714,7 @@ to use nightly when generating branch coverage reports.</p>
 <ul class="simple">
 <li><p>Verify that the README or crate-level documentation is sufficient for safety-critical use,
 covering design decisions, safety considerations, and usage guidelines.</p></li>
-<li><p>Extend the upstream documentation if necessary.</p></li>
+<li><p>Extend the upstream documentation if it does not affect the rust <a class="reference external" href="https://docs.rs/pastey/latest/pastey/">crate-docs</a>.</p></li>
 </ul>
 <p><strong>Requirements</strong></p>
 <p>Requirements must be written in TRLC format and follow the three-level hierarchy below.
@@ -737,7 +737,7 @@ requirements, each linked to the feature requirement:
 <p>In addition, provide the following safety artifacts required for traceability:</p>
 <ul class="simple">
 <li><p><strong>Assumptions of Use (AoU)</strong> - preconditions that the integrator must satisfy.</p></li>
-<li><p><strong>Failure Modes</strong> - identified failure modes with effect, cause, and guideword.</p></li>
+<li><p><strong>Failure Modes</strong> - identified failure modes with effect and cause.</p></li>
 </ul>
 <p>See the <a class="reference external" href="https://github.com/eclipse-score/score-crates/tree/main/docs/pastey/docs/safety_analysis">pastey safety analysis</a> as an example.</p>
 <p><strong>Design</strong></p>
