@@ -50,3 +50,12 @@ Process
    :glob:
 
    DR-*-proc*
+
+Integration
+~~~~~~~~~~~
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   DR-*-int*
