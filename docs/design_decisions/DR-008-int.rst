@@ -19,7 +19,7 @@ DR-008-Int: S-CORE integration scope in reference_integration repository
    :id: dec_rec__int__scope_reference_integration
    :status: accepted
    :context: Integration
-   :decision: Option 2
+   :decision: Option 3
 
 Context / Problem
 -----------------
@@ -58,14 +58,15 @@ of latest Modules states to ensure early feedback and breaking changes notificat
 For S-CORE releases, Modules need to deliver artifacts from local tests as their release assets to be used for certification and documentation.
 
 Pros:
+
 * Modules have full control over their own scope
 * Quick integration jobs in reference_integration repository as only Feature Integration tests are executed
 
 Cons:
+
 * No control over configuration, compiling flags, variants
 * Documentation and artifacts are distributed across different repositories
-* Full-stack S-CORE release might resolve to different version of dependencies that were tested in Module repositories
-which makes the release not compliant with S-CORE release requirements.
+* Full-stack S-CORE release might resolve to different version of dependencies that were tested in Module repositories which makes the release not compliant with S-CORE release requirements.
 
 Option 2: Re-execute all quality checks in the reference_integration repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -80,13 +81,90 @@ All necessary artifacts and single documentation build are generated in referenc
 of S-CORE releases.
 
 Pros:
+
 * Single point of truth for configurations, compiling flags, documentation and certification artifacts
 * Better control over resolved dependencies
 * Better traceability of the tests and documentation for full-stack S-CORE releases
 
 Cons:
+
 * Additional effort for the Module teams to maintain their tests and dependencies to be fully executable in reference_integration repository
 * Longer integration jobs in reference_integration repository as all tests are executed
+
+Option 3: Front-load quality checks in modules with lightweight reference_integration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Modules follow the S-CORE process and run quality tooling in their own context against their own resolved
+dependency set. Across modules, teams agree on *what* quality tooling and toolchains to use, but each
+module runs them independently. Most importantly, teams agree on dependency versions for the upcoming
+S-CORE release: if a module is releasing a new version into the next S-CORE release, every module that
+depends on it must migrate to that version before the release. Modules minimize non-dev, non-S-CORE
+dependencies in their MODULE.bazel files.
+
+Module Owners deliver as part of their release artifacts in the common form allowing aggregation and
+full documentation build in reference_integration. Bazel dependency analysis will allow verification
+that collected artifacts are valid for S-CORE release - resolved dependencies for the Module (in scope of their repository)
+must match the dependencies for S-CORE release and resolved in reference_integration.
+
+Continous integration of latest Modules based on hashes from their main branches will not allow verification
+of the artifacts and full documentation build. That will remain exclusive for S-CORE releases.
+
+Pros:
+
+* Verifying quality where it originates is more reliable — modules have full knowledge of their domain, their specific quality requirements, and the exact dependency context they were tested against
+* Technically simpler reference_integration with a well-defined, minimal scope
+* Avoids re-executing all checks in a different dependency context, which can mask or introduce issues
+* Provides early feedback through regular release candidate publishing
+
+Cons:
+
+* Requires tighter communication and coordination across module teams
+* Agreeing on and enforcing a shared dependency manifest adds process overhead
+* Backward compatibility guarantees need to be actively maintained across all modules
+
+Comparison
+----------
+
+.. list-table:: Reference_integration options comparison
+   :header-rows: 1
+   :widths: 30 20 20 30
+
+   * - Criterion
+     - Option 1
+     - Option 2
+     - Option 3
+   * - Quality checks location
+     - Module repositories only
+     - reference_integration (re-executed)
+     - Module repositories (front-loaded)
+   * - Feature integration tests
+     - reference_integration
+     - reference_integration
+     - reference_integration
+   * - Dependency mismatch risk
+     - High
+     - Low
+     - Low (via version agreements)
+   * - Integration job duration
+     - Short
+     - Long
+     - Short
+   * - Artifact & documentation consolidation
+     - Distributed across repositories
+     - Single point of truth
+     - Consolidated at release time
+   * - Module team maintenance effort
+     - Low
+     - High
+     - Medium
+   * - Cross-module coordination overhead
+     - Low
+     - Medium (triage of CI failures)
+     - Medium (shared dependency manifest)
+   * - Traceability for S-CORE release
+     - Weak
+     - Strong
+     - Strong (via release artifacts)
 
 Evaluation
 ----------
@@ -106,5 +184,21 @@ executable in the reference_integration repository with both public APIs and tes
 It allows generating a single documentation build with full traceability across different repositories which will stay persistent
 and will not require external linking.
 
-**Decision:** Option 2 has been most favored by the community.
-We accept additional effort for the integration process in exchange for a better traceability.
+Option 3 front-loads quality verification into the modules themselves and keeps reference_integration
+lightweight. It addresses the dependency mismatch risk of Option 1 through coordinated version
+agreements across modules rather than by re-executing checks centrally. However, it relies on
+disciplined inter-module coordination and backward compatibility guarantees, which adds process
+overhead and requires a shared dependency manifest to remain manageable.
+
+.. _option3_infographic:
+
+.. figure:: _assets/DR-008-int-option3_infographic.svg
+   :align: center
+   :width: 75%
+
+   Option 3 visual breakdown
+
+**Decision:** Option 3 got positive feedback and was selected by the community.
+We accept a trade-off of full documentation beeing available only for S-CORE releases,
+while having a more efficient and reliable integration process without extra efforts to maintain
+internal test targets in reference_integration repository.

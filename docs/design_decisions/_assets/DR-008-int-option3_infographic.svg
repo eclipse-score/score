@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1000" width="1800" height="1000">
+  <defs>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#3451b2"/>
+    </marker>
+    <marker id="arrowViolet" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6741d9"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#e03131"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1800" height="1000" fill="white"/>
+
+  <!-- Title -->
+  <text x="950" y="42" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#1e1e1e">Option 3: Front-Load Quality in Modules</text>
+
+  <!-- Subtitle -->
+  <text x="950" y="76" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#868e96">Each module owns its quality  ·  Coordinated versioning  ·  Lightweight reference_integration</text>
+
+  <!-- Shared Dependency Manifest (orange bar) -->
+  <rect x="20" y="108" width="830" height="90" fill="#e67700" rx="6"/>
+  <text x="435" y="148" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="white">Shared Dependency Manifest</text>
+  <text x="435" y="170" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="white">Module teams agree on dependency versions for the upcoming S-CORE release</text>
+
+  <!-- Column Headers -->
+  <text x="230" y="228" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#3451b2">Module Repositories</text>
+  <text x="1120" y="228" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2b7a4b">reference_integration</text>
+  <text x="1615" y="228" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#6741d9">S-CORE Release</text>
+
+  <!-- ── Module A ── -->
+  <rect x="20" y="248" width="420" height="190" fill="#3451b2" rx="6"/>
+  <text x="36" y="274" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white">Module A</text>
+  <rect x="50" y="300" width="360" height="118" fill="#bac8ff" stroke="#4c6ef5" stroke-width="1" rx="4"/>
+  <text x="230" y="352" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#1e1e1e">Static Tests · Unit Tests · CITs</text>
+  <text x="230" y="372" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#495057">(own resolved dependency context)</text>
+
+  <!-- ── Module B ── -->
+  <rect x="20" y="488" width="420" height="190" fill="#3451b2" rx="6"/>
+  <text x="36" y="514" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white">Module B</text>
+  <rect x="50" y="540" width="360" height="118" fill="#bac8ff" stroke="#4c6ef5" stroke-width="1" rx="4"/>
+  <text x="230" y="592" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#1e1e1e">Static Tests · Unit Tests · CITs</text>
+  <text x="230" y="612" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#495057">(own resolved dependency context)</text>
+
+  <!-- Dots separator -->
+  <text x="230" y="720" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="#868e96">· · ·</text>
+
+  <!-- ── Module N ── -->
+  <rect x="20" y="736" width="420" height="190" fill="#3451b2" rx="6"/>
+  <text x="36" y="762" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white">Module N</text>
+  <rect x="50" y="788" width="360" height="118" fill="#bac8ff" stroke="#4c6ef5" stroke-width="1" rx="4"/>
+  <text x="230" y="840" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#1e1e1e">Static Tests · Unit Tests · CITs</text>
+  <text x="230" y="860" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#495057">(own resolved dependency context)</text>
+
+  <!-- ── reference_integration frame ── -->
+  <rect x="870" y="248" width="500" height="678" fill="#2b7a4b" rx="6"/>
+  <text x="1120" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white">reference_integration</text>
+
+  <!-- RI: Feature Integration Tests -->
+  <rect x="900" y="308" width="440" height="120" fill="#b2f2bb" stroke="#2f9e44" stroke-width="1" rx="4"/>
+  <text x="1120" y="374" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#1a3d2b">Feature Integration Tests (FITs)</text>
+
+  <!-- RI: Consistency Checks -->
+  <rect x="900" y="475" width="440" height="130" fill="#d3f9d8" stroke="#69db7c" stroke-width="1" rx="4"/>
+  <text x="1120" y="532" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#1a3d2b">Consistency Checks</text>
+  <text x="1120" y="552" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#495057">(bazel mod — detect version mismatches)</text>
+
+  <!-- RI: Safety Artifact Consolidation -->
+  <rect x="900" y="652" width="440" height="120" fill="#b2f2bb" stroke="#2f9e44" stroke-width="1" rx="4"/>
+  <text x="1120" y="718" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#1a3d2b">Safety Artifact Consolidation</text>
+
+  <!-- RI: Documentation Build -->
+  <rect x="900" y="820" width="440" height="80" fill="#f8f9fa" stroke="#adb5bd" stroke-width="1" rx="4"/>
+  <text x="1120" y="866" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#495057">Documentation Build (releases only)</text>
+
+  <!-- ── S-CORE Release ── -->
+  <ellipse cx="1615" cy="598" rx="145" ry="78" fill="#6741d9"/>
+  <text x="1615" y="591" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white">S-CORE</text>
+  <text x="1615" y="615" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white">Release</text>
+
+  <!-- ── Arrows: Modules → reference_integration ── -->
+
+  <!-- Module A → ri_frame (slight upward bend) -->
+  <path d="M 440,343 C 600,315 730,355 870,370" stroke="#3451b2" stroke-width="2" fill="none" marker-end="url(#arrowBlue)"/>
+
+  <!-- Module B → ri_frame (labeled "release candidate") -->
+  <path d="M 440,583 L 870,540" stroke="#3451b2" stroke-width="2" fill="none" marker-end="url(#arrowBlue)"/>
+  <rect x="594" y="545" width="124" height="20" fill="white" opacity="0.9" rx="2"/>
+  <text x="656" y="560" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#3451b2">release candidate</text>
+
+  <!-- Module N → ri_frame (slight downward-to-up angle) -->
+  <path d="M 440,831 C 590,810 740,785 870,760" stroke="#3451b2" stroke-width="2" fill="none" marker-end="url(#arrowBlue)"/>
+
+  <!-- ── Arrow: reference_integration → S-CORE Release ── -->
+  <path d="M 1370,598 L 1470,598" stroke="#6741d9" stroke-width="2.5" fill="none" marker-end="url(#arrowViolet)"/>
+  <rect x="1379" y="580" width="83" height="16" fill="white" opacity="0.9" rx="2"/>
+  <text x="1420" y="593" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#6741d9">artifacts + docs</text>
+
+  <!-- ── Feedback arrow: reference_integration → Module B (dashed red) ── -->
+  <path d="M 870,490 C 800,670 500,670 440,500" stroke="#e03131" stroke-width="1.5" fill="none" stroke-dasharray="6,4" marker-end="url(#arrowRed)"/>
+  <rect x="591" y="657" width="130" height="18" fill="white" opacity="0.9" rx="2"/>
+  <text x="656" y="671" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#e03131">mismatch feedback</text>
+
+</svg>
