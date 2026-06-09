@@ -126,7 +126,7 @@ Module-side activities required for an S-CORE release integration:
 * `Module Release Notes <https://eclipse-score.github.io/process_description/main/process_areas/release_management/release_workproducts.html#wp__module_sw_release_note>`_
   produced from the S-CORE module release-note template and verified per the
   `module release-note workflow <https://eclipse-score.github.io/process_description/main/process_areas/release_management/release_workflow.html#wf__rel_mod_rel_note>`_.
-
+   :widths: 30 20 20 30 24
 reference_integration activities required for an S-CORE release:
 
 * Feature Integration Tests (FITs).
@@ -153,22 +153,65 @@ Cons:
 * Agreeing on and enforcing a shared dependency manifest adds process overhead
 * Backward compatibility guarantees need to be actively maintained across all modules
 
+Option 4: Stable known good with module-scoped validation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Reference_integration repository maintains a stable known good, a pinned set of Module versions
+that are verified to work together. When a new Module release candidate, third-party dependency,
+dev tool version, or toolchain update appears, a new candidate is created by updating the known
+good set and running a two-stage validation pipeline.
+
+In the first stage, reference_integration performs integration-scoped checks on the full stack.
+This includes building the integrated platform for supported targets, running Platform Integration
+Tests and Feature Integration Tests, and retrieving the resolved dependency set, including
+transitive dependencies. In the second stage, each Module is validated in its own repository
+context, but against the dependency versions resolved by reference_integration. Temporary override
+mechanisms, such as injected lock data or MODULE.bazel patching, can be used during the pipeline
+run without changing the released Module sources. Stage 2 runs a minimal baseline of component and
+unit tests, which can be extended with additional checks where a Module needs broader validation.
+
+This keeps quality checks close to the owning Module while still validating the exact dependency
+set selected by the full-stack integration. Failures can optionally be delegated into automatically
+created pull requests in the affected Module repositories, allowing the normal Module CI to provide
+diagnostics. Quality reports are consolidated from both the integration-scoped and Module-scoped
+stages.
+
+To support this flow, Modules keep their public dependency footprint minimal and continue to use
+quality tooling as development dependencies where appropriate. Modules additionally provide a small
+integration or acceptance test set that proves black-box usability when consumed as a dependency.
+
+Pros:
+
+* Validates the dependency set actually resolved by the full-stack while keeping Module tests in their natural repository context
+* Provides a short feedback loop through stable known good promotion and frequent candidate updates
+* Avoids promoting quality tooling dependencies into the released dependency footprint of each Module
+* Makes failures easier to diagnose by keeping ownership and CI execution close to the responsible Module
+
+Cons:
+
+* Requires additional orchestration to inject resolved dependency versions into Module-scoped validation runs
+* Consolidation of documentation and some release artifacts remains more complex than in a fully centralized setup
+* Temporary validation state must be governed carefully so release evidence stays consistent and auditable
+
 Comparison
 ----------
 
 .. list-table:: Reference_integration options comparison
    :header-rows: 1
-   :widths: 30 20 20 30
+   :widths: 24 16 16 20 24
 
    * - Criterion
      - Option 1
      - Option 2
      - Option 3
+     - Option 4
    * - Quality checks location
      - Module repositories only
      - reference_integration (re-executed)
      - Module repositories (front-loaded)
+     - Split between reference_integration and Module repositories
    * - Feature integration tests
+     - reference_integration
      - reference_integration
      - reference_integration
      - reference_integration
@@ -176,26 +219,32 @@ Comparison
      - High
      - Low
      - Low (via version agreements)
+     - Low (validated against resolved full-stack set)
    * - Integration job duration
      - Short
      - Long
      - Short
+     - Medium
    * - Artifact & documentation consolidation
      - Distributed across repositories
      - Single point of truth
      - Consolidated at release time
+     - Consolidated reports, documentation still more involved
    * - Module team maintenance effort
      - Low
      - High
+     - Medium
      - Medium
    * - Cross-module coordination overhead
      - Low
      - Medium (triage of CI failures)
      - Medium (shared dependency manifest)
+     - Medium (stable known good rollout)
    * - Traceability for S-CORE release
      - Weak
      - Strong
      - Strong (via release artifacts)
+     - Strong (via combined integration and Module evidence)
 
 Evaluation
 ----------
@@ -221,15 +270,29 @@ agreements across modules rather than by re-executing checks centrally. However,
 disciplined inter-module coordination and backward compatibility guarantees, which adds process
 overhead and requires a shared dependency manifest to remain manageable.
 
+Option 4 combines the full-stack validation goal of Option 2 with the local ownership model of
+Option 3. The stable known good concept keeps reference_integration focused on validating concrete
+integration candidates, while the Module-scoped second stage ensures that component and unit tests
+run in the Module's own environment but against the exact dependency set selected by the integrated
+stack. This addresses the main dependency mismatch concern without forcing all quality tooling into
+the public dependency footprint of every Module.
+
+Compared with Option 2, Option 4 reduces the risk of building an overly centralized integration
+setup that is harder for Module teams and downstream users to reproduce. Compared with Option 3,
+it improves feedback on dependency and compatibility issues by testing against a pinned, evolving
+full-stack baseline rather than relying only on version agreements. The remaining cost is additional
+pipeline orchestration and a need to define how documentation and release evidence are consolidated
+when Module validation runs with temporary dependency overrides.
+
 .. _option3_infographic:
 
 .. figure:: _assets/DR-008-int-option3_infographic.svg
-   :align: center
-   :width: 75%
+  :align: center
+  :width: 75%
 
-   Option 3 visual breakdown
+  Option 3 visual breakdown
 
-**Decision:** Option 3 got positive feedback and was selected by the community.
-We accept a trade-off of full documentation beeing available only for S-CORE releases,
-while having a more efficient and reliable integration process without extra efforts to maintain
-internal test targets in reference_integration repository.
+**Decision:** Option 4 got positive feedback and was selected by the community.
+We accept the additional orchestration needed to validate Modules against the dependency set
+resolved by reference_integration, in exchange for shorter feedback loops, stronger confidence in
+the stable known good baseline, and quality checks that remain close to the owning Module context.
