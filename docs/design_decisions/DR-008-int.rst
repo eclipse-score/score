@@ -19,7 +19,7 @@ DR-008-Int: S-CORE integration scope in reference_integration repository
    :id: dec_rec__int__scope_reference_integration
    :status: accepted
    :context: Integration
-   :decision: Option 3
+   :decision: To be decided in voting
 
 Context / Problem
 -----------------
@@ -108,6 +108,37 @@ must match the dependencies for S-CORE release and resolved in reference_integra
 
 Continous integration of latest Modules based on hashes from their main branches will not allow verification
 of the artifacts and full documentation build. That will remain exclusive for S-CORE releases.
+
+Module-side activities required for an S-CORE release integration:
+
+* Automated quality checks (static analysis, unit tests, CITs) using the tooling and versions
+  agreed centrally and tracked in the S-CORE tools evaluation list — see
+  `score_tools_evaluation_list <https://eclipse-score.github.io/score/main/score_tools/score_tools_evaluation_list.html>`_
+  (single source of truth for tool versions, classification, and qualification reports).
+* Manual quality checks per the S-CORE quality workflow, including
+  `process conformance checks <https://eclipse-score.github.io/process_description/main/process_areas/quality_management/quality_workflow.html#wf__exe_featprocess_conformance_checks>`_,
+  `work-product reviews <https://eclipse-score.github.io/process_description/main/process_areas/quality_management/quality_workflow.html#wf__exe_wp_review>`_,
+  and the
+  `QMS report <https://eclipse-score.github.io/process_description/main/process_areas/quality_management/quality_workproducts.html#wp__qms_report>`_.
+* Resolution of all static-analysis findings and security vulnerabilities reported in the
+  `Eclipse S-CORE security overview <https://github.com/orgs/eclipse-score/security/overview>`_ —
+  open findings block integration into the S-CORE release.
+* `Module Release Notes <https://eclipse-score.github.io/process_description/main/process_areas/release_management/release_workproducts.html#wp__module_sw_release_note>`_
+  produced from the S-CORE module release-note template and verified per the
+  `module release-note workflow <https://eclipse-score.github.io/process_description/main/process_areas/release_management/release_workflow.html#wf__rel_mod_rel_note>`_.
+
+reference_integration activities required for an S-CORE release:
+
+* Feature Integration Tests (FITs).
+* Bazel-graph based consistency and dependency-resolution checks.
+* Consolidation of module safety artifacts (test results, coverage, analysis reports).
+* Full documentation build (release builds only).
+* Generation and verification of the
+  `Platform Release Notes <https://eclipse-score.github.io/process_description/main/process_areas/release_management/release_workflow.html#wf__rel_platform_rel_note>`_
+  (derived where possible from the module release notes), the
+  `Platform Handbook <https://eclipse-score.github.io/process_description/main/process_areas/release_management/release_workflow.html#wf__rel_platform_handbook>`_,
+  and the
+  `Platform Verification Report <https://eclipse-score.github.io/process_description/main/process_areas/verification/verification_workproducts.html#wp__verification_platform_ver_report>`_.
 
 Pros:
 
