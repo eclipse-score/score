@@ -13,13 +13,13 @@
 DR-008-Int: S-CORE integration scope in reference_integration repository
 ========================================================================
 
-- **Date:** 2026-03-31
+- **Date:** 2026-06-11
 
 .. dec_rec:: Integration scope in reference_integration repository
    :id: dec_rec__int__scope_reference_integration
    :status: accepted
    :context: Integration
-   :decision: To be decided in voting
+   :decision: Option 4
 
 Context / Problem
 -----------------
@@ -126,7 +126,7 @@ Module-side activities required for an S-CORE release integration:
 * `Module Release Notes <https://eclipse-score.github.io/process_description/main/process_areas/release_management/release_workproducts.html#wp__module_sw_release_note>`_
   produced from the S-CORE module release-note template and verified per the
   `module release-note workflow <https://eclipse-score.github.io/process_description/main/process_areas/release_management/release_workflow.html#wf__rel_mod_rel_note>`_.
-   :widths: 30 20 20 30 24
+
 reference_integration activities required for an S-CORE release:
 
 * Feature Integration Tests (FITs).
@@ -139,6 +139,14 @@ reference_integration activities required for an S-CORE release:
   `Platform Handbook <https://eclipse-score.github.io/process_description/main/process_areas/release_management/release_workflow.html#wf__rel_platform_handbook>`_,
   and the
   `Platform Verification Report <https://eclipse-score.github.io/process_description/main/process_areas/verification/verification_workproducts.html#wp__verification_platform_ver_report>`_.
+
+.. _option3_infographic:
+
+.. figure:: _assets/DR-008-int-option3_infographic.svg
+  :align: center
+  :width: 75%
+
+  Option 3 visual breakdown
 
 Pros:
 
@@ -283,14 +291,6 @@ it improves feedback on dependency and compatibility issues by testing against a
 full-stack baseline rather than relying only on version agreements. The remaining cost is additional
 pipeline orchestration and a need to define how documentation and release evidence are consolidated
 when Module validation runs with temporary dependency overrides.
-
-.. _option3_infographic:
-
-.. figure:: _assets/DR-008-int-option3_infographic.svg
-  :align: center
-  :width: 75%
-
-  Option 3 visual breakdown
 
 **Decision:** Option 4 got positive feedback and was selected by the community.
 We accept the additional orchestration needed to validate Modules against the dependency set
